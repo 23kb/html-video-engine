@@ -1,0 +1,738 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>WPForms AI - The Form Crystalizes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=block" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #f7fbff;
+      }
+
+      [data-composition-id="wpforms-ai-scene-10"] {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        color: #101828;
+        background: #f7fbff;
+      }
+
+      .camera {
+        position: absolute;
+        inset: 0;
+        transform-origin: 50% 52%;
+      }
+
+      .bg {
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(560px 420px at 50% 48%, rgba(3,153,237,0.22), transparent 72%),
+          radial-gradient(780px 560px at 50% 56%, rgba(5,106,171,0.13), transparent 74%),
+          linear-gradient(180deg, #ffffff 0%, #f4faff 100%);
+        opacity: 0;
+      }
+
+      .mesh {
+        position: absolute;
+        inset: 0;
+        opacity: 0.2;
+        background-image:
+          linear-gradient(rgba(5,106,171,0.035) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(5,106,171,0.032) 1px, transparent 1px);
+        background-size: 84px 84px;
+        mask-image: radial-gradient(circle at 50% 51%, #000 0%, transparent 74%);
+      }
+
+      .particle {
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: rgba(3,153,237,0.68);
+        box-shadow: 0 0 18px rgba(3,153,237,0.32);
+        opacity: 0;
+      }
+
+      .particle.orange {
+        background: rgba(226,119,48,0.74);
+        box-shadow: 0 0 18px rgba(226,119,48,0.30);
+      }
+
+      .p1 { left: 382px; top: 278px; }
+      .p2 { left: 612px; top: 182px; }
+      .p3 { left: 1198px; top: 168px; }
+      .p4 { left: 1528px; top: 300px; }
+      .p5 { left: 1626px; top: 710px; }
+      .p6 { left: 1258px; top: 874px; }
+      .p7 { left: 690px; top: 842px; }
+      .p8 { left: 340px; top: 662px; }
+      .p9 { left: 906px; top: 242px; }
+      .p10 { left: 1030px; top: 836px; }
+
+      .crystal-stage {
+        position: absolute;
+        inset: 0;
+      }
+
+      .fragment {
+        --w: 196px;
+        --h: 70px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: var(--w);
+        height: var(--h);
+        display: grid;
+        grid-template-columns: 42px 1fr;
+        align-items: center;
+        gap: 12px;
+        padding: 13px 16px;
+        border-radius: 18px;
+        border: 1px solid rgba(255,255,255,0.78);
+        background: rgba(255,255,255,0.74);
+        box-shadow:
+          0 24px 54px -32px rgba(5,106,171,0.44),
+          0 10px 22px -18px rgba(16,24,40,0.20),
+          inset 0 1px 0 rgba(255,255,255,0.95);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        will-change: transform, width, height, opacity, filter, border-radius;
+      }
+
+      .frag-icon {
+        width: 38px;
+        height: 38px;
+        display: grid;
+        place-items: center;
+        border-radius: 12px;
+        color: #056aab;
+        background: linear-gradient(180deg, rgba(238,247,255,0.94), rgba(255,255,255,0.74));
+        border: 1px solid rgba(3,153,237,0.16);
+        font-size: 20px;
+        line-height: 1;
+        font-weight: 800;
+      }
+
+      .fragment[data-name="Submit"] .frag-icon {
+        color: #fff;
+        background: linear-gradient(180deg, #f18b42, #e27730);
+        border-color: rgba(226,119,48,0.18);
+      }
+
+      .frag-copy {
+        min-width: 0;
+      }
+
+      .frag-title {
+        font-size: 16px;
+        line-height: 1;
+        font-weight: 800;
+        letter-spacing: -0.015em;
+        color: #1d2939;
+      }
+
+      .frag-line {
+        width: 88px;
+        height: 8px;
+        margin-top: 9px;
+        border-radius: 999px;
+        background: rgba(5,106,171,0.12);
+      }
+
+      .fragment[data-name="Rating"] .frag-line,
+      .fragment[data-name="Submit"] .frag-line {
+        width: 54px;
+      }
+
+      .flash {
+        position: absolute;
+        left: 50%;
+        top: 312px;
+        width: 724px;
+        height: 90px;
+        border-radius: 999px;
+        background: linear-gradient(180deg, transparent, rgba(255,255,255,0.92), rgba(3,153,237,0.18), transparent);
+        filter: blur(8px);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 6;
+      }
+
+      .form-shell {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 650px;
+        min-height: 594px;
+        padding: 34px 38px 32px;
+        border-radius: 24px;
+        border: 1px solid rgba(20,30,60,0.07);
+        background: rgba(255,255,255,0.95);
+        box-shadow:
+          0 30px 74px -42px rgba(5,106,171,0.34),
+          0 14px 38px -26px rgba(16,24,40,0.22),
+          inset 0 1px 0 rgba(255,255,255,0.94);
+        opacity: 0;
+        overflow: hidden;
+        will-change: transform, opacity, filter;
+        z-index: 4;
+      }
+
+      .form-title {
+        margin-bottom: 24px;
+        color: #1d2939;
+        font-size: 31px;
+        line-height: 1.12;
+        letter-spacing: -0.025em;
+        font-weight: 800;
+      }
+
+      .field {
+        margin-top: 16px;
+      }
+
+      .label {
+        margin-bottom: 8px;
+        color: #344054;
+        font-size: 14px;
+        line-height: 1;
+        font-weight: 800;
+      }
+
+      .field-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+
+      .input {
+        height: 42px;
+        border-radius: 8px;
+        border: 1px solid rgba(102,112,133,0.27);
+        background: linear-gradient(180deg, #fff, #f8fafc);
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.72);
+      }
+
+      .wide {
+        width: 100%;
+      }
+
+      .textarea {
+        height: 92px;
+      }
+
+      .stars {
+        display: flex;
+        gap: 10px;
+        color: #056aab;
+        font-size: 32px;
+        line-height: 1;
+      }
+
+      .star {
+        display: inline-block;
+        transform-origin: center;
+      }
+
+      .submit {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 22px;
+        padding: 14px 21px;
+        border-radius: 10px;
+        color: #fff;
+        background: linear-gradient(180deg, #f18b42, #e27730);
+        box-shadow: 0 15px 28px -18px rgba(226,119,48,0.72);
+        font-size: 15px;
+        line-height: 1;
+        font-weight: 800;
+      }
+
+      .ready-badge {
+        position: absolute;
+        right: 28px;
+        bottom: 28px;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 13px;
+        border-radius: 999px;
+        color: #056aab;
+        background: rgba(238,247,255,0.96);
+        border: 1px solid rgba(3,153,237,0.18);
+        box-shadow: 0 14px 30px -22px rgba(5,106,171,0.45), inset 0 1px 0 rgba(255,255,255,0.9);
+        font-size: 13px;
+        line-height: 1;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+
+      .ready-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: #12b76a;
+      }
+
+      .resolve-item {
+        will-change: transform, opacity, filter;
+      }
+
+      .browser {
+        --sweep-angle: -36deg;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 792px;
+        height: 682px;
+        border-radius: 30px;
+        border: 1px solid rgba(20,30,60,0.08);
+        background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,251,255,0.94));
+        box-shadow:
+          0 30px 80px -40px rgba(5,106,171,0.32),
+          0 14px 34px -24px rgba(16,24,40,0.20),
+          inset 0 1px 0 rgba(255,255,255,0.96);
+        opacity: 0;
+        overflow: hidden;
+        z-index: 3;
+        will-change: transform, opacity;
+      }
+
+      .browser::before {
+        content: "";
+        position: absolute;
+        inset: 52px 0 0;
+        background:
+          radial-gradient(52% 42% at 74% 18%, rgba(3,153,237,0.10), transparent 68%),
+          radial-gradient(46% 34% at 18% 78%, rgba(226,119,48,0.07), transparent 72%);
+        pointer-events: none;
+      }
+
+      .browser-chrome {
+        position: relative;
+        height: 54px;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 0 23px;
+        border-bottom: 1px solid rgba(20,30,60,0.08);
+        background: rgba(255,255,255,0.80);
+        z-index: 5;
+      }
+
+      .dot {
+        width: 13px;
+        height: 13px;
+        border-radius: 50%;
+        opacity: 0;
+      }
+
+      .red { background: #f36b5f; }
+      .yellow { background: #f8bf4f; }
+      .green { background: #57c65f; }
+
+      .address {
+        margin-left: 14px;
+        height: 30px;
+        min-width: 330px;
+        padding: 0 16px;
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        color: #667085;
+        background: rgba(241,245,249,0.90);
+        font-size: 12px;
+        line-height: 1;
+        font-weight: 700;
+        transform-origin: left center;
+        overflow: hidden;
+      }
+
+      .url-text {
+        display: inline-block;
+        clip-path: inset(0 100% 0 0);
+      }
+
+      .border-glow {
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        padding: 1px;
+        background: conic-gradient(from var(--sweep-angle), transparent 0 18%, rgba(3,153,237,0.74) 25%, rgba(226,119,48,0.58) 32%, transparent 45% 100%);
+        -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        pointer-events: none;
+        z-index: 8;
+      }
+
+      .brand-lockup {
+        position: absolute;
+        left: 50%;
+        top: 95px;
+        width: 1120px;
+        transform: translateX(-50%);
+        text-align: center;
+        z-index: 10;
+        pointer-events: none;
+        overflow: visible;
+      }
+
+      .logo-mark {
+        width: 86px;
+        height: 86px;
+        object-fit: contain;
+        display: block;
+        margin: 0 auto 16px;
+        filter: drop-shadow(0 16px 24px rgba(20,30,60,0.17));
+      }
+
+      .brand-title {
+        font-size: 70px;
+        line-height: 0.95;
+        letter-spacing: -0.035em;
+        font-weight: 800;
+        color: #101828;
+        white-space: nowrap;
+        overflow: visible;
+        padding: 0 42px;
+      }
+
+      .brand-title .ai {
+        color: #E27730;
+        -webkit-text-fill-color: #E27730;
+        font-style: italic;
+        padding-right: 28px;
+        margin-right: -28px;
+        overflow: visible;
+      }
+
+      .brand-title .ai .split-char {
+        color: #E27730;
+        -webkit-text-fill-color: #E27730;
+        padding-right: 0.08em;
+        margin-right: -0.08em;
+      }
+
+      .split-char,
+      .split-word {
+        display: inline-block;
+        will-change: transform, opacity, filter;
+      }
+
+      .brand-sub {
+        margin-top: 18px;
+        color: #344054;
+        font-size: 30px;
+        line-height: 1.15;
+        letter-spacing: -0.022em;
+        font-weight: 750;
+      }
+
+      .sub-phrase {
+        display: inline-block;
+        will-change: transform, opacity, filter;
+      }
+
+      .final-line {
+        margin-top: 12px;
+        color: #667085;
+        font-size: 18px;
+        line-height: 1.2;
+        font-weight: 700;
+      }
+
+      .end-fade {
+        position: absolute;
+        inset: 0;
+        z-index: 30;
+        background: #ffffff;
+        opacity: 0;
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="wpforms-ai-scene-10"
+      data-start="0"
+      data-duration="6.4"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div class="camera">
+        <div class="bg"></div>
+        <div class="mesh"></div>
+
+        <span class="particle p1"></span>
+        <span class="particle p2 orange"></span>
+        <span class="particle p3"></span>
+        <span class="particle p4"></span>
+        <span class="particle p5 orange"></span>
+        <span class="particle p6"></span>
+        <span class="particle p7"></span>
+        <span class="particle p8 orange"></span>
+        <span class="particle p9"></span>
+        <span class="particle p10 orange"></span>
+
+        <section class="crystal-stage">
+          <article class="fragment" data-name="Name">
+            <div class="frag-icon">U</div>
+            <div class="frag-copy"><div class="frag-title">Name</div><div class="frag-line"></div></div>
+          </article>
+          <article class="fragment" data-name="Email">
+            <div class="frag-icon">@</div>
+            <div class="frag-copy"><div class="frag-title">Email</div><div class="frag-line"></div></div>
+          </article>
+          <article class="fragment" data-name="Rating">
+            <div class="frag-icon">*</div>
+            <div class="frag-copy"><div class="frag-title">Rating</div><div class="frag-line"></div></div>
+          </article>
+          <article class="fragment" data-name="Feedback">
+            <div class="frag-icon">""</div>
+            <div class="frag-copy"><div class="frag-title">Feedback</div><div class="frag-line"></div></div>
+          </article>
+          <article class="fragment" data-name="Choices">
+            <div class="frag-icon">=</div>
+            <div class="frag-copy"><div class="frag-title">Choices</div><div class="frag-line"></div></div>
+          </article>
+          <article class="fragment" data-name="Submit">
+            <div class="frag-icon">></div>
+            <div class="frag-copy"><div class="frag-title">Submit</div><div class="frag-line"></div></div>
+          </article>
+        </section>
+
+        <div class="flash"></div>
+
+        <section class="browser">
+          <div class="border-glow"></div>
+          <div class="browser-chrome">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <div class="address"><span class="url-text">sulliesbakery.com/feedback</span></div>
+          </div>
+        </section>
+
+        <section class="form-shell">
+          <h2 class="form-title resolve-item">Online Feedback Survey</h2>
+          <div class="field resolve-item">
+            <div class="label">Name</div>
+            <div class="field-row"><div class="input"></div><div class="input"></div></div>
+          </div>
+          <div class="field resolve-item">
+            <div class="label">Email</div>
+            <div class="input wide"></div>
+          </div>
+          <div class="field resolve-item">
+            <div class="label">Rating</div>
+            <div class="stars">
+              <span class="star">*</span><span class="star">*</span><span class="star">*</span><span class="star">*</span><span class="star">*</span>
+            </div>
+          </div>
+          <div class="field resolve-item">
+            <div class="label">Feedback</div>
+            <div class="input textarea"></div>
+          </div>
+          <div class="submit resolve-item">Submit</div>
+          <div class="ready-badge resolve-item"><span class="ready-dot"></span>Ready to publish</div>
+        </section>
+
+        <section class="brand-lockup">
+          <img class="logo-mark" src="../../assets/sullie.png" alt="" />
+          <h1 class="brand-title" aria-label="WPForms AI">
+            <span class="brand-word">WPForms</span> <span class="brand-word ai">AI</span>
+          </h1>
+          <p class="brand-sub" aria-label="Describe it. Generate it. Publish it.">
+            <span class="sub-phrase">Describe it.</span>
+            <span class="sub-phrase">Generate it.</span>
+            <span class="sub-phrase">Publish it.</span>
+          </p>
+          <p class="final-line">Build smarter forms, faster.</p>
+        </section>
+
+        <div class="end-fade"></div>
+      </div>
+
+      <script>
+        window.__timelines = window.__timelines || {};
+
+        const fragmentData = [
+          { orbitX: -304, orbitY: -164, fromX: -620, fromY: -360, rowY: -198 },
+          { orbitX: 12, orbitY: -214, fromX: 40, fromY: -470, rowY: -128 },
+          { orbitX: 316, orbitY: -112, fromX: 660, fromY: -270, rowY: -58 },
+          { orbitX: -330, orbitY: 96, fromX: -690, fromY: 180, rowY: 12 },
+          { orbitX: 322, orbitY: 118, fromX: 690, fromY: 250, rowY: 82 },
+          { orbitX: -10, orbitY: 224, fromX: -40, fromY: 520, rowY: 152 }
+        ];
+
+        const fragments = gsap.utils.toArray(".fragment");
+        const particles = gsap.utils.toArray(".particle");
+        const brandChars = [];
+
+        document.querySelectorAll(".brand-word").forEach((word) => {
+          const letters = word.textContent.split("");
+          word.textContent = "";
+          letters.forEach((letter) => {
+            const span = document.createElement("span");
+            span.className = "split-char";
+            span.textContent = letter;
+            word.appendChild(span);
+            brandChars.push(span);
+          });
+        });
+
+        const subPhrases = gsap.utils.toArray(".sub-phrase");
+        const mainTl = gsap.timeline({ paused: true });
+
+        mainTl.addLabel("intro", 0);
+        mainTl.addLabel("fragments", 0.6);
+        mainTl.addLabel("snap", 1.6);
+        mainTl.addLabel("formResolve", 2.4);
+        mainTl.addLabel("browserBuild", 3.2);
+        mainTl.addLabel("signature", 4.0);
+        mainTl.addLabel("hold", 4.62);
+
+        gsap.set(".camera", { scale: 1 });
+        gsap.set(".bg", { opacity: 0, scale: 0.6 });
+        gsap.set(particles, { opacity: 0, scale: 0.4 });
+        gsap.set(fragments, (index) => ({
+          x: fragmentData[index].fromX,
+          y: fragmentData[index].fromY,
+          scale: 0.65,
+          rotation: index % 2 ? 8 : -8,
+          filter: "blur(12px)",
+          opacity: 0
+        }));
+        gsap.set(".flash", { xPercent: -50, opacity: 0, y: -130 });
+        gsap.set(".form-shell", { xPercent: -50, yPercent: -50, opacity: 0, scale: 0.985, filter: "blur(5px)" });
+        gsap.set(".resolve-item", { opacity: 0, y: 12, filter: "blur(4px)" });
+        gsap.set(".star", { scale: 0, opacity: 0 });
+        gsap.set(".submit", { scale: 0.86 });
+        gsap.set(".ready-badge", { scale: 0.84 });
+        gsap.set(".browser", { xPercent: -50, yPercent: -50, opacity: 0, scale: 0.965, y: 16 });
+        gsap.set(".browser-chrome", { opacity: 0, y: -24 });
+        gsap.set(".address", { scaleX: 0.6 });
+        gsap.set(".url-text", { clipPath: "inset(0 100% 0 0)" });
+        gsap.set(".dot", { opacity: 0, scale: 0.72 });
+        gsap.set(".brand-lockup", { opacity: 1 });
+        gsap.set(".logo-mark", { opacity: 0, scale: 0.75, y: 12 });
+        gsap.set(brandChars, { opacity: 0, y: 28, filter: "blur(10px)" });
+        gsap.set(subPhrases, { opacity: 0, y: 18, filter: "blur(8px)" });
+        gsap.set(".final-line", { opacity: 0, y: 10 });
+        gsap.set(".border-glow", { opacity: 0, "--sweep-angle": "-36deg" });
+        gsap.set(".end-fade", { opacity: 0 });
+
+        mainTl.to(".bg", { opacity: 1, scale: 1.2, duration: 0.6, ease: "power2.out" }, "intro");
+        mainTl.to(".camera", { scale: 1.024, duration: 0.6, ease: "sine.out" }, "intro");
+        mainTl.to(particles, {
+          opacity: 0.45,
+          scale: 1,
+          x: (i) => [90, 66, -84, -106, -148, -76, 58, 122, 22, -26][i],
+          y: (i) => [78, 132, 118, 68, -44, -88, -126, -58, 90, -112][i],
+          duration: 0.56,
+          stagger: 0.018,
+          ease: "power2.out"
+        }, "intro+=0.04");
+
+        mainTl.to(fragments, {
+          opacity: 1,
+          scale: 1,
+          x: (i) => fragmentData[i].orbitX,
+          y: (i) => fragmentData[i].orbitY,
+          rotation: 0,
+          filter: "blur(0px)",
+          duration: 0.72,
+          stagger: 0.07,
+          ease: "back.out(1.4)"
+        }, "fragments");
+        mainTl.to(fragments, {
+          x: (i) => fragmentData[i].orbitX + [8, -10, 8, -8, 10, -6][i],
+          y: (i) => fragmentData[i].orbitY + [-10, 8, 9, -8, -7, 10][i],
+          duration: 0.5,
+          ease: "sine.inOut"
+        }, "fragments+=0.62");
+
+        mainTl.to(fragments, {
+          x: 0,
+          y: (i) => fragmentData[i].rowY,
+          width: 620,
+          height: 58,
+          borderRadius: 11,
+          duration: 0.72,
+          stagger: 0.035,
+          ease: "expo.inOut"
+        }, "snap");
+        mainTl.to(".frag-line", { width: 360, duration: 0.62, stagger: 0.035, ease: "expo.inOut" }, "snap+=0.04");
+        mainTl.to(".flash", { opacity: 0.92, y: 420, duration: 0.62, ease: "expo.inOut" }, "snap+=0.10");
+        mainTl.to(".flash", { opacity: 0, duration: 0.18, ease: "power2.out" }, "snap+=0.70");
+
+        mainTl.to(".form-shell", { opacity: 1, scale: 1, filter: "blur(0px)", duration: 0.34, ease: "power3.out" }, "formResolve");
+        mainTl.to(fragments, { opacity: 0.16, filter: "blur(7px)", duration: 0.30, ease: "power2.out" }, "formResolve+=0.03");
+        mainTl.to(".form-title", { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.36, ease: "expo.out" }, "formResolve+=0.05");
+        mainTl.to(".field.resolve-item", { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.32, stagger: 0.06, ease: "power3.out" }, "formResolve+=0.16");
+        mainTl.to(".star", { opacity: 1, scale: 1.15, duration: 0.16, stagger: 0.045, ease: "back.out(1.8)" }, "formResolve+=0.42");
+        mainTl.to(".star", { scale: 1, duration: 0.14, stagger: 0.035, ease: "power2.out" }, "formResolve+=0.58");
+        mainTl.to(".submit", { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.30, ease: "back.out(1.5)" }, "formResolve+=0.62");
+        mainTl.to(".ready-badge", { opacity: 1, y: 0, scale: 1, filter: "blur(0px)", duration: 0.24, ease: "back.out(1.6)" }, "formResolve+=0.76");
+
+        mainTl.to(".browser", { opacity: 1, scale: 1, y: 0, duration: 0.34, ease: "power3.out" }, "browserBuild");
+        mainTl.to(".browser-chrome", { opacity: 1, y: 0, duration: 0.34, ease: "power3.out" }, "browserBuild");
+        mainTl.to(".dot", { opacity: 1, scale: 1, duration: 0.16, stagger: 0.045, ease: "back.out(1.8)" }, "browserBuild+=0.14");
+        mainTl.to(".address", { scaleX: 1, duration: 0.36, ease: "expo.out" }, "browserBuild+=0.12");
+        mainTl.to(".url-text", { clipPath: "inset(0 0% 0 0)", duration: 0.46, ease: "steps(26)" }, "browserBuild+=0.26");
+        mainTl.to(".form-shell", { y: 42, scale: 0.89, duration: 0.52, ease: "expo.inOut" }, "browserBuild+=0.02");
+        mainTl.to(fragments, { opacity: 0, duration: 0.18, ease: "power2.out" }, "browserBuild+=0.04");
+
+        mainTl.to(".camera", { scale: 0.965, duration: 0.54, ease: "sine.inOut" }, "signature");
+        mainTl.to(".browser", { y: 90, scale: 0.83, duration: 0.56, ease: "expo.out" }, "signature");
+        mainTl.to(".form-shell", { y: 138, scale: 0.74, duration: 0.56, ease: "expo.out" }, "signature");
+        mainTl.to(".logo-mark", { opacity: 1, y: 0, scale: 1.05, duration: 0.26, ease: "back.out(1.7)" }, "signature+=0.04");
+        mainTl.to(".logo-mark", { scale: 1, duration: 0.14, ease: "power2.out" }, "signature+=0.29");
+        mainTl.to(brandChars, { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.45, stagger: 0.018, ease: "expo.out" }, "signature+=0.10");
+        mainTl.to(subPhrases[0], { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.34, ease: "power3.out" }, "signature+=0.42");
+        mainTl.to(subPhrases[1], { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.34, ease: "power3.out" }, "signature+=0.76");
+        mainTl.to(subPhrases[2], { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.34, ease: "power3.out" }, "signature+=1.10");
+        mainTl.to(".final-line", { opacity: 1, y: 0, duration: 0.28, ease: "power2.out" }, "signature+=1.42");
+        mainTl.to(".border-glow", { opacity: 1, duration: 0.08, ease: "power2.out" }, "signature+=0.38");
+        mainTl.to(".border-glow", { "--sweep-angle": "324deg", duration: 0.70, ease: "power2.out" }, "signature+=0.38");
+        mainTl.to(".border-glow", { opacity: 0.16, duration: 0.26, ease: "power2.out" }, "signature+=1.02");
+
+        mainTl.to(".browser", { y: 84, duration: 0.60, ease: "sine.inOut" }, "hold");
+        mainTl.to(".form-shell", { y: 132, duration: 0.60, ease: "sine.inOut" }, "hold");
+        mainTl.to(".bg", { opacity: 0.92, duration: 0.78, ease: "sine.inOut" }, "hold");
+        mainTl.to(".camera", { scale: 0.955, duration: 0.42, ease: "sine.inOut" }, 5.74);
+        mainTl.to(".end-fade", { opacity: 1, duration: 0.48, ease: "power2.inOut" }, 5.92);
+
+        window.__timelines["wpforms-ai-scene-10"] = mainTl;
+        window.__timelines.push = window.__timelines.push || function pushTimeline(timeline) {
+          this.__pushed = this.__pushed || [];
+          this.__pushed.push(timeline);
+        };
+        window.__timelines.push(mainTl);
+      </script>
+    </div>
+  </body>
+</html>

@@ -376,12 +376,23 @@ async function captureVariant(page, variant) {
     rewritten = baseFontStyle + rewritten;
   }
 
-  // Emit all currently-known assets into this variant's assets/ dir.
-  // Text assets (HTML/JS/CSS/JSON/SVG/etc) get sanitized for embedded
-  // API keys; binary assets (fonts, images) pass through untouched.
-  // No cross-variant dedup — each variant directory is self-contained.
+  // Emit only assets the rewritten HTML actually references. The response
+  // listener pools every JS/CSS/image/font the live page fetched (including
+  // lazy webpack chunks, prefetches, and XHR responses), but the post-render
+  // serialized DOM only points at a fraction of that. Writing everything
+  // produces ~80% orphan files per snapshot — see
+  // tools/prune-snapshot-assets.js for the post-hoc cleanup that proves it.
+  // Text assets get sanitized for embedded API keys; binaries pass through.
+  const referencedAssets = new Set();
+  for (const m of rewritten.matchAll(/assets\/([A-Za-z0-9._-]+\.[A-Za-z0-9]+)/g)) {
+    referencedAssets.add(m[1]);
+  }
+  let emittedCount = 0;
+  let skippedCount = 0;
   for (const [filename, buf] of assetBuffers) {
+    if (!referencedAssets.has(filename)) { skippedCount++; continue; }
     fs.writeFileSync(path.join(assetsDir, filename), sanitizeAssetIfText(filename, buf));
+    emittedCount++;
   }
 
   // Sanitize the rendered HTML before writing — this catches keys that
@@ -393,11 +404,12 @@ async function captureVariant(page, variant) {
   fs.writeFileSync(path.join(outDir, 'meta.json'), JSON.stringify({
     sourceUrl: WP_URL + targetPath,
     capturedAt: new Date().toISOString(),
-    assetCount: assetBuffers.size,
+    assetCount: emittedCount,
+    assetCountSkipped: skippedCount,
     variantSlug: slug,
   }, null, 2));
 
-  console.log(`    ✓ wrote ${outDir} (${assetBuffers.size} assets)`);
+  console.log(`    ✓ wrote ${outDir} (${emittedCount} assets, ${skippedCount} unreferenced skipped)`);
 }
 
 (async () => {

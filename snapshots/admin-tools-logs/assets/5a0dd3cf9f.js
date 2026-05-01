@@ -1,7 +1,0 @@
-PAYPAL.apps.Signup.MiniBrowser.rampConfig = {
-    "enablePartners": [],
-    "disablePartners": ["NGL898N6ALUB6", "DQLVXW2LEW5AE", "9T6VSEL9FJVDQ", "NYVFZRBKNXVUL", "PGGUJXHAT2388", "K8SKZ36LQBWXJ", "WHH7K6UE7RMCC", "HSJKEA5MWQGA4", "FU66W3S5X6QGU", "QQR9LM98ZJRLA", "7MAV7KGX6F83S", "EDHEE8CNBWJ6S", "GR7BRDVKBZVKU", "FMZQSTACN8KKW"],
-    "enableForAllPartners": true,
-    "rampPercentage": 100
-}
-
