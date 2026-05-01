@@ -1,0 +1,1 @@
+let WPFormsDropboxAdmin=window.WPFormsDropboxAdmin||(o=>{let n={init(){o(n.ready)},ready(){o("#wpforms-integration-dropbox").on("click",".wpforms-settings-provider-accounts-dropbox-authorize-button",function(){o(this).html(wpforms_admin.connecting)})}};return n})((document,window,jQuery));WPFormsDropboxAdmin.init();

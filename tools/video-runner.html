@@ -1,0 +1,356 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WPForms Video QC Runner</title>
+<style>
+  :root {
+    --bg: #0d1117;
+    --panel: rgba(18, 24, 34, 0.92);
+    --panel-2: rgba(255, 255, 255, 0.08);
+    --text: #f8fafc;
+    --muted: #9aa4b2;
+    --line: rgba(255, 255, 255, 0.14);
+    --accent: #e27730;
+    --accent-2: #7b5be8;
+  }
+  html, body {
+    margin: 0;
+    height: 100%;
+    background: var(--bg);
+    color: var(--text);
+    font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    overflow: hidden;
+  }
+  .runner {
+    height: 100%;
+    display: grid;
+    grid-template-rows: 1fr 92px;
+  }
+  .viewport {
+    position: relative;
+    min-height: 0;
+    background:
+      radial-gradient(50% 46% at 18% 18%, rgba(123, 91, 232, 0.18), transparent 70%),
+      radial-gradient(46% 42% at 84% 70%, rgba(226, 119, 48, 0.14), transparent 74%),
+      #05070b;
+  }
+  iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    display: block;
+    background: #000;
+  }
+  .topbar {
+    position: absolute;
+    left: 18px;
+    top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(8, 12, 18, 0.66);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, .22);
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: #2fb344;
+    box-shadow: 0 0 18px rgba(47, 179, 68, .6);
+  }
+  .status {
+    color: var(--muted);
+    font-weight: 600;
+  }
+  .controls {
+    border-top: 1px solid var(--line);
+    background: var(--panel);
+    backdrop-filter: blur(18px);
+    padding: 14px 18px 16px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 16px;
+    align-items: center;
+  }
+  button, input {
+    font: inherit;
+  }
+  button {
+    height: 40px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: var(--panel-2);
+    color: var(--text);
+    padding: 0 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  button.primary {
+    min-width: 96px;
+    border-color: rgba(226, 119, 48, .55);
+    background: var(--accent);
+    color: #fff;
+  }
+  button:hover {
+    border-color: rgba(255, 255, 255, .28);
+  }
+  .timeline {
+    display: grid;
+    gap: 9px;
+  }
+  .time-row {
+    display: flex;
+    justify-content: space-between;
+    color: var(--muted);
+    font-weight: 650;
+    font-variant-numeric: tabular-nums;
+  }
+  .range-wrap {
+    position: relative;
+    height: 24px;
+    display: flex;
+    align-items: center;
+  }
+  input[type="range"] {
+    width: 100%;
+    accent-color: var(--accent);
+    cursor: pointer;
+  }
+  .markers {
+    position: absolute;
+    inset: 0 6px;
+    pointer-events: none;
+  }
+  .marker {
+    position: absolute;
+    top: 4px;
+    width: 2px;
+    height: 16px;
+    border-radius: 2px;
+    background: rgba(255,255,255,.38);
+  }
+  .right { display: flex; align-items: center; gap: 10px; }
+  .hint {
+    position: absolute;
+    right: 18px;
+    top: 16px;
+    max-width: 360px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: rgba(8, 12, 18, 0.62);
+    color: var(--muted);
+    backdrop-filter: blur(14px);
+  }
+</style>
+</head>
+<body>
+<div class="runner">
+  <div class="viewport">
+    <iframe id="player" allow="autoplay"></iframe>
+    <div class="topbar"><span class="dot"></span><span class="status" id="status">Ready</span></div>
+    <div class="hint">Click the video start gate first. Drag the timeline to jump, then the runner pauses on arrival.</div>
+  </div>
+  <div class="controls">
+    <button class="primary" id="toggle">Pause</button>
+    <div class="timeline">
+      <div class="time-row">
+        <span id="current">0:00.0</span>
+        <span id="label">build-forms-faster-with-wpforms-ai</span>
+        <span id="total">1:10.6</span>
+      </div>
+      <div class="range-wrap">
+        <div class="markers" id="markers"></div>
+        <input id="scrub" type="range" min="0" max="70.6" step="0.1" value="0">
+      </div>
+    </div>
+    <div class="right">
+      <button id="reload">Restart</button>
+    </div>
+  </div>
+</div>
+
+<script type="module">
+const DEFAULT_VIDEO = 'build-forms-faster-with-wpforms-ai';
+const params = new URLSearchParams(location.search);
+const video = params.get('video') || DEFAULT_VIDEO;
+
+const chapterDurations = {
+  'scene-1-hook': 4.0,
+  'scene-2-add-new': 4.0,
+  'scene-3-prompt': 5.0,
+  'scene-4-burst': 5.0,
+  'scene-5-builder-fills': 6.0,
+  'scene-6-refine': 6.0,
+  'scene-7-ai-choices': 6.0,
+  'scene-8-feature-orbit': 6.0,
+  'scene-9-final-payoff': 6.0,
+};
+
+const els = {
+  player: document.getElementById('player'),
+  toggle: document.getElementById('toggle'),
+  reload: document.getElementById('reload'),
+  scrub: document.getElementById('scrub'),
+  current: document.getElementById('current'),
+  total: document.getElementById('total'),
+  label: document.getElementById('label'),
+  markers: document.getElementById('markers'),
+  status: document.getElementById('status'),
+};
+
+let manifest = null;
+let total = 70.6;
+let paused = false;
+let started = false;
+let lastElapsed = 0;
+let isScrubbing = false;
+
+function fmt(seconds) {
+  seconds = Math.max(0, Number(seconds) || 0);
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds - mins * 60;
+  return `${mins}:${secs.toFixed(1).padStart(4, '0')}`;
+}
+
+function runnerUrl(seek = 0) {
+  const url = new URL('/tools/player-host.html', location.origin);
+  url.searchParams.set('video', video);
+  if (seek > 0) url.searchParams.set('seek', String(seek));
+  return url.toString();
+}
+
+function post(cmd, extra = {}) {
+  els.player.contentWindow?.postMessage({ source: 'wpf-qc-runner', cmd, ...extra }, '*');
+}
+
+function calcTotal() {
+  if (!manifest) return total;
+  const intro = Number(manifest.intro?.hold || 0);
+  const postIntro = Number(manifest.postIntro?.duration || 0);
+  const chapters = (manifest.chapters || []).reduce((sum, name) => sum + (chapterDurations[name] || 6), 0);
+  return intro + postIntro + chapters;
+}
+
+function renderMarkers() {
+  els.markers.innerHTML = '';
+  if (!manifest) return;
+  let t = Number(manifest.intro?.hold || 0) + Number(manifest.postIntro?.duration || 0);
+  for (const name of manifest.chapters || []) {
+    const m = document.createElement('span');
+    m.className = 'marker';
+    m.title = name;
+    m.style.left = `${Math.min(100, (t / total) * 100)}%`;
+    els.markers.appendChild(m);
+    t += chapterDurations[name] || 6;
+  }
+}
+
+function load(seek = 0) {
+  paused = false;
+  started = false;
+  lastElapsed = 0;
+  total = calcTotal();
+  els.scrub.max = String(total);
+  els.scrub.value = '0';
+  els.current.textContent = fmt(0);
+  els.total.textContent = fmt(total);
+  els.toggle.textContent = 'Pause';
+  els.status.textContent = seek > 0 ? `Ready. Click Start to jump to ${fmt(seek)}.` : 'Ready';
+  els.label.textContent = video;
+  renderMarkers();
+  els.player.src = runnerUrl(seek);
+}
+
+async function init() {
+  const r = await fetch(`/videos/${video}/manifest.json`);
+  manifest = await r.json();
+  load();
+}
+
+els.toggle.addEventListener('click', () => post('toggle'));
+els.reload.addEventListener('click', () => load());
+
+els.scrub.addEventListener('pointerdown', () => {
+  isScrubbing = true;
+});
+els.scrub.addEventListener('input', () => {
+  const target = Number(els.scrub.value);
+  els.current.textContent = fmt(target);
+  els.status.textContent = `Release to jump to ${fmt(target)}`;
+});
+els.scrub.addEventListener('change', () => {
+  const target = Number(els.scrub.value);
+  isScrubbing = false;
+  els.scrub.blur();
+  if (!started || target < lastElapsed - 0.15) {
+    load(target);
+  } else {
+    post('seek', { target });
+    els.status.textContent = `Jumping to ${fmt(target)}...`;
+  }
+});
+
+window.addEventListener('keydown', (event) => {
+  if (event.code === 'Space') {
+    event.preventDefault();
+    post('toggle');
+  }
+});
+
+window.addEventListener('message', (event) => {
+  const data = event.data || {};
+  if (data.source !== 'wpf-qc-host') return;
+  if (data.type === 'started') {
+    started = true;
+    els.status.textContent = 'Playing';
+  }
+  if (data.type === 'seeking') {
+    paused = false;
+    els.toggle.textContent = 'Pause';
+    els.status.textContent = `Jumping to ${fmt(data.target)}...`;
+  }
+  if (data.type === 'seek-waiting') {
+    els.status.textContent = `Click Start to jump to ${fmt(data.target)}.`;
+  }
+  if (data.type === 'seek-reload') {
+    load(data.target || 0);
+  }
+  if (data.type === 'seeked') {
+    paused = true;
+    els.toggle.textContent = 'Resume';
+    els.status.textContent = `Paused at ${fmt(data.elapsed)}`;
+  }
+  if (data.type === 'paused') {
+    paused = true;
+    els.toggle.textContent = 'Resume';
+    els.status.textContent = `Paused at ${fmt(data.elapsed)}`;
+  }
+  if (data.type === 'resumed') {
+    paused = false;
+    els.toggle.textContent = 'Pause';
+    els.status.textContent = 'Playing';
+  }
+  if (data.type === 'progress') {
+    lastElapsed = Math.min(total, data.elapsed || 0);
+    if (!isScrubbing) {
+      els.scrub.value = String(lastElapsed);
+      els.current.textContent = fmt(lastElapsed);
+    }
+    if (data.done) els.status.textContent = 'Done';
+  }
+});
+
+init().catch((err) => {
+  els.status.textContent = 'Failed to load manifest';
+  console.error(err);
+});
+</script>
+</body>
+</html>

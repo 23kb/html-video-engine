@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CH5 — Managing</title>
+<link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<script type="module">
+import {
+  loadSnapshot, startBGM, waitForStart,
+  mountWatermark, runBeatsSequential, cursor, sleep
+} from '../shared.js';
+import { duplicateBlock, showPrompt, collapseBlock, toggleBlockActive } from '../../engine/wpforms.js';
+
+await loadSnapshot('builder-settings-notifications');
+await waitForStart('▶ Play chapter: Managing');
+startBGM();
+mountWatermark();
+
+const block1     = `[data-block-type="notification"][data-block-id="1"]`;
+const block2     = `[data-block-type="notification"][data-block-id="2"]`;
+const addBtn     = `button.wpforms-notifications-add`;
+const cloneBtn   = `${block2} .wpforms-builder-settings-block-clone`;
+const statusBtn  = `${block2} .wpforms-builder-settings-block-status`;
+const block2Head = `${block2} .wpforms-builder-settings-block-header`;
+
+const firstNotificationSel = () => {
+  const d = document.querySelector('iframe.ui').contentDocument;
+  const all = [...d.querySelectorAll('[data-block-type="notification"][data-block-id]')];
+  all.sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1);
+  return `[data-block-type="notification"][data-block-id="${all[0].dataset.blockId}"]`;
+};
+
+// Pre-collapse blocks silently before narration starts
+await collapseBlock(block1);
+await collapseBlock(block2);
+
+const beats = [
+  { narration: 'managing-1', id:'add-intro', chapter:'managing',
+    camera: { focus: addBtn, level: 2.2, pad: 30 },
+    overlays: [
+      { highlight: addBtn, label: 'Add a new notification from scratch' },
+      { pointer: addBtn, direction: 'down', label: 'Click to add', size: 28, gap: 8 },
+    ],
+    labelDwell: 0.9, keepLabels: true,
+    effect: async ({ cursor, clearLabels }) => {
+      await cursor.park({ x:1300, y:700 });
+      await cursor.moveTo(addBtn);
+      await cursor.click();
+      await clearLabels();
+      await cursor.hide();
+    } },
+
+  { narration: 'managing-2', id:'add-prompt-and-result', chapter:'managing',
+    camera: { focus: addBtn, level: 1.0, pad: 600, noScroll: true },
+    effect: async ({ zoomTo }) => {
+      await showPrompt({ title:'Enter a notification name', placeholder:'Eg: User Confirmation', typeText:'New Notification' });
+      const newBlockSel = await duplicateBlock(block2, { fade:1100, nameOverride:'New Notification', insertBefore:firstNotificationSel(), expanded:true });
+      await zoomTo([newBlockSel, block1, block2], { level:1.2, pad:60, smooth:true, noScroll:true });
+      await collapseBlock(newBlockSel);
+    } },
+
+  { narration: 'managing-3', id:'clone', chapter:'managing',
+    camera: { focus: block2Head, level: 1.8, pad: 40 },
+    overlays: [
+      { highlight: cloneBtn, label: 'Duplicate for an instant copy' },
+      { pointer: cloneBtn, direction: 'down', label: 'Click to clone', size: 26, gap: 8 },
+    ],
+    labelDwell: 0.9, keepLabels: true,
+    effect: async ({ cursor, zoomTo, clearLabels }) => {
+      await cursor.park({ x:1400, y:600 });
+      await cursor.moveTo(cloneBtn);
+      await cursor.click();
+      await clearLabels();
+      await cursor.hide();
+      const dupSel = await duplicateBlock(block2, { fade:1100, nameOverride:'Duplicated Notification', insertBefore:firstNotificationSel(), expanded:true });
+      await zoomTo([dupSel, block1, block2], { level:1.2, pad:60, smooth:true, noScroll:true });
+      await collapseBlock(dupSel);
+    } },
+
+  { narration: 'managing-4', id:'status-toggle', chapter:'managing',
+    camera: { focus: statusBtn, level: 2.6, pad: 24 },
+    overlays: [
+      { highlight: statusBtn, label: 'Turn a notification off without deleting it' },
+      { pointer: statusBtn, direction: 'down', label: 'Click to toggle', size: 26, gap: 8 },
+    ],
+    labelDwell: 1.0, keepLabels: true,
+    effect: async ({ cursor, clearLabels }) => {
+      await cursor.park({ x:1300, y:700 });
+      await toggleBlockActive(block2, { state:'inactive' });
+      await clearLabels();
+    } },
+];
+
+await runBeatsSequential(beats);
+await cursor.hide();
+document.body.dataset.sceneDone = 'true';
+</script>
+</body>
+</html>

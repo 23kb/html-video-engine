@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CH3 — Smart Tags</title>
+<link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<script type="module">
+import {
+  loadSnapshot, playNarration, startBGM, waitForStart,
+  mountWatermark, cursor, sleep
+} from '../shared.js';
+import { runScene, clearHighlights } from '../../engine/engine.js';
+
+await loadSnapshot('builder-settings-notifications');
+await waitForStart('▶ Play chapter: Smart Tags');
+startBGM();
+mountWatermark();
+
+const N = 'notifications-2';
+const emailWrap  = `#wpforms-panel-field-${N}-email-wrap`;
+const tagIcon    = `${emailWrap} .wpforms-show-smart-tags`;
+const dropdown   = `${emailWrap} .insert-smart-tag-dropdown`;
+const firstField = `${emailWrap} .insert-smart-tag-dropdown ul.list li[data-value="2"] .wpforms-smart-tags-widget-item`;
+const chipHostS  = `${emailWrap} .wpforms-smart-tags-widget-input`;
+
+// Flip dropdown to open upward (same as combined)
+{
+  const doc = document.querySelector('iframe.ui').contentDocument;
+  const dd = doc.querySelector(dropdown);
+  if (dd) {
+    dd.classList.remove('open-down');
+    dd.classList.add('open-up');
+    const ddH = dd.getBoundingClientRect().height || 280;
+    dd.style.top = `-${ddH + 6}px`;
+  }
+}
+
+// Narration 14.5s:
+// "Want to pull data from the form itself into your notification? That's what Smart Tags are for." 0→6
+// "Click the tags icon,"   ~6 → 7.6
+// "pick any field,"        ~7.6 → 9.2
+// "and WPForms drops in a dynamic placeholder that fills with whatever the user typed." 9.2→14.5
+
+const { audio, ended } = await playNarration('smart-tags');
+
+// Wait helper on audio currentTime
+const waitAt = (t) => new Promise(resolve => {
+  if (audio.currentTime >= t) return resolve();
+  const tick = () => { if (audio.currentTime >= t || audio.ended) { audio.removeEventListener('timeupdate', tick); resolve(); } };
+  audio.addEventListener('timeupdate', tick);
+});
+
+// Single chapter beat with audio-cued internal timeline
+await runScene([{
+  id: 'smart-tags-flow', chapter: 'smart-tags',
+  camera:    { focus: [emailWrap, dropdown], level: 2.5, pad: 22 },
+  spotlight: emailWrap,
+  overlays: [
+    { highlight: emailWrap, label: 'Smart Tags inject field values dynamically' },
+    { pointer: tagIcon, direction: 'down', label: 'Click to open', size: 30, gap: 8 },
+  ],
+  labelDwell: 0, keepLabels: true,
+  effect: async ({ cursor, doc, clearSpot }) => {
+    await cursor.park({ x: 1300, y: 500 });
+    await waitAt(5.5);            // hold "Click to open" label while narration builds up
+    await cursor.moveTo(tagIcon); // cursor moves WHILE label still visible
+    await waitAt(6.0);            // land right on "Click the tags icon"
+    await cursor.click();
+    await clearHighlights({ fadeOut: 200 });  // fade label + highlight as click lands
+    const dd = doc.querySelector(dropdown);
+    if (dd) dd.classList.remove('closed');
+
+    await waitAt(7.6);            // "pick any field"
+    await cursor.moveTo(firstField);
+    await cursor.click();
+
+    await waitAt(9.0);            // "and WPForms drops in a dynamic placeholder..."
+    const chipHost = doc.querySelector(chipHostS);
+    if (chipHost) {
+      chipHost.innerHTML = '';
+      const chip = doc.createElement('span');
+      chip.className = 'tag';
+      chip.setAttribute('contenteditable', 'false');
+      chip.setAttribute('data-value', 'field_id="2"');
+      chip.innerHTML = 'Email <i class="fa fa-times-circle" title="Delete smart tag"></i>';
+      chip.style.cssText = 'opacity:0;transform:scale(0.7);transition:opacity .3s ease, transform .3s cubic-bezier(0.34,1.56,0.64,1);';
+      chipHost.appendChild(chip);
+      await sleep(30);
+      chip.style.opacity = '1';
+      chip.style.transform = 'scale(1)';
+    }
+    if (dd) dd.classList.add('closed');
+
+    await waitAt(13.8);           // settle before end
+    await clearSpot();
+    await cursor.hide();
+  },
+  duration: 0.2,
+}]);
+
+await ended;
+document.body.dataset.sceneDone = 'true';
+</script>
+</body>
+</html>

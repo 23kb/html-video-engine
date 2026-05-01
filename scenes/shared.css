@@ -1,0 +1,71 @@
+:root {
+  --bg-cream: #fdf6ec; --bg-warm: #fff7ec;
+  --ink: #1e1410; --ink-2: #4c3a32; --ink-mute: #8a7368;
+  --brand: #E27730; --brand-deep: #c96320; --brand-soft: #ffe6cf;
+}
+html, body { margin:0; padding:0; background:#fff; }
+
+.mesh-bg {
+  position: fixed; inset: 0; z-index: -1; overflow: hidden;
+  background:
+    radial-gradient(ellipse 900px 700px at 18% 22%, rgba(226,119,48,0.22), transparent 60%),
+    radial-gradient(ellipse 1100px 800px at 82% 78%, rgba(255,170,85,0.20), transparent 60%),
+    radial-gradient(ellipse 600px 500px at 50% 50%, rgba(255,220,180,0.25), transparent 70%),
+    linear-gradient(180deg, var(--bg-warm) 0%, var(--bg-cream) 100%);
+}
+.mesh-bg::before, .mesh-bg::after {
+  content:''; position:absolute; width:700px; height:700px; border-radius:50%;
+  filter:blur(100px); opacity:.55; mix-blend-mode:multiply;
+}
+.mesh-bg::before { top:-200px; left:-150px;
+  background: radial-gradient(circle, rgba(255,169,96,0.55), transparent 70%);
+  animation: blob-a 14s ease-in-out infinite alternate; }
+.mesh-bg::after { bottom:-250px; right:-180px;
+  background: radial-gradient(circle, rgba(255,140,80,0.45), transparent 70%);
+  animation: blob-b 18s ease-in-out infinite alternate; }
+@keyframes blob-a { to { transform: translate(180px, 120px) scale(1.15); } }
+@keyframes blob-b { to { transform: translate(-160px,-100px) scale(1.1);  } }
+.mesh-bg .grain {
+  position:absolute; inset:0; pointer-events:none; opacity:0.08;
+  background-image:
+    radial-gradient(#00000010 1px, transparent 1px),
+    radial-gradient(#00000008 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px; background-position: 0 0, 1px 2px;
+}
+
+.wpf-watermark {
+  position: fixed; top: 26px; right: 32px; z-index: 700;
+  width: 68px; height: 68px; pointer-events: none;
+  opacity: 0;
+  animation: wpf-float 4.2s ease-in-out infinite;
+  transition: opacity .7s ease;
+  filter: drop-shadow(0 8px 22px rgba(226,119,48,0.35)) drop-shadow(0 2px 6px rgba(0,0,0,0.18));
+}
+.wpf-watermark.on { opacity: 0.95; }
+.wpf-watermark img { width:100%; height:100%; object-fit:contain; }
+@keyframes wpf-float {
+  0%,100% { transform: translateY(-5px); }
+  50%     { transform: translateY(5px); }
+}
+
+.fade-cover { position: fixed; inset: 0; z-index: 400; opacity: 0;
+              transition: opacity .5s ease; pointer-events: none; background: #1a1a1a; }
+.fade-cover.cream { background: var(--bg-cream); }
+.fade-cover.on { opacity: 1; }
+
+.start-gate {
+  position: fixed; inset: 0; z-index: 950;
+  display: flex; align-items: center; justify-content: center;
+  font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--ink); cursor: pointer;
+  background: var(--bg-warm);
+}
+.start-gate .start-btn {
+  padding: 20px 48px; font: 600 22px/1 -apple-system, sans-serif;
+  background: var(--brand); color: #fff; border: 0; border-radius: 12px;
+  cursor: pointer; letter-spacing: 0.03em;
+  box-shadow: 0 16px 44px rgba(226,119,48,0.4);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.start-gate .start-btn:hover { transform: translateY(-2px); box-shadow: 0 20px 54px rgba(226,119,48,0.5); }
+.start-gate.exit { opacity: 0; transition: opacity .45s ease .15s; pointer-events: none; }

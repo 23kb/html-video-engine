@@ -1,0 +1,152 @@
+/* Runtime presentation chrome — mesh background, Mac frame, watermark,
+   start gate, cover transitions. Consumed by runtime/player.js. */
+
+:root {
+  --bg-cream:   #f4f7fb;
+  --bg-warm:    #fbfcff;
+  --ink:        #17202a;
+  --brand:      #E27730;
+  --brand-deep: #c96320;
+
+  /* Per-video override point: runChain sets --cover-color from
+     manifest.coverColor (string or null). Falls back to cream. All cover
+     mount sites read this so one hex in manifest recolors the whole
+     video's transitions. */
+  --cover-color: var(--bg-cream);
+
+  /* The iframe is fixed at 1440×900 (see engine.loadSnapshot). The mac
+     frame should hug those edges so there's no dead space between the
+     frame's inner edge and the recording. `max(60px, ...)` keeps a
+     minimum margin on narrow viewports. */
+  --iframe-w: 1440px;
+  --iframe-h: 900px;
+  --frame-top:    max(40px, calc((100vh - var(--iframe-h)) / 2 - 30px));
+  --frame-side:   max(60px, calc((100vw - var(--iframe-w)) / 2));
+  --frame-bottom: max(40px, calc((100vh - var(--iframe-h)) / 2));
+  --frame-chrome-h: 30px;
+  --frame-radius: 12px;
+}
+
+html, body { margin: 0; padding: 0; background: #fff; }
+
+/* Clean minimal animated mesh background */
+.mesh-bg {
+  position: fixed; inset: 0; z-index: -1;
+  background:
+    radial-gradient(ellipse 900px 700px at 18% 22%, rgba(86,132,176,0.14), transparent 60%),
+    radial-gradient(ellipse 1100px 800px at 82% 78%, rgba(226,119,48,0.10), transparent 60%),
+    radial-gradient(ellipse 620px 500px at 50% 50%, rgba(255,255,255,0.45), transparent 70%),
+    linear-gradient(180deg, var(--bg-warm) 0%, var(--bg-cream) 100%);
+  overflow: hidden;
+}
+.mesh-bg::before, .mesh-bg::after {
+  content: ''; position: absolute;
+  width: 700px; height: 700px; border-radius: 50%;
+  filter: blur(100px); opacity: .55; mix-blend-mode: multiply;
+}
+.mesh-bg::before {
+  top: -200px; left: -150px;
+  background: radial-gradient(circle, rgba(114,148,184,0.34), transparent 70%);
+  animation: blob-a 14s ease-in-out infinite alternate;
+}
+.mesh-bg::after {
+  bottom: -250px; right: -180px;
+  background: radial-gradient(circle, rgba(226,119,48,0.20), transparent 70%);
+  animation: blob-b 18s ease-in-out infinite alternate;
+}
+@keyframes blob-a { to { transform: translate(180px, 120px) scale(1.15); } }
+@keyframes blob-b { to { transform: translate(-160px,-100px) scale(1.1);  } }
+.mesh-bg .grain {
+  position: absolute; inset: 0; pointer-events: none; opacity: 0.08;
+  background-image:
+    radial-gradient(#00000010 1px, transparent 1px),
+    radial-gradient(#00000008 1px, transparent 1px);
+  background-size: 3px 3px, 7px 7px;
+  background-position: 0 0, 1px 2px;
+}
+
+/* Persistent floating WPForms watermark */
+.wpf-watermark {
+  position: fixed; top: 20px; right: 28px; z-index: 700;
+  width: 92px; height: 92px; pointer-events: none;
+  opacity: 0;
+  animation: wpf-float 4.2s ease-in-out infinite;
+  transition: opacity .7s ease;
+  filter: drop-shadow(0 8px 22px rgba(226,119,48,0.35))
+          drop-shadow(0 2px 6px rgba(0,0,0,0.18));
+}
+.wpf-watermark.on { opacity: 0.95; }
+.wpf-watermark img { width: 100%; height: 100%; object-fit: contain; }
+@keyframes wpf-float {
+  0%,100% { transform: translateY(-5px); }
+  50%     { transform: translateY(5px); }
+}
+
+/* Fade cover — reads --cover-color (set per-video from manifest). Use
+   `.fade-cover.dark` for the occasional black cover (e.g. outro fade-to-black). */
+.fade-cover { position: fixed; inset: 0; z-index: 400; opacity: 0;
+              transition: opacity .5s ease; pointer-events: none;
+              background: var(--cover-color, var(--bg-cream)); }
+.fade-cover.cream { background: var(--cover-color, var(--bg-cream)); }
+.fade-cover.dark  { background: #1a1a1a; }
+.fade-cover.on { opacity: 1; }
+
+/* Start gate */
+.start-gate {
+  position: fixed; inset: 0; z-index: 950;
+  display: flex; align-items: center; justify-content: center;
+  font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--ink); cursor: pointer;
+  background: var(--bg-warm);
+}
+.start-gate .start-btn {
+  padding: 20px 48px; font: 600 22px/1 -apple-system, sans-serif;
+  background: var(--brand); color: #fff; border: 0; border-radius: 12px;
+  cursor: pointer; letter-spacing: 0.03em;
+  box-shadow: 0 16px 44px rgba(226,119,48,0.4);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.start-gate .start-btn:hover { transform: translateY(-2px); box-shadow: 0 20px 54px rgba(226,119,48,0.5); }
+.start-gate.exit { opacity: 0; transition: opacity .45s ease .15s; pointer-events: none; }
+
+/* Mac-style window chrome — frames only the iframe recording area */
+body.with-stage-chrome { background: transparent !important; }
+.mac-frame {
+  position: fixed;
+  top: var(--frame-top); left: var(--frame-side);
+  right: var(--frame-side); bottom: var(--frame-bottom);
+  border-radius: var(--frame-radius);
+  box-shadow: 0 40px 100px rgba(0,0,0,0.22), 0 12px 30px rgba(0,0,0,0.10);
+  outline: 1px solid rgba(0,0,0,0.08); outline-offset: -1px;
+  pointer-events: none; z-index: 3;
+}
+.mac-chrome {
+  position: fixed;
+  top: var(--frame-top); left: var(--frame-side); right: var(--frame-side);
+  height: var(--frame-chrome-h);
+  display: flex; align-items: center; gap: 8px;
+  padding: 0 16px; box-sizing: border-box;
+  background: linear-gradient(180deg, rgba(244,241,236,0.96) 0%, rgba(235,230,221,0.96) 100%);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  border-radius: var(--frame-radius) var(--frame-radius) 0 0;
+  pointer-events: none; z-index: 5;
+}
+.mac-chrome .tl { width: 12px; height: 12px; border-radius: 50%; }
+.mac-chrome .tl.r { background: #ff5f57; }
+.mac-chrome .tl.y { background: #febc2e; }
+.mac-chrome .tl.g { background: #28c840; }
+.mac-chrome .title {
+  flex: 1; text-align: center;
+  font: 500 12px/1 -apple-system, 'Segoe UI', sans-serif;
+  color: #6b6258; letter-spacing: 0.02em;
+}
+
+/* Clip iframe + overlays to the framed area so nothing spills past the window. */
+body.with-stage-chrome .stage {
+  clip-path: inset(
+    calc(var(--frame-top) + var(--frame-chrome-h))
+    var(--frame-side) var(--frame-bottom) var(--frame-side)
+    round 0 0 var(--frame-radius) var(--frame-radius)
+  );
+}

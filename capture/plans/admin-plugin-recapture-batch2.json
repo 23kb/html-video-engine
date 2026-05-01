@@ -1,0 +1,27 @@
+{
+  "_comment": "Stage 3 Slice 3b — Batch 2. Full plugin admin surface minus Batch 1's Phase-1 trio (kept for re-verification) and the explicit skip list (privacy, smtp, about, community, settings-captcha). Sullie's Bakery, form_id=32 for entries-list. Defaults from capture.js apply: keepSidebar=true (slug starts with admin-), keepTopAdminBar=false.",
+  "variants": [
+    { "slug": "admin-addons",                "targetPath": "/wp-admin/admin.php?page=wpforms-addons" },
+    { "slug": "admin-entries-overview",      "targetPath": "/wp-admin/admin.php?page=wpforms-entries" },
+    { "slug": "admin-entries-list",          "targetPath": "/wp-admin/admin.php?view=list&form_id=32&page=wpforms-entries" },
+    { "slug": "admin-entry-detail",          "targetPath": "/wp-admin/admin.php?page=wpforms-entries&view=details&entry_id=5" },
+    { "slug": "admin-forms-overview",        "targetPath": "/wp-admin/admin.php?page=wpforms-overview" },
+    { "slug": "admin-payments",              "targetPath": "/wp-admin/admin.php?page=wpforms-payments&mode=test" },
+    { "slug": "admin-payment-detail",        "targetPath": "/wp-admin/admin.php?page=wpforms-payments&view=payment&payment_id=1" },
+    { "slug": "admin-payments-coupons",      "targetPath": "/wp-admin/admin.php?page=wpforms-payments&view=coupons" },
+    { "slug": "admin-settings-access",       "targetPath": "/wp-admin/admin.php?page=wpforms-settings&view=access" },
+    { "slug": "admin-settings-email",        "targetPath": "/wp-admin/admin.php?page=wpforms-settings&view=email" },
+    { "slug": "admin-settings-general",      "targetPath": "/wp-admin/admin.php?page=wpforms-settings" },
+    { "slug": "admin-settings-geolocation",  "targetPath": "/wp-admin/admin.php?page=wpforms-settings&view=geolocation" },
+    { "slug": "admin-settings-integrations", "targetPath": "/wp-admin/admin.php?page=wpforms-settings&view=integrations" },
+    { "slug": "admin-settings-misc",         "targetPath": "/wp-admin/admin.php?page=wpforms-settings&view=misc" },
+    { "slug": "admin-settings-payments",     "targetPath": "/wp-admin/admin.php?page=wpforms-settings&view=payments" },
+    { "slug": "admin-settings-validation",   "targetPath": "/wp-admin/admin.php?page=wpforms-settings&view=validation" },
+    { "slug": "admin-templates",             "targetPath": "/wp-admin/admin.php?page=wpforms-templates" },
+    { "slug": "admin-tools-action-scheduler","targetPath": "/wp-admin/admin.php?page=wpforms-tools&view=action-scheduler&s=wpforms" },
+    { "slug": "admin-tools-export",          "targetPath": "/wp-admin/admin.php?page=wpforms-tools&view=export" },
+    { "slug": "admin-tools-import",          "targetPath": "/wp-admin/admin.php?page=wpforms-tools" },
+    { "slug": "admin-tools-logs",            "targetPath": "/wp-admin/admin.php?page=wpforms-tools&view=logs" },
+    { "slug": "admin-tools-system",          "targetPath": "/wp-admin/admin.php?page=wpforms-tools&view=system" }
+  ]
+}

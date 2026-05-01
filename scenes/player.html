@@ -1,0 +1,96 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>WPForms Video Player</title>
+<link rel="stylesheet" href="/runtime/player.css">
+<style>
+  html, body { margin: 0; background: #000; overflow: hidden; }
+  #boot-error { position: fixed; inset: 0; display: flex; align-items: center;
+                justify-content: center; z-index: 3000; color: #ff7b72;
+                font: 500 14px/1.5 -apple-system, 'Segoe UI', sans-serif;
+                padding: 40px; text-align: center; background: #000; }
+</style>
+</head>
+<body>
+<script type="module">
+// Unified entry: detects per-video contract shape. All-descriptor videos go
+// through the canonical chapter-runner (runChain). Any legacy mode-based
+// chapter falls back to runtime/player.js. Phase 3 of PLAN.md — player.js
+// retires once every chapter is ported to defineChapter().
+import { isChapterDescriptor } from '/runtime/chapter-api.js';
+
+const slug = new URLSearchParams(location.search).get('video');
+if (!slug) {
+  document.body.innerHTML = '<pre style="padding:40px;font:14px monospace;color:#fff">Missing ?video=&lt;slug&gt; — e.g. /scenes/player.html?video=form-notifications</pre>';
+  throw new Error('no video slug');
+}
+document.title = 'WPForms — ' + slug;
+
+function bootError(msg) {
+  const d = document.createElement('div');
+  d.id = 'boot-error';
+  d.textContent = msg;
+  document.body.appendChild(d);
+  console.error(msg);
+}
+
+(async () => {
+  try {
+    const manifestUrl = '/videos/' + slug + '/manifest.json';
+    const r = await fetch(manifestUrl);
+    if (!r.ok) throw new Error('manifest HTTP ' + r.status);
+    const manifest = await r.json();
+    if (!Array.isArray(manifest.chapters)) {
+      throw new Error('manifest.chapters must be an array');
+    }
+    // QC chapter-scope. `?chapter=<name>[,<name>]` trims chapters and
+    // strips intro/teaser/outro so a single chapter can be reviewed in
+    // isolation. The match is exact against manifest.chapters slugs.
+    const qcChapter = new URLSearchParams(location.search).get('chapter');
+    if (qcChapter) {
+      const wanted = qcChapter.split(',').map(s => s.trim()).filter(Boolean);
+      const trimmed = manifest.chapters.filter(name => wanted.includes(name));
+      if (trimmed.length) {
+        manifest.chapters = trimmed;
+        manifest.intro  = null;
+        manifest.postIntro = null;
+        manifest.teaser = null;
+        manifest.outro  = null;
+      }
+    }
+    // Outro-only previews: empty chapters is legal when the manifest has an
+    // outro (or intro) to show. Route via playVideo so the full intro → outro
+    // flow runs with no chapter loop in between.
+    if (manifest.chapters.length === 0) {
+      if (!manifest.outro && !manifest.intro) {
+        throw new Error('manifest has no chapters, intro, or outro');
+      }
+      const { playVideo } = await import('/runtime/player.js');
+      await playVideo(slug);
+      return;
+    }
+    const mods = await Promise.all(
+      manifest.chapters.map((name) => import('/videos/' + slug + '/chapters/' + name + '.js'))
+    );
+    const allDescriptors = mods.every(m => isChapterDescriptor(m.default));
+
+    if (allDescriptors) {
+      const { runChain } = await import('/runtime/chapter-runner.js');
+      await runChain(mods.map(m => m.default), {
+        label: 'Start', video: slug, manifest,
+      });
+      document.body.dataset.sceneDone = 'true';
+    } else {
+      // Legacy path — at least one chapter uses the mode-based contract.
+      const { playVideo } = await import('/runtime/player.js');
+      await playVideo(slug);
+    }
+  } catch (err) {
+    bootError('playVideo failed: ' + (err?.message || err));
+    console.error(err);
+  }
+})();
+</script>
+</body>
+</html>

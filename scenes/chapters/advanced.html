@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CH4 — Advanced</title>
+<link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<script type="module">
+import {
+  loadSnapshot, playNarration, startBGM, waitForStart,
+  mountWatermark, runBeatsSequential, cursor, sleep
+} from '../shared.js';
+import { revealSection, toggleControl, selectDropdown } from '../../engine/wpforms.js';
+
+await loadSnapshot('builder-settings-notifications');
+await waitForStart('▶ Play chapter: Advanced');
+startBGM();
+mountWatermark();
+
+const N = 'notifications-2';
+const advGroup = `.wpforms-builder-notifications-advanced:has(#wpforms-panel-field-${N}-template-wrap)`;
+const advTitle = `${advGroup} > .wpforms-panel-fields-group-title`;
+const tplWrap  = `#wpforms-panel-field-${N}-template-wrap`;
+const fileWrap = `#wpforms-panel-field-${N}-file_upload_attachment_enable-wrap`;
+const csvWrap  = `#wpforms-panel-field-${N}-entry_csv_attachment_enable-wrap`;
+
+// Each beat plays its own narration clip — animation auto-syncs to the voice.
+const beats = [
+  { narration: 'advanced-1', id:'reveal-advanced', chapter:'advanced',
+    camera: { focus: advTitle, level: 2.0, pad: 30 },
+    spotlight: advTitle,
+    overlays: [
+      { highlight: advTitle, label: 'Advanced unlocks email templates and attachments' },
+      { pointer: advTitle, direction: 'down', label: 'Click to expand', size: 28, gap: 8 },
+    ],
+    labelDwell: 1.1, keepLabels: true,
+    effect: async ({ cursor, clearSpot, clearLabels }) => {
+      await cursor.park({ x: 1300, y: 700 });
+      await cursor.moveTo(advTitle);
+      await cursor.click();
+      await clearLabels();
+      await revealSection(advGroup);
+      await clearSpot();
+      await cursor.hide();
+    } },
+  { narration: 'advanced-2', id:'template-modern', chapter:'advanced',
+    camera: { focus: tplWrap, level: 1.6, pad: 80 },
+    effect: async () => {
+      await selectDropdown(tplWrap, { pick: 'modern', direction: 'down' });
+    } },
+  { narration: 'advanced-3', id:'file-toggle', chapter:'advanced',
+    camera: { focus: fileWrap, level: 2.2, pad: 18 },
+    spotlight: fileWrap,
+    overlays: [{ highlight: fileWrap, label: 'Attach uploaded files to the email' }],
+    labelDwell: 0.8,
+    effect: async ({ cursor }) => {
+      await cursor.park({ x: 1400, y: 500 });
+      await toggleControl(fileWrap, { state: 'on' });
+    } },
+  { narration: 'advanced-4', id:'csv-toggle', chapter:'advanced',
+    camera: { focus: csvWrap, level: 2.2, pad: 18 },
+    spotlight: csvWrap,
+    overlays: [{ highlight: csvWrap, label: 'Or attach a CSV of the entry data' }],
+    labelDwell: 0.8,
+    effect: async () => { await toggleControl(csvWrap, { state: 'on' }); } },
+];
+
+await runBeatsSequential(beats);
+await cursor.hide();
+document.body.dataset.sceneDone = 'true';
+</script>
+</body>
+</html>

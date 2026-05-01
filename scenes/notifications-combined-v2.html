@@ -1,0 +1,1376 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Form Notifications — complete video (combined) v2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<style>
+  :root {
+    --bg-cream:   #fdf6ec;
+    --bg-warm:    #fff7ec;
+    --ink:        #1e1410;
+    --ink-2:      #4c3a32;
+    --ink-mute:   #8a7368;
+    --brand:      #E27730;
+    --brand-deep: #c96320;
+    --brand-soft: #ffe6cf;
+  }
+  html, body { margin:0; padding:0; background:#fff; }
+
+  /* ─── Warm animated mesh background (used by intro, teaser, outro) ─── */
+  .mesh-bg {
+    position: fixed; inset: 0; z-index: -1;
+    background:
+      radial-gradient(ellipse 900px 700px at 18% 22%, rgba(226,119,48,0.22), transparent 60%),
+      radial-gradient(ellipse 1100px 800px at 82% 78%, rgba(255,170,85,0.20), transparent 60%),
+      radial-gradient(ellipse 600px 500px at 50% 50%, rgba(255,220,180,0.25), transparent 70%),
+      linear-gradient(180deg, var(--bg-warm) 0%, var(--bg-cream) 100%);
+    overflow: hidden;
+  }
+  .mesh-bg::before, .mesh-bg::after {
+    content: ''; position: absolute;
+    width: 700px; height: 700px; border-radius: 50%;
+    filter: blur(100px); opacity: .55; mix-blend-mode: multiply;
+  }
+  .mesh-bg::before {
+    top: -200px; left: -150px;
+    background: radial-gradient(circle, rgba(255,169,96,0.55), transparent 70%);
+    animation: blob-a 14s ease-in-out infinite alternate;
+  }
+  .mesh-bg::after {
+    bottom: -250px; right: -180px;
+    background: radial-gradient(circle, rgba(255,140,80,0.45), transparent 70%);
+    animation: blob-b 18s ease-in-out infinite alternate;
+  }
+  @keyframes blob-a { to { transform: translate(180px, 120px) scale(1.15); } }
+  @keyframes blob-b { to { transform: translate(-160px,-100px) scale(1.1);  } }
+  /* subtle grain */
+  .mesh-bg .grain {
+    position:absolute; inset:0; pointer-events:none; opacity:0.08;
+    background-image:
+      radial-gradient(#00000010 1px, transparent 1px),
+      radial-gradient(#00000008 1px, transparent 1px);
+    background-size: 3px 3px, 7px 7px;
+    background-position: 0 0, 1px 2px;
+  }
+
+  /* ─── Intro / outro title card (Hyperframes-style GSAP) ─────────────── */
+  :root { --amber: #f0a040; --teal: #2a8a7c; }
+
+  .title-card {
+    position: fixed; inset: 0; z-index: 800;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Inter', -apple-system, 'Segoe UI', Roboto, sans-serif;
+    pointer-events: none;
+    background:
+      radial-gradient(ellipse at 50% 45%, #fcf6e7 0%, #f6edd4 70%, #eadfc0 100%);
+    overflow: hidden;
+  }
+  .title-card .tc-vignette {
+    position: absolute; inset: 0; pointer-events: none; z-index: 1;
+    background: radial-gradient(ellipse at 50% 55%, transparent 40%, rgba(110,70,15,0.12) 100%);
+  }
+  .title-card .tc-sweep {
+    position: absolute; top: 0; bottom: 0; width: 60%; z-index: 2;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,210,150,0.5) 45%, rgba(255,210,150,0.5) 55%, transparent 100%);
+    filter: blur(40px); mix-blend-mode: screen;
+    transform: translateX(-120%); opacity: 0; pointer-events: none;
+  }
+
+  .title-card .tc-wrap {
+    position: relative; z-index: 5;
+    display: flex; flex-direction: column; align-items: center;
+    text-align: center; padding: 0 8vw; width: 100%;
+    will-change: transform, filter;
+  }
+
+  .title-card .logo-stage {
+    width: 240px; height: 170px; margin-bottom: 38px;
+    display:flex; align-items:center; justify-content:center;
+    filter: drop-shadow(0 22px 60px rgba(226,119,48,0.32))
+            drop-shadow(0 4px 12px rgba(0,0,0,0.08));
+    will-change: transform, opacity, filter;
+  }
+  /* mix-blend-mode: screen knocks out the black backdrop baked into the logo video */
+  .title-card .logo-stage video {
+    width: 100%; height: 100%; object-fit: contain;
+    mix-blend-mode: screen;
+  }
+  .title-card .logo-stage img { width: 180px; height: auto; }
+
+  .title-card .eyebrow-row {
+    display: flex; align-items: center; gap: 18px;
+    margin-bottom: 26px;
+  }
+  .title-card .eyebrow-bar {
+    width: 40px; height: 1px; background: var(--brand-deep);
+    transform-origin: left center; will-change: transform;
+  }
+  .title-card .eyebrow-bar.right { transform-origin: right center; }
+  .title-card .eyebrow {
+    font-family: 'Inter', sans-serif; font-weight: 600;
+    font-size: 15px; letter-spacing: 0.38em; text-transform: uppercase;
+    color: var(--brand-deep);
+    display: inline-block;
+    will-change: transform, opacity;
+  }
+
+  .title-card .title {
+    font-family: 'Instrument Serif', 'Georgia', serif;
+    font-weight: 400;
+    font-size: 152px; line-height: 1.02; letter-spacing: -0.025em;
+    color: #14110a;
+    max-width: 1400px;
+  }
+  .title-card .title .w {
+    display: inline-block; margin: 0 0.13em;
+    will-change: transform, opacity, filter, background-position;
+  }
+  .title-card .title .w.italic { font-style: italic; color: #2a1f0a; }
+  .title-card .title .w.is-gradient {
+    background: linear-gradient(90deg,
+      #14110a 0%, #14110a 12%,
+      #5a3215 22%, var(--brand) 38%, var(--amber) 55%, var(--teal) 72%,
+      #14110a 88%, #14110a 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 300% 100%;
+    background-position: 100% 0;
+  }
+
+  .title-card .subtitle {
+    font-family: 'Inter', sans-serif; font-weight: 400;
+    font-size: 26px; line-height: 1.45;
+    color: var(--ink-2);
+    max-width: 820px; margin-top: 36px;
+    will-change: transform, opacity, filter;
+  }
+  .title-card .subtitle .accent { color: var(--brand-deep); font-weight: 500; }
+  .title-card .subtitle .url {
+    color: var(--brand-deep); font-weight: 500;
+    border-bottom: 1px solid rgba(201,99,32,0.4); padding-bottom: 2px;
+  }
+
+  .title-card .tc-meta {
+    position: absolute; bottom: 48px; left: 52px; z-index: 20;
+    font-family: 'Inter', sans-serif; font-weight: 500;
+    font-size: 13px; letter-spacing: 0.24em; text-transform: uppercase;
+    color: rgba(30,20,16,0.55);
+    display: flex; align-items: center; gap: 14px;
+    will-change: opacity, transform;
+  }
+  .title-card .tc-meta .tick { width: 6px; height: 6px; border-radius: 50%; background: var(--brand); }
+  .title-card .tc-meta .sep  { width: 24px; height: 1px; background: rgba(30,20,16,0.3); }
+
+  .title-card .tc-signoff {
+    position: absolute; bottom: 48px; right: 52px; z-index: 20;
+    font-family: 'Instrument Serif', serif; font-style: italic;
+    font-size: 22px; color: rgba(30,20,16,0.55);
+    will-change: opacity, transform;
+  }
+
+  /* ─── Persistent floating WPForms watermark ─────────────────────────── */
+  .wpf-watermark {
+    position: fixed; top: 26px; right: 32px; z-index: 700;
+    width: 68px; height: 68px; pointer-events: none;
+    opacity: 0;
+    animation: wpf-float 4.2s ease-in-out infinite;
+    transition: opacity .7s ease;
+    filter: drop-shadow(0 8px 22px rgba(226,119,48,0.35))
+            drop-shadow(0 2px 6px rgba(0,0,0,0.18));
+  }
+  .wpf-watermark.on { opacity: 0.95; }
+  .wpf-watermark img { width:100%; height:100%; object-fit:contain; }
+  @keyframes wpf-float {
+    0%,100% { transform: translateY(-5px); }
+    50%     { transform: translateY(5px); }
+  }
+
+  /* ─── Fade cover (black or cream) ───────────────────────────────────── */
+  .fade-cover { position: fixed; inset: 0; z-index: 400; opacity: 0;
+                transition: opacity .5s ease; pointer-events: none; background: #1a1a1a; }
+  .fade-cover.cream { background: var(--bg-cream); }
+  .fade-cover.on { opacity: 1; }
+
+  /* ─── Start gate ─────────────────────────────────────────────────────── */
+  .start-gate {
+    position: fixed; inset: 0; z-index: 950;
+    display: flex; align-items: center; justify-content: center;
+    font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+    color: var(--ink); cursor: pointer;
+    background: var(--bg-warm);
+  }
+  .start-gate .start-btn {
+    padding: 20px 48px; font: 600 22px/1 -apple-system, sans-serif;
+    background: var(--brand); color: #fff; border: 0; border-radius: 12px;
+    cursor: pointer; letter-spacing: 0.03em;
+    box-shadow: 0 16px 44px rgba(226,119,48,0.4);
+    transition: transform .2s ease, box-shadow .2s ease;
+  }
+  .start-gate .start-btn:hover { transform: translateY(-2px); box-shadow: 0 20px 54px rgba(226,119,48,0.5); }
+  .start-gate.exit { opacity: 0; transition: opacity .45s ease .15s; pointer-events: none; }
+
+  /* ─── Welcome teaser: browser chrome → form → cursor → gmail ───────── */
+  .teaser {
+    position: fixed; inset: 0; z-index: 600;
+    display: flex; align-items: center; justify-content: center;
+    font-family: -apple-system, 'Segoe UI', Roboto, sans-serif;
+    opacity: 0; transition: opacity .5s ease;
+    overflow: hidden;
+    background:
+      radial-gradient(60% 50% at 22% 20%, rgba(255,196,140,0.55), transparent 60%),
+      radial-gradient(55% 45% at 82% 78%, rgba(255,168,110,0.45), transparent 65%),
+      linear-gradient(180deg, #fff7ec 0%, #ffeedc 100%);
+  }
+  .teaser.on { opacity: 1; }
+  .teaser.exit { opacity: 0; }
+
+  .teaser-stage {
+    position: relative;
+    width: 100vw; height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Browser window frame wrapping the website/form */
+  .site-window {
+    width: min(1100px, 84vw); height: min(660px, 82vh);
+    background: #fff; border-radius: 14px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.18), 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    transform-origin: center 60%;
+    transform: translateZ(0);
+    transition: transform 1.3s cubic-bezier(0.65,0,0.35,1), opacity .8s ease;
+  }
+  .site-window.zoom-in  { transform: scale(1.35) translateY(6%); }
+  .site-window.dim      { opacity: 0.18; filter: blur(4px); transform: scale(1.1) translateY(4%); }
+
+  .site-chrome {
+    flex: 0 0 44px; background: #edeef0;
+    display: flex; align-items: center; gap: 12px; padding: 0 16px;
+    border-bottom: 1px solid #dfe0e3;
+  }
+  .dot { width:12px; height:12px; border-radius:50%; }
+  .site-chrome .dots { display:flex; gap:8px; }
+  .site-chrome .dots .dot:nth-child(1){ background:#ff5f57; }
+  .site-chrome .dots .dot:nth-child(2){ background:#febc2e; }
+  .site-chrome .dots .dot:nth-child(3){ background:#28c840; }
+  .site-chrome .url {
+    flex: 1; margin: 0 16px; padding: 6px 14px;
+    background: #fff; border-radius: 6px;
+    font: 500 12px/1 -apple-system, sans-serif; color: #555;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .site-chrome .url::before {
+    content:''; width:10px; height:10px; border-radius:2px;
+    background: #34a853; box-shadow: inset 0 0 0 2px #fff;
+  }
+
+  .site-page {
+    flex: 1; overflow: hidden; position: relative;
+    background: #fff;
+  }
+  .site-hero {
+    padding: 36px 56px 18px;
+    border-bottom: 1px solid #f2f2f4;
+  }
+  .site-hero .brand-row {
+    display: flex; align-items:center; gap: 10px;
+    font: 600 13px/1 -apple-system, sans-serif; color: #888;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .site-hero .brand-row::before {
+    content:''; width:22px; height:22px; border-radius:6px;
+    background: linear-gradient(135deg, #E27730, #ff9c5a);
+  }
+  .site-hero h1 {
+    font: 600 34px/1.2 'Georgia', serif; color: #1e1410;
+    margin: 0 0 8px;
+  }
+  .site-hero p {
+    font: 400 16px/1.5 -apple-system, sans-serif; color: #6a6a6a;
+    margin: 0; max-width: 640px;
+  }
+
+  .site-form-wrap { padding: 28px 56px 36px; }
+  .site-form-wrap .form-title {
+    font: 600 19px/1.2 -apple-system, sans-serif; color: #1e1410;
+    margin-bottom: 18px;
+  }
+  .tf-field { display: block; margin-bottom: 14px; }
+  .tf-label {
+    display: block; font: 500 12px/1 -apple-system, sans-serif;
+    color: #666; margin-bottom: 6px; letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .tf-input {
+    min-height: 40px; padding: 10px 13px;
+    background: #f7f7f8; border: 1.5px solid #e3e3e5; border-radius: 7px;
+    font: 400 15px/1.4 -apple-system, sans-serif; color: #222;
+    transition: border-color .22s ease, background .22s ease;
+    white-space: pre-wrap; word-break: break-word;
+  }
+  .tf-input.textarea { min-height: 72px; }
+  .tf-input.typing { border-color: var(--brand); background: #fff;
+                     box-shadow: 0 0 0 4px rgba(226,119,48,0.10); }
+  .tf-input.tf-caret::after {
+    content: '|'; color: var(--brand); margin-left: 1px;
+    animation: tf-blink 0.75s steps(1) infinite;
+  }
+  @keyframes tf-blink { 50% { opacity: 0; } }
+  .tf-submit {
+    margin-top: 8px;
+    padding: 13px 28px; font: 600 15px/1 -apple-system, sans-serif;
+    background: var(--brand); color: #fff; border: 0; border-radius: 7px;
+    letter-spacing: 0.02em; cursor: pointer;
+    box-shadow: 0 6px 18px rgba(226,119,48,0.30);
+    transition: transform .14s ease, background .18s ease, box-shadow .18s ease;
+    position: relative; overflow: hidden;
+  }
+  .tf-submit.pressed { transform: scale(0.94); background: var(--brand-deep);
+                       box-shadow: 0 2px 6px rgba(226,119,48,0.30); }
+  .tf-submit .ripple {
+    position:absolute; border-radius:50%; transform: translate(-50%,-50%) scale(0);
+    width: 200px; height:200px; background: rgba(255,255,255,0.5);
+    pointer-events:none; opacity: 0;
+  }
+  .tf-submit.pressed .ripple { animation: ripple .7s ease-out; }
+  @keyframes ripple {
+    0%   { transform: translate(-50%,-50%) scale(0.2); opacity: .6; }
+    100% { transform: translate(-50%,-50%) scale(1.8); opacity: 0;   }
+  }
+
+  /* Teaser cursor — SVG arrow moves across teaser overlay */
+  .teaser-cursor {
+    position: absolute; width: 28px; height: 28px; z-index: 30;
+    pointer-events: none; opacity: 0;
+    transition: left .7s cubic-bezier(0.25,0.1,0.25,1),
+                top  .7s cubic-bezier(0.25,0.1,0.25,1),
+                opacity .25s ease, transform .12s ease;
+    filter: drop-shadow(0 3px 6px rgba(0,0,0,0.35));
+  }
+  .teaser-cursor.on { opacity: 1; }
+  .teaser-cursor.click { transform: scale(0.82); }
+  .teaser-cursor.click::after {
+    content:''; position:absolute; inset: -18px;
+    border: 3px solid rgba(226,119,48,0.65); border-radius:50%;
+    animation: cursor-ping .55s ease-out;
+  }
+  @keyframes cursor-ping {
+    0%   { opacity:.9; transform:scale(0.2); }
+    100% { opacity:0;  transform:scale(1.35); }
+  }
+
+  /* Gmail panel — slides in from right, replaces site-window */
+  .gmail {
+    position: absolute; inset: 0;
+    display: flex; opacity: 0;
+    transform: translateX(6%);
+    transition: opacity .7s cubic-bezier(0.16,1,0.3,1), transform .9s cubic-bezier(0.16,1,0.3,1);
+    pointer-events: none;
+  }
+  .teaser.show-gmail .gmail { opacity: 1; transform: none; }
+
+  .gmail-window {
+    width: min(1200px, 90vw); height: min(720px, 88vh);
+    margin: auto; background: #fff; border-radius: 14px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.20), 0 10px 30px rgba(0,0,0,0.08);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+  }
+  .gmail-header {
+    flex: 0 0 56px;
+    display:flex; align-items:center; gap:16px;
+    padding: 0 20px; border-bottom: 1px solid #eee;
+    background: #fff;
+  }
+  .gmail-header .gmail-logo {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, #ea4335 0%, #fbbc04 33%, #34a853 66%, #4285f4 100%);
+    clip-path: polygon(0 20%, 0 100%, 100% 100%, 100% 20%, 50% 60%);
+    border-radius: 3px;
+  }
+  .gmail-header .gmail-title {
+    font: 600 18px/1 -apple-system, sans-serif; color: #555;
+    letter-spacing: 0.02em;
+  }
+  .gmail-header .gmail-search {
+    flex: 1; max-width: 480px; margin: 0 20px;
+    background: #f1f3f4; border-radius: 8px;
+    padding: 9px 14px; font: 400 13px/1 -apple-system, sans-serif; color: #777;
+  }
+  .gmail-body { flex: 1; display:flex; overflow:hidden; }
+
+  .gmail-side {
+    flex: 0 0 200px; padding: 20px 10px;
+    background: #f6f8fc;
+    font: 500 14px/1 -apple-system, sans-serif; color: #444;
+    border-right: 1px solid #eaecee;
+  }
+  .gmail-side .side-item {
+    padding: 10px 16px; border-radius: 0 20px 20px 0; margin-bottom: 4px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .gmail-side .side-item.active { background: #fce8e6; color: #c5221f; font-weight: 600; }
+  .gmail-side .side-item::before {
+    content:''; width: 8px; height: 8px; border-radius:50%;
+    background: currentColor; opacity: .6;
+  }
+
+  .gmail-list { flex: 1; overflow: auto; }
+  .gmail-row {
+    display:flex; gap:14px; padding: 14px 20px;
+    border-bottom: 1px solid #f1f3f4;
+    align-items: center;
+  }
+  .gmail-row .gmail-from {
+    flex: 0 0 140px;
+    font: 500 14px/1.2 -apple-system, sans-serif; color: #202124;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .gmail-row .gmail-subj {
+    flex: 1; font: 400 14px/1.2 -apple-system, sans-serif; color: #555;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .gmail-row .gmail-subj b { color: #202124; margin-right: 6px; }
+  .gmail-row .gmail-time { font: 500 12px/1 -apple-system, sans-serif; color: #999; }
+  .gmail-row.blurred .gmail-from,
+  .gmail-row.blurred .gmail-subj,
+  .gmail-row.blurred .gmail-time { filter: blur(5px); opacity: .7; }
+
+  .gmail-row.new {
+    background: linear-gradient(to right, rgba(226,119,48,0.10), transparent 70%);
+    position: relative;
+    animation: gmail-ping 1s cubic-bezier(0.16,1,0.3,1) .6s both;
+  }
+  .gmail-row.new::before {
+    content: ''; position:absolute; left:0; top:10px; bottom:10px;
+    width: 4px; background: var(--brand); border-radius: 0 2px 2px 0;
+  }
+  .gmail-row.new .gmail-from { color: var(--brand-deep); font-weight: 700; }
+  .gmail-row.new .gmail-subj b { color: #1e1410; }
+  @keyframes gmail-ping {
+    0%   { box-shadow: 0 0 0 0 rgba(226,119,48,0.55); }
+    60%  { box-shadow: 0 0 0 22px rgba(226,119,48,0); }
+    100% { box-shadow: 0 0 0 0 rgba(226,119,48,0); }
+  }
+  .gmail-row.new .new-badge {
+    margin-left: 10px; padding: 3px 9px;
+    background: var(--brand); color: #fff; border-radius: 10px;
+    font: 700 11px/1 -apple-system, sans-serif; letter-spacing: 0.08em;
+  }
+
+  /* ─── Mac-style window chrome around the engine stage ─────────────────── */
+  /* Frame insets — change here to resize the framed recording area. */
+  :root {
+    --frame-top: 40px;
+    --frame-side: 60px;
+    --frame-bottom: 40px;
+    --frame-chrome-h: 30px;
+    --frame-radius: 12px;
+  }
+  body.with-stage-chrome { background: transparent !important; }
+
+  /* Decorative frame: rounded corners + drop shadow around the recording area.
+     Pointer-events: none so it never blocks interaction. Layout of engine
+     stage is untouched — engine zoom math (based on window dims) stays correct. */
+  .mac-frame {
+    position: fixed;
+    top: var(--frame-top);
+    left: var(--frame-side);
+    right: var(--frame-side);
+    bottom: var(--frame-bottom);
+    border-radius: var(--frame-radius);
+    box-shadow: 0 40px 100px rgba(0,0,0,0.22), 0 12px 30px rgba(0,0,0,0.10);
+    pointer-events: none;
+    z-index: 3;
+    /* Subtle inner border to read as a window edge */
+    outline: 1px solid rgba(0,0,0,0.08);
+    outline-offset: -1px;
+  }
+
+  /* Chrome bar sits ON TOP of the frame's top edge */
+  .mac-chrome {
+    position: fixed;
+    top: var(--frame-top);
+    left: var(--frame-side);
+    right: var(--frame-side);
+    height: var(--frame-chrome-h);
+    display: flex; align-items: center; gap: 8px;
+    padding: 0 16px;
+    box-sizing: border-box;
+    background: linear-gradient(180deg, rgba(244,241,236,0.96) 0%, rgba(235,230,221,0.96) 100%);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    border-radius: var(--frame-radius) var(--frame-radius) 0 0;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .mac-chrome .tl { width: 12px; height: 12px; border-radius: 50%; }
+  .mac-chrome .tl.r { background: #ff5f57; }
+  .mac-chrome .tl.y { background: #febc2e; }
+  .mac-chrome .tl.g { background: #28c840; }
+  .mac-chrome .title {
+    flex: 1; text-align: center;
+    font: 500 12px/1 -apple-system, 'Segoe UI', sans-serif;
+    color: #6b6258; letter-spacing: 0.02em;
+  }
+
+  /* Clip the live stage (iframe + overlays + highlights + labels) to the
+     framed area so nothing spills past the "screen recording" rectangle.
+     Top inset includes the chrome height so content hides behind chrome. */
+  body.with-stage-chrome .stage {
+    clip-path: inset(
+      calc(var(--frame-top) + var(--frame-chrome-h))
+      var(--frame-side)
+      var(--frame-bottom)
+      var(--frame-side)
+      round 0 0 var(--frame-radius) var(--frame-radius)
+    );
+  }
+</style>
+</head>
+<body>
+<div class="mesh-bg"><div class="grain"></div></div>
+<script type="module">
+  import { runScene, cursor, sleep } from '../engine/engine.js';
+  import {
+    loadSnapshot, startBGM, stopBGM, playNarration, runBeatsSequential,
+  } from './shared.js';
+  import {
+    revealSection, toggleControl, selectDropdown,
+    duplicateBlock, showPrompt, collapseBlock, toggleBlockActive,
+  } from '../engine/wpforms.js';
+
+  const LOGO_MARK  = '/assets/wpforms-mark.png';
+  const LOGO_VIDEO = '/assets/logo-animated.mp4';
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // Start gate, watermark
+  // ═══════════════════════════════════════════════════════════════════════
+  async function waitForStart() {
+    const g = document.createElement('div');
+    g.className = 'start-gate';
+    g.innerHTML = `<button class="start-btn">▶ Start video</button>`;
+    document.body.appendChild(g);
+    await new Promise(resolve => g.addEventListener('click', resolve, { once: true }));
+    return g; // caller exits it after intro is mounted
+  }
+  async function exitStartGate(g) {
+    g.classList.add('exit');
+    await sleep(500);
+    g.remove();
+  }
+
+  function mountWatermark() {
+    if (document.getElementById('wpf-watermark')) return;
+    const el = document.createElement('div');
+    el.id = 'wpf-watermark';
+    el.className = 'wpf-watermark';
+    el.innerHTML = `<img src="${LOGO_MARK}" alt="WPForms">`;
+    document.body.appendChild(el);
+    requestAnimationFrame(() => el.classList.add('on'));
+  }
+  function unmountWatermark() {
+    const el = document.getElementById('wpf-watermark');
+    if (!el) return;
+    el.classList.remove('on');
+    setTimeout(() => el.remove(), 700);
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // Title card (intro/outro) — split mount / exit for smooth handoff
+  // ═══════════════════════════════════════════════════════════════════════
+  // Per-word wrap; italicize last word for editorial flourish.
+  function wrapWords(str) {
+    const words = str.trim().split(/\s+/);
+    return words.map((w, i) =>
+      `<span class="w${i === words.length - 1 ? ' italic' : ''}">${w}</span>`
+    ).join(' ');
+  }
+
+  // Builds the card, runs the Hyperframes-style GSAP entry timeline,
+  // resolves once the entry has fully landed. Caller controls hold via sleep,
+  // then calls exitTitleCard() to run the push-blur exit.
+  async function mountTitleCard({ eyebrow, title, subtitle, useVideo = false,
+                                  metaChapter = null, signoff = null } = {}) {
+    const el = document.createElement('div');
+    el.className = 'title-card';
+    const logo = useVideo
+      ? `<video src="${LOGO_VIDEO}" autoplay muted playsinline></video>`
+      : `<img src="${LOGO_MARK}" alt="">`;
+    const metaHtml = metaChapter
+      ? `<div class="tc-meta"><span class="tick"></span><span>${metaChapter.label}</span><span class="sep"></span><span>${metaChapter.kind}</span></div>`
+      : '';
+    const signoffHtml = signoff ? `<div class="tc-signoff">${signoff}</div>` : '';
+    el.innerHTML = `
+      <div class="tc-vignette"></div>
+      <div class="tc-sweep"></div>
+      <div class="tc-wrap">
+        <div class="logo-stage">${logo}</div>
+        <div class="eyebrow-row">
+          <div class="eyebrow-bar"></div>
+          <div class="eyebrow">${eyebrow}</div>
+          <div class="eyebrow-bar right"></div>
+        </div>
+        <div class="title">${wrapWords(title)}</div>
+        <div class="subtitle">${subtitle}</div>
+      </div>
+      ${metaHtml}
+      ${signoffHtml}
+    `;
+    document.body.appendChild(el);
+
+    const wrap     = el.querySelector('.tc-wrap');
+    const sweep    = el.querySelector('.tc-sweep');
+    const logoEl   = el.querySelector('.logo-stage');
+    const ebarL    = el.querySelector('.eyebrow-bar');
+    const ebarR    = el.querySelector('.eyebrow-bar.right');
+    const eyebrowEl= el.querySelector('.eyebrow');
+    const subEl    = el.querySelector('.subtitle');
+    const metaEl   = el.querySelector('.tc-meta');
+    const signoffEl= el.querySelector('.tc-signoff');
+    const wordEls  = el.querySelectorAll('.title .w');
+
+    // Velocity-staggered slide distances: first word carries momentum, rest settle shorter
+    const slideDist = Array.from(wordEls).map((_, i) => Math.max(50, 400 - i * 130));
+
+    // Initial states
+    gsap.set(wrap, { filter: 'blur(22px)' });
+    gsap.set(logoEl, { opacity: 0, scale: 0.68, y: 24 });
+    gsap.set([ebarL, ebarR], { scaleX: 0 });
+    gsap.set(eyebrowEl, { opacity: 0, y: 8, letterSpacing: '0.5em' });
+    wordEls.forEach((w, i) => gsap.set(w, { x: slideDist[i], y: 20, opacity: 0, filter: 'blur(14px)' }));
+    gsap.set(subEl, { opacity: 0, y: 18, filter: 'blur(8px)' });
+    if (metaEl)    gsap.set(metaEl,    { opacity: 0, y: 6 });
+    if (signoffEl) gsap.set(signoffEl, { opacity: 0, x: 20 });
+
+    const tl = gsap.timeline();
+
+    // Wrap blur de-ramp
+    tl.to(wrap, { filter: 'blur(0px)', duration: 0.85, ease: 'power2.out' }, 0);
+
+    // Horizontal light sweep
+    tl.fromTo(sweep,
+      { x: '-120vw', opacity: 0 },
+      { x: '120vw', opacity: 1, duration: 1.6, ease: 'power2.inOut',
+        onComplete: () => gsap.to(sweep, { opacity: 0, duration: 0.3 }) },
+      0.1);
+
+    // Logo spring-in
+    tl.to(logoEl, { opacity: 1, scale: 1, y: 0, duration: 1.1, ease: 'back.out(1.8)' }, 0.35);
+
+    // Eyebrow bars + text
+    tl.to([ebarL, ebarR], { scaleX: 1, duration: 0.7, ease: 'expo.out' }, 0.75);
+    tl.to(eyebrowEl, { opacity: 1, y: 0, letterSpacing: '0.38em',
+                       duration: 0.8, ease: 'expo.out' }, 0.82);
+
+    // Per-word title slide-in
+    const wordOnsets = Array.from(wordEls).map((_, i) => 1.05 + i * 0.14);
+    wordEls.forEach((w, i) => {
+      tl.to(w, { x: 0, y: 0, opacity: 1, filter: 'blur(0px)',
+                 duration: 0.9, ease: 'expo.out' }, wordOnsets[i]);
+    });
+
+    const lastLand = wordOnsets[wordOnsets.length - 1] + 0.38;
+
+    // Gradient color sweep across words + scale pulse
+    tl.add(() => { wordEls.forEach(w => w.classList.add('is-gradient')); }, lastLand + 0.05);
+    tl.to(wordEls, { backgroundPosition: '0% 0', duration: 0.95,
+                     ease: 'power2.out', stagger: 0.05 }, lastLand + 0.1);
+    tl.to(wrap, { scale: 1.015, duration: 0.12, ease: 'power2.out' },    lastLand + 0.12);
+    tl.to(wrap, { scale: 1,     duration: 0.32, ease: 'power2.inOut' },  lastLand + 0.24);
+
+    // Subtitle
+    tl.to(subEl, { opacity: 1, y: 0, filter: 'blur(0px)',
+                   duration: 0.8, ease: 'power3.out' }, lastLand + 0.35);
+
+    // Optional corners
+    if (metaEl)    tl.to(metaEl,    { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, lastLand + 0.55);
+    if (signoffEl) tl.to(signoffEl, { opacity: 1, x: 0, duration: 0.7, ease: 'power2.out' }, lastLand + 0.7);
+
+    // Letter-spacing breath (keeps the held frame alive)
+    tl.to(eyebrowEl, { letterSpacing: '0.42em', duration: 0.9,
+                       ease: 'sine.inOut', yoyo: true, repeat: 1 }, lastLand + 0.7);
+
+    // Stash refs on the element so exitTitleCard can drive its own timeline
+    el._tc = { wrap, sweep, logoEl, ebarL, ebarR, eyebrowEl, subEl, metaEl, signoffEl, wordEls };
+
+    await tl.then();
+    return el;
+  }
+
+  async function exitTitleCard(el) {
+    const r = el._tc;
+    if (!r) { el.remove(); return; }
+
+    const ex = gsap.timeline();
+    ex.to(r.wordEls, {
+      y: -36, x: -20, scale: 1.06, opacity: 0, filter: 'blur(16px)',
+      duration: 0.6, ease: 'power2.in', stagger: 0.05,
+    }, 0);
+    const extras = [r.eyebrowEl, r.ebarL, r.ebarR, r.subEl, r.metaEl, r.signoffEl].filter(Boolean);
+    ex.to(extras, {
+      y: -18, opacity: 0, filter: 'blur(8px)',
+      duration: 0.5, ease: 'power2.in',
+    }, 0);
+    ex.to(r.logoEl, {
+      scale: 1.18, opacity: 0, filter: 'blur(8px)',
+      duration: 0.65, ease: 'power2.in',
+    }, 0.05);
+    ex.to(r.wrap, { filter: 'blur(18px)', duration: 0.55, ease: 'power2.in' }, 0.05);
+    ex.to(el, { opacity: 0, duration: 0.5, ease: 'power2.in' }, 0.4);
+
+    await ex.then();
+    el.remove();
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // Welcome teaser — browser chrome + form + cursor + gmail handoff
+  // Returns an object with:
+  //   animPromise — resolves when the timeline finishes the Gmail ping
+  //   dismiss()   — fades out the teaser (call after narration ends)
+  // ═══════════════════════════════════════════════════════════════════════
+  async function mountWelcomeTeaser() {
+    const ov = document.createElement('div');
+    ov.className = 'teaser';
+    ov.innerHTML = `
+      <div class="teaser-stage">
+
+        <div class="site-window">
+          <div class="site-chrome">
+            <div class="dots"><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+            <div class="url">sulliesbakery.com/contact</div>
+          </div>
+          <div class="site-page">
+            <div class="site-hero">
+              <div class="brand-row">Sullie's Bakery</div>
+              <h1>Got a question? We'd love to hear from you.</h1>
+              <p>Send us a note and we'll get back to you within one business day.</p>
+            </div>
+            <div class="site-form-wrap">
+              <div class="form-title">Contact form</div>
+              <label class="tf-field">
+                <span class="tf-label">Name</span>
+                <div class="tf-input" data-tf="Sullie Eloso"></div>
+              </label>
+              <label class="tf-field">
+                <span class="tf-label">Email</span>
+                <div class="tf-input" data-tf="sullie@wpforms.com"></div>
+              </label>
+              <label class="tf-field">
+                <span class="tf-label">Message</span>
+                <div class="tf-input textarea" data-tf="Hi team — loving the site. Can we get in touch?"></div>
+              </label>
+              <button class="tf-submit">Submit<span class="ripple"></span></button>
+            </div>
+          </div>
+        </div>
+
+        <svg class="teaser-cursor" viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 3 L24 14 L14 16 L10 26 Z" fill="#111" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/>
+        </svg>
+
+        <div class="gmail">
+          <div class="gmail-window">
+            <div class="gmail-header">
+              <div class="gmail-logo"></div>
+              <div class="gmail-title">Inbox — sullie@wpforms.com</div>
+              <div class="gmail-search">Search mail</div>
+            </div>
+            <div class="gmail-body">
+              <div class="gmail-side">
+                <div class="side-item active">Inbox</div>
+                <div class="side-item">Starred</div>
+                <div class="side-item">Sent</div>
+                <div class="side-item">Drafts</div>
+                <div class="side-item">Spam</div>
+              </div>
+              <div class="gmail-list">
+                <div class="gmail-row new">
+                  <div class="gmail-from">WordPress</div>
+                  <div class="gmail-subj"><b>New Entry: Contact Us Form</b>Name: Sullie Eloso · Email: sullie@wpforms.com · Message: Hi team…<span class="new-badge">NEW</span></div>
+                  <div class="gmail-time">just now</div>
+                </div>
+                <div class="gmail-row blurred">
+                  <div class="gmail-from">GitHub</div>
+                  <div class="gmail-subj"><b>[sullies/site] PR #214 review requested</b>review requested on “Add pricing page”</div>
+                  <div class="gmail-time">9:12</div>
+                </div>
+                <div class="gmail-row blurred">
+                  <div class="gmail-from">Figma</div>
+                  <div class="gmail-subj"><b>New comments on Landing v4</b>3 comments by Priya, Luis and Amir</div>
+                  <div class="gmail-time">8:48</div>
+                </div>
+                <div class="gmail-row blurred">
+                  <div class="gmail-from">Stripe</div>
+                  <div class="gmail-subj"><b>Payout sent to your account</b>$1,284.00 should arrive by Friday</div>
+                  <div class="gmail-time">8:01</div>
+                </div>
+                <div class="gmail-row blurred">
+                  <div class="gmail-from">Linear</div>
+                  <div class="gmail-subj"><b>3 issues due this week</b>BAKE-214 · BAKE-231 · BAKE-234</div>
+                  <div class="gmail-time">Yesterday</div>
+                </div>
+                <div class="gmail-row blurred">
+                  <div class="gmail-from">Notion</div>
+                  <div class="gmail-subj"><b>Weekly digest</b>5 pages updated in Design Systems</div>
+                  <div class="gmail-time">Yesterday</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    `;
+    document.body.appendChild(ov);
+    await sleep(40);
+    ov.classList.add('on');
+
+    const siteWin = ov.querySelector('.site-window');
+    const cur     = ov.querySelector('.teaser-cursor');
+    const inputs  = ov.querySelectorAll('.tf-input');
+    const submit  = ov.querySelector('.tf-submit');
+
+    // Move helper for overlay cursor — absolute positions inside teaser-stage
+    const stageRect = () => ov.querySelector('.teaser-stage').getBoundingClientRect();
+    function cursorTo(elOrXY) {
+      const s = stageRect();
+      let x, y;
+      if (elOrXY instanceof Element) {
+        const r = elOrXY.getBoundingClientRect();
+        x = r.left - s.left + r.width * 0.55;
+        y = r.top  - s.top  + r.height * 0.5;
+      } else { x = elOrXY.x; y = elOrXY.y; }
+      cur.style.left = `${x - 4}px`;
+      cur.style.top  = `${y - 4}px`;
+    }
+    function cursorShow(show) { cur.classList.toggle('on', show); }
+    function cursorClick() {
+      cur.classList.add('click');
+      setTimeout(() => cur.classList.remove('click'), 380);
+    }
+
+    // Timeline — targets welcome narration (~12.3s)
+    const animPromise = (async () => {
+      // 0.0 – 1.0 : site chrome settles; cursor parks off-form
+      const initial = { x: stageRect().width * 0.55, y: stageRect().height * 0.92 };
+      cursorTo(initial);
+      await sleep(700);
+      cursorShow(true);
+      await sleep(400);
+
+      // 1.1 – 2.4 : zoom into form
+      siteWin.classList.add('zoom-in');
+      await sleep(1200);
+
+      // 2.4 – 7.4 : typewriter three fields
+      for (const inp of inputs) {
+        const full = inp.dataset.tf;
+        inp.classList.add('typing', 'tf-caret');
+        for (let i = 1; i <= full.length; i++) {
+          inp.textContent = full.slice(0, i);
+          await sleep(22 + Math.random() * 12);
+        }
+        inp.classList.remove('tf-caret');
+        await sleep(120);
+        inp.classList.remove('typing');
+      }
+
+      // 7.4 – 8.3 : cursor moves to submit and clicks
+      cursorTo(submit);
+      await sleep(650);
+      cursorClick();
+      submit.classList.add('pressed');
+      await sleep(420);
+      submit.classList.remove('pressed');
+
+      // 8.3 – 9.1 : site dims + gmail slides in
+      siteWin.classList.add('dim');
+      cursorShow(false);
+      await sleep(250);
+      ov.classList.add('show-gmail');
+      await sleep(900);
+      // 9.1 – 12 : gmail-row.new self-pings via CSS animation
+    })();
+
+    async function dismiss() {
+      ov.classList.add('exit');
+      await sleep(500);
+      ov.remove();
+    }
+    return { ov, animPromise, dismiss };
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // Fade cover helpers (handoff between overlays to prevent iframe flashes)
+  // ═══════════════════════════════════════════════════════════════════════
+  function mountCover({ cream = false, z = 650 } = {}) {
+    const c = document.createElement('div');
+    c.className = 'fade-cover' + (cream ? ' cream' : '');
+    c.style.zIndex = z;
+    document.body.appendChild(c);
+    requestAnimationFrame(() => c.classList.add('on'));
+    return c;
+  }
+  async function dropCover(c, ms = 500) {
+    c.classList.remove('on');
+    await sleep(ms);
+    c.remove();
+  }
+
+  function mountStageChrome() {
+    document.body.classList.add('with-stage-chrome');
+    if (!document.querySelector('.mac-frame')) {
+      const frame = document.createElement('div');
+      frame.className = 'mac-frame';
+      document.body.appendChild(frame);
+    }
+    if (!document.querySelector('.mac-chrome')) {
+      const chrome = document.createElement('div');
+      chrome.className = 'mac-chrome';
+      chrome.innerHTML = `
+        <div class="tl r"></div><div class="tl y"></div><div class="tl g"></div>
+        <div class="title">WPForms — Form Notifications</div>
+      `;
+      document.body.appendChild(chrome);
+    }
+  }
+
+  async function transitionSnapshots(newSlug, setupFn) {
+    // Smooth cream cross-fade instead of a black flash: cover stays up across
+    // the snapshot swap, then fades out once the new stage is ready.
+    const cover = mountCover({ cream: true, z: 999 });
+    await sleep(650);
+    await loadSnapshot(newSlug);
+    const mesh = document.createElement('div'); mesh.className = 'mesh-bg'; mesh.innerHTML = '<div class="grain"></div>';
+    document.body.appendChild(mesh);
+    mountStageChrome();
+    mountWatermark();
+    // Re-mount the cover in the new body so it persists through the load
+    const cover2 = mountCover({ cream: true, z: 999 });
+    if (setupFn) await setupFn();
+    await sleep(250);
+    await dropCover(cover2, 650);
+  }
+
+  // Brief fade between chapters so camera jumps don't feel like a screen refresh
+  async function chapterTransition(ms = 500) {
+    const c = mountCover({ cream: true, z: 400 });
+    await sleep(ms);
+    // Caller should run beats now — returns the cover so caller can drop it
+    return c;
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // 0) Load main snapshot, wait for click
+  // ═══════════════════════════════════════════════════════════════════════
+  await loadSnapshot('builder-settings-notifications');
+  // loadSnapshot resets body — reattach mesh background + Mac chrome
+  const mesh = document.createElement('div'); mesh.className = 'mesh-bg'; mesh.innerHTML = '<div class="grain"></div>';
+  document.body.appendChild(mesh);
+  mountStageChrome();
+
+  const gate = await waitForStart();
+  startBGM();
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // 1) INTRO — silent branded title card with animated logo video
+  //    Mount intro BEFORE dismissing start gate (no iframe flash)
+  // ═══════════════════════════════════════════════════════════════════════
+  const intro = await mountTitleCard({
+    eyebrow: 'WPForms Tutorial',
+    title: 'Form Notifications',
+    subtitle: 'Send the right email to the right person — every time your form is submitted.',
+    useVideo: true,
+    metaChapter: { label: 'Chapter 01', kind: 'Intro' },
+  });
+  await exitStartGate(gate);
+  await sleep(3300); // hold intro (entry already landed inside mountTitleCard)
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // 2) WELCOME — mount teaser UNDER intro, then fade intro, then narrate
+  // ═══════════════════════════════════════════════════════════════════════
+  const teaser = await mountWelcomeTeaser();
+  await sleep(40);
+  mountWatermark();
+  // Exit intro now — teaser (z 600) shows through as intro (z 800) fades
+  await exitTitleCard(intro);
+
+  {
+    const { ended } = await playNarration('welcome');
+    await Promise.all([teaser.animPromise, ended]);
+  }
+
+  // Handoff teaser → entry without iframe flash: cover first, remove teaser under it
+  const handoff = mountCover({ cream: true, z: 650 });
+  await sleep(520);
+  await teaser.dismiss();
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // 3) Smart-tags one-time setup: flip dropdown to open upwards
+  // ═══════════════════════════════════════════════════════════════════════
+  const N = 'notifications-2';
+  {
+    const doc = document.querySelector('iframe.ui').contentDocument;
+    const dd = doc.querySelector(`#wpforms-panel-field-${N}-email-wrap .insert-smart-tag-dropdown`);
+    if (dd) {
+      dd.classList.remove('open-down');
+      dd.classList.add('open-up');
+      const ddH = dd.getBoundingClientRect().height || 280;
+      dd.style.top = `-${ddH + 6}px`;
+    }
+  }
+
+  // ── Selectors reused across chapters ──
+  const emailWrap  = `#wpforms-panel-field-${N}-email-wrap`;
+  const tagIcon    = `${emailWrap} .wpforms-show-smart-tags`;
+  const dropdown   = `${emailWrap} .insert-smart-tag-dropdown`;
+  const firstField = `${emailWrap} .insert-smart-tag-dropdown ul.list li[data-value="2"] .wpforms-smart-tags-widget-item`;
+  const chipHostS  = `${emailWrap} .wpforms-smart-tags-widget-input`;
+
+  const advGroup = `.wpforms-builder-notifications-advanced:has(#wpforms-panel-field-${N}-template-wrap)`;
+  const advTitle = `${advGroup} > .wpforms-panel-fields-group-title`;
+  const tplWrap  = `#wpforms-panel-field-${N}-template-wrap`;
+  const fileWrap = `#wpforms-panel-field-${N}-file_upload_attachment_enable-wrap`;
+  const csvWrap  = `#wpforms-panel-field-${N}-entry_csv_attachment_enable-wrap`;
+
+  const block1     = `[data-block-type="notification"][data-block-id="1"]`;
+  const block2     = `[data-block-type="notification"][data-block-id="2"]`;
+  const addBtn     = `button.wpforms-notifications-add`;
+  const cloneBtn   = `${block2} .wpforms-builder-settings-block-clone`;
+  const statusBtn  = `${block2} .wpforms-builder-settings-block-status`;
+  const block2Head = `${block2} .wpforms-builder-settings-block-header`;
+
+  const firstNotificationSel = () => {
+    const d = document.querySelector('iframe.ui').contentDocument;
+    const all = [...d.querySelectorAll('[data-block-type="notification"][data-block-id]')];
+    all.sort((a, b) => (a.compareDocumentPosition(b) & Node.DOCUMENT_POSITION_FOLLOWING) ? -1 : 1);
+    return `[data-block-type="notification"][data-block-id="${all[0].dataset.blockId}"]`;
+  };
+
+  async function runChapter(slug, beats) {
+    const { ended } = await playNarration(slug);
+    await runScene(beats);
+    await ended;
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // CH1 — Entry (camera ready before dropping the handoff cover)
+  // ═══════════════════════════════════════════════════════════════════════
+  {
+    const { ended } = await playNarration('entry');
+    // Kick off beats while cover is still up; engine applies camera first
+    const beatsPromise = runScene([
+      {
+        id: 'open-settings', chapter: 'entry',
+        camera:   { focus: '.wpforms-panel-settings-button', level: 1.8, pad: 10 },
+        overlays: [{ highlight: '.wpforms-panel-settings-button', label: 'Open Settings from the left sidebar' }],
+        duration: 1.5,
+      },
+      {
+        id: 'select-notifications', chapter: 'entry',
+        camera:   { focus: '.wpforms-panel-sidebar-section-notifications', level: 1.8, pad: 8 },
+        overlays: [{ highlight: '.wpforms-panel-sidebar-section-notifications', label: 'Select Notifications' }],
+        duration: 1.5,
+      },
+    ]);
+    await sleep(700);       // let camera settle + highlight appear under cover
+    dropCover(handoff, 500);
+    await beatsPromise;
+    await ended;
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // CH2 — The 6 basic fields
+  // ═══════════════════════════════════════════════════════════════════════
+  await runChapter('fields', [
+    { id: 'field-email',     chapter: 'fields', camera:{ focus:`#wpforms-panel-field-${N}-email-wrap`,         level:2.2, pad:14 }, overlays:[{ highlight:`#wpforms-panel-field-${N}-email-wrap`,         label:'Send To — where the notification email is sent' }],             duration:3.0 },
+    { id: 'field-subject',   chapter: 'fields', camera:{ focus:`#wpforms-panel-field-${N}-subject-wrap`,       level:2.2, pad:14 }, overlays:[{ highlight:`#wpforms-panel-field-${N}-subject-wrap`,       label:'Email Subject Line — the email subject' }],                     duration:3.0 },
+    { id: 'field-from-name', chapter: 'fields', camera:{ focus:`#wpforms-panel-field-${N}-sender_name-wrap`,   level:2.2, pad:14 }, overlays:[{ highlight:`#wpforms-panel-field-${N}-sender_name-wrap`,   label:'From Name — who the email appears to be from' }],                duration:3.0 },
+    { id: 'field-from-email',chapter: 'fields', camera:{ focus:`#wpforms-panel-field-${N}-sender_address-wrap`,level:2.2, pad:14 }, overlays:[{ highlight:`#wpforms-panel-field-${N}-sender_address-wrap`,label:'From Email — sender address (usually keep default)' }],         duration:3.0 },
+    { id: 'field-replyto',   chapter: 'fields', camera:{ focus:`#wpforms-panel-field-${N}-replyto-wrap`,       level:2.2, pad:14 }, overlays:[{ highlight:`#wpforms-panel-field-${N}-replyto-wrap`,       label:'Reply-To — where replies go when someone hits Reply' }],         duration:3.0 },
+    { id: 'field-message',   chapter: 'fields', camera:{ focus:`#wpforms-panel-field-${N}-message-wrap`,       level:2.2, pad:14 }, overlays:[{ highlight:`#wpforms-panel-field-${N}-message-wrap`,       label:'Email Message — the body (defaults to {all_fields})' }],         duration:3.0 },
+  ]);
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // CH3 — Smart Tags (audio-cued internal timeline)
+  // ═══════════════════════════════════════════════════════════════════════
+  {
+    const { clearHighlights } = await import('../engine/engine.js');
+    const { audio, ended } = await playNarration('smart-tags');
+    const waitAt = (t) => new Promise(resolve => {
+      if (audio.currentTime >= t) return resolve();
+      const tick = () => { if (audio.currentTime >= t || audio.ended) { audio.removeEventListener('timeupdate', tick); resolve(); } };
+      audio.addEventListener('timeupdate', tick);
+    });
+    await runScene([{
+      id: 'smart-tags-flow', chapter: 'smart-tags',
+      camera:    { focus: [emailWrap], level: 1.5, pad: 40 },
+      spotlight: emailWrap,
+      overlays: [
+        { highlight: emailWrap, label: 'Smart Tags inject field values dynamically' },
+        { pointer: tagIcon, direction: 'down', label: 'Click to open', size: 30, gap: 8 },
+      ],
+      labelDwell: 0, keepLabels: true,
+      effect: async ({ cursor, doc, clearSpot }) => {
+        await cursor.park({ x: 1300, y: 500 });
+        await waitAt(5.5);
+        await cursor.moveTo(tagIcon);
+        await waitAt(6.0);
+        await cursor.click();
+        await clearHighlights({ fadeOut: 200 });
+        const dd = doc.querySelector(dropdown);
+        if (dd) dd.classList.remove('closed');
+
+        await waitAt(7.6);
+        await cursor.moveTo(firstField);
+        await cursor.click();
+
+        await waitAt(9.0);
+        const chipHost = doc.querySelector(chipHostS);
+        if (chipHost) {
+          chipHost.innerHTML = '';
+          const chip = doc.createElement('span');
+          chip.className = 'tag';
+          chip.setAttribute('contenteditable', 'false');
+          chip.setAttribute('data-value', 'field_id="2"');
+          chip.innerHTML = 'Email <i class="fa fa-times-circle" title="Delete smart tag"></i>';
+          chip.style.cssText = 'opacity:0;transform:scale(0.7);transition:opacity .3s ease, transform .3s cubic-bezier(0.34,1.56,0.64,1);';
+          chipHost.appendChild(chip);
+          await sleep(30);
+          chip.style.opacity = '1';
+          chip.style.transform = 'scale(1)';
+        }
+        if (dd) dd.classList.add('closed');
+
+        await waitAt(13.8);
+        await clearSpot();
+        await cursor.hide();
+      },
+      duration: 0.2,
+    }]);
+    await ended;
+  }
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // CH4 — Advanced (per-beat narration)
+  // ═══════════════════════════════════════════════════════════════════════
+  await runBeatsSequential([
+    { narration: 'advanced-1', id:'reveal-advanced', chapter:'advanced',
+      camera: { focus: advTitle, level: 2.0, pad: 30 },
+      spotlight: advTitle,
+      overlays: [
+        { highlight: advTitle, label: 'Advanced unlocks email templates and attachments' },
+        { pointer: advTitle, direction: 'down', label: 'Click to expand', size: 28, gap: 8 },
+      ],
+      labelDwell: 1.1, keepLabels: true,
+      effect: async ({ cursor, clearSpot, clearLabels }) => {
+        await cursor.park({ x: 1300, y: 700 });
+        await cursor.moveTo(advTitle);
+        await cursor.click();
+        await clearLabels();
+        await revealSection(advGroup);
+        await clearSpot();
+        await cursor.hide();
+      } },
+    { narration: 'advanced-2', id:'template-modern', chapter:'advanced',
+      camera: { focus: tplWrap, level: 1.6, pad: 80 },
+      effect: async () => { await selectDropdown(tplWrap, { pick: 'modern', direction: 'down' }); } },
+    { narration: 'advanced-3', id:'file-toggle', chapter:'advanced',
+      camera: { focus: fileWrap, level: 2.2, pad: 18 },
+      spotlight: fileWrap,
+      overlays: [{ highlight: fileWrap, label: 'Attach uploaded files to the email' }],
+      labelDwell: 0.8,
+      effect: async ({ cursor }) => {
+        await cursor.park({ x: 1400, y: 500 });
+        await toggleControl(fileWrap, { state: 'on' });
+      } },
+    { narration: 'advanced-4', id:'csv-toggle', chapter:'advanced',
+      camera: { focus: csvWrap, level: 2.2, pad: 18 },
+      spotlight: csvWrap,
+      overlays: [{ highlight: csvWrap, label: 'Or attach a CSV of the entry data' }],
+      labelDwell: 0.8,
+      effect: async () => { await toggleControl(csvWrap, { state: 'on' }); } },
+  ]);
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // CH5 — Managing (per-beat narration)
+  // ═══════════════════════════════════════════════════════════════════════
+  await collapseBlock(block1);
+  await collapseBlock(block2);
+
+  await runBeatsSequential([
+    { narration: 'managing-1', id:'add-intro', chapter:'managing',
+      camera: { focus: addBtn, level: 2.2, pad: 30 },
+      overlays: [
+        { highlight: addBtn, label: 'Add a new notification from scratch' },
+        { pointer: addBtn, direction: 'down', label: 'Click to add', size: 28, gap: 8 },
+      ],
+      labelDwell: 0.9, keepLabels: true,
+      effect: async ({ cursor, clearLabels }) => {
+        await cursor.park({ x:1300, y:700 });
+        await cursor.moveTo(addBtn);
+        await cursor.click();
+        await clearLabels();
+        await cursor.hide();
+      } },
+    { narration: 'managing-2', id:'add-prompt-and-result', chapter:'managing',
+      camera: { focus: addBtn, level: 1.0, pad: 600, noScroll: true },
+      effect: async ({ zoomTo }) => {
+        await showPrompt({ title:'Enter a notification name', placeholder:'Eg: User Confirmation', typeText:'New Notification' });
+        const newBlockSel = await duplicateBlock(block2, { fade:1100, nameOverride:'New Notification', insertBefore:firstNotificationSel(), expanded:true });
+        await zoomTo([newBlockSel, block1, block2], { level:1.2, pad:60, smooth:true, noScroll:true });
+        await collapseBlock(newBlockSel);
+      } },
+    { narration: 'managing-3', id:'clone', chapter:'managing',
+      camera: { focus: block2Head, level: 1.8, pad: 40 },
+      overlays: [
+        { highlight: cloneBtn, label: 'Duplicate for an instant copy' },
+        { pointer: cloneBtn, direction: 'down', label: 'Click to clone', size: 26, gap: 8 },
+      ],
+      labelDwell: 0.9, keepLabels: true,
+      effect: async ({ cursor, zoomTo, clearLabels }) => {
+        await cursor.park({ x:1400, y:600 });
+        await cursor.moveTo(cloneBtn);
+        await cursor.click();
+        await clearLabels();
+        await cursor.hide();
+        const dupSel = await duplicateBlock(block2, { fade:1100, nameOverride:'Duplicated Notification', insertBefore:firstNotificationSel(), expanded:true });
+        await zoomTo([dupSel, block1, block2], { level:1.2, pad:60, smooth:true, noScroll:true });
+        await collapseBlock(dupSel);
+      } },
+    { narration: 'managing-4', id:'status-toggle', chapter:'managing',
+      camera: { focus: statusBtn, level: 2.6, pad: 24 },
+      overlays: [
+        { highlight: statusBtn, label: 'Turn a notification off without deleting it' },
+        { pointer: statusBtn, direction: 'down', label: 'Click to toggle', size: 26, gap: 8 },
+      ],
+      labelDwell: 1.0, keepLabels: true,
+      effect: async ({ cursor, clearLabels }) => {
+        await cursor.park({ x:1300, y:700 });
+        await toggleBlockActive(block2, { state:'inactive' });
+        await clearLabels();
+      } },
+  ]);
+
+  await cursor.hide();
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // 4) SNAPSHOT SWAP → conditional logic
+  // ═══════════════════════════════════════════════════════════════════════
+  await transitionSnapshots('builder-settings-notifications-cl', async () => {
+    const clWrap     = `#wpforms-panel-field-notifications-1-conditional_logic-wrap`;
+    const ruleBoxSel = `#wpforms-conditional-groups-settings-notifications-1`;
+    const doc = document.querySelector('iframe.ui').contentDocument;
+    const ruleBox    = doc.querySelector(ruleBoxSel);
+    const toggleRoot = doc.querySelector(`${clWrap} .wpforms-toggle-control`);
+    const cb         = doc.querySelector(`${clWrap} input[type="checkbox"]`);
+    if (ruleBox)    ruleBox.style.display = 'none';
+    if (toggleRoot) toggleRoot.classList.remove('wpforms-toggle-control-checked');
+    if (cb)         cb.checked = false;
+  });
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // CH6 — Conditional Logic
+  // ═══════════════════════════════════════════════════════════════════════
+  const RULE = { action: 'Send', field: 'Message', operator: 'contains', value: 'Urgent' };
+  const clWrap       = `#wpforms-panel-field-notifications-1-conditional_logic-wrap`;
+  const clToggleBtn  = `${clWrap} .wpforms-toggle-control-icon`;
+  const ruleBoxSel   = `#wpforms-conditional-groups-settings-notifications-1`;
+  const fieldCellSel = `${ruleBoxSel} td.field`;
+  const opCellSel    = `${ruleBoxSel} td.operator`;
+  const valueCellSel = `${ruleBoxSel} td.value`;
+
+  await runBeatsSequential([
+    { narration: 'cl-1', id:'cl-intro', chapter:'conditional-logic',
+      camera:  { focus: clWrap, level: 2.2, pad: 30 },
+      overlays: [
+        { highlight: clWrap, label: 'Only send this notification when a condition is met' },
+        { pointer: clToggleBtn, direction: 'down', label: 'Click to enable', size: 28, gap: 8 },
+      ],
+      labelDwell: 0.8,
+      effect: async ({ cursor, doc }) => {
+        await cursor.park({ x: 1300, y: 700 });
+        await cursor.moveTo(clToggleBtn); await cursor.click(); await cursor.hide();
+        const toggleRoot = doc.querySelector(`${clWrap} .wpforms-toggle-control`);
+        const cb         = doc.querySelector(`${clWrap} input[type="checkbox"]`);
+        const ruleBox    = doc.querySelector(ruleBoxSel);
+        toggleRoot.classList.add('wpforms-toggle-control-checked');
+        cb.checked = true;
+        ruleBox.style.display = '';
+        ruleBox.style.opacity = '0';
+        ruleBox.style.transform = 'translateY(-6px)';
+        ruleBox.style.transition = 'opacity 500ms ease, transform 500ms ease';
+        requestAnimationFrame(() => { ruleBox.style.opacity='1'; ruleBox.style.transform='translateY(0)'; });
+      } },
+    { narration: 'cl-2', id:'build-rule', chapter:'conditional-logic',
+      camera:  { focus: fieldCellSel, level: 2.4, pad: 20, noScroll: true },
+      overlays: [{ highlight: fieldCellSel, label: `Field: ${RULE.field}` }],
+      labelDwell: 0.4, keepLabels: true,
+      effect: async ({ doc, sleep, zoomTo, clearLabels }) => {
+        const fs = doc.querySelector(`${ruleBoxSel} .wpforms-conditional-field`);
+        const fopt = [...fs.options].find(o => o.text.trim() === RULE.field);
+        if (fopt) fs.value = fopt.value;
+        await sleep(700);
+
+        await clearLabels();
+        await zoomTo([opCellSel], { level: 2.4, pad: 20, smooth: true, noScroll: true });
+        const { highlight } = await import('../engine/engine.js');
+        await highlight([opCellSel], { label: `Operator: ${RULE.operator}` });
+        const os = doc.querySelector(`${ruleBoxSel} .wpforms-conditional-operator`);
+        [...os.options].forEach(o => { o.disabled = false; });
+        const oopt = [...os.options].find(o => o.text.trim() === RULE.operator);
+        if (oopt) os.value = oopt.value;
+        await sleep(700);
+
+        await clearLabels();
+        await zoomTo([valueCellSel], { level: 2.4, pad: 20, smooth: true, noScroll: true });
+        await highlight([valueCellSel], { label: `Value: "${RULE.value}"` });
+        const cell = doc.querySelector(valueCellSel);
+        const old = cell.querySelector('select, input');
+        const input = doc.createElement('input');
+        input.type = 'text'; input.className = 'wpforms-conditional-value';
+        input.placeholder = 'Enter value';
+        input.style.cssText = 'width:100%;box-sizing:border-box;';
+        if (old) old.replaceWith(input); else cell.appendChild(input);
+        for (let i = 1; i <= RULE.value.length; i++) { input.value = RULE.value.slice(0, i); await sleep(70); }
+      } },
+    { narration: 'cl-3', id:'rule-summary', chapter:'conditional-logic',
+      camera:  { focus: [ruleBoxSel], level: 1.6, pad: 10, noScroll: true },
+      overlays: [{ highlight: ruleBoxSel, label: `Send if ${RULE.field} ${RULE.operator} "${RULE.value}"` }],
+      labelDwell: 0.6, keepLabels: true },
+  ]);
+
+  await cursor.hide();
+
+  // ═══════════════════════════════════════════════════════════════════════
+  // 5) OUTRO — silent thanks card, BGM fades out
+  // ═══════════════════════════════════════════════════════════════════════
+  const outFade = document.createElement('div');
+  outFade.className = 'fade-cover cream';
+  document.body.appendChild(outFade);
+  requestAnimationFrame(() => outFade.classList.add('on'));
+  unmountWatermark();
+  await sleep(700);
+
+  const outro = await mountTitleCard({
+    eyebrow: 'Thanks for watching',
+    title: 'You\u2019re all set.',
+    subtitle: 'Learn more at <span class="url">wpforms.com/docs</span>',
+    useVideo: false,
+    metaChapter: { label: 'Chapter 09', kind: 'Outro' },
+    signoff: '— go build something',
+  });
+  await sleep(3400);
+  stopBGM(1500);
+
+  document.body.dataset.sceneDone = 'true';
+</script>
+</body>
+</html>

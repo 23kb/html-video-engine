@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Snapshot viewer</title>
+<link rel="stylesheet" href="/runtime/player.css">
+<style>
+  html, body { margin: 0; background: #1a1a1a; overflow: hidden;
+               width: 100vw; height: 100vh; font-family: -apple-system, 'Segoe UI', sans-serif; }
+  .stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .ui { width: 1440px; height: 900px; border: 0; background: #fff;
+        transform-origin: 0 0; }
+  .hud {
+    position: fixed; left: 16px; top: 16px; z-index: 1000;
+    background: rgba(20,20,24,0.92); color: #f7f7f9;
+    padding: 10px 14px; border-radius: 8px;
+    font: 500 12px/1.5 -apple-system, 'Segoe UI', sans-serif;
+    max-width: 520px; box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+  .hud code { font: 500 12px/1.4 'Fira Code', ui-monospace, monospace;
+              background: #2a2a32; padding: 2px 6px; border-radius: 4px; }
+  .hud .row { margin-top: 6px; display: flex; gap: 8px; align-items: center; }
+  .hud button { background: #E27730; color: white; border: 0; padding: 4px 10px;
+                border-radius: 4px; cursor: pointer; font: 600 11px/1 -apple-system, sans-serif; }
+  .picked { outline: 3px solid #E27730 !important; outline-offset: 2px !important; }
+</style>
+</head>
+<body class="with-stage-chrome">
+<div class="stage">
+  <iframe class="ui" id="frame"></iframe>
+</div>
+<div class="mac-frame"></div>
+<div class="mac-chrome">
+  <div class="tl r"></div><div class="tl y"></div><div class="tl g"></div>
+  <div class="title" id="macTitle">WPForms</div>
+</div>
+<div class="hud">
+  <div><b>Snapshot:</b> <span id="snap">—</span> <span id="sanTag" style="opacity:.6"></span></div>
+  <div class="row"><b>Selector:</b> <code id="sel">click any element</code>
+    <button id="copy">Copy</button></div>
+  <div class="row"><b>Rect:</b> <code id="rect">—</code></div>
+  <div style="opacity:.6;margin-top:6px">Iframe coords (pre-scale). Click element to pick.</div>
+</div>
+
+<script type="module">
+const qp = new URLSearchParams(location.search);
+const snap = qp.get('snap');
+const doSanitize = qp.get('sanitize') === '1';
+document.getElementById('snap').textContent = snap || '(missing ?snap=)';
+document.getElementById('sanTag').textContent = doSanitize ? '· sanitized' : '';
+if (!snap) throw new Error('missing ?snap=');
+document.getElementById('macTitle').textContent = snap;
+
+const frame = document.getElementById('frame');
+frame.src = `/snapshots/${snap}/index.html`;
+
+// Fit iframe into the stage (same approach as the Mac frame in player.css).
+function fit() {
+  const sw = window.innerWidth, sh = window.innerHeight;
+  const iw = 1440, ih = 900;
+  const scale = Math.min(sw / iw, sh / ih) * 0.94;
+  const x = (sw - iw * scale) / 2;
+  const y = (sh - ih * scale) / 2;
+  frame.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+}
+window.addEventListener('resize', fit);
+
+frame.addEventListener('load', async () => {
+  fit();
+  const doc = frame.contentDocument;
+  if (doSanitize) {
+    try {
+      const mod = await import(`/sanitize/${snap}.js`);
+      if (mod.default) mod.default(doc);
+    } catch (e) { console.warn('sanitize failed', e); }
+  }
+  installPicker(doc);
+});
+
+function cssPath(el) {
+  if (!el || el.nodeType !== 1) return '';
+  if (el.id) return '#' + el.id;
+  const parts = [];
+  while (el && el.nodeType === 1 && el !== el.ownerDocument.body) {
+    let s = el.tagName.toLowerCase();
+    if (el.classList.length) {
+      s += '.' + [...el.classList].slice(0, 3).join('.');
+    }
+    const parent = el.parentElement;
+    if (parent) {
+      const sibs = [...parent.children].filter(c => c.tagName === el.tagName);
+      if (sibs.length > 1) s += `:nth-of-type(${sibs.indexOf(el) + 1})`;
+    }
+    parts.unshift(s);
+    el = el.parentElement;
+    if (parts.length > 6) break;
+  }
+  return parts.join(' > ');
+}
+
+let lastPicked = null;
+function installPicker(doc) {
+  doc.addEventListener('click', (e) => {
+    e.preventDefault(); e.stopPropagation();
+    const el = e.target;
+    if (lastPicked) lastPicked.classList.remove('picked');
+    el.classList.add('picked'); lastPicked = el;
+    const sel = cssPath(el);
+    const r = el.getBoundingClientRect();
+    document.getElementById('sel').textContent = sel || '(body)';
+    document.getElementById('rect').textContent =
+      `x=${Math.round(r.left)} y=${Math.round(r.top)} w=${Math.round(r.width)} h=${Math.round(r.height)}`;
+  }, true);
+}
+
+document.getElementById('copy').addEventListener('click', () => {
+  const t = document.getElementById('sel').textContent;
+  navigator.clipboard.writeText(t).catch(() => {});
+});
+</script>
+</body>
+</html>

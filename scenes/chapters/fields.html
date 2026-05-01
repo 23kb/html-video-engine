@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CH2 — Fields</title>
+<link rel="stylesheet" href="../shared.css">
+</head>
+<body>
+<script type="module">
+import {
+  loadSnapshot, playNarration, startBGM, waitForStart,
+  mountWatermark, runBeatsAtTimes, cursor, sleep
+} from '../shared.js';
+
+await loadSnapshot('builder-settings-notifications');
+await waitForStart('▶ Play chapter: Fields');
+startBGM();
+mountWatermark();
+
+const N = 'notifications-2';
+const F = (k) => `#wpforms-panel-field-${N}-${k}-wrap`;
+
+// Narration: 23.5s total
+// "Six fields do all the heavy lifting." ~0 → 2.5
+// "Send To picks the recipient." ~2.5 → 5.0
+// "Subject Line is what shows up in the inbox." ~5.0 → 8.2
+// "From Name and" ~8.2 → 9.4
+// "From Email control who the email appears to be from — usually best to leave these as the site defaults." ~9.4 → 15.2
+// "Reply-To is where replies land when someone hits reply." ~15.2 → 19.0
+// "And Email Message is the body — by default, it includes every field the user filled out." ~19.0 → 23.5
+
+const beats = [
+  { at: 2.4,  id:'f-email',      chapter:'fields',
+    camera:{ focus:F('email'),          level:2.2, pad:14 },
+    overlays:[{ highlight:F('email'),          label:'Send To — where the notification email is sent' }] },
+  { at: 5.0,  id:'f-subject',    chapter:'fields',
+    camera:{ focus:F('subject'),        level:2.2, pad:14 },
+    overlays:[{ highlight:F('subject'),        label:'Email Subject Line — the email subject' }] },
+  { at: 8.2,  id:'f-from-name',  chapter:'fields',
+    camera:{ focus:F('sender_name'),    level:2.2, pad:14 },
+    overlays:[{ highlight:F('sender_name'),    label:'From Name — who the email appears to be from' }] },
+  { at: 9.4,  id:'f-from-email', chapter:'fields',
+    camera:{ focus:F('sender_address'), level:2.2, pad:14 },
+    overlays:[{ highlight:F('sender_address'), label:'From Email — sender address (usually keep default)' }] },
+  { at: 15.2, id:'f-replyto',    chapter:'fields',
+    camera:{ focus:F('replyto'),        level:2.2, pad:14 },
+    overlays:[{ highlight:F('replyto'),        label:'Reply-To — where replies go when someone hits Reply' }] },
+  { at: 19.0, id:'f-message',    chapter:'fields',
+    camera:{ focus:F('message'),        level:2.2, pad:14 },
+    overlays:[{ highlight:F('message'),        label:'Email Message — the body (defaults to {all_fields})' }] },
+];
+
+const { audio, ended } = await playNarration('fields');
+await runBeatsAtTimes(audio, beats);
+await ended;
+await cursor.hide();
+document.body.dataset.sceneDone = 'true';
+</script>
+</body>
+</html>

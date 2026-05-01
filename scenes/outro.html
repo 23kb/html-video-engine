@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Outro — Form Notifications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+<style>
+  :root {
+    --bg-cream:#fdf6ec; --bg-warm:#fff7ec;
+    --ink:#1e1410; --ink-2:#4c3a32;
+    --brand:#E27730; --brand-deep:#c96320; --amber:#f0a040; --teal:#2a8a7c;
+  }
+  html, body { margin:0; padding:0; background:#fbf4e3; overflow:hidden;
+               font-family:'Inter',-apple-system,sans-serif; color:var(--ink); }
+
+  .bg-base {
+    position:fixed; inset:0; z-index:0;
+    background:radial-gradient(ellipse at 50% 45%, #fcf6e7 0%, #f6edd4 70%, #eadfc0 100%);
+  }
+  .bg-vignette {
+    position:fixed; inset:0; z-index:1; pointer-events:none;
+    background:radial-gradient(ellipse at 50% 55%, transparent 40%, rgba(110,70,15,0.12) 100%);
+  }
+
+  #dust { position:fixed; inset:0; z-index:2; pointer-events:none; opacity:0; }
+
+  .sweep {
+    position:fixed; top:0; bottom:0; width:60%; z-index:3; pointer-events:none;
+    background:linear-gradient(90deg, transparent 0%, rgba(255,210,150,0.5) 45%, rgba(255,210,150,0.5) 55%, transparent 100%);
+    filter:blur(40px); mix-blend-mode:screen;
+    transform:translateX(-120%); opacity:0;
+  }
+
+  .wrap {
+    position:fixed; inset:0; z-index:10;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:0 8vw;
+    will-change:transform, filter;
+  }
+
+  .logo-stage {
+    width:180px; height:180px; margin-bottom:38px;
+    display:flex; align-items:center; justify-content:center;
+    filter:drop-shadow(0 22px 60px rgba(226,119,48,0.32))
+           drop-shadow(0 4px 12px rgba(0,0,0,0.08));
+    will-change:transform, opacity, filter;
+  }
+  .logo-stage img { width:160px; height:auto; object-fit:contain; }
+
+  .eyebrow-row {
+    display:flex; align-items:center; gap:18px;
+    margin-bottom:26px;
+    will-change:opacity;
+  }
+  .eyebrow-bar {
+    width:40px; height:1px; background:var(--brand-deep);
+    transform-origin:left center; will-change:transform;
+  }
+  .eyebrow-bar.right { transform-origin:right center; }
+  .eyebrow {
+    font-family:'Inter',sans-serif; font-weight:600;
+    font-size:15px; letter-spacing:0.38em; text-transform:uppercase;
+    color:var(--brand-deep);
+    will-change:transform, opacity;
+    display:inline-block;
+  }
+
+  .title {
+    font-family:'Instrument Serif', 'Georgia', serif;
+    font-weight:400;
+    font-size:168px; line-height:1.02; letter-spacing:-0.025em;
+    color:#14110a;
+    max-width:1400px;
+  }
+  .title .w {
+    display:inline-block; margin:0 0.12em;
+    will-change:transform, opacity, filter, background-position;
+    position:relative;
+  }
+  .title .w.italic { font-style:italic; color:#2a1f0a; }
+
+  .title .w.is-gradient {
+    background:linear-gradient(90deg,
+      #14110a 0%, #14110a 12%,
+      #5a3215 22%, var(--brand) 38%, var(--amber) 55%, var(--teal) 72%,
+      #14110a 88%, #14110a 100%);
+    -webkit-background-clip:text; background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-size:300% 100%;
+    background-position:100% 0;
+  }
+
+  .subtitle {
+    font-family:'Inter',sans-serif; font-weight:400;
+    font-size:28px; line-height:1.45;
+    color:var(--ink-2);
+    max-width:860px; margin-top:40px;
+    will-change:transform, opacity, filter;
+  }
+  .subtitle .url {
+    color:var(--brand-deep); font-weight:500;
+    border-bottom:1px solid rgba(201,99,32,0.4);
+    padding-bottom:2px;
+  }
+
+  .meta {
+    position:fixed; bottom:48px; left:52px; z-index:20;
+    font-family:'Inter',sans-serif; font-weight:500;
+    font-size:13px; letter-spacing:0.24em; text-transform:uppercase;
+    color:rgba(30,20,16,0.55);
+    display:flex; align-items:center; gap:14px;
+    will-change:opacity;
+  }
+  .meta .tick { width:6px; height:6px; border-radius:50%; background:var(--brand); }
+  .meta .sep { width:24px; height:1px; background:rgba(30,20,16,0.3); }
+
+  /* Bottom-right sign-off mark */
+  .signoff {
+    position:fixed; bottom:48px; right:52px; z-index:20;
+    font-family:'Instrument Serif', serif; font-style:italic;
+    font-size:22px; color:rgba(30,20,16,0.55);
+    will-change:opacity, transform;
+  }
+
+  .start-gate {
+    position:fixed; inset:0; z-index:950;
+    display:flex; align-items:center; justify-content:center;
+    background:#fbf4e3; cursor:pointer;
+  }
+  .start-gate .start-btn {
+    padding:20px 48px; font:600 22px/1 'Inter', sans-serif;
+    background:var(--brand); color:#fff; border:0; border-radius:12px;
+    cursor:pointer; letter-spacing:0.03em;
+    box-shadow:0 16px 44px rgba(226,119,48,0.4);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .start-gate .start-btn:hover { transform:translateY(-2px); box-shadow:0 20px 54px rgba(226,119,48,0.5); }
+  .start-gate.exit { opacity:0; transition:opacity .45s ease .1s; pointer-events:none; }
+</style>
+</head>
+<body>
+  <div class="bg-base"></div>
+  <canvas id="dust"></canvas>
+  <div class="sweep" id="sweep"></div>
+  <div class="bg-vignette"></div>
+
+  <div class="wrap" id="wrap">
+    <div class="logo-stage" id="logo">
+      <img src="/assets/wpforms-mark.png" alt="WPForms">
+    </div>
+
+    <div class="eyebrow-row">
+      <div class="eyebrow-bar" id="ebar-l"></div>
+      <div class="eyebrow" id="eyebrow">Thanks for watching</div>
+      <div class="eyebrow-bar right" id="ebar-r"></div>
+    </div>
+
+    <div class="title" id="title">You're all set.</div>
+
+    <div class="subtitle" id="subtitle">
+      Learn more at <span class="url">wpforms.com/docs</span>
+    </div>
+  </div>
+
+  <div class="meta" id="meta">
+    <span class="tick"></span><span>Chapter 09</span>
+    <span class="sep"></span><span>Outro</span>
+  </div>
+  <div class="signoff" id="signoff">— go build something</div>
+
+  <div class="start-gate" id="gate"><button class="start-btn">▶ Start</button></div>
+
+  <script type="module">
+    import { startBGM } from './shared.js';
+
+    const titleEl = document.getElementById('title');
+    const rawWords = titleEl.textContent.trim().split(/\s+/);
+    titleEl.innerHTML = rawWords.map((w,i) =>
+      `<span class="w${i === rawWords.length - 1 ? ' italic' : ''}">${w}</span>`
+    ).join(' ');
+    const wordEls = titleEl.querySelectorAll('.w');
+
+    const wrap     = document.getElementById('wrap');
+    const logo     = document.getElementById('logo');
+    const eyebrow  = document.getElementById('eyebrow');
+    const ebarL    = document.getElementById('ebar-l');
+    const ebarR    = document.getElementById('ebar-r');
+    const subtitle = document.getElementById('subtitle');
+    const meta     = document.getElementById('meta');
+    const signoff  = document.getElementById('signoff');
+    const sweep    = document.getElementById('sweep');
+    const dust     = document.getElementById('dust');
+
+    function initDust() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      dust.width = innerWidth * dpr;
+      dust.height = innerHeight * dpr;
+      dust.style.width = innerWidth + 'px';
+      dust.style.height = innerHeight + 'px';
+      const ctx = dust.getContext('2d');
+      ctx.scale(dpr, dpr);
+
+      const N = 70;
+      const particles = Array.from({length:N}, () => ({
+        x: Math.random() * innerWidth,
+        y: Math.random() * innerHeight,
+        r: 0.6 + Math.random() * 2.2,
+        vx: (Math.random() - 0.5) * 0.15,
+        vy: -0.05 - Math.random() * 0.12,
+        a: 0.15 + Math.random() * 0.45,
+        hue: Math.random() < 0.5 ? '255, 180, 110' : '255, 210, 160'
+      }));
+      function frame() {
+        ctx.clearRect(0, 0, innerWidth, innerHeight);
+        for (const p of particles) {
+          p.x += p.vx; p.y += p.vy;
+          if (p.y < -10) { p.y = innerHeight + 10; p.x = Math.random() * innerWidth; }
+          if (p.x < -10) p.x = innerWidth + 10;
+          if (p.x > innerWidth + 10) p.x = -10;
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(${p.hue},${p.a})`;
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        requestAnimationFrame(frame);
+      }
+      frame();
+    }
+
+    gsap.set(wrap, { filter: 'blur(22px)' });
+    gsap.set(logo, { opacity: 0, scale: 0.68, y: 24, rotation: -4 });
+    gsap.set([ebarL, ebarR], { scaleX: 0 });
+    gsap.set(eyebrow, { opacity: 0, y: 8, letterSpacing: '0.5em' });
+
+    const slideDistances = rawWords.map((_, i) => Math.max(50, 380 - i * 120));
+    wordEls.forEach((el, i) => {
+      gsap.set(el, {
+        x: slideDistances[i], y: 20, opacity: 0, filter: 'blur(14px)'
+      });
+    });
+
+    gsap.set(subtitle, { opacity: 0, y: 18, filter: 'blur(8px)' });
+    gsap.set(meta, { opacity: 0, y: 6 });
+    gsap.set(signoff, { opacity: 0, x: 20 });
+
+    function runScene() {
+      initDust();
+      gsap.to(dust, { opacity: 1, duration: 1.4, ease: 'power2.out' });
+
+      const tl = gsap.timeline();
+
+      tl.to(wrap, {
+        filter: 'blur(0px)', duration: 0.85, ease: 'power2.out'
+      }, 0);
+
+      tl.fromTo(sweep,
+        { x: '-120vw', opacity: 0 },
+        { x: '120vw', opacity: 1, duration: 1.6, ease: 'power2.inOut',
+          onComplete: () => gsap.to(sweep, { opacity: 0, duration: 0.3 }) },
+        0.1);
+
+      tl.to(logo, {
+        opacity: 1, scale: 1, y: 0, rotation: 0,
+        duration: 1.15, ease: 'back.out(1.8)'
+      }, 0.35);
+
+      tl.to([ebarL, ebarR], {
+        scaleX: 1, duration: 0.7, ease: 'expo.out'
+      }, 0.75);
+      tl.to(eyebrow, {
+        opacity: 1, y: 0, letterSpacing: '0.38em',
+        duration: 0.8, ease: 'expo.out'
+      }, 0.82);
+
+      const wordOnsets = rawWords.map((_, i) => 1.05 + i * 0.16);
+      wordEls.forEach((el, i) => {
+        tl.to(el, {
+          x: 0, y: 0, opacity: 1, filter: 'blur(0px)',
+          duration: 0.9, ease: 'expo.out'
+        }, wordOnsets[i]);
+      });
+
+      const lastWordLand = wordOnsets[wordOnsets.length - 1] + 0.4;
+
+      tl.add(() => { wordEls.forEach(w => w.classList.add('is-gradient')); }, lastWordLand + 0.05);
+      tl.to(wordEls, {
+        backgroundPosition: '0% 0',
+        duration: 1.0, ease: 'power2.out',
+        stagger: 0.06
+      }, lastWordLand + 0.1);
+
+      tl.to(wrap, { scale: 1.015, duration: 0.12, ease: 'power2.out' }, lastWordLand + 0.12);
+      tl.to(wrap, { scale: 1,     duration: 0.32, ease: 'power2.inOut' }, lastWordLand + 0.24);
+
+      tl.to(subtitle, {
+        opacity: 1, y: 0, filter: 'blur(0px)',
+        duration: 0.8, ease: 'power3.out'
+      }, lastWordLand + 0.35);
+
+      tl.to(meta,    { opacity: 1, y: 0, duration: 0.6, ease: 'power2.out' }, lastWordLand + 0.55);
+      tl.to(signoff, { opacity: 1, x: 0, duration: 0.7, ease: 'power2.out' }, lastWordLand + 0.7);
+
+      tl.to(eyebrow, {
+        letterSpacing: '0.42em', duration: 0.9,
+        ease: 'sine.inOut', yoyo: true, repeat: 1
+      }, lastWordLand + 0.7);
+
+      // Hold longer for outro
+      tl.addLabel('holdEnd', '+=3.8');
+
+      tl.to(wordEls, {
+        y: -36, x: -20, scale: 1.06, opacity: 0, filter: 'blur(16px)',
+        duration: 0.6, ease: 'power2.in',
+        stagger: 0.05
+      }, 'holdEnd');
+
+      tl.to([eyebrow, ebarL, ebarR, subtitle, meta, signoff], {
+        y: -18, opacity: 0, filter: 'blur(8px)',
+        duration: 0.5, ease: 'power2.in'
+      }, 'holdEnd');
+
+      tl.to(logo, {
+        scale: 1.18, opacity: 0, filter: 'blur(8px)',
+        duration: 0.65, ease: 'power2.in'
+      }, 'holdEnd+=0.05');
+
+      tl.to(wrap, { filter: 'blur(18px)', duration: 0.55, ease: 'power2.in' }, 'holdEnd+=0.05');
+      tl.to(dust, { opacity: 0, duration: 0.6, ease: 'power2.in' }, 'holdEnd');
+
+      tl.call(() => { document.body.dataset.sceneDone = 'true'; });
+    }
+
+    document.getElementById('gate').addEventListener('click', (e) => {
+      const gate = e.currentTarget;
+      gate.classList.add('exit');
+      setTimeout(() => gate.remove(), 500);
+      startBGM();
+      runScene();
+    }, { once: true });
+  </script>
+</body>
+</html>
