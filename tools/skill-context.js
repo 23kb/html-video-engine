@@ -64,6 +64,7 @@ const ON_DEMAND = [
   { path: 'docs/wpforms-ai-guided-handoff.md', when: 'Working on WPForms-AI-specific video work.' },
   { path: 'docs/chapter-module-contract.md', when: 'Authoring a chapter module from scratch and need the locked interface spec.' },
   { path: 'docs/stage-4-core-api-plan.md', when: 'Governance/history only. Use for refactor planning, not normal video authoring.' },
+  { path: 'docs/gsap-flip-patterns.md', when: 'Authoring a beat or postIntro that morphs layout, reparents elements, pins editorial DOM to real UI, or clones real iframe UI for animation. Two validated sandboxes (flip-sandbox, flip-generate-card).' },
 ];
 
 const REFERENCE_VIDEOS = [
