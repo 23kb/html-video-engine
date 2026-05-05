@@ -119,6 +119,10 @@ For video-local concept beats, the practical tools are:
 - **GSAP-style timelines** for complex timing after approval. Normal video
   chapters should stay video-local and avoid direct runtime imports; ask before
   promoting a reusable GSAP cinematic into `runtime/`.
+- **GSAP Flip plugin** for layout-change, parent-change, pin-to-UI,
+  state-driven reflow, and real-UI clone-and-morph patterns. See
+  `docs/gsap-flip-patterns.md` for the loader, discipline rules, and the two
+  validated sandboxes (`flip-sandbox`, `flip-generate-card`).
 
 If the approved concept needs HTML/CSS/SVG/GSAP, build that animation with an
 approved video-local surface or ask to promote a reusable runtime cinematic.
