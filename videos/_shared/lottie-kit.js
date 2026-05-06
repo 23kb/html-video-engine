@@ -4,8 +4,8 @@
 // Lottie is loaded lazily so GSAP-only and Three.js-only videos do not pay for
 // this bundle.
 // Phase 1 ships a single autoplay-driven helper with timeline start/stop hooks.
-// Phase 2 candidate: drive animation.currentFrame from GSAP for frame-precise
-// choreography and sub-frame timing control.
+// Phase 2 adds frame-driven GSAP scrubbing for precise forward/reverse/hold
+// choreography.
 
 let lottiePromise = null;
 
@@ -46,6 +46,12 @@ export function mountLottie(src, {
   if (typeof src === 'string') config.path = src;
   else config.animationData = src;
   let animation = lottie.loadAnimation(config);
+  // Keep Lottie's ticker quiet after assets load; GSAP drives Phase 2 frames.
+  const pauseOnLoaded = () => {
+    animation.removeEventListener('DOMLoaded', pauseOnLoaded);
+    animation.pause();
+  };
+  animation.addEventListener('DOMLoaded', pauseOnLoaded);
 
   return {
     container,
@@ -53,6 +59,24 @@ export function mountLottie(src, {
     tweenInto(tl, { duration = animation.getDuration(false), position = 0 } = {}) {
       tl.call(() => animation.goToAndPlay(0, true), [], position);
       tl.call(() => animation.stop(), [], position + duration);
+      return tl;
+    },
+    tweenFrames(tl, {
+      from = 0,
+      to = animation.totalFrames - 1,
+      duration,
+      position = 0,
+      ease = 'none',
+    } = {}) {
+      if (duration == null) throw new Error('tweenFrames: duration is required');
+      const proxy = { frame: from };
+      animation.goToAndStop(proxy.frame, true);
+      tl.to(proxy, {
+        frame: to,
+        duration,
+        ease,
+        onUpdate: () => animation.goToAndStop(proxy.frame, true),
+      }, position);
       return tl;
     },
     dispose() {
