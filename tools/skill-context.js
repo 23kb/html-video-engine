@@ -26,6 +26,13 @@ const AUTHORING_SKELETONS = [
   { path: 'docs/examples/choice-field-generate-choices-skeleton.md', why: 'Choice-field AI Generate Choices flow: button, modal, generated choices, apply result.' },
 ];
 
+const CAPABILITY_KITS = [
+  { path: 'videos/_shared/atmospheric.js', importPath: '../../_shared/atmospheric.js', why: 'Marketing-mode helpers: grain, sweep, parallax pair, scale push, dark backdrop.' },
+  { path: 'videos/_shared/text-kit.js', importPath: '../../_shared/text-kit.js', why: 'Pixel-point-style text reveals with seven presets; compose with tweenInto(tl, opts).' },
+  { path: 'videos/_shared/lottie-kit.js', importPath: '../../_shared/lottie-kit.js', why: 'Lottie editorial bumpers, stings, badges, and marker/frame-driven micro-animations.' },
+  { path: 'videos/_shared/three-kit.js', importPath: '../../_shared/three-kit.js', why: 'Three.js scene helpers for editorial 3D layers, loaded separately from the universal kit.' },
+];
+
 // Production-truth rules surfaced inline so a session sees them immediately.
 // Keep terse; governance/history lives in the stage plans.
 const STAGE_4_RULES = [
@@ -190,6 +197,7 @@ function buildContext() {
     startRule: 'When the user asks to make a video, begin with intake + snapshot inventory + storyboard. The user should not have to restate protected-core, product-truth, or postIntro rules.',
     requiredReads: REQUIRED_READS.map(r => ({ ...r, present: exists(r.path) })),
     authoringSkeletons: AUTHORING_SKELETONS.map(r => ({ ...r, present: exists(r.path) })),
+    capabilityKits: CAPABILITY_KITS.map(r => ({ ...r, present: exists(r.path) })),
     operatorManuals: OPERATOR_MANUALS.map(r => ({ ...r, present: exists(r.path) })),
     onDemandDocs: ON_DEMAND.map(r => ({ ...r, present: exists(r.path) })),
     referenceVideos: REFERENCE_VIDEOS.map(r => ({ ...r, present: exists(`videos/${r.slug}`) })),
@@ -245,6 +253,13 @@ function printHuman(ctx) {
   out.push('## Default authoring skeletons (legacy-first; copy before old packages)');
   for (const r of ctx.authoringSkeletons) {
     out.push(`  ${r.present ? '✓' : '✗'} ${r.path}`);
+    out.push(`      ${r.why}`);
+  }
+  out.push('');
+  out.push('## Shared capability kits (opt-in imports)');
+  for (const r of ctx.capabilityKits) {
+    out.push(`  ${r.present ? '✓' : '✗'} ${r.path}`);
+    out.push(`      import: ${r.importPath}`);
     out.push(`      ${r.why}`);
   }
   out.push('');
