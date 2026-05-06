@@ -55,7 +55,11 @@ export default {
 
 Rules:
 
-- Import only local selector files.
+- Allowed imports: `./_selectors*.js`, `./_kit.js` (per-video), and
+  `../../_shared/kit.js` (universal video-author helpers — vendored GSAP
+  loader, scene layer, click ripple, cursor styling, font loader, text
+  splitting, iframe transform helpers, clone-from-iframe). See
+  `docs/chapter-module-contract.md` → "Shared video-author kit".
 - Do not import from `engine/`, `runtime/`, or `scenes/`.
 - Do not use descriptor step fields such as `do`, `target`, `after`, or
   descriptor verb signatures inside legacy `effect()` bodies.

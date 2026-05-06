@@ -590,6 +590,15 @@ nothing from `engine/`, `scenes/`, or `runtime/` except the
 allowlisted `/runtime/chapter-api.js`. All helpers flow through
 ctx.
 
+Chapter modules may also import from `videos/_shared/kit.js` for
+universal video-author helpers (vendored GSAP loader, scene layer
+/ cursor / font helpers, text splitting, click ripple, iframe
+transform helpers, clone-from-iframe). Per-video `_kit.js` files
+remain allowed for video-specific helpers. When a video is
+accepted, review its `_kit.js` and lift any reusable helpers into
+`videos/_shared/kit.js`. See `docs/chapter-module-contract.md` →
+"Shared video-author kit" for details.
+
 ## 12. Validator
 
 `tools/validate-video.js` is the static gate for chapter

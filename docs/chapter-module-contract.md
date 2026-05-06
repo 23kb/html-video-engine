@@ -35,7 +35,9 @@ video-html-only runtime side. Do not change without coordinating both.
 > - Chapter modules must not directly import from `runtime/`, `engine/`,
 >   or `scenes/` except the approved contract files/patterns already
 >   documented above (e.g. `./_selectors*.js`, the `defineChapter` import
->   from `/runtime/chapter-api.js`). Everything else flows through `ctx`.
+>   from `/runtime/chapter-api.js`, and `../../_shared/kit.js` for the
+>   shared video-author kit — see "Shared video-author kit" below).
+>   Everything else flows through `ctx`.
 > - `docs/wpforms-field-state-inventory.md` is product-truth evidence
 >   for field-state DOM changes. Cite the relevant section when staging
 >   a derived state.
@@ -44,6 +46,29 @@ video-html-only runtime side. Do not change without coordinating both.
 >   descriptor in `docs/stage-4-core-api-plan.md` instead of editing
 >   core. Approval is required before any new shared helper file lands.
 >
+> **Shared video-author kit (2026-05-06).** Helpers reusable across
+> videos live in `videos/_shared/kit.js` (vendored GSAP loader, scene
+> layer / cursor / font helpers, text splitting, click ripple, iframe
+> transform helpers, clone-from-iframe). Chapter modules may import from
+> `../../_shared/kit.js` directly, or via a per-video `_kit.js` that
+> re-exports from shared and adds video-specific helpers on top.
+>
+> Per-video `_kit.js` files remain allowed for video-specific helpers
+> and for in-development helpers that haven't been promoted yet.
+>
+> **Promote at ship time.** When a video is accepted, review its
+> `_kit.js` for helpers reusable across videos. Lift those into
+> `videos/_shared/kit.js` and update the per-video `_kit.js` to
+> re-export from shared. Helpers that are genuinely video-specific stay
+> local. This avoids both premature standardization (forcing shared too
+> early) and forever-duplication (every video re-authoring the same
+> primitives).
+>
+> Transition-fix prototypes living inside per-video kits (e.g. WPForms AI's
+> `freezeChrome` / `mountBlurCover` / `migrateOverlayToHtml`) stay local
+> until the cross-snapshot transition overhaul reviews them — that work
+> is gated separately as protected-core.
+
 > **Phase 7 input contract (2026-04-25).** The upstream input to a
 > chapter module is `videos/<slug>/brief.md`. Its schema, required
 > front matter, body shapes for `mode: doc` / `mode: steps`,

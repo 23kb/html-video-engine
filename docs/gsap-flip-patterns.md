@@ -28,31 +28,29 @@ touching protected core.
 
 ## Loader pattern
 
-Flip is loaded by chapter-local `_kit.js`, mirroring the existing GSAP loader
-pattern. The shared `runtime/cinematic-kit/gsap-loader.js` is protected core
-and only loads core GSAP — adding plugins there is approval-gated.
+Flip is loaded via `videos/_shared/kit.js`'s `loadGsap()`, which lazy-loads
+the vendored GSAP at `/vendor/gsap/3.12.5/` plus Flip and MotionPathPlugin
+from the same vendor directory. Chapter modules either import `loadGsap`
+directly from shared, or via a per-video `_kit.js` that re-exports from
+shared (with optional back-compat aliases like `loadGsapFlip`).
 
 ```js
-let p = null;
-export function loadGsapFlip() {
-  if (window.gsap && window.Flip) return Promise.resolve(window.gsap);
-  if (p) return p;
-  const load = (src) => new Promise((res, rej) => {
-    const s = document.createElement('script');
-    s.src = src; s.onload = res; s.onerror = rej;
-    document.head.appendChild(s);
-  });
-  p = (async () => {
-    if (!window.gsap) await load('https://unpkg.com/gsap@3/dist/gsap.min.js');
-    if (!window.Flip) await load('https://unpkg.com/gsap@3/dist/Flip.min.js');
-    window.gsap.registerPlugin(window.Flip);
-    return window.gsap;
-  })();
-  return p;
-}
+// Direct import from shared (recommended for new videos):
+import { loadGsap } from '../../_shared/kit.js';
+await loadGsap(); // both Flip and MotionPathPlugin loaded by default
+// Or opt out of plugins you don't need:
+await loadGsap({ flip: true, motionPath: false });
 ```
 
-CDN family matches `runtime/cinematic-kit/gsap-loader.js` (`unpkg.com/gsap@3/...`).
+Per-video `_kit.js` may re-export with a back-compat alias:
+```js
+export { loadGsap as loadGsapFlip } from '../../_shared/kit.js';
+```
+
+`window.gsap` is shared with `runtime/cinematic-kit/gsap-loader.js` so a
+chapter and a runtime cinematic on the same page use the same library
+instance. See `docs/chapter-module-contract.md` → "Shared video-author kit"
+for the full contract.
 
 ## Authoring discipline (mandatory)
 

@@ -18,7 +18,7 @@ export function loadGsap() {
   if (gsapReady) return gsapReady;
   gsapReady = new Promise((resolve, reject) => {
     const s = document.createElement('script');
-    s.src = 'https://unpkg.com/gsap@3/dist/gsap.min.js';
+    s.src = '/vendor/gsap/3.12.5/gsap.min.js';
     s.onload = () => resolve(window.gsap);
     s.onerror = (e) => {
       gsapReady = null; // allow retry
