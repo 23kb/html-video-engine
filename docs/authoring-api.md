@@ -606,6 +606,8 @@ accepted, review its `_kit.js` and lift any reusable helpers into
 - `videos/_shared/lottie-kit.js` (`../../_shared/lottie-kit.js`) embeds Lottie animations for editorial bumpers, stings, badges, and micro-illustrations. Use it when the asset is editorial chrome above the WPForms surface.
 - `videos/_shared/three-kit.js` (`../../_shared/three-kit.js`) provides Three.js scene helpers for editorial 3D layers. It stays separate so non-3D videos do not load Three.js.
 
+GSAP code in any of these kits or in chapter `effect()` bodies must follow `docs/gsap-rules.md` (L0 discipline rules).
+
 ## 12. Validator
 
 `tools/validate-video.js` is the static gate for chapter

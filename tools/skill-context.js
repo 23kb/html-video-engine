@@ -67,6 +67,7 @@ const ON_DEMAND = [
   { path: 'docs/wpforms-field-state-inventory.md', when: 'Canonical source only. Query it with `node tools/field-state.js`; do not full-read by default.' },
   { path: 'docs/wpforms-ai-state-inventory.md', when: 'Need exact WPForms AI UI state references.' },
   { path: 'docs/two-video-pattern-audit.md', when: 'Judging whether a pattern is proven across reference videos.' },
+  { path: 'docs/gsap-rules.md', when: 'GSAP discipline (L0) - read before writing or reviewing chapter effect() GSAP code.' },
   { path: 'docs/checkboxes-rescue-handoff.md', when: 'Working on Checkboxes-specific video work.' },
   { path: 'docs/wpforms-ai-guided-handoff.md', when: 'Working on WPForms-AI-specific video work.' },
   { path: 'docs/chapter-module-contract.md', when: 'Authoring a chapter module from scratch and need the locked interface spec.' },

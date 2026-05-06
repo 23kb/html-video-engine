@@ -29,6 +29,8 @@ For a new video session:
 6. Read only the needed section of `docs/video-production-templates.md`.
    `videos/_shared/` also contains opt-in capability kits beyond `kit.js`;
    `docs/authoring-api.md` lists them.
+7. When writing or reviewing GSAP code, also read `docs/gsap-rules.md`
+   (L0 universal discipline).
 
 Do not use `CONTINUE.md`. Do not reread historical stage plans unless the user
 asks for governance/history.
