@@ -599,6 +599,13 @@ accepted, review its `_kit.js` and lift any reusable helpers into
 `videos/_shared/kit.js`. See `docs/chapter-module-contract.md` →
 "Shared video-author kit" for details.
 
+### Capability kits
+
+- `videos/_shared/atmospheric.js` (`../../_shared/atmospheric.js`) provides marketing-mode helpers: grain, sweep, parallax pair, scale push, and dark backdrop. Compose each helper into the caller's master timeline with `tweenInto(tl, opts)`.
+- `videos/_shared/text-kit.js` (`../../_shared/text-kit.js`) provides pixel-point-style text reveals with seven presets. Compose each reveal into the caller's master timeline with `tweenInto(tl, opts)`.
+- `videos/_shared/lottie-kit.js` (`../../_shared/lottie-kit.js`) embeds Lottie animations for editorial bumpers, stings, badges, and micro-illustrations. Use it when the asset is editorial chrome above the WPForms surface.
+- `videos/_shared/three-kit.js` (`../../_shared/three-kit.js`) provides Three.js scene helpers for editorial 3D layers. It stays separate so non-3D videos do not load Three.js.
+
 ## 12. Validator
 
 `tools/validate-video.js` is the static gate for chapter

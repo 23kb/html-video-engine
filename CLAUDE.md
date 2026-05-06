@@ -27,6 +27,8 @@ For a new video session:
    - `docs/examples/legacy-audio-cued-skeleton.md`
 5. Read `docs/postintro-patterns.md` for postIntro design.
 6. Read only the needed section of `docs/video-production-templates.md`.
+   `videos/_shared/` also contains opt-in capability kits beyond `kit.js`;
+   `docs/authoring-api.md` lists them.
 
 Do not use `CONTINUE.md`. Do not reread historical stage plans unless the user
 asks for governance/history.
