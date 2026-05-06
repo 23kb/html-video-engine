@@ -53,6 +53,23 @@ video-html-only runtime side. Do not change without coordinating both.
 > `../../_shared/kit.js` directly, or via a per-video `_kit.js` that
 > re-exports from shared and adds video-specific helpers on top.
 >
+> Three.js scene helpers live in `videos/_shared/three-kit.js`
+> (vendored at `/vendor/three/0.169.0/three.module.min.js`,
+> ESM-only since r148). Chapter modules may import from
+> `../../_shared/three-kit.js` directly. `three-kit.js` is split off
+> from `kit.js` so GSAP-only videos don't pull the ~600 KB Three.js
+> bundle. Per-video `_kit.js` may re-export from either shared kit.
+>
+> Atmospheric helpers (grain, sweep, parallax pair, scale push, dark backdrop)
+> live in `videos/_shared/atmospheric.js`. Chapter modules may import directly
+> from `../../_shared/atmospheric.js`. Each helper is independent and additive;
+> compose into the caller's master timeline via `tweenInto(tl, opts)`.
+>
+> Pixel-point-style text reveals live in `videos/_shared/text-kit.js` with seven
+> presets (mask-reveal-up, top-down-letters, focus-blur-resolve, spring-scale-in,
+> soft-blur-in, per-character-rise, micro-scale-fade). Same `tweenInto(tl, opts)`
+> pattern. Full pixel-point parity (24 presets) is a deferred future enhancement.
+>
 > Per-video `_kit.js` files remain allowed for video-specific helpers
 > and for in-development helpers that haven't been promoted yet.
 >
