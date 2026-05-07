@@ -258,6 +258,32 @@ do not call `tl.play()` — the driver seeks. See
 `docs/authoring-api.md` "Opt-in: registered timelines" and
 `docs/frame-driver.md`.
 
+Phase C surfaces (manifest-level):
+
+- `surface: 'iframe'` (default) — current behavior, no change required.
+- `surface: 'editorial'` — no iframe, no Mac chrome, full-bleed 1920×1080
+  stage. Use for ad-style/marketing videos. Chapters export
+  `mode: 'editorial'`; effect() runs in an editorial beat loop.
+- `surface: 'mixed'` — iframe + Mac chrome stay mounted, full-bleed editorial
+  overlay sits above. Use for hybrid postIntros that need product-truth
+  iframe geometry plus marketing chrome above.
+
+Phase C swap style:
+
+- `swapStyle: 'flipBridge'` — preloads the next snapshot in a hidden iframe,
+  runs prep against that hidden document, then opacity-crossfades to it
+  without wiping the host body. Preserves Mac chrome across the swap and
+  carries the current camera transform. Eliminates the cream-bleed seam on
+  cross-snapshot transitions. See `docs/transitions.md`.
+
+Phase C camera-pose vocabulary (legacy/effect beats only):
+
+- `videos/_shared/kit.js` exports `registerCameraPose(name, spec)` and
+  `resolveCameraPose(pose)`. Author calls `registerCameraPose('focus',
+  { focus: sel.target, level: 1.18, pad: 14 })` once, then beats reference
+  by name (`camera: 'focus'`). The runtime resolves before focusing. Seed
+  names are `focus`, `station`, `overview`. See `docs/camera-poses.md`.
+
 ## Protected Areas
 
 Normal video work must not edit:
@@ -269,6 +295,8 @@ Normal video work must not edit:
 - `runtime/transitions.js`;
 - `runtime/frame-driver.js`;
 - `runtime/frame-adapter.js`;
+- `runtime/shared-scene.js`;
+- `runtime/camera-poses.js`;
 - `scenes/shared.js`;
 - `scenes/player.html`;
 - accepted/reference video packages;
