@@ -1,310 +1,137 @@
-# AGENTS.md - operator manual for this repo
+# AGENTS.md — operator manual for this repo
 
-You are the video-building agent for WPForms tutorial videos. This repo turns
-an approved storyboard into a playable HTML video: mesh background,
-Mac-framed iframe, BGM, narration, overlays, postIntro, chapters, and title
-cards. MP4 capture is external, but the agent still hands over playable HTML
-review URLs.
+You are the video-building agent for WPForms tutorial videos and ad-style release/announcement videos. The repo turns an approved storyboard into a playable HTML video. MP4 capture is in-repo via `tools/render.js`; the deliverable is a playable HTML review URL.
 
-This manual is intentionally short. The canonical startup dump is:
+This manual is intentionally short. **Topic-scoped rules live in skills**, not here. Load the skill that matches your task:
 
-```text
-node tools/skill-context.js
-```
+- `wpforms-video` — tutorial authoring, intake, storyboard gate, default authoring mode
+- `wpforms-postintro` — postIntro design + multi-animation rule
+- `wpforms-gsap-rules` — GSAP discipline + registered timelines + `pausableRaf`
+- `wpforms-marketing` — editorial / ad-style surfaces + blocks + atmospheric kit
+- `wpforms-transitions` — chapter breaks, swap styles (`flipBridge`), camera poses, scrubber/render
 
 ## Start Here
 
-For a new video session:
+1. Run `node tools/skill-context.js` once per session if not in context.
+2. Identify the task type, load the matching skill above.
+3. For repo-wide context (boot order, protected core, validation), this file is canonical.
+4. For topic content (postIntro shape, GSAP rules, etc.), read the skill — not this file.
 
-1. Run `node tools/skill-context.js` once if its output is not already in
-   context.
-2. Read `docs/current-workflow.md`.
-3. Read `docs/authoring-api.md` for the public authoring contract.
-4. Use the legacy-first skeletons as the first copy targets:
-   - `docs/examples/legacy-manifest-skeleton.md`
-   - `docs/examples/legacy-chapter-skeleton.md`
-   - `docs/examples/legacy-postintro-effect-skeleton.md`
-   - `docs/examples/legacy-audio-cued-skeleton.md`
-5. Read `docs/postintro-patterns.md` for postIntro design.
-6. Read only the needed section of `docs/video-production-templates.md`.
-
-Do not use `CONTINUE.md`. Do not reread historical stage plans unless the user
-asks for governance/history.
-
-## Intake
-
-Do not run a 5-question ritual. Capture the topic, slug, source links,
-audience, must-show states, and constraints from the user's prompt and
-reasonable defaults. Ask only for blockers that cannot be discovered locally
-and would make the storyboard unsafe.
-
-The user should not have to remind you:
-
-- do not edit protected core;
-- do not fabricate WPForms UI;
-- do not skip or weaken postIntro;
-- do not read accepted video packages at startup.
+`docs/INDEX.md` is a one-line-per-doc index. Use it to find the right doc fast.
 
 ## Token Discipline
 
 - Use targeted tools before broad shell searches.
-- Snapshot inventory: `node tools/list-snapshots.js --search <topic>`.
-- Existing video dependency check: `node tools/list-snapshots.js --for <slug>`.
-- Selector discovery:
-  `node tools/inspect-snapshot.js <snapshot> --emit-selectors [--filter <text>]`.
+- Snapshot inventory: `node tools/list-snapshots.js [--search <q>] [--for <slug>]`.
+- Selector discovery: `node tools/inspect-snapshot.js <snapshot> --emit-selectors [--filter <text>]`.
 - Selector validation: `node tools/verify-selectors.js <snapshot> ...`.
-- Field-state evidence:
-  `node tools/field-state.js --field <name> [--section <name>] [--summary]`.
-- Use scripts to find relevant snapshots. One negative search is not proof a
-  snapshot is missing.
-- Do not full-read `docs/wpforms-field-state-inventory.md` during normal
-  authoring. It is canonical, but `tools/field-state.js` is the normal access
-  path.
-- Do not list or read `videos/` packages during startup. Accepted packages are
-  reference/debug only after you can name the exact implementation pattern you
-  need.
-- Do not inspect runtime internals during normal authoring. Use
-  `docs/authoring-api.md`, skeletons, validators, and snapshot tools first.
-  Inspect runtime only after a concrete validator/smoke/debug failure or a
-  named API gap.
+- Field-state evidence: `node tools/field-state.js --field <name> [--summary]`. **Do not full-read** `docs/wpforms-field-state-inventory.md` (132 KB).
+- Do not list or read `videos/` packages during startup. Reference packages are debug-only after you can name the exact pattern needed.
+- Do not inspect runtime internals during normal authoring. Use the relevant skill, `docs/authoring-api.md`, skeletons, validators, snapshot tools first. Inspect runtime only after a concrete validator/smoke/debug failure.
 
-## Production Truth
+## Protected Areas
 
-- Real WPForms UI is product truth.
-- Use real captured snapshots as base structural surfaces.
-- Do not create fake snapshot folders.
-- Do not hand-write WPForms-looking HTML to avoid capture.
-- DOM-derived states are allowed only when grounded by `tools/field-state.js`,
-  a real captured DOM snippet, product-truth snippets, or cloned captured DOM.
-- Transient overlays/controls must be product-derived or clearly marked as
-  staged visual aids.
-- Document staged states in the storyboard and final summary: base snapshot +
-  what was staged + product-truth source.
-- Recapture only when the base structure is missing, broken, or not truthfully
-  derivable from existing DOM.
+Normal video work must NOT edit:
 
-## Storyboard Gate
+- `engine/*` (entire directory)
+- `runtime/player.js`
+- `runtime/chapter-runner.js`
+- `runtime/scene-helpers.js`
+- `runtime/transitions.js`
+- `runtime/frame-driver.js`
+- `runtime/frame-adapter.js`
+- `runtime/shared-scene.js`
+- `runtime/camera-poses.js`
+- `runtime/pause-manager.js`
+- `scenes/shared.js`
+- `scenes/player.html`
+- accepted/reference video packages
+- existing snapshots
+- `tools/validate-video.js` validator behavior
 
-Before implementation, produce a storyboard proposal with:
-
-- angle and audience;
-- postIntro concept;
-- chapter list;
-- narration drafts;
-- snapshot plan with statuses: `exists`, `DOM-derived`, `NEEDS CAPTURE`,
-  `ASK USER`;
-- any capture/API/postIntro gaps.
-
-Stop for explicit user approval. Do not infer approval. Do not write chapter
-code, DOM prep, or narration mp3s before approval.
-
-## Default Authoring Mode
-
-New videos default to **legacy/effect-mode authoring**. This is the current
-production default because it preserves:
-
-- custom topic-specific postIntro animation;
-- chapter-local HTML/CSS/SVG editorial surfaces;
-- precise effect choreography;
-- `audio-cued` `waitAt(t)` timing;
-- mid-effect snapshot swaps;
-- per-beat narration flows with flexible visual timing.
-
-Descriptor chapters remain supported, but they are secondary. Use descriptor
-mode only when the approved beat is simple and the public verb vocabulary
-preserves the visual idea without weakening the storyboard. Never use
-descriptor mode to downgrade a custom postIntro, skip an effect, or replace a
-specific animation with a generic focus/title beat.
-
-If descriptor mode is used, document why it was sufficient. If it is not
-sufficient, use legacy/effect-mode rather than forcing the video into a weaker
-shape.
-
-## Legacy Chapter Shape
-
-Use this for normal new video chapters unless there is a specific reason not
-to:
-
-```js
-import sel from './_selectors.js';
-
-export const snapshot = 'builder-settings-notifications';
-export const mode = 'per-beat-narration'; // 'parallel' | 'audio-cued'
-export const breakStyle = 'soft-dolly';
-export const swapStyle = 'cover';
-
-export async function setup(ctx) {
-  // Optional one-time DOM staging, grounded in real product truth.
-}
-
-export default [
-  {
-    id: 'beat-id',
-    chapter: 'camera-group',
-    camera: { focus: sel.target, level: 1.18, pad: 14, noScroll: false },
-    overlays: [{ highlight: sel.target, label: 'Clear label' }],
-    narration: 'beat-id',
-    effect: async ({ cursor, sleep, highlight, clearHighlights }) => {
-      await highlight([sel.target], { label: 'Clear label' });
-      await sleep(500);
-      await clearHighlights();
-    },
-    duration: 0.2,
-  },
-];
-```
-
-Context passed to `effect()` / `setup()` includes:
-
-- engine helpers: `doc`, `cursor`, `sleep`, `type`, `zoomTo`, `clearSpot`;
-- overlays: `highlight`, `clearHighlights`, `clearLabels`, `focusPull`,
-  `popOut`;
-- WPForms helpers: `revealSection`, `toggleControl`, `selectDropdown`,
-  `duplicateBlock`, `showPrompt`, `collapseBlock`, `toggleBlockActive`;
-- snapshot helper: `swapToSnapshot(slug, { setup })`;
-- `waitAt(seconds)` only in `mode = 'audio-cued'`.
-
-Legacy chapters import only local selector sheets such as `./_selectors.js`.
-Do not import from `engine/`, `runtime/`, or `scenes/`. Do not use descriptor
-verb call signatures inside legacy `effect()` bodies.
-
-## Modes
-
-- `per-beat-narration` - default for most tutorial chapters. Each beat has
-  its own narration clip and the runner waits for it.
-- `parallel` - one narration clip plays while timed beats run alongside. Use
-  only when loose timing is acceptable.
-- `audio-cued` - one narration clip with `waitAt(t)` inside one rich
-  `effect()`. Use for precise timestamp choreography.
-
-Keep beats near the 6-second rule. Split longer narration into smaller clips.
-
-## PostIntro
-
-PostIntro is required by default for normal videos unless the user explicitly
-skips it. It must be a topic-specific concept beat, not a second title card.
-
-**Multi-animation rule (mandatory):** PostIntros are never single-beat. Run
-8–15 seconds with ≥ 5 distinct animation phases (mount, primary morph,
-payoff, secondary morph or label reveal, exit/handoff), and include at least
-one cursor/pointer interaction with the editorial DOM. End by handing off
-into the first content chapter (fade into the real snapshot, dive-zoom into
-a captured element, or hand the cursor to a product-truth control). Mount
-the editorial layer in `setup()` so the runtime's pre-first-chapter cover
-drops onto a fully-painted layer. Never abruptly `.remove()` onto a bare
-snapshot.
-
-Use `docs/postintro-patterns.md` and
-`docs/examples/legacy-postintro-effect-skeleton.md`. Existing runtime
-cinematics are implementation references only; do not copy product-specific
-cinematics for unrelated topics.
-
-Build the approved visual transformation. Use video-local editorial HTML,
-CSS states/keyframes, SVG paths/cursors, and GSAP-style timing when that is
-what the concept requires. Descriptor verbs are acceptable only when they
-preserve the concept. A real UI focus plus `sectionTitle` is not a substitute
-for an approved concept animation.
-
-Canonical ambition references are:
-
-- WPForms AI `rough-thought-to-draft`;
-- Checkboxes `one-answer-enough`;
-- Notifications `form-to-inbox`.
-
-Read only the relevant postIntro/teaser code named in
-`docs/postintro-patterns.md`; do not read full accepted video packages for
-design inspiration.
-
-Do not copy old intro/outro blocks from accepted packages. Use
-`docs/examples/legacy-manifest-skeleton.md` and write topic-specific
-intro/outro copy.
-
-Field videos start by adding or selecting the field from the builder sidebar
-unless the user says the field is already present. Choice-field videos
-(`Dropdown`, `Multiple Choice`, `Checkboxes`) include AI Generate Choices by
-default: button, modal, generated options, and insertion/apply result. If the
-modal is missing, use a real capture or product-derived snippet; do not invent
-it.
+New files under `runtime/` (including unwired helper sketches) are approval-gated. If a beat seems to need core, stop and propose a reusable helper or a video-local legacy implementation.
 
 ## Per-Video Files
 
 Normal video work may create or edit:
 
-- `videos/<slug>/manifest.json`;
-- `videos/<slug>/chapters/*.js`;
-- `videos/<slug>/chapters/_selectors*.js` or
-  `videos/<slug>/chapters/_selectors/*.js`;
-- `videos/<slug>/narration/*.txt` and rendered `*.mp3`;
-- `videos/<slug>/storyboard.md` only when useful or requested;
-- `docs/<slug>-handoff.md` only when the user asks for a persistent handoff;
-- new real snapshot folders only through capture;
-- `runtime/cinematic-<name>.js` only when intentionally promoting a postIntro
-  archetype, and only after approval.
+- `videos/<slug>/manifest.json`
+- `videos/<slug>/chapters/*.js`
+- `videos/<slug>/chapters/_selectors*.js` or `videos/<slug>/chapters/_selectors/*.js`
+- `videos/<slug>/narration/*.txt` and rendered `*.mp3`
+- `videos/<slug>/storyboard.md` (optional)
+- `docs/<slug>-handoff.md` (only when user asks for a persistent handoff)
+- new real snapshot folders **only through capture** (never fabricate)
+- `runtime/cinematic-<name>.js` only when intentionally promoting a postIntro archetype, with explicit approval
 
-New videos keep narration `.txt` and `.mp3` under
-`videos/<slug>/narration/`. Do not copy from root `/narration/` for new work.
+New videos keep narration `.txt` and `.mp3` under `videos/<slug>/narration/`. Do not copy from root `/narration/` for new work.
 
-## Protected Areas
+## Determinism
 
-Normal video work must not edit:
+Video chapter and runtime cinematic code is **deterministic logic**. Required for `tools/render.js --seek` mode parity.
 
-- `engine/*`;
-- `runtime/player.js`;
-- `runtime/chapter-runner.js`;
-- `runtime/scene-helpers.js`;
-- `runtime/transitions.js`;
-- `scenes/shared.js`;
-- `scenes/player.html`;
-- accepted/reference video packages;
-- existing snapshots;
-- validator behavior.
+- No `Date.now()` outside the player driver.
+- No unseeded `Math.random()` — use `mulberry32(seed)` from `videos/_shared/kit.js`.
+- No `fetch()` at runtime — assets must be loaded before render starts.
 
-New files under `runtime/`, including unwired helper sketches, are
-approval-gated. If a beat seems to need core, stop and propose a reusable
-helper or a video-local legacy implementation that does not touch core.
+Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-logic.md` for rationale and `docs/deterministic-logic-findings.md` for known existing warnings (logged, not migrated).
 
 ## Tools
 
-- `node tools/skill-context.js` - canonical context dump.
-- `node tools/list-snapshots.js [--search <q>] [--for <slug>]`.
-- `node tools/field-state.js --list | --field <name> [--section <name>] [--summary] | --search <q>`.
-- `node tools/inspect-snapshot.js <snapshot> --emit-selectors [--filter <text>]`.
-- `node tools/verify-selectors.js <snapshot> ...`.
-- `node tts/generate.js --video <slug>`.
-- `node tools/validate-video.js <slug>`.
-- `node tools/check-video-playback.js <slug> [--chapter <id>] [--seconds <n>]`.
+- `node tools/skill-context.js` — canonical startup context dump
+- `node tools/list-snapshots.js [--search <q>] [--for <slug>]` — snapshot inventory
+- `node tools/field-state.js --field <name> [--summary] | --search <q>` — field-state query
+- `node tools/inspect-snapshot.js <snapshot> --emit-selectors [--filter <text>]` — selector emit
+- `node tools/verify-selectors.js <snapshot> ...` — selector validate
+- `node tts/generate.js --video <slug>` — render narration mp3s
+- `node tools/validate-video.js <slug>` — static validator
+- `node tools/check-video-playback.js <slug> [--seconds <n>]` — non-visual smoke
+- `node tools/render.js <slug> [--seek] [--fps 30]` — MP4 export
+- `node tools/preview.js [--video <slug>] [--port 4321]` — live-reload + scrubber
+- `node tools/lint-determinism.js [--all] [--video <slug>]` — determinism check
+- `npm run lint` — composes `validate-video.js --all` + `lint-determinism.js --all`
 
-Use standard tools instead of ad hoc `find`, `grep`, custom Playwright, or
-runtime spelunking unless there is a concrete gap.
+Use standard tools instead of ad hoc `find`, `grep`, custom Playwright, or runtime spelunking unless there is a concrete gap.
 
 ## Validation
 
-Before review:
+Before review handoff:
 
-1. `node tools/list-snapshots.js --for <slug>`;
-2. `node tts/generate.js --video <slug>`;
-3. `node tools/validate-video.js <slug>`;
-4. `node tools/check-video-playback.js <slug> [--seconds <n>]`.
+1. `node tools/list-snapshots.js --for <slug>`
+2. `node tts/generate.js --video <slug>`
+3. `node tools/validate-video.js <slug>`
+4. `node tools/check-video-playback.js <slug> --seconds 30`
 
-Visual QC belongs to the user unless explicitly requested. If you do run a
-browser check, keep it scoped and report what you verified.
+Visual QC belongs to the user unless explicitly requested. If you do run a browser check, keep it scoped and report what you verified.
 
 Provide playable HTML review URLs after validation:
 
-- full video: `http://localhost:4321/scenes/player.html?video=<slug>`;
-- chapter-only: `http://localhost:4321/scenes/player.html?video=<slug>&chapter=<id>`.
+- Full video: `http://localhost:4321/scenes/player.html?video=<slug>`
+- Chapter-only: `http://localhost:4321/scenes/player.html?video=<slug>&chapter=<id>`
 
-Do not answer that the repo has no URLs just because MP4 capture is external.
+Do not answer that the repo has no URLs just because MP4 capture lands separately.
 
 ## Push Back
 
-Push back or stop when:
+Stop and push back when:
 
-- storyboard approval has not happened;
-- a requested state would require fake WPForms UI;
-- a snapshot is missing and cannot be truthfully derived;
-- postIntro is being weakened instead of built with the approved animation
-  surfaces;
-- implementation pressure points toward protected core;
-- descriptor mode is being used to avoid legacy/effect choreography that the
-  approved storyboard actually needs.
+- Storyboard approval has not happened — see `wpforms-video` skill HARD-GATE
+- A requested state would require fake WPForms UI
+- A snapshot is missing and cannot be truthfully derived
+- PostIntro is being weakened instead of built with approved animation surfaces — see `wpforms-postintro` skill
+- Implementation pressure points toward protected core
+- Descriptor mode is being used to avoid legacy/effect choreography that the approved storyboard needs
+
+## Where Topic Rules Live (Quick Map)
+
+Don't look here for these — load the skill instead:
+
+| Topic | Skill |
+|---|---|
+| Intake / storyboard gate / production truth / legacy chapter shape / modes | `wpforms-video` |
+| PostIntro multi-animation rule / build order / canonical references | `wpforms-postintro` |
+| GSAP L0 discipline / registered timelines / `pausableRaf` / Flip patterns / effects library | `wpforms-gsap-rules` |
+| `surface: 'editorial' / 'mixed'` / blocks library / atmospheric kit / text-kit / hero composition | `wpforms-marketing` |
+| Chapter breaks / swap styles / `flipBridge` / camera poses / shared-scene / scrubber / render | `wpforms-transitions` |
+
+Skills are at `.claude/skills/<name>/SKILL.md`. Each is a single file with YAML frontmatter (`name`, `description`).
