@@ -9,11 +9,19 @@
 // playback. Override down for short slices, up for long chains.
 //
 // Exit codes:
-//   0 — sceneDone === "true", no bootError, no page/console errors
-//       (unexpected resource 404s ignored when --allow-resource-404 is set).
-//   1 — boot failed (bootError set, or sceneDone never reached).
+//   0 — sceneBooted === "true" (boot sequence past intro/postIntro/teaser
+//       reached chapter playback) OR sceneDone === "true", with no bootError
+//       and no page/console errors. Unexpected resource 404s ignored when
+//       --allow-resource-404 is set.
+//   1 — boot failed (bootError set, or neither sceneBooted nor sceneDone
+//       reached within --seconds).
 //   2 — booted but had console/page errors, or had unexpected resource 404s.
 //   3 — usage / setup error.
+//
+// `sceneBooted` is the practical smoke milestone — set in runtime/player.js
+// right before the chapter loop. `sceneDone` only fires after the FULL video
+// (intro + chapters + outro) plays through, which for tutorials is many
+// minutes; gating on it alone made smoke exit 1 even for clean boots.
 //
 // `expectedMissingResources` (e.g. `/sanitize/<slug>.js`) are reported but
 // never affect the exit code: the runtime loaders treat sanitize as opt-in,
@@ -94,6 +102,7 @@ async function main() {
     slug: args.slug,
     chapter: args.chapter || null,
     url,
+    sceneBooted: false,
     sceneDone: false,
     bootError: '',
     pageErrors: [],
@@ -178,12 +187,14 @@ async function main() {
     const deadline = Date.now() + args.seconds * 1000;
     while (Date.now() < deadline) {
       const state = await page.evaluate(() => ({
+        sceneBooted: document.body && document.body.dataset && document.body.dataset.sceneBooted === 'true',
         sceneDone: document.body && document.body.dataset && document.body.dataset.sceneDone === 'true',
         bootError: (document.body && document.body.dataset && document.body.dataset.bootError) || '',
-      })).catch(() => ({ sceneDone: false, bootError: '' }));
+      })).catch(() => ({ sceneBooted: false, sceneDone: false, bootError: '' }));
+      result.sceneBooted = !!state.sceneBooted;
       result.sceneDone = !!state.sceneDone;
       result.bootError = state.bootError || '';
-      if (result.sceneDone || result.bootError) break;
+      if (result.sceneDone || result.sceneBooted || result.bootError) break;
       await new Promise(r => setTimeout(r, 250));
     }
 
@@ -215,7 +226,7 @@ async function main() {
   result.missingResources = all.filter((m) => !isExpectedMissing(m.url));
 
   let code = 0;
-  if (!result.sceneDone || result.bootError) {
+  if (result.bootError || (!result.sceneBooted && !result.sceneDone)) {
     code = 1;
   } else if (result.pageErrors.length || result.consoleErrors.length) {
     code = 2;

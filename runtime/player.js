@@ -483,6 +483,13 @@ export async function playVideo(slug) {
     await exitStartGate(gate);
   }
 
+  // Phase A.5: smoke milestone — intro/start-gate cleared; the runtime is
+  // alive and about to play postIntro/teaser/chapters. Smoke tool gates
+  // exit-0 on this flag. PostIntros run 8–15s and tutorial chapters run
+  // minutes, so `sceneDone` is impractical for short smoke timeouts;
+  // `sceneBooted` answers the real question — "did boot fail or not?"
+  document.body.dataset.sceneBooted = 'true';
+
   if (manifest.postIntro) {
     await playCinematic(manifest.postIntro, {
       playNarration,
