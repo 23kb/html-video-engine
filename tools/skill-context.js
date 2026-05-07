@@ -28,7 +28,8 @@ const AUTHORING_SKELETONS = [
 
 const CAPABILITY_KITS = [
   { path: 'videos/_shared/atmospheric.js', importPath: '../../_shared/atmospheric.js', why: 'Marketing-mode helpers: grain, sweep, parallax pair, scale push, dark backdrop.' },
-  { path: 'videos/_shared/text-kit.js', importPath: '../../_shared/text-kit.js', why: 'Pixel-point-style text reveals with seven presets; compose with tweenInto(tl, opts).' },
+  { path: 'videos/_shared/blocks/', importPath: '../../_shared/blocks/index.js', why: 'Phase D: parent-document editorial blocks — code-card, mac-window, phone-frame, pill, arrow, route-line, terminal. Blocks never read iframe DOM; compose with tweenInto(tl, opts).' },
+  { path: 'videos/_shared/text-kit.js', importPath: '../../_shared/text-kit.js', why: 'Pixel-point-style text reveals with 24 presets; compose with tweenInto(tl, opts).' },
   { path: 'videos/_shared/lottie-kit.js', importPath: '../../_shared/lottie-kit.js', why: 'Lottie editorial bumpers, stings, badges, and marker/frame-driven micro-animations.' },
   { path: 'videos/_shared/three-kit.js', importPath: '../../_shared/three-kit.js', why: 'Three.js scene helpers for editorial 3D layers, loaded separately from the universal kit.' },
   { path: 'videos/_shared/effects.js', importPath: '../../_shared/effects.js', why: 'Phase A: gsap.registerEffect() library — highlightPulse, fieldBurst, labelReveal, popOutTilt, cardReflow. Import once; await effectsReady; call gsap.effects.<name>().' },
@@ -79,6 +80,9 @@ const ON_DEMAND = [
   { path: 'docs/transitions.md', when: 'Using surface modes or flipBridge snapshot swaps.' },
   { path: 'docs/shared-scene.md', when: 'Keeping a Three.js/editorial scene alive across chapter boundaries.' },
   { path: 'docs/camera-poses.md', when: 'Registering or using named camera poses.' },
+  { path: 'docs/blocks.md', when: 'Mounting shared editorial blocks from videos/_shared/blocks/.' },
+  { path: 'docs/text-kit.md', when: 'Choosing a text-kit preset or checking the full 24-preset list.' },
+  { path: 'docs/helper-rollout-backlog.md', when: 'Looking for popOut / cursor.glideTo / lineDraw rollout candidates.' },
 ];
 
 const REFERENCE_VIDEOS = [
