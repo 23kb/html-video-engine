@@ -302,6 +302,23 @@ Phase D capability kits:
   `docs/helper-rollout-backlog.md` for candidate beats and
   `docs/postintro-patterns.md` for "when to reach for" guidance.
 
+Phase E.5 pause/seek + author scrubber:
+
+- `videos/_shared/kit.js` exports `pausableRaf(cb)`. **Any author-owned
+  `requestAnimationFrame` loop in a chapter or cinematic MUST use this** —
+  vanilla `requestAnimationFrame` will not honor pause. Already migrated:
+  REST API video's 7 chapters and `runtime/cinematic-rough-thought-to-draft.js`.
+  When authoring a new Three.js or render-loop beat, route through
+  `pausableRaf` from the start.
+- The runtime scrubber lives at `/scrubber?video=<slug>` (served by both
+  `serve.js` and `tools/preview.js`). It exposes pause/resume + chapter
+  prev/next/restart. **Mid-chapter wall-clock seek is NOT supported** — only
+  chapter-boundary restart. Documented limit; see `docs/pause-manager.md`.
+- Pause hammers every motion source via `runtime/pause-manager.js`: GSAP
+  global timeline, Phase B frame driver (camera + registered timelines),
+  iframe CSS animations, narration audio, BGM, wall-clock pausableSleep.
+  Author code generally doesn't interact with the manager directly.
+
 ## Protected Areas
 
 Normal video work must not edit:
@@ -315,6 +332,7 @@ Normal video work must not edit:
 - `runtime/frame-adapter.js`;
 - `runtime/shared-scene.js`;
 - `runtime/camera-poses.js`;
+- `runtime/pause-manager.js`;
 - `scenes/shared.js`;
 - `scenes/player.html`;
 - accepted/reference video packages;

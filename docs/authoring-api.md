@@ -660,6 +660,50 @@ and animations that must survive hidden-tab RAF throttling.
 can use `camera: '<name>'`; the runtime resolves it to the usual camera object
 before focusing. Seed names are `focus`, `station`, and `overview`.
 
+### Required: pausableRaf for author RAF loops
+
+Phase E.5 introduced runtime pause/resume + chapter seek + a runtime scrubber
+at `/scrubber?video=<slug>`. **Any author-owned `requestAnimationFrame` loop in
+a chapter or cinematic MUST use `pausableRaf(cb)` from `videos/_shared/kit.js`.**
+Vanilla `requestAnimationFrame` continues running through pause and produces
+visible motion the user has explicitly halted. Already migrated:
+`videos/wpforms-rest-api-overview/chapters/*.js` (7 chapters with Three.js
+loops) and `runtime/cinematic-rough-thought-to-draft.js`.
+
+```js
+import { pausableRaf } from '../../_shared/kit.js';
+
+const cancel = pausableRaf((ts) => {
+  // Your render-loop body; will not run while paused.
+  renderer.render(scene, camera);
+});
+
+// On chapter teardown:
+cancel();
+```
+
+GSAP timelines (registered or otherwise) honor pause automatically via
+`gsap.globalTimeline.pause()`. Audio narration and BGM honor pause via the
+runtime audio registry. Wall-clock `sleep(ms)` calls (from chapter ctx) are
+pausable — paused time does not count toward the sleep duration.
+
+### Scrubber and pause
+
+The runtime ships a scrubber at `/scrubber?video=<slug>` (served by both
+`serve.js` and `tools/preview.js`). Author controls:
+
+- **Pause / Resume** — hammers every motion source; iframe dims with a visible
+  overlay; resume continues from the frozen position.
+- **Prev / Next / Restart** — chapter-level seek. Tears down the current
+  chapter cleanly (frame driver registry empties), enters the target chapter
+  index from beat 0.
+- **Click-to-seek on registered timelines** — for paused timelines opted in
+  via Phase B's `registerTimeline()`, click their row to seek that adapter.
+
+**Mid-chapter wall-clock seek is NOT supported.** Imperative `effect()` bodies
+cannot be replayed at arbitrary positions without state reconstruction.
+Restart-from-chapter is the seek granularity.
+
 GSAP code in any of these kits or in chapter `effect()` bodies must follow `docs/gsap-rules.md` (L0 discipline rules).
 
 ## 12. Validator

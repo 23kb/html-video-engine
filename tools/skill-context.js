@@ -43,7 +43,7 @@ const STAGE_4_RULES = [
   'Snapshots are base structural surfaces, not one snapshot per final visible state.',
   'DOM-derived states are allowed when grounded by `node tools/field-state.js --field <name>` or real captured DOM. Document base + what was staged.',
   'No fake product UI and no fake snapshot folders. Capture what is missing.',
-  'Normal video work must not touch protected core (engine/, runtime/player.js, runtime/chapter-runner.js, runtime/scene-helpers.js, runtime/transitions.js, runtime/frame-driver.js, runtime/frame-adapter.js, scenes/shared.js, scenes/player.html, existing accepted videos/snapshots).',
+  'Normal video work must not touch protected core (engine/, runtime/player.js, runtime/chapter-runner.js, runtime/scene-helpers.js, runtime/transitions.js, runtime/frame-driver.js, runtime/frame-adapter.js, runtime/shared-scene.js, runtime/camera-poses.js, runtime/pause-manager.js, scenes/shared.js, scenes/player.html, existing accepted videos/snapshots).',
   'New files under runtime/ — including unwired helper sketches — are approval-gated.',
   'If a video seems to need core edits, stop and ask whether the behavior is reusable. Prefer a video-local legacy/effect implementation first; propose reusable helpers only when repeated need proves it.',
 ];
@@ -85,6 +85,7 @@ const ON_DEMAND = [
   { path: 'docs/helper-rollout-backlog.md', when: 'Looking for popOut / cursor.glideTo / lineDraw rollout candidates.' },
   { path: 'docs/render.md', when: 'Rendering playable HTML videos to MP4 with tools/render.js; wall-clock for tutorials, seek mode for editorial registered timelines.' },
   { path: 'docs/preview.md', when: 'Using the Phase E live-reload preview server and author scrubber.' },
+  { path: 'docs/pause-manager.md', when: 'Authoring a Three.js or render-loop beat (use pausableRaf, not raw requestAnimationFrame), or working with the runtime scrubber pause/resume/chapter-seek. Phase E.5.' },
 ];
 
 const REFERENCE_VIDEOS = [
@@ -148,6 +149,7 @@ const DO_NOT_TOUCH = [
   'runtime/frame-adapter.js',
   'runtime/shared-scene.js',
   'runtime/camera-poses.js',
+  'runtime/pause-manager.js',
   'scenes/shared.js',
   'scenes/player.html',
   'existing accepted video packages and reference baselines',

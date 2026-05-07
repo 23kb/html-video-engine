@@ -375,3 +375,32 @@ Hard rules:
 owns timing directly. Use `registerTimeline()` for paused timelines that
 should be runtime-owned (multi-phase postIntros, scrubbable beats,
 hidden-tab survival).
+
+## Phase E.5 Patterns
+
+### Author RAF loops MUST use `pausableRaf`
+
+Phase E.5 adds runtime pause/resume that hammers every motion source. GSAP
+timelines (registered or otherwise) honor pause automatically. **Author-owned
+`requestAnimationFrame` loops do not.** A bare `requestAnimationFrame(loop)`
+keeps running while the user has clicked Pause — produces visible motion that
+contradicts the pause state.
+
+If your beat owns a render loop (Three.js, canvas, anything that calls
+`requestAnimationFrame` directly), import `pausableRaf` from
+`videos/_shared/kit.js` and use it instead. The helper skips your callback
+while `window.__hfPaused === true`; resumes automatically.
+
+```js
+import { pausableRaf } from '../../_shared/kit.js';
+
+const cancel = pausableRaf((ts) => {
+  renderer.render(scene, camera);
+});
+
+// Chapter teardown:
+cancel();
+```
+
+Migrated reference sites: `videos/wpforms-rest-api-overview/chapters/*.js` and
+`runtime/cinematic-rough-thought-to-draft.js`. Use them as patterns.
