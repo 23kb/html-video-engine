@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Print the canonical skill context for a new session.
-// Replaces "grep the repo to figure out where to start."
+// Phase G: slimmed to a routing index. Topic rules live in skills now;
+// this file just tells you which skill to load and where to find docs.
 //
 // Usage:
 //   node tools/skill-context.js          # human-readable
@@ -11,195 +12,56 @@ const path = require('path');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
 
-const REQUIRED_READS = [
-  { path: 'docs/current-workflow.md', why: 'Entry point. Workflow, storyboard rules, do-not-touch.' },
-  { path: 'docs/authoring-api.md', why: 'Public authoring contract. Legacy-first authoring, supported descriptor path, transitions, ctx helpers, validator behavior.' },
-  { path: 'docs/postintro-patterns.md', why: 'How to design topic-specific postIntro concept beats without copying old cinematics.' },
-  { path: 'docs/video-production-templates.md', why: 'Storyboard checklist, chapter checklist, snapshot checklist, token budget, smoke spec. Read only the section you need.' },
-];
+const MISSION =
+  'Guided HTML video builder. Two equally-important modes: (1) tutorial videos with real WPForms UI in an iframe, (2) ad-style release videos as full-bleed editorial compositions. MP4 capture is in-repo via tools/render.js.';
 
-const AUTHORING_SKELETONS = [
-  { path: 'docs/examples/legacy-manifest-skeleton.md', why: 'Default manifest copy target for new legacy-first video packages.' },
-  { path: 'docs/examples/legacy-chapter-skeleton.md', why: 'Default legacy/effect-mode chapter shape for new videos.' },
-  { path: 'docs/examples/legacy-postintro-effect-skeleton.md', why: 'Video-local postIntro concept beat with HTML/CSS/SVG editorial animation.' },
-  { path: 'docs/examples/legacy-audio-cued-skeleton.md', why: 'Timestamp-locked narration choreography with waitAt(t).' },
-  { path: 'docs/examples/choice-field-generate-choices-skeleton.md', why: 'Choice-field AI Generate Choices flow: button, modal, generated choices, apply result.' },
-];
+const START_RULE =
+  'Read CLAUDE.md (operator manual, always loaded) + the skill matching the task. Topic rules live in skills, not in this file or CLAUDE.md.';
 
-const CAPABILITY_KITS = [
-  { path: '.claude/skills/wpforms-video/SKILL.md', importPath: 'skill: wpforms-video', why: 'Phase F skill bundle: universal tutorial authoring, storyboard gate, production truth, validation.' },
-  { path: '.claude/skills/wpforms-postintro/SKILL.md', importPath: 'skill: wpforms-postintro', why: 'Phase F skill bundle: postIntro concept beats, multi-animation rule, canonical references.' },
-  { path: '.claude/skills/wpforms-gsap-rules/SKILL.md', importPath: 'skill: wpforms-gsap-rules', why: 'Phase F skill bundle: GSAP L0 discipline, effects, Flip, registered timelines, pausableRaf.' },
-  { path: '.claude/skills/wpforms-marketing/SKILL.md', importPath: 'skill: wpforms-marketing', why: 'Phase F skill bundle: editorial/ad-style surfaces, atmospheric kit, blocks, text-kit.' },
-  { path: '.claude/skills/wpforms-transitions/SKILL.md', importPath: 'skill: wpforms-transitions', why: 'Phase F skill bundle: transition vocabulary, flipBridge, camera poses, frame driver, preview/render.' },
-  { path: 'videos/_shared/atmospheric.js', importPath: '../../_shared/atmospheric.js', why: 'Marketing-mode helpers: grain, sweep, parallax pair, scale push, dark backdrop.' },
-  { path: 'videos/_shared/blocks/', importPath: '../../_shared/blocks/index.js', why: 'Phase D: parent-document editorial blocks — code-card, mac-window, phone-frame, pill, arrow, route-line, terminal. Blocks never read iframe DOM; compose with tweenInto(tl, opts).' },
-  { path: 'videos/_shared/text-kit.js', importPath: '../../_shared/text-kit.js', why: 'Pixel-point-style text reveals with 24 presets; compose with tweenInto(tl, opts).' },
-  { path: 'videos/_shared/lottie-kit.js', importPath: '../../_shared/lottie-kit.js', why: 'Lottie editorial bumpers, stings, badges, and marker/frame-driven micro-animations.' },
-  { path: 'videos/_shared/three-kit.js', importPath: '../../_shared/three-kit.js', why: 'Three.js scene helpers for editorial 3D layers, loaded separately from the universal kit.' },
-  { path: 'videos/_shared/effects.js', importPath: '../../_shared/effects.js', why: 'Phase A: gsap.registerEffect() library — highlightPulse, fieldBurst, labelReveal, popOutTilt, cardReflow. Import once; await effectsReady; call gsap.effects.<name>().' },
-  { path: 'videos/_shared/kit.js', importPath: '../../_shared/kit.js', why: 'Phase B: registerTimeline(tl, { id }) opt-in for paused GSAP timelines owned by the runtime frame driver. Build with gsap.timeline({ paused: true }), finish all tweens before registering (duration is snapshotted), do not call tl.play(). Survives hidden-tab RAF throttling. See docs/frame-driver.md.' },
-];
-
-// Production-truth rules surfaced inline so a session sees them immediately.
-// Keep terse; governance/history lives in the stage plans.
-const STAGE_4_RULES = [
-  'Real WPForms UI is product truth.',
-  'Snapshots are base structural surfaces, not one snapshot per final visible state.',
-  'DOM-derived states are allowed when grounded by `node tools/field-state.js --field <name>` or real captured DOM. Document base + what was staged.',
-  'No fake product UI and no fake snapshot folders. Capture what is missing.',
-  'Normal video work must not touch protected core (engine/, runtime/player.js, runtime/chapter-runner.js, runtime/scene-helpers.js, runtime/transitions.js, runtime/frame-driver.js, runtime/frame-adapter.js, runtime/shared-scene.js, runtime/camera-poses.js, runtime/pause-manager.js, scenes/shared.js, scenes/player.html, existing accepted videos/snapshots).',
-  'New files under runtime/ — including unwired helper sketches — are approval-gated.',
-  'If a video seems to need core edits, stop and ask whether the behavior is reusable. Prefer a video-local legacy/effect implementation first; propose reusable helpers only when repeated need proves it.',
-];
-
-const POSTINTRO_RULES = [
-  'PostIntro is required by default for normal videos unless the user explicitly asks to skip it.',
-  'PostIntro must be a topic-specific concept beat, not a second title card.',
-  'Build the approved visual transformation. Use video-local editorial HTML objects, CSS states/keyframes, SVG paths/cursors, and GSAP-style timing when that surface is approved; descriptor verbs are acceptable only when they preserve the concept.',
-  'Do not downgrade an approved concept to focusPull/sectionTitle/title-card on a loosely related UI surface while keeping the narration conceptual.',
-  'Existing runtime cinematics may be referenced for code patterns only; reuse one only when the product semantics match.',
-  'If no semantic match exists and the concept needs richer motion, build with an approved video-local HTML/CSS/SVG/GSAP surface or ask to promote a reusable runtime cinematic. The canonical postIntros prove this is possible.',
-  'Expect visual QC on ambitious postIntros. Revise timing, framing, morphs, labels, and payoff states after the user reviews the playable URL.',
-  'Do not copy old intro/outro blocks from accepted packages; use the legacy manifest skeleton and topic-specific intro/outro copy.',
-  'Field videos start by adding/selecting the field from the builder sidebar unless the user says it is already present.',
-  "Dropdown, Multiple Choice, and Checkboxes videos include the AI 'Generate Choices' button by default: button, modal, generated options, insertion/apply result.",
+const SKILLS = [
+  { name: 'wpforms-video',       path: '.claude/skills/wpforms-video/SKILL.md',       use: 'Tutorial authoring, intake, storyboard gate, default authoring mode, legacy chapter shape, modes, production truth.' },
+  { name: 'wpforms-postintro',   path: '.claude/skills/wpforms-postintro/SKILL.md',   use: 'PostIntro design + multi-animation rule + canonical references + snapshot handoff.' },
+  { name: 'wpforms-gsap-rules',  path: '.claude/skills/wpforms-gsap-rules/SKILL.md',  use: 'GSAP L0 discipline + registered timelines (paused + driver-owned) + pausableRaf + Flip + effects library + determinism.' },
+  { name: 'wpforms-marketing',   path: '.claude/skills/wpforms-marketing/SKILL.md',   use: 'Editorial / ad-style surfaces (surface: editorial / mixed) + blocks library + atmospheric kit + text-kit + hero composition.' },
+  { name: 'wpforms-transitions', path: '.claude/skills/wpforms-transitions/SKILL.md', use: 'Chapter breaks (glide/dolly/whip) + swap styles (flipBridge default) + camera poses + shared scene + scrubber/render.' },
 ];
 
 const OPERATOR_MANUALS = [
-  { path: 'AGENTS.md', agent: 'Codex', why: 'Operator manual for Codex sessions. Do not also read CLAUDE.md unless comparing manuals.' },
-  { path: 'CLAUDE.md', agent: 'Claude', why: 'Operator manual for Claude sessions. Do not also read AGENTS.md unless comparing manuals.' },
+  { path: 'CLAUDE.md', agent: 'Claude', use: 'Always loaded. Boot order, protected core, validation, push-back triggers, where-topic-rules-live map.' },
+  { path: 'AGENTS.md', agent: 'Codex',  use: 'Always loaded for Codex. Same role as CLAUDE.md but Codex-flavored.' },
 ];
 
-const ON_DEMAND = [
-  { path: 'docs/wpforms-field-state-inventory.md', when: 'Canonical source only. Query it with `node tools/field-state.js`; do not full-read by default.' },
-  { path: 'docs/wpforms-ai-state-inventory.md', when: 'Need exact WPForms AI UI state references.' },
-  { path: 'docs/two-video-pattern-audit.md', when: 'Judging whether a pattern is proven across reference videos.' },
-  { path: 'docs/gsap-rules.md', when: 'GSAP discipline (L0) - read before writing or reviewing chapter effect() GSAP code.' },
-  { path: 'docs/checkboxes-rescue-handoff.md', when: 'Working on Checkboxes-specific video work.' },
-  { path: 'docs/wpforms-ai-guided-handoff.md', when: 'Working on WPForms-AI-specific video work.' },
-  { path: 'docs/chapter-module-contract.md', when: 'Authoring a chapter module from scratch and need the locked interface spec.' },
-  { path: 'docs/stage-4-core-api-plan.md', when: 'Governance/history only. Use for refactor planning, not normal video authoring.' },
-  { path: 'docs/gsap-flip-patterns.md', when: 'Authoring a beat or postIntro that morphs layout, reparents elements, pins editorial DOM to real UI, or clones real iframe UI for animation. Two validated sandboxes (flip-sandbox, flip-generate-card).' },
-  { path: 'docs/frame-driver.md', when: 'Authoring an editorial-layer GSAP timeline that should survive hidden-tab RAF throttling, or migrating an existing cinematic to the registered-timeline path. Phase B opt-in.' },
-  { path: 'docs/transitions.md', when: 'Using surface modes or flipBridge snapshot swaps.' },
-  { path: 'docs/shared-scene.md', when: 'Keeping a Three.js/editorial scene alive across chapter boundaries.' },
-  { path: 'docs/camera-poses.md', when: 'Registering or using named camera poses.' },
-  { path: 'docs/blocks.md', when: 'Mounting shared editorial blocks from videos/_shared/blocks/.' },
-  { path: 'docs/text-kit.md', when: 'Choosing a text-kit preset or checking the full 24-preset list.' },
-  { path: 'docs/helper-rollout-backlog.md', when: 'Looking for popOut / cursor.glideTo / lineDraw rollout candidates.' },
-  { path: 'docs/render.md', when: 'Rendering playable HTML videos to MP4 with tools/render.js; wall-clock for tutorials, seek mode for editorial registered timelines.' },
-  { path: 'docs/preview.md', when: 'Using the Phase E live-reload preview server and author scrubber.' },
-  { path: 'docs/pause-manager.md', when: 'Authoring a Three.js or render-loop beat (use pausableRaf, not raw requestAnimationFrame), or working with the runtime scrubber pause/resume/chapter-seek. Phase E.5.' },
-  { path: 'docs/skills.md', when: 'Choosing a Phase F repo-local skill bundle instead of loading the full startup dump.' },
-  { path: 'docs/deterministic-logic.md', when: 'Understanding deterministic render-parity rules enforced by tools/lint-determinism.js.' },
-  { path: 'docs/deterministic-logic-findings.md', when: 'Reviewing existing deterministic-logic violations found by Phase F linting.' },
+const KEY_DOCS = [
+  { path: 'docs/INDEX.md',                                        when: 'First — one-line-per-doc index. Use to find the right doc fast.' },
+  { path: 'docs/authoring-api.md',                                when: 'Public authoring contract reference. Manifest schema, chapter exports, descriptor mode, validator behavior.' },
+  { path: 'REFACTOR-DONE.md',                                     when: 'Refactor closure summary. Where everything ended up.' },
+  { path: 'REFACTOR-BRIEF.md',                                    when: 'Locked architectural decisions (§3) + protected-core list (§4).' },
+  { path: 'REFACTOR-PROGRESS.md',                                 when: 'Per-phase log + known gaps (§2.1) + architectural debt (§2.2).' },
 ];
 
-const REFERENCE_VIDEOS = [
-  {
-    slug: 'a-complete-guide-to-the-checkboxes-field',
-    handoff: 'docs/checkboxes-rescue-handoff.md',
-    postIntro: 'runtime/cinematic-one-answer-enough.js',
-    note: 'Reference 1. Choice-field DOM helpers, multi-state field-options snapshot work. PostIntro is Checkboxes-specific.',
-  },
-  {
-    slug: 'build-forms-faster-with-wpforms-ai',
-    handoff: 'docs/wpforms-ai-guided-handoff.md',
-    postIntro: 'runtime/cinematic-rough-thought-to-draft.js',
-    note: 'Reference 2. Snapshot swaps across generated states, narrationSpeed, focusPull stage clip. PostIntro is WPForms-AI-specific.',
-  },
-];
-
-const POSTINTRO_EXAMPLES = [
-  {
-    path: 'docs/postintro-patterns.md',
-    note: 'Start here for proven postIntro principles, HOW to build with HTML/CSS/SVG/GSAP, and the canonical references below.',
-  },
-];
-
-const POSTINTRO_REFERENCES = [
-  {
-    route: '/scenes/player.html?video=build-forms-faster-with-wpforms-ai',
-    code: 'runtime/cinematic-rough-thought-to-draft.js',
-    pattern: 'WPForms AI rough-thought-to-draft: editorial HTML prompt/chat/form, CSS stage states, GSAP timeline from messy prompt to generated draft.',
-  },
-  {
-    route: '/scenes/player.html?video=a-complete-guide-to-the-checkboxes-field',
-    code: 'runtime/cinematic-one-answer-enough.js',
-    pattern: 'Checkboxes one-answer-enough: HTML form rows, CSS radio-to-checkbox morph, GSAP cursor and burst choreography.',
-  },
-  {
-    route: '/scenes/notifications-combined.html',
-    code: 'scenes/notifications-combined.html (welcome teaser block only: mountWelcomeTeaser, .teaser*, .site-window, .tf-*, .gmail-*)',
-    pattern: 'Notifications form-to-inbox: HTML browser/form/inbox, SVG cursor, CSS transitions/keyframes, timed outcome-before-controls payoff.',
-  },
-];
-
-const ON_DEMAND_REFERENCE_PATTERNS = [
-  'Legacy-first docs/templates are the default learning source for new videos.',
-  'Do not read accepted video packages during startup.',
-  'Use accepted video packages only after you can name the exact implementation pattern you need.',
-  'Examples of valid implementation patterns: timestamp-locked narration actions, waitAt(t), mid-effect choreography, choice-field DOM helper behavior, multi-state field-options snapshot work, snapshot swaps across generated states, narrationSpeed, focusPull stage clipping.',
-  'Descriptor mode is secondary; use it only when it preserves the approved beat without weakening postIntro or effects.',
-  'Treat reference packages as evidence/debug material, not startup reading and not design source material.',
-];
-
-const REFERENCE_VIDEO_SLUGS = new Set(REFERENCE_VIDEOS.map(r => r.slug));
-
-const DO_NOT_TOUCH = [
-  'engine/* (entire dir)',
-  'runtime/player.js',
-  'runtime/chapter-runner.js',
-  'runtime/scene-helpers.js',
-  'runtime/transitions.js',
-  'runtime/frame-driver.js',
-  'runtime/frame-adapter.js',
-  'runtime/shared-scene.js',
-  'runtime/camera-poses.js',
-  'runtime/pause-manager.js',
-  'scenes/shared.js',
-  'scenes/player.html',
-  'existing accepted video packages and reference baselines',
-  'snapshots/** during normal video work (capture new ones; snapshot refactors require an explicit stage task)',
-  'Both reference video packages, except scoped fixes the user asks for',
-  'New files under runtime/ — even unwired helper sketches — are approval-gated.',
-];
-
-const PER_VIDEO_EDITS = [
-  'videos/<slug>/manifest.json',
-  'videos/<slug>/chapters/*.js and chapters/_selectors.js',
-  'videos/<slug>/narration/*.txt + rendered *.mp3',
-  'videos/<slug>/storyboard.md (optional)',
-  'docs/<slug>-handoff.md only if the user asks for a persistent handoff doc',
-  'New snapshots/<name>/ folders (capture only — never fabricate)',
-  'A new runtime/cinematic-<name>.js ONLY when promoting a postIntro archetype, and flag it explicitly',
-];
-
-const EXISTING_CODE_SURFACES = [
-  'Use legacy/effect-mode chapters by default for new videos. Helpers flow through ctx; chapter files import local selectors only.',
-  'Descriptor chapters via runtime/chapter-api.js (`defineChapter`) remain supported for simple closed-vocabulary beats only.',
-  'Use runtime/prep-ops.js through documented prep/after ops in descriptor chapters; do not import it directly in video chapters.',
-  'Use runtime/verbs.js through documented descriptor verbs only when descriptor mode is appropriate; do not read runtime internals for normal authoring.',
-  'Use snapshot catalogs plus inspect-snapshot / verify-selectors for selectors.',
-  'Use docs/postintro-patterns.md for postIntro examples. Use accepted reference packages only on demand after naming the exact implementation pattern needed.',
+const SHARED_KITS = [
+  { path: 'videos/_shared/kit.js',         use: 'loadGsap, awaitTween, withGsapContext, registerTimeline (Phase B), registerCameraPose (Phase C), pausableRaf (Phase E.5), mulberry32. See wpforms-gsap-rules.' },
+  { path: 'videos/_shared/effects.js',     use: 'gsap.registerEffect library: highlightPulse, fieldBurst, labelReveal, popOutTilt, cardReflow. See wpforms-gsap-rules.' },
+  { path: 'videos/_shared/atmospheric.js', use: 'Marketing-mode helpers: grain, sweep, parallax pair, scale push, dark backdrop. See wpforms-marketing.' },
+  { path: 'videos/_shared/blocks/',        use: 'Editorial blocks: code-card, mac-window, phone-frame, pill, arrow, route-line, terminal. See wpforms-marketing.' },
+  { path: 'videos/_shared/text-kit.js',    use: '24 Pixel-Point-style text-reveal presets. See wpforms-marketing.' },
+  { path: 'videos/_shared/lottie-kit.js',  use: 'Lottie editorial bumpers, stings, badges.' },
+  { path: 'videos/_shared/three-kit.js',   use: 'Three.js scene helpers (loaded separately from kit.js).' },
 ];
 
 const TOOLS = [
-  { cmd: 'node tools/skill-context.js', use: 'This file. Canonical context dump.' },
-  { cmd: 'node tools/list-snapshots.js [--for <slug>] [--search <q>] [--json]', use: 'Inventory snapshots. With --for, cross-references which snapshots a video uses and which are missing.' },
-  { cmd: 'node tools/field-state.js --list | --field <name> [--section <name>] [--summary] | --search <q>', use: 'Query the large field-state inventory without full-reading it. Use before opening docs/wpforms-field-state-inventory.md.' },
-  { cmd: 'node tools/inspect-snapshot.js <snapshot-slug> --emit-selectors [--filter <substr>]', use: 'Generate catalog-grounded starter selectors from a real snapshot. Use before hand-writing selectors.' },
-  { cmd: 'node tools/inspect-snapshot.js <snapshot-slug>', use: 'Write a Playwright inspection JSON to tools/inspect-out/<snapshot-slug>.json when catalog selectors are not enough.' },
-  { cmd: 'node tools/verify-selectors.js <snapshot-slug> [selector...]', use: 'Check that selected CSS selectors exist in a snapshot before relying on them in chapters.' },
-  { cmd: 'node tools/check-video-playback.js <slug> [--chapter <id>] [--seconds <n>]', use: 'Standard non-visual smoke. Returns JSON. Exit 0 = scene done clean, 1 = boot fail, 2 = console/page errors.' },
-  { cmd: 'node tools/validate-video.js <slug>', use: 'Static validator for a video package.' },
-  { cmd: 'node tools/validate-video.js --all [--skip-lint <rule>]', use: 'Validate every video package with Phase F additive lint passes.' },
-  { cmd: 'node tools/lint-determinism.js [--all] [--video <slug>]', use: 'Phase F deterministic-logic linter: Date.now/fetch errors, Math.random/setTimeout warnings.' },
-  { cmd: 'node tts/generate.js --video <slug>', use: 'Render narration mp3s for a video. Run this yourself; do not ask the user.' },
-  { cmd: 'node serve.js', use: 'Local static server on http://localhost:4321 (auto-started by check-video-playback.js if not running).' },
-  { cmd: 'node tools/preview.js [--video <slug>] [--port 5173] [--no-open]', use: 'Phase E live-reload preview server with injected reload client and /scrubber author UI.' },
-  { cmd: 'node tools/render.js <slug> [--seek] [--chapter <id>] [--fps 30] [--resolution 1920x1080]', use: 'Phase E in-repo MP4 export. Default wall-clock screencast; --seek is editorial registered-timeline only.' },
+  { cmd: 'node tools/skill-context.js',                                                          use: 'This file. Routing index.' },
+  { cmd: 'node tools/list-snapshots.js [--search <q>] [--for <slug>]',                           use: 'Snapshot inventory + cross-reference per video.' },
+  { cmd: 'node tools/field-state.js --field <name> [--summary] | --list | --search <q>',        use: 'Query field-state inventory without full-reading the 132 KB doc.' },
+  { cmd: 'node tools/inspect-snapshot.js <snapshot> --emit-selectors [--filter <text>]',         use: 'Catalog-grounded selectors from a real snapshot.' },
+  { cmd: 'node tools/verify-selectors.js <snapshot> ...',                                        use: 'Selector existence check.' },
+  { cmd: 'node tts/generate.js --video <slug>',                                                  use: 'Render narration mp3s.' },
+  { cmd: 'node tools/validate-video.js <slug>',                                                  use: 'Static validator.' },
+  { cmd: 'node tools/check-video-playback.js <slug> [--seconds <n>]',                            use: 'Non-visual smoke. Exit 0 = clean boot, 1 = boot fail, 2 = page errors.' },
+  { cmd: 'node tools/render.js <slug> [--seek] [--fps 30]',                                      use: 'MP4 export. Default wall-clock; --seek only valid for surface: editorial.' },
+  { cmd: 'node tools/preview.js [--video <slug>] [--port 4321]',                                 use: 'Live-reload preview server + scrubber UI.' },
+  { cmd: 'node tools/lint-determinism.js [--all] [--video <slug>]',                              use: 'Determinism linter (Date.now/fetch errors, Math.random/setTimeout warnings).' },
+  { cmd: 'npm run lint',                                                                          use: 'Composes validate-video.js --all + lint-determinism.js --all.' },
 ];
 
 const KNOWN_VIDEO_EXCLUDE = new Set([
@@ -224,46 +86,15 @@ function listVideos() {
 
 function buildContext() {
   return {
-    mission: 'Guided HTML video builder. Stage exact WPForms UI inside a Mac-framed iframe, layer narration + cinematic moments, hand off playable HTML review URLs for visual QC. MP4 capture is external, but review URLs are still the agent handoff.',
-    startRule: 'When the user asks to make a video, begin with intake + snapshot inventory + storyboard. The user should not have to restate protected-core, product-truth, or postIntro rules.',
-    requiredReads: REQUIRED_READS.map(r => ({ ...r, present: exists(r.path) })),
-    authoringSkeletons: AUTHORING_SKELETONS.map(r => ({ ...r, present: exists(r.path) })),
-    capabilityKits: CAPABILITY_KITS.map(r => ({ ...r, present: exists(r.path) })),
-    operatorManuals: OPERATOR_MANUALS.map(r => ({ ...r, present: exists(r.path) })),
-    onDemandDocs: ON_DEMAND.map(r => ({ ...r, present: exists(r.path) })),
-    referenceVideos: REFERENCE_VIDEOS.map(r => ({ ...r, present: exists(`videos/${r.slug}`) })),
-    postIntroExamples: POSTINTRO_EXAMPLES.map(r => ({ ...r, present: exists(r.path) })),
-    postIntroReferences: POSTINTRO_REFERENCES.map(r => ({ ...r, present: exists(r.code.split(' ')[0]) })),
-    onDemandReferencePatterns: ON_DEMAND_REFERENCE_PATTERNS,
-    perVideoEdits: PER_VIDEO_EDITS,
-    doNotTouch: DO_NOT_TOUCH,
-    existingCodeSurfaces: EXISTING_CODE_SURFACES,
-    stage4Rules: STAGE_4_RULES,
-    postIntroRules: POSTINTRO_RULES,
+    mission: MISSION,
+    startRule: START_RULE,
+    skills: SKILLS.map(s => ({ ...s, present: exists(s.path) })),
+    operatorManuals: OPERATOR_MANUALS.map(m => ({ ...m, present: exists(m.path) })),
+    keyDocs: KEY_DOCS.map(d => ({ ...d, present: exists(d.path) })),
+    sharedKits: SHARED_KITS.map(k => ({ ...k, present: exists(k.path) })),
     tools: TOOLS,
-    workflow: [
-      'Intake — topic, slug, source links, constraints.',
-      'Inventory — list snapshots; identify what exists vs missing. Use list-snapshots.js.',
-      'Source research — read supplied docs only; do not crawl the repo.',
-      'Storyboard + narration proposal — use the storyboard template. STOP for explicit approval.',
-      'Capture missing states — only after approval, or ask the user.',
-      'Build first draft in validated slices — after storyboard approval, build toward a full first draft in legacy/effect-mode by default unless the storyboard names a descriptor-safe reason.',
-      'TTS — render narration via tts/generate.js into videos/<slug>/narration/.',
-      'Validate — validate-video.js + check-video-playback.js.',
-      'Review — provide playable HTML URLs: full player URL plus useful chapter-only URLs. User owns visual QC; revise scoped findings after review.',
-      'Revise scoped — narrow fixes only.',
-      'Final summary — concise notes only; write a handoff doc only if requested.',
-    ],
-    tokenFloor: [
-      "Don't grep the whole repo. Read named files.",
-      "Don't run visual QC unless asked.",
-      'Build toward the approved first draft; stop early only for real gates.',
-      "Don't build fake snapshots to skip a capture step.",
-      "Don't reread historical plan docs to reorient.",
-      "Use scripts to find relevant snapshots — do not assume a snapshot is missing from one negative result. If list-snapshots.js --search returns nothing, try field-state.js --search, broaden the term, or inspect-snapshot.js a related capture before falling back to ASK USER / NEEDS CAPTURE. You have to try the scripts to know what's actually available.",
-      'Use legacy-first skeletons before old packages or descriptor examples.',
-    ],
     knownVideoPackages: listVideos(),
+    refactorStatus: 'COMPLETE — A → B → C → D → E.5 → F → G merged. See REFACTOR-DONE.md.',
   };
 }
 
@@ -275,70 +106,30 @@ function printHuman(ctx) {
   out.push('');
   out.push(ctx.startRule);
   out.push('');
-  out.push('## Required reads');
-  for (const r of ctx.requiredReads) {
-    out.push(`  ${r.present ? '✓' : '✗'} ${r.path}`);
-    out.push(`      ${r.why}`);
+  out.push(`Refactor status: ${ctx.refactorStatus}`);
+  out.push('');
+  out.push('## Skills (load the one matching your task)');
+  for (const s of ctx.skills) {
+    out.push(`  ${s.present ? '✓' : '✗'} ${s.name} — ${s.path}`);
+    out.push(`      ${s.use}`);
   }
   out.push('');
-  out.push('## Default authoring skeletons (legacy-first; copy before old packages)');
-  for (const r of ctx.authoringSkeletons) {
-    out.push(`  ${r.present ? '✓' : '✗'} ${r.path}`);
-    out.push(`      ${r.why}`);
+  out.push('## Operator manuals (always loaded for the matching agent)');
+  for (const m of ctx.operatorManuals) {
+    out.push(`  ${m.present ? '✓' : '✗'} ${m.path} (${m.agent}) — ${m.use}`);
   }
   out.push('');
-  out.push('## Shared capability kits (opt-in imports)');
-  for (const r of ctx.capabilityKits) {
-    out.push(`  ${r.present ? '✓' : '✗'} ${r.path}`);
-    out.push(`      import: ${r.importPath}`);
-    out.push(`      ${r.why}`);
+  out.push('## Key docs');
+  for (const d of ctx.keyDocs) {
+    out.push(`  ${d.present ? '·' : '?'} ${d.path}`);
+    out.push(`      ${d.when}`);
   }
   out.push('');
-  out.push('## Operator manual (pick one)');
-  for (const r of ctx.operatorManuals) {
-    out.push(`  ${r.present ? '✓' : '✗'} ${r.path} — ${r.agent}`);
-    out.push(`      ${r.why}`);
+  out.push('## Shared kits (under videos/_shared/)');
+  for (const k of ctx.sharedKits) {
+    out.push(`  ${k.present ? '✓' : '✗'} ${k.path}`);
+    out.push(`      ${k.use}`);
   }
-  out.push('');
-  out.push('## On-demand docs (do not load by default)');
-  for (const r of ctx.onDemandDocs) {
-    out.push(`  ${r.present ? '·' : '?'} ${r.path}`);
-    out.push(`      when: ${r.when}`);
-  }
-  out.push('');
-  out.push('## PostIntro examples');
-  for (const r of ctx.postIntroExamples) {
-    out.push(`  ${r.present ? '✓' : '✗'} ${r.path}`);
-    out.push(`      ${r.note}`);
-  }
-  out.push('');
-  out.push('## Canonical postIntro references (read only relevant code)');
-  for (const r of ctx.postIntroReferences) {
-    out.push(`  ${r.present ? '✓' : '✗'} ${r.route}`);
-    out.push(`      code: ${r.code}`);
-    out.push(`      pattern: ${r.pattern}`);
-  }
-  out.push('');
-  out.push('## On-demand reference packages (debug only)');
-  for (const r of ctx.onDemandReferencePatterns) out.push(`  - ${r}`);
-  out.push('');
-  out.push('## Workflow (numbered)');
-  ctx.workflow.forEach((step, i) => out.push(`  ${i + 1}. ${step}`));
-  out.push('');
-  out.push('## Per-video edits allowed');
-  for (const p of ctx.perVideoEdits) out.push(`  - ${p}`);
-  out.push('');
-  out.push('## Do not touch');
-  for (const p of ctx.doNotTouch) out.push(`  - ${p}`);
-  out.push('');
-  out.push('## Existing code surfaces');
-  for (const r of ctx.existingCodeSurfaces) out.push(`  - ${r}`);
-  out.push('');
-  out.push('## Production-truth rules');
-  for (const r of ctx.stage4Rules) out.push(`  - ${r}`);
-  out.push('');
-  out.push('## PostIntro / field-video rules');
-  for (const r of ctx.postIntroRules) out.push(`  - ${r}`);
   out.push('');
   out.push('## Tools');
   for (const t of ctx.tools) {
@@ -346,16 +137,8 @@ function printHuman(ctx) {
     out.push(`      ${t.use}`);
   }
   out.push('');
-  out.push('## Token floor');
-  for (const r of ctx.tokenFloor) out.push(`  - ${r}`);
-  out.push('');
   out.push(`## Known video packages (${ctx.knownVideoPackages.length})`);
-  for (const s of ctx.knownVideoPackages) {
-    const label = REFERENCE_VIDEO_SLUGS.has(s)
-      ? ' — reference/debug only; do not read at startup'
-      : '';
-    out.push(`  ${s}${label}`);
-  }
+  for (const s of ctx.knownVideoPackages) out.push(`  ${s}`);
   return out.join('\n') + '\n';
 }
 
