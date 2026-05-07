@@ -607,7 +607,8 @@ accepted, review its `_kit.js` and lift any reusable helpers into
 ### Capability kits
 
 - `videos/_shared/atmospheric.js` (`../../_shared/atmospheric.js`) provides marketing-mode helpers: grain, sweep, parallax pair, scale push, and dark backdrop. Compose each helper into the caller's master timeline with `tweenInto(tl, opts)`.
-- `videos/_shared/text-kit.js` (`../../_shared/text-kit.js`) provides pixel-point-style text reveals with seven presets. Compose each reveal into the caller's master timeline with `tweenInto(tl, opts)`.
+- `videos/_shared/blocks/` (`../../_shared/blocks/index.js`) provides parent-document editorial chrome: code cards, mac windows, phone frames, pills, arrows, route lines, and terminals. Blocks never read iframe DOM; they mount above the iframe or inside editorial mode and return `{ el, dispose, tweenInto }`. See `docs/blocks.md`.
+- `videos/_shared/text-kit.js` (`../../_shared/text-kit.js`) provides pixel-point-style text reveals with 24 presets. Compose each reveal into the caller's master timeline with `tweenInto(tl, opts)`. See `docs/text-kit.md`.
 - `videos/_shared/lottie-kit.js` (`../../_shared/lottie-kit.js`) embeds Lottie animations for editorial bumpers, stings, badges, and micro-illustrations. Use it when the asset is editorial chrome above the WPForms surface.
 - `videos/_shared/three-kit.js` (`../../_shared/three-kit.js`) provides Three.js scene helpers for editorial 3D layers. It stays separate so non-3D videos do not load Three.js.
 - `videos/_shared/effects.js` (`../../_shared/effects.js`) registers a shared `gsap.registerEffect()` library: `highlightPulse`, `fieldBurst`, `labelReveal`, `popOutTilt`, `cardReflow`. Import once at module top, `await effectsReady`, then call `gsap.effects.<name>(target, opts)`. See `docs/effects-library.md` for per-effect API.
