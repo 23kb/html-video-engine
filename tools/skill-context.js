@@ -31,6 +31,7 @@ const CAPABILITY_KITS = [
   { path: 'videos/_shared/text-kit.js', importPath: '../../_shared/text-kit.js', why: 'Pixel-point-style text reveals with seven presets; compose with tweenInto(tl, opts).' },
   { path: 'videos/_shared/lottie-kit.js', importPath: '../../_shared/lottie-kit.js', why: 'Lottie editorial bumpers, stings, badges, and marker/frame-driven micro-animations.' },
   { path: 'videos/_shared/three-kit.js', importPath: '../../_shared/three-kit.js', why: 'Three.js scene helpers for editorial 3D layers, loaded separately from the universal kit.' },
+  { path: 'videos/_shared/effects.js', importPath: '../../_shared/effects.js', why: 'Phase A: gsap.registerEffect() library — highlightPulse, fieldBurst, labelReveal, popOutTilt, cardReflow. Import once; await effectsReady; call gsap.effects.<name>().' },
 ];
 
 // Production-truth rules surfaced inline so a session sees them immediately.

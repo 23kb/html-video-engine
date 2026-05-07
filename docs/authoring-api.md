@@ -605,6 +605,14 @@ accepted, review its `_kit.js` and lift any reusable helpers into
 - `videos/_shared/text-kit.js` (`../../_shared/text-kit.js`) provides pixel-point-style text reveals with seven presets. Compose each reveal into the caller's master timeline with `tweenInto(tl, opts)`.
 - `videos/_shared/lottie-kit.js` (`../../_shared/lottie-kit.js`) embeds Lottie animations for editorial bumpers, stings, badges, and micro-illustrations. Use it when the asset is editorial chrome above the WPForms surface.
 - `videos/_shared/three-kit.js` (`../../_shared/three-kit.js`) provides Three.js scene helpers for editorial 3D layers. It stays separate so non-3D videos do not load Three.js.
+- `videos/_shared/effects.js` (`../../_shared/effects.js`) registers a shared `gsap.registerEffect()` library: `highlightPulse`, `fieldBurst`, `labelReveal`, `popOutTilt`, `cardReflow`. Import once at module top, `await effectsReady`, then call `gsap.effects.<name>(target, opts)`. See `docs/effects-library.md` for per-effect API.
+
+`videos/_shared/kit.js` also exports two Phase A helpers:
+
+- `awaitTween(tween, { duration, fallbackMs })` — fire-and-forget wrapper that resolves on `setTimeout(duration*1000)` instead of GSAP's RAF-driven `onComplete`. Use this anywhere a tween must complete in a hidden tab or headless render (RAF is throttled and `onComplete` never fires).
+- `withGsapContext(fn, scope)` — `gsap.context()` wrapper returning `{ ctx, revert }` for consistent chapter-swap cleanup.
+
+`loadGsap()` accepts opt-in plugin flags: `flip` and `motionPath` default true; `splitText`, `morphSVG`, `drawSVG`, `customEase`, `gsDevTools`, `motionPathHelper` default false. Plugins are vendored under `/vendor/gsap/3.15.0/`. Webflow released all GSAP plugins as free in April 2025 — use them.
 
 GSAP code in any of these kits or in chapter `effect()` bodies must follow `docs/gsap-rules.md` (L0 discipline rules).
 
