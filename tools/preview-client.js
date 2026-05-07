@@ -26,16 +26,25 @@ function previewClientScript() {
   }
 
   function timelines() {
+    // Hide registered-timeline rows until the user has actually started the
+    // video. Some timelines (e.g. the camera timeline registered at
+    // engine.loadSnapshot time) live before sceneBooted; their wall-clock
+    // would otherwise appear to tick on the scrubber while the Start gate
+    // is still waiting.
+    if (!bootedAt) return [];
     const registry = window.__hfTimelines && window.__hfTimelines.registry;
     if (!registry || typeof registry.entries !== 'function') return [];
-    return Array.from(registry.entries()).map(([id, entry]) => ({
-      id,
-      duration: Number(entry && entry.adapter && entry.adapter.duration) || 0,
-      time: Math.max(0, Math.min(
-        Number(entry && entry.adapter && entry.adapter.duration) || 0,
-        (performance.now() - (Number(entry && entry.t0) || performance.now())) / 1000
-      )),
-    }));
+    // pause-manager.shiftFrameDriverClock(pausedMs) bumps each entry.t0 on
+    // resume, so paused intervals between pause/resume cycles are already
+    // baked out. We only need to subtract the LIVE (currently-paused)
+    // interval so the displayed time freezes during a pause.
+    const liveLockedMs = pausedSince != null ? performance.now() - pausedSince : 0;
+    return Array.from(registry.entries()).map(([id, entry]) => {
+      const duration = Number(entry && entry.adapter && entry.adapter.duration) || 0;
+      const t0 = Number(entry && entry.t0) || performance.now();
+      const elapsed = (performance.now() - t0 - liveLockedMs) / 1000;
+      return { id, duration, time: Math.max(0, Math.min(duration, elapsed)) };
+    });
   }
 
   function pauseState() {
