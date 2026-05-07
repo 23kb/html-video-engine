@@ -353,9 +353,40 @@ helper or a video-local legacy implementation that does not touch core.
 - `node tts/generate.js --video <slug>`.
 - `node tools/validate-video.js <slug>`.
 - `node tools/check-video-playback.js <slug> [--chapter <id>] [--seconds <n>]`.
+- `node tools/render.js <slug> [--seek] [--fps 30]` — Phase E.5 MP4 export.
+- `node tools/preview.js [--video <slug>] [--port 4321]` — Phase E.5 live-reload + scrubber.
+- `node tools/lint-determinism.js [--all] [--video <slug>]` — Phase F determinism check.
+- `npm run lint` — composes `validate-video.js --all` + `lint-determinism.js --all`.
 
 Use standard tools instead of ad hoc `find`, `grep`, custom Playwright, or
 runtime spelunking unless there is a concrete gap.
+
+## Skills
+
+Phase F packages topic-scoped skills under `.claude/skills/`. Load the
+narrowest skill that matches the task; `tools/skill-context.js` remains the
+canonical startup dump.
+
+- `wpforms-video` — universal tutorial authoring.
+- `wpforms-postintro` — postIntro design + multi-animation rule.
+- `wpforms-gsap-rules` — GSAP L0 discipline + registered timelines + pausableRaf.
+- `wpforms-marketing` — editorial / ad-style surfaces.
+- `wpforms-transitions` — flipBridge + camera poses + scrubber/render.
+
+See `docs/skills.md` for the index; each skill is a single `SKILL.md` file
+with YAML frontmatter (`name` + `description`).
+
+## Determinism
+
+REFACTOR-BRIEF.md §3 locked: video chapter and runtime cinematic code is
+**deterministic logic**. No `Date.now()` outside the player driver. No
+unseeded `Math.random()` (use `mulberry32`). No `fetch()` at runtime.
+Required for Phase E.5 `--seek` mode render parity.
+
+Static enforcement: `node tools/lint-determinism.js --all`. See
+`docs/deterministic-logic.md` for rationale and
+`docs/deterministic-logic-findings.md` for known existing warnings (Phase F
+logged them but did not migrate; cleanup is a separate per-video session).
 
 ## Validation
 
