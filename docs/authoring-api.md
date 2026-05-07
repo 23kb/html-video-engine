@@ -612,6 +612,36 @@ accepted, review its `_kit.js` and lift any reusable helpers into
 - `awaitTween(tween, { duration, fallbackMs })` — fire-and-forget wrapper that resolves on `setTimeout(duration*1000)` instead of GSAP's RAF-driven `onComplete`. Use this anywhere a tween must complete in a hidden tab or headless render (RAF is throttled and `onComplete` never fires).
 - `withGsapContext(fn, scope)` — `gsap.context()` wrapper returning `{ ctx, revert }` for consistent chapter-swap cleanup.
 
+### Opt-in: registered timelines
+
+Phase B adds `registerTimeline(tl, { id })` from `videos/_shared/kit.js`.
+Use it when an editorial-layer GSAP timeline should be owned by the runtime
+frame driver:
+
+```js
+import { loadGsap, registerTimeline } from '../../_shared/kit.js';
+
+const gsap = await loadGsap();
+const tl = gsap.timeline({ paused: true });
+tl.to(card, { opacity: 1, y: 0, duration: 0.45 });
+registerTimeline(tl, { id: 'video-slug:chapter:beat' });
+```
+
+Requirements:
+
+- Create the timeline with `gsap.timeline({ paused: true })`.
+- Do not call `tl.play()`. The frame driver seeks it from registration time.
+- IDs must be unique within the active postIntro/chapter scope.
+- GSAP callbacks fire during `tl.seek(t, false)`, so side-effect callbacks
+  must be idempotent.
+
+`awaitTween()` and `registerTimeline()` coexist. Use `awaitTween()` for
+fire-and-forget wall-clock tweens where the author owns timing directly:
+one-shot SFX-synced animations, narration-cued effects, or legacy beats that
+do not need a seekable surface. Use `registerTimeline()` for paused timelines
+the runtime should drive: multi-phase postIntros, scrubbable editorial beats,
+and animations that must survive hidden-tab RAF throttling.
+
 `loadGsap()` accepts opt-in plugin flags: `flip` and `motionPath` default true; `splitText`, `morphSVG`, `drawSVG`, `customEase`, `gsDevTools`, `motionPathHelper` default false. Plugins are vendored under `/vendor/gsap/3.15.0/`. Webflow released all GSAP plugins as free in April 2025 — use them.
 
 GSAP code in any of these kits or in chapter `effect()` bodies must follow `docs/gsap-rules.md` (L0 discipline rules).

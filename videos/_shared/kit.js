@@ -12,6 +12,9 @@
 //
 // See docs/chapter-module-contract.md for the import allowlist amendment.
 
+import { register } from '../../runtime/frame-driver.js';
+import { gsapTimelineAdapter } from '../../runtime/frame-adapter.js';
+
 // ─────────────────────────────────────────────────────────────────────────
 // GSAP loader — vendored from /vendor/gsap/3.15.0/.
 //
@@ -111,6 +114,18 @@ export function awaitTween(tweenOrTimeline, { duration, fallbackMs = 50 } = {}) 
 export function withGsapContext(fn, scope) {
   const ctx = window.gsap.context(fn, scope);
   return { ctx, revert: () => ctx.revert() };
+}
+
+// Opt-in Phase B surface: register a paused GSAP timeline with the runtime
+// frame driver. The driver seeks it from registration time; callers should not
+// call tl.play().
+export function registerTimeline(tl, { id }) {
+  if (!id) throw new Error('registerTimeline: { id } required');
+  if (typeof tl?.paused === 'function' && !tl.paused()) {
+    console.warn(`registerTimeline(${id}): timeline must be paused`);
+  }
+  register(gsapTimelineAdapter(tl, { id }));
+  return tl;
 }
 
 // ─────────────────────────────────────────────────────────────────────────

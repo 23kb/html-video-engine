@@ -33,6 +33,7 @@ import { playTitleCard } from './title-card.js';
 import { runChapterBreak } from './transitions.js';
 import { initSfx } from './sfx.js';
 import { playCinematic } from './cinematic-runner.js';
+import * as frameDriver from './frame-driver.js';
 
 // Stage 5b-1: paint-anchored gate. Resolves when `root` has computed opacity
 // >= threshold, non-zero size, and one rAF has committed past that state.
@@ -105,6 +106,8 @@ export async function runChapters(descriptors, opts = {}) {
   let currentSnapshot = opts.initialSnapshot || null;
   let prevStep = null; // carries .chapter across chapter boundaries for continuity logic
   let narrationEnded = null; // promise from the current chapter's narration
+
+  const debugRegistry = new URLSearchParams(location.search).get('debug') === '1';
 
   for (let ci = 0; ci < descriptors.length; ci++) {
     const desc = descriptors[ci];
@@ -250,6 +253,9 @@ export async function runChapters(descriptors, opts = {}) {
       signalChapterFailed(desc.slug, err.message);
       // Re-throw so a chain aborts rather than silently marching on.
       throw err;
+    } finally {
+      frameDriver.clear();
+      if (debugRegistry) frameDriver.assertRegistryEmpty('descriptor teardown: ' + desc.slug);
     }
   }
 
@@ -266,14 +272,20 @@ export async function runChapters(descriptors, opts = {}) {
  */
 export async function runSolo(descriptor, { video, manifest } = {}) {
   if (!video) throw new Error('runSolo: { video } required (pass ?video=<slug>)');
+  frameDriver.start();
   setNarrationBase('/videos/' + video + '/narration/');
   await waitForStartClick(descriptor.title, {
     onClick: () => { initSfx(); if (descriptor.narration) startBGM(); },
   });
   document.body.classList.add('with-stage-chrome');
-  const r = await runChapters([descriptor]);
-  await stopBGM(1500);
-  return r;
+  try {
+    const r = await runChapters([descriptor]);
+    await stopBGM(1500);
+    return r;
+  } finally {
+    frameDriver.clear();
+    frameDriver.stop();
+  }
 }
 
 /**
@@ -287,6 +299,7 @@ export async function runSolo(descriptor, { video, manifest } = {}) {
 export async function runChain(descriptors, { label = 'Play chained', video, manifest } = {}) {
   if (!video) throw new Error('runChain: { video } required (pass ?video=<slug>)');
   if (!manifest) throw new Error('runChain: { manifest } required — fetch in the caller and thread it down');
+  frameDriver.start();
   const base = '/videos/' + video + '/';
   setNarrationBase(base + 'narration/');
 
@@ -398,6 +411,10 @@ export async function runChain(descriptors, { label = 'Play chained', video, man
       onMounted: (handle) => awaitPostIntroReady(handle?.root)
         .then(() => document.querySelector('.fade-cover.cream.prepostintro')?.remove()),
     });
+    frameDriver.clear();
+    if (new URLSearchParams(location.search).get('debug') === '1') {
+      frameDriver.assertRegistryEmpty('postIntro teardown');
+    }
   }
 
   // Teaser (entry screen) — e.g. dual-path. Runs between intro and chapters.
@@ -436,11 +453,16 @@ export async function runChain(descriptors, { label = 'Play chained', video, man
   }
 
   document.body.classList.add('with-stage-chrome');
-  const result = await runChapters(descriptors, {
-    initialSnapshot: primary,
-    defaults: manifest.defaults || {},
-    hud: manifest.hud !== false,
-  });
+  let result;
+  try {
+    result = await runChapters(descriptors, {
+      initialSnapshot: primary,
+      defaults: manifest.defaults || {},
+      hud: manifest.hud !== false,
+    });
+  } finally {
+    frameDriver.clear();
+  }
 
   // Outro sequence (ported from player.js): cream cover over the iframe
   // first, then unmount watermark under it, then play the outro card on top.
@@ -472,5 +494,6 @@ export async function runChain(descriptors, { label = 'Play chained', video, man
     });
   }
   await stopBGM(1500);
+  frameDriver.stop();
   return result;
 }
