@@ -284,6 +284,24 @@ Phase C camera-pose vocabulary (legacy/effect beats only):
   by name (`camera: 'focus'`). The runtime resolves before focusing. Seed
   names are `focus`, `station`, `overview`. See `docs/camera-poses.md`.
 
+Phase D capability kits:
+
+- `videos/_shared/blocks/` (new) — parent-document editorial blocks: `mountCodeCard`,
+  `mountMacWindow`, `mountPhoneFrame`, `mountPill`, `mountArrow`, `mountRouteLine`,
+  `mountTerminal`. Each returns `{ el, dispose, tweenInto?(tl, opts) }`. Blocks
+  never read iframe DOM — they live in the parent doc above the iframe (or
+  stand alone in `surface: 'editorial'`). Compose `tweenInto` calls into the
+  caller's master timeline. See `docs/blocks.md`.
+- `videos/_shared/text-kit.js` — extended to 24 Pixel-Point-style presets
+  (was 7). New presets use vendored `SplitText` when available; deterministic
+  DOM fallback keeps the factory usable when SplitText is not loaded. Existing
+  `mountTextReveal(text, { preset, ...opts })` factory signature is unchanged.
+  See `docs/text-kit.md` for the full preset list.
+- Helper rollout reminder: `popOut`, `cursor.glideTo(target, { via })`, and
+  `lineDraw` are underused but high-leverage. See
+  `docs/helper-rollout-backlog.md` for candidate beats and
+  `docs/postintro-patterns.md` for "when to reach for" guidance.
+
 ## Protected Areas
 
 Normal video work must not edit:
