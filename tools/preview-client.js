@@ -5,8 +5,6 @@ function previewClientScript() {
   if (window.__phaseE5PreviewClient) return;
   window.__phaseE5PreviewClient = true;
   const tabId = (crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now() + Math.random());
-  const wsProto = location.protocol === 'https:' ? 'wss:' : 'ws:';
-  const ws = new WebSocket(wsProto + '//' + location.host + '/__preview-ws');
   const channel = new BroadcastChannel('hf-preview');
   let bootedAt = null;            // performance.now() at first sceneBooted=true
   let chapterStartedAt = null;    // performance.now() when current chapter began
@@ -41,7 +39,9 @@ function previewClientScript() {
     // baked out. We only need to subtract the LIVE (currently-paused)
     // interval so the displayed time freezes during a pause.
     const liveLockedMs = pausedSince != null ? performance.now() - pausedSince : 0;
-    return Array.from(registry.entries()).map(([id, entry]) => {
+    return Array.from(registry.entries())
+    .filter(([, entry]) => Number(entry && entry.t0) >= ((chapterStartedAt || 0) - 100))
+    .map(([id, entry]) => {
       const duration = Number(entry && entry.adapter && entry.adapter.duration) || 0;
       const t0 = Number(entry && entry.t0) || performance.now();
       const elapsed = (performance.now() - t0 - liveLockedMs) / 1000;
@@ -103,15 +103,21 @@ function previewClientScript() {
     }
   }
 
-  ws.addEventListener('message', (event) => {
-    try {
-      const msg = JSON.parse(event.data);
-      if (msg.type === 'reload') {
-        console.info('[preview] reload', msg.path || '');
-        location.reload();
-      }
-    } catch (_) {}
-  });
+  fetch('/__preview-ws', { method: 'HEAD' }).then((res) => {
+    if (res.status === 426 || res.headers.get('upgrade')) {
+      const wsProto = location.protocol === 'https:' ? 'wss:' : 'ws:';
+      const ws = new WebSocket(wsProto + '//' + location.host + '/__preview-ws');
+      ws.addEventListener('message', (event) => {
+        try {
+          const msg = JSON.parse(event.data);
+          if (msg.type === 'reload') {
+            console.info('[preview] reload', msg.path || '');
+            location.reload();
+          }
+        } catch (_) {}
+      });
+    }
+  }).catch(() => {});
 
   function resetChapterClock() {
     chapterStartedAt = performance.now();

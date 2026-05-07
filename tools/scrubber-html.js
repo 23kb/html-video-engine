@@ -10,7 +10,11 @@ function scrubberHtml({ video, port }) {
     * { box-sizing: border-box; }
     body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.4 Inter, ui-sans-serif, system-ui, sans-serif; }
     .shell { display: grid; grid-template-rows: minmax(0, 1fr) 230px; height: 100vh; }
-    iframe { width: 100%; height: 100%; border: 0; background: #071018; }
+    .previewFrame { position: relative; min-height: 0; background: #071018; }
+    iframe { width: 100%; height: 100%; border: 0; background: #071018; transition: opacity 160ms ease; }
+    .previewFrame.paused iframe { opacity: .42; }
+    .pauseOverlay { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(0,0,0,.28); color: #fff; font-size: 34px; font-weight: 800; letter-spacing: .16em; opacity: 0; pointer-events: none; transition: opacity 160ms ease; }
+    .previewFrame.paused .pauseOverlay { opacity: 1; }
     .panel { border-top: 1px solid var(--line); background: var(--panel); padding: 14px 18px; display: grid; gap: 12px; }
     .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     .status { display: flex; align-items: center; gap: 10px; min-width: 0; }
@@ -27,8 +31,10 @@ function scrubberHtml({ video, port }) {
     .chapter { padding: 7px 10px; color: var(--muted); border-bottom: 1px solid rgba(42,55,70,.55); cursor: pointer; }
     .chapter.active { color: #fff; background: rgba(105,213,255,.12); }
     .timelineBox { position: relative; padding: 10px 12px; }
+    .clockHead { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 8px; color: var(--muted); font-size: 12px; }
+    #clockText { color: var(--ink); font-family: ui-monospace, SFMono-Regular, Consolas, monospace; }
     .clock { height: 12px; border-radius: 999px; background: #202b38; overflow: hidden; margin-bottom: 10px; }
-    .clock > span { display: block; height: 100%; width: var(--p, 0%); background: var(--cyan); }
+    .clock > span { display: block; height: 100%; width: var(--p, 0%); background: var(--accent); }
     .timeline { position: relative; height: 28px; margin: 6px 0; border-radius: 6px; background: #202b38; cursor: pointer; overflow: hidden; }
     .timeline::before { content: ""; position: absolute; inset: 0; width: var(--p, 0%); background: linear-gradient(90deg, var(--accent), var(--cyan)); opacity: .85; }
     .timeline span { position: absolute; inset: 0; display: flex; align-items: center; padding: 0 10px; color: #fff; pointer-events: none; font-size: 12px; }
@@ -37,7 +43,10 @@ function scrubberHtml({ video, port }) {
 </head>
 <body>
   <div class="shell">
-    <iframe src="${playerUrl}" title="Preview player"></iframe>
+    <div class="previewFrame" id="previewFrame">
+      <iframe src="${playerUrl}" title="Preview player"></iframe>
+      <div class="pauseOverlay">PAUSED</div>
+    </div>
     <section class="panel">
       <div class="top">
         <div class="status">
@@ -57,6 +66,7 @@ function scrubberHtml({ video, port }) {
       <div class="tracks">
         <div class="chapters" id="chapters"></div>
         <div class="timelineBox">
+          <div class="clockHead"><span>Chapter clock</span><span id="clockText">0.0s</span></div>
           <div class="clock" title="Wall-clock is read-only. Chapter restart/prev/next are supported."><span id="clockFill"></span></div>
           <div id="timelines"></div>
           <div class="meta">Wall-clock is read-only. Chapter seek restarts at chapter boundaries; mid-chapter wall-clock seek is not supported.</div>
@@ -69,10 +79,13 @@ function scrubberHtml({ video, port }) {
     const boot = document.getElementById('boot');
     const pauseState = document.getElementById('pauseState');
     const pauseBtn = document.getElementById('pauseBtn');
+    const previewFrame = document.getElementById('previewFrame');
     const chapterNow = document.getElementById('chapterNow');
     const chapters = document.getElementById('chapters');
     const timelines = document.getElementById('timelines');
     const clockFill = document.getElementById('clockFill');
+    const clockText = document.getElementById('clockText');
+    const FILL_CEILING_S = 60;
     let latest = null;
     let activeTabId = null;
 
@@ -96,11 +109,15 @@ function scrubberHtml({ video, port }) {
       boot.textContent = state.sceneDone ? 'done' : state.sceneBooted ? 'booted' : 'booting';
       pauseState.textContent = state.paused ? 'PAUSED' : 'playing';
       pauseState.classList.toggle('paused', !!state.paused);
+      previewFrame.classList.toggle('paused', !!state.paused);
       pauseBtn.textContent = state.paused ? 'Resume' : 'Pause';
       const idx = currentIndex();
       const names = state.chapterNames || [];
-      chapterNow.textContent = 'chapter ' + (idx + 1) + '/' + (state.chapterCount || names.length || 0);
-      clockFill.style.setProperty('--p', Math.min(100, ((state.wallClock || 0) / Math.max(10, state.wallClock || 0)) * 100) + '%');
+      const count = state.chapterCount || names.length || 0;
+      chapterNow.textContent = state.sceneBooted && count ? 'chapter ' + (idx + 1) + '/' + count : '--';
+      const wallClock = Math.max(0, Number(state.wallClock) || 0);
+      clockText.textContent = wallClock.toFixed(1) + 's';
+      clockFill.style.setProperty('--p', Math.min(100, (wallClock / FILL_CEILING_S) * 100) + '%');
 
       chapters.innerHTML = '';
       (names.length ? names : Array.from({ length: state.chapterCount || 0 }, (_, i) => 'chapter-' + (i + 1))).forEach((name, i) => {
