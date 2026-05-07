@@ -38,10 +38,17 @@
 const fs     = require('fs');
 const path   = require('path');
 const crypto = require('crypto');
+const { execFileSync } = require('child_process');
 
 const ROOT = path.join(__dirname, '..');
 const SNAP = path.join(ROOT, 'snapshots');
 const BASELINE_PATH = path.join(__dirname, 'validator-baseline.json');
+const ALL_VIDEO_EXCLUDE = new Set([
+  'surveys-and-polls-v4-approved',
+  'surveys-and-polls-v4-final',
+  'surveys-and-polls-v4-final-bgm',
+  'surveys-and-polls-v4-final-synced',
+]);
 
 // Declarative `prep` op vocabulary — kept in lockstep with
 // `runtime/prep-ops.js`. Validator is CommonJS / zero-dep, so we duplicate
@@ -532,11 +539,21 @@ function parseArgs(argv) {
   const args = argv.slice(2);
   const flags = new Set();
   const slugs = [];
-  for (const a of args) {
+  const skipLints = new Set();
+  for (let i = 0; i < args.length; i++) {
+    const a = args[i];
+    if (a === '--skip-lint') {
+      const name = args[++i];
+      if (!name || name.startsWith('--')) {
+        throw new Error('--skip-lint requires a rule name');
+      }
+      skipLints.add(name);
+      continue;
+    }
     if (a.startsWith('--')) flags.add(a);
     else slugs.push(a);
   }
-  return { flags, slugs };
+  return { flags, slugs, skipLints };
 }
 
 // ─── hashing / baseline ───
@@ -759,18 +776,26 @@ function parseChapter(text) {
     cameraLevels: [],    // [{level, line}]
     beatIds: [],         // [{id, line}]
     extraSnapshots: [],  // [{slug, line}]  — swapToSnapshot('...') refs
+    narrationBeats: [],  // [{key, duration, line}]
   };
 
-  const snapM = /\bsnapshot\s*:\s*['"]([^'"]+)['"]/.exec(text);
+  const snapM = /(?:\bsnapshot\s*:\s*|\bexport\s+const\s+snapshot\s*=\s*)['"]([^'"]+)['"]/.exec(text);
   if (snapM) out.snapshot = snapM[1];
 
-  const modeM = /\bmode\s*:\s*['"]([^'"]+)['"]/.exec(text);
+  const modeM = /(?:\bmode\s*:\s*|\bexport\s+const\s+mode\s*=\s*)['"]([^'"]+)['"]/.exec(text);
   if (modeM) out.mode = modeM[1];
 
   const narrRe = /\bnarration\s*:\s*['"]([^'"]+)['"]/g;
   let nm;
   while ((nm = narrRe.exec(text)) !== null) {
     out.narrationKeys.push({ key: nm[1], line: lineOf(text, nm.index) });
+    const tail = text.slice(nm.index, Math.min(text.length, nm.index + 900));
+    const durationM = /\bduration\s*:\s*(-?\d+(?:\.\d+)?)/.exec(tail);
+    out.narrationBeats.push({
+      key: nm[1],
+      duration: durationM ? Number(durationM[1]) : null,
+      line: lineOf(text, nm.index),
+    });
   }
 
   // camera: { ... level: <n> ... } — `level` may also legally appear inside
@@ -846,6 +871,28 @@ function findVideoDir(slug) {
     if (fs.existsSync(path.join(nested, 'manifest.json'))) return nested;
   }
   return direct; // fall through so the original error surfaces
+}
+
+function listAllVideoSlugs() {
+  const videosDir = path.join(ROOT, 'videos');
+  if (!fs.existsSync(videosDir)) return [];
+  const out = [];
+  const visit = (dir) => {
+    if (fs.existsSync(path.join(dir, 'manifest.json'))) {
+      const slug = path.basename(dir);
+      if (!ALL_VIDEO_EXCLUDE.has(slug)) out.push(slug);
+      return;
+    }
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      const sub = path.join(dir, entry.name);
+      if (fs.existsSync(path.join(sub, 'manifest.json')) && !ALL_VIDEO_EXCLUDE.has(entry.name)) out.push(entry.name);
+    }
+  };
+  for (const entry of fs.readdirSync(videosDir, { withFileTypes: true })) {
+    if (entry.isDirectory()) visit(path.join(videosDir, entry.name));
+  }
+  return [...new Set(out)].sort();
 }
 
 function loadVideo(slug) {
@@ -1063,8 +1110,106 @@ function listNarrationFiles(slug) {
   return { mp3s, txts, dirExists: true };
 }
 
+const mp3DurationCache = new Map();
+function mp3DurationSeconds(file) {
+  if (mp3DurationCache.has(file)) return mp3DurationCache.get(file);
+  try {
+    const out = execFileSync('ffprobe', [
+      '-v', 'error',
+      '-show_entries', 'format=duration',
+      '-of', 'default=noprint_wrappers=1:nokey=1',
+      file,
+    ], { encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim();
+    const n = Number(out);
+    const val = Number.isFinite(n) ? n : null;
+    mp3DurationCache.set(file, val);
+    return val;
+  } catch (_) {
+    mp3DurationCache.set(file, null);
+    return null;
+  }
+}
+
 function snapshotFolderExists(slug) {
   return fs.existsSync(path.join(SNAP, slug));
+}
+
+function lintAudioVsDuration(video, chapters, slug) {
+  for (const file of chapters) {
+    const text = readText(file);
+    const info = parseChapter(text);
+    if (info.mode !== 'per-beat-narration') continue;
+    for (const beat of info.narrationBeats) {
+      if (!beat.key) continue;
+      if (beat.duration != null && beat.duration < 0.6) {
+        report('warning', file, beat.line,
+          `audio-duration lint: narration beat "${beat.key}" has duration ${beat.duration}s; narration beats below 0.6s tend to rush the audio`,
+          true);
+      }
+      if (beat.duration == null) continue;
+      const mp3 = path.join(video.dir, 'narration', `${beat.key}.mp3`);
+      if (!fs.existsSync(mp3)) continue;
+      const audioSeconds = mp3DurationSeconds(mp3);
+      if (audioSeconds == null) {
+        report('warning', file, beat.line,
+          `audio-duration lint: could not read videos/${slug}/narration/${beat.key}.mp3 duration via ffprobe`,
+          true);
+        continue;
+      }
+      if (audioSeconds > beat.duration * 1.5) {
+        report('warning', file, beat.line,
+          `audio-duration lint: narration "${beat.key}" is ${audioSeconds.toFixed(2)}s but beat duration is ${beat.duration}s (>1.5x); confirm the visual cadence is intentional`,
+          true);
+      }
+    }
+  }
+}
+
+function lintRawRaf(files) {
+  for (const file of files) {
+    if (!fs.existsSync(file)) continue;
+    const text = readText(file);
+    const lines = text.split(/\r?\n/);
+    lines.forEach((line, i) => {
+      if (!/\brequestAnimationFrame\s*\(/.test(line)) return;
+      if (/lint-allow:\s*raw-raf/.test(line)) return;
+      report('warning', file, i + 1,
+        'pausable-raf lint: raw requestAnimationFrame() should use pausableRaf() from videos/_shared/kit.js unless this line is intentionally opted out',
+        true);
+    });
+  }
+}
+
+function lintRegisterTimelinePaused(files) {
+  for (const file of files) {
+    if (!fs.existsSync(file)) continue;
+    const text = readText(file);
+    const timelineDecls = new Map();
+    const declRe = /\b(?:const|let|var)\s+([A-Za-z_$][\w$]*)\s*=\s*gsap\.timeline\s*\(([\s\S]*?)\)\s*;/g;
+    let m;
+    while ((m = declRe.exec(text)) !== null) {
+      timelineDecls.set(m[1], { opts: m[2], line: lineOf(text, m.index) });
+    }
+    const regRe = /\bregisterTimeline\s*\(\s*([^,\s)]+)/g;
+    while ((m = regRe.exec(text)) !== null) {
+      const arg = m[1];
+      if (/^gsap\.timeline/.test(arg)) {
+        const callTail = text.slice(m.index, Math.min(text.length, m.index + 300));
+        if (!/paused\s*:\s*true/.test(callTail)) {
+          report('warning', file, lineOf(text, m.index),
+            'register-timeline lint: inline gsap.timeline() passed to registerTimeline() should be created with { paused: true }',
+            true);
+        }
+        continue;
+      }
+      const decl = timelineDecls.get(arg);
+      if (decl && !/paused\s*:\s*true/.test(decl.opts)) {
+        report('warning', file, lineOf(text, m.index),
+          `register-timeline lint: ${arg} is registered with registerTimeline() but its gsap.timeline() options do not include paused: true`,
+          true);
+      }
+    }
+  }
 }
 
 function runVideoChecks(video, opts = {}) {
@@ -1073,6 +1218,7 @@ function runVideoChecks(video, opts = {}) {
   // every chapter file in the directory (matching the per-file pass).
   const chapters = opts.allChapters ? video.allChapterFiles : video.chapters;
   const slug = path.basename(dir);
+  const skipLints = opts.skipLints || new Set();
 
   // ── Stage 4c manifest schema warnings ──
   // narrationSpeed: must be a number within a soft range. The conservative
@@ -1178,6 +1324,15 @@ function runVideoChecks(video, opts = {}) {
     if (info.snapshot) noteRef(info.snapshot, file, 1, 'chapter snapshot');
     for (const x of info.extraSnapshots) noteRef(x.slug, file, x.line, 'swapToSnapshot()');
   }
+
+  const runtimeCinematics = fs.existsSync(path.join(ROOT, 'runtime'))
+    ? fs.readdirSync(path.join(ROOT, 'runtime'))
+        .filter(n => /^cinematic-.+\.js$/.test(n))
+        .map(n => path.join(ROOT, 'runtime', n))
+    : [];
+  if (!skipLints.has('audio-duration')) lintAudioVsDuration(video, chapters, slug);
+  if (!skipLints.has('pausable-raf')) lintRawRaf([...chapters, ...runtimeCinematics]);
+  if (!skipLints.has('register-timeline')) lintRegisterTimelinePaused([...chapters, ...runtimeCinematics]);
   for (const [snap, sites] of refs) {
     if (snapshotFolderExists(snap)) continue;
     for (const site of sites) {
@@ -1445,7 +1600,16 @@ function summarize(flags) {
 }
 
 (function main() {
-  const { flags, slugs } = parseArgs(process.argv);
+  let parsed;
+  try {
+    parsed = parseArgs(process.argv);
+  } catch (e) {
+    console.error(e.message);
+    process.exit(1);
+  }
+  const { flags, skipLints } = parsed;
+  let { slugs } = parsed;
+  if (flags.has('--all')) slugs = listAllVideoSlugs();
 
   if (flags.has('--baseline')) {
     const files = {};
@@ -1459,7 +1623,7 @@ function summarize(flags) {
   }
 
   if (slugs.length === 0) {
-    console.error('Usage: node tools/validate-video.js <slug> [--strict] [--strict-authoring] [--report] [--baseline]');
+    console.error('Usage: node tools/validate-video.js <slug> [--all] [--strict] [--strict-authoring] [--report] [--baseline] [--skip-lint <rule>]');
     process.exit(1);
   }
 
@@ -1510,6 +1674,7 @@ function summarize(flags) {
     runVideoChecks(video, {
       allChapters,
       strictAuthoring: flags.has('--strict-authoring'),
+      skipLints,
     });
   }
 

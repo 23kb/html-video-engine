@@ -27,6 +27,11 @@ const AUTHORING_SKELETONS = [
 ];
 
 const CAPABILITY_KITS = [
+  { path: '.claude/skills/wpforms-video/SKILL.md', importPath: 'skill: wpforms-video', why: 'Phase F skill bundle: universal tutorial authoring, storyboard gate, production truth, validation.' },
+  { path: '.claude/skills/wpforms-postintro/SKILL.md', importPath: 'skill: wpforms-postintro', why: 'Phase F skill bundle: postIntro concept beats, multi-animation rule, canonical references.' },
+  { path: '.claude/skills/wpforms-gsap-rules/SKILL.md', importPath: 'skill: wpforms-gsap-rules', why: 'Phase F skill bundle: GSAP L0 discipline, effects, Flip, registered timelines, pausableRaf.' },
+  { path: '.claude/skills/wpforms-marketing/SKILL.md', importPath: 'skill: wpforms-marketing', why: 'Phase F skill bundle: editorial/ad-style surfaces, atmospheric kit, blocks, text-kit.' },
+  { path: '.claude/skills/wpforms-transitions/SKILL.md', importPath: 'skill: wpforms-transitions', why: 'Phase F skill bundle: transition vocabulary, flipBridge, camera poses, frame driver, preview/render.' },
   { path: 'videos/_shared/atmospheric.js', importPath: '../../_shared/atmospheric.js', why: 'Marketing-mode helpers: grain, sweep, parallax pair, scale push, dark backdrop.' },
   { path: 'videos/_shared/blocks/', importPath: '../../_shared/blocks/index.js', why: 'Phase D: parent-document editorial blocks — code-card, mac-window, phone-frame, pill, arrow, route-line, terminal. Blocks never read iframe DOM; compose with tweenInto(tl, opts).' },
   { path: 'videos/_shared/text-kit.js', importPath: '../../_shared/text-kit.js', why: 'Pixel-point-style text reveals with 24 presets; compose with tweenInto(tl, opts).' },
@@ -86,6 +91,9 @@ const ON_DEMAND = [
   { path: 'docs/render.md', when: 'Rendering playable HTML videos to MP4 with tools/render.js; wall-clock for tutorials, seek mode for editorial registered timelines.' },
   { path: 'docs/preview.md', when: 'Using the Phase E live-reload preview server and author scrubber.' },
   { path: 'docs/pause-manager.md', when: 'Authoring a Three.js or render-loop beat (use pausableRaf, not raw requestAnimationFrame), or working with the runtime scrubber pause/resume/chapter-seek. Phase E.5.' },
+  { path: 'docs/skills.md', when: 'Choosing a Phase F repo-local skill bundle instead of loading the full startup dump.' },
+  { path: 'docs/deterministic-logic.md', when: 'Understanding deterministic render-parity rules enforced by tools/lint-determinism.js.' },
+  { path: 'docs/deterministic-logic-findings.md', when: 'Reviewing existing deterministic-logic violations found by Phase F linting.' },
 ];
 
 const REFERENCE_VIDEOS = [
@@ -186,6 +194,8 @@ const TOOLS = [
   { cmd: 'node tools/verify-selectors.js <snapshot-slug> [selector...]', use: 'Check that selected CSS selectors exist in a snapshot before relying on them in chapters.' },
   { cmd: 'node tools/check-video-playback.js <slug> [--chapter <id>] [--seconds <n>]', use: 'Standard non-visual smoke. Returns JSON. Exit 0 = scene done clean, 1 = boot fail, 2 = console/page errors.' },
   { cmd: 'node tools/validate-video.js <slug>', use: 'Static validator for a video package.' },
+  { cmd: 'node tools/validate-video.js --all [--skip-lint <rule>]', use: 'Validate every video package with Phase F additive lint passes.' },
+  { cmd: 'node tools/lint-determinism.js [--all] [--video <slug>]', use: 'Phase F deterministic-logic linter: Date.now/fetch errors, Math.random/setTimeout warnings.' },
   { cmd: 'node tts/generate.js --video <slug>', use: 'Render narration mp3s for a video. Run this yourself; do not ask the user.' },
   { cmd: 'node serve.js', use: 'Local static server on http://localhost:4321 (auto-started by check-video-playback.js if not running).' },
   { cmd: 'node tools/preview.js [--video <slug>] [--port 5173] [--no-open]', use: 'Phase E live-reload preview server with injected reload client and /scrubber author UI.' },
