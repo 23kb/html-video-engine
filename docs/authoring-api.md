@@ -634,6 +634,10 @@ Requirements:
 - IDs must be unique within the active postIntro/chapter scope.
 - GSAP callbacks fire during `tl.seek(t, false)`, so side-effect callbacks
   must be idempotent.
+- **Build the timeline before registering.** The adapter snapshots
+  `tl.duration()` at registration time and clamps `seek(t)` to that value.
+  Tweens added after `registerTimeline()` are silently truncated. If you
+  need to extend a timeline at runtime, unregister and re-register.
 
 `awaitTween()` and `registerTimeline()` coexist. Use `awaitTween()` for
 fire-and-forget wall-clock tweens where the author owns timing directly:

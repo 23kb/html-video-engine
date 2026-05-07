@@ -32,6 +32,7 @@ const CAPABILITY_KITS = [
   { path: 'videos/_shared/lottie-kit.js', importPath: '../../_shared/lottie-kit.js', why: 'Lottie editorial bumpers, stings, badges, and marker/frame-driven micro-animations.' },
   { path: 'videos/_shared/three-kit.js', importPath: '../../_shared/three-kit.js', why: 'Three.js scene helpers for editorial 3D layers, loaded separately from the universal kit.' },
   { path: 'videos/_shared/effects.js', importPath: '../../_shared/effects.js', why: 'Phase A: gsap.registerEffect() library — highlightPulse, fieldBurst, labelReveal, popOutTilt, cardReflow. Import once; await effectsReady; call gsap.effects.<name>().' },
+  { path: 'videos/_shared/kit.js', importPath: '../../_shared/kit.js', why: 'Phase B: registerTimeline(tl, { id }) opt-in for paused GSAP timelines owned by the runtime frame driver. Build with gsap.timeline({ paused: true }), finish all tweens before registering (duration is snapshotted), do not call tl.play(). Survives hidden-tab RAF throttling. See docs/frame-driver.md.' },
 ];
 
 // Production-truth rules surfaced inline so a session sees them immediately.
@@ -41,7 +42,7 @@ const STAGE_4_RULES = [
   'Snapshots are base structural surfaces, not one snapshot per final visible state.',
   'DOM-derived states are allowed when grounded by `node tools/field-state.js --field <name>` or real captured DOM. Document base + what was staged.',
   'No fake product UI and no fake snapshot folders. Capture what is missing.',
-  'Normal video work must not touch protected core (engine/, runtime/player.js, runtime/chapter-runner.js, runtime/scene-helpers.js, runtime/transitions.js, scenes/shared.js, scenes/player.html, existing accepted videos/snapshots).',
+  'Normal video work must not touch protected core (engine/, runtime/player.js, runtime/chapter-runner.js, runtime/scene-helpers.js, runtime/transitions.js, runtime/frame-driver.js, runtime/frame-adapter.js, scenes/shared.js, scenes/player.html, existing accepted videos/snapshots).',
   'New files under runtime/ — including unwired helper sketches — are approval-gated.',
   'If a video seems to need core edits, stop and ask whether the behavior is reusable. Prefer a video-local legacy/effect implementation first; propose reusable helpers only when repeated need proves it.',
 ];
@@ -74,6 +75,7 @@ const ON_DEMAND = [
   { path: 'docs/chapter-module-contract.md', when: 'Authoring a chapter module from scratch and need the locked interface spec.' },
   { path: 'docs/stage-4-core-api-plan.md', when: 'Governance/history only. Use for refactor planning, not normal video authoring.' },
   { path: 'docs/gsap-flip-patterns.md', when: 'Authoring a beat or postIntro that morphs layout, reparents elements, pins editorial DOM to real UI, or clones real iframe UI for animation. Two validated sandboxes (flip-sandbox, flip-generate-card).' },
+  { path: 'docs/frame-driver.md', when: 'Authoring an editorial-layer GSAP timeline that should survive hidden-tab RAF throttling, or migrating an existing cinematic to the registered-timeline path. Phase B opt-in.' },
 ];
 
 const REFERENCE_VIDEOS = [
@@ -133,6 +135,8 @@ const DO_NOT_TOUCH = [
   'runtime/chapter-runner.js',
   'runtime/scene-helpers.js',
   'runtime/transitions.js',
+  'runtime/frame-driver.js',
+  'runtime/frame-adapter.js',
   'scenes/shared.js',
   'scenes/player.html',
   'existing accepted video packages and reference baselines',

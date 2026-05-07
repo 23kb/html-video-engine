@@ -22,6 +22,13 @@ Frame adapters expose:
 - `gsapTimelineAdapter(tl, { id, context })` for paused GSAP timelines.
   `seek(t)` calls `tl.seek(t, false)`, so GSAP callbacks/events fire. Any
   callback that mutates DOM must be idempotent.
+  **Duration is snapshotted at construction.** The adapter calls
+  `tl.duration()` once when wrapping the timeline and clamps `seek(t)` to
+  that value. Build the full timeline (all `.to/.from/.fromTo/.set` calls)
+  before calling `registerTimeline`. Extending a registered timeline with
+  more tweens silently truncates them — the driver will not seek past the
+  snapshotted duration. If the duration must change at runtime, unregister
+  and re-register.
 - `waapiAdapter(animations, { id })` for Web Animations API instances. It
   pauses animations, seeks via `currentTime`, and cancels on destroy.
 

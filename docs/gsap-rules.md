@@ -334,3 +334,44 @@ new or intentionally touched authoring surfaces.
 - `labelReveal(target, opts)` - SplitText-backed character cascade.
 - `popOutTilt(target, opts)` - in-place lift/tilt emphasis for a target element.
 - `cardReflow(targets, opts)` - Flip-backed layout reflow after DOM mutation.
+
+## Phase B Patterns
+
+### Registered timelines (frame-driver opt-in)
+
+Editorial-layer GSAP timelines may opt in to runtime ownership via
+`registerTimeline(tl, { id })` from `videos/_shared/kit.js`. The frame
+driver (`runtime/frame-driver.js`) seeks each registered timeline on every
+tick using a per-registration `t0`, with a `setTimeout` fallback when RAF
+is throttled. This is the architectural fix for the hidden-tab GSAP hang
+(`analysis-quality-and-transitions.md` §2.5) for any animation expressed
+as a paused timeline.
+
+Hard rules:
+
+1. **Registered timelines must be paused.** Build with
+   `gsap.timeline({ paused: true })`. The kit warns if you register a
+   non-paused timeline.
+2. **Never call `tl.play()` on a registered timeline.** The driver seeks
+   it from registration time. Calling `play()` runs GSAP's internal RAF
+   ticker in parallel with the driver's seek; the result is double-driven
+   timing that drifts and may stutter.
+3. **Build the timeline before registering.** The adapter snapshots
+   `tl.duration()` at registration time and clamps `seek(t)` to that
+   value. Tweens added after `registerTimeline()` are silently truncated.
+4. **Wait by duration, not by `onComplete`.** A registered timeline's
+   `onComplete` fires during `seek(t, false)` ticks, but the chapter code
+   that needs to block on completion should `await sleep(tl.duration() *
+   1000 + buffer)` (or use `awaitTween`) rather than wrapping in
+   `new Promise(res => tl.eventCallback('onComplete', res))`. The driver
+   is the timing authority; author code reads wall-clock.
+5. **Side-effect callbacks must be idempotent.** GSAP fires
+   `onStart` / `onComplete` / `onUpdate` on every tick that crosses the
+   trigger; DOM mutations inside those callbacks must converge to the
+   same end state on repeated calls.
+
+`awaitTween()` (Phase A) and `registerTimeline()` (Phase B) coexist. Use
+`awaitTween()` for fire-and-forget wall-clock tweens where the author
+owns timing directly. Use `registerTimeline()` for paused timelines that
+should be runtime-owned (multi-phase postIntros, scrubbable beats,
+hidden-tab survival).

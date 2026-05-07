@@ -248,6 +248,16 @@ Normal video work may create or edit:
 New videos keep narration `.txt` and `.mp3` under
 `videos/<slug>/narration/`. Do not copy from root `/narration/` for new work.
 
+`videos/_shared/kit.js` exports `registerTimeline(tl, { id })` (Phase B). Use
+it when an editorial-layer GSAP timeline should be owned by the runtime
+frame driver — paused timelines, scrubbable beats, or anything that must
+survive hidden-tab RAF throttling. Build the timeline with
+`gsap.timeline({ paused: true })`, finish all `.to/.from/.fromTo/.set` calls
+before `registerTimeline()` (duration is snapshotted at registration), and
+do not call `tl.play()` — the driver seeks. See
+`docs/authoring-api.md` "Opt-in: registered timelines" and
+`docs/frame-driver.md`.
+
 ## Protected Areas
 
 Normal video work must not edit:
@@ -257,6 +267,8 @@ Normal video work must not edit:
 - `runtime/chapter-runner.js`;
 - `runtime/scene-helpers.js`;
 - `runtime/transitions.js`;
+- `runtime/frame-driver.js`;
+- `runtime/frame-adapter.js`;
 - `scenes/shared.js`;
 - `scenes/player.html`;
 - accepted/reference video packages;
