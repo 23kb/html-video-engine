@@ -13,40 +13,104 @@
 // See docs/chapter-module-contract.md for the import allowlist amendment.
 
 // ─────────────────────────────────────────────────────────────────────────
-// GSAP loader — vendored from /vendor/gsap/3.12.5/.
+// GSAP loader — vendored from /vendor/gsap/3.15.0/.
 //
-// Loads GSAP core plus optional Flip and MotionPathPlugin. Cached after
-// first call. `window.gsap` is shared with the runtime cinematic-kit
+// Loads GSAP core plus optional plugins. Cached after first call and
+// idempotent for later opt-in plugin requests. `window.gsap` is shared
+// with the runtime cinematic-kit
 // loader (runtime/cinematic-kit/gsap-loader.js) so a chapter that calls
 // loadGsap() and a runtime cinematic that calls its own loadGsap() share
 // the same library instance.
 // ─────────────────────────────────────────────────────────────────────────
 
-let gsapPromise = null;
+const GSAP_VENDOR_PATH = '/vendor/gsap/3.15.0/';
+let gsapCorePromise = null;
+let pluginLoadPromise = Promise.resolve();
+const scriptLoadPromises = {};
 
-export function loadGsap({ flip = true, motionPath = true } = {}) {
-  if (window.gsap
-      && (!flip || window.Flip)
-      && (!motionPath || window.MotionPathPlugin)) {
-    return Promise.resolve(window.gsap);
+export function loadGsap({
+  flip = true,
+  motionPath = true,
+  splitText = false,
+  morphSVG = false,
+  drawSVG = false,
+  customEase = false,
+  gsDevTools = false,
+  motionPathHelper = false,
+} = {}) {
+  const load = (src) => {
+    if (scriptLoadPromises[src]) return scriptLoadPromises[src];
+    scriptLoadPromises[src] = new Promise((res, rej) => {
+      const existing = document.querySelector(`script[src="${src}"]`);
+      if (existing?.dataset.loaded === 'true') { res(); return; }
+      if (existing) {
+        existing.addEventListener('load', res, { once: true });
+        existing.addEventListener('error', rej, { once: true });
+        return;
+      }
+      const s = document.createElement('script');
+      s.src = src;
+      s.onload = () => { s.dataset.loaded = 'true'; res(); };
+      s.onerror = rej;
+      document.head.appendChild(s);
+    });
+    return scriptLoadPromises[src];
+  };
+
+  if (!gsapCorePromise) {
+    gsapCorePromise = (async () => {
+      if (!window.gsap) await load(`${GSAP_VENDOR_PATH}gsap.min.js`);
+      return window.gsap;
+    })();
   }
-  if (gsapPromise) return gsapPromise;
-  const load = (src) => new Promise((res, rej) => {
-    const s = document.createElement('script');
-    s.src = src; s.onload = res; s.onerror = rej;
-    document.head.appendChild(s);
-  });
-  gsapPromise = (async () => {
-    if (!window.gsap)            await load('/vendor/gsap/3.12.5/gsap.min.js');
-    if (motionPath && !window.MotionPathPlugin) await load('/vendor/gsap/3.12.5/MotionPathPlugin.min.js');
-    if (flip && !window.Flip)    await load('/vendor/gsap/3.12.5/Flip.min.js');
+
+  const requestedPlugins = [
+    [motionPath, 'MotionPathPlugin', 'MotionPathPlugin.min.js'],
+    [flip, 'Flip', 'Flip.min.js'],
+    [splitText, 'SplitText', 'SplitText.min.js'],
+    [morphSVG, 'MorphSVGPlugin', 'MorphSVGPlugin.min.js'],
+    [drawSVG, 'DrawSVGPlugin', 'DrawSVGPlugin.min.js'],
+    [customEase, 'CustomEase', 'CustomEase.min.js'],
+    [gsDevTools, 'GSDevTools', 'GSDevTools.min.js'],
+    [motionPathHelper, 'MotionPathHelper', 'MotionPathHelper.min.js'],
+  ].filter(([enabled, globalName]) => enabled && !window[globalName]);
+
+  pluginLoadPromise = pluginLoadPromise.then(async () => {
+    await gsapCorePromise;
+    for (const [, , file] of requestedPlugins) {
+      await load(`${GSAP_VENDOR_PATH}${file}`);
+    }
     const plugins = [];
     if (window.MotionPathPlugin) plugins.push(window.MotionPathPlugin);
     if (window.Flip)             plugins.push(window.Flip);
+    if (window.SplitText)        plugins.push(window.SplitText);
+    if (window.MorphSVGPlugin)   plugins.push(window.MorphSVGPlugin);
+    if (window.DrawSVGPlugin)    plugins.push(window.DrawSVGPlugin);
+    if (window.CustomEase)       plugins.push(window.CustomEase);
+    if (window.GSDevTools)       plugins.push(window.GSDevTools);
+    if (window.MotionPathHelper) plugins.push(window.MotionPathHelper);
     if (plugins.length) window.gsap.registerPlugin(...plugins);
     return window.gsap;
-  })();
-  return gsapPromise;
+  });
+
+  return pluginLoadPromise;
+}
+
+// Promise that resolves after the tween's expected duration via setTimeout.
+// Used instead of `gsap.eventCallback('onComplete', resolve)` because RAF is
+// throttled in hidden tabs / headless browsers, which never fires onComplete.
+// Reference: analysis-quality-and-transitions.md §2.5.
+export function awaitTween(tweenOrTimeline, { duration, fallbackMs = 50 } = {}) {
+  const ms = ((duration ?? tweenOrTimeline?.duration?.() ?? 0) * 1000) + fallbackMs;
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+// Wraps gsap.context() to make cleanup consistent at chapter swap.
+// Returns { ctx, revert } so callers can either capture for manual revert or
+// fire-and-forget if the chapter teardown picks it up.
+export function withGsapContext(fn, scope) {
+  const ctx = window.gsap.context(fn, scope);
+  return { ctx, revert: () => ctx.revert() };
 }
 
 // ─────────────────────────────────────────────────────────────────────────
