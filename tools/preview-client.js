@@ -113,12 +113,21 @@ function previewClientScript() {
     } catch (_) {}
   });
 
+  function resetChapterClock() {
+    chapterStartedAt = performance.now();
+    pausedAcc = 0;
+    pausedSince = pauseState().paused ? performance.now() : null;
+  }
+
   channel.addEventListener('message', async (event) => {
     const msg = event.data || {};
     if (msg.type === 'query') return postState();
     if (msg.type === 'pause') await (await pauseManager()).pause();
     if (msg.type === 'resume') await (await pauseManager()).resume();
-    if (msg.type === 'seekChapter') (await pauseManager()).seekToChapter(msg.index);
+    if (msg.type === 'seekChapter') {
+      resetChapterClock();
+      (await pauseManager()).seekToChapter(msg.index);
+    }
     if (msg.type === 'seekTimeline' || msg.type === 'seek') seekTimeline(msg.id, msg.time);
     if (msg.type !== 'state') postState();
   });
