@@ -23,12 +23,34 @@ function safeFilePath(urlPath) {
 }
 
 function createRequestHandler(options = {}) {
-  const injectPreview = typeof options.injectPreview === 'function'
+  const userInjectPreview = typeof options.injectPreview === 'function'
     ? options.injectPreview
     : null;
+  let scrubberHtml = null;
+  let previewClientScript = null;
+  try { ({ scrubberHtml } = require('./tools/scrubber-html.js')); } catch (_) {}
+  try { ({ previewClientScript } = require('./tools/preview-client.js')); } catch (_) {}
+  // If no caller-supplied injector, default to the preview-client script so
+  // the scrubber works against plain `serve.js` too. Preview mode supplies
+  // its own injector. The reload-WS portion silently fails on serve.js
+  // (no /__preview-ws endpoint) — that's expected; the BroadcastChannel
+  // portion still works for the scrubber.
+  const injectPreview = userInjectPreview || ((html) => {
+    if (!previewClientScript) return html;
+    const tag = previewClientScript();
+    if (html.includes('</body>')) return html.replace('</body>', `${tag}\n</body>`);
+    return html + tag;
+  });
 
   return (req, res) => {
   const urlPath = decodeURIComponent(req.url.split('?')[0]);
+  if (urlPath === '/scrubber' && scrubberHtml) {
+    const url = new URL(req.url, 'http://localhost');
+    const video = url.searchParams.get('video') || '_phase-c-editorial-pilot';
+    const port = Number(req.socket.localPort) || PORT;
+    res.writeHead(200, { 'Content-Type': 'text/html' });
+    return res.end(scrubberHtml({ video, port }));
+  }
   let filePath = safeFilePath(urlPath);
   if (!filePath) {
     res.writeHead(403);
