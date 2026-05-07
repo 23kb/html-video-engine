@@ -8,8 +8,17 @@ function previewClientScript() {
   const wsProto = location.protocol === 'https:' ? 'wss:' : 'ws:';
   const ws = new WebSocket(wsProto + '//' + location.host + '/__preview-ws');
   const channel = new BroadcastChannel('hf-preview');
-  const startedAt = performance.now();
+  let bootedAt = null;          // performance.now() at first sceneBooted=true
+  let pausedAcc = 0;            // ms accumulated while paused (since boot)
+  let pausedSince = null;       // performance.now() at last pause-start, or null
   let pauseManagerPromise = null;
+
+  function effectiveWallClock() {
+    if (!bootedAt) return 0;
+    const now = performance.now();
+    const livePaused = pausedSince != null ? now - pausedSince : 0;
+    return Math.max(0, (now - bootedAt - pausedAcc - livePaused) / 1000);
+  }
 
   function pauseManager() {
     if (!pauseManagerPromise) pauseManagerPromise = import('/runtime/pause-manager.js');
@@ -36,14 +45,21 @@ function previewClientScript() {
 
   function state() {
     const ps = pauseState();
+    const sceneBooted = document.body && document.body.dataset.sceneBooted === 'true';
+    if (!bootedAt && sceneBooted) bootedAt = performance.now();
+    if (ps.paused && pausedSince == null) pausedSince = performance.now();
+    if (!ps.paused && pausedSince != null) {
+      pausedAcc += performance.now() - pausedSince;
+      pausedSince = null;
+    }
     return {
       type: 'state',
       tabId,
       href: location.href,
-      sceneBooted: document.body && document.body.dataset.sceneBooted === 'true',
+      sceneBooted,
       sceneDone: document.body && document.body.dataset.sceneDone === 'true',
       surface: (document.body && document.body.dataset.surface) || '',
-      wallClock: (performance.now() - startedAt) / 1000,
+      wallClock: effectiveWallClock(),
       paused: !!ps.paused,
       currentChapterIndex: Number(ps.currentChapterIndex) || 0,
       chapterCount: Number(ps.chapterCount) || 0,
