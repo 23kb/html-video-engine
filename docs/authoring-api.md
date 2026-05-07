@@ -120,6 +120,7 @@ beat impossible.
 ```jsonc
 {
   "slug": "<slug>",
+  "surface": "iframe",                            // optional: iframe | mixed | editorial
   "primarySnapshot": "<snapshot-slug>",          // optional; first snapshot to preload
   "coverColor": "#FAF6EF",                        // optional CSS color
   "hud": false,                                   // false for final recording
@@ -284,9 +285,13 @@ Every selector must resolve against the chapter snapshot's
   snapshot. Supported values: `glide`, `hold`, `soft-dolly`,
   `dolly`, `whip`.
 - `swapStyle` — fires on snapshot change. Supported values:
-  `cover`, `fast`, `morph`, `push`, `whip`. `paper-cover` is
+  `cover`, `fast`, `morph`, `push`, `whip`, `flipBridge`. `paper-cover` is
   accepted only as a legacy alias at the manifest layer; it is not
   a runtime style.
+
+`flipBridge` preloads the next snapshot in a hidden iframe, runs prep against
+that hidden document, then adopts it without wiping the host body. It preserves
+Mac chrome and carries the current camera transform across the swap.
 
 ### 5.2 Resolution order — actual current behavior per runner
 
@@ -647,6 +652,12 @@ the runtime should drive: multi-phase postIntros, scrubbable editorial beats,
 and animations that must survive hidden-tab RAF throttling.
 
 `loadGsap()` accepts opt-in plugin flags: `flip` and `motionPath` default true; `splitText`, `morphSVG`, `drawSVG`, `customEase`, `gsDevTools`, `motionPathHelper` default false. Plugins are vendored under `/vendor/gsap/3.15.0/`. Webflow released all GSAP plugins as free in April 2025 — use them.
+
+### Opt-in: camera poses
+
+`videos/_shared/kit.js` exports `registerCameraPose(name, spec)`. A legacy beat
+can use `camera: '<name>'`; the runtime resolves it to the usual camera object
+before focusing. Seed names are `focus`, `station`, and `overview`.
 
 GSAP code in any of these kits or in chapter `effect()` bodies must follow `docs/gsap-rules.md` (L0 discipline rules).
 

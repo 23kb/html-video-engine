@@ -100,6 +100,7 @@ export async function runChapters(descriptors, opts = {}) {
 
   const multi = descriptors.length > 1;
   const defaults = opts.defaults || {};
+  const surface = opts.surface || 'iframe';
   // `initialSnapshot` lets runChain preload the primary snapshot behind the
   // intro/teaser and skip the first boot. Without it we'd body-wipe the
   // already-loaded iframe on the first chapter.
@@ -126,13 +127,16 @@ export async function runChapters(descriptors, opts = {}) {
     try {
       // Snapshot boot or swap. Only swap on snapshot-name change — same-name
       // transitions just re-run prep (no cream cover flash between chapters).
-      if (!currentSnapshot) {
+      if (!currentSnapshot && surface === 'editorial') {
+        currentSnapshot = desc.snapshot;
+        if (desc.prep) console.warn('[surface] editorial mode skipped iframe prep for', desc.slug);
+      } else if (!currentSnapshot) {
         await bootSnapshot(desc.snapshot, { prep: desc.prep || undefined });
       } else if (desc.snapshot !== currentSnapshot) {
         // Reset iframe transform to identity before the swap so the post-cover
         // drops onto a scale(1) iframe (not the outgoing camera's zoom).
         const swapStyle = desc.swapStyle || defaults.swapStyle || 'cover';
-        if (swapStyle !== 'morph') {
+        if (swapStyle !== 'morph' && swapStyle !== 'flipBridge') {
           // Cover swaps should drop onto an identity iframe. Morph swaps need
           // the outgoing camera transform intact so the crossfade starts from
           // the viewer's current framing.
@@ -300,6 +304,10 @@ export async function runChain(descriptors, { label = 'Play chained', video, man
   if (!video) throw new Error('runChain: { video } required (pass ?video=<slug>)');
   if (!manifest) throw new Error('runChain: { manifest } required — fetch in the caller and thread it down');
   frameDriver.start();
+  const surface = manifest.surface || 'iframe';
+  document.body.dataset.surface = surface;
+  document.body.classList.toggle('surface-editorial', surface === 'editorial');
+  document.body.classList.toggle('surface-mixed', surface === 'mixed');
   const base = '/videos/' + video + '/';
   setNarrationBase(base + 'narration/');
 
@@ -355,7 +363,7 @@ export async function runChain(descriptors, { label = 'Play chained', video, man
   // Preload the first snapshot behind the intro/teaser so the iframe is
   // already built when the first chapter's camera moves. Matches player.js.
   const primary = manifest.primarySnapshot || descriptors[0]?.snapshot;
-  if (primary) {
+  if (primary && surface !== 'editorial') {
     await bootSnapshot(primary, {
       prep: descriptors[0]?.snapshot === primary ? descriptors[0].prep : undefined,
       videoTitle,
@@ -448,16 +456,19 @@ export async function runChain(descriptors, { label = 'Play chained', video, man
       await t.dismiss();
       await sleep(120);
     }
-  } else {
+  } else if (surface !== 'editorial') {
     setWatermarkEnabled(true);
   }
 
-  document.body.classList.add('with-stage-chrome');
+  document.body.dataset.sceneBooted = 'true';
+
+  if (surface !== 'editorial') document.body.classList.add('with-stage-chrome');
   let result;
   try {
     result = await runChapters(descriptors, {
       initialSnapshot: primary,
       defaults: manifest.defaults || {},
+      surface,
       hud: manifest.hud !== false,
     });
   } finally {

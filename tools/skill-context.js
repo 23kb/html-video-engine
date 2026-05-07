@@ -76,6 +76,9 @@ const ON_DEMAND = [
   { path: 'docs/stage-4-core-api-plan.md', when: 'Governance/history only. Use for refactor planning, not normal video authoring.' },
   { path: 'docs/gsap-flip-patterns.md', when: 'Authoring a beat or postIntro that morphs layout, reparents elements, pins editorial DOM to real UI, or clones real iframe UI for animation. Two validated sandboxes (flip-sandbox, flip-generate-card).' },
   { path: 'docs/frame-driver.md', when: 'Authoring an editorial-layer GSAP timeline that should survive hidden-tab RAF throttling, or migrating an existing cinematic to the registered-timeline path. Phase B opt-in.' },
+  { path: 'docs/transitions.md', when: 'Using surface modes or flipBridge snapshot swaps.' },
+  { path: 'docs/shared-scene.md', when: 'Keeping a Three.js/editorial scene alive across chapter boundaries.' },
+  { path: 'docs/camera-poses.md', when: 'Registering or using named camera poses.' },
 ];
 
 const REFERENCE_VIDEOS = [
@@ -137,6 +140,8 @@ const DO_NOT_TOUCH = [
   'runtime/transitions.js',
   'runtime/frame-driver.js',
   'runtime/frame-adapter.js',
+  'runtime/shared-scene.js',
+  'runtime/camera-poses.js',
   'scenes/shared.js',
   'scenes/player.html',
   'existing accepted video packages and reference baselines',

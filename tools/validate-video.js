@@ -1100,7 +1100,13 @@ function runVideoChecks(video, opts = {}) {
   // layer — `runtime/player.js` falls back to its paper-cover hardfix when
   // no swapStyle is supplied; declaring it is a no-op shim.
   const VALID_BREAK_STYLES = new Set(['glide', 'hold', 'soft-dolly', 'dolly', 'whip']);
-  const VALID_SWAP_STYLES = new Set(['cover', 'fast', 'morph', 'push', 'whip', 'paper-cover']);
+  const VALID_SWAP_STYLES = new Set(['cover', 'fast', 'morph', 'push', 'whip', 'flipBridge', 'paper-cover']);
+  const VALID_SURFACES = new Set(['iframe', 'editorial', 'mixed']);
+  if ('surface' in manifest && manifest.surface != null && !VALID_SURFACES.has(manifest.surface)) {
+    report('warning', manifestPath, 1,
+      `manifest.surface "${manifest.surface}" is not in the known set {${[...VALID_SURFACES].sort().join(', ')}}`,
+      true);
+  }
   if (manifest.defaults && typeof manifest.defaults === 'object') {
     if ('breakStyle' in manifest.defaults && manifest.defaults.breakStyle != null) {
       const v = manifest.defaults.breakStyle;
