@@ -187,14 +187,17 @@ tomorrow. Vendor or pin.
 Correct:
 
 ```js
-// runtime/cinematic-kit/gsap-loader.js:20-22
+// videos/_shared/kit.js
 const s = document.createElement('script');
-s.src = '/vendor/gsap/3.12.5/gsap.min.js';
+s.src = '/vendor/gsap/3.15.0/gsap.min.js';
 s.onload = () => resolve(window.gsap);
 ```
 
 Repo status: vendored at `vendor/gsap/3.12.5/` with GSAP core, Flip, and
-MotionPathPlugin.
+MotionPathPlugin, and at `vendor/gsap/3.15.0/` with core plus the Phase A
+free-plugin set: Flip, MotionPathPlugin, SplitText, MorphSVGPlugin,
+DrawSVGPlugin, CustomEase, GSDevTools, and MotionPathHelper. New shared
+authoring code loads from `3.15.0`.
 
 Wrong:
 
@@ -301,3 +304,33 @@ None of these rules is currently checked by `tools/validate-video.js`. The
 rulebook is documentation, not gating. Authors and reviewers enforce it by
 reading. Future enhancement: a small lint rule for common violations
 (`opacity`-for-show/hide, `repeat: -1`) could land if violations accumulate.
+
+## Phase A Patterns
+
+### `awaitTween(tweenOrTimeline, { duration, fallbackMs })`
+
+Use `awaitTween()` from `videos/_shared/kit.js` when chapter code must wait for
+a GSAP tween/timeline but cannot rely on RAF-driven `onComplete`. Hidden tabs
+and headless smoke tests may throttle RAF heavily enough that `onComplete`
+never fires. `awaitTween()` resolves from the tween's expected duration plus a
+small fallback buffer using `setTimeout`, matching the hidden-tab issue called
+out in `analysis-quality-and-transitions.md` §2.5.
+
+### `withGsapContext(fn, scope)`
+
+Use `withGsapContext()` from `videos/_shared/kit.js` when an effect mounts
+temporary animation state that should be cleanly reverted at beat end or
+chapter swap. It wraps `gsap.context(fn, scope)` and returns `{ ctx, revert }`
+so chapter-local code can keep cleanup ergonomics consistent.
+
+### Shared `registerEffect` Library
+
+Import `videos/_shared/effects.js` to register the Phase A shared effect
+vocabulary. Existing videos are not migrated in Phase A; these effects are for
+new or intentionally touched authoring surfaces.
+
+- `highlightPulse(target, opts)` - quick transform/filter attention pulse.
+- `fieldBurst(target, opts)` - finite radial particle burst with no leftover DOM.
+- `labelReveal(target, opts)` - SplitText-backed character cascade.
+- `popOutTilt(target, opts)` - in-place lift/tilt emphasis for a target element.
+- `cardReflow(targets, opts)` - Flip-backed layout reflow after DOM mutation.
