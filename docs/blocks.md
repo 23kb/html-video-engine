@@ -17,8 +17,8 @@ Each module exports a `mountX(opts)` function and returns:
 ```
 
 `dispose()` is idempotent. Blocks inject only instance-scoped CSS and remove it
-on dispose. `tweenInto()` is optional in the contract, but every Phase D block
-ships it for timeline composition.
+on dispose. `tweenInto()` is optional in the contract, but every shipped block
+includes it for timeline composition.
 
 ## Blocks
 

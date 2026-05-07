@@ -67,7 +67,7 @@ For per-beat-narration:
 
 If the effect finishes BEFORE the narration ends, the runner waits for narration. **If the effect runs LONGER than the narration, the narration ends mid-effect and the runner waits for the effect.** Either is OK; just don't be surprised by the timing.
 
-## The Phase F lint
+## The validator audio-vs-duration warning
 
 `tools/validate-video.js` includes an audio-vs-duration warning:
 

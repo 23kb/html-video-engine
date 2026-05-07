@@ -19,8 +19,6 @@ This manual is intentionally short. **Topic-scoped rules live in skills**, not h
 
 `docs/INDEX.md` is a one-line-per-doc index. Use it to find the right doc fast.
 
-Architecture decisions: [REFACTOR-BRIEF.md](REFACTOR-BRIEF.md) §3 (locked) + [BACKLOG.md](BACKLOG.md) (pending + future).
-
 ## Token Discipline
 
 - Use targeted tools before broad shell searches.
@@ -70,7 +68,7 @@ New videos keep narration `.txt` and `.mp3` under `videos/<slug>/narration/`. Do
 
 ## Determinism
 
-Video chapter and runtime cinematic code is **deterministic logic** ([REFACTOR-BRIEF.md §3](REFACTOR-BRIEF.md)). Required for `tools/render.js --seek` mode parity.
+Video chapter and runtime cinematic code is **deterministic logic**. Required for `tools/render.js --seek` mode parity.
 
 - No `Date.now()` outside the player driver.
 - No unseeded `Math.random()` — use `mulberry32(seed)` from `videos/_shared/kit.js`.
@@ -88,9 +86,9 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 - `node tts/generate.js --video <slug>` — render narration mp3s
 - `node tools/validate-video.js <slug>` — static validator
 - `node tools/check-video-playback.js <slug> [--seconds <n>]` — non-visual smoke
-- `node tools/render.js <slug> [--seek] [--fps 30]` — Phase E.5 MP4 export
-- `node tools/preview.js [--video <slug>] [--port 4321]` — Phase E.5 live-reload + scrubber
-- `node tools/lint-determinism.js [--all] [--video <slug>]` — Phase F determinism check
+- `node tools/render.js <slug> [--seek] [--fps 30]` — MP4 export
+- `node tools/preview.js [--video <slug>] [--port 4321]` — live-reload + scrubber
+- `node tools/lint-determinism.js [--all] [--video <slug>]` — determinism check
 - `npm run lint` — composes `validate-video.js --all` + `lint-determinism.js --all`
 
 Use standard tools instead of ad hoc `find`, `grep`, custom Playwright, or runtime spelunking unless there is a concrete gap.
@@ -137,7 +135,3 @@ Don't look here for these — load the skill instead:
 | Chapter breaks / swap styles / `flipBridge` / camera poses / shared-scene / scrubber / render | `wpforms-transitions` |
 
 Skills are at `.claude/skills/<name>/SKILL.md`. Each is a single file with YAML frontmatter (`name`, `description`).
-
-## Architecture decisions
-
-Locked architectural decisions and protected-core list live in [REFACTOR-BRIEF.md](REFACTOR-BRIEF.md) §3-§4. Pending architectural debt + future-phase candidates live in [BACKLOG.md](BACKLOG.md).

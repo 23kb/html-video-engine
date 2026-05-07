@@ -91,7 +91,7 @@ Atmospheric layers SHOULD run through all three phases (continuous), but the "br
 
 - **Stripe-imitation slop:** big animated gradient sweep + grain + 3D card tilt + atmospheric particles → looks like every other tech-startup landing page. The WPForms voice is more grounded; pick atmospheric layers that serve the topic, not the trend.
 - **Atmospheric on tutorial beats:** confuses viewers. Tutorial beats should be still backgrounds.
-- **Atmospheric without `pausableRaf`:** if a layer uses raw `requestAnimationFrame`, scrubber pause won't freeze it. Phase E.5 rule applies.
+- **Atmospheric without `pausableRaf`:** if a layer uses raw `requestAnimationFrame`, scrubber pause won't freeze it. Always route author RAF through `pausableRaf` from `videos/_shared/kit.js`.
 - **Layering on top of an iframe:** the iframe is z:20, atmospheric usually mounts to body at z:auto. If atmospheric is meant to be IN FRONT of the iframe (ad-style overlays), set z explicitly. If meant to be BEHIND the iframe (mesh-bg replacement), `surface: 'editorial'` and skip the iframe entirely.
 
 ## See also

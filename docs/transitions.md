@@ -1,7 +1,7 @@
 # Transitions
 
-Phase C keeps the existing transition vocabulary and adds `flipBridge` as the
-cross-snapshot continuity path.
+The transitions module keeps the existing chapter-break vocabulary and adds
+`flipBridge` as the cross-snapshot continuity path.
 
 ## Surface Modes
 

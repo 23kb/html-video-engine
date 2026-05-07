@@ -1,8 +1,8 @@
 # Deterministic Logic
 
-Phase E render parity depends on repeatable timeline state. Any author-owned
-logic that changes across runs can make `tools/render.js --seek` disagree with
-the wall-clock preview, especially for editorial and registered-timeline work.
+Render parity depends on repeatable timeline state. Any author-owned logic that
+changes across runs can make `tools/render.js --seek` disagree with the
+wall-clock preview, especially for editorial and registered-timeline work.
 
 ## Rule Set
 
@@ -29,4 +29,4 @@ Exit codes:
 - `2` warnings only
 
 Existing violations are reported in `docs/deterministic-logic-findings.md`.
-Phase F exposes the violations; migration is separate.
+The linter exposes violations; migration is per-video work, opportunistic.

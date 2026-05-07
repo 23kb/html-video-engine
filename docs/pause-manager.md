@@ -1,4 +1,4 @@
-# Phase E.5 Pause Manager
+# Pause Manager
 
 `runtime/pause-manager.js` is the single owner for real preview pause/resume.
 It coordinates:

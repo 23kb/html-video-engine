@@ -1,8 +1,8 @@
 # Frame Driver
 
-Phase B adds an opt-in frame-driven surface for editorial-layer timelines. The
-iframe, camera, narration, `waitAt(t)`, descriptor verbs, and legacy
-`effect()` timing remain wall-clock driven.
+The runtime exposes an opt-in frame-driven surface for editorial-layer
+timelines. The iframe, camera, narration, `waitAt(t)`, descriptor verbs, and
+legacy `effect()` timing remain wall-clock driven.
 
 ## Contract
 
@@ -32,8 +32,8 @@ Frame adapters expose:
 - `waapiAdapter(animations, { id })` for Web Animations API instances. It
   pauses animations, seeks via `currentTime`, and cancels on destroy.
 
-TODO: add Lottie and Three.js adapters after Phase B pilots. The AI postIntro
-keeps its Three.js-style independent loops on their own clock in Phase B.
+Lottie and Three.js adapters are TODO. The AI postIntro keeps its
+Three.js-style independent loops on their own clock.
 
 ## Registry
 
@@ -91,8 +91,8 @@ registry is non-empty after clearing.
 
 ## Lessons From The AI PostIntro
 
-The AI postIntro surfaced the expected Phase B boundary: typed text and
-narration remain wall-clock, while GSAP-only motion can register through the
-driver. This keeps the existing cadence intact without pretending that
-DOM-typing side effects are deterministic seekable animation yet. A later
-phase can promote typed text to an adapter if scrub-preview needs it.
+The AI postIntro surfaced the expected boundary: typed text and narration
+remain wall-clock, while GSAP-only motion registers through the driver. This
+keeps the existing cadence intact without pretending that DOM-typing side
+effects are deterministic seekable animation yet. Future work can promote
+typed text to an adapter if scrub-preview needs it.

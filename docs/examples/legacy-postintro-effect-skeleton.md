@@ -139,7 +139,7 @@ Rules:
   enforce it, but the user will reject postIntros that feel like a single
   fade-in.
 
-## Phase B–E.5 optional additions (Phase G note)
+## Modern features (optional additions)
 
 The skeleton above uses class-toggle phase choreography (CSS keyframes triggered by adding `.is-phase-N` classes). That's a legitimate authoring pattern. **The canonical postIntros (`rough-thought-to-draft`, `one-answer-enough`) use a different pattern: paused GSAP timelines registered with the runtime frame driver.** This is the modern preferred shape for richer choreography:
 
@@ -193,7 +193,7 @@ export default [
 
 Both patterns work in production. Use the registered-timeline pattern for new postIntros unless the storyboard specifically needs imperative phase choreography (e.g. `audio-cued` `waitAt(t)` with mid-phase product DOM mutations).
 
-**Other Phase B-E.5 features for postIntros:**
+**Other modern features for postIntros:**
 - `swapStyle: 'flipBridge'` if the postIntro hands off to a different snapshot.
 - `videos/_shared/blocks/` for editorial chrome (mac-window, code-card, phone-frame, pill, arrow).
 - `videos/_shared/text-kit.js` for hero text reveals (24 Pixel-Point presets).

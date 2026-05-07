@@ -611,14 +611,14 @@ accepted, review its `_kit.js` and lift any reusable helpers into
 - `videos/_shared/three-kit.js` (`../../_shared/three-kit.js`) provides Three.js scene helpers for editorial 3D layers. It stays separate so non-3D videos do not load Three.js.
 - `videos/_shared/effects.js` (`../../_shared/effects.js`) registers a shared `gsap.registerEffect()` library: `highlightPulse`, `fieldBurst`, `labelReveal`, `popOutTilt`, `cardReflow`. Import once at module top, `await effectsReady`, then call `gsap.effects.<name>(target, opts)`. See `docs/effects-library.md` for per-effect API.
 
-`videos/_shared/kit.js` also exports two Phase A helpers:
+`videos/_shared/kit.js` also exports two cleanup helpers:
 
 - `awaitTween(tween, { duration, fallbackMs })` — fire-and-forget wrapper that resolves on `setTimeout(duration*1000)` instead of GSAP's RAF-driven `onComplete`. Use this anywhere a tween must complete in a hidden tab or headless render (RAF is throttled and `onComplete` never fires).
 - `withGsapContext(fn, scope)` — `gsap.context()` wrapper returning `{ ctx, revert }` for consistent chapter-swap cleanup.
 
 ### Opt-in: registered timelines
 
-Phase B adds `registerTimeline(tl, { id })` from `videos/_shared/kit.js`.
+`registerTimeline(tl, { id })` from `videos/_shared/kit.js` opts a paused GSAP timeline into runtime frame-driver ownership.
 Use it when an editorial-layer GSAP timeline should be owned by the runtime
 frame driver:
 
@@ -660,7 +660,7 @@ before focusing. Seed names are `focus`, `station`, and `overview`.
 
 ### Required: pausableRaf for author RAF loops
 
-Phase E.5 introduced runtime pause/resume + chapter seek + a runtime scrubber
+The runtime ships pause/resume + chapter seek + a runtime scrubber
 at `/scrubber?video=<slug>`. **Any author-owned `requestAnimationFrame` loop in
 a chapter or cinematic MUST use `pausableRaf(cb)` from `videos/_shared/kit.js`.**
 Vanilla `requestAnimationFrame` continues running through pause and produces
@@ -696,7 +696,7 @@ The runtime ships a scrubber at `/scrubber?video=<slug>` (served by both
   chapter cleanly (frame driver registry empties), enters the target chapter
   index from beat 0.
 - **Click-to-seek on registered timelines** — for paused timelines opted in
-  via Phase B's `registerTimeline()`, click their row to seek that adapter.
+  via `registerTimeline()`, click their row to seek that adapter.
 
 **Mid-chapter wall-clock seek is NOT supported.** Imperative `effect()` bodies
 cannot be replayed at arbitrary positions without state reconstruction.

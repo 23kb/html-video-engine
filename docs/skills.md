@@ -1,6 +1,6 @@
 # Skills
 
-Phase F adds Anthropic-style repo-local skills under `.claude/skills/`.
+adds Anthropic-style repo-local skills under `.claude/skills/`.
 `tools/skill-context.js` remains the canonical startup dump; skills are smaller
 topic-scoped context packs to load on demand.
 

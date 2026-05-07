@@ -1,4 +1,4 @@
-# Phase E.5 Preview Server
+# Preview Server
 
 `tools/preview.js` is the authoring server for live reload and scrubber work.
 

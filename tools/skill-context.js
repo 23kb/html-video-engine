@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Print the canonical skill context for a new session.
-// Phase G: slimmed to a routing index. Topic rules live in skills now;
-// this file just tells you which skill to load and where to find docs.
+// Slim routing index — topic rules live in skills, not here.
+// This file just tells you which skill to load and where to find docs.
 //
 // Usage:
 //   node tools/skill-context.js          # human-readable
@@ -34,12 +34,10 @@ const OPERATOR_MANUALS = [
 const KEY_DOCS = [
   { path: 'docs/INDEX.md',                                        when: 'First — one-line-per-doc index. Use to find the right doc fast.' },
   { path: 'docs/authoring-api.md',                                when: 'Public authoring contract reference. Manifest schema, chapter exports, descriptor mode, validator behavior.' },
-  { path: 'REFACTOR-BRIEF.md',                                    when: 'Locked architectural decisions (§3) + protected-core list (§4).' },
-  { path: 'BACKLOG.md',                                           when: 'Pending architectural debt + known gaps + future-phase candidates.' },
 ];
 
 const SHARED_KITS = [
-  { path: 'videos/_shared/kit.js',         use: 'loadGsap, awaitTween, withGsapContext, registerTimeline (Phase B), registerCameraPose (Phase C), pausableRaf (Phase E.5), mulberry32. See wpforms-gsap-rules.' },
+  { path: 'videos/_shared/kit.js',         use: 'loadGsap, awaitTween, withGsapContext, registerTimeline (paused-timeline registration), registerCameraPose, pausableRaf, mulberry32. See wpforms-gsap-rules.' },
   { path: 'videos/_shared/effects.js',     use: 'gsap.registerEffect library: highlightPulse, fieldBurst, labelReveal, popOutTilt, cardReflow. See wpforms-gsap-rules.' },
   { path: 'videos/_shared/atmospheric.js', use: 'Marketing-mode helpers: grain, sweep, parallax pair, scale push, dark backdrop. See wpforms-marketing.' },
   { path: 'videos/_shared/blocks/',        use: 'Editorial blocks: code-card, mac-window, phone-frame, pill, arrow, route-line, terminal. See wpforms-marketing.' },

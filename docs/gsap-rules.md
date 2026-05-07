@@ -194,7 +194,7 @@ s.onload = () => resolve(window.gsap);
 ```
 
 Repo status: vendored at `vendor/gsap/3.12.5/` with GSAP core, Flip, and
-MotionPathPlugin, and at `vendor/gsap/3.15.0/` with core plus the Phase A
+MotionPathPlugin, and at `vendor/gsap/3.15.0/` with core plus the full
 free-plugin set: Flip, MotionPathPlugin, SplitText, MorphSVGPlugin,
 DrawSVGPlugin, CustomEase, GSDevTools, and MotionPathHelper. New shared
 authoring code loads from `3.15.0`.
@@ -305,7 +305,7 @@ rulebook is documentation, not gating. Authors and reviewers enforce it by
 reading. Future enhancement: a small lint rule for common violations
 (`opacity`-for-show/hide, `repeat: -1`) could land if violations accumulate.
 
-## Phase A Patterns
+## Cleanup + Effects Patterns
 
 ### `awaitTween(tweenOrTimeline, { duration, fallbackMs })`
 
@@ -325,8 +325,8 @@ so chapter-local code can keep cleanup ergonomics consistent.
 
 ### Shared `registerEffect` Library
 
-Import `videos/_shared/effects.js` to register the Phase A shared effect
-vocabulary. Existing videos are not migrated in Phase A; these effects are for
+Import `videos/_shared/effects.js` to register the shared effect
+vocabulary. Existing videos are not migrated; these effects are for
 new or intentionally touched authoring surfaces.
 
 - `highlightPulse(target, opts)` - quick transform/filter attention pulse.
@@ -335,7 +335,7 @@ new or intentionally touched authoring surfaces.
 - `popOutTilt(target, opts)` - in-place lift/tilt emphasis for a target element.
 - `cardReflow(targets, opts)` - Flip-backed layout reflow after DOM mutation.
 
-## Phase B Patterns
+## Frame Driver Patterns
 
 ### Registered timelines (frame-driver opt-in)
 
@@ -370,18 +370,18 @@ Hard rules:
    trigger; DOM mutations inside those callbacks must converge to the
    same end state on repeated calls.
 
-`awaitTween()` (Phase A) and `registerTimeline()` (Phase B) coexist. Use
+`awaitTween()` and `registerTimeline()` coexist. Use
 `awaitTween()` for fire-and-forget wall-clock tweens where the author
 owns timing directly. Use `registerTimeline()` for paused timelines that
 should be runtime-owned (multi-phase postIntros, scrubbable beats,
 hidden-tab survival).
 
-## Phase E.5 Patterns
+## Pause + Scrubber Patterns
 
 ### Author RAF loops MUST use `pausableRaf`
 
-Phase E.5 adds runtime pause/resume that hammers every motion source. GSAP
-timelines (registered or otherwise) honor pause automatically. **Author-owned
+The runtime pause/resume hammers every motion source. GSAP timelines
+(registered or otherwise) honor pause automatically. **Author-owned
 `requestAnimationFrame` loops do not.** A bare `requestAnimationFrame(loop)`
 keeps running while the user has clicked Pause — produces visible motion that
 contradicts the pause state.

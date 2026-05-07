@@ -1,6 +1,6 @@
 # Current Workflow
 
-Last updated: 2026-05-07 (Phase G).
+Last updated: 2026-05-07.
 
 **This is a thin pointer doc.** The canonical workflow lives in the `wpforms-video` skill (`.claude/skills/wpforms-video/SKILL.md`) — load that for the full Approach, HARD-GATE, Production Truth, and Output Checklist.
 
@@ -24,7 +24,7 @@ A guided HTML video builder. Two equally-important modes:
 1. **Tutorial videos with real WPForms UI** — staged inside a Mac-framed iframe, layered with narration + cinematic moments. Real product DOM is product truth.
 2. **Ad-style release / announcement videos** — full-bleed 1920×1080 editorial DOM compositions. `surface: 'editorial'`.
 
-MP4 capture is in-repo via `tools/render.js` (Phase E.5). Wall-clock screencast for tutorials; `--seek` deterministic capture for editorial. The deliverable is a playable HTML review URL plus the MP4.
+MP4 capture is in-repo via `tools/render.js`. Wall-clock screencast for tutorials; `--seek` deterministic capture for editorial. The deliverable is a playable HTML review URL plus the MP4.
 
 ## The workflow loop
 
@@ -81,4 +81,4 @@ If a beat seems to need a new core helper, surface it as a maintainer change pro
 
 ---
 
-For the deeper context that used to live in this doc, see the `wpforms-video` skill body. Phase G (2026-05-07) inverted the architecture — topic-scoped rules now live in skills, this doc is a pointer.
+For the deeper context that used to live in this doc, see the `wpforms-video` skill body. Topic-scoped rules live in skills now; this doc is a pointer.

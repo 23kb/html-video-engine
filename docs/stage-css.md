@@ -20,11 +20,11 @@ Recurring class of bug: an editorial postIntro or marketing-mode chapter mounts 
 | 650 | `prep-cover` | Mounted around mid-effect snapshot swaps. | `scene-helpers.js mountCover` |
 | 999 | `.swap-cover` | Mounted during legacy `cover` / `morph` / `whip` swap styles. | `runtime/transitions.js mountCover` |
 
-`flipBridge` swap (Phase C) does NOT mount a top-level cover; the incoming iframe crossfades over the outgoing one in-place, so chrome stays visible.
+`flipBridge` swap does NOT mount a top-level cover; the incoming iframe crossfades over the outgoing one in-place, so chrome stays visible.
 
 ## Surface modes
 
-Phase C `manifest.surface` controls which layers are mounted:
+`manifest.surface` controls which layers are mounted:
 
 | Surface | mesh-bg | mac-frame | mac-chrome | watermark | iframe |
 |---|---|---|---|---|---|
@@ -116,7 +116,7 @@ The `surface: 'editorial'` mode never adds `with-stage-chrome` — full canvas f
 
 ## The cream `coverColor`
 
-`manifest.coverColor` (default `#FAF6EF` cream / `#F4F7FB` cool-paper) is the background of swap covers. It shows during legacy `cover` / `morph` / `whip` / `fast` swaps. Phase C `flipBridge` doesn't use it; covers aren't mounted there.
+`manifest.coverColor` (default `#FAF6EF` cream / `#F4F7FB` cool-paper) is the background of swap covers. It shows during legacy `cover` / `morph` / `whip` / `fast` swaps. `flipBridge` doesn't use it; covers aren't mounted there.
 
 If your editorial mode wants a different "between-snapshots" color, set `coverColor` in the manifest. Doesn't affect `flipBridge`.
 

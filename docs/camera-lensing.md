@@ -51,7 +51,7 @@ Use lower pad (4-8) for:
 - Macro detail beats where you want zero visual chrome around the target
 - Read-the-text beats (level 2.5+) where pad would push the text off-stage
 
-## Camera poses (Phase C)
+## Camera poses
 
 For repeat camera framing across beats, use `registerCameraPose` from `videos/_shared/kit.js`:
 
@@ -72,7 +72,7 @@ See `wpforms-transitions` skill for the camera-pose API.
 
 ## Smooth pan vs hard dolly
 
-By default `zoomTo` does a 1-frame snap-to-scale-1 reset before applying the new transform when `smooth: false` (the default). That's the "page refresh" jolt diagnosed in Phase 0. Phase C centralized camera writes; the visible jolt is now gone.
+By default `zoomTo` would do a 1-frame snap-to-scale-1 reset before applying the new transform when `smooth: false` — the "page refresh" jolt. Centralized camera writes (via `applyCamera()` / `setCameraTransform()`) eliminate it; the visible jolt is gone.
 
 For continuous beats within a chapter (`sameChapter` true), the camera smooth-pans between targets. For chapter breaks with `breakStyle: 'glide'`, the next beat's `focusOn` IS the transition — pure smooth pan from current framing to new target.
 

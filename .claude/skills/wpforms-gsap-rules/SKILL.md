@@ -1,6 +1,6 @@
 ---
 name: wpforms-gsap-rules
-description: Use before writing or reviewing any GSAP code in WPForms videos — chapter effects, postIntros, cinematics, shared kits. Covers L0 GSAP discipline (single timeline per beat, autoAlpha not opacity, transform/opacity/filter only, finite repeats), Phase B registered timelines (paused + registerTimeline + driver-owned seek), Phase E.5 pausableRaf (every author RAF loop), Flip patterns (cross-DOM morphs), and the shared effects.js library. Triggers on any "GSAP", "Flip", "timeline", "tween", "animation", "RAF", or "requestAnimationFrame" work.
+description: Use before writing or reviewing any GSAP code in WPForms videos — chapter effects, postIntros, cinematics, shared kits. Covers L0 GSAP discipline (single timeline per beat, autoAlpha not opacity, transform/opacity/filter only, finite repeats), registered timelines (paused + registerTimeline + driver-owned seek), pausableRaf (every author RAF loop), Flip patterns (cross-DOM morphs), and the shared effects.js library. Triggers on any "GSAP", "Flip", "timeline", "tween", "animation", "RAF", or "requestAnimationFrame" work.
 ---
 
 # GSAP Rules for WPForms Videos
@@ -78,7 +78,7 @@ GSAP and all plugins are vendored at `vendor/gsap/3.15.0/`. Load via `videos/_sh
 
 ### 7. Finite repeats. Never `repeat: -1`
 
-Infinite repeats break the seek-render pipeline (Phase E.5 `--seek` mode) and never resolve in tests. Compute the repeat count from the visible duration:
+Infinite repeats break the seek-render pipeline (`tools/render.js --seek` mode) and never resolve in tests. Compute the repeat count from the visible duration:
 
 ```js
 // WRONG: repeat: -1
@@ -89,7 +89,7 @@ gsap.to(el, { rotation: 360, duration: cycleDuration,
               repeat: Math.ceil(visibleDuration / cycleDuration) - 1 });
 ```
 
-## Phase B — Registered Timelines (paused + driver-owned)
+## Registered Timelines (paused + driver-owned)
 
 Editorial-layer GSAP timelines opt into being **owned by the runtime frame driver**. The driver pauses, seeks, and resumes them deterministically — surviving hidden-tab RAF throttling and pause/resume from the scrubber.
 
@@ -118,7 +118,7 @@ registerTimeline(tl, { id: 'hero-title-reveal' });
 
 **When NOT to register:** fire-and-forget tweens (small SFX-synced animations, narration-cued micro-moves, anything where the author has explicit wall-clock control). Use plain `gsap.to()` and `awaitTween()` for those.
 
-## Phase E.5 — pausableRaf for Author RAF Loops
+## pausableRaf for Author RAF Loops
 
 **Any `requestAnimationFrame` loop in a video chapter or cinematic MUST use `pausableRaf(cb)` from `videos/_shared/kit.js`.** Vanilla `requestAnimationFrame` will not honor pause from the scrubber.
 
@@ -200,7 +200,7 @@ Flip.from(state, { duration: 0.5, ease: 'power2.inOut',
 
 ## Determinism (Cross-Cuts All GSAP Work)
 
-For Phase E.5 `--seek` mode render parity, video chapter and cinematic code is **deterministic**:
+For `tools/render.js --seek` mode render parity, video chapter and cinematic code is **deterministic**:
 
 - No `Date.now()` outside the player driver.
 - No unseeded `Math.random()` — use `mulberry32(seed)` from `videos/_shared/kit.js`.

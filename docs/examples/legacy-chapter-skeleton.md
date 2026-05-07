@@ -77,31 +77,31 @@ Rules:
   beats with no pointer motion read as slides — avoid that as the only mode
   unless the beat is genuinely a hold.
 
-## Phase B–E.5 optional additions (Phase G note)
+## Modern features (optional additions)
 
 The skeleton above is the simplest authoring shape. Modern features are opt-in via `videos/_shared/kit.js`:
 
 ```js
-// Phase A capability kits (allowed imports, opt-in):
+// Capability kits (allowed imports, opt-in):
 import { atmospheric }     from '../../_shared/atmospheric.js';
 import { mountTextReveal } from '../../_shared/text-kit.js';
-// Phase D blocks library (parent-document editorial chrome):
+// Blocks library (parent-document editorial chrome):
 import { mountCodeCard }   from '../../_shared/blocks/code-card.js';
-// Phase A registered effects library:
+// Registered effects library:
 // gsap.effects.highlightPulse, .fieldBurst, .labelReveal, .popOutTilt, .cardReflow
 
-// Phase B: paused, driver-owned, scrubbable timelines:
+// paused, driver-owned, scrubbable timelines:
 import { loadGsap, registerTimeline, awaitTween } from '../../_shared/kit.js';
 
-// Phase C: named camera poses (cleaner than inline level/pad):
+// named camera poses (cleaner than inline level/pad):
 import { registerCameraPose, resolveCameraPose } from '../../_shared/kit.js';
 registerCameraPose('focus', { focus: sel.target, level: 1.18, pad: 14 });
 // Then in beats:  camera: 'focus'   // resolves to the registered spec
 
-// Phase C: cross-snapshot continuity (override default morph):
+// cross-snapshot continuity (override default morph):
 export const swapStyle = 'flipBridge';
 
-// Phase E.5: pause-aware RAF (REQUIRED for any author render loop):
+// pause-aware RAF (REQUIRED for any author render loop):
 import { pausableRaf } from '../../_shared/kit.js';
 // Vanilla `requestAnimationFrame` won't honor scrubber pause.
 ```

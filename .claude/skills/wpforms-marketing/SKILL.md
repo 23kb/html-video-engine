@@ -12,7 +12,7 @@ The repo has two equally important authoring modes:
 
 This skill covers the second mode.
 
-## Surface Modes (Phase C)
+## Surface Modes
 
 `manifest.surface` declares the stage type. **For ad-style work, use `editorial` or `mixed`.**
 
@@ -45,7 +45,7 @@ See `videos/_phase-c-editorial-pilot/` for a minimal reference.
 
 Ad-style videos compose multiple editorial layers into a deliberate timeline. The capability kits exist to make this fast.
 
-### Blocks Library (Phase D)
+### Blocks Library
 
 `videos/_shared/blocks/` provides parent-document editorial blocks (mounted above the iframe, or stand-alone in `editorial` surface). Each returns `{ el, dispose, tweenInto?(tl, opts) }`:
 
@@ -95,7 +95,7 @@ atmospheric.scalePush.tweenInto(tl, { duration: 4, position: 0 });
 
 **Use sparingly on routine cursor+click tutorial beats** — atmospheric layers distract from the lesson. Best fit: postIntros, title cards, ad-mode compositions, transformation interstitials.
 
-### Text Kit (Phase D)
+### Text Kit
 
 `videos/_shared/text-kit.js` provides 24 Pixel-Point-style text reveal presets via `mountTextReveal(text, { preset, ...opts })`. Presets include: mask-reveal-up, top-down-letters, focus-blur-resolve, spring-scale-in, soft-blur-in, per-character-rise, micro-scale-fade, and 17 more.
 
@@ -218,7 +218,7 @@ Before declaring an ad-style video done:
 - `videos/_phase-c-editorial-pilot/` — Reference: minimal 10-12s editorial-surface video. Read for a stripped-down example.
 - `hyperframes/hyperframes-rest-2/` and `hyperframes/wpforms-ai-scene-10/` — Reference experiments using HeyGen Hyperframes patterns. Useful for atmospheric / character-cascade / hero-composition inspiration.
 
-## Granular craft references (Phase G.2)
+## Granular craft references
 
 - `docs/atmospheric-composition.md` — Read when picking grain / sweep / parallax / scale-push and layering them.
 - `docs/color-palette.md` — Read for the canvas-void / cyan / violet / amber accent palette used in editorial videos.

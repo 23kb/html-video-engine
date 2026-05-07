@@ -117,7 +117,7 @@ Keep beats near the **6-second rule**. Split longer narration into smaller clips
 
 ## Modern Features Cheat Sheet
 
-Phase B-E.5/F additions worth reaching for. Each links to its dedicated skill or doc. **Most of these aren't surfaced in the legacy skeletons** — load the relevant skill to use them.
+Modern features worth reaching for. Each links to its dedicated skill or doc. **Most of these aren't surfaced in the legacy skeletons** — load the relevant skill to use them.
 
 | Feature | When to reach for it | Skill |
 |---|---|---|
@@ -189,7 +189,7 @@ Stop and push back when:
 - `docs/wpforms-field-state-inventory.md` — Canonical reference only. **Do not full-read.** Query via `node tools/field-state.js --field <name>`.
 - `CLAUDE.md` — Operator manual (boot order, protected core, validation commands, push-back triggers). Read for repo-wide rules; this skill owns video-authoring rules.
 
-## Granular references (Phase G.2 — load on demand for the specific topic)
+## Granular references (load on demand for the specific topic)
 
 - `docs/cursor-choreography.md` — Read when authoring any cursor move beyond a single click. `glideTo via:` is under-used.
 - `docs/narration-writing.md` — Read when writing narration `.txt` files. Voice + sentence shape + verb-coupling rules.

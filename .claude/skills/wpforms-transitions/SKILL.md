@@ -28,14 +28,14 @@ Default: `manifest.defaults = { breakStyle: 'glide', swapStyle: 'morph' }`. Over
 
 | Style | Mechanism | Cream-bleed | Use when |
 |---|---|---|---|
-| **`flipBridge`** (Phase C) | preload next snapshot in hidden iframe → opacity crossfade | **none** ✓ | always preferred for cross-snapshot |
+| **`flipBridge`** | preload next snapshot in hidden iframe → opacity crossfade | **none** ✓ | always preferred for cross-snapshot |
 | `morph` | body-wipe under cover, restore camera transform on incoming | ~1s flat-color seam | legacy default; use only if `flipBridge` doesn't compose with the chapter |
 | `cover` | body-wipe under cover, fade in | ~1.5s flat-color seam | legacy fallback |
 | `whip` | blur+dim outgoing, swap, un-blur incoming | ~1s flat seam, blur masks it | rare — cinematic cut + DOM change |
 | `push` | cover slides off post-swap | ~1s + slide | rare — motion cue desired |
 | `fast` | trimmed-timing `cover` | ~1s flat seam | retire — `flipBridge` replaces |
 
-**The `flipBridge` path is the cream-bleed kill.** Phase C built it specifically to eliminate the "page-refresh" feel you see on legacy swap styles. It:
+**The `flipBridge` path is the cream-bleed kill.** It eliminates the "page-refresh" feel you see on legacy swap styles by:
 
 1. Preloads the incoming snapshot to a hidden iframe (`scene-helpers.preloadSnapshot`).
 2. Runs prep against the hidden document.
@@ -63,7 +63,7 @@ Or, repo-wide preferred:
 { "defaults": { "breakStyle": "glide", "swapStyle": "flipBridge" } }
 ```
 
-## Surface Modes (Phase C)
+## Surface Modes
 
 `manifest.surface` declares the stage type. Default is `iframe`.
 
@@ -77,7 +77,7 @@ Or, repo-wide preferred:
 
 For `editorial` surface authoring, see `wpforms-marketing` skill.
 
-## Camera-Pose Vocabulary (Phase C)
+## Camera-Pose Vocabulary
 
 Named camera poses for legacy/effect beats. Author registers once, beats reference by name:
 
@@ -98,9 +98,9 @@ registerCameraPose('overview', { focus: 'body', level: 1.0, pad: 0 });
 
 Seed names: `focus`, `station`, `overview`. Add custom names per video as needed. The runtime resolves before focusing.
 
-**Note:** Pose-to-pose interpolation currently goes through CSS-transition `zoomTo` (not the frame driver). Visible jolts are gone, but scrubber camera-seek through pose changes is approximate. Tracked as `REFACTOR-PROGRESS.md` §2.2 deferred work.
+**Note:** Pose-to-pose interpolation currently goes through CSS-transition `zoomTo` (not the frame driver). Visible jolts are gone, but scrubber camera-seek through pose changes is approximate. Tracked as deferred work.
 
-## Shared-Scene Primitive (Phase C)
+## Shared-Scene Primitive
 
 For multi-chapter Three.js or persistent editorial scenes that should survive chapter teardown:
 
@@ -114,21 +114,21 @@ const scene = getSharedScene({ id: 'rest-api-orbit', mount: (stage, gsap) => {
 // disposeSharedScene at video outro, NOT at chapter teardown.
 ```
 
-Shipped in Phase C; **currently no video uses it** (REST API video had video-local pattern that didn't migrate). Ready for future multi-chapter Three.js videos.
+**Currently no video uses it** (REST API video had a video-local pattern that didn't migrate). Ready for future multi-chapter Three.js videos.
 
-## Pause / Seek / Scrubber (Phase E.5)
+## Pause / Seek / Scrubber
 
 The runtime scrubber lives at `/scrubber?video=<slug>` (served by both `serve.js` and `tools/preview.js`). Exposes:
 
 - **Pause / Resume** — hammers every motion source via `runtime/pause-manager.js`: GSAP global timeline, frame driver, iframe CSS animations, narration audio, BGM, wall-clock `pausableSleep`.
 - **Chapter prev / next / restart** — restart chapter from beat 0.
-- **Registered timeline strip** — seek freely within registered-timeline windows (Phase B opt-in).
+- **Registered timeline strip** — seek freely within registered-timeline windows (opt-in via `registerTimeline`).
 
 **Mid-chapter wall-clock seek is NOT supported.** Imperative `effect()` bodies cannot be replayed at arbitrary positions without full state reconstruction. Documented limit. Restart-from-chapter-N is the seek granularity.
 
 For the contract: see `docs/pause-manager.md`. For author RAF loops, see `wpforms-gsap-rules` skill (`pausableRaf`).
 
-## Render Workflow (Phase E.5)
+## Render Workflow
 
 `node tools/render.js <slug> [--seek] [--fps 30]` produces an MP4.
 
@@ -161,7 +161,7 @@ Before declaring transition work done:
 - [ ] Camera poses registered once at module top, beats reference by name (no inline `level: 1.18` if a pose name fits)
 - [ ] If `surface: 'editorial'`, the storyboard explicitly approved ad-style / no-iframe staging
 - [ ] If using `shared-scene.js`, dispose only at video outro, not at chapter teardown
-- [ ] Author RAF loops use `pausableRaf` (Phase E.5 requirement; cross-cuts with `wpforms-gsap-rules`)
+- [ ] Author RAF loops use `pausableRaf` (cross-cuts with `wpforms-gsap-rules`)
 
 ## References (loaded on demand)
 

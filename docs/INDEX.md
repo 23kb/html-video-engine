@@ -20,7 +20,7 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 
 - `postintro-patterns.md` — PostIntro design rules + canonical references + multi-animation rule rationale. Owned by `wpforms-postintro` skill.
 
-## Authoring craft (granular references — Phase G.2)
+## Authoring craft (granular references)
 
 - `cursor-choreography.md` — `park` / `glideTo` / `dragGrab` / via-waypoint patterns; what makes cursor reads natural vs robotic.
 - `narration-writing.md` — voice, pacing, sentence shape, beat coupling, intro/outro voice.
@@ -38,8 +38,8 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 - `gsap-rules.md` — L0 GSAP discipline canonical reference. Owned by `wpforms-gsap-rules` skill.
 - `gsap-flip-patterns.md` — Flip patterns: morphs, reflows, real-UI clones.
 - `effects-library.md` — `videos/_shared/effects.js` API: highlightPulse, fieldBurst, labelReveal, popOutTilt, cardReflow.
-- `frame-driver.md` — Phase B paused-timeline driver contract. Read when registering timelines or migrating cinematics.
-- `pause-manager.md` — Phase E.5 pause/seek + `pausableRaf` contract.
+- `frame-driver.md` — Paused-timeline driver contract. Read when registering timelines or migrating cinematics.
+- `pause-manager.md` — Pause/seek + `pausableRaf` contract.
 
 ## Transitions / surface modes / camera
 
@@ -61,11 +61,11 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 ## Determinism / linting
 
 - `deterministic-logic.md` — Render-parity rules: no `Date.now()`, no unseeded `Math.random()`, no `fetch()`. Enforced by `tools/lint-determinism.js`.
-- `deterministic-logic-findings.md` — Existing-video violations logged by Phase F (not migrated; per-video cleanup is separate work).
+- `deterministic-logic-findings.md` — Existing-video violations logged by the linter (not migrated; per-video cleanup is separate work).
 
 ## Skills
 
-- `skills.md` — Phase F skill bundle index. Lists each `.claude/skills/wpforms-*/SKILL.md`.
+- `skills.md` — Skill bundle index. Lists each `.claude/skills/wpforms-*/SKILL.md`.
 
 ## Field / UI inventories (canonical reference, not for full-read)
 
@@ -85,9 +85,4 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 
 - `CLAUDE.md` — Operator manual. Always loaded. Boot order + protected core + validation + push-back triggers.
 - `AGENTS.md` — Codex operator manual. Same role as CLAUDE.md.
-- `REFACTOR-BRIEF.md` — Locked architectural decisions (§3) + protected-core list (§4) + session output rules (§8.1).
-- `BACKLOG.md` — Pending architectural debt + known gaps + future-phase candidates.
-- `REFACTOR-PROGRESS.md` — Per-phase log (governance/history).
-- `REFACTOR-DONE.md` — Refactor closure summary (governance/history).
-- `repo-audit-findings.md` — Phase 0 architectural audit (governance/history).
-- `analysis-quality-and-transitions.md` — REST API video lessons (Phase 0 input).
+- `analysis-quality-and-transitions.md` — REST API video lessons (local-only reference).

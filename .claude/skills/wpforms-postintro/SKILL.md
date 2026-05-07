@@ -97,7 +97,7 @@ For video-local concept beats (option 2 above), the practical tools are:
 
 ## Modern Features for PostIntros
 
-Phase B-E.5 additions especially relevant for postIntro authoring. Reach for these when the concept needs richer choreography than the legacy skeleton shows.
+Modern features especially relevant for postIntro authoring. Reach for these when the concept needs richer choreography than the legacy skeleton shows.
 
 | Feature | When to use | Skill |
 |---|---|---|

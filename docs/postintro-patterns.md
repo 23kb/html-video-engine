@@ -153,9 +153,9 @@ truth:
   a short cinematic lift. Good candidates: an Entries detail panel, an Add
   Notification button, or an export setting row.
 - `cursor.glideTo`: use for any non-trivial cursor travel where a waypoint
-  makes the motion feel intentional. Phase D rolled this into
-  `form-entries-guide` for the WPForms sidebar to Entries submenu move, and
-  `form-notifications` for the notification clone-button move.
+  makes the motion feel intentional. Already used in `form-entries-guide` for
+  the WPForms sidebar to Entries submenu move, and in `form-notifications` for
+  the notification clone-button move.
 - `lineDraw`: use for relationships between two or more concepts, especially
   when a highlight ring would only identify objects rather than explain how
   they connect. Good candidates: conditional-logic rule cells or Entries

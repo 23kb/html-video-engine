@@ -174,7 +174,7 @@ from prior videos trace back to skipping these.
       `runtime/camera-poses.js`, `runtime/pause-manager.js`,
       `scenes/shared.js`, existing video chapters, snapshots. New
       `runtime/*` files are also off-limits in normal authoring.
-- [ ] **Phase F lints clean:** `node tools/validate-video.js <slug>` runs
+- [ ] **Validator lints clean:** `node tools/validate-video.js <slug>` runs
       audio-vs-duration, pausableRaf-usage, and registerTimeline-paused
       lints. Review warnings; treat them as soft gates.
 - [ ] **Determinism check:** `node tools/lint-determinism.js --video <slug>`

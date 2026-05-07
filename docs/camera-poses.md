@@ -1,6 +1,6 @@
 # Camera Poses
 
-Phase C adds a small named-pose registry for iframe camera moves.
+`videos/_shared/kit.js` exposes a small named-pose registry for iframe camera moves.
 
 ```js
 import { registerCameraPose } from '../../_shared/kit.js';
@@ -11,7 +11,7 @@ registerCameraPose('overview', { focus: 'body', level: 1, pad: 0 });
 ```
 
 Legacy beats may then use `camera: 'focus'`. The runtime resolves the name to
-the same camera object accepted before Phase C, so existing camera options stay
+the same camera object shape, so existing camera options stay
 valid. The seed vocabulary is:
 
 - `focus`: tight element focus.

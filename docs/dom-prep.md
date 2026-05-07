@@ -312,7 +312,7 @@ weighted/not-selected) body classes that the Quiz addon adds.
 Workaround for snapshots captured while Quiz was active.
 
 **Status:** Delete after the affected snapshots are recaptured with
-the Quiz addon disabled. Tracked in `REFACTOR-BRIEF.md` item K.
+the Quiz addon disabled.
 
 #### `harvestField(slug, fieldType)` / `injectField(doc, slug, fieldType, opts?)` — deprecated
 Fetch a `.wpforms-field-<type>` node out of a source snapshot and
@@ -497,4 +497,3 @@ deliberately.
 - `PLAN.md` §Phase 3 — three-layer DOM-prep model decision.
 - `PLAN.md` §Phase 6 — step ordering, including the future `prep`
   verb and capture-side generalization.
-- `REFACTOR-BRIEF.md` item K — `stripQuizEnabled` recapture plan.

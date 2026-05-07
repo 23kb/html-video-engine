@@ -115,9 +115,9 @@ Production-truth checks:
 - Do not fabricate WPForms-looking modal HTML.
 - If a clean modal snapshot exists, using it is preferred over pasted snippets.
 
-## Phase B–E.5 optional additions (Phase G note)
+## Modern features (optional additions)
 
 - **`swapStyle: 'flipBridge'`** — modern alternative to `cover` for the modal-mount → modal-dismiss flow when it crosses snapshots. See `wpforms-transitions` skill.
-- **`pausableRaf` for render loops** — the `requestAnimationFrame(() => modal.classList.add('is-visible'))` line on line 52 is a **single-shot RAF** for a class toggle. That's a legitimate edge case; the Phase F lint warns on raw RAF but allows single-shot. **For any continuous render loop (Three.js, canvas animation), use `pausableRaf` from `videos/_shared/kit.js` instead** — vanilla RAF won't honor scrubber pause. See `wpforms-gsap-rules` skill.
+- **`pausableRaf` for render loops** — the `requestAnimationFrame(() => modal.classList.add('is-visible'))` line on line 52 is a **single-shot RAF** for a class toggle. That's a legitimate edge case; the determinism linter warns on raw RAF but allows single-shot. **For any continuous render loop (Three.js, canvas animation), use `pausableRaf` from `videos/_shared/kit.js` instead** — vanilla RAF won't honor scrubber pause. See `wpforms-gsap-rules` skill.
 - **Modal text reveals** — for marketing-mode versions of this flow, the modal title and generated choice rows can use `videos/_shared/text-kit.js` reveal presets. See `wpforms-marketing` skill.
 - **Registered timeline for the modal animation** — if the modal entrance + generated-rows-cascade + apply-result is a multi-phase choreography, build it as a paused GSAP timeline and `registerTimeline()` so the scrubber can pause/seek it. See `wpforms-gsap-rules` skill.

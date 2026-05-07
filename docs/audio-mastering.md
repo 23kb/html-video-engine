@@ -82,7 +82,7 @@ The chapter-runner handles this automatically when chapter-level `narration: '<k
 
 Per-channel volume is set in `runtime/overlays-config.js` `sfx.masterVolume` and per-channel ratios. Don't override per-video unless storyboard approves a different SFX scheme.
 
-**Phase E.5 note:** SFX uses Web Audio (zero-latency `BufferSource`), not `<audio>` tags. The pause-manager pauses Web Audio via `gsap.globalTimeline` + frame-driver, but Web Audio doesn't natively `.pause()` — SFX continues if mid-playback. SFX is short (200-500ms each) so this rarely matters.
+**Note:** SFX uses Web Audio (zero-latency `BufferSource`), not `<audio>` tags. The pause-manager pauses Web Audio via `gsap.globalTimeline` + frame-driver, but Web Audio doesn't natively `.pause()` — SFX continues if mid-playback. SFX is short (200-500ms each) so this rarely matters.
 
 ## `narrationSpeed`
 
@@ -104,7 +104,7 @@ The TTS is rendered at 1.0× and the manifest applies playback rate at runtime. 
 | Narration at 1.0 (default) without specifying — varies by clip | Always set `narrationVolume` explicitly in manifest |
 | Mixing per-beat narration + parallel BGM-only chapters in one video | Pick one mode per video |
 | `narrationSpeed: 1.3` to fit narration into too-short beats | Wrong direction — split beats or extend duration |
-| BGM file at root `/bgms/56.mp3` referenced but not committed | Phase E.5 fix: tolerate missing audio (404 silent skip), or commit the asset |
+| BGM file at root `/bgms/56.mp3` referenced but not committed | Tolerate missing audio (404 silent skip via `--allow-resource-404`), or commit the asset |
 | Click SFX volume too high relative to narration | Adjust `runtime/overlays-config.js sfx.masterVolume` (don't fight per-video) |
 | No SFX at all (`sfx.enabled: false`) | Reads as silent product demo, not tutorial. Default SFX should be on. |
 
@@ -112,11 +112,11 @@ The TTS is rendered at 1.0× and the manifest applies playback rate at runtime. 
 
 `node tts/generate.js --video <slug>` reads `videos/<slug>/narration/<id>.txt` files and renders `<id>.mp3` files via the configured TTS engine. The .txt files are committed; .mp3 files are committed for shipping videos but ignored locally for in-progress work.
 
-ElevenLabs / higher-quality TTS replacement is tracked as a future enhancement (REFACTOR-BRIEF.md L6 future-enhancements). Current TTS is sufficient for review URLs.
+ElevenLabs / higher-quality TTS replacement is a candidate future enhancement. Current TTS is sufficient for review URLs.
 
-## Known gap (REFACTOR-PROGRESS.md §2.1)
+## Known gap
 
-`assets/sfx/click-alt.mp3` and `bgms/56.mp3` are referenced in `runtime/sfx.js` and some manifests but not committed to the repo. Smoke tolerates missing audio via `--allow-resource-404`. Real fix: commit the assets OR alias `clickAlt` to `click`.
+`assets/sfx/click-alt.mp3` and `bgms/56.mp3` are referenced in `runtime/sfx.js` and some manifests but not committed to the repo. Smoke tolerates missing audio via `--allow-resource-404`. Real fix: commit the assets OR alias `clickAlt` to `click` in `runtime/sfx.js`.
 
 ## See also
 

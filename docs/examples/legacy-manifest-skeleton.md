@@ -74,7 +74,7 @@ Rules:
 - `hud` should be `false` for review/recording.
 - Keep `chapters` as the single source of truth for what plays.
 
-## Phase B–E.5 optional additions (Phase G note)
+## Modern features (optional additions)
 
 The skeleton above is the locked back-compat shape. New videos can opt into these fields:
 
@@ -82,7 +82,7 @@ The skeleton above is the locked back-compat shape. New videos can opt into thes
 {
   // ... locked shape above ...
 
-  // Phase C: surface mode for ad-style / editorial videos.
+  // surface mode for ad-style / editorial videos.
   // Default 'iframe' if absent. Use 'editorial' for full-bleed 1920×1080
   // (no iframe, no Mac chrome) or 'mixed' for hybrid postIntros that need
   // product-truth iframe geometry plus marketing chrome above.
@@ -90,14 +90,14 @@ The skeleton above is the locked back-compat shape. New videos can opt into thes
   // See `wpforms-marketing` skill for editorial composition patterns.
   // "surface": "iframe",
 
-  // Phase C: cross-snapshot transitions.
+  // cross-snapshot transitions.
   // For new videos with snapshot swaps, prefer `swapStyle: 'flipBridge'`
   // — eliminates the cream-bleed seam that morph/cover/fast all have.
   // Override per-chapter or in defaults below.
   // See `wpforms-transitions` skill.
   // "defaults": { "breakStyle": "glide", "swapStyle": "flipBridge" },
 
-  // Phase E.5: BGM with explicit src + volume (optional shape).
+  // BGM with explicit src + volume (optional shape).
   // "bgm": { "src": "/bgms/56.mp3", "volume": 0.2 },
 }
 ```
