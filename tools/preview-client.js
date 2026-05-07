@@ -8,16 +8,18 @@ function previewClientScript() {
   const wsProto = location.protocol === 'https:' ? 'wss:' : 'ws:';
   const ws = new WebSocket(wsProto + '//' + location.host + '/__preview-ws');
   const channel = new BroadcastChannel('hf-preview');
-  let bootedAt = null;          // performance.now() at first sceneBooted=true
-  let pausedAcc = 0;            // ms accumulated while paused (since boot)
-  let pausedSince = null;       // performance.now() at last pause-start, or null
+  let bootedAt = null;            // performance.now() at first sceneBooted=true
+  let chapterStartedAt = null;    // performance.now() when current chapter began
+  let chapterIndex = -1;          // last seen currentChapterIndex
+  let pausedAcc = 0;              // ms accumulated while paused (current chapter)
+  let pausedSince = null;         // performance.now() at last pause-start, or null
   let pauseManagerPromise = null;
 
-  function effectiveWallClock() {
-    if (!bootedAt) return 0;
+  function effectiveChapterClock() {
+    if (!chapterStartedAt) return 0;
     const now = performance.now();
     const livePaused = pausedSince != null ? now - pausedSince : 0;
-    return Math.max(0, (now - bootedAt - pausedAcc - livePaused) / 1000);
+    return Math.max(0, (now - chapterStartedAt - pausedAcc - livePaused) / 1000);
   }
 
   function pauseManager() {
@@ -55,7 +57,19 @@ function previewClientScript() {
   function state() {
     const ps = pauseState();
     const sceneBooted = document.body && document.body.dataset.sceneBooted === 'true';
-    if (!bootedAt && sceneBooted) bootedAt = performance.now();
+    if (!bootedAt && sceneBooted) {
+      bootedAt = performance.now();
+      chapterStartedAt = bootedAt;
+      chapterIndex = Number(ps.currentChapterIndex) || 0;
+    }
+    // Chapter transition — reset the chapter clock to 0.
+    const idx = Number(ps.currentChapterIndex) || 0;
+    if (sceneBooted && idx !== chapterIndex) {
+      chapterStartedAt = performance.now();
+      pausedAcc = 0;
+      pausedSince = ps.paused ? performance.now() : null;
+      chapterIndex = idx;
+    }
     if (ps.paused && pausedSince == null) pausedSince = performance.now();
     if (!ps.paused && pausedSince != null) {
       pausedAcc += performance.now() - pausedSince;
@@ -68,7 +82,7 @@ function previewClientScript() {
       sceneBooted,
       sceneDone: document.body && document.body.dataset.sceneDone === 'true',
       surface: (document.body && document.body.dataset.surface) || '',
-      wallClock: effectiveWallClock(),
+      wallClock: effectiveChapterClock(),
       paused: !!ps.paused,
       currentChapterIndex: Number(ps.currentChapterIndex) || 0,
       chapterCount: Number(ps.chapterCount) || 0,
