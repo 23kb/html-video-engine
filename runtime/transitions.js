@@ -11,7 +11,7 @@
 // Styles register by name; adding a new one is a one-liner (and a registry
 // entry). No chapter should inline a transition in an effect().
 
-import { sleep } from '../engine/engine.js';
+import { sleep, cameraState, setCameraTransform } from '../engine/engine.js';
 import { diag } from '../engine/diag.js';
 import { playSwoosh, playSwipe } from './sfx.js';
 
@@ -21,18 +21,14 @@ import { playSwoosh, playSwipe } from './sfx.js';
 
 function ifr() { return document.querySelector('iframe.ui'); }
 function currentZoom() {
-  const el = ifr();
-  if (!el) return 1;
-  const m = /scale\(([-\d.]+)\)/.exec(el.style.transform || '');
-  return m ? parseFloat(m[1]) : 1;
+  try { return cameraState().zoom || 1; } catch (_) { return 1; }
 }
 
 async function dolly() {
   const el = ifr();
   if (!el) return;
   if (Math.abs(currentZoom() - 1) < 0.02) return;
-  el.style.transition = 'transform 700ms cubic-bezier(0.65, 0, 0.35, 1)';
-  el.style.transform  = 'scale(1) translate(0px, 0px)';
+  setCameraTransform({ zoom: 1, tx: 0, ty: 0, duration: 700 });
   await sleep(750);
   await sleep(200); // establishing-shot hold
 }
@@ -41,8 +37,7 @@ async function softDolly() {
   const el = ifr();
   if (!el) return;
   if (Math.abs(currentZoom() - 1) < 0.02) return;
-  el.style.transition = 'transform 420ms cubic-bezier(0.33, 1, 0.68, 1)';
-  el.style.transform  = 'scale(1) translate(0px, 0px)';
+  setCameraTransform({ zoom: 1, tx: 0, ty: 0, duration: 420, easing: 'cubic-bezier(0.33, 1, 0.68, 1)' });
   await sleep(440);
   // No establishing hold — next focusOn begins immediately.
 }
@@ -256,7 +251,11 @@ async function swapMorph(doSwap) {
   await dropCover(cover, { fadeMs: 260, hold: 280 });
 }
 
-const SWAPS = { cover: swapCover, fast: swapFast, whip: swapWhip, push: swapPush, morph: swapMorph };
+async function swapFlipBridge(doSwap) {
+  await doSwap();
+}
+
+const SWAPS = { cover: swapCover, fast: swapFast, whip: swapWhip, push: swapPush, morph: swapMorph, flipBridge: swapFlipBridge };
 
 export async function runSwapTransition(style, doSwap) {
   const fn = SWAPS[style] || SWAPS.cover;

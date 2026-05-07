@@ -17,6 +17,19 @@ const state = {
 
 const sleep = (ms) => new Promise(r => setTimeout(r, ms));
 
+function cameraTransform({ zoom = state.zoom, tx = state.tx, ty = state.ty } = {}) {
+  return `scale(${zoom}) translate(${tx / zoom}px, ${ty / zoom}px)`;
+}
+
+function applyCamera({ zoom = state.zoom, tx = state.tx, ty = state.ty, duration = 0, easing = 'cubic-bezier(0.65, 0, 0.35, 1)' } = {}) {
+  if (!state.ui) return;
+  state.zoom = zoom;
+  state.tx = tx;
+  state.ty = ty;
+  state.ui.style.transition = duration > 0 ? `transform ${duration}ms ${easing}` : 'none';
+  state.ui.style.transform = cameraTransform({ zoom, tx, ty });
+}
+
 // ── Setup ────────────────────────────────────────────────────────────────────
 export function loadSnapshot(slug, { iframeSize = [1440, 900] } = {}) {
   state.iframeW = iframeSize[0];
@@ -28,7 +41,7 @@ export function loadSnapshot(slug, { iframeSize = [1440, 900] } = {}) {
       .stage { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
       .ui { width:${state.iframeW}px; height:${state.iframeH}px; border:0; background:white;
             flex: 0 0 auto; min-width:${state.iframeW}px; min-height:${state.iframeH}px;
-            transform-origin: 0 0; transition: transform 1.2s cubic-bezier(0.65, 0, 0.35, 1); }
+            transform-origin: 0 0; transition: none; }
       .overlay { position:absolute; inset:0; pointer-events:none; }
       .hl { position:absolute; border:3px solid #E27730; border-radius:6px;
             box-shadow: 0 0 0 9999px rgba(0,0,0,0.55); opacity:0;
@@ -93,6 +106,38 @@ export function loadSnapshot(slug, { iframeSize = [1440, 900] } = {}) {
   });
 }
 
+export function adoptSnapshotIframe(iframe, { preserveCamera = true } = {}) {
+  if (!iframe) throw new Error('adoptSnapshotIframe: iframe required');
+  const previous = state.ui;
+  iframe.classList.add('ui');
+  iframe.classList.remove('preloaded-ui');
+  iframe.style.display = '';
+  iframe.style.visibility = '';
+  iframe.style.pointerEvents = '';
+  iframe.style.zIndex = '';
+  iframe.style.transformOrigin = '0 0';
+
+  state.ui = iframe;
+  state.doc = iframe.contentDocument;
+  state.stage = document.querySelector('.stage') || state.stage;
+  state.overlay = document.querySelector('.overlay') || state.overlay;
+  state.cursorEl = document.querySelector('.cursor') || state.cursorEl;
+  state.stageW = window.innerWidth;
+  state.stageH = window.innerHeight;
+
+  if (preserveCamera && previous) {
+    iframe.style.transition = 'none';
+    iframe.style.transform = previous.style.transform || cameraTransform();
+  } else {
+    applyCamera({ zoom: 1, tx: 0, ty: 0, duration: 0 });
+  }
+  return state;
+}
+
+export function setCameraTransform({ zoom = 1, tx = 0, ty = 0, duration = 0, easing } = {}) {
+  applyCamera({ zoom, tx, ty, duration, easing });
+}
+
 // ── Geometry helpers ─────────────────────────────────────────────────────────
 function unionRects(rects) {
   const L = Math.min(...rects.map(b => b.left));
@@ -132,14 +177,6 @@ export async function zoomTo(targets, { level = 2.4, pad = 10, smooth = false, n
   const hits = resolveTargets(targets);
   if (!hits.length) throw new Error('zoomTo: no targets resolved');
 
-  if (!smooth) {
-    // Reset any previous transform so scrollIntoView sees the doc in natural layout.
-    state.ui.style.transition = 'none';
-    state.ui.style.transform  = 'scale(1) translate(0px, 0px)';
-    state.zoom = 1; state.tx = 0; state.ty = 0;
-    await sleep(20);
-  }
-
   console.log('[zoomTo:pre-scroll]', targets[0], 'rect=', hits[0].node.getBoundingClientRect());
   if (!noScroll) hits[0].node.scrollIntoView({ block: 'center', inline: 'center', behavior: scrollBehavior });
   // Smooth scroll needs ~500ms to settle before rects are stable. Auto is instant.
@@ -170,14 +207,12 @@ export async function zoomTo(targets, { level = 2.4, pad = 10, smooth = false, n
   // If camera target unchanged (pure scroll-pan within a chapter), skip the long transform sleep.
   const noChange = Math.abs(tx - state.tx) < 1 && Math.abs(ty - state.ty) < 1 && Math.abs(level - state.zoom) < 0.01;
 
-  state.zoom = level;
-  state.tx = tx; state.ty = ty;
-  state.ui.style.transition = `transform ${duration}ms ${easing}`;
-  state.ui.style.transform = `scale(${level}) translate(${tx / level}px, ${ty / level}px)`;
+  const moveDuration = smooth ? duration : 0;
+  applyCamera({ zoom: level, tx, ty, duration: noChange ? 0 : moveDuration, easing });
 
   // Stage 7: noChange short-circuit retains a small floor (~10% of duration)
   // so the camera ack feels deliberate without waiting the full transition.
-  await sleep(noChange ? Math.min(120, Math.round(duration * 0.1)) : duration);
+  await sleep(noChange ? 0 : moveDuration);
   return { rect: r, hits };
 }
 
@@ -590,11 +625,8 @@ export async function runScene(beats) {
 
     // Chapter break → real animated dolly-out to 1x, hold briefly, then dolly in below.
     if (!sameChapter && prev && state.zoom !== 1) {
-      state.ui.style.transition = 'transform 700ms cubic-bezier(0.65, 0, 0.35, 1)';
-      state.ui.style.transform  = 'scale(1) translate(0px, 0px)';
-      state.zoom = 1; state.tx = 0; state.ty = 0;
-      await sleep(750);
-      await sleep(200); // establishing-shot hold
+      const { runChapterBreak } = await import('../runtime/transitions.js');
+      await runChapterBreak('dolly');
     }
 
     // Camera move:

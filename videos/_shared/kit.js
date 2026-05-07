@@ -14,6 +14,7 @@
 
 import { register } from '../../runtime/frame-driver.js';
 import { gsapTimelineAdapter } from '../../runtime/frame-adapter.js';
+import { registerCameraPose as _registerCameraPose, resolveCameraPose as _resolveCameraPose } from '../../runtime/camera-poses.js';
 
 // ─────────────────────────────────────────────────────────────────────────
 // GSAP loader — vendored from /vendor/gsap/3.15.0/.
@@ -126,6 +127,14 @@ export function registerTimeline(tl, { id }) {
   }
   register(gsapTimelineAdapter(tl, { id }));
   return tl;
+}
+
+export function registerCameraPose(name, spec) {
+  _registerCameraPose(name, spec);
+}
+
+export function resolveCameraPose(pose) {
+  return _resolveCameraPose(pose);
 }
 
 // ─────────────────────────────────────────────────────────────────────────

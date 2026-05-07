@@ -20,7 +20,7 @@ import { popOut } from './pop-out.js';
 import { focusPull } from './focus-pull.js';
 import { playCinematic } from './cinematic-runner.js';
 import { runChapterBreak, runSwapTransition } from './transitions.js';
-import { installFlashGuard, removeFlashGuard } from './scene-helpers.js';
+import { installFlashGuard, removeFlashGuard, preloadSnapshot, commitPreloadedSnapshot } from './scene-helpers.js';
 import { installOverlayStyles } from '../engine/overlays-layer.js';
 import { diag } from '../engine/diag.js';
 
@@ -44,6 +44,7 @@ async function loadSnapshot(slug) {
 }
 import { playTitleCard } from './title-card.js';
 import * as frameDriver from './frame-driver.js';
+import { resolveCameraPose } from './camera-poses.js';
 
 // ────────────────────────────────────────────────────────────────────────────
 // Chrome mounting (mesh bg, Mac frame, watermark)
@@ -104,6 +105,19 @@ async function exitStartGate(g) {
 }
 
 async function transitionSnapshots(newSlug, setupFn, videoTitle, swapStyle) {
+  if (swapStyle === 'flipBridge') {
+    diag('player', 'transitionSnapshots → flipBridge slug=' + newSlug);
+    const preloaded = await preloadSnapshot(newSlug, { prep: setupFn });
+    if (preloaded) {
+      mountMeshBg();
+      mountStageChrome(videoTitle);
+      mountWatermark();
+      installOverlayStyles();
+      diag('overlays', 'styles installed (transitionSnapshots flipBridge branch)');
+      await commitPreloadedSnapshot(preloaded, { preserveCamera: true });
+      return;
+    }
+  }
   // Stage 5b-1.6: when a `swapStyle` is supplied (URL `?swapStyle=…` or
   // `manifest.defaults.swapStyle`), route through `runSwapTransition` so the
   // viewer gets the requested visual treatment (cover|fast|morph|push|whip)
@@ -195,7 +209,12 @@ const BASE_CTX_FACTORY = (extra = {}) => (engineCtx) => ({
 // Wrap beat effects so they receive our enriched context on top of whatever
 // engine.runScene passes in.
 function wrapBeats(beats, ctxBuilder) {
-  return beats.map(b => b.effect ? { ...b, effect: (engineCtx) => b.effect(ctxBuilder(engineCtx)) } : b);
+  return beats.map(b => {
+    const camera = resolveCameraPose(b.camera) || b.camera;
+    return b.effect
+      ? { ...b, camera, effect: (engineCtx) => b.effect(ctxBuilder(engineCtx)) }
+      : { ...b, camera };
+  });
 }
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -231,7 +250,7 @@ async function runBeatsPerNarration(beats, ctxBuilder) {
 
     const narr = beat.narration ? await playNarration(beat.narration, { keepDucked: !isLast }) : null;
 
-    const cam = beat.camera || {};
+    const cam = resolveCameraPose(beat.camera) || {};
     if (cam.focus) {
       await zoomTo(Array.isArray(cam.focus) ? cam.focus : [cam.focus], {
         level:    cam.level ?? 2.2,
@@ -291,8 +310,8 @@ async function runChapter(chapterModule, { videoTitle, prevSnapshot, swapStyle, 
   // Snapshot swap if chapter requests a different one
   let setupRanDuringTransition = false;
   if (snapshot && snapshot !== prevSnapshot.current) {
-    await transitionSnapshots(snapshot, setup ? async () => {
-      const doc = document.querySelector('iframe.ui')?.contentDocument;
+    await transitionSnapshots(snapshot, setup ? async (targetDoc = null) => {
+      const doc = targetDoc || document.querySelector('iframe.ui')?.contentDocument;
       if (doc) await setup(baseBuilder({ doc, cursor, sleep, type, clearSpot: () => {}, zoomTo }));
       setupRanDuringTransition = true;
     } : null, videoTitle, swapStyle);
@@ -301,7 +320,7 @@ async function runChapter(chapterModule, { videoTitle, prevSnapshot, swapStyle, 
 
   // One-time DOM seeding — receives the same enriched context as effects.
   if (setup && !setupRanDuringTransition) {
-    const doc = document.querySelector('iframe.ui').contentDocument;
+    const doc = document.querySelector('iframe.ui')?.contentDocument ?? null;
     await setup(baseBuilder({ doc, cursor, sleep, type, clearSpot: () => {}, zoomTo }));
   }
 
@@ -311,6 +330,25 @@ async function runChapter(chapterModule, { videoTitle, prevSnapshot, swapStyle, 
   // pre-first-chapter cover the boot path may have installed.
   if (typeof onAfterSetup === 'function') {
     try { onAfterSetup(); } catch (_) {}
+  }
+
+  if (mode === 'editorial') {
+    const beatsList = Array.isArray(beats) ? beats : [];
+    for (const beat of beatsList) {
+      if (beat.effect) {
+        const engineCtx = {
+          doc: document.querySelector('iframe.ui')?.contentDocument ?? null,
+          cursor,
+          type,
+          sleep,
+          clearSpot: () => {},
+          zoomTo,
+        };
+        await beat.effect(baseBuilder(engineCtx));
+      }
+      if (beat.duration) await sleep(beat.duration * 1000);
+    }
+    return;
   }
 
   if (mode === 'parallel') {
@@ -361,6 +399,10 @@ export async function playVideo(slug) {
 
   const base = `/videos/${slug}/`;
   const manifest = await fetch(base + 'manifest.json').then(r => r.json());
+  const surface = manifest.surface || 'iframe';
+  document.body.dataset.surface = surface;
+  document.body.classList.toggle('surface-editorial', surface === 'editorial');
+  document.body.classList.toggle('surface-mixed', surface === 'mixed');
   if (manifest.coverColor) {
     document.documentElement.style.setProperty('--cover-color', manifest.coverColor);
   }
@@ -410,10 +452,10 @@ export async function playVideo(slug) {
   // Load first chapter's snapshot so iframe is ready behind the intro/teaser
   const prevSnapshot = { current: null };
   const firstSnapshot = findFirstSnapshot(manifest);
-  if (firstSnapshot) {
+  if (firstSnapshot && surface !== 'editorial') {
     await loadSnapshot(firstSnapshot);
     mountMeshBg();
-    mountStageChrome(videoTitle);
+    if (surface !== 'editorial') mountStageChrome(videoTitle);
     // Slice 5c-1: install designed overlay styles after the boot body-wipe.
     // Mirrors scene-helpers.bootSnapshot. Idempotent — head-level <style>.
     installOverlayStyles();

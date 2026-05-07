@@ -8,7 +8,7 @@
 // Nothing in here knows about the defineChapter descriptor shape. That layer
 // lives in chapter-runner.js.
 
-import { loadSnapshot as engineLoadSnapshot, sleep, cursor as engineCursor } from '../engine/engine.js';
+import { loadSnapshot as engineLoadSnapshot, sleep, cursor as engineCursor, adoptSnapshotIframe } from '../engine/engine.js';
 import { installMacCursor, cursor } from '../engine/interactions.js';
 import { installOverlayStyles } from '../engine/overlays-layer.js';
 import { diag, diagDump, iframeState, subscribeDiag } from '../engine/diag.js';
@@ -89,10 +89,10 @@ export function unmountWatermark() {
 
 // ── Per-snapshot sanitize pass (optional `sanitize/<slug>.js` default export)
 // Swallows missing modules — sanitize is opt-in per snapshot.
-async function applySanitize(slug) {
+async function applySanitize(slug, targetDoc = iframeDoc()) {
   try {
     const mod = await import('../sanitize/' + slug + '.js');
-    const doc = iframeDoc();
+    const doc = targetDoc;
     if (doc && mod.default) mod.default(doc);
   } catch (e) {
     const msg = String(e);
@@ -100,6 +100,66 @@ async function applySanitize(slug) {
       console.warn('[sanitize] ' + slug, e);
     }
   }
+}
+
+function waitForIframeLoad(iframe) {
+  return new Promise((resolve, reject) => {
+    const done = () => requestAnimationFrame(() => requestAnimationFrame(resolve));
+    iframe.addEventListener('load', done, { once: true });
+    iframe.addEventListener('error', reject, { once: true });
+  });
+}
+
+export async function preloadSnapshot(slug, { prep } = {}) {
+  const stage = document.querySelector('.stage');
+  if (!stage) return null;
+  const iframe = document.createElement('iframe');
+  iframe.className = 'ui preloaded-ui';
+  iframe.src = '/snapshots/' + slug + '/index.html';
+  Object.assign(iframe.style, {
+    position: 'absolute',
+    opacity: '0',
+    pointerEvents: 'none',
+    visibility: 'hidden',
+    zIndex: '-1',
+  });
+  stage.insertBefore(iframe, stage.querySelector('.overlay'));
+  await waitForIframeLoad(iframe);
+  suppressAnchorNav(iframe.contentDocument);
+  await applySanitize(slug, iframe.contentDocument);
+  if (prep) await prep(iframe.contentDocument);
+  document.body.dataset.flipbridgeArmed = slug;
+  return { slug, iframe };
+}
+
+export async function commitPreloadedSnapshot(preloaded, { fadeMs = 220, preserveCamera = true } = {}) {
+  if (!preloaded?.iframe) return false;
+  const old = document.querySelector('iframe.ui:not(.preloaded-ui)');
+  const incoming = preloaded.iframe;
+  const savedTransform = old?.style.transform || '';
+  const savedOrigin = old?.style.transformOrigin || '0 0';
+  incoming.style.visibility = 'visible';
+  incoming.style.zIndex = old ? String((Number(old.style.zIndex) || 0) + 1) : '1';
+  incoming.style.transformOrigin = savedOrigin;
+  if (savedTransform) incoming.style.transform = savedTransform;
+  incoming.style.transition = 'none';
+  incoming.style.opacity = '0';
+  void incoming.offsetWidth;
+
+  adoptSnapshotIframe(incoming, { preserveCamera });
+  incoming.style.transition = 'opacity ' + fadeMs + 'ms ease-out';
+  incoming.style.opacity = '1';
+  if (old) {
+    old.style.transition = 'opacity ' + fadeMs + 'ms ease-out';
+    old.style.opacity = '0';
+  }
+  await sleep(fadeMs + 40);
+  old?.remove();
+  incoming.style.zIndex = '';
+  incoming.style.opacity = '';
+  incoming.style.pointerEvents = '';
+  document.body.dataset.flipbridgeCommitted = preloaded.slug;
+  return true;
 }
 
 // ── Cream cover (hides the raw iframe during load / snapshot swap) ──────────
@@ -343,6 +403,19 @@ export async function bootSnapshot(slug, { prep, videoTitle } = {}) {
 // style-specific cover/fade/blur/slide.
 export async function swapSnapshot(slug, { prep, videoTitle, style = 'cover' } = {}) {
   diag('scene', 'swapSnapshot → ' + slug + ' (style=' + style + ')');
+  if (style === 'flipBridge') {
+    const preloaded = await preloadSnapshot(slug, { prep });
+    if (preloaded) {
+      mountMeshBg();
+      mountStageChrome(videoTitle || window.__wpfVideoTitle);
+      if (window.__wpfWatermarkOn) _mountWatermark();
+      installOverlayStyles();
+      installMacCursor();
+      await engineCursor.hide();
+      await commitPreloadedSnapshot(preloaded, { preserveCamera: true });
+      return;
+    }
+  }
   const doSwap = async () => {
     installFlashGuard();                // survive body-wipe
     await engineLoadSnapshot(slug);
