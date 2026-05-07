@@ -218,6 +218,15 @@ Before declaring an ad-style video done:
 - `videos/_phase-c-editorial-pilot/` — Reference: minimal 10-12s editorial-surface video. Read for a stripped-down example.
 - `hyperframes/hyperframes-rest-2/` and `hyperframes/wpforms-ai-scene-10/` — Reference experiments using HeyGen Hyperframes patterns. Useful for atmospheric / character-cascade / hero-composition inspiration.
 
+## Granular craft references (Phase G.2)
+
+- `docs/atmospheric-composition.md` — Read when picking grain / sweep / parallax / scale-push and layering them.
+- `docs/color-palette.md` — Read for the canvas-void / cyan / violet / amber accent palette used in editorial videos.
+- `docs/title-card-voice.md` — Read for hero title shape and CTA tone in ad-style outros.
+- `docs/stage-css.md` — Read for `surface: 'editorial'` / `'mixed'` z-stack and when to hide chrome.
+- `docs/beat-pacing.md` — Read for Build → Breathe → Resolve phase structure in 3-12s editorial beats.
+- `docs/camera-lensing.md` — Read when the editorial composition uses iframe geometry (`surface: 'mixed'`).
+
 ## See Also
 
 - `wpforms-video` — for tutorial-mode work (the other half of the dual mandate).

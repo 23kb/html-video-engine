@@ -57,3 +57,14 @@ Rules:
 - Use this for precise choreography, not as the default for ordinary chapters.
 - Keep the narration clip manageable. If the beat naturally splits into
   shorter sentences, prefer `per-beat-narration`.
+
+## Phase B–E.5 optional additions (Phase G note)
+
+- **`swapStyle: 'flipBridge'`** is the modern preferred swap for the embedded `swapToSnapshot` example. Eliminates the cream-bleed seam from the `cover` / `morph` paths. Override the export at the top:
+  ```js
+  export const swapStyle = 'flipBridge';
+  ```
+  See `wpforms-transitions` skill.
+- **Registered timelines** (Phase B) — for editorial choreography that should pause/seek with the scrubber, build a paused timeline and register it via `videos/_shared/kit.js registerTimeline()`. The `audio-cued` mode timestamps still drive the *narration cues*; the registered timeline handles the *visual choreography* underneath. See `wpforms-gsap-rules` skill.
+- **Camera poses** (Phase C) — `import { registerCameraPose }` from `../../_shared/kit.js`; reference by name in the beat (`camera: 'focus'`) instead of inline `level/pad`.
+- **`pausableRaf`** (Phase E.5) — required for any author RAF render loop in the chapter. See `wpforms-gsap-rules` skill.

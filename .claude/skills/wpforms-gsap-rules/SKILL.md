@@ -234,6 +234,12 @@ Before declaring GSAP work done:
 - `docs/deterministic-logic.md` — Read for the determinism rule rationale and `tools/lint-determinism.js` behavior.
 - `docs/deterministic-logic-findings.md` — Read when investigating an existing-video determinism warning before migrating it.
 
+## Granular craft references
+
+- `docs/atmospheric-composition.md` — Read when composing GSAP timelines that include grain / sweep / parallax / scale-push.
+- `docs/cursor-choreography.md` — Read when GSAP-tweening cursor positions or building drag-grab motion paths.
+- `docs/beat-pacing.md` — Read when timing GSAP timelines to narration cues.
+
 ## See Also
 
 - `wpforms-video` — universal authoring + storyboard gate.

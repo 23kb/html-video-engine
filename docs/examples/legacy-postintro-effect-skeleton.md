@@ -138,3 +138,66 @@ Rules:
 - Multi-animation rule is mandatory (see top of file). The validator does not
   enforce it, but the user will reject postIntros that feel like a single
   fade-in.
+
+## Phase B–E.5 optional additions (Phase G note)
+
+The skeleton above uses class-toggle phase choreography (CSS keyframes triggered by adding `.is-phase-N` classes). That's a legitimate authoring pattern. **The canonical postIntros (`rough-thought-to-draft`, `one-answer-enough`) use a different pattern: paused GSAP timelines registered with the runtime frame driver.** This is the modern preferred shape for richer choreography:
+
+```js
+import { loadGsap, registerTimeline } from '../../_shared/kit.js';
+
+let layer = null;
+let phaseTimeline = null;
+
+export async function setup({ doc }) {
+  installPostIntroStyle(doc);
+  layer = mountPostIntro(doc);
+  layer.classList.add('is-mounted');
+
+  // Build the multi-phase timeline NOW, paused, with all tweens added.
+  // Duration is snapshotted at registration; do not extend after.
+  const { gsap } = await loadGsap();
+  phaseTimeline = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+
+  // Phase 1: establish (1.4 s)
+  phaseTimeline.from(layer.querySelector('.title'), { y: 50, autoAlpha: 0, duration: 0.6 }, 0);
+  phaseTimeline.from(layer.querySelector('.subtitle'), { y: 30, autoAlpha: 0, duration: 0.5 }, 0.2);
+
+  // Phase 2: primary morph (2.0 s)
+  phaseTimeline.to(layer.querySelector('.card'), { scale: 1.05, duration: 0.8 }, 1.4);
+  // ... more phases ...
+
+  // Phase 5: handoff dive (2.0 s, ends at ≈ 11.0 s)
+  phaseTimeline.to(layer, { autoAlpha: 0, scale: 0.96, duration: 0.5 }, 10.5);
+
+  registerTimeline(phaseTimeline, { id: 'postintro' });
+  // Driver seeks. Don't call .play() on a registered timeline.
+}
+
+export default [
+  {
+    id: 'postintro-build',
+    chapter: 'postintro',
+    camera: { focus: 'body', level: 1, pad: 0, noScroll: true },
+    narration: 'postintro-build',
+    duration: 11,  // matches the timeline length
+  },
+];
+```
+
+**Why prefer this:**
+- Survives hidden-tab RAF throttling (the `await sleep()` chain in the legacy skeleton hangs in headless tabs).
+- Scrubber-seekable in `tools/preview.js`.
+- Renderable via `tools/render.js --seek` if `surface: 'editorial'`.
+- Cleaner phase boundaries (position parameters, not imperative `await`).
+
+Both patterns work in production. Use the registered-timeline pattern for new postIntros unless the storyboard specifically needs imperative phase choreography (e.g. `audio-cued` `waitAt(t)` with mid-phase product DOM mutations).
+
+**Other Phase B-E.5 features for postIntros:**
+- `swapStyle: 'flipBridge'` if the postIntro hands off to a different snapshot.
+- `videos/_shared/blocks/` for editorial chrome (mac-window, code-card, phone-frame, pill, arrow).
+- `videos/_shared/text-kit.js` for hero text reveals (24 Pixel-Point presets).
+- `videos/_shared/atmospheric.js` for ad-style postIntros (grain / sweep / parallax).
+- `pausableRaf(cb)` if the postIntro has a Three.js scene or any author RAF loop.
+
+See `wpforms-postintro`, `wpforms-gsap-rules`, `wpforms-transitions`, and `wpforms-marketing` skills for full detail.

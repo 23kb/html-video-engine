@@ -95,6 +95,20 @@ For video-local concept beats (option 2 above), the practical tools are:
 - **GSAP timelines** for complex timing. **Use registered timelines via `videos/_shared/kit.js registerTimeline()`** for paused, scrubbable, hidden-tab-survivable choreography. See `wpforms-gsap-rules` skill.
 - **Blocks library** at `videos/_shared/blocks/`: `mountCodeCard`, `mountMacWindow`, `mountPhoneFrame`, `mountPill`, `mountArrow`, `mountRouteLine`, `mountTerminal`. See `wpforms-marketing` skill.
 
+## Modern Features for PostIntros
+
+Phase B-E.5 additions especially relevant for postIntro authoring. Reach for these when the concept needs richer choreography than the legacy skeleton shows.
+
+| Feature | When to use | Skill |
+|---|---|---|
+| `registerTimeline(tl, { id })` | Multi-phase postIntro choreography in a paused timeline. Driver seeks deterministically; survives hidden-tab RAF. **The canonical postIntros (`rough-thought-to-draft`, `one-answer-enough`) use this.** | `wpforms-gsap-rules` |
+| `pausableRaf(cb)` | **Required** if the postIntro has a Three.js scene or any `requestAnimationFrame` render loop. The AI postIntro's Three.js render loop migrated to this. | `wpforms-gsap-rules` |
+| `swapStyle: 'flipBridge'` | If the postIntro hands off to a different snapshot at the end. Eliminates cream-bleed seam during the handoff dive. | `wpforms-transitions` |
+| `surface: 'mixed'` (manifest-level) | Hybrid postIntros that need both full-bleed editorial chrome AND the iframe geometry behind. Rare but real for mid-flight postIntros. | `wpforms-marketing` |
+| `videos/_shared/blocks/` | Editorial chrome inside the postIntro (mac-window, code-card, phone-frame, pill). Don't re-implement these per postIntro. | `wpforms-marketing` |
+| `videos/_shared/text-kit.js` (24 presets) | Hero text reveals inside the postIntro (mask-reveal-up, spring-scale-in, focus-blur-resolve). | `wpforms-marketing` |
+| `videos/_shared/atmospheric.js` | Grain / sweep / parallax / scale-push for ad-style postIntros. Use sparingly on tutorial postIntros. | `wpforms-marketing` |
+
 ## Required Shape (Quick Reference)
 
 - 8-15 seconds total
@@ -124,6 +138,16 @@ Before declaring a postIntro done:
 - `docs/authoring-api.md` — Reference for the `postIntro.kind` manifest slot and `mount(opts)/dismiss()` cinematic contract.
 - `docs/blocks.md` — Read when composing editorial chrome (mac-window, code-card, etc.) into a postIntro.
 - `docs/text-kit.md` — Read when the postIntro includes text reveals (24 Pixel-Point-style presets).
+
+## Granular craft references
+
+- `docs/cursor-choreography.md` — Read when designing the postIntro's cursor handoff into chapter 1.
+- `docs/beat-pacing.md` — Read for postIntro phase pacing (5+ phases in 8-15s).
+- `docs/camera-lensing.md` — Read when the postIntro uses zoom (most postIntros are level 1.0 full-bleed; some dive at the end).
+- `docs/stage-css.md` — Read when the postIntro layer leaks Mac chrome or mesh-bg.
+- `docs/color-palette.md` — Read for editorial-chrome color rules in the postIntro.
+- `docs/atmospheric-composition.md` — Read when adding grain / sweep / scale-push to postIntro phases.
+- `docs/narration-writing.md` — Read when writing the postIntro narration (more conceptual than tutorial narration).
 
 ## See Also
 

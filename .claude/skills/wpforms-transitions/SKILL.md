@@ -175,6 +175,13 @@ Before declaring transition work done:
 - `tools/qc-out/a-complete-guide-to-the-checkboxes-field/FINDINGS.md` — Read when debugging cross-snapshot seam quality. Frame-level diagnosis from Phase 0.
 - `tools/qc-out/form-entries-guide/FINDINGS.md` — Read for the morph-vs-fast comparison + race-condition analysis.
 
+## Granular craft references
+
+- `docs/camera-lensing.md` — Read when picking `level:` for `registerCameraPose` specs or for chapter beats.
+- `docs/cursor-choreography.md` — Read for cursor behavior across `flipBridge` swaps and chapter-break transitions.
+- `docs/stage-css.md` — Read for chrome-above-cover invariant and z-stack across swap styles.
+- `docs/beat-pacing.md` — Read for chapter-break timing (`glide` is silent; `dolly` adds 700ms).
+
 ## See Also
 
 - `wpforms-video` — universal authoring + chapter shape (chapters declare `breakStyle` / `swapStyle`).

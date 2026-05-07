@@ -115,6 +115,27 @@ Legacy chapters import only local selector sheets (`./_selectors.js`). Do not im
 
 Keep beats near the **6-second rule**. Split longer narration into smaller clips.
 
+## Modern Features Cheat Sheet
+
+Phase B-E.5/F additions worth reaching for. Each links to its dedicated skill or doc. **Most of these aren't surfaced in the legacy skeletons** — load the relevant skill to use them.
+
+| Feature | When to reach for it | Skill |
+|---|---|---|
+| `swapStyle: 'flipBridge'` | Any cross-snapshot transition. Eliminates the cream-bleed seam from `morph`/`cover`/`fast`. | `wpforms-transitions` |
+| `registerTimeline(tl, { id })` | PostIntros + scrubbable editorial beats. Survives hidden-tab RAF throttling. | `wpforms-gsap-rules` |
+| `registerCameraPose(name, spec)` | Repeat camera framing across beats. Cleaner than inline `level: 1.18, pad: 14`. | `wpforms-transitions` |
+| `pausableRaf(cb)` | **Required** for any author Three.js / render-loop in a chapter. Vanilla `requestAnimationFrame` won't honor scrubber pause. | `wpforms-gsap-rules` |
+| `surface: 'editorial'` / `'mixed'` | Ad-style / marketing video, or hybrid postIntro that needs full-bleed editorial DOM | `wpforms-marketing` |
+| `videos/_shared/blocks/` | Editorial chrome (code-card, mac-window, phone-frame, pill, arrow, route-line, terminal). Don't re-implement per video. | `wpforms-marketing` |
+| `videos/_shared/effects.js` | Standard registered effects: `highlightPulse`, `fieldBurst`, `labelReveal`, `popOutTilt`, `cardReflow`. Call by name. | `wpforms-gsap-rules` |
+| `text-kit.js` 24 presets | Hero text reveals (mask-reveal-up, spring-scale-in, focus-blur-resolve, ...). 24 Pixel-Point presets. | `wpforms-marketing` |
+| `tools/render.js` | In-repo MP4 export. Wall-clock for tutorials, `--seek` for editorial. | `wpforms-transitions` |
+| `tools/preview.js` `/scrubber` | Live-reload + pause/seek author UI for QC | `wpforms-transitions` |
+| `tools/lint-determinism.js` | Pre-commit determinism check (no `Date.now`, no unseeded `Math.random`, no `fetch`). | `wpforms-gsap-rules` |
+| `awaitTween(tween)` | Hidden-tab-safe `await` on a fire-and-forget tween. Replaces `eventCallback('onComplete', resolve)`. | `wpforms-gsap-rules` |
+
+**Default-but-recommended-upgrade:** the locked manifest defaults are still `breakStyle: 'glide'` and `swapStyle: 'morph'` for back-compat. For new videos with cross-snapshot work, override to `swapStyle: 'flipBridge'` per chapter or in `manifest.defaults`.
+
 ## Token Discipline
 
 Use targeted tools before broad shell searches:
@@ -166,6 +187,18 @@ Stop and push back when:
 - `docs/examples/choice-field-generate-choices-skeleton.md` — Read for choice-field videos (Dropdown, Multiple Choice, Checkboxes) that include AI Generate Choices.
 - `docs/wpforms-field-state-inventory.md` — Canonical reference only. **Do not full-read.** Query via `node tools/field-state.js --field <name>`.
 - `CLAUDE.md` — Operator manual (boot order, protected core, validation commands, push-back triggers). Read for repo-wide rules; this skill owns video-authoring rules.
+
+## Granular references (Phase G.2 — load on demand for the specific topic)
+
+- `docs/cursor-choreography.md` — Read when authoring any cursor move beyond a single click. `glideTo via:` is under-used.
+- `docs/narration-writing.md` — Read when writing narration `.txt` files. Voice + sentence shape + verb-coupling rules.
+- `docs/beat-pacing.md` — Read when a beat feels long or rushed; covers the 6-second rule and split heuristics.
+- `docs/camera-lensing.md` — Read when picking `level:` for a beat. `1.0 / 1.18 / 2.2 / 2.4` reading guide.
+- `docs/stage-css.md` — Read when an editorial overlay leaks Mac chrome / mesh-bg / watermark. Z-stack reference.
+- `docs/color-palette.md` — Read when adding any color to editorial chrome. Brand orange placement rules.
+- `docs/audio-mastering.md` — Read when tuning narration / BGM / SFX levels.
+- `docs/selector-hygiene.md` — Read when selectors break or `_selectors.js` needs refactor.
+- `docs/title-card-voice.md` — Read when writing intro/outro `subtitleVariants` and CTA copy.
 
 ## See Also
 

@@ -24,6 +24,19 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 
 - `postintro-patterns.md` — PostIntro design rules + canonical references + multi-animation rule rationale. Owned by `wpforms-postintro` skill.
 
+## Authoring craft (granular references — Phase G.2)
+
+- `cursor-choreography.md` — `park` / `glideTo` / `dragGrab` / via-waypoint patterns; what makes cursor reads natural vs robotic.
+- `narration-writing.md` — voice, pacing, sentence shape, beat coupling, intro/outro voice.
+- `beat-pacing.md` — 6-second rule, splitting heuristics, what breaks at 8s, what works at 4s.
+- `camera-lensing.md` — `level` reading guide (1.0 / 1.18 / 2.2 / 2.4), pad, when to pick which.
+- `stage-css.md` — z-stack of every layer, leak surfaces, when to hide what, surface modes.
+- `color-palette.md` — WPForms brand orange + supporting accents, when to use which, what NOT to do.
+- `atmospheric-composition.md` — when grain / sweep / parallax / scale-push work, when they distract, layering rules.
+- `audio-mastering.md` — narration / BGM volume, ducking, SFX channels, `narrationSpeed`.
+- `selector-hygiene.md` — `_selectors.js` pattern, when selectors break, validator coverage.
+- `title-card-voice.md` — intro/outro shape, `subtitleVariants` array, CTA tone, what's on-brand.
+
 ## GSAP / animation
 
 - `gsap-rules.md` — L0 GSAP discipline canonical reference. Owned by `wpforms-gsap-rules` skill.

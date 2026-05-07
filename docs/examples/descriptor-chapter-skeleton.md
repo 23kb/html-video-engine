@@ -66,3 +66,13 @@ Do not use descriptor mode for a postIntro or chapter that needs custom
 HTML/CSS/SVG editorial animation, timestamp-locked narration actions,
 `waitAt(t)`, or mid-effect choreography inside one narration clip. Use the
 legacy skeletons for those.
+
+## Phase B–E.5 optional additions (Phase G note)
+
+Descriptor chapters opt into modern features the same way legacy chapters do:
+
+- `swapStyle: 'flipBridge'` — modern preferred for cross-snapshot chapter boundaries. Override the default `cover` for new descriptor chapters that swap snapshots.
+- `breakStyle: 'glide'` — modern default (was `soft-dolly` in older skeletons). `glide` is silent / no break; the next chapter's `focusOn` is the transition. Use `soft-dolly` only when chapters live on visibly different screens.
+- Camera poses — register once with `videos/_shared/kit.js registerCameraPose()`, then reference by name in step `target`/`fill` patterns. Cleaner than inline `fill: 0.52`.
+
+See `wpforms-transitions` skill for break/swap decision tree.

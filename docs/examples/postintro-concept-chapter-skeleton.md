@@ -126,3 +126,13 @@ Rules:
   canonical postIntros prove this repo can do it.
 - Expect visual QC on ambitious postIntros. Revise timing, framing, morphs, and
   payoff states after the user reviews them.
+
+## Phase B–E.5 optional additions (Phase G note)
+
+Descriptor mode is secondary. For richer postIntros that need real concept choreography:
+
+- **Use `legacy-postintro-effect-skeleton.md`** (the legacy/effect path) — that skeleton's "Phase B-E.5 optional additions" section shows the modern paused-timeline + `registerTimeline` pattern that the canonical postIntros use.
+- If staying with descriptor mode: `swapStyle: 'flipBridge'` if the postIntro hands off to a different snapshot. The `morph` default has a cream-bleed seam.
+- Descriptor verbs that work in concept beats: `captionLine`, `lineDraw`, `animateText`, `popOut`, `focusPull`, `sectionTitle`, `snapshotSwap`. None of these alone substitute for an approved concept animation — only use them when they preserve the transformation.
+
+See `wpforms-postintro` skill for the canonical references and decision tree.

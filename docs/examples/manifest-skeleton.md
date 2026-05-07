@@ -1,8 +1,16 @@
-# Manifest Skeleton (Secondary)
+# Manifest Skeleton (DEPRECATED)
 
-Use `docs/examples/legacy-manifest-skeleton.md` as the default first copy
-target for new video packages. This older generic skeleton is retained as a
-secondary reference. Keep final recording manifests at `hud: false`.
+> **DEPRECATED — DO NOT USE FOR NEW VIDEOS.**
+>
+> Use `docs/examples/legacy-manifest-skeleton.md` for new video packages. That
+> skeleton has the locked production shape (`variant: "sullie-system"`,
+> `subtitleVariants` array, `defaults: { breakStyle, swapStyle }`) and is what
+> every shipping video uses.
+>
+> This file is retained only to document the older generic shape that some
+> pre-Phase-A videos used. The fields here (singular `subtitle`, no
+> `subtitleVariants`, `breakStyle: 'soft-dolly'`/`swapStyle: 'cover'` defaults)
+> do NOT match current production.
 
 ```jsonc
 {

@@ -26,6 +26,10 @@ Post this in chat after research, before any code. Wait for explicit approval.
 Slug: <slug>
 Sources read: <urls / repo paths>
 
+Surface mode: <iframe (default for tutorials) | editorial (ad-style) | mixed (hybrid postIntro)>
+Swap style for cross-snapshot chapters: <flipBridge (preferred for cream-bleed kill) | morph | cover>
+Break style default: <glide (default, continuous pan) | soft-dolly | dolly | whip | hold>
+
 ## Angle
 <One paragraph: what this video proves and to whom.>
 
@@ -165,9 +169,24 @@ from prior videos trace back to skipping these.
       if requested.
 - [ ] Protected core untouched: `engine/*`, `runtime/player.js`,
       `runtime/chapter-runner.js`, `runtime/scene-helpers.js`,
-      `runtime/transitions.js`, `scenes/shared.js`, existing video
-      chapters, snapshots. New `runtime/*` files are also off-limits in
-      normal authoring.
+      `runtime/transitions.js`, `runtime/frame-driver.js`,
+      `runtime/frame-adapter.js`, `runtime/shared-scene.js`,
+      `runtime/camera-poses.js`, `runtime/pause-manager.js`,
+      `scenes/shared.js`, existing video chapters, snapshots. New
+      `runtime/*` files are also off-limits in normal authoring.
+- [ ] **Phase F lints clean:** `node tools/validate-video.js <slug>` runs
+      audio-vs-duration, pausableRaf-usage, and registerTimeline-paused
+      lints. Review warnings; treat them as soft gates.
+- [ ] **Determinism check:** `node tools/lint-determinism.js --video <slug>`
+      passes. No `Date.now()`, no unseeded `Math.random()`, no `fetch()`
+      at runtime. See `docs/deterministic-logic.md`.
+- [ ] **`pausableRaf` for any author RAF loop** in chapter or cinematic
+      code. Vanilla `requestAnimationFrame` won't honor scrubber pause.
+      See `wpforms-gsap-rules` skill.
+- [ ] **Registered timelines paused before registration.** Any
+      `registerTimeline(tl, { id })` call requires `tl` built with
+      `gsap.timeline({ paused: true })` and all tweens added before
+      registration (duration is snapshotted).
 - [ ] Mode chosen deliberately: `parallel` / `audio-cued` / `per-beat-narration`.
       See `CLAUDE.md` "three modes" section.
 - [ ] No beat exceeds ~6s of animation under a single narration clip. Split
