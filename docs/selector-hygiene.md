@@ -4,6 +4,16 @@ How to keep selectors stable, when they break, and the `_selectors.js` pattern t
 
 Selectors are the most fragile part of any tutorial video — when WPForms ships a UI change, every selector that pointed at the old shape silently breaks. This doc captures the patterns that minimize breakage and the tools that catch it early.
 
+## 🛑 No-assumption snapshot rule
+
+**Chapter authoring never assumes snapshot DOM.** Required before writing any selector:
+
+1. Read the snapshot's `catalog.md` (or run `node tools/inspect-snapshot.js <snapshot>`).
+2. Resolve every selector against that output.
+3. Treat any unresolved selector or assumed UI state as a **hard error**, not a TODO. The validator will refuse to emit the chapter.
+
+If you have a state in mind that requires DOM-derivation (e.g. "the dropdown after it's opened"), prove the derivation path with `node tools/field-state.js --field <name>` or a real captured DOM snippet BEFORE writing the chapter selector. Don't write the selector and figure out how to reach the state later.
+
 ## The `_selectors.js` pattern
 
 Every chapter imports its selectors from a local `_selectors.js` file (or `_selectors/<name>.js` for multi-file packages). Selectors are NOT inlined into chapter beat objects.

@@ -56,10 +56,9 @@ export default {
 Rules:
 
 - Allowed imports: `./_selectors*.js`, `./_kit.js` (per-video), and
-  `../../_shared/kit.js` (universal video-author helpers — vendored GSAP
-  loader, scene layer, click ripple, cursor styling, font loader, text
-  splitting, iframe transform helpers, clone-from-iframe). See
-  `docs/chapter-module-contract.md` → "Shared video-author kit".
+  `../../_shared/kit.js` (universal video-author helpers — `loadGsap`,
+  `awaitTween`, `withGsapContext`, `registerTimeline`,
+  `registerCameraPose`, `pausableRaf`, `mulberry32`).
 - Capability kits are opt-in: use `../../_shared/atmospheric.js` for grain/sweep/parallax,
   `../../_shared/text-kit.js` for text reveals, `../../_shared/lottie-kit.js`
   for Lottie bumpers, or `../../_shared/three-kit.js` for editorial 3D layers.

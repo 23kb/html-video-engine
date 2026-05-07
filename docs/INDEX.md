@@ -7,8 +7,7 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 ## Authoring contracts and skeletons
 
 - `authoring-api.md` — Public authoring contract. Manifest schema, chapter exports, descriptor mode, transitions, ctx helpers, validator behavior. **Read for the contract reference; skills have the high-frequency subset.**
-- `current-workflow.md` — Workflow + storyboard rules. Read for the canonical sequence.
-- `chapter-module-contract.md` — Locked interface spec for descriptor-mode chapter modules.
+- `current-workflow.md` — Thin pointer doc; the workflow loop lives in `wpforms-video` skill.
 - `dom-prep.md` — Three-layer DOM staging model: universal baseline → per-snapshot profile → chapter-local delta.
 - `video-production-templates.md` — Storyboard / chapter / snapshot checklist + token budget + smoke spec. Read only the section you need.
 - `examples/legacy-manifest-skeleton.md` — Default manifest copy target.
@@ -16,9 +15,6 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 - `examples/legacy-postintro-effect-skeleton.md` — Video-local postIntro skeleton (HTML/CSS/SVG/GSAP).
 - `examples/legacy-audio-cued-skeleton.md` — Timestamp-locked narration with `waitAt(t)`.
 - `examples/choice-field-generate-choices-skeleton.md` — Choice-field AI Generate Choices flow.
-- `examples/descriptor-chapter-skeleton.md` — Descriptor-mode chapter (closed-vocabulary).
-- `examples/manifest-skeleton.md` — Bare manifest skeleton.
-- `examples/postintro-concept-chapter-skeleton.md` — PostIntro as a video-local concept chapter.
 
 ## PostIntro
 
@@ -75,7 +71,6 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 
 - `wpforms-field-state-inventory.md` — Canonical field-state inventory (132 KB). **Do not full-read.** Query via `node tools/field-state.js --field <name>`.
 - `wpforms-ai-state-inventory.md` — WPForms AI UI state references.
-- `snapshot-health-report.md` — Snapshot health audit.
 
 ## Per-video handoffs (read only when working on that video)
 
@@ -85,19 +80,14 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 ## Followups / backlog
 
 - `helper-rollout-backlog.md` — Candidate beats for `popOut` / `cursor.glideTo` / `lineDraw` rollout.
-- `two-video-pattern-audit.md` — Pattern-proven-across-references audit.
-
-## Refactor history (governance only)
-
-- `stage-4-core-api-plan.md` — Pre-refactor stage-4 core API plan. Historical.
-- `phase-g-research.md` — Phase G research + proposal that produced this index + the enriched skills.
 
 ## Repo-root references
 
 - `CLAUDE.md` — Operator manual. Always loaded. Boot order + protected core + validation + push-back triggers.
 - `AGENTS.md` — Codex operator manual. Same role as CLAUDE.md.
 - `REFACTOR-BRIEF.md` — Locked architectural decisions (§3) + protected-core list (§4) + session output rules (§8.1).
-- `REFACTOR-PROGRESS.md` — Per-phase log + known gaps (§2.1) + architectural debt (§2.2).
-- `REFACTOR-DONE.md` — One-page closure summary.
-- `repo-audit-findings.md` — Full Phase 0 architectural audit.
+- `BACKLOG.md` — Pending architectural debt + known gaps + future-phase candidates.
+- `REFACTOR-PROGRESS.md` — Per-phase log (governance/history).
+- `REFACTOR-DONE.md` — Refactor closure summary (governance/history).
+- `repo-audit-findings.md` — Phase 0 architectural audit (governance/history).
 - `analysis-quality-and-transitions.md` — REST API video lessons (Phase 0 input).

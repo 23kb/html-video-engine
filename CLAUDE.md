@@ -19,7 +19,7 @@ This manual is intentionally short. **Topic-scoped rules live in skills**, not h
 
 `docs/INDEX.md` is a one-line-per-doc index. Use it to find the right doc fast.
 
-Refactor history at [REFACTOR-DONE.md](REFACTOR-DONE.md). Decisions locked in [REFACTOR-BRIEF.md](REFACTOR-BRIEF.md) §3.
+Architecture decisions: [REFACTOR-BRIEF.md](REFACTOR-BRIEF.md) §3 (locked) + [BACKLOG.md](BACKLOG.md) (pending + future).
 
 ## Token Discipline
 
@@ -138,6 +138,6 @@ Don't look here for these — load the skill instead:
 
 Skills are at `.claude/skills/<name>/SKILL.md`. Each is a single file with YAML frontmatter (`name`, `description`).
 
-## Refactor Status
+## Architecture decisions
 
-**Refactor complete.** Phases A → B → C → D → E.5 → F → G merged. See [REFACTOR-DONE.md](REFACTOR-DONE.md) for the closure summary, [REFACTOR-PROGRESS.md](REFACTOR-PROGRESS.md) for the per-phase log, [REFACTOR-BRIEF.md](REFACTOR-BRIEF.md) for locked decisions and the protected-core list.
+Locked architectural decisions and protected-core list live in [REFACTOR-BRIEF.md](REFACTOR-BRIEF.md) §3-§4. Pending architectural debt + future-phase candidates live in [BACKLOG.md](BACKLOG.md).

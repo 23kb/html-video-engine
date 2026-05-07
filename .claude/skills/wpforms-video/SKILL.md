@@ -129,6 +129,7 @@ Phase B-E.5/F additions worth reaching for. Each links to its dedicated skill or
 | `videos/_shared/blocks/` | Editorial chrome (code-card, mac-window, phone-frame, pill, arrow, route-line, terminal). Don't re-implement per video. | `wpforms-marketing` |
 | `videos/_shared/effects.js` | Standard registered effects: `highlightPulse`, `fieldBurst`, `labelReveal`, `popOutTilt`, `cardReflow`. Call by name. | `wpforms-gsap-rules` |
 | `text-kit.js` 24 presets | Hero text reveals (mask-reveal-up, spring-scale-in, focus-blur-resolve, ...). 24 Pixel-Point presets. | `wpforms-marketing` |
+| `videos/_shared/atmospheric.js` | Marketing-mode helpers: grain, gradient sweep, parallax pair, scale push, dark backdrop. Use sparingly on tutorial beats; right at home in postIntros + ad-style chapters. | `wpforms-marketing` |
 | `tools/render.js` | In-repo MP4 export. Wall-clock for tutorials, `--seek` for editorial. | `wpforms-transitions` |
 | `tools/preview.js` `/scrubber` | Live-reload + pause/seek author UI for QC | `wpforms-transitions` |
 | `tools/lint-determinism.js` | Pre-commit determinism check (no `Date.now`, no unseeded `Math.random`, no `fetch`). | `wpforms-gsap-rules` |

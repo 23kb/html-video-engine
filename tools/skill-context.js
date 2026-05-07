@@ -34,9 +34,8 @@ const OPERATOR_MANUALS = [
 const KEY_DOCS = [
   { path: 'docs/INDEX.md',                                        when: 'First — one-line-per-doc index. Use to find the right doc fast.' },
   { path: 'docs/authoring-api.md',                                when: 'Public authoring contract reference. Manifest schema, chapter exports, descriptor mode, validator behavior.' },
-  { path: 'REFACTOR-DONE.md',                                     when: 'Refactor closure summary. Where everything ended up.' },
   { path: 'REFACTOR-BRIEF.md',                                    when: 'Locked architectural decisions (§3) + protected-core list (§4).' },
-  { path: 'REFACTOR-PROGRESS.md',                                 when: 'Per-phase log + known gaps (§2.1) + architectural debt (§2.2).' },
+  { path: 'BACKLOG.md',                                           when: 'Pending architectural debt + known gaps + future-phase candidates.' },
 ];
 
 const SHARED_KITS = [
@@ -94,7 +93,6 @@ function buildContext() {
     sharedKits: SHARED_KITS.map(k => ({ ...k, present: exists(k.path) })),
     tools: TOOLS,
     knownVideoPackages: listVideos(),
-    refactorStatus: 'COMPLETE — A → B → C → D → E.5 → F → G merged. See REFACTOR-DONE.md.',
   };
 }
 
@@ -105,8 +103,6 @@ function printHuman(ctx) {
   out.push(ctx.mission);
   out.push('');
   out.push(ctx.startRule);
-  out.push('');
-  out.push(`Refactor status: ${ctx.refactorStatus}`);
   out.push('');
   out.push('## Skills (load the one matching your task)');
   for (const s of ctx.skills) {

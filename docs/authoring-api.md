@@ -590,19 +590,17 @@ available in `audio-cued` mode.
   clip; runner blocks on the clip ending after the beat's
   `duration` / `postHold`.
 
-The chapter-module-contract still applies: chapter modules import
-nothing from `engine/`, `scenes/`, or `runtime/` except the
-allowlisted `/runtime/chapter-api.js`. All helpers flow through
+Chapter modules import nothing from `engine/`, `scenes/`, or `runtime/`
+except the allowlisted `/runtime/chapter-api.js`. All helpers flow through
 ctx.
 
 Chapter modules may also import from `videos/_shared/kit.js` for
-universal video-author helpers (vendored GSAP loader, scene layer
-/ cursor / font helpers, text splitting, click ripple, iframe
-transform helpers, clone-from-iframe). Per-video `_kit.js` files
-remain allowed for video-specific helpers. When a video is
+universal video-author helpers (vendored GSAP loader, `loadGsap`,
+`awaitTween`, `withGsapContext`, `registerTimeline`,
+`registerCameraPose`, `pausableRaf`, `mulberry32`). Per-video `_kit.js`
+files remain allowed for video-specific helpers. When a video is
 accepted, review its `_kit.js` and lift any reusable helpers into
-`videos/_shared/kit.js`. See `docs/chapter-module-contract.md` →
-"Shared video-author kit" for details.
+`videos/_shared/kit.js`.
 
 ### Capability kits
 
@@ -736,17 +734,13 @@ node tools/check-video-playback.js build-forms-faster-with-wpforms-ai --seconds 
 
 ## 13. Pointers
 
-- Workflow entry point: `docs/current-workflow.md`
+- Workflow entry point: `docs/current-workflow.md` (thin pointer to `wpforms-video` skill)
 - New-video skeletons:
   `docs/examples/legacy-manifest-skeleton.md`,
   `docs/examples/legacy-chapter-skeleton.md`,
   `docs/examples/legacy-postintro-effect-skeleton.md`,
   `docs/examples/legacy-audio-cued-skeleton.md`
-- PostIntro design guidance: `docs/postintro-patterns.md`
-- Locked authoring contract: `docs/chapter-module-contract.md`
-- Production-truth field-state evidence:
-  `docs/wpforms-field-state-inventory.md`
-- Governance/history only:
-  `docs/stage-5d-public-authoring-api-plan.md`,
-  `docs/stage-5-runtime-transition-rd-plan.md`,
-  `docs/stage-4-core-api-plan.md`
+- PostIntro design guidance: `docs/postintro-patterns.md` (or load `wpforms-postintro` skill)
+- Production-truth field-state evidence: `docs/wpforms-field-state-inventory.md`
+  (queried via `node tools/field-state.js`; do not full-read)
+- Per-topic granular references: see `docs/INDEX.md` "Authoring craft" section
