@@ -15,6 +15,25 @@
 import { register } from '../../runtime/frame-driver.js';
 import { gsapTimelineAdapter } from '../../runtime/frame-adapter.js';
 import { registerCameraPose as _registerCameraPose, resolveCameraPose as _resolveCameraPose } from '../../runtime/camera-poses.js';
+import { isPaused, pausableSleep } from '../../runtime/pause-manager.js';
+
+export { pausableSleep };
+
+export function pausableRaf(cb) {
+  let id = null;
+  let stopped = false;
+  const tick = (ts) => {
+    if (stopped) return;
+    if (!isPaused()) cb(ts);
+    id = requestAnimationFrame(tick);
+  };
+  id = requestAnimationFrame(tick);
+  return () => {
+    stopped = true;
+    if (id != null) cancelAnimationFrame(id);
+    id = null;
+  };
+}
 
 // ─────────────────────────────────────────────────────────────────────────
 // GSAP loader — vendored from /vendor/gsap/3.15.0/.

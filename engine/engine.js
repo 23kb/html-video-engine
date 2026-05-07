@@ -1,6 +1,9 @@
 // Scene engine — promise-based primitives for WPForms HTML-capture videos.
 // Scenes import from here and read top-to-bottom like a storyboard.
 
+import { pausableSleep } from '../runtime/pause-manager.js';
+import { register as registerFrameAdapter, unregister as unregisterFrameAdapter, registry as frameRegistry } from '../runtime/frame-driver.js';
+
 const state = {
   ui: null,           // iframe element
   stage: null,        // container div
@@ -15,19 +18,72 @@ const state = {
   doc: null,
 };
 
-const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+const sleep = (ms) => pausableSleep(ms);
+
+let cameraDriver = null;
+let cameraAnimation = null;
+let cameraDriverOrigin = 0;
 
 function cameraTransform({ zoom = state.zoom, tx = state.tx, ty = state.ty } = {}) {
   return `scale(${zoom}) translate(${tx / zoom}px, ${ty / zoom}px)`;
 }
 
-function applyCamera({ zoom = state.zoom, tx = state.tx, ty = state.ty, duration = 0, easing = 'cubic-bezier(0.65, 0, 0.35, 1)' } = {}) {
+function applyCameraImmediate({ zoom = state.zoom, tx = state.tx, ty = state.ty } = {}) {
   if (!state.ui) return;
   state.zoom = zoom;
   state.tx = tx;
   state.ty = ty;
-  state.ui.style.transition = duration > 0 ? `transform ${duration}ms ${easing}` : 'none';
+  state.ui.style.transition = 'none';
   state.ui.style.transform = cameraTransform({ zoom, tx, ty });
+}
+
+function easeProgress(k) {
+  return k < 0.5 ? 4 * k * k * k : 1 - Math.pow(-2 * k + 2, 3) / 2;
+}
+
+function ensureCameraDriver() {
+  if (!state.ui) return;
+  if (cameraDriver && frameRegistry.has('camera')) return;
+  cameraDriverOrigin = performance.now() / 1000;
+  cameraDriver = {
+    id: 'camera',
+    duration: 60 * 60,
+    seek(t) {
+      if (!cameraAnimation) return;
+      const now = cameraDriverOrigin + t;
+      const k = Math.min(1, Math.max(0, (now - cameraAnimation.start) / cameraAnimation.duration));
+      const eased = cameraAnimation.ease(k);
+      applyCameraImmediate({
+        zoom: cameraAnimation.from.zoom + (cameraAnimation.to.zoom - cameraAnimation.from.zoom) * eased,
+        tx: cameraAnimation.from.tx + (cameraAnimation.to.tx - cameraAnimation.from.tx) * eased,
+        ty: cameraAnimation.from.ty + (cameraAnimation.to.ty - cameraAnimation.from.ty) * eased,
+      });
+      if (k >= 1) cameraAnimation = null;
+    },
+    destroy() {
+      cameraAnimation = null;
+      cameraDriver = null;
+    },
+  };
+  registerFrameAdapter(cameraDriver);
+}
+
+function applyCamera({ zoom = state.zoom, tx = state.tx, ty = state.ty, duration = 0, easing = 'cubic-bezier(0.65, 0, 0.35, 1)' } = {}) {
+  if (!state.ui) return;
+  ensureCameraDriver();
+  if (!duration || duration <= 0) {
+    cameraAnimation = null;
+    applyCameraImmediate({ zoom, tx, ty });
+    return;
+  }
+  cameraAnimation = {
+    start: performance.now() / 1000,
+    duration: duration / 1000,
+    easing,
+    ease: easeProgress,
+    from: { zoom: state.zoom, tx: state.tx, ty: state.ty },
+    to: { zoom, tx, ty },
+  };
 }
 
 // ── Setup ────────────────────────────────────────────────────────────────────
@@ -96,10 +152,15 @@ export function loadSnapshot(slug, { iframeSize = [1440, 900] } = {}) {
   state.cursorEl = document.querySelector('.cursor');
   state.stageW   = window.innerWidth;
   state.stageH   = window.innerHeight;
+  cameraAnimation = null;
+  try { unregisterFrameAdapter('camera'); } catch (_) {}
+  cameraDriver = null;
 
   return new Promise((resolve) => {
     state.ui.addEventListener('load', () => {
       state.doc = state.ui.contentDocument;
+      applyCameraImmediate({ zoom: 1, tx: 0, ty: 0 });
+      ensureCameraDriver();
       installDebugHotkey();
       resolve();
     });
@@ -128,9 +189,14 @@ export function adoptSnapshotIframe(iframe, { preserveCamera = true } = {}) {
   if (preserveCamera && previous) {
     iframe.style.transition = 'none';
     iframe.style.transform = previous.style.transform || cameraTransform();
+    state.zoom = state.zoom || 1;
   } else {
     applyCamera({ zoom: 1, tx: 0, ty: 0, duration: 0 });
   }
+  cameraAnimation = null;
+  try { unregisterFrameAdapter('camera'); } catch (_) {}
+  cameraDriver = null;
+  ensureCameraDriver();
   return state;
 }
 

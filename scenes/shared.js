@@ -6,6 +6,7 @@ import {
   loadSnapshot as _loadSnapshot, runScene, cursor, sleep, type,
   zoomTo, highlight, clearHighlights, pointer as ptrOverlay, spotlight,
 } from '../engine/engine.js';
+import { registerAudio, unregisterAudio } from '../runtime/pause-manager.js';
 
 const LOGO_MARK = '/assets/wpforms-logo.png';
 const BGM_URL   = '/bgms/1.mp3';
@@ -57,6 +58,7 @@ export async function stopBGM(ms = 1200) {
   if (!bgmEl) return;
   await fadeVolume(bgmEl, 0, ms);
   try { bgmEl.pause(); } catch {}
+  unregisterAudio(bgmEl);
 }
 
 export async function startBGM(opts = {}) {
@@ -66,6 +68,7 @@ export async function startBGM(opts = {}) {
   const url = opts.src || BGM_URL;
   if (typeof opts.volume === 'number') BGM_FULL = Math.max(0, Math.min(1, opts.volume));
   bgmEl = new Audio(url);
+  registerAudio(bgmEl);
   bgmEl.loop = true;
   bgmEl.volume = 0;
   if (typeof opts.seekMs === 'number' && opts.seekMs > 0) {
@@ -84,12 +87,14 @@ export async function startBGM(opts = {}) {
 
 export async function playNarration(slug, { keepDucked = false } = {}) {
   const audio = new Audio(`${narrationBase}${slug}.mp3`);
+  registerAudio(audio);
   audio.volume = narrationVolume;
   audio.playbackRate = narrationSpeed;
   setBgmVolume(BGM_DUCKED);
   const ended = new Promise(resolve => {
     const done = () => {
       if (bgmEl && !keepDucked) fadeVolume(bgmEl, BGM_FULL, 3500);
+      unregisterAudio(audio);
       resolve();
     };
     audio.addEventListener('ended', done, { once: true });

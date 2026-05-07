@@ -83,6 +83,8 @@ const ON_DEMAND = [
   { path: 'docs/blocks.md', when: 'Mounting shared editorial blocks from videos/_shared/blocks/.' },
   { path: 'docs/text-kit.md', when: 'Choosing a text-kit preset or checking the full 24-preset list.' },
   { path: 'docs/helper-rollout-backlog.md', when: 'Looking for popOut / cursor.glideTo / lineDraw rollout candidates.' },
+  { path: 'docs/render.md', when: 'Rendering playable HTML videos to MP4 with tools/render.js; wall-clock for tutorials, seek mode for editorial registered timelines.' },
+  { path: 'docs/preview.md', when: 'Using the Phase E live-reload preview server and author scrubber.' },
 ];
 
 const REFERENCE_VIDEOS = [
@@ -184,6 +186,8 @@ const TOOLS = [
   { cmd: 'node tools/validate-video.js <slug>', use: 'Static validator for a video package.' },
   { cmd: 'node tts/generate.js --video <slug>', use: 'Render narration mp3s for a video. Run this yourself; do not ask the user.' },
   { cmd: 'node serve.js', use: 'Local static server on http://localhost:4321 (auto-started by check-video-playback.js if not running).' },
+  { cmd: 'node tools/preview.js [--video <slug>] [--port 5173] [--no-open]', use: 'Phase E live-reload preview server with injected reload client and /scrubber author UI.' },
+  { cmd: 'node tools/render.js <slug> [--seek] [--chapter <id>] [--fps 30] [--resolution 1920x1080]', use: 'Phase E in-repo MP4 export. Default wall-clock screencast; --seek is editorial registered-timeline only.' },
 ];
 
 const KNOWN_VIDEO_EXCLUDE = new Set([

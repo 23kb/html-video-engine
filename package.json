@@ -8,13 +8,20 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "smoke:generated-preview": "node authoring/generated-preview-smoke.js"
+    "smoke:generated-preview": "node authoring/generated-preview-smoke.js",
+    "dev": "node tools/preview.js",
+    "preview": "node tools/preview.js",
+    "render": "node tools/render.js",
+    "validate": "node tools/validate-video.js",
+    "smoke": "node tools/check-video-playback.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chokidar": "^4.0.3",
     "js-yaml": "^4.1.0",
-    "playwright": "^1.59.1"
+    "playwright": "^1.59.1",
+    "ws": "^8.18.3"
   }
 }

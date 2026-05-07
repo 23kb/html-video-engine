@@ -34,6 +34,7 @@ import { runChapterBreak } from './transitions.js';
 import { initSfx } from './sfx.js';
 import { playCinematic } from './cinematic-runner.js';
 import * as frameDriver from './frame-driver.js';
+import * as pauseManager from './pause-manager.js';
 
 // Stage 5b-1: paint-anchored gate. Resolves when `root` has computed opacity
 // >= threshold, non-zero size, and one rAF has committed past that state.
@@ -109,9 +110,25 @@ export async function runChapters(descriptors, opts = {}) {
   let narrationEnded = null; // promise from the current chapter's narration
 
   const debugRegistry = new URLSearchParams(location.search).get('debug') === '1';
+  pauseManager.setChapterState({
+    index: 0,
+    count: descriptors.length,
+    names: descriptors.map((d) => d.slug || d.title || ''),
+  });
 
   for (let ci = 0; ci < descriptors.length; ci++) {
+    const seekTarget = pauseManager.consumeSeekTarget();
+    if (seekTarget != null) {
+      const clamped = Math.max(0, Math.min(descriptors.length - 1, Number(seekTarget) || 0));
+      if (clamped !== ci) frameDriver.clear();
+      ci = clamped;
+    }
     const desc = descriptors[ci];
+    pauseManager.setChapterState({
+      index: ci,
+      count: descriptors.length,
+      names: descriptors.map((d) => d.slug || d.title || ''),
+    });
     opts.onProgress?.(ci, desc);
 
     // HUD per chapter (replaces previous one on chain transitions). Recording
