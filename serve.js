@@ -82,7 +82,7 @@ function listen(options = {}) {
   server.listen(port, () => {
     const label = options.preview
       ? `Preview server → http://localhost:${port}/scenes/player.html`
-      : `→ http://localhost:${port}/scenes/notifications-combined.html`;
+      : `→ server started`;
     console.log(label);
   });
   return server;
