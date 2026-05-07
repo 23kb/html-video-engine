@@ -33,7 +33,7 @@ videos/<slug>/render/<slug>-<chapter>.mp4
 
 `--seek` is for editorial-mode videos that register paused timelines through `registerTimeline(tl, { id })`. It seeks each registered adapter at FPS cadence and captures a frame after each seek.
 
-Tutorial-mode rendering is wall-clock screencast only. Seek-render is reserved for editorial-mode videos because iframe camera movement, snapshot swaps, typed text, narration waits, and camera poses are still wall-clock/CSS-transition driven. The tool refuses real tutorials with:
+Tutorial-mode rendering is wall-clock screencast only. Seek-render is reserved for editorial-mode videos because snapshot swaps, typed text, narration waits, and imperative chapter effects are still chapter-boundary surfaces rather than arbitrary timeline positions. The tool refuses real tutorials with:
 
 ```text
 seek mode is only valid for surface: 'editorial' videos or single-chapter editorial beats.
@@ -43,8 +43,8 @@ Known scope:
 
 - `surface: 'editorial'` with registered timelines is the intended seek target.
 - `surface: 'iframe'` tutorials should use default wall-clock mode.
-- Typed text, audio-cued `waitAt`, narration, snapshot swaps, and CSS camera moves are not deterministic seek surfaces.
-- Camera poses are displayed as discrete authoring concepts in preview tooling; pose-to-pose interpolation is not a registered timeline.
+- Typed text, audio-cued `waitAt`, narration, and snapshot swaps are not deterministic mid-chapter seek surfaces.
+- Camera movement is pause-aware through the Phase E.5 camera driver, but tutorial render seek still stays restricted to editorial registered timelines.
 
 Seek output defaults to:
 

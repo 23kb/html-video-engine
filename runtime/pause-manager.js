@@ -24,6 +24,10 @@ function expose() {
     seekToChapter,
     state,
   };
+  try {
+    document.body.dataset.currentChapterIndex = String(currentChapterIndex);
+    document.body.dataset.chapterCount = String(chapterCount);
+  } catch (_) {}
 }
 
 export function isPaused() {
@@ -37,6 +41,13 @@ export function state() {
     currentChapterIndex,
     chapterCount,
     chapterNames: [...chapterNames],
+    audio: [...audioElements].map((el) => ({
+      currentTime: el?.currentTime ?? 0,
+      paused: !!el?.paused,
+      ended: !!el?.ended,
+    })),
+    cssAnimationCount: cssAnimationFreezers.size,
+    frameDriverSize: frameDriver.registry.size,
   };
 }
 

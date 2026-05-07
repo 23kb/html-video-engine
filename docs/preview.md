@@ -1,4 +1,4 @@
-# Phase E Preview Server
+# Phase E.5 Preview Server
 
 `tools/preview.js` is the authoring server for live reload and scrubber work.
 
@@ -9,7 +9,7 @@ node tools/preview.js --port 5173
 node tools/preview.js --no-open
 ```
 
-`node serve.js` remains the plain static server on port 4321. `npm run dev` and `npm run preview` use `tools/preview.js`, which adds live reload and the scrubber.
+`node serve.js` remains the plain static server on port 4321. `npm run dev` and `npm run preview` use `tools/preview.js`, which adds live reload and the real pause/seek scrubber.
 
 ## Live Reload
 
@@ -36,14 +36,18 @@ http://localhost:4321/scrubber?video=<slug>
 
 The scrubber embeds the player and listens through `BroadcastChannel`. It shows:
 
+- pause/resume controls;
+- chapter prev, next, and restart controls;
+- current chapter index and chapter list;
 - wall-clock cursor, read-only;
 - active `window.__hfTimelines.registry` entries;
 - click-to-seek on registered timeline rows.
 
-This is a custom timeline-bar rather than GSDevTools. It matches the repo's hybrid timing model: tutorial playback is wall-clock, while registered editorial timelines are seekable. GSDevTools remains a good follow-up for per-beat tuning when an author asks for it, but it is not shipped as the default Phase E control.
+This is a custom timeline-bar rather than GSDevTools. It matches the repo's hybrid timing model: tutorial playback seeks at chapter boundaries, while registered editorial timelines are seekable within their own adapter windows.
 
 ## Limitations
 
-- Wall-clock tutorial segments cannot be scrubbed deterministically.
-- Registered timelines can be seeked, but the runtime driver may continue advancing them after a click.
-- Camera poses and iframe camera transitions are not interpolatable timeline segments yet; routing camera movement through the frame driver is out of Phase E scope.
+- Wall-clock tutorial segments cannot be scrubbed mid-chapter.
+- Chapter seek restarts at the target chapter's first beat.
+- Registered timelines can be seeked, and resume continues from the selected adapter time.
+- Pause/resume is owned by `runtime/pause-manager.js`; see `docs/pause-manager.md`.

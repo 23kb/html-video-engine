@@ -44,6 +44,7 @@ async function loadSnapshot(slug) {
 }
 import { playTitleCard } from './title-card.js';
 import * as frameDriver from './frame-driver.js';
+import * as pauseManager from './pause-manager.js';
 import { resolveCameraPose } from './camera-poses.js';
 
 // ────────────────────────────────────────────────────────────────────────────
@@ -583,7 +584,23 @@ export async function playVideo(slug) {
   }
 
   // Chapters
+  pauseManager.setChapterState({
+    index: 0,
+    count: manifest.chapters.length,
+    names: manifest.chapters,
+  });
   for (let i = 0; i < manifest.chapters.length; i++) {
+    const seekTarget = pauseManager.consumeSeekTarget();
+    if (seekTarget != null) {
+      const clamped = Math.max(0, Math.min(manifest.chapters.length - 1, Number(seekTarget) || 0));
+      if (clamped !== i) frameDriver.clear();
+      i = clamped;
+    }
+    pauseManager.setChapterState({
+      index: i,
+      count: manifest.chapters.length,
+      names: manifest.chapters,
+    });
     const name = manifest.chapters[i];
     const mod = await import(`/videos/${slug}/chapters/${name}.js`);
 

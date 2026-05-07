@@ -5,7 +5,7 @@
 // the WPForms AI guided product video.
 
 import { loadGsap } from './cinematic-kit/gsap-loader.js';
-import { registerTimeline } from '../videos/_shared/kit.js';
+import { registerTimeline, pausableSleep } from '../videos/_shared/kit.js';
 
 const STYLE_ID = 'rtd-styles';
 
@@ -286,7 +286,7 @@ const CSS = `
 }
 `;
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+const sleep = (ms) => pausableSleep(ms);
 let registeredTimelineSeq = 0;
 
 async function awaitRegisteredTimeline(tl, idPrefix) {
