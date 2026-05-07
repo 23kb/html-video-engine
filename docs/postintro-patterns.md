@@ -123,6 +123,11 @@ For video-local concept beats, the practical tools are:
   state-driven reflow, and real-UI clone-and-morph patterns. See
   `docs/gsap-flip-patterns.md` for the loader, discipline rules, and the two
   validated sandboxes (`flip-sandbox`, `flip-generate-card`).
+- **Shared blocks** from `videos/_shared/blocks/` for parent-document editorial
+  chrome such as code cards, mac windows, phone frames, pills, arrows, route
+  lines, and terminals. Blocks sit above the iframe or inside editorial mode,
+  never read iframe DOM, and compose into a master timeline with
+  `tweenInto(tl, opts)`.
 
 If the approved concept needs HTML/CSS/SVG/GSAP, build that animation with an
 approved video-local surface or ask to promote a reusable runtime cinematic.
@@ -137,6 +142,24 @@ treating the first pass as final.
 If a normal video needs a true manifest `postIntro.kind` but no semantic kind
 exists, build an equivalent video-local postIntro or ask to promote a reusable
 cinematic. Do not use a second title card or drop the beat.
+
+## When To Reach For popOut / glideTo / lineDraw
+
+Use these helpers when they make the beat clearer without changing product
+truth:
+
+- `popOut`: use when narration points at one real WPForms element as "the
+  thing." It clones a real iframe element into the parent document and gives it
+  a short cinematic lift. Good candidates: an Entries detail panel, an Add
+  Notification button, or an export setting row.
+- `cursor.glideTo`: use for any non-trivial cursor travel where a waypoint
+  makes the motion feel intentional. Phase D rolled this into
+  `form-entries-guide` for the WPForms sidebar to Entries submenu move, and
+  `form-notifications` for the notification clone-button move.
+- `lineDraw`: use for relationships between two or more concepts, especially
+  when a highlight ring would only identify objects rather than explain how
+  they connect. Good candidates: conditional-logic rule cells or Entries
+  overview recency/activity columns.
 
 ## Canonical References
 
