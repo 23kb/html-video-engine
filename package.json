@@ -13,7 +13,8 @@
     "preview": "node tools/preview.js",
     "render": "node tools/render.js",
     "validate": "node tools/validate-video.js",
-    "smoke": "node tools/check-video-playback.js"
+    "smoke": "node tools/check-video-playback.js",
+    "lint": "node tools/validate-video.js --all && node tools/lint-determinism.js --all"
   },
   "keywords": [],
   "author": "",
