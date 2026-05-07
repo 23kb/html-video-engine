@@ -43,6 +43,7 @@ async function loadSnapshot(slug) {
   await applySanitize(slug);
 }
 import { playTitleCard } from './title-card.js';
+import * as frameDriver from './frame-driver.js';
 
 // ────────────────────────────────────────────────────────────────────────────
 // Chrome mounting (mesh bg, Mac frame, watermark)
@@ -356,6 +357,7 @@ async function loadTeaser(name) {
 // ────────────────────────────────────────────────────────────────────────────
 export async function playVideo(slug) {
   ensurePlayerStylesheet();
+  frameDriver.start();
 
   const base = `/videos/${slug}/`;
   const manifest = await fetch(base + 'manifest.json').then(r => r.json());
@@ -496,6 +498,10 @@ export async function playVideo(slug) {
       onMounted: (handle) => awaitPostIntroReady(handle?.root)
         .then(() => document.querySelector('.fade-cover.cream.prepostintro')?.remove()),
     });
+    frameDriver.clear();
+    if (new URLSearchParams(location.search).get('debug') === '1') {
+      frameDriver.assertRegistryEmpty('postIntro teardown');
+    }
   }
 
   // Optional welcome teaser
@@ -575,7 +581,14 @@ export async function playVideo(slug) {
         }
       : undefined;
 
-    await runChapter(mod, { videoTitle, prevSnapshot, swapStyle, onAfterSetup });
+    try {
+      await runChapter(mod, { videoTitle, prevSnapshot, swapStyle, onAfterSetup });
+    } finally {
+      frameDriver.clear();
+      if (new URLSearchParams(location.search).get('debug') === '1') {
+        frameDriver.assertRegistryEmpty(`chapter teardown: ${name}`);
+      }
+    }
 
     // Drop the teaser-handoff cover after the first chapter has started
     if (i === 0 && playVideo._handoffCover) {
@@ -626,6 +639,8 @@ export async function playVideo(slug) {
   }
 
   await stopBGM(1500);
+  frameDriver.clear();
+  frameDriver.stop();
   document.body.dataset.sceneDone = 'true';
 }
 
