@@ -1,0 +1,63 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Phase D Kit Smoke</title>
+<style>
+  html, body { margin: 0; min-height: 100%; background: #0a0e14; color: #f8fafc; font: 14px/1.5 system-ui, sans-serif; }
+  #app { position: fixed; left: 20px; top: 20px; z-index: 9999; max-width: 760px; }
+  pre { white-space: pre-wrap; }
+</style>
+<div id="app"><strong>Phase D Kit Smoke</strong><pre id="log">Running...</pre></div>
+<script type="module">
+  import { loadGsap } from '../videos/_shared/kit.js';
+  import { mountArrow, mountCodeCard, mountMacWindow, mountPhoneFrame, mountPill, mountRouteLine, mountTerminal } from '../videos/_shared/blocks/index.js';
+  import { mountTextReveal, listTextRevealPresets } from '../videos/_shared/text-kit.js';
+
+  const log = document.getElementById('log');
+  const gsap = await loadGsap({ splitText: true, drawSVG: true, motionPath: true });
+  const initialBodyChildren = document.body.children.length;
+  const messages = [];
+
+  function assert(condition, message) {
+    if (!condition) throw new Error(message);
+  }
+
+  const blockMounts = [
+    () => mountCodeCard({ title: 'request', code: 'const ok = true;', x: 80, y: 100 }),
+    () => mountMacWindow({ title: 'Window', content: '<p>Content</p>', x: 120, y: 140 }),
+    () => mountPhoneFrame({ content: '<div style="padding:24px">Mobile</div>', x: 140, y: 120 }),
+    () => mountPill({ label: 'Ready', x: 160, y: 160 }),
+    () => mountArrow({ from: { x: 100, y: 300 }, to: { x: 420, y: 240 } }),
+    () => mountRouteLine({ points: [{ x: 80, y: 420 }, { x: 300, y: 360 }, { x: 520, y: 430 }] }),
+    () => mountTerminal({ lines: ['npm run validate', 'done'], x: 180, y: 190 }),
+  ];
+
+  for (const mount of blockMounts) {
+    const before = document.body.children.length;
+    for (let i = 0; i < 3; i++) {
+      const block = mount();
+      assert(block.el, 'block missing el');
+      if (block.tweenInto) block.tweenInto(gsap.timeline({ paused: true }), { position: 0 });
+      block.dispose();
+      block.dispose();
+    }
+    assert(Math.abs(document.body.children.length - before) <= 1, 'block leaked body children');
+  }
+  messages.push(`blocks: ${blockMounts.length} mounted/disposed`);
+
+  const presets = listTextRevealPresets();
+  assert(presets.length === 24, `expected 24 presets, got ${presets.length}`);
+  for (const preset of presets) {
+    const before = document.body.children.length;
+    const reveal = mountTextReveal('Phase D', { preset, size: 42, zIndex: 120 });
+    assert(reveal.el && typeof reveal.dispose === 'function' && typeof reveal.tweenInto === 'function', `${preset} returned bad handle`);
+    reveal.tweenInto(gsap.timeline({ paused: true }), { position: 0 });
+    reveal.dispose();
+    reveal.dispose();
+    assert(Math.abs(document.body.children.length - before) <= 1, `${preset} leaked body children`);
+  }
+  messages.push(`text presets: ${presets.length} mounted/disposed`);
+
+  assert(Math.abs(document.body.children.length - initialBodyChildren) <= 1, 'overall body children leak');
+  log.textContent = messages.join('\\n') + '\\nPASS';
+  document.body.dataset.phaseDKitSmoke = 'pass';
+</script>
