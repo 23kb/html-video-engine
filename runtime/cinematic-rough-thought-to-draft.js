@@ -5,6 +5,7 @@
 // the WPForms AI guided product video.
 
 import { loadGsap } from './cinematic-kit/gsap-loader.js';
+import { registerTimeline } from '../videos/_shared/kit.js';
 
 const STYLE_ID = 'rtd-styles';
 
@@ -286,6 +287,13 @@ const CSS = `
 `;
 
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+let registeredTimelineSeq = 0;
+
+async function awaitRegisteredTimeline(tl, idPrefix) {
+  const id = `${idPrefix}:${++registeredTimelineSeq}`;
+  registerTimeline(tl, { id });
+  await sleep((tl.duration() * 1000) + 50);
+}
 
 function ensureStyles() {
   if (document.getElementById(STYLE_ID)) return;
@@ -413,11 +421,12 @@ export async function mount(opts = {}) {
   let aborted = false;
 
   async function animate() {
+    const introTl = gsap.timeline({ paused: true });
     if (topSullie) {
-      gsap.to(topSullie, { opacity: 1, y: 0, scale: 1, duration: 0.64, ease: 'back.out(1.45)' });
+      introTl.to(topSullie, { opacity: 1, y: 0, scale: 1, duration: 0.64, ease: 'back.out(1.45)' }, 0);
     }
-    gsap.fromTo(input, { opacity: 0, y: 28, scale: 0.985 }, { opacity: 1, y: 0, scale: 1, duration: 0.72, ease: 'power3.out' });
-    await sleep(720);
+    introTl.fromTo(input, { opacity: 0, y: 28, scale: 0.985 }, { opacity: 1, y: 0, scale: 1, duration: 0.72, ease: 'power3.out' }, 0);
+    await awaitRegisteredTimeline(introTl, 'rough-thought-to-draft:intro');
     if (aborted) return;
 
     await typeText(live, 'I want to build a form which should land', 32);
@@ -433,8 +442,8 @@ export async function mount(opts = {}) {
     if (aborted) return;
 
     caret.style.display = 'none';
-    await new Promise((resolve) => {
-      gsap.timeline({ onComplete: resolve })
+    await awaitRegisteredTimeline(
+      gsap.timeline({ paused: true })
         .to(input, { scale: 0.94, duration: 0.34, ease: 'power2.inOut' }, 0)
         .to(input, {
           x: -355,
@@ -450,64 +459,72 @@ export async function mount(opts = {}) {
         .to(input.querySelector('.rtd-type'), { opacity: 0, scale: 0.86, duration: 0.34, ease: 'power2.in' }, 0.24)
         .to(chat, { opacity: 1, duration: 0.34 }, 0.42)
         .to(chip, { opacity: 1, scale: 1, duration: 0.54, ease: 'back.out(1.35)' }, 0.58)
-        .to(input, { opacity: 0, duration: 0.24 }, 0.72);
-    });
+        .to(input, { opacity: 0, duration: 0.24 }, 0.72),
+      'rough-thought-to-draft:chip-morph'
+    );
     if (aborted) return;
 
-    await new Promise((resolve) => {
-      const tl = gsap.timeline({ onComplete: resolve });
-      tl.to(chipGlow, { opacity: 1, scale: 1.08, duration: 0.38, ease: 'power2.out' }, 0)
-        .to(chipGlow, { opacity: 0, scale: 1.22, duration: 0.48, ease: 'power2.in' }, 0.36);
-      sparks.forEach((s, i) => {
-        const angle = (Math.PI * 2 * i) / sparks.length;
-        tl.fromTo(s, {
-          left: '50%',
-          top: '50%',
-          x: -2,
-          y: -2,
-          opacity: 0.9,
-          scale: 1,
-        }, {
-          x: Math.cos(angle) * (36 + (i % 3) * 8),
-          y: Math.sin(angle) * (22 + (i % 4) * 6),
-          opacity: 0,
-          scale: 0.2,
-          duration: 0.58,
-          ease: 'power3.out',
-        }, 0.05 + i * 0.015);
-      });
+    const sparkTl = gsap.timeline({ paused: true });
+    sparkTl.to(chipGlow, { opacity: 1, scale: 1.08, duration: 0.38, ease: 'power2.out' }, 0)
+      .to(chipGlow, { opacity: 0, scale: 1.22, duration: 0.48, ease: 'power2.in' }, 0.36);
+    sparks.forEach((s, i) => {
+      const angle = (Math.PI * 2 * i) / sparks.length;
+      sparkTl.fromTo(s, {
+        left: '50%',
+        top: '50%',
+        x: -2,
+        y: -2,
+        opacity: 0.9,
+        scale: 1,
+      }, {
+        x: Math.cos(angle) * (36 + (i % 3) * 8),
+        y: Math.sin(angle) * (22 + (i % 4) * 6),
+        opacity: 0,
+        scale: 0.2,
+        duration: 0.58,
+        ease: 'power3.out',
+      }, 0.05 + i * 0.015);
     });
+    await awaitRegisteredTimeline(sparkTl, 'rough-thought-to-draft:sparks');
     if (aborted) return;
 
-    await new Promise((resolve) => {
-      gsap.timeline({ onComplete: resolve })
+    await awaitRegisteredTimeline(
+      gsap.timeline({ paused: true })
         .to(firstAvatar, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: 'power3.out' }, 0)
-        .to(firstBubble, { opacity: 1, y: 0, scale: 1, duration: 0.48, ease: 'power3.out' }, 0.05);
-    });
+        .to(firstBubble, { opacity: 1, y: 0, scale: 1, duration: 0.48, ease: 'power3.out' }, 0.05),
+      'rough-thought-to-draft:first-reply'
+    );
     await sleep(470);
-    await new Promise((resolve) => {
-      gsap.timeline({ onComplete: resolve })
+    await awaitRegisteredTimeline(
+      gsap.timeline({ paused: true })
         .to(thinkingAvatar, { opacity: 1, y: 0, scale: 1, duration: 0.26, ease: 'power3.out' }, 0)
-        .to(thinkingBubble, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: 'power3.out' }, 0.04);
-    });
-    gsap.to(dots, { opacity: 1, y: -4, duration: 0.32, ease: 'sine.inOut', stagger: 0.12, repeat: 2, yoyo: true });
+        .to(thinkingBubble, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: 'power3.out' }, 0.04),
+      'rough-thought-to-draft:thinking-in'
+    );
+    registerTimeline(
+      gsap.timeline({ paused: true })
+        .to(dots, { opacity: 1, y: -4, duration: 0.32, ease: 'sine.inOut', stagger: 0.12, repeat: 2, yoyo: true }),
+      { id: `rough-thought-to-draft:dots:${++registeredTimelineSeq}` }
+    );
     await sleep(1000);
     if (aborted) return;
 
-    await new Promise((resolve) => {
-      gsap.timeline({ onComplete: resolve })
+    await awaitRegisteredTimeline(
+      gsap.timeline({ paused: true })
         .to(thinkingRow, { opacity: 0, y: -6, scale: 0.985, duration: 0.24, ease: 'power2.in' }, 0)
         .set(thinkingRow, { display: 'none' })
         .to(readyAvatar, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: 'power3.out' }, 0.12)
-        .to(readyBubble, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'power3.out' }, 0.16);
-    });
+        .to(readyBubble, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: 'power3.out' }, 0.16),
+      'rough-thought-to-draft:ready-reply'
+    );
     await sleep(120);
-    await new Promise((resolve) => {
-      gsap.timeline({ onComplete: resolve })
+    await awaitRegisteredTimeline(
+      gsap.timeline({ paused: true })
         .to(form, { opacity: 1, filter: 'blur(0px)', y: 0, scale: 1, duration: 0.82, ease: 'power3.out' }, 0)
         .to(fields, { opacity: 1, y: 0, duration: 0.46, stagger: 0.09, ease: 'power2.out' }, 0.22)
-        .to(caption, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 0.66);
-    });
+        .to(caption, { opacity: 1, y: 0, duration: 0.5, ease: 'power2.out' }, 0.66),
+      'rough-thought-to-draft:form-resolve'
+    );
 
     await sleep(Math.max(900, duration * 1000 - 10000));
   }
