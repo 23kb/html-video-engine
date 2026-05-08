@@ -409,7 +409,7 @@ export async function playVideo(slug) {
   }
   setNarrationBase(base + 'narration/');
   setNarrationSpeed(manifest.narrationSpeed ?? 1);
-  setNarrationVolume(manifest.narrationVolume ?? 1);
+  setNarrationVolume(manifest.narrationVolume ?? 0.3);
 
   // Stage 5b-1.7: URL overrides are kept SEPARATE from manifest.defaults so
   // per-chapter `export const breakStyle` / `export const swapStyle` are not
@@ -469,6 +469,7 @@ export async function playVideo(slug) {
   initSfx();
   if (manifest.bgm !== false) {
     const bgmOpts = (manifest.bgm && typeof manifest.bgm === 'object') ? manifest.bgm : {};
+    if (typeof bgmOpts.volume !== 'number') bgmOpts.volume = 0.2;
     startBGM(bgmOpts);
   }
 

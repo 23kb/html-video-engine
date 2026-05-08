@@ -82,11 +82,28 @@ async function verifySlug(page, slug) {
     const m = result.text.match(FIXTURE_RE);
     if (m) hits.push(`lorem-style fixture token: "${m[0]}"`);
   }
-  if (!result.hasAdminMenu)        hits.push('missing #adminmenu');
-  if (result.hasAdminBar)          hits.push('still has #wpadminbar');
-  if (result.hasWpToolbar)         hits.push('still has #wp-toolbar');
-  if (result.bodyAdminBar)         hits.push('body still has .admin-bar');
-  if (result.htmlWpToolbar)        hits.push('html still has .wp-toolbar');
+  if (ADMIN_SLUGS.includes(slug)) {
+    if (!result.hasAdminMenu)        hits.push('missing #adminmenu');
+    if (result.hasAdminBar)          hits.push('still has #wpadminbar');
+    if (result.hasWpToolbar)         hits.push('still has #wp-toolbar');
+    if (result.bodyAdminBar)         hits.push('body still has .admin-bar');
+    if (result.htmlWpToolbar)        hits.push('html still has .wp-toolbar');
+  }
+  if (slug === 'builder-fields') {
+    const builder = await page.evaluate(() => {
+      const frame = document.getElementById('frame');
+      const idoc = frame?.contentDocument;
+      const types = Array.from(idoc.querySelectorAll('.wpforms-field-wrap > .wpforms-field[data-field-type]'))
+        .map(el => el.getAttribute('data-field-type'));
+      const paymentSurfaces = idoc.querySelectorAll('#wpforms-paypal-commerce-buttons-wrapper, .wpforms-paypal-commerce-button').length;
+      return { types, paymentSurfaces };
+    });
+    const expected = ['name', 'email', 'textarea'];
+    if (builder.types.join(',') !== expected.join(',')) {
+      hits.push(`builder field set ${JSON.stringify(builder.types)} != ${JSON.stringify(expected)}`);
+    }
+    if (builder.paymentSurfaces) hits.push('builder still has PayPal payment surfaces');
+  }
   return { slug, pass: hits.length === 0, hits, sampleEmails: result.sampleEmails, warnings: consoleWarnings };
 }
 

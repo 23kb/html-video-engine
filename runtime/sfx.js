@@ -34,7 +34,7 @@ const buffers = {};
 // File manifest — channel name → URL. Adjusting a mapping is a one-liner.
 const FILES = {
   click:       '/assets/sfx/click.mp3',
-  clickAlt:    '/assets/sfx/click-alt.mp3',
+  clickAlt:    '/assets/sfx/click.mp3',
   type:        '/assets/sfx/type.mp3',
   hover:       '/assets/sfx/hover.mp3',
   swoosh:      '/assets/sfx/swoosh.mp3',

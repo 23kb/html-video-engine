@@ -46,6 +46,11 @@
 const qp = new URLSearchParams(location.search);
 const snap = qp.get('snap');
 const doSanitize = qp.get('sanitize') === '1';
+let sanitizeOpts = {};
+if (qp.get('sanitizeOpts')) {
+  try { sanitizeOpts = JSON.parse(qp.get('sanitizeOpts')); }
+  catch (e) { console.warn('invalid sanitizeOpts', e); }
+}
 document.getElementById('snap').textContent = snap || '(missing ?snap=)';
 document.getElementById('sanTag').textContent = doSanitize ? '· sanitized' : '';
 if (!snap) throw new Error('missing ?snap=');
@@ -71,7 +76,7 @@ frame.addEventListener('load', async () => {
   if (doSanitize) {
     try {
       const mod = await import(`/sanitize/${snap}.js`);
-      if (mod.default) mod.default(doc);
+      if (mod.default) mod.default(doc, sanitizeOpts);
     } catch (e) { console.warn('sanitize failed', e); }
   }
   installPicker(doc);

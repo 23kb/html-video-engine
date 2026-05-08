@@ -75,6 +75,32 @@ function resolveSlugs(args) {
   process.exit(2);
 }
 
+function manifestSlug(args) {
+  if (!args.fromManifest) return null;
+  try {
+    const m = JSON.parse(fs.readFileSync(path.resolve(args.fromManifest), 'utf8'));
+    return m.slug || path.basename(path.dirname(path.resolve(args.fromManifest)));
+  } catch (_) {
+    return null;
+  }
+}
+
+function sanitizeOptionsFor(args, slug) {
+  if (!args.fromManifest) return {};
+  const m = JSON.parse(fs.readFileSync(path.resolve(args.fromManifest), 'utf8'));
+  return m.sanitize?.[slug] || {};
+}
+
+function isDefaultSanitizeOptions(opts) {
+  return !opts || !Array.isArray(opts.keepFields) || opts.keepFields.length === 0;
+}
+
+function outputSlugFor(slug, args, opts) {
+  if (isDefaultSanitizeOptions(opts)) return slug;
+  const vSlug = manifestSlug(args);
+  return vSlug ? `${slug}--${vSlug}` : slug;
+}
+
 function startServer() {
   const proc = spawn(process.execPath, ['serve.js'], {
     cwd: ROOT,
@@ -121,6 +147,7 @@ function dirSize(p) {
 }
 
 async function bakeOne(page, slug, args) {
+  const sanitizeOpts = sanitizeOptionsFor(args, slug);
   const rawDir = path.join(SNAPSHOTS_DIR, slug);
   const rawIndex = path.join(rawDir, 'index.html');
   if (!fs.existsSync(rawIndex)) {
@@ -133,7 +160,8 @@ async function bakeOne(page, slug, args) {
   const rawCheck = checkText(rawHtml, slug);
 
   // Drive the runtime sanitize path through the snapshot viewer.
-  await page.goto(`http://localhost:${PORT}/scenes/snapshot-viewer.html?snap=${slug}&sanitize=1`,
+  const optParam = encodeURIComponent(JSON.stringify(sanitizeOpts || {}));
+  await page.goto(`http://localhost:${PORT}/scenes/snapshot-viewer.html?snap=${slug}&sanitize=1&sanitizeOpts=${optParam}`,
                   { waitUntil: 'load', timeout: 30000 });
   await page.waitForTimeout(900);
 
@@ -173,7 +201,7 @@ async function bakeOne(page, slug, args) {
     }
     outDir = rawDir;
   } else {
-    outDir = path.join(ROOT, args.out, slug);
+    outDir = path.join(ROOT, args.out, outputSlugFor(slug, args, sanitizeOpts));
   }
   fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, 'index.html'), finalHtml);
@@ -206,6 +234,7 @@ async function bakeOne(page, slug, args) {
   const baked = {
     ...meta,
     sanitizeApplied: true,
+    sanitizeOptions: sanitizeOpts,
     bakedAt: new Date().toISOString(),
     sourceSnapshot: slug,
   };

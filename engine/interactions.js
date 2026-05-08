@@ -219,6 +219,11 @@ async function clickOn(sel, { dispatch = true, label = '', instruction = '', dir
   await clearHighlights({ fadeOut: 320 });
 }
 
+async function click(opts = {}) {
+  playClick();
+  return engineCursor.click(opts);
+}
+
 async function hoverOn(sel, ms = 600, { label = '' } = {}) {
   resolve(sel);
   await highlightAt(sel, { label });
@@ -307,6 +312,7 @@ export { highlightAt };
 
 export const cursor = {
   ...engineCursor,
+  click,
   parkAt,
   parkNearest,
   glideTo,

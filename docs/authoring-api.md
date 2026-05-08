@@ -130,6 +130,9 @@ beat impossible.
     "breakStyle": "glide",                        // see §5
     "swapStyle":  "morph"                         // see §5
   },
+  "sanitize": {
+    "builder-fields": { "keepFields": ["name", "email", "textarea"] }
+  },
   "intro":      { /* title-card opts */ },
   "postIntro":  { "kind": "...", "narration": "...", "opts": {...} },
   "teaser":     "<teaser-name>",                  // optional
