@@ -480,8 +480,13 @@ export async function spotlight(selector, { dim = 0.08, fade = 400 } = {}) {
 export const cursor = {
   async park({ x = 1800, y = 1000 } = {}) {
     const s = toStage(x, y);
+    const prevTransition = state.cursorEl.style.transition;
+    state.cursorEl.classList.remove('on');
+    state.cursorEl.style.transition = 'none';
     state.cursorEl.style.left = (s.x - 4) + 'px';
     state.cursorEl.style.top  = (s.y - 2) + 'px';
+    void state.cursorEl.offsetWidth;
+    state.cursorEl.style.transition = prevTransition;
     state.cursorEl.classList.add('on');
     await sleep(250);
   },

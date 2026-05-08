@@ -28,6 +28,17 @@ The validator does not enforce this rule. You enforce it. If the storyboard appr
 - Use real WPForms product truth when product UI appears in the postIntro. Editorial elements (chips, abstract shapes, conceptual cards) can be invented as long as they read as editorial, not as fake product chrome.
 - Keep narration tight. The postIntro narration should be a single 8-15s clip, not split across many small ones.
 
+## Transformation Proof (Pre-Code)
+
+Before any DOM/CSS authoring, surface a short transformation proof for approval. It must:
+
+1. Pick the single closest canonical reference by semantic match. If nothing is close, say that explicitly and name the primitive you are borrowing.
+2. State in 2-4 lines the concrete physical morph or rebuild the postIntro will perform: what changes shape, structure, position, or relationship. Do not list phases or only what appears/disappears.
+
+**Anti-pattern:** a polished static card with inner states fading/toggling is not a transformation.
+
+Treat this proof note like a tiny storyboard gate: show it inline and wait for explicit approval before authoring starts. Do not create a separate file unless the user asks.
+
 ## Build Order
 
 When designing a new postIntro, evaluate options in this exact order. Stop at the first one that fits.
