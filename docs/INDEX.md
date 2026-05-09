@@ -6,10 +6,10 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 
 ## Authoring contracts and skeletons
 
-- `authoring-api.md` — Public authoring contract. Manifest schema, chapter exports, descriptor mode, transitions, ctx helpers, validator behavior. **Read for the contract reference; skills have the high-frequency subset.**
+- `authoring-api.md` — Public authoring contract. Manifest schema, chapter exports, descriptor mode, transitions, ctx helpers, validator behavior.
 - `current-workflow.md` — Thin pointer doc; the workflow loop lives in `wpforms-video` skill.
 - `dom-prep.md` — Three-layer DOM staging model: universal baseline → per-snapshot profile → chapter-local delta.
-- `video-production-templates.md` — Storyboard / chapter / snapshot checklist + token budget + smoke spec. Read only the section you need.
+- `video-production-templates.md` — Storyboard / chapter / snapshot checklist + token budget + smoke spec.
 - `examples/legacy-manifest-skeleton.md` — Default manifest copy target.
 - `examples/legacy-chapter-skeleton.md` — Default legacy/effect-mode chapter shape.
 - `examples/legacy-postintro-effect-skeleton.md` — Video-local postIntro skeleton (HTML/CSS/SVG/GSAP).
@@ -22,16 +22,16 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 
 ## Authoring craft (granular references)
 
-- `cursor-choreography.md` — `park` / `glideTo` / `dragGrab` / via-waypoint patterns; what makes cursor reads natural vs robotic.
-- `narration-writing.md` — voice, pacing, sentence shape, beat coupling, intro/outro voice.
-- `beat-pacing.md` — 6-second rule, splitting heuristics, what breaks at 8s, what works at 4s.
+- `cursor-choreography.md` — `park` / `glideTo` / `dragGrab` / via-waypoint patterns.
+- `narration-writing.md` — voice, pacing, sentence shape, beat coupling.
+- `beat-pacing.md` — 6-second rule, splitting heuristics.
 - `camera-lensing.md` — `level` reading guide (1.0 / 1.18 / 2.2 / 2.4), pad, when to pick which.
 - `stage-css.md` — z-stack of every layer, leak surfaces, when to hide what, surface modes.
-- `color-palette.md` — WPForms brand orange + supporting accents, when to use which, what NOT to do.
-- `atmospheric-composition.md` — when grain / sweep / parallax / scale-push work, when they distract, layering rules.
+- `color-palette.md` — WPForms brand orange + supporting accents, when to use which.
+- `atmospheric-composition.md` — when grain / sweep / parallax / scale-push work, layering rules.
 - `audio-mastering.md` — narration / BGM volume, ducking, SFX channels, `narrationSpeed`.
 - `selector-hygiene.md` — `_selectors.js` pattern, when selectors break, validator coverage.
-- `title-card-voice.md` — intro/outro shape, `subtitleVariants` array, CTA tone, what's on-brand.
+- `title-card-voice.md` — intro/outro shape, `subtitleVariants` array, CTA tone.
 
 ## GSAP / animation
 
@@ -45,12 +45,17 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 
 - `transitions.md` — Surface modes (`iframe` / `editorial` / `mixed`) + swap styles + `flipBridge`. Owned by `wpforms-transitions` skill.
 - `camera-poses.md` — Named camera-pose vocabulary (`focus`, `station`, `overview`).
-- `shared-scene.md` — Multi-chapter persistent Three.js / editorial scenes.
+- `shared-scene.md` — Multi-chapter persistent Three.js / editorial scenes (used by `wpforms-rest-api-overview-polished`).
 
-## Marketing / ad-style / blocks
+## Marketing / ad-style / editorial
 
+- `editorial-track-uplift-plan.md` — Architecture summary + locked decisions + phase status for the editorial / ad-style track. Owned by `wpforms-marketing`.
+- `editorial-reference-motion-spec.md` — Linear-scene vs virtual-board architecture + named motion vocabulary (transitions, atmospheres, compositions, primitives).
+- `motion-choreography-catalog.md` — Named CustomEases + 5 transition functions (hardPop, anticipationExit, elementPopIn, hardLayoutSwap, horizontalSlideBridge).
+- `wpforms-interaction-state-recipes.md` — 9 battle-tested interaction-state CSS-injection recipes (hover / focus / modal / cursor click / pre-hide reveal / staged modal).
+- `wpforms-ai-board-lessons.md` — Cross-video distillate (anti-patterns + "what's still at 6/10") from the wpforms-ai-board build.
 - `blocks.md` — `videos/_shared/blocks/` API: code-card, mac-window, phone-frame, pill, arrow, route-line, terminal.
-- `text-kit.md` — 24 Pixel-Point-style text reveal presets.
+- `text-kit.md` — Pixel-Point-style text reveal presets.
 - `lottie-kit.md` — Lottie integration (bumpers, stings, badges, marker-driven micros).
 
 ## Render / preview
@@ -60,17 +65,27 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 
 ## Determinism / linting
 
-- `deterministic-logic.md` — Render-parity rules: no `Date.now()`, no unseeded `Math.random()`, no `fetch()`. Enforced by `tools/lint-determinism.js`.
-- `deterministic-logic-findings.md` — Existing-video violations logged by the linter (not migrated; per-video cleanup is separate work).
+- `deterministic-logic.md` — Render-parity rules: no `Date.now()`, no unseeded `Math.random()`, no `fetch()`.
+- `deterministic-logic-findings.md` — Existing-video violations logged by the linter.
 
 ## Skills
 
-- `skills.md` — Skill bundle index. Lists each `.claude/skills/wpforms-*/SKILL.md`.
+- `skills.md` — Skill bundle index.
+
+## System audits / postmortems / strategic context
+
+- `repo-architecture-audit-hyperframes.md` — Strategic context (Phase 2 + Phase 4b execution slice).
+- `system-issues-2026-05-09-animation-quality-postmortem.md` — Proposals A–H. Editorial-track plan executes a subset.
+- `core-system-audit-findings.md` — Prior narrower audit. Sequencing for steps 7–11.
+- `full-system-audit-2026-05-09.md` — 11-step audit driving the `core-factors` refactor.
+- `implementation-prompt-core-factors-FULL.md` — The implementation brief for `core-factors`.
+- `implementation-prompt-core-factors-phase-1.md` — Earlier phase-1-only variant of the brief.
 
 ## Field / UI inventories (canonical reference, not for full-read)
 
 - `wpforms-field-state-inventory.md` — Canonical field-state inventory (132 KB). **Do not full-read.** Query via `node tools/field-state.js --field <name>`.
 - `wpforms-ai-state-inventory.md` — WPForms AI UI state references.
+- `snapshot-health-report.md` — Snapshot inventory health (hand-written; not regenerated by tooling).
 
 ## Per-video handoffs (read only when working on that video)
 
@@ -81,8 +96,14 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 
 - `helper-rollout-backlog.md` — Candidate beats for `popOut` / `cursor.glideTo` / `lineDraw` rollout.
 
+## Local-only references (not part of the runtime / authoring contract)
+
+- `style-guide.md` — WPForms Collective brand voice guide.
+- `analysis-quality-and-transitions.md` — REST API video retrospective.
+- `future-enhancements.md` — Capability-first opt-in architecture decisions (preserved memory snapshot).
+
 ## Repo-root references
 
 - `CLAUDE.md` — Operator manual. Always loaded. Boot order + protected core + validation + push-back triggers.
-- `AGENTS.md` — Codex operator manual. Same role as CLAUDE.md.
-- `analysis-quality-and-transitions.md` — REST API video lessons (local-only reference).
+- `AGENTS.md` — Pointer to `CLAUDE.md` (single source of truth).
+- `BACKLOG.md` — Living architectural-debt + future-phase candidate list.

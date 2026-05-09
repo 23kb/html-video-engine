@@ -106,7 +106,13 @@ async function exitStartGate(g) {
 }
 
 async function transitionSnapshots(newSlug, setupFn, videoTitle, swapStyle) {
-  if (swapStyle === 'flipBridge') {
+  // core-factors step 9: flipBridge (iframe adopt) is the default swap path —
+  // hides the body-wipe seam by preloading the next snapshot in a hidden
+  // iframe and then atomically adopting it. A null/undefined swapStyle
+  // routes here. Explicit legacy styles (cover/fast/morph/push/whip) still
+  // route through the body-wipe branch below; the legacy paper-cover hardfix
+  // is unreachable now (kept for reference until step 9d cleanup lands).
+  if (!swapStyle || swapStyle === 'flipBridge') {
     diag('player', 'transitionSnapshots → flipBridge slug=' + newSlug);
     const preloaded = await preloadSnapshot(newSlug, { prep: setupFn });
     if (preloaded) {

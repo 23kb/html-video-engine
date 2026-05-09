@@ -401,7 +401,7 @@ export async function bootSnapshot(slug, { prep, videoTitle } = {}) {
 // The inner `doSwap` does the invariant work: flash guard, engine load,
 // stage-chrome re-mount, sanitize, prep. The transition wraps it with the
 // style-specific cover/fade/blur/slide.
-export async function swapSnapshot(slug, { prep, videoTitle, style = 'cover' } = {}) {
+export async function swapSnapshot(slug, { prep, videoTitle, style = 'flipBridge' } = {}) {
   diag('scene', 'swapSnapshot → ' + slug + ' (style=' + style + ')');
   if (style === 'flipBridge') {
     const preloaded = await preloadSnapshot(slug, { prep });

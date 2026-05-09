@@ -114,7 +114,7 @@ const scene = getSharedScene({ id: 'rest-api-orbit', mount: (stage, gsap) => {
 // disposeSharedScene at video outro, NOT at chapter teardown.
 ```
 
-**Currently no video uses it** (REST API video had a video-local pattern that didn't migrate). Ready for future multi-chapter Three.js videos.
+Used in production by `wpforms-rest-api-overview-polished` for the persistent abilities-orbit Three.js scene that survives chapter changes.
 
 ## Pause / Seek / Scrubber
 
@@ -160,7 +160,6 @@ Before declaring transition work done:
 - [ ] Cross-snapshot transitions verified visually — no flat-color "page-refresh" frame, Mac chrome stays mounted across swap
 - [ ] Camera poses registered once at module top, beats reference by name (no inline `level: 1.18` if a pose name fits)
 - [ ] If `surface: 'editorial'`, the storyboard explicitly approved ad-style / no-iframe staging
-- [ ] If using `shared-scene.js`, dispose only at video outro, not at chapter teardown
 - [ ] Author RAF loops use `pausableRaf` (cross-cuts with `wpforms-gsap-rules`)
 
 ## References (loaded on demand)
