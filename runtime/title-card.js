@@ -135,7 +135,10 @@ function loadGsap() {
   if (gsapReady) return gsapReady;
   gsapReady = new Promise((resolve, reject) => {
     const s = document.createElement('script');
-    s.src = 'https://unpkg.com/gsap@3/dist/gsap.min.js';
+    // Vendored core (matches videos/_shared/kit.js loader path).
+    // Was: https://unpkg.com/gsap@3/dist/gsap.min.js — CDN dependency
+    // removed in core-factors step 11.
+    s.src = '/vendor/gsap/3.15.0/gsap.min.js';
     s.onload = () => resolve(window.gsap);
     s.onerror = reject;
     document.head.appendChild(s);
