@@ -1,0 +1,6 @@
+{
+  "_comment": "Wave 1 followup — capture the plain wp-admin Dashboard so navWPFormsSidebarMenu can start from a real WP dashboard instead of admin-forms-overview. `keepSidebar: true` overrides the capture default (which only keeps the sidebar for slugs starting with `admin-`). The WPForms top-level sidebar item is present but its submenu is collapsed by default — it expands on :hover or when the WPForms admin area is current.",
+  "variants": [
+    { "slug": "wp-dashboard", "targetPath": "/wp-admin/", "keepSidebar": true }
+  ]
+}
