@@ -78,6 +78,8 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 - `winning-pattern-analysis-2026-05-10.md` — What 3 winning videos share vs 3 failed editorial videos (Agent B).
 - `wpforms-source-inventory-2026-05-10.md` — Real WPForms brand + motion + UI inventory from live plugin source.
 - `engine-reading-notes-2026-05-10.md` — Engine primitive usage counts, what bypassing costs, when engine helps vs hurts.
+- `storyboard-format-morph-chain-2026-05-10.md` — Editorial storyboard format addition: required morph-chain section. Authoring contract.
+- `phase-2-skill-installs-report-2026-05-10.md` — Codex's Phase 2 outputs: 5 skills installed, custom `wpforms-motion-audit` skill built.
 - `repo-architecture-audit-hyperframes.md` — Strategic context (Phase 2 + Phase 4b execution slice).
 - `system-issues-2026-05-09-animation-quality-postmortem.md` — Proposals A–H. Editorial-track plan executes a subset.
 - `core-system-audit-findings.md` — Prior narrower audit. Sequencing for steps 7–11.
