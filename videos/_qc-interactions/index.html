@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>WPForms Interactions — QC Index</title>
+<style>
+  :root {
+    --bg: #14161C;
+    --card: #1c1f28;
+    --ink: #ebebed;
+    --ink-mute: #8a8e99;
+    --accent: #E27730;
+    --accent-blue: #0399ED;
+    --border: #2a2e3a;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 56px 32px; }
+  h1 { font-size: 36px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .sub { color: var(--ink-mute); font-size: 15px; margin-bottom: 40px; line-height: 1.55; }
+  h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--accent); margin: 40px 0 16px;
+    font-weight: 700;
+  }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px;
+    display: block; text-decoration: none; color: var(--ink);
+    transition: transform 0.18s ease-out, border-color 0.18s ease-out;
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .card .name {
+    font-size: 16px; font-weight: 600; margin-bottom: 6px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--accent-blue);
+  }
+  .card .desc { font-size: 13px; color: var(--ink-mute); line-height: 1.5; margin-bottom: 12px; }
+  .card .meta { font-size: 11px; color: var(--ink-mute); font-family: ui-monospace, monospace; line-height: 1.6; }
+  .card .meta strong { color: var(--ink); font-weight: 600; }
+  .card .status {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 3px 8px; border-radius: 4px;
+    display: inline-block; margin-top: 10px;
+    background: rgba(226, 119, 48, 0.15); color: var(--accent);
+  }
+  .legend { color: var(--ink-mute); font-size: 12px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); line-height: 1.6; }
+  .legend code { color: var(--accent); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>WPForms Interactions — QC Index</h1>
+  <p class="sub">
+    Each interaction in <code>videos/_shared/wpforms-interactions.js</code> has a standalone demo on this page.
+    Each demo loads a real WPForms snapshot, mounts a <code>Cursor</code>, and runs the interaction end-to-end.
+    Click through, watch the snapshot-swap or DOM change land, then approve or red-line.
+    See <a href="../../docs/wpforms-interactions-library-2026-05-11.md">usage doc</a> and
+    <a href="../_qc-primitives/index.html">motion-primitives QC index</a> for the underlying primitives.
+  </p>
+
+  <h2>Admin-side (start from WP admin)</h2>
+  <div class="grid">
+    <a class="card" href="nav-add-new-form.html">
+      <div class="name">navAddNewForm()</div>
+      <div class="desc">Cursor glides to the orange "Add New" button in the All Forms header, clicks, and crossfades to the Form Templates library.</div>
+      <div class="meta"><strong>start:</strong> admin-forms-overview · <strong>end:</strong> admin-templates · <strong>op:</strong> snapshot-swap</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="select-template.html">
+      <div class="name">selectTemplate(slug)</div>
+      <div class="desc">Picks a template card on the Form Templates page (default: Simple Contact Form), scrolls into view, clicks, and crossfades to the builder setup panel.</div>
+      <div class="meta"><strong>start:</strong> admin-templates · <strong>end:</strong> builder-setup · <strong>op:</strong> snapshot-swap</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="nav-wpforms-sidebar-menu.html">
+      <div class="name">navWPFormsSidebarMenu(item)</div>
+      <div class="desc">Clicks a submenu item in the WordPress sidebar under WPForms (All Forms / Add New / Entries / Settings / etc.) and crossfades to the mapped snapshot.</div>
+      <div class="meta"><strong>start:</strong> admin-forms-overview · <strong>end:</strong> depends on item · <strong>op:</strong> snapshot-swap</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="open-form-in-list.html">
+      <div class="name">openFormInList(formId)</div>
+      <div class="desc">Clicks a form row in the All Forms table to open it in the builder. Default form id: 55 (Contact Us form).</div>
+      <div class="meta"><strong>start:</strong> admin-forms-overview · <strong>end:</strong> builder-fields · <strong>op:</strong> snapshot-swap</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+  </div>
+
+  <h2>Builder-side (form authoring)</h2>
+  <div class="grid">
+    <a class="card" href="drag-field-to-form.html">
+      <div class="name">dragFieldToForm(fieldSlug)</div>
+      <div class="desc">Full visual drag from the left palette to the form canvas. Ghost element clone carries from button → drop zone; placeholder field is appended to the canvas on release.</div>
+      <div class="meta"><strong>start:</strong> builder-fields · <strong>end:</strong> builder-fields (+ field) · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="open-field-options.html">
+      <div class="name">openFieldOptions(fieldId)</div>
+      <div class="desc">Clicks a field on the canvas to open its Field Options panel. Tab swaps from "Add Fields" to "Field Options"; the field's option panel becomes visible.</div>
+      <div class="meta"><strong>start:</strong> builder-fields · <strong>end:</strong> builder-fields (options open) · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="nav-builder-sidebar.html">
+      <div class="name">navBuilderSidebar(section)</div>
+      <div class="desc">Clicks one of the builder's bottom-left panel buttons (Setup / Fields / Settings / Marketing / Payments / Revisions) and crossfades to the corresponding snapshot.</div>
+      <div class="meta"><strong>start:</strong> builder-fields · <strong>end:</strong> mapped builder-* · <strong>op:</strong> snapshot-swap</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="open-settings-tab.html">
+      <div class="name">openSettingsTab(tab)</div>
+      <div class="desc">Clicks a Settings sub-tab (General / Notifications / Confirmations / Anti-Spam / Themes) and crossfades to the corresponding builder-settings-* snapshot.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-general · <strong>end:</strong> builder-settings-&lt;tab&gt; · <strong>op:</strong> snapshot-swap</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+  </div>
+
+  <div class="legend">
+    <strong>How to QC:</strong> open each page, click <code>▶ run</code>, watch the cursor + snapshot-swap. Edge cases to flag — cursor lands on wrong target, snapshot-swap shows cream flash, ghost element misaligned during drag, DOM puppetry visible (tab flips before cursor arrives).
+    <br><br>
+    <strong>Wave 1 status:</strong> 8 interactions built, awaiting visual approval. Wave 2 (AI flow, Marketing providers, Addons, Embed) is queued.
+    <br><br>
+    <strong>Source:</strong> <code><a href="../_shared/wpforms-interactions.js">videos/_shared/wpforms-interactions.js</a></code>
+    · <strong>Primitives:</strong> <code><a href="../_shared/motion-primitives.js">videos/_shared/motion-primitives.js</a></code>
+    · <strong>Doc:</strong> <code><a href="../../docs/wpforms-interactions-library-2026-05-11.md">docs/wpforms-interactions-library-2026-05-11.md</a></code>
+  </div>
+</div>
+</body>
+</html>

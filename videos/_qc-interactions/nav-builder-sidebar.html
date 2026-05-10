@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>navBuilderSidebar(section) — QC</title>
+<link rel="stylesheet" href="/videos/_qc-interactions/_shell.css">
+</head>
+<body>
+
+<div class="header">
+  <h1>navBuilderSidebar(section)</h1>
+  <div class="desc">
+    Cursor glides to one of the builder's bottom-left panel buttons and crossfades to the corresponding snapshot. Note: <code>providers</code> is the slug for the "Marketing" panel button.
+    Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> · <a href="index.html">← back to index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="phase-label" id="phaseLabel">state: loading…</div>
+  </div>
+</div>
+
+<div class="controls">
+  <label style="font-size:12px; opacity:0.7; font-family:ui-monospace,monospace">section:</label>
+  <select id="sectionPicker">
+    <option value="settings">settings → builder-settings-general</option>
+    <option value="providers">providers (Marketing) → builder-providers</option>
+    <option value="payments">payments → builder-payments</option>
+    <option value="setup">setup → builder-setup</option>
+    <option value="revisions">revisions → builder-revisions</option>
+    <option value="fields">fields → builder-fields</option>
+  </select>
+  <button id="runBtn" class="primary">▶ navigate</button>
+  <button id="resetBtn">⟲ reset</button>
+  <span class="time" id="timeLabel">…</span>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { bootQc } from '/videos/_qc-interactions/_shell.js';
+
+bootQc({
+  startSnapshot: 'builder-fields',
+  cursorStart: { x: 1180, y: 660 },
+  run: async ({ interactions, setState }) => {
+    const section = document.getElementById('sectionPicker').value;
+    setState(`navBuilderSidebar("${section}")`);
+    await interactions.navBuilderSidebar(section);
+  },
+});
+</script>
+</body>
+</html>

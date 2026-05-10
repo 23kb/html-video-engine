@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>openSettingsTab(tab) — QC</title>
+<link rel="stylesheet" href="/videos/_qc-interactions/_shell.css">
+</head>
+<body>
+
+<div class="header">
+  <h1>openSettingsTab(tab)</h1>
+  <div class="desc">
+    Cursor glides to a Settings sub-tab link in the builder's Settings sidebar and crossfades to the corresponding <code>builder-settings-*</code> snapshot.
+    The settings tabs sidebar is shared across all <code>builder-settings-*</code> snapshots.
+    Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> · <a href="index.html">← back to index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="phase-label" id="phaseLabel">state: loading…</div>
+  </div>
+</div>
+
+<div class="controls">
+  <label style="font-size:12px; opacity:0.7; font-family:ui-monospace,monospace">tab:</label>
+  <select id="tabPicker">
+    <option value="notifications">notifications → builder-settings-notifications</option>
+    <option value="confirmation">confirmation → builder-settings-confirmation</option>
+    <option value="anti_spam">anti_spam → builder-settings-anti_spam</option>
+    <option value="themes">themes → builder-settings-themes</option>
+    <option value="general">general → builder-settings-general</option>
+  </select>
+  <button id="runBtn" class="primary">▶ open tab</button>
+  <button id="resetBtn">⟲ reset</button>
+  <span class="time" id="timeLabel">…</span>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { bootQc } from '/videos/_qc-interactions/_shell.js';
+
+bootQc({
+  startSnapshot: 'builder-settings-general',
+  cursorStart: { x: 1180, y: 660 },
+  run: async ({ interactions, setState }) => {
+    const tab = document.getElementById('tabPicker').value;
+    setState(`openSettingsTab("${tab}")`);
+    await interactions.openSettingsTab(tab);
+  },
+});
+</script>
+</body>
+</html>

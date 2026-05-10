@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>navWPFormsSidebarMenu(item) — QC</title>
+<link rel="stylesheet" href="/videos/_qc-interactions/_shell.css">
+</head>
+<body>
+
+<div class="header">
+  <h1>navWPFormsSidebarMenu(item)</h1>
+  <div class="desc">
+    Cursor glides to a submenu item inside the WordPress sidebar under <strong>WPForms</strong> (the submenu is already expanded on the admin-* snapshots) and crossfades to the mapped snapshot.
+    Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> · <a href="index.html">← back to index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="phase-label" id="phaseLabel">state: loading…</div>
+  </div>
+</div>
+
+<div class="controls">
+  <label style="font-size:12px; opacity:0.7; font-family:ui-monospace,monospace">submenu item:</label>
+  <select id="itemPicker">
+    <option value="Add New Form">Add New Form → builder-setup</option>
+    <option value="Entries">Entries → admin-entries-overview</option>
+    <option value="Payments">Payments → admin-payments</option>
+    <option value="Form Templates">Form Templates → admin-templates</option>
+    <option value="Settings">Settings → admin-settings-general</option>
+    <option value="Tools">Tools → admin-tools-import</option>
+    <option value="Addons">Addons → admin-addons</option>
+    <option value="Privacy Compliance">Privacy Compliance → admin-privacy-compliance</option>
+  </select>
+  <button id="runBtn" class="primary">▶ run interaction</button>
+  <button id="resetBtn">⟲ reset</button>
+  <span class="time" id="timeLabel">…</span>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { bootQc } from '/videos/_qc-interactions/_shell.js';
+
+bootQc({
+  startSnapshot: 'admin-forms-overview',
+  cursorStart: { x: 1180, y: 660 },
+  run: async ({ interactions, setState }) => {
+    const item = document.getElementById('itemPicker').value;
+    setState(`navWPFormsSidebarMenu("${item}")`);
+    await interactions.navWPFormsSidebarMenu(item);
+  },
+});
+</script>
+</body>
+</html>
