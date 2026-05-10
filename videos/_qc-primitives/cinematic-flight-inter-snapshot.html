@@ -193,6 +193,13 @@ const TO_POSE   = { x: -2400, y: 0, scale: 1.0,  rotation: 0 };
 
 gsap.set(camera, FROM_POSE);
 
+// Bind control DOM refs BEFORE timeline construction — onUpdate closure
+// references them and would TDZ-error otherwise.
+const playBtn = document.getElementById('playBtn');
+const scrubber = document.getElementById('scrubber');
+const timeLabel = document.getElementById('timeLabel');
+const restartBtn = document.getElementById('restartBtn');
+
 const tl = figjamFlight(camera, {
   from: FROM_POSE,
   to:   TO_POSE,
@@ -219,11 +226,6 @@ tl.eventCallback('onUpdate', () => {
   scrubber.value = t / total;
   timeLabel.textContent = `${t.toFixed(2)} / ${total.toFixed(2)}`;
 });
-
-const playBtn = document.getElementById('playBtn');
-const scrubber = document.getElementById('scrubber');
-const timeLabel = document.getElementById('timeLabel');
-const restartBtn = document.getElementById('restartBtn');
 
 let isPlaying = false;
 playBtn.addEventListener('click', () => {
