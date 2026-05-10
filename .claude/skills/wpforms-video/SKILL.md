@@ -32,7 +32,7 @@ For a new video session, work in this order. Don't skip steps.
 
 **If you have not received an explicit "approved" / "yes" / "go" from the user, STOP.** Implicit approval is not approval. "Sounds good" is not approval. The user's storyboard reply must directly address each section above before you proceed. If the user changes anything, re-confirm the change is the final word before writing code.
 
-This gate exists because the first cut of every video that skipped it became a "PowerPoint" — generic chapter shapes, fake UI, weak postIntro. See `docs/postintro-patterns.md` and `analysis-quality-and-transitions.md` §1.
+This gate exists because the first cut of every video that skipped it became a "PowerPoint" — generic chapter shapes, fake UI, weak postIntro. See `docs/postintro-patterns.md` and `docs/winning-pattern-analysis-2026-05-10.md` §C.
 
 ## Production Truth
 

@@ -171,7 +171,6 @@ Before declaring transition work done:
 - `docs/pause-manager.md` — Read when working with the scrubber, pause/resume hooks, or chapter-seek semantics.
 - `docs/render.md` — Read when running `tools/render.js` (wall-clock or `--seek` mode).
 - `docs/preview.md` — Read when using `tools/preview.js` for live-reload + scrubber.
-- `tools/qc-out/a-complete-guide-to-the-checkboxes-field/FINDINGS.md` — Read when debugging cross-snapshot seam quality. Frame-level diagnosis from Phase 0.
 - `tools/qc-out/form-entries-guide/FINDINGS.md` — Read for the morph-vs-fast comparison + race-condition analysis.
 
 ## Granular craft references
