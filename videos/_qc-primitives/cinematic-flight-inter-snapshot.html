@@ -158,40 +158,69 @@
 
 <script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
 <script type="module">
-import { figjamFlight } from '/videos/_shared/motion-primitives.js';
+// NOTE: not importing figjamFlight from the library — its inter-phase math
+// assumes transform-origin: top-left but this demo uses center-origin. The
+// primitive needs redesign (it should take canvas focus points + scales and
+// compute transforms internally; current shape takes raw {x,y,scale} which
+// only works at certain scales). For now, demo uses an explicit 5-keyframe
+// timeline that does the right math.
 
 function fitStage() {
   const stage = document.getElementById('stage');
-  const wrap = document.querySelector('.stage-wrap');
-  const sx = wrap.clientWidth / 1280;
-  const sy = wrap.clientHeight / 720;
-  stage.style.transform = `scale(${Math.min(sx, sy) * 0.96})`;
+  // Use window dimensions directly — .stage-wrap's clientWidth can read 0
+  // during initial layout (before iframes settle), which collapses the
+  // stage scale to nothing. Header ~80px, controls ~80px = 160px reserved.
+  const availW = window.innerWidth;
+  const availH = Math.max(200, window.innerHeight - 160);
+  const sx = availW / 1280;
+  const sy = availH / 720;
+  const scale = Math.min(sx, sy) * 0.96;
+  // Guard: never let scale collapse below a minimum
+  stage.style.transform = `scale(${Math.max(scale, 0.1)})`;
 }
 fitStage();
+// Re-fit on resize AND after iframes load (their load can change layout)
 window.addEventListener('resize', fitStage);
+window.addEventListener('load', fitStage);
+setTimeout(fitStage, 500);
+setTimeout(fitStage, 1500);
 
 const camera = document.getElementById('camera');
 const phaseLabel = document.getElementById('phaseLabel');
 
-// Camera math for the 3680×720 virtual canvas with stage center at (640, 360):
-//   tx = -(canvas_focus_x - 640) * scale
-//   ty = -(canvas_focus_y - 360) * scale
+// Camera transform math — CORRECTED for transform-origin: center center
+// on the 3680px-wide camera (so origin = (1840, 360) in element-local coords).
 //
-// A (admin-forms-overview) at x:[0, 1280], center (640, 360)
-//   focused: tx=0, ty=0, scale=1.0
+// Per CSS spec for transform with transform-origin (ox, oy):
+//   doc_x = element_left + s*(x_e - ox) + ox + tx
+// With element_left=0 and ox=1840, requiring doc_x=640 (stage center) for a
+// canvas point (cx, cy):
+//   640 = s*(cx - 1840) + 1840 + tx
+//   →  tx = -1200 - s*(cx - 1840)
+//   →  ty = -s*(cy - 360)   (similarly)
 //
-// B (wpforms-ai-builder-empty) at x:[2400, 3680], center (3040, 360)
-//   focused: tx = -(3040-640)*1 = -2400, ty=0, scale=1.0
+// Prior demo used the simpler formula tx = -(cx - 640)*s which silently
+// works at scale=1 (because then both formulas coincide) but FAILS at
+// non-1 scales — the wide pose was focused on canvas-x = -710 (off-canvas).
 //
-// Wide view showing both A + gap + B (canvas 3680 fits in 1280 viewport at
-// scale 1280/3680 ≈ 0.348). Use scale 0.32 for a touch of breathing room:
-//   center of canvas = (3680/2) = 1840
-//   wide: tx = -(1840-640)*0.32 = -384, ty=0, scale=0.32
-const FROM_POSE = { x: 0,     y: 0, scale: 1.0,  rotation: 0 };
-const WIDE_POSE = { x: -384,  y: 0, scale: 0.32, rotation: 0 };
-const TO_POSE   = { x: -2400, y: 0, scale: 1.0,  rotation: 0 };
+// Five keyframe poses for the 3-act flight:
+//   1. FROM_A      — focus A center (cx=640) at scale 1.0
+//      tx = -1200 - 1.0*(640-1840) = 0
+//   2. ZOOM_OUT_AT_A — still A (cx=640), scale 0.32
+//      tx = -1200 - 0.32*(640-1840) = -816
+//   3. WIDE_PAN_MID  — canvas center (cx=1840) at scale 0.32
+//      tx = -1200 - 0.32*(1840-1840) = -1200
+//   4. ZOOM_OUT_AT_B — B (cx=3040) at scale 0.32
+//      tx = -1200 - 0.32*(3040-1840) = -1584
+//   5. TO_B        — B center (cx=3040) at scale 1.0
+//      tx = -1200 - 1.0*(3040-1840) = -2400
+const FROM_A         = { x: 0,     y: 0, scale: 1.0,  rotation: 0 };
+const ZOOM_OUT_AT_A  = { x: -816,  y: 0, scale: 0.32, rotation: 0 };
+const WIDE_PAN_MID   = { x: -1200, y: 0, scale: 0.32, rotation: 0 };
+const ZOOM_OUT_AT_B  = { x: -1584, y: 0, scale: 0.32, rotation: 0 };
+const TO_B           = { x: -2400, y: 0, scale: 1.0,  rotation: 0 };
 
-gsap.set(camera, FROM_POSE);
+gsap.set(camera, FROM_A);
 
 // Bind control DOM refs BEFORE timeline construction — onUpdate closure
 // references them and would TDZ-error otherwise.
@@ -200,16 +229,26 @@ const scrubber = document.getElementById('scrubber');
 const timeLabel = document.getElementById('timeLabel');
 const restartBtn = document.getElementById('restartBtn');
 
-const tl = figjamFlight(camera, {
-  from: FROM_POSE,
-  to:   TO_POSE,
-  wide: WIDE_POSE,
-  anticipationDuration: 0.15,
-  zoomOutDuration: 1.00,    // pull back deliberately — viewer reads the reveal
-  translateDuration: 1.40,  // long pan at wide scale across the gap
-  zoomInDuration: 1.00,     // push in to B with intent
-  landHold: 0.7,
-});
+// Bypassing the library's figjamFlight primitive — its inter-phase math
+// assumes transform-origin: top-left and was producing wrong intermediate
+// translates. Building an explicit 5-keyframe timeline here.
+const tl = gsap.timeline({ paused: true });
+
+// Phase 1: anticipation (small pre-nudge in opposite direction)
+tl.to(camera, { x: FROM_A.x + 12, duration: 0.15, ease: 'power2.in' });
+
+// Phase 2: ZOOM OUT — pull back while keeping focus on A
+tl.to(camera, ZOOM_OUT_AT_A, { duration: 1.0, ease: 'power3.out' });
+
+// Phase 3: TRANSLATE (two halves) — pan at wide scale to canvas mid, then to B
+tl.to(camera, WIDE_PAN_MID, { duration: 0.7, ease: 'sine.inOut' });
+tl.to(camera, ZOOM_OUT_AT_B, { duration: 0.7, ease: 'sine.inOut' });
+
+// Phase 4: ZOOM IN on B
+tl.to(camera, TO_B, { duration: 1.0, ease: 'power3.inOut' });
+
+// Phase 5: hold
+tl.to({}, { duration: 0.7 });
 
 timeLabel.textContent = `0.00 / ${tl.duration().toFixed(2)}`;
 
@@ -218,9 +257,9 @@ tl.eventCallback('onUpdate', () => {
   const total = tl.duration();
   let phase = 'idle';
   if (t < 0.15) phase = '1: anticipation';
-  else if (t < 0.15 + 1.00) phase = '2: ZOOM OUT (revealing both panels)';
-  else if (t < 0.15 + 1.00 + 1.40) phase = '3: TRANSLATE across gap (wide pan)';
-  else if (t < 0.15 + 1.00 + 1.40 + 1.00) phase = '4: ZOOM IN on B';
+  else if (t < 1.15) phase = '2: ZOOM OUT — pull back from A, both panels reveal';
+  else if (t < 2.55) phase = '3: TRANSLATE across gap (wide pan A → B)';
+  else if (t < 3.55) phase = '4: ZOOM IN on B';
   else phase = '5: land + hold';
   phaseLabel.textContent = `phase: ${phase}`;
   scrubber.value = t / total;
@@ -233,7 +272,7 @@ playBtn.addEventListener('click', () => {
   else { tl.play(); playBtn.textContent = '⏸'; isPlaying = true; }
 });
 restartBtn.addEventListener('click', () => {
-  tl.pause(); tl.time(0); gsap.set(camera, FROM_POSE); playBtn.textContent = '▶'; isPlaying = false;
+  tl.pause(); tl.time(0); gsap.set(camera, FROM_A); playBtn.textContent = '▶'; isPlaying = false;
 });
 scrubber.addEventListener('input', () => {
   tl.pause(); playBtn.textContent = '▶'; isPlaying = false;
