@@ -2,6 +2,33 @@
 
 Phase 5c Track 1. Review-only doc; no code edits proposed for direct execution.
 
+## ⚠️ CORRECTION (2026-05-11, post-audit verification)
+
+During Phase 5c.1 execution prep, the "0 callers" claim for `engine/wpforms.js#collapseBlock` was found WRONG. Grep across `videos/**`:
+
+```
+videos/form-notifications/chapters/managing.js:12  await collapseBlock(block1);
+videos/form-notifications/chapters/managing.js:13  await collapseBlock(block2);
+videos/form-notifications/chapters/managing.js:40  await collapseBlock(newBlockSel);
+videos/form-notifications/chapters/managing.js:59  await collapseBlock(dupSel);
+```
+
+`collapseBlock` has **4 production callers** in `videos/form-notifications/chapters/managing.js`. Do NOT delete.
+
+This invalidates the "verified via grep" assurance on the other dead-primitive claims too. **Phase 5c.1 dead-code deletion is deferred until each target is independently re-verified** with concrete grep evidence per call-site. The remaining candidates (`runScene`, `pointer`, `spotlight`, `cursor.dragGrab`, `whiteout`, `applyIconChoices` deprecated variant, `harvestField`, `injectField`, `runBeatsAtTimes`/`runBeatsSequential`, `runtime/camera-poses.js`) must each go through the same verification before any deletion lands.
+
+Verified zero-caller in `videos/` so far (still need internal-caller check):
+- `whiteout` — 0 production callers ✓
+- `applyIconChoices` (deprecated), `harvestField`, `injectField` — 0 production callers ✓
+- `runBeatsAtTimes`, `runBeatsSequential` — 0 production callers ✓
+
+Verified some-caller (do NOT delete):
+- `collapseBlock` — 4 callers in form-notifications ✗
+- `registerCameraPose` (camera-poses.js exports it) — used in `videos/make-field-required/chapters/*.js` ✗
+
+Still to verify:
+- `runScene`, `pointer`, `spotlight`, `cursor.dragGrab` — Track 1 said internal-only-via-runScene. Need to confirm runScene itself has zero callers and the chain is genuinely dead.
+
 ## Executive summary
 
 Three signals stand out across the audited surface (~3,800 LOC of engine + runtime, plus `scenes/shared*` and `videos/_shared/kit.js`):
