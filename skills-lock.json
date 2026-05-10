@@ -7,29 +7,30 @@
       "skillPath": "skills/design-motion-principles/SKILL.md",
       "computedHash": "7e854ddaab73161e402567e9650936db9fd8292114d4c621e8c20b239a046b76"
     },
-    "emil-design-eng": {
-      "source": "emilkowalski/skill",
-      "sourceType": "github",
-      "skillPath": "skills/emil-design-eng/SKILL.md",
-      "computedHash": "ac3fc5b4e206488ffc408a2806f829bb2e5eaf518fded09be34790685c2b3a0d"
-    },
-    "gsap-scrolltrigger": {
-      "source": "freshtechbro/claudedesignskills",
-      "sourceType": "github",
-      "skillPath": ".claude/skills/gsap-scrolltrigger/SKILL.md",
-      "computedHash": "b2af007055d557ae3be7112ff413dac1223ad56c7c3ad6bd06f2089fd0f18ee2"
-    },
-    "impeccable": {
-      "source": "pbakaus/impeccable",
-      "sourceType": "github",
-      "skillPath": "skill/SKILL.md",
-      "computedHash": "343c75b0a7e65e97b3aba430ae9fcb387f91397b4852129e43a53d3ca45fb945"
-    },
     "remotion-best-practices": {
       "source": "remotion-dev/skills",
       "sourceType": "github",
       "skillPath": "skills/remotion/SKILL.md",
-      "computedHash": "d9457a606202a23c28b4c17b2611c65ecc09311ce46a5d93ffe8493d2e8ea4f3"
+      "computedHash": "d9457a606202a23c28b4c17b2611c65ecc09311ce46a5d93ffe8493d2e8ea4f3",
+      "trigger": "manual-only",
+      "note": "Kept as STRUCTURAL REFERENCE for skill format patterns (per-archetype references/, SKILL.md vs references split, do-this/don't-do-this specificity). Not for Remotion code — this repo doesn't use Remotion. Auto-trigger disabled via SKILL.md description rewrite."
+    }
+  },
+  "uninstalled": {
+    "emil-design-eng": {
+      "source": "emilkowalski/skill",
+      "uninstalledAt": "2026-05-11",
+      "reason": "Redundant with design-motion-principles (kylezantos), which already ships Emil Kowalski's principles in references/emil-kowalski.md. Track 3 audit (docs/skill-doc-token-audit-2026-05-11.md) flagged 679-line single SKILL.md with wasteful initial-response gate."
+    },
+    "impeccable": {
+      "source": "pbakaus/impeccable",
+      "uninstalledAt": "2026-05-11",
+      "reason": "Track 3 audit found broken {{placeholders}} + demands missing PRODUCT.md + 280KB references bloat. Not justified."
+    },
+    "gsap-scrolltrigger": {
+      "source": "freshtechbro/claudedesignskills",
+      "uninstalledAt": "2026-05-11",
+      "reason": "Codex's Phase 2 diff vs wpforms-gsap-rules found it generic — no pausableRaf, no registerTimeline contract, no awaitTween, no withGsapContext, no finite-repeat rule, no determinism rules, no decomposition guidance. Redundant with our better skill."
     }
   }
 }

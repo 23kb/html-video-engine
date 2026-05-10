@@ -1,8 +1,9 @@
 ---
 name: remotion-best-practices
-description: Best practices for Remotion - Video creation in React
+description: STRUCTURAL REFERENCE ONLY — Remotion's skill format is the canonical model for per-archetype `references/` doc structure, SKILL.md vs references split, and do-this/don't-do-this specificity. This repo does NOT use Remotion. Read this skill only when redesigning a `wpforms-*` skill's structure; do not auto-trigger on Remotion code or video tasks. Per `skills-lock.json` trigger:manual-only.
 metadata:
-  tags: remotion, video, react, animation, composition
+  tags: structural-reference, skill-format-pattern
+  triggerPolicy: manual-only
 ---
 
 ## When to use
