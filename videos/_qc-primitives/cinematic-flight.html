@@ -80,17 +80,32 @@ window.addEventListener('resize', fitStage);
 const camera = document.getElementById('camera');
 const phaseLabel = document.getElementById('phaseLabel');
 
-// Build the cinematic flight: A (focus) → wide-overview → B (focus, micro-zoomed)
+// Demo: camera STARTS focused on A (left zone), flies to B (right zone),
+// then micro-zooms tighter on B. Each pose centers the named zone in the
+// 1280x720 stage at scale 1.4.
+//
+// Math: zone-center (cx, cy) → camera tx = -(cx - 640) * scale, ty = -(cy - 360) * scale
+//   A center ≈ (240, 310): tx = +560, ty = +70  (camera shifts content right+down)
+//   B center ≈ (1040, 410): tx = -560, ty = -70 (camera shifts content left+up)
+const FROM_POSE = { x: 560, y: 70, scale: 1.4, rotation: 0 };
+const TO_POSE   = { x: -560, y: -70, scale: 1.4, rotation: 0 };
+
+// Critical: gsap.set the camera to the FROM pose BEFORE the timeline starts.
+// Without this, the camera's initial CSS transform is identity (x:0,y:0,scale:1)
+// and the first tween animates FROM that identity state (looks like a fast
+// re-frame) rather than FROM the intended start pose.
+gsap.set(camera, FROM_POSE);
+
 const tl = cinematicFlight(camera, {
-  from: { x: 0, y: 0, scale: 1.0 },
-  to:   { x: -450, y: -50, scale: 1.4, rotation: 0 },
+  from: FROM_POSE,
+  to:   TO_POSE,
   anticipationDuration: 0.15,
   flightDuration: 1.1,
   landHold: 0.5,
   scaleDipFactor: 0.85,
   rotationTilt: 1.5,
   microZoom: {
-    to: { x: -520, y: -80, scale: 1.85 },
+    to: { x: -620, y: -90, scale: 1.85 },
     duration: 0.7,
   },
 });
