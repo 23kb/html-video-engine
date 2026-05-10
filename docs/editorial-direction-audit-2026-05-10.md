@@ -150,13 +150,15 @@ Output: `docs/engine-reading-notes-2026-05-10.md`. Format = primitive-by-primiti
 
 | Action | What | Cost |
 |---|---|---|
-| Install audit skills | `npx add-skill kylezantos/design-motion-principles`, `npx skills add emilkowalski/skill`, `npx skills add pbakaus/impeccable` | 5 min |
+| **Install `kylezantos/design-motion-principles`** (primary audit skill — do not skip) | `npx add-skill kylezantos/design-motion-principles` — Emil Kowalski / Krehel / Tompkins audit lens. The decomposed-multi-phase-motion gap is exactly Emil's territory; this skill is the most directly relevant of the three | 1 min |
+| Install other audit skills | `npx skills add emilkowalski/skill` (Emil's own), `npx skills add pbakaus/impeccable` (Bakaus's `/animate` command + design vocabulary) | 2 min |
 | Run each on a failed editorial video | Compare critiques against your own diagnoses | 30 min |
 | Install Remotion Best Practices skill **as structural reference, NOT migration** | `npx skills add https://github.com/remotion-dev/skills --skill remotion-best-practices`. **What we want from it** — mirror the per-archetype `references/<archetype>.md` doc structure, the SKILL.md vs references split, the do-this/don't-do-this specificity. Throwaway: the Remotion-specific code content. | 10 min install + 30 min read |
 | Install only freshtechbro's GSAP skill, diff against `wpforms-gsap-rules` | If theirs has decomposition/timing guidance yours lacks, copy. Don't bulk-install all 22 | 15 min |
 | Read `motion.dev/docs/ai-kit` end-to-end | Adopt the **MotionScore S–F tier audit pattern** | 45 min |
 | **Build new `.claude/skills/wpforms-motion-audit/SKILL.md`** | Single-tween-translate-and-scale = F. Multi-phase decomposed = A. Claude self-audits before any postIntro/cinematic chapter handoff | ~half-day |
-| Find or recreate the `motion-design` skill references | Couldn't locate `references/decision-tree.md` + `references/easing-tokens.md` from the mcpmarket SKILL.md in any public repo. Options: (a) reach out to mcpmarket support, (b) recreate from motion-design canon based on the SKILL.md's described structure, (c) skip — the audit skills cover similar ground | depends |
+
+**Skipping the mcpmarket motion-design skill** (the SKILL.md you have locally). Searched 5 public repos for the missing `references/decision-tree.md` + `references/easing-tokens.md` it depends on; not findable. The kylezantos skill + motion.dev MotionScore pattern cover the same ground (decision-tree-by-interaction-type + easing tokens + duration tokens). No work lost.
 
 **On authoring impact:** these are mostly skill-level changes (read at authoring time, audit-after time), not authoring-shape changes. The one authoring-shape change that comes out of all this is the **morph-chain storyboard format** (Phase 4 below). Skills tell Claude what good looks like; the storyboard format change tells Claude how to plan it.
 

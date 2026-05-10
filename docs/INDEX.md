@@ -74,6 +74,10 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 
 ## System audits / postmortems / strategic context
 
+- `editorial-direction-audit-2026-05-10.md` — **Master synthesis + 7-phase plan after 3 failed editorial attempts.** Read this first if working on editorial-track.
+- `winning-pattern-analysis-2026-05-10.md` — What 3 winning videos share vs 3 failed editorial videos (Agent B).
+- `wpforms-source-inventory-2026-05-10.md` — Real WPForms brand + motion + UI inventory from live plugin source.
+- `engine-reading-notes-2026-05-10.md` — Engine primitive usage counts, what bypassing costs, when engine helps vs hurts.
 - `repo-architecture-audit-hyperframes.md` — Strategic context (Phase 2 + Phase 4b execution slice).
 - `system-issues-2026-05-09-animation-quality-postmortem.md` — Proposals A–H. Editorial-track plan executes a subset.
 - `core-system-audit-findings.md` — Prior narrower audit. Sequencing for steps 7–11.
@@ -107,3 +111,10 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 - `CLAUDE.md` — Operator manual. Always loaded. Boot order + protected core + validation + push-back triggers.
 - `AGENTS.md` — Pointer to `CLAUDE.md` (single source of truth).
 - `BACKLOG.md` — Living architectural-debt + future-phase candidate list.
+
+## Brand canonical truth
+
+- `reference/wpforms-brand/BRAND.md` — Canonical WPForms brand reference (colors, typography, Sullie, AI chat structure, real templates API). Use this; do not invent brand details.
+- `reference/wpforms-brand/tokens.css` — Drop-in CSS variables for any video.
+- `reference/wpforms-brand/assets/` — Real Sullie + loading-avatar + loading-spinner SVGs from plugin source, plus AI 3-dot chat spinner.
+- `reference/html-templates/` — Canonical clone-and-customize HTML video templates (the 3 winners + their per-beat specs).
