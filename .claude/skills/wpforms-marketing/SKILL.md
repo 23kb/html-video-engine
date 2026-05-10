@@ -5,12 +5,50 @@ description: Use when authoring or reviewing ad-style / release / announcement /
 
 # WPForms Marketing / Ad-Style Videos
 
-The repo has two equally important authoring modes:
+The repo has three authoring paths (see `CLAUDE.md` for the full table):
 
-1. **Tutorial videos** with real WPForms product UI in an iframe (covered by `wpforms-video`).
-2. **Ad-style / release / announcement videos** — editorial DOM compositions, atmospheric motion, hero lockups, brand-mode marketing pieces. Stripe-style.
+1. **Tutorial** — real WPForms product UI in an iframe (covered by `wpforms-video`).
+2. **Pure editorial / ad-style** — single self-contained HTML, no engine, clone from `reference/html-templates/`. Covered here.
+3. **Mixed** — editorial chrome composited over real product UI via `surface: 'mixed'`. Covered here + `wpforms-transitions`.
 
-This skill covers the second mode.
+This skill covers paths 2 and 3.
+
+## REQUIRED references — clone, do not invent
+
+Before writing any editorial chapter or single-HTML video, **load these**:
+
+### Canonical clone-and-customize templates (`reference/html-templates/`)
+
+For pure-editorial videos, START FROM ONE OF THESE — do not author from scratch:
+
+- `reference/html-templates/wpforms-ai-prompt-open.html` — **S-tier** identity-continuity morph (Button → Input → Pill → Chat over 12s). The canonical pattern for "AI feature demo" or "product reveal" pieces.
+- `reference/html-templates/editorial-reference-36s.html` + `editorial-reference-BEATS.md` — **A-tier** 36s linear-scene reference (OpenAI Layo rebuild). Use for product-announcement / launch / multi-beat narrative work.
+- `reference/html-templates/openai-replica-18s.html` — **A-tier** first-try single-HTML proof. Use for short ad-style pieces.
+
+The clone-and-customize rule: copy a template, replace content + brand, keep the motion vocabulary. Three failed editorial attempts (`wpforms-ai-board`, `wpforms-ai-announcement`, `wpforms-ai-zlyvs`) all skipped this and tried to invent from scratch.
+
+### Brand canonical (`reference/wpforms-brand/`)
+
+Do NOT invent brand details. The plugin source-of-truth is here:
+
+- `reference/wpforms-brand/BRAND.md` — usage doc, anti-patterns, AI chat HTML structure
+- `reference/wpforms-brand/tokens.css` — `--wpf-orange #E27730` (primary), `--wpf-ai-purple` (AI-feature accent ONLY, never primary), `--wpf-blue`, OS font stack
+- `reference/wpforms-brand/assets/` — real Sullie + loading visuals + AI 3-dot spinner SVGs
+
+**Anti-pattern caught in audit (`wpforms-ai-announcement`):** purple `#7a30e2` declared as primary brand. WRONG. Purple is AI-feature-only. Primary is orange.
+
+### Templates API (for "show 200+ templates" beats)
+
+`https://wpforms.com/templates/api/get/` returns real WPForms templates. Cache locally via `tools/fetch-templates.js` (Phase 5e). Use `videos/_shared/wpforms-brand/templates.js` helper. Do NOT invent template names + thumbnails (the `wpforms-ai-announcement/index.html:725-757` mosaic mistake).
+
+### Audit gates — MUST run before handoff
+
+- `wpforms-motion-audit` skill — score every postIntro/cinematic/editorial beat S-F tier. Tier A or higher is merge bar.
+- `design-motion-principles` skill (kylezantos, auto-triggers) — designer-philosophy critique by Emil Kowalski / Jakub Krehel / Jhey Tompkins lens.
+
+### Editorial storyboard format
+
+Editorial storyboards MUST include a **morph-chain section** per `docs/storyboard-format-morph-chain-2026-05-10.md`. Without it, editorial videos default to state-table compositions and fail.
 
 ## Surface Modes
 
@@ -215,8 +253,13 @@ Before declaring an ad-style video done:
 - `docs/postintro-patterns.md` — Read when the marketing video is a hybrid (postIntro + walkthrough) — postIntro rules apply.
 - `docs/frame-driver.md` — Read when authoring registered timelines for scrubbable editorial beats.
 - `docs/render.md` — Read when running `tools/render.js --seek` (only valid for `surface: 'editorial'`).
-- `videos/_phase-c-editorial-pilot/` — Reference: minimal 10-12s editorial-surface video. Read for a stripped-down example.
-- `hyperframes/hyperframes-rest-2/` and `hyperframes/wpforms-ai-scene-10/` — Reference experiments using HeyGen Hyperframes patterns. Useful for atmospheric / character-cascade / hero-composition inspiration.
+- `reference/html-templates/wpforms-ai-prompt-open.html` — **Primary clone target.** S-tier identity-continuity morph.
+- `reference/html-templates/editorial-reference-36s.html` + `editorial-reference-BEATS.md` — Linear-scene reference, 13 beats, named atmospheres + transitions.
+- `reference/html-templates/openai-replica-18s.html` — First-try single-HTML proof.
+- `reference/wpforms-brand/BRAND.md` — Brand canonical, anti-patterns, real AI chat HTML structure.
+- `docs/winning-pattern-analysis-2026-05-10.md` — Identity-continuity authoring rule + 5-variable winning pattern.
+- `docs/polish-vocabulary-2026-05-11.md` — Per-chapter polish deltas from rest-api polished-vs-unpolished. Tutorial-polish primitives.
+- `docs/storyboard-format-morph-chain-2026-05-10.md` — Morph-chain storyboard section authoring contract.
 
 ## Granular craft references
 

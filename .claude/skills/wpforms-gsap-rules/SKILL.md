@@ -89,6 +89,71 @@ gsap.to(el, { rotation: 360, duration: cycleDuration,
               repeat: Math.ceil(visibleDuration / cycleDuration) - 1 });
 ```
 
+## L1 Camera Decomposition (Editorial / Cinematic Work)
+
+Editorial camera moves and postIntro cinematic moments require multi-phase decomposed choreography — the single biggest gap between winning videos and failed editorial attempts (per `docs/winning-pattern-analysis-2026-05-10.md`).
+
+**Default ceiling enforcement for any camera move on a postIntro/cinematic/editorial beat: maximum tier C if violated. Score with `wpforms-motion-audit` skill before handoff.**
+
+### Phase-decomposition contract
+
+Any camera move that translates more than ~250px in canvas coords MUST decompose into phases. Single-tween translate-and-scale between fixed poses reads as a slide projector (the `wpforms-ai-zlyvs` failure mode).
+
+| Phase | Duration | What happens |
+|---|---|---|
+| Anticipation | 0.10–0.20s | Pre-nudge in direction of (or away from) target. Camera "winds up" before flight. |
+| Flight outbound | 30–45% of move | Scale dips down to ≤0.95× target scale; translation begins. Wide-angle feel. |
+| Flight inbound | 30–45% of move | Scale climbs back up to target; translation completes. Lock-in feel. |
+| Land + hold | 0.30–0.50s | Camera arrives at pose, holds. 1s minimum hold for postIntros (per `videos/wpforms-ai-board/LESSONS.md` "land-hold-zoom rhythm"). |
+| Micro-zoom (optional) | 0.40–0.60s | Tight zoom to inner target (e.g. a button, input, glyph) for "now look at this." Scale 3.0+ for inputs / 3.2+ for buttons / 2.8+ for cards. |
+
+### Per-phase ease discipline
+
+- Each phase uses its own ease — not one ease across the whole move.
+- Use `CustomEase` for phase-specific curves. Stock easings (`power2.out` etc.) are acceptable for individual phases but the **sum of phases** must read as decomposed motion.
+- Rotation tilt of ±1.0° to ±1.5° during the flight phases adds cinematic feel (verified in `wpforms-ai-board` lessons). Skip rotation for pure-product zoom moves.
+
+### Concrete code shape
+
+```js
+// Three sequential tweens on the camera, one per major phase, plus a held land.
+const camera = stage.querySelector('.scene-camera');
+const tl = gsap.timeline({ paused: true });
+const flightEase = CustomEase.create('cinematic-flight', 'M0,0 C0.18,0 0.30,0.6 0.5,0.85 C0.7,1.0 0.85,1.0 1,1');
+
+// Phase 1: anticipation (0.15s pre-nudge in opposite direction)
+tl.to(camera, { x: -40, duration: 0.15, ease: 'cinematic-anticip' });
+// Phase 2: flight outbound (scale dip + translate begin)
+tl.to(camera, { x: 230, scale: 0.95, rotation: 1.2, duration: 0.45, ease: 'flight-dip-out' });
+// Phase 3: flight inbound (scale climbs, translate completes)
+tl.to(camera, { x: 480, scale: 1.65, rotation: 0.8, duration: 0.45, ease: 'flight-land-in' });
+// Phase 4: land + hold (no tween — dwell)
+tl.to({}, { duration: 0.40 });
+// Phase 5: micro-zoom to target element (after hold)
+tl.to(camera, { x: 540, scale: 2.4, duration: 0.60, ease: 'power3.out' });
+```
+
+### Auto-ceiling triggers (from `wpforms-motion-audit` HARD RULE 3)
+
+The motion-audit skill caps the maximum score at C/D/F when these are detected. Avoid them:
+
+- **Sequential 4+ tweens where every value changes per tween** → max C
+- **5+ atmosphere layers stacked simultaneously** → max D
+- **Editorial overlay panels painted as iframe siblings rather than injected into iframe DOM** → max D
+- **Purple as primary brand color** (vs. AI-feature accent) → max D
+- **12+ beats packed into ≤45s without identity continuity** → max C
+- **Heavy blur+scale exits** (`scale: 1.05+ + filter: blur(N px)+ + power2.in 0.5+s`) on product/content surfaces → max C
+- **Dead-air holds after landing** (any wait > 800ms after the visual idea lands, without narration) → max C
+- **`repeat: -1` on ambient atmosphere** (parallax, grain, glow drift) → max D (this also violates L0 rule 7 above)
+
+### Designer principles (extracted from `design-motion-principles` skill — Phase 5b will deepen)
+
+When the audit critique cites Emil Kowalski / Jakub Krehel / Jhey Tompkins by name, load the `design-motion-principles` skill (auto-triggers) for the full per-designer references. High-level summary:
+
+- **Emil Kowalski (UI motion):** every animation needs a purpose; default UI durations 180–240ms; exits should be faster than entrances; no animation on keyboard-driven hot paths.
+- **Jakub Krehel (animation principles):** identity continuity across beats; rhythmic-not-uniform pacing; the camera follows the protagonist, doesn't cut to staged shots.
+- **Jhey Tompkins (CSS/SVG/web motion):** prefer transform + opacity + filter; SVG path morphs with `morphSVG` over generated DOM; performance is part of the design.
+
 ## Registered Timelines (paused + driver-owned)
 
 Editorial-layer GSAP timelines opt into being **owned by the runtime frame driver**. The driver pauses, seeks, and resumes them deterministically — surviving hidden-tab RAF throttling and pause/resume from the scrubber.

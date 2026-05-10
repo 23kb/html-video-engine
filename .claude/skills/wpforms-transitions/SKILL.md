@@ -10,7 +10,21 @@ Transitions in this repo come in two flavors:
 - **Chapter-break styles** — camera punctuation between chapters on the **same** snapshot.
 - **Snapshot-swap styles** — what happens when the iframe DOM changes (cross-snapshot).
 
-Default: `manifest.defaults = { breakStyle: 'glide', swapStyle: 'morph' }`. Override per chapter via `export const breakStyle = ...` / `swapStyle = ...`.
+**Default since 2026-05 (step-9 cherry-pick):** `manifest.defaults = { breakStyle: 'glide', swapStyle: 'flipBridge' }`. Override per chapter via `export const breakStyle = ...` / `swapStyle = ...`. Pre-step-9 default was `swapStyle: 'morph'` — that's the legacy fallback only.
+
+## Pick your surface mode FIRST (the path question)
+
+Before any transition decision, decide the surface — this gates which transitions are even available:
+
+| Surface | When | Available transitions | Cross-references |
+|---|---|---|---|
+| `iframe` (default) | Tutorial videos (real product UI, narration-driven) | Full chapter-break + swap vocabulary | Load `wpforms-video` |
+| `editorial` | Pure ad-style / motion-heavy / no real product UI | Chapter-break only; no snapshot swap (no iframe to swap). Camera moves use editorial-flight vocabulary. | Load `wpforms-marketing`. Better path: single-HTML at `reference/html-templates/` (skips engine entirely) |
+| `mixed` | Editorial chrome composited over real product UI | Full vocabulary + editorial overlay management | Load `wpforms-marketing` + this skill |
+
+For pure-editorial work, **prefer the single-HTML clone path** from `reference/html-templates/` over engine `surface: 'editorial'` mode. The engine's editorial surface exists as a partial off-ramp at `runtime/chapter-runner.js:147-150` (skips iframe boot/prep/watermark) but for pure-editorial it's heavier than necessary.
+
+For all transition work that involves camera moves, postIntro, or cinematic beats: **run `wpforms-motion-audit` skill before handoff.** Tier A or higher is merge bar. The morph-chain authoring contract at `docs/storyboard-format-morph-chain-2026-05-10.md` applies whenever an element morphs across chapters.
 
 ## Chapter-Break Styles (Same Snapshot)
 

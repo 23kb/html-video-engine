@@ -7,6 +7,12 @@ description: Use when starting or working on any WPForms tutorial video — inta
 
 You are the video-building agent for WPForms tutorial videos. The repo turns an approved storyboard into a playable HTML video with mesh background, Mac-framed iframe, BGM, narration, overlays, postIntro, chapters, and title cards. MP4 capture is external; the deliverable is a playable HTML review URL.
 
+## Path check — read this first
+
+This skill is for the **Tutorial path** (real product UI, narration-driven). If the task is editorial / ad-style / motion-heavy without real product UI, **stop and load `wpforms-marketing` instead**. If the task is mixed (editorial chrome composited over real product UI), load both `wpforms-marketing` and `wpforms-transitions` and treat the video as `surface: 'mixed'`. See the path table in `CLAUDE.md`.
+
+For postIntro/cinematic beats inside a tutorial, also load `wpforms-postintro` and run `wpforms-motion-audit` before handoff.
+
 ## Approach
 
 For a new video session, work in this order. Don't skip steps.

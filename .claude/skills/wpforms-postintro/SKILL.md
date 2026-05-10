@@ -11,14 +11,21 @@ It is **not**: a second title card, a copied cinematic from another topic, a ful
 
 ## 🛑 HARD-GATE: Multi-Animation Rule (Mandatory)
 
-**Every postIntro MUST hit all four of these. The user will reject postIntros that feel like a single fade-in.**
+**Every postIntro MUST hit all five of these. The user will reject postIntros that feel like a single fade-in.**
 
 1. **8-15 seconds total runtime.** Not 4. Not 20. The canonical references all sit in this range.
 2. **At least 5 distinct animation phases.** Examples: mount, primary morph, payoff, secondary morph or label reveal, exit/handoff. A fade-in + fade-out is **not** five phases.
 3. **At least one cursor or pointer interaction with the editorial DOM** (click, hover, drag, type). Without this it feels like a slide, not a scene.
 4. **Hands off into the first content chapter** — fade into the real snapshot, dive-zoom into a captured element, or hand the cursor to a product-truth control. Never abruptly `.remove()` the editorial layer onto a bare snapshot.
+5. **Identity continuity via a morph chain** — one DOM element carries viewer attention through the phases, morphing in content/scale/role while preserving its `id`. The canonical example is `reference/html-templates/wpforms-ai-prompt-open.html#cta`: Button → Input → Sullie pill → Chat panel over 12 seconds. Per `docs/storyboard-format-morph-chain-2026-05-10.md` — the storyboard MUST declare the morph chain as its own section.
 
-The validator does not enforce this rule. You enforce it. If the storyboard approved a postIntro that doesn't hit all four, push back at storyboard stage. If implementation is drifting toward 3 phases, stop.
+The validator does not enforce these rules. You enforce them. If the storyboard approved a postIntro that doesn't hit all five, push back at storyboard stage. If implementation is drifting toward 3 phases or a state-table-of-beats, stop.
+
+## 🛑 Pre-Handoff Audit Gate
+
+Before declaring a postIntro done, **run `wpforms-motion-audit` skill** on the postIntro chapter file. Tier A or higher is the merge bar; B or below needs a fix or explicit user override. The audit checks: multi-phase camera decomposition, atmosphere-swap discipline, identity-continuity host, zoom levels, easings, automatic-ceiling triggers (heavy blur exits, dead-air holds, `repeat: -1`).
+
+Also load `design-motion-principles` (kylezantos, auto-triggers) for the per-designer critique by Emil Kowalski / Jakub Krehel / Jhey Tompkins.
 
 ## Design Rules
 
