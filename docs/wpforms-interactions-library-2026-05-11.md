@@ -96,6 +96,91 @@ The brief asked us to decide per-interaction. Rationale:
 - **hybrid** is reserved for cases where a swap would be too jarring for
   a small click feedback (none in Wave 1; queued for Wave 2 if needed).
 
+## Template hover state inventory
+
+The admin-templates snapshot ships each template card with a hidden
+`.wpforms-template-buttons` wrapper. The CSS reveals it on `:hover` or
+when the card has `.active`, but those rules live inside a `@layer` that
+loses to the unlayered `opacity: 0` base — so `selectTemplate` always
+sets inline `opacity: 1` on top of the `.active` class.
+
+Three variants exist; `selectTemplate` normalizes button copy to match
+the live product per variant:
+
+**1. AI generate card** — `data-slug="generate"`. Single purple-dark
+button only. Canonical HTML:
+
+```html
+<div class="wpforms-template-buttons">
+  <a href="#" class="wpforms-template-generate wpforms-btn wpforms-btn-md wpforms-btn-purple-dark">
+    Generate Form
+  </a>
+</div>
+```
+
+**2. Blank Form** — `data-slug="blank"`. Single orange button only:
+
+```html
+<div class="wpforms-template-buttons">
+  <a href="#" class="wpforms-template-select wpforms-btn wpforms-btn-md wpforms-btn-orange"
+     data-template-name-raw="Blank Form" data-template="blank" data-slug="blank">
+    Create Blank Form
+  </a>
+</div>
+```
+
+**3. All other templates** — orange "Use Template" + light-grey "View Demo":
+
+```html
+<div class="wpforms-template-buttons">
+  <a href="#" class="wpforms-template-select wpforms-btn wpforms-btn-md wpforms-btn-orange"
+     data-template-name-raw="Simple Contact Form"
+     data-template="simple-contact-form-template" data-slug="simple-contact-form-template">
+    Use Template
+  </a>
+  <a class="wpforms-template-demo wpforms-btn wpforms-btn-md wpforms-btn-light-grey"
+     href="https://wpforms.com/templates/simple-contact-form-template/" target="_blank">
+    View Demo
+  </a>
+</div>
+```
+
+Shared wrapper CSS (per the live product):
+
+```css
+.wpforms-template-buttons {
+  background-color: #fff;
+  border-radius: 6px;
+  display: flex;
+  opacity: 0;
+  padding: 15px 15px 0;
+  width: 100%;
+  align-items: flex-start;
+  gap: 10px;
+  position: absolute;
+  bottom: 15px;
+  transition: all 0.15s ease-out;
+}
+```
+
+## Per-form profiles for `openFormInList`
+
+The captured `admin-forms-overview` snapshot has three form rows but
+`builder-fields` is captured as the All-Fields Fixture (50+ fields). To
+make each form open look distinct, `openFormInList` post-applies a
+form-specific profile after the swap:
+
+| form_id | name | visible canvas fields (data-field-id) |
+|---|---|---|
+| 55 | Contact Us form | 48 (Name), 49 (Email), 50 (Message) |
+| 53 | Newsletter Signup | 48 (Name), 49 (Email) |
+| 40 | Job Application | 48 (Name), 49 (Email), 10 (Phone), 15 (Address), 50 (Description) |
+
+The profile lives in `FORM_PROFILES` at the top of
+`videos/_shared/wpforms-interactions.js`. To add another form id, append
+an entry — the helper hides any canvas field whose id isn't in the
+`fields` whitelist.
+
 ## QC pages
 
 One per interaction, plus an index. All under

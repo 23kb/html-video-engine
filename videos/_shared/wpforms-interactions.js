@@ -306,6 +306,18 @@ const BUILDER_PANEL_TARGETS = {
   revisions: 'builder-revisions',
 };
 
+// Per-form profile for openFormInList. Each entry maps a form_id (as it
+// appears in the admin-forms-overview snapshot) to the form's display name
+// and the subset of `data-field-id` values to keep visible after swapping
+// to builder-fields. Field IDs are sourced from the captured all-fields
+// fixture (snapshots/builder-fields/index.html): 48=Name, 49=Email,
+// 50=Textarea, 10=Phone, 15=Address.
+const FORM_PROFILES = {
+  '55': { name: 'Contact Us form', fields: ['48', '49', '50'] },
+  '53': { name: 'Newsletter Signup', fields: ['48', '49'] },
+  '40': { name: 'Job Application', fields: ['48', '49', '10', '15', '50'] },
+};
+
 // Settings sub-tab → snapshot slug map for openSettingsTab.
 const SETTINGS_TAB_TARGETS = {
   general: 'builder-settings-general',
@@ -414,13 +426,77 @@ export class WPFormsInteractions {
    */
   async selectTemplate(slug, opts = {}) {
     this._assertSnapshot('admin-templates', 'selectTemplate');
-    const selector = `.wpforms-template-select[data-slug="${cssEscape(slug)}"]`;
-    const btn = this._findOrThrow(selector, 'selectTemplate');
-    this.iframe.scrollIntoView(btn);
+    const card = this._findOrThrow(
+      `.wpforms-template[id="wpforms-template-${cssEscape(slug)}"]`,
+      'selectTemplate'
+    );
+
+    // 1) Scroll card into view + glide cursor toward it (lands on the
+    //    thumbnail area, mimicking a user hovering the card itself).
+    this.iframe.scrollIntoView(card);
     await this.iframe.wait(0.55);
-    await this._glideAndClick(btn);
+    const thumb = card.querySelector('.wpforms-template-thumbnail') || card;
+    const hoverPt = this.iframe.elementToStageCoords(thumb);
+    await this.cursor.glide(hoverPt, { duration: 0.85 });
+
+    // 2) Reveal the per-card action buttons. The snapshot ships a
+    //    `.wpforms-template.active .wpforms-template-buttons { opacity: 1 }`
+    //    rule, but it lives inside a CSS `@layer` that loses to the
+    //    unlayered `.wpforms-template-buttons { opacity: 0 }` base — so
+    //    adding `.active` alone doesn't reveal them. We add `.active` to
+    //    keep the visual state class correct (other rules hook off it),
+    //    AND set inline opacity (which beats the layered cascade). The
+    //    button text is normalized to match the live product copy — see
+    //    docs/wpforms-interactions-library-2026-05-11.md "Template hover
+    //    state inventory" for the per-card variants.
+    card.classList.add('active');
+    this._normalizeTemplateButtons(card, slug);
+    const buttonsWrap = card.querySelector('.wpforms-template-buttons');
+    if (buttonsWrap) {
+      buttonsWrap.style.transition = 'opacity 200ms ease-out';
+      buttonsWrap.style.opacity = '1';
+    }
+    await this.iframe.wait(0.55); // dwell so the viewer reads the buttons
+
+    // 3) Click the primary action button (orange for blank + standard;
+    //    purple-dark for the AI generate card).
+    const primary = card.querySelector(
+      '.wpforms-template-generate, .wpforms-template-select'
+    );
+    if (!primary) {
+      throw new Error(`selectTemplate: no primary action button inside card for slug '${slug}'`);
+    }
+    await this._glideAndClick(primary);
     await this.iframe.wait(0.18);
     await this.iframe.swap('builder-setup', { duration: opts.swapDuration ?? 0.32 });
+  }
+
+  /**
+   * Per-template-variant button normalization. The snapshot ships some
+   * older copy ("Create Form") for the non-blank / non-AI cards; we replace
+   * it with "Use Template" so the hover state matches the live product.
+   * Blank and AI variants already match.
+   *
+   * Variants (from docs/wpforms-interactions-library-2026-05-11.md):
+   *   • slug='generate'  → single purple-dark "Generate Form"
+   *   • slug='blank'     → single orange "Create Blank Form"
+   *   • all others       → orange "Use Template" + light-grey "View Demo"
+   */
+  _normalizeTemplateButtons(card, slug) {
+    const buttonsWrap = card.querySelector('.wpforms-template-buttons');
+    if (!buttonsWrap) return;
+    const select = buttonsWrap.querySelector('.wpforms-template-select');
+    const generate = buttonsWrap.querySelector('.wpforms-template-generate');
+    const demo = buttonsWrap.querySelector('.wpforms-template-demo');
+    if (slug === 'generate') {
+      if (generate) generate.textContent = 'Generate Form';
+    } else if (slug === 'blank') {
+      if (select) select.textContent = 'Create Blank Form';
+      if (demo) demo.remove();
+    } else {
+      if (select) select.textContent = 'Use Template';
+      if (demo) demo.textContent = 'View Demo';
+    }
   }
 
   /**
@@ -452,7 +528,12 @@ export class WPFormsInteractions {
     const links = doc.querySelectorAll('#toplevel_page_wpforms-overview .wp-submenu a');
     let target = null;
     for (const a of links) {
-      const txt = (a.textContent || '').replace(/NEW!?/i, '').trim();
+      // Strip the "NEW!" badge span (`.wpforms-menu-new`) before comparing —
+      // previously a `/NEW!?/i` regex was eating the literal word "New" from
+      // "Add New Form", so the equality check failed.
+      const clone = a.cloneNode(true);
+      clone.querySelectorAll('.wpforms-menu-new').forEach(n => n.remove());
+      const txt = (clone.textContent || '').replace(/\s+/g, ' ').trim();
       if (txt === item) { target = a; break; }
     }
     if (!target) {
@@ -482,13 +563,43 @@ export class WPFormsInteractions {
    */
   async openFormInList(formId, opts = {}) {
     this._assertSnapshot('admin-forms-overview', 'openFormInList');
-    const selector = `td.column-name a[href*="form_id=${formId}"]`;
-    const link = this._findOrThrow(selector, 'openFormInList');
-    this.iframe.scrollIntoView(link);
+    const link = this._findOrThrow(
+      `td.column-name a[href*="form_id=${formId}"]`,
+      'openFormInList'
+    );
+    // Click target: the bolded form-name <strong>, not the parent <a>. The
+    // anchor's bounding rect includes the row-actions row below the title,
+    // which made the cursor land visibly below the form name. Targeting
+    // <strong> puts the cursor squarely on the title text.
+    const titleEl = link.querySelector('strong') || link;
+    this.iframe.scrollIntoView(titleEl);
     await this.iframe.wait(0.35);
-    await this._glideAndClick(link);
+    await this._glideAndClick(titleEl);
     await this.iframe.wait(0.18);
     await this.iframe.swap('builder-fields', { duration: opts.swapDuration ?? 0.32 });
+    // After the swap, set the form-specific name + fields so the three demo
+    // forms don't all look like the same all-fields fixture.
+    this._applyFormProfile(String(formId));
+  }
+
+  /**
+   * Apply the per-form DOM profile after openFormInList swaps to
+   * builder-fields. Sets the form title and hides any canvas fields not
+   * in the form's profile. Falls back to a no-op for unknown form IDs
+   * (visible result: the all-fields fixture as captured).
+   */
+  _applyFormProfile(formId) {
+    const profile = FORM_PROFILES[formId];
+    if (!profile) return;
+    const doc = this.iframe.doc();
+    if (!doc) return;
+    const titleEl = doc.querySelector('.wpforms-form-name');
+    if (titleEl) titleEl.textContent = profile.name;
+    const allowed = new Set(profile.fields.map(String));
+    for (const field of this.iframe.queryAll('.wpforms-field-wrap > .wpforms-field')) {
+      const id = field.getAttribute('data-field-id');
+      if (!allowed.has(id)) field.style.display = 'none';
+    }
   }
 
   // ── Wave 1: Builder-side ────────────────────────────────────────────────
@@ -515,127 +626,210 @@ export class WPFormsInteractions {
    */
   async dragFieldToForm(fieldSlug, opts = {}) {
     this._assertSnapshot('builder-fields', 'dragFieldToForm');
-    const sourceSel = `.wpforms-add-fields-button[data-field-type="${cssEscape(fieldSlug)}"]`;
-    const source = this._findOrThrow(sourceSel, 'dragFieldToForm');
+    const { carryDuration = 1.10 } = opts;
+    const source = this._findOrThrow(
+      `.wpforms-add-fields-button[data-field-type="${cssEscape(fieldSlug)}"]`,
+      'dragFieldToForm'
+    );
     const dropZone = this._findOrThrow('.wpforms-field-wrap', 'dragFieldToForm');
 
-    // Make sure source is visible (its panel group might be folded).
     this.iframe.scrollIntoView(source);
     await this.iframe.wait(0.35);
 
-    // Stage-coord positions for cursor + ghost.
+    // Build the landing field FIRST (hidden), so mid-drag we can do a real
+    // FLIP reveal instead of fabricating a div. Mirrors the engine's pattern
+    // in runtime/drag.js where prep stashes the field and the drag reveals
+    // it with `display: block`.
+    const landed = this._prepareLandingField(fieldSlug, dropZone);
+
+    // Resolve start (source) + end (drop-zone bottom) in stage coords.
     const fromPt = this.iframe.elementToStageCoords(source);
-    // Drop target = bottom-middle of the field-wrap (mimics dropping at end).
     const dropRect = dropZone.getBoundingClientRect();
-    const dropElCenter = {
+    const dropEnd = {
       x: dropRect.left + dropRect.width / 2,
-      // bottom inset 32px so the ghost lands inside the wrap, not at the edge.
-      y: dropRect.bottom - 32,
+      y: dropRect.bottom - 28,
     };
     const toPt = {
-      x: (this.iframe._slot.offsetLeft || 0) + dropElCenter.x * this.iframe.scale,
-      y: (this.iframe._slot.offsetTop || 0) + dropElCenter.y * this.iframe.scale,
+      x: (this.iframe._slot.offsetLeft || 0) + dropEnd.x * this.iframe.scale,
+      y: (this.iframe._slot.offsetTop || 0) + dropEnd.y * this.iframe.scale,
     };
 
-    // Glide cursor over the source first (no click — drag picks up on press).
-    await this.cursor.glide(fromPt, { duration: 0.85 });
+    // Glide cursor onto source (lifts before press).
+    await this.cursor.glide(fromPt, { duration: 0.55 });
 
-    // Mount the visual ghost on the stage.
-    const ghost = this._mountFieldGhost(source);
-    Object.assign(ghost.style, {
-      left: fromPt.x + 'px',
-      top: fromPt.y + 'px',
+    // Build the cloned + style-inlined ghost — looks like the real WPForms
+    // sidebar pill (per runtime/drag.js#dragField). Capped at 260px wide.
+    const ghost = this._buildSidebarPillGhost(source, fromPt);
+    await this.iframe.wait(0.18); // brief press dwell with ghost lifted
+
+    // Carry: ghost + cursor glide simultaneously to toPt over carryDuration.
+    // Ghost uses a CSS transition (mirrors engine pattern); cursor uses gsap
+    // — both reach the destination at carryDuration seconds.
+    ghost.style.transition =
+      `left ${carryDuration}s cubic-bezier(.4,.1,.3,1), ` +
+      `top ${carryDuration}s cubic-bezier(.4,.1,.3,1), ` +
+      `transform 220ms ease, opacity 220ms ease`;
+    requestAnimationFrame(() => {
+      ghost.style.left = (toPt.x - ghost._halfW) + 'px';
+      ghost.style.top = (toPt.y - ghost._halfH) + 'px';
     });
 
-    // Press feedback on cursor + ghost (synced with Cursor.drag's press phase).
-    await this.cursor.drag(fromPt, toPt, { glideDuration: 0.10, dragDuration: 1.20 });
-    // We re-run a parallel ghost tween that matches the drag carry. Because
-    // Cursor.drag already moved the cursor to `toPt`, the ghost catches up.
-    await this._tweenGhostTo(ghost, toPt, 0.0); // already there after drag
+    // Mid-drag reveal: at ~58% of carry, FLIP-reveal the landing field so
+    // the canvas grows BEFORE the ghost lands. This is what makes the drop
+    // feel like a real DOM mutation instead of a faked appearance.
+    const revealAfter = Math.max(0, carryDuration * 0.58);
+    setTimeout(() => this._flipRevealLanded(landed), revealAfter * 1000);
 
-    // Drop: fade ghost out, append placeholder field to canvas.
-    await new Promise(resolve => {
-      gsap.to(ghost, { opacity: 0, scale: 0.92, duration: 0.22, ease: 'power2.in', onComplete: resolve });
-    });
+    await this.cursor.glide(toPt, { duration: carryDuration });
+
+    // Drop: ghost fades + un-tilts on top of the now-visible field.
+    ghost.style.transition = 'opacity 260ms ease, transform 260ms ease';
+    ghost.style.opacity = '0';
+    ghost.style.transform = 'rotate(0deg) scale(0.96)';
+    await this.iframe.wait(0.26);
     ghost.remove();
-    this._appendPlaceholderField(fieldSlug, dropZone);
 
-    // Tiny settle so the new field's reveal lands cleanly.
-    await this.iframe.wait(0.18);
+    // Cursor release squash-back (synthesized — `cursor.click()` style
+    // without the ripple).
+    await new Promise(resolve => {
+      gsap.to(this.cursor.el, {
+        scale: 1.0, duration: 0.20, ease: 'back.out(2)', onComplete: resolve,
+      });
+    });
+
+    // Tiny post-drop settle so the next beat doesn't piggyback.
+    await this.iframe.wait(0.16);
   }
 
-  _mountFieldGhost(sourceButtonEl) {
-    const rect = sourceButtonEl.getBoundingClientRect();
-    const wPx = rect.width * this.iframe.scale;
-    const hPx = rect.height * this.iframe.scale;
+  // Build a sidebar-pill ghost that visually matches the real WPForms drag.
+  // Implementation cribbed from runtime/drag.js#dragField — clone source,
+  // walk both trees, inline computed styles, cap width 260px, tilt + shadow.
+  _buildSidebarPillGhost(source, startPt) {
+    const srcR = source.getBoundingClientRect();
+    const z = this.iframe.scale;
+    const ghostScale = 0.9;
+    const maxW = 260;
+    const naturalW = srcR.width * z * ghostScale;
+    const gw = Math.min(naturalW, maxW);
+    const gh = gw * (srcR.height / srcR.width);
+
+    const clone = source.cloneNode(true);
+    clone.removeAttribute('id');
+    clone.querySelectorAll('[id]').forEach(n => n.removeAttribute('id'));
+
     const ghost = document.createElement('div');
     ghost.className = 'ifm-field-ghost';
+    ghost.appendChild(clone);
+
+    inlineTreeStyles(source, clone);
+
     Object.assign(ghost.style, {
       position: 'absolute',
-      width: wPx + 'px',
-      height: hPx + 'px',
-      marginLeft: -wPx / 2 + 'px',
-      marginTop: -hPx / 2 + 'px',
-      borderRadius: '4px',
-      background: '#0399ED',
-      color: '#fff',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif',
-      fontSize: 13 * this.iframe.scale + 'px',
-      fontWeight: '500',
+      width: gw + 'px', height: gh + 'px',
+      left: (startPt.x - gw / 2) + 'px',
+      top: (startPt.y - gh / 2) + 'px',
+      transform: 'rotate(2.5deg) scale(1)',
+      transformOrigin: 'center',
+      boxShadow: '0 18px 40px rgba(0,0,0,0.30), 0 6px 14px rgba(0,0,0,0.15)',
+      borderRadius: '6px',
+      overflow: 'hidden',
       pointerEvents: 'none',
-      boxShadow: '0 12px 28px rgba(0,0,0,0.25)',
-      opacity: '0.92',
       zIndex: '95',
-      transform: 'scale(1)',
+      opacity: '0',
+      transition: 'opacity 220ms ease, transform 220ms ease',
       willChange: 'transform, left, top, opacity',
     });
-    ghost.textContent = sourceButtonEl.textContent.trim();
+    // Make the inner clone fill the ghost box cleanly.
+    const inner = ghost.firstElementChild;
+    if (inner) {
+      inner.style.margin = '0';
+      inner.style.width = '100%';
+      inner.style.height = '100%';
+      inner.style.boxSizing = 'border-box';
+    }
     this.stage.appendChild(ghost);
+
+    // Cache half-dimensions for the carry phase (avoid re-measuring under transition).
+    ghost._halfW = gw / 2;
+    ghost._halfH = gh / 2;
+
+    // Press: lift + fade in.
+    requestAnimationFrame(() => {
+      ghost.style.opacity = '0.95';
+      ghost.style.transform = 'rotate(2.5deg) scale(1.06)';
+    });
     return ghost;
   }
 
-  async _tweenGhostTo(ghost, pt, duration) {
-    return new Promise(resolve => {
-      gsap.to(ghost, {
-        left: pt.x + 'px', top: pt.y + 'px',
-        duration: duration,
-        ease: 'power2.inOut',
-        onComplete: resolve,
-      });
-    });
+  // Prepare a hidden landing field by cloning an existing same-type field
+  // from the captured fixture. Returns the hidden element so the drag can
+  // reveal it with FLIP at the right moment.
+  _prepareLandingField(fieldSlug, fieldWrap) {
+    const doc = this.iframe.doc();
+    const donor = this.iframe.query(
+      `.wpforms-field-wrap > .wpforms-field[data-field-type="${cssEscape(fieldSlug)}"]`
+    );
+    let node;
+    if (donor) {
+      node = donor.cloneNode(true);
+      // Strip IDs to keep the DOM valid; assign a fresh data-field-id.
+      const newId = 9000 + (this.iframe.queryAll('.wpforms-field').length || 0);
+      node.id = `wpforms-field-${newId}`;
+      node.setAttribute('data-field-id', String(newId));
+      node.querySelectorAll('[id]').forEach(n => n.removeAttribute('id'));
+      // Show the field unconditionally (the donor might be display:none from
+      // a prior _applyFormProfile call).
+      node.style.display = 'none';
+    } else {
+      // Donor not in fixture — fall back to a minimal placeholder so the
+      // interaction still completes for fringe field types.
+      const tpl = doc.createElement('template');
+      const newId = 9000 + (this.iframe.queryAll('.wpforms-field').length || 0);
+      tpl.innerHTML = `
+        <div class="wpforms-field wpforms-field-${escapeHtml(fieldSlug)} size-medium ui-sortable-handle"
+             id="wpforms-field-${newId}" data-field-id="${newId}" data-field-type="${escapeHtml(fieldSlug)}"
+             style="display:none">
+          <label class="label-title"><span class="text">${escapeHtml(humanizeSlug(fieldSlug))}</span></label>
+          <input type="text" class="primary-input" readonly>
+        </div>`.trim();
+      node = tpl.content.firstElementChild;
+    }
+    fieldWrap.appendChild(node);
+    return node;
   }
 
-  _appendPlaceholderField(fieldSlug, fieldWrap) {
-    const d = this.iframe.doc();
-    if (!d) return;
-    // Compose a minimal placeholder mirroring real WPForms field markup
-    // shape: classes `wpforms-field wpforms-field-<slug> size-medium` +
-    // data-field-type. Visual fidelity is intentionally light — production
-    // chapters should use real DOM cloning via engine helpers instead.
-    const newId = 9000 + Math.floor((this.iframe.queryAll('.wpforms-field').length || 0));
-    const html = `
-      <div class="wpforms-field wpforms-field-${escapeHtml(fieldSlug)} size-medium ui-sortable-handle"
-           id="wpforms-field-${newId}" data-field-id="${newId}" data-field-type="${escapeHtml(fieldSlug)}"
-           style="opacity:0; transform: translateY(8px);">
-        <label class="label-title"><span class="text">${escapeHtml(humanizeSlug(fieldSlug))}</span></label>
-        <div class="wpforms-field-helper">
-          <span class="wpforms-field-helper-edit">Click to Edit</span>
-        </div>
-        <input type="text" placeholder="" value="" class="primary-input" readonly>
-      </div>
-    `.trim();
-    const template = d.createElement('template');
-    template.innerHTML = html;
-    const node = template.content.firstElementChild;
-    fieldWrap.appendChild(node);
-    // Reveal the new field.
-    gsap.to(node, {
-      opacity: 1, y: 0,
-      duration: 0.45, ease: 'power2.out',
-    });
+  // FLIP reveal: capture sibling positions, reveal the landed field, then
+  // animate siblings from their old positions back to their new positions
+  // so the canvas grows smoothly instead of jumping. Pops the landed field
+  // in with a brief scale-up.
+  _flipRevealLanded(el) {
+    if (!el || !el.parentElement) return;
+    const parent = el.parentElement;
+    const siblings = [...parent.children].filter(n => n !== el);
+    const first = new Map(siblings.map(n => [n, n.getBoundingClientRect()]));
+    el.style.display = 'block';
+    for (const n of siblings) {
+      const a = first.get(n);
+      const b = n.getBoundingClientRect();
+      const dx = a.left - b.left;
+      const dy = a.top - b.top;
+      if (Math.abs(dx) < 0.5 && Math.abs(dy) < 0.5) continue;
+      n.style.transition = 'none';
+      n.style.transform = `translate(${dx}px, ${dy}px)`;
+      void n.offsetWidth;
+      n.style.transition = 'transform 420ms cubic-bezier(0.22, 1, 0.36, 1)';
+      n.style.transform = 'translate(0, 0)';
+      setTimeout(() => { n.style.transition = ''; n.style.transform = ''; }, 500);
+    }
+    // Pop the inserted field in.
+    el.style.transformOrigin = 'center';
+    el.style.transition = 'transform 360ms cubic-bezier(0.22, 1, 0.36, 1), opacity 260ms ease';
+    el.style.transform = 'scale(0.96)';
+    el.style.opacity = '0.6';
+    void el.offsetWidth;
+    el.style.transform = 'scale(1)';
+    el.style.opacity = '1';
+    setTimeout(() => { el.style.transition = ''; el.style.transform = ''; el.style.opacity = ''; }, 420);
   }
 
   /**
@@ -675,13 +869,16 @@ export class WPFormsInteractions {
     if (fieldOptsLink) fieldOptsLink.classList.add('active');
     const addPanel = doc.querySelector('#wpforms-add-fields-tab');
     const optPanel = doc.querySelector('#wpforms-field-options');
+    // The base `.wpforms-tab-content` rule is `display:none`; only
+    // `.wpforms-tab-content.wpforms-add-fields` defaults to `display:block`.
+    // So we must explicitly force the field-options panel to block — clearing
+    // the inline style would fall back to the stylesheet default (none).
     if (addPanel) addPanel.style.display = 'none';
     if (optPanel) {
-      optPanel.style.display = '';
-      // Hide all field-option panels, show the targeted one.
+      optPanel.style.display = 'block';
       const panels = optPanel.querySelectorAll('.wpforms-field-option');
       for (const p of panels) {
-        p.style.display = p.getAttribute('data-field-id') === String(fieldId) ? '' : 'none';
+        p.style.display = p.getAttribute('data-field-id') === String(fieldId) ? 'block' : 'none';
       }
     }
     // Mark the canvas field as active (matches the real product .active class).
@@ -763,6 +960,49 @@ export class WPFormsInteractions {
 function cssEscape(v) {
   if (typeof CSS !== 'undefined' && CSS.escape) return CSS.escape(v);
   return String(v).replace(/(["\\'`#.\[\]:;,>~+= ])/g, '\\$1');
+}
+
+// Visual-only style props worth inlining when cloning iframe-doc elements
+// onto the stage (parent document). Lifted verbatim from runtime/drag.js so
+// the standalone ghost matches the engine's behavior.
+const INLINE_PROPS = [
+  'background-color', 'background-image', 'background-repeat', 'background-position', 'background-size',
+  'color', 'opacity',
+  'border-top', 'border-right', 'border-bottom', 'border-left',
+  'border-radius',
+  'box-shadow',
+  'font-family', 'font-size', 'font-weight', 'font-style', 'line-height', 'letter-spacing', 'text-transform', 'text-align', 'text-decoration',
+  'padding-top', 'padding-right', 'padding-bottom', 'padding-left',
+  'margin-top', 'margin-right', 'margin-bottom', 'margin-left',
+  'display', 'align-items', 'justify-content', 'gap',
+  'width', 'height', 'min-width', 'min-height',
+];
+
+function copyVisualStyles(src, dst) {
+  const win = src.ownerDocument && src.ownerDocument.defaultView;
+  if (!win) return;
+  const cs = win.getComputedStyle(src);
+  for (const prop of INLINE_PROPS) {
+    const v = cs.getPropertyValue(prop);
+    if (v) dst.style.setProperty(prop, v);
+  }
+}
+
+// Walk source + clone trees in lockstep and copy computed styles onto clone.
+// This is the fix for the "gray ghost" bug — iframe CSS doesn't reach a
+// clone mounted on the parent document, so we materialize every visual
+// style inline before the carry begins.
+function inlineTreeStyles(srcRoot, cloneRoot) {
+  const srcWalker = srcRoot.ownerDocument.createTreeWalker(srcRoot, NodeFilter.SHOW_ELEMENT);
+  const cloneWalker = document.createTreeWalker(cloneRoot, NodeFilter.SHOW_ELEMENT);
+  copyVisualStyles(srcRoot, cloneRoot);
+  let s = srcWalker.nextNode();
+  let c = cloneWalker.nextNode();
+  while (s && c) {
+    copyVisualStyles(s, c);
+    s = srcWalker.nextNode();
+    c = cloneWalker.nextNode();
+  }
 }
 
 function escapeHtml(s) {
