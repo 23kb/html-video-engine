@@ -10,7 +10,8 @@
 <div class="header">
   <h1>dragFieldToForm(fieldSlug)</h1>
   <div class="desc">
-    Cursor glides to a field button in the left palette, presses, carries a ghost element to the form canvas, releases, and the new field is appended to <code>.wpforms-field-wrap</code>. DOM-only — no snapshot swap.
+    Cursor glides to a field button in the left palette, presses, carries a ghost element onto the form canvas, releases. Mid-drag the canvas FLIP-grows to make room. DOM-only.
+    The starting form layout is replaceable — defaults to <strong>Contact Us</strong> (3 fields). Pick a different form profile to start from a different layout.
     Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> · <a href="index.html">← back to index</a>
   </div>
 </div>
@@ -22,6 +23,13 @@
 </div>
 
 <div class="controls">
+  <label style="font-size:12px; opacity:0.7; font-family:ui-monospace,monospace">form profile:</label>
+  <select id="profilePicker">
+    <option value="55">Contact Us form (Name + Email + Message)</option>
+    <option value="53">Newsletter Signup (Name + Email)</option>
+    <option value="40">Job Application (Name + Email + Phone + Address + Description)</option>
+    <option value="">— Skip profile (all-fields fixture) —</option>
+  </select>
   <label style="font-size:12px; opacity:0.7; font-family:ui-monospace,monospace">field type:</label>
   <select id="fieldPicker">
     <option value="text">text — Single Line Text</option>
@@ -45,9 +53,18 @@ import { bootQc } from '/videos/_qc-interactions/_shell.js';
 bootQc({
   startSnapshot: 'builder-fields',
   cursorStart: { x: 1180, y: 660 },
+  // Apply the Contact Us profile at startup so the drop target lands below
+  // 3 visible fields (Name + Email + Message) rather than the bottom of
+  // the 50+ field fixture, which would be way off-screen.
+  onReady: async ({ interactions }) => {
+    const initialProfile = document.getElementById('profilePicker').value;
+    if (initialProfile) interactions.applyFormProfile(initialProfile);
+  },
   run: async ({ interactions, setState }) => {
+    const profile = document.getElementById('profilePicker').value;
+    if (profile) interactions.applyFormProfile(profile);
     const slug = document.getElementById('fieldPicker').value;
-    setState(`dragFieldToForm("${slug}")`);
+    setState(`dragFieldToForm("${slug}") onto form ${profile || 'fixture'}`);
     await interactions.dragFieldToForm(slug);
   },
 });

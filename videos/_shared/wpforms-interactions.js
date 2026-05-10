@@ -125,15 +125,22 @@ export class IframeManager {
     return f;
   }
 
-  static _waitForIframeLoad(iframe) {
+  static _waitForIframeLoad(iframe, expectedUrl) {
     return new Promise(resolve => {
       const done = () => resolve();
-      // Most browsers fire load after src is set; if already complete, resolve
-      // on a microtask.
-      if (iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
-        Promise.resolve().then(done);
-        return;
-      }
+      // Check if the iframe is ALREADY done loading the EXPECTED url. The
+      // about:blank initial doc shows `readyState === 'complete'` before
+      // navigation even starts, so we can't trust readyState alone — we
+      // also need the contentWindow.location.href to match. If anything
+      // doesn't line up, fall through to the load event.
+      try {
+        const href = iframe.contentWindow && iframe.contentWindow.location && iframe.contentWindow.location.href;
+        if (expectedUrl && href && href.endsWith(expectedUrl) &&
+            iframe.contentDocument && iframe.contentDocument.readyState === 'complete') {
+          Promise.resolve().then(done);
+          return;
+        }
+      } catch (_) { /* cross-origin or not-yet-ready — fall through */ }
       iframe.addEventListener('load', done, { once: true });
     });
   }
@@ -149,7 +156,7 @@ export class IframeManager {
     }
     const f = this._createIframe(slug);
     this._slot.appendChild(f);
-    await IframeManager._waitForIframeLoad(f);
+    await IframeManager._waitForIframeLoad(f, `${this.snapshotBase}/${slug}/${this.indexFile}`);
     this._iframe = f;
     this._slug = slug;
     // Single-frame opacity flip via gsap so determinism check passes (no setTimeout).
@@ -175,7 +182,7 @@ export class IframeManager {
     if (this._slug === slug) return this._iframe;
     const next = this._createIframe(slug);
     this._slot.appendChild(next);
-    await IframeManager._waitForIframeLoad(next);
+    await IframeManager._waitForIframeLoad(next, `${this.snapshotBase}/${slug}/${this.indexFile}`);
     const prev = this._iframe;
     await new Promise(resolve => {
       let done = 0;
@@ -255,11 +262,15 @@ export class IframeManager {
   }
 
   /**
-   * Scroll an iframe-document element into view (smooth, no Date.now).
+   * Scroll an iframe-document element into view. Defaults to `behavior:
+   * 'auto'` (instant) so the cursor's glide can rely on a stable target
+   * position — `'smooth'` would still be scrolling while cursor.glide
+   * reads coordinates, landing the click off-target (this was the
+   * Form 40 click-target drift Umair flagged).
    * @param {string|Element} target
    * @param {ScrollIntoViewOptions} [opts]
    */
-  scrollIntoView(target, opts = { block: 'center', behavior: 'smooth' }) {
+  scrollIntoView(target, opts = { block: 'center', behavior: 'auto' }) {
     const el = typeof target === 'string' ? this.query(target) : target;
     if (!el) return;
     el.scrollIntoView(opts);
@@ -373,8 +384,14 @@ export class WPFormsInteractions {
 
   async _glideAndClick(selector, opts = {}) {
     const el = typeof selector === 'string' ? this._findOrThrow(selector, 'glideAndClick') : selector;
-    this.iframe.scrollIntoView(el);
-    await this.iframe.wait(0.25); // let smooth-scroll settle (deterministic via gsap)
+    // skipScroll: bail on the second scrollIntoView. Useful after a hover
+    // reveal that's already aligned the target — re-scrolling would shift
+    // the click point out from under the cursor, which is exactly the bug
+    // selectTemplate hit when buttons appeared at `position:absolute;bottom`.
+    if (!opts.skipScroll) {
+      this.iframe.scrollIntoView(el);
+      await this.iframe.wait(0.25);
+    }
     const pt = this.iframe.elementToStageCoords(el);
     await this.cursor.glide(pt, { duration: opts.glideDuration ?? 0.95 });
     await this.cursor.click({ ripple: opts.ripple ?? true });
@@ -459,14 +476,17 @@ export class WPFormsInteractions {
     await this.iframe.wait(0.55); // dwell so the viewer reads the buttons
 
     // 3) Click the primary action button (orange for blank + standard;
-    //    purple-dark for the AI generate card).
+    //    purple-dark for the AI generate card). skipScroll: the buttons
+    //    sit `position:absolute; bottom:15px` inside the already-in-view
+    //    card; a second scrollIntoView would shift them out from under
+    //    the cursor mid-glide and the click would miss.
     const primary = card.querySelector(
       '.wpforms-template-generate, .wpforms-template-select'
     );
     if (!primary) {
       throw new Error(`selectTemplate: no primary action button inside card for slug '${slug}'`);
     }
-    await this._glideAndClick(primary);
+    await this._glideAndClick(primary, { skipScroll: true });
     await this.iframe.wait(0.18);
     await this.iframe.swap('builder-setup', { duration: opts.swapDuration ?? 0.32 });
   }
@@ -570,10 +590,9 @@ export class WPFormsInteractions {
     // Click target: the bolded form-name <strong>, not the parent <a>. The
     // anchor's bounding rect includes the row-actions row below the title,
     // which made the cursor land visibly below the form name. Targeting
-    // <strong> puts the cursor squarely on the title text.
+    // <strong> puts the cursor squarely on the title text. `_glideAndClick`
+    // handles the scroll-into-view internally (instant, then coord read).
     const titleEl = link.querySelector('strong') || link;
-    this.iframe.scrollIntoView(titleEl);
-    await this.iframe.wait(0.35);
     await this._glideAndClick(titleEl);
     await this.iframe.wait(0.18);
     await this.iframe.swap('builder-fields', { duration: opts.swapDuration ?? 0.32 });
@@ -588,18 +607,45 @@ export class WPFormsInteractions {
    * in the form's profile. Falls back to a no-op for unknown form IDs
    * (visible result: the all-fields fixture as captured).
    */
+  /**
+   * Apply a form profile to the currently-loaded builder-fields snapshot.
+   * Sets the form title (both toolbar span AND canvas h2 — there are TWO
+   * `.wpforms-form-name` elements) and hides any canvas field whose
+   * data-field-id isn't in the profile's allowlist. Public so callers
+   * can apply a profile without going through openFormInList (e.g. the
+   * dragFieldToForm QC page mounts on builder-fields and wants the
+   * Contact Us layout from the start).
+   *
+   * @param {string|number} formId — key into FORM_PROFILES
+   * @returns {boolean} true if a profile was applied
+   */
+  applyFormProfile(formId) {
+    return this._applyFormProfile(String(formId));
+  }
+
   _applyFormProfile(formId) {
     const profile = FORM_PROFILES[formId];
-    if (!profile) return;
+    if (!profile) return false;
     const doc = this.iframe.doc();
-    if (!doc) return;
-    const titleEl = doc.querySelector('.wpforms-form-name');
-    if (titleEl) titleEl.textContent = profile.name;
+    if (!doc) return false;
+    // BOTH form-name elements get updated — the captured builder ships a
+    // `.wpforms-center-form-name.wpforms-form-name` <span> in the toolbar
+    // AND an `<h2 class="wpforms-form-name">` in the canvas title-desc.
+    // querySelector would only catch the first; querySelectorAll catches both.
+    for (const titleEl of doc.querySelectorAll('.wpforms-form-name')) {
+      titleEl.textContent = profile.name;
+    }
     const allowed = new Set(profile.fields.map(String));
-    for (const field of this.iframe.queryAll('.wpforms-field-wrap > .wpforms-field')) {
+    // Iterate ALL fields anywhere in the wrap (not just direct children) —
+    // payment fields like paypal-commerce, stripe-credit-card, and the
+    // payment-* set live alongside the basics in the captured All-Fields
+    // Fixture and need to be hidden too. The direct-child selector missed
+    // them when they were grouped inside a layout container.
+    for (const field of this.iframe.queryAll('.wpforms-field-wrap .wpforms-field')) {
       const id = field.getAttribute('data-field-id');
       if (!allowed.has(id)) field.style.display = 'none';
     }
+    return true;
   }
 
   // ── Wave 1: Builder-side ────────────────────────────────────────────────
@@ -642,13 +688,27 @@ export class WPFormsInteractions {
     // it with `display: block`.
     const landed = this._prepareLandingField(fieldSlug, dropZone);
 
-    // Resolve start (source) + end (drop-zone bottom) in stage coords.
+    // Drop point = just below the LAST VISIBLE existing field that's still
+    // in the iframe's viewport. The all-fields fixture renders ~50 fields
+    // at full height, so its wrap-bottom is several thousand pixels down;
+    // we clamp to the iframe's visible viewport so the cursor stays on
+    // screen. If no visible-and-on-screen field exists, drop near the top
+    // of the wrap.
+    const iframeViewportH = this.iframe.iframeSize.height;
+    const visibleFields = this.iframe
+      .queryAll('.wpforms-field-wrap .wpforms-field')
+      .filter(el => {
+        if (el === landed) return false;
+        if (el.offsetParent === null) return false;
+        const r = el.getBoundingClientRect();
+        return r.bottom > 0 && r.bottom < iframeViewportH;
+      });
+    const anchorEl = visibleFields[visibleFields.length - 1] || dropZone;
+    const anchorRect = anchorEl.getBoundingClientRect();
     const fromPt = this.iframe.elementToStageCoords(source);
-    const dropRect = dropZone.getBoundingClientRect();
-    const dropEnd = {
-      x: dropRect.left + dropRect.width / 2,
-      y: dropRect.bottom - 28,
-    };
+    const dropEnd = anchorEl === dropZone
+      ? { x: anchorRect.left + anchorRect.width / 2, y: Math.min(anchorRect.top + 80, iframeViewportH - 60) }
+      : { x: anchorRect.left + anchorRect.width / 2, y: anchorRect.bottom + 28 };
     const toPt = {
       x: (this.iframe._slot.offsetLeft || 0) + dropEnd.x * this.iframe.scale,
       y: (this.iframe._slot.offsetTop || 0) + dropEnd.y * this.iframe.scale,
@@ -884,6 +944,123 @@ export class WPFormsInteractions {
     // Mark the canvas field as active (matches the real product .active class).
     for (const el of this.iframe.queryAll('.wpforms-field.active')) el.classList.remove('active');
     field.classList.add('active');
+    await this.iframe.wait(0.18);
+  }
+
+  // ── Wave 1: Field-option sub-interactions ───────────────────────────────
+  // After `openFieldOptions(fieldId)` exposes a field's option panel, these
+  // methods drive specific sub-controls. Each one (a) glides + clicks the
+  // sub-control, (b) updates the option DOM (the actual control value), and
+  // (c) mirrors the change to the field's canvas representation so the
+  // viewer sees the form update in real time. State references come from
+  // `docs/wpforms-field-state-inventory.md` (queryable via
+  // `node tools/field-state.js --field <name>`).
+
+  /**
+   * Rename a field's label. The Label option input under General gets the
+   * new text typed in, and the canvas `.label-title .text` element updates
+   * to match. Works for any field type that exposes a Label option.
+   *
+   * @prerequisite openFieldOptions(fieldId) has been called for this field
+   * @operation dom-only
+   * @realDom Input `#wpforms-field-option-<id>-label` (option panel).
+   *   Canvas mirror: `#wpforms-field-<id> .label-title .text`.
+   *
+   * @param {number|string} fieldId
+   * @param {string} newLabel
+   * @returns {Promise<void>}
+   */
+  async setFieldLabel(fieldId, newLabel) {
+    this._assertSnapshot('builder-fields', 'setFieldLabel');
+    const input = this._findOrThrow(
+      `#wpforms-field-option-${cssEscape(String(fieldId))}-label`,
+      'setFieldLabel'
+    );
+    await this._glideAndClick(input, { ripple: false });
+    input.value = newLabel;
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    // Canvas mirror.
+    const canvasLabel = this.iframe.query(
+      `#wpforms-field-${cssEscape(String(fieldId))} .label-title .text`
+    );
+    if (canvasLabel) canvasLabel.textContent = newLabel;
+    await this.iframe.wait(0.18);
+  }
+
+  /**
+   * Switch a Name field's Format between 'simple', 'first-last', and
+   * 'first-middle-last'. The Format dropdown value changes and the
+   * canvas wrapper's `format-selected-*` class flips. The captured CSS
+   * already controls which sub-blocks (.wpforms-simple, .wpforms-first-name,
+   * .wpforms-middle-name, .wpforms-last-name) show per format — flipping
+   * the wrapper class makes the canvas re-layout instantly.
+   *
+   * @prerequisite openFieldOptions(fieldId) has been called for a Name field
+   * @operation dom-only
+   * @realDom Select `#wpforms-field-option-<id>-format` (option panel).
+   *   Canvas wrapper: `#wpforms-field-<id> .format-selected`.
+   *
+   * @param {number|string} fieldId
+   * @param {'simple'|'first-last'|'first-middle-last'} format
+   * @returns {Promise<void>}
+   */
+  async setNameFormat(fieldId, format) {
+    this._assertSnapshot('builder-fields', 'setNameFormat');
+    const allowed = ['simple', 'first-last', 'first-middle-last'];
+    if (!allowed.includes(format)) {
+      throw new Error(`setNameFormat: invalid format '${format}'. Valid: ${allowed.join(', ')}`);
+    }
+    const select = this._findOrThrow(
+      `#wpforms-field-option-${cssEscape(String(fieldId))}-format`,
+      'setNameFormat'
+    );
+    await this._glideAndClick(select, { ripple: false });
+    select.value = format;
+    select.dispatchEvent(new Event('change', { bubbles: true }));
+    // Canvas mirror: flip the wrapper class.
+    const wrapper = this.iframe.query(
+      `#wpforms-field-${cssEscape(String(fieldId))} .format-selected`
+    );
+    if (wrapper) {
+      wrapper.classList.remove('format-selected-simple', 'format-selected-first-last', 'format-selected-first-middle-last');
+      wrapper.classList.add(`format-selected-${format}`);
+    }
+    await this.iframe.wait(0.18);
+  }
+
+  /**
+   * Toggle the Email field's "Enable Email Confirmation" option. When ON,
+   * the canvas wrapper's class flips from `wpforms-confirm-disabled` to
+   * `wpforms-confirm-enabled`, which the captured CSS uses to reveal the
+   * confirmation sub-input. The toggle's checkbox is flipped too.
+   *
+   * @prerequisite openFieldOptions(fieldId) has been called for an Email field
+   * @operation dom-only
+   * @realDom Toggle `#wpforms-field-option-<id>-confirmation` (option panel).
+   *   Canvas wrapper: `#wpforms-field-<id> .wpforms-confirm`.
+   *
+   * @param {number|string} fieldId
+   * @param {boolean} [on=true]
+   * @returns {Promise<void>}
+   */
+  async toggleEmailConfirmation(fieldId, on = true) {
+    this._assertSnapshot('builder-fields', 'toggleEmailConfirmation');
+    const checkbox = this._findOrThrow(
+      `#wpforms-field-option-${cssEscape(String(fieldId))}-confirmation`,
+      'toggleEmailConfirmation'
+    );
+    // Click the visible toggle slider (the icon label), not the hidden checkbox.
+    const slider = checkbox.parentElement?.querySelector('.wpforms-toggle-control-icon') || checkbox;
+    await this._glideAndClick(slider, { ripple: false });
+    checkbox.checked = !!on;
+    checkbox.dispatchEvent(new Event('change', { bubbles: true }));
+    const wrapper = this.iframe.query(
+      `#wpforms-field-${cssEscape(String(fieldId))} .wpforms-confirm`
+    );
+    if (wrapper) {
+      wrapper.classList.toggle('wpforms-confirm-enabled', !!on);
+      wrapper.classList.toggle('wpforms-confirm-disabled', !on);
+    }
     await this.iframe.wait(0.18);
   }
 

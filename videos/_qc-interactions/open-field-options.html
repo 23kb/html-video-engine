@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>openFieldOptions(fieldId) — QC</title>
+<title>openFieldOptions + sub-interactions — QC</title>
 <link rel="stylesheet" href="/videos/_qc-interactions/_shell.css">
 </head>
 <body>
 
 <div class="header">
-  <h1>openFieldOptions(fieldId)</h1>
+  <h1>openFieldOptions + sub-interactions</h1>
   <div class="desc">
-    Cursor glides to a field on the canvas, clicks, and the left sidebar tab swaps from "Add Fields" to "Field Options" with that field's option panel visible. DOM-only — no snapshot swap.
-    Available field IDs in <code>builder-fields</code>: 48 (Name), 49 (Email), 50 (Textarea), and many more.
+    Click a field on the canvas to open its Field Options panel, then run a sub-interaction (label rename, format switch, toggle, etc.). The canvas mirror updates in real time. DOM-only — no snapshot swap.
+    Pick a flow from the dropdown. State references: <a href="/docs/wpforms-interactions-library-2026-05-11.md">library doc</a>.
     Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> · <a href="index.html">← back to index</a>
   </div>
 </div>
@@ -23,13 +23,16 @@
 </div>
 
 <div class="controls">
-  <label style="font-size:12px; opacity:0.7; font-family:ui-monospace,monospace">field id:</label>
-  <select id="fieldIdPicker">
-    <option value="48">48 — Name (first / last)</option>
-    <option value="49">49 — Email</option>
-    <option value="50">50 — Paragraph Text</option>
+  <label style="font-size:12px; opacity:0.7; font-family:ui-monospace,monospace">flow:</label>
+  <select id="flowPicker">
+    <option value="name-relabel-and-format">Name (48) → rename to "Full Name" + Format=First Middle Last</option>
+    <option value="email-confirm">Email (49) → Enable Email Confirmation</option>
+    <option value="name-label-only">Name (48) → rename label only</option>
+    <option value="textarea-relabel">Paragraph Text (50) → rename to "Your message"</option>
+    <option value="checkboxes-relabel">Checkboxes (7) → rename to "Subscribe to..."</option>
+    <option value="radio-relabel">Multiple Choice (6) → rename to "Pick a topic"</option>
   </select>
-  <button id="runBtn" class="primary">▶ open field options</button>
+  <button id="runBtn" class="primary">▶ run flow</button>
   <button id="resetBtn">⟲ reset</button>
   <span class="time" id="timeLabel">…</span>
 </div>
@@ -38,13 +41,55 @@
 <script type="module">
 import { bootQc } from '/videos/_qc-interactions/_shell.js';
 
+const FLOWS = {
+  'name-relabel-and-format': async ({ interactions, setState }) => {
+    setState('opening Name (48) field options');
+    await interactions.openFieldOptions(48);
+    setState('renaming label → "Full Name"');
+    await interactions.setFieldLabel(48, 'Full Name');
+    setState('setting format → First Middle Last');
+    await interactions.setNameFormat(48, 'first-middle-last');
+  },
+  'email-confirm': async ({ interactions, setState }) => {
+    setState('opening Email (49) field options');
+    await interactions.openFieldOptions(49);
+    setState('toggling Enable Email Confirmation');
+    await interactions.toggleEmailConfirmation(49, true);
+  },
+  'name-label-only': async ({ interactions, setState }) => {
+    setState('opening Name (48) field options');
+    await interactions.openFieldOptions(48);
+    setState('renaming label → "Full Name"');
+    await interactions.setFieldLabel(48, 'Full Name');
+  },
+  'textarea-relabel': async ({ interactions, setState }) => {
+    setState('opening Paragraph Text (50) field options');
+    await interactions.openFieldOptions(50);
+    setState('renaming label → "Your message"');
+    await interactions.setFieldLabel(50, 'Your message');
+  },
+  'checkboxes-relabel': async ({ interactions, setState }) => {
+    setState('opening Checkboxes (7) field options');
+    await interactions.openFieldOptions(7);
+    setState('renaming label → "Subscribe to..."');
+    await interactions.setFieldLabel(7, 'Subscribe to...');
+  },
+  'radio-relabel': async ({ interactions, setState }) => {
+    setState('opening Multiple Choice (6) field options');
+    await interactions.openFieldOptions(6);
+    setState('renaming label → "Pick a topic"');
+    await interactions.setFieldLabel(6, 'Pick a topic');
+  },
+};
+
 bootQc({
   startSnapshot: 'builder-fields',
   cursorStart: { x: 1180, y: 660 },
-  run: async ({ interactions, setState }) => {
-    const id = document.getElementById('fieldIdPicker').value;
-    setState(`openFieldOptions(${id})`);
-    await interactions.openFieldOptions(id);
+  run: async (api) => {
+    const flow = document.getElementById('flowPicker').value;
+    const fn = FLOWS[flow];
+    if (!fn) throw new Error(`Unknown flow: ${flow}`);
+    await fn(api);
   },
 });
 </script>

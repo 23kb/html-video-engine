@@ -27,6 +27,7 @@ export async function bootQc(opts) {
   const {
     startSnapshot,
     cursorStart = { x: 1180, y: 660 },
+    onReady = null,
     run,
   } = opts;
 
@@ -63,6 +64,9 @@ export async function bootQc(opts) {
 
   setState('loading snapshot', startSnapshot);
   await iframeManager.load(startSnapshot);
+  if (onReady) {
+    try { await onReady({ interactions, setState }); } catch (e) { console.error('[onReady]', e); }
+  }
   setState('ready', 'idle');
 
   // Surface iframe console errors to the host page console (preview_eval-friendly).
@@ -102,6 +106,9 @@ export async function bootQc(opts) {
     cursor = new Cursor(stage, { initialX: cursorStart.x, initialY: cursorStart.y });
     interactions = new WPFormsInteractions(stage, cursor, iframeManager);
     await iframeManager.load(startSnapshot);
+    if (onReady) {
+      try { await onReady({ interactions, setState }); } catch (e) { console.error('[onReady]', e); }
+    }
     wireIframeConsole();
     setState('ready', 'idle');
     disable(false);
