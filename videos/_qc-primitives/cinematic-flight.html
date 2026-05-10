@@ -105,7 +105,8 @@ const tl = cinematicFlight(camera, {
   scaleDipFactor: 0.85,
   rotationTilt: 1.5,
   microZoom: {
-    to: { x: -620, y: -90, scale: 1.85 },
+    // B center (1040, 410) at scale 1.85: tx = -(1040-640)*1.85 = -740, ty = -(410-360)*1.85 = -92.5
+    to: { x: -740, y: -92.5, scale: 1.85 },
     duration: 0.7,
   },
 });

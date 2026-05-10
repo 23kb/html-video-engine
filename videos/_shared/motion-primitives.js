@@ -207,20 +207,236 @@ export function focusStationOverview(camera, opts) {
 // CURSOR + INTERACTION PRIMITIVES
 // ─────────────────────────────────────────────────────────────────────────
 
+const DEFAULT_CURSOR_SVG = `
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M3 2 L21 12 L13 14 L11 22 Z" fill="#1c1f28" stroke="#fff" stroke-width="1.5" stroke-linejoin="round"/>
+  </svg>
+`;
+
 /**
- * Straight-line cursor glide with anti-frenzy guards. Per
- * videos/wpforms-ai-board/LESSONS.md cursor section: motion-path with single
- * via-point above target causes cursor to overshoot then return (reads as
- * "frenzy"). Default is straight-line `gsap.to` with power2.inOut and
- * `killTweensOf` to prevent stale tweens from fighting.
+ * Cursor class — mounts a real cursor element on a stage, exposes glide /
+ * click / hover / drag with built-in anti-frenzy guards. Each video session
+ * gets a consistent cursor without re-implementing mounting + glide + click
+ * choreography.
  *
- * @param {HTMLElement} cursor
- * @param {{x:number,y:number}} from — current (used only if cursor isn't placed)
- * @param {{x:number,y:number}} to
- * @param {Object} [opts]
- * @param {number} [opts.duration=0.95] — default 0.95–1.10s; sub-0.85 reads as jump-cut
- * @param {string} [opts.ease='power2.inOut']
- * @returns {gsap.core.Tween}
+ * Source: anti-frenzy pattern from videos/wpforms-ai-board/LESSONS.md cursor
+ * section. Click squash + ripple from videos/wpforms-ai-board/index.html.
+ *
+ * @example
+ *   const cursor = new Cursor(stage, { initialX: 100, initialY: 100 });
+ *   await cursor.glide({ x: 500, y: 300 });    // 0.95s power2.inOut
+ *   await cursor.click();                       // squash + ripple
+ *   await cursor.hover(buttonEl);               // glide to el's center
+ *   await cursor.drag(fromPos, toPos);          // press → move → release
+ *   cursor.remove();                            // cleanup
+ */
+export class Cursor {
+  /**
+   * @param {HTMLElement} stage — element to mount cursor in (position:relative)
+   * @param {Object} [opts]
+   * @param {string} [opts.svg=DEFAULT_CURSOR_SVG] — custom cursor inner HTML
+   * @param {number} [opts.size=24] — cursor element size in px
+   * @param {number} [opts.initialX=0] — initial stage-coord x
+   * @param {number} [opts.initialY=0] — initial stage-coord y
+   * @param {number} [opts.zIndex=100]
+   */
+  constructor(stage, opts = {}) {
+    const {
+      svg = DEFAULT_CURSOR_SVG,
+      size = 24,
+      initialX = 0,
+      initialY = 0,
+      zIndex = 100,
+    } = opts;
+
+    this.stage = stage;
+    this.el = document.createElement('div');
+    this.el.className = 'ml-cursor';
+    Object.assign(this.el.style, {
+      position: 'absolute',
+      left: '0', top: '0',
+      width: size + 'px',
+      height: size + 'px',
+      pointerEvents: 'none',
+      zIndex: String(zIndex),
+      willChange: 'transform',
+    });
+    this.el.innerHTML = svg;
+    if (this.el.firstElementChild) {
+      this.el.firstElementChild.style.width = '100%';
+      this.el.firstElementChild.style.height = '100%';
+      this.el.firstElementChild.style.filter = 'drop-shadow(0 2px 4px rgba(0,0,0,0.35))';
+    }
+    stage.appendChild(this.el);
+    gsap.set(this.el, { x: initialX, y: initialY });
+    this._pos = { x: initialX, y: initialY };
+  }
+
+  /**
+   * Instant set position. No tween.
+   */
+  setPos(x, y) {
+    gsap.killTweensOf(this.el, 'x,y');
+    gsap.set(this.el, { x, y });
+    this._pos = { x, y };
+  }
+
+  /**
+   * Glide to target stage-coord. Anti-frenzy: straight-line `gsap.to`,
+   * `power2.inOut`, killTweensOf at start, default 0.95s (sub-0.85 reads
+   * as jump-cut per LESSONS.md).
+   *
+   * @param {{x:number,y:number}} to
+   * @param {Object} [opts]
+   * @param {number} [opts.duration=0.95]
+   * @param {string} [opts.ease='power2.inOut']
+   * @returns {Promise<void>}
+   */
+  glide(to, opts = {}) {
+    const { duration = 0.95, ease = 'power2.inOut' } = opts;
+    gsap.killTweensOf(this.el, 'x,y,motionPath');
+    this._pos = { x: to.x, y: to.y };
+    return new Promise(resolve => {
+      gsap.to(this.el, { x: to.x, y: to.y, duration, ease, onComplete: resolve });
+    });
+  }
+
+  /**
+   * Click animation at current cursor position: squash → ripple → release.
+   * Synchronous spawn of the ripple element; cursor squash + restore on
+   * the same timeline.
+   *
+   * @param {Object} [opts]
+   * @param {string} [opts.rippleColor='rgba(226,119,48,0.92)'] — WPForms orange
+   * @param {number} [opts.rippleScale=2.4]
+   * @param {number} [opts.rippleDuration=0.55]
+   * @param {boolean} [opts.ripple=true] — set false to skip ripple
+   * @returns {Promise<void>}
+   */
+  click(opts = {}) {
+    const {
+      rippleColor = 'rgba(226, 119, 48, 0.92)',
+      rippleScale = 2.4,
+      rippleDuration = 0.55,
+      ripple = true,
+    } = opts;
+
+    if (ripple) {
+      const r = document.createElement('div');
+      r.className = 'ml-click-ripple';
+      Object.assign(r.style, {
+        position: 'absolute',
+        left: this._pos.x + 'px',
+        top: this._pos.y + 'px',
+        width: '40px', height: '40px',
+        marginLeft: '-20px', marginTop: '-20px',
+        border: '2px solid ' + rippleColor,
+        borderRadius: '50%',
+        pointerEvents: 'none',
+        zIndex: '99',
+      });
+      this.stage.appendChild(r);
+      gsap.timeline()
+        .to(r, { scale: rippleScale, opacity: 0, duration: rippleDuration, ease: 'power3.out' })
+        .call(() => r.remove());
+    }
+
+    return new Promise(resolve => {
+      gsap.timeline()
+        .to(this.el, { scale: 0.78, duration: 0.10, ease: 'power2.in' })
+        .to(this.el, { scale: 1.0, duration: 0.18, ease: 'back.out(2)', onComplete: resolve });
+    });
+  }
+
+  /**
+   * Hover-and-settle: glide to a stage-coord target, then a tiny seeded
+   * jitter to imply human hand. The jitter is 1-2px and uses mulberry32
+   * (deterministic) so render-parity holds.
+   *
+   * @param {{x:number,y:number}} to
+   * @param {Object} [opts]
+   * @param {number} [opts.duration=0.95]
+   * @param {number} [opts.jitterAmplitude=1.5]
+   * @param {number} [opts.settleDuration=0.6]
+   * @param {number} [opts.seed=42]
+   * @returns {Promise<void>}
+   */
+  async hover(to, opts = {}) {
+    const {
+      duration = 0.95,
+      jitterAmplitude = 1.5,
+      settleDuration = 0.6,
+      seed = 42,
+    } = opts;
+    await this.glide(to, { duration });
+    const rng = mulberry32(seed);
+    const jx = (rng() - 0.5) * 2 * jitterAmplitude;
+    const jy = (rng() - 0.5) * 2 * jitterAmplitude;
+    return new Promise(resolve => {
+      gsap.to(this.el, {
+        x: to.x + jx, y: to.y + jy,
+        duration: settleDuration,
+        ease: 'sine.inOut',
+        onComplete: () => {
+          this._pos = { x: to.x + jx, y: to.y + jy };
+          resolve();
+        },
+      });
+    });
+  }
+
+  /**
+   * Drag pattern: glide to `from` → click (press) → glide to `to` (carrying)
+   * → release. No DOM cloning here — that's the caller's responsibility
+   * (this primitive just choreographs the cursor). For full visual drag
+   * with ghost element, use the engine's `runtime/drag.js#dragField` from
+   * a chapter (or pair this with a custom ghost in editorial code).
+   *
+   * @param {{x:number,y:number}} from
+   * @param {{x:number,y:number}} to
+   * @param {Object} [opts]
+   * @param {number} [opts.glideDuration=0.95]
+   * @param {number} [opts.dragDuration=1.20]
+   * @returns {Promise<void>}
+   */
+  async drag(from, to, opts = {}) {
+    const { glideDuration = 0.95, dragDuration = 1.20 } = opts;
+    await this.glide(from, { duration: glideDuration });
+    // Press (squash without ripple — drag is a hold, not a click)
+    await new Promise(resolve => {
+      gsap.to(this.el, { scale: 0.85, duration: 0.10, ease: 'power2.in', onComplete: resolve });
+    });
+    // Carry to destination
+    await this.glide(to, { duration: dragDuration });
+    // Release
+    return new Promise(resolve => {
+      gsap.to(this.el, { scale: 1.0, duration: 0.20, ease: 'back.out(2)', onComplete: resolve });
+    });
+  }
+
+  /**
+   * Get current stage-coord position (after any in-flight tweens settle,
+   * this matches the cursor's actual transform).
+   */
+  pos() {
+    return { ...this._pos };
+  }
+
+  /**
+   * Remove cursor from DOM.
+   */
+  remove() {
+    gsap.killTweensOf(this.el);
+    this.el.remove();
+  }
+}
+
+/**
+ * Legacy standalone function — kept for backwards compatibility with
+ * cursor-glide-straight QC page. New code should use `new Cursor(stage)`
+ * and call `.glide(to, opts)` instead.
+ *
+ * @deprecated Use Cursor class
  */
 export function cursorGlideStraight(cursor, from, to, opts = {}) {
   const { duration = 0.95, ease = 'power2.inOut' } = opts;
@@ -232,10 +448,10 @@ export function cursorGlideStraight(cursor, from, to, opts = {}) {
 }
 
 /**
- * Radial click-ripple at a stage point. Spawns a temporary `.click-ripple`
- * element, expands + fades, removes itself.
- *
- * Source: videos/wpforms-ai-board/index.html clickRipple pattern.
+ * Radial click-ripple at a stage point. Spawns a temporary element,
+ * expands + fades, removes itself. Standalone helper — for cursor-attached
+ * click animation, use `Cursor.click()` instead (which does squash + ripple
+ * at the cursor's current position).
  *
  * @param {HTMLElement} stage — parent element to mount the ripple in
  * @param {number} x — stage-coord x (px)
