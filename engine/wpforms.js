@@ -132,7 +132,7 @@ export async function smartTag(fieldSelector, {
   if (!item) throw new Error('smartTag: pick not resolvable: ' + JSON.stringify(pick));
 
   // 1) Cursor to tag icon → click → reveal dropdown
-  const tagIconSel = uniqueSelectorFor(tagIcon, fieldSelector, '.wpforms-show-smart-tags');
+  const tagIconSel = `${fieldSelector} .wpforms-show-smart-tags`;
   await cursor.moveTo(tagIconSel);
   await cursor.click();
   dd.classList.remove('closed');
@@ -145,8 +145,7 @@ export async function smartTag(fieldSelector, {
   // sections of the dropdown.
   const itemLi = item.closest('li');
   const liDataValue = itemLi?.dataset.value ?? '';
-  const itemSel = uniqueSelectorFor(item, fieldSelector,
-    `.insert-smart-tag-dropdown ul.list li[data-value="${liDataValue}"] .wpforms-smart-tags-widget-item[data-type="${item.dataset.type}"]`);
+  const itemSel = `${fieldSelector} .insert-smart-tag-dropdown ul.list li[data-value="${liDataValue}"] .wpforms-smart-tags-widget-item[data-type="${item.dataset.type}"]`;
   await cursor.moveTo(itemSel);
   await sleep(pickDelay);
   await cursor.click();
@@ -408,7 +407,7 @@ export async function showPrompt({
   typeDelay = 50,
   confirmDelay = 500,
   fade = 280,
-  backdropColor = 'rgba(0,0,0,0.5)',  // set to 'transparent' when paired with whiteout()
+  backdropColor = 'rgba(0,0,0,0.5)',
 } = {}) {
   const doc = getDoc();
 
@@ -485,62 +484,8 @@ export async function showPrompt({
   return typeText;
 }
 
-/**
- * Hide every element in the iframe doc except the ones matching `keepSelectors`.
- * Background goes white; useful for focused tutorial beats where the surrounding
- * WPForms UI would distract. More aggressive than spotlight() (which just dims).
- *
- *   const wo = await whiteout(['button.wpforms-notifications-add']);
- *   ...
- *   await wo.addKeep(['[data-block-id="1"] .wpforms-builder-settings-block-header']);
- *   ...
- *   await wo.clear();
- *
- * Relies on CSS `visibility: hidden` on `body.__whiteout *`, with `__whiteout_keep`
- * reverting to visible for matched elements and their descendants.
- */
-export async function whiteout(keepSelectors = [], { fade = 350 } = {}) {
-  const doc = getDoc();
-  let style = doc.getElementById('__whiteout_style');
-  if (!style) {
-    style = doc.createElement('style');
-    style.id = '__whiteout_style';
-    doc.head.appendChild(style);
-    style.textContent = `
-      body.__whiteout { background: #fff !important; transition: background ${fade}ms ease; }
-      body.__whiteout * { visibility: hidden !important; }
-      body.__whiteout .__whiteout_keep,
-      body.__whiteout .__whiteout_keep * { visibility: visible !important; }
-    `;
-  }
-
-  const applyKeeps = (selectors) => {
-    for (const sel of selectors) {
-      for (const el of doc.querySelectorAll(sel)) el.classList.add('__whiteout_keep');
-    }
-  };
-
-  // Reset any stale keeps
-  doc.querySelectorAll('.__whiteout_keep').forEach(n => n.classList.remove('__whiteout_keep'));
-  applyKeeps(keepSelectors);
-  doc.body.classList.add('__whiteout');
-  await sleep(fade);
-
-  return {
-    addKeep: async (sels) => { applyKeeps(sels); await sleep(80); },
-    removeKeep: async (sels) => {
-      for (const sel of sels) {
-        for (const el of doc.querySelectorAll(sel)) el.classList.remove('__whiteout_keep');
-      }
-      await sleep(80);
-    },
-    clear: async () => {
-      doc.body.classList.remove('__whiteout');
-      await sleep(fade);
-      doc.querySelectorAll('.__whiteout_keep').forEach(n => n.classList.remove('__whiteout_keep'));
-    },
-  };
-}
+// whiteout() removed 2026-05-11 per Phase 5c.1 dead-code deletion.
+// Zero production callers verified by Codex (docs/phase-5c1-dead-code-verification-2026-05-11.md).
 
 /**
  * Collapse a settings-block to just its header (hide the content div).
@@ -690,9 +635,5 @@ function buildChipDataValue(item) {
   return li.dataset.value;
 }
 
-// Build a selector string that cursor.moveTo can use. Cursor resolves via
-// querySelector inside iframe, so we need a globally-unique selector.
-// Our wrap is unique (has an id), so scoping within it is reliable.
-function uniqueSelectorFor(node, wrapSelector, relativeSelector) {
-  return `${wrapSelector} ${relativeSelector}`;
-}
+// uniqueSelectorFor() removed 2026-05-11 per Phase 5c.1 dead-code deletion.
+// Was a 1-line wrapper; 2 call sites above now use template strings directly.

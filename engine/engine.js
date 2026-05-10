@@ -117,7 +117,6 @@ export function loadSnapshot(slug, { iframeSize = [1440, 900] } = {}) {
                 filter: drop-shadow(0 2px 4px rgba(0,0,0,0.35)); }
       .cursor.on { opacity:1; }
       .cursor.click { transform: scale(0.78); }
-      .debug-rect { position:absolute; border:2px dashed #00E5FF; pointer-events:none; z-index:9; }
       .pointer { position:absolute; pointer-events:none; z-index:18; opacity:0;
                  transition: opacity 0.35s ease; filter: drop-shadow(0 3px 6px rgba(0,0,0,0.35)); }
       .pointer.on { opacity:1; }
@@ -161,7 +160,6 @@ export function loadSnapshot(slug, { iframeSize = [1440, 900] } = {}) {
       state.doc = state.ui.contentDocument;
       applyCameraImmediate({ zoom: 1, tx: 0, ty: 0 });
       ensureCameraDriver();
-      installDebugHotkey();
       resolve();
     });
   });
@@ -538,75 +536,9 @@ export const cursor = {
     await sleep(250);
   },
 
-  // Drag a visual clone of `srcSel` to `dstSel`, timed with the cursor so
-  // it looks like the cursor is grabbing the element. The clone lives in
-  // the parent document (stage layer) so it floats above the iframe and
-  // rides on the same coordinate space as the cursor. A real drop isn't
-  // attempted — chapters handle the "drop" by revealing/injecting the new
-  // field themselves. `ghostMaxPx` caps width to avoid scaled clones
-  // dragging a huge slab across the stage when the source is a full-width
-  // button in a narrow sidebar.
-  async dragGrab(srcSel, dstSel, { wait = 900, rotate = 2.5, ghostMaxPx = 260, ghostScale = 0.9 } = {}) {
-    const src = state.doc.querySelector(srcSel);
-    const dst = state.doc.querySelector(dstSel);
-    if (!src) throw new Error('cursor.dragGrab: src not found: ' + srcSel);
-    if (!dst) throw new Error('cursor.dragGrab: dst not found: ' + dstSel);
-    const srcR = src.getBoundingClientRect();
-    const dstR = dst.getBoundingClientRect();
-    const gw = Math.min(srcR.width * state.zoom * ghostScale, ghostMaxPx);
-    const gh = srcR.height * state.zoom * ghostScale * (gw / (srcR.width * state.zoom * ghostScale));
-
-    const clone = src.cloneNode(true);
-    clone.removeAttribute('id');
-    clone.querySelectorAll('[id]').forEach(n => n.removeAttribute('id'));
-    const ghost = document.createElement('div');
-    ghost.className = '__drag-ghost';
-    ghost.appendChild(clone);
-
-    const start = toStage(srcR.left + srcR.width / 2, srcR.top + srcR.height / 2);
-    Object.assign(ghost.style, {
-      position: 'fixed', zIndex: '700',
-      width: gw + 'px', height: gh + 'px',
-      left: (start.x - gw / 2) + 'px',
-      top:  (start.y - gh / 2) + 'px',
-      transform: `rotate(${rotate}deg) scale(1)`,
-      transformOrigin: 'center',
-      boxShadow: '0 18px 40px rgba(0,0,0,0.30), 0 6px 14px rgba(0,0,0,0.15)',
-      borderRadius: '6px',
-      overflow: 'hidden',
-      background: '#fff',
-      pointerEvents: 'none',
-      transition: `left ${wait}ms cubic-bezier(.4,.1,.3,1), top ${wait}ms cubic-bezier(.4,.1,.3,1), transform 220ms ease, opacity 220ms ease`,
-      opacity: '0',
-    });
-    const inner = ghost.firstElementChild;
-    if (inner) {
-      inner.style.margin = '0';
-      inner.style.width  = '100%';
-      inner.style.height = '100%';
-      inner.style.boxSizing = 'border-box';
-    }
-    document.body.appendChild(ghost);
-
-    // Phase 1: cursor arrives at source, ghost fades in + slight lift.
-    await this.moveTo(srcSel, { wait: 500 });
-    ghost.style.opacity = '0.95';
-    ghost.style.transform = `rotate(${rotate}deg) scale(1.06)`;
-    await sleep(220);
-
-    // Phase 2: cursor and ghost glide together to destination.
-    const end = toStage(dstR.left + dstR.width / 2, dstR.top + dstR.height / 2);
-    ghost.style.left = (end.x - gw / 2) + 'px';
-    ghost.style.top  = (end.y - gh / 2) + 'px';
-    await this.moveTo(dstSel, { wait });
-
-    // Phase 3: drop — ghost fades/settles.
-    ghost.style.transition = 'opacity 260ms ease, transform 260ms ease';
-    ghost.style.opacity = '0';
-    ghost.style.transform = 'rotate(0deg) scale(0.96)';
-    await sleep(280);
-    ghost.remove();
-  },
+  // cursor.dragGrab removed 2026-05-11 per Phase 5c.1 dead-code deletion.
+  // Production drag uses runtime/drag.js#dragField via descriptor verb in
+  // runtime/verbs.js. See docs/phase-5c1-dead-code-verification-2026-05-11.md.
 };
 
 // ── Typewriter ───────────────────────────────────────────────────────────────
@@ -630,30 +562,9 @@ export async function type(target, text, { cps = 14, clear = true } = {}) {
   }
 }
 
-// ── Debug overlay (press 'd') ────────────────────────────────────────────────
-function installDebugHotkey() {
-  const tracked = [];
-  const originalResolve = resolveTargets;
-  // wrap to track last call
-  window.__engineTracked = tracked;
-
-  window.addEventListener('keydown', (e) => {
-    if (e.key !== 'd') return;
-    document.querySelectorAll('.debug-rect').forEach(n => n.remove());
-    // Highlight every element currently in overlay .hl as a debug rect
-    const hls = document.querySelectorAll('.hl');
-    for (const h of hls) {
-      const r = h.getBoundingClientRect();
-      const dr = document.createElement('div');
-      dr.className = 'debug-rect';
-      Object.assign(dr.style, {
-        left: (r.left - 4) + 'px', top: (r.top - 4) + 'px',
-        width: (r.width + 8) + 'px', height: (r.height + 8) + 'px',
-      });
-      state.overlay.appendChild(dr);
-    }
-  });
-}
+// Debug 'd' hotkey installer removed 2026-05-11 per Phase 5c.1 (user dropped).
+// Was an authoring-time affordance that drew red debug rects around highlighted
+// elements. Not used in production; removed to slim engine.
 
 // Small helper if scenes want it
 export { sleep };
