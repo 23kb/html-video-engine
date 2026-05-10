@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>cinematicFlight (inter-snapshot / figjam-board) — QC</title>
+<title>figjamFlight (inter-snapshot 3-act) — QC</title>
 <style>
   :root {
     --bg: #14161C; --ink: #ebebed; --ink-mute: #8a8e99;
@@ -16,29 +16,79 @@
   .header .desc { font-size: 13px; color: var(--ink-mute); }
   .header a { color: var(--accent); text-decoration: none; font-size: 12px; }
   .stage-wrap { position: fixed; inset: 80px 0 80px 0; display: flex; align-items: center; justify-content: center; background: #0d0e10; }
-  .stage { position: relative; width: 1280px; height: 720px; background: #0a0e14; overflow: hidden; border-radius: 6px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); transform-origin: center center; }
+  .stage {
+    position: relative;
+    width: 1280px; height: 720px;
+    background: #1a1f2a;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    transform-origin: center center;
+  }
+  /* Canvas is wider than stage; camera transform brings the right part into view. */
   .scene-camera {
     position: absolute;
-    width: 2560px; height: 720px;
+    /* Canvas: 3680px wide, fits A (0-1280) + gap (1280-2400) + B (2400-3680). */
+    width: 3680px; height: 720px;
     left: 0; top: 0;
     transform-origin: center center;
     will-change: transform;
+    /* Subtle dotted-grid backdrop visible during zoom-out reveal */
+    background-image:
+      radial-gradient(circle at 50% 50%, #2a2f3e 1px, transparent 1.5px);
+    background-size: 32px 32px;
   }
   .iframe-slot {
     position: absolute;
     top: 0; width: 1280px; height: 720px;
     overflow: hidden;
     background: #fff;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.25);
+    border-radius: 4px;
   }
-  .iframe-slot.left { left: 0; }
-  .iframe-slot.right { left: 1280px; }
+  .iframe-slot.a { left: 0; }
+  .iframe-slot.b { left: 2400px; }
   .iframe-slot iframe {
     width: 1444px; height: 900px;
     transform: scale(0.8864);
     transform-origin: top left;
     border: 0;
     display: block;
+  }
+  /* Gap-fill: a label spanning the empty space between A and B */
+  .gap-marker {
+    position: absolute;
+    left: 1280px; top: 0;
+    width: 1120px; height: 720px;
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none;
+  }
+  .gap-marker .arrow {
+    width: 360px; height: 4px;
+    background: linear-gradient(90deg, transparent, var(--accent) 50%, transparent);
+    border-radius: 2px;
+    position: relative;
+  }
+  .gap-marker .arrow::after {
+    content: '';
+    position: absolute;
+    right: 8%; top: -8px;
+    width: 0; height: 0;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 14px solid var(--accent);
+  }
+  .gap-marker .label {
+    position: absolute;
+    top: 8px; left: 50%; transform: translateX(-50%);
+    color: var(--accent);
+    font-size: 14px;
+    font-family: ui-monospace, monospace;
+    background: rgba(20,22,28,0.9);
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-top: 28px;
+    white-space: nowrap;
   }
   .slot-label {
     position: absolute;
@@ -53,9 +103,9 @@
   .phase-label {
     position: absolute;
     bottom: 18px; left: 50%; transform: translateX(-50%);
-    font-size: 12px; color: #fff;
-    background: rgba(20,22,28,0.85);
-    padding: 4px 12px;
+    font-size: 13px; color: #fff;
+    background: rgba(20,22,28,0.9);
+    padding: 6px 14px;
     border-radius: 999px;
     font-family: ui-monospace, monospace;
     z-index: 20;
@@ -70,24 +120,28 @@
 <body>
 
 <div class="header">
-  <h1>cinematicFlight — inter-snapshot / figjam-board</h1>
+  <h1>figjamFlight — 3-act inter-snapshot camera</h1>
   <div class="desc">
-    Camera flies from one WPForms snapshot to another, with mid-flight scale dip showing both panels.
-    This is the virtual-board / figjam pattern: multiple snapshots laid out spatially, camera traverses.
-    Left: <code>admin-forms-overview</code>. Right: <code>wpforms-ai-builder-empty</code>.
-    Source: <a href="../../videos/_shared/motion-primitives.js">motion-primitives.js</a> <code>cinematicFlight</code> · <a href="index.html">← back to index</a>
+    Distinct from <code>cinematicFlight</code> (continuous flight w/ scale dip): this is 3-act —
+    <strong>zoom out of A → translate across gap → zoom in on B</strong>. Snapshots are spaced apart (gap = 1120px).
+    Mid-flight reveals both panels + the gap. Source: <a href="../../videos/_shared/motion-primitives.js">motion-primitives.js</a>
+    <code>figjamFlight</code> · <a href="index.html">← back to index</a>
   </div>
 </div>
 
 <div class="stage-wrap">
   <div class="stage" id="stage">
     <div class="scene-camera" id="camera">
-      <div class="iframe-slot left">
-        <div class="slot-label">snapshot: admin-forms-overview</div>
+      <div class="iframe-slot a">
+        <div class="slot-label">A — snapshot: admin-forms-overview</div>
         <iframe src="/snapshots/admin-forms-overview/index.html" loading="eager"></iframe>
       </div>
-      <div class="iframe-slot right">
-        <div class="slot-label">snapshot: wpforms-ai-builder-empty</div>
+      <div class="gap-marker">
+        <div class="arrow"></div>
+        <div class="label">— virtual canvas gap (1120px) —</div>
+      </div>
+      <div class="iframe-slot b">
+        <div class="slot-label">B — snapshot: wpforms-ai-builder-empty</div>
         <iframe src="/snapshots/wpforms-ai-builder-empty/index.html" loading="eager"></iframe>
       </div>
     </div>
@@ -104,7 +158,7 @@
 
 <script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
 <script type="module">
-import { cinematicFlight } from '/videos/_shared/motion-primitives.js';
+import { figjamFlight } from '/videos/_shared/motion-primitives.js';
 
 function fitStage() {
   const stage = document.getElementById('stage');
@@ -119,40 +173,36 @@ window.addEventListener('resize', fitStage);
 const camera = document.getElementById('camera');
 const phaseLabel = document.getElementById('phaseLabel');
 
-// Camera math for the 2560×720 virtual board with stage center at (640, 360):
-// For viewport center to land on a canvas point (cx, cy) at scale s:
-//   tx = -(cx - 640) * s
-//   ty = -(cy - 360) * s
+// Camera math for the 3680×720 virtual canvas with stage center at (640, 360):
+//   tx = -(canvas_focus_x - 640) * scale
+//   ty = -(canvas_focus_y - 360) * scale
 //
-// admin-forms-overview occupies x:[0, 1280], center (640, 360)
-//   focused pose: tx = 0, ty = 0, scale = 1
+// A (admin-forms-overview) at x:[0, 1280], center (640, 360)
+//   focused: tx=0, ty=0, scale=1.0
 //
-// wpforms-ai-builder-empty occupies x:[1280, 2560], center (1920, 360)
-//   focused pose: tx = -1280, ty = 0, scale = 1
+// B (wpforms-ai-builder-empty) at x:[2400, 3680], center (3040, 360)
+//   focused: tx = -(3040-640)*1 = -2400, ty=0, scale=1.0
 //
-// Mid-flight scale dip (peak): scale ≈ 0.55 makes BOTH panels visible at once
-// (2560 * 0.55 = 1408 just fits in 1280 viewport with a slight overflow).
-const FROM_POSE = { x: 0, y: 0, scale: 1.0, rotation: 0 };
-const TO_POSE   = { x: -1280, y: 0, scale: 1.0, rotation: 0 };
+// Wide view showing both A + gap + B (canvas 3680 fits in 1280 viewport at
+// scale 1280/3680 ≈ 0.348). Use scale 0.32 for a touch of breathing room:
+//   center of canvas = (3680/2) = 1840
+//   wide: tx = -(1840-640)*0.32 = -384, ty=0, scale=0.32
+const FROM_POSE = { x: 0,     y: 0, scale: 1.0,  rotation: 0 };
+const WIDE_POSE = { x: -384,  y: 0, scale: 0.32, rotation: 0 };
+const TO_POSE   = { x: -2400, y: 0, scale: 1.0,  rotation: 0 };
 
 gsap.set(camera, FROM_POSE);
 
-const tl = cinematicFlight(camera, {
+const tl = figjamFlight(camera, {
   from: FROM_POSE,
   to:   TO_POSE,
+  wide: WIDE_POSE,
   anticipationDuration: 0.15,
-  flightDuration: 1.4,        // longer flight — bigger move
-  landHold: 0.6,
-  scaleDipFactor: 0.55,       // aggressive dip to show both panels mid-flight
-  rotationTilt: 1.2,
-  // No micro-zoom for inter-snapshot flights — the landing IS the payoff.
-  microZoom: null,
+  zoomOutDuration: 1.00,    // pull back deliberately — viewer reads the reveal
+  translateDuration: 1.40,  // long pan at wide scale across the gap
+  zoomInDuration: 1.00,     // push in to B with intent
+  landHold: 0.7,
 });
-
-const playBtn = document.getElementById('playBtn');
-const scrubber = document.getElementById('scrubber');
-const timeLabel = document.getElementById('timeLabel');
-const restartBtn = document.getElementById('restartBtn');
 
 timeLabel.textContent = `0.00 / ${tl.duration().toFixed(2)}`;
 
@@ -161,13 +211,19 @@ tl.eventCallback('onUpdate', () => {
   const total = tl.duration();
   let phase = 'idle';
   if (t < 0.15) phase = '1: anticipation';
-  else if (t < 0.15 + 0.70) phase = '2: flight outbound (scale dip — both panels visible)';
-  else if (t < 0.15 + 1.40) phase = '3: flight inbound (scale recovery)';
-  else phase = '4: land + hold';
+  else if (t < 0.15 + 1.00) phase = '2: ZOOM OUT (revealing both panels)';
+  else if (t < 0.15 + 1.00 + 1.40) phase = '3: TRANSLATE across gap (wide pan)';
+  else if (t < 0.15 + 1.00 + 1.40 + 1.00) phase = '4: ZOOM IN on B';
+  else phase = '5: land + hold';
   phaseLabel.textContent = `phase: ${phase}`;
   scrubber.value = t / total;
   timeLabel.textContent = `${t.toFixed(2)} / ${total.toFixed(2)}`;
 });
+
+const playBtn = document.getElementById('playBtn');
+const scrubber = document.getElementById('scrubber');
+const timeLabel = document.getElementById('timeLabel');
+const restartBtn = document.getElementById('restartBtn');
 
 let isPlaying = false;
 playBtn.addEventListener('click', () => {
@@ -182,7 +238,6 @@ scrubber.addEventListener('input', () => {
   tl.time(parseFloat(scrubber.value) * tl.duration());
 });
 
-// Wait for both iframes to load before auto-playing
 Promise.all([...document.querySelectorAll('iframe')].map(f =>
   new Promise(resolve => { if (f.contentDocument?.readyState === 'complete') resolve(); else f.addEventListener('load', resolve, { once: true }); })
 )).then(() => {

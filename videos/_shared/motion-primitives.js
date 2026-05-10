@@ -159,6 +159,93 @@ export function cinematicFlight(camera, opts) {
 }
 
 /**
+ * Figjam-board / virtual-board camera flight. Distinct from `cinematicFlight`
+ * (which dips scale during a single continuous flight) — this primitive is
+ * explicitly 3-act so the viewer reads "zoom out, traverse, zoom in":
+ *
+ *   Phase 1: anticipation (small pre-nudge)
+ *   Phase 2: ZOOM OUT only — camera pulls back from A (no translation), wide
+ *            shot reveals both A and B (and the gap) at once
+ *   Phase 3: TRANSLATE only — at wide scale, camera pans across the gap to B
+ *   Phase 4: ZOOM IN only — camera pushes in on B (no translation)
+ *   Phase 5: land + hold
+ *
+ * Use when: showing the viewer that two snapshots/scenes live in a shared
+ * spatial canvas (the "zoom-out reveal" payoff). The scale dip in
+ * `cinematicFlight` is subtler — for inter-snapshot work where the gap
+ * matters, use this primitive.
+ *
+ * Source: docs/editorial-reference-motion-spec.md (Anthropic Claude design-
+ * tools virtual-board pattern), tools/ref-frames/motion-spec.md Ref 2.
+ *
+ * @param {HTMLElement} camera — the camera-transformed wrapper
+ * @param {Object} opts
+ * @param {{x:number,y:number,scale:number}} opts.from — focused pose on A
+ * @param {{x:number,y:number,scale:number}} opts.to — focused pose on B
+ * @param {{x:number,y:number,scale:number}} opts.wide — wide pose showing
+ *   both panels. Compute as: scale low enough that both A and B fit in the
+ *   viewport. Translation typically centered between A and B.
+ * @param {number} [opts.anticipationDuration=0.15]
+ * @param {number} [opts.zoomOutDuration=0.85] — Phase 2 duration
+ * @param {number} [opts.translateDuration=1.0] — Phase 3 duration
+ * @param {number} [opts.zoomInDuration=0.85] — Phase 4 duration
+ * @param {number} [opts.landHold=0.5]
+ * @returns {gsap.core.Timeline}
+ */
+export function figjamFlight(camera, opts) {
+  const {
+    from, to, wide,
+    anticipationDuration = 0.15,
+    zoomOutDuration = 0.85,
+    translateDuration = 1.0,
+    zoomInDuration = 0.85,
+    landHold = 0.5,
+  } = opts;
+
+  const tl = gsap.timeline({ paused: true });
+
+  // Phase 1: anticipation — pre-nudge away from target direction
+  const dx = to.x - from.x;
+  tl.to(camera, {
+    x: from.x + Math.sign(dx) * -8,
+    duration: anticipationDuration,
+    ease: 'power2.in',
+  }, 0);
+
+  // Phase 2: ZOOM OUT — scale to wide, translation stays at from's position
+  // (camera pulls back, A stays roughly centered as content shrinks away)
+  tl.to(camera, {
+    x: from.x, y: from.y, scale: wide.scale, rotation: 0,
+    duration: zoomOutDuration,
+    ease: 'power3.out',
+  });
+
+  // Phase 3: TRANSLATE — at wide scale, pan to between A and B then to over B
+  tl.to(camera, {
+    x: wide.x, y: wide.y,
+    duration: translateDuration * 0.5,
+    ease: 'sine.inOut',
+  });
+  tl.to(camera, {
+    x: to.x * (wide.scale / to.scale), y: to.y * (wide.scale / to.scale),
+    duration: translateDuration * 0.5,
+    ease: 'sine.inOut',
+  });
+
+  // Phase 4: ZOOM IN — scale up to to-pose's scale, settle on B
+  tl.to(camera, {
+    x: to.x, y: to.y, scale: to.scale, rotation: to.rotation || 0,
+    duration: zoomInDuration,
+    ease: 'power3.inOut',
+  });
+
+  // Phase 5: hold
+  tl.to({}, { duration: landHold });
+
+  return tl;
+}
+
+/**
  * Tutorial-grade focus → station → overview camera arc. The polish-vocabulary
  * "focus-station-overview-with-short-anchor" pattern, distilled from the
  * polished rest-api video.
@@ -276,6 +363,7 @@ export class Cursor {
    * Instant set position. No tween.
    */
   setPos(x, y) {
+    this._clearHoverTarget();
     gsap.killTweensOf(this.el, 'x,y');
     gsap.set(this.el, { x, y });
     this._pos = { x, y };
@@ -284,7 +372,7 @@ export class Cursor {
   /**
    * Glide to target stage-coord. Anti-frenzy: straight-line `gsap.to`,
    * `power2.inOut`, killTweensOf at start, default 0.95s (sub-0.85 reads
-   * as jump-cut per LESSONS.md).
+   * as jump-cut per LESSONS.md). Auto-clears any active hover effect.
    *
    * @param {{x:number,y:number}} to
    * @param {Object} [opts]
@@ -294,6 +382,7 @@ export class Cursor {
    */
   glide(to, opts = {}) {
     const { duration = 0.95, ease = 'power2.inOut' } = opts;
+    this._clearHoverTarget();
     gsap.killTweensOf(this.el, 'x,y,motionPath');
     this._pos = { x: to.x, y: to.y };
     return new Promise(resolve => {
@@ -350,11 +439,15 @@ export class Cursor {
 
   /**
    * Hover-and-settle: glide to a stage-coord target, then a tiny seeded
-   * jitter to imply human hand. The jitter is 1-2px and uses mulberry32
-   * (deterministic) so render-parity holds.
+   * jitter to imply human hand. **If `target` is passed**, applies a
+   * visible hover effect on the target element (scale + glow) and removes
+   * it on the next call to `glide`/`drag`/`click`/`remove`.
    *
    * @param {{x:number,y:number}} to
    * @param {Object} [opts]
+   * @param {HTMLElement|null} [opts.target=null] — element to apply hover effect to
+   * @param {number} [opts.hoverScale=1.05] — target scale during hover (1.0 = no scale)
+   * @param {string} [opts.hoverGlow='0 0 0 4px rgba(226,119,48,0.35)'] — box-shadow on target
    * @param {number} [opts.duration=0.95]
    * @param {number} [opts.jitterAmplitude=1.5]
    * @param {number} [opts.settleDuration=0.6]
@@ -363,12 +456,36 @@ export class Cursor {
    */
   async hover(to, opts = {}) {
     const {
+      target = null,
+      hoverScale = 1.05,
+      hoverGlow = '0 0 0 4px rgba(226,119,48,0.35), 0 8px 24px rgba(226,119,48,0.25)',
       duration = 0.95,
       jitterAmplitude = 1.5,
       settleDuration = 0.6,
       seed = 42,
     } = opts;
+
+    // Clear any prior hover effect on the previous target
+    this._clearHoverTarget();
+
     await this.glide(to, { duration });
+
+    // Apply hover effect on target as cursor settles
+    if (target) {
+      this._hoverTarget = target;
+      // Save original styles to restore later
+      this._hoverTargetOriginal = {
+        transform: target.style.transform || '',
+        transition: target.style.transition || '',
+        boxShadow: target.style.boxShadow || '',
+        willChange: target.style.willChange || '',
+      };
+      target.style.transition = 'transform 0.25s ease-out, box-shadow 0.25s ease-out';
+      target.style.willChange = 'transform, box-shadow';
+      target.style.transform = (this._hoverTargetOriginal.transform + ` scale(${hoverScale})`).trim();
+      target.style.boxShadow = hoverGlow;
+    }
+
     const rng = mulberry32(seed);
     const jx = (rng() - 0.5) * 2 * jitterAmplitude;
     const jy = (rng() - 0.5) * 2 * jitterAmplitude;
@@ -386,29 +503,136 @@ export class Cursor {
   }
 
   /**
-   * Drag pattern: glide to `from` → click (press) → glide to `to` (carrying)
-   * → release. No DOM cloning here — that's the caller's responsibility
-   * (this primitive just choreographs the cursor). For full visual drag
-   * with ghost element, use the engine's `runtime/drag.js#dragField` from
-   * a chapter (or pair this with a custom ghost in editorial code).
+   * Internal — remove any active hover effect on previous target.
+   */
+  _clearHoverTarget() {
+    if (this._hoverTarget && this._hoverTargetOriginal) {
+      const t = this._hoverTarget;
+      const o = this._hoverTargetOriginal;
+      t.style.transform = o.transform;
+      t.style.boxShadow = o.boxShadow;
+      // Leave transition active briefly so the un-hover animates, then restore
+      setTimeout(() => {
+        t.style.transition = o.transition;
+        t.style.willChange = o.willChange;
+      }, 280);
+    }
+    this._hoverTarget = null;
+    this._hoverTargetOriginal = null;
+  }
+
+  /**
+   * Drag pattern with optional ghost element. Choreography:
+   *   glide to `from` → press squash → ghost element appears (clone of
+   *   `ghostSource`) → cursor + ghost glide together to `to` → release +
+   *   ghost fades.
+   *
+   * If `ghostSource` is not passed, the cursor moves alone (legacy behavior).
+   * For a full visual drag, pass the DOM element to clone.
    *
    * @param {{x:number,y:number}} from
    * @param {{x:number,y:number}} to
    * @param {Object} [opts]
+   * @param {HTMLElement|null} [opts.ghostSource=null] — element to clone as ghost
+   * @param {number} [opts.ghostRotate=2.5] — degrees of tilt while carrying
+   * @param {number} [opts.ghostScale=1.06] — scale of the ghost relative to source
+   * @param {number} [opts.ghostMaxPx=320] — cap ghost width
    * @param {number} [opts.glideDuration=0.95]
    * @param {number} [opts.dragDuration=1.20]
    * @returns {Promise<void>}
    */
   async drag(from, to, opts = {}) {
-    const { glideDuration = 0.95, dragDuration = 1.20 } = opts;
+    const {
+      ghostSource = null,
+      ghostRotate = 2.5,
+      ghostScale = 1.06,
+      ghostMaxPx = 320,
+      glideDuration = 0.95,
+      dragDuration = 1.20,
+    } = opts;
+
+    this._clearHoverTarget();
     await this.glide(from, { duration: glideDuration });
-    // Press (squash without ripple — drag is a hold, not a click)
+
+    // Press (squash without ripple — drag is a hold)
     await new Promise(resolve => {
       gsap.to(this.el, { scale: 0.85, duration: 0.10, ease: 'power2.in', onComplete: resolve });
     });
-    // Carry to destination
-    await this.glide(to, { duration: dragDuration });
-    // Release
+
+    // Spawn ghost element if requested
+    let ghost = null;
+    if (ghostSource) {
+      const srcR = ghostSource.getBoundingClientRect();
+      const stageR = this.stage.getBoundingClientRect();
+      const stageScale = stageR.width / 1280;  // assumes 1280-wide stage
+      const gw = Math.min(srcR.width / stageScale, ghostMaxPx);
+      const gh = (srcR.height / stageScale) * (gw / (srcR.width / stageScale));
+
+      const clone = ghostSource.cloneNode(true);
+      // Strip ids to avoid duplicate-id warnings
+      if (clone.id) clone.removeAttribute('id');
+      clone.querySelectorAll('[id]').forEach(n => n.removeAttribute('id'));
+
+      ghost = document.createElement('div');
+      ghost.className = 'ml-drag-ghost';
+      Object.assign(ghost.style, {
+        position: 'absolute',
+        left: '0', top: '0',
+        width: gw + 'px',
+        height: gh + 'px',
+        pointerEvents: 'none',
+        zIndex: '98',  // below cursor (100), above content
+        transform: `translate(${from.x - gw / 2}px, ${from.y - gh / 2}px) rotate(${ghostRotate}deg) scale(${ghostScale})`,
+        transformOrigin: 'center',
+        boxShadow: '0 18px 40px rgba(0,0,0,0.30), 0 6px 14px rgba(0,0,0,0.15)',
+        borderRadius: '6px',
+        overflow: 'hidden',
+        background: '#fff',
+        opacity: '0',
+        transition: 'opacity 0.22s ease',
+        willChange: 'transform, opacity',
+      });
+      ghost.appendChild(clone);
+      // Force the clone to fill the ghost wrapper
+      if (clone.style) {
+        clone.style.margin = '0';
+        clone.style.width = '100%';
+        clone.style.height = '100%';
+        clone.style.boxSizing = 'border-box';
+      }
+      this.stage.appendChild(ghost);
+      // Fade in
+      await new Promise(r => setTimeout(r, 30));
+      ghost.style.opacity = '0.95';
+      await new Promise(r => setTimeout(r, 220));
+    }
+
+    // Carry: cursor + ghost both glide to destination
+    const carryPromises = [
+      this.glide(to, { duration: dragDuration }),
+    ];
+    if (ghost) {
+      const gw = parseFloat(ghost.style.width);
+      const gh = parseFloat(ghost.style.height);
+      carryPromises.push(new Promise(resolve => {
+        gsap.to(ghost, {
+          x: to.x - gw / 2,
+          y: to.y - gh / 2,
+          rotation: ghostRotate,
+          scale: ghostScale,
+          duration: dragDuration,
+          ease: 'power2.inOut',
+          onComplete: resolve,
+        });
+      }));
+    }
+    await Promise.all(carryPromises);
+
+    // Release: ghost fades + drops, cursor un-squashes
+    if (ghost) {
+      gsap.to(ghost, { opacity: 0, scale: 0.96, rotation: 0, duration: 0.26, ease: 'power2.in',
+        onComplete: () => ghost.remove() });
+    }
     return new Promise(resolve => {
       gsap.to(this.el, { scale: 1.0, duration: 0.20, ease: 'back.out(2)', onComplete: resolve });
     });

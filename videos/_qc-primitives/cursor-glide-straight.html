@@ -114,9 +114,9 @@ document.getElementById('actGlide').addEventListener('click', async () => {
 });
 
 document.getElementById('actHover').addEventListener('click', async () => {
-  disable(true); setLabel('cursor.hover(C) — glide + tiny settle jitter');
-  await cursor.hover(C());
-  setLabel('cursor.hover(C)', 'done');
+  disable(true); setLabel('cursor.hover(C) — target gets scale+glow effect');
+  await cursor.hover(C(), { target: document.getElementById('targetC') });
+  setLabel('cursor.hover(C) — hover effect ON target (click another action to clear)', 'done');
   disable(false);
 });
 
@@ -128,9 +128,10 @@ document.getElementById('actClick').addEventListener('click', async () => {
 });
 
 document.getElementById('actDrag').addEventListener('click', async () => {
-  disable(true); setLabel('cursor.drag(A → D) — press → carry → release');
-  await cursor.drag(A(), D());
-  setLabel('cursor.drag()', 'done');
+  disable(true); setLabel('cursor.drag(A → D) — ghost clone of A drags with cursor');
+  // Pass A as ghostSource so a visible clone gets dragged
+  await cursor.drag(A(), D(), { ghostSource: document.getElementById('targetA') });
+  setLabel('cursor.drag() — ghost faded on release', 'done');
   disable(false);
 });
 
@@ -140,19 +141,13 @@ document.getElementById('actSequence').addEventListener('click', async () => {
   cursor.setPos(180 - 60, 100); // start off-stage corner-ish
   await cursor.glide(A());
   setLabel('2/5 — click A (squash + ripple)');
-  document.getElementById('targetA').classList.add('pressed');
   await cursor.click();
-  document.getElementById('targetA').classList.remove('pressed');
-  setLabel('3/5 — hover B (settle)');
-  await cursor.hover(B());
-  setLabel('4/5 — drag B → C');
-  document.getElementById('targetB').classList.add('pressed');
-  await cursor.drag(B(), C());
-  document.getElementById('targetB').classList.remove('pressed');
+  setLabel('3/5 — hover B (target gets scale+glow)');
+  await cursor.hover(B(), { target: document.getElementById('targetB') });
+  setLabel('4/5 — drag B → C (ghost clone drags with cursor)');
+  await cursor.drag(B(), C(), { ghostSource: document.getElementById('targetB') });
   setLabel('5/5 — click C');
-  document.getElementById('targetC').classList.add('pressed');
   await cursor.click();
-  document.getElementById('targetC').classList.remove('pressed');
   setLabel('sequence complete', 'done');
   disable(false);
 });
