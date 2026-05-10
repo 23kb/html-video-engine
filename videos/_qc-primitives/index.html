@@ -73,8 +73,13 @@
   <h2>Camera primitives</h2>
   <div class="grid">
     <a class="card" href="cinematic-flight.html">
-      <div class="name">cinematicFlight</div>
-      <div class="desc">4-phase decomposed camera move: anticipation → flight (scale dip + rotation) → land + hold → optional micro-zoom. The editorial-gap primitive.</div>
+      <div class="name">cinematicFlight (intra-snapshot)</div>
+      <div class="desc">4-phase decomposed camera move within one stage: anticipation → flight (scale dip + rotation) → land + hold → micro-zoom. Lands exactly center on B.</div>
+      <span class="status draft">draft — needs QC</span>
+    </a>
+    <a class="card" href="cinematic-flight-inter-snapshot.html">
+      <div class="name">cinematicFlight (inter-snapshot / figjam)</div>
+      <div class="desc">Camera flies between two real WPForms snapshots in a virtual-board layout. Scale dip mid-flight shows both panels. Uses <code>admin-forms-overview</code> + <code>wpforms-ai-builder-empty</code>.</div>
       <span class="status draft">draft — needs QC</span>
     </a>
     <a class="card" href="focus-station-overview.html">
@@ -87,14 +92,9 @@
   <h2>Cursor + interaction</h2>
   <div class="grid">
     <a class="card" href="cursor-glide-straight.html">
-      <div class="name">cursorGlideStraight</div>
-      <div class="desc">Anti-frenzy straight-line cursor glide. <code>killTweensOf</code> + <code>power2.inOut</code> + ≥0.85s duration.</div>
+      <div class="name">Cursor class</div>
+      <div class="desc">Full cursor with <code>.glide()</code> + <code>.click()</code> (squash + ripple) + <code>.hover()</code> (settle jitter) + <code>.drag()</code>. Anti-frenzy guards built in. Reusable across all videos.</div>
       <span class="status draft">draft — needs QC</span>
-    </a>
-    <a class="card" href="click-ripple.html">
-      <div class="name">clickRipple</div>
-      <div class="desc">Radial click feedback at a stage point. Self-removing on completion.</div>
-      <span class="status absent">not yet built</span>
     </a>
   </div>
 

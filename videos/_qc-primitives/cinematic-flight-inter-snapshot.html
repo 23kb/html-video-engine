@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>cinematicFlight (inter-snapshot / figjam-board) — QC</title>
+<style>
+  :root {
+    --bg: #14161C; --ink: #ebebed; --ink-mute: #8a8e99;
+    --accent: #E27730; --accent-blue: #0399ED;
+    --bg-warm: #F4F1EC;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; overflow: hidden; }
+  .header { padding: 16px 32px; border-bottom: 1px solid #2a2e3a; }
+  .header h1 { margin: 0 0 4px; font-size: 18px; font-family: ui-monospace, "SF Mono", Menlo, monospace; color: var(--accent-blue); }
+  .header .desc { font-size: 13px; color: var(--ink-mute); }
+  .header a { color: var(--accent); text-decoration: none; font-size: 12px; }
+  .stage-wrap { position: fixed; inset: 80px 0 80px 0; display: flex; align-items: center; justify-content: center; background: #0d0e10; }
+  .stage { position: relative; width: 1280px; height: 720px; background: #0a0e14; overflow: hidden; border-radius: 6px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); transform-origin: center center; }
+  .scene-camera {
+    position: absolute;
+    width: 2560px; height: 720px;
+    left: 0; top: 0;
+    transform-origin: center center;
+    will-change: transform;
+  }
+  .iframe-slot {
+    position: absolute;
+    top: 0; width: 1280px; height: 720px;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+  }
+  .iframe-slot.left { left: 0; }
+  .iframe-slot.right { left: 1280px; }
+  .iframe-slot iframe {
+    width: 1444px; height: 900px;
+    transform: scale(0.8864);
+    transform-origin: top left;
+    border: 0;
+    display: block;
+  }
+  .slot-label {
+    position: absolute;
+    top: 12px; left: 16px;
+    font-size: 11px; font-family: ui-monospace, monospace;
+    background: rgba(20,22,28,0.85);
+    color: #fff;
+    padding: 4px 10px;
+    border-radius: 4px;
+    z-index: 10;
+  }
+  .phase-label {
+    position: absolute;
+    bottom: 18px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; color: #fff;
+    background: rgba(20,22,28,0.85);
+    padding: 4px 12px;
+    border-radius: 999px;
+    font-family: ui-monospace, monospace;
+    z-index: 20;
+  }
+  .controls { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 32px; background: rgba(20,22,28,0.92); backdrop-filter: blur(8px); display: flex; align-items: center; gap: 14px; border-top: 1px solid #2a2e3a; }
+  .controls button { background: rgba(255,255,255,0.10); border: 0; color: var(--ink); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 14px; }
+  .controls button:hover { background: rgba(255,255,255,0.20); }
+  .controls input[type="range"] { flex: 1; }
+  .controls .time { min-width: 90px; text-align: center; font-family: ui-monospace, monospace; font-size: 13px; opacity: 0.85; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>cinematicFlight — inter-snapshot / figjam-board</h1>
+  <div class="desc">
+    Camera flies from one WPForms snapshot to another, with mid-flight scale dip showing both panels.
+    This is the virtual-board / figjam pattern: multiple snapshots laid out spatially, camera traverses.
+    Left: <code>admin-forms-overview</code>. Right: <code>wpforms-ai-builder-empty</code>.
+    Source: <a href="../../videos/_shared/motion-primitives.js">motion-primitives.js</a> <code>cinematicFlight</code> · <a href="index.html">← back to index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="scene-camera" id="camera">
+      <div class="iframe-slot left">
+        <div class="slot-label">snapshot: admin-forms-overview</div>
+        <iframe src="/snapshots/admin-forms-overview/index.html" loading="eager"></iframe>
+      </div>
+      <div class="iframe-slot right">
+        <div class="slot-label">snapshot: wpforms-ai-builder-empty</div>
+        <iframe src="/snapshots/wpforms-ai-builder-empty/index.html" loading="eager"></iframe>
+      </div>
+    </div>
+    <div class="phase-label" id="phaseLabel">phase: idle</div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">▶</button>
+  <input type="range" id="scrubber" min="0" max="1" step="0.001" value="0">
+  <div class="time" id="timeLabel">0.00 / 0.00</div>
+  <button id="restartBtn">⟲</button>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { cinematicFlight } from '/videos/_shared/motion-primitives.js';
+
+function fitStage() {
+  const stage = document.getElementById('stage');
+  const wrap = document.querySelector('.stage-wrap');
+  const sx = wrap.clientWidth / 1280;
+  const sy = wrap.clientHeight / 720;
+  stage.style.transform = `scale(${Math.min(sx, sy) * 0.96})`;
+}
+fitStage();
+window.addEventListener('resize', fitStage);
+
+const camera = document.getElementById('camera');
+const phaseLabel = document.getElementById('phaseLabel');
+
+// Camera math for the 2560×720 virtual board with stage center at (640, 360):
+// For viewport center to land on a canvas point (cx, cy) at scale s:
+//   tx = -(cx - 640) * s
+//   ty = -(cy - 360) * s
+//
+// admin-forms-overview occupies x:[0, 1280], center (640, 360)
+//   focused pose: tx = 0, ty = 0, scale = 1
+//
+// wpforms-ai-builder-empty occupies x:[1280, 2560], center (1920, 360)
+//   focused pose: tx = -1280, ty = 0, scale = 1
+//
+// Mid-flight scale dip (peak): scale ≈ 0.55 makes BOTH panels visible at once
+// (2560 * 0.55 = 1408 just fits in 1280 viewport with a slight overflow).
+const FROM_POSE = { x: 0, y: 0, scale: 1.0, rotation: 0 };
+const TO_POSE   = { x: -1280, y: 0, scale: 1.0, rotation: 0 };
+
+gsap.set(camera, FROM_POSE);
+
+const tl = cinematicFlight(camera, {
+  from: FROM_POSE,
+  to:   TO_POSE,
+  anticipationDuration: 0.15,
+  flightDuration: 1.4,        // longer flight — bigger move
+  landHold: 0.6,
+  scaleDipFactor: 0.55,       // aggressive dip to show both panels mid-flight
+  rotationTilt: 1.2,
+  // No micro-zoom for inter-snapshot flights — the landing IS the payoff.
+  microZoom: null,
+});
+
+const playBtn = document.getElementById('playBtn');
+const scrubber = document.getElementById('scrubber');
+const timeLabel = document.getElementById('timeLabel');
+const restartBtn = document.getElementById('restartBtn');
+
+timeLabel.textContent = `0.00 / ${tl.duration().toFixed(2)}`;
+
+tl.eventCallback('onUpdate', () => {
+  const t = tl.time();
+  const total = tl.duration();
+  let phase = 'idle';
+  if (t < 0.15) phase = '1: anticipation';
+  else if (t < 0.15 + 0.70) phase = '2: flight outbound (scale dip — both panels visible)';
+  else if (t < 0.15 + 1.40) phase = '3: flight inbound (scale recovery)';
+  else phase = '4: land + hold';
+  phaseLabel.textContent = `phase: ${phase}`;
+  scrubber.value = t / total;
+  timeLabel.textContent = `${t.toFixed(2)} / ${total.toFixed(2)}`;
+});
+
+let isPlaying = false;
+playBtn.addEventListener('click', () => {
+  if (isPlaying) { tl.pause(); playBtn.textContent = '▶'; isPlaying = false; }
+  else { tl.play(); playBtn.textContent = '⏸'; isPlaying = true; }
+});
+restartBtn.addEventListener('click', () => {
+  tl.pause(); tl.time(0); gsap.set(camera, FROM_POSE); playBtn.textContent = '▶'; isPlaying = false;
+});
+scrubber.addEventListener('input', () => {
+  tl.pause(); playBtn.textContent = '▶'; isPlaying = false;
+  tl.time(parseFloat(scrubber.value) * tl.duration());
+});
+
+// Wait for both iframes to load before auto-playing
+Promise.all([...document.querySelectorAll('iframe')].map(f =>
+  new Promise(resolve => { if (f.contentDocument?.readyState === 'complete') resolve(); else f.addEventListener('load', resolve, { once: true }); })
+)).then(() => {
+  setTimeout(() => { tl.play(); playBtn.textContent = '⏸'; isPlaying = true; }, 400);
+});
+</script>
+</body>
+</html>
