@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>cinematicFlight — QC</title>
+<style>
+  :root {
+    --bg: #14161C; --ink: #ebebed; --ink-mute: #8a8e99;
+    --accent: #E27730; --accent-blue: #0399ED;
+    --bg-warm: #F4F1EC;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; overflow: hidden; }
+  .header { padding: 16px 32px; border-bottom: 1px solid #2a2e3a; }
+  .header h1 { margin: 0 0 4px; font-size: 18px; font-family: ui-monospace, "SF Mono", Menlo, monospace; color: var(--accent-blue); }
+  .header .desc { font-size: 13px; color: var(--ink-mute); }
+  .header a { color: var(--accent); text-decoration: none; font-size: 12px; }
+  .stage-wrap { position: fixed; inset: 60px 0 80px 0; display: flex; align-items: center; justify-content: center; background: #0d0e10; }
+  .stage { position: relative; width: 1280px; height: 720px; background: var(--bg-warm); overflow: hidden; border-radius: 6px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); transform-origin: center center; }
+  .scene-camera { position: absolute; inset: 0; transform-origin: center center; will-change: transform; }
+  .demo-zone { position: absolute; width: 280px; height: 180px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 28px; color: #fff; }
+  .demo-zone.a { left: 100px; top: 220px; background: var(--accent); }
+  .demo-zone.b { right: 100px; top: 320px; background: var(--accent-blue); }
+  .label { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); font-size: 14px; color: var(--ink-mute); font-family: ui-monospace, monospace; padding: 4px 12px; background: rgba(255,255,255,0.85); border-radius: 999px; }
+  .controls { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 32px; background: rgba(20,22,28,0.92); backdrop-filter: blur(8px); display: flex; align-items: center; gap: 14px; border-top: 1px solid #2a2e3a; }
+  .controls button { background: rgba(255,255,255,0.10); border: 0; color: var(--ink); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 14px; }
+  .controls button:hover { background: rgba(255,255,255,0.20); }
+  .controls input[type="range"] { flex: 1; }
+  .controls .time { min-width: 90px; text-align: center; font-family: ui-monospace, monospace; font-size: 13px; opacity: 0.85; }
+  .phase { display: inline-block; padding: 2px 8px; border-radius: 4px; background: rgba(226,119,48,0.18); color: var(--accent); font-size: 11px; font-family: ui-monospace, monospace; margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>cinematicFlight</h1>
+  <div class="desc">
+    <span class="phase">draft</span>
+    4-phase decomposed camera flight: anticipation → flight w/ scale dip + rotation → land + hold → micro-zoom.
+    Source: <a href="../../videos/_shared/motion-primitives.js">motion-primitives.js</a> ·
+    Rationale: <a href="../../docs/winning-pattern-analysis-2026-05-10.md">winning-pattern</a> §C,
+    <a href="../../.claude/skills/wpforms-gsap-rules/SKILL.md">wpforms-gsap-rules</a> L1 section ·
+    <a href="index.html">← back to index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="scene-camera" id="camera">
+      <div class="demo-zone a">A</div>
+      <div class="demo-zone b">B</div>
+    </div>
+    <div class="label" id="phaseLabel">phase: idle</div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">▶</button>
+  <input type="range" id="scrubber" min="0" max="1" step="0.001" value="0">
+  <div class="time" id="timeLabel">0.00 / 0.00</div>
+  <button id="restartBtn">⟲</button>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { cinematicFlight } from '/videos/_shared/motion-primitives.js';
+
+// Fit stage to viewport (preserve 1280x720)
+function fitStage() {
+  const stage = document.getElementById('stage');
+  const wrap = document.querySelector('.stage-wrap');
+  const sx = wrap.clientWidth / 1280;
+  const sy = wrap.clientHeight / 720;
+  const s = Math.min(sx, sy) * 0.96;
+  stage.style.transform = `scale(${s})`;
+}
+fitStage();
+window.addEventListener('resize', fitStage);
+
+const camera = document.getElementById('camera');
+const phaseLabel = document.getElementById('phaseLabel');
+
+// Build the cinematic flight: A (focus) → wide-overview → B (focus, micro-zoomed)
+const tl = cinematicFlight(camera, {
+  from: { x: 0, y: 0, scale: 1.0 },
+  to:   { x: -450, y: -50, scale: 1.4, rotation: 0 },
+  anticipationDuration: 0.15,
+  flightDuration: 1.1,
+  landHold: 0.5,
+  scaleDipFactor: 0.85,
+  rotationTilt: 1.5,
+  microZoom: {
+    to: { x: -520, y: -80, scale: 1.85 },
+    duration: 0.7,
+  },
+});
+
+// Phase label drives off timeline progress
+tl.eventCallback('onUpdate', () => {
+  const t = tl.time();
+  const total = tl.duration();
+  let phase = 'idle';
+  if (t < 0.15) phase = '1: anticipation';
+  else if (t < 0.15 + 0.55) phase = '2: flight outbound (scale dip)';
+  else if (t < 0.15 + 1.10) phase = '3: flight inbound (scale recovery)';
+  else if (t < 0.15 + 1.10 + 0.5) phase = '4: land + hold';
+  else phase = '5: micro-zoom';
+  phaseLabel.textContent = `phase: ${phase}`;
+  scrubber.value = t / total;
+  timeLabel.textContent = `${t.toFixed(2)} / ${total.toFixed(2)}`;
+});
+
+// Controls
+const playBtn = document.getElementById('playBtn');
+const scrubber = document.getElementById('scrubber');
+const timeLabel = document.getElementById('timeLabel');
+const restartBtn = document.getElementById('restartBtn');
+
+scrubber.max = '1';
+timeLabel.textContent = `0.00 / ${tl.duration().toFixed(2)}`;
+
+let isPlaying = false;
+playBtn.addEventListener('click', () => {
+  if (isPlaying) { tl.pause(); playBtn.textContent = '▶'; isPlaying = false; }
+  else { tl.play(); playBtn.textContent = '⏸'; isPlaying = true; }
+});
+restartBtn.addEventListener('click', () => {
+  tl.pause(); tl.time(0); playBtn.textContent = '▶'; isPlaying = false;
+});
+scrubber.addEventListener('input', () => {
+  tl.pause(); playBtn.textContent = '▶'; isPlaying = false;
+  tl.time(parseFloat(scrubber.value) * tl.duration());
+});
+
+// Auto-play once loaded
+setTimeout(() => {
+  tl.play();
+  playBtn.textContent = '⏸';
+  isPlaying = true;
+}, 400);
+</script>
+</body>
+</html>

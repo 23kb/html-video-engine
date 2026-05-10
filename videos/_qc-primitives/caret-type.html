@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>caretType — QC</title>
+<style>
+  :root {
+    --bg: #14161C; --ink: #ebebed; --ink-mute: #8a8e99;
+    --accent: #E27730; --accent-blue: #0399ED;
+    --bg-warm: #F4F1EC;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; overflow: hidden; }
+  .header { padding: 16px 32px; border-bottom: 1px solid #2a2e3a; }
+  .header h1 { margin: 0 0 4px; font-size: 18px; font-family: ui-monospace, "SF Mono", Menlo, monospace; color: var(--accent-blue); }
+  .header .desc { font-size: 13px; color: var(--ink-mute); }
+  .header a { color: var(--accent); text-decoration: none; font-size: 12px; }
+  .stage-wrap { position: fixed; inset: 80px 0 80px 0; display: flex; align-items: center; justify-content: center; background: #0d0e10; }
+  .stage { position: relative; width: 1280px; height: 720px; background: var(--bg-warm); overflow: hidden; border-radius: 6px; box-shadow: 0 30px 80px rgba(0,0,0,0.45); transform-origin: center center; padding: 60px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 48px; }
+  .typing-row { display: flex; align-items: baseline; gap: 0; }
+  .typed-text { font-size: 52px; font-weight: 600; letter-spacing: -0.02em; color: #1c1f28; font-family: -apple-system, "SF Pro Display", "Inter", system-ui, sans-serif; }
+  .typed-text .ml-caret { display: inline-block; color: var(--accent); animation: blink 1.0s steps(2) infinite; margin-left: 2px; transform: translateY(-2px); }
+  @keyframes blink { 0%,49.99% { opacity: 1; } 50%,100% { opacity: 0; } }
+  .label { font-size: 13px; color: #444; font-family: ui-monospace, monospace; padding: 6px 16px; background: rgba(255,255,255,0.85); border-radius: 999px; }
+  .controls { position: fixed; bottom: 0; left: 0; right: 0; padding: 16px 32px; background: rgba(20,22,28,0.92); backdrop-filter: blur(8px); display: flex; align-items: center; gap: 14px; border-top: 1px solid #2a2e3a; }
+  .controls button { background: rgba(255,255,255,0.10); border: 0; color: var(--ink); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 14px; }
+  .controls button:hover { background: rgba(255,255,255,0.20); }
+  .controls input[type="range"] { flex: 1; }
+  .controls .time { min-width: 90px; text-align: center; font-family: ui-monospace, monospace; font-size: 13px; opacity: 0.85; }
+  .controls label { font-size: 12px; color: var(--ink-mute); margin-left: 8px; }
+  .controls select { background: rgba(255,255,255,0.05); color: var(--ink); border: 1px solid #2a2e3a; padding: 4px 8px; border-radius: 4px; font-family: inherit; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>caretType</h1>
+  <div class="desc">
+    Letter-by-letter typing via scalar gsap tween + innerHTML mutation. Avoids the caret-floats-500px-right bug
+    (opacity-stagger on pre-rendered char spans leaves invisible chars consuming layout space).
+    Source: <a href="../../videos/_shared/motion-primitives.js">motion-primitives.js</a> · <a href="index.html">← back to index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="typing-row">
+      <div class="typed-text" id="typed">&nbsp;</div>
+    </div>
+    <div class="label" id="speedLabel">speed: 45ms/char (realistic)</div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">▶</button>
+  <input type="range" id="scrubber" min="0" max="1" step="0.001" value="0">
+  <div class="time" id="timeLabel">0.00 / 0.00</div>
+  <button id="restartBtn">⟲</button>
+  <label>speed:</label>
+  <select id="speedSel">
+    <option value="0.030">30ms/char (snappy, snapshot-puppetry default)</option>
+    <option value="0.045" selected>45ms/char (realistic, conversational)</option>
+    <option value="0.075">75ms/char (human-paced — flagged "too slow" in ai-board)</option>
+  </select>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { caretType } from '/videos/_shared/motion-primitives.js';
+
+function fitStage() {
+  const stage = document.getElementById('stage');
+  const wrap = document.querySelector('.stage-wrap');
+  const sx = wrap.clientWidth / 1280;
+  const sy = wrap.clientHeight / 720;
+  stage.style.transform = `scale(${Math.min(sx, sy) * 0.96})`;
+}
+fitStage();
+window.addEventListener('resize', fitStage);
+
+const typed = document.getElementById('typed');
+const PHRASE = 'Build forms with AI in seconds';
+
+let tl = null;
+function build(charDuration) {
+  if (tl) tl.kill();
+  typed.innerHTML = '<span class="ml-caret">|</span>';
+  tl = gsap.timeline({ paused: true });
+  tl.add(caretType(typed, PHRASE, { charDuration }));
+  // Hold the completed phrase for 1.5s before loop reset
+  tl.to({}, { duration: 1.5 });
+
+  timeLabel.textContent = `0.00 / ${tl.duration().toFixed(2)}`;
+  tl.eventCallback('onUpdate', () => {
+    const t = tl.time();
+    scrubber.value = t / tl.duration();
+    timeLabel.textContent = `${t.toFixed(2)} / ${tl.duration().toFixed(2)}`;
+  });
+}
+
+const playBtn = document.getElementById('playBtn');
+const scrubber = document.getElementById('scrubber');
+const timeLabel = document.getElementById('timeLabel');
+const restartBtn = document.getElementById('restartBtn');
+const speedSel = document.getElementById('speedSel');
+const speedLabel = document.getElementById('speedLabel');
+
+let isPlaying = false;
+playBtn.addEventListener('click', () => {
+  if (isPlaying) { tl.pause(); playBtn.textContent = '▶'; isPlaying = false; }
+  else { tl.play(); playBtn.textContent = '⏸'; isPlaying = true; }
+});
+restartBtn.addEventListener('click', () => {
+  tl.pause(); tl.time(0); typed.innerHTML = '<span class="ml-caret">|</span>'; playBtn.textContent = '▶'; isPlaying = false;
+});
+scrubber.addEventListener('input', () => {
+  tl.pause(); playBtn.textContent = '▶'; isPlaying = false;
+  tl.time(parseFloat(scrubber.value) * tl.duration());
+});
+speedSel.addEventListener('change', () => {
+  const d = parseFloat(speedSel.value);
+  const text = speedSel.options[speedSel.selectedIndex].text;
+  speedLabel.textContent = `speed: ${text}`;
+  build(d);
+  if (isPlaying) tl.play();
+});
+
+build(0.045);
+setTimeout(() => { tl.play(); playBtn.textContent = '⏸'; isPlaying = true; }, 400);
+</script>
+</body>
+</html>

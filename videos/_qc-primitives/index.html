@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Motion Primitives — QC Index</title>
+<style>
+  :root {
+    --bg: #14161C;
+    --card: #1c1f28;
+    --ink: #ebebed;
+    --ink-mute: #8a8e99;
+    --accent: #E27730;
+    --accent-blue: #0399ED;
+    --border: #2a2e3a;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1200px; margin: 0 auto; padding: 56px 32px; }
+  h1 { font-size: 36px; margin: 0 0 8px; letter-spacing: -0.02em; }
+  .sub { color: var(--ink-mute); font-size: 15px; margin-bottom: 40px; line-height: 1.55; }
+  h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--accent); margin: 40px 0 16px;
+    font-weight: 700;
+  }
+  .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 16px;
+  }
+  .card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 20px;
+    display: block; text-decoration: none; color: var(--ink);
+    transition: transform 0.18s ease-out, border-color 0.18s ease-out;
+  }
+  .card:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .card .name {
+    font-size: 16px; font-weight: 600; margin-bottom: 6px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--accent-blue);
+  }
+  .card .desc { font-size: 13px; color: var(--ink-mute); line-height: 1.5; margin-bottom: 12px; }
+  .card .status {
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em;
+    padding: 3px 8px; border-radius: 4px;
+    display: inline-block;
+  }
+  .card .status.draft  { background: rgba(226, 119, 48, 0.15); color: var(--accent); }
+  .card .status.ready  { background: rgba(3, 153, 237, 0.15); color: var(--accent-blue); }
+  .card .status.absent { background: rgba(255,255,255,0.06); color: var(--ink-mute); }
+  .legend { color: var(--ink-mute); font-size: 12px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); }
+  .legend code { color: var(--accent); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Motion Primitives — QC Index</h1>
+  <p class="sub">
+    Each primitive in <code>videos/_shared/motion-primitives.js</code> has a standalone demo on this page.
+    Click through, scrub, approve or red-line. Source rationale and citations are inline in the library file.
+    See <a href="../../docs/winning-pattern-analysis-2026-05-10.md">winning-pattern analysis</a> and
+    <a href="../../docs/polish-vocabulary-2026-05-11.md">polish-vocabulary</a> for the patterns these codify.
+  </p>
+
+  <h2>Camera primitives</h2>
+  <div class="grid">
+    <a class="card" href="cinematic-flight.html">
+      <div class="name">cinematicFlight</div>
+      <div class="desc">4-phase decomposed camera move: anticipation → flight (scale dip + rotation) → land + hold → optional micro-zoom. The editorial-gap primitive.</div>
+      <span class="status draft">draft — needs QC</span>
+    </a>
+    <a class="card" href="focus-station-overview.html">
+      <div class="name">focusStationOverview</div>
+      <div class="desc">Tutorial-grade focus → station → overview arc with short anchor hold. Polished rest-api shape.</div>
+      <span class="status absent">not yet built</span>
+    </a>
+  </div>
+
+  <h2>Cursor + interaction</h2>
+  <div class="grid">
+    <a class="card" href="cursor-glide-straight.html">
+      <div class="name">cursorGlideStraight</div>
+      <div class="desc">Anti-frenzy straight-line cursor glide. <code>killTweensOf</code> + <code>power2.inOut</code> + ≥0.85s duration.</div>
+      <span class="status draft">draft — needs QC</span>
+    </a>
+    <a class="card" href="click-ripple.html">
+      <div class="name">clickRipple</div>
+      <div class="desc">Radial click feedback at a stage point. Self-removing on completion.</div>
+      <span class="status absent">not yet built</span>
+    </a>
+  </div>
+
+  <h2>Text + typing</h2>
+  <div class="grid">
+    <a class="card" href="caret-type.html">
+      <div class="name">caretType</div>
+      <div class="desc">Letter-by-letter typing via scalar gsap tween + innerHTML mutation. Avoids the caret-floats-500px-right bug.</div>
+      <span class="status draft">draft — needs QC</span>
+    </a>
+    <a class="card" href="status-pill-morph.html">
+      <div class="name">statusPillMorph</div>
+      <div class="desc">Character-by-character text swap on persistent pill. Status spine pattern.</div>
+      <span class="status absent">not yet built</span>
+    </a>
+    <a class="card" href="marker-sweep.html">
+      <div class="name">markerSweep</div>
+      <div class="desc">Highlight sweep behind key text with text-color flip-inside. Replit Slides reference.</div>
+      <span class="status absent">not yet built</span>
+    </a>
+  </div>
+
+  <h2>Field / form</h2>
+  <div class="grid">
+    <a class="card" href="field-stagger-reveal.html">
+      <div class="name">fieldStaggerReveal</div>
+      <div class="desc">Per-field rise + un-blur + fade-in with stagger. AI-generation field-reveal pattern.</div>
+      <span class="status absent">not yet built</span>
+    </a>
+  </div>
+
+  <h2>Tutorial polish</h2>
+  <div class="grid">
+    <a class="card" href="mount-sullie-bug.html">
+      <div class="name">mountSullieBug</div>
+      <div class="desc">Persistent brand anchor — Sullie bottom-right with subtle float. Polish-vocab "persistent-brand-anchor".</div>
+      <span class="status absent">not yet built</span>
+    </a>
+    <a class="card" href="clean-fast-rejoin.html">
+      <div class="name">cleanFastRejoin</div>
+      <div class="desc">Exit pattern from polished rest-api: 500ms breathe → scale 1.02 sine.in 0.35s → shared anchor → 120ms hold.</div>
+      <span class="status absent">not yet built</span>
+    </a>
+  </div>
+
+  <h2>Utilities</h2>
+  <div class="grid">
+    <a class="card" href="bounded-repeats.html">
+      <div class="name">boundedRepeats</div>
+      <div class="desc">Math.ceil helper for finite repeat counts (replaces <code>repeat: -1</code>). Deterministic-safe.</div>
+      <span class="status absent">not yet built — utility, no visual</span>
+    </a>
+  </div>
+
+  <div class="legend">
+    Status legend —
+    <span class="status draft">draft</span> primitive function exists, QC page exists, awaiting user visual approval.
+    <span class="status ready">ready</span> approved; safe for production use.
+    <span class="status absent">not yet built</span> primitive function exists in library; QC page pending.
+  </div>
+</div>
+</body>
+</html>
