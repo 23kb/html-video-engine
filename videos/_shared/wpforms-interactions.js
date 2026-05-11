@@ -1711,7 +1711,7 @@ export class WPFormsInteractions {
     await this.iframe.wait(0.18);
   }
 
-  // ── Wave 2 / Batch A: Notifications + Conditional Logic ────────────────
+  // ── Wave 2 / Batch A: Notifications + notification-only conditional logic ─
 
   /**
    * Add a notification block from the Settings → Notifications panel.
@@ -2175,16 +2175,18 @@ export class WPFormsInteractions {
   }
 
   /**
-   * Enable conditional logic and fill a single rule row.
+   * Enable Notifications conditional logic and fill a single rule row.
+   * This flow is scoped to Settings -> Notifications only; other WPForms
+   * conditional logic surfaces have different DOM and should use separate flows.
    *
    * @prerequisite Current snapshot: 'builder-settings-notifications-cl'
    * @operation dom-only
-   * @endsAt 'builder-settings-notifications-cl' (rule box visible and populated)
+   * @endsAt 'builder-settings-notifications-cl' (notification rule visible and populated)
    * @primitives Cursor.glide, Cursor.click
    * @realDom Toggle `#wpforms-panel-field-notifications-1-conditional_logic-wrap`
    *   and rule box `#wpforms-conditional-groups-settings-notifications-1`
    *   (snapshots/builder-settings-notifications-cl/index.html:2808-2813).
-   * @duration ~4.2s
+   * @duration ~3.4s for empty/not empty; ~4.2s when a value is required
    *
    * @param {Object} opts
    * @param {string} [opts.toggleWrapSel='#wpforms-panel-field-notifications-1-conditional_logic-wrap']
@@ -2226,6 +2228,17 @@ export class WPFormsInteractions {
       gsap.fromTo(operator, { opacity: 0.35 }, { opacity: 1, duration: 0.24 });
     }
     await this.iframe.wait(0.32);
+    const operatorValue = operator?.value || rule.operator;
+    if (operatorValue === 'e' || operatorValue === '!e') {
+      const currentValue = valueCell?.querySelector('select, input, textarea');
+      if (currentValue) {
+        currentValue.disabled = true;
+        currentValue.setAttribute('aria-disabled', 'true');
+        currentValue.style.opacity = '0.55';
+        currentValue.style.cursor = 'not-allowed';
+      }
+      return;
+    }
     const doc = this.iframe.doc();
     const oldValue = valueCell?.querySelector('select, input');
     const input = doc.createElement('input');

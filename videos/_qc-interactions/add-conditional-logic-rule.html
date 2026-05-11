@@ -8,7 +8,7 @@
 <body>
 <div class="header">
   <h1>addConditionalLogicRule()</h1>
-  <div class="desc">Enables conditional logic, opens the real dropdowns, and fills Field, Operator, and Value. Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> - <a href="index.html">back to index</a></div>
+  <div class="desc">Notifications-only conditional logic flow. It opens the real dropdowns and stops after Operator when Empty or Not Empty disables the value field. Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> - <a href="index.html">back to index</a></div>
 </div>
 <div class="stage-wrap"><div class="stage" id="stage"><div class="phase-label" id="phaseLabel">state: loading...</div></div></div>
 <div class="controls">
@@ -46,7 +46,7 @@ bootQc({
   run: async ({ interactions, setState }) => {
     const field = document.getElementById('fieldPicker').value;
     const operator = document.getElementById('operatorPicker').value;
-    setState('adding conditional logic rule');
+    setState('adding Notifications conditional logic rule');
     await interactions.addConditionalLogicRule({ rule: { field, operator, value: 'Urgent' } });
   },
 });
