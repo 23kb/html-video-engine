@@ -67,6 +67,10 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 
 - `skills.md` — Skill bundle index.
 
+## Sound design (queued — not yet implemented in new architecture)
+
+- `sound-design-reference-2026-05-12.md` — Reference doc combining (a) the "Music and SFX Selection for Tech Demo Videos" skill content received 2026-05-12, (b) our existing in-repo SFX pipeline state (`runtime/sfx.js` + `scenes/shared.js` BGM/ducking, engine-path coupled), and (c) gap analysis + recommended workflow for wiring sound into the new single-HTML pattern. Includes music matching matrix by content type, mix levels in dB, ducking specs (S-curve, 100-200ms attack, -6 to -8 dB reduction), royalty-free sources, and a 5-phase implementation plan for when sound work is greenlit.
+
 ## Single-HTML video architecture (NEW default for tutorial videos)
 
 - `video-architecture-invariants-2026-05-12.md` — **11 hard rules (INV-1 through INV-11) for single-HTML videos.** Stage at native + no transform, iframe at native + single direct camera transform, mac frame is outer chrome only, cursor stage-local, snapshot field IDs vary per capture, smoothScrollIntoView before glide, library as reference (3-test promotion), pointer-events: none guard, determinism, real brand, required Intro→PostIntro→Tutorial→Outro shape. Cross-references each invariant to the commit it was learned from. Read before any new single-HTML video work.
