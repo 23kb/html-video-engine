@@ -231,24 +231,26 @@ const restartBtn = document.getElementById('restartBtn');
 
 // Bypassing the library's figjamFlight primitive — its inter-phase math
 // assumes transform-origin: top-left and was producing wrong intermediate
-// translates. Building an explicit 5-keyframe timeline here.
+// translates. Explicit keyframe timeline below.
+//
+// Three bug-fixes from the prior version (per Umair QC 2026-05-11):
+//   1. duration/ease must live INSIDE the vars object, not as a 3rd arg —
+//      `tl.to(target, vars, position)` treats arg 3 as a position parameter
+//      (string like "+=2" or a number), so { duration, ease } silently got
+//      dropped and every camera tween defaulted to 0.5s power1.out. That's
+//      why the timeline total read as ~1.20s instead of the intended 4.25s.
+//   2. WIDE_PAN_MID intermediate dropped — going through canvas mid as a
+//      keyframe created a perceptible velocity-dip stutter. Single sweep
+//      from ZOOM_OUT_AT_A straight to ZOOM_OUT_AT_B instead.
+//   3. All camera-move phases use power2.inOut (symmetric pulse). Joint
+//      velocities are 0 from BOTH sides of each joint (matched), so the
+//      eye reads three smooth beats rather than asymmetric stutters.
 const tl = gsap.timeline({ paused: true });
-
-// Phase 1: anticipation (small pre-nudge in opposite direction)
-tl.to(camera, { x: FROM_A.x + 12, duration: 0.15, ease: 'power2.in' });
-
-// Phase 2: ZOOM OUT — pull back while keeping focus on A
-tl.to(camera, ZOOM_OUT_AT_A, { duration: 1.0, ease: 'power3.out' });
-
-// Phase 3: TRANSLATE (two halves) — pan at wide scale to canvas mid, then to B
-tl.to(camera, WIDE_PAN_MID, { duration: 0.7, ease: 'sine.inOut' });
-tl.to(camera, ZOOM_OUT_AT_B, { duration: 0.7, ease: 'sine.inOut' });
-
-// Phase 4: ZOOM IN on B
-tl.to(camera, TO_B, { duration: 1.0, ease: 'power3.inOut' });
-
-// Phase 5: hold
-tl.to({}, { duration: 0.7 });
+tl.to(camera, { x: FROM_A.x + 12, duration: 0.15, ease: 'power2.in' });           // 1: anticipation
+tl.to(camera, { ...ZOOM_OUT_AT_A, duration: 1.0, ease: 'power2.inOut' });          // 2: zoom out at A
+tl.to(camera, { ...ZOOM_OUT_AT_B, duration: 1.0, ease: 'power2.inOut' });          // 3: pan A→B at wide
+tl.to(camera, { ...TO_B,          duration: 1.0, ease: 'power2.inOut' });          // 4: zoom in on B
+tl.to({}, { duration: 1.1 });                                                       // 5: hold
 
 timeLabel.textContent = `0.00 / ${tl.duration().toFixed(2)}`;
 
@@ -257,9 +259,9 @@ tl.eventCallback('onUpdate', () => {
   const total = tl.duration();
   let phase = 'idle';
   if (t < 0.15) phase = '1: anticipation';
-  else if (t < 1.15) phase = '2: ZOOM OUT — pull back from A, both panels reveal';
-  else if (t < 2.55) phase = '3: TRANSLATE across gap (wide pan A → B)';
-  else if (t < 3.55) phase = '4: ZOOM IN on B';
+  else if (t < 1.15) phase = '2: ZOOM OUT (power2.inOut)';
+  else if (t < 2.15) phase = '3: PAN A → B (power2.inOut, no mid-stop)';
+  else if (t < 3.15) phase = '4: ZOOM IN on B (power2.inOut)';
   else phase = '5: land + hold';
   phaseLabel.textContent = `phase: ${phase}`;
   scrubber.value = t / total;
@@ -279,9 +281,16 @@ scrubber.addEventListener('input', () => {
   tl.time(parseFloat(scrubber.value) * tl.duration());
 });
 
-Promise.all([...document.querySelectorAll('iframe')].map(f =>
-  new Promise(resolve => { if (f.contentDocument?.readyState === 'complete') resolve(); else f.addEventListener('load', resolve, { once: true }); })
-)).then(() => {
+// Autoplay with iframe-load fallback. The 6.7MB wpforms-ai-builder-empty
+// snapshot doesn't always fire `load` reliably; don't block autoplay on it.
+const iframeLoadPromises = [...document.querySelectorAll('iframe')].map(f =>
+  new Promise(resolve => {
+    if (f.contentDocument?.readyState === 'complete') { resolve(); return; }
+    f.addEventListener('load', resolve, { once: true });
+  })
+);
+const iframeTimeout = new Promise(resolve => setTimeout(resolve, 3000));
+Promise.race([Promise.all(iframeLoadPromises), iframeTimeout]).then(() => {
   setTimeout(() => { tl.play(); playBtn.textContent = '⏸'; isPlaying = true; }, 400);
 });
 </script>

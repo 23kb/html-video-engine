@@ -53,6 +53,7 @@
     display: inline-block; margin-top: 10px;
     background: rgba(226, 119, 48, 0.15); color: var(--accent);
   }
+  .card .status.ready { background: rgba(3, 153, 237, 0.15); color: var(--accent-blue); }
   .legend { color: var(--ink-mute); font-size: 12px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--border); line-height: 1.6; }
   .legend code { color: var(--accent); }
   a { color: var(--accent); text-decoration: none; }
@@ -76,25 +77,25 @@
       <div class="name">navAddNewForm()</div>
       <div class="desc">Cursor glides to the orange "Add New" button in the All Forms header, clicks, and crossfades to the Form Templates library.</div>
       <div class="meta"><strong>start:</strong> admin-forms-overview · <strong>end:</strong> admin-templates · <strong>op:</strong> snapshot-swap</div>
-      <span class="status">draft — needs QC</span>
+      <span class="status ready">ready — approved 2026-05-12</span>
     </a>
     <a class="card" href="select-template.html">
       <div class="name">selectTemplate(slug)</div>
       <div class="desc">Picks a template card on the Form Templates page (default: Simple Contact Form), scrolls into view, clicks, and crossfades to the builder setup panel.</div>
       <div class="meta"><strong>start:</strong> admin-templates · <strong>end:</strong> builder-setup · <strong>op:</strong> snapshot-swap</div>
-      <span class="status">draft — needs QC</span>
+      <span class="status ready">ready — approved 2026-05-12</span>
     </a>
     <a class="card" href="nav-wpforms-sidebar-menu.html">
       <div class="name">navWPFormsSidebarMenu(item)</div>
       <div class="desc">Clicks a submenu item in the WordPress sidebar under WPForms (All Forms / Add New / Entries / Settings / etc.) and crossfades to the mapped snapshot.</div>
       <div class="meta"><strong>start:</strong> admin-forms-overview · <strong>end:</strong> depends on item · <strong>op:</strong> snapshot-swap</div>
-      <span class="status">draft — needs QC</span>
+      <span class="status ready">ready — approved 2026-05-12</span>
     </a>
     <a class="card" href="open-form-in-list.html">
       <div class="name">openFormInList(formId)</div>
       <div class="desc">Clicks a form row in the All Forms table to open it in the builder. Default form id: 55 (Contact Us form).</div>
       <div class="meta"><strong>start:</strong> admin-forms-overview · <strong>end:</strong> builder-fields · <strong>op:</strong> snapshot-swap</div>
-      <span class="status">draft — needs QC</span>
+      <span class="status ready">ready — approved 2026-05-12</span>
     </a>
   </div>
 
@@ -104,32 +105,32 @@
       <div class="name">dragFieldToForm(fieldSlug)</div>
       <div class="desc">Full visual drag from the left palette to the form canvas. Ghost element clone carries from button → drop zone; placeholder field is appended to the canvas on release.</div>
       <div class="meta"><strong>start:</strong> builder-fields · <strong>end:</strong> builder-fields (+ field) · <strong>op:</strong> dom-only</div>
-      <span class="status">draft — needs QC</span>
+      <span class="status ready">ready — approved 2026-05-12</span>
     </a>
     <a class="card" href="open-field-options.html">
       <div class="name">openFieldOptions(fieldId)</div>
       <div class="desc">Clicks a field on the canvas to open its Field Options panel. Tab swaps from "Add Fields" to "Field Options"; the field's option panel becomes visible.</div>
       <div class="meta"><strong>start:</strong> builder-fields · <strong>end:</strong> builder-fields (options open) · <strong>op:</strong> dom-only</div>
-      <span class="status">draft — needs QC</span>
+      <span class="status ready">ready — approved 2026-05-12</span>
     </a>
     <a class="card" href="nav-builder-sidebar.html">
       <div class="name">navBuilderSidebar(section)</div>
       <div class="desc">Clicks one of the builder's bottom-left panel buttons (Setup / Fields / Settings / Marketing / Payments / Revisions) and crossfades to the corresponding snapshot.</div>
       <div class="meta"><strong>start:</strong> builder-fields · <strong>end:</strong> mapped builder-* · <strong>op:</strong> snapshot-swap</div>
-      <span class="status">draft — needs QC</span>
+      <span class="status ready">ready — approved 2026-05-12</span>
     </a>
     <a class="card" href="open-settings-tab.html">
       <div class="name">openSettingsTab(tab)</div>
       <div class="desc">Clicks a Settings sub-tab (General / Notifications / Confirmations / Anti-Spam / Themes) and crossfades to the corresponding builder-settings-* snapshot.</div>
       <div class="meta"><strong>start:</strong> builder-settings-general · <strong>end:</strong> builder-settings-&lt;tab&gt; · <strong>op:</strong> snapshot-swap</div>
-      <span class="status">draft — needs QC</span>
+      <span class="status ready">ready — approved 2026-05-12</span>
     </a>
   </div>
 
   <div class="legend">
     <strong>How to QC:</strong> open each page, click <code>▶ run</code>, watch the cursor + snapshot-swap. Edge cases to flag — cursor lands on wrong target, snapshot-swap shows cream flash, ghost element misaligned during drag, DOM puppetry visible (tab flips before cursor arrives).
     <br><br>
-    <strong>Wave 1 status:</strong> 8 interactions built, awaiting visual approval. Wave 2 (AI flow, Marketing providers, Addons, Embed) is queued.
+    <strong>Wave 1 status:</strong> 8 interactions approved 2026-05-12. Wave 2 (expanded feature-surface scope — notifications + conditional logic + marketing providers + payments + frontend forms + settings sub-tabs) queued per <code>docs/codex-prompts/wave-2-interactions-expanded-scope.md</code>.
     <br><br>
     <strong>Source:</strong> <code><a href="../_shared/wpforms-interactions.js">videos/_shared/wpforms-interactions.js</a></code>
     · <strong>Primitives:</strong> <code><a href="../_shared/motion-primitives.js">videos/_shared/motion-primitives.js</a></code>

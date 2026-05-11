@@ -75,17 +75,22 @@
     <a class="card" href="cinematic-flight.html">
       <div class="name">cinematicFlight (intra-snapshot)</div>
       <div class="desc">4-phase decomposed camera move within one stage: anticipation → flight (scale dip + rotation) → land + hold → micro-zoom. Lands exactly center on B.</div>
-      <span class="status draft">draft — needs QC</span>
+      <span class="status ready">ready — approved 2026-05-11</span>
     </a>
     <a class="card" href="cinematic-flight-inter-snapshot.html">
       <div class="name">figjamFlight (inter-snapshot, 3-act)</div>
-      <div class="desc">3-act inter-snapshot camera: zoom out of A → translate across the gap (wide pan) → zoom in on B. Snapshots spaced apart on a 3680px canvas. Uses <code>admin-forms-overview</code> + <code>wpforms-ai-builder-empty</code>.</div>
-      <span class="status draft">draft — needs QC</span>
+      <div class="desc">3-act inter-snapshot camera: zoom out of A → straight pan A→B at wide scale → zoom in on B. Snapshots spaced apart on a 3680px canvas. Uses <code>admin-forms-overview</code> + <code>wpforms-ai-builder-empty</code>. Same <code>power2.inOut</code> velocity-pulse from <code>scatteredCanvasFlight</code>.</div>
+      <span class="status ready">ready — re-fixed 2026-05-11</span>
+    </a>
+    <a class="card" href="scattered-canvas-flight.html">
+      <div class="name">scatteredCanvasFlight (6 panels)</div>
+      <div class="desc">6 real WPForms snapshots scattered (not aligned) on a 4900×2800 canvas. Camera focuses on snapshot 1, zooms out to wide where all 6 are visible, holds, then zooms into snapshot 6. Same <code>power2.inOut</code> velocity-pulse from <code>_debug-camera</code>.</div>
+      <span class="status ready">ready — approved 2026-05-11</span>
     </a>
     <a class="card" href="focus-station-overview.html">
       <div class="name">focusStationOverview</div>
-      <div class="desc">Tutorial-grade focus → station → overview arc with short anchor hold. Polished rest-api shape.</div>
-      <span class="status absent">not yet built</span>
+      <div class="desc">Tutorial-grade focus → station → overview arc with short anchor hold. Polished rest-api shape. <code>expo.inOut</code> on each move.</div>
+      <span class="status ready">ready — approved 2026-05-11</span>
     </a>
   </div>
 
@@ -94,7 +99,21 @@
     <a class="card" href="cursor-glide-straight.html">
       <div class="name">Cursor class</div>
       <div class="desc">Full cursor with <code>.glide()</code> + <code>.click()</code> (squash + ripple) + <code>.hover()</code> (settle jitter) + <code>.drag()</code>. Anti-frenzy guards built in. Reusable across all videos.</div>
-      <span class="status draft">draft — needs QC</span>
+      <span class="status ready">ready — approved 2026-05-11</span>
+    </a>
+  </div>
+
+  <h2>Highlight + emphasis</h2>
+  <div class="grid">
+    <a class="card" href="pop-out.html">
+      <div class="name">popOut — builder fields</div>
+      <div class="desc">Clone target out of the iframe into the parent doc with all computed styles inlined, then lift with perspective + scale + 4-layer shadow + ring-shadow dim. Demo: pops field cards in the WPForms builder.</div>
+      <span class="status ready">ready — approved 2026-05-11</span>
+    </a>
+    <a class="card" href="pop-out-entries.html">
+      <div class="name">popOut — entries list</div>
+      <div class="desc">Same primitive on a completely different surface: pops individual rows from the admin Entries submissions table (<code>admin-entries-list</code>).</div>
+      <span class="status ready">ready — approved 2026-05-11</span>
     </a>
   </div>
 
@@ -103,17 +122,17 @@
     <a class="card" href="caret-type.html">
       <div class="name">caretType</div>
       <div class="desc">Letter-by-letter typing via scalar gsap tween + innerHTML mutation. Avoids the caret-floats-500px-right bug.</div>
-      <span class="status draft">draft — needs QC</span>
+      <span class="status ready">ready — approved 2026-05-11</span>
     </a>
     <a class="card" href="status-pill-morph.html">
-      <div class="name">statusPillMorph</div>
-      <div class="desc">Character-by-character text swap on persistent pill. Status spine pattern.</div>
-      <span class="status absent">not yet built</span>
+      <div class="name">statusPillMorph + form-morph</div>
+      <div class="desc">Character-by-character text swap on persistent pill (Thinking → Filling → Checking → Done), then identity-morphs into a form card with field cascade. White-pill upgrade.</div>
+      <span class="status ready">ready — approved 2026-05-11</span>
     </a>
     <a class="card" href="marker-sweep.html">
       <div class="name">markerSweep</div>
-      <div class="desc">Highlight sweep behind key text with text-color flip-inside. Replit Slides reference.</div>
-      <span class="status absent">not yet built</span>
+      <div class="desc">Highlight sweep behind key text with text-color flip-inside. Replit Slides reference. WPForms orange default.</div>
+      <span class="status ready">ready — approved 2026-05-11</span>
     </a>
   </div>
 
@@ -121,8 +140,8 @@
   <div class="grid">
     <a class="card" href="field-stagger-reveal.html">
       <div class="name">fieldStaggerReveal</div>
-      <div class="desc">Per-field rise + un-blur + fade-in with stagger. AI-generation field-reveal pattern.</div>
-      <span class="status absent">not yet built</span>
+      <div class="desc">Per-field rise + un-blur + fade-in with 0.10s stagger. AI-generation field-reveal pattern.</div>
+      <span class="status ready">ready — approved 2026-05-11</span>
     </a>
   </div>
 
@@ -130,13 +149,13 @@
   <div class="grid">
     <a class="card" href="mount-sullie-bug.html">
       <div class="name">mountSullieBug</div>
-      <div class="desc">Persistent brand anchor — Sullie bottom-right with subtle float. Polish-vocab "persistent-brand-anchor".</div>
-      <span class="status absent">not yet built</span>
+      <div class="desc">Persistent brand anchor — Sullie bottom-right with subtle 6px yoyo float (deterministic, bounded). Polish-vocab "persistent-brand-anchor".</div>
+      <span class="status ready">ready — approved 2026-05-11</span>
     </a>
     <a class="card" href="clean-fast-rejoin.html">
       <div class="name">cleanFastRejoin</div>
-      <div class="desc">Exit pattern from polished rest-api: 500ms breathe → scale 1.02 sine.in 0.35s → shared anchor → 120ms hold.</div>
-      <span class="status absent">not yet built</span>
+      <div class="desc">Exit pattern from polished rest-api: 500ms breathe → scale 1.02 sine.in 0.35s → reveal shared anchor → 120ms hold → 180ms layer fade. No blur smear.</div>
+      <span class="status ready">ready — approved 2026-05-11</span>
     </a>
   </div>
 

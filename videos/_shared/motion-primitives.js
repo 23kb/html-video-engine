@@ -853,6 +853,228 @@ export function markerSweep(textEl, opts = {}) {
 }
 
 // ─────────────────────────────────────────────────────────────────────────
+// HIGHLIGHT / EMPHASIS PRIMITIVES
+// ─────────────────────────────────────────────────────────────────────────
+
+// Re-export the proven clone-and-lift helpers from runtime/pop-out.js. The
+// runtime version is engine-coupled (assumes iframe.ui + engine layout); the
+// version below generalizes it for arbitrary iframes living inside any
+// transformed stage. Same visual recipe, same proven motion.
+import {
+  injectIframeFonts as _injectIframeFonts,
+  inlineTreeStyles as _inlineTreeStyles,
+  stripBuilderChrome as _stripBuilderChrome,
+} from '/runtime/pop-out.js';
+
+/**
+ * Pop a UI block out of an iframe as a floating 2.5D card. Mirrors the
+ * proven runtime/pop-out.js recipe — clones the target into the PARENT
+ * document, inlines every computed-style property + materializes pseudo-
+ * elements so it renders identically, then lifts it with a perspective +
+ * rotateY/rotateX + scale transform and a multi-layer shadow stack.
+ *
+ * Why clone instead of transforming in-place:
+ *   - Iframes get clipped by stage chrome (mac-frame, border-radius, etc.).
+ *     A 3D transform on an in-iframe element is clipped flat by the
+ *     iframe's bounding box.
+ *   - WordPress admin uses obscene z-indexes (100M+) for context menus,
+ *     dropdowns, fullscreen notices. Competing with that hierarchy from
+ *     inside the iframe is fragile. Cloning to parent-doc dodges it.
+ *   - The clone can cast a real shadow over the iframe's surrounding
+ *     stage chrome — reads as "this card is floating above the page,"
+ *     not "this card has an outline."
+ *
+ * NO dimmer. The lift + shadow + perspective is the emphasis; dimming
+ * fights it. (Earlier dim-based versions were rejected during QC.)
+ *
+ * Returns a Promise that resolves when the full rise → hold → fall
+ * sequence completes and the clone is removed.
+ *
+ * @param {HTMLIFrameElement} iframe — the iframe containing the target
+ * @param {string} selector — iframe-doc selector for the target element
+ * @param {Object} [opts]
+ * @param {number} [opts.tilt=0] — Y-axis tilt in degrees at peak (0 = pure
+ *   vertical lift, no rotation). tiltX auto-derives as `-tilt * 0.45`.
+ * @param {number} [opts.tiltX] — explicit X-axis tilt; overrides auto.
+ * @param {number} [opts.lift=1.10] — scale factor at peak
+ * @param {number} [opts.perspective=700] — smaller = more dramatic 3D
+ * @param {number} [opts.riseMs=420]
+ * @param {number} [opts.holdMs=900]
+ * @param {number} [opts.fallMs=340]
+ * @param {boolean} [opts.hideOriginal=true] — hide in-iframe original while popped
+ * @param {boolean} [opts.shadow=true] — multi-layer drop-shadow stack at peak
+ * @param {boolean} [opts.border=true] — hairline 1px edge for crisp card look
+ * @param {boolean} [opts.stripTextShadow=false] — kill text-shadow + filter on clone
+ * @param {string|null} [opts.caption=null] — caption pill below the lifted card
+ * @param {boolean} [opts.dim=true] — slight parent-doc overlay that dims
+ *   everything except the popped clone (clone z-index sits above the dim)
+ * @param {string} [opts.dimColor='rgba(0,0,0,0.20)'] — dim overlay color
+ * @returns {Promise<void>}
+ */
+export async function popOut(iframe, selector, opts = {}) {
+  const {
+    tilt = 0,
+    lift = 1.10,
+    perspective = 700,
+    riseMs = 420,
+    holdMs = 900,
+    fallMs = 340,
+    hideOriginal = true,
+    shadow = true,
+    border = true,
+    stripTextShadow = false,
+    caption = null,
+    dim = true,
+    dimColor = 'rgba(0,0,0,0.20)',
+  } = opts;
+  const tiltX = opts.tiltX ?? -tilt * 0.45;
+
+  const doc = iframe.contentDocument;
+  if (!doc) throw new Error('popOut: iframe.contentDocument unavailable');
+  const src = doc.querySelector(selector);
+  if (!src) throw new Error('popOut: no element matches ' + selector);
+
+  // Inject iframe @font-face rules into parent doc so cloned icons/glyphs
+  // render with the right typeface (one-time, cached after first call).
+  await _injectIframeFonts(doc);
+
+  // Compute the source's visual position in parent-doc viewport coords.
+  // The iframe lives inside a transformed stage AND has its own CSS scale,
+  // so derive the total iframe-doc-px → outer-viewport-px ratio from the
+  // bounding rect width vs offsetWidth. (Reading inline style misses
+  // transforms set via class rules; reading the computed matrix needs
+  // parsing — the rect/offset ratio captures every transform above the
+  // iframe in one step.)
+  const iframeRect = iframe.getBoundingClientRect();
+  const srcRect = src.getBoundingClientRect();
+  const totalScale = iframe.offsetWidth > 0 ? iframeRect.width / iframe.offsetWidth : 1;
+  const stageX = iframeRect.left + srcRect.left * totalScale;
+  const stageY = iframeRect.top  + srcRect.top  * totalScale;
+
+  // Build clone in parent doc and inline every computed style + pseudo.
+  const clone = src.cloneNode(true);
+  clone.removeAttribute('id');
+  clone.querySelectorAll('[id]').forEach(n => n.removeAttribute('id'));
+  _inlineTreeStyles(src, clone);
+  _stripBuilderChrome(clone);
+
+  if (stripTextShadow) {
+    clone.style.setProperty('text-shadow', 'none', 'important');
+    clone.style.setProperty('filter', 'none', 'important');
+    clone.querySelectorAll('*').forEach(n => {
+      n.style.setProperty('text-shadow', 'none', 'important');
+      n.style.setProperty('filter', 'none', 'important');
+    });
+  }
+
+  // Lock clone box to the source's pre-scale dimensions; apply the iframe's
+  // scale via transform so internal layout stays native.
+  clone.style.setProperty('position', 'fixed', 'important');
+  clone.style.margin = '0';
+  clone.style.pointerEvents = 'none';
+  clone.style.zIndex = '2147483646';
+  clone.style.left = stageX + 'px';
+  clone.style.top  = stageY + 'px';
+  clone.style.setProperty('width',  srcRect.width  + 'px', 'important');
+  clone.style.setProperty('height', srcRect.height + 'px', 'important');
+  clone.style.transformOrigin = '0 0';
+  clone.style.backfaceVisibility = 'hidden';
+
+  // Shadow stack (per runtime/pop-out.js recipe) + a giant ring shadow
+  // when `dim` is on. The ring is `0 0 0 99999px rgba(0,0,0,alpha)` —
+  // paints darkness everywhere outside the clone's bounding box, so the
+  // surrounding context dims but the clone itself is naturally cut out.
+  // Same trick engine.highlight() uses. No separate overlay element
+  // required (an earlier overlay approach let the dim show through the
+  // clone's transparent regions, e.g. inside a WPForms field wrapper).
+  const dimAlpha = (() => {
+    const m = /rgba?\([^)]*?,\s*([0-9.]+)\s*\)/.exec(dimColor);
+    return m ? parseFloat(m[1]) : 0.20;
+  })();
+  const dimRing = dim ? `0 0 0 99999px rgba(0,0,0,${dimAlpha})` : null;
+  const restBorder = border ? '0 0 0 1px rgba(16,14,10,0.06)' : null;
+  const restShadow = restBorder || '0 0 0 rgba(0,0,0,0)';
+  const peakShadow = [
+    border ? '0 0 0 1px rgba(16,14,10,0.08)' : null,
+    '0 60px 110px -22px rgba(14,10,6,0.42)',
+    '0 28px 54px -16px rgba(14,10,6,0.30)',
+    '0 10px 22px -10px rgba(14,10,6,0.18)',
+    '0 2px 6px rgba(14,10,6,0.12)',
+    dimRing,
+  ].filter(Boolean).join(', ');
+
+  clone.style.transform =
+    `scale(${totalScale}) perspective(${perspective}px) rotateY(0deg) rotateX(0deg)`;
+  clone.style.transition =
+    `transform ${riseMs}ms cubic-bezier(.2,.9,.3,1.1), box-shadow ${riseMs}ms ease, filter ${riseMs}ms ease`;
+  clone.style.boxShadow = restShadow;
+  document.body.appendChild(clone);
+
+  // Optional caption pill below the lifted card.
+  let captionEl = null;
+  if (caption) {
+    captionEl = document.createElement('div');
+    captionEl.textContent = caption;
+    Object.assign(captionEl.style, {
+      position: 'fixed',
+      left: (stageX + srcRect.width * totalScale / 2) + 'px',
+      top:  (stageY + srcRect.height * totalScale + 14) + 'px',
+      transform: 'translate(-50%, -8px)',
+      background: '#E27730',
+      color: '#fff',
+      padding: '8px 14px',
+      borderRadius: '6px',
+      fontSize: '13px',
+      fontWeight: '600',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif',
+      whiteSpace: 'nowrap',
+      pointerEvents: 'none',
+      opacity: '0',
+      boxShadow: '0 6px 14px rgba(0,0,0,0.25)',
+      zIndex: '2147483647',
+      transition: `opacity 220ms ease, transform 220ms cubic-bezier(.2,.9,.3,1.1)`,
+    });
+    document.body.appendChild(captionEl);
+  }
+
+  // Hide the in-iframe original (visibility:hidden preserves layout).
+  const prevVis = src.style.visibility;
+  if (hideOriginal) src.style.visibility = 'hidden';
+
+  // Rise + tilt.
+  await new Promise(r => setTimeout(r, 20));
+  const combined = totalScale * lift;
+  clone.style.transform =
+    `scale(${combined}) perspective(${perspective}px) rotateY(${tilt}deg) rotateX(${tiltX}deg)`;
+  if (shadow) clone.style.boxShadow = peakShadow;
+  if (captionEl) {
+    captionEl.style.opacity = '1';
+    captionEl.style.transform = 'translate(-50%, 0)';
+  }
+  await new Promise(r => setTimeout(r, riseMs + 20));
+
+  // Hold.
+  await new Promise(r => setTimeout(r, holdMs));
+
+  // Fall back.
+  clone.style.transition =
+    `transform ${fallMs}ms cubic-bezier(.4,.1,.3,1), box-shadow ${fallMs}ms ease`;
+  clone.style.transform =
+    `scale(${totalScale}) perspective(${perspective}px) rotateY(0deg) rotateX(0deg)`;
+  clone.style.boxShadow = restShadow;
+  if (captionEl) {
+    captionEl.style.opacity = '0';
+    captionEl.style.transform = 'translate(-50%, -8px)';
+  }
+  await new Promise(r => setTimeout(r, fallMs + 20));
+
+  // Cleanup.
+  if (hideOriginal) src.style.visibility = prevVis;
+  clone.remove();
+  if (captionEl) captionEl.remove();
+}
+
+// ─────────────────────────────────────────────────────────────────────────
 // FIELD / FORM PRIMITIVES
 // ─────────────────────────────────────────────────────────────────────────
 
