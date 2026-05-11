@@ -40,6 +40,21 @@ For a new video session, work in this order. Don't skip steps.
 6. **Validate** — `tools/validate-video.js` then `tools/check-video-playback.js`.
 7. **Handoff** — playable URL: `http://localhost:4321/scenes/player.html?video=<slug>`. Visual QC is the user's, not yours.
 
+## ⛔ Skill invocation is non-negotiable
+
+**This skill must be INVOKED (via the Skill tool), not just read inline.** Reading `.claude/skills/wpforms-video/SKILL.md` as a markdown file does not trigger this skill's gates. Use `/wpforms-video` or programmatic Skill invocation at session start when working on tutorial video work.
+
+The Klaviyo tutorial v11 (2026-05-12) was built without invoking this skill OR wpforms-motion-audit OR wpforms-postintro. The postIntro went through 12 iterations without ever being formally scored. The author's own retro: "going straight from CLAUDE.md → codex prompt → code was efficient but bypassed the skill system entirely." Don't repeat that.
+
+Sessions working from a detailed codex prompt file (`docs/codex-prompts/*.md`) MUST still invoke:
+- This skill (`wpforms-video`) at session start
+- `wpforms-postintro` before designing any postIntro morph chain
+- `wpforms-gsap-rules` before writing any timeline beat
+- `wpforms-motion-audit` before declaring postIntro / cinematic done (HARD GATE)
+- `wpforms-primitives` before building any new helper to check if it already exists
+
+The prompt is the brief. The skills are the gates. Both apply.
+
 ## 🛑 HARD-GATE: Storyboard Approval
 
 **Before writing ANY chapter code, DOM prep, or rendering narration mp3s, the user MUST have approved a storyboard proposal in this exact shape:**

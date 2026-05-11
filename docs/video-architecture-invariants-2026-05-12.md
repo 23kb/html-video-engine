@@ -138,6 +138,25 @@ The library-side helper `findInIframeByText(iframeManager, text)` (in `videos/_s
 
 Learned during Klaviyo tutorial v4 + v11 builds (`videos/klaviyo-quick-connect/index.html`). The empty-rect throw at `elementToStageCoords` caught real bugs both times — once on `input[name="api_key"]` matching the hidden ConvertKit form (v2), once on `.js-wpforms-builder-provider-connection-add` matching 11 hidden buttons (v11). Source: Klaviyo session retro 2026-05-12.
 
+### INV-13 — Invoke skills, don't just read them
+
+**The Skill tool is the gate. Reading a skill's markdown file is NOT.** Skills can define pre/post hooks, enforce gates, and trigger specific tool flows that file-reads bypass entirely.
+
+The Klaviyo tutorial v11 (2026-05-12) shipped after 12 postIntro iterations WITHOUT ever invoking `wpforms-motion-audit`. Per the session's own retro: "going straight from CLAUDE.md → codex prompt → code was efficient but bypassed the skill system entirely." That bypass means we have no tier rating for the final postIntro. Skill gates were SOLVED PROBLEMS that got re-opened.
+
+Non-negotiable Skill tool invocations for tutorial / postIntro / cinematic / editorial work:
+
+- `wpforms-video` — session start, tutorial path
+- `wpforms-marketing` — session start, editorial path
+- `wpforms-postintro` — before designing any postIntro
+- `wpforms-gsap-rules` — before writing any timeline beat
+- `wpforms-primitives` — before building any new helper (check existing first)
+- `wpforms-motion-audit` — before declaring postIntro / cinematic / editorial done. HARD GATE. Record the tier rating.
+
+If you're working from a detailed codex prompt at `docs/codex-prompts/*.md`, the prompt is the brief. The skills are STILL the gates. Both apply. Detailed prompts do NOT obviate skill invocation.
+
+Source: Klaviyo session retro 2026-05-12 — author's own diagnosis of the bypass.
+
 ## When a future session is about to break one
 
 Patterns that signal trouble:

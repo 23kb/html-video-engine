@@ -5,6 +5,18 @@ description: Score animations and camera moves S-F tier and prescribe fixes. Tri
 
 # WPForms Motion Audit
 
+## ⛔ HARD GATE — must invoke before any postIntro / cinematic / editorial sign-off
+
+**This skill is a non-bypassable gate. Reading this file is NOT the same as invoking the skill. Use the Skill tool (`/wpforms-motion-audit` or programmatic invocation) to actually run the audit.**
+
+Sign-off criteria for any postIntro, cinematic beat, or editorial chapter:
+- Motion-audit invocation logged
+- Tier rating recorded (S / A / B / C / D / F)
+- Hard-rule violations either fixed OR explicitly overridden by Umair
+- Tier A or higher is the merge bar; B or below requires fix or override
+
+The Klaviyo tutorial v11 shipped to QC after 12 postIntro iterations WITHOUT ever invoking this skill. That's the failure mode this gate exists to prevent. Reading wpforms-motion-audit/SKILL.md inline ≠ running the audit.
+
 ## Overview
 
 Score a WPForms video animation, camera move, postIntro, cinematic beat, or editorial chapter on an S-F tier. Output a concrete score with file:line evidence and tier-climbing fixes.

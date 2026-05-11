@@ -34,6 +34,20 @@ Load `wpforms-primitives` skill for the per-primitive when-to-use lookup. Scan t
 
 **Hard rule:** if you're about to write a `gsap.to(cursor, ...)` or hand-mount a cursor element, stop and use the `Cursor` class. If you're about to write a click-Add-New-Form sequence, stop and call `navAddNewForm()`. The libraries codify shipped fixes for prior failure modes (cursor frenzy, caret drift, slide-projector camera moves, snapshot-swap cream-flash) — re-implementing them re-opens those bugs.
 
+## ⛔ Invoke skills, don't just read them
+
+**The skills listed below are GATES, not bibliography.** Use the Skill tool (`/wpforms-video`, `/wpforms-motion-audit`, etc.) to actually invoke them — reading the markdown file inline does not trigger the skill's gates.
+
+If you're working from a detailed codex prompt at `docs/codex-prompts/*.md`, the prompt is the brief — the skills are STILL the gates. Both apply. Common failure mode (observed in Klaviyo tutorial v11, 2026-05-12): session reads CLAUDE.md → reads codex prompt → goes straight to code, treating skill files as references. PostIntro went 12 iterations without ever invoking `wpforms-motion-audit`. Don't repeat that.
+
+Non-negotiable invocations for tutorial / postIntro / cinematic / editorial work:
+- `wpforms-video` at session start for tutorial path
+- `wpforms-marketing` at session start for editorial / ad-style path
+- `wpforms-postintro` before designing any postIntro
+- `wpforms-gsap-rules` before writing any timeline beat (registered timelines, pausableRaf, boundedRepeats)
+- `wpforms-primitives` before building any new helper to check if one already exists
+- `wpforms-motion-audit` before declaring postIntro / cinematic / editorial done — HARD GATE, must record tier
+
 ## Topic skills (load AFTER picking a path)
 
 - `wpforms-video` — tutorial authoring, intake, storyboard gate, default authoring mode

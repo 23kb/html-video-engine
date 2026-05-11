@@ -9,6 +9,12 @@ PostIntro is a short animated proof of value (8-15 seconds) that runs after the 
 
 It is **not**: a second title card, a copied cinematic from another topic, a full tutorial chapter, or a generic decoration layer.
 
+## ⛔ Skill must be INVOKED, not just read
+
+This skill defines the multi-animation rule + the morph-chain requirement that postIntros are scored against. **Use the Skill tool to invoke it** at the start of any postIntro design work. Reading the markdown file inline ≠ running the skill.
+
+Sign-off requirement: every postIntro is run through `wpforms-motion-audit` (Skill tool) before declaring it done. Tier B or below requires fix or explicit Umair override. The Klaviyo tutorial v11 postIntro went through 12 iterations without ever being scored — don't repeat that.
+
 ## 🛑 HARD-GATE: Multi-Animation Rule (Mandatory)
 
 **Every postIntro MUST hit all five of these. The user will reject postIntros that feel like a single fade-in.**
