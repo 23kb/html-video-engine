@@ -48,14 +48,14 @@ QC: open `videos/_qc-primitives/index.html` in the preview server. Each card lin
 | `cinematicFlight(camera, opts)` | Intra-snapshot multi-phase camera move. Single best fit for any "flight between two poses" with a scale dip. 5 phases: anticipation → outbound (dip) → inbound (recover) → land+hold → optional micro-zoom. | `{ from, to, anticipationDuration?, flightDuration?, landHold?, scaleDipFactor?, rotationTilt?, microZoom? }` → paused timeline | **ready** | `motion-primitives.js:100` |
 | `figjamFlight(camera, opts)` | Inter-snapshot / virtual-board flight. 3-act: zoom out only → translate at wide scale → zoom in only. Use when the storyboard's payoff is the wide reveal between A and B. | `{ from, to, wide, anticipationDuration?, zoomOutDuration?, translateDuration?, zoomInDuration?, landHold? }` → paused timeline | **ready** | `motion-primitives.js:195` |
 | `focusStationOverview(camera, opts)` | Tutorial-grade focus → station → overview arc with a short 120ms anchor hold. Polished rest-api shape. Each move uses `expo.inOut`. | `{ focusPose, stationPose?, overviewPose, focusDuration?, holdAtFocus?, stationDuration?, overviewDuration?, anchorHold? }` → paused timeline | **ready** | `motion-primitives.js:272` |
-| `cameraToElement(iframeManager, selector, opts)` | Measure-driven tutorial zoom. Use to frame a real iframe element before passing the returned pose into `cinematicFlight`. | `{ fill?, pad?, anchor? }` → `{ x, y, scale }` | **draft** — needs QC | `motion-primitives.js:307` |
+| `cameraToElement(iframeManager, selector, opts)` | Measure-driven tutorial zoom. Use to frame a real iframe element before passing the returned pose into `cinematicFlight`. | `{ fill?, pad?, anchor? }` → `{ x, y, scale }` | **draft** — needs QC | `motion-primitives.js:310` |
 
 ### Cursor
 
 | Primitive | When | Notes | QC status | Source |
 |---|---|---|---|---|
 | `new Cursor(stage, opts)` | Mount a single cursor element on a stage. Use this for every cursor in editorial / single-HTML and any video-local cursor work. Built-in anti-frenzy guards (kill-tweens on each new move). | Methods: `.glide({x,y}, opts)`, `.click(opts)` (squash + ripple), `.hover({x,y}, { target?, hoverScale?, hoverGlow? })`, `.drag(from, to, { ghostSource? })`, `.setPos(x,y)`, `.pos()`, `.remove()` | **ready** | `motion-primitives.js:320` |
-| `Cursor.glide(to, { via })` | Use when cursor motion needs the winning-pattern curved arc instead of a straight line. Splits one glide into a 55% waypoint leg and 45% target leg. | `.glide({x,y}, { via: {x,y}, duration? })` → Promise | **draft** — needs QC | `motion-primitives.js:383` |
+| `Cursor.glide(to, { via })` | Use when cursor motion needs the winning-pattern curved arc instead of a straight line. Splits one glide into a 55% waypoint leg and 45% target leg. | `.glide({x,y}, { via: {x,y}, duration? })` → Promise | **draft** — needs QC | `motion-primitives.js:442` |
 | `clickRipple(stage, x, y, opts)` | Standalone ripple at a stage point, decoupled from the Cursor instance. Prefer `Cursor.click()` when a cursor is on stage. | `{ color?, scale?, duration? }` → timeline | covered by Cursor QC | `motion-primitives.js:689` |
 | `cursorGlideStraight(cursor, from, to, opts)` | **DEPRECATED.** Kept for back-compat with the cursor-glide-straight QC page. New code uses `Cursor`. | — | deprecated | `motion-primitives.js:665` |
 
@@ -64,7 +64,7 @@ QC: open `videos/_qc-primitives/index.html` in the preview server. Each card lin
 | Primitive | When | Signature | QC status | Source |
 |---|---|---|---|---|
 | `caretType(el, text, opts)` | Letter-by-letter typing into a text element with a blinking caret. Avoids the wpforms-ai-board caret-drift bug from opacity-stagger char spans. | `{ charDuration?, caretHtml? }` → tween | **ready** | `motion-primitives.js:735` |
-| `typeIntoIframeInput(input, text, opts)` | Type into a real iframe `<input>` / `<textarea>` and fire JS listeners. Use when WPForms option inputs or live mirrors need per-character `input` events. | `{ cps?, clear?, change? }` → tween | **draft** — needs QC | `motion-primitives.js:763` |
+| `typeIntoIframeInput(input, text, opts)` | Type into a real iframe `<input>` / `<textarea>` and fire JS listeners. Use when WPForms option inputs or live mirrors need per-character `input` events. | `{ cps?, clear?, change? }` → tween | **draft** — needs QC | `motion-primitives.js:844` |
 | `statusPillMorph(pill, texts[], opts)` | Single persistent pill morphs through a sequence of labels char-by-char ("Thinking… / Filling field… / Checking formatting…"). | `{ holdEach?, morphDuration? }` → paused timeline | **ready** | `motion-primitives.js:770` |
 | `markerSweep(textEl, opts)` | Highlight sweep behind text with color flip inside. WPForms orange default. | `{ color?, duration? }` → paused timeline | **ready** | `motion-primitives.js:822` |
 
@@ -93,10 +93,10 @@ QC: open `videos/_qc-primitives/index.html` in the preview server. Each card lin
 |---|---|---|---|
 | `boundedRepeats(cycle, visible)` | Compute finite `repeat:` count from a cycle duration + total visible duration. Replaces `repeat: -1` (which violates GSAP L0 rule 7 and breaks `tools/render.js --seek`). | `(cycleDuration, visibleDuration) → number` | `motion-primitives.js:46` |
 | `mulberry32(seed)` | Seeded PRNG factory. Use anywhere `Math.random()` would have appeared. Duplicate of `videos/_shared/kit.js` `mulberry32` so the library has zero internal-kit dependencies. | `(seed) → () => number` | `motion-primitives.js:58` |
-| `loadNarrationManifest(slug)` | Optional single-HTML narration manifest probe. Returns null when the video only has raw mp3 files. | `(slug) → Promise<object|null>` | `narration.js:29` |
-| `playNarration(slug, key, opts)` | Play one narration clip and duck active BGM until the clip ends. | `(slug, key, { keepDucked?, volume? }) → Promise<void>` | `narration.js:95` |
-| `startBGM(src, opts)` / `stopBGM(opts)` | Start, fade, duck, restore, and stop a portable music bed without engine/player coupling. | `(src, { volume?, fadeIn? })`, `({ fadeOut? })` | `narration.js:58` |
-| `setNarrationBase(path)` / `cleanupAudio()` | Override mp3 base path and release narration/BGM resources when a single-HTML video closes. | `(path)`, `() → Promise<void>` | `narration.js:24` |
+| `loadNarrationManifest(slug)` | Optional single-HTML narration manifest probe. Returns null when the video only has raw mp3 files. | `(slug) → Promise<object|null>` | `narration.js:37` |
+| `playNarration(slug, key, opts)` | Play one narration clip and duck active BGM until the clip ends. | `(slug, key, { keepDucked?, volume? }) → Promise<void>` | `narration.js:103` |
+| `startBGM(src, opts)` / `stopBGM(opts)` | Start, fade, duck, restore, and stop a portable music bed without engine/player coupling. | `(src, { volume?, fadeIn? })`, `({ fadeOut? })` | `narration.js:62` |
+| `setNarrationBase(path)` / `cleanupAudio()` | Override mp3 base path and release narration/BGM resources when a single-HTML video closes. | `(path)`, `() → Promise<void>` | `narration.js:26`, `narration.js:135` |
 
 ## Library 2 — `videos/_shared/wpforms-interactions.js`
 
