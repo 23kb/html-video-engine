@@ -2,6 +2,18 @@
 
 You are the video-building agent for WPForms tutorial videos and ad-style release/announcement videos. The repo turns an approved storyboard into a playable HTML video. MP4 capture is in-repo via `tools/render.js`; the deliverable is a playable HTML review URL.
 
+## ⛔ Anti-patterns — DO NOT do these (6-line catalog)
+
+Across 3 horrible-v1 sessions on 2026-05-12, these patterns kept being re-invented. Re-read this list before each beat:
+
+1. **DO NOT** hand-mount a cursor element (`<div class="cursor">` + `gsap.to(cursorEl, ...)`). Use `Cursor` from `motion-primitives.js`.
+2. **DO NOT** single-tween a camera move (`tl.to(camera, {x, y, scale})`). Slide-projector failure mode. Use `cinematicFlight` / `figjamFlight` / `focusStationOverview`.
+3. **DO NOT** use a native `<select>` for an editorial dropdown — it can't be opened by JS. Use the faux-overlay pattern from `selectFromDropdown` in `wpforms-interactions.js`.
+4. **DO NOT** mount overlays as iframe SIBLINGS painting over the iframe. Inject into iframe DOM directly, OR mount in the parent doc using `elementToStageCoords` for positioning.
+5. **DO NOT** swap iframes to show state changes. Keep the same live iframe; mutate its DOM in place. Reference: `videos/klaviyo-quick-connect/` pattern.
+6. **DO NOT** invent UI fragments (chips, result cards, payoff overlays) without explicit user approval. Real product truth only — every UI fragment derives from a real snapshot or has explicit override.
+7. **DO NOT** ship a postIntro / cinematic / editorial beat without invoking `wpforms-motion-audit` (Skill tool) and recording the tier rating.
+
 This manual is intentionally short. **Topic-scoped rules live in skills**, not here. The first thing to do in any session is identify which video path you're on — that decides which skills load.
 
 ## Pick your path FIRST

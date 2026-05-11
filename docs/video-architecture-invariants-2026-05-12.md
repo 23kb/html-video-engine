@@ -180,6 +180,26 @@ Common rationalizations for skipping (all wrong):
 
 Source: Klaviyo session retro (2026-05-12) + Codex editorial retro (2026-05-12) + Claude editorial retro (2026-05-12).
 
+### INV-14 — Continuation sessions re-fire procedural skill gates on inherited state
+
+Procedural skill gates (`wpforms-motion-audit`, `wpforms-video` storyboard gate, `wpforms-postintro` multi-animation check) produce artifacts that are PER-BUILD, not PER-SESSION. A continuation session inheriting a partial build does NOT inherit those artifacts.
+
+**A continuation session must invoke procedural skills on the inherited build's last user-visible state BEFORE extending it.**
+
+Why: handoffs are invisible gate-skip moments. The continuation Claude has zero forcing function to re-invoke gates unless the handoff itself triggers them. Default assumption ("the prior session must have audited") is wrong — almost certainly they didn't, and even if they did, the artifact isn't visible to the continuation session.
+
+The editorial continuation session (Claude 3, 2026-05-12) inherited Codex's 25.5s build with a Connected pill animation and assumed it must have passed audit because the user said "good, much better." Never invoked `wpforms-motion-audit`. Result: continued extending a state with inherited bugs (inline-override styling on the pill, narrow cleanup selector causing duplicate stacking) that an audit would have caught.
+
+Cadence for continuation sessions:
+1. At session start, invoke `wpforms-motion-audit` on the last user-visible build state. Record tier.
+2. Fix any hard-rule violations BEFORE extending. Inheriting bugs costs more than fixing inherited bugs.
+3. Invoke audit on each NEW beat before showing to user (same rule as cold-start sessions).
+4. Final handoff audit (same rule as cold-start).
+
+**Distinction:** reference skills don't need re-invocation across handoffs (file-read is fine, content didn't change). Procedural skills DO need re-invocation (artifact is per-build, not per-session).
+
+Source: Editorial continuation session retro 2026-05-12. Author's own framing: "Continuation sessions inherit the prior session's skip patterns by default. The handoff is an invisible boundary; gates need to be re-armed at it."
+
 ## When a future session is about to break one
 
 Patterns that signal trouble:

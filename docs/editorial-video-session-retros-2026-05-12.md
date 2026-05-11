@@ -147,6 +147,96 @@ Lower-leverage (but still worth baking eventually):
 
 - Rules 9-15 are mostly motion-craft specifics that motion-audit would catch on v1 IF motion-audit is run on v1. Solving rule 2 partially solves these.
 
-## Third session is still pending retro
+## Session 3 — Claude continuation (when Codex hit rate limit)
 
-A third session (Claude continuation when Codex hit its limit) worked on this video too. See `docs/codex-prompts/editorial-continuation-session-retro.md` for the questions to ask it. Different failure pattern likely — it inherited a partial state rather than starting fresh.
+Session 3 inherited `videos/klaviyo-bridge-2/index.html` after Codex tripled the file size to ~25.5s of build with iframeCard + docsCard scenes + API-key paste flow. Continued through BEATS 13–15 (scattered canvas, Add New Connection, dropdown showcase). Different failure axis than the first two sessions.
+
+### Unique failure modes (not in Sessions 1+2)
+
+| Category | What happened | Missing rule |
+|---|---|---|
+| **Inherited bugs propagated** | Codex's `revealConnectedIndicator` had inline `Object.assign(indicator.style, {...})` overrides — caused pill to render unlike adjacent Google Calendar pill in same snapshot. Session 3 saw user shout "are you serious right now?" before realizing the rendering came from Codex's overrides, not from oversample. | Inherited code should be audited BEFORE extending. Continuation session ran no audit. |
+| **Cleanup selector drift** | `#provider-klaviyo > .connected-indicator.green` was the correct selector when Codex first wrote it. When append target moved to `.wpforms-settings-provider-info`, selector wasn't updated → duplicate pill on scrubber replay. Hidden in code, took iteration to find. | Code should mark cleanup selectors as load-bearing across DOM-target changes. |
+| **Library composition pattern set by inheritance** | Codex used local `glideClick` + raw `gsap.timeline()` instead of `iframe-helpers.js` / canonical primitives. Session 3 propagated this pattern forward without ever consciously deciding to. **Quiet failure** — no obvious skip moment to point to. | Continuation session should explicitly assess "should I be using library primitives the prior session didn't?" before extending. |
+| **No storyboard for the slug** | `videos/klaviyo-bridge-2/` had no storyboard.md. The older `klaviyo-bridge/storyboard.md` (v4) was the closest, but had drifted from the `-2` build. Session 3 inferred state from code + verbal directions. | Continuation should produce its own storyboard.md before extending, even if just a one-page derived doc. |
+| **Re-discovery via commit messages** | No structured handoff. Session 3 reverse-engineered Umair's prior corrections to Codex by reading code patterns. "Why is `iframeCard` width 1280×720 with oversample disabled?" — answer was in user history, not code annotation. | Code touched in response to user pushback should be annotated. |
+| **"No QC from you" conflation** | User said "no visual QC from you" (meaning: don't open browser preview to spot-check; user is doing visual QC live). Session 3 conflated this with "no procedural QC either" and skipped `wpforms-motion-audit`. | Distinguish visual QC (browser preview) from procedural QC (motion-audit tier scoring). They are SEPARATE artifacts. |
+| **Fabricated payoff content** | Session 3 invented a chip overlay + Klaviyo result card during the action-dropdown showcase. User rejected: "no chip, no Klaviyo result card, no fabricated payoff content." This rule was NEW to Session 3 — Codex hadn't been told this. | Real-UI proof gate (Rule 4 from sessions 1+2) confirmed across all 3 sessions. |
+| **Pegboard halftone moment** | Session 3 invented a uniform 9px-dot 32px-spacing background for the scattered canvas. User reaction: "the fuck is this... pegboard... what the fuck are all these motion design files in the system for if you're gonna make shit from your ass." Fix: lift atmosphere from `wpforms-ai-board/index.html` verbatim. | Atmosphere should be cloned from `reference/html-templates/` examples, not invented. |
+
+### Skill invocation (Session 3)
+
+- **Re-invoked at session start (after rate-limit handoff):** No. Treated prior Claude conversation's skill invocations (`wpforms-marketing`, `wpforms-primitives`, `wpforms-gsap-rules`) as still live in context across the Codex interlude.
+- **`wpforms-motion-audit` on inherited state:** No. Same skip as Sessions 1 + 2.
+- **`wpforms-motion-audit` on Session 3's output:** No.
+- **Self-diagnosis:** "Two failure modes fed each other. (1) User said 'hurry up' + 'no QC from you' — felt like the audit would slow the iteration loop. (2) Assumed Codex's substrate was at-or-above tier-A already (false assumption — never verified). Both rationalized."
+
+### Continuation-specific learning (the genuinely new finding)
+
+> "Continuation sessions inherit the prior session's skip patterns by default. The continuation Claude assumes that what the prior session did NOT do was either already done or unnecessary. It is neither — those gates need to fire fresh per session, regardless of inheritance."
+
+> "Handoffs are invisible gate-skip moments. The continuation Claude has zero forcing function to re-invoke gates because nothing about the handoff signals 'the gates are dirty now.'"
+
+### Session 3's proposed continuation prompt template
+
+Section 8 of the retro is a model continuation-handoff document. Stealable verbatim as the template for future continuation prompts:
+
+```
+You are continuing <slug>/index.html. The prior session hit a rate limit at TOTAL=<N>s.
+
+USER-APPROVED THROUGH:
+  <enumerated beats user approved>
+
+KNOWN BUGS IN PRIOR BUILD:
+  <inherited issues to fix before extending>
+
+USER PREFERENCES (HARD, from prior corrections):
+  <each rule the user established with the prior session>
+
+NEXT BEATS (from storyboard / verbal):
+  <enumerated beats remaining>
+
+NON-NEGOTIABLE GATES (continuation-specific):
+  - Run wpforms-motion-audit on inherited state BEFORE adding to it
+  - Run wpforms-motion-audit on each new beat BEFORE showing to user
+  - <task-specific gates>
+```
+
+### Tier-distribution per beat (Session 3's retrospective informal audit)
+
+Median A− across 14 beats after manual rescue. Pre-rescue distribution would have been C or below on 3–4 beats. **~45 minutes of avoidable rework cost from skipping motion-audit.** That's the concrete cost of the skill skip.
+
+## Revised proposed system rules (deduped + prioritized across all 3 sessions)
+
+| # | Rule | Source | Bake target | Status |
+|---|---|---|---|---|
+| 1 | Pre-write primitives gate | S1+S2 | wpforms-primitives + CLAUDE.md | ✅ Baked at `2fddece` + `8fc3b25` |
+| 2 | Motion-audit on v1 before user review | S1+S2 | wpforms-motion-audit + CLAUDE.md | ✅ Baked at `2fddece` |
+| 3 | Reference vs procedural skill distinction | Codex feedback | INV-13 + CLAUDE.md + AGENTS.md | ✅ Baked today |
+| 4 | Real-UI proof gate | S1+S2+S3 | NEW INV or wpforms-marketing | ⏳ Pending |
+| 5 | Anti-pattern catalog in CLAUDE.md top | S1 (explicit ask) | CLAUDE.md | ⏳ Pending — HIGH PRIORITY |
+| 6 | Clone-and-customize first-write enforcement | S2+S3 (pegboard) | wpforms-marketing | ⏳ Pending |
+| 7 | Storyboard format: per-beat primitive declaration | S1 | storyboard-format doc | ⏳ Pending |
+| 8 | No iframe-swap for state changes | S2 | INV or wpforms-marketing | ⏳ Pending |
+| 9 | Cursor promise-sequencing rule | S2 | wpforms-gsap-rules | ⏳ Pending |
+| 10 | Atmosphere opacity floor + beat-driven | S1+S2 | wpforms-marketing | ⏳ Pending |
+| 11 | No native `<select>` for editorial dropdowns | S1 | wpforms-primitives anti-patterns | ⏳ Pending |
+| 12 | Click moments require micro-zoom or exemption | S1 | wpforms-marketing or storyboard format | ⏳ Pending |
+| 13 | Typography-led intro by default | S2 | wpforms-marketing | ⏳ Pending |
+| 14 | No double-protagonist lockup | S1 | wpforms-marketing | ⏳ Pending |
+| 15 | Caption stacking layout sanity | S1 | wpforms-marketing or motion-audit | ⏳ Pending |
+| **16** | **Continuation re-audit gate** (re-invoke procedural skills on inherited state's last user-visible output before extending) | **S3 unique** | **NEW INV-14** | ⏳ HIGH PRIORITY |
+| **17** | **"No visual QC" ≠ "no procedural QC"** — these are separate artifacts; motion-audit fires regardless of visual-QC stance | **S3 unique** | **CLAUDE.md + wpforms-motion-audit** | ⏳ Pending |
+| **18** | **Annotate inherited code with prior user-rejection signals** (e.g. comment: `// user rejected 2560×1440 oversample 2026-05-12; do not retry`) | **S3 unique** | **wpforms-video skill OR new continuation handoff doc** | ⏳ Pending |
+| **19** | **Continuation handoff template** (Session 3's section 8 — copyable for the moment a session resumes work on an inherited build) | **S3 contribution** | **`docs/codex-prompts/continuation-handoff-template.md`** | ⏳ HIGH PRIORITY |
+
+## Recommendation: bake the high-priority items now
+
+Three sessions of evidence, time to act. Baking next:
+
+- **Rule 5** — Anti-pattern catalog in CLAUDE.md top (Session 1 explicit ask, Session 3 confirms "would have re-read before each beat")
+- **Rule 16** — Continuation re-audit gate (Session 3's strongest unique contribution) → INV-14
+- **Rule 19** — Continuation handoff template (Session 3 wrote a copyable example)
+- **Rule 4** — Real-UI proof gate (confirmed across all 3 sessions, multiple manifestations)
+
+The other 11 rules cluster around motion-craft specifics. Most would be caught by `wpforms-motion-audit` IF that audit actually fires on v1. Rule 2 (already baked) handles the systemic skip. The motion-craft specifics can land per-skill organically.
