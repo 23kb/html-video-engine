@@ -178,47 +178,6 @@ async function swapFast(doSwap) {
   await dropCover(cover, { fadeMs: 220, hold: 240 });
 }
 
-// Whip — light blur + dim on outgoing, swap under cover, incoming un-blurs
-// in. Blur kept LIGHT (2px) so it reads as a cinematic cut, not a glitch.
-async function swapWhip(doSwap) {
-  const el = ifr();
-  if (el) {
-    el.style.transition = 'filter 180ms ease, opacity 180ms ease';
-    el.style.filter = 'blur(2px)';
-    el.style.opacity = '0';
-  }
-  await sleep(200);
-  const cover = mountCover();
-  await doSwap();
-  const post2 = ifr();
-  if (post2) {
-    post2.style.transition = 'none';
-    post2.style.filter = 'blur(2px)';
-    post2.style.opacity = '0';
-    void post2.offsetWidth;
-    post2.style.transition = 'filter 280ms ease, opacity 280ms ease';
-    post2.style.filter = 'none';
-    post2.style.opacity = '1';
-  }
-  await sleep(60);
-  await dropCover(cover, { fadeMs: 260, hold: 280 });
-}
-
-// Push — cover slides off to reveal the new view. Used when a motion cue
-// is desired instead of a fade.
-async function swapPush(doSwap) {
-  await fadeOutIframe(180);
-  const cover = mountCover();
-  await doSwap();
-  primeIframeFadeIn()(280);                 // reveal incoming as the cover slides off
-  await sleep(40);
-  cover.style.transition = 'transform 480ms cubic-bezier(0.65, 0, 0.35, 1), opacity 480ms ease';
-  cover.style.transform = 'translateX(-100%)';
-  cover.style.opacity = '0.92';
-  await sleep(520);
-  cover.remove();
-}
-
 // Morph — the "premium, single-shot" swap. Captures the outgoing iframe's
 // transform (zoom + translate) and re-applies it to the incoming iframe so
 // the viewer's framing survives the DOM swap. Combined with `glide` on
@@ -255,7 +214,7 @@ async function swapFlipBridge(doSwap) {
   await doSwap();
 }
 
-const SWAPS = { cover: swapCover, fast: swapFast, whip: swapWhip, push: swapPush, morph: swapMorph, flipBridge: swapFlipBridge };
+const SWAPS = { cover: swapCover, fast: swapFast, morph: swapMorph, flipBridge: swapFlipBridge };
 
 export async function runSwapTransition(style, doSwap) {
   const fn = SWAPS[style] || SWAPS.cover;

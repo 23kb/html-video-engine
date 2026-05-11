@@ -68,7 +68,7 @@ function ensureCameraDriver() {
   registerFrameAdapter(cameraDriver);
 }
 
-function applyCamera({ zoom = state.zoom, tx = state.tx, ty = state.ty, duration = 0, easing = 'cubic-bezier(0.65, 0, 0.35, 1)' } = {}) {
+function applyCamera({ zoom = state.zoom, tx = state.tx, ty = state.ty, duration = 0 } = {}) {
   if (!state.ui) return;
   ensureCameraDriver();
   if (!duration || duration <= 0) {
@@ -79,7 +79,6 @@ function applyCamera({ zoom = state.zoom, tx = state.tx, ty = state.ty, duration
   cameraAnimation = {
     start: performance.now() / 1000,
     duration: duration / 1000,
-    easing,
     ease: easeProgress,
     from: { zoom: state.zoom, tx: state.tx, ty: state.ty },
     to: { zoom, tx, ty },
@@ -237,16 +236,14 @@ function toStage(ix, iy) {
  * Zoom the iframe so the union of `targets` lands in stage center at `level`.
  * Returns when the transition completes.
  */
-export async function zoomTo(targets, { level = 2.4, pad = 10, smooth = false, noScroll = false, scrollBehavior = 'auto', duration = 1200, easing = 'cubic-bezier(0.65, 0, 0.35, 1)' } = {}) {
+export async function zoomTo(targets, { level = 2.4, pad = 10, smooth = false, noScroll = false, scrollBehavior = 'auto', duration = 1200 } = {}) {
   const hits = resolveTargets(targets);
   if (!hits.length) throw new Error('zoomTo: no targets resolved');
 
-  console.log('[zoomTo:pre-scroll]', targets[0], 'rect=', hits[0].node.getBoundingClientRect());
   if (!noScroll) hits[0].node.scrollIntoView({ block: 'center', inline: 'center', behavior: scrollBehavior });
   // Smooth scroll needs ~500ms to settle before rects are stable. Auto is instant.
   await sleep(scrollBehavior === 'smooth' ? 500 : 100);
   for (const h of hits) h.rect = h.node.getBoundingClientRect();
-  console.log('[zoomTo:post-scroll]', targets[0], 'rect=', hits[0].rect, 'scrollY=', state.ui.contentWindow?.scrollY);
 
   const u = unionRects(hits.map(h => h.rect));
   const r = { left: u.left - pad, top: u.top - pad, width: u.width + pad * 2, height: u.height + pad * 2 };
@@ -263,16 +260,11 @@ export async function zoomTo(targets, { level = 2.4, pad = 10, smooth = false, n
   const tx = (state.stageW / 2) - iframeOriginX - cxClamped * level;
   const ty = (state.stageH / 2) - iframeOriginY - cyClamped * level;
 
-  const _ifrR = state.ui.getBoundingClientRect();
-  const _bodyR = state.ui.contentDocument?.body?.getBoundingClientRect?.();
-  const _scrollY = state.ui.contentWindow?.scrollY;
-  console.log('[zoomTo]', targets[0], { rect: r, cx, cy, cxClamped, cyClamped, tx, ty, level, iframeH: state.iframeH, stageW: state.stageW, stageH: state.stageH, ifrElW: _ifrR.width, ifrElH: _ifrR.height, bodyW: _bodyR?.width, bodyH: _bodyR?.height, scrollY: _scrollY });
-
   // If camera target unchanged (pure scroll-pan within a chapter), skip the long transform sleep.
   const noChange = Math.abs(tx - state.tx) < 1 && Math.abs(ty - state.ty) < 1 && Math.abs(level - state.zoom) < 0.01;
 
   const moveDuration = smooth ? duration : 0;
-  applyCamera({ zoom: level, tx, ty, duration: noChange ? 0 : moveDuration, easing });
+  applyCamera({ zoom: level, tx, ty, duration: noChange ? 0 : moveDuration });
 
   // Stage 7: noChange short-circuit retains a small floor (~10% of duration)
   // so the camera ack feels deliberate without waiting the full transition.

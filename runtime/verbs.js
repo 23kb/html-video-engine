@@ -17,7 +17,6 @@ import {
   revealSection as wpfRevealSection,
 } from '../engine/wpforms.js';
 import { verbStart, verbEnd, verbErrorCrumb } from '../engine/diag.js';
-import { injectField } from './dom-prep.js';
 import { showHighlight } from '../engine/overlays-layer.js';
 import { dragField } from './drag.js';
 import { popOut } from './pop-out.js';
@@ -330,14 +329,6 @@ const VERBS = {
     if (step.activateSection) activateSection(iframeDoc(), step.activateSection);
     // Tell the runner the iframe doc just changed so it re-reads.
     ctx._docChanged = true;
-  },
-
-  async injectField(step, ctx) {
-    const doc = iframeDoc();
-    await injectField(doc, step.harvestFrom, step.fieldType, {
-      containerSel: step.containerSel,
-      newId: step.newId,
-    });
   },
 
   // Hover-over: glide cursor to target, add .active (WPForms' hover look), and
@@ -1011,7 +1002,7 @@ function resolveSelectorsOrThrow(step) {
 // per-arg labels — pre-resolve would mislabel against the wrong field.
 // `activatePanel` may run with no `target` (state-only flip).
 const SKIP_PRE_RESOLVE = new Set([
-  'hold', 'snapshotSwap', 'sectionTitle', 'lineDraw', 'injectField', 'scroll',
+  'hold', 'snapshotSwap', 'sectionTitle', 'lineDraw', 'scroll',
   'openModal', 'toast', 'animateText', 'captionLine', 'eyebrow', 'calloutLabel',
   'activatePanel', 'revealSection', 'notificationAdd', 'blockClone',
   'blockCollapseToggle', 'blockToggleActive', 'smartTagInsert',

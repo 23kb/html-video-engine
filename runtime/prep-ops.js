@@ -14,7 +14,6 @@
 import {
   activateFieldOptionGroup,
   applyDefaultForm,
-  applyIconChoices,
   applyIconChoicesV2,
   applyImageChoices,
   hideFields,
@@ -193,21 +192,8 @@ const OPS = {
     run: (doc, entry) => setChoiceLayout(doc, entry.fieldId, entry.value),
   },
 
-  applyIconChoices: {
-    allowedFields: ['fieldId', 'glyph'],
-    validate: (entry, ctx) => {
-      if (!isPosInt(entry.fieldId)) {
-        throw new Error(ctx + ': applyIconChoices.fieldId must be a positive integer');
-      }
-      if ('glyph' in entry && !isNonEmptyString(entry.glyph)) {
-        throw new Error(ctx + ': applyIconChoices.glyph must be a non-empty string when provided');
-      }
-    },
-    run: (doc, entry) => applyIconChoices(doc, entry.fieldId, entry.glyph ? { glyph: entry.glyph } : {}),
-  },
-
-  // Generic Use Icon Choices payoff for radio + checkbox fields. Replaces
-  // the deprecated `applyIconChoices` (unicode-star stand-in). See
+  // Generic Use Icon Choices payoff for radio + checkbox fields. Renders the
+  // real WPForms icon-choices DOM with Font Awesome class names. See
   // dom-prep.js applyIconChoicesV2 + docs/wpforms-field-state-inventory.md
   // § 6 Multiple Choice → Use Icon Choices.
   applyIconChoicesV2: {

@@ -156,15 +156,6 @@ const PREP_OPS = {
         throw new Error(ctx + ': setChoiceLayout.value must be one of "1", "2", "3", "inline"');
     },
   },
-  applyIconChoices: {
-    fields: ['fieldId', 'glyph'],
-    validate: (e, ctx) => {
-      if (!isPosInt(e.fieldId))
-        throw new Error(ctx + ': applyIconChoices.fieldId must be a positive integer');
-      if ('glyph' in e && !isNonEmptyString(e.glyph))
-        throw new Error(ctx + ': applyIconChoices.glyph must be a non-empty string when provided');
-    },
-  },
   applyIconChoicesV2: {
     fields: ['fieldId', 'glyph', 'iconStyle', 'color', 'size', 'style'],
     validate: (e, ctx) => {

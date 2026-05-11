@@ -347,31 +347,6 @@ function selectOptionValue(selectEl, value) {
 }
 
 /**
- * @deprecated Use `applyIconChoicesV2`. Inserts a unicode `★` stand-in for
- * Font Awesome glyphs — banned by docs/visual-payoff-truth-contract.md (no
- * partial fidelity). The visual-payoff truth gate refuses to emit this op;
- * the function is retained only to avoid breaking any leftover legacy call
- * site that bypasses the compiler.
- */
-export function applyIconChoices(doc, fieldId, opts = {}) {
-  const wrap = doc?.getElementById(`wpforms-field-${fieldId}`);
-  if (!wrap) return;
-  const ul = wrap.querySelector('ul.primary-input');
-  if (!ul) return;
-  ul.classList.add('wpforms-icon-choices', 'wpforms-icon-choices-default');
-  wrap.classList.add('wpforms-icon-choices');
-  const glyph = opts.glyph || '★';
-  for (const li of ul.querySelectorAll(':scope > li')) {
-    if (li.querySelector('.wpforms-icon-choices-icon')) continue;
-    const span = doc.createElement('span');
-    span.className = 'wpforms-icon-choices-icon';
-    span.textContent = glyph;
-    span.setAttribute('style', 'display:inline-block;margin-right:8px;color:#066aab;font-size:1.2em;');
-    li.insertBefore(span, li.firstChild);
-  }
-}
-
-/**
  * Use Icon Choices — exact replacement for the deprecated `applyIconChoices`.
  *
  * Mirrors the builder's reaction when the **Use Icon Choices** toggle is
@@ -608,62 +583,3 @@ export function stripQuizEnabled(doc) {
   );
 }
 
-// ── Field harvesting ────────────────────────────────────────────────────────
-// The builder-fields snapshot ships a pre-seeded canvas with some — but
-// not all — field types. For drag-and-drop beats that need a field type
-// NOT present there (e.g. Repeater), we fetch a snapshot that does have
-// that field and lift the `.wpforms-field` node out, injecting it into
-// our active iframe on drop. One network round-trip per (slug, type),
-// cached.
-const _harvestCache = new Map();
-
-/**
- * Fetch and cache the first `.wpforms-field-<type>` node from the named
- * snapshot. Returns a fresh clone on each call — callers can mutate the
- * result without poisoning the cache.
- *
- * @deprecated Paired with `injectField`. Both are retained only for their
- * existing legacy call site. New chapters must not use them. Retirement
- * is deferred until the harvest-source path is decided (see PLAN.md
- * §Phase 6 "Carried debt"); until then, prefer capturing a snapshot that
- * contains the field you need.
- */
-export async function harvestField(slug, fieldType) {
-  const key = slug + ':' + fieldType;
-  if (!_harvestCache.has(key)) {
-    const res = await fetch('/snapshots/' + slug + '/index.html');
-    if (!res.ok) throw new Error('harvestField: ' + slug + ' fetch failed (' + res.status + ')');
-    const html = await res.text();
-    const parser = new DOMParser();
-    const srcDoc = parser.parseFromString(html, 'text/html');
-    const src = srcDoc.querySelector('.wpforms-field.wpforms-field-' + fieldType);
-    if (!src) throw new Error('harvestField: no wpforms-field-' + fieldType + ' in ' + slug);
-    _harvestCache.set(key, src);
-  }
-  return _harvestCache.get(key).cloneNode(true);
-}
-
-/**
- * Append a harvested field onto the target snapshot's canvas container.
- * Returns the inserted node so the caller can focus/highlight it. Ids on
- * the harvested node are rewritten to avoid collisions.
- *
- * @deprecated The `do: 'injectField'` verb is validator-gated — new usage
- * in touched files is a hard error (`tools/validate-video.js`; untouched
- * legacy call sites warn). Retirement is deferred until the harvest-source
- * path is decided (see PLAN.md §Phase 6 "Carried debt"). Prefer capturing
- * a snapshot that already contains the field you need.
- */
-export async function injectField(doc, slug, fieldType, { containerSel = '#wpforms-panel-fields .wpforms-field-wrap', newId } = {}) {
-  if (!doc) throw new Error('injectField: no doc');
-  const node = await harvestField(slug, fieldType);
-  const idSuffix = newId ?? ('h' + Math.floor(Math.random() * 9000 + 1000));
-  node.id = 'wpforms-field-' + idSuffix;
-  node.dataset.fieldId = idSuffix;
-  // Rewrite nested ids so there are no duplicates with the host doc.
-  node.querySelectorAll('[id]').forEach(n => { n.id = n.id + '-' + idSuffix; });
-  const container = doc.querySelector(containerSel);
-  if (!container) throw new Error('injectField: container not found: ' + containerSel);
-  container.appendChild(node);
-  return node;
-}

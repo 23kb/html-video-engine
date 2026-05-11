@@ -109,9 +109,8 @@ async function transitionSnapshots(newSlug, setupFn, videoTitle, swapStyle) {
   // core-factors step 9: flipBridge (iframe adopt) is the default swap path —
   // hides the body-wipe seam by preloading the next snapshot in a hidden
   // iframe and then atomically adopting it. A null/undefined swapStyle
-  // routes here. Explicit legacy styles (cover/fast/morph/push/whip) still
-  // route through the body-wipe branch below; the legacy paper-cover hardfix
-  // is unreachable now (kept for reference until step 9d cleanup lands).
+  // routes here. Explicit legacy styles (cover/fast/morph) still route
+  // through the body-wipe branch below.
   if (!swapStyle || swapStyle === 'flipBridge') {
     diag('player', 'transitionSnapshots → flipBridge slug=' + newSlug);
     const preloaded = await preloadSnapshot(newSlug, { prep: setupFn });
@@ -160,25 +159,7 @@ async function transitionSnapshots(newSlug, setupFn, videoTitle, swapStyle) {
       removeFlashGuard();
     };
     await runSwapTransition(swapStyle, doSwap);
-    return;
   }
-
-  // Legacy paper-cover hardfix path. Preserved as the default when no
-  // swapStyle is configured, so videos that did not set
-  // `manifest.defaults.swapStyle` (or pass `?swapStyle=`) keep their
-  // current visual behavior.
-  const cover = mountCover({ cream: true, z: 900 });
-  await sleep(320);
-  await loadSnapshot(newSlug);
-  mountMeshBg();
-  mountStageChrome(videoTitle);
-  mountWatermark();
-  // Slice 5c-1: same call after the legacy paper-cover body-wipe.
-  installOverlayStyles();
-  diag('overlays', 'styles installed (transitionSnapshots legacy branch)');
-  if (setupFn) await setupFn();
-  await sleep(180);
-  await dropCover(cover, 520);
 }
 
 async function typeWithSfx(target, text, opts = {}) {
