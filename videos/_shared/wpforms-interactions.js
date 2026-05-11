@@ -262,15 +262,16 @@ export class IframeManager {
   }
 
   /**
-   * Scroll an iframe-document element into view. Defaults to `behavior:
-   * 'auto'` (instant) so the cursor's glide can rely on a stable target
-   * position — `'smooth'` would still be scrolling while cursor.glide
-   * reads coordinates, landing the click off-target (this was the
-   * Form 40 click-target drift Umair flagged).
+   * Scroll an iframe-document element into view. Forces `behavior:
+   * 'instant'` because some captured snapshots (e.g. builder-fields)
+   * ship `html { scroll-behavior: smooth }` which overrides the more
+   * permissive `'auto'` — and a still-animating smooth-scroll moves the
+   * target out from under cursor.glide. `'instant'` (Chrome 102+) wins
+   * over the page setting.
    * @param {string|Element} target
    * @param {ScrollIntoViewOptions} [opts]
    */
-  scrollIntoView(target, opts = { block: 'center', behavior: 'auto' }) {
+  scrollIntoView(target, opts = { block: 'center', behavior: 'instant' }) {
     const el = typeof target === 'string' ? this.query(target) : target;
     if (!el) return;
     el.scrollIntoView(opts);
@@ -327,6 +328,11 @@ const FORM_PROFILES = {
   '55': { name: 'Contact Us form', fields: ['48', '49', '50'] },
   '53': { name: 'Newsletter Signup', fields: ['48', '49'] },
   '40': { name: 'Job Application', fields: ['48', '49', '10', '15', '50'] },
+  // Demo-only profile for the open-field-options QC page — exposes one
+  // example of each field family Umair wants demos for (Name, Email,
+  // Paragraph Text, Checkboxes, Multiple Choice). Not a "real" form on
+  // the live site; just keeps the canvas tidy while sub-interactions run.
+  'demo-5': { name: 'Demo form (5 fields)', fields: ['48', '49', '50', '7', '6'] },
 };
 
 // Settings sub-tab → snapshot slug map for openSettingsTab.
@@ -645,6 +651,20 @@ export class WPFormsInteractions {
       const id = field.getAttribute('data-field-id');
       if (!allowed.has(id)) field.style.display = 'none';
     }
+    // Hide non-field decorative UI that the captured fixture renders
+    // outside the `.wpforms-field-wrap`. The PayPal commerce buttons
+    // (Apple Pay / Google Pay / PayPal Checkout) live as a sibling of
+    // the form-submit button under `.wpforms-preview` — they look
+    // out-of-place on Contact Us / Newsletter / Job Application demos
+    // since none of those forms use PayPal Commerce. Adding more such
+    // elements? Append them to the list here.
+    const STRAY_UI_SELECTORS = [
+      '#wpforms-paypal-commerce-buttons-wrapper',
+    ];
+    for (const sel of STRAY_UI_SELECTORS) {
+      const el = doc.querySelector(sel);
+      if (el) el.style.display = 'none';
+    }
     return true;
   }
 
@@ -881,15 +901,17 @@ export class WPFormsInteractions {
       n.style.transform = 'translate(0, 0)';
       setTimeout(() => { n.style.transition = ''; n.style.transform = ''; }, 500);
     }
-    // Pop the inserted field in.
+    // Pop the inserted field in — fade-in from opacity 0 with a gentle
+    // scale-up + rise. Stronger than the previous 0.6→1 fade so the drop
+    // reads as "a new field just appeared" instead of just settling siblings.
     el.style.transformOrigin = 'center';
-    el.style.transition = 'transform 360ms cubic-bezier(0.22, 1, 0.36, 1), opacity 260ms ease';
-    el.style.transform = 'scale(0.96)';
-    el.style.opacity = '0.6';
+    el.style.transition = 'transform 420ms cubic-bezier(0.22, 1, 0.36, 1), opacity 380ms ease-out';
+    el.style.transform = 'translateY(8px) scale(0.94)';
+    el.style.opacity = '0';
     void el.offsetWidth;
-    el.style.transform = 'scale(1)';
+    el.style.transform = 'translateY(0) scale(1)';
     el.style.opacity = '1';
-    setTimeout(() => { el.style.transition = ''; el.style.transform = ''; el.style.opacity = ''; }, 420);
+    setTimeout(() => { el.style.transition = ''; el.style.transform = ''; el.style.opacity = ''; }, 480);
   }
 
   /**
@@ -970,20 +992,35 @@ export class WPFormsInteractions {
    * @param {string} newLabel
    * @returns {Promise<void>}
    */
-  async setFieldLabel(fieldId, newLabel) {
+  async setFieldLabel(fieldId, newLabel, opts = {}) {
     this._assertSnapshot('builder-fields', 'setFieldLabel');
+    const { charDuration = 0.055 } = opts;
     const input = this._findOrThrow(
       `#wpforms-field-option-${cssEscape(String(fieldId))}-label`,
       'setFieldLabel'
     );
     await this._glideAndClick(input, { ripple: false });
-    input.value = newLabel;
-    input.dispatchEvent(new Event('input', { bubbles: true }));
-    // Canvas mirror.
+    // Clear existing value (the captured snapshot has "Name", "Email", etc.
+    // already typed). Update the canvas label too so the user sees the
+    // before/after transition cleanly.
     const canvasLabel = this.iframe.query(
       `#wpforms-field-${cssEscape(String(fieldId))} .label-title .text`
     );
-    if (canvasLabel) canvasLabel.textContent = newLabel;
+    input.value = '';
+    input.dispatchEvent(new Event('input', { bubbles: true }));
+    if (canvasLabel) canvasLabel.textContent = '';
+    await this.iframe.wait(0.20);
+    // Letter-by-letter type into the input. Each char triggers an
+    // `input` event AND updates the canvas mirror in lockstep — that's
+    // what makes the canvas update read as live. caretType (the motion-
+    // primitive) drives innerHTML, not input.value, so we do the same
+    // letter loop here with setTimeout for the per-char delay.
+    for (let i = 1; i <= newLabel.length; i++) {
+      input.value = newLabel.slice(0, i);
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+      if (canvasLabel) canvasLabel.textContent = newLabel.slice(0, i);
+      await new Promise(r => setTimeout(r, charDuration * 1000));
+    }
     await this.iframe.wait(0.18);
   }
 
@@ -1014,9 +1051,27 @@ export class WPFormsInteractions {
       `#wpforms-field-option-${cssEscape(String(fieldId))}-format`,
       'setNameFormat'
     );
+    // Click the select to "open" the dropdown — then we overlay a fake
+    // dropdown panel because the native <select> popover can't be
+    // animated or visually driven by a synthetic cursor. The panel uses
+    // the real <option> labels so the dropdown content is authentic.
     await this._glideAndClick(select, { ripple: false });
+    const labels = { simple: 'Simple', 'first-last': 'First Last', 'first-middle-last': 'First Middle Last' };
+    const panel = await this._openFakeDropdown(select, [
+      { value: 'simple', label: 'Simple' },
+      { value: 'first-last', label: 'First Last' },
+      { value: 'first-middle-last', label: 'First Middle Last' },
+    ], select.value);
+    await this.iframe.wait(0.25);
+    const optionEl = panel.querySelector(`[data-value="${cssEscape(format)}"]`);
+    await this._glideAndClick(optionEl, { ripple: false, skipScroll: true });
+    optionEl.classList.add('is-active');
+    await this.iframe.wait(0.18);
+    // Apply the real select value + dispatch change so other listeners (if any)
+    // can react. Then tear down the fake panel.
     select.value = format;
     select.dispatchEvent(new Event('change', { bubbles: true }));
+    await this._closeFakeDropdown(panel);
     // Canvas mirror: flip the wrapper class.
     const wrapper = this.iframe.query(
       `#wpforms-field-${cssEscape(String(fieldId))} .format-selected`
@@ -1026,6 +1081,76 @@ export class WPFormsInteractions {
       wrapper.classList.add(`format-selected-${format}`);
     }
     await this.iframe.wait(0.18);
+  }
+
+  /**
+   * Build + animate-in a fake dropdown panel below a real <select>. The
+   * native dropdown popover can't be visually driven; this overlay mirrors
+   * the option list so the cursor can glide to and click each row. The
+   * caller is responsible for selecting (clicking) the chosen row and
+   * then calling `_closeFakeDropdown(panel)` to tear it down.
+   *
+   * @param {HTMLSelectElement} selectEl
+   * @param {{value:string,label:string}[]} options
+   * @param {string} [activeValue] — value to render as already-active
+   * @returns {Promise<HTMLElement>} the mounted panel element
+   */
+  async _openFakeDropdown(selectEl, options, activeValue) {
+    const doc = this.iframe.doc();
+    const panel = doc.createElement('div');
+    panel.className = 'ifm-fake-dropdown';
+    Object.assign(panel.style, {
+      position: 'absolute',
+      background: '#fff',
+      border: '1px solid #d4d6dd',
+      borderRadius: '6px',
+      boxShadow: '0 8px 24px rgba(0,0,0,0.18)',
+      zIndex: '9999',
+      overflow: 'hidden',
+      opacity: '0',
+      transform: 'translateY(-6px)',
+      transition: 'opacity 180ms ease, transform 180ms ease',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif',
+      fontSize: '14px',
+    });
+    for (const o of options) {
+      const row = doc.createElement('div');
+      row.dataset.value = o.value;
+      Object.assign(row.style, {
+        padding: '8px 12px',
+        cursor: 'pointer',
+        color: '#1a2238',
+        background: o.value === activeValue ? '#f4f6fa' : '#fff',
+      });
+      row.textContent = o.label;
+      panel.appendChild(row);
+    }
+    // Inject a one-shot style for `.is-active` highlight without polluting
+    // the iframe's stylesheets.
+    panel.querySelectorAll('div').forEach(r => {
+      r.addEventListener('mouseover', () => { r.style.background = '#eef1f7'; });
+    });
+    doc.body.appendChild(panel);
+    const r = selectEl.getBoundingClientRect();
+    Object.assign(panel.style, {
+      left: (r.left + selectEl.ownerDocument.defaultView.scrollX) + 'px',
+      top: (r.bottom + selectEl.ownerDocument.defaultView.scrollY + 4) + 'px',
+      minWidth: r.width + 'px',
+    });
+    // Flush + reveal
+    void panel.offsetWidth;
+    panel.style.opacity = '1';
+    panel.style.transform = 'translateY(0)';
+    await this.iframe.wait(0.20);
+    return panel;
+  }
+
+  async _closeFakeDropdown(panel) {
+    if (!panel) return;
+    panel.style.opacity = '0';
+    panel.style.transform = 'translateY(-6px)';
+    await this.iframe.wait(0.20);
+    panel.remove();
   }
 
   /**

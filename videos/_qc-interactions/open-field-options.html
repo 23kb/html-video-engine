@@ -85,6 +85,13 @@ const FLOWS = {
 bootQc({
   startSnapshot: 'builder-fields',
   cursorStart: { x: 1180, y: 660 },
+  // Apply the demo-5 profile so the canvas only shows the 5 fields these
+  // sub-interaction flows demonstrate (Name, Email, Paragraph, Checkboxes,
+  // Multiple Choice). Hides PayPal commerce + payment fields + the
+  // unrelated 40+ canvas-side fixture items.
+  onReady: async ({ interactions }) => {
+    interactions.applyFormProfile('demo-5');
+  },
   run: async (api) => {
     const flow = document.getElementById('flowPicker').value;
     const fn = FLOWS[flow];
