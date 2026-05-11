@@ -768,6 +768,53 @@ export function caretType(el, text, opts = {}) {
 }
 
 /**
+ * Type into a real iframe input/textarea while firing live DOM events.
+ * `caretType` writes innerHTML for editorial text; this primitive mirrors
+ * engine.type's input-value path so WPForms listeners and canvas mirrors can
+ * react to every character.
+ *
+ * Source: engine/engine.js:type input branch (dispatches `input` on each
+ * character). Uses the same scalar GSAP timing pattern as `caretType`.
+ *
+ * @param {HTMLInputElement|HTMLTextAreaElement} input — target form control
+ * @param {string} text
+ * @param {Object} [opts]
+ * @param {number} [opts.cps=22] — characters per second
+ * @param {boolean} [opts.clear=true] — clear existing value before typing
+ * @param {boolean} [opts.change=true] — dispatch `change` at the end
+ * @returns {gsap.core.Tween}
+ */
+export function typeIntoIframeInput(input, text, opts = {}) {
+  const { cps = 22, clear = true, change = true } = opts;
+  if (!input || !('value' in input)) {
+    throw new Error('typeIntoIframeInput: target must be an input or textarea');
+  }
+  const win = input.ownerDocument?.defaultView || window;
+  if (clear) input.value = '';
+  const n = { val: 0 };
+  let lastI = -1;
+  const charDuration = 1 / Math.max(1, cps);
+  return gsap.to(n, {
+    val: text.length,
+    duration: Math.max(0.01, text.length * charDuration),
+    ease: 'none',
+    onUpdate: () => {
+      const i = Math.floor(n.val);
+      if (i !== lastI) {
+        input.value = text.slice(0, i);
+        input.dispatchEvent(new win.Event('input', { bubbles: true }));
+        lastI = i;
+      }
+    },
+    onComplete: () => {
+      input.value = text;
+      input.dispatchEvent(new win.Event('input', { bubbles: true }));
+      if (change) input.dispatchEvent(new win.Event('change', { bubbles: true }));
+    },
+  });
+}
+
+/**
  * Status-pill text morph — character-by-character text swap on a persistent
  * pill element. Used for "status spine" patterns where one pill carries
  * viewer attention across multiple state labels (e.g. ZlyVs reference

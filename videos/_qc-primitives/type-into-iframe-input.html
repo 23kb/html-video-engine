@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>typeIntoIframeInput — QC</title>
+<link rel="stylesheet" href="/videos/_qc-interactions/_shell.css">
+<style>
+  .mirror {
+    position: absolute; left: 24px; bottom: 20px; z-index: 20;
+    background: rgba(255,255,255,0.92); color: #1c1f28;
+    border: 1px solid rgba(28,31,40,0.12); border-radius: 8px;
+    padding: 10px 14px; font-family: ui-monospace, monospace; font-size: 13px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+  }
+</style>
+</head>
+<body>
+<div class="header">
+  <h1>typeIntoIframeInput</h1>
+  <div class="desc">
+    Types into a real iframe <code>&lt;input&gt;</code> and fires <code>input</code> listeners every character.
+    The mirror below updates only from the input event listener. Source:
+    <a href="/videos/_shared/motion-primitives.js">motion-primitives.js</a> ·
+    <a href="index.html">← back to index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="phase-label" id="phaseLabel">state: loading…</div>
+    <div class="mirror" id="mirror">input events: 0 · value: ""</div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="runBtn" class="primary">▶ type into label input</button>
+  <button id="resetBtn">⟲ reset</button>
+  <span class="time" id="timeLabel">…</span>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { bootQc } from '/videos/_qc-interactions/_shell.js';
+import { typeIntoIframeInput } from '/videos/_shared/motion-primitives.js';
+
+let eventCount = 0;
+const mirror = document.getElementById('mirror');
+
+function setMirror(value) {
+  mirror.textContent = `input events: ${eventCount} · value: "${value}"`;
+}
+
+bootQc({
+  startSnapshot: 'builder-fields',
+  cursorStart: { x: 1120, y: 650 },
+  onReady: async ({ interactions }) => {
+    interactions.applyFormProfile('demo-5');
+    await interactions.openFieldOptions(48, { ripple: false });
+    const input = interactions.iframe.query('#wpforms-field-option-48-label');
+    eventCount = 0;
+    setMirror(input?.value || '');
+    input?.addEventListener('input', () => {
+      eventCount += 1;
+      setMirror(input.value);
+    });
+  },
+  run: async ({ interactions, setState }) => {
+    const input = interactions.iframe.query('#wpforms-field-option-48-label');
+    if (!input) throw new Error('Name label input not found');
+    setState('typing into real iframe input');
+    eventCount = 0;
+    setMirror('');
+    const pt = interactions.iframe.elementToStageCoords(input);
+    await interactions.cursor.glide(pt, { duration: 0.65 });
+    await interactions.cursor.click({ ripple: false });
+    await typeIntoIframeInput(input, 'Full Name', { cps: 18, clear: true });
+    setState('typed and dispatched change');
+  },
+});
+</script>
+</body>
+</html>
