@@ -40,10 +40,40 @@ const DEFAULT_VIEWPORT = { width: 1280, height: 720 };
 // and pixelated edges at REST (zoom 1, before any camera move). Reverted to 1
 // to match engine.js: iframe at native size, no zoom: trick, no rest transform.
 // Trade: deep zooms (>3×) soften. Engine.js had this trade for 12 production
-// videos and it was acceptable. If a future beat genuinely needs sharp 5–10×
-// zoom, see videos/_qc-primitives/notes-deep-zoom.md (not yet written) for the
-// "dynamic-resize-on-zoom" pattern.
+// videos and it was acceptable.
+//
+// SETTLE-MODE (docs/zoom-quality-fix-2026-05-12.md): the soft-text-at-deep-zoom
+// trade is no longer accepted. At the END of any camera tween that lands at
+// zoom > SETTLE_THRESHOLD, IframeManager swaps the iframe from CSS-transform
+// rendering (compositor-bilinear, blurry) to "settle mode": iframe CSS box
+// resized to N× the stage size + iframe-doc `documentElement.style.zoom = N` +
+// transform cleared. The two N× factors cancel for layout (viewport stays at
+// the original 1280-CSS-px so admin layouts don't trigger mobile breakpoints)
+// but content renders at N× pixel density — Chromium re-rasterizes text the
+// same way Ctrl+ does. Settle exits at the start of the next tween or any
+// camera write so all other primitives keep operating in transform mode.
 const DEFAULT_OVERSAMPLE = 1;
+// Camera zoom values strictly above this trigger settle mode after a tween
+// completes. Below this, CSS transform is fine (sub-1.4× rasterization
+// artifacts are tolerable). The threshold is deliberately just above 1 so
+// any meaningful zoom benefits from re-rasterization.
+const SETTLE_THRESHOLD = 1.001;
+// Feature detect CSS `zoom`. Chromium and Safari support it; Firefox added
+// support in 126 (May 2024). Older Firefox skips settle mode and falls back
+// to transform-only rendering (existing softness at deep zoom).
+const SUPPORTS_CSS_ZOOM = (() => {
+  if (typeof document === 'undefined') return false;
+  try {
+    const probe = document.createElement('div');
+    probe.style.cssText = 'position:absolute;left:-9999px;width:50px;height:1px;zoom:2;';
+    document.body.appendChild(probe);
+    const supported = Math.abs(probe.getBoundingClientRect().width - 100) < 1;
+    probe.remove();
+    return supported;
+  } catch (_) {
+    return false;
+  }
+})();
 
 /**
  * IframeManager — mounts a snapshot iframe inside a stage element and
@@ -107,6 +137,10 @@ export class IframeManager {
     this.indexFile = indexFile;
     this._slug = null;
     this._iframe = null;
+    // Settle-mode flag. True when iframe is rendering at zoom × native density
+    // (resized box + html.zoom) instead of CSS transform.
+    this._settleMode = false;
+    this._settleRafHandle = 0;
     this._slot = this._mountSlot();
   }
 
@@ -160,7 +194,155 @@ export class IframeManager {
 
   _applyCameraToIframe(iframe = this._iframe) {
     if (!iframe) return;
+    // If the iframe being targeted is the current one and we're in settle
+    // mode, restore transform-mode geometry first. _exitSettleMode does NOT
+    // re-call this method (it only writes geometry), so no recursion.
+    if (this._settleMode && iframe === this._iframe) {
+      this._exitSettleMode();
+    }
     iframe.style.transform = this._cameraTransform();
+  }
+
+  /**
+   * Exit settle mode on the current iframe. Restores transform-mode geometry:
+   *
+   *   - iframe.style.width/height        ← physical (no N× upscale)
+   *   - iframe.style.left/top            ← origin (centered in slot)
+   *   - iframe.contentDocument.documentElement.style.zoom  ← '' (clear)
+   *
+   * Does NOT re-apply the camera transform — caller (_applyCameraToIframe,
+   * scroll helpers, etc.) is responsible for the next visual state. Safe to
+   * call when not in settle mode (returns immediately).
+   *
+   * Called automatically by `_applyCameraToIframe`, `cameraToElement`,
+   * `smoothScrollIntoView`, and `scrollIntoView`. Any other method that
+   * reads or writes iframe-doc coordinates should call this first; settle
+   * mode is a "rest display state" that callers must opt out of before
+   * touching layout coords.
+   */
+  _exitSettleMode() {
+    if (!this._settleMode) return;
+    const iframe = this._iframe;
+    if (!iframe) {
+      this._settleMode = false;
+      return;
+    }
+    this._settleMode = false;
+    if (this._settleRafHandle) {
+      cancelAnimationFrame(this._settleRafHandle);
+      this._settleRafHandle = 0;
+    }
+    iframe.style.width = this._physicalIframeSize.width + 'px';
+    iframe.style.height = this._physicalIframeSize.height + 'px';
+    iframe.style.left = this._origin.x + 'px';
+    iframe.style.top = this._origin.y + 'px';
+    try {
+      const doc = iframe.contentDocument;
+      if (doc && doc.documentElement) doc.documentElement.style.zoom = '';
+    } catch (_) { /* cross-origin or missing — nothing to clear */ }
+  }
+
+  /**
+   * Settle-mode entry: re-rasterize iframe contents at `zoom × native density`.
+   *
+   * Why: CSS `transform: scale(N)` on the iframe rasterizes the iframe contents
+   * ONCE at the iframe's CSS box size, then the GPU compositor samples that
+   * texture at the transformed scale. At zoom 3-4× the bilinear upscale is
+   * visibly soft — text loses subpixel AA and the letter edges read as
+   * stair-stepped. The OVERSAMPLE workaround (mounting the iframe at 4× +
+   * `body { zoom: 4 }` + `transform: scale(0.25)`) traded sharp deep-zoom for
+   * SOFT REST: 4× capture then GPU downsample to display kills subpixel AA
+   * even at zoom 1. Both extremes shipped at some point and both were rejected.
+   *
+   * Settle-mode is the third path. It only activates at the END of a camera
+   * tween that lands above `SETTLE_THRESHOLD`. The transition swaps the
+   * rendering strategy:
+   *
+   *   transform-mode (during all tweens, all interactions, rest at zoom 1):
+   *     iframe.style.width        = STAGE_W      (e.g. 1280)
+   *     iframe.style.height       = STAGE_H      (e.g.  720)
+   *     iframe.style.left/top     = origin       (centered in slot)
+   *     iframe.style.transform    = scale(N) translate(tx/N, ty/N)
+   *     iframe.contentDocument.documentElement.style.zoom = ''  (default 1)
+   *
+   *   settle-mode (post-tween, zoom > 1.001):
+   *     iframe.style.width        = STAGE_W * N  (3840 at N=3)
+   *     iframe.style.height       = STAGE_H * N
+   *     iframe.style.left/top     = origin + (tx, ty)            (px-offset)
+   *     iframe.style.transform    = 'none'
+   *     iframe.contentDocument.documentElement.style.zoom = N    (re-rasterize)
+   *
+   * The math: with `iframe.style.width = STAGE_W * N`, the iframe's internal
+   * window.innerWidth becomes STAGE_W * N. Applying `documentElement.zoom = N`
+   * then SHRINKS the layout viewport by N back to STAGE_W. The two factors
+   * cancel for layout (WPForms admin still sees a desktop-1280 viewport, no
+   * mobile-breakpoint collapse), but content renders at N× density across the
+   * larger canvas. This is the same path Chromium's Ctrl+ takes — fresh
+   * rasterization, sharp text, native subpixel AA preserved.
+   *
+   * The iframe is then visually wider/taller than the stage slot, so the slot
+   * `overflow: hidden` clips it. `iframe.style.left/top = origin + tx/ty`
+   * positions the visible 1280×720 window exactly over the same iframe-doc
+   * coordinates as the equivalent transform-mode pose.
+   *
+   * Why a stand-alone enter/exit instead of always settle: any time a tween
+   * runs, the iframe-doc layout must be at STAGE_W to match the on-screen
+   * dimensions the tween animates against. Switching geometry mid-tween would
+   * compound the layout reflow with the animation. Settle is therefore a
+   * "rest state" that only the final, no-longer-animating camera pose
+   * occupies.
+   *
+   * Equivalent for callers that read `elementToStageCoords` etc.: see
+   * `iframePointToStage` settle branch — BCR returns post-zoom coords inside
+   * the iframe doc, and the iframe's left/top already encodes (origin + tx,
+   * origin + ty), so the visible position math collapses to a simple add.
+   *
+   * No-op when zoom ≤ SETTLE_THRESHOLD, when CSS `zoom` is unsupported
+   * (older Firefox <126), or when iframe.contentDocument is unavailable.
+   */
+  _enterSettleMode() {
+    this._settleRafHandle = 0;
+    if (this._settleMode) return;
+    if (!this._iframe) return;
+    if (!SUPPORTS_CSS_ZOOM) return;
+    const { zoom, tx, ty } = this._camera;
+    if (zoom <= SETTLE_THRESHOLD) return;
+    const f = this._iframe;
+    let doc;
+    try { doc = f.contentDocument; } catch (_) { return; }
+    if (!doc || !doc.documentElement) return;
+    const N = zoom;
+    const w = this.iframeSize.width * N;
+    const h = this.iframeSize.height * N;
+    // Apply width/height + zoom together so the inner doc lays out at the
+    // CANCELED viewport (STAGE_W) instead of momentarily at STAGE_W*N.
+    f.style.width = w + 'px';
+    f.style.height = h + 'px';
+    doc.documentElement.style.zoom = String(N);
+    f.style.transform = 'none';
+    f.style.left = (this._origin.x + tx) + 'px';
+    f.style.top = (this._origin.y + ty) + 'px';
+    this._settleMode = true;
+  }
+
+  /**
+   * Schedule a settle-mode entry for one animation frame after the call.
+   *
+   * The rAF deferral matters: it gives the browser one extra paint cycle to
+   * land the final tween frame at full CSS-transform opacity before the
+   * geometry swap. If we ran the swap synchronously inside the tween's
+   * onComplete (i.e. inside a GSAP-ticker rAF callback), the browser would
+   * collapse the last animated frame and the settle reflow into the same
+   * paint, which can look like a single-frame jitter.
+   *
+   * The handle is tracked on `_settleRafHandle` so a subsequent
+   * `_applyCameraToIframe` (e.g. a brand-new tween started before settle
+   * fired) can cancel the pending settle and avoid a wasted reflow.
+   */
+  _scheduleSettleMode() {
+    if (!SUPPORTS_CSS_ZOOM) return;
+    if (this._settleRafHandle) cancelAnimationFrame(this._settleRafHandle);
+    this._settleRafHandle = requestAnimationFrame(() => this._enterSettleMode());
   }
 
   static _waitForIframeLoad(iframe, expectedUrl) {
@@ -239,6 +421,16 @@ export class IframeManager {
     const { duration = 0.32, ease = 'sine.inOut' } = opts;
     if (!this._iframe) return this.load(slug);
     if (this._slug === slug) return this._iframe;
+    // The new iframe boots in transform mode regardless of the previous
+    // iframe's settle state. Clear the flag so post-swap camera applies use
+    // the correct geometry (and the new iframe element doesn't get spurious
+    // exit-from-settle DOM writes targeting it via the `iframe === _iframe`
+    // guard in _applyCameraToIframe).
+    if (this._settleRafHandle) {
+      cancelAnimationFrame(this._settleRafHandle);
+      this._settleRafHandle = 0;
+    }
+    this._settleMode = false;
     const next = this._createIframe(slug);
     this._slot.appendChild(next);
     await IframeManager._waitForIframeLoad(next, `${this.snapshotBase}/${slug}/${this.indexFile}`);
@@ -254,6 +446,9 @@ export class IframeManager {
     prev.remove();
     this._iframe = next;
     this._slug = slug;
+    // If camera is at a deep zoom after swap (e.g. caller didn't reset
+    // camera before swap), re-enter settle on the new iframe.
+    if (this._camera.zoom > SETTLE_THRESHOLD) this._scheduleSettleMode();
     return next;
   }
 
@@ -346,7 +541,12 @@ export class IframeManager {
       this._cameraTween.kill();
       this._cameraTween = null;
     }
+    // _applyCameraToIframe exits settle mode if active, then writes transform.
     this._applyCameraToIframe();
+    // Instant setCamera into a deep zoom should still benefit from settle.
+    if (zoom > SETTLE_THRESHOLD) {
+      this._scheduleSettleMode();
+    }
   }
 
   /**
@@ -363,6 +563,12 @@ export class IframeManager {
     const duration = pose.duration ?? 0.72;
     const ease = pose.ease ?? 'power3.out';
     if (this._cameraTween) this._cameraTween.kill();
+    // Cancel any pending settle from a previous tween — the new tween needs
+    // transform-mode for its duration.
+    if (this._settleRafHandle) {
+      cancelAnimationFrame(this._settleRafHandle);
+      this._settleRafHandle = 0;
+    }
     if (typeof gsap === 'undefined' || duration <= 0) {
       this.setCamera(to);
       return Promise.resolve();
@@ -382,6 +588,8 @@ export class IframeManager {
           this._camera = { ...to };
           this._applyCameraToIframe();
           this._cameraTween = null;
+          // Schedule re-rasterization at native density for deep zooms.
+          if (to.zoom > SETTLE_THRESHOLD) this._scheduleSettleMode();
           resolve();
         },
       });
@@ -420,6 +628,15 @@ export class IframeManager {
     } = opts;
     const el = typeof target === 'string' ? this.query(target) : target;
     if (!el) throw new Error(`IframeManager.cameraToElement: target not found: ${target}`);
+    // If settle mode is active, the iframe-doc layout is currently at zoom N
+    // and getBoundingClientRect returns post-zoom CSS px. The camera math
+    // below assumes pre-zoom (unzoomed-layout) coords. Exit settle for a
+    // clean measurement; the caller is about to issue a new tweenCamera that
+    // will re-enter settle on landing.
+    if (this._settleMode) {
+      this._exitSettleMode();
+      this._iframe.style.transform = this._cameraTransform();
+    }
     const r0 = this._logicalRect(el.getBoundingClientRect());
     const r = {
       left: r0.left - pad,
@@ -495,6 +712,18 @@ export class IframeManager {
    * @returns {{x:number,y:number}}
    */
   iframePointToStage(ix, iy) {
+    if (this._settleMode) {
+      // In settle mode, callers (e.g. elementToStageCoords) read
+      // getBoundingClientRect inside the iframe doc, which returns
+      // POST-zoom CSS pixels. The iframe element itself is positioned at
+      // (origin.x + tx, origin.y + ty) with no CSS transform and width
+      // STAGE_W * zoom. So the visible screen position of an iframe-doc
+      // post-zoom point (ix, iy) is just origin + tx/ty + ix/iy.
+      return {
+        x: this._origin.x + this._camera.tx + ix,
+        y: this._origin.y + this._camera.ty + iy,
+      };
+    }
     return {
       x: this._origin.x + ix * this._camera.zoom + this._camera.tx,
       y: this._origin.y + iy * this._camera.zoom + this._camera.ty,
@@ -649,6 +878,13 @@ export class IframeManager {
   scrollIntoView(target, opts = { block: 'center', behavior: 'instant' }) {
     const el = typeof target === 'string' ? this.query(target) : target;
     if (!el) return;
+    // Settle mode's iframe doc lays out at N× — scrolling there leaves the
+    // window at a post-zoom scrollY that becomes stale once settle exits.
+    // Exit first so the scroll lands in 1× iframe-CSS px and remains valid.
+    if (this._settleMode) {
+      this._exitSettleMode();
+      this._iframe.style.transform = this._cameraTransform();
+    }
     el.scrollIntoView(opts);
   }
 
@@ -669,6 +905,12 @@ export class IframeManager {
       duration = 0.62,
       ease = 'power2.out',
     } = opts;
+    // Exit settle mode so scroll math runs in 1× iframe-CSS px (see comment
+    // on scrollIntoView).
+    if (this._settleMode) {
+      this._exitSettleMode();
+      this._iframe.style.transform = this._cameraTransform();
+    }
     const doc = el.ownerDocument;
     const win = doc.defaultView;
     const root = doc.scrollingElement || doc.documentElement;
