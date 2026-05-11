@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>scattered-canvas-flight — 6 real-snapshot inter-snapshot camera</title>
+<style>
+  :root {
+    --bg: #14161C; --ink: #ebebed; --ink-mute: #8a8e99;
+    --accent: #E27730; --accent-blue: #0399ED;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    overflow: hidden;
+  }
+  .header {
+    padding: 14px 24px; border-bottom: 1px solid #2a2e3a;
+  }
+  .header h1 {
+    margin: 0 0 4px; font-size: 16px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--accent-blue);
+  }
+  .header .desc { font-size: 12px; color: var(--ink-mute); }
+  .header a { color: var(--accent); text-decoration: none; font-size: 12px; }
+  .header code { color: var(--accent); }
+
+  .stage-wrap {
+    position: fixed; inset: 70px 0 96px 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #0d0e10;
+  }
+
+  .stage {
+    position: relative;
+    width: 1280px; height: 720px;
+    background: #0d1019;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    transform-origin: center center;
+  }
+
+  /* Canvas: 4900 × 2800. Origin = (2450, 1400) for transform-origin: center center.
+     Wide pose at scale 0.25 fits the whole canvas in viewport with small padding. */
+  .scene-camera {
+    position: absolute;
+    width: 4900px; height: 2800px;
+    left: 0; top: 0;
+    transform-origin: center center;
+    will-change: transform;
+    background:
+      radial-gradient(circle at 50% 50%, #2a2f3e 1.2px, transparent 1.6px) 0 0 / 40px 40px,
+      radial-gradient(ellipse at 50% 50%, #1a1f2e 0%, #0d1019 70%);
+  }
+
+  .panel {
+    position: absolute;
+    width: 1280px; height: 720px;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 6px;
+    box-shadow:
+      0 18px 48px rgba(0,0,0,0.55),
+      0 4px 12px rgba(0,0,0,0.30),
+      0 0 0 1px rgba(255,255,255,0.08);
+    transform-origin: center center;
+  }
+  .panel iframe {
+    /* Mount iframe at native panel size with no pre-scale transform. The
+       nested scale(0.8864) + scattered-canvas .scene-camera transform stack
+       produced compositor-flattened text. Engine.js pattern: iframe matches
+       its container exactly. WPForms admin renders at 1280px width (slightly
+       narrower than captured 1444px) but text rasterizes with subpixel AA. */
+    width: 1280px; height: 720px;
+    border: 0;
+    display: block;
+    pointer-events: none;
+  }
+  .panel .corner-label {
+    position: absolute;
+    top: 12px; left: 16px;
+    background: rgba(20,22,28,0.90);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .panel .badge {
+    position: absolute;
+    top: 12px; right: 16px;
+    background: var(--accent);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    font-family: ui-monospace, monospace;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .panel.target .badge { background: #7A30E2; }
+
+  .phase-label {
+    position: absolute;
+    bottom: 18px; left: 50%; transform: translateX(-50%);
+    font-size: 13px; color: #fff;
+    background: rgba(20,22,28,0.90);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: ui-monospace, monospace;
+    z-index: 100;
+  }
+
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    padding: 12px 24px;
+    background: rgba(20,22,28,0.95);
+    border-top: 1px solid #2a2e3a;
+  }
+  .controls .row1 { display: flex; align-items: center; gap: 12px; }
+  .controls .row2 {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: 8px; flex-wrap: wrap;
+    font-family: ui-monospace, monospace; font-size: 11px;
+  }
+  .controls button {
+    background: rgba(255,255,255,0.10); border: 0; color: var(--ink);
+    height: 30px; padding: 0 12px; border-radius: 4px; cursor: pointer;
+    font-size: 12px; font-family: ui-monospace, monospace;
+  }
+  .controls button:hover { background: rgba(255,255,255,0.20); }
+  .controls button.pose { background: rgba(3, 153, 237, 0.18); color: var(--accent-blue); }
+  .controls button.pose:hover { background: rgba(3, 153, 237, 0.32); }
+  .controls button.pose.start { background: rgba(226, 119, 48, 0.22); color: var(--accent); }
+  .controls button.pose.target { background: rgba(122, 48, 226, 0.22); color: #b886f5; }
+  .controls input[type="range"] { flex: 1; }
+  .controls .time {
+    min-width: 110px; text-align: center;
+    font-family: ui-monospace, monospace; font-size: 12px; opacity: 0.9;
+  }
+  .controls .pose-label { color: var(--ink-mute); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>scattered-canvas-flight — 6 real snapshots, focus → wide → focus</h1>
+  <div class="desc">
+    Canvas <code>4900×2800</code> with 6 real WPForms snapshots scattered (not aligned).
+    Camera starts focused on <strong>1 · admin-forms-overview</strong> (orange), zooms out to wide where all 6 are visible,
+    holds briefly, then zooms into <strong>6 · wpforms-ai-builder-empty</strong> (purple, the target).
+    Same <code>power2.inOut</code> velocity-pulse shape from <a href="_debug-camera.html">_debug-camera</a>.
+    <a href="index.html">← QC index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="scene-camera" id="camera">
+      <!-- Panel positions: (top-left coords) chosen for irregular scatter, no overlap. -->
+      <div class="panel" id="p1" style="left: 60px;   top: 140px;  transform: rotate(-2.5deg);">
+        <div class="corner-label">admin-forms-overview</div>
+        <div class="badge">1 · START</div>
+        <iframe src="/snapshots/admin-forms-overview/index.html" loading="eager"></iframe>
+      </div>
+      <div class="panel" id="p2" style="left: 1760px; top: 140px;  transform: rotate(1.2deg);">
+        <div class="corner-label">admin-templates</div>
+        <div class="badge">2</div>
+        <iframe src="/snapshots/admin-templates/index.html" loading="lazy"></iframe>
+      </div>
+      <div class="panel" id="p3" style="left: 3560px; top: 240px;  transform: rotate(-1.8deg);">
+        <div class="corner-label">admin-entries-list</div>
+        <div class="badge">3</div>
+        <iframe src="/snapshots/admin-entries-list/index.html" loading="lazy"></iframe>
+      </div>
+      <div class="panel" id="p4" style="left: 460px;  top: 1740px; transform: rotate(2.0deg);">
+        <div class="corner-label">admin-payments</div>
+        <div class="badge">4</div>
+        <iframe src="/snapshots/admin-payments/index.html" loading="lazy"></iframe>
+      </div>
+      <div class="panel" id="p5" style="left: 2460px; top: 1140px; transform: rotate(-1.0deg);">
+        <div class="corner-label">admin-settings-general</div>
+        <div class="badge">5</div>
+        <iframe src="/snapshots/admin-settings-general/index.html" loading="lazy"></iframe>
+      </div>
+      <div class="panel target" id="p6" style="left: 3460px; top: 1840px; transform: rotate(2.4deg);">
+        <div class="corner-label">wpforms-ai-builder-empty</div>
+        <div class="badge">6 · TARGET</div>
+        <iframe src="/snapshots/wpforms-ai-builder-empty/index.html" loading="lazy"></iframe>
+      </div>
+    </div>
+    <div class="phase-label" id="phaseLabel">phase: idle</div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="row1">
+    <button id="playBtn">▶ play</button>
+    <button id="restartBtn">⟲ restart</button>
+    <input type="range" id="scrubber" min="0" max="1" step="0.001" value="0">
+    <div class="time" id="timeLabel">0.00 / 0.00</div>
+  </div>
+  <div class="row2">
+    <span class="pose-label">jump to pose:</span>
+    <button class="pose start"  data-pose="start">START · focus on #1</button>
+    <button class="pose"        data-pose="wide">WIDE · all 6 visible</button>
+    <button class="pose target" data-pose="target">TARGET · focus on #6</button>
+  </div>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+// Stage scaling — fits 1280x720 stage into the visible viewport.
+function fitStage() {
+  const stage = document.getElementById('stage');
+  const availW = window.innerWidth;
+  const availH = Math.max(200, window.innerHeight - 70 - 96);
+  const sx = availW / 1280;
+  const sy = availH / 720;
+  const scale = Math.min(sx, sy) * 0.96;
+  stage.style.transform = `scale(${Math.max(scale, 0.1)})`;
+}
+fitStage();
+window.addEventListener('resize', fitStage);
+
+const camera = document.getElementById('camera');
+const phaseLabel = document.getElementById('phaseLabel');
+const playBtn = document.getElementById('playBtn');
+const scrubber = document.getElementById('scrubber');
+const timeLabel = document.getElementById('timeLabel');
+const restartBtn = document.getElementById('restartBtn');
+
+// ─── Camera math ──────────────────────────────────────────────────────────
+// Canvas: 4900 × 2800, transform-origin: center center.
+// Origin in element-local coords: (W/2, H/2) = (2450, 1400).
+//
+// Per CSS spec for transform with transform-origin (ox, oy):
+//   doc_x = ox + s*(xe - ox) + tx
+// To land canvas point (cx, cy) at stage center (640, 360):
+//   tx = 640 - 2450 - s*(cx - 2450)
+//   ty = 360 - 1400 - s*(cy - 1400)
+
+const W = 4900, H = 2800;
+const STAGE_CX = 640, STAGE_CY = 360;
+const ORIGIN_X = W / 2, ORIGIN_Y = H / 2;
+
+function focusPose(cx, cy, scale = 1.0) {
+  return {
+    x: STAGE_CX - ORIGIN_X - scale * (cx - ORIGIN_X),
+    y: STAGE_CY - ORIGIN_Y - scale * (cy - ORIGIN_Y),
+    scale,
+    rotation: 0,
+  };
+}
+
+// Each panel's center on the canvas (cx, cy) — derived from panel's top-left + 640/360.
+const PANELS = {
+  p1: { name: 'admin-forms-overview',     cx: 60   + 640, cy: 140  + 360 },  // (700, 500)
+  p2: { name: 'admin-templates',          cx: 1760 + 640, cy: 140  + 360 },  // (2400, 500)
+  p3: { name: 'admin-entries-list',       cx: 3560 + 640, cy: 240  + 360 },  // (4200, 600)
+  p4: { name: 'admin-payments',           cx: 460  + 640, cy: 1740 + 360 },  // (1100, 2100)
+  p5: { name: 'admin-settings-general',   cx: 2460 + 640, cy: 1140 + 360 },  // (3100, 1500)
+  p6: { name: 'wpforms-ai-builder-empty', cx: 3460 + 640, cy: 1840 + 360 },  // (4100, 2200)
+};
+
+// Wide pose: scale to fit canvas in viewport. Stage is 1280x720, canvas is 4900x2800.
+// sx_fit = 1280/4900 ≈ 0.261 ; sy_fit = 720/2800 ≈ 0.257. Take min, with breathing room.
+const WIDE_SCALE = 0.245;
+
+// 3 named poses: focus on START panel, wide showing all 6, focus on TARGET panel.
+const POSE_START  = focusPose(PANELS.p1.cx, PANELS.p1.cy, 1.0);
+const POSE_WIDE   = focusPose(ORIGIN_X, ORIGIN_Y, WIDE_SCALE);
+const POSE_TARGET = focusPose(PANELS.p6.cx, PANELS.p6.cy, 1.0);
+
+// Set initial pose (no anticipation yet — that's the first tween).
+gsap.set(camera, POSE_START);
+
+// ─── Timeline ─────────────────────────────────────────────────────────────
+// Same velocity-pulse shape Umair signed off on in _debug-camera.html:
+// power2.inOut on every camera-move phase, plus an anticipation pre-nudge
+// and a wide-hold so the viewer perceives the 6 panels.
+const ANTICIP_PUSH_X = 16;  // small anticipation nudge to the right (away from B)
+const ANTICIP_PUSH_Y = 12;
+const ANTICIP_DUR    = 0.18;
+const ZOOM_OUT_DUR   = 1.10;
+const WIDE_HOLD_DUR  = 1.20;  // breathing room so the viewer reads all 6 panels
+const ZOOM_IN_DUR    = 1.15;
+const FINAL_HOLD_DUR = 0.90;
+
+const tl = gsap.timeline({ paused: true });
+tl.to(camera, {
+  x: POSE_START.x + ANTICIP_PUSH_X,
+  y: POSE_START.y + ANTICIP_PUSH_Y,
+  duration: ANTICIP_DUR,
+  ease: 'power2.in',
+}); // 1: anticipation
+tl.to(camera, { ...POSE_WIDE,   duration: ZOOM_OUT_DUR, ease: 'power2.inOut' });  // 2: zoom out → wide
+tl.to({}, { duration: WIDE_HOLD_DUR });                                            // 3: hold at wide
+tl.to(camera, { ...POSE_TARGET, duration: ZOOM_IN_DUR,  ease: 'power2.inOut' });  // 4: zoom in → target
+tl.to({}, { duration: FINAL_HOLD_DUR });                                           // 5: final hold
+
+const TOTAL = tl.duration();
+timeLabel.textContent = `0.00 / ${TOTAL.toFixed(2)}`;
+
+const PHASE_END_1 = ANTICIP_DUR;
+const PHASE_END_2 = PHASE_END_1 + ZOOM_OUT_DUR;
+const PHASE_END_3 = PHASE_END_2 + WIDE_HOLD_DUR;
+const PHASE_END_4 = PHASE_END_3 + ZOOM_IN_DUR;
+
+tl.eventCallback('onUpdate', () => {
+  const t = tl.time();
+  let phase = 'idle';
+  if (t < PHASE_END_1)      phase = '1: anticipation';
+  else if (t < PHASE_END_2) phase = '2: ZOOM OUT (focus → wide)';
+  else if (t < PHASE_END_3) phase = '3: HOLD WIDE (all 6 visible)';
+  else if (t < PHASE_END_4) phase = '4: ZOOM IN (wide → target)';
+  else                       phase = '5: hold on target';
+  phaseLabel.textContent = `phase: ${phase}`;
+  scrubber.value = t / TOTAL;
+  timeLabel.textContent = `${t.toFixed(2)} / ${TOTAL.toFixed(2)}`;
+});
+
+let isPlaying = false;
+function play() { tl.play(); playBtn.textContent = '⏸ pause'; isPlaying = true; }
+function pause() { tl.pause(); playBtn.textContent = '▶ play'; isPlaying = false; }
+
+playBtn.addEventListener('click', () => { isPlaying ? pause() : play(); });
+restartBtn.addEventListener('click', () => {
+  pause(); tl.time(0); gsap.set(camera, POSE_START);
+});
+scrubber.addEventListener('input', () => {
+  pause();
+  tl.time(parseFloat(scrubber.value) * TOTAL);
+});
+
+// Pose-jump buttons — instant set, no tween. Verifies each keyframe in isolation.
+// NOTE: clicking a pose button calls gsap.killTweensOf(camera), which removes
+// the camera from any active timeline tweens. That's fine for inspection but
+// breaks playback until reload. (Same pattern as _debug-camera.html.)
+const POSE_MAP = { start: POSE_START, wide: POSE_WIDE, target: POSE_TARGET };
+document.querySelectorAll('button.pose').forEach(btn => {
+  btn.addEventListener('click', () => {
+    pause();
+    const key = btn.dataset.pose;
+    const p = POSE_MAP[key];
+    gsap.killTweensOf(camera);
+    gsap.set(camera, p);
+    phaseLabel.textContent = `JUMPED → ${key.toUpperCase()} · scale=${p.scale} · x=${Math.round(p.x)}, y=${Math.round(p.y)}`;
+    scrubber.value = 0;
+    timeLabel.textContent = `pose ${key} (no time)`;
+  });
+});
+
+// ─── Autoplay with iframe-load fallback ───────────────────────────────────
+// Wait for iframes to load OR a 3-second timeout, whichever comes first.
+// Per handoff: the heavy wpforms-ai-builder-empty snapshot (~6.7MB) may not
+// fire `load` reliably; don't block autoplay on it.
+const iframeLoadPromises = [...document.querySelectorAll('iframe')].map(f =>
+  new Promise(resolve => {
+    if (f.contentDocument?.readyState === 'complete') { resolve(); return; }
+    f.addEventListener('load', resolve, { once: true });
+  })
+);
+const iframeTimeout = new Promise(resolve => setTimeout(resolve, 3000));
+
+Promise.race([Promise.all(iframeLoadPromises), iframeTimeout]).then(() => {
+  setTimeout(() => { play(); }, 250);
+});
+</script>
+</body>
+</html>

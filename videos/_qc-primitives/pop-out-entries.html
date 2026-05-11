@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>popOut on admin-entries-list — QC</title>
+<style>
+  :root {
+    --bg: #14161C; --ink: #ebebed; --ink-mute: #8a8e99;
+    --accent: #E27730; --accent-blue: #0399ED;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    overflow: hidden;
+  }
+  .header { padding: 14px 24px; border-bottom: 1px solid #2a2e3a; }
+  .header h1 {
+    margin: 0 0 4px; font-size: 16px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--accent-blue);
+  }
+  .header .desc { font-size: 12px; color: var(--ink-mute); }
+  .header a { color: var(--accent); text-decoration: none; font-size: 12px; }
+  .header code { color: var(--accent); }
+
+  .stage-wrap {
+    position: fixed; inset: 70px 0 96px 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #0d0e10;
+  }
+  .stage {
+    position: relative;
+    width: 1280px; height: 720px;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    transform-origin: center center;
+  }
+  .stage iframe {
+    width: 1280px; height: 720px;
+    border: 0;
+    display: block;
+    pointer-events: none;
+  }
+
+  .phase-label {
+    position: absolute;
+    bottom: 18px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; color: #fff;
+    background: rgba(20,22,28,0.90);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: ui-monospace, monospace;
+    z-index: 100;
+  }
+
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    padding: 12px 24px;
+    background: rgba(20,22,28,0.95);
+    border-top: 1px solid #2a2e3a;
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .controls button {
+    background: rgba(255,255,255,0.10); border: 0; color: var(--ink);
+    height: 30px; padding: 0 12px; border-radius: 4px; cursor: pointer;
+    font-size: 12px; font-family: ui-monospace, monospace;
+  }
+  .controls button:hover { background: rgba(255,255,255,0.20); }
+  .controls button.target {
+    background: rgba(226, 119, 48, 0.22); color: var(--accent);
+  }
+  .controls .status {
+    margin-left: auto;
+    color: var(--ink-mute); font-family: ui-monospace, monospace; font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>popOut — on a real <code>admin-entries-list</code> snapshot</h1>
+  <div class="desc">
+    Pops individual entry rows out of the WPForms admin entries list (the
+    submissions table). Same primitive (clone-and-lift + ring-shadow dim) on a
+    completely different surface — table rows instead of form-builder field
+    cards. Source: <a href="../_shared/motion-primitives.js"><code>motion-primitives.js</code></a>
+    <code>popOut</code> · <a href="pop-out.html">→ builder-fields version</a>
+    · <a href="index.html">← QC index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <iframe id="snap" src="/snapshots/admin-entries-list/index.html" loading="eager"></iframe>
+    <div class="phase-label" id="phaseLabel">phase: loading snapshot…</div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playSeqBtn" disabled>▶ play sequence</button>
+  <button class="target" data-row="1" disabled>pop row 1</button>
+  <button class="target" data-row="2" disabled>pop row 2</button>
+  <button class="target" data-row="3" disabled>pop row 3</button>
+  <button class="target" data-row="4" disabled>pop row 4</button>
+  <span class="status" id="statusLabel">waiting for iframe…</span>
+</div>
+
+<script type="module">
+import { popOut } from '/videos/_shared/motion-primitives.js';
+
+function fitStage() {
+  const stage = document.getElementById('stage');
+  const availW = window.innerWidth;
+  const availH = Math.max(200, window.innerHeight - 70 - 96);
+  const sx = availW / 1280;
+  const sy = availH / 720;
+  const scale = Math.min(sx, sy) * 0.96;
+  stage.style.transform = `scale(${Math.max(scale, 0.1)})`;
+}
+fitStage();
+window.addEventListener('resize', fitStage);
+
+const iframe = document.getElementById('snap');
+const phaseLabel = document.getElementById('phaseLabel');
+const playSeqBtn = document.getElementById('playSeqBtn');
+const statusLabel = document.getElementById('statusLabel');
+
+let busy = false;
+let rowSelectors = [];  // resolved after iframe load
+
+async function runPop(sel, caption) {
+  if (busy) return;
+  busy = true;
+  statusLabel.textContent = `popping…`;
+  phaseLabel.textContent = `phase: popping — ${caption}`;
+  try {
+    await popOut(iframe, sel, {
+      lift: 1.06,
+      holdMs: 1200,
+      caption,
+    });
+    phaseLabel.textContent = `phase: complete — ${caption}`;
+    statusLabel.textContent = 'done';
+  } catch (e) {
+    phaseLabel.textContent = `phase: ERROR — ${e.message}`;
+    statusLabel.textContent = String(e.message).slice(0, 60);
+  }
+  busy = false;
+}
+
+function bindControls() {
+  document.querySelectorAll('button.target').forEach((btn, i) => {
+    if (i >= rowSelectors.length) { btn.disabled = true; return; }
+    btn.disabled = false;
+    const { sel, caption } = rowSelectors[i];
+    btn.textContent = `pop row ${i + 1}`;
+    btn.addEventListener('click', () => runPop(sel, caption));
+  });
+  playSeqBtn.disabled = false;
+}
+
+playSeqBtn.addEventListener('click', async () => {
+  for (const r of rowSelectors) {
+    await runPop(r.sel, r.caption);
+    await new Promise(r => setTimeout(r, 250));
+  }
+  phaseLabel.textContent = `phase: complete · all ${rowSelectors.length} rows popped`;
+});
+
+async function onIframeReady() {
+  const doc = iframe.contentDocument;
+  if (!doc) { statusLabel.textContent = 'iframe blocked'; return; }
+  // Entry rows are children of #the-list tbody. Build nth-of-type selectors.
+  const rows = doc.querySelectorAll('#the-list > tr');
+  if (rows.length === 0) {
+    statusLabel.textContent = 'no rows found in #the-list';
+    phaseLabel.textContent = 'phase: error — no rows';
+    return;
+  }
+  // Read a label per row from the first cell with .row-title or similar
+  rowSelectors = [...rows].slice(0, 4).map((tr, i) => {
+    // Try to extract a meaningful label (form name + entry summary)
+    const cells = tr.querySelectorAll('td');
+    const label = [...cells].map(td => td.textContent.trim().replace(/\s+/g, ' '))
+      .find(t => t.length > 3 && t.length < 60) || `Row ${i + 1}`;
+    return {
+      sel: `#the-list > tr:nth-of-type(${i + 1})`,
+      caption: `Row ${i + 1} — ${label.slice(0, 50)}`,
+    };
+  });
+  statusLabel.textContent = `ready · ${rowSelectors.length} rows found`;
+  phaseLabel.textContent = 'phase: ready · click a button or play sequence';
+  bindControls();
+  setTimeout(() => playSeqBtn.click(), 500);
+}
+
+const ready = new Promise(resolve => {
+  if (iframe.contentDocument?.readyState === 'complete') resolve();
+  else iframe.addEventListener('load', resolve, { once: true });
+});
+const timeout = new Promise(resolve => setTimeout(resolve, 3000));
+Promise.race([ready, timeout]).then(onIframeReady);
+</script>
+</body>
+</html>

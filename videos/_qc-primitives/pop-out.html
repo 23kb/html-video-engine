@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>popOut on real snapshot — QC</title>
+<style>
+  :root {
+    --bg: #14161C; --ink: #ebebed; --ink-mute: #8a8e99;
+    --accent: #E27730; --accent-blue: #0399ED;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    overflow: hidden;
+  }
+  .header { padding: 14px 24px; border-bottom: 1px solid #2a2e3a; }
+  .header h1 {
+    margin: 0 0 4px; font-size: 16px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--accent-blue);
+  }
+  .header .desc { font-size: 12px; color: var(--ink-mute); }
+  .header a { color: var(--accent); text-decoration: none; font-size: 12px; }
+  .header code { color: var(--accent); }
+
+  .stage-wrap {
+    position: fixed; inset: 70px 0 96px 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #0d0e10;
+  }
+  .stage {
+    position: relative;
+    width: 1280px; height: 720px;
+    background: #fff;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    transform-origin: center center;
+  }
+  .stage iframe {
+    width: 1280px; height: 720px;
+    border: 0;
+    display: block;
+    pointer-events: none;
+  }
+
+  .phase-label {
+    position: absolute;
+    bottom: 18px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; color: #fff;
+    background: rgba(20,22,28,0.90);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: ui-monospace, monospace;
+    z-index: 100;
+  }
+
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    padding: 12px 24px;
+    background: rgba(20,22,28,0.95);
+    border-top: 1px solid #2a2e3a;
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+  }
+  .controls button {
+    background: rgba(255,255,255,0.10); border: 0; color: var(--ink);
+    height: 30px; padding: 0 12px; border-radius: 4px; cursor: pointer;
+    font-size: 12px; font-family: ui-monospace, monospace;
+  }
+  .controls button:hover { background: rgba(255,255,255,0.20); }
+  .controls button.target {
+    background: rgba(226, 119, 48, 0.22); color: var(--accent);
+  }
+  .controls .status {
+    margin-left: auto;
+    color: var(--ink-mute); font-family: ui-monospace, monospace; font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>popOut — clone-and-lift on real <code>builder-fields</code> snapshot</h1>
+  <div class="desc">
+    Mirrors the proven <code>runtime/pop-out.js</code> approach: clone the
+    target out of the iframe into the parent doc with all computed styles
+    inlined, then 2.5D lift with perspective + scale + multi-layer shadow.
+    No dimmer — the lift is the emphasis. Source:
+    <a href="../_shared/motion-primitives.js"><code>motion-primitives.js</code></a>
+    <code>popOut</code> · <a href="index.html">← QC index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <iframe id="snap" src="/snapshots/builder-fields/index.html" loading="eager"></iframe>
+    <div class="phase-label" id="phaseLabel">phase: loading snapshot…</div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playSeqBtn" disabled>▶ play sequence</button>
+  <button class="target" data-sel=".wpforms-field.wpforms-field-name" disabled>pop Name field</button>
+  <button class="target" data-sel=".wpforms-field.wpforms-field-email" disabled>pop Email field</button>
+  <button class="target" data-sel=".wpforms-field.wpforms-field-textarea" disabled>pop Paragraph field</button>
+  <button class="target" data-sel=".wpforms-field.wpforms-field-repeater" disabled>pop Repeater field</button>
+  <span class="status" id="statusLabel">waiting for iframe…</span>
+</div>
+
+<script type="module">
+import { popOut } from '/videos/_shared/motion-primitives.js';
+
+function fitStage() {
+  const stage = document.getElementById('stage');
+  const availW = window.innerWidth;
+  const availH = Math.max(200, window.innerHeight - 70 - 96);
+  const sx = availW / 1280;
+  const sy = availH / 720;
+  const scale = Math.min(sx, sy) * 0.96;
+  stage.style.transform = `scale(${Math.max(scale, 0.1)})`;
+}
+fitStage();
+window.addEventListener('resize', fitStage);
+
+const iframe = document.getElementById('snap');
+const phaseLabel = document.getElementById('phaseLabel');
+const playSeqBtn = document.getElementById('playSeqBtn');
+const statusLabel = document.getElementById('statusLabel');
+
+let busy = false;
+const FIELDS = [
+  { sel: '.wpforms-field.wpforms-field-name',     caption: 'Field 1 — Name' },
+  { sel: '.wpforms-field.wpforms-field-email',    caption: 'Field 2 — Email' },
+  { sel: '.wpforms-field.wpforms-field-textarea', caption: 'Field 3 — Comment / Message' },
+  { sel: '.wpforms-field.wpforms-field-repeater', caption: 'Field 4 — Repeater' },
+];
+
+async function runPop(sel, caption) {
+  if (busy) return;
+  busy = true;
+  statusLabel.textContent = `popping ${sel}…`;
+  phaseLabel.textContent = `phase: popping — ${caption}`;
+  try {
+    await popOut(iframe, sel, {
+      lift: 1.08,
+      holdMs: 1200,
+      caption,
+    });
+    phaseLabel.textContent = `phase: complete — ${caption}`;
+    statusLabel.textContent = 'done';
+  } catch (e) {
+    phaseLabel.textContent = `phase: ERROR — ${e.message}`;
+    statusLabel.textContent = String(e.message).slice(0, 60);
+  }
+  busy = false;
+}
+
+function bindControls() {
+  document.querySelectorAll('button.target').forEach(btn => {
+    btn.disabled = false;
+    const sel = btn.dataset.sel;
+    const meta = FIELDS.find(f => f.sel === sel);
+    btn.addEventListener('click', () => runPop(sel, meta?.caption || sel));
+  });
+  playSeqBtn.disabled = false;
+}
+
+playSeqBtn.addEventListener('click', async () => {
+  for (const f of FIELDS) {
+    await runPop(f.sel, f.caption);
+    await new Promise(r => setTimeout(r, 250));
+  }
+  phaseLabel.textContent = `phase: complete · all ${FIELDS.length} popped`;
+});
+
+async function onIframeReady() {
+  const doc = iframe.contentDocument;
+  if (!doc) { statusLabel.textContent = 'iframe blocked'; return; }
+  const found = FIELDS.filter(f => !!doc.querySelector(f.sel));
+  if (found.length === 0) {
+    statusLabel.textContent = 'no fields found in snapshot';
+    phaseLabel.textContent = 'phase: error — no targets';
+    return;
+  }
+  statusLabel.textContent = `ready · ${found.length} field types found`;
+  phaseLabel.textContent = 'phase: ready · click a button or play sequence';
+  bindControls();
+  setTimeout(() => playSeqBtn.click(), 500);
+}
+
+const ready = new Promise(resolve => {
+  if (iframe.contentDocument?.readyState === 'complete') resolve();
+  else iframe.addEventListener('load', resolve, { once: true });
+});
+const timeout = new Promise(resolve => setTimeout(resolve, 3000));
+Promise.race([ready, timeout]).then(onIframeReady);
+</script>
+</body>
+</html>
