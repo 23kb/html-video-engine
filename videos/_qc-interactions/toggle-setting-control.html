@@ -8,10 +8,17 @@
 <body>
 <div class="header">
   <h1>toggleSettingControl()</h1>
-  <div class="desc">Expands Advanced, then flips a generic WPForms toggle control. Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> - <a href="index.html">back to index</a></div>
+  <div class="desc">Expands Advanced, then flips the selected generic WPForms toggle control. Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> - <a href="index.html">back to index</a></div>
 </div>
 <div class="stage-wrap"><div class="stage" id="stage"><div class="phase-label" id="phaseLabel">state: loading...</div></div></div>
-<div class="controls"><button id="runBtn" class="primary">run toggle</button><button id="resetBtn">reset</button><span class="time" id="timeLabel">...</span></div>
+<div class="controls">
+  <label style="font-size:12px; opacity:0.7; font-family:ui-monospace,monospace">toggle:</label>
+  <select id="togglePicker">
+    <option value="#wpforms-panel-field-notifications-2-file_upload_attachment_enable-wrap">Enable File Upload Attachments</option>
+    <option value="#wpforms-panel-field-notifications-2-entry_csv_attachment_enable-wrap">Enable Entry CSV Attachment</option>
+  </select>
+  <button id="runBtn" class="primary">run toggle</button><button id="resetBtn">reset</button><span class="time" id="timeLabel">...</span>
+</div>
 <script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
 <script type="module">
 import { bootQc } from '/videos/_qc-interactions/_shell.js';
@@ -20,8 +27,9 @@ bootQc({
   run: async ({ interactions, setState }) => {
     setState('expanding Advanced');
     await interactions.expandSettingsSection('.wpforms-builder-notifications-advanced');
-    setState('toggling file upload attachments');
-    await interactions.toggleSettingControl('#wpforms-panel-field-notifications-1-file_upload_attachment_enable-wrap', true);
+    const target = document.getElementById('togglePicker').value;
+    setState('toggling selected control');
+    await interactions.toggleSettingControl(target, true);
   },
 });
 </script>

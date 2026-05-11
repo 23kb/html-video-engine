@@ -18,8 +18,8 @@ import { bootQc } from '/videos/_qc-interactions/_shell.js';
 bootQc({
   startSnapshot: 'builder-settings-notifications',
   run: async ({ interactions, setState }) => {
-    setState('collapsing notification 1');
-    await interactions.collapseNotificationBlock('[data-block-type="notification"][data-block-id="1"]');
+    setState('collapsing notification 2');
+    await interactions.collapseNotificationBlock('[data-block-type="notification"][data-block-id="2"]');
   },
 });
 </script>

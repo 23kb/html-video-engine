@@ -8,18 +8,38 @@
 <body>
 <div class="header">
   <h1>setNotificationSendTo()</h1>
-  <div class="desc">Uses the smart-tag picker to set Send To Email Address to the Email field. Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> - <a href="index.html">back to index</a></div>
+  <div class="desc">Uses the smart-tag picker to set Send To Email Address to the field selected below. Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> - <a href="index.html">back to index</a></div>
 </div>
 <div class="stage-wrap"><div class="stage" id="stage"><div class="phase-label" id="phaseLabel">state: loading...</div></div></div>
-<div class="controls"><button id="runBtn" class="primary">run send-to</button><button id="resetBtn">reset</button><span class="time" id="timeLabel">...</span></div>
+<div class="controls">
+  <label style="font-size:12px; opacity:0.7; font-family:ui-monospace,monospace">field:</label>
+  <select id="tagPicker"></select>
+  <button id="runBtn" class="primary">run send-to</button><button id="resetBtn">reset</button><span class="time" id="timeLabel">...</span>
+</div>
 <script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
 <script type="module">
 import { bootQc } from '/videos/_qc-interactions/_shell.js';
 bootQc({
   startSnapshot: 'builder-settings-notifications',
+  onReady: async ({ interactions }) => {
+    const picker = document.getElementById('tagPicker');
+    const options = interactions.getSmartTagOptions('#wpforms-panel-field-notifications-2-email-wrap');
+    picker.innerHTML = '';
+    for (const opt of options) {
+      const option = document.createElement('option');
+      option.value = opt.value;
+      option.dataset.type = opt.type;
+      option.textContent = opt.label;
+      picker.appendChild(option);
+    }
+  },
   run: async ({ interactions, setState }) => {
-    setState('inserting Email smart tag');
-    await interactions.setNotificationSendTo('[data-block-type="notification"][data-block-id="2"]', { type: 'field', tag: 'Email' });
+    const pick = document.getElementById('tagPicker').selectedOptions[0];
+    setState(`inserting ${pick.textContent.trim()} smart tag`);
+    await interactions.setNotificationSendTo('[data-block-type="notification"][data-block-id="2"]', {
+      type: pick.dataset.type,
+      tag: pick.value,
+    });
   },
 });
 </script>

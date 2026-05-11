@@ -8,18 +8,82 @@
 <body>
 <div class="header">
   <h1>insertSmartTag()</h1>
-  <div class="desc">Opens a smart-tag picker, clicks a tag, inserts the chip, and closes the picker. Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> - <a href="index.html">back to index</a></div>
+  <div class="desc">Choose any smart-tag-enabled field in the Notifications area, or a field Default Value option, then choose the tag to insert. Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> - <a href="index.html">back to index</a></div>
 </div>
 <div class="stage-wrap"><div class="stage" id="stage"><div class="phase-label" id="phaseLabel">state: loading...</div></div></div>
-<div class="controls"><button id="runBtn" class="primary">run smart tag</button><button id="resetBtn">reset</button><span class="time" id="timeLabel">...</span></div>
+<div class="controls">
+  <label style="font-size:12px; opacity:0.7; font-family:ui-monospace,monospace">target:</label>
+  <select id="targetPicker">
+    <option value="#wpforms-panel-field-notifications-1-email-wrap">Notification 1 Send To Email</option>
+    <option value="#wpforms-panel-field-notifications-1-subject-wrap">Notification 1 Subject</option>
+    <option value="#wpforms-panel-field-notifications-1-message-wrap">Notification 1 Message</option>
+    <option value="field-default-name">Name field Default Value</option>
+    <option value="field-default-email">Email field Default Value</option>
+  </select>
+  <label style="font-size:12px; opacity:0.7; font-family:ui-monospace,monospace">tag:</label>
+  <select id="tagPicker"></select>
+  <button id="runBtn" class="primary">run smart tag</button><button id="resetBtn">reset</button><span class="time" id="timeLabel">...</span>
+</div>
 <script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
 <script type="module">
 import { bootQc } from '/videos/_qc-interactions/_shell.js';
+const defaultValueSmartTags = [
+  { value: 'admin_email', type: 'other', label: 'Site Administrator Email' },
+  { value: 'user_email', type: 'other', label: "Logged-in User's Email" },
+  { value: 'form_name', type: 'other', label: 'Form Name' },
+  { value: 'form_id', type: 'other', label: 'Form ID' },
+];
+
+function setPickerOptions(options) {
+  const picker = document.getElementById('tagPicker');
+  picker.innerHTML = '';
+  for (const opt of options) {
+    const option = document.createElement('option');
+    option.value = opt.value;
+    option.dataset.type = opt.type;
+    option.textContent = opt.label;
+    picker.appendChild(option);
+  }
+}
+
+function refreshTags(interactions) {
+  const target = document.getElementById('targetPicker').value;
+  if (target.startsWith('field-default-')) {
+    setPickerOptions(defaultValueSmartTags);
+    return;
+  }
+  setPickerOptions(interactions.getSmartTagOptions(target));
+}
+
 bootQc({
   startSnapshot: 'builder-settings-notifications',
+  onReady: async ({ interactions }) => {
+    refreshTags(interactions);
+    document.getElementById('targetPicker').onchange = () => refreshTags(interactions);
+  },
   run: async ({ interactions, setState }) => {
-    setState('insertSmartTag Email');
-    await interactions.insertSmartTag('#wpforms-panel-field-notifications-1-email-wrap', { type: 'field', tag: 'Email', direction: 'up' });
+    let target = document.getElementById('targetPicker').value;
+    const pick = document.getElementById('tagPicker').selectedOptions[0];
+    if (target === 'field-default-name' || target === 'field-default-email') {
+      setState('switching to field options default value');
+      await interactions.iframe.swap('builder-fields');
+      interactions.applyFormProfile('demo-5');
+      const fieldId = target === 'field-default-name' ? 48 : 49;
+      await interactions.openFieldOptions(fieldId);
+      target = fieldId === 48 ? '#wpforms-field-option-row-48-simple' : '#wpforms-field-option-row-49-default_value';
+      const row = interactions.iframe.query(target);
+      if (row) {
+        const win = interactions.iframe.doc().defaultView;
+        let node = row;
+        while (node && node !== interactions.iframe.doc().body) {
+          if (node.style && win.getComputedStyle(node).display === 'none') node.style.display = 'block';
+          node = node.parentElement;
+        }
+        interactions.iframe.scrollIntoView(row, { block: 'center', behavior: 'instant' });
+      }
+    }
+    setState(`insert ${pick.textContent.trim()}`);
+    await interactions.insertSmartTag(target, { type: pick.dataset.type, tag: pick.value, direction: 'up' });
   },
 });
 </script>

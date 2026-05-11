@@ -8,10 +8,25 @@
 <body>
 <div class="header">
   <h1>addConditionalLogicRule()</h1>
-  <div class="desc">Enables conditional logic and fills Field, Operator, and Value. Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> - <a href="index.html">back to index</a></div>
+  <div class="desc">Enables conditional logic, opens the real dropdowns, and fills Field, Operator, and Value. Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> - <a href="index.html">back to index</a></div>
 </div>
 <div class="stage-wrap"><div class="stage" id="stage"><div class="phase-label" id="phaseLabel">state: loading...</div></div></div>
-<div class="controls"><button id="runBtn" class="primary">run rule</button><button id="resetBtn">reset</button><span class="time" id="timeLabel">...</span></div>
+<div class="controls">
+  <label style="font-size:12px; opacity:0.7; font-family:ui-monospace,monospace">field:</label>
+  <select id="fieldPicker">
+    <option value="Message">Message</option>
+    <option value="Email">Email</option>
+  </select>
+  <label style="font-size:12px; opacity:0.7; font-family:ui-monospace,monospace">operator:</label>
+  <select id="operatorPicker">
+    <option value="contains">contains</option>
+    <option value="is">is</option>
+    <option value="is not">is not</option>
+    <option value="empty">empty</option>
+    <option value="not empty">not empty</option>
+  </select>
+  <button id="runBtn" class="primary">run rule</button><button id="resetBtn">reset</button><span class="time" id="timeLabel">...</span>
+</div>
 <script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
 <script type="module">
 import { bootQc } from '/videos/_qc-interactions/_shell.js';
@@ -25,10 +40,14 @@ bootQc({
     if (ruleBox) ruleBox.style.display = 'none';
     if (root) root.classList.remove('wpforms-toggle-control-checked');
     if (checkbox) checkbox.checked = false;
+    const wrap = doc.querySelector('#wpforms-panel-field-notifications-1-conditional_logic-wrap');
+    if (wrap) interactions.iframe.scrollIntoView(wrap, { block: 'center', behavior: 'instant' });
   },
   run: async ({ interactions, setState }) => {
+    const field = document.getElementById('fieldPicker').value;
+    const operator = document.getElementById('operatorPicker').value;
     setState('adding conditional logic rule');
-    await interactions.addConditionalLogicRule({ rule: { field: 'Message', operator: 'contains', value: 'Urgent' } });
+    await interactions.addConditionalLogicRule({ rule: { field, operator, value: 'Urgent' } });
   },
 });
 </script>

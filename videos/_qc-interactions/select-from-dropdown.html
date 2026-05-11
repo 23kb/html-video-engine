@@ -8,19 +8,31 @@
 <body>
 <div class="header">
   <h1>selectFromDropdown()</h1>
-  <div class="desc">Uses the generic faux-dropdown overlay on the Email Template select. Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> - <a href="index.html">back to index</a></div>
+  <div class="desc">Uses the generic faux-dropdown overlay on the Email Template select. Pick the template below. Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> - <a href="index.html">back to index</a></div>
 </div>
 <div class="stage-wrap"><div class="stage" id="stage"><div class="phase-label" id="phaseLabel">state: loading...</div></div></div>
-<div class="controls"><button id="runBtn" class="primary">run dropdown</button><button id="resetBtn">reset</button><span class="time" id="timeLabel">...</span></div>
+<div class="controls">
+  <label style="font-size:12px; opacity:0.7; font-family:ui-monospace,monospace">template:</label>
+  <select id="templatePicker">
+    <option value="classic">Classic</option>
+    <option value="compact">Compact</option>
+    <option value="modern" selected>Modern</option>
+    <option value="elegant">Elegant</option>
+    <option value="tech">Tech</option>
+    <option value="none">Plain Text</option>
+  </select>
+  <button id="runBtn" class="primary">run dropdown</button><button id="resetBtn">reset</button><span class="time" id="timeLabel">...</span>
+</div>
 <script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
 <script type="module">
 import { bootQc } from '/videos/_qc-interactions/_shell.js';
 bootQc({
   startSnapshot: 'builder-settings-notifications',
   run: async ({ interactions, setState }) => {
-    setState('selecting Modern email template');
+    const value = document.getElementById('templatePicker').value;
+    setState(`selecting ${value} email template`);
     await interactions.expandSettingsSection('.wpforms-builder-notifications-advanced');
-    await interactions.selectFromDropdown('#wpforms-panel-field-notifications-1-template-wrap', 'modern');
+    await interactions.selectFromDropdown('#wpforms-panel-field-notifications-2-template-wrap', value);
   },
 });
 </script>

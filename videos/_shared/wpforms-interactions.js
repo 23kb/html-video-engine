@@ -454,6 +454,72 @@ export class IframeManager {
   }
 
   /**
+   * Smoothly scroll an iframe-document element into view with a fixed GSAP
+   * tween. Use this for camera/framing beats where the scroll itself is part
+   * of the visual motion; cursor interactions keep the instant helper above.
+   * @param {string|Element} target
+   * @param {ScrollIntoViewOptions & {duration?:number,ease?:string}} [opts]
+   * @returns {Promise<Element|undefined>}
+   */
+  smoothScrollIntoView(target, opts = {}) {
+    const el = typeof target === 'string' ? this.query(target) : target;
+    if (!el) return Promise.resolve();
+    const {
+      block = 'center',
+      inline = 'center',
+      duration = 0.62,
+      ease = 'power2.out',
+    } = opts;
+    const doc = el.ownerDocument;
+    const win = doc.defaultView;
+    const root = doc.scrollingElement || doc.documentElement;
+    const body = doc.body || root;
+    if (!win || !root) return Promise.resolve(el);
+
+    const rect = el.getBoundingClientRect();
+    const viewportW = win.innerWidth || this.iframeSize.width;
+    const viewportH = win.innerHeight || this.iframeSize.height;
+    const startX = win.scrollX || root.scrollLeft || body.scrollLeft || 0;
+    const startY = win.scrollY || root.scrollTop || body.scrollTop || 0;
+    const maxX = Math.max(0, root.scrollWidth - viewportW);
+    const maxY = Math.max(0, root.scrollHeight - viewportH);
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+    const axisTarget = (start, leading, size, viewport, align) => {
+      if (align === 'start') return start + leading;
+      if (align === 'end') return start + leading + size - viewport;
+      if (align === 'nearest') {
+        if (leading >= 0 && leading + size <= viewport) return start;
+        if (leading < 0) return start + leading;
+        return start + leading + size - viewport;
+      }
+      return start + leading + size / 2 - viewport / 2;
+    };
+    const targetX = clamp(axisTarget(startX, rect.left, rect.width, viewportW, inline), 0, maxX);
+    const targetY = clamp(axisTarget(startY, rect.top, rect.height, viewportH, block), 0, maxY);
+
+    if (this._scrollTween) this._scrollTween.kill();
+    if (typeof gsap === 'undefined' || duration <= 0) {
+      win.scrollTo(targetX, targetY);
+      return Promise.resolve(el);
+    }
+
+    const pos = { x: startX, y: startY };
+    return new Promise(resolve => {
+      this._scrollTween = gsap.to(pos, {
+        x: targetX,
+        y: targetY,
+        duration,
+        ease,
+        onUpdate: () => win.scrollTo(pos.x, pos.y),
+        onComplete: () => {
+          this._scrollTween = null;
+          resolve(el);
+        },
+      });
+    });
+  }
+
+  /**
    * Wait n seconds. Uses setTimeout (same as motion-primitives.js#wait) so
    * the timer fires even when gsap's rAF is throttled by a backgrounded
    * preview browser. Determinism-safe: setTimeout takes a fixed-ms duration,
@@ -575,7 +641,8 @@ export class WPFormsInteractions {
   }
 
   async _glideAndClick(selector, opts = {}) {
-    const el = typeof selector === 'string' ? this._findOrThrow(selector, 'glideAndClick') : selector;
+    let el = typeof selector === 'string' ? this._findOrThrow(selector, 'glideAndClick') : selector;
+    el = this._visibleTarget(el);
     // skipScroll: bail on the second scrollIntoView. Useful after a hover
     // reveal that's already aligned the target — re-scrolling would shift
     // the click point out from under the cursor, which is exactly the bug
@@ -587,6 +654,21 @@ export class WPFormsInteractions {
     const pt = this.iframe.elementToStageCoords(el);
     await this.cursor.glide(pt, { duration: opts.glideDuration ?? 0.95 });
     await this.cursor.click({ ripple: opts.ripple ?? true });
+  }
+
+  _visibleTarget(el) {
+    const rect = el.getBoundingClientRect();
+    if (rect.width > 2 && rect.height > 2) return el;
+    return el.querySelector?.([
+      '.wpforms-smart-tags-widget',
+      '.wpforms-smart-tags-widget-input',
+      '.wpforms-smart-tags-widget-textarea',
+      '.wpforms-toggle-control-icon',
+      'select',
+      'button',
+      'input:not([type="hidden"])',
+      'textarea',
+    ].join(',')) || el;
   }
 
   async _typeIntoIframeInput(input, text, opts = {}) {
@@ -605,12 +687,41 @@ export class WPFormsInteractions {
     input.dispatchEvent(new win.Event('change', { bubbles: true }));
   }
 
+  async _typeIntoSmartTagWidget(wrap, text, opts = {}) {
+    const { charDuration = 0.04, clear = true } = opts;
+    const host = wrap.querySelector('.wpforms-smart-tags-widget-input, .wpforms-smart-tags-widget-textarea');
+    const original = wrap.querySelector('.wpforms-smart-tags-widget-original, input, textarea');
+    if (!host) throw new Error('_typeIntoSmartTagWidget: visible smart-tag widget not found');
+    await this._glideAndClick(host, { ripple: false });
+    const win = host.ownerDocument.defaultView;
+    if (clear) {
+      host.textContent = '';
+      if (original) {
+        original.value = '';
+        original.dispatchEvent(new win.Event('input', { bubbles: true }));
+      }
+      host.dispatchEvent(new win.Event('input', { bubbles: true }));
+      await this.iframe.wait(0.12);
+    }
+    for (let i = 1; i <= String(text).length; i++) {
+      const slice = String(text).slice(0, i);
+      host.textContent = slice;
+      if (original) {
+        original.value = slice;
+        original.dispatchEvent(new win.Event('input', { bubbles: true }));
+      }
+      host.dispatchEvent(new win.Event('input', { bubbles: true }));
+      await this.iframe.wait(charDuration);
+    }
+    if (original) original.dispatchEvent(new win.Event('change', { bubbles: true }));
+  }
+
   _resolveSmartTagWrap(target, methodName) {
     const el = typeof target === 'string' ? this._findOrThrow(target, methodName) : target;
-    const wrap = el.matches?.('.wpforms-panel-field')
+    const wrap = el.matches?.('.wpforms-panel-field, .wpforms-field-option-row')
       ? el
-      : el.closest?.('.wpforms-panel-field');
-    if (!wrap) throw new Error(`${methodName}: target is not inside a .wpforms-panel-field`);
+      : el.closest?.('.wpforms-panel-field, .wpforms-field-option-row');
+    if (!wrap) throw new Error(`${methodName}: target is not inside a smart-tag field wrapper`);
     return wrap;
   }
 
@@ -624,14 +735,38 @@ export class WPFormsInteractions {
     const wantedTag = query.tag ?? query.value;
     const wantedLabel = query.label ?? query.tag;
     const items = Array.from(dropdown.querySelectorAll('ul.list li'));
-    for (const li of items) {
-      const span = li.querySelector('.wpforms-smart-tags-widget-item');
-      if (!span) continue;
-      if (query.type && span.dataset.type !== query.type) continue;
-      if (wantedTag !== undefined && String(li.dataset.value) === String(wantedTag)) return span;
-      if (wantedLabel && span.textContent.trim().toLowerCase().includes(String(wantedLabel).toLowerCase())) return span;
-    }
-    return null;
+    const find = (respectType) => {
+      for (const li of items) {
+        const span = li.querySelector('.wpforms-smart-tags-widget-item');
+        if (!span) continue;
+        if (respectType && query.type && span.dataset.type !== query.type) continue;
+        if (wantedTag !== undefined && String(li.dataset.value) === String(wantedTag)) return span;
+        if (wantedLabel && span.textContent.trim().toLowerCase().includes(String(wantedLabel).toLowerCase())) return span;
+      }
+      return null;
+    };
+    return find(true) || find(false);
+  }
+
+  _smartTagOptionsForField(fieldSel) {
+    const wrap = this._resolveSmartTagWrap(fieldSel, '_smartTagOptionsForField');
+    const dropdown = wrap.querySelector('.insert-smart-tag-dropdown');
+    if (!dropdown) return [];
+    return Array.from(dropdown.querySelectorAll('ul.list li'))
+      .map(li => {
+        const span = li.querySelector('.wpforms-smart-tags-widget-item');
+        if (!span) return null;
+        return {
+          value: li.dataset.value,
+          label: span.textContent.trim(),
+          type: span.dataset.type || '',
+        };
+      })
+      .filter(Boolean);
+  }
+
+  getSmartTagOptions(fieldSel) {
+    return this._smartTagOptionsForField(fieldSel);
   }
 
   _chipDataValue(item) {
@@ -658,17 +793,47 @@ export class WPFormsInteractions {
   }
 
   async _slideBlockIn(block, fade = 0.72) {
-    gsap.set(block, { opacity: 0, y: -14, scale: 0.97, transformOrigin: 'top center' });
+    const naturalHeight = block.getBoundingClientRect().height || block.scrollHeight || 280;
+    gsap.set(block, {
+      opacity: 0,
+      y: -18,
+      scale: 0.96,
+      maxHeight: 0,
+      overflow: 'hidden',
+      transformOrigin: 'top center',
+      filter: 'blur(2px)',
+    });
     await new Promise(resolve => {
       gsap.to(block, {
         opacity: 1,
         y: 0,
         scale: 1,
+        maxHeight: naturalHeight,
+        filter: 'blur(0px)',
         duration: fade,
         ease: 'power3.out',
-        onComplete: resolve,
+        onComplete: () => {
+          gsap.set(block, { clearProps: 'maxHeight,overflow,filter,transform' });
+          resolve();
+        },
       });
     });
+  }
+
+  async _selectElementFromDropdown(select, value, opts = {}) {
+    const options = Array.from(select.options).map(o => ({ value: o.value, label: o.textContent.trim() }));
+    const target = options.find(o => o.value === value)
+      || options.find(o => o.label.toLowerCase() === String(value).toLowerCase());
+    if (!target) throw new Error(`_selectElementFromDropdown: option not found: ${value}`);
+    await this._glideAndClick(select, { ripple: false, glideDuration: opts.glideDuration ?? 0.62 });
+    const panel = await this._openFakeDropdown(select, options, select.value, opts);
+    const row = panel.querySelector(`[data-value="${cssEscape(target.value)}"]`);
+    await this._glideAndClick(row, { ripple: false, skipScroll: true, glideDuration: 0.56 });
+    row.style.background = '#036aab';
+    row.style.color = '#fff';
+    select.value = target.value;
+    select.dispatchEvent(new select.ownerDocument.defaultView.Event('change', { bubbles: true }));
+    await this._closeFakeDropdown(panel);
   }
 
   async _openModalPrompt(opts = {}) {
@@ -1446,17 +1611,17 @@ export class WPFormsInteractions {
    * @param {string} [activeValue] — value to render as already-active
    * @returns {Promise<HTMLElement>} the mounted panel element
    */
-  async _openFakeDropdown(selectEl, options, activeValue) {
+  async _openFakeDropdown(selectEl, options, activeValue, opts = {}) {
     const doc = this.iframe.doc();
     const panel = doc.createElement('div');
     panel.className = 'ifm-fake-dropdown';
     Object.assign(panel.style, {
-      position: 'absolute',
+      position: 'fixed',
       background: '#fff',
       border: '1px solid #d4d6dd',
       borderRadius: '6px',
       boxShadow: '0 8px 24px rgba(0,0,0,0.18)',
-      zIndex: '9999',
+      zIndex: '2147483647',
       overflow: 'hidden',
       opacity: '0',
       transform: 'translateY(-6px)',
@@ -1483,10 +1648,16 @@ export class WPFormsInteractions {
     });
     doc.body.appendChild(panel);
     const r = selectEl.getBoundingClientRect();
+    const viewportH = doc.defaultView.innerHeight || this.iframeSize.height;
+    const rowH = 34;
+    const menuH = Math.min(options.length * rowH, opts.maxHeight ?? 280);
+    const shouldOpenUp = opts.direction === 'up' || (opts.direction !== 'down' && r.bottom + menuH + 8 > viewportH);
     Object.assign(panel.style, {
-      left: (r.left + selectEl.ownerDocument.defaultView.scrollX) + 'px',
-      top: (r.bottom + selectEl.ownerDocument.defaultView.scrollY + 4) + 'px',
+      left: r.left + 'px',
+      top: (shouldOpenUp ? Math.max(8, r.top - menuH - 4) : r.bottom + 4) + 'px',
       minWidth: r.width + 'px',
+      maxHeight: menuH + 'px',
+      overflowY: options.length * rowH > menuH ? 'auto' : 'hidden',
     });
     // Flush + reveal
     void panel.offsetWidth;
@@ -1585,7 +1756,8 @@ export class WPFormsInteractions {
     this._updateBlockName(copy, blockName);
     const content = copy.querySelector('.wpforms-builder-settings-block-content');
     if (content) content.style.display = '';
-    template.parentNode.insertBefore(copy, template);
+    const firstBlock = template.parentNode.querySelector('.wpforms-notification.wpforms-builder-settings-block');
+    template.parentNode.insertBefore(copy, firstBlock || template);
     await this._slideBlockIn(copy);
     return `[data-block-type="notification"][data-block-id="${newId}"]`;
   }
@@ -1667,10 +1839,9 @@ export class WPFormsInteractions {
   async setNotificationSubject(blockSel, text) {
     this._assertSnapshot('builder-settings-notifications', 'setNotificationSubject');
     const block = this._findOrThrow(blockSel, 'setNotificationSubject');
-    const input = block.querySelector('input[id$="-subject"]');
-    if (!input) throw new Error(`setNotificationSubject: subject input not found in ${blockSel}`);
-    await this._glideAndClick(input, { ripple: false });
-    await this._typeIntoIframeInput(input, text, { charDuration: 0.04, clear: true });
+    const wrap = block.querySelector('[id$="-subject-wrap"]');
+    if (!wrap) throw new Error(`setNotificationSubject: subject wrap not found in ${blockSel}`);
+    await this._typeIntoSmartTagWidget(wrap, text, { charDuration: 0.04, clear: true });
   }
 
   /**
@@ -1691,10 +1862,9 @@ export class WPFormsInteractions {
   async setNotificationMessage(blockSel, text) {
     this._assertSnapshot('builder-settings-notifications', 'setNotificationMessage');
     const block = this._findOrThrow(blockSel, 'setNotificationMessage');
-    const input = block.querySelector('textarea[id$="-message"]');
-    if (!input) throw new Error(`setNotificationMessage: message textarea not found in ${blockSel}`);
-    await this._glideAndClick(input, { ripple: false });
-    await this._typeIntoIframeInput(input, text, { charDuration: 0.035, clear: true });
+    const wrap = block.querySelector('[id$="-message-wrap"]');
+    if (!wrap) throw new Error(`setNotificationMessage: message wrap not found in ${blockSel}`);
+    await this._typeIntoSmartTagWidget(wrap, text, { charDuration: 0.035, clear: true });
   }
 
   /**
@@ -1713,7 +1883,7 @@ export class WPFormsInteractions {
    * @returns {Promise<HTMLElement>} the opened dropdown element
    */
   async openSmartTagPicker(fieldSel, opts = {}) {
-    this._assertSnapshot('builder-settings-notifications', 'openSmartTagPicker');
+    this._assertSnapshotOneOf(['builder-settings-notifications', 'builder-fields'], 'openSmartTagPicker');
     const wrap = this._resolveSmartTagWrap(fieldSel, 'openSmartTagPicker');
     const icon = wrap.querySelector('.wpforms-show-smart-tags');
     const dropdown = wrap.querySelector('.insert-smart-tag-dropdown');
@@ -1744,7 +1914,7 @@ export class WPFormsInteractions {
    * @returns {Promise<void>}
    */
   async closeSmartTagPicker() {
-    this._assertSnapshot('builder-settings-notifications', 'closeSmartTagPicker');
+    this._assertSnapshotOneOf(['builder-settings-notifications', 'builder-fields'], 'closeSmartTagPicker');
     for (const dropdown of this.iframe.queryAll('.insert-smart-tag-dropdown:not(.closed)')) {
       dropdown.classList.add('closed');
     }
@@ -1768,7 +1938,7 @@ export class WPFormsInteractions {
    * @returns {Promise<void>}
    */
   async insertSmartTag(fieldSel, opts = {}) {
-    this._assertSnapshot('builder-settings-notifications', 'insertSmartTag');
+    this._assertSnapshotOneOf(['builder-settings-notifications', 'builder-fields'], 'insertSmartTag');
     const { replaceChips = true } = opts;
     const wrap = this._resolveSmartTagWrap(fieldSel, 'insertSmartTag');
     const dropdown = await this.openSmartTagPicker(wrap, opts);
@@ -1819,19 +1989,7 @@ export class WPFormsInteractions {
     const wrap = this._findOrThrow(fieldWrapSel, 'selectFromDropdown');
     const select = wrap.querySelector('select');
     if (!select) throw new Error(`selectFromDropdown: no select inside ${fieldWrapSel}`);
-    const options = Array.from(select.options).map(o => ({ value: o.value, label: o.textContent.trim() }));
-    const target = options.find(o => o.value === value)
-      || options.find(o => o.label.toLowerCase() === String(value).toLowerCase());
-    if (!target) throw new Error(`selectFromDropdown: option not found: ${value}`);
-    await this._glideAndClick(select, { ripple: false });
-    const panel = await this._openFakeDropdown(select, options, select.value);
-    const row = panel.querySelector(`[data-value="${cssEscape(target.value)}"]`);
-    await this._glideAndClick(row, { ripple: false, skipScroll: true, glideDuration: 0.62 });
-    row.style.background = '#036aab';
-    row.style.color = '#fff';
-    select.value = target.value;
-    select.dispatchEvent(new select.ownerDocument.defaultView.Event('change', { bubbles: true }));
-    await this._closeFakeDropdown(panel);
+    await this._selectElementFromDropdown(select, value);
   }
 
   /**
@@ -1897,7 +2055,7 @@ export class WPFormsInteractions {
     copy.dataset.blockId = newId;
     copy.classList.remove('wpforms-builder-settings-block-default');
     this._updateBlockName(copy, name);
-    block.parentNode.insertBefore(copy, block.nextSibling);
+    block.parentNode.insertBefore(copy, block);
     await this._slideBlockIn(copy);
     return `[data-block-type="notification"][data-block-id="${newId}"]`;
   }
@@ -1957,12 +2115,29 @@ export class WPFormsInteractions {
     const button = block.querySelector('.wpforms-builder-settings-block-toggle');
     if (button) await this._glideAndClick(button, { ripple: false });
     const content = block.querySelector('.wpforms-builder-settings-block-content');
-    if (content) content.style.display = 'none';
+    if (content) {
+      await new Promise(resolve => {
+        gsap.to(content, {
+          opacity: 0,
+          height: 0,
+          duration: 0.28,
+          ease: 'sine.inOut',
+          onComplete: () => {
+            content.style.display = 'none';
+            content.style.height = '';
+            content.style.opacity = '';
+            resolve();
+          },
+        });
+      });
+    }
     const icon = block.querySelector('.wpforms-builder-settings-block-toggle i');
     if (icon) {
       icon.classList.remove('fa-chevron-circle-up');
       icon.classList.add('fa-chevron-circle-down');
     }
+    this.iframe.scrollIntoView(block, { block: 'center', behavior: 'instant' });
+    await this.iframe.wait(0.18);
   }
 
   /**
@@ -1981,15 +2156,20 @@ export class WPFormsInteractions {
    */
   async expandSettingsSection(groupSel) {
     this._assertSnapshot('builder-settings-notifications', 'expandSettingsSection');
-    const group = this._findOrThrow(groupSel, 'expandSettingsSection');
-    const title = group.querySelector('.wpforms-panel-fields-group-title') || group;
+    const groups = this.iframe.queryAll(groupSel);
+    if (!groups.length) throw new Error(`expandSettingsSection: selector not found in '${this.iframe.currentSlug()}': ${groupSel}`);
+    const title = groups[0].querySelector('.wpforms-panel-fields-group-title') || groups[0];
     await this._glideAndClick(title, { ripple: false });
-    group.classList.remove('unfoldable', 'closed', 'wpforms-hidden');
-    group.classList.add('opened');
-    const inners = Array.from(group.querySelectorAll('.wpforms-panel-fields-group-inner'));
-    for (const inner of inners) {
-      inner.style.display = 'block';
-      gsap.fromTo(inner, { opacity: 0, y: -4 }, { opacity: 1, y: 0, duration: 0.36, ease: 'sine.out' });
+    for (const group of groups) {
+      group.classList.remove('unfoldable', 'closed', 'wpforms-hidden');
+      group.classList.add('opened');
+      const groupTitle = group.querySelector('.wpforms-panel-fields-group-title');
+      if (groupTitle) groupTitle.style.marginBottom = '14px';
+      const inners = Array.from(group.querySelectorAll('.wpforms-panel-fields-group-inner'));
+      for (const inner of inners) {
+        inner.style.display = 'block';
+        gsap.fromTo(inner, { opacity: 0, y: -4 }, { opacity: 1, y: 0, duration: 0.36, ease: 'sine.out' });
+      }
     }
     await this.iframe.wait(0.42);
   }
@@ -2028,23 +2208,21 @@ export class WPFormsInteractions {
     const blockId = toggleWrapSel.match(/notifications-(\d+)-conditional_logic/)?.[1] || '1';
     const ruleBox = this._findOrThrow(`#wpforms-conditional-groups-settings-notifications-${cssEscape(blockId)}`, 'addConditionalLogicRule');
     ruleBox.style.display = '';
+    this.iframe.scrollIntoView(ruleBox, { block: 'center', behavior: 'instant' });
+    await this.iframe.wait(0.18);
     gsap.fromTo(ruleBox, { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.42, ease: 'sine.out' });
     await this.iframe.wait(0.48);
     const field = ruleBox.querySelector('.wpforms-conditional-field');
     const operator = ruleBox.querySelector('.wpforms-conditional-operator');
     const valueCell = ruleBox.querySelector('td.value');
     if (field) {
-      const opt = Array.from(field.options).find(o => o.textContent.trim() === rule.field || o.value === rule.field);
-      if (opt) field.value = opt.value;
-      field.dispatchEvent(new field.ownerDocument.defaultView.Event('change', { bubbles: true }));
+      await this._selectElementFromDropdown(field, rule.field, { maxHeight: 220 });
       gsap.fromTo(field, { opacity: 0.35 }, { opacity: 1, duration: 0.24 });
     }
     await this.iframe.wait(0.32);
     if (operator) {
       for (const opt of operator.options) opt.disabled = false;
-      const opt = Array.from(operator.options).find(o => o.textContent.trim() === rule.operator || o.value === rule.operator);
-      if (opt) operator.value = opt.value;
-      operator.dispatchEvent(new operator.ownerDocument.defaultView.Event('change', { bubbles: true }));
+      await this._selectElementFromDropdown(operator, rule.operator, { maxHeight: 240 });
       gsap.fromTo(operator, { opacity: 0.35 }, { opacity: 1, duration: 0.24 });
     }
     await this.iframe.wait(0.32);
