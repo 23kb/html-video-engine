@@ -83,9 +83,13 @@ await selectDropdown(sel.dropdownField, { pick: { type: 'option', label: 'Urgent
 
 ## Default Authoring Mode
 
-**New videos default to legacy/effect-mode authoring.** It preserves: custom topic-specific postIntro animation, chapter-local HTML/CSS/SVG editorial surfaces, precise effect choreography, `audio-cued waitAt(t)` timing, mid-effect snapshot swaps, per-beat narration flexibility.
+**NEW tutorial videos default to single-HTML authoring** — one `videos/<slug>/index.html` file with a master `gsap.timeline({ paused: true })` composing from `IframeManager` + `Cursor` + `WPFormsInteractions` + `videos/_shared/narration.js`. No engine, no manifest, no per-chapter `.js` modules. Reference pilots: `videos/make-field-required-single-html/`, `videos/klaviyo-quick-connect/`, `videos/wpforms-notifications-promise/`. See `docs/video-architecture-invariants-2026-05-12.md` for the 11 hard rules (INV-1 through INV-11) that govern single-HTML authoring.
 
-Descriptor chapters (`runtime/chapter-api.js defineChapter`) remain supported for closed-vocabulary beats only. **Never use descriptor mode to downgrade a custom postIntro, skip an effect, or replace a specific animation with a generic focus/title beat.** If descriptor is sufficient, document why. If not, use legacy/effect.
+**LEGACY 12-video set stays on engine path frozen.** The legacy/effect-mode authoring (`manifest.json` + `chapters/*.js` modules + `surface: 'iframe'`) is preserved for those existing videos. Do NOT migrate them. Engine + runtime stays load-bearing for legacy support.
+
+When working on a legacy video chapter, follow the legacy chapter shape below. When building a new tutorial video, follow the single-HTML pattern + the Intro → PostIntro → Tutorial → Outro shape (INV-11) and write inline DOM puppetry for one-off interactions (INV-7).
+
+Descriptor chapters (`runtime/chapter-api.js defineChapter`) remain supported in legacy videos for closed-vocabulary beats only. **Never use descriptor mode to downgrade a custom postIntro, skip an effect, or replace a specific animation with a generic focus/title beat.** If descriptor is sufficient, document why. If not, use legacy/effect.
 
 ## Legacy Chapter Shape
 

@@ -678,6 +678,17 @@ export class IframeManager {
     const el = typeof target === 'string' ? this.query(target) : target;
     if (!el) throw new Error(`IframeManager: target not found: ${target}`);
     const r = el.getBoundingClientRect(); // inside iframe, iframe-CSS pixels
+    // Empty rect (width===0 && height===0 && left===0 && top===0) means the
+    // element is in the DOM but has no layout — collapsed accordion section,
+    // display:none, or detached. Returning origin here makes the cursor jump
+    // to (0,0), which is the "cursor goes to top-left" footgun. Throw with a
+    // descriptive message so the caller knows which selector to scope.
+    if (r.width === 0 && r.height === 0 && r.left === 0 && r.top === 0) {
+      throw new Error(
+        `IframeManager.elementToStageCoords: element has empty layout rect (likely hidden / display:none / collapsed). ` +
+        `Selector: ${typeof target === 'string' ? target : el.tagName + (el.id ? '#' + el.id : '')}`
+      );
+    }
     const logical = this._logicalRect(r);
     return this.iframePointToStage(logical.left + logical.width / 2, logical.top + logical.height / 2);
   }

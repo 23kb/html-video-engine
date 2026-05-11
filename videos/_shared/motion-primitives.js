@@ -444,6 +444,14 @@ export class Cursor {
    */
   glide(to, opts = {}) {
     const { duration = 0.95, ease = 'power2.inOut', via = null } = opts;
+    // Defensive: reject invalid targets instead of jumping the cursor to (0,0).
+    // A null/undefined `to` or non-finite coords almost always means a caller
+    // queried an element that was hidden / off-layout, then passed its empty
+    // rect through. Silently no-op + warn so the rest of the video continues.
+    if (!to || !Number.isFinite(to.x) || !Number.isFinite(to.y)) {
+      console.warn('[Cursor.glide] no-op: invalid target', to);
+      return Promise.resolve();
+    }
     this._clearHoverTarget();
     gsap.killTweensOf(this.el, 'x,y,motionPath');
     this._pos = { x: to.x, y: to.y };

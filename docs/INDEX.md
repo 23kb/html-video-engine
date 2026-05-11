@@ -67,6 +67,14 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 
 - `skills.md` — Skill bundle index.
 
+## Single-HTML video architecture (NEW default for tutorial videos)
+
+- `video-architecture-invariants-2026-05-12.md` — **11 hard rules (INV-1 through INV-11) for single-HTML videos.** Stage at native + no transform, iframe at native + single direct camera transform, mac frame is outer chrome only, cursor stage-local, snapshot field IDs vary per capture, smoothScrollIntoView before glide, library as reference (3-test promotion), pointer-events: none guard, determinism, real brand, required Intro→PostIntro→Tutorial→Outro shape. Cross-references each invariant to the commit it was learned from. Read before any new single-HTML video work.
+- `pilot-videos-plan-2026-05-12.md` — Original plan for the 3 pilot videos (editorial / mixed / tutorial). Reference for snapshot inventory + storyboard structure.
+- `library-scope-frequency-2026-05-12.md` — Empirical audit of 20 WPForms.com docs frequency-ranking interactions. Wave 2 Batch A retrospective: ~6 of 15 methods earned library status by ≥3-doc threshold. Use to decide library promotion candidates.
+- `engine-redundancy-audit-2026-05-12.md` — Per-export classification of engine + runtime: REPLACED / REPLACEABLE / WPFORMS-PORTABLE / LOAD-BEARING / DEAD. Reference for any engine-slimming work.
+- `engine-vs-libraries-architecture-2026-05-12.md` — Revised verdict after Umair pushback: engine is transitional, libraries can subsume. ~6,000 LOC deletable if all production migrates to single-HTML. But existing 12 videos stay on engine — engine is load-bearing for legacy.
+
 ## System audits / postmortems / strategic context
 
 - `editorial-direction-audit-2026-05-10.md` — **Master synthesis + 7-phase plan after 3 failed editorial attempts.** Read this first if working on editorial-track.
@@ -112,5 +120,5 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 ## Code libraries (use, do not reinvent)
 
 - `videos/_shared/motion-primitives.js` — Executable motion primitives: `cinematicFlight`, `figjamFlight`, `focusStationOverview` (cameras); `Cursor` class with glide/click/hover/drag; `caretType`, `statusPillMorph`, `markerSweep`, `popOut`, `fieldStaggerReveal`, `mountSullieBug`, `cleanFastRejoin`, plus utilities. Owned by `wpforms-primitives` skill. QC at `videos/_qc-primitives/`.
-- `videos/_shared/wpforms-interactions.js` — Standard WPForms interactions (Wave 1): `navAddNewForm`, `selectTemplate`, `navWPFormsSidebarMenu`, `openFormInList`, `dragFieldToForm`, `openFieldOptions`, `navBuilderSidebar`, `openSettingsTab`, plus `IframeManager` and field-option sub-interactions. Owned by `wpforms-primitives` skill. QC at `videos/_qc-interactions/`.
+- `videos/_shared/wpforms-interactions.js` — Standard WPForms interactions. **Wave 1 (builder/admin):** `navAddNewForm`, `selectTemplate`, `navWPFormsSidebarMenu`, `openFormInList`, `dragFieldToForm`, `openFieldOptions`, `navBuilderSidebar`, `openSettingsTab` + sub-interactions. **Wave 2 Batch A (notifications + CL):** `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, `duplicateNotificationBlock`, notification setters (per `docs/library-scope-frequency-2026-05-12.md` retrospective ~6/15 earned status). **Plus `IframeManager`** with engine-pattern direct camera transform, OVERSAMPLE=1, pointer-events: none guard. Owned by `wpforms-primitives` skill. QC at `videos/_qc-interactions/`.
 - `docs/wpforms-interactions-library-2026-05-11.md` — Per-interaction usage doc (template button variants, hover-state inventory, sub-interaction notes).
