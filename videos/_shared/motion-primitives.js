@@ -290,6 +290,63 @@ export function focusStationOverview(camera, opts) {
   return tl;
 }
 
+/**
+ * Compute a center-origin camera pose that frames an iframe-doc element.
+ * Single-HTML tutorials use this as the measure-driven equivalent of the
+ * engine's `focusOn(sel, { fill })`: compute the pose, then pass it to
+ * `cinematicFlight(camera, { from, to })`.
+ *
+ * The returned pose assumes the camera wrapper is a 1280×720 stage element
+ * with `transform-origin: center center`, matching the QC camera pages.
+ *
+ * @param {Object} iframeManager — IframeManager from wpforms-interactions.js
+ * @param {string} selector — iframe-doc selector
+ * @param {Object} [opts]
+ * @param {number} [opts.fill=0.5] — fraction of viewport the padded target fills
+ * @param {number} [opts.pad=24] — stage px around the projected target
+ * @param {'center'|'top'|'bottom'|'left'|'right'} [opts.anchor='center']
+ * @returns {{x:number,y:number,scale:number}}
+ */
+export function cameraToElement(iframeManager, selector, opts = {}) {
+  const { fill = 0.5, pad = 24, anchor = 'center' } = opts;
+  const el = iframeManager.query(selector);
+  if (!el) throw new Error(`cameraToElement: selector not found: ${selector}`);
+  const rect = typeof iframeManager.elementToStageRect === 'function'
+    ? iframeManager.elementToStageRect(el)
+    : (() => {
+        const center = iframeManager.elementToStageCoords(el);
+        const r = el.getBoundingClientRect();
+        const s = iframeManager.scale || 1;
+        return { x: center.x - r.width * s / 2, y: center.y - r.height * s / 2, w: r.width * s, h: r.height * s };
+      })();
+  const viewport = typeof iframeManager.viewport === 'function'
+    ? iframeManager.viewport()
+    : { w: 1280, h: 720 };
+  const vw = viewport.w || viewport.width || 1280;
+  const vh = viewport.h || viewport.height || 720;
+  const paddedW = Math.max(1, rect.w + pad * 2);
+  const paddedH = Math.max(1, rect.h + pad * 2);
+  const scale = Math.min((vw * fill) / paddedW, (vh * fill) / paddedH);
+  const cx = rect.x + rect.w / 2;
+  const cy = rect.y + rect.h / 2;
+  const anchorPt = cameraAnchorPoint(vw, vh, anchor);
+  return {
+    x: anchorPt.x - (vw / 2 + (cx - vw / 2) * scale),
+    y: anchorPt.y - (vh / 2 + (cy - vh / 2) * scale),
+    scale,
+  };
+}
+
+function cameraAnchorPoint(w, h, anchor) {
+  const insetX = w * 0.35;
+  const insetY = h * 0.35;
+  if (anchor === 'top') return { x: w / 2, y: insetY };
+  if (anchor === 'bottom') return { x: w / 2, y: h - insetY };
+  if (anchor === 'left') return { x: insetX, y: h / 2 };
+  if (anchor === 'right') return { x: w - insetX, y: h / 2 };
+  return { x: w / 2, y: h / 2 };
+}
+
 // ─────────────────────────────────────────────────────────────────────────
 // CURSOR + INTERACTION PRIMITIVES
 // ─────────────────────────────────────────────────────────────────────────
