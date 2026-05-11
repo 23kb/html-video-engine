@@ -138,34 +138,47 @@ The library-side helper `findInIframeByText(iframeManager, text)` (in `videos/_s
 
 Learned during Klaviyo tutorial v4 + v11 builds (`videos/klaviyo-quick-connect/index.html`). The empty-rect throw at `elementToStageCoords` caught real bugs both times — once on `input[name="api_key"]` matching the hidden ConvertKit form (v2), once on `.js-wpforms-builder-provider-connection-add` matching 11 hidden buttons (v11). Source: Klaviyo session retro 2026-05-12.
 
-### INV-13 — Invoke skills, don't just read them
+### INV-13 — Skill tool invocation: required for GATES, not for REFERENCES
 
-**The Skill tool is the gate. Reading a skill's markdown file is NOT.** Skills can define pre/post hooks, enforce gates, and trigger specific tool flows that file-reads bypass entirely.
+Two kinds of "system files" in this repo. They need different consumption:
+
+| Type | Examples | Right way to consume |
+|---|---|---|
+| **Reference / Rules** | This invariants doc; `reference/wpforms-brand/BRAND.md`; `docs/library-scope-frequency-2026-05-12.md`; `docs/sound-design-reference-2026-05-12.md`; `.claude/skills/wpforms-primitives/SKILL.md` (lookup index); `.claude/skills/wpforms-gsap-rules/SKILL.md` (rules reference). | **Read inline. File-read is fine.** Codex reading the architecture-invariants doc directly was the doc working as designed — it's data, not process. |
+| **Gates / Process** | `.claude/skills/wpforms-motion-audit/SKILL.md` (tier-scoring procedure with a recorded artifact); `.claude/skills/wpforms-video/SKILL.md` HARD-GATE storyboard approval; `.claude/skills/wpforms-postintro/SKILL.md` multi-animation rule check. | **Invoke via the Skill tool.** Reading the rubric ≠ running the scorer. The procedure produces an artifact (tier rating, approval, gate-passed marker) that file-read cannot. |
+
+**The Skill tool is the gate for procedural skills. Reading a skill's markdown file is NOT** — it shows you the rubric but doesn't produce the artifact (tier, approval, gate-passed). For reference skills (lookup indices, rules reference), reading is the entire interaction; no invocation needed.
 
 The Klaviyo tutorial v11 (2026-05-12) shipped after 12 postIntro iterations WITHOUT ever invoking `wpforms-motion-audit`. Per the session's own retro: "going straight from CLAUDE.md → codex prompt → code was efficient but bypassed the skill system entirely." That bypass means we have no tier rating for the final postIntro. Skill gates were SOLVED PROBLEMS that got re-opened.
 
-Non-negotiable Skill tool invocations for tutorial / postIntro / cinematic / editorial work:
+Non-negotiable Skill tool invocations (these are PROCEDURAL — they produce artifacts beyond what reading gives you):
 
-- `wpforms-video` — session start, tutorial path
-- `wpforms-marketing` — session start, editorial path
-- `wpforms-postintro` — before designing any postIntro
-- `wpforms-gsap-rules` — before writing any timeline beat
-- `wpforms-primitives` — before building any new helper (check existing first)
-- `wpforms-motion-audit` — before declaring postIntro / cinematic / editorial done. HARD GATE. Record the tier rating.
+- **`wpforms-video`** — session start, tutorial path. Storyboard gate, path-decision gate.
+- **`wpforms-marketing`** — session start, editorial path. Path-decision + brand canonical + clone-target enforcement.
+- **`wpforms-postintro`** — before designing any postIntro. Multi-animation rule check + morph-chain requirement check.
+- **`wpforms-motion-audit`** — before declaring postIntro / cinematic / editorial done. HARD GATE. Tier rating is the artifact; reading the rubric does not produce it.
+
+Reference skills (file-read is sufficient, Skill tool invocation is optional):
+
+- **`wpforms-gsap-rules`** — L0 / L1 rules reference. Read it to consult before writing timeline code. No artifact produced by invocation.
+- **`wpforms-primitives`** — lookup index for motion-primitives + wpforms-interactions + iframe-helpers. Read it BEFORE writing motion code to check what exists (this is still important — both 2026-05-12 sessions skipped this step and hand-rolled approximations of existing primitives). But file-read is sufficient; the artifact is "I now know what exists in the libraries," which a read produces.
+- **`wpforms-transitions`** — chapter break / swap style reference. Read when relevant.
+
+Sessions reading this invariants doc inline (like Codex did on 2026-05-12) are using the correct consumption pattern. Sessions skipping `wpforms-motion-audit` because they "read about it" are using the wrong pattern — that one needs the Skill tool because the tier rating is the artifact.
 
 If you're working from a detailed codex prompt at `docs/codex-prompts/*.md`, the prompt is the brief. The skills are STILL the gates. Both apply. Detailed prompts do NOT obviate skill invocation.
 
-**The two most-bypassed skills (across both 2026-05-12 sessions):**
+**The two most-bypassed skills across all 3 sessions (Klaviyo tutorial v11 + Codex editorial + Claude editorial, all 2026-05-12):**
 
-- `wpforms-primitives` — both sessions skipped it, both hand-rolled approximations of primitives that already existed in `motion-primitives.js` / `wpforms-interactions.js` / `iframe-helpers.js`. The skill description starts with "Use BEFORE writing any motion..." for a reason. Treat it as a WRITE-TIME gate, not a lookup-when-you-think-of-it reference.
-- `wpforms-motion-audit` — both sessions skipped it. Klaviyo went 12 postIntro iterations without scoring. Editorial admitted "should have run on v1 — would've caught the failures." The audit applies to v1 builds + major restructures + final handoff. Not just final handoff.
+- `wpforms-primitives` — all sessions skipped reading it before writing. All hand-rolled approximations of primitives that already exist in `motion-primitives.js` / `wpforms-interactions.js` / `iframe-helpers.js`. **For this reference-style skill, file-read is the correct consumption** — but it has to actually happen BEFORE writing motion code, not mid-build after the hand-rolling started. The skill description "Use BEFORE writing any motion..." is literal.
+- `wpforms-motion-audit` — all sessions skipped it. Klaviyo went 12 postIntro iterations without scoring. Codex editorial admitted "should have run on v1 — would've caught the failures." Claude editorial produced a "horrible v1" that needed manual scene-by-scene rescue (would have failed motion-audit hard rules — likely caught by audit on v1). **This is the PROCEDURAL skill — Skill tool invocation, not just file-read.** The tier rating is the artifact. Applies to v1 build review + major restructures + final handoff. Not just final handoff.
 
 Common rationalizations for skipping (all wrong):
-- "The prompt covered what I needed." → The prompt is the brief; the skills are the gates. Both apply.
-- "I'll lookup primitives mid-build as I need them." → You'll hand-roll approximations of half the primitives you needed.
-- "Motion-audit is for final handoff, I haven't reached handoff." → It's also for v1 build review. Skipping v1 audit costs 10+ iteration rounds.
+- "The prompt covered what I needed." → The prompt is the brief; the skills + invariants still apply.
+- "I'll lookup primitives mid-build as I need them." → You'll hand-roll approximations of half the primitives you needed. Read the primitives skill BEFORE writing.
+- "Motion-audit is for final handoff, I haven't reached handoff." → It's also for v1 build review. Skipping v1 audit costs 10+ iteration rounds + horrible-v1 manual rescue.
 
-Source: Klaviyo session retro + editorial session retro, both 2026-05-12.
+Source: Klaviyo session retro (2026-05-12) + Codex editorial retro (2026-05-12) + Claude editorial retro (2026-05-12).
 
 ## When a future session is about to break one
 

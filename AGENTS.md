@@ -34,9 +34,13 @@ Load `wpforms-primitives` skill for the per-primitive when-to-use lookup. Scan t
 
 **Hard rule:** if you're about to write a `gsap.to(cursor, ...)` or hand-mount a cursor element, stop and use the `Cursor` class. If you're about to write a click-Add-New-Form sequence, stop and call `navAddNewForm()`. The libraries codify shipped fixes for prior failure modes (cursor frenzy, caret drift, slide-projector camera moves, snapshot-swap cream-flash) — re-implementing them re-opens those bugs.
 
-## ⛔ Invoke skills, don't just read them
+## ⛔ Two consumption patterns — match the skill type
 
-**The skills listed below are GATES, not bibliography.** Use the Skill tool (`/wpforms-video`, `/wpforms-motion-audit`, etc.) to actually invoke them — reading the markdown file inline does not trigger the skill's gates.
+**Procedural skills** (`wpforms-video`, `wpforms-marketing`, `wpforms-postintro`, `wpforms-motion-audit`) define gates that produce artifacts (tier rating, storyboard approval, multi-animation rule check). **Invoke via the Skill tool — file-read is NOT sufficient.** Reading the rubric ≠ running the scorer.
+
+**Reference skills** (`wpforms-primitives`, `wpforms-gsap-rules`, `wpforms-transitions`) are lookup indices + rules references. **File-read IS sufficient.** Skill tool invocation is optional. But you still have to READ them at the right moment — `wpforms-primitives` before writing motion code, `wpforms-gsap-rules` before timeline work.
+
+Same applies to `docs/video-architecture-invariants-2026-05-12.md` — pure reference, read inline. Codex doing exactly that on 2026-05-12 was the doc working as designed.
 
 If you're working from a detailed codex prompt at `docs/codex-prompts/*.md`, the prompt is the brief — the skills are STILL the gates. Both apply. Common failure mode (observed in Klaviyo tutorial v11, 2026-05-12): session reads CLAUDE.md → reads codex prompt → goes straight to code, treating skill files as references. PostIntro went 12 iterations without ever invoking `wpforms-motion-audit`. Don't repeat that.
 
