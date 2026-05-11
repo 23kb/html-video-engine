@@ -108,3 +108,9 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 - `reference/wpforms-brand/tokens.css` — Drop-in CSS variables for any video.
 - `reference/wpforms-brand/assets/` — Real Sullie + loading-avatar + loading-spinner SVGs from plugin source, plus AI 3-dot chat spinner.
 - `reference/html-templates/` — Canonical clone-and-customize HTML video templates (the 3 winners + their per-beat specs).
+
+## Code libraries (use, do not reinvent)
+
+- `videos/_shared/motion-primitives.js` — Executable motion primitives: `cinematicFlight`, `figjamFlight`, `focusStationOverview` (cameras); `Cursor` class with glide/click/hover/drag; `caretType`, `statusPillMorph`, `markerSweep`, `popOut`, `fieldStaggerReveal`, `mountSullieBug`, `cleanFastRejoin`, plus utilities. Owned by `wpforms-primitives` skill. QC at `videos/_qc-primitives/`.
+- `videos/_shared/wpforms-interactions.js` — Standard WPForms interactions (Wave 1): `navAddNewForm`, `selectTemplate`, `navWPFormsSidebarMenu`, `openFormInList`, `dragFieldToForm`, `openFieldOptions`, `navBuilderSidebar`, `openSettingsTab`, plus `IframeManager` and field-option sub-interactions. Owned by `wpforms-primitives` skill. QC at `videos/_qc-interactions/`.
+- `docs/wpforms-interactions-library-2026-05-11.md` — Per-interaction usage doc (template button variants, hover-state inventory, sub-interaction notes).

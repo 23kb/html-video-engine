@@ -50,6 +50,24 @@ Do NOT invent brand details. The plugin source-of-truth is here:
 
 Editorial storyboards MUST include a **morph-chain section** per `docs/storyboard-format-morph-chain-2026-05-10.md`. Without it, editorial videos default to state-table compositions and fail.
 
+### Motion primitives library (`videos/_shared/motion-primitives.js`)
+
+Required reading alongside the templates and brand. The library is the executable form of the camera / cursor / typing / field-reveal / brand-anchor / exit vocabulary that editorial winners share:
+
+- Camera: `cinematicFlight`, `figjamFlight`, `focusStationOverview`
+- Cursor: `Cursor` class (glide / click / hover / drag with anti-frenzy guards)
+- Text: `caretType`, `statusPillMorph`, `markerSweep`
+- Field: `fieldStaggerReveal`
+- Brand: `mountSullieBug`
+- Exit: `cleanFastRejoin`
+- Highlight: `popOut`
+
+QC: `videos/_qc-primitives/index.html`. Lookup: load `wpforms-primitives` skill. **The 3 failed editorial attempts each re-implemented one or more of these from scratch and re-introduced the bug they exist to fix.**
+
+### WPForms interactions library (`videos/_shared/wpforms-interactions.js`)
+
+For `surface: 'mixed'` videos that drive real WPForms admin / builder UI under the editorial overlay: use the Wave 1 interaction methods (`navAddNewForm`, `selectTemplate`, `navWPFormsSidebarMenu`, `openFormInList`, `dragFieldToForm`, `openFieldOptions`, `navBuilderSidebar`, `openSettingsTab`) plus the `IframeManager` helper. Don't hand-roll click + glide + snapshot-swap sequences in mixed editorial scenes — the library is grounded in real selectors and handles the crossfade with no flash-guard cover needed.
+
 ## Surface Modes
 
 `manifest.surface` declares the stage type. **For ad-style work, use `editorial` or `mixed`.**
@@ -272,6 +290,7 @@ Before declaring an ad-style video done:
 
 ## See Also
 
+- `wpforms-primitives` — `motion-primitives.js` + `wpforms-interactions.js` lookup. Editorial compositions pull cursor / camera / typing / field-reveal / brand-anchor / exit straight from here.
 - `wpforms-video` — for tutorial-mode work (the other half of the dual mandate).
 - `wpforms-postintro` — postIntros often share patterns with ad-style work.
 - `wpforms-gsap-rules` — registered timelines + `pausableRaf` are how editorial beats become scrubbable.

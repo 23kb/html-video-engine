@@ -22,6 +22,17 @@ If the user's request is ambiguous, ask **one question**: "Tutorial showing real
 - `reference/html-templates/editorial-reference-36s.html` + `editorial-reference-BEATS.md` — 36s linear-scene reference
 - `reference/html-templates/openai-replica-18s.html` — first-try single-HTML proof
 
+## Two libraries — read first, author after
+
+For any motion / camera / cursor / typing / field-reveal / brand-anchor / standard WPForms interaction work, the executable code already exists. Do not reinvent.
+
+- **`videos/_shared/motion-primitives.js`** — animation primitives: `cinematicFlight`, `figjamFlight`, `focusStationOverview`, `Cursor` class (glide / click / hover / drag), `caretType`, `statusPillMorph`, `markerSweep`, `popOut`, `fieldStaggerReveal`, `mountSullieBug`, `cleanFastRejoin`, plus `boundedRepeats` and `mulberry32` utilities. QC at `videos/_qc-primitives/`.
+- **`videos/_shared/wpforms-interactions.js`** — standard WPForms interactions: `navAddNewForm`, `selectTemplate`, `navWPFormsSidebarMenu`, `openFormInList`, `dragFieldToForm`, `openFieldOptions`, `navBuilderSidebar`, `openSettingsTab` (Wave 1). Sub-interactions: `setFieldLabel`, `setNameFormat`, `toggleEmailConfirmation`. Plus an `IframeManager` helper. QC at `videos/_qc-interactions/`.
+
+Load `wpforms-primitives` skill for the per-primitive when-to-use lookup. Scan the QC pages before authoring any new motion or interaction.
+
+**Hard rule:** if you're about to write a `gsap.to(cursor, ...)` or hand-mount a cursor element, stop and use the `Cursor` class. If you're about to write a click-Add-New-Form sequence, stop and call `navAddNewForm()`. The libraries codify shipped fixes for prior failure modes (cursor frenzy, caret drift, slide-projector camera moves, snapshot-swap cream-flash) — re-implementing them re-opens those bugs.
+
 ## Topic skills (load AFTER picking a path)
 
 - `wpforms-video` — tutorial authoring, intake, storyboard gate, default authoring mode
@@ -29,6 +40,7 @@ If the user's request is ambiguous, ask **one question**: "Tutorial showing real
 - `wpforms-gsap-rules` — GSAP L0 discipline + camera-decomposition rules + designer principles (Emil / Krehel / Jhey)
 - `wpforms-marketing` — editorial / ad-style surfaces + blocks + atmospheric kit + reference templates + brand canonical
 - `wpforms-transitions` — chapter breaks, swap styles (`flipBridge` is default), camera poses, scrubber/render
+- `wpforms-primitives` — lookup index for `videos/_shared/motion-primitives.js` (cameras / cursor / typing / field-reveal / brand-anchor / exit) and `videos/_shared/wpforms-interactions.js` (Wave 1 standard interactions). Reach here BEFORE writing any new GSAP cursor / camera / interaction code.
 - `wpforms-motion-audit` — score animations and camera moves S–F tier with hard-rule calibration. Run before any postIntro/cinematic handoff.
 
 Plus auto-triggering motion-design skill:
@@ -176,6 +188,7 @@ Don't look here for these — load the skill instead:
 | `surface: 'editorial' / 'mixed'` / blocks library / atmospheric kit / text-kit / hero composition / `reference/html-templates/` clones / brand canonical | `wpforms-marketing` |
 | Chapter breaks / swap styles / `flipBridge` (default) / camera poses / shared-scene / scrubber / render | `wpforms-transitions` |
 | Motion S–F tier scoring / hard-rule calibration / pre-handoff gate | `wpforms-motion-audit` |
+| Motion-primitives + wpforms-interactions library lookup (per-primitive when-to-use, signatures, QC status) | `wpforms-primitives` |
 | Designer-grade audit (Emil Kowalski / Jakub Krehel / Jhey Tompkins) | `design-motion-principles` (auto-triggers) |
 
 Skills are at `.claude/skills/<name>/SKILL.md`. Each is a single file with YAML frontmatter (`name`, `description`).

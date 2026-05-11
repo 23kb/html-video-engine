@@ -121,6 +121,12 @@ Legacy chapters import only local selector sheets (`./_selectors.js`). Do not im
 
 Keep beats near the **6-second rule**. Split longer narration into smaller clips.
 
+## Standard Interactions — use the library, don't hand-roll
+
+Tutorial chapters that include standard WPForms navigation flows (Add New Form, Select Template, Open in builder, Open Settings tab, Drag field, Open Field Options) should call into **`videos/_shared/wpforms-interactions.js`** rather than hand-writing the click + glide + swap + wait sequence. Each method (`navAddNewForm()`, `selectTemplate(slug)`, `openFormInList(formId)`, `navBuilderSidebar(section)`, `openSettingsTab(tab)`, `dragFieldToForm(slug)`, `openFieldOptions(fieldId)`) is grounded in real captured selectors, drives a `Cursor` from `motion-primitives.js`, and crossfades snapshots when needed. The matching Wave 1 sub-interactions (`setFieldLabel`, `setNameFormat`, `toggleEmailConfirmation`) handle the inline-mirror updates so the canvas re-renders live.
+
+Load `wpforms-primitives` skill for the full per-method lookup before composing a chapter that does anything click-or-drag-shaped. The engine `ctx.cursor` and the library `Cursor` are different objects — pick one per beat, don't mix.
+
 ## Modern Features Cheat Sheet
 
 Modern features worth reaching for. Each links to its dedicated skill or doc. **Most of these aren't surfaced in the legacy skeletons** — load the relevant skill to use them.
@@ -209,6 +215,7 @@ Stop and push back when:
 
 ## See Also
 
+- `wpforms-primitives` — lookup index for `motion-primitives.js` + `wpforms-interactions.js`. Reach here before writing standard click/drag/glide sequences.
 - `wpforms-postintro` — postIntro design + multi-animation rule + canonical references.
 - `wpforms-gsap-rules` — GSAP L0 discipline + registered timelines + pausableRaf.
 - `wpforms-transitions` — transition vocabulary, swap styles, camera poses.

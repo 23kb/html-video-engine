@@ -48,6 +48,7 @@ These conditions **cap the maximum score regardless of other criteria**:
 - 12+ beats packed into ≤45s without identity continuity → maximum **C**
 - Single-tween translate+scale between fixed poses with no scale arc → maximum **C**
 - Cursor frenzy via motion-path single via point with `via.y = Math.min(fromY, toY) - 40` (overshoots target) → maximum **C**
+- **Re-invented primitive when a canonical exists in `videos/_shared/motion-primitives.js`** (hand-written cursor mount/glide when `Cursor` class exists, hand-written 5-phase camera when `cinematicFlight` / `figjamFlight` / `focusStationOverview` exist, hand-written letter-stagger when `caretType` exists, hand-written status-pill morph or marker-sweep when those primitives exist, hand-written field-stagger when `fieldStaggerReveal` exists, hand-written Sullie mount when `mountSullieBug` exists, hand-written exit-with-blur when `cleanFastRejoin` exists) → maximum **B** (loses style points for not using the approved primitive — the primitives codify the shipped fix for the bug that hand-rolled versions keep re-introducing)
 
 ## Phase 1: Calibration check
 

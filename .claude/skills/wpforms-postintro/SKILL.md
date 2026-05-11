@@ -103,6 +103,25 @@ Read **only** the cinematic whose semantics match your concept. Do not read all 
 
 Other accepted package postIntros are not canonical references; treat them as historical, not design inspiration.
 
+## Motion Primitives — compose from these, do not reinvent
+
+Every postIntro should compose from `videos/_shared/motion-primitives.js`. The library was built precisely to give each postIntro phase a canonical implementation:
+
+| PostIntro phase | Primitive to reach for |
+|---|---|
+| Cursor mount + glide/click/hover/drag (Multi-Animation rule #3) | `Cursor` class — built-in anti-frenzy guards, squash+ripple click, ghost-clone drag |
+| Letter-by-letter typing (e.g. AI prompt input) | `caretType` — scalar-tween + innerHTML mutation, avoids the wpforms-ai-board caret-drift bug |
+| Status / progress label morphing (Thinking → Filling → Done) | `statusPillMorph` |
+| Marker / highlighter sweep on key text | `markerSweep` |
+| Field cascade (AI generation, template apply) | `fieldStaggerReveal` |
+| Multi-phase camera move into / out of the editorial layer | `cinematicFlight` (intra-snapshot) or `figjamFlight` (inter-snapshot reveal) |
+| Brand anchor (Sullie) persisting across the handoff | `mountSullieBug` |
+| Exit back to overview before chapter 1 takes over | `cleanFastRejoin` (no blur smear, 0.35s scale-1.02 exit) |
+
+Hand-rolling any of these in a postIntro re-introduces the bugs they exist to fix. `wpforms-motion-audit` HARD RULE 3 caps re-invented primitives at tier B regardless of other criteria.
+
+Load `wpforms-primitives` skill for the full lookup (signatures, QC statuses, line citations).
+
 ## Video-Local Surfaces
 
 For video-local concept beats (option 2 above), the practical tools are:
@@ -169,6 +188,7 @@ Before declaring a postIntro done:
 
 ## See Also
 
+- `wpforms-primitives` — the lookup index for `motion-primitives.js`. Every postIntro pulls from here.
 - `wpforms-video` — universal authoring + storyboard gate.
 - `wpforms-gsap-rules` — registered timelines, `pausableRaf`, GSAP discipline.
 - `wpforms-marketing` — editorial surface mode + blocks library + atmospheric kit (postIntro is often a mini-editorial composition).

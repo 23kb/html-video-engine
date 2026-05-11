@@ -91,6 +91,17 @@ Or, repo-wide preferred:
 
 For `editorial` surface authoring, see `wpforms-marketing` skill.
 
+## Camera for cross-snapshot reveals — use the library
+
+For cross-snapshot moves that have a visible "reveal" beat (zoom out, see both A and B in one shot, then zoom in on B), the **camera arc lives in `videos/_shared/motion-primitives.js#figjamFlight`** — 3-act: zoom out only → translate at wide scale → zoom in only. Source: `motion-primitives.js:195`.
+
+The actual snapshot swap is still `swapStyle: 'flipBridge'` — those are different layers:
+
+- `figjamFlight` animates the `.scene-camera` transform across the wide-shot reveal.
+- `flipBridge` handles the iframe-DOM crossfade with no body-wipe and no cream seam.
+
+For intra-snapshot multi-phase flights (single-snapshot zoom-in, focus-station-overview tutorial arc, etc.), use `cinematicFlight` or `focusStationOverview` from the same library. Load `wpforms-primitives` skill for the lookup table.
+
 ## Camera-Pose Vocabulary
 
 Named camera poses for legacy/effect beats. Author registers once, beats reference by name:
@@ -196,6 +207,7 @@ Before declaring transition work done:
 
 ## See Also
 
+- `wpforms-primitives` — `figjamFlight` / `cinematicFlight` / `focusStationOverview` lookup. The camera-arc layer that composes with `flipBridge`.
 - `wpforms-video` — universal authoring + chapter shape (chapters declare `breakStyle` / `swapStyle`).
 - `wpforms-postintro` — postIntros often span snapshot boundaries; `flipBridge` is the right tool.
 - `wpforms-marketing` — `surface: 'editorial'` and `surface: 'mixed'` authoring.

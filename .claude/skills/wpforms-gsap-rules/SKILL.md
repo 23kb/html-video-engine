@@ -133,6 +133,18 @@ tl.to({}, { duration: 0.40 });
 tl.to(camera, { x: 540, scale: 2.4, duration: 0.60, ease: 'power3.out' });
 ```
 
+### Use the camera primitives — don't hand-decompose
+
+**The shape above is shipped as executable code in `videos/_shared/motion-primitives.js`.** Don't author it from scratch. Three camera primitives cover the common cases:
+
+- **`cinematicFlight(camera, { from, to, anticipationDuration, flightDuration, landHold, scaleDipFactor, rotationTilt, microZoom })`** — 5-phase intra-snapshot flight (anticipation → outbound scale-dip → inbound recover → land+hold → optional micro-zoom). Source: `motion-primitives.js:100`.
+- **`figjamFlight(camera, { from, to, wide, zoomOutDuration, translateDuration, zoomInDuration, landHold })`** — 3-act inter-snapshot reveal (zoom out only → translate at wide scale → zoom in only). Use when the storyboard's payoff is the wide-shot reveal between A and B. Source: `motion-primitives.js:195`.
+- **`focusStationOverview(camera, { focusPose, stationPose?, overviewPose, ...durations })`** — tutorial-grade focus → station → overview arc with a 120ms anchor hold. Polished rest-api shape. Source: `motion-primitives.js:272`.
+
+Each returns a paused timeline — `registerTimeline(tl, { id })` to put it under driver control, or scrub via the runtime. Hand-rolling a decomposed camera reads as "almost right" and trips `wpforms-motion-audit` HARD RULE 3 (re-invented canonical → max tier B).
+
+Load `wpforms-primitives` skill for the lookup table with QC statuses.
+
 ### Auto-ceiling triggers (from `wpforms-motion-audit` HARD RULE 3)
 
 The motion-audit skill caps the maximum score at C/D/F when these are detected. Avoid them:
@@ -307,6 +319,7 @@ Before declaring GSAP work done:
 
 ## See Also
 
+- `wpforms-primitives` — `motion-primitives.js` lookup. `cinematicFlight`, `figjamFlight`, `focusStationOverview` are the executable L1 camera decomposition.
 - `wpforms-video` — universal authoring + storyboard gate.
 - `wpforms-postintro` — postIntro design (postIntros are the heaviest GSAP code in the repo).
 - `wpforms-transitions` — `flipBridge`, camera poses, scrubber/render workflow.

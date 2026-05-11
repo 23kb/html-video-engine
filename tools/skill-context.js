@@ -49,7 +49,19 @@ const SKILLS = [
   { name: 'wpforms-gsap-rules',  path: '.claude/skills/wpforms-gsap-rules/SKILL.md',  use: 'GSAP L0 discipline + camera-decomposition + registered timelines + pausableRaf + Flip + effects library + designer principles (Emil/Krehel/Jhey).' },
   { name: 'wpforms-marketing',   path: '.claude/skills/wpforms-marketing/SKILL.md',   use: 'Editorial / ad-style surfaces (surface: editorial/mixed) + reference/html-templates/ clones + brand canonical + blocks + atmospheric kit + text-kit.' },
   { name: 'wpforms-transitions', path: '.claude/skills/wpforms-transitions/SKILL.md', use: 'Chapter breaks (glide/dolly/whip) + swap styles (flipBridge default) + camera poses + shared scene + scrubber/render.' },
+  { name: 'wpforms-primitives', path: '.claude/skills/wpforms-primitives/SKILL.md', use: 'Lookup index for videos/_shared/motion-primitives.js (cameras / Cursor / typing / field-reveal / brand-anchor / exit) and videos/_shared/wpforms-interactions.js (8 Wave 1 standard interactions). Reach here BEFORE writing GSAP cursor / camera / interaction code.' },
   { name: 'wpforms-motion-audit', path: '.claude/skills/wpforms-motion-audit/SKILL.md', use: 'Score animations and camera moves S-F tier with hard-rule calibration. MUST run before any postIntro/cinematic/editorial handoff.' },
+];
+
+const LIBRARIES = [
+  {
+    path: 'videos/_shared/motion-primitives.js',
+    use: 'Animation primitives: cinematicFlight, figjamFlight, focusStationOverview (cameras); Cursor class with glide/click/hover/drag (cursor); caretType, statusPillMorph, markerSweep (typing/text); popOut, fieldStaggerReveal (highlight/fields); mountSullieBug, cleanFastRejoin (tutorial polish); boundedRepeats, mulberry32, clickRipple (utilities). QC at videos/_qc-primitives/. Copy from here; do not reinvent.',
+  },
+  {
+    path: 'videos/_shared/wpforms-interactions.js',
+    use: 'Standard WPForms interactions (Wave 1): navAddNewForm, selectTemplate, navWPFormsSidebarMenu, openFormInList, dragFieldToForm, openFieldOptions, navBuilderSidebar, openSettingsTab. Sub-interactions: setFieldLabel, setNameFormat, toggleEmailConfirmation. Plus IframeManager helper for snapshot-iframe slot + crossfade swap. QC at videos/_qc-interactions/. Compose these for tutorial chapters.',
+  },
 ];
 
 const AUTO_TRIGGER_EXTERNAL_SKILLS = [
@@ -141,6 +153,7 @@ function buildContext() {
     brandCanonical: BRAND_CANONICAL.map(b => ({ ...b, present: exists(b.path) })),
     keyDocs: KEY_DOCS.map(d => ({ ...d, present: exists(d.path) })),
     sharedKits: SHARED_KITS.map(k => ({ ...k, present: exists(k.path) })),
+    libraries: LIBRARIES.map(l => ({ ...l, present: exists(l.path) })),
     tools: TOOLS,
     knownVideoPackages: listVideos(),
   };
@@ -203,6 +216,12 @@ function printHuman(ctx) {
   for (const k of ctx.sharedKits) {
     out.push(`  ${k.present ? '✓' : '✗'} ${k.path}`);
     out.push(`      ${k.use}`);
+  }
+  out.push('');
+  out.push('## Libraries (use, do not reinvent) — scan these BEFORE writing motion / cursor / interaction code');
+  for (const l of ctx.libraries) {
+    out.push(`  ${l.present ? '✓' : '✗'} ${l.path}`);
+    out.push(`      ${l.use}`);
   }
   out.push('');
   out.push('## Tools');
