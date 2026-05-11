@@ -13,6 +13,21 @@ This skill is for the **Tutorial path** (real product UI, narration-driven). If 
 
 For postIntro/cinematic beats inside a tutorial, also load `wpforms-postintro` and run `wpforms-motion-audit` before handoff.
 
+## Required video shape (every tutorial video)
+
+Every tutorial video has this 4-section shape. No exceptions:
+
+```
+Intro (~3s)      → title card. NO mac frame.
+PostIntro (8-15s) → animated concept beat previewing the workflow. NO mac frame.
+Tutorial (~40-90s) → real product UI inside mac frame. Chapter-by-chapter.
+Outro (~5s)      → brand sign-off card. NO mac frame.
+```
+
+Mac frame wraps the **Tutorial section only**. Intro / postIntro / outro live directly on the stage with no chrome around them. Source: per-Umair instruction 2026-05-12 + INV-3 in `docs/video-architecture-invariants-2026-05-12.md`.
+
+PostIntro is NOT optional. It is the difference between "PowerPoint" and "tutorial." See `wpforms-postintro` skill for the multi-animation rule + canonical references. The first cut of every tutorial that skipped a real postIntro became generic — see `docs/winning-pattern-analysis-2026-05-10.md` §C.
+
 ## Approach
 
 For a new video session, work in this order. Don't skip steps.

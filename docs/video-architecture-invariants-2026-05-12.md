@@ -90,6 +90,21 @@ Numbered for easy reference in code comments / commit messages.
 - All tokens in `reference/wpforms-brand/tokens.css`
 - No invented colors, no Inter web font, no fake characters
 
+### INV-11 — Required tutorial video shape
+Every tutorial video has this 4-section shape:
+
+```
+Intro (~3s)      → title card. NO mac frame.
+PostIntro (8-15s) → animated concept beat previewing the workflow. NO mac frame.
+Tutorial (~40-90s) → real product UI inside mac frame. Chapter-by-chapter.
+Outro (~5s)      → brand sign-off card. NO mac frame.
+```
+
+- Mac frame wraps the Tutorial section ONLY (per INV-3). Intro / postIntro / outro have no chrome around them.
+- PostIntro is non-optional. It previews the workflow with an identity-continuity morph chain (single DOM element threading the beats). Reference: `reference/html-templates/wpforms-ai-prompt-open.html`.
+- Skip the postIntro and the video reads as "PowerPoint" — generic chapter shapes, weak first impression. The first cut of every tutorial that skipped a real postIntro became generic per `docs/winning-pattern-analysis-2026-05-10.md` §C.
+- Source: Umair instruction 2026-05-12. Applies to all tutorial videos including the existing make-field-required pilot (retrofitted at commit `af504ea`) and Klaviyo tutorial (per `docs/codex-prompts/klaviyo-tutorial-continuation.md`).
+
 ## When a future session is about to break one
 
 Patterns that signal trouble:
