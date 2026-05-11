@@ -137,6 +137,13 @@ export class IframeManager {
       border: '0',
       display: 'block',
       opacity: '0',
+      // Captured snapshots preserve real WordPress href URLs (e.g. ".../index.php",
+      // ".../update-core.php"). A stray click on the iframe — including from
+      // QC-page debugging — would navigate the iframe to a URL the dev server
+      // doesn't have, returning a 404 plaintext that breaks the stage. Disable
+      // pointer-events at rest; interactions library drives clicks via simulated
+      // events on specific elements, which bypass this guard.
+      pointerEvents: 'none',
       willChange: 'transform, opacity',
     });
     this._applyCameraToIframe(f);
