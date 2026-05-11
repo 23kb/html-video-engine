@@ -18,6 +18,67 @@ Across the 5d audit pass, every failed editorial / postIntro / interaction beat 
 
 The libraries fix all of the above. The job here is to **find the matching primitive, copy or compose it, do not rewrite it**.
 
+## Library scope philosophy
+
+The library codifies **hard-won patterns**: interactions where a naive implementation would re-introduce a bug already solved here, or multi-step choreography that benefits from being standardized once. Everything else stays inline in the per-video HTML / chapter module.
+
+The library is a starting reference, not an exhaustive vocabulary. Future videos should compose from the shared primitives where they fit, then write small inline DOM puppetry for one-off beats, the same way old engine-path chapter `effect({ doc, cursor, sleep, ... })` callbacks composed engine helpers with local DOM mutations.
+
+### When NOT to add to the library
+
+An interaction earns library status only if it meets at least **2 of 3**:
+
+1. **Hard-won pattern test:** the naive implementation re-introduces a bug. Examples that pass: faux-native dropdown, smart-tag chip insertion, cream-flash-free snapshot swap, cursor anti-frenzy, caret-drift fix.
+2. **Multi-step choreography test:** 3 or more sequential UI steps with timing/coordination between them. Examples that pass: `addConditionalLogicRule`, `dragFieldToForm`, `duplicateNotificationBlock`.
+3. **Recurrence test:** the same exact pattern appears in 3 or more separate videos, or 3 or more separate WPForms.com docs.
+
+An interaction failing all three is **inline territory**. Write it in the master timeline:
+
+```js
+// Inline example - toggle a setting control.
+const toggle = iframeManager.doc().querySelector('#wpforms-panel-field-settings-foo');
+await cursor.glide(iframeManager.elementToStageCoords(toggle));
+await cursor.click();
+toggle.checked = true;
+toggle.dispatchEvent(new (iframeManager.iframe().contentWindow.Event)('change', { bubbles: true }));
+```
+
+In the new single-HTML video pattern, the master timeline composes library calls and inline DOM puppetry per beat:
+
+```js
+const tl = gsap.timeline({ paused: true });
+
+// Use library where it fits: hard, multi-step, or recurring.
+tl.add(() => interactions.openFieldOptions(48));
+tl.add(() => interactions.dragFieldToForm('email'));
+
+// Write inline for one-offs: simple, singleton, specific to this video.
+tl.add(async () => {
+  const doc = iframeManager.doc();
+  const labelInput = doc.querySelector('#wpforms-field-option-48-label');
+  await cursor.glide(iframeManager.elementToStageCoords(labelInput));
+  await cursor.click();
+  await typeIntoIframeInput(labelInput, 'Your Email Address');
+});
+
+// Compose library + inline freely.
+tl.add(() => cinematicFlight(camera, { from: posA, to: posB }));
+```
+
+The "system knowing what to do" is the author composing this from a storyboard. The shared library is reference vocabulary; the per-video timeline is where video-specific logic belongs.
+
+Avoid pre-promoting single-click or simple typewriter wrappers. When tempted to add methods like these, stop and keep the beat inline:
+
+- `setXFieldValue(fieldId, value)` - use `cursor.click` plus `typeIntoIframeInput`.
+- `toggleXSetting(fieldId)` - use `cursor.click(toggle)`.
+- `setXActive(blockSel, state)` - use `cursor.click(badge)`.
+- `collapseX(blockSel)` - use `cursor.click(caret)`.
+- `expandX(groupSel)` - use `cursor.click(header)`.
+
+Actual Wave 2 Batch A examples to treat carefully: `setNotificationActive`, `collapseNotificationBlock`, `expandSettingsSection`, `toggleSettingControl`, `editNotificationName`, `setNotificationSubject`, `setNotificationMessage`, and `setNotificationSendTo`. These are useful references, but do not use them as permission to add every future single-click or input-fill variant to the shared library.
+
+After a video ships, review its inline DOM puppetry blocks. If the same pattern appears in 3+ videos with the same shape, then promote it. Pre-promotion is over-promotion.
+
 ## Decision flow
 
 Before writing any of the following, scan this skill:
