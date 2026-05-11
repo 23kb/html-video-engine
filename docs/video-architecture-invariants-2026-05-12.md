@@ -41,6 +41,7 @@ Numbered for easy reference in code comments / commit messages.
 ### INV-3 — Mac frame is outer chrome only, never a transform parent
 - `.mac-frame` wraps the stage area visually with borders, mac-style title bar, shadow.
 - **No CSS transform on the mac-frame.** It can have a one-time entrance fade-in opacity transition (0 → 1), and that's it.
+- Multi-row chrome is fine — dots row, URL bar, optional tab strip, breadcrumbs, etc. Anything that doesn't apply a transform to the iframe path is acceptable.
 - The iframe content INSIDE the mac frame is unaffected by the frame's existence — cursor coord space is `iframeStage`-local (the element inside the mac-body), not stage-local.
 - Click targets land correctly because `elementToStageCoords` projects iframe-doc coords to that local space.
 
@@ -102,6 +103,7 @@ Outro (~5s)      → brand sign-off card. NO mac frame.
 
 - Mac frame wraps the Tutorial section ONLY (per INV-3). Intro / postIntro / outro have no chrome around them.
 - PostIntro is non-optional. It previews the workflow with an identity-continuity morph chain (single DOM element threading the beats). Reference: `reference/html-templates/wpforms-ai-prompt-open.html`.
+- PostIntro may have N sub-beats (multi-phase morph chains are encouraged). The section boundary is the mac-frame-fade-in: when the mac frame opacity tweens 0 → 1 with real product UI behind it, the PostIntro is over and the Tutorial has begun. Anything before that moment, no matter how many phases, is still PostIntro.
 - Skip the postIntro and the video reads as "PowerPoint" — generic chapter shapes, weak first impression. The first cut of every tutorial that skipped a real postIntro became generic per `docs/winning-pattern-analysis-2026-05-10.md` §C.
 - Source: Umair instruction 2026-05-12. Applies to all tutorial videos including the existing make-field-required pilot (retrofitted at commit `af504ea`) and Klaviyo tutorial (per `docs/codex-prompts/klaviyo-tutorial-continuation.md`).
 
@@ -120,7 +122,21 @@ const apiInput = ifm.query('#wpforms-integration-klaviyo input[name="api_key"]')
 
 Same rule applies to any captured admin/builder page that renders multiple provider/payment/feature variants behind a tab or accordion. The container's stable id (`#wpforms-integration-<provider>`, `#wpforms-panel-content-section-<provider>`, etc.) is the scope anchor.
 
-Learned during Klaviyo tutorial v4 build (`videos/klaviyo-quick-connect/index.html`). Source: Klaviyo session storyboard 2026-05-12.
+**Class-name volatility on third-party SaaS captures.** Captured non-WPForms admin (Klaviyo, Mailchimp, Stripe dashboards) typically uses content-hashed class names (e.g., `.sc-jTrPJq`). These are STABLE within a single capture but UNSTABLE across re-captures. Selector sheets built on these class names will rot.
+
+**Prefer text-based queries for SaaS dashboard interaction:**
+
+```js
+// FRAGILE — class name will change on next capture
+const settingsLink = ifm.query('.sc-jTrPJq .sc-aXZVg');
+
+// RESILIENT — text content is stable across captures
+const settingsLink = findInIframeByText(ifm, 'Settings');
+```
+
+The library-side helper `findInIframeByText(iframeManager, text)` (in `videos/_shared/iframe-helpers.js`) walks from a leaf text node up to the nearest clickable ancestor, returning the element. Use this for any captured SaaS UI; reserve class/id selectors for WPForms admin where class names are stable across captures.
+
+Learned during Klaviyo tutorial v4 + v11 builds (`videos/klaviyo-quick-connect/index.html`). The empty-rect throw at `elementToStageCoords` caught real bugs both times — once on `input[name="api_key"]` matching the hidden ConvertKit form (v2), once on `.js-wpforms-builder-provider-connection-add` matching 11 hidden buttons (v11). Source: Klaviyo session retro 2026-05-12.
 
 ## When a future session is about to break one
 

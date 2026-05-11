@@ -59,6 +59,10 @@ const LIBRARIES = [
     use: 'Animation primitives: cinematicFlight, figjamFlight, focusStationOverview (cameras); Cursor class with glide/click/hover/drag (cursor); caretType, statusPillMorph, markerSweep (typing/text); popOut, fieldStaggerReveal (highlight/fields); mountSullieBug, cleanFastRejoin (tutorial polish); boundedRepeats, mulberry32, clickRipple (utilities). QC at videos/_qc-primitives/. Copy from here; do not reinvent.',
   },
   {
+    path: 'videos/_shared/iframe-helpers.js',
+    use: 'Authoring helpers built on IframeManager + Cursor. glideClick (the 10x-recurring scrollIntoView+glide+click defensive pattern), findInIframeByText (clickable-ancestor walk by visible text — for SaaS dashboards with content-hashed class names like Klaviyo .sc-jTrPJq), glideToText (convenience). Use for any captured non-WPForms surface where class names are unstable across re-captures.',
+  },
+  {
     path: 'videos/_shared/wpforms-interactions.js',
     use: 'Standard WPForms interactions. Wave 1 (builder/admin): navAddNewForm, selectTemplate, navWPFormsSidebarMenu, openFormInList, dragFieldToForm, openFieldOptions, navBuilderSidebar, openSettingsTab, plus sub-interactions setFieldLabel/setNameFormat/toggleEmailConfirmation. Wave 2 Batch A (notifications + CL): addNotification, insertSmartTag (+openSmartTagPicker/closeSmartTagPicker), selectFromDropdown (generic faux-native-select), addConditionalLogicRule, duplicateNotificationBlock, plus notification setters setNotificationSendTo/Subject/Message. Per library-scope-frequency-2026-05-12.md retrospective: ~6 of 15 Wave 2 methods earned status by ≥3-doc threshold — prefer inline DOM for one-off clicks (philosophy in wpforms-primitives skill). IframeManager helper: iframe slot mount at native 1280×720, engine-pattern direct camera transform, identity at rest, pointer-events: none guard. Zoom > 2x softens on iframe content (CSS transform pixel-doubling limit, Codex zoom-quality session in flight). QC at videos/_qc-interactions/. Compose these for tutorial chapters.',
   },

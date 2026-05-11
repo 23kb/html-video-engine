@@ -67,9 +67,29 @@ Why this matters: viewers who land mid-flow have to mentally reconstruct "how di
 
 Source: Klaviyo tutorial v4 build (2026-05-12) — v3 jumped into Settings; v4 added the All Forms beat as Step 1 and the tutorial read significantly clearer.
 
+### Snapshot capture viewport standard
+
+When capturing new snapshots via SingleFile (or any capture tool), **use a 1380×668 browser viewport** to match our stage's mac-body inner dimensions exactly. Capture-viewport mismatch causes layout-rerender drift inside the iframe (content reflows when its viewport doesn't match capture width).
+
+Klaviyo dashboard was captured at 1513-1624 wide; our slot is 1380. Result: content reflowed and selectors that were valid at capture time drifted slightly. Standardize at the slot dimensions and the captured layout renders identically in the video.
+
+For WPForms admin captures (where we own the live plugin), this also means: `Local By Flywheel` browser → window resize to 1380×668 before clicking SingleFile.
+
+Source: Klaviyo session retro 2026-05-12.
+
+### When to skip skill-context.js boot dump
+
+`node tools/skill-context.js` is helpful for fresh sessions exploring the repo cold. For CONTINUATION sessions where the prompt names the path/files in scope (e.g., Codex executor prompts at `docs/codex-prompts/`), the boot dump is noise. The author can go directly from CLAUDE.md → the prompt → the code.
+
+Rule: run `skill-context.js` only when you don't already know which path / files you're working on. If the user (or prompt) said "work on this file" or "continue this video," skip it.
+
+Source: Klaviyo session retro 2026-05-12.
+
 ### Real captured snapshot + inline DOM = state variants
 
 A single captured snapshot can demonstrate MULTIPLE visual states by toggling inline DOM after the swap. This is a powerful authoring technique for showing alternatives (action variants, configuration options, before/after) without capturing one snapshot per state.
+
+**This is a WPForms-wide convention, not Klaviyo-specific.** The structure `[wpforms-builder-provider]-actions-data` + `[wpforms-builder-provider]-action-description` is shared across Mailchimp, Constant Contact, ActiveCampaign, Stripe (one-time/recurring), notifications (conditional rules), and any other multi-action provider/payment surface. The variant-data lookup table is provider-specific but the technique is identical. Author per provider; don't wrap in a library function — the data variation is too high.
 
 Example from Klaviyo tutorial:
 

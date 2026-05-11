@@ -32,6 +32,8 @@ An interaction earns library status only if it meets at least **2 of 3**:
 2. **Multi-step choreography test:** 3 or more sequential UI steps with timing/coordination between them. Examples that pass: `addConditionalLogicRule`, `dragFieldToForm`, `duplicateNotificationBlock`.
 3. **Recurrence test:** the same exact pattern appears in 3 or more separate videos, or 3 or more separate WPForms.com docs.
 
+**Bonus: pattern abstracts over class-name volatility.** Helpers that paper over content-hashed SaaS class names (Klaviyo, Mailchimp, Stripe dashboards use unstable `.sc-jTrPJq`-style classes) earn promotion easily — they survive re-captures that would break class-based selectors. Examples: `findInIframeByText`, `glideToText` in `videos/_shared/iframe-helpers.js`. These belong in the library even at 2 uses because every future SaaS-captured video benefits.
+
 An interaction failing all three is **inline territory**. Write it in the master timeline:
 
 ```js
@@ -93,8 +95,22 @@ Before writing any of the following, scan this skill:
 8. **Clean exit out of a focused card back to overview** → `cleanFastRejoin` (no blur smear).
 9. **Standard WPForms admin / builder interaction** (Add New, Select Template, Drag Field, Open Settings, etc.) → call the matching method on `WPFormsInteractions` from `videos/_shared/wpforms-interactions.js`. Do not hand-roll click + swap + wait sequences.
 10. **Snapshot-iframe slot with crossfade swap inside an editorial chapter** → use `IframeManager` from `wpforms-interactions.js`. (Tutorial chapters keep using the engine's iframe; this is for editorial / single-HTML scenes that need real product surface.)
+11. **Glide cursor to an iframe element, scroll-into-view + click** (the recurring 4-10× pattern across single-HTML videos) → `glideClick({ iframeManager, cursor }, target, opts)` from `videos/_shared/iframe-helpers.js`. Wraps the entire `try { scrollIntoView + elementToStageCoords + glide + click } catch (warn)` choreography.
+12. **Interact with text in a SaaS-captured iframe** (Klaviyo, Mailchimp, Stripe — anything with content-hashed class names like `.sc-jTrPJq`) → `findInIframeByText(ifm, 'Settings')` or `glideToText({ ifm, cursor }, 'Settings', opts)` from `iframe-helpers.js`. Text content is stable across re-captures; class names are not.
 
 If your beat genuinely needs something neither library covers, **flag it to the user** — primitives are a separate task, not a quick fix.
+
+## Library 3 — `videos/_shared/iframe-helpers.js`
+
+Authoring helpers built on top of IframeManager + Cursor. Each earns library status by recurrence (10× for `glideClick` in Klaviyo v11 alone) or class-name-volatility-bonus (text-based queries paper over content-hashed SaaS class names).
+
+| Helper | When | Signature | Source |
+|---|---|---|---|
+| `findInIframeByText(iframeManager, text, opts?)` | Find a clickable element by VISIBLE TEXT inside iframe. For SaaS dashboards where class names are content-hashed `.sc-jTrPJq` and unstable across re-captures. Walks from text node → nearest clickable ancestor; skips hidden duplicates. | `(ifm, text, { clickableSelector?, maxDepth? })` → Element\|null | `iframe-helpers.js:30` |
+| `glideClick({ iframeManager, cursor }, target, opts?)` | The 10×-recurring pattern: scrollIntoView + elementToStageCoords + cursor.glide + cursor.click, all in one defensive try/catch. Catches the empty-rect throw (INV-12 signal) and the cursor null-guard. Logs failure, doesn't crash the timeline. | `(ctx, target, { click?, scroll?, glideDuration?, via?, ripple?, rippleColor?, silent? })` → Promise<Element\|null> | `iframe-helpers.js:96` |
+| `glideToText({ iframeManager, cursor }, text, opts?)` | Convenience: `findInIframeByText` + `glideClick`. The shortest path to "click that 'Settings' link in the Klaviyo dashboard." | `(ctx, text, opts)` → Promise<Element\|null> | `iframe-helpers.js:165` |
+
+Source: Klaviyo tutorial v11 retro 2026-05-12 (`docs/sound-design-reference-2026-05-12.md` is unrelated; the retro lives in commit messages + this skill).
 
 ## Library 1 — `videos/_shared/motion-primitives.js`
 
