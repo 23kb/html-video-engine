@@ -125,6 +125,100 @@
       <div class="meta"><strong>start:</strong> builder-settings-general · <strong>end:</strong> builder-settings-&lt;tab&gt; · <strong>op:</strong> snapshot-swap</div>
       <span class="status ready">ready — approved 2026-05-12</span>
     </a>
+    <a class="card" href="highlight-element.html">
+      <div class="name">iframeManager.highlightElement(sel)</div>
+      <div class="desc">Projects a highlight ring and optional label over real iframe elements using stage-coordinate rects. Demonstrates label placement and auto-fade holds.</div>
+      <div class="meta"><strong>start:</strong> builder-fields · <strong>end:</strong> builder-fields · <strong>op:</strong> overlay</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+  </div>
+
+  <h2>Wave 2 Batch A (notifications + conditional logic)</h2>
+  <div class="grid">
+    <a class="card" href="add-notification.html">
+      <div class="name">addNotification()</div>
+      <div class="desc">Clicks Add New Notification, completes the WPForms-style prompt, and slides in a new notification block.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-notifications · <strong>end:</strong> builder-settings-notifications · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="edit-notification-name.html">
+      <div class="name">editNotificationName(blockSel, name)</div>
+      <div class="desc">Clicks a notification edit pencil, types a new block name, and restores the header label.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-notifications · <strong>end:</strong> builder-settings-notifications · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="set-notification-send-to.html">
+      <div class="name">setNotificationSendTo(blockSel, value)</div>
+      <div class="desc">Uses the smart-tag picker to insert a field chip into Send To Email Address.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-notifications · <strong>end:</strong> builder-settings-notifications · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="set-notification-subject.html">
+      <div class="name">setNotificationSubject(blockSel, text)</div>
+      <div class="desc">Cursor-clicks the Email Subject Line input and types new copy with input/change events.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-notifications · <strong>end:</strong> builder-settings-notifications · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="set-notification-message.html">
+      <div class="name">setNotificationMessage(blockSel, text)</div>
+      <div class="desc">Cursor-clicks the Email Message textarea and types a replacement message.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-notifications · <strong>end:</strong> builder-settings-notifications · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="insert-smart-tag.html">
+      <div class="name">insertSmartTag(fieldSel, opts)</div>
+      <div class="desc">Opens a smart-tag picker, clicks a real dropdown item, inserts the chip, and closes the picker.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-notifications · <strong>end:</strong> builder-settings-notifications · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="open-smart-tag-picker.html">
+      <div class="name">openSmartTagPicker() / closeSmartTagPicker()</div>
+      <div class="desc">Lower-level smart-tag picker controls for hand-scripted notification or confirmation beats.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-notifications · <strong>end:</strong> builder-settings-notifications · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="select-from-dropdown.html">
+      <div class="name">selectFromDropdown(fieldWrapSel, value)</div>
+      <div class="desc">Generic faux-dropdown overlay for any native WPForms select; demo uses Email Template.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-notifications · <strong>end:</strong> builder-settings-notifications · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="toggle-setting-control.html">
+      <div class="name">toggleSettingControl(fieldWrapSel, state)</div>
+      <div class="desc">Generic checkbox slider toggle; demo uses Enable File Upload Attachments.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-notifications · <strong>end:</strong> builder-settings-notifications · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="duplicate-notification-block.html">
+      <div class="name">duplicateNotificationBlock(blockSel)</div>
+      <div class="desc">Clicks the clone icon, duplicates the notification DOM, and slides the copy into place.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-notifications · <strong>end:</strong> builder-settings-notifications · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="set-notification-active.html">
+      <div class="name">setNotificationActive(blockSel, isActive)</div>
+      <div class="desc">Clicks the status badge and updates Active / Inactive styling, label, icon, and state data.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-notifications · <strong>end:</strong> builder-settings-notifications · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="collapse-notification-block.html">
+      <div class="name">collapseNotificationBlock(blockSel)</div>
+      <div class="desc">Clicks the caret and collapses a notification to its header summary row.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-notifications · <strong>end:</strong> builder-settings-notifications · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="expand-settings-section.html">
+      <div class="name">expandSettingsSection(groupSel)</div>
+      <div class="desc">Expands the Advanced notification group and fades the inner fields in.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-notifications · <strong>end:</strong> builder-settings-notifications · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
+    <a class="card" href="add-conditional-logic-rule.html">
+      <div class="name">addConditionalLogicRule(opts)</div>
+      <div class="desc">Enables Conditional Logic and fills a single Field / Operator / Value rule row.</div>
+      <div class="meta"><strong>start:</strong> builder-settings-notifications-cl · <strong>end:</strong> builder-settings-notifications-cl · <strong>op:</strong> dom-only</div>
+      <span class="status">draft — needs QC</span>
+    </a>
   </div>
 
   <div class="legend">

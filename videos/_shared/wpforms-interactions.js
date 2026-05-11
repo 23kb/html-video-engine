@@ -80,7 +80,7 @@ export class IframeManager {
       indexFile = 'index.html',
     } = opts;
     this.stage = stage;
-    this.viewport = { ...viewport };
+    this._viewport = { ...viewport };
     this.iframeSize = { ...iframeSize };
     this.scale = viewport.width / iframeSize.width;
     this.snapshotBase = snapshotBase;
@@ -96,8 +96,8 @@ export class IframeManager {
     Object.assign(slot.style, {
       position: 'absolute',
       left: '0', top: '0',
-      width: this.viewport.width + 'px',
-      height: this.viewport.height + 'px',
+      width: this._viewport.width + 'px',
+      height: this._viewport.height + 'px',
       overflow: 'hidden',
       background: '#F4F1EC',
     });
@@ -202,6 +202,18 @@ export class IframeManager {
   currentSlug() { return this._slug; }
 
   /**
+   * @returns {{w:number,h:number,width:number,height:number}} visible stage viewport
+   */
+  viewport() {
+    return {
+      w: this._viewport.width,
+      h: this._viewport.height,
+      width: this._viewport.width,
+      height: this._viewport.height,
+    };
+  }
+
+  /**
    * @returns {HTMLIFrameElement|null} current iframe element
    */
   iframe() { return this._iframe; }
@@ -266,6 +278,135 @@ export class IframeManager {
   }
 
   /**
+   * Convert an iframe-document element (or selector string) to a stage-local
+   * rectangle. Keeps `elementToStageCoords()` backward-compatible while
+   * giving highlight/camera helpers the full projected box.
+   *
+   * @param {string|Element} target
+   * @returns {{x:number,y:number,w:number,h:number,width:number,height:number}}
+   * @throws if target not found
+   */
+  elementToStageRect(target) {
+    const el = typeof target === 'string' ? this.query(target) : target;
+    if (!el) throw new Error(`IframeManager: target not found: ${target}`);
+    const r = el.getBoundingClientRect();
+    const ifrR = this._iframe.getBoundingClientRect();
+    const sx = ifrR.width / this.iframeSize.width;
+    const sy = ifrR.height / this.iframeSize.height;
+    const p1 = this._viewportToStage(ifrR.left + r.left * sx, ifrR.top + r.top * sy);
+    const p2 = this._viewportToStage(ifrR.left + (r.left + r.width) * sx, ifrR.top + (r.top + r.height) * sy);
+    const x = Math.min(p1.x, p2.x);
+    const y = Math.min(p1.y, p2.y);
+    const w = Math.abs(p2.x - p1.x);
+    const h = Math.abs(p2.y - p1.y);
+    return { x, y, w, h, width: w, height: h };
+  }
+
+  /**
+   * Project a highlight ring and optional label over an iframe-doc element.
+   * The ring is mounted in the stage coordinate space so it follows the same
+   * transform stack as the iframe slot in single-HTML tutorial scenes.
+   *
+   * @param {string|Element} target
+   * @param {Object} [opts]
+   * @param {string} [opts.label='']
+   * @param {number} [opts.pad=6]
+   * @param {string} [opts.color='rgba(226, 119, 48, 0.92)']
+   * @param {number} [opts.strokeWidth=2]
+   * @param {number} [opts.fadeMs=220]
+   * @param {number} [opts.holdMs=0] — 0 means caller controls removal
+   * @returns {{remove:Function, element:HTMLElement}}
+   */
+  highlightElement(target, opts = {}) {
+    const {
+      label = '',
+      pad = 6,
+      color = 'rgba(226, 119, 48, 0.92)',
+      strokeWidth = 2,
+      fadeMs = 220,
+      holdMs = 0,
+    } = opts;
+    const el = typeof target === 'string' ? this.query(target) : target;
+    if (!el) throw new Error(`IframeManager.highlightElement: target not found: ${target}`);
+    this._ensureHighlightStyles();
+    const rect = this.elementToStageRect(el);
+    const ring = document.createElement('div');
+    ring.className = 'ifm-highlight';
+    Object.assign(ring.style, {
+      left: (rect.x - pad) + 'px',
+      top: (rect.y - pad) + 'px',
+      width: (rect.w + pad * 2) + 'px',
+      height: (rect.h + pad * 2) + 'px',
+      boxShadow: `0 0 0 ${strokeWidth}px ${color}, 0 10px 30px rgba(226,119,48,0.16)`,
+    });
+    this.stage.appendChild(ring);
+
+    let labelEl = null;
+    if (label) {
+      labelEl = document.createElement('div');
+      labelEl.className = 'ifm-highlight-label';
+      labelEl.textContent = label;
+      this.stage.appendChild(labelEl);
+      const viewport = this.viewport();
+      const labelTop = rect.y - pad - 34;
+      const placeBelow = labelTop < 8;
+      const x = Math.max(8, Math.min(rect.x - pad, viewport.w - 240));
+      const y = placeBelow ? rect.y + rect.h + pad + 10 : labelTop;
+      Object.assign(labelEl.style, {
+        left: x + 'px',
+        top: y + 'px',
+      });
+    }
+
+    const nodes = labelEl ? [ring, labelEl] : [ring];
+    gsap.to(nodes, { opacity: 1, duration: fadeMs / 1000, ease: 'power2.out' });
+
+    let removed = false;
+    const remove = () => {
+      if (removed) return;
+      removed = true;
+      gsap.to(nodes, {
+        opacity: 0,
+        duration: fadeMs / 1000,
+        ease: 'power2.in',
+        onComplete: () => nodes.forEach(n => n.remove()),
+      });
+    };
+    if (holdMs > 0) gsap.delayedCall(holdMs / 1000, remove);
+    return { remove, element: ring };
+  }
+
+  _ensureHighlightStyles() {
+    if (this.stage.querySelector(':scope > style[data-ifm-highlight]')) return;
+    const style = document.createElement('style');
+    style.dataset.ifmHighlight = 'true';
+    style.textContent = `
+      .ifm-highlight {
+        position: absolute;
+        border-radius: 7px;
+        pointer-events: none;
+        opacity: 0;
+        z-index: 82;
+      }
+      .ifm-highlight-label {
+        position: absolute;
+        max-width: 232px;
+        padding: 7px 10px;
+        border-radius: 6px;
+        background: #E27730;
+        color: #fff;
+        font: 700 12px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+        letter-spacing: 0;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+        opacity: 0;
+        pointer-events: none;
+        z-index: 83;
+      }
+    `;
+    this.stage.appendChild(style);
+  }
+
+  /**
    * Reverse the stage's CSS transform to convert viewport coords → stage-
    * local coords (the space gsap.set(.., {x, y}) operates in for elements
    * mounted on the stage).
@@ -283,8 +424,8 @@ export class IframeManager {
     const stageR = this.stage.getBoundingClientRect();
     const win = this.stage.ownerDocument.defaultView;
     const cs = win.getComputedStyle(this.stage);
-    const cssW = parseFloat(cs.width) || this.viewport.width;
-    const cssH = parseFloat(cs.height) || this.viewport.height;
+    const cssW = parseFloat(cs.width) || this._viewport.width;
+    const cssH = parseFloat(cs.height) || this._viewport.height;
     let scale = 1;
     const m = (cs.transform || '').match(/matrix\(([-\d.]+),\s*[-\d.]+,\s*[-\d.]+,\s*([-\d.]+),/);
     if (m) scale = parseFloat(m[1]); // scaleX (we don't author non-uniform stage scale)
@@ -415,6 +556,16 @@ export class WPFormsInteractions {
     }
   }
 
+  _assertSnapshotOneOf(expected, methodName) {
+    const cur = this.iframe.currentSlug();
+    if (!expected.includes(cur)) {
+      throw new Error(
+        `${methodName}: expected one of ${expected.map(s => `'${s}'`).join(', ')} but got '${cur}'. ` +
+        `Call iframeManager.load('${expected[0]}') first.`
+      );
+    }
+  }
+
   _findOrThrow(selector, methodName) {
     const el = this.iframe.query(selector);
     if (!el) {
@@ -436,6 +587,156 @@ export class WPFormsInteractions {
     const pt = this.iframe.elementToStageCoords(el);
     await this.cursor.glide(pt, { duration: opts.glideDuration ?? 0.95 });
     await this.cursor.click({ ripple: opts.ripple ?? true });
+  }
+
+  async _typeIntoIframeInput(input, text, opts = {}) {
+    const { charDuration = 0.045, clear = true } = opts;
+    const win = input.ownerDocument.defaultView;
+    if (clear) {
+      input.value = '';
+      input.dispatchEvent(new win.Event('input', { bubbles: true }));
+      await this.iframe.wait(0.12);
+    }
+    for (let i = 1; i <= String(text).length; i++) {
+      input.value = String(text).slice(0, i);
+      input.dispatchEvent(new win.Event('input', { bubbles: true }));
+      await this.iframe.wait(charDuration);
+    }
+    input.dispatchEvent(new win.Event('change', { bubbles: true }));
+  }
+
+  _resolveSmartTagWrap(target, methodName) {
+    const el = typeof target === 'string' ? this._findOrThrow(target, methodName) : target;
+    const wrap = el.matches?.('.wpforms-panel-field')
+      ? el
+      : el.closest?.('.wpforms-panel-field');
+    if (!wrap) throw new Error(`${methodName}: target is not inside a .wpforms-panel-field`);
+    return wrap;
+  }
+
+  _selectorForElement(el, fallback = '') {
+    if (el.id) return `#${cssEscape(el.id)}`;
+    return fallback;
+  }
+
+  _resolveSmartTagItem(dropdown, pick) {
+    const query = pick || {};
+    const wantedTag = query.tag ?? query.value;
+    const wantedLabel = query.label ?? query.tag;
+    const items = Array.from(dropdown.querySelectorAll('ul.list li'));
+    for (const li of items) {
+      const span = li.querySelector('.wpforms-smart-tags-widget-item');
+      if (!span) continue;
+      if (query.type && span.dataset.type !== query.type) continue;
+      if (wantedTag !== undefined && String(li.dataset.value) === String(wantedTag)) return span;
+      if (wantedLabel && span.textContent.trim().toLowerCase().includes(String(wantedLabel).toLowerCase())) return span;
+    }
+    return null;
+  }
+
+  _chipDataValue(item) {
+    const li = item.closest('li');
+    if (item.dataset.type === 'field') {
+      const additional = item.dataset.additional ? `|${item.dataset.additional}` : '';
+      return `field_id="${li.dataset.value}${additional}"`;
+    }
+    return li.dataset.value;
+  }
+
+  _nextBlockId(blockType) {
+    const ids = this.iframe.queryAll(`.wpforms-builder-settings-block[data-block-type="${cssEscape(blockType)}"]`)
+      .map(block => parseInt(block.dataset.blockId, 10))
+      .filter(Number.isFinite);
+    return String((ids.length ? Math.max(...ids) : 0) + 1);
+  }
+
+  _updateBlockName(block, name) {
+    const label = block.querySelector('.wpforms-builder-settings-block-name');
+    const input = block.querySelector('.wpforms-builder-settings-block-name-edit input');
+    if (label) label.textContent = name;
+    if (input) input.value = name;
+  }
+
+  async _slideBlockIn(block, fade = 0.72) {
+    gsap.set(block, { opacity: 0, y: -14, scale: 0.97, transformOrigin: 'top center' });
+    await new Promise(resolve => {
+      gsap.to(block, {
+        opacity: 1,
+        y: 0,
+        scale: 1,
+        duration: fade,
+        ease: 'power3.out',
+        onComplete: resolve,
+      });
+    });
+  }
+
+  async _openModalPrompt(opts = {}) {
+    const {
+      title = 'Enter a name',
+      placeholder = '',
+      typeText = '',
+      methodName = '_openModalPrompt',
+      fade = 0.28,
+      charDuration = 0.045,
+    } = opts;
+    const doc = this.iframe.doc();
+    const backdrop = doc.createElement('div');
+    backdrop.className = '__wpf_prompt_backdrop';
+    Object.assign(backdrop.style, {
+      position: 'fixed',
+      inset: '0',
+      background: 'rgba(0,0,0,0.5)',
+      zIndex: '2147483646',
+      opacity: '0',
+    });
+    const dialog = doc.createElement('div');
+    dialog.className = '__wpf_prompt_dialog';
+    Object.assign(dialog.style, {
+      position: 'fixed',
+      top: '50%',
+      left: '50%',
+      width: '420px',
+      transform: 'translate(-50%, -50%) scale(0.94)',
+      background: '#fff',
+      borderRadius: '4px',
+      borderTop: '6px solid #0399ED',
+      boxShadow: '0 10px 40px rgba(0,0,0,0.35)',
+      color: '#1d2327',
+      fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif',
+      padding: '30px 40px',
+      textAlign: 'center',
+      zIndex: '2147483647',
+      opacity: '0',
+    });
+    dialog.innerHTML = `
+      <div style="width:56px;height:56px;border-radius:50%;background:#0399ED;color:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;font-size:30px;font-style:italic;font-weight:700;font-family:Georgia,serif;">i</div>
+      <div style="font-size:16px;margin-bottom:18px;">${escapeHtml(title)}</div>
+      <input type="text" class="__wpf_prompt_input" placeholder="${escapeHtml(placeholder)}" style="width:100%;padding:10px 12px;border:1px solid #ccd0d4;border-radius:3px;font-size:14px;box-sizing:border-box;margin-bottom:24px;outline:none;">
+      <div style="display:flex;justify-content:center;gap:10px;">
+        <button class="__wpf_prompt_ok" style="background:#0399ED;color:#fff;border:none;padding:10px 28px;border-radius:3px;cursor:pointer;font-size:15px;font-weight:600;">OK</button>
+        <button class="__wpf_prompt_cancel" style="background:#f1f1f1;color:#333;border:none;padding:10px 24px;border-radius:3px;cursor:pointer;font-size:15px;">Cancel</button>
+      </div>
+    `;
+    doc.body.appendChild(backdrop);
+    doc.body.appendChild(dialog);
+    await new Promise(resolve => {
+      gsap.to(backdrop, { opacity: 1, duration: fade, ease: 'sine.out' });
+      gsap.to(dialog, { opacity: 1, scale: 1, duration: fade, ease: 'back.out(1.4)', onComplete: resolve });
+    });
+    const input = dialog.querySelector('.__wpf_prompt_input');
+    await this._glideAndClick(input, { ripple: false, skipScroll: true, glideDuration: 0.55 });
+    await this._typeIntoIframeInput(input, typeText, { charDuration, clear: true });
+    const ok = dialog.querySelector('.__wpf_prompt_ok');
+    await this._glideAndClick(ok, { ripple: true, skipScroll: true, glideDuration: 0.55 });
+    await new Promise(resolve => {
+      gsap.to(backdrop, { opacity: 0, duration: fade, ease: 'sine.in' });
+      gsap.to(dialog, { opacity: 0, scale: 0.94, duration: fade, ease: 'sine.in', onComplete: resolve });
+    });
+    backdrop.remove();
+    dialog.remove();
+    if (!typeText) throw new Error(`${methodName}: prompt submitted without text`);
+    return typeText;
   }
 
   // ── Wave 1: Admin-side ──────────────────────────────────────────────────
@@ -1237,6 +1538,527 @@ export class WPFormsInteractions {
       wrapper.classList.toggle('wpforms-confirm-disabled', !on);
     }
     await this.iframe.wait(0.18);
+  }
+
+  // ── Wave 2 / Batch A: Notifications + Conditional Logic ────────────────
+
+  /**
+   * Add a notification block from the Settings → Notifications panel.
+   *
+   * @prerequisite Current snapshot: 'builder-settings-notifications'
+   * @operation dom-only (click add + modal prompt + cloned notification block)
+   * @endsAt 'builder-settings-notifications' (new notification block inserted)
+   * @primitives Cursor.glide, Cursor.click, IframeManager.elementToStageCoords
+   * @realDom Add button `.wpforms-notifications-add.wpforms-builder-settings-block-add`
+   *   (snapshots/builder-settings-notifications/index.html:7497).
+   *   Block scaffold `.wpforms-notification.wpforms-builder-settings-block`
+   *   (snapshots/builder-settings-notifications/index.html:7503).
+   * @duration ~4.2s
+   *
+   * @param {Object} [opts]
+   * @param {string} [opts.name='New Notification']
+   * @param {string} [opts.templateBlockSel='[data-block-type="notification"][data-block-id="2"]']
+   * @returns {Promise<string>} selector for the new block
+   */
+  async addNotification(opts = {}) {
+    this._assertSnapshot('builder-settings-notifications', 'addNotification');
+    const {
+      name = 'New Notification',
+      templateBlockSel = '[data-block-type="notification"][data-block-id="2"]',
+    } = opts;
+    const addBtn = this._findOrThrow(
+      '.wpforms-notifications-add.wpforms-builder-settings-block-add, .wpforms-builder-settings-block-add[data-block-type="notification"]',
+      'addNotification'
+    );
+    await this._glideAndClick(addBtn);
+    const blockName = await this._openModalPrompt({
+      title: 'Enter a notification name',
+      placeholder: 'Eg: User Confirmation',
+      typeText: name,
+      methodName: 'addNotification',
+    });
+    const template = this._findOrThrow(templateBlockSel, 'addNotification');
+    const copy = template.cloneNode(true);
+    const newId = this._nextBlockId('notification');
+    copy.dataset.blockId = newId;
+    copy.classList.remove('wpforms-builder-settings-block-default');
+    this._updateBlockName(copy, blockName);
+    const content = copy.querySelector('.wpforms-builder-settings-block-content');
+    if (content) content.style.display = '';
+    template.parentNode.insertBefore(copy, template);
+    await this._slideBlockIn(copy);
+    return `[data-block-type="notification"][data-block-id="${newId}"]`;
+  }
+
+  /**
+   * Rename an existing notification block through its edit-pencil affordance.
+   *
+   * @prerequisite Current snapshot: 'builder-settings-notifications'
+   * @operation dom-only
+   * @endsAt 'builder-settings-notifications' (block name updated)
+   * @primitives Cursor.glide, Cursor.click
+   * @realDom Edit button `.wpforms-builder-settings-block-edit` and name input
+   *   `.wpforms-builder-settings-block-name-edit input`
+   *   (snapshots/builder-settings-notifications/index.html:7518-7521).
+   * @duration ~2.8s
+   *
+   * @param {string} blockSel
+   * @param {string} newName
+   * @returns {Promise<void>}
+   */
+  async editNotificationName(blockSel, newName) {
+    this._assertSnapshot('builder-settings-notifications', 'editNotificationName');
+    const block = this._findOrThrow(blockSel, 'editNotificationName');
+    const editBtn = block.querySelector('.wpforms-builder-settings-block-edit');
+    const editWrap = block.querySelector('.wpforms-builder-settings-block-name-edit');
+    const input = editWrap?.querySelector('input');
+    if (!editBtn || !input) throw new Error(`editNotificationName: missing edit controls in ${blockSel}`);
+    await this._glideAndClick(editBtn, { ripple: false });
+    const nameLabel = block.querySelector('.wpforms-builder-settings-block-name');
+    if (nameLabel) nameLabel.style.display = 'none';
+    if (editWrap) editWrap.style.display = 'block';
+    await this._glideAndClick(input, { ripple: false, skipScroll: true, glideDuration: 0.55 });
+    await this._typeIntoIframeInput(input, newName, { charDuration: 0.045, clear: true });
+    this._updateBlockName(block, newName);
+    if (editWrap) editWrap.style.display = '';
+    if (nameLabel) nameLabel.style.display = '';
+    await this.iframe.wait(0.18);
+  }
+
+  /**
+   * Set the "Send To Email Address" field for a notification using the
+   * smart-tag picker.
+   *
+   * @prerequisite Current snapshot: 'builder-settings-notifications'
+   * @operation dom-only
+   * @endsAt 'builder-settings-notifications' (email chip inserted)
+   * @primitives Cursor.glide, Cursor.click
+   * @realDom Email wrap `#wpforms-panel-field-notifications-<id>-email-wrap`
+   *   (snapshots/builder-settings-notifications/index.html:7526,8084).
+   * @duration ~3.2s
+   *
+   * @param {string} blockSel
+   * @param {{tag?:string,value?:string,label?:string,type?:string}} value
+   * @returns {Promise<void>}
+   */
+  async setNotificationSendTo(blockSel, value = { tag: 'Email', type: 'field' }) {
+    this._assertSnapshot('builder-settings-notifications', 'setNotificationSendTo');
+    const block = this._findOrThrow(blockSel, 'setNotificationSendTo');
+    const field = block.querySelector('[id$="-email-wrap"]');
+    if (!field) throw new Error(`setNotificationSendTo: email wrap not found in ${blockSel}`);
+    await this.insertSmartTag(field, value);
+  }
+
+  /**
+   * Type into a notification's Email Subject Line input.
+   *
+   * @prerequisite Current snapshot: 'builder-settings-notifications'
+   * @operation dom-only
+   * @endsAt 'builder-settings-notifications' (subject input updated)
+   * @primitives Cursor.glide, Cursor.click
+   * @realDom Subject input `#wpforms-panel-field-notifications-<id>-subject`
+   *   (snapshots/builder-settings-notifications/index.html:7754,8312).
+   * @duration ~2.6s
+   *
+   * @param {string} blockSel
+   * @param {string} text
+   * @returns {Promise<void>}
+   */
+  async setNotificationSubject(blockSel, text) {
+    this._assertSnapshot('builder-settings-notifications', 'setNotificationSubject');
+    const block = this._findOrThrow(blockSel, 'setNotificationSubject');
+    const input = block.querySelector('input[id$="-subject"]');
+    if (!input) throw new Error(`setNotificationSubject: subject input not found in ${blockSel}`);
+    await this._glideAndClick(input, { ripple: false });
+    await this._typeIntoIframeInput(input, text, { charDuration: 0.04, clear: true });
+  }
+
+  /**
+   * Type into a notification's Email Message textarea.
+   *
+   * @prerequisite Current snapshot: 'builder-settings-notifications'
+   * @operation dom-only
+   * @endsAt 'builder-settings-notifications' (message textarea updated)
+   * @primitives Cursor.glide, Cursor.click
+   * @realDom Message textarea `#wpforms-panel-field-notifications-<id>-message`
+   *   (snapshots/builder-settings-notifications/index.html:8024,8582).
+   * @duration ~3.0s
+   *
+   * @param {string} blockSel
+   * @param {string} text
+   * @returns {Promise<void>}
+   */
+  async setNotificationMessage(blockSel, text) {
+    this._assertSnapshot('builder-settings-notifications', 'setNotificationMessage');
+    const block = this._findOrThrow(blockSel, 'setNotificationMessage');
+    const input = block.querySelector('textarea[id$="-message"]');
+    if (!input) throw new Error(`setNotificationMessage: message textarea not found in ${blockSel}`);
+    await this._glideAndClick(input, { ripple: false });
+    await this._typeIntoIframeInput(input, text, { charDuration: 0.035, clear: true });
+  }
+
+  /**
+   * Open a WPForms smart-tag picker for any smart-tag-enabled field.
+   *
+   * @prerequisite Current snapshot: 'builder-settings-notifications'
+   * @operation dom-only
+   * @endsAt 'builder-settings-notifications' (picker open)
+   * @primitives Cursor.glide, Cursor.click
+   * @realDom Smart-tag icon `.wpforms-show-smart-tags` and dropdown
+   *   `.insert-smart-tag-dropdown` inside a field wrap
+   *   (snapshots/builder-settings-notifications/index.html:7526-7542).
+   * @duration ~1.6s
+   *
+   * @param {string|Element} fieldSel
+   * @returns {Promise<HTMLElement>} the opened dropdown element
+   */
+  async openSmartTagPicker(fieldSel, opts = {}) {
+    this._assertSnapshot('builder-settings-notifications', 'openSmartTagPicker');
+    const wrap = this._resolveSmartTagWrap(fieldSel, 'openSmartTagPicker');
+    const icon = wrap.querySelector('.wpforms-show-smart-tags');
+    const dropdown = wrap.querySelector('.insert-smart-tag-dropdown');
+    if (!icon || !dropdown) throw new Error('openSmartTagPicker: field missing smart-tag icon or dropdown');
+    if (opts.direction === 'up') {
+      dropdown.classList.remove('open-down');
+      dropdown.classList.add('open-up');
+      const h = dropdown.getBoundingClientRect().height || 280;
+      dropdown.style.top = `-${h + 6}px`;
+    }
+    await this._glideAndClick(icon, { ripple: false });
+    dropdown.classList.remove('closed');
+    await this.iframe.wait(0.35);
+    return dropdown;
+  }
+
+  /**
+   * Close the currently open smart-tag picker.
+   *
+   * @prerequisite Current snapshot: 'builder-settings-notifications'
+   * @operation dom-only
+   * @endsAt 'builder-settings-notifications' (picker closed)
+   * @primitives none
+   * @realDom Dropdown `.insert-smart-tag-dropdown`
+   *   (snapshots/builder-settings-notifications/index.html:7526-7542).
+   * @duration ~0.3s
+   *
+   * @returns {Promise<void>}
+   */
+  async closeSmartTagPicker() {
+    this._assertSnapshot('builder-settings-notifications', 'closeSmartTagPicker');
+    for (const dropdown of this.iframe.queryAll('.insert-smart-tag-dropdown:not(.closed)')) {
+      dropdown.classList.add('closed');
+    }
+    await this.iframe.wait(0.25);
+  }
+
+  /**
+   * Insert a smart tag into any WPForms smart-tag widget field.
+   *
+   * @prerequisite Current snapshot: 'builder-settings-notifications'
+   * @operation dom-only (open picker + choose tag + insert chip)
+   * @endsAt 'builder-settings-notifications' (chip inserted)
+   * @primitives Cursor.glide, Cursor.click
+   * @realDom Smart-tag widget host `.wpforms-smart-tags-widget-input` or
+   *   `.wpforms-smart-tags-widget-textarea`; dropdown `.insert-smart-tag-dropdown`
+   *   (snapshots/builder-settings-notifications/index.html:7526-7542).
+   * @duration ~3.0s
+   *
+   * @param {string|Element} fieldSel
+   * @param {{tag?:string,value?:string,label?:string,type?:string,replaceChips?:boolean}} opts
+   * @returns {Promise<void>}
+   */
+  async insertSmartTag(fieldSel, opts = {}) {
+    this._assertSnapshot('builder-settings-notifications', 'insertSmartTag');
+    const { replaceChips = true } = opts;
+    const wrap = this._resolveSmartTagWrap(fieldSel, 'insertSmartTag');
+    const dropdown = await this.openSmartTagPicker(wrap, opts);
+    const item = this._resolveSmartTagItem(dropdown, opts);
+    if (!item) throw new Error(`insertSmartTag: tag not found: ${JSON.stringify(opts)}`);
+    await this._glideAndClick(item, { ripple: false, skipScroll: true, glideDuration: 0.65 });
+    const host = wrap.querySelector('.wpforms-smart-tags-widget-input, .wpforms-smart-tags-widget-textarea');
+    if (!host) throw new Error('insertSmartTag: chip host not found');
+    if (replaceChips) host.innerHTML = '';
+    const chip = this.iframe.doc().createElement('span');
+    chip.className = 'tag';
+    chip.setAttribute('contenteditable', 'false');
+    chip.setAttribute('data-value', this._chipDataValue(item));
+    chip.innerHTML = `${escapeHtml(item.textContent.trim())} <i class="fa fa-times-circle" title="Delete smart tag"></i>`;
+    host.appendChild(chip);
+    gsap.fromTo(chip, { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.32, ease: 'back.out(1.8)' });
+    const original = wrap.querySelector('.wpforms-smart-tags-widget-original');
+    if (original) {
+      original.value = chip.dataset.value;
+      original.dispatchEvent(new original.ownerDocument.defaultView.Event('input', { bubbles: true }));
+    }
+    await this.iframe.wait(0.42);
+    await this.closeSmartTagPicker();
+  }
+
+  /**
+   * Pick a value from any native WPForms select by rendering a faux dropdown.
+   *
+   * @prerequisite Current snapshot: any builder settings snapshot
+   * @operation dom-only
+   * @endsAt current snapshot (select value changed)
+   * @primitives Cursor.glide, Cursor.click
+   * @realDom Any field wrap containing a native `<select>`, for example
+   *   `#wpforms-panel-field-notifications-1-template-wrap`
+   *   (snapshots/builder-settings-notifications/catalog.md:1964).
+   * @duration ~2.4s
+   *
+   * @param {string} fieldWrapSel
+   * @param {string} value option value or visible label
+   * @returns {Promise<void>}
+   */
+  async selectFromDropdown(fieldWrapSel, value) {
+    this._assertSnapshotOneOf([
+      'builder-settings-notifications',
+      'builder-settings-confirmation',
+      'builder-settings-notifications-cl',
+    ], 'selectFromDropdown');
+    const wrap = this._findOrThrow(fieldWrapSel, 'selectFromDropdown');
+    const select = wrap.querySelector('select');
+    if (!select) throw new Error(`selectFromDropdown: no select inside ${fieldWrapSel}`);
+    const options = Array.from(select.options).map(o => ({ value: o.value, label: o.textContent.trim() }));
+    const target = options.find(o => o.value === value)
+      || options.find(o => o.label.toLowerCase() === String(value).toLowerCase());
+    if (!target) throw new Error(`selectFromDropdown: option not found: ${value}`);
+    await this._glideAndClick(select, { ripple: false });
+    const panel = await this._openFakeDropdown(select, options, select.value);
+    const row = panel.querySelector(`[data-value="${cssEscape(target.value)}"]`);
+    await this._glideAndClick(row, { ripple: false, skipScroll: true, glideDuration: 0.62 });
+    row.style.background = '#036aab';
+    row.style.color = '#fff';
+    select.value = target.value;
+    select.dispatchEvent(new select.ownerDocument.defaultView.Event('change', { bubbles: true }));
+    await this._closeFakeDropdown(panel);
+  }
+
+  /**
+   * Toggle any WPForms setting control.
+   *
+   * @prerequisite Current snapshot: any builder settings snapshot
+   * @operation dom-only
+   * @endsAt current snapshot (checkbox state changed)
+   * @primitives Cursor.glide, Cursor.click
+   * @realDom Toggle wraps such as
+   *   `#wpforms-panel-field-notifications-1-file_upload_attachment_enable-wrap`
+   *   (snapshots/builder-settings-notifications/catalog.md:1944).
+   * @duration ~1.4s
+   *
+   * @param {string} fieldWrapSel
+   * @param {boolean|'toggle'} [state=true]
+   * @returns {Promise<void>}
+   */
+  async toggleSettingControl(fieldWrapSel, state = true) {
+    this._assertSnapshotOneOf([
+      'builder-settings-notifications',
+      'builder-settings-confirmation',
+      'builder-settings-notifications-cl',
+    ], 'toggleSettingControl');
+    const wrap = this._findOrThrow(fieldWrapSel, 'toggleSettingControl');
+    const input = wrap.querySelector('input[type="checkbox"]');
+    const icon = wrap.querySelector('.wpforms-toggle-control-icon');
+    const root = wrap.querySelector('.wpforms-toggle-control');
+    if (!input || !icon) throw new Error(`toggleSettingControl: missing checkbox or slider in ${fieldWrapSel}`);
+    await this._glideAndClick(icon, { ripple: false });
+    const next = state === 'toggle' ? !input.checked : !!state;
+    input.checked = next;
+    if (root) root.classList.toggle('wpforms-toggle-control-checked', next);
+    input.dispatchEvent(new input.ownerDocument.defaultView.Event('change', { bubbles: true }));
+    await this.iframe.wait(0.24);
+  }
+
+  /**
+   * Duplicate a notification block using the clone icon and slide in the copy.
+   *
+   * @prerequisite Current snapshot: 'builder-settings-notifications'
+   * @operation dom-only
+   * @endsAt 'builder-settings-notifications' (duplicated block inserted)
+   * @primitives Cursor.glide, Cursor.click
+   * @realDom Clone button `.wpforms-builder-settings-block-clone`
+   *   (snapshots/builder-settings-notifications/index.html:7509,8067).
+   * @duration ~2.5s
+   *
+   * @param {string} blockSel
+   * @param {Object} [opts]
+   * @param {string} [opts.name='Duplicated Notification']
+   * @returns {Promise<string>} selector for duplicated block
+   */
+  async duplicateNotificationBlock(blockSel, opts = {}) {
+    this._assertSnapshot('builder-settings-notifications', 'duplicateNotificationBlock');
+    const { name = 'Duplicated Notification' } = opts;
+    const block = this._findOrThrow(blockSel, 'duplicateNotificationBlock');
+    const button = block.querySelector('.wpforms-builder-settings-block-clone');
+    if (!button) throw new Error(`duplicateNotificationBlock: clone button not found in ${blockSel}`);
+    await this._glideAndClick(button, { ripple: false });
+    const copy = block.cloneNode(true);
+    const newId = this._nextBlockId('notification');
+    copy.dataset.blockId = newId;
+    copy.classList.remove('wpforms-builder-settings-block-default');
+    this._updateBlockName(copy, name);
+    block.parentNode.insertBefore(copy, block.nextSibling);
+    await this._slideBlockIn(copy);
+    return `[data-block-type="notification"][data-block-id="${newId}"]`;
+  }
+
+  /**
+   * Set a notification block's Active / Inactive status badge.
+   *
+   * @prerequisite Current snapshot: 'builder-settings-notifications'
+   * @operation dom-only
+   * @endsAt 'builder-settings-notifications' (status badge updated)
+   * @primitives Cursor.glide, Cursor.click
+   * @realDom Status badge `.wpforms-builder-settings-block-status`
+   *   (snapshots/builder-settings-notifications/index.html:7508,8066).
+   * @duration ~1.5s
+   *
+   * @param {string} blockSel
+   * @param {boolean} isActive
+   * @returns {Promise<void>}
+   */
+  async setNotificationActive(blockSel, isActive) {
+    this._assertSnapshot('builder-settings-notifications', 'setNotificationActive');
+    const block = this._findOrThrow(blockSel, 'setNotificationActive');
+    const badge = block.querySelector('.wpforms-builder-settings-block-status');
+    if (!badge) throw new Error(`setNotificationActive: status badge not found in ${blockSel}`);
+    await this._glideAndClick(badge, { ripple: false });
+    badge.classList.toggle('wpforms-badge-green', !!isActive);
+    badge.classList.toggle('wpforms-badge-silver', !isActive);
+    badge.dataset.active = isActive ? '1' : '0';
+    badge.title = isActive ? 'Deactivate' : 'Activate';
+    const label = badge.querySelector('.wpforms-status-label');
+    if (label) label.textContent = isActive ? 'Active' : 'Inactive';
+    const icon = badge.querySelector('i.fa');
+    if (icon) {
+      icon.classList.toggle('fa-check', !!isActive);
+      icon.classList.toggle('fa-ban', !isActive);
+    }
+    await this.iframe.wait(0.24);
+  }
+
+  /**
+   * Collapse a notification block to its header row.
+   *
+   * @prerequisite Current snapshot: 'builder-settings-notifications'
+   * @operation dom-only
+   * @endsAt 'builder-settings-notifications' (content hidden)
+   * @primitives Cursor.glide, Cursor.click
+   * @realDom Collapse button `.wpforms-builder-settings-block-toggle`
+   *   (snapshots/builder-settings-notifications/index.html:7511,8069).
+   * @duration ~1.2s
+   *
+   * @param {string} blockSel
+   * @returns {Promise<void>}
+   */
+  async collapseNotificationBlock(blockSel) {
+    this._assertSnapshot('builder-settings-notifications', 'collapseNotificationBlock');
+    const block = this._findOrThrow(blockSel, 'collapseNotificationBlock');
+    const button = block.querySelector('.wpforms-builder-settings-block-toggle');
+    if (button) await this._glideAndClick(button, { ripple: false });
+    const content = block.querySelector('.wpforms-builder-settings-block-content');
+    if (content) content.style.display = 'none';
+    const icon = block.querySelector('.wpforms-builder-settings-block-toggle i');
+    if (icon) {
+      icon.classList.remove('fa-chevron-circle-up');
+      icon.classList.add('fa-chevron-circle-down');
+    }
+  }
+
+  /**
+   * Expand a collapsed panel-fields group such as Advanced settings.
+   *
+   * @prerequisite Current snapshot: 'builder-settings-notifications'
+   * @operation dom-only
+   * @endsAt 'builder-settings-notifications' (group opened)
+   * @primitives Cursor.glide, Cursor.click
+   * @realDom Group `.wpforms-builder-notifications-advanced.unfoldable`
+   *   (snapshots/builder-settings-notifications/index.html:8044,8602).
+   * @duration ~1.5s
+   *
+   * @param {string} groupSel
+   * @returns {Promise<void>}
+   */
+  async expandSettingsSection(groupSel) {
+    this._assertSnapshot('builder-settings-notifications', 'expandSettingsSection');
+    const group = this._findOrThrow(groupSel, 'expandSettingsSection');
+    const title = group.querySelector('.wpforms-panel-fields-group-title') || group;
+    await this._glideAndClick(title, { ripple: false });
+    group.classList.remove('unfoldable', 'closed', 'wpforms-hidden');
+    group.classList.add('opened');
+    const inners = Array.from(group.querySelectorAll('.wpforms-panel-fields-group-inner'));
+    for (const inner of inners) {
+      inner.style.display = 'block';
+      gsap.fromTo(inner, { opacity: 0, y: -4 }, { opacity: 1, y: 0, duration: 0.36, ease: 'sine.out' });
+    }
+    await this.iframe.wait(0.42);
+  }
+
+  /**
+   * Enable conditional logic and fill a single rule row.
+   *
+   * @prerequisite Current snapshot: 'builder-settings-notifications-cl'
+   * @operation dom-only
+   * @endsAt 'builder-settings-notifications-cl' (rule box visible and populated)
+   * @primitives Cursor.glide, Cursor.click
+   * @realDom Toggle `#wpforms-panel-field-notifications-1-conditional_logic-wrap`
+   *   and rule box `#wpforms-conditional-groups-settings-notifications-1`
+   *   (snapshots/builder-settings-notifications-cl/index.html:2808-2813).
+   * @duration ~4.2s
+   *
+   * @param {Object} opts
+   * @param {string} [opts.toggleWrapSel='#wpforms-panel-field-notifications-1-conditional_logic-wrap']
+   * @param {{field:string,operator:string,value:string}} [opts.rule]
+   * @returns {Promise<void>}
+   */
+  async addConditionalLogicRule(opts = {}) {
+    this._assertSnapshot('builder-settings-notifications-cl', 'addConditionalLogicRule');
+    const {
+      toggleWrapSel = '#wpforms-panel-field-notifications-1-conditional_logic-wrap',
+      rule = { field: 'Message', operator: 'contains', value: 'Urgent' },
+    } = opts;
+    const wrap = this._findOrThrow(toggleWrapSel, 'addConditionalLogicRule');
+    const icon = wrap.querySelector('.wpforms-toggle-control-icon');
+    if (!icon) throw new Error(`addConditionalLogicRule: toggle icon not found in ${toggleWrapSel}`);
+    await this._glideAndClick(icon, { ripple: false });
+    const root = wrap.querySelector('.wpforms-toggle-control');
+    const checkbox = wrap.querySelector('input[type="checkbox"]');
+    if (root) root.classList.add('wpforms-toggle-control-checked');
+    if (checkbox) checkbox.checked = true;
+    const blockId = toggleWrapSel.match(/notifications-(\d+)-conditional_logic/)?.[1] || '1';
+    const ruleBox = this._findOrThrow(`#wpforms-conditional-groups-settings-notifications-${cssEscape(blockId)}`, 'addConditionalLogicRule');
+    ruleBox.style.display = '';
+    gsap.fromTo(ruleBox, { opacity: 0, y: -6 }, { opacity: 1, y: 0, duration: 0.42, ease: 'sine.out' });
+    await this.iframe.wait(0.48);
+    const field = ruleBox.querySelector('.wpforms-conditional-field');
+    const operator = ruleBox.querySelector('.wpforms-conditional-operator');
+    const valueCell = ruleBox.querySelector('td.value');
+    if (field) {
+      const opt = Array.from(field.options).find(o => o.textContent.trim() === rule.field || o.value === rule.field);
+      if (opt) field.value = opt.value;
+      field.dispatchEvent(new field.ownerDocument.defaultView.Event('change', { bubbles: true }));
+      gsap.fromTo(field, { opacity: 0.35 }, { opacity: 1, duration: 0.24 });
+    }
+    await this.iframe.wait(0.32);
+    if (operator) {
+      for (const opt of operator.options) opt.disabled = false;
+      const opt = Array.from(operator.options).find(o => o.textContent.trim() === rule.operator || o.value === rule.operator);
+      if (opt) operator.value = opt.value;
+      operator.dispatchEvent(new operator.ownerDocument.defaultView.Event('change', { bubbles: true }));
+      gsap.fromTo(operator, { opacity: 0.35 }, { opacity: 1, duration: 0.24 });
+    }
+    await this.iframe.wait(0.32);
+    const doc = this.iframe.doc();
+    const oldValue = valueCell?.querySelector('select, input');
+    const input = doc.createElement('input');
+    input.type = 'text';
+    input.className = 'wpforms-conditional-value';
+    input.placeholder = 'Enter value';
+    input.style.cssText = 'width:100%;box-sizing:border-box;';
+    if (oldValue) oldValue.replaceWith(input);
+    else if (valueCell) valueCell.appendChild(input);
+    await this._glideAndClick(input, { ripple: false, glideDuration: 0.55 });
+    await this._typeIntoIframeInput(input, rule.value, { charDuration: 0.045, clear: true });
   }
 
   /**

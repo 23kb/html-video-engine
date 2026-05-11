@@ -48,12 +48,14 @@ QC: open `videos/_qc-primitives/index.html` in the preview server. Each card lin
 | `cinematicFlight(camera, opts)` | Intra-snapshot multi-phase camera move. Single best fit for any "flight between two poses" with a scale dip. 5 phases: anticipation → outbound (dip) → inbound (recover) → land+hold → optional micro-zoom. | `{ from, to, anticipationDuration?, flightDuration?, landHold?, scaleDipFactor?, rotationTilt?, microZoom? }` → paused timeline | **ready** | `motion-primitives.js:100` |
 | `figjamFlight(camera, opts)` | Inter-snapshot / virtual-board flight. 3-act: zoom out only → translate at wide scale → zoom in only. Use when the storyboard's payoff is the wide reveal between A and B. | `{ from, to, wide, anticipationDuration?, zoomOutDuration?, translateDuration?, zoomInDuration?, landHold? }` → paused timeline | **ready** | `motion-primitives.js:195` |
 | `focusStationOverview(camera, opts)` | Tutorial-grade focus → station → overview arc with a short 120ms anchor hold. Polished rest-api shape. Each move uses `expo.inOut`. | `{ focusPose, stationPose?, overviewPose, focusDuration?, holdAtFocus?, stationDuration?, overviewDuration?, anchorHold? }` → paused timeline | **ready** | `motion-primitives.js:272` |
+| `cameraToElement(iframeManager, selector, opts)` | Measure-driven tutorial zoom. Use to frame a real iframe element before passing the returned pose into `cinematicFlight`. | `{ fill?, pad?, anchor? }` → `{ x, y, scale }` | **draft** — needs QC | `motion-primitives.js:307` |
 
 ### Cursor
 
 | Primitive | When | Notes | QC status | Source |
 |---|---|---|---|---|
 | `new Cursor(stage, opts)` | Mount a single cursor element on a stage. Use this for every cursor in editorial / single-HTML and any video-local cursor work. Built-in anti-frenzy guards (kill-tweens on each new move). | Methods: `.glide({x,y}, opts)`, `.click(opts)` (squash + ripple), `.hover({x,y}, { target?, hoverScale?, hoverGlow? })`, `.drag(from, to, { ghostSource? })`, `.setPos(x,y)`, `.pos()`, `.remove()` | **ready** | `motion-primitives.js:320` |
+| `Cursor.glide(to, { via })` | Use when cursor motion needs the winning-pattern curved arc instead of a straight line. Splits one glide into a 55% waypoint leg and 45% target leg. | `.glide({x,y}, { via: {x,y}, duration? })` → Promise | **draft** — needs QC | `motion-primitives.js:383` |
 | `clickRipple(stage, x, y, opts)` | Standalone ripple at a stage point, decoupled from the Cursor instance. Prefer `Cursor.click()` when a cursor is on stage. | `{ color?, scale?, duration? }` → timeline | covered by Cursor QC | `motion-primitives.js:689` |
 | `cursorGlideStraight(cursor, from, to, opts)` | **DEPRECATED.** Kept for back-compat with the cursor-glide-straight QC page. New code uses `Cursor`. | — | deprecated | `motion-primitives.js:665` |
 
@@ -62,6 +64,7 @@ QC: open `videos/_qc-primitives/index.html` in the preview server. Each card lin
 | Primitive | When | Signature | QC status | Source |
 |---|---|---|---|---|
 | `caretType(el, text, opts)` | Letter-by-letter typing into a text element with a blinking caret. Avoids the wpforms-ai-board caret-drift bug from opacity-stagger char spans. | `{ charDuration?, caretHtml? }` → tween | **ready** | `motion-primitives.js:735` |
+| `typeIntoIframeInput(input, text, opts)` | Type into a real iframe `<input>` / `<textarea>` and fire JS listeners. Use when WPForms option inputs or live mirrors need per-character `input` events. | `{ cps?, clear?, change? }` → tween | **draft** — needs QC | `motion-primitives.js:763` |
 | `statusPillMorph(pill, texts[], opts)` | Single persistent pill morphs through a sequence of labels char-by-char ("Thinking… / Filling field… / Checking formatting…"). | `{ holdEach?, morphDuration? }` → paused timeline | **ready** | `motion-primitives.js:770` |
 | `markerSweep(textEl, opts)` | Highlight sweep behind text with color flip inside. WPForms orange default. | `{ color?, duration? }` → paused timeline | **ready** | `motion-primitives.js:822` |
 
@@ -90,6 +93,10 @@ QC: open `videos/_qc-primitives/index.html` in the preview server. Each card lin
 |---|---|---|---|
 | `boundedRepeats(cycle, visible)` | Compute finite `repeat:` count from a cycle duration + total visible duration. Replaces `repeat: -1` (which violates GSAP L0 rule 7 and breaks `tools/render.js --seek`). | `(cycleDuration, visibleDuration) → number` | `motion-primitives.js:46` |
 | `mulberry32(seed)` | Seeded PRNG factory. Use anywhere `Math.random()` would have appeared. Duplicate of `videos/_shared/kit.js` `mulberry32` so the library has zero internal-kit dependencies. | `(seed) → () => number` | `motion-primitives.js:58` |
+| `loadNarrationManifest(slug)` | Optional single-HTML narration manifest probe. Returns null when the video only has raw mp3 files. | `(slug) → Promise<object|null>` | `narration.js:29` |
+| `playNarration(slug, key, opts)` | Play one narration clip and duck active BGM until the clip ends. | `(slug, key, { keepDucked?, volume? }) → Promise<void>` | `narration.js:95` |
+| `startBGM(src, opts)` / `stopBGM(opts)` | Start, fade, duck, restore, and stop a portable music bed without engine/player coupling. | `(src, { volume?, fadeIn? })`, `({ fadeOut? })` | `narration.js:58` |
+| `setNarrationBase(path)` / `cleanupAudio()` | Override mp3 base path and release narration/BGM resources when a single-HTML video closes. | `(path)`, `() → Promise<void>` | `narration.js:24` |
 
 ## Library 2 — `videos/_shared/wpforms-interactions.js`
 
@@ -105,6 +112,8 @@ QC: open `videos/_qc-interactions/index.html` in the preview server. Wave 1 is b
 | `.load(slug)` / `.swap(slug, opts)` | Load a snapshot, or crossfade to a different one. No flash-guard cover needed — both iframes coexist during the fade. |
 | `.query(selector)` / `.queryAll(selector)` | Run a selector against the iframe document. |
 | `.elementToStageCoords(target)` | Convert an iframe-doc element (or selector) to its center point in stage-local coords. **This is what `Cursor.glide` consumes.** |
+| `.elementToStageRect(target)` | Convert an iframe-doc element (or selector) to a full stage-local `{ x, y, w, h }` rect for camera/highlight helpers. |
+| `.highlightElement(target, opts)` | Project a ring + optional label over a real iframe element in stage coords. Use for tutorial callouts that need engine-highlight parity. |
 | `.scrollIntoView(target, opts?)` | Scroll the iframe-doc element into view. Default `behavior: 'instant'` to beat snapshot CSS that ships `scroll-behavior: smooth`. |
 | `.doc()` / `.iframe()` / `.currentSlug()` | Accessors. |
 | `.wait(seconds)` | `setTimeout`-backed wait that survives backgrounded preview throttling. |
@@ -145,6 +154,27 @@ After `openFieldOptions(fieldId)` exposes a panel, these drive specific sub-cont
 | `setFieldLabel(fieldId, newLabel, opts?)` | Click the Label input, clear it, letter-type the new label with per-char canvas mirror. | `wpforms-interactions.js:1045` |
 | `setNameFormat(fieldId, format)` | Switch a Name field between `simple` / `first-last` / `first-middle-last`. Builds a fake dropdown overlay (the native `<select>` popover can't be visually driven), clicks the option, flips the canvas wrapper's `format-selected-*` class. | `wpforms-interactions.js:1094` |
 | `toggleEmailConfirmation(fieldId, on?)` | Flip the Enable Email Confirmation toggle. Click the visible slider (not the hidden checkbox), update both the option control and the canvas `wpforms-confirm-enabled/disabled` class. | `wpforms-interactions.js:1221` |
+
+#### Wave 2 Batch A — Notifications + Conditional Logic
+
+Use these for Settings → Notifications, smart tags, generic settings controls, and notification conditional logic. QC pages live under `videos/_qc-interactions/` and are draft until Umair approves them.
+
+| Method | What it does | Source |
+|---|---|---|
+| `addNotification(opts?)` | Click Add New Notification, complete the modal prompt, clone a real notification block, and slide the new block in. | `wpforms-interactions.js:1563` |
+| `editNotificationName(blockSel, newName)` | Click a block edit pencil, type a replacement name, and update the block header label. | `wpforms-interactions.js:1609` |
+| `setNotificationSendTo(blockSel, value)` | Insert a smart-tag chip into a notification's Send To Email Address field. | `wpforms-interactions.js:1644` |
+| `setNotificationSubject(blockSel, text)` | Type into a notification's Email Subject Line input with input/change events. | `wpforms-interactions.js:1667` |
+| `setNotificationMessage(blockSel, text)` | Type into a notification's Email Message textarea with input/change events. | `wpforms-interactions.js:1691` |
+| `openSmartTagPicker(fieldSel, opts?)` / `closeSmartTagPicker()` | Lower-level smart-tag picker controls for hand-scripted beats. | `wpforms-interactions.js:1715` |
+| `insertSmartTag(fieldSel, opts?)` | Open the smart-tag picker, pick a real dropdown item, insert a chip, and close the picker. | `wpforms-interactions.js:1770` |
+| `selectFromDropdown(fieldWrapSel, value)` | Generic faux-dropdown for any native WPForms `<select>` inside a field wrap. | `wpforms-interactions.js:1813` |
+| `toggleSettingControl(fieldWrapSel, state?)` | Generic WPForms toggle-control for any checkbox slider in settings panels. | `wpforms-interactions.js:1853` |
+| `duplicateNotificationBlock(blockSel, opts?)` | Click a notification clone icon, clone the block DOM, and slide in the duplicate. | `wpforms-interactions.js:1888` |
+| `setNotificationActive(blockSel, isActive)` | Toggle and update a notification block's Active / Inactive badge. | `wpforms-interactions.js:1920` |
+| `collapseNotificationBlock(blockSel)` | Click the block caret and collapse the notification content area. | `wpforms-interactions.js:1954` |
+| `expandSettingsSection(groupSel)` | Expand a collapsed panel-fields group such as Notifications Advanced. | `wpforms-interactions.js:1982` |
+| `addConditionalLogicRule(opts?)` | Enable notification conditional logic and populate one Field / Operator / Value rule. | `wpforms-interactions.js:2014` |
 
 ## When NOT to use these
 

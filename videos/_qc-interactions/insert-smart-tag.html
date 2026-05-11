@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>insertSmartTag() - QC</title>
+<link rel="stylesheet" href="/videos/_qc-interactions/_shell.css">
+</head>
+<body>
+<div class="header">
+  <h1>insertSmartTag()</h1>
+  <div class="desc">Opens a smart-tag picker, clicks a tag, inserts the chip, and closes the picker. Source: <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> - <a href="index.html">back to index</a></div>
+</div>
+<div class="stage-wrap"><div class="stage" id="stage"><div class="phase-label" id="phaseLabel">state: loading...</div></div></div>
+<div class="controls"><button id="runBtn" class="primary">run smart tag</button><button id="resetBtn">reset</button><span class="time" id="timeLabel">...</span></div>
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { bootQc } from '/videos/_qc-interactions/_shell.js';
+bootQc({
+  startSnapshot: 'builder-settings-notifications',
+  run: async ({ interactions, setState }) => {
+    setState('insertSmartTag Email');
+    await interactions.insertSmartTag('#wpforms-panel-field-notifications-1-email-wrap', { type: 'field', tag: 'Email', direction: 'up' });
+  },
+});
+</script>
+</body>
+</html>
