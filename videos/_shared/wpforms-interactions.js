@@ -35,18 +35,25 @@ import { Cursor, clickRipple } from './motion-primitives.js';
 // ─────────────────────────────────────────────────────────────────────────
 
 const DEFAULT_VIEWPORT = { width: 1280, height: 720 };
-const DEFAULT_IFRAME = { width: 1444, height: 900 };
+// OVERSAMPLE was tried at 4 (mount iframe at 4× + body zoom + transform scale-down)
+// but GPU-downsampling killed subpixel AA — text rendered with color fringes
+// and pixelated edges at REST (zoom 1, before any camera move). Reverted to 1
+// to match engine.js: iframe at native size, no zoom: trick, no rest transform.
+// Trade: deep zooms (>3×) soften. Engine.js had this trade for 12 production
+// videos and it was acceptable. If a future beat genuinely needs sharp 5–10×
+// zoom, see videos/_qc-primitives/notes-deep-zoom.md (not yet written) for the
+// "dynamic-resize-on-zoom" pattern.
+const DEFAULT_OVERSAMPLE = 1;
 
 /**
  * IframeManager — mounts a snapshot iframe inside a stage element and
  * handles load + crossfade-swap to a different snapshot.
  *
- * Iframe sizing follows the canonical QC pattern from
- * `videos/_qc-primitives/cinematic-flight-inter-snapshot.html`: the iframe
- * renders at its native captured viewport (default 1444×900) and is
- * `transform: scale(...)` down to the stage viewport size (default
- * 1280×720). This keeps WPForms admin layouts looking the same as the
- * existing primitive demos.
+ * Iframe sizing follows the tutorial engine camera model: the iframe renders
+ * at its native captured viewport, is centered inside the visible stage, and
+ * receives a single direct camera transform. Do not pre-scale the iframe and
+ * then zoom a parent wrapper; Chromium will composite the iframe as a texture
+ * and closeups become visibly soft.
  *
  * Crossfade swap is a minimal subset of `runtime/transitions.js#swapFast`:
  * outgoing iframe opacity fades 1 → 0 while a freshly-loaded incoming
@@ -68,21 +75,34 @@ export class IframeManager {
    * @param {HTMLElement} stage — the 1280×720 stage element
    * @param {Object} [opts]
    * @param {{width:number,height:number}} [opts.viewport] — visible stage size
-   * @param {{width:number,height:number}} [opts.iframeSize] — native iframe size before scaling
+   * @param {{width:number,height:number}} [opts.iframeSize] — logical snapshot layout size
+   * @param {number} [opts.oversample=4] — iframe backing multiplier
    * @param {string} [opts.snapshotBase='/snapshots'] — URL prefix for snapshot folders
    * @param {string} [opts.indexFile='index.html'] — file name inside each snapshot folder
    */
   constructor(stage, opts = {}) {
     const {
       viewport = DEFAULT_VIEWPORT,
-      iframeSize = DEFAULT_IFRAME,
+      iframeSize = viewport,
+      oversample = DEFAULT_OVERSAMPLE,
       snapshotBase = '/snapshots',
       indexFile = 'index.html',
     } = opts;
     this.stage = stage;
     this._viewport = { ...viewport };
     this.iframeSize = { ...iframeSize };
-    this.scale = viewport.width / iframeSize.width;
+    this.oversample = Math.max(1, Number(oversample) || 1);
+    this._baseScale = 1 / this.oversample;
+    this.scale = this._baseScale;
+    this._physicalIframeSize = {
+      width: this.iframeSize.width * this.oversample,
+      height: this.iframeSize.height * this.oversample,
+    };
+    this._origin = {
+      x: (viewport.width - this._physicalIframeSize.width * this._baseScale) / 2,
+      y: (viewport.height - this._physicalIframeSize.height * this._baseScale) / 2,
+    };
+    this._camera = { zoom: 1, tx: 0, ty: 0 };
     this.snapshotBase = snapshotBase;
     this.indexFile = indexFile;
     this._slug = null;
@@ -109,20 +129,31 @@ export class IframeManager {
     const f = document.createElement('iframe');
     Object.assign(f.style, {
       position: 'absolute',
-      left: '0', top: '0',
-      width: this.iframeSize.width + 'px',
-      height: this.iframeSize.height + 'px',
-      transform: `scale(${this.scale})`,
-      transformOrigin: 'top left',
+      left: this._origin.x + 'px',
+      top: this._origin.y + 'px',
+      width: this._physicalIframeSize.width + 'px',
+      height: this._physicalIframeSize.height + 'px',
+      transformOrigin: '0 0',
       border: '0',
       display: 'block',
       opacity: '0',
-      willChange: 'opacity',
+      willChange: 'transform, opacity',
     });
+    this._applyCameraToIframe(f);
     f.dataset.slug = slug;
     f.loading = 'eager';
     f.src = `${this.snapshotBase}/${slug}/${this.indexFile}`;
     return f;
+  }
+
+  _cameraTransform({ zoom = this._camera.zoom, tx = this._camera.tx, ty = this._camera.ty } = {}) {
+    const totalScale = this._baseScale * zoom;
+    return `scale(${totalScale}) translate(${tx / totalScale}px, ${ty / totalScale}px)`;
+  }
+
+  _applyCameraToIframe(iframe = this._iframe) {
+    if (!iframe) return;
+    iframe.style.transform = this._cameraTransform();
   }
 
   static _waitForIframeLoad(iframe, expectedUrl) {
@@ -145,6 +176,26 @@ export class IframeManager {
     });
   }
 
+  _installOversampleStyles(iframe) {
+    if (!iframe || this.oversample === 1) return;
+    const doc = iframe.contentDocument;
+    if (!doc || !doc.documentElement || !doc.body) return;
+    const style = doc.createElement('style');
+    style.dataset.ifmOversample = 'true';
+    style.textContent = `
+      html {
+        width: ${this.iframeSize.width}px !important;
+        min-width: ${this.iframeSize.width}px !important;
+      }
+      body {
+        width: ${this.iframeSize.width}px !important;
+        min-width: ${this.iframeSize.width}px !important;
+        zoom: ${this.oversample};
+      }
+    `;
+    doc.head.appendChild(style);
+  }
+
   /**
    * Load a snapshot into the slot. Crossfades from the previous one if any.
    * @param {string} slug — snapshot folder slug
@@ -157,6 +208,7 @@ export class IframeManager {
     const f = this._createIframe(slug);
     this._slot.appendChild(f);
     await IframeManager._waitForIframeLoad(f, `${this.snapshotBase}/${slug}/${this.indexFile}`);
+    this._installOversampleStyles(f);
     this._iframe = f;
     this._slug = slug;
     // Single-frame opacity flip via gsap so determinism check passes (no setTimeout).
@@ -183,6 +235,8 @@ export class IframeManager {
     const next = this._createIframe(slug);
     this._slot.appendChild(next);
     await IframeManager._waitForIframeLoad(next, `${this.snapshotBase}/${slug}/${this.indexFile}`);
+    this._installOversampleStyles(next);
+    this._applyCameraToIframe(next);
     const prev = this._iframe;
     await new Promise(resolve => {
       let done = 0;
@@ -246,18 +300,151 @@ export class IframeManager {
   }
 
   /**
+   * @returns {{zoom:number,tx:number,ty:number,scale:number,x:number,y:number}}
+   * current engine-style camera state. `scale/x/y` aliases are provided for
+   * older primitive callers that used GSAP transform vocabulary.
+   */
+  cameraState() {
+    return {
+      zoom: this._camera.zoom,
+      tx: this._camera.tx,
+      ty: this._camera.ty,
+      scale: this._camera.zoom,
+      x: this._camera.tx,
+      y: this._camera.ty,
+    };
+  }
+
+  _logicalRect(rect) {
+    return {
+      left: rect.left / this.oversample,
+      top: rect.top / this.oversample,
+      right: rect.right / this.oversample,
+      bottom: rect.bottom / this.oversample,
+      width: rect.width / this.oversample,
+      height: rect.height / this.oversample,
+    };
+  }
+
+  /**
+   * Apply an engine-style camera pose directly to the iframe.
+   * @param {{zoom?:number,tx?:number,ty?:number,scale?:number,x?:number,y?:number}} pose
+   */
+  setCamera(pose = {}) {
+    const zoom = pose.zoom ?? pose.scale ?? this._camera.zoom;
+    const tx = pose.tx ?? pose.x ?? this._camera.tx;
+    const ty = pose.ty ?? pose.y ?? this._camera.ty;
+    this._camera = { zoom, tx, ty };
+    if (this._cameraTween) {
+      this._cameraTween.kill();
+      this._cameraTween = null;
+    }
+    this._applyCameraToIframe();
+  }
+
+  /**
+   * Tween the engine-style camera directly on the iframe.
+   * @param {{zoom?:number,tx?:number,ty?:number,scale?:number,x?:number,y?:number,duration?:number,ease?:string,onUpdate?:Function}} pose
+   * @returns {Promise<void>}
+   */
+  tweenCamera(pose = {}) {
+    const to = {
+      zoom: pose.zoom ?? pose.scale ?? this._camera.zoom,
+      tx: pose.tx ?? pose.x ?? this._camera.tx,
+      ty: pose.ty ?? pose.y ?? this._camera.ty,
+    };
+    const duration = pose.duration ?? 0.72;
+    const ease = pose.ease ?? 'power3.out';
+    if (this._cameraTween) this._cameraTween.kill();
+    if (typeof gsap === 'undefined' || duration <= 0) {
+      this.setCamera(to);
+      return Promise.resolve();
+    }
+    const state = { ...this._camera };
+    return new Promise(resolve => {
+      this._cameraTween = gsap.to(state, {
+        ...to,
+        duration,
+        ease,
+        onUpdate: () => {
+          this._camera = { zoom: state.zoom, tx: state.tx, ty: state.ty };
+          this._applyCameraToIframe();
+          if (pose.onUpdate) pose.onUpdate(this.cameraState());
+        },
+        onComplete: () => {
+          this._camera = { ...to };
+          this._applyCameraToIframe();
+          this._cameraTween = null;
+          resolve();
+        },
+      });
+    });
+  }
+
+  resetCamera(opts = {}) {
+    return this.tweenCamera({
+      zoom: 1,
+      tx: 0,
+      ty: 0,
+      duration: opts.duration ?? 0.32,
+      ease: opts.ease ?? 'power2.out',
+      onUpdate: opts.onUpdate,
+    });
+  }
+
+  /**
+   * Compute an engine-style camera pose that frames an iframe-doc element.
+   * @param {string|Element} target
+   * @param {Object} [opts]
+   * @param {number} [opts.fill=0.5]
+   * @param {number} [opts.pad=24]
+   * @param {number} [opts.minZoom=1]
+   * @param {number} [opts.maxZoom=3]
+   * @param {boolean} [opts.clamp=true]
+   * @returns {{zoom:number,tx:number,ty:number,scale:number,x:number,y:number,rect:Object}}
+   */
+  cameraToElement(target, opts = {}) {
+    const {
+      fill = 0.5,
+      pad = 24,
+      minZoom = 1,
+      maxZoom = 3,
+      clamp = true,
+    } = opts;
+    const el = typeof target === 'string' ? this.query(target) : target;
+    if (!el) throw new Error(`IframeManager.cameraToElement: target not found: ${target}`);
+    const r0 = this._logicalRect(el.getBoundingClientRect());
+    const r = {
+      left: r0.left - pad,
+      top: r0.top - pad,
+      width: r0.width + pad * 2,
+      height: r0.height + pad * 2,
+    };
+    const rawZoom = Math.min(
+      (this._viewport.width * fill) / Math.max(1, r.width),
+      (this._viewport.height * fill) / Math.max(1, r.height)
+    );
+    const zoom = Math.max(minZoom, Math.min(maxZoom, rawZoom));
+    let cx = r.left + r.width / 2;
+    let cy = r.top + r.height / 2;
+    if (clamp) {
+      const minCx = this._viewport.width / (2 * zoom);
+      const maxCx = this.iframeSize.width - minCx;
+      const minCy = this._viewport.height / (2 * zoom);
+      const maxCy = this.iframeSize.height - minCy;
+      cx = Math.min(Math.max(cx, minCx), maxCx);
+      cy = Math.min(Math.max(cy, minCy), maxCy);
+    }
+    const tx = this._viewport.width / 2 - this._origin.x - cx * zoom;
+    const ty = this._viewport.height / 2 - this._origin.y - cy * zoom;
+    return { zoom, tx, ty, scale: zoom, x: tx, y: ty, rect: r };
+  }
+
+  /**
    * Convert an iframe-document element (or selector string) to its center
    * point in stage-LOCAL coordinates. Cursor.glide consumes stage-local
    * coords (the cursor element is gsap-transformed within the stage's
    * coord space).
-   *
-   * Why this version goes through viewport coords: the iframe element's
-   * post-transform bbox doesn't always coincide with the slot's bbox —
-   * Chrome reports the iframe extending above the slot when the iframe's
-   * CSS aspect ratio (1444:900) doesn't match the slot's (1280:720),
-   * even though both have `top:0`. Computing target.viewport position
-   * from the iframe's ACTUAL bbox sidesteps that, and reverse-mapping
-   * through the stage's transform produces a stable stage-local coord.
    *
    * @param {string|Element} target
    * @returns {{x:number, y:number}}
@@ -267,14 +454,8 @@ export class IframeManager {
     const el = typeof target === 'string' ? this.query(target) : target;
     if (!el) throw new Error(`IframeManager: target not found: ${target}`);
     const r = el.getBoundingClientRect(); // inside iframe, iframe-CSS pixels
-    const ifrR = this._iframe.getBoundingClientRect(); // iframe element, viewport pixels
-    // iframe-CSS → viewport per-axis scale. This collapses the iframe's own
-    // transform AND any ancestor transform into a single observed ratio.
-    const sx = ifrR.width / this.iframeSize.width;
-    const sy = ifrR.height / this.iframeSize.height;
-    const vx = ifrR.left + (r.left + r.width / 2) * sx;
-    const vy = ifrR.top + (r.top + r.height / 2) * sy;
-    return this._viewportToStage(vx, vy);
+    const logical = this._logicalRect(r);
+    return this.iframePointToStage(logical.left + logical.width / 2, logical.top + logical.height / 2);
   }
 
   /**
@@ -289,17 +470,28 @@ export class IframeManager {
   elementToStageRect(target) {
     const el = typeof target === 'string' ? this.query(target) : target;
     if (!el) throw new Error(`IframeManager: target not found: ${target}`);
-    const r = el.getBoundingClientRect();
-    const ifrR = this._iframe.getBoundingClientRect();
-    const sx = ifrR.width / this.iframeSize.width;
-    const sy = ifrR.height / this.iframeSize.height;
-    const p1 = this._viewportToStage(ifrR.left + r.left * sx, ifrR.top + r.top * sy);
-    const p2 = this._viewportToStage(ifrR.left + (r.left + r.width) * sx, ifrR.top + (r.top + r.height) * sy);
+    const r = this._logicalRect(el.getBoundingClientRect());
+    const p1 = this.iframePointToStage(r.left, r.top);
+    const p2 = this.iframePointToStage(r.left + r.width, r.top + r.height);
     const x = Math.min(p1.x, p2.x);
     const y = Math.min(p1.y, p2.y);
     const w = Math.abs(p2.x - p1.x);
     const h = Math.abs(p2.y - p1.y);
     return { x, y, w, h, width: w, height: h };
+  }
+
+  /**
+   * Port of engine.js toStage(): iframe viewport coordinate -> stage-local
+   * coordinate under the current direct iframe camera transform.
+   * @param {number} ix
+   * @param {number} iy
+   * @returns {{x:number,y:number}}
+   */
+  iframePointToStage(ix, iy) {
+    return {
+      x: this._origin.x + ix * this._camera.zoom + this._camera.tx,
+      y: this._origin.y + iy * this._camera.zoom + this._camera.ty,
+    };
   }
 
   /**
@@ -497,7 +689,12 @@ export class IframeManager {
     const targetX = clamp(axisTarget(startX, rect.left, rect.width, viewportW, inline), 0, maxX);
     const targetY = clamp(axisTarget(startY, rect.top, rect.height, viewportH, block), 0, maxY);
 
-    if (this._scrollTween) this._scrollTween.kill();
+    if (this._scrollTween) {
+      this._scrollTween.kill();
+      if (this._scrollResolve) this._scrollResolve();
+      this._scrollTween = null;
+      this._scrollResolve = null;
+    }
     if (typeof gsap === 'undefined' || duration <= 0) {
       win.scrollTo(targetX, targetY);
       return Promise.resolve(el);
@@ -505,6 +702,7 @@ export class IframeManager {
 
     const pos = { x: startX, y: startY };
     return new Promise(resolve => {
+      this._scrollResolve = () => resolve(el);
       this._scrollTween = gsap.to(pos, {
         x: targetX,
         y: targetY,
@@ -513,6 +711,7 @@ export class IframeManager {
         onUpdate: () => win.scrollTo(pos.x, pos.y),
         onComplete: () => {
           this._scrollTween = null;
+          this._scrollResolve = null;
           resolve(el);
         },
       });
