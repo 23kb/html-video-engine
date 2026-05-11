@@ -235,10 +235,17 @@ export class IframeManager {
 
   /**
    * Convert an iframe-document element (or selector string) to its center
-   * point in stage coordinates. Accounts for the iframe's transform scale.
+   * point in stage-LOCAL coordinates. Cursor.glide consumes stage-local
+   * coords (the cursor element is gsap-transformed within the stage's
+   * coord space).
    *
-   * Useful for: positioning the cursor over a target element captured in
-   * the snapshot iframe.
+   * Why this version goes through viewport coords: the iframe element's
+   * post-transform bbox doesn't always coincide with the slot's bbox —
+   * Chrome reports the iframe extending above the slot when the iframe's
+   * CSS aspect ratio (1444:900) doesn't match the slot's (1280:720),
+   * even though both have `top:0`. Computing target.viewport position
+   * from the iframe's ACTUAL bbox sidesteps that, and reverse-mapping
+   * through the stage's transform produces a stable stage-local coord.
    *
    * @param {string|Element} target
    * @returns {{x:number, y:number}}
@@ -247,17 +254,45 @@ export class IframeManager {
   elementToStageCoords(target) {
     const el = typeof target === 'string' ? this.query(target) : target;
     if (!el) throw new Error(`IframeManager: target not found: ${target}`);
-    const r = el.getBoundingClientRect();
-    // The iframe element itself is scaled by this.scale, so iframe-document
-    // coords map to stage coords by (rect * scale + iframeOffsetInStage).
-    // The slot is anchored at (0, 0) and the iframe is anchored at (0, 0)
-    // inside the slot, so the offset is (0, 0). If a caller mounts the
-    // slot elsewhere, this still works because we read the slot's offset.
-    const slotLeft = this._slot.offsetLeft || 0;
-    const slotTop = this._slot.offsetTop || 0;
+    const r = el.getBoundingClientRect(); // inside iframe, iframe-CSS pixels
+    const ifrR = this._iframe.getBoundingClientRect(); // iframe element, viewport pixels
+    // iframe-CSS → viewport per-axis scale. This collapses the iframe's own
+    // transform AND any ancestor transform into a single observed ratio.
+    const sx = ifrR.width / this.iframeSize.width;
+    const sy = ifrR.height / this.iframeSize.height;
+    const vx = ifrR.left + (r.left + r.width / 2) * sx;
+    const vy = ifrR.top + (r.top + r.height / 2) * sy;
+    return this._viewportToStage(vx, vy);
+  }
+
+  /**
+   * Reverse the stage's CSS transform to convert viewport coords → stage-
+   * local coords (the space gsap.set(.., {x, y}) operates in for elements
+   * mounted on the stage).
+   *
+   * Stage transform: scale(s) with transform-origin: center center. So
+   * stage-local (X, Y) maps to viewport (centerVx + (X - cssW/2)*s,
+   * centerVy + (Y - cssH/2)*s) where center is the same in both coord
+   * systems. Inverting that gives the formula below.
+   *
+   * @param {number} vx
+   * @param {number} vy
+   * @returns {{x:number, y:number}}
+   */
+  _viewportToStage(vx, vy) {
+    const stageR = this.stage.getBoundingClientRect();
+    const win = this.stage.ownerDocument.defaultView;
+    const cs = win.getComputedStyle(this.stage);
+    const cssW = parseFloat(cs.width) || this.viewport.width;
+    const cssH = parseFloat(cs.height) || this.viewport.height;
+    let scale = 1;
+    const m = (cs.transform || '').match(/matrix\(([-\d.]+),\s*[-\d.]+,\s*[-\d.]+,\s*([-\d.]+),/);
+    if (m) scale = parseFloat(m[1]); // scaleX (we don't author non-uniform stage scale)
+    const centerVx = stageR.left + stageR.width / 2;
+    const centerVy = stageR.top + stageR.height / 2;
     return {
-      x: slotLeft + (r.left + r.width / 2) * this.scale,
-      y: slotTop + (r.top + r.height / 2) * this.scale,
+      x: (vx - centerVx) / scale + cssW / 2,
+      y: (vy - centerVy) / scale + cssH / 2,
     };
   }
 
@@ -493,8 +528,10 @@ export class WPFormsInteractions {
       throw new Error(`selectTemplate: no primary action button inside card for slug '${slug}'`);
     }
     await this._glideAndClick(primary, { skipScroll: true });
-    await this.iframe.wait(0.18);
-    await this.iframe.swap('builder-setup', { duration: opts.swapDuration ?? 0.32 });
+    // No snapshot swap. selectTemplate is intentionally scoped to: pick a
+    // card → hover-reveal its action buttons → click the primary action.
+    // The handoff to builder-setup belongs to a separate interaction; not
+    // every caller wants to leave admin-templates after a click.
   }
 
   /**
@@ -726,13 +763,20 @@ export class WPFormsInteractions {
     const anchorEl = visibleFields[visibleFields.length - 1] || dropZone;
     const anchorRect = anchorEl.getBoundingClientRect();
     const fromPt = this.iframe.elementToStageCoords(source);
+    // Compute drop point in iframe-CSS pixels, then convert through the
+    // same viewport-to-stage path elementToStageCoords uses (so the drop
+    // ends up where the field-wrap actually renders, not where naive
+    // multiply-by-scale would put it).
     const dropEnd = anchorEl === dropZone
       ? { x: anchorRect.left + anchorRect.width / 2, y: Math.min(anchorRect.top + 80, iframeViewportH - 60) }
       : { x: anchorRect.left + anchorRect.width / 2, y: anchorRect.bottom + 28 };
-    const toPt = {
-      x: (this.iframe._slot.offsetLeft || 0) + dropEnd.x * this.iframe.scale,
-      y: (this.iframe._slot.offsetTop || 0) + dropEnd.y * this.iframe.scale,
-    };
+    const ifrR = this.iframe.iframe().getBoundingClientRect();
+    const sx = ifrR.width / this.iframe.iframeSize.width;
+    const sy = ifrR.height / this.iframe.iframeSize.height;
+    const toPt = this.iframe._viewportToStage(
+      ifrR.left + dropEnd.x * sx,
+      ifrR.top + dropEnd.y * sy
+    );
 
     // Glide cursor onto source (lifts before press).
     await this.cursor.glide(fromPt, { duration: 0.55 });
@@ -844,6 +888,12 @@ export class WPFormsInteractions {
   // Prepare a hidden landing field by cloning an existing same-type field
   // from the captured fixture. Returns the hidden element so the drag can
   // reveal it with FLIP at the right moment.
+  //
+  // Insertion point: AFTER the last VISIBLE existing field in the wrap.
+  // On a profile-filtered canvas (e.g. Contact Us shows 3 fields), the
+  // new field becomes the 4th — matching Umair's "land at position 4"
+  // ask. With no profile, it's appended after the last visible field
+  // (which is typically the natural append point anyway).
   _prepareLandingField(fieldSlug, fieldWrap) {
     const doc = this.iframe.doc();
     const donor = this.iframe.query(
@@ -852,17 +902,12 @@ export class WPFormsInteractions {
     let node;
     if (donor) {
       node = donor.cloneNode(true);
-      // Strip IDs to keep the DOM valid; assign a fresh data-field-id.
       const newId = 9000 + (this.iframe.queryAll('.wpforms-field').length || 0);
       node.id = `wpforms-field-${newId}`;
       node.setAttribute('data-field-id', String(newId));
       node.querySelectorAll('[id]').forEach(n => n.removeAttribute('id'));
-      // Show the field unconditionally (the donor might be display:none from
-      // a prior _applyFormProfile call).
       node.style.display = 'none';
     } else {
-      // Donor not in fixture — fall back to a minimal placeholder so the
-      // interaction still completes for fringe field types.
       const tpl = doc.createElement('template');
       const newId = 9000 + (this.iframe.queryAll('.wpforms-field').length || 0);
       tpl.innerHTML = `
@@ -874,7 +919,12 @@ export class WPFormsInteractions {
         </div>`.trim();
       node = tpl.content.firstElementChild;
     }
-    fieldWrap.appendChild(node);
+    const visibleFields = [...fieldWrap.children].filter(el =>
+      el.classList && el.classList.contains('wpforms-field') && el.style.display !== 'none'
+    );
+    const lastVisible = visibleFields[visibleFields.length - 1];
+    if (lastVisible) lastVisible.after(node);
+    else fieldWrap.appendChild(node);
     return node;
   }
 
