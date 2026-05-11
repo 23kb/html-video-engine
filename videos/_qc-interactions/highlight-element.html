@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>IframeManager.highlightElement — QC</title>
+<link rel="stylesheet" href="/videos/_qc-interactions/_shell.css">
+</head>
+<body>
+<div class="header">
+  <h1>IframeManager.highlightElement</h1>
+  <div class="desc">
+    Projects a stage-positioned highlight ring and label over real iframe elements.
+    The last highlight auto-fades after a hold. Source:
+    <a href="/videos/_shared/wpforms-interactions.js">wpforms-interactions.js</a> ·
+    <a href="index.html">← back to index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="phase-label" id="phaseLabel">state: loading…</div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="runBtn" class="primary">▶ highlight fields</button>
+  <button id="resetBtn">⟲ reset</button>
+  <span class="time" id="timeLabel">…</span>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { bootQc } from '/videos/_qc-interactions/_shell.js';
+
+bootQc({
+  startSnapshot: 'builder-fields',
+  cursorStart: { x: 1120, y: 650 },
+  onReady: async ({ interactions }) => {
+    interactions.applyFormProfile('demo-5');
+  },
+  run: async ({ interactions, setState }) => {
+    const ifm = interactions.iframe;
+    setState('highlighting Name field');
+    const a = ifm.highlightElement('.wpforms-field[data-field-id="48"]', {
+      label: 'Name field',
+      pad: 8,
+      holdMs: 1200,
+    });
+    await ifm.wait(0.75);
+    setState('highlighting Email field');
+    const b = ifm.highlightElement('.wpforms-field[data-field-id="49"]', {
+      label: 'Email field with a longer label',
+      pad: 10,
+      color: 'rgba(3, 153, 237, 0.92)',
+      holdMs: 1400,
+    });
+    await ifm.wait(0.75);
+    setState('highlighting Paragraph field');
+    const c = ifm.highlightElement('.wpforms-field[data-field-id="50"]', {
+      label: 'Auto-fades after hold',
+      pad: 12,
+      strokeWidth: 3,
+      holdMs: 1600,
+    });
+    await ifm.wait(2.1);
+    a.remove();
+    b.remove();
+    c.remove();
+  },
+});
+</script>
+</body>
+</html>
