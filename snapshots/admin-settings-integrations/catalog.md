@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-settings-integrations/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 78 selector entries across 2 sections.
+> 80 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-settings-integrations/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_50 entries_
+_52 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -23,9 +23,10 @@ _50 entries_
 | <a id="id--provider-constant-contact-v3"></a>`id--provider-constant-contact-v3` | `#provider-constant-contact-v3` | div |  | 1 |
 | <a id="id--provider-convertkit"></a>`id--provider-convertkit` | `#provider-convertkit` | div |  | 1 |
 | <a id="id--provider-dropbox"></a>`id--provider-dropbox` | `#provider-dropbox` | div |  | 1 |
-| <a id="id--provider-google-calendar"></a>`id--provider-google-calendar` | `#provider-google-calendar` | div |  | 1 |
+| <a id="id--provider-google-calendar"></a>`id--provider-google-calendar` | `#provider-google-calendar` | div | 061.umair@gmail.com Connected on: May 10, 2026 Disconnect | 1 |
 | <a id="id--provider-google-drive"></a>`id--provider-google-drive` | `#provider-google-drive` | div | 061.umair@gmail.com Connected on: April 27, 2026 Disconnect | 1 |
 | <a id="id--provider-google-sheets"></a>`id--provider-google-sheets` | `#provider-google-sheets` | div |  | 1 |
+| <a id="id--provider-klaviyo"></a>`id--provider-klaviyo` | `#provider-klaviyo` | div | Sullie Eloso Connected on: May 10, 2026 Disconnect | 1 |
 | <a id="id--toplevel_page_wpforms-overview"></a>`id--toplevel_page_wpforms-overview` | `#toplevel_page_wpforms-overview` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
@@ -50,6 +51,7 @@ _50 entries_
 | <a id="id--wpforms-integration-google-drive"></a>`id--wpforms-integration-google-drive` | `#wpforms-integration-google-drive` | div |  | 1 |
 | <a id="id--wpforms-integration-google-sheets"></a>`id--wpforms-integration-google-sheets` | `#wpforms-integration-google-sheets` | div |  | 1 |
 | <a id="id--wpforms-integration-hubspot"></a>`id--wpforms-integration-hubspot` | `#wpforms-integration-hubspot` | div |  | 1 |
+| <a id="id--wpforms-integration-klaviyo"></a>`id--wpforms-integration-klaviyo` | `#wpforms-integration-klaviyo` | div |  | 1 |
 | <a id="id--wpforms-integration-mailchimp"></a>`id--wpforms-integration-mailchimp` | `#wpforms-integration-mailchimp` | div |  | 1 |
 | <a id="id--wpforms-integration-mailerlite"></a>`id--wpforms-integration-mailerlite` | `#wpforms-integration-mailerlite` | div |  | 1 |
 | <a id="id--wpforms-integration-mailpoet"></a>`id--wpforms-integration-mailpoet` | `#wpforms-integration-mailpoet` | div |  | 1 |
@@ -75,10 +77,10 @@ _28 entries_
 | --- | --- | --- | --- | --- |
 | <a id="class--wpforms-admin-content"></a>`class--wpforms-admin-content` | `.wpforms-admin-content` | div | Integrations Manage integrations with popular providers suc… | 1 |
 | <a id="class--wpforms-airtable-sign-in-button"></a>`class--wpforms-airtable-sign-in-button` | `.wpforms-airtable-sign-in-button` | div | Add New Account | 1 |
-| <a id="class--wpforms-btn"></a>`class--wpforms-btn` | `.wpforms-btn` | a | Add New Account | 5 |
-| <a id="class--wpforms-btn-light-grey"></a>`class--wpforms-btn-light-grey` | `.wpforms-btn-light-grey` | a | Add New Account | 4 |
-| <a id="class--wpforms-btn-md"></a>`class--wpforms-btn-md` | `.wpforms-btn-md` | a | Add New Account | 5 |
-| <a id="class--wpforms-btn-orange"></a>`class--wpforms-btn-orange` | `.wpforms-btn-orange` | button | Connect to Kit | 1 |
+| <a id="class--wpforms-btn"></a>`class--wpforms-btn` | `.wpforms-btn` | a | Add New Account | 7 |
+| <a id="class--wpforms-btn-light-grey"></a>`class--wpforms-btn-light-grey` | `.wpforms-btn-light-grey` | a | Add New Account | 5 |
+| <a id="class--wpforms-btn-md"></a>`class--wpforms-btn-md` | `.wpforms-btn-md` | a | Add New Account | 7 |
+| <a id="class--wpforms-btn-orange"></a>`class--wpforms-btn-orange` | `.wpforms-btn-orange` | button | Connect to Kit | 2 |
 | <a id="class--wpforms-constant-contact-v3-auth"></a>`class--wpforms-constant-contact-v3-auth` | `.wpforms-constant-contact-v3-auth` | a | Add New Account | 1 |
 | <a id="class--wpforms-flyout-button"></a>`class--wpforms-flyout-button` | `.wpforms-flyout-button` | a | Suggest a Feature | 4 |
 | <a id="class--wpforms-flyout-head"></a>`class--wpforms-flyout-head` | `.wpforms-flyout-head` | a | See Quick Links | 1 |
@@ -92,14 +94,14 @@ _28 entries_
 | <a id="class--wpforms-google-sign-in-button"></a>`class--wpforms-google-sign-in-button` | `.wpforms-google-sign-in-button` | div |  | 1 |
 | <a id="class--wpforms-header"></a>`class--wpforms-header` | `.wpforms-header` | div |  | 1 |
 | <a id="class--wpforms-link"></a>`class--wpforms-link` | `.wpforms-link` | a |  | 4 |
-| <a id="class--wpforms-required"></a>`class--wpforms-required` | `.wpforms-required` | input | Something went wrong while performing an AJAX request. | 4 |
+| <a id="class--wpforms-required"></a>`class--wpforms-required` | `.wpforms-required` | input | Something went wrong while performing an AJAX request. | 5 |
 | <a id="class--wpforms-setting-field"></a>`class--wpforms-setting-field` | `.wpforms-setting-field` | span | Integrations Manage integrations with popular providers suc… | 1 |
 | <a id="class--wpforms-setting-row"></a>`class--wpforms-setting-row` | `.wpforms-setting-row` | div | Integrations Manage integrations with popular providers suc… | 1 |
 | <a id="class--wpforms-setting-row-content"></a>`class--wpforms-setting-row-content` | `.wpforms-setting-row-content` | div | Integrations Manage integrations with popular providers suc… | 1 |
 | <a id="class--wpforms-settings-provider-accounts-dropbox-authorize-button"></a>`class--wpforms-settings-provider-accounts-dropbox-authorize-button` | `.wpforms-settings-provider-accounts-dropbox-authorize-button` | a | Add New Account | 1 |
-| <a id="class--wpforms-settings-provider-accounts-toggle"></a>`class--wpforms-settings-provider-accounts-toggle` | `.wpforms-settings-provider-accounts-toggle` | p | Add New Account | 2 |
-| <a id="class--wpforms-settings-provider-connect"></a>`class--wpforms-settings-provider-connect` | `.wpforms-settings-provider-connect` | button | Connect to Kit | 1 |
-| <a id="class--wpforms-settings-provider-header"></a>`class--wpforms-settings-provider-header` | `.wpforms-settings-provider-header` | div |  | 26 |
+| <a id="class--wpforms-settings-provider-accounts-toggle"></a>`class--wpforms-settings-provider-accounts-toggle` | `.wpforms-settings-provider-accounts-toggle` | p | Add New Account | 3 |
+| <a id="class--wpforms-settings-provider-connect"></a>`class--wpforms-settings-provider-connect` | `.wpforms-settings-provider-connect` | button | Connect to Kit | 2 |
+| <a id="class--wpforms-settings-provider-header"></a>`class--wpforms-settings-provider-header` | `.wpforms-settings-provider-header` | div |  | 27 |
 | <a id="class--wpforms-splash-modal-open"></a>`class--wpforms-splash-modal-open` | `.wpforms-splash-modal-open` | a |  | 1 |
 
 ---

@@ -1,0 +1,22 @@
+{
+  "_comment": "Klaviyo provider states for both Settings > Integrations (admin side) and the form builder Marketing panel. base admin-settings-integrations (chevron closed, Klaviyo Connected pill) was captured separately via klaviyo-base.json.",
+  "targetPath": "/wp-admin/admin.php?page=wpforms-settings&view=integrations",
+  "variants": [
+    {
+      "slug": "admin-settings-integrations-klaviyo-open",
+      "_comment": "Klaviyo accordion expanded — shows the connected 'Sullie Eloso' account row + Add New Account button.",
+      "steps": [
+        { "click": "#wpforms-integration-klaviyo .wpforms-settings-provider-header", "settle": 600 }
+      ],
+      "waitFor": "#wpforms-integration-klaviyo.open, #wpforms-integration-klaviyo .wpforms-settings-provider-accounts.open"
+    },
+    {
+      "slug": "admin-settings-integrations-klaviyo-form",
+      "_comment": "Add New Account clicked — connection form visible with empty API Key + Nickname inputs and the orange 'Connect to Klaviyo' button.",
+      "steps": [
+        { "click": "#wpforms-integration-klaviyo .wpforms-settings-provider-header", "settle": 500 },
+        { "click": "#wpforms-integration-klaviyo .wpforms-settings-provider-accounts-toggle a[data-provider=\"klaviyo\"]", "settle": 700 }
+      ]
+    }
+  ]
+}

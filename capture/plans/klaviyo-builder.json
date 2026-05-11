@@ -1,0 +1,22 @@
+{
+  "_comment": "Form builder Marketing panel — base + Klaviyo selected. Uses form_id=55 (Contact Us). The base re-capture is needed because the existing builder-providers snapshot pre-dates Klaviyo install.",
+  "variants": [
+    {
+      "slug": "builder-providers",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers.active, #wpforms-panel-providers"
+    },
+    {
+      "slug": "builder-providers-klaviyo",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        { "click": "#wpforms-panel-providers .wpforms-panel-sidebar-section-klaviyo, [data-section=\"klaviyo\"]", "settle": 800 }
+      ]
+    }
+  ]
+}
