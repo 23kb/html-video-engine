@@ -370,22 +370,38 @@ export class Cursor {
   }
 
   /**
-   * Glide to target stage-coord. Anti-frenzy: straight-line `gsap.to`,
-   * `power2.inOut`, killTweensOf at start, default 0.95s (sub-0.85 reads
-   * as jump-cut per LESSONS.md). Auto-clears any active hover effect.
+   * Glide to target stage-coord. Anti-frenzy: `gsap.to`, `power2.inOut`,
+   * killTweensOf at start, default 0.95s (sub-0.85 reads as jump-cut per
+   * LESSONS.md). If `via` is provided, splits the move into a two-leg arc
+   * so cursor flights can bend around UI instead of cutting straight across.
    *
    * @param {{x:number,y:number}} to
    * @param {Object} [opts]
    * @param {number} [opts.duration=0.95]
    * @param {string} [opts.ease='power2.inOut']
+   * @param {{x:number,y:number}} [opts.via] — optional waypoint for curved arcs
    * @returns {Promise<void>}
    */
   glide(to, opts = {}) {
-    const { duration = 0.95, ease = 'power2.inOut' } = opts;
+    const { duration = 0.95, ease = 'power2.inOut', via = null } = opts;
     this._clearHoverTarget();
     gsap.killTweensOf(this.el, 'x,y,motionPath');
     this._pos = { x: to.x, y: to.y };
     return new Promise(resolve => {
+      if (via) {
+        gsap.timeline({ onComplete: resolve })
+          .to(this.el, {
+            x: via.x, y: via.y,
+            duration: duration * 0.55,
+            ease: opts.viaEase || 'power1.inOut',
+          })
+          .to(this.el, {
+            x: to.x, y: to.y,
+            duration: duration * 0.45,
+            ease: opts.landEase || 'power2.out',
+          });
+        return;
+      }
       gsap.to(this.el, { x: to.x, y: to.y, duration, ease, onComplete: resolve });
     });
   }
