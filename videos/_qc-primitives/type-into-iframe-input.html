@@ -12,6 +12,15 @@
     padding: 10px 14px; font-family: ui-monospace, monospace; font-size: 13px;
     box-shadow: 0 12px 28px rgba(0,0,0,0.12);
   }
+  .controls select {
+    background: rgba(255,255,255,0.08);
+    color: #ebebed;
+    border: 1px solid rgba(255,255,255,0.16);
+    border-radius: 6px;
+    height: 34px;
+    padding: 0 10px;
+    font: 13px -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  }
 </style>
 </head>
 <body>
@@ -33,7 +42,15 @@
 </div>
 
 <div class="controls">
-  <button id="runBtn" class="primary">▶ type into label input</button>
+  <select id="fieldPicker">
+    <option value="48|Full Name">Name → Full Name</option>
+    <option value="49|Work Email">Email → Work Email</option>
+    <option value="50|Project Brief">Paragraph Text → Project Brief</option>
+    <option value="6|Preferred Contact Method">Multiple Choice → Preferred Contact Method</option>
+    <option value="7|Newsletter Topics">Checkboxes → Newsletter Topics</option>
+    <option value="10|Mobile Number">Phone → Mobile Number</option>
+  </select>
+  <button id="runBtn" class="primary">▶ type selected field</button>
   <button id="resetBtn">⟲ reset</button>
   <span class="time" id="timeLabel">…</span>
 </div>
@@ -44,36 +61,55 @@ import { bootQc } from '/videos/_qc-interactions/_shell.js';
 import { typeIntoIframeInput } from '/videos/_shared/motion-primitives.js';
 
 let eventCount = 0;
+let activeInput = null;
 const mirror = document.getElementById('mirror');
+const picker = document.getElementById('fieldPicker');
 
-function setMirror(value) {
-  mirror.textContent = `input events: ${eventCount} · value: "${value}"`;
+function setMirror(fieldId, value) {
+  mirror.textContent = `field ${fieldId} · input events: ${eventCount} · value: "${value}"`;
+}
+
+function splitPickedField() {
+  const [fieldId, text] = picker.value.split('|');
+  return { fieldId, text };
 }
 
 bootQc({
   startSnapshot: 'builder-fields',
   cursorStart: { x: 1120, y: 650 },
   onReady: async ({ interactions }) => {
-    interactions.applyFormProfile('demo-5');
-    await interactions.openFieldOptions(48, { ripple: false });
-    const input = interactions.iframe.query('#wpforms-field-option-48-label');
     eventCount = 0;
-    setMirror(input?.value || '');
-    input?.addEventListener('input', () => {
+    activeInput = null;
+    const { fieldId } = splitPickedField();
+    setMirror(fieldId, '');
+    interactions.iframe.doc()?.addEventListener('input', (event) => {
+      if (event.target !== activeInput) return;
       eventCount += 1;
-      setMirror(input.value);
+      const fieldId = activeInput.id.match(/wpforms-field-option-(\d+)-label/)?.[1] || '?';
+      setMirror(fieldId, activeInput.value);
     });
   },
   run: async ({ interactions, setState }) => {
-    const input = interactions.iframe.query('#wpforms-field-option-48-label');
-    if (!input) throw new Error('Name label input not found');
-    setState('typing into real iframe input');
+    const { fieldId, text } = splitPickedField();
+    setState(`opening field ${fieldId} options`);
+    await interactions.openFieldOptions(fieldId, { ripple: false });
+    const input = interactions.iframe.query(`#wpforms-field-option-${CSS.escape(fieldId)}-label`);
+    if (!input) throw new Error(`Label input not found for field ${fieldId}`);
+    const canvasLabel = interactions.iframe.query(`#wpforms-field-${CSS.escape(fieldId)} .label-title .text`);
+    activeInput = input;
     eventCount = 0;
-    setMirror('');
+    setMirror(fieldId, input.value || '');
+    input.addEventListener('input', () => {
+      if (canvasLabel) canvasLabel.textContent = input.value;
+    }, { once: false });
+    setState(`typing "${text}" into field ${fieldId}`);
     const pt = interactions.iframe.elementToStageCoords(input);
     await interactions.cursor.glide(pt, { duration: 0.65 });
     await interactions.cursor.click({ ripple: false });
-    await typeIntoIframeInput(input, 'Full Name', { cps: 18, clear: true });
+    await new Promise(resolve => {
+      const tween = typeIntoIframeInput(input, text, { cps: 8, clear: true });
+      tween.eventCallback('onComplete', resolve);
+    });
     setState('typed and dispatched change');
   },
 });

@@ -308,6 +308,9 @@ export function focusStationOverview(camera, opts) {
  * @returns {{x:number,y:number,scale:number}}
  */
 export function cameraToElement(iframeManager, selector, opts = {}) {
+  if (typeof iframeManager.cameraToElement === 'function') {
+    return iframeManager.cameraToElement(selector, opts);
+  }
   const { fill = 0.5, pad = 24, anchor = 'center' } = opts;
   const el = iframeManager.query(selector);
   if (!el) throw new Error(`cameraToElement: selector not found: ${selector}`);
