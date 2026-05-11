@@ -105,6 +105,23 @@ Outro (~5s)      → brand sign-off card. NO mac frame.
 - Skip the postIntro and the video reads as "PowerPoint" — generic chapter shapes, weak first impression. The first cut of every tutorial that skipped a real postIntro became generic per `docs/winning-pattern-analysis-2026-05-10.md` §C.
 - Source: Umair instruction 2026-05-12. Applies to all tutorial videos including the existing make-field-required pilot (retrofitted at commit `af504ea`) and Klaviyo tutorial (per `docs/codex-prompts/klaviyo-tutorial-continuation.md`).
 
+### INV-12 — Selector scoping for provider / feature panels
+WPForms admin renders ALL provider connection forms in the DOM and hides inactive ones via `display: none` or accordion collapse. A naive query like `iframeManager.query('input[name="api_key"]')` matches the FIRST one in DOM order — which may be ConvertKit, ActiveCampaign, Mailchimp, or any other integration that happens to be earlier in the captured snapshot.
+
+**Always scope queries to the container of the target feature:**
+
+```js
+// WRONG — matches first provider's input regardless of which is visible
+const apiInput = ifm.query('input[name="api_key"]');
+
+// RIGHT — scoped to the Klaviyo accordion specifically
+const apiInput = ifm.query('#wpforms-integration-klaviyo input[name="api_key"]');
+```
+
+Same rule applies to any captured admin/builder page that renders multiple provider/payment/feature variants behind a tab or accordion. The container's stable id (`#wpforms-integration-<provider>`, `#wpforms-panel-content-section-<provider>`, etc.) is the scope anchor.
+
+Learned during Klaviyo tutorial v4 build (`videos/klaviyo-quick-connect/index.html`). Source: Klaviyo session storyboard 2026-05-12.
+
 ## When a future session is about to break one
 
 Patterns that signal trouble:

@@ -55,6 +55,56 @@ For a new video session, work in this order. Don't skip steps.
 
 This gate exists because the first cut of every video that skipped it became a "PowerPoint" — generic chapter shapes, fake UI, weak postIntro. See `docs/postintro-patterns.md` and `docs/winning-pattern-analysis-2026-05-10.md` §C.
 
+## Tutorial narrative principles
+
+These are storyboard / narration principles, not architecture rules. Apply during the storyboard proposal step.
+
+### Start at the user's natural entry point
+
+A tutorial should begin where the user actually lands when they want to do this task — not in the middle of the workflow. For a "connect Klaviyo" tutorial, the viewer's natural landing page is "WPForms → All Forms" (where they already are), not "Settings → Integrations" (where they're going). Show the navigation from natural-entry to feature, even if it takes one extra beat.
+
+Why this matters: viewers who land mid-flow have to mentally reconstruct "how did I get here?" before they can follow. Starting at the entry point removes that cognitive load and signals "this is what your screen looks like right now."
+
+Source: Klaviyo tutorial v4 build (2026-05-12) — v3 jumped into Settings; v4 added the All Forms beat as Step 1 and the tutorial read significantly clearer.
+
+### Real captured snapshot + inline DOM = state variants
+
+A single captured snapshot can demonstrate MULTIPLE visual states by toggling inline DOM after the swap. This is a powerful authoring technique for showing alternatives (action variants, configuration options, before/after) without capturing one snapshot per state.
+
+Example from Klaviyo tutorial:
+
+```js
+// Swap to the real Connection settings panel (default state: Create / Update Profile)
+await ifm.swap('builder-providers-klaviyo-connection');
+
+// Then cycle through 3 Action variants using inline DOM puppetry —
+// no additional snapshot needed.
+async function showActionVariant(value, descriptionText) {
+  const doc = ifm.doc();
+  // Set the visible dropdown value
+  const dropdown = doc.querySelector('#wpforms-providers-klaviyo-action');
+  dropdown.value = value;
+  // Replace the inner fields HTML to match
+  const fieldsHost = doc.querySelector('.wpforms-builder-klaviyo-provider-actions-data');
+  fieldsHost.innerHTML = VARIANT_FIELDS_HTML[value];
+  // Show the matching description paragraph
+  doc.querySelectorAll('.wpforms-builder-klaviyo-action-description').forEach(el => {
+    el.style.display = el.dataset.action === value ? 'block' : 'none';
+  });
+}
+await showActionVariant('unsubscribe', '...');
+await wait(2);
+await showActionVariant('remove_from_list', '...');
+```
+
+When to use this: tutorials demonstrating "this dropdown has 3 options, each does X / Y / Z." Capturing 3 separate snapshots for 3 nearly-identical states is wasteful and creates selector drift between captures. One real snapshot + inline DOM keeps the field IDs stable and the layout pixel-identical across variants.
+
+When NOT to use this: when the variants change layout structurally (different fields, different containers). Then capture each as a real snapshot.
+
+Aligned with INV-7 (library is reference, inline DOM is normal). The inline DOM is per-video, not promoted to library — it's specific to this video's narrative.
+
+Source: Klaviyo tutorial v4 build (2026-05-12) — Action To Perform variant cycling in Chapter 5.
+
 ## Production Truth
 
 Real WPForms UI is product truth. Do not fabricate.
