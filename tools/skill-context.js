@@ -49,7 +49,7 @@ const SKILLS = [
   { name: 'wpforms-gsap-rules',  path: '.claude/skills/wpforms-gsap-rules/SKILL.md',  use: 'GSAP L0 discipline + camera-decomposition + registered timelines + pausableRaf + Flip + effects library + designer principles (Emil/Krehel/Jhey).' },
   { name: 'wpforms-marketing',   path: '.claude/skills/wpforms-marketing/SKILL.md',   use: 'Editorial / ad-style surfaces (surface: editorial/mixed) + reference/html-templates/ clones + brand canonical + blocks + atmospheric kit + text-kit.' },
   { name: 'wpforms-transitions', path: '.claude/skills/wpforms-transitions/SKILL.md', use: 'Chapter breaks (glide/dolly/whip) + swap styles (flipBridge default) + camera poses + shared scene + scrubber/render.' },
-  { name: 'wpforms-primitives', path: '.claude/skills/wpforms-primitives/SKILL.md', use: 'Lookup index for videos/_shared/motion-primitives.js (cameras / Cursor / typing / field-reveal / brand-anchor / exit) and videos/_shared/wpforms-interactions.js (8 Wave 1 standard interactions). Reach here BEFORE writing GSAP cursor / camera / interaction code.' },
+  { name: 'wpforms-primitives', path: '.claude/skills/wpforms-primitives/SKILL.md', use: 'Lookup index for videos/_shared/motion-primitives.js (cameras / Cursor / typing / field-reveal / brand-anchor / exit) and videos/_shared/wpforms-interactions.js (Wave 1 builder/admin + Wave 2 Batch A notifications/CL/smart-tags). Includes the library-as-reference philosophy + 3-test promotion rule. Reach here BEFORE writing GSAP cursor / camera / interaction code AND before adding any new library method.' },
   { name: 'wpforms-motion-audit', path: '.claude/skills/wpforms-motion-audit/SKILL.md', use: 'Score animations and camera moves S-F tier with hard-rule calibration. MUST run before any postIntro/cinematic/editorial handoff.' },
 ];
 
@@ -60,7 +60,7 @@ const LIBRARIES = [
   },
   {
     path: 'videos/_shared/wpforms-interactions.js',
-    use: 'Standard WPForms interactions (Wave 1): navAddNewForm, selectTemplate, navWPFormsSidebarMenu, openFormInList, dragFieldToForm, openFieldOptions, navBuilderSidebar, openSettingsTab. Sub-interactions: setFieldLabel, setNameFormat, toggleEmailConfirmation. Plus IframeManager helper for snapshot-iframe slot + crossfade swap. QC at videos/_qc-interactions/. Compose these for tutorial chapters.',
+    use: 'Standard WPForms interactions. Wave 1 (builder/admin): navAddNewForm, selectTemplate, navWPFormsSidebarMenu, openFormInList, dragFieldToForm, openFieldOptions, navBuilderSidebar, openSettingsTab, plus sub-interactions setFieldLabel/setNameFormat/toggleEmailConfirmation. Wave 2 Batch A (notifications + CL): addNotification, insertSmartTag (+openSmartTagPicker/closeSmartTagPicker), selectFromDropdown (generic faux-native-select), addConditionalLogicRule, duplicateNotificationBlock, plus notification setters setNotificationSendTo/Subject/Message. Per library-scope-frequency-2026-05-12.md retrospective: ~6 of 15 Wave 2 methods earned status by ≥3-doc threshold — prefer inline DOM for one-off clicks (philosophy in wpforms-primitives skill). IframeManager helper: iframe slot mount at native 1280×720, engine-pattern direct camera transform, identity at rest, pointer-events: none guard. Zoom > 2x softens on iframe content (CSS transform pixel-doubling limit, Codex zoom-quality session in flight). QC at videos/_qc-interactions/. Compose these for tutorial chapters.',
   },
 ];
 
