@@ -45,8 +45,8 @@ Non-negotiable invocations for tutorial / postIntro / cinematic / editorial work
 - `wpforms-marketing` at session start for editorial / ad-style path
 - `wpforms-postintro` before designing any postIntro
 - `wpforms-gsap-rules` before writing any timeline beat (registered timelines, pausableRaf, boundedRepeats)
-- `wpforms-primitives` before building any new helper to check if one already exists
-- `wpforms-motion-audit` before declaring postIntro / cinematic / editorial done — HARD GATE, must record tier
+- **`wpforms-primitives` BEFORE writing any motion code** (the most-skipped skill — both Klaviyo + editorial sessions hand-rolled approximations of existing primitives because they didn't invoke this. The skill is a WRITE-TIME gate, not a lookup-when-you-think-of-it reference.)
+- **`wpforms-motion-audit` on the v1 build AND before final handoff** (the second-most-skipped skill — applies to v1 review + major restructures + final handoff. Skipping v1 audit means iterating against the user's eyes instead of the rubric, which is 10+ rounds more expensive. HARD GATE, must record tier S/A/B/C/D/F.)
 
 ## Topic skills (load AFTER picking a path)
 

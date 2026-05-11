@@ -7,6 +7,17 @@ description: Use BEFORE writing any motion, cursor, typing, field-reveal, brand-
 
 Two shipped libraries codify the motion + interaction vocabulary for this repo. Their authoritative rationale lives inline in the source files; this skill is the **when-to-use lookup table** so future Claude reaches for them instead of reinventing.
 
+## ⛔ INVOKE BEFORE WRITING ANY MOTION CODE
+
+**This skill is NOT a lookup-when-you-think-of-it reference. It is a WRITE-TIME GATE.** Invoke it via the Skill tool BEFORE you write the first `gsap.to`, `Cursor`, `caretType`, `cinematicFlight`, `figjamFlight`, `popOut`, `IframeManager.swap`, `markerSweep`, or `mountSullieBug` call. Reading this file inline is not enough — use the Skill tool.
+
+Observed failure mode (Klaviyo tutorial v11 + editorial v1, both 2026-05-12):
+
+> "Should've loaded wpforms-primitives at the very start. It would have given me the canonical signatures for Cursor, caretType, clickRipple, popOut, figjamFlight, cinematicFlight in one place — and the QC pages showing what each looks like — before I started writing. Instead I read motion-primitives.js piecemeal mid-build and hand-rolled approximations of half of it."
+> — editorial session retro, 2026-05-12
+
+Both sessions hand-rolled approximations of primitives that already exist. The rebuild is more expensive than the lookup. Invoke this skill at session start for ANY work that touches motion-primitives.js, wpforms-interactions.js, or iframe-helpers.js, not just after you notice you're reinventing.
+
 ## Why this skill exists
 
 Across the 5d audit pass, every failed editorial / postIntro / interaction beat re-invented:

@@ -15,6 +15,13 @@ Sign-off criteria for any postIntro, cinematic beat, or editorial chapter:
 - Hard-rule violations either fixed OR explicitly overridden by Umair
 - Tier A or higher is the merge bar; B or below requires fix or override
 
+**Run on v1 builds, not just final handoff.** Both the Klaviyo tutorial v11 session and the editorial session (2026-05-12) skipped running motion-audit on their v1 builds. The editorial session's own retro: "should have run it on the v1 build before showing you — would've caught the failures." Iterating against the user's eyes for 12 rounds is 11 rounds more expensive than running the audit on v1, getting the tier, and iterating against the rubric.
+
+Invocation cadence:
+- v1 build complete (before showing to user) → invoke + record tier
+- After any major restructure (PostIntro morph chain rewritten, camera arc changed) → invoke + record tier
+- Final handoff → invoke + record tier (mandatory, the "gate")
+
 The Klaviyo tutorial v11 shipped to QC after 12 postIntro iterations WITHOUT ever invoking this skill. That's the failure mode this gate exists to prevent. Reading wpforms-motion-audit/SKILL.md inline ≠ running the audit.
 
 ## Overview

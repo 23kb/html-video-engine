@@ -155,7 +155,17 @@ Non-negotiable Skill tool invocations for tutorial / postIntro / cinematic / edi
 
 If you're working from a detailed codex prompt at `docs/codex-prompts/*.md`, the prompt is the brief. The skills are STILL the gates. Both apply. Detailed prompts do NOT obviate skill invocation.
 
-Source: Klaviyo session retro 2026-05-12 — author's own diagnosis of the bypass.
+**The two most-bypassed skills (across both 2026-05-12 sessions):**
+
+- `wpforms-primitives` — both sessions skipped it, both hand-rolled approximations of primitives that already existed in `motion-primitives.js` / `wpforms-interactions.js` / `iframe-helpers.js`. The skill description starts with "Use BEFORE writing any motion..." for a reason. Treat it as a WRITE-TIME gate, not a lookup-when-you-think-of-it reference.
+- `wpforms-motion-audit` — both sessions skipped it. Klaviyo went 12 postIntro iterations without scoring. Editorial admitted "should have run on v1 — would've caught the failures." The audit applies to v1 builds + major restructures + final handoff. Not just final handoff.
+
+Common rationalizations for skipping (all wrong):
+- "The prompt covered what I needed." → The prompt is the brief; the skills are the gates. Both apply.
+- "I'll lookup primitives mid-build as I need them." → You'll hand-roll approximations of half the primitives you needed.
+- "Motion-audit is for final handoff, I haven't reached handoff." → It's also for v1 build review. Skipping v1 audit costs 10+ iteration rounds.
+
+Source: Klaviyo session retro + editorial session retro, both 2026-05-12.
 
 ## When a future session is about to break one
 
