@@ -1,6 +1,6 @@
 ---
 name: wpforms-postintro
-description: Use when designing, implementing, reviewing, or debugging a WPForms postIntro concept beat. Covers the 8-15s multi-phase requirement, build-order decisions (existing kind vs video-local vs descriptor vs new cinematic), canonical reference cinematics (rough-thought-to-draft, one-answer-enough, form-to-inbox), snapshot handoff (avoiding the boot flash), and HTML/CSS/SVG/GSAP video-local surfaces. Triggers on any "postIntro", "concept beat", "after the title card", or `postIntro.kind` work.
+description: "Use when designing, implementing, reviewing, or debugging a WPForms postIntro concept beat. Covers the 8-15s multi-phase requirement, build-order decisions (existing kind vs video-local vs descriptor vs new cinematic), canonical reference cinematics (rough-thought-to-draft, one-answer-enough, form-to-inbox), snapshot handoff (avoiding the boot flash), and HTML/CSS/SVG/GSAP video-local surfaces. Triggers on any 'postIntro', 'concept beat', 'after the title card', or postIntro.kind work."
 ---
 
 # WPForms PostIntro
@@ -13,7 +13,7 @@ It is **not**: a second title card, a copied cinematic from another topic, a ful
 
 This skill defines the multi-animation rule + the morph-chain requirement that postIntros are scored against. **Use the Skill tool to invoke it** at the start of any postIntro design work. Reading the markdown file inline ≠ running the skill.
 
-Sign-off requirement: every postIntro is run through `wpforms-motion-audit` (Skill tool) before declaring it done. Tier B or below requires fix or explicit Umair override. The Klaviyo tutorial v11 postIntro went through 12 iterations without ever being scored — don't repeat that.
+Sign-off requirement: every postIntro is run through `wpforms-motion-audit` (Skill tool) before declaring it done. Tier B or below requires fix or explicit user override. The Klaviyo tutorial v11 postIntro went through 12 iterations without ever being scored — don't repeat that.
 
 ## 🛑 HARD-GATE: Multi-Animation Rule (Mandatory)
 

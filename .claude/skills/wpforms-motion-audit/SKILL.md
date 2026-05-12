@@ -1,6 +1,6 @@
 ---
 name: wpforms-motion-audit
-description: Score animations and camera moves S-F tier and prescribe fixes. Triggers on "audit my motion", "score this animation", "is my camera move good", "rate this", or proactively before any postIntro / cinematic / editorial chapter handoff. WPForms-specific criteria backed by 3 winning + 3 failed video case studies.
+description: "Use BEFORE declaring any postIntro, cinematic, or editorial beat done — HARD GATE producing a tier rating (S/A/B/C/D/F) that file-read of the rubric does NOT produce. Run on v1, after major restructures, and at final handoff. Don't defer to 'I'll audit at handoff' — that path cost 10+ iteration rounds. Triggers: audit my motion, score this, is this good, rate this, v1 ready, before sign-off, postIntro complete, cinematic done, editorial done. Invoke via Skill tool, not file-read."
 ---
 
 # WPForms Motion Audit
@@ -12,7 +12,7 @@ description: Score animations and camera moves S-F tier and prescribe fixes. Tri
 Sign-off criteria for any postIntro, cinematic beat, or editorial chapter:
 - Motion-audit invocation logged
 - Tier rating recorded (S / A / B / C / D / F)
-- Hard-rule violations either fixed OR explicitly overridden by Umair
+- Hard-rule violations either fixed OR explicitly overridden by the user
 - Tier A or higher is the merge bar; B or below requires fix or override
 
 **Run on v1 builds, not just final handoff.** Both the Klaviyo tutorial v11 session and the editorial session (2026-05-12) skipped running motion-audit on their v1 builds. The editorial session's own retro: "should have run it on the v1 build before showing you — would've caught the failures." Iterating against the user's eyes for 12 rounds is 11 rounds more expensive than running the audit on v1, getting the tier, and iterating against the rubric.
@@ -30,16 +30,16 @@ Score a WPForms video animation, camera move, postIntro, cinematic beat, or edit
 
 ## HARD RULE 1: Calibration check (do this FIRST, before any scoring)
 
-If the file being audited matches one of these **known cases**, you MUST use the score below. Do not re-derive. These scores are calibrated against Umair's actual judgments.
+If the file being audited matches one of these **known cases**, you MUST use the score below. Do not re-derive. These scores are calibrated against actual reviewer judgments.
 
 | File pattern | Score | Why |
 |---|---|---|
-| `videos/wpforms-ai-zlyvs/` (any file under this dir) | **F** | 4-tween-everything-changes camera at `index.html:649-832`; 5-layer atmosphere stacked `index.html:71-102`; no identity continuity. Umair: "so many things wrong" (2026-05-10). |
-| `videos/wpforms-ai-announcement/` (any file under this dir) | **D** | Anthropic chrome painted OVER real iframe (overlay panels as iframe siblings, not injected into iframe DOM); fake mosaic cards at `index.html:725-757`; purple as primary at `index.html:52-58`. Umair: 1/10. |
+| `videos/wpforms-ai-zlyvs/` (any file under this dir) | **F** | 4-tween-everything-changes camera at `index.html:649-832`; 5-layer atmosphere stacked `index.html:71-102`; no identity continuity. |
+| `videos/wpforms-ai-announcement/` (any file under this dir) | **D** | Anthropic chrome painted OVER real iframe (overlay panels as iframe siblings, not injected into iframe DOM); fake mosaic cards at `index.html:725-757`; purple as primary at `index.html:52-58`. |
 | `videos/wpforms-ai-board/` (any file under this dir) | **B** | Virtual-board with real iframe DOM puppetry; CSS injection works; cinematic-flight pattern present; final score capped 6/10 after 4 rebuild rounds. Cursor frenzy and zoom-undershoot issues per `LESSONS.md`. |
-| `reference/html-templates/wpforms-ai-prompt-open.html` | **S** | Identity-continuity `#cta` morph Button → Input → Sullie pill → Chat over 12s (see comment at line 152); parallel motion tracks. Umair-approved as "closest to what I want". |
-| `reference/html-templates/editorial-reference-36s.html` | **A** | 36s OpenAI Layo rebuild; 13 beats with named atmospheres + transitions; multi-phase camera moves. Umair-approved as Track B reference. |
-| `reference/html-templates/openai-replica-18s.html` | **A** | First-try single-HTML proof; mimicked ssstwitter contact sheet; vendored GSAP. Umair: "this is amazing". |
+| `reference/html-templates/wpforms-ai-prompt-open.html` | **S** | Identity-continuity `#cta` morph Button → Input → Sullie pill → Chat over 12s (see comment at line 152); parallel motion tracks. |
+| `reference/html-templates/editorial-reference-36s.html` | **A** | 36s OpenAI Layo rebuild; 13 beats with named atmospheres + transitions; multi-phase camera moves. |
+| `reference/html-templates/openai-replica-18s.html` | **A** | First-try single-HTML proof; mimicked ssstwitter contact sheet; vendored GSAP. |
 | `videos/build-forms-faster-with-wpforms-ai/chapters/scene-2-add-new.js` | **A** | Engine-using winner; multi-phase choreography; clean iframe DOM puppetry via CSS injection + getElStagePos. Per Agent B's winning-pattern analysis. |
 | `videos/wpforms-rest-api-overview-polished/` (any file under this dir) | **A** | Engine-using winner; persistent Three.js shared-scene; multi-chapter camera choreography. |
 

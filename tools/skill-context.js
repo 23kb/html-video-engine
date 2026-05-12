@@ -51,6 +51,7 @@ const SKILLS = [
   { name: 'wpforms-transitions', path: '.claude/skills/wpforms-transitions/SKILL.md', use: 'Chapter breaks (glide/dolly/whip) + swap styles (flipBridge default) + camera poses + shared scene + scrubber/render.' },
   { name: 'wpforms-primitives', path: '.claude/skills/wpforms-primitives/SKILL.md', use: 'Lookup index for videos/_shared/motion-primitives.js (cameras / Cursor / typing / field-reveal / brand-anchor / exit) and videos/_shared/wpforms-interactions.js (Wave 1 builder/admin + Wave 2 Batch A notifications/CL/smart-tags). Includes the library-as-reference philosophy + 3-test promotion rule. Reach here BEFORE writing GSAP cursor / camera / interaction code AND before adding any new library method.' },
   { name: 'wpforms-motion-audit', path: '.claude/skills/wpforms-motion-audit/SKILL.md', use: 'Score animations and camera moves S-F tier with hard-rule calibration. MUST run before any postIntro/cinematic/editorial handoff.' },
+  { name: 'wpforms-video-polish', path: '.claude/skills/wpforms-video-polish/SKILL.md', use: 'Polish an existing already-shipped video without breaking it. Backup-first → Plan agent analysis → vet against determinism/protected-core/RED-flag rules → surgical edits in batches of 5–10 → static verification only (no visual QC) → motion-audit if cinematic beats touched. Includes 8 canonical polish patterns (repeated expo.out, settle-into-rest, unused CustomEase, one-shot-pulse-with-tail, display-serif letter-spacing, frozen-camera handoff, redundant interactive cycle, block-centred zoom gutter). Codified from klaviyo-bridge-2 polish work (2026-05-12). NOT for new authoring (use wpforms-video / wpforms-marketing), NOT for debug.' },
 ];
 
 const LIBRARIES = [
@@ -78,9 +79,10 @@ const OPERATOR_MANUALS = [
 ];
 
 const REFERENCE_TEMPLATES = [
-  { path: 'reference/html-templates/wpforms-ai-prompt-open.html', use: 'S-tier identity-continuity morph (Button → Input → Pill → Chat). Canonical clone target for editorial work.' },
-  { path: 'reference/html-templates/editorial-reference-36s.html', use: '36s OpenAI Layo rebuild, A-tier, 13 beats with named atmospheres + transitions. Linear-scene editorial reference.' },
-  { path: 'reference/html-templates/openai-replica-18s.html', use: 'First-try single-HTML proof. Built by mimicking a contact sheet. Validates the clone-and-customize pattern.' },
+  { path: 'videos/klaviyo-bridge-2/index.html', use: 'CORE REFERENCE for pure editorial. Approved after 3 sessions + multiple iterations. PRIMARY clone target for any new pure-editorial video — encodes patterns the other 3 templates demonstrate individually, refined through real feedback.' },
+  { path: 'reference/html-templates/wpforms-ai-prompt-open.html', use: 'S-tier identity-continuity morph (Button → Input → Pill → Chat). Secondary reference for single-element morph-chain editorial work.' },
+  { path: 'reference/html-templates/editorial-reference-36s.html', use: '36s OpenAI Layo rebuild, A-tier, 13 beats with named atmospheres + transitions. Secondary reference for linear-scene editorial.' },
+  { path: 'reference/html-templates/openai-replica-18s.html', use: 'First-try single-HTML proof. Built by mimicking a contact sheet. Secondary reference; validates the clone-and-customize pattern.' },
 ];
 
 const BRAND_CANONICAL = [
@@ -91,6 +93,7 @@ const BRAND_CANONICAL = [
 
 const KEY_DOCS = [
   { path: 'docs/INDEX.md',                                              when: 'First — one-line-per-doc index. Use to find the right doc fast.' },
+  { path: 'docs/video-architecture-invariants-2026-05-12.md',           when: 'CANONICAL hard-rules reference. 16 numbered invariants (INV-1 through INV-16) covering stage/iframe transforms, snapshot truth, library scope, brand, tutorial shape, selector scoping, skill-gate consumption, continuation-session re-audit, real-UI proof gate, clone-and-customize. Pure reference — file-read sufficient, no Skill tool invocation. Read inline.' },
   { path: 'docs/authoring-api.md',                                       when: 'Public authoring contract reference. Manifest schema, chapter exports, descriptor mode, validator behavior.' },
   { path: 'docs/editorial-direction-audit-2026-05-10.md',                when: 'Master 7-phase plan after 3 failed editorial attempts. Read first if working on editorial-track.' },
   { path: 'docs/winning-pattern-analysis-2026-05-10.md',                 when: 'What 3 winning videos share vs 3 failed editorial videos. Identity-continuity authoring rule lives here.' },

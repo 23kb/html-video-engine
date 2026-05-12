@@ -77,7 +77,7 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 - `pilot-videos-plan-2026-05-12.md` — Original plan for the 3 pilot videos (editorial / mixed / tutorial). Reference for snapshot inventory + storyboard structure.
 - `library-scope-frequency-2026-05-12.md` — Empirical audit of 20 WPForms.com docs frequency-ranking interactions. Wave 2 Batch A retrospective: ~6 of 15 methods earned library status by ≥3-doc threshold. Use to decide library promotion candidates.
 - `engine-redundancy-audit-2026-05-12.md` — Per-export classification of engine + runtime: REPLACED / REPLACEABLE / WPFORMS-PORTABLE / LOAD-BEARING / DEAD. Reference for any engine-slimming work.
-- `engine-vs-libraries-architecture-2026-05-12.md` — Revised verdict after Umair pushback: engine is transitional, libraries can subsume. ~6,000 LOC deletable if all production migrates to single-HTML. But existing 12 videos stay on engine — engine is load-bearing for legacy.
+- `engine-vs-libraries-architecture-2026-05-12.md` — Revised verdict after user pushback: engine is transitional, libraries can subsume. ~6,000 LOC deletable if all production migrates to single-HTML. But existing 12 videos stay on engine — engine is load-bearing for legacy.
 
 ## System audits / postmortems / strategic context
 

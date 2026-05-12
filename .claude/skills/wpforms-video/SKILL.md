@@ -1,6 +1,6 @@
 ---
 name: wpforms-video
-description: Use when starting or working on any WPForms tutorial video — intake, snapshot inventory, storyboarding, manifest/chapter authoring, narration, validation, review-URL handoff. Covers default legacy/effect-mode authoring, chapter shapes, modes (per-beat-narration / parallel / audio-cued), production-truth rules, and the storyboard-approval gate. For postIntro design specifically, use wpforms-postintro. For GSAP code use wpforms-gsap-rules. For ad-style/marketing videos use wpforms-marketing. For transitions use wpforms-transitions.
+description: "Use when starting or working on any WPForms tutorial video — intake, snapshot inventory, storyboarding, manifest/chapter authoring, narration, validation, review-URL handoff. Covers default legacy/effect-mode authoring, chapter shapes, modes (per-beat-narration / parallel / audio-cued), production-truth rules, and the storyboard-approval gate. For postIntro design specifically, use wpforms-postintro. For GSAP code use wpforms-gsap-rules. For ad-style/marketing videos use wpforms-marketing. For transitions use wpforms-transitions."
 ---
 
 # WPForms Tutorial Video
@@ -24,7 +24,7 @@ Tutorial (~40-90s) → real product UI inside mac frame. Chapter-by-chapter.
 Outro (~5s)      → brand sign-off card. NO mac frame.
 ```
 
-Mac frame wraps the **Tutorial section only**. Intro / postIntro / outro live directly on the stage with no chrome around them. Source: per-Umair instruction 2026-05-12 + INV-3 in `docs/video-architecture-invariants-2026-05-12.md`.
+Mac frame wraps the **Tutorial section only**. Intro / postIntro / outro live directly on the stage with no chrome around them. Canonical source: **INV-11** (tutorial shape) + **INV-3** (mac-frame transform rule) in `docs/video-architecture-invariants-2026-05-12.md`. If anything here disagrees with those, INV wins.
 
 PostIntro is NOT optional. It is the difference between "PowerPoint" and "tutorial." See `wpforms-postintro` skill for the multi-animation rule + canonical references. The first cut of every tutorial that skipped a real postIntro became generic — see `docs/winning-pattern-analysis-2026-05-10.md` §C.
 

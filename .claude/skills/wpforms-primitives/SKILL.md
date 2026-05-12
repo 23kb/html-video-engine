@@ -1,6 +1,6 @@
 ---
 name: wpforms-primitives
-description: Use BEFORE writing any motion, cursor, typing, field-reveal, brand-bug, exit pattern, or standard WPForms interaction. Catalogs the executable primitives in videos/_shared/motion-primitives.js and the WPForms interactions in videos/_shared/wpforms-interactions.js. Triggers on any "GSAP timeline", "cursor glide", "typing animation", "field reveal", "camera move", "cinematic flight", "scale dip", "drag field", "click Add New", "open settings tab", "select template", "status pill morph", "marker sweep", "Sullie bug", or similar — anything that has a canonical primitive should reach this skill first.
+description: "Use BEFORE writing motion, cursor, camera, typing, field-reveal, brand-bug, iframe glue, or WPForms admin/builder interaction code — this is the WRITE-TIME lookup index for three shipped libraries (motion-primitives.js, wpforms-interactions.js, iframe-helpers.js). Most-skipped skill across 3 sessions; hand-rolling primitives that already exist costs 10+ iteration rounds. Triggers: cursor glide, camera move, cinematic flight, typing animation, field reveal, drag field, click Add New, select template, open settings, status pill morph, marker sweep, Sullie bug, iframe click, scroll into view, SaaS dashboard. If about to write gsap.to(cursor, ...) — STOP and load this first."
 ---
 
 # WPForms Primitives & Interactions — lookup index
@@ -28,6 +28,36 @@ Across the 5d audit pass, every failed editorial / postIntro / interaction beat 
 - a snapshot-swap with a cream-flash gap
 
 The libraries fix all of the above. The job here is to **find the matching primitive, copy or compose it, do not rewrite it**.
+
+## Quick Reference
+
+Scan this table first. For deeper context (why, when not to use, options), scroll to the detailed sections below.
+
+| Need | Primitive | Signature | Source |
+|------|-----------|-----------|--------|
+| Move cursor to a point or element | `cursor.glide(to, opts)` | `(targetOrPos, {duration, ease}) → Promise` | motion-primitives.js:445 |
+| Click at current cursor position | `cursor.click(opts)` | `({squash, ripple}) → Promise` | motion-primitives.js:489 |
+| Glide to + hover an element | `cursor.hover(to, opts)` | `(el, {duration}) → Promise` | motion-primitives.js:541 |
+| Drag from point A to point B | `cursor.drag(from, to, opts)` | `(posA, posB, {duration}) → Promise` | motion-primitives.js:628 |
+| Camera move A→B (zoom+pan+ease) | `cinematicFlight(camera, opts)` | `(cameraEl, {from, to, zoom, duration}) → tl` | motion-primitives.js:100 |
+| Figjam-style camera traversal | `figjamFlight(camera, opts)` | `(cameraEl, opts) → tl` | motion-primitives.js:195 |
+| Establish overview shot of a station | `focusStationOverview(camera, opts)` | `(cameraEl, opts) → tl` | motion-primitives.js:272 |
+| Typewriter into an input field | `caretType(el, text, opts)` | `(el, str, {wpm, jitter}) → tl` | motion-primitives.js:819 |
+| Animate pill text + color morph | `statusPillMorph(pill, texts, opts)` | `(el, [strings], opts) → tl` | motion-primitives.js:901 |
+| Highlighter sweep across text | `markerSweep(textEl, opts)` | `(el, {color, duration}) → tl` | motion-primitives.js:953 |
+| Stagger-reveal a list of fields | `fieldStaggerReveal(fields, opts)` | `([els], {stagger, dur}) → tl` | motion-primitives.js:1228 |
+| Mount the Sullie brand bug | `mountSullieBug(opts)` | `({position, scale}) → element` | motion-primitives.js:1266 |
+| Compute finite loop count from duration | `boundedRepeats(cycle, visible)` | `(cycleSec, visibleSec) → number` | motion-primitives.js:46 |
+| Seeded RNG for deterministic randomness | `mulberry32(seed)` | `(seed) → () => number` | motion-primitives.js:58 |
+| **Defensive scroll + glide + click** | `glideClick({iframeManager, cursor}, target, opts)` | `(deps, el, opts) → Promise` | iframe-helpers.js:121 |
+| Find iframe element by visible text | `findInIframeByText(ifm, text, opts)` | `(ifm, str, opts) → Element` | iframe-helpers.js:45 |
+| Glide+click an iframe element by text | `glideToText({iframeManager, cursor}, text, opts)` | `(deps, str, opts) → Promise` | iframe-helpers.js:183 |
+| Click "Add New Form" in admin | `ifm.navAddNewForm(opts)` | `IframeManager method` | wpforms-interactions.js:1385 |
+| Pick a template by slug | `ifm.selectTemplate(slug, opts)` | `IframeManager method` | wpforms-interactions.js:1410 |
+| Drag a field into form builder | `ifm.dragFieldToForm(slug, opts)` | `IframeManager method` | wpforms-interactions.js:1655 |
+| Open a field's option panel | `ifm.openFieldOptions(fieldId, opts)` | `IframeManager method` | wpforms-interactions.js:1914 |
+
+For the IframeManager class itself: `wpforms-interactions.js:103`. For the Cursor class: `motion-primitives.js:380`. Other interactions (`openSettingsTab`, `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, etc.) are also IframeManager methods — grep `wpforms-interactions.js` for the method name to find its line.
 
 ## Library scope philosophy
 
@@ -245,7 +275,7 @@ After `openFieldOptions(fieldId)` exposes a panel, these drive specific sub-cont
 
 #### Wave 2 Batch A — Notifications + Conditional Logic
 
-Use these for Settings → Notifications, smart tags, generic settings controls, and notification conditional logic. QC pages live under `videos/_qc-interactions/` and are draft until Umair approves them.
+Use these for Settings → Notifications, smart tags, generic settings controls, and notification conditional logic. QC pages live under `videos/_qc-interactions/` and are draft until approved.
 
 | Method | What it does | Source |
 |---|---|---|

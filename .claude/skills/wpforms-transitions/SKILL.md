@@ -1,6 +1,6 @@
 ---
 name: wpforms-transitions
-description: Use when choosing, validating, or debugging WPForms transitions — chapter breaks (within same snapshot), snapshot swaps (across snapshots), surface modes (iframe / editorial / mixed), camera-pose vocabulary, or the scrubber/render workflow. Triggers on `breakStyle`, `swapStyle`, `flipBridge`, `morph`, `cover`, `dolly`, `glide`, `whip`, "camera pose", "shared scene", `surface:`, `pausableRaf` discussions, or "preview scrubber" / "MP4 render" tasks.
+description: "Use when choosing, validating, or debugging WPForms transitions — chapter breaks (within same snapshot), snapshot swaps (across snapshots), surface modes (iframe / editorial / mixed), camera-pose vocabulary, or the scrubber/render workflow. Triggers on breakStyle, swapStyle, flipBridge, morph, cover, dolly, glide, whip, 'camera pose', 'shared scene', surface, pausableRaf discussions, or 'preview scrubber' / 'MP4 render' tasks."
 ---
 
 # WPForms Transitions

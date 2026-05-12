@@ -97,7 +97,7 @@ The actual choreography of `wpforms-ai-prompt-open/index.html` decomposed:
 | 9.5–10.3 | circle morphs into chat panel | `width:120→380, height:120→604, borderRadius:60→0`. `chatFinal` opacity 0→1 |
 | 10.3–12.0 | end hold | iframe is fully visible with the chat-panel HTML in slot |
 
-**What this gave Umair that storyboard-driven didn't:**
+**What this gave the user that storyboard-driven didn't:**
 
 1. **Continuous identity transformation.** A single DOM node carries the user's attention from the trigger button all the way to the final chat panel. The viewer doesn't switch focus — they watch one thing become four things. No system can decide to do this from a storyboard prompt unless the storyboard literally says "morph one element through these four states." In the failed videos, every beat is a discrete element appearing/disappearing.
 
@@ -174,7 +174,7 @@ The smallest delta between a winner-shaped video and an editorial-quality video 
 
 The delta is achievable. It's also a **completely different authoring posture** from the storyboard tables that produced the failures. The storyboard format encodes "what happens at t=14.5" but cannot encode "this element from t=0 becomes that element at t=21." Until the authoring step thinks in terms of **identity continuity across time**, the table-driven storyboard will keep producing checklists+tweaks+modals — because those are the easy table cells to write.
 
-**What I don't have evidence to say**: whether the storyboard-driven manifest videos (rest-api, build-forms) actually feel as good as `wpforms-ai-prompt-open` to the user. Both have shipped MP4s; both got "best video the system made" / "best" tags. But Umair also said `wpforms-ai-prompt-open` is "the closest video to what I actually wanted." That implies a gap exists between "best the system made" and "what I wanted." The system can produce 7-8/10 work; the hand-prompted single-HTML produced ~9/10. The delta there is the morph-host pattern, which the manifest engine does not yet have a primitive for.
+**What I don't have evidence to say**: whether the storyboard-driven manifest videos (rest-api, build-forms) actually feel as good as `wpforms-ai-prompt-open` to the user. Both have shipped MP4s; both got "best video the system made" / "best" tags. But the user also identified `wpforms-ai-prompt-open` as the closest reference to the approved direction. That implies a gap exists between "best the system made" and "what was wanted." The system can produce 7-8/10 work; the hand-prompted single-HTML produced ~9/10. The delta there is the morph-host pattern, which the manifest engine does not yet have a primitive for.
 
 ---
 

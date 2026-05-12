@@ -1,6 +1,6 @@
 ---
 name: wpforms-gsap-rules
-description: Use before writing or reviewing any GSAP code in WPForms videos — chapter effects, postIntros, cinematics, shared kits. Covers L0 GSAP discipline (single timeline per beat, autoAlpha not opacity, transform/opacity/filter only, finite repeats), registered timelines (paused + registerTimeline + driver-owned seek), pausableRaf (every author RAF loop), Flip patterns (cross-DOM morphs), and the shared effects.js library. Triggers on any "GSAP", "Flip", "timeline", "tween", "animation", "RAF", or "requestAnimationFrame" work.
+description: "Use BEFORE writing gsap.to, gsap.timeline, gsap.from, Flip, or any author requestAnimationFrame loop — defines L0 discipline rules (one timeline per beat with position params, autoAlpha not opacity, transform/opacity/filter only, finite repeats, pausableRaf, registered timelines, Flip for cross-DOM morphs). Skipping this means L0 violations on first-write, caught by motion-audit later, 3-iteration-minimum rewrite. Triggers: GSAP, gsap.to, gsap.timeline, timeline, tween, ease, stagger, Flip, MorphSVG, CustomEase, RAF, requestAnimationFrame, pausableRaf, animation loop. Also applies when reviewing existing timeline code."
 ---
 
 # GSAP Rules for WPForms Videos
@@ -277,12 +277,7 @@ Flip.from(state, { duration: 0.5, ease: 'power2.inOut',
 
 ## Determinism (Cross-Cuts All GSAP Work)
 
-For `tools/render.js --seek` mode render parity, video chapter and cinematic code is **deterministic**:
-
-- No `Date.now()` outside the player driver.
-- No unseeded `Math.random()` — use `mulberry32(seed)` from `videos/_shared/kit.js`.
-- No `fetch()` at runtime — assets must be loaded before render starts.
-- No `repeat: -1` (already covered above).
+Video chapter and cinematic code must be deterministic for `tools/render.js --seek` render parity. **See INV-9 in `docs/video-architecture-invariants-2026-05-12.md`** — that is the canonical source. Rule 7 above (no `repeat: -1`) is part of the determinism set.
 
 Static check: `node tools/lint-determinism.js [--video <slug>]`.
 

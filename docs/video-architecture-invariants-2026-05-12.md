@@ -25,10 +25,12 @@ This applies to:
 Numbered for easy reference in code comments / commit messages.
 
 ### INV-1 — Stage at native, no transform
-- The `.stage` element is fixed at 1280×720 (or whatever native render resolution the video targets).
+- The `.stage` element is fixed at its native render resolution. **For new videos, use 1920×1080** — lower stage sizes (1280×720, 1440×820, 1600×900) caused snapshot compression that read as low-pixel blur in QC. 1920 verified sharp 2026-05-12; treat as the default for any new pilot.
+- Existing pilots at 1280×720 / 1440×820 are grandfathered. Do not retrofit unless explicitly asked.
 - **No `transform: scale()` on the stage**, including from a `fitStage()` helper. Letterbox in the viewport instead; viewport overflow scrolls.
 - MP4 capture records at native stage size. Sharp throughout.
-- Verified in commit `79081e7` after the editorial pilot QC regression.
+- The rule is "render natively; don't transform-scale to fit a smaller container." The 1920 number is the chosen native; the transform prohibition is the structural rule.
+- Verified in commit `79081e7` after the editorial pilot QC regression. Resolution default updated 2026-05-12 per user feedback: "earlier… stage was set to 1600 or 1080 so snapshots had to be compressed… when set to 1920, issue was fixed."
 
 ### INV-2 — Iframe at native, single direct camera transform
 - IframeManager mounts the iframe at the captured snapshot's native viewport (default 1280×720, configurable).
@@ -105,7 +107,7 @@ Outro (~5s)      → brand sign-off card. NO mac frame.
 - PostIntro is non-optional. It previews the workflow with an identity-continuity morph chain (single DOM element threading the beats). Reference: `reference/html-templates/wpforms-ai-prompt-open.html`.
 - PostIntro may have N sub-beats (multi-phase morph chains are encouraged). The section boundary is the mac-frame-fade-in: when the mac frame opacity tweens 0 → 1 with real product UI behind it, the PostIntro is over and the Tutorial has begun. Anything before that moment, no matter how many phases, is still PostIntro.
 - Skip the postIntro and the video reads as "PowerPoint" — generic chapter shapes, weak first impression. The first cut of every tutorial that skipped a real postIntro became generic per `docs/winning-pattern-analysis-2026-05-10.md` §C.
-- Source: Umair instruction 2026-05-12. Applies to all tutorial videos including the existing make-field-required pilot (retrofitted at commit `af504ea`) and Klaviyo tutorial (per `docs/codex-prompts/klaviyo-tutorial-continuation.md`).
+- Source: user instruction 2026-05-12. Applies to all tutorial videos including the existing make-field-required pilot (retrofitted at commit `af504ea`) and Klaviyo tutorial (per `docs/codex-prompts/klaviyo-tutorial-continuation.md`).
 
 ### INV-12 — Selector scoping for provider / feature panels
 WPForms admin renders ALL provider connection forms in the DOM and hides inactive ones via `display: none` or accordion collapse. A naive query like `iframeManager.query('input[name="api_key"]')` matches the FIRST one in DOM order — which may be ConvertKit, ActiveCampaign, Mailchimp, or any other integration that happens to be earlier in the captured snapshot.
@@ -200,6 +202,63 @@ Cadence for continuation sessions:
 
 Source: Editorial continuation session retro 2026-05-12. Author's own framing: "Continuation sessions inherit the prior session's skip patterns by default. The handoff is an invisible boundary; gates need to be re-armed at it."
 
+### INV-15 — Real-UI proof gate: every UI fragment cites a snapshot or has explicit override
+
+Authored inline DOM that depicts WPForms / Klaviyo / Stripe / etc. product UI must derive from a real captured snapshot under `snapshots/<name>/index.html`. Hand-styled facsimiles ("I'll just CSS up a row that looks like an integration card") are forbidden by default — they produce subtle brand drift (spacing, color, icon, type) that compounds across beats and breaks product truth.
+
+**The gate, at write time:**
+1. Before authoring an inline UI fragment, identify the source snapshot (`snapshots/<name>/index.html`) and the specific element selector or DOM excerpt the fragment derives from.
+2. Add a code-level annotation at the top of the fragment:
+   ```js
+   // SOURCE: snapshots/admin-settings-integrations-klaviyo-form/index.html
+   //         `.wpforms-integration-add-form .row-api-key`
+   ```
+3. If no snapshot exists and the fragment is unavoidable, get explicit user override BEFORE writing — and annotate with the override:
+   ```js
+   // OVERRIDE: user approved fabricated chip 2026-05-12 (no snapshot exists for "added to list" state)
+   ```
+
+**What this prevents (all confirmed across 3 editorial sessions, 2026-05-12):**
+- Claude session: styled own facsimile of integration row + connection card + Klaviyo key panel. None from snapshots. User flagged 0.5/10.
+- Codex session: invented Klaviyo result card to "close the loop" on the action dropdown. Rejected: "no chip, no Klaviyo result card, no fabricated payoff content."
+- Session 3: invented chip overlay during dropdown showcase. Same rejection.
+
+**Distinction from anti-pattern catalog item 6:** the anti-pattern says "DO NOT invent UI fragments without explicit user approval." INV-15 hardens it from honor-system to procedural — the snapshot citation or override annotation must EXIST IN THE CODE. A code review (or a future continuation session reading the file) can grep for `SOURCE:` / `OVERRIDE:` and immediately spot a fragment that has neither.
+
+Source: Editorial retros 2026-05-12 (rules 4, confirmed across 3 sessions).
+
+### INV-16 — Pure-editorial first write = clone from `reference/html-templates/`
+
+For any new pure-editorial video (path 2 in CLAUDE.md), the first write of `videos/<slug>/index.html` MUST be a literal copy from the closest reference template under `reference/html-templates/`. Authoring from a blank file is forbidden unless the user explicitly overrides with the phrase "author from scratch" (or equivalent).
+
+**The mechanical rule:**
+```bash
+cp reference/html-templates/<closest>.html videos/<slug>/index.html
+git add videos/<slug>/index.html  # commit the unmodified clone FIRST
+# then start customizing
+```
+
+**Why a separate commit for the clone:** the diff between the clone-commit and the customization-commits is the actual creative work. Without it, a reviewer can't see what was inherited from the proven template vs what was invented. Sessions hand-rolling from scratch destroyed this audit trail and reliably produced "horrible v1."
+
+**Closest template selection — match on stylistic intent, not topic:**
+| Stylistic intent | Closest template |
+|---|---|
+| **Default — premium product announcement / integration story** | **`videos/klaviyo-bridge-2/index.html`** (CORE REFERENCE, approved after 3 sessions) |
+| Identity-continuity morph (single element threading the story) | `reference/html-templates/wpforms-ai-prompt-open.html` (S-tier reference) |
+| Linear scene sequence with named atmospheres | `reference/html-templates/editorial-reference-36s.html` (A-tier, 13 beats) |
+| Atmospheric collage / parallel objects | `reference/html-templates/openai-replica-18s.html` (single-HTML proof) |
+
+When in doubt, clone `videos/klaviyo-bridge-2/index.html`. It encodes the patterns the other three references demonstrate individually, refined through 3 sessions of feedback.
+
+**Atmospheres also clone, not invent.** Session 3's pegboard halftone background was invented from scratch. User reaction: "the fuck is this… pegboard… what the fuck are all these motion design files in the system for if you're gonna make shit from your ass." Fix was to lift the atmosphere wholesale from `wpforms-ai-board/index.html`. Rule: when adding atmosphere to a beat, point at the reference HTML it comes from in a code comment (same SOURCE: convention as INV-15).
+
+**What this prevents (confirmed across 3 sessions, 2026-05-12):**
+- Codex editorial v1: authored from scratch despite `wpforms-marketing` skill saying clone-first. Skill rule was soft advisory; no code-time gate.
+- Claude editorial v1: same.
+- Session 3: invented pegboard atmosphere. Same root cause.
+
+Source: Editorial retros 2026-05-12 (rule 6, confirmed S2+S3).
+
 ## When a future session is about to break one
 
 Patterns that signal trouble:
@@ -213,6 +272,9 @@ Patterns that signal trouble:
 | `cursor.glide(elementToStageCoords(el))` without scrollIntoView first | INV-6 — element may be off-viewport |
 | New `WPFormsInteractions.setXfieldValue()` method | INV-7 — single-click wrappers stay inline |
 | `iframe.pointerEvents = 'auto'` for debugging | INV-8 — re-enable per-instance only when needed |
+| Inline-styling a "looks like the product UI" fragment without a snapshot reference | INV-15 — every UI fragment needs `// SOURCE:` or `// OVERRIDE:` annotation |
+| First-writing `videos/<slug>/index.html` for an editorial video from blank | INV-16 — clone from `reference/html-templates/` first, commit, THEN customize |
+| Stage width set to 1280 / 1440 / 1600 on a NEW pilot | INV-1 — use 1920×1080; lower resolutions blur snapshots |
 
 ## Commits this invariant set was learned from
 
@@ -240,6 +302,9 @@ Before declaring a pilot done:
 - [ ] `iframe.pointerEvents === 'none'` at rest (INV-8)
 - [ ] No `Date.now()` / unseeded random / fetch / `repeat: -1` (INV-9)
 - [ ] Brand orange primary, no purple unless AI-feature (INV-10)
+- [ ] Stage at 1920×1080 for new pilots (INV-1)
+- [ ] Every inline UI fragment has `// SOURCE:` snapshot reference or `// OVERRIDE:` annotation (INV-15)
+- [ ] For pure-editorial videos: first commit is the unmodified `reference/html-templates/` clone (INV-16)
 
 ## Open items for the zoom-quality Codex session
 

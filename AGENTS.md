@@ -2,7 +2,7 @@
 
 You are the video-building agent for WPForms tutorial videos and ad-style release/announcement videos. The repo turns an approved storyboard into a playable HTML video. MP4 capture is in-repo via `tools/render.js`; the deliverable is a playable HTML review URL.
 
-## ⛔ Anti-patterns — DO NOT do these (6-line catalog)
+## ⛔ Anti-patterns — DO NOT do these (9-line catalog)
 
 Across 3 horrible-v1 sessions on 2026-05-12, these patterns kept being re-invented. Re-read this list before each beat:
 
@@ -11,8 +11,10 @@ Across 3 horrible-v1 sessions on 2026-05-12, these patterns kept being re-invent
 3. **DO NOT** use a native `<select>` for an editorial dropdown — it can't be opened by JS. Use the faux-overlay pattern from `selectFromDropdown` in `wpforms-interactions.js`.
 4. **DO NOT** mount overlays as iframe SIBLINGS painting over the iframe. Inject into iframe DOM directly, OR mount in the parent doc using `elementToStageCoords` for positioning.
 5. **DO NOT** swap iframes to show state changes. Keep the same live iframe; mutate its DOM in place. Reference: `videos/klaviyo-quick-connect/` pattern.
-6. **DO NOT** invent UI fragments (chips, result cards, payoff overlays) without explicit user approval. Real product truth only — every UI fragment derives from a real snapshot or has explicit override.
+6. **DO NOT** invent UI fragments (chips, result cards, payoff overlays) without explicit user approval. Every inline UI fragment needs a `// SOURCE: snapshots/<name>/...` snapshot citation OR `// OVERRIDE: <user approval>` annotation in the code itself. See INV-15.
 7. **DO NOT** ship a postIntro / cinematic / editorial beat without invoking `wpforms-motion-audit` (Skill tool) and recording the tier rating.
+8. **DO NOT** first-write `videos/<slug>/index.html` for a pure-editorial video from a blank file. First write = `cp reference/html-templates/<closest>.html ...`, commit the unmodified clone, THEN customize. See INV-16.
+9. **DO NOT** set a new pilot's stage to anything less than 1920×1080. Lower stage resolutions (1280 / 1440 / 1600) cause snapshot compression that reads as blur. See INV-1.
 
 This manual is intentionally short. **Topic-scoped rules live in skills**, not here. The first thing to do in any session is identify which video path you're on — that decides which skills load.
 
@@ -30,21 +32,22 @@ If the user's request is ambiguous, ask **one question**: "Tutorial showing real
 
 **Default reference templates for pure-editorial work** (clone-and-customize, do not invent from scratch):
 
-- `reference/html-templates/wpforms-ai-prompt-open.html` — S-tier identity-continuity morph (canonical)
+- **`videos/klaviyo-bridge-2/index.html` — CORE REFERENCE for pure editorial.** Approved after 3 sessions + multiple iterations. Use this as the primary clone target. The 3 earlier `reference/html-templates/` exemplars below remain valid as secondary references for specific stylistic intents.
+- `reference/html-templates/wpforms-ai-prompt-open.html` — S-tier identity-continuity morph (single element threading the story)
 - `reference/html-templates/editorial-reference-36s.html` + `editorial-reference-BEATS.md` — 36s linear-scene reference
 - `reference/html-templates/openai-replica-18s.html` — first-try single-HTML proof
 
-## Two libraries — read first, author after
+## Three libraries — use these, don't reinvent
 
-For any motion / camera / cursor / typing / field-reveal / brand-anchor / standard WPForms interaction work, the executable code already exists. Do not reinvent.
+For any motion / camera / cursor / typing / field-reveal / brand-anchor / WPForms interaction / iframe-glue work, the executable code **already exists** in `videos/_shared/`. Reach for the library first. Inventing a new approximation is a recurring failure mode (3 horrible-v1 sessions in 2026-05-12) that re-opens bugs the library already fixed (cursor frenzy, caret drift, slide-projector cameras, snapshot-swap cream-flash).
 
-- **`videos/_shared/motion-primitives.js`** — animation primitives: `cinematicFlight`, `figjamFlight`, `focusStationOverview`, `Cursor` class (glide / click / hover / drag), `caretType`, `statusPillMorph`, `markerSweep`, `popOut`, `fieldStaggerReveal`, `mountSullieBug`, `cleanFastRejoin`, plus `boundedRepeats` and `mulberry32` utilities. QC at `videos/_qc-primitives/`.
-- **`videos/_shared/iframe-helpers.js`** — authoring helpers for the recurring `scrollIntoView + elementToStageCoords + glide + click` defensive pattern (`glideClick`) + text-based iframe queries for SaaS captures with content-hashed class names (`findInIframeByText`, `glideToText`). Use for any captured non-WPForms dashboard (Klaviyo, Mailchimp, Stripe) where class names are unstable across re-captures.
-- **`videos/_shared/wpforms-interactions.js`** — standard WPForms interactions. **Wave 1 (builder/admin):** `navAddNewForm`, `selectTemplate`, `navWPFormsSidebarMenu`, `openFormInList`, `dragFieldToForm`, `openFieldOptions`, `navBuilderSidebar`, `openSettingsTab` + sub-interactions (`setFieldLabel`, `setNameFormat`, `toggleEmailConfirmation`). **Wave 2 Batch A (notifications + conditional logic):** `addNotification`, `insertSmartTag` (+ `openSmartTagPicker`/`closeSmartTagPicker`), `selectFromDropdown` (generic faux-native-select), `addConditionalLogicRule`, `duplicateNotificationBlock`, plus notification-field setters (`setNotificationSendTo`/`setNotificationSubject`/`setNotificationMessage`). Per `docs/library-scope-frequency-2026-05-12.md` retrospective: ~6 of 15 Wave 2 methods earned library status by ≥3-doc threshold; the rest are reference implementations — prefer inline DOM for one-off clicks. **Plus `IframeManager` helper:** iframe-slot mount at native 1280×720 with engine-pattern direct camera transform, identity transform at rest, `pointer-events: none` guard, `OVERSAMPLE=1` default (deep-zoom softens — Codex zoom-quality session in flight to improve this). QC at `videos/_qc-interactions/`.
+- **`motion-primitives.js`** — animation kit: cameras (`cinematicFlight`, `figjamFlight`, `focusStationOverview`), `Cursor` class (glide / click / hover / drag), text (`caretType`, `statusPillMorph`, `markerSweep`), reveal (`popOut`, `fieldStaggerReveal`), brand (`mountSullieBug`, `cleanFastRejoin`), utils (`boundedRepeats`, `mulberry32`). Full when-to-use in `wpforms-primitives` skill. QC at `videos/_qc-primitives/index.html`.
+- **`wpforms-interactions.js`** — WPForms admin/builder interactions: `navAddNewForm`, `selectTemplate`, `openSettingsTab`, `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, `dragFieldToForm`, plus the `IframeManager` helper (native 1280×720 mount, engine-pattern camera transform, `pointer-events: none` guard). Full list in `wpforms-primitives` skill. QC at `videos/_qc-interactions/index.html`.
+- **`iframe-helpers.js`** — defensive-pattern glue: `glideClick` (scrollIntoView + glide + click in one call), `findInIframeByText` / `glideToText` for SaaS captures with content-hashed class names (Klaviyo `.sc-jTrPJq`, Mailchimp, Stripe). Use whenever class names won't survive a re-capture.
 
-Load `wpforms-primitives` skill for the per-primitive when-to-use lookup. Scan the QC pages before authoring any new motion or interaction.
+**Load the `wpforms-primitives` skill BEFORE writing motion / cursor / interaction code.** The skill is the per-primitive when-to-use index. Scanning the QC pages above is the fastest way to confirm a primitive matches your need before authoring.
 
-**Hard rule:** if you're about to write a `gsap.to(cursor, ...)` or hand-mount a cursor element, stop and use the `Cursor` class. If you're about to write a click-Add-New-Form sequence, stop and call `navAddNewForm()`. The libraries codify shipped fixes for prior failure modes (cursor frenzy, caret drift, slide-projector camera moves, snapshot-swap cream-flash) — re-implementing them re-opens those bugs.
+**Hard rule:** if you're about to write `gsap.to(cursor, ...)` or hand-mount a cursor element, stop and use the `Cursor` class. If you're about to write a click-Add-New-Form sequence, stop and call `navAddNewForm()`.
 
 ## ⛔ Two consumption patterns — match the skill type
 
@@ -73,6 +76,7 @@ Non-negotiable invocations for tutorial / postIntro / cinematic / editorial work
 - `wpforms-transitions` — chapter breaks, swap styles (`flipBridge` is default), camera poses, scrubber/render
 - `wpforms-primitives` — lookup index for `videos/_shared/motion-primitives.js` (cameras / cursor / typing / field-reveal / brand-anchor / exit) and `videos/_shared/wpforms-interactions.js` (Wave 1 standard interactions). Reach here BEFORE writing any new GSAP cursor / camera / interaction code.
 - `wpforms-motion-audit` — score animations and camera moves S–F tier with hard-rule calibration. Run before any postIntro/cinematic handoff.
+- `wpforms-video-polish` — polish an existing already-shipped video without breaking it. Backup-first → analyze → surgical edits in batches of 5–10 → static verification → motion-audit if cinematic touched. NOT for new authoring, NOT for debug. Codified from klaviyo-bridge-2 polish work (2026-05-12), includes 8 canonical polish patterns.
 
 Plus auto-triggering motion-design skill:
 - `design-motion-principles` (kylezantos) — Emil Kowalski / Jakub Krehel / Jhey Tompkins designer-grade audit. Complements `wpforms-motion-audit`.
@@ -146,12 +150,7 @@ New videos keep narration `.txt` and `.mp3` under `videos/<slug>/narration/`. Do
 
 ## Determinism
 
-Video chapter and runtime cinematic code is **deterministic logic**. Required for `tools/render.js --seek` mode parity.
-
-- No `Date.now()` outside the player driver.
-- No unseeded `Math.random()` — use `mulberry32(seed)` from `videos/_shared/kit.js`.
-- No `fetch()` at runtime — assets must be loaded before render starts.
-- No `repeat: -1` — compute bounded repeats from visible duration (per `wpforms-gsap-rules` L0 rule 7).
+Video chapter and cinematic code must be deterministic — required for `tools/render.js --seek` mode render parity (the renderer jumps to specific timestamps and captures frames; non-deterministic code produces different frames each run). Four rules: no `Date.now()` outside player driver, no unseeded `Math.random()` (use `mulberry32(seed)`), no `fetch()` at runtime (preload), no `repeat: -1` (use `boundedRepeats(cycle, visible)`). **Canonical source: INV-9** in `docs/video-architecture-invariants-2026-05-12.md`.
 
 Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-logic.md` for rationale and `docs/deterministic-logic-findings.md` for known existing warnings (logged, not migrated).
 
@@ -220,6 +219,7 @@ Don't look here for these — load the skill instead:
 | Chapter breaks / swap styles / `flipBridge` (default) / camera poses / shared-scene / scrubber / render | `wpforms-transitions` |
 | Motion S–F tier scoring / hard-rule calibration / pre-handoff gate | `wpforms-motion-audit` |
 | Motion-primitives + wpforms-interactions library lookup (per-primitive when-to-use, signatures, QC status) | `wpforms-primitives` |
+| Polish an existing video (timing / easing / typography / handoffs) without breaking it | `wpforms-video-polish` |
 | Designer-grade audit (Emil Kowalski / Jakub Krehel / Jhey Tompkins) | `design-motion-principles` (auto-triggers) |
 
 Skills are at `.claude/skills/<name>/SKILL.md`. Each is a single file with YAML frontmatter (`name`, `description`).

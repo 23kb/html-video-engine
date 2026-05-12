@@ -1,6 +1,6 @@
 ---
 name: wpforms-marketing
-description: Use when authoring or reviewing ad-style / release / announcement / launch WPForms videos — editorial-surface compositions, atmospheric layers, character cascades, hero lockups, full-bleed 1920×1080 ad pieces, or hybrid postIntros that mix product geometry with marketing chrome. Triggers on `surface: 'editorial'`, `surface: 'mixed'`, "ad-style", "marketing video", "announcement", "release video", "atmospheric", "blocks library", "text-kit reveal", or any non-tutorial composition. For tutorial videos, use wpforms-video instead.
+description: "Use BEFORE starting any pure-editorial, ad-style, marketing, announcement, release, launch, or mixed WPForms video — owns the path-decision gate, brand canonical, clone-and-customize first-write rule (INV-16), atmospheric kit, blocks library, text-kit, and surface-mode selection. 3 sessions authored from blank files despite clone-first rule; all needed manual rescue. Triggers: ad-style video, marketing video, release video, announcement video, launch video, editorial video, pure editorial, mixed surface, atmospheric, hero lockup. For tutorial videos showing real product UI, use wpforms-video instead."
 ---
 
 # WPForms Marketing / Ad-Style Videos
@@ -17,15 +17,16 @@ This skill covers paths 2 and 3.
 
 Before writing any editorial chapter or single-HTML video, **load these**:
 
-### Canonical clone-and-customize templates (`reference/html-templates/`)
+### Canonical clone-and-customize templates
 
-For pure-editorial videos, START FROM ONE OF THESE — do not author from scratch:
+For pure-editorial videos, START FROM ONE OF THESE — do not author from scratch (see INV-16):
 
-- `reference/html-templates/wpforms-ai-prompt-open.html` — **S-tier** identity-continuity morph (Button → Input → Pill → Chat over 12s). The canonical pattern for "AI feature demo" or "product reveal" pieces.
-- `reference/html-templates/editorial-reference-36s.html` + `editorial-reference-BEATS.md` — **A-tier** 36s linear-scene reference (OpenAI Layo rebuild). Use for product-announcement / launch / multi-beat narrative work.
-- `reference/html-templates/openai-replica-18s.html` — **A-tier** first-try single-HTML proof. Use for short ad-style pieces.
+- **`videos/klaviyo-bridge-2/index.html` — CORE REFERENCE for pure editorial.** Approved after 3 sessions + multiple iterations. **This is the primary clone target for any new pure-editorial video.** It encodes the patterns the 3 templates below demonstrate individually, refined through real feedback. When in doubt, clone this.
+- `reference/html-templates/wpforms-ai-prompt-open.html` — **S-tier** identity-continuity morph (Button → Input → Pill → Chat over 12s). Secondary reference for single-element morph-chain pieces ("AI feature demo" / "product reveal").
+- `reference/html-templates/editorial-reference-36s.html` + `editorial-reference-BEATS.md` — **A-tier** 36s linear-scene reference (OpenAI Layo rebuild). Secondary reference for product-announcement / launch / multi-beat narrative work.
+- `reference/html-templates/openai-replica-18s.html` — **A-tier** first-try single-HTML proof. Secondary reference for short ad-style pieces.
 
-The clone-and-customize rule: copy a template, replace content + brand, keep the motion vocabulary. Three failed editorial attempts (`wpforms-ai-board`, `wpforms-ai-announcement`, `wpforms-ai-zlyvs`) all skipped this and tried to invent from scratch.
+The clone-and-customize rule (INV-16): copy a template, commit the unmodified clone FIRST, then replace content + brand, keep the motion vocabulary. Three failed editorial attempts (`wpforms-ai-board`, `wpforms-ai-announcement`, `wpforms-ai-zlyvs`) all skipped this and tried to invent from scratch.
 
 ### Brand canonical (`reference/wpforms-brand/`)
 
@@ -271,9 +272,10 @@ Before declaring an ad-style video done:
 - `docs/postintro-patterns.md` — Read when the marketing video is a hybrid (postIntro + walkthrough) — postIntro rules apply.
 - `docs/frame-driver.md` — Read when authoring registered timelines for scrubbable editorial beats.
 - `docs/render.md` — Read when running `tools/render.js --seek` (only valid for `surface: 'editorial'`).
-- `reference/html-templates/wpforms-ai-prompt-open.html` — **Primary clone target.** S-tier identity-continuity morph.
-- `reference/html-templates/editorial-reference-36s.html` + `editorial-reference-BEATS.md` — Linear-scene reference, 13 beats, named atmospheres + transitions.
-- `reference/html-templates/openai-replica-18s.html` — First-try single-HTML proof.
+- `videos/klaviyo-bridge-2/index.html` — **CORE REFERENCE / Primary clone target** for pure editorial (approved after 3 sessions + iterations).
+- `reference/html-templates/wpforms-ai-prompt-open.html` — Secondary, S-tier identity-continuity morph.
+- `reference/html-templates/editorial-reference-36s.html` + `editorial-reference-BEATS.md` — Secondary, linear-scene reference, 13 beats, named atmospheres + transitions.
+- `reference/html-templates/openai-replica-18s.html` — Secondary, first-try single-HTML proof.
 - `reference/wpforms-brand/BRAND.md` — Brand canonical, anti-patterns, real AI chat HTML structure.
 - `docs/winning-pattern-analysis-2026-05-10.md` — Identity-continuity authoring rule + 5-variable winning pattern.
 - `docs/polish-vocabulary-2026-05-11.md` — Per-chapter polish deltas from rest-api polished-vs-unpolished. Tutorial-polish primitives.
