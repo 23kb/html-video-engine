@@ -4,7 +4,7 @@ You are the video-building agent for WPForms tutorial videos and ad-style releas
 
 ## ⛔ Anti-patterns — DO NOT do these (9-line catalog)
 
-Across 3 horrible-v1 sessions on 2026-05-12, these patterns kept being re-invented. Re-read this list before each beat:
+These patterns have repeatedly caused regressions in past video builds. Re-read this list before each beat:
 
 1. **DO NOT** hand-mount a cursor element (`<div class="cursor">` + `gsap.to(cursorEl, ...)`). Use `Cursor` from `motion-primitives.js`.
 2. **DO NOT** single-tween a camera move (`tl.to(camera, {x, y, scale})`). Slide-projector failure mode. Use `cinematicFlight` / `figjamFlight` / `focusStationOverview`.
@@ -32,14 +32,14 @@ If the user's request is ambiguous, ask **one question**: "Tutorial showing real
 
 **Default reference templates for pure-editorial work** (clone-and-customize, do not invent from scratch):
 
-- **`videos/klaviyo-bridge-2/index.html` — CORE REFERENCE for pure editorial.** Approved after 3 sessions + multiple iterations. Use this as the primary clone target. The 3 earlier `reference/html-templates/` exemplars below remain valid as secondary references for specific stylistic intents.
+- **`videos/klaviyo-bridge-2/index.html` — CORE REFERENCE for pure editorial.** Use this as the primary clone target. The 3 `reference/html-templates/` exemplars below remain valid as secondary references for specific stylistic intents.
 - `reference/html-templates/wpforms-ai-prompt-open.html` — S-tier identity-continuity morph (single element threading the story)
 - `reference/html-templates/editorial-reference-36s.html` + `editorial-reference-BEATS.md` — 36s linear-scene reference
 - `reference/html-templates/openai-replica-18s.html` — first-try single-HTML proof
 
 ## Three libraries — use these, don't reinvent
 
-For any motion / camera / cursor / typing / field-reveal / brand-anchor / WPForms interaction / iframe-glue work, the executable code **already exists** in `videos/_shared/`. Reach for the library first. Inventing a new approximation is a recurring failure mode (3 horrible-v1 sessions in 2026-05-12) that re-opens bugs the library already fixed (cursor frenzy, caret drift, slide-projector cameras, snapshot-swap cream-flash).
+For any motion / camera / cursor / typing / field-reveal / brand-anchor / WPForms interaction / iframe-glue work, the executable code **already exists** in `videos/_shared/`. Reach for the library first. Inventing a new approximation is a recurring failure mode that re-opens bugs the library already fixed (cursor frenzy, caret drift, slide-projector cameras, snapshot-swap cream-flash).
 
 - **`motion-primitives.js`** — animation kit: cameras (`cinematicFlight`, `figjamFlight`, `focusStationOverview`), `Cursor` class (glide / click / hover / drag), text (`caretType`, `statusPillMorph`, `markerSweep`), reveal (`popOut`, `fieldStaggerReveal`), brand (`mountSullieBug`, `cleanFastRejoin`), utils (`boundedRepeats`, `mulberry32`). Full when-to-use in `wpforms-primitives` skill. QC at `videos/_qc-primitives/index.html`.
 - **`wpforms-interactions.js`** — WPForms admin/builder interactions: `navAddNewForm`, `selectTemplate`, `openSettingsTab`, `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, `dragFieldToForm`, plus the `IframeManager` helper (native 1280×720 mount, engine-pattern camera transform, `pointer-events: none` guard). Full list in `wpforms-primitives` skill. QC at `videos/_qc-interactions/index.html`.
@@ -55,17 +55,15 @@ For any motion / camera / cursor / typing / field-reveal / brand-anchor / WPForm
 
 **Reference skills** (`wpforms-primitives`, `wpforms-gsap-rules`, `wpforms-transitions`) are lookup indices + rules references. **File-read IS sufficient.** Skill tool invocation is optional. But you still have to READ them at the right moment — `wpforms-primitives` before writing motion code, `wpforms-gsap-rules` before timeline work.
 
-Same applies to `docs/video-architecture-invariants-2026-05-12.md` — pure reference, read inline. Codex doing exactly that on 2026-05-12 was the doc working as designed.
-
-If you're working from a detailed codex prompt at `docs/codex-prompts/*.md`, the prompt is the brief — the skills are STILL the gates. Both apply. Common failure mode (observed in Klaviyo tutorial v11, 2026-05-12): session reads CLAUDE.md → reads codex prompt → goes straight to code, treating skill files as references. PostIntro went 12 iterations without ever invoking `wpforms-motion-audit`. Don't repeat that.
+Same applies to `docs/video-architecture-invariants-2026-05-12.md` — pure reference, read inline.
 
 Non-negotiable invocations for tutorial / postIntro / cinematic / editorial work:
 - `wpforms-video` at session start for tutorial path
 - `wpforms-marketing` at session start for editorial / ad-style path
 - `wpforms-postintro` before designing any postIntro
 - `wpforms-gsap-rules` before writing any timeline beat (registered timelines, pausableRaf, boundedRepeats)
-- **`wpforms-primitives` BEFORE writing any motion code** (the most-skipped skill — both Klaviyo + editorial sessions hand-rolled approximations of existing primitives because they didn't invoke this. The skill is a WRITE-TIME gate, not a lookup-when-you-think-of-it reference.)
-- **`wpforms-motion-audit` on the v1 build AND before final handoff** (the second-most-skipped skill — applies to v1 review + major restructures + final handoff. Skipping v1 audit means iterating against the user's eyes instead of the rubric, which is 10+ rounds more expensive. HARD GATE, must record tier S/A/B/C/D/F.)
+- **`wpforms-primitives` BEFORE writing any motion code** — WRITE-TIME gate, not a lookup-when-you-think-of-it reference. Sessions that skip it hand-roll approximations of existing primitives.
+- **`wpforms-motion-audit` on the v1 build AND before final handoff** — HARD GATE. Applies to v1 review, major restructures, and final handoff. Must record tier S/A/B/C/D/F.
 
 ## Topic skills (load AFTER picking a path)
 
@@ -76,7 +74,7 @@ Non-negotiable invocations for tutorial / postIntro / cinematic / editorial work
 - `wpforms-transitions` — chapter breaks, swap styles (`flipBridge` is default), camera poses, scrubber/render
 - `wpforms-primitives` — lookup index for `videos/_shared/motion-primitives.js` (cameras / cursor / typing / field-reveal / brand-anchor / exit) and `videos/_shared/wpforms-interactions.js` (Wave 1 standard interactions). Reach here BEFORE writing any new GSAP cursor / camera / interaction code.
 - `wpforms-motion-audit` — score animations and camera moves S–F tier with hard-rule calibration. Run before any postIntro/cinematic handoff.
-- `wpforms-video-polish` — polish an existing already-shipped video without breaking it. Backup-first → analyze → surgical edits in batches of 5–10 → static verification → motion-audit if cinematic touched. NOT for new authoring, NOT for debug. Codified from klaviyo-bridge-2 polish work (2026-05-12), includes 8 canonical polish patterns.
+- `wpforms-video-polish` — polish an existing already-shipped video without breaking it. Backup-first → analyze → surgical edits in batches of 5–10 → static verification → motion-audit if cinematic touched. NOT for new authoring, NOT for debug. Includes 8 canonical polish patterns.
 
 Plus auto-triggering motion-design skill:
 - `design-motion-principles` (kylezantos) — Emil Kowalski / Jakub Krehel / Jhey Tompkins designer-grade audit. Complements `wpforms-motion-audit`.
@@ -121,7 +119,7 @@ Normal video work must NOT edit:
 - `runtime/frame-driver.js`
 - `runtime/frame-adapter.js`
 - `runtime/shared-scene.js`
-- `runtime/camera-poses.js` (registry has 0 production callers as of audit 2026-05-11; flagged for deprecation review in `docs/engine-runtime-optimization-audit-2026-05-11.md`)
+- `runtime/camera-poses.js`
 - `runtime/pause-manager.js`
 - `scenes/shared.js`
 - `scenes/player.html`
