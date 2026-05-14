@@ -554,6 +554,85 @@
     });
   }
 
+  // Rebuild the Likert canvas <table> from current option-panel state.
+  // Ports the plugin's tmpl-wpforms-likert-scale-preview (LikertScale/Field.php).
+  // Reads: rows list, columns list, single_row, multiple_responses, style.
+  function renderLikertCanvas(field) {
+    const fieldId = field.id?.replace('wpforms-field-', '');
+    if (!fieldId) return;
+    const rowsUl = document.querySelector(
+      `#wpforms-field-option-row-${fieldId}-rows .choices-list`,
+    );
+    const colsUl = document.querySelector(
+      `#wpforms-field-option-row-${fieldId}-columns .choices-list`,
+    );
+    if (!rowsUl || !colsUl) return;
+    const singleRow = document.getElementById(
+      `wpforms-field-option-${fieldId}-single_row`,
+    )?.checked || false;
+    const inputType = document.getElementById(
+      `wpforms-field-option-${fieldId}-multiple_responses`,
+    )?.checked ? 'checkbox' : 'radio';
+    const style = document.getElementById(
+      `wpforms-field-option-${fieldId}-style`,
+    )?.value || 'modern';
+    const cols = Array.from(colsUl.children).map((li) => ({
+      value: li.querySelector('input')?.value || '',
+    }));
+    const rows = Array.from(rowsUl.children).map((li) => ({
+      value: li.querySelector('input')?.value || '',
+    }));
+    const colCount = cols.length || 1;
+    const width = singleRow ? 100 / colCount : 80 / colCount;
+    const table = document.createElement('table');
+    table.className = singleRow ? `${style} single-row` : style;
+    const thead = document.createElement('thead');
+    const headTr = document.createElement('tr');
+    if (!singleRow) {
+      const spacerTh = document.createElement('th');
+      spacerTh.style.width = '20%';
+      headTr.appendChild(spacerTh);
+    }
+    for (const col of cols) {
+      const th = document.createElement('th');
+      th.style.width = `${width}%`;
+      th.textContent = col.value;
+      headTr.appendChild(th);
+    }
+    thead.appendChild(headTr);
+    table.appendChild(thead);
+    const tbody = document.createElement('tbody');
+    const renderRows = singleRow ? rows.slice(0, 1) : rows;
+    for (const row of renderRows) {
+      const tr = document.createElement('tr');
+      if (!singleRow) {
+        const rowTh = document.createElement('th');
+        rowTh.textContent = row.value;
+        tr.appendChild(rowTh);
+      }
+      for (let i = 0; i < cols.length; i++) {
+        const td = document.createElement('td');
+        const input = document.createElement('input');
+        input.type = inputType;
+        input.readOnly = true;
+        td.appendChild(input);
+        td.appendChild(document.createElement('label'));
+        tr.appendChild(td);
+      }
+      tbody.appendChild(tr);
+    }
+    table.appendChild(tbody);
+    const existing = field.querySelector('table');
+    if (existing) {
+      fadeSwap(existing, () => existing.replaceWith(table));
+    } else {
+      // No existing table — just insert before description.
+      const desc = field.querySelector('.description');
+      if (desc) desc.before(table);
+      else field.appendChild(table);
+    }
+  }
+
   // ─── Transition registry ────────────────────────────────────────────────
   // Each transition declares the event it listens on, a match predicate,
   // and an apply function that mirrors what the plugin's JS would do.
@@ -1071,7 +1150,10 @@
         if (!optionUl || !sourceLi) return;
         const canvasUl = field.querySelector('ul.primary-input');
         const canvasSelect = field.querySelector('select.primary-input');
-        if (!canvasUl && !canvasSelect) return;
+        // Note: canvasUl + canvasSelect can both be null for Likert / NPS
+        // (table-based canvas). The panel-side clone still runs; canvas
+        // mirroring branches below are gated individually. Likert resync
+        // transitions at the end of the registry rebuild the table.
         const fieldId = optionUl.dataset.fieldId;
         const fieldType = optionUl.dataset.fieldType;
         const nextId = parseInt(optionUl.dataset.nextId || '0', 10);
@@ -3397,6 +3479,135 @@
       apply: (el) => {
         const field = getField(el);
         if (field) renderCanvasChoices(field);
+      },
+    },
+
+    // ─ Likert: rebuild canvas table on rows/columns add/remove/label ────
+    // Likert canvas is a <table>, not ul.primary-input. The universal
+    // choices-add / choices-remove handlers run BEFORE this in registry
+    // order. For remove, choices-remove detaches the clicked <li>, which
+    // breaks closest('.wpforms-field-option-row') / getField() against the
+    // click target. So match/apply look up the Likert field by document
+    // query instead of climbing through the click target's parents.
+    {
+      label: 'likert-rows-cols-resync',
+      event: 'click',
+      match: (el) => {
+        if (!el.closest) return false;
+        // closest('a.add, a.remove') still works on the detached subtree
+        // because the <a> is in the same removed <li>.
+        if (!el.closest('a.add, a.remove')) return false;
+        return !!document.querySelector('.wpforms-field-likert_scale');
+      },
+      apply: () => {
+        document
+          .querySelectorAll('.wpforms-field-likert_scale')
+          .forEach(renderLikertCanvas);
+      },
+    },
+    {
+      label: 'likert-rows-cols-resync-input',
+      event: 'input',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'text' &&
+        el.closest('.choices-list') !== null &&
+        getField(el)?.classList.contains('wpforms-field-likert_scale') === true,
+      apply: (el) => {
+        const field = getField(el);
+        if (field) renderLikertCanvas(field);
+      },
+    },
+
+    // ─ Likert: Style select (Modern / Classic) ──────────────────────────
+    // Plugin: .wpforms-field-option-row-style select -> table class swap.
+    // Rebuild reads style from the panel.
+    {
+      label: 'likert-style',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLSelectElement &&
+        el.closest('.wpforms-field-option-row-style') !== null &&
+        getField(el)?.classList.contains('wpforms-field-likert_scale') === true,
+      apply: (el) => {
+        const field = getField(el);
+        if (field) renderLikertCanvas(field);
+      },
+    },
+
+    // ─ Likert: Single Row toggle ────────────────────────────────────────
+    // Plugin: also hides the Rows option panel row when single_row is on.
+    {
+      label: 'likert-single-row-toggle',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'checkbox' &&
+        el.closest('.wpforms-field-option-row-single_row') !== null &&
+        getField(el)?.classList.contains('wpforms-field-likert_scale') === true,
+      apply: (el) => {
+        const field = getField(el);
+        if (!field) return;
+        const fieldId = getFieldId(el);
+        const rowsRow = document.getElementById(
+          `wpforms-field-option-row-${fieldId}-rows`,
+        );
+        if (rowsRow) toggleRow(rowsRow.id, !el.checked);
+        renderLikertCanvas(field);
+      },
+    },
+
+    // ─ Likert: Multiple Responses toggle (radio -> checkbox inputs) ─────
+    {
+      label: 'likert-multiple-responses-toggle',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'checkbox' &&
+        el.closest('.wpforms-field-option-row-multiple_responses') !== null &&
+        getField(el)?.classList.contains('wpforms-field-likert_scale') === true,
+      apply: (el) => {
+        const field = getField(el);
+        if (field) renderLikertCanvas(field);
+      },
+    },
+
+    // ─ NPS: Lowest Score Label / Highest Score Label (input) ────────────
+    // Plugin: writes input value into .not-likely / .extremely-likely
+    // <span>s in the canvas table thead.
+    {
+      label: 'nps-edge-labels',
+      event: 'input',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'text' &&
+        (el.closest('.wpforms-field-option-row-lowest_label') !== null ||
+          el.closest('.wpforms-field-option-row-highest_label') !== null) &&
+        getField(el)?.classList.contains('wpforms-field-net_promoter_score') === true,
+      apply: (el) => {
+        const field = getField(el);
+        if (!field) return;
+        const isLowest = el.closest('.wpforms-field-option-row-lowest_label') !== null;
+        const target = field.querySelector(isLowest ? '.not-likely' : '.extremely-likely');
+        if (target) target.textContent = el.value;
+      },
+    },
+
+    // ─ NPS: Style select (Modern / Classic) ─────────────────────────────
+    // Plugin: table class swap, no markup rebuild.
+    {
+      label: 'nps-style',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLSelectElement &&
+        el.closest('.wpforms-field-option-row-style') !== null &&
+        getField(el)?.classList.contains('wpforms-field-net_promoter_score') === true,
+      apply: (el) => {
+        const field = getField(el);
+        const table = field?.querySelector('table');
+        if (!table) return;
+        table.classList.remove('classic', 'modern');
+        table.classList.add(el.value === 'classic' ? 'classic' : 'modern');
       },
     },
   ];
