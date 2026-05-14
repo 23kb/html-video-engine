@@ -1,0 +1,22 @@
+{
+  "variants": [
+    {
+      "slug": "builder-field-options-likert_scale",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=144&view=fields",
+      "steps": [
+        { "wait": 4000 },
+        { "eval": "jQuery('#wpforms-field-5').trigger('click')", "settle": 1500 }
+      ],
+      "waitFor": ".wpforms-field.active"
+    },
+    {
+      "slug": "builder-field-options-net_promoter_score",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=147&view=fields",
+      "steps": [
+        { "wait": 4000 },
+        { "eval": "jQuery('#wpforms-field-3').trigger('click')", "settle": 1500 }
+      ],
+      "waitFor": ".wpforms-field.active"
+    }
+  ]
+}

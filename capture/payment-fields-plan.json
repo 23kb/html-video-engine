@@ -1,0 +1,12 @@
+{
+  "variants": [
+    {
+      "slug": "builder-field-options-payment-fields",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=150&view=fields",
+      "steps": [
+        { "wait": 9000 }
+      ],
+      "waitFor": ".wpforms-field[data-field-type='payment-single']"
+    }
+  ]
+}

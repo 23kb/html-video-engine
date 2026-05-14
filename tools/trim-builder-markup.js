@@ -145,8 +145,13 @@ function planForSlug(slug) {
   ) {
     plan.push({ label: '#wpforms-panel-setup children', op: 'empty', match: /<div[^>]*\bid="wpforms-panel-setup"/g });
   }
-  // builder-field-options-*: strip inactive option panels
-  if (slug.startsWith('builder-field-options-')) {
+  // builder-field-options-*: strip inactive option panels.
+  // Exception: combined-field snapshots (e.g. builder-field-options-payment-fields)
+  // intentionally keep ALL option panels so the video can activate any field.
+  const KEEP_ALL_PANELS = new Set([
+    'builder-field-options-payment-fields',
+  ]);
+  if (slug.startsWith('builder-field-options-') && !KEEP_ALL_PANELS.has(slug)) {
     plan.push({ label: 'inactive #wpforms-field-option-<id>', op: 'strip-inactive-field-panels' });
   }
   return plan;
