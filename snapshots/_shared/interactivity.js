@@ -444,7 +444,9 @@
     if (!optionUl || !canvasUl) return;
     const isImage = canvasUl.classList.contains('wpforms-image-choices');
     const isIcon = canvasUl.classList.contains('wpforms-icon-choices');
-    const inputType = fieldType === 'radio' ? 'radio' : 'checkbox';
+    // payment-multiple uses radio inputs on canvas (single-select).
+    const radioLike = fieldType === 'radio' || fieldType === 'payment-multiple';
+    const inputType = radioLike ? 'radio' : 'checkbox';
     const newLis = [];
     Array.from(optionUl.children).forEach((optionLi) => {
       const labelInput = optionLi.querySelector('input.label');
@@ -514,6 +516,9 @@
       newLis.push(li);
     });
     canvasUl.replaceChildren(...newLis);
+    // For payment-choice field types, re-apply the Show Price After Labels
+    // suffix to the freshly-built canvas labels (image / icon / plain).
+    if (isPaymentChoiceField(field)) renderPaymentChoiceLabels(field);
   }
 
   // When min/max changes, clamp the default value in/out of range and
@@ -630,6 +635,287 @@
       const desc = field.querySelector('.description');
       if (desc) desc.before(table);
       else field.appendChild(table);
+    }
+  }
+
+  // ─── Payment field helpers ──────────────────────────────────────────────
+  // Used by payment-single + payment-checkbox + payment-multiple +
+  // payment-select + payment-coupon transitions. Each helper reads the
+  // option-panel state for a single field and writes the canvas.
+
+  function _money(val) {
+    const n = parseFloat(val);
+    return '$' + (Number.isFinite(n) ? n : 0).toFixed(2);
+  }
+
+  function isPaymentChoiceField(field) {
+    return !!field && (
+      field.classList.contains('wpforms-field-payment-checkbox') ||
+      field.classList.contains('wpforms-field-payment-multiple') ||
+      field.classList.contains('wpforms-field-payment-select')
+    );
+  }
+
+  function renderPaymentChoiceLabels(field) {
+    const fid = field.dataset.fieldId;
+    const ul = document.getElementById(`wpforms-field-option-${fid}-choices-list`);
+    if (!ul) return;
+    const showPriceCb = document.getElementById(
+      `wpforms-field-option-${fid}-show_price_after_labels`,
+    );
+    const showPrice = showPriceCb?.checked || false;
+    const labels = Array.from(ul.children).map((li) => {
+      const label = li.querySelector('input.label')?.value || '';
+      const price = li.querySelector('input.value')?.value || '';
+      if (!showPrice || !price) return label;
+      const priceNum = parseFloat(price);
+      if (!Number.isFinite(priceNum)) return label;
+      return `${label} - $${priceNum.toFixed(2)}`;
+    });
+    const canvasSelect = field.querySelector('select.primary-input');
+    if (canvasSelect) {
+      const offset = canvasSelect.querySelector('option[data-placeholder="1"]') ? 1 : 0;
+      labels.forEach((text, i) => {
+        const opt = canvasSelect.children[i + offset];
+        if (opt) { opt.textContent = text; opt.value = text; }
+      });
+      return;
+    }
+    const canvasUl = field.querySelector('ul.primary-input');
+    if (!canvasUl) return;
+    const isImageMode = canvasUl.classList.contains('wpforms-image-choices');
+    const isIconMode = canvasUl.classList.contains('wpforms-icon-choices');
+    labels.forEach((text, i) => {
+      const canvasLi = canvasUl.children[i];
+      if (!canvasLi) return;
+      if (isImageMode) {
+        const span = canvasLi.querySelector('.wpforms-image-choices-label');
+        if (span) span.textContent = text;
+        return;
+      }
+      if (isIconMode) {
+        const span = canvasLi.querySelector('.wpforms-icon-choices-label');
+        if (span) span.textContent = text;
+        return;
+      }
+      // Plain mode: rewrite the trailing text node (leaves input untouched).
+      let textNode = canvasLi.lastChild;
+      while (textNode && textNode.nodeType !== Node.TEXT_NODE) {
+        textNode = textNode.previousSibling;
+      }
+      if (textNode && textNode.nodeType === Node.TEXT_NODE) {
+        textNode.nodeValue = ' ' + text;
+      } else {
+        canvasLi.appendChild(document.createTextNode(' ' + text));
+      }
+    });
+  }
+
+  function renderPaymentSinglePrice(field) {
+    const fid = field.dataset.fieldId;
+    const val = document.getElementById(`wpforms-field-option-${fid}-price`)?.value || '';
+    field
+      .querySelectorAll('.price-label .price')
+      .forEach((s) => { s.textContent = _money(val); });
+  }
+
+  function renderPaymentSinglePriceLabel(field) {
+    const fid = field.dataset.fieldId;
+    const template = document.getElementById(
+      `wpforms-field-option-${fid}-price_label`,
+    )?.value || 'Price: {price}';
+    const priceVal = document.getElementById(
+      `wpforms-field-option-${fid}-price`,
+    )?.value || '';
+    const priceLabel = field.querySelector('.price-label');
+    if (!priceLabel) return;
+    const parts = template.split('{price}');
+    priceLabel.textContent = '';
+    parts.forEach((part, i) => {
+      priceLabel.appendChild(document.createTextNode(part));
+      if (i < parts.length - 1) {
+        const span = document.createElement('span');
+        span.className = 'price';
+        span.textContent = _money(priceVal);
+        priceLabel.appendChild(span);
+      }
+    });
+  }
+
+  function renderPaymentSingleMinPrice(field) {
+    const fid = field.dataset.fieldId;
+    const val = document.getElementById(
+      `wpforms-field-option-${fid}-min_price`,
+    )?.value || '';
+    const span = field.querySelector('.item-min-price .min-price');
+    if (span) span.textContent = _money(val);
+  }
+
+  function renderPaymentSingleFormat(field) {
+    const fid = field.dataset.fieldId;
+    const fmt = document.getElementById(`wpforms-field-option-${fid}-format`)?.value || 'single';
+    const set = (selOrEl, on) => {
+      const el = typeof selOrEl === 'string' ? field.querySelector(selOrEl) : selOrEl;
+      if (el) el.classList.toggle('wpforms-hidden', !on);
+    };
+    const defaultP = field.querySelector('.item-price.item-price-single');
+    const hiddenP = field.querySelector('.item-price.item-price-hidden');
+    const userBlock = field.querySelector('.single-item-user-defined-block');
+    const note = field.querySelector('.item-price-hidden-note');
+    const minPrice = field.querySelector('.item-min-price');
+    const minPriceRow = document.getElementById(`wpforms-field-option-row-${fid}-min_price`);
+    const placeholderRow = document.getElementById(`wpforms-field-option-row-${fid}-placeholder`);
+    const priceLabelRow = document.getElementById(`wpforms-field-option-row-${fid}-price_label`);
+    if (fmt === 'single') {
+      set(defaultP, true);
+      set(hiddenP, false);
+      set(userBlock, false);
+      set(note, false);
+      set(minPrice, false);
+      set(minPriceRow, false);
+      set(placeholderRow, false);
+      set(priceLabelRow, true);
+    } else if (fmt === 'user') {
+      set(defaultP, false);
+      set(hiddenP, false);
+      set(userBlock, true);
+      set(note, false);
+      set(minPrice, true);
+      set(minPriceRow, true);
+      set(placeholderRow, true);
+      set(priceLabelRow, false);
+    } else if (fmt === 'hidden') {
+      set(defaultP, false);
+      set(hiddenP, true);
+      set(userBlock, false);
+      set(note, true);
+      set(minPrice, false);
+      set(minPriceRow, false);
+      set(placeholderRow, false);
+      set(priceLabelRow, false);
+    }
+  }
+
+  function renderPaymentEnableQuantity(field) {
+    const fid = field.dataset.fieldId;
+    const on = document.getElementById(`wpforms-field-option-${fid}-enable_quantity`)?.checked || false;
+    const quantityRow = document.getElementById(`wpforms-field-option-row-${fid}-quantity`);
+    if (quantityRow) quantityRow.classList.toggle('wpforms-hidden', !on);
+    const quantitySelect = field.querySelector('select.quantity-input');
+    if (quantitySelect) quantitySelect.classList.toggle('wpforms-hidden', !on);
+    // payment-select / payment-single: match the live plugin convention by
+    // toggling .payment-quantity-enabled on the field. Snapshot CSS already
+    // floats select.quantity-input (width:70px) + sizes .choices wrappers
+    // for the main select. We don't ship a .choices wrapper on the canvas,
+    // so the main bare <select> needs an inline float+width to leave room
+    // for the floated quantity-input.
+    field.classList.toggle('payment-quantity-enabled', on);
+    if (field.classList.contains('wpforms-field-payment-select')) {
+      const mainSelect = field.querySelector('select.primary-input');
+      if (mainSelect) {
+        if (on) {
+          mainSelect.style.float = 'inline-start';
+          mainSelect.style.boxSizing = 'border-box';
+        } else {
+          mainSelect.style.float = '';
+          mainSelect.style.width = '';
+          mainSelect.style.boxSizing = '';
+        }
+      }
+    }
+  }
+
+  // Sample coupons themed for Sullie's bakery, matching the dynamic-choices
+  // pattern. Oliver Norton kept (matches Umair's reference image).
+  const SAMPLE_COUPONS = [
+    { value: '1', text: 'Oliver Norton' },
+    { value: '2', text: 'BIRTHDAY10' },
+    { value: '3', text: 'SUMMER20' },
+    { value: '4', text: 'WELCOME15' },
+    { value: '5', text: 'BAKERY25' },
+  ];
+
+  // Coupon helpers scope to the option-panel row (.choices__* markup lives
+  // there, not on the canvas field).
+  function _couponRow(fid) {
+    return document.getElementById(`wpforms-field-option-row-${fid}-allowed_coupons`);
+  }
+
+  function initCouponField(field) {
+    const fid = field.dataset.fieldId;
+    const row = _couponRow(fid);
+    const select = document.getElementById(`wpforms-field-option-${fid}-allowed_coupons`);
+    if (!row || !select) return;
+    select.innerHTML = '';
+    SAMPLE_COUPONS.forEach((c) => {
+      const opt = document.createElement('option');
+      opt.value = c.value;
+      opt.textContent = c.text;
+      select.appendChild(opt);
+    });
+    const dropdownList = row.querySelector(
+      '.choices__list--dropdown .choices__list[role="listbox"]',
+    );
+    if (dropdownList) {
+      dropdownList.innerHTML = '';
+      SAMPLE_COUPONS.forEach((c, i) => {
+        const div = document.createElement('div');
+        div.id = `choices--wpforms-field-option-${fid}-allowed_coupons-item-choice-${i + 1}`;
+        div.className = 'choices__item choices__item--choice choices__item--selectable';
+        div.setAttribute('role', 'option');
+        div.setAttribute('data-choice', '');
+        div.setAttribute('data-id', String(i + 1));
+        div.setAttribute('data-value', c.value);
+        div.setAttribute('data-select-text', 'Press to select');
+        div.setAttribute('data-choice-selectable', '');
+        div.textContent = c.text;
+        dropdownList.appendChild(div);
+      });
+    }
+    // No pill pre-selected — user adds via the dropdown.
+  }
+
+  function addCouponPill(field, value, text) {
+    const fid = field.dataset.fieldId;
+    const row = _couponRow(fid);
+    const select = document.getElementById(`wpforms-field-option-${fid}-allowed_coupons`);
+    if (!row || !select) return;
+    const opt = Array.from(select.options).find((o) => o.value === value);
+    if (opt) opt.selected = true;
+    const pillList = row.querySelector('.choices__list--multiple');
+    if (!pillList) return;
+    if (pillList.querySelector(`[data-value="${value}"]`)) return;
+    const pill = document.createElement('div');
+    pill.className = 'choices__item choices__item--selectable';
+    pill.setAttribute('data-item', '');
+    pill.setAttribute('data-id', value);
+    pill.setAttribute('data-value', value);
+    pill.setAttribute('data-deletable', '');
+    pill.setAttribute('aria-selected', 'true');
+    pill.textContent = text;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'choices__button';
+    btn.setAttribute('aria-label', `Remove item: '${text}'`);
+    btn.setAttribute('data-button', '');
+    btn.textContent = 'Remove item';
+    pill.appendChild(btn);
+    pillList.appendChild(pill);
+    const alert = row.querySelector('.wpforms-alert-warning');
+    if (alert) alert.style.display = 'none';
+  }
+
+  function removeCouponPill(field, value) {
+    const fid = field.dataset.fieldId;
+    const row = _couponRow(fid);
+    const select = document.getElementById(`wpforms-field-option-${fid}-allowed_coupons`);
+    const opt = Array.from(select?.options || []).find((o) => o.value === value);
+    if (opt) opt.selected = false;
+    const pillList = row?.querySelector('.choices__list--multiple');
+    pillList?.querySelector(`[data-value="${value}"]`)?.remove();
+    if (pillList && !pillList.children.length) {
+      const alert = row.querySelector('.wpforms-alert-warning');
+      if (alert) alert.style.display = '';
     }
   }
 
@@ -1093,8 +1379,11 @@
         const optionUl = el.closest('.choices-list');
         if (!optionLi || !optionUl) return;
         const fieldType = optionUl.dataset.fieldType;
-        const isRadio = fieldType === 'radio';
-        const isSelect = fieldType === 'select';
+        // payment-multiple renders radio inputs on canvas → mutex like radio.
+        // payment-select renders a single-select <select> on canvas → mutex
+        // like select. Existing radio + select keep the same behavior.
+        const isRadio = fieldType === 'radio' || fieldType === 'payment-multiple';
+        const isSelect = fieldType === 'select' || fieldType === 'payment-select';
         const idx = Array.from(optionUl.children).indexOf(optionLi);
         // Select-shape canvas.
         if (isSelect) {
@@ -1201,7 +1490,8 @@
           const newCanvasLi = document.createElement('li');
           newCanvasLi.className = '';
           const newInput = document.createElement('input');
-          newInput.type = fieldType === 'radio' ? 'radio' : 'checkbox';
+          // payment-multiple renders radio inputs on canvas, same as radio.
+          newInput.type = (fieldType === 'radio' || fieldType === 'payment-multiple') ? 'radio' : 'checkbox';
           newInput.readOnly = true;
           newCanvasLi.appendChild(newInput);
           newCanvasLi.appendChild(document.createTextNode(' '));
@@ -3610,7 +3900,325 @@
         table.classList.add(el.value === 'classic' ? 'classic' : 'modern');
       },
     },
+
+    // ─ Universal: Click canvas field → activate it + show its option panel
+    // Needed for combined-field snapshots (e.g. builder-field-options-payment-fields)
+    // where multiple fields share one snapshot. Clicking a canvas field swaps
+    // the .active class and reveals the matching #wpforms-field-option-<id>
+    // (others get wpforms-hidden). Also switches sidebar to Field Options tab.
+    // Per-field-stripped snapshots only have one panel so this is a no-op there.
+    {
+      label: 'activate-canvas-field',
+      event: 'click',
+      match: (el) => {
+        if (!el.closest) return false;
+        const field = el.closest('.wpforms-field[data-field-id]');
+        if (!field) return false;
+        // Ignore clicks on duplicate/delete/menu icons.
+        if (el.closest('.wpforms-field-duplicate, .wpforms-field-delete, .wpforms-field-multi-field-menu')) return false;
+        return true;
+      },
+      apply: (el) => {
+        const field = el.closest('.wpforms-field[data-field-id]');
+        const fid = field.dataset.fieldId;
+        if (!fid) return;
+        document
+          .querySelectorAll('.wpforms-field.active')
+          .forEach((f) => f.classList.remove('active'));
+        field.classList.add('active');
+        // Sidebar tab → Field Options
+        document.getElementById('add-fields')?.querySelector('a')?.classList.remove('active');
+        document.getElementById('field-options')?.querySelector('a')?.classList.add('active');
+        const addFields = document.getElementById('wpforms-add-fields-tab');
+        const fieldOptions = document.getElementById('wpforms-field-options');
+        if (addFields) addFields.style.display = 'none';
+        if (fieldOptions) fieldOptions.style.display = 'block';
+        // Show only the clicked field's option panel.
+        document
+          .querySelectorAll('#wpforms-field-options .wpforms-field-option')
+          .forEach((p) => p.classList.add('wpforms-hidden'));
+        document
+          .getElementById('wpforms-field-option-' + fid)
+          ?.classList.remove('wpforms-hidden');
+      },
+    },
+
+    // ─ Payment Single: Item Price (input) ───────────────────────────────
+    {
+      label: 'payment-single-price',
+      event: 'input',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.closest('.wpforms-field-option-row-price') !== null &&
+        getField(el)?.classList.contains('wpforms-field-payment-single') === true,
+      apply: (el) => {
+        const field = getField(el);
+        if (!field) return;
+        renderPaymentSinglePrice(field);
+        renderPaymentSinglePriceLabel(field);
+      },
+    },
+
+    // ─ Payment Single: Price Display (price_label template) ────────────
+    {
+      label: 'payment-single-price-label',
+      event: 'input',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.closest('.wpforms-field-option-row-price_label') !== null &&
+        getField(el)?.classList.contains('wpforms-field-payment-single') === true,
+      apply: (el) => {
+        const field = getField(el);
+        if (field) renderPaymentSinglePriceLabel(field);
+      },
+    },
+
+    // ─ Payment Single: Item Type / format (Single / User Defined / Hidden)
+    {
+      label: 'payment-single-format',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLSelectElement &&
+        el.closest('.wpforms-field-option-row-format') !== null &&
+        getField(el)?.classList.contains('wpforms-field-payment-single') === true,
+      apply: (el) => {
+        const field = getField(el);
+        if (field) renderPaymentSingleFormat(field);
+      },
+    },
+
+    // ─ Payment Single: Minimum Price (input) ─────────────────────────────
+    {
+      label: 'payment-single-min-price',
+      event: 'input',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.closest('.wpforms-field-option-row-min_price') !== null &&
+        getField(el)?.classList.contains('wpforms-field-payment-single') === true,
+      apply: (el) => {
+        const field = getField(el);
+        if (field) renderPaymentSingleMinPrice(field);
+      },
+    },
+
+    // ─ Payment Single / Select: Enable Quantity toggle ──────────────────
+    {
+      label: 'payment-enable-quantity',
+      event: 'change',
+      match: (el) => {
+        if (!(el instanceof HTMLInputElement) || el.type !== 'checkbox') return false;
+        if (!el.closest('.wpforms-field-option-row-enable_quantity')) return false;
+        const field = getField(el);
+        return !!field && (
+          field.classList.contains('wpforms-field-payment-single') ||
+          field.classList.contains('wpforms-field-payment-select')
+        );
+      },
+      apply: (el) => {
+        const field = getField(el);
+        if (field) renderPaymentEnableQuantity(field);
+      },
+    },
+
+    // ─ Payment Choices: Show Price After Item Labels toggle ─────────────
+    {
+      label: 'payment-choices-show-price-toggle',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'checkbox' &&
+        el.closest('.wpforms-field-option-row-show_price_after_labels') !== null &&
+        isPaymentChoiceField(getField(el)),
+      apply: (el) => {
+        const field = getField(el);
+        if (field) renderPaymentChoiceLabels(field);
+      },
+    },
+
+    // ─ Payment Choices: Per-choice price input (input.value.wpforms-money-input)
+    {
+      label: 'payment-choices-price-input',
+      event: 'input',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.classList.contains('value') &&
+        el.classList.contains('wpforms-money-input') &&
+        el.closest('.choices-list') !== null &&
+        isPaymentChoiceField(getField(el)),
+      apply: (el) => {
+        const field = getField(el);
+        if (field) renderPaymentChoiceLabels(field);
+      },
+    },
+
+    // ─ Payment Choices: Resync labels after label-edit / add / remove ────
+    // The universal choices-label-edit / choices-add / choices-remove
+    // handlers run first; this resync re-renders the canvas text with the
+    // price suffix when show_price_after_labels is on (and rebuilds clean
+    // text when off).
+    {
+      label: 'payment-choices-resync-label',
+      event: 'input',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.classList.contains('label') &&
+        el.closest('.choices-list') !== null &&
+        isPaymentChoiceField(getField(el)),
+      apply: (el) => {
+        const field = getField(el);
+        if (field) renderPaymentChoiceLabels(field);
+      },
+    },
+    {
+      label: 'payment-choices-resync-click',
+      event: 'click',
+      match: (el) => {
+        if (!el.closest) return false;
+        if (!el.closest('a.add, a.remove')) return false;
+        if (!el.closest('.choices-list')) return false;
+        return !!document.querySelector(
+          '.wpforms-field-payment-checkbox, .wpforms-field-payment-multiple, .wpforms-field-payment-select',
+        );
+      },
+      apply: () => {
+        document
+          .querySelectorAll(
+            '.wpforms-field-payment-checkbox, .wpforms-field-payment-multiple, .wpforms-field-payment-select',
+          )
+          .forEach(renderPaymentChoiceLabels);
+      },
+    },
+
+    // ─ Payment Coupon: Button Text ──────────────────────────────────────
+    {
+      label: 'payment-coupon-button-text',
+      event: 'input',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'text' &&
+        el.closest('.wpforms-field-option-row-button_text') !== null &&
+        getField(el)?.classList.contains('wpforms-field-payment-coupon') === true,
+      apply: (el) => {
+        const field = getField(el);
+        const btn = field?.querySelector('.wpforms-field-payment-coupon-button');
+        if (btn) btn.textContent = el.value;
+      },
+    },
+
+    // ─ Payment Coupon: Click .choices container → open dropdown ─────────
+    // The choices.js list is hidden by default (CSS rule
+    // `.choices__list--dropdown{display:none}` with `.is-active{display:block}`).
+    // Clicking the inner select area toggles the `is-active` class.
+    {
+      label: 'payment-coupon-open',
+      event: 'click',
+      match: (el) => {
+        if (!el.closest) return false;
+        // Open click is on .choices__inner (the area showing pills + search).
+        // Picking an option or clicking a pill button is handled separately.
+        if (el.closest('.choices__list--dropdown')) return false;
+        if (el.closest('.choices__button')) return false;
+        const inner = el.closest('.choices__inner');
+        if (!inner) return false;
+        return getField(inner)?.classList.contains('wpforms-field-payment-coupon') === true;
+      },
+      apply: (el) => {
+        const choices = el.closest('.choices');
+        const dropdown = choices?.querySelector('.choices__list--dropdown');
+        if (!dropdown) return;
+        // Close any other open coupon dropdowns first.
+        document
+          .querySelectorAll('.choices__list--dropdown.is-active')
+          .forEach((d) => { if (d !== dropdown) d.classList.remove('is-active'); });
+        dropdown.classList.toggle('is-active');
+      },
+    },
+
+    // ─ Payment Coupon: Click dropdown option → add pill + close ─────────
+    {
+      label: 'payment-coupon-pick',
+      event: 'click',
+      match: (el) => {
+        if (!el.closest) return false;
+        const opt = el.closest('.choices__list--dropdown .choices__item--choice');
+        if (!opt) return false;
+        return getField(opt)?.classList.contains('wpforms-field-payment-coupon') === true;
+      },
+      apply: (el) => {
+        const opt = el.closest('.choices__list--dropdown .choices__item--choice');
+        const field = getField(opt);
+        if (!field || !opt) return;
+        addCouponPill(field, opt.getAttribute('data-value'), opt.textContent || '');
+        opt.closest('.choices__list--dropdown')?.classList.remove('is-active');
+      },
+    },
+
+    // ─ Payment Coupon: Click pill ✕ → remove pill ──────────────────────
+    {
+      label: 'payment-coupon-pill-remove',
+      event: 'click',
+      match: (el) => {
+        if (!el.closest) return false;
+        const btn = el.closest('.choices__list--multiple .choices__button');
+        if (!btn) return false;
+        return getField(btn)?.classList.contains('wpforms-field-payment-coupon') === true;
+      },
+      apply: (el) => {
+        const btn = el.closest('.choices__button');
+        const pill = btn?.closest('.choices__item');
+        const field = getField(btn);
+        if (!field || !pill) return;
+        removeCouponPill(field, pill.getAttribute('data-value'));
+      },
+    },
+
+    // ─ Payment Total: Enable Summary toggle ─────────────────────────────
+    // ON  → show .wpforms-order-summary-container, hide .wpforms-total-amount
+    // OFF → hide .wpforms-order-summary-container, show .wpforms-total-amount
+    // initial state synced via initPaymentTotalSummary on load (snapshot was
+    // captured with toggle off but both visible).
+    {
+      label: 'payment-total-summary-toggle',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'checkbox' &&
+        el.closest('.wpforms-field-option-row-summary') !== null &&
+        getField(el)?.classList.contains('wpforms-field-payment-total') === true,
+      apply: (el) => {
+        const field = getField(el);
+        if (!field) return;
+        applyPaymentTotalSummary(field, el.checked);
+      },
+    },
   ];
+
+  function applyPaymentTotalSummary(field, on) {
+    const summary = field.querySelector('.wpforms-order-summary-container');
+    const total = field.querySelector('.wpforms-total-amount');
+    if (summary) {
+      fadeSwap(summary, () => {
+        summary.style.display = on ? '' : 'none';
+      });
+    }
+    if (total) total.style.display = on ? 'none' : '';
+  }
+
+  function initPaymentTotalSummary() {
+    document
+      .querySelectorAll('.wpforms-field-payment-total')
+      .forEach((field) => {
+        const fid = field.id?.replace('wpforms-field-', '');
+        if (!fid) return;
+        const cb = document.getElementById(`wpforms-field-option-${fid}-summary`);
+        if (!cb) return;
+        // Set initial visibility without fadeSwap (no transition on load).
+        const summary = field.querySelector('.wpforms-order-summary-container');
+        const total = field.querySelector('.wpforms-total-amount');
+        if (summary) summary.style.display = cb.checked ? '' : 'none';
+        if (total) total.style.display = cb.checked ? 'none' : '';
+      });
+  }
 
   function dispatch(eventName, target) {
     if (!(target instanceof HTMLElement)) return;
@@ -4006,9 +4614,89 @@
   }
 
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initPagebreakBottomDividers);
-  } else {
+  function initCanvasFieldActiveSync() {
+    // Combined-field snapshots (e.g. builder-field-options-payment-fields)
+    // ship with every option panel rendered visible and no .active field
+    // on canvas. Match the live plugin's default: Add Fields tab showing,
+    // every option panel hidden until a canvas field is clicked. For
+    // per-field-stripped snapshots (one .active field, one panel in DOM)
+    // this just ensures the active panel stays visible and the rest hide.
+    const activeField = document.querySelector(
+      '.wpforms-field-wrap.ui-sortable .wpforms-field.active',
+    );
+    const activeId = activeField?.dataset.fieldId || null;
+    const panels = document.querySelectorAll(
+      '#wpforms-field-options .wpforms-field-option',
+    );
+    if (!panels.length) return;
+    panels.forEach((p) => {
+      const matches = activeId && p.id === 'wpforms-field-option-' + activeId;
+      p.classList.toggle('wpforms-hidden', !matches);
+    });
+    // If no active field, default sidebar to Add Fields tab.
+    if (!activeId) {
+      const addFields = document.getElementById('wpforms-add-fields-tab');
+      const fieldOptions = document.getElementById('wpforms-field-options');
+      if (addFields) addFields.style.display = 'block';
+      if (fieldOptions) fieldOptions.style.display = 'none';
+      document.getElementById('add-fields')?.querySelector('a')?.classList.add('active');
+      document.getElementById('field-options')?.querySelector('a')?.classList.remove('active');
+    }
+  }
+
+  function initCouponDropdownOutsideClose() {
+    document.addEventListener(
+      'click',
+      (e) => {
+        const target = e.target;
+        if (!(target instanceof HTMLElement)) return;
+        // If the click is inside any coupon `.choices` container, let the
+        // open/pick/remove transitions handle it.
+        if (target.closest('.wpforms-field-option-row[id$="-allowed_coupons"] .choices')) return;
+        document
+          .querySelectorAll(
+            '.wpforms-field-option-row[id$="-allowed_coupons"] .choices__list--dropdown.is-active',
+          )
+          .forEach((d) => d.classList.remove('is-active'));
+      },
+      true,
+    );
+  }
+
+  function initPaymentFields() {
+    // payment-single: sync format-driven visibility + price + price_label
+    // + min_price + quantity to the captured panel state.
+    document.querySelectorAll('.wpforms-field-payment-single').forEach((field) => {
+      renderPaymentSingleFormat(field);
+      renderPaymentSinglePrice(field);
+      renderPaymentSinglePriceLabel(field);
+      renderPaymentSingleMinPrice(field);
+      renderPaymentEnableQuantity(field);
+    });
+    // payment-select: quantity sync.
+    document.querySelectorAll('.wpforms-field-payment-select').forEach((field) => {
+      renderPaymentEnableQuantity(field);
+    });
+    // payment-choices fields: re-render labels so price suffix matches toggle.
+    document
+      .querySelectorAll(
+        '.wpforms-field-payment-checkbox, .wpforms-field-payment-multiple, .wpforms-field-payment-select',
+      )
+      .forEach(renderPaymentChoiceLabels);
+    // payment-coupon: seed sample coupons.
+    document.querySelectorAll('.wpforms-field-payment-coupon').forEach(initCouponField);
+    initCouponDropdownOutsideClose();
+  }
+
+  function runInits() {
     initPagebreakBottomDividers();
+    initPaymentTotalSummary();
+    initCanvasFieldActiveSync();
+    initPaymentFields();
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', runInits);
+  } else {
+    runInits();
   }
 })();
