@@ -425,6 +425,238 @@
     return native;
   }
 
+  // ─── Themes panel helpers ────────────────────────────────────────────
+  // Map each Themes sidebar control id-suffix to one or more CSS custom
+  // properties on the live preview container. Simple passthrough vars
+  // appear first; multi-var presets (sizes / shadow) below.
+  const THEMES_DIRECT_VARS = {
+    // Field
+    fieldBorderStyle:      [['--wpforms-field-border-style', null], ['--wpforms-field-border-style-spare', null]],
+    fieldBorderSize:       [['--wpforms-field-border-size', 'px'], ['--wpforms-field-border-size-spare', 'px']],
+    fieldBorderRadius:     [['--wpforms-field-border-radius', 'px'], ['--wpforms-field-border-radius-spare', 'px']],
+    fieldBackgroundColor:  [['--wpforms-field-background-color', null], ['--wpforms-field-background-color-spare', null]],
+    fieldBorderColor:      [['--wpforms-field-border-color', null], ['--wpforms-field-border-color-spare', null]],
+    fieldTextColor:        [['--wpforms-field-text-color', null], ['--wpforms-field-text-color-spare', null]],
+    // Label
+    labelColor:            [['--wpforms-label-color', null], ['--wpforms-label-color-spare', null]],
+    labelSublabelColor:    [['--wpforms-label-sublabel-color', null], ['--wpforms-label-sublabel-color-spare', null]],
+    labelErrorColor:       [['--wpforms-label-error-color', null], ['--wpforms-label-error-color-spare', null]],
+    // Button
+    buttonBorderStyle:     [['--wpforms-button-border-style', null], ['--wpforms-button-border-style-spare', null]],
+    buttonBorderSize:      [['--wpforms-button-border-size', 'px'], ['--wpforms-button-border-size-spare', 'px']],
+    buttonBorderRadius:    [['--wpforms-button-border-radius', 'px'], ['--wpforms-button-border-radius-spare', 'px']],
+    buttonBackgroundColor: [['--wpforms-button-background-color', null], ['--wpforms-button-background-color-alt', null]],
+    buttonBorderColor:     [['--wpforms-button-border-color', null]],
+    buttonTextColor:       [['--wpforms-button-text-color', null], ['--wpforms-button-text-color-alt', null]],
+    // Container
+    containerPadding:      [['--wpforms-container-padding', 'px'], ['--wpforms-container-padding-spare', 'px']],
+    containerBorderStyle:  [['--wpforms-container-border-style', null], ['--wpforms-container-border-style-spare', null]],
+    containerBorderWidth:  [['--wpforms-container-border-width', 'px'], ['--wpforms-container-border-width-spare', 'px']],
+    containerBorderRadius: [['--wpforms-container-border-radius', 'px'], ['--wpforms-container-border-radius-spare', 'px']],
+    containerBorderColor:  [['--wpforms-container-border-color', null]],
+    // Background
+    backgroundColor:       [['--wpforms-background-color', null]],
+    backgroundPosition:    [['--wpforms-background-position', null]],
+    backgroundRepeat:      [['--wpforms-background-repeat', null]],
+    backgroundWidth:       [['--wpforms-background-width', 'px']],
+    backgroundHeight:      [['--wpforms-background-height', 'px']],
+    // Misc
+    fieldMenuColor:        [['--wpforms-field-menu-color', null], ['--wpforms-field-menu-color-spare', null]],
+    pageBreakColor:        [['--wpforms-page-break-color', null], ['--wpforms-page-break-color-spare', null]],
+  };
+
+  // Multi-var presets keyed by control id-suffix.
+  const THEMES_FIELD_SIZE_PRESETS = {
+    small:  { 'input-height': '31px', 'input-spacing': '11px', 'font-size': '14px', 'line-height': '17px', 'padding-h': '10px', 'checkbox-size': '14px', 'sublabel-spacing': '4px', 'icon-size': '0.8' },
+    medium: { 'input-height': '43px', 'input-spacing': '15px', 'font-size': '16px', 'line-height': '19px', 'padding-h': '14px', 'checkbox-size': '16px', 'sublabel-spacing': '5px', 'icon-size': '1' },
+    large:  { 'input-height': '53px', 'input-spacing': '20px', 'font-size': '18px', 'line-height': '22px', 'padding-h': '18px', 'checkbox-size': '20px', 'sublabel-spacing': '6px', 'icon-size': '1.2' },
+  };
+  const THEMES_LABEL_SIZE_PRESETS = {
+    small:  { 'font-size': '14px', 'line-height': '17px', 'sublabel-font-size': '12px', 'sublabel-line-height': '15px' },
+    medium: { 'font-size': '16px', 'line-height': '19px', 'sublabel-font-size': '14px', 'sublabel-line-height': '17px' },
+    large:  { 'font-size': '18px', 'line-height': '22px', 'sublabel-font-size': '16px', 'sublabel-line-height': '19px' },
+  };
+  const THEMES_BUTTON_SIZE_PRESETS = {
+    small:  { 'font-size': '15px', 'height': '35px', 'padding-h': '12px', 'margin-top': '8px' },
+    medium: { 'font-size': '17px', 'height': '41px', 'padding-h': '15px', 'margin-top': '10px' },
+    large:  { 'font-size': '19px', 'height': '48px', 'padding-h': '20px', 'margin-top': '12px' },
+  };
+  const THEMES_SHADOW_PRESETS = {
+    none:   'none',
+    small:  '0 1px 3px rgba(0,0,0,0.12)',
+    medium: '0 4px 6px rgba(0,0,0,0.15)',
+    large:  '0 10px 15px rgba(0,0,0,0.2)',
+  };
+
+  // Color-pickers also live in a minicolors widget — keep the swatch
+  // background and the inner sub-color span in sync as the text input
+  // changes value.
+  function syncMinicolorsSwatch(row, value) {
+    const swatch = row.querySelector('.minicolors-swatch .minicolors-swatch-color');
+    if (swatch) swatch.style.backgroundColor = value || '';
+  }
+
+  function getThemesPreviewContainer() {
+    return document.querySelector(
+      '#wpforms-builder-themes-preview .wpforms-container'
+    );
+  }
+
+  function applyThemesControl(el) {
+    const id = el.id || '';
+    const m = id.match(/^wpforms-panel-field-themes-(.+)$/);
+    if (!m) return;
+    const key = m[1];
+    const container = getThemesPreviewContainer();
+    if (!container) return;
+    const value = (el instanceof HTMLSelectElement || el instanceof HTMLInputElement)
+      ? (el.value || '')
+      : '';
+
+    // Direct passthrough vars.
+    const mapping = THEMES_DIRECT_VARS[key];
+    if (mapping) {
+      for (const [varName, unit] of mapping) {
+        const out = unit && value !== '' ? value + unit : value;
+        container.style.setProperty(varName, out);
+      }
+      // Color picker: also keep swatch in sync.
+      const row = el.closest?.('.wpforms-panel-field-colorpicker');
+      if (row) syncMinicolorsSwatch(row, value);
+      return;
+    }
+
+    // Multi-var size presets.
+    if (key === 'fieldSize') {
+      const preset = THEMES_FIELD_SIZE_PRESETS[value];
+      if (preset) {
+        for (const [k, v] of Object.entries(preset)) {
+          container.style.setProperty('--wpforms-field-size-' + k, v);
+        }
+      }
+      return;
+    }
+    if (key === 'labelSize') {
+      const preset = THEMES_LABEL_SIZE_PRESETS[value];
+      if (preset) {
+        for (const [k, v] of Object.entries(preset)) {
+          container.style.setProperty('--wpforms-label-size-' + k, v);
+        }
+      }
+      return;
+    }
+    if (key === 'buttonSize') {
+      const preset = THEMES_BUTTON_SIZE_PRESETS[value];
+      if (preset) {
+        for (const [k, v] of Object.entries(preset)) {
+          container.style.setProperty('--wpforms-button-size-' + k, v);
+        }
+      }
+      return;
+    }
+    if (key === 'containerShadowSize') {
+      const shadow = THEMES_SHADOW_PRESETS[value] || 'none';
+      container.style.setProperty(
+        '--wpforms-container-shadow-size-box-shadow', shadow
+      );
+      return;
+    }
+
+    // Background image source → reveal/hide dependents.
+    if (key === 'backgroundImage') {
+      const dependents = [
+        'backgroundPosition', 'backgroundSizeMode', 'backgroundSize',
+        'backgroundRepeat', 'backgroundWidth', 'backgroundHeight',
+      ];
+      const enabled = value && value !== 'none';
+      for (const dep of dependents) {
+        const wrap = document.getElementById(
+          'wpforms-panel-field-themes-' + dep + '-wrap'
+        );
+        if (!wrap) continue;
+        wrap.classList.toggle('wpforms-builder-themes-hidden', !enabled);
+        // Also unset disabled attr on the inner select so it becomes
+        // operable when revealed (captured DOM had them disabled).
+        const inner = wrap.querySelector('select, input, textarea');
+        if (inner) {
+          if (enabled) inner.removeAttribute('disabled');
+          else inner.setAttribute('disabled', '');
+        }
+      }
+      return;
+    }
+
+    // backgroundSizeMode → toggle Dimensions vs Cover sub-fields.
+    if (key === 'backgroundSizeMode') {
+      const showDims = value === 'dimensions';
+      for (const dep of ['backgroundWidth', 'backgroundHeight']) {
+        const wrap = document.getElementById(
+          'wpforms-panel-field-themes-' + dep + '-wrap'
+        );
+        if (wrap) wrap.classList.toggle('wpforms-builder-themes-hidden', !showDims);
+      }
+      // Mirror the chosen mode into the hidden backgroundSize input.
+      const sizeInput = document.getElementById('wpforms-panel-field-themes-backgroundSize');
+      if (sizeInput) sizeInput.value = value;
+      container.style.setProperty('--wpforms-background-size-mode', value);
+      container.style.setProperty('--wpforms-background-size', value);
+      return;
+    }
+  }
+
+  // Apply the 5 palette colors exposed by a theme button's indicators:
+  // 0=Button Background, 1=Button Text, 2=Field Label, 3=Field Sublabel,
+  // 4=Field Border.
+  function applyThemePalette(btn) {
+    const container = getThemesPreviewContainer();
+    if (!container) return;
+    const indicators = btn.querySelectorAll('.component-color-indicator');
+    if (!indicators.length) return;
+    const colors = new Array(5).fill(null);
+    indicators.forEach((sp) => {
+      const idx = Number(sp.dataset.index);
+      const bg = sp.style.background || sp.style.backgroundColor || '';
+      const m = bg.match(/^(#[0-9a-fA-F]{3,8}|rgba?\([^)]+\))/);
+      const value = (m ? m[1] : bg).trim();
+      if (Number.isFinite(idx) && value) colors[idx] = value;
+    });
+    const writes = [
+      [0, '--wpforms-button-background-color'],
+      [0, '--wpforms-button-background-color-alt'],
+      [0, '--wpforms-button-border-color'],
+      [1, '--wpforms-button-text-color'],
+      [1, '--wpforms-button-text-color-alt'],
+      [2, '--wpforms-label-color'],
+      [2, '--wpforms-label-color-spare'],
+      [3, '--wpforms-label-sublabel-color'],
+      [3, '--wpforms-label-sublabel-color-spare'],
+      [4, '--wpforms-field-border-color'],
+      [4, '--wpforms-field-border-color-spare'],
+    ];
+    for (const [idx, varName] of writes) {
+      if (colors[idx]) container.style.setProperty(varName, colors[idx]);
+    }
+    // Also reflect colors into the linked controls (color text inputs +
+    // their minicolors swatches) so the sidebar stays in sync.
+    const reflect = [
+      [0, 'buttonBackgroundColor'],
+      [1, 'buttonTextColor'],
+      [2, 'labelColor'],
+      [3, 'labelSublabelColor'],
+      [4, 'fieldBorderColor'],
+    ];
+    for (const [idx, key] of reflect) {
+      const value = colors[idx];
+      if (!value) continue;
+      const input = document.getElementById('wpforms-panel-field-themes-' + key);
+      if (input instanceof HTMLInputElement) input.value = value;
+      const row = document.getElementById(
+        'wpforms-panel-field-themes-' + key + '-wrap'
+      );
+      if (row) syncMinicolorsSwatch(row, value);
+    }
+  }
+
   // Re-render the canvas <ul.primary-input> based on its current mode
   // classes (wpforms-image-choices / wpforms-icon-choices). Image/Icon
   // modes need richer per-li markup than the bare `<input> Label` shape;
@@ -917,6 +1149,296 @@
       const alert = row.querySelector('.wpforms-alert-warning');
       if (alert) alert.style.display = '';
     }
+  }
+
+  // ─── Cross-snapshot navigation ─────────────────────────────────────────
+  // Top panel buttons (Fields / Settings / …) and settings left-rail
+  // sections in real WPForms swap the builder panel in place. In snapshot
+  // land we route each to a separate captured snapshot. Inside an iframe
+  // the parent video owns the swap (postMessage → IframeManager); opened
+  // standalone we fall back to relative-href navigation.
+  //
+  // Round-trip memory: clicking Settings (or any non-fields panel) from a
+  // canvas snapshot remembers that slug in sessionStorage so a later
+  // Fields click returns to the same canvas. Falls back to
+  // 'builder-blank-form' when nothing is remembered.
+
+  const FIELDS_RETURN_KEY = 'wpf:lastFieldsSnapshot';
+
+  const PANEL_SNAPSHOT_MAP = {
+    settings: 'builder-settings-general',
+    // fields: resolved dynamically via sessionStorage (see apply below)
+    // providers / payments / revisions: not yet captured — no-op
+  };
+
+  const SETTINGS_SECTION_SNAPSHOT_MAP = {
+    general: 'builder-settings-general',
+    anti_spam: 'builder-settings-anti_spam',
+    themes: 'builder-settings-themes',
+    notifications: 'builder-settings-notifications',
+    confirmation: 'builder-settings-confirmation',
+  };
+
+  function getCurrentSnapshotSlug() {
+    const m = (window.location.pathname || '').match(/\/snapshots\/([^/]+)\//);
+    return m ? m[1] : null;
+  }
+
+  // Suppress WordPress admin overlays that aren't part of the WPForms
+  // builder surface. Snapshot captures preserve the surrounding WP admin
+  // chrome (auth-check "Session expired" prompt, admin bar, etc.) in the
+  // DOM; they're normally hidden behind the full-height builder but
+  // become visible the moment we drop builder opacity during a swap.
+  // Hide them globally so neither the rest state nor the transition
+  // exposes them.
+  function initSuppressWPAdminOverlays() {
+    if (document.getElementById('wpf-snap-suppress-wp-overlays')) return;
+    const style = document.createElement('style');
+    style.id = 'wpf-snap-suppress-wp-overlays';
+    style.textContent = [
+      '#wp-auth-check-wrap,',
+      '#wp-auth-check-frame,',
+      '#wpadminbar,',
+      '#adminmenuwrap,',
+      '#adminmenuback,',
+      '#wpfooter { display: none !important; }',
+      // The WP admin body normally reserves room for #wpadminbar via a
+      // margin/padding-top. Reset so nothing shifts.
+      'html.wp-toolbar { padding-top: 0 !important; }',
+      'body.admin-bar { margin-top: 0 !important; }',
+      // Smart-tag dropdown was anchoring to a far ancestor (no positioned
+      // parent) AND its z-index:100 was being beaten by Choices.js
+      // dropdowns nearby (z-index:101). Anchor to the local widget
+      // container and lift the open dropdown well above adjacent fields.
+      '.wpforms-smart-tags-widget-container { position: relative; }',
+      '.insert-smart-tag-dropdown { z-index: 9999 !important; }',
+      // Lift the panel-field row that contains an open smart-tag dropdown
+      // so following field rows can't paint over it.
+      '.wpforms-panel-field:has(.insert-smart-tag-dropdown:not(.closed)) {',
+      '  position: relative; z-index: 9999;',
+      '}',
+      // Same lift for the Choices.js dropdown (Tags widget, Confirmation
+      // Page select, Anti-Spam country_codes) so it can't be painted
+      // under the next field row. Two flavors: `:has` for browsers that
+      // support it, and an explicit JS-applied class as a fallback that
+      // also wins specificity-wise inside settings blocks.
+      '.wpforms-panel-field:has(.choices.is-open),',
+      '.wpforms-panel-field.wpf-choices-lifted {',
+      '  position: relative; z-index: 9999;',
+      '}',
+      // Also lift the open dropdown list itself.
+      '.choices.is-open .choices__list--dropdown { z-index: 9999; }',
+    ].join('\n');
+    document.head.appendChild(style);
+  }
+
+  // SPA-style cross-snapshot navigation in standalone mode. Instead of a
+  // browser-level page navigation (which can't be smoothly animated and
+  // leaves a blank flash between docs), we fetch the target snapshot,
+  // animate the current body's blur+fade-out, swap body innerHTML, then
+  // animate fade-in. Full JS control over the transition; no dependency
+  // on the View Transitions API. Iframe mode still uses postMessage →
+  // IframeManager.swap which has its own crossfade.
+
+  let spaSwapping = false;
+
+  function navigateToSnapshot(slug) {
+    if (!slug) return;
+    if (window.parent !== window) {
+      try { window.parent.postMessage({ type: 'snapshot:navigate', slug }, '*'); } catch (_) {}
+      return;
+    }
+    if (spaSwapping) return;
+    spaSwapping = true;
+    const target = '../' + slug + '/index.html';
+    spaSwap(target).then(
+      () => {
+        try { history.pushState({ slug }, '', target); } catch (_) {}
+        spaSwapping = false;
+      },
+      () => {
+        // Fetch / parse failure: fall back to hard navigation.
+        window.location.href = target;
+      }
+    );
+  }
+
+  // Selector for the layer we visibly animate. Includes the entire WPForms
+  // builder surface (toolbar, vertical panel buttons, active panel). The
+  // chrome-vs-content distinction doesn't matter here because the new DOM
+  // has identical chrome — only the panel content reads as changing.
+  const SPA_SURFACE_SELECTOR = '#wpforms-builder';
+
+  function spaSwap(target) {
+    return new Promise((resolve, reject) => {
+      const surface = document.querySelector(SPA_SURFACE_SELECTOR);
+      if (!surface) { reject(new Error('no surface')); return; }
+      // Fetch concurrent with the out animation.
+      const fetchPromise = fetch(target).then((r) => {
+        if (!r.ok) throw new Error('fetch ' + r.status);
+        return r.text();
+      });
+      // OUT: fade + blur. Don't go to opacity:0 — that exposes whatever
+      // is behind #wpforms-builder (WordPress admin chrome, the
+      // wp-auth-check "Session expired" overlay, the WP admin gray body
+      // bg). 0.08 keeps a faint blurred ghost of the surface on screen,
+      // which masks the WP layer underneath without visibly defeating
+      // the fade. 220 ms reads as deliberate without dragging.
+      surface.style.willChange = 'opacity, filter';
+      surface.style.transition = 'opacity 20ms cubic-bezier(0.65,0.05,0.36,1), filter 20ms cubic-bezier(0.65,0.05,0.36,1);';
+      surface.style.filter = 'blur(10px)';
+      surface.style.opacity = '0.75';
+
+      const outDone = new Promise((r) => setTimeout(r, 0));
+
+      Promise.all([fetchPromise, outDone]).then(([html]) => {
+        let newDoc;
+        try { newDoc = new DOMParser().parseFromString(html, 'text/html'); }
+        catch (e) { reject(e); return; }
+        const newSurface = newDoc.querySelector(SPA_SURFACE_SELECTOR);
+        if (!newSurface) { reject(new Error('no surface in new doc')); return; }
+
+        // Merge any inline <style> blocks from the new head that aren't
+        // already in ours. Settings snapshots share a baseline of CSS, but
+        // some have section-specific inline rules — without these the
+        // post-swap render may miss styles.
+        const have = new Set();
+        document.head.querySelectorAll('style').forEach((s) => {
+          have.add(s.textContent.length + ':' + s.textContent.slice(0, 80));
+        });
+        newDoc.head.querySelectorAll('style').forEach((s) => {
+          const key = s.textContent.length + ':' + s.textContent.slice(0, 80);
+          if (have.has(key)) return;
+          document.head.appendChild(s.cloneNode(true));
+        });
+
+        // Swap. New surface starts at the same blurred floor as the
+        // OUT end-state so the handoff is invisible.
+        newSurface.style.opacity = '0.75';
+        newSurface.style.filter = 'blur(10px)';
+        newSurface.style.transition = 'none';
+        newSurface.style.willChange = 'opacity, filter';
+        surface.replaceWith(newSurface);
+
+        // Re-run snapshot-init logic on the new DOM. Document-level
+        // event delegation still works because listeners are bound to
+        // `document`, not to the swapped subtree.
+        runInits();
+
+        // IN: fade + un-blur. 180 ms keeps the recovery snappy to pair
+        // with the near-instant OUT — a 260 ms IN felt lopsided next to
+        // a 20 ms OUT. Two RAFs to ensure the initial styles commit
+        // before the transition starts.
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          newSurface.style.transition = 'opacity 180ms cubic-bezier(0,0,.2,1), filter 180ms cubic-bezier(0,0,.2,1)';
+          newSurface.style.opacity = '1';
+          newSurface.style.filter = 'blur(0)';
+          setTimeout(() => {
+            newSurface.style.transition = '';
+            newSurface.style.filter = '';
+            newSurface.style.willChange = '';
+            resolve();
+          }, 200);
+        }));
+      }).catch(reject);
+    });
+  }
+
+  // Hover prefetch — when the cursor enters a nav target, fire a fetch
+  // for the corresponding snapshot. Browser caches the response, so the
+  // subsequent click-driven SPA fetch resolves from memory instead of
+  // disk and the perceived OUT-blur dwell collapses to near-zero. Each
+  // target is prefetched at most once per session.
+  const spaPrefetched = new Set();
+  function spaResolveTargetFromEl(el) {
+    if (!(el instanceof HTMLElement)) return null;
+    const section = el.closest('.wpforms-panel-sidebar-section');
+    if (section
+        && !section.classList.contains('education-modal')
+        && !section.classList.contains('active')
+        && section.closest('#wpforms-panel-settings')) {
+      return SETTINGS_SECTION_SNAPSHOT_MAP[section.dataset.section] || null;
+    }
+    const btn = el.closest('[data-panel]');
+    if (!btn) return null;
+    const panel = btn.dataset.panel;
+    if (panel === 'fields') {
+      try { return sessionStorage.getItem(FIELDS_RETURN_KEY) || 'builder-fields'; }
+      catch (_) { return 'builder-fields'; }
+    }
+    return PANEL_SNAPSHOT_MAP[panel] || null;
+  }
+  document.addEventListener('mouseover', (e) => {
+    if (window.parent !== window) return;
+    const slug = spaResolveTargetFromEl(e.target);
+    if (!slug) return;
+    if (slug === getCurrentSnapshotSlug()) return;
+    const target = '../' + slug + '/index.html';
+    if (spaPrefetched.has(target)) return;
+    spaPrefetched.add(target);
+    fetch(target).catch(() => spaPrefetched.delete(target));
+  });
+
+  // Back / forward — re-do the SPA swap to the popped slug so the user
+  // sees the same animated transition.
+  window.addEventListener('popstate', () => {
+    if (window.parent !== window) return;
+    if (spaSwapping) return;
+    const slug = getCurrentSnapshotSlug();
+    if (!slug) return;
+    spaSwapping = true;
+    const target = '../' + slug + '/index.html';
+    spaSwap(target).then(
+      () => { spaSwapping = false; },
+      () => { window.location.reload(); }
+    );
+  });
+
+  // Stagger-reveal of the right-pane content rows in any builder-settings-*
+  // snapshot. Fires once on load. Targets the active settings section's
+  // immediate row-level children so the canvas content reads as it lands
+  // instead of slamming in. Kept small (≤14 rows, 35 ms step) so it never
+  // turns into a slow march.
+  function initSettingsCanvasStagger() {
+    const slug = (window.location.pathname || '').match(/\/snapshots\/([^/]+)\//)?.[1];
+    if (!slug || !/^builder-settings-/.test(slug)) return;
+    const panel = document.getElementById('wpforms-panel-settings');
+    if (!panel) return;
+    // Prefer the active section; fall back to the first visible one.
+    let section = panel.querySelector('.wpforms-panel-content-section.active');
+    if (!section) {
+      const all = panel.querySelectorAll('.wpforms-panel-content-section');
+      for (const s of all) {
+        if (getComputedStyle(s).display !== 'none') { section = s; break; }
+      }
+    }
+    if (!section) return;
+    const rows = Array.from(section.children)
+      .filter((el) => {
+        if (!(el instanceof HTMLElement)) return false;
+        const cs = getComputedStyle(el);
+        return cs.display !== 'none' && cs.visibility !== 'hidden';
+      })
+      .slice(0, 14);
+    if (!rows.length) return;
+    for (const row of rows) {
+      row.style.opacity = '0';
+      row.style.transform = 'translateY(6px)';
+      row.style.transition = 'opacity 60ms ease-out, transform 60ms ease-out';
+    }
+    // Stagger waits for the IN fade-in (180 ms) to mostly finish so
+    // it reads as a layered second beat rather than fighting the
+    // page-level fade. 150 ms = ~30 ms overlap at the tail, which
+    // feels dynamic without colliding.
+    const vtDelay = (window.parent === window) ? 150 : 0;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      rows.forEach((row, i) => {
+        setTimeout(() => {
+          row.style.opacity = '1';
+          row.style.transform = 'translateY(0)';
+        }, vtDelay + i * 35);
+      });
+    }));
   }
 
   // ─── Transition registry ────────────────────────────────────────────────
@@ -2884,7 +3406,10 @@
         const li = el.closest('li[data-value]');
         const dropdown = li.closest('.insert-smart-tag-dropdown');
         const container = dropdown.closest('.wpforms-smart-tags-widget-container');
-        const widget = container?.querySelector('.wpforms-smart-tags-widget-input');
+        // Match both the -input (single-line) and -textarea variants.
+        // Form Description on Settings → General uses the textarea variant,
+        // which the original selector skipped.
+        const widget = container?.querySelector('.wpforms-smart-tags-widget');
         if (!widget) return;
         const value = li.dataset.value;
         // Label text is in the <span.wpforms-smart-tags-widget-item> child;
@@ -2918,10 +3443,10 @@
       label: 'smart-tags-pill-delete',
       event: 'click',
       match: (el) =>
-        el.closest?.('.wpforms-smart-tags-widget-input .tag .fa-times-circle') !== null,
+        el.closest?.('.wpforms-smart-tags-widget .tag .fa-times-circle') !== null,
       apply: (el) => {
         const pill = el.closest('.tag');
-        const widget = pill?.closest('.wpforms-smart-tags-widget-input');
+        const widget = pill?.closest('.wpforms-smart-tags-widget');
         if (!pill || !widget) return;
         pill.remove();
         widget.dispatchEvent(new Event('input', { bubbles: true }));
@@ -3943,6 +4468,896 @@
       },
     },
 
+    // ─ Universal: Collapsible field group toggle ────────────────────────
+    // Real plugin: clicking .wpforms-panel-fields-group-title toggles the
+    // inner block (Form CSS Class, Submit Button CSS Class, etc. on
+    // Settings → General). Chevron rotates 90° when open. On open we
+    // stagger-reveal the inner field rows so the expansion reads as a
+    // deliberate animation rather than a flicker.
+    {
+      label: 'panel-fields-group-toggle',
+      event: 'click',
+      match: (el) => el.closest?.('.wpforms-panel-fields-group-title') !== null,
+      apply: (el) => {
+        const title = el.closest('.wpforms-panel-fields-group-title');
+        const group = title.closest('.wpforms-panel-fields-group');
+        if (!group) return;
+        const inner = group.querySelector('.wpforms-panel-fields-group-inner');
+        if (!inner) return;
+        const chevron = title.querySelector('i.fa');
+        const isOpen = inner.style.display !== 'none';
+        if (isOpen) {
+          inner.style.display = 'none';
+          group.classList.remove('opened');
+          if (chevron) chevron.style.transform = '';
+          return;
+        }
+        // Opening: show the inner, then stagger-reveal its rows.
+        inner.style.display = '';
+        group.classList.add('opened');
+        if (chevron) chevron.style.transform = 'rotate(90deg)';
+        const rows = Array.from(inner.children)
+          .filter((node) => node instanceof HTMLElement)
+          .slice(0, 14);
+        for (const row of rows) {
+          row.style.opacity = '0';
+          row.style.transform = 'translateY(6px)';
+          row.style.transition = 'opacity 240ms ease-out, transform 240ms ease-out';
+        }
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          rows.forEach((row, i) => {
+            setTimeout(() => {
+              row.style.opacity = '1';
+              row.style.transform = 'translateY(0)';
+            }, i * 35);
+          });
+        }));
+      },
+    },
+
+    // ─ Settings → General: Tags pill delete (× icon) ────────────────────
+    {
+      label: 'settings-tags-pill-delete',
+      event: 'click',
+      match: (el) =>
+        el.closest?.('#wpforms-panel-field-settings-form_tags-wrap .tag .fa-times-circle') !== null,
+      apply: (el) => { el.closest('.tag')?.remove(); },
+    },
+
+    // ─ Settings → General: Tags dropdown option → add as pill ───────────
+    // Click a .choices__item--choice in the tags dropdown → move it into
+    // the pill list, remove from the dropdown.
+    {
+      label: 'settings-tags-dropdown-select',
+      event: 'click',
+      match: (el) =>
+        el.closest?.('#wpforms-panel-field-settings-form_tags-wrap .choices__list--dropdown .choices__item--choice') !== null,
+      apply: (el) => {
+        const item = el.closest('.choices__item--choice');
+        const v = item?.dataset?.value;
+        if (!v) return;
+        const pillList = document.querySelector(
+          '#wpforms-panel-field-settings-form_tags-wrap .choices__list--multiple'
+        );
+        if (!pillList) return;
+        pillList.appendChild(makeSettingsTagPill(v));
+        item.remove();
+      },
+    },
+
+    // ─ Settings → General: Form Name (input) → toolbar mirror ──────────
+    // Two visible mirrors: <span class="wpforms-center-form-name
+    // wpforms-form-name"> in the top toolbar ("Now editing X") and the
+    // <h2 class="wpforms-form-name"> elsewhere in the chrome. Both get
+    // the same live update as the user types.
+    {
+      label: 'settings-general-form-title',
+      event: 'input',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.id === 'wpforms-panel-field-settings-form_title',
+      apply: (el) => {
+        const value = el.value || '';
+        document.querySelectorAll('.wpforms-form-name').forEach((node) => {
+          node.textContent = value;
+        });
+      },
+    },
+
+    // ─ Settings blocks (Notifications + Confirmations): toggle ──────────
+    // Click the chevron button → hide/show .wpforms-builder-settings-block-content.
+    // Chevron icon swaps fa-chevron-circle-up ↔ fa-chevron-circle-down.
+    // On open we stagger-reveal the inner rows for polish.
+    {
+      label: 'settings-block-toggle',
+      event: 'click',
+      match: (el) => el.closest?.('.wpforms-builder-settings-block-toggle') !== null,
+      apply: (el) => {
+        const btn = el.closest('.wpforms-builder-settings-block-toggle');
+        const block = btn.closest('.wpforms-builder-settings-block');
+        if (!block) return;
+        const content = block.querySelector(':scope > .wpforms-builder-settings-block-content');
+        if (!content) return;
+        const chevron = btn.querySelector('i.fa');
+        const isOpen = content.style.display !== 'none';
+        if (isOpen) {
+          content.style.display = 'none';
+          if (chevron) {
+            chevron.classList.remove('fa-chevron-circle-up');
+            chevron.classList.add('fa-chevron-circle-down');
+          }
+          return;
+        }
+        content.style.display = '';
+        if (chevron) {
+          chevron.classList.remove('fa-chevron-circle-down');
+          chevron.classList.add('fa-chevron-circle-up');
+        }
+        const rows = Array.from(content.children)
+          .filter((node) => node instanceof HTMLElement)
+          .slice(0, 14);
+        for (const row of rows) {
+          row.style.opacity = '0';
+          row.style.transform = 'translateY(6px)';
+          row.style.transition = 'opacity 240ms ease-out, transform 240ms ease-out';
+        }
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          rows.forEach((row, i) => {
+            setTimeout(() => {
+              row.style.opacity = '1';
+              row.style.transform = 'translateY(0)';
+            }, i * 30);
+          });
+        }));
+      },
+    },
+
+    // ─ Settings blocks: pencil → enter name-edit mode ───────────────────
+    {
+      label: 'settings-block-edit-start',
+      event: 'click',
+      match: (el) => el.closest?.('.wpforms-builder-settings-block-edit') !== null,
+      apply: (el) => {
+        const btn = el.closest('.wpforms-builder-settings-block-edit');
+        const holder = btn.closest('.wpforms-builder-settings-block-name-holder');
+        if (!holder) return;
+        const nameSpan = holder.querySelector('.wpforms-builder-settings-block-name');
+        const editWrap = holder.querySelector('.wpforms-builder-settings-block-name-edit');
+        if (!nameSpan || !editWrap) return;
+        nameSpan.style.display = 'none';
+        editWrap.classList.add('active');
+        const input = editWrap.querySelector('input');
+        if (input) {
+          // Sync input value to current display name if user edited
+          // text directly via the placeholder text content.
+          const v = (nameSpan.textContent || '').trim();
+          if (v) input.value = v;
+          input.focus();
+          try { input.select(); } catch (_) {}
+        }
+      },
+    },
+
+    // ─ Settings blocks: name-edit input → live mirror display span ─────
+    {
+      label: 'settings-block-name-input',
+      event: 'input',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.closest?.('.wpforms-builder-settings-block-name-edit') !== null,
+      apply: (el) => {
+        const holder = el.closest('.wpforms-builder-settings-block-name-holder');
+        if (!holder) return;
+        const nameSpan = holder.querySelector('.wpforms-builder-settings-block-name');
+        if (nameSpan) nameSpan.textContent = el.value || '';
+      },
+    },
+
+    // ─ Notifications: status pill (Active ↔ Inactive) ───────────────────
+    // Flip data-active, swap badge color + label + check/times icon, and
+    // update the hidden -enable input that sits next to the pill.
+    {
+      label: 'notifications-status-toggle',
+      event: 'click',
+      match: (el) => el.closest?.('.wpforms-notification-status-button') !== null,
+      apply: (el) => {
+        const pill = el.closest('.wpforms-notification-status-button');
+        const wasActive = pill.dataset.active === '1';
+        const nowActive = !wasActive;
+        pill.dataset.active = nowActive ? '1' : '0';
+        pill.classList.toggle('wpforms-badge-green', nowActive);
+        pill.classList.toggle('wpforms-badge-silver', !nowActive);
+        pill.setAttribute('title', nowActive ? 'Deactivate' : 'Activate');
+        const icon = pill.querySelector('i.fa');
+        if (icon) {
+          icon.classList.toggle('fa-check', nowActive);
+          icon.classList.toggle('fa-times', !nowActive);
+        }
+        const label = pill.querySelector('.wpforms-status-label');
+        if (label) label.textContent = nowActive ? 'Active' : 'Inactive';
+        // Sibling hidden input (id ends with -enable)
+        const actions = pill.closest('.wpforms-builder-settings-block-actions');
+        const hidden = actions?.querySelector('input[type="hidden"][id$="-enable"]');
+        if (hidden) hidden.value = nowActive ? '1' : '0';
+      },
+    },
+
+    // ─ Settings blocks: delete (no confirmation modal) ──────────────────
+    {
+      label: 'settings-block-delete',
+      event: 'click',
+      match: (el) => el.closest?.('.wpforms-builder-settings-block-delete') !== null,
+      apply: (el) => {
+        const block = el.closest('.wpforms-builder-settings-block');
+        if (!block) return;
+        // Brief fade-out so the removal reads as deliberate.
+        block.style.transition = 'opacity 180ms ease-out, transform 180ms ease-out';
+        block.style.opacity = '0';
+        block.style.transform = 'translateY(-4px)';
+        setTimeout(() => { block.remove(); }, 200);
+      },
+    },
+
+    // ─ Notifications: clone block → insert NEW above the source ────────
+    // Scoped to notifications only (confirmations have no clone button).
+    // Rewrites every `notifications-N-` segment in attribute strings so
+    // ids stay unique. The clone loses `.wpforms-builder-settings-block-
+    // default` so it becomes deletable; the original keeps it.
+    {
+      label: 'notifications-block-clone',
+      event: 'click',
+      match: (el) => {
+        const btn = el.closest?.('.wpforms-builder-settings-block-clone');
+        if (!btn) return false;
+        const block = btn.closest('.wpforms-builder-settings-block');
+        return !!block && block.dataset.blockType === 'notification';
+      },
+      apply: (el) => {
+        const block = el.closest('.wpforms-builder-settings-block');
+        if (!block) return;
+        const srcId = block.dataset.blockId || '1';
+        // Find the next free id across notifications blocks in DOM.
+        const used = new Set(
+          Array.from(
+            document.querySelectorAll('[data-block-type="notification"][data-block-id]')
+          ).map((b) => Number(b.dataset.blockId)).filter(Number.isFinite)
+        );
+        let next = 2;
+        while (used.has(next)) next++;
+
+        // Rewrite all id/name segments that reference the source block.
+        const reSegmentDash = new RegExp('notifications-' + srcId + '-', 'g');
+        const reSegmentBracket = new RegExp(
+          'notifications\\]\\[' + srcId + '\\]',
+          'g'
+        );
+        const reBlockId = new RegExp(
+          'data-block-id="' + srcId + '"',
+          'g'
+        );
+        let html = block.outerHTML
+          .replace(reSegmentDash, 'notifications-' + next + '-')
+          .replace(reSegmentBracket, 'notifications][' + next + ']')
+          .replace(reBlockId, 'data-block-id="' + next + '"')
+          // Drop the "default" marker so the clone is deletable.
+          .replace(/\s*wpforms-builder-settings-block-default/g, '');
+
+        const tmp = document.createElement('div');
+        tmp.innerHTML = html;
+        const clone = tmp.firstElementChild;
+        if (!clone) return;
+
+        // Reset visible name + edit input so the new block doesn't echo
+        // the source's display name verbatim.
+        const nameSpan = clone.querySelector('.wpforms-builder-settings-block-name');
+        const nameInput = clone.querySelector(
+          '.wpforms-builder-settings-block-name-edit input'
+        );
+        if (nameSpan) nameSpan.textContent = 'New Notification';
+        if (nameInput) nameInput.value = 'New Notification';
+
+        // Clear any data-wpf-wired markers so init handlers re-bind for
+        // the cloned subtree (name-edit input commit etc.).
+        clone.querySelectorAll('[data-wpf-wired]').forEach((e) => {
+          delete e.dataset.wpfWired;
+        });
+        // If the clone was created with the original collapsed (display:
+        // none) make sure content is visible on the new one.
+        const content = clone.querySelector(
+          ':scope > .wpforms-builder-settings-block-content'
+        );
+        if (content) content.style.display = '';
+        const chevron = clone.querySelector(
+          '.wpforms-builder-settings-block-toggle i.fa'
+        );
+        if (chevron) {
+          chevron.classList.remove('fa-chevron-circle-down');
+          chevron.classList.add('fa-chevron-circle-up');
+        }
+
+        // Insert ABOVE the source block.
+        block.parentNode.insertBefore(clone, block);
+
+        // Brief fade-in.
+        clone.style.opacity = '0';
+        clone.style.transform = 'translateY(-4px)';
+        clone.style.transition = 'opacity 220ms ease-out, transform 220ms ease-out';
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          clone.style.opacity = '1';
+          clone.style.transform = 'translateY(0)';
+        }));
+      },
+    },
+
+    // ─ Notifications/Confirmations: Conditional Logic toggle ────────────
+    // The captured DOM has only the enable checkbox; the rule builder is
+    // lazy-mounted here using the existing buildConditionalLogicGroups
+    // helper. Uses the block's numeric id as the field reference so the
+    // generated form-name attributes stay unique across blocks (good
+    // enough for snapshot interactivity — snapshots don't submit).
+    {
+      label: 'block-conditional-logic-toggle',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'checkbox' &&
+        /^wpforms-panel-field-(notifications|confirmations)-\d+-conditional_logic$/.test(
+          el.id || ''
+        ),
+      apply: (el) => {
+        const wrap = el.closest('.wpforms-panel-field');
+        if (!wrap) return;
+        const ref = (el.id.match(/-(\d+)-conditional_logic$/) || [])[1];
+        if (!ref) return;
+        const groupsId = 'wpforms-conditional-groups-fields-' + ref;
+        let groups = document.getElementById(groupsId);
+        if (!groups) {
+          // Coerce data-reference to the numeric ref so the helper
+          // produces a valid id (it normally uses field labels for
+          // notifications which contain spaces).
+          const origRef = el.getAttribute('data-reference');
+          el.setAttribute('data-reference', ref);
+          groups = buildConditionalLogicGroups(el);
+          if (origRef !== null) el.setAttribute('data-reference', origRef);
+          // Mount as a sibling of the toggle wrap so it appears directly
+          // below the "Enable Conditional Logic" row.
+          wrap.parentNode.insertBefore(groups, wrap.nextSibling);
+        }
+        groups.style.display = el.checked ? '' : 'none';
+      },
+    },
+
+    // ─ Notifications Advanced: File Upload Attachment toggle ────────────
+    {
+      label: 'notifications-file-upload-toggle',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        /^wpforms-panel-field-notifications-\d+-file_upload_attachment_enable$/.test(
+          el.id || ''
+        ),
+      apply: (el) => {
+        const ref = (el.id.match(/-(\d+)-file_upload_attachment_enable$/) || [])[1];
+        if (!ref) return;
+        const wrap = document.getElementById(
+          'wpforms-panel-field-notifications-' + ref + '-file_upload_attachment_fields-wrap'
+        );
+        if (wrap) wrap.style.display = el.checked ? '' : 'none';
+      },
+    },
+
+    // ─ Notifications Advanced: Entry CSV Attachment toggle ──────────────
+    {
+      label: 'notifications-entry-csv-toggle',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        /^wpforms-panel-field-notifications-\d+-entry_csv_attachment_enable$/.test(
+          el.id || ''
+        ),
+      apply: (el) => {
+        const ref = (el.id.match(/-(\d+)-entry_csv_attachment_enable$/) || [])[1];
+        if (!ref) return;
+        const ids = [
+          'wpforms-panel-field-notifications-' + ref + '-entry_csv_attachment_entry_information-wrap',
+          'wpforms-panel-field-notifications-' + ref + '-entry_csv_attachment_file_name-wrap',
+        ];
+        const show = el.checked ? '' : 'none';
+        for (const id of ids) {
+          const w = document.getElementById(id);
+          if (w) w.style.display = show;
+        }
+      },
+    },
+
+    // ─ Spam Protection: time_limit toggle → reveal duration field ──────
+    {
+      label: 'spam-time-limit-toggle',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.id === 'wpforms-panel-field-anti_spam-time_limit-enable',
+      apply: (el) => {
+        const wrap = document.getElementById(
+          'wpforms-panel-field-anti_spam-time_limit-duration-wrap'
+        );
+        if (wrap) wrap.style.display = el.checked ? '' : 'none';
+      },
+    },
+
+    // ─ Spam Protection: country filter toggle → reveal body + message ──
+    {
+      label: 'spam-country-filter-toggle',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.id === 'wpforms-panel-field-anti_spam-country_filter-enable',
+      apply: (el) => {
+        const body = document.querySelector('.wpforms-panel-field-country-filter-body');
+        const msg = document.getElementById(
+          'wpforms-panel-field-anti_spam-country_filter-message-wrap'
+        );
+        const show = el.checked ? '' : 'none';
+        if (body) body.style.display = show;
+        if (msg) msg.style.display = show;
+      },
+    },
+
+    // ─ Spam Protection: keyword filter toggle → reveal body + message ──
+    {
+      label: 'spam-keyword-filter-toggle',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.id === 'wpforms-panel-field-anti_spam-keyword_filter-enable',
+      apply: (el) => {
+        const body = document.querySelector('.wpforms-panel-field-keyword-filter-body');
+        const msg = document.getElementById(
+          'wpforms-panel-field-anti_spam-keyword_filter-message-wrap'
+        );
+        const show = el.checked ? '' : 'none';
+        if (body) body.style.display = show;
+        if (msg) msg.style.display = show;
+      },
+    },
+
+    // ─ Confirmations: entry-preview toggle → reveal preview-style wrap ─
+    {
+      label: 'confirmations-entry-preview-toggle',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        /^wpforms-panel-field-confirmations-\d+-message_entry_preview$/.test(el.id || ''),
+      apply: (el) => {
+        const m = el.id.match(/^wpforms-panel-field-confirmations-(\d+)-message_entry_preview$/);
+        if (!m) return;
+        const wrap = document.getElementById(
+          'wpforms-panel-field-confirmations-' + m[1] + '-message_entry_preview_style-wrap'
+        );
+        if (wrap) wrap.style.display = el.checked ? '' : 'none';
+      },
+    },
+
+    // ─ Settings: Choices.js dropdown → toggle open on click ────────────
+    // Covers Confirmations page select + Anti-Spam country_codes select
+    // (and any future settings-panel choices dropdown). Click on the
+    // .choices wrapper (but NOT on a dropdown option) toggles is-open.
+    {
+      label: 'settings-choices-dropdown-toggle',
+      event: 'click',
+      match: (el) => {
+        const choices = el.closest?.('.choices');
+        if (!choices) return false;
+        if (!choices.closest('#wpforms-panel-settings')) return false;
+        // Ignore clicks inside dropdown list (those are option clicks).
+        if (el.closest?.('.choices__list--dropdown')) return false;
+        // Ignore the form-tags Choices widget (handled separately).
+        if (choices.closest('#wpforms-panel-field-settings-form_tags-wrap')) return false;
+        return true;
+      },
+      apply: (el) => {
+        const choices = el.closest('.choices');
+        const dropdown = choices.querySelector('.choices__list--dropdown');
+        const fieldRow = choices.closest('.wpforms-panel-field');
+        const isOpen = choices.classList.contains('is-open');
+        if (isOpen) {
+          choices.classList.remove('is-open', 'is-flipped');
+          choices.setAttribute('aria-expanded', 'false');
+          if (dropdown) {
+            dropdown.classList.remove('is-active');
+            dropdown.setAttribute('aria-expanded', 'false');
+          }
+          if (fieldRow) fieldRow.classList.remove('wpf-choices-lifted');
+        } else {
+          choices.classList.add('is-open');
+          choices.setAttribute('aria-expanded', 'true');
+          if (dropdown) {
+            dropdown.classList.add('is-active');
+            dropdown.setAttribute('aria-expanded', 'true');
+          }
+          if (fieldRow) fieldRow.classList.add('wpf-choices-lifted');
+        }
+      },
+    },
+
+    // ─ Settings: Choices.js dropdown → select option ────────────────────
+    // Handles both single-select (Confirmations page) and multi-select
+    // (Anti-Spam country_codes) widgets.
+    {
+      label: 'settings-choices-dropdown-select',
+      event: 'click',
+      match: (el) => {
+        const item = el.closest?.('.choices__list--dropdown .choices__item--choice');
+        if (!item) return false;
+        const choices = item.closest('.choices');
+        if (!choices) return false;
+        if (!choices.closest('#wpforms-panel-settings')) return false;
+        if (choices.closest('#wpforms-panel-field-settings-form_tags-wrap')) return false;
+        return true;
+      },
+      apply: (el) => {
+        const item = el.closest('.choices__item--choice');
+        const choices = item.closest('.choices');
+        const select = choices.querySelector('select');
+        const isMulti = choices.dataset.type === 'select-multiple';
+        const value = item.dataset.value;
+        const label = (item.textContent || '').trim();
+
+        if (isMulti) {
+          // Add as a pill in choices__list--multiple
+          const list = choices.querySelector('.choices__list--multiple');
+          if (list) {
+            const pill = document.createElement('div');
+            pill.className =
+              'choices__item choices__item--selectable choices__item--multiple';
+            pill.setAttribute('role', 'listitem');
+            pill.dataset.value = value;
+            pill.setAttribute('aria-selected', 'true');
+            pill.innerHTML =
+              label +
+              '<button type="button" class="choices__button" ' +
+              'aria-label="Remove item" data-button="">Remove item</button>';
+            list.appendChild(pill);
+          }
+          // Mark option selected in underlying select
+          if (select) {
+            let opt = select.querySelector('option[value="' + CSS.escape(value) + '"]');
+            if (!opt) {
+              opt = document.createElement('option');
+              opt.value = value;
+              opt.textContent = label;
+              select.appendChild(opt);
+            }
+            opt.selected = true;
+          }
+          // Hide the item from the dropdown so it can't be chosen twice
+          item.style.display = 'none';
+        } else {
+          // Single-select: update visible single-item display
+          const singleList = choices.querySelector('.choices__list--single');
+          if (singleList) {
+            const cur = singleList.querySelector('.choices__item');
+            if (cur) {
+              cur.dataset.value = value;
+              cur.textContent = label;
+            } else {
+              const d = document.createElement('div');
+              d.className = 'choices__item choices__item--selectable';
+              d.dataset.value = value;
+              d.textContent = label;
+              singleList.appendChild(d);
+            }
+          }
+          if (select) {
+            let opt = select.querySelector('option[value="' + CSS.escape(value) + '"]');
+            if (!opt) {
+              opt = document.createElement('option');
+              opt.value = value;
+              opt.textContent = label;
+              select.appendChild(opt);
+            }
+            for (const o of select.options) o.selected = (o === opt);
+          }
+          // Highlight selection in dropdown
+          choices.querySelectorAll('.choices__item--choice').forEach((c) => {
+            c.classList.toggle('is-selected', c === item);
+            c.setAttribute('aria-selected', c === item ? 'true' : 'false');
+          });
+        }
+
+        // For single-select, close on pick. For multi-select, keep open.
+        if (!isMulti) {
+          choices.classList.remove('is-open', 'is-flipped');
+          choices.setAttribute('aria-expanded', 'false');
+          const dropdown = choices.querySelector('.choices__list--dropdown');
+          if (dropdown) {
+            dropdown.classList.remove('is-active');
+            dropdown.setAttribute('aria-expanded', 'false');
+          }
+          const fieldRow = choices.closest('.wpforms-panel-field');
+          if (fieldRow) fieldRow.classList.remove('wpf-choices-lifted');
+        }
+      },
+    },
+
+    // ─ Spam Protection: pill remove (× on selected country chip) ────────
+    {
+      label: 'spam-choices-pill-remove',
+      event: 'click',
+      match: (el) =>
+        el.matches?.('.wpforms-panel-field-country-filter-block .choices__button') ||
+        el.closest?.('.wpforms-panel-field-country-filter-block .choices__item--multiple .choices__button') !== null,
+      apply: (el) => {
+        const pill = el.closest('.choices__item--multiple');
+        if (!pill) return;
+        const value = pill.dataset.value;
+        const choices = pill.closest('.choices');
+        // Restore the option in the dropdown
+        const item = choices?.querySelector(
+          '.choices__list--dropdown .choices__item--choice[data-value="' +
+            CSS.escape(value) +
+            '"]'
+        );
+        if (item) item.style.display = '';
+        // Unselect underlying option
+        const opt = choices?.querySelector('select option[value="' + CSS.escape(value) + '"]');
+        if (opt) opt.selected = false;
+        pill.remove();
+      },
+    },
+
+    // ─ Spam Protection: keyword filter "Edit keyword list" toggle ───────
+    {
+      label: 'spam-keyword-list-toggle',
+      event: 'click',
+      match: (el) => el.closest?.('.wpforms-settings-keyword-filter-toggle-list') !== null,
+      apply: (el) => {
+        const link = el.closest('.wpforms-settings-keyword-filter-toggle-list');
+        const body = link.closest('.wpforms-panel-field-keyword-filter-body');
+        if (!body) return;
+        const container = body.querySelector(
+          '.wpforms-panel-field-keyword-filter-keywords-container'
+        );
+        const actions = body.querySelector(
+          '.wpforms-panel-field-keyword-filter-actions'
+        );
+        if (!container) return;
+        // Stylesheet sets .keywords-container { display:none } by default,
+        // so we have to use an explicit value (not '') to override it.
+        const isHidden =
+          container.style.display === 'none' || container.style.display === '';
+        if (isHidden) {
+          container.style.display = 'block';
+          if (actions) actions.classList.remove('wpforms-hidden');
+          link.textContent = 'Collapse keyword list.';
+        } else {
+          container.style.display = 'none';
+          if (actions) actions.classList.add('wpforms-hidden');
+          link.textContent = 'Edit keyword list.';
+        }
+      },
+    },
+
+    // ─ Themes: sidebar tab (General / Advanced) ─────────────────────────
+    {
+      label: 'themes-sidebar-tab',
+      event: 'click',
+      match: (el) => {
+        const link = el.closest?.('a');
+        if (!link) return false;
+        return link.parentElement?.id === 'wpforms-builder-themes-sidebar-tabs';
+      },
+      apply: (el) => {
+        const link = el.closest('a');
+        const tabsRow = link.parentElement;
+        tabsRow.querySelectorAll('a').forEach((a) => a.classList.remove('active'));
+        link.classList.add('active');
+        const label = (link.textContent || '').trim().toLowerCase();
+        const content = document.querySelector('.wpforms-builder-themes-sidebar-content');
+        if (!content) return;
+        content
+          .querySelectorAll('.wpforms-builder-themes-sidebar-tab-content')
+          .forEach((c) => c.classList.add('wpforms-hidden'));
+        const target =
+          label === 'advanced'
+            ? content.querySelector('.wpforms-builder-themes-sidebar-advanced')
+            : content.querySelector('.wpforms-builder-themes-sidebar-general');
+        if (target) target.classList.remove('wpforms-hidden');
+      },
+    },
+
+    // ─ Themes: collapsible group heading toggle ─────────────────────────
+    // Scoped to the themes sidebar so we don't fire on the Add Fields
+    // sidebar of the main builder.
+    {
+      label: 'themes-group-toggle',
+      event: 'click',
+      match: (el) => {
+        const heading = el.closest?.('.wpforms-add-fields-heading');
+        if (!heading) return false;
+        return heading.closest('#wpforms-builder-themes-sidebar') !== null;
+      },
+      apply: (el) => {
+        const heading = el.closest('.wpforms-add-fields-heading');
+        const group = heading.parentElement;
+        const body = group.querySelector('.wpforms-add-fields-buttons');
+        const chevron = heading.querySelector('i.fa');
+        if (!body) return;
+        const isOpen = body.style.display !== 'none';
+        if (isOpen) {
+          body.style.display = 'none';
+          if (chevron) {
+            chevron.classList.remove('fa-angle-down');
+            chevron.classList.add('fa-angle-right');
+          }
+        } else {
+          body.style.display = '';
+          if (chevron) {
+            chevron.classList.remove('fa-angle-right');
+            chevron.classList.add('fa-angle-down');
+          }
+        }
+      },
+    },
+
+    // ─ Themes: control change → CSS var sync ────────────────────────────
+    // Single handler for every `wpforms-panel-field-themes-*` change.
+    // Reads control id suffix, looks up the var mapping, writes onto the
+    // preview container's inline style.
+    {
+      label: 'themes-control-change',
+      event: 'change',
+      match: (el) =>
+        (el instanceof HTMLSelectElement || el instanceof HTMLInputElement) &&
+        /^wpforms-panel-field-themes-/.test(el.id || ''),
+      apply: (el) => applyThemesControl(el),
+    },
+    {
+      label: 'themes-control-input',
+      event: 'input',
+      match: (el) =>
+        (el instanceof HTMLInputElement) &&
+        (el.type === 'number' || el.type === 'text') &&
+        /^wpforms-panel-field-themes-/.test(el.id || ''),
+      apply: (el) => applyThemesControl(el),
+    },
+
+    // ─ Themes: minicolors swatch click → open native color picker ──────
+    {
+      label: 'themes-color-swatch',
+      event: 'click',
+      match: (el) => {
+        const row = el.closest?.('.wpforms-panel-field-colorpicker');
+        if (!row) return false;
+        if (!row.id?.startsWith('wpforms-panel-field-themes-')) return false;
+        return el.closest('.minicolors-swatch') !== null ||
+               el.closest('.minicolors-panel') !== null;
+      },
+      apply: (el) => {
+        const row = el.closest('.wpforms-panel-field-colorpicker');
+        const input = row.querySelector('input.minicolors-input');
+        const native = ensureNativeColorInput(row, input?.value || '#066aab');
+        if (native) native.click();
+      },
+    },
+
+    // ─ Themes: theme button (radio group) ──────────────────────────────
+    // Visual select + apply the 5 palette colors exposed by indicators.
+    // Full-preset (every CSS var per theme) is intentionally not wired —
+    // the indicator swatches are the only authoritative theme data in
+    // the snapshot DOM. Sets the hidden wpformsTheme input value.
+    {
+      label: 'themes-radio-pick',
+      event: 'click',
+      match: (el) => {
+        const btn = el.closest?.('button[role="radio"]');
+        if (!btn) return false;
+        return btn.closest('.wpforms-builder-themes-radio-group') !== null;
+      },
+      apply: (el) => {
+        const btn = el.closest('button[role="radio"]');
+        const group = btn.closest('.wpforms-builder-themes-radio-group');
+        group.querySelectorAll('button[role="radio"]').forEach((b) => {
+          b.classList.toggle('is-active', b === btn);
+        });
+        const value = btn.getAttribute('value') || '';
+        const hidden = document.getElementById('wpforms-panel-field-themes-wpformsTheme');
+        if (hidden) hidden.value = value;
+        applyThemePalette(btn);
+      },
+    },
+
+    // ─ Confirmations: type select → show/hide sub-field wraps ──────────
+    // Three modes: message / page / redirect. The wraps are already in
+    // the DOM, just toggle inline display.
+    {
+      label: 'confirmations-type-change',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLSelectElement &&
+        /^wpforms-panel-field-confirmations-\d+-type$/.test(el.id || ''),
+      apply: (el) => {
+        const m = el.id.match(/^wpforms-panel-field-confirmations-(\d+)-type$/);
+        if (!m) return;
+        const n = m[1];
+        const value = el.value;
+        const groups = {
+          message: ['message', 'message_scroll', 'message_entry_preview', 'message_order_summary'],
+          page: ['page', 'page_url_parameters'],
+          redirect: ['redirect', 'redirect_new_tab'],
+        };
+        const all = new Set([...groups.message, ...groups.page, ...groups.redirect]);
+        const show = new Set(groups[value] || []);
+        for (const key of all) {
+          const wrap = document.getElementById(
+            'wpforms-panel-field-confirmations-' + n + '-' + key + '-wrap'
+          );
+          if (!wrap) continue;
+          wrap.style.display = show.has(key) ? '' : 'none';
+        }
+      },
+    },
+
+    // ─ Universal: Top panel button → cross-snapshot nav ─────────────────
+    // Lives in every builder-* snapshot. Fields resolves to the last
+    // non-settings snapshot we were on (sessionStorage), so Settings →
+    // Fields returns to the original canvas. Marketing/Payments/Revisions
+    // are not yet captured — no-op.
+    {
+      label: 'panel-button-nav',
+      event: 'click',
+      match: (el) => {
+        const btn = el.closest?.('[data-panel]');
+        if (!btn) return false;
+        return btn.matches(
+          '.wpforms-panel-fields-button, .wpforms-panel-settings-button, ' +
+          '.wpforms-panel-providers-button, .wpforms-panel-payments-button, ' +
+          '.wpforms-panel-revisions-button'
+        );
+      },
+      apply: (el) => {
+        const btn = el.closest('[data-panel]');
+        const panel = btn.dataset.panel;
+        const cur = getCurrentSnapshotSlug();
+        let slug;
+        if (panel === 'fields') {
+          let last = null;
+          try { last = sessionStorage.getItem(FIELDS_RETURN_KEY); } catch (_) {}
+          slug = last || 'builder-fields';
+        } else {
+          slug = PANEL_SNAPSHOT_MAP[panel];
+        }
+        if (!slug) return;                       // not-captured → no-op
+        if (cur === slug) return;                 // already there
+        // Remember non-settings canvas so Fields can return to it.
+        if (panel !== 'fields' && cur && !/^builder-settings-/.test(cur)) {
+          try { sessionStorage.setItem(FIELDS_RETURN_KEY, cur); } catch (_) {}
+        }
+        navigateToSnapshot(slug);
+      },
+    },
+
+    // ─ Universal: Settings sidebar section → cross-snapshot nav ─────────
+    // Lives in every builder-settings-* snapshot. Skips education-modal
+    // upgrade links and the currently-active section.
+    {
+      label: 'settings-section-nav',
+      event: 'click',
+      match: (el) => {
+        const link = el.closest?.('.wpforms-panel-sidebar-section');
+        if (!link) return false;
+        if (link.classList.contains('education-modal')) return false;
+        if (link.classList.contains('active')) return false;
+        return link.closest('#wpforms-panel-settings') !== null;
+      },
+      apply: (el) => {
+        const link = el.closest('.wpforms-panel-sidebar-section');
+        const slug = SETTINGS_SECTION_SNAPSHOT_MAP[link.dataset.section];
+        if (!slug) return;
+        navigateToSnapshot(slug);
+      },
+    },
+
     // ─ Payment Single: Item Price (input) ───────────────────────────────
     {
       label: 'payment-single-price',
@@ -4191,6 +5606,137 @@
         applyPaymentTotalSummary(field, el.checked);
       },
     },
+
+    // ─ Calculations: Enable Calculation toggle ──────────────────────────────
+    // Supported field types: Single Line Text, Paragraph Text, Number, Hidden,
+    // Single Item (payment-single). Toggle reveals/hides the formula editor
+    // row (id: ...-calculation_code). No canvas effect — calcs run frontend.
+    {
+      label: 'calculation-is-enabled-toggle',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'checkbox' &&
+        /-calculation_is_enabled$/.test(el.id || ''),
+      apply: (el) => {
+        const fid = getFieldId(el);
+        if (!fid) return;
+        const codeRow = document.getElementById(
+          `wpforms-field-option-row-${fid}-calculation_code`,
+        );
+        if (!codeRow) return;
+        if (el.checked) {
+          codeRow.classList.remove('wpforms-hidden');
+          fadeSwap(codeRow, () => {});
+        } else {
+          fadeSwap(codeRow, () => codeRow.classList.add('wpforms-hidden'));
+        }
+      },
+    },
+
+    // ─ Calculations: toolbar operator button (+ − * / ( ) ) ─────────────────
+    // The toolbar has two buttons with class `button-plus` (one labeled "+",
+    // one labeled "−") — disambiguate via textContent. Appends ` op ` to the
+    // hidden source textarea + re-renders the visible CodeMirror line.
+    {
+      label: 'calculation-toolbar-operator',
+      event: 'click',
+      match: (el) => {
+        const btn = el.closest?.(
+          '.wpforms-calculations-editor-wrap .toolbar button',
+        );
+        if (!btn) return false;
+        return /^(\+|-|\*|\/|\(|\))$/.test((btn.textContent || '').trim());
+      },
+      apply: (el) => {
+        const btn = el.closest(
+          '.wpforms-calculations-editor-wrap .toolbar button',
+        );
+        const row = btn?.closest('.wpforms-field-option-row-calculation_code');
+        if (!btn || !row) return;
+        appendCalcFormula(row, (btn.textContent || '').trim());
+      },
+    },
+
+    // ─ Calculations: Insert Field button → toggle dropdown ──────────────────
+    {
+      label: 'calculation-insert-field-toggle',
+      event: 'click',
+      match: (el) =>
+        el.closest?.('.wpforms-calculations-editor-wrap .button-insert-field') !==
+        null,
+      apply: (el) => {
+        const row = el.closest('.wpforms-field-option-row-calculation_code');
+        const dropdown = row?.querySelector('.insert-field-dropdown');
+        if (!dropdown) return;
+        // Close any other open insert-field dropdowns first.
+        document
+          .querySelectorAll('.insert-field-dropdown:not(.closed)')
+          .forEach((d) => { if (d !== dropdown) d.classList.add('closed'); });
+        dropdown.classList.toggle('closed');
+      },
+    },
+
+    // ─ Calculations: expand / compress editor (full-screen toggle) ──────────
+    // Matches the plugin exactly:
+    //   • Move .wpforms-calculations-editor-wrap from -collapsed → -expanded
+    //   • Set inline `top: <wrap viewport top>px` on the expanded container
+    //   • CSS handles width: 720px + z-index: 100 via .expanded on the row
+    //   • CodeMirror inner div width: 100% → 720px
+    //   • Swap icon fa-expand ↔ fa-compress
+    {
+      label: 'calculation-expand-toggle',
+      event: 'click',
+      match: (el) =>
+        el.closest?.('.button-expand-editor') !== null,
+      apply: (el) => {
+        const btn = el.closest('.button-expand-editor');
+        const row = btn?.closest('.wpforms-field-option-row-calculation_code');
+        const wrap = row?.querySelector('.wpforms-calculations-editor-wrap');
+        const collapsed = row?.querySelector('.wpforms-calculations-editor-collapsed');
+        const expanded = row?.querySelector('.wpforms-calculations-editor-expanded');
+        const icon = btn?.querySelector('i');
+        if (!row || !wrap || !collapsed || !expanded) return;
+        const cm = wrap.querySelector('.CodeMirror');
+        const willExpand = !row.classList.contains('expanded');
+        if (willExpand) {
+          const wrapRect = wrap.getBoundingClientRect();
+          row.classList.add('expanded');
+          // Undo the defensive display:none from ensureCalcRowDom so the
+          // (now content-bearing) expanded container is visible.
+          expanded.style.display = '';
+          expanded.style.top = wrapRect.top + 'px';
+          expanded.appendChild(wrap);
+          if (cm) cm.style.width = '720px';
+          if (icon) icon.className = 'fa fa-compress';
+        } else {
+          row.classList.remove('expanded');
+          collapsed.appendChild(wrap);
+          expanded.style.top = '';
+          expanded.style.display = 'none';
+          if (cm) cm.style.width = '100%';
+          if (icon) icon.className = 'fa fa-expand';
+        }
+      },
+    },
+
+    // ─ Calculations: Insert Field dropdown pick ─────────────────────────────
+    {
+      label: 'calculation-insert-field-pick',
+      event: 'click',
+      match: (el) => {
+        const li = el.closest?.('.insert-field-dropdown li[data-value]');
+        return li !== null;
+      },
+      apply: (el) => {
+        const li = el.closest('.insert-field-dropdown li[data-value]');
+        const dropdown = li?.closest('.insert-field-dropdown');
+        const row = li?.closest('.wpforms-field-option-row-calculation_code');
+        if (!li || !row) return;
+        appendCalcFormula(row, li.getAttribute('data-value') || '');
+        dropdown?.classList.add('closed');
+      },
+    },
   ];
 
   function applyPaymentTotalSummary(field, on) {
@@ -4202,6 +5748,198 @@
       });
     }
     if (total) total.style.display = on ? 'none' : '';
+  }
+
+  // ─── Calculations editor helpers ───────────────────────────────────────
+  // Rebuild the visible CodeMirror line span from a raw formula string.
+  // Tokens: $Fxx (cm-variable-2), + − * / (cm-operator), digits (cm-number),
+  // parens + whitespace pass through as text. Real CodeMirror lib isn't
+  // loaded in the snapshot — this is a static visual mirror.
+  function renderCalcCodeMirrorLine(row, value) {
+    const lineSpan = row.querySelector(
+      '.CodeMirror-code pre.CodeMirror-line span[role="presentation"]',
+    );
+    if (!lineSpan) return;
+    const re = /(\$F\d+(?:_\w+)?)|([+\-*/])|(\d+(?:\.\d+)?)|([()])|(\s+)/g;
+    const frag = document.createDocumentFragment();
+    let m;
+    let last = 0;
+    while ((m = re.exec(value)) !== null) {
+      if (m.index > last) {
+        frag.appendChild(document.createTextNode(value.slice(last, m.index)));
+      }
+      if (m[1]) {
+        const s = document.createElement('span');
+        s.className = 'cm-variable-2';
+        s.textContent = m[1];
+        frag.appendChild(s);
+      } else if (m[2]) {
+        const s = document.createElement('span');
+        s.className = 'cm-operator';
+        s.textContent = m[2];
+        frag.appendChild(s);
+      } else if (m[3]) {
+        const s = document.createElement('span');
+        s.className = 'cm-number';
+        s.textContent = m[3];
+        frag.appendChild(s);
+      } else {
+        frag.appendChild(document.createTextNode(m[4] || m[5]));
+      }
+      last = m.index + m[0].length;
+    }
+    if (last < value.length) {
+      frag.appendChild(document.createTextNode(value.slice(last)));
+    }
+    lineSpan.innerHTML = '';
+    lineSpan.appendChild(frag);
+  }
+
+  // Append a token (operator or $Fxx) to the calc formula textarea and
+  // re-render the visible line. Operators get padded with spaces; parens
+  // and field tokens get a leading space if textarea isn't empty.
+  function appendCalcFormula(row, token) {
+    const ta = row.querySelector('textarea.wpforms-codemirror-editor');
+    if (!ta) return;
+    const cur = (ta.value || '').replace(/\s+$/, '');
+    const isOp = /^[+\-*/]$/.test(token);
+    let addition;
+    if (isOp) {
+      addition = (cur ? ' ' : '') + token + ' ';
+    } else if (token === '(' || token === ')') {
+      addition = (cur && !/[\s(]$/.test(cur) ? ' ' : '') + token;
+    } else {
+      addition = (cur ? ' ' : '') + token;
+    }
+    const next = cur + addition;
+    ta.value = next;
+    renderCalcCodeMirrorLine(row, next);
+  }
+
+  // Dummy field roster used in the Insert Field dropdown for every calc row
+  // (Sullie's-bakery context: payment / choice / total field variables).
+  const CALC_DUMMY_FIELDS = [
+    ['$F12', 'Single Item'],
+    ['$F12_amount', 'Single Item (amount)'],
+    ['$F13', 'Checkbox Items'],
+    ['$F13_amount', 'Checkbox Items (amount)'],
+    ['$F13_1', 'Checkbox Items (choice 1)'],
+    ['$F13_2', 'Checkbox Items (choice 2)'],
+    ['$F13_3', 'Checkbox Items (choice 3)'],
+    ['$F5', 'Available Items'],
+    ['$F5_amount', 'Available Items (amount)'],
+    ['$F14', 'Dropdown Items'],
+    ['$F14_amount', 'Dropdown Items (amount)'],
+    ['$F6', 'Total Amount'],
+    ['$F6_amount', 'Total Amount (amount)'],
+  ];
+
+  // Inject a dropdown markup string with the dummy roster baked in.
+  function buildCalcDropdownHTML() {
+    const items = CALC_DUMMY_FIELDS.map(
+      ([val, label]) =>
+        `<li data-value="${val}"><span title="${label}">${label}</span>` +
+        `<span class="grey field-variable">${val}</span></li>`,
+    ).join('');
+    return (
+      '<div class="wpforms-builder-dropdown-list insert-field-dropdown closed" style="top: -178.5px;">' +
+      '<div class="title">Form Fields</div>' +
+      `<ul class="">${items}</ul>` +
+      '<div class="wpforms-no-results">Sorry, no results found</div>' +
+      '</div>'
+    );
+  }
+
+  // Minimal CodeMirror DOM skeleton — enough for renderCalcCodeMirrorLine to
+  // find a `pre.CodeMirror-line span[role="presentation"]` write target.
+  function buildCalcCodeMirrorHTML() {
+    return (
+      '<div class="CodeMirror cm-s-mdn-like">' +
+      '<div class="CodeMirror-scroll" tabindex="-1">' +
+      '<div class="CodeMirror-sizer" style="margin-left: 33px;">' +
+      '<div style="position: relative;">' +
+      '<div class="CodeMirror-lines" role="presentation">' +
+      '<div role="presentation">' +
+      '<div class="CodeMirror-code" role="presentation">' +
+      '<pre class=" CodeMirror-line " role="presentation">' +
+      '<span role="presentation" style="padding-right: 0.1px;"></span>' +
+      '</pre>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '</div>' +
+      '<div class="CodeMirror-gutters" style="height: 40px;">' +
+      '<div class="CodeMirror-gutter CodeMirror-linenumbers" style="width: 32px;"></div>' +
+      '</div>' +
+      '</div>' +
+      '</div>'
+    );
+  }
+
+  // Idempotently inject the Insert Field dropdown + CodeMirror DOM skeleton
+  // into a calculation_code row. Replaces any pre-existing dropdown contents
+  // with the dummy roster so every row presents the same field list.
+  // Also defensively hides the textarea + empty .wpforms-calculations-editor-expanded
+  // sibling (CSS gives that empty div display:block + 360x175 + position:fixed,
+  // so it renders as a phantom rectangle below the live editor unless hidden).
+  function ensureCalcRowDom(row) {
+    if (!row) return;
+    // Ensure CodeMirror DOM exists (fields with toggle off were captured
+    // uninitialized — no CodeMirror node beside the textarea).
+    if (!row.querySelector('.CodeMirror')) {
+      const ta = row.querySelector('textarea.wpforms-codemirror-editor');
+      if (ta) ta.insertAdjacentHTML('afterend', buildCalcCodeMirrorHTML());
+    }
+    // Force textarea hidden (some captures lack the inline display:none).
+    const ta = row.querySelector('textarea.wpforms-codemirror-editor');
+    if (ta) ta.style.display = 'none';
+    // Hide the empty .wpforms-calculations-editor-expanded sibling unless
+    // the row is in expanded mode. Without this it paints as a 360×175
+    // phantom box below the live editor.
+    const expanded = row.querySelector('.wpforms-calculations-editor-expanded');
+    if (expanded && !row.classList.contains('expanded')) {
+      expanded.style.display = 'none';
+    }
+    // Replace existing dropdown (if any) with the dummy-roster version.
+    const existing = row.querySelector('.insert-field-dropdown');
+    if (existing) {
+      existing.outerHTML = buildCalcDropdownHTML();
+    } else {
+      row.insertAdjacentHTML('beforeend', buildCalcDropdownHTML());
+    }
+  }
+
+  function initCalculationFields() {
+    // Sync calculation_code visibility to toggle state + inject dropdown +
+    // CodeMirror skeleton on every calc row. Outside-click closes any open
+    // insert-field-dropdown.
+    document
+      .querySelectorAll('[id$="-calculation_is_enabled"]')
+      .forEach((cb) => {
+        if (!(cb instanceof HTMLInputElement)) return;
+        const fid = getFieldId(cb);
+        if (!fid) return;
+        const codeRow = document.getElementById(
+          `wpforms-field-option-row-${fid}-calculation_code`,
+        );
+        if (!codeRow) return;
+        codeRow.classList.toggle('wpforms-hidden', !cb.checked);
+        ensureCalcRowDom(codeRow);
+      });
+    document.addEventListener(
+      'click',
+      (e) => {
+        const t = e.target;
+        if (!(t instanceof HTMLElement)) return;
+        if (t.closest('.insert-field-dropdown')) return;
+        if (t.closest('.button-insert-field')) return;
+        document
+          .querySelectorAll('.insert-field-dropdown:not(.closed)')
+          .forEach((d) => d.classList.add('closed'));
+      },
+      true,
+    );
   }
 
   function initPaymentTotalSummary() {
@@ -4245,6 +5983,49 @@
     if (!matched) return;
     e.preventDefault();
     dispatch('click', e.target);
+  });
+
+  // ─── Settings block name-edit: commit on Enter or blur ─────────────────
+  function commitSettingsBlockNameEdit(input) {
+    const holder = input.closest('.wpforms-builder-settings-block-name-holder');
+    if (!holder) return;
+    const nameSpan = holder.querySelector('.wpforms-builder-settings-block-name');
+    const editWrap = holder.querySelector('.wpforms-builder-settings-block-name-edit');
+    if (nameSpan) nameSpan.style.display = '';
+    if (editWrap) editWrap.classList.remove('active');
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Enter') return;
+    const t = e.target;
+    if (!(t instanceof HTMLInputElement)) return;
+    if (!t.closest('.wpforms-builder-settings-block-name-edit')) return;
+    e.preventDefault();
+    commitSettingsBlockNameEdit(t);
+  });
+  document.addEventListener('blur', (e) => {
+    const t = e.target;
+    if (!(t instanceof HTMLInputElement)) return;
+    if (!t.closest('.wpforms-builder-settings-block-name-edit')) return;
+    commitSettingsBlockNameEdit(t);
+  }, true);
+
+  // ─── Settings panel Choices dropdowns — close on outside click ────────
+  document.addEventListener('click', (e) => {
+    if (!(e.target instanceof HTMLElement)) return;
+    document.querySelectorAll('#wpforms-panel-settings .choices.is-open').forEach((choices) => {
+      // Skip the form-tags widget (handled separately)
+      if (choices.closest('#wpforms-panel-field-settings-form_tags-wrap')) return;
+      if (choices.contains(e.target)) return;
+      choices.classList.remove('is-open', 'is-flipped');
+      choices.setAttribute('aria-expanded', 'false');
+      const dropdown = choices.querySelector('.choices__list--dropdown');
+      if (dropdown) {
+        dropdown.classList.remove('is-active');
+        dropdown.setAttribute('aria-expanded', 'false');
+      }
+      const fieldRow = choices.closest('.wpforms-panel-field');
+      if (fieldRow) fieldRow.classList.remove('wpf-choices-lifted');
+    });
   });
 
   // ─── Smart Tags dropdown — close on outside click ───────────────────────
@@ -4688,11 +6469,221 @@
     initCouponDropdownOutsideClose();
   }
 
+  // Shared helper — used by initSettingsGeneralTags and the
+  // dropdown-select TRANSITIONS entry.
+  function makeSettingsTagPill(value) {
+    const span = document.createElement('span');
+    span.className = 'tag';
+    span.dataset.value = value;
+    span.textContent = value;
+    const trash = document.createElement('i');
+    trash.className = 'fa fa-times-circle';
+    trash.title = 'Remove tag';
+    span.appendChild(trash);
+    return span;
+  }
+
+  // Settings → General Tags widget. The real plugin uses Choices.js to
+  // manage multi-select tags inline. Snapshots capture the empty Choices
+  // markup; we hydrate it with 1 seeded pill (contact-form) + 2 dropdown
+  // options (high-priority, production), wire focus/blur on the cloned
+  // search input to show/hide the dropdown, and Enter to add a freshly
+  // typed pill. Clicking a dropdown option moves it into the pill list.
+  // Pills use the same blue style as smart-tags pills — that rule is
+  // parent-scoped to .wpforms-smart-tags-widget, so we mirror it onto
+  // .choices__list--multiple via a small injected stylesheet.
+  function initSettingsGeneralTags() {
+    const wrap = document.getElementById('wpforms-panel-field-settings-form_tags-wrap');
+    if (!wrap) return;
+    const list = wrap.querySelector('.choices__list--multiple');
+    const input = wrap.querySelector('.choices__input--cloned');
+    const dropdown = wrap.querySelector('.choices__list--dropdown');
+    const ddList = dropdown?.querySelector('.choices__list');
+    if (!list || !input || !dropdown || !ddList) return;
+
+    if (!document.getElementById('wpf-snap-tags-css')) {
+      const style = document.createElement('style');
+      style.id = 'wpf-snap-tags-css';
+      style.textContent = [
+        '#wpforms-panel-field-settings-form_tags-wrap .choices__inner { padding: 4px 4px 0; }',
+        '#wpforms-panel-field-settings-form_tags-wrap .choices__list--multiple { display: inline; padding: 0; margin: 0 4px 0 0; }',
+        '#wpforms-panel-field-settings-form_tags-wrap .choices__list--multiple .tag {',
+        '  position: relative; display: inline-block; height: 22px;',
+        '  background-color: #036aab; color: #ffffff; border-radius: 2px;',
+        '  font-size: 12px; line-height: 22px; padding: 0 25px 0 7px;',
+        '  margin: 0 4px 4px 0;',
+        '}',
+        '#wpforms-panel-field-settings-form_tags-wrap .choices__list--multiple .tag i {',
+        '  position: absolute; top: 5px; right: 7px;',
+        '  opacity: 0.4; color: #ffffff; cursor: pointer; font-size: 13px;',
+        '}',
+        '#wpforms-panel-field-settings-form_tags-wrap .choices__list--multiple .tag i:hover { opacity: 0.65; }',
+        '#wpforms-panel-field-settings-form_tags-wrap .choices__input--cloned { background: transparent; border: 0; outline: 0; min-width: 80px; font-size: 13px; }',
+        '#wpforms-panel-field-settings-form_tags-wrap .choices__list--dropdown .choices__item--choice {',
+        '  padding: 8px 10px; cursor: pointer; font-size: 13px; color: #1d2327;',
+        '}',
+        '#wpforms-panel-field-settings-form_tags-wrap .choices__list--dropdown .choices__item--choice:hover {',
+        '  background: #f0f0f1;',
+        '}',
+      ].join('\n');
+      document.head.appendChild(style);
+    }
+
+    // Seed once.
+    if (!list.dataset.wpfSeeded) {
+      list.dataset.wpfSeeded = '1';
+      list.appendChild(makeSettingsTagPill('contact-form'));
+      // Populate dropdown options.
+      ddList.innerHTML = '';
+      ['high-priority', 'production'].forEach((v) => {
+        const item = document.createElement('div');
+        item.className = 'choices__item choices__item--selectable choices__item--choice';
+        item.dataset.value = v;
+        item.textContent = v;
+        ddList.appendChild(item);
+      });
+    }
+
+    if (input.dataset.wpfWired) return;
+    input.dataset.wpfWired = '1';
+    const choices = wrap.querySelector('.choices');
+
+    // Native Choices.js classes: .choices.is-open on the wrapper +
+    // .choices__list--dropdown.is-active on the dropdown. The captured
+    // CSS already has `.choices__list--dropdown.is-active { display: block; }`
+    // so toggling these classes (instead of a custom class) wins on
+    // specificity without any extra rule of our own.
+    function showDD() {
+      if (!ddList.querySelector('.choices__item--choice')) return;
+      choices?.classList.add('is-open');
+      dropdown.classList.add('is-active');
+      dropdown.setAttribute('aria-expanded', 'true');
+    }
+    function hideDD() {
+      choices?.classList.remove('is-open');
+      dropdown.classList.remove('is-active');
+      dropdown.setAttribute('aria-expanded', 'false');
+    }
+
+    input.addEventListener('focus', showDD);
+    input.addEventListener('click', showDD);
+    // Clicking anywhere on the .choices__inner row (the box that holds
+    // the pills + input) should focus the input and open the dropdown,
+    // not just the narrow input strip. Skip clicks on existing pills so
+    // the × delete still works.
+    const inner = wrap.querySelector('.choices__inner');
+    if (inner) {
+      inner.addEventListener('click', (e) => {
+        if (e.target === input) return;
+        if (e.target instanceof HTMLElement && e.target.closest('.tag')) return;
+        input.focus();
+        showDD();
+      });
+    }
+    // Blur with a small delay so a click on a dropdown item registers
+    // before the dropdown is torn down.
+    input.addEventListener('blur', () => setTimeout(hideDD, 150));
+
+    input.addEventListener('keydown', (e) => {
+      if (e.key !== 'Enter') return;
+      e.preventDefault();
+      const v = input.value.trim();
+      if (!v) return;
+      list.appendChild(makeSettingsTagPill(v));
+      input.value = '';
+    });
+  }
+
+  // ─── Spam Protection: gate filter message wraps on initial load ────────
+  // The captured snapshot has country/keyword filter message wraps with no
+  // inline display style, but they only become visible once the toggle is
+  // enabled. Set them hidden up-front to match the unchecked initial state.
+  // ─── Spam Protection: keyword list collapsed by default ───────────────
+  // Captured DOM ships the keywords-container expanded; collapse it so the
+  // "Edit keyword list." link reads as a deliberate disclosure.
+  function initSpamKeywordList() {
+    const body = document.querySelector('.wpforms-panel-field-keyword-filter-body');
+    if (!body) return;
+    const container = body.querySelector('.wpforms-panel-field-keyword-filter-keywords-container');
+    const actions = body.querySelector('.wpforms-panel-field-keyword-filter-actions');
+    if (container && !container.style.display) container.style.display = 'none';
+    if (actions) actions.classList.add('wpforms-hidden');
+  }
+
+  function initSpamFilterMessages() {
+    const pairs = [
+      ['wpforms-panel-field-anti_spam-country_filter-enable',
+       'wpforms-panel-field-anti_spam-country_filter-message-wrap'],
+      ['wpforms-panel-field-anti_spam-keyword_filter-enable',
+       'wpforms-panel-field-anti_spam-keyword_filter-message-wrap'],
+    ];
+    for (const [toggleId, wrapId] of pairs) {
+      const t = document.getElementById(toggleId);
+      const w = document.getElementById(wrapId);
+      if (!t || !w) continue;
+      if (!t.checked) w.style.display = 'none';
+    }
+  }
+
+  // ─── Confirmations: TinyMCE iframe → contenteditable shim ──────────────
+  // The snapshot captured an empty <iframe>. Populate its contentDocument
+  // with a minimal HTML doc styled to match the live editor and flip the
+  // body to contenteditable so the user can type into it.
+  function initConfirmationMessageEditors() {
+    const frames = document.querySelectorAll(
+      'iframe[id^="wpforms-panel-field-confirmations-"][id$="-message_ifr"]'
+    );
+    for (const frame of frames) {
+      if (frame.dataset.wpfWired) continue;
+      frame.dataset.wpfWired = '1';
+      try {
+        const doc = frame.contentDocument;
+        if (!doc) continue;
+        const baseFont =
+          "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif";
+        doc.open();
+        doc.write(
+          '<!doctype html><html><head><meta charset="utf-8"><style>' +
+          'html,body{margin:0;padding:0;background:#fff;}' +
+          'body{font-family:' + baseFont + ';font-size:14px;line-height:1.5;color:#23282d;' +
+          'padding:10px;min-height:80px;outline:none;}' +
+          'p{margin:0 0 1em;}' +
+          '</style></head><body contenteditable="true">' +
+          '<p>Thanks for contacting us! We will be in touch with you shortly.</p>' +
+          '</body></html>'
+        );
+        doc.close();
+        // Mirror typing into the backing <textarea> so the value stays in
+        // sync (not strictly needed for snapshots, but cheap).
+        const taId = frame.id.replace(/_ifr$/, '');
+        const ta = document.getElementById(taId);
+        if (ta) {
+          doc.body.addEventListener('input', () => {
+            ta.value = doc.body.innerHTML;
+          });
+        }
+        // Clicking the iframe gives it focus.
+        doc.body.addEventListener('mousedown', () => {
+          try { frame.focus(); } catch (_) {}
+        });
+      } catch (_) {
+        // Cross-origin or sandboxed — ignore silently.
+      }
+    }
+  }
+
   function runInits() {
+    initSuppressWPAdminOverlays();
+    initSettingsGeneralTags();
     initPagebreakBottomDividers();
     initPaymentTotalSummary();
     initCanvasFieldActiveSync();
     initPaymentFields();
+    initCalculationFields();
+    initSettingsCanvasStagger();
+    initSpamFilterMessages();
+    initSpamKeywordList();
+    initConfirmationMessageEditors();
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', runInits);
