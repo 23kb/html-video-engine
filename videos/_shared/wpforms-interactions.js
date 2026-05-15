@@ -142,6 +142,17 @@ export class IframeManager {
     this._settleMode = false;
     this._settleRafHandle = 0;
     this._slot = this._mountSlot();
+    // Default cross-snapshot nav listener. Snapshot interactivity layer
+    // emits `{type:'snapshot:navigate', slug}` when the user clicks the
+    // top panel buttons or the settings left-rail; any video using
+    // IframeManager gets the swap for free.
+    this._onSnapshotNavigate = (e) => {
+      const d = e && e.data;
+      if (!d || d.type !== 'snapshot:navigate' || typeof d.slug !== 'string') return;
+      if (this._slug === d.slug) return;
+      this.loadSnapshot(d.slug);
+    };
+    window.addEventListener('message', this._onSnapshotNavigate);
   }
 
   _mountSlot() {
@@ -456,6 +467,17 @@ export class IframeManager {
    * @returns {string|null} current snapshot slug
    */
   currentSlug() { return this._slug; }
+
+  /**
+   * Public alias for swap(slug). Used by the cross-snapshot postMessage
+   * protocol (`{type:'snapshot:navigate', slug}`) emitted by
+   * snapshots/_shared/interactivity.js so callers don't need to know the
+   * crossfade implementation.
+   * @param {string} slug
+   * @param {Object} [opts]
+   * @returns {Promise<HTMLIFrameElement>}
+   */
+  async loadSnapshot(slug, opts = {}) { return this.swap(slug, opts); }
 
   /**
    * @returns {{w:number,h:number,width:number,height:number}} visible stage viewport
