@@ -182,6 +182,239 @@
     return getField(el)?.dataset.fieldType ?? null;
   }
 
+  // ─── Frontend mirror broadcast (Capability C) ────────────────────────────
+  // Maps TRANSITIONS.label → frontend setting (string for simple, or
+  // { setting, value?(el), meta?(el) } for cases needing a custom extractor).
+  //
+  // Anything not in this table is silent.
+  //
+  // For very complex cases the TRANSITIONS handler itself calls
+  //   broadcastFieldState(label, el, {value, meta, fieldId})
+  // from inside its apply() to override defaults.
+
+  function _extractValue(el) {
+    if (el instanceof HTMLInputElement) {
+      if (el.type === 'checkbox' || el.type === 'radio') return el.checked;
+      return el.value;
+    }
+    if (el instanceof HTMLSelectElement || el instanceof HTMLTextAreaElement) return el.value;
+    return el?.value ?? null;
+  }
+
+  const LABEL_TO_SETTING = {
+    // Phase 2 — universal field options
+    'universal-label': 'label',
+    'universal-required': 'required',
+    'universal-label-hide': 'label-hide',
+    'universal-size': 'size',
+    'universal-placeholder': 'placeholder',
+    'universal-placeholder-subfield': {
+      setting: 'placeholder-subfield',
+      meta: (el) => ({ subfield: el.closest('.wpforms-field-option-row')?.dataset.subfield || null }),
+    },
+    'universal-read-only': 'read-only',
+    'universal-description': 'description',
+    'universal-default-value': {
+      setting: 'default-value',
+      value: (el) => serializeSmartTagsWidget(el),
+    },
+    'universal-sublabel-hide': {
+      setting: 'sublabel-hide',
+      meta: (el) => ({ subfield: el.closest('.wpforms-field-option-row')?.dataset.subfield || null }),
+    },
+    // Phase 3 — choices
+    'choices-label-edit': {
+      setting: 'choice-label',
+      meta: (el) => {
+        const li = el.closest('li');
+        const ul = li?.parentElement;
+        const idx = ul ? Array.from(ul.children).indexOf(li) + 1 : null;
+        return { index: idx };
+      },
+    },
+    'choices-default-toggle': {
+      setting: 'choice-default',
+      meta: (el) => {
+        const li = el.closest('li');
+        const ul = li?.parentElement;
+        const idx = ul ? Array.from(ul.children).indexOf(li) + 1 : null;
+        return { index: idx };
+      },
+    },
+    'choices-add': {
+      setting: 'choice-add',
+      value: () => '',
+      meta: (el) => {
+        const sourceLi = el.closest('a.add')?.closest('li');
+        const ul = sourceLi?.parentElement;
+        if (!ul || !sourceLi) return { index: null };
+        const newLi = sourceLi.nextElementSibling;
+        const idx = newLi ? Array.from(ul.children).indexOf(newLi) + 1 : null;
+        return { index: idx };
+      },
+    },
+    'choices-remove': {
+      setting: 'choice-remove',
+      value: () => null,
+      fieldId: (el) => el.closest('a.remove')?.dataset.wpfFieldId || null,
+      meta: (el) => {
+        const anchor = el.closest('a.remove');
+        const idx = anchor?.dataset.wpfRemovedIndex;
+        return { index: idx != null ? parseInt(idx, 10) || null : null };
+      },
+    },
+    'choices-layout': 'choices-layout',
+    'choices-other-toggle': 'choices-other',
+    'choices-other-placeholder': 'choices-other-placeholder',
+    'dropdown-style': 'dropdown-style',
+    'dropdown-multiple': 'dropdown-multiple',
+    // Phase 3 — date/time
+    'date-format': 'date-format',
+    'time-format': 'time-format',
+    'date-placeholder': 'date-placeholder',
+    'time-placeholder': 'time-placeholder',
+    'date-type': 'date-type',
+    // Phase 3 — slider
+    'slider-default': 'slider-default',
+    'slider-min': 'slider-min',
+    'slider-max': 'slider-max',
+    'slider-step': 'slider-step',
+    'slider-value-display': 'slider-value-display',
+    // Phase 3 — rating
+    'rating-scale': { setting: 'rating-scale', value: (el) => parseInt(el.value, 10) || 5 },
+    'rating-icon': 'rating-icon',
+    'rating-icon-size': 'rating-icon-size',
+    'rating-icon-color': 'rating-icon-color',
+    'rating-label-position': 'rating-label-position',
+    'rating-edge-label': {
+      setting: 'rating-edge-label',
+      meta: (el) => ({
+        edge: (el.id || '').endsWith('-highest_label') ? 'highest' : 'lowest',
+      }),
+    },
+    // Phase 3 — phone / address / name
+    'phone-format': 'phone-format',
+    'address-scheme': 'address-scheme',
+    'address-subfield-hide': {
+      setting: 'address-subfield-hide',
+      meta: (el) => ({ subfield: el.closest('.wpforms-field-option-row')?.dataset.subfield || null }),
+    },
+    'name-subfield-default': 'name-format',
+    // Phase 3 — number
+    'number-min-max': {
+      setting: 'number-min-max',
+      value: () => null,
+      meta: (el) => {
+        const row = el.closest('.wpforms-field-option-row');
+        const min = row?.querySelector('input.wpforms-numbers-min')?.value;
+        const max = row?.querySelector('input.wpforms-numbers-max')?.value;
+        return {
+          min: min != null && min !== '' ? parseFloat(min) : null,
+          max: max != null && max !== '' ? parseFloat(max) : null,
+        };
+      },
+    },
+    // Phase 3 — divider / pagebreak / html / content
+    'divider-hide-line': 'divider-hide-line',
+    'pagebreak-title': 'pagebreak-title',
+    'pagebreak-indicator': 'pagebreak-indicator',
+    'pagebreak-progress-text': 'pagebreak-progress-text',
+    'pagebreak-indicator-color': 'pagebreak-indicator-color',
+    'pagebreak-nav-align': 'pagebreak-nav-align',
+    'html-field-code': 'html-code',
+    'content-field': 'content-html',
+    // Phase 3 — email confirmation
+    'email-confirmation-placeholder': 'email-confirmation-placeholder',
+    // Phase 4 — payments
+    'payment-single-price': 'payment-price',
+    'payment-single-price-label': 'payment-price-label',
+    'payment-single-format': 'payment-format',
+    'payment-single-min-price': 'payment-min-price',
+    'payment-enable-quantity': 'payment-quantity-toggle',
+    'payment-choices-show-price-toggle': 'payment-choices-show-price',
+    'payment-choices-price-input': {
+      setting: 'payment-choice-price',
+      meta: (el) => {
+        const li = el.closest('li');
+        const ul = li?.parentElement;
+        const idx = ul ? Array.from(ul.children).indexOf(li) + 1 : null;
+        return { index: idx };
+      },
+    },
+    'payment-coupon-button-text': 'coupon-button-text',
+    'payment-total-summary-toggle': 'payment-total-summary',
+    // Phase 4 — file upload
+    'file-upload-style': 'file-upload-style',
+    'file-upload-max': 'file-upload-max',
+    'file-upload-camera-enabled': 'file-upload-camera',
+    // Phase 4 — richtext
+    'richtext-style': 'richtext-style',
+    'richtext-media-enabled': 'richtext-media',
+    // Phase 4 — repeater
+    'repeater-display': 'repeater-display',
+    'repeater-button-type': 'repeater-button-type',
+    'repeater-button-add-label': 'repeater-button-add-label',
+    'repeater-button-remove-label': 'repeater-button-remove-label',
+    'repeater-rows-limit': 'repeater-rows-limit',
+    // Phase 4 — layout
+    'layout-preset': 'layout-preset',
+    'layout-display': 'layout-display',
+    // Phase 4 — likert
+    'likert-style': 'likert-style',
+    'likert-single-row-toggle': 'likert-single-row',
+    'likert-multiple-responses-toggle': 'likert-multiple-responses',
+    // Phase 4 — NPS
+    'nps-edge-labels': {
+      setting: 'nps-edge-labels',
+      meta: (el) => ({
+        edge: el.closest('.wpforms-field-option-row-highest_label') ? 'highest' : 'lowest',
+      }),
+    },
+    'nps-style': 'nps-style',
+    // Phase 4 — image choices
+    'image-choices-toggle': 'image-choices',
+    'image-choices-style': 'image-choices-style',
+    // Phase 4 — icon choices
+    'icon-choices-toggle': 'icon-choices',
+    'icon-choices-style': 'icon-choices-style',
+    'icon-choices-color': 'icon-choices-color',
+    'icon-choices-size': 'icon-choices-size',
+    // Phase 4 — signature
+    'signature-ink-color': 'signature-ink-color',
+    // Phase 4 — password
+    'password-strength': 'password-strength',
+    // Phase 4 — checkbox disclaimer
+    'checkbox-disclaimer': 'checkbox-disclaimer',
+  };
+
+  function broadcastFieldState(label, el, opts) {
+    const entry = LABEL_TO_SETTING[label];
+    if (!entry) return;
+    const setting = typeof entry === 'string' ? entry : entry.setting;
+    if (!setting) return;
+    let fieldId;
+    if (opts && opts.fieldId != null) fieldId = opts.fieldId;
+    else if (typeof entry === 'object' && typeof entry.fieldId === 'function') fieldId = entry.fieldId(el);
+    else fieldId = getFieldId(el);
+    if (fieldId == null || fieldId === '') return;
+    let value;
+    if (opts && 'value' in opts) value = opts.value;
+    else if (typeof entry === 'object' && typeof entry.value === 'function') value = entry.value(el);
+    else value = _extractValue(el);
+    let meta = (opts && opts.meta) || null;
+    if (!meta && typeof entry === 'object' && typeof entry.meta === 'function') meta = entry.meta(el);
+    const msg = { type: 'wpf:field-state', fieldId: String(fieldId), setting, value };
+    if (meta) msg.meta = meta;
+    try {
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage(msg, '*');
+      }
+      if (window.top && window.top !== window && window.top !== window.parent) {
+        window.top.postMessage(msg, '*');
+      }
+    } catch (_) { /* cross-origin parent — silent */ }
+  }
+
   // Re-render a number-slider hint by splicing the current value into the
   // data-hint template at the {value} marker, wrapped in <b>. Uses DOM
   // construction (not innerHTML) so user-supplied templates can't inject
@@ -423,6 +656,33 @@
     // dispatches the picker. Without this, first-click can anchor stale.
     void native.offsetHeight;
     return native;
+  }
+
+  // ─── AI Builder helpers ──────────────────────────────────────────────
+  // Sample prompts arrive encoded in the data-prompt attribute with HTML
+  // entity escapes (&amp;quot; &amp;#039;) — decode them so the textarea
+  // shows real punctuation.
+  function decodeAiPrompt(raw) {
+    if (!raw) return '';
+    const ta = document.createElement('textarea');
+    ta.innerHTML = raw;
+    // Two-pass: data-prompt was double-escaped at capture time.
+    ta.innerHTML = ta.value;
+    return ta.value;
+  }
+  // Toggle the send button's "ready" visual based on whether the textarea
+  // has any non-whitespace content. The CSS already styles disabled state
+  // via [disabled]; we mirror that with the attribute.
+  function updateAiSendState(ta) {
+    const send = document.querySelector('.wpforms-ai-chat-send');
+    if (!send) return;
+    if ((ta.value || '').trim().length > 0) {
+      send.removeAttribute('disabled');
+      send.classList.add('is-ready');
+    } else {
+      send.setAttribute('disabled', '');
+      send.classList.remove('is-ready');
+    }
   }
 
   // ─── Themes panel helpers ────────────────────────────────────────────
@@ -1167,9 +1427,14 @@
 
   const PANEL_SNAPSHOT_MAP = {
     settings: 'builder-settings-general',
+    providers: 'builder-providers',
+    payments: 'builder-payments',
     // fields: resolved dynamically via sessionStorage (see apply below)
-    // providers / payments / revisions: not yet captured — no-op
+    // revisions: not yet captured — no-op
   };
+
+  const AI_EMPTY_SLUG = 'wpforms-ai-builder-empty';
+  const AI_GENERATED_SLUG = 'wpforms-ai-builder-feedback-generated';
 
   const SETTINGS_SECTION_SNAPSHOT_MAP = {
     general: 'builder-settings-general',
@@ -1177,7 +1442,76 @@
     themes: 'builder-settings-themes',
     notifications: 'builder-settings-notifications',
     confirmation: 'builder-settings-confirmation',
+    // Storage providers — Add-New-Connection flow, mirror of Marketing
+    // panel addons but rendered inside #wpforms-panel-settings.
+    dropbox: 'builder-settings-dropbox',
+    'google-drive': 'builder-settings-google-drive',
+    'google-sheets': 'builder-settings-google-sheets',
+    'google-calendar': 'builder-settings-google-calendar',
+    airtable: 'builder-settings-airtable',
+    notion: 'builder-settings-notion',
+    // Form-level addons — main "Enable X" toggle plus gated subsections.
+    entry_automation: 'builder-settings-entry_automation',
+    pdf: 'builder-settings-pdf',
+    surveys_polls: 'builder-settings-surveys_polls',
+    conversational_forms: 'builder-settings-conversational_forms',
+    form_locker: 'builder-settings-form_locker',
+    save_resume: 'builder-settings-save_resume',
+    webhooks: 'builder-settings-webhooks',
   };
+
+  // Storage providers under #wpforms-panel-settings that have a captured
+  // `builder-settings-<slug>-connection` fossil. Drives the Add-New-
+  // Connection modal cross-snap when the click originates in the
+  // Settings panel rather than the Marketing panel.
+  const SETTINGS_CONNECTION_SNAPSHOTS = new Set([
+    'dropbox',
+    'google-drive',
+    'google-sheets',
+    'google-calendar',
+    'airtable',
+    'notion',
+  ]);
+
+  // Builder Marketing panel sidebar → snapshot routing. Each captured
+  // first-party provider has its own landing snapshot so clicking the
+  // sidebar item swaps to a fresh-state capture (smoother than in-place
+  // toggling for video framing). Sections not in the map (storage
+  // providers without landings yet, education-modal upsells) fall back
+  // to the in-place DOM swap inside builder-providers-section-nav.
+  const PROVIDERS_SECTION_SNAPSHOT_MAP = {
+    activecampaign: 'builder-providers-activecampaign',
+    aweber_v2: 'builder-providers-aweber_v2',
+    'constant-contact-v3': 'builder-providers-constant-contact-v3',
+    convertkit: 'builder-providers-convertkit',
+    drip: 'builder-providers-drip',
+    hubspot: 'builder-providers-hubspot',
+    klaviyo: 'builder-providers-klaviyo',
+    mailchimpv3: 'builder-providers-mailchimpv3',
+    n8n: 'builder-providers-n8n',
+    pipedrive: 'builder-providers-pipedrive',
+    slack: 'builder-providers-slack',
+    twilio: 'builder-providers-twilio',
+  };
+
+  // Marketing addons with a captured `builder-providers-<slug>-connection`
+  // fossil. The Add-New-Connection modal cross-snaps to one of these on
+  // OK; addons missing here silently close the modal (no captured
+  // connection panel to cross-snap to).
+  const PROVIDERS_CONNECTION_SNAPSHOTS = new Set([
+    'activecampaign',
+    'aweber_v2',
+    'constant-contact-v3',
+    'convertkit',
+    'drip',
+    'hubspot',
+    'klaviyo',
+    'mailchimpv3',
+    'n8n',
+    'pipedrive',
+    'slack',
+    'twilio',
+  ]);
 
   function getCurrentSnapshotSlug() {
     const m = (window.location.pathname || '').match(/\/snapshots\/([^/]+)\//);
@@ -1193,14 +1527,24 @@
   // exposes them.
   function initSuppressWPAdminOverlays() {
     if (document.getElementById('wpf-snap-suppress-wp-overlays')) return;
+    // On admin-* snapshots (real WP-admin pages — Settings, Forms list,
+    // Entries, Integrations, etc.), keep the WP sidebar visible — it's
+    // part of the captured surface and the video tool wants to show it.
+    // On builder-* / non-admin snapshots, hide the WP chrome since the
+    // builder paints the full viewport and the chrome would only peek
+    // through during cross-snapshot fades.
+    const slug = getCurrentSnapshotSlug() || '';
+    const isAdmin = /^admin-/.test(slug);
     const style = document.createElement('style');
     style.id = 'wpf-snap-suppress-wp-overlays';
     style.textContent = [
       '#wp-auth-check-wrap,',
       '#wp-auth-check-frame,',
       '#wpadminbar,',
-      '#adminmenuwrap,',
-      '#adminmenuback,',
+      // The admin sidebar (#adminmenuwrap / #adminmenuback) is only
+      // hidden on non-admin snapshots; admin pages keep their nav.
+      isAdmin ? '' : '#adminmenuwrap,',
+      isAdmin ? '' : '#adminmenuback,',
       '#wpfooter { display: none !important; }',
       // The WP admin body normally reserves room for #wpadminbar via a
       // margin/padding-top. Reset so nothing shifts.
@@ -1241,6 +1585,42 @@
   // IframeManager.swap which has its own crossfade.
 
   let spaSwapping = false;
+
+  // True when value is an absolute URL, root-relative path, anchor,
+  // data: URI, or one of the other forms that should NOT be prefixed
+  // with the target snapshot directory.
+  function spaIsAbsoluteOrSpecial(v) {
+    return /^(?:[a-z][a-z0-9+.\-]*:|\/\/|\/|#|data:|mailto:|tel:|javascript:)/i.test(v);
+  }
+
+  // Prefix every relative attribute (src/href/data-src/poster) on every
+  // element under `root` with `targetDir`, and rewrite any inline-style
+  // url() refs the same way. Skips absolute/scheme/anchor/data URLs.
+  function spaRewriteRelativeUrls(root, targetDir) {
+    const ATTRS = ['src', 'href', 'data-src', 'poster'];
+    const all = root.querySelectorAll('*');
+    for (const el of all) {
+      for (const a of ATTRS) {
+        const v = el.getAttribute(a);
+        if (!v || spaIsAbsoluteOrSpecial(v)) continue;
+        el.setAttribute(a, targetDir + v);
+      }
+      const inline = el.getAttribute('style');
+      if (inline && inline.indexOf('url(') >= 0) {
+        const rewritten = spaRewriteCssUrls(inline, targetDir);
+        if (rewritten !== inline) el.setAttribute('style', rewritten);
+      }
+    }
+  }
+
+  // Rewrite every url(...) reference in a CSS text blob unless it's
+  // already absolute, root-relative, an anchor, or a data: URI.
+  function spaRewriteCssUrls(css, targetDir) {
+    return css.replace(
+      /url\(\s*(['"]?)([^'")]+)\1\s*\)/gi,
+      (m, q, u) => (spaIsAbsoluteOrSpecial(u) ? m : 'url(' + q + targetDir + u + q + ')')
+    );
+  }
 
   function navigateToSnapshot(slug) {
     if (!slug) return;
@@ -1298,6 +1678,16 @@
         const newSurface = newDoc.querySelector(SPA_SURFACE_SELECTOR);
         if (!newSurface) { reject(new Error('no surface in new doc')); return; }
 
+        // Rewrite relative URLs (assets/*, etc.) in the new surface and in
+        // any inline <style> blocks we're about to import so they resolve
+        // against the TARGET snapshot's directory rather than the live
+        // document's URL. Without this, every <img>/<link>/url() in the
+        // freshly-parsed DOM 404s during the brief window between the
+        // surface swap and the history.pushState call — which is the
+        // entire reason a hard refresh "fixes" the page.
+        const targetDir = target.slice(0, target.lastIndexOf('/') + 1);
+        spaRewriteRelativeUrls(newSurface, targetDir);
+
         // Merge any inline <style> blocks from the new head that aren't
         // already in ours. Settings snapshots share a baseline of CSS, but
         // some have section-specific inline rules — without these the
@@ -1309,7 +1699,12 @@
         newDoc.head.querySelectorAll('style').forEach((s) => {
           const key = s.textContent.length + ':' + s.textContent.slice(0, 80);
           if (have.has(key)) return;
-          document.head.appendChild(s.cloneNode(true));
+          const clone = s.cloneNode(true);
+          // Same fix for url(...) refs inside imported stylesheets.
+          if (clone.textContent && clone.textContent.indexOf('url(') >= 0) {
+            clone.textContent = spaRewriteCssUrls(clone.textContent, targetDir);
+          }
+          document.head.appendChild(clone);
         });
 
         // Swap. New surface starts at the same blurred floor as the
@@ -2044,6 +2439,11 @@
         const canvasUl = field.querySelector('ul.primary-input');
         const canvasSelect = field.querySelector('select.primary-input');
         const idx = Array.from(optionUl.children).indexOf(optionLi);
+        // Stash on the anchor so the frontend-mirror broadcast (fired right
+        // after apply, by which time the anchor's option-row ancestor is
+        // detached) can read the index AND field id.
+        anchor.dataset.wpfRemovedIndex = String(idx + 1);
+        anchor.dataset.wpfFieldId = String(field.dataset.fieldId || '');
         if (canvasSelect) {
           const offset = canvasSelect.querySelector('option[data-placeholder="1"]') ? 1 : 0;
           canvasSelect.children[idx + offset]?.remove();
@@ -5267,6 +5667,165 @@
       },
     },
 
+    // ─ AI Choices: Generate Choices button → open prompt modal ─────────
+    {
+      label: 'ai-choices-open',
+      event: 'click',
+      match: (el) => el.closest?.('.wpforms-ai-choices-button') !== null,
+      apply: (el) => {
+        const btn = el.closest('.wpforms-ai-choices-button');
+        const fid = btn.getAttribute('data-field-id');
+        if (!fid) return;
+        openAiChoicesModal(fid);
+      },
+    },
+
+    // ─ AI Builder: sample-prompt click → seed textarea ─────────────────
+    // Each <li data-prompt> wraps an anchor. data-prompt is either the
+    // full prompt payload (quizzes) or empty (use the link's label as
+    // the prompt). Skipping the link's default href navigation is handled
+    // by the click delegator's preventDefault.
+    {
+      label: 'ai-chat-sample-prompt',
+      event: 'click',
+      match: (el) =>
+        el.closest?.('.wpforms-ai-chat-welcome-screen-sample-prompts li') !== null,
+      apply: (el) => {
+        const li = el.closest('.wpforms-ai-chat-welcome-screen-sample-prompts li');
+        const payload = li.getAttribute('data-prompt') || '';
+        const linkText = (li.querySelector('a')?.textContent || '').trim();
+        const prompt = (payload && payload.length > 0) ? decodeAiPrompt(payload) : linkText;
+        const ta = document.querySelector(
+          '.wpforms-ai-chat-message-input textarea'
+        );
+        if (!ta) return;
+        ta.value = prompt;
+        ta.focus();
+        updateAiSendState(ta);
+      },
+    },
+
+    // ─ AI Builder: textarea input → enable/disable send button ─────────
+    {
+      label: 'ai-chat-textarea-input',
+      event: 'input',
+      match: (el) =>
+        el instanceof HTMLTextAreaElement &&
+        el.closest('.wpforms-ai-chat-message-input') !== null,
+      apply: (el) => updateAiSendState(el),
+    },
+
+    // ─ AI Builder (empty state): Send → navigate to generated state ────
+    // Brief "generating…" beat: swap send → stop, wait ~700ms, cross-
+    // snapshot navigate to the generated state which already contains
+    // the chat history + previewed fields.
+    {
+      label: 'ai-chat-send-empty',
+      event: 'click',
+      match: (el) => {
+        if (!el.closest?.('.wpforms-ai-chat-send')) return false;
+        return getCurrentSnapshotSlug() === AI_EMPTY_SLUG;
+      },
+      apply: (el) => {
+        const ta = document.querySelector(
+          '.wpforms-ai-chat-message-input textarea'
+        );
+        if (!ta || !ta.value.trim()) return;
+        const send = document.querySelector('.wpforms-ai-chat-send');
+        const stop = document.querySelector('.wpforms-ai-chat-stop');
+        if (send) send.classList.add('wpforms-hidden');
+        if (stop) stop.classList.remove('wpforms-hidden');
+        // Persist the question so the next snapshot could read it later
+        // if we wanted to overwrite the captured question (not used now).
+        try { sessionStorage.setItem('wpf:aiLastPrompt', ta.value); } catch (_) {}
+        setTimeout(() => navigateToSnapshot(AI_GENERATED_SLUG), 720);
+      },
+    },
+
+    // ─ AI Builder (empty state): Stop button → cancel "generating" ─────
+    {
+      label: 'ai-chat-stop-empty',
+      event: 'click',
+      match: (el) => {
+        if (!el.closest?.('.wpforms-ai-chat-stop')) return false;
+        return getCurrentSnapshotSlug() === AI_EMPTY_SLUG;
+      },
+      apply: () => {
+        const send = document.querySelector('.wpforms-ai-chat-send');
+        const stop = document.querySelector('.wpforms-ai-chat-stop');
+        if (send) send.classList.remove('wpforms-hidden');
+        if (stop) stop.classList.add('wpforms-hidden');
+      },
+    },
+
+    // ─ AI Builder (generated state): Send → re-generate (no-op visual) ─
+    // For snapshot demo, re-clicking Send while in generated state just
+    // briefly flashes the stop button then returns. Real plugin would
+    // append a new question/answer pair.
+    {
+      label: 'ai-chat-send-generated',
+      event: 'click',
+      match: (el) => {
+        if (!el.closest?.('.wpforms-ai-chat-send')) return false;
+        return getCurrentSnapshotSlug() === AI_GENERATED_SLUG;
+      },
+      apply: () => {
+        const send = document.querySelector('.wpforms-ai-chat-send');
+        const stop = document.querySelector('.wpforms-ai-chat-stop');
+        if (send) send.classList.add('wpforms-hidden');
+        if (stop) stop.classList.remove('wpforms-hidden');
+        setTimeout(() => {
+          if (send) send.classList.remove('wpforms-hidden');
+          if (stop) stop.classList.add('wpforms-hidden');
+        }, 720);
+      },
+    },
+
+    // ─ AI Builder (generated state): Use This Form → builder-fields ────
+    {
+      label: 'ai-chat-use-form',
+      event: 'click',
+      match: (el) => el.closest?.('.wpforms-ai-chat-use-form') !== null,
+      apply: () => {
+        let last = null;
+        try { last = sessionStorage.getItem(FIELDS_RETURN_KEY); } catch (_) {}
+        navigateToSnapshot(last || 'builder-fields');
+      },
+    },
+
+    // ─ AI Builder (generated state): Dislike → toggle "disliked" mark ──
+    {
+      label: 'ai-chat-dislike',
+      event: 'click',
+      match: (el) =>
+        el.closest?.('.wpforms-ai-chat-answer-button.dislike') !== null,
+      apply: (el) => {
+        const btn = el.closest('.wpforms-ai-chat-answer-button.dislike');
+        btn.classList.toggle('is-active');
+      },
+    },
+
+    // ─ AI Builder (generated state): Refresh / Clear chat → back to empty
+    {
+      label: 'ai-chat-refresh',
+      event: 'click',
+      match: (el) =>
+        el.closest?.('.wpforms-ai-chat-answer-button.refresh') !== null,
+      apply: () => {
+        try { sessionStorage.removeItem('wpf:aiLastPrompt'); } catch (_) {}
+        navigateToSnapshot(AI_EMPTY_SLUG);
+      },
+    },
+
+    // ─ AI Builder: Back to Templates button → setup snapshot ───────────
+    {
+      label: 'ai-chat-back-to-templates',
+      event: 'click',
+      match: (el) =>
+        el.closest?.('.wpforms-btn-back-to-templates') !== null,
+      apply: () => navigateToSnapshot('builder-setup'),
+    },
+
     // ─ Confirmations: type select → show/hide sub-field wraps ──────────
     // Three modes: message / page / redirect. The wraps are already in
     // the DOM, just toggle inline display.
@@ -5737,7 +6296,1186 @@
         dropdown?.classList.add('closed');
       },
     },
+
+    // ─ Admin → Settings → Integrations: universal row accordion ─────────
+    // Click any provider row header to expand/collapse its accounts body.
+    // Animates height + opacity (260ms ease-out). Promo / education-modal
+    // rows (which have no accounts body in their markup) are silently
+    // skipped.
+    {
+      label: 'settings-integrations-row-toggle',
+      event: 'click',
+      match: (el) => {
+        const header = el.closest?.(
+          '.wpforms-settings-provider-header[data-provider]'
+        );
+        if (!header) return false;
+        return header.closest('#wpforms-settings-providers') !== null;
+      },
+      apply: (el) => {
+        const header = el.closest(
+          '.wpforms-settings-provider-header[data-provider]'
+        );
+        const row = header.parentElement;
+        const body = row?.querySelector(
+          '.wpforms-settings-provider-accounts[id^="provider-"]'
+        );
+        if (!body) return; // promo / info-only row — no accordion
+        const chevron = header.querySelector(
+          '.wpforms-settings-provider-logo .fa'
+        );
+        // Avoid double-firing while a previous toggle is mid-animation.
+        if (body.dataset.wpfAccordionAnimating === '1') return;
+        const isOpen = body.style.display === 'block';
+
+        const DURATION_MS = 260;
+        const EASE = 'cubic-bezier(0.22, 0.61, 0.36, 1)';
+
+        if (isOpen) {
+          // Collapse: measure current height, then animate to 0.
+          const startH = body.scrollHeight;
+          body.style.overflow = 'hidden';
+          body.style.height = startH + 'px';
+          body.style.opacity = '1';
+          body.style.transition =
+            'height ' + DURATION_MS + 'ms ' + EASE +
+            ', opacity ' + (DURATION_MS - 60) + 'ms ease-out';
+          body.dataset.wpfAccordionAnimating = '1';
+          // Commit the initial state before flipping to 0.
+          // eslint-disable-next-line no-unused-expressions
+          body.offsetHeight;
+          requestAnimationFrame(() => {
+            body.style.height = '0px';
+            body.style.opacity = '0';
+          });
+          setTimeout(() => {
+            body.style.display = '';
+            body.style.height = '';
+            body.style.opacity = '';
+            body.style.overflow = '';
+            body.style.transition = '';
+            delete body.dataset.wpfAccordionAnimating;
+          }, DURATION_MS + 20);
+        } else {
+          // Expand: show first, measure target height, animate from 0.
+          body.style.display = 'block';
+          body.style.overflow = 'hidden';
+          body.style.height = '0px';
+          body.style.opacity = '0';
+          body.style.transition =
+            'height ' + DURATION_MS + 'ms ' + EASE +
+            ', opacity ' + (DURATION_MS - 60) + 'ms ease-out';
+          const targetH = body.scrollHeight;
+          body.dataset.wpfAccordionAnimating = '1';
+          // eslint-disable-next-line no-unused-expressions
+          body.offsetHeight;
+          requestAnimationFrame(() => {
+            body.style.height = targetH + 'px';
+            body.style.opacity = '1';
+          });
+          setTimeout(() => {
+            // Clear inline height so the body can resize naturally as
+            // its contents change (e.g. user expands the Add New Account
+            // form inside it).
+            body.style.height = '';
+            body.style.opacity = '';
+            body.style.overflow = '';
+            body.style.transition = '';
+            delete body.dataset.wpfAccordionAnimating;
+          }, DURATION_MS + 20);
+        }
+
+        if (chevron) {
+          chevron.classList.toggle('fa-chevron-right', isOpen);
+          chevron.classList.toggle('fa-chevron-down', !isOpen);
+        }
+      },
+    },
+
+    // ─ Admin → Integrations: Add New Account toggle ─────────────────────
+    // For rows with an inline API-key form, toggle its visibility with a
+    // staggered field-by-field reveal (fade + 6px slide-up, 70ms between
+    // each form row). OAuth rows (Constant Contact, Dropbox, Airtable,
+    // Google *) have no .wpforms-settings-provider-accounts-connect
+    // element — clicking their "Add New Account" link is a deliberate
+    // no-op (would normally open a popup / redirect; not simulated in
+    // snapshot interactivity).
+    {
+      label: 'settings-integrations-add-account-toggle',
+      event: 'click',
+      match: (el) => {
+        const link = el.closest?.(
+          '.wpforms-settings-provider-accounts-toggle a[data-provider]'
+        );
+        if (!link) return false;
+        return link.closest('#wpforms-settings-providers') !== null;
+      },
+      apply: (el) => {
+        const link = el.closest(
+          '.wpforms-settings-provider-accounts-toggle a[data-provider]'
+        );
+        const row = link.closest('.wpforms-settings-provider');
+        const form = row?.querySelector(
+          '.wpforms-settings-provider-accounts-connect'
+        );
+        if (!form) return; // OAuth row → no-op
+        const isOpen = form.style.display === 'block';
+        if (isOpen) {
+          form.style.display = '';
+          return;
+        }
+        // Reveal: collect inner items, set initial hidden state, then
+        // stagger them in via CSS transition on the next frame.
+        form.style.display = 'block';
+        const items = Array.from(
+          form.querySelectorAll(
+            '.wpforms-settings-provider-accounts-connect-general-description,' +
+              ' .wpforms-settings-provider-accounts-connect-fields > p,' +
+              ' button.wpforms-settings-provider-connect'
+          )
+        );
+        for (const it of items) {
+          it.style.opacity = '0';
+          it.style.transform = 'translateY(6px)';
+          it.style.transition =
+            'opacity 220ms ease-out, transform 220ms ease-out';
+        }
+        // Force a layout read so the initial state is committed before we
+        // remove the inline styles in the next frame.
+        // eslint-disable-next-line no-unused-expressions
+        form.offsetHeight;
+        requestAnimationFrame(() => {
+          items.forEach((it, i) => {
+            it.style.transitionDelay = i * 70 + 'ms';
+            it.style.opacity = '';
+            it.style.transform = '';
+          });
+          // Clean up the inline transition props after the animation
+          // settles so subsequent interactions aren't impacted.
+          const totalMs = 220 + items.length * 70 + 60;
+          setTimeout(() => {
+            for (const it of items) {
+              it.style.transition = '';
+              it.style.transitionDelay = '';
+            }
+          }, totalMs);
+        });
+      },
+    },
+
+    // ─ Admin → Integrations: Connect submit → fake-connect ─────────────
+    // Reads api_key + optional account_name from the inline form, appends
+    // a connected <li> to the accounts list, hides the form, clears the
+    // inputs. Deterministic per-click index keeps the disconnect key
+    // stable across re-renders.
+    {
+      label: 'settings-integrations-connect-submit',
+      event: 'click',
+      match: (el) => {
+        const btn = el.closest?.(
+          'button.wpforms-settings-provider-connect[data-provider]'
+        );
+        if (!btn) return false;
+        return btn.closest('#wpforms-settings-providers') !== null;
+      },
+      apply: (el) => {
+        const btn = el.closest(
+          'button.wpforms-settings-provider-connect[data-provider]'
+        );
+        const provider = btn.dataset.provider || '';
+        const row = btn.closest('.wpforms-settings-provider');
+        const form = btn.closest('.wpforms-settings-provider-accounts-connect');
+        const list = row?.querySelector(
+          '.wpforms-settings-provider-accounts-list ul'
+        );
+        if (!list || !form) return;
+        const nameInput = form.querySelector('input[name="account_name"]');
+        const rawLabel = (nameInput?.value || '').trim();
+        const fallback = provider
+          ? provider.charAt(0).toUpperCase() + provider.slice(1) + ' Account'
+          : 'Account';
+        const label = rawLabel || fallback;
+        SETTINGS_INT_CONNECT_COUNTER += 1;
+        const key =
+          'snap' + SETTINGS_INT_CONNECT_COUNTER.toString(36).padStart(6, '0');
+        const li = document.createElement('li');
+        const labelSpan = document.createElement('span');
+        labelSpan.className = 'label';
+        labelSpan.textContent = label;
+        const dateSpan = document.createElement('span');
+        dateSpan.className = 'date';
+        dateSpan.textContent = 'Connected on: May 16, 2026';
+        const removeSpan = document.createElement('span');
+        removeSpan.className = 'remove';
+        const removeA = document.createElement('a');
+        removeA.href = '#';
+        removeA.setAttribute('data-provider', provider);
+        removeA.setAttribute('data-key', key);
+        removeA.textContent = 'Disconnect';
+        removeSpan.appendChild(removeA);
+        li.appendChild(labelSpan);
+        li.appendChild(dateSpan);
+        li.appendChild(removeSpan);
+        list.appendChild(li);
+        form.querySelectorAll('input').forEach((i) => {
+          i.value = '';
+        });
+        form.style.display = '';
+      },
+    },
+
+    // ─ Builder Marketing sidebar → section swap ─────────────────────────
+    // Default behavior: in-place DOM swap (hide current active section,
+    // show target). The base builder-providers snapshot contains every
+    // first-party provider panel in the DOM (display:none siblings) —
+    // same fossil layout as admin Integrations, so per-provider
+    // snapshots aren't needed.
+    //
+    // PROVIDERS_SECTION_SNAPSHOT_MAP is an opt-in override: if a section
+    // is registered there, navigate cross-snapshot instead (useful when
+    // a video wants to land on a fresh-state capture). Sections that are
+    // neither in the DOM nor in the map silently no-op.
+    {
+      label: 'builder-providers-section-nav',
+      event: 'click',
+      match: (el) => {
+        const link = el.closest?.('.wpforms-panel-sidebar-section[data-section]');
+        if (!link) return false;
+        if (link.classList.contains('education-modal')) return false;
+        if (link.classList.contains('active')) return false;
+        return link.closest('#wpforms-panel-providers') !== null;
+      },
+      apply: (el) => {
+        const link = el.closest('.wpforms-panel-sidebar-section[data-section]');
+        const section = link.dataset.section;
+
+        // Opt-in cross-snapshot nav.
+        const slug = PROVIDERS_SECTION_SNAPSHOT_MAP[section];
+        if (slug) {
+          navigateToSnapshot(slug);
+          return;
+        }
+
+        // In-place swap.
+        const panel = link.closest('#wpforms-panel-providers');
+        if (!panel) return;
+        const targetSel =
+          section === 'default'
+            ? '.wpforms-panel-content-section-default'
+            : '.wpforms-panel-content-section-' + section;
+        // Some providers (e.g. n8n) render a nested
+        // .wpforms-panel-content-section with the same provider suffix
+        // inside the outer wrapper. Activate ALL of them, otherwise the
+        // base CSS `.wpforms-panel-content-section{display:none}` keeps
+        // the inner subtree hidden and the panel renders empty.
+        const targets = panel.querySelectorAll(targetSel);
+        if (targets.length === 0) return; // section not in DOM → no-op
+
+        // Deactivate every currently-active content section + sidebar item
+        // in this panel.
+        panel
+          .querySelectorAll('.wpforms-panel-content-section.active')
+          .forEach((s) => {
+            s.classList.remove('active');
+            s.style.display = 'none';
+          });
+        panel
+          .querySelectorAll('.wpforms-panel-sidebar-section.active')
+          .forEach((s) => {
+            s.classList.remove('active');
+          });
+
+        // Activate target(s).
+        for (const t of targets) {
+          t.classList.add('active');
+          t.style.display = 'block';
+        }
+        link.classList.add('active');
+      },
+    },
+
+    // ─ Builder Payments sidebar → in-place section swap ─────────────────
+    // Mirrors builder-providers-section-nav. All payment-gateway content
+    // sections (Stripe, PayPal Commerce, Square) live in the captured
+    // #wpforms-panel-payments DOM as display:none siblings; swapping is
+    // pure DOM puppetry. Education-modal upsell items (Authorize.Net,
+    // PayPal Standard) skip.
+    {
+      label: 'builder-payments-section-nav',
+      event: 'click',
+      match: (el) => {
+        const link = el.closest?.('.wpforms-panel-sidebar-section[data-section]');
+        if (!link) return false;
+        if (link.classList.contains('education-modal')) return false;
+        if (link.classList.contains('active')) return false;
+        return link.closest('#wpforms-panel-payments') !== null;
+      },
+      apply: (el) => {
+        const link = el.closest('.wpforms-panel-sidebar-section[data-section]');
+        const section = link.dataset.section;
+        const panel = link.closest('#wpforms-panel-payments');
+        if (!panel) return;
+        const targetSel =
+          section === 'default'
+            ? '.wpforms-panel-content-section-default'
+            : '.wpforms-panel-content-section-' + section;
+        const targets = panel.querySelectorAll(targetSel);
+        if (targets.length === 0) return;
+
+        panel
+          .querySelectorAll('.wpforms-panel-content-section.active')
+          .forEach((s) => {
+            s.classList.remove('active');
+            s.style.display = 'none';
+          });
+        panel
+          .querySelectorAll('.wpforms-panel-sidebar-section.active')
+          .forEach((s) => {
+            s.classList.remove('active');
+          });
+
+        for (const t of targets) {
+          t.classList.add('active');
+          t.style.display = 'block';
+        }
+        link.classList.add('active');
+      },
+    },
+
+    // ─ Builder Payments: One-Time / Recurring enable toggle ─────────────
+    // Show/hide the corresponding .wpforms-panel-content-section-payment-
+    // toggled-body next to the toggle. Matches both Stripe and PayPal
+    // Commerce gateways via the shared id pattern
+    // `wpforms-panel-field-<gateway>-enable_(one_time|recurring)`.
+    {
+      label: 'builder-payments-toggle-body',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'checkbox' &&
+        /^wpforms-panel-field-[a-z_]+-enable_(?:one_time|recurring)$/.test(
+          el.id || ''
+        ) &&
+        el.closest('#wpforms-panel-payments') !== null,
+      apply: (el) => {
+        const isRecurring = /enable_recurring$/.test(el.id);
+        const wrap = el.closest('.wpforms-panel-content-section-payment');
+        if (!wrap) return;
+        const bodyClass = isRecurring
+          ? '.wpforms-panel-content-section-payment-recurring'
+          : '.wpforms-panel-content-section-payment-one-time';
+        const body = wrap.querySelector(
+          bodyClass + '.wpforms-panel-content-section-payment-toggled-body'
+        );
+        if (!body) return;
+        body.style.display = el.checked ? '' : 'none';
+      },
+    },
+
+    // ─ Builder Payments: Plan head collapse toggle ─────────────────────
+    // Click the chevron in a plan block's header to collapse/expand its
+    // body. Swap chevron-circle-up ↔ -down.
+    {
+      label: 'builder-payments-plan-toggle',
+      event: 'click',
+      match: (el) => {
+        const icon = el.closest?.(
+          'i.wpforms-panel-content-section-payment-plan-head-buttons-toggle'
+        );
+        if (!icon) return false;
+        return icon.closest('#wpforms-panel-payments') !== null;
+      },
+      apply: (el) => {
+        const icon = el.closest(
+          'i.wpforms-panel-content-section-payment-plan-head-buttons-toggle'
+        );
+        const plan = icon.closest('.wpforms-panel-content-section-payment-plan');
+        const body = plan?.querySelector(
+          '.wpforms-panel-content-section-payment-plan-body'
+        );
+        if (!body) return;
+        const isOpen = body.style.display !== 'none';
+        body.style.display = isOpen ? 'none' : '';
+        icon.classList.toggle('fa-chevron-circle-down', isOpen);
+        icon.classList.toggle('fa-chevron-circle-up', !isOpen);
+      },
+    },
+
+    // ─ Builder Payments: Plan delete ────────────────────────────────────
+    {
+      label: 'builder-payments-plan-delete',
+      event: 'click',
+      match: (el) => {
+        const icon = el.closest?.(
+          'i.wpforms-panel-content-section-payment-plan-head-buttons-delete'
+        );
+        if (!icon) return false;
+        return icon.closest('#wpforms-panel-payments') !== null;
+      },
+      apply: (el) => {
+        const icon = el.closest(
+          'i.wpforms-panel-content-section-payment-plan-head-buttons-delete'
+        );
+        const plan = icon.closest('.wpforms-panel-content-section-payment-plan');
+        if (!plan) return;
+        plan.style.transition = 'opacity 180ms ease-out, height 220ms ease-out';
+        plan.style.overflow = 'hidden';
+        plan.style.height = plan.scrollHeight + 'px';
+        // eslint-disable-next-line no-unused-expressions
+        plan.offsetHeight;
+        requestAnimationFrame(() => {
+          plan.style.opacity = '0';
+          plan.style.height = '0px';
+        });
+        setTimeout(() => {
+          plan.remove();
+        }, 240);
+      },
+    },
+
+    // ─ Builder Payments: Add New Plan ───────────────────────────────────
+    // Clone the last existing plan block, bump data-plan-id, reset
+    // name input + bumped title, append to the recurring body.
+    {
+      label: 'builder-payments-plan-add',
+      event: 'click',
+      match: (el) => {
+        const btn = el.closest?.(
+          'a.wpforms-panel-content-section-payment-button-add-plan'
+        );
+        if (!btn) return false;
+        return btn.closest('#wpforms-panel-payments') !== null;
+      },
+      apply: (el) => {
+        const btn = el.closest(
+          'a.wpforms-panel-content-section-payment-button-add-plan'
+        );
+        const wrap = btn.closest('.wpforms-panel-content-section-payment');
+        const body = wrap?.querySelector(
+          '.wpforms-panel-content-section-payment-recurring.wpforms-panel-content-section-payment-toggled-body'
+        );
+        if (!body) return;
+        const plans = body.querySelectorAll(
+          '.wpforms-panel-content-section-payment-plan'
+        );
+        if (plans.length === 0) return;
+        const seed = plans[plans.length - 1];
+        const clone = seed.cloneNode(true);
+        const nextId = plans.length;
+        clone.setAttribute('data-plan-id', String(nextId));
+        // Bump every input/select/label id + name that includes the seed's
+        // index so the clone stays unique.
+        const seedIdx = seed.getAttribute('data-plan-id') || '0';
+        const reIdx = new RegExp('-' + seedIdx + '-', 'g');
+        const reName = new RegExp('\\[recurring\\]\\[' + seedIdx + '\\]', 'g');
+        for (const node of clone.querySelectorAll('[id], [name], [for]')) {
+          if (node.id) node.id = node.id.replace(reIdx, '-' + nextId + '-');
+          if (node.name) node.name = node.name.replace(reName, '[recurring][' + nextId + ']');
+          if (node.htmlFor)
+            node.htmlFor = node.htmlFor.replace(reIdx, '-' + nextId + '-');
+        }
+        // Reset name input to empty + update visible title.
+        const nameInput = clone.querySelector(
+          '.wpforms-panel-content-section-payment-plan-name input[type="text"]'
+        );
+        if (nameInput) nameInput.value = '';
+        const title = clone.querySelector(
+          '.wpforms-panel-content-section-payment-plan-head-title'
+        );
+        if (title) title.textContent = 'Plan Name #' + (nextId + 1);
+        // Make sure the body is expanded.
+        const cloneBody = clone.querySelector(
+          '.wpforms-panel-content-section-payment-plan-body'
+        );
+        if (cloneBody) cloneBody.style.display = '';
+        const cloneIcon = clone.querySelector(
+          'i.wpforms-panel-content-section-payment-plan-head-buttons-toggle'
+        );
+        if (cloneIcon) {
+          cloneIcon.classList.remove('fa-chevron-circle-down');
+          cloneIcon.classList.add('fa-chevron-circle-up');
+        }
+        // Insert after the last existing plan.
+        seed.parentNode.insertBefore(clone, seed.nextSibling);
+        // Fade in.
+        clone.style.opacity = '0';
+        clone.style.transform = 'translateY(-4px)';
+        clone.style.transition = 'opacity 220ms ease-out, transform 220ms ease-out';
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => {
+            clone.style.opacity = '1';
+            clone.style.transform = 'translateY(0)';
+          })
+        );
+      },
+    },
+
+    // ─ Builder Payments → Stripe: Custom Metadata add row ──────────────
+    {
+      label: 'builder-payments-metadata-add',
+      event: 'click',
+      match: (el) => {
+        const btn = el.closest?.(
+          'button.wpforms-panel-content-section-stripe-custom-metadata-add'
+        );
+        if (!btn) return false;
+        return btn.closest('#wpforms-panel-payments') !== null;
+      },
+      apply: (el) => {
+        const btn = el.closest(
+          'button.wpforms-panel-content-section-stripe-custom-metadata-add'
+        );
+        const row = btn.closest('tr');
+        if (!row) return;
+        const tbody = row.parentNode;
+        const seed = tbody.querySelector('tr');
+        const clone = seed.cloneNode(true);
+        const seedKey = seed.getAttribute('data-key') || '0';
+        const nextKey = String(tbody.querySelectorAll('tr').length);
+        clone.setAttribute('data-key', nextKey);
+        const reIdx = new RegExp('-' + seedKey + '-', 'g');
+        const reName = new RegExp(
+          '\\[custom_metadata\\]\\[' + seedKey + '\\]',
+          'g'
+        );
+        for (const node of clone.querySelectorAll('[id], [name], [for]')) {
+          if (node.id) node.id = node.id.replace(reIdx, '-' + nextKey + '-');
+          if (node.name)
+            node.name = node.name.replace(
+              reName,
+              '[custom_metadata][' + nextKey + ']'
+            );
+          if (node.htmlFor)
+            node.htmlFor = node.htmlFor.replace(reIdx, '-' + nextKey + '-');
+        }
+        // Reset values + show the delete button on the new row.
+        for (const node of clone.querySelectorAll('input, select')) {
+          if (node.tagName === 'SELECT') node.selectedIndex = 0;
+          else node.value = '';
+        }
+        const delBtn = clone.querySelector(
+          '.wpforms-panel-content-section-stripe-custom-metadata-delete'
+        );
+        if (delBtn) delBtn.classList.remove('hidden');
+        tbody.appendChild(clone);
+      },
+    },
+
+    // ─ Builder Payments → Stripe: Custom Metadata delete row ───────────
+    {
+      label: 'builder-payments-metadata-delete',
+      event: 'click',
+      match: (el) => {
+        const btn = el.closest?.(
+          'button.wpforms-panel-content-section-stripe-custom-metadata-delete:not(.hidden)'
+        );
+        if (!btn) return false;
+        return btn.closest('#wpforms-panel-payments') !== null;
+      },
+      apply: (el) => {
+        const btn = el.closest(
+          'button.wpforms-panel-content-section-stripe-custom-metadata-delete'
+        );
+        const row = btn.closest('tr');
+        if (row) row.remove();
+      },
+    },
+
+    // ─ Builder Payments: Conditional Logic toggle ───────────────────────
+    // Same lazy-mount pattern as block-conditional-logic-toggle, but
+    // scoped to payments[<gateway>] checkboxes whose ids end with
+    // `-conditional_logic-checkbox`. data-reference is temporarily
+    // overridden to a safe slug so the generated id contains no spaces.
+    {
+      label: 'builder-payments-conditional-logic',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'checkbox' &&
+        /^wpforms-panel-field-payments-[a-z_]+-conditional_logic-checkbox$/.test(
+          el.id || ''
+        ),
+      apply: (el) => {
+        const wrap = el.closest('.wpforms-panel-field');
+        if (!wrap) return;
+        const ref = (el.id.match(
+          /^wpforms-panel-field-(payments-[a-z_]+)-conditional_logic-checkbox$/
+        ) || [])[1];
+        if (!ref) return;
+        const groupsId = 'wpforms-conditional-groups-fields-' + ref;
+        let groups = document.getElementById(groupsId);
+        if (!groups) {
+          const origRef = el.getAttribute('data-reference');
+          el.setAttribute('data-reference', ref);
+          groups = buildConditionalLogicGroups(el);
+          if (origRef !== null) el.setAttribute('data-reference', origRef);
+          wrap.parentNode.insertBefore(groups, wrap.nextSibling);
+        }
+        groups.style.display = el.checked ? '' : 'none';
+      },
+    },
+
+    // ─ Builder Marketing → Connection Conditional Logic toggle ────────
+    // Provider connection rule builders have IDs like
+    // `wpforms-panel-field-<provider>-<connection_id>-conditional_logic`
+    // where <connection_id> is a hex string. Neither the notifications/
+    // confirmations handler nor the payments-* one matches that shape.
+    // The captured DOM mounts `.wpforms-conditional-groups` as a sibling
+    // of the toggle wrap (because the "play around" eval flipped the
+    // toggle on at capture time, so real WPForms JS mounted the rule
+    // builder). Show/hide it here; lazy-mount if missing.
+    {
+      label: 'builder-providers-conditional-logic',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'checkbox' &&
+        el.classList.contains('wpforms-panel-field-conditional_logic-checkbox') &&
+        /^wpforms-panel-field-[a-z0-9_-]+-[a-f0-9]{6,}-conditional_logic$/.test(
+          el.id || ''
+        ) &&
+        (el.closest('#wpforms-panel-providers') !== null ||
+          el.closest('#wpforms-panel-settings') !== null),
+      apply: (el) => {
+        const wrap = el.closest('.wpforms-panel-field');
+        if (!wrap || !wrap.parentNode) return;
+        // The rule builder is mounted as a sibling of the toggle wrap.
+        let groups = null;
+        for (
+          let n = wrap.nextElementSibling;
+          n && !groups;
+          n = n.nextElementSibling
+        ) {
+          if (n.classList.contains('wpforms-conditional-groups')) groups = n;
+        }
+        if (!groups) {
+          // Lazy-mount via the shared helper. Derive a clean ref slug
+          // from data-name (e.g. `providers[klaviyo][19e2...]` →
+          // `providers-klaviyo-19e2...`) so the generated container id
+          // contains no spaces or brackets.
+          const refKey = (
+            el.getAttribute('data-name') ||
+            el.id ||
+            ''
+          )
+            .replace(/[\[\]]+/g, '-')
+            .replace(/-+/g, '-')
+            .replace(/^-+|-+$/g, '');
+          const origRef = el.getAttribute('data-reference');
+          el.setAttribute('data-reference', refKey);
+          groups = buildConditionalLogicGroups(el);
+          if (origRef !== null) el.setAttribute('data-reference', origRef);
+          wrap.parentNode.insertBefore(groups, wrap.nextSibling);
+        }
+        groups.style.display = el.checked ? '' : 'none';
+      },
+    },
+
+    // ─ Builder → Add New Connection (jconfirm-style modal) ──────────────
+    // Fires from BOTH the Marketing panel (#wpforms-panel-providers) and
+    // the Settings panel (#wpforms-panel-settings — storage providers
+    // like Dropbox / Google Drive / Airtable / Notion live there). Real
+    // WPForms shows a jconfirm prompt asking for a connection nickname
+    // before mounting the connection block. We mirror the prompt; on OK
+    // we cross-snap to the matching `builder-<panel>-<slug>-connection`
+    // fossil. Addons without a captured connection fossil silently
+    // close the modal.
+    {
+      label: 'builder-providers-connection-add',
+      event: 'click',
+      match: (el) => {
+        const btn = el.closest?.(
+          'button.js-wpforms-builder-provider-connection-add'
+        );
+        if (!btn) return false;
+        if (btn.classList.contains('hidden')) return false;
+        return (
+          btn.closest('#wpforms-panel-providers') !== null ||
+          btn.closest('#wpforms-panel-settings') !== null
+        );
+      },
+      apply: (el) => {
+        const btn = el.closest(
+          'button.js-wpforms-builder-provider-connection-add'
+        );
+        const provider = btn.dataset.provider || '';
+        const section = btn.closest(
+          '.wpforms-panel-content-section[data-provider]'
+        );
+        const providerName =
+          (section && section.getAttribute('data-provider-name')) || provider;
+        // Resolve target snapshot based on which panel owns the button.
+        let snapshotSlug = null;
+        if (
+          btn.closest('#wpforms-panel-providers') &&
+          PROVIDERS_CONNECTION_SNAPSHOTS.has(provider)
+        ) {
+          snapshotSlug = 'builder-providers-' + provider + '-connection';
+        } else if (
+          btn.closest('#wpforms-panel-settings') &&
+          SETTINGS_CONNECTION_SNAPSHOTS.has(provider)
+        ) {
+          snapshotSlug = 'builder-settings-' + provider + '-connection';
+        }
+        openConnectionNicknameModal(provider, providerName, snapshotSlug);
+      },
+    },
+
+    // ─ Connection cascade reveal ───────────────────────────────────────
+    // Inside a `.wpforms-builder-provider-connection`, real WPForms walks
+    // the user through fields step-by-step: select Account → Action /
+    // List unhides → sub-template renders. Real WPForms toggles
+    // `.wpforms-hidden` and `disabled` as values commit; without its JS
+    // we imitate. On change of any select/input/checkbox/radio inside a
+    // connection block, if the new value is non-empty (or checked), find
+    // the next gated thing after this block and reveal it. One step at
+    // a time so the UI cascades naturally.
+    {
+      label: 'connection-cascade-reveal',
+      event: 'change',
+      match: (el) => {
+        if (
+          !(el instanceof HTMLSelectElement) &&
+          !(el instanceof HTMLInputElement)
+        )
+          return false;
+        if (!el.closest('.wpforms-builder-provider-connection-block')) return false;
+        if (el.type === 'checkbox' || el.type === 'radio') {
+          if (!el.checked) return false;
+        } else if ((el.value || '') === '') {
+          return false;
+        }
+        return true;
+      },
+      apply: (el) => {
+        const block = el.closest('.wpforms-builder-provider-connection-block');
+        const conn = el.closest('.wpforms-builder-provider-connection');
+        if (!conn) return;
+        for (
+          let next = block.nextElementSibling;
+          next;
+          next = next.nextElementSibling
+        ) {
+          if (next.classList.contains('wpforms-hidden')) {
+            next.classList.remove('wpforms-hidden');
+            for (const inner of next.querySelectorAll(
+              '.wpforms-hidden, [disabled]'
+            )) {
+              inner.classList.remove('wpforms-hidden');
+              if (inner.disabled) inner.disabled = false;
+            }
+            return;
+          }
+          const inner = next.querySelector('.wpforms-hidden, select[disabled]');
+          if (inner) {
+            inner.classList.remove('wpforms-hidden');
+            if (inner.disabled) inner.disabled = false;
+            return;
+          }
+          if (/-provider-actions-data\b/.test(next.className || '')) {
+            next.style.display = '';
+            if (next.children.length) return;
+          }
+        }
+      },
+    },
+
+    // ─ Form-level enable toggles ───────────────────────────────────────
+    // Each settings-tab addon with an "Enable X" master checkbox gates a
+    // specific sub-panel. Lookup keyed by checkbox id, value is either
+    // a CSS selector string or an array of selectors that toggle in
+    // lockstep with the checkbox state.
+    {
+      label: 'form-level-enable-toggle',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'checkbox' &&
+        FORM_LEVEL_ENABLE_TOGGLES[el.id] !== undefined,
+      apply: (el) => {
+        const targets = FORM_LEVEL_ENABLE_TOGGLES[el.id];
+        if (!targets) return;
+        const sels = Array.isArray(targets) ? targets : [targets];
+        for (const sel of sels) {
+          for (const node of document.querySelectorAll(sel)) {
+            // Some elements use the `hidden` class instead of style.display.
+            // Clear both so the enable state matches regardless of how the
+            // captured DOM hid them.
+            if (el.checked) {
+              node.classList.remove('hidden');
+              node.style.display = '';
+            } else {
+              node.style.display = 'none';
+            }
+          }
+        }
+      },
+    },
+
+    // ─ Webhooks: Add New Webhook ────────────────────────────────────────
+    // Captured DOM has a default webhook block hidden via the `hidden`
+    // class on `.wpforms-builder-settings-block-webhook.wpforms-builder-
+    // settings-block-default`. First click unhides the default block;
+    // subsequent clicks clone the last visible block and bump its
+    // data-block-id / nested id-name suffixes.
+    {
+      label: 'builder-settings-webhooks-add',
+      event: 'click',
+      match: (el) => {
+        const btn = el.closest?.('button.wpforms-webooks-add');
+        if (!btn) return false;
+        if (btn.classList.contains('hidden')) return false;
+        return btn.closest('#wpforms-panel-settings') !== null;
+      },
+      apply: () => {
+        const section = document.querySelector(
+          '.wpforms-panel-content-section-webhooks'
+        );
+        if (!section) return;
+        const def = section.querySelector(
+          '.wpforms-builder-settings-block-webhook.wpforms-builder-settings-block-default.hidden'
+        );
+        if (def) {
+          def.classList.remove('hidden');
+          def.classList.remove('wpforms-builder-settings-block-default');
+          return;
+        }
+        const all = section.querySelectorAll(
+          '.wpforms-builder-settings-block-webhook'
+        );
+        if (!all.length) return;
+        const seed = all[all.length - 1];
+        const clone = seed.cloneNode(true);
+        const seedId = seed.getAttribute('data-block-id') || '1';
+        const nextId = String(all.length + 1);
+        clone.setAttribute('data-block-id', nextId);
+        const reIdx = new RegExp('-' + seedId + '-', 'g');
+        const reName = new RegExp(
+          '\\[webhooks\\]\\[' + seedId + '\\]',
+          'g'
+        );
+        for (const node of clone.querySelectorAll('[id], [name], [for]')) {
+          if (node.id) node.id = node.id.replace(reIdx, '-' + nextId + '-');
+          if (node.name)
+            node.name = node.name.replace(reName, '[webhooks][' + nextId + ']');
+          if (node.htmlFor)
+            node.htmlFor = node.htmlFor.replace(reIdx, '-' + nextId + '-');
+        }
+        for (const inp of clone.querySelectorAll('input[type="text"], input[type="url"]')) {
+          inp.value = '';
+        }
+        const nameInput = clone.querySelector(
+          '.wpforms-builder-settings-block-name-edit input'
+        );
+        if (nameInput) nameInput.value = 'Unnamed Webhook';
+        const nameSpan = clone.querySelector(
+          '.wpforms-builder-settings-block-name'
+        );
+        if (nameSpan) nameSpan.textContent = 'Unnamed Webhook';
+        seed.parentNode.insertBefore(clone, seed.nextSibling);
+      },
+    },
+
+    // ─ PDF: Add New PDF ─────────────────────────────────────────────────
+    // No captured PDF block template — fabricate a minimal block mirror
+    // of the WPForms shape (settings-block-* envelope, name input,
+    // Default Template select, File Name Pattern text). Hides the
+    // empty-state splash on first add.
+    {
+      label: 'builder-settings-pdf-add',
+      event: 'click',
+      match: (el) => {
+        const btn = el.closest?.('button.wpforms-pdf-add');
+        if (!btn) return false;
+        return btn.closest('#wpforms-panel-settings') !== null;
+      },
+      apply: (el) => {
+        const btn = el.closest('button.wpforms-pdf-add');
+        const section = document.querySelector(
+          '.wpforms-panel-content-section-pdf'
+        );
+        if (!section) return;
+        PDF_BLOCK_COUNTER += 1;
+        const id = PDF_BLOCK_COUNTER;
+        const name = btn.getAttribute('data-default-name') || 'Default PDF';
+        const block = document.createElement('div');
+        block.className =
+          'wpforms-builder-settings-block wpforms-builder-settings-block-pdf';
+        block.setAttribute('data-block-type', 'pdf');
+        block.setAttribute('data-block-id', String(id));
+        block.innerHTML =
+          '<div class="wpforms-builder-settings-block-header">' +
+            '<div class="wpforms-builder-settings-block-actions">' +
+              '<button type="button" class="wpforms-builder-settings-block-delete"><i class="fa fa-trash-o"></i></button>' +
+              '<button type="button" class="wpforms-builder-settings-block-toggle"><i class="fa fa-chevron-circle-up"></i></button>' +
+            '</div>' +
+            '<div class="wpforms-builder-settings-block-name-holder">' +
+              '<span class="wpforms-builder-settings-block-name">' + escForText(name) + '</span>' +
+              '<div class="wpforms-builder-settings-block-name-edit">' +
+                '<input type="text" name="settings[pdf][' + id + '][name]" value="' + escForAttr(name) + '">' +
+              '</div>' +
+              '<button class="wpforms-builder-settings-block-edit"><i class="fa fa-pencil"></i></button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="wpforms-builder-settings-block-content">' +
+            '<div class="wpforms-panel-field wpforms-panel-field-select">' +
+              '<label for="wpforms-panel-field-pdf-' + id + '-template">Default Template</label>' +
+              '<select id="wpforms-panel-field-pdf-' + id + '-template" name="settings[pdf][' + id + '][template]">' +
+                '<option value="default" selected>Default</option>' +
+                '<option value="minimal">Minimal</option>' +
+                '<option value="modern">Modern</option>' +
+              '</select>' +
+            '</div>' +
+            '<div class="wpforms-panel-field wpforms-panel-field-text">' +
+              '<label for="wpforms-panel-field-pdf-' + id + '-filename">File Name Pattern</label>' +
+              '<input type="text" id="wpforms-panel-field-pdf-' + id + '-filename" name="settings[pdf][' + id + '][filename]" value="{form_name}-{entry_id}" placeholder="">' +
+            '</div>' +
+          '</div>';
+        const title = section.querySelector('.wpforms-panel-content-section-title');
+        const defaultSplash = section.querySelector(
+          '.wpforms-builder-provider-connections-default'
+        );
+        if (defaultSplash) defaultSplash.style.display = 'none';
+        if (title) title.parentNode.insertBefore(block, title.nextSibling);
+        block.style.opacity = '0';
+        block.style.transform = 'translateY(-4px)';
+        block.style.transition =
+          'opacity 220ms ease-out, transform 220ms ease-out';
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => {
+            block.style.opacity = '1';
+            block.style.transform = 'translateY(0)';
+          })
+        );
+      },
+    },
+
+    // ─ Entry Automation: Add New Task ──────────────────────────────────
+    // Fabricates a minimal entity-task block; hides the empty-state
+    // splash on first add. Subsequent clicks append additional tasks
+    // with bumped data-block-id + ids/names.
+    {
+      label: 'builder-settings-entry-automation-add',
+      event: 'click',
+      match: (el) => {
+        const btn = el.closest?.('button.wpforms-builder-entity-connection-add');
+        if (!btn) return false;
+        return btn.closest('.wpforms-panel-content-section-entry_automation') !== null;
+      },
+      apply: () => {
+        const section = document.querySelector(
+          '.wpforms-panel-content-section-entry_automation'
+        );
+        if (!section) return;
+        const wrap = section.querySelector('.wpforms-builder-entity-connections');
+        const splash = section.querySelector(
+          '.wpforms-builder-provider-connections-default.wpforms-entity-empty-state'
+        );
+        if (!wrap) return;
+        ENTRY_AUTOMATION_TASK_COUNTER += 1;
+        const id = ENTRY_AUTOMATION_TASK_COUNTER;
+        if (splash) splash.style.display = 'none';
+        const block = document.createElement('div');
+        block.className =
+          'wpforms-builder-settings-block wpforms-builder-settings-block-entry_automation';
+        block.setAttribute('data-block-id', String(id));
+        block.innerHTML =
+          '<div class="wpforms-builder-settings-block-header">' +
+            '<div class="wpforms-builder-settings-block-actions">' +
+              '<button type="button" class="wpforms-builder-settings-block-delete"><i class="fa fa-trash-o"></i></button>' +
+              '<button type="button" class="wpforms-builder-settings-block-toggle"><i class="fa fa-chevron-circle-up"></i></button>' +
+            '</div>' +
+            '<div class="wpforms-builder-settings-block-name-holder">' +
+              '<span class="wpforms-builder-settings-block-name">New Task</span>' +
+              '<div class="wpforms-builder-settings-block-name-edit">' +
+                '<input type="text" name="settings[entry_automation][' + id + '][name]" value="New Task">' +
+              '</div>' +
+              '<button class="wpforms-builder-settings-block-edit"><i class="fa fa-pencil"></i></button>' +
+            '</div>' +
+          '</div>' +
+          '<div class="wpforms-builder-settings-block-content">' +
+            '<div class="wpforms-panel-field wpforms-panel-field-select">' +
+              '<label for="wpforms-panel-field-entry-automation-' + id + '-action">Action</label>' +
+              '<select id="wpforms-panel-field-entry-automation-' + id + '-action" name="settings[entry_automation][' + id + '][action]">' +
+                '<option value="">--- Select Action ---</option>' +
+                '<option value="delete">Delete</option>' +
+                '<option value="export">Export</option>' +
+              '</select>' +
+            '</div>' +
+          '</div>';
+        wrap.appendChild(block);
+        block.style.opacity = '0';
+        block.style.transform = 'translateY(-4px)';
+        block.style.transition =
+          'opacity 220ms ease-out, transform 220ms ease-out';
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => {
+            block.style.opacity = '1';
+            block.style.transform = 'translateY(0)';
+          })
+        );
+      },
+    },
+
   ];
+
+  // Form-level addon "Enable X" toggle id → gated-element selector(s).
+  const FORM_LEVEL_ENABLE_TOGGLES = {
+    'wpforms-panel-field-settings-conversational_forms_enable':
+      '#wpforms-conversational-forms-content-block',
+    'wpforms-panel-field-settings-save_resume_enable':
+      '.wpforms-save-resume-sub-panel',
+    'wpforms-panel-field-settings-post_submissions':
+      '#wpforms-post-submissions-content-block',
+    'wpforms-panel-field-lead_forms-enable':
+      '.wpforms-lead-forms-sub-panel',
+    'wpforms-panel-field-settings-webhooks_enable': [
+      '.wpforms-panel-content-section-webhooks .wpforms-webooks-add',
+    ],
+    'wpforms-panel-field-settings-form_abandonment': [
+      '#wpforms-panel-field-settings-form_abandonment_fields-wrap',
+      '#wpforms-panel-field-settings-form_abandonment_duplicates-wrap',
+    ],
+    'wpforms-panel-field-settings-form_locker_verification': [
+      '#wpforms-panel-field-settings-form_locker_verification_type-wrap',
+      '#wpforms-panel-field-settings-form_locker_password-wrap',
+      '#wpforms-panel-field-settings-form_locker_password_message-wrap',
+    ],
+  };
+
+  // Helpers used by Add-New builders.
+  function escForText(s) {
+    const d = document.createElement('div');
+    d.textContent = String(s == null ? '' : s);
+    return d.innerHTML;
+  }
+  function escForAttr(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, (c) => ({
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#39;',
+    })[c]);
+  }
+  let PDF_BLOCK_COUNTER = 0;
+  let ENTRY_AUTOMATION_TASK_COUNTER = 0;
+
+  // Deterministic counter for fake-connect <li> disconnect keys.
+  let SETTINGS_INT_CONNECT_COUNTER = 0;
+
+  // ─── Snapshot promote API ──────────────────────────────────────────
+  // Video tool entry points to feature a specific addon WITHOUT
+  // recapturing per-addon snapshots. Reorders DOM in place so the
+  // target row/sidebar item moves to position 1. Everything else stays
+  // canonical. Exposed three ways so any iframe context can drive it.
+
+  function promoteIntegrationRow(slug, opts) {
+    if (!slug) return false;
+    const row = document.getElementById('wpforms-integration-' + slug);
+    const list = row && row.parentNode;
+    if (!row || !list) return false;
+    list.insertBefore(row, list.firstElementChild);
+    if (opts && opts.expand) {
+      const header = row.querySelector(
+        '.wpforms-settings-provider-header[data-provider]'
+      );
+      const body = row.querySelector(
+        '.wpforms-settings-provider-accounts[id^="provider-"]'
+      );
+      if (header && body && body.style.display !== 'block') {
+        body.style.display = 'block';
+        const chevron = header.querySelector(
+          '.wpforms-settings-provider-logo .fa'
+        );
+        if (chevron) {
+          chevron.classList.remove('fa-chevron-right');
+          chevron.classList.add('fa-chevron-down');
+        }
+      }
+    }
+    return true;
+  }
+
+  function promoteProviderSidebar(slug, opts) {
+    if (!slug) return false;
+    const panel = document.getElementById('wpforms-panel-providers');
+    if (!panel) return false;
+    const link = panel.querySelector(
+      '.wpforms-panel-sidebar-section.wpforms-panel-sidebar-section-' + slug
+    );
+    const sidebar = link && link.parentNode;
+    if (!link || !sidebar) return false;
+    // Default behaviour mirrors promoteIntegrationRow: move to absolute
+    // position 1. opts.afterDefault keeps the "Default" entry first if
+    // a caller wants the older insert-after-default layout.
+    const defaultLink = sidebar.querySelector(
+      '.wpforms-panel-sidebar-section-default'
+    );
+    if (opts && opts.afterDefault && defaultLink && defaultLink !== link) {
+      sidebar.insertBefore(link, defaultLink.nextElementSibling);
+    } else {
+      sidebar.insertBefore(link, sidebar.firstElementChild);
+    }
+    return true;
+  }
+
+  function promotePaymentSidebar(slug, opts) {
+    if (!slug) return false;
+    const panel = document.getElementById('wpforms-panel-payments');
+    if (!panel) return false;
+    const link = panel.querySelector(
+      '.wpforms-panel-sidebar-section.wpforms-panel-sidebar-section-' + slug
+    );
+    const sidebar = link && link.parentNode;
+    if (!link || !sidebar) return false;
+    const defaultLink = sidebar.querySelector(
+      '.wpforms-panel-sidebar-section-default'
+    );
+    if (opts && opts.afterDefault && defaultLink && defaultLink !== link) {
+      sidebar.insertBefore(link, defaultLink.nextElementSibling);
+    } else {
+      sidebar.insertBefore(link, sidebar.firstElementChild);
+    }
+    return true;
+  }
+
+  function initSnapshotPromoteApi() {
+    // Public same-origin API (iframe parent with same-origin access, dev
+    // console, chapter code).
+    const api = (window.wpfSnapshotApi = window.wpfSnapshotApi || {});
+    api.promoteIntegrationRow = promoteIntegrationRow;
+    api.promoteProviderSidebar = promoteProviderSidebar;
+    api.promotePaymentSidebar = promotePaymentSidebar;
+
+    // postMessage transport (cross-origin / iframe).
+    window.addEventListener('message', (e) => {
+      const data = e && e.data;
+      if (!data || typeof data !== 'object') return;
+      if (data.type === 'wpf:promote-integration') {
+        promoteIntegrationRow(data.slug, data.opts || {});
+      } else if (data.type === 'wpf:promote-provider-sidebar') {
+        promoteProviderSidebar(data.slug, data.opts || {});
+      } else if (data.type === 'wpf:promote-payment-sidebar') {
+        promotePaymentSidebar(data.slug, data.opts || {});
+      }
+    });
+
+    // URL-query bootstrap: ?promote=<slug>&expand=1
+    try {
+      const params = new URLSearchParams(window.location.search || '');
+      const slug = params.get('promote');
+      if (slug) {
+        const expand =
+          params.get('expand') === '1' || params.get('expand') === 'true';
+        // Apply to whichever surface the slug matches. All three helpers
+        // are no-op-safe when the target isn't in the current DOM.
+        promoteIntegrationRow(slug, { expand });
+        promoteProviderSidebar(slug);
+        promotePaymentSidebar(slug);
+      }
+    } catch (_) {}
+  }
 
   function applyPaymentTotalSummary(field, on) {
     const summary = field.querySelector('.wpforms-order-summary-container');
@@ -5965,6 +7703,8 @@
       if (!tr.match(target)) continue;
       try {
         tr.apply(target);
+        // Frontend mirror — silent for labels not in LABEL_TO_SETTING.
+        broadcastFieldState(tr.label, target);
       } catch (err) {
         console.error('[interactivity] transition failed:', tr.label, err);
       }
@@ -6078,6 +7818,347 @@
   ];
   let activeIconPicker = null; // { panelLi, modal }
 
+  // ─── AI Choices modal ───────────────────────────────────────────────
+  // Lazy-mount a small modal when "Generate Choices" is clicked. User
+  // types a topic prompt + clicks Generate → topic lookup returns 5-7
+  // labels which replace the field's choices (option list + canvas).
+  const AI_CHOICES_PRESETS = [
+    [/\b(country|countries|nation)/i, ['United States','United Kingdom','Canada','Australia','Germany','France','Japan']],
+    [/\b(color|colours?)/i,           ['Red','Blue','Green','Yellow','Purple','Orange','Black']],
+    [/\b(fruit)/i,                    ['Apple','Banana','Cherry','Orange','Strawberry','Grape','Watermelon']],
+    [/\b(animal|pet)/i,               ['Dog','Cat','Bird','Fish','Horse','Rabbit','Turtle']],
+    [/\b(veggie|vegetable)/i,         ['Carrot','Broccoli','Spinach','Potato','Tomato','Pepper']],
+    [/\b(size|sizes)/i,               ['Small','Medium','Large','X-Large','XX-Large']],
+    [/\b(day|days|weekday)/i,         ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']],
+    [/\b(month|months)/i,             ['January','February','March','April','May','June','July','August','September','October','November','December']],
+    [/\b(language|languages)/i,       ['English','Spanish','French','German','Chinese','Japanese','Portuguese']],
+    [/\b(rate|rating|satisfaction)/i, ['Excellent','Very Good','Good','Fair','Poor']],
+    [/\b(agree|disagree|likert)/i,    ['Strongly Agree','Agree','Neutral','Disagree','Strongly Disagree']],
+    [/\b(department|team)/i,          ['Sales','Marketing','Engineering','Support','HR','Finance']],
+    [/\b(subject|topic|reason)/i,     ['Technical Issue','Billing Question','Account Help','Feature Request','Other']],
+    [/\b(industry)/i,                 ['Technology','Finance','Healthcare','Retail','Manufacturing','Education']],
+    [/\b(continent)/i,                ['North America','South America','Europe','Asia','Africa','Oceania','Antarctica']],
+    [/\b(pizza|topping)/i,            ['Pepperoni','Mushroom','Sausage','Bell Pepper','Onion','Olive','Pineapple']],
+    [/\b(drink|beverage)/i,           ['Water','Coffee','Tea','Soda','Juice','Beer','Wine']],
+    [/\b(t-shirt|shirt|clothing|apparel)/i, ['XS','S','M','L','XL','XXL']],
+    [/\b(yes|no)/i,                   ['Yes','No']],
+  ];
+
+  function generateChoicesFromPrompt(prompt) {
+    const text = (prompt || '').trim();
+    if (!text) return ['Choice 1','Choice 2','Choice 3','Choice 4','Choice 5'];
+    // If the prompt looks like a comma- or newline-separated list, use it.
+    if (/[,\n]/.test(text) && text.length < 400) {
+      const parts = text
+        .split(/[,\n]/)
+        .map((s) => s.trim())
+        .filter((s) => s.length > 0 && s.length < 80);
+      if (parts.length >= 2) return parts.slice(0, 10);
+    }
+    for (const [re, list] of AI_CHOICES_PRESETS) {
+      if (re.test(text)) return list.slice(0, 7);
+    }
+    // Generic fallback: title-case the prompt nouns into 5 choices.
+    return ['Choice 1','Choice 2','Choice 3','Choice 4','Choice 5'];
+  }
+
+  // Build a fresh choice <li> by cloning the first existing <li> of the
+  // option list and rewriting per-key attributes + label.
+  function buildChoiceLi(template, fieldId, key, label) {
+    const li = template.cloneNode(true);
+    li.dataset.key = String(key);
+    li.classList.remove('wpforms-quiz-correct');
+    // Clear any default-checked state on the cloned input.
+    const def = li.querySelector('input.default');
+    if (def) def.checked = false;
+    const labelInput = li.querySelector('input.label');
+    if (labelInput) labelInput.value = label;
+    const valueInput = li.querySelector('input.value');
+    if (valueInput) valueInput.value = '';
+    // Rewrite name="fields[<fid>][choices][<oldKey>][...]"  →  use <key>.
+    const re = new RegExp(
+      'fields\\[' + fieldId + '\\]\\[choices\\]\\[\\d+\\]'
+    );
+    li.querySelectorAll('[name]').forEach((node) => {
+      node.setAttribute(
+        'name',
+        node.getAttribute('name').replace(
+          re, 'fields[' + fieldId + '][choices][' + key + ']'
+        )
+      );
+    });
+    return li;
+  }
+
+  function replaceFieldChoices(fieldId, labels) {
+    const optionUl = document.getElementById(
+      'wpforms-field-option-' + fieldId + '-choices-list'
+    );
+    const field = document.getElementById('wpforms-field-' + fieldId);
+    if (!optionUl || !field) return;
+    const template = optionUl.querySelector('li[data-key]');
+    if (!template) return;
+    const newLis = labels.map((label, i) =>
+      buildChoiceLi(template, fieldId, i + 1, label)
+    );
+    optionUl.replaceChildren(...newLis);
+    optionUl.dataset.nextId = String(labels.length + 1);
+
+    // Canvas sync: select-shape (Dropdown) needs <option> rebuild;
+    // ul-shape (Multiple Choice / Checkboxes) uses renderCanvasChoices.
+    const canvasSelect = field.querySelector('select.primary-input');
+    if (canvasSelect) {
+      const placeholder = canvasSelect.querySelector('option[data-placeholder="1"]');
+      const opts = labels.map((text) => {
+        const opt = document.createElement('option');
+        opt.value = text;
+        opt.textContent = text;
+        return opt;
+      });
+      canvasSelect.replaceChildren(...(placeholder ? [placeholder, ...opts] : opts));
+      return;
+    }
+    renderCanvasChoices(field);
+  }
+
+  // ─── Connection-nickname modal (Builder Marketing) ───────────────────
+  // Real WPForms uses jconfirm; we mirror the prompt with vanilla
+  // markup + inline CSS so it stands up in the captured snapshot
+  // without depending on the original jconfirm bundle.
+
+  let activeConnectionModal = null; // { provider, modal, input, snapshotSlug }
+
+  function closeConnectionModal(commit) {
+    if (!activeConnectionModal) return;
+    const { modal, input, snapshotSlug } = activeConnectionModal;
+    modal.classList.add('wpf-snap-modal-closing');
+    setTimeout(() => modal.remove(), 200);
+    activeConnectionModal = null;
+    if (commit && snapshotSlug) {
+      navigateToSnapshot(snapshotSlug);
+    }
+    // else: silent close. Useful for addons whose connection state
+    // hasn't been captured yet — the video tool can detect this and
+    // fall back to a fabricated state if needed.
+    void input;
+  }
+
+  function ensureConnectionModalCSS() {
+    if (document.getElementById('wpf-snap-connection-modal-css')) return;
+    const style = document.createElement('style');
+    style.id = 'wpf-snap-connection-modal-css';
+    style.textContent = [
+      '.wpf-snap-connection-modal{position:fixed;inset:0;z-index:2147483647;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 180ms ease-out}',
+      '.wpf-snap-connection-modal.wpf-snap-modal-open{opacity:1}',
+      '.wpf-snap-connection-modal.wpf-snap-modal-closing{opacity:0}',
+      '.wpf-snap-connection-modal .wpf-snap-modal-backdrop{position:absolute;inset:0;background:rgba(50,55,60,0.45);backdrop-filter:blur(1px)}',
+      '.wpf-snap-connection-modal .wpf-snap-modal-card{position:relative;width:520px;max-width:92vw;background:#fff;border-radius:8px;padding:32px 32px 24px;text-align:center;box-shadow:0 18px 48px rgba(0,0,0,0.22);transform:translateY(8px);transition:transform 180ms ease-out;overflow:hidden}',
+      '.wpf-snap-connection-modal.wpf-snap-modal-open .wpf-snap-modal-card{transform:translateY(0)}',
+      '.wpf-snap-connection-modal .wpf-snap-modal-top-bar{position:absolute;top:0;left:0;right:0;height:6px;background:#2271b1}',
+      '.wpf-snap-connection-modal .wpf-snap-modal-icon{width:44px;height:44px;margin:6px auto 14px;border-radius:50%;background:#2271b1;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-style:italic;font-weight:700;font-family:Georgia,serif}',
+      '.wpf-snap-connection-modal .wpf-snap-modal-label{color:#1d2327;font-size:15px;line-height:1.5;margin:0 0 16px}',
+      '.wpf-snap-connection-modal .wpf-snap-modal-input{width:100%;box-sizing:border-box;padding:8px 12px;border:1px solid #c3c4c7;border-radius:4px;font-size:14px;font-family:inherit;outline:none;color:#1d2327;background:#fff;margin:0 0 24px}',
+      '.wpf-snap-connection-modal .wpf-snap-modal-input:focus{border-color:#2271b1;box-shadow:0 0 0 1px #2271b1}',
+      '.wpf-snap-connection-modal .wpf-snap-modal-buttons{display:flex;justify-content:center;gap:10px}',
+      '.wpf-snap-connection-modal .wpf-snap-modal-btn{appearance:none;border:1px solid transparent;border-radius:4px;padding:8px 22px;font-size:14px;font-weight:500;cursor:pointer;font-family:inherit;line-height:1.4}',
+      '.wpf-snap-connection-modal .wpf-snap-modal-btn-ok{background:#2271b1;color:#fff;border-color:#2271b1}',
+      '.wpf-snap-connection-modal .wpf-snap-modal-btn-ok:hover{background:#135e96;border-color:#135e96}',
+      '.wpf-snap-connection-modal .wpf-snap-modal-btn-cancel{background:#f6f7f7;color:#3c434a;border-color:#dcdcde}',
+      '.wpf-snap-connection-modal .wpf-snap-modal-btn-cancel:hover{background:#eef0f2}',
+    ].join('\n');
+    document.head.appendChild(style);
+  }
+
+  function openConnectionNicknameModal(provider, providerName, snapshotSlug) {
+    if (activeConnectionModal) closeConnectionModal(false);
+    ensureConnectionModalCSS();
+
+    const modal = document.createElement('div');
+    modal.className = 'wpf-snap-connection-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('data-provider', provider);
+
+    const backdrop = document.createElement('div');
+    backdrop.className = 'wpf-snap-modal-backdrop';
+    modal.appendChild(backdrop);
+
+    const card = document.createElement('div');
+    card.className = 'wpf-snap-modal-card';
+    card.innerHTML =
+      '<div class="wpf-snap-modal-top-bar"></div>' +
+      '<div class="wpf-snap-modal-icon">i</div>' +
+      '<div class="wpf-snap-modal-label">Enter a connection nickname</div>' +
+      '<input type="text" class="wpf-snap-modal-input" />' +
+      '<div class="wpf-snap-modal-buttons">' +
+        '<button type="button" class="wpf-snap-modal-btn wpf-snap-modal-btn-ok">OK</button>' +
+        '<button type="button" class="wpf-snap-modal-btn wpf-snap-modal-btn-cancel">Cancel</button>' +
+      '</div>';
+    modal.appendChild(card);
+    document.body.appendChild(modal);
+
+    const input = card.querySelector('input');
+    input.value = (providerName || provider) + ' Connection';
+
+    activeConnectionModal = { provider, modal, input, snapshotSlug };
+
+    const okBtn = card.querySelector('.wpf-snap-modal-btn-ok');
+    const cancelBtn = card.querySelector('.wpf-snap-modal-btn-cancel');
+    okBtn.addEventListener('click', () => closeConnectionModal(true));
+    cancelBtn.addEventListener('click', () => closeConnectionModal(false));
+    backdrop.addEventListener('click', () => closeConnectionModal(false));
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        closeConnectionModal(true);
+      } else if (e.key === 'Escape') {
+        e.preventDefault();
+        closeConnectionModal(false);
+      }
+    });
+    // Animate in.
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => modal.classList.add('wpf-snap-modal-open'))
+    );
+    setTimeout(() => {
+      input.focus();
+      input.select();
+    }, 60);
+  }
+
+  let activeAiChoicesModal = null; // { fieldId, modal }
+
+  function closeAiChoicesModal() {
+    if (!activeAiChoicesModal) return;
+    activeAiChoicesModal.modal.remove();
+    activeAiChoicesModal = null;
+  }
+
+  // Captured prompt-icon list — class name + label text used by real plugin.
+  const AI_CHOICES_SAMPLE_PROMPTS = [
+    ['wpforms-ai-chat-flag',       'american public holidays with dates in brackets'],
+    ['wpforms-ai-chat-clover',     'provinces of canada ordered by population'],
+    ['wpforms-ai-chat-thumbs-up',  'top 5 social networks in europe'],
+    ['wpforms-ai-chat-globe',      'top 10 most spoken languages in the world'],
+    ['wpforms-ai-chat-palm',       'top 20 most popular tropical travel destinations'],
+    ['wpforms-ai-chat-shop',       '30 household item categories for a marketplace'],
+  ];
+
+  function openAiChoicesModal(fieldId) {
+    closeAiChoicesModal();
+    // Minimum positioning override — the captured snapshot only has
+    // `.jconfirm { display:none }` and the inner styles; the outer
+    // overlay positioning isn't bundled. Force it open + centered.
+    if (!document.getElementById('wpf-snap-ai-choices-css')) {
+      const style = document.createElement('style');
+      style.id = 'wpf-snap-ai-choices-css';
+      style.textContent = [
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open{display:flex !important;position:fixed;inset:0;align-items:center;justify-content:center;z-index:2147483647;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .jconfirm-box-container{display:block}',
+        // Override the .jconfirm-box grid layout that the captured CSS
+        // sets for confirmation dialogs — single column here.
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .jconfirm-box{display:block;width:650px;max-width:92vw;height:auto;max-height:80vh;overflow:hidden;border-radius:6px;background:#fff}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .jconfirm-content-pane{margin:0;padding:0;overflow:hidden;height:auto;max-height:none}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .jconfirm-content,.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .jconfirm-content>div{height:auto;overflow:visible}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open wpforms-ai-chat{display:block}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat{display:flex;flex-direction:column}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-message-list{padding:46px 30px 20px;overflow:auto;max-height:540px}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-header-title{font-size:20px;font-weight:600;color:#1d2327;margin:0 0 8px}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-header-description{display:block;font-size:13px;color:#6a6f76;line-height:1.5;margin-bottom:18px}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts{list-style:none;padding:0;margin:0;border-top:1px solid #eee}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts li{position:relative;display:flex;align-items:center;gap:12px;padding:12px 8px;border-bottom:1px solid #eee;cursor:pointer}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts li:hover{background:#fafafa}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts li{position:relative}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts li i{display:inline-block;width:20px;height:20px;background-size:contain;background-repeat:no-repeat;background-position:center;flex-shrink:0;background-color:transparent;border-radius:0;opacity:1}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts li a{flex:1;color:#1d2327;text-decoration:none;font-size:14px}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts li:hover a{color:#5c24a9}',
+        // Real sample-prompt icons hosted on the WPForms QA CDN.
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts li i.wpforms-ai-chat-flag{background-image:url("https://qa.wpforms.wpfc.io/wp-content/plugins/wpforms/assets/images/integrations/ai/flag-usa.svg")}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts li i.wpforms-ai-chat-clover{background-image:url("https://qa.wpforms.wpfc.io/wp-content/plugins/wpforms/assets/images/integrations/ai/leaf-maple.svg")}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts li i.wpforms-ai-chat-thumbs-up{background-image:url("https://qa.wpforms.wpfc.io/wp-content/plugins/wpforms/assets/images/integrations/ai/thumbs-up.svg")}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts li i.wpforms-ai-chat-globe{background-image:url("https://qa.wpforms.wpfc.io/wp-content/plugins/wpforms/assets/images/integrations/ai/globe-americas.svg")}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts li i.wpforms-ai-chat-palm{background-image:url("https://qa.wpforms.wpfc.io/wp-content/plugins/wpforms/assets/images/integrations/ai/tree-palm.svg")}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts li i.wpforms-ai-chat-shop{background-image:url("https://qa.wpforms.wpfc.io/wp-content/plugins/wpforms/assets/images/integrations/ai/store.svg")}',
+        // Send-arrow on the right end of each prompt row (visible on hover/focus in the real plugin).
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts li::after{content:"";position:absolute;right:8px;top:50%;transform:translateY(-50%);width:16px;height:16px;background:url("https://qa.wpforms.wpfc.io/wp-content/plugins/wpforms/assets/images/integrations/ai/icon-send-purple.svg") center/contain no-repeat;opacity:0;transition:opacity 0.15s}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-welcome-screen-sample-prompts li:hover::after{opacity:1}',
+        // Message input bar — match captured plugin shape.
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-message-input{display:flex;position:relative;height:134px;padding:40px;background:#f6f7f7;border-top:1px solid #eee;box-sizing:border-box}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-message-input textarea{width:100%;height:54px;min-height:54px;padding:10px 54px 10px 15px;border:1px solid #c3c4c7;border-radius:6px;font-size:16px;font-family:inherit;resize:none;box-sizing:border-box;background:#fff;box-shadow:0 2px 2px 0 rgba(0,0,0,0.07);margin:0;line-height:1.5}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-message-input textarea:focus{outline:none;border-color:#7a30e2}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-message-input textarea::placeholder{color:#a7aaad}',
+        // Send + Stop buttons — small purple rounded squares anchored inside the textarea right gutter.
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-message-input .wpforms-ai-chat-send,.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-message-input .wpforms-ai-chat-stop{position:absolute;right:51px;width:32px;height:32px;border-radius:4px;background-color:#7a30e2;border:none;cursor:pointer;padding:0;background-repeat:no-repeat;background-position:center;background-size:16px}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-message-input .wpforms-ai-chat-send{background-image:url("https://qa.wpforms.wpfc.io/wp-content/plugins/wpforms/assets/images/integrations/ai/icon-send.svg")}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-message-input .wpforms-ai-chat-stop{background-image:url("https://qa.wpforms.wpfc.io/wp-content/plugins/wpforms/assets/images/integrations/ai/icon-stop.svg");background-size:14px}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-message-input .wpforms-ai-chat-send:hover,.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-message-input .wpforms-ai-chat-stop:hover{background-color:#5c24a9}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-message-input .wpforms-ai-chat-send[disabled]{background-color:#c7b5f5;cursor:not-allowed}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-stop.wpforms-hidden,.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-chat-send.wpforms-hidden{display:none}',
+        // Top bar (pin + close)
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-modal-top-bar{height:46px}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .jconfirm-closeIcon{font-size:24px;color:#666;cursor:pointer;line-height:1;user-select:none}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .jconfirm-closeIcon:hover{color:#000}',
+        '.jconfirm.jconfirm-wpforms-ai-modal.wpf-snap-open .wpforms-ai-modal-pin{cursor:pointer;background-image:url("https://qa.wpforms.wpfc.io/wp-content/plugins/wpforms/assets/images/integrations/ai/pin-chat.svg");background-size:14px 12px;background-position:center;background-repeat:no-repeat}',
+      ].join('\n');
+      document.head.appendChild(style);
+    }
+    const modal = document.createElement('div');
+    modal.className = 'jconfirm jconfirm-wpforms-ai-modal jconfirm-wpforms-ai-purple wpf-snap-open';
+    const promptListItems = AI_CHOICES_SAMPLE_PROMPTS.map(([iconCls, label]) =>
+      '<li data-prompt="" tabindex="0">' +
+        '<i class="' + iconCls + '"></i>' +
+        '<a href="#" tabindex="-1">' + label + '</a>' +
+      '</li>'
+    ).join('');
+    modal.innerHTML =
+      '<div class="jconfirm-bg" style="position:absolute;inset:0;background:rgba(114,119,124,0.35);backdrop-filter:blur(1px)"></div>' +
+      '<div class="jconfirm-scrollpane" style="position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%">' +
+        '<div class="jconfirm-box-container jconfirm-animated jconfirm-no-transition">' +
+          '<div class="jconfirm-box jconfirm-type-ai" role="dialog">' +
+            '<div class="wpforms-ai-modal-top-bar">' +
+              '<div class="wpforms-ai-modal-pin" title="Dock to the Right"></div>' +
+              '<div class="jconfirm-closeIcon" title="Close">×</div>' +
+            '</div>' +
+            '<div class="jconfirm-content-pane no-scroll">' +
+              '<div class="jconfirm-content">' +
+                '<div>' +
+                  '<wpforms-ai-chat mode="choices" field-id="' + fieldId + '">' +
+                    '<div class="wpforms-ai-chat">' +
+                      '<div class="wpforms-ai-chat-message-list wpforms-scrollbar-compact">' +
+                        '<div class="wpforms-ai-chat-message-item item-primary">' +
+                          '<div class="wpforms-ai-chat-welcome-screen">' +
+                            '<div class="wpforms-ai-chat-header">' +
+                              '<h3 class="wpforms-ai-chat-header-title">Generate Choices</h3>' +
+                              '<span class="wpforms-ai-chat-header-description">Describe the choices you would like to create or use one of the examples below to get started.</span>' +
+                            '</div>' +
+                            '<ul class="wpforms-ai-chat-welcome-screen-sample-prompts">' + promptListItems + '</ul>' +
+                          '</div>' +
+                        '</div>' +
+                      '</div>' +
+                      '<div class="wpforms-ai-chat-message-input">' +
+                        '<textarea placeholder="What would you like to create?"></textarea>' +
+                        '<button type="button" class="wpforms-ai-chat-send" disabled></button>' +
+                        '<button type="button" class="wpforms-ai-chat-stop wpforms-hidden"></button>' +
+                      '</div>' +
+                    '</div>' +
+                  '</wpforms-ai-chat>' +
+                '</div>' +
+              '</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    document.body.appendChild(modal);
+    activeAiChoicesModal = { fieldId, modal };
+    const ta = modal.querySelector('textarea');
+    const sendBtn = modal.querySelector('.wpforms-ai-chat-send');
+    ta.addEventListener('input', () => {
+      if ((ta.value || '').trim().length > 0) sendBtn.removeAttribute('disabled');
+      else sendBtn.setAttribute('disabled', '');
+    });
+    setTimeout(() => ta.focus(), 50);
+  }
+
   function closeIconPicker() {
     if (!activeIconPicker) return;
     activeIconPicker.modal.remove();
@@ -6168,6 +8249,98 @@
       }
     }
   }
+
+  // AI Choices modal — close / pin / sample-prompt / send / stop / bg.
+  function runAiChoicesGenerate() {
+    if (!activeAiChoicesModal) return;
+    const modal = activeAiChoicesModal.modal;
+    const fid = activeAiChoicesModal.fieldId;
+    const ta = modal.querySelector('textarea');
+    const prompt = (ta?.value || '').trim();
+    if (!prompt) return;
+    const send = modal.querySelector('.wpforms-ai-chat-send');
+    const stop = modal.querySelector('.wpforms-ai-chat-stop');
+    if (send) send.classList.add('wpforms-hidden');
+    if (stop) stop.classList.remove('wpforms-hidden');
+    setTimeout(() => {
+      const labels = generateChoicesFromPrompt(prompt);
+      replaceFieldChoices(fid, labels);
+      closeAiChoicesModal();
+    }, 720);
+  }
+  document.addEventListener('click', (e) => {
+    const target = e.target;
+    if (!(target instanceof HTMLElement)) return;
+    if (!activeAiChoicesModal) return;
+    const modal = activeAiChoicesModal.modal;
+    // Close icon
+    if (target.closest('.jconfirm-closeIcon')) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeAiChoicesModal();
+      return;
+    }
+    // Pin (dock) — visual-only toggle
+    if (target.closest('.wpforms-ai-modal-pin')) {
+      e.preventDefault();
+      e.stopPropagation();
+      modal.classList.toggle('pinned');
+      return;
+    }
+    // Stop button mid-"generation"
+    if (target.closest('.wpforms-ai-chat-stop')) {
+      e.preventDefault();
+      e.stopPropagation();
+      const send = modal.querySelector('.wpforms-ai-chat-send');
+      const stop = modal.querySelector('.wpforms-ai-chat-stop');
+      if (send) send.classList.remove('wpforms-hidden');
+      if (stop) stop.classList.add('wpforms-hidden');
+      return;
+    }
+    // Send button
+    if (target.closest('.wpforms-ai-chat-send')) {
+      e.preventDefault();
+      e.stopPropagation();
+      runAiChoicesGenerate();
+      return;
+    }
+    // Sample prompt click
+    const sampleLi = target.closest(
+      '.wpforms-ai-chat-welcome-screen-sample-prompts li'
+    );
+    if (sampleLi && modal.contains(sampleLi)) {
+      e.preventDefault();
+      e.stopPropagation();
+      const payload = sampleLi.getAttribute('data-prompt') || '';
+      const linkText = (sampleLi.querySelector('a')?.textContent || '').trim();
+      const prompt = (payload && payload.length > 0)
+        ? decodeAiPrompt(payload)
+        : linkText;
+      const ta = modal.querySelector('textarea');
+      if (ta) {
+        ta.value = prompt;
+        const sendBtn = modal.querySelector('.wpforms-ai-chat-send');
+        if (sendBtn) sendBtn.removeAttribute('disabled');
+        ta.focus();
+      }
+      return;
+    }
+    // Backdrop click → close
+    if (target.classList.contains('jconfirm-bg') ||
+        target.classList.contains('jconfirm-scrollpane')) {
+      closeAiChoicesModal();
+    }
+  });
+  // Enter in textarea → trigger send (matches real plugin UX).
+  document.addEventListener('keydown', (e) => {
+    if (!activeAiChoicesModal) return;
+    if (e.key !== 'Enter' || e.shiftKey) return;
+    const t = e.target;
+    if (!(t instanceof HTMLTextAreaElement)) return;
+    if (!activeAiChoicesModal.modal.contains(t)) return;
+    e.preventDefault();
+    runAiChoicesGenerate();
+  });
 
   document.addEventListener('click', (e) => {
     const target = e.target;
@@ -6672,6 +8845,28 @@
     }
   }
 
+  // ─── AI Builder: initial state on each snapshot load ──────────────────
+  function initAiBuilder() {
+    const slug = getCurrentSnapshotSlug();
+    if (slug !== AI_EMPTY_SLUG && slug !== AI_GENERATED_SLUG) return;
+    const ta = document.querySelector('.wpforms-ai-chat-message-input textarea');
+    if (!ta) return;
+    // Restore typed prompt across snapshot transitions (so refresh → empty
+    // → user re-types is preserved if they navigate fast).
+    if (slug === AI_EMPTY_SLUG) {
+      try {
+        const stored = sessionStorage.getItem('wpf:aiLastPrompt');
+        if (stored && !ta.value) ta.value = stored;
+      } catch (_) {}
+    }
+    updateAiSendState(ta);
+    // Make sure Send is visible and Stop hidden when a snapshot first loads.
+    const send = document.querySelector('.wpforms-ai-chat-send');
+    const stop = document.querySelector('.wpforms-ai-chat-stop');
+    if (send) send.classList.remove('wpforms-hidden');
+    if (stop) stop.classList.add('wpforms-hidden');
+  }
+
   function runInits() {
     initSuppressWPAdminOverlays();
     initSettingsGeneralTags();
@@ -6684,6 +8879,8 @@
     initSpamFilterMessages();
     initSpamKeywordList();
     initConfirmationMessageEditors();
+    initAiBuilder();
+    initSnapshotPromoteApi();
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', runInits);

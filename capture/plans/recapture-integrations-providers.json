@@ -1,0 +1,37 @@
+{
+  "_comment": "Phase 3 of handoff-7 — recapture admin-settings-integrations and builder-providers so currently-promotional / education-modal rows that have since been activated on sulliesbakery show their real functional markup. interactivity.js's universal handlers pick them up automatically. Form id 55 (Contact Us) reused from klaviyo-builder.json so the builder loads with the same context.",
+  "variants": [
+    {
+      "slug": "admin-settings-integrations",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-settings&view=integrations",
+      "waitFor": "#wpforms-settings-providers .wpforms-settings-provider-header"
+    },
+    {
+      "slug": "builder-providers",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers"
+    },
+    {
+      "slug": "builder-providers-convertkit",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        { "click": "#wpforms-panel-providers .wpforms-panel-sidebar-section-convertkit, [data-section=\"convertkit\"]", "settle": 800 }
+      ]
+    },
+    {
+      "slug": "builder-providers-klaviyo",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        { "click": "#wpforms-panel-providers .wpforms-panel-sidebar-section-klaviyo, [data-section=\"klaviyo\"]", "settle": 800 }
+      ]
+    }
+  ]
+}

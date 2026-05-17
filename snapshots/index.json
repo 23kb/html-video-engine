@@ -1,6 +1,6 @@
 {
   "generatedAt": "2026-05-11T06:42:00.528Z",
-  "count": 85,
+  "count": 124,
   "snapshots": [
     {
       "slug": "admin-about",
@@ -190,28 +190,6 @@
       "topics": [
         "settings",
         "integrations"
-      ],
-      "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=integrations"
-    },
-    {
-      "slug": "admin-settings-integrations-klaviyo-form",
-      "category": "admin/page",
-      "shows": "Settings → Integrations Klaviyo connection form open (API Key + Nickname + Connect to Klaviyo)",
-      "topics": [
-        "integrations",
-        "klaviyo",
-        "connect-flow"
-      ],
-      "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=integrations"
-    },
-    {
-      "slug": "admin-settings-integrations-klaviyo-open",
-      "category": "admin/page",
-      "shows": "Settings → Integrations with Klaviyo accordion expanded — shows connected account + Add New Account",
-      "topics": [
-        "integrations",
-        "klaviyo",
-        "marketing"
       ],
       "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=integrations"
     },
@@ -637,6 +615,36 @@
       "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=providers"
     },
     {
+      "slug": "builder-providers-activecampaign",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — ActiveCampaign provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-activecampaign-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — ActiveCampaign with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-aweber_v2",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — AWeber provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-aweber_v2-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — AWeber with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-constant-contact-v3",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Constant Contact provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-constant-contact-v3-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Constant Contact with a connection block mounted + cascading fields"
+    },
+    {
       "slug": "builder-providers-convertkit",
       "category": "builder/panel",
       "shows": "Form builder Marketing panel — ConvertKit provider settings",
@@ -647,6 +655,31 @@
         "integrations"
       ],
       "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
+    },
+    {
+      "slug": "builder-providers-convertkit-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Kit (ConvertKit) with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-drip",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Drip provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-drip-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Drip with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-hubspot",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — HubSpot provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-hubspot-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — HubSpot with a connection block mounted + cascading fields"
     },
     {
       "slug": "builder-providers-klaviyo",
@@ -660,6 +693,61 @@
       "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
     },
     {
+      "slug": "builder-providers-klaviyo-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Klaviyo with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-mailchimpv3",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Mailchimp v3 provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-mailchimpv3-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Mailchimp v3 with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-n8n",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — n8n provider selected, settings-block-default shown"
+    },
+    {
+      "slug": "builder-providers-n8n-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — n8n settings block, conditional logic ready"
+    },
+    {
+      "slug": "builder-providers-pipedrive",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Pipedrive provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-pipedrive-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Pipedrive with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-slack",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Slack provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-slack-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Slack with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-twilio",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Twilio provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-twilio-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Twilio with a connection block mounted + cascading fields"
+    },
+    {
       "slug": "builder-revisions",
       "category": "builder/panel",
       "shows": "Form builder Revisions panel — version history",
@@ -668,6 +756,16 @@
         "collaboration"
       ],
       "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=revisions"
+    },
+    {
+      "slug": "builder-settings-airtable",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Airtable provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-settings-airtable-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Airtable connection mounted, cascade fields hidden"
     },
     {
       "slug": "builder-settings-anti_spam",
@@ -713,6 +811,31 @@
       "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
     },
     {
+      "slug": "builder-settings-conversational_forms",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Conversational Forms panel"
+    },
+    {
+      "slug": "builder-settings-dropbox",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Dropbox provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-settings-dropbox-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Dropbox connection mounted, cascade fields hidden"
+    },
+    {
+      "slug": "builder-settings-entry_automation",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Entry Automation panel"
+    },
+    {
+      "slug": "builder-settings-form_locker",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Form Locker panel"
+    },
+    {
       "slug": "builder-settings-general",
       "category": "builder/settings",
       "shows": "Settings → General — form title, description, tags, CSS",
@@ -721,6 +844,36 @@
         "first-form"
       ],
       "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}"
+    },
+    {
+      "slug": "builder-settings-google-calendar",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Google Calendar provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-settings-google-calendar-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Google Calendar connection mounted, cascade fields hidden"
+    },
+    {
+      "slug": "builder-settings-google-drive",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Google Drive provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-settings-google-drive-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Google Drive connection mounted, cascade fields hidden"
+    },
+    {
+      "slug": "builder-settings-google-sheets",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Google Sheets provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-settings-google-sheets-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Google Sheets connection mounted, cascade fields hidden"
     },
     {
       "slug": "builder-settings-notifications",
@@ -743,6 +896,31 @@
       "sourcePath": "(not in manifest)"
     },
     {
+      "slug": "builder-settings-notion",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Notion provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-settings-notion-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Notion connection mounted, cascade fields hidden"
+    },
+    {
+      "slug": "builder-settings-pdf",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → PDF panel"
+    },
+    {
+      "slug": "builder-settings-save_resume",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Save and Resume panel"
+    },
+    {
+      "slug": "builder-settings-surveys_polls",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Surveys and Polls panel"
+    },
+    {
       "slug": "builder-settings-themes",
       "category": "builder/settings",
       "shows": "Settings → Themes — form styling theme selector",
@@ -752,6 +930,11 @@
         "appearance"
       ],
       "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}"
+    },
+    {
+      "slug": "builder-settings-webhooks",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Webhooks panel"
     },
     {
       "slug": "builder-setup",

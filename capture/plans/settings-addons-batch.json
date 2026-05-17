@@ -1,0 +1,300 @@
+{
+  "_comment": "Builder Settings tab — 6 storage providers (pre+post connection) + 7 form-level addons (panel only). Storage providers use eval-based clicks for resilience and skip the play-around step so the captured connection state is the initial Select Account dropdown only (per the no-premature-cascade rule).",
+  "variants": [
+    {
+      "slug": "builder-settings-dropbox",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"dropbox\"]",
+          "settle": 1200
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-dropbox-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"dropbox\"]",
+          "settle": 1200
+        },
+        {
+          "eval": "const btn = document.querySelector(\"#dropbox-provider .js-wpforms-builder-provider-connection-add:not(.wpforms-disabled):not(.hidden)\"); if (btn) btn.click(); else console.log(\"dropbox: add-btn disabled\");",
+          "settle": 1500
+        },
+        {
+          "eval": "const ok = document.querySelector(\".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)\"); if (ok) ok.click();",
+          "settle": 2500
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-google-drive",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"google-drive\"]",
+          "settle": 1200
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-google-drive-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"google-drive\"]",
+          "settle": 1200
+        },
+        {
+          "eval": "const btn = document.querySelector(\"#google-drive-provider .js-wpforms-builder-provider-connection-add:not(.wpforms-disabled):not(.hidden)\"); if (btn) btn.click(); else console.log(\"google-drive: add-btn disabled\");",
+          "settle": 1500
+        },
+        {
+          "eval": "const ok = document.querySelector(\".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)\"); if (ok) ok.click();",
+          "settle": 2500
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-google-sheets",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"google-sheets\"]",
+          "settle": 1200
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-google-sheets-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"google-sheets\"]",
+          "settle": 1200
+        },
+        {
+          "eval": "const btn = document.querySelector(\"#google-sheets-provider .js-wpforms-builder-provider-connection-add:not(.wpforms-disabled):not(.hidden)\"); if (btn) btn.click(); else console.log(\"google-sheets: add-btn disabled\");",
+          "settle": 1500
+        },
+        {
+          "eval": "const ok = document.querySelector(\".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)\"); if (ok) ok.click();",
+          "settle": 2500
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-google-calendar",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"google-calendar\"]",
+          "settle": 1200
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-google-calendar-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"google-calendar\"]",
+          "settle": 1200
+        },
+        {
+          "eval": "const btn = document.querySelector(\"#google-calendar-provider .js-wpforms-builder-provider-connection-add:not(.wpforms-disabled):not(.hidden)\"); if (btn) btn.click(); else console.log(\"google-calendar: add-btn disabled\");",
+          "settle": 1500
+        },
+        {
+          "eval": "const ok = document.querySelector(\".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)\"); if (ok) ok.click();",
+          "settle": 2500
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-airtable",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"airtable\"]",
+          "settle": 1200
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-airtable-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"airtable\"]",
+          "settle": 1200
+        },
+        {
+          "eval": "const btn = document.querySelector(\"#airtable-provider .js-wpforms-builder-provider-connection-add:not(.wpforms-disabled):not(.hidden)\"); if (btn) btn.click(); else console.log(\"airtable: add-btn disabled\");",
+          "settle": 1500
+        },
+        {
+          "eval": "const ok = document.querySelector(\".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)\"); if (ok) ok.click();",
+          "settle": 2500
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-notion",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"notion\"]",
+          "settle": 1200
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-notion-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"notion\"]",
+          "settle": 1200
+        },
+        {
+          "eval": "const btn = document.querySelector(\"#notion-provider .js-wpforms-builder-provider-connection-add:not(.wpforms-disabled):not(.hidden)\"); if (btn) btn.click(); else console.log(\"notion: add-btn disabled\");",
+          "settle": 1500
+        },
+        {
+          "eval": "const ok = document.querySelector(\".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)\"); if (ok) ok.click();",
+          "settle": 2500
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-entry_automation",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"entry_automation\"]",
+          "settle": 1200
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-pdf",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"pdf\"]",
+          "settle": 1200
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-surveys_polls",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"surveys_polls\"]",
+          "settle": 1200
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-conversational_forms",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"conversational_forms\"]",
+          "settle": 1200
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-form_locker",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"form_locker\"]",
+          "settle": 1200
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-save_resume",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"save_resume\"]",
+          "settle": 1200
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-webhooks",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"webhooks\"]",
+          "settle": 1200
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "_comment": "Resume the 4 form-level addons left over from batch-1",
+  "variants": [
+    {
+      "slug": "builder-settings-conversational_forms",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"conversational_forms\"]",
+          "settle": 1500
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-form_locker",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"form_locker\"]",
+          "settle": 1500
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-save_resume",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"save_resume\"]",
+          "settle": 1500
+        }
+      ]
+    },
+    {
+      "slug": "builder-settings-webhooks",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-settings",
+      "steps": [
+        {
+          "click": "#wpforms-panel-settings [data-section=\"webhooks\"]",
+          "settle": 1500
+        }
+      ]
+    }
+  ]
+}

@@ -210,8 +210,8 @@ Authored inline DOM that depicts WPForms / Klaviyo / Stripe / etc. product UI mu
 1. Before authoring an inline UI fragment, identify the source snapshot (`snapshots/<name>/index.html`) and the specific element selector or DOM excerpt the fragment derives from.
 2. Add a code-level annotation at the top of the fragment:
    ```js
-   // SOURCE: snapshots/admin-settings-integrations-klaviyo-form/index.html
-   //         `.wpforms-integration-add-form .row-api-key`
+   // SOURCE: snapshots/admin-settings-integrations/index.html
+   //         `#wpforms-integration-klaviyo .wpforms-settings-provider-accounts-connect`
    ```
 3. If no snapshot exists and the fragment is unavoidable, get explicit user override BEFORE writing — and annotate with the override:
    ```js
