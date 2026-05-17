@@ -6,6 +6,7 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 
 ## Authoring contracts and skeletons
 
+- `authoring-prompts/README.md` — Reusable prompt templates for kicking off new video sessions. Per-kind copy-paste-then-fill-the-blanks briefs. Currently `builder-frontend-split.md` (single-field tutorial with builder left + frontend mirror right). Catalog will grow; README lists TODO kinds + future CLAUDE.md/skill-context wiring.
 - `authoring-api.md` — Public authoring contract. Manifest schema, chapter exports, descriptor mode, transitions, ctx helpers, validator behavior.
 - `current-workflow.md` — Thin pointer doc; the workflow loop lives in `wpforms-video` skill.
 - `dom-prep.md` — Three-layer DOM staging model: universal baseline → per-snapshot profile → chapter-local delta.
@@ -125,4 +126,5 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 
 - `videos/_shared/motion-primitives.js` — Executable motion primitives: `cinematicFlight`, `figjamFlight`, `focusStationOverview` (cameras); `Cursor` class with glide/click/hover/drag; `caretType`, `statusPillMorph`, `markerSweep`, `popOut`, `fieldStaggerReveal`, `mountSullieBug`, `cleanFastRejoin`, plus utilities. Owned by `wpforms-primitives` skill. QC at `videos/_qc-primitives/`.
 - `videos/_shared/wpforms-interactions.js` — Standard WPForms interactions. **Wave 1 (builder/admin):** `navAddNewForm`, `selectTemplate`, `navWPFormsSidebarMenu`, `openFormInList`, `dragFieldToForm`, `openFieldOptions`, `navBuilderSidebar`, `openSettingsTab` + sub-interactions. **Wave 2 Batch A (notifications + CL):** `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, `duplicateNotificationBlock`, notification setters (per `docs/library-scope-frequency-2026-05-12.md` retrospective ~6/15 earned status). **Plus `IframeManager`** with engine-pattern direct camera transform, OVERSAMPLE=1, pointer-events: none guard. Owned by `wpforms-primitives` skill. QC at `videos/_qc-interactions/`.
+- `videos/_shared/builder-frontend-split.js` — `BuilderFrontendSplit` class: split-screen authoring helper (builder left + frontend mirror right). Mounts two `IframeManager`s, auto-bridges `wpf:field-state` messages from builder to frontend, exposes `fadeInFrontend / fadeOutFrontend / isolateFrontend / showAllFrontend / setFieldState`. Mirror is automatic because `snapshots/_shared/interactivity.js` broadcasts and `snapshots/_shared/frontend.js` applies. Skeleton: `videos/_examples/builder-frontend-split-skeleton/index.html`. QC: `videos/_qc-frontend-mirror/index.html`.
 - `docs/wpforms-interactions-library-2026-05-11.md` — Per-interaction usage doc (template button variants, hover-state inventory, sub-interaction notes).

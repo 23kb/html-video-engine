@@ -1,0 +1,28 @@
+{
+  "_comment": "Pilot capture: Klaviyo pre-connection landing + post-Add-New-Connection state. The post-connection variant uses the real WPForms jconfirm modal (real plugin, not the snapshot's mirror) to add a connection, then plays around with the resulting form to exercise more fields.",
+  "variants": [
+    {
+      "slug": "builder-providers-klaviyo",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        { "click": "#wpforms-panel-providers .wpforms-panel-sidebar-section-klaviyo, [data-section=\"klaviyo\"]", "settle": 1000 }
+      ]
+    },
+    {
+      "slug": "builder-providers-klaviyo-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        { "click": "#wpforms-panel-providers .wpforms-panel-sidebar-section-klaviyo, [data-section=\"klaviyo\"]", "settle": 1000 },
+        { "click": "#klaviyo-provider .js-wpforms-builder-provider-connection-add", "settle": 1200 },
+        { "eval": "const inp = document.querySelector('.jconfirm input[type=text], .jconfirm input'); if (inp) inp.value = 'Klaviyo Connection';", "settle": 300 },
+        { "click": ".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)", "settle": 2500 }
+      ]
+    }
+  ]
+}

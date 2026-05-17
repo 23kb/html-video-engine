@@ -1,0 +1,605 @@
+{
+  "_comment": "Marketing addons — pre-connection landing + post-connection state per addon. 12 addons x 2 variants = 24 captures. Connection variant clicks Add New Connection, accepts the default nickname on the jconfirm modal, then dispatches change events to walk down the cascading selects (account -> action/list -> sub-field) and toggles Conditional Logic on. Generic enough for the WPForms standard provider shape.",
+  "variants": [
+    {
+      "slug": "builder-providers-activecampaign",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"activecampaign\"]",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-activecampaign-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"activecampaign\"]",
+          "settle": 1000
+        },
+        {
+          "click": "#activecampaign-provider .js-wpforms-builder-provider-connection-add",
+          "settle": 1200
+        },
+        {
+          "click": ".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)",
+          "settle": 2500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1200
+        },
+        {
+          "eval": "const cl = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection .wpforms-panel-field-conditional_logic-checkbox\"); if (cl && !cl.checked) { cl.checked = true; cl.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(cl).trigger(\"change\"); }",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-aweber_v2",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"aweber_v2\"]",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-aweber_v2-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"aweber_v2\"]",
+          "settle": 1000
+        },
+        {
+          "click": "#aweber_v2-provider .js-wpforms-builder-provider-connection-add",
+          "settle": 1200
+        },
+        {
+          "click": ".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)",
+          "settle": 2500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1200
+        },
+        {
+          "eval": "const cl = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection .wpforms-panel-field-conditional_logic-checkbox\"); if (cl && !cl.checked) { cl.checked = true; cl.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(cl).trigger(\"change\"); }",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-constant-contact-v3",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"constant-contact-v3\"]",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-constant-contact-v3-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"constant-contact-v3\"]",
+          "settle": 1000
+        },
+        {
+          "click": "#constant-contact-v3-provider .js-wpforms-builder-provider-connection-add",
+          "settle": 1200
+        },
+        {
+          "click": ".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)",
+          "settle": 2500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1200
+        },
+        {
+          "eval": "const cl = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection .wpforms-panel-field-conditional_logic-checkbox\"); if (cl && !cl.checked) { cl.checked = true; cl.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(cl).trigger(\"change\"); }",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-convertkit",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"convertkit\"]",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-convertkit-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"convertkit\"]",
+          "settle": 1000
+        },
+        {
+          "click": "#convertkit-provider .js-wpforms-builder-provider-connection-add",
+          "settle": 1200
+        },
+        {
+          "click": ".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)",
+          "settle": 2500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1200
+        },
+        {
+          "eval": "const cl = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection .wpforms-panel-field-conditional_logic-checkbox\"); if (cl && !cl.checked) { cl.checked = true; cl.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(cl).trigger(\"change\"); }",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-drip",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"drip\"]",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-drip-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"drip\"]",
+          "settle": 1000
+        },
+        {
+          "click": "#drip-provider .js-wpforms-builder-provider-connection-add",
+          "settle": 1200
+        },
+        {
+          "click": ".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)",
+          "settle": 2500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1200
+        },
+        {
+          "eval": "const cl = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection .wpforms-panel-field-conditional_logic-checkbox\"); if (cl && !cl.checked) { cl.checked = true; cl.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(cl).trigger(\"change\"); }",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-hubspot",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"hubspot\"]",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-hubspot-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"hubspot\"]",
+          "settle": 1000
+        },
+        {
+          "click": "#hubspot-provider .js-wpforms-builder-provider-connection-add",
+          "settle": 1200
+        },
+        {
+          "click": ".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)",
+          "settle": 2500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1200
+        },
+        {
+          "eval": "const cl = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection .wpforms-panel-field-conditional_logic-checkbox\"); if (cl && !cl.checked) { cl.checked = true; cl.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(cl).trigger(\"change\"); }",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-klaviyo",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"klaviyo\"]",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-klaviyo-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"klaviyo\"]",
+          "settle": 1000
+        },
+        {
+          "click": "#klaviyo-provider .js-wpforms-builder-provider-connection-add",
+          "settle": 1200
+        },
+        {
+          "click": ".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)",
+          "settle": 2500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1200
+        },
+        {
+          "eval": "const cl = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection .wpforms-panel-field-conditional_logic-checkbox\"); if (cl && !cl.checked) { cl.checked = true; cl.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(cl).trigger(\"change\"); }",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-mailchimpv3",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"mailchimpv3\"]",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-mailchimpv3-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"mailchimpv3\"]",
+          "settle": 1000
+        },
+        {
+          "click": "#mailchimpv3-provider .js-wpforms-builder-provider-connection-add",
+          "settle": 1200
+        },
+        {
+          "click": ".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)",
+          "settle": 2500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1200
+        },
+        {
+          "eval": "const cl = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection .wpforms-panel-field-conditional_logic-checkbox\"); if (cl && !cl.checked) { cl.checked = true; cl.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(cl).trigger(\"change\"); }",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-n8n",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"n8n\"]",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-n8n-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"n8n\"]",
+          "settle": 1000
+        },
+        {
+          "click": "#n8n-provider .js-wpforms-builder-provider-connection-add",
+          "settle": 1200
+        },
+        {
+          "click": ".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)",
+          "settle": 2500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1200
+        },
+        {
+          "eval": "const cl = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection .wpforms-panel-field-conditional_logic-checkbox\"); if (cl && !cl.checked) { cl.checked = true; cl.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(cl).trigger(\"change\"); }",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-pipedrive",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"pipedrive\"]",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-pipedrive-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"pipedrive\"]",
+          "settle": 1000
+        },
+        {
+          "click": "#pipedrive-provider .js-wpforms-builder-provider-connection-add",
+          "settle": 1200
+        },
+        {
+          "click": ".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)",
+          "settle": 2500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1200
+        },
+        {
+          "eval": "const cl = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection .wpforms-panel-field-conditional_logic-checkbox\"); if (cl && !cl.checked) { cl.checked = true; cl.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(cl).trigger(\"change\"); }",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-slack",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"slack\"]",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-slack-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"slack\"]",
+          "settle": 1000
+        },
+        {
+          "click": "#slack-provider .js-wpforms-builder-provider-connection-add",
+          "settle": 1200
+        },
+        {
+          "click": ".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)",
+          "settle": 2500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1200
+        },
+        {
+          "eval": "const cl = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection .wpforms-panel-field-conditional_logic-checkbox\"); if (cl && !cl.checked) { cl.checked = true; cl.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(cl).trigger(\"change\"); }",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-twilio",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"twilio\"]",
+          "settle": 1000
+        }
+      ]
+    },
+    {
+      "slug": "builder-providers-twilio-connection",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        {
+          "click": "#wpforms-panel-providers [data-section=\"twilio\"]",
+          "settle": 1000
+        },
+        {
+          "click": "#twilio-provider .js-wpforms-builder-provider-connection-add",
+          "settle": 1200
+        },
+        {
+          "click": ".jconfirm .btn-confirm, .jconfirm .jconfirm-buttons button:not(.btn-default):not(.btn-secondary)",
+          "settle": 2500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1500
+        },
+        {
+          "eval": "const block = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection\"); if (block) { const selects = block.querySelectorAll(\"select:not([disabled])\"); for (const s of selects) { if (!s.value) { const first = Array.from(s.options).find(o => o.value && !o.disabled); if (first) { s.value = first.value; s.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(s).trigger(\"change\"); break; } } } }",
+          "settle": 1200
+        },
+        {
+          "eval": "const cl = document.querySelector(\"#wpforms-panel-providers .wpforms-builder-provider-connection .wpforms-panel-field-conditional_logic-checkbox\"); if (cl && !cl.checked) { cl.checked = true; cl.dispatchEvent(new Event(\"change\", {bubbles:true})); if (window.jQuery) jQuery(cl).trigger(\"change\"); }",
+          "settle": 1000
+        }
+      ]
+    }
+  ]
+}

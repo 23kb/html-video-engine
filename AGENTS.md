@@ -37,17 +37,26 @@ If the user's request is ambiguous, ask **one question**: "Tutorial showing real
 - `reference/html-templates/editorial-reference-36s.html` + `editorial-reference-BEATS.md` — 36s linear-scene reference
 - `reference/html-templates/openai-replica-18s.html` — first-try single-HTML proof
 
-## Three libraries — use these, don't reinvent
+## Four libraries — use these, don't reinvent
 
-For any motion / camera / cursor / typing / field-reveal / brand-anchor / WPForms interaction / iframe-glue work, the executable code **already exists** in `videos/_shared/`. Reach for the library first. Inventing a new approximation is a recurring failure mode that re-opens bugs the library already fixed (cursor frenzy, caret drift, slide-projector cameras, snapshot-swap cream-flash).
+For any motion / camera / cursor / typing / field-reveal / brand-anchor / WPForms interaction / iframe-glue / split-screen-mirror work, the executable code **already exists** in `videos/_shared/`. Reach for the library first. Inventing a new approximation is a recurring failure mode that re-opens bugs the library already fixed (cursor frenzy, caret drift, slide-projector cameras, snapshot-swap cream-flash).
 
 - **`motion-primitives.js`** — animation kit: cameras (`cinematicFlight`, `figjamFlight`, `focusStationOverview`), `Cursor` class (glide / click / hover / drag), text (`caretType`, `statusPillMorph`, `markerSweep`), reveal (`popOut`, `fieldStaggerReveal`), brand (`mountSullieBug`, `cleanFastRejoin`), utils (`boundedRepeats`, `mulberry32`). Full when-to-use in `wpforms-primitives` skill. QC at `videos/_qc-primitives/index.html`.
 - **`wpforms-interactions.js`** — WPForms admin/builder interactions: `navAddNewForm`, `selectTemplate`, `openSettingsTab`, `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, `dragFieldToForm`, plus the `IframeManager` helper (native 1280×720 mount, engine-pattern camera transform, `pointer-events: none` guard). Full list in `wpforms-primitives` skill. QC at `videos/_qc-interactions/index.html`.
 - **`iframe-helpers.js`** — defensive-pattern glue: `glideClick` (scrollIntoView + glide + click in one call), `findInIframeByText` / `glideToText` for SaaS captures with content-hashed class names (Klaviyo `.sc-jTrPJq`, Mailchimp, Stripe). Use whenever class names won't survive a re-capture.
+- **`builder-frontend-split.js`** — split-screen authoring helper for "tweak the builder, watch the frontend mirror live" tutorial shape. `BuilderFrontendSplit` class mounts two `IframeManager`s side-by-side, auto-bridges builder→frontend `wpf:field-state` messages, exposes `fadeInFrontend / fadeOutFrontend / isolateFrontend / showAllFrontend / setFieldState`. Mirror works because `snapshots/_shared/interactivity.js` broadcasts every option change and `snapshots/_shared/frontend.js` (auto-loaded into `frontend-published-form`) applies the change to frontend DOM — nothing to wire per-video. Skeleton at `videos/_examples/builder-frontend-split-skeleton/index.html`. QC harness at `videos/_qc-frontend-mirror/index.html`.
 
 **Load the `wpforms-primitives` skill BEFORE writing motion / cursor / interaction code.** The skill is the per-primitive when-to-use index. Scanning the QC pages above is the fastest way to confirm a primitive matches your need before authoring.
 
-**Hard rule:** if you're about to write `gsap.to(cursor, ...)` or hand-mount a cursor element, stop and use the `Cursor` class. If you're about to write a click-Add-New-Form sequence, stop and call `navAddNewForm()`.
+**Hard rule:** if you're about to write `gsap.to(cursor, ...)` or hand-mount a cursor element, stop and use the `Cursor` class. If you're about to write a click-Add-New-Form sequence, stop and call `navAddNewForm()`. If you're about to mount two `<iframe>`s side-by-side and bridge messages between them, stop and use `BuilderFrontendSplit`.
+
+## Authoring prompt templates
+
+`docs/authoring-prompts/` holds reusable copy-paste-then-fill-the-blanks briefs for kicking off new video sessions. Currently:
+
+- `builder-frontend-split.md` — single-field tutorial with builder left + frontend mirror right (Checkbox / Date / Rating / etc.).
+
+When a fresh session asks "make a video about X", check this folder first — if a matching template exists, the storyboard / surface plan / constraints are already drafted. Catalog will grow; see `docs/authoring-prompts/README.md` for the TODO list of kinds still to write.
 
 ## ⛔ Two consumption patterns — match the skill type
 
