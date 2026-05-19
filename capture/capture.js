@@ -35,6 +35,16 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
+// Catalog generation runs in-process after each snapshot writes.
+// Lazily required so a missing tools/ dir doesn't break legacy invocations.
+let catalogTool = null;
+function tryRequireCatalogTool() {
+  if (catalogTool !== null) return catalogTool;
+  try { catalogTool = require('../tools/generate-snapshot-catalog.js'); }
+  catch (e) { catalogTool = false; }
+  return catalogTool;
+}
+
 const WP_URL  = process.env.WP_URL;
 const WP_USER = process.env.WP_USER;
 const WP_PASS = process.env.WP_PASS;
@@ -410,6 +420,22 @@ async function captureVariant(page, variant) {
   }, null, 2));
 
   console.log(`    ✓ wrote ${outDir} (${emittedCount} assets, ${skippedCount} unreferenced skipped)`);
+
+  // Auto-generate the per-snapshot selector catalog. Non-fatal — capture
+  // continues even if catalog emission throws (e.g. tools/ folder missing
+  // in a stripped-down environment). The catalog runs on the raw captured
+  // HTML; if a later post-process step (trim-builder-markup, dedup-css,
+  // consolidate-assets) modifies the HTML, re-run
+  // `node tools/generate-snapshot-catalog.js <slug>` to refresh.
+  const tool = tryRequireCatalogTool();
+  if (tool) {
+    try {
+      tool.emitFor(slug);
+      tool.refreshGlobalIndex();
+    } catch (e) {
+      console.warn(`    [warn] catalog emit failed for ${slug}: ${e.message}`);
+    }
+  }
 }
 
 (async () => {
