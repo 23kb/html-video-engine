@@ -1230,6 +1230,30 @@ function lintHfDataCompositionId(files) {
 //   2. Stitch manifest — videos/<slug>.video.json declares the HF pieces explicitly
 // The manifest source is preferred; the convention source acts as a fallback
 // for videos that haven't gotten a .video.json yet.
+// HF's compiler can't resolve CSS variables in `font-family:` declarations
+// — the compiler reads the literal value and looks it up against its
+// deterministic-font map. `var(--font)` always fails. This is the exact
+// bug fixed in klaviyo bookends 2026-05-19 (Tier 1.1).
+//
+// Narrow scope: flag `var(--*)` inside any `font-family:` or shorthand
+// `font:` declaration in HF compositions. Broader "every font must be in
+// the HF mapped set" is intentionally NOT implemented — would false-positive
+// on self-hosted @font-face fonts.
+function lintHfDeterministicFont(files) {
+  for (const file of files) {
+    if (!fs.existsSync(file)) continue;
+    const text = readText(file);
+    if (/lint-allow:\s*hf-deterministic-font/.test(text)) continue;
+    const re = /\bfont(?:-family)?\s*:\s*[^;}]*?\bvar\s*\(\s*--[\w-]+/g;
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      report('warning', file, lineOf(text, m.index),
+        'hf-deterministic-font lint: HF compiler cannot resolve CSS variables in font-family declarations; use a literal mapped font name (e.g. \'Inter\', \'Roboto\') so the deterministic-font pipeline can map it',
+        true);
+    }
+  }
+}
+
 function discoverHfCompositions(slug) {
   const out = new Set();
   const conventional = [
@@ -1407,7 +1431,9 @@ function runVideoChecks(video, opts = {}) {
   if (!skipLints.has('pausable-raf')) lintRawRaf([...chapters, ...runtimeCinematics]);
   if (!skipLints.has('register-timeline')) lintRegisterTimelinePaused([...chapters, ...runtimeCinematics]);
   if (!skipLints.has('template-literal-selector')) lintTemplateLiteralSelectors([...chapters, ...runtimeCinematics]);
-  if (!skipLints.has('hf-composition-id')) lintHfDataCompositionId(discoverHfCompositions(slug));
+  const hfFiles = discoverHfCompositions(slug);
+  if (!skipLints.has('hf-composition-id')) lintHfDataCompositionId(hfFiles);
+  if (!skipLints.has('hf-deterministic-font')) lintHfDeterministicFont(hfFiles);
   for (const [snap, sites] of refs) {
     if (snapshotFolderExists(snap)) continue;
     for (const site of sites) {
