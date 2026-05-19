@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-05-11T06:42:00.528Z",
-  "count": 124,
+  "generatedAt": "2026-05-19T17:08:49.038Z",
+  "count": 133,
   "snapshots": [
     {
       "slug": "admin-about",
@@ -10,7 +10,9 @@
         "about",
         "info"
       ],
-      "sourcePath": "/wp-admin/admin.php?page=wpforms-about"
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-about",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
     },
     {
       "slug": "admin-addons",
@@ -30,7 +32,9 @@
       "topics": [
         "community"
       ],
-      "sourcePath": "/wp-admin/admin.php?page=wpforms-community"
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-community",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
     },
     {
       "slug": "admin-entries",
@@ -40,7 +44,9 @@
         "entries",
         "submissions"
       ],
-      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries"
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
     },
     {
       "slug": "admin-entries-list",
@@ -232,7 +238,9 @@
         "smtp",
         "email-delivery"
       ],
-      "sourcePath": "/wp-admin/admin.php?page=wpforms-smtp"
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-smtp",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
     },
     {
       "slug": "admin-templates",
@@ -306,7 +314,9 @@
         "calculations",
         "formula-editor"
       ],
-      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder",
+      "status": "needs-recapture",
+      "statusNote": "meta.json on disk; index.html deleted in 63e05aa pending recapture"
     },
     {
       "slug": "builder-embed-modal",
@@ -423,6 +433,17 @@
       "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
     },
     {
+      "slug": "builder-field-options-likert_scale",
+      "category": "builder/field-options",
+      "shows": "Likert Scale field options panel — rows, columns, single-row, multiple-responses, style",
+      "topics": [
+        "fields",
+        "likert-scale",
+        "survey"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
+    },
+    {
       "slug": "builder-field-options-name",
       "category": "builder/field-options",
       "shows": "Field Options — Name (simple/first-last/full)",
@@ -431,6 +452,18 @@
         "name"
       ],
       "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-net_promoter_score",
+      "category": "builder/field-options",
+      "shows": "Net Promoter Score field options panel — scale, label inputs, style",
+      "topics": [
+        "fields",
+        "nps",
+        "net-promoter-score",
+        "survey"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
     },
     {
       "slug": "builder-field-options-number",
@@ -472,6 +505,17 @@
         "pro"
       ],
       "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-payment-fields",
+      "category": "builder/field-options",
+      "shows": "Combined payment fields options — single, checkbox, multiple, select, coupon, total + Stripe + PayPal Commerce canvases preserved",
+      "topics": [
+        "fields",
+        "payment",
+        "combined-snapshot"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
     },
     {
       "slug": "builder-field-options-phone",
@@ -957,7 +1001,9 @@
         "date-time",
         "availability"
       ],
-      "sourcePath": "/sample-page/"
+      "sourcePath": "/sample-page/",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
     },
     {
       "slug": "frontend-published-form",
@@ -969,6 +1015,77 @@
         "publish"
       ],
       "sourcePath": "/master-form-embedded/"
+    },
+    {
+      "slug": "klaviyo-api-keys",
+      "category": "docs/klaviyo",
+      "shows": "Klaviyo API keys listing page in the Klaviyo dashboard",
+      "topics": [
+        "klaviyo",
+        "docs",
+        "api-key",
+        "integration"
+      ],
+      "sourcePath": "https://www.klaviyo.com/account#api-keys-tab"
+    },
+    {
+      "slug": "klaviyo-create-api-key",
+      "category": "docs/klaviyo",
+      "shows": "Klaviyo \"Create new private API key\" form",
+      "topics": [
+        "klaviyo",
+        "docs",
+        "api-key",
+        "integration"
+      ],
+      "sourcePath": "https://www.klaviyo.com/account#api-keys-tab"
+    },
+    {
+      "slug": "klaviyo-dashboard",
+      "category": "docs/klaviyo",
+      "shows": "Klaviyo dashboard landing page (post-login)",
+      "topics": [
+        "klaviyo",
+        "docs",
+        "integration"
+      ],
+      "sourcePath": "https://www.klaviyo.com/dashboard"
+    },
+    {
+      "slug": "klaviyo-example-profile",
+      "category": "docs/klaviyo",
+      "shows": "Example Klaviyo profile detail page",
+      "topics": [
+        "klaviyo",
+        "docs",
+        "profile",
+        "integration"
+      ],
+      "sourcePath": "https://www.klaviyo.com/profile"
+    },
+    {
+      "slug": "klaviyo-private-key-confirmation",
+      "category": "docs/klaviyo",
+      "shows": "Klaviyo private API key created confirmation dialog",
+      "topics": [
+        "klaviyo",
+        "docs",
+        "api-key",
+        "integration"
+      ],
+      "sourcePath": "https://www.klaviyo.com/account#api-keys-tab"
+    },
+    {
+      "slug": "klaviyo-settings",
+      "category": "addon/klaviyo",
+      "shows": "WPForms Klaviyo addon settings page in WP admin",
+      "topics": [
+        "klaviyo",
+        "addon",
+        "settings",
+        "integration"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=integrations"
     },
     {
       "slug": "notifications",
@@ -986,7 +1103,9 @@
         "builder",
         "addon"
       ],
-      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
     },
     {
       "slug": "sp-results-418",
@@ -998,7 +1117,9 @@
         "addon",
         "analytics"
       ],
-      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries"
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
     },
     {
       "slug": "sp-results-new-418-base",
@@ -1060,7 +1181,9 @@
         "results",
         "legacy-reference"
       ],
-      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries"
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
     },
     {
       "slug": "wp-dashboard",
@@ -1097,5 +1220,6 @@
       ],
       "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=setup"
     }
-  ]
+  ],
+  "notes": "See docs/snapshot-interactivity.md for conventions. `status` field marks deferred/needs-recapture entries that are documented but not captured on disk."
 }

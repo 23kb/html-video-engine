@@ -138,9 +138,15 @@ function main() {
     console.log(`${s.slug}${shows}${onDiskFlag}`);
   }
 
-  // Disk-only (folders without index entries)
+  // Disk-only (folders without index entries). Only count dirs that look
+  // like real snapshots — i.e. ship a meta.json. Shared asset dirs (fonts,
+  // images, webfonts, docs-klaviyo) sit alongside snapshots but aren't
+  // snapshots themselves and would otherwise be reported as orphans on every
+  // run.
   const indexedSlugs = new Set(index.snapshots.map(s => s.slug));
-  const orphanFolders = [...onDisk].filter(n => !indexedSlugs.has(n) && !n.startsWith('.'));
+  const orphanFolders = [...onDisk]
+    .filter(n => !indexedSlugs.has(n) && !n.startsWith('.') && !n.startsWith('_'))
+    .filter(n => fs.existsSync(path.join(SNAP_DIR, n, 'meta.json')));
   if (orphanFolders.length && !args.search) {
     console.log('');
     console.log(`# ${orphanFolders.length} folder(s) on disk not in index.json:`);
