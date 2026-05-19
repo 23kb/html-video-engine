@@ -19,36 +19,66 @@
 //   Both can be overridden with piece.output = "...path/to.mp4"
 //
 // Usage:
-//   node tools/stitch.js <manifest-path>             # render each piece, then concat
-//   node tools/stitch.js <manifest-path> --no-render # skip rendering, just concat existing MP4s
-//   node tools/stitch.js <manifest-path> --dry-run   # print plan, do nothing
-//   node tools/stitch.js <manifest-path> --keep-list # don't delete the ffmpeg concat list.txt
+//   node tools/stitch.js <manifest-path>                   # render each piece, then concat with 0.3s xfade
+//   node tools/stitch.js <manifest-path> --no-render       # skip rendering, just concat existing MP4s
+//   node tools/stitch.js <manifest-path> --dry-run         # print plan, do nothing
+//   node tools/stitch.js <manifest-path> --xfade <seconds> # crossfade duration between pieces (default 0.3)
+//   node tools/stitch.js <manifest-path> --no-xfade        # hard cut between pieces (equivalent to --xfade 0)
+//   node tools/stitch.js <manifest-path> --fps <n>         # output framerate (default 30)
+//   node tools/stitch.js <manifest-path> --resolution WxH  # output resolution (default 1920x1080)
+//
+// The manifest can override CLI flags via top-level "xfade", "fps", "resolution" fields.
+//
+// Self-test (from repo root, assumes two existing MP4s exist):
+//   node tools/stitch.js videos/klaviyo-addon-tutorial.video.json --no-render --dry-run
+//   # then with --no-render to verify ffprobe + concat against the real outputs
 
 const fs = require('fs');
 const path = require('path');
 const { spawnSync } = require('child_process');
-const os = require('os');
 
 const ROOT = path.resolve(__dirname, '..');
 
+const DEFAULT_XFADE = 0.3;
+const DEFAULT_FPS = 30;
+const DEFAULT_RESOLUTION = '1920x1080';
+
 function usage(code = 1) {
-  console.error('Usage: node tools/stitch.js <manifest-path> [--no-render] [--dry-run] [--keep-list]');
+  console.error('Usage: node tools/stitch.js <manifest-path> [--no-render] [--dry-run] [--xfade <s>] [--no-xfade] [--fps <n>] [--resolution WxH]');
   process.exit(code);
 }
 
 function parseArgs(argv) {
-  const args = { manifest: null, render: true, dryRun: false, keepList: false };
+  const args = {
+    manifest: null,
+    render: true,
+    dryRun: false,
+    xfade: DEFAULT_XFADE,
+    fps: DEFAULT_FPS,
+    resolution: DEFAULT_RESOLUTION,
+  };
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--no-render') args.render = false;
     else if (a === '--dry-run') args.dryRun = true;
-    else if (a === '--keep-list') args.keepList = true;
+    else if (a === '--no-xfade') args.xfade = 0;
+    else if (a === '--xfade') args.xfade = Number(argv[++i]);
+    else if (a === '--fps') args.fps = Number(argv[++i]);
+    else if (a === '--resolution') args.resolution = argv[++i];
     else if (a === '-h' || a === '--help') usage(0);
     else if (!args.manifest && !a.startsWith('--')) args.manifest = a;
     else { console.error('unknown arg: ' + a); usage(); }
   }
   if (!args.manifest) usage();
+  if (!Number.isFinite(args.xfade) || args.xfade < 0) { console.error('--xfade must be >= 0'); usage(); }
+  if (!Number.isFinite(args.fps) || args.fps <= 0) { console.error('--fps must be > 0'); usage(); }
   return args;
+}
+
+function parseResolution(s) {
+  const m = /^(\d+)x(\d+)$/i.exec(String(s).trim());
+  if (!m) throw new Error('invalid resolution: ' + s);
+  return { width: Number(m[1]), height: Number(m[2]) };
 }
 
 function readManifest(manifestPath) {
@@ -138,40 +168,128 @@ function renderPiece(p) {
   return true;
 }
 
-function ffmpegConcat(inputs, output) {
+function ffprobeJSON(file) {
+  const r = spawnSync('ffprobe', [
+    '-v', 'error',
+    '-show_streams', '-show_format',
+    '-of', 'json',
+    file,
+  ], { encoding: 'utf8' });
+  if (r.status !== 0) throw new Error(`ffprobe failed on ${file}: ${r.stderr || ''}`);
+  return JSON.parse(r.stdout || '{}');
+}
+
+function probePieces(inputs) {
+  return inputs.map(file => {
+    const info = ffprobeJSON(file);
+    const vStream = (info.streams || []).find(s => s.codec_type === 'video');
+    const aStream = (info.streams || []).find(s => s.codec_type === 'audio');
+    const duration = Number(info.format && info.format.duration) || Number(vStream && vStream.duration) || 0;
+    return { file, duration, hasVideo: !!vStream, hasAudio: !!aStream };
+  });
+}
+
+function ffmpegConcat(inputs, output, opts = {}) {
+  const { xfade = DEFAULT_XFADE, fps = DEFAULT_FPS, resolution = DEFAULT_RESOLUTION } = opts;
+  const { width, height } = parseResolution(resolution);
   fs.mkdirSync(path.dirname(output), { recursive: true });
-  // Write a concat-demuxer list. ffmpeg `concat` demuxer requires identical
-  // codecs across all inputs (which our HF + render.js outputs should be —
-  // both H.264 / yuv420p / mp4 — but if they ever drift we'll fall back to
-  // re-encode mode automatically.)
-  const listPath = path.join(os.tmpdir(), `stitch-list-${Date.now()}.txt`);
-  const listContent = inputs.map(p => `file '${p.replace(/'/g, "'\\''")}'`).join('\n') + '\n';
-  fs.writeFileSync(listPath, listContent, 'utf8');
-  console.log(`[stitch] ffmpeg concat → ${output}`);
-  // Try copy first (fast, no re-encode)
-  let r = spawnSync('ffmpeg', [
-    '-y', '-hide_banner', '-loglevel', 'error',
-    '-f', 'concat', '-safe', '0', '-i', listPath,
-    '-c', 'copy', output,
-  ], { stdio: 'inherit' });
-  if (r.status !== 0) {
-    console.warn('[stitch] copy-concat failed, re-encoding…');
-    // Build complex_filter concat (handles codec/timebase mismatch)
-    const inArgs = [];
-    for (const f of inputs) { inArgs.push('-i', f); }
-    const n = inputs.length;
-    const filter = inputs.map((_, i) => `[${i}:v:0][${i}:a:0]`).join('') + `concat=n=${n}:v=1:a=1[outv][outa]`;
-    r = spawnSync('ffmpeg', [
+
+  // Probe each piece for duration + audio presence so we can build the xfade
+  // chain (xfade offsets are absolute timestamps on the accumulated stream).
+  const pieces = probePieces(inputs);
+  const n = pieces.length;
+  if (n === 0) return { ok: false };
+
+  console.log(`[stitch] pieces (probed):`);
+  for (const p of pieces) {
+    console.log(`  - ${path.relative(ROOT, p.file)}  dur=${p.duration.toFixed(2)}s  audio=${p.hasAudio}`);
+  }
+  console.log(`[stitch] ffmpeg → ${output} (xfade=${xfade}s, fps=${fps}, ${width}x${height})`);
+
+  // Single-piece case: just re-encode to matched params (no concat needed).
+  if (n === 1) {
+    const r = spawnSync('ffmpeg', [
       '-y', '-hide_banner', '-loglevel', 'error',
-      ...inArgs,
-      '-filter_complex', filter,
-      '-map', '[outv]', '-map', '[outa]',
+      '-i', pieces[0].file,
+      '-vf', `scale=${width}:${height}:flags=lanczos,fps=${fps},format=yuv420p`,
       '-c:v', 'libx264', '-pix_fmt', 'yuv420p',
-      '-c:a', 'aac', '-b:a', '192k',
+      ...(pieces[0].hasAudio ? ['-c:a', 'aac', '-b:a', '192k'] : []),
       output,
     ], { stdio: 'inherit' });
+    return { ok: r.status === 0 };
   }
-  return { ok: r.status === 0, listPath };
+
+  // Validate xfade fits within each adjacent pair (xfade can't exceed the
+  // shorter of the two; clamp instead of fail so we don't surprise a render).
+  const minNeighbour = Math.min(...pieces.map(p => p.duration));
+  const effectiveXfade = Math.min(xfade, Math.max(0, minNeighbour - 0.05));
+  if (xfade > 0 && effectiveXfade < xfade) {
+    console.warn(`[stitch] xfade clamped from ${xfade}s to ${effectiveXfade.toFixed(2)}s (shortest piece is ${minNeighbour.toFixed(2)}s)`);
+  }
+
+  const allHaveAudio = pieces.every(p => p.hasAudio);
+  if (!allHaveAudio && pieces.some(p => p.hasAudio)) {
+    console.warn('[stitch] mixed audio presence across pieces — audio will be dropped to avoid sync drift.');
+  }
+
+  const inArgs = [];
+  for (const p of pieces) inArgs.push('-i', p.file);
+
+  // Per-input video pre-filter: normalize scale/fps/format so xfade can chain.
+  const vPrep = pieces.map((_, i) => `[${i}:v:0]scale=${width}:${height}:flags=lanczos,fps=${fps},format=yuv420p,setpts=PTS-STARTPTS[v${i}p]`).join(';');
+
+  let filter;
+  let outV, outA;
+
+  if (effectiveXfade > 0) {
+    // Build the xfade chain. Each xfade reduces the running total by `xfade`s.
+    // offset for xfade k is: sum(pieces[0..k].duration) - (k+1) * xfade
+    let runningOffset = pieces[0].duration - effectiveXfade;
+    const chain = [];
+    let prevV = 'v0p';
+    for (let k = 1; k < n; k++) {
+      const outLabel = (k === n - 1) ? 'vout' : `vx${k}`;
+      chain.push(`[${prevV}][v${k}p]xfade=transition=fade:duration=${effectiveXfade}:offset=${runningOffset.toFixed(3)}[${outLabel}]`);
+      prevV = outLabel;
+      runningOffset += pieces[k].duration - effectiveXfade;
+    }
+    filter = vPrep + ';' + chain.join(';');
+    outV = '[vout]';
+
+    if (allHaveAudio) {
+      // acrossfade chain mirrors xfade.
+      const aChain = [];
+      let prevA = '0:a:0';
+      for (let k = 1; k < n; k++) {
+        const outLabel = (k === n - 1) ? 'aout' : `ax${k}`;
+        aChain.push(`[${prevA}][${k}:a:0]acrossfade=d=${effectiveXfade}[${outLabel}]`);
+        prevA = outLabel;
+      }
+      filter = filter + ';' + aChain.join(';');
+      outA = '[aout]';
+    }
+  } else {
+    // Hard-cut: concat filter (still re-encodes — drops `-c copy`).
+    const concatInputs = pieces.map((_, i) => allHaveAudio ? `[v${i}p][${i}:a:0]` : `[v${i}p]`).join('');
+    filter = vPrep + ';' + concatInputs + `concat=n=${n}:v=1:a=${allHaveAudio ? 1 : 0}` + (allHaveAudio ? '[vout][aout]' : '[vout]');
+    outV = '[vout]';
+    if (allHaveAudio) outA = '[aout]';
+  }
+
+  const ffmpegArgs = [
+    '-y', '-hide_banner', '-loglevel', 'error',
+    ...inArgs,
+    '-filter_complex', filter,
+    '-map', outV,
+    ...(outA ? ['-map', outA] : []),
+    '-c:v', 'libx264', '-pix_fmt', 'yuv420p',
+    '-movflags', '+faststart',
+    ...(outA ? ['-c:a', 'aac', '-b:a', '192k'] : []),
+    output,
+  ];
+
+  const r = spawnSync('ffmpeg', ffmpegArgs, { stdio: 'inherit' });
+  return { ok: r.status === 0 };
 }
 
 function main() {
@@ -179,6 +297,15 @@ function main() {
   const { manifest, manifestAbs } = readManifest(args.manifest);
   console.log(`[stitch] manifest: ${manifestAbs}`);
   console.log(`[stitch] slug: ${manifest.slug || '(none)'}`);
+
+  // Manifest fields override CLI flags only when CLI used defaults (i.e. the
+  // user didn't pass --xfade/--fps/--resolution on the command line). The
+  // simpler "manifest always wins" rule is fine for now; revisit if a user
+  // ever needs to override a manifest from the CLI.
+  const xfade = (typeof manifest.xfade === 'number') ? manifest.xfade : args.xfade;
+  const fps = (typeof manifest.fps === 'number') ? manifest.fps : args.fps;
+  const resolution = manifest.resolution || args.resolution;
+
   console.log(`[stitch] pieces:`);
   const expectedOutputs = [];
   for (const p of manifest.pieces) {
@@ -188,7 +315,7 @@ function main() {
     console.log(`  - [${p.kind}] ${p.path} → ${rel}`);
   }
   const finalOut = path.resolve(ROOT, manifest.output);
-  console.log(`[stitch] final → ${path.relative(ROOT, finalOut)}`);
+  console.log(`[stitch] final → ${path.relative(ROOT, finalOut)} (xfade=${xfade}s, fps=${fps}, ${resolution})`);
   if (args.dryRun) { console.log('[stitch] dry-run; exiting.'); return; }
 
   // Render each piece (unless --no-render)
@@ -210,8 +337,7 @@ function main() {
     }
   }
 
-  const { ok, listPath } = ffmpegConcat(expectedOutputs, finalOut);
-  if (!args.keepList) { try { fs.unlinkSync(listPath); } catch (_) {} }
+  const { ok } = ffmpegConcat(expectedOutputs, finalOut, { xfade, fps, resolution });
   if (!ok) {
     console.error('[stitch] ffmpeg concat failed.');
     process.exit(4);
