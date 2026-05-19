@@ -485,7 +485,7 @@ function refreshGlobalIndex() {
   }
 }
 
-(function main() {
+function main() {
   const { flags, slugs } = parseArgs(process.argv);
   const list = resolveSlugs(flags, slugs);
   if (!list.length) {
@@ -498,4 +498,11 @@ function refreshGlobalIndex() {
   const ok = results.filter(r => r.ok).length;
   console.log(`\n[catalog] emitted ${ok}/${results.length} catalogs`);
   if (!flags.has('--no-index')) refreshGlobalIndex();
-})();
+}
+
+if (require.main === module) main();
+
+// Exports so capture.js (and other in-process callers) can trigger catalog
+// generation without a child-process round trip. emitFor is per-slug;
+// refreshGlobalIndex rebuilds the aggregate snapshots/CATALOG.md.
+module.exports = { emitFor, refreshGlobalIndex };
