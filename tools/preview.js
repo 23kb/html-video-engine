@@ -43,6 +43,14 @@ function main() {
   const staticHandler = createRequestHandler({ injectPreview });
   const server = http.createServer((req, res) => {
     const url = new URL(req.url, `http://localhost:${args.port}`);
+    // Preview-client probes HEAD /__preview-ws to decide whether to open the
+    // live-reload WebSocket. Without this short-circuit the probe falls
+    // through to the static handler, returns 404, and no WS is ever opened.
+    if (url.pathname === '/__preview-ws') {
+      res.writeHead(426, { 'Upgrade': 'websocket', 'Connection': 'Upgrade' });
+      res.end();
+      return;
+    }
     if (url.pathname === '/scrubber') {
       const video = url.searchParams.get('video') || args.video;
       res.writeHead(200, { 'Content-Type': 'text/html' });
