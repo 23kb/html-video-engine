@@ -1001,7 +1001,7 @@ import {
   injectIframeFonts as _injectIframeFonts,
   inlineTreeStyles as _inlineTreeStyles,
   stripBuilderChrome as _stripBuilderChrome,
-} from '/runtime/pop-out.js';
+} from '../../runtime/pop-out.js';
 
 /**
  * Pop a UI block out of an iframe as a floating 2.5D card. Mirrors the
