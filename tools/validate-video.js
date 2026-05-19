@@ -1172,6 +1172,87 @@ function lintRawRaf(files) {
   }
 }
 
+// Template-literal CSS selectors break deterministic compile because the
+// selector isn't statically analyzable. Catches calls like:
+//   document.querySelector(`.foo-${id}`)
+//   el.querySelectorAll(`[data-x="${name}"]`)
+//   el.closest(`#${parent}`)
+// Static-string template literals (no ${...}) are fine; we only flag
+// interpolation.
+function lintTemplateLiteralSelectors(files) {
+  // querySelector/All, closest, matches — any DOM method that takes a CSS
+  // selector. The pattern matches the call site through to the closing
+  // backtick of the first arg, restricted to the SAME LINE to avoid
+  // multi-line false positives.
+  const re = /\b(?:querySelector(?:All)?|closest|matches|webkitMatchesSelector)\s*\(\s*(`[^`\r\n]*\$\{[^`\r\n]*`)/g;
+  for (const file of files) {
+    if (!fs.existsSync(file)) continue;
+    const text = readText(file);
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      // Skip if explicitly opted out on the same line
+      const lineStart = text.lastIndexOf('\n', m.index) + 1;
+      const lineEnd = text.indexOf('\n', m.index);
+      const line = text.slice(lineStart, lineEnd === -1 ? text.length : lineEnd);
+      if (/lint-allow:\s*template-literal-selector/.test(line)) continue;
+      report('warning', file, lineOf(text, m.index),
+        'template-literal-selector lint: CSS selector built from template literal with ${...} interpolation breaks HF deterministic compile; use static selector + data attribute or concatenate with string()',
+        true);
+    }
+  }
+}
+
+// HF compositions (intro/outro bookends + standalone hyperframes/) must
+// declare data-composition-id on the root element so the HF compiler can
+// identify the composition. Missing attribute = composition won't register.
+// Scoped to known HF locations:
+//   hyperframes/*/index.html
+//   videos/*-intro/index.html
+//   videos/*-outro/index.html
+function lintHfDataCompositionId(files) {
+  for (const file of files) {
+    if (!fs.existsSync(file)) continue;
+    const text = readText(file);
+    // Find the first non-doctype, non-html-tag opening element to check.
+    // Most HF compositions put data-composition-id on <body> or on the
+    // outermost wrapper div. Look for it anywhere in the head/body area.
+    if (/\bdata-composition-id\s*=\s*["'][^"']+["']/.test(text)) continue;
+    if (/lint-allow:\s*hf-composition-id/.test(text)) continue;
+    report('warning', file, 1,
+      'hf-composition-id lint: HF composition is missing data-composition-id="..." on root/wrapper element — HF compiler will not register the composition',
+      true);
+  }
+}
+
+// Discover HF composition HTML files associated with a given video slug.
+// Two sources:
+//   1. Naming convention — videos/<slug>-intro/index.html, videos/<slug>-outro/index.html
+//   2. Stitch manifest — videos/<slug>.video.json declares the HF pieces explicitly
+// The manifest source is preferred; the convention source acts as a fallback
+// for videos that haven't gotten a .video.json yet.
+function discoverHfCompositions(slug) {
+  const out = new Set();
+  const conventional = [
+    path.join(ROOT, 'videos', `${slug}-intro`, 'index.html'),
+    path.join(ROOT, 'videos', `${slug}-outro`, 'index.html'),
+  ];
+  for (const c of conventional) if (fs.existsSync(c)) out.add(c);
+
+  const stitchManifest = path.join(ROOT, 'videos', `${slug}.video.json`);
+  if (fs.existsSync(stitchManifest)) {
+    try {
+      const m = JSON.parse(fs.readFileSync(stitchManifest, 'utf8'));
+      for (const p of (m.pieces || [])) {
+        if (p.kind === 'hf' && p.path) {
+          const html = path.join(ROOT, p.path, 'index.html');
+          if (fs.existsSync(html)) out.add(html);
+        }
+      }
+    } catch (_) { /* invalid JSON — separate concern */ }
+  }
+  return [...out];
+}
+
 function lintRegisterTimelinePaused(files) {
   for (const file of files) {
     if (!fs.existsSync(file)) continue;
@@ -1325,6 +1406,8 @@ function runVideoChecks(video, opts = {}) {
   if (!skipLints.has('audio-duration')) lintAudioVsDuration(video, chapters, slug);
   if (!skipLints.has('pausable-raf')) lintRawRaf([...chapters, ...runtimeCinematics]);
   if (!skipLints.has('register-timeline')) lintRegisterTimelinePaused([...chapters, ...runtimeCinematics]);
+  if (!skipLints.has('template-literal-selector')) lintTemplateLiteralSelectors([...chapters, ...runtimeCinematics]);
+  if (!skipLints.has('hf-composition-id')) lintHfDataCompositionId(discoverHfCompositions(slug));
   for (const [snap, sites] of refs) {
     if (snapshotFolderExists(snap)) continue;
     for (const site of sites) {
