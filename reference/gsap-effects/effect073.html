@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Effect 073 — Scroll timeline with large dates (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#0a0806; font-family:var(--wpf-font-stack); overflow:hidden; }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; background:linear-gradient(180deg,#fdfaf3 0%,#ede1cb 100%); overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.45); }
+  .brand { position:absolute; top:60px; left:80px; display:flex; align-items:center; gap:12px; z-index:10; opacity:0; }
+  .brand .dot { width:14px; height:14px; border-radius:50%; background:var(--wpf-orange); }
+  .brand .name { font-weight:600; font-size:22px; letter-spacing:-0.01em; color:var(--wpf-ink-soft); }
+  .strip { position:absolute; top:50%; left:0; right:0; transform:translateY(-50%); display:flex; will-change:transform; }
+  .section { display:flex; width:1920px; flex-shrink:0; height:580px; align-items:center; padding:0 100px; gap:60px; }
+  .left { flex:1; }
+  .right { flex:1; text-align:right; }
+  .title { font-size:340px; font-weight:800; color:var(--wpf-ink); letter-spacing:-0.04em; line-height:1; will-change:transform; }
+  .copy .kicker { color:var(--wpf-orange); font-size:14px; font-weight:700; letter-spacing:0.20em; text-transform:uppercase; margin-bottom:10px; }
+  .copy .head { font-size:44px; font-weight:700; color:var(--wpf-ink); letter-spacing:-0.025em; line-height:1.1; }
+  .copy .sub { color:var(--wpf-ink-mute); font-size:18px; margin-top:14px; }
+  .section[data-c="blue"]   .copy .kicker { color:var(--wpf-blue); }
+  .section[data-c="purple"] .copy .kicker { color:var(--wpf-ai-purple); }
+  .section[data-c="green"]  .copy .kicker { color:#2c8a55; }
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; }
+</style></head><body>
+<div class="stage-wrap"><div class="stage" id="stage">
+  <div class="brand"><div class="dot"></div><div class="name">WPForms</div></div>
+  <div class="strip" id="strip">
+    <div class="section" data-c="orange"><div class="left"><div class="title">2017</div></div><div class="right copy"><div class="kicker">Genesis</div><div class="head">WPForms launches.</div><div class="sub">The simplest WordPress form builder ships.</div></div></div>
+    <div class="section" data-c="blue"><div class="left copy"><div class="kicker">Commerce</div><div class="head">Payments go live.</div><div class="sub">Stripe + PayPal · recurring or one-shot.</div></div><div class="right"><div class="title">2019</div></div></div>
+    <div class="section" data-c="purple"><div class="left"><div class="title">2022</div></div><div class="right copy"><div class="kicker">Intelligence</div><div class="head">AI joins the builder.</div><div class="sub">Describe what you want · get a working form.</div></div></div>
+    <div class="section" data-c="green"><div class="left copy"><div class="kicker">Today</div><div class="head">9,000 integrations.</div><div class="sub">Six million sites. One form builder.</div></div><div class="right"><div class="title">2026</div></div></div>
+  </div>
+</div></div>
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 073 · scroll timeline with large dates</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  function fit(){const s=document.getElementById('stage');s.style.transform=`scale(${Math.min(innerWidth/1920,(innerHeight-56)/1080)*0.96})`;}
+  addEventListener('resize',fit);fit();
+
+  const tl=gsap.timeline({paused:true});
+  tl.to('.brand',{opacity:1,duration:0.5,ease:'power2.out'},0.1);
+  tl.to('#strip',{x:-1920*3,duration:12,ease:'power1.inOut'},0.5);
+
+  // year titles drift opposite to scroll for emphasis
+  const titles=gsap.utils.toArray('.title');
+  titles.forEach((t,i)=>{
+    tl.fromTo(t,{x:300},{x:-300,duration:12,ease:'none'},0.5);
+  });
+
+  const sc=document.getElementById('scrub'),te=document.getElementById('time'),pb=document.getElementById('playBtn');
+  function ut(){te.textContent=tl.time().toFixed(2).padStart(5,'0')+' / '+tl.duration().toFixed(2).padStart(5,'0');}
+  sc.addEventListener('input',()=>{tl.pause();pb.textContent='Play';tl.progress(parseFloat(sc.value)/100);ut();});
+  gsap.ticker.add(()=>{if(!tl.paused()){sc.value=(tl.progress()*100).toFixed(2);ut();if(tl.progress()>=1)pb.textContent='Replay';}});
+  pb.addEventListener('click',()=>{if(tl.progress()>=1){tl.restart();pb.textContent='Pause';}else if(tl.paused()){tl.play();pb.textContent='Pause';}else{tl.pause();pb.textContent='Play';}});
+  ut();setTimeout(()=>{tl.play();pb.textContent='Pause';},400);
+</script></body></html>
