@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Effect 029 — Words shifting random (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#0a0806; font-family:var(--wpf-font-stack); overflow:hidden; }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; background:linear-gradient(135deg,#fdfaf3 0%,#f0e5cf 100%); overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.45); }
+  .brand { position:absolute; top:60px; left:80px; display:flex; align-items:center; gap:12px; z-index:10; opacity:0; }
+  .brand .dot { width:14px; height:14px; border-radius:50%; background:var(--wpf-orange); }
+  .brand .name { font-weight:600; font-size:22px; letter-spacing:-0.01em; color:var(--wpf-ink-soft); }
+  .meta-tag { position:absolute; top:60px; right:80px; color:var(--wpf-orange); font-size:13px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; opacity:0; z-index:10; }
+  .pin { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; padding:0 100px; }
+  .paragraph { font-size:78px; font-weight:600; color:var(--wpf-ink); letter-spacing:-0.025em; line-height:1.18; text-align:center; max-width:1500px; }
+  .word { display:inline-block; will-change:transform,opacity; margin-right:0.18em; }
+  .word.accent { color:var(--wpf-orange); }
+  .word.blue { color:var(--wpf-blue); }
+  .word.purple { color:var(--wpf-ai-purple); }
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; }
+</style></head><body>
+<div class="stage-wrap"><div class="stage" id="stage">
+  <div class="brand"><div class="dot"></div><div class="name">WPForms</div></div>
+  <div class="meta-tag">Different every render · seed 29</div>
+  <div class="pin"><p class="paragraph" id="p">
+    <span class="raw">Forms</span> <span class="raw accent">that</span> <span class="raw">people</span>
+    <span class="raw blue">actually</span> <span class="raw">want</span> <span class="raw">to</span>
+    <span class="raw">fill</span> <span class="raw purple">out</span> <span class="raw">—</span>
+    <span class="raw accent">six</span> <span class="raw">million</span> <span class="raw">times</span> <span class="raw">a</span> <span class="raw">day.</span>
+  </p></div>
+</div></div>
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 029 · words shifting (seeded random translations)</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  function mulberry32(a){return function(){let t=a+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296;}}
+  const rng = mulberry32(29);
+
+  const p = document.getElementById('p');
+  const raws = [...p.querySelectorAll('.raw')];
+  p.innerHTML = '';
+  raws.forEach((r) => {
+    const cls = [...r.classList].filter(c => c !== 'raw').join(' ');
+    const s = document.createElement('span');
+    s.className = 'word' + (cls ? ' ' + cls : '');
+    s.textContent = r.textContent;
+    p.appendChild(s);
+    p.appendChild(document.createTextNode(' '));
+  });
+  const words = gsap.utils.toArray('.word');
+
+  function fit() { const s=document.getElementById('stage'); s.style.transform=`scale(${Math.min(innerWidth/1920,(innerHeight-56)/1080)*0.96})`; }
+  addEventListener('resize', fit); fit();
+
+  // EACH word gets a random initial translation (seeded), animates back to (0,0)
+  // result is the source's "random every render" feel, but deterministic per seed
+  words.forEach((w) => {
+    const dx = (rng() - 0.5) * 800;
+    const dy = (rng() - 0.5) * 400;
+    const rot = (rng() - 0.5) * 30;
+    gsap.set(w, { x: dx, y: dy, rotate: rot, opacity: 0, scale: 0.7 });
+  });
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1)
+    .to('.meta-tag', { opacity: 1, duration: 0.5 }, 0.25);
+
+  // words converge to their natural position with elastic settle, in a wave from center outward
+  const center = (words.length - 1) / 2;
+  words.forEach((w, i) => {
+    const dist = Math.abs(i - center);
+    tl.to(w, {
+      x: 0, y: 0, rotate: 0, scale: 1, opacity: 1,
+      duration: 1.0,
+      ease: 'back.out(1.2)'
+    }, 0.4 + dist * 0.04);
+  });
+
+  // gentle final breath (subtle drift)
+  tl.to(words, { y: '+=4', duration: 1.8, ease: 'sine.inOut', yoyo: true, repeat: 1, stagger: { each: 0.04, from: 'random' }}, '+=0.2');
+
+  const sc=document.getElementById('scrub'),te=document.getElementById('time'),pb=document.getElementById('playBtn');
+  function ut(){te.textContent=tl.time().toFixed(2).padStart(5,'0')+' / '+tl.duration().toFixed(2).padStart(5,'0');}
+  sc.addEventListener('input',()=>{tl.pause();pb.textContent='Play';tl.progress(parseFloat(sc.value)/100);ut();});
+  gsap.ticker.add(()=>{if(!tl.paused()){sc.value=(tl.progress()*100).toFixed(2);ut();if(tl.progress()>=1)pb.textContent='Replay';}});
+  pb.addEventListener('click',()=>{if(tl.progress()>=1){tl.restart();pb.textContent='Pause';}else if(tl.paused()){tl.play();pb.textContent='Pause';}else{tl.pause();pb.textContent='Play';}});
+  ut(); setTimeout(()=>{tl.play();pb.textContent='Pause';},400);
+</script></body></html>

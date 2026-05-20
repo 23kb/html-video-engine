@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Effect 011 — Smooth letters R→L (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#0a0806; font-family:var(--wpf-font-stack); overflow:hidden; }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; background:radial-gradient(ellipse at center,#fdf8f0 0%,#e9dec8 100%); overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.45); }
+  .brand { position:absolute; top:60px; left:80px; display:flex; align-items:center; gap:12px; z-index:10; opacity:0; }
+  .brand .dot { width:14px; height:14px; border-radius:50%; background:var(--wpf-orange); }
+  .brand .name { font-weight:600; font-size:22px; letter-spacing:-0.01em; color:var(--wpf-ink-soft); }
+  .container { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .text { font-size:160px; font-weight:800; letter-spacing:-0.03em; color:var(--wpf-ink); white-space:nowrap; line-height:1; will-change:transform; }
+  .text .char { display:inline-block; will-change:transform,opacity; }
+  .text .char.accent { color:var(--wpf-orange); }
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; font-family:inherit; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; }
+</style></head><body>
+<div class="stage-wrap"><div class="stage" id="stage">
+  <div class="brand"><div class="dot"></div><div class="name">WPForms</div></div>
+  <div class="container"><div class="text" id="text" data-text="forms · made · simple · — · WPForms"></div></div>
+</div></div>
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 011 · smooth letters R→L</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  const t = document.getElementById('text');
+  const txt = t.dataset.text;
+  const accentWord = 'WPForms';
+  let inAccent = false, wordSoFar = '';
+  [...txt].forEach((ch, i) => {
+    // detect when we're inside the accent word
+    if (/[a-zA-Z]/.test(ch)) wordSoFar += ch; else wordSoFar = '';
+    const span = document.createElement('span');
+    span.className = 'char';
+    span.textContent = ch === ' ' ? ' ' : ch;
+    t.appendChild(span);
+  });
+  // mark accent characters: any char whose preceding non-letter run leads up to "WPForms"
+  // Simpler: walk back and tag any contiguous "WPForms" letters
+  const chars = [...t.querySelectorAll('.char')];
+  const full = chars.map(c => c.textContent).join('').replace(/ /g,' ');
+  const idx = full.indexOf(accentWord);
+  if (idx >= 0) {
+    for (let k = idx; k < idx + accentWord.length; k++) chars[k].classList.add('accent');
+  }
+
+  function fit() { const s=document.getElementById('stage'); s.style.transform=`scale(${Math.min(innerWidth/1920,(innerHeight-56)/1080)*0.96})`; }
+  addEventListener('resize', fit); fit();
+
+  // text starts FAR off-screen right, slides into center; each char also has subtle individual phase
+  gsap.set(chars, { x: 0, y: 30, opacity: 0 });
+  gsap.set('.text', { x: 1200 });
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1);
+
+  // first: chars themselves fade up + drop into place
+  tl.to(chars, { y: 0, opacity: 1, duration: 0.7, stagger: 0.025, ease: 'power3.out' }, 0.5);
+  // then the whole text slides R→L into final position
+  tl.to('.text', { x: 0, duration: 2.0, ease: 'power3.inOut' }, 0.5);
+  // small accent pulse on the WPForms part
+  tl.to('.text .accent', { scale: 1.05, duration: 0.3, ease: 'sine.out', yoyo: true, repeat: 1, stagger: 0.02 }, 2.6);
+
+  const sc=document.getElementById('scrub'),te=document.getElementById('time'),pb=document.getElementById('playBtn');
+  function ut(){te.textContent=tl.time().toFixed(2).padStart(5,'0')+' / '+tl.duration().toFixed(2).padStart(5,'0');}
+  sc.addEventListener('input',()=>{tl.pause();pb.textContent='Play';tl.progress(parseFloat(sc.value)/100);ut();});
+  gsap.ticker.add(()=>{if(!tl.paused()){sc.value=(tl.progress()*100).toFixed(2);ut();if(tl.progress()>=1)pb.textContent='Replay';}});
+  pb.addEventListener('click',()=>{if(tl.progress()>=1){tl.restart();pb.textContent='Pause';}else if(tl.paused()){tl.play();pb.textContent='Pause';}else{tl.pause();pb.textContent='Play';}});
+  ut(); setTimeout(()=>{tl.play();pb.textContent='Pause';},400);
+</script></body></html>
