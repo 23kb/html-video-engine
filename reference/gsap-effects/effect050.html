@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Effect 050 — Infinite fullscreen zoom (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root {
+    --stage-w: 1920px;
+    --stage-h: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #0a0806;
+    font-family: var(--wpf-font-stack);
+    overflow: hidden;
+    color: var(--wpf-ink);
+  }
+
+  .stage-wrap {
+    position: relative;
+    width: 100vw; height: calc(100vh - 56px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stage {
+    position: relative;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    transform-origin: center center;
+    background: #f4efe5;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.50);
+  }
+
+  /* each "page" is a fullscreen layer holding one form mock — they zoom from
+     scale 0 → 1 → 5 (continuing past the camera into the next layer) */
+  .layers {
+    position: absolute;
+    inset: 0;
+    perspective: 1500px;
+    transform-style: preserve-3d;
+  }
+  .layer {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    will-change: transform, opacity;
+    opacity: 0;
+  }
+  .form-card {
+    width: 720px;
+    background: white;
+    border-radius: 24px;
+    box-shadow:
+      0 40px 100px rgba(20,22,28,0.18),
+      0 8px 24px rgba(20,22,28,0.08);
+    padding: 48px;
+    display: flex; flex-direction: column; gap: 22px;
+  }
+  .form-card .top {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 6px;
+  }
+  .form-card .top .badge {
+    background: var(--wpf-orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .form-card .top .name {
+    color: var(--wpf-ink-soft);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .form-card .title {
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--wpf-ink);
+    line-height: 1.1;
+  }
+  .form-card .field {
+    background: #f5f1ea;
+    border: 1px solid #e2d9c9;
+    border-radius: 10px;
+    padding: 16px 18px;
+    font-size: 16px;
+    color: var(--wpf-ink-mute);
+  }
+  .form-card .field.tall { min-height: 110px; }
+  .form-card .submit {
+    background: var(--wpf-orange);
+    color: white;
+    border-radius: 10px;
+    text-align: center;
+    padding: 16px;
+    font-weight: 700;
+    font-size: 17px;
+  }
+
+  /* per-layer accent tinting */
+  .layer[data-i="1"] .form-card .top .badge { background: var(--wpf-blue); }
+  .layer[data-i="1"] .form-card .submit     { background: var(--wpf-blue); }
+  .layer[data-i="2"] .form-card .top .badge { background: var(--wpf-ai-purple); }
+  .layer[data-i="2"] .form-card .submit     { background: var(--wpf-ai-purple); }
+  .layer[data-i="3"] .form-card .top .badge { background: #2c8a55; }
+  .layer[data-i="3"] .form-card .submit     { background: #2c8a55; }
+  .layer[data-i="4"] .form-card .top .badge { background: var(--wpf-orange); }
+
+  /* brand + caption */
+  .brand {
+    position: absolute;
+    top: 56px; left: 64px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 20;
+    opacity: 0;
+  }
+  .brand .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--wpf-orange); }
+  .brand .name { font-weight: 600; font-size: 22px; letter-spacing: -0.01em; color: var(--wpf-ink-soft); }
+
+  .caption {
+    position: absolute;
+    bottom: 80px;
+    left: 0; right: 0;
+    text-align: center;
+    z-index: 20;
+    opacity: 0;
+  }
+  .caption .head {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--wpf-ink);
+  }
+  .caption .sub {
+    color: var(--wpf-ink-mute);
+    font-size: 18px;
+    margin-top: 8px;
+  }
+
+  /* progress dots indicating which layer we're in */
+  .dots {
+    position: absolute;
+    top: 56px; right: 64px;
+    z-index: 20;
+    display: flex; gap: 8px;
+    opacity: 0;
+  }
+  .dots .d {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: rgba(20,22,28,0.18);
+  }
+  .dots .d.active { background: var(--wpf-orange); transform: scale(1.4); }
+
+  /* controls */
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: #0f0d0c;
+    color: #e8e3dc;
+    display: flex; align-items: center; gap: 16px;
+    padding: 0 24px;
+    font-family: var(--wpf-font-stack);
+    font-size: 13px;
+  }
+  .controls button {
+    background: var(--wpf-orange); color: white; border: 0;
+    padding: 8px 16px; border-radius: 6px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .controls button:hover { background: var(--wpf-orange-hover); }
+  .controls input[type=range] { flex: 1; accent-color: var(--wpf-orange); }
+  .controls .t {
+    font-variant-numeric: tabular-nums;
+    min-width: 110px; text-align: right; color: #aaa;
+  }
+  .controls .meta { color: #888; margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="name">WPForms</div>
+    </div>
+
+    <div class="dots" id="dots">
+      <span class="d active"></span>
+      <span class="d"></span>
+      <span class="d"></span>
+      <span class="d"></span>
+      <span class="d"></span>
+    </div>
+
+    <div class="layers">
+      <!-- Layer 0: Contact -->
+      <div class="layer" data-i="0">
+        <div class="form-card">
+          <div class="top">
+            <div class="badge">Contact</div>
+            <div class="name">simple-contact.json</div>
+          </div>
+          <div class="title">Tell us about your project</div>
+          <div class="field">Your name</div>
+          <div class="field">you@company.com</div>
+          <div class="field tall">What can we help with?</div>
+          <div class="submit">Send message</div>
+        </div>
+      </div>
+
+      <!-- Layer 1: Payment -->
+      <div class="layer" data-i="1">
+        <div class="form-card">
+          <div class="top">
+            <div class="badge">Payment</div>
+            <div class="name">stripe-checkout.json</div>
+          </div>
+          <div class="title">Subscribe — $49 / month</div>
+          <div class="field">Card number · 4242 4242 4242 4242</div>
+          <div class="field">Expiry 12/27 · CVC ***</div>
+          <div class="field">Billing zip · 02110</div>
+          <div class="submit">Pay $49</div>
+        </div>
+      </div>
+
+      <!-- Layer 2: AI generator -->
+      <div class="layer" data-i="2">
+        <div class="form-card">
+          <div class="top">
+            <div class="badge">AI</div>
+            <div class="name">ai-form-generator.json</div>
+          </div>
+          <div class="title">Describe the form you want</div>
+          <div class="field tall">A signup form for a SaaS waitlist with role and use-case fields…</div>
+          <div class="field">Tone · Friendly</div>
+          <div class="submit">Generate form</div>
+        </div>
+      </div>
+
+      <!-- Layer 3: Survey -->
+      <div class="layer" data-i="3">
+        <div class="form-card">
+          <div class="top">
+            <div class="badge">Survey</div>
+            <div class="name">nps-feedback.json</div>
+          </div>
+          <div class="title">How was your experience?</div>
+          <div class="field">Rate us 1–10</div>
+          <div class="field">What worked well?</div>
+          <div class="field tall">Anything we could improve?</div>
+          <div class="submit">Send feedback</div>
+        </div>
+      </div>
+
+      <!-- Layer 4: Registration -->
+      <div class="layer" data-i="4">
+        <div class="form-card">
+          <div class="top">
+            <div class="badge">Event</div>
+            <div class="name">event-rsvp.json</div>
+          </div>
+          <div class="title">RSVP — Summit 2026</div>
+          <div class="field">Full name</div>
+          <div class="field">Email</div>
+          <div class="field">Seat preference · Front row</div>
+          <div class="submit">Reserve my seat</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="caption">
+      <div class="head">Whatever you need to capture.</div>
+      <div class="sub">One builder. Every kind of form.</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 050 · infinite fullscreen zoom</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  const layers = gsap.utils.toArray('.layer');
+  const dots = gsap.utils.toArray('.dots .d');
+
+  function fit() {
+    const stage = document.getElementById('stage');
+    const w = window.innerWidth;
+    const h = window.innerHeight - 56;
+    const scale = Math.min(w / 1920, h / 1080) * 0.96;
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // ---------- INFINITE ZOOM PATTERN ----------
+  // Each layer starts at scale 0.05 (a tiny dot ahead in the distance).
+  // As the timeline advances, the layer zooms toward camera: 0.05 → 1 (filling viewport) → 4 (past camera).
+  // Each successive layer's reveal overlaps with the previous one's exit zoom.
+  // The result is an endless drill-forward where one form continuously becomes the next.
+
+  layers.forEach((el) => gsap.set(el, { scale: 0.05, opacity: 0 }));
+  gsap.set(layers[0], { scale: 1, opacity: 1 });
+
+  const tl = gsap.timeline({ paused: true, defaults: { ease: 'none' } });
+
+  // intro chrome
+  tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1);
+  tl.to('.dots', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.3);
+
+  // zoom sequence: each layer occupies a window of HOLD + ZOOM
+  const HOLD = 1.0;        // how long each form sits at scale 1
+  const ZOOM = 1.2;        // zoom-out / zoom-in transition window
+  const PER  = HOLD + ZOOM;
+
+  // Layer 0 holds, then zooms past camera (scale → 4, opacity → 0)
+  // Layer 1 simultaneously zooms in (scale 0.05 → 1)
+  for (let i = 0; i < layers.length; i++) {
+    const start = 0.7 + i * PER;
+
+    // hold this layer at scale 1
+    // (already set; we just keep it there for HOLD seconds)
+
+    if (i < layers.length - 1) {
+      // exit zoom (current layer flies past)
+      tl.to(layers[i], {
+        scale: 4,
+        opacity: 0,
+        duration: ZOOM,
+        ease: 'power2.in'
+      }, start + HOLD);
+
+      // simultaneous reveal of next layer (coming from far away)
+      tl.to(layers[i + 1], {
+        scale: 1,
+        opacity: 1,
+        duration: ZOOM,
+        ease: 'power2.out'
+      }, start + HOLD);
+
+      // dots flip
+      tl.call(() => {
+        dots.forEach((d, di) => d.classList.toggle('active', di === i + 1));
+      }, null, start + HOLD + ZOOM * 0.6);
+    }
+  }
+
+  // final caption fades in over the last form
+  const lastStart = 0.7 + (layers.length - 1) * PER + HOLD * 0.3;
+  tl.to('.caption', { opacity: 1, duration: 0.7, ease: 'power2.out' }, lastStart)
+    .from('.caption .head', { y: 18, opacity: 0, duration: 0.6, ease: 'power2.out' }, lastStart)
+    .from('.caption .sub',  { y: 14, opacity: 0, duration: 0.6, ease: 'power2.out' }, lastStart + 0.2);
+
+  // ---------- scrubber ----------
+  const scrub = document.getElementById('scrub');
+  const timeEl = document.getElementById('time');
+  const playBtn = document.getElementById('playBtn');
+
+  function updateTime() {
+    const t = tl.time(), d = tl.duration();
+    timeEl.textContent = t.toFixed(2).padStart(5,'0') + ' / ' + d.toFixed(2).padStart(5,'0');
+  }
+  scrub.addEventListener('input', () => {
+    tl.pause(); playBtn.textContent = 'Play';
+    tl.progress(parseFloat(scrub.value)/100); updateTime();
+  });
+  gsap.ticker.add(() => {
+    if (!tl.paused()) {
+      scrub.value = (tl.progress()*100).toFixed(2);
+      updateTime();
+      if (tl.progress() >= 1) playBtn.textContent='Replay';
+    }
+  });
+  playBtn.addEventListener('click', () => {
+    if (tl.progress() >= 1) { tl.restart(); playBtn.textContent='Pause'; }
+    else if (tl.paused()) { tl.play(); playBtn.textContent='Pause'; }
+    else { tl.pause(); playBtn.textContent='Play'; }
+  });
+  updateTime();
+  setTimeout(() => { tl.play(); playBtn.textContent='Pause'; }, 400);
+</script>
+
+</body>
+</html>

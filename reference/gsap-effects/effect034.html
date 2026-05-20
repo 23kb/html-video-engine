@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Effect 034 — Multi-speed column scroll (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root {
+    --stage-w: 1920px;
+    --stage-h: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #0a0806;
+    font-family: var(--wpf-font-stack);
+    overflow: hidden;
+    color: var(--wpf-ink);
+  }
+
+  .stage-wrap {
+    position: relative;
+    width: 100vw; height: calc(100vh - 56px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stage {
+    position: relative;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    transform-origin: center center;
+    background: #fcf8f1;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.50);
+  }
+
+  /* column row layout — 5 vertical columns drifting at different speeds */
+  .columns {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 24px;
+    padding: 24px;
+    z-index: 1;
+    /* keep columns slightly tilted for a more cinematic feel */
+    transform: rotate(-2deg) scale(1.08);
+    transform-origin: center center;
+  }
+  .col {
+    position: relative;
+    overflow: hidden;
+    /* each column is a viewport into a vertical strip of tiles
+       (the inner .col-inner is 2x tall, duplicated for seamless loop) */
+  }
+  .col-inner {
+    position: absolute;
+    left: 0; right: 0; top: 0;
+    will-change: transform;
+    display: flex; flex-direction: column;
+    gap: 16px;
+  }
+  .tile {
+    background: white;
+    border-radius: 14px;
+    box-shadow:
+      0 14px 36px rgba(20,22,28,0.12),
+      0 3px 8px rgba(20,22,28,0.05);
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .tile .head {
+    padding: 14px 16px 8px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .tile .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--wpf-orange);
+  }
+  .tile.blue   .dot { background: var(--wpf-blue); }
+  .tile.purple .dot { background: var(--wpf-ai-purple); }
+  .tile.green  .dot { background: #2c8a55; }
+  .tile.amber  .dot { background: #d59324; }
+  .tile.teal   .dot { background: #2a8a8e; }
+  .tile.pink   .dot { background: #c93874; }
+  .tile .head .label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--wpf-ink-mute);
+  }
+  .tile .body {
+    padding: 0 16px 16px;
+  }
+  .tile .body .h {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--wpf-ink);
+    letter-spacing: -0.01em;
+    margin-bottom: 10px;
+    line-height: 1.2;
+  }
+  .tile .body .f {
+    background: #f5f1ea;
+    border: 1px solid #e2d9c9;
+    border-radius: 6px;
+    padding: 8px 10px;
+    font-size: 11px;
+    color: var(--wpf-ink-mute);
+    margin-bottom: 6px;
+  }
+  .tile .body .btn {
+    background: var(--wpf-orange);
+    color: white;
+    border-radius: 6px;
+    text-align: center;
+    padding: 8px;
+    font-weight: 700;
+    font-size: 12px;
+    margin-top: 6px;
+  }
+  .tile.blue   .btn { background: var(--wpf-blue); }
+  .tile.purple .btn { background: var(--wpf-ai-purple); }
+  .tile.green  .btn { background: #2c8a55; }
+  .tile.amber  .btn { background: #d59324; }
+  .tile.teal   .btn { background: #2a8a8e; }
+  .tile.pink   .btn { background: #c93874; }
+
+  /* center overlay — the message resting on top of the drifting columns */
+  .overlay {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 5;
+    pointer-events: none;
+  }
+  .overlay::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center, rgba(252,248,241,0.0) 0%, rgba(252,248,241,0.65) 45%, rgba(252,248,241,0.92) 75%);
+    pointer-events: none;
+  }
+  .overlay-content {
+    position: relative;
+    text-align: center;
+    max-width: 1100px;
+    padding: 0 80px;
+    opacity: 0;
+  }
+  .overlay .kicker {
+    font-size: 16px;
+    color: var(--wpf-orange);
+    font-weight: 700;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .overlay .title {
+    font-size: 92px;
+    font-weight: 700;
+    color: var(--wpf-ink);
+    letter-spacing: -0.025em;
+    line-height: 1.0;
+  }
+  .overlay .sub {
+    color: var(--wpf-ink-soft);
+    font-size: 22px;
+    margin-top: 22px;
+    font-weight: 500;
+  }
+
+  /* brand corner */
+  .brand {
+    position: absolute;
+    top: 56px; left: 64px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 10;
+    opacity: 0;
+  }
+  .brand .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--wpf-orange); }
+  .brand .name { font-weight: 600; font-size: 22px; letter-spacing: -0.01em; color: var(--wpf-ink-soft); }
+
+  /* controls */
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: #0f0d0c; color: #e8e3dc;
+    display: flex; align-items: center; gap: 16px;
+    padding: 0 24px;
+    font-family: var(--wpf-font-stack);
+    font-size: 13px;
+  }
+  .controls button {
+    background: var(--wpf-orange); color: white; border: 0;
+    padding: 8px 16px; border-radius: 6px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .controls button:hover { background: var(--wpf-orange-hover); }
+  .controls input[type=range] { flex: 1; accent-color: var(--wpf-orange); }
+  .controls .t {
+    font-variant-numeric: tabular-nums;
+    min-width: 110px; text-align: right; color: #aaa;
+  }
+  .controls .meta { color: #888; margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="name">WPForms</div>
+    </div>
+
+    <div class="columns" id="columns">
+      <!-- columns generated by JS so we can control speed per column -->
+    </div>
+
+    <div class="overlay">
+      <div class="overlay-content">
+        <div class="kicker">Six million sites. One builder.</div>
+        <div class="title">Forms that just&nbsp;work.</div>
+        <div class="sub">Built for everyone. Loved by marketers, owners, and developers.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 034 · multi-speed column scroll</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  // ---------- generate 5 columns of form-tile thumbnails ----------
+  // Each column has 6 unique tiles, then duplicated for the seamless loop.
+  const TILES = [
+    { kind: 'Contact',    cls: 'orange', h: 'Quick Contact',    btn: 'Send' },
+    { kind: 'Payment',    cls: 'blue',   h: 'Stripe Checkout',  btn: 'Pay $49' },
+    { kind: 'AI form',    cls: 'purple', h: 'Generate with AI', btn: 'Generate' },
+    { kind: 'Survey',     cls: 'green',  h: 'NPS Survey',       btn: 'Submit' },
+    { kind: 'Order',      cls: 'amber',  h: 'Product Order',    btn: 'Buy' },
+    { kind: 'Booking',    cls: 'teal',   h: 'Book a Slot',      btn: 'Reserve' },
+    { kind: 'Lead',       cls: 'pink',   h: 'Lead Magnet',      btn: 'Get it' },
+    { kind: 'Registration',cls:'orange', h: 'Event RSVP',       btn: 'Sign up' },
+    { kind: 'Waitlist',   cls: 'blue',   h: 'Join Waitlist',    btn: 'Add me' },
+    { kind: 'Feedback',   cls: 'purple', h: 'Tell us more',     btn: 'Send' },
+  ];
+
+  const colCount = 5;
+  const tilesPerCol = 7;
+  const columnsEl = document.getElementById('columns');
+
+  function tileHTML(t) {
+    return `
+      <div class="tile ${t.cls}">
+        <div class="head">
+          <div class="dot"></div>
+          <div class="label">${t.kind}</div>
+        </div>
+        <div class="body">
+          <div class="h">${t.h}</div>
+          <div class="f">Field</div>
+          <div class="f">Field</div>
+          <div class="btn">${t.btn}</div>
+        </div>
+      </div>`;
+  }
+
+  // build columns with offset tile selections so columns don't all look identical
+  for (let c = 0; c < colCount; c++) {
+    const col = document.createElement('div');
+    col.className = 'col';
+    const inner = document.createElement('div');
+    inner.className = 'col-inner';
+    inner.dataset.col = c;
+    const offset = c * 2;
+    // tiles for one cycle
+    const cycle = [];
+    for (let i = 0; i < tilesPerCol; i++) {
+      cycle.push(TILES[(offset + i) % TILES.length]);
+    }
+    // duplicate for seamless loop
+    [...cycle, ...cycle].forEach(t => {
+      inner.insertAdjacentHTML('beforeend', tileHTML(t));
+    });
+    col.appendChild(inner);
+    columnsEl.appendChild(col);
+  }
+
+  // ---------- responsive stage ----------
+  function fit() {
+    const stage = document.getElementById('stage');
+    const w = window.innerWidth;
+    const h = window.innerHeight - 56;
+    const scale = Math.min(w / 1920, h / 1080) * 0.96;
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // measure each col-inner's natural cycle height (half of total since duplicated)
+  const inners = gsap.utils.toArray('.col-inner');
+
+  // ensure layout is settled before measuring
+  requestAnimationFrame(() => {
+    inners.forEach((el) => {
+      const cycleHeight = el.offsetHeight / 2;
+      el.dataset.cycle = cycleHeight;
+    });
+    buildTimeline();
+  });
+
+  function buildTimeline() {
+    const tl = gsap.timeline({ paused: true });
+
+    // brand fades in
+    tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1);
+
+    // EACH column drifts upward at a DIFFERENT speed.
+    // Total scene length ≈ 18s. Column N completes (speed multiplier) cycles in that window.
+    // Alternating directions (odd cols drift downward) add visual depth.
+    const SCENE_LENGTH = 18;
+    const speeds = [1.0, 1.6, 0.7, 1.3, 0.85];  // per-column speed multipliers
+    const directions = [-1, -1, 1, -1, 1];       // -1 up, 1 down (alternates)
+
+    inners.forEach((el, i) => {
+      const cycle = parseFloat(el.dataset.cycle);
+      const distance = cycle * speeds[i];
+      const dy = distance * directions[i];
+
+      // start each column at a different phase so they don't all look synchronized
+      gsap.set(el, { y: -(cycle * 0.18 * i) * (directions[i] === -1 ? 0 : 1) });
+
+      tl.to(el, {
+        y: `+=${dy}`,
+        duration: SCENE_LENGTH,
+        ease: 'none',
+        modifiers: {
+          // wrap y so it always stays in [-cycle, 0] for upward and [0, cycle] for downward
+          y: (yStr) => {
+            const yNum = parseFloat(yStr);
+            if (directions[i] === -1) {
+              // upward: keep y in [-cycle, 0]
+              const wrapped = gsap.utils.wrap(-cycle, 0, yNum);
+              return wrapped + 'px';
+            } else {
+              // downward: keep y in [0, cycle]
+              const wrapped = gsap.utils.wrap(0, cycle, yNum);
+              return wrapped + 'px';
+            }
+          }
+        }
+      }, 0);
+    });
+
+    // OVERLAY: kicker + title + sub fade in mid-scene over the drift
+    tl.to('.overlay-content', { opacity: 1, duration: 0.8 }, 1.4)
+      .from('.overlay .kicker', { y: 18, opacity: 0, duration: 0.6, ease: 'power2.out' }, 1.4)
+      .from('.overlay .title',  { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out' }, 1.6)
+      .from('.overlay .sub',    { y: 20, opacity: 0, duration: 0.7, ease: 'power2.out' }, 1.9);
+
+    // wire scrubber
+    const scrub = document.getElementById('scrub');
+    const timeEl = document.getElementById('time');
+    const playBtn = document.getElementById('playBtn');
+
+    function updateTime() {
+      const t = tl.time(), d = tl.duration();
+      timeEl.textContent = t.toFixed(2).padStart(5,'0') + ' / ' + d.toFixed(2).padStart(5,'0');
+    }
+    scrub.addEventListener('input', () => {
+      tl.pause(); playBtn.textContent = 'Play';
+      tl.progress(parseFloat(scrub.value)/100); updateTime();
+    });
+    gsap.ticker.add(() => {
+      if (!tl.paused()) {
+        scrub.value = (tl.progress()*100).toFixed(2);
+        updateTime();
+        if (tl.progress() >= 1) playBtn.textContent='Replay';
+      }
+    });
+    playBtn.addEventListener('click', () => {
+      if (tl.progress() >= 1) { tl.restart(); playBtn.textContent='Pause'; }
+      else if (tl.paused()) { tl.play(); playBtn.textContent='Pause'; }
+      else { tl.pause(); playBtn.textContent='Play'; }
+    });
+    updateTime();
+    setTimeout(() => { tl.play(); playBtn.textContent='Pause'; }, 400);
+  }
+</script>
+
+</body>
+</html>

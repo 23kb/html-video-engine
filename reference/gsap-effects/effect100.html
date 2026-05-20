@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Effect 100 — Orbital scroll gallery (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root {
+    --stage-w: 1920px;
+    --stage-h: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #0e0c0a;
+    font-family: var(--wpf-font-stack);
+    overflow: hidden;
+    color: var(--wpf-ink);
+  }
+
+  .stage-wrap {
+    position: relative;
+    width: 100vw; height: calc(100vh - 56px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stage {
+    position: relative;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    transform-origin: center center;
+    background: radial-gradient(ellipse at center, #1f1810 0%, #14110d 60%, #0a0806 100%);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.50);
+  }
+
+  /* corner counter ("Showcase / 12") */
+  .corner-tag {
+    position: absolute;
+    bottom: 60px; right: 80px;
+    z-index: 6;
+    text-align: right;
+    color: rgba(250, 246, 238, 0.55);
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    line-height: 1.5;
+    opacity: 0;
+  }
+  .corner-tag .count {
+    color: var(--wpf-orange);
+    font-size: 56px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    display: block;
+    line-height: 1;
+    margin-top: 6px;
+    letter-spacing: -0.02em;
+  }
+
+  .brand {
+    position: absolute;
+    top: 60px; left: 80px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 6;
+    opacity: 0;
+    color: rgba(250, 246, 238, 0.9);
+  }
+  .brand .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--wpf-orange); }
+  .brand .name { font-weight: 600; font-size: 22px; letter-spacing: -0.01em; }
+
+  /* center hub — Sullie / WPForms identity */
+  .hub {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 220px; height: 220px;
+    margin: -110px 0 0 -110px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #ff8d3f 0%, var(--wpf-orange) 60%, #b35a1f 100%);
+    box-shadow:
+      0 0 80px rgba(226, 119, 48, 0.45),
+      0 20px 60px rgba(0,0,0,0.4);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 5;
+    opacity: 0;
+  }
+  .hub-label {
+    color: white;
+    font-weight: 700;
+    font-size: 22px;
+    letter-spacing: -0.01em;
+  }
+
+  /* orbital container — we spin THIS, then counter-spin children to keep upright */
+  .orbit {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+  }
+
+  .item {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 190px;
+    padding: 14px 18px;
+    margin: -28px 0 0 -95px;
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 999px;
+    display: flex; align-items: center; gap: 10px;
+    transform-origin: center center;
+    will-change: transform, opacity;
+    opacity: 0;
+  }
+  .item .ico {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .item .ico.orange { background: var(--wpf-orange); }
+  .item .ico.blue   { background: var(--wpf-blue); }
+  .item .ico.purple { background: var(--wpf-ai-purple); }
+  .item .ico.green  { background: #2c8a55; }
+  .item .ico.amber  { background: #d59324; }
+  .item .ico.teal   { background: #2a8a8e; }
+  .item .ico.pink   { background: #c93874; }
+  .item .ico.slate  { background: #6c7488; }
+  .item .label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(250, 246, 238, 0.95);
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* center title */
+  .center-title {
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    text-align: center;
+    margin-top: 180px;
+    opacity: 0;
+    z-index: 5;
+  }
+  .center-title .head {
+    font-size: 40px;
+    font-weight: 700;
+    color: rgba(250, 246, 238, 0.95);
+    letter-spacing: -0.02em;
+  }
+  .center-title .sub {
+    color: rgba(250, 246, 238, 0.5);
+    font-size: 17px;
+    margin-top: 10px;
+  }
+
+  /* controls */
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: #0f0d0c;
+    color: #e8e3dc;
+    display: flex; align-items: center; gap: 16px;
+    padding: 0 24px;
+    font-family: var(--wpf-font-stack);
+    font-size: 13px;
+  }
+  .controls button {
+    background: var(--wpf-orange);
+    color: white;
+    border: 0;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .controls button:hover { background: var(--wpf-orange-hover); }
+  .controls input[type=range] { flex: 1; accent-color: var(--wpf-orange); }
+  .controls .t {
+    font-variant-numeric: tabular-nums;
+    min-width: 110px;
+    text-align: right;
+    color: #aaa;
+  }
+  .controls .meta { color: #888; margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="name">WPForms</div>
+    </div>
+
+    <div class="orbit" id="orbit"></div>
+
+    <div class="hub">
+      <div class="hub-label">WPForms</div>
+    </div>
+
+    <div class="center-title">
+      <div class="head">All of it. In one place.</div>
+      <div class="sub">Drag-drop builder · 9,000+ integrations · 1,800+ templates</div>
+    </div>
+
+    <div class="corner-tag">
+      <span>Showcase</span>
+      <span class="count">12</span>
+    </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 100 · orbital scroll gallery</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  // ---------- 12 orbiting features ----------
+  const features = [
+    { label: 'Drag & Drop',     icon: 'D', cls: 'orange' },
+    { label: '1,800+ Templates',icon: 'T', cls: 'amber'  },
+    { label: 'AI Forms',         icon: 'AI',cls: 'purple' },
+    { label: 'Stripe Payments',  icon: '$', cls: 'blue'   },
+    { label: 'Mailchimp',        icon: 'M', cls: 'amber'  },
+    { label: 'Conditional Logic',icon: '?', cls: 'green'  },
+    { label: 'Surveys',          icon: 'S', cls: 'teal'   },
+    { label: 'Calculations',     icon: 'Σ', cls: 'slate'  },
+    { label: 'User Registration',icon: 'U', cls: 'pink'   },
+    { label: 'Lead Forms',       icon: 'L', cls: 'orange' },
+    { label: 'Klaviyo',          icon: 'K', cls: 'slate'  },
+    { label: 'Webhooks',         icon: 'W', cls: 'teal'   },
+  ];
+
+  const orbit = document.getElementById('orbit');
+  features.forEach((f, i) => {
+    const el = document.createElement('div');
+    el.className = 'item';
+    el.dataset.i = i;
+    el.innerHTML = `<div class="ico ${f.cls}">${f.icon}</div><div class="label">${f.label}</div>`;
+    orbit.appendChild(el);
+  });
+  const items = gsap.utils.toArray('.item');
+
+  // ---------- responsive stage ----------
+  function fit() {
+    const stage = document.getElementById('stage');
+    const w = window.innerWidth;
+    const h = window.innerHeight - 56;
+    const scale = Math.min(w / 1920, h / 1080) * 0.96;
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // ---------- compute orbital positions ----------
+  const RADIUS_BASE = 440;
+  const COUNT = items.length;
+  const angles = items.map((_, i) => (i / COUNT) * 360);
+
+  // initial: all items at center, collapsed
+  items.forEach((el, i) => {
+    gsap.set(el, { x: 0, y: 0, rotation: 0, scale: 0.3, opacity: 0 });
+  });
+
+  // ---------- master timeline ----------
+  const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+
+  // Beat A: brand + hub + corner tag fade in
+  tl.to('.brand', { opacity: 1, duration: 0.5 }, 0.1)
+    .to('.corner-tag', { opacity: 1, duration: 0.5 }, 0.2)
+    .to('.hub', { opacity: 1, scale: 1, duration: 0.8, ease: 'back.out(1.6)' }, 0.3)
+    .from('.hub', { scale: 0.5, duration: 0.8, ease: 'back.out(1.6)' }, 0.3);
+
+  // Beat B: items fly out from center to their orbital positions
+  const BLOOM = 1.0;
+  items.forEach((el, i) => {
+    const rad = angles[i] * Math.PI / 180;
+    const x = Math.cos(rad) * RADIUS_BASE;
+    const y = Math.sin(rad) * RADIUS_BASE;
+    const t = BLOOM + i * 0.05;
+    tl.to(el, {
+      x: x,
+      y: y,
+      scale: 1,
+      opacity: 1,
+      duration: 0.9,
+      ease: 'back.out(1.3)'
+    }, t);
+  });
+
+  // Beat C: ORBIT — spin orbit container slowly while items counter-rotate to stay readable
+  const ORBIT_START = BLOOM + COUNT * 0.05 + 0.5;
+  const ORBIT_DUR = 14;
+  tl.to('.orbit', { rotation: 360, duration: ORBIT_DUR, ease: 'none' }, ORBIT_START);
+  // counter-rotate items so labels stay upright
+  items.forEach((el) => {
+    tl.to(el, { rotation: -360, duration: ORBIT_DUR, ease: 'none' }, ORBIT_START);
+  });
+
+  // simulate "scroll-pushes" — items briefly extend outward then snap back.
+  // Three pulses during the orbit, each pushing radius +60px and back.
+  const PULSE_PUSH = 60;
+  [2.2, 6.0, 10.5].forEach((dt, idx) => {
+    const t = ORBIT_START + dt;
+    items.forEach((el, i) => {
+      const rad = angles[i] * Math.PI / 180;
+      const baseX = Math.cos(rad) * RADIUS_BASE;
+      const baseY = Math.sin(rad) * RADIUS_BASE;
+      const pushX = Math.cos(rad) * (RADIUS_BASE + PULSE_PUSH);
+      const pushY = Math.sin(rad) * (RADIUS_BASE + PULSE_PUSH);
+      tl.to(el, { x: pushX, y: pushY, duration: 0.35, ease: 'power2.out' }, t + i * 0.02);
+      tl.to(el, { x: baseX, y: baseY, duration: 0.9, ease: 'elastic.out(1, 0.5)' }, t + 0.35 + i * 0.02);
+    });
+  });
+
+  // hub gentle pulse during orbit
+  tl.to('.hub', { scale: 1.04, duration: 1.2, ease: 'sine.inOut', yoyo: true, repeat: 4 }, ORBIT_START);
+
+  // Beat D: center title appears partway through the orbit
+  tl.to('.center-title', { opacity: 1, duration: 0.8 }, ORBIT_START + 1.5)
+    .from('.center-title .head', { y: 20, opacity: 0, duration: 0.7 }, ORBIT_START + 1.5)
+    .from('.center-title .sub',  { y: 14, opacity: 0, duration: 0.7 }, ORBIT_START + 1.7);
+
+  // ---------- scrubber ----------
+  const scrub = document.getElementById('scrub');
+  const timeEl = document.getElementById('time');
+  const playBtn = document.getElementById('playBtn');
+
+  function updateTime() {
+    const t = tl.time(), d = tl.duration();
+    timeEl.textContent = t.toFixed(2).padStart(5,'0') + ' / ' + d.toFixed(2).padStart(5,'0');
+  }
+  scrub.addEventListener('input', () => {
+    tl.pause(); playBtn.textContent = 'Play';
+    tl.progress(parseFloat(scrub.value)/100); updateTime();
+  });
+  gsap.ticker.add(() => {
+    if (!tl.paused()) {
+      scrub.value = (tl.progress()*100).toFixed(2);
+      updateTime();
+      if (tl.progress() >= 1) playBtn.textContent = 'Replay';
+    }
+  });
+  playBtn.addEventListener('click', () => {
+    if (tl.progress() >= 1) { tl.restart(); playBtn.textContent='Pause'; }
+    else if (tl.paused()) { tl.play(); playBtn.textContent='Pause'; }
+    else { tl.pause(); playBtn.textContent='Play'; }
+  });
+  updateTime();
+  setTimeout(() => { tl.play(); playBtn.textContent='Pause'; }, 400);
+</script>
+
+</body>
+</html>
