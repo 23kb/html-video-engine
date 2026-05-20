@@ -229,13 +229,13 @@
   </p>
 
   <div class="stats">
-    <div class="stat"><span class="v">11</span><span class="l">ported</span></div>
-    <div class="stat"><span class="v">7</span><span class="l">inventoried · queued</span></div>
+    <div class="stat"><span class="v">16</span><span class="l">ported</span></div>
+    <div class="stat"><span class="v">2</span><span class="l">inventoried · queued</span></div>
     <div class="stat"><span class="v">82</span><span class="l">awaiting inventory</span></div>
     <div class="stat"><span class="v">100</span><span class="l">total in source library</span></div>
   </div>
 
-  <div class="section-head">Text reveals</div>
+  <div class="section-head">Text reveals (5)</div>
   <div class="grid">
 
     <a class="card" href="effect009.html">
@@ -246,11 +246,10 @@
       <div class="meta">
         <div class="num">Effect 009</div>
         <div class="head">Up &amp; Down letter reveal</div>
-        <div class="desc">Phrases swap through a single slot — characters rise out, next phrase's characters rise in. Dynamic, any number of lines.</div>
+        <div class="desc">Phrases swap through a single slot — characters rise out, next phrase's characters rise in.</div>
         <div class="tags">
           <span class="tag">scroll → timeline</span>
           <span class="tag use">intro headline</span>
-          <span class="tag use">postintro</span>
         </div>
       </div>
     </a>
@@ -279,7 +278,7 @@
       <div class="meta">
         <div class="num">Effect 005</div>
         <div class="head">Word by word from edge</div>
-        <div class="desc">Words slide in from the right edge with staggered timing — an editorial paragraph payoff with accent words tinted.</div>
+        <div class="desc">Words slide in from the right edge with staggered timing — editorial paragraph with accent words tinted.</div>
         <div class="tags">
           <span class="tag">scroll → timeline</span>
           <span class="tag use">editorial intro</span>
@@ -295,17 +294,33 @@
       <div class="meta">
         <div class="num">Effect 046</div>
         <div class="head">Random-order letter reveal</div>
-        <div class="desc">Chars appear in shuffled order (seeded for deterministic render parity). Big editorial type with accent words and sweeping underline.</div>
+        <div class="desc">Chars appear in shuffled order (seeded for deterministic render parity). Big editorial type with accents.</div>
         <div class="tags">
-          <span class="tag">scroll → timeline</span>
+          <span class="tag">seeded random</span>
           <span class="tag use">headline payoff</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="effect098.html">
+      <div class="preview">
+        <span class="badge">098 · scroll</span>
+        <iframe src="effect098.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
+      </div>
+      <div class="meta">
+        <div class="num">Effect 098</div>
+        <div class="head">Curved SVG textPath reveal</div>
+        <div class="desc">Lines on curved SVG guides straighten from arc to flat while per-letter tspans fade in left-to-right.</div>
+        <div class="tags">
+          <span class="tag">SVG textPath</span>
+          <span class="tag use">editorial flourish</span>
         </div>
       </div>
     </a>
 
   </div>
 
-  <div class="section-head">Card / template layouts</div>
+  <div class="section-head">Card / template layouts (5)</div>
   <div class="grid">
 
     <a class="card" href="effect001.html">
@@ -316,7 +331,7 @@
       <div class="meta">
         <div class="num">Effect 001</div>
         <div class="head">Card stack spreads horizontally</div>
-        <div class="desc">A stacked deck of form templates fans outward with stagger and rotation. Center card lifts to draw the eye.</div>
+        <div class="desc">A stacked deck of form templates fans outward with stagger and rotation; center card lifts.</div>
         <div class="tags">
           <span class="tag">scroll → timeline</span>
           <span class="tag use">template picker</span>
@@ -332,7 +347,7 @@
       <div class="meta">
         <div class="num">Effect 014</div>
         <div class="head">Infinite stacking templates</div>
-        <div class="desc">6 form templates fly in and stack into a spread with varied position, angle, and size — creative looseness.</div>
+        <div class="desc">6 form templates fly in and stack into a spread with varied position, angle, and size.</div>
         <div class="tags">
           <span class="tag">scroll → timeline</span>
           <span class="tag use">template library</span>
@@ -348,9 +363,25 @@
       <div class="meta">
         <div class="num">Effect 078</div>
         <div class="head">Image flight w/ center decel</div>
-        <div class="desc">Cards cross the stage L→R with a custom centerSlow ease that decelerates them through the orange spotlight, with 3D rotations.</div>
+        <div class="desc">Cards cross L→R with a custom centerSlow ease that decelerates through the orange spotlight.</div>
         <div class="tags">
           <span class="tag">custom ease</span>
+          <span class="tag use">template parade</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="effect047.html">
+      <div class="preview">
+        <span class="badge">047 · scroll</span>
+        <iframe src="effect047.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
+      </div>
+      <div class="meta">
+        <div class="num">Effect 047</div>
+        <div class="head">Squash-deform carousel</div>
+        <div class="desc">Cards squash-stretch + tilt as they approach the viewport edges — "alive" character feel.</div>
+        <div class="tags">
+          <span class="tag">per-frame deform</span>
           <span class="tag use">template parade</span>
         </div>
       </div>
@@ -364,7 +395,7 @@
       <div class="meta">
         <div class="num">Effect 050</div>
         <div class="head">Infinite fullscreen zoom</div>
-        <div class="desc">Drills through 5 form types — Contact, Stripe, AI, Survey, RSVP — each blowing past the camera as the next emerges.</div>
+        <div class="desc">Drills through 5 form types — each blowing past the camera as the next emerges from the distance.</div>
         <div class="tags">
           <span class="tag">scroll → timeline</span>
           <span class="tag use">deep-dive intro</span>
@@ -374,7 +405,7 @@
 
   </div>
 
-  <div class="section-head">Constellations &amp; atmosphere</div>
+  <div class="section-head">Constellations &amp; atmosphere (6)</div>
   <div class="grid">
 
     <a class="card" href="effect075.html">
@@ -385,7 +416,7 @@
       <div class="meta">
         <div class="num">Effect 075</div>
         <div class="head">Fanning circular cards</div>
-        <div class="desc">Integration cards fan out from the center hub onto a ring perimeter. Ring rotates while cards stay upright.</div>
+        <div class="desc">8 integration cards fan from hub onto a ring perimeter; ring rotates while cards stay upright.</div>
         <div class="tags">
           <span class="tag">scroll → timeline</span>
           <span class="tag use">integrations postintro</span>
@@ -401,10 +432,26 @@
       <div class="meta">
         <div class="num">Effect 100</div>
         <div class="head">Orbital scroll gallery</div>
-        <div class="desc">12 WPForms features orbit a glowing hub with 3 elastic scroll-push pulses; counter-rotated to stay readable.</div>
+        <div class="desc">12 WPForms features orbit a glowing hub with 3 elastic scroll-push pulses.</div>
         <div class="tags">
           <span class="tag">scroll → timeline</span>
           <span class="tag use">feature constellation</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="effect023.html">
+      <div class="preview">
+        <span class="badge">023 · scroll</span>
+        <iframe src="effect023.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
+      </div>
+      <div class="meta">
+        <div class="num">Effect 023</div>
+        <div class="head">Orbit + scroll-eject</div>
+        <div class="desc">10 cards orbit a center title with 3 timed eject events flinging cards outward with elastic snap-back.</div>
+        <div class="tags">
+          <span class="tag">seeded random</span>
+          <span class="tag use">feature wheel</span>
         </div>
       </div>
     </a>
@@ -417,7 +464,7 @@
       <div class="meta">
         <div class="num">Effect 034</div>
         <div class="head">Multi-speed column scroll</div>
-        <div class="desc">5 columns of form-tile thumbnails drift at different speeds + directions with a vignette-faded center overlay.</div>
+        <div class="desc">5 columns of form-tile thumbnails drift at different speeds + directions with vignette overlay.</div>
         <div class="tags">
           <span class="tag">scroll → timeline</span>
           <span class="tag use">background atmosphere</span>
@@ -425,51 +472,37 @@
       </div>
     </a>
 
-    <!-- placeholders for queued ports -->
-    <div class="card placeholder">
-      <div class="preview">soon</div>
-      <div class="meta">
-        <div class="num">Effect 023</div>
-        <div class="head">Circular orbit + scroll-eject</div>
-        <div class="desc">Images orbit a large circle; fast scroll pushes specific images out of orbit elastically.</div>
+    <a class="card" href="effect065.html">
+      <div class="preview">
+        <span class="badge">065 · scroll</span>
+        <iframe src="effect065.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
       </div>
-    </div>
-
-    <div class="card placeholder">
-      <div class="preview">soon</div>
-      <div class="meta">
-        <div class="num">Effect 098</div>
-        <div class="head">Curved SVG textPath reveal</div>
-        <div class="desc">Paragraph reveals letter-by-letter along stacked curved SVG paths — most distinctive editorial flourish.</div>
-      </div>
-    </div>
-
-    <div class="card placeholder">
-      <div class="preview">soon</div>
       <div class="meta">
         <div class="num">Effect 065</div>
         <div class="head">Triple marquee parallax</div>
-        <div class="desc">Three image ribbons in a pinned band glide sideways at different rates.</div>
+        <div class="desc">3 horizontal pill ribbons glide at different speeds; middle ribbon goes opposite direction.</div>
+        <div class="tags">
+          <span class="tag">scroll → timeline</span>
+          <span class="tag use">integration marquee</span>
+        </div>
       </div>
-    </div>
+    </a>
 
-    <div class="card placeholder">
-      <div class="preview">soon</div>
+    <a class="card" href="effect083.html">
+      <div class="preview">
+        <span class="badge">083 · scroll</span>
+        <iframe src="effect083.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
+      </div>
       <div class="meta">
         <div class="num">Effect 083</div>
         <div class="head">Multi-lane drift parade</div>
-        <div class="desc">Crowd of images drifts L→R across 4 depth bands at different easing speeds.</div>
+        <div class="desc">4 depth bands of form tiles drift L at parallax speeds with random Y jitter — loose, organic feel.</div>
+        <div class="tags">
+          <span class="tag">parallax</span>
+          <span class="tag use">background atmosphere</span>
+        </div>
       </div>
-    </div>
-
-    <div class="card placeholder">
-      <div class="preview">soon</div>
-      <div class="meta">
-        <div class="num">Effect 047</div>
-        <div class="head">Squash-deform carousel</div>
-        <div class="desc">Infinite carousel where cards squash-deform as they exit the viewport edges.</div>
-      </div>
-    </div>
+    </a>
 
   </div>
 

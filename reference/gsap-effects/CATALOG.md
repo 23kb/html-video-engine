@@ -54,18 +54,18 @@ For randomness in any effect, use seeded `mulberry32(seed)` not `Math.random()` 
 | 005 | Scroll | Word-by-word reveal from right edge with staggered timing | ✅ [effect005.html](effect005.html) | Editorial paragraph intro |
 | 009 | Scroll | "Up & Down" letter reveal — phrases swap through a single slot, chars rise out / new chars rise in (dynamic, any number of phrases) | ✅ [effect009.html](effect009.html) | Headline / tagline reveal — intro & postintro |
 | 014 | Scroll | Infinite stacking image scroll — cards appear and scroll with creative position/angle/size variation | ✅ [effect014.html](effect014.html) | Template library showcase |
-| 023 | Scroll / Infinite | Infinite circular movement — images orbit a large circle; fast scroll pushes them out of orbit | ⏳ | Feature wheel atmosphere |
+| 023 | Scroll / Infinite | Infinite circular movement — images orbit a large circle; fast scroll pushes them out of orbit | ✅ [effect023.html](effect023.html) | Feature wheel with scroll-eject |
 | 028 | Drag / Infinite | Infinite drag-scroll list of cards with slight rotation in the direction of drag | ⏳ | Carousel atmosphere |
 | 034 | Scroll / Infinite | Multi-column image scroll at different speeds, each column loops seamlessly | ✅ [effect034.html](effect034.html) | Feature-tile background atmosphere |
 | 046 | Scroll | Random-order letter reveal — chars appear in shuffled sequence, pinned during scroll | ✅ [effect046.html](effect046.html) | Headline payoff line |
-| 047 | Scroll / Infinite | Infinite carousel with squash-deform on cards exiting the viewport | ⏳ | Template parade |
+| 047 | Scroll / Infinite | Infinite carousel with squash-deform on cards exiting the viewport | ✅ [effect047.html](effect047.html) | Character-driven template parade |
 | 050 | Scroll / Infinite | Infinite fullscreen zoom through images on scroll (bidirectional) | ✅ [effect050.html](effect050.html) | Deep-dive intro into product / form |
-| 065 | Scroll | Triple marquee parallax — three image ribbons in a pinned band glide sideways at different rates | ⏳ | Logo / template marquee |
+| 065 | Scroll | Triple marquee parallax — three image ribbons in a pinned band glide sideways at different rates | ✅ [effect065.html](effect065.html) | Integration / template marquee |
 | 067 | Scroll | Cylindrical letter reveal — letters appear in perspective on a cylinder, hold upright, fold away upward | ✅ [effect067.html](effect067.html) | Dramatic wordmark intro |
 | 075 | Scroll | Rounded cards arranged in a circle fan open one by one as you scroll, ring rotates to accommodate | ✅ [effect075.html](effect075.html) | Integration/feature reveal postintro |
 | 078 | Scroll | Image flight — cards cross a pinned stage left-to-right, decelerate at center with 3D rotations | ✅ [effect078.html](effect078.html) | Template parade with feature focus |
-| 083 | Scroll | Pinned multi-lane drift — crowd of images drifts L→R across 4 depth bands at different easing speeds | ⏳ | Loose, organic background |
-| 098 | Scroll | Curved scroll reveal — paragraph reveals letter-by-letter along stacked curved SVG paths | ⏳ | Editorial typography flourish |
+| 083 | Scroll | Pinned multi-lane drift — crowd of images drifts L→R across 4 depth bands at different easing speeds | ✅ [effect083.html](effect083.html) | Loose, organic background atmosphere |
+| 098 | Scroll | Curved scroll reveal — paragraph reveals letter-by-letter along stacked curved SVG paths | ✅ [effect098.html](effect098.html) | Editorial typography flourish |
 | 100 | Scroll | Orbital scroll gallery — images orbit center, scroll pushes them away / brings them back | ✅ [effect100.html](effect100.html) | Feature constellation around Sullie |
 | 002–004 | mixed | ⚠ | ⚠ | |
 | 006–008 | mixed | ⚠ | ⚠ | |
@@ -81,7 +81,7 @@ For randomness in any effect, use seeded `mulberry32(seed)` not `Math.random()` 
 | 084–097 | mixed | ⚠ | ⚠ | |
 | 099 | mixed | ⚠ | ⚠ | |
 
-**Inventory progress:** 18 of 100 effects have public descriptions captured (11 ported, 7 planned). Remaining 82 are tagged ⚠ until their tutorial pages are fetched.
+**Inventory progress:** 18 of 100 effects have public descriptions captured (**16 ported**, 2 planned: 000, 028). Remaining 82 are tagged ⚠ until their tutorial pages are fetched.
 
 To inventory the remaining 82 effects, hit each `/effects/tutorialNNN` page and pull the description + HTML skeleton. Batch this across sessions — each fetch is ~3-5 lines into this table.
 
@@ -89,25 +89,33 @@ To inventory the remaining 82 effects, hit each `/effects/tutorialNNN` page and 
 
 Best fits for **intro headlines / postintro flourishes** (Umair's stated use case):
 
-### Already ported
+### Already ported (16)
+**Text reveals**
 1. **009 — letter-by-letter phrase swap** — clean text-only intro.
-2. **001 — card stack spread** — template gallery intro.
-3. **075 — fanning cards from circle** — integrations / features postintro.
-4. **100 — orbital gallery** — Sullie surrounded by features.
-5. **050 — infinite zoom** — drill into a form.
-6. **034 — multi-speed column atmosphere** — vignette background.
-7. **067 — cylindrical letter reveal** — dramatic wordmark intro.
-8. **005 — word by word from edge** — editorial paragraph intro.
-9. **046 — random-order letter reveal** — headline payoff.
-10. **014 — infinite stacking** — template library showcase.
-11. **078 — image flight w/ center deceleration** — template parade.
+2. **067 — cylindrical letter reveal** — dramatic wordmark intro.
+3. **005 — word by word from edge** — editorial paragraph intro.
+4. **046 — random-order letter reveal** — headline payoff.
+5. **098 — curved SVG textPath reveal** — editorial typography flourish.
+
+**Card / template layouts**
+6. **001 — card stack spread** — template gallery intro.
+7. **014 — infinite stacking** — template library showcase.
+8. **050 — infinite zoom** — drill into a form.
+9. **078 — image flight w/ center deceleration** — template parade.
+10. **047 — squash-deform carousel** — character-driven template parade.
+
+**Constellations & atmosphere**
+11. **075 — fanning cards from circle** — integrations / features postintro.
+12. **100 — orbital gallery** — Sullie surrounded by features.
+13. **023 — circular orbit + scroll-eject** — feature wheel with elastic ejects.
+14. **034 — multi-speed column atmosphere** — vignette background.
+15. **065 — triple marquee parallax** — integration / template marquee.
+16. **083 — multi-lane drift parade** — loose-feeling background.
 
 ### Top priorities for next batch
-- **023 — circular orbit with scroll-eject** — feature wheel with elastic ejects.
-- **098 — curved SVG textPath reveal** — most distinctive editorial flourish in the library.
-- **065 — triple marquee parallax** — clean logo / template marquee.
-- **083 — multi-lane drift parade** — loose-feeling background.
-- **047 — squash-deform carousel** — character-driven template parade.
+- Inventory the remaining 82 effects (descriptions only) — batch fetch tutorial pages.
+- Port effect 028 (drag / infinite list) once we have a cursor-driven adapter pattern.
+- Port effect 000 (cursor inertia gallery) for a hover-decoration variant.
 
 Lower priority (Mouse Move effects): these need cursor choreography to translate to video. Save for later batches.
 

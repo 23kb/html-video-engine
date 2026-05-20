@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Effect 083 — Multi-lane drift parade (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root {
+    --stage-w: 1920px;
+    --stage-h: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #0a0806;
+    font-family: var(--wpf-font-stack);
+    overflow: hidden;
+    color: var(--wpf-ink);
+  }
+
+  .stage-wrap {
+    position: relative;
+    width: 100vw; height: calc(100vh - 56px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stage {
+    position: relative;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    transform-origin: center center;
+    background: radial-gradient(ellipse at center, #fdfaf3 0%, #ebe0c8 100%);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.50);
+  }
+
+  .brand {
+    position: absolute;
+    top: 60px; left: 80px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 20;
+    opacity: 0;
+  }
+  .brand .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--wpf-orange); }
+  .brand .name { font-weight: 600; font-size: 22px; letter-spacing: -0.01em; color: var(--wpf-ink-soft); }
+
+  /* the four depth bands — back to front, top to bottom of viewport */
+  .bands {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .band {
+    position: absolute;
+    left: 0; right: 0;
+    overflow: hidden;
+  }
+  .band-track {
+    position: absolute;
+    top: 0; left: 0;
+    height: 100%;
+    will-change: transform;
+  }
+
+  /* band layout — top to bottom, smallest (farthest) to largest (closest) */
+  .band[data-i="0"] { top: 80px;   height: 210px; }
+  .band[data-i="1"] { top: 290px;  height: 250px; }
+  .band[data-i="2"] { top: 530px;  height: 270px; }
+  .band[data-i="3"] { top: 800px;  height: 280px; }
+
+  /* each tile is a mini form mock */
+  .tile {
+    position: absolute;
+    top: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow:
+      0 12px 26px rgba(20,22,28,0.14),
+      0 3px 8px rgba(20,22,28,0.06);
+    overflow: hidden;
+    padding: 12px 14px;
+    display: flex; flex-direction: column;
+    gap: 6px;
+    will-change: transform;
+  }
+  .tile .head {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .tile .dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: var(--wpf-orange);
+    flex-shrink: 0;
+  }
+  .tile[data-c="blue"]   .dot { background: var(--wpf-blue); }
+  .tile[data-c="purple"] .dot { background: var(--wpf-ai-purple); }
+  .tile[data-c="green"]  .dot { background: #2c8a55; }
+  .tile[data-c="amber"]  .dot { background: #d59324; }
+  .tile[data-c="teal"]   .dot { background: #2a8a8e; }
+  .tile[data-c="pink"]   .dot { background: #c93874; }
+  .tile[data-c="slate"]  .dot { background: #4d566e; }
+  .tile .label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    color: var(--wpf-ink-mute);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .tile .title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--wpf-ink);
+    letter-spacing: -0.005em;
+    line-height: 1.15;
+  }
+  .tile .field {
+    background: #f5f1ea;
+    border: 1px solid #e2d9c9;
+    border-radius: 4px;
+    padding: 4px 6px;
+    font-size: 9px;
+    color: var(--wpf-ink-mute);
+  }
+  .tile .submit {
+    margin-top: auto;
+    background: var(--wpf-orange);
+    color: white;
+    border-radius: 4px;
+    text-align: center;
+    padding: 4px;
+    font-weight: 700;
+    font-size: 9px;
+  }
+  .tile[data-c="blue"]   .submit { background: var(--wpf-blue); }
+  .tile[data-c="purple"] .submit { background: var(--wpf-ai-purple); }
+  .tile[data-c="green"]  .submit { background: #2c8a55; }
+  .tile[data-c="amber"]  .submit { background: #d59324; }
+  .tile[data-c="teal"]   .submit { background: #2a8a8e; }
+  .tile[data-c="pink"]   .submit { background: #c93874; }
+  .tile[data-c="slate"]  .submit { background: #4d566e; }
+
+  /* center spotlight + headline overlay */
+  .spotlight {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 1100px; height: 600px;
+    margin: -300px 0 0 -550px;
+    background: radial-gradient(ellipse at center, rgba(253,250,243,0.95) 0%, rgba(253,250,243,0.6) 40%, rgba(253,250,243,0) 75%);
+    z-index: 10;
+    pointer-events: none;
+    opacity: 0;
+  }
+  .center-block {
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    text-align: center;
+    transform: translateY(-50%);
+    z-index: 12;
+    opacity: 0;
+    padding: 0 80px;
+  }
+  .center-block .kicker {
+    color: var(--wpf-orange);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .center-block .title {
+    font-size: 76px;
+    font-weight: 700;
+    color: var(--wpf-ink);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+  .center-block .sub {
+    color: var(--wpf-ink-mute);
+    font-size: 20px;
+    margin-top: 16px;
+  }
+
+  /* controls */
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: #0f0d0c; color: #e8e3dc;
+    display: flex; align-items: center; gap: 16px;
+    padding: 0 24px;
+    font-family: var(--wpf-font-stack);
+    font-size: 13px;
+  }
+  .controls button {
+    background: var(--wpf-orange); color: white; border: 0;
+    padding: 8px 16px; border-radius: 6px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .controls button:hover { background: var(--wpf-orange-hover); }
+  .controls input[type=range] { flex: 1; accent-color: var(--wpf-orange); }
+  .controls .t {
+    font-variant-numeric: tabular-nums;
+    min-width: 110px; text-align: right; color: #aaa;
+  }
+  .controls .meta { color: #888; margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="name">WPForms</div>
+    </div>
+
+    <div class="bands" id="bands">
+      <div class="band" data-i="0"><div class="band-track" id="bt0"></div></div>
+      <div class="band" data-i="1"><div class="band-track" id="bt1"></div></div>
+      <div class="band" data-i="2"><div class="band-track" id="bt2"></div></div>
+      <div class="band" data-i="3"><div class="band-track" id="bt3"></div></div>
+    </div>
+
+    <div class="spotlight"></div>
+
+    <div class="center-block">
+      <div class="kicker">A loose parade of possibilities</div>
+      <div class="title">Every form. Drifting by.</div>
+      <div class="sub">Pick the one you want — it's already in the library.</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 083 · multi-lane drift parade</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  // deterministic RNG
+  function mulberry32(a) {
+    return function() {
+      let t = a += 0x6D2B79F5;
+      t = Math.imul(t ^ t >>> 15, t | 1);
+      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  const rng = mulberry32(83);
+
+  // pool of tile templates
+  const TPL = [
+    { kind: 'Contact',  cls: 'orange', title: 'Quick Contact',  btn: 'Send' },
+    { kind: 'Payment',  cls: 'blue',   title: 'Stripe Checkout',btn: 'Pay' },
+    { kind: 'AI form',  cls: 'purple', title: 'AI Generator',   btn: 'Generate' },
+    { kind: 'Survey',   cls: 'green',  title: 'NPS Feedback',   btn: 'Submit' },
+    { kind: 'Order',    cls: 'amber',  title: 'Product Order',  btn: 'Buy' },
+    { kind: 'Booking',  cls: 'teal',   title: 'Reserve Slot',   btn: 'Book' },
+    { kind: 'Lead',     cls: 'pink',   title: 'Lead Magnet',    btn: 'Get it' },
+    { kind: 'Login',    cls: 'slate',  title: 'User Registration', btn: 'Sign up' },
+    { kind: 'Event',    cls: 'orange', title: 'Event RSVP',     btn: 'RSVP' },
+    { kind: 'Donate',   cls: 'green',  title: 'Donation',       btn: 'Give' },
+    { kind: 'Feedback', cls: 'purple', title: 'Feedback Form',  btn: 'Send' },
+    { kind: 'Waitlist', cls: 'blue',   title: 'Join Waitlist',  btn: 'Add me' },
+  ];
+
+  // ---------- per-band tile sizes (smaller = farther back = top of viewport) ----------
+  const bandConfig = [
+    // [tile width, tile height, count per cycle, vertical jitter range]
+    { w: 130, h: 170, count: 10, jitter: 40 },
+    { w: 170, h: 220, count: 9,  jitter: 60 },
+    { w: 210, h: 250, count: 8,  jitter: 70 },
+    { w: 250, h: 270, count: 7,  jitter: 90 },
+  ];
+
+  // ---------- build tiles for each band ----------
+  bandConfig.forEach((cfg, bi) => {
+    const track = document.getElementById('bt' + bi);
+    const trackWidth = cfg.count * (cfg.w + 40);
+    track.style.width = (trackWidth * 2) + 'px';   // duplicated for seamless loop
+
+    // generate cfg.count tiles (then duplicate for seamless loop)
+    const sequence = [];
+    for (let i = 0; i < cfg.count; i++) {
+      sequence.push(TPL[Math.floor(rng() * TPL.length)]);
+    }
+    // duplicate
+    const all = [...sequence, ...sequence];
+    let x = 0;
+    all.forEach((t, ti) => {
+      const el = document.createElement('div');
+      el.className = 'tile';
+      el.dataset.c = t.cls;
+      el.style.width = cfg.w + 'px';
+      el.style.height = cfg.h + 'px';
+      el.style.left = x + 'px';
+      // random Y jitter so the parade feels loose
+      const yJit = (rng() - 0.5) * cfg.jitter;
+      el.style.top = yJit + 'px';
+      el.innerHTML = `
+        <div class="head">
+          <div class="dot"></div>
+          <div class="label">${t.kind}</div>
+        </div>
+        <div class="title">${t.title}</div>
+        <div class="field">Field</div>
+        <div class="field">Field</div>
+        <div class="submit">${t.btn}</div>`;
+      track.appendChild(el);
+      x += cfg.w + 40;
+    });
+    // store cycle width for the loop
+    track.dataset.cycle = (cfg.count * (cfg.w + 40));
+  });
+
+  // ---------- responsive stage ----------
+  function fit() {
+    const stage = document.getElementById('stage');
+    const w = window.innerWidth;
+    const h = window.innerHeight - 56;
+    const scale = Math.min(w / 1920, h / 1080) * 0.96;
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // ---------- master timeline ----------
+  const tracks = gsap.utils.toArray('.band-track');
+
+  // each band drifts at its own rate (parallax-style: closer = faster)
+  // direction: all L→R for this effect (the parade)
+  const directions = [-1, -1, -1, -1];     // all left (negative x)
+  const speedMul   = [0.5, 0.75, 1.0, 1.3]; // band 0 slowest, band 3 fastest
+
+  const tl = gsap.timeline({ paused: true });
+
+  tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1);
+
+  const SCENE_LENGTH = 16;
+
+  tracks.forEach((t, i) => {
+    const cycle = parseFloat(t.dataset.cycle);
+    const distance = cycle * speedMul[i] * directions[i];
+
+    // phase offset so bands don't all sync
+    gsap.set(t, { x: -cycle * 0.17 * i });
+
+    tl.to(t, {
+      x: `+=${distance}`,
+      duration: SCENE_LENGTH,
+      ease: 'none',
+      modifiers: {
+        x: (xStr) => {
+          const xNum = parseFloat(xStr);
+          const wrapped = gsap.utils.wrap(-cycle, 0, xNum);
+          return wrapped + 'px';
+        }
+      }
+    }, 0);
+  });
+
+  // spotlight + center block appear after the parade gets going
+  tl.to('.spotlight', { opacity: 1, duration: 1.2, ease: 'power2.out' }, 1.0)
+    .to('.center-block', { opacity: 1, duration: 0.8, ease: 'power2.out' }, 1.5)
+    .from('.center-block .kicker', { y: 16, opacity: 0, duration: 0.6 }, 1.5)
+    .from('.center-block .title',  { y: 28, opacity: 0, duration: 0.7 }, 1.65)
+    .from('.center-block .sub',    { y: 18, opacity: 0, duration: 0.6 }, 1.85);
+
+  // ---------- scrubber ----------
+  const scrub = document.getElementById('scrub');
+  const timeEl = document.getElementById('time');
+  const playBtn = document.getElementById('playBtn');
+
+  function updateTime() {
+    const t = tl.time(), d = tl.duration();
+    timeEl.textContent = t.toFixed(2).padStart(5,'0') + ' / ' + d.toFixed(2).padStart(5,'0');
+  }
+  scrub.addEventListener('input', () => {
+    tl.pause(); playBtn.textContent = 'Play';
+    tl.progress(parseFloat(scrub.value)/100); updateTime();
+  });
+  gsap.ticker.add(() => {
+    if (!tl.paused()) {
+      scrub.value = (tl.progress()*100).toFixed(2);
+      updateTime();
+      if (tl.progress() >= 1) playBtn.textContent='Replay';
+    }
+  });
+  playBtn.addEventListener('click', () => {
+    if (tl.progress() >= 1) { tl.restart(); playBtn.textContent='Pause'; }
+    else if (tl.paused()) { tl.play(); playBtn.textContent='Pause'; }
+    else { tl.pause(); playBtn.textContent='Play'; }
+  });
+  updateTime();
+  setTimeout(() => { tl.play(); playBtn.textContent='Pause'; }, 400);
+</script>
+
+</body>
+</html>
