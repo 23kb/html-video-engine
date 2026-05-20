@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>GSAP Effects — WPForms Ports (50)</title>
+<title>GSAP Effects — WPForms Ports (101 / 101)</title>
 <link rel="stylesheet" href="../wpforms-brand/tokens.css" />
 <style>
   * { box-sizing: border-box; }
@@ -18,20 +18,20 @@
   .lede strong { color: #eae3d8; }
   .lede code { background: #2a221b; padding: 1px 6px; border-radius: 4px; color: var(--wpf-orange); font-size: 14px; }
   .stats { display: flex; gap: 32px; color: #b6ada1; font-size: 14px; margin-bottom: 40px; flex-wrap: wrap; }
-  .stat .v { color: var(--wpf-orange); font-weight: 700; font-size: 36px; display: block; line-height: 1; }
+  .stat .v { color: var(--wpf-orange); font-weight: 700; font-size: 38px; display: block; line-height: 1; }
   .stat .l { color: #8a847b; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
   .section-head { color: #8a847b; font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; margin: 32px 0 14px; display: flex; align-items: center; gap: 12px; }
   .section-head .count { background: var(--wpf-orange); color: white; padding: 2px 8px; border-radius: 999px; font-size: 11px; letter-spacing: 0; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; margin-bottom: 24px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; margin-bottom: 24px; }
   .card { background: #1d1814; border: 1px solid #2a221b; border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform 0.2s ease, border-color 0.2s ease; }
   .card:hover { transform: translateY(-3px); border-color: var(--wpf-orange); }
   .card .preview { aspect-ratio: 16/9; background: #faf6ee; position: relative; overflow: hidden; border-bottom: 1px solid #2a221b; }
   .card iframe { border: 0; }
-  .card .preview .badge { position: absolute; top: 10px; left: 10px; background: rgba(20,17,14,0.78); color: #faf6ee; font-size: 10px; font-weight: 700; padding: 3px 7px; border-radius: 4px; letter-spacing: 0.06em; z-index: 2; pointer-events: none; }
-  .card .meta { padding: 14px 16px 16px; }
-  .card .num { font-size: 11px; color: var(--wpf-orange); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px; }
-  .card .head { font-size: 15px; font-weight: 700; letter-spacing: -0.005em; margin-bottom: 6px; line-height: 1.25; }
-  .card .desc { color: #b6ada1; font-size: 12px; line-height: 1.4; }
+  .card .preview .badge { position: absolute; top: 8px; left: 8px; background: rgba(20,17,14,0.78); color: #faf6ee; font-size: 10px; font-weight: 700; padding: 2px 6px; border-radius: 3px; letter-spacing: 0.06em; z-index: 2; pointer-events: none; }
+  .card .meta { padding: 12px 14px 14px; }
+  .card .num { font-size: 10px; color: var(--wpf-orange); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 3px; }
+  .card .head { font-size: 13px; font-weight: 700; letter-spacing: -0.005em; margin-bottom: 4px; line-height: 1.25; }
+  .card .desc { color: #b6ada1; font-size: 11px; line-height: 1.4; }
   footer.page { margin-top: 48px; padding-top: 24px; border-top: 1px solid #2a221b; color: #6a6157; font-size: 13px; line-height: 1.5; }
   footer.page a { color: var(--wpf-orange); text-decoration: none; }
   footer.page a:hover { text-decoration: underline; }
@@ -41,99 +41,30 @@
 <div class="wrap">
   <header class="page">
     <div class="brand"><div class="dot"></div><div class="name">WPForms · GSAP Effects Library</div></div>
-    <div class="sub">reference/gsap-effects · feat/new-effects</div>
+    <div class="sub">reference/gsap-effects · feat/new-effects · 101 / 101</div>
   </header>
 
-  <h1 class="title">50 GSAP effects, ported for WPForms videos.</h1>
+  <h1 class="title">101 GSAP effects, ported for WPForms videos.</h1>
   <p class="lede">
-    Public descriptions + HTML skeletons from <strong>madewithgsap.com</strong>, rebuilt from scratch
-    with WPForms theming. Every effect re-binds the source's <code>ScrollTrigger.scrub</code> pattern
-    to a master timeline driven by a video playhead. Drop into intros, postintros, and editorial pieces —
-    or promote stabilized timelines into <code>videos/_shared/motion-primitives.js</code>.
+    Every public effect description from <strong>madewithgsap.com</strong>, rebuilt from scratch with WPForms theming.
+    Each port re-binds the source's <code>ScrollTrigger.scrub</code> pattern to a master timeline driven by a video playhead.
+    Drop into intros, postintros, and editorial pieces. Browse below or open any individual file.
   </p>
 
   <div class="stats">
-    <div class="stat"><span class="v">50</span><span class="l">ported</span></div>
-    <div class="stat"><span class="v">50</span><span class="l">remaining (uninventoried)</span></div>
-    <div class="stat"><span class="v">100</span><span class="l">total in source library</span></div>
-    <div class="stat"><span class="v">10</span><span class="l">commits on branch</span></div>
+    <div class="stat"><span class="v">101</span><span class="l">ported</span></div>
+    <div class="stat"><span class="v">100/101</span><span class="l">static QC clean</span></div>
+    <div class="stat"><span class="v">100%</span><span class="l">coverage 000–100</span></div>
+    <div class="stat"><span class="v">22</span><span class="l">commits on branch</span></div>
   </div>
 
-  <div class="section-head">Text reveals <span class="count">18</span></div>
-  <div class="grid">
-    <a class="card" href="effect004.html"><div class="preview"><span class="badge">004</span><iframe src="effect004.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 004</div><div class="head">Word stacking from edge</div><div class="desc">Words slide in from right with 3D arrival, previous words nudge to make room.</div></div></a>
-    <a class="card" href="effect005.html"><div class="preview"><span class="badge">005</span><iframe src="effect005.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 005</div><div class="head">Word by word from edge</div><div class="desc">Editorial paragraph words slide in from right with staggered timing.</div></div></a>
-    <a class="card" href="effect006.html"><div class="preview"><span class="badge">006</span><iframe src="effect006.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 006</div><div class="head">Paragraph word-swap</div><div class="desc">Multi-word phrases cycle through a slot with stagger.</div></div></a>
-    <a class="card" href="effect009.html"><div class="preview"><span class="badge">009</span><iframe src="effect009.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 009</div><div class="head">Up &amp; Down letter reveal</div><div class="desc">Phrases swap through a single slot — chars rise out, next chars rise in.</div></div></a>
-    <a class="card" href="effect011.html"><div class="preview"><span class="badge">011</span><iframe src="effect011.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 011</div><div class="head">Smooth letters R→L</div><div class="desc">Sentence slides into center while chars lift into place.</div></div></a>
-    <a class="card" href="effect015.html"><div class="preview"><span class="badge">015</span><iframe src="effect015.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 015</div><div class="head">Duplicate-word mask reveal</div><div class="desc">Dark word slides out as orange duplicate slides in (per-word wipe).</div></div></a>
-    <a class="card" href="effect022.html"><div class="preview"><span class="badge">022</span><iframe src="effect022.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 022</div><div class="head">Progressive sentences</div><div class="desc">Multi-color paragraphs cycle with stagger reveal + progress dots.</div></div></a>
-    <a class="card" href="effect027.html"><div class="preview"><span class="badge">027</span><iframe src="effect027.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 027</div><div class="head">Per-letter mask reveal</div><div class="desc">Domino wipe per character cream→orange, then reverse settle.</div></div></a>
-    <a class="card" href="effect029.html"><div class="preview"><span class="badge">029</span><iframe src="effect029.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 029</div><div class="head">Words shifting random</div><div class="desc">Words start at seeded random positions then converge home (center-out wave).</div></div></a>
-    <a class="card" href="effect032.html"><div class="preview"><span class="badge">032</span><iframe src="effect032.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 032</div><div class="head">Circular SVG text rings</div><div class="desc">Two concentric SVG textPath rings rotating in opposite directions.</div></div></a>
-    <a class="card" href="effect046.html"><div class="preview"><span class="badge">046</span><iframe src="effect046.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 046</div><div class="head">Random-order letter reveal</div><div class="desc">Chars appear in seeded-shuffled order with orange accent words.</div></div></a>
-    <a class="card" href="effect049.html"><div class="preview"><span class="badge">049</span><iframe src="effect049.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 049</div><div class="head">Defying gravity letters</div><div class="desc">Letters rise from random depths at varied per-char speeds + start offsets.</div></div></a>
-    <a class="card" href="effect052.html"><div class="preview"><span class="badge">052</span><iframe src="effect052.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 052</div><div class="head">Pinned text rail</div><div class="desc">Left header + right lyric lines with per-character L→R slide reveal.</div></div></a>
-    <a class="card" href="effect053.html"><div class="preview"><span class="badge">053</span><iframe src="effect053.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 053</div><div class="head">3D Y-axis quote swap</div><div class="desc">Quotes rotate out -90° while next rotates in from +90° with line stagger.</div></div></a>
-    <a class="card" href="effect059.html"><div class="preview"><span class="badge">059</span><iframe src="effect059.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 059</div><div class="head">Path text camera pan</div><div class="desc">Long curved SVG textPath swept past via container translate.</div></div></a>
-    <a class="card" href="effect081.html"><div class="preview"><span class="badge">081</span><iframe src="effect081.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 081</div><div class="head">Letter-by-letter paragraph swap</div><div class="desc">Sentences swap through a slot via L→R fade reveal / fade exit.</div></div></a>
-    <a class="card" href="effect090.html"><div class="preview"><span class="badge">090</span><iframe src="effect090.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 090</div><div class="head">Scrubbed random descramble</div><div class="desc">Chars at shuffled X positions slide into correct slot (seeded).</div></div></a>
-    <a class="card" href="effect098.html"><div class="preview"><span class="badge">098</span><iframe src="effect098.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 098</div><div class="head">Curved SVG textPath reveal</div><div class="desc">Lines on curved guide paths straighten while chars fade in L→R.</div></div></a>
-  </div>
-
-  <div class="section-head">Card / template layouts <span class="count">10</span></div>
-  <div class="grid">
-    <a class="card" href="effect001.html"><div class="preview"><span class="badge">001</span><iframe src="effect001.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 001</div><div class="head">Card stack horizontal spread</div><div class="desc">Stacked deck of templates fans outward, center card lifts.</div></div></a>
-    <a class="card" href="effect003.html"><div class="preview"><span class="badge">003</span><iframe src="effect003.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 003</div><div class="head">Card shuffle fan from bottom</div><div class="desc">Cards rise + fan via rotating pivot arms (dealer-shuffle).</div></div></a>
-    <a class="card" href="effect014.html"><div class="preview"><span class="badge">014</span><iframe src="effect014.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 014</div><div class="head">Infinite stacking templates</div><div class="desc">Cards fly in + stack with varied position/angle/size variation.</div></div></a>
-    <a class="card" href="effect018.html"><div class="preview"><span class="badge">018</span><iframe src="effect018.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 018</div><div class="head">Cards rise pause bounce</div><div class="desc">Cards rise from below, hold center, bounce off to top (wave-through).</div></div></a>
-    <a class="card" href="effect042.html"><div class="preview"><span class="badge">042</span><iframe src="effect042.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 042</div><div class="head">Z-depth stack disappear</div><div class="desc">Front cards peel forward and dissolve; stack steps up.</div></div></a>
-    <a class="card" href="effect047.html"><div class="preview"><span class="badge">047</span><iframe src="effect047.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 047</div><div class="head">Squash-deform carousel</div><div class="desc">Cards squash-stretch + tilt at viewport edges (per-frame deform).</div></div></a>
-    <a class="card" href="effect050.html"><div class="preview"><span class="badge">050</span><iframe src="effect050.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 050</div><div class="head">Infinite fullscreen zoom</div><div class="desc">5 form types blow past camera as the next emerges from distance.</div></div></a>
-    <a class="card" href="effect056.html"><div class="preview"><span class="badge">056</span><iframe src="effect056.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 056</div><div class="head">Dual stack flip</div><div class="desc">Two front/back stacks rotate through the same frame with wobble.</div></div></a>
-    <a class="card" href="effect074.html"><div class="preview"><span class="badge">074</span><iframe src="effect074.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 074</div><div class="head">Bottom-hinge trapdoor flip</div><div class="desc">Fronts tip away on bottom hinge to reveal dark backs.</div></div></a>
-    <a class="card" href="effect078.html"><div class="preview"><span class="badge">078</span><iframe src="effect078.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 078</div><div class="head">Image flight w/ center decel</div><div class="desc">Custom centerSlow ease decelerates cards through the spotlight.</div></div></a>
-  </div>
-
-  <div class="section-head">Carousels &amp; marquees <span class="count">8</span></div>
-  <div class="grid">
-    <a class="card" href="effect008.html"><div class="preview"><span class="badge">008</span><iframe src="effect008.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 008</div><div class="head">Drag list w/ subtle jitter</div><div class="desc">Horizontal drift + per-card seeded x/y/rotate jitter loops.</div></div></a>
-    <a class="card" href="effect013.html"><div class="preview"><span class="badge">013</span><iframe src="effect013.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 013</div><div class="head">Perpetual text marquee</div><div class="desc">Two oversized rotated marquees scroll in opposite directions.</div></div></a>
-    <a class="card" href="effect024.html"><div class="preview"><span class="badge">024</span><iframe src="effect024.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 024</div><div class="head">Opposite marquees + reveal</div><div class="desc">Top marquee lifts away to reveal hidden second going opposite way.</div></div></a>
-    <a class="card" href="effect028.html"><div class="preview"><span class="badge">028</span><iframe src="effect028.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 028</div><div class="head">Drag-rotation infinite list</div><div class="desc">4 simulated drag bursts tilt cards in direction, level elastically.</div></div></a>
-    <a class="card" href="effect033.html"><div class="preview"><span class="badge">033</span><iframe src="effect033.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 033</div><div class="head">Random gallery horizontal</div><div class="desc">14 seeded-random cards flow L→R with overlap + edge fades.</div></div></a>
-    <a class="card" href="effect065.html"><div class="preview"><span class="badge">065</span><iframe src="effect065.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 065</div><div class="head">Triple marquee parallax</div><div class="desc">3 horizontal pill ribbons at different speeds, middle counter-direction.</div></div></a>
-    <a class="card" href="effect070.html"><div class="preview"><span class="badge">070</span><iframe src="effect070.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 070</div><div class="head">Inchworm step scroll</div><div class="desc">Cards step forward in 4 arc-up arc-down measured beats.</div></div></a>
-    <a class="card" href="effect087.html"><div class="preview"><span class="badge">087</span><iframe src="effect087.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 087</div><div class="head">Tightening testimonial row</div><div class="desc">Testimonial cards slide in; gap progressively shrinks 60→10px.</div></div></a>
-  </div>
-
-  <div class="section-head">Constellations &amp; atmosphere <span class="count">8</span></div>
-  <div class="grid">
-    <a class="card" href="effect007.html"><div class="preview"><span class="badge">007</span><iframe src="effect007.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 007</div><div class="head">Rounded trajectory arc</div><div class="desc">Cards ride a giant rotating arc curve across viewport.</div></div></a>
-    <a class="card" href="effect023.html"><div class="preview"><span class="badge">023</span><iframe src="effect023.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 023</div><div class="head">Orbit + scroll-eject</div><div class="desc">10 cards orbit center; 3 timed eject events fling out + snap back.</div></div></a>
-    <a class="card" href="effect034.html"><div class="preview"><span class="badge">034</span><iframe src="effect034.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 034</div><div class="head">Multi-speed column scroll</div><div class="desc">5 columns of tiles drift at different speeds + directions with overlay.</div></div></a>
-    <a class="card" href="effect037.html"><div class="preview"><span class="badge">037</span><iframe src="effect037.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 037</div><div class="head">Gradient mask reveal</div><div class="desc">CSS mask-position sweep reveals stacked form previews in turn.</div></div></a>
-    <a class="card" href="effect064.html"><div class="preview"><span class="badge">064</span><iframe src="effect064.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 064</div><div class="head">Phyllotaxis spiral bloom</div><div class="desc">30 tiles bloom from center at golden-angle 137.5° (sunflower seeds).</div></div></a>
-    <a class="card" href="effect075.html"><div class="preview"><span class="badge">075</span><iframe src="effect075.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 075</div><div class="head">Fanning circular cards</div><div class="desc">8 integration cards fan from hub onto rotating ring perimeter.</div></div></a>
-    <a class="card" href="effect083.html"><div class="preview"><span class="badge">083</span><iframe src="effect083.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 083</div><div class="head">Multi-lane drift parade</div><div class="desc">4 depth bands drift with random Y jitter (loose, organic feel).</div></div></a>
-    <a class="card" href="effect100.html"><div class="preview"><span class="badge">100</span><iframe src="effect100.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 100</div><div class="head">Orbital scroll gallery</div><div class="desc">12 features orbit glowing hub with 3 elastic scroll-push pulses.</div></div></a>
-  </div>
-
-  <div class="section-head">3D / advanced techniques <span class="count">6</span></div>
-  <div class="grid">
-    <a class="card" href="effect000.html"><div class="preview"><span class="badge">000</span><iframe src="effect000.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 000</div><div class="head">Cursor inertia gallery</div><div class="desc">Ghost cursor on choreographed path kicks cards within proximity.</div></div></a>
-    <a class="card" href="effect012.html"><div class="preview"><span class="badge">012</span><iframe src="effect012.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 012</div><div class="head">Infinite 3D depth approach</div><div class="desc">Cards travel from z=-1500 to camera then past viewer + dissolve.</div></div></a>
-    <a class="card" href="effect026.html"><div class="preview"><span class="badge">026</span><iframe src="effect026.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 026</div><div class="head">Infinite 2D grid drift</div><div class="desc">80-tile grid drifts diagonally with x/y wrap modifiers (infinite).</div></div></a>
-    <a class="card" href="effect048.html"><div class="preview"><span class="badge">048</span><iframe src="effect048.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 048</div><div class="head">3D spiral staircase</div><div class="desc">14 form steps arranged on a translate3d helix that pivots past camera.</div></div></a>
-    <a class="card" href="effect067.html"><div class="preview"><span class="badge">067</span><iframe src="effect067.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 067</div><div class="head">Cylindrical letter reveal</div><div class="desc">Letters fold in from below cylinder, hold centred, fold away upward.</div></div></a>
-    <a class="card" href="effect068.html"><div class="preview"><span class="badge">068</span><iframe src="effect068.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe></div><div class="meta"><div class="num">Effect 068</div><div class="head">Cylindrical image flow</div><div class="desc">Center sharp, edges warp + recede via 3D cylindrical position curve.</div></div></a>
-  </div>
+  <div id="sections"></div>
 
   <footer class="page">
     <p>
       Source descriptions: <a href="https://madewithgsap.com/effects" target="_blank">madewithgsap.com/effects</a>.
       All ports built from public tutorial descriptions + HTML skeletons; CSS and GSAP code reconstructed from first principles.
-      See <a href="CATALOG.md">CATALOG.md</a> for the full index and adapter pattern notes.
+      See <a href="CATALOG.md">CATALOG.md</a> for the full grouped catalog and <code style="background:#2a221b;padding:1px 6px;border-radius:4px;color:var(--wpf-orange);font-size:13px;">qc.js</code> for the static validator.
     </p>
     <p>
       Branch <code style="background:#2a221b;padding:1px 6px;border-radius:4px;color:var(--wpf-orange);font-size:13px;">feat/new-effects</code>.
@@ -141,5 +72,151 @@
     </p>
   </footer>
 </div>
+
+<script>
+const sections = [
+  { title: 'Text reveals', items: [
+    ['004','Word stacking from edge','3D arrival from right; previous words nudge'],
+    ['005','Word by word from edge','Editorial paragraph words stagger in from right'],
+    ['006','Paragraph word-swap','Multi-word phrases cycle through a slot'],
+    ['009','Up & Down letter reveal','Chars rise out, next phrase rises in'],
+    ['010','Sine-wave horizontal text','Letters ride a sine wave as text drifts L'],
+    ['011','Smooth letters R→L','Sentence slides into center, chars land'],
+    ['015','Duplicate-word mask reveal','Dark out / orange in per-word'],
+    ['022','Progressive sentences','4 paragraphs cycle with progress dots'],
+    ['027','Per-letter mask reveal','Domino cream→orange wipe + reverse settle'],
+    ['029','Words shifting random','Seeded positions → home (center-out wave)'],
+    ['032','Circular SVG text rings','Counter-rotating textPath rings around hub'],
+    ['041','Center-out letter propagation','Orange overlay rolls outward then back'],
+    ['046','Random-order letter reveal','Chars appear shuffled (seeded mulberry32)'],
+    ['049','Defying gravity letters','Varied per-char speeds composing the title'],
+    ['052','Pinned text rail','Header + per-char L→R slide lines'],
+    ['053','3D Y-axis quote swap','Quotes rotate ±90° through same space'],
+    ['058','Per-letter spin mask','Chars flip from upside-down in masks'],
+    ['059','Path text camera pan','Long curved SVG textPath panned past'],
+    ['066','Pinned line mask reveal','Lines drift up through center slot'],
+    ['067','Cylindrical letter reveal','W-P-F-O-R-M-S folds in from below cylinder'],
+    ['079','Weight-shift marquee','Font-weight wave rides scrolling text'],
+    ['081','Letter-by-letter paragraph swap','L→R fade reveal + fade exit'],
+    ['085','Scroll word mask','Center 4-5 words fully visible, others fade'],
+    ['089','Jelly headline motion','Scroll-velocity bursts elastic-deform text'],
+    ['090','Scrubbed random descramble','Shuffled chars find their correct slot'],
+    ['097','Tightening word lines','Per-line gap 300→18px in sequence'],
+    ['098','Curved SVG textPath reveal','Curves straighten as chars fade in L→R'],
+  ]},
+  { title: 'Card / template layouts', items: [
+    ['001','Card stack horizontal spread','Deck fans outward, center card lifts'],
+    ['003','Card shuffle fan from bottom','Rising pivot arms deal a hand'],
+    ['014','Infinite stacking templates','Fly in + stack with varied pos/angle/size'],
+    ['018','Cards rise pause bounce','Wave-through: rise, hold, bounce off top'],
+    ['019','Scaled deform infinite scroll','3 acceleration bursts horizontal stretch'],
+    ['030','List hover image reveal','Left list → right preview with Y-mask'],
+    ['031','Pinned slides recede in 3D','Z plunge with content rotateX tilt'],
+    ['035','Row expand on hover','Categories take turns expanding'],
+    ['036','Hover word burst','Cards burst from seeded random + snap back'],
+    ['038','Horizontal flipbook','Pan through 4 WPForms milestones'],
+    ['042','Z-depth stack disappear','Fronts peel forward, stack steps up'],
+    ['045','Folders perspective cycle','Cursor-tilt root + slide cycling'],
+    ['047','Squash-deform carousel','Per-frame deform + tilt at edges'],
+    ['050','Infinite fullscreen zoom','5 forms blow past camera as next emerges'],
+    ['056','Dual stack flip','Two front/back stacks rotate through frame'],
+    ['060','Masked vertical image rail','Middle slide expands, others compress'],
+    ['074','Bottom-hinge trapdoor flip','Fronts tip away, dark backs swing in'],
+    ['078','Image flight + center decel','Custom centerSlow ease + 3D rotation'],
+    ['082','Upward image suction','Bounce in, suction up + shrink away'],
+    ['087','Tightening testimonial row','Cards in + gap shrinks 60→10px'],
+  ]},
+  { title: 'Carousels & marquees', items: [
+    ['008','Drag list with subtle jitter','Drift + per-card seeded jitter loops'],
+    ['013','Perpetual text marquee','Two oversized rotated marquees opposite'],
+    ['024','Opposite marquees + reveal','Top lifts away to reveal second beneath'],
+    ['026','Infinite 2D grid drift','80-tile diagonal drift with x/y wrap'],
+    ['028','Drag-rotation infinite list','4 simulated drag bursts tilt + level'],
+    ['033','Random gallery horizontal','14 seeded cards flow L→R with edge fades'],
+    ['040','Dual circular carousel','Two giant counter-rotating rings'],
+    ['051','Vertical multi-track scroll','3 cols at different vertical speeds'],
+    ['063','Long-press drag reorder','Lift + neighbor-shift + drop animation'],
+    ['065','Triple marquee parallax','3 pill ribbons at different speeds'],
+    ['069','Inchworm R→L exit','5 arc steps with alternating tilts'],
+    ['070','Inchworm L step scroll','4 arc-up arc-down measured beats'],
+    ['072','Scroll flow w/ wobble','Center-wobble + scaling on horizontal flow'],
+    ['073','Scroll timeline w/ dates','Parallax-counter giant year titles'],
+    ['088','Drag gallery reveal','Cards scale 0→1 entering viewport'],
+  ]},
+  { title: 'Constellations & atmosphere', items: [
+    ['007','Rounded trajectory arc','Cards ride a giant rotating arc'],
+    ['016','Swirling spiral inward','16 cards spiral 1.5 turns to the hub'],
+    ['023','Orbit + scroll-eject','3 timed ejects fling cards + snap back'],
+    ['034','Multi-speed column scroll','5 cols drift at different speeds/dirs'],
+    ['037','Gradient mask reveal','mask-position sweep across stacked images'],
+    ['057','Words split, cards burst','NEXT/FORM split + radial card burst'],
+    ['064','Phyllotaxis spiral bloom','30 tiles at golden angle 137.5° (sunflower)'],
+    ['075','Fanning circular cards','8 integrations fan from hub onto ring'],
+    ['076','Pinned radial spread','12 cards reveal onto continuous-rotation ring'],
+    ['080','Matter cursor swarm','Physics swarm w/ collision repulsion'],
+    ['083','Multi-lane drift parade','4 depth bands w/ random Y jitter'],
+    ['084','Pinned depth rows past camera','z=-1800 → 0 → 800 row plunges'],
+    ['094','Orbital scroll around headline','8 cards sine-arc above/below "FORMS."'],
+    ['096','Magnetic image reveal','Random pos → pull to center elastic'],
+    ['100','Orbital scroll gallery','12 features orbit hub w/ 3 elastic pulses'],
+  ]},
+  { title: 'Cursor-driven interactions', items: [
+    ['000','Cursor inertia gallery','Ghost cursor kicks cards in proximity'],
+    ['002','Cursor-distance image cycle','Cumulative travel swaps preview'],
+    ['017','Grid tiles tilt toward cursor','Distance-scaled rotation across 24-tile grid'],
+    ['020','Sliding mouse trail','8 cards form lagging chase tail'],
+    ['021','Bubbly mouse trail','Seeded offsets + damping per bubble'],
+    ['025','Randomize and focus','Nearest card scales up; others drift'],
+    ['039','Image with perspective tilt','Card tilts on Y/X tracking cursor'],
+    ['044','Cursor radial mask reveal','Dark→orange swap via circle clip-path'],
+    ['055','Elastic pointer rail','Row centers on cursor, cards lift'],
+    ['061','3D orbit disc inside viewport','Cursor tilts the spinning disc'],
+    ['062','Inertia trail burst','Bubbles spawn at cursor, throw + shrink'],
+    ['071','Grid proximity scale flow','35 tiles bloom toward cursor'],
+    ['077','Depth parallax card','bg/fg move opposite to cursor'],
+    ['091','3D wheel gallery','14-card cylinder w/ cursor tilt'],
+    ['092','Vanishing mouse trail','Bubbles pull to center + vanish'],
+    ['095','Bouncy 3D card grid','Nearest card lifts/tilts in 3D, others recede'],
+  ]},
+  { title: '3D / advanced techniques', items: [
+    ['012','Infinite 3D depth approach','z=-1500 toward camera then past viewer'],
+    ['043','Curved fan + hover lift','Fan on enter, then sequential hover lifts'],
+    ['048','3D spiral staircase','translate3d helix of 14 form steps'],
+    ['054','Pinned cylinder X-axis flip','5-card rotation around horizontal axis'],
+    ['068','Cylindrical image flow','Center sharp, edges warp + recede'],
+    ['086','Image inserts between letters','Expanding gap reveals form preview'],
+    ['093','Hover letter → image insertion','F·O·R·M·S gap fills cycle'],
+    ['099','3D sphere of card tiles','30 tiles via Fibonacci sphere distribution'],
+  ]},
+];
+
+// build sections
+const root = document.getElementById('sections');
+sections.forEach(section => {
+  const head = document.createElement('div');
+  head.className = 'section-head';
+  head.innerHTML = `${section.title} <span class="count">${section.items.length}</span>`;
+  root.appendChild(head);
+  const grid = document.createElement('div');
+  grid.className = 'grid';
+  section.items.forEach(([num, head, desc]) => {
+    const a = document.createElement('a');
+    a.className = 'card';
+    a.href = `effect${num}.html`;
+    a.innerHTML = `
+      <div class="preview">
+        <span class="badge">${num}</span>
+        <iframe src="effect${num}.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.146);transform-origin:top left;width:1920px;height:1080px"></iframe>
+      </div>
+      <div class="meta">
+        <div class="num">Effect ${num}</div>
+        <div class="head">${head}</div>
+        <div class="desc">${desc}</div>
+      </div>`;
+    grid.appendChild(a);
+  });
+  root.appendChild(grid);
+});
+</script>
 </body>
 </html>
