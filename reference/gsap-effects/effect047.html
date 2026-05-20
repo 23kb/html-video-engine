@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Effect 047 — Squash-deform carousel (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root {
+    --stage-w: 1920px;
+    --stage-h: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #0a0806;
+    font-family: var(--wpf-font-stack);
+    overflow: hidden;
+    color: var(--wpf-ink);
+  }
+
+  .stage-wrap {
+    position: relative;
+    width: 100vw; height: calc(100vh - 56px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stage {
+    position: relative;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    transform-origin: center center;
+    background: radial-gradient(ellipse at center, #fdf8f0 0%, #ede1cb 100%);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.50);
+  }
+
+  .brand {
+    position: absolute;
+    top: 60px; left: 80px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 10;
+    opacity: 0;
+  }
+  .brand .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--wpf-orange); }
+  .brand .name { font-weight: 600; font-size: 22px; letter-spacing: -0.01em; color: var(--wpf-ink-soft); }
+
+  .header {
+    position: absolute;
+    top: 100px;
+    left: 0; right: 0;
+    text-align: center;
+    z-index: 8;
+    opacity: 0;
+  }
+  .header .kicker {
+    color: var(--wpf-orange);
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .header .title {
+    font-size: 56px; font-weight: 700;
+    color: var(--wpf-ink);
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+
+  .carousel-zone {
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 460px;
+    margin-top: -180px;
+    overflow: hidden;
+  }
+  .carousel-track {
+    position: absolute;
+    top: 50%; left: 50%;
+    height: 100%;
+    display: flex; align-items: center;
+    gap: 40px;
+    will-change: transform;
+  }
+  .item {
+    width: 360px;
+    height: 460px;
+    background: white;
+    border-radius: 22px;
+    box-shadow:
+      0 30px 70px rgba(20,22,28,0.20),
+      0 6px 18px rgba(20,22,28,0.08);
+    overflow: hidden;
+    transform-origin: center center;
+    will-change: transform;
+    flex-shrink: 0;
+    padding: 32px;
+    display: flex; flex-direction: column;
+    gap: 18px;
+  }
+  .item .top {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .item .badge {
+    background: var(--wpf-orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 999px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+  }
+  .item[data-c="blue"]   .badge { background: var(--wpf-blue); }
+  .item[data-c="purple"] .badge { background: var(--wpf-ai-purple); }
+  .item[data-c="green"]  .badge { background: #2c8a55; }
+  .item[data-c="amber"]  .badge { background: #d59324; }
+  .item[data-c="teal"]   .badge { background: #2a8a8e; }
+  .item[data-c="pink"]   .badge { background: #c93874; }
+  .item .meta {
+    color: var(--wpf-ink-mute);
+    font-size: 13px;
+    font-weight: 600;
+  }
+  .item .title {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--wpf-ink);
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+  }
+  .item .field {
+    background: #f5f1ea;
+    border: 1px solid #e2d9c9;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: var(--wpf-ink-mute);
+  }
+  .item .submit {
+    background: var(--wpf-orange);
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    padding: 14px;
+    font-weight: 700;
+    font-size: 15px;
+    margin-top: auto;
+  }
+  .item[data-c="blue"]   .submit { background: var(--wpf-blue); }
+  .item[data-c="purple"] .submit { background: var(--wpf-ai-purple); }
+  .item[data-c="green"]  .submit { background: #2c8a55; }
+  .item[data-c="amber"]  .submit { background: #d59324; }
+  .item[data-c="teal"]   .submit { background: #2a8a8e; }
+  .item[data-c="pink"]   .submit { background: #c93874; }
+
+  /* fade edges */
+  .carousel-zone::before,
+  .carousel-zone::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 220px;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .carousel-zone::before {
+    left: 0;
+    background: linear-gradient(90deg, #fdf8f0 0%, rgba(253,248,240,0) 100%);
+  }
+  .carousel-zone::after {
+    right: 0;
+    background: linear-gradient(270deg, #ede1cb 0%, rgba(237,225,203,0) 100%);
+  }
+
+  /* footer caption */
+  .footer-cap {
+    position: absolute;
+    bottom: 130px;
+    left: 0; right: 0;
+    text-align: center;
+    color: var(--wpf-ink-mute);
+    font-size: 19px;
+    opacity: 0;
+    z-index: 8;
+  }
+  .footer-cap strong { color: var(--wpf-ink); font-weight: 700; }
+
+  /* controls */
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: #0f0d0c; color: #e8e3dc;
+    display: flex; align-items: center; gap: 16px;
+    padding: 0 24px;
+    font-family: var(--wpf-font-stack);
+    font-size: 13px;
+  }
+  .controls button {
+    background: var(--wpf-orange); color: white; border: 0;
+    padding: 8px 16px; border-radius: 6px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .controls button:hover { background: var(--wpf-orange-hover); }
+  .controls input[type=range] { flex: 1; accent-color: var(--wpf-orange); }
+  .controls .t {
+    font-variant-numeric: tabular-nums;
+    min-width: 110px; text-align: right; color: #aaa;
+  }
+  .controls .meta { color: #888; margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="name">WPForms</div>
+    </div>
+
+    <div class="header">
+      <div class="kicker">Every form has its match</div>
+      <div class="title">Pick from 1,800+ templates.</div>
+    </div>
+
+    <div class="carousel-zone">
+      <div class="carousel-track" id="track">
+        <!-- items injected by JS -->
+      </div>
+    </div>
+
+    <div class="footer-cap">
+      The cards <strong>squash and stretch</strong> at the edges — they're alive.
+    </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 047 · squash-deform carousel</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  const items = [
+    { kind: 'Contact', cls: 'orange', meta: 'simple-contact.json', title: 'Tell us about your project', btn: 'Send' },
+    { kind: 'Payment', cls: 'blue',   meta: 'stripe-checkout.json',  title: 'Subscribe — $49/mo', btn: 'Pay $49' },
+    { kind: 'AI',      cls: 'purple', meta: 'ai-generator.json',     title: 'Generate a form by prompt', btn: 'Generate' },
+    { kind: 'Survey',  cls: 'green',  meta: 'nps-feedback.json',     title: 'How was your experience?', btn: 'Send' },
+    { kind: 'Order',   cls: 'amber',  meta: 'product-order.json',    title: 'Place your order', btn: 'Buy' },
+    { kind: 'Booking', cls: 'teal',   meta: 'slot-reservation.json', title: 'Book a slot', btn: 'Reserve' },
+    { kind: 'Lead',    cls: 'pink',   meta: 'lead-magnet.json',      title: 'Get the playbook', btn: 'Send link' },
+    { kind: 'Event',   cls: 'orange', meta: 'event-rsvp.json',       title: 'RSVP — Summit 2026', btn: 'Reserve' },
+  ];
+
+  // duplicate items so the carousel can loop seamlessly
+  const track = document.getElementById('track');
+  const allItems = [...items, ...items];
+  allItems.forEach((it) => {
+    const el = document.createElement('div');
+    el.className = 'item';
+    el.dataset.c = it.cls;
+    el.innerHTML = `
+      <div class="top">
+        <div class="badge">${it.kind}</div>
+        <div class="meta">${it.meta}</div>
+      </div>
+      <div class="title">${it.title}</div>
+      <div class="field">Field</div>
+      <div class="field">Field</div>
+      <div class="field">Field</div>
+      <div class="submit">${it.btn}</div>`;
+    track.appendChild(el);
+  });
+  const itemEls = gsap.utils.toArray('.item');
+
+  function fit() {
+    const stage = document.getElementById('stage');
+    const w = window.innerWidth;
+    const h = window.innerHeight - 56;
+    const scale = Math.min(w / 1920, h / 1080) * 0.96;
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // ---------- main animation ----------
+  requestAnimationFrame(() => {
+    // measure cycle width = half of full track (since we duplicated)
+    const totalW = track.scrollWidth;
+    const cycle = totalW / 2;
+
+    // start track centered: shift left so middle of the first set sits at center
+    const stageW = 1920;
+    const initialX = -(cycle / 2) + stageW / 2;
+    gsap.set(track, { x: initialX });
+
+    const tl = gsap.timeline({ paused: true });
+
+    // chrome
+    tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1)
+      .to('.header', { opacity: 1, duration: 0.6, ease: 'power2.out' }, 0.3)
+      .from('.header .kicker', { y: 18, opacity: 0, duration: 0.5 }, 0.3)
+      .from('.header .title',  { y: 24, opacity: 0, duration: 0.6 }, 0.45);
+
+    // continuous drift L to R then wrap
+    const DRIFT_DUR = 16;
+    const DRIFT_DIST = -cycle * 1.0;   // one full cycle drift
+
+    tl.to(track, {
+      x: `+=${DRIFT_DIST}`,
+      duration: DRIFT_DUR,
+      ease: 'none',
+      modifiers: {
+        x: (xStr) => {
+          const xNum = parseFloat(xStr);
+          // wrap so x stays in [initialX - cycle, initialX]
+          const wrapped = gsap.utils.wrap(initialX - cycle, initialX, xNum);
+          return wrapped + 'px';
+        }
+      }
+    }, 0);
+
+    // ---------- squash/stretch per card based on horizontal position ----------
+    // Each ticker frame: read each card's bounding box center vs viewport center.
+    // - At viewport center: scale 1, no squash.
+    // - Near left/right edges: scale stretched horizontally (squashed vertically)
+    //   to suggest the card is being deformed as it leaves the viewport.
+    const stageEl = document.getElementById('stage');
+    function getStageRect() { return stageEl.getBoundingClientRect(); }
+
+    function updateSquash() {
+      const r = getStageRect();
+      const scaleFactor = r.width / 1920;
+      const cx = r.left + r.width / 2;
+      const halfStage = (1920 / 2) * scaleFactor;
+
+      itemEls.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const itemCx = rect.left + rect.width / 2;
+        const dx = (itemCx - cx) / halfStage;   // -1 at left edge, +1 at right edge
+        const abs = Math.min(1.2, Math.abs(dx));
+
+        // squash function: as |dx| approaches 1, scaleX increases, scaleY decreases
+        const stretchAmount = 0.45 * abs;       // up to 0.45 deform
+        const scaleX = 1 + stretchAmount;
+        const scaleY = 1 - stretchAmount * 0.5;
+        const rotate = dx * 8;                  // tilt outward at edges
+
+        el.style.transform = `scale(${scaleX}, ${scaleY}) rotate(${rotate}deg)`;
+      });
+    }
+
+    // run squash update every frame while the carousel is moving
+    gsap.ticker.add(updateSquash);
+
+    // footer caption fades in
+    tl.to('.footer-cap', { opacity: 1, duration: 0.7 }, 1.6)
+      .from('.footer-cap', { y: 14, duration: 0.7 }, 1.6);
+
+    // ---------- scrubber ----------
+    const scrub = document.getElementById('scrub');
+    const timeEl = document.getElementById('time');
+    const playBtn = document.getElementById('playBtn');
+
+    function updateTime() {
+      const t = tl.time(), d = tl.duration();
+      timeEl.textContent = t.toFixed(2).padStart(5,'0') + ' / ' + d.toFixed(2).padStart(5,'0');
+    }
+    scrub.addEventListener('input', () => {
+      tl.pause(); playBtn.textContent = 'Play';
+      tl.progress(parseFloat(scrub.value)/100); updateTime();
+    });
+    gsap.ticker.add(() => {
+      if (!tl.paused()) {
+        scrub.value = (tl.progress()*100).toFixed(2);
+        updateTime();
+        if (tl.progress() >= 1) playBtn.textContent='Replay';
+      }
+    });
+    playBtn.addEventListener('click', () => {
+      if (tl.progress() >= 1) { tl.restart(); playBtn.textContent='Pause'; }
+      else if (tl.paused()) { tl.play(); playBtn.textContent='Pause'; }
+      else { tl.pause(); playBtn.textContent='Play'; }
+    });
+    updateTime();
+    setTimeout(() => { tl.play(); playBtn.textContent='Pause'; }, 400);
+  });
+</script>
+
+</body>
+</html>

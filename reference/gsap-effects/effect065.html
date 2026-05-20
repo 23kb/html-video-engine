@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Effect 065 — Triple marquee parallax (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root {
+    --stage-w: 1920px;
+    --stage-h: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #0a0806;
+    font-family: var(--wpf-font-stack);
+    overflow: hidden;
+    color: var(--wpf-ink);
+  }
+
+  .stage-wrap {
+    position: relative;
+    width: 100vw; height: calc(100vh - 56px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stage {
+    position: relative;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    transform-origin: center center;
+    background: linear-gradient(180deg, #fdfaf3 0%, #f3ecdb 100%);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.50);
+  }
+
+  .brand {
+    position: absolute;
+    top: 60px; left: 80px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 10;
+    opacity: 0;
+  }
+  .brand .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--wpf-orange); }
+  .brand .name { font-weight: 600; font-size: 22px; letter-spacing: -0.01em; color: var(--wpf-ink-soft); }
+
+  .header {
+    position: absolute;
+    top: 110px;
+    left: 0; right: 0;
+    text-align: center;
+    z-index: 8;
+    opacity: 0;
+  }
+  .header .kicker {
+    color: var(--wpf-orange);
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .header .title {
+    font-size: 56px; font-weight: 700;
+    color: var(--wpf-ink);
+    letter-spacing: -0.025em;
+    line-height: 1;
+  }
+
+  /* the pinned band — 3 ribbons */
+  .band {
+    position: absolute;
+    top: 50%; left: 0; right: 0;
+    height: 480px;
+    margin-top: -180px;
+    display: flex; flex-direction: column;
+    gap: 26px;
+    overflow: hidden;
+    z-index: 4;
+  }
+  .ribbon {
+    position: relative;
+    height: 140px;
+    overflow: hidden;
+  }
+  .ribbon-track {
+    position: absolute;
+    top: 0; left: 0;
+    display: flex; align-items: center;
+    gap: 22px;
+    height: 100%;
+    will-change: transform;
+  }
+
+  .pill {
+    height: 110px;
+    background: white;
+    border-radius: 16px;
+    box-shadow:
+      0 14px 36px rgba(20,22,28,0.14),
+      0 3px 8px rgba(20,22,28,0.06);
+    padding: 0 28px;
+    display: flex; align-items: center; gap: 16px;
+    flex-shrink: 0;
+  }
+  .pill .ico {
+    width: 50px; height: 50px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-size: 22px;
+    font-weight: 800;
+    flex-shrink: 0;
+  }
+  .pill .ico.orange { background: var(--wpf-orange); }
+  .pill .ico.blue   { background: var(--wpf-blue); }
+  .pill .ico.purple { background: var(--wpf-ai-purple); }
+  .pill .ico.green  { background: #2c8a55; }
+  .pill .ico.amber  { background: #d59324; }
+  .pill .ico.teal   { background: #2a8a8e; }
+  .pill .ico.pink   { background: #c93874; }
+  .pill .ico.slate  { background: #4d566e; }
+  .pill .label {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--wpf-ink);
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+  }
+  .pill .sub {
+    color: var(--wpf-ink-mute);
+    font-size: 13px;
+    margin-top: 2px;
+  }
+  .pill .text { display: flex; flex-direction: column; }
+
+  /* fade edges so pills disappear gracefully at the edges */
+  .band::before,
+  .band::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    width: 160px;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .band::before {
+    left: 0;
+    background: linear-gradient(90deg, #fdfaf3 0%, rgba(253,250,243,0) 100%);
+  }
+  .band::after {
+    right: 0;
+    background: linear-gradient(270deg, #f3ecdb 0%, rgba(243,236,219,0) 100%);
+  }
+
+  /* footer caption */
+  .footer-cap {
+    position: absolute;
+    bottom: 110px;
+    left: 0; right: 0;
+    text-align: center;
+    color: var(--wpf-ink-mute);
+    font-size: 18px;
+    opacity: 0;
+    z-index: 8;
+  }
+  .footer-cap strong { color: var(--wpf-ink); font-weight: 700; }
+
+  /* controls */
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: #0f0d0c; color: #e8e3dc;
+    display: flex; align-items: center; gap: 16px;
+    padding: 0 24px;
+    font-family: var(--wpf-font-stack);
+    font-size: 13px;
+  }
+  .controls button {
+    background: var(--wpf-orange); color: white; border: 0;
+    padding: 8px 16px; border-radius: 6px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .controls button:hover { background: var(--wpf-orange-hover); }
+  .controls input[type=range] { flex: 1; accent-color: var(--wpf-orange); }
+  .controls .t {
+    font-variant-numeric: tabular-nums;
+    min-width: 110px; text-align: right; color: #aaa;
+  }
+  .controls .meta { color: #888; margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="name">WPForms</div>
+    </div>
+
+    <div class="header">
+      <div class="kicker">Built into the workflow</div>
+      <div class="title">Connects with everything.</div>
+    </div>
+
+    <div class="band">
+      <div class="ribbon" data-i="0">
+        <div class="ribbon-track" id="track0">
+          <!-- pills generated by JS -->
+        </div>
+      </div>
+      <div class="ribbon" data-i="1">
+        <div class="ribbon-track" id="track1"></div>
+      </div>
+      <div class="ribbon" data-i="2">
+        <div class="ribbon-track" id="track2"></div>
+      </div>
+    </div>
+
+    <div class="footer-cap">
+      <strong>9,000+</strong> integrations. One drag-and-drop builder.
+    </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 065 · triple marquee parallax</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  // ---------- 3 ribbon configurations ----------
+  const ribbons = [
+    {
+      // top ribbon: integrations
+      items: [
+        { ico: 'M', cls: 'amber',  label: 'Mailchimp',  sub: 'Email marketing' },
+        { ico: 'S', cls: 'blue',   label: 'Stripe',     sub: 'Payments' },
+        { ico: '#', cls: 'pink',   label: 'Slack',      sub: 'Notifications' },
+        { ico: 'Z', cls: 'orange', label: 'Zapier',     sub: '5,000+ apps' },
+        { ico: 'K', cls: 'slate',  label: 'Klaviyo',    sub: 'Email + SMS' },
+        { ico: 'H', cls: 'orange', label: 'HubSpot',    sub: 'CRM' },
+        { ico: 'D', cls: 'green',  label: 'Drip',       sub: 'E-com email' },
+        { ico: 'A', cls: 'amber',  label: 'ActiveCampaign', sub: 'Automation' },
+      ]
+    },
+    {
+      // middle ribbon: features
+      items: [
+        { ico: 'AI', cls: 'purple', label: 'AI Forms',         sub: 'One-prompt generation' },
+        { ico: 'L',  cls: 'green',  label: 'Conditional Logic', sub: 'Smart fields' },
+        { ico: 'Σ',  cls: 'slate',  label: 'Calculations',      sub: 'Live totals' },
+        { ico: '¥',  cls: 'blue',   label: 'Payment Forms',     sub: 'Stripe · PayPal · Square' },
+        { ico: 'U',  cls: 'pink',   label: 'User Registration', sub: 'WordPress accounts' },
+        { ico: '⏰', cls: 'teal',   label: 'Scheduling',        sub: 'Date · Time pickers' },
+        { ico: '📊', cls: 'orange', label: 'Surveys',          sub: 'NPS · Likert · Polls' },
+        { ico: '🔁', cls: 'amber',  label: 'Webhooks',         sub: 'POST anywhere' },
+      ]
+    },
+    {
+      // bottom ribbon: templates
+      items: [
+        { ico: 'C', cls: 'orange', label: 'Contact Form',     sub: 'Simple, classic' },
+        { ico: 'B', cls: 'blue',   label: 'Booking',           sub: 'Schedule a call' },
+        { ico: 'O', cls: 'amber',  label: 'Order Form',        sub: 'Products + checkout' },
+        { ico: 'F', cls: 'purple', label: 'Feedback',          sub: 'NPS + open-ended' },
+        { ico: 'E', cls: 'pink',   label: 'Event RSVP',        sub: 'Capture attendance' },
+        { ico: 'L', cls: 'teal',   label: 'Lead Magnet',       sub: 'Gated downloads' },
+        { ico: 'D', cls: 'green',  label: 'Donation',          sub: 'Recurring + one-time' },
+        { ico: 'R', cls: 'slate',  label: 'Registration',      sub: 'New user signup' },
+      ]
+    },
+  ];
+
+  // ---------- build pills ----------
+  ribbons.forEach((r, ri) => {
+    const track = document.getElementById('track' + ri);
+    // duplicate items so the ribbon can loop seamlessly
+    const dupes = [...r.items, ...r.items];
+    dupes.forEach((it) => {
+      const pill = document.createElement('div');
+      pill.className = 'pill';
+      pill.innerHTML = `
+        <div class="ico ${it.cls}">${it.ico}</div>
+        <div class="text">
+          <div class="label">${it.label}</div>
+          <div class="sub">${it.sub}</div>
+        </div>`;
+      track.appendChild(pill);
+    });
+  });
+
+  // ---------- responsive stage ----------
+  function fit() {
+    const stage = document.getElementById('stage');
+    const w = window.innerWidth;
+    const h = window.innerHeight - 56;
+    const scale = Math.min(w / 1920, h / 1080) * 0.96;
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // ---------- master timeline ----------
+  // Wait for layout to settle, then measure track widths and build the timeline.
+  requestAnimationFrame(() => {
+    const tracks = gsap.utils.toArray('.ribbon-track');
+
+    // measure each track's natural total width — the loop distance is half of it
+    // (because items are duplicated for seamless loop)
+    const cycleWidths = tracks.map(t => t.scrollWidth / 2);
+
+    // ribbon directions and speed multipliers (parallax — each glides at its own rate)
+    const directions = [-1, 1, -1];   // top + bottom go left, middle goes right
+    const speeds = [1.0, 1.4, 0.75];
+
+    const tl = gsap.timeline({ paused: true });
+
+    // chrome fade in
+    tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1)
+      .to('.header', { opacity: 1, duration: 0.6, ease: 'power2.out' }, 0.3)
+      .from('.header .kicker', { y: 18, opacity: 0, duration: 0.5 }, 0.3)
+      .from('.header .title',  { y: 24, opacity: 0, duration: 0.6 }, 0.45);
+
+    // ribbons drift continuously across SCENE_LENGTH seconds
+    const SCENE_LENGTH = 18;
+
+    tracks.forEach((t, i) => {
+      const cycle = cycleWidths[i];
+      const distance = cycle * speeds[i] * directions[i];
+
+      // start each ribbon at a slightly offset phase so they don't all look synced
+      gsap.set(t, { x: -cycle * 0.13 * i });
+
+      tl.to(t, {
+        x: `+=${distance}`,
+        duration: SCENE_LENGTH,
+        ease: 'none',
+        modifiers: {
+          x: (xStr) => {
+            const xNum = parseFloat(xStr);
+            // wrap so we never run out of duplicated content
+            // direction -1: keep x in [-cycle, 0]
+            // direction +1: keep x in [-cycle, 0] still, since wrap rolls correctly
+            const wrapped = gsap.utils.wrap(-cycle, 0, xNum);
+            return wrapped + 'px';
+          }
+        }
+      }, 0);
+    });
+
+    // footer caption appears mid-scene
+    tl.to('.footer-cap', { opacity: 1, duration: 0.7 }, 1.6)
+      .from('.footer-cap', { y: 14, duration: 0.7 }, 1.6);
+
+    // ---------- scrubber ----------
+    const scrub = document.getElementById('scrub');
+    const timeEl = document.getElementById('time');
+    const playBtn = document.getElementById('playBtn');
+
+    function updateTime() {
+      const t = tl.time(), d = tl.duration();
+      timeEl.textContent = t.toFixed(2).padStart(5,'0') + ' / ' + d.toFixed(2).padStart(5,'0');
+    }
+    scrub.addEventListener('input', () => {
+      tl.pause(); playBtn.textContent = 'Play';
+      tl.progress(parseFloat(scrub.value)/100); updateTime();
+    });
+    gsap.ticker.add(() => {
+      if (!tl.paused()) {
+        scrub.value = (tl.progress()*100).toFixed(2);
+        updateTime();
+        if (tl.progress() >= 1) playBtn.textContent='Replay';
+      }
+    });
+    playBtn.addEventListener('click', () => {
+      if (tl.progress() >= 1) { tl.restart(); playBtn.textContent='Pause'; }
+      else if (tl.paused()) { tl.play(); playBtn.textContent='Pause'; }
+      else { tl.pause(); playBtn.textContent='Play'; }
+    });
+    updateTime();
+    setTimeout(() => { tl.play(); playBtn.textContent='Pause'; }, 400);
+  });
+</script>
+
+</body>
+</html>

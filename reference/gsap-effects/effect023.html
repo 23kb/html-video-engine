@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Effect 023 — Circular orbit with scroll-eject (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root {
+    --stage-w: 1920px;
+    --stage-h: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #0a0806;
+    font-family: var(--wpf-font-stack);
+    overflow: hidden;
+    color: var(--wpf-ink);
+  }
+
+  .stage-wrap {
+    position: relative;
+    width: 100vw; height: calc(100vh - 56px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stage {
+    position: relative;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    transform-origin: center center;
+    background: radial-gradient(ellipse at center, #1f1810 0%, #0d0907 70%, #060403 100%);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.50);
+  }
+
+  .brand {
+    position: absolute;
+    top: 60px; left: 80px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 10;
+    color: rgba(250,246,238,0.9);
+    opacity: 0;
+  }
+  .brand .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--wpf-orange); }
+  .brand .name { font-weight: 600; font-size: 22px; letter-spacing: -0.01em; }
+
+  /* big orbital circle — extended beyond viewport so items can be ejected outward */
+  .orbit-container {
+    position: absolute;
+    inset: 0;
+    overflow: visible;
+  }
+  .orbit {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 1100px;
+    height: 1100px;
+    margin: -550px 0 0 -550px;
+    /* faint ring guide */
+    border-radius: 50%;
+    border: 1px dashed rgba(226,119,48,0.18);
+  }
+
+  /* center title block */
+  .center-block {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 360px;
+    text-align: center;
+    z-index: 5;
+    opacity: 0;
+  }
+  .center-block .badge {
+    display: inline-block;
+    background: var(--wpf-orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .center-block .title {
+    font-size: 44px;
+    font-weight: 700;
+    color: rgba(250,246,238,0.95);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+  .center-block .sub {
+    color: rgba(250,246,238,0.5);
+    font-size: 15px;
+    margin-top: 14px;
+    line-height: 1.4;
+  }
+
+  /* orbiting media cards */
+  .media {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 220px;
+    height: 280px;
+    margin: -140px 0 0 -110px;
+    background: white;
+    border-radius: 16px;
+    box-shadow:
+      0 14px 36px rgba(20,22,28,0.30),
+      0 4px 12px rgba(20,22,28,0.18);
+    overflow: hidden;
+    will-change: transform, opacity;
+    opacity: 0;
+    padding: 18px;
+    display: flex; flex-direction: column;
+    gap: 10px;
+  }
+  .media .ico {
+    width: 38px; height: 38px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    color: white;
+    font-size: 16px;
+    font-weight: 800;
+  }
+  .media[data-c="orange"] .ico { background: var(--wpf-orange); }
+  .media[data-c="blue"]   .ico { background: var(--wpf-blue); }
+  .media[data-c="purple"] .ico { background: var(--wpf-ai-purple); }
+  .media[data-c="green"]  .ico { background: #2c8a55; }
+  .media[data-c="amber"]  .ico { background: #d59324; }
+  .media[data-c="teal"]   .ico { background: #2a8a8e; }
+  .media[data-c="pink"]   .ico { background: #c93874; }
+  .media[data-c="slate"]  .ico { background: #4d566e; }
+  .media .title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--wpf-ink);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .media .field {
+    background: #f5f1ea;
+    border: 1px solid #e2d9c9;
+    border-radius: 6px;
+    padding: 7px 9px;
+    font-size: 11px;
+    color: var(--wpf-ink-mute);
+  }
+  .media .submit {
+    margin-top: auto;
+    background: var(--wpf-orange);
+    color: white;
+    border-radius: 6px;
+    text-align: center;
+    padding: 8px;
+    font-weight: 700;
+    font-size: 12px;
+  }
+  .media[data-c="blue"]   .submit { background: var(--wpf-blue); }
+  .media[data-c="purple"] .submit { background: var(--wpf-ai-purple); }
+  .media[data-c="green"]  .submit { background: #2c8a55; }
+  .media[data-c="amber"]  .submit { background: #d59324; }
+  .media[data-c="teal"]   .submit { background: #2a8a8e; }
+  .media[data-c="pink"]   .submit { background: #c93874; }
+  .media[data-c="slate"]  .submit { background: #4d566e; }
+
+  /* eject burst — a brief radial glow around an ejected card */
+  .media .burst {
+    position: absolute;
+    inset: -20px;
+    border-radius: 24px;
+    background: radial-gradient(circle, rgba(226,119,48,0.35) 0%, rgba(226,119,48,0) 70%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* controls */
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: #0f0d0c; color: #e8e3dc;
+    display: flex; align-items: center; gap: 16px;
+    padding: 0 24px;
+    font-family: var(--wpf-font-stack);
+    font-size: 13px;
+  }
+  .controls button {
+    background: var(--wpf-orange); color: white; border: 0;
+    padding: 8px 16px; border-radius: 6px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .controls button:hover { background: var(--wpf-orange-hover); }
+  .controls input[type=range] { flex: 1; accent-color: var(--wpf-orange); }
+  .controls .t {
+    font-variant-numeric: tabular-nums;
+    min-width: 110px; text-align: right; color: #aaa;
+  }
+  .controls .meta { color: #888; margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="name">WPForms</div>
+    </div>
+
+    <div class="orbit-container">
+      <div class="orbit" id="orbit"></div>
+    </div>
+
+    <div class="center-block">
+      <div class="badge">Speed up</div>
+      <div class="title">Move fast.<br/>Pick faster.</div>
+      <div class="sub">Templates orbit you. Grab the one that fits.</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 023 · circular orbit with scroll-eject</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  // ---------- deterministic random ----------
+  function mulberry32(a) {
+    return function() {
+      let t = a += 0x6D2B79F5;
+      t = Math.imul(t ^ t >>> 15, t | 1);
+      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  const rng = mulberry32(23);
+
+  // ---------- 10 form-template cards orbiting ----------
+  const cards = [
+    { kind: 'Contact', cls: 'orange', ico: 'C', title: 'Quick Contact',     btn: 'Send' },
+    { kind: 'Payment', cls: 'blue',   ico: '$', title: 'Stripe Checkout',   btn: 'Pay' },
+    { kind: 'AI',      cls: 'purple', ico: 'AI',title: 'AI Form Generator', btn: 'Generate' },
+    { kind: 'Survey',  cls: 'green',  ico: 'S', title: 'NPS Feedback',      btn: 'Submit' },
+    { kind: 'Order',   cls: 'amber',  ico: 'O', title: 'Product Order',     btn: 'Buy' },
+    { kind: 'Booking', cls: 'teal',   ico: 'B', title: 'Reserve a Slot',    btn: 'Book' },
+    { kind: 'Lead',    cls: 'pink',   ico: 'L', title: 'Lead Magnet',       btn: 'Get it' },
+    { kind: 'Event',   cls: 'orange', ico: 'E', title: 'Event RSVP',        btn: 'Sign up' },
+    { kind: 'Donate',  cls: 'green',  ico: 'D', title: 'Donation Form',     btn: 'Give' },
+    { kind: 'Login',   cls: 'slate',  ico: 'U', title: 'User Registration', btn: 'Sign up' },
+  ];
+
+  const orbit = document.getElementById('orbit');
+  cards.forEach((c, i) => {
+    const el = document.createElement('div');
+    el.className = 'media';
+    el.dataset.c = c.cls;
+    el.dataset.i = i;
+    el.innerHTML = `
+      <div class="ico">${c.ico}</div>
+      <div class="title">${c.title}</div>
+      <div class="field">Field</div>
+      <div class="field">Field</div>
+      <div class="submit">${c.btn}</div>
+      <div class="burst"></div>`;
+    orbit.appendChild(el);
+  });
+  const mediaEls = gsap.utils.toArray('.media');
+
+  function fit() {
+    const stage = document.getElementById('stage');
+    const w = window.innerWidth;
+    const h = window.innerHeight - 56;
+    const scale = Math.min(w / 1920, h / 1080) * 0.96;
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // ---------- compute orbital positions ----------
+  const ORBIT_R = 540;     // base orbit radius
+  const COUNT = mediaEls.length;
+  const baseAngles = mediaEls.map((_, i) => (i / COUNT) * 360);
+
+  // initial: all hidden at center
+  mediaEls.forEach((el) => gsap.set(el, { x: 0, y: 0, rotation: 0, scale: 0.3, opacity: 0 }));
+
+  // ---------- master timeline ----------
+  const tl = gsap.timeline({ paused: true });
+
+  tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1);
+
+  // Beat A: cards bloom outward to orbital positions
+  const BLOOM = 0.7;
+  mediaEls.forEach((el, i) => {
+    const a = baseAngles[i] * Math.PI / 180;
+    const x = Math.cos(a) * ORBIT_R;
+    const y = Math.sin(a) * ORBIT_R;
+    tl.to(el, {
+      x, y,
+      scale: 1,
+      opacity: 1,
+      duration: 0.8,
+      ease: 'back.out(1.3)'
+    }, BLOOM + i * 0.06);
+  });
+
+  // Beat B: center title appears
+  tl.to('.center-block', { opacity: 1, duration: 0.7, ease: 'power2.out' }, BLOOM + 0.5)
+    .from('.center-block .badge', { y: 12, opacity: 0, duration: 0.5 }, BLOOM + 0.5)
+    .from('.center-block .title', { y: 24, opacity: 0, duration: 0.7 }, BLOOM + 0.65)
+    .from('.center-block .sub',   { y: 16, opacity: 0, duration: 0.6 }, BLOOM + 0.85);
+
+  // Beat C: continuous orbital rotation
+  const SPIN_START = BLOOM + COUNT * 0.06 + 0.4;
+  const SPIN_DUR = 16;
+  tl.to('.orbit', { rotation: 360, duration: SPIN_DUR, ease: 'none' }, SPIN_START);
+  // counter-rotate cards so their content stays upright (they continue to revolve, but don't visually spin)
+  mediaEls.forEach((el) => {
+    tl.to(el, { rotation: -360, duration: SPIN_DUR, ease: 'none' }, SPIN_START);
+  });
+
+  // Beat D: SCROLL-EJECT events — pick certain cards and "eject" them out of orbit briefly.
+  // The source: "the faster the scroll, the more certain images will drift away from their orbit."
+  // We simulate 3 scroll-burst events, each ejecting 2-3 cards radially outward.
+  const ejectEvents = [
+    { time: 2.2, count: 3, intensity: 220 },
+    { time: 6.0, count: 4, intensity: 290 },
+    { time: 11.0, count: 2, intensity: 180 },
+  ];
+
+  // pre-compute which cards eject during each event (seeded selection)
+  ejectEvents.forEach((ev) => {
+    const indices = [];
+    const pool = [...Array(COUNT).keys()];
+    for (let n = 0; n < ev.count; n++) {
+      const idx = Math.floor(rng() * pool.length);
+      indices.push(pool.splice(idx, 1)[0]);
+    }
+
+    const t = SPIN_START + ev.time;
+    indices.forEach((idx) => {
+      const el = mediaEls[idx];
+      const a = baseAngles[idx] * Math.PI / 180;
+      const baseX = Math.cos(a) * ORBIT_R;
+      const baseY = Math.sin(a) * ORBIT_R;
+      const ejectX = Math.cos(a) * (ORBIT_R + ev.intensity);
+      const ejectY = Math.sin(a) * (ORBIT_R + ev.intensity);
+
+      // burst glow
+      tl.to(el.querySelector('.burst'), { opacity: 1, duration: 0.2, ease: 'power1.out' }, t);
+      tl.to(el.querySelector('.burst'), { opacity: 0, duration: 0.8, ease: 'power1.in' }, t + 0.2);
+
+      // outward eject
+      tl.to(el, { x: ejectX, y: ejectY, duration: 0.4, ease: 'power3.out' }, t);
+
+      // snap back with elastic
+      tl.to(el, { x: baseX, y: baseY, duration: 1.1, ease: 'elastic.out(1, 0.4)' }, t + 0.4);
+    });
+  });
+
+  // ---------- scrubber ----------
+  const scrub = document.getElementById('scrub');
+  const timeEl = document.getElementById('time');
+  const playBtn = document.getElementById('playBtn');
+
+  function updateTime() {
+    const t = tl.time(), d = tl.duration();
+    timeEl.textContent = t.toFixed(2).padStart(5,'0') + ' / ' + d.toFixed(2).padStart(5,'0');
+  }
+  scrub.addEventListener('input', () => {
+    tl.pause(); playBtn.textContent = 'Play';
+    tl.progress(parseFloat(scrub.value)/100); updateTime();
+  });
+  gsap.ticker.add(() => {
+    if (!tl.paused()) {
+      scrub.value = (tl.progress()*100).toFixed(2);
+      updateTime();
+      if (tl.progress() >= 1) playBtn.textContent='Replay';
+    }
+  });
+  playBtn.addEventListener('click', () => {
+    if (tl.progress() >= 1) { tl.restart(); playBtn.textContent='Pause'; }
+    else if (tl.paused()) { tl.play(); playBtn.textContent='Pause'; }
+    else { tl.pause(); playBtn.textContent='Play'; }
+  });
+  updateTime();
+  setTimeout(() => { tl.play(); playBtn.textContent='Pause'; }, 400);
+</script>
+
+</body>
+</html>
