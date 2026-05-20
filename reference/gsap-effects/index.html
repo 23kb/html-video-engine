@@ -14,7 +14,7 @@
     min-height: 100vh;
   }
   .wrap {
-    max-width: 1400px;
+    max-width: 1500px;
     margin: 0 auto;
     padding: 56px 32px 80px;
   }
@@ -49,10 +49,17 @@
     color: #b6ada1;
     font-size: 17px;
     line-height: 1.5;
-    max-width: 760px;
-    margin-bottom: 36px;
+    max-width: 820px;
+    margin-bottom: 28px;
   }
   .lede strong { color: #eae3d8; }
+  .lede code {
+    background: #2a221b;
+    padding: 1px 6px;
+    border-radius: 4px;
+    color: var(--wpf-orange);
+    font-size: 14px;
+  }
   .stats {
     display: flex; gap: 32px;
     color: #b6ada1;
@@ -63,7 +70,7 @@
   .stat .v {
     color: var(--wpf-orange);
     font-weight: 700;
-    font-size: 26px;
+    font-size: 32px;
     display: block;
     line-height: 1;
   }
@@ -75,10 +82,20 @@
     margin-top: 4px;
   }
 
+  .section-head {
+    color: #8a847b;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin: 8px 0 14px;
+  }
+
   .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 24px;
+    margin-bottom: 36px;
   }
   .card {
     background: #1d1814;
@@ -104,13 +121,11 @@
   }
   .card iframe {
     border: 0;
-    /* iframes render the actual port at 1920x1080 scaled to fit */
-    transform-origin: top left;
   }
   .card .preview .badge {
     position: absolute;
     top: 12px; left: 12px;
-    background: rgba(20,17,14,0.72);
+    background: rgba(20,17,14,0.78);
     color: #faf6ee;
     font-size: 11px;
     font-weight: 700;
@@ -158,10 +173,9 @@
   }
   .card .tag.use {
     color: var(--wpf-orange);
-    background: rgba(226,119,48,0.08);
+    background: rgba(226,119,48,0.10);
   }
 
-  /* placeholder card for upcoming ports */
   .card.placeholder {
     background: transparent;
     border: 1px dashed #3a2f25;
@@ -203,29 +217,31 @@
       <div class="dot"></div>
       <div class="name">WPForms · GSAP Effects Library</div>
     </div>
-    <div class="sub">reference/gsap-effects</div>
+    <div class="sub">reference/gsap-effects · feat/new-effects</div>
   </header>
 
   <h1 class="title">GSAP effects, ported for WPForms videos.</h1>
   <p class="lede">
     Public descriptions + HTML skeletons from <strong>madewithgsap.com</strong>, rebuilt from scratch
-    with WPForms theming and re-bound from <em>ScrollTrigger.scrub</em> to a master timeline.
-    Drop these into intros, postintros, and editorial pieces — or promote stabilized timelines
-    into <code>videos/_shared/motion-primitives.js</code> as new primitives.
+    with WPForms theming. Every effect re-binds the source's <code>ScrollTrigger.scrub</code> pattern
+    to a master timeline driven by a video playhead. Drop into intros, postintros, and editorial
+    pieces — or promote stabilized timelines into <code>videos/_shared/motion-primitives.js</code>.
   </p>
 
   <div class="stats">
-    <div class="stat"><span class="v">3</span><span class="l">ported</span></div>
-    <div class="stat"><span class="v">97</span><span class="l">remaining</span></div>
+    <div class="stat"><span class="v">11</span><span class="l">ported</span></div>
+    <div class="stat"><span class="v">7</span><span class="l">inventoried · queued</span></div>
+    <div class="stat"><span class="v">82</span><span class="l">awaiting inventory</span></div>
     <div class="stat"><span class="v">100</span><span class="l">total in source library</span></div>
   </div>
 
+  <div class="section-head">Text reveals</div>
   <div class="grid">
 
     <a class="card" href="effect009.html">
       <div class="preview">
         <span class="badge">009 · scroll</span>
-        <iframe src="effect009.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.1875); width: 1920px; height: 1080px;"></iframe>
+        <iframe src="effect009.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
       </div>
       <div class="meta">
         <div class="num">Effect 009</div>
@@ -239,27 +255,132 @@
       </div>
     </a>
 
-    <a class="card" href="effect001.html">
+    <a class="card" href="effect067.html">
       <div class="preview">
-        <span class="badge">001 · scroll</span>
-        <iframe src="effect001.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.1875); width: 1920px; height: 1080px;"></iframe>
+        <span class="badge">067 · scroll</span>
+        <iframe src="effect067.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
       </div>
       <div class="meta">
-        <div class="num">Effect 001</div>
-        <div class="head">Card stack spreads horizontally</div>
-        <div class="desc">A stacked deck of form templates fans outward with stagger and rotation. The center card lifts to draw the eye.</div>
+        <div class="num">Effect 067</div>
+        <div class="head">Cylindrical letter reveal</div>
+        <div class="desc">Letters appear in perspective on a cylinder, hold upright in the centre band, then fold away upward.</div>
         <div class="tags">
           <span class="tag">scroll → timeline</span>
-          <span class="tag use">template picker</span>
-          <span class="tag use">intro</span>
+          <span class="tag use">dramatic wordmark</span>
         </div>
       </div>
     </a>
 
+    <a class="card" href="effect005.html">
+      <div class="preview">
+        <span class="badge">005 · scroll</span>
+        <iframe src="effect005.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
+      </div>
+      <div class="meta">
+        <div class="num">Effect 005</div>
+        <div class="head">Word by word from edge</div>
+        <div class="desc">Words slide in from the right edge with staggered timing — an editorial paragraph payoff with accent words tinted.</div>
+        <div class="tags">
+          <span class="tag">scroll → timeline</span>
+          <span class="tag use">editorial intro</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="effect046.html">
+      <div class="preview">
+        <span class="badge">046 · scroll</span>
+        <iframe src="effect046.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
+      </div>
+      <div class="meta">
+        <div class="num">Effect 046</div>
+        <div class="head">Random-order letter reveal</div>
+        <div class="desc">Chars appear in shuffled order (seeded for deterministic render parity). Big editorial type with accent words and sweeping underline.</div>
+        <div class="tags">
+          <span class="tag">scroll → timeline</span>
+          <span class="tag use">headline payoff</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="section-head">Card / template layouts</div>
+  <div class="grid">
+
+    <a class="card" href="effect001.html">
+      <div class="preview">
+        <span class="badge">001 · scroll</span>
+        <iframe src="effect001.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
+      </div>
+      <div class="meta">
+        <div class="num">Effect 001</div>
+        <div class="head">Card stack spreads horizontally</div>
+        <div class="desc">A stacked deck of form templates fans outward with stagger and rotation. Center card lifts to draw the eye.</div>
+        <div class="tags">
+          <span class="tag">scroll → timeline</span>
+          <span class="tag use">template picker</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="effect014.html">
+      <div class="preview">
+        <span class="badge">014 · scroll</span>
+        <iframe src="effect014.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
+      </div>
+      <div class="meta">
+        <div class="num">Effect 014</div>
+        <div class="head">Infinite stacking templates</div>
+        <div class="desc">6 form templates fly in and stack into a spread with varied position, angle, and size — creative looseness.</div>
+        <div class="tags">
+          <span class="tag">scroll → timeline</span>
+          <span class="tag use">template library</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="effect078.html">
+      <div class="preview">
+        <span class="badge">078 · scroll</span>
+        <iframe src="effect078.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
+      </div>
+      <div class="meta">
+        <div class="num">Effect 078</div>
+        <div class="head">Image flight w/ center decel</div>
+        <div class="desc">Cards cross the stage L→R with a custom centerSlow ease that decelerates them through the orange spotlight, with 3D rotations.</div>
+        <div class="tags">
+          <span class="tag">custom ease</span>
+          <span class="tag use">template parade</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="effect050.html">
+      <div class="preview">
+        <span class="badge">050 · scroll</span>
+        <iframe src="effect050.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
+      </div>
+      <div class="meta">
+        <div class="num">Effect 050</div>
+        <div class="head">Infinite fullscreen zoom</div>
+        <div class="desc">Drills through 5 form types — Contact, Stripe, AI, Survey, RSVP — each blowing past the camera as the next emerges.</div>
+        <div class="tags">
+          <span class="tag">scroll → timeline</span>
+          <span class="tag use">deep-dive intro</span>
+        </div>
+      </div>
+    </a>
+
+  </div>
+
+  <div class="section-head">Constellations &amp; atmosphere</div>
+  <div class="grid">
+
     <a class="card" href="effect075.html">
       <div class="preview">
         <span class="badge">075 · scroll</span>
-        <iframe src="effect075.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.1875); width: 1920px; height: 1080px;"></iframe>
+        <iframe src="effect075.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
       </div>
       <div class="meta">
         <div class="num">Effect 075</div>
@@ -267,37 +388,86 @@
         <div class="desc">Integration cards fan out from the center hub onto a ring perimeter. Ring rotates while cards stay upright.</div>
         <div class="tags">
           <span class="tag">scroll → timeline</span>
-          <span class="tag use">integrations</span>
-          <span class="tag use">postintro</span>
+          <span class="tag use">integrations postintro</span>
         </div>
       </div>
     </a>
 
-    <!-- placeholders show what's coming next -->
-    <div class="card placeholder">
-      <div class="preview">soon</div>
-      <div class="meta">
-        <div class="num">Effect 050</div>
-        <div class="head">Infinite fullscreen zoom</div>
-        <div class="desc">Bidirectional zoom through fullscreen images — could drill into a form structure.</div>
+    <a class="card" href="effect100.html">
+      <div class="preview">
+        <span class="badge">100 · scroll</span>
+        <iframe src="effect100.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
       </div>
-    </div>
-
-    <div class="card placeholder">
-      <div class="preview">soon</div>
       <div class="meta">
         <div class="num">Effect 100</div>
         <div class="head">Orbital scroll gallery</div>
-        <div class="desc">Images orbit center; scroll pushes them away / brings them back. Feature constellation around Sullie.</div>
+        <div class="desc">12 WPForms features orbit a glowing hub with 3 elastic scroll-push pulses; counter-rotated to stay readable.</div>
+        <div class="tags">
+          <span class="tag">scroll → timeline</span>
+          <span class="tag use">feature constellation</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="effect034.html">
+      <div class="preview">
+        <span class="badge">034 · scroll</span>
+        <iframe src="effect034.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.177); transform-origin: top left; width: 1920px; height: 1080px;"></iframe>
+      </div>
+      <div class="meta">
+        <div class="num">Effect 034</div>
+        <div class="head">Multi-speed column scroll</div>
+        <div class="desc">5 columns of form-tile thumbnails drift at different speeds + directions with a vignette-faded center overlay.</div>
+        <div class="tags">
+          <span class="tag">scroll → timeline</span>
+          <span class="tag use">background atmosphere</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- placeholders for queued ports -->
+    <div class="card placeholder">
+      <div class="preview">soon</div>
+      <div class="meta">
+        <div class="num">Effect 023</div>
+        <div class="head">Circular orbit + scroll-eject</div>
+        <div class="desc">Images orbit a large circle; fast scroll pushes specific images out of orbit elastically.</div>
       </div>
     </div>
 
     <div class="card placeholder">
       <div class="preview">soon</div>
       <div class="meta">
-        <div class="num">Effect 034</div>
-        <div class="head">Multi-speed column scroll</div>
-        <div class="desc">Columns of imagery scrolling at different speeds, each looping seamlessly. Background atmosphere.</div>
+        <div class="num">Effect 098</div>
+        <div class="head">Curved SVG textPath reveal</div>
+        <div class="desc">Paragraph reveals letter-by-letter along stacked curved SVG paths — most distinctive editorial flourish.</div>
+      </div>
+    </div>
+
+    <div class="card placeholder">
+      <div class="preview">soon</div>
+      <div class="meta">
+        <div class="num">Effect 065</div>
+        <div class="head">Triple marquee parallax</div>
+        <div class="desc">Three image ribbons in a pinned band glide sideways at different rates.</div>
+      </div>
+    </div>
+
+    <div class="card placeholder">
+      <div class="preview">soon</div>
+      <div class="meta">
+        <div class="num">Effect 083</div>
+        <div class="head">Multi-lane drift parade</div>
+        <div class="desc">Crowd of images drifts L→R across 4 depth bands at different easing speeds.</div>
+      </div>
+    </div>
+
+    <div class="card placeholder">
+      <div class="preview">soon</div>
+      <div class="meta">
+        <div class="num">Effect 047</div>
+        <div class="head">Squash-deform carousel</div>
+        <div class="desc">Infinite carousel where cards squash-deform as they exit the viewport edges.</div>
       </div>
     </div>
 
@@ -307,7 +477,11 @@
     <p>
       Source descriptions: <a href="https://madewithgsap.com/effects" target="_blank">madewithgsap.com/effects</a>.
       All ports built from public tutorial descriptions + HTML skeletons; CSS and GSAP code reconstructed from first principles.
-      See <a href="CATALOG.md">CATALOG.md</a> for the full 100-effect index and adapter pattern notes.
+      See <a href="CATALOG.md">CATALOG.md</a> for the full 100-effect index, adapter pattern, and queue.
+    </p>
+    <p>
+      Branch <code style="background:#2a221b;padding:1px 6px;border-radius:4px;color:var(--wpf-orange);font-size:13px;">feat/new-effects</code>.
+      Promote stabilized timelines into <code style="background:#2a221b;padding:1px 6px;border-radius:4px;color:var(--wpf-orange);font-size:13px;">videos/_shared/motion-primitives.js</code> when ready.
     </p>
   </footer>
 
