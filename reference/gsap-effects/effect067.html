@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Effect 067 — Cylindrical letter reveal (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root {
+    --stage-w: 1920px;
+    --stage-h: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #0a0806;
+    font-family: var(--wpf-font-stack);
+    overflow: hidden;
+    color: var(--wpf-ink);
+  }
+
+  .stage-wrap {
+    position: relative;
+    width: 100vw; height: calc(100vh - 56px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stage {
+    position: relative;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    transform-origin: center center;
+    background: radial-gradient(ellipse at center, #1f1810 0%, #0d0907 80%);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.50);
+  }
+
+  /* scroll hint top-right (matches source's "Scroll" label) */
+  .scroll-hint {
+    position: absolute;
+    top: 60px; right: 80px;
+    z-index: 10;
+    font-size: 12px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: rgba(250,246,238,0.4);
+    opacity: 0;
+  }
+  .scroll-hint::after {
+    content: '↓';
+    display: block;
+    font-size: 14px;
+    margin-top: 6px;
+    text-align: center;
+  }
+
+  .brand {
+    position: absolute;
+    top: 60px; left: 80px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 10;
+    color: rgba(250,246,238,0.9);
+    opacity: 0;
+  }
+  .brand .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--wpf-orange); }
+  .brand .name { font-weight: 600; font-size: 22px; letter-spacing: -0.01em; }
+
+  /* the cylinder stage — letters appear in the centre band, fold in from below
+     and fold away upward as if rotating around a horizontal axis behind the screen */
+  .cylinder {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    perspective: 1200px;
+    transform-style: preserve-3d;
+  }
+
+  .letter-stage {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    display: flex; align-items: center; justify-content: center;
+    transform-style: preserve-3d;
+  }
+
+  .letter {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 480px;
+    font-weight: 800;
+    color: #faf6ee;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    transform-origin: center center -200px;  /* axis sits BEHIND the screen — cylinder */
+    backface-visibility: hidden;
+    will-change: transform, opacity;
+  }
+  .letter.accent { color: var(--wpf-orange); text-shadow: 0 0 60px rgba(226,119,48,0.5); }
+
+  /* subtitle that appears after the letter sequence */
+  .subtitle {
+    position: absolute;
+    bottom: 130px;
+    left: 0; right: 0;
+    text-align: center;
+    opacity: 0;
+    z-index: 5;
+  }
+  .subtitle .line1 {
+    font-size: 30px;
+    font-weight: 600;
+    color: rgba(250,246,238,0.95);
+    letter-spacing: -0.01em;
+  }
+  .subtitle .line2 {
+    color: rgba(250,246,238,0.5);
+    font-size: 18px;
+    margin-top: 8px;
+    letter-spacing: 0.04em;
+  }
+
+  /* faint orange band behind the central letter for emphasis */
+  .band {
+    position: absolute;
+    left: 0; right: 0;
+    top: 50%;
+    height: 220px;
+    margin-top: -110px;
+    background: linear-gradient(180deg, rgba(226,119,48,0) 0%, rgba(226,119,48,0.08) 50%, rgba(226,119,48,0) 100%);
+    opacity: 0;
+    z-index: 1;
+  }
+
+  /* controls */
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: #0f0d0c; color: #e8e3dc;
+    display: flex; align-items: center; gap: 16px;
+    padding: 0 24px;
+    font-family: var(--wpf-font-stack);
+    font-size: 13px;
+  }
+  .controls button {
+    background: var(--wpf-orange); color: white; border: 0;
+    padding: 8px 16px; border-radius: 6px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .controls button:hover { background: var(--wpf-orange-hover); }
+  .controls input[type=range] { flex: 1; accent-color: var(--wpf-orange); }
+  .controls .t {
+    font-variant-numeric: tabular-nums;
+    min-width: 110px; text-align: right; color: #aaa;
+  }
+  .controls .meta { color: #888; margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="name">WPForms</div>
+    </div>
+
+    <div class="scroll-hint">Scroll</div>
+
+    <div class="band"></div>
+
+    <div class="cylinder">
+      <div class="letter-stage" id="letterStage">
+        <!-- letters injected by JS -->
+      </div>
+    </div>
+
+    <div class="subtitle">
+      <div class="line1">Forms, built better.</div>
+      <div class="line2">No code · Drag &amp; drop · 6,000,000 sites</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 067 · cylindrical letter reveal</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  // ---------- letter sequence ----------
+  // We spell W → P → F → O → R → M → S then settle into the final mark
+  const sequence = [
+    { ch: 'W', accent: true  },
+    { ch: 'P', accent: true  },
+    { ch: 'F', accent: false },
+    { ch: 'O', accent: false },
+    { ch: 'R', accent: false },
+    { ch: 'M', accent: false },
+    { ch: 'S', accent: false },
+  ];
+
+  const stageEl = document.getElementById('letterStage');
+  sequence.forEach((s, i) => {
+    const el = document.createElement('div');
+    el.className = 'letter' + (s.accent ? ' accent' : '');
+    el.dataset.i = i;
+    el.textContent = s.ch;
+    stageEl.appendChild(el);
+  });
+  const letters = gsap.utils.toArray('.letter');
+
+  // ---------- responsive stage ----------
+  function fit() {
+    const stage = document.getElementById('stage');
+    const w = window.innerWidth;
+    const h = window.innerHeight - 56;
+    const scale = Math.min(w / 1920, h / 1080) * 0.96;
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // ---------- master timeline ----------
+  // Each letter starts rotated -90deg (folded down below cylinder front face),
+  // rotates to 0 (centred, full upright), then rotates +90deg (folds up & away).
+  // Successive letters' arrivals overlap with the previous one's departure.
+  letters.forEach((el) => gsap.set(el, { rotateX: -90, opacity: 0 }));
+
+  const tl = gsap.timeline({ paused: true });
+
+  tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1)
+    .to('.scroll-hint', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.3)
+    .to('.band', { opacity: 1, duration: 0.7, ease: 'power2.out' }, 0.2);
+
+  const PER = 0.85;          // total time per letter
+  const REVEAL = 0.45;       // -90 → 0
+  const HOLD = 0.18;         // pause at 0
+  const EXIT = 0.40;         // 0 → +90
+  const OVERLAP = 0.32;      // next letter starts before this one exits
+
+  let cursor = 0.8;
+  letters.forEach((el, i) => {
+    const t = cursor;
+
+    // rotate in from below (cylinder rotates forward, this face arrives)
+    tl.to(el, { rotateX: 0, opacity: 1, duration: REVEAL, ease: 'power3.out' }, t);
+
+    const holdEnd = t + REVEAL + HOLD;
+    const isLast = (i === letters.length - 1);
+
+    if (!isLast) {
+      // rotate away upward
+      tl.to(el, { rotateX: 90, opacity: 0, duration: EXIT, ease: 'power3.in' }, holdEnd);
+      cursor = holdEnd + EXIT - OVERLAP;
+    } else {
+      // final letter holds longer
+      cursor = holdEnd + 0.7;
+    }
+  });
+
+  // after the sequence, the final letter eases up (gentle settle)
+  tl.to(letters[letters.length - 1], {
+    scale: 0.62,
+    y: -160,
+    duration: 0.9,
+    ease: 'power2.inOut'
+  }, cursor);
+
+  // bring back the other letters as a wordmark alongside the last one (visual payoff)
+  // Hide all but the last, then the subtitle appears
+  tl.to('.subtitle', { opacity: 1, duration: 0.7, ease: 'power2.out' }, cursor + 0.4)
+    .from('.subtitle .line1', { y: 20, opacity: 0, duration: 0.6 }, cursor + 0.4)
+    .from('.subtitle .line2', { y: 14, opacity: 0, duration: 0.6 }, cursor + 0.6);
+
+  // band gently pulses through
+  tl.to('.band', { opacity: 0.4, duration: 4, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 1);
+
+  // ---------- scrubber ----------
+  const scrub = document.getElementById('scrub');
+  const timeEl = document.getElementById('time');
+  const playBtn = document.getElementById('playBtn');
+
+  function updateTime() {
+    const t = tl.time(), d = tl.duration();
+    timeEl.textContent = t.toFixed(2).padStart(5,'0') + ' / ' + d.toFixed(2).padStart(5,'0');
+  }
+  scrub.addEventListener('input', () => {
+    tl.pause(); playBtn.textContent = 'Play';
+    tl.progress(parseFloat(scrub.value)/100); updateTime();
+  });
+  gsap.ticker.add(() => {
+    if (!tl.paused()) {
+      scrub.value = (tl.progress()*100).toFixed(2);
+      updateTime();
+      if (tl.progress() >= 1) playBtn.textContent='Replay';
+    }
+  });
+  playBtn.addEventListener('click', () => {
+    if (tl.progress() >= 1) { tl.restart(); playBtn.textContent='Pause'; }
+    else if (tl.paused()) { tl.play(); playBtn.textContent='Pause'; }
+    else { tl.pause(); playBtn.textContent='Play'; }
+  });
+  updateTime();
+  setTimeout(() => { tl.play(); playBtn.textContent='Pause'; }, 400);
+</script>
+
+</body>
+</html>

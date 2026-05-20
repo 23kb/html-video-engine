@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Effect 014 — Infinite stacking image scroll (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root {
+    --stage-w: 1920px;
+    --stage-h: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #0a0806;
+    font-family: var(--wpf-font-stack);
+    overflow: hidden;
+    color: var(--wpf-ink);
+  }
+
+  .stage-wrap {
+    position: relative;
+    width: 100vw; height: calc(100vh - 56px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stage {
+    position: relative;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    transform-origin: center center;
+    background: radial-gradient(ellipse at center, #fdf8f0 0%, #e9dec8 100%);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.50);
+  }
+
+  .brand {
+    position: absolute;
+    top: 60px; left: 80px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 10;
+    opacity: 0;
+  }
+  .brand .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--wpf-orange); }
+  .brand .name { font-weight: 600; font-size: 22px; letter-spacing: -0.01em; color: var(--wpf-ink-soft); }
+
+  .header {
+    position: absolute;
+    top: 60px; right: 80px;
+    z-index: 10;
+    text-align: right;
+    opacity: 0;
+  }
+  .header .kicker {
+    color: var(--wpf-orange);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.20em;
+    text-transform: uppercase;
+  }
+  .header .count {
+    color: var(--wpf-ink);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-top: 4px;
+  }
+
+  /* the stacking area — form cards stack on top of each other and rearrange in position/angle/size */
+  .medias {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .media {
+    position: absolute;
+    width: 460px;
+    height: 600px;
+    background: white;
+    border-radius: 20px;
+    box-shadow:
+      0 30px 70px rgba(20,22,28,0.20),
+      0 8px 20px rgba(20,22,28,0.08);
+    overflow: hidden;
+    transform-origin: center center;
+    will-change: transform, opacity;
+    opacity: 0;
+  }
+  .media .head {
+    padding: 24px 28px 14px;
+    display: flex; align-items: center; gap: 12px;
+    border-bottom: 1px solid #f1ead8;
+  }
+  .media .head .badge {
+    background: var(--wpf-orange);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .media[data-c="blue"]   .head .badge { background: var(--wpf-blue); }
+  .media[data-c="purple"] .head .badge { background: var(--wpf-ai-purple); }
+  .media[data-c="green"]  .head .badge { background: #2c8a55; }
+  .media[data-c="amber"]  .head .badge { background: #d59324; }
+  .media[data-c="teal"]   .head .badge { background: #2a8a8e; }
+  .media .head .name {
+    color: var(--wpf-ink-soft);
+    font-size: 14px;
+    font-weight: 600;
+  }
+  .media .body {
+    padding: 28px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .media .body .title {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--wpf-ink);
+    line-height: 1.2;
+  }
+  .media .body .field {
+    background: #f5f1ea;
+    border: 1px solid #e2d9c9;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: var(--wpf-ink-mute);
+  }
+  .media .body .field.tall { min-height: 80px; }
+  .media .body .submit {
+    background: var(--wpf-orange);
+    color: white;
+    border-radius: 8px;
+    text-align: center;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  .media[data-c="blue"]   .body .submit { background: var(--wpf-blue); }
+  .media[data-c="purple"] .body .submit { background: var(--wpf-ai-purple); }
+  .media[data-c="green"]  .body .submit { background: #2c8a55; }
+  .media[data-c="amber"]  .body .submit { background: #d59324; }
+  .media[data-c="teal"]   .body .submit { background: #2a8a8e; }
+
+  /* caption */
+  .caption {
+    position: absolute;
+    bottom: 110px;
+    left: 0; right: 0;
+    text-align: center;
+    z-index: 6;
+    opacity: 0;
+  }
+  .caption .head {
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--wpf-ink);
+    letter-spacing: -0.02em;
+  }
+  .caption .sub {
+    color: var(--wpf-ink-mute);
+    font-size: 17px;
+    margin-top: 6px;
+  }
+
+  /* controls */
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: #0f0d0c; color: #e8e3dc;
+    display: flex; align-items: center; gap: 16px;
+    padding: 0 24px;
+    font-family: var(--wpf-font-stack);
+    font-size: 13px;
+  }
+  .controls button {
+    background: var(--wpf-orange); color: white; border: 0;
+    padding: 8px 16px; border-radius: 6px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .controls button:hover { background: var(--wpf-orange-hover); }
+  .controls input[type=range] { flex: 1; accent-color: var(--wpf-orange); }
+  .controls .t {
+    font-variant-numeric: tabular-nums;
+    min-width: 110px; text-align: right; color: #aaa;
+  }
+  .controls .meta { color: #888; margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="name">WPForms</div>
+    </div>
+
+    <div class="header">
+      <div class="kicker">Form Library</div>
+      <div class="count">6 templates</div>
+    </div>
+
+    <div class="medias">
+      <div class="media" data-c="orange">
+        <div class="head"><div class="badge">Contact</div><div class="name">simple-contact</div></div>
+        <div class="body">
+          <div class="title">Tell us about your project</div>
+          <div class="field">Your name</div>
+          <div class="field">Email</div>
+          <div class="field tall">Message</div>
+          <div class="submit">Send</div>
+        </div>
+      </div>
+      <div class="media" data-c="blue">
+        <div class="head"><div class="badge">Payment</div><div class="name">stripe-checkout</div></div>
+        <div class="body">
+          <div class="title">Subscribe — $49 / mo</div>
+          <div class="field">Card · 4242…</div>
+          <div class="field">12 / 27 · CVC</div>
+          <div class="field">Billing zip</div>
+          <div class="submit">Pay $49</div>
+        </div>
+      </div>
+      <div class="media" data-c="purple">
+        <div class="head"><div class="badge">AI</div><div class="name">ai-form-gen</div></div>
+        <div class="body">
+          <div class="title">Describe your form</div>
+          <div class="field tall">A signup form for a SaaS waitlist…</div>
+          <div class="field">Tone · Friendly</div>
+          <div class="submit">Generate</div>
+        </div>
+      </div>
+      <div class="media" data-c="green">
+        <div class="head"><div class="badge">Survey</div><div class="name">nps-feedback</div></div>
+        <div class="body">
+          <div class="title">Rate your experience</div>
+          <div class="field">Score · 1–10</div>
+          <div class="field">What worked?</div>
+          <div class="field tall">What could improve?</div>
+          <div class="submit">Send</div>
+        </div>
+      </div>
+      <div class="media" data-c="amber">
+        <div class="head"><div class="badge">Order</div><div class="name">product-order</div></div>
+        <div class="body">
+          <div class="title">Place your order</div>
+          <div class="field">Item</div>
+          <div class="field">Quantity</div>
+          <div class="field">Address</div>
+          <div class="submit">Buy</div>
+        </div>
+      </div>
+      <div class="media" data-c="teal">
+        <div class="head"><div class="badge">Event</div><div class="name">event-rsvp</div></div>
+        <div class="body">
+          <div class="title">RSVP — Summit '26</div>
+          <div class="field">Full name</div>
+          <div class="field">Email</div>
+          <div class="field">Seat preference</div>
+          <div class="submit">Reserve</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="caption">
+      <div class="head">Pick a template. Ship in minutes.</div>
+      <div class="sub">1,800+ ready-made forms across every use case.</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 014 · infinite stacking scroll</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  const medias = gsap.utils.toArray('.media');
+
+  function fit() {
+    const stage = document.getElementById('stage');
+    const w = window.innerWidth;
+    const h = window.innerHeight - 56;
+    const scale = Math.min(w / 1920, h / 1080) * 0.96;
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // ---------- stacking + scroll-driven flow ----------
+  // Each media starts off-stage below.
+  // As the timeline advances, media drop into stacked positions with creative variation
+  // in position, angle, and size (matching source description).
+  // Then each one slides up-and-out toward the top while the next stacks in.
+
+  medias.forEach((el) => gsap.set(el, { y: 800, opacity: 0, scale: 0.9, rotate: 0 }));
+
+  const tl = gsap.timeline({ paused: true });
+
+  tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1)
+    .to('.header', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.25);
+
+  // configure stacking positions — each card lands at a slightly different x/y/rotation/scale
+  // for the "creative" variation described in the source
+  const stops = [
+    { x: -480, y:  -10, rotate: -6,  scale: 0.94 },
+    { x: -290, y:   25, rotate: -3,  scale: 0.96 },
+    { x: -100, y:  -15, rotate:  0,  scale: 1.00 },
+    { x:  100, y:   30, rotate:  4,  scale: 0.97 },
+    { x:  290, y:  -20, rotate:  7,  scale: 0.93 },
+    { x:  480, y:   10, rotate: 10,  scale: 0.92 },
+  ];
+
+  // Sequence: each card flies in from below, lands at its stop, with stagger
+  const ENTER_START = 0.7;
+  const PER = 0.55;       // stagger between cards arriving
+  const ENTER_DUR = 1.0;
+
+  medias.forEach((el, i) => {
+    const t = ENTER_START + i * PER;
+    tl.to(el, {
+      x: stops[i].x,
+      y: stops[i].y,
+      rotate: stops[i].rotate,
+      scale: stops[i].scale,
+      opacity: 1,
+      duration: ENTER_DUR,
+      ease: 'power3.out'
+    }, t);
+    // z-index via DOM stacking via opacity proxy not needed since cards spread horizontally
+  });
+
+  const arrivalsEnd = ENTER_START + medias.length * PER + ENTER_DUR;
+
+  // settle — slight float
+  tl.to(medias, {
+    y: '+=10',
+    duration: 1.8,
+    ease: 'sine.inOut',
+    yoyo: true,
+    repeat: 1,
+    stagger: { each: 0.07, from: 'center' }
+  }, arrivalsEnd);
+
+  // emphasize the middle card (most central feature)
+  tl.to(medias[2], {
+    y: -50,
+    scale: 1.08,
+    rotate: 0,
+    duration: 0.8,
+    ease: 'power2.out',
+    boxShadow: '0 50px 110px rgba(226,119,48,0.30), 0 10px 24px rgba(20,22,28,0.12)'
+  }, arrivalsEnd + 0.3);
+
+  // caption fades in
+  tl.to('.caption', { opacity: 1, duration: 0.7 }, arrivalsEnd + 0.5)
+    .from('.caption .head', { y: 18, opacity: 0, duration: 0.6 }, arrivalsEnd + 0.5)
+    .from('.caption .sub',  { y: 14, opacity: 0, duration: 0.6 }, arrivalsEnd + 0.7);
+
+  // ---------- scrubber ----------
+  const scrub = document.getElementById('scrub');
+  const timeEl = document.getElementById('time');
+  const playBtn = document.getElementById('playBtn');
+
+  function updateTime() {
+    const t = tl.time(), d = tl.duration();
+    timeEl.textContent = t.toFixed(2).padStart(5,'0') + ' / ' + d.toFixed(2).padStart(5,'0');
+  }
+  scrub.addEventListener('input', () => {
+    tl.pause(); playBtn.textContent = 'Play';
+    tl.progress(parseFloat(scrub.value)/100); updateTime();
+  });
+  gsap.ticker.add(() => {
+    if (!tl.paused()) {
+      scrub.value = (tl.progress()*100).toFixed(2);
+      updateTime();
+      if (tl.progress() >= 1) playBtn.textContent='Replay';
+    }
+  });
+  playBtn.addEventListener('click', () => {
+    if (tl.progress() >= 1) { tl.restart(); playBtn.textContent='Pause'; }
+    else if (tl.paused()) { tl.play(); playBtn.textContent='Pause'; }
+    else { tl.pause(); playBtn.textContent='Play'; }
+  });
+  updateTime();
+  setTimeout(() => { tl.play(); playBtn.textContent='Pause'; }, 400);
+</script>
+
+</body>
+</html>

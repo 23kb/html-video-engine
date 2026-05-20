@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Effect 005 — Word by word from edge (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root {
+    --stage-w: 1920px;
+    --stage-h: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #14110e;
+    font-family: var(--wpf-font-stack);
+    overflow: hidden;
+    color: var(--wpf-ink);
+  }
+
+  .stage-wrap {
+    position: relative;
+    width: 100vw; height: calc(100vh - 56px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stage {
+    position: relative;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    transform-origin: center center;
+    background: linear-gradient(180deg, #fdfaf3 0%, #f6efe2 100%);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+  }
+
+  .brand {
+    position: absolute;
+    top: 60px; left: 80px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 10;
+    opacity: 0;
+  }
+  .brand .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--wpf-orange); }
+  .brand .name { font-weight: 600; font-size: 22px; letter-spacing: -0.01em; color: var(--wpf-ink-soft); }
+
+  .meta-tag {
+    position: absolute;
+    top: 60px; right: 80px;
+    z-index: 10;
+    color: rgba(20,22,28,0.4);
+    font-size: 14px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0;
+  }
+
+  /* The paragraph centered, large editorial type.
+     The PIN class on the source = sticky scroll, here we use absolute centering. */
+  .pin {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .container {
+    width: 1480px;
+    padding: 0 60px;
+  }
+  .paragraph {
+    font-size: 92px;
+    font-weight: 600;
+    color: var(--wpf-ink);
+    letter-spacing: -0.025em;
+    line-height: 1.10;
+    text-align: left;
+    /* hide overflow so words sliding in from the right don't leak past the stage */
+    overflow: hidden;
+    word-spacing: 0.04em;
+  }
+  .word {
+    display: inline-block;
+    will-change: transform, opacity;
+    margin-right: 0.25em;
+  }
+  .word.accent { color: var(--wpf-orange); }
+  .word.purple { color: var(--wpf-ai-purple); }
+  .word.blue   { color: var(--wpf-blue); }
+
+  /* a thin orange rule above the paragraph */
+  .rule {
+    position: absolute;
+    top: 50%; left: 60px;
+    margin-top: -120px;
+    width: 0; height: 5px;
+    background: var(--wpf-orange);
+    border-radius: 3px;
+    opacity: 0;
+  }
+  .rule-label {
+    position: absolute;
+    top: 50%; left: 60px;
+    margin-top: -160px;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--wpf-orange);
+    opacity: 0;
+  }
+
+  /* author line at bottom */
+  .author {
+    position: absolute;
+    bottom: 90px;
+    left: 80px;
+    color: var(--wpf-ink-mute);
+    font-size: 18px;
+    opacity: 0;
+  }
+  .author strong { color: var(--wpf-ink); font-weight: 600; }
+
+  /* controls */
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: #0f0d0c; color: #e8e3dc;
+    display: flex; align-items: center; gap: 16px;
+    padding: 0 24px;
+    font-family: var(--wpf-font-stack);
+    font-size: 13px;
+  }
+  .controls button {
+    background: var(--wpf-orange); color: white; border: 0;
+    padding: 8px 16px; border-radius: 6px; font-weight: 600;
+    cursor: pointer; font-family: inherit;
+  }
+  .controls button:hover { background: var(--wpf-orange-hover); }
+  .controls input[type=range] { flex: 1; accent-color: var(--wpf-orange); }
+  .controls .t {
+    font-variant-numeric: tabular-nums;
+    min-width: 110px; text-align: right; color: #aaa;
+  }
+  .controls .meta { color: #888; margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="name">WPForms</div>
+    </div>
+
+    <div class="meta-tag">est. 2017</div>
+
+    <div class="rule-label">Editorial — 005</div>
+    <div class="rule"></div>
+
+    <div class="pin">
+      <div class="container">
+        <p class="paragraph" id="paragraph">
+          <!--
+            Words are tagged with classes for color accents.
+            JS splits this into per-word spans and animates each in from the right edge.
+          -->
+          <span class="raw">WPForms (2017→today) is a</span>
+          <span class="raw accent">drag-and-drop</span>
+          <span class="raw">form builder used by</span>
+          <span class="raw blue">6 million</span>
+          <span class="raw">sites — surveys, payments,</span>
+          <span class="raw purple">AI-generated</span>
+          <span class="raw">forms, and more.</span>
+        </p>
+      </div>
+    </div>
+
+    <div class="author">
+      <strong>WPForms</strong> · the form builder for serious websites
+    </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 005 · word by word from edge</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  // ---------- split paragraph into per-word spans ----------
+  // Source markup uses raw groups (some keep accent classes). We unpack each
+  // group into individual <span class="word"> elements, preserving the class.
+  const paragraph = document.getElementById('paragraph');
+  const groups = [...paragraph.querySelectorAll('.raw')];
+  paragraph.innerHTML = '';
+  groups.forEach((g, gi) => {
+    const baseCls = [...g.classList].filter(c => c !== 'raw').join(' ');
+    const text = g.textContent.trim();
+    text.split(/\s+/).forEach((w) => {
+      const span = document.createElement('span');
+      span.className = 'word' + (baseCls ? ' ' + baseCls : '');
+      span.textContent = w;
+      paragraph.appendChild(span);
+      paragraph.appendChild(document.createTextNode(' '));
+    });
+  });
+  const words = gsap.utils.toArray('.word');
+
+  function fit() {
+    const stage = document.getElementById('stage');
+    const w = window.innerWidth;
+    const h = window.innerHeight - 56;
+    const scale = Math.min(w / 1920, h / 1080) * 0.96;
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // ---------- master timeline ----------
+  // Each word starts off-screen to the right (x: +600px), opacity 0.
+  // Words enter LEFT into their final position, with staggered start times
+  // matching the source's "staggered the start of each word's movement".
+  // Earlier words enter faster; later words enter at a graceful slower pace
+  // for an organic editorial feel.
+
+  words.forEach((el) => gsap.set(el, { x: 600, opacity: 0 }));
+
+  const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+
+  // chrome in
+  tl.to('.brand', { opacity: 1, duration: 0.5 }, 0.1)
+    .to('.meta-tag', { opacity: 1, duration: 0.5 }, 0.2)
+    .to('.rule-label', { opacity: 1, duration: 0.5 }, 0.3)
+    .to('.rule', { opacity: 1, width: 280, duration: 0.7, ease: 'power2.out' }, 0.4);
+
+  // word-by-word entries
+  const wordStart = 0.7;
+  const baseDur = 0.85;
+  const stagger = 0.08;
+
+  words.forEach((w, i) => {
+    // slight ease ramp — first words enter quickly, later ones slow
+    const dur = baseDur + (i * 0.01);
+    tl.to(w, {
+      x: 0,
+      opacity: 1,
+      duration: dur,
+      ease: 'power3.out'
+    }, wordStart + i * stagger);
+  });
+
+  // author line fades in last
+  const totalWordTime = wordStart + words.length * stagger + 0.4;
+  tl.to('.author', { opacity: 1, duration: 0.7 }, totalWordTime)
+    .from('.author', { y: 14, duration: 0.7 }, totalWordTime);
+
+  // final breath — rule extends fully
+  tl.to('.rule', { width: 460, duration: 0.8, ease: 'power2.out' }, totalWordTime);
+
+  // ---------- scrubber ----------
+  const scrub = document.getElementById('scrub');
+  const timeEl = document.getElementById('time');
+  const playBtn = document.getElementById('playBtn');
+
+  function updateTime() {
+    const t = tl.time(), d = tl.duration();
+    timeEl.textContent = t.toFixed(2).padStart(5,'0') + ' / ' + d.toFixed(2).padStart(5,'0');
+  }
+  scrub.addEventListener('input', () => {
+    tl.pause(); playBtn.textContent = 'Play';
+    tl.progress(parseFloat(scrub.value)/100); updateTime();
+  });
+  gsap.ticker.add(() => {
+    if (!tl.paused()) {
+      scrub.value = (tl.progress()*100).toFixed(2);
+      updateTime();
+      if (tl.progress() >= 1) playBtn.textContent='Replay';
+    }
+  });
+  playBtn.addEventListener('click', () => {
+    if (tl.progress() >= 1) { tl.restart(); playBtn.textContent='Pause'; }
+    else if (tl.paused()) { tl.play(); playBtn.textContent='Pause'; }
+    else { tl.pause(); playBtn.textContent='Play'; }
+  });
+  updateTime();
+  setTimeout(() => { tl.play(); playBtn.textContent='Pause'; }, 400);
+</script>
+
+</body>
+</html>
