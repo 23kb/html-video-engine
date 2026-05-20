@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Effect 086 — Image inserts between letters (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#0a0806; font-family:var(--wpf-font-stack); overflow:hidden; }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; background:linear-gradient(180deg,#fdfaf3 0%,#ede1cb 100%); overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.45); }
+  .brand { position:absolute; top:60px; left:80px; display:flex; align-items:center; gap:12px; z-index:10; opacity:0; }
+  .brand .dot { width:14px; height:14px; border-radius:50%; background:var(--wpf-orange); }
+  .brand .name { font-weight:600; font-size:22px; letter-spacing:-0.01em; color:var(--wpf-ink-soft); }
+  .text { position:absolute; top:50%; left:0; right:0; transform:translateY(-50%); display:flex; align-items:center; justify-content:center; flex-wrap:nowrap; font-size:130px; font-weight:800; color:var(--wpf-ink); letter-spacing:-0.03em; line-height:1; padding:0 80px; gap:0; }
+  .text .ch { display:inline-block; will-change:transform; }
+  .text .insert { display:inline-block; width:0; overflow:hidden; transition:width 0.6s cubic-bezier(0.3,1,0.4,1); }
+  .text .insert .media { width:180px; height:130px; background:white; border-radius:14px; box-shadow:0 14px 30px rgba(20,22,28,0.18); margin:0 12px; padding:12px; display:flex; flex-direction:column; gap:5px; }
+  .text .insert .badge { font-size:8px; font-weight:700; letter-spacing:0.08em; text-transform:uppercase; padding:2px 6px; border-radius:999px; background:var(--wpf-orange); color:white; align-self:flex-start; }
+  .text .insert .ttl { font-size:11px; font-weight:700; color:var(--wpf-ink); line-height:1.1; }
+  .text .insert .submit { margin-top:auto; background:var(--wpf-orange); color:white; border-radius:4px; text-align:center; padding:3px; font-weight:700; font-size:9px; }
+  .text .insert.open { width:200px; }
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; }
+</style></head><body>
+<div class="stage-wrap"><div class="stage" id="stage">
+  <div class="brand"><div class="dot"></div><div class="name">WPForms</div></div>
+  <div class="text" id="text">
+    <span class="ch">F</span><span class="ch">O</span><span class="ch">R</span><span class="ch">M</span>
+    <span class="insert" data-i="0"><div class="media"><div class="badge">Contact</div><div class="ttl">Quick Contact</div><div class="submit">→</div></div></span>
+    <span class="ch">S</span>
+  </div>
+</div></div>
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 086 · image inserts between letters</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  function fit(){const s=document.getElementById('stage');s.style.transform=`scale(${Math.min(innerWidth/1920,(innerHeight-56)/1080)*0.96})`;}
+  addEventListener('resize',fit);fit();
+
+  const insert=document.querySelector('.insert');
+  const tl=gsap.timeline({paused:true});
+  tl.to('.brand',{opacity:1,duration:0.5,ease:'power2.out'},0.1);
+
+  // open then close
+  tl.call(()=>insert.classList.add('open'),null,1.0);
+  tl.call(()=>insert.classList.remove('open'),null,3.5);
+  tl.call(()=>insert.classList.add('open'),null,4.5);
+  tl.call(()=>insert.classList.remove('open'),null,7);
+
+  const sc=document.getElementById('scrub'),te=document.getElementById('time'),pb=document.getElementById('playBtn');
+  function ut(){te.textContent=tl.time().toFixed(2).padStart(5,'0')+' / '+tl.duration().toFixed(2).padStart(5,'0');}
+  sc.addEventListener('input',()=>{tl.pause();pb.textContent='Play';tl.progress(parseFloat(sc.value)/100);ut();});
+  gsap.ticker.add(()=>{if(!tl.paused()){sc.value=(tl.progress()*100).toFixed(2);ut();if(tl.progress()>=1)pb.textContent='Replay';}});
+  pb.addEventListener('click',()=>{if(tl.progress()>=1){tl.restart();pb.textContent='Pause';}else if(tl.paused()){tl.play();pb.textContent='Pause';}else{tl.pause();pb.textContent='Play';}});
+  ut();setTimeout(()=>{tl.play();pb.textContent='Pause';},400);
+</script></body></html>

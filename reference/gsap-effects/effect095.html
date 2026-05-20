@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Effect 095 — Bouncy multi-dim card grid (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#0a0806; font-family:var(--wpf-font-stack); overflow:hidden; }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; background:#fdfaf3; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.45); perspective:1400px; }
+  .brand { position:absolute; top:60px; left:80px; display:flex; align-items:center; gap:12px; z-index:10; opacity:0; }
+  .brand .dot { width:14px; height:14px; border-radius:50%; background:var(--wpf-orange); }
+  .brand .name { font-weight:600; font-size:22px; letter-spacing:-0.01em; color:var(--wpf-ink-soft); }
+  .container { position:absolute; inset:120px; display:grid; grid-template-columns:repeat(5,1fr); grid-template-rows:repeat(3,1fr); gap:30px; transform-style:preserve-3d; }
+  .media { background:white; border-radius:16px; box-shadow:0 18px 40px rgba(20,22,28,0.18); padding:14px; display:flex; flex-direction:column; gap:6px; will-change:transform; transform-origin:center; backface-visibility:hidden; }
+  .media .badge { font-size:9px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; padding:3px 7px; border-radius:999px; background:var(--wpf-orange); color:white; align-self:flex-start; }
+  .media .ttl { font-size:12px; font-weight:700; color:var(--wpf-ink); }
+  .media .field { background:#f5f1ea; border:1px solid #e2d9c9; border-radius:4px; padding:4px 6px; font-size:9px; color:var(--wpf-ink-mute); }
+  .media .submit { margin-top:auto; background:var(--wpf-orange); color:white; border-radius:4px; text-align:center; padding:4px; font-weight:700; font-size:10px; }
+  .ghost { position:absolute; width:30px; height:30px; border-radius:50%; background:var(--wpf-orange); box-shadow:0 0 24px rgba(226,119,48,0.7); pointer-events:none; z-index:20; transform:translate(-50%,-50%); opacity:0; }
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; }
+</style></head><body>
+<div class="stage-wrap"><div class="stage" id="stage">
+  <div class="brand"><div class="dot"></div><div class="name">WPForms</div></div>
+  <div class="container" id="grid"></div>
+  <div class="ghost" id="ghost"></div>
+</div></div>
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 095 · bouncy multi-dim card grid</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  const labels=['Contact','Payment','AI','Survey','Order','Booking','Lead','Event','Donate','Login','Feedback','Waitlist','Quote','Refund','Poll'];
+  const grid=document.getElementById('grid');
+  labels.forEach((l)=>{
+    const el=document.createElement('div');
+    el.className='media';
+    el.innerHTML=`<div class="badge">${l}</div><div class="ttl">${l}</div><div class="field">F</div><div class="field">F</div><div class="submit">→</div>`;
+    grid.appendChild(el);
+  });
+  const ms=gsap.utils.toArray('.media');
+
+  function fit(){const s=document.getElementById('stage');s.style.transform=`scale(${Math.min(innerWidth/1920,(innerHeight-56)/1080)*0.96})`;}
+  addEventListener('resize',fit);fit();
+
+  const cs={x:960,y:540};
+  const ghost=document.getElementById('ghost');
+
+  const tl=gsap.timeline({paused:true});
+  tl.to('.brand',{opacity:1,duration:0.5,ease:'power2.out'},0.1);
+  tl.to('.ghost',{opacity:1,duration:0.4},0.2);
+
+  const wp=[{x:300,y:300},{x:1600,y:300},{x:1600,y:780},{x:300,y:780},{x:960,y:540}];
+  let t=0.5;
+  for(const w of wp){
+    tl.to(cs,{x:w.x,y:w.y,duration:2.0,ease:'sine.inOut',onUpdate:()=>gsap.set(ghost,{x:cs.x,y:cs.y})},t);
+    t+=2.0;
+  }
+
+  // each frame: nearest card grows, lifts off plane (z+), tilts toward cursor; others drift away
+  const stageEl=document.getElementById('stage');
+  gsap.ticker.add(()=>{
+    if(tl.paused()&&tl.time()===0)return;
+    const sr=stageEl.getBoundingClientRect(); const sf=sr.width/1920;
+    let bestIdx=-1, bestDist=Infinity;
+    const centers=ms.map((m)=>{const r=m.getBoundingClientRect(); return {cx:(r.left+r.width/2-sr.left)/sf, cy:(r.top+r.height/2-sr.top)/sf, el:m};});
+    centers.forEach((c,i)=>{const d=Math.hypot(c.cx-cs.x,c.cy-cs.y); if(d<bestDist){bestDist=d; bestIdx=i;}});
+    centers.forEach((c,i)=>{
+      const isBest=(i===bestIdx);
+      const dx=cs.x-c.cx, dy=cs.y-c.cy;
+      const ang=Math.atan2(dy,dx)+Math.PI;
+      const drift=isBest?0:20;
+      const sc=isBest?1.25:0.92;
+      const z=isBest?80:-40;
+      const rotX=isBest?-((cs.y-c.cy)/200)*15:0;
+      const rotY=isBest?((cs.x-c.cx)/200)*15:0;
+      c.el.style.transform=`translate3d(${Math.cos(ang)*drift}px,${Math.sin(ang)*drift}px,${z}px) scale(${sc}) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+      c.el.style.transition='transform 0.4s cubic-bezier(0.34,1.56,0.64,1)';
+      c.el.style.zIndex=isBest?10:1;
+    });
+  });
+
+  const sc=document.getElementById('scrub'),te=document.getElementById('time'),pb=document.getElementById('playBtn');
+  function ut(){te.textContent=tl.time().toFixed(2).padStart(5,'0')+' / '+tl.duration().toFixed(2).padStart(5,'0');}
+  sc.addEventListener('input',()=>{tl.pause();pb.textContent='Play';tl.progress(parseFloat(sc.value)/100);ut();});
+  gsap.ticker.add(()=>{if(!tl.paused()){sc.value=(tl.progress()*100).toFixed(2);ut();if(tl.progress()>=1)pb.textContent='Replay';}});
+  pb.addEventListener('click',()=>{if(tl.progress()>=1){tl.restart();pb.textContent='Pause';}else if(tl.paused()){tl.play();pb.textContent='Pause';}else{tl.pause();pb.textContent='Play';}});
+  ut();setTimeout(()=>{tl.play();pb.textContent='Pause';},400);
+</script></body></html>
