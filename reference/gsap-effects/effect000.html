@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Effect 000 — Cursor inertia gallery (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#0a0806; font-family:var(--wpf-font-stack); overflow:hidden; }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; background:#14110e; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.5); }
+  .header { position:absolute; top:60px; left:0; right:0; padding:0 80px; display:grid; grid-template-columns:1fr auto 1fr; align-items:center; color:rgba(250,246,238,0.5); z-index:10; opacity:0; }
+  .header .pill { display:flex; align-items:center; gap:8px; padding:8px 16px; border-radius:999px; background:#1d1814; color:#faf6ee; align-self:start; }
+  .header .pill .badge { width:22px; height:22px; border-radius:50%; background:var(--wpf-orange); display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; color:white; }
+  .header .count { font-size:24px; color:#faf6ee; font-weight:600; }
+  .header .right { display:flex; justify-content:flex-end; }
+  .header .right .pill { border:1px solid #2a221b; background:transparent; }
+  .grid-area { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+  .medias { display:grid; grid-template-columns:repeat(4,1fr); gap:24px; padding:24px; }
+  .media { width:220px; height:280px; background:white; border-radius:18px; box-shadow:0 18px 40px rgba(0,0,0,0.5); padding:16px; display:flex; flex-direction:column; gap:10px; will-change:transform; }
+  .media .badge { font-size:10px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; padding:3px 8px; border-radius:999px; background:var(--wpf-orange); color:white; align-self:flex-start; }
+  .media .ttl { font-size:14px; font-weight:700; color:var(--wpf-ink); }
+  .media .field { background:#f5f1ea; border:1px solid #e2d9c9; border-radius:5px; padding:5px 8px; font-size:10px; color:var(--wpf-ink-mute); }
+  .media .submit { margin-top:auto; background:var(--wpf-orange); color:white; border-radius:5px; text-align:center; padding:5px; font-weight:700; font-size:10px; }
+  .media[data-c="blue"]   .badge,.media[data-c="blue"]   .submit { background:var(--wpf-blue); }
+  .media[data-c="purple"] .badge,.media[data-c="purple"] .submit { background:var(--wpf-ai-purple); }
+  .media[data-c="green"]  .badge,.media[data-c="green"]  .submit { background:#2c8a55; }
+  .media[data-c="amber"]  .badge,.media[data-c="amber"]  .submit { background:#d59324; }
+  .media[data-c="teal"]   .badge,.media[data-c="teal"]   .submit { background:#2a8a8e; }
+  .media[data-c="pink"]   .badge,.media[data-c="pink"]   .submit { background:#c93874; }
+  .ghost-cursor { position:absolute; width:24px; height:24px; border-radius:50%; background:var(--wpf-orange); box-shadow:0 0 20px rgba(226,119,48,0.7); pointer-events:none; z-index:20; transform:translate(-50%,-50%); opacity:0; }
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; }
+</style></head><body>
+<div class="stage-wrap"><div class="stage" id="stage">
+  <div class="header">
+    <div><div class="pill"><div class="badge">3D</div><span>3d &amp; stuff</span></div></div>
+    <div class="count">12 items saved in your collection</div>
+    <div class="right"><div class="pill">Add more</div></div>
+  </div>
+  <div class="grid-area"><div class="medias" id="grid"></div></div>
+  <div class="ghost-cursor" id="cursor"></div>
+</div></div>
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 000 · cursor inertia gallery (ghost cursor)</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  function mulberry32(a){return function(){let t=a+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296;}}
+  const rng = mulberry32(0);
+  const palette = ['orange','blue','purple','green','amber','teal','pink'];
+  const titles = ['Contact','Payment','AI','Survey','Order','Booking','Lead','Event','Donate','Login','Feedback','Waitlist'];
+  const grid = document.getElementById('grid');
+  titles.forEach((t, i) => {
+    const el = document.createElement('div');
+    el.className = 'media';
+    el.dataset.c = palette[i % palette.length];
+    el.innerHTML = `<div class="badge">${t}</div><div class="ttl">${t} Form</div><div class="field">Field</div><div class="field">Field</div><div class="submit">Submit</div>`;
+    grid.appendChild(el);
+  });
+  const medias = gsap.utils.toArray('.media');
+  const cursor = document.getElementById('cursor');
+
+  function fit() { const s=document.getElementById('stage'); s.style.transform=`scale(${Math.min(innerWidth/1920,(innerHeight-56)/1080)*0.96})`; }
+  addEventListener('resize', fit); fit();
+
+  // GHOST CURSOR follows a choreographed path across the grid.
+  // When the ghost cursor "passes over" each card, that card kicks with inertia
+  // (translates toward where the cursor was moving, then snaps back).
+  // Authentic to source effect 000 but driven by master timeline, not mousemove.
+
+  // path waypoints (in stage coords)
+  const waypoints = [
+    { x: 200, y: 540, t: 0.5 },
+    { x: 540, y: 380, t: 1.5 },
+    { x: 960, y: 660, t: 2.7 },
+    { x: 1380, y: 380, t: 4.0 },
+    { x: 1720, y: 700, t: 5.2 },
+    { x: 1200, y: 400, t: 6.4 },
+    { x: 700, y: 700, t: 7.6 },
+    { x: 1100, y: 540, t: 8.8 },
+  ];
+
+  // state for tracking cursor + velocity
+  const cstate = { x: waypoints[0].x, y: waypoints[0].y };
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to('.header', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1);
+  tl.to(cursor, { opacity: 1, duration: 0.4 }, 0.3);
+  gsap.set(cursor, { x: cstate.x, y: cstate.y });
+
+  // animate cursor through waypoints
+  let last = waypoints[0];
+  for (let i = 1; i < waypoints.length; i++) {
+    const w = waypoints[i];
+    tl.to(cstate, {
+      x: w.x, y: w.y,
+      duration: w.t - last.t,
+      ease: 'power2.inOut',
+      onUpdate: () => gsap.set(cursor, { x: cstate.x, y: cstate.y })
+    }, last.t + 0.3);
+    last = w;
+  }
+
+  // EACH card watches its own bounding center vs ghost cursor; when cursor "enters" within proximity,
+  // card kicks toward the cursor direction
+  const cardStates = medias.map(() => ({ kicked: false }));
+  const stageEl = document.getElementById('stage');
+  let prevX = cstate.x, prevY = cstate.y;
+
+  gsap.ticker.add(() => {
+    if (tl.paused() || tl.progress() === 0) return;
+    const sr = stageEl.getBoundingClientRect();
+    const sf = sr.width / 1920;
+    medias.forEach((m, i) => {
+      const mr = m.getBoundingClientRect();
+      const cx = (mr.left + mr.width/2 - sr.left) / sf;
+      const cy = (mr.top + mr.height/2 - sr.top) / sf;
+      const dist = Math.hypot(cstate.x - cx, cstate.y - cy);
+      if (dist < 100 && !cardStates[i].kicked) {
+        cardStates[i].kicked = true;
+        const vx = (cstate.x - prevX) * 8;
+        const vy = (cstate.y - prevY) * 8;
+        gsap.to(m, { x: vx, y: vy, duration: 0.4, ease: 'power3.out' });
+        gsap.to(m, { x: 0, y: 0, rotate: (rng()-0.5)*20, duration: 0.9, delay: 0.4, ease: 'elastic.out(1,0.5)' });
+        gsap.to(m, { rotate: 0, duration: 0.6, delay: 1.0, ease: 'sine.inOut' });
+        setTimeout(() => cardStates[i].kicked = false, 1500);
+      }
+    });
+    prevX = cstate.x; prevY = cstate.y;
+  });
+
+  const sc=document.getElementById('scrub'),te=document.getElementById('time'),pb=document.getElementById('playBtn');
+  function ut(){te.textContent=tl.time().toFixed(2).padStart(5,'0')+' / '+tl.duration().toFixed(2).padStart(5,'0');}
+  sc.addEventListener('input',()=>{tl.pause();pb.textContent='Play';tl.progress(parseFloat(sc.value)/100);ut();});
+  gsap.ticker.add(()=>{if(!tl.paused()){sc.value=(tl.progress()*100).toFixed(2);ut();if(tl.progress()>=1)pb.textContent='Replay';}});
+  pb.addEventListener('click',()=>{if(tl.progress()>=1){tl.restart();pb.textContent='Pause';}else if(tl.paused()){tl.play();pb.textContent='Pause';}else{tl.pause();pb.textContent='Play';}});
+  ut(); setTimeout(()=>{tl.play();pb.textContent='Pause';},400);
+</script></body></html>

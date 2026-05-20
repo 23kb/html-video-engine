@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Effect 024 — Opposite-direction marquees with reveal (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#0a0806; font-family:var(--wpf-font-stack); overflow:hidden; }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; background:#14110e; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.5); }
+  .brand { position:absolute; top:60px; left:80px; display:flex; align-items:center; gap:12px; z-index:10; opacity:0; color:rgba(250,246,238,0.9); }
+  .brand .dot { width:14px; height:14px; border-radius:50%; background:var(--wpf-orange); }
+  .brand .name { font-weight:600; font-size:22px; letter-spacing:-0.01em; }
+  .pin-height { position:absolute; inset:0; }
+  .container { position:absolute; inset:0; overflow:hidden; }
+  .sentence { position:absolute; left:0; right:0; height:200px; display:flex; align-items:center; will-change:transform,opacity; }
+  .sentence1 { top:50%; transform:translateY(-100%); }
+  .sentence2 { top:50%; }
+  .track { display:flex; align-items:center; will-change:transform; white-space:nowrap; }
+  .phrase { font-size:170px; font-weight:800; letter-spacing:-0.03em; color:#faf6ee; padding-right:90px; line-height:1; }
+  .star { color:var(--wpf-orange); margin:0 60px; vertical-align:middle; }
+  .phrase.accent { color:var(--wpf-orange); }
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; }
+</style></head><body>
+<div class="stage-wrap"><div class="stage" id="stage">
+  <div class="brand"><div class="dot"></div><div class="name">WPForms</div></div>
+  <div class="pin-height"><div class="container">
+    <div class="sentence sentence1"><div class="track" id="t1">
+      <span class="phrase">FORMS <span class="star">★</span> THAT <span class="star">★</span> <span class="accent">CONVERT</span> <span class="star">★</span></span>
+      <span class="phrase">FORMS <span class="star">★</span> THAT <span class="star">★</span> <span class="accent">CONVERT</span> <span class="star">★</span></span>
+    </div></div>
+    <div class="sentence sentence2"><div class="track" id="t2">
+      <span class="phrase">BUILD <span class="star">★</span> SHIP <span class="star">★</span> <span class="accent">REPEAT</span> <span class="star">★</span></span>
+      <span class="phrase">BUILD <span class="star">★</span> SHIP <span class="star">★</span> <span class="accent">REPEAT</span> <span class="star">★</span></span>
+    </div></div>
+  </div></div>
+</div></div>
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 024 · opposite marquees with reveal</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  function fit() { const s=document.getElementById('stage'); s.style.transform=`scale(${Math.min(innerWidth/1920,(innerHeight-56)/1080)*0.96})`; }
+  addEventListener('resize', fit); fit();
+
+  requestAnimationFrame(() => {
+    const t1 = document.getElementById('t1');
+    const t2 = document.getElementById('t2');
+    const c1 = t1.scrollWidth / 2;
+    const c2 = t2.scrollWidth / 2;
+
+    // initial: sentence1 sits over center, sentence2 sits BEHIND it (translateY 0 = same position)
+    gsap.set('.sentence1', { y: -100, opacity: 1 });
+    gsap.set('.sentence2', { y: -100, opacity: 0 });
+
+    const tl = gsap.timeline({ paused: true });
+    tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1);
+
+    // marquees scroll in opposite directions continuously
+    tl.to(t1, { x: `-=${c1}`, duration: 20, ease: 'none',
+      modifiers: { x: (s) => gsap.utils.wrap(-c1, 0, parseFloat(s)) + 'px' }}, 0);
+    tl.to(t2, { x: `+=${c2}`, duration: 18, ease: 'none',
+      modifiers: { x: (s) => gsap.utils.wrap(-c2, 0, parseFloat(s)) + 'px' }}, 0);
+    gsap.set(t2, { x: -c2 });
+
+    // SCROLL-REVEAL: sentence1 fades & lifts, sentence2 appears beneath
+    tl.to('.sentence1', { y: -250, opacity: 0, duration: 2.5, ease: 'power2.inOut' }, 2.5);
+    tl.to('.sentence2', { opacity: 1, duration: 2.0, ease: 'power2.inOut' }, 2.8);
+
+    // then reverse — back to sentence1
+    tl.to('.sentence1', { y: -100, opacity: 1, duration: 2.0, ease: 'power2.inOut' }, 7.0);
+    tl.to('.sentence2', { opacity: 0, duration: 2.0, ease: 'power2.inOut' }, 7.2);
+
+    const sc=document.getElementById('scrub'),te=document.getElementById('time'),pb=document.getElementById('playBtn');
+    function ut(){te.textContent=tl.time().toFixed(2).padStart(5,'0')+' / '+tl.duration().toFixed(2).padStart(5,'0');}
+    sc.addEventListener('input',()=>{tl.pause();pb.textContent='Play';tl.progress(parseFloat(sc.value)/100);ut();});
+    gsap.ticker.add(()=>{if(!tl.paused()){sc.value=(tl.progress()*100).toFixed(2);ut();if(tl.progress()>=1)pb.textContent='Replay';}});
+    pb.addEventListener('click',()=>{if(tl.progress()>=1){tl.restart();pb.textContent='Pause';}else if(tl.paused()){tl.play();pb.textContent='Pause';}else{tl.pause();pb.textContent='Play';}});
+    ut(); setTimeout(()=>{tl.play();pb.textContent='Pause';},400);
+  });
+</script></body></html>
