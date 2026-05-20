@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Effect 003 — Card shuffle fan from bottom (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#0a0806; font-family:var(--wpf-font-stack); overflow:hidden; }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; background:radial-gradient(ellipse at center,#fdf8f0 0%,#e9dec8 100%); overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.45); }
+  .brand { position:absolute; top:60px; left:80px; display:flex; align-items:center; gap:12px; z-index:10; opacity:0; }
+  .brand .dot { width:14px; height:14px; border-radius:50%; background:var(--wpf-orange); }
+  .brand .name { font-weight:600; font-size:22px; letter-spacing:-0.01em; color:var(--wpf-ink-soft); }
+  .header { position:absolute; top:110px; left:0; right:0; text-align:center; opacity:0; z-index:5; }
+  .header .kicker { color:var(--wpf-orange); font-size:14px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:10px; }
+  .header .title { font-size:56px; font-weight:700; color:var(--wpf-ink); letter-spacing:-0.02em; }
+  .deck-stage { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
+  .circles { position:relative; width:1200px; height:600px; }
+  .circle { position:absolute; left:50%; top:100%; width:300px; height:1200px; margin-left:-150px; transform-origin:center 50%; will-change:transform; }
+  .card { position:absolute; left:50%; top:0; width:220px; height:280px; margin-left:-110px; background:white; border-radius:16px; box-shadow:0 18px 40px rgba(20,22,28,0.20),0 4px 12px rgba(20,22,28,0.08); overflow:hidden; padding:16px; display:flex; flex-direction:column; gap:8px; }
+  .card .badge { font-size:10px; font-weight:700; letter-spacing:0.10em; text-transform:uppercase; padding:3px 8px; border-radius:999px; background:var(--wpf-orange); color:white; align-self:flex-start; }
+  .card .ttl { font-size:17px; font-weight:700; color:var(--wpf-ink); letter-spacing:-0.005em; line-height:1.2; }
+  .card .field { background:#f5f1ea; border:1px solid #e2d9c9; border-radius:6px; padding:7px 9px; font-size:11px; color:var(--wpf-ink-mute); }
+  .card .submit { margin-top:auto; background:var(--wpf-orange); color:white; border-radius:6px; text-align:center; padding:8px; font-weight:700; font-size:11px; }
+  .circle[data-c="blue"]   .card .badge,.circle[data-c="blue"]   .card .submit { background:var(--wpf-blue); }
+  .circle[data-c="purple"] .card .badge,.circle[data-c="purple"] .card .submit { background:var(--wpf-ai-purple); }
+  .circle[data-c="green"]  .card .badge,.circle[data-c="green"]  .card .submit { background:#2c8a55; }
+  .circle[data-c="amber"]  .card .badge,.circle[data-c="amber"]  .card .submit { background:#d59324; }
+  .circle[data-c="teal"]   .card .badge,.circle[data-c="teal"]   .card .submit { background:#2a8a8e; }
+  .circle[data-c="pink"]   .card .badge,.circle[data-c="pink"]   .card .submit { background:#c93874; }
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; }
+</style></head><body>
+<div class="stage-wrap"><div class="stage" id="stage">
+  <div class="brand"><div class="dot"></div><div class="name">WPForms</div></div>
+  <div class="header">
+    <div class="kicker">A dealer-shuffle of templates</div>
+    <div class="title">Pick your favorite.</div>
+  </div>
+  <div class="deck-stage"><div class="circles" id="circles"></div></div>
+</div></div>
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 003 · card shuffle fan from bottom</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  const items = [
+    { kind:'Contact', cls:'orange', ttl:'Quick Contact', btn:'Send' },
+    { kind:'Payment', cls:'blue',   ttl:'Stripe Checkout', btn:'Pay' },
+    { kind:'AI',      cls:'purple', ttl:'AI Form',       btn:'Generate' },
+    { kind:'Survey',  cls:'green',  ttl:'NPS Feedback',  btn:'Submit' },
+    { kind:'Order',   cls:'amber',  ttl:'Product Order', btn:'Buy' },
+    { kind:'Event',   cls:'teal',   ttl:'Event RSVP',    btn:'Reserve' },
+    { kind:'Lead',    cls:'pink',   ttl:'Lead Magnet',   btn:'Get it' },
+  ];
+  const ring = document.getElementById('circles');
+  items.forEach((it) => {
+    const circ = document.createElement('div');
+    circ.className = 'circle';
+    circ.dataset.c = it.cls;
+    circ.innerHTML = `<div class="card">
+      <div class="badge">${it.kind}</div>
+      <div class="ttl">${it.ttl}</div>
+      <div class="field">Field</div>
+      <div class="field">Field</div>
+      <div class="submit">${it.btn}</div>
+    </div>`;
+    ring.appendChild(circ);
+  });
+  const circles = gsap.utils.toArray('.circle');
+
+  function fit() { const s=document.getElementById('stage'); s.style.transform=`scale(${Math.min(innerWidth/1920,(innerHeight-56)/1080)*0.96})`; }
+  addEventListener('resize', fit); fit();
+
+  // initial: every circle rotated 0 (cards stack at top, hidden), invisible
+  // we rotate each circle to fan its card around the center
+  circles.forEach((c) => { gsap.set(c, { rotation: 0, opacity: 0 }); gsap.set(c.querySelector('.card'), { y: 100, opacity: 0 }); });
+
+  const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' }});
+  tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1)
+    .to('.header', { opacity: 1, duration: 0.6 }, 0.3)
+    .from('.header .kicker', { y: 18, opacity: 0, duration: 0.5 }, 0.3)
+    .from('.header .title',  { y: 22, opacity: 0, duration: 0.6 }, 0.45);
+
+  // each card rises from bottom + the circle rotates to fan it
+  const fanStart = 1.0;
+  const fanArc = 60;  // total degrees spread
+  const N = circles.length;
+  const baseAngle = -fanArc / 2;
+  circles.forEach((c, i) => {
+    const angle = baseAngle + (fanArc / (N - 1)) * i;
+    const t = fanStart + i * 0.12;
+    tl.to(c, { opacity: 1, rotation: angle, duration: 1.0, ease: 'back.out(1.3)' }, t);
+    tl.to(c.querySelector('.card'), { y: 0, opacity: 1, duration: 0.8 }, t);
+  });
+
+  // final emphasis: center card lifts
+  const center = Math.floor(N / 2);
+  tl.to(circles[center].querySelector('.card'), { y: -30, scale: 1.06, duration: 0.7, ease: 'power2.out' }, fanStart + N*0.12 + 0.3);
+
+  const sc=document.getElementById('scrub'),te=document.getElementById('time'),pb=document.getElementById('playBtn');
+  function ut(){te.textContent=tl.time().toFixed(2).padStart(5,'0')+' / '+tl.duration().toFixed(2).padStart(5,'0');}
+  sc.addEventListener('input',()=>{tl.pause();pb.textContent='Play';tl.progress(parseFloat(sc.value)/100);ut();});
+  gsap.ticker.add(()=>{if(!tl.paused()){sc.value=(tl.progress()*100).toFixed(2);ut();if(tl.progress()>=1)pb.textContent='Replay';}});
+  pb.addEventListener('click',()=>{if(tl.progress()>=1){tl.restart();pb.textContent='Pause';}else if(tl.paused()){tl.play();pb.textContent='Pause';}else{tl.pause();pb.textContent='Play';}});
+  ut(); setTimeout(()=>{tl.play();pb.textContent='Pause';},400);
+</script></body></html>
