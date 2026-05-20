@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Effect 001 — Card stack spreads horizontally (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root {
+    --stage-w: 1920px;
+    --stage-h: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #14110e;
+    font-family: var(--wpf-font-stack);
+    overflow: hidden;
+    color: var(--wpf-ink);
+  }
+
+  .stage-wrap {
+    position: relative;
+    width: 100vw; height: calc(100vh - 56px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stage {
+    position: relative;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    transform-origin: center center;
+    background: linear-gradient(180deg, #faf6ee 0%, #f3ede2 100%);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+  }
+
+  /* ----- brand row ----- */
+  .brand {
+    position: absolute;
+    top: 56px; left: 64px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 10;
+    opacity: 0;
+  }
+  .brand .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--wpf-orange); }
+  .brand .name { font-weight: 600; font-size: 22px; letter-spacing: -0.01em; color: var(--wpf-ink-soft); }
+
+  /* ----- title block ----- */
+  .title-block {
+    position: absolute;
+    top: 130px; left: 0; right: 0;
+    text-align: center;
+    opacity: 0;
+  }
+  .title-block .kicker {
+    color: var(--wpf-orange);
+    font-size: 18px; font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .title-block .title {
+    font-size: 84px; font-weight: 700;
+    color: var(--wpf-ink);
+    letter-spacing: -0.025em;
+    line-height: 1.05;
+  }
+
+  /* ----- card stack ----- */
+  .cards-wrap {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cards {
+    position: relative;
+    width: 360px;
+    height: 460px;
+  }
+  .card {
+    position: absolute;
+    inset: 0;
+    background: #ffffff;
+    border-radius: 22px;
+    box-shadow:
+      0 24px 60px rgba(20, 22, 28, 0.18),
+      0 4px 14px rgba(20, 22, 28, 0.08);
+    overflow: hidden;
+    transform-origin: bottom center;
+    will-change: transform;
+  }
+  .card .preview {
+    position: absolute; inset: 0;
+    padding: 26px;
+    display: flex; flex-direction: column;
+    gap: 14px;
+  }
+  .card .label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--wpf-orange);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .card .heading {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--wpf-ink);
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .card .field {
+    background: #f5f1ea;
+    border: 1px solid #e2d9c9;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 14px;
+    color: var(--wpf-ink-mute);
+  }
+  .card .field.full {
+    height: 80px;
+  }
+  .card .button {
+    margin-top: auto;
+    background: var(--wpf-orange);
+    color: #fff;
+    border-radius: 8px;
+    text-align: center;
+    padding: 12px 0;
+    font-weight: 600;
+    font-size: 15px;
+  }
+  /* per-card tinting */
+  .card[data-i="0"] .label { color: var(--wpf-orange); }
+  .card[data-i="1"] .label { color: var(--wpf-blue); }
+  .card[data-i="2"] .label { color: #2c8a55; }
+  .card[data-i="3"] .label { color: var(--wpf-ai-purple); }
+  .card[data-i="4"] .label { color: var(--wpf-orange); }
+  .card[data-i="1"] .button { background: var(--wpf-blue); }
+  .card[data-i="2"] .button { background: #2c8a55; }
+  .card[data-i="3"] .button { background: var(--wpf-ai-purple); }
+
+  /* ----- caption row under cards ----- */
+  .caption {
+    position: absolute;
+    bottom: 110px;
+    left: 0; right: 0;
+    text-align: center;
+    opacity: 0;
+  }
+  .caption .line1 {
+    font-size: 26px;
+    color: var(--wpf-ink-soft);
+    font-weight: 500;
+  }
+  .caption .line2 {
+    color: var(--wpf-ink-mute);
+    font-size: 18px;
+    margin-top: 8px;
+  }
+
+  /* ----- controls ----- */
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: #0f0d0c;
+    color: #e8e3dc;
+    display: flex; align-items: center; gap: 16px;
+    padding: 0 24px;
+    font-family: var(--wpf-font-stack);
+    font-size: 13px;
+  }
+  .controls button {
+    background: var(--wpf-orange);
+    color: white;
+    border: 0;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .controls button:hover { background: var(--wpf-orange-hover); }
+  .controls input[type=range] {
+    flex: 1;
+    accent-color: var(--wpf-orange);
+  }
+  .controls .t {
+    font-variant-numeric: tabular-nums;
+    min-width: 110px;
+    text-align: right;
+    color: #aaa;
+  }
+  .controls .meta { color: #888; margin-right: 8px; }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="name">WPForms</div>
+    </div>
+
+    <div class="title-block">
+      <div class="kicker">800+ templates</div>
+      <div class="title">Pick a form. Ship in minutes.</div>
+    </div>
+
+    <div class="cards-wrap">
+      <div class="cards">
+        <div class="card" data-i="0">
+          <div class="preview">
+            <div class="label">Contact</div>
+            <div class="heading">Simple Contact Form</div>
+            <div class="field">Name</div>
+            <div class="field">Email</div>
+            <div class="field full">Message</div>
+            <div class="button">Send</div>
+          </div>
+        </div>
+        <div class="card" data-i="1">
+          <div class="preview">
+            <div class="label">Survey</div>
+            <div class="heading">NPS &amp; Feedback</div>
+            <div class="field">How likely to recommend?</div>
+            <div class="field">What did you like?</div>
+            <div class="field full">Anything else?</div>
+            <div class="button">Submit</div>
+          </div>
+        </div>
+        <div class="card" data-i="2">
+          <div class="preview">
+            <div class="label">Order</div>
+            <div class="heading">Product Order Form</div>
+            <div class="field">Item</div>
+            <div class="field">Quantity</div>
+            <div class="field">Card</div>
+            <div class="button">Pay $49</div>
+          </div>
+        </div>
+        <div class="card" data-i="3">
+          <div class="preview">
+            <div class="label">AI form</div>
+            <div class="heading">Generated by AI</div>
+            <div class="field">Describe your form…</div>
+            <div class="field">Tone</div>
+            <div class="field full">Preview</div>
+            <div class="button">Generate</div>
+          </div>
+        </div>
+        <div class="card" data-i="4">
+          <div class="preview">
+            <div class="label">Registration</div>
+            <div class="heading">Event Sign-up</div>
+            <div class="field">Full name</div>
+            <div class="field">Email</div>
+            <div class="field">Seat preference</div>
+            <div class="button">Reserve</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="caption">
+      <div class="line1">From contact to commerce — one builder.</div>
+      <div class="line2">Drag, drop, publish.</div>
+    </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 001 · card stack horizontal spread</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  const cards = gsap.utils.toArray('.card');
+
+  function fit() {
+    const stage = document.getElementById('stage');
+    const w = window.innerWidth;
+    const h = window.innerHeight - 56;
+    const scale = Math.min(w / 1920, h / 1080) * 0.96;
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // --- initial stacked state ---
+  // each card sits behind the next, slight upward fan + scale + downshift to feel like a deck
+  cards.forEach((card, i) => {
+    gsap.set(card, {
+      x: 0,
+      y: i * 8,            // slight downward step per card behind
+      rotate: 0,
+      scale: 1 - i * 0.02, // each one a touch smaller
+      zIndex: cards.length - i,
+      opacity: i === 0 ? 1 : 0.95
+    });
+  });
+
+  // --- master timeline ---
+  // Beat A (0-1.5s): brand + title fade in, deck pulses subtly
+  // Beat B (1.5-5s): the deck SPREADS — cards slide out left/right with rotation
+  // Beat C (5-7s): caption fades in, cards settle into final fan
+  const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+
+  // intro chrome
+  tl.to('.brand', { opacity: 1, duration: 0.6 }, 0.2)
+    .to('.title-block', { opacity: 1, y: 0, duration: 0.7 }, 0.4)
+    .from('.title-block .kicker', { y: 20, opacity: 0, duration: 0.6 }, 0.4)
+    .from('.title-block .title', { y: 30, opacity: 0, duration: 0.7 }, 0.55);
+
+  // tiny breathe on the deck before it spreads
+  tl.to(cards[0], { y: -8, duration: 0.5, ease: 'sine.out' }, 0.8)
+    .to(cards[0], { y: 0, duration: 0.5, ease: 'sine.in' }, 1.3);
+
+  // SPREAD: the centerpiece of the effect.
+  // Cards slide horizontally outward like dealing a hand, with stagger and slight rotation.
+  // Pattern matches the source's "pin a div and move its children horizontally" idea —
+  // we replace the pin/scroll with master-timeline progress.
+  const spreadStart = 1.8;
+  const spacing = 380; // px between final card centers
+  const offsets = cards.map((_, i) => (i - (cards.length - 1) / 2) * spacing);
+  const tilts   = cards.map((_, i) => (i - (cards.length - 1) / 2) * 4); // degrees
+
+  cards.forEach((card, i) => {
+    tl.to(card, {
+      x: offsets[i],
+      y: Math.abs(i - 2) * 18,    // outer cards drop slightly — gentle arc
+      rotate: tilts[i],
+      scale: 1,
+      opacity: 1,
+      duration: 1.4,
+      ease: 'power3.out'
+    }, spreadStart + i * 0.08);
+  });
+
+  // bring the title up a notch as the cards spread (visual breathing)
+  tl.to('.title-block', { y: -10, duration: 1.2, ease: 'power2.out' }, spreadStart + 0.2);
+
+  // hover-lift on the center card after the spread, to draw the eye
+  tl.to(cards[2], { y: -32, scale: 1.04, duration: 0.8, ease: 'power2.out' }, spreadStart + 1.6)
+    .to(cards[2], { boxShadow: '0 40px 100px rgba(226,119,48,0.30), 0 8px 22px rgba(20,22,28,0.12)', duration: 0.8 }, spreadStart + 1.6);
+
+  // caption fade in
+  tl.to('.caption', { opacity: 1, duration: 0.8 }, spreadStart + 2.2)
+    .from('.caption .line1', { y: 18, opacity: 0, duration: 0.6 }, spreadStart + 2.2)
+    .from('.caption .line2', { y: 14, opacity: 0, duration: 0.6 }, spreadStart + 2.4);
+
+  // final settle — the deck very slightly drifts in place
+  tl.to(cards, {
+    y: '+=2',
+    duration: 1.4,
+    ease: 'sine.inOut',
+    yoyo: true,
+    repeat: 1,
+    stagger: { each: 0.05, from: 'center' }
+  }, spreadStart + 3);
+
+  // ----- scrubber wiring -----
+  const scrub = document.getElementById('scrub');
+  const timeEl = document.getElementById('time');
+  const playBtn = document.getElementById('playBtn');
+
+  function updateTime() {
+    const t = tl.time();
+    const d = tl.duration();
+    timeEl.textContent = t.toFixed(2).padStart(5, '0') + ' / ' + d.toFixed(2).padStart(5, '0');
+  }
+
+  scrub.addEventListener('input', () => {
+    tl.pause();
+    playBtn.textContent = 'Play';
+    tl.progress(parseFloat(scrub.value) / 100);
+    updateTime();
+  });
+
+  gsap.ticker.add(() => {
+    if (!tl.paused()) {
+      scrub.value = (tl.progress() * 100).toFixed(2);
+      updateTime();
+      if (tl.progress() >= 1) playBtn.textContent = 'Replay';
+    }
+  });
+
+  playBtn.addEventListener('click', () => {
+    if (tl.progress() >= 1) { tl.restart(); playBtn.textContent = 'Pause'; }
+    else if (tl.paused()) { tl.play(); playBtn.textContent = 'Pause'; }
+    else { tl.pause(); playBtn.textContent = 'Play'; }
+  });
+
+  updateTime();
+
+  setTimeout(() => { tl.play(); playBtn.textContent = 'Pause'; }, 400);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Effect 009 — Up &amp; Down letter reveal (WPForms port)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root {
+    --stage-w: 1920px;
+    --stage-h: 1080px;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #1a1614;
+    font-family: var(--wpf-font-stack);
+    overflow: hidden;
+    color: var(--wpf-ink);
+  }
+
+  /* ----- responsive 1920×1080 stage shell ----- */
+  .stage-wrap {
+    position: relative;
+    width: 100vw; height: calc(100vh - 56px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stage {
+    position: relative;
+    width: var(--stage-w);
+    height: var(--stage-h);
+    transform-origin: center center;
+    background: var(--wpf-bg-cream);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.35);
+  }
+
+  /* ----- brand bug top-left ----- */
+  .brand {
+    position: absolute;
+    top: 48px; left: 64px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 10;
+    opacity: 0;
+  }
+  .brand .dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--wpf-orange);
+  }
+  .brand .name {
+    font-weight: 600; font-size: 22px; letter-spacing: -0.01em;
+    color: var(--wpf-ink-soft);
+  }
+
+  /* ----- center slot for phrase swap ----- */
+  .center {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    perspective: 1200px;
+  }
+
+  .slot {
+    position: relative;
+    width: 1600px;
+    height: 220px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+
+  .sentence {
+    position: absolute;
+    inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 168px;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--wpf-ink);
+    line-height: 1;
+    white-space: nowrap;
+    opacity: 0;
+  }
+  .sentence.accent { color: var(--wpf-orange); }
+  .sentence .char {
+    display: inline-block;
+    transform-origin: center bottom;
+    will-change: transform, opacity;
+  }
+
+  /* thin orange rule under the slot, animated with the text */
+  .rule {
+    position: absolute;
+    left: 50%;
+    bottom: -32px;
+    width: 0;
+    height: 4px;
+    background: var(--wpf-orange);
+    transform: translateX(-50%);
+    border-radius: 2px;
+  }
+
+  /* ----- subtle background drift ----- */
+  .atmo {
+    position: absolute; inset: 0; pointer-events: none;
+    z-index: 0;
+  }
+  .atmo .bloom {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0;
+    will-change: transform, opacity;
+  }
+  .atmo .b1 {
+    width: 900px; height: 900px;
+    left: -250px; top: -300px;
+    background: radial-gradient(circle, #ffd9b3 0%, rgba(255,220,180,0) 70%);
+  }
+  .atmo .b2 {
+    width: 1000px; height: 1000px;
+    right: -300px; bottom: -350px;
+    background: radial-gradient(circle, #ffe0c0 0%, rgba(255,210,170,0) 70%);
+  }
+
+  /* ----- scrubber controls ----- */
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: #0f0d0c;
+    color: #e8e3dc;
+    display: flex; align-items: center; gap: 16px;
+    padding: 0 24px;
+    font-family: var(--wpf-font-stack);
+    font-size: 13px;
+  }
+  .controls button {
+    background: var(--wpf-orange);
+    color: white;
+    border: 0;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .controls button:hover { background: var(--wpf-orange-hover); }
+  .controls input[type=range] {
+    flex: 1;
+    accent-color: var(--wpf-orange);
+  }
+  .controls .t {
+    font-variant-numeric: tabular-nums;
+    min-width: 110px;
+    text-align: right;
+    color: #aaa;
+  }
+  .controls .meta {
+    color: #888;
+    margin-right: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+
+    <div class="atmo">
+      <div class="bloom b1"></div>
+      <div class="bloom b2"></div>
+    </div>
+
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="name">WPForms</div>
+    </div>
+
+    <div class="center">
+      <div class="slot" id="slot">
+        <div class="sentence" data-text="Build forms.">Build forms.</div>
+        <div class="sentence" data-text="Capture leads.">Capture leads.</div>
+        <div class="sentence" data-text="Grow your list.">Grow your list.</div>
+        <div class="sentence accent" data-text="Without code.">Without code.</div>
+        <div class="rule"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 009 · up &amp; down letter reveal</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  // ---------- split each sentence into per-character spans ----------
+  function splitChars(el) {
+    const text = el.textContent;
+    el.innerHTML = '';
+    [...text].forEach(ch => {
+      const span = document.createElement('span');
+      span.className = 'char';
+      span.textContent = ch === ' ' ? ' ' : ch;
+      el.appendChild(span);
+    });
+    return el.querySelectorAll('.char');
+  }
+
+  const sentences = [...document.querySelectorAll('.sentence')];
+  const allChars = sentences.map(s => splitChars(s));
+
+  // ---------- responsive stage scaling ----------
+  function fit() {
+    const stage = document.getElementById('stage');
+    const w = window.innerWidth;
+    const h = window.innerHeight - 56;
+    const scale = Math.min(w / 1920, h / 1080) * 0.96;
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit);
+  fit();
+
+  // ---------- master timeline ----------
+  // Pattern: each phrase has IN (chars rise up from below) → HOLD → OUT (chars exit upward).
+  // Successive phrases overlap their OUT/IN to create the "up & down" cross.
+  const tl = gsap.timeline({ paused: true, defaults: { ease: 'power2.out' } });
+
+  const HOLD = 0.9;           // pause at full reveal
+  const REVEAL = 0.65;        // duration of the IN sweep per sentence
+  const EXIT = 0.55;          // duration of the OUT sweep
+  const STAG = 0.025;         // per-character stagger
+  const OVERLAP = 0.35;       // how much sentence N+1 IN overlaps sentence N OUT
+
+  // pre-set: every char is below the slot and invisible
+  allChars.forEach(chars => {
+    gsap.set(chars, { yPercent: 100, opacity: 0 });
+  });
+
+  // brand bug fade in early, stay through the whole piece
+  tl.to('.brand', { opacity: 1, duration: 0.6 }, 0.1);
+
+  // atmo blooms gentle on
+  tl.to('.atmo .b1', { opacity: 0.55, duration: 1.4 }, 0)
+    .to('.atmo .b2', { opacity: 0.50, duration: 1.6 }, 0.2)
+    .to('.atmo .b1', { x: 60, y: 30, duration: 12, ease: 'none' }, 0)
+    .to('.atmo .b2', { x: -50, y: -20, duration: 12, ease: 'none' }, 0);
+
+  // orange rule sweeps under the slot during reveal, retracts during exit
+  let cursor = 0.6; // start time for first sentence IN
+
+  allChars.forEach((chars, i) => {
+    const start = cursor;
+
+    // IN: chars rise from below to neutral
+    tl.to(chars, {
+      yPercent: 0,
+      opacity: 1,
+      duration: REVEAL,
+      stagger: STAG,
+      ease: 'power3.out'
+    }, start);
+
+    // rule grows in alongside the text
+    if (i === 0) {
+      tl.fromTo('.rule', { width: 0 }, { width: 360, duration: REVEAL * 0.9, ease: 'power2.out' }, start + 0.1);
+    }
+
+    const inEnd = start + REVEAL + (chars.length - 1) * STAG;
+    const holdEnd = inEnd + HOLD;
+
+    // OUT: chars continue upward and fade out (the "& Down" — they go UP and away,
+    // making space for the next sentence which is ALSO rising up from below)
+    const isLast = (i === allChars.length - 1);
+    if (!isLast) {
+      tl.to(chars, {
+        yPercent: -100,
+        opacity: 0,
+        duration: EXIT,
+        stagger: STAG,
+        ease: 'power3.in'
+      }, holdEnd);
+      // next sentence IN starts just before this OUT finishes — the cross
+      cursor = holdEnd + EXIT - OVERLAP;
+    } else {
+      // final sentence: hold a beat longer, then a gentle settle
+      tl.to('.rule', { width: 520, duration: 0.6, ease: 'power2.out' }, holdEnd);
+    }
+  });
+
+  // ---------- scrubber wiring ----------
+  const scrub = document.getElementById('scrub');
+  const timeEl = document.getElementById('time');
+  const playBtn = document.getElementById('playBtn');
+
+  function updateTimeLabel() {
+    const t = tl.time();
+    const d = tl.duration();
+    timeEl.textContent = t.toFixed(2).padStart(5, '0') + ' / ' + d.toFixed(2).padStart(5, '0');
+  }
+
+  // sync scrubber → timeline
+  scrub.addEventListener('input', () => {
+    tl.pause();
+    playBtn.textContent = 'Play';
+    const p = parseFloat(scrub.value) / 100;
+    tl.progress(p);
+    updateTimeLabel();
+  });
+
+  // sync timeline → scrubber while playing
+  gsap.ticker.add(() => {
+    if (!tl.paused()) {
+      scrub.value = (tl.progress() * 100).toFixed(2);
+      updateTimeLabel();
+      if (tl.progress() >= 1) {
+        playBtn.textContent = 'Replay';
+      }
+    }
+  });
+
+  playBtn.addEventListener('click', () => {
+    if (tl.progress() >= 1) {
+      tl.restart();
+      playBtn.textContent = 'Pause';
+    } else if (tl.paused()) {
+      tl.play();
+      playBtn.textContent = 'Pause';
+    } else {
+      tl.pause();
+      playBtn.textContent = 'Play';
+    }
+  });
+
+  // initial label
+  updateTimeLabel();
+
+  // optional: auto-play on load (comment out for static debug)
+  setTimeout(() => {
+    tl.play();
+    playBtn.textContent = 'Pause';
+  }, 400);
+</script>
+
+</body>
+</html>

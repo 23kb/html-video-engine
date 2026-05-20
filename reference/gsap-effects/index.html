@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>GSAP Effects — WPForms Ports</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #14110e;
+    font-family: var(--wpf-font-stack);
+    color: #eae3d8;
+    min-height: 100vh;
+  }
+  .wrap {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 56px 32px 80px;
+  }
+  header.page {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 32px;
+    flex-wrap: wrap;
+  }
+  header.page .brand {
+    display: flex; align-items: center; gap: 12px;
+  }
+  header.page .dot {
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--wpf-orange);
+  }
+  header.page .name {
+    font-weight: 700; font-size: 22px; letter-spacing: -0.01em;
+  }
+  header.page .sub {
+    color: #8a847b;
+    font-size: 14px;
+  }
+  h1.title {
+    font-size: 44px;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    margin: 0 0 12px;
+    line-height: 1.05;
+  }
+  .lede {
+    color: #b6ada1;
+    font-size: 17px;
+    line-height: 1.5;
+    max-width: 760px;
+    margin-bottom: 36px;
+  }
+  .lede strong { color: #eae3d8; }
+  .stats {
+    display: flex; gap: 32px;
+    color: #b6ada1;
+    font-size: 14px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+  }
+  .stat .v {
+    color: var(--wpf-orange);
+    font-weight: 700;
+    font-size: 26px;
+    display: block;
+    line-height: 1;
+  }
+  .stat .l {
+    color: #8a847b;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: #1d1814;
+    border: 1px solid #2a221b;
+    border-radius: 14px;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    border-color: var(--wpf-orange);
+  }
+  .card .preview {
+    aspect-ratio: 16/9;
+    background: #faf6ee;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #2a221b;
+  }
+  .card iframe {
+    border: 0;
+    /* iframes render the actual port at 1920x1080 scaled to fit */
+    transform-origin: top left;
+  }
+  .card .preview .badge {
+    position: absolute;
+    top: 12px; left: 12px;
+    background: rgba(20,17,14,0.72);
+    color: #faf6ee;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 4px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.06em;
+    z-index: 2;
+    pointer-events: none;
+  }
+  .card .meta {
+    padding: 18px 20px 20px;
+  }
+  .card .num {
+    font-size: 12px;
+    color: var(--wpf-orange);
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .card .head {
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+    line-height: 1.25;
+  }
+  .card .desc {
+    color: #b6ada1;
+    font-size: 13px;
+    line-height: 1.45;
+    margin-bottom: 12px;
+  }
+  .card .tags {
+    display: flex; gap: 6px; flex-wrap: wrap;
+  }
+  .card .tag {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #8a847b;
+    background: #2a221b;
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+  .card .tag.use {
+    color: var(--wpf-orange);
+    background: rgba(226,119,48,0.08);
+  }
+
+  /* placeholder card for upcoming ports */
+  .card.placeholder {
+    background: transparent;
+    border: 1px dashed #3a2f25;
+    color: #6a6157;
+  }
+  .card.placeholder:hover {
+    transform: none;
+    border-color: #4a3f33;
+  }
+  .card.placeholder .preview {
+    background: #1a1612;
+    display: flex; align-items: center; justify-content: center;
+    color: #4a3f33;
+    font-size: 14px;
+  }
+  .card.placeholder .head { color: #8a847b; }
+
+  footer.page {
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #2a221b;
+    color: #6a6157;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  footer.page a {
+    color: var(--wpf-orange);
+    text-decoration: none;
+  }
+  footer.page a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="page">
+    <div class="brand">
+      <div class="dot"></div>
+      <div class="name">WPForms · GSAP Effects Library</div>
+    </div>
+    <div class="sub">reference/gsap-effects</div>
+  </header>
+
+  <h1 class="title">GSAP effects, ported for WPForms videos.</h1>
+  <p class="lede">
+    Public descriptions + HTML skeletons from <strong>madewithgsap.com</strong>, rebuilt from scratch
+    with WPForms theming and re-bound from <em>ScrollTrigger.scrub</em> to a master timeline.
+    Drop these into intros, postintros, and editorial pieces — or promote stabilized timelines
+    into <code>videos/_shared/motion-primitives.js</code> as new primitives.
+  </p>
+
+  <div class="stats">
+    <div class="stat"><span class="v">3</span><span class="l">ported</span></div>
+    <div class="stat"><span class="v">97</span><span class="l">remaining</span></div>
+    <div class="stat"><span class="v">100</span><span class="l">total in source library</span></div>
+  </div>
+
+  <div class="grid">
+
+    <a class="card" href="effect009.html">
+      <div class="preview">
+        <span class="badge">009 · scroll</span>
+        <iframe src="effect009.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.1875); width: 1920px; height: 1080px;"></iframe>
+      </div>
+      <div class="meta">
+        <div class="num">Effect 009</div>
+        <div class="head">Up &amp; Down letter reveal</div>
+        <div class="desc">Phrases swap through a single slot — characters rise out, next phrase's characters rise in. Dynamic, any number of lines.</div>
+        <div class="tags">
+          <span class="tag">scroll → timeline</span>
+          <span class="tag use">intro headline</span>
+          <span class="tag use">postintro</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="effect001.html">
+      <div class="preview">
+        <span class="badge">001 · scroll</span>
+        <iframe src="effect001.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.1875); width: 1920px; height: 1080px;"></iframe>
+      </div>
+      <div class="meta">
+        <div class="num">Effect 001</div>
+        <div class="head">Card stack spreads horizontally</div>
+        <div class="desc">A stacked deck of form templates fans outward with stagger and rotation. The center card lifts to draw the eye.</div>
+        <div class="tags">
+          <span class="tag">scroll → timeline</span>
+          <span class="tag use">template picker</span>
+          <span class="tag use">intro</span>
+        </div>
+      </div>
+    </a>
+
+    <a class="card" href="effect075.html">
+      <div class="preview">
+        <span class="badge">075 · scroll</span>
+        <iframe src="effect075.html" loading="lazy" width="1920" height="1080" style="transform: scale(0.1875); width: 1920px; height: 1080px;"></iframe>
+      </div>
+      <div class="meta">
+        <div class="num">Effect 075</div>
+        <div class="head">Fanning circular cards</div>
+        <div class="desc">Integration cards fan out from the center hub onto a ring perimeter. Ring rotates while cards stay upright.</div>
+        <div class="tags">
+          <span class="tag">scroll → timeline</span>
+          <span class="tag use">integrations</span>
+          <span class="tag use">postintro</span>
+        </div>
+      </div>
+    </a>
+
+    <!-- placeholders show what's coming next -->
+    <div class="card placeholder">
+      <div class="preview">soon</div>
+      <div class="meta">
+        <div class="num">Effect 050</div>
+        <div class="head">Infinite fullscreen zoom</div>
+        <div class="desc">Bidirectional zoom through fullscreen images — could drill into a form structure.</div>
+      </div>
+    </div>
+
+    <div class="card placeholder">
+      <div class="preview">soon</div>
+      <div class="meta">
+        <div class="num">Effect 100</div>
+        <div class="head">Orbital scroll gallery</div>
+        <div class="desc">Images orbit center; scroll pushes them away / brings them back. Feature constellation around Sullie.</div>
+      </div>
+    </div>
+
+    <div class="card placeholder">
+      <div class="preview">soon</div>
+      <div class="meta">
+        <div class="num">Effect 034</div>
+        <div class="head">Multi-speed column scroll</div>
+        <div class="desc">Columns of imagery scrolling at different speeds, each looping seamlessly. Background atmosphere.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="page">
+    <p>
+      Source descriptions: <a href="https://madewithgsap.com/effects" target="_blank">madewithgsap.com/effects</a>.
+      All ports built from public tutorial descriptions + HTML skeletons; CSS and GSAP code reconstructed from first principles.
+      See <a href="CATALOG.md">CATALOG.md</a> for the full 100-effect index and adapter pattern notes.
+    </p>
+  </footer>
+
+</div>
+
+</body>
+</html>
