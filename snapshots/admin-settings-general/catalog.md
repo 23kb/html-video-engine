@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-settings-general/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 63 selector entries across 2 sections.
+> 64 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-settings-general/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_35 entries_
+_36 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -27,6 +27,7 @@ _35 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-header"></a>`id--wpforms-header` | `#wpforms-header` | div |  | 1 |
@@ -50,7 +51,7 @@ _35 entries_
 | <a id="id--wpforms-setting-row-global-assets"></a>`id--wpforms-setting-row-global-assets` | `#wpforms-setting-row-global-assets` | div | Load Assets Globally | 1 |
 | <a id="id--wpforms-setting-row-license-heading"></a>`id--wpforms-setting-row-license-heading` | `#wpforms-setting-row-license-heading` | div | License Your license key provides access to updates and add… | 1 |
 | <a id="id--wpforms-setting-row-license-key"></a>`id--wpforms-setting-row-license-key` | `#wpforms-setting-row-license-key` | div | License Key | 1 |
-| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPTCHA | 1 |
+| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email | 1 |
 
 ## Role-like classes
 

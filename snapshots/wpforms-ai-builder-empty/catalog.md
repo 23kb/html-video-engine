@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/wpforms-ai-builder-empty/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 2265 selector entries across 3 sections.
+> 2270 selector entries across 3 sections.
 
 Provenance anchor form: `snapshots/wpforms-ai-builder-empty/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_2217 entries_
+_2222 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -22,6 +22,8 @@ _2217 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
+| <a id="id--wpforms-admin-bar-inline-css"></a>`id--wpforms-admin-bar-inline-css` | `#wpforms-admin-bar-inline-css` | link |  | 1 |
 | <a id="id--wpforms-admin-form-embed-wizard"></a>`id--wpforms-admin-form-embed-wizard` | `#wpforms-admin-form-embed-wizard` | div | Embed in a Page We can help embed your form with just a few… | 1 |
 | <a id="id--wpforms-admin-form-embed-wizard-container"></a>`id--wpforms-admin-form-embed-wizard-container` | `#wpforms-admin-form-embed-wizard-container` | div | Embed in a Page We can help embed your form with just a few… | 1 |
 | <a id="id--wpforms-admin-form-embed-wizard-content-create-page"></a>`id--wpforms-admin-form-embed-wizard-content-create-page` | `#wpforms-admin-form-embed-wizard-content-create-page` | div | What would you like to call the new page? | 1 |
@@ -49,12 +51,15 @@ _2217 entries_
 | <a id="id--wpforms-builder-help-search"></a>`id--wpforms-builder-help-search` | `#wpforms-builder-help-search` | div |  | 1 |
 | <a id="id--wpforms-builder-help-search-clear"></a>`id--wpforms-builder-help-search-clear` | `#wpforms-builder-help-search-clear` | div |  | 1 |
 | <a id="id--wpforms-builder-ie-notice"></a>`id--wpforms-builder-ie-notice` | `#wpforms-builder-ie-notice` | div | You are using an outdated browser! The Internet Explorer br… | 1 |
+| <a id="id--wpforms-builder-inline-css"></a>`id--wpforms-builder-inline-css` | `#wpforms-builder-inline-css` | link |  | 1 |
 | <a id="id--wpforms-builder-mobile-notice"></a>`id--wpforms-builder-mobile-notice` | `#wpforms-builder-mobile-notice` | div | Our form builder is optimized for desktop computers. We rec… | 1 |
 | <a id="id--wpforms-builder-overlay"></a>`id--wpforms-builder-overlay` | `#wpforms-builder-overlay` | div |  | 1 |
 | <a id="id--wpforms-exit"></a>`id--wpforms-exit` | `#wpforms-exit` | button |  | 1 |
 | <a id="id--wpforms-field-context-menu"></a>`id--wpforms-field-context-menu` | `#wpforms-field-context-menu` | div | Edit | 1 |
 | <a id="id--wpforms-field-id"></a>`id--wpforms-field-id` | `#wpforms-field-id` | input |  | 1 |
+| <a id="id--wpforms-full-inline-css"></a>`id--wpforms-full-inline-css` | `#wpforms-full-inline-css` | link |  | 1 |
 | <a id="id--wpforms-help"></a>`id--wpforms-help` | `#wpforms-help` | button | Help | 1 |
+| <a id="id--wpforms-icon-choices-custom-properties"></a>`id--wpforms-icon-choices-custom-properties` | `#wpforms-icon-choices-custom-properties` | link |  | 1 |
 | <a id="id--wpforms-panel-ai-form"></a>`id--wpforms-panel-ai-form` | `#wpforms-panel-ai-form` | div | Back to Templates | 1 |
 | <a id="id--wpforms-panel-setup"></a>`id--wpforms-panel-setup` | `#wpforms-panel-setup` | div | Name Your Form | 1 |
 | <a id="id--wpforms-panels-toggle"></a>`id--wpforms-panels-toggle` | `#wpforms-panels-toggle` | div | Setup Fields | 1 |

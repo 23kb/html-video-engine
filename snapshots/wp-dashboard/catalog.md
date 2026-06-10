@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/wp-dashboard/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 150 selector entries across 2 sections.
+> 151 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/wp-dashboard/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_140 entries_
+_141 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -28,7 +28,7 @@ _140 entries_
 | <a id="id--author-url"></a>`id--author-url` | `#author-url` | input | Add Comment Update Comment Submit Reply | 1 |
 | <a id="id--bar"></a>`id--bar` | `#bar` | circle |  | 1 |
 | <a id="id--c"></a>`id--c` | `#c` | radialgradient |  | 1 |
-| <a id="id--checkbox"></a>`id--checkbox` | `#checkbox` | input | Com | 1 |
+| <a id="id--checkbox"></a>`id--checkbox` | `#checkbox` | input |  | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--column3-sortables"></a>`id--column3-sortables` | `#column3-sortables` | div |  | 1 |
@@ -37,7 +37,7 @@ _140 entries_
 | <a id="id--comment_ID"></a>`id--comment_ID` | `#comment_ID` | input |  | 1 |
 | <a id="id--comment_post_ID"></a>`id--comment_post_ID` | `#comment_post_ID` | input |  | 1 |
 | <a id="id--comment-1"></a>`id--comment-1` | `#comment-1` | li |  | 1 |
-| <a id="id--community-events"></a>`id--community-events` | `#community-events` | div | Enter your closest city to find nearby events. Selec | 1 |
+| <a id="id--community-events"></a>`id--community-events` | `#community-events` | div | Enter your closest city to find nearby events. | 1 |
 | <a id="id--community-events-location"></a>`id--community-events-location` | `#community-events-location` | input | Cancel | 1 |
 | <a id="id--community-events-location-message"></a>`id--community-events-location-message` | `#community-events-location-message` | span | Enter your closest city to find nearby events. | 1 |
 | <a id="id--community-events-submit"></a>`id--community-events-submit` | `#community-events-submit` | input | Cancel | 1 |
@@ -78,7 +78,7 @@ _140 entries_
 | <a id="id--i"></a>`id--i` | `#i` | lineargradient |  | 1 |
 | <a id="id--latest-comments"></a>`id--latest-comments` | `#latest-comments` | div | Recent Comments | 1 |
 | <a id="id--link-modal-title"></a>`id--link-modal-title` | `#link-modal-title` | h1 | Insert/edit link | 1 |
-| <a id="id--meta-box-order-nonce"></a>`id--meta-box-order-nonce` | `#meta-box-order-nonce` | input | Thank you for creating with WordPress . Version 6.9.4 | 1 |
+| <a id="id--meta-box-order-nonce"></a>`id--meta-box-order-nonce` | `#meta-box-order-nonce` | input | Thank you for creating with WordPress . Version | 1 |
 | <a id="id--mode"></a>`id--mode` | `#mode` | input | Comment by moved to the Trash. | 1 |
 | <a id="id--most-recent-results"></a>`id--most-recent-results` | `#most-recent-results` | div | No search term specified. Showing recent items. Search or u… | 1 |
 | <a id="id--normal-sortables"></a>`id--normal-sortables` | `#normal-sortables` | div | WPForms Move up | 1 |
@@ -133,6 +133,7 @@ _140 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wp-link"></a>`id--wp-link` | `#wp-link` | form | Insert/edit link Close Enter the destination URL | 1 |
 | <a id="id--wp-replycontent-editor-container"></a>`id--wp-replycontent-editor-container` | `#wp-replycontent-editor-container` | div |  | 1 |
 | <a id="id--wp-replycontent-wrap"></a>`id--wp-replycontent-wrap` | `#wp-replycontent-wrap` | div |  | 1 |
@@ -164,7 +165,7 @@ _10 entries_
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="class--wpforms-dash-widget-chart-block-container"></a>`class--wpforms-dash-widget-chart-block-container` | `.wpforms-dash-widget-chart-block-container` | div | Total Entries | 1 |
-| <a id="class--wpforms-dash-widget-content"></a>`class--wpforms-dash-widget-content` | `.wpforms-dash-widget-content` | div | T | 1 |
+| <a id="class--wpforms-dash-widget-content"></a>`class--wpforms-dash-widget-content` | `.wpforms-dash-widget-content` | div |  | 1 |
 | <a id="class--wpforms-dash-widget-forms-more"></a>`class--wpforms-dash-widget-forms-more` | `.wpforms-dash-widget-forms-more` | button | Show More | 1 |
 | <a id="class--wpforms-dash-widget-select-timespan"></a>`class--wpforms-dash-widget-select-timespan` | `.wpforms-dash-widget-select-timespan` | select | Last 7 days Last 30 days | 1 |
 | <a id="class--wpforms-dash-widget-settings-button"></a>`class--wpforms-dash-widget-settings-button` | `.wpforms-dash-widget-settings-button` | button |  | 1 |

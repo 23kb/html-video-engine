@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-payments/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 70 selector entries across 2 sections.
+> 71 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-payments/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_49 entries_
+_50 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -32,7 +32,7 @@ _49 entries_
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate WPForms ★★★★★ on WordPress.org to help us sprea… | 1 |
 | <a id="id--form"></a>`id--form` | `#form` | th | Form | 1 |
 | <a id="id--form-hide"></a>`id--form-hide` | `#form-hide` | input | Form Status Pagination Number of payments per page: | 1 |
-| <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input | Screen Option | 1 |
+| <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input | Screen O | 1 |
 | <a id="id--screen-options-link-wrap"></a>`id--screen-options-link-wrap` | `#screen-options-link-wrap` | div | Screen Options | 1 |
 | <a id="id--screen-options-wrap"></a>`id--screen-options-wrap` | `#screen-options-wrap` | div | Columns Date Total | 1 |
 | <a id="id--screenoptionnonce"></a>`id--screenoptionnonce` | `#screenoptionnonce` | input | Screen Options | 1 |
@@ -40,7 +40,7 @@ _49 entries_
 | <a id="id--status"></a>`id--status` | `#status` | th | Status | 1 |
 | <a id="id--status-hide"></a>`id--status-hide` | `#status-hide` | input | Status Pagination Number of payments per page: | 1 |
 | <a id="id--table-paging"></a>`id--table-paging` | `#table-paging` | span | 1 of 1 | 1 |
-| <a id="id--the-list"></a>`id--the-list` | `#the-list` | tbody | #1 - asdas@adsfds.com Sh | 1 |
+| <a id="id--the-list"></a>`id--the-list` | `#the-list` | tbody | #1 - Sarah Mitchell | 1 |
 | <a id="id--title"></a>`id--title` | `#title` | th | Payment Sort ascending. | 1 |
 | <a id="id--toplevel_page_wpforms-overview"></a>`id--toplevel_page_wpforms-overview` | `#toplevel_page_wpforms-overview` | li |  | 1 |
 | <a id="id--total"></a>`id--total` | `#total` | th | Total Sort ascending. | 1 |
@@ -49,6 +49,7 @@ _49 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms_payments_per_page"></a>`id--wpforms_payments_per_page` | `#wpforms_payments_per_page` | input |  | 1 |
 | <a id="id--wpforms-dash-widget-settings-button"></a>`id--wpforms-dash-widget-settings-button` | `#wpforms-dash-widget-settings-button` | button |  | 1 |
 | <a id="id--wpforms-dash-widget-settings-style-bar"></a>`id--wpforms-dash-widget-settings-style-bar` | `#wpforms-dash-widget-settings-style-bar` | input | Bar Line | 1 |
@@ -63,8 +64,8 @@ _49 entries_
 | <a id="id--wpforms-payments-overview-datepicker"></a>`id--wpforms-payments-overview-datepicker` | `#wpforms-payments-overview-datepicker` | input |  | 1 |
 | <a id="id--wpforms-payments-overview-mode-toggle"></a>`id--wpforms-payments-overview-mode-toggle` | `#wpforms-payments-overview-mode-toggle` | span | Test Data | 1 |
 | <a id="id--wpforms-payments-overview-reports-helptext"></a>`id--wpforms-payments-overview-reports-helptext` | `#wpforms-payments-overview-reports-helptext` | p | List of data points available for filtering. Click a data p… | 1 |
-| <a id="id--wpforms-payments-search-input"></a>`id--wpforms-payments-search-input` | `#wpforms-payments-search-input` | input | Se | 1 |
-| <a id="id--wpforms-payments-table"></a>`id--wpforms-payments-table` | `#wpforms-payments-table` | form | All (1) \| Processe | 1 |
+| <a id="id--wpforms-payments-search-input"></a>`id--wpforms-payments-search-input` | `#wpforms-payments-search-input` | input |  | 1 |
+| <a id="id--wpforms-payments-table"></a>`id--wpforms-payments-table` | `#wpforms-payments-table` | form | All (1) \| Pro | 1 |
 
 ## Role-like classes
 

@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/builder-settings-notifications/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 2429 selector entries across 4 sections.
+> 2306 selector entries across 4 sections.
 
 Provenance anchor form: `snapshots/builder-settings-notifications/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_2227 entries_
+_2108 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -368,86 +368,6 @@ _2227 entries_
 | <a id="id--choices--wpforms-panel-field-notifications-1-entry_csv_attachment_entry_information-item-choice-9"></a>`id--choices--wpforms-panel-field-notifications-1-entry_csv_attachment_entry_information-item-choice-9` | `#choices--wpforms-panel-field-notifications-1-entry_csv_attachment_entry_information-item-choice-9` | div | Password | 1 |
 | <a id="id--choices--wpforms-panel-field-notifications-1-file_upload_attachment_fields-item-choice-1"></a>`id--choices--wpforms-panel-field-notifications-1-file_upload_attachment_fields-item-choice-1` | `#choices--wpforms-panel-field-notifications-1-file_upload_attachment_fields-item-choice-1` | div | File Upload (Modern Style) | 1 |
 | <a id="id--choices--wpforms-panel-field-notifications-1-file_upload_attachment_fields-item-choice-2"></a>`id--choices--wpforms-panel-field-notifications-1-file_upload_attachment_fields-item-choice-2` | `#choices--wpforms-panel-field-notifications-1-file_upload_attachment_fields-item-choice-2` | div | File Upload (Classic Style) | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-1"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-1` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-1` | div | All Fields | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-10"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-10` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-10` | div | Name | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-11"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-11` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-11` | div | Email | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-12"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-12` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-12` | div | Single Line Text | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-13"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-13` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-13` | div | File Upload (Modern Style) | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-14"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-14` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-14` | div | File Upload (Classic Style) | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-15"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-15` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-15` | div | Paragraph Text | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-16"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-16` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-16` | div | Dropdown | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-17"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-17` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-17` | div | Multiple Choice | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-18"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-18` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-18` | div | Checkboxes | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-19"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-19` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-19` | div | Numbers | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-2"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-2` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-2` | div | Name | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-20"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-20` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-20` | div | Number Slider | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-21"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-21` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-21` | div | Phone (Smart format) | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-22"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-22` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-22` | div | Phone (International format) | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-23"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-23` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-23` | div | Hidden Field | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-24"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-24` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-24` | div | Rich Text | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-25"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-25` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-25` | div | Address - US | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-26"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-26` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-26` | div | Address - International | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-27"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-27` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-27` | div | Phone - Smart | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-28"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-28` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-28` | div | Single Item | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-29"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-29` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-29` | div | Checkbox Items | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-3"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-3` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-3` | div | Email | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-30"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-30` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-30` | div | Multiple Items | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-31"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-31` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-31` | div | Dropdown Items | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-32"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-32` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-32` | div | PayPal Commerce | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-33"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-33` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-33` | div | Address | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-34"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-34` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-34` | div | Map | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-35"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-35` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-35` | div | Stripe Credit Card | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-36"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-36` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-36` | div | Total | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-37"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-37` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-37` | div | Rating | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-38"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-38` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-38` | div | Likert Scale | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-39"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-39` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-39` | div | Net Promoter Score | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-4"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-4` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-4` | div | Paragraph Text | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-40"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-40` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-40` | div | Signature | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-41"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-41` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-41` | div | Site Administrator Email | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-42"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-42` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-42` | div | Form ID | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-43"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-43` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-43` | div | Form Name | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-44"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-44` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-44` | div | Entry ID | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-45"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-45` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-45` | div | Entry Date | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-46"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-46` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-46` | div | Entry Type | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-47"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-47` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-47` | div | Entry Details URL | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-48"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-48` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-48` | div | Embedded Post/Page Title | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-49"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-49` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-49` | div | Embedded Post/Page URL | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-5"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-5` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-5` | div | Date / Time (Date and Time format) | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-50"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-50` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-50` | div | Embedded Post/Page ID | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-51"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-51` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-51` | div | User IP Address | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-52"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-52` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-52` | div | User ID | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-53"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-53` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-53` | div | User Display Name | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-54"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-54` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-54` | div | User Full Name | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-55"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-55` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-55` | div | User First Name | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-56"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-56` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-56` | div | User Last Name | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-57"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-57` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-57` | div | Logged-in User&amp;#039;s Email | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-58"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-58` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-58` | div | Author ID | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-59"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-59` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-59` | div | Author Name | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-6"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-6` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-6` | div | Date / Time (Date format) | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-60"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-60` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-60` | div | Author Email | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-61"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-61` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-61` | div | Referrer URL | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-62"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-62` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-62` | div | Login URL | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-63"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-63` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-63` | div | Logout URL | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-64"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-64` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-64` | div | Register URL | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-65"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-65` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-65` | div | Lost Password URL | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-66"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-66` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-66` | div | Unique Value | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-67"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-67` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-67` | div | Site Name | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-68"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-68` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-68` | div | Order Summary | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-69"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-69` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-69` | div | Entry Geolocation | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-7"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-7` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-7` | div | Date / Time (Time format) | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-70"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-70` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-70` | div | Quiz Correct Answer | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-71"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-71` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-71` | div | Quiz Correct Answers | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-72"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-72` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-72` | div | Quiz Grade | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-73"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-73` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-73` | div | Quiz Incorrect Answers | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-74"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-74` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-74` | div | Quiz Outcome | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-75"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-75` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-75` | div | Quiz Percentage | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-76"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-76` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-76` | div | Quiz Personality Type | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-77"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-77` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-77` | div | Quiz Summary Link | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-78"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-78` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-78` | div | Quiz Total Questions | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-8"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-8` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-8` | div | Website / URL | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-9"></a>`id--choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-9` | `#choices--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-item-choice-9` | div | Password | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-file_upload_attachment_fields-item-choice-1"></a>`id--choices--wpforms-panel-field-notifications-2-file_upload_attachment_fields-item-choice-1` | `#choices--wpforms-panel-field-notifications-2-file_upload_attachment_fields-item-choice-1` | div | File Upload (Modern Style) | 1 |
-| <a id="id--choices--wpforms-panel-field-notifications-2-file_upload_attachment_fields-item-choice-2"></a>`id--choices--wpforms-panel-field-notifications-2-file_upload_attachment_fields-item-choice-2` | `#choices--wpforms-panel-field-notifications-2-file_upload_attachment_fields-item-choice-2` | div | File Upload (Classic Style) | 1 |
 | <a id="id--choices--wpforms-panel-field-quiz-outcomes-1-page-item-choice-1"></a>`id--choices--wpforms-panel-field-quiz-outcomes-1-page-item-choice-1` | `#choices--wpforms-panel-field-quiz-outcomes-1-page-item-choice-1` | div | Back to Previous Page (Referrer) | 1 |
 | <a id="id--choices--wpforms-panel-field-quiz-outcomes-1-page-item-choice-2"></a>`id--choices--wpforms-panel-field-quiz-outcomes-1-page-item-choice-2` | `#choices--wpforms-panel-field-quiz-outcomes-1-page-item-choice-2` | div | master form embedded | 1 |
 | <a id="id--choices--wpforms-panel-field-quiz-outcomes-1-page-item-choice-3"></a>`id--choices--wpforms-panel-field-quiz-outcomes-1-page-item-choice-3` | `#choices--wpforms-panel-field-quiz-outcomes-1-page-item-choice-3` | div | Sample Page | 1 |
@@ -457,7 +377,6 @@ _2227 entries_
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--dropbox-provider"></a>`id--dropbox-provider` | `#dropbox-provider` | div | Dropbox Add New Account | 1 |
 | <a id="id--entry_automation"></a>`id--entry_automation` | `#entry_automation` | div | Entry Automation Add New Task | 1 |
-| <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate WPForms ★★★★★ on WordPress.org to help us sprea… | 1 |
 | <a id="id--google-calendar-provider"></a>`id--google-calendar-provider` | `#google-calendar-provider` | div | Google Calendar | 1 |
 | <a id="id--google-drive-provider"></a>`id--google-drive-provider` | `#google-drive-provider` | div | Google Drive | 1 |
 | <a id="id--link-modal-title"></a>`id--link-modal-title` | `#link-modal-title` | h1 | Insert/edit link | 1 |
@@ -1775,6 +1694,7 @@ _2227 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wp-link"></a>`id--wp-link` | `#wp-link` | form | Insert/edit link Close Enter the destination URL | 1 |
 | <a id="id--wp-wpforms_panel_field_settings_conversational_forms_description-editor-container"></a>`id--wp-wpforms_panel_field_settings_conversational_forms_description-editor-container` | `#wp-wpforms_panel_field_settings_conversational_forms_description-editor-container` | div |  | 1 |
 | <a id="id--wp-wpforms_panel_field_settings_conversational_forms_description-editor-tools"></a>`id--wp-wpforms_panel_field_settings_conversational_forms_description-editor-tools` | `#wp-wpforms_panel_field_settings_conversational_forms_description-editor-tools` | div | Visual | 1 |
@@ -1836,6 +1756,7 @@ _2227 entries_
 | <a id="id--wpforms_panel_field_settings_form_locker_user_message_ifr"></a>`id--wpforms_panel_field_settings_form_locker_user_message_ifr` | `#wpforms_panel_field_settings_form_locker_user_message_ifr` | iframe |  | 1 |
 | <a id="id--wpforms_panel_field_settings_form_locker_user_message-html"></a>`id--wpforms_panel_field_settings_form_locker_user_message-html` | `#wpforms_panel_field_settings_form_locker_user_message-html` | button | Code | 1 |
 | <a id="id--wpforms_panel_field_settings_form_locker_user_message-tmce"></a>`id--wpforms_panel_field_settings_form_locker_user_message-tmce` | `#wpforms_panel_field_settings_form_locker_user_message-tmce` | button | Visual | 1 |
+| <a id="id--wpforms-admin-bar-inline-css"></a>`id--wpforms-admin-bar-inline-css` | `#wpforms-admin-bar-inline-css` | link |  | 1 |
 | <a id="id--wpforms-admin-form-embed-wizard"></a>`id--wpforms-admin-form-embed-wizard` | `#wpforms-admin-form-embed-wizard` | div | Embed in a Page We can help embed your form with just a few… | 1 |
 | <a id="id--wpforms-admin-form-embed-wizard-container"></a>`id--wpforms-admin-form-embed-wizard-container` | `#wpforms-admin-form-embed-wizard-container` | div | Embed in a Page We can help embed your form with just a few… | 1 |
 | <a id="id--wpforms-admin-form-embed-wizard-content-create-page"></a>`id--wpforms-admin-form-embed-wizard-content-create-page` | `#wpforms-admin-form-embed-wizard-content-create-page` | div | What would you like to call the new page? | 1 |
@@ -1852,18 +1773,9 @@ _2227 entries_
 | <a id="id--wpforms-admin-form-embed-wizard-tutorial"></a>`id--wpforms-admin-form-embed-wizard-tutorial` | `#wpforms-admin-form-embed-wizard-tutorial` | iframe |  | 1 |
 | <a id="id--wpforms-airtable-sign-in-button"></a>`id--wpforms-airtable-sign-in-button` | `#wpforms-airtable-sign-in-button` | button | Add New Account | 1 |
 | <a id="id--wpforms-builder"></a>`id--wpforms-builder` | `#wpforms-builder` | div | You are using an outdated browser! The Internet Explorer br… | 1 |
-| <a id="id--wpforms-builder-form"></a>`id--wpforms-builder-form` | `#wpforms-builder-form` | form | Now editing | 1 |
-| <a id="id--wpforms-builder-help"></a>`id--wpforms-builder-help` | `#wpforms-builder-help` | div |  | 1 |
-| <a id="id--wpforms-builder-help-categories"></a>`id--wpforms-builder-help-categories` | `#wpforms-builder-help-categories` | div | Getting Started | 1 |
-| <a id="id--wpforms-builder-help-close"></a>`id--wpforms-builder-help-close` | `#wpforms-builder-help-close` | div |  | 1 |
-| <a id="id--wpforms-builder-help-content"></a>`id--wpforms-builder-help-content` | `#wpforms-builder-help-content` | div |  | 1 |
-| <a id="id--wpforms-builder-help-footer"></a>`id--wpforms-builder-help-footer` | `#wpforms-builder-help-footer` | div | View Documentation Browse documentation, reference material… | 1 |
-| <a id="id--wpforms-builder-help-logo"></a>`id--wpforms-builder-help-logo` | `#wpforms-builder-help-logo` | img |  | 1 |
-| <a id="id--wpforms-builder-help-no-result"></a>`id--wpforms-builder-help-no-result` | `#wpforms-builder-help-no-result` | div | No docs found | 1 |
-| <a id="id--wpforms-builder-help-result"></a>`id--wpforms-builder-help-result` | `#wpforms-builder-help-result` | div |  | 1 |
-| <a id="id--wpforms-builder-help-search"></a>`id--wpforms-builder-help-search` | `#wpforms-builder-help-search` | div |  | 1 |
-| <a id="id--wpforms-builder-help-search-clear"></a>`id--wpforms-builder-help-search-clear` | `#wpforms-builder-help-search-clear` | div |  | 1 |
+| <a id="id--wpforms-builder-form"></a>`id--wpforms-builder-form` | `#wpforms-builder-form` | form |  | 1 |
 | <a id="id--wpforms-builder-ie-notice"></a>`id--wpforms-builder-ie-notice` | `#wpforms-builder-ie-notice` | div | You are using an outdated browser! The Internet Explorer br… | 1 |
+| <a id="id--wpforms-builder-inline-css"></a>`id--wpforms-builder-inline-css` | `#wpforms-builder-inline-css` | link |  | 1 |
 | <a id="id--wpforms-builder-mobile-notice"></a>`id--wpforms-builder-mobile-notice` | `#wpforms-builder-mobile-notice` | div | Our form builder is optimized for desktop computers. We rec… | 1 |
 | <a id="id--wpforms-builder-overlay"></a>`id--wpforms-builder-overlay` | `#wpforms-builder-overlay` | div |  | 1 |
 | <a id="id--wpforms-builder-settings-notifications-title"></a>`id--wpforms-builder-settings-notifications-title` | `#wpforms-builder-settings-notifications-title` | span | Notifications | 1 |
@@ -1882,9 +1794,11 @@ _2227 entries_
 | <a id="id--wpforms-entry-automation-dashboard-notice"></a>`id--wpforms-entry-automation-dashboard-notice` | `#wpforms-entry-automation-dashboard-notice` | div | Entry Automation Dashboard We've added a new Tools page whe… | 1 |
 | <a id="id--wpforms-exit"></a>`id--wpforms-exit` | `#wpforms-exit` | button |  | 1 |
 | <a id="id--wpforms-field-context-menu"></a>`id--wpforms-field-context-menu` | `#wpforms-field-context-menu` | div | Edit | 1 |
-| <a id="id--wpforms-field-id"></a>`id--wpforms-field-id` | `#wpforms-field-id` | input | Now editing Master Form | 1 |
+| <a id="id--wpforms-field-id"></a>`id--wpforms-field-id` | `#wpforms-field-id` | input | Now editing Master F | 1 |
 | <a id="id--wpforms-form-locker-schedule-datetime-block"></a>`id--wpforms-form-locker-schedule-datetime-block` | `#wpforms-form-locker-schedule-datetime-block` | div | Start Date | 1 |
+| <a id="id--wpforms-full-inline-css"></a>`id--wpforms-full-inline-css` | `#wpforms-full-inline-css` | link |  | 1 |
 | <a id="id--wpforms-help"></a>`id--wpforms-help` | `#wpforms-help` | button | Help | 1 |
+| <a id="id--wpforms-icon-choices-custom-properties"></a>`id--wpforms-icon-choices-custom-properties` | `#wpforms-icon-choices-custom-properties` | link |  | 1 |
 | <a id="id--wpforms-page-forms-fbst-notice"></a>`id--wpforms-page-forms-fbst-notice` | `#wpforms-page-forms-fbst-notice` | div | Update Available Your version of Form Pages is out of date.… | 1 |
 | <a id="id--wpforms-panel-field-anti_spam-country_filter-action"></a>`id--wpforms-panel-field-anti_spam-country_filter-action` | `#wpforms-panel-field-anti_spam-country_filter-action` | select | Allow Deny | 1 |
 | <a id="id--wpforms-panel-field-anti_spam-country_filter-action-wrap"></a>`id--wpforms-panel-field-anti_spam-country_filter-action-wrap` | `#wpforms-panel-field-anti_spam-country_filter-action-wrap` | div | Allow Deny | 1 |
@@ -1962,39 +1876,6 @@ _2227 entries_
 | <a id="id--wpforms-panel-field-notifications-1-subject-wrap"></a>`id--wpforms-panel-field-notifications-1-subject-wrap` | `#wpforms-panel-field-notifications-1-subject-wrap` | div | Email Subject Line New Entry: Simple Contact Form | 1 |
 | <a id="id--wpforms-panel-field-notifications-1-template"></a>`id--wpforms-panel-field-notifications-1-template` | `#wpforms-panel-field-notifications-1-template` | select | Default Template Classic Compact Modern Elegant Tech Plain … | 1 |
 | <a id="id--wpforms-panel-field-notifications-1-template-wrap"></a>`id--wpforms-panel-field-notifications-1-template-wrap` | `#wpforms-panel-field-notifications-1-template-wrap` | div | Email Template De | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-conditional_logic"></a>`id--wpforms-panel-field-notifications-2-conditional_logic` | `#wpforms-panel-field-notifications-2-conditional_logic` | input | Enable Conditional Logic | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-conditional_logic-wrap"></a>`id--wpforms-panel-field-notifications-2-conditional_logic-wrap` | `#wpforms-panel-field-notifications-2-conditional_logic-wrap` | div |  | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-email"></a>`id--wpforms-panel-field-notifications-2-email` | `#wpforms-panel-field-notifications-2-email` | input | Email Subject Line | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-email-wrap"></a>`id--wpforms-panel-field-notifications-2-email-wrap` | `#wpforms-panel-field-notifications-2-email-wrap` | div | Send To Email Address | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-enable"></a>`id--wpforms-panel-field-notifications-2-enable` | `#wpforms-panel-field-notifications-2-enable` | input |  | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-entry_csv_attachment_enable"></a>`id--wpforms-panel-field-notifications-2-entry_csv_attachment_enable` | `#wpforms-panel-field-notifications-2-entry_csv_attachment_enable` | input | Enable Entry CSV Attachment | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-entry_csv_attachment_enable-wrap"></a>`id--wpforms-panel-field-notifications-2-entry_csv_attachment_enable-wrap` | `#wpforms-panel-field-notifications-2-entry_csv_attachment_enable-wrap` | div |  | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information"></a>`id--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information` | `#wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information` | select |  | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-wrap"></a>`id--wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-wrap` | `#wpforms-panel-field-notifications-2-entry_csv_attachment_entry_information-wrap` | div | Entry Information | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-entry_csv_attachment_file_name"></a>`id--wpforms-panel-field-notifications-2-entry_csv_attachment_file_name` | `#wpforms-panel-field-notifications-2-entry_csv_attachment_file_name` | input |  | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-entry_csv_attachment_file_name-wrap"></a>`id--wpforms-panel-field-notifications-2-entry_csv_attachment_file_name-wrap` | `#wpforms-panel-field-notifications-2-entry_csv_attachment_file_name-wrap` | div | File Name | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-file_upload_attachment_enable"></a>`id--wpforms-panel-field-notifications-2-file_upload_attachment_enable` | `#wpforms-panel-field-notifications-2-file_upload_attachment_enable` | input | Enable File Upload Attachments | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-file_upload_attachment_enable-wrap"></a>`id--wpforms-panel-field-notifications-2-file_upload_attachment_enable-wrap` | `#wpforms-panel-field-notifications-2-file_upload_attachment_enable-wrap` | div |  | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-file_upload_attachment_fields"></a>`id--wpforms-panel-field-notifications-2-file_upload_attachment_fields` | `#wpforms-panel-field-notifications-2-file_upload_attachment_fields` | select |  | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-file_upload_attachment_fields-wrap"></a>`id--wpforms-panel-field-notifications-2-file_upload_attachment_fields-wrap` | `#wpforms-panel-field-notifications-2-file_upload_attachment_fields-wrap` | div | File Upload Fields | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-message"></a>`id--wpforms-panel-field-notifications-2-message` | `#wpforms-panel-field-notifications-2-message` | textarea | {all_fields} | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-message-wrap"></a>`id--wpforms-panel-field-notifications-2-message-wrap` | `#wpforms-panel-field-notifications-2-message-wrap` | div | Email Message all_fields | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-paypal_commerce"></a>`id--wpforms-panel-field-notifications-2-paypal_commerce` | `#wpforms-panel-field-notifications-2-paypal_commerce` | input | Enable for PayPal Commerce completed payments | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-paypal_commerce-wrap"></a>`id--wpforms-panel-field-notifications-2-paypal_commerce-wrap` | `#wpforms-panel-field-notifications-2-paypal_commerce-wrap` | div |  | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-replyto"></a>`id--wpforms-panel-field-notifications-2-replyto` | `#wpforms-panel-field-notifications-2-replyto` | input | Email Message | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-replyto-wrap"></a>`id--wpforms-panel-field-notifications-2-replyto-wrap` | `#wpforms-panel-field-notifications-2-replyto-wrap` | div | Reply-To | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-sender_address"></a>`id--wpforms-panel-field-notifications-2-sender_address` | `#wpforms-panel-field-notifications-2-sender_address` | input | Please enter a valid email address. Your notifications won'… | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-sender_address-wrap"></a>`id--wpforms-panel-field-notifications-2-sender_address-wrap` | `#wpforms-panel-field-notifications-2-sender_address-wrap` | div | From Email | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-sender_name"></a>`id--wpforms-panel-field-notifications-2-sender_name` | `#wpforms-panel-field-notifications-2-sender_name` | input | From Email | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-sender_name-wrap"></a>`id--wpforms-panel-field-notifications-2-sender_name-wrap` | `#wpforms-panel-field-notifications-2-sender_name-wrap` | div | From Name | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-square"></a>`id--wpforms-panel-field-notifications-2-square` | `#wpforms-panel-field-notifications-2-square` | input | Enable for Square completed payments | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-square-wrap"></a>`id--wpforms-panel-field-notifications-2-square-wrap` | `#wpforms-panel-field-notifications-2-square-wrap` | div |  | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-stripe"></a>`id--wpforms-panel-field-notifications-2-stripe` | `#wpforms-panel-field-notifications-2-stripe` | input | Enable for Stripe completed payments | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-stripe-wrap"></a>`id--wpforms-panel-field-notifications-2-stripe-wrap` | `#wpforms-panel-field-notifications-2-stripe-wrap` | div |  | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-subject"></a>`id--wpforms-panel-field-notifications-2-subject` | `#wpforms-panel-field-notifications-2-subject` | input | From Name | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-subject-wrap"></a>`id--wpforms-panel-field-notifications-2-subject-wrap` | `#wpforms-panel-field-notifications-2-subject-wrap` | div | Email Subject Line | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-template"></a>`id--wpforms-panel-field-notifications-2-template` | `#wpforms-panel-field-notifications-2-template` | select | Default Template Classic Compact Modern Elegant Tech Plain … | 1 |
-| <a id="id--wpforms-panel-field-notifications-2-template-wrap"></a>`id--wpforms-panel-field-notifications-2-template-wrap` | `#wpforms-panel-field-notifications-2-template-wrap` | div | Email Template De | 1 |
 | <a id="id--wpforms-panel-field-quiz-enabled"></a>`id--wpforms-panel-field-quiz-enabled` | `#wpforms-panel-field-quiz-enabled` | input |  | 1 |
 | <a id="id--wpforms-panel-field-quiz-enabled-wrap"></a>`id--wpforms-panel-field-quiz-enabled-wrap` | `#wpforms-panel-field-quiz-enabled-wrap` | div |  | 1 |
 | <a id="id--wpforms-panel-field-quiz-graded_correct_answer"></a>`id--wpforms-panel-field-quiz-graded_correct_answer` | `#wpforms-panel-field-quiz-graded_correct_answer` | input | Incorrect Answer | 1 |
@@ -2004,7 +1885,7 @@ _2227 entries_
 | <a id="id--wpforms-panel-field-quiz-graded_feedback-wrap"></a>`id--wpforms-panel-field-quiz-graded_feedback-wrap` | `#wpforms-panel-field-quiz-graded_feedback-wrap` | div | Feedback | 1 |
 | <a id="id--wpforms-panel-field-quiz-graded_incorrect_answer"></a>`id--wpforms-panel-field-quiz-graded_incorrect_answer` | `#wpforms-panel-field-quiz-graded_incorrect_answer` | input | Title | 1 |
 | <a id="id--wpforms-panel-field-quiz-graded_incorrect_answer-wrap"></a>`id--wpforms-panel-field-quiz-graded_incorrect_answer-wrap` | `#wpforms-panel-field-quiz-graded_incorrect_answer-wrap` | div | Incorrect Answer Incorrect. The right answer | 1 |
-| <a id="id--wpforms-panel-field-quiz-grades-wrap"></a>`id--wpforms-panel-field-quiz-grades-wrap` | `#wpforms-panel-field-quiz-grades-wrap` | div | Grading Scale Grade | 1 |
+| <a id="id--wpforms-panel-field-quiz-grades-wrap"></a>`id--wpforms-panel-field-quiz-grades-wrap` | `#wpforms-panel-field-quiz-grades-wrap` | div | Grading Scale G | 1 |
 | <a id="id--wpforms-panel-field-quiz-iif_id_ref"></a>`id--wpforms-panel-field-quiz-iif_id_ref` | `#wpforms-panel-field-quiz-iif_id_ref` | input | Quiz Type Graded Quiz Personality Quiz Weighted Qui | 1 |
 | <a id="id--wpforms-panel-field-quiz-iif_id_ref-wrap"></a>`id--wpforms-panel-field-quiz-iif_id_ref-wrap` | `#wpforms-panel-field-quiz-iif_id_ref-wrap` | div |  | 1 |
 | <a id="id--wpforms-panel-field-quiz-outcomes-1-conditional_logic"></a>`id--wpforms-panel-field-quiz-outcomes-1-conditional_logic` | `#wpforms-panel-field-quiz-outcomes-1-conditional_logic` | input | Enable Conditional Logic | 1 |
@@ -2040,7 +1921,7 @@ _2227 entries_
 | <a id="id--wpforms-panel-field-quiz-personality_title"></a>`id--wpforms-panel-field-quiz-personality_title` | `#wpforms-panel-field-quiz-personality_title` | input | Description | 1 |
 | <a id="id--wpforms-panel-field-quiz-personality_title-wrap"></a>`id--wpforms-panel-field-quiz-personality_title-wrap` | `#wpforms-panel-field-quiz-personality_title-wrap` | div | Title | 1 |
 | <a id="id--wpforms-panel-field-quiz-time_limit_enabled"></a>`id--wpforms-panel-field-quiz-time_limit_enabled` | `#wpforms-panel-field-quiz-time_limit_enabled` | input | Enable Time Limit | 1 |
-| <a id="id--wpforms-panel-field-quiz-time_limit_enabled-wrap"></a>`id--wpforms-panel-field-quiz-time_limit_enabled-wrap` | `#wpforms-panel-field-quiz-time_limit_enabled-wrap` | div | Enable Time Limit | 1 |
+| <a id="id--wpforms-panel-field-quiz-time_limit_enabled-wrap"></a>`id--wpforms-panel-field-quiz-time_limit_enabled-wrap` | `#wpforms-panel-field-quiz-time_limit_enabled-wrap` | div | Enable Time Li | 1 |
 | <a id="id--wpforms-panel-field-quiz-time_limit_expire"></a>`id--wpforms-panel-field-quiz-time_limit_expire` | `#wpforms-panel-field-quiz-time_limit_expire` | select | Submit the Quiz automatically Lock remaining questions End … | 1 |
 | <a id="id--wpforms-panel-field-quiz-time_limit_expire-wrap"></a>`id--wpforms-panel-field-quiz-time_limit_expire-wrap` | `#wpforms-panel-field-quiz-time_limit_expire-wrap` | div | When Time Limit Expires Submit the Quiz automatically Lock … | 1 |
 | <a id="id--wpforms-panel-field-quiz-time_limit_message"></a>`id--wpforms-panel-field-quiz-time_limit_message` | `#wpforms-panel-field-quiz-time_limit_message` | textarea | Uh-oh! You ran out of time and the quiz has ended. | 1 |
@@ -2053,7 +1934,7 @@ _2227 entries_
 | <a id="id--wpforms-panel-field-quiz-type"></a>`id--wpforms-panel-field-quiz-type` | `#wpforms-panel-field-quiz-type` | select | Graded Quiz Personality Quiz Weighted Quiz | 1 |
 | <a id="id--wpforms-panel-field-quiz-type-wrap"></a>`id--wpforms-panel-field-quiz-type-wrap` | `#wpforms-panel-field-quiz-type-wrap` | div | Quiz Type Graded Quiz Personality Quiz Weighted Quiz | 1 |
 | <a id="id--wpforms-panel-field-settings-ajax_submit"></a>`id--wpforms-panel-field-settings-ajax_submit` | `#wpforms-panel-field-settings-ajax_submit` | input | Enable AJAX form submission | 1 |
-| <a id="id--wpforms-panel-field-settings-ajax_submit-wrap"></a>`id--wpforms-panel-field-settings-ajax_submit-wrap` | `#wpforms-panel-field-settings-ajax_submit-wrap` | div | Enable AJAX form submi | 1 |
+| <a id="id--wpforms-panel-field-settings-ajax_submit-wrap"></a>`id--wpforms-panel-field-settings-ajax_submit-wrap` | `#wpforms-panel-field-settings-ajax_submit-wrap` | div | Enable AJAX form s | 1 |
 | <a id="id--wpforms-panel-field-settings-antispam_v3"></a>`id--wpforms-panel-field-settings-antispam_v3` | `#wpforms-panel-field-settings-antispam_v3` | input | Enable modern anti-spam protection | 1 |
 | <a id="id--wpforms-panel-field-settings-antispam_v3-wrap"></a>`id--wpforms-panel-field-settings-antispam_v3-wrap` | `#wpforms-panel-field-settings-antispam_v3-wrap` | div | Enable modern anti-spam protection | 1 |
 | <a id="id--wpforms-panel-field-settings-conversational_forms_brand_disable"></a>`id--wpforms-panel-field-settings-conversational_forms_brand_disable` | `#wpforms-panel-field-settings-conversational_forms_brand_disable` | input | Hide WPForms Branding | 1 |
@@ -2082,9 +1963,9 @@ _2227 entries_
 | <a id="id--wpforms-panel-field-settings-conversational_forms_title"></a>`id--wpforms-panel-field-settings-conversational_forms_title` | `#wpforms-panel-field-settings-conversational_forms_title` | input | Message | 1 |
 | <a id="id--wpforms-panel-field-settings-conversational_forms_title-wrap"></a>`id--wpforms-panel-field-settings-conversational_forms_title-wrap` | `#wpforms-panel-field-settings-conversational_forms_title-wrap` | div | Conversational Form Title | 1 |
 | <a id="id--wpforms-panel-field-settings-disable_entries"></a>`id--wpforms-panel-field-settings-disable_entries` | `#wpforms-panel-field-settings-disable_entries` | input | Disable storing entry information in WordPress | 1 |
-| <a id="id--wpforms-panel-field-settings-disable_entries-wrap"></a>`id--wpforms-panel-field-settings-disable_entries-wrap` | `#wpforms-panel-field-settings-disable_entries-wrap` | div | Disable storing entry inf | 1 |
+| <a id="id--wpforms-panel-field-settings-disable_entries-wrap"></a>`id--wpforms-panel-field-settings-disable_entries-wrap` | `#wpforms-panel-field-settings-disable_entries-wrap` | div | Disable storing entry | 1 |
 | <a id="id--wpforms-panel-field-settings-dynamic_population"></a>`id--wpforms-panel-field-settings-dynamic_population` | `#wpforms-panel-field-settings-dynamic_population` | input | Enable Prefill by URL | 1 |
-| <a id="id--wpforms-panel-field-settings-dynamic_population-wrap"></a>`id--wpforms-panel-field-settings-dynamic_population-wrap` | `#wpforms-panel-field-settings-dynamic_population-wrap` | div | Enable Prefi | 1 |
+| <a id="id--wpforms-panel-field-settings-dynamic_population-wrap"></a>`id--wpforms-panel-field-settings-dynamic_population-wrap` | `#wpforms-panel-field-settings-dynamic_population-wrap` | div | Enable P | 1 |
 | <a id="id--wpforms-panel-field-settings-form_class"></a>`id--wpforms-panel-field-settings-form_class` | `#wpforms-panel-field-settings-form_class` | input | Submit Button CSS Class | 1 |
 | <a id="id--wpforms-panel-field-settings-form_class-wrap"></a>`id--wpforms-panel-field-settings-form_class-wrap` | `#wpforms-panel-field-settings-form_class-wrap` | div | Form CSS Class | 1 |
 | <a id="id--wpforms-panel-field-settings-form_desc"></a>`id--wpforms-panel-field-settings-form_desc` | `#wpforms-panel-field-settings-form_desc` | textarea |  | 1 |
@@ -2147,7 +2028,7 @@ _2227 entries_
 | <a id="id--wpforms-panel-field-settings-purge_entries_enable"></a>`id--wpforms-panel-field-settings-purge_entries_enable` | `#wpforms-panel-field-settings-purge_entries_enable` | input | Purge Entries Automatically | 1 |
 | <a id="id--wpforms-panel-field-settings-purge_entries_enable-wrap"></a>`id--wpforms-panel-field-settings-purge_entries_enable-wrap` | `#wpforms-panel-field-settings-purge_entries_enable-wrap` | div |  | 1 |
 | <a id="id--wpforms-panel-field-settings-store_spam_entries"></a>`id--wpforms-panel-field-settings-store_spam_entries` | `#wpforms-panel-field-settings-store_spam_entries` | input | Store spam entries in the database | 1 |
-| <a id="id--wpforms-panel-field-settings-store_spam_entries-wrap"></a>`id--wpforms-panel-field-settings-store_spam_entries-wrap` | `#wpforms-panel-field-settings-store_spam_entries-wrap` | div | Store spam e | 1 |
+| <a id="id--wpforms-panel-field-settings-store_spam_entries-wrap"></a>`id--wpforms-panel-field-settings-store_spam_entries-wrap` | `#wpforms-panel-field-settings-store_spam_entries-wrap` | div | Store sp | 1 |
 | <a id="id--wpforms-panel-field-settings-submit_class"></a>`id--wpforms-panel-field-settings-submit_class` | `#wpforms-panel-field-settings-submit_class` | input |  | 1 |
 | <a id="id--wpforms-panel-field-settings-submit_class-wrap"></a>`id--wpforms-panel-field-settings-submit_class-wrap` | `#wpforms-panel-field-settings-submit_class-wrap` | div | Submit Button CSS Class | 1 |
 | <a id="id--wpforms-panel-field-settings-submit_text"></a>`id--wpforms-panel-field-settings-submit_text` | `#wpforms-panel-field-settings-submit_text` | input | Submit Button Processing Text | 1 |
@@ -2237,7 +2118,7 @@ _2227 entries_
 | <a id="id--wpforms-panel-field-themes-wpformsTheme"></a>`id--wpforms-panel-field-themes-wpformsTheme` | `#wpforms-panel-field-themes-wpformsTheme` | input |  | 1 |
 | <a id="id--wpforms-panel-field-themes-wpformsTheme-wrap"></a>`id--wpforms-panel-field-themes-wpformsTheme-wrap` | `#wpforms-panel-field-themes-wpformsTheme-wrap` | div | Theme | 1 |
 | <a id="id--wpforms-panel-settings"></a>`id--wpforms-panel-settings` | `#wpforms-panel-settings` | div | General Spam Protection and Security | 1 |
-| <a id="id--wpforms-panels-toggle"></a>`id--wpforms-panels-toggle` | `#wpforms-panels-toggle` | div | Setup Fields S | 1 |
+| <a id="id--wpforms-panels-toggle"></a>`id--wpforms-panels-toggle` | `#wpforms-panels-toggle` | div | Setup Fields | 1 |
 | <a id="id--wpforms-preview-btn"></a>`id--wpforms-preview-btn` | `#wpforms-preview-btn` | a | Preview | 1 |
 | <a id="id--wpforms-save"></a>`id--wpforms-save` | `#wpforms-save` | button | Save | 1 |
 | <a id="id--wpforms-setting-form-embed-wizard-choicesjs-select-pages"></a>`id--wpforms-setting-form-embed-wizard-choicesjs-select-pages` | `#wpforms-setting-form-embed-wizard-choicesjs-select-pages` | select | master form embedded | 1 |
@@ -2286,12 +2167,12 @@ _18 entries_
 
 ## Role-like classes
 
-_176 entries_
+_172 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--choices__input--cloned"></a>`class--choices__input--cloned` | `.choices__input--cloned` | input | No tags to choose from | 9 |
-| <a id="class--choices__list--dropdown"></a>`class--choices__list--dropdown` | `.choices__list--dropdown` | div | No tags to choose from | 9 |
+| <a id="class--choices__input--cloned"></a>`class--choices__input--cloned` | `.choices__input--cloned` | input | No tags to choose from | 7 |
+| <a id="class--choices__list--dropdown"></a>`class--choices__list--dropdown` | `.choices__list--dropdown` | div | No tags to choose from | 7 |
 | <a id="class--wpforms-add-fields-heading"></a>`class--wpforms-add-fields-heading` | `.wpforms-add-fields-heading` | a | Themes | 7 |
 | <a id="class--wpforms-admin-popup-btn"></a>`class--wpforms-admin-popup-btn` | `.wpforms-admin-popup-btn` | button | Select Existing Page | 3 |
 | <a id="class--wpforms-admin-popup-close"></a>`class--wpforms-admin-popup-close` | `.wpforms-admin-popup-close` | i |  | 1 |
@@ -2299,33 +2180,30 @@ _176 entries_
 | <a id="class--wpforms-admin-popup-content"></a>`class--wpforms-admin-popup-content` | `.wpforms-admin-popup-content` | div | Embed in a Page We can help embed your form with just a few… | 1 |
 | <a id="class--wpforms-admin-popup-toggle"></a>`class--wpforms-admin-popup-toggle` | `.wpforms-admin-popup-toggle` | a | embed your form manually | 3 |
 | <a id="class--wpforms-alert-message"></a>`class--wpforms-alert-message` | `.wpforms-alert-message` | div | Entry Automation Dashboard We've added a new Tools page whe… | 1 |
-| <a id="class--wpforms-all-email-template-modal"></a>`class--wpforms-all-email-template-modal` | `.wpforms-all-email-template-modal` | a | view templates | 2 |
-| <a id="class--wpforms-btn"></a>`class--wpforms-btn` | `.wpforms-btn` | button | Help | 23 |
+| <a id="class--wpforms-all-email-template-modal"></a>`class--wpforms-all-email-template-modal` | `.wpforms-all-email-template-modal` | a | view templates | 1 |
+| <a id="class--wpforms-btn"></a>`class--wpforms-btn` | `.wpforms-btn` | button | Help | 11 |
 | <a id="class--wpforms-btn-blue"></a>`class--wpforms-btn-blue` | `.wpforms-btn-blue` | button | Save Changes | 2 |
 | <a id="class--wpforms-btn-blue-borders"></a>`class--wpforms-btn-blue-borders` | `.wpforms-btn-blue-borders` | button | Cancel | 1 |
-| <a id="class--wpforms-btn-light-grey"></a>`class--wpforms-btn-light-grey` | `.wpforms-btn-light-grey` | button | Help | 19 |
-| <a id="class--wpforms-btn-md"></a>`class--wpforms-btn-md` | `.wpforms-btn-md` | button | View All Getting Started Docs | 12 |
+| <a id="class--wpforms-btn-light-grey"></a>`class--wpforms-btn-light-grey` | `.wpforms-btn-light-grey` | button | Help | 7 |
 | <a id="class--wpforms-btn-orange"></a>`class--wpforms-btn-orange` | `.wpforms-btn-orange` | button | Save | 1 |
 | <a id="class--wpforms-btn-sm"></a>`class--wpforms-btn-sm` | `.wpforms-btn-sm` | button | Save Changes | 4 |
 | <a id="class--wpforms-btn-toolbar"></a>`class--wpforms-btn-toolbar` | `.wpforms-btn-toolbar` | button | Help | 6 |
 | <a id="class--wpforms-builder-accounts-dropbox-authorize-button"></a>`class--wpforms-builder-accounts-dropbox-authorize-button` | `.wpforms-builder-accounts-dropbox-authorize-button` | button | Add New Account | 1 |
-| <a id="class--wpforms-builder-dropdown-list-search-close"></a>`class--wpforms-builder-dropdown-list-search-close` | `.wpforms-builder-dropdown-list-search-close` | i |  | 15 |
-| <a id="class--wpforms-builder-dropdown-list-search-container"></a>`class--wpforms-builder-dropdown-list-search-container` | `.wpforms-builder-dropdown-list-search-container` | div |  | 15 |
-| <a id="class--wpforms-builder-dropdown-list-search-input"></a>`class--wpforms-builder-dropdown-list-search-input` | `.wpforms-builder-dropdown-list-search-input` | input | Available Fields Name | 15 |
+| <a id="class--wpforms-builder-dropdown-list-search-close"></a>`class--wpforms-builder-dropdown-list-search-close` | `.wpforms-builder-dropdown-list-search-close` | i |  | 9 |
+| <a id="class--wpforms-builder-dropdown-list-search-container"></a>`class--wpforms-builder-dropdown-list-search-container` | `.wpforms-builder-dropdown-list-search-container` | div |  | 9 |
+| <a id="class--wpforms-builder-dropdown-list-search-input"></a>`class--wpforms-builder-dropdown-list-search-input` | `.wpforms-builder-dropdown-list-search-input` | input | Available Fields Name | 9 |
 | <a id="class--wpforms-builder-entity-connection-add"></a>`class--wpforms-builder-entity-connection-add` | `.wpforms-builder-entity-connection-add` | button | Add New Task | 1 |
 | <a id="class--wpforms-builder-entity-connections-save-lock"></a>`class--wpforms-builder-entity-connections-save-lock` | `.wpforms-builder-entity-connections-save-lock` | input | To get started with Entry Automation, you’ll need to create… | 1 |
-| <a id="class--wpforms-builder-help-categories-toggle"></a>`class--wpforms-builder-help-categories-toggle` | `.wpforms-builder-help-categories-toggle` | ul | Getting Started | 1 |
-| <a id="class--wpforms-builder-help-category"></a>`class--wpforms-builder-help-category` | `.wpforms-builder-help-category` | li | Getting Started | 10 |
 | <a id="class--wpforms-builder-overlay-content"></a>`class--wpforms-builder-overlay-content` | `.wpforms-builder-overlay-content` | div |  | 1 |
 | <a id="class--wpforms-builder-provider-connections-error-message"></a>`class--wpforms-builder-provider-connections-error-message` | `.wpforms-builder-provider-connections-error-message` | span | Something went wrong while performing an AJAX request. | 1 |
 | <a id="class--wpforms-builder-provider-connections-save-lock"></a>`class--wpforms-builder-provider-connections-save-lock` | `.wpforms-builder-provider-connections-save-lock` | input | Something went wrong while performing an AJAX request. | 4 |
 | <a id="class--wpforms-builder-provider-settings-default-content"></a>`class--wpforms-builder-provider-settings-default-content` | `.wpforms-builder-provider-settings-default-content` | div | Get the most out of WPForms — use it with an active Dropbox… | 7 |
 | <a id="class--wpforms-builder-provider-title-add"></a>`class--wpforms-builder-provider-title-add` | `.wpforms-builder-provider-title-add` | button | Add New Connection | 6 |
-| <a id="class--wpforms-builder-settings-block-actions"></a>`class--wpforms-builder-settings-block-actions` | `.wpforms-builder-settings-block-actions` | div | Active | 4 |
+| <a id="class--wpforms-builder-settings-block-actions"></a>`class--wpforms-builder-settings-block-actions` | `.wpforms-builder-settings-block-actions` | div | Active | 3 |
 | <a id="class--wpforms-builder-settings-block-add"></a>`class--wpforms-builder-settings-block-add` | `.wpforms-builder-settings-block-add` | button | Add New Notification | 4 |
-| <a id="class--wpforms-builder-settings-block-content"></a>`class--wpforms-builder-settings-block-content` | `.wpforms-builder-settings-block-content` | div | Send To Email Address | 4 |
-| <a id="class--wpforms-builder-settings-block-header"></a>`class--wpforms-builder-settings-block-header` | `.wpforms-builder-settings-block-header` | div | Active | 4 |
-| <a id="class--wpforms-builder-settings-block-toggle"></a>`class--wpforms-builder-settings-block-toggle` | `.wpforms-builder-settings-block-toggle` | button |  | 4 |
+| <a id="class--wpforms-builder-settings-block-content"></a>`class--wpforms-builder-settings-block-content` | `.wpforms-builder-settings-block-content` | div | Send To Email Address | 3 |
+| <a id="class--wpforms-builder-settings-block-header"></a>`class--wpforms-builder-settings-block-header` | `.wpforms-builder-settings-block-header` | div | Active | 3 |
+| <a id="class--wpforms-builder-settings-block-toggle"></a>`class--wpforms-builder-settings-block-toggle` | `.wpforms-builder-settings-block-toggle` | button |  | 3 |
 | <a id="class--wpforms-builder-themes-bg-image-choose"></a>`class--wpforms-builder-themes-bg-image-choose` | `.wpforms-builder-themes-bg-image-choose` | button | Choose Image | 1 |
 | <a id="class--wpforms-builder-themes-bg-image-remove"></a>`class--wpforms-builder-themes-bg-image-remove` | `.wpforms-builder-themes-bg-image-remove` | button | Remove Image | 1 |
 | <a id="class--wpforms-builder-themes-cf-notice"></a>`class--wpforms-builder-themes-cf-notice` | `.wpforms-builder-themes-cf-notice` | div | Form styles are disabled because Conversational Forms addon… | 1 |
@@ -2339,8 +2217,8 @@ _176 entries_
 | <a id="class--wpforms-builder-themes-sidebar-tab-content"></a>`class--wpforms-builder-themes-sidebar-tab-content` | `.wpforms-builder-themes-sidebar-tab-content` | div | Themes | 2 |
 | <a id="class--wpforms-builder-themes-style-notice"></a>`class--wpforms-builder-themes-style-notice` | `.wpforms-builder-themes-style-notice` | div | Want to customize your form styles without editing CSS? Go … | 1 |
 | <a id="class--wpforms-clear-datetime-field"></a>`class--wpforms-clear-datetime-field` | `.wpforms-clear-datetime-field` | button |  | 4 |
-| <a id="class--wpforms-conditional-block-panel"></a>`class--wpforms-conditional-block-panel` | `.wpforms-conditional-block-panel` | div |  | 4 |
-| <a id="class--wpforms-conditionals-enable-toggle"></a>`class--wpforms-conditionals-enable-toggle` | `.wpforms-conditionals-enable-toggle` | div |  | 4 |
+| <a id="class--wpforms-conditional-block-panel"></a>`class--wpforms-conditional-block-panel` | `.wpforms-conditional-block-panel` | div |  | 3 |
+| <a id="class--wpforms-conditionals-enable-toggle"></a>`class--wpforms-conditionals-enable-toggle` | `.wpforms-conditionals-enable-toggle` | div |  | 3 |
 | <a id="class--wpforms-confirmation-add"></a>`class--wpforms-confirmation-add` | `.wpforms-confirmation-add` | button | Add New Confirmation | 2 |
 | <a id="class--wpforms-container"></a>`class--wpforms-container` | `.wpforms-container` | div | Name | 1 |
 | <a id="class--wpforms-context-menu-dropdown"></a>`class--wpforms-context-menu-dropdown` | `.wpforms-context-menu-dropdown` | div |  | 1 |
@@ -2369,8 +2247,8 @@ _176 entries_
 | <a id="class--wpforms-fullscreen-notice-button-primary"></a>`class--wpforms-fullscreen-notice-button-primary` | `.wpforms-fullscreen-notice-button-primary` | a | Back to All Forms | 2 |
 | <a id="class--wpforms-fullscreen-notice-button-secondary"></a>`class--wpforms-fullscreen-notice-button-secondary` | `.wpforms-fullscreen-notice-button-secondary` | button | Continue | 1 |
 | <a id="class--wpforms-help"></a>`class--wpforms-help` | `.wpforms-help` | button | Help | 1 |
-| <a id="class--wpforms-notification-by-status-alert"></a>`class--wpforms-notification-by-status-alert` | `.wpforms-notification-by-status-alert` | input | Enable for Stripe completed payments | 4 |
-| <a id="class--wpforms-notification-status-button"></a>`class--wpforms-notification-status-button` | `.wpforms-notification-status-button` | span | Active | 2 |
+| <a id="class--wpforms-notification-by-status-alert"></a>`class--wpforms-notification-by-status-alert` | `.wpforms-notification-by-status-alert` | input | Enable for Stripe completed payments | 2 |
+| <a id="class--wpforms-notification-status-button"></a>`class--wpforms-notification-status-button` | `.wpforms-notification-status-button` | span | Active | 1 |
 | <a id="class--wpforms-notifications-add"></a>`class--wpforms-notifications-add` | `.wpforms-notifications-add` | button | Add New Notification | 1 |
 | <a id="class--wpforms-panel"></a>`class--wpforms-panel` | `.wpforms-panel` | div | General Spam Protection and Security | 1 |
 | <a id="class--wpforms-panel-content"></a>`class--wpforms-panel-content` | `.wpforms-panel-content` | div | General | 1 |
@@ -2378,12 +2256,12 @@ _176 entries_
 | <a id="class--wpforms-panel-content-section"></a>`class--wpforms-panel-content-section` | `.wpforms-panel-content-section` | div | General | 16 |
 | <a id="class--wpforms-panel-content-section-entry_automation-content"></a>`class--wpforms-panel-content-section-entry_automation-content` | `.wpforms-panel-content-section-entry_automation-content` | div | Entry Automation Dashboard We've added a new Tools page whe… | 1 |
 | <a id="class--wpforms-panel-content-section-tabs-content"></a>`class--wpforms-panel-content-section-tabs-content` | `.wpforms-panel-content-section-tabs-content` | div |  | 1 |
-| <a id="class--wpforms-panel-content-section-tabs-content-tab"></a>`class--wpforms-panel-content-section-tabs-content-tab` | `.wpforms-panel-content-section-tabs-content-tab` | div | Easily Create Interactive Quizzes | 2 |
-| <a id="class--wpforms-panel-content-section-tabs-content-tab-active"></a>`class--wpforms-panel-content-section-tabs-content-tab-active` | `.wpforms-panel-content-section-tabs-content-tab-active` | div | Easily Create Interactive Quizzes | 1 |
+| <a id="class--wpforms-panel-content-section-tabs-content-tab"></a>`class--wpforms-panel-content-section-tabs-content-tab` | `.wpforms-panel-content-section-tabs-content-tab` | div | Easily Create Interactive Quiz | 2 |
+| <a id="class--wpforms-panel-content-section-tabs-content-tab-active"></a>`class--wpforms-panel-content-section-tabs-content-tab-active` | `.wpforms-panel-content-section-tabs-content-tab-active` | div | Easily Create Interactive Quiz | 1 |
 | <a id="class--wpforms-panel-content-section-tabs-list-item"></a>`class--wpforms-panel-content-section-tabs-list-item` | `.wpforms-panel-content-section-tabs-list-item` | li | Questions | 5 |
 | <a id="class--wpforms-panel-content-section-tabs-list-item-active"></a>`class--wpforms-panel-content-section-tabs-list-item-active` | `.wpforms-panel-content-section-tabs-list-item-active` | li | Settings | 1 |
 | <a id="class--wpforms-panel-content-section-tabs-list-item-end"></a>`class--wpforms-panel-content-section-tabs-list-item-end` | `.wpforms-panel-content-section-tabs-list-item-end` | li | Help | 1 |
-| <a id="class--wpforms-panel-field-conditional_logic-checkbox"></a>`class--wpforms-panel-field-conditional_logic-checkbox` | `.wpforms-panel-field-conditional_logic-checkbox` | input | Enable Conditional Logic | 4 |
+| <a id="class--wpforms-panel-field-conditional_logic-checkbox"></a>`class--wpforms-panel-field-conditional_logic-checkbox` | `.wpforms-panel-field-conditional_logic-checkbox` | input | Enable Conditional Logic | 3 |
 | <a id="class--wpforms-panel-field-confirmations-message"></a>`class--wpforms-panel-field-confirmations-message` | `.wpforms-panel-field-confirmations-message` | textarea | &lt;p&gt;Thanks for contacting us! We will be in touch with… | 1 |
 | <a id="class--wpforms-panel-field-confirmations-message_entry_preview"></a>`class--wpforms-panel-field-confirmations-message_entry_preview` | `.wpforms-panel-field-confirmations-message_entry_preview` | input | Show entry preview after confirmation message | 1 |
 | <a id="class--wpforms-panel-field-confirmations-message_entry_preview_style"></a>`class--wpforms-panel-field-confirmations-message_entry_preview_style` | `.wpforms-panel-field-confirmations-message_entry_preview_style` | select | Basic Compact Table Table, Compact | 1 |
@@ -2395,7 +2273,7 @@ _176 entries_
 | <a id="class--wpforms-panel-field-confirmations-type"></a>`class--wpforms-panel-field-confirmations-type` | `.wpforms-panel-field-confirmations-type` | select | Message Show Page Go to URL (Redirect) | 2 |
 | <a id="class--wpforms-panel-field-country-filter-block-row"></a>`class--wpforms-panel-field-country-filter-block-row` | `.wpforms-panel-field-country-filter-block-row` | div | Allow Deny | 1 |
 | <a id="class--wpforms-panel-field-country-filter-country-codes-json"></a>`class--wpforms-panel-field-country-filter-country-codes-json` | `.wpforms-panel-field-country-filter-country-codes-json` | input | Country Filter Message | 1 |
-| <a id="class--wpforms-panel-field-email-template"></a>`class--wpforms-panel-field-email-template` | `.wpforms-panel-field-email-template` | select | Default Template Classic Compact Modern Elegant Tech Plain … | 2 |
+| <a id="class--wpforms-panel-field-email-template"></a>`class--wpforms-panel-field-email-template` | `.wpforms-panel-field-email-template` | select | Default Template Classic Compact Modern Elegant Tech Plain … | 1 |
 | <a id="class--wpforms-panel-field-keyword-filter-actions"></a>`class--wpforms-panel-field-keyword-filter-actions` | `.wpforms-panel-field-keyword-filter-actions` | div | Save Changes | 1 |
 | <a id="class--wpforms-panel-field-keyword-filter-keywords-container"></a>`class--wpforms-panel-field-keyword-filter-keywords-container` | `.wpforms-panel-field-keyword-filter-keywords-container` | div | Keyword Filter List | 1 |
 | <a id="class--wpforms-panel-field-keyword-filter-message"></a>`class--wpforms-panel-field-keyword-filter-message` | `.wpforms-panel-field-keyword-filter-message` | div | Keyword Filter Message | 1 |
@@ -2404,8 +2282,8 @@ _176 entries_
 | <a id="class--wpforms-panel-field-outcomes-personality-message"></a>`class--wpforms-panel-field-outcomes-personality-message` | `.wpforms-panel-field-outcomes-personality-message` | textarea | &lt;h2&gt;You Are {quiz_personality_type}&lt;/h2&gt; &lt;p&… | 1 |
 | <a id="class--wpforms-panel-field-outcomes-weighted-message"></a>`class--wpforms-panel-field-outcomes-weighted-message` | `.wpforms-panel-field-outcomes-weighted-message` | textarea | &lt;p&gt;Thanks for taking the time to complete our quiz.&l… | 1 |
 | <a id="class--wpforms-panel-field-radio-container"></a>`class--wpforms-panel-field-radio-container` | `.wpforms-panel-field-radio-container` | div | Do not show the correct answer | 3 |
-| <a id="class--wpforms-panel-field-select"></a>`class--wpforms-panel-field-select` | `.wpforms-panel-field-select` | div | Size Small Medium Large | 27 |
-| <a id="class--wpforms-panel-field-toggle"></a>`class--wpforms-panel-field-toggle` | `.wpforms-panel-field-toggle` | div | Enable Prefi | 40 |
+| <a id="class--wpforms-panel-field-select"></a>`class--wpforms-panel-field-select` | `.wpforms-panel-field-select` | div | Size Small Medium Large | 26 |
+| <a id="class--wpforms-panel-field-toggle"></a>`class--wpforms-panel-field-toggle` | `.wpforms-panel-field-toggle` | div | Enable P | 34 |
 | <a id="class--wpforms-panel-field-toggle-next-field"></a>`class--wpforms-panel-field-toggle-next-field` | `.wpforms-panel-field-toggle-next-field` | input | Purge Entries Automatically | 4 |
 | <a id="class--wpforms-panel-fields-button"></a>`class--wpforms-panel-fields-button` | `.wpforms-panel-fields-button` | button | Fields | 1 |
 | <a id="class--wpforms-panel-payments-button"></a>`class--wpforms-panel-payments-button` | `.wpforms-panel-payments-button` | button | Payments | 1 |
@@ -2441,30 +2319,29 @@ _176 entries_
 | <a id="class--wpforms-panel-sidebar-section-themes"></a>`class--wpforms-panel-sidebar-section-themes` | `.wpforms-panel-sidebar-section-themes` | a | Themes | 1 |
 | <a id="class--wpforms-panel-sidebar-section-user-registration"></a>`class--wpforms-panel-sidebar-section-user-registration` | `.wpforms-panel-sidebar-section-user-registration` | a | User Registration | 1 |
 | <a id="class--wpforms-panel-sidebar-section-webhooks"></a>`class--wpforms-panel-sidebar-section-webhooks` | `.wpforms-panel-sidebar-section-webhooks` | a | Webhooks | 1 |
-| <a id="class--wpforms-panels-toggle"></a>`class--wpforms-panels-toggle` | `.wpforms-panels-toggle` | div | Setup Fields S | 1 |
+| <a id="class--wpforms-panels-toggle"></a>`class--wpforms-panels-toggle` | `.wpforms-panels-toggle` | div | Setup Fields | 1 |
 | <a id="class--wpforms-pdf-add"></a>`class--wpforms-pdf-add` | `.wpforms-pdf-add` | button | Add New PDF | 1 |
 | <a id="class--wpforms-quiz-confirmation-notice"></a>`class--wpforms-quiz-confirmation-notice` | `.wpforms-quiz-confirmation-notice` | div | When Quiz mode is enabled, Confirmations are replaced by Ou… | 1 |
 | <a id="class--wpforms-quiz-enable-quiz"></a>`class--wpforms-quiz-enable-quiz` | `.wpforms-quiz-enable-quiz` | a | Enable Quiz | 1 |
 | <a id="class--wpforms-quiz-weighted-quiz-label"></a>`class--wpforms-quiz-weighted-quiz-label` | `.wpforms-quiz-weighted-quiz-label` | p | Weight Scale | 1 |
-| <a id="class--wpforms-radio-group"></a>`class--wpforms-radio-group` | `.wpforms-radio-group` | input | Enable for Stripe completed payments | 4 |
+| <a id="class--wpforms-radio-group"></a>`class--wpforms-radio-group` | `.wpforms-radio-group` | input | Enable for Stripe completed payments | 2 |
 | <a id="class--wpforms-radio-group-1-notification-by-status"></a>`class--wpforms-radio-group-1-notification-by-status` | `.wpforms-radio-group-1-notification-by-status` | input | Enable for Stripe completed payments | 2 |
-| <a id="class--wpforms-radio-group-2-notification-by-status"></a>`class--wpforms-radio-group-2-notification-by-status` | `.wpforms-radio-group-2-notification-by-status` | input | Enable for Stripe completed payments | 2 |
-| <a id="class--wpforms-radio-group-item-paypal_commerce"></a>`class--wpforms-radio-group-item-paypal_commerce` | `.wpforms-radio-group-item-paypal_commerce` | input | Enable for PayPal Commerce completed payments | 2 |
-| <a id="class--wpforms-radio-group-item-stripe"></a>`class--wpforms-radio-group-item-stripe` | `.wpforms-radio-group-item-stripe` | input | Enable for Stripe completed payments | 2 |
+| <a id="class--wpforms-radio-group-item-paypal_commerce"></a>`class--wpforms-radio-group-item-paypal_commerce` | `.wpforms-radio-group-item-paypal_commerce` | input | Enable for PayPal Commerce completed payments | 1 |
+| <a id="class--wpforms-radio-group-item-stripe"></a>`class--wpforms-radio-group-item-stripe` | `.wpforms-radio-group-item-stripe` | input | Enable for Stripe completed payments | 1 |
 | <a id="class--wpforms-selected"></a>`class--wpforms-selected` | `.wpforms-selected` | li | First Choice | 2 |
 | <a id="class--wpforms-settings-keyword-filter-cancel"></a>`class--wpforms-settings-keyword-filter-cancel` | `.wpforms-settings-keyword-filter-cancel` | button | Cancel | 1 |
 | <a id="class--wpforms-settings-keyword-filter-save-changes"></a>`class--wpforms-settings-keyword-filter-save-changes` | `.wpforms-settings-keyword-filter-save-changes` | button | Save Changes | 1 |
 | <a id="class--wpforms-settings-keyword-filter-toggle-list"></a>`class--wpforms-settings-keyword-filter-toggle-list` | `.wpforms-settings-keyword-filter-toggle-list` | a | Edit keyword list. | 1 |
-| <a id="class--wpforms-smart-tags-widget-container"></a>`class--wpforms-smart-tags-widget-container` | `.wpforms-smart-tags-widget-container` | div |  | 15 |
-| <a id="class--wpforms-smart-tags-widget-input"></a>`class--wpforms-smart-tags-widget-input` | `.wpforms-smart-tags-widget-input` | div | Site Administrator Email | 11 |
+| <a id="class--wpforms-smart-tags-widget-container"></a>`class--wpforms-smart-tags-widget-container` | `.wpforms-smart-tags-widget-container` | div |  | 9 |
+| <a id="class--wpforms-smart-tags-widget-input"></a>`class--wpforms-smart-tags-widget-input` | `.wpforms-smart-tags-widget-input` | div | Site Administrator Email | 6 |
 | <a id="class--wpforms-smtp-education-notice"></a>`class--wpforms-smtp-education-notice` | `.wpforms-smtp-education-notice` | div | Make Sure Important Emails Reach Your Customers | 1 |
 | <a id="class--wpforms-smtp-education-notice-dismiss-button"></a>`class--wpforms-smtp-education-notice-dismiss-button` | `.wpforms-smtp-education-notice-dismiss-button` | div |  | 1 |
-| <a id="class--wpforms-status-button"></a>`class--wpforms-status-button` | `.wpforms-status-button` | span | Active | 2 |
-| <a id="class--wpforms-status-label"></a>`class--wpforms-status-label` | `.wpforms-status-label` | i | Active | 2 |
+| <a id="class--wpforms-status-button"></a>`class--wpforms-status-button` | `.wpforms-status-button` | span | Active | 1 |
+| <a id="class--wpforms-status-label"></a>`class--wpforms-status-label` | `.wpforms-status-label` | i | Active | 1 |
 | <a id="class--wpforms-submit"></a>`class--wpforms-submit` | `.wpforms-submit` | button | Submit | 1 |
 | <a id="class--wpforms-submit-container"></a>`class--wpforms-submit-container` | `.wpforms-submit-container` | div | Submit | 1 |
-| <a id="class--wpforms-toggle-control"></a>`class--wpforms-toggle-control` | `.wpforms-toggle-control` | span | Enable Prefill by URL | 40 |
-| <a id="class--wpforms-toggle-control-label"></a>`class--wpforms-toggle-control-label` | `.wpforms-toggle-control-label` | label | Enable Prefill by URL | 39 |
+| <a id="class--wpforms-toggle-control"></a>`class--wpforms-toggle-control` | `.wpforms-toggle-control` | span | Enable Prefill by URL | 34 |
+| <a id="class--wpforms-toggle-control-label"></a>`class--wpforms-toggle-control-label` | `.wpforms-toggle-control-label` | label | Enable Prefill by URL | 33 |
 | <a id="class--wpforms-undo-redo-container"></a>`class--wpforms-undo-redo-container` | `.wpforms-undo-redo-container` | div | Grade Start Percentage End Percentage | 2 |
 
 ---

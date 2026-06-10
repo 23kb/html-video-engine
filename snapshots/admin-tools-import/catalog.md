@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-tools-import/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 39 selector entries across 2 sections.
+> 40 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-tools-import/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_23 entries_
+_24 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -28,6 +28,7 @@ _23 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-header"></a>`id--wpforms-header` | `#wpforms-header` | div |  | 1 |
@@ -35,7 +36,7 @@ _23 entries_
 | <a id="id--wpforms-import"></a>`id--wpforms-import` | `#wpforms-import` | button | Import | 1 |
 | <a id="id--wpforms-import-other"></a>`id--wpforms-import-other` | `#wpforms-import-other` | button | Import | 1 |
 | <a id="id--wpforms-importers"></a>`id--wpforms-importers` | `#wpforms-importers` | div | Import from Other Form Plugins Not happy with other WordPre… | 1 |
-| <a id="id--wpforms-tools"></a>`id--wpforms-tools` | `#wpforms-tools` | div | Import Export Entry Automa | 1 |
+| <a id="id--wpforms-tools"></a>`id--wpforms-tools` | `#wpforms-tools` | div | Import Export | 1 |
 | <a id="id--wpforms-tools-form-import"></a>`id--wpforms-tools-form-import` | `#wpforms-tools-form-import` | input | No file chosen Choose a File | 1 |
 | <a id="id--wpforms-tools-form-other-import"></a>`id--wpforms-tools-form-other-import` | `#wpforms-tools-form-other-import` | select | Select previous contact form plugin... | 1 |
 | <a id="id--wpforms-tools-import-nonce"></a>`id--wpforms-tools-import-nonce` | `#wpforms-tools-import-nonce` | input | Import from Other Form Plugins Not happy with other WordPre… | 1 |

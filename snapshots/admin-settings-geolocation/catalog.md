@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-settings-geolocation/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 52 selector entries across 2 sections.
+> 51 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-settings-geolocation/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -24,10 +24,10 @@ _27 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms-autocomplete-preview"></a>`id--wpforms-autocomplete-preview` | `#wpforms-autocomplete-preview` | input |  | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |
-| <a id="id--wpforms-geolocation-api-notice"></a>`id--wpforms-geolocation-api-notice` | `#wpforms-geolocation-api-notice` | div | This API key is not authorized to use this service or API. … | 1 |
 | <a id="id--wpforms-header"></a>`id--wpforms-header` | `#wpforms-header` | div |  | 1 |
 | <a id="id--wpforms-header-temp"></a>`id--wpforms-header-temp` | `#wpforms-header-temp` | div |  | 1 |
 | <a id="id--wpforms-setting-geolocation-current-location"></a>`id--wpforms-setting-geolocation-current-location` | `#wpforms-setting-geolocation-current-location` | input | Off Detect and pre-fill user's current location on form loa… | 1 |
@@ -42,11 +42,11 @@ _27 entries_
 | <a id="id--wpforms-setting-row-geolocation-google-places-preview"></a>`id--wpforms-setting-row-geolocation-google-places-preview` | `#wpforms-setting-row-geolocation-google-places-preview` | div | Preview | 1 |
 | <a id="id--wpforms-setting-row-geolocation-heading"></a>`id--wpforms-setting-row-geolocation-heading` | `#wpforms-setting-row-geolocation-heading` | div | Geolocation Geolocation provides address autocomplete for A… | 1 |
 | <a id="id--wpforms-setting-row-geolocation-mapbox-search-access-token"></a>`id--wpforms-setting-row-geolocation-mapbox-search-access-token` | `#wpforms-setting-row-geolocation-mapbox-search-access-token` | div | Access Token Paste your Access Token to connect to Mapbox S… | 1 |
-| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPTCHA | 1 |
+| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPT | 1 |
 
 ## Role-like classes
 
-_25 entries_
+_24 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -63,7 +63,6 @@ _25 entries_
 | <a id="class--wpforms-flyout-item-1"></a>`class--wpforms-flyout-item-1` | `.wpforms-flyout-item-1` | a | Join Our Community | 1 |
 | <a id="class--wpforms-flyout-item-2"></a>`class--wpforms-flyout-item-2` | `.wpforms-flyout-item-2` | a | Support &amp; Docs | 1 |
 | <a id="class--wpforms-flyout-label"></a>`class--wpforms-flyout-label` | `.wpforms-flyout-label` | div | Suggest a Feature | 4 |
-| <a id="class--wpforms-geolocation-api-notice"></a>`class--wpforms-geolocation-api-notice` | `.wpforms-geolocation-api-notice` | div | This API key is not authorized to use this service or API. … | 1 |
 | <a id="class--wpforms-geolocation-settings-provider-mapbox-search"></a>`class--wpforms-geolocation-settings-provider-mapbox-search` | `.wpforms-geolocation-settings-provider-mapbox-search` | div | Access Token Paste your Access Token to connect to Mapbox S… | 1 |
 | <a id="class--wpforms-header"></a>`class--wpforms-header` | `.wpforms-header` | div |  | 1 |
 | <a id="class--wpforms-link"></a>`class--wpforms-link` | `.wpforms-link` | a |  | 4 |

@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-entries-overview/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 60 selector entries across 2 sections.
+> 61 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-entries-overview/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,13 +12,13 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_41 entries_
+_42 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="id--adv-settings"></a>`id--adv-settings` | `#adv-settings` | form | Columns Created Last Entry | 1 |
 | <a id="id--all_time"></a>`id--all_time` | `#all_time` | th | All Time Sort ascending. | 1 |
-| <a id="id--all_time-hide"></a>`id--all_time-hide` | `#all_time-hide` | input | All Time Last 30 days Graph Pagination Number of for | 1 |
+| <a id="id--all_time-hide"></a>`id--all_time-hide` | `#all_time-hide` | input | All Time Last 30 days Graph Pagination Number of | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--created"></a>`id--created` | `#created` | th | Created Sort ascending. | 1 |
@@ -30,13 +30,13 @@ _41 entries_
 | <a id="id--last_entry-hide"></a>`id--last_entry-hide` | `#last_entry-hide` | input | Last Entry All Time Last 30 days | 1 |
 | <a id="id--name"></a>`id--name` | `#name` | th | Form Name Sort ascending. | 1 |
 | <a id="id--pagination_per_page"></a>`id--pagination_per_page` | `#pagination_per_page` | input | View Show form templates | 1 |
-| <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input | Screen Option | 1 |
+| <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input | Screen O | 1 |
 | <a id="id--screen-options-link-wrap"></a>`id--screen-options-link-wrap` | `#screen-options-link-wrap` | div | Screen Options | 1 |
 | <a id="id--screen-options-wrap"></a>`id--screen-options-wrap` | `#screen-options-wrap` | div | Columns Created Last Entry | 1 |
 | <a id="id--screenoptionnonce"></a>`id--screenoptionnonce` | `#screenoptionnonce` | input | Screen Options | 1 |
 | <a id="id--show-settings-link"></a>`id--show-settings-link` | `#show-settings-link` | button | Screen Options | 1 |
 | <a id="id--table-paging"></a>`id--table-paging` | `#table-paging` | span | 1 of 1 | 1 |
-| <a id="id--the-list"></a>`id--the-list` | `#the-list` | tbody | Online Feedback Survey Show more details April 28 | 1 |
+| <a id="id--the-list"></a>`id--the-list` | `#the-list` | tbody | Online Feedback Survey Show more details Apr | 1 |
 | <a id="id--timespan"></a>`id--timespan` | `#timespan` | th | Last 30 days Sort ascending. | 1 |
 | <a id="id--timespan-hide"></a>`id--timespan-hide` | `#timespan-hide` | input | Last 30 days Graph Pagination Number of forms per page: | 1 |
 | <a id="id--toplevel_page_wpforms-overview"></a>`id--toplevel_page_wpforms-overview` | `#toplevel_page_wpforms-overview` | li |  | 1 |
@@ -45,6 +45,7 @@ _41 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms-dash-widget-settings-button"></a>`id--wpforms-dash-widget-settings-button` | `#wpforms-dash-widget-settings-button` | button |  | 1 |
 | <a id="id--wpforms-dash-widget-settings-color-wp"></a>`id--wpforms-dash-widget-settings-color-wp` | `#wpforms-dash-widget-settings-color-wp` | input | WordPress Save Changes | 1 |
 | <a id="id--wpforms-dash-widget-settings-color-wpforms"></a>`id--wpforms-dash-widget-settings-color-wpforms` | `#wpforms-dash-widget-settings-color-wpforms` | input | WPForms WordPress | 1 |

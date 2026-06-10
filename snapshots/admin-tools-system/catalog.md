@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-tools-system/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 34 selector entries across 2 sections.
+> 35 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-tools-system/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_18 entries_
+_19 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -26,6 +26,7 @@ _18 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-header"></a>`id--wpforms-header` | `#wpforms-header` | div |  | 1 |
@@ -33,7 +34,7 @@ _18 entries_
 | <a id="id--wpforms-ssl-verify"></a>`id--wpforms-ssl-verify` | `#wpforms-ssl-verify` | button | Test Connection | 1 |
 | <a id="id--wpforms-system-information"></a>`id--wpforms-system-information` | `#wpforms-system-information` | textarea | ### Begin System Info ### -- WPForms Info Pro: Apr 25, 2026… | 1 |
 | <a id="id--wpforms-system-information-copy"></a>`id--wpforms-system-information-copy` | `#wpforms-system-information-copy` | button | Copy System Information | 1 |
-| <a id="id--wpforms-tools"></a>`id--wpforms-tools` | `#wpforms-tools` | div | Import Export Entry Automation | 1 |
+| <a id="id--wpforms-tools"></a>`id--wpforms-tools` | `#wpforms-tools` | div | Import Export Entr | 1 |
 
 ## Role-like classes
 

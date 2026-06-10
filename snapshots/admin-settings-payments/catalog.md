@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-settings-payments/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 112 selector entries across 2 sections.
+> 113 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-settings-payments/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_85 entries_
+_86 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -60,6 +60,7 @@ _85 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-header"></a>`id--wpforms-header` | `#wpforms-header` | div |  | 1 |
@@ -71,11 +72,11 @@ _85 entries_
 | <a id="id--wpforms-setting-row-currency"></a>`id--wpforms-setting-row-currency` | `#wpforms-setting-row-currency` | div | Currency | 1 |
 | <a id="id--wpforms-setting-row-payments-heading"></a>`id--wpforms-setting-row-payments-heading` | `#wpforms-setting-row-payments-heading` | div | Payments | 1 |
 | <a id="id--wpforms-setting-row-paypal-commerce-connection-merchant-email-live"></a>`id--wpforms-setting-row-paypal-commerce-connection-merchant-email-live` | `#wpforms-setting-row-paypal-commerce-connection-merchant-email-live` | div | Primary Email Not available | 1 |
-| <a id="id--wpforms-setting-row-paypal-commerce-connection-merchant-email-sandbox"></a>`id--wpforms-setting-row-paypal-commerce-connection-merchant-email-sandbox` | `#wpforms-setting-row-paypal-commerce-connection-merchant-email-sandbox` | div | Primary Email sb-smmip49918402@personal.example.com | 1 |
+| <a id="id--wpforms-setting-row-paypal-commerce-connection-merchant-email-sandbox"></a>`id--wpforms-setting-row-paypal-commerce-connection-merchant-email-sandbox` | `#wpforms-setting-row-paypal-commerce-connection-merchant-email-sandbox` | div | Primary Email sullie@wpforms.com | 1 |
 | <a id="id--wpforms-setting-row-paypal-commerce-connection-merchant-granted-scopes-live"></a>`id--wpforms-setting-row-paypal-commerce-connection-merchant-granted-scopes-live` | `#wpforms-setting-row-paypal-commerce-connection-merchant-granted-scopes-live` | div | Scopes Granted Not available | 1 |
 | <a id="id--wpforms-setting-row-paypal-commerce-connection-merchant-granted-scopes-sandbox"></a>`id--wpforms-setting-row-paypal-commerce-connection-merchant-granted-scopes-sandbox` | `#wpforms-setting-row-paypal-commerce-connection-merchant-granted-scopes-sandbox` | div | Scopes Granted Payments – Create / Capture Partner Fees Pay… | 1 |
 | <a id="id--wpforms-setting-row-paypal-commerce-connection-merchant-id-live"></a>`id--wpforms-setting-row-paypal-commerce-connection-merchant-id-live` | `#wpforms-setting-row-paypal-commerce-connection-merchant-id-live` | div | Account ID Not available | 1 |
-| <a id="id--wpforms-setting-row-paypal-commerce-connection-merchant-id-sandbox"></a>`id--wpforms-setting-row-paypal-commerce-connection-merchant-id-sandbox` | `#wpforms-setting-row-paypal-commerce-connection-merchant-id-sandbox` | div | Account ID HQDHCA3KSGNTJ | 1 |
+| <a id="id--wpforms-setting-row-paypal-commerce-connection-merchant-id-sandbox"></a>`id--wpforms-setting-row-paypal-commerce-connection-merchant-id-sandbox` | `#wpforms-setting-row-paypal-commerce-connection-merchant-id-sandbox` | div | Account ID HQDHCA3***** | 1 |
 | <a id="id--wpforms-setting-row-paypal-commerce-connection-status-live"></a>`id--wpforms-setting-row-paypal-commerce-connection-status-live` | `#wpforms-setting-row-paypal-commerce-connection-status-live` | div | Connection Status | 1 |
 | <a id="id--wpforms-setting-row-paypal-commerce-connection-status-sandbox"></a>`id--wpforms-setting-row-paypal-commerce-connection-status-sandbox` | `#wpforms-setting-row-paypal-commerce-connection-status-sandbox` | div | Connection Status Connected to PayPal in Sandbox mode. | 1 |
 | <a id="id--wpforms-setting-row-paypal-commerce-heading"></a>`id--wpforms-setting-row-paypal-commerce-heading` | `#wpforms-setting-row-paypal-commerce-heading` | div | PayPal Commerce Easily collect PayPal Checkout and credit c… | 1 |
@@ -100,7 +101,7 @@ _85 entries_
 | <a id="id--wpforms-setting-stripe-test-publishable-key"></a>`id--wpforms-setting-stripe-test-publishable-key` | `#wpforms-setting-stripe-test-publishable-key` | input | Test Secret Key | 1 |
 | <a id="id--wpforms-setting-stripe-test-secret-key"></a>`id--wpforms-setting-stripe-test-secret-key` | `#wpforms-setting-stripe-test-secret-key` | input | Live Publishable Key | 1 |
 | <a id="id--wpforms-setting-stripe-webhooks-enabled"></a>`id--wpforms-setting-stripe-webhooks-enabled` | `#wpforms-setting-stripe-webhooks-enabled` | input | On Stripe uses webhooks to notify WPForms when an event has… | 1 |
-| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPTCHA | 1 |
+| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPT | 1 |
 
 ## Role-like classes
 

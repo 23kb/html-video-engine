@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-tools-export/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 98 selector entries across 2 sections.
+> 99 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-tools-export/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_74 entries_
+_75 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -59,13 +59,14 @@ _74 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms-export-form"></a>`id--wpforms-export-form` | `#wpforms-export-form` | button | Export | 1 |
 | <a id="id--wpforms-export-template"></a>`id--wpforms-export-template` | `#wpforms-export-template` | button | Export Template | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-header"></a>`id--wpforms-header` | `#wpforms-header` | div |  | 1 |
 | <a id="id--wpforms-header-temp"></a>`id--wpforms-header-temp` | `#wpforms-header-temp` | div |  | 1 |
-| <a id="id--wpforms-tools"></a>`id--wpforms-tools` | `#wpforms-tools` | div | Import Export Entry Automa | 1 |
+| <a id="id--wpforms-tools"></a>`id--wpforms-tools` | `#wpforms-tools` | div | Import Export | 1 |
 | <a id="id--wpforms-tools-entries-export"></a>`id--wpforms-tools-entries-export` | `#wpforms-tools-entries-export` | form |  | 1 |
 | <a id="id--wpforms-tools-entries-export-cancel"></a>`id--wpforms-tools-entries-export-cancel` | `#wpforms-tools-entries-export-cancel` | a | Cancel | 1 |
 | <a id="id--wpforms-tools-entries-export-notice"></a>`id--wpforms-tools-entries-export-notice` | `#wpforms-tools-entries-export-notice` | div | If you need to export entries on a regular basis, you can n… | 1 |
@@ -77,7 +78,7 @@ _74 entries_
 | <a id="id--wpforms-tools-entries-export-options-fields-checkboxes"></a>`id--wpforms-tools-entries-export-options-fields-checkboxes` | `#wpforms-tools-entries-export-options-fields-checkboxes` | div | The form does not have any fields for export. | 1 |
 | <a id="id--wpforms-tools-entries-export-options-payment-fields"></a>`id--wpforms-tools-entries-export-options-payment-fields` | `#wpforms-tools-entries-export-options-payment-fields` | section | Payment Fields The form does not have any fields for export. | 1 |
 | <a id="id--wpforms-tools-entries-export-options-payment-fields-checkboxes"></a>`id--wpforms-tools-entries-export-options-payment-fields-checkboxes` | `#wpforms-tools-entries-export-options-payment-fields-checkboxes` | div | The form does not have any fields for export. | 1 |
-| <a id="id--wpforms-tools-entries-export-options-search"></a>`id--wpforms-tools-entries-export-options-search` | `#wpforms-tools-entries-export-options-search` | section | Search Any form field No paymen | 1 |
+| <a id="id--wpforms-tools-entries-export-options-search"></a>`id--wpforms-tools-entries-export-options-search` | `#wpforms-tools-entries-export-options-search` | section | Search Any form field No | 1 |
 | <a id="id--wpforms-tools-entries-export-options-search-field"></a>`id--wpforms-tools-entries-export-options-search-field` | `#wpforms-tools-entries-export-options-search-field` | select | Any form field No payment fields found Entry ID | 1 |
 | <a id="id--wpforms-tools-entries-export-options-status"></a>`id--wpforms-tools-entries-export-options-status` | `#wpforms-tools-entries-export-options-status` | section | Status | 1 |
 | <a id="id--wpforms-tools-entries-export-options-type-info"></a>`id--wpforms-tools-entries-export-options-type-info` | `#wpforms-tools-entries-export-options-type-info` | section | Export Options Export in Microsoft Excel (.xlsx) Separate d… | 1 |

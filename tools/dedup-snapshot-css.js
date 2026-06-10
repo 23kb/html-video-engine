@@ -30,8 +30,13 @@ function md5(s) {
 }
 
 function hasUrlRef(css) {
-  // matches url(assets/...) url("assets/...) url(../...) etc.
-  return /url\(\s*["']?(?:assets\/|\.\.\/)/i.test(css);
+  // The only non-portable url() in a captured snapshot is url(assets/...)
+  // (per-snapshot relative). After consolidate-snapshot-assets all such refs
+  // are rewritten to url(../_shared/assets/...), and other relative refs
+  // (../../images/, ../../../wpforms/) resolve to repo-root-relative paths
+  // that are the same from every snapshots/<slug>/ dir. Absolute URLs and
+  // data: URIs are obviously portable.
+  return /url\(\s*["']?assets\//i.test(css);
 }
 
 function listSnapshots() {
@@ -104,7 +109,14 @@ function transformOne(slug, idx, opts) {
     for (const hash of writtenShared) {
       const sharedFile = path.join(SHARED_DIR, `${hash}.css`);
       if (!fs.existsSync(sharedFile)) {
-        fs.writeFileSync(sharedFile, idx.get(hash).body, 'utf8');
+        // Rewrite url(../_shared/...) → url(../...) so paths still resolve
+        // when the CSS is loaded from snapshots/_shared/css/ rather than
+        // snapshots/<slug>/.
+        const body = idx.get(hash).body.replace(
+          /url\((\s*["']?)\.\.\/_shared\//g,
+          (m, q) => 'url(' + q + '../'
+        );
+        fs.writeFileSync(sharedFile, body, 'utf8');
       }
     }
   }
