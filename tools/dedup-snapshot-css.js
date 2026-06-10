@@ -85,7 +85,12 @@ function transformOne(slug, idx, opts) {
     const hash = md5(body);
     const entry = idx.get(hash);
     if (!entry) return full;
-    const shareable = !entry.dirty && entry.slugs.size >= MIN_SHARING;
+    // A block already extracted to _shared/css counts as shareable even if
+    // only one snapshot still inlines it — after the 2026-06-10 repo-wide
+    // dedup, fresh captures are the ONLY snapshots with inline copies, so
+    // the ≥MIN_SHARING count alone would never trigger again.
+    const sharedExists = fs.existsSync(path.join(SHARED_DIR, `${hash}.css`));
+    const shareable = !entry.dirty && (entry.slugs.size >= MIN_SHARING || sharedExists);
     if (!shareable) {
       leftInlineCount++;
       return full;
