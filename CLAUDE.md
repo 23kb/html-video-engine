@@ -220,6 +220,7 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 - `node tools/render.js <slug> [--seek] [--fps 30]` — MP4 export
 - `node tools/preview.js [--video <slug>] [--port 4321]` — live-reload + scrubber
 - `node tools/lint-determinism.js [--all] [--video <slug>]` — determinism check
+- `node tools/post-capture.js <slug> [--keep-fields 1,2,3]` — MANDATORY after every new capture: field trim (opt-in) + builder markup trim + CSS dedup + catalog regen, so snapshots are born lean
 - `npm run lint` — composes `validate-video.js --all` + `lint-determinism.js --all`
 
 Use standard tools instead of ad hoc `find`, `grep`, custom Playwright, or runtime spelunking unless there is a concrete gap.
