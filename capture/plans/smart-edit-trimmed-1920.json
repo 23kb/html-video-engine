@@ -1,0 +1,21 @@
+{
+  "_comment": "Re-capture at 1920x1080 with form trimmed to 4 fields. MutationObserver keeps the trim sticky against WPForms builder's re-render. settle 2500ms covers observer lifetime + rename delay.",
+  "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=10",
+  "variants": [
+    {
+      "slug": "builder-smart-edit-base",
+      "steps": [
+        { "eval": "(()=>{const keep=new Set([1,2,3,4]);function trim(){document.querySelectorAll('.wpforms-field[data-field-id]').forEach((f)=>{const id=parseInt(f.getAttribute('data-field-id'),10);if(!keep.has(id))f.remove();});}trim();const obs=new MutationObserver(()=>trim());obs.observe(document.body,{childList:true,subtree:true});setTimeout(()=>obs.disconnect(),1500);setTimeout(()=>{const f3=document.querySelector('#wpforms-field-3 .label-title .text');if(f3)f3.textContent='Subject';const f4=document.querySelector('#wpforms-field-4 .label-title .text');if(f4)f4.textContent='Message';document.querySelectorAll('.wpforms-form-name,.wpforms-center-form-name').forEach(el=>el.textContent='Contact Form');},1700);})()", "settle": 2500 }
+      ],
+      "waitFor": "#wpforms-smart-edit-fab"
+    },
+    {
+      "slug": "builder-smart-edit-modal-open",
+      "steps": [
+        { "eval": "(()=>{const keep=new Set([1,2,3,4]);function trim(){document.querySelectorAll('.wpforms-field[data-field-id]').forEach((f)=>{const id=parseInt(f.getAttribute('data-field-id'),10);if(!keep.has(id))f.remove();});}trim();const obs=new MutationObserver(()=>trim());obs.observe(document.body,{childList:true,subtree:true});setTimeout(()=>obs.disconnect(),1500);setTimeout(()=>{const f3=document.querySelector('#wpforms-field-3 .label-title .text');if(f3)f3.textContent='Subject';const f4=document.querySelector('#wpforms-field-4 .label-title .text');if(f4)f4.textContent='Message';document.querySelectorAll('.wpforms-form-name,.wpforms-center-form-name').forEach(el=>el.textContent='Contact Form');},1700);})()", "settle": 2500 },
+        { "click": "#wpforms-smart-edit-fab", "settle": 1500 }
+      ],
+      "waitFor": "#wpforms-smart-edit-modal.wpforms-smart-edit-modal-open"
+    }
+  ]
+}

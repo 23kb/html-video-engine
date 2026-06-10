@@ -1,0 +1,13 @@
+{
+  "_comment": "Debug — count fields before + after trim, set a sentinel attr we can verify in the snapshot.",
+  "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=10",
+  "variants": [
+    {
+      "slug": "builder-smart-edit-base",
+      "steps": [
+        { "eval": "(()=>{const before=document.querySelectorAll('.wpforms-field[data-field-id]').length;document.body.setAttribute('data-ml-trim-before',String(before));const keep=new Set([1,2,3,4]);let removed=0;document.querySelectorAll('.wpforms-field[data-field-id]').forEach((f)=>{const id=parseInt(f.getAttribute('data-field-id'),10);if(!keep.has(id)){f.remove();removed++;}});document.body.setAttribute('data-ml-trim-removed',String(removed));const after=document.querySelectorAll('.wpforms-field[data-field-id]').length;document.body.setAttribute('data-ml-trim-after',String(after));})()", "settle": 800 }
+      ],
+      "waitFor": "#wpforms-smart-edit-fab"
+    }
+  ]
+}

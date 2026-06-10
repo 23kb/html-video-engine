@@ -1,0 +1,18 @@
+{
+  "_comment": "Re-capture at 1920x1080 viewport so the snapshot renders at video-native resolution. Display in iframe at native 1920x1080 with NO transform scale — eliminates the 1.5x magnification.",
+  "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=10",
+  "variants": [
+    {
+      "slug": "builder-smart-edit-base",
+      "waitFor": "#wpforms-smart-edit-fab",
+      "steps": []
+    },
+    {
+      "slug": "builder-smart-edit-modal-open",
+      "steps": [
+        { "click": "#wpforms-smart-edit-fab", "settle": 1500 }
+      ],
+      "waitFor": "#wpforms-smart-edit-modal.wpforms-smart-edit-modal-open"
+    }
+  ]
+}

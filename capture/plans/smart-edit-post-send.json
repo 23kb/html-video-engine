@@ -1,0 +1,25 @@
+{
+  "_comment": "Send a real prompt and capture two follow-up states: thinking (just after send, AI working) and response (AI response card visible). Costs ~2 WPForms-AI API calls on sulliesbakery.com. Form is NOT modified — Accept is never clicked.",
+  "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=10",
+  "variants": [
+    {
+      "slug": "builder-smart-edit-thinking",
+      "_comment": "Open modal, fill textarea, click send, capture immediately after spinner appears.",
+      "steps": [
+        { "click": "#wpforms-smart-edit-fab", "settle": 1500 },
+        { "eval": "(()=>{const ta=document.querySelector('#wpforms-smart-edit-modal textarea');ta.value='Make all fields required and add a GDPR consent checkbox';ta.dispatchEvent(new Event('input',{bubbles:true}));ta.dispatchEvent(new Event('change',{bubbles:true}));})()", "settle": 600 },
+        { "click": "#wpforms-smart-edit-modal .wpforms-ai-chat-send", "settle": 2000 }
+      ]
+    },
+    {
+      "slug": "builder-smart-edit-response",
+      "_comment": "Same as thinking + long wait so the AI response renders.",
+      "steps": [
+        { "click": "#wpforms-smart-edit-fab", "settle": 1500 },
+        { "eval": "(()=>{const ta=document.querySelector('#wpforms-smart-edit-modal textarea');ta.value='Make all fields required and add a GDPR consent checkbox';ta.dispatchEvent(new Event('input',{bubbles:true}));ta.dispatchEvent(new Event('change',{bubbles:true}));})()", "settle": 600 },
+        { "click": "#wpforms-smart-edit-modal .wpforms-ai-chat-send", "settle": 1500 },
+        { "wait": 20000 }
+      ]
+    }
+  ]
+}
