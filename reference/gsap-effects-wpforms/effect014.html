@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Effect 014 — Stacking spread · REAL template cards</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#0a0806; font-family:var(--wpf-font-stack); overflow:hidden; }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; background:radial-gradient(ellipse at center,#fdf8f0 0%,#e9dec8 100%); overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.45); }
+
+  .loading { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:#fdf8f0; color:#646970; font-size:14px; z-index:50; transition:opacity 0.4s; }
+  .loading.gone { opacity:0; pointer-events:none; }
+  .loading .spinner { width:32px; height:32px; border:3px solid #dcdcde; border-top-color:var(--wpf-orange); border-radius:50%; margin-right:12px; animation:spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .brand { position:absolute; top:60px; left:80px; display:flex; align-items:center; gap:12px; z-index:30; opacity:0; }
+  .brand .dot { width:14px; height:14px; border-radius:50%; background:var(--wpf-orange); }
+  .brand .name { font-weight:600; font-size:22px; letter-spacing:-0.01em; color:var(--wpf-ink-soft); }
+  .header { position:absolute; top:60px; right:80px; z-index:30; text-align:right; opacity:0; }
+  .header .kicker { color:var(--wpf-orange); font-size:13px; font-weight:700; letter-spacing:0.20em; text-transform:uppercase; }
+  .header .count { color:var(--wpf-ink); font-size:28px; font-weight:700; letter-spacing:-0.01em; margin-top:4px; }
+
+  .medias { position:absolute; inset:0; z-index:20; }
+  /* real template card — self-styled. SOURCE: snapshots/admin-templates/index.html (.wpforms-template) */
+  .medias .wpforms-template { position:absolute; left:50%; top:50%; width:286px; height:300px;
+    margin:-150px 0 0 -143px; background:#fff; border-radius:16px;
+    box-shadow:0 30px 64px rgba(20,22,28,0.22),0 8px 18px rgba(20,22,28,0.10);
+    display:flex; flex-direction:column; overflow:hidden; will-change:transform,opacity; }
+  .medias .wpforms-template .wpforms-template-thumbnail { height:188px; overflow:hidden; flex-shrink:0; margin:0; padding:0; border-bottom:1px solid #eee7da; }
+  .medias .wpforms-template .wpforms-template-thumbnail img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+  .medias .wpforms-template .wpforms-template-name { font-size:17px; font-weight:700; color:#1d2327; margin:0; padding:16px 18px 0; line-height:1.3; }
+  .medias .wpforms-template .wpforms-template-desc { font-size:12px; line-height:1.5; color:#5b6168; margin:0; padding:7px 18px 0;
+    display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .medias .wpforms-template .wpforms-template-favorite,
+  .medias .wpforms-template .wpforms-template-buttons { display:none; }
+
+  .caption { position:absolute; bottom:104px; left:0; right:0; text-align:center; z-index:25; opacity:0; }
+  .caption .head { font-size:30px; font-weight:700; color:var(--wpf-ink); letter-spacing:-0.02em; }
+  .caption .sub { color:var(--wpf-ink-mute); font-size:17px; margin-top:6px; }
+
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; }
+</style></head><body>
+<div class="stage-wrap"><div class="stage" id="stage">
+  <div class="loading" id="loading"><div class="spinner"></div>Loading real admin-templates snapshot…</div>
+  <div class="brand"><div class="dot"></div><div class="name">WPForms</div></div>
+  <div class="header"><div class="kicker">Form Library</div><div class="count">6 templates</div></div>
+  <div class="medias" id="medias"></div>
+  <div class="caption">
+    <div class="head">Pick a template. Ship in minutes.</div>
+    <div class="sub">800+ ready-made forms across every use case.</div>
+  </div>
+</div></div>
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 014 · REAL template cards adopted from snapshots/admin-templates · fly-in stacking spread</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script src="_snapshot-iframe.js"></script>
+<script>
+  const stage = document.getElementById('stage');
+  function fit(){stage.style.transform=`scale(${Math.min(innerWidth/1920,(innerHeight-56)/1080)*0.96})`;}
+  addEventListener('resize',fit);fit();
+
+  const { iframe, ready, query } = SnapshotIframe.mountSnapshot(stage, {
+    slug: 'admin-templates', x: 0, y: 0, w: 1280, h: 720, scale: 1.5, zIndex: 1
+  });
+
+  ready.then(async () => {
+    await SnapshotIframe.awaitDom(query, '.wpforms-template', { min: 8 });
+    document.getElementById('loading').classList.add('gone');
+
+    const cards = [...query('.wpforms-template')]
+      .filter(c => c.id !== 'wpforms-template-generate' && c.id !== 'wpforms-template-blank')
+      .slice(0, 6);
+    cards.forEach(c => SnapshotIframe.rewriteRelativeUrls(c, 'admin-templates'));
+    iframe.style.opacity = '0';
+
+    const mediasEl = document.getElementById('medias');
+    cards.forEach(c => mediasEl.appendChild(c));
+    const medias = [...mediasEl.querySelectorAll('.wpforms-template')];
+
+    // staggered landing stops — a fanned spread, each card a little off
+    const stops = [
+      { x: -560, y: -12, rotate: -7, scale: 0.92 },
+      { x: -338, y:  28, rotate: -3, scale: 0.96 },
+      { x: -114, y: -16, rotate:  0, scale: 1.00 },
+      { x:  114, y:  32, rotate:  4, scale: 0.97 },
+      { x:  338, y: -20, rotate:  7, scale: 0.93 },
+      { x:  560, y:  12, rotate: 11, scale: 0.91 },
+    ];
+    medias.forEach((el, i) => gsap.set(el, { x: stops[i].x, y: 900, rotate: 0, scale: 0.9, opacity: 0 }));
+
+    const tl = gsap.timeline({ paused: true });
+    tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1)
+      .to('.header', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.25);
+
+    const ENTER_START = 0.7, PER = 0.5, ENTER_DUR = 1.0;
+    medias.forEach((el, i) => {
+      tl.to(el, { y: stops[i].y, rotate: stops[i].rotate, scale: stops[i].scale, opacity: 1,
+        duration: ENTER_DUR, ease: 'power3.out' }, ENTER_START + i * PER);
+    });
+    const arrivalsEnd = ENTER_START + medias.length * PER + ENTER_DUR;
+
+    // soft settle bob
+    tl.to(medias, { y: '+=12', duration: 1.8, ease: 'sine.inOut', yoyo: true, repeat: 1,
+      stagger: { each: 0.07, from: 'center' } }, arrivalsEnd);
+    // emphasize the central card
+    tl.to(medias[2], { y: -54, scale: 1.08, rotate: 0, duration: 0.8, ease: 'power2.out',
+      boxShadow: '0 50px 110px rgba(226,119,48,0.30), 0 10px 24px rgba(20,22,28,0.12)' }, arrivalsEnd + 0.3);
+    // caption
+    tl.to('.caption', { opacity: 1, duration: 0.7 }, arrivalsEnd + 0.5)
+      .from('.caption .head', { y: 18, opacity: 0, duration: 0.6 }, arrivalsEnd + 0.5)
+      .from('.caption .sub',  { y: 14, opacity: 0, duration: 0.6 }, arrivalsEnd + 0.7);
+
+    const sc=document.getElementById('scrub'),te=document.getElementById('time'),pb=document.getElementById('playBtn');
+    function ut(){te.textContent=tl.time().toFixed(2).padStart(5,'0')+' / '+tl.duration().toFixed(2).padStart(5,'0');}
+    sc.addEventListener('input',()=>{tl.pause();pb.textContent='Play';tl.progress(parseFloat(sc.value)/100);ut();});
+    gsap.ticker.add(()=>{if(!tl.paused()){sc.value=(tl.progress()*100).toFixed(2);ut();if(tl.progress()>=1)pb.textContent='Replay';}});
+    pb.addEventListener('click',()=>{if(tl.progress()>=1){tl.restart();pb.textContent='Pause';}else if(tl.paused()){tl.play();pb.textContent='Pause';}else{tl.pause();pb.textContent='Play';}});
+    ut(); setTimeout(()=>{tl.play();pb.textContent='Pause';},400);
+  });
+</script></body></html>

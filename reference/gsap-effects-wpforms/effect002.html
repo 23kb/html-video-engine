@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Effect 002 — Cursor-distance cycle · REAL 6-surface tour</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#0a0806; font-family:var(--wpf-font-stack); overflow:hidden; }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; background:#14110e; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.5); }
+
+  .loading { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:#14110e; color:#aaa; font-size:14px; z-index:50; transition:opacity 0.4s; }
+  .loading.gone { opacity:0; pointer-events:none; }
+  .loading .spinner { width:32px; height:32px; border:3px solid #333; border-top-color:var(--wpf-orange); border-radius:50%; margin-right:12px; animation:spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* surface stack — each iframe layered, only one visible at a time */
+  .surfaces { position:absolute; inset:0; }
+  .surfaces iframe { transition: none; }
+
+  .effect-title { position:absolute; top:24px; left:24px; padding:10px 18px; background:rgba(20,17,14,0.85); color:#fff; border-radius:6px; font-size:13px; font-weight:600; z-index:30; opacity:0; }
+  .effect-title b { color:var(--wpf-orange); }
+  .surface-tag { position:absolute; top:24px; right:24px; padding:10px 18px; background:rgba(20,17,14,0.85); color:#fff; border-radius:6px; font-size:13px; z-index:30; opacity:0; font-family:var(--wpf-font-stack); }
+  .surface-tag b { color:var(--wpf-orange); }
+
+  .ghost { position:absolute; width:28px; height:28px; border-radius:50%; background:var(--wpf-orange); box-shadow:0 0 22px rgba(226,119,48,0.7); pointer-events:none; z-index:40; transform:translate(-50%,-50%); opacity:0; }
+  .label { position:absolute; bottom:40px; left:0; right:0; text-align:center; color:rgba(250,246,238,0.6); font-size:13px; letter-spacing:0.20em; text-transform:uppercase; opacity:0; z-index:30; }
+
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; }
+</style></head><body>
+<div class="stage-wrap"><div class="stage" id="stage">
+  <div class="loading" id="loading"><div class="spinner"></div>Loading 6 real WPForms surfaces…</div>
+  <div class="surfaces" id="surfaces"></div>
+  <div class="effect-title"><b>EFFECT 002</b> · cursor-distance cycle · 6 real WPForms surfaces</div>
+  <div class="surface-tag" id="surfTag"><b>Surface 1/6</b> · admin-forms-overview</div>
+  <div class="ghost" id="ghost"></div>
+  <div class="label">Move further · see more of WPForms</div>
+</div></div>
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 002 · 6 layered snapshot iframes (REAL UI), crossfade driven by cursor travel</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script src="_snapshot-iframe.js"></script>
+<script>
+  const stage = document.getElementById('stage');
+  function fit(){stage.style.transform=`scale(${Math.min(innerWidth/1920,(innerHeight-56)/1080)*0.96})`;}
+  addEventListener('resize',fit);fit();
+
+  // 6 REAL WPForms snapshots — each is the actual captured admin/builder HTML
+  const SURFACES = [
+    { slug: 'admin-forms-overview',                  label: 'admin · All Forms' },
+    { slug: 'admin-templates',                       label: 'admin · Form Templates' },
+    { slug: 'builder-fields',                        label: 'builder · Fields panel' },
+    { slug: 'wpforms-ai-builder-feedback-generated', label: 'builder · AI generator' },
+    { slug: 'admin-addons',                          label: 'admin · Addons' },
+    { slug: 'builder-settings-notifications',        label: 'builder · Notifications' }
+  ];
+
+  const SCALE = 1.5;
+  const surfacesEl = document.getElementById('surfaces');
+  const iframes = SURFACES.map((s, i) => {
+    const m = SnapshotIframe.mountSnapshot(surfacesEl, {
+      slug: s.slug, x: 0, y: 0, w: 1280, h: 720, scale: SCALE, zIndex: 1
+    });
+    m.iframe.style.opacity = i === 0 ? '1' : '0';
+    return m;
+  });
+
+  Promise.all(iframes.map(m => m.ready)).then(() => {
+    document.getElementById('loading').classList.add('gone');
+
+    const ghost = document.getElementById('ghost');
+    const surfTag = document.getElementById('surfTag');
+    surfTag.innerHTML = `<b>Surface 1/${SURFACES.length}</b> · ${SURFACES[0].label}`;
+
+    const tl = gsap.timeline({ paused: true });
+    tl.timeScale(3); // 3× speed per QC feedback
+    tl.to('.effect-title', { opacity: 1, duration: 0.5 }, 0.1);
+    tl.to(surfTag, { opacity: 1, duration: 0.5 }, 0.2);
+    tl.to('.label', { opacity: 1, duration: 0.5 }, 0.3);
+    tl.to(ghost, { opacity: 1, duration: 0.4 }, 0.3);
+
+    // ghost cursor traces a long path; surface index advances at intervals
+    const waypoints = [{x:600,y:540},{x:1400,y:540},{x:1400,y:200},{x:500,y:200},{x:500,y:800},{x:1500,y:800},{x:960,y:540}];
+    const cs = { x: waypoints[0].x, y: waypoints[0].y };
+    gsap.set(ghost, { x: cs.x, y: cs.y });
+
+    // subtle camera — the surface stack drifts toward the cursor's travel
+    const CAM = 0.05;
+    gsap.set(surfacesEl, { scale: 1.07, transformOrigin: '50% 50%' });
+    const moveCam = () => gsap.set(surfacesEl, { x: -(cs.x - 960) * CAM, y: -(cs.y - 540) * CAM });
+    moveCam();
+
+    let cursor = 0.5;
+    for (let i = 1; i < waypoints.length; i++) {
+      const w = waypoints[i];
+      const dur = 1.2;
+      tl.to(cs, { x: w.x, y: w.y, duration: dur, ease: 'power2.inOut', onUpdate: () => { gsap.set(ghost, { x: cs.x, y: cs.y }); moveCam(); } }, cursor);
+      cursor += dur;
+    }
+    const total = cursor - 0.5;
+
+    // crossfade between real-snapshot iframes
+    iframes.forEach((m, i) => {
+      if (i === 0) return;
+      const t = 0.5 + (total / SURFACES.length) * i;
+      tl.to(iframes[i-1].iframe, { opacity: 0, duration: 0.4, ease: 'power2.in' }, t);
+      tl.to(m.iframe, { opacity: 1, duration: 0.4, ease: 'power2.out' }, t);
+      tl.call(() => { surfTag.innerHTML = `<b>Surface ${i+1}/${SURFACES.length}</b> · ${SURFACES[i].label}`; }, null, t + 0.2);
+    });
+
+    const sc=document.getElementById('scrub'),te=document.getElementById('time'),pb=document.getElementById('playBtn');
+    function ut(){te.textContent=tl.time().toFixed(2).padStart(5,'0')+' / '+tl.duration().toFixed(2).padStart(5,'0');}
+    sc.addEventListener('input',()=>{tl.pause();pb.textContent='Play';tl.progress(parseFloat(sc.value)/100);ut();});
+    gsap.ticker.add(()=>{if(!tl.paused()){sc.value=(tl.progress()*100).toFixed(2);ut();if(tl.progress()>=1)pb.textContent='Replay';}});
+    pb.addEventListener('click',()=>{if(tl.progress()>=1){tl.restart();pb.textContent='Pause';}else if(tl.paused()){tl.play();pb.textContent='Pause';}else{tl.pause();pb.textContent='Play';}});
+    ut();setTimeout(()=>{tl.play();pb.textContent='Pause';},400);
+  });
+</script></body></html>

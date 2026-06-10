@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>GSAP Effects — Real WPForms UI (101)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #14110e; font-family: var(--wpf-font-stack); color: #eae3d8; min-height: 100vh; }
+  .wrap { max-width: 1500px; margin: 0 auto; padding: 56px 32px 80px; }
+  header.page { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-bottom: 32px; flex-wrap: wrap; }
+  header.page .brand { display: flex; align-items: center; gap: 12px; }
+  header.page .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--wpf-orange); }
+  header.page .name { font-weight: 700; font-size: 22px; letter-spacing: -0.01em; }
+  header.page .sub { color: #8a847b; font-size: 14px; }
+  h1.title { font-size: 42px; font-weight: 700; letter-spacing: -0.025em; margin: 0 0 12px; line-height: 1.05; }
+  .lede { color: #b6ada1; font-size: 16px; line-height: 1.5; max-width: 820px; margin-bottom: 28px; }
+  .lede strong { color: #eae3d8; }
+  .stats { display: flex; gap: 32px; color: #b6ada1; font-size: 14px; margin-bottom: 40px; flex-wrap: wrap; }
+  .stat .v { color: var(--wpf-orange); font-weight: 700; font-size: 36px; display: block; line-height: 1; }
+  .stat .l { color: #8a847b; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 4px; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 18px; }
+  .card { background: #1d1814; border: 1px solid #2a221b; border-radius: 12px; overflow: hidden; text-decoration: none; color: inherit; display: flex; flex-direction: column; transition: transform 0.2s ease, border-color 0.2s ease; position: relative; }
+  .card:hover { transform: translateY(-3px); border-color: var(--wpf-orange); }
+  .card:hover .open-hint { opacity: 1; }
+  .card .preview { aspect-ratio: 16/9; background: #faf6ee; position: relative; overflow: hidden; border-bottom: 1px solid #2a221b; }
+  .card iframe { border: 0; pointer-events: none; }
+  .card .preview .badge { position: absolute; top: 8px; left: 8px; background: rgba(20,17,14,0.82); color: var(--wpf-orange); font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 3px; letter-spacing: 0.08em; z-index: 2; pointer-events: none; font-variant-numeric: tabular-nums; }
+  .open-hint { position: absolute; top: 8px; right: 8px; background: var(--wpf-orange); color: white; font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 3px; letter-spacing: 0.06em; z-index: 3; opacity: 0; transition: opacity 0.2s; pointer-events: none; }
+  .card .meta { padding: 14px 16px 16px; }
+  .card .head { font-size: 16px; font-weight: 700; letter-spacing: -0.005em; line-height: 1.3; color: #eae3d8; }
+
+  footer.page { margin-top: 48px; padding-top: 24px; border-top: 1px solid #2a221b; color: #6a6157; font-size: 13px; line-height: 1.5; }
+  footer.page a { color: var(--wpf-orange); text-decoration: none; }
+  footer.page a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="page">
+    <div class="brand"><div class="dot"></div><div class="name">WPForms · GSAP Effects (Real UI)</div></div>
+    <div class="sub">reference/gsap-effects-wpforms · feat/new-effects</div>
+  </header>
+
+  <h1 class="title">101 effects · real WPForms UI inside.</h1>
+  <p class="lede">
+    Same 101 motion ports, now rewritten to use <strong>real WPForms surfaces</strong> — the form builder, real templates, real admin chrome, real fields, real entries — instead of generic placeholder cards.
+    Originals (generic theming) remain at <a href="../gsap-effects/index.html" style="color:var(--wpf-orange);text-decoration:none;">reference/gsap-effects/</a>. Click any card to open the full effect.
+  </p>
+
+  <div class="stats">
+    <div class="stat"><span class="v">101</span><span class="l">ports</span></div>
+    <div class="stat"><span class="v" id="wpfCount">0</span><span class="l">wpforms-ified</span></div>
+    <div class="stat"><span class="v">real UI</span><span class="l">no more stubs</span></div>
+  </div>
+
+  <div class="grid" id="grid"></div>
+
+  <footer class="page">
+    <p>
+      Real titles from <a href="https://madewithgsap.com/effects" target="_blank" rel="noopener">madewithgsap.com/effects</a>.
+      Ports built from public tutorial descriptions; CSS and GSAP reconstructed from first principles.
+      Static QC validator: <code style="background:#2a221b;padding:1px 6px;border-radius:4px;color:var(--wpf-orange);font-size:13px;">node reference/gsap-effects/qc.js</code> · Detail catalog: <a href="CATALOG.md">CATALOG.md</a>
+    </p>
+  </footer>
+</div>
+
+<script>
+// Each entry: [number, real madewithgsap title]
+const effects = [
+  ['000', 'InertiaPlugin image cards'],
+  ['001', 'Card stack spreading'],
+  ['002', 'Images following cursor'],
+  ['003', 'Card shuffle'],
+  ['004', 'Word stacking'],
+  ['005', 'Word by word'],
+  ['006', 'Paragraph swap word-by-word'],
+  ['007', 'Rounded trajectory'],
+  ['008', 'Drag list with random movement'],
+  ['009', 'Up & Down'],
+  ['010', 'Jazzy letters'],
+  ['011', 'Smooth letters'],
+  ['012', 'Infinite 3D scroll'],
+  ['013', 'Infinite scrolling movement'],
+  ['014', 'Infinite stacking images'],
+  ['015', 'Duplicate words mask reveal'],
+  ['016', 'Swirling images'],
+  ['017', 'Grid faces cursor'],
+  ['018', 'Card movement effect'],
+  ['019', 'Infinite scroll with deformation'],
+  ['020', 'Sliding mouse trail'],
+  ['021', 'Bubbly mouse trail'],
+  ['022', 'Progressive sentences'],
+  ['023', 'Infinite circular movement'],
+  ['024', 'Opposite direction marquees'],
+  ['025', 'Randomize & focus'],
+  ['026', 'Infinite 2D grid'],
+  ['027', 'Letter by letter'],
+  ['028', 'Rotation on drag'],
+  ['029', 'Words shifting'],
+  ['030', 'Images on hover'],
+  ['031', 'Scrolling sections'],
+  ['032', 'Circular sentence'],
+  ['033', 'Random gallery'],
+  ['034', 'Different speed columns'],
+  ['035', 'Row expand on hover'],
+  ['036', 'Stacking images on hover'],
+  ['037', 'Fading transition'],
+  ['038', 'Dynamic list scrolling'],
+  ['039', 'Image with perspective'],
+  ['040', 'Double circular carousel'],
+  ['041', 'Dynamic hover effect'],
+  ['042', 'Smooth stacking images'],
+  ['043', 'Curved fan on enter + hover'],
+  ['044', 'Mask effect'],
+  ['045', 'Folders effect'],
+  ['046', 'Letter by letter (random)'],
+  ['047', 'Infinite carousel with squash'],
+  ['048', '3D spiral scroll'],
+  ['049', 'Defying gravity'],
+  ['050', 'Infinite fullscreen scroll'],
+  ['051', 'Vertical multi-track'],
+  ['052', 'Pinned text rail'],
+  ['053', 'Pinned 3D line swap'],
+  ['054', 'Pinned flip stack'],
+  ['055', 'Elastic pointer rail'],
+  ['056', 'Dual stack flip'],
+  ['057', 'Words split, images burst'],
+  ['058', 'Line letter spin'],
+  ['059', 'Path text camera'],
+  ['060', 'Masked vertical image rail'],
+  ['061', '3D orbit drift'],
+  ['062', 'Inertia trail burst'],
+  ['063', 'Drag reorder list'],
+  ['064', 'Scroll-revealed gallery'],
+  ['065', 'Triple marquee parallax'],
+  ['066', 'Pinned line mask reveal'],
+  ['067', 'Cylindrical letter reveal'],
+  ['068', 'Images flowing'],
+  ['069', 'Inchworm scroll (R→L)'],
+  ['070', 'Inchworm scroll'],
+  ['071', 'Grid proximity'],
+  ['072', 'Image scroll flow'],
+  ['073', 'Scroll-based timeline'],
+  ['074', 'Pinned bottom hinge'],
+  ['075', 'Pinned scroll fan'],
+  ['076', 'Pinned radial spread'],
+  ['077', 'Depth card interaction'],
+  ['078', 'Image flight'],
+  ['079', 'Weight-shift marquee'],
+  ['080', 'Matter cursor swarm'],
+  ['081', 'Letter-by-letter swap'],
+  ['082', 'Upward image flow'],
+  ['083', 'Pinned multi-lane drift'],
+  ['084', 'Pinned depth rows'],
+  ['085', 'Scroll word mask'],
+  ['086', 'Cursor insert image'],
+  ['087', 'Staggered card motion'],
+  ['088', 'Drag gallery reveal'],
+  ['089', 'Jelly headline motion'],
+  ['090', 'Scrubbed random reveal'],
+  ['091', '3D wheel gallery'],
+  ['092', 'Vanishing mouse trail'],
+  ['093', 'Hover letter → image insertion'],
+  ['094', 'Orbital image scroll'],
+  ['095', 'Bouncy card grid'],
+  ['096', 'Magnetic image reveal'],
+  ['097', 'Tightening word lines'],
+  ['098', 'Curved scroll reveal'],
+  ['099', '3D sphere'],
+  ['100', 'Orbital scroll gallery'],
+];
+
+const grid = document.getElementById('grid');
+effects.forEach(([num, title]) => {
+  const a = document.createElement('a');
+  a.className = 'card';
+  a.href = `effect${num}.html`;
+  a.target = '_blank';
+  a.rel = 'noopener';
+  a.innerHTML = `
+    <div class="preview">
+      <span class="badge">#${num}</span>
+      <span class="open-hint">OPEN ↗</span>
+      <iframe src="effect${num}.html" loading="lazy" width="1920" height="1080" style="transform:scale(0.156);transform-origin:top left;width:1920px;height:1080px"></iframe>
+    </div>
+    <div class="meta">
+      <div class="head">${title}</div>
+    </div>`;
+  grid.appendChild(a);
+});
+</script>
+</body>
+</html>

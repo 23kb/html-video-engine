@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Effect 091 — 3D wheel gallery (WPForms)</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#0a0806; font-family:var(--wpf-font-stack); overflow:hidden; }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.45); background:linear-gradient(180deg,#fdfaf3 0%,#ede1cb 100%); color:var(--wpf-ink); --card-w:260px; --card-h:240px; }
+  .stage.dark { background:radial-gradient(ellipse at center,#1f1810 0%,#0a0806 78%); color:#faf6ee; }
+  .stage.paper { background:radial-gradient(ellipse at center,#fffaf2 0%,#eadfc8 100%); }
+  .stage.blueprint { background:linear-gradient(135deg,#f8fbff 0%,#e8f0f8 100%); }
+  .loading { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:#fdf8f0; color:#646970; font-size:14px; z-index:80; transition:opacity 0.35s; }
+  .stage.dark .loading { background:#14110e; color:#faf6ee; }
+  .loading.gone { opacity:0; pointer-events:none; }
+  .loading .spinner { width:32px; height:32px; border:3px solid #dcdcde; border-top-color:var(--wpf-orange); border-radius:50%; margin-right:12px; animation:spin 0.8s linear infinite; }
+  @keyframes spin { to { transform:rotate(360deg); } }
+  .brand { position:absolute; top:54px; left:70px; display:flex; align-items:center; gap:12px; z-index:50; opacity:0; }
+  .brand .dot { width:14px; height:14px; border-radius:50%; background:var(--wpf-orange); }
+  .brand .name { font-weight:700; font-size:22px; letter-spacing:0; color:currentColor; }
+  .effect-title { position:absolute; top:24px; right:24px; padding:10px 16px; border-radius:6px; background:rgba(20,17,14,0.82); color:#fff; z-index:55; font-size:13px; font-weight:600; opacity:0; }
+  .effect-title b { color:var(--wpf-orange); }
+  .headline { position:absolute; left:90px; right:90px; top:112px; z-index:45; text-align:center; font-size:62px; line-height:1.05; font-weight:800; letter-spacing:0; opacity:0; }
+  .headline .accent { color:var(--wpf-orange); }
+  .subhead { position:absolute; left:90px; right:90px; top:190px; z-index:45; text-align:center; color:rgba(35,40,45,0.62); font-size:19px; opacity:0; }
+  .stage.dark .subhead { color:rgba(250,246,238,0.58); }
+  .center-hub { position:absolute; left:50%; top:50%; width:190px; height:190px; margin:-95px 0 0 -95px; border-radius:50%; background:var(--wpf-orange); color:#fff; display:flex; align-items:center; justify-content:center; text-align:center; font-weight:800; line-height:1.08; z-index:30; box-shadow:0 24px 80px rgba(226,119,48,0.32); opacity:0; }
+  .cards { position:absolute; inset:0; z-index:20; perspective:1400px; transform-style:preserve-3d; pointer-events:none; }
+  .cards.back { z-index:5; opacity:0.42; }
+  .motion-card { position:absolute !important; left:50%; top:50%; width:var(--card-w); height:var(--card-h); flex-shrink:0; will-change:transform,opacity,filter; transform-origin:center center; pointer-events:none; }
+
+  /* SOURCE: snapshots/admin-templates/index.html (.wpforms-template) */
+  .cards .wpforms-template.motion-card { background:#fff; border:1px solid #e9e2d4; border-radius:14px; box-shadow:0 18px 44px rgba(20,22,28,0.20),0 4px 12px rgba(20,22,28,0.10); display:flex; flex-direction:column; overflow:hidden; padding:0; color:#1d2327; }
+  .cards .wpforms-template.motion-card .wpforms-template-thumbnail { height:62%; min-height:90px; overflow:hidden; flex-shrink:0; margin:0; padding:0; border-bottom:1px solid #eee7da; background:#f7f4ef; }
+  .cards .wpforms-template.motion-card .wpforms-template-thumbnail img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+  .cards .wpforms-template.motion-card .wpforms-template-name { font-size:15px; font-weight:700; color:#1d2327; margin:0; padding:13px 15px 0; line-height:1.25; letter-spacing:0; }
+  .cards .wpforms-template.motion-card .wpforms-template-desc { font-size:11.5px; line-height:1.45; color:#5b6168; margin:0; padding:6px 15px 0; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .cards .wpforms-template.motion-card .wpforms-template-favorite,
+  .cards .wpforms-template.motion-card .wpforms-template-buttons { display:none !important; }
+
+  /* SOURCE: snapshots/admin-addons/index.html (.wpforms-addons-list-item) */
+  .cards .wpforms-addons-list-item.motion-card { background:#fff; border:1px solid #e4e4e7; border-radius:10px; box-shadow:0 18px 40px rgba(20,22,28,0.20); display:flex; flex-direction:column; overflow:hidden; color:#1d2327; }
+  .cards .wpforms-addons-list-item-header { display:flex; gap:13px; align-items:flex-start; padding:16px 17px 8px; }
+  .cards .wpforms-addons-list-item-header > img { width:44px; height:44px; flex-shrink:0; object-fit:contain; border-radius:6px; }
+  .cards .wpforms-addons-list-item-header-meta { flex:1; min-width:0; }
+  .cards .wpforms-addons-list-item-header-meta-title { display:flex; align-items:center; gap:7px; flex-wrap:wrap; margin-bottom:4px; }
+  .cards .wpforms-addons-list-item-header-meta-title a { font-size:15px; font-weight:700; color:#1d2327; text-decoration:none; }
+  .cards .wpforms-badge { font-size:9.5px; font-weight:600; line-height:1; padding:3px 7px; border-radius:999px; background:#eef0f2; color:#50575e; white-space:nowrap; }
+  .cards .wpforms-badge-blue { background:#e3effb; color:#1f6fc4; }
+  .cards .wpforms-badge-orange { background:#fceee1; color:#c2611f; }
+  .cards .wpforms-badge-purple { background:#efe7fb; color:#7340c8; }
+  .cards .wpforms-badge-green { background:#e2f3ea; color:#21794a; }
+  .cards .wpforms-addons-list-item-header-meta-excerpt { font-size:11.5px; line-height:1.5; color:#5f6368; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+  .cards .wpforms-addons-list-item-footer { display:flex; align-items:center; gap:10px; margin-top:auto; padding:9px 17px; border-top:1px solid #f0f0f1; background:#fcfcfd; }
+  .cards .wpforms-addons-list-item-footer-settings-link { font-size:11.5px; color:#2271b1; text-decoration:none; font-weight:500; }
+  .cards .wpforms-addons-list-item-footer-actions { display:flex; align-items:center; margin-left:auto; }
+  .cards .wpforms-toggle-control { display:inline-flex; align-items:center; gap:8px; position:relative; }
+  .cards .wpforms-toggle-control input[type=checkbox] { position:absolute; opacity:0; width:1px; height:1px; margin:0; }
+  .cards .wpforms-toggle-control-status { font-size:11px; color:#5f6368; }
+  .cards .wpforms-toggle-control-icon { display:inline-block; width:34px; height:19px; border-radius:999px; background:#c3c4c7; position:relative; }
+  .cards .wpforms-toggle-control-icon::after { content:''; position:absolute; top:2px; left:2px; width:15px; height:15px; border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,0.3); }
+  .cards .wpforms-toggle-control input:checked ~ .wpforms-toggle-control-icon { background:#2c8a55; }
+  .cards .wpforms-toggle-control input:checked ~ .wpforms-toggle-control-icon::after { left:17px; }
+
+  .ghost { position:absolute; width:30px; height:30px; border-radius:50%; background:var(--wpf-orange); box-shadow:0 0 26px rgba(226,119,48,0.74); pointer-events:none; z-index:60; transform:translate(-50%,-50%); opacity:0; }
+  .word-stage { position:absolute; inset:0; z-index:45; pointer-events:none; }
+  .word-line { position:absolute; left:90px; right:90px; top:350px; text-align:center; font-size:82px; line-height:1.05; font-weight:800; letter-spacing:0; color:currentColor; }
+  .word-line.small { font-size:58px; top:326px; }
+  .word-line .w, .word-line .ch { display:inline-block; will-change:transform,opacity,filter; }
+  .word-line .accent { color:var(--wpf-orange); }
+  .progress { position:absolute; bottom:108px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:48; }
+  .progress span { width:8px; height:8px; border-radius:50%; background:rgba(20,22,28,0.18); }
+  .stage.dark .progress span { background:rgba(250,246,238,0.25); }
+  .progress span.active { background:var(--wpf-orange); transform:scale(1.4); }
+  .mask-panel { position:absolute; left:50%; top:50%; width:980px; height:600px; margin:-300px 0 0 -490px; border-radius:22px; overflow:hidden; z-index:18; box-shadow:0 30px 90px rgba(20,22,28,0.24); opacity:0; }
+  .mask-panel iframe { position:absolute; left:0; top:0; width:1280px; height:720px; border:0; transform-origin:0 0; transform:scale(0.765625); pointer-events:none; }
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; font-family:inherit; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:620px; }
+</style></head><body>
+<div class="stage-wrap"><div class="stage dark" id="stage">
+  <div class="loading" id="loading"><div class="spinner"></div>Loading real WPForms snapshot DOM...</div>
+  <div class="brand"><div class="dot"></div><div class="name">WPForms</div></div>
+  <div class="effect-title"><b>EFFECT 091</b> - 3D wheel gallery - real templates</div>
+  <div class="headline">3D wheel gallery</div>
+  <div class="subhead">Real template cards wrap around a wheel.</div>
+  <div class="center-hub">WPForms</div>
+  <div class="word-stage" id="words"></div>
+  
+  <div class="cards" id="cards"></div>
+  <div class="ghost" id="ghost"></div>
+</div></div>
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 091 · 3D wheel gallery · REAL WPForms template cards adopted from snapshots</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script src="_snapshot-iframe.js"></script>
+<script>
+  const EFFECT = {"id":91,"short":"3D wheel gallery","mode":"cylinder","source":"template","count":16,"cardW":220,"cardH":220,"originalTitle":"Effect 091 — 3D wheel gallery (WPForms port)","theme":"dark","headline":"3D wheel gallery","sub":"Real template cards wrap around a wheel."};
+
+  const stage = document.getElementById('stage');
+  const cardsLayer = document.getElementById('cards');
+  const ghost = document.getElementById('ghost');
+  const loading = document.getElementById('loading');
+
+  function fit(){
+    const scale = Math.min(innerWidth / 1920, (innerHeight - 56) / 1080) * 0.96;
+    stage.style.transform = 'scale(' + scale + ')';
+  }
+  addEventListener('resize', fit); fit();
+
+  function rng(seed){
+    let a = seed || 1;
+    return function(){
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      let t = a;
+      t = Math.imul(t ^ t >>> 15, t | 1);
+      t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function clamp(n, a, b){ return Math.max(a, Math.min(b, n)); }
+  function wrap(min, max, value){
+    const range = max - min;
+    return ((((value - min) % range) + range) % range) + min;
+  }
+  function setCardSize(cards, w, h){
+    stage.style.setProperty('--card-w', (w || 260) + 'px');
+    stage.style.setProperty('--card-h', (h || 240) + 'px');
+    cards.forEach(function(card){
+      card.style.marginLeft = (-(w || 260) / 2) + 'px';
+      card.style.marginTop = (-(h || 240) / 2) + 'px';
+    });
+  }
+  function posGrid(cards, cols, gapX, gapY, topShift){
+    const rows = Math.ceil(cards.length / cols);
+    const out = [];
+    cards.forEach(function(card, i){
+      const c = i % cols;
+      const r = Math.floor(i / cols);
+      out.push({
+        x: (c - (cols - 1) / 2) * gapX,
+        y: (r - (rows - 1) / 2) * gapY + (topShift || 0)
+      });
+    });
+    return out;
+  }
+  function setGhost(x, y){ gsap.set(ghost, { x:x, y:y }); }
+  function moveGhost(tl, points, start, dur, ease){
+    const state = { x: points[0].x, y: points[0].y };
+    setGhost(state.x, state.y);
+    points.slice(1).forEach(function(p, i){
+      tl.to(state, { x:p.x, y:p.y, duration:dur || 1.4, ease:ease || 'power2.inOut',
+        onUpdate:function(){ setGhost(state.x, state.y); } }, (start || 0.5) + i * (dur || 1.4));
+    });
+    return state;
+  }
+  function textSpans(text, byChar){
+    const line = document.createElement('div');
+    line.className = 'word-line' + (EFFECT.smallText ? ' small' : '');
+    if (byChar) {
+      text.split('').forEach(function(ch){
+        const s = document.createElement('span');
+        s.className = 'ch' + (EFFECT.accent && EFFECT.accent.indexOf(ch) >= 0 ? ' accent' : '');
+        s.textContent = ch === ' ' ? '\u00a0' : ch;
+        line.appendChild(s);
+      });
+    } else {
+      text.split(' ').forEach(function(word, i){
+        const s = document.createElement('span');
+        s.className = 'w' + (EFFECT.accentWords && EFFECT.accentWords.some(function(k){ return word.toLowerCase().indexOf(k.toLowerCase()) >= 0; }) ? ' accent' : '');
+        s.textContent = word + (i === text.split(' ').length - 1 ? '' : ' ');
+        line.appendChild(s);
+      });
+    }
+    document.getElementById('words').appendChild(line);
+    return line;
+  }
+  function addProgress(n){
+    const p = document.createElement('div');
+    p.className = 'progress';
+    for (let i = 0; i < n; i++) {
+      const s = document.createElement('span');
+      if (i === 0) s.className = 'active';
+      p.appendChild(s);
+    }
+    stage.appendChild(p);
+    return Array.from(p.children);
+  }
+  async function adoptCards(){
+    const source = EFFECT.source === 'addons'
+      ? { slug:'admin-addons', selector:'.wpforms-addons-list-item', min:Math.min(EFFECT.count, 20) }
+      : { slug:'admin-templates', selector:'.wpforms-template', min:Math.min(EFFECT.count + 2, 24) };
+    const mount = SnapshotIframe.mountSnapshot(stage, {
+      slug:source.slug, x:0, y:0, w:1280, h:720, scale:1.5, zIndex:1
+    });
+    await mount.ready;
+    await SnapshotIframe.awaitDom(mount.query, source.selector, { min: source.min, timeoutMs: 8000 });
+    let nodes = Array.from(mount.query(source.selector));
+    if (source.slug === 'admin-templates') {
+      nodes = nodes.filter(function(node){
+        return node.id !== 'wpforms-template-generate' && node.id !== 'wpforms-template-blank';
+      });
+    }
+    nodes = nodes.slice(EFFECT.offset || 0, (EFFECT.offset || 0) + EFFECT.count);
+    nodes.forEach(function(node, i){
+      // SOURCE: snapshots/admin-templates/index.html (.wpforms-template) or snapshots/admin-addons/index.html (.wpforms-addons-list-item)
+      SnapshotIframe.rewriteRelativeUrls(node, source.slug);
+      node.classList.add('motion-card');
+      node.dataset.realSnapshot = source.slug;
+      node.dataset.motionIndex = String(i);
+      cardsLayer.appendChild(node);
+    });
+    mount.iframe.style.opacity = '0';
+    setCardSize(nodes, EFFECT.cardW, EFFECT.cardH);
+    return nodes;
+  }
+  function intro(tl){
+    tl.to('.brand', { opacity:1, duration:0.45, ease:'power2.out' }, 0.1);
+    tl.to('.effect-title', { opacity:1, duration:0.45, ease:'power2.out' }, 0.15);
+    tl.to('.headline', { opacity:1, duration:0.55, ease:'power2.out' }, 0.25);
+    tl.to('.subhead', { opacity:1, duration:0.55, ease:'power2.out' }, 0.38);
+  }
+  function modeSpiral(cards, tl){
+    intro(tl);
+    tl.to('.center-hub', { opacity:1, scale:1, duration:0.8, ease:'back.out(1.5)' }, 0.35);
+    tl.from('.center-hub', { scale:0.35, duration:0.8, ease:'back.out(1.5)' }, 0.35);
+    cards.forEach(function(card, i){
+      const state = { angle:i * (360 / cards.length), radius:EFFECT.variant === 'magnetic' ? 1000 : 1400 };
+      const endRadius = EFFECT.variant === 'bloom' ? 300 + i * 5 : 235 + i * 7;
+      const turns = EFFECT.variant === 'sphere' ? 720 : 540;
+      const start = 0.7 + i * 0.035;
+      gsap.set(card, { x:Math.cos(state.angle * Math.PI / 180) * state.radius, y:Math.sin(state.angle * Math.PI / 180) * state.radius, rotation:state.angle + 90, scale:0.46, opacity:0 });
+      tl.to(card, { opacity:1, scale:EFFECT.variant === 'sphere' ? 0.72 : 1, duration:0.45, ease:'power2.out' }, start);
+      tl.to(state, { angle:state.angle + turns, radius:endRadius, duration:4.2, ease:EFFECT.variant === 'magnetic' ? 'elastic.out(1,0.55)' : 'power2.inOut',
+        onUpdate:function(){
+          const r = state.angle * Math.PI / 180;
+          gsap.set(card, { x:Math.cos(r) * state.radius, y:Math.sin(r) * state.radius, rotation:state.angle + 90 });
+        } }, start);
+    });
+  }
+  function modeGridCursor(cards, tl){
+    intro(tl);
+    tl.to('.ghost', { opacity:1, duration:0.35 }, 0.25);
+    const cols = EFFECT.cols || 6;
+    const positions = posGrid(cards, cols, EFFECT.gapX || 300, EFFECT.gapY || 220, EFFECT.gridY || 60);
+    cards.forEach(function(card, i){ gsap.set(card, { x:positions[i].x, y:positions[i].y, scale:0.95, opacity:1 }); });
+    const cursor = moveGhost(tl, [{x:300,y:300},{x:1600,y:280},{x:1600,y:800},{x:300,y:800},{x:960,y:540},{x:1700,y:540},{x:220,y:540}], 0.65, 1.25, 'sine.inOut');
+    gsap.ticker.add(function(){
+      if (tl.paused() && tl.time() === 0) return;
+      cards.forEach(function(card, i){
+        const p = positions[i];
+        const dx = cursor.x - (960 + p.x);
+        const dy = cursor.y - (540 + p.y);
+        const d = Math.hypot(dx, dy);
+        const near = clamp(1 - d / 640, 0, 1);
+        const angle = Math.atan2(dy, dx) * 180 / Math.PI;
+        const scale = EFFECT.mode === 'proximityGrid' ? 0.82 + near * 0.48 : 0.95 + near * 0.12;
+        gsap.set(card, { rotation:angle * near * 0.16, scale:scale, z:near * 80 });
+      });
+    });
+  }
+  function modeRiseBounce(cards, tl){
+    intro(tl);
+    cards.forEach(function(card, i){ gsap.set(card, { x:(i - (cards.length - 1) / 2) * 12, y:820, opacity:0, rotation:(i - 3) * 2 }); });
+    cards.forEach(function(card, i){
+      const t = 0.82 + i * 0.72;
+      tl.to(card, { y:20, x:(i - (cards.length - 1) / 2) * 4, opacity:1, rotation:0, duration:0.65, ease:'back.out(1.35)' }, t);
+      tl.to(card, { y:20, duration:0.46 }, t + 0.65);
+      if (i < cards.length - 1) tl.to(card, { y:-950, opacity:0, duration:0.7, ease:'back.in(1.5)' }, t + 1.1);
+    });
+  }
+  function modeCarousel(cards, tl){
+    intro(tl);
+    const gap = EFFECT.gapX || 330;
+    const cycle = gap * cards.length;
+    cards.forEach(function(card, i){ gsap.set(card, { x:-860 + i * gap, y:EFFECT.rowY || 70, opacity:1, scale:1 }); });
+    const state = { x:0 };
+    function render(){
+      cards.forEach(function(card, i){
+        const x = wrap(-980, cycle - 980, -860 + i * gap + state.x);
+        gsap.set(card, { x:x, y:EFFECT.rowY || 70 });
+      });
+    }
+    tl.to(state, { x:-cycle, duration:EFFECT.long ? 15 : 9, ease:EFFECT.ease || 'power3.inOut', onUpdate:render }, 0.6);
+    [0.7, 3.5, 6.2].forEach(function(t){
+      tl.to(cards, { scaleX:EFFECT.variant === 'squash' ? 1.36 : 1.22, scaleY:EFFECT.variant === 'squash' ? 0.82 : 0.92, duration:0.7, ease:'power2.out', stagger:0.01 }, t);
+      tl.to(cards, { scaleX:1, scaleY:1, duration:1.0, ease:'elastic.out(1,0.55)', stagger:0.01 }, t + 0.7);
+    });
+  }
+  function modeTrail(cards, tl){
+    intro(tl);
+    tl.to('.ghost', { opacity:1, duration:0.35 }, 0.25);
+    const cursor = moveGhost(tl, [{x:300,y:540},{x:1600,y:300},{x:1700,y:800},{x:300,y:800},{x:960,y:220},{x:1520,y:540}], 0.55, 1.35, 'power2.inOut');
+    const rand = rng(EFFECT.id);
+    cards.forEach(function(card, i){
+      const pos = { x:960, y:540 };
+      const offX = EFFECT.mode === 'bubbleTrail' ? (rand() - 0.5) * 160 : 0;
+      const offY = EFFECT.mode === 'bubbleTrail' ? (rand() - 0.5) * 130 : 0;
+      const damping = (EFFECT.mode === 'bubbleTrail' ? 0.09 + rand() * 0.07 : 0.16 - i * 0.012);
+      gsap.set(card, { opacity:1, scale:Math.max(0.45, 1 - i * 0.055), zIndex:cards.length - i });
+      gsap.ticker.add(function(){
+        if (tl.paused() && tl.time() === 0) return;
+        pos.x += (cursor.x + offX - pos.x) * damping;
+        pos.y += (cursor.y + offY - pos.y) * damping;
+        gsap.set(card, { x:pos.x - 960, y:pos.y - 540, rotation:(i - cards.length / 2) * (EFFECT.mode === 'bubbleTrail' ? 2.2 : 0.6) });
+      });
+    });
+  }
+  function modeText(cards, tl){
+    intro(tl);
+    const text = EFFECT.text || 'Build forms faster';
+    const byChar = EFFECT.textKind !== 'words';
+    const line = textSpans(text, byChar);
+    const bits = Array.from(line.querySelectorAll(byChar ? '.ch' : '.w'));
+    const rowY = EFFECT.cardRowY || 260;
+    cards.forEach(function(card, i){
+      gsap.set(card, { x:(i - (cards.length - 1) / 2) * (EFFECT.gapX || 260), y:rowY + (i % 2) * 24, opacity:0, scale:0.82, rotation:(i - cards.length / 2) * 1.5 });
+      tl.to(card, { opacity:1, y:rowY, duration:0.7, ease:'power3.out' }, 1.1 + i * 0.05);
+    });
+    if (EFFECT.textMotion === 'progress') {
+      const lines = EFFECT.lines || [text];
+      const dots = addProgress(lines.length);
+      const stageWords = document.getElementById('words');
+      stageWords.innerHTML = '';
+      let cursor = 0.65;
+      lines.forEach(function(sentence, idx){
+        const l = textSpans(sentence, false);
+        const ws = Array.from(l.querySelectorAll('.w'));
+        gsap.set(ws, { y:28, opacity:0 });
+        tl.to(ws, { y:0, opacity:1, duration:0.55, stagger:0.04, ease:'power3.out' }, cursor);
+        const end = cursor + 0.55 + ws.length * 0.04 + 0.85;
+        if (idx < lines.length - 1) {
+          tl.to(ws, { y:-28, opacity:0, duration:0.42, stagger:0.03, ease:'power3.in' }, end);
+          tl.call(function(){ dots.forEach(function(d, di){ d.classList.toggle('active', di === idx + 1); }); }, null, end + 0.2);
+        }
+        cursor = end + 0.2;
+      });
+      return;
+    }
+    if (EFFECT.textMotion === 'random') {
+      const rand = rng(EFFECT.id);
+      bits.forEach(function(b){ gsap.set(b, { x:(rand() - 0.5) * 900, y:(rand() - 0.5) * 420, rotation:(rand() - 0.5) * 90, opacity:0 }); });
+      tl.to(bits, { x:0, y:0, rotation:0, opacity:1, duration:1.2, stagger:{ each:0.025, from:'random' }, ease:'power4.out' }, 0.6);
+    } else if (EFFECT.textMotion === 'center') {
+      gsap.set(bits, { y:32, opacity:0, scale:0.7 });
+      tl.to(bits, { y:0, opacity:1, scale:1, duration:0.72, stagger:{ each:0.035, from:'center' }, ease:'back.out(1.8)' }, 0.65);
+    } else if (EFFECT.textMotion === 'spin') {
+      gsap.set(bits, { rotationX:-110, y:38, opacity:0, transformPerspective:900 });
+      tl.to(bits, { rotationX:0, y:0, opacity:1, duration:0.72, stagger:0.035, ease:'back.out(1.4)' }, 0.65);
+    } else if (EFFECT.textMotion === 'jelly') {
+      gsap.set(bits, { opacity:1 });
+      tl.from(bits, { y:36, opacity:0, duration:0.45, stagger:0.025, ease:'power2.out' }, 0.55);
+      tl.to(line, { scaleX:1.08, scaleY:0.9, skewX:-6, duration:0.34, ease:'power2.out' }, 1.5);
+      tl.to(line, { scaleX:1, scaleY:1, skewX:0, duration:0.9, ease:'elastic.out(1,0.42)' }, 1.84);
+    } else if (EFFECT.textMotion === 'rail') {
+      gsap.set(bits, { y:90, opacity:0 });
+      tl.to(bits, { y:0, opacity:1, duration:0.7, stagger:0.025, ease:'power3.out' }, 0.6);
+      tl.to(line, { x:-220, duration:3.2, ease:'sine.inOut' }, 1.8);
+      tl.to(line, { x:140, duration:2.8, ease:'sine.inOut' }, 5.0);
+    } else {
+      gsap.set(bits, { yPercent:100, opacity:0 });
+      tl.to(bits, { yPercent:0, opacity:1, duration:0.66, stagger:0.035, ease:'power3.out' }, 0.65);
+      tl.to(bits, { yPercent:-100, opacity:0, duration:0.55, stagger:0.025, ease:'power3.in' }, 3.6);
+    }
+  }
+  function modeOrbit(cards, tl){
+    intro(tl);
+    tl.to('.center-hub', { opacity:1, scale:1, duration:0.65, ease:'back.out(1.5)' }, 0.45);
+    const state = { rot:0 };
+    const extras = cards.map(function(){ return { r:0 }; });
+    const radius = EFFECT.radius || 430;
+    function render(){
+      cards.forEach(function(card, i){
+        const a = (i / cards.length * 360 + state.rot) * Math.PI / 180;
+        const r = radius + extras[i].r;
+        gsap.set(card, { x:Math.cos(a) * r, y:Math.sin(a) * r, rotation:state.rot * -0.4, opacity:1 });
+      });
+    }
+    cards.forEach(function(card){ gsap.set(card, { x:0, y:0, scale:0.35, opacity:0 }); });
+    cards.forEach(function(card, i){
+      const a = i / cards.length * Math.PI * 2;
+      tl.to(card, { x:Math.cos(a) * radius, y:Math.sin(a) * radius, scale:EFFECT.orbitScale || 0.86, opacity:1, duration:0.75, ease:'back.out(1.3)' }, 0.7 + i * 0.045);
+    });
+    tl.to(state, { rot:EFFECT.reverse ? -360 : 360, duration:EFFECT.long ? 18 : 12, ease:'none', onUpdate:render }, 1.5);
+    [2.4, 5.8, 9.2].forEach(function(t, j){
+      const idx = (j * 3 + EFFECT.id) % cards.length;
+      tl.to(extras[idx], { r:220 + j * 45, duration:0.34, ease:'power3.out', onUpdate:render }, t);
+      tl.to(extras[idx], { r:0, duration:1.0, ease:'elastic.out(1,0.44)', onUpdate:render }, t + 0.34);
+    });
+  }
+  function modeMarquee(cards, tl){
+    intro(tl);
+    const gap = EFFECT.gapX || 310;
+    const rows = EFFECT.rows || 2;
+    cards.forEach(function(card, i){
+      const row = i % rows;
+      const col = Math.floor(i / rows);
+      gsap.set(card, { x:-860 + col * gap, y:(row - (rows - 1) / 2) * (EFFECT.gapY || 260) + (EFFECT.rowY || 70), rotation:row % 2 ? -5 : 5, opacity:1, scale:0.9 });
+    });
+    const state = { x0:0, x1:0, x2:0 };
+    function render(){
+      cards.forEach(function(card, i){
+        const row = i % rows;
+        const col = Math.floor(i / rows);
+        const drift = row === 0 ? state.x0 : row === 1 ? state.x1 : state.x2;
+        const x = wrap(-980, 1180, -860 + col * gap + drift);
+        gsap.set(card, { x:x });
+      });
+    }
+    tl.to(state, { x0:-gap * Math.ceil(cards.length / rows), duration:15, ease:'none', onUpdate:render }, 0.5);
+    tl.to(state, { x1: gap * Math.ceil(cards.length / rows), duration:14, ease:'none', onUpdate:render }, 0.5);
+    if (rows > 2) tl.to(state, { x2:-gap * Math.ceil(cards.length / rows) * 0.7, duration:17, ease:'none', onUpdate:render }, 0.5);
+  }
+  function modeRandomFocus(cards, tl){
+    intro(tl);
+    tl.to('.ghost', { opacity:1, duration:0.35 }, 0.25);
+    const cols = EFFECT.cols || 5;
+    const positions = posGrid(cards, cols, EFFECT.gapX || 300, EFFECT.gapY || 230, EFFECT.gridY || 90);
+    cards.forEach(function(card, i){ gsap.set(card, { x:positions[i].x, y:positions[i].y, opacity:1, scale:0.92 }); });
+    const cursor = moveGhost(tl, [{x:300,y:300},{x:1600,y:300},{x:1600,y:780},{x:300,y:780},{x:960,y:540}], 0.55, 1.55, 'power2.inOut');
+    gsap.ticker.add(function(){
+      if (tl.paused() && tl.time() === 0) return;
+      let best = 0, bestD = Infinity;
+      positions.forEach(function(p, i){
+        const d = Math.hypot((960 + p.x) - cursor.x, (540 + p.y) - cursor.y);
+        if (d < bestD) { bestD = d; best = i; }
+      });
+      cards.forEach(function(card, i){
+        const p = positions[i];
+        const angle = Math.atan2((540 + p.y) - cursor.y, (960 + p.x) - cursor.x);
+        const isBest = i === best;
+        gsap.set(card, { x:p.x + Math.cos(angle) * (isBest ? 0 : 30), y:p.y + Math.sin(angle) * (isBest ? 0 : 30), scale:isBest ? 1.18 : 0.88, zIndex:isBest ? 10 : 1 });
+      });
+    });
+  }
+  function modeGridDrift(cards, tl){
+    intro(tl);
+    const cols = EFFECT.cols || 10;
+    const gapX = EFFECT.gapX || 250, gapY = EFFECT.gapY || 200;
+    const positions = posGrid(cards, cols, gapX, gapY, 70);
+    cards.forEach(function(card, i){ gsap.set(card, { x:positions[i].x, y:positions[i].y, opacity:1, scale:0.72 + (i % 5) * 0.02 }); });
+    const state = { x:0, y:0, rot:0 };
+    function render(){
+      cards.forEach(function(card, i){
+        const p = positions[i];
+        gsap.set(card, {
+          x:wrap(-1100, 1100, p.x + state.x * (i % 2 ? -1 : 1)),
+          y:wrap(-650, 650, p.y + state.y * ((i % 3) - 1)),
+          rotation:(i % 2 ? -1 : 1) * state.rot
+        });
+      });
+    }
+    tl.to(state, { x:EFFECT.driftX || 620, y:EFFECT.driftY || 360, rot:EFFECT.variant === 'columns' ? 0 : 6, duration:EFFECT.long ? 14 : 10, ease:'none', onUpdate:render }, 0.5);
+  }
+  function modeListPreview(cards, tl){
+    intro(tl);
+    cards.forEach(function(card, i){
+      gsap.set(card, { x:-600, y:-310 + i * 105, scale:0.5, opacity:1, transformOrigin:'left center' });
+    });
+    const preview = cards[0];
+    tl.to(cards, { x:-520, opacity:1, duration:0.55, stagger:0.05, ease:'power3.out' }, 0.55);
+    cards.slice(0, Math.min(6, cards.length)).forEach(function(card, i){
+      const t = 1.2 + i * 0.7;
+      tl.to(card, { scale:0.62, x:-470, duration:0.35, ease:'power2.out' }, t);
+      tl.to(card, { scale:0.5, x:-520, duration:0.35, ease:'power2.inOut' }, t + 0.4);
+      tl.to(preview, { x:350, y:-70, scale:1.25, rotation:(i - 2) * 1.5, duration:0.5, ease:'power3.out' }, t);
+    });
+  }
+  function modeSlides3d(cards, tl){
+    intro(tl);
+    cards.forEach(function(card, i){ gsap.set(card, { x:0, y:i * 18, z:-i * 90, rotationX:-i * 4, scale:1 - i * 0.04, opacity:i < 7 ? 1 : 0 }); });
+    tl.to(cards, { y:function(i){ return -260 + i * 36; }, z:function(i){ return -900 + i * 130; }, rotationX:-28, opacity:function(i){ return i < 8 ? 1 : 0; }, duration:5.8, stagger:0.05, ease:'power2.inOut' }, 0.7);
+  }
+  function modeRowExpand(cards, tl){
+    intro(tl);
+    cards.forEach(function(card, i){ gsap.set(card, { x:(i - (cards.length - 1) / 2) * 245, y:80, scaleX:0.8, scaleY:0.94, opacity:1 }); });
+    cards.forEach(function(card, i){
+      const t = 0.9 + i * 0.55;
+      tl.to(card, { scaleX:1.35, scaleY:1.04, y:40, duration:0.45, ease:'power3.out' }, t);
+      tl.to(card, { scaleX:0.8, scaleY:0.94, y:80, duration:0.55, ease:'power2.inOut' }, t + 0.55);
+    });
+  }
+  function modeShuffleBurst(cards, tl){
+    intro(tl);
+    const rand = rng(EFFECT.id);
+    cards.forEach(function(card, i){ gsap.set(card, { x:0, y:0, scale:0.4, rotation:(rand() - 0.5) * 80, opacity:0 }); });
+    tl.to(cards, { opacity:1, scale:0.9, x:function(i){ return (i - (cards.length - 1) / 2) * 135; }, y:function(i){ return (i % 2 ? 1 : -1) * (170 + rand() * 150); }, rotation:function(){ return (rand() - 0.5) * 34; }, duration:0.75, stagger:0.025, ease:'back.out(1.7)' }, 0.85);
+    tl.to(cards, { x:function(i){ return (i - (cards.length - 1) / 2) * 120; }, y:210, rotation:0, duration:1.0, stagger:0.018, ease:'elastic.out(1,0.45)' }, 2.6);
+  }
+  function modeMaskSweep(cards, tl){
+    intro(tl);
+    cards.forEach(function(card, i){ gsap.set(card, { x:(i - (cards.length - 1) / 2) * 145, y:80 + (i % 2) * 34, opacity:1, scale:0.78, clipPath:'inset(0 100% 0 0)' }); });
+    tl.to(cards, { clipPath:'inset(0 0% 0 0)', duration:1.1, stagger:0.08, ease:'power3.inOut' }, 0.75);
+    if (document.getElementById('formFrame')) {
+      tl.to('.mask-panel', { opacity:1, duration:0.7, ease:'power2.out' }, 1.35);
+      tl.from('.mask-panel', { y:40, scale:0.94, duration:0.7, ease:'power3.out' }, 1.35);
+    }
+    tl.to(cards, { x:function(i){ return (i - (cards.length - 1) / 2) * 160; }, y:-230, scale:0.52, opacity:0.55, duration:1.2, ease:'power2.inOut' }, 2.6);
+  }
+  function modeFlipbook(cards, tl){
+    intro(tl);
+    cards.forEach(function(card, i){ gsap.set(card, { x:780 + i * 60, y:80, rotationY:-24, opacity:0, scale:0.95 }); });
+    cards.forEach(function(card, i){
+      const t = 0.7 + i * 0.9;
+      tl.to(card, { x:0, rotationY:0, opacity:1, duration:0.65, ease:'power3.out' }, t);
+      tl.to(card, { x:-760, rotationY:24, opacity:0, duration:0.65, ease:'power3.in' }, t + 0.9);
+    });
+  }
+  function modeTilt(cards, tl){
+    intro(tl);
+    tl.to('.ghost', { opacity:1, duration:0.35 }, 0.25);
+    const card = cards[0];
+    gsap.set(card, { x:0, y:80, scale:EFFECT.mode === 'depthParallax' ? 1.3 : 1.55, opacity:1 });
+    const cursor = moveGhost(tl, [{x:420,y:300},{x:1500,y:260},{x:1640,y:820},{x:360,y:760},{x:960,y:520}], 0.55, 1.2, 'sine.inOut');
+    gsap.ticker.add(function(){
+      if (tl.paused() && tl.time() === 0) return;
+      const dx = (cursor.x - 960) / 960;
+      const dy = (cursor.y - 540) / 540;
+      gsap.set(card, { rotationY:dx * 18, rotationX:-dy * 14, x:dx * 40, y:80 + dy * 30 });
+    });
+  }
+  function modeRings(cards, tl){
+    intro(tl);
+    const half = Math.ceil(cards.length / 2);
+    const state = { a:0, b:0 };
+    function render(){
+      cards.forEach(function(card, i){
+        const outer = i < half;
+        const idx = outer ? i : i - half;
+        const total = outer ? half : cards.length - half;
+        const a = ((idx / total) * 360 + (outer ? state.a : state.b)) * Math.PI / 180;
+        const r = outer ? 430 : 280;
+        gsap.set(card, { x:Math.cos(a) * r, y:Math.sin(a) * r + 70, scale:outer ? 0.7 : 0.58, rotation:outer ? state.a * -0.25 : state.b * -0.25, opacity:1 });
+      });
+    }
+    render();
+    tl.to(state, { a:360, duration:14, ease:'none', onUpdate:render }, 0.7);
+    tl.to(state, { b:-360, duration:12, ease:'none', onUpdate:render }, 0.7);
+  }
+  function modeZStack(cards, tl){
+    intro(tl);
+    cards.forEach(function(card, i){ gsap.set(card, { x:i * 22, y:i * 15 + 40, z:-i * 40, rotation:(i - 3) * 2, scale:1 - i * 0.025, opacity:i < 9 ? 1 : 0 }); });
+    cards.forEach(function(card, i){
+      const t = 0.8 + i * 0.42;
+      tl.to(card, { x:-420 + i * 105, y:-120 + (i % 3) * 120, z:150, rotation:(i - 4) * 5, scale:0.82, duration:0.75, ease:'power3.out' }, t);
+      if (EFFECT.variant === 'trapdoor') tl.to(card, { rotationX:-92, transformOrigin:'center bottom', duration:0.75, ease:'power3.in' }, t + 0.85);
+    });
+  }
+  function modeFan(cards, tl){
+    intro(tl);
+    cards.forEach(function(card, i){ gsap.set(card, { x:0, y:760, opacity:0, rotation:0, scale:0.84 }); });
+    cards.forEach(function(card, i){
+      const a = -42 + (84 / Math.max(1, cards.length - 1)) * i;
+      const r = EFFECT.radius || 520;
+      const x = Math.sin(a * Math.PI / 180) * r;
+      const y = 190 - Math.cos(a * Math.PI / 180) * 140;
+      tl.to(card, { x:x, y:y, rotation:a * 0.4, opacity:1, scale:0.88, duration:0.9, ease:'back.out(1.4)' }, 0.75 + i * 0.055);
+    });
+  }
+  function modeStair(cards, tl){
+    intro(tl);
+    cards.forEach(function(card, i){
+      const a = i * 34 * Math.PI / 180;
+      gsap.set(card, { x:Math.cos(a) * 360, y:380 - i * 52, z:Math.sin(a) * 360, rotationY:i * 34, scale:0.72, opacity:0 });
+      tl.to(card, { opacity:1, duration:0.5, ease:'power2.out' }, 0.6 + i * 0.08);
+    });
+    tl.to(cards, { y:'-=260', rotationY:'+=160', duration:6.2, ease:'power2.inOut', stagger:0.015 }, 1.0);
+  }
+  function modeZoom(cards, tl){
+    intro(tl);
+    cards.forEach(function(card, i){ gsap.set(card, { x:0, y:80, scale:0.25, opacity:0, zIndex:cards.length - i }); });
+    cards.slice(0, 6).forEach(function(card, i){
+      const t = 0.8 + i * 1.05;
+      tl.to(card, { opacity:1, scale:3.2, duration:1.05, ease:'power2.inOut' }, t);
+      tl.to(card, { opacity:0, scale:5.2, filter:'blur(6px)', duration:0.55, ease:'power2.in' }, t + 0.95);
+    });
+  }
+  function modeVertical(cards, tl){
+    intro(tl);
+    const cols = EFFECT.cols || 3;
+    cards.forEach(function(card, i){
+      const c = i % cols;
+      const r = Math.floor(i / cols);
+      gsap.set(card, { x:(c - (cols - 1) / 2) * 350, y:-560 + r * 260, opacity:1, scale:0.78 });
+    });
+    const state = { y:0 };
+    function render(){
+      cards.forEach(function(card, i){
+        const c = i % cols;
+        const r = Math.floor(i / cols);
+        const dir = c % 2 ? -1 : 1;
+        gsap.set(card, { y:wrap(-640, 760, -560 + r * 260 + state.y * dir) });
+      });
+    }
+    tl.to(state, { y:900, duration:11, ease:'none', onUpdate:render }, 0.6);
+  }
+  function modeCylinder(cards, tl){
+    intro(tl);
+    const state = { rot:0 };
+    function render(){
+      cards.forEach(function(card, i){
+        const a = (i / cards.length * 360 + state.rot) * Math.PI / 180;
+        const x = Math.sin(a) * 520;
+        const z = Math.cos(a) * 520;
+        const sc = 0.52 + (z + 520) / 1040 * 0.48;
+        gsap.set(card, { x:x, y:80, z:z, scale:sc, rotationY:(i / cards.length * 360 + state.rot), opacity:0.35 + sc * 0.65 });
+      });
+    }
+    render();
+    tl.to(state, { rot:EFFECT.reverse ? -540 : 540, duration:10, ease:'power2.inOut', onUpdate:render }, 0.65);
+  }
+  function modeElasticRail(cards, tl){
+    intro(tl);
+    tl.to('.ghost', { opacity:1, duration:0.35 }, 0.25);
+    const cursor = moveGhost(tl, [{x:260,y:560},{x:1660,y:560},{x:400,y:560},{x:960,y:560}], 0.55, 1.45, 'power2.inOut');
+    cards.forEach(function(card, i){ gsap.set(card, { x:(i - (cards.length - 1) / 2) * 250, y:80, opacity:1, scale:0.85 }); });
+    gsap.ticker.add(function(){
+      if (tl.paused() && tl.time() === 0) return;
+      cards.forEach(function(card, i){
+        const baseX = (i - (cards.length - 1) / 2) * 250;
+        const dx = cursor.x - (960 + baseX);
+        const near = clamp(1 - Math.abs(dx) / 520, 0, 1);
+        gsap.set(card, { x:baseX + dx * 0.08, y:80 - near * 90, scale:0.85 + near * 0.22 });
+      });
+    });
+  }
+  function modeSplitBurst(cards, tl){
+    intro(tl);
+    const line = textSpans(EFFECT.text || 'FORMS', true);
+    const bits = Array.from(line.querySelectorAll('.ch'));
+    gsap.set(bits, { opacity:1 });
+    tl.to(bits.slice(0, Math.floor(bits.length / 2)), { x:-170, duration:0.75, ease:'power3.inOut' }, 0.9);
+    tl.to(bits.slice(Math.floor(bits.length / 2)), { x:170, duration:0.75, ease:'power3.inOut' }, 0.9);
+    cards.forEach(function(card, i){ gsap.set(card, { x:0, y:120, scale:0.22, opacity:0, rotation:(i - cards.length / 2) * 4 }); });
+    tl.to(cards, { opacity:1, scale:0.78, x:function(i){ return (i - (cards.length - 1) / 2) * 125; }, y:function(i){ return 190 + (i % 2) * 50; }, duration:0.85, stagger:0.035, ease:'back.out(1.7)' }, 1.0);
+    tl.to(cards, { x:0, y:170, scale:0.34, opacity:0.75, duration:0.85, stagger:{ each:0.025, from:'edges' }, ease:'power3.inOut' }, 3.0);
+  }
+  function modeParticle(cards, tl){
+    intro(tl);
+    tl.to('.ghost', { opacity:1, duration:0.35 }, 0.25);
+    const cursor = moveGhost(tl, [{x:360,y:360},{x:1500,y:320},{x:1200,y:780},{x:500,y:760},{x:960,y:540}], 0.55, 1.1, 'sine.inOut');
+    const rand = rng(EFFECT.id);
+    cards.forEach(function(card, i){
+      gsap.set(card, { x:0, y:0, scale:0.28, opacity:0 });
+      const t = 0.8 + i * 0.08;
+      tl.to(card, { opacity:1, x:function(){ return cursor.x - 960; }, y:function(){ return cursor.y - 540; }, duration:0.01 }, t);
+      tl.to(card, { x:(rand() - 0.5) * 1500, y:(rand() - 0.5) * 800, rotation:(rand() - 0.5) * 180, scale:0.42 + rand() * 0.28, duration:1.1, ease:'power3.out' }, t);
+      tl.to(card, { x:0, y:0, scale:0.1, opacity:0, duration:0.75, ease:'power3.in' }, t + 1.0);
+    });
+  }
+  function modeReorder(cards, tl){
+    intro(tl);
+    cards.forEach(function(card, i){ gsap.set(card, { x:(i - (cards.length - 1) / 2) * 235, y:90, opacity:1, scale:0.82 }); });
+    const moving = cards[Math.min(2, cards.length - 1)];
+    tl.to(moving, { y:-120, scale:0.95, duration:0.45, ease:'power2.out' }, 0.9);
+    tl.to(moving, { x:480, duration:1.1, ease:'power3.inOut' }, 1.1);
+    tl.to(cards.filter(function(c){ return c !== moving; }), { x:'-=90', duration:0.8, stagger:0.02, ease:'power3.inOut' }, 1.25);
+    tl.to(moving, { y:90, scale:0.82, duration:0.5, ease:'bounce.out' }, 2.25);
+  }
+  function modePhyllotaxis(cards, tl){
+    intro(tl);
+    const golden = 137.5 * Math.PI / 180;
+    cards.forEach(function(card, i){
+      const r = 17 * Math.sqrt(i) * (EFFECT.variant === 'sphere' ? 1.25 : 1);
+      const a = i * golden;
+      gsap.set(card, { x:0, y:0, scale:0.18, opacity:0, rotation:0 });
+      tl.to(card, { x:Math.cos(a) * r, y:Math.sin(a) * r + 80, z:EFFECT.variant === 'sphere' ? Math.sin(a * 1.7) * 420 : 0, scale:EFFECT.variant === 'sphere' ? 0.42 : 0.52, opacity:1, rotation:a * 40 / Math.PI, duration:1.4, ease:'power4.out' }, 0.55 + i * 0.025);
+    });
+  }
+  function modeInchworm(cards, tl){
+    intro(tl);
+    cards.forEach(function(card, i){ gsap.set(card, { x:760 + i * 230, y:100, opacity:1, scale:0.78 }); });
+    cards.forEach(function(card, i){
+      const t = 0.7 + i * 0.16;
+      tl.to(card, { x:'-=1420', y:-60, duration:1.0, ease:'power2.out' }, t);
+      tl.to(card, { y:100, duration:0.75, ease:'bounce.out' }, t + 0.55);
+    });
+  }
+  function modeTimeline(cards, tl){
+    intro(tl);
+    const dates = ['2020','2021','2022','2023','2024','2025'];
+    dates.forEach(function(y, i){
+      const d = document.createElement('div');
+      d.className = 'word-line';
+      d.style.top = (250 + i * 90) + 'px';
+      d.style.fontSize = '86px';
+      d.style.textAlign = i % 2 ? 'right' : 'left';
+      d.style.opacity = '0.18';
+      d.textContent = y;
+      document.getElementById('words').appendChild(d);
+      tl.from(d, { x:i % 2 ? 240 : -240, opacity:0, duration:0.8, ease:'power3.out' }, 0.75 + i * 0.35);
+    });
+    cards.forEach(function(card, i){ gsap.set(card, { x:(i % 2 ? 1 : -1) * 520, y:-320 + i * 130, opacity:1, scale:0.7 }); });
+    tl.to(cards, { y:'+=420', duration:6.5, stagger:0.04, ease:'none' }, 0.75);
+  }
+  function modeFlight(cards, tl){
+    intro(tl);
+    const rand = rng(EFFECT.id);
+    cards.forEach(function(card, i){
+      const side = EFFECT.variant === 'suction' ? 1 : (i % 2 ? 1 : -1);
+      gsap.set(card, { x:side * (1050 + rand() * 360), y:(rand() - 0.5) * 650, rotation:(rand() - 0.5) * 40, scale:0.75, opacity:0 });
+      const t = 0.75 + i * 0.18;
+      tl.to(card, { x:(i - (cards.length - 1) / 2) * 160, y:120 + (i % 2) * 40, rotation:0, scale:0.78, opacity:1, duration:1.15, ease:EFFECT.variant === 'magnetic' ? 'elastic.out(1,0.55)' : 'power3.inOut' }, t);
+      if (EFFECT.variant === 'suction') tl.to(card, { y:-650, scale:0.18, opacity:0, duration:0.8, ease:'back.in(1.6)' }, t + 1.25);
+    });
+  }
+  function modeTighten(cards, tl){
+    intro(tl);
+    cards.forEach(function(card, i){ gsap.set(card, { x:(i - (cards.length - 1) / 2) * 310, y:100, opacity:1, scale:0.78 }); });
+    tl.to(cards, { x:function(i){ return (i - (cards.length - 1) / 2) * 190; }, duration:4.5, ease:'power3.inOut', stagger:0.02 }, 0.8);
+  }
+  function runMode(cards, tl){
+    const m = EFFECT.mode;
+    if (m === 'spiral') return modeSpiral(cards, tl);
+    if (m === 'gridCursor' || m === 'proximityGrid') return modeGridCursor(cards, tl);
+    if (m === 'riseBounce') return modeRiseBounce(cards, tl);
+    if (m === 'carousel') return modeCarousel(cards, tl);
+    if (m === 'trail' || m === 'bubbleTrail') return modeTrail(cards, tl);
+    if (m === 'text') return modeText(cards, tl);
+    if (m === 'orbit') return modeOrbit(cards, tl);
+    if (m === 'marquee') return modeMarquee(cards, tl);
+    if (m === 'randomFocus') return modeRandomFocus(cards, tl);
+    if (m === 'gridDrift') return modeGridDrift(cards, tl);
+    if (m === 'listPreview') return modeListPreview(cards, tl);
+    if (m === 'slides3d') return modeSlides3d(cards, tl);
+    if (m === 'rowExpand') return modeRowExpand(cards, tl);
+    if (m === 'shuffleBurst') return modeShuffleBurst(cards, tl);
+    if (m === 'maskSweep') return modeMaskSweep(cards, tl);
+    if (m === 'flipbook') return modeFlipbook(cards, tl);
+    if (m === 'tilt' || m === 'depthParallax') return modeTilt(cards, tl);
+    if (m === 'rings') return modeRings(cards, tl);
+    if (m === 'zStack') return modeZStack(cards, tl);
+    if (m === 'fan') return modeFan(cards, tl);
+    if (m === 'stair') return modeStair(cards, tl);
+    if (m === 'zoom') return modeZoom(cards, tl);
+    if (m === 'vertical') return modeVertical(cards, tl);
+    if (m === 'cylinder') return modeCylinder(cards, tl);
+    if (m === 'elasticRail') return modeElasticRail(cards, tl);
+    if (m === 'splitBurst') return modeSplitBurst(cards, tl);
+    if (m === 'particle') return modeParticle(cards, tl);
+    if (m === 'reorder') return modeReorder(cards, tl);
+    if (m === 'phyllotaxis') return modePhyllotaxis(cards, tl);
+    if (m === 'inchworm') return modeInchworm(cards, tl);
+    if (m === 'timeline') return modeTimeline(cards, tl);
+    if (m === 'flight') return modeFlight(cards, tl);
+    if (m === 'tighten') return modeTighten(cards, tl);
+    return modeMarquee(cards, tl);
+  }
+  function setupControls(tl){
+    const sc = document.getElementById('scrub');
+    const te = document.getElementById('time');
+    const pb = document.getElementById('playBtn');
+    function ut(){ te.textContent = tl.time().toFixed(2).padStart(5,'0') + ' / ' + tl.duration().toFixed(2).padStart(5,'0'); }
+    sc.addEventListener('input', function(){ tl.pause(); pb.textContent = 'Play'; tl.progress(parseFloat(sc.value) / 100); ut(); });
+    gsap.ticker.add(function(){ if (!tl.paused()) { sc.value = (tl.progress() * 100).toFixed(2); ut(); if (tl.progress() >= 1) pb.textContent = 'Replay'; } });
+    pb.addEventListener('click', function(){
+      if (tl.progress() >= 1) { tl.restart(); pb.textContent = 'Pause'; }
+      else if (tl.paused()) { tl.play(); pb.textContent = 'Pause'; }
+      else { tl.pause(); pb.textContent = 'Play'; }
+    });
+    ut();
+    setTimeout(function(){ tl.play(); pb.textContent = 'Pause'; }, 400);
+  }
+  adoptCards().then(function(cards){
+    loading.classList.add('gone');
+    const tl = gsap.timeline({ paused:true });
+    runMode(cards, tl);
+    window.__wpformsEffect = { timeline:tl, cards:cards, effect:EFFECT };
+    setupControls(tl);
+  }).catch(function(err){
+    console.error(err);
+    loading.textContent = 'Failed: ' + err.message;
+  });
+
+</script></body></html>

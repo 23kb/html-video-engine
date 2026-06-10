@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Effect 004 — Word stacking · REAL frontend form backdrop</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#0a0806; font-family:var(--wpf-font-stack); overflow:hidden; color:var(--wpf-ink); }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; background:linear-gradient(180deg,#fdfaf3 0%,#ede1cb 100%); overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.45); }
+
+  .loading { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:#fdfaf3; color:#646970; font-size:14px; z-index:50; transition:opacity 0.4s; }
+  .loading.gone { opacity:0; pointer-events:none; }
+  .loading .spinner { width:32px; height:32px; border:3px solid #dcdcde; border-top-color:var(--wpf-orange); border-radius:50%; margin-right:12px; animation:spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* iframe-as-card on the right, real frontend WPForms form */
+  .form-anchor { position:absolute; top:80px; right:80px; width:560px; height:920px; border-radius:14px; overflow:hidden; box-shadow:0 24px 60px rgba(20,22,28,0.18); background:#fff; opacity:0; }
+  .form-anchor iframe { position:absolute; left:0; top:0; width:1280px; height:720px; border:0; transform-origin:0 0; transform:scale(0.6); pointer-events:none; }
+
+  .brand { position:absolute; top:60px; left:80px; display:flex; align-items:center; gap:12px; z-index:30; opacity:0; }
+  .brand .dot { width:14px; height:14px; border-radius:50%; background:var(--wpf-orange); }
+  .brand .name { font-weight:600; font-size:22px; letter-spacing:-0.01em; color:var(--wpf-ink-soft); }
+
+  .meta-tag { position:absolute; top:60px; left:240px; color:var(--wpf-orange); font-size:13px; font-weight:700; letter-spacing:0.20em; text-transform:uppercase; opacity:0; z-index:30; }
+
+  .effect-title { position:absolute; top:24px; right:24px; padding:10px 18px; background:rgba(20,17,14,0.85); color:#fff; border-radius:6px; font-size:13px; font-weight:600; z-index:30; opacity:0; }
+  .effect-title b { color:var(--wpf-orange); }
+
+  .copy { position:absolute; top:200px; left:80px; width:1100px; perspective:1500px; z-index:20; }
+  .paragraph { font-size:74px; font-weight:600; color:var(--wpf-ink); letter-spacing:-0.025em; line-height:1.15; text-align:left; }
+  .word { display:inline-block; will-change:transform,opacity; margin-right:0.25em; transform-style:preserve-3d; }
+  .word.accent { color:var(--wpf-orange); }
+  .word.blue { color:var(--wpf-blue); }
+  .word.purple { color:var(--wpf-ai-purple); }
+
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; font-family:inherit; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; }
+</style></head><body>
+<div class="stage-wrap"><div class="stage" id="stage">
+  <div class="loading" id="loading"><div class="spinner"></div>Loading real frontend-published-form…</div>
+
+  <div class="brand"><div class="dot"></div><div class="name">WPForms</div></div>
+  <div class="meta-tag">Stacking · 004</div>
+  <div class="effect-title"><b>EFFECT 004</b> · words stack · frontend form is REAL captured snapshot</div>
+
+  <div class="copy">
+    <p class="paragraph" id="p">
+      <span class="raw">Six</span> <span class="raw accent">million</span> <span class="raw">sites</span>
+      <span class="raw">trust</span> <span class="raw blue">WPForms</span> <span class="raw">to</span>
+      <span class="raw">capture</span> <span class="raw">every</span> <span class="raw purple">important</span>
+      <span class="raw">lead.</span>
+    </p>
+  </div>
+
+  <div class="form-anchor"><iframe id="anchor" src="../../snapshots/frontend-published-form/index.html"></iframe></div>
+
+</div></div>
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 004 · word stack over REAL frontend-published-form iframe</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  const p = document.getElementById('p');
+  const raws = [...p.querySelectorAll('.raw')];
+  p.innerHTML = '';
+  raws.forEach((r) => {
+    const cls = [...r.classList].filter(c => c !== 'raw').join(' ');
+    const span = document.createElement('span');
+    span.className = 'word' + (cls ? ' ' + cls : '');
+    span.textContent = r.textContent;
+    p.appendChild(span);
+    p.appendChild(document.createTextNode(' '));
+  });
+  const words = gsap.utils.toArray('.word');
+
+  function fit() { const s=document.getElementById('stage'); s.style.transform=`scale(${Math.min(innerWidth/1920,(innerHeight-56)/1080)*0.96})`; }
+  addEventListener('resize', fit); fit();
+
+  const anchorIframe = document.getElementById('anchor');
+  anchorIframe.addEventListener('load', () => {
+    document.getElementById('loading').classList.add('gone');
+
+    words.forEach((w) => gsap.set(w, { x: 800, opacity: 0, rotateY: -45, rotateX: 12 }));
+
+    const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+    tl.to('.brand', { opacity: 1, duration: 0.5 }, 0.1);
+    tl.to('.meta-tag', { opacity: 1, duration: 0.5 }, 0.2);
+    tl.to('.effect-title', { opacity: 1, duration: 0.5 }, 0.25);
+
+    words.forEach((w, i) => {
+      const start = 0.7 + i * 0.12;
+      tl.to(w, { x: 0, opacity: 1, rotateY: 0, rotateX: 0, duration: 0.85, ease: 'power3.out' }, start);
+      if (i > 0) {
+        tl.to(words.slice(0, i), { y: '+=3', duration: 0.3, ease: 'sine.out' }, start + 0.1);
+        tl.to(words.slice(0, i), { y: '-=3', duration: 0.4, ease: 'sine.inOut' }, start + 0.4);
+      }
+    });
+
+    // bring the real form in once "WPForms" has landed
+    tl.to('.form-anchor', { opacity: 1, x: 0, duration: 1.0, ease: 'power3.out' }, 1.2);
+    tl.from('.form-anchor', { x: 80, duration: 1.0, ease: 'power3.out' }, 1.2);
+
+    // animate the real form contents: scroll within the iframe to reveal the form,
+    // and pulse a real submit button if present
+    const doc = anchorIframe.contentDocument;
+    if (doc) {
+      const submit = doc.querySelector('.wpforms-submit, button[type="submit"]');
+      if (submit) {
+        tl.to(submit, { scale: 1.06, duration: 0.6, ease: 'sine.inOut', yoyo: true, repeat: 1, transformOrigin: 'center center' }, 3.5);
+      }
+    }
+
+    const sc=document.getElementById('scrub'),te=document.getElementById('time'),pb=document.getElementById('playBtn');
+    function ut(){te.textContent=tl.time().toFixed(2).padStart(5,'0')+' / '+tl.duration().toFixed(2).padStart(5,'0');}
+    sc.addEventListener('input',()=>{tl.pause();pb.textContent='Play';tl.progress(parseFloat(sc.value)/100);ut();});
+    gsap.ticker.add(()=>{if(!tl.paused()){sc.value=(tl.progress()*100).toFixed(2);ut();if(tl.progress()>=1)pb.textContent='Replay';}});
+    pb.addEventListener('click',()=>{if(tl.progress()>=1){tl.restart();pb.textContent='Pause';}else if(tl.paused()){tl.play();pb.textContent='Pause';}else{tl.pause();pb.textContent='Play';}});
+    ut(); setTimeout(()=>{tl.play();pb.textContent='Pause';},400);
+  });
+</script></body></html>

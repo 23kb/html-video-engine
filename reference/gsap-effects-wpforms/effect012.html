@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Effect 012 — 3D depth approach · REAL template cards</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#0a0806; font-family:var(--wpf-font-stack); overflow:hidden; }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; background:radial-gradient(ellipse at center,#1d1812 0%,#0a0806 80%); overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.5); perspective:1400px; }
+
+  .loading { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:#14110e; color:#aaa; font-size:14px; z-index:50; transition:opacity 0.4s; }
+  .loading.gone { opacity:0; pointer-events:none; }
+  .loading .spinner { width:32px; height:32px; border:3px solid #333; border-top-color:var(--wpf-orange); border-radius:50%; margin-right:12px; animation:spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .brand { position:absolute; top:60px; left:80px; display:flex; align-items:center; gap:12px; z-index:30; opacity:0; color:rgba(250,246,238,0.9); }
+  .brand .dot { width:14px; height:14px; border-radius:50%; background:var(--wpf-orange); }
+  .brand .name { font-weight:600; font-size:22px; letter-spacing:-0.01em; }
+  .effect-title { position:absolute; top:24px; right:24px; padding:10px 18px; background:rgba(20,17,14,0.85); color:#fff; border-radius:6px; font-size:13px; font-weight:600; z-index:30; opacity:0; }
+  .effect-title b { color:var(--wpf-orange); }
+
+  .field { position:absolute; inset:0; transform-style:preserve-3d; z-index:20; }
+
+  /* real template card — self-styled (snapshot CSS is ancestor-scoped).
+     SOURCE: snapshots/admin-templates/index.html (.wpforms-template) */
+  .field .wpforms-template { position:absolute; left:50%; top:50%; width:430px; height:408px;
+    margin:-204px 0 0 -215px; background:#fff; border-radius:20px;
+    box-shadow:0 36px 72px rgba(0,0,0,0.55); display:flex; flex-direction:column; overflow:hidden;
+    backface-visibility:hidden; will-change:transform,opacity; }
+  .field .wpforms-template .wpforms-template-thumbnail { height:296px; overflow:hidden; flex-shrink:0; margin:0; padding:0; border-bottom:1px solid #eee7da; }
+  .field .wpforms-template .wpforms-template-thumbnail img { width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+  .field .wpforms-template .wpforms-template-name { font-size:23px; font-weight:700; color:#1d2327; margin:0; padding:22px 24px 0; line-height:1.3; }
+  .field .wpforms-template .wpforms-template-desc,
+  .field .wpforms-template .wpforms-template-favorite,
+  .field .wpforms-template .wpforms-template-buttons { display:none; }
+
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; }
+</style></head><body>
+<div class="stage-wrap"><div class="stage" id="stage">
+  <div class="loading" id="loading"><div class="spinner"></div>Loading real admin-templates snapshot…</div>
+  <div class="brand"><div class="dot"></div><div class="name">WPForms</div></div>
+  <div class="effect-title"><b>EFFECT 012</b> · 3D depth approach · real .wpforms-template cards</div>
+  <div class="field" id="field"></div>
+</div></div>
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 012 · REAL template cards adopted from snapshots/admin-templates · z-depth fly-through</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script src="_snapshot-iframe.js"></script>
+<script>
+  const stage = document.getElementById('stage');
+  function fit(){stage.style.transform=`scale(${Math.min(innerWidth/1920,(innerHeight-56)/1080)*0.96})`;}
+  addEventListener('resize',fit);fit();
+
+  const { iframe, ready, query } = SnapshotIframe.mountSnapshot(stage, {
+    slug: 'admin-templates', x: 0, y: 0, w: 1280, h: 720, scale: 1.5, zIndex: 1
+  });
+
+  ready.then(async () => {
+    await SnapshotIframe.awaitDom(query, '.wpforms-template', { min: 8 });
+    document.getElementById('loading').classList.add('gone');
+
+    const cards = [...query('.wpforms-template')]
+      .filter(c => c.id !== 'wpforms-template-generate' && c.id !== 'wpforms-template-blank')
+      .slice(0, 5);
+    cards.forEach(c => SnapshotIframe.rewriteRelativeUrls(c, 'admin-templates'));
+    iframe.style.opacity = '0';
+
+    const field = document.getElementById('field');
+    cards.forEach(c => field.appendChild(c));
+    const adopted = [...field.querySelectorAll('.wpforms-template')];
+
+    adopted.forEach(c => gsap.set(c, { z: -1600, opacity: 0 }));
+
+    const tl = gsap.timeline({ paused: true });
+    tl.timeScale(2);  // speed-up per QC feedback
+    tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1)
+      .to('.effect-title', { opacity: 1, duration: 0.5 }, 0.15);
+
+    // each real card travels from deep space toward the camera, then past the viewer
+    const STAG = 0.95, DUR = 3.1;
+    adopted.forEach((c, i) => {
+      const t = 0.4 + i * STAG;
+      // approach: travel from deep space to the camera plane
+      tl.fromTo(c, { z: -1600 }, { z: 0, duration: DUR, ease: 'none' }, t);
+      tl.fromTo(c, { opacity: 0 }, { opacity: 1, duration: DUR * 0.4, ease: 'power1.out' }, t);
+      // pass the viewer: push past + fade out
+      tl.to(c, { z: 780, opacity: 0, duration: 0.95, ease: 'power2.in' }, t + DUR);
+    });
+
+    const sc=document.getElementById('scrub'),te=document.getElementById('time'),pb=document.getElementById('playBtn');
+    function ut(){te.textContent=tl.time().toFixed(2).padStart(5,'0')+' / '+tl.duration().toFixed(2).padStart(5,'0');}
+    sc.addEventListener('input',()=>{tl.pause();pb.textContent='Play';tl.progress(parseFloat(sc.value)/100);ut();});
+    gsap.ticker.add(()=>{if(!tl.paused()){sc.value=(tl.progress()*100).toFixed(2);ut();if(tl.progress()>=1)pb.textContent='Replay';}});
+    pb.addEventListener('click',()=>{if(tl.progress()>=1){tl.restart();pb.textContent='Pause';}else if(tl.paused()){tl.play();pb.textContent='Pause';}else{tl.pause();pb.textContent='Play';}});
+    ut(); setTimeout(()=>{tl.play();pb.textContent='Pause';},400);
+  });
+</script></body></html>

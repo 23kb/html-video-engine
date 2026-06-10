@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Effect 009 — Up &amp; Down · REAL frontend-form reveal</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#1a1614; font-family:var(--wpf-font-stack); overflow:hidden; color:var(--wpf-ink); }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; background:var(--wpf-bg-cream); overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.35); }
+
+  .brand { position:absolute; top:48px; left:64px; display:flex; align-items:center; gap:12px; z-index:30; opacity:0; }
+  .brand .dot { width:14px; height:14px; border-radius:50%; background:var(--wpf-orange); }
+  .brand .name { font-weight:600; font-size:22px; letter-spacing:-0.01em; color:var(--wpf-ink-soft); }
+  .effect-title { position:absolute; top:24px; right:24px; padding:10px 18px; background:rgba(20,17,14,0.85); color:#fff; border-radius:6px; font-size:13px; font-weight:600; z-index:30; opacity:0; }
+  .effect-title b { color:var(--wpf-orange); }
+
+  .center { position:absolute; top:0; bottom:380px; left:0; right:0; display:flex; align-items:center; justify-content:center; perspective:1200px; z-index:20; }
+  .slot { position:relative; width:1860px; height:220px; display:flex; align-items:center; justify-content:center; overflow:hidden; }
+  .sentence { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:144px; font-weight:700; letter-spacing:-0.03em; color:var(--wpf-ink); line-height:1; white-space:nowrap; opacity:1; }
+  .sentence.accent { color:var(--wpf-orange); }
+  .sentence.purple { color:var(--wpf-ai-purple); }
+  .sentence.blue { color:var(--wpf-blue); }
+  .sentence .char { display:inline-block; transform-origin:center bottom; will-change:transform,opacity; }
+  .rule { position:absolute; left:50%; bottom:-32px; width:0; height:4px; background:var(--wpf-orange); transform:translateX(-50%); border-radius:2px; }
+
+  /* REAL frontend-published-form revealed on the final phrase */
+  .anchor-form { position:absolute; bottom:80px; left:50%; transform:translateX(-50%); width:880px; height:280px; border-radius:14px; overflow:hidden; box-shadow:0 24px 60px rgba(20,22,28,0.18); background:#fff; opacity:0; z-index:25; }
+  .anchor-form iframe { position:absolute; left:0; top:0; width:1280px; height:720px; border:0; transform-origin:0 0; transform:scale(0.69); pointer-events:none; }
+
+  .atmo { position:absolute; inset:0; pointer-events:none; z-index:5; }
+  .atmo .bloom { position:absolute; border-radius:50%; filter:blur(80px); opacity:0; will-change:transform,opacity; }
+  .atmo .b1 { width:900px; height:900px; left:-250px; top:-300px; background:radial-gradient(circle,#ffd9b3 0%,rgba(255,220,180,0) 70%); }
+  .atmo .b2 { width:1000px; height:1000px; right:-300px; bottom:-350px; background:radial-gradient(circle,#ffe0c0 0%,rgba(255,210,170,0) 70%); }
+
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; font-family:inherit; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="atmo"><div class="bloom b1"></div><div class="bloom b2"></div></div>
+    <div class="brand"><div class="dot"></div><div class="name">WPForms</div></div>
+    <div class="effect-title"><b>EFFECT 009</b> · phrase reel · real form revealed on final beat</div>
+
+    <div class="center">
+      <div class="slot" id="slot">
+        <div class="sentence" data-text="800+ templates.">800+ templates.</div>
+        <div class="sentence blue" data-text="Stripe and PayPal, built in.">Stripe and PayPal, built in.</div>
+        <div class="sentence purple" data-text="AI-generated forms.">AI-generated forms.</div>
+        <div class="sentence accent" data-text="No code, ever.">No code, ever.</div>
+        <div class="rule"></div>
+      </div>
+    </div>
+
+    <div class="anchor-form"><iframe id="anchor" src="../../snapshots/frontend-published-form/index.html"></iframe></div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 009 · phrase reel (immediate) + real iframe revealed on final beat</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  // Build timeline + start phrases IMMEDIATELY — don't gate on iframe load.
+  // The iframe reveal is wired to the final phrase but the iframe loading in
+  // the background does NOT block phrase playback.
+
+  function splitChars(el) {
+    const text = el.textContent;
+    el.innerHTML = '';
+    [...text].forEach(ch => {
+      const span = document.createElement('span');
+      span.className = 'char';
+      span.textContent = ch === ' ' ? ' ' : ch;
+      el.appendChild(span);
+    });
+    return el.querySelectorAll('.char');
+  }
+
+  const sentences = [...document.querySelectorAll('.sentence')];
+  const allChars = sentences.map(s => splitChars(s));
+
+  function fit() {
+    const stage = document.getElementById('stage');
+    const scale = Math.min(window.innerWidth / 1920, (window.innerHeight - 56) / 1080) * 0.96;
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit); fit();
+
+  const tl = gsap.timeline({ paused: true, defaults: { ease: 'power2.out' } });
+
+  const HOLD = 0.9, REVEAL = 0.65, EXIT = 0.55, STAG = 0.025, OVERLAP = 0.35;
+
+  allChars.forEach(chars => gsap.set(chars, { yPercent: 100, opacity: 0 }));
+
+  tl.to('.brand', { opacity: 1, duration: 0.6 }, 0.1);
+  tl.to('.effect-title', { opacity: 1, duration: 0.5 }, 0.2);
+  tl.to('.atmo .b1', { opacity: 0.55, duration: 1.4 }, 0)
+    .to('.atmo .b2', { opacity: 0.50, duration: 1.6 }, 0.2)
+    .to('.atmo .b1', { x: 60, y: 30, duration: 12, ease: 'none' }, 0)
+    .to('.atmo .b2', { x: -50, y: -20, duration: 12, ease: 'none' }, 0);
+
+  let cursor = 0.6;
+  allChars.forEach((chars, i) => {
+    const start = cursor;
+    tl.to(chars, { yPercent: 0, opacity: 1, duration: REVEAL, stagger: STAG, ease: 'power3.out' }, start);
+
+    if (i === 0) {
+      tl.fromTo('.rule', { width: 0 }, { width: 360, duration: REVEAL * 0.9, ease: 'power2.out' }, start + 0.1);
+    }
+
+    const inEnd = start + REVEAL + (chars.length - 1) * STAG;
+    const holdEnd = inEnd + HOLD;
+
+    const isLast = (i === allChars.length - 1);
+    if (!isLast) {
+      tl.to(chars, { yPercent: -100, opacity: 0, duration: EXIT, stagger: STAG, ease: 'power3.in' }, holdEnd);
+      cursor = holdEnd + EXIT - OVERLAP;
+    } else {
+      tl.to('.rule', { width: 520, duration: 0.6, ease: 'power2.out' }, holdEnd);
+      // reveal real form on the final phrase
+      tl.to('.anchor-form', { opacity: 1, duration: 0.9, ease: 'power3.out' }, holdEnd - 0.3);
+      tl.from('.anchor-form', { y: 30, duration: 0.9, ease: 'power3.out' }, holdEnd - 0.3);
+    }
+  });
+
+  // Pulse the real submit button — wired AFTER iframe loads, but the timeline
+  // is already playing. If iframe loads before this timeline beat (typically yes),
+  // we tween the real submit. Otherwise we skip and the form just appears.
+  const anchorIframe = document.getElementById('anchor');
+  anchorIframe.addEventListener('load', () => {
+    try {
+      const doc = anchorIframe.contentDocument;
+      const submit = doc && doc.querySelector('.wpforms-submit, button[type="submit"]');
+      if (submit) {
+        // pulse 1s after current playhead (or at a fixed late point in the timeline)
+        const at = Math.max(tl.duration() - 0.6, tl.time() + 0.5);
+        tl.to(submit, { scale: 1.05, duration: 0.4, ease: 'sine.inOut', yoyo: true, repeat: 1, transformOrigin: 'center center' }, at);
+      }
+    } catch (_) { /* cross-origin guard */ }
+  });
+
+  const scrub = document.getElementById('scrub');
+  const timeEl = document.getElementById('time');
+  const playBtn = document.getElementById('playBtn');
+
+  function updateTimeLabel() {
+    const t = tl.time(); const d = tl.duration();
+    timeEl.textContent = t.toFixed(2).padStart(5,'0') + ' / ' + d.toFixed(2).padStart(5,'0');
+  }
+  scrub.addEventListener('input', () => { tl.pause(); playBtn.textContent='Play'; tl.progress(parseFloat(scrub.value)/100); updateTimeLabel(); });
+  gsap.ticker.add(() => { if (!tl.paused()) { scrub.value=(tl.progress()*100).toFixed(2); updateTimeLabel(); if (tl.progress()>=1) playBtn.textContent='Replay'; } });
+  playBtn.addEventListener('click', () => { if(tl.progress()>=1){tl.restart();playBtn.textContent='Pause';}else if(tl.paused()){tl.play();playBtn.textContent='Pause';}else{tl.pause();playBtn.textContent='Play';} });
+  updateTimeLabel();
+  setTimeout(() => { tl.play(); playBtn.textContent='Pause'; }, 200);
+</script>
+
+</body>
+</html>

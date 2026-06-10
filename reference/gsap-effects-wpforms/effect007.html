@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>Effect 007 — Rounded trajectory · REAL addons cards orbiting</title>
+<link rel="stylesheet" href="../wpforms-brand/tokens.css" />
+<style>
+  :root { --stage-w: 1920px; --stage-h: 1080px; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; background:#0a0806; font-family:var(--wpf-font-stack); overflow:hidden; }
+  .stage-wrap { position:relative; width:100vw; height:calc(100vh - 56px); display:flex; align-items:center; justify-content:center; }
+  .stage { position:relative; width:var(--stage-w); height:var(--stage-h); transform-origin:center; background:radial-gradient(ellipse at center,#fdfaf3 0%,#e9dec8 100%); overflow:hidden; box-shadow:0 30px 80px rgba(0,0,0,0.45); }
+
+  .loading { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:#fdfaf3; color:#646970; font-size:14px; z-index:50; transition:opacity 0.4s; }
+  .loading.gone { opacity:0; pointer-events:none; }
+  .loading .spinner { width:32px; height:32px; border:3px solid #dcdcde; border-top-color:var(--wpf-orange); border-radius:50%; margin-right:12px; animation:spin 0.8s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  .effect-title { position:absolute; top:24px; left:24px; padding:10px 18px; background:rgba(20,17,14,0.85); color:#fff; border-radius:6px; font-size:13px; font-weight:600; z-index:30; opacity:0; }
+  .effect-title b { color:var(--wpf-orange); }
+
+  .brand { position:absolute; top:24px; right:24px; display:flex; align-items:center; gap:12px; z-index:30; opacity:0; padding:10px 18px; background:rgba(20,17,14,0.85); color:#fff; border-radius:6px; font-size:13px; }
+  .brand .dot { width:10px; height:10px; border-radius:50%; background:var(--wpf-orange); }
+
+  .header { position:absolute; top:100px; margin-top:100px; left:0; right:0; text-align:center; opacity:0; z-index:25; }
+  .header .kicker { color:var(--wpf-orange); font-size:14px; font-weight:700; letter-spacing:0.20em; text-transform:uppercase; margin-bottom:8px; }
+  .header .title { font-size:50px; font-weight:700; color:var(--wpf-ink); letter-spacing:-0.02em; }
+
+  /* central WPForms hero image */
+  .center-hero { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); z-index:15; width:1000px; border-radius:16px; overflow:hidden; box-shadow:0 32px 72px rgba(20,22,28,0.30); opacity:0; }
+  .center-hero img { width:100%; height:auto; display:block; }
+
+  /* pivot rigs holding REAL .wpforms-addons-list-item nodes */
+  .rigs { position:absolute; inset:0; z-index:20; pointer-events:none; }
+  .rig { position:absolute; left:50%; bottom:-30%; width:1px; height:130%; transform-origin:50% 100%; transform:translateX(-50%) rotate(0deg); }
+  .rig-slot { position:absolute; left:50%; top:0; transform:translateX(-50%); }
+
+  /* Real WPForms addon card, restyled here — the snapshot's own CSS is ancestor-
+     scoped and does not apply to nodes extracted out of the iframe.
+     SOURCE: snapshots/admin-addons/index.html (.wpforms-addons-list-item) */
+  .rigs .wpforms-addons-list-item { width:300px; height:156px; background:#fff;
+    border:1px solid #e4e4e7; border-radius:10px;
+    box-shadow:0 18px 40px rgba(20,22,28,0.20),0 4px 12px rgba(20,22,28,0.08);
+    display:flex; flex-direction:column; overflow:hidden; }
+  .rigs .wpforms-addons-list-item-header { display:flex; gap:13px; align-items:flex-start; padding:16px 17px 8px; }
+  .rigs .wpforms-addons-list-item-header > img { width:44px; height:44px; flex-shrink:0; object-fit:contain; border-radius:6px; }
+  .rigs .wpforms-addons-list-item-header-meta { flex:1; min-width:0; }
+  .rigs .wpforms-addons-list-item-header-meta-title { display:flex; align-items:center; gap:7px; flex-wrap:wrap; margin-bottom:4px; }
+  .rigs .wpforms-addons-list-item-header-meta-title a { font-size:15px; font-weight:700; color:#1d2327; text-decoration:none; }
+  .rigs .wpforms-badge { font-size:9.5px; font-weight:600; line-height:1; padding:3px 7px; border-radius:999px; background:#eef0f2; color:#50575e; white-space:nowrap; }
+  .rigs .wpforms-badge-blue { background:#e3effb; color:#1f6fc4; }
+  .rigs .wpforms-badge-orange { background:#fceee1; color:#c2611f; }
+  .rigs .wpforms-badge-purple { background:#efe7fb; color:#7340c8; }
+  .rigs .wpforms-badge-green { background:#e2f3ea; color:#21794a; }
+  .rigs .wpforms-addons-list-item-header-meta-excerpt { font-size:11.5px; line-height:1.5; color:#5f6368;
+    display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; }
+  .rigs .wpforms-addons-list-item-footer { display:flex; align-items:center; gap:10px; margin-top:auto;
+    padding:9px 17px; border-top:1px solid #f0f0f1; background:#fcfcfd; }
+  .rigs .wpforms-addons-list-item-footer-settings-link { font-size:11.5px; color:#2271b1; text-decoration:none; font-weight:500; }
+  .rigs .wpforms-addons-list-item-footer-actions { display:flex; align-items:center; margin-left:auto; }
+  .rigs .wpforms-toggle-control { display:inline-flex; align-items:center; gap:8px; position:relative; }
+  .rigs .wpforms-toggle-control input[type=checkbox] { position:absolute; opacity:0; width:1px; height:1px; margin:0; }
+  .rigs .wpforms-toggle-control-status { font-size:11px; color:#5f6368; }
+  .rigs .wpforms-toggle-control-icon { display:inline-block; width:34px; height:19px; border-radius:999px;
+    background:#c3c4c7; position:relative; }
+  .rigs .wpforms-toggle-control-icon::after { content:''; position:absolute; top:2px; left:2px; width:15px; height:15px;
+    border-radius:50%; background:#fff; box-shadow:0 1px 2px rgba(0,0,0,0.3); }
+  .rigs .wpforms-toggle-control input:checked ~ .wpforms-toggle-control-icon { background:#2c8a55; }
+  .rigs .wpforms-toggle-control input:checked ~ .wpforms-toggle-control-icon::after { left:17px; }
+
+  .controls { position:fixed; bottom:0; left:0; right:0; height:56px; background:#0f0d0c; color:#e8e3dc; display:flex; align-items:center; gap:16px; padding:0 24px; font-family:var(--wpf-font-stack); font-size:13px; }
+  .controls button { background:var(--wpf-orange); color:white; border:0; padding:8px 16px; border-radius:6px; font-weight:600; cursor:pointer; }
+  .controls input[type=range] { flex:1; accent-color:var(--wpf-orange); }
+  .controls .t { font-variant-numeric:tabular-nums; min-width:110px; text-align:right; color:#aaa; }
+  .controls .meta { color:#888; margin-right:8px; }
+</style></head><body>
+<div class="stage-wrap"><div class="stage" id="stage">
+  <div class="loading" id="loading"><div class="spinner"></div>Loading real admin-addons snapshot…</div>
+  <div class="effect-title"><b>EFFECT 007</b> · orbital · real .wpforms-addons-list-item cards</div>
+  <div class="brand"><div class="dot"></div>WPForms · live addons</div>
+  <div class="header"><div class="kicker">35+ integrations</div><div class="title">Everything WPForms talks to.</div></div>
+  <div class="center-hero"><img src="https://wpforms.com/wp-content/uploads/2024/10/home-hero-2k.png" alt="WPForms" /></div>
+  <div class="rigs" id="rigs"></div>
+</div></div>
+<div class="controls">
+  <button id="playBtn">Play</button>
+  <span class="meta">effect 007 · 18 REAL addon cards on pivot arms · central WPForms hero image</span>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<script src="_snapshot-iframe.js"></script>
+<script>
+  const stage = document.getElementById('stage');
+  function fit(){stage.style.transform=`scale(${Math.min(innerWidth/1920,(innerHeight-56)/1080)*0.96})`;}
+  addEventListener('resize',fit);fit();
+
+  // Mount admin-addons off-stage; we'll harvest the real card DOM + CSS
+  const { iframe, ready, query } = SnapshotIframe.mountSnapshot(stage, {
+    slug: 'admin-addons', x: 0, y: 0, w: 1280, h: 720, scale: 1.5, zIndex: 1
+  });
+
+  ready.then(async () => {
+    await SnapshotIframe.awaitDom(query, '.wpforms-addons-list-item', { min: 18 });
+    document.getElementById('loading').classList.add('gone');
+
+    // Addon cards are styled by the `.rigs .wpforms-addons-list-item` rules in
+    // this file's <head>. The snapshot's own CSS is ancestor-scoped and does
+    // not apply to nodes extracted out of the iframe.
+    const realAddons = [...query('.wpforms-addons-list-item')].slice(0, 18);
+    iframe.style.opacity = '0';  // hide the source iframe
+
+    const rigsEl = document.getElementById('rigs');
+    const rigs = [];
+    realAddons.forEach((addon) => {
+      // Fix relative image srcs BEFORE adopting
+      SnapshotIframe.rewriteRelativeUrls(addon, 'admin-addons');
+      // Adopt the real captured addon card into the parent doc
+      const rig = document.createElement('div');
+      rig.className = 'rig';
+      const slot = document.createElement('div');
+      slot.className = 'rig-slot';
+      slot.appendChild(addon);
+      rig.appendChild(slot);
+      rigsEl.appendChild(rig);
+      rigs.push(rig);
+    });
+
+    const tl = gsap.timeline({ paused: true });
+    tl.timeScale(1.6); // speed up per QC feedback
+    tl.to('.brand', { opacity: 1, duration: 0.5, ease: 'power2.out' }, 0.1)
+      .to('.effect-title', { opacity: 1, duration: 0.5 }, 0.15)
+      .to('.header', { opacity: 1, duration: 0.6, ease: 'power2.out' }, 0.25)
+      .to('.center-hero', { opacity: 1, duration: 0.7, ease: 'power3.out' }, 0.4);
+
+    // initial angle: -50, animate to +50
+    rigs.forEach((r, i) => {
+      const angleSpread = 120;
+      const N = rigs.length;
+      const baseAngle = -angleSpread/2 + (angleSpread/(N-1)) * i;
+      gsap.set(r, { rotation: baseAngle - 50, opacity: 0 });
+      tl.to(r, { opacity: 1, duration: 0.4 }, 0.5 + i * 0.04);
+    });
+
+    // sweep the whole arc — each rig retains its relative offset
+    const rigsContainer = document.getElementById('rigs');
+    tl.to(rigsContainer, { rotation: 0, duration: 0, immediateRender: true }, 0);  // sentinel
+    rigs.forEach((r) => {
+      tl.to(r, { rotation: '+=100', duration: 7, ease: 'power2.inOut' }, 0.5);
+    });
+
+    const sc=document.getElementById('scrub'),te=document.getElementById('time'),pb=document.getElementById('playBtn');
+    function ut(){te.textContent=tl.time().toFixed(2).padStart(5,'0')+' / '+tl.duration().toFixed(2).padStart(5,'0');}
+    sc.addEventListener('input',()=>{tl.pause();pb.textContent='Play';tl.progress(parseFloat(sc.value)/100);ut();});
+    gsap.ticker.add(()=>{if(!tl.paused()){sc.value=(tl.progress()*100).toFixed(2);ut();if(tl.progress()>=1)pb.textContent='Replay';}});
+    pb.addEventListener('click',()=>{if(tl.progress()>=1){tl.restart();pb.textContent='Pause';}else if(tl.paused()){tl.play();pb.textContent='Pause';}else{tl.pause();pb.textContent='Play';}});
+    ut();setTimeout(()=>{tl.play();pb.textContent='Pause';},400);
+  }).catch(err => {
+    document.getElementById('loading').textContent = 'Failed: ' + err.message;
+  });
+</script></body></html>
