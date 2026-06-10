@@ -414,7 +414,9 @@ async function captureVariant(page, variant) {
 
 (async () => {
   const browser = await chromium.launch({ headless: true });
-  const context = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  const VIEWPORT_W = parseInt(process.env.WP_VIEWPORT_W || '1440', 10);
+  const VIEWPORT_H = parseInt(process.env.WP_VIEWPORT_H || '900', 10);
+  const context = await browser.newContext({ viewport: { width: VIEWPORT_W, height: VIEWPORT_H } });
   const page    = await context.newPage();
 
   page.on('response', async (res) => {
