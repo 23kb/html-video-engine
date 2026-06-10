@@ -1836,6 +1836,66 @@
     }));
   }
 
+  // ─── Admin entrance fx ─────────────────────────────────────────────
+  // Admin-side mirror of initSettingsCanvasStagger: the content area
+  // eases in (180 ms), then the page's primary row collection staggers
+  // up with the same 6px / 35 ms-per-row settle the builder uses.
+  // admin-* and wp-dashboard snapshots only — builder pages keep their
+  // own effect. The page fade is top-window-only: inside the video
+  // player the IframeManager crossfade owns the entrance.
+  function initAdminEntranceFx() {
+    const slug = (window.location.pathname || '').match(/\/snapshots\/([^/]+)\//)?.[1];
+    if (!slug || !/^(admin-|wp-dashboard)/.test(slug)) return;
+    const topWindow = window.parent === window;
+    const content = document.getElementById('wpbody-content');
+
+    if (topWindow && content) {
+      content.style.opacity = '0';
+      content.style.transition = 'opacity 180ms ease-out';
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        content.style.opacity = '1';
+      }));
+      setTimeout(() => {
+        content.style.opacity = '';
+        content.style.transition = '';
+      }, 400);
+    }
+
+    // First selector with visible matches wins — one collection per page.
+    const STAGGER_SELECTORS = [
+      '.wpforms-settings-provider',                      // settings → integrations rows
+      '.wpforms-setting-row',                            // settings / tools rows
+      '.wp-list-table tbody tr',                         // forms / entries / payments tables
+      '.addon-item',                                     // addons grid
+      '#wpforms-setup-templates-list .wpforms-template', // templates gallery
+    ];
+    let rows = [];
+    for (const sel of STAGGER_SELECTORS) {
+      rows = Array.from(document.querySelectorAll(sel)).filter((el) => {
+        if (!(el instanceof HTMLElement)) return false;
+        const cs = getComputedStyle(el);
+        return cs.display !== 'none' && cs.visibility !== 'hidden';
+      });
+      if (rows.length) break;
+    }
+    rows = rows.slice(0, 14); // same cap as the builder stagger
+    if (!rows.length) return;
+    for (const row of rows) {
+      row.style.opacity = '0';
+      row.style.transform = 'translateY(6px)';
+      row.style.transition = 'opacity 60ms ease-out, transform 60ms ease-out';
+    }
+    const vtDelay = topWindow ? 150 : 0;
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      rows.forEach((row, i) => {
+        setTimeout(() => {
+          row.style.opacity = '1';
+          row.style.transform = 'translateY(0)';
+        }, vtDelay + i * 35);
+      });
+    }));
+  }
+
   // ─── Transition registry ────────────────────────────────────────────────
   // Each transition declares the event it listens on, a match predicate,
   // and an apply function that mirrors what the plugin's JS would do.
@@ -7504,6 +7564,12 @@
       case 'wpforms-entries':   return 'admin-entries-overview';
       case 'wpforms-addons':    return 'admin-addons';
       case 'wpforms-templates': return 'admin-templates';
+      // Add New form (no view / view=setup) → template-selection snapshot;
+      // edit-form rows (view=fields&form_id=N) → the captured builder form.
+      case 'wpforms-builder':
+        if (!view || view === 'setup') return 'builder-setup';
+        if (view === 'fields') return 'builder-fields';
+        return null;
       default: return null;
     }
   }
@@ -7527,7 +7593,19 @@
         e.stopPropagation();
         const target = '../' + slug + '/';
         fetch(target + 'index.html', { method: 'HEAD' })
-          .then((res) => { if (res.ok) window.location.href = target; })
+          .then((res) => {
+            if (!res.ok) return; // sibling snapshot not captured — stay put
+            // Ease OUT before leaving; the destination's entrance fade
+            // (initAdminEntranceFx) completes the two-sided transition.
+            const content = document.getElementById('wpbody-content');
+            if (content) {
+              content.style.transition = 'opacity 120ms ease-in';
+              content.style.opacity = '0';
+              setTimeout(() => { window.location.href = target; }, 110);
+            } else {
+              window.location.href = target;
+            }
+          })
           .catch(() => {}); // sibling snapshot not captured — stay put
       },
       true
@@ -8939,6 +9017,7 @@
     initAiBuilder();
     initSnapshotPromoteApi();
     initAdminCrossSnapshotNav();
+    initAdminEntranceFx();
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', runInits);
