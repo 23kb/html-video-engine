@@ -1,7 +1,7 @@
 # Contributing
 
-Short guide for human teammates working on this repo. Agents (Claude /
-Codex) follow `CLAUDE.md` and `AGENTS.md` — those go deeper.
+Short guide for human teammates working on this repo. Agents (Claude)
+follow `CLAUDE.md` — that goes deeper.
 
 ---
 
@@ -143,5 +143,5 @@ node serve.js                                     # local server on :4321
 
 If a session feels off (agent skipping the storyboard gate, fabricating
 UI, weakening postIntro, editing protected core), stop and re-ground in
-`docs/current-workflow.md`. The operator manual files (`CLAUDE.md`,
-`AGENTS.md`) explicitly forbid all four.
+`docs/current-workflow.md`. The operator manual (`CLAUDE.md`)
+explicitly forbids all four.

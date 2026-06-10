@@ -16,6 +16,51 @@ These patterns have repeatedly caused regressions in past video builds. Re-read 
 8. **DO NOT** first-write `videos/<slug>/index.html` for a pure-editorial video from a blank file. First write = `cp reference/html-templates/<closest>.html ...`, commit the unmodified clone, THEN customize. See INV-16.
 9. **DO NOT** set a new pilot's stage to anything less than 1920×1080. Lower stage resolutions (1280 / 1440 / 1600) cause snapshot compression that reads as blur. See INV-1.
 
+**Anti-patterns #1, #2, and the `repeat:-1` determinism rule are now hard-gated at write-time** by the `tools/hooks/video-guard.js` PreToolUse hook (wired in `.claude/settings.json`). It scans every Edit/Write to a `videos/<slug>/` file and blocks the edit if it spots a hand-mounted cursor, a single-tween camera, or `repeat:-1`. To ship a deliberate exception, put `// OVERRIDE: <reason>` (or `lint-allow: <rule-id>`) on the offending line. The same hook warns when you `Read` a ~1 MB snapshot `index.html` (see G4 below).
+
+## ⛔ Instruction-fidelity gates — why videos took 7 iterations instead of 2
+
+These four rules exist because past video builds repeatedly failed plain-English instructions, each failure costing a full rebuild + feedback + re-QC round-trip. Root cause every time: **the agent substituted its own short-circuit for explicit guidance.** Source post-mortem: `videos/wpforms-ai-smart-edit-notes/implementation-notes.html`. Treat these as hard rules, not defaults.
+
+### G1 — Preserve the user's literal verb. Never silently substitute.
+
+When the user uses a motion verb, implement that verb. Do not translate it into "the cleanest thing that's geometrically convenient."
+
+| User says | Implement as | NOT as |
+|---|---|---|
+| **zoom** | camera transform (scale + translate) on the iframe/stage wrapper — `cinematicFlight` / `cameraToElement` | a content morph or cross-fade |
+| **morph** | the *same* DOM element changes shape (size/position/radius tween, or Flip) | a cross-fade between two different elements |
+| **move** | tween x/y | a fade-and-reappear |
+| **click** | `Cursor.click()` on the real target node | a visual flash with no cursor |
+| **type** | `caretType` (editorial) / `typeIntoIframeInput` (real input) | opacity-stagger on char spans |
+| **fade** | `autoAlpha` tween | display toggle |
+
+If the literal verb is genuinely hard to implement (e.g. a `position:fixed` modal can't ride a camera zoom), **say so and ask what visual experience they want — do not substitute and ship.** "I'll note it as an open question" is NOT a valid escape hatch from an explicit instruction.
+
+### G2 — State the target back, with evidence, before writing animation code.
+
+When the user points at "a part of the UI" — especially if they name a CSS class or ID — that name is a **contract**, not fuzzy English.
+
+1. Find the **exact** class/ID in the snapshot DOM (via `inspect-snapshot.js --emit-selectors` or grep), not a best-guess English match.
+2. State it back before coding: *"Morph target is `.wpforms-ai-chat-message-input`; the rest of `.wpforms-smart-edit-modal-body` fades out. Confirming."* If wrong, the user corrects in one line — no code wasted.
+3. Build **only** the named element's transform. Surrounding elements get their own treatment (fade / stay / exit) but they DO NOT morph.
+
+The confirmation check is "does my plan map to a specific named element in the snapshot?" — not "do I think I understood?" Verbally agreeing ("makes sense?") then misimplementing is the exact failure this prevents.
+
+### G3 — Surgical edits when iterating, not full-file rewrites.
+
+After feedback, fix the ONE thing called out. Do not rewrite the whole file because the architecture feels wrong. Per-iteration full-file rewrites (v2/v3/v4 each a ~30k-token rewrite) were the single biggest cost sink in past builds. If a rewrite is genuinely required, state why and confirm before doing it. (Project-specific edge of global CLAUDE.md §3 "Surgical Changes.")
+
+### G4 — Never `Read` a snapshot `index.html` for selectors. Use the tools.
+
+Snapshot `index.html` files are often ~1 MB — reading one burns context for nothing. To find selectors / structure / field-state, use:
+
+- `node tools/inspect-snapshot.js <slug> --emit-selectors [--filter <text>]`
+- `node tools/verify-selectors.js <slug> ...`
+- `node tools/field-state.js --field <name> [--summary]`
+
+Full-read the raw markup only when you genuinely need it (rare). The `video-guard` hook warns on raw snapshot reads as a backstop.
+
 This manual is intentionally short. **Topic-scoped rules live in skills**, not here. The first thing to do in any session is identify which video path you're on — that decides which skills load.
 
 ## Pick your path FIRST
@@ -37,14 +82,15 @@ If the user's request is ambiguous, ask **one question**: "Tutorial showing real
 - `reference/html-templates/editorial-reference-36s.html` + `editorial-reference-BEATS.md` — 36s linear-scene reference
 - `reference/html-templates/openai-replica-18s.html` — first-try single-HTML proof
 
-## Four libraries — use these, don't reinvent
+## Five libraries — use these, don't reinvent
 
-For any motion / camera / cursor / typing / field-reveal / brand-anchor / WPForms interaction / iframe-glue / split-screen-mirror work, the executable code **already exists** in `videos/_shared/`. Reach for the library first. Inventing a new approximation is a recurring failure mode that re-opens bugs the library already fixed (cursor frenzy, caret drift, slide-projector cameras, snapshot-swap cream-flash).
+For any motion / camera / cursor / typing / field-reveal / brand-anchor / WPForms interaction / iframe-glue / split-screen-mirror / named-effect work, the executable code **already exists** in `videos/_shared/`. Reach for the library first. Inventing a new approximation is a recurring failure mode that re-opens bugs the library already fixed (cursor frenzy, caret drift, slide-projector cameras, snapshot-swap cream-flash).
 
 - **`motion-primitives.js`** — animation kit: cameras (`cinematicFlight`, `figjamFlight`, `focusStationOverview`), `Cursor` class (glide / click / hover / drag), text (`caretType`, `statusPillMorph`, `markerSweep`), reveal (`popOut`, `fieldStaggerReveal`), brand (`mountSullieBug`, `cleanFastRejoin`), utils (`boundedRepeats`, `mulberry32`). Full when-to-use in `wpforms-primitives` skill. QC at `videos/_qc-primitives/index.html`.
 - **`wpforms-interactions.js`** — WPForms admin/builder interactions: `navAddNewForm`, `selectTemplate`, `openSettingsTab`, `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, `dragFieldToForm`, plus the `IframeManager` helper (native 1280×720 mount, engine-pattern camera transform, `pointer-events: none` guard). Full list in `wpforms-primitives` skill. QC at `videos/_qc-interactions/index.html`.
 - **`iframe-helpers.js`** — defensive-pattern glue: `glideClick` (scrollIntoView + glide + click in one call), `findInIframeByText` / `glideToText` for SaaS captures with content-hashed class names (Klaviyo `.sc-jTrPJq`, Mailchimp, Stripe). Use whenever class names won't survive a re-capture.
 - **`builder-frontend-split.js`** — split-screen authoring helper for "tweak the builder, watch the frontend mirror live" tutorial shape. `BuilderFrontendSplit` class mounts two `IframeManager`s side-by-side, auto-bridges builder→frontend `wpf:field-state` messages, exposes `fadeInFrontend / fadeOutFrontend / isolateFrontend / showAllFrontend / setFieldState`. Mirror works because `snapshots/_shared/interactivity.js` broadcasts every option change and `snapshots/_shared/frontend.js` (auto-loaded into `frontend-published-form`) applies the change to frontend DOM — nothing to wire per-video. Skeleton at `videos/_examples/builder-frontend-split-skeleton/index.html`. QC harness at `videos/_qc-frontend-mirror/index.html`.
+- **`effects/`** — named-effect vocabulary promoted from `reference/gsap-effects/` (the 101-port library). Each effect is a `mountFoo({...})` function returning `{ el, tweenInto(tl, opts), dispose() }`. Current vocabulary: `mountTextStackFromRight`, `mountTextLetterMaskDomino`, `mountTextCenterOutRoll`, `mountCardsSpreadFan`, `mountCardsFlyInStack`, `mountConstellationPhyllotaxisBloom`. **Use this for editorial / ad-style motion BEFORE writing custom GSAP** — the vocabulary covers text reveals, card layouts, and constellations. Full table in `videos/_shared/effects/README.md`. Full 101-port menu in `reference/gsap-effects/CATALOG.md`. QC at `videos/_qc-effects/index.html`. To add a new effect, promote a port per the README instructions.
 
 **Load the `wpforms-primitives` skill BEFORE writing motion / cursor / interaction code.** The skill is the per-primitive when-to-use index. Scanning the QC pages above is the fastest way to confirm a primitive matches your need before authoring.
 
@@ -174,7 +220,6 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 - `node tools/render.js <slug> [--seek] [--fps 30]` — MP4 export
 - `node tools/preview.js [--video <slug>] [--port 4321]` — live-reload + scrubber
 - `node tools/lint-determinism.js [--all] [--video <slug>]` — determinism check
-- `node tools/check-claude-agents-sync.js` — verify CLAUDE.md and AGENTS.md are in sync (Phase 5a tool)
 - `npm run lint` — composes `validate-video.js --all` + `lint-determinism.js --all`
 
 Use standard tools instead of ad hoc `find`, `grep`, custom Playwright, or runtime spelunking unless there is a concrete gap.

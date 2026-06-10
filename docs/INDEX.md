@@ -112,7 +112,6 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 ## Repo-root references
 
 - `CLAUDE.md` — Operator manual for Claude Code. Always loaded by Claude Code sessions. Boot order + path-decision tree + protected core + validation + push-back triggers.
-- `AGENTS.md` — Operator manual for Codex. Full copy of CLAUDE.md kept in sync. Both files are needed because Claude Code and Codex read different filenames. Use `tools/check-claude-agents-sync.js` (Phase 5a) to verify they match.
 - `BACKLOG.md` — Living architectural-debt + future-phase candidate list.
 
 ## Brand canonical truth

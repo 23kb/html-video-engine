@@ -15,7 +15,6 @@ Last updated: 2026-05-07.
 | Editorial / ad-style surfaces + blocks library + atmospheric | `wpforms-marketing` skill body |
 | One-line-per-doc map | `docs/INDEX.md` |
 | Operator manual (always loaded for Claude) | `CLAUDE.md` |
-| Operator manual (always loaded for Codex) | `AGENTS.md` |
 
 ## What this tool is
 
