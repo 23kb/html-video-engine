@@ -10,9 +10,10 @@
 //      canvas .wpforms-field elements not in the keep list (no relabeling)
 //   2. trim-builder-markup.js       — builder-* slugs only; dead admin
 //      chrome, off-canvas option panels, settings/provider panels
-//   3. dedup-snapshot-css.js        — shared <style> blocks → linked
+//   3. strip-snapshot-comments.js   — HTML comments (IE conditionals kept)
+//   4. dedup-snapshot-css.js        — shared <style> blocks → linked
 //      snapshots/_shared/css/<hash>.css
-//   4. generate-snapshot-catalog.js — regenerate catalog.md
+//   5. generate-snapshot-catalog.js — regenerate catalog.md
 //
 // After it finishes, re-validate videos that use the snapshot:
 //   node tools/validate-video.js --all
@@ -58,6 +59,7 @@ function main() {
     console.log(`\n═══ post-capture: ${slug} ═══`);
     if (keepFields) run('trim-snapshot-fields.js', [slug, keepFields]);
     if (slug.startsWith('builder-')) run('trim-builder-markup.js', ['--slug', slug]);
+    run('strip-snapshot-comments.js', [slug]);
     run('dedup-snapshot-css.js', ['--slug', slug]);
     run('generate-snapshot-catalog.js', [slug]);
   }
