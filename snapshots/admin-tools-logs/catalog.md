@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-tools-logs/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 84 selector entries across 2 sections.
+> 85 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-tools-logs/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_61 entries_
+_62 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -46,7 +46,7 @@ _61 entries_
 | <a id="id--message"></a>`id--message` | `#message` | th | Message | 1 |
 | <a id="id--message-hide"></a>`id--message-hide` | `#message-hide` | input | Message Form ID Types | 1 |
 | <a id="id--plugin-search-input"></a>`id--plugin-search-input` | `#plugin-search-input` | input | All Logs Conditional Logic Entries Errors | 1 |
-| <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input | Screen Option | 1 |
+| <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input | Screen O | 1 |
 | <a id="id--screen-options-link-wrap"></a>`id--screen-options-link-wrap` | `#screen-options-link-wrap` | div | Screen Options | 1 |
 | <a id="id--screen-options-wrap"></a>`id--screen-options-wrap` | `#screen-options-wrap` | div | Columns Log Title Message | 1 |
 | <a id="id--screenoptionnonce"></a>`id--screenoptionnonce` | `#screenoptionnonce` | input | Screen Options | 1 |
@@ -60,6 +60,7 @@ _61 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms_page_wpforms_tools_per_page"></a>`id--wpforms_page_wpforms_tools_per_page` | `#wpforms_page_wpforms_tools_per_page` | input |  | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |
@@ -75,7 +76,7 @@ _61 entries_
 | <a id="id--wpforms-setting-row-log-user-roles"></a>`id--wpforms-setting-row-log-user-roles` | `#wpforms-setting-row-log-user-roles` | div | User Roles | 1 |
 | <a id="id--wpforms-setting-row-log-users"></a>`id--wpforms-setting-row-log-users` | `#wpforms-setting-row-log-users` | div | Users | 1 |
 | <a id="id--wpforms-setting-row-logs-enable"></a>`id--wpforms-setting-row-logs-enable` | `#wpforms-setting-row-logs-enable` | div | Enable Logs | 1 |
-| <a id="id--wpforms-tools"></a>`id--wpforms-tools` | `#wpforms-tools` | div | Import Export Entry Automation | 1 |
+| <a id="id--wpforms-tools"></a>`id--wpforms-tools` | `#wpforms-tools` | div | Import Export Entr | 1 |
 | <a id="id--wpforms-tools-logs-nonce"></a>`id--wpforms-tools-logs-nonce` | `#wpforms-tools-logs-nonce` | input | Log Settings Enable and configure the logging functionality… | 1 |
 
 ## Role-like classes

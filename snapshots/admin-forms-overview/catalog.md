@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_54 entries_
+_55 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ _54 entries_
 | <a id="id--name"></a>`id--name` | `#name` | th | Name Sort ascending. | 1 |
 | <a id="id--name-foot"></a>`id--name-foot` | `#name-foot` | th | Name Sort ascending. | 1 |
 | <a id="id--pagination_per_page"></a>`id--pagination_per_page` | `#pagination_per_page` | input | View Show form templates | 1 |
-| <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input | Screen Option | 1 |
+| <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input | Screen O | 1 |
 | <a id="id--screen-options-link-wrap"></a>`id--screen-options-link-wrap` | `#screen-options-link-wrap` | div | Screen Options | 1 |
 | <a id="id--screen-options-wrap"></a>`id--screen-options-wrap` | `#screen-options-wrap` | div | Pagination Number of forms per page: | 1 |
 | <a id="id--screenoptionnonce"></a>`id--screenoptionnonce` | `#screenoptionnonce` | input | Screen Options | 1 |
@@ -59,6 +59,7 @@ _54 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-forms-table-edit-columns-select"></a>`id--wpforms-forms-table-edit-columns-select` | `#wpforms-forms-table-edit-columns-select` | select | ID Name Tags Author Shortcode Date Entries | 1 |
@@ -73,18 +74,18 @@ _54 entries_
 
 ## Role-like classes
 
-_31 entries_
+_30 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="class--choices__input--cloned"></a>`class--choices__input--cloned` | `.choices__input--cloned` | input | No tags to choose from Filter | 2 |
 | <a id="class--choices__list--dropdown"></a>`class--choices__list--dropdown` | `.choices__list--dropdown` | div | No tags to choose from | 2 |
-| <a id="class--wpforms-admin-content"></a>`class--wpforms-admin-content` | `.wpforms-admin-content` | div | Search Forms: | 1 |
+| <a id="class--wpforms-admin-content"></a>`class--wpforms-admin-content` | `.wpforms-admin-content` | div |  | 1 |
 | <a id="class--wpforms-btn"></a>`class--wpforms-btn` | `.wpforms-btn` | a | Add New | 1 |
 | <a id="class--wpforms-btn-orange"></a>`class--wpforms-btn-orange` | `.wpforms-btn-orange` | a | Add New | 1 |
 | <a id="class--wpforms-bulk-edit-tags-cancel"></a>`class--wpforms-bulk-edit-tags-cancel` | `.wpforms-bulk-edit-tags-cancel` | button | Cancel | 1 |
 | <a id="class--wpforms-bulk-edit-tags-save"></a>`class--wpforms-bulk-edit-tags-save` | `.wpforms-bulk-edit-tags-save` | button | Update | 1 |
-| <a id="class--wpforms-column-tags-edit"></a>`class--wpforms-column-tags-edit` | `.wpforms-column-tags-edit` | a | Edit | 10 |
+| <a id="class--wpforms-column-tags-edit"></a>`class--wpforms-column-tags-edit` | `.wpforms-column-tags-edit` | a | Edit | 3 |
 | <a id="class--wpforms-flyout-button"></a>`class--wpforms-flyout-button` | `.wpforms-flyout-button` | a | Suggest a Feature | 4 |
 | <a id="class--wpforms-flyout-head"></a>`class--wpforms-flyout-head` | `.wpforms-flyout-head` | a | See Quick Links | 1 |
 | <a id="class--wpforms-flyout-item"></a>`class--wpforms-flyout-item` | `.wpforms-flyout-item` | a | Suggest a Feature | 3 |
@@ -98,7 +99,6 @@ _31 entries_
 | <a id="class--wpforms-header-show-screen-options"></a>`class--wpforms-header-show-screen-options` | `.wpforms-header-show-screen-options` | div |  | 1 |
 | <a id="class--wpforms-link"></a>`class--wpforms-link` | `.wpforms-link` | a |  | 4 |
 | <a id="class--wpforms-list-table-ext-edit-columns-select"></a>`class--wpforms-list-table-ext-edit-columns-select` | `.wpforms-list-table-ext-edit-columns-select` | select | ID Name Tags Author Shortcode Date Entries | 1 |
-| <a id="class--wpforms-locations-link"></a>`class--wpforms-locations-link` | `.wpforms-locations-link` | a | /page-frontend-contact-fixture/ | 1 |
 | <a id="class--wpforms-manage-tags"></a>`class--wpforms-manage-tags` | `.wpforms-manage-tags` | button | Manage Tags | 2 |
 | <a id="class--wpforms-message"></a>`class--wpforms-message` | `.wpforms-message` | div |  | 1 |
 | <a id="class--wpforms-multiselect-checkbox-dropdown"></a>`class--wpforms-multiselect-checkbox-dropdown` | `.wpforms-multiselect-checkbox-dropdown` | div | ID Name Tags | 1 |

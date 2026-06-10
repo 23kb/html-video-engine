@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-tools-action-scheduler/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 59 selector entries across 2 sections.
+> 60 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-tools-action-scheduler/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_47 entries_
+_48 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ _47 entries_
 | <a id="id--recurrence-hide"></a>`id--recurrence-hide` | `#recurrence-hide` | input | Recurrence Scheduled Date Log Pagination | 1 |
 | <a id="id--schedule"></a>`id--schedule` | `#schedule` | th | Scheduled Date Sort descending. | 1 |
 | <a id="id--schedule-hide"></a>`id--schedule-hide` | `#schedule-hide` | input | Scheduled Date Log Pagination Number of items per page: | 1 |
-| <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input | Screen Option | 1 |
+| <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input | Screen O | 1 |
 | <a id="id--screen-options-link-wrap"></a>`id--screen-options-link-wrap` | `#screen-options-link-wrap` | div | Screen Options | 1 |
 | <a id="id--screen-options-wrap"></a>`id--screen-options-wrap` | `#screen-options-wrap` | div | Columns Hook Status | 1 |
 | <a id="id--screenoptionnonce"></a>`id--screenoptionnonce` | `#screenoptionnonce` | input | Screen Options | 1 |
@@ -56,13 +56,14 @@ _47 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms_page_wpforms_tools_per_page"></a>`id--wpforms_page_wpforms_tools_per_page` | `#wpforms_page_wpforms_tools_per_page` | input |  | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-header"></a>`id--wpforms-header` | `#wpforms-header` | div |  | 1 |
 | <a id="id--wpforms-header-temp"></a>`id--wpforms-header-temp` | `#wpforms-header-temp` | div |  | 1 |
 | <a id="id--wpforms-reset-filter"></a>`id--wpforms-reset-filter` | `#wpforms-reset-filter` | div | Search results for wpforms | 1 |
-| <a id="id--wpforms-tools"></a>`id--wpforms-tools` | `#wpforms-tools` | div | Import Export Entry Automation | 1 |
+| <a id="id--wpforms-tools"></a>`id--wpforms-tools` | `#wpforms-tools` | div | Import Export Entr | 1 |
 
 ## Role-like classes
 

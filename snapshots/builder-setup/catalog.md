@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/builder-setup/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 3001 selector entries across 3 sections.
+> 2929 selector entries across 3 sections.
 
 Provenance anchor form: `snapshots/builder-setup/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_2895 entries_
+_2889 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -20,7 +20,6 @@ _2895 entries_
 | <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2` | div | Sample Page | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
-| <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate WPForms ★★★★★ on WordPress.org to help us sprea… | 1 |
 | <a id="id--link-modal-title"></a>`id--link-modal-title` | `#link-modal-title` | h1 | Insert/edit link | 1 |
 | <a id="id--mceu_114"></a>`id--mceu_114` | `#mceu_114` | div |  | 1 |
 | <a id="id--mceu_114-button"></a>`id--mceu_114-button` | `#mceu_114-button` | button |  | 1 |
@@ -691,7 +690,9 @@ _2895 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wp-link"></a>`id--wp-link` | `#wp-link` | form | Insert/edit link Close Enter the destination URL | 1 |
+| <a id="id--wpforms-admin-bar-inline-css"></a>`id--wpforms-admin-bar-inline-css` | `#wpforms-admin-bar-inline-css` | link |  | 1 |
 | <a id="id--wpforms-admin-form-embed-wizard"></a>`id--wpforms-admin-form-embed-wizard` | `#wpforms-admin-form-embed-wizard` | div | Embed in a Page We can help embed your form with just a few… | 1 |
 | <a id="id--wpforms-admin-form-embed-wizard-container"></a>`id--wpforms-admin-form-embed-wizard-container` | `#wpforms-admin-form-embed-wizard-container` | div | Embed in a Page We can help embed your form with just a few… | 1 |
 | <a id="id--wpforms-admin-form-embed-wizard-content-create-page"></a>`id--wpforms-admin-form-embed-wizard-content-create-page` | `#wpforms-admin-form-embed-wizard-content-create-page` | div | What would you like to call the new page? | 1 |
@@ -707,18 +708,9 @@ _2895 entries_
 | <a id="id--wpforms-admin-form-embed-wizard-shortcode-wrap"></a>`id--wpforms-admin-form-embed-wizard-shortcode-wrap` | `#wpforms-admin-form-embed-wizard-shortcode-wrap` | div |  | 1 |
 | <a id="id--wpforms-admin-form-embed-wizard-tutorial"></a>`id--wpforms-admin-form-embed-wizard-tutorial` | `#wpforms-admin-form-embed-wizard-tutorial` | iframe |  | 1 |
 | <a id="id--wpforms-builder"></a>`id--wpforms-builder` | `#wpforms-builder` | div | You are using an outdated browser! The Internet Explorer br… | 1 |
-| <a id="id--wpforms-builder-form"></a>`id--wpforms-builder-form` | `#wpforms-builder-form` | form | Now edit | 1 |
-| <a id="id--wpforms-builder-help"></a>`id--wpforms-builder-help` | `#wpforms-builder-help` | div |  | 1 |
-| <a id="id--wpforms-builder-help-categories"></a>`id--wpforms-builder-help-categories` | `#wpforms-builder-help-categories` | div | Getting Started | 1 |
-| <a id="id--wpforms-builder-help-close"></a>`id--wpforms-builder-help-close` | `#wpforms-builder-help-close` | div |  | 1 |
-| <a id="id--wpforms-builder-help-content"></a>`id--wpforms-builder-help-content` | `#wpforms-builder-help-content` | div |  | 1 |
-| <a id="id--wpforms-builder-help-footer"></a>`id--wpforms-builder-help-footer` | `#wpforms-builder-help-footer` | div | View Documentation Browse documentation, reference material… | 1 |
-| <a id="id--wpforms-builder-help-logo"></a>`id--wpforms-builder-help-logo` | `#wpforms-builder-help-logo` | img |  | 1 |
-| <a id="id--wpforms-builder-help-no-result"></a>`id--wpforms-builder-help-no-result` | `#wpforms-builder-help-no-result` | div | No docs found | 1 |
-| <a id="id--wpforms-builder-help-result"></a>`id--wpforms-builder-help-result` | `#wpforms-builder-help-result` | div |  | 1 |
-| <a id="id--wpforms-builder-help-search"></a>`id--wpforms-builder-help-search` | `#wpforms-builder-help-search` | div |  | 1 |
-| <a id="id--wpforms-builder-help-search-clear"></a>`id--wpforms-builder-help-search-clear` | `#wpforms-builder-help-search-clear` | div |  | 1 |
+| <a id="id--wpforms-builder-form"></a>`id--wpforms-builder-form` | `#wpforms-builder-form` | form |  | 1 |
 | <a id="id--wpforms-builder-ie-notice"></a>`id--wpforms-builder-ie-notice` | `#wpforms-builder-ie-notice` | div | You are using an outdated browser! The Internet Explorer br… | 1 |
+| <a id="id--wpforms-builder-inline-css"></a>`id--wpforms-builder-inline-css` | `#wpforms-builder-inline-css` | link |  | 1 |
 | <a id="id--wpforms-builder-mobile-notice"></a>`id--wpforms-builder-mobile-notice` | `#wpforms-builder-mobile-notice` | div | Our form builder is optimized for desktop computers. We rec… | 1 |
 | <a id="id--wpforms-builder-overlay"></a>`id--wpforms-builder-overlay` | `#wpforms-builder-overlay` | div |  | 1 |
 | <a id="id--wpforms-content-field-fake-div"></a>`id--wpforms-content-field-fake-div` | `#wpforms-content-field-fake-div` | textarea |  | 1 |
@@ -728,8 +720,10 @@ _2895 entries_
 | <a id="id--wpforms-embed"></a>`id--wpforms-embed` | `#wpforms-embed` | button | Embed | 1 |
 | <a id="id--wpforms-exit"></a>`id--wpforms-exit` | `#wpforms-exit` | button |  | 1 |
 | <a id="id--wpforms-field-context-menu"></a>`id--wpforms-field-context-menu` | `#wpforms-field-context-menu` | div | Edit | 1 |
-| <a id="id--wpforms-field-id"></a>`id--wpforms-field-id` | `#wpforms-field-id` | input | Now editing Master Form | 1 |
+| <a id="id--wpforms-field-id"></a>`id--wpforms-field-id` | `#wpforms-field-id` | input | Now editing Ma | 1 |
+| <a id="id--wpforms-full-inline-css"></a>`id--wpforms-full-inline-css` | `#wpforms-full-inline-css` | link |  | 1 |
 | <a id="id--wpforms-help"></a>`id--wpforms-help` | `#wpforms-help` | button | Help | 1 |
+| <a id="id--wpforms-icon-choices-custom-properties"></a>`id--wpforms-icon-choices-custom-properties` | `#wpforms-icon-choices-custom-properties` | link |  | 1 |
 | <a id="id--wpforms-panel-setup"></a>`id--wpforms-panel-setup` | `#wpforms-panel-setup` | div | Name Your Form | 1 |
 | <a id="id--wpforms-panels-toggle"></a>`id--wpforms-panels-toggle` | `#wpforms-panels-toggle` | div | Setup Fields | 1 |
 | <a id="id--wpforms-preview-btn"></a>`id--wpforms-preview-btn` | `#wpforms-preview-btn` | a | Preview | 1 |
@@ -2927,115 +2921,49 @@ _6 entries_
 
 ## Role-like classes
 
-_100 entries_
+_34 entries_
 
-| Anchor | Selector | Count |
-| --- | --- | --- |
-| <a id="class--choices"></a>`class--choices` | `.choices` | 1 |
-| <a id="class--choices__inner"></a>`class--choices__inner` | `.choices__inner` | 1 |
-| <a id="class--choices__input"></a>`class--choices__input` | `.choices__input` | 2 |
-| <a id="class--choices__input--cloned"></a>`class--choices__input--cloned` | `.choices__input--cloned` | 1 |
-| <a id="class--choices__item"></a>`class--choices__item` | `.choices__item` | 3 |
-| <a id="class--choices__item--choice"></a>`class--choices__item--choice` | `.choices__item--choice` | 2 |
-| <a id="class--choices__item--selectable"></a>`class--choices__item--selectable` | `.choices__item--selectable` | 3 |
-| <a id="class--choices__list"></a>`class--choices__list` | `.choices__list` | 3 |
-| <a id="class--choices__list--dropdown"></a>`class--choices__list--dropdown` | `.choices__list--dropdown` | 1 |
-| <a id="class--choices__list--single"></a>`class--choices__list--single` | `.choices__list--single` | 1 |
-| <a id="class--wpforms-admin-empty-state-container"></a>`class--wpforms-admin-empty-state-container` | `.wpforms-admin-empty-state-container` | 1 |
-| <a id="class--wpforms-admin-no-forms-footer"></a>`class--wpforms-admin-no-forms-footer` | `.wpforms-admin-no-forms-footer` | 1 |
-| <a id="class--wpforms-admin-no-user-templates"></a>`class--wpforms-admin-no-user-templates` | `.wpforms-admin-no-user-templates` | 1 |
-| <a id="class--wpforms-admin-page"></a>`class--wpforms-admin-page` | `.wpforms-admin-page` | 2 |
-| <a id="class--wpforms-admin-popup"></a>`class--wpforms-admin-popup` | `.wpforms-admin-popup` | 1 |
-| <a id="class--wpforms-admin-popup-bottom"></a>`class--wpforms-admin-popup-bottom` | `.wpforms-admin-popup-bottom` | 4 |
-| <a id="class--wpforms-admin-popup-btn"></a>`class--wpforms-admin-popup-btn` | `.wpforms-admin-popup-btn` | 3 |
-| <a id="class--wpforms-admin-popup-close"></a>`class--wpforms-admin-popup-close` | `.wpforms-admin-popup-close` | 1 |
-| <a id="class--wpforms-admin-popup-container"></a>`class--wpforms-admin-popup-container` | `.wpforms-admin-popup-container` | 1 |
-| <a id="class--wpforms-admin-popup-content"></a>`class--wpforms-admin-popup-content` | `.wpforms-admin-popup-content` | 1 |
-| <a id="class--wpforms-admin-popup-flex"></a>`class--wpforms-admin-popup-flex` | `.wpforms-admin-popup-flex` | 1 |
-| <a id="class--wpforms-admin-popup-shortcode"></a>`class--wpforms-admin-popup-shortcode` | `.wpforms-admin-popup-shortcode` | 1 |
-| <a id="class--wpforms-admin-popup-toggle"></a>`class--wpforms-admin-popup-toggle` | `.wpforms-admin-popup-toggle` | 3 |
-| <a id="class--wpforms-arrow"></a>`class--wpforms-arrow` | `.wpforms-arrow` | 10 |
-| <a id="class--wpforms-badge"></a>`class--wpforms-badge` | `.wpforms-badge` | 9 |
-| <a id="class--wpforms-badge-corner"></a>`class--wpforms-badge-corner` | `.wpforms-badge-corner` | 8 |
-| <a id="class--wpforms-badge-inline"></a>`class--wpforms-badge-inline` | `.wpforms-badge-inline` | 1 |
-| <a id="class--wpforms-badge-purple"></a>`class--wpforms-badge-purple` | `.wpforms-badge-purple` | 1 |
-| <a id="class--wpforms-badge-rounded"></a>`class--wpforms-badge-rounded` | `.wpforms-badge-rounded` | 1 |
-| <a id="class--wpforms-badge-rounded-bl"></a>`class--wpforms-badge-rounded-bl` | `.wpforms-badge-rounded-bl` | 8 |
-| <a id="class--wpforms-badge-sm"></a>`class--wpforms-badge-sm` | `.wpforms-badge-sm` | 9 |
-| <a id="class--wpforms-badge-steel"></a>`class--wpforms-badge-steel` | `.wpforms-badge-steel` | 8 |
-| <a id="class--wpforms-btn-purple-dark"></a>`class--wpforms-btn-purple-dark` | `.wpforms-btn-purple-dark` | 1 |
-| <a id="class--wpforms-btn-redo"></a>`class--wpforms-btn-redo` | `.wpforms-btn-redo` | 1 |
-| <a id="class--wpforms-btn-toolbar"></a>`class--wpforms-btn-toolbar` | `.wpforms-btn-toolbar` | 5 |
-| <a id="class--wpforms-btn-undo"></a>`class--wpforms-btn-undo` | `.wpforms-btn-undo` | 1 |
-| <a id="class--wpforms-builder-help-categories-toggle"></a>`class--wpforms-builder-help-categories-toggle` | `.wpforms-builder-help-categories-toggle` | 1 |
-| <a id="class--wpforms-builder-help-category"></a>`class--wpforms-builder-help-category` | `.wpforms-builder-help-category` | 10 |
-| <a id="class--wpforms-builder-help-docs"></a>`class--wpforms-builder-help-docs` | `.wpforms-builder-help-docs` | 11 |
-| <a id="class--wpforms-builder-help-footer-block"></a>`class--wpforms-builder-help-footer-block` | `.wpforms-builder-help-footer-block` | 2 |
-| <a id="class--wpforms-builder-overlay-content"></a>`class--wpforms-builder-overlay-content` | `.wpforms-builder-overlay-content` | 1 |
-| <a id="class--wpforms-center"></a>`class--wpforms-center` | `.wpforms-center` | 1 |
-| <a id="class--wpforms-center-form-name"></a>`class--wpforms-center-form-name` | `.wpforms-center-form-name` | 1 |
-| <a id="class--wpforms-center-form-name-prefix"></a>`class--wpforms-center-form-name-prefix` | `.wpforms-center-form-name-prefix` | 1 |
-| <a id="class--wpforms-context-menu"></a>`class--wpforms-context-menu` | `.wpforms-context-menu` | 2 |
-| <a id="class--wpforms-context-menu-dropdown"></a>`class--wpforms-context-menu-dropdown` | `.wpforms-context-menu-dropdown` | 1 |
-| <a id="class--wpforms-context-menu-list"></a>`class--wpforms-context-menu-list` | `.wpforms-context-menu-list` | 3 |
-| <a id="class--wpforms-context-menu-list-divider"></a>`class--wpforms-context-menu-list-divider` | `.wpforms-context-menu-list-divider` | 4 |
-| <a id="class--wpforms-context-menu-list-item"></a>`class--wpforms-context-menu-list-item` | `.wpforms-context-menu-list-item` | 16 |
-| <a id="class--wpforms-context-menu-list-item-has-child"></a>`class--wpforms-context-menu-list-item-has-child` | `.wpforms-context-menu-list-item-has-child` | 1 |
-| <a id="class--wpforms-context-menu-list-item-icon"></a>`class--wpforms-context-menu-list-item-icon` | `.wpforms-context-menu-list-item-icon` | 16 |
-| <a id="class--wpforms-context-menu-list-item-inactive"></a>`class--wpforms-context-menu-list-item-inactive` | `.wpforms-context-menu-list-item-inactive` | 2 |
-| <a id="class--wpforms-context-menu-list-item-selective"></a>`class--wpforms-context-menu-list-item-selective` | `.wpforms-context-menu-list-item-selective` | 5 |
-| <a id="class--wpforms-context-menu-list-item-text"></a>`class--wpforms-context-menu-list-item-text` | `.wpforms-context-menu-list-item-text` | 16 |
-| <a id="class--wpforms-context-menu-list-selective"></a>`class--wpforms-context-menu-list-selective` | `.wpforms-context-menu-list-selective` | 1 |
-| <a id="class--wpforms-folder"></a>`class--wpforms-folder` | `.wpforms-folder` | 10 |
-| <a id="class--wpforms-form-name"></a>`class--wpforms-form-name` | `.wpforms-form-name` | 1 |
-| <a id="class--wpforms-fullscreen-notice"></a>`class--wpforms-fullscreen-notice` | `.wpforms-fullscreen-notice` | 2 |
-| <a id="class--wpforms-fullscreen-notice-button"></a>`class--wpforms-fullscreen-notice-button` | `.wpforms-fullscreen-notice-button` | 3 |
-| <a id="class--wpforms-fullscreen-notice-button-primary"></a>`class--wpforms-fullscreen-notice-button-primary` | `.wpforms-fullscreen-notice-button-primary` | 2 |
-| <a id="class--wpforms-fullscreen-notice-button-secondary"></a>`class--wpforms-fullscreen-notice-button-secondary` | `.wpforms-fullscreen-notice-button-secondary` | 1 |
-| <a id="class--wpforms-fullscreen-notice-buttons"></a>`class--wpforms-fullscreen-notice-buttons` | `.wpforms-fullscreen-notice-buttons` | 2 |
-| <a id="class--wpforms-left"></a>`class--wpforms-left` | `.wpforms-left` | 1 |
-| <a id="class--wpforms-loading-inline"></a>`class--wpforms-loading-inline` | `.wpforms-loading-inline` | 1 |
-| <a id="class--wpforms-loading-spinner"></a>`class--wpforms-loading-spinner` | `.wpforms-loading-spinner` | 1 |
-| <a id="class--wpforms-loading-white"></a>`class--wpforms-loading-white` | `.wpforms-loading-white` | 1 |
-| <a id="class--wpforms-menu-new"></a>`class--wpforms-menu-new` | `.wpforms-menu-new` | 1 |
-| <a id="class--wpforms-panel"></a>`class--wpforms-panel` | `.wpforms-panel` | 1 |
-| <a id="class--wpforms-panel-content"></a>`class--wpforms-panel-content` | `.wpforms-panel-content` | 1 |
-| <a id="class--wpforms-panel-content-wrap"></a>`class--wpforms-panel-content-wrap` | `.wpforms-panel-content-wrap` | 1 |
-| <a id="class--wpforms-panel-fields-button"></a>`class--wpforms-panel-fields-button` | `.wpforms-panel-fields-button` | 1 |
-| <a id="class--wpforms-panel-full-content"></a>`class--wpforms-panel-full-content` | `.wpforms-panel-full-content` | 1 |
-| <a id="class--wpforms-panel-payments-button"></a>`class--wpforms-panel-payments-button` | `.wpforms-panel-payments-button` | 1 |
-| <a id="class--wpforms-panel-providers-button"></a>`class--wpforms-panel-providers-button` | `.wpforms-panel-providers-button` | 1 |
-| <a id="class--wpforms-panel-revisions-button"></a>`class--wpforms-panel-revisions-button` | `.wpforms-panel-revisions-button` | 1 |
-| <a id="class--wpforms-panel-revisions-button-spacer"></a>`class--wpforms-panel-revisions-button-spacer` | `.wpforms-panel-revisions-button-spacer` | 1 |
-| <a id="class--wpforms-panel-settings-button"></a>`class--wpforms-panel-settings-button` | `.wpforms-panel-settings-button` | 1 |
-| <a id="class--wpforms-panel-setup-button"></a>`class--wpforms-panel-setup-button` | `.wpforms-panel-setup-button` | 1 |
-| <a id="class--wpforms-panels"></a>`class--wpforms-panels` | `.wpforms-panels` | 1 |
-| <a id="class--wpforms-panels-toggle"></a>`class--wpforms-panels-toggle` | `.wpforms-panels-toggle` | 1 |
-| <a id="class--wpforms-quiz-enabled"></a>`class--wpforms-quiz-enabled` | `.wpforms-quiz-enabled` | 1 |
-| <a id="class--wpforms-quiz-graded-type-selected"></a>`class--wpforms-quiz-graded-type-selected` | `.wpforms-quiz-graded-type-selected` | 1 |
-| <a id="class--wpforms-revisions-enabled"></a>`class--wpforms-revisions-enabled` | `.wpforms-revisions-enabled` | 1 |
-| <a id="class--wpforms-right"></a>`class--wpforms-right` | `.wpforms-right` | 1 |
-| <a id="class--wpforms-setup-desc"></a>`class--wpforms-setup-desc` | `.wpforms-setup-desc` | 1 |
-| <a id="class--wpforms-setup-templates"></a>`class--wpforms-setup-templates` | `.wpforms-setup-templates` | 1 |
-| <a id="class--wpforms-setup-templates-categories"></a>`class--wpforms-setup-templates-categories` | `.wpforms-setup-templates-categories` | 1 |
-| <a id="class--wpforms-setup-templates-search-wrap"></a>`class--wpforms-setup-templates-search-wrap` | `.wpforms-setup-templates-search-wrap` | 1 |
-| <a id="class--wpforms-setup-templates-sidebar"></a>`class--wpforms-setup-templates-sidebar` | `.wpforms-setup-templates-sidebar` | 1 |
-| <a id="class--wpforms-setup-templates-subcategories"></a>`class--wpforms-setup-templates-subcategories` | `.wpforms-setup-templates-subcategories` | 11 |
-| <a id="class--wpforms-setup-title"></a>`class--wpforms-setup-title` | `.wpforms-setup-title` | 1 |
-| <a id="class--wpforms-setup-title-after"></a>`class--wpforms-setup-title-after` | `.wpforms-setup-title-after` | 1 |
-| <a id="class--wpforms-template-generate"></a>`class--wpforms-template-generate` | `.wpforms-template-generate` | 1 |
-| <a id="class--wpforms-template-name-wrap"></a>`class--wpforms-template-name-wrap` | `.wpforms-template-name-wrap` | 1 |
-| <a id="class--wpforms-template-thumbnail-placeholder"></a>`class--wpforms-template-thumbnail-placeholder` | `.wpforms-template-thumbnail-placeholder` | 19 |
-| <a id="class--wpforms-templates-no-results"></a>`class--wpforms-templates-no-results` | `.wpforms-templates-no-results` | 1 |
-| <a id="class--wpforms-toolbar"></a>`class--wpforms-toolbar` | `.wpforms-toolbar` | 1 |
-| <a id="class--wpforms-trigger-blank"></a>`class--wpforms-trigger-blank` | `.wpforms-trigger-blank` | 1 |
-| <a id="class--wpforms-undo-redo"></a>`class--wpforms-undo-redo` | `.wpforms-undo-redo` | 1 |
-| <a id="class--wpforms-user-templates-empty-state"></a>`class--wpforms-user-templates-empty-state` | `.wpforms-user-templates-empty-state` | 1 |
+| Anchor | Selector | Tag | Text | Count |
+| --- | --- | --- | --- | --- |
+| <a id="class--choices__input"></a>`class--choices__input` | `.choices__input` | select | master form embedded | 2 |
+| <a id="class--choices__input--cloned"></a>`class--choices__input--cloned` | `.choices__input--cloned` | input | master form embedded | 1 |
+| <a id="class--choices__list--dropdown"></a>`class--choices__list--dropdown` | `.choices__list--dropdown` | div |  | 1 |
+| <a id="class--wpforms-admin-empty-state-container"></a>`class--wpforms-admin-empty-state-container` | `.wpforms-admin-empty-state-container` | div | Hi there! Did you know you can save your forms as reusable … | 1 |
+| <a id="class--wpforms-admin-popup-btn"></a>`class--wpforms-admin-popup-btn` | `.wpforms-admin-popup-btn` | button | Select Existing Page | 3 |
+| <a id="class--wpforms-admin-popup-close"></a>`class--wpforms-admin-popup-close` | `.wpforms-admin-popup-close` | i |  | 1 |
+| <a id="class--wpforms-admin-popup-container"></a>`class--wpforms-admin-popup-container` | `.wpforms-admin-popup-container` | div | Embed in a Page We can help embed your form with just a few… | 1 |
+| <a id="class--wpforms-admin-popup-content"></a>`class--wpforms-admin-popup-content` | `.wpforms-admin-popup-content` | div | Embed in a Page We can help embed your form with just a few… | 1 |
+| <a id="class--wpforms-admin-popup-toggle"></a>`class--wpforms-admin-popup-toggle` | `.wpforms-admin-popup-toggle` | a | embed your form manually | 3 |
+| <a id="class--wpforms-btn-purple-dark"></a>`class--wpforms-btn-purple-dark` | `.wpforms-btn-purple-dark` | a | Generate Form | 1 |
+| <a id="class--wpforms-btn-toolbar"></a>`class--wpforms-btn-toolbar` | `.wpforms-btn-toolbar` | button | Help | 5 |
+| <a id="class--wpforms-builder-overlay-content"></a>`class--wpforms-builder-overlay-content` | `.wpforms-builder-overlay-content` | div |  | 1 |
+| <a id="class--wpforms-context-menu-dropdown"></a>`class--wpforms-context-menu-dropdown` | `.wpforms-context-menu-dropdown` | div |  | 1 |
+| <a id="class--wpforms-context-menu-list-item"></a>`class--wpforms-context-menu-list-item` | `.wpforms-context-menu-list-item` | li | Duplicate Form | 16 |
+| <a id="class--wpforms-context-menu-list-item-has-child"></a>`class--wpforms-context-menu-list-item-has-child` | `.wpforms-context-menu-list-item-has-child` | li | Field Size | 1 |
+| <a id="class--wpforms-context-menu-list-item-inactive"></a>`class--wpforms-context-menu-list-item-inactive` | `.wpforms-context-menu-list-item-inactive` | li | View Entries | 2 |
+| <a id="class--wpforms-context-menu-list-item-selective"></a>`class--wpforms-context-menu-list-item-selective` | `.wpforms-context-menu-list-item-selective` | li | Mark as Required | 5 |
+| <a id="class--wpforms-fullscreen-notice"></a>`class--wpforms-fullscreen-notice` | `.wpforms-fullscreen-notice` | div | You are using an outdated browser! The Internet Explorer br… | 2 |
+| <a id="class--wpforms-fullscreen-notice-button"></a>`class--wpforms-fullscreen-notice-button` | `.wpforms-fullscreen-notice-button` | a | Back to All Forms | 3 |
+| <a id="class--wpforms-fullscreen-notice-button-primary"></a>`class--wpforms-fullscreen-notice-button-primary` | `.wpforms-fullscreen-notice-button-primary` | a | Back to All Forms | 2 |
+| <a id="class--wpforms-fullscreen-notice-button-secondary"></a>`class--wpforms-fullscreen-notice-button-secondary` | `.wpforms-fullscreen-notice-button-secondary` | button | Continue | 1 |
+| <a id="class--wpforms-panel"></a>`class--wpforms-panel` | `.wpforms-panel` | div | Name Your Form | 1 |
+| <a id="class--wpforms-panel-content"></a>`class--wpforms-panel-content` | `.wpforms-panel-content` | div | Name Your Form | 1 |
+| <a id="class--wpforms-panel-fields-button"></a>`class--wpforms-panel-fields-button` | `.wpforms-panel-fields-button` | button | Fields | 1 |
+| <a id="class--wpforms-panel-full-content"></a>`class--wpforms-panel-full-content` | `.wpforms-panel-full-content` | div | Name Your Form | 1 |
+| <a id="class--wpforms-panel-payments-button"></a>`class--wpforms-panel-payments-button` | `.wpforms-panel-payments-button` | button | Payments | 1 |
+| <a id="class--wpforms-panel-providers-button"></a>`class--wpforms-panel-providers-button` | `.wpforms-panel-providers-button` | button | Marketing | 1 |
+| <a id="class--wpforms-panel-revisions-button"></a>`class--wpforms-panel-revisions-button` | `.wpforms-panel-revisions-button` | button | Revisions | 1 |
+| <a id="class--wpforms-panel-settings-button"></a>`class--wpforms-panel-settings-button` | `.wpforms-panel-settings-button` | button | Settings | 1 |
+| <a id="class--wpforms-panel-setup-button"></a>`class--wpforms-panel-setup-button` | `.wpforms-panel-setup-button` | button | Setup | 1 |
+| <a id="class--wpforms-panels-toggle"></a>`class--wpforms-panels-toggle` | `.wpforms-panels-toggle` | div | Setup Fields | 1 |
+| <a id="class--wpforms-setup-templates-sidebar"></a>`class--wpforms-setup-templates-sidebar` | `.wpforms-setup-templates-sidebar` | div |  | 1 |
+| <a id="class--wpforms-template-generate"></a>`class--wpforms-template-generate` | `.wpforms-template-generate` | a | Generate Form | 1 |
+| <a id="class--wpforms-trigger-blank"></a>`class--wpforms-trigger-blank` | `.wpforms-trigger-blank` | a | blank form | 1 |
 
 ---
 
 ## Notes
 
 - This catalog lists *candidate* selectors extracted statically from the snapshot's `index.html`. Not every entry is a stable chapter target — authors still pick the selector that best matches intent.
-- Role-like classes filter to names matching common interaction suffixes (`-button`, `-tab`, `-toggle`, …). The full WPForms class vocabulary is larger; run `tools/inspect-snapshot.js` for visibility-aware detail.
+- Role-like classes are filtered to (a) names matching a known interaction suffix (`-button`, `-tab`, `-toggle`, `-add`, …) OR (b) classes whose first in-scope occurrence is on an interactive tag (`button`, `a`, `input`, `textarea`, `select`, `li`) carrying non-empty text. `Tag` and `Text` columns are sourced from that first occurrence. The full WPForms class vocabulary is larger; run `tools/inspect-snapshot.js` for visibility-aware detail.
 - Duplicate IDs in captured HTML (a known sanitization debt) surface here as `Count > 1` — prefer a more specific selector when this happens.

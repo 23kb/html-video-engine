@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-entry-detail/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 167 selector entries across 2 sections.
+> 168 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-entry-detail/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_150 entries_
+_151 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -137,9 +137,10 @@ _150 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wp-entry_note-editor-container"></a>`id--wp-entry_note-editor-container` | `#wp-entry_note-editor-container` | div |  | 1 |
 | <a id="id--wp-entry_note-editor-tools"></a>`id--wp-entry_note-editor-tools` | `#wp-entry_note-editor-tools` | div | Visual Code | 1 |
-| <a id="id--wp-entry_note-wrap"></a>`id--wp-entry_note-wrap` | `#wp-entry_note-wrap` | div | Visual Code | 1 |
+| <a id="id--wp-entry_note-wrap"></a>`id--wp-entry_note-wrap` | `#wp-entry_note-wrap` | div | Visual | 1 |
 | <a id="id--wp-link"></a>`id--wp-link` | `#wp-link` | form | Insert/edit link Close Enter the destination URL | 1 |
 | <a id="id--wpforms-admin-single-navigation-next-link"></a>`id--wpforms-admin-single-navigation-next-link` | `#wpforms-admin-single-navigation-next-link` | a |  | 1 |
 | <a id="id--wpforms-admin-single-navigation-prev-link"></a>`id--wpforms-admin-single-navigation-prev-link` | `#wpforms-admin-single-navigation-prev-link` | a |  | 1 |

@@ -598,8 +598,9 @@ function collectBaselineTargets() {
       }
     }
   };
-  for (const name of fs.readdirSync(videosDir)) {
-    visit(path.join(videosDir, name));
+  for (const entry of fs.readdirSync(videosDir, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue; // loose files (e.g. *.video.json stitch manifests) are not video dirs
+    visit(path.join(videosDir, entry.name));
   }
   return out;
 }

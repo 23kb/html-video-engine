@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-payment-detail/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 53 selector entries across 2 sections.
+> 54 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-payment-detail/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_32 entries_
+_33 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -29,13 +29,14 @@ _32 entries_
 | <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input |  | 1 |
 | <a id="id--screen-options-link-wrap"></a>`id--screen-options-link-wrap` | `#screen-options-link-wrap` | div | Screen Options | 1 |
 | <a id="id--screen-options-wrap"></a>`id--screen-options-wrap` | `#screen-options-wrap` | div | Additional information Advanced details Log | 1 |
-| <a id="id--screenoptionnonce"></a>`id--screenoptionnonce` | `#screenoptionnonce` | input | Screen Option | 2 |
+| <a id="id--screenoptionnonce"></a>`id--screenoptionnonce` | `#screenoptionnonce` | input | Screen O | 2 |
 | <a id="id--show-settings-link"></a>`id--show-settings-link` | `#show-settings-link` | button | Screen Options | 1 |
 | <a id="id--toplevel_page_wpforms-overview"></a>`id--toplevel_page_wpforms-overview` | `#toplevel_page_wpforms-overview` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms-admin-single-navigation-next-link"></a>`id--wpforms-admin-single-navigation-next-link` | `#wpforms-admin-single-navigation-next-link` | a |  | 1 |
 | <a id="id--wpforms-admin-single-navigation-prev-link"></a>`id--wpforms-admin-single-navigation-prev-link` | `#wpforms-admin-single-navigation-prev-link` | a |  | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
@@ -58,7 +59,7 @@ _21 entries_
 | <a id="class--wpforms-admin-content"></a>`class--wpforms-admin-content` | `.wpforms-admin-content` | div | Payment Details #1 | 1 |
 | <a id="class--wpforms-btn"></a>`class--wpforms-btn` | `.wpforms-btn` | a | Back to All Payments | 1 |
 | <a id="class--wpforms-btn-orange"></a>`class--wpforms-btn-orange` | `.wpforms-btn-orange` | a | Back to All Payments | 1 |
-| <a id="class--wpforms-field-payment-select"></a>`class--wpforms-field-payment-select` | `.wpforms-field-payment-select` | div | Dropdown Items Second Item - $25.00 | 1 |
+| <a id="class--wpforms-field-payment-select"></a>`class--wpforms-field-payment-select` | `.wpforms-field-payment-select` | div | Dropdown Items Standard Delivery - $15.00 | 1 |
 | <a id="class--wpforms-flyout-button"></a>`class--wpforms-flyout-button` | `.wpforms-flyout-button` | a | Suggest a Feature | 4 |
 | <a id="class--wpforms-flyout-head"></a>`class--wpforms-flyout-head` | `.wpforms-flyout-head` | a | See Quick Links | 1 |
 | <a id="class--wpforms-flyout-item"></a>`class--wpforms-flyout-item` | `.wpforms-flyout-item` | a | Suggest a Feature | 3 |
@@ -71,7 +72,7 @@ _21 entries_
 | <a id="class--wpforms-link"></a>`class--wpforms-link` | `.wpforms-link` | a |  | 6 |
 | <a id="class--wpforms-payment-action-status-label"></a>`class--wpforms-payment-action-status-label` | `.wpforms-payment-action-status-label` | span | Status: | 1 |
 | <a id="class--wpforms-payment-actions"></a>`class--wpforms-payment-actions` | `.wpforms-payment-actions` | div | Status: Processed | 3 |
-| <a id="class--wpforms-payment-entry-field"></a>`class--wpforms-payment-entry-field` | `.wpforms-payment-entry-field` | div | Name Error quos veniam r Nisi doloribus est c | 9 |
+| <a id="class--wpforms-payment-entry-field"></a>`class--wpforms-payment-entry-field` | `.wpforms-payment-entry-field` | div | Name Sarah Mitchell | 9 |
 | <a id="class--wpforms-payments-details-stat-card"></a>`class--wpforms-payments-details-stat-card` | `.wpforms-payments-details-stat-card` | li | Total $160.00 | 4 |
 | <a id="class--wpforms-payments-single-action"></a>`class--wpforms-payments-single-action` | `.wpforms-payments-single-action` | a | Refund | 1 |
 | <a id="class--wpforms-single-payment-tooltip-content"></a>`class--wpforms-single-payment-tooltip-content` | `.wpforms-single-payment-tooltip-content` | span | xxxx xxxx xxxx 4242 | 1 |

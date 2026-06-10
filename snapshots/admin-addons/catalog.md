@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-addons/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 86 selector entries across 2 sections.
+> 87 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-addons/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_66 entries_
+_67 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -24,6 +24,7 @@ _66 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms-addons-list-section-all"></a>`id--wpforms-addons-list-section-all` | `#wpforms-addons-list-section-all` | div | All Addons | 1 |
 | <a id="id--wpforms-addons-list-section-installed"></a>`id--wpforms-addons-list-section-installed` | `#wpforms-addons-list-section-installed` | div | Activated Addons | 1 |
 | <a id="id--wpforms-addons-no-results"></a>`id--wpforms-addons-no-results` | `#wpforms-addons-no-results` | div | Sorry, we didn't find any addons that match your criteria. | 1 |

@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `snapshots/admin-payments-coupons/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 60 selector entries across 2 sections.
+> 61 selector entries across 2 sections.
 
 Provenance anchor form: `snapshots/admin-payments-coupons/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_45 entries_
+_46 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -37,7 +37,7 @@ _45 entries_
 | <a id="id--end_date_time_gmt-hide"></a>`id--end_date_time_gmt-hide` | `#end_date_time_gmt-hide` | input | End Date Pagination Number of coupons per page: | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate WPForms ★★★★★ on WordPress.org to help us sprea… | 1 |
 | <a id="id--name"></a>`id--name` | `#name` | th | Name Sort ascending. | 1 |
-| <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input | Screen Option | 1 |
+| <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input | Screen O | 1 |
 | <a id="id--screen-options-link-wrap"></a>`id--screen-options-link-wrap` | `#screen-options-link-wrap` | div | Screen Options | 1 |
 | <a id="id--screen-options-wrap"></a>`id--screen-options-wrap` | `#screen-options-wrap` | div | Columns Code Amount | 1 |
 | <a id="id--screenoptionnonce"></a>`id--screenoptionnonce` | `#screenoptionnonce` | input | Screen Options | 1 |
@@ -53,8 +53,9 @@ _45 entries_
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms_coupons_per_page"></a>`id--wpforms_coupons_per_page` | `#wpforms_coupons_per_page` | input |  | 1 |
-| <a id="id--wpforms-coupons-overview-table"></a>`id--wpforms-coupons-overview-table` | `#wpforms-coupons-overview-table` | form | Published (1) \| Archived (0) | 1 |
+| <a id="id--wpforms-coupons-overview-table"></a>`id--wpforms-coupons-overview-table` | `#wpforms-coupons-overview-table` | form | Published (1) \| Archived | 1 |
 | <a id="id--wpforms-coupons-search-input-search-input"></a>`id--wpforms-coupons-search-input-search-input` | `#wpforms-coupons-search-input-search-input` | input |  | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |

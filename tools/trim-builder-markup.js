@@ -100,6 +100,20 @@ function getActiveFieldId(html) {
   return null;
 }
 
+function getCanvasFieldIds(html) {
+  // Any <div class="wpforms-field ..." data-field-id="N" data-field-type="...">
+  // is a field actually placed on the canvas. data-field-type distinguishes
+  // canvas fields from the right-rail option panels (which share data-field-id).
+  const ids = new Set();
+  const re = /<div[^>]*class="[^"]*\bwpforms-field\b[^"]*"[^>]*\bdata-field-id="(\d+)"[^>]*\bdata-field-type="/g;
+  let m;
+  while ((m = re.exec(html))) ids.add(m[1]);
+  // Fallback: attribute order may swap.
+  const re2 = /<div[^>]*\bdata-field-id="(\d+)"[^>]*\bdata-field-type="[^"]+"[^>]*class="[^"]*\bwpforms-field\b/g;
+  while ((m = re2.exec(html))) ids.add(m[1]);
+  return ids;
+}
+
 function listFieldOptionPanels(html) {
   // Find all `<div id="wpforms-field-option-N"` openings
   const ids = [];
@@ -109,14 +123,15 @@ function listFieldOptionPanels(html) {
   return ids;
 }
 
-function stripInactiveFieldOptionPanels(html, activeId) {
+function stripInactiveFieldOptionPanels(html, keepIds) {
+  // keepIds: Set<string> of field IDs whose option panels must be preserved.
   const allIds = listFieldOptionPanels(html);
   let out = html;
   let removed = 0;
   let stripped = 0;
   let kept = 0;
   for (const id of allIds) {
-    if (id === activeId) { kept++; continue; }
+    if (keepIds.has(id)) { kept++; continue; }
     const openRe = new RegExp(`<div[^>]*\\bid="wpforms-field-option-${id}"`, 'g');
     const r = removeElementByOpenTag(out, openRe);
     if (r.removed > 0) {
@@ -145,14 +160,33 @@ function planForSlug(slug) {
   ) {
     plan.push({ label: '#wpforms-panel-setup children', op: 'empty', match: /<div[^>]*\bid="wpforms-panel-setup"/g });
   }
-  // builder-field-options-*: strip inactive option panels.
+  // Any builder-* snapshot: strip option panels for fields that are NOT on
+  // the canvas. The keep set is built from canvas field IDs (data-field-type
+  // present). For backward compatibility, builder-field-options-* still also
+  // uses the .active fallback if no canvas fields are detected.
   // Exception: combined-field snapshots (e.g. builder-field-options-payment-fields)
   // intentionally keep ALL option panels so the video can activate any field.
   const KEEP_ALL_PANELS = new Set([
     'builder-field-options-payment-fields',
   ]);
-  if (slug.startsWith('builder-field-options-') && !KEEP_ALL_PANELS.has(slug)) {
-    plan.push({ label: 'inactive #wpforms-field-option-<id>', op: 'strip-inactive-field-panels' });
+  if (slug.startsWith('builder-') && !KEEP_ALL_PANELS.has(slug)) {
+    plan.push({ label: 'off-canvas #wpforms-field-option-<id>', op: 'strip-inactive-field-panels' });
+  }
+  // Fields-view-only snapshots (smart-edit, field-options, etc.) never show
+  // Settings/Marketing/Payments/Revisions tabs — strip those whole panels.
+  // The Settings panel alone is ~800 KB and contains every remaining TinyMCE
+  // editor (Notifications, Confirmations, User Reg emails, Quiz, Form Locker).
+  const FIELDS_ONLY_PREFIXES = ['builder-smart-edit-', 'builder-field-options-', 'builder-fields-'];
+  if (FIELDS_ONLY_PREFIXES.some((p) => slug.startsWith(p))) {
+    for (const panelId of ['wpforms-panel-settings', 'wpforms-panel-providers', 'wpforms-panel-payments', 'wpforms-panel-revisions', 'wpforms-panel-themes', 'wpforms-panel-entries']) {
+      plan.push({ label: `#${panelId}`, op: 'remove', match: new RegExp(`<div[^>]*\\bid="${panelId}"`, 'g') });
+    }
+    // Orphan WP/TinyMCE chrome injected outside any of the wpforms panels —
+    // page-tail carriers that the runtime never needs in a Fields-only view.
+    plan.push({ label: 'mceu_* orphan toolbars (loop)', op: 'remove-loop', match: /<div[^>]*\bid="mceu_\d+"/g });
+    for (const id of ['wp-link-backdrop', 'wp-link-wrap', 'wp-auth-check-wrap', 'wpforms-admin-form-embed-wizard', 'wpforms-admin-form-embed-wizard-lite-cta']) {
+      plan.push({ label: `#${id}`, op: 'remove', match: new RegExp(`<div[^>]*\\bid="${id}"`, 'g') });
+    }
   }
   return plan;
 }
@@ -173,22 +207,37 @@ function trimSlug(slug, dryRun) {
       const r = removeElementByOpenTag(html, step.match);
       html = r.html;
       log.push({ label: step.label, removedKB: (r.removed / 1024).toFixed(1) });
+    } else if (step.op === 'remove-loop') {
+      let total = 0;
+      let count = 0;
+      while (true) {
+        step.match.lastIndex = 0;
+        const r = removeElementByOpenTag(html, step.match);
+        if (r.removed === 0) break;
+        html = r.html;
+        total += r.removed;
+        count++;
+      }
+      log.push({ label: step.label, removedKB: (total / 1024).toFixed(1), note: `${count} blocks` });
     } else if (step.op === 'empty') {
       const r = emptyElementByOpenTag(html, step.match);
       html = r.html;
       log.push({ label: step.label, removedKB: (r.removed / 1024).toFixed(1) });
     } else if (step.op === 'strip-inactive-field-panels') {
+      const canvasIds = getCanvasFieldIds(html);
       const activeId = getActiveFieldId(html);
-      if (!activeId) {
-        log.push({ label: step.label, note: 'no .wpforms-field.active found — SKIPPED' });
+      const keepIds = new Set(canvasIds);
+      if (activeId) keepIds.add(activeId);
+      if (keepIds.size === 0) {
+        log.push({ label: step.label, note: 'no canvas fields or .active found — SKIPPED' });
         continue;
       }
-      const r = stripInactiveFieldOptionPanels(html, activeId);
+      const r = stripInactiveFieldOptionPanels(html, keepIds);
       html = r.html;
       log.push({
         label: step.label,
         removedKB: (r.removed / 1024).toFixed(1),
-        note: `kept #${activeId} (active), stripped ${r.stripped}`,
+        note: `kept [${[...keepIds].sort((a,b)=>+a-+b).join(',')}], stripped ${r.stripped}`,
       });
     }
   }
