@@ -13,6 +13,36 @@ The repo has three authoring paths (see `CLAUDE.md` for the full table):
 
 This skill covers paths 2 and 3.
 
+## ⛔ HARD RULE — pure motion before real UI
+
+For editorial / ad-style / announcement / launch / hero videos, the **first authoring pass uses pure motion only — NO real WPForms product UI**. That means:
+
+- ✅ Allowed in pass 1: text reveals, card-layout effects, constellations, atmospheric layers, brand chrome (Sullie bug, orange dot + wordmark), block primitives (mac-window, pill, route-line) used as motion subjects, kit-built mock form cards (the `mountCardsSpreadFan` / `mountCardsFlyInStack` *defaults*).
+- ❌ NOT in pass 1: snapshot iframes, real builder/admin captures, `surface: 'mixed'` with real WPForms UI underneath, screenshots from `snapshots/`, anything that requires `wpforms-interactions.js`.
+
+**Real product UI only enters pass 2** — and ONLY if the approved storyboard explicitly calls for it ("we cut to the builder at 0:18 to show the actual drag-and-drop"). If the storyboard doesn't ask for it, the video ships as pure motion.
+
+**Why this rule exists:** failed editorial videos consistently degraded into literal product walkthroughs because real UI is easier to author than designed motion — but the brief was for an ad-style piece. Forcing pass 1 to be motion-only keeps the editorial intent intact. Mixed videos (`surface: 'mixed'`) are the exception, but they must still pass the motion spine review *before* the iframe layer is composited under.
+
+**Workflow:**
+
+1. **Pass 1: motion spine.** Storyboard → pick effects from `videos/_shared/effects/` → compose into master timeline → motion-audit gate (S/A tier required) → user approval. No iframes, no snapshots.
+2. **Pass 2: optional UI layer.** If and only if the approved storyboard asks for it, add `surface: 'mixed'` + iframe geometry beneath. The motion spine stays untouched.
+
+If the user requests an ad-style video and you find yourself about to import `IframeManager`, `wpforms-interactions.js`, or reach for a snapshot — STOP. You are in pass 2 territory. Confirm pass 1 (motion spine) is approved first.
+
+## Editorial named-effects library (pass-1 vocabulary)
+
+For pass-1 motion, **pick from `videos/_shared/effects/`** before writing custom GSAP. The vocabulary covers the most common editorial archetypes:
+
+- **Text reveals:** `mountTextStackFromRight`, `mountTextLetterMaskDomino`, `mountTextCenterOutRoll`
+- **Card layouts:** `mountCardsSpreadFan`, `mountCardsFlyInStack`
+- **Constellations:** `mountConstellationPhyllotaxisBloom`
+
+Each returns `{ el, tweenInto(tl, opts), dispose() }`. See `videos/_shared/effects/README.md` for the full vocabulary table + parameters. QC harness at `videos/_qc-effects/index.html`.
+
+If the storyboard names a motion archetype not yet in the library, check `reference/gsap-effects/CATALOG.md` — the full 101-port menu. If the source port matches, promote it to `videos/_shared/effects/` per the README's "Adding a new effect" instructions, then use it. Do not author from scratch when a source port exists.
+
 ## REQUIRED references — clone, do not invent
 
 Before writing any editorial chapter or single-HTML video, **load these**:

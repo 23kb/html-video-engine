@@ -57,6 +57,21 @@ Scan this table first. For deeper context (why, when not to use, options), scrol
 | Drag a field into form builder | `ifm.dragFieldToForm(slug, opts)` | `IframeManager method` | wpforms-interactions.js:1655 |
 | Open a field's option panel | `ifm.openFieldOptions(fieldId, opts)` | `IframeManager method` | wpforms-interactions.js:1914 |
 
+### Editorial named-effects (`videos/_shared/effects/`)
+
+For pure-editorial / ad-style / marketing motion. Each `mountFoo({...})` returns `{ el, tweenInto(tl, opts), dispose() }`. **Use these before writing custom GSAP for an editorial text or layout reveal.** Source ports live in `reference/gsap-effects/effectNNN.html`; promoted-and-named subset lives in `videos/_shared/effects/`.
+
+| Need | Effect | Source port |
+|------|--------|-------------|
+| Sentence reveal — word stack from right with 3D arrival | `mountTextStackFromRight({text, highlight, fontSize})` | effect004 |
+| Title card — letter mask flip + accent recolor | `mountTextLetterMaskDomino({text, topColor, botColor})` | effect027 |
+| Multi-line punch — center-out letter wave per line | `mountTextCenterOutRoll({lines, accentColor})` | effect041 |
+| "Pick a form" — card stack fans horizontally + center lift | `mountCardsSpreadFan({cards, spacing})` | effect001 |
+| "Template library" — cards fly in at varied stops + emphasize center | `mountCardsFlyInStack({cards, stops})` | effect014 |
+| "Hundreds of templates" — phyllotaxis spiral bloom of N tiles | `mountConstellationPhyllotaxisBloom({count, palette})` | effect064 |
+
+Full vocabulary table + how to add a new effect: `videos/_shared/effects/README.md`. Full 101-port menu (not yet promoted): `reference/gsap-effects/CATALOG.md`. QC harness: `videos/_qc-effects/index.html`.
+
 For the IframeManager class itself: `wpforms-interactions.js:103`. For the Cursor class: `motion-primitives.js:380`. Other interactions (`openSettingsTab`, `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, etc.) are also IframeManager methods — grep `wpforms-interactions.js` for the method name to find its line.
 
 ## Library scope philosophy

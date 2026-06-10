@@ -8,7 +8,7 @@
   html, body { margin: 0; background: #1a1a1a; overflow: hidden;
                width: 100vw; height: 100vh; font-family: -apple-system, 'Segoe UI', sans-serif; }
   .stage { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
-  .ui { width: 1440px; height: 900px; border: 0; background: #fff;
+  .ui { width: 1920px; height: 1080px; border: 0; background: #fff;
         transform-origin: 0 0; }
   .hud {
     position: fixed; left: 16px; top: 16px; z-index: 1000;
@@ -25,7 +25,7 @@
   .picked { outline: 3px solid #E27730 !important; outline-offset: 2px !important; }
 </style>
 </head>
-<body class="with-stage-chrome">
+<body>
 <div class="stage">
   <iframe class="ui" id="frame"></iframe>
 </div>
@@ -62,7 +62,7 @@ frame.src = `/snapshots/${snap}/index.html`;
 // Fit iframe into the stage (same approach as the Mac frame in player.css).
 function fit() {
   const sw = window.innerWidth, sh = window.innerHeight;
-  const iw = 1440, ih = 900;
+  const iw = 1920, ih = 1080;
   const scale = Math.min(sw / iw, sh / ih) * 0.94;
   const x = (sw - iw * scale) / 2;
   const y = (sh - ih * scale) / 2;
