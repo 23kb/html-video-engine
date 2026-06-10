@@ -809,6 +809,12 @@ export function clickRipple(stage, x, y, opts = {}) {
  * Source: docs/wpforms-ai-board-lessons (now in winning-pattern doc); fixed
  * pattern lives in reference/html-templates/wpforms-ai-prompt-open.html.
  *
+ * REGRESSION GUARD: returns a plain, paused-timeline-composable tween — insert
+ * it with `tl.add(caretType(el, text), position)`. DO NOT add an internal
+ * `.pause()`; a paused tween silently renders nothing when the master timeline
+ * is scrubbed/seeked (the scene1-5 smart-edit build hit exactly this and had to
+ * inline the tween as a workaround). See implementation-notes post-mortem.
+ *
  * @param {HTMLElement} el — target text element (innerHTML will be replaced)
  * @param {string} text
  * @param {Object} [opts]
