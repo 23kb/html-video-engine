@@ -1,0 +1,14 @@
+{
+  "_comment": "Smart Edit additional states — modal open (no API call), then post-send thinking + AI response (1 API call each). Run modal-open first to verify the pipeline before paying tokens on the prompt variants.",
+  "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=10",
+  "variants": [
+    {
+      "slug": "builder-smart-edit-modal-open",
+      "_comment": "Just click the FAB and capture the open modal. Zero API cost.",
+      "steps": [
+        { "click": "#wpforms-smart-edit-fab", "settle": 1500 }
+      ],
+      "waitFor": "#wpforms-smart-edit-modal.wpforms-smart-edit-modal-open"
+    }
+  ]
+}

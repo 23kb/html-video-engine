@@ -1,0 +1,23 @@
+{
+  "_comment": "Re-capture all four Smart Edit states at 1920x1080 viewport. Requires WP_VIEWPORT_W=1920 WP_VIEWPORT_H=1080. 2 API calls (thinking + response variants).",
+  "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=10",
+  "variants": [
+    {
+      "slug": "builder-smart-edit-thinking",
+      "steps": [
+        { "click": "#wpforms-smart-edit-fab", "settle": 1500 },
+        { "eval": "(()=>{const ta=document.querySelector('#wpforms-smart-edit-modal textarea');ta.value='Make all fields required and add a GDPR consent checkbox';ta.dispatchEvent(new Event('input',{bubbles:true}));})()", "settle": 600 },
+        { "click": "#wpforms-smart-edit-modal .wpforms-ai-chat-send", "settle": 2000 }
+      ]
+    },
+    {
+      "slug": "builder-smart-edit-response",
+      "steps": [
+        { "click": "#wpforms-smart-edit-fab", "settle": 1500 },
+        { "eval": "(()=>{const ta=document.querySelector('#wpforms-smart-edit-modal textarea');ta.value='Make all fields required and add a GDPR consent checkbox';ta.dispatchEvent(new Event('input',{bubbles:true}));})()", "settle": 600 },
+        { "click": "#wpforms-smart-edit-modal .wpforms-ai-chat-send", "settle": 1500 },
+        { "wait": 22000 }
+      ]
+    }
+  ]
+}
