@@ -44,11 +44,10 @@ The slug is the folder name under `videos/`.
 
 ## Where to start
 
-**If you're an agent (Claude / Codex):**
+**If you're an agent (Claude):**
 
-1. Read `CLAUDE.md` (Claude) or `AGENTS.md` (Codex) — the canonical
-   operator manual. It's intentionally short; topic-scoped rules live in
-   skills, not there.
+1. Read `CLAUDE.md` — the canonical operator manual. It's intentionally
+   short; topic-scoped rules live in skills, not there.
 2. Run `node tools/skill-context.js` once per session.
 3. Load the skill that matches your task:
    - `wpforms-video` — tutorial authoring, intake, storyboard gate
@@ -133,7 +132,7 @@ tts/                   Voicebox TTS pipeline
 tools/                 inventory, validation, smoke, preview, render, lint
 docs/                  authoring contract, granular references, INDEX.md
 .claude/skills/        topic-scoped skill bundles (wpforms-*)
-CLAUDE.md / AGENTS.md  operator manuals for agents
+CLAUDE.md              operator manual for agents
 ```
 
 ---

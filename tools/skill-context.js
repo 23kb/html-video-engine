@@ -75,7 +75,6 @@ const AUTO_TRIGGER_EXTERNAL_SKILLS = [
 
 const OPERATOR_MANUALS = [
   { path: 'CLAUDE.md', agent: 'Claude', use: 'Always loaded by Claude Code. Pick-your-path decision tree + boot order + protected core + validation + push-back triggers.' },
-  { path: 'AGENTS.md', agent: 'Codex',  use: 'Always loaded by Codex. Full sync with CLAUDE.md. Verify with: node tools/check-claude-agents-sync.js' },
 ];
 
 const REFERENCE_TEMPLATES = [
@@ -113,7 +112,6 @@ const SHARED_KITS = [
 
 const TOOLS = [
   { cmd: 'node tools/skill-context.js',                                                          use: 'This file. Routing index.' },
-  { cmd: 'node tools/check-claude-agents-sync.js [--fix]',                                       use: 'Verify CLAUDE.md and AGENTS.md are in sync. Run before any commit touching either file.' },
   { cmd: 'node tools/list-snapshots.js [--search <q>] [--for <slug>]',                           use: 'Snapshot inventory + cross-reference per video.' },
   { cmd: 'node tools/field-state.js --field <name> [--summary] | --list | --search <q>',        use: 'Query field-state inventory (132 KB doc) without full-reading.' },
   { cmd: 'node tools/inspect-snapshot.js <snapshot> --emit-selectors [--filter <text>]',         use: 'Catalog-grounded selectors from a real snapshot.' },
