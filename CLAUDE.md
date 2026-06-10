@@ -16,7 +16,7 @@ These patterns have repeatedly caused regressions in past video builds. Re-read 
 8. **DO NOT** first-write `videos/<slug>/index.html` for a pure-editorial video from a blank file. First write = `cp reference/html-templates/<closest>.html ...`, commit the unmodified clone, THEN customize. See INV-16.
 9. **DO NOT** set a new pilot's stage to anything less than 1920×1080. Lower stage resolutions (1280 / 1440 / 1600) cause snapshot compression that reads as blur. See INV-1.
 
-**Anti-patterns #1, #2, and the `repeat:-1` determinism rule are now hard-gated at write-time** by the `tools/hooks/video-guard.js` PreToolUse hook (wired in `.claude/settings.json`). It scans every Edit/Write to a `videos/<slug>/` file and blocks the edit if it spots a hand-mounted cursor, a single-tween camera, or `repeat:-1`. To ship a deliberate exception, put `// OVERRIDE: <reason>` (or `lint-allow: <rule-id>`) on the offending line. The same hook warns when you `Read` a ~1 MB snapshot `index.html` (see G4 below).
+**Anti-patterns #1, #2, #3, and the `repeat:-1` determinism rule are now hard-gated at write-time** by the `tools/hooks/video-guard.js` PreToolUse hook (wired in `.claude/settings.json`). It scans every Edit/Write to a `videos/<slug>/` file and BLOCKS the edit if it spots a hand-mounted cursor, a single-tween camera, a native `<select>`, or `repeat:-1`. It additionally WARNS (allow + context) on two heuristics: #4 iframe-sibling overlay mounts (parent-doc append + absolute positioning with no `elementToStageCoords`/`contentDocument`) and #6 invented UI fragments (`chip`/`result-card`/`payoff` with no `// SOURCE: snapshots/...` cite). To ship a deliberate exception, put `// OVERRIDE: <reason>` (or `lint-allow: <rule-id>`) on the offending line. The same hook warns when you `Read` a ~1 MB snapshot `index.html` (see G4 below).
 
 ## ⛔ Instruction-fidelity gates — why videos took 7 iterations instead of 2
 
@@ -218,6 +218,9 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 - `node tools/validate-video.js <slug>` — static validator
 - `node tools/check-video-playback.js <slug> [--seconds <n>]` — non-visual smoke
 - `node tools/render.js <slug> [--seek] [--fps 30]` — MP4 export
+- `node tools/render-html.js <slug> --duration <seconds> [--fps 30] [--out path]` — single-HTML editorial → MP4 (no engine)
+- `node tools/stitch.js videos/<slug>.video.json [--no-render] [--xfade <s>] [--dry-run]` — render pieces + ffmpeg-concat HF intro + HTML body + HF outro into one MP4 (the locked tutorial delivery shape)
+- `node tools/keyframes.js <video.mp4> [--frames 16 --cols 4]` — contact-sheet grid from an MP4 for visual QC handoff
 - `node tools/preview.js [--video <slug>] [--port 4321]` — live-reload + scrubber
 - `node tools/lint-determinism.js [--all] [--video <slug>]` — determinism check
 - `node tools/post-capture.js <slug> [--keep-fields 1,2,3]` — MANDATORY after every new capture: field trim (opt-in) + builder markup trim + CSS dedup + catalog regen, so snapshots are born lean

@@ -255,3 +255,43 @@ This doc replaces the chain of incrementally-numbered handoff files. Future
 "what's the next chunk of work" decisions should land in
 `docs/plans/repo-master-plan-2026-05-19.md` (or its successor) — not in a
 new handoff doc at repo root.
+
+---
+
+## Admin-side interactivity (added 2026-06-10)
+
+All 23 `admin-*` snapshots + `wp-dashboard` carry the interactivity script
+(injected via `tools/link-interactivity-script.js`; builder-side was wired
+earlier). Three admin-specific systems live in `interactivity.js`:
+
+### Cross-snapshot navigation (`initAdminCrossSnapshotNav`)
+
+Hand-browsing only (`window.top === window`, served from `/snapshots/`).
+Clicks on `admin.php?page=wpforms-*` links are intercepted and mapped to
+sibling snapshot folders:
+
+| Captured URL | Navigates to |
+|---|---|
+| `page=wpforms-settings&view=<v>` | `admin-settings-<v>` (default `general`) |
+| `page=wpforms-tools&view=<v>` | `admin-tools-<v>` (default `import`) |
+| `page=wpforms-builder` (Add New / `view=setup`) | `builder-setup` |
+| `page=wpforms-builder&view=fields` (edit-form rows) | `builder-fields` |
+| `page=wpforms-overview` / `-entries` / `-addons` / `-templates` / `-payments` | matching `admin-*` snapshot |
+
+A `HEAD` existence check makes missing captures no-op instead of 404.
+Navigation eases out (120 ms fade on `#wpbody-content`) before leaving.
+**Inert inside the video player iframe** — videos swap snapshots instead.
+
+### Entrance fx (`initAdminEntranceFx`)
+
+Admin mirror of the builder settle-in: 180 ms content fade
+(top-window only), then a 6 px / 35 ms-per-row stagger (cap 14) over the
+page's primary collection — provider rows, setting rows, list-table rows,
+addon cards, or template cards (first selector with visible matches wins).
+
+### Promote API (`initSnapshotPromoteApi`)
+
+`?promote=<slug>&expand=1` URL params, `window.wpfSnapshotApi.*`, or
+`wpf:promote-*` postMessage move an integration row / provider sidebar
+item to position 1 without recapturing. Gotcha: slugs are the INTERNAL
+provider keys — Brevo is `sendinblue`.
