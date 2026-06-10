@@ -39,6 +39,7 @@
     Letter-by-letter typing via scalar gsap tween + innerHTML mutation. Avoids the caret-floats-500px-right bug
     (opacity-stagger on pre-rendered char spans leaves invisible chars consuming layout space).
     Source: <a href="../../videos/_shared/motion-primitives.js">motion-primitives.js</a> · <a href="index.html">← back to index</a>
+    · composability: <span id="qcBadge" style="font-family: ui-monospace, monospace;">running…</span>
   </div>
 </div>
 
@@ -127,6 +128,48 @@ speedSel.addEventListener('change', () => {
 
 build(0.045);
 setTimeout(() => { tl.play(); playBtn.textContent = '⏸'; isPlaying = true; }, 400);
+
+// ── Composability regression test (REGRESSION GUARD on caretType) ──────────
+// caretType must render under a SEEKED master timeline, not just on play().
+// A tween carrying an internal .pause() silently renders nothing when the
+// master is scrubbed — the smart-edit scene1-5 build hit exactly this (see
+// the post-mortem cited in motion-primitives.js). This asserts mid-seek,
+// end-seek, and a backwards re-seek all render the expected innerHTML.
+function composabilityTest() {
+  const el = document.createElement('div'); // detached — render needs no layout
+  const TEXT = 'Hello composability';
+  const master = gsap.timeline({ paused: true });
+  master.add(caretType(el, TEXT, { charDuration: 0.045 }));
+
+  const failures = [];
+  const visibleText = () => el.innerHTML.replace(/<span[^>]*ml-caret[^>]*>[\s\S]*?<\/span>/, '');
+  const probe = (frac, expect, label) => {
+    master.seek(master.duration() * frac, false);
+    const vis = visibleText();
+    const hasCaret = el.innerHTML.includes('ml-caret');
+    if (!expect(vis, hasCaret)) failures.push(`${label}: innerHTML="${el.innerHTML}"`);
+  };
+
+  probe(0.5, (vis, caret) => caret && vis.length > 0 && vis.length < TEXT.length && TEXT.startsWith(vis),
+    'mid-seek should render a partial phrase + caret');
+  probe(1.0, (vis, caret) => caret && vis === TEXT,
+    'end-seek should render the full phrase + caret');
+  probe(0.25, (vis, caret) => caret && vis.length > 0 && vis.length < TEXT.length,
+    'backwards re-seek should re-render a partial phrase');
+
+  master.kill();
+  const badge = document.getElementById('qcBadge');
+  if (failures.length) {
+    badge.textContent = 'FAIL';
+    badge.style.color = '#e0455a';
+    console.error('[qc] caretType composability FAIL:\n' + failures.join('\n'));
+  } else {
+    badge.textContent = 'PASS';
+    badge.style.color = '#3fbf6f';
+    console.log('[qc] caretType composability: PASS (renders under seek at 0.5 / 1.0 / 0.25)');
+  }
+}
+composabilityTest();
 </script>
 </body>
 </html>
