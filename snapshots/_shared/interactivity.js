@@ -7477,6 +7477,63 @@
     } catch (_) {}
   }
 
+  // ─── Admin cross-snapshot navigation ───────────────────────────────
+  // Hand-browsing helper: WPForms admin links (settings/tools tab bars,
+  // the WPForms admin menu) point at the captured site's admin.php URLs,
+  // which are dead in a static snapshot. When the snapshot is browsed
+  // DIRECTLY (top window, served from /snapshots/), map those URLs to
+  // sibling snapshot folders and navigate there instead.
+  //
+  // Deliberately inert inside the video player: videos embed snapshots in
+  // an iframe and drive page changes via snapshot swaps, so this init
+  // bails when window.top !== window (also keeps the runtime fetch out of
+  // the deterministic playback path).
+
+  function adminSnapshotSlugFor(url) {
+    let page; let view;
+    try {
+      page = url.searchParams.get('page');
+      view = url.searchParams.get('view');
+    } catch (_) { return null; }
+    if (!page || page.indexOf('wpforms') !== 0) return null;
+    switch (page) {
+      case 'wpforms-settings':  return 'admin-settings-' + (view || 'general');
+      case 'wpforms-tools':     return 'admin-tools-' + (view || 'import');
+      case 'wpforms-payments':  return view ? 'admin-payments-' + view : 'admin-payments';
+      case 'wpforms-overview':  return 'admin-forms-overview';
+      case 'wpforms-entries':   return 'admin-entries-overview';
+      case 'wpforms-addons':    return 'admin-addons';
+      case 'wpforms-templates': return 'admin-templates';
+      default: return null;
+    }
+  }
+
+  function initAdminCrossSnapshotNav() {
+    if (window.top !== window) return; // video player iframe — snapshots swap instead
+    if (!/\/snapshots\//.test(window.location.pathname)) return; // direct browsing only
+    document.addEventListener(
+      'click',
+      (e) => {
+        const a = e.target && e.target.closest
+          ? e.target.closest('a[href*="admin.php?page=wpforms"]')
+          : null;
+        if (!a) return;
+        let url;
+        try { url = new URL(a.href); } catch (_) { return; }
+        const slug = adminSnapshotSlugFor(url);
+        if (!slug) return;
+        // Always swallow the click — the captured admin.php URL is dead.
+        e.preventDefault();
+        e.stopPropagation();
+        const target = '../' + slug + '/';
+        fetch(target + 'index.html', { method: 'HEAD' })
+          .then((res) => { if (res.ok) window.location.href = target; })
+          .catch(() => {}); // sibling snapshot not captured — stay put
+      },
+      true
+    );
+  }
+
   function applyPaymentTotalSummary(field, on) {
     const summary = field.querySelector('.wpforms-order-summary-container');
     const total = field.querySelector('.wpforms-total-amount');
@@ -8881,6 +8938,7 @@
     initConfirmationMessageEditors();
     initAiBuilder();
     initSnapshotPromoteApi();
+    initAdminCrossSnapshotNav();
   }
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', runInits);
