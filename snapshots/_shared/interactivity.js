@@ -7377,6 +7377,35 @@
       },
     },
 
+    // ─ Admin Addons: Activate / Deactivate toggle (change event) ────────
+    // Plugin: .wpforms-addons-list-item-footer .wpforms-toggle-control input
+    //   -> flips the status label (data-on/data-off) + footer state class.
+    // Appended for addon-install tutorials (SendGrid etc.): lets the video
+    // drive the real activation toggle instead of swapping captures.
+    {
+      label: 'addon-activate-toggle',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'checkbox' &&
+        el.name === 'wpforms-addons-toggle' &&
+        el.closest('.wpforms-addons-list-item-footer') !== null,
+      apply: (el) => {
+        const footer = el.closest('.wpforms-addons-list-item-footer');
+        if (!footer) return;
+        const on = el.checked;
+        const status = footer.querySelector('.wpforms-toggle-control-status');
+        if (status) {
+          const onText = status.getAttribute('data-on') || 'Activated';
+          const offText = status.getAttribute('data-off') || 'Deactivated';
+          status.textContent = on ? onText : offText;
+        }
+        // Mirror the plugin's footer state class so bundled CSS restyles.
+        footer.classList.toggle('wpforms-addons-list-item-footer-installed', on);
+        footer.classList.toggle('wpforms-addons-list-item-footer-active', on);
+      },
+    },
+
   ];
 
   // Form-level addon "Enable X" toggle id → gated-element selector(s).
@@ -9024,4 +9053,13 @@
   } else {
     runInits();
   }
+
+  // ─── Debug export (append-only) ───────────────────────────────────────────
+  // Read-only handle to the transition registry, for static tooling only:
+  // tools/generate-snapshot-outline.js enumerates this in a headless frame to
+  // compute each snapshot's interactivity manifest (which TRANSITIONS fire on
+  // its DOM). Append-only per this file's conventions; runtime behavior is
+  // unchanged. Cross-snapshot nav / entrance fx are NOT registry entries —
+  // they live in their own inits and bail when window.top !== window.
+  try { window.__wpfTransitions = TRANSITIONS; } catch (_) {}
 })();

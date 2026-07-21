@@ -191,3 +191,90 @@ export async function glideToText({ iframeManager, cursor }, text, opts = {}) {
   }
   return glideClick({ iframeManager, cursor }, el, opts);
 }
+
+let _camLandRegistered = false;
+
+/**
+ * Decomposed tutorial camera flight to an iframe element — the audit-clean
+ * replacement for a bare single-tween `cameraToElement` + `tweenCamera` pair.
+ *
+ * A single-tween translate+scale between fixed poses reads as a slide
+ * projector and caps a motion audit at tier B/C (wpforms-motion-audit HARD
+ * RULE 2/3). This helper decomposes the move into the two-phase arc both
+ * FA test builds converged on (FIX-1, fa-retest 2026-07-13):
+ *
+ *   phase 1 — dip/pan: zoom eases DOWN to min(current, target)×0.96
+ *             (clamped ≥ 1) while covering 42% of the translation, power2.in.
+ *             From rest (zoom 1) the dip clamps to 1 and the phase reads as
+ *             figjam's translate-then-zoom; between poses it reads as the
+ *             classic wide-out → re-zoom arc.
+ *   phase 2 — land: zoom + translation complete on the named CustomEase
+ *             'ifm-cam-land' (registered on first use; power3.out fallback
+ *             when the CustomEase plugin isn't loaded).
+ *
+ * The beat's narration hold supplies the land-and-hold third phase.
+ *
+ * Iframe zoom stays ≤ 2.0 by default — the documented CSS pixel-doubling
+ * sharpness limit for iframe content (see wpforms-primitives skill).
+ *
+ * @param {Object} ctx
+ * @param {IframeManager} ctx.iframeManager
+ * @param {string|Element} target — passed to `cameraToElement`
+ * @param {Object} [opts]
+ * @param {number} [opts.fill=0.32]
+ * @param {number} [opts.pad=24]
+ * @param {number} [opts.maxZoom=2.0]
+ * @param {number} [opts.minZoom] — pass-through when set
+ * @param {number} [opts.duration=0.9] — total across both phases
+ * @param {boolean} [opts.silent=false]
+ * @returns {Promise<Object|null>} the landed pose, or null on failure
+ *   (same warn-and-null defensive contract as `glideClick`)
+ */
+export async function flyToElement({ iframeManager }, target, opts = {}) {
+  const {
+    fill = 0.32,
+    pad = 24,
+    maxZoom = 2.0,
+    minZoom,
+    duration = 0.9,
+    silent = false,
+  } = opts;
+  try {
+    const cur = iframeManager.cameraState();
+    const poseOpts = { fill, pad, maxZoom };
+    if (minZoom != null) poseOpts.minZoom = minZoom;
+    const pose = iframeManager.cameraToElement(target, poseOpts);
+
+    let landEase = 'power3.out';
+    if (typeof CustomEase !== 'undefined' && typeof gsap !== 'undefined') {
+      if (!_camLandRegistered) {
+        try {
+          gsap.registerPlugin(CustomEase);
+          CustomEase.create('ifm-cam-land', 'M0,0 C0.22,0 0.24,0.62 0.52,0.86 C0.74,1.02 0.88,1 1,1');
+        } catch (e) { /* already registered or plugin refused — fallback below */ }
+        _camLandRegistered = true;
+      }
+      landEase = 'ifm-cam-land';
+    }
+
+    const dipZoom = Math.max(1, Math.min(cur.zoom, pose.zoom) * 0.96);
+    await iframeManager.tweenCamera({
+      zoom: dipZoom,
+      tx: cur.tx + (pose.tx - cur.tx) * 0.42,
+      ty: cur.ty + (pose.ty - cur.ty) * 0.42,
+      duration: duration * 0.42,
+      ease: 'power2.in',
+    });
+    await iframeManager.tweenCamera({
+      zoom: pose.zoom,
+      tx: pose.tx,
+      ty: pose.ty,
+      duration: duration * 0.58,
+      ease: landEase,
+    });
+    return pose;
+  } catch (e) {
+    if (!silent) console.warn(`[flyToElement] failed for ${target}: ${e.message}`);
+    return null;
+  }
+}

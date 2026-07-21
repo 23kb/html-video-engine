@@ -1,0 +1,159 @@
+/* Adminbar menu styles */
+
+/* Re-define the admin bar height value. */
+:root {
+    --wpforms-admin-bar-height: 32px !important;
+}
+
+#wp-admin-bar-wpforms-recent-forms {
+    border-top: 1px solid #666666;
+    margin-top: 4px !important;
+}
+
+#wp-admin-bar-wpf-pro-license-switch-original,
+#wp-admin-bar-wpf-pro-license-status-original {
+	border-bottom: 1px solid #666666;
+	margin-bottom: 4px !important;
+}
+
+#wp-admin-bar-wpf-settings {
+	overflow: hidden;
+}
+
+#query-monitor-main {
+	z-index: 100099 !important;
+}
+
+.wpforms_page_wpforms-builder #wpadminbar {
+	display: block !important;
+	z-index: 100100;
+}
+
+.wpforms_page_wpforms-builder #wp-admin-bar-menu-toggle {
+	display: none !important;
+}
+
+#wp-admin-bar-wpf-utils input[type="checkbox"]:disabled {
+	background: transparent;
+	border: none;
+	margin-right: 6px;
+	opacity: 1;
+	appearance: none;
+	width: 13px;
+	line-height: 13px;
+}
+
+#wp-admin-bar-wpf-utils input[type="checkbox"]:disabled:before {
+	content: ' ';
+	width: 20px;
+	height: 20px;
+	display: block;
+	position: absolute;
+	top: 4px;
+	left: 6px;
+	margin: -1px -2px;
+	opacity: .7;
+}
+
+#wp-admin-bar-wpf-utils input[type="checkbox"]:checked:before {
+	content: url(data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%2020%2020%27%3E%3Cpath%20d%3D%27M14.83%204.89l1.34.94-5.81%208.38H9.02L5.78%209.67l1.34-1.25%202.57%202.4z%27%20fill%3D%27%23eeeeee%27%2F%3E%3C%2Fsvg%3E);
+}
+
+#wp-admin-bar-wpf-utils-frontend-style-render-classic {
+	border-bottom: 1px solid #666666;
+	margin-bottom: 4px !important;
+}
+
+#wp-admin-bar-wpf-utils > .ab-sub-wrapper {
+	transform: translateY( -187px );
+}
+
+#wp-admin-bar-wpf-utils-form-preview .ab-sub-wrapper {
+	position: static;
+	transform: translateY( -280px );
+	max-height: calc( 100vh - 60px );
+	overflow-y: auto;
+	z-index: 100000;
+}
+
+#wp-admin-bar-wpf-styles-indicator ul li a {
+	padding-left: 30px!important;
+	position: relative;
+}
+
+#wp-admin-bar-wpf-styles-indicator ul li.active a:before {
+	content: "\f15e";
+	position: absolute;
+	top: 50%;
+	left: 5px;
+	transform: translateY(-50%);
+	font-size: 150%;
+}
+
+#wpadminbar #wp-admin-bar-wpf-styles-indicator li.active a:before {
+	color: black;
+}
+
+#wpadminbar #wp-admin-bar-wpf-styles-indicator.wpf-styles-indicator-full li.active a:before {
+	color: white;
+}
+
+#wpadminbar #wp-admin-bar-wpf-styles-indicator ul {
+	padding: 0;
+}
+
+#wpadminbar #wp-admin-bar-wpf-styles-indicator.wpf-styles-indicator-classic.wpf-styles-indicator-full > a,
+#wpadminbar #wp-admin-bar-wpf-styles-indicator.wpf-styles-indicator-classic #wp-admin-bar-wpf-utils-frontend-style-full > a {
+	/* Yellow 60 */
+	background: #755100;
+	color: white;
+}
+
+#wpadminbar #wp-admin-bar-wpf-styles-indicator.wpf-styles-indicator-classic.wpf-styles-indicator-base > a,
+#wpadminbar #wp-admin-bar-wpf-styles-indicator.wpf-styles-indicator-classic #wp-admin-bar-wpf-utils-frontend-style-base > a {
+	/* Yellow 30 */
+	background: #dba617;
+	color: black;
+}
+
+#wpadminbar #wp-admin-bar-wpf-styles-indicator.wpf-styles-indicator-classic.wpf-styles-indicator-none > a,
+#wpadminbar #wp-admin-bar-wpf-styles-indicator.wpf-styles-indicator-classic #wp-admin-bar-wpf-utils-frontend-style-none > a {
+	/* Yellow 5 */
+	background: #f5e6ab;
+	color: black;
+}
+
+#wpadminbar #wp-admin-bar-wpf-styles-indicator.wpf-styles-indicator-modern.wpf-styles-indicator-full > a,
+#wpadminbar #wp-admin-bar-wpf-styles-indicator.wpf-styles-indicator-modern #wp-admin-bar-wpf-utils-frontend-style-full > a {
+	/* Green 60 */
+	background: #007017;
+	color: white;
+}
+
+#wpadminbar #wp-admin-bar-wpf-styles-indicator.wpf-styles-indicator-modern.wpf-styles-indicator-base > a ,
+#wpadminbar #wp-admin-bar-wpf-styles-indicator.wpf-styles-indicator-modern #wp-admin-bar-wpf-utils-frontend-style-base > a {
+	/* Green 30 */
+	background: #00ba37;
+	color: black;
+}
+
+#wpadminbar #wp-admin-bar-wpf-styles-indicator.wpf-styles-indicator-modern.wpf-styles-indicator-none > a ,
+#wpadminbar #wp-admin-bar-wpf-styles-indicator.wpf-styles-indicator-modern #wp-admin-bar-wpf-utils-frontend-style-none > a {
+	/* Green 5 */
+	background: #b8e6bf;
+	color: black;
+}
+
+/* Keep the indicator on mobiles */
+@media screen and (max-width: 782px) {
+	#wpadminbar li#wp-admin-bar-wpf-styles-indicator {
+		display: block;
+	}
+	#wpadminbar li#wp-admin-bar-wpf-styles-indicator a {
+		padding: 0 10px;
+	}
+	#wpadminbar li#wp-admin-bar-wpf-styles-indicator .ab-sub-wrapper {
+		padding: 10px 0;
+	}
+}
+

@@ -505,4 +505,7 @@ if (require.main === module) main();
 // Exports so capture.js (and other in-process callers) can trigger catalog
 // generation without a child-process round trip. emitFor is per-slug;
 // refreshGlobalIndex rebuilds the aggregate snapshots/CATALOG.md.
-module.exports = { emitFor, refreshGlobalIndex };
+// extractEntries / stripNoise are reused by tools/generate-snapshot-outline.js
+// so the outline is a leaner cousin of the catalog (same candidate selectors,
+// same Rule-A active-panel scoping) without duplicating the static parser.
+module.exports = { emitFor, refreshGlobalIndex, extractEntries, stripNoise };

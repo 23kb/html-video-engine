@@ -1,0 +1,162 @@
+/**
+ * Admin Debug Monitor Styles.
+ *
+ * @since 0.49
+ */
+
+/* ========================================================================
+   Admin Bar - Red Indicator (like Query Monitor)
+   ======================================================================== */
+
+/**
+ * Red background for WPForms menu when debug.log has new content.
+ * Mimics Query Monitor's red indicator behavior.
+ */
+#wpadminbar .wpf-has-debug-errors > .ab-item {
+	background-color: #dc3232 !important; /* WordPress error red */
+	color: #ffffff !important;
+}
+
+#wpadminbar .wpf-has-debug-errors:hover > .ab-item {
+	background-color: #c62d2d !important; /* Darker red on hover */
+}
+
+/* ========================================================================
+   Admin Bar - Debug Log Submenu
+   ======================================================================== */
+
+/**
+ * Debug log submenu item - red text when errors present.
+ */
+#wpadminbar .wpf-debug-log-has-errors > .ab-item {
+	color: #dc3232 !important;
+}
+
+/**
+ * Action menu items styling.
+ */
+#wpadminbar .wpf-debug-acknowledge > .ab-item,
+#wpadminbar .wpf-debug-clear > .ab-item {
+	cursor: pointer;
+}
+
+#wpadminbar .wpf-debug-acknowledge > .ab-item:hover {
+	background-color: #00a32a !important;
+	color: #ffffff !important;
+}
+
+#wpadminbar .wpf-debug-clear > .ab-item:hover {
+	background-color: #d63638 !important;
+	color: #ffffff !important;
+}
+
+/* ========================================================================
+   Debug Log Tab - Log Viewer
+   ======================================================================== */
+
+.wpf-debug-log-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+	padding-bottom: 15px;
+	border-bottom: 1px solid #dcdcde;
+}
+
+.wpf-debug-log-header-left {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.wpf-debug-log-header h2 {
+	margin: 0;
+	font-size: 18px;
+}
+
+.wpf-debug-log-toggle {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+	font-size: 14px;
+	color: #50575e;
+	cursor: pointer;
+	user-select: none;
+}
+
+.wpf-debug-log-toggle input[type="checkbox"] {
+	margin: 0;
+	cursor: pointer;
+}
+
+.wpf-debug-log-toggle span {
+	font-weight: 400;
+}
+
+.wpf-debug-log-actions {
+	display: flex;
+	gap: 10px;
+}
+
+/**
+ * Log content display.
+ */
+.wpf-debug-log-content {
+	background: #ffffff;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	padding: 0;
+	box-shadow: 0 1px 3px rgba( 0, 0, 0, 0.1 );
+}
+
+.wpf-debug-log-pre {
+	margin: 0;
+	padding: 20px;
+	font-family: Consolas, Monaco, 'Courier New', monospace;
+	font-size: 12px;
+	line-height: 1.6;
+	color: #2c3338;
+	white-space: pre-wrap;
+	word-wrap: break-word;
+	max-height: 600px;
+	overflow-y: auto;
+}
+
+/**
+ * Empty state.
+ */
+.wpf-debug-log-empty {
+	text-align: center;
+	padding: 60px 20px;
+	background: #ffffff;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+}
+
+.wpf-debug-log-empty-icon {
+	font-size: 48px;
+	color: #00a32a;
+	margin-bottom: 15px;
+}
+
+.wpf-debug-log-empty h3 {
+	margin: 0 0 10px;
+	font-size: 18px;
+	color: #1d2327;
+}
+
+.wpf-debug-log-empty p {
+	margin: 0;
+	color: #646970;
+	font-size: 14px;
+}
+
+/**
+ * Loading state.
+ */
+.wpf-debug-log-loading {
+	text-align: center;
+	padding: 40px 20px;
+	color: #646970;
+}

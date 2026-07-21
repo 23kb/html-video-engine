@@ -1,0 +1,17 @@
+{
+  "_readme": "FIX-19 — Lite-license capture plan (locked Interactions/Conversion columns + upgrade modal). BLOCKED on a GUI step: create a LocalWP site running wpforms-lite with NO license, seed 2-3 forms with a few entries each, then fill in the sullies-lite entry in tools/sites.json. Run: WP_URL=<lite-site-url> WP_USER=<u> WP_PASS=<p> node capture/capture.js --variants capture/lite-locked-plan.json && node tools/post-capture.js admin-forms-overview-lite-locked admin-forms-overview-lite-upgrade-modal. Selectors below are STARTING POINTS (capture-library caveat) — expect one tuning pass on first run against the real Lite DOM.",
+  "targetPath": "/wp-admin/admin.php?page=wpforms-overview",
+  "variants": [
+    {
+      "slug": "admin-forms-overview-lite-locked",
+      "waitFor": ".wpforms-admin-forms-table"
+    },
+    {
+      "slug": "admin-forms-overview-lite-upgrade-modal",
+      "steps": [
+        { "click": ".wpforms-admin-column-analytics-locked, .wpforms-analytics-upgrade, th.column-interactions a", "settle": 900 }
+      ],
+      "waitFor": ".jconfirm-box, .wpforms-upgrade-modal"
+    }
+  ]
+}

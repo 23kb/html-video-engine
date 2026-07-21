@@ -1,0 +1,15 @@
+{
+  "_comment": "SendGrid tutorial — builder Marketing panel with SendGrid provider selected (Add New Connection visible). Form 406 (Sullie's Bakery Contact Form: Name/Email/Message/Phone). No connected account needed for this pre-connection entry state. Connection-block internals are DOM-puppeted in-video, grounded in an existing provider connection capture + SendGrid field vocab from the doc.",
+  "variants": [
+    {
+      "slug": "builder-providers-sendgrid",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=406",
+      "keepSidebar": false,
+      "keepTopAdminBar": false,
+      "waitFor": "#wpforms-panel-providers",
+      "steps": [
+        { "click": "#wpforms-panel-providers .wpforms-panel-sidebar-section-sendgrid, [data-section=\"sendgrid\"]", "settle": 1000 }
+      ]
+    }
+  ]
+}
