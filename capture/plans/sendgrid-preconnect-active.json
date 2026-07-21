@@ -1,0 +1,15 @@
+{
+  "_comment": "SendGrid tutorial batch B — addon reactivated. Captures (1) Addons page with SendGrid card Activated, (2) Settings → Integrations with the SendGrid row present but no connected account (pre-connect state; row-toggle / add-account-toggle / connect-submit transitions are pattern-keyed in interactivity.js and should fire on this row once linked).",
+  "variants": [
+    {
+      "slug": "admin-addons-sendgrid",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-addons",
+      "waitFor": "#wpforms-admin-addons-list .addon-item, .wpforms-addons-list-item, #wpforms-admin-addons"
+    },
+    {
+      "slug": "admin-settings-integrations-sendgrid",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-settings&view=integrations",
+      "waitFor": "#wpforms-settings-providers .wpforms-settings-provider-header"
+    }
+  ]
+}

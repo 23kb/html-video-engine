@@ -7,6 +7,8 @@
 export { mountTextStackFromRight }            from './text-stack-from-right.js';
 export { mountTextLetterMaskDomino }          from './text-letter-mask-domino.js';
 export { mountTextCenterOutRoll }             from './text-center-out-roll.js';
+export { mountTextDescramble }                from './text-descramble.js';
+export { mountTextDupWordMask }               from './text-dup-word-mask.js';
 export { mountCardsSpreadFan }                from './cards-spread-fan.js';
 export { mountCardsFlyInStack }               from './cards-fly-in-stack.js';
 export { mountConstellationPhyllotaxisBloom } from './constellation-phyllotaxis-bloom.js';

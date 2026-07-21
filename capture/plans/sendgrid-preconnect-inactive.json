@@ -1,0 +1,10 @@
+{
+  "_comment": "SendGrid tutorial batch A — addon deactivated via wp-cli before this runs. Captures the Addons page with the SendGrid card in its inactive state (Activate toggle off). Reactivate + batch B follows.",
+  "variants": [
+    {
+      "slug": "admin-addons-sendgrid-inactive",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-addons",
+      "waitFor": "#wpforms-admin-addons-list .addon-item, .wpforms-admin-addons-list-item, #wpforms-admin-addons"
+    }
+  ]
+}

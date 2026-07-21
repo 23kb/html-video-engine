@@ -76,6 +76,24 @@ gsap.to(items, { y: 0, duration: 0.4, stagger: { each: 0.05, from: 'center' } })
 
 GSAP and all plugins are vendored at `vendor/gsap/3.15.0/`. Load via `videos/_shared/kit.js loadGsap({ flip, motionPath, splitText, morphSVG, drawSVG, customEase, gsDevTools, motionPathHelper })` — flags default off except `flip` and `motionPath`. **Do not** add `<script src="https://cdn.jsdelivr.net/.../gsap.min.js">` to chapters or cinematics.
 
+### 6b. Never tween an element whose centering rides a CSS `transform`
+
+GSAP owns the `transform` property when it tweens x/y/scale/rotation — it **replaces** any CSS `translate(-50%, -50%)` centering, so the element silently re-anchors to its top-left corner the moment a tween touches it. This shipped twice in one day (fa-retest ad v3: off-center stamps + drifted CTA pill; both caught only by the user's eyes).
+
+**The discipline:**
+- Hosts that center via CSS transform are **never tweened**. Tween their children.
+- If the animated element itself must be centered, center it with GSAP: `gsap.set(el, { xPercent: -50, yPercent: -50 })` — percent transforms compose with later x/y/scale tweens.
+
+```js
+// WRONG — the scale tween erases the CSS translate(-50%,-50%):
+/* css: #pill { left: 50%; transform: translate(-50%, -50%); } */
+gsap.fromTo('#pill', { scale: 0.5 }, { scale: 1 });
+
+// RIGHT — untweened wrapper centers; the child animates:
+/* css: #pillHost { left: 50%; transform: translate(-50%, -50%); } */
+gsap.fromTo('#pillHost > .pill', { scale: 0.5 }, { scale: 1 });
+```
+
 ### 7. Finite repeats. Never `repeat: -1`
 
 Infinite repeats break the seek-render pipeline (`tools/render.js --seek` mode) and never resolve in tests. Compute the repeat count from the visible duration:
@@ -160,7 +178,7 @@ The motion-audit skill caps the maximum score at C/D/F when these are detected. 
 
 ### Designer principles (extracted from `design-motion-principles` skill — Phase 5b will deepen)
 
-When the audit critique cites Emil Kowalski / Jakub Krehel / Jhey Tompkins by name, load the `design-motion-principles` skill (auto-triggers) for the full per-designer references. High-level summary:
+When the audit critique cites Emil Kowalski / Jakub Krehel / Jhey Tompkins by name, invoke the `design-motion-principles` skill (manual invoke — nothing fires it automatically) for the full per-designer references. High-level summary:
 
 - **Emil Kowalski (UI motion):** every animation needs a purpose; default UI durations 180–240ms; exits should be faster than entrances; no animation on keyboard-driven hot paths.
 - **Jakub Krehel (animation principles):** identity continuity across beats; rhythmic-not-uniform pacing; the camera follows the protagonist, doesn't cut to staged shots.
@@ -194,6 +212,26 @@ registerTimeline(tl, { id: 'hero-title-reveal' });
 **When to register:** any paused timeline that should scrub via the author scrubber, survive hidden-tab throttling, or seek deterministically for `tools/render.js --seek`.
 
 **When NOT to register:** fire-and-forget tweens (small SFX-synced animations, narration-cued micro-moves, anything where the author has explicit wall-clock control). Use plain `gsap.to()` and `awaitTween()` for those.
+
+## Nesting Timelines — un-pause children after `add()` (paused-child footgun)
+
+To prepend an intro splash or append an outro to an already-fully-timed film, **nest the finished piece as a child timeline at an offset** — this is the sanctioned pattern. Do NOT hand-shift every cue's absolute time.
+
+**The footgun:** a child timeline built with `gsap.timeline({ paused: true })` **stays frozen when added to a parent**. `parent.add(child, pos)` does NOT resume it, so the parent's playhead never drives it and the child appears dead (you get a silent no-op — smoke's `__done` never fires — not an error). Fix: call `child.paused(false)` after adding. Keep the parent itself paused and control playback through the parent. Same shape as primitives that return paused timelines (`statusPillMorph`, etc.) — they also need `.paused(false)` / `.play()` when composed into a master (see `wpforms-primitives`; FA log #26).
+
+```js
+const master = gsap.timeline({ paused: true });
+master.add(splashTl, 0);
+master.add(filmTl, SPL);
+splashTl.paused(false);        // ← un-pause each child so the master can drive it
+filmTl.paused(false);
+master.pause();                // control playback through master.play()
+window.__tl = master;          // instrumentation + probe read the master
+```
+
+**Offset bookkeeping:** shift everything downstream by the SAME offset — `SCENE_T`/review markers, `sfx/plan.json` clip `t` values, and `qc-probe.mjs` check times. But the nested child's own tween `startTime()`s stay **child-local** (relative to their direct parent), so a tick-grid audit that reads `startTime()` keeps working unchanged.
+
+Reference: `videos/the-drop/index.html` — the `SPL` / `master` / `splashTl` block (search `master.add(splashTl, 0)`); the 45.8s film became a child at `SPL = 3.2` under a new master (49.0s total).
 
 ## pausableRaf for Author RAF Loops
 

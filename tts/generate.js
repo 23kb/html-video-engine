@@ -20,6 +20,9 @@
 //     (override with --force).
 //   - VOICEBOX_URL     env var  (default http://127.0.0.1:17493)
 //   - VOICEBOX_PROFILE env var  (default bfbab6b4-… Kokoro af_heart)
+//   - Health check runs ONCE before rendering: Voicebox down → on Windows it
+//     auto-launches the app and polls up to 30s (opt out with --no-launch);
+//     otherwise fails fast with the start command instead of N × "fetch failed".
 
 import fs from 'node:fs/promises';
 import path from 'node:path';
@@ -175,6 +178,32 @@ async function synth(dir, slug) {
   return { slug, duration: gen.duration };
 }
 
+// ── Voicebox health check — fail fast ONCE, not per-clip ────────────────────
+const VOICEBOX_START_CMD = 'Start-Process "shell:AppsFolder\\sh.voicebox.app"';
+
+async function voiceboxUp(timeoutMs = 3000) {
+  try {
+    await fetch(`${VOICEBOX}/`, { signal: AbortSignal.timeout(timeoutMs) });
+    return true; // any HTTP response = listening
+  } catch { return false; }
+}
+
+async function ensureVoicebox() {
+  if (await voiceboxUp()) return;
+  if (process.platform === 'win32' && !flags.has('--no-launch')) {
+    console.log(`[voicebox] not running — launching (${VOICEBOX_START_CMD}), polling up to 30s…`);
+    spawn('powershell', ['-NoProfile', '-Command', VOICEBOX_START_CMD], { detached: true, stdio: 'ignore' }).unref();
+    for (let i = 0; i < 30; i++) {
+      await new Promise(r => setTimeout(r, 1000));
+      if (await voiceboxUp(1500)) { console.log('[voicebox] up.'); return; }
+    }
+    console.error(`✗ Voicebox did not come up within 30s — start it manually (${VOICEBOX_START_CMD}) and re-run.`);
+    process.exit(1);
+  }
+  console.error(`✗ Voicebox not running at ${VOICEBOX} — start the Voicebox app (${VOICEBOX_START_CMD}) and re-run.`);
+  process.exit(1);
+}
+
 // ── main ───────────────────────────────────────────────────────────────────
 const buckets = await resolveTargets();
 if (!buckets.length || !buckets.some(b => b.slugs.length)) {
@@ -182,6 +211,7 @@ if (!buckets.length || !buckets.some(b => b.slugs.length)) {
   process.exit(1);
 }
 
+await ensureVoicebox();
 console.log(`[voicebox] ${VOICEBOX}  profile=${PROFILE_ID.slice(0, 8)}…`);
 let ok = 0, skipped = 0, totalDur = 0;
 for (const { dir, slugs, label } of buckets) {

@@ -145,6 +145,95 @@ export function setNarrationVolume(volume = 1) {
   narrationVolume = clamp01(volume);
 }
 
+// ── Hardened caption/beat helpers ─────────────────────────────────────────
+//
+// The master flow of a single-HTML video must NEVER await a raw GSAP tween:
+// under an RAF-throttled context (hidden tab, in-app Browser pane) the ticker
+// freezes and the await deadlocks the whole video. These helpers resolve all
+// waits via setTimeout, fire motion fire-and-forget, and build the
+// `__sched` instrumentation push (consumed by tools/render-singlehtml-audio.js)
+// into say() so per-video copies can't drift.
+
+/** setTimeout-backed sleep — safe to await anywhere. */
+export const wait = s => new Promise(r => setTimeout(r, s * 1000));
+
+/**
+ * Await a primitive with a hard timeout so a stalled tween can't hang the
+ * master flow. Rejections are swallowed; the race winner is discarded.
+ *
+ * @param {Promise|any} promise
+ * @param {number} [seconds=2.5]
+ * @returns {Promise<void>}
+ */
+export function withTimeout(promise, seconds = 2.5) {
+  return Promise.race([Promise.resolve(promise).catch(() => {}), wait(seconds)]);
+}
+
+function defaultCaptionEl() {
+  return document.getElementById('caption');
+}
+
+/** Show the caption text with the standard rise-in (fire-and-forget). */
+export function showCaption(text, { captionEl = defaultCaptionEl() } = {}) {
+  if (!captionEl) return;
+  captionEl.textContent = text;
+  if (typeof gsap === 'undefined') { captionEl.style.opacity = '1'; return; }
+  gsap.killTweensOf(captionEl);
+  gsap.fromTo(captionEl, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+}
+
+/**
+ * Fade the caption out. Fires the tween but resolves via setTimeout — an
+ * RAF-throttled tab must never deadlock the master flow.
+ *
+ * @param {HTMLElement} [captionEl]
+ * @returns {Promise<void>}
+ */
+export function hideCaption(captionEl = defaultCaptionEl()) {
+  if (captionEl) {
+    if (typeof gsap === 'undefined') captionEl.style.opacity = '0';
+    else gsap.to(captionEl, { opacity: 0, duration: 0.3, ease: 'power2.in' });
+  }
+  return wait(0.32);
+}
+
+/**
+ * Fire one narration cue: push the `__sched` record (when `__T0` is set),
+ * show the caption, start the clip non-blocking.
+ *
+ * @param {string} slug — video slug (narration base)
+ * @param {string} key — clip basename
+ * @param {string} text — caption copy
+ * @param {Object} [opts]
+ * @param {HTMLElement} [opts.captionEl]
+ */
+export function say(slug, key, text, { captionEl = defaultCaptionEl() } = {}) {
+  if (window.__T0 != null) (window.__sched || (window.__sched = [])).push({ key, t: (performance.now() - window.__T0) / 1000 });
+  showCaption(text, { captionEl });
+  playNarration(slug, key).catch(() => {});
+}
+
+/**
+ * A narration beat: caption + audio, optional concurrent motion, holds for
+ * the clip length, then clears the caption. Motion runs fire-and-forget —
+ * a slow or stalled primitive can never extend or deadlock the beat.
+ *
+ * @param {string} slug
+ * @param {string} key
+ * @param {string} text
+ * @param {Function} [motionFn]
+ * @param {Object} [opts]
+ * @param {Object} [opts.durTable] — clip durations in seconds, keyed by cue
+ * @param {HTMLElement} [opts.captionEl]
+ * @returns {Promise<void>}
+ */
+export async function beat(slug, key, text, motionFn, { durTable, captionEl = defaultCaptionEl() } = {}) {
+  say(slug, key, text, { captionEl });
+  if (motionFn) Promise.resolve().then(motionFn).catch(() => {});
+  await wait((durTable && durTable[key]) || 4);
+  await hideCaption(captionEl);
+}
+
 export function setBgmDuckVolume(volume = DEFAULT_BGM_DUCKED) {
   bgmDuckedVolume = clamp01(volume);
 }

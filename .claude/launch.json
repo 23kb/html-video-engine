@@ -1,6 +1,7 @@
 {
   "version": "0.0.1",
   "configurations": [
-    { "name": "video-server", "runtimeExecutable": "node", "runtimeArgs": ["serve.js"], "port": 4321, "autoPort": true }
+    { "name": "video-server", "runtimeExecutable": "node", "runtimeArgs": ["serve.js"], "port": 4321, "autoPort": true },
+    { "name": "video-preview", "runtimeExecutable": "node", "runtimeArgs": ["tools/preview.js", "--port", "4321", "--no-open"], "port": 4321 }
   ]
 }

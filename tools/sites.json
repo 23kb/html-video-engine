@@ -1,0 +1,25 @@
+{
+  "_comment": "Local test-site registry consumed by tools/site-eval.js and tools/preflight-site.js. LocalWP-only credentials for throwaway local test sites — this repo stays on this machine (GitHub is read-only for it). The phpIni run-id directory (Local/run/<id>) can change across LocalWP restarts; site-eval.js globs for a replacement when the configured path is gone.",
+  "default": "sullies-bakery",
+  "sites": {
+    "sullies-bakery": {
+      "url": "http://sulliesbakery.com",
+      "path": "C:/Users/PC/Local Sites/sullies-bakery/app/public",
+      "php": "C:/Users/PC/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-8.2.29+0/bin/win64/php.exe",
+      "phpIni": "C:/Users/PC/AppData/Roaming/Local/run/FWXKTrDJD/conf/php/php.ini",
+      "adminUser": "Sullie",
+      "adminPass": "umair",
+      "coreAddons": ["wpforms"]
+    },
+    "sullies-lite": {
+      "_todo": "FIX-19 — create this LocalWP site (wpforms-lite, NO license, 2-3 seeded forms) then replace the TODO values; capture plan ready at capture/lite-locked-plan.json",
+      "url": "TODO-http://sullies-lite.local",
+      "path": "TODO-C:/Users/PC/Local Sites/sullies-lite/app/public",
+      "php": "C:/Users/PC/AppData/Local/Programs/Local/resources/extraResources/lightning-services/php-8.2.29+0/bin/win64/php.exe",
+      "phpIni": "C:/Users/PC/AppData/Roaming/Local/run/FWXKTrDJD/conf/php/php.ini",
+      "adminUser": "TODO",
+      "adminPass": "TODO",
+      "coreAddons": ["wpforms-lite"]
+    }
+  }
+}

@@ -52,6 +52,7 @@ const SKILLS = [
   { name: 'wpforms-primitives', path: '.claude/skills/wpforms-primitives/SKILL.md', use: 'Lookup index for videos/_shared/motion-primitives.js (cameras / Cursor / typing / field-reveal / brand-anchor / exit) and videos/_shared/wpforms-interactions.js (Wave 1 builder/admin + Wave 2 Batch A notifications/CL/smart-tags). Includes the library-as-reference philosophy + 3-test promotion rule. Reach here BEFORE writing GSAP cursor / camera / interaction code AND before adding any new library method.' },
   { name: 'wpforms-motion-audit', path: '.claude/skills/wpforms-motion-audit/SKILL.md', use: 'Score animations and camera moves S-F tier with hard-rule calibration. MUST run before any postIntro/cinematic/editorial handoff.' },
   { name: 'wpforms-video-polish', path: '.claude/skills/wpforms-video-polish/SKILL.md', use: 'Polish an existing already-shipped video without breaking it. Backup-first → Plan agent analysis → vet against determinism/protected-core/RED-flag rules → surgical edits in batches of 5–10 → static verification only (no visual QC) → motion-audit if cinematic beats touched. Includes 8 canonical polish patterns (repeated expo.out, settle-into-rest, unused CustomEase, one-shot-pulse-with-tail, display-serif letter-spacing, frozen-camera handoff, redundant interactive cycle, block-centred zoom gutter). NOT for new authoring (use wpforms-video / wpforms-marketing), NOT for debug.' },
+  { name: 'video-qc', path: '.claude/skills/video-qc/SKILL.md', use: 'The cheap QC/review/iterate loop when the user reviews a built video and reports fixes scene-by-scene. Bakes the cost retro (edit only what was reported, ship-first-then-review, batch edits, reuse selectors, terse) + workflow contracts (read outline.md FIRST, state-change hierarchy drive>puppet>swap, preserve the literal verb G1, state the target back with evidence G2, surgical edits G3, no visual/audio QC). NOT first-time authoring, NOT proactive polish (wpforms-video-polish), NOT debug.' },
 ];
 
 const LIBRARIES = [
@@ -120,7 +121,8 @@ const TOOLS = [
   { cmd: 'node tools/validate-video.js <slug>',                                                  use: 'Static validator.' },
   { cmd: 'node tools/check-video-playback.js <slug> [--seconds <n>]',                            use: 'Non-visual smoke. Exit 0 = clean boot, 1 = boot fail, 2 = page errors.' },
   { cmd: 'node tools/render.js <slug> [--seek] [--fps 30]',                                      use: 'MP4 export. Default wall-clock; --seek only valid for surface: editorial.' },
-  { cmd: 'node tools/render-html.js <slug> --duration <seconds> [--out path]',                   use: 'Single-HTML editorial → MP4 without the engine.' },
+  { cmd: 'node tools/render-html.js <slug> --duration <seconds> [--out path]',                   use: 'Single-HTML editorial → MP4 without the engine (silent).' },
+  { cmd: 'node tools/render-singlehtml-audio.js <slug> [--bgm <path>|none] [--out path]',         use: 'Single-HTML → MP4 WITH AUDIO. Records the real run, lays narration at __sched cue times, side-chain-ducks BGM. Needs __T0/__sched/__dur/__done instrumentation. Audio quality is the user\'s QC.' },
   { cmd: 'node tools/stitch.js videos/<slug>.video.json [--no-render] [--xfade <s>]',            use: 'Render + ffmpeg-concat HF intro + HTML body + HF outro per .video.json manifest. Locked tutorial delivery shape.' },
   { cmd: 'node tools/keyframes.js <video.mp4> [--frames 16 --cols 4]',                           use: 'Contact-sheet grid from an MP4 for visual QC handoff.' },
   { cmd: 'node tools/post-capture.js <slug> [--keep-fields 1,2,3]',                              use: 'MANDATORY after every new capture: field trim (opt-in) + builder markup trim + comment strip + CSS dedup + catalog regen.' },
@@ -191,7 +193,7 @@ function printHuman(ctx) {
     out.push(`      ${s.use}`);
   }
   out.push('');
-  out.push('## Auto-triggering external skills (read on relevant prompts)');
+  out.push('## Optional external skills (manual invoke — nothing fires these automatically)');
   for (const s of ctx.autoTriggerExternalSkills) {
     out.push(`  + ${s.name} (${s.source})`);
     out.push(`      ${s.use}`);

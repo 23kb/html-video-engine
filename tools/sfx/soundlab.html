@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Soundlab</title>
+<style>
+  :root { --orange: #E27730; --bg: #0f0d0c; --panel: #1a1715; --clip: #2f6f74; --clipSel: #3da6ad; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: #e8e3dc; height: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif; font-size: 13px; }
+  #app { display: flex; flex-direction: column; height: 100vh; }
+
+  #top { display: flex; gap: 12px; padding: 12px; align-items: flex-start; min-height: 0; }
+  #videoWrap { flex: 1; min-width: 0; }
+  video { width: 100%; max-height: 44vh; background: #000; border-radius: 8px; display: block; }
+  #transport { display: flex; gap: 10px; align-items: center; margin-top: 8px; }
+  button { background: #2a2522; color: #e8e3dc; border: 1px solid #3a332e; border-radius: 6px;
+    padding: 6px 14px; cursor: pointer; font-weight: 600; }
+  button:hover { border-color: var(--orange); }
+  button.primary { background: var(--orange); border-color: var(--orange); color: #fff; }
+  button.small { padding: 3px 8px; font-weight: 400; font-size: 12px; }
+  button.on { background: var(--orange); color: #fff; border-color: var(--orange); }
+  #clock { font-variant-numeric: tabular-nums; color: #aaa; }
+
+  #inspector { width: 320px; flex-shrink: 0; background: var(--panel); border-radius: 8px; padding: 14px;
+    display: flex; flex-direction: column; gap: 10px; max-height: 48vh; overflow-y: auto; }
+  #inspector h3 { margin: 0; font-size: 14px; color: var(--orange); }
+  #inspector label { display: block; color: #999; margin-bottom: 3px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; }
+  #inspector input[type=text], #inspector input[type=number], #inspector textarea {
+    width: 100%; background: #0f0d0c; color: #e8e3dc; border: 1px solid #3a332e; border-radius: 5px; padding: 6px; }
+  #inspector textarea { resize: vertical; min-height: 60px; font-family: inherit; }
+  #inspector input[type=range] { width: 100%; accent-color: var(--orange); }
+  .row { display: flex; gap: 8px; align-items: center; }
+  .row > * { flex: 1; }
+  #genLog { font-size: 11px; color: #888; white-space: pre-wrap; }
+
+  #timeline { flex: 1; overflow: auto; padding: 0 12px 12px; min-height: 180px; }
+  #tlInner { position: relative; min-width: 100%; }
+  #ruler { position: sticky; top: 0; height: 22px; background: var(--bg); z-index: 5; cursor: pointer; border-bottom: 1px solid #2a2522; }
+  .tick { position: absolute; top: 0; height: 100%; border-left: 1px solid #3a332e; color: #777; font-size: 10px; padding-left: 3px; }
+  .lane { position: relative; height: 44px; border-bottom: 1px solid #221e1b; }
+  .laneLabel { position: sticky; left: 0; display: inline-flex; gap: 4px; align-items: center; z-index: 4;
+    background: var(--bg); padding: 2px 6px 2px 0; color: #777; font-size: 11px; height: 18px; }
+  .mbtn { width: 20px; height: 16px; line-height: 14px; text-align: center; border: 1px solid #3a332e; border-radius: 3px;
+    font-size: 10px; cursor: pointer; color: #999; background: #1a1715; }
+  .mbtn.on { background: #c0392b; border-color: #c0392b; color: #fff; }
+  .clip { position: absolute; top: 20px; height: 22px; background: var(--clip); border-radius: 4px; cursor: grab;
+    font-size: 10px; line-height: 22px; padding: 0 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    user-select: none; color: #eafcfd; border: 1px solid transparent; }
+  .clip.selected { background: var(--clipSel); border-color: #fff; z-index: 3; }
+  .clip.muted { opacity: 0.35; }
+  .clip.music { background: #3949ab; color: #e6e9ff; }
+  #playhead { position: absolute; top: 0; bottom: 0; width: 1px; background: #fff; z-index: 6; pointer-events: none; }
+  #status { padding: 4px 12px; color: #888; font-size: 12px; min-height: 22px; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="top">
+    <div id="videoWrap">
+      <video id="vid" src="/media/video" muted playsinline></video>
+      <div id="transport">
+        <button id="play" class="primary">Play</button>
+        <span id="clock">0.00</span>
+        <button id="sfxMute" class="small">Mute all SFX</button>
+        <button id="save" class="small">Save plan</button>
+        <button id="export" class="small primary">Export MP4</button>
+      </div>
+    </div>
+    <div id="inspector">
+      <h3 id="insTitle">No clip selected</h3>
+      <div id="insBody" style="display:none">
+        <div class="row">
+          <div><label>Time (s)</label><input type="number" id="insT" step="0.01" /></div>
+          <div><label>Gain (dB)</label><input type="number" id="insGainNum" step="1" /></div>
+        </div>
+        <input type="range" id="insGain" min="-36" max="6" step="1" />
+        <div class="row">
+          <button id="insMute" class="small">Mute</button>
+          <button id="insAudition" class="small">Audition</button>
+          <button id="insDelete" class="small">Delete</button>
+        </div>
+        <div><label>ElevenLabs prompt (shared by all clips of this sound)</label>
+          <textarea id="insPrompt"></textarea></div>
+        <div class="row">
+          <div><label>Gen length (s)</label><input type="number" id="insDur" step="0.1" min="0.5" max="22" /></div>
+          <button id="insRegen" class="small">Regenerate</button>
+        </div>
+        <div id="genLog"></div>
+      </div>
+    </div>
+  </div>
+  <div id="status"></div>
+  <div id="timeline"><div id="tlInner">
+    <div id="ruler"></div>
+    <div id="lanes"></div>
+    <div id="playhead"></div>
+  </div></div>
+</div>
+
+<script>
+let plan = null, hasMusic = false, DUR = 1, scale = 20; // px per second
+const buffers = {}; // sound name -> AudioBuffer (+ '__music')
+const ctx = new (window.AudioContext || window.webkitAudioContext)();
+let scheduled = [];
+let selected = -1; // index into plan.events, or -2 for music
+let sfxMuted = false;
+
+const $ = (id) => document.getElementById(id);
+const vid = $('vid');
+const db2lin = (db) => Math.pow(10, (db || 0) / 20);
+const status = (m) => { $('status').textContent = m; };
+
+async function boot() {
+  const res = await fetch('/api/plan').then((r) => r.json());
+  plan = res.plan; hasMusic = res.hasMusic; DUR = plan.duration;
+  document.title = 'Soundlab — ' + res.video;
+  scale = Math.max(20, (window.innerWidth - 60) / DUR);
+  await loadBuffers();
+  render();
+  status('Loaded ' + plan.events.length + ' clips. Click a clip to edit; drag to nudge; click the ruler to seek.');
+}
+
+async function loadBuffers() {
+  const names = [...new Set(plan.events.map((e) => e.sound))];
+  await Promise.all(names.map(async (n) => {
+    const ab = await fetch('/media/sound/' + n).then((r) => r.arrayBuffer());
+    buffers[n] = await ctx.decodeAudioData(ab);
+  }));
+  if (hasMusic) {
+    const ab = await fetch('/media/music').then((r) => r.arrayBuffer());
+    buffers.__music = await ctx.decodeAudioData(ab);
+  }
+}
+
+// ── Web Audio scheduling synced to the (silent) video element ────
+function stopAll() { scheduled.forEach((s) => { try { s.stop(); } catch {} }); scheduled = []; }
+
+function scheduleFrom(cur) {
+  stopAll();
+  const t0 = ctx.currentTime + 0.03;
+  plan.events.forEach((e) => {
+    if (e.muted || sfxMuted) return;
+    const buf = buffers[e.sound]; if (!buf) return;
+    const len = e.trim ? Math.min(e.trim, buf.duration) : buf.duration;
+    if (e.t + len <= cur) return;
+    const src = ctx.createBufferSource(); src.buffer = buf;
+    const g = ctx.createGain(); g.gain.value = db2lin(e.gainDb);
+    src.connect(g).connect(ctx.destination);
+    const offset = Math.max(0, cur - e.t);
+    src.start(t0 + Math.max(0, e.t - cur), offset, len - offset);
+    scheduled.push(src);
+  });
+  if (hasMusic && plan.music && !plan.music.muted && buffers.__music) {
+    const src = ctx.createBufferSource(); src.buffer = buffers.__music;
+    const g = ctx.createGain(); g.gain.value = db2lin(plan.music.gainDb);
+    src.connect(g).connect(ctx.destination);
+    src.start(t0, cur);
+    scheduled.push(src);
+  }
+}
+
+vid.addEventListener('play', () => { ctx.resume(); scheduleFrom(vid.currentTime); $('play').textContent = 'Pause'; });
+vid.addEventListener('pause', () => { stopAll(); $('play').textContent = 'Play'; });
+vid.addEventListener('seeked', () => { if (!vid.paused) scheduleFrom(vid.currentTime); });
+$('play').onclick = () => (vid.paused ? vid.play() : vid.pause());
+
+(function tick() {
+  $('playhead').style.left = (vid.currentTime * scale) + 'px';
+  $('clock').textContent = vid.currentTime.toFixed(2) + ' / ' + DUR.toFixed(2);
+  requestAnimationFrame(tick);
+})();
+
+// ── Timeline rendering ───────────────────────────────────────────
+function packLanes() {
+  const lanes = [];
+  const sorted = plan.events.map((e, i) => ({ e, i })).sort((a, b) => a.e.t - b.e.t);
+  for (const { e, i } of sorted) {
+    const len = clipLen(e);
+    let lane = lanes.findIndex((endT) => e.t >= endT - 0.001);
+    if (lane < 0) { lane = lanes.length; lanes.push(0); }
+    lanes[lane] = e.t + len + 0.15;
+    e.__lane = lane; e.__i = i;
+  }
+  return lanes.length;
+}
+function clipLen(e) {
+  const bufLen = buffers[e.sound] ? buffers[e.sound].duration : (plan.sounds[e.sound]?.duration || 1);
+  return e.trim ? Math.min(e.trim, bufLen) : bufLen;
+}
+
+function render() {
+  const ruler = $('ruler');
+  ruler.innerHTML = '';
+  $('tlInner').style.width = (DUR * scale + 40) + 'px';
+  for (let s = 0; s <= Math.ceil(DUR); s += 1) {
+    if (s % 5 !== 0) continue;
+    const d = document.createElement('div');
+    d.className = 'tick'; d.style.left = (s * scale) + 'px';
+    d.textContent = '00:' + String(s).padStart(2, '0');
+    ruler.appendChild(d);
+  }
+  const laneCount = packLanes();
+  const lanesEl = $('lanes');
+  lanesEl.innerHTML = '';
+
+  // Music lane first.
+  if (plan.music) {
+    const lane = document.createElement('div'); lane.className = 'lane';
+    const lbl = document.createElement('span'); lbl.className = 'laneLabel';
+    const m = document.createElement('span'); m.className = 'mbtn' + (plan.music.muted ? ' on' : ''); m.textContent = 'M';
+    m.onclick = () => { plan.music.muted = !plan.music.muted; if (!vid.paused) scheduleFrom(vid.currentTime); render(); saveSoon(); };
+    lbl.appendChild(m);
+    lbl.appendChild(document.createTextNode(hasMusic ? ' music' : ' music (no music.mp3 yet)'));
+    lane.appendChild(lbl);
+    if (hasMusic) {
+      const c = document.createElement('div');
+      c.className = 'clip music' + (selected === -2 ? ' selected' : '') + (plan.music.muted ? ' muted' : '');
+      c.style.left = '0px'; c.style.width = (DUR * scale) + 'px';
+      c.textContent = 'music bed (' + plan.music.gainDb + ' dB)';
+      c.onclick = () => select(-2);
+      lane.appendChild(c);
+    }
+    lanesEl.appendChild(lane);
+  }
+
+  for (let l = 0; l < laneCount; l++) {
+    const lane = document.createElement('div'); lane.className = 'lane';
+    const lbl = document.createElement('span'); lbl.className = 'laneLabel'; lbl.textContent = 'sfx ' + (l + 1);
+    lane.appendChild(lbl);
+    for (const e of plan.events) {
+      if (e.__lane !== l) continue;
+      const c = document.createElement('div');
+      c.className = 'clip' + (e.__i === selected ? ' selected' : '') + (e.muted || sfxMuted ? ' muted' : '');
+      c.style.left = (e.t * scale) + 'px';
+      c.style.width = Math.max(14, clipLen(e) * scale) + 'px';
+      c.textContent = e.sound + (e.label ? ' · ' + e.label : '');
+      c.title = e.label || e.sound;
+      attachClipHandlers(c, e);
+      lane.appendChild(c);
+    }
+    lanesEl.appendChild(lane);
+  }
+}
+
+function attachClipHandlers(el, e) {
+  let drag = null;
+  el.addEventListener('pointerdown', (ev) => {
+    drag = { x0: ev.clientX, t0: e.t, moved: false };
+    el.setPointerCapture(ev.pointerId);
+  });
+  el.addEventListener('pointermove', (ev) => {
+    if (!drag) return;
+    const dt = (ev.clientX - drag.x0) / scale;
+    if (Math.abs(dt) > 0.02) drag.moved = true;
+    if (drag.moved) {
+      e.t = Math.max(0, Math.min(DUR, Math.round((drag.t0 + dt) * 100) / 100));
+      el.style.left = (e.t * scale) + 'px';
+      if (e.__i === selected) $('insT').value = e.t;
+    }
+  });
+  el.addEventListener('pointerup', () => {
+    if (drag && drag.moved) { render(); saveSoon(); if (!vid.paused) scheduleFrom(vid.currentTime); }
+    else select(e.__i);
+    drag = null;
+  });
+}
+
+$('ruler').addEventListener('click', (ev) => {
+  const x = ev.clientX - $('tlInner').getBoundingClientRect().left;
+  vid.currentTime = Math.max(0, Math.min(DUR, x / scale));
+});
+
+// ── Inspector ────────────────────────────────────────────────────
+function select(i) {
+  selected = i;
+  const body = $('insBody');
+  if (i === -2) { // music
+    $('insTitle').textContent = 'Music bed';
+    body.style.display = 'block';
+    $('insT').value = 0; $('insT').disabled = true;
+    $('insGain').value = plan.music.gainDb; $('insGainNum').value = plan.music.gainDb;
+    $('insMute').classList.toggle('on', !!plan.music.muted);
+    $('insPrompt').value = plan.music.prompt || '';
+    $('insDur').value = (plan.music.lengthMs || 0) / 1000;
+    render(); return;
+  }
+  if (i < 0 || !plan.events[i]) { $('insTitle').textContent = 'No clip selected'; body.style.display = 'none'; render(); return; }
+  const e = plan.events[i];
+  $('insTitle').textContent = e.sound + (e.label ? ' — ' + e.label : '');
+  body.style.display = 'block';
+  $('insT').disabled = false; $('insT').value = e.t;
+  $('insGain').value = e.gainDb ?? 0; $('insGainNum').value = e.gainDb ?? 0;
+  $('insMute').classList.toggle('on', !!e.muted);
+  $('insPrompt').value = plan.sounds[e.sound]?.prompt || '';
+  $('insDur').value = plan.sounds[e.sound]?.duration || 1;
+  render();
+}
+
+function applyGain(v) {
+  if (selected === -2) plan.music.gainDb = v;
+  else if (selected >= 0) plan.events[selected].gainDb = v;
+  $('insGain').value = v; $('insGainNum').value = v;
+  if (!vid.paused) scheduleFrom(vid.currentTime);
+  render(); saveSoon();
+}
+$('insGain').oninput = (e) => applyGain(parseInt(e.target.value, 10));
+$('insGainNum').onchange = (e) => applyGain(parseInt(e.target.value, 10));
+$('insT').onchange = (e) => {
+  if (selected >= 0) { plan.events[selected].t = parseFloat(e.target.value) || 0; render(); saveSoon(); }
+};
+$('insMute').onclick = () => {
+  if (selected === -2) plan.music.muted = !plan.music.muted;
+  else if (selected >= 0) plan.events[selected].muted = !plan.events[selected].muted;
+  $('insMute').classList.toggle('on');
+  if (!vid.paused) scheduleFrom(vid.currentTime);
+  render(); saveSoon();
+};
+$('insDelete').onclick = () => {
+  if (selected >= 0) { plan.events.splice(selected, 1); select(-1); saveSoon(); }
+};
+$('insAudition').onclick = () => {
+  if (selected === -2 && buffers.__music) { auditionBuf(buffers.__music, plan.music.gainDb); return; }
+  if (selected < 0) return;
+  const e = plan.events[selected];
+  if (buffers[e.sound]) auditionBuf(buffers[e.sound], e.gainDb, e.trim);
+};
+function auditionBuf(buf, gainDb, trim) {
+  ctx.resume();
+  const src = ctx.createBufferSource(); src.buffer = buf;
+  const g = ctx.createGain(); g.gain.value = db2lin(gainDb);
+  src.connect(g).connect(ctx.destination);
+  src.start(0, 0, trim ? Math.min(trim, buf.duration) : buf.duration);
+}
+$('insRegen').onclick = async () => {
+  if (selected < 0 || selected === -2) { status('Music regeneration needs a paid ElevenLabs plan — drop a music.mp3 into the sfx folder instead.'); return; }
+  const e = plan.events[selected];
+  $('genLog').textContent = 'Generating "' + e.sound + '"…';
+  const r = await fetch('/api/generate', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sound: e.sound, prompt: $('insPrompt').value, duration: parseFloat($('insDur').value) }),
+  }).then((x) => x.json());
+  $('genLog').textContent = r.log;
+  if (r.ok) {
+    const ab = await fetch('/media/sound/' + e.sound + '?v=' + Date.now()).then((x) => x.arrayBuffer());
+    buffers[e.sound] = await ctx.decodeAudioData(ab);
+    render(); status('Regenerated ' + e.sound + ' — audition it.');
+  }
+};
+
+// ── Save / export ────────────────────────────────────────────────
+let saveTimer = null;
+function saveSoon() { clearTimeout(saveTimer); saveTimer = setTimeout(savePlan, 800); }
+async function savePlan() {
+  const clean = JSON.parse(JSON.stringify(plan, (k, v) => (k.startsWith('__') ? undefined : v)));
+  await fetch('/api/plan', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(clean, null, 2) });
+  status('Plan saved.');
+}
+$('save').onclick = savePlan;
+$('sfxMute').onclick = () => {
+  sfxMuted = !sfxMuted;
+  $('sfxMute').classList.toggle('on', sfxMuted);
+  if (!vid.paused) scheduleFrom(vid.currentTime);
+  render();
+};
+$('export').onclick = async () => {
+  await savePlan();
+  status('Exporting… (ffmpeg running)');
+  const r = await fetch('/api/export', { method: 'POST' }).then((x) => x.json());
+  status(r.ok ? 'Exported: ' + (r.log.match(/→ (.+)/) || [, 'done'])[1] : 'Export FAILED — ' + r.log);
+};
+
+boot();
+</script>
+</body>
+</html>

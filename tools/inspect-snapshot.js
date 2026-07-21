@@ -47,12 +47,48 @@ if (!slug) {
 
 // ── --emit-selectors: catalog-only, no Playwright ─────────────────────────
 if (emitSelectors) {
-  const catalogPath = path.join(__dirname, '..', 'snapshots', slug, 'catalog.md');
+  // WPF_SNAPSHOTS_DIR override exists for the self-test (fixture snapshots).
+  const snapRoot = process.env.WPF_SNAPSHOTS_DIR || path.join(__dirname, '..', 'snapshots');
+  const catalogPath = path.join(snapRoot, slug, 'catalog.md');
   if (!fs.existsSync(catalogPath)) {
     console.error(`catalog not found: ${catalogPath}`);
     process.exit(1);
   }
   const md = fs.readFileSync(catalogPath, 'utf8');
+
+  // ── FIX-4 (fa-retest 2026-07-13): outline.md role groups feed the starter.
+  // The classify() allowlists below are builder-biased — on admin-page
+  // snapshots (analytics, entries, overview) they drop nearly every row
+  // (form-analytics-main emitted 1/42). outline.md already validates and
+  // role-groups the author-targetable selectors for EVERY snapshot kind, so
+  // its Actions / Inputs / Tabs / Panels groups are included first-class.
+  const OUTLINE_GROUPS = [
+    ['### Actions', 'outlineActions', 'act'],
+    ['### Inputs & controls', 'outlineInputs', 'input'],
+    ['### Tabs & nav', 'outlineTabs', 'tab'],
+    ['### Panels & modals', 'outlineModals', 'modal'],
+  ];
+  function parseOutlineTargets(text) {
+    const out = [];
+    let group = null;
+    let prefix = '';
+    for (const line of text.split(/\r?\n/)) {
+      if (/^#{2,3} /.test(line)) {
+        const hit = OUTLINE_GROUPS.find(([hdr]) => line.startsWith(hdr));
+        group = hit ? hit[1] : null;
+        prefix = hit ? hit[2] : '';
+        continue;
+      }
+      if (!group) continue;
+      const m = /^- `([^`]+)`/.exec(line);
+      if (m) out.push({ group, prefix, selector: m[1] });
+    }
+    return out;
+  }
+  const outlinePath = path.join(snapRoot, slug, 'outline.md');
+  const outlineTargets = fs.existsSync(outlinePath)
+    ? parseOutlineTargets(fs.readFileSync(outlinePath, 'utf8'))
+    : [];
 
   // Parse every row of the form:
   //   | <a id="<anchor>"></a>`<anchor>` | `<selector>` | ...
@@ -306,6 +342,11 @@ if (emitSelectors) {
 
   // Group ordering + human-readable headings in the emitted file.
   const GROUP_ORDER = [
+    ['outlineActions', 'Outline targets — actions (validated live)'],
+    ['outlineInputs',  'Outline targets — inputs & controls (validated live)'],
+    ['outlineTabs',    'Outline targets — tabs & nav (validated live)'],
+    ['outlineModals',  'Outline targets — panels & modals (validated live)'],
+    ['filtered',       'Catalog rows matching --filter'],
     ['panels',         'Panel roots'],
     ['sidebarTabs',    'Sidebar tabs (switchTab targets)'],
     ['panelFields',    'Settings-panel fields'],
@@ -325,24 +366,42 @@ if (emitSelectors) {
 
   const buckets = new Map();
   const keySeen = new Map();
+  const seenSelectors = new Set();
+  function push(group, key, selector, src) {
+    const n = (keySeen.get(key) || 0) + 1;
+    keySeen.set(key, n);
+    if (n > 1) key += '_' + n;
+    if (!buckets.has(group)) buckets.set(group, []);
+    buckets.get(group).push({ key, selector, src });
+    seenSelectors.add(selector);
+  }
+
+  // Outline targets first — validated, role-grouped, snapshot-kind-agnostic.
+  const filterLc = filter ? filter.toLowerCase() : '';
+  for (const t of outlineTargets) {
+    if (filterLc && !t.selector.toLowerCase().includes(filterLc)) continue;
+    push(t.group, t.prefix + '_' + toCamel(t.selector), t.selector, 'outline.md (validated live)');
+  }
+
   let totalRows = 0;
   let m;
   while ((m = rowRe.exec(md)) !== null) {
     totalRows++;
     const anchor   = m[1];
     const selector = m[2];
-    if (filter && !anchor.includes(filter) && !selector.includes(filter)) continue;
+    if (filter && !anchor.toLowerCase().includes(filterLc) && !selector.toLowerCase().includes(filterLc)) continue;
+    if (seenSelectors.has(selector)) continue; // outline already emitted it
+
+    // FIX-4: an explicit --filter IS the author's selection — bypass the
+    // starter-subset classification and emit every matching catalog row.
+    if (filter) {
+      push('filtered', 'f_' + toCamel(anchor), selector, 'catalog.md#' + anchor);
+      continue;
+    }
 
     const hit = classify(anchor, selector);
     if (!hit) continue;
-
-    let key = hit.key;
-    const n = (keySeen.get(key) || 0) + 1;
-    keySeen.set(key, n);
-    if (n > 1) key += '_' + n;
-
-    if (!buckets.has(hit.group)) buckets.set(hit.group, []);
-    buckets.get(hit.group).push({ key, selector, anchor });
+    push(hit.group, hit.key, selector, 'catalog.md#' + anchor);
   }
 
   // Deterministic order: by the declared group order, then each bucket
@@ -354,7 +413,10 @@ if (emitSelectors) {
 
   const emittedCount = [...buckets.values()].reduce((n, arr) => n + arr.length, 0);
   const moduleName = toCamel(slug);
-  const mode = emitAll ? 'full catalog dump' : 'starter subset';
+  const mode = emitAll ? 'full catalog dump'
+    : filter ? 'filter match (starter subset bypassed)'
+    : outlineTargets.length ? 'starter subset + outline targets'
+    : 'starter subset';
 
   const lines = [];
   lines.push('// Auto-generated starter selector sheet — authoring aid only.');
@@ -374,7 +436,7 @@ if (emitSelectors) {
     lines.push('  // ── ' + heading + ' (' + list.length + ') ──');
     for (const e of list) {
       const selStr = JSON.stringify(e.selector);
-      const srcStr = JSON.stringify('catalog.md#' + e.anchor);
+      const srcStr = JSON.stringify(e.src);
       lines.push('  ' + e.key + ': { sel: ' + selStr + ', src: ' + srcStr + ' },');
     }
   }
