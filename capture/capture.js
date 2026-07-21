@@ -108,6 +108,20 @@ const plan = variantsPlan ?? {
   }],
 };
 
+// ── Output root ──────────────────────────────────────────────────────────
+// WP_SNAPSHOT_ROOT overrides where snapshot dirs are written (tests sandbox
+// into a temp dir). When overridden, the catalog auto-emit is skipped — it
+// only understands the real snapshots/ tree.
+const SNAP_ROOT = process.env.WP_SNAPSHOT_ROOT || path.join(__dirname, '..', 'snapshots');
+const SNAP_ROOT_OVERRIDDEN = Boolean(process.env.WP_SNAPSHOT_ROOT);
+
+// A wp_die / DB-error / bounced-to-login page must never become a
+// "successful" snapshot (an FA capture shipped a 3 KB wp_die page with
+// exit 0). Sniffed from <title> after steps + waitFor run.
+function isErrorPage(title) {
+  return /WordPress .*Error|Database Error|Log In/i.test(title || '');
+}
+
 // ── Shared asset pool ────────────────────────────────────────────────────
 // `assetMap`: url → filename (hashed). Populated by the response listener
 // across all variants (same page context → asset URLs hash identically).
@@ -184,6 +198,36 @@ async function runSteps(page, steps) {
       console.log('    → eval');
       await page.evaluate(step.eval);
       await page.waitForTimeout(step.settle ?? 1500);
+    } else if (step.setFile) {
+      // Populate a file <input> (e.g. CSV upload UI state). `sel` + `path`.
+      console.log('    → setFile', step.setFile.sel);
+      await page.setInputFiles(step.setFile.sel, step.setFile.path);
+      await page.waitForTimeout(step.settle ?? 1200);
+    } else if (step.pickChoice) {
+      // Robustly select an option in a Choices.js-enhanced <select>. Choices.js
+      // ignores synthetic clicks, so this drives real Playwright mouse events:
+      // open the control (retry — it can toggle shut), then click the item by
+      // data-value. `sel` is the underlying <select> selector; `value` the option value.
+      const { sel, value } = step.pickChoice;
+      console.log('    → pickChoice', sel, '=', value);
+      const container = page.locator('.choices', { has: page.locator(sel) });
+      const item = container.locator(`.choices__list--dropdown .choices__item[data-value="${value}"]`).first();
+      for (let i = 0; i < 6; i++) {
+        await container.locator('.choices__inner').click();
+        await page.waitForTimeout(350);
+        if (await item.isVisible().catch(() => false)) break;
+      }
+      await item.scrollIntoViewIfNeeded().catch(() => {});
+      await item.click({ force: true });
+      await page.waitForTimeout(step.settle ?? 500);
+    } else if (step.awaitSel) {
+      // Wait for a selector/state (e.g. mapping block unhide, import-complete modal).
+      // Supports a long timeout for chunked AJAX flows.
+      const { sel, timeout, state } = step.awaitSel;
+      console.log('    → awaitSel', sel);
+      await page.waitForSelector(sel, { state: state || 'visible', timeout: timeout || 15000 })
+        .catch(() => console.warn('    ⚠ awaitSel timeout', sel));
+      await page.waitForTimeout(step.settle ?? 300);
     } else if (step.wait) {
       await page.waitForTimeout(step.wait);
     }
@@ -195,9 +239,8 @@ async function captureVariant(page, variant) {
   const targetPath = variant.targetPath || plan.targetPath;
   console.log(`\n── Variant: ${slug} ──`);
 
-  const outDir    = path.join(__dirname, '..', 'snapshots', slug);
+  const outDir    = path.join(SNAP_ROOT, slug);
   const assetsDir = path.join(outDir, 'assets');
-  fs.mkdirSync(assetsDir, { recursive: true });
 
   await runSteps(page, steps);
 
@@ -210,6 +253,15 @@ async function captureVariant(page, variant) {
       console.warn('    ⚠ waitFor selector not found — continuing anyway');
     }
   }
+
+  // Garbage gate: never serialize an error/login page. Throwing here marks
+  // the variant FAILED in the batch summary; nothing is written.
+  const pageTitle = await page.title().catch(() => '');
+  if (isErrorPage(pageTitle)) {
+    throw new Error(`error page detected (title: "${pageTitle}") — nothing written`);
+  }
+
+  fs.mkdirSync(assetsDir, { recursive: true });
 
   // Inline stylesheets (so url() refs resolve against local assets)
   const inlineStyles = await page.evaluate(async () => {
@@ -410,7 +462,17 @@ async function captureVariant(page, variant) {
   // settings, etc.) which never round-trip through assetBuffers.
   rewritten = sanitizeText(rewritten);
 
-  fs.writeFileSync(path.join(outDir, 'index.html'), '<!doctype html>\n' + rewritten);
+  // Charset guard: the snapshot must declare UTF-8 or em-dashes and friends
+  // render as mojibake when served without content-type charset headers.
+  if (!/<meta[^>]+charset/i.test(rewritten)) {
+    rewritten = rewritten.replace(/<head[^>]*>/i, m => m + '<meta charset="utf-8">');
+  }
+  const mojibake = (rewritten.match(/�/g) || []).length;
+  if (mojibake) {
+    console.warn(`    ⚠ ${mojibake} replacement character(s) (�) in serialized HTML — source encoding was already broken`);
+  }
+
+  fs.writeFileSync(path.join(outDir, 'index.html'), '<!doctype html>\n' + rewritten, 'utf8');
   fs.writeFileSync(path.join(outDir, 'meta.json'), JSON.stringify({
     sourceUrl: WP_URL + targetPath,
     capturedAt: new Date().toISOString(),
@@ -427,7 +489,10 @@ async function captureVariant(page, variant) {
   // HTML; if a later post-process step (trim-builder-markup, dedup-css,
   // consolidate-assets) modifies the HTML, re-run
   // `node tools/generate-snapshot-catalog.js <slug>` to refresh.
-  const tool = tryRequireCatalogTool();
+  const tool = SNAP_ROOT_OVERRIDDEN ? null : tryRequireCatalogTool();
+  if (SNAP_ROOT_OVERRIDDEN) {
+    console.log('    (catalog emit skipped — WP_SNAPSHOT_ROOT override active)');
+  }
   if (tool) {
     try {
       tool.emitFor(slug);
@@ -468,24 +533,38 @@ async function captureVariant(page, variant) {
     page.waitForURL(/wp-admin/, { timeout: 15000 }),
   ]);
 
+  // One failing variant must not abort the batch (a mid-batch abort costs a
+  // full re-login + re-run). Attempt every variant, table the results, exit
+  // non-zero if any failed.
+  const results = [];
   for (let i = 0; i < plan.variants.length; i++) {
     const variant = plan.variants[i];
     // Each variant may override targetPath. Falls back to plan.targetPath for
     // backward compatibility with single-page and original multi-variant plans.
     const target = variant.targetPath || plan.targetPath;
-    console.log(`→ Navigating to ${target}`);
-    await page.goto(WP_URL + target, { waitUntil: 'networkidle' });
-    await page.waitForTimeout(1500);
-
-    await captureVariant(page, variant);
+    try {
+      console.log(`→ Navigating to ${target}`);
+      await page.goto(WP_URL + target, { waitUntil: 'networkidle' });
+      await page.waitForTimeout(1500);
+      await captureVariant(page, variant);
+      results.push({ slug: variant.slug, ok: true });
+    } catch (e) {
+      results.push({ slug: variant.slug, ok: false, err: (e.message || String(e)).split('\n')[0] });
+      console.error(`    ✗ ${variant.slug} FAILED: ${results[results.length - 1].err}`);
+    }
   }
 
   await browser.close();
-  console.log(`\n✓ Done. ${plan.variants.length} variant(s), ${assetBuffers.size} assets pooled.`);
+  const failed = results.filter(r => !r.ok);
+  console.log(`\n── Capture summary (${results.length} variant(s), ${assetBuffers.size} assets pooled) ──`);
+  for (const r of results) {
+    console.log(`  ${r.ok ? '✓' : '✗'} ${r.slug}${r.ok ? '' : ' — ' + r.err}`);
+  }
   if (sanitizeReport.size) {
     const lines = [...sanitizeReport.entries()].map(([k, n]) => `  ${k}: ${n}`);
     console.log(`✓ Sanitized embedded secrets:\n${lines.join('\n')}`);
   } else {
     console.log('✓ Sanitizer: no embedded secrets found.');
   }
+  process.exit(failed.length ? 1 : 0);
 })().catch((e) => { console.error(e); process.exit(1); });

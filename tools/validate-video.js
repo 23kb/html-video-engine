@@ -1728,6 +1728,27 @@ function summarize(flags) {
     process.exit(1);
   }
 
+  // Single-HTML dispatch: a video dir with index.html but no manifest.json is
+  // the single-HTML architecture — delegate to validate-singlehtml.js instead
+  // of stack-tracing in loadVideo(). Manifest videos are untouched by this.
+  const singleHtml = [];
+  slugs = slugs.filter((slug) => {
+    const dir = path.join(ROOT, 'videos', slug);
+    if (!fs.existsSync(path.join(dir, 'manifest.json')) && fs.existsSync(path.join(dir, 'index.html'))) {
+      singleHtml.push(slug);
+      return false;
+    }
+    return true;
+  });
+  let singleHtmlExit = 0;
+  if (singleHtml.length) {
+    console.log(`[dispatch] single-HTML video(s) → tools/validate-singlehtml.js: ${singleHtml.join(', ')}`);
+    const r = require('child_process').spawnSync(process.execPath,
+      [path.join(__dirname, 'validate-singlehtml.js'), ...singleHtml], { stdio: 'inherit' });
+    singleHtmlExit = r.status === null ? 1 : r.status;
+  }
+  if (slugs.length === 0) process.exit(singleHtmlExit);
+
   const baseline = loadBaseline();
   if (Object.keys(baseline.files).length === 0) {
     console.warn('[warn] no validator baseline found — every file will be treated as touched.');
@@ -1780,7 +1801,7 @@ function summarize(flags) {
   }
 
   const code = summarize(flags);
-  process.exit(code);
+  process.exit(code || singleHtmlExit);
 })();
 
 function inferSnapshotFromSheetName(p) {

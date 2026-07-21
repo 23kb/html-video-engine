@@ -7,14 +7,14 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "node tools/__tests__/run-all.js",
     "smoke:generated-preview": "node authoring/generated-preview-smoke.js",
     "dev": "node tools/preview.js",
     "preview": "node tools/preview.js",
     "render": "node tools/render.js",
     "validate": "node tools/validate-video.js",
     "smoke": "node tools/check-video-playback.js",
-    "lint": "node tools/validate-video.js --all && node tools/lint-determinism.js --all"
+    "lint": "node tools/validate-video.js --all && node tools/validate-singlehtml.js --all && node tools/lint-determinism.js --all"
   },
   "keywords": [],
   "author": "",

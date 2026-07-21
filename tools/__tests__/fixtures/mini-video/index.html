@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>mini-video fixture</title>
+<!--
+  Tiny (~3.5s) single-HTML video exercising the shared hardened narration
+  helpers + the full instrumentation contract (__T0 / __sched / __done / __dur).
+  Used by narration-hardened.test.js (FIX-2) and smoke-singlehtml.test.js (FIX-1).
+  Narration mp3s are intentionally absent — playNarration resolves on the
+  audio error event. ?hang=1 skips the __done assignment (negative fixture).
+  ?glidewarn=1 fires a [glideClick] console.warn (FIX-9 glide-warn surfacing).
+-->
+<style>
+  body { margin: 0; background: #111; color: #eee; font: 16px system-ui; }
+  #stage { position: relative; width: 640px; height: 360px; background: #222; }
+  #box { position: absolute; top: 40px; left: 40px; width: 60px; height: 60px; background: #e27730; }
+  #caption { position: absolute; bottom: 16px; left: 16px; right: 16px; opacity: 0; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="box"></div>
+  <div id="caption"></div>
+</div>
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { say as narrSay, beat as narrBeat, withTimeout, wait } from '/videos/_shared/narration.js';
+
+const SLUG = 'mini-video-fixture';
+const DUR = { one: 1.2, two: 1.0 };
+const caption = document.getElementById('caption');
+const say = (key, text) => narrSay(SLUG, key, text, { captionEl: caption });
+const beat = (key, text, motionFn) => narrBeat(SLUG, key, text, motionFn, { durTable: DUR, captionEl: caption });
+const HANG = new URLSearchParams(location.search).has('hang');
+const GLIDEWARN = new URLSearchParams(location.search).has('glidewarn');
+
+async function play() {
+  window.__T0 = performance.now();
+  await wait(0.2);
+  // FIX-9 fixture path: the defensive helpers warn-and-return-null on failure.
+  if (GLIDEWARN) console.warn('[glideClick] target not found: .fixture-missing');
+  await beat('one', 'First cue.', () => gsap.to('#box', { x: 200, duration: 0.5 }));
+  await beat('two', 'Second cue.', () => gsap.to('#box', { y: 120, duration: 0.5 }));
+  // A stalled primitive must fall through, never hang the master flow.
+  await withTimeout(new Promise(() => {}), 0.4);
+  if (!HANG) {
+    window.__done = true;
+    window.__dur = (performance.now() - window.__T0) / 1000;
+  }
+}
+play();
+</script>
+</body>
+</html>

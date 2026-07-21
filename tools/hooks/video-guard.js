@@ -239,4 +239,7 @@ function main() {
   allow();
 }
 
-main();
+// Rules are also consumed by tools/validate-singlehtml.js (file-wide re-scan).
+module.exports = { RULES, CONTENT_RULES, isAuthoredVideoFile };
+
+if (require.main === module) main();

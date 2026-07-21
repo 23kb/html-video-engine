@@ -13,23 +13,65 @@ The repo has three authoring paths (see `CLAUDE.md` for the full table):
 
 This skill covers paths 2 and 3.
 
-## ⛔ HARD RULE — pure motion before real UI
+## ⛔ HARD RULE — motion-graphics density is the mandate; real UI when it exists
 
-For editorial / ad-style / announcement / launch / hero videos, the **first authoring pass uses pure motion only — NO real WPForms product UI**. That means:
+Two things an ad-style video MUST be, revised 2026-07-13 after the FA clean-room ad scored **4/10 — "too basic, worse than HyperFrames"**:
 
-- ✅ Allowed in pass 1: text reveals, card-layout effects, constellations, atmospheric layers, brand chrome (Sullie bug, orange dot + wordmark), block primitives (mac-window, pill, route-line) used as motion subjects, kit-built mock form cards (the `mountCardsSpreadFan` / `mountCardsFlyInStack` *defaults*).
-- ❌ NOT in pass 1: snapshot iframes, real builder/admin captures, `surface: 'mixed'` with real WPForms UI underneath, screenshots from `snapshots/`, anything that requires `wpforms-interactions.js`.
+### 1. It must be a MOTION-GRAPHICS piece, not a kinetic-type card.
 
-**Real product UI only enters pass 2** — and ONLY if the approved storyboard explicitly calls for it ("we cut to the builder at 0:18 to show the actual drag-and-drop"). If the storyboard doesn't ask for it, the video ships as pure motion.
+The failure that earns a low score is a basic piece: one text effect, a couple fades, mock tiles. An ad is judged on motion design. Before calling any ad-style build done, it must visibly use **most of** this vocabulary — not one token from it:
 
-**Why this rule exists:** failed editorial videos consistently degraded into literal product walkthroughs because real UI is easier to author than designed motion — but the brief was for an ad-style piece. Forcing pass 1 to be motion-only keeps the editorial intent intact. Mixed videos (`surface: 'mixed'`) are the exception, but they must still pass the motion spine review *before* the iframe layer is composited under.
+- **Effects library (`videos/_shared/effects/`, promoted from the ~100-port `reference/gsap-effects/CATALOG.md`)** — text reveals (`mountTextStackFromRight`, `mountTextLetterMaskDomino`, `mountTextCenterOutRoll`), card layouts (`mountCardsSpreadFan`, `mountCardsFlyInStack`), constellations (`mountConstellationPhyllotaxisBloom`). If the storyboard names a motion archetype not yet promoted, **promote the matching port from `reference/gsap-effects/`** rather than hand-rolling or skipping it. Using one effect when the piece has five beats is the 4/10 failure.
+- **Text animations** — `text-kit.js` (24 pixel-point presets) or the effects text reveals. Never a plain opacity fade on a headline.
+- **Real transitions between scenes** — morphs (Flip / same-node shape tween), camera flights (`cinematicFlight` / `figjamFlight` / `flyToElement`), wipes, mask reveals. Hard cuts and cross-fades alone are a fail. **Default camera pacing for ads = the L1 cinematic decomposition at premium timing (~1.0–1.3s per move, land-and-HOLD)** — Umair reviewed a fast "whip" pass as "too fast, not smooth" (v3→v4, 2026-07-13); reach for whip speeds only on an explicit ask.
+- **Atmospheric kit** (`atmospheric.js`) — grain, sweep, parallax, scale-push, dark backdrop, per-beat atmosphere swaps.
+- **SFX** — the cue rig must be wired (punchy-clean, ad-energy per `[[feedback_sfx_ad_energy]]`), landing on the motion beats.
 
-**Workflow:**
+If you finish an ad and it used one effect and some fades, it is not done — go back to the vocabulary.
 
-1. **Pass 1: motion spine.** Storyboard → pick effects from `videos/_shared/effects/` → compose into master timeline → motion-audit gate (S/A tier required) → user approval. No iframes, no snapshots.
-2. **Pass 2: optional UI layer.** If and only if the approved storyboard asks for it, add `surface: 'mixed'` + iframe geometry beneath. The motion spine stays untouched.
+### 2. When the feature has real captured UI, SHOW THE REAL UI — never a mockup.
 
-If the user requests an ad-style video and you find yourself about to import `IframeManager`, `wpforms-interactions.js`, or reach for a snapshot — STOP. You are in pass 2 territory. Confirm pass 1 (motion spine) is approved first.
+Superseded rule: the old "pure motion, no real product UI in pass 1" ban produced kit-built mock stat tiles standing in for the real analytics dashboard. **Wrong.** Umair (2026-07-13): *"when there is a real UI to show in an ad-style video, there should be real product UI, real iframes or whatever — real UI, not a mockup."*
+
+- If a real snapshot of the feature exists (or can be captured), mount it (`IframeManager` + the snapshot) and move the camera across the REAL product (`flyToElement` / `cinematicFlight`). The editorial motion graphics compose **around and into** the real UI — e.g. an editorial number flies in and hands off (Flip / position morph) into the real stat card on the real dashboard.
+- Kit-built mock cards (`mountCardsSpreadFan` defaults, hand-drawn tiles) are only for concepts with **no** real UI (a pre-release feature, an abstract idea). Never as a stand-in when the real capture is sitting in `snapshots/`.
+- This makes most feature ads **`surface: 'mixed'`** (real iframe + editorial layer above). That is now the expected shape, not an exception. Importing `IframeManager` in an ad is correct, not a smell.
+
+**The one guardrail from the old rule that still holds:** do not let the real UI turn the ad into a literal walkthrough. The editorial motion still drives; the real UI is the payoff the motion resolves into. And per `[[feedback_mixed_surface_scalepush_pitfall]]`: never `scalePush` the iframe (it steamrolls camera tweens) — use `flyToElement`/`cinematicFlight` camera moves on the iframe and keep `scalePush` for editorial-only layers.
+
+**HARD RULE — never CSS-`filter` over a real-UI iframe (it blurs the whole frame).** Grades, tints, temperature grades, brightness dips over real product UI = translucent **veil overlays**, NEVER an animated `filter` on `#stage`/the camera element or any node that contains the iframe. Chromium rasterizes the iframe through the filter compositing pipeline and visibly **blurs the real UI** — even at neutral filter values, even when the filter is on an *ancestor* rather than the iframe itself. `will-change: transform, filter` on the camera pins the same raster. This is the sibling trap to `scalePush` above; it directly cost a QC round on The Drop (first build graded via `filter` on `#stage` → blurry dashboard). **The camera element animates `transform` only — no `will-change: filter`, no animated `filter`.** The veil recipe:
+
+- **Temperature / tint** → a `div` above the iframe with a background color + animated `opacity` (warm `rgba(255,214,150,·)` radial, cold `rgba(86,96,114,·)`).
+- **Desaturation / B&W** → a gray `div` with `mix-blend-mode: saturation`.
+- These composite over the iframe pixels without re-rasterizing them → the UI stays sharp.
+- Filters are fine on **editorial-only** layers (text, atmospheric divs) that don't sit above a live iframe.
+
+Reference (veils done right): `videos/the-drop/index.html` — `#gradeWarm`/`#gradeCold` (temperature), `#bwVeil` (`mix-blend-mode: saturation` B&W dropout), `#redVeil` (alarm vignette); all animate `opacity`/`autoAlpha`, never `filter`. See `[[reference_iframe_filter_blur]]`.
+
+### 3. The snapshot is a LIVE DOM — its elements ARE the motion graphics (the USP)
+
+Umair rated this **11/10** (fa-retest ad v3/v4, 2026-07-13). A screen-recording competitor cannot do any of it. The technique catalog — all proven in `videos/form-analytics-ad-v2/index.html`:
+
+- **Assembly:** `gsap.set` real iframe-doc elements hidden after load, then choreograph them in one-by-one (cards fly in as 3D objects with `transformPerspective`, table rows domino, chrome drops in). Parent-page GSAP tweens same-origin iframe nodes directly.
+- **Live count-ups on real values:** mutate the value's **first text node** (`[...el.childNodes].find(n => n.nodeType === 3 && n.nodeValue.trim())`), never `textContent` — nested links (e.g. the Set Goal anchor inside the stat value) survive. Counters END at the captured values (production truth).
+- **Real hidden UI:** toggle captured-but-hidden popovers/modals (`aria-hidden` + `display`), cascade their real rows, type into real inputs (`typeIntoIframeInput`), click real buttons.
+- **Off-plane lifts:** `popOut` clones a real element into 2.5D above the page (the goal-arrow money shot).
+- **Before/after:** two real captures of the same screen (e.g. `admin-forms-overview` vs `-analytics`) = an honest "what's new" transformation.
+- **Real-to-editorial handoffs:** real rows burst outward INTO an editorial effect (constellation) with matched velocity.
+
+### 4. Async real-UI flows: CHAIN them + mark() the boundaries
+
+Fixed-time `tl.call()` cues for multi-second async UI flows WILL desync (caught twice by smoke's glide-warns). Chain the flows (`introFlow().then(dashboardFlow).then(...)`), push `__sched` marks at each boundary, **measure with a headless run**, and align the master timeline's fixed beats to the measured numbers. The ad skeleton carries the `mark()` helper.
+
+### 5. Every effect mount is PARKED until its beat — and probe it
+
+Assume effects mount their text/content VISIBLE (center-out-roll and letter-mask-domino both do). `gsap.set(fx.el, { autoAlpha: 0 })` every mount at build; reveal with a `tl.set` at its beat. Verify with a scene-isolation probe (sample computed opacity of every scene host at 6–8 timestamps headlessly) — the "jumbled frame" bug shipped because nothing checked cross-scene visibility.
+
+### 6. Sound levels that actually work (measured, fa-retest)
+
+Music bed at **−24dB gain was inaudible** (mix RMS −35dB); **−11dB reads clearly** (mix RMS ≈ −27dB). SFX between −16 and −21dB. Verify with `ffmpeg -af astats` on the muxed file — a silent BGM is a mechanical defect, not a taste call. Palette is SEMANTIC: a real click sound only where a click happens, popover-open on popovers, counter-roll under count-ups — never generic whoosh-everything.
+
+**Workflow:** storyboard (motion beats named by intent + which real snapshots appear + the morph/transition between each) → compose effects + text-kit + real iframe camera into the master timeline → **motion-audit gate (A/S required)** → render with SFX.
 
 ## Editorial named-effects library (pass-1 vocabulary)
 
@@ -47,11 +89,15 @@ If the storyboard names a motion archetype not yet in the library, check `refere
 
 Before writing any editorial chapter or single-HTML video, **load these**:
 
+**Product truth for claims/values:** check `docs/product-truth/<feature>.md` (FIX-5 fa-retest) before putting any feature claim, metric name, or number on screen; when the note is missing and the source doc is reachable, write it during intake — UI-derived semantics get an `UNVERIFIED` marker.
+
 ### Canonical clone-and-customize templates
 
 For pure-editorial videos, START FROM ONE OF THESE — do not author from scratch (see INV-16):
 
-- **`videos/klaviyo-bridge-2/index.html` — CORE REFERENCE for pure editorial.** Approved after 3 sessions + multiple iterations. **This is the primary clone target for any new pure-editorial video.** It encodes the patterns the 3 templates below demonstrate individually, refined through real feedback. When in doubt, clone this.
+**⚠ Playback/instrumentation contract (FIX-2, fa-retest 2026-07-13):** first write = copy `docs/examples/single-html-ad-skeleton.html` — it bakes in AUTOPLAY + `__T0/__sched/__done/__dur`, onComplete end bookkeeping, `?scene=` review wiring, and the SFX-rig/BGM-disabled conventions. **bridge-2 predates that contract** (click-to-start, no instrumentation — smoke/render can't drive a raw clone of it). Clone bridge-2 for VOCABULARY — atmosphere beds, ease voices, SFX cue placement, masked-reveal idiom — but never its playback block.
+
+- **`videos/klaviyo-bridge-2/index.html` — CORE REFERENCE for pure editorial.** Approved after 3 sessions + multiple iterations. **This is the primary vocabulary reference for any new pure-editorial video** (see the contract note above for what NOT to take from it). It encodes the patterns the 3 templates below demonstrate individually, refined through real feedback. When in doubt about motion voice, clone this.
 - `reference/html-templates/wpforms-ai-prompt-open.html` — **S-tier** identity-continuity morph (Button → Input → Pill → Chat over 12s). Secondary reference for single-element morph-chain pieces ("AI feature demo" / "product reveal").
 - `reference/html-templates/editorial-reference-36s.html` + `editorial-reference-BEATS.md` — **A-tier** 36s linear-scene reference (OpenAI Layo rebuild). Secondary reference for product-announcement / launch / multi-beat narrative work.
 - `reference/html-templates/openai-replica-18s.html` — **A-tier** first-try single-HTML proof. Secondary reference for short ad-style pieces.
@@ -75,7 +121,9 @@ Do NOT invent brand details. The plugin source-of-truth is here:
 ### Audit gates — MUST run before handoff
 
 - `wpforms-motion-audit` skill — score every postIntro/cinematic/editorial beat S-F tier. Tier A or higher is merge bar.
-- `design-motion-principles` skill (kylezantos, auto-triggers) — designer-philosophy critique by Emil Kowalski / Jakub Krehel / Jhey Tompkins lens.
+- `design-motion-principles` skill (kylezantos) — designer-philosophy critique by Emil Kowalski / Jakub Krehel / Jhey Tompkins lens. **Invoke manually when designer-grade review is wanted — nothing fires it automatically** (FIX-8: two full editorial runs assumed automatic invocation and it never ran).
+
+**Async-approver clause:** if the user has explicitly ordered the finished deliverable and is unavailable to approve mid-run, the storyboard/brief gates convert to: write the artifact to disk, mark it `AUTO-APPROVED-BY-DIRECTIVE (review on return)`, proceed, and surface it FIRST in the handoff. Do not improvise a different self-override.
 
 ### Editorial storyboard format
 

@@ -18,6 +18,9 @@ import { registerCameraPose as _registerCameraPose, resolveCameraPose as _resolv
 import { isPaused, pausableSleep } from '../../runtime/pause-manager.js';
 
 export { pausableSleep };
+// Hardened-await helper lives in narration.js (self-contained — kit.js pulls
+// the runtime/* chain, which pure single-HTML videos must not load).
+export { withTimeout } from './narration.js';
 
 export function pausableRaf(cb) {
   let id = null;

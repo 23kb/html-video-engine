@@ -52,6 +52,7 @@ Scan this table first. For deeper context (why, when not to use, options), scrol
 | **Defensive scroll + glide + click** | `glideClick({iframeManager, cursor}, target, opts)` | `(deps, el, opts) → Promise` | iframe-helpers.js:121 |
 | Find iframe element by visible text | `findInIframeByText(ifm, text, opts)` | `(ifm, str, opts) → Element` | iframe-helpers.js:45 |
 | Glide+click an iframe element by text | `glideToText({iframeManager, cursor}, text, opts)` | `(deps, str, opts) → Promise` | iframe-helpers.js:183 |
+| **Decomposed tutorial camera flight** (dip→land, audit-clean) | `flyToElement({iframeManager}, target, opts)` | `(deps, el, {fill, pad, maxZoom, duration}) → Promise<pose\|null>` | iframe-helpers.js (FIX-1 fa-retest) |
 | Click "Add New Form" in admin | `ifm.navAddNewForm(opts)` | `IframeManager method` | wpforms-interactions.js:1385 |
 | Pick a template by slug | `ifm.selectTemplate(slug, opts)` | `IframeManager method` | wpforms-interactions.js:1410 |
 | Drag a field into form builder | `ifm.dragFieldToForm(slug, opts)` | `IframeManager method` | wpforms-interactions.js:1655 |
@@ -165,6 +166,7 @@ Authoring helpers built on top of IframeManager + Cursor. Each earns library sta
 | `findInIframeByText(iframeManager, text, opts?)` | Find a clickable element by VISIBLE TEXT inside iframe. For SaaS dashboards where class names are content-hashed `.sc-jTrPJq` and unstable across re-captures. Walks from text node → nearest clickable ancestor; skips hidden duplicates. | `(ifm, text, { clickableSelector?, maxDepth? })` → Element\|null | `iframe-helpers.js:30` |
 | `glideClick({ iframeManager, cursor }, target, opts?)` | The 10×-recurring pattern: scrollIntoView + elementToStageCoords + cursor.glide + cursor.click, all in one defensive try/catch. Catches the empty-rect throw (INV-12 signal) and the cursor null-guard. Logs failure, doesn't crash the timeline. | `(ctx, target, { click?, scroll?, glideDuration?, via?, ripple?, rippleColor?, silent? })` → Promise<Element\|null> | `iframe-helpers.js:96` |
 | `glideToText({ iframeManager, cursor }, text, opts?)` | Convenience: `findInIframeByText` + `glideClick`. The shortest path to "click that 'Settings' link in the Klaviyo dashboard." | `(ctx, text, opts)` → Promise<Element\|null> | `iframe-helpers.js:165` |
+| `flyToElement({ iframeManager }, target, opts?)` | **The tutorial camera move.** Decomposed dip/pan → named-ease land arc to frame an iframe element. A bare `cameraToElement` + single `tweenCamera` reads as a slide projector and caps the motion audit at tier B — this helper is the audit-clean default for every single-HTML tutorial zoom. Iframe zoom ≤ 2.0 default (CSS pixel-doubling sharpness limit). | `(ctx, target, { fill?, pad?, maxZoom?, duration?, silent? })` → Promise<pose\|null> | `iframe-helpers.js` (FIX-1 fa-retest 2026-07-13) |
 
 Source: Klaviyo tutorial v11 retro 2026-05-12 (`docs/sound-design-reference-2026-05-12.md` is unrelated; the retro lives in commit messages + this skill).
 
@@ -173,6 +175,14 @@ Source: Klaviyo tutorial v11 retro 2026-05-12 (`docs/sound-design-reference-2026
 Standalone primitives (only depend on GSAP + browser APIs). Determinism-safe.
 
 QC: open `videos/_qc-primitives/index.html` in the preview server. Each card links to a live demo. Statuses shown there are authoritative.
+
+### ⚠ Return contract — "do I need `.play()`?"
+
+The Signature column's return type IS the contract (FIX-16):
+
+- **`→ paused timeline`** — renders NOTHING until you call `.play()` or `tl.add()` it into a running master timeline. Composing one at cue-time and forgetting `.paused(false)` is a silent-failure trap (FA ad addendum #26). Applies to: `cinematicFlight`, `figjamFlight`, `focusStationOverview`, `statusPillMorph`, `markerSweep`, `fieldStaggerReveal`.
+- **`→ UNPAUSED tween/timeline`** — starts playing the moment you call it (deliberate, per its regression-guard). `tl.add()`-ing it re-schedules it under the master. Applies to: `caretType`, `typeIntoIframeInput`, `clickRipple`.
+- **`→ Promise`** — await it (through `withTimeout` if top-level — INV-17); there is nothing to play. Applies to: `Cursor` methods, `popOut`, `cleanFastRejoin`.
 
 ### Camera
 
@@ -189,15 +199,15 @@ QC: open `videos/_qc-primitives/index.html` in the preview server. Each card lin
 |---|---|---|---|---|
 | `new Cursor(stage, opts)` | Mount a single cursor element on a stage. Use this for every cursor in editorial / single-HTML and any video-local cursor work. Built-in anti-frenzy guards (kill-tweens on each new move). | Methods: `.glide({x,y}, opts)`, `.click(opts)` (squash + ripple), `.hover({x,y}, { target?, hoverScale?, hoverGlow? })`, `.drag(from, to, { ghostSource? })`, `.setPos(x,y)`, `.pos()`, `.remove()` | **ready** | `motion-primitives.js:320` |
 | `Cursor.glide(to, { via })` | Use when cursor motion needs the winning-pattern curved arc instead of a straight line. Splits one glide into a 55% waypoint leg and 45% target leg. | `.glide({x,y}, { via: {x,y}, duration? })` → Promise | **draft** — needs QC | `motion-primitives.js:442` |
-| `clickRipple(stage, x, y, opts)` | Standalone ripple at a stage point, decoupled from the Cursor instance. Prefer `Cursor.click()` when a cursor is on stage. | `{ color?, scale?, duration? }` → timeline | covered by Cursor QC | `motion-primitives.js:689` |
+| `clickRipple(stage, x, y, opts)` | Standalone ripple at a stage point, decoupled from the Cursor instance. Prefer `Cursor.click()` when a cursor is on stage. | `{ color?, scale?, duration? }` → **UNPAUSED** timeline (self-playing) | covered by Cursor QC | `motion-primitives.js:689` |
 | `cursorGlideStraight(cursor, from, to, opts)` | **DEPRECATED.** Kept for back-compat with the cursor-glide-straight QC page. New code uses `Cursor`. | — | deprecated | `motion-primitives.js:665` |
 
 ### Text / typing
 
 | Primitive | When | Signature | QC status | Source |
 |---|---|---|---|---|
-| `caretType(el, text, opts)` | Letter-by-letter typing into a text element with a blinking caret. Avoids the wpforms-ai-board caret-drift bug from opacity-stagger char spans. | `{ charDuration?, caretHtml? }` → tween | **ready** | `motion-primitives.js:735` |
-| `typeIntoIframeInput(input, text, opts)` | Type into a real iframe `<input>` / `<textarea>` and fire JS listeners. Use when WPForms option inputs or live mirrors need per-character `input` events. | `{ cps?, clear?, change? }` → tween | **draft** — needs QC | `motion-primitives.js:844` |
+| `caretType(el, text, opts)` | Letter-by-letter typing into a text element with a blinking caret. Avoids the wpforms-ai-board caret-drift bug from opacity-stagger char spans. | `{ charDuration?, caretHtml? }` → **UNPAUSED** tween (self-playing) | **ready** | `motion-primitives.js:735` |
+| `typeIntoIframeInput(input, text, opts)` | Type into a real iframe `<input>` / `<textarea>` and fire JS listeners. Use when WPForms option inputs or live mirrors need per-character `input` events. | `{ cps?, clear?, change? }` → **UNPAUSED** tween (self-playing) | **draft** — needs QC | `motion-primitives.js:844` |
 | `statusPillMorph(pill, texts[], opts)` | Single persistent pill morphs through a sequence of labels char-by-char ("Thinking… / Filling field… / Checking formatting…"). | `{ holdEach?, morphDuration? }` → paused timeline | **ready** | `motion-primitives.js:770` |
 | `markerSweep(textEl, opts)` | Highlight sweep behind text with color flip inside. WPForms orange default. | `{ color?, duration? }` → paused timeline | **ready** | `motion-primitives.js:822` |
 
@@ -205,7 +215,7 @@ QC: open `videos/_qc-primitives/index.html` in the preview server. Each card lin
 
 | Primitive | When | Signature | QC status | Source |
 |---|---|---|---|---|
-| `popOut(iframe, selector, opts)` | Pull a real iframe-doc element forward as a 2.5D card lifted into the parent doc. Clones + inlines computed styles + materializes pseudo-elements. Multi-layer shadow stack at peak. No dimmer. | `{ tilt?, tiltX?, lift?, perspective?, riseMs?, holdMs?, fallMs?, hideOriginal?, shadow?, border?, stripTextShadow?, caption? }` → Promise | **draft** — QC pending | `motion-primitives.js:911` |
+| `popOut(iframe, selector, opts)` | Pull a real iframe-doc element forward as a 2.5D card lifted into the parent doc. Clones + inlines computed styles + materializes pseudo-elements. Multi-layer shadow stack at peak. No dimmer. **The "money shot" for real-UI ads** — used on the real goal-met arrow in form-analytics-ad-v2 v3+v4 (worked under camera zoom 2.0, through withTimeout). | `{ tilt?, tiltX?, lift?, perspective?, riseMs?, holdMs?, fallMs?, hideOriginal?, shadow?, border?, stripTextShadow?, caption? }` → Promise | **proven in production** (fa-retest 2026-07-13) | `motion-primitives.js:911` |
 
 ### Field / form
 

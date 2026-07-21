@@ -31,9 +31,13 @@ The validator does not enforce these rules. You enforce them. If the storyboard 
 
 Before declaring a postIntro done, **run `wpforms-motion-audit` skill** on the postIntro chapter file. Tier A or higher is the merge bar; B or below needs a fix or explicit user override. The audit checks: multi-phase camera decomposition, atmosphere-swap discipline, identity-continuity host, zoom levels, easings, automatic-ceiling triggers (heavy blur exits, dead-air holds, `repeat: -1`).
 
-Also load `design-motion-principles` (kylezantos, auto-triggers) for the per-designer critique by Emil Kowalski / Jakub Krehel / Jhey Tompkins.
+Optionally invoke `design-motion-principles` (kylezantos) for the per-designer critique by Emil Kowalski / Jakub Krehel / Jhey Tompkins — manual invoke; nothing fires it automatically.
+
+**Async-approver clause:** if the user has explicitly ordered the finished deliverable and is unavailable to approve mid-run, approval-shaped steps (concept sign-off, B-tier override) convert to: write the artifact to disk, mark it `AUTO-APPROVED-BY-DIRECTIVE (review on return)`, proceed, and surface it FIRST in the handoff. Do not improvise a different self-override.
 
 ## Design Rules
+
+**First write = copy the skeleton.** `docs/examples/single-html-postintro-skeleton.html` pre-declares the named CustomEases (logo-arrival / pi-flight / pi-pulse from approved references), pre-wires statusPillMorph/caretType/Cursor, and carries a stable-id morph-chain host with phase comments. Past first-writes that started blank shipped stock-only easings + hand-rolled label swaps and paid an audit iteration (FA #18, SendGrid [P6]).
 
 - Start from the current topic's product problem.
 - Show a clear before → after, limitation → solution, or messy → polished transformation.

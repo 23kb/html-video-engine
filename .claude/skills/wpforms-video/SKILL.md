@@ -28,11 +28,19 @@ Mac frame wraps the **Tutorial section only**. Intro / postIntro / outro live di
 
 PostIntro is NOT optional. It is the difference between "PowerPoint" and "tutorial." See `wpforms-postintro` skill for the multi-animation rule + canonical references. The first cut of every tutorial that skipped a real postIntro became generic — see `docs/winning-pattern-analysis-2026-05-10.md` §C.
 
+### Intro / outro / title-card production rules (brand + reveals)
+
+These three were the editorial defects in the EEI one-shot (ISSUES.md #2/#3/#4). Bake them in:
+
+1. **Intro and outro carry the real WPForms wordmark lockup** — import `assets/wordmark.svg` (repo-root, single-path 520×160; recolor via `color` / `fill`). Don't ship a text-only eyebrow, and don't hand-rebuild the wordmark from `<span>`s. A Sullie mascot moment (`assets/sullie.png`, or `reference/wpforms-brand/assets/sullie-master.svg`) is a valid alternative lockup when the brief calls for the character. (WPForms is always capitalized in any recreated wordmark text.)
+2. **Title cards use a real text reveal, not a hand opacity fade.** Don't `gsap.to(card, { opacity })`. The repo's reveal libraries apply to tutorial intro/outro/chapter title cards, not just editorial: `videos/_shared/text-kit.js` (24 Pixel-Point presets — `mountTextReveal(text, { preset }).tweenInto(tl)`) or `videos/_shared/effects/` reveals. For a two-tone accent title (one word in orange), use `effects/mountTextStackFromRight` with its per-word `highlight` map (e.g. `{ with: 'orange', you: 'orange' }`).
+3. **Don't default to the cream atmosphere.** `--wpf-bg-cream` reads as generic "AI default" when every video reaches for it. Pick a backdrop that fits the topic — the editorial reference (`reference/html-templates/editorial-reference-36s.html`) ships `.atmo-white / -purple / -cyan / -peach / -saturated`. Cream is one option, not the default.
+
 ## Approach
 
 For a new video session, work in this order. Don't skip steps.
 
-1. **Intake** — capture topic, slug, source links, audience, must-show states, constraints. From the user's prompt and reasonable defaults. Don't run a 5-question ritual; ask only blockers.
+1. **Intake** — capture topic, slug, source links, audience, must-show states, constraints. From the user's prompt and reasonable defaults. Don't run a 5-question ritual; ask only blockers. **Check `docs/product-truth/<feature>.md` first** (FIX-5 fa-retest): if the source doc is reachable, WRITE/refresh that note during intake (metric/feature definitions with a source line); if unreachable, derive definitions from snapshots and mark them `UNVERIFIED` in the note — narration definitions must never be silent guesses.
 2. **Snapshot inventory** — `node tools/list-snapshots.js --search <topic>`. Identify which snapshots exist vs need capture vs need DOM-derivation.
 3. **Storyboard proposal** — angle, postIntro concept, chapter list, narration drafts, snapshot plan with statuses.
 4. **🛑 STORYBOARD GATE** — see HARD-GATE below.
@@ -64,11 +72,14 @@ The prompt is the brief. The skills are the gates. Both apply.
 - Chapter list with one-line angle each
 - Narration drafts per chapter
 - Snapshot plan with statuses: `exists`, `DOM-derived`, `NEEDS CAPTURE`, `ASK USER`
+- **Snapshot-state inventory** (FIX-7 fa-retest): list the hidden panels / modals / popovers each chosen snapshot carries (outline.md "Panels & modals" section + `(hidden)` annotations) and mark each in-scope or out-of-scope. A captured state the storyboard never mentions is how the clean-room rebuild silently dropped the Ask-WPForms-AI chapter its predecessor had.
 - Capture / API / postIntro gaps explicitly listed
 
 **If you have not received an explicit "approved" / "yes" / "go" from the user, STOP.** Implicit approval is not approval. "Sounds good" is not approval. The user's storyboard reply must directly address each section above before you proceed. If the user changes anything, re-confirm the change is the final word before writing code.
 
 This gate exists because the first cut of every video that skipped it became a "PowerPoint" — generic chapter shapes, fake UI, weak postIntro. See `docs/postintro-patterns.md` and `docs/winning-pattern-analysis-2026-05-10.md` §C.
+
+**Async-approver clause:** if the user has explicitly ordered the finished deliverable and is unavailable to approve mid-run, approval-shaped steps (storyboard approval, B-tier override) convert to: write the artifact to disk, mark it `AUTO-APPROVED-BY-DIRECTIVE (review on return)`, proceed, and surface it FIRST in the handoff. Do not improvise a different self-override.
 
 ## Tutorial narrative principles
 
@@ -81,6 +92,8 @@ A tutorial should begin where the user actually lands when they want to do this 
 Why this matters: viewers who land mid-flow have to mentally reconstruct "how did I get here?" before they can follow. Starting at the entry point removes that cognitive load and signals "this is what your screen looks like right now."
 
 Source: Klaviyo tutorial v4 build (2026-05-12) — v3 jumped into Settings; v4 added the All Forms beat as Step 1 and the tutorial read significantly clearer.
+
+**🛑 Nav-fidelity hard check (narration ≠ visuals).** When narration names a navigation path — "open WPForms → Tools → Import Entries", "go to Settings → Integrations" — you MUST **show** that path: glide+click the real nav control, then `ifm.swap('<destination-snapshot>')` (or drive the snapshot's interactivity). NEVER load the destination snapshot directly while the narration describes navigating to it — that makes the spoken words and the screen disagree. This is the exact EEI #10 defect: `setup` loaded `admin-tools-import-entries` directly and ch1 just clicked the form already on screen, so the narrated "open WPForms → Tools → Import Entries" was never shown. The fix loaded `admin-forms-overview` (the natural entry), clicked **Tools** in `#adminmenu`, then `ifm.swap('admin-tools-import-entries')`. The snapshot's `outline.md` lists which nav links exist and which are HAND-BROWSE-ONLY (the `ifm.swap()` target to use). Driving real navigation is the load-bearing reason snapshots are interactive — honor it. (No static hook enforces this — it's a whole-file narration↔nav relationship the per-edit `video-guard` can't see; this skill rule is the gate.)
 
 ### Snapshot capture viewport standard
 
@@ -150,6 +163,8 @@ Real WPForms UI is product truth. Do not fabricate.
 - DOM-derived states are allowed only when grounded by `node tools/field-state.js`, real captured DOM snippets, or cloned captured DOM.
 - Document staged states in the storyboard and final summary: base snapshot + what was staged + product-truth source.
 - Recapture only when the base structure is missing, broken, or not truthfully derivable.
+- **Provider/addon videos — promote-to-top standing rule:** everywhere a provider list appears on camera (Marketing panel, Settings → Integrations, addons grid), stage the featured provider at the TOP of the list before capture/beat — viewers should never watch a scroll-hunt for the subject of the video.
+- **Confirm a provider's INTERNAL slug from the site, not the DOM:** `node tools/site-eval.js "print_r(get_option('wpforms_providers'));"` — one command; DOM-grepping a capture for the slug is slower and can lie (SendGrid retro dev-fix #5).
 
 **WRONG — invented dropdown markup:**
 ```js
@@ -170,9 +185,35 @@ await selectDropdown(sel.dropdownField, { pick: { type: 'option', label: 'Urgent
 
 **NEW tutorial videos default to single-HTML authoring** — one `videos/<slug>/index.html` file with a master `gsap.timeline({ paused: true })` composing from `IframeManager` + `Cursor` + `WPFormsInteractions` + `videos/_shared/narration.js`. No engine, no manifest, no per-chapter `.js` modules. Reference pilots: `videos/make-field-required-single-html/`, `videos/klaviyo-quick-connect/`, `videos/wpforms-notifications-promise/`. See `docs/video-architecture-invariants-2026-05-12.md` for the 11 hard rules (INV-1 through INV-11) that govern single-HTML authoring.
 
+**First write = copy the skeleton.** `cp docs/examples/single-html-tutorial-skeleton.html videos/<slug>/index.html` — it has the compliance baked in (hardened beat/say wrappers, instrumentation contract, ?scene= review wiring, native-res stage, onComplete end bookkeeping). Rules-in-prose lose to whatever the last-read reference did; the skeleton doesn't.
+
+**Hardened awaits (INV-17):** the master flow must NEVER await a raw GSAP tween — an RAF-throttled tab (hidden tab, in-app Browser pane) freezes the ticker and deadlocks the video. Use the shared `say` / `beat` / `hideCaption` from `videos/_shared/narration.js` (setTimeout-resolved, `__sched` built in, motionFn fire-and-forget); keep tween-backed motion inside a beat's motionFn; wrap any top-level awaited primitive in `withTimeout(promise, seconds)` (same module). Reference impl: `videos/form-analytics-complete-guide/index.html`.
+
 **LEGACY 12-video set stays on engine path frozen.** The legacy/effect-mode authoring (`manifest.json` + `chapters/*.js` modules + `surface: 'iframe'`) is preserved for those existing videos. Do NOT migrate them. Engine + runtime stays load-bearing for legacy support.
 
 When working on a legacy video chapter, follow the legacy chapter shape below. When building a new tutorial video, follow the single-HTML pattern + the Intro → PostIntro → Tutorial → Outro shape (INV-11) and write inline DOM puppetry for one-off interactions (INV-7).
+
+### Per-scene review URLs (`?scene=`) — single-HTML
+
+A single-HTML video plays one async `play()` timeline, so a reviewer otherwise has to watch the whole thing to check one scene. Wire the `?scene=<id>` affordance so Umair can view a single scene in isolation. **Review-only — the MP4 render runs the full timeline** (`tools/render-html.js` never sets `?scene=`), so it never changes the deliverable.
+
+Use the shared helper `videos/_shared/scene-review.js` — don't re-roll the param parsing:
+
+```js
+import { reviewScene } from '/videos/_shared/scene-review.js';
+async function play() {
+  const review = reviewScene();
+  // isolate an early scene + HOLD on its payoff (skip its exit fade):
+  if (review.is('postintro')) { await runPostIntro({ isolate: true }); return; }
+  // skip the preroll (intro + postintro) when a chapter is requested:
+  if (!review.matches(/^ch\d+$/)) { /* intro */ /* postintro */ }
+  // run setup + chapters, stopping after the requested one:
+  showChapter(1, '…'); await beat('ch1', /* … */); if (review.stopAfter('ch1')) return;
+  showChapter(2, '…'); await beat('ch2', /* … */); if (review.stopAfter('ch2')) return;
+}
+```
+
+Review URLs: `http://localhost:<port>/videos/<slug>/index.html?scene=postintro` (or `?scene=ch1`, `?scene=ch2`, …). Hand these to Umair per scene during QC (see the `video-qc` skill). Reference impl: `videos/switch-to-wpforms-entry-importer/index.html` (ISSUES.md #9, #10).
 
 Descriptor chapters (`runtime/chapter-api.js defineChapter`) remain supported in legacy videos for closed-vocabulary beats only. **Never use descriptor mode to downgrade a custom postIntro, skip an effect, or replace a specific animation with a generic focus/title beat.** If descriptor is sufficient, document why. If not, use legacy/effect.
 

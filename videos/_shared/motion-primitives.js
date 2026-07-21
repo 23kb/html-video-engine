@@ -768,7 +768,7 @@ export function cursorGlideStraight(cursor, from, to, opts = {}) {
  * @param {string} [opts.color='rgba(226,119,48,0.92)'] — WPForms orange default
  * @param {number} [opts.scale=2.4]
  * @param {number} [opts.duration=0.55]
- * @returns {gsap.core.Timeline}
+ * @returns {gsap.core.Timeline} — UNPAUSED (plays immediately); tl.add() to re-schedule under a master
  */
 export function clickRipple(stage, x, y, opts = {}) {
   const {
@@ -820,7 +820,7 @@ export function clickRipple(stage, x, y, opts = {}) {
  * @param {Object} [opts]
  * @param {number} [opts.charDuration=0.045] — seconds per char; 0.03–0.05 = realistic
  * @param {string} [opts.caretHtml='<span class="ml-caret">|</span>']
- * @returns {gsap.core.Tween}
+ * @returns {gsap.core.Tween} — UNPAUSED (plays immediately, deliberate per regression-guard); tl.add() to re-schedule
  */
 export function caretType(el, text, opts = {}) {
   const { charDuration = 0.045, caretHtml = '<span class="ml-caret">|</span>' } = opts;
@@ -856,7 +856,7 @@ export function caretType(el, text, opts = {}) {
  * @param {number} [opts.cps=22] — characters per second
  * @param {boolean} [opts.clear=true] — clear existing value before typing
  * @param {boolean} [opts.change=true] — dispatch `change` at the end
- * @returns {gsap.core.Tween}
+ * @returns {gsap.core.Tween} — UNPAUSED (plays immediately); tl.add() to re-schedule under a master
  */
 export function typeIntoIframeInput(input, text, opts = {}) {
   const { cps = 22, clear = true, change = true } = opts;
@@ -902,7 +902,7 @@ export function typeIntoIframeInput(input, text, opts = {}) {
  * @param {Object} [opts]
  * @param {number} [opts.holdEach=1.5]
  * @param {number} [opts.morphDuration=0.5]
- * @returns {gsap.core.Timeline}
+ * @returns {gsap.core.Timeline} — PAUSED: call .play() or add into a running master timeline, or it renders nothing
  */
 export function statusPillMorph(pill, texts, opts = {}) {
   const { holdEach = 1.5, morphDuration = 0.5 } = opts;
@@ -954,7 +954,7 @@ export function statusPillMorph(pill, texts, opts = {}) {
  * @param {Object} [opts]
  * @param {string} [opts.color='#E27730'] — WPForms orange default
  * @param {number} [opts.duration=0.3]
- * @returns {gsap.core.Timeline}
+ * @returns {gsap.core.Timeline} — PAUSED: call .play() or add into a running master timeline, or it renders nothing
  */
 export function markerSweep(textEl, opts = {}) {
   const { color = '#E27730', duration = 0.3 } = opts;

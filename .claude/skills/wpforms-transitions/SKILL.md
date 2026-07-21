@@ -102,6 +102,8 @@ The actual snapshot swap is still `swapStyle: 'flipBridge'` — those are differ
 
 For intra-snapshot multi-phase flights (single-snapshot zoom-in, focus-station-overview tutorial arc, etc.), use `cinematicFlight` or `focusStationOverview` from the same library. Load `wpforms-primitives` skill for the lookup table.
 
+**On a `mixed`/real-UI camera element, animate `transform` only — never `filter`, and no `will-change: filter`.** A CSS `filter` on the camera or any ancestor of the iframe rasterizes the iframe through the filter pipeline and blurs the real UI (grade with translucent veil overlays instead). See `wpforms-marketing` HARD RULE §2 and `[[reference_iframe_filter_blur]]`.
+
 ## Camera-Pose Vocabulary
 
 Named camera poses for legacy/effect beats. Author registers once, beats reference by name:
