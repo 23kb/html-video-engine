@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>SKELETON — single-HTML ad / pure editorial (copy me first)</title>
+<!--
+  FIRST COPY TARGET for a pure-editorial / ad-style video (FIX-2, fa-retest
+  2026-07-13). videos/klaviyo-bridge-2/index.html remains the VOCABULARY
+  reference (atmosphere values, ease voices, SFX cue placement) — but it
+  predates the playback/instrumentation contract (click-to-start, no
+  __T0/__sched/__done), so cloning its playback block ships a video that
+  smoke-singlehtml.js and the render tools cannot drive. This skeleton bakes
+  the contract in:
+    · AUTOPLAY — tl.play() on load, no user-gesture gate (render contract)
+    · __T0/__sched/__done/__dur instrumentation
+    · end bookkeeping rides tl onComplete — no hand-summed end comparison (FIX-3)
+    · ?scene= review wiring via videos/_shared/scene-review.js (seek + pause
+      at the next scene boundary)
+    · one master paused timeline at absolute T (bridge-2 idiom)
+    · SFX rig stub with cues guarded on `playing`; BGM DISABLED by convention
+      (clean SFX-only track to edit music against — Umair's recorded call)
+    · morph-chain host with a stable id (declare the chain in the storyboard
+      per docs/storyboard-format-morph-chain-2026-05-10.md)
+    · mark() helper for flow-boundary instrumentation — if the ad drives
+      async real-UI flows (IframeManager choreography), CHAIN them
+      (flowA().then(flowB)) instead of firing each from a fixed tl.call cue:
+      fixed cues desync the moment a flow runs long (caught twice by smoke's
+      glide-warns, fa-retest 2026-07-13). Push mark() at each boundary, run
+      headless once, and align the master timeline's fixed beats to the
+      MEASURED times (the marks also feed the SFX plan's cue times).
+  Validate: node tools/validate-singlehtml.js <slug>
+  Smoke:    node tools/smoke-singlehtml.js <slug> --seconds <TOTAL+10> --strict-glide
+-->
+<style>
+  :root {
+    --stage-w: 1920px; --stage-h: 1080px;
+    --wpf-orange: #E27730; --wpf-orange-bright: #FF9C4A;
+    --canvas-ink: #0a0e14; --canvas-ink-edge: #050810;
+    --cream: #f4ecd9; --cream-soft: #d9d2c0; --cream-mute: #8a8678;
+    --font-stack: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Inter", "Segoe UI", system-ui, sans-serif;
+    --display-font: "Fraunces", "Canela", Georgia, "Times New Roman", serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #000; font-family: var(--font-stack);
+    color: var(--cream); overflow: hidden; }
+  .stage-wrap { position: relative; width: 100vw; height: 100vh;
+    display: flex; align-items: center; justify-content: center; }
+  .stage { position: relative; width: var(--stage-w); height: var(--stage-h);
+    flex: 0 0 auto; background: transparent; overflow: hidden; }
+
+  /* Atmosphere beds — siblings, autoAlpha-swapped per scene (never stack 5).
+     Values here are a neutral dark set; lift richer beds from bridge-2. */
+  .atmo-base { position: absolute; inset: 0; z-index: 0; pointer-events: none;
+    background: radial-gradient(ellipse 1200px 800px at 50% 55%,
+      #0c1119 0%, var(--canvas-ink) 40%, var(--canvas-ink-edge) 100%); }
+  .atmo { position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    will-change: opacity, transform; opacity: 0; }
+  .atmo-warm { background: radial-gradient(ellipse 800px 560px at 50% 50%,
+    rgba(255, 175, 95, 0.20) 0%, rgba(226, 119, 48, 0.10) 35%, rgba(226, 119, 48, 0) 75%); }
+
+  /* Masked text-reveal idiom (bridge-2) */
+  .text-mask { display: inline-block; overflow: hidden; vertical-align: baseline;
+    padding: 0.10em 0.08em 0.16em; margin: -0.10em -0.08em -0.16em; }
+  .text-reveal-unit { display: inline-block; will-change: transform, opacity, filter; }
+
+  /* Morph-chain host — ONE element threads the story; id stays stable. */
+  #chainHost { position: absolute; left: 50%; top: 44%; transform: translate(-50%, -50%);
+    z-index: 30; font-family: var(--display-font); font-size: 150px; font-weight: 500;
+    color: var(--cream); white-space: nowrap; will-change: transform, opacity, filter; }
+
+  .ad-line { position: absolute; left: 50%; top: 58%; transform: translate(-50%, -50%);
+    z-index: 25; font-size: 31px; color: var(--cream-soft); white-space: nowrap; opacity: 0; }
+
+  #grain { position: absolute; inset: 0; pointer-events: none; z-index: 80;
+    opacity: 0.055; mix-blend-mode: overlay; }
+  #blackout { position: absolute; inset: 0; background: #000; z-index: 95;
+    opacity: 0; pointer-events: none; }
+</style>
+</head>
+<body>
+<div class="stage-wrap">
+  <div class="atmo-base"></div>
+  <div class="atmo atmo-warm" id="atmoWarm"></div>
+  <div class="stage" id="stage">
+    <div id="chainHost">Chain host</div>
+    <div class="ad-line" id="lineA">First masked line lands here.</div>
+    <canvas id="grain" width="480" height="270"></canvas>
+    <div id="blackout"></div>
+  </div>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script src="/vendor/gsap/3.15.0/CustomEase.min.js"></script>
+<script type="module">
+  import { reviewScene } from '/videos/_shared/scene-review.js';
+
+  // Deterministic utils (bridge-2 shell)
+  function pausableRaf(cb) {
+    let id = null, stopped = false;
+    const tick = (ts) => { if (stopped) return; cb(ts); id = requestAnimationFrame(tick); };
+    id = requestAnimationFrame(tick);
+    return () => { stopped = true; if (id != null) cancelAnimationFrame(id); };
+  }
+  function mulberry32(seed) {
+    let a = seed >>> 0;
+    return function () {
+      a = (a + 0x6D2B79F5) >>> 0;
+      let t = a;
+      t = Math.imul(t ^ (t >>> 15), t | 1);
+      t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  gsap.registerPlugin(CustomEase);
+  // Named eases — lift the full voice set from bridge-2 when customizing.
+  CustomEase.create('logo-arrival', 'M0,0 C0.16,0.20 0.20,0.98 1,1');
+  CustomEase.create('recoil', 'M0,0 C0.20,0.95 0.30,1.00 1,1');
+  CustomEase.create('resolve', 'M0,0 C0.42,0.00 0.58,1.00 1,1');
+
+  // Grain (seeded, ~8fps)
+  (function startGrain() {
+    const c = document.getElementById('grain');
+    const ctx = c.getContext('2d');
+    const img = ctx.createImageData(c.width, c.height);
+    const rng = mulberry32(0xC0FFEE);
+    let last = 0;
+    pausableRaf((ts) => {
+      if (ts - last < 125) return;
+      last = ts;
+      const d = img.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const v = (rng() * 255) | 0;
+        d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 255;
+      }
+      ctx.putImageData(img, 0, 0);
+    });
+  })();
+
+  function wrapRevealUnit(el) {
+    const text = el.textContent;
+    el.textContent = '';
+    const mask = document.createElement('span');
+    mask.className = 'text-mask';
+    const unit = document.createElement('span');
+    unit.className = 'text-reveal-unit';
+    unit.textContent = text;
+    mask.appendChild(unit);
+    el.appendChild(mask);
+    return unit;
+  }
+  const $ = id => document.getElementById(id);
+  const lineA = wrapRevealUnit($('lineA'));
+
+  // Flow-boundary marks → __sched. Used to align master-timeline beats to
+  // measured async-flow timings and to place SFX cues at real times.
+  const mark = (key) => { if (window.__T0 != null) (window.__sched || (window.__sched = [])).push({ key, t: (performance.now() - window.__T0) / 1000 }); };
+
+  // ── SFX rig stub — cues guard on `playing`; BGM stays DISABLED
+  //    (SFX-only track convention). Real files live at assets/sfx/. ──
+  function makeSfxFile(url, volume = 0.5) {
+    const proto = new Audio(url);
+    proto.preload = 'auto'; proto.volume = volume;
+    return function play() {
+      try {
+        const a = proto.cloneNode(); a.volume = volume;
+        const p = a.play(); if (p && typeof p.catch === 'function') p.catch(() => {});
+      } catch (e) { /* ignore */ }
+    };
+  }
+  const SFX = {
+    pop: makeSfxFile('../../assets/sfx/pop-ui.mp3', 0.22),
+    tick: makeSfxFile('../../assets/sfx/swipe.mp3', 0.5),
+    whoosh: makeSfxFile('../../assets/sfx/swoosh.mp3', 0.45),
+  };
+
+  // ── Master timeline — absolute T, paused at build ──
+  const TOTAL = 12.0; // documentation only — end bookkeeping rides onComplete (FIX-3)
+  const tl = gsap.timeline({ paused: true, defaults: { ease: 'power2.out' } });
+
+  gsap.set('#chainHost', { scale: 1.3, autoAlpha: 0, filter: 'blur(10px)' });
+  gsap.set(lineA, { x: -40, autoAlpha: 0, filter: 'blur(6px)' });
+  gsap.set('#lineA', { autoAlpha: 1 });
+
+  // SCENE hook (0–6) — chain host lands, line reveals
+  tl.to('#atmoWarm', { autoAlpha: 0.45, duration: 0.5, ease: 'power1.out' }, 0.05);
+  tl.to('#chainHost', { scale: 1, autoAlpha: 1, filter: 'blur(0px)', duration: 0.7, ease: 'recoil' }, 0.4);
+  tl.to(lineA, { x: 0, autoAlpha: 1, filter: 'blur(0px)', duration: 0.6, ease: 'power4.out' }, 1.25);
+  // bounded breathe — infinite repeats are banned (compute finite counts)
+  tl.to('#chainHost', { scale: 1.02, duration: 2.4, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 2.1);
+
+  // SCENE cta (6–12) — the HOST morphs role (same node), then real exit
+  tl.to('#chainHost', { y: 60, duration: 0.8, ease: 'resolve' }, 6.0);
+  tl.to('#stage > *:not(#blackout):not(#grain)', {
+    autoAlpha: 0, filter: 'blur(14px)', duration: 0.9, ease: 'power2.in',
+  }, 10.4);
+  tl.to('#blackout', { autoAlpha: 1, duration: 1.0, ease: 'power2.in' }, 10.8);
+  tl.to({}, { duration: 0.2 }, 11.8); // anchor the tail
+
+  // ── SFX cues — guarded on `playing` so scrubbing never retriggers ──
+  let playing = false;
+  const sfx = (t, fn) => tl.call(() => { if (playing) fn(); }, null, t);
+  sfx(0.42, () => SFX.pop());
+  sfx(1.28, () => SFX.tick());
+  sfx(10.45, () => SFX.whoosh());
+
+  // ── Playback — AUTOPLAY + instrumentation contract. Click/Space toggle
+  //    pause for hand review; the render never needs a gesture. ──
+  const review = reviewScene();
+  const SCENE_T = { hook: 0, cta: 6 };     // scene id → start T
+  const SCENE_END = { hook: 6 };           // scene id → boundary to pause at
+  for (const [id, end] of Object.entries(SCENE_END)) {
+    tl.call(() => { if (review.is(id)) { tl.pause(); playing = false; } }, null, end);
+  }
+
+  window.__T0 = performance.now();
+  (window.__sched || (window.__sched = [])).push({ key: 'ad', t: 0 });
+  if (review.scene && review.scene in SCENE_T) tl.seek(SCENE_T[review.scene]);
+  tl.play();
+  playing = true;
+
+  function togglePlayback() {
+    if (playing) { tl.pause(); playing = false; }
+    else { if (tl.progress() >= 1) tl.time(0); tl.play(); playing = true; }
+  }
+  document.addEventListener('click', togglePlayback);
+  document.addEventListener('keydown', (e) => {
+    if (e.code === 'Space') { e.preventDefault(); togglePlayback(); }
+  });
+
+  // End bookkeeping rides onComplete — never an onUpdate end-of-timeline comparison (FIX-3).
+  tl.eventCallback('onComplete', () => {
+    playing = false;
+    if (!window.__done) {
+      window.__done = true;
+      window.__dur = (performance.now() - window.__T0) / 1000;
+    }
+  });
+</script>
+</body>
+</html>
