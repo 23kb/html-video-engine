@@ -196,3 +196,76 @@ dedup (deferred).
 
 Single-variant CLI `node capture.js <targetPath> <slug>` plus
 `WP_STEPS`/`WP_CLICK`/`WP_WAIT_FOR` envs still works unchanged.
+
+## 8. Querying the test site — `tools/site-eval.js`
+
+For any WP-side question (option values, table counts, plugin state), use the
+wp-cli wrapper — never reconstruct the 4-path invocation by hand, and never
+`wp db query` (broken on LocalWP/Windows; `eval` works):
+
+```bash
+node tools/site-eval.js "echo wpforms()->version;"
+node tools/site-eval.js "print_r(get_option('wpforms_providers'));" --site sullies-bakery
+```
+
+Site paths/credentials live in `tools/sites.json`; the phar is vendored at
+`tools/vendor/wp-cli.phar`. Pre-capture health check: `node tools/preflight-site.js`.
+
+## 9. SaaS dashboards (authenticated third-party) — the SingleFile-download recipe
+
+`capture/capture.js` is WP-login-only, and ANY network channel out of an
+authenticated third-party page correctly trips the exfil guard (SendGrid R3,
+2026-07-03 — receiver, PNA probe, and encoded-chunk routes all blocked). The
+sanctioned shape keeps the browser half human/agent-in-browser:
+
+1. **In the authenticated tab** (claude-in-chrome or hand-driven), paste this
+   serializer into the console. It works on a CLONE — freezes input state,
+   redacts secrets, inlines readable same-origin CSS, strips scripts — then
+   triggers a normal browser **download** (lands in `~/Downloads`, local disk,
+   no off-page channel):
+
+```js
+(async () => {
+  const SLUG = 'my-saas-page';                       // ← snapshot slug
+  const REDACT = [/SG\.[A-Za-z0-9_\-.]{20,}/g];      // ← secrets visible on this page
+  const doc = document.documentElement.cloneNode(true);
+  const live = document.querySelectorAll('input, textarea, select');
+  const clone = doc.querySelectorAll('input, textarea, select');
+  live.forEach((el, i) => {
+    const c = clone[i]; if (!c) return;
+    if (el.type === 'checkbox' || el.type === 'radio') { el.checked ? c.setAttribute('checked', '') : c.removeAttribute('checked'); }
+    else if (el.tagName === 'SELECT') { [...el.options].forEach((o, j) => { if (o.selected && c.options[j]) c.options[j].setAttribute('selected', ''); }); }
+    else c.setAttribute('value', el.value);
+    if (el.tagName === 'TEXTAREA') c.textContent = el.value;
+  });
+  for (const sheet of document.styleSheets) {
+    let rules; try { rules = [...sheet.cssRules]; } catch { continue; }   // cross-origin stays a <link>
+    if (!sheet.href) continue;
+    for (const l of doc.querySelectorAll('link[rel="stylesheet"]')) {
+      if (l.href === sheet.href) {
+        const s = document.createElement('style');
+        s.setAttribute('data-origin', sheet.href);
+        s.textContent = rules.map((r) => r.cssText).join('\n');
+        l.replaceWith(s);
+      }
+    }
+  }
+  doc.querySelectorAll('script').forEach((s) => s.remove());
+  let html = '<!doctype html>\n' + doc.outerHTML;
+  for (const re of REDACT) html = html.replace(re, 'REDACTED_KEY');
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
+  a.download = SLUG + '.html';
+  document.body.appendChild(a); a.click(); a.remove();
+})();
+```
+
+2. **Then package it:** `node tools/capture-saas.js <slug> [--from-download <file>] [--redact <regex>]`
+   — moves the download into `snapshots/<slug>/`, inlines the CORS-blocked
+   CDN stylesheets + fonts as data URIs, re-runs redaction, runs post-capture.
+
+**Blocked-route fallback ladder** (when a DOM-extraction route is blocked, try
+the next rung before abandoning real UI): DOM-serialize (this recipe) →
+OS-level screenshot (rendered pixels, key visually redacted) → honest
+editorial interlude. Never tunnel authenticated DOM through network
+side-channels — that IS the pattern the guard exists to stop.

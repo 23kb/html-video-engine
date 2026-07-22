@@ -5,7 +5,7 @@ description: "Use when starting or working on any WPForms tutorial video — int
 
 # WPForms Tutorial Video
 
-You are the video-building agent for WPForms tutorial videos. The repo turns an approved storyboard into a playable HTML video with mesh background, Mac-framed iframe, BGM, narration, overlays, postIntro, chapters, and title cards. MP4 capture is external; the deliverable is a playable HTML review URL.
+You are the video-building agent for WPForms tutorial videos. The repo turns an approved storyboard into a playable HTML video with mesh background, Mac-framed iframe, BGM, narration, overlays, postIntro, chapters, and title cards. MP4 capture is in-repo (`tools/render.js` for engine videos, `tools/render-singlehtml.js` for single-HTML); the deliverable is a playable HTML review URL.
 
 ## Path check — read this first
 
@@ -215,6 +215,15 @@ async function play() {
 
 Review URLs: `http://localhost:<port>/videos/<slug>/index.html?scene=postintro` (or `?scene=ch1`, `?scene=ch2`, …). Hand these to Umair per scene during QC (see the `video-qc` skill). Reference impl: `videos/switch-to-wpforms-entry-importer/index.html` (ISSUES.md #9, #10).
 
+### Single-HTML sync contracts (entry-automation QC rounds, 2026-07-22/23)
+
+These four contracts came out of the entry-automation QC rounds — each one converts a class of "Umair's eye caught it" bugs into structure. The skeleton carries all of them; keep them when customizing.
+
+1. **Camera follows the cursor — framed actions only.** Every cursor action lands INSIDE the current camera frame: `awaitLayout(target)` (targets can lay out a frame or two late after swaps) → ONE scroll → `fly()` only when the target is outside the frame → glide+click with `scroll:false` (a second scroll costs ~0.7s/action and pushes beats past their DUR). `camReset()` BEFORE any action outside the current frame — the camera must never trail the cursor or reset mid-next-beat. An unresolved target is a BUG: warn with the `[glideClick]` prefix; `smoke-singlehtml` FAILS on those warns by default.
+2. **Field-attention contract.** When narration names a UI element ("smart tags", "Increment File Name"), the `hi()` highlight lands ON that phrase — time it inside the beat's motionFn to the clip's cadence, not at beat entry. The viewer's eye must be ON the thing being named while it's named.
+3. **SCENE_PREP is a REQUIRED sibling of START_SNAPSHOT.** A `?scene=chX` run must open on the SAME visible state the full run has accumulated by that point: one idempotent prep function per scene replaying prior chapters' property-level puppetry, applied right after `ifm.load`. Full runs carry state; snapshots don't.
+4. **DUR is measured, never estimated.** After every `tts/generate.js` run: `node tools/measure-narration.js <slug>` → paste the emitted block. Voice-coupled; re-measure on every re-render. The shared `beat()` records `window.__beatStats` (motion-vs-DUR per beat) and `smoke-singlehtml` warns on any beat whose motion outlives its clip by > 0.5s — fix the overrun, don't ignore the warn.
+
 Descriptor chapters (`runtime/chapter-api.js defineChapter`) remain supported in legacy videos for closed-vocabulary beats only. **Never use descriptor mode to downgrade a custom postIntro, skip an effect, or replace a specific animation with a generic focus/title beat.** If descriptor is sufficient, document why. If not, use legacy/effect.
 
 ## Legacy Chapter Shape
@@ -314,13 +323,22 @@ Use targeted tools before broad shell searches:
 
 Before declaring a video done and handing off the review URL:
 
+**Single-HTML videos (the default for new tutorials):**
+
+- [ ] `node tools/validate-singlehtml.js <slug>` exits 0
+- [ ] `node tools/smoke-singlehtml.js <slug> --seconds <__dur + slack>` exits 0 — strict-glide is the DEFAULT (unresolved cursor targets fail); check the beat-overrun warns too
+- [ ] All narration `.mp3` files exist; DUR block pasted from `node tools/measure-narration.js <slug>` (never hand-estimated)
+- [ ] PostIntro renders 8-15s with ≥5 phases (see `wpforms-postintro` skill)
+- [ ] Storyboard staged states are documented in the final summary
+- [ ] Provided playable HTML URL: `http://localhost:4321/videos/<slug>/index.html` (+ per-scene `?scene=` URLs)
+- [ ] (User runs visual QC; you don't)
+
+**Legacy engine videos:**
+
 - [ ] `node tools/validate-video.js <slug>` exits 0
 - [ ] `node tools/check-video-playback.js <slug> --seconds 30` exits 0 with `sceneBooted=true`, no boot/page/console errors
 - [ ] All narration `.mp3` files exist under `videos/<slug>/narration/` (run `node tts/generate.js --video <slug>` if missing)
-- [ ] PostIntro renders 8-15s with ≥5 phases (see `wpforms-postintro` skill)
-- [ ] Storyboard staged states are documented in the final summary
 - [ ] Provided playable HTML URL: `http://localhost:4321/scenes/player.html?video=<slug>`
-- [ ] (User runs visual QC; you don't)
 
 ## Push-Back Triggers
 

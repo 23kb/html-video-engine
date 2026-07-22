@@ -131,8 +131,8 @@ Non-negotiable invocations for tutorial / postIntro / cinematic / editorial work
 - `wpforms-motion-audit` — score animations and camera moves S–F tier with hard-rule calibration. Run before any postIntro/cinematic handoff.
 - `wpforms-video-polish` — polish an existing already-shipped video without breaking it. Backup-first → analyze → surgical edits in batches of 5–10 → static verification → motion-audit if cinematic touched. NOT for new authoring, NOT for debug. Includes 8 canonical polish patterns.
 
-Plus auto-triggering motion-design skill:
-- `design-motion-principles` (kylezantos) — Emil Kowalski / Jakub Krehel / Jhey Tompkins designer-grade audit. Complements `wpforms-motion-audit`.
+Plus the motion-design skill (manual invoke):
+- `design-motion-principles` (kylezantos) — Emil Kowalski / Jakub Krehel / Jhey Tompkins designer-grade audit. Complements `wpforms-motion-audit`. Invoke it explicitly when you want the designer-grade pass.
 
 ## Brand canonical source
 
@@ -215,6 +215,9 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 - `node tools/inspect-snapshot.js <snapshot> --emit-selectors [--filter <text>]` — selector emit
 - `node tools/verify-selectors.js <snapshot> ...` — selector validate
 - `node tts/generate.js --video <slug>` — render narration mp3s
+- `node tools/measure-narration.js <slug>` — ffprobe narration mp3s → ready-to-paste `const DUR = {...}` block (run after EVERY tts render; DUR is voice-coupled)
+- `node tools/lint-snapshot-assets.js <slug>` — headless 404 check on a snapshot's asset requests (post-capture step 8b)
+- `node tools/capture-external.js <url> <slug>` — freeze a non-WP page (OAuth/consent screens) into a self-registered display-only snapshot
 - `node tools/validate-video.js <slug>` — static validator
 - `node tools/check-video-playback.js <slug> [--seconds <n>]` — non-visual smoke
 - `node tools/render.js <slug> [--seek] [--fps 30]` — MP4 export
@@ -276,6 +279,6 @@ Don't look here for these — load the skill instead:
 | Motion S–F tier scoring / hard-rule calibration / pre-handoff gate | `wpforms-motion-audit` |
 | Motion-primitives + wpforms-interactions library lookup (per-primitive when-to-use, signatures, QC status) | `wpforms-primitives` |
 | Polish an existing video (timing / easing / typography / handoffs) without breaking it | `wpforms-video-polish` |
-| Designer-grade audit (Emil Kowalski / Jakub Krehel / Jhey Tompkins) | `design-motion-principles` (auto-triggers) |
+| Designer-grade audit (Emil Kowalski / Jakub Krehel / Jhey Tompkins) | `design-motion-principles` (manual invoke) |
 
 Skills are at `.claude/skills/<name>/SKILL.md`. Each is a single file with YAML frontmatter (`name`, `description`).
