@@ -22,7 +22,8 @@ python -m uv venv "tools/avatar/.venv" --python 3.10
 
 # 2. Torch w/ CUDA 12.1 (RTX 2060-compatible) + Wav2Lip deps
 python -m uv pip install --python "tools/avatar/.venv/Scripts/python.exe" torch==2.2.2 torchvision==0.17.2 --index-url https://download.pytorch.org/whl/cu121
-python -m uv pip install --python "tools/avatar/.venv/Scripts/python.exe" "numpy==1.23.5" "librosa==0.9.2" "numba==0.56.4" opencv-python tqdm scipy
+python -m uv pip install --python "tools/avatar/.venv/Scripts/python.exe" "numpy==1.23.5" "librosa==0.9.2" "numba==0.56.4" "setuptools==80.9.0" opencv-python tqdm scipy
+# setuptools MUST stay <81 — librosa 0.9.2 imports pkg_resources, removed in newer setuptools
 
 # 3. Wav2Lip code
 git clone --depth 1 https://github.com/Rudrabha/Wav2Lip "tools/avatar/Wav2Lip"
