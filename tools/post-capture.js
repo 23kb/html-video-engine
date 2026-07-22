@@ -32,9 +32,19 @@
 // After it finishes, re-validate videos that use the snapshot:
 //   node tools/validate-video.js --all
 //
+//   8b. lint-snapshot-assets.js       — load the snapshot headless, FAIL on
+//      any 4xx/5xx asset request (out-of-snapshot url() leakage; the
+//      entry-automation build hit 30 console 404s on first smoke)
+//   9. waitFor re-verify              — if meta.json recorded the capture
+//      plan's waitFor selector, load the trimmed snapshot headless and FAIL
+//      LOUDLY if the anchor no longer resolves (over-trim detection; the
+//      entry-automation build lost its Add New Connection button silently).
+//
 // Usage:
 //   node tools/post-capture.js <slug> [<slug2> ...] [--keep-fields 1,2,3]
 //   node tools/post-capture.js <slug> --shows "..." --topics a,b [--category admin/page]
+//   node tools/post-capture.js <slug> --no-trim   (skip trim-builder-markup —
+//      use when a trim is suspected of eating load-bearing addon markup)
 //   (--keep-fields applies to every listed slug; the describe flags require
 //    a single slug)
 
@@ -103,18 +113,51 @@ function registerInIndex(slug, { shows, topics, category }) {
   fs.writeFileSync(INDEX_PATH, JSON.stringify(idx, null, 1) + '\n', 'utf8');
 }
 
-function main() {
+// ── waitFor re-verify ─────────────────────────────────────────────────────
+// The capture plan's waitFor selector proved the page state at capture time;
+// if the trim pipeline ate it, the snapshot silently lost its load-bearing
+// anchor. Headless check on the final HTML (assets need not resolve).
+async function verifyWaitFor(slugsWithSelectors) {
+  const { chromium } = require('playwright');
+  const browser = await chromium.launch({ headless: true });
+  const failed = [];
+  try {
+    const page = await browser.newPage();
+    for (const { slug, waitFor } of slugsWithSelectors) {
+      const file = path.join(SNAPSHOTS_DIR, slug, 'index.html');
+      await page.goto('file://' + file.replace(/\\/g, '/'), { waitUntil: 'domcontentloaded', timeout: 30000 });
+      const found = await page.evaluate((sel) => {
+        try { return !!document.querySelector(sel); } catch (_) { return false; }
+      }, waitFor);
+      if (found) {
+        console.log(`   waitFor ✓ "${waitFor}" still resolves in ${slug}`);
+      } else {
+        console.error(`   waitFor ✗ "${waitFor}" NO LONGER RESOLVES in snapshots/${slug}/index.html`);
+        console.error('           the post-capture pipeline removed the capture plan\'s anchor element —');
+        console.error('           re-run with --no-trim and diff, or check the trimmer\'s removal log above');
+        failed.push(slug);
+      }
+    }
+  } finally {
+    await browser.close().catch(() => {});
+  }
+  return failed;
+}
+
+async function main() {
   const argv = process.argv.slice(2);
   const slugs = [];
   let keepFields = null;
   let shows = null;
   let topics = null;
   let category = null;
+  let noTrim = false;
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === '--keep-fields' && argv[i + 1]) keepFields = argv[++i];
     else if (argv[i] === '--shows' && argv[i + 1]) shows = argv[++i];
     else if (argv[i] === '--topics' && argv[i + 1]) topics = argv[++i].split(',').map((t) => t.trim()).filter(Boolean);
     else if (argv[i] === '--category' && argv[i + 1]) category = argv[++i];
+    else if (argv[i] === '--no-trim') noTrim = true;
     else slugs.push(argv[i]);
   }
   if ((shows || topics || category) && slugs.length > 1) {
@@ -135,7 +178,10 @@ function main() {
   for (const slug of slugs) {
     console.log(`\n═══ post-capture: ${slug} ═══`);
     if (keepFields) run('trim-snapshot-fields.js', [slug, keepFields]);
-    if (slug.startsWith('builder-')) run('trim-builder-markup.js', ['--slug', slug]);
+    if (slug.startsWith('builder-')) {
+      if (noTrim) console.log('\n── trim-builder-markup.js SKIPPED (--no-trim)');
+      else run('trim-builder-markup.js', ['--slug', slug]);
+    }
     run('strip-snapshot-comments.js', [slug]);
     run('neutralize-payment-iframes.js', ['--slug', slug]);
     run('dedup-snapshot-css.js', ['--slug', slug]);
@@ -145,11 +191,29 @@ function main() {
     run('link-interactivity-script.js', ['--slug', slug]);
     run('generate-snapshot-catalog.js', [slug]);
     run('generate-snapshot-outline.js', [slug]);
+    run('lint-snapshot-assets.js', [slug]);
     registerInIndex(slug, { shows, topics, category });
+  }
+
+  // waitFor re-verify across every slug that recorded one (meta.json).
+  const withSelectors = [];
+  for (const slug of slugs) {
+    try {
+      const meta = JSON.parse(fs.readFileSync(path.join(SNAPSHOTS_DIR, slug, 'meta.json'), 'utf8'));
+      if (meta.waitFor) withSelectors.push({ slug, waitFor: meta.waitFor });
+    } catch (_) { /* no meta.json — nothing to verify */ }
+  }
+  if (withSelectors.length) {
+    console.log('\n── waitFor re-verify (post-trim anchor check)');
+    const failed = await verifyWaitFor(withSelectors);
+    if (failed.length) {
+      console.error(`\n✗ post-capture FAILED — waitFor anchor lost in: ${failed.join(', ')}`);
+      process.exit(1);
+    }
   }
 
   console.log('\nDone. If any existing video uses these snapshots, run:');
   console.log('  node tools/validate-video.js --all');
 }
 
-main();
+main().catch((e) => { console.error(e); process.exit(1); });

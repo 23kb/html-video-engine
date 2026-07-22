@@ -25,6 +25,36 @@ const path = require('path');
 
 const SNAPSHOTS_DIR = path.join(__dirname, '..', 'snapshots');
 
+// --- over-trim guard ---
+//
+// Server-AJAX-rendered addon sections inside the ACTIVE settings section are
+// load-bearing (entry-automation build 2026-07-22: the Add New Connection
+// button and the gdrive-signin task block were silently trimmed, masking a
+// real product-truth question for an hour). Chrome removals (#wpfooter,
+// builder-help, mceu orphans, off-canvas option panels) must never contain
+// this markup — if one does, the depth-tracking overshot into a sibling
+// section, so the removal is SKIPPED and reported instead of committed.
+// Deliberate whole-panel drops on fields-only snapshots bypass the guard
+// (guard: false) — an inactive settings panel is dead weight even when it
+// contains addon markup.
+const LOAD_BEARING_MARKERS = [
+  'wpforms-entry-automation',
+  'wpforms-builder-entity-connection',
+  'wpforms-builder-inner-provider',
+  'wpforms-builder-provider-connections',
+];
+
+function findLoadBearingMarker(chunk) {
+  return LOAD_BEARING_MARKERS.find((m) => chunk.includes(m)) || null;
+}
+
+/** First ~100 chars of the opening tag, for removal logging. */
+function openTagSignature(s, start) {
+  const end = s.indexOf('>', start);
+  const tag = end < 0 ? s.slice(start, start + 100) : s.slice(start, end + 1);
+  return tag.length > 100 ? tag.slice(0, 97) + '…>' : tag;
+}
+
 // --- low-level DOM-ish helpers ---
 
 /**
@@ -59,18 +89,29 @@ function findMatchingClose(s, openTagStart, tagName = 'div') {
   return -1;
 }
 
-/** Remove the element matching `matchRe` (a regex that matches the OPENING tag). */
-function removeElementByOpenTag(s, matchRe) {
+/**
+ * Remove the element matching `matchRe` (a regex that matches the OPENING tag).
+ * `guard: true` skips (and reports) the removal when the chunk contains
+ * load-bearing addon markup. `fromIndex` lets remove-loop callers search past
+ * a guard-skipped match.
+ */
+function removeElementByOpenTag(s, matchRe, { guard = false, fromIndex = 0 } = {}) {
+  matchRe.lastIndex = fromIndex;
   const m = matchRe.exec(s);
   if (!m) return { html: s, removed: 0 };
   const start = m.index;
   const end = findMatchingClose(s, start, m[0].match(/<(\w+)/)[1]);
   if (end < 0) return { html: s, removed: 0 };
-  return { html: s.slice(0, start) + s.slice(end), removed: end - start };
+  const signature = openTagSignature(s, start);
+  if (guard) {
+    const marker = findLoadBearingMarker(s.slice(start, end));
+    if (marker) return { html: s, removed: 0, skippedMarker: marker, matchIndex: start, signature };
+  }
+  return { html: s.slice(0, start) + s.slice(end), removed: end - start, matchIndex: start, signature };
 }
 
 /** Remove the CHILDREN of the element but keep its opening + closing tag. */
-function emptyElementByOpenTag(s, matchRe) {
+function emptyElementByOpenTag(s, matchRe, { guard = false } = {}) {
   const m = matchRe.exec(s);
   if (!m) return { html: s, removed: 0 };
   const start = m.index;
@@ -81,8 +122,13 @@ function emptyElementByOpenTag(s, matchRe) {
   const closeTag = `</${tagName}>`;
   const innerEnd = fullEnd - closeTag.length;
   if (innerEnd <= openEnd) return { html: s, removed: 0 };
+  const signature = openTagSignature(s, start);
+  if (guard) {
+    const marker = findLoadBearingMarker(s.slice(openEnd, innerEnd));
+    if (marker) return { html: s, removed: 0, skippedMarker: marker, signature };
+  }
   const removed = innerEnd - openEnd;
-  return { html: s.slice(0, openEnd) + s.slice(innerEnd), removed };
+  return { html: s.slice(0, openEnd) + s.slice(innerEnd), removed, signature };
 }
 
 // --- active-field detection ---
@@ -128,29 +174,32 @@ function stripInactiveFieldOptionPanels(html, keepIds) {
   const allIds = listFieldOptionPanels(html);
   let out = html;
   let removed = 0;
-  let stripped = 0;
+  const strippedIds = [];
+  const guardSkipped = [];
   let kept = 0;
   for (const id of allIds) {
     if (keepIds.has(id)) { kept++; continue; }
     const openRe = new RegExp(`<div[^>]*\\bid="wpforms-field-option-${id}"`, 'g');
-    const r = removeElementByOpenTag(out, openRe);
+    const r = removeElementByOpenTag(out, openRe, { guard: true });
+    if (r.skippedMarker) { guardSkipped.push({ id, marker: r.skippedMarker }); continue; }
     if (r.removed > 0) {
       out = r.html;
       removed += r.removed;
-      stripped++;
+      strippedIds.push(id);
     }
   }
-  return { html: out, removed, stripped, kept };
+  return { html: out, removed, stripped: strippedIds.length, strippedIds, guardSkipped, kept };
 }
 
 // --- per-snapshot strip plan ---
 
 function planForSlug(slug) {
   const plan = [];
-  // universal: builder-help, wpfooter
+  // universal: builder-help, wpfooter — chrome, must never contain addon
+  // sections; guarded against depth-tracking overshoot.
   if (slug.startsWith('builder-')) {
-    plan.push({ label: '#wpforms-builder-help', op: 'remove', match: /<div[^>]*\bid="wpforms-builder-help"/g });
-    plan.push({ label: '#wpfooter', op: 'remove', match: /<div[^>]*\bid="wpfooter"/g });
+    plan.push({ label: '#wpforms-builder-help', op: 'remove', guard: true, match: /<div[^>]*\bid="wpforms-builder-help"/g });
+    plan.push({ label: '#wpfooter', op: 'remove', guard: true, match: /<div[^>]*\bid="wpfooter"/g });
   }
   // builder-settings-{anti_spam, confirmation, general} carry #wpforms-panel-setup accidentally
   if (
@@ -158,7 +207,7 @@ function planForSlug(slug) {
     slug === 'builder-settings-confirmation' ||
     slug === 'builder-settings-general'
   ) {
-    plan.push({ label: '#wpforms-panel-setup children', op: 'empty', match: /<div[^>]*\bid="wpforms-panel-setup"/g });
+    plan.push({ label: '#wpforms-panel-setup children', op: 'empty', guard: true, match: /<div[^>]*\bid="wpforms-panel-setup"/g });
   }
   // Any builder-* snapshot: strip option panels for fields that are NOT on
   // the canvas. The keep set is built from canvas field IDs (data-field-type
@@ -178,14 +227,16 @@ function planForSlug(slug) {
   // editor (Notifications, Confirmations, User Reg emails, Quiz, Form Locker).
   const FIELDS_ONLY_PREFIXES = ['builder-smart-edit-', 'builder-field-options-', 'builder-fields-'];
   if (FIELDS_ONLY_PREFIXES.some((p) => slug.startsWith(p))) {
+    // Whole-panel drops are DELIBERATE (inactive panels are dead weight in a
+    // Fields-only view, addon markup included) — guard bypassed.
     for (const panelId of ['wpforms-panel-settings', 'wpforms-panel-providers', 'wpforms-panel-payments', 'wpforms-panel-revisions', 'wpforms-panel-themes', 'wpforms-panel-entries']) {
-      plan.push({ label: `#${panelId}`, op: 'remove', match: new RegExp(`<div[^>]*\\bid="${panelId}"`, 'g') });
+      plan.push({ label: `#${panelId}`, op: 'remove', guard: false, match: new RegExp(`<div[^>]*\\bid="${panelId}"`, 'g') });
     }
     // Orphan WP/TinyMCE chrome injected outside any of the wpforms panels —
     // page-tail carriers that the runtime never needs in a Fields-only view.
-    plan.push({ label: 'mceu_* orphan toolbars (loop)', op: 'remove-loop', match: /<div[^>]*\bid="mceu_\d+"/g });
+    plan.push({ label: 'mceu_* orphan toolbars (loop)', op: 'remove-loop', guard: true, match: /<div[^>]*\bid="mceu_\d+"/g });
     for (const id of ['wp-link-backdrop', 'wp-link-wrap', 'wp-auth-check-wrap', 'wpforms-admin-form-embed-wizard', 'wpforms-admin-form-embed-wizard-lite-cta']) {
-      plan.push({ label: `#${id}`, op: 'remove', match: new RegExp(`<div[^>]*\\bid="${id}"`, 'g') });
+      plan.push({ label: `#${id}`, op: 'remove', guard: true, match: new RegExp(`<div[^>]*\\bid="${id}"`, 'g') });
     }
   }
   return plan;
@@ -204,25 +255,45 @@ function trimSlug(slug, dryRun) {
 
   for (const step of plan) {
     if (step.op === 'remove') {
-      const r = removeElementByOpenTag(html, step.match);
+      const r = removeElementByOpenTag(html, step.match, { guard: step.guard });
+      if (r.skippedMarker) {
+        log.push({ label: step.label, guardSkip: `contains load-bearing "${r.skippedMarker}" — removal SKIPPED (over-trim guard)`, signature: r.signature });
+        continue;
+      }
       html = r.html;
-      log.push({ label: step.label, removedKB: (r.removed / 1024).toFixed(1) });
+      log.push({ label: step.label, removedKB: (r.removed / 1024).toFixed(1), signature: r.removed ? r.signature : undefined });
     } else if (step.op === 'remove-loop') {
       let total = 0;
       let count = 0;
+      let fromIndex = 0;
+      const skips = [];
       while (true) {
-        step.match.lastIndex = 0;
-        const r = removeElementByOpenTag(html, step.match);
+        const r = removeElementByOpenTag(html, step.match, { guard: step.guard, fromIndex });
+        if (r.skippedMarker) {
+          // Search past the guarded match so later blocks still get trimmed.
+          skips.push(r.skippedMarker);
+          fromIndex = r.matchIndex + 1;
+          continue;
+        }
         if (r.removed === 0) break;
         html = r.html;
         total += r.removed;
         count++;
       }
-      log.push({ label: step.label, removedKB: (total / 1024).toFixed(1), note: `${count} blocks` });
+      log.push({
+        label: step.label,
+        removedKB: (total / 1024).toFixed(1),
+        note: `${count} blocks`,
+        guardSkip: skips.length ? `${skips.length} block(s) SKIPPED (load-bearing: ${[...new Set(skips)].join(', ')})` : undefined,
+      });
     } else if (step.op === 'empty') {
-      const r = emptyElementByOpenTag(html, step.match);
+      const r = emptyElementByOpenTag(html, step.match, { guard: step.guard });
+      if (r.skippedMarker) {
+        log.push({ label: step.label, guardSkip: `contains load-bearing "${r.skippedMarker}" — removal SKIPPED (over-trim guard)`, signature: r.signature });
+        continue;
+      }
       html = r.html;
-      log.push({ label: step.label, removedKB: (r.removed / 1024).toFixed(1) });
+      log.push({ label: step.label, removedKB: (r.removed / 1024).toFixed(1), signature: r.removed ? r.signature : undefined });
     } else if (step.op === 'strip-inactive-field-panels') {
       const canvasIds = getCanvasFieldIds(html);
       const activeId = getActiveFieldId(html);
@@ -237,7 +308,10 @@ function trimSlug(slug, dryRun) {
       log.push({
         label: step.label,
         removedKB: (r.removed / 1024).toFixed(1),
-        note: `kept [${[...keepIds].sort((a,b)=>+a-+b).join(',')}], stripped ${r.stripped}`,
+        note: `kept [${[...keepIds].sort((a,b)=>+a-+b).join(',')}], stripped [${r.strippedIds.join(',') || '—'}]`,
+        guardSkip: r.guardSkipped.length
+          ? r.guardSkipped.map((g) => `panel ${g.id} SKIPPED (load-bearing: ${g.marker})`).join('; ')
+          : undefined,
       });
     }
   }
@@ -280,6 +354,8 @@ function main() {
       if (step.removedKB !== undefined) parts.push(`removed ${step.removedKB} KB`);
       if (step.note) parts.push(step.note);
       console.log(parts.join(': '));
+      if (step.signature) console.log(`      removed root: ${step.signature}`);
+      if (step.guardSkip) console.log(`      ⚠ ${step.guardSkip}`);
     }
   }
   console.log('');

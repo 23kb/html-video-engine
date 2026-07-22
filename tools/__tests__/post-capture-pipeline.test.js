@@ -83,6 +83,22 @@ try {
   ok(JSON.stringify(entries2[0]) === entrySnapshot, 'index entry unchanged on re-run');
   ok(/already-linked/.test(out2), 'interactivity re-link is a no-op');
   ok(/already registered/.test(out2), 'index re-registration is a no-op');
+
+  section('Gate 4 — waitFor re-verify passes when the anchor survives');
+  const metaPath = path.join(TMP_DIR, 'meta.json');
+  const metaOrig = JSON.parse(fs.readFileSync(metaPath, 'utf8'));
+  fs.writeFileSync(metaPath, JSON.stringify({ ...metaOrig, waitFor: 'body' }, null, 2));
+  const out3 = runPostCapture();
+  ok(/waitFor ✓ "body" still resolves/.test(out3), 'surviving anchor reported ✓');
+
+  section('Gate 5 — waitFor re-verify FAILS loudly when the anchor is gone');
+  fs.writeFileSync(metaPath, JSON.stringify({ ...metaOrig, waitFor: '#zz-missing-anchor-9999' }, null, 2));
+  let failedRun = null;
+  try { runPostCapture(); } catch (e) { failedRun = e; }
+  ok(failedRun !== null && failedRun.status === 1, `pipeline exits 1 (got ${failedRun && failedRun.status})`);
+  const failOut = failedRun ? String(failedRun.stdout || '') + String(failedRun.stderr || '') : '';
+  ok(/NO LONGER RESOLVES/.test(failOut), 'loud "NO LONGER RESOLVES" message printed');
+  ok(/waitFor anchor lost in: zz-pc-pipeline-test/.test(failOut), 'failing slug named in the summary');
 } finally {
   fs.rmSync(TMP_DIR, { recursive: true, force: true });
   fs.writeFileSync(INDEX, indexBackup);
