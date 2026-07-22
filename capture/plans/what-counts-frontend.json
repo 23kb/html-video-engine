@@ -1,0 +1,45 @@
+{
+  "targetPath": "/contact/",
+  "variants": [
+    {
+      "slug": "frontend-contact-clean",
+      "steps": [
+        {
+          "eval": "(() => { const b = document.getElementById('wpadminbar'); if (b) b.remove(); document.documentElement.style.setProperty('margin-top', '0', 'important'); document.body.classList.remove('admin-bar'); window.scrollTo(0, 0); })()",
+          "settle": 600
+        }
+      ],
+      "waitFor": "#wpforms-submit-406"
+    },
+    {
+      "slug": "frontend-contact-error",
+      "steps": [
+        {
+          "eval": "(() => { const b = document.getElementById('wpadminbar'); if (b) b.remove(); document.documentElement.style.setProperty('margin-top', '0', 'important'); document.body.classList.remove('admin-bar'); window.scrollTo(0, 0); })()",
+          "settle": 400
+        },
+        {
+          "eval": "(() => { const set = (id, v) => { const e = document.getElementById(id); if (!e) throw new Error('missing ' + id); e.value = v; e.dispatchEvent(new Event('input', { bubbles: true })); e.dispatchEvent(new Event('change', { bubbles: true })); e.dispatchEvent(new Event('blur', { bubbles: true })); }; set('wpforms-406-field_1', 'Sullie'); set('wpforms-406-field_1-last', 'Baker'); set('wpforms-406-field_2', 'sullie@bakery'); set('wpforms-406-field_3', 'Do you deliver to the north side on weekends?'); })()",
+          "settle": 500
+        },
+        { "click": "#wpforms-submit-406", "settle": 2500 }
+      ],
+      "waitFor": "#wpforms-406-field_2-error"
+    },
+    {
+      "slug": "frontend-contact-confirmed",
+      "steps": [
+        {
+          "eval": "(() => { const b = document.getElementById('wpadminbar'); if (b) b.remove(); document.documentElement.style.setProperty('margin-top', '0', 'important'); document.body.classList.remove('admin-bar'); window.scrollTo(0, 0); })()",
+          "settle": 400
+        },
+        {
+          "eval": "(() => { const set = (id, v) => { const e = document.getElementById(id); if (!e) throw new Error('missing ' + id); e.value = v; e.dispatchEvent(new Event('input', { bubbles: true })); e.dispatchEvent(new Event('change', { bubbles: true })); e.dispatchEvent(new Event('blur', { bubbles: true })); }; set('wpforms-406-field_1', 'Sullie'); set('wpforms-406-field_1-last', 'Baker'); set('wpforms-406-field_2', 'sullie@bakery.com'); set('wpforms-406-field_3', 'Do you deliver to the north side on weekends?'); })()",
+          "settle": 500
+        },
+        { "click": "#wpforms-submit-406", "settle": 3500 }
+      ],
+      "waitFor": "#wpforms-confirmation-406"
+    }
+  ]
+}
