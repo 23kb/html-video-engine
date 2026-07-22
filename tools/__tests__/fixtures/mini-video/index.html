@@ -10,6 +10,8 @@
   Narration mp3s are intentionally absent — playNarration resolves on the
   audio error event. ?hang=1 skips the __done assignment (negative fixture).
   ?glidewarn=1 fires a [glideClick] console.warn (FIX-9 glide-warn surfacing).
+  ?overrun=1 gives beat "one" a motionFn that outlives its clip by ~0.8s
+  (P0-4 __beatStats overrun surfacing).
 -->
 <style>
   body { margin: 0; background: #111; color: #eee; font: 16px system-ui; }
@@ -34,13 +36,17 @@ const say = (key, text) => narrSay(SLUG, key, text, { captionEl: caption });
 const beat = (key, text, motionFn) => narrBeat(SLUG, key, text, motionFn, { durTable: DUR, captionEl: caption });
 const HANG = new URLSearchParams(location.search).has('hang');
 const GLIDEWARN = new URLSearchParams(location.search).has('glidewarn');
+const OVERRUN = new URLSearchParams(location.search).has('overrun');
 
 async function play() {
   window.__T0 = performance.now();
   await wait(0.2);
   // FIX-9 fixture path: the defensive helpers warn-and-return-null on failure.
   if (GLIDEWARN) console.warn('[glideClick] target not found: .fixture-missing');
-  await beat('one', 'First cue.', () => gsap.to('#box', { x: 200, duration: 0.5 }));
+  // P0-4 fixture path: a motionFn that outlives its 1.2s clip → overrun ~0.8s.
+  await beat('one', 'First cue.', OVERRUN
+    ? () => wait(2.0)
+    : () => gsap.to('#box', { x: 200, duration: 0.5 }));
   await beat('two', 'Second cue.', () => gsap.to('#box', { y: 120, duration: 0.5 }));
   // A stalled primitive must fall through, never hang the master flow.
   await withTimeout(new Promise(() => {}), 0.4);

@@ -218,6 +218,12 @@ export function say(slug, key, text, { captionEl = defaultCaptionEl() } = {}) {
  * the clip length, then clears the caption. Motion runs fire-and-forget —
  * a slow or stalled primitive can never extend or deadlock the beat.
  *
+ * Instrumentation: when the motion settles, `window.__beatStats[key]` records
+ * `{ motionS, durS, overrun }` — a motionFn outliving its clip is the
+ * "trailing camReset fires during the NEXT beat's scroll" QC class, invisible
+ * without this. Consumed by tools/smoke-singlehtml.js (warns on overrun
+ * > 0.5s). Recording is fire-and-forget and never affects beat timing.
+ *
  * @param {string} slug
  * @param {string} key
  * @param {string} text
@@ -229,8 +235,17 @@ export function say(slug, key, text, { captionEl = defaultCaptionEl() } = {}) {
  */
 export async function beat(slug, key, text, motionFn, { durTable, captionEl = defaultCaptionEl() } = {}) {
   say(slug, key, text, { captionEl });
-  if (motionFn) Promise.resolve().then(motionFn).catch(() => {});
-  await wait((durTable && durTable[key]) || 4);
+  const durS = (durTable && durTable[key]) || 4;
+  if (motionFn) {
+    const t0 = performance.now();
+    Promise.resolve().then(motionFn).catch(() => {}).then(() => {
+      const motionS = (performance.now() - t0) / 1000;
+      (window.__beatStats || (window.__beatStats = {}))[key] = {
+        motionS: +motionS.toFixed(2), durS, overrun: +(motionS - durS).toFixed(2),
+      };
+    });
+  }
+  await wait(durS);
   await hideCaption(captionEl);
 }
 

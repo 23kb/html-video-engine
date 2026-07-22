@@ -57,18 +57,30 @@ section('Gate 3 — uninstrumented video exits 2, not 1');
   ok(/not instrumented/.test(r.out), 'says "not instrumented"');
 }
 
-section('Gate 4 — FIX-9: silent glide-warns are surfaced');
+section('Gate 4 — FIX-9/issue-14: glide-warns FAIL by default');
 {
   const r = smoke(['--path', `${FIXTURE}?glidewarn=1`, '--seconds', '10']);
-  ok(r.code === 0, `default run still passes (got ${r.code})`);
-  ok(/⚠ glide-warns: 1/.test(r.out), 'glide-warn count reported as a warning');
+  ok(r.code === 1, `default run FAILS on glide-warns (got ${r.code})`);
+  ok(/✗ glide-warns: 1/.test(r.out), 'glide-warn counted as a failure');
   ok(/\[glideClick\] target not found/.test(r.out), 'warn text echoed');
 
-  const strict = smoke(['--path', `${FIXTURE}?glidewarn=1`, '--seconds', '10', '--strict-glide']);
-  ok(strict.code === 1, `--strict-glide turns warns into failure (got ${strict.code})`);
+  const lax = smoke(['--path', `${FIXTURE}?glidewarn=1`, '--seconds', '10', '--no-strict-glide']);
+  ok(lax.code === 0, `--no-strict-glide downgrades to a warning (got ${lax.code})`);
+  ok(/⚠ glide-warns: 1/.test(lax.out), 'downgraded warning line printed');
 
-  const clean = smoke(['--path', FIXTURE, '--seconds', '10', '--strict-glide']);
-  ok(clean.code === 0 && /no glide-warns/.test(clean.out), 'clean video passes strict mode');
+  const clean = smoke(['--path', FIXTURE, '--seconds', '10']);
+  ok(clean.code === 0 && /no glide-warns/.test(clean.out), 'clean video passes the default (strict) mode');
+}
+
+section('Gate 5 — P0-4: beat motion overruns surfaced from __beatStats');
+{
+  const r = smoke(['--path', `${FIXTURE}?overrun=1`, '--seconds', '10']);
+  ok(r.code === 0, `overrun is a warning, not a failure (got ${r.code})`);
+  ok(/beat motion overruns/.test(r.out), 'overrun warning printed');
+  ok(/one: motion 2(\.\d+)?s vs clip 1\.2s/.test(r.out), 'offending beat named with motion vs clip seconds');
+
+  const clean = smoke(['--path', FIXTURE, '--seconds', '10']);
+  ok(/beat motion within DUR/.test(clean.out), 'clean run reports instrumented beats within DUR');
 }
 
 console.log(`\n${failures ? '✗ FAIL' : '✓ PASS'} — ${checks - failures}/${checks} checks passed`);

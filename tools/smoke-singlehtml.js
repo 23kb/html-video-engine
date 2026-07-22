@@ -19,7 +19,14 @@
 //   node tools/smoke-singlehtml.js <slug> [--seconds N]      (default budget 200s)
 //   node tools/smoke-singlehtml.js <slug> --scene ch1        (scene runs may skip __done;
 //                                                             observed for --seconds, errors only)
+//   node tools/smoke-singlehtml.js <slug> --no-strict-glide  (glide-warns downgrade to ⚠;
+//                                                             they FAIL by default — issue-14)
 //   node tools/smoke-singlehtml.js --path tools/__tests__/fixtures/mini-video/index.html?hang=1 --seconds 5
+//
+// Also reports beat motion overruns (P0-4): the shared beat() records
+// window.__beatStats { key: { motionS, durS, overrun } }; any beat whose
+// motion resolved > DUR + 0.5s is WARNED — that's the "trailing camReset
+// fires during the next beat" QC class.
 //
 // Exit: 0 ok · 1 failure · 2 not instrumented · 3 usage.
 
@@ -33,12 +40,16 @@ const PORT = Number(process.env.PORT) || 4321;
 
 function parseArgs(argv) {
   const a = argv.slice(2);
-  const out = { slug: null, scene: null, seconds: 200, path: null, strictGlide: false };
+  // strictGlide defaults ON (issue-14, QC r4): r3 shipped with a sign-in
+  // click silently no-opping while smoke passed green. --no-strict-glide
+  // opts out; --strict-glide kept as an accepted no-op.
+  const out = { slug: null, scene: null, seconds: 200, path: null, strictGlide: true };
   for (let i = 0; i < a.length; i++) {
     if (a[i] === '--scene') out.scene = a[++i];
     else if (a[i] === '--seconds') out.seconds = Number(a[++i]);
     else if (a[i] === '--path') out.path = a[++i];
     else if (a[i] === '--strict-glide') out.strictGlide = true;
+    else if (a[i] === '--no-strict-glide') out.strictGlide = false;
     else if (!a[i].startsWith('--') && !out.slug) out.slug = a[i];
   }
   return out;
@@ -127,6 +138,7 @@ async function main() {
     catch (_) { done = false; }
     const state = await page.evaluate(() => ({
       sched: window.__sched || [], dur: window.__dur, done: window.__done === true,
+      beatStats: window.__beatStats || null,
     }));
 
     if (args.scene && !state.done) {
@@ -152,14 +164,29 @@ async function main() {
       pass('no page/console errors');
     }
 
-    // FIX-9 — silent no-op cursor beats: warn by default, fail under --strict-glide.
+    // FIX-9 / issue-14 — silent no-op cursor beats: FAIL by default,
+    // downgrade to a warning under --no-strict-glide.
     if (glideWarns.length) {
       const line = `glide-warns: ${glideWarns.length} (helpers warned + returned null — cursor beats may have silently no-op'd)`;
       if (args.strictGlide) fail(line);
-      else console.log('  ⚠ ' + line);
+      else console.log('  ⚠ ' + line + ' [--no-strict-glide]');
       for (const w of glideWarns.slice(0, 5)) console.log(`      ${w}`);
     } else {
       pass('no glide-warns (glideClick/glideToText/flyToElement all resolved)');
+    }
+
+    // P0-4 — beat motion overruns: a motionFn outliving its narration clip is
+    // the "trailing camReset fires during the NEXT beat's scroll" class.
+    const OVERRUN_TOLERANCE = 0.5;
+    if (state.beatStats && Object.keys(state.beatStats).length) {
+      const over = Object.entries(state.beatStats)
+        .filter(([, s]) => s && typeof s.overrun === 'number' && s.overrun > OVERRUN_TOLERANCE);
+      if (over.length) {
+        console.log(`  ⚠ beat motion overruns (> DUR + ${OVERRUN_TOLERANCE}s) — motion outlives its narration clip:`);
+        for (const [k, s] of over) console.log(`      ${k}: motion ${s.motionS}s vs clip ${s.durS}s (+${s.overrun}s)`);
+      } else {
+        pass(`beat motion within DUR + ${OVERRUN_TOLERANCE}s (${Object.keys(state.beatStats).length} instrumented beat(s))`);
+      }
     }
   } finally {
     await browser.close().catch(() => {});
