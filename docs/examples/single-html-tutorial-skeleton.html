@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>TODO Feature Name — Tutorial</title>
+<!--
+  SINGLE-HTML TUTORIAL SKELETON — promoted from the shipped
+  videos/entry-automation/index.html (post-QC r4, 2026-07-23).
+
+  First write for a new tutorial video:
+    cp docs/examples/single-html-tutorial-skeleton.html videos/<slug>/index.html
+  then search for "TODO" and fill in. Everything non-TODO is the compliance
+  layer — hardened beat/say (INV-17), __T0/__sched/__done instrumentation,
+  ?scene= review wiring, 1920×1080 stage (INV-1), framed-action contract
+  (issue-3), SCENE_PREP scene parity (issue-2). Don't re-derive it.
+
+  Structure (INV-11): Intro → PostIntro → Tutorial chapters → Outro.
+  PostIntro is MANDATORY for rock tutorials (Umair ruling 2026-07-22) —
+  the stub below marks where the multi-animation concept beat goes; design
+  it with the wpforms-postintro skill and rule it at the storyboard gate.
+-->
+<link rel="stylesheet" href="/reference/wpforms-brand/tokens.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #d6ddd8;
+    font-family: var(--wpf-font-stack);
+    overflow: hidden;
+    color: var(--wpf-ink);
+  }
+  .stage-wrap {
+    position: relative;
+    width: 100vw; min-height: 100vh;
+    display: flex;            /* center via .stage margin:auto so an overflowing stage scrolls, not clips (INV-1) */
+    padding: 24px;
+    overflow: auto;
+  }
+  /* 1920x1080 stage per INV-1 — never lower */
+  .stage {
+    position: relative;
+    width: 1920px; height: 1080px;
+    margin: auto;
+    background: #adbcb3;
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+    flex: 0 0 auto;
+  }
+  /* TODO: atmosphere — pick a palette for the feature; deliberately not cream
+     (title-card production rule 3). */
+  .atmo {
+    position: absolute; inset: 0;
+    pointer-events: none; z-index: 0;
+    background: radial-gradient(130% 130% at 50% 0%, #e3e9e4 0%, #c8d4cb 55%, #a9bab0 100%);
+  }
+  .grain {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none; opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ── Mac frame — UI fills the frame (Umair ruling 2026-07-22): mac body
+     ≈ 90% stage width. 1720×868 outer for 1380×668 captures (same aspect,
+     ×1.246377 upscale on the .iframe-stage wrapper — IframeManager stays in
+     the 1:1 viewport===iframeSize regime; the viewport≠iframeSize upscale
+     path is broken, see tutorial-system-fixes #13). ── */
+  .mac-frame {
+    position: absolute;
+    left: 100px; top: 106px;
+    width: 1720px; height: 868px;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 40px 90px rgba(0,0,0,0.22), 0 14px 36px rgba(0,0,0,0.12);
+    overflow: hidden;
+    z-index: 5;
+    opacity: 0;
+    transform: scale(0.965);
+    transform-origin: center center;
+    will-change: transform, opacity;
+  }
+  .mac-chrome {
+    height: 36px; background: #ececef; border-bottom: 1px solid #d8d9dc;
+    display: flex; align-items: center; padding: 0 14px; gap: 8px;
+  }
+  .mac-chrome .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .mac-chrome .dot.r { background: #ff5f57; }
+  .mac-chrome .dot.y { background: #febc2e; }
+  .mac-chrome .dot.g { background: #28c840; }
+  .mac-body { position: relative; height: calc(868px - 36px); background: #f0f0f1; overflow: hidden; }
+  /* Slot stays at the native 1380×668 capture size; this wrapper scales
+     ×1.246377 to fill the mac body so no slot background ever shows. Cursor +
+     highlights mount inside, so every slot-local coord rides the transform. */
+  .iframe-stage {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 1380px; height: 668px;
+    transform: translate(-50%, -50%) scale(1.246377);
+  }
+
+  /* ── Intro card (no mac frame) — real wordmark + Sullie rule applies ── */
+  .intro-card {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%); text-align: center;
+    z-index: 50; opacity: 0; will-change: opacity, transform;
+  }
+  .intro-card .eyebrow {
+    font: 600 15px/1 var(--wpf-font-stack); letter-spacing: 0.18em;
+    text-transform: uppercase; color: var(--wpf-orange); margin-bottom: 18px;
+  }
+  .intro-card .sub {
+    font: 400 23px/1.4 var(--wpf-font-stack); color: var(--wpf-ink-mute);
+    max-width: 780px; margin: 18px auto 0;
+  }
+  .intro-card .intro-logo { margin-bottom: 26px; line-height: 0; }
+  .intro-card .intro-logo img { width: auto; height: 58px; display: inline-block; }
+
+  /* ── PostIntro stage — TODO: build the concept beat here (wpforms-postintro
+     skill; storyboard must carry the morph-chain section). Editorial objects
+     only; no fake product chrome. ── */
+  .postintro-stage { position: absolute; inset: 0; z-index: 40; opacity: 0; will-change: opacity; }
+
+  /* ── Chapter card — TOP-OF-STAGE pill so the heading reads over the UI
+     (Umair ruling 2026-07-22: never centered over the product UI) ── */
+  .chapter-card {
+    position: absolute; left: 50%; top: 26px;
+    transform: translateX(-50%);
+    display: flex; align-items: center; gap: 16px;
+    background: rgba(255, 255, 255, 0.97); border-radius: 40px;
+    padding: 13px 30px;
+    box-shadow: 0 12px 32px rgba(20, 26, 22, 0.18), 0 0 0 1px #e2e7e3;
+    z-index: 30; opacity: 0; will-change: opacity, transform; white-space: nowrap;
+  }
+  .chapter-card .ch-num {
+    font: 700 14px/1 var(--wpf-font-stack); letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--wpf-orange);
+  }
+  .chapter-card .ch-title { font: 700 27px/1.1 var(--wpf-font-stack); color: var(--wpf-ink); letter-spacing: -0.01em; }
+
+  /* ── Caption (subtitles, synced to narration) ──────────────────── */
+  .caption {
+    position: absolute; left: 50%; bottom: 46px; transform: translateX(-50%);
+    max-width: 1140px; padding: 15px 30px;
+    background: rgba(20, 22, 28, 0.92); color: #fff;
+    font: 500 22px/1.45 var(--wpf-font-stack);
+    border-radius: 12px; text-align: center; z-index: 60; opacity: 0;
+    backdrop-filter: blur(8px); box-shadow: 0 14px 32px rgba(20, 22, 28, 0.26);
+  }
+
+  /* ── Outro / sign-off — Sullie bug mounts here; doc URL as full text
+     (Umair ruling: outro card carries the doc's complete URL) ── */
+  .signoff {
+    position: absolute; left: 50%; top: 50%;
+    transform: translate(-50%, -50%); text-align: center; z-index: 55; opacity: 0;
+  }
+  .signoff .wordmark { margin-bottom: 26px; line-height: 0; }
+  .signoff .wordmark img { height: 46px; width: auto; }
+  .signoff .feature { font: 700 56px/1.08 var(--wpf-font-stack); color: var(--wpf-ink); letter-spacing: -0.02em; }
+  .signoff .cta { margin-top: 22px; font: 500 20px/1.3 var(--wpf-font-stack); color: var(--wpf-ink-mute); }
+  .signoff .cta .url { color: var(--wpf-orange); font-weight: 600; }
+</style>
+</head>
+<body>
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="atmo"></div>
+    <div class="grain"></div>
+
+    <div class="mac-frame" id="macFrame">
+      <div class="mac-chrome"><span class="dot r"></span><span class="dot y"></span><span class="dot g"></span></div>
+      <div class="mac-body" id="macBody"><div class="iframe-stage" id="iframeStage"></div></div>
+    </div>
+
+    <div class="intro-card" id="introCard">
+      <div class="intro-logo">
+        <img src="/assets/wordmark.svg" alt="WPForms" />
+      </div>
+      <div class="eyebrow">WPForms Tutorial</div>
+      <div class="title" id="introTitle"></div>
+      <div class="sub">TODO: one-line feature promise.</div>
+    </div>
+
+    <!-- TODO PostIntro markup — every UI fragment needs a
+         // SOURCE: snapshots/<name>/... citation or // OVERRIDE: annotation (INV-15) -->
+    <div class="postintro-stage" id="postIntroStage"></div>
+
+    <div class="chapter-card" id="chapterCard">
+      <div class="ch-num" id="chNum">Chapter 1</div>
+      <div class="ch-title" id="chTitle"></div>
+    </div>
+
+    <div class="caption" id="caption"></div>
+
+    <div class="signoff" id="signoff">
+      <div class="wordmark"><img src="/assets/wordmark.svg" alt="WPForms" /></div>
+      <div class="feature" id="outroFeature"><!-- headline mounts here via text-kit mountTextReveal --></div>
+      <div class="cta">Full guide: <span class="url">https://wpforms.com/docs/TODO-doc-slug/</span></div>
+    </div>
+  </div>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script src="/vendor/gsap/3.15.0/CustomEase.min.js"></script>
+<script type="module">
+import { Cursor, mountSullieBug, typeIntoIframeInput, statusPillMorph, fieldStaggerReveal } from '/videos/_shared/motion-primitives.js';
+import { IframeManager, WPFormsInteractions } from '/videos/_shared/wpforms-interactions.js';
+import { say as narrSay, beat as narrBeat, hideCaption as narrHideCaption, withTimeout } from '/videos/_shared/narration.js';
+import { mountTextStackFromRight } from '/videos/_shared/effects/index.js';
+import { mountTextReveal } from '/videos/_shared/text-kit.js';
+import { glideClick as libGlideClick, flyToElement } from '/videos/_shared/iframe-helpers.js';
+import { reviewScene } from '/videos/_shared/scene-review.js';
+
+const SLUG = 'TODO-slug';
+const $ = id => document.getElementById(id);
+const stage = $('stage'), macFrame = $('macFrame'), iframeStage = $('iframeStage');
+const introCard = $('introCard'), postIntroStage = $('postIntroStage');
+const chapterCard = $('chapterCard'), chNum = $('chNum'), chTitle = $('chTitle');
+const caption = $('caption'), signoff = $('signoff');
+
+// 1:1 regime ONLY — viewport must equal iframeSize (the upscale lives on the
+// .iframe-stage CSS transform; see tutorial-system-fixes #13).
+const ifm = new IframeManager(iframeStage, {
+  viewport: { width: 1380, height: 668 },
+  iframeSize: { width: 1380, height: 668 },
+});
+const cursor = new Cursor(iframeStage, { initialX: 960, initialY: 64, size: 22, zIndex: 50 });
+const wpf = new WPFormsInteractions(stage, cursor, ifm);
+
+const wait = s => new Promise(r => setTimeout(r, s * 1000));
+const ORANGE = 'rgba(226, 119, 48, 0.55)';
+
+const hideCaption = () => narrHideCaption(caption);
+
+// TODO Clip durations (seconds) — NEVER hand-estimate. After every
+// `node tts/generate.js --video <slug>` run:
+//   node tools/measure-narration.js <slug>
+// and paste the emitted block here. Voice-coupled — re-measure on re-render.
+const DUR = {
+  intro: 6.0, postintro: 15.0,
+  'ch1-1': 6.0,
+  outro: 12.0,
+};
+const say = (key, text) => narrSay(SLUG, key, text, { captionEl: caption });
+// Shared beat() records window.__beatStats { key: { motionS, durS, overrun } }
+// — smoke-singlehtml warns on any beat whose motion outlives its clip.
+const beat = (key, text, motionFn) => narrBeat(SLUG, key, text, motionFn, { durTable: DUR, captionEl: caption });
+
+function showChapter(num, title) {
+  chNum.textContent = `Chapter ${num}`;
+  chTitle.textContent = title;
+  gsap.fromTo(chapterCard, { opacity: 0, y: 14 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
+  return gsap.to(chapterCard, { opacity: 0, y: -10, duration: 0.4, ease: 'power2.in', delay: 2.4 });
+}
+
+function idoc() { return ifm.doc(); }
+function iq(sel) { try { return ifm.query(sel); } catch { return idoc() && idoc().querySelector(sel) || null; } }
+function iqa(sel) { try { return [...(idoc() ? idoc().querySelectorAll(sel) : [])]; } catch { return []; } }
+// Some markup exists in several panels (visible once, hidden elsewhere) —
+// pick the instance that actually has layout.
+function iqVisible(sel) { return iqa(sel).find(el => el.offsetWidth > 0 && el.offsetHeight > 0) || null; }
+const gc = (target, opts = {}) => libGlideClick({ iframeManager: ifm, cursor }, target, { rippleColor: ORANGE, ...opts });
+async function scrollTo(sel, opts = {}) {
+  const el = typeof sel === 'string' ? iq(sel) : sel;
+  if (el) { try { await ifm.smoothScrollIntoView(el, { duration: 0.7, block: 'center', ...opts }); } catch {} }
+  return el;
+}
+function hi(target, opts = {}) {
+  try { return ifm.highlightElement(target, { pad: 8, ...opts }); } catch { return { remove: () => {} }; }
+}
+// Tutorial camera: decomposed dip→land flight (audit-clean default) + reset.
+// camReset is the ONLY legitimate direct tweenCamera call (a reset to 1:1 is
+// not a camera MOVE — moves go through fly). withTimeout keeps it INV-17-safe.
+const fly = (target, opts = {}) => flyToElement({ iframeManager: ifm }, target, { fill: 0.42, maxZoom: 1.7, ...opts });
+async function camReset(duration = 0.7) {
+  try { await withTimeout(ifm.tweenCamera({ zoom: 1, tx: 0, ty: 0, duration, ease: 'power2.inOut' }), duration + 1); } catch {}
+}
+
+// ── Real-DOM state helpers (all markup must exist in the captured snapshots) ──
+
+// The builder renders every settings section in the DOM; only one is `.active`.
+function showSettingsSection(doc, name) {
+  if (!doc) return;
+  doc.querySelectorAll('.wpforms-panel-content-section').forEach(s => {
+    const on = s.className.includes(`wpforms-panel-content-section-${name}`);
+    s.classList.toggle('active', on);
+    s.style.display = on ? 'block' : 'none';
+  });
+  doc.querySelectorAll('.wpforms-panel-sidebar-section').forEach(a => {
+    a.classList.toggle('active', a.className.includes(`wpforms-panel-sidebar-section-${name}`));
+  });
+}
+
+// Swap to a snapshot and mutate its doc while the incoming iframe is still
+// transparent, then RE-RUN the prep after the swap settles (preps must be
+// idempotent property/style writes — the pre-reveal poll can lose the race
+// on slow loads; the re-run guarantees the state regardless of timing).
+async function swapPrepared(slug, prep, opts = {}) {
+  const prevIframe = ifm.iframe();
+  const p = ifm.swap(slug, { duration: 0.45, ...opts });
+  if (prep) {
+    for (let i = 0; i < 300; i++) {
+      const next = [...iframeStage.querySelectorAll('iframe')].find(f => f !== prevIframe);
+      const d = next && next.contentDocument;
+      if (d && d.readyState !== 'loading' && d.body && d.body.childElementCount) {
+        try { prep(d); } catch (e) { console.warn('[swapPrepared prep]', e); }
+        break;
+      }
+      await wait(0.01);
+    }
+  }
+  await p;
+  if (prep) { try { prep(idoc()); } catch (e) { console.warn('[swapPrepared re-prep]', e); } }
+  return idoc();
+}
+
+// ── Framed-action contract (issue-3): every cursor action lands inside the
+// camera frame; the camera follows the cursor, never trails it. awaitLayout:
+// poll until the target exists AND has layout (post-swap sections re-open a
+// frame or two late). gcFramed: awaitLayout → ONE scroll → fly when outside
+// the frame → glide+click (gc gets scroll:false — double scroll costs ~0.7s
+// per action and pushes beats past their DUR windows). ddFramed: same
+// contract for the shared faux-dropdown pick. An unresolved target is a BUG —
+// warn with the [glideClick] prefix so smoke-singlehtml FAILS on it (strict
+// by default). ──
+async function awaitLayout(target, timeoutS = 1.5) {
+  const t0 = performance.now();
+  for (;;) {
+    const el = typeof target === 'string' ? iqVisible(target) : target;
+    if (el && el.offsetWidth > 0 && el.offsetHeight > 0) return el;
+    if (performance.now() - t0 > timeoutS * 1000) return null;
+    await wait(0.05);
+  }
+}
+function inCameraView(el, margin = 20) {
+  try {
+    const p = ifm.elementToStageCoords(el);
+    const v = ifm.viewport();
+    return p.x >= margin && p.x <= v.w - margin && p.y >= margin && p.y <= v.h - margin;
+  } catch { return false; }
+}
+async function gcFramed(target, opts = {}) {
+  const { flyOpts, ...gcOpts } = opts;
+  const el = await awaitLayout(target);
+  if (!el) {
+    console.warn(`[glideClick] gcFramed: target never laid out: ${typeof target === 'string' ? target : (target && target.tagName) || target}`);
+    return null;
+  }
+  await scrollTo(el, { duration: 0.5 });
+  if (flyOpts || !inCameraView(el)) await fly(el, { fill: 0.42, maxZoom: 1.55, duration: 0.8, ...(flyOpts || {}) });
+  return gc(el, { scroll: false, ...gcOpts });
+}
+async function ddFramed(target, value, opts = {}) {
+  const el = await awaitLayout(target);
+  if (!el) {
+    console.warn(`[glideClick] ddFramed: select never laid out: ${target}`);
+    return null;
+  }
+  await scrollTo(el, { duration: 0.5 });
+  if (!inCameraView(el)) {
+    const wrap = el.closest('.wpforms-panel-field') || el;
+    await fly(wrap, { fill: 0.5, maxZoom: 1.5, duration: 0.75 });
+  }
+  try { await wpf._selectElementFromDropdown(el, value, opts.dd); } catch (e) { console.warn('[dd]', e); }
+  return el;
+}
+
+// TODO Per-video state re-derivation helpers go here. The capture serializer
+// now bakes property state (value/checked/selected) into new snapshots, but
+// any state you puppet at RUNTIME still needs an idempotent helper so
+// SCENE_PREP can replay it. Cite the snapshot: // SOURCE: snapshots/<name>/...
+
+async function play() {
+  window.__T0 = performance.now();  // export instrumentation for the audio mux
+  const review = reviewScene();
+
+  if (review.is('postintro')) {
+    say('postintro', 'TODO postintro narration.');
+    await runPostIntro({ isolate: true });
+    return;
+  }
+
+  if (!review.matches(/^ch\d+$/)) {
+    // ── INTRO ── real wordmark lockup + per-word stack-from-right title reveal
+    gsap.set(introCard, { opacity: 1, y: 0 });
+    gsap.set('#introCard .intro-logo, #introCard .eyebrow, #introCard .sub', { opacity: 0, y: 14 });
+    const introTitleFx = mountTextStackFromRight({
+      text: 'TODO intro title line.',
+      highlight: { TODO: 'orange' },
+      fontSize: '66px', fontWeight: 700, color: 'var(--wpf-ink)',
+    });
+    introTitleFx.el.style.textAlign = 'center';
+    $('introTitle').appendChild(introTitleFx.el);
+    const introTl = gsap.timeline();
+    introTl
+      .to('#introCard .intro-logo', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0)
+      .to('#introCard .eyebrow', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0.12);
+    introTitleFx.tweenInto(introTl, { position: 0.3, perWordDelay: 0.12, duration: 0.85 });
+    introTl.to('#introCard .sub', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 1.05);
+    await wait(0.5);
+    await beat('intro', 'TODO intro narration.');
+    gsap.to(introCard, { autoAlpha: 0, y: -10, duration: 0.5, ease: 'power2.in' });
+    await wait(0.5);
+
+    // ── POSTINTRO ── (mandatory for rock tutorials)
+    say('postintro', 'TODO postintro narration.');
+    await runPostIntro();
+    await hideCaption();
+  }
+
+  // ── TUTORIAL: mac frame in, load base snapshot ──
+  gsap.to(macFrame, { opacity: 1, scale: 1, duration: 0.8, ease: 'power3.out' });
+  await wait(0.5);
+  const startScene = review.scene;
+  // TODO: one entry per chapter — which snapshot a ?scene=chX run opens on.
+  const START_SNAPSHOT = {
+    ch2: 'CHANGE-ME-snapshot-ch2',
+  };
+  // Scene parity (issue-2): a scene-isolated run must open on the SAME visible
+  // state the full run has accumulated by that point. One IDEMPOTENT prep per
+  // scene replays the prior chapters' property-level puppetry onto the freshly
+  // loaded snapshot. REQUIRED sibling of START_SNAPSHOT — keep both in sync.
+  const SCENE_PREP = {
+    ch2(d) { /* TODO: replay ch1's exit state onto doc d */ },
+  };
+  if (START_SNAPSHOT[startScene]) {
+    await ifm.load(START_SNAPSHOT[startScene]);
+    if (SCENE_PREP[startScene]) {
+      try { SCENE_PREP[startScene](idoc()); } catch (e) { console.warn('[SCENE_PREP]', e); }
+    }
+  } else {
+    await ifm.load('CHANGE-ME-snapshot');
+  }
+  await wait(0.3);
+
+  // ── CHAPTER 1 — TODO title ──
+  // Worked example of the per-chapter shape. Sync contract (QC 2026-07-22):
+  // camera frames the region FIRST; each spoken phrase lands while its action
+  // is on screen; camReset BEFORE any action outside the current frame.
+  if (review.wants('ch1')) {
+    showChapter(1, 'TODO chapter title');
+    await wait(1.8);
+    await beat('ch1-1', 'TODO narration for the first action.', async () => {
+      await gcFramed('.CHANGE-ME-selector');             // scroll → fly-if-outside → glide+click
+      // hi('TODO-selector', { label: 'TODO', holdMs: 1600 });   // field-attention highlight
+      // await ddFramed('TODO-select-selector', 'TODO-value');   // faux-dropdown pick
+      // await swapPrepared('TODO-next-snapshot', d => { /* idempotent prep */ });
+      // await camReset(0.6);                                    // before leaving the region
+    });
+    if (review.stopAfter('ch1')) return;
+  }
+
+  // TODO more chapters — same shape: showChapter(n, …) → beats → stopAfter.
+
+  // ── OUTRO ── headline via text-kit mountTextReveal (audit rule twice-hit:
+  // a hand card-fade carrying the outro caps the tier at B; the reveal IS the
+  // moment). Wordmark + CTA ride a timeline around it.
+  gsap.to(macFrame, { autoAlpha: 0, scale: 0.97, duration: 0.7, ease: 'power3.in' });
+  await wait(0.5);
+  gsap.set(signoff, { opacity: 1 });
+  gsap.set('#signoff .wordmark, #signoff .cta', { opacity: 0, y: 12 });
+  const outroFx = mountTextReveal('TODO Feature Name', {
+    preset: 'mask-reveal-up', size: 56, weight: 700, color: 'var(--wpf-ink)',
+    position: { position: 'static' }, parent: $('outroFeature'),
+  });
+  const outroTl = gsap.timeline();
+  outroTl.to('#signoff .wordmark', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0);
+  outroFx.tweenInto(outroTl, { position: 0.25 });
+  outroTl.to('#signoff .cta', { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' }, 0.8);
+  // Sullie in every outro (and intro splash) — real asset, user-flagged rule.
+  try { mountSullieBug({ src: '/reference/wpforms-brand/assets/sullie-master.svg', position: 'bottom-right' }); } catch {}
+  await beat('outro', 'TODO outro narration — say the doc URL as "WPForms dot com" (TTS-spelling pass).');
+  await wait(1.5);
+  window.__done = true; window.__dur = (performance.now() - window.__T0) / 1000;
+}
+
+// ── PostIntro — TODO: 8-15s multi-phase concept beat (wpforms-postintro).
+// Keep the morph-chain discipline: ONE element carries the story. The shipped
+// reference: videos/entry-automation/index.html runPostIntro (6 phases,
+// task card morphs New Entries → Exporting… → CSV → flies into Drive).
+async function runPostIntro({ isolate = false } = {}) {
+  gsap.to(postIntroStage, { opacity: 1, duration: 0.3 });
+  // TODO phases. Use withTimeout() around any awaited cursor/tween primitive:
+  //   const piCursor = new Cursor(postIntroStage, { initialX: 860, initialY: 640, size: 28, zIndex: 60 });
+  //   await withTimeout(piCursor.glide({ x, y }, { duration: 0.8 }), 1.4);
+  await wait((DUR.postintro || 15) - 1.0);
+  if (!isolate) {
+    gsap.to(postIntroStage, { autoAlpha: 0, duration: 0.5, ease: 'power2.in' });
+    await wait(0.55);
+  }
+}
+
+window._play = play; window._ifm = ifm; window._cursor = cursor;
+play().catch(err => {
+  console.error('[tutorial error]', err);
+  caption.textContent = 'Playback error — see console';
+  caption.style.opacity = '1';
+});
+</script>
+</body>
+</html>

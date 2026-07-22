@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SKELETON — postIntro concept beat (copy me first)</title>
+<!--
+  FIRST COPY TARGET for a postIntro / editorial concept beat (FIX-15). Past
+  first-writes shipped stock-only easings + hand-rolled label swaps and paid
+  an audit iteration (FA #18, SendGrid [P6]). This skeleton pre-declares the
+  named CustomEases and pre-wires the canonical primitives so v1 starts at
+  the audited bar:
+    · named eases lifted from approved references (bridge-2, FA guide)
+    · statusPillMorph / caretType / Cursor imported, not re-invented
+    · morph-chain HOST WITH A STABLE id — one element threads the phases
+      (identity continuity; declare the chain in the storyboard per
+      docs/storyboard-format-morph-chain-2026-05-10.md)
+    · phase comments matching the multi-phase requirement (wpforms-postintro)
+  Audit gate: run the wpforms-motion-audit skill on v1 — tier A is the bar.
+-->
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; background: #0e0c0a; overflow: hidden; }
+  #stage { position: relative; width: 1920px; height: 1080px; background: #faf6ee;
+           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; overflow: hidden; }
+  /* Morph-chain host — the ONE element that threads the story. Keep its id
+     stable across every phase; morph content/scale/role, never swap it. */
+  #chainHost { position: absolute; left: 760px; top: 490px; min-width: 400px; padding: 18px 34px;
+               border-radius: 999px; background: #e27730; color: #fff; font-size: 28px; font-weight: 600;
+               text-align: center; }
+  #headline { position: absolute; left: 0; right: 0; top: 300px; text-align: center;
+              font-size: 64px; font-weight: 700; color: #14110e; opacity: 0; }
+  #atmo { position: absolute; inset: 0; pointer-events: none;
+          /* Atmospheres CLONE from a reference (INV-16 note) — cite it:
+             SOURCE: <reference html the atmosphere is lifted from> */ }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div id="atmo"></div>
+  <div id="headline">Concept headline types or reveals here.</div>
+  <div id="chainHost">Morph-chain host</div>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script src="/vendor/gsap/3.15.0/CustomEase.min.js"></script>
+<script type="module">
+import { Cursor, caretType, statusPillMorph, markerSweep, boundedRepeats } from '/videos/_shared/motion-primitives.js';
+import { wait, withTimeout } from '/videos/_shared/narration.js';
+
+gsap.registerPlugin(CustomEase);
+// Named eases — lifted from approved references, NOT stock-only easing
+// (stock-only easing is an automatic audit ceiling):
+CustomEase.create('logo-arrival', 'M0,0 C0.16,0.20 0.20,0.98 1,1');                       // bridge-2 masked slide-in
+CustomEase.create('pi-flight', 'M0,0 C0.32,0 0.24,0.56 0.5,0.8 C0.72,1 0.86,1 1,1');      // FA-guide postIntro flight
+CustomEase.create('pi-pulse', 'M0,0 C0.2,0 0.3,1.4 0.5,1 C0.7,0.8 0.8,1 1,1');            // FA-guide overshoot pulse
+
+const $ = id => document.getElementById(id);
+const host = $('chainHost');
+
+// One master timeline per beat, position params, autoAlpha not opacity,
+// transform/opacity/filter only — see wpforms-gsap-rules before editing.
+const tl = gsap.timeline({ paused: true, defaults: { ease: 'power2.out' } });
+
+// ── Phase 1 — arrival: the chain host lands ─────────────────────────────
+tl.fromTo(host, { y: 40, autoAlpha: 0, filter: 'blur(8px)' },
+  { y: 0, autoAlpha: 1, filter: 'blur(0px)', duration: 0.85, ease: 'logo-arrival' }, 0.2);
+
+// ── Phase 2 — statement: headline reveals (use caretType or an effects/
+//    mountText* vocabulary entry — don't hand-roll an opacity stagger) ────
+tl.to('#headline', { autoAlpha: 1, duration: 0.01 }, 1.2);
+tl.add(() => { caretType($('headline'), 'Concept headline types here.', { charDuration: 0.04 }); }, 1.2);
+
+// ── Phase 3 — the host MORPHS role (same element: size/position/radius
+//    tween or Flip — never a cross-fade to a different element) ──────────
+tl.to(host, { width: 640, borderRadius: 16, y: 60, duration: 0.8, ease: 'pi-flight' }, 3.2);
+// Label sequences ride statusPillMorph — PAUSED timeline, hence .play():
+tl.add(() => { statusPillMorph(host, ['Thinking…', 'Building…', 'Done.'], { holdEach: 0.9 }).play(); }, 3.4);
+
+// ── Phase 4 — emphasis: markerSweep on the payoff word ───────────────────
+tl.add(() => { markerSweep($('headline'), {}).play(); }, 6.4);
+
+// ── Phase 5 — payoff hold, then exit (no heavy blur exits, no dead-air
+//    holds — both are automatic audit ceilings) ───────────────────────────
+tl.to(host, { scale: 1.03, duration: 0.4, ease: 'pi-pulse' }, 7.2);
+tl.to('#stage > *:not(#atmo)', { autoAlpha: 0, duration: 0.5, ease: 'power2.in' }, 8.6);
+
+// Ambient loops must be FINITE: gsap.to(x, { repeat: boundedRepeats(cycleSec, visibleSec), yoyo: true, ... })
+
+// End bookkeeping rides onComplete — never an onUpdate `t >= TOTAL` check (FIX-3).
+tl.eventCallback('onComplete', () => {
+  if (!window.__done) {
+    window.__done = true;
+    window.__dur = (performance.now() - window.__T0) / 1000;
+  }
+});
+
+window._tl = tl; // review affordance
+window.__T0 = performance.now();
+// Narration cue for the audio mux (one clip per postIntro; renders from
+// videos/<slug>/narration/postintro.mp3 when this skeleton becomes a video):
+(window.__sched || (window.__sched = [])).push({ key: 'postintro', t: 0 });
+tl.play();
+</script>
+</body>
+</html>

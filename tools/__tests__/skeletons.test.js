@@ -44,8 +44,9 @@ function stageAndValidate(skeleton, narrationKeys) {
 section('Tutorial skeleton');
 {
   // The placeholder snapshot ref is the ONE expected error (a real video
-  // replaces CHANGE-ME-snapshot); everything else must be clean.
-  const { errors } = stageAndValidate('single-html-tutorial-skeleton.html', ['intro', 'ch1-1', 'outro']);
+  // replaces CHANGE-ME-snapshot); everything else must be clean. postintro
+  // is staged because postIntro is mandatory for rock tutorials (2026-07-22).
+  const { errors } = stageAndValidate('single-html-tutorial-skeleton.html', ['intro', 'postintro', 'ch1-1', 'outro']);
   const unexpected = errors.filter((e) => !/CHANGE-ME-snapshot/.test(e));
   ok(unexpected.length === 0, `no unexpected validator errors (${unexpected.length})`);
   for (const e of unexpected) console.log(`        ${e}`);
