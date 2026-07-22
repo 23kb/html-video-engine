@@ -59,6 +59,18 @@ const PAGES = {
     <body><p>There has been a critical error on this website.</p></body></html>`,
   '/wp-admin/expired.php': `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Log In ‹ Sullie's Bakery — WordPress</title></head>
     <body><p>Session expired.</p></body></html>`,
+  // Property-bake gate: server-rendered defaults that the capture steps
+  // override via DOM properties only (input.value = …, .checked = …). The
+  // serialized snapshot must carry the JS-driven state, not these defaults.
+  '/wp-admin/form.php': `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Task Settings ‹ Sullie's Bakery</title></head>
+    <body>
+      <input type="text" id="task-name" value="Default Task">
+      <input type="radio" name="dest" id="dest-email" value="email" checked>
+      <input type="radio" name="dest" id="dest-gdrive" value="gdrive">
+      <select id="account"><option value="a1" selected>Account One</option><option value="a2">Account Two</option></select>
+      <textarea id="notes">server default notes</textarea>
+      <input type="password" id="secret" value="">
+    </body></html>`,
 };
 
 const server = http.createServer((req, res) => {
@@ -77,6 +89,22 @@ async function main() {
       { slug: '_cap_bad', targetPath: '/wp-admin/bad.php', waitFor: '#never-there' },
       { slug: '_cap_expired', targetPath: '/wp-admin/expired.php' },
       { slug: '_cap_good', targetPath: '/wp-admin/good.php', waitFor: '#good-marker' },
+      {
+        slug: '_cap_baked',
+        targetPath: '/wp-admin/form.php',
+        steps: [{
+          eval: `
+            document.getElementById('task-name').value = 'Weekly Export';
+            document.getElementById('dest-gdrive').checked = true;
+            document.getElementById('account').value = 'a2';
+            document.getElementById('account').dispatchEvent(new Event('change', { bubbles: true }));
+            document.getElementById('notes').value = 'typed during capture';
+            document.getElementById('secret').value = 'hunter2';
+          `,
+          settle: 100,
+        }],
+        waitFor: '#task-name',
+      },
     ],
   };
   const planPath = path.join(sandbox, 'plan.json');
@@ -114,6 +142,22 @@ async function main() {
     ok(!html.includes('�'), 'no replacement characters (mojibake) in written snapshot');
   } else {
     checks += 3; failures += 3;
+  }
+
+  section('Property bake — JS-driven state survives serialization');
+  const bakedFile = path.join(sandbox, '_cap_baked', 'index.html');
+  ok(fs.existsSync(bakedFile), 'baked variant wrote its snapshot');
+  if (fs.existsSync(bakedFile)) {
+    const html = fs.readFileSync(bakedFile, 'utf8');
+    ok(/id="task-name"[^>]*value="Weekly Export"/.test(html), 'typed input value baked into value attribute');
+    ok(/id="dest-gdrive"[^>]*checked/.test(html), 'JS-checked radio serialized checked');
+    ok(!/id="dest-email"[^>]*checked/.test(html), 'previously-checked radio lost its checked attribute');
+    ok(/value="a2"[^>]*selected|selected[^>]*value="a2"/.test(html.replace(/\n/g, ' ')), 'picked option carries selected attribute');
+    ok(!/value="a1"[^>]*selected/.test(html), 'default option no longer selected');
+    ok(/typed during capture/.test(html), 'textarea value baked into textContent');
+    ok(!/hunter2/.test(html), 'password input value NOT baked (secret hygiene)');
+  } else {
+    checks += 7; failures += 7;
   }
 
   fs.rmSync(sandbox, { recursive: true, force: true });

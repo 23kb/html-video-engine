@@ -45,20 +45,26 @@ function tryRequireCatalogTool() {
   return catalogTool;
 }
 
-const WP_URL  = process.env.WP_URL;
-const WP_USER = process.env.WP_USER;
-const WP_PASS = process.env.WP_PASS;
-
 // ── Parse CLI ────────────────────────────────────────────────────────────
 // Supports:
 //   node capture.js <targetPath> <slug>           (legacy)
 //   node capture.js --variants <jsonFile>         (multi-variant)
+//   --site <name>: read url/creds from tools/sites.json (the canonical
+//   registry site-eval/preflight already use) instead of a stale .env.
+//   Env vars stay as per-field overrides on top of the site entry.
 let variantsPlan = null;
 let legacyTargetPath = null;
 let legacySlug = null;
+let siteName = null;
 
 {
   const args = process.argv.slice(2);
+  const sIdx = args.indexOf('--site');
+  if (sIdx !== -1) {
+    siteName = args[sIdx + 1];
+    if (!siteName) { console.error('--site requires a site name from tools/sites.json'); process.exit(1); }
+    args.splice(sIdx, 2);
+  }
   const vIdx = args.indexOf('--variants');
   if (vIdx !== -1) {
     const planPath = args[vIdx + 1];
@@ -85,12 +91,34 @@ let legacySlug = null;
   }
 }
 
+// ── Resolve credentials: --site entry from tools/sites.json, env overrides ──
+let siteEntry = null;
+if (siteName) {
+  const sitesPath = path.join(__dirname, '..', 'tools', 'sites.json');
+  let registry;
+  try { registry = JSON.parse(fs.readFileSync(sitesPath, 'utf8')); }
+  catch (e) { console.error(`--site: cannot read tools/sites.json (${e.message})`); process.exit(1); }
+  siteEntry = registry.sites && registry.sites[siteName];
+  if (!siteEntry) {
+    console.error(`--site: "${siteName}" not in tools/sites.json (have: ${Object.keys(registry.sites || {}).join(', ')})`);
+    process.exit(1);
+  }
+  if ([siteEntry.url, siteEntry.adminUser, siteEntry.adminPass].some(v => !v || String(v).startsWith('TODO'))) {
+    console.error(`--site: "${siteName}" entry has TODO/missing url or credentials — fill tools/sites.json first`);
+    process.exit(1);
+  }
+}
+const WP_URL  = process.env.WP_URL  || (siteEntry && siteEntry.url);
+const WP_USER = process.env.WP_USER || (siteEntry && siteEntry.adminUser);
+const WP_PASS = process.env.WP_PASS || (siteEntry && siteEntry.adminPass);
+
 if (!WP_URL || !WP_USER || !WP_PASS || (!variantsPlan && (!legacyTargetPath || !legacySlug))) {
   console.error('Missing args. Examples:');
+  console.error('  node capture.js --site sullies-bakery "/wp-admin/admin.php?page=wpforms-builder&form_id=1&view=settings&section=notifications" notifications');
   console.error('  WP_URL=http://wpforms.local WP_USER=admin WP_PASS=pass \\');
-  console.error('    node capture.js "/wp-admin/admin.php?page=wpforms-builder&form_id=1&view=settings&section=notifications" notifications');
+  console.error('    node capture.js "/wp-admin/..." <slug>');
   console.error('  …or multi-variant:');
-  console.error('    node capture.js --variants ./plan.json');
+  console.error('    node capture.js [--site <name>] --variants ./plan.json');
   process.exit(1);
 }
 
@@ -261,6 +289,32 @@ async function captureVariant(page, variant) {
     throw new Error(`error page detected (title: "${pageTitle}") — nothing written`);
   }
 
+  // Bake property-level state into serializable attributes. JS-driven state
+  // set during steps (input.value = …, radio.click(), select.value + change)
+  // lives on DOM properties only; outerHTML serializes attributes, so without
+  // this pass every typed value / checked radio / picked option reverts to
+  // the server-rendered default in the snapshot.
+  await page.evaluate(() => {
+    for (const el of document.querySelectorAll('input')) {
+      const type = (el.getAttribute('type') || 'text').toLowerCase();
+      if (type === 'checkbox' || type === 'radio') {
+        if (el.checked) el.setAttribute('checked', 'checked');
+        else el.removeAttribute('checked');
+      } else if (type !== 'file' && type !== 'password') {
+        el.setAttribute('value', el.value);
+      }
+    }
+    for (const sel of document.querySelectorAll('select')) {
+      for (const opt of sel.options) {
+        if (opt.selected) opt.setAttribute('selected', 'selected');
+        else opt.removeAttribute('selected');
+      }
+    }
+    for (const ta of document.querySelectorAll('textarea')) {
+      ta.textContent = ta.value;
+    }
+  });
+
   fs.mkdirSync(assetsDir, { recursive: true });
 
   // Inline stylesheets (so url() refs resolve against local assets)
@@ -282,6 +336,45 @@ async function captureVariant(page, variant) {
     const local = assetMap.get(u);
     return local ? `url(${local})` : m;
   });
+
+  // ── Asset localizer (tutorial-system-fixes #6) ──────────────────────────
+  // The response listener only pools what the LIVE page happened to fetch.
+  // url() refs the page never exercised (lazy icons, alternate font weights,
+  // root-relative /wpforms/assets/... paths from new plugin CSS) survive as
+  // dangling refs → snapshot 404s. Fetch every same-host url() ref that isn't
+  // pooled yet and pool it, so the rewrite passes below can localize it.
+  const sourceOrigin = new URL(WP_URL).origin;
+  const localizerReport = { fetched: 0, failed: 0 };
+  async function ensureAsset(absUrl) {
+    if (assetMap.has(absUrl)) return assetMap.get(absUrl);
+    try {
+      const res = await page.request.get(absUrl, { timeout: 10000 });
+      if (!res.ok()) { localizerReport.failed++; return null; }
+      const buf = await res.body();
+      const ct = res.headers()['content-type'] || '';
+      const filename = hashName(absUrl, extFor(absUrl, ct));
+      assetMap.set(absUrl, 'assets/' + filename);
+      assetBuffers.set(filename, buf);
+      localizerReport.fetched++;
+      return assetMap.get(absUrl);
+    } catch { localizerReport.failed++; return null; }
+  }
+  function cssRefs(css, baseHref) {
+    const refs = [];
+    for (const m of css.matchAll(/url\(([^)]+)\)/g)) {
+      const u = m[1].trim().replace(/^["']|["']$/g, '');
+      if (u.startsWith('data:') || u.startsWith('#')) continue;
+      try {
+        const abs = new URL(u, baseHref);
+        if (abs.origin === sourceOrigin) refs.push(abs.toString());
+      } catch {}
+    }
+    return refs;
+  }
+  // Pass 1: refs inside the stylesheets being inlined.
+  for (const { href, css } of inlineStyles) {
+    for (const abs of cssRefs(css, href)) await ensureAsset(abs);
+  }
 
   // Rasterize <canvas> → <img> (canvas pixels aren't in outerHTML)
   await page.evaluate(() => {
@@ -449,6 +542,40 @@ async function captureVariant(page, variant) {
   for (const m of rewritten.matchAll(/assets\/([A-Za-z0-9._-]+\.[A-Za-z0-9]+)/g)) {
     referencedAssets.add(m[1]);
   }
+
+  // Localizer pass 2: referenced CSS *files* keep their own url() refs
+  // (../webfonts/fa-*.woff2, root-relative plugin images) that resolve
+  // OUTSIDE the snapshot folder once served. Resolve each against the CSS
+  // file's source URL, pool the target, rewrite the ref to the pooled
+  // sibling filename (both live in assets/), and force-emit the new files.
+  {
+    const filenameToUrl = new Map();
+    for (const [url, local] of assetMap) filenameToUrl.set(local.replace(/^assets\//, ''), url);
+    for (const filename of [...referencedAssets].filter((f) => f.endsWith('.css'))) {
+      const buf = assetBuffers.get(filename);
+      const srcUrl = filenameToUrl.get(filename);
+      if (!buf || !srcUrl) continue;
+      let css = buf.toString('utf8');
+      let changed = false;
+      for (const abs of cssRefs(css, srcUrl)) {
+        const local = await ensureAsset(abs);
+        if (!local) continue;
+        const sib = local.replace(/^assets\//, '');
+        referencedAssets.add(sib);
+        css = css.replace(/url\(([^)]+)\)/g, (m, raw) => {
+          const u = raw.trim().replace(/^["']|["']$/g, '');
+          if (u.startsWith('data:')) return m;
+          try { return new URL(u, srcUrl).toString() === abs ? `url(${sib})` : m; } catch { return m; }
+        });
+        changed = true;
+      }
+      if (changed) assetBuffers.set(filename, Buffer.from(css, 'utf8'));
+    }
+  }
+  if (localizerReport.fetched || localizerReport.failed) {
+    console.log(`    localizer: ${localizerReport.fetched} out-of-snapshot asset(s) fetched + pooled${localizerReport.failed ? `, ${localizerReport.failed} unreachable (left as-is)` : ''}`);
+  }
+
   let emittedCount = 0;
   let skippedCount = 0;
   for (const [filename, buf] of assetBuffers) {
@@ -479,6 +606,9 @@ async function captureVariant(page, variant) {
     assetCount: emittedCount,
     assetCountSkipped: skippedCount,
     variantSlug: slug,
+    // Recorded so post-capture.js can re-verify the anchor still resolves
+    // after the trim pipeline (over-trim detection).
+    waitFor: waitFor || null,
   }, null, 2));
 
   console.log(`    ✓ wrote ${outDir} (${emittedCount} assets, ${skippedCount} unreferenced skipped)`);
