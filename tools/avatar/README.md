@@ -57,6 +57,21 @@ higher `--resize-factor` or `--face-det-batch 2`.
 avatar ends, and picks audio automatically (body audio if present, else the
 avatar's narration delayed by `--start`).
 
+## Base footage: idle take REQUIRED (finding 2026-07-23)
+
+A/B-tested on Kacie's real videos: a **talking** base clip fights the generated
+mouth (residual jaw/cheek motion) — measured sync correlation drops to
+0.12–0.20 with wandering lag, and the mouth visibly "flaps too fast." A
+**static still** base measures 0.47 with stable lag (healthy). There is no
+usable idle stretch in existing tutorial footage — she talks continuously.
+
+- Production: record a 60–90s idle "listening" take (see
+  reference/avatar-source/README.md). This is the durable fix.
+- Interim/testing: pass a PNG still as `--base` — Wav2Lip's static mode
+  (no blinks/head motion, passable at bubble size).
+- Objective sync check: `scratchpad sync_probe.py` pattern — mouth-region
+  motion vs audio-envelope cross-correlation; healthy ≈ 0.4+, stable lag.
+
 ## Quality notes
 
 - Wav2Lip = best-in-class sync accuracy; mouth region is generated at 96px so
