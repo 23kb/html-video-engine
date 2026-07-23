@@ -299,7 +299,7 @@ _288 entries_
 | <a id="id--wpforms-406-field_4"></a>`id--wpforms-406-field_4` | `#wpforms-406-field_4` | input |  | 1 |
 | <a id="id--wpforms-406-field_4-container"></a>`id--wpforms-406-field_4-container` | `#wpforms-406-field_4-container` | div | Phone | 1 |
 | <a id="id--wpforms-admin-bar-inline-css"></a>`id--wpforms-admin-bar-inline-css` | `#wpforms-admin-bar-inline-css` | link |  | 1 |
-| <a id="id--wpforms-css-vars-406-block"></a>`id--wpforms-css-vars-406-block` | `#wpforms-css-vars-406-block` | link |  | 1 |
+| <a id="id--wpforms-css-vars-406-block-a7f3c92e-4b18-4d6a-9c53-2e81f0d47b60"></a>`id--wpforms-css-vars-406-block-a7f3c92e-4b18-4d6a-9c53-2e81f0d47b60` | `#wpforms-css-vars-406-block-a7f3c92e-4b18-4d6a-9c53-2e81f0d47b60` | link |  | 1 |
 | <a id="id--wpforms-error-noscript"></a>`id--wpforms-error-noscript` | `#wpforms-error-noscript` | div | Please enable JavaScript in your browser to complete this f… | 1 |
 | <a id="id--wpforms-form-406"></a>`id--wpforms-form-406` | `#wpforms-form-406` | form | Please enable JavaScript in your browser to complete this f… | 1 |
 | <a id="id--wpforms-modern-full-inline-css"></a>`id--wpforms-modern-full-inline-css` | `#wpforms-modern-full-inline-css` | link |  | 1 |

@@ -44,7 +44,7 @@ _30 entries_
 | <a id="id--wpforms-406"></a>`id--wpforms-406` | `#wpforms-406` | div | Thanks for contacting us! We will be in touch with you shor… | 1 |
 | <a id="id--wpforms-admin-bar-inline-css"></a>`id--wpforms-admin-bar-inline-css` | `#wpforms-admin-bar-inline-css` | link |  | 1 |
 | <a id="id--wpforms-confirmation-406"></a>`id--wpforms-confirmation-406` | `#wpforms-confirmation-406` | div | Thanks for contacting us! We will be in touch with you shor… | 1 |
-| <a id="id--wpforms-css-vars-406-block"></a>`id--wpforms-css-vars-406-block` | `#wpforms-css-vars-406-block` | link | Thanks for contacting us! We will be in touch with you shor… | 1 |
+| <a id="id--wpforms-css-vars-406-block-a7f3c92e-4b18-4d6a-9c53-2e81f0d47b60"></a>`id--wpforms-css-vars-406-block-a7f3c92e-4b18-4d6a-9c53-2e81f0d47b60` | `#wpforms-css-vars-406-block-a7f3c92e-4b18-4d6a-9c53-2e81f0d47b60` | link | Thanks for contacting us! We will be in touch with you shor… | 1 |
 | <a id="id--wpforms-modern-full-inline-css"></a>`id--wpforms-modern-full-inline-css` | `#wpforms-modern-full-inline-css` | link |  | 1 |
 
 ## Role-like classes
