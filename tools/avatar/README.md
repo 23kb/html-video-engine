@@ -1,5 +1,15 @@
 # tools/avatar — local talking-head lip-sync pipeline
 
+> **STATUS 2026-07-23: PARKED.** All Wav2Lip variants failed visual QC (soft
+> 96px mouth; static-frame head), and the Heygem-on-GPU-VM pivot
+> (tools/avatar/heygem/) was skipped in favor of a simpler decision: **real
+> Kacie recordings for intro + outro** (spec:
+> docs/kacie-intro-outro-recording-spec.md), TTS-narrated body, no synthetic
+> face anywhere. This tooling stays for two reasons: `check-base.py` is the
+> intake validator for her deliveries, and the generation route reopens if
+> localization ever needs a synthetic Kacie. `composite.js` remains generally
+> useful (real-footage PiP bubble).
+
 Turns a narration audio track (Voicebox TTS mp3) into a lip-synced MP4 of
 Umair's talking head, then composites it as a circular picture-in-picture
 bubble onto a rendered body video. Fully local (Wav2Lip on the RTX 2060),
