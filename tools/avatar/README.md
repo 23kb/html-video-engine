@@ -48,7 +48,9 @@ node tools/avatar/generate.js --audio videos/<slug>/narration/01.mp3 --out video
 node tools/avatar/composite.js --bg videos/<slug>.mp4 --avatar videos/<slug>/avatar/01.mp4 --out videos/<slug>-with-avatar.mp4 --size 360 --pos bottom-right --start 4.0 --audio avatar
 ```
 
-`generate.js` loops the base footage if narration outlasts it, auto-downscales
+`generate.js` validates base framing first (rejects screen-share/PiP frames
+where the face is tiny or cornered — `check-base.py`; `--skip-base-check` to
+override), loops the base footage if narration outlasts it, auto-downscales
 >720p bases for VRAM headroom (`--resize-factor 1` to override), and exits
 nonzero on output/audio duration mismatch. OOM on the 2060? Retry with a
 higher `--resize-factor` or `--face-det-batch 2`.

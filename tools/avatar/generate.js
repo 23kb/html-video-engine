@@ -41,6 +41,7 @@ function parseArgs(argv) {
     pads: '0 10 0 0',
     resizeFactor: null, // null = auto from base height
     nosmooth: false,
+    skipBaseCheck: false,
     faceDetBatch: 4,
     wav2lipBatch: 32,
   };
@@ -52,6 +53,7 @@ function parseArgs(argv) {
     else if (a === '--pads') args.pads = argv[++i];
     else if (a === '--resize-factor') args.resizeFactor = Number(argv[++i]);
     else if (a === '--nosmooth') args.nosmooth = true;
+    else if (a === '--skip-base-check') args.skipBaseCheck = true;
     else if (a === '--face-det-batch') args.faceDetBatch = Number(argv[++i]);
     else if (a === '--wav2lip-batch') args.wav2lipBatch = Number(argv[++i]);
     else if (a === '-h' || a === '--help') usage(0);
@@ -98,6 +100,21 @@ function main() {
   args.out = path.resolve(args.out);
   args.base = path.resolve(args.base);
   preflight(args);
+
+  // Guardrail (2026-07-23): reject screen-share/PiP frames posing as base
+  // footage — Wav2Lip happily syncs a tiny corner face into a garbage asset.
+  if (!args.skipBaseCheck) {
+    const chk = spawnSync(VENV_PY, [path.join(AVATAR_DIR, 'check-base.py'), args.base], { cwd: W2L_DIR, encoding: 'utf8' });
+    const lastLine = (chk.stdout || '').trim().split('\n').pop() || '{}';
+    let verdict = {};
+    try { verdict = JSON.parse(lastLine); } catch (_) { /* fall through to status check */ }
+    if (chk.status !== 0) {
+      console.error('base footage REJECTED: ' + (verdict.reason || (chk.stderr || '').trim() || 'check-base failed'));
+      console.error('Use genuine talking-head framing (face >= 22% of frame height, centered), or --skip-base-check to override.');
+      process.exit(1);
+    }
+    console.log('base check ok: face ' + Math.round(verdict.faceH_frac * 100) + '% of frame height at (' + verdict.cx + ', ' + verdict.cy + ')');
+  }
 
   const baseH = Number(ffprobe(args.base, 'stream=height', 'v:0').split('\n')[0]);
   let resize = args.resizeFactor;
