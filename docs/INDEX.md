@@ -9,6 +9,7 @@ For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.
 - `authoring-prompts/README.md` — Reusable prompt templates for kicking off new video sessions. Per-kind copy-paste-then-fill-the-blanks briefs. Currently `builder-frontend-split.md` (single-field tutorial with builder left + frontend mirror right). Catalog will grow; README lists TODO kinds + future CLAUDE.md/skill-context wiring.
 - `authoring-api.md` — Public authoring contract. Manifest schema, chapter exports, descriptor mode, transitions, ctx helpers, validator behavior.
 - `current-workflow.md` — Thin pointer doc; the workflow loop lives in `wpforms-video` skill.
+- `kacie-intro-outro-recording-spec.md` — Recording spec for Kacie's real intro/outro bookends (standing delivery shape 2026-07-23) + pipeline notes: intake validation, stitch order, voice-seam QC, open Sullie-placement question.
 - `dom-prep.md` — Three-layer DOM staging model: universal baseline → per-snapshot profile → chapter-local delta.
 - `video-production-templates.md` — Storyboard / chapter / snapshot checklist + token budget + smoke spec.
 - `examples/legacy-manifest-skeleton.md` — Default manifest copy target.

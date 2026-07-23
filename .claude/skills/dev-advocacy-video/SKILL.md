@@ -69,6 +69,14 @@ node tools/render.js <slug> --resolution 3840x2160 --fps 30
 - Preflight: `ffmpeg` + `ffprobe` on PATH.
 - QC the MP4: ffprobe resolution/fps/duration; audio present + synced at start/middle/end; spot-check 3 frames.
 
+### 5b. Kacie bookends (standing delivery shape since 2026-07-23)
+Real Kacie on camera opens and closes every shipped tutorial; body stays HTML + her cloned narration voice. No synthetic face — the avatar route failed QC 3x and is parked (`tools/avatar/README.md`).
+1. **At body-QC pass** (parallel with render, don't serialize): Umair sends Kacie `docs/kacie-intro-outro-recording-spec.md` + this video's `narration/intro.txt` / `outro.txt` as reading scripts. Nudge batch-recording (several videos per sitting).
+2. **Intake on delivery:** `tools/avatar/check-base.py <file>` validates framing → trim the 3-4s pre/post-roll → loudness-normalize against the ElevenLabs narration (`tools/sfx/normalize.mjs`).
+3. **Stitch:** Kacie intro → postIntro/body → Kacie outro → HTML end card (doc-URL + Sullie rules stay), via `tools/stitch.js`.
+4. **Seam QC (Umair):** the two real-mic ↔ cloned-voice cut points; prefer landing intro→body under a chapter-card/music moment.
+5. **Cadence guard:** if her footage is days out, Umair decides ship-plain vs hold — cadence beats polish is still the law; never silently hold a finished video.
+
 ### 6. Ship + close the loop
 1. MP4 to Kacie (she uploads to WPForms socials/YouTube).
 2. When her upload is live: **embed it in the matching wpforms.com doc** ("docs" is a named distribution target in the rock). Metric: docs-without-video baseline 231 (2026-07-21) ticks down per embed.

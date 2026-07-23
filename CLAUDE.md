@@ -222,7 +222,7 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 - `node tools/check-video-playback.js <slug> [--seconds <n>]` — non-visual smoke
 - `node tools/render.js <slug> [--seek] [--fps 30]` — MP4 export
 - `node tools/render-html.js <slug> --duration <seconds> [--fps 30] [--out path]` — single-HTML editorial → MP4 (no engine)
-- `node tools/stitch.js videos/<slug>.video.json [--no-render] [--xfade <s>] [--dry-run]` — render pieces + ffmpeg-concat HF intro + HTML body + HF outro into one MP4 (the locked tutorial delivery shape)
+- `node tools/stitch.js videos/<slug>.video.json [--no-render] [--xfade <s>] [--dry-run]` — render pieces + ffmpeg-concat **real-Kacie intro + HTML body + real-Kacie outro** into one MP4 (delivery shape since 2026-07-23; HF bookends superseded — recording spec `docs/kacie-intro-outro-recording-spec.md`, flow in `dev-advocacy-video` step 5b)
 - `node tools/keyframes.js <video.mp4> [--frames 16 --cols 4]` — contact-sheet grid from an MP4 for visual QC handoff
 - `node tools/preview.js [--video <slug>] [--port 4321]` — live-reload + scrubber
 - `node tools/lint-determinism.js [--all] [--video <slug>]` — determinism check

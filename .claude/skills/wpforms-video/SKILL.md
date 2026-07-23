@@ -26,6 +26,8 @@ Outro (~5s)      → brand sign-off card. NO mac frame.
 
 Mac frame wraps the **Tutorial section only**. Intro / postIntro / outro live directly on the stage with no chrome around them. Canonical source: **INV-11** (tutorial shape) + **INV-3** (mac-frame transform rule) in `docs/video-architecture-invariants-2026-05-12.md`. If anything here disagrees with those, INV wins.
 
+> **Delivery bookends (standing since 2026-07-23):** the shipped MP4 is **real Kacie recording (intro) → postIntro → Tutorial → real Kacie recording (outro) → HTML outro card**. Author the HTML shape above unchanged (review URL still plays it), but know that at stitch time her real intro supersedes the HTML intro title card — the intro card's Sullie/wordmark duty moves to a short brand sting or bug overlay (per-storyboard call), and the HTML outro card SURVIVES as the end card (doc-URL + Sullie rules unchanged). `narration/intro.txt` / `outro.txt` double as Kacie's reading scripts — write them to be spoken to camera. Spec + intake + stitch + seam-QC flow: `docs/kacie-intro-outro-recording-spec.md` and `dev-advocacy-video` step 5b. No synthetic/avatar face anywhere (parked — `tools/avatar/README.md`).
+
 PostIntro is NOT optional. It is the difference between "PowerPoint" and "tutorial." See `wpforms-postintro` skill for the multi-animation rule + canonical references. The first cut of every tutorial that skipped a real postIntro became generic — see `docs/winning-pattern-analysis-2026-05-10.md` §C.
 
 ### Intro / outro / title-card production rules (brand + reveals)
