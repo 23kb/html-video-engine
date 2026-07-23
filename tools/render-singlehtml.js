@@ -94,6 +94,32 @@ function geometryGate(mp4, W, H, sampleTimes) {
   return { ok: maxW >= W * 0.9 && maxH >= H * 0.9, maxW, maxH };
 }
 
+/* Colour gate — the sibling of the geometry gate above.
+   Symptom it guards (Umair, 2026-07-23): "whenever it gets rendered, the video
+   becomes so white/white-ish/bright."
+   Cause: frames are captured as JPEG, which is full-range YCbCr. ffmpeg keeps
+   that range, silently promotes the requested `yuv420p` to `yuvj420p`, and
+   emits color_range=pc with color_space=bt470bg and NO transfer/primaries.
+   Players that assume limited-range BT.709 for H.264 — which is nearly all of
+   them, and every social platform — then remap the midtones and the picture
+   reads washed out. Fix is in the encode below: convert through RGB to
+   BT.709 limited range and tag it. This gate fails the render if the tags
+   ever regress. */
+function colourGate(mp4) {
+  const p = spawnSync('ffprobe', [
+    '-v', 'error', '-select_streams', 'v:0', '-show_entries',
+    'stream=pix_fmt,color_range,color_space,color_primaries,color_transfer',
+    '-of', 'default=noprint_wrappers=1:nokey=0', mp4,
+  ], { encoding: 'utf8' });
+  const got = Object.fromEntries((p.stdout || '').trim().split(/\r?\n/)
+    .map((l) => l.split('=')));
+  const want = { pix_fmt: 'yuv420p', color_range: 'tv', color_space: 'bt709',
+                 color_primaries: 'bt709', color_transfer: 'bt709' };
+  const bad = Object.entries(want).filter(([k, v]) => got[k] !== v)
+    .map(([k, v]) => `${k}=${got[k] || 'unset'} (want ${v})`);
+  return { ok: bad.length === 0, bad, got };
+}
+
 async function main() {
   const args = parseArgs(process.argv);
   const W = 1920 * args.scale, H = 1080 * args.scale;
@@ -193,8 +219,22 @@ async function main() {
   const r = spawnSync('ffmpeg', [
     '-y', '-hide_banner', '-loglevel', 'error',
     '-framerate', String(args.fps), '-i', path.join(TMP, 'f%05d.jpg'),
+    /* Colour-correct delivery encode (see colourGate above for the bug).
+       Route through rgb24 first: the JPEG frames are full-range BT.601, and
+       decoding to RGB removes every ambiguity about the input matrix before
+       swscale converts to BT.709 limited range. Without this the output is
+       yuvj420p/pc/bt470bg and reads washed out on any player that assumes
+       limited-range H.264 (i.e. essentially all of them). */
+    /* scale sets the matrix + range on the frame but leaves primaries and
+       transfer unspecified, so the encoder writes VUI with them unset and the
+       file is still under-tagged. setparams stamps all four. */
+    '-vf', 'format=rgb24,scale=out_color_matrix=bt709:out_range=limited,' +
+           'format=yuv420p,setparams=color_primaries=bt709:color_trc=bt709:' +
+           'colorspace=bt709:range=tv',
     '-c:v', 'libx264', '-preset', 'slow', '-crf', String(args.crf),
     '-profile:v', 'high', '-pix_fmt', 'yuv420p',
+    '-colorspace', 'bt709', '-color_primaries', 'bt709', '-color_trc', 'bt709',
+    '-color_range', 'tv',
     '-movflags', '+faststart',
     out,
   ], { stdio: 'inherit' });
@@ -208,6 +248,13 @@ async function main() {
     process.exit(4);
   }
   console.log(`[render] geometry OK (${gate.maxW}x${gate.maxH} of ${W}x${H}) → ${path.relative(REPO_ROOT, out)}`);
+
+  const col = colourGate(out);
+  if (!col.ok) {
+    console.error(`[render] COLOUR CHECK FAILED: ${col.bad.join(', ')} — the file will read washed out, do not ship`);
+    process.exit(5);
+  }
+  console.log('[render] colour OK (yuv420p, bt709 primaries/transfer/matrix, tv range)');
 
   // ── audio: mux the film's sfx plan onto this render (temp plan copy —
   //    the real plan.json is never mutated) ──
