@@ -2,6 +2,9 @@
 // Extract N evenly-spaced frame PNGs from an MP4 and tile them into a
 // contact-sheet image. Cheap visual QC artifact — pair with storyboard
 // approval to verify the rendered video matches the storyboard arc.
+// Each tile carries a burned-in "#N t.ts" badge (frame index + timestamp),
+// and the index→timestamp map is printed to stdout, so QC feedback like
+// "frame 7" resolves to an exact second.
 //
 // Usage:
 //   node tools/keyframes.js <video.mp4>                              # 12 frames, 4 columns
@@ -73,13 +76,25 @@ function ffprobeStream(file) {
   return { width: w, height: h };
 }
 
-function extractFrame(file, atSeconds, outPath, cellWidth, cellHeight) {
+// drawtext filter for the "#N t.ts" badge in a tile's lower-right corner.
+function labelFilter(text, cellWidth) {
+  const fontsize = Math.max(14, Math.round(cellWidth / 13));
+  const font = process.platform === 'win32'
+    ? "fontfile='C\\:/Windows/Fonts/arialbd.ttf'"
+    : 'font=Arial';
+  return `drawtext=${font}:text='${text}':fontsize=${fontsize}:fontcolor=white:`
+    + 'x=w-tw-10:y=h-th-10:box=1:boxcolor=black@0.55:boxborderw=8';
+}
+
+function extractFrame(file, atSeconds, outPath, cellWidth, cellHeight, label) {
+  const vf = `scale=${cellWidth}:${cellHeight}:flags=lanczos`
+    + (label ? ',' + labelFilter(label, cellWidth) : '');
   const r = spawnSync('ffmpeg', [
     '-y', '-hide_banner', '-loglevel', 'error',
     '-ss', String(atSeconds),
     '-i', file,
     '-frames:v', '1',
-    '-vf', `scale=${cellWidth}:${cellHeight}:flags=lanczos`,
+    '-vf', vf,
     outPath,
   ], { stdio: ['ignore', 'inherit', 'inherit'] });
   if (r.status !== 0) throw new Error(`ffmpeg frame extract failed at ${atSeconds}s`);
@@ -136,6 +151,7 @@ function main() {
 
   console.log(`[keyframes] input: ${path.relative(process.cwd(), input)}  duration: ${duration.toFixed(2)}s  source ${width}x${height}`);
   console.log(`[keyframes] sampling ${args.frames} frames @ ${args.cols}x${Math.ceil(args.frames / args.cols)} grid, ${args.cellWidth}x${cellHeight} per cell`);
+  console.log(`[keyframes] tile map: ${timestamps.map((t, i) => `${i + 1}:${t.toFixed(1)}s`).join('  ')}`);
 
   const tmpDir = args.keepFrames
     ? path.join(outDir, `${inputBase}-keyframes-frames`)
@@ -147,7 +163,7 @@ function main() {
     for (let i = 0; i < timestamps.length; i++) {
       const t = timestamps[i];
       const f = path.join(tmpDir, `frame-${String(i).padStart(3, '0')}.png`);
-      extractFrame(input, t, f, args.cellWidth, cellHeight);
+      extractFrame(input, t, f, args.cellWidth, cellHeight, `#${i + 1} ${t.toFixed(1)}s`);
       frameFiles.push(f);
     }
     tileToSheet(frameFiles, args.cols, args.cellWidth, cellHeight, out);
