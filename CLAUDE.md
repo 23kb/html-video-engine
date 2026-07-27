@@ -223,7 +223,7 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 - `node tools/render.js <slug> [--seek] [--fps 30]` — MP4 export
 - `node tools/render-html.js <slug> --duration <seconds> [--fps 30] [--out path]` — single-HTML editorial → MP4 (no engine)
 - `node tools/stitch.js videos/<slug>.video.json [--no-render] [--xfade <s>] [--dry-run]` — render pieces + ffmpeg-concat **real-Kacie intro + HTML body + real-Kacie outro** into one MP4 (delivery shape since 2026-07-23; HF bookends superseded — recording spec `docs/kacie-intro-outro-recording-spec.md`, flow in `dev-advocacy-video` step 5b)
-- `node tools/keyframes.js <video.mp4> [--frames 16 --cols 4]` — contact-sheet grid from an MP4 for visual QC handoff
+- `node tools/keyframes.js <video.mp4> [--frames 16 --cols 4]` — contact-sheet grid from an MP4 for visual QC handoff; each tile carries a burned-in `#N t.ts` badge and the tile→timestamp map prints to stdout, so "frame 7" feedback resolves to an exact second
 - `node tools/preview.js [--video <slug>] [--port 4321]` — live-reload + scrubber
 - `node tools/lint-determinism.js [--all] [--video <slug>]` — determinism check
 - `node tools/post-capture.js <slug> [--keep-fields 1,2,3]` — MANDATORY after every new capture: field trim (opt-in) + builder markup trim + CSS dedup + catalog regen, so snapshots are born lean
