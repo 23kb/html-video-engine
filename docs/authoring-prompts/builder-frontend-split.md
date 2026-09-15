@@ -46,9 +46,16 @@ Field-specific config (edit videos/{video-slug}/index.html):
 - TUTORIAL_FIELD.builderSlug = 'builder-field-options-{TYPE}'
 - TUTORIAL_FIELD.frontendFieldIds = [{IDS}]
 
+Hero beat: {which beat carries the video — usually beat 4, the mirror walkthrough}.
+Build it first; spend revisions there.
+
+Rules for the whole run (invariants — literal contracts, hold across every beat):
+- {e.g. the builder pane never leaves frame}
+- {e.g. the frontend pane only ever shows field IDs [{IDS}]}
+
 Constraints (standing — repeat in case CLAUDE.md isn't in context):
 - Single-HTML path (NOT chapter/manifest legacy).
-- No edits to runtime/* or engine/*.
+- No edits to protected core (videos/_shared/*, snapshots/**, validators/smoke tools, capture/capture.js). runtime/ and engine/ no longer exist (retired 2026-08-22).
 - No visual QC from you — I QC.
 - Storyboard gate first if narration is non-trivial (per wpforms-video skill).
 - Use motion-primitives Cursor for all cursor work, gsap.timeline for sequencing.
@@ -65,7 +72,7 @@ Deliverable:
 - videos/{video-slug}/index.html
 - videos/{video-slug}/storyboard.md
 - videos/{video-slug}/narration/*.txt + rendered *.mp3
-- Static-check pass: lint-determinism, validate-video.
+- Static-check pass: node tools/validate-singlehtml.js {video-slug} + node tools/lint-determinism.js --video {video-slug} (validate-video.js retired 2026-08-22).
 
 Plus a review URL: http://localhost:4321/videos/{video-slug}/index.html
 ```

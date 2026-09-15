@@ -40,10 +40,11 @@ includes it for timeline composition.
 ## Example
 
 ```js
-import { loadGsap } from '../../_shared/kit.js';
-import { mountCodeCard, mountPill } from '../../_shared/blocks/index.js';
+// gsap (+ DrawSVGPlugin for mountArrow) arrive via vendored script tags above the
+// module: <script src="/vendor/gsap/3.15.0/gsap.min.js"> + DrawSVGPlugin.min.js
+// (kit.js loadGsap retired 2026-08-22)
+import { mountCodeCard, mountPill } from '/videos/_shared/blocks/index.js';
 
-const gsap = await loadGsap({ drawSVG: true });
 const tl = gsap.timeline({ paused: true });
 const card = mountCodeCard({
   title: 'request',

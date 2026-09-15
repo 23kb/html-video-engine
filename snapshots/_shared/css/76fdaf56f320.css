@@ -1,0 +1,84 @@
+#wpforms-splash-modal header { display: flex; align-items: center; gap: 30px; padding: 50px 120px; }
+#wpforms-splash-modal header h2 { color: rgb(29, 35, 39); font-size: 24px; font-weight: 700; margin: 0px 0px 5px; }
+#wpforms-splash-modal header img { max-height: 80px; border: 4px solid rgb(255, 255, 255); border-radius: 40px; box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 15px; max-width: 80px !important; }
+#wpforms-splash-modal .wpforms-splash-notice { background-color: rgb(253, 242, 235); padding: 15px 20px; margin: 0px 120px 50px; color: rgb(44, 51, 56); border-radius: 6px; }
+#wpforms-splash-modal .wpforms-splash-notice a { color: rgb(226, 119, 48); font-weight: 600; text-decoration: underline rgba(226, 119, 48, 0.35); text-underline-offset: 2px; transition-property: border, background, color, text-decoration-color; }
+#wpforms-splash-modal .wpforms-splash-notice a:hover, #wpforms-splash-modal .wpforms-splash-notice a:focus { color: rgb(205, 102, 34); text-decoration-color: rgba(226, 119, 48, 0.75); }
+#wpforms-splash-modal .wpforms-splash-notice { background-color: rgb(253, 242, 235); padding: 15px 20px; margin: 25px 120px 75px; color: rgb(44, 51, 56); border-radius: 6px; }
+#wpforms-splash-modal .wpforms-splash-notice a { color: rgb(226, 119, 48); font-weight: 600; text-decoration: underline rgba(226, 119, 48, 0.35); text-underline-offset: 2px; transition-property: border, background, color, text-decoration-color; }
+#wpforms-splash-modal .wpforms-splash-notice a:hover, #wpforms-splash-modal .wpforms-splash-notice a:focus { color: rgb(205, 102, 34); text-decoration-color: rgba(226, 119, 48, 0.75); }
+#wpforms-splash-modal main .wpforms-splash-section { display: flex; align-items: center; gap: 50px; margin-bottom: 50px; padding: 0px 120px; }
+#wpforms-splash-modal main .wpforms-splash-section .wpforms-splash-badge { border-radius: 3px; background-color: rgb(237, 250, 239); padding: 8px 10px; color: rgb(0, 186, 55); text-align: center; font-size: 10px; font-weight: 700; line-height: 10px; letter-spacing: 0.5px; text-transform: uppercase; cursor: default; }
+#wpforms-splash-modal main .wpforms-splash-section h3 { color: rgb(29, 35, 39); font-size: 28px; font-weight: 500; line-height: 36px; margin: 15px 0px 10px; }
+#wpforms-splash-modal main .wpforms-splash-section p { line-height: 25px !important; opacity: 0.9; }
+#wpforms-splash-modal main .wpforms-splash-section ul { list-style: revert; margin-left: 2em; }
+#wpforms-splash-modal main .wpforms-splash-section .wpforms-splash-section-buttons { display: flex; align-items: flex-start; gap: 20px; margin-top: 20px; }
+#wpforms-splash-modal main .wpforms-splash-section .wpforms-splash-section-buttons .wpforms-btn { padding: 10px 15px; font-size: 14px; line-height: normal; font-weight: 500; }
+#wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-fifty-fifty .wpforms-splash-section-content { flex: 1 1 0%; }
+#wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-fifty-fifty .wpforms-splash-section-image { flex: 1 1 0%; }
+#wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-one-third-two-thirds .wpforms-splash-section-content { flex: 2 1 0%; }
+#wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-one-third-two-thirds .wpforms-splash-section-image { flex: 1 1 0%; }
+#wpforms-splash-modal main .wpforms-splash-section:nth-child(2n+1) .wpforms-splash-section-content { order: 2; }
+#wpforms-splash-modal main .wpforms-splash-section:nth-child(2n+1) .wpforms-splash-section-image { order: 1; }
+#wpforms-splash-modal main .wpforms-splash-section .wpforms-splash-section-image { flex: 0 0 auto; place-self: center; }
+#wpforms-splash-modal main .wpforms-splash-section .wpforms-splash-section-image.wpforms-image-shadow-apply img { box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 50px 0px; }
+#wpforms-splash-modal main .wpforms-splash-section .wpforms-splash-section-image.wpforms-image-shadow-yes img { max-width: calc(100% + 60px); margin: -18px 0px -38px -30px; }
+#wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-full-width { flex-direction: column; align-items: center; gap: 0px; text-align: center; padding: 0px; margin-bottom: 75px; }
+#wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-full-width .wpforms-splash-section-content, #wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-full-width .wpforms-splash-section-image { flex: revert; order: revert; }
+#wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-full-width .wpforms-splash-section-content { width: fit-content; background-color: rgb(246, 247, 247); padding: 50px 120px; }
+#wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-full-width .wpforms-splash-section-content .wpforms-splash-badge { background-color: rgb(255, 255, 255); }
+#wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-full-width .wpforms-splash-section-content h3 { font-size: 32px; }
+#wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-full-width .wpforms-splash-section-image { width: 100%; background: linear-gradient(rgb(246, 247, 247) 50%, rgb(255, 255, 255) 50%); }
+#wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-full-width .wpforms-splash-section-image img { max-width: 760px; padding: 10px; background: rgb(255, 255, 255); border-radius: 9px; box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 50px; }
+#wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-full-width .wpforms-splash-section-buttons { justify-content: center; }
+#wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-full-width h3 { margin-top: 20px; }
+#wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-full-width p { font-size: 18px !important; line-height: 28px !important; }
+#wpforms-splash-modal footer { display: flex; padding: 50px 120px; align-items: center; gap: 50px; background: rgb(44, 51, 56); box-shadow: rgba(0, 0, 0, 0.05) 0px 2px 4px 0px; }
+#wpforms-splash-modal footer h2 { margin: 0px 0px 10px; color: rgb(255, 255, 255); font-size: 28px; font-weight: 500; line-height: 36px; }
+#wpforms-splash-modal footer a { padding: 11px 17px; font-size: 16px; font-weight: 500; }
+#wpforms-splash-modal footer p { opacity: 0.9; color: rgba(255, 255, 255, 0.8) !important; line-height: 25px !important; }
+#wpforms-splash-modal .wpforms-btn { border: 1px solid; border-radius: 4px; cursor: pointer; display: inline-block; margin: 0px; text-decoration: none; text-align: center; vertical-align: middle; white-space: nowrap; box-shadow: none; }
+#wpforms-splash-modal .wpforms-btn.inactive { cursor: no-drop; pointer-events: none; box-shadow: none; opacity: 0.5; }
+#wpforms-splash-modal .wpforms-btn-orange { background-color: rgb(226, 119, 48); border-color: rgb(226, 119, 48); color: rgb(255, 255, 255); }
+#wpforms-splash-modal .wpforms-btn-orange:hover, #wpforms-splash-modal .wpforms-btn-orange:active, #wpforms-splash-modal .wpforms-btn-orange:focus { background-color: rgb(205, 102, 34); border-color: rgb(205, 102, 34); color: rgb(255, 255, 255); }
+#wpforms-splash-modal .wpforms-btn-orange:focus { box-shadow: rgb(205, 102, 34) 0px 0px 0px 2px; border-color: rgb(255, 255, 255); outline: 0px; }
+#wpforms-splash-modal .wpforms-btn-bordered { background-color: rgb(255, 255, 255); color: rgb(80, 87, 94); border-color: rgb(140, 143, 148); }
+#wpforms-splash-modal .wpforms-btn-bordered:hover, #wpforms-splash-modal .wpforms-btn-bordered:focus { color: rgb(44, 51, 56); border-color: rgb(80, 87, 94); }
+#wpforms-splash-modal .wpforms-btn-bordered:focus { background-color: rgb(255, 255, 255); box-shadow: rgb(80, 87, 94) 0px 0px 0px 1px; outline: 0px; }
+#wpforms-splash-modal .wpforms-btn-green { background-color: rgb(0, 138, 32); color: rgb(255, 255, 255); border-color: rgb(0, 138, 32); }
+#wpforms-splash-modal .wpforms-btn-green:hover, #wpforms-splash-modal .wpforms-btn-green:focus { background-color: rgb(0, 163, 42); color: rgb(255, 255, 255); }
+body.wpforms-splash-modal { overflow: hidden; margin-right: var(--wpforms-body-scrollbar-width); }
+body.wpforms-splash-modal #wpadminbar { width: calc( 100vw - var( --wpforms-body-scrollbar-width )); }
+body.wpforms-splash-modal .jconfirm { overflow: hidden; bottom: revert; min-height: 100vh; backdrop-filter: blur(4px); }
+body.wpforms-splash-modal .jconfirm .jconfirm-cell { vertical-align: top; overflow-y: auto; max-height: 100vh; height: 100vh; display: flex; justify-content: center; align-items: center; }
+body.wpforms-splash-modal .jconfirm .jconfirm-cell::-webkit-scrollbar { background: transparent; width: 15px; height: 15px; }
+body.wpforms-splash-modal .jconfirm .jconfirm-cell::-webkit-scrollbar-track { background: transparent; }
+body.wpforms-splash-modal .jconfirm .jconfirm-cell::-webkit-scrollbar-thumb { box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 5px 5px inset; background: transparent; border-radius: 15px; border: 4px solid transparent; }
+body.wpforms-splash-modal .jconfirm .jconfirm-cell::-webkit-resizer, body.wpforms-splash-modal .jconfirm .jconfirm-cell::-webkit-scrollbar-button, body.wpforms-splash-modal .jconfirm .jconfirm-cell::-webkit-scrollbar-corner { display: none; }
+body.wpforms-splash-modal .jconfirm .jconfirm-cell:hover::-webkit-scrollbar { background: transparent; width: 15px; height: 15px; }
+body.wpforms-splash-modal .jconfirm .jconfirm-cell:hover::-webkit-scrollbar-track { background: transparent; }
+body.wpforms-splash-modal .jconfirm .jconfirm-cell:hover::-webkit-scrollbar-thumb { box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 5px 5px inset; background: transparent; border-radius: 15px; border: 4px solid transparent; }
+body.wpforms-splash-modal .jconfirm .jconfirm-cell:hover::-webkit-resizer, body.wpforms-splash-modal .jconfirm .jconfirm-cell:hover::-webkit-scrollbar-button, body.wpforms-splash-modal .jconfirm .jconfirm-cell:hover::-webkit-scrollbar-corner { display: none; }
+body.wpforms-splash-modal .jconfirm .jconfirm-cell .jc-bs3-container { padding-bottom: 50px; }
+body.wpforms-splash-modal .jconfirm .jconfirm-cell .jconfirm-holder { width: 100%; padding: 0px !important; }
+body.wpforms-splash-modal .jconfirm.jconfirm-open .jconfirm-bg { position: sticky; height: 100%; }
+body.wpforms-splash-modal .jconfirm.jconfirm-open .jconfirm-scrollpane { margin-top: -100vh; }
+body.wpforms-splash-modal .jconfirm.jconfirm-modern .jconfirm-bg { background-color: rgb(114, 119, 124); opacity: 0.75; }
+body.wpforms-splash-modal .jconfirm-box { max-width: 1000px; width: 100% !important; }
+body.wpforms-splash-modal .jconfirm-box-container { opacity: 0; padding: 0px 50px; }
+body.wpforms-splash-modal div.jconfirm .jconfirm-box-container .jconfirm-box { border-radius: 12px; box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 50px; }
+body.wpforms-splash-modal div.jconfirm .jconfirm-box-container .jconfirm-box.jconfirm-type-default { padding: 0px; transition-duration: initial !important; }
+body.wpforms-splash-modal .jconfirm.jconfirm-modern .jconfirm-box div.jconfirm-content { text-align: revert; }
+body.wpforms-splash-modal div.jconfirm .jconfirm-box-container .jconfirm-box .jconfirm-content-pane { display: block; margin-bottom: 0px; max-height: none !important; }
+body.wpforms-splash-modal div.jconfirm .jconfirm-box-container .jconfirm-box .jconfirm-content-pane .jconfirm-content { color: rgb(60, 67, 74); font-size: 16px; line-height: 24px; margin-bottom: 0px; overflow: inherit; }
+body.wpforms-splash-modal div.jconfirm .jconfirm-box-container .jconfirm-box .jconfirm-content-pane .jconfirm-content p { color: rgb(80, 87, 94); font-size: 16px; font-weight: 400; line-height: 22px; margin-block: 0px; }
+body.wpforms-splash-modal div.jconfirm .jconfirm-box-container .jconfirm-box .jconfirm-closeIcon { top: 20px; right: 20px; }
+body.wpforms-splash-modal div.jconfirm .jconfirm-box-container .jconfirm-box .jconfirm-closeIcon::after { font-size: 20px; }
+@media screen and (max-width: 1024px) {
+  #wpforms-splash-modal header, #wpforms-splash-modal footer { padding: 50px; }
+  #wpforms-splash-modal main .wpforms-splash-section { padding: 0px 50px; }
+  #wpforms-splash-modal main .wpforms-splash-section.wpforms-splash-section-full-width .wpforms-splash-section-content { padding: 50px; }
+}
+@media screen and (max-width: 768px) {
+  body.wpforms-splash-modal .jconfirm { display: none; }
+}

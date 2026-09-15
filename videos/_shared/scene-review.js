@@ -43,3 +43,35 @@ export function reviewScene(search) {
     matches:   (re) => scene !== null && re.test(scene),// e.g. /^ch\d+$/ to skip the preroll
   };
 }
+
+// ?skip=a,b — the DELIVERABLE cut (fix-round B5; generalizes the
+// custom-css-targeting inline pattern, ccs 26).
+//
+// Delivery shape since 2026-07-23: tools/stitch.js concats REAL-Kacie intro +
+// HTML body + REAL-Kacie outro, so the HTML must not render its own bookends
+// at delivery — rendering them too would double them up at stitch time.
+// `?skip=intro,outro` IS the deliverable cut, passed through the renderer via
+// `--query "skip=intro,outro"` (render-singlehtml-audio.js). Distinct from
+// `?scene=` above, which is REVIEW-ONLY by contract and never touches the
+// deliverable.
+//
+// Wiring in play():
+//   import { deliverableCut } from '/videos/_shared/scene-review.js';
+//   const cut = deliverableCut();
+//   if (cut.skips('intro')) { gsap.set(introCard, { autoAlpha: 0 }); }
+//   else { /* full intro beat */ }
+//
+// `search` is injectable for testing; defaults to the live query string.
+export function deliverableCut(search) {
+  if (search === undefined) {
+    search = (typeof location !== 'undefined' && location.search) || '';
+  }
+  const cut = new Set(
+    (new URLSearchParams(search).get('skip') || '')
+      .split(',').map(s => s.trim()).filter(Boolean)
+  );
+  return {
+    skips: (name) => cut.has(name),   // is this segment cut from the deliverable?
+    active: cut.size > 0,             // any deliverable cut requested?
+  };
+}

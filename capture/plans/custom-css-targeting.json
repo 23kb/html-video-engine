@@ -1,0 +1,33 @@
+{
+  "targetPath": "/wp-admin/admin.php?page=wpforms-overview",
+  "variants": [
+    {
+      "slug": "admin-forms-overview-shortcode",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-overview",
+      "steps": [
+        { "wait": 2500 },
+        { "eval": "var r=document.querySelector('input[name=\"form_id[]\"][value=\"406\"]'); if(r){ var tr=r.closest('tr'); if(tr) tr.scrollIntoView({block:'center'}); }", "settle": 900 }
+      ]
+    },
+    {
+      "slug": "builder-406-field-advanced-css",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=406",
+      "steps": [
+        { "wait": 4000 },
+        { "eval": "document.querySelectorAll('.wpforms-education-popup, .wpforms-admin-popup, .jconfirm, #wpforms-builder-lite-notice').forEach(function(e){ e.remove(); });", "settle": 400 },
+        { "eval": "var f=document.querySelector('#wpforms-field-3')||document.querySelector('.wpforms-field[data-field-id=\"3\"]'); if(f){ f.click(); }", "settle": 1600 },
+        { "eval": "var t=document.querySelector('#wpforms-field-option-advanced-3 .wpforms-field-option-group-toggle'); if(t){ t.click(); }", "settle": 1600 },
+        { "eval": "var g=document.querySelector('#wpforms-field-option-advanced-3'); if(g){ g.classList.add('wpforms-field-option-group-open'); }", "settle": 600 },
+        { "eval": "var c=document.querySelector('#wpforms-field-option-row-3-css'); if(c){ c.scrollIntoView({block:'center'}); }", "settle": 900 }
+      ]
+    },
+    {
+      "slug": "admin-customizer-additional-css",
+      "targetPath": "/wp-admin/customize.php?autofocus%5Bsection%5D=custom_css",
+      "steps": [
+        { "wait": 6000 },
+        { "eval": "var s=document.querySelector('#accordion-section-custom_css > h3, #accordion-section-custom_css .accordion-section-title'); if(s && !document.body.classList.contains('section-open')){ s.click(); }", "settle": 2500 }
+      ]
+    }
+  ]
+}

@@ -1,1579 +1,2161 @@
 {
- "generatedAt": "2026-07-23T07:28:43.897Z",
- "count": 162,
- "snapshots": [
-  {
-   "slug": "admin-about",
-   "category": "admin/page",
-   "shows": "About Us page",
-   "topics": [
-    "about",
-    "info"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-about",
-   "status": "deferred",
-   "statusNote": "never captured on disk; entry preserves planning intent"
-  },
-  {
-   "slug": "admin-addons",
-   "category": "admin/page",
-   "shows": "Addons page â€” all available addons grid",
-   "topics": [
-    "addons",
-    "pro",
-    "extend"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-addons"
-  },
-  {
-   "slug": "admin-community",
-   "category": "admin/page",
-   "shows": "Community hub page",
-   "topics": [
-    "community"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-community",
-   "status": "deferred",
-   "statusNote": "never captured on disk; entry preserves planning intent"
-  },
-  {
-   "slug": "admin-entries",
-   "category": "admin/page",
-   "shows": "Entries list â€” submissions table",
-   "topics": [
-    "entries",
-    "submissions"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-entries",
-   "status": "deferred",
-   "statusNote": "never captured on disk; entry preserves planning intent"
-  },
-  {
-   "slug": "admin-entries-imported",
-   "category": "admin/page",
-   "shows": "Entries list â€” destination form populated after import (1,200 items)",
-   "topics": [
-    "entries",
-    "import",
-    "migration",
-    "payoff"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=list&form_id=406"
-  },
-  {
-   "slug": "admin-entries-list",
-   "category": "admin/page",
-   "shows": "Entries list for demo form â€” submissions table with filters and row actions",
-   "topics": [
-    "entries",
-    "submissions",
-    "demo-form"
-   ],
-   "sourcePath": "/wp-admin/admin.php?view=list&form_id=32&page=wpforms-entries"
-  },
-  {
-   "slug": "admin-entries-overview",
-   "category": "admin/page",
-   "shows": "Entries overview â€” forms with entry counts before selecting a form",
-   "topics": [
-    "entries",
-    "submissions",
-    "overview"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-entries"
-  },
-  {
-   "slug": "admin-entry-detail",
-   "category": "admin/page",
-   "shows": "Entry detail view â€” submitted fields, notes, location, and log panels",
-   "topics": [
-    "entries",
-    "entry-detail",
-    "submissions"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=details&entry_id=5"
-  },
-  {
-   "slug": "admin-forms-overview",
-   "category": "admin/page",
-   "shows": "All Forms list â€” table view, bulk actions, Add New button",
-   "topics": [
-    "create-form",
-    "first-form",
-    "manage-forms"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-overview"
-  },
-  {
-   "slug": "admin-forms-overview-lite-locked",
-   "category": "admin/page",
-   "shows": "Forms Overview on a LITE license â€” Interactions + Conversion columns locked with upgrade affordance",
-   "topics": [
-    "lite",
-    "locked-columns",
-    "upsell",
-    "form-analytics"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-overview",
-   "status": "deferred",
-   "statusNote": "FIX-19: awaiting the Lite LocalWP site (GUI step) â€” plan ready at capture/lite-locked-plan.json"
-  },
-  {
-   "slug": "admin-forms-overview-lite-upgrade-modal",
-   "category": "admin/page",
-   "shows": "Lite Forms Overview with the upgrade modal open (clicked a locked analytics column)",
-   "topics": [
-    "lite",
-    "upgrade-modal",
-    "upsell",
-    "form-analytics"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-overview",
-   "status": "deferred",
-   "statusNote": "FIX-19: awaiting the Lite LocalWP site (GUI step) â€” plan ready at capture/lite-locked-plan.json"
-  },
-  {
-   "slug": "admin-payment-detail",
-   "category": "admin/page",
-   "shows": "Payment detail view â€” payment summary and linked entry summary",
-   "topics": [
-    "payments",
-    "payment-detail",
-    "stripe"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-payments&view=payment&payment_id=1"
-  },
-  {
-   "slug": "admin-payments",
-   "category": "admin/page",
-   "shows": "Payments list â€” transactions table",
-   "topics": [
-    "payments"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-payments"
-  },
-  {
-   "slug": "admin-payments-coupons",
-   "category": "admin/page",
-   "shows": "Payments coupons page â€” coupon management tab",
-   "topics": [
-    "payments",
-    "coupons"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-payments&view=coupons"
-  },
-  {
-   "slug": "admin-privacy-compliance",
-   "category": "admin/page",
-   "shows": "Privacy Compliance page",
-   "topics": [
-    "privacy",
-    "gdpr",
-    "compliance"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-privacy-compliance"
-  },
-  {
-   "slug": "admin-settings-access",
-   "category": "admin/settings",
-   "shows": "WPForms â†’ Settings â†’ Access (role/capability, Pro)",
-   "topics": [
-    "settings",
-    "access",
-    "roles",
-    "pro"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=access"
-  },
-  {
-   "slug": "admin-settings-captcha",
-   "category": "admin/settings",
-   "shows": "WPForms â†’ Settings â†’ CAPTCHA tab (empty/current site state)",
-   "topics": [
-    "settings",
-    "captcha",
-    "spam"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=captcha"
-  },
-  {
-   "slug": "admin-settings-email",
-   "category": "admin/settings",
-   "shows": "WPForms â†’ Settings â†’ Email (SMTP provider, from name)",
-   "topics": [
-    "settings",
-    "email",
-    "smtp"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=email"
-  },
-  {
-   "slug": "admin-settings-general",
-   "category": "admin/settings",
-   "shows": "WPForms â†’ Settings â†’ General (license, CSS loading)",
-   "topics": [
-    "settings",
-    "license",
-    "first-install"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=general"
-  },
-  {
-   "slug": "admin-settings-geolocation",
-   "category": "admin/settings",
-   "shows": "WPForms â†’ Settings â†’ Geolocation",
-   "topics": [
-    "settings",
-    "geo",
-    "geolocation"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=geolocation"
-  },
-  {
-   "slug": "admin-settings-integrations",
-   "category": "admin/settings",
-   "shows": "WPForms â†’ Settings â†’ Integrations (credentials)",
-   "topics": [
-    "settings",
-    "integrations"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=integrations"
-  },
-  {
-   "slug": "admin-settings-misc",
-   "category": "admin/settings",
-   "shows": "WPForms â†’ Settings â†’ Misc (uninstall, custom post types)",
-   "topics": [
-    "settings",
-    "misc"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=misc"
-  },
-  {
-   "slug": "admin-settings-payments",
-   "category": "admin/settings",
-   "shows": "WPForms â†’ Settings â†’ Payments (currency, mode, Pro)",
-   "topics": [
-    "settings",
-    "payments",
-    "currency"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=payments"
-  },
-  {
-   "slug": "admin-settings-validation",
-   "category": "admin/settings",
-   "shows": "WPForms â†’ Settings â†’ Validation (error messages)",
-   "topics": [
-    "settings",
-    "validation"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=validation"
-  },
-  {
-   "slug": "admin-smtp",
-   "category": "admin/page",
-   "shows": "SMTP configuration page",
-   "topics": [
-    "smtp",
-    "email-delivery"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-smtp",
-   "status": "deferred",
-   "statusNote": "never captured on disk; entry preserves planning intent"
-  },
-  {
-   "slug": "admin-templates",
-   "category": "admin/page",
-   "shows": "Form Templates library â€” category filters, template cards",
-   "topics": [
-    "templates",
-    "create-form"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-templates"
-  },
-  {
-   "slug": "admin-tools-action-scheduler",
-   "category": "admin/page",
-   "shows": "Tools â†’ Scheduled Actions â€” WPForms action scheduler list",
-   "topics": [
-    "tools",
-    "scheduled-actions",
-    "automation"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=action-scheduler&s=wpforms"
-  },
-  {
-   "slug": "admin-tools-entry-automation",
-   "category": "admin/page",
-   "shows": "TODO-describe: admin tools entry automation",
-   "topics": [
-    "admin",
-    "tools",
-    "entry",
-    "automation"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=entry-automation"
-  },
-  {
-   "slug": "admin-tools-export",
-   "category": "admin/page",
-   "shows": "Tools â†’ Export forms/entries",
-   "topics": [
-    "tools",
-    "export"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=export"
-  },
-  {
-   "slug": "admin-tools-import",
-   "category": "admin/page",
-   "shows": "Tools â†’ Import forms",
-   "topics": [
-    "tools",
-    "import"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=import"
-  },
-  {
-   "slug": "admin-tools-import-entries",
-   "category": "admin/page",
-   "shows": "Tools â†’ Import Entries â€” landing (source step, From an Installed Plugin selected, Continue disabled)",
-   "topics": [
-    "import",
-    "entries",
-    "migration",
-    "tools",
-    "importer"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=import&tab=entries"
-  },
-  {
-   "slug": "admin-tools-logs",
-   "category": "admin/page",
-   "shows": "Tools â†’ System logs",
-   "topics": [
-    "tools",
-    "logs",
-    "debug"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=logs"
-  },
-  {
-   "slug": "admin-tools-system",
-   "category": "admin/page",
-   "shows": "Tools â†’ System Info â€” WordPress, server, and WPForms environment report",
-   "topics": [
-    "tools",
-    "system-info",
-    "debug"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=system"
-  },
-  {
-   "slug": "builder-calculation-editor-active",
-   "category": "builder/field-options",
-   "shows": "Calculation formula editor open in the form builder",
-   "topics": [
-    "fields",
-    "calculations",
-    "formula-editor"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder",
-   "status": "needs-recapture",
-   "statusNote": "meta.json on disk; index.html deleted in 63e05aa pending recapture"
-  },
-  {
-   "slug": "builder-embed-modal",
-   "category": "builder/modal",
-   "shows": "Embed button â†’ modal: Embed in Existing Page / Create New Page",
-   "topics": [
-    "embed",
-    "first-form",
-    "publish"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-address",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Address (Pro)",
-   "topics": [
-    "fields",
-    "address",
-    "pro"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-checkbox",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Checkboxes",
-   "topics": [
-    "fields",
-    "choices"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-content",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Content (static text)",
-   "topics": [
-    "fields",
-    "content"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-date-time",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Date/Time (Pro; 3 format modes)",
-   "topics": [
-    "fields",
-    "date",
-    "pro"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-divider",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Section Divider",
-   "topics": [
-    "fields",
-    "divider"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-email",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Email",
-   "topics": [
-    "fields",
-    "email"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-file-upload",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” File Upload (Pro; Modern/Classic)",
-   "topics": [
-    "fields",
-    "upload",
-    "pro"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-hidden",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Hidden Field",
-   "topics": [
-    "fields",
-    "hidden"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-html",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” HTML block",
-   "topics": [
-    "fields",
-    "custom-html"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-layout",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Layout (2-col container)",
-   "topics": [
-    "fields",
-    "layout"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-likert_scale",
-   "category": "builder/field-options",
-   "shows": "Likert Scale field options panel â€” rows, columns, single-row, multiple-responses, style",
-   "topics": [
-    "fields",
-    "likert-scale",
-    "survey"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
-  },
-  {
-   "slug": "builder-field-options-name",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Name (simple/first-last/full)",
-   "topics": [
-    "fields",
-    "name"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-net_promoter_score",
-   "category": "builder/field-options",
-   "shows": "Net Promoter Score field options panel â€” scale, label inputs, style",
-   "topics": [
-    "fields",
-    "nps",
-    "net-promoter-score",
-    "survey"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
-  },
-  {
-   "slug": "builder-field-options-number",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Number",
-   "topics": [
-    "fields",
-    "calculations"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-number-slider",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Number Slider",
-   "topics": [
-    "fields"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-pagebreak",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Page Break",
-   "topics": [
-    "fields",
-    "multi-page",
-    "pagination"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-password",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Password (Pro)",
-   "topics": [
-    "fields",
-    "password",
-    "pro"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-payment-fields",
-   "category": "builder/field-options",
-   "shows": "Combined payment fields options â€” single, checkbox, multiple, select, coupon, total + Stripe + PayPal Commerce canvases preserved",
-   "topics": [
-    "fields",
-    "payment",
-    "combined-snapshot"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
-  },
-  {
-   "slug": "builder-field-options-phone",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Phone (Pro)",
-   "topics": [
-    "fields",
-    "phone",
-    "pro"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-radio",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Multiple Choice (radio)",
-   "topics": [
-    "fields",
-    "choices"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-rating",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Rating (Pro)",
-   "topics": [
-    "fields",
-    "rating",
-    "pro"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-repeater",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Repeater (Pro; Rows/Blocks)",
-   "topics": [
-    "fields",
-    "repeater",
-    "pro"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-richtext",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Rich Text / WYSIWYG (Pro)",
-   "topics": [
-    "fields",
-    "richtext",
-    "pro"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-select",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Dropdown",
-   "topics": [
-    "fields",
-    "dropdown",
-    "choices"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-signature",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Signature (Pro)",
-   "topics": [
-    "fields",
-    "signature",
-    "pro"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-text",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Single Line Text",
-   "topics": [
-    "fields",
-    "text-field"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-textarea",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Paragraph Text",
-   "topics": [
-    "fields"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-field-options-url",
-   "category": "builder/field-options",
-   "shows": "Field Options â€” Website/URL (Pro)",
-   "topics": [
-    "fields",
-    "url",
-    "pro"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-fields",
-   "category": "builder/panel",
-   "shows": "Form builder Fields panel â€” palette + canvas",
-   "topics": [
-    "create-form",
-    "add-fields",
-    "layout",
-    "any-builder-video"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
-  },
-  {
-   "slug": "builder-payments",
-   "category": "builder/panel",
-   "shows": "Form builder Payments panel â€” Stripe/PayPal setup",
-   "topics": [
-    "payments",
-    "stripe",
-    "paypal"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=payments"
-  },
-  {
-   "slug": "builder-providers",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” provider integrations",
-   "topics": [
-    "integrations",
-    "mailchimp",
-    "n8n",
-    "notion"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=providers"
-  },
-  {
-   "slug": "builder-providers-activecampaign",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” ActiveCampaign provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-providers-activecampaign-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” ActiveCampaign with a connection block mounted + cascading fields"
-  },
-  {
-   "slug": "builder-providers-aweber_v2",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” AWeber provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-providers-aweber_v2-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” AWeber with a connection block mounted + cascading fields"
-  },
-  {
-   "slug": "builder-providers-constant-contact-v3",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Constant Contact provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-providers-constant-contact-v3-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Constant Contact with a connection block mounted + cascading fields"
-  },
-  {
-   "slug": "builder-providers-convertkit",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” ConvertKit provider settings",
-   "topics": [
-    "marketing",
-    "providers",
-    "convertkit",
-    "integrations"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
-  },
-  {
-   "slug": "builder-providers-convertkit-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Kit (ConvertKit) with a connection block mounted + cascading fields"
-  },
-  {
-   "slug": "builder-providers-drip",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Drip provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-providers-drip-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Drip with a connection block mounted + cascading fields"
-  },
-  {
-   "slug": "builder-providers-hubspot",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” HubSpot provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-providers-hubspot-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” HubSpot with a connection block mounted + cascading fields"
-  },
-  {
-   "slug": "builder-providers-klaviyo",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Klaviyo provider selected, Add New Connection visible",
-   "topics": [
-    "marketing",
-    "klaviyo",
-    "provider"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
-  },
-  {
-   "slug": "builder-providers-klaviyo-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Klaviyo with a connection block mounted + cascading fields"
-  },
-  {
-   "slug": "builder-providers-mailchimpv3",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Mailchimp v3 provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-providers-mailchimpv3-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Mailchimp v3 with a connection block mounted + cascading fields"
-  },
-  {
-   "slug": "builder-providers-n8n",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” n8n provider selected, settings-block-default shown"
-  },
-  {
-   "slug": "builder-providers-n8n-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” n8n settings block, conditional logic ready"
-  },
-  {
-   "slug": "builder-providers-pipedrive",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Pipedrive provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-providers-pipedrive-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Pipedrive with a connection block mounted + cascading fields"
-  },
-  {
-   "slug": "builder-providers-slack",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Slack provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-providers-slack-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Slack with a connection block mounted + cascading fields"
-  },
-  {
-   "slug": "builder-providers-twilio",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Twilio provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-providers-twilio-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Marketing panel â€” Twilio with a connection block mounted + cascading fields"
-  },
-  {
-   "slug": "builder-revisions",
-   "category": "builder/panel",
-   "shows": "Form builder Revisions panel â€” version history",
-   "topics": [
-    "revisions",
-    "collaboration"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=revisions"
-  },
-  {
-   "slug": "builder-settings-airtable",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Airtable provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-settings-airtable-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Airtable connection mounted, cascade fields hidden"
-  },
-  {
-   "slug": "builder-settings-anti_spam",
-   "category": "builder/settings",
-   "shows": "Settings â†’ Spam Protection and Security",
-   "topics": [
-    "spam",
-    "security",
-    "recaptcha"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}"
-  },
-  {
-   "slug": "builder-settings-confirmation",
-   "category": "builder/settings",
-   "shows": "Settings â†’ Confirmations â€” message/redirect/email",
-   "topics": [
-    "confirmations",
-    "thank-you"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}"
-  },
-  {
-   "slug": "builder-settings-confirmation-dropdown-closed",
-   "category": "builder/settings",
-   "shows": "Settings â†’ Confirmations with confirmation type dropdown closed",
-   "topics": [
-    "settings",
-    "confirmations",
-    "dropdown"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
-  },
-  {
-   "slug": "builder-settings-confirmation-dropdown-open",
-   "category": "builder/settings",
-   "shows": "Settings â†’ Confirmations with confirmation type dropdown open",
-   "topics": [
-    "settings",
-    "confirmations",
-    "dropdown"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
-  },
-  {
-   "slug": "builder-settings-conversational_forms",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Conversational Forms panel"
-  },
-  {
-   "slug": "builder-settings-dropbox",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Dropbox provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-settings-dropbox-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Dropbox connection mounted, cascade fields hidden"
-  },
-  {
-   "slug": "builder-settings-entry_automation",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Entry Automation panel"
-  },
-  {
-   "slug": "builder-settings-entry_automation-export-email",
-   "category": "builder/panel",
-   "shows": "TODO-describe: builder settings entry_automation export email",
-   "topics": [
-    "builder",
-    "settings",
-    "entry_automation",
-    "export",
-    "email"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725"
-  },
-  {
-   "slug": "builder-settings-entry_automation-export-gdrive",
-   "category": "builder/panel",
-   "shows": "TODO-describe: builder settings entry_automation export gdrive",
-   "topics": [
-    "builder",
-    "settings",
-    "entry_automation",
-    "export",
-    "gdrive"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725"
-  },
-  {
-   "slug": "builder-settings-entry_automation-gdrive-signin",
-   "category": "builder/panel",
-   "shows": "TODO-describe: builder settings entry_automation gdrive signin",
-   "topics": [
-    "builder",
-    "settings",
-    "entry_automation",
-    "gdrive",
-    "signin"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725"
-  },
-  {
-   "slug": "builder-settings-entry_automation-name-overlay",
-   "category": "builder/panel",
-   "shows": "TODO-describe: builder settings entry_automation name overlay",
-   "topics": [
-    "builder",
-    "settings",
-    "entry_automation",
-    "name",
-    "overlay"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725"
-  },
-  {
-   "slug": "builder-settings-entry_automation-task-saved",
-   "category": "builder/panel",
-   "shows": "TODO-describe: builder settings entry_automation task saved",
-   "topics": [
-    "builder",
-    "settings",
-    "entry_automation",
-    "task",
-    "saved"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725"
-  },
-  {
-   "slug": "builder-settings-form_locker",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Form Locker panel"
-  },
-  {
-   "slug": "builder-settings-general",
-   "category": "builder/settings",
-   "shows": "Settings â†’ General â€” form title, description, tags, CSS",
-   "topics": [
-    "form-settings",
-    "first-form"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}"
-  },
-  {
-   "slug": "builder-settings-google-calendar",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Google Calendar provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-settings-google-calendar-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Google Calendar connection mounted, cascade fields hidden"
-  },
-  {
-   "slug": "builder-settings-google-drive",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Google Drive provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-settings-google-drive-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Google Drive connection mounted, cascade fields hidden"
-  },
-  {
-   "slug": "builder-settings-google-sheets",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Google Sheets provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-settings-google-sheets-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Google Sheets connection mounted, cascade fields hidden"
-  },
-  {
-   "slug": "builder-settings-notifications",
-   "category": "builder/settings",
-   "shows": "Settings â†’ Notifications â€” email notification config (multi-block)",
-   "topics": [
-    "notifications",
-    "email"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}"
-  },
-  {
-   "slug": "builder-settings-notifications-cl",
-   "category": "builder/settings",
-   "shows": "Settings â†’ Notifications with Conditional Logic rule builder",
-   "topics": [
-    "notifications",
-    "conditional-logic"
-   ],
-   "sourcePath": "(not in manifest)"
-  },
-  {
-   "slug": "builder-settings-notion",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Notion provider selected, Add New Connection visible"
-  },
-  {
-   "slug": "builder-settings-notion-connection",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Notion connection mounted, cascade fields hidden"
-  },
-  {
-   "slug": "builder-settings-pdf",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ PDF panel"
-  },
-  {
-   "slug": "builder-settings-save_resume",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Save and Resume panel"
-  },
-  {
-   "slug": "builder-settings-surveys_polls",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Surveys and Polls panel"
-  },
-  {
-   "slug": "builder-settings-themes",
-   "category": "builder/settings",
-   "shows": "Settings â†’ Themes â€” form styling theme selector",
-   "topics": [
-    "themes",
-    "styling",
-    "appearance"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}"
-  },
-  {
-   "slug": "builder-settings-webhooks",
-   "category": "builder/panel",
-   "shows": "Form builder Settings â†’ Webhooks panel"
-  },
-  {
-   "slug": "builder-setup",
-   "category": "builder/panel",
-   "shows": "Form builder Setup panel â€” template picker, form name",
-   "topics": [
-    "create-form",
-    "templates",
-    "first-form"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=setup"
-  },
-  {
-   "slug": "builder-smart-edit-base",
-   "category": "builder/smart-edit",
-   "shows": "Builder Fields view â€” 4-field contact form, base state for AI Smart Edit",
-   "topics": [
-    "smart-edit",
-    "ai",
-    "builder"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields",
-   "status": "captured"
-  },
-  {
-   "slug": "builder-smart-edit-modal-open",
-   "category": "builder/smart-edit",
-   "shows": "AI Smart Edit modal open over the builder (no API call yet)",
-   "topics": [
-    "smart-edit",
-    "ai",
-    "modal"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields",
-   "status": "captured"
-  },
-  {
-   "slug": "builder-smart-edit-response",
-   "category": "builder/smart-edit",
-   "shows": "AI Smart Edit modal showing the AI response",
-   "topics": [
-    "smart-edit",
-    "ai",
-    "response"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields",
-   "status": "captured"
-  },
-  {
-   "slug": "builder-smart-edit-thinking",
-   "category": "builder/smart-edit",
-   "shows": "AI Smart Edit modal in thinking/loading state after prompt send",
-   "topics": [
-    "smart-edit",
-    "ai",
-    "loading"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields",
-   "status": "captured"
-  },
-  {
-   "slug": "frontend-contact-clean",
-   "category": "frontend",
-   "shows": "Published Contact page on sulliesbakery.com — Sullie's Bakery hero above the fold, form 406 (Name/Email/Comment or Message/Phone) below it",
-   "topics": [
-    "frontend",
-    "published-form",
-    "contact-form",
-    "form-analytics"
-   ],
-   "sourcePath": "/contact/"
-  },
-  {
-   "slug": "frontend-contact-confirmed",
-   "category": "frontend",
-   "shows": "Published Contact page after a successful form 406 submission — real confirmation state",
-   "topics": [
-    "frontend",
-    "published-form",
-    "confirmation",
-    "form-analytics"
-   ],
-   "sourcePath": "/contact/"
-  },
-  {
-   "slug": "frontend-contact-error",
-   "category": "frontend",
-   "shows": "Published Contact page, form 406 submitted with invalid email 'sullie@bakery' — real validation error state",
-   "topics": [
-    "frontend",
-    "published-form",
-    "validation",
-    "error-state",
-    "form-analytics"
-   ],
-   "sourcePath": "/contact/"
-  },
-  {
-   "slug": "frontend-date-picker-limit-days-mon-fri",
-   "category": "frontend",
-   "shows": "Frontend date picker with selectable weekdays limited to Monday through Friday",
-   "topics": [
-    "frontend",
-    "date-picker",
-    "date-time",
-    "availability"
-   ],
-   "sourcePath": "/sample-page/",
-   "status": "deferred",
-   "statusNote": "never captured on disk; entry preserves planning intent"
-  },
-  {
-   "slug": "frontend-published-form",
-   "category": "frontend",
-   "shows": "Published form on a public WP page â€” fullmarket-form-embedded",
-   "topics": [
-    "frontend",
-    "preview",
-    "publish"
-   ],
-   "sourcePath": "/master-form-embedded/"
-  },
-  {
-   "slug": "klaviyo-api-keys",
-   "category": "docs/klaviyo",
-   "shows": "Klaviyo API keys listing page in the Klaviyo dashboard",
-   "topics": [
-    "klaviyo",
-    "docs",
-    "api-key",
-    "integration"
-   ],
-   "sourcePath": "https://www.klaviyo.com/account#api-keys-tab"
-  },
-  {
-   "slug": "klaviyo-create-api-key",
-   "category": "docs/klaviyo",
-   "shows": "Klaviyo \"Create new private API key\" form",
-   "topics": [
-    "klaviyo",
-    "docs",
-    "api-key",
-    "integration"
-   ],
-   "sourcePath": "https://www.klaviyo.com/account#api-keys-tab"
-  },
-  {
-   "slug": "klaviyo-dashboard",
-   "category": "docs/klaviyo",
-   "shows": "Klaviyo dashboard landing page (post-login)",
-   "topics": [
-    "klaviyo",
-    "docs",
-    "integration"
-   ],
-   "sourcePath": "https://www.klaviyo.com/dashboard"
-  },
-  {
-   "slug": "klaviyo-example-profile",
-   "category": "docs/klaviyo",
-   "shows": "Example Klaviyo profile detail page",
-   "topics": [
-    "klaviyo",
-    "docs",
-    "profile",
-    "integration"
-   ],
-   "sourcePath": "https://www.klaviyo.com/profile"
-  },
-  {
-   "slug": "klaviyo-private-key-confirmation",
-   "category": "docs/klaviyo",
-   "shows": "Klaviyo private API key created confirmation dialog",
-   "topics": [
-    "klaviyo",
-    "docs",
-    "api-key",
-    "integration"
-   ],
-   "sourcePath": "https://www.klaviyo.com/account#api-keys-tab"
-  },
-  {
-   "slug": "klaviyo-settings",
-   "category": "addon/klaviyo",
-   "shows": "WPForms Klaviyo addon settings page in WP admin",
-   "topics": [
-    "klaviyo",
-    "addon",
-    "settings",
-    "integration"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=integrations"
-  },
-  {
-   "slug": "notifications",
-   "category": "legacy",
-   "shows": "Legacy Notifications single-notif capture â€” prefer builder-settings-notifications",
-   "topics": [],
-   "sourcePath": "(not in manifest)"
-  },
-  {
-   "slug": "sp-builder-418",
-   "category": "addon/surveys-polls",
-   "shows": "Surveys and Polls addon builder state for form 418",
-   "topics": [
-    "surveys-polls",
-    "builder",
-    "addon"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder",
-   "status": "deferred",
-   "statusNote": "never captured on disk; entry preserves planning intent"
-  },
-  {
-   "slug": "sp-results-418",
-   "category": "addon/surveys-polls",
-   "shows": "Surveys and Polls addon results page for form 418",
-   "topics": [
-    "surveys-polls",
-    "results",
-    "addon",
-    "analytics"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-entries",
-   "status": "deferred",
-   "statusNote": "never captured on disk; entry preserves planning intent"
-  },
-  {
-   "slug": "sp-results-new-418-base",
-   "category": "addon/surveys-polls",
-   "shows": "Surveys and Polls addon results page",
-   "topics": [
-    "surveys-polls",
-    "results",
-    "addon",
-    "analytics"
-   ],
-   "sourcePath": "(not in manifest)"
-  },
-  {
-   "slug": "sp-results-new-418-customize-open",
-   "category": "addon/surveys-polls",
-   "shows": "Surveys and Polls results page with Customize options open",
-   "topics": [
-    "surveys-polls",
-    "results",
-    "customize",
-    "addon",
-    "analytics"
-   ],
-   "sourcePath": "(not in manifest)"
-  },
-  {
-   "slug": "sp-results-new-418-export-open",
-   "category": "addon/surveys-polls",
-   "shows": "Surveys and Polls results page with Export option open",
-   "topics": [
-    "surveys-polls",
-    "results",
-    "export",
-    "addon",
-    "analytics"
-   ],
-   "sourcePath": "(not in manifest)"
-  },
-  {
-   "slug": "sp-results-new-418-filters-open",
-   "category": "addon/surveys-polls",
-   "shows": "Surveys and Polls results page with Filters option open",
-   "topics": [
-    "surveys-polls",
-    "results",
-    "filters",
-    "addon",
-    "analytics"
-   ],
-   "sourcePath": "(not in manifest)"
-  },
-  {
-   "slug": "sp-results-old-168",
-   "category": "addon/surveys-polls",
-   "shows": "Older Surveys and Polls addon results reference for form 168",
-   "topics": [
-    "surveys-polls",
-    "results",
-    "legacy-reference"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-entries",
-   "status": "deferred",
-   "statusNote": "never captured on disk; entry preserves planning intent"
-  },
-  {
-   "slug": "wp-dashboard",
-   "category": "admin/page",
-   "shows": "WordPress Dashboard (default wp-admin landing) with WPForms in sidebar",
-   "topics": [
-    "wp-admin",
-    "dashboard",
-    "sidebar",
-    "entry-point"
-   ],
-   "sourcePath": "/wp-admin/"
-  },
-  {
-   "slug": "wpforms-ai-builder-empty",
-   "category": "builder/ai",
-   "shows": "WPForms AI form generator opened in an empty builder state",
-   "topics": [
-    "wpforms-ai",
-    "ai-builder",
-    "generate-form"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=setup"
-  },
-  {
-   "slug": "wpforms-ai-builder-feedback-generated",
-   "category": "builder/ai",
-   "shows": "WPForms AI generated feedback survey preview in the builder",
-   "topics": [
-    "wpforms-ai",
-    "ai-builder",
-    "generated-form",
-    "feedback-survey"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=setup"
-  },
-  {
-   "slug": "admin-addons-sendgrid-inactive",
-   "category": "admin/page",
-   "shows": "WPForms Addons page â€” SendGrid addon card installed but Deactivated (toggle off)",
-   "topics": [
-    "addons",
-    "sendgrid",
-    "activate",
-    "install"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-addons"
-  },
-  {
-   "slug": "admin-addons-sendgrid",
-   "category": "admin/page",
-   "shows": "WPForms Addons page â€” SendGrid addon card Activated",
-   "topics": [
-    "addons",
-    "sendgrid",
-    "activate"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-addons"
-  },
-  {
-   "slug": "admin-settings-integrations-sendgrid",
-   "category": "admin/settings",
-   "shows": "WPForms â†’ Settings â†’ Integrations â€” SendGrid row present, no account connected (pre-connect)",
-   "topics": [
-    "integrations",
-    "sendgrid",
-    "api key",
-    "connect"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=integrations"
-  },
-  {
-   "slug": "builder-providers-sendgrid",
-   "category": "builder/providers",
-   "shows": "Form builder Marketing panel â€” SendGrid provider selected, Add New Account (no account yet)",
-   "topics": [
-    "builder",
-    "providers",
-    "marketing",
-    "sendgrid"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=406"
-  },
-  {
-   "slug": "sendgrid-api-keys",
-   "category": "saas/sendgrid",
-   "shows": "SendGrid dashboard â€” Settings â†’ API Keys (empty state, Create API Key button)",
-   "topics": [
-    "sendgrid",
-    "api key",
-    "dashboard"
-   ],
-   "sourcePath": "https://app.sendgrid.com/settings/api_keys"
-  },
-  {
-   "slug": "sendgrid-create-api-key",
-   "category": "saas/sendgrid",
-   "shows": "SendGrid dashboard â€” Create API Key panel (name WPForms, Full Access selected)",
-   "topics": [
-    "sendgrid",
-    "api key",
-    "create",
-    "full access"
-   ],
-   "sourcePath": "https://app.sendgrid.com/settings/api_keys"
-  },
-  {
-   "slug": "admin-forms-overview-analytics",
-   "category": "admin/page",
-   "shows": "All Forms list with Form Analytics columns (Views, Interactions, Conversion) â€” WPForms 2.0",
-   "topics": [
-    "form-analytics",
-    "analytics",
-    "manage-forms"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-overview"
-  },
-  {
-   "slug": "form-analytics-main",
-   "category": "admin/page",
-   "shows": "Form Analytics page for one form â€” 5 metric stat cards + Form Fields table, last 30 days, no goal set",
-   "topics": [
-    "form-analytics",
-    "analytics",
-    "metrics",
-    "conversion"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-analytics&form_id=406"
-  },
-  {
-   "slug": "form-analytics-goal-modal",
-   "category": "admin/page",
-   "shows": "Form Analytics â€” Set Goal popover open on Conversion Rate card, empty % input",
-   "topics": [
-    "form-analytics",
-    "analytics",
-    "goal"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-analytics&form_id=406"
-  },
-  {
-   "slug": "form-analytics-goal-set",
-   "category": "admin/page",
-   "shows": "Form Analytics â€” conversion goal saved (Goal: 25%) with above-goal green arrow on card",
-   "topics": [
-    "form-analytics",
-    "analytics",
-    "goal"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-analytics&form_id=406"
-  },
-  {
-   "slug": "form-analytics-date-open",
-   "category": "admin/page",
-   "shows": "Form Analytics â€” date-range popover open (Todayâ€¦Last 1 year + Custom)",
-   "topics": [
-    "form-analytics",
-    "analytics",
-    "date-filter"
-   ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-analytics&form_id=406"
-  },
-  {
-   "slug": "google-oauth-signin",
-   "category": "external/oauth",
-   "shows": "Google OAuth sign-in page (signed out) reached via the WPForms google-drive-connect middleware — display-only beat for the entry-automation tutorial",
-   "topics": [
-    "google-drive",
-    "oauth",
-    "entry-automation"
-   ],
-   "sourcePath": "accounts.google.com/v3/signin/identifier (via wpforms.com middleware)",
-   "status": "ready",
-   "statusNote": "manual Playwright freeze (capture/_tmp/grab-google-oauth.js); scripts stripped, assets inlined; not a WPForms admin capture so no catalog/outline"
-  }
- ],
- "notes": "See docs/snapshot-interactivity.md for conventions. `status` field marks deferred/needs-recapture entries that are documented but not captured on disk."
+  "generatedAt": "2026-09-14T06:45:43.142Z",
+  "count": 207,
+  "snapshots": [
+    {
+      "slug": "admin-about",
+      "category": "admin/page",
+      "shows": "About Us page",
+      "topics": [
+        "about",
+        "info"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-about",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
+    },
+    {
+      "slug": "admin-addons",
+      "category": "admin/page",
+      "shows": "Addons page — all available addons grid",
+      "topics": [
+        "addons",
+        "pro",
+        "extend"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-addons"
+    },
+    {
+      "slug": "admin-community",
+      "category": "admin/page",
+      "shows": "Community hub page",
+      "topics": [
+        "community"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-community",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
+    },
+    {
+      "slug": "admin-customizer-additional-css",
+      "category": "admin/page",
+      "shows": "TODO-describe: admin customizer additional css",
+      "topics": [
+        "admin",
+        "customizer",
+        "additional",
+        "css"
+      ],
+      "sourcePath": "/wp-admin/customize.php?autofocus%5Bsection%5D=custom_css"
+    },
+    {
+      "slug": "admin-dashboard",
+      "category": "admin/page",
+      "shows": "WPForms 2.0.2 Dashboard at Last 30 days: 4 stat cards, Entries widget (chart + 5-form table with per-row chart icons), Payments widget (chart + 6 tiles + 10-row table), Top Locations donut, and the 6-widget sidebar. Three gear popovers present but hidden; charts baked to PNG by capture and rehydrated on load by ../_shared/dashboard.js (wired into this snapshot) from data-config + body[data-wpf-dashboard].",
+      "topics": [
+        "admin",
+        "dashboard",
+        "stats",
+        "charts",
+        "entries",
+        "payments",
+        "locations",
+        "date-range"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-dashboard"
+    },
+    {
+      "slug": "admin-entries",
+      "category": "admin/page",
+      "shows": "Entries list — submissions table",
+      "topics": [
+        "entries",
+        "submissions"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
+    },
+    {
+      "slug": "admin-entries-406-all",
+      "category": "admin/page",
+      "shows": "TODO-describe: admin entries 406 all",
+      "topics": [
+        "admin",
+        "entries",
+        "406",
+        "all"
+      ],
+      "sourcePath": "/wp-admin/admin.php?view=list&form_id=406&page=wpforms-entries"
+    },
+    {
+      "slug": "admin-entries-imported",
+      "category": "admin/page",
+      "shows": "Entries list — destination form populated after import (1,200 items)",
+      "topics": [
+        "entries",
+        "import",
+        "migration",
+        "payoff"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=list&form_id=406"
+    },
+    {
+      "slug": "admin-entries-list",
+      "category": "admin/page",
+      "shows": "Entries list for demo form — submissions table with filters and row actions",
+      "topics": [
+        "entries",
+        "submissions",
+        "demo-form"
+      ],
+      "sourcePath": "/wp-admin/admin.php?view=list&form_id=32&page=wpforms-entries"
+    },
+    {
+      "slug": "admin-entries-overview",
+      "category": "admin/page",
+      "shows": "Entries overview — forms with entry counts before selecting a form",
+      "topics": [
+        "entries",
+        "submissions",
+        "overview"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries"
+    },
+    {
+      "slug": "admin-entries-ranking-results",
+      "category": "admin/page",
+      "shows": "TODO-describe: admin entries ranking results",
+      "topics": [
+        "admin",
+        "entries",
+        "ranking",
+        "results"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=list&form_id=1779"
+    },
+    {
+      "slug": "admin-entries-spam",
+      "category": "admin/page",
+      "shows": "TODO-describe: admin entries spam",
+      "topics": [
+        "admin",
+        "entries",
+        "spam"
+      ],
+      "sourcePath": "/wp-admin/admin.php?view=list&form_id=406&page=wpforms-entries&status=spam"
+    },
+    {
+      "slug": "admin-entry-detail",
+      "category": "admin/page",
+      "shows": "Entry detail view — submitted fields, notes, location, and log panels",
+      "topics": [
+        "entries",
+        "entry-detail",
+        "submissions"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=details&entry_id=5"
+    },
+    {
+      "slug": "admin-entry-detail-smarttags",
+      "category": "admin/page",
+      "shows": "Entry Details for the catering entry — the three hidden rows the visitor never saw: Referring Page, Visitor IP, Reference ID",
+      "topics": [
+        "entries",
+        "entry-detail",
+        "hidden-field",
+        "smart-tags",
+        "payoff"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=details&entry_id=7529"
+    },
+    {
+      "slug": "admin-forms-overview",
+      "category": "admin/page",
+      "shows": "All Forms list — table view, bulk actions, Add New button",
+      "topics": [
+        "create-form",
+        "first-form",
+        "manage-forms"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-overview"
+    },
+    {
+      "slug": "admin-forms-overview-lite-locked",
+      "category": "admin/page",
+      "shows": "Forms Overview on a LITE license — Interactions + Conversion columns locked with upgrade affordance",
+      "topics": [
+        "lite",
+        "locked-columns",
+        "upsell",
+        "form-analytics"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-overview",
+      "status": "deferred",
+      "statusNote": "FIX-19: awaiting the Lite LocalWP site (GUI step) — plan ready at capture/lite-locked-plan.json"
+    },
+    {
+      "slug": "admin-forms-overview-lite-upgrade-modal",
+      "category": "admin/page",
+      "shows": "Lite Forms Overview with the upgrade modal open (clicked a locked analytics column)",
+      "topics": [
+        "lite",
+        "upgrade-modal",
+        "upsell",
+        "form-analytics"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-overview",
+      "status": "deferred",
+      "statusNote": "FIX-19: awaiting the Lite LocalWP site (GUI step) — plan ready at capture/lite-locked-plan.json"
+    },
+    {
+      "slug": "admin-forms-overview-shortcode",
+      "category": "admin/page",
+      "shows": "TODO-describe: admin forms overview shortcode",
+      "topics": [
+        "admin",
+        "forms",
+        "overview",
+        "shortcode"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-overview"
+    },
+    {
+      "slug": "admin-payment-detail",
+      "category": "admin/page",
+      "shows": "Payment detail view — payment summary and linked entry summary",
+      "topics": [
+        "payments",
+        "payment-detail",
+        "stripe"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-payments&view=payment&payment_id=1"
+    },
+    {
+      "slug": "admin-payment-detail-mercado-pago",
+      "category": "admin/page",
+      "shows": "WPForms > Payments single payment view for the Mercado Pago test charge: Processed status, Refund button, View in Mercado Pago link, entry summary with card brand + last4. Captured from sulliebakery LocalWP",
+      "topics": [
+        "mercado-pago",
+        "payments",
+        "detail",
+        "refund",
+        "entry"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-payments&view=single&payment_id=2&mode=test"
+    },
+    {
+      "slug": "admin-payments",
+      "category": "admin/page",
+      "shows": "Payments list — transactions table",
+      "topics": [
+        "payments"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-payments"
+    },
+    {
+      "slug": "admin-payments-coupons",
+      "category": "admin/page",
+      "shows": "Payments coupons page — coupon management tab",
+      "topics": [
+        "payments",
+        "coupons"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-payments&view=coupons"
+    },
+    {
+      "slug": "admin-payments-coupons-add-new",
+      "category": "admin/page",
+      "shows": "TODO-describe: admin payments coupons add new",
+      "topics": [
+        "admin",
+        "payments",
+        "coupons",
+        "add",
+        "new"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-payments&view=coupon"
+    },
+    {
+      "slug": "admin-payments-mercado-pago",
+      "category": "admin/page",
+      "shows": "WPForms > Payments list (test data) with a real Mercado Pago test payment row: gateway Mercado Pago, status Processed, MXN total. Captured from sulliebakery LocalWP, WPForms 2.0.0.3",
+      "topics": [
+        "mercado-pago",
+        "payments",
+        "processed",
+        "list"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-payments&mode=test"
+    },
+    {
+      "slug": "admin-privacy-compliance",
+      "category": "admin/page",
+      "shows": "Privacy Compliance page",
+      "topics": [
+        "privacy",
+        "gdpr",
+        "compliance"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-privacy-compliance"
+    },
+    {
+      "slug": "admin-settings-access",
+      "category": "admin/settings",
+      "shows": "WPForms → Settings → Access (role/capability, Pro)",
+      "topics": [
+        "settings",
+        "access",
+        "roles",
+        "pro"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=access"
+    },
+    {
+      "slug": "admin-settings-captcha",
+      "category": "admin/settings",
+      "shows": "WPForms → Settings → CAPTCHA tab (empty/current site state)",
+      "topics": [
+        "settings",
+        "captcha",
+        "spam"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=captcha"
+    },
+    {
+      "slug": "admin-settings-email",
+      "category": "admin/settings",
+      "shows": "WPForms → Settings → Email (SMTP provider, from name)",
+      "topics": [
+        "settings",
+        "email",
+        "smtp"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=email"
+    },
+    {
+      "slug": "admin-settings-general",
+      "category": "admin/settings",
+      "shows": "WPForms → Settings → General (license, CSS loading)",
+      "topics": [
+        "settings",
+        "license",
+        "first-install"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=general"
+    },
+    {
+      "slug": "admin-settings-geolocation",
+      "category": "admin/settings",
+      "shows": "WPForms → Settings → Geolocation",
+      "topics": [
+        "settings",
+        "geo",
+        "geolocation"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=geolocation"
+    },
+    {
+      "slug": "admin-settings-integrations",
+      "category": "admin/settings",
+      "shows": "WPForms → Settings → Integrations (credentials)",
+      "topics": [
+        "settings",
+        "integrations"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=integrations"
+    },
+    {
+      "slug": "admin-settings-misc",
+      "category": "admin/settings",
+      "shows": "WPForms → Settings → Misc (uninstall, custom post types)",
+      "topics": [
+        "settings",
+        "misc"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=misc"
+    },
+    {
+      "slug": "admin-settings-payments",
+      "category": "admin/settings",
+      "shows": "WPForms → Settings → Payments (currency, mode, Pro)",
+      "topics": [
+        "settings",
+        "payments",
+        "currency"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=payments"
+    },
+    {
+      "slug": "admin-settings-payments-mercado-pago",
+      "category": "admin/page",
+      "shows": "WPForms → Settings → Payments with Mercado Pago CONNECTED (Test mode) — connection status line, Test Mode toggle ON, blank test key fields (values blanked at capture), Enable Webhooks ON. Captured from naimaathar.com live site, WPForms 2.0.0.3",
+      "topics": [
+        "mercado-pago",
+        "payments",
+        "settings",
+        "connect",
+        "credentials"
+      ],
+      "sourcePath": "/"
+    },
+    {
+      "slug": "admin-settings-validation",
+      "category": "admin/settings",
+      "shows": "WPForms → Settings → Validation (error messages)",
+      "topics": [
+        "settings",
+        "validation"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=validation"
+    },
+    {
+      "slug": "admin-smtp",
+      "category": "admin/page",
+      "shows": "SMTP configuration page",
+      "topics": [
+        "smtp",
+        "email-delivery"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-smtp",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
+    },
+    {
+      "slug": "admin-templates",
+      "category": "admin/page",
+      "shows": "Form Templates library — category filters, template cards",
+      "topics": [
+        "templates",
+        "create-form"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-templates"
+    },
+    {
+      "slug": "admin-tools-action-scheduler",
+      "category": "admin/page",
+      "shows": "Tools → Scheduled Actions — WPForms action scheduler list",
+      "topics": [
+        "tools",
+        "scheduled-actions",
+        "automation"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=action-scheduler&s=wpforms"
+    },
+    {
+      "slug": "admin-tools-ai-mcp",
+      "category": "admin/page",
+      "shows": "TODO-describe: admin tools ai mcp",
+      "topics": [
+        "admin",
+        "tools",
+        "mcp"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=ai-mcp"
+    },
+    {
+      "slug": "admin-tools-entry-automation",
+      "category": "admin/page",
+      "shows": "TODO-describe: admin tools entry automation",
+      "topics": [
+        "admin",
+        "tools",
+        "entry",
+        "automation"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=entry-automation"
+    },
+    {
+      "slug": "admin-tools-export",
+      "category": "admin/page",
+      "shows": "Tools → Export forms/entries",
+      "topics": [
+        "tools",
+        "export"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=export"
+    },
+    {
+      "slug": "admin-tools-import",
+      "category": "admin/page",
+      "shows": "Tools → Import forms",
+      "topics": [
+        "tools",
+        "import"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=import"
+    },
+    {
+      "slug": "admin-tools-import-entries",
+      "category": "admin/page",
+      "shows": "Tools → Import Entries — landing (source step, From an Installed Plugin selected, Continue disabled)",
+      "topics": [
+        "import",
+        "entries",
+        "migration",
+        "tools",
+        "importer"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=import&tab=entries"
+    },
+    {
+      "slug": "admin-tools-logs",
+      "category": "admin/page",
+      "shows": "Tools → System logs",
+      "topics": [
+        "tools",
+        "logs",
+        "debug"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=logs"
+    },
+    {
+      "slug": "admin-tools-system",
+      "category": "admin/page",
+      "shows": "Tools → System Info — WordPress, server, and WPForms environment report",
+      "topics": [
+        "tools",
+        "system-info",
+        "debug"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=system"
+    },
+    {
+      "slug": "admin-wp-home",
+      "category": "admin/page",
+      "shows": "WordPress admin home screen at 1600px with the admin menu expanded (160px) and the WPForms menu item linking to page=wpforms-dashboard. Entry-point snapshot for videos/wpforms-dashboard-tour: the film's first beat clicks WPForms here and cuts to admin-dashboard. The WPForms dashboard widget's 423x291 chart is a dead raster - do not animate or zoom it.",
+      "topics": [
+        "dashboard",
+        "entry-point",
+        "admin-menu",
+        "navigation"
+      ],
+      "sourcePath": "/wp-admin/index.php"
+    },
+    {
+      "slug": "admin-wpcode-css-snippet",
+      "category": "admin/page",
+      "shows": "TODO-describe: admin wpcode css snippet",
+      "topics": [
+        "admin",
+        "wpcode",
+        "css",
+        "snippet"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpcode-snippet-manager&custom=1"
+    },
+    {
+      "slug": "admin-wpcode-snippet-library",
+      "category": "admin/page",
+      "shows": "TODO-describe: admin wpcode snippet library",
+      "topics": [
+        "admin",
+        "wpcode",
+        "snippet",
+        "library"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpcode-snippet-manager"
+    },
+    {
+      "slug": "builder-406-field-advanced-css",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder 406 field advanced css",
+      "topics": [
+        "builder",
+        "406",
+        "field",
+        "advanced",
+        "css"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=406"
+    },
+    {
+      "slug": "builder-calculation-editor-active",
+      "category": "builder/field-options",
+      "shows": "Calculation formula editor open in the form builder",
+      "topics": [
+        "fields",
+        "calculations",
+        "formula-editor"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder",
+      "status": "needs-recapture",
+      "statusNote": "meta.json on disk; index.html deleted in 63e05aa pending recapture"
+    },
+    {
+      "slug": "builder-conference-registration",
+      "category": "builder/panel",
+      "shows": "Form builder, Fields panel, form 1932 Conference Registration on WPForms 2.0.2 — seven real fields (Name*, Email*, Company, Ticket Type* modern dropdown Standard/Student/Speaker, Dietary Requirements, Accessibility Needs, How did you hear about us?), no field active, submit Register. Created through the real wpforms/create-form ability for wpforms-chatgpt-wpvibe-ad",
+      "topics": [
+        "conference",
+        "registration",
+        "builder",
+        "dropdown",
+        "required",
+        "wpvibe",
+        "chatgpt"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=1932"
+    },
+    {
+      "slug": "builder-conference-registration-ticket-options",
+      "category": "builder/panel",
+      "shows": "Form builder, form 1932 with the Ticket Type dropdown (field 4) active and its Field Options open — Choices list Standard/Student/Speaker in #wpforms-field-option-4-choices-list (no Sponsor yet; the film adds it in place)",
+      "topics": [
+        "conference",
+        "registration",
+        "builder",
+        "choices",
+        "dropdown",
+        "field-options",
+        "wpvibe",
+        "chatgpt"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=1932"
+    },
+    {
+      "slug": "builder-embed-modal",
+      "category": "builder/modal",
+      "shows": "Embed button → modal: Embed in Existing Page / Create New Page",
+      "topics": [
+        "embed",
+        "first-form",
+        "publish"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-address",
+      "category": "builder/field-options",
+      "shows": "Field Options — Address (Pro)",
+      "topics": [
+        "fields",
+        "address",
+        "pro"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-checkbox",
+      "category": "builder/field-options",
+      "shows": "Field Options — Checkboxes",
+      "topics": [
+        "fields",
+        "choices"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-content",
+      "category": "builder/field-options",
+      "shows": "Field Options — Content (static text)",
+      "topics": [
+        "fields",
+        "content"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-coupon",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder field options coupon",
+      "topics": [
+        "builder",
+        "field",
+        "options",
+        "coupon"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=150&view=fields"
+    },
+    {
+      "slug": "builder-field-options-date-time",
+      "category": "builder/field-options",
+      "shows": "Field Options — Date/Time (Pro; 3 format modes)",
+      "topics": [
+        "fields",
+        "date",
+        "pro"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-divider",
+      "category": "builder/field-options",
+      "shows": "Field Options — Section Divider",
+      "topics": [
+        "fields",
+        "divider"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-email",
+      "category": "builder/field-options",
+      "shows": "Field Options — Email",
+      "topics": [
+        "fields",
+        "email"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-file-upload",
+      "category": "builder/field-options",
+      "shows": "Field Options — File Upload (Pro; Modern/Classic)",
+      "topics": [
+        "fields",
+        "upload",
+        "pro"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-hidden",
+      "category": "builder/field-options",
+      "shows": "Field Options — Hidden Field",
+      "topics": [
+        "fields",
+        "hidden"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-html",
+      "category": "builder/field-options",
+      "shows": "Field Options — HTML block",
+      "topics": [
+        "fields",
+        "custom-html"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-layout",
+      "category": "builder/field-options",
+      "shows": "Field Options — Layout (2-col container)",
+      "topics": [
+        "fields",
+        "layout"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-likert_scale",
+      "category": "builder/field-options",
+      "shows": "Likert Scale field options panel — rows, columns, single-row, multiple-responses, style",
+      "topics": [
+        "fields",
+        "likert-scale",
+        "survey"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
+    },
+    {
+      "slug": "builder-field-options-name",
+      "category": "builder/field-options",
+      "shows": "Field Options — Name (simple/first-last/full)",
+      "topics": [
+        "fields",
+        "name"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-net_promoter_score",
+      "category": "builder/field-options",
+      "shows": "Net Promoter Score field options panel — scale, label inputs, style",
+      "topics": [
+        "fields",
+        "nps",
+        "net-promoter-score",
+        "survey"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
+    },
+    {
+      "slug": "builder-field-options-number",
+      "category": "builder/field-options",
+      "shows": "Field Options — Number",
+      "topics": [
+        "fields",
+        "calculations"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-number-slider",
+      "category": "builder/field-options",
+      "shows": "Field Options — Number Slider",
+      "topics": [
+        "fields"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-pagebreak",
+      "category": "builder/field-options",
+      "shows": "Field Options — Page Break",
+      "topics": [
+        "fields",
+        "multi-page",
+        "pagination"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-password",
+      "category": "builder/field-options",
+      "shows": "Field Options — Password (Pro)",
+      "topics": [
+        "fields",
+        "password",
+        "pro"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-payment-fields",
+      "category": "builder/field-options",
+      "shows": "Combined payment fields options — single, checkbox, multiple, select, coupon, total + Stripe + PayPal Commerce canvases preserved",
+      "topics": [
+        "fields",
+        "payment",
+        "combined-snapshot"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
+    },
+    {
+      "slug": "builder-field-options-phone",
+      "category": "builder/field-options",
+      "shows": "Field Options — Phone (Pro)",
+      "topics": [
+        "fields",
+        "phone",
+        "pro"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-radio",
+      "category": "builder/field-options",
+      "shows": "Field Options — Multiple Choice (radio)",
+      "topics": [
+        "fields",
+        "choices"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-ranking",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder field options ranking",
+      "topics": [
+        "builder",
+        "field",
+        "options",
+        "ranking"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields"
+    },
+    {
+      "slug": "builder-field-options-ranking-advanced",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder field options ranking advanced",
+      "topics": [
+        "builder",
+        "field",
+        "options",
+        "ranking",
+        "advanced"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields"
+    },
+    {
+      "slug": "builder-field-options-ranking-grid",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder field options ranking grid",
+      "topics": [
+        "builder",
+        "field",
+        "options",
+        "ranking",
+        "grid"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields"
+    },
+    {
+      "slug": "builder-field-options-ranking-icon-choices",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder field options ranking icon choices",
+      "topics": [
+        "builder",
+        "field",
+        "options",
+        "ranking",
+        "icon",
+        "choices"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields"
+    },
+    {
+      "slug": "builder-field-options-ranking-image-choices",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder field options ranking image choices",
+      "topics": [
+        "builder",
+        "field",
+        "options",
+        "ranking",
+        "image",
+        "choices"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields"
+    },
+    {
+      "slug": "builder-field-options-rating",
+      "category": "builder/field-options",
+      "shows": "Field Options — Rating (Pro)",
+      "topics": [
+        "fields",
+        "rating",
+        "pro"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-repeater",
+      "category": "builder/field-options",
+      "shows": "Field Options — Repeater (Pro; Rows/Blocks)",
+      "topics": [
+        "fields",
+        "repeater",
+        "pro"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-richtext",
+      "category": "builder/field-options",
+      "shows": "Field Options — Rich Text / WYSIWYG (Pro)",
+      "topics": [
+        "fields",
+        "richtext",
+        "pro"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-select",
+      "category": "builder/field-options",
+      "shows": "Field Options — Dropdown",
+      "topics": [
+        "fields",
+        "dropdown",
+        "choices"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-signature",
+      "category": "builder/field-options",
+      "shows": "Field Options — Signature (Pro)",
+      "topics": [
+        "fields",
+        "signature",
+        "pro"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-text",
+      "category": "builder/field-options",
+      "shows": "Field Options — Single Line Text",
+      "topics": [
+        "fields",
+        "text-field"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-textarea",
+      "category": "builder/field-options",
+      "shows": "Field Options — Paragraph Text",
+      "topics": [
+        "fields"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-field-options-url",
+      "category": "builder/field-options",
+      "shows": "Field Options — Website/URL (Pro)",
+      "topics": [
+        "fields",
+        "url",
+        "pro"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-fields",
+      "category": "builder/panel",
+      "shows": "Form builder Fields panel — palette + canvas",
+      "topics": [
+        "create-form",
+        "add-fields",
+        "layout",
+        "any-builder-video"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+    },
+    {
+      "slug": "builder-fields-ranking",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder fields ranking",
+      "topics": [
+        "builder",
+        "fields",
+        "ranking"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields"
+    },
+    {
+      "slug": "builder-job-application-final",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder job application final",
+      "topics": [
+        "builder",
+        "job",
+        "application",
+        "final"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=1882"
+    },
+    {
+      "slug": "builder-mercado-pago-field",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder mercado pago field",
+      "topics": [
+        "builder",
+        "mercado",
+        "pago",
+        "field"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=1759"
+    },
+    {
+      "slug": "builder-payments",
+      "category": "builder/panel",
+      "shows": "Form builder Payments panel — Stripe/PayPal setup",
+      "topics": [
+        "payments",
+        "stripe",
+        "paypal"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=payments"
+    },
+    {
+      "slug": "builder-photography-quote",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder photography quote",
+      "topics": [
+        "builder",
+        "photography",
+        "quote"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=1962"
+    },
+    {
+      "slug": "builder-providers",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — provider integrations",
+      "topics": [
+        "integrations",
+        "mailchimp",
+        "n8n",
+        "notion"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=providers"
+    },
+    {
+      "slug": "builder-providers-activecampaign",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — ActiveCampaign provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-activecampaign-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — ActiveCampaign with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-aweber_v2",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — AWeber provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-aweber_v2-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — AWeber with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-constant-contact-v3",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Constant Contact provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-constant-contact-v3-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Constant Contact with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-convertkit",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — ConvertKit provider settings",
+      "topics": [
+        "marketing",
+        "providers",
+        "convertkit",
+        "integrations"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
+    },
+    {
+      "slug": "builder-providers-convertkit-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Kit (ConvertKit) with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-drip",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Drip provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-drip-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Drip with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-hubspot",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — HubSpot provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-hubspot-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — HubSpot with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-klaviyo",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Klaviyo provider selected, Add New Connection visible",
+      "topics": [
+        "marketing",
+        "klaviyo",
+        "provider"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
+    },
+    {
+      "slug": "builder-providers-klaviyo-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Klaviyo with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-mailchimpv3",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Mailchimp v3 provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-mailchimpv3-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Mailchimp v3 with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-n8n",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — n8n provider selected, settings-block-default shown"
+    },
+    {
+      "slug": "builder-providers-n8n-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — n8n settings block, conditional logic ready"
+    },
+    {
+      "slug": "builder-providers-pipedrive",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Pipedrive provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-pipedrive-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Pipedrive with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-slack",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Slack provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-slack-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Slack with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-providers-twilio",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Twilio provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-providers-twilio-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Marketing panel — Twilio with a connection block mounted + cascading fields"
+    },
+    {
+      "slug": "builder-revisions",
+      "category": "builder/panel",
+      "shows": "Form builder Revisions panel — version history",
+      "topics": [
+        "revisions",
+        "collaboration"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=revisions"
+    },
+    {
+      "slug": "builder-settings-airtable",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Airtable provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-settings-airtable-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Airtable connection mounted, cascade fields hidden"
+    },
+    {
+      "slug": "builder-settings-anti_spam",
+      "category": "builder/settings",
+      "shows": "Settings → Spam Protection and Security",
+      "topics": [
+        "spam",
+        "security",
+        "recaptcha"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}"
+    },
+    {
+      "slug": "builder-settings-confirmation",
+      "category": "builder/settings",
+      "shows": "Settings → Confirmations — message/redirect/email",
+      "topics": [
+        "confirmations",
+        "thank-you"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}"
+    },
+    {
+      "slug": "builder-settings-confirmation-dropdown-closed",
+      "category": "builder/settings",
+      "shows": "Settings → Confirmations with confirmation type dropdown closed",
+      "topics": [
+        "settings",
+        "confirmations",
+        "dropdown"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
+    },
+    {
+      "slug": "builder-settings-confirmation-dropdown-open",
+      "category": "builder/settings",
+      "shows": "Settings → Confirmations with confirmation type dropdown open",
+      "topics": [
+        "settings",
+        "confirmations",
+        "dropdown"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
+    },
+    {
+      "slug": "builder-settings-conversational_forms",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Conversational Forms panel"
+    },
+    {
+      "slug": "builder-settings-dropbox",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Dropbox provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-settings-dropbox-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Dropbox connection mounted, cascade fields hidden"
+    },
+    {
+      "slug": "builder-settings-entry_automation",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Entry Automation panel"
+    },
+    {
+      "slug": "builder-settings-entry_automation-export-email",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder settings entry_automation export email",
+      "topics": [
+        "builder",
+        "settings",
+        "entry_automation",
+        "export",
+        "email"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725"
+    },
+    {
+      "slug": "builder-settings-entry_automation-export-gdrive",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder settings entry_automation export gdrive",
+      "topics": [
+        "builder",
+        "settings",
+        "entry_automation",
+        "export",
+        "gdrive"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725"
+    },
+    {
+      "slug": "builder-settings-entry_automation-gdrive-signin",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder settings entry_automation gdrive signin",
+      "topics": [
+        "builder",
+        "settings",
+        "entry_automation",
+        "gdrive",
+        "signin"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725"
+    },
+    {
+      "slug": "builder-settings-entry_automation-name-overlay",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder settings entry_automation name overlay",
+      "topics": [
+        "builder",
+        "settings",
+        "entry_automation",
+        "name",
+        "overlay"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725"
+    },
+    {
+      "slug": "builder-settings-entry_automation-task-saved",
+      "category": "builder/panel",
+      "shows": "TODO-describe: builder settings entry_automation task saved",
+      "topics": [
+        "builder",
+        "settings",
+        "entry_automation",
+        "task",
+        "saved"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725"
+    },
+    {
+      "slug": "builder-settings-form_locker",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Form Locker panel"
+    },
+    {
+      "slug": "builder-settings-general",
+      "category": "builder/settings",
+      "shows": "Settings → General — form title, tags, submit button, and the QR Code setting (WPForms 2.0.1) frozen in generated state: real qr-code-styling SVG encoding the Bakery Favorites Survey page, Copy/Download visible; Page/Custom URL rows + logo control + PNG/SVG format menu captured hidden; qr-* interactivity wired",
+      "topics": [
+        "form-settings",
+        "first-form",
+        "qr-code",
+        "share-form"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=settings"
+    },
+    {
+      "slug": "builder-settings-google-calendar",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Google Calendar provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-settings-google-calendar-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Google Calendar connection mounted, cascade fields hidden"
+    },
+    {
+      "slug": "builder-settings-google-drive",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Google Drive provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-settings-google-drive-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Google Drive connection mounted, cascade fields hidden"
+    },
+    {
+      "slug": "builder-settings-google-sheets",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Google Sheets provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-settings-google-sheets-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Google Sheets connection mounted, cascade fields hidden"
+    },
+    {
+      "slug": "builder-settings-notifications",
+      "category": "builder/settings",
+      "shows": "Settings → Notifications — email notification config (multi-block)",
+      "topics": [
+        "notifications",
+        "email"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}"
+    },
+    {
+      "slug": "builder-settings-notifications-cl",
+      "category": "builder/settings",
+      "shows": "Settings → Notifications with Conditional Logic rule builder",
+      "topics": [
+        "notifications",
+        "conditional-logic"
+      ],
+      "sourcePath": "(not in manifest)"
+    },
+    {
+      "slug": "builder-settings-notion",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Notion provider selected, Add New Connection visible"
+    },
+    {
+      "slug": "builder-settings-notion-connection",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Notion connection mounted, cascade fields hidden"
+    },
+    {
+      "slug": "builder-settings-pdf",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → PDF panel"
+    },
+    {
+      "slug": "builder-settings-save_resume",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Save and Resume panel"
+    },
+    {
+      "slug": "builder-settings-surveys_polls",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Surveys and Polls panel"
+    },
+    {
+      "slug": "builder-settings-themes",
+      "category": "builder/settings",
+      "shows": "Settings → Themes — form styling theme selector",
+      "topics": [
+        "themes",
+        "styling",
+        "appearance"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}"
+    },
+    {
+      "slug": "builder-settings-webhooks",
+      "category": "builder/panel",
+      "shows": "Form builder Settings → Webhooks panel"
+    },
+    {
+      "slug": "builder-setup",
+      "category": "builder/panel",
+      "shows": "Form builder Setup panel — template picker, form name",
+      "topics": [
+        "create-form",
+        "templates",
+        "first-form"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=setup"
+    },
+    {
+      "slug": "builder-smart-edit-base",
+      "category": "builder/smart-edit",
+      "shows": "Builder Fields view — 4-field contact form, base state for AI Smart Edit",
+      "topics": [
+        "smart-edit",
+        "ai",
+        "builder"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields",
+      "status": "captured"
+    },
+    {
+      "slug": "builder-smart-edit-modal-open",
+      "category": "builder/smart-edit",
+      "shows": "AI Smart Edit modal open over the builder (no API call yet)",
+      "topics": [
+        "smart-edit",
+        "ai",
+        "modal"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields",
+      "status": "captured"
+    },
+    {
+      "slug": "builder-smart-edit-response",
+      "category": "builder/smart-edit",
+      "shows": "AI Smart Edit modal showing the AI response",
+      "topics": [
+        "smart-edit",
+        "ai",
+        "response"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields",
+      "status": "captured"
+    },
+    {
+      "slug": "builder-smart-edit-thinking",
+      "category": "builder/smart-edit",
+      "shows": "AI Smart Edit modal in thinking/loading state after prompt send",
+      "topics": [
+        "smart-edit",
+        "ai",
+        "loading"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields",
+      "status": "captured"
+    },
+    {
+      "slug": "builder-smarttag-email-advanced",
+      "category": "builder/panel",
+      "shows": "Fields → Email with Advanced open — Default Value holding a Logged-in User's Email pill plus the Read-Only toggle",
+      "topics": [
+        "smart-tags",
+        "email-field",
+        "default-value",
+        "read-only",
+        "advanced"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1924&view=fields"
+    },
+    {
+      "slug": "builder-smarttag-general-desc",
+      "category": "builder/panel",
+      "shows": "Settings → General on 2.0.2 — Form Description carrying a Site Administrator Email pill in the textarea variant of the smart-tag widget",
+      "topics": [
+        "smart-tags",
+        "form-description",
+        "builder",
+        "settings"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1924&view=settings"
+    },
+    {
+      "slug": "builder-smarttag-hidden-advanced",
+      "category": "builder/panel",
+      "shows": "Fields → Hidden Field 'Referring Page' with Advanced open — Default Value holding a Referrer URL pill",
+      "topics": [
+        "smart-tags",
+        "hidden-field",
+        "default-value",
+        "advanced",
+        "builder"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1924&view=fields"
+    },
+    {
+      "slug": "builder-smarttag-notifications",
+      "category": "builder/panel",
+      "shows": "Settings → Notifications on WPForms 2.0.2 — the smart-tag widget with real pills in Send To, Subject, Reply-To and Email Message (Send To = Site Administrator Email, Subject = User First Name + Page Title)",
+      "topics": [
+        "smart-tags",
+        "notifications",
+        "builder",
+        "settings",
+        "pills"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1924&view=settings"
+    },
+    {
+      "slug": "chatgpt-new-chat",
+      "category": "external",
+      "shows": "Real chatgpt.com new chat (dark theme, Work tab, empty composer, model pill GPT-5.6 Sol / Medium). Self-contained SingleFile save of Umair's account; sidebar history titles hidden at film time via injected CSS. states/*.json carry the live picker, Plugins dropdown, attached composer and first-run thread fragments.",
+      "topics": [
+        "chatgpt",
+        "openai",
+        "wpvibe",
+        "composer",
+        "model picker",
+        "plugins",
+        "external",
+        "display-only"
+      ],
+      "external": true,
+      "displayOnly": true,
+      "sourcePath": "https://chatgpt.com/"
+    },
+    {
+      "slug": "claude-new-chat",
+      "category": "external",
+      "shows": "Real claude.ai new-chat page (saved 2026, light mode) — empty composer 'Write your prompt to Claude', Opus model pill",
+      "topics": [
+        "claude",
+        "ai",
+        "chat"
+      ],
+      "sourcePath": "file:///C:/Users/PC/Desktop/New%20chat%20-%20Claude.html"
+    },
+    {
+      "slug": "frontend-catering-confirmed",
+      "category": "frontend",
+      "shows": "Same form after submit — confirmation message personalised with the first name and the Unique Value reference number",
+      "topics": [
+        "frontend",
+        "confirmation",
+        "smart-tags",
+        "payoff"
+      ],
+      "sourcePath": "/"
+    },
+    {
+      "slug": "frontend-catering-prefilled",
+      "category": "frontend",
+      "shows": "Published catering form seen by a logged-in visitor — Name and Email pre-filled and read-only from smart tags, theme chrome stripped",
+      "topics": [
+        "frontend",
+        "prefill",
+        "smart-tags",
+        "read-only"
+      ],
+      "sourcePath": "/catering-request/"
+    },
+    {
+      "slug": "frontend-conference-registration",
+      "category": "frontend",
+      "shows": "Published Conference Registration form (form 1932 preview, theme stripped) — Name*, Email*, Company, Ticket Type* modern dropdown closed, Dietary Requirements, Accessibility Needs, How did you hear about us?, Register button",
+      "topics": [
+        "conference",
+        "registration",
+        "frontend",
+        "dropdown",
+        "required",
+        "wpvibe",
+        "chatgpt"
+      ],
+      "sourcePath": "/?wpforms_form_preview=1932"
+    },
+    {
+      "slug": "frontend-conference-registration-dropdown-open",
+      "category": "frontend",
+      "shows": "Published Conference Registration form (form 1932) with the Ticket Type modern dropdown OPEN — .choices.is-open, list Standard/Student/Speaker (no Sponsor)",
+      "topics": [
+        "conference",
+        "registration",
+        "frontend",
+        "dropdown",
+        "open",
+        "choices",
+        "wpvibe",
+        "chatgpt"
+      ],
+      "sourcePath": "/?wpforms_form_preview=1932"
+    },
+    {
+      "slug": "frontend-contact-clean",
+      "category": "frontend",
+      "shows": "Published Contact page on sulliesbakery.com — Sullie's Bakery hero above the fold, form 406 (Name/Email/Comment or Message/Phone) below it",
+      "topics": [
+        "frontend",
+        "published-form",
+        "contact-form",
+        "form-analytics"
+      ],
+      "sourcePath": "/contact/"
+    },
+    {
+      "slug": "frontend-contact-confirmed",
+      "category": "frontend",
+      "shows": "Published Contact page after a successful form 406 submission — real confirmation state",
+      "topics": [
+        "frontend",
+        "published-form",
+        "confirmation",
+        "form-analytics"
+      ],
+      "sourcePath": "/contact/"
+    },
+    {
+      "slug": "frontend-contact-error",
+      "category": "frontend",
+      "shows": "Published Contact page, form 406 submitted with invalid email 'sullie@bakery' — real validation error state",
+      "topics": [
+        "frontend",
+        "published-form",
+        "validation",
+        "error-state",
+        "form-analytics"
+      ],
+      "sourcePath": "/contact/"
+    },
+    {
+      "slug": "frontend-date-picker-limit-days-mon-fri",
+      "category": "frontend",
+      "shows": "Frontend date picker with selectable weekdays limited to Monday through Friday",
+      "topics": [
+        "frontend",
+        "date-picker",
+        "date-time",
+        "availability"
+      ],
+      "sourcePath": "/sample-page/",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
+    },
+    {
+      "slug": "frontend-job-application-preview",
+      "category": "frontend",
+      "shows": "TODO-describe: frontend job application preview",
+      "topics": [
+        "frontend",
+        "job",
+        "application",
+        "preview"
+      ],
+      "sourcePath": "/?wpforms_form_preview=1882"
+    },
+    {
+      "slug": "frontend-mercado-pago-field",
+      "category": "frontend",
+      "shows": "TODO-describe: frontend mercado pago field",
+      "topics": [
+        "frontend",
+        "mercado",
+        "pago",
+        "field"
+      ],
+      "sourcePath": "/?wpforms_form_preview=1759"
+    },
+    {
+      "slug": "frontend-photography-quote",
+      "category": "frontend",
+      "shows": "TODO-describe: frontend photography quote",
+      "topics": [
+        "frontend",
+        "photography",
+        "quote"
+      ],
+      "sourcePath": "/?wpforms_form_preview=1962"
+    },
+    {
+      "slug": "frontend-published-form",
+      "category": "frontend",
+      "shows": "Published form on a public WP page — fullmarket-form-embedded",
+      "topics": [
+        "frontend",
+        "preview",
+        "publish"
+      ],
+      "sourcePath": "/master-form-embedded/"
+    },
+    {
+      "slug": "frontend-ranking-form",
+      "category": "frontend",
+      "shows": "TODO-describe: frontend ranking form",
+      "topics": [
+        "frontend",
+        "ranking",
+        "form"
+      ],
+      "sourcePath": "/bakery-favorites-survey/"
+    },
+    {
+      "slug": "frontend-ranking-form-grid",
+      "category": "frontend",
+      "shows": "TODO-describe: frontend ranking form grid",
+      "topics": [
+        "frontend",
+        "ranking",
+        "form",
+        "grid"
+      ],
+      "sourcePath": "/bakery-favorites-survey/"
+    },
+    {
+      "slug": "klaviyo-api-keys",
+      "category": "docs/klaviyo",
+      "shows": "Klaviyo API keys listing page in the Klaviyo dashboard",
+      "topics": [
+        "klaviyo",
+        "docs",
+        "api-key",
+        "integration"
+      ],
+      "sourcePath": "https://www.klaviyo.com/account#api-keys-tab"
+    },
+    {
+      "slug": "klaviyo-create-api-key",
+      "category": "docs/klaviyo",
+      "shows": "Klaviyo \"Create new private API key\" form",
+      "topics": [
+        "klaviyo",
+        "docs",
+        "api-key",
+        "integration"
+      ],
+      "sourcePath": "https://www.klaviyo.com/account#api-keys-tab"
+    },
+    {
+      "slug": "klaviyo-dashboard",
+      "category": "docs/klaviyo",
+      "shows": "Klaviyo dashboard landing page (post-login)",
+      "topics": [
+        "klaviyo",
+        "docs",
+        "integration"
+      ],
+      "sourcePath": "https://www.klaviyo.com/dashboard"
+    },
+    {
+      "slug": "klaviyo-example-profile",
+      "category": "docs/klaviyo",
+      "shows": "Example Klaviyo profile detail page",
+      "topics": [
+        "klaviyo",
+        "docs",
+        "profile",
+        "integration"
+      ],
+      "sourcePath": "https://www.klaviyo.com/profile"
+    },
+    {
+      "slug": "klaviyo-private-key-confirmation",
+      "category": "docs/klaviyo",
+      "shows": "Klaviyo private API key created confirmation dialog",
+      "topics": [
+        "klaviyo",
+        "docs",
+        "api-key",
+        "integration"
+      ],
+      "sourcePath": "https://www.klaviyo.com/account#api-keys-tab"
+    },
+    {
+      "slug": "klaviyo-settings",
+      "category": "addon/klaviyo",
+      "shows": "WPForms Klaviyo addon settings page in WP admin",
+      "topics": [
+        "klaviyo",
+        "addon",
+        "settings",
+        "integration"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=integrations"
+    },
+    {
+      "slug": "mp-dashboard-credentials",
+      "category": "uncategorized",
+      "shows": "TODO-describe: mp dashboard credentials",
+      "topics": [
+        "dashboard",
+        "credentials"
+      ],
+      "sourcePath": "/"
+    },
+    {
+      "slug": "notifications",
+      "category": "legacy",
+      "shows": "Legacy Notifications single-notif capture — prefer builder-settings-notifications",
+      "topics": [],
+      "sourcePath": "(not in manifest)"
+    },
+    {
+      "slug": "sp-builder-418",
+      "category": "addon/surveys-polls",
+      "shows": "Surveys and Polls addon builder state for form 418",
+      "topics": [
+        "surveys-polls",
+        "builder",
+        "addon"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
+    },
+    {
+      "slug": "sp-results-418",
+      "category": "addon/surveys-polls",
+      "shows": "Surveys and Polls addon results page for form 418",
+      "topics": [
+        "surveys-polls",
+        "results",
+        "addon",
+        "analytics"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
+    },
+    {
+      "slug": "sp-results-new-418-base",
+      "category": "addon/surveys-polls",
+      "shows": "Surveys and Polls addon results page",
+      "topics": [
+        "surveys-polls",
+        "results",
+        "addon",
+        "analytics"
+      ],
+      "sourcePath": "(not in manifest)"
+    },
+    {
+      "slug": "sp-results-new-418-customize-open",
+      "category": "addon/surveys-polls",
+      "shows": "Surveys and Polls results page with Customize options open",
+      "topics": [
+        "surveys-polls",
+        "results",
+        "customize",
+        "addon",
+        "analytics"
+      ],
+      "sourcePath": "(not in manifest)"
+    },
+    {
+      "slug": "sp-results-new-418-export-open",
+      "category": "addon/surveys-polls",
+      "shows": "Surveys and Polls results page with Export option open",
+      "topics": [
+        "surveys-polls",
+        "results",
+        "export",
+        "addon",
+        "analytics"
+      ],
+      "sourcePath": "(not in manifest)"
+    },
+    {
+      "slug": "sp-results-new-418-filters-open",
+      "category": "addon/surveys-polls",
+      "shows": "Surveys and Polls results page with Filters option open",
+      "topics": [
+        "surveys-polls",
+        "results",
+        "filters",
+        "addon",
+        "analytics"
+      ],
+      "sourcePath": "(not in manifest)"
+    },
+    {
+      "slug": "sp-results-old-168",
+      "category": "addon/surveys-polls",
+      "shows": "Older Surveys and Polls addon results reference for form 168",
+      "topics": [
+        "surveys-polls",
+        "results",
+        "legacy-reference"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries",
+      "status": "deferred",
+      "statusNote": "never captured on disk; entry preserves planning intent"
+    },
+    {
+      "slug": "sp-results-ranking-full",
+      "category": "uncategorized",
+      "shows": "TODO-describe: sp results ranking full",
+      "topics": [
+        "results",
+        "ranking",
+        "full"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=survey&form_id=1779"
+    },
+    {
+      "slug": "wp-dashboard",
+      "category": "admin/page",
+      "shows": "WordPress Dashboard (default wp-admin landing) with WPForms in sidebar",
+      "topics": [
+        "wp-admin",
+        "dashboard",
+        "sidebar",
+        "entry-point"
+      ],
+      "sourcePath": "/wp-admin/"
+    },
+    {
+      "slug": "wpforms-ai-builder-empty",
+      "category": "builder/ai",
+      "shows": "WPForms AI form generator opened in an empty builder state",
+      "topics": [
+        "wpforms-ai",
+        "ai-builder",
+        "generate-form"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=setup"
+    },
+    {
+      "slug": "wpforms-ai-builder-feedback-generated",
+      "category": "builder/ai",
+      "shows": "WPForms AI generated feedback survey preview in the builder",
+      "topics": [
+        "wpforms-ai",
+        "ai-builder",
+        "generated-form",
+        "feedback-survey"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=setup"
+    },
+    {
+      "slug": "admin-addons-sendgrid-inactive",
+      "category": "admin/page",
+      "shows": "WPForms Addons page — SendGrid addon card installed but Deactivated (toggle off)",
+      "topics": [
+        "addons",
+        "sendgrid",
+        "activate",
+        "install"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-addons"
+    },
+    {
+      "slug": "admin-addons-sendgrid",
+      "category": "admin/page",
+      "shows": "WPForms Addons page — SendGrid addon card Activated",
+      "topics": [
+        "addons",
+        "sendgrid",
+        "activate"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-addons"
+    },
+    {
+      "slug": "admin-settings-integrations-sendgrid",
+      "category": "admin/settings",
+      "shows": "WPForms → Settings → Integrations — SendGrid row present, no account connected (pre-connect)",
+      "topics": [
+        "integrations",
+        "sendgrid",
+        "api key",
+        "connect"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=integrations"
+    },
+    {
+      "slug": "builder-providers-sendgrid",
+      "category": "builder/providers",
+      "shows": "Form builder Marketing panel — SendGrid provider selected, Add New Account (no account yet)",
+      "topics": [
+        "builder",
+        "providers",
+        "marketing",
+        "sendgrid"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=406"
+    },
+    {
+      "slug": "sendgrid-api-keys",
+      "category": "saas/sendgrid",
+      "shows": "SendGrid dashboard — Settings → API Keys (empty state, Create API Key button)",
+      "topics": [
+        "sendgrid",
+        "api key",
+        "dashboard"
+      ],
+      "sourcePath": "https://app.sendgrid.com/settings/api_keys"
+    },
+    {
+      "slug": "sendgrid-create-api-key",
+      "category": "saas/sendgrid",
+      "shows": "SendGrid dashboard — Create API Key panel (name WPForms, Full Access selected)",
+      "topics": [
+        "sendgrid",
+        "api key",
+        "create",
+        "full access"
+      ],
+      "sourcePath": "https://app.sendgrid.com/settings/api_keys"
+    },
+    {
+      "slug": "admin-forms-overview-analytics",
+      "category": "admin/page",
+      "shows": "All Forms list with Form Analytics columns (Views, Interactions, Conversion) — WPForms 2.0",
+      "topics": [
+        "form-analytics",
+        "analytics",
+        "manage-forms"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-overview"
+    },
+    {
+      "slug": "form-analytics-main",
+      "category": "admin/page",
+      "shows": "Form Analytics page for one form — 5 metric stat cards + Form Fields table, last 30 days, no goal set",
+      "topics": [
+        "form-analytics",
+        "analytics",
+        "metrics",
+        "conversion"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-analytics&form_id=406"
+    },
+    {
+      "slug": "form-analytics-goal-modal",
+      "category": "admin/page",
+      "shows": "Form Analytics — Set Goal popover open on Conversion Rate card, empty % input",
+      "topics": [
+        "form-analytics",
+        "analytics",
+        "goal"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-analytics&form_id=406"
+    },
+    {
+      "slug": "form-analytics-goal-set",
+      "category": "admin/page",
+      "shows": "Form Analytics — conversion goal saved (Goal: 25%) with above-goal green arrow on card",
+      "topics": [
+        "form-analytics",
+        "analytics",
+        "goal"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-analytics&form_id=406"
+    },
+    {
+      "slug": "form-analytics-date-open",
+      "category": "admin/page",
+      "shows": "Form Analytics — date-range popover open (Today…Last 1 year + Custom)",
+      "topics": [
+        "form-analytics",
+        "analytics",
+        "date-filter"
+      ],
+      "sourcePath": "/wp-admin/admin.php?page=wpforms-analytics&form_id=406"
+    },
+    {
+      "slug": "google-oauth-signin",
+      "category": "external/oauth",
+      "shows": "Google OAuth sign-in page (signed out) reached via the WPForms google-drive-connect middleware — display-only beat for the entry-automation tutorial",
+      "topics": [
+        "google-drive",
+        "oauth",
+        "entry-automation"
+      ],
+      "sourcePath": "accounts.google.com/v3/signin/identifier (via wpforms.com middleware)",
+      "status": "ready",
+      "statusNote": "manual Playwright freeze (capture/_tmp/grab-google-oauth.js); scripts stripped, assets inlined; not a WPForms admin capture so no catalog/outline"
+    },
+    {
+      "slug": "gmail-inbox-dummy",
+      "category": "external",
+      "shows": "Real Gmail inbox layout (SingleFile save 2026-09-14) with every string replaced by fictional photographer-business data — 50 rows, Inbox (2), custom labels Clients / Invoices, account Mara Ellison. Display-only; the inbox the owner has been living in for wpvibe-one-less-tomorrow.",
+      "topics": [
+        "gmail",
+        "email",
+        "inbox",
+        "external"
+      ],
+      "sourcePath": "SingleFile save (scrubbed; raw never enters the repo)"
+    }
+  ],
+  "notes": "See docs/snapshot-interactivity.md for conventions. `status` field marks deferred/needs-recapture entries that are documented but not captured on disk."
 }

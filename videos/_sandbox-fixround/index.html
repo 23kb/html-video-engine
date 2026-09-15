@@ -1,0 +1,17 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>C1 bgm-level scratch page</title>
+<style>.stage{width:1920px;height:1080px;background:#0e1e2e;color:#fff;font:48px sans-serif;display:flex;align-items:center;justify-content:center}</style>
+</head>
+<body>
+<div class="stage">C1 BGM scratch — bed-only render fixture</div>
+<script>
+  // Minimal instrumentation contract for render-singlehtml-audio.js:
+  // no narration (bgm-only path), 12s duration.
+  window.__T0 = performance.now();
+  window.__sched = [];
+  window.__dur = 12;
+  setTimeout(function () { window.__done = true; }, 12000);
+</script>
+</body>
+</html>

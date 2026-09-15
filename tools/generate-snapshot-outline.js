@@ -393,6 +393,47 @@ function analyzeInFrame() {
       if (!navMap[target]) navMap[target] = { target, page, hrefSel };
     }
 
+    // — #2c (AP-15, 2026-09-02): per-entry wiring, computed HERE where real
+    // `matches()` semantics exist. WIRED = clicking this element (or an
+    // ancestor the click bubbles to) fires a registry transition;
+    // HAND-BROWSE = it is / contains a mapped admin nav link. Stored per
+    // Actions/Tabs entry so inspect-snapshot --emit-actions never re-derives
+    // it with regexes (the old regex pass reported WIRED 0 on every snapshot).
+    const wiredOf = (el) => {
+      if (!registryPresent) return null;
+      for (const t of T) {
+        if (!t || typeof t.match !== 'function') continue;
+        for (let n = el; n && n !== document.documentElement; n = n.parentElement) {
+          let hit = false;
+          try { hit = !!t.match(n); } catch (_) { hit = false; }
+          if (hit) return { label: String(t.label || '(unlabeled)'), event: String(t.event || 'click') };
+        }
+      }
+      return null;
+    };
+    const navTargets = Object.values(navMap);
+    const navOf = (el) => {
+      for (const n of navTargets) {
+        try {
+          if (el.matches(n.hrefSel) || (el.closest && el.closest(n.hrefSel)) || el.querySelector(n.hrefSel)) return n.target;
+        } catch (_) { /* selector engine quirk — skip */ }
+      }
+      return null;
+    };
+    for (const key of ['actions', 'tabsNav']) {
+      for (const e of ROLE[key]) {
+        let el = null;
+        try { el = document.querySelector(e.sel); } catch (_) { el = null; }
+        if (!el) continue;
+        const w = wiredOf(el);
+        if (w) { e.wired = w.label; e.wiredEvent = w.event; }
+        else {
+          const nv = navOf(el);
+          if (nv) e.nav = nv;
+        }
+      }
+    }
+
     return {
       roles: ROLE,
       dropped,
@@ -405,6 +446,28 @@ function analyzeInFrame() {
 }
 
 // ───────────────────────── markdown ─────────────────────────
+
+// (AP-17, 2026-09-02) transition labels whose interactivity.js block banner
+// carries `@source synthetic` — drivable rows get a marker so storyboards
+// never trust a fabricated UI as product truth (ee 1: the PDF block
+// fabricates a retired UI and would have production-truth-trapped a build).
+let _synthLabelsCache = null;
+function syntheticLabels() {
+  if (_synthLabelsCache) return _synthLabelsCache;
+  const out = new Set();
+  try {
+    const src = fs.readFileSync(path.join(SNAP_DIR, '_shared', 'interactivity.js'), 'utf8');
+    let synthetic = false;
+    for (const line of src.split(/\r?\n/)) {
+      if (/^\s*\/\/ ─ .+─{3,}\s*$/.test(line)) synthetic = false; // banner resets the span
+      if (/^\s*\/\/ @since \S+ @source synthetic\b/.test(line)) synthetic = true;
+      const m = line.match(/label:\s*'([^']+)'/);
+      if (m && synthetic && /^[a-z0-9]+(-[a-z0-9]+)*$/.test(m[1])) out.add(m[1]);
+    }
+  } catch (_) { /* no registry — no markers */ }
+  _synthLabelsCache = out;
+  return out;
+}
 
 function fmtEntry(e) {
   const text = e.text ? ` — "${e.text.replace(/"/g, '”')}"` : '';
@@ -454,6 +517,7 @@ function renderOutline(slug, data, kb) {
   } else if (!data.transitions.length) {
     md += `_No interactivity.js transitions fire on this snapshot's DOM._\n\n`;
   } else {
+    const synth = syntheticLabels();
     const sorted = data.transitions.slice().sort((a, b) =>
       a.label.localeCompare(b.label) || a.event.localeCompare(b.event));
     const shown = sorted.slice(0, TRANSITION_CAP);
@@ -462,7 +526,8 @@ function renderOutline(slug, data, kb) {
       // avoid a 45-char boilerplate phrase repeated 100+ times on builders.
       const gloss = EFFECT_GLOSS[t.label] ? ` — ${EFFECT_GLOSS[t.label]}` : '';
       const cnt = t.count > 1 ? ` _(×${t.count})_` : '';
-      md += `- ${t.event} \`${t.selector}\` → \`${t.label}\`${gloss}${cnt}\n`;
+      const syn = synth.has(t.label) ? ' _(synthetic — verify product UI)_' : '';
+      md += `- ${t.event} \`${t.selector}\` → \`${t.label}\`${gloss}${cnt}${syn}\n`;
     }
     if (sorted.length > shown.length) {
       md += `- _… +${sorted.length - shown.length} more drivable transitions — see interactivity.js_\n`;
@@ -542,6 +607,27 @@ async function emitFor(slug, browser, port, knownSlugs) {
   const md = renderOutline(slug, data, kb);
   const outPath = path.join(snapDir, 'outline.md');
   fs.writeFileSync(outPath, md);
+
+  // outline.json (AP-15, 2026-09-02): the UNCAPPED machine-readable twin —
+  // outline.md caps at 40 transitions / 10 nav / 10 rows per group for human
+  // reading; this carries everything, plus the per-entry wired/nav fields.
+  // No timestamp: regeneration from the same index.html stays byte-identical
+  // (the outline.md idempotency principle applies here too).
+  const outlineJson = {
+    slug,
+    registryPresent: !!data.registryPresent,
+    transitions: data.transitions,
+    nav: data.nav,
+    groups: {
+      actions: data.roles.actions,
+      tabsNav: data.roles.tabsNav,
+      inputs: data.roles.inputs,
+      fields: data.roles.fields,
+      panelsModals: data.roles.panelsModals,
+      other: data.roles.other,
+    },
+  };
+  fs.writeFileSync(path.join(snapDir, 'outline.json'), JSON.stringify(outlineJson, null, 2) + '\n');
 
   const bytes = Buffer.byteLength(md, 'utf8');
   const flag = bytes > SIZE_HARD_MAX ? ' ⚠OVER-HARD' : bytes > SIZE_SOFT_MAX ? ' ·over-soft' : '';

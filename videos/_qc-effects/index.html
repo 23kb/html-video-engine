@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Effects Library — QC</title>
+<link rel="stylesheet" href="../../reference/wpforms-brand/tokens.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #0a0806;
+    font-family: var(--wpf-font-stack, system-ui, sans-serif);
+    overflow: hidden;
+    color: var(--wpf-ink, #14110e);
+  }
+  .stage-wrap {
+    position: relative;
+    width: 100vw; height: calc(100vh - 56px);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stage {
+    position: relative;
+    width: 1920px; height: 1080px;
+    transform-origin: center center;
+    background: linear-gradient(180deg, #fdfaf3 0%, #ede1cb 100%);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+  }
+  .stage.dark { background: radial-gradient(ellipse at center, #2a221b 0%, #0a0806 80%); }
+  .stage.cream-deep { background: radial-gradient(ellipse at center, #fdf8f0 0%, #e9dec8 100%); }
+  .stage.cards-dark { background: #14110e; }
+  /* the ad-vocabulary bed — matches videos/reel-ad-vocabulary's atmo-base */
+  .stage.ink { background: radial-gradient(ellipse 1200px 800px at 50% 55%,
+    #0c1119 0%, #0a0e14 40%, #050810 100%); }
+  .scene-layer { position: absolute; inset: 0; will-change: transform, filter, opacity; }
+  .mount {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .brand {
+    position: absolute; top: 60px; left: 80px;
+    display: flex; align-items: center; gap: 12px;
+    z-index: 10;
+  }
+  .brand .dot { width: 14px; height: 14px; border-radius: 50%; background: var(--wpf-orange, #E27730); }
+  .brand .name { font-weight: 600; font-size: 22px; letter-spacing: -0.01em; color: var(--wpf-ink-soft, #4f4a44); }
+  .brand.on-dark .name { color: rgba(250,246,238,0.9); }
+
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    height: 56px;
+    background: #0f0d0c; color: #e8e3dc;
+    display: flex; align-items: center; gap: 12px;
+    padding: 0 24px;
+    font-family: var(--wpf-font-stack, system-ui, sans-serif);
+    font-size: 13px;
+  }
+  .controls button {
+    background: var(--wpf-orange, #E27730); color: #fff; border: 0;
+    padding: 8px 14px; border-radius: 6px; font-weight: 600;
+    cursor: pointer; font-family: inherit; font-size: 13px;
+  }
+  .controls button:hover { background: var(--wpf-orange-hover, #c9601f); }
+  .controls select {
+    background: #2a261f; color: #e8e3dc; border: 1px solid #3a342b;
+    padding: 6px 10px; border-radius: 6px; font-family: inherit; font-size: 13px;
+  }
+  .controls input[type=range] { flex: 1; accent-color: var(--wpf-orange, #E27730); }
+  .controls .t {
+    font-variant-numeric: tabular-nums;
+    min-width: 110px; text-align: right; color: #aaa;
+  }
+  .controls .label { color: #888; }
+</style>
+</head>
+<body>
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="brand" id="brand"><div class="dot"></div><div class="name">WPForms</div></div>
+    <div class="mount" id="mount"></div>
+  </div>
+</div>
+<div class="controls">
+  <span class="label">Effect:</span>
+  <select id="picker">
+    <option value="text-stack">text-stack-from-right</option>
+    <option value="text-domino">text-letter-mask-domino</option>
+    <option value="text-roll">text-center-out-roll</option>
+    <option value="cards-fan">cards-spread-fan</option>
+    <option value="cards-stack">cards-fly-in-stack</option>
+    <option value="phyllotaxis">constellation-phyllotaxis-bloom</option>
+    <option value="stat-count">stat-count-up</option>
+    <option value="end-card">end-card</option>
+    <option value="glass-card">glass-card</option>
+    <option value="phrase-chain">phrase-chain (ad)</option>
+    <option value="task-queue">task-queue (ad)</option>
+    <option value="skeleton-to-live">skeleton-to-live (ad)</option>
+    <option value="odometer">odometer (ad)</option>
+    <option value="odometer-twin">odometer — static twin (ad)</option>
+    <option value="logo-wall">logo-wall + quote-card (ad)</option>
+    <option value="waveform">waveform-bars + pulseEmphasis (ad)</option>
+    <option value="seams">seams — all 5 recipes</option>
+    <option value="wash">wash-transition (plays, no scrub)</option>
+  </select>
+  <button id="playBtn">Play</button>
+  <input type="range" id="scrub" min="0" max="100" step="0.1" value="0" />
+  <span class="t" id="time">00.00 / 00.00</span>
+</div>
+
+<script src="../../vendor/gsap/3.15.0/gsap.min.js"></script>
+<!-- CustomEase backs the named ease voices (whipSettle / heldSnap) the ad
+     vocabulary uses, and glass-card's spring. -->
+<script src="../../vendor/gsap/3.15.0/CustomEase.min.js"></script>
+<script type="module">
+  import {
+    mountTextStackFromRight,
+    mountTextLetterMaskDomino,
+    mountTextCenterOutRoll,
+    mountCardsSpreadFan,
+    mountCardsFlyInStack,
+    mountConstellationPhyllotaxisBloom,
+    mountStatCountUp,
+    mountEndCard,
+    mountGlassCard,
+    mountPhraseChain,
+    mountTaskQueue,
+    mountSkeletonToLive,
+    mountOdometer,
+    mountLogoWall,
+    mountQuoteCard,
+    mountWaveformBars,
+    pulseEmphasis,
+    holdFinalFrame,
+    seamZoomThrough,
+    seamThrowLeft,
+    parkThrowEntry,
+    seamThrowEntry,
+    seamLockedCrossfade,
+    seamHardCut,
+    seamCursorVelocitySplit,
+    mountWashVeil,
+    washTransition,
+  } from '../_shared/effects/index.js';
+  import { registerXaiEases } from '../_shared/effects/xai-eases.js';
+
+  // whipSettle (E1) / heldSnap (E2) — the phrase chain, odometer roll and wash
+  // all name them, so register once before any builder runs.
+  registerXaiEases();
+
+  const stage = document.getElementById('stage');
+  const mount = document.getElementById('mount');
+  const brand = document.getElementById('brand');
+  const picker = document.getElementById('picker');
+  const scrub = document.getElementById('scrub');
+  const timeEl = document.getElementById('time');
+  const playBtn = document.getElementById('playBtn');
+
+  function fit() {
+    const w = window.innerWidth;
+    const h = window.innerHeight - 56;
+    const scale = Math.min(w / 1920, h / 1080) * 0.96;
+    stage.style.transform = `scale(${scale})`;
+  }
+  window.addEventListener('resize', fit); fit();
+
+  let active = null;
+  let tl = null;
+
+  const builders = {
+    'text-stack': () => {
+      stage.className = 'stage'; brand.className = 'brand';
+      const fx = mountTextStackFromRight({
+        text: 'Six million sites trust WPForms to capture every important lead.',
+        highlight: { million: 'orange', WPForms: 'blue', important: 'purple' },
+        fontSize: '80px',
+      });
+      Object.assign(fx.el.style, { width: '1480px', padding: '0 60px' });
+      mount.appendChild(fx.el);
+      const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+      fx.tweenInto(tl, { position: 0.4 });
+      return { fx, tl };
+    },
+    'text-domino': () => {
+      stage.className = 'stage cards-dark';
+      brand.className = 'brand on-dark';
+      const fx = mountTextLetterMaskDomino({
+        text: 'JUST · FORMS',
+        fontSize: '170px',
+        topColor: '#faf6ee',
+        botColor: 'orange',
+      });
+      mount.appendChild(fx.el);
+      const tl = gsap.timeline({ paused: true });
+      fx.tweenInto(tl, { position: 0.5 });
+      return { fx, tl };
+    },
+    'text-roll': () => {
+      stage.className = 'stage'; brand.className = 'brand';
+      const fx = mountTextCenterOutRoll({
+        lines: ['Build the form.', 'Capture the lead.', 'Watch it grow.'],
+        fontSize: '78px',
+        accentColor: 'orange',
+      });
+      Object.assign(fx.el.style, { padding: '0 100px', width: '100%' });
+      mount.appendChild(fx.el);
+      const tl = gsap.timeline({ paused: true });
+      fx.tweenInto(tl, { position: 0.5 });
+      return { fx, tl };
+    },
+    'cards-fan': () => {
+      stage.className = 'stage'; brand.className = 'brand';
+      const fx = mountCardsSpreadFan();
+      mount.appendChild(fx.el);
+      const tl = gsap.timeline({ paused: true, defaults: { ease: 'power3.out' } });
+      fx.tweenInto(tl, { position: 0.5 });
+      return { fx, tl };
+    },
+    'cards-stack': () => {
+      stage.className = 'stage cream-deep'; brand.className = 'brand';
+      const fx = mountCardsFlyInStack();
+      Object.assign(fx.el.style, { width: '100%', height: '100%' });
+      mount.appendChild(fx.el);
+      const tl = gsap.timeline({ paused: true });
+      fx.tweenInto(tl, { position: 0.5 });
+      return { fx, tl };
+    },
+    'phyllotaxis': () => {
+      stage.className = 'stage dark'; brand.className = 'brand on-dark';
+      const fx = mountConstellationPhyllotaxisBloom({ count: 30 });
+      Object.assign(fx.el.style, { width: '100%', height: '100%' });
+      mount.appendChild(fx.el);
+      const tl = gsap.timeline({ paused: true });
+      fx.tweenInto(tl, { position: 0.4 });
+      return { fx, tl };
+    },
+    'stat-count': () => {
+      stage.className = 'stage'; brand.className = 'brand';
+      const fx = mountStatCountUp({
+        label: 'Entries collected',
+        from: 0,
+        to: 5278,
+        sublabel: 'Last 30 days',
+        accent: 'orange',
+      });
+      mount.appendChild(fx.el);
+      const tl = gsap.timeline({ paused: true });
+      fx.tweenInto(tl, { position: 0.4 });
+      return { fx, tl };
+    },
+    'end-card': () => {
+      stage.className = 'stage'; brand.className = 'brand';
+      const fx = mountEndCard({
+        title: 'WPForms',
+        cta: 'Read the full guide on the blog',
+        url: 'WPForms.com',
+        accent: 'orange',
+      });
+      mount.appendChild(fx.el);
+      const tl = gsap.timeline({ paused: true });
+      fx.tweenInto(tl, { position: 0.4 });
+      return { fx, tl };
+    },
+    'glass-card': () => {
+      stage.className = 'stage dark'; brand.className = 'brand on-dark';
+      // rich moving world behind the glass — the true frost needs it
+      const world = document.createElement('div');
+      Object.assign(world.style, {
+        position: 'absolute', inset: '-4%', willChange: 'transform',
+        background: 'radial-gradient(ellipse 900px 700px at 62% 38%, rgba(45,212,191,0.30) 0%, rgba(45,212,191,0) 60%),' +
+          'radial-gradient(ellipse 800px 600px at 28% 72%, rgba(244,164,203,0.22) 0%, rgba(244,164,203,0) 65%),' +
+          'linear-gradient(160deg, #17223b 0%, #10303a 55%, #0d2231 100%)',
+      });
+      mount.appendChild(world);
+      const fx = mountGlassCard({
+        width: 700, height: 560, radius: 44,
+        content: '<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:18px;">' +
+          '<div style="font-size:96px;font-weight:800;letter-spacing:-0.02em;color:#1a2233;">Notify</div>' +
+          '<div style="font-size:32px;font-weight:500;color:rgba(26,34,51,0.55);">Instant email alerts</div></div>',
+      });
+      Object.assign(fx.el.style, { position: 'absolute', left: '610px', top: '260px' });
+      mount.appendChild(fx.el);
+      const tl = gsap.timeline({ paused: true });
+      tl.fromTo(world, { scale: 1 }, { scale: 1.05, duration: 4.5, ease: 'none' }, 0);
+      fx.tweenInto(tl, { position: 0.4 });
+      fx.sheenSweep(tl, { position: 1.4 });
+      fx.sheenSweep(tl, { position: 3.2 });
+      const dispose = fx.dispose.bind(fx);
+      return { fx: { ...fx, dispose: () => { dispose(); world.remove(); } }, tl };
+    },
+
+    // ── Ad vocabulary, promoted from videos/reel-ad-vocabulary (2026-09-03) ──
+    // All five are DARK-ground effects; the `ink` stage matches the reel's bed.
+
+    'phrase-chain': () => {
+      stage.className = 'stage ink'; brand.className = 'brand on-dark';
+      const fx = mountPhraseChain({
+        lines: ['Build the form.', 'Skip the busywork.', 'Forms that feel'],
+        chip: { from: 'instant', to: 'effortless' },
+        font: 'Georgia, "Times New Roman", serif',
+      });
+      mount.appendChild(fx.el);
+      const tl = gsap.timeline({ paused: true });
+      fx.tweenInto(tl, { position: 0.2 });
+      fx.swapChip(tl, { position: 2.76 });
+      return { fx, tl };
+    },
+
+    'task-queue': () => {
+      stage.className = 'stage ink'; brand.className = 'brand on-dark';
+      const fx = mountTaskQueue({ width: 800 });
+      Object.assign(fx.el.style, { position: 'absolute', left: '560px', top: '300px' });
+      mount.appendChild(fx.el);
+      parkThrowEntry(fx.el); // the §2.4 entry pose it ships with
+      const tl = gsap.timeline({ paused: true });
+      seamThrowEntry(tl, fx.el, 0.3);
+      fx.tweenInto(tl, { position: 0.3 });
+      return { fx, tl };
+    },
+
+    'skeleton-to-live': () => {
+      stage.className = 'stage ink'; brand.className = 'brand on-dark';
+      // The effect is a CONTENT LAYER — the frame belongs to the film, so the
+      // QC page draws one the same way a film would.
+      const frame = document.createElement('div');
+      Object.assign(frame.style, {
+        position: 'absolute', left: '520px', top: '285px', width: '880px', height: '520px',
+        borderRadius: '22px', background: '#10161f', border: '1px solid rgba(244,236,217,0.08)',
+        boxShadow: '0 30px 80px -30px rgba(0,0,0,0.7)', overflow: 'hidden', boxSizing: 'border-box',
+      });
+      mount.appendChild(frame);
+      const fx = mountSkeletonToLive({ width: 880, height: 520 });
+      frame.appendChild(fx.el);
+      const tl = gsap.timeline({ paused: true });
+      fx.tweenInto(tl, { position: 0.3 });
+      const dispose = fx.dispose.bind(fx);
+      return { fx: { ...fx, dispose: () => { dispose(); frame.remove(); } }, tl };
+    },
+
+    'odometer': () => {
+      stage.className = 'stage ink'; brand.className = 'brand on-dark';
+      const fx = mountOdometer({ live: true });
+      Object.assign(fx.el.style, { position: 'absolute', inset: '0' });
+      mount.appendChild(fx.el);
+      const tl = gsap.timeline({ paused: true });
+      fx.tweenInto(tl, { position: 0.3 });
+      return { fx, tl };
+    },
+
+    'odometer-twin': () => {
+      // The §2.3 pixel-match partner: identical slot layout, already settled.
+      // Flip between this and `odometer` at rest — they must be pixel-identical.
+      stage.className = 'stage ink'; brand.className = 'brand on-dark';
+      const fx = mountOdometer({ live: false });
+      Object.assign(fx.el.style, { position: 'absolute', inset: '0' });
+      mount.appendChild(fx.el);
+      const tl = gsap.timeline({ paused: true });
+      tl.to({}, { duration: 1.2 }); // nothing animates — the twin is a still
+      return { fx, tl };
+    },
+
+    'logo-wall': () => {
+      stage.className = 'stage ink'; brand.className = 'brand on-dark';
+      // NO bundled logos — the module ships none, so the QC panel shows the
+      // label-only form. A film passes { name, src } with a per-file SOURCE cite.
+      const wall = mountLogoWall({
+        marks: ['Klaviyo', 'HubSpot', 'Mailchimp', 'Drip', 'Kit', 'AWeber',
+          'Constant Contact', 'ActiveCampaign'].map((name) => ({ name })),
+        columns: 4, rows: 2, width: 1000, height: 580,
+      });
+      Object.assign(wall.el.style, { position: 'absolute', left: '460px', top: '250px' });
+      mount.appendChild(wall.el);
+      const quote = mountQuoteCard({
+        text: 'Setup took minutes, not days — the form was live before my coffee went cold.',
+        attribution: 'Sample quote card',
+        markFont: 'Georgia, serif',
+      });
+      Object.assign(quote.el.style, { position: 'absolute', left: '610px', top: '380px' });
+      mount.appendChild(quote.el);
+      const tl = gsap.timeline({ paused: true });
+      wall.tweenInto(tl, { position: 0.3 });
+      wall.float(tl, { position: 1.0, window: 2.0 });
+      quote.tweenInto(tl, { position: 1.45 });
+      wall.dim(tl, { position: 1.55 });
+      quote.sheenSweep(tl, { position: 1.7 });
+      return { fx: { dispose: () => { wall.dispose(); quote.dispose(); } }, tl };
+    },
+
+    'waveform': () => {
+      stage.className = 'stage ink'; brand.className = 'brand on-dark';
+      const fx = mountWaveformBars({ count: 15, width: 600, height: 150 });
+      Object.assign(fx.el.style, { position: 'absolute', left: '660px', top: '400px' });
+      mount.appendChild(fx.el);
+      const chip = document.createElement('div');
+      chip.textContent = 'Play sample';
+      Object.assign(chip.style, {
+        position: 'absolute', left: '840px', top: '620px', width: '240px', height: '64px',
+        borderRadius: '32px', background: 'rgba(244,236,217,0.10)',
+        border: '1px solid rgba(244,236,217,0.18)', display: 'grid', placeItems: 'center',
+        font: '700 24px/1 var(--wpf-font-stack, system-ui, sans-serif)', color: '#f4ecd9',
+      });
+      mount.appendChild(chip);
+      gsap.set(chip, { transformOrigin: '50% 50%' });
+      const tl = gsap.timeline({ paused: true });
+      fx.tweenInto(tl, { position: 0.2 });
+      fx.wiggle(tl, { position: 0.7, hz: 3, window: 2.3 });
+      pulseEmphasis(tl, chip, { position: 1.2 });
+      const dispose = fx.dispose.bind(fx);
+      return { fx: { ...fx, dispose: () => { dispose(); chip.remove(); } }, tl };
+    },
+
+    // ── Seam grammar: all five recipes on one paused timeline, in order ──
+    'seams': () => {
+      stage.className = 'stage ink'; brand.className = 'brand on-dark';
+      const scenes = ['#2a1c12', '#12212a', '#221230', '#0e2a1c', '#2a1226', '#1c1c2a']
+        .map((bg, i) => {
+          const s = document.createElement('div');
+          s.className = 'scene-layer';
+          s.style.background = bg;
+          s.style.opacity = i === 0 ? '1' : '0';
+          s.style.zIndex = String(10 + i);
+          const label = document.createElement('div');
+          label.textContent = 'scene ' + (i + 1);
+          Object.assign(label.style, {
+            position: 'absolute', left: '50%', top: '46%', transform: 'translate(-50%,-50%)',
+            font: '700 130px/1 var(--wpf-font-stack, system-ui, sans-serif)', color: '#f4ecd9',
+          });
+          s.appendChild(label);
+          mount.appendChild(s);
+          return s;
+        });
+      // A hero on scene 2 so the §2.4 entry half has something to settle.
+      const hero = document.createElement('div');
+      Object.assign(hero.style, {
+        position: 'absolute', left: '660px', top: '620px', width: '600px', height: '160px',
+        borderRadius: '22px', background: '#10161f', border: '1px solid rgba(244,236,217,0.08)',
+      });
+      scenes[1].appendChild(hero);
+      parkThrowEntry(hero);
+      // Two pointer glyphs for the §2.5 split.
+      const ptr = [4, 5].map((i) => {
+        const p = document.createElement('div');
+        Object.assign(p.style, {
+          position: 'absolute', left: '0', top: '0', width: '30px', height: '34px',
+          background: '#fff', clipPath: 'polygon(13% 6%,13% 76%,35% 60%,50% 91%,65% 85%,50% 54%,80% 53%)',
+          opacity: i === 4 ? '1' : '0', zIndex: '40',
+        });
+        scenes[i].appendChild(p);
+        return p;
+      });
+      gsap.set(ptr[0], { x: 1180, y: 730 });
+
+      const tl = gsap.timeline({ paused: true });
+      const CUTS = [1.2, 2.4, 3.6, 4.8, 6.0];
+      holdFinalFrame(tl, CUTS[0]);
+      seamThrowLeft(tl, scenes[0], scenes[1], CUTS[0]);          // §2.4
+      seamThrowEntry(tl, hero, CUTS[0]);
+      holdFinalFrame(tl, CUTS[1]);
+      seamZoomThrough(tl, scenes[1], scenes[2], CUTS[1]);         // §2.1
+      holdFinalFrame(tl, CUTS[2]);
+      seamLockedCrossfade(tl, scenes[2], scenes[3], CUTS[2]);     // §2.2
+      holdFinalFrame(tl, CUTS[3]);
+      seamHardCut(tl, scenes[3], scenes[4], CUTS[3]);             // §2.3
+      tl.to(ptr[0], { x: 1180, y: 730, duration: 0.01 }, CUTS[3]);
+      seamCursorVelocitySplit(tl, {                               // §2.5
+        outEl: ptr[0], inEl: ptr[1],
+        from: { x: 1180, y: 730 }, to: { x: 960, y: 690 }, cut: CUTS[4],
+      });
+      holdFinalFrame(tl, CUTS[4]);
+      seamHardCut(tl, scenes[4], scenes[5], CUTS[4]);
+      tl.to({}, { duration: 0.8 }, CUTS[4]);
+      return { fx: { dispose: () => scenes.forEach((s) => s.remove()) }, tl };
+    },
+
+    // ── Wash: async + unpaused by design, so this panel PLAYS rather than
+    //    scrubs. Play / Replay re-runs it; the scrubber is inert here.
+    'wash': () => {
+      stage.className = 'stage'; brand.className = 'brand';
+      const surface = document.createElement('div');
+      Object.assign(surface.style, { position: 'absolute', inset: '0' });
+      mount.appendChild(surface);
+      const groups = ['Beat one', 'Beat two'].map((text, i) => {
+        const g = document.createElement('div');
+        Object.assign(g.style, {
+          position: 'absolute', inset: '0', display: 'flex', alignItems: 'center',
+          justifyContent: 'center', gap: '64px',
+        });
+        ['A', 'B'].forEach((suffix) => {
+          const card = document.createElement('div');
+          card.textContent = `${text} · ${suffix}`;
+          Object.assign(card.style, {
+            width: '620px', padding: '80px 40px', borderRadius: '18px',
+            background: 'rgba(255,255,255,0.96)', boxShadow: '0 24px 60px rgba(20,26,22,0.16)',
+            font: '600 44px/1.2 var(--wpf-font-stack, system-ui, sans-serif)',
+            color: '#20241f', textAlign: 'center',
+          });
+          g.appendChild(card);
+        });
+        surface.appendChild(g);
+        if (i === 1) gsap.set(g, { autoAlpha: 0 });
+        return g;
+      });
+      const veil = mountWashVeil(surface);
+      let flip = 0;
+      const runWash = () => {
+        const [a, b] = flip % 2 === 0 ? groups : [groups[1], groups[0]];
+        washTransition(a, b, { veil: veil.el, axis: flip % 2 === 0 ? 'y' : 'x' });
+        flip += 1;
+      };
+      const tl = gsap.timeline({ paused: true });
+      tl.call(runWash, null, 0);
+      tl.to({}, { duration: 1.2 }, 0);
+      return { fx: { dispose: () => { veil.dispose(); surface.remove(); } }, tl };
+    },
+  };
+
+  function load(name) {
+    if (active) { active.fx.dispose(); active = null; }
+    mount.innerHTML = '';
+    active = builders[name]();
+    tl = active.tl;
+    updateTime();
+    scrub.value = 0;
+    playBtn.textContent = 'Play';
+    tl.pause();
+    setTimeout(() => { tl.play(); playBtn.textContent = 'Pause'; }, 200);
+  }
+
+  function updateTime() {
+    if (!tl) return;
+    const t = tl.time();
+    const d = tl.duration();
+    timeEl.textContent = t.toFixed(2).padStart(5, '0') + ' / ' + d.toFixed(2).padStart(5, '0');
+  }
+
+  scrub.addEventListener('input', () => {
+    if (!tl) return;
+    tl.pause(); playBtn.textContent = 'Play';
+    tl.progress(parseFloat(scrub.value) / 100);
+    updateTime();
+  });
+
+  gsap.ticker.add(() => {
+    if (!tl || tl.paused()) return;
+    scrub.value = (tl.progress() * 100).toFixed(2);
+    updateTime();
+    if (tl.progress() >= 1) playBtn.textContent = 'Replay';
+  });
+
+  playBtn.addEventListener('click', () => {
+    if (!tl) return;
+    if (tl.progress() >= 1) { tl.restart(); playBtn.textContent = 'Pause'; }
+    else if (tl.paused()) { tl.play(); playBtn.textContent = 'Pause'; }
+    else { tl.pause(); playBtn.textContent = 'Play'; }
+  });
+
+  picker.addEventListener('change', () => load(picker.value));
+
+  load('text-stack');
+</script>
+</body>
+</html>

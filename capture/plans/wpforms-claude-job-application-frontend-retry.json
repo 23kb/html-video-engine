@@ -1,0 +1,14 @@
+{
+  "_comment": "Sanitized frontend recapture for wpforms-claude-job-application-ad. Fixes the local machine's phone-country flag at source.",
+  "targetPath": "/?wpforms_form_preview=1882",
+  "variants": [
+    {
+      "slug": "frontend-job-application-preview",
+      "waitFor": "#wpforms-1882",
+      "steps": [
+        { "wait": 2200 },
+        { "eval": "['header','nav','.site-header','#masthead','.main-navigation','#site-navigation','form[role=\"search\"]','.search-form','#secondary','.widget-area','aside','footer','.site-footer','#colophon','#wpadminbar','.post-edit-link','.wpforms-form-edit-link','.wpforms-preview-notice'].forEach(function(s){document.querySelectorAll(s).forEach(function(n){n.remove();});});document.querySelectorAll('#wpforms-1882 input:not([type=\"submit\"]):not([type=\"button\"]),#wpforms-1882 textarea').forEach(function(n){n.value='';n.removeAttribute('value');n.removeAttribute('data-default-value');});document.querySelectorAll('#wpforms-1882 input[type=\"file\"]').forEach(function(n){n.value='';});document.querySelectorAll('#wpforms-1882 .iti__flag').forEach(function(n){n.classList.remove('iti__pk');n.classList.add('iti__us');});document.body.style.margin='0';document.documentElement.style.margin='0';", "settle": 600 }
+      ]
+    }
+  ]
+}

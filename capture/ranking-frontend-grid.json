@@ -1,0 +1,28 @@
+{
+  "_comment": "Missing frontend grid state (Umair 2026-08-19). Builder grid existed; the published-form grid did not.",
+  "variants": [
+    {
+      "_note": "Frontend published form in GRID layout. Same chrome-strip steps as the list capture so the two are directly comparable — only the field layout differs.",
+      "slug": "frontend-ranking-form-grid",
+      "targetPath": "/bakery-favorites-survey/",
+      "steps": [
+        {
+          "wait": 3000
+        },
+        {
+          "eval": "document.querySelectorAll('header, footer, nav, aside, [role=banner], [role=complementary], [role=contentinfo], [role=navigation], form[role=search], .site-header, .site-footer, .sidebar, #sidebar, #secondary, .widget-area, .et_pb_menu, #main-header, #top-header, #et-top-navigation, .et_search_outer, #footer, #et-footer-nav, #main-footer').forEach(function(n){ n.remove(); });",
+          "settle": 300
+        },
+        {
+          "eval": "document.querySelectorAll('a[href*=\"wpforms-builder\"], .wpforms-error-noscript, noscript').forEach(function(n){ n.remove(); });",
+          "settle": 300
+        },
+        {
+          "eval": "var f=document.querySelector('.wpforms-container'); if(f){ var host=document.createElement('div'); host.id='wpf-solo'; host.style.cssText='max-width:820px;margin:64px auto;padding:0 24px;'; document.body.innerHTML=''; document.body.appendChild(host); host.appendChild(f); document.body.style.background='#ffffff'; }",
+          "settle": 600
+        }
+      ],
+      "waitFor": ".wpforms-field-ranking"
+    }
+  ]
+}

@@ -758,7 +758,11 @@ After the 5-question pass, write `videos/<slug>/brief.md` with:
 - **Body**: `## Source` section (for "article or doc") or `## Steps`
   section (for "step list"), captured verbatim from the user.
   Optional `## Notes` section for advisory hints if the user gave
-  any.
+  any. Optional `## Rules for the whole run` section: if the user
+  states constraints that must hold across the entire video (e.g.
+  "the form stays on screen the whole time", "never show the
+  sidebar", "keep everything orange"), capture them verbatim here —
+  downstream treats each as a literal contract, so don't paraphrase.
 - **`## Clarifications` section** with exactly five numbered items in
   this order, one paragraph max per answer:
   1. Start state (Q1 answer).

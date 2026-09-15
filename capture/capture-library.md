@@ -211,23 +211,111 @@ node tools/site-eval.js "print_r(get_option('wpforms_providers'));" --site sulli
 Site paths/credentials live in `tools/sites.json`; the phar is vendored at
 `tools/vendor/wp-cli.phar`. Pre-capture health check: `node tools/preflight-site.js`.
 
-## 9. SaaS dashboards (authenticated third-party) — the SingleFile-download recipe
+### Staging writes — `--as-admin`, then read the value back
+
+wp-cli boots with **no current user**. A WPForms write API runs a capability
+check, fails it, and returns `false` — which is indistinguishable from "wrote
+nothing because nothing needed writing". A staging script that trusts the
+return value reports success and sends you off to capture the wrong field
+state (rf 8).
+
+```bash
+node tools/site-eval.js "\$f = wpforms()->obj('form')->get(1779, ['content_only' => true]); ..." --as-admin
+```
+
+Two rules, both cheap:
+
+1. **`--as-admin`** on any call that writes (it runs `wp_set_current_user(1)` first).
+2. **Assert on a read-back, never on the return value.** `current_user_can()`
+   was measured `false` even in the run where the write succeeded, so the
+   pre-flight capability check is not trustworthy either — only re-reading the
+   stored value is.
+
+Credential precedence gotcha: `WP_URL` / `WP_USER` / `WP_PASS` in the
+environment **override** `--site`, so a stale `.env` silently redirects a
+capture at a different host and the failure reads as "login is broken".
+
+### Frontend captures — strip the theme, every time
+
+A frontend capture is a shot of the FORM, not of the website around it. The
+first ranking batch shipped a page carrying banner, nav twice (including every
+test page), two search boxes, a sidebar, a footer, the `Please enable
+JavaScript` notice, and an admin-only **Edit Form** link that no visitor ever
+sees — a truth defect (rf 9). `capture-gates.js` G7 now WARNs on all of it, but
+the WARN is a backstop; the strip belongs in the plan.
+
+Paste this into the `steps` of any frontend variant and adjust the selectors to
+the theme:
+
+```json
+{ "eval": "['header','nav','.site-header','#masthead','.main-navigation','#site-navigation','form[role=\"search\"]','.search-form','#secondary','.widget-area','aside','footer','.site-footer','#colophon','#wpadminbar','.post-edit-link','.wpforms-form-edit-link'].forEach(function(s){document.querySelectorAll(s).forEach(function(n){n.remove();});});document.body.style.margin='0';", "settle": 400 }
+```
+
+Capture the same form on more than one surface and the strip steps must be
+**identical**, or the two captures are not comparable and any morph between
+them jumps.
+
+### Coverage — enumerate state × surface, not state
+
+Layout is a per-surface property. The builder canvas and the published form
+render the same `input_layout=grid` from different markup under different CSS,
+so a capture named `-grid` satisfies a quick read of a "List vs Grid" beat while
+covering only one of the two surfaces the beat needs (rf 23 — nine snapshots
+existed and none showed the published form in grid).
+
+When the snapshot plan lists a state, list it once per surface it appears on.
+
+### Two capture facts that cost a round each
+
+- **Script tags never survive.** Capture strips every `<script>`, including
+  `<script type="application/json">`. Park extracted state on an attribute
+  (`<body data-wpf-charts='…'>`) — attributes survive.
+- **`waitFor` needs a *rendered* selector.** The wait is visibility-based, so a
+  boxless element (a script tag) can never match and fails open with
+  `⚠ waitFor selector not found — continuing anyway`. Equally, never put a
+  universal selector (`body`) in a `waitFor` list: it matches instantly and
+  voids the wait for everything after it.
+
+## 9. SaaS dashboards + JS-styled admin pages — the SingleFile-download recipe
 
 `capture/capture.js` is WP-login-only, and ANY network channel out of an
 authenticated third-party page correctly trips the exfil guard (SendGrid R3,
 2026-07-03 — receiver, PNA probe, and encoded-chunk routes all blocked). The
-sanctioned shape keeps the browser half human/agent-in-browser:
+sanctioned shape keeps the browser half human/agent-in-browser (FIX-11 —
+do not automate the browser side).
 
-1. **In the authenticated tab** (claude-in-chrome or hand-driven), paste this
-   serializer into the console. It works on a CLONE — freezes input state,
-   redacts secrets, inlines readable same-origin CSS, strips scripts — then
-   triggers a normal browser **download** (lands in `~/Downloads`, local disk,
-   no off-page channel):
+### Primary path (fix-round B1, ccs 4): SingleFile manual save
+
+For JS-styled third-party admin pages (WPCode-class: CSSOM/JS-injected rules
+that no static serializer sees), the **SingleFile browser extension's manual
+save beat the automated capture** (ccs 3: CSSOM inlined, admin bar preserved,
+clean live-vs-capture diff 16/255). The whole flow:
+
+1. **In the tab** (human/agent-in-browser): SingleFile → Save page. The file
+   lands in `~/Downloads`.
+2. **Package it:**
+   ```bash
+   node tools/capture-saas.js <slug> --from-download <file> --expect "<string unique to the page>"
+   ```
+   `--expect` is REQUIRED (or explicit `--no-expect`) — the tool fails loudly
+   when the download isn't the page you think it is (mp 1: the same stale
+   download was packaged three times because Chrome blocks repeated automatic
+   downloads and "newest .html" silently re-ingested). The tool also refuses
+   byte-identical re-ingests under a different slug, strips SingleFile's
+   restrictive CSP `<meta>`, appends missing `</body></html>`, inlines
+   CORS-blocked CDN stylesheets + fonts as data URIs, re-runs redaction
+   (built-in secret catalog + `--redact <regex>`), and runs post-capture.
+
+### Fallback: the console serializer (copy-paste-run — no editing needed)
+
+When SingleFile isn't available, paste this into the authenticated tab's
+console AS-IS (no slug/redact editing — the ingest tool owns both via its
+flags). It works on a CLONE — freezes input state, inlines readable
+same-origin CSS from the CSSOM, strips scripts — then triggers a normal
+browser **download** (local disk, no off-page channel):
 
 ```js
 (async () => {
-  const SLUG = 'my-saas-page';                       // ← snapshot slug
-  const REDACT = [/SG\.[A-Za-z0-9_\-.]{20,}/g];      // ← secrets visible on this page
   const doc = document.documentElement.cloneNode(true);
   const live = document.querySelectorAll('input, textarea, select');
   const clone = doc.querySelectorAll('input, textarea, select');
@@ -251,18 +339,18 @@ sanctioned shape keeps the browser half human/agent-in-browser:
     }
   }
   doc.querySelectorAll('script').forEach((s) => s.remove());
-  let html = '<!doctype html>\n' + doc.outerHTML;
-  for (const re of REDACT) html = html.replace(re, 'REDACTED_KEY');
+  const html = '<!doctype html>\n' + doc.outerHTML;
   const a = document.createElement('a');
   a.href = URL.createObjectURL(new Blob([html], { type: 'text/html' }));
-  a.download = SLUG + '.html';
+  a.download = 'saas-capture.html';
   document.body.appendChild(a); a.click(); a.remove();
 })();
 ```
 
-2. **Then package it:** `node tools/capture-saas.js <slug> [--from-download <file>] [--redact <regex>]`
-   — moves the download into `snapshots/<slug>/`, inlines the CORS-blocked
-   CDN stylesheets + fonts as data URIs, re-runs redaction, runs post-capture.
+Then package with the same `capture-saas.js --from-download --expect` command
+as above. ⚠ Chrome blocks repeated automatic downloads from an origin after
+the first — if you re-run the snippet, VERIFY a new file actually landed
+(the `--expect`/byte-identity asserts catch it when you don't).
 
 **Blocked-route fallback ladder** (when a DOM-extraction route is blocked, try
 the next rung before abandoning real UI): DOM-serialize (this recipe) →

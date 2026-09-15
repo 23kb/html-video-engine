@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>cleanFastRejoin — QC</title>
+<style>
+  :root {
+    --bg: #14161C; --ink: #ebebed; --ink-mute: #8a8e99;
+    --accent: #E27730; --accent-blue: #0399ED;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    overflow: hidden;
+  }
+  .header { padding: 14px 24px; border-bottom: 1px solid #2a2e3a; }
+  .header h1 {
+    margin: 0 0 4px; font-size: 16px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--accent-blue);
+  }
+  .header .desc { font-size: 12px; color: var(--ink-mute); }
+  .header a { color: var(--accent); text-decoration: none; font-size: 12px; }
+  .header code { color: var(--accent); }
+
+  .stage-wrap {
+    position: fixed; inset: 70px 0 96px 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #0d0e10;
+  }
+  .stage {
+    position: relative;
+    width: 1280px; height: 720px;
+    background: linear-gradient(135deg, #1a1f2a 0%, #0d1019 100%);
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    transform-origin: center center;
+  }
+
+  /* Local layer that gets faded after the exit. */
+  .local-layer {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, rgba(122, 48, 226, 0.18), transparent 60%);
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* Shared anchor — a hex/glow that's hidden until the exit reveals it. */
+  .shared-hex {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 180px; height: 200px;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(3, 153, 237, 0.85), rgba(3, 153, 237, 0));
+    opacity: 0;
+    pointer-events: none;
+    z-index: 6;
+  }
+  .shared-hex::before {
+    content: ''; position: absolute; inset: 30%;
+    background: rgba(3, 153, 237, 0.6);
+    clip-path: polygon(25% 0, 75% 0, 100% 50%, 75% 100%, 25% 100%, 0 50%);
+  }
+
+  /* Camera wrapper — pans during onPanToOverview callback. */
+  .scene-camera {
+    position: absolute; inset: 0;
+    transform-origin: center center;
+    will-change: transform;
+    z-index: 10;
+  }
+
+  /* The "card" being exited — a hero-sized form-card style block. */
+  .form-card {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 720px; height: 440px;
+    background: #fff; color: #2c2f33;
+    border-radius: 12px; padding: 32px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.40), 0 4px 12px rgba(0,0,0,0.20);
+  }
+  .form-card .badge {
+    display: inline-block; background: var(--accent); color: #fff;
+    padding: 4px 10px; border-radius: 4px;
+    font-size: 11px; font-weight: 700;
+    font-family: ui-monospace, monospace; letter-spacing: 0.04em;
+    margin-bottom: 16px;
+  }
+  .form-card h3 { margin: 0 0 12px; font-size: 22px; font-weight: 600; }
+  .form-card .row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 0; border-bottom: 1px solid #DCDCDE;
+    font-size: 13px;
+  }
+  .form-card .row .meta { color: #6A6F76; font-family: ui-monospace, monospace; }
+
+  .phase-label {
+    position: absolute;
+    bottom: 18px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; color: #fff;
+    background: rgba(20,22,28,0.90);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: ui-monospace, monospace;
+    z-index: 100;
+  }
+
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    padding: 12px 24px;
+    background: rgba(20,22,28,0.95);
+    border-top: 1px solid #2a2e3a;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .controls button {
+    background: rgba(255,255,255,0.10); border: 0; color: var(--ink);
+    height: 30px; padding: 0 12px; border-radius: 4px; cursor: pointer;
+    font-size: 12px; font-family: ui-monospace, monospace;
+  }
+  .controls button:hover { background: rgba(255,255,255,0.20); }
+  .controls .status {
+    margin-left: auto; color: var(--ink-mute); font-family: ui-monospace, monospace; font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>cleanFastRejoin — polished exit pattern</h1>
+  <div class="desc">
+    Polished rest-api exit cadence: <code>500ms breathe → scale 1.02 + sine.in
+    0.35s exit (no blur)</code> → reveal shared anchor → pan to overview → 120ms
+    hold → 180ms layer fade. Replaces the unpolished <code>scale 1.05 +
+    blur(8px) + power2.in 0.6s</code> smear. Source: <a href="../_shared/motion-primitives.js"><code>motion-primitives.js</code></a>
+    <code>cleanFastRejoin</code> · <a href="index.html">← QC index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="shared-hex" id="hex"></div>
+    <div class="scene-camera" id="camera">
+      <div class="local-layer" id="layer"></div>
+      <div class="form-card" id="card">
+        <span class="badge">target · about to exit</span>
+        <h3>GET /wp-json/wpforms/v1/forms/55</h3>
+        <div class="row"><span>id</span><span class="meta">55</span></div>
+        <div class="row"><span>title</span><span class="meta">"Contact Us"</span></div>
+        <div class="row"><span>fields</span><span class="meta">5</span></div>
+        <div class="row"><span>created</span><span class="meta">2026-04-22</span></div>
+      </div>
+    </div>
+    <div class="phase-label" id="phaseLabel">phase: idle · click "exit" to play</div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="exitBtn">▶ exit</button>
+  <button id="resetBtn">⟲ reset</button>
+  <span class="status" id="statusLabel">ready</span>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { cleanFastRejoin } from '/videos/_shared/motion-primitives.js';
+
+function fitStage() {
+  const stage = document.getElementById('stage');
+  const availW = window.innerWidth;
+  const availH = Math.max(200, window.innerHeight - 70 - 60);
+  const sx = availW / 1280;
+  const sy = availH / 720;
+  const scale = Math.min(sx, sy) * 0.96;
+  stage.style.transform = `scale(${Math.max(scale, 0.1)})`;
+}
+fitStage();
+window.addEventListener('resize', fitStage);
+
+const exitBtn = document.getElementById('exitBtn');
+const resetBtn = document.getElementById('resetBtn');
+const phaseLabel = document.getElementById('phaseLabel');
+const statusLabel = document.getElementById('statusLabel');
+const card = document.getElementById('card');
+const layer = document.getElementById('layer');
+const hex = document.getElementById('hex');
+const camera = document.getElementById('camera');
+
+let busy = false;
+
+function reset() {
+  gsap.killTweensOf([card, layer, hex, camera]);
+  gsap.set(card, { opacity: 1, scale: 1, clearProps: 'filter' });
+  gsap.set(layer, { opacity: 1 });
+  gsap.set(hex, { opacity: 0, scale: 0.5 });
+  gsap.set(camera, { x: 0, y: 0, scale: 1 });
+  phaseLabel.textContent = 'phase: idle · click "exit" to play';
+  statusLabel.textContent = 'ready';
+  busy = false;
+}
+
+reset();
+
+async function runExit() {
+  if (busy) return;
+  busy = true;
+  exitBtn.disabled = true;
+  statusLabel.textContent = 'running…';
+  const startedAt = performance.now();
+
+  phaseLabel.textContent = 'phase: 1 · breathe (500ms)';
+
+  await cleanFastRejoin(card, {
+    breatheDuration: 0.5,
+    exitDuration: 0.35,
+    exitScale: 1.02,
+    layer,
+    onSharedAnchor: () => {
+      phaseLabel.textContent = 'phase: 3 · reveal shared anchor';
+      gsap.to(hex, { opacity: 1, scale: 1, duration: 0.7, ease: 'power3.out' });
+    },
+    onPanToOverview: async () => {
+      phaseLabel.textContent = 'phase: 4 · pan to overview';
+      await new Promise(resolve => {
+        gsap.to(camera, {
+          scale: 0.85, duration: 1.1, ease: 'expo.inOut',
+          onComplete: resolve,
+        });
+      });
+    },
+  });
+
+  const ms = Math.round(performance.now() - startedAt);
+  phaseLabel.textContent = `phase: complete (${ms}ms)`;
+  statusLabel.textContent = `done in ${ms}ms`;
+  exitBtn.disabled = false;
+  busy = false;
+}
+
+exitBtn.addEventListener('click', runExit);
+resetBtn.addEventListener('click', reset);
+
+// Auto-run on load so the QC viewer sees the cadence immediately.
+setTimeout(runExit, 500);
+</script>
+</body>
+</html>

@@ -7,7 +7,6 @@ const chokidar = require('chokidar');
 const WebSocket = require('ws');
 const { createRequestHandler, ROOT } = require('../serve.js');
 const { previewClientScript } = require('./preview-client.js');
-const { scrubberHtml } = require('./scrubber-html.js');
 
 function parseArgs(argv) {
   const args = { port: 4321, open: true, video: '_phase-c-editorial-pilot' };
@@ -38,11 +37,61 @@ function openUrl(url) {
   child.unref();
 }
 
+// Scan videos/ for QC-dashboard candidates: any non-underscore slug that has
+// a rendered mp4 (newest one wins) or a qc-report.json. Cheap enough to run
+// per-request; no caching so a fresh render/report shows on reload.
+function qcIndex() {
+  const fs = require('fs');
+  const videosDir = path.join(ROOT, 'videos');
+  const out = [];
+  for (const entry of fs.readdirSync(videosDir, { withFileTypes: true })) {
+    if (!entry.isDirectory() || entry.name.startsWith('_') || entry.name.startsWith('.')) continue;
+    const slug = entry.name;
+    const dir = path.join(videosDir, slug);
+    const mp4s = [];
+    const scan = (d, depth) => {
+      for (const e of fs.readdirSync(d, { withFileTypes: true })) {
+        if (e.isDirectory() && depth < 2 && !e.name.startsWith('.')) scan(path.join(d, e.name), depth + 1);
+        else if (e.isFile() && e.name.toLowerCase().endsWith('.mp4')) {
+          const p = path.join(d, e.name);
+          mp4s.push({ p, mtime: fs.statSync(p).mtimeMs });
+        }
+      }
+    };
+    try { scan(dir, 0); } catch (_) { continue; }
+    const reportFile = path.join(dir, 'qc-report.json');
+    const hasReport = fs.existsSync(reportFile);
+    if (!mp4s.length && !hasReport) continue;
+    mp4s.sort((a, b) => b.mtime - a.mtime);
+    let report = null;
+    if (hasReport) {
+      try { report = JSON.parse(fs.readFileSync(reportFile, 'utf8')); } catch (_) {}
+    }
+    out.push({
+      slug,
+      mp4: mp4s.length ? '/' + path.relative(ROOT, mp4s[0].p).replace(/\\/g, '/') : null,
+      mp4Mtime: mp4s.length ? new Date(mp4s[0].mtime).toISOString() : null,
+      report: report ? '/videos/' + slug + '/qc-report.json' : null,
+      sections: report ? Object.keys(report.sections || {}) : [],
+      updated: report ? report.updated || null : null,
+    });
+  }
+  out.sort((a, b) => String(b.updated || b.mp4Mtime || '').localeCompare(String(a.updated || a.mp4Mtime || '')));
+  return out;
+}
+
 function main() {
   const args = parseArgs(process.argv);
   const staticHandler = createRequestHandler({ injectPreview });
   const server = http.createServer((req, res) => {
     const url = new URL(req.url, `http://localhost:${args.port}`);
+    // Never let a browser cache a served build: the "reviewer saw an old
+    // build" class (ee 7, mfe 6) survives as BROWSER cache ghosting even when
+    // the server reads fresh bytes. setHeader() values merge into every
+    // writeHead() downstream (static files, mp4 range replies, 404s, __qc),
+    // so this one place covers every response.
+    res.setHeader('Cache-Control', 'no-store');
+    res.setHeader('Pragma', 'no-cache');
     // Preview-client probes HEAD /__preview-ws to decide whether to open the
     // live-reload WebSocket. Without this short-circuit the probe falls
     // through to the static handler, returns 404, and no WS is ever opened.
@@ -51,10 +100,10 @@ function main() {
       res.end();
       return;
     }
-    if (url.pathname === '/scrubber') {
-      const video = url.searchParams.get('video') || args.video;
-      res.writeHead(200, { 'Content-Type': 'text/html' });
-      res.end(scrubberHtml({ video, port: args.port }));
+    // QC dashboard index: every video with a render mp4 or a qc-report.json.
+    if (url.pathname === '/__qc/videos.json') {
+      res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' });
+      res.end(JSON.stringify(qcIndex(), null, 2));
       return;
     }
     staticHandler(req, res);
@@ -69,7 +118,7 @@ function main() {
     wss.handleUpgrade(req, socket, head, ws => wss.emit('connection', ws, req));
   });
 
-  const watched = ['videos', 'runtime', 'engine', 'scenes', 'videos/_shared', 'vendor/gsap'];
+  const watched = ['videos', 'scenes', 'videos/_shared', 'vendor/gsap'];
   const watcher = chokidar.watch(watched, {
     cwd: ROOT,
     ignoreInitial: true,
@@ -89,11 +138,9 @@ function main() {
   });
 
   server.listen(args.port, () => {
-    const player = `http://localhost:${args.port}/scenes/player.html?video=${encodeURIComponent(args.video)}&preview=1`;
-    const scrubber = `http://localhost:${args.port}/scrubber?video=${encodeURIComponent(args.video)}`;
-    console.log('Phase E preview server');
+    const player = `http://localhost:${args.port}/videos/${encodeURIComponent(args.video)}/index.html`;
+    console.log('Preview server (live reload)');
     console.log(`  player:   ${player}`);
-    console.log(`  scrubber: ${scrubber}`);
     console.log(`  watches:  ${watched.join(', ')}`);
     if (args.open) openUrl(player);
   });

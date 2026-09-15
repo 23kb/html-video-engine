@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>QC — vertical 9:16 plumbing</title>
+<style>
+  /* QC harness for the 9:16 path. Not a video — it proves the toolchain carries a
+     portrait stage end to end: smoke viewport, probe viewport, and most importantly
+     that render-singlehtml-audio.js records 1080x1920 instead of letterboxing.
+     Re-run after touching tools/stage-size.js or any viewport call site:
+       node tools/smoke-singlehtml.js _qc-vertical --seconds 20
+       node tools/render-singlehtml-audio.js _qc-vertical --bgm none --out /tmp/v.mp4
+       ffprobe -show_entries stream=width,height  ->  must read 1080x1920 */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #12161a; font-family: Bahnschrift, "DIN Alternate", system-ui, sans-serif; }
+  .stage-wrap {
+    position: relative;
+    width: 100vw; min-height: 100vh;
+    display: flex;
+    padding: 24px;
+    overflow: auto;
+  }
+  /* 1080x1920 portrait stage — a DIFFERENT native than 1920x1080, not a smaller
+     one (INV-1 clarification). No transform-scale on the stage. */
+  .stage {
+    position: relative;
+    width: 1080px; height: 1920px;
+    margin: auto;
+    background: #1b2027;
+    overflow: hidden;
+    flex: 0 0 auto;
+  }
+  .band { position: absolute; left: 0; width: 100%; display: grid; place-items: center; }
+  .band-top    { top: 0;    height: 320px; background: #E27730; }
+  .band-mid    { top: 320px; height: 1280px; background: #223040; }
+  .band-bottom { bottom: 0; height: 320px; background: #2c3542; }
+  .band b { color: #fff; font-size: 54px; letter-spacing: .02em; }
+  .band span { color: rgba(255,255,255,.72); font-size: 34px; }
+  #tick { color: #E27730; font-size: 120px; font-variant-numeric: tabular-nums; }
+</style>
+</head>
+<body>
+  <div class="stage-wrap">
+    <div class="stage">
+      <div class="band band-top"><b>TOP BAND — title pill zone</b></div>
+      <div class="band band-mid"><div style="text-align:center">
+        <div id="tick">0.0</div>
+        <span>device band — 1080 x 1280</span>
+      </div></div>
+      <div class="band band-bottom"><span>BOTTOM BAND — caption, above player overlay</span></div>
+    </div>
+  </div>
+<script>
+// Instrumentation contract required by smoke-singlehtml.js and
+// render-singlehtml-audio.js: __T0, __sched, __dur, __done.
+(function () {
+  const DUR = 6;
+  const tick = document.getElementById('tick');
+  // One declared cue with no matching mp3: smoke's "__sched non-empty" check
+  // passes and the renderer skips the missing clip by design (graceful-degrade
+  // contract in render-singlehtml-audio.js), so the MP4 is silent. The harness
+  // tests GEOMETRY, not audio.
+  window.__sched = [{ key: 'qc-vertical-no-clip', t: 1 }];
+  window.__dur = DUR;
+  window.__done = false;
+  window.__T0 = performance.now();
+  (function frame() {
+    const t = (performance.now() - window.__T0) / 1000;
+    tick.textContent = Math.min(t, DUR).toFixed(1);
+    if (t >= DUR) { window.__done = true; return; }
+    requestAnimationFrame(frame);
+  })();
+})();
+</script>
+</body>
+</html>

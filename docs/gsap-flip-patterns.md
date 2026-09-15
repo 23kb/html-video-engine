@@ -1,5 +1,6 @@
 # GSAP Flip Patterns
 
+> **HISTORICAL API NOTE (2026-08-28):** code examples below predate the 2026-08-22 engine retirement. The craft rules stand; the `engine/`/`runtime/`/manifest APIs they mention are gone — implement in single-HTML per CLAUDE.md.
 How and when to use the GSAP Flip plugin for chapter beats and postIntros in
 this repo. Two video-local sandboxes prove these patterns end-to-end without
 touching protected core.

@@ -14,10 +14,45 @@ const path = require('path');
 const REPO_ROOT = path.resolve(__dirname, '..');
 
 const MISSION =
-  'Guided HTML video builder. Three paths: (1) Tutorial — real WPForms UI in iframe + manifest + chapters + narration. (2) Pure editorial — single self-contained HTML, no engine, clone from reference/html-templates/. (3) Mixed — editorial chrome composited over real product UI via surface: mixed. MP4 capture in-repo via tools/render.js.';
+  'Guided single-HTML video builder (engine/manifest path retired 2026-08-22). Paths: (1) Tutorial — real WPForms UI in an iframe on the master timeline (clone docs/examples/single-html-tutorial-skeleton.html). (2) Pure editorial / ad — single self-contained HTML (clone docs/examples/single-html-ad-skeleton.html; style from videos/klaviyo-bridge-2 + reference/html-templates). (3) Mixed — editorial chrome composited over real product UI in ONE single-HTML film. (4) 9:16 short — clone reference/html-templates/vertical-short-skeleton.html. MP4 RENDER in-repo via tools/render-singlehtml-audio.js (never the same word as snapshot capture, which is capture/capture.js and runs FIRST).';
 
 const START_RULE =
-  'STEP 1: pick a path (see PATHS below). STEP 2: load the matching primary skill. STEP 3: for repo-wide context (boot order, protected core, validation, push-back), read CLAUDE.md. Topic rules live in skills.';
+  'STEP 0: read docs/rulebook.md — every row is a defect that shipped and cost a rebuild. STEP 1: pick a path (see PATHS below). STEP 2: load the matching primary skill. STEP 3: for repo-wide context (boot order, protected core, validation, push-back), read CLAUDE.md. Topic rules live in skills.';
+
+// The rulebook summarised from the file itself, never transcribed — a headline
+// copied into this script would drift the first time a row moved, and a
+// rulebook nobody loads is the WISH slot applied to itself.
+const RULEBOOK_PATH = path.join(REPO_ROOT, 'docs', 'rulebook.md');
+
+function rulebookSummary() {
+  if (!fs.existsSync(RULEBOOK_PATH)) return null;
+  const text = fs.readFileSync(RULEBOOK_PATH, 'utf8');
+  const lines = text.split(/\r?\n/);
+
+  const sections = [];
+  let cur = null;
+  let inHeadline = false;
+  const headlines = [];
+
+  for (const l of lines) {
+    const num = l.match(/^## (\d+\.\s.+)$/);
+    if (num) { cur = { title: num[1], rows: 0 }; sections.push(cur); inHeadline = false; continue; }
+    if (/^## The (five|two) that/.test(l)) { cur = null; inHeadline = true; continue; }
+    if (/^## /.test(l)) { cur = null; inHeadline = false; continue; }
+    if (cur && /^\| /.test(l) && !/^\| IF \|/.test(l) && !/^\|---/.test(l)) cur.rows++;
+    if (inHeadline) {
+      const h = l.match(/^\d+\.\s+\*\*(.+?)\*\*/);
+      if (h) headlines.push(h[1]);
+    }
+  }
+
+  const slots = {};
+  for (const m of text.matchAll(/\|\s+`(HOOK|VALIDATOR|LIB|PROBE|TEMPLATE|ARTIFACT|WISH)`/g)) {
+    slots[m[1]] = (slots[m[1]] || 0) + 1;
+  }
+  const total = Object.values(slots).reduce((a, b) => a + b, 0);
+  return { path: 'docs/rulebook.md', sections, headlines, slots, total };
+}
 
 const PATHS = [
   {
@@ -38,7 +73,7 @@ const PATHS = [
     name: 'Mixed',
     when: 'Editorial chrome composited over real product UI (e.g. klaviyo-addon-intro, wpforms-rest-api-overview-polished)',
     architecture: 'Engine + chapters with surface: mixed',
-    primarySkill: 'wpforms-marketing + wpforms-transitions',
+    primarySkill: 'wpforms-marketing',
     auditGate: 'wpforms-motion-audit (mandatory)'
   },
 ];
@@ -48,7 +83,7 @@ const SKILLS = [
   { name: 'wpforms-postintro',   path: '.claude/skills/wpforms-postintro/SKILL.md',   use: 'PostIntro design + multi-animation rule + canonical references + snapshot handoff + morph-chain integration.' },
   { name: 'wpforms-gsap-rules',  path: '.claude/skills/wpforms-gsap-rules/SKILL.md',  use: 'GSAP L0 discipline + camera-decomposition + registered timelines + pausableRaf + Flip + effects library + designer principles (Emil/Krehel/Jhey).' },
   { name: 'wpforms-marketing',   path: '.claude/skills/wpforms-marketing/SKILL.md',   use: 'Editorial / ad-style surfaces (surface: editorial/mixed) + reference/html-templates/ clones + brand canonical + blocks + atmospheric kit + text-kit.' },
-  { name: 'wpforms-transitions', path: '.claude/skills/wpforms-transitions/SKILL.md', use: 'Chapter breaks (glide/dolly/whip) + swap styles (flipBridge default) + camera poses + shared scene + scrubber/render.' },
+  
   { name: 'wpforms-primitives', path: '.claude/skills/wpforms-primitives/SKILL.md', use: 'Lookup index for videos/_shared/motion-primitives.js (cameras / Cursor / typing / field-reveal / brand-anchor / exit) and videos/_shared/wpforms-interactions.js (Wave 1 builder/admin + Wave 2 Batch A notifications/CL/smart-tags). Includes the library-as-reference philosophy + 3-test promotion rule. Reach here BEFORE writing GSAP cursor / camera / interaction code AND before adding any new library method.' },
   { name: 'wpforms-motion-audit', path: '.claude/skills/wpforms-motion-audit/SKILL.md', use: 'Score animations and camera moves S-F tier with hard-rule calibration. MUST run before any postIntro/cinematic/editorial handoff.' },
   { name: 'wpforms-video-polish', path: '.claude/skills/wpforms-video-polish/SKILL.md', use: 'Polish an existing already-shipped video without breaking it. Backup-first → Plan agent analysis → vet against determinism/protected-core/RED-flag rules → surgical edits in batches of 5–10 → static verification only (no visual QC) → motion-audit if cinematic beats touched. Includes 8 canonical polish patterns (repeated expo.out, settle-into-rest, unused CustomEase, one-shot-pulse-with-tail, display-serif letter-spacing, frozen-camera handoff, redundant interactive cycle, block-centred zoom gutter). NOT for new authoring (use wpforms-video / wpforms-marketing), NOT for debug.' },
@@ -79,7 +114,7 @@ const OPERATOR_MANUALS = [
 ];
 
 const REFERENCE_TEMPLATES = [
-  { path: 'videos/klaviyo-bridge-2/index.html', use: 'CORE REFERENCE for pure editorial. PRIMARY clone target for any new pure-editorial video — encodes patterns the other 3 templates demonstrate individually.' },
+  { path: 'videos/klaviyo-bridge-2/index.html', use: 'CORE REFERENCE for pure-editorial VOCABULARY (atmosphere beds, ease voices, SFX cue placement). Never the first write — it predates the playback/instrumentation contract; clone docs/examples/single-html-ad-skeleton.html and customize toward this.' },
   { path: 'reference/html-templates/wpforms-ai-prompt-open.html', use: 'S-tier identity-continuity morph (Button → Input → Pill → Chat). Secondary reference for single-element morph-chain editorial work.' },
   { path: 'reference/html-templates/editorial-reference-36s.html', use: '36s OpenAI Layo rebuild, A-tier, 13 beats with named atmospheres + transitions. Secondary reference for linear-scene editorial.' },
   { path: 'reference/html-templates/openai-replica-18s.html', use: 'First-try single-HTML proof. Built by mimicking a contact sheet. Secondary reference; validates the clone-and-customize pattern.' },
@@ -94,15 +129,13 @@ const BRAND_CANONICAL = [
 const KEY_DOCS = [
   { path: 'docs/INDEX.md',                                              when: 'First — one-line-per-doc index. Use to find the right doc fast.' },
   { path: 'docs/video-architecture-invariants-2026-05-12.md',           when: 'CANONICAL hard-rules reference. 16 numbered invariants (INV-1 through INV-16) covering stage/iframe transforms, snapshot truth, library scope, brand, tutorial shape, selector scoping, skill-gate consumption, continuation-session re-audit, real-UI proof gate, clone-and-customize. Pure reference — file-read sufficient, no Skill tool invocation. Read inline.' },
-  { path: 'docs/authoring-api.md',                                       when: 'Public authoring contract reference. Manifest schema, chapter exports, descriptor mode, validator behavior.' },
-  { path: 'docs/winning-pattern-analysis-2026-05-10.md',                 when: 'What winning videos share vs failed editorial attempts. Identity-continuity authoring rule lives here.' },
-  { path: 'docs/wpforms-source-inventory-2026-05-10.md',                 when: 'Real WPForms brand + motion + UI inventory from live plugin source.' },
-  { path: 'docs/storyboard-format-morph-chain-2026-05-10.md',            when: 'Editorial storyboards MUST include the morph-chain section. Authoring contract.' },
-  { path: 'docs/polish-vocabulary-2026-05-11.md',                        when: 'Per-chapter deltas between rest-api-overview and rest-api-overview-polished. Tutorial-polish primitive vocabulary.' },
+  { path: 'docs/rulebook.md',                                            when: 'STEP 0. ~240 IF/THEN rows, every one a defect that shipped and cost a rebuild; each names its enforcement slot + receipt. Read before the first beat.' },
+  { path: 'docs/storyboard-format-morph-chain-2026-05-10.md',            when: 'Editorial storyboards MUST include the morph-chain section (identity continuity — one element threads the story); all new films carry the Shot list. Authoring contract.' },
+  { path: 'docs/lessons-index.md',                                       when: 'Index of every LESSONS-*.md file inside video folders + the standing capability asks (postIntro bar, SFX).' },
+  { path: 'docs/engine-action-points-2026-08-28.md',                     when: 'Ranked tooling / skill / template action points mined from the lessons (AP-1..20); the S-effort items shipped 2026-08-28.' },
 ];
 
 const SHARED_KITS = [
-  { path: 'videos/_shared/kit.js',         use: 'loadGsap, awaitTween, withGsapContext, registerTimeline (paused-timeline registration), registerCameraPose, pausableRaf, mulberry32. See wpforms-gsap-rules.' },
   { path: 'videos/_shared/effects.js',     use: 'gsap.registerEffect library: highlightPulse, fieldBurst, labelReveal, popOutTilt, cardReflow. See wpforms-gsap-rules.' },
   { path: 'videos/_shared/atmospheric.js', use: 'Marketing-mode helpers: grain, sweep, parallax pair, scale push, dark backdrop. See wpforms-marketing.' },
   { path: 'videos/_shared/blocks/',        use: 'Editorial blocks: code-card, mac-window, phone-frame, pill, arrow, route-line, terminal. See wpforms-marketing.' },
@@ -118,17 +151,16 @@ const TOOLS = [
   { cmd: 'node tools/inspect-snapshot.js <snapshot> --emit-selectors [--filter <text>]',         use: 'Catalog-grounded selectors from a real snapshot.' },
   { cmd: 'node tools/verify-selectors.js <snapshot> ...',                                        use: 'Selector existence check.' },
   { cmd: 'node tts/generate.js --video <slug>',                                                  use: 'Render narration mp3s.' },
-  { cmd: 'node tools/validate-video.js <slug>',                                                  use: 'Static validator.' },
-  { cmd: 'node tools/check-video-playback.js <slug> [--seconds <n>]',                            use: 'Non-visual smoke. Exit 0 = clean boot, 1 = boot fail, 2 = page errors.' },
-  { cmd: 'node tools/render.js <slug> [--seek] [--fps 30]',                                      use: 'MP4 export. Default wall-clock; --seek only valid for surface: editorial.' },
-  { cmd: 'node tools/render-html.js <slug> --duration <seconds> [--out path]',                   use: 'Single-HTML editorial → MP4 without the engine (silent).' },
+  { cmd: 'node tools/validate-singlehtml.js <slug> [--report]',                                 use: 'Static validator for single-HTML films (imports, snapshots, narration parity, instrumentation, guard rules, payoff / at() / orphan-clip WARNs).' },
+  { cmd: 'node tools/smoke-singlehtml.js <slug> [--seconds <n>] [--report]',                     use: 'Non-visual headless smoke; holds the headless lock.' },
+  { cmd: 'node tools/render-html.js <slug> --duration <seconds> [--out path]',                   use: 'Single-HTML → silent MP4 (editorial review clips).' },
   { cmd: 'node tools/render-singlehtml-audio.js <slug> [--bgm <path>|none] [--out path]',         use: 'Single-HTML → MP4 WITH AUDIO. Records the real run, lays narration at __sched cue times, side-chain-ducks BGM. Needs __T0/__sched/__dur/__done instrumentation. Audio quality is the user\'s QC.' },
   { cmd: 'node tools/stitch.js videos/<slug>.video.json [--no-render] [--xfade <s>]',            use: 'Render + ffmpeg-concat HF intro + HTML body + HF outro per .video.json manifest. Locked tutorial delivery shape.' },
   { cmd: 'node tools/keyframes.js <video.mp4> [--frames 16 --cols 4]',                           use: 'Contact-sheet grid from an MP4 for visual QC handoff.' },
   { cmd: 'node tools/post-capture.js <slug> [--keep-fields 1,2,3]',                              use: 'MANDATORY after every new capture: field trim (opt-in) + builder markup trim + comment strip + CSS dedup + catalog regen.' },
   { cmd: 'node tools/preview.js [--video <slug>] [--port 4321]',                                 use: 'Live-reload preview server + scrubber UI.' },
   { cmd: 'node tools/lint-determinism.js [--all] [--video <slug>]',                              use: 'Determinism linter (Date.now/fetch errors, Math.random/setTimeout warnings).' },
-  { cmd: 'npm run lint',                                                                          use: 'Composes validate-video.js --all + lint-determinism.js --all.' },
+  { cmd: 'npm run lint',                                                                          use: 'Composes validate-singlehtml.js --all + lint-determinism.js --all.' },
 ];
 
 const KNOWN_VIDEO_EXCLUDE = new Set([
@@ -165,6 +197,7 @@ function buildContext() {
     sharedKits: SHARED_KITS.map(k => ({ ...k, present: exists(k.path) })),
     libraries: LIBRARIES.map(l => ({ ...l, present: exists(l.path) })),
     tools: TOOLS,
+    rulebook: rulebookSummary(),
     knownVideoPackages: listVideos(),
   };
 }
@@ -177,6 +210,29 @@ function printHuman(ctx) {
   out.push('');
   out.push(ctx.startRule);
   out.push('');
+
+  if (ctx.rulebook) {
+    const rb = ctx.rulebook;
+    out.push(`## STEP 0 — The rulebook (${rb.path}, ${rb.total} rows)`);
+    out.push('');
+    out.push('  Every row is a defect that shipped, was measured, and cost a rebuild.');
+    out.push('  Read it before the first beat, not after the first rejection.');
+    out.push('');
+    if (rb.headlines.length) {
+      out.push('  If you read nothing else:');
+      for (const h of rb.headlines) out.push(`    · ${h}`);
+      out.push('');
+    }
+    out.push('  Sections:');
+    for (const s of rb.sections) out.push(`    ${s.title}  (${s.rows})`);
+    out.push('');
+    const order = ['HOOK', 'VALIDATOR', 'LIB', 'PROBE', 'TEMPLATE', 'ARTIFACT', 'WISH'];
+    const slotLine = order.filter(k => rb.slots[k]).map(k => `${k} ${rb.slots[k]}`).join(' · ');
+    out.push(`  Enforcement: ${slotLine}`);
+    out.push('  WISH fires nothing — those rows only work if you remember them.');
+    out.push('');
+  }
+
   out.push('## STEP 1 — Pick your path');
   out.push('');
   for (const p of ctx.paths) {

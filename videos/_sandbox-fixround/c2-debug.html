@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>C2 debug</title>
+<style>html,body{margin:0}#stage{position:relative;width:1280px;height:720px;overflow:hidden;background:#223}</style>
+</head>
+<body>
+<div id="stage"></div>
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { IframeManager } from '/videos/_shared/wpforms-interactions.js';
+const R = {};
+try {
+  const ifm = new IframeManager(document.getElementById('stage'), {
+    viewport: { width: 1280, height: 720 },
+    iframeSize: { width: 1280, height: 720 },
+  });
+  await ifm.load('builder-settings-anti_spam');
+  const doc = ifm.doc(), win = doc.defaultView;
+  const low = doc.querySelector('#wpforms-panel-field-anti_spam-keyword_filter-enable-wrap');
+  // walk
+  let pane = null;
+  for (let n = low.parentElement; n && n !== doc.documentElement && n !== doc.body; n = n.parentElement) {
+    const cs = win.getComputedStyle(n);
+    if (/(auto|scroll)/.test(cs.overflowY) && n.scrollHeight > n.clientHeight + 4) { pane = n; break; }
+  }
+  R.paneFound = pane ? (pane.className || pane.id || pane.tagName) : null;
+  if (pane) {
+    pane.scrollTop = 0;
+    const elRect = low.getBoundingClientRect();
+    const paneRect = pane.getBoundingClientRect();
+    R.leading = elRect.top - paneRect.top;
+    R.paneView = pane.clientHeight;
+    R.scrollHeight = pane.scrollHeight;
+    R.maxScroll = pane.scrollHeight - pane.clientHeight;
+    R.goalRaw = pane.scrollTop + R.leading + elRect.height / 2 - R.paneView / 2;
+    R.gsapDefined = typeof gsap !== 'undefined';
+    R.methodHasBranch = ifm.smoothScrollIntoView.toString().includes('Inner-scroller');
+    const realTo = gsap.to.bind(gsap);
+    R.tweenCalls = [];
+    gsap.to = (tgt, vars) => { R.tweenCalls.push({ keys: Object.keys(vars).join(','), to: { x: vars.x, y: vars.y } }); return realTo(tgt, vars); };
+    try {
+      const ret = await ifm.smoothScrollIntoView(low, { duration: 0.2 });
+      R.returned = ret ? (ret.id || ret.tagName || 'el') : String(ret);
+    } catch (err) { R.callError = String(err.message); }
+    gsap.to = realTo;
+    R.afterScrollTop = pane.scrollTop;
+  }
+  window.__results = R;
+} catch (e) { window.__results = { error: String(e.message), stack: String(e.stack) }; }
+</script>
+</body>
+</html>

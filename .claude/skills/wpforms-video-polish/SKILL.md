@@ -1,6 +1,6 @@
 ---
 name: wpforms-video-polish
-description: "Polish an existing already-shipped WPForms video without breaking it. Use when the user says 'polish this video', 'tweak the X video', 'make this video better', 'improve the timing/easing/typography of <slug>', or asks for a quality pass on videos/<slug>/index.html (or chapter files). Covers single-HTML new-architecture videos AND legacy chapter/manifest videos. NOT for new video authoring (use wpforms-video or wpforms-marketing), NOT for fixing a broken video (debug first), NOT for postIntro design (use wpforms-postintro)."
+description: "Polish an existing already-shipped WPForms video without breaking it. Use when the user says 'polish this video', 'tweak the X video', 'make this video better', 'improve the timing/easing/typography of <slug>', or asks for a quality pass on videos/<slug>/index.html. Single-HTML films only (the legacy chapter/manifest path was retired 2026-08-22). NOT for new video authoring (use wpforms-video or wpforms-marketing), NOT for fixing a broken video (debug first), NOT for postIntro design (use wpforms-postintro)."
 ---
 
 # WPForms Video Polish
@@ -15,7 +15,7 @@ The hand-rolled pattern this skill codifies (klaviyo-bridge-2, 2026-05-12) ships
 
 - Not a redesign. If the user wants new choreography, use `wpforms-video` (tutorial) or `wpforms-marketing` (editorial).
 - Not a debug pass. If the video has actual bugs (broken animations, missing assets, console errors), fix those first using normal video tooling.
-- Not architectural. Don't migrate legacy chapter videos to single-HTML; don't touch protected core (engine/, runtime/, scenes/).
+- Not architectural. Don't re-architect the film's timeline or playback block; don't touch protected core (`videos/_shared/*`, snapshots/, validators).
 - Not a license to refactor. Every changed line traces directly to a polish opportunity.
 
 ## ⛔ Non-negotiable rules (in order)
@@ -28,17 +28,17 @@ Many video HTML files under `videos/<slug>/` are gitignored. There IS no git his
 cp "videos/<slug>/index.html" "videos/<slug>/index.before-polish-<YYYY-MM-DD>.backup.html"
 ```
 
-For legacy chapter videos, back up every chapter file you'll touch. Skip this and you can permanently destroy work on a botched edit.
+Back up every file you'll touch (`storyboard.md`, `qc-probe.mjs` too, if you edit them). Skip this and you can permanently destroy work on a botched edit.
 
 ### 2. No visual QC from Claude
 
 The user owns all visual QC on videos. Don't screenshot, don't scrub the timeline in the browser, don't ask "want me to verify?" — even if a `PostToolUse:Edit` hook prompts you to. The `feedback_visual_qc_split.md` 5-second rule does NOT apply to video polish.
 
 Verification is **static only**:
-- `node tools/validate-video.js <slug>` (for legacy chapter videos)
+- `node tools/validate-singlehtml.js <slug>`
 - `node tools/lint-determinism.js --video <slug>`
-- Console error log via preview tools — reading for runtime errors is fine, screenshot/scrub is not
-- DOM probes via `preview_eval` to confirm CSS values applied
+- `node tools/smoke-singlehtml.js <slug>` — boots the page headless; console errors surface in its output (reading them is fine, screenshot/scrub is not)
+- `node tools/probe-singlehtml.js <slug>` when the film ships a `qc-probe.mjs` — asserts computed DOM state at seeked times
 
 ### 3. Respect determinism rules
 
@@ -46,7 +46,7 @@ See INV-9 in `docs/video-architecture-invariants-2026-05-12.md` for the canonica
 
 ### 4. Do NOT touch protected core (CLAUDE.md)
 
-`engine/*`, `runtime/player.js`, `runtime/chapter-runner.js`, `runtime/scene-helpers.js`, `runtime/transitions.js`, `runtime/frame-driver.js`, `runtime/frame-adapter.js`, `runtime/shared-scene.js`, `runtime/pause-manager.js`, `scenes/shared.js`, `scenes/player.html`, validators, accepted/reference packages.
+`videos/_shared/*` libraries, `snapshots/` captures + their `_shared` assets, validators/smoke tools, `capture/capture.js`.
 
 ### 5. Do NOT touch load-bearing logic in the target video
 
@@ -72,12 +72,11 @@ After polish edits land, polish on cinematic / postIntro / editorial beats requi
 
 ### Step 0 — Path identification
 
-Confirm which video and which architecture:
+Confirm which video. There is one architecture:
 
-- **New-architecture single-HTML** — `videos/<slug>/index.html` only (sometimes `storyboard.md`). Master GSAP timeline. Examples: klaviyo-bridge-2, klaviyo-quick-connect.
-- **Legacy chapter/manifest** — `manifest.json` + `chapters/*.js` + narration mp3s. Examples: wpforms-rest-api-overview, builder/admin tutorials. **The polish surface is multiple files.**
+- **Single-HTML** — `videos/<slug>/index.html` (plus `storyboard.md`, `qc-probe.mjs`, `narration/` when present). Master GSAP timeline. Examples: klaviyo-bridge-2, klaviyo-quick-connect.
 
-Different architecture = different polish surface, but the same rules.
+Legacy chapter/manifest videos no longer exist (engine retired 2026-08-22). If a legacy-era film is ever revisited, that is git-history work, not this skill.
 
 ### Step 1 — Backup
 
@@ -88,7 +87,7 @@ Per Rule 1 above. Always. First action in the session.
 Use the `Plan` subagent_type. Brief it like a smart colleague:
 
 - Hand it the file path(s) and tell it the architecture.
-- Tell it to compare against a recent polish reference if one exists in the repo (e.g. `videos/wpforms-rest-api-overview-polished/`).
+- Tell it to compare against a recent polish reference if one exists in the repo (e.g. `videos/klaviyo-bridge-2/index.html` — the film this workflow was codified from).
 - Ask for 5–10 concrete polish edits: `file_path:line_number → current value → suggested value → reason`.
 - Ask explicitly for a **RED-flag list** of things it identified as too-risky-to-touch, so you can avoid them.
 - Cap the response under 600 words to keep your context lean.
@@ -128,9 +127,10 @@ For comments around the edit: don't add new ones. Don't write "polished from X t
 
 Run only static checks. NEVER screenshot, NEVER scrub:
 
-- For new-arch single-HTML: load the URL via `preview_eval` to confirm the page boots, then read console for errors. `preview_inspect` or `preview_eval` to confirm specific CSS values applied. Stop there.
-- For legacy chapter videos: `node tools/validate-video.js <slug>` + `node tools/lint-determinism.js --video <slug>` + `node tools/check-video-playback.js <slug>`.
-- For both: ignore pre-existing warnings (e.g. GSAP "Invalid property name FROM_A" warnings predate any polish).
+- `node tools/validate-singlehtml.js <slug>` + `node tools/lint-determinism.js --video <slug>` + `node tools/smoke-singlehtml.js <slug>` — smoke boots the page headless and prints console errors; read them, stop there.
+- If the film ships `qc-probe.mjs`: `node tools/probe-singlehtml.js <slug>` re-asserts computed DOM/CSS state at seeked times — update the checks when a polish edit changes a checked value.
+- Umair's own scrub runs at `http://localhost:4321/videos/<slug>/index.html` (`node tools/preview.js --no-open`). Hand over the URL; never drive it yourself.
+- Ignore pre-existing warnings (e.g. GSAP "Invalid property name FROM_A" warnings predate any polish).
 
 ### Step 6 — Audit if motion-heavy beats changed
 

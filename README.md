@@ -5,7 +5,7 @@ both **tutorial videos** (real WPForms UI in a Mac-framed iframe) and
 **ad-style / release announcements** (editorial scenes, blocks, atmospheric
 kit). The agent (Claude or Codex) wires snapshots, narration, BGM,
 overlays, transitions, and a topic-specific postIntro into a deterministic
-playable URL. MP4 capture is **in-repo** via `tools/render.js`.
+playable URL. MP4 capture is **in-repo** via `tools/render-singlehtml-audio.js`.
 
 ---
 
@@ -29,13 +29,12 @@ node tools/preview.js
 Open a video:
 
 ```
-http://localhost:4321/scenes/player.html?video=<slug>
+http://localhost:4321/videos/<slug>/index.html
 ```
 
 Single chapter only:
 
 ```
-http://localhost:4321/scenes/player.html?video=<slug>&chapter=<id>
 ```
 
 The slug is the folder name under `videos/`.
@@ -54,16 +53,15 @@ The slug is the folder name under `videos/`.
    - `wpforms-postintro` — postIntro design + multi-animation rule
    - `wpforms-gsap-rules` — GSAP discipline, registered timelines, `pausableRaf`
    - `wpforms-marketing` — editorial / ad-style surfaces + blocks
-   - `wpforms-transitions` — chapter breaks, swap styles, camera poses
 
 Skills live at `.claude/skills/<name>/SKILL.md`.
 
 **If you're a human teammate:**
 
 - `docs/INDEX.md` — one-line-per-doc map. Use it to find the right doc fast.
-- `docs/authoring-api.md` — public authoring contract (manifest schema,
-  chapter exports, ctx helpers, validator behavior).
-- `docs/examples/legacy-chapter-skeleton.md` — default chapter shape.
+- `docs/examples/single-html-tutorial-skeleton.html` — the tutorial authoring
+  contract as a working clone-first skeleton (helpers, DUR, SCENE_PREP,
+  instrumentation).
 - `docs/postintro-patterns.md` — postIntro design rules.
 
 ---
@@ -112,9 +110,9 @@ Videos are no longer iframe-only. Each chapter declares a surface:
 - `editorial` — pure HTML/CSS/SVG/GSAP scene (ad-style / hero / cinematic).
 - `mixed` — editorial overlays composited over the iframe.
 
-See `docs/transitions.md` for swap styles (`flipBridge`, `morph`, `cover`,
-`dolly`, `glide`, `whip`) and `docs/camera-poses.md` for the named
-camera-pose vocabulary (`focus`, `station`, `overview`).
+Camera and transition vocabulary lives in `videos/_shared/motion-primitives.js`
+(`cinematicFlight`, `figjamFlight`, `focusStationOverview`) — see the
+`wpforms-primitives` skill for the per-primitive index.
 
 ---
 
@@ -124,9 +122,6 @@ camera-pose vocabulary (`focus`, `station`, `overview`).
 videos/<slug>/         one folder per video (manifest + chapters + narration)
 videos/_shared/        shared kit, effects, blocks, text-kit, lottie-kit
 snapshots/<slug>/      captured WPForms UI, reused across videos
-engine/                shared framework — protected
-runtime/               player shell, chapter runner, cinematics, transitions
-scenes/                player.html entry + reference scenes
 capture/               Playwright snapshot tool
 tts/                   Voicebox TTS pipeline
 tools/                 inventory, validation, smoke, preview, render, lint
@@ -147,12 +142,12 @@ CLAUDE.md              operator manual for agents
 | `tools/verify-selectors.js` | Selector validation against snapshot DOM |
 | `tools/field-state.js` | Field-state inventory query (don't full-read the 132 KB doc) |
 | `tts/generate.js` | Render narration mp3s |
-| `tools/validate-video.js` | Static validator |
-| `tools/check-video-playback.js` | Non-visual smoke test |
+| `tools/validate-singlehtml.js` | Static validator for single-HTML films |
+| `tools/smoke-singlehtml.js` | Non-visual smoke test for single-HTML films |
 | `tools/preview.js` | Live-reload server + scrubber UI |
-| `tools/render.js` | In-repo MP4 export (`--seek` only for editorial) |
+| `tools/render-singlehtml-audio.js` | In-repo MP4 export with narration + ducked BGM |
 | `tools/lint-determinism.js` | Render-parity check (no `Date.now`, no unseeded `Math.random`, no `fetch`) |
-| `npm run lint` | Composes `validate-video.js --all` + `lint-determinism.js --all` |
+| `npm run lint` | Composes `validate-singlehtml.js --all` + `lint-determinism.js --all` |
 
 ---
 
@@ -163,8 +158,8 @@ Before review handoff:
 ```bash
 node tools/list-snapshots.js --for <slug>          # confirm snapshots resolve
 node tts/generate.js --video <slug>                # render narration
-node tools/validate-video.js <slug>                # static validator
-node tools/check-video-playback.js <slug> --seconds 30   # non-visual smoke
+node tools/validate-singlehtml.js <slug>                # static validator
+node tools/smoke-singlehtml.js <slug> --seconds 30   # non-visual smoke
 ```
 
 Then open the playable URL.
@@ -176,9 +171,9 @@ Then open the playable URL.
 In-repo, deterministic:
 
 ```bash
-node tools/render.js <slug>             # wall-clock (default for tutorials)
-node tools/render.js <slug> --seek      # frame-stepped (editorial only)
-node tools/render.js <slug> --fps 30
+# wall-clock (default)
+node tools/render-singlehtml-audio.js <slug>
+node tools/render-singlehtml-audio.js <slug> --resolution WxH   # optional override
 ```
 
 Audio (narration + ducked BGM) is baked into the page — the renderer
@@ -205,17 +200,14 @@ Enforced by `node tools/lint-determinism.js`. See
 
 Per-video work must NOT edit:
 
-- `engine/*` (entire directory)
-- `runtime/player.js`, `chapter-runner.js`, `scene-helpers.js`,
-  `transitions.js`, `frame-driver.js`, `frame-adapter.js`,
-  `shared-scene.js`, `camera-poses.js`, `pause-manager.js`
-- `scenes/player.html`, `scenes/shared.js`
+- `videos/_shared/*` libraries (motion-primitives, wpforms-interactions,
+  narration, iframe-helpers, effects, blocks, shorts-kit)
 - Existing accepted video packages (except scoped fixes)
 - Existing snapshots (capture new ones; do not edit captured DOM)
-- `tools/validate-video.js` validator behavior
+- `tools/validate-singlehtml.js`, `tools/smoke-singlehtml.js`, `capture/capture.js` behavior
 
-If a beat seems to need core, stop and propose a video-local helper or a
-runtime helper sketch — both are approval-gated.
+If a beat seems to need shared code, stop and propose a video-local helper
+first — promotion into `videos/_shared/` is approval-gated (second use).
 
 ---
 
@@ -223,15 +215,13 @@ runtime helper sketch — both are approval-gated.
 
 | Slug | State |
 |---|---|
-| `a-complete-guide-to-the-checkboxes-field` | Reference video 1. Scoped fixes only. |
-| `build-forms-faster-with-wpforms-ai` | Reference video 2. Scoped fixes only. |
-| `creating-first-form` | Older, reference. |
-| `form-entries-guide` | Older, reference. |
-| `form-notifications` | Older, reference. |
-| `surveys-and-polls-v4-final-synced` | Older, reference. |
-| `stage-5-transition-lab` | Stage-5 transition R&D harness. |
 
-Read reference packages on demand only after you can name the
+| `klaviyo-bridge-2` | Core pure-editorial reference. |
+| `qr-code-doorway` / `qr-code-ink` | Mixed-surface announcements (Aug 2026). |
+| `ranking-field*` trio | Sound-design + seam-discipline reference. |
+| `short-stop-fast-bots` | Latest short (9:16) pattern. |
+
+Read reference packages on demand only after you can name the implementation pattern you need.
 implementation pattern you need.
 
 ---

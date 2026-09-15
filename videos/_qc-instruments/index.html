@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>QC — instruments.js (valueRoll / sheen / chips / lane / shell)</title>
+<style>
+  /* QC harness for videos/_shared/instruments.js (C-SPEC C5, dev session 2).
+     Human QC: buttons per instrument. Numeric QC: ?auto=1 runs every probe,
+     results land in window.__qcResults + the on-page list; window.__done
+     flips when finished. The scratch playwright runner adds the paint-
+     evidence layer (screenshot deltas inside each fire window). */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #12161a; color: #dfe5ec; font-family: Bahnschrift, "DIN Alternate", system-ui, sans-serif; display: flex; gap: 24px; padding: 24px; }
+  .panel { width: 430px; flex: 0 0 auto; }
+  h1 { font-size: 20px; margin-bottom: 12px; color: #E27730; }
+  p  { font-size: 13px; line-height: 1.5; color: #9aa4b0; margin-bottom: 12px; }
+  button { display: block; width: 100%; margin-bottom: 7px; padding: 9px 14px; font: 600 13px Bahnschrift, system-ui, sans-serif; background: #1d232b; color: #dfe5ec; border: 1px solid #2c3542; border-radius: 8px; cursor: pointer; }
+  button:hover { border-color: #E27730; }
+  #results { margin-top: 14px; font: 12px/1.7 Consolas, monospace; white-space: pre-wrap; }
+  #results .pass { color: #46b450; }
+  #results .fail { color: #d63638; }
+  .stage-view { width: 454px; height: 807px; flex: 0 0 auto; }
+  .stage { position: relative; width: 1080px; height: 1920px; background: #f0f0f1; overflow: hidden; transform: scale(0.42); transform-origin: 0 0; }
+  /* light panel look so dark sweeps/chips read like they do over admin UI */
+  .stage .fake-panel { position: absolute; left: 60px; top: 300px; width: 960px; height: 1200px; background: #fff; border: 1px solid #d9dde3; border-radius: 10px; }
+</style>
+</head>
+<body>
+  <div class="panel">
+    <h1>instruments.js</h1>
+    <p>An instrument explains; a ring only points. Promotions: valueRoll (3 copies),
+       sheenSweep (7+), stateChip, routeChip, scanline, raceLane, browserShell.</p>
+    <button id="b-roll">valueRoll — tween $60 → $48</button>
+    <button id="b-slot">valueRoll — slot 2 → 5</button>
+    <button id="b-sheen">sheenSweep — dark, over the panel</button>
+    <button id="b-chip">stateChip — GATE 2s → 5s</button>
+    <button id="b-route">routeChip — → YOU fly-off (fire-time anchor)</button>
+    <button id="b-scan">scanline — red judge pass</button>
+    <button id="b-lane">raceLane — scrub to 3s of 0–6</button>
+    <button id="b-shell">browserShell — Berlin pill</button>
+    <button id="b-probes">Run numeric probes</button>
+    <div id="results"></div>
+  </div>
+  <div class="stage-view"><div class="stage" id="stage"><div class="fake-panel" id="panel">
+    <div id="price" style="position:absolute;left:340px;top:560px;font:700 64px Bahnschrift,system-ui,sans-serif;color:#1e2430;">$60.00</div>
+  </div></div></div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import {
+  valueRoll, sheenSweep, stateChip, routeChip, scanline, raceLane, browserShell,
+  bandToStage, BAND_Y,
+} from '/videos/_shared/instruments.js';
+
+const stage = document.getElementById('stage');
+const panel = document.getElementById('panel');
+const price = document.getElementById('price');
+const resultsEl = document.getElementById('results');
+const sleep = (s) => new Promise((r) => setTimeout(r, s * 1000));
+function log(line, ok) {
+  const div = document.createElement('div');
+  if (ok === true) div.className = 'pass';
+  if (ok === false) div.className = 'fail';
+  div.textContent = (ok === true ? 'PASS  ' : ok === false ? 'FAIL  ' : '      ') + line;
+  resultsEl.appendChild(div);
+}
+const money = (v) => '$' + v.toFixed(2);
+
+// ── demo buttons ────────────────────────────────────────────────────────────
+document.getElementById('b-roll').onclick = () => { price.textContent = '$60.00'; valueRoll(price, { from: 60, to: 48, format: money }); };
+document.getElementById('b-slot').onclick = () => {
+  const chip = stateChip(stage, { label: 'GATE', value: '2', unit: 's', tone: 'orange', x: 120, y: 120 });
+  chip.tweenIn();
+  gsap.delayedCall(0.8, () => chip.set(5));
+  gsap.delayedCall(2.6, () => chip.dispose());
+};
+document.getElementById('b-sheen').onclick = () => sheenSweep(panel, { tone: 'dark' });
+document.getElementById('b-chip').onclick = document.getElementById('b-slot').onclick;
+document.getElementById('b-route').onclick = () => {
+  const chip = routeChip(stage, { text: '→ YOU', tone: 'orange', anchor: () => ({ x: 540, y: bandToStage(600) }) });
+  chip.fire(gsap.timeline(), { at: 0 });
+};
+document.getElementById('b-scan').onclick = () => scanline(panel, {});
+document.getElementById('b-lane').onclick = () => {
+  const lane = raceLane(stage, { axis: [0, 6], marks: [{ t: 2, label: '2s' }, { t: 5, label: '5s' }], width: 940, x: 70, y: 1650 });
+  lane.tweenIn();
+  gsap.delayedCall(0.6, () => lane.scrub({ to: 3, duration: 2.0 }));
+  gsap.delayedCall(4.2, () => lane.dispose());
+};
+document.getElementById('b-shell').onclick = () => {
+  const shell = browserShell(stage, { pill: 'Visitor — Berlin, Germany', x: 90, y: 400 });
+  shell.tweenIn();
+  gsap.delayedCall(2.6, () => shell.dispose());
+};
+
+// ── numeric probes (?auto=1) ────────────────────────────────────────────────
+async function runProbes() {
+  resultsEl.textContent = '';
+  const checks = [];
+  const push = (name, ok) => checks.push({ name, ok });
+  const baseline = stage.childElementCount;
+
+  // valueRoll tween: exact-value snap.
+  price.textContent = '$60.00';
+  const roll = valueRoll(price, { from: 60, to: 48, format: money, duration: 0.5 });
+  await sleep(0.3);
+  const mid = price.textContent;
+  await sleep(0.6);
+  push(`valueRoll tween: intermediate value shown mid-roll ("${mid}")`, mid !== '$60.00' && mid !== '$48.00');
+  push(`valueRoll tween: exact snap on complete ("${price.textContent}")`, price.textContent === '$48.00');
+  roll.kill();
+
+  // stateChip: slot roll 2 → 5.
+  const chip = stateChip(stage, { label: 'GATE', value: '2', unit: 's', x: 120, y: 120 });
+  chip.tweenIn();
+  await sleep(0.6);
+  const visible = getComputedStyle(chip.el).visibility === 'visible' && Number(gsap.getProperty(chip.el, 'opacity')) > 0.9;
+  push('stateChip: visible after tweenIn', visible);
+  chip.set(5);
+  await sleep(0.8);
+  push(`stateChip: value slot-rolled to "5" (got "${chip.valueEl.textContent}")`, chip.valueEl.textContent === '5');
+
+  // Double-mount safety + dispose-to-baseline.
+  const chip2 = stateChip(stage, { label: 'TIMER', value: '0.0', unit: 's', tone: 'dark', x: 560, y: 120 });
+  chip2.tweenIn();
+  await sleep(0.3);
+  chip.dispose(); chip2.dispose();
+  push(`dispose returns stage to baseline node count (${stage.childElementCount} vs ${baseline})`, stage.childElementCount === baseline);
+
+  // routeChip: fire-time anchor + fly-off self-removal.
+  let anchorCalls = 0;
+  const rc = routeChip(stage, { text: '→ YOU', anchor: () => { anchorCalls++; return { x: 540, y: 700 }; }, holdS: 0.4 });
+  push('routeChip: anchor NOT called at mount (fire-time contract)', anchorCalls === 0);
+  rc.fire(gsap.timeline(), { at: 0 });
+  await sleep(0.3);
+  push('routeChip: anchor resolved at fire time', anchorCalls === 1);
+  await sleep(1.2);
+  push('routeChip: fly-off removed the chip from the DOM', !rc.el.parentNode);
+
+  // raceLane: scrub geometry + onTick coupling.
+  const lane = raceLane(stage, { axis: [0, 6], marks: [{ t: 2, label: '2s' }, { t: 5, label: '5s' }], width: 940, x: 70, y: 1650 });
+  lane.tweenIn();
+  let lastTick = 0;
+  lane.scrub({ to: 3, duration: 0.6, onTick: (v) => { lastTick = v; } });
+  await sleep(0.9);
+  const dotX = Number(gsap.getProperty(lane.parts.dot, 'x'));
+  const fillSX = Number(gsap.getProperty(lane.parts.fill, 'scaleX'));
+  push(`raceLane: dot landed at half-axis (x=${dotX.toFixed(0)}, expect 452)`, Math.abs(dotX - 452) < 3);
+  push(`raceLane: fill scaleX 0.5 (got ${fillSX.toFixed(3)})`, Math.abs(fillSX - 0.5) < 0.01);
+  push(`raceLane: onTick reached the axis value (${lastTick.toFixed(2)})`, Math.abs(lastTick - 3) < 0.05);
+  lane.dispose();
+
+  // sheen + scanline: strip mounts inside the window, self-removes after.
+  sheenSweep(panel, { tone: 'dark', duration: 0.5 });
+  await sleep(0.25);
+  push('sheenSweep: strip present mid-sweep', !!panel.querySelector('.wpfi-sheen'));
+  await sleep(0.6);
+  push('sheenSweep: strip removed on complete', !panel.querySelector('.wpfi-sheen'));
+  scanline(panel, { duration: 0.5 });
+  await sleep(0.25);
+  push('scanline: strip present mid-pass', !!panel.querySelector('.wpfi-scanline'));
+  await sleep(0.6);
+  push('scanline: strip removed on complete', !panel.querySelector('.wpfi-scanline'));
+
+  // browserShell: body slot below the bar.
+  const shell = browserShell(stage, { pill: 'Visitor — Berlin, Germany', x: 90, y: 400 });
+  shell.tweenIn();
+  await sleep(0.6);
+  push('browserShell: body slot present under the 66px bar', shell.body.offsetTop === 66 && shell.body.offsetHeight === 920 - 66);
+  push('browserShell: pill text landed', shell.pillEl.textContent.includes('Berlin'));
+  shell.dispose();
+  push(`all instruments disposed — stage back to baseline (${stage.childElementCount} vs ${baseline})`, stage.childElementCount === baseline);
+  push(`bandToStage(600) = ${bandToStage(600)} (BAND_Y ${BAND_Y})`, bandToStage(600) === 900);
+
+  resultsEl.textContent = '';
+  for (const c of checks) log(c.name, c.ok);
+  const pass = checks.every((c) => c.ok);
+  log(pass ? 'ALL CHECKS PASS' : 'FAILURES ABOVE', pass);
+  window.__qcResults = { checks, pass };
+  return window.__qcResults;
+}
+document.getElementById('b-probes').onclick = runProbes;
+
+window.__done = false;
+if (new URLSearchParams(location.search).has('auto')) {
+  runProbes().then(() => { window.__done = true; });
+} else {
+  window.__done = true;
+}
+</script>
+</body>
+</html>

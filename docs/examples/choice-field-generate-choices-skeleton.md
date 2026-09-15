@@ -1,5 +1,6 @@
 # Choice Field Generate Choices Skeleton
 
+> **HISTORICAL API NOTE (2026-08-28):** code examples below predate the 2026-08-22 engine retirement. The craft rules stand; the `engine/`/`runtime/`/manifest APIs they mention are gone — implement in single-HTML per CLAUDE.md.
 Choice-field videos (`Dropdown`, `Multiple Choice`, `Checkboxes`) should show
 the AI 'Generate Choices' button by default when the source UI exists or can be
 grounded in real product-derived markup. Cover the button, modal, generated

@@ -11,8 +11,8 @@
 //     asserts correctness against — screenshot each frame, assemble at a
 //     locked fps. Smoothness and sync are guaranteed by construction.
 //   - For quick low-stakes previews the realtime path still exists at
-//     tools/render-html.js. The legacy #play/#scrub renderer moved to
-//     tools/render-singlehtml-legacy.js.
+//     tools/render-html.js. (The legacy #play/#scrub renderer,
+//     render-singlehtml-legacy.js, was deleted 2026-09-02 — C0.)
 //
 // Hard-won gotchas baked in (see docs/tooling-todo-render-sfx-2026-07-20.md):
 //   - Frames are written OUTSIDE the repo (os.tmpdir()): serve.js live-reload

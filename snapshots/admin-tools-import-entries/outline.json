@@ -1,0 +1,681 @@
+{
+  "slug": "admin-tools-import-entries",
+  "registryPresent": true,
+  "transitions": [],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    },
+    {
+      "target": "admin-tools-export",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=export\"]"
+    },
+    {
+      "target": "admin-tools-entry-automation",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=entry-automation\"]"
+    },
+    {
+      "target": "admin-tools-system",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=system\"]"
+    },
+    {
+      "target": "admin-tools-action-scheduler",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=action-scheduler\"]"
+    },
+    {
+      "target": "admin-tools-logs",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=logs\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms_entries_import_submit",
+        "tag": "button",
+        "text": "Continue",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-entries-import-cancel",
+        "tag": "button",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-finished-form-link",
+        "tag": "a",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-issues-download",
+        "tag": "a",
+        "text": "Download CSV",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-new-import",
+        "tag": "a",
+        "text": "Start New Import",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-submit",
+        "tag": "button",
+        "text": "Import Entries",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-view-entries",
+        "tag": "a",
+        "text": "View Imported Entries",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-btn",
+        "tag": "strong",
+        "text": "Choose a File",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-entries-import-issues-toggle",
+        "tag": "button",
+        "text": "Toggle issues list",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#wpforms-tools",
+        "tag": "div",
+        "text": "Import Export Entry Automation AI MCP System Info Scheduled…",
+        "count": 1,
+        "hidden": false,
+        "nav": "admin-tools-import"
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#wpforms_entries_import_destination_form_export_file",
+        "tag": "select",
+        "text": "Select a WPForms form",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_entries_import_destination_form_from_plugin",
+        "tag": "select",
+        "text": "Select a WPForms form",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_entries_import_file",
+        "tag": "input",
+        "text": "Upload CSV file",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_entries_import_plugin",
+        "tag": "select",
+        "text": "Select previous form plugin",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_entries_import_source_form",
+        "tag": "select",
+        "text": "Select a source form",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__input--cloned",
+        "tag": "input",
+        "text": "Select a source form",
+        "count": 3,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#wpforms-entries-import-export-file-section",
+        "tag": "div",
+        "text": "No file chosen Choose a File Maximum upload file size: 300 …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-plugin-section",
+        "tag": "div",
+        "text": "Select previous form plugin Source Form Select a source for…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-entries-import-progress-bar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-progress-modal",
+        "tag": "div",
+        "text": "Just a Minute Sit back and relax while we import your entri…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-progress-text",
+        "tag": "p",
+        "text": "0 of 0 entries imported",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-stat-issues",
+        "tag": "span",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-stat-issues-label",
+        "tag": "span",
+        "text": "with issues",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-stat-success",
+        "tag": "span",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-stat-success-label",
+        "tag": "span",
+        "text": "imported entries",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-stat-total",
+        "tag": "span",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-stat-total-label",
+        "tag": "span",
+        "text": "total entries",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-entries-import-progress-modal-actions",
+        "tag": "div",
+        "text": "View Imported Entries Start New Import",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-entries-import-progress-modal-bar-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-entries-import-progress-modal-content",
+        "tag": "div",
+        "text": "Just a Minute Sit back and relax while we import your entri…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_flamingo",
+        "tag": "li",
+        "text": "Flamingo Address Book Inbound Messages",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_gf_edit_forms",
+        "tag": "li",
+        "text": "Forms Forms New Form Entries Settings Import/Export Add-Ons…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_ninja-forms",
+        "tag": "li",
+        "text": "Ninja Forms Welcome Dashboard Add New Submissions Import / …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_vibe-ai",
+        "tag": "li",
+        "text": "Vibe AI Vibe AI Approval Log",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpcf7",
+        "tag": "li",
+        "text": "Contact Contact Forms Add Contact Form Integration",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms All Forms Add New Form Entries Payments NEW! Form T…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_entries_import_destination_form_export_file_wrap",
+        "tag": "span",
+        "text": "Select a WPForms formSelect a WPForms formSelect a WPForms …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_entries_import_file_desc",
+        "tag": "p",
+        "text": "Maximum upload file size: 300 MB.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-finished-count",
+        "tag": "span",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-finished-form-name",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-form",
+        "tag": "form",
+        "text": "From an Installed Plugin From a File Select previous form p…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-entries-import-issues-block",
+        "tag": "div",
+        "text": "Entries With Issues Toggle issues list",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-issues-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-mapped-count",
+        "tag": "span",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-mapping-block",
+        "tag": "div",
+        "text": "Field Mapping Match fields between forms to ensure entry da…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-mapping-body",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-progress-current",
+        "tag": "span",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-progress-total",
+        "tag": "span",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-skipped-count",
+        "tag": "span",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-skipped-rows-block",
+        "tag": "div",
+        "text": "Skipped Rows Download CSV Toggle skipped rows list",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-skipped-rows-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-status-icon",
+        "tag": "i",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-total-fields",
+        "tag": "span",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-import-total-text",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "Select previous form pluginWPForms413 entriesFlamingo (Cont…",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "Import Entries Import Forms Import Entries Easily import en…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-builder-overlay-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-entries-import-actions",
+        "tag": "div",
+        "text": "Continue",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-entries-import-field-label",
+        "tag": "label",
+        "text": "Source Form",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-entries-import-forms-row",
+        "tag": "div",
+        "text": "Source Form Select a source form → Destination Form Select …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-entries-import-issues-content",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-entries-import-issues-header",
+        "tag": "div",
+        "text": "Entries With Issues Toggle issues list",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-entries-import-issues-header-actions",
+        "tag": "div",
+        "text": "Toggle issues list",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-entries-import-mapping-header",
+        "tag": "div",
+        "text": "Source Field Destination Field",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-setting-row",
+        "tag": "div",
+        "text": "Import Entries Easily import entries from other form plugin…",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

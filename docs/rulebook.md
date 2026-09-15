@@ -1,0 +1,529 @@
+# Rulebook — IF / THEN for video building sessions
+
+Every rule here is a defect that shipped, was measured, and cost a rebuild.
+None are preferences. Mined from all 16 `LESSONS-*.md` files
+(`docs/lessons-index.md`) plus the fix round 2026-08-14 and the motion-design
+R&D round 2026-08-17. The four ranking-field files were mined 2026-08-20, in
+the same pass that built the enforcers for them — which is why a number of
+rows below say `LIB` or `PROBE` where they would otherwise say `WISH`. The
+two QR films (2026-08-21 autonomous builds) were mined 2026-08-22 — notably,
+both cite rulebook rows by receipt, and the second film applied the first's
+seam findings at authoring time: one QC probe round instead of three. The
+2026-08-28 pass mined the QC-series files (2026-08-23/24 builds reviewed
+2026-08-28), `form-analytics-ad-r2`, the acceptance trio's unmined remainder,
+and — low-priority, provenance-tagged — the GLM coupons batch. Ledger:
+`docs/lessons-mining-2026-08-28.md`. The 2026-09-14 pass mined the
+reference-driven ad batch (`yjc` `cja` `itf` `cgw` `wcr` `wvb`) and the
+2026-09-04/05 shorts (`snpt` `scaf` `sc3p` `sat` `scfw` `sml` `somr` `stte`);
+ledger `docs/lessons-mining-2026-09-14.md`. The four 2026-09-05 tutorial files
+(airtable, twilio, google-calendar, extra-text-fields) and the Sheets / n8n
+long-forms remain UNMINED.
+
+**Read this before the first beat, not after the first rejection.**
+
+## Digest — if you read nothing else
+
+The catalog below is the law; these are the rows that cost the most. (Form
+ruled by Umair 2026-08-22: full catalog stands, digest lives at the head.)
+
+1. **Name the DOM mutation for every product beat.** No DOM writes = slideshow. (mp 0)
+2. **After approval, report — never fix.** (ccs 19)
+3. **Two rejections → change the concept, not the execution.** (ccs 13 / as5 8)
+4. **Never trust a raw rect once any zoom has landed.** (mp F, bac 5/7, sfb 7)
+5. **Area means a fraction of the frame, not of the object.** (sfb 31)
+6. **Measure the element before rewriting the system.** A colour system was
+   rebuilt over a captured CSS transition; a smoke timeout was raised over a
+   page reload — both wrong fixes cost far more than the sub-minute
+   measurement, and one reached Umair as advice. (rfw 1, rfw 21)
+7. **A tool that cannot see something reports it as absent.** A silent gate
+   skip reads as a pass, a 270px diff calls small-area motion frozen, a
+   non-compositing tab pins every transition at its start value. Ask what the
+   instrument can see before acting on what it said. (rf 2, rf 9, rf 16, rfw 28)
+8. **Green chips mean "not broken", never "good."** Every gate passed — tier A,
+   dead-time green, validator 0, smoke PASS — on films scored −5/10 and
+   scratched. Nothing in the battery reads the idea, the copy, or the script.
+   (cad 8, road 1)
+9. **A declared reference is TRANSCRIBED at frame resolution and cited per
+   beat in the code — never invented and then cited.** The one beat that was
+   invented is the one beat flagged; a film built from phase-level citations
+   passed every gate and scored −5/10. (yjc 1, wcr)
+
+
+## How to read the Slot column
+
+The R&D round's finding: *a rule that lives only in prose is a wish, not a
+rule.* Rules fire when they attach to an observable event (an edit, a handoff,
+a clone, an approval) and never when they attach to an internal state
+("about to write motion code"). So every rule below names what actually
+enforces it.
+
+| Slot | Fires | Where |
+|---|---|---|
+| `HOOK` | every Edit/Write to `videos/<slug>/` | `tools/hooks/video-guard.js` |
+| `VALIDATOR` | every handoff | `validate-singlehtml.js`, `lint-determinism.js` |
+| `LIB` | at the call site | the shared library refuses or corrects it for you |
+| `PROBE` | when you run it | `probe-short.js`, `dead-time.js`, `capture-gates.js`, `narration-qc.js` |
+| `TEMPLATE` | at clone | structure baked into the skeleton |
+| `ARTIFACT` | at the human gate | a slot in the storyboard / proposal Umair approves |
+| `WISH` | **nothing fires** | prose only — you have to remember it |
+
+`WISH` rows are the honest state, not an oversight. They are the candidate
+list for the next hardening round.
+
+## Receipt keys
+
+`as5` anti-spam-5-layers · `ccs` custom-css-targeting · `mp` mercado-pago-launch ·
+`bac` short-block-a-country · `cc` short-coupon-code ·
+`nvc` short-notifications-vs-confirmations · `ssn` short-spam-safety-net ·
+`sfb` short-stop-fast-bots · `aib` wpforms-ai-board
+
+The ranking-field family is four separate files and they are cited apart:
+`rf` ranking-field **snapshot/capture** · `rfv` ranking-field **video build** ·
+`rfe` ranking-field-election · `rfw` ranking-field-weight
+
+QR films (2026-08-21 autonomous overnight builds):
+`qrd` qr-code-doorway · `qri` qr-code-ink
+
+QC series 2026-08-23/24 (reviewed + mined 2026-08-28):
+`geo` geolocation-addon · `ee` entry-exports · `wh` webhooks-addon ·
+`fuf` file-upload-field · `lf` layout-field · `saa` short-address-autocomplete ·
+`sfc` short-form-columns · `swaa` short-webhooks-any-app ·
+`scu` short-camera-uploads · `sscg` short-set-conversion-goal ·
+`sxf` short-export-filtered / short-export-one-entry (one shared note) ·
+`road` road-to-wpforms-2-full-circle · `fan` form-analytics-ad-r2
+
+GLM batch (LOW priority — built 2026-08-26 without the manual, see
+`docs/lessons-index.md`): `cpa` coupons-addon · `cad` coupons-ad ·
+`scs` short-coupon-switch
+
+Acceptance trio (2026-08-23): `mfe` managing-form-entries (tutorial) ·
+`ela` entries-lifecycle-ad (editorial) · `senw` short-entries-now-what (shorts)
+
+First WPVibe ad (2026-09-03, five QC rounds, camera pass v6): `wva` wpvibe-wpforms-ad —
+analysis `docs/ad-camera-gap-analysis-2026-09-03.md`
+
+Ad SFX ratification (2026-09-03, ear QC in context): `rav` reel-ad-vocabulary —
+ratified palette `tools/sfx/palette/` (manifest + README)
+
+Reference-driven ads (2026-09-04 → 09-14, mined 2026-09-14): `yjc`
+wpforms-claude-you-just-chat (its `-9x16` twin carries an identical file) ·
+`cja` wpforms-claude-job-application-ad · `itf` wpforms-claude-idea-to-form ·
+`cgw` wpforms-chatgpt-wpvibe-ad (identical `-9x16` twin) · `wcr`
+wpvibe-control-room · `wvb` the WPVibe batch file
+(`videos/wpforms-claude-runs-on-forms-ad/LESSONS-wpvibe-batch-2026-09-04.md` —
+1 ad + 3 shorts; rows 1–10 the batch, 11–18 the ad's QC round)
+
+Shorts 2026-09-04/05 (mined 2026-09-14): `snpt` short-n8n-payment-trigger ·
+`scaf` short-claude-asks-first · `sc3p` short-claude-first-3-prompts · `sat`
+short-auto-total · `scfw` short-close-form-when-full · `sml`
+short-mailchimp-leads · `somr` short-order-form-needs-one-more-row · `stte`
+short-stop-ticking-every-box
+
+R&D teardowns (no film — receipts cite the doc's own § sections):
+`hfs` docs/hyperframes-seam-grammar-rnd-2026-09-03.md ·
+`trk3` reference/New folder/_extraction/_analysis/ (Track 3 reference measurements)
+
+---
+
+## 1. Intake — before a single frame
+
+| IF | THEN | Slot | Receipt |
+|---|---|---|---|
+| You read the word "capture" in a brief or doc | Resolve it: **snapshot capture** (`capture/capture.js`, first step) or **MP4 render** (`tools/render-singlehtml-audio.js`, last step). Never let the bare word stand. Glossary now heads the CLAUDE.md Tools section | `WISH` | rf 7 — near-miss; the wrong reading discards the whole architecture and produces something video-shaped that passes a one-line summary |
+| The doc hands a step to a third party (a WPBeginner article, another plugin) | ASK UMAIR which path to show. Do not pick silently | `WISH` | ccs 15 — the Customizer was chosen while he slept; the whole chapter was rebuilt on WPCode |
+| A storyboard invariant can't be met with the assets on hand | Say so at asset-selection time. Don't ship a quiet exception | `WISH` | mp 5 — "real UI fills the frame" lost to a 430px crop, silently |
+| The storyboard promises a live field-option toggle | `node tools/field-state.js --interactivity <field>` — handlers are added reactively, per video, so the gap is normally found mid-build | `PROBE` | rf 4 — zero `ranking` handlers; found on a hunch, not by a check |
+| You need product truth for an admin URL or control selector | Read the plugin source, scoped: `--include=*.php` plus a `src/` or `templates/` path | `WISH` | rf 6 — an unscoped grep walked minified bundles and blew the 120s timeout |
+| You're about to first-write `videos/<slug>/index.html` | `cp` the path's skeleton first — `docs/examples/single-html-ad-skeleton.html` (editorial / ad / mixed), `docs/examples/single-html-tutorial-skeleton.html` (tutorial), `reference/html-templates/vertical-short-skeleton.html` (short) — commit the unmodified clone, then customize toward the style references | `WISH` (hook proposed) | INV-16 (amended 2026-08-28) — 3 sessions authored from blank files anyway; the exemplars predate the playback contract (FIX-2) |
+| The storyboard names a state that appears on more than one surface | Enumerate **state × surface**, not state. Builder canvas and published form render the same `input_layout=grid` from different markup under different CSS | `ARTIFACT` | rf 23 — nine snapshots existed and none showed the published form in grid; a builder capture named `-grid` satisfied a quick read |
+| A skill, doc or handoff names a reference film to copy | Check it is still on disk before leaning on it: `node tools/lint-doc-refs.js` | `PROBE` | rfv 3 — 61 of 1272 cited paths in tracked docs are dead today |
+| A handoff hands you a selector tree | Run `verify-selectors` on it BEFORE first use, and check size ≠ 0×0 — not after the crash | `WISH` (no size check yet) | rfv 6, rfe 4 — the first TWO `.wpforms-survey-graph-content-legend` matches are 0×0 twins |
+| A handoff names a container element | Query the **leaf** and derive the container from `parentElement`. Container tag names drift; leaves are stable | `WISH` | rfe 3, rfw 4 — the row container documented as `<ul>` is an `<ol>` |
+| A beat needs a specific element (a chart, a control) | Verify THAT snapshot carries it. Sibling captures of the same feature differ | `WISH` | rfe 1 — the storyboard's beat-5 snapshot has no chart canvas; the beat-4 one does |
+| A storyboard cites a snapshot PANEL by name | Cite the panel’s visible **STATE** (filled / empty / error) and resolve node visibility — `#entry_note` was a hidden TinyMCE backing field, the Location panel held an error string; both shipped narration↔pixel contradictions | `TEMPLATE` (storyboard states rule) | mfe 3, senw 1; geo 1 — the same Location panel captured EMPTY killed a payoff chapter at storyboard time |
+| An outline lists hidden UI | It is marked `_(hidden)_` inline, not by a section heading. Reading the headings alone misses it | `WISH` | rfv 4 |
+| You storyboard a how-to — any path | The LAST beat is the payoff: the outcome on a real frontend surface. Where the outcome lives outside the product (a webhook to an external app), the storyboard says so explicitly — never a silent omission | `WISH` (gate line proposed; shorts carve rule landed) | geo 6, ee, saa, lf 8, wh 7 bounds it, cad 11 / cpa 16 (GLM, first sightings) — six films, three paths, both agents; all four PASSING films carry the gap, so it is missing by construction |
+| A backlog topic names an addon with its own editor or sub-app | Verify the snapshot covers the doc's PRIMARY workflow surface, not just the entry panel, before committing the pick — and distrust old synthetic interactivity blocks (the PDF block fabricates a retired UI) | `WISH` | ee 1 — the rank-3 pick was unbuildable at storyboard time |
+| A tutorial storyboard passes its shape checks | It can still teach the wrong subset. Add a coverage line: the ONE core mechanic, and what here is not load-bearing. Umair reviews it — a docs-expertise judgment, never self-approved | `ARTIFACT` | lf 7 — Layout tutorial shipped without Rows × Columns while conditional logic padded the runtime |
+| A feature tutorial reaches for conditional logic | Cut it unless the feature IS conditional logic — an advanced cross-cutting tangent that displaces core content | `WISH` | wh 6, lf QC — two films, same note |
+| You author a short | Name the problem it solves in one sentence BEFORE authoring — a capability statement is not a hook, and `micro-task` is off the hook menu | `SKILL` (dev-advocacy-video) | sfc 5, swaa 1 — two clean, well-made shorts rejected on angle alone |
+| A postIntro dramatizes a problem | The premise must be one a real viewer recognizes ("yes, that happens to me"). An invented absurdity fails at any execution quality | `ARTIFACT` | fuf 4 — "a text box can't hold files… lol seriously"; scu 1 |
+| You carve shorts from a long-form | Carve surfaces and mechanics, never an unreviewed premise — the angle review happens BEFORE the carve, the cheapest point where one correction fixes three films | `WISH` | scu 1 — one bad idea, two rejections; scs 11 (GLM) — the carve produced a subset, not a story |
+| You plan a short's postIntro | OPTIONAL by ruling (2026-08-28): build one only for a strong storyboard idea, or when the story/problem needs help. Tutorial postIntros stay MANDATORY (2026-07-22) | `SKILL` (wpforms-postintro) | sscg 1 — one of seven shorts shipped without one and nothing flagged it either way |
+| You storyboard a postIntro | Pick the SPECIES at the storyboard gate — morph-chain or illustrated montage; each has its own gate profile (wpforms-postintro) | `SKILL` (wpforms-postintro) | trk3 + U1 ruling 2026-09-03 |
+| A reference film is declared for an ad | TRANSCRIBE it, never invent-then-cite: 3–5 fps contact sheets into `videos/<slug>/reference-frames/`, a tile cited per beat IN THE CODE (`// ref B-6 -> B-8`). The one beat where the agent substituted its own idea for the reference's cut is the one beat flagged | `SKILL` (wpforms-marketing recipe; wpforms-storyboard §1.4) | yjc 1 — *"the best video this tool has produced motion wise"*; itf — the timing table and the code agreed on the first probe pass |
+| You storyboard a reference-driven film | A `## Scene map` from ONE spine reference in donor order; a citation names a SCENE, never a PHASE ("rows stack in, 0.25s each" fits any composition and proves nothing about it); a row that is not a donor shot gets an `OVERRIDE`, not a citation | `ARTIFACT` (storyboard section) | wcr — eleven donors, a 3×3 wall none of them contain, every gate green, −5/10 |
+| You read a reference's transitions | 24 fps windows of 0.3s around every cut (`ffmpeg -ss <cut-0.05> -t 0.34 -vf fps=24,tile=4x2`) BEFORE the seam ledger. A 4 fps strip is for composition only — 1–7-frame dissolves read as hard cuts on it | `WISH` | cgw 11 — v1 and v2 shipped blinks, 4/10 *"not identical to the reference at all"*; wcr v2 — second sighting five days later: composition transcribed at 2.5 fps and called a transcription, every cut point right and almost none of the movement, 0/10 *"its stills. not a video"* |
+| A reference film is the camera benchmark | Measure each landing's zoom off a reference frame (subject height ÷ frame height → stage zoom), name the reference's camera VERB per beat (track / cut / hold), derive fill OR zoom from one measured subject box (the other is the check). Copying the shot list without the scale grammar reads as "nothing like the reference" | `ARTIFACT` (camera plan columns) | cja 1, cja 4 — zoom capped at 2.2 where the reference is a 4.5 macro; "fill 0.32 / zoom 2.2" on a 60px button |
+| The look must match a reference | Stills approval BEFORE motion, with the donor frame BESIDE ours; the hero conceit gets one still at final fidelity through the idea/copy gate. A stills sheet shot after the build is a bug-hunt tool, and no gate asks "does this look like the reference?" | `ARTIFACT` (stills pass) | wcr 4; cja 3 — hero approved on prose, *"not executed well at all, but let it be"* |
+| You write a camera plan's rows | Write the landings from the beats table's VERBS (press / lands / arrives), not the shot list's subjects; sum the rows against the declared `Max hold:`; run `composition-scan` static the moment the rows are typed into `cam.*` calls | `PROBE` (static scan) | wvb 6, 7 — three storyboards declared a 3.2s cap their own rows exceeded; three landings added after the build |
+| You write `## Camera plan` headings and numbers | Unnumbered `## Camera plan`, cadence as `Ns` — the parsers in `composition-scan.js` / `validate-singlehtml.js` read nothing else; an approved plan reported UNDECLARED and the build fell into the long-form band | `VALIDATOR` (parser) | cja 11 |
+| A resume handoff says a film is "built" | Hash-compare its `index.html` against the skeleton before trusting it — a session killed at the INV-16 clone step reports the clone as built | `WISH` | sml 1 — a short "built" overnight was byte-identical to the skeleton |
+| A portrait beat's taught control is the LAST thing in its pane | Plan the pre-reveal frame as "group at the bottom of the panel", not centred — the pane cannot lift it until the reveal grows the scroll range; framed-and-visible is the contract there | `PROBE` (clamp WARN) | scfw 5 |
+| You storyboard a framed row in portrait | Verify the WIDTH of every framed row, not the one `verify-selectors` happened to size; hidden rows report 0×0 — measure after un-hiding. A 770px text row in a 607px slice clamps the whole union to the floor | `WISH` | scfw 1 — the Code tab landed at x=1089 |
+| The brief's anchor doc 404s | The GA4 backlog may cite a retired slug — find the section in its current home and note the redirect against the backlog entry | `WISH` | stte 3 |
+
+## 2. Capture & snapshots
+
+| IF | THEN | Slot | Receipt |
+|---|---|---|---|
+| The page styles itself via JS/CSSOM (WPCode, most third-party admin) | Umair's manual **SingleFile save** + `capture-saas.js` ingest. It beats the automated path and preserves more | `WISH` | ccs 2 — element positions probed fine while the paint was broken |
+| You ingest a SingleFile save | Normalize two things: missing `</body></html>`, and the restrictive CSP `<meta>` | `LIB` | ccs 3 — fixed in `capture-saas.js` by the fix round |
+| A capture tool picks "newest .html in Downloads" | Assert `--expect <string>` appears **and** the file isn't byte-identical to the last ingest | `LIB` | mp 1 — Chrome silently blocks repeat downloads; three "captures" were all the same settings page |
+| Any snapshot is captured | It inherited the machine's locale. Check phone country, date format, currency, timezone | `PROBE` (`capture-gates.js`) | ccs 21 / bac D — the PK flag shipped through four QC rounds |
+| You capture an `admin-*` page | Assert `#adminmenumain` exists, or record its absence in `outline.md` | `WISH` | as5 4 — blank sidebar strip for a whole chapter |
+| A snapshot's ancestor chain carries `transform` / `filter` / `contain` | Every overlay inside it is trapped in that stacking context, whatever its z-index. Even a captured IDENTITY transform counts — fix with a targeted `transform: none !important` in the snapshot head | `WISH` | as5 5 — the country dropdown painted under later group titles; qrd 6 — the format menu trapped under later accordion groups, exactly where the G5 WARN pointed |
+| `capture-gates.js` reports a gate as skipped | It has **never run**, which is not a pass. Skips print as `NOT RUN` and the verdict line names them | `PROBE` | rf 2 — a silent skip on a report-only gate read exactly like a pass |
+| A capture "succeeded" | Screenshot the frozen snapshot against the live page. Structural checks pass on visually destroyed pages | `PROBE` | ccs 12 |
+| A paint-diff WARN comes back | Clear it by **LOOKING at the two PNGs** or by fixing the capture. Never by explaining it | `PROBE` (the WARN says so) | rf 9 — the gate was right 4 times out of 4 on its first batch and every finding was reasoned away. Umair's score on that batch: 3.5/10 |
+| You judge whether a capture is usable | The bar is "does it behave like the product on camera", not "is the data present in the DOM" | `PROBE` (G6/G7/G8) | rf 9 — data-present shipped a form with dead drag, dead arrows, a dead graph and an admin-only Edit link |
+| A frontend page is captured | Strip the theme in the plan — header, nav, search, sidebar, footer, admin bar, edit links. A frontend capture is a shot of the FORM | `PROBE` (G7) | rf 9 — banner, nav ×2, 2 search boxes, sidebar, footer and an Edit Form link no visitor sees |
+| The page draws into `<canvas>` | Capture bakes it to a PNG. The still looks perfect and the region is DEAD — no hover, no resize, not animatable as DOM | `PROBE` (G8) + capture warns | rf 10 — *"if you see an image file, you'll start making slides type animations"* |
+| You captured a frontend form | It needs `_shared/frontend.js` linked or its handlers never run. `post-capture` injects it now | `LIB` | rf 11 — the docs said "auto-loaded" for months and nothing ever injected it |
+| You park extracted state in the DOM at capture time | Carry it on an **attribute** (`<body data-wpf-charts>`). Capture strips every `<script>`, including `type="application/json"` | `WISH` | rf 13 |
+| You write a `waitFor` selector | It must be a **rendered** element — the wait is visibility-based, so a boxless node fails open with "continuing anyway". And never a universal selector (`body`): it matches instantly and voids the wait | `WISH` | rf 13, rf 3b |
+| You run a capture with `--site` | `WP_URL`/`WP_USER`/`WP_PASS` in the environment **override** it. A stale `.env` silently aims the capture at another host and reads as "login is broken" | `WISH` | rf 3c |
+| A staging script writes through a WPForms API | `--as-admin`, then assert on a **read-back**. wp-cli boots with no current user, so the write fails its capability check and returns `false` — identical to "nothing needed writing" | `LIB` | rf 8 — and `current_user_can()` measured false even where the write succeeded, so the obvious pre-flight assertion is itself unreliable |
+| A capture needs a UI state (menu open, modal open, panel expanded) | Grep the inventory for an existing `-open` capture BEFORE building machinery to synthesise it | `WISH` | rf 17 — `sp-results-new-418-*-open` was in this session's own first tool call, unread, and three debugging rounds followed |
+| Capture froze a conditionally-hidden element | To show it, **SET the value** — `style.removeProperty()` is not the inverse of capture's inlining, because the stylesheet underneath usually also hides it | `LIB` (visibility) + `WISH` (display) | rf 20, rf 22 — same root cause, three distinct symptoms, three separate debugging rounds |
+| Snapshot interactivity needs to reach a final state | It reaches it **synchronously**. No rAF, no `transitionend`, no timers — transitions may decorate the path, never gate the outcome | `WISH` | rf 22 — three of five bugs in one stretch were the same compositing hazard in different clothes |
+| You re-add behaviour that capture stripped | The plugin's own JS is the specification. Captures show *states*; source shows *rules* | `WISH` | rfv 19 note, rf 19 — 3 of 5 render rules were invisible in both available captures |
+| You compare a builder capture with a frontend capture of the same form | Do it. Cross-surface comparison catches product-state bugs no single snapshot can show | `WISH` | rf 21 — found a real `isset`-vs-`empty` inconsistency in `class-base.php` |
+| Several snapshots came from one capture run | They share one geometry. Mount stations at capture parity and every cross-station match-cut is measurable at build time | `WISH` | rfv 5, rfw 5 |
+| The frozen page carries an INACTIVE duplicate of the section you target | Bare class selectors hit both copies. Scope through the id or `.active` | `WISH` | qrd 6 — cost a probe round on each QR film |
+| You harvest state from the LIVE builder | Real Playwright mouse events. `el.click()` + jQuery `trigger()` are ignored by delegated-jQuery/choices.js bindings — and the real events MEASURE the product cadence for free (~0.5s spin + 1s check) | `WISH` | qri 3 — the reason `capture.js` grew `pickChoice` |
+| A beat reveals captured-hidden UI (dropdown, accordion, popover) | Expect BOTH failure modes: the stacking-context trap (as5 5) AND stripped presentation — capture inlines styles only for VISIBLE elements, so the hidden state can have no box at all. Restore the product's own box inline; measure offsetHeight before promising the reveal | `WISH` | geo 3, fuf 2; ee 6 — third sighting of the trap, and the export dropdown also shipped with zero choices.css |
+| You mount a capture that predates `lint-snapshot-assets` | Run it first — older captures ship missing webfonts and dead asset refs; every fa icon renders as an empty box on camera | `PROBE` | wh 1 — smoke 404s traced to a capture missing its `webfonts/` folder; scfw 9 — fifth sighting (`builder-settings-form_locker`), `post-capture` step 8b should have caught it |
+| You freeze a browser "Save page as" / SingleFile SaaS page | Strip `crossorigin` from stylesheet links (they fail CORS on `file://` and after the freeze — the whole Tailwind layer never applies), remove hidden tracking `<iframe>`s, and run the CSP `<meta>` normalisation the ingest tool does — a hand-built snapshot that skips it keeps 2 console errors the film can never remove | `LIB` (`capture-external.js` / `capture-saas.js`; hand-built path proposed) | itf 1, 2; cgw 7 — OPEN: strip the SingleFile CSP meta, or teach `serve.js` to skip injection under `/snapshots/` |
+| A saved SaaS page greets the capturing account by name or leaks a personal title | Neutralise at film time ("Welcome, Sullie!"), never by editing the snapshot | `WISH` | wcr — *"Umair Hirebench returns"* |
+| The SaaS shell sizes itself from viewport units (`100vw`, `dvh` — chatgpt.com) | Under `IframeManager` settle mode (`html { zoom: N }`) those units do not divide by the root zoom, so the shell grows N× — pin the shell geometry film-side (injected CSS), and never pass `oversample > 1` on a manager that will settle (`body { zoom: 2 }` compounds to 2N) | `LIB` (settle-mode doc block) | cgw 1, 2 — ~400px drift in every settled frame |
+| Fragment strings carry remote assets (`src`, `srcset`, `<use href="/cdn/…">`) | Strip them BEFORE `innerHTML` parses the string — parsing requests the network (CSP errors + 404s in smoke); icons become neutral plates | `WISH` (`stripRemoteAssets()` proposed beside `findInIframeByText`) | cgw 6 |
+| A frontend capture is "sanitized" | Walk BOTH sides of the form and hide `a[href*="wpforms-builder"]` / `a[href*="wpforms-entries"]` by selector — the Edit Form link survived a sibling-only walk into every dock frame; `capture-gates` G7 should FAIL on it | `PROBE` (G7 FAIL proposed) | cja 13; sc3p (Edit Form under Submit); sat (page-top staging chrome) — three sightings |
+| A snapshot page is taller than the mount | Set `iframeSize.height` to the measured document height — a 1280×720 still of a 2313px page can never contain the form at y 1166; record doc height per snapshot at storyboard intake | `LIB` (the lib already warns) | itf 4; sc3p 1 — the payoff showed the bakery hero, not the form |
+| The capture's default state already IS the "after" | Stage the "before" through the snapshot's OWN handlers (dispatch `input` / `click` at the real sidebar controls) — real product code mutates the DOM, nothing hand-written | `WISH` | stte 5 — 10 choices + a label staged that way, the canvas mirrored every one; wcr — Form 1932 ships with Email already required |
+
+## 3. Coordinates & measurement — the cluster that bit six times
+
+| IF | THEN | Slot | Receipt |
+|---|---|---|---|
+| **Any camera zoom has landed** | `getBoundingClientRect` now returns post-zoom visual px. Measure through `cameraToElement` / `elementToStageCoords` — never a raw rect | `WISH` | mp F, bac 5, bac 7, sfb 7 — four independent bites |
+| You're positioning an ephemeral overlay in-document | Use `offsetTop`/`offsetLeft` inside the anchor's own field wrap (layout px in every regime). Never derive from a rect | `WISH` | bac 7 — even *with* a settle-scale divisor, the overlay vanished in the render while the live probe passed. It's a race |
+| You need a target scrolled to a position | Closed-loop: `paneScrollTo` (panes) or `pageCenter` (pages). Measure, correct, iterate ≤3–4× | `LIB` | bac 5, nvc 4 — open-loop math loses against the settle transform stack |
+| You measure right after `ifm.load()` resolves | Use `settleAndMeasure` — images and fonts land later and drift the target ~180px | `LIB` | ccs 7 |
+| Any code writes `scrollTop` — helper OR inline film one-off | Use `scrollTo({behavior:'instant'})` (better: `paneScrollTo`) — snapshot CSS ships `scroll-behavior:smooth` and silently swallows the write. The LIB protects only its own call sites; an inline write re-imports the bug | `LIB` (guard-WARN on `.scrollTop =` is the candidate) | fix round discovery; qrd 1 — re-imported inline despite the LIB row, caught by the film's own fail-loud assert |
+| You're scrolling inside the form builder | The **pane** is the scroller, not the window. Walk UP from the target — inactive `.wpforms-panel-content-wrap` elements are 0×0 | `LIB` | as5 3, bac 5 |
+| Content sits below an embedded iframe's viewport | Scroll it into view **inside** the iframe. Transforming the iframe can never reveal it | `WISH` | ccs 6 — the postIntro mini-form cards rendered blank |
+| You want a document-absolute position | `rect + scrollTop`, never `offsetTop` — that's table-relative | `WISH` | ccs 7 |
+| A DOM probe passes | It says nothing about paint. Any visual claim needs a pixel check | `WISH` | ccs 10 — probes passed on blank cards |
+| An A-vs-B diff reads catastrophic | Measure brightness/stddev of each side independently first. A broken reference is half of every comparison | `WISH` | ccs 11 — a "132/255" diff was really 16/255 |
+| You verify a fix | Assert the **observable**, never the property you just wrote. `getComputedStyle` + a hit test, never `el.style.x` | `WISH` | rf 16 — the menu was laid out, hit-testable, full of real text and completely invisible at `opacity: 0`, while the check read back its own `visibility` write |
+| The browser pane is not compositing | It cannot verify anything time-based. CSS transitions pin at their start value, rAF second frames never run, `transitionend` never fires, and `innerWidth` is 0 so every `min-width` media query fails | `WISH` | rf 16, rf 22, rf 23 — four distinct symptoms, one cause |
+| A fresh capture looks broken | Suspect the **measuring environment** before the capture. In one session that was the right suspect three times out of three | `WISH` | rf 23 — a grid that "collapsed to a stack" was a 768px media query against a 0px viewport |
+| You assert an element is visible | Opacity on one node proves nothing — walk the ancestor chain. Singular/plural WPForms class pairs are different elements | `WISH` | rfv 22 |
+| You position an overlay from inside a station | `elementToStageCoords()` is station-local and camera-blind. Compose the camera transform yourself or it lands where the shot no longer is | `WISH` | rfe 12 |
+| A probe seeks a film | Assert in **ascending time order**. Seeking backwards over a DOM-mutating film reports failures the viewer never sees | `WISH` | rfv 21 |
+| A timing measurement disagrees with the code | Re-run it **alone** before believing it. `smoke`, `dead-time` and `seam-gate` now refuse to start concurrently | `LIB` (`headless-lock.js`) | rfv 25 — under contention a sampler read timeline time as 7.1 → 5.9 → 12.9 → 3.1 |
+| A page's own `performance.now() - __T0` decreases between samples | The document **reloaded**. Stop reasoning about performance | `PROBE` (smoke fails on it) | rfw 21 — three runs across three budgets, mis-diagnosed as preload cost, and the wrong advice reached the user. Measured preload: 0.6s |
+| A beat un-hides a row inside a scrollable pane | Re-run the closed-loop scroll (`paneScrollTo`) AFTER the reveal — the reveal grows the scroll geometry the earlier scroll was measured against, and the clamp then makes centering impossible | `WISH` | saa 1 — the payoff row shipped cut at the band edge in two builds; the clamp-aware probe passed both |
+| Computed styles and pixels disagree | Dump the ANCESTOR CHAIN (position / z-index / transform per ancestor) before theorizing | `WISH` | ee 6 — one dump ended a hunt that two wrong theories (fade bleed, stale server) had already burned |
+| The target is deep below the fold on a WINDOW-scrolled page | Fly first, then closed-loop `pageCenter` inside the clamp — `gcFramed`'s scroll→fly order is a pane-page pattern and loses here. Budget ~0.7s per closed-loop call; nearby follow-up targets ride `gcFramed`'s conditional fly | `WISH` (promotion queued — 4 films carry the inline helper) | ee 4, geo 4 — fly-first + pageCenter is 3-for-3; geo 5 — unconditional closed-loop overran a 6s clip by 2.2s |
+| A film mixes master-timeline and wall-clock flows | Paused-seek stills and settled-pose logs both lie — stills freeze the flows, the pose log drops interrupted flights. Verify with runtime instruments (`--play` pose log, live samplers) or rendered frames | `WISH` | fan L2 — identical stills nearly sent a bisect down a false path; fan L3 — a real flight was absent from the pose log |
+| You measure snapshot geometry for a beat | Measure in the layout the film actually PLAYS at that beat — drive the film's own state writer there first. A layout the film never shows produces coordinates for a film that doesn't exist | `WISH` | qrd QC1-4 — one root cause, two visible defects; UNMINED-QR ruling 2026-09-02 |
+| You measure rects INSIDE a camera-transformed iframe | They come back PRE-SCALED — project `ifr.top + rect.bottom` directly; multiplying by the camera scale again mis-positions the overlay | `WISH` | qri 9 — cost a false probe FAIL; UNMINED-QR ruling 2026-09-02 |
+| A camera rect is for an element that exists in the DOM | Read it (`stageRect`), never hand-write it — and re-measure after any reflow or park: hiding a word reflowed a flex row 44px, a park moved a card 70px, a literal rect was 90px off before the zoom multiplied it | `WISH` (probe skeleton `inFrame` / `tipInside`) | scaf 3, sc3p 2, yjc 5, cgw 12 |
+| You lift a composite (`liftComposite`) | It inlines COMPUTED pixel widths, so narrowing the wrapper never reflows it — force `width:100%` on the lifted subtree; its plaque must match the SOURCE surface's colour contract (a `rgba(255,255,255,.75)` label vanishes on a white card); translucent chips vanish over white; clones are DETACHED — produce handler output in the source frame at load, then lift | `WISH` | sc3p 2 — a 988px field at zoom 1.7 → 1680px in a 1080 frame; scaf 5, 6; wcr |
+| Adjacent landings differ by < 0.1 zoom at the same centre, or a whip travels < 0.15 × stage | `composition-scan` folds them into ONE hold. Consecutive landings need Δzoom ≥ ~0.2 or a different centre; declare whip amplitude in px or fill, never "lateral" | `PROBE` (`--play`) | wvb 2 — 1.47× / 1.41× merged into a 3.6s hold; cgw 9 — a −150px whip read as a 3.8s hold |
+| You move a landing later in time | The PREVIOUS beat's hold grows — the scan measures landing-to-landing. Re-run `composition-scan --play` after ANY camera timing change; the row that fails is the one before the one you edited | `PROBE` | wvb 15 — 0.15s later broke a 3.2s cap |
+| The camera TRACKS a subject, or the frame changes by PANE SCROLL | The pose meter sees one landing (or none). A `follow` logs a settled pose at each node arrival (`cam.follow({ marks })`); a declared landing must be a CAMERA landing — a scroll-only re-frame measures as one long hold. `window.__poses` after `__done` shows what the scan reads | `PROBE` (follow marks) | cja 7 — a 4s track read as a 5.3s hold; snpt 2 |
+| `dead-time` flags a run you believe is animated | Sample the DOM DURING real-time playback (not `seek`) before acting — the 270px meter cannot see 24px typing, a 0.24-alpha halo, a cursor glide, or low-ink glyph motion; on 1920×1080 tutorials it reads 74–88% "dead" across every calibrated film | `PROBE` (WITHHELD) | wvb 16 — composer 0→75 chars across a "frozen" 10.2s run; scaf 7; sml 3 — cohort baseline (AP: the dashboard chip needs it) |
+| A `fromTo` sits inside a timeline at a position later than 0 | `immediateRender: false` unless it is the element's FIRST appearance — GSAP renders the FROM state at build time; eleven of them left tiles blurred and half-faded from frame zero | `WISH` | wcr; extends qrd QC1-2b (proxies) to elements |
+| The note says an element must "stay in place" across a move | Check its pixel position in the RENDERED frame across the move, not its stage coordinates — stage-fixed is not screen-fixed once the camera moves. A locked camera for the whole move is a legitimate answer | `WISH` | sc3p 9 — the W drifted 167px while stage-anchored; fixed by left-anchoring the composition and landing the camera 0.2s before the morph |
+| An `<img>` asset must be proven on screen | Assert `naturalWidth > 0` — a broken SVG (a `--` inside an XML comment is a parse error) still reports computed opacity 1 | `PROBE` (probe skeleton `imagesDecoded`) | itf 3 |
+| Headless gates run on a shared machine | Serve them on a PRIVATE static port (`PORT=4399`) — `preview.js` live-reload on :4321 fires on ANY repo write, including sibling sessions' and the gates' own `qc-report.json`; aborting `__preview-ws` hangs the preview client instead. A single-run failure from an un-shielded gate is re-run before it is believed | `WISH` (gates should self-serve — AP) | wvb 18, scfw 8, stte 7, cja 10, sc3p — five sightings in one batch |
+| The headless lock reports a holder you cannot find | Windows reuses pids (`process.kill(pid, 0)` succeeds for a different process) — confirm the pid, `--force` once, re-check timings. On a shared night the lock is a queue: poll (12–20s), never force by habit, chain smoke → probe → scan so the film holds it once | `LIB` (record the process start time — AP) | wvb 9; stte 8, somr 6, sml 5 |
+| `lint-determinism --video <slug>` reports errors | Read the file path on every error line — the shared libraries' own `Date.now()` hits (`iframe-helpers.js:446/457`) print under the film | `WISH` | somr 4, scfw 10 |
+
+## 4. Camera & framing
+
+| IF | THEN | Slot | Receipt |
+|---|---|---|---|
+| A camera state changes mid-shot or at a beat boundary | **Tween it.** `setCamera` / `gsap.set` on a visible camera is a one-frame hard cut, and `dead-time` scores the spike as *good motion* | `WISH` | as5 13 — a jump cut shipped |
+| The target is wider than ~half the viewport | `fill` produces no perceptible zoom. Frame a sub-region at an explicit zoom | `LIB` (warns) | mp E — *"where the fuck is zoom"*; 1.22 against an opening 1.2 |
+| A camera translate exceeds ~250px | It needs an aggressive scale arc (dip to ~1.18). Constant-scale translate is a slide projector | `HOOK` (single-tween ban) | aib |
+| You're framing an element for focus | Inputs 3.0+, buttons 3.2+, cards 2.8+. The eye reads "I can see the whole panel" as a wide shot even at 2.5× | `WISH` | aib — under-shot every single round |
+| `cameraToElement` clamped the pose | Read `clampedBy` — the clamp trades directly against the field-center rule. Tighter framing needs less pan (fill 0.66→82px error, 0.90→0) | `LIB` | ccs 23 |
+| A beat teaches an element | That element gets its **own** framing move. `gcFramed` skips the fly when the target is already visible, silently degrading "framed" to "visible" — unless a traverse just framed it BY DESIGN; then the follow-up is glide+click only, or the beat overruns | `WISH` | sfb 6 — hero beat played 370px off-center; senw 4 — the forced second fly overran its clip by 2.1s |
+| You fly to a generic single class (`.wpforms-btn`) | Banned. Use a verified named anchor, checked with `verify-selectors` | `WISH` | cc 3 |
+| A `fly()` visibly pans first, THEN zooms | FIXED in the library (2026-09-02, AP-4): `flyToElement`'s default is now ONE blended tween — tx/ty on the land ease for the full duration, zoom dipping/landing via `zoomKeyframes` inside it. If you still see pan-then-zoom, the film is hand-rolling its camera — use the helper. `opts.decompose = false` remains for mostly-vertical moves (any dip arc reads as sideways drift) | `LIB` (blended default shipped) | mp G; geo 8 + wh 5 — two independent Umair flags, "needs fix" |
+| You use `figjamFlight` | Its 3-act shape dips velocity at each phase boundary. Two eased-in-out phases meeting end to end **stall at the junction** — overlap them or the cut lands on a stopped frame | `PROBE` (`seam-gate`) | rfe 16, rfe 17 |
+| A camera creep is slow enough to satisfy a storyboard | It is probably invisible. Under ~60px/s reads as static to the meter and to the eye | `PROBE` (`dead-time`) | rfe 18 |
+| You want `cinematicFlight` to drive an `IframeManager` | Give it a camera proxy named `{scale, x, y}` — no adapter needed | `WISH` | rfw 7 |
+| You are deciding what moves | Physics belongs to the **subject**; the camera is for attention. Moving the camera to fake weight reads as a camera move | `WISH` | rfw 9 |
+| Consecutive flights ladder the zoom | Keep the ladder monotonic (steps ≤ ~0.3) and never fire-and-forget a flight a later flight can overwrite — a mid-air overwrite is a velocity discontinuity that reads as "very jerky" | `WISH` | fan QC-2 — pose-log verified: zoom 1.70→dip→2.21 spike→1.90 fall |
+| A drag or carry is on camera | The camera holds the CARRIED object and travels with it — never pre-fly the destination. A pre-framed drop zone announces the outcome and the subject crosses an empty frame | `WISH` (ghostDrag camera proposed) | sfc 6 — a deliberate authored `await fly(dest)` before the drag; same idiom in lf |
+| An ad-style or shorts storyboard has no `## Camera plan` (`Cadence:` with the why, `Max hold:`, `Ease voice:`, one row per landing with a numeric fill) | The stage will be parked — or busied by a rule. Write the plan before motion work; `composition-scan <slug>` static reads the film's literal `at:` times and judges them against the DECLARED cadence before any browser runs; no declaration = UNDECLARED | `PROBE` (composition-scan static + `--play`) | wva 1 — 5 framings in 44s, a 23.7s hold, five QC rounds never touched it |
+| The morph-chain rule says "the camera follows the host" | Follow ≠ park. Re-frame the SAME host — punch to the control in use, macro on the payoff, whip to the reply, pull back to establish — at the cadence the storyboard declares for THIS film. Sparse and considered when the UI stays the same; dense for a montage. Never a system number | `WISH` + motion-audit ceiling (off-plan camera → max B) | wva 2 — motion audit rated the parked cut an A, "no camera flights by design" |
+| You reach for a cadence number from a rule (or a tool band) instead of the storyboard | That number produced the busy cut: 25 landings in 41s on a film whose UI never changes — "making me dizzy … too much motion made little sense here." The storyboarding pass is full creative: it sets cadence, ease voice, shot vocabulary and movement budget per film, with reasons | `WISH` (the 2026-09-03 fixed band was withdrawn from `composition-scan`) | wva 7 |
+| You pick a camera ease | The storyboard's `Ease voice:` — `anticipate` (pull away, drive, soft land), `glide`, `snap`, `punch`. Anticipate is one voice, not the only one; the crouch-toward + overshoot punch at a dense cadence read wrong | `LIB` (voices in the ad skeleton's stage camera) | wva 8 — "the easing is wrong, we need Anticipate ease" |
+| The camera plan is written from the code after the fact | Backwards, and it hides the defect it exists to catch. Paper → stills sheet → approval → code | `WISH` | wva 9 — the v6 plan was derived from `scheduleCamera()` |
+| A QC round changes what fills the frame (chips → a persistent window) | Re-open the camera plan. The storyboard stopped describing the film at v4 and the 24s core shipped unplanned | `WISH` | wva 3 |
+| A task template repeats (type → dots → stream → payoff ×N) | Change at least one landing per repeat; identical framings on a repeated template read as one long hold even when the content changes | `WISH` | wva 4 — three tasks, one two-panel frame |
+| The subject is editorial DOM (no IframeManager under it) | `flyToElement` / `cinematicFlight` have nothing to drive. Use the stage camera (`makeStageCamera`, ad skeleton): `punch / macro / whip / pullBack / drift / cut`, decomposed by construction, pose-logged | `LIB` (skeleton) | wva 5 — the film invented a 4% zoom wrapper and used it twice |
+| A push is followed by an animated retreat | That is a yo-yo. Cut out the far side — the push earns a CUT, not a pull-back; the largest single quality jump in the best film. `cam.cut(…, { lens: 'reset' })` belongs ONLY under a zoom-through / ground-flip seam where the outgoing frame is blurred or black; on a throw seam it is a one-frame pop — let the ladder continue from the standing pose | `WISH` | yjc 8; wvb 3, 13 — the same lesson earned twice in one film (*"no need to zoom out and show the copy again"*) |
+| The lens is not at identity when a dock or end card mounts | Reset the lens on the CUT that brings them — a standing whip pose shipped the end card 380px left (*"outro text not centered"*); `cut()` should assert identity or warn | `LIB` (stage camera — AP) | cgw 14 |
+| The storyboard word is "zoom" | Frame the CENTRED parent (dx = dy = 0 → scale-only), not an off-centre child — a 312px lateral component makes `punch` pan first with a slight zoom-OUT before the zoom; use `anticipate`, never `punch`, for a zoom | `WISH` | wvb 12 — *"why is the screen going right first and then zooming in"* |
+| You raise a landing's zoom | Frame the WHOLE composition at rest and measure EVERY element's rect at the landing, not the subject's — a lockup 340px below the framed tiles left the frame at 2.0; two reply lines shipped entirely off-frame at x −445 | `PROBE` (probe skeleton `inFrame`) | wvb 14; wvb reported-not-fixed (post-approval freeze) |
+| A successor element must sit where the morph host leaves off | Position the successor FROM the host's measured slot (the returning composer's send slot on the route origin) — never fly the host to the successor; at macro an 800px stage move is a 2000px screen whip | `WISH` | cja 5 |
+| The audit tier is the target | Stop. The S row's four-phase shape is for slow considered moves; on sub-0.5s or click-triggered moves the pre-nudge is a lurch and an overshooting land ease a bounce — `glide` (one arc) as the film default, `snap` launching on the click frame, four-phase kept for considered moves, micro-zoom opt-in. A tier describes good work | `SKILL` (motion-audit S row amended 2026-09-14) | yjc 6, 7 — the same failure as wva 7's dizzy pass by a different road |
+| A camera dive is on the timeline | It moves ONE way. Sample the lens scale every 40ms across the move and fail on any direction change — an overshoot ease (`cam-whip-land` → 1.015) sails a 3.4× dive past its pose; `expo.out` on deep dives | `PROBE` (probe skeleton `monotonic`) | yjc 2, 6 |
+| The plan says the camera does not move | Valid — `Cadence: 1 composition / 3.5s` with cuts logged through `cam.cut`; `composition-scan --play` passes with zero landings when the row says why | `PROBE` | itf |
+
+## 5. Portrait (9:16) geometry
+
+| IF | THEN | Slot | Receipt |
+|---|---|---|---|
+| You're framing anything in portrait | Max **607 logical px** at the 1.78 floor. Target cells (`td.column-primary`, `td.code`), never full-width rows (1238px) | `PROBE` | ssn 7, nvc 1, cc width-physics, bac |
+| You need the field-center rule satisfied | Only elements whose center falls in **y ∈ [337, 383]** — a 46px band — can. Everything else is framed-and-visible at best | `PROBE` (WARN on clamped axis) | sfb 27 — this is the crop model, not bad framing |
+| A real surface is the subject of the beat | Full 1080 width, or crop it. **Never** shrink it to sit beside chrome | `WISH` | sfb 20 — a 648px form with 38px rows on a phone |
+| You want to open on the builder form canvas | You can't. Every candidate is 822–854px against a 607px slice. Anchor on the panel nav | `WISH` | sfb 37 |
+| You build a composite card | Give it **zones** — one strip per role. The subject strip is never written into. Verify by measuring rects | `PROBE` (overlap assert) | sfb 19 — confirmation box, stamp and form competed for the same pixels |
+| A landed field can't be fully in-frame | Mount a zero-opacity aid element spanning the intended composition's x-range, fly to that, measure, remove | `WISH` | cc 12 |
+| You declare a probe target for a beat that OPENS a group | Declare what the FRAME holds at probe time, never a container the beat's own action resizes past the slice — an opened accordion is ~1900px and unframeable by construction | `PROBE` | saa 2 |
+| The payoff is a relationship between two regions (a split, a before/after) wider than the slice | Frame one side, then TRAVERSE to the other. A tighter single-side frame satisfies the probe and un-tells the story | `WISH` | sfc 3 — the 67/33 rebuild read as "nothing changed" |
+| A portrait landing uses `fill` on a wide subject | `poseFor` / `cameraToElement` take the WIDTH term, and on a 1080-wide stage any subject wider than ~fill×1080 clamps to `minZoom` — two landings on the same wide subject cannot differ enough to register. Give the landing an explicit `zoom:` or a NARROW subject rect (the label + star, the button, the URL line), and a second landing a different SUBJECT | `LIB` (warn on clamp — AP) | wvb 1 — 13.3s holds at zoom 1.00 while the static scan passed; snpt 1 — 3 → 6 compositions, FAIL → PASS |
+| The subject is ~450px on the portrait raster | The only two distinct zooms are the floor (1.78) and the ceiling (2.0), and `punchToRegion`'s default `pad: 24` eats the ceiling — tight landing `fill 0.86, pad 0`, pull-back at the floor, Δ0.22 | `WISH` | scfw 4 — 0.62 and 0.7 were the same pose |
+| Every element on the portrait stage is 940–1010px wide (an editorial short) | Zoom past ~1.08 cuts a full-width element; contrast between landings comes from `anchor.y` (0.40 / 0.56 / 0.60), with one beat pulling all the way out to 1.0. Landings within ~100px of `ty` fold into one composition | `WISH` (`docs/vertical-shorts.md`) | sc3p 5 — 4.8s holds after flattening zooms; 23 compositions after re-anchoring |
+| A portrait beat's subject is a real WPForms field | Decide per beat: SMALL (magnify hard — a 17px label needs ~4.6 to read on a phone; context leaves the frame) or WIDE (never magnify — move the frame, recompose at 1.0). Splitting the difference clips words | `WISH` | scaf 4 — the storyboard's 2.0 ceiling left a 34px label |
+| A wp-admin toggle is the taught control | Frame the ROW, click the ICON — two targets (`gcPunch(target, { frame })`); the 40px icon at the row's left edge, centred, cut the 450px label | `WISH` (skeleton helper — AP) | scfw 2 |
+| The narration names a control inside a row or wrapper | Frame the CONTROL and let its siblings ride along — a 662px button wrapper (172px of buttons) clamped below the floor; a row centred 184px off the input it teaches | `PROBE` (`probe-short`) | somr 10 — twice in one film |
+| A low option row sits below the pane's reachable scroll range | Pad the scroller (`pane.style.paddingBottom`) so the closed-loop scroll can centre it — empty pane ground below the last row is honest; hiding the rows above it is not | `WISH` (`reflowSubject` `padScroller` — AP) | somr 1 |
+| A settle-mode surface (zoom > 1.4) carries a deep WINDOW scroll | Every camera tween exits settle and the browser re-anchors the scroll (6478 → 4783 measured); all camera tweens go BEFORE the scroll and the scroll is the LAST writer — land the pose in the swap cut, carry the hold on settle's ring channel | `LIB` (preserve scrollY across the zoom flip — AP) | sat — the Total payoff played 900–2300px off-band |
+| A short was cloned before 2026-09-03 | It carries `.stage-wrap { padding: 24px }` — 24px of body colour down the left, 24px lost off the right of every rendered frame. Grep for it, re-render, verify with the edge walk (both counts 0) | `PROBE` (edge walk) | snpt 6 — pipeline-wide, shipped shorts affected; sc3p 3 |
+| A short is editorial (no VO, reference-film grammar) | The vertical skeleton is iframe + narration shaped; keep its stage block, instrumentation, bookends, `sfxCue` and autostart gate, replace the band with a master timeline inside `#lens` + a portrait-parametrised `makeStageCamera`, declare it as an OVERRIDE. Third such short → promote `vertical-editorial-skeleton.html` | `TEMPLATE` (promotion pending) | wvb 5 — three shorts in one batch; the `-9x16` ad cuts are the same shape (`wpforms-ad-to-short`) |
+
+## 6. Motion & dead time
+
+| IF | THEN | Slot | Receipt |
+|---|---|---|---|
+| A hold must not read dead | An **area-visible event every ~2s**. "Area" means a fraction of the **frame**, not of the object | `PROBE` (`dead-time`) | sfb 8/17/29/31 — proven four times, treat as law |
+| You're picking a carrier | Three axes: amplitude **px ≥ 4**, **topmost** surface, and **contrast**. A px-2 jolt is decoration; white-on-white has no diff | `WISH` | bac 8, ssn 16, nvc 6 |
+| Proven carriers | Camera moves, band/card jitters (px≥4), full-frame washes, sheen sweeps, build cascades, slams/stamps | `TEMPLATE` | sfb — the carrier list |
+| Proven **non**-carriers | Alpha fades of any size, a 26px cursor at any speed, typed text (14px chars), smooth sprite bobs, thin ring strokes, row pops at deep zoom | `WISH` | sfb 17/23/31, cc 8 |
+| A hold exists only because the app would take that long (thinking dots, approval dwell, a landed state before the next trigger) | Compress it BEFORE adding a carrier: dots ≤0.5s, post-payoff dwell ≤0.8s. The references land a state in 1.5–2.5s and cut; 44s of runtime carried ~27s of content. Dead-time engineering (sweeps, breaths) satisfied the meter and substituted for motion design | `WISH` | wva 6 |
+| You reach for a full-frame sheen / carrier sweep | Cap it at **~2 per film**, spent on the longest confirmed-static pockets. Past that they read as spam whatever the meter says. Replace the lost coverage with deterministic content micro-motion (breaths, seeded floats, pointer drift), and **accept a sub-second borderline dead-time run** rather than buy coverage with another sweep. The cap is on stage-wide sweeps — an in-card shimmer that IS the beat's vocabulary (a skeleton-loading strip) is content, not a carrier | `WISH` | rav — *"too many sheen sweeps"*; a D1 carrier pass fired 7 stage sweeps, the fix round kept 2; sharpens the `sheen sweeps` entry in the proven-carrier list above and extends wva 6 (dead-time engineering is not motion design) |
+| A wait is long and the frame is static | **Traverse** it — a slow camera drift over the whole wait, aimed at what comes next. Don't decorate a hold that won't move — and never derive the drift's duration from leftover narration (`DUR.bN - k`): motion that exists to cover audio reads as aimless, and the honest fix for leftover VO is shorter VO | `WISH` | cc 11 — decoration cut 4.80s→2.70s; a drift killed it outright; scs 10 (GLM) — an unmotivated leftover-VO traverse drew "no purpose of showing this screen" |
+| A hold's motion moves under ~1px/frame | It is idle, whatever the timeline says | `WISH` | mp 4 |
+| A dead run survives ONE fix | Frame-extract inside the run (`ffmpeg -ss`) before attempting a second — and when extraction still leaves competing theories, a 100ms live sampler (cursor rect + camera matrices + `__sched`) closes in one run what repeated extraction cannot | `WISH` | nvc 7 — three carriers all fired after the run; one look replaced two render cycles; fan L7 — four extraction rounds, three wrong theories, one sampler run to close |
+| You reorder beats | Re-run `dead-time`. A hold that worked because something interrupted it becomes a hole when that moves | `WISH` | sfb 30 |
+| Umair asked for a locked frame | Measure whether the **subject** changes, not frame diff. Adding camera drift to satisfy a metric undoes what he asked for | `WISH` | mp H |
+| Two renders (or a render + a probe) run at once | Dead-time verdicts from a contended render are **invalid evidence** — dropped frames merge adjacent runs | `WISH` | bac G — 2.00s vs 3.03s on identical code |
+| You use a yoyo repeat | `boundedRepeats(cycle/2, window)` — each yoyo play is a half cycle | `LIB` | sfb 9 |
+| One element has two animation owners | Never. Physics chains sequence off **arrival**, one deterministic timeline. Narration sync is for standalone accents only | `WISH` | sfb 16 |
+| You schedule lattice events inside a `motionFn` | `gsap.delayedCall` counts from where the code runs, not beat start. Anchor with `beatAt(x) = max(0.1, x - (now() - t0))` | `WISH` | ssn 9 |
+| GSAP will tween x/y on an element | It must not carry an inline CSS `translateX/Y` — GSAP parses it into its own x and yanks it to zero | `WISH` | mp 3 |
+| An overlay must paint above its siblings | Raise the **host row's** z-index. Any GSAP-transformed sibling is its own stacking context and z-9999 can't escape | `WISH` | bac F |
+| A cursor glides | 0.95–1.10s, `power2.inOut`, straight line, `killTweensOf` first. Under 0.85s reads inhuman; a 3-point motionPath reads as frenzy | `HOOK` (hand-mount ban) | aib — flagged four rounds running |
+| A film mounts a captured station | The capture ships the product's **own CSS transitions**. That is a third mover nobody declared — not a handler, not a GSAP tween — and it drifts every seek | `LIB` (`IframeManager` kill-sheet) | rfw 1 — a row border read rgba(220,116,47,.925) inbound and rgba(196,103,42,.804) on the way back, never settling. 370 elements carried live transitions in one station |
+| `dead-time` reports a PLANNING BUG | Check it is not WITHHELD first. The meter diffs at 270px, where a counter digit is sub-pixel and a 30px cursor is ~4px | `PROBE` | rfw 28 — 58.2% "dead" on a film that moves almost continuously; 8 flags became 2 once both second opinions ran |
+| A film must survive `--seek` (a render, a stills sheet, a seeking probe) | No `ifm.swap()` and no DOM-mutating `tl.call()`. Preload every station; derive discrete state from `tl.time()` in `onUpdate` so it re-derives in both directions | `VALIDATOR` | rfw 5, rfe 6, rfv 2 — a zero-duration `tl.call` DOM move does not revert on a backward seek |
+| Anything is driven from `tl.call` | It runs on the **wall clock**, not timeline time. A paused or seeking timeline does not stop it | `VALIDATOR` (warns) | rfe 15 |
+| A tween has not started yet at the seeked time | It writes its **start** values on a backward seek. Clamp time-windowed paint effects at BOTH ends | `WISH` | rfe 31, rfw 13 |
+| A pointer and the thing it manipulates move together | **One** tweened value drives both. Same duration with different curves visibly drifts apart and reads as "a slide that happened near a cursor" | `WISH` | rfv 17 — measured spread after the fix: 0px |
+| A carried thing is attached to a carrier | **Derive** its position from the carrier's live box every frame. Never tween it alongside and match durations | `WISH` | rfw 11, rfe 23 |
+| A gesture ends | "The hand owns it" includes the **payoff**, not just the travel. Releasing before the result lands orphans the result | `WISH` | rfw 10 |
+| A beat opens with the hand already in position | It reads as broken — the viewer missed the approach | `WISH` | rfw 15 |
+| A drag lands on a target | The target reacts **before** the drop, not after | `WISH` | rfe 24 |
+| Two adjacent beats can be described with the same verb | They are one beat. Vary inside what a beat is FOR, never across it | `ARTIFACT` | rfw 16, rfw 20 — three of the same move is one move shown three times |
+| You are pacing a product gesture | Authored ≠ slow. Gesture ≤2.5s, discrete actuation ≤0.8s | `WISH` | rfv 13 |
+| `seam-gate` flags an exit/entry ratio | Fix it by raising the **entry** velocity, not by softening the exit. And it does not model a mask wipe — a wipe reads as a dead entry it cannot see | `PROBE` | rfe 9, rfw 3 |
+| A hand-off between two elements is staged over time | That is not a cut and must not be measured as one | `WISH` | rfe 32 |
+| You write per-frame DOM into an iframe | Guard on change. Unconditional writes are wasted work and can fight the snapshot's own handlers | `WISH` | rfw 18 |
+| The timeline is paused | Nothing may still be running under it — a music bed included | `WISH` | rfw 29 |
+| You use an effect from `videos/_shared/effects/` | Read what it paints **at rest** before using it. They park visibility inconsistently, and one paints its own text twice | `WISH` | rfv 10, rfv 19 |
+| You reach for `mountTextCenterOutRoll` | It is a two-layer **colour wipe**, not a reveal. It cannot reveal text that was not already there | `WISH` | rfe 13 |
+| A real node must escape an `overflow:hidden` pane | It cannot, at any z-index. Clone it out or move the clip | `WISH` | rfe 14 |
+| You style text-kit output from a class | Its inline `white-space: pre-wrap` beats your class rule | `WISH` | rfe 19 |
+| You remove a CSS centering transform to tween x/y | Nothing is centered any more. Re-derive the centre; do not assume the layout box holds it — centre with `xPercent/yPercent` at build | `WISH` (probe skeleton `computed`) | rfv 18; yjc 1 — eight elements, gsap-rules 6b already existed and did not prevent it |
+| You position a decoration against text | Measure the **text**, never its layout box — the box is wider than the glyphs and the decoration lands off | `WISH` | rfv 20 |
+| A matched-geometry morph rides a camera move | It must land **when the camera lands**. Early or late and the match reads as a jump | `WISH` | rfe 21 |
+| Hover-revealed UI needs to be shown | The capture hides the **container**, not the control. Reveal the container | `WISH` | rfe 22 |
+| A capture's disabled states are on camera | They stop being true the moment the film moves rows. Re-derive disabled state from position | `WISH` | rfw 17 |
+| The storyboard wants mass, not sequence | `fieldStaggerReveal` is the wrong primitive — and its `blurFrom` is iframe-unsafe under R6 | `WISH` | rfw 6 |
+| Removing motion made the density count go UP | Believe the count, then look. Fewer competing movers can read as more motion | `WISH` | rfw 14 |
+| `paint()` owns an element's transform | Every extra motion on it is a **proxy channel** composed inside paint (`DW.kick`, `WLD.x`), never a direct tween — a direct tween is silently overwritten every tick | `WISH` | qrd 3 — the two-owners rule applied to the paint loop; caught in self-review before it shipped |
+| A seek-parity film types text | Drive it from a numeric **substring channel** (`str.slice(0, round(n))`, write-on-change guard) — seek-safe in both directions. `caretType` is for on-camera tutorials. `steps(N)` ease sells discrete backspacing | `WISH` | qri 4, qri 5 — probe asserts the typo at 3.9s and the fix at 5.1s, forward AND after a backward seek |
+| A finished film shows static frames | Grep for `, async () => {` in the caption slot — `beat()` takes caption FIRST, motion second; zero glides = zero smoke warns | `WISH` (machinery rejected; prose + grep) | mfe 1 |
+| An editorial v1 is pre-render | Run `composition-scan <slug> --play` (report) + a storyboard-sheet stills pass — the b1 void shipped because no gate saw a 90%-empty bed | `PROBE` (partial: --gate exists but is pose-based; pixel-band sampler queued — C5) | ela E-8 |
+| Park and reveal touch the same element | Use the SAME visibility channel — autoAlpha park + opacity-only reveal shipped an invisible assembly no gate could see | `LIB` (fieldStaggerReveal → autoAlpha) + `SKILL` | ela 5a; yjc defect 2 — a scene parked `autoAlpha` and revealed by `seamZoomThrough` (opacity only) rendered BLACK |
+| A beat's motion finishes before its cut | Dead exit. Start the outgoing camera's anticipation BEFORE the whip (overlap ignition) — and when the hand-off is staged, point `seam-gate` at the **crossing frame**, not the storyboard's nominal cut | `PROBE` (`seam-gate`) | qrd 4 — exit 0 px/s, entry 3 px/s on v1; the measurement edge of rfe 32 |
+| An event must land at an exact time — a veil covering a swap, an SFX pin, a thesis mount | It lives on the MASTER timeline, aligned to MEASURED marks, never estimates. An async flow drifts (±2s measured) and no later timeline position may assume it finished — gate the next beat on its promise or hard-budget the flow. A rendered film cannot have two clocks | `WISH` | ela 1 — the veil finished 0.6s before its swap; fan QC-5 — the carrier is now master-timed; cad 12 (GLM) — thesis mounted over a mid-move form |
+| The first measured run exists | Re-derive scene boundaries from its marks — a storyboard's generous allocation becomes an 8s hold when the beat needs less. After ANY retime, re-dump `__sched` and re-pin dependent cues; "measured" comments rot | `WISH` | ela 2; fan L6 — every downstream mark drifted late past a dead flow gate |
+| A camera move is the hold's carrier | Verify the POSE actually travels (delta ≥ ~15% of viewport) — from/to poses that clamp to nearly the same frame produce zero travel however long the move runs. The carrier amplitude axis applies to the camera too | `WISH` | sfc 2 — one dead run survived four fixes until a real pan replaced a zoom onto an already-framed target |
+| `glideClick` follows your own framing fly | Pass `{ scroll: false }` — the default scroll+settle burns ~0.6s of dead air per call and shifts content under a zoomed camera | `WISH` | fan L4 — seven calls ≈ 4s of cumulative freeze |
+| You add a carrier glide | Check where the cursor already sits — a half-pixel glide still costs scroll + settle + its full duration of frozen screen. Travel under a card width: cut it; the flight is the carrier | `WISH` | fan L5 — a 0.46px glide burned ~1.5s |
+| A beat stacks two picks + typing + a camera move | It needs ≥11s of clip, or a fire-and-forget visual tail — awaited helper costs accumulate ~0.6–0.7s each past every flow gate | `WISH` | wh 2 — +3.2s overrun in an 8.5s clip; geo 5 |
+| A bed changes to a light ground | Every dark layer above it must actually CLEAR the frame on exit — invisible dark-on-dark residue becomes visible the moment the ground lightens. Check exit deltas against stage bounds, not "faded from view" | `WISH` | fan QC-1 — a `y:-640` exit left 40px in frame for the whole film |
+| You mount `highlightElement` rings | Give every ring a TTL and clear all rings at swap boundaries — they persist by default, and stage-space rings point at stale content after a swap | `WISH` | fan QC-3 — rings sat on cards through four beats |
+| A `fromTo` drives a PROXY object at a position later than 0 | `immediateRender: false` — a proxy `fromTo` immediate-renders at build time exactly like an element tween, and the first painted frame carries the from-state | `WISH` | qrd QC1-2b — the doorway rode 62px high for the whole film; UNMINED-QR ruling 2026-09-02 |
+| You tween a hover/highlight background | Start from the SAME hue at 0 alpha, never `'transparent'` — rgba(0,0,0,0) interpolates through gray mid-tween | `WISH` | hfs §3.2 — they hit the gray flash and left the comment in |
+| Two scenes meet at a throw or zoom seam | Both scenes sit on the SAME ground color — mismatched beds flash at the cut edge | `WISH` | hfs §1.1 |
+| A scene ends at a cut | Its timeline holds the final frame to the exact scene duration (a no-op tween) — a hard cut must never land on a 1-frame gap. A seam requirement, not idle time; pairs with the dead-time comma rule | `WISH` | hfs §1.2 |
+| The product's own agent performs a step (WPVibe writes a field) | It EMERGES — the row unfolds and the value surfaces with a "just written" wash, no cursor, no typing. User steps click; agent steps emerge | `WISH` | cgw 15 — *"it should emerge, since it's done by WPVibe"* |
+| A payoff state is visible when its cut opens | It reads as pre-baked. Give the "before" a beat (~0.6s), then bring the change in with its own motion and wash | `WISH` | cgw 16 — Sponsor visible within 0.2s, "pre-baked"; sharpens mp 0's corollary |
+| Exit and entry share the frame at the same moment | Double exposure. Same axis, mirrored eases, never the same place at once — four text double-exposures in one film; claim headers stacked for 0.3s at throw seams | `WISH` | yjc 10; wvb reported-not-fixed |
+| A class-wide exit tween (`.gline, .gdot`) leaves a scene | Scope it to the scene host (`#s1 .gline`) — an unscoped exit hid every grid line in the film | `WISH` | itf 5 |
+| Typed copy changes on a timed beat | Recompute the end of every `caretType` against its exit (chars × charDuration from its start) — 16 chars at 0.05s outran a 5.28s exit | `WISH` | itf 6 |
+| You reveal a line with `mountTextLetterMaskDomino.tweenInto` | `reverse: false` EMPTIES it — the "into" tween is an exit (both glyphs slide out of the 1em clip) while computed style says visible. Park and drive the letters video-local until the effect is fixed: `.top` at yPercent 100, `.bot` at 0, slide `.bot` to −100 | `LIB` (effect defect — AP) | scaf 2, sc3p 4 — a 2.67s frozen dark frame; ink-count the rendered crop, computed style is not paint |
+| A band or pose is pre-framed under the sting | Pre-frame, then DRIFT — a pre-framed hold under a 1.9s sting is a 2.77s dead run before the film starts; the drift also gives the reveal its velocity | `WISH` | snpt 7 |
+| `settle()` carries a hold longer than ~2s | Its push/pan ARE the carrier: `push: 0.03` over 5s is under the 60px/s floor — `push: 0.06, pan: −30` plus a band jolt on arrival cleared 2.5s runs | `WISH` | snpt 8 |
+| A tail (end card over the render pad) reads dead | A decaying ease is not a carrier — `sine.out` stops registering the moment it slows. Constant-speed bounded yoyo drift (14px, `sine.inOut`, `boundedRepeats`) cleared it outright; ease-out is for arrivals, the tail needs a metronome | `WISH` | somr 11 |
+| The sting is mounted before the snapshot loads | Load + prep + pre-frame BEFORE `__T0` — `mountShortIntro` paints its ground at mount and a 1.1MB capture cold-loads ~3s ON CAMERA under the real-time renderer; the renderer trims only what precedes `__T0` | `TEMPLATE` (skeleton order — AP) | scfw 3 — 0–3s solid orange, a 46s file for a 42.2s film; wcr v2 — three snapshots (~8 MB) loading AFTER the timeline started: ~9s of blank white on the review URL, the first thing Umair saw |
+| A later frame depends on typing finishing | Await the tween (GSAP tweens are thenable: `withTimeout(Promise.resolve(tween))`), never a clock — lagSmoothing stretches a time-based tween on >500ms frames (18 cps measured 5–7 cps under contention) | `WISH` | scfw 7 |
+| The cursor does anything | It needs a matching EXIT; a beat that skips the shared helper skips its cleanup — the pointer sat on Send through the payoff and the whole slam; a giant cursor alone on an empty frame | `WISH` | sc3p 6; yjc 4 |
+| SFX / click cues are guarded on `playing` | `playing` stays true while the master is PAUSED, so every seeking tool fires them and click ripples show in stills — also gate on `tl.isActive()` | `TEMPLATE` (ad skeleton hole — AP) | yjc 11 |
+| A transient blur is the honest dissolve (the reference blurs the outgoing frame) | Ride `filter: blur()` ≤0.4s on an EDITORIAL dock, `fromTo` from `blur(0px)` (a `.to()` from `none` snaps), `clearProps: 'filter'` on landing. The never-filter rule is about RESTING under one, and never on a live iframe's ancestor | `WISH` | cgw 13 |
+| A provenance comment goes inside `<style>` | `/* … */` only — `<!-- -->` inside a stylesheet is a CDO token and the parser drops the NEXT rule (the approval card lost its whole block). In HTML, `<!-- // OVERRIDE: … -->` above the block satisfies the hook | `HOOK` (warn on `<!--` between `<style>` tags — AP) | scaf 1; wvb 8 |
+| The ad skeleton's grain canvas | `#grain` is a replaced element — `inset: 0` keeps the 480×270 intrinsic size (one quarter of the stage); `width: 100%; height: 100%` | `TEMPLATE` (skeleton fix — AP) | cgw 8 |
+| A hold's carrier is a `tl.call` that starts a tween | It runs on the wall clock and a seek renders whatever the clock managed; seek-accurate motion goes ON the master (`tl.add(caretType(...))`) | `VALIDATOR` (warns) | wcr — third sighting of rfe 15 |
+| The reference measures mostly STILL at frame level (dead-time on the reference itself ~60%) | What carries it is what a frame strip cannot show: the sound bed, text streaming a line on nearly every frame, and in-beat polish (a colour cycle on the model label, a live waveform under the request, eased settles). Transcribe THOSE from the 24 fps sheets, not only cut points and layouts — a film with the reference's cuts and none of its in-beat motion is stills | `WISH` | wcr v2 — reference 61.9% dead, ours 56.6%, and still 0/10: no bed, no streaming reply, a linear character counter where the reference cycles four colours |
+
+## 7. Product truth & DOM puppetry
+
+| IF | THEN | Slot | Receipt |
+|---|---|---|---|
+| A product beat can't name the **DOM mutation** it performs | It is not a product beat. If a build has no DOM writes into the iframe, it's a slideshow whatever the camera is doing | `ARTIFACT` | mp 0 — **the root failure**; two consecutive QC rounds on the same thing |
+| The state change is pre-baked into the capture | Still wallpaper. Realness is *not connected → connected*, earned on camera | `ARTIFACT` | mp 0 corollary |
+| Narration promises a surface that doesn't exist | Reshape the beat. Never narrate the missing surface | `WISH` | cc 1 — "the big lie": a promised checkout over a static canvas slice |
+| Real UI accepts or refuses something | Animate the object — `nodYes` / `shakeNo`. A banner alone is a *caption* of the event, not the event | `LIB` | sfb 21 |
+| A primitive you need doesn't exist | That's a missing **idea**, not a missing convenience. Two full QC rounds were the same gap in different clothes | `WISH` | sfb 21/26 — *"the vocabulary I build is the vocabulary I think in"* |
+| Fixture texture contradicts the narration | Defect. A PK flag in a Berlin/New York story, a sibling coupon named `SUMMER20` next to Summer Sale | `WISH` | bac D, cc 9 |
+| You clean up state echoes | `querySelectorAll` — first-match queries grab hidden decoration and leave the visible one | `WISH` | cc 9 |
+| You match DOM by text | `textContent` bubbles. Match on leaf-ish nodes, act on their closest known-class ancestor | `WISH` | mp D — `display:none` landed on the container holding the form |
+| You need a panel-machinery ID | Verify it in raw markup like a field selector. `#field-options` is the sidebar tab `<li>`; the pane is `#wpforms-field-options` | `WISH` | cc 7 |
+| You inject teaching CSS into a real form | Use `!important` or ID scope, and assert **computed style** in the probe, never the injected string | `WISH` | ccs 22 — `.wpforms-form` loses 0,1,0 to 0,2,1 and painted nothing |
+| You lift a composite with `liftComposite` | Swap locale classes in the **loader doc before lifting** — computed styles only resolve where the snapshot stylesheet lives | `LIB` | bac D |
+| A snapshot loads mid-film | Warm it through the offscreen loader during an earlier beat. 144-asset captures cold-load slow enough to race the swap | `WISH` | ssn 17, cc playbook |
+| A shared module already owns a behaviour | **Extend its contract** — never install a competing listener. Escalating `preventDefault` → `stopPropagation` → `stopImmediatePropagation` means you are fighting an owner that should be configured or replaced | `WISH` | rf 15 — three rounds of event-suppression against a fetch-based async swap, which event suppression cannot address. The fix was to DELETE the handler |
+| Generic shared code needs a form-specific fact | The **capture** declares it (`<body data-wpf-nav-map='…'>`), because shared code cannot know a slug | `LIB` | rf 15 |
+| You are about to add an entry to a shared registry | **Grep the registry first.** `grep "label: '"` over `interactivity.js` lists every transition in a second | `WISH` | rf 18 — four handlers rewritten that already existed, and `dispatch()` applies EVERY match, so one click added two rows |
+| A canvas preview does not update after a handler runs | Check what the canvas actually is. The generic handlers drive `ul.primary-input`; Ranking's canvas is `ul.wpforms-ranking-preview` | `WISH` | rf 18 — "adding an option is not showing in the preview" was one unknown selector, not a missing feature |
+| A film promises a mechanic its copy names | Demo it in **all N variants** the copy names, or narrow the copy | `ARTIFACT` | rfv 14 |
+| A product state changes on camera | Name the **control** that caused it, actuated on camera. "Show the change" is not "show what caused the change" | `ARTIFACT` | rfv 12 |
+| You clone real UI out of its iframe | Its styling does not come with it. Inline the computed styles, or keep it where it is | `WISH` | rfv 11 — twice in one build |
+| A handler rebuilds its subtree | Every element reference you were holding is now detached. Re-acquire via `awaitLayout` on the POST-change selector — never via a wait of any length; a timing-dependent pass is not a pass | `WISH` | rfe 15 note, rfv 15; sfc 1 — a 0.4s wait masked the race until a dead-time fix shortened it to 0.15s |
+| You rename things across a film | Rename through **one map**, and sweep attributes too — not just identifiers | `WISH` | rfe 29 |
+| You blank a cell to `''` | It becomes unwritable by first-text-node helpers. Write a space, or target the node directly | `WISH` | rfe 30 |
+| Production truth is being discussed | It is about **structure**, not about copy. Real markup with placeholder words is truthful; invented markup with real words is not | `ARTIFACT` | rfe 28 |
+| The product drives a UI region with a `data-state` attribute | Mirror it as a time-indexed state table (full write on index change, write-on-change guard) — the cheapest possible seek-parity shape. Look for this shape FIRST in a new feature | `WISH` | qrd 5 — the backward-seek probe passed on the first run |
+| You mount two artifacts from the same generator library | Their `<defs>` carry identical fixed ids, so the second renders with the FIRST's clip geometry — silently. Rewrite ids at mount (`id="X"` → `X-c2` plus every `url(#X)`) | `WISH` | qri 1 — qr-code-styling SVGs; pre-empted, would have been invisible in review |
+| A control has no interactivity.js handler | A click there is a DEAD on-camera click — use an attention-only beat or derive the state; check `inspect-snapshot <slug> --emit-actions` first | `TOOL` (emit-actions, C3) + `SKILL` | mfe 4 |
+| A derived reveal un-hides captured nodes | Stage their asset dependencies (fonts!) or reveal the dependency-light sibling — the rich editor pulled fonts the capture never pooled | `DOC` | mfe 7 |
+| A beat shows a state the capture doesn't hold | Harvest it from the LIVE product at intake — a real second artifact, never a simulation. Real artifacts even carry their own proof (516 rects vs 780 reads as a genuinely different code) | `ARTIFACT` | qri 2 — one step past the ranking films' value-harvesting |
+| A beat needs a registered interactivity CLICK handler to fire | Dispatch a real `MouseEvent` into the iframe doc after the visual click — `Cursor.click()` is visual-only (ripple + squash, no DOM event). The typing/dropdown helpers dispatch their own change events; click handlers are the gap | `WISH` (`glideClick dispatch:true` proposed) | fuf 1 + cpa 1 (GLM) — two agents hit it independently; smoke saw only downstream layout warns; stte 1 — third sighting: the Advanced group never opened and the digit was never typed; the shorts skeleton's EXAMPLE 3/5 call `gcFramed` without `dispatch` |
+| The click or layout-wait target is a wp-admin radio, checkbox, or toggle | Target the LABEL (`label[for]`), the row, or `.wpforms-toggle-control-icon` — the input itself is routinely 0×0. And never layout-wait on an accordion CONTAINER (its sticky toggle is out of flow): wait on the control | `WISH` | geo 2, fuf 2, fuf 3 — three sightings in one batch; rfv 6's zero-size family |
+| You rewrite ids inside an inlined/cloned SVG | Use a QUOTE-AWARE regex — qr-code-styling serializes single-quoted `url('#id')` refs — then verify ONE rewritten copy actually resolves its refs before trusting the batch | `WISH` | qri 7 — black-square defect, twice; UNMINED-QR ruling 2026-09-02 |
+| You badge a control the product already labels | Ring only — `highlightElement`'s label anchors top-left of the ring, exactly where a WPForms option row keeps its own `<label>`; "The row" over a field title read as "The row ms". Badge only what the UI does not name | `WISH` (`docs/cursor-choreography.md`) | somr 9, scfw 6 |
+
+## 8. Narration & audio
+
+| IF | THEN | Slot | Receipt |
+|---|---|---|---|
+| You synthesize narration | **eleven_v3**, one batch, flowing spoken copy + audio tags, `narration-qc --expressive` | `LIB` (default) | ssn 11 — v2 + stability-chasing shipped monotone; *"insanely bad"* |
+| A voice-cluster gate flags an outlier | Do **not** raise stability to satisfy it. That gate and expressiveness are in direct opposition and the gate wins | `PROBE` | ssn 10 superseded by ssn 11 |
+| A clip flags bright/dark on repeat takes | Count the sibilants and rebalance the **line**. Spectral centroid is phonetics-coupled — after two flags on the same clip, the next move is a rewrite, never a third roll | `WISH` | bac 9 — four takes flagged, then overshot dark; saa 3 — a re-roll came back WORSE (+21.1→+23.9%), the rewrite passed in one |
+| You're trimming narration | The **promise** sentence is the last thing to cut, never the first. Trim the hook and the steps | `ARTIFACT` | sfb 35 — cutting *"And WPForms can tell the difference"* broke the film's intent |
+| You're writing a short | Arc is **Hook → Promise → Steps → Payoff**. Four moves, not three | `TEMPLATE` | sfb 35 |
+| Beat length and narration disagree | Beat length is the budget; write the narration to it. Never the reverse | `WISH` | sfb 36 — a 4s postIntro grew to 7.8s of a 44s film; stte 2 — eleven_v3 reads ~2.5 w/s + 0.4s settle at stability 0; a re-roll does not fix pace, the text does |
+| Narration uses a UI label | Paraphrase it into a plain sentence. "Enable minimum time to submit blocks any entry" is broken grammar | `WISH` | as5 9 |
+| Narration names a spatial relation ("right below") | Verify against the real layout on an extracted frame | `WISH` | nvc D — Confirmations is *above* Notifications; caught by the sweep |
+| You add BGM | **Measure the mix** (`ffmpeg -af astats`) on a bed-only segment and a speech segment. Never ship the tool default | `LIB` (0.17 default, the −27 band ruled 2026-08-22) | sfb 32, ccs 24, nvc E — three independent confirmations that 0.055 is silence |
+| You need to prove ducking | Sample 0.18s steps across a clip boundary — both sides are bed-only, so the release curve is directly visible | `WISH` | sfb 34 |
+| Pointer chrome is on screen (doc cards, badges) | One narration chunk of dwell, then out | `WISH` | as5 10 — a 12s card read as clutter |
+| A sound generation run "finished" | It is done when every `sounds{}` entry has a file whose peak > −25 dB AND nothing failed — not when the command exits | `LIB` (retries + regenerates) | rfv 28 — one 17-generation run lost 3 to near-silence and 1 to HTTP 429; all four were fine on the next call |
+| A generated sound passed every probe | No probe hears **ugly**. Listen before placing. A one-shot with low crest and no attack is shaped like a bed — that is the short list to hear first | `LIB` (`♪ LISTEN FIRST`) | rfv 27 — `airPush`/`airPull` had healthy peaks, right duration, correct placement and normalized gains, and came back as *"a snake hiss. fucking disgusting"* |
+| You are setting clip gains | Never hand-author one before `normalize.mjs` has reported that clip's **measured source peak**. Prompts port between films; gains never do — the same prompt generates at a different level every time | `PROBE` | rfv 29, rfw 23 — inherited gains were wrong by up to 14 dB, one clip would have landed at −28 dB; cja — the ruled 0.17 measured −32.5 dB bed-only on a different bed |
+| You prompt a music generator | Ask for a **present** sound and a **relative** structure. Level and absolute timing are mix decisions; absolute timestamps in the prompt override the length parameter | `PROBE` (drift warn) | rfw 22, rfw 26 |
+| You are trimming a sound's onset | mp3 encoder priming floors it at ~20–30ms, and repeated re-encodes do not converge. Compensate at **placement** beyond that | `WISH` | rfw 24, rfe 26 |
+| The same cue data drives two consumers | Generate one from the other, and give it a `--check` mode so staleness FAILS | `WISH` (per-video today) | rfe 27, rfw 27 — `plan.json` for the mux and the in-page `Audio` rig, 41 cues, hand-maintained in both |
+| A generated one-shot needs to be shorter than 0.5s | It cannot be. That is the generator's floor — trim after, do not ask for it | `WISH` | rfe 25 |
+| A film has browser-audible sound for review | The affordance must hide itself from **capture**, not depend on a flag someone remembers to pass | `WISH` | rfe 35 |
+| Only the audio changed | Re-mux. `mux.mjs` copies the video stream, so the picture is byte-identical and every visual check stays valid. Re-render only when `index.html` changed | `WISH` | rfv 30 — this is why sound notes are cheap to action, so ask for them early |
+| Fresh ElevenLabs v3 clips exist | onset-trim every clip, then measure, then narration-qc — 5/5 clips carried 28–137ms head silence; expect ~3 re-rolls per short | `TEMPLATE` (process) | mfe 5, senw 5; somr 3 — 71–260ms on one run; sml 2 — narration-qc BEFORE the first render: a render ran first and was redone |
+| A cursor action must land on the word that names it | Use the `at(word)` clock `beat()` hands the motionFn — a zero-arg motionFn fires everything at t=0 of the clip. Hand-tuned LEADING waits can sync too, but they are voice-coupled and drift silently on any re-synthesis; `at()` survives a re-render | `LIB` (narration.js, T-1) | mfe / T-1; measured 2026-08-28: 58 beats across 6 films, zero using it — cpa 11 (GLM, MUST FIX), sxf ×2 on Claude-built shorts; wh 4 bounds the claim (leading waits synced that film) |
+| You check whether a mix is audible | `volumedetect`, not `astats` | `WISH` | rfe 37 |
+| You author a tutorial | NO intro/outro cards and no intro/outro narration clips — the film starts at the postIntro; Kacie records the bookends (ruling 2026-08-28, delivery shape 2026-05-19). Shorts are unaffected: the Sullie sting and end card stay | `SKILL` (wpforms-video rewritten; skeleton change queued) | wh 8 — every tutorial had been building bookends the pipeline replaces; ee 3 + lf 4 — the outro clip also measured a dark voice outlier three builds running |
+| A narration line is ≤12 words | Give it an internal pause (… or —) or merge it into a neighbor — short lines synthesize fast and unstable | `WISH` | lf 3 — 7 of 9 re-rolls in one batch were ≤12-word lines |
+| You add, drop, or re-roll a clip | Expect voice-cluster verdicts to shift for OTHER clips — the gate's median is batch-relative, so a re-flag after a membership change is not a regression. One re-roll, then stop | `PROBE` | ee 2 — an untouched clip flipped CLEAN→FLAG when the outro was dropped; wh 4n, scs 5 (GLM) |
+| A track line is three staccato fragments in ascending abstraction — "Every entry. Any app. Instantly." | Cut it. Banned in ANY track (Umair, unqualified): no-verb slogan cadence performs instead of explaining. A closing line lands a real thought in a full sentence, or the payoff frame closes the film silently | `WISH` (lintable shape: 3 fragments under ~4 words) | swaa 2 |
+| A narration line describes what is already on screen | Cut it — narration carries what the picture cannot: intent, consequence, the reason for a choice | `WISH` | fuf 5 — "watch the form update as we type" on a rename |
+| The render's tail flags dead, or a "video ≥ audio" check fails | Check the muxer's whole-second pad first — audio lands on ceil(video), so the real check is "no frozen tail under live audio", satisfied by an outro loop running through the pad | `WISH` (ruling queued) | senw 6; fan — the 47.4s "freeze" was the pad |
+| You hand over a tutorial as an HTML scrub | Say that BGM arrives at render — tutorials carry no in-page bed (shorts do), so the scrub misrepresents the shipped audio | `WISH` (skeleton `BGM_PREVIEW` queued) | lf 9 — the silence drew a false QC note on a film with correct audio plumbing |
+| You cut narration clips into a film | In-chapter VO gaps ≤0.7s and ≤1.0s at chapter seams — the bar's voice is never silent >0.91s across 44 min; pauses live in punctuation, not clip gaps | `WISH` | trk3 tts §pauses |
+| You write tutorial narration | Write flowing 15–25-word prose at ~2.8 w/s FIRST, then chunk to ~15w/5–6s clips — fragment-style short sentences read below the bar; imperative-start ≤15% | `WISH` | trk3 tts §sentences |
+| You draft narration | Write to the 12 warmth mechanics (probably-empathy, validation, advice-not-commands, permission, one domestic joke, seasoning, people-not-manual, co-doing+meaning-recap, rhythm punch, both-branches payoff, concrete specifics, situation-first) | `WISH` | trk3 scripts (craft pass) |
+| You mix an ad-style render | Bed at program level, no sidechain duck — drop the arrangement under VO instead; shape the loudness arc; end on a 0.6–1.7s fade to true silence or a hard-out; no mid-program silent holds | `WISH` | trk3 sound (U4 ruling 2026-09-03) |
+| An ad needs an SFX one-shot | Take it from `tools/sfx/palette/` — 8 ratified sounds (`tick-a/b/c`, `impact-a/b/c`, `boom-a/b`) whose `manifest.json` carries each one's class, measured onset, peak and the cue it earned. **`shimmer` and `riser`/whoosh are REJECTED CLASSES**: never place them, never re-roll the class. Generate a new sound only when no ratified class fits the job | `LIB` (`generate-palette.mjs` refuses the 4 rejected names) | rav — 12 candidates placed on real cuts, 8 kept, 4 rejected by ear; the rejection matches the standing 2026-06-10 ad-sound ruling (punchy-clean, no whoosh/sparkle cheese) two rounds apart |
+| You are choosing between generated SFX candidates | Place **all** of them on the film's real cuts, under the real bed, and let Umair judge in context. A snippet auditioned in a folder cannot be judged — the cut, the level and the bed's masking decide whether a sound works | `WISH` | rav — 12 candidates shipped as 17 in-context cues and the verdict came back per-CLASS (all shimmer, all riser), which no snippet-by-snippet pass produces; extends rfv 27 (no probe hears ugly) |
+| You sign off a mix | Measure INTEGRATED loudness against the ad bar (`ffmpeg -af loudnorm=print_format=summary`; ruled profile ≈ −12 LUFS mean) — the −30 dB RMS "floor" proves audio exists and passed a mix Umair heard as silent; tune ONE `LIFT` constant, never 28 gains | `PROBE` (loudnorm in the muxer — AP) | sc3p 7 — −22.6 LUFS signed off; yjc — −18.6 → −12.6 with one constant; wvb 11 — bed 8–12 dB under the U4 bar, *"why is there no sound"* |
+| An ad's sound is reviewed on the scrub URL | An in-page bed must exist — in-page SFX with no in-page bed is silent where Umair watches first; and in-page `Audio` never reaches the MP4 (the plan goes through `tools/sfx/mux.mjs`) — never assert an audio path you have not verified | `WISH` | wvb 11; yjc 12, Part 3.4; wcr v2 — the reference is carried by a full mix at −12.9 LUFS / 7 LU of range; 52s of quiet white compositions with seven UI pops and no bed IS a slideshow, whatever the motion does |
+| You prompt ElevenLabs for a one-shot | Name a PHYSICAL source ("a single sharp pen tap on a hard wooden desk") — abstract descriptors ("crisp UI tick") return near-silence; a bed prompt asks for "both hands moving fast, no gaps, constant level"; an impact names the attack ("hard immediate attack on the first sample, fast tight decay") or comes back bed-shaped | `WISH` (`tools/sfx/CONTEXT.md` — AP) | yjc audio; sc3p 8 |
+| Generated audio "passed" | Three probes, none redundant: peak/crest/attack for SHAPE, `onset.mjs` for TIMING (trim LESS than the reported onset — a soft pre-transient sits before the 5%-of-peak point and trimming to it cut a hit from −2.9 to −23.6 dB; one trim converges to ~40ms, never re-trim), a windowed RMS sweep for COVERAGE — a bed measured a good peak and stopped 8s before the end card; another arrived with an 8s silent head | `WISH` | sc3p 8; yjc; scfw 11 |
+| Typing is on camera in an AD | No typing ticks — the bed carries typing; ticks are for state changes. 26 word-start ticks in 25s read as "beep beep" | `WISH` (`tools/sfx/CONTEXT.md` cue rules) | cja 2 |
+
+## 9. Process & handoff — the expensive ones
+
+| IF | THEN | Slot | Receipt |
+|---|---|---|---|
+| **Umair has approved a beat** | Measured defects in it are **reported, never fixed.** A tool finding a defect in approved work earns one paragraph, not four commits | `WISH` | ccs 19 — *"wtf is happening, you just needed to add the bgm"*; all of it reverted; wvb — two replies off-frame and a header collision measured in APPROVED beats, reported in one paragraph, left alone |
+| The same beat is rejected **twice** | The next iteration presents a **concept change**, not an execution patch | `WISH` | ccs 13 + as5 8 — repeat offense; the rule is earned |
+| The verdict is "boring / plain / no motion design" | Change the visual language — layout, camera, kinetics. Dressing-only passes are for "almost there" | `WISH` | as5 8 — 4/10 → *"not a single thing changed"* → still 4/10 |
+| You propose a concept | Offer **options with costs and named constraints**, not one proposal | `ARTIFACT` | ccs 20 — v1/v2/v3 all failed; v4 passed on first build from an options proposal |
+| A proposal can't state the beat's hero frame | It will ship as a gray rectangle. Name a reference frame or effect-vocabulary list per phase | `ARTIFACT` | ccs 14 — the "ladder" was approved as prose and built as abstract boxes |
+| You're about to hand off | Extract a **dense frame sweep** (~10 frames at each beat's key moments) and read each as a viewer. Report what you checked | `WISH` (shorts only) | nvc C — *"its clear you havent QC'd the video yourself"* |
+| You're adding a new export to a shared module | **Grep the name first.** Two sessions added `shakeNo` independently; the duplicate declaration took every short dark | `WISH` | bac 6 |
+| You have a plausible diagnosis | Measure the symptom's **timing** before choosing the cause. A frame strip takes two minutes | `WISH` | sfb 33 — shipped a reparenting fix for a bug that was absolute-vs-relative tweening |
+| A gate fails on every run | That's a bug in the gate. A gate that always fails is a gate nobody reads | `WISH` | ccs 28 — `PROBE FAIL` with 0 unmet checks, for months |
+| You want to render | Only after Umair's sign-off or an explicit ask. Fix → verify → HTML URL handoff | `WISH` | as5 11 — a render overwrote the one his feedback referenced |
+| You render or probe | Stop `preview.js` first, and `page.route('**/__preview-ws', abort)`. Never edit repo files mid-run | `LIB` (route-abort shipped) | mp B, as5 7 — two full contact sheets reviewed before the loop was spotted |
+| A fix that's provably on disk changes nothing | `curl \| grep` the served copy before debugging the fix | `WISH` | ssn 17 — the live-reload watcher lags rapid edits |
+| A `motionFn` dies mid-beat with no console error | Exceptions there are silent **by design**. Bisect with checkpoint logs | `WISH` | ssn 15 — three probe rounds chased phantom camera numbers over one `idoc()` |
+| You're tempted to write `obj.method && obj.method()` | Don't. Feature-detecting a method you believe exists converts a typo into silence | `WISH` | mp A — every puppetry call in v1 failed silently on `getDocument` |
+| A tool returns NO-GO / an error you can disprove in seconds | Read what it actually asserts before believing OR fixing it | `VALIDATOR` | rf 1 — **corrected 2026-08-20.** The lessons entry blamed a PHP imagick warning and prescribed filtering it; re-measured, `preflight-site.js` returns GO in 3.0s WITH that warning present. The 61.9s NO-GO was a 60s `spawnSync` timeout surfacing as `unknown error`. Fixed by naming the timeout — an action point built on an unverified cause sends the reader to fix working code |
+| You have a plausible mechanism for a defect | **Measure the element before rewriting the system.** Two builds in a row rewrote architecture aimed at the wrong target — a colour system rebuilt over a captured CSS transition, a timeout raised over a page reload | `WISH` | rfw 1, rfw 21 — both wrong fixes cost far more than the under-a-minute measurement would have, and one reached the user as advice |
+| An in-repo film already performs the mechanism you need | **Port it.** Deriving a new one re-opens bugs the original already fixed | `ARTIFACT` | rfv 26 |
+| You fix a defect class | Sweep **every** beat for that class before shipping. One instance fixed is a fix; the class unswept is the next QC round | `ARTIFACT` | rfv 24 |
+| A `page.evaluate` / `waitForFunction` body would return a GSAP object | Give it a block body or booleanize (`!!window.__tl`). Playwright tries to serialize the return value and hangs forever | `WISH` (probe skeleton) | rfv 7; qrd 2 — second sighting, in probe code: 30s timeout twice while `__tl` had been present within 4s; wvb 17 — third: `seek(t, false)` RETURNS the timeline and every probe hung |
+| A lessons entry states a root cause | It needs the same evidence bar as a finding. An action point built on an unverified cause sends the next reader to fix working code | `ARTIFACT` | rf 2 (corrected in place), rf 21 (severity corrected), rfw 19/25 (corrected), rf 1 (corrected here, 2026-08-20) |
+| A bug's severity is being reported | Finding the inconsistency is half the work; proving the state is **reachable by real input** is the other half | `WISH` | rf 21 — a real `isset`-vs-`empty` inconsistency was written up as user-reproducible; the UI cannot produce the triggering state |
+| An anti-pattern name appears in a comment | The guard no longer fires on it — but do not write one expecting to be blocked either | `HOOK` (comment-aware) | rfe 7 — `repeat: -1` inside a comment blocked a Write and cost a full re-send of a ~700-line file |
+| A render's output path is configured in two places | Make `plan.json`'s mp4/out path match where the renderer actually writes, or the mux silently muxes the wrong file | `WISH` | rfe 36 |
+| A build is handed off for QC | Kill the :4321 port owner, start ONE detached server, embed a visible build stamp (`[film] revN`) on the SCRUB URL only — hidden under `?render=` / headless, never in an MP4 (cgw 18: a stamp shipped through four renders until Umair asked what it was) — stale servers made the reviewer see old builds twice, and a days-old server serves whole-file stale copies: `curl \| grep` one just-written marker through :4321 before sending URLs | `PROCESS` | mfe 6; ee 7 — the served copy was missing fixes that were on disk |
+| You are correcting for `render-html.js`'s boot lead-in | Don't. It trims its own | `WISH` | rfe 38 |
+| Every gate chip is green | That is evidence the film is not broken — never that it is good. The battery measures execution; nothing in it asks whether the idea, the copy, or the script earns the runtime. Report chips as absence-of-breakage, never as quality | `WISH` | cad 8 (GLM) — tier A, dead-time 2.0s, validator 0, smoke PASS, verdict −5/10; road 1 — green verify chain, scratched outright |
+| A directive names a subject ("just anything, not QR") | It authorizes the BUILD, never the ANGLE. Send the one-paragraph angle plus the actual copy for a yes/no before authoring — an `AUTO-APPROVED-BY-DIRECTIVE` header on an unread storyboard is an un-gated storyboard | `ARTIFACT` | cad 9 (GLM), road 2, lf 7 — every auto-approved film in the series was rejected on idea or coverage |
+| A ruling lands | Sweep the skills and docs for sentences that contradict it — a stale sentence beside a new rule reads as an exception, and authors follow the one that lets them keep working | `WISH` | wh 8 — "no HTML bookends" (2026-08-22) sat two paragraphs above "the outro card SURVIVES"; every tutorial since kept its cards |
+| You run any measured pass on a render | Compare the mp4's mtime against index.html's first. Stale → render first, measure second | `WISH` | fan L1 — a full theory cycle built on a 7:38 build against 10:16 code |
+| A full-run warn does not reproduce in a scene-isolated run | The scene run is a weak negative — framing warns are load-timing-coupled. Locate the warn by timestamp against `__sched` instead of concluding state-dependence | `WISH` | ee 5 — the verdict flipped between runs on identical code |
+| You script-edit a film around a brace-bearing anchor | Don't — anchor on sentinel comments and `node --check` the extracted module after EVERY scripted edit. A mid-token splice boots the page to nothing and smoke only says "__T0 never set" | `WISH` (skeleton sentinels queued) | mfe 2 — one full debug cycle plus an external probe to surface the pageerror |
+| A film reaches v1 | Write `videos/<slug>/qc-probe.mjs` (clone `docs/examples/qc-probe-skeleton.mjs`) BEFORE the first handoff — the shared battery measures broken-ness, never "is the thing where I said, in the colour I said, moving how I said"; five defects in one film were probe-only, three of them documented traps reading the rule did not prevent | `TEMPLATE` (skeleton shipped 2026-09-14) | yjc 3, Part 3.1 — written after round 1, it cost a round |
+| A QC note sounds like taste ("not smooth", "font looks off") | Translate it into a mechanical assertion FIRST (monotonic zoom; computed font-family + color; pointer tip inside the subject), add it to the probe, then fix — each becomes a check that never regresses | `WISH` | yjc 2 — "not smooth" was three mechanical faults |
+| You hand off an ad | Render + `tools/keyframes.js` badged sheet + the tile map, in ONE message — notes come back as "00:08" and resolve to one camera call; a render alone came back as "motion design non-existent" and cost a diagnosis round | `WISH` | yjc 4 |
+| Every gate is green on a reference-driven film | Report "well-formed", never "right" — not one gate asks "does this look like the reference?"; the look call is Umair's and needs the donor comparison, not the chip | `WISH` | wcr — 0 errors, PASS, on cadence, −5/10; extends cad 8 / road 1 |
+| An ad is delivered | 4K through `tools/render-frames.js --scale 2 --native` (frame-stepped, cue clock == timeline clock, ALL motion on the master incl. the cursor); the screencast renderer is VP8 at a fixed bitrate on wall-clock time and trimmed ~0.17s off every film's head. "Not HD" on a crisp file was a high-DPI display — check a 1:1 crop before blaming the encode | `LIB` (`render-frames.js` shipped) | cja 8, 9 |
+| A header comment cites a snapshot | One per line, `SOURCE: snapshots/<slug>/` with a trailing slash and NOTHING after it — the validator's reference regex reads trailing prose and `)` into the path and errors on a folder that exists | `VALIDATOR` (stop at whitespace / `)` / `,` — AP) | wvb 4, somr 2 |
+| A bulk or scripted edit touches a film | Write the AUDIT first (diff before/after; assert zero durations, zooms, scales, staggers changed), then edit — a regex shifted scene-map KEYS and was caught only by a SyntaxError | `WISH` | yjc Part 3.2; extends mfe 2 |
+| A defect is reported off a 320px tile | Measure before reporting; withdraw plainly when wrong (a "squashed" terminal measured 1.792 at every frame) | `WISH` | yjc Part 3.3 |
+| A frame sweep is due | Run it BEFORE the first render, not after — six renders in one round because the sweep found the padding, the blank slam words and the stray cursor after render #1; each render invalidates every chip | `WISH` | sc3p — *"why this round took as long as it did"* |
+| You reach for `boundedRepeats` from `shorts-kit` | It is imported there, not re-exported — import from `motion-primitives.js`; one runtime bisect | `WISH` | somr 12 |
+
+---
+
+## Maintenance
+
+- One line per rule. The moment this file grows prose sections it has become
+  prose again, and prose doesn't fire.
+- The head digest holds ~7 entries, ten at the absolute most. A digest that
+  grows becomes the catalog again; an entry only enters by displacing one.
+- New rules arrive from `LESSONS-*.md` files. Add the row, cite the receipt.
+- When a `WISH` gets an enforcer, change its slot. That diff is the only
+  measure of whether hardening is happening.

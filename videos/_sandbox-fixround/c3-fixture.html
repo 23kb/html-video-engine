@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>C3 highlightElement fixture</title>
+<style>html,body{margin:0}#stage{position:relative;width:1280px;height:720px;overflow:hidden;background:#223}</style>
+</head>
+<body>
+<div id="stage"></div>
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { IframeManager } from '/videos/_shared/wpforms-interactions.js';
+const R = {};
+try {
+  const ifm = new IframeManager(document.getElementById('stage'), {
+    viewport: { width: 1280, height: 720 },
+    iframeSize: { width: 1280, height: 720 },
+  });
+  await ifm.load('builder-settings-anti_spam');
+  const doc = ifm.doc();
+  const target = [...doc.querySelectorAll('.wpforms-panel-content [id^="wpforms-panel-field"]')]
+    .find(w => w.offsetWidth > 0 && w.offsetHeight > 0);
+  R.targetId = target && target.id;
+
+  // 1) DEFAULT (stage) mode — record produced inline styles for byte-compat.
+  const rect = ifm.elementToStageRect(target);
+  const h1 = ifm.highlightElement(target, { label: 'Check me' });
+  R.stage = {
+    ringLeft: h1.element.style.left, ringTop: h1.element.style.top,
+    ringW: h1.element.style.width, ringH: h1.element.style.height,
+    ringShadow: h1.element.style.boxShadow,
+    expectedLeft: (rect.x - 6) + 'px', expectedTop: (rect.y - 6) + 'px',
+    expectedW: (rect.w + 12) + 'px', expectedH: (rect.h + 12) + 'px',
+    labelHasInlineFont: !!h1.label.style.font, // must be false at default 12
+    labelClass: h1.label.className,
+  };
+  h1.remove();
+  await new Promise(r => setTimeout(r, 400));
+
+  // 2) DOC mode — label + outline ride a camera flight by construction.
+  const h2 = ifm.highlightElement(target, { label: 'Doc anchored', anchor: 'doc' });
+  await new Promise(r => setTimeout(r, 120));
+  const relBefore = (() => {
+    const er = target.getBoundingClientRect(), tr = h2.label.getBoundingClientRect();
+    return { dx: tr.left - er.left, dy: tr.top - er.top };
+  })();
+  R.doc = {
+    outline: target.style.outline, outlineColor: target.style.outlineColor,
+    elementIsTarget: h2.element === target,
+  };
+  // camera flight while highlight lives
+  const pose = ifm.cameraToElement(target, { fill: 0.6, maxZoom: 2.0 });
+  await ifm.tweenCamera({ ...pose, duration: 0.5 });
+  await new Promise(r => setTimeout(r, 250));
+  const relAfter = (() => {
+    const er = target.getBoundingClientRect(), tr = h2.label.getBoundingClientRect();
+    return { dx: tr.left - er.left, dy: tr.top - er.top };
+  })();
+  // The label rides by construction (child of the element). In settle mode
+  // BCR returns POST-zoom px, so normalize the after-offset by the camera
+  // zoom before comparing — the LOGICAL offset must be unchanged.
+  const z = Math.max(1, ifm.cameraState().zoom);
+  R.doc.zoomAfterFlight = z;
+  R.doc.relDriftX = Math.abs(relAfter.dx / z - relBefore.dx);
+  R.doc.relDriftY = Math.abs(relAfter.dy / z - relBefore.dy);
+  h2.remove();
+  await ifm.tweenCamera({ zoom: 1, tx: 0, ty: 0, duration: 0.3 });
+  await new Promise(r => setTimeout(r, 500));
+  R.doc.outlineRestored = target.style.outline === '';
+
+  // 3) TRACK mode — scripted reflow, ring must follow.
+  const h3 = ifm.highlightElement(target, { label: 'Tracking', track: true });
+  const beforeTop = parseFloat(h3.element.style.top);
+  const spacer = doc.createElement('div');
+  spacer.style.cssText = 'height:120px;';
+  target.parentElement.insertBefore(spacer, target);
+  await new Promise(r => setTimeout(r, 200)); // let the ticker re-anchor
+  const r3 = ifm.elementToStageRect(target);
+  const afterTop = parseFloat(h3.element.style.top);
+  R.track = {
+    beforeTop, afterTop,
+    expectedTop: r3.y - 6,
+    followErr: Math.abs(afterTop - (r3.y - 6)),
+    moved: Math.abs(afterTop - beforeTop) > 50,
+  };
+  h3.remove();
+  spacer.remove();
+
+  window.__results = R;
+} catch (e) {
+  window.__results = { error: String(e && e.message || e), stack: String(e && e.stack || '') };
+}
+</script>
+</body>
+</html>

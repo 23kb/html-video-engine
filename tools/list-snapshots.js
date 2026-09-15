@@ -28,7 +28,15 @@ function parseArgs(argv) {
 
 function loadIndex() {
   if (!fs.existsSync(INDEX_PATH)) return { count: 0, snapshots: [] };
-  return JSON.parse(fs.readFileSync(INDEX_PATH, 'utf8'));
+  const raw = fs.readFileSync(INDEX_PATH, 'utf8');
+  // Mojibake guard (rf 5): index.json descriptions were once written as UTF-8
+  // and read back as cp1252, so every em-dash rendered "â€”" in the output of
+  // the most-used discovery tool, on every call. Repaired 2026-08-20; this
+  // catches a recurrence at the point of use instead of years later.
+  if (/[ÂÃâãð][-ÿ–—‘’“”†-…™]/.test(raw)) {
+    console.error('⚠ snapshots/index.json contains mis-encoded text (mojibake). Fix: node tools/fix-mojibake.js snapshots/index.json --write');
+  }
+  return JSON.parse(raw);
 }
 
 function listOnDisk() {

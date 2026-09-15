@@ -1,5 +1,6 @@
 # Lottie Kit
 
+> **HISTORICAL API NOTE (2026-08-28):** code examples below predate the 2026-08-22 engine retirement. The craft rules stand; the `engine/`/`runtime/`/manifest APIs they mention are gone — implement in single-HTML per CLAUDE.md.
 ## When To Use
 
 Use `videos/_shared/lottie-kit.js` for bumpers, badges, stings, and editorial

@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Video QC dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --bg: #16181d; --panel: #1e2128; --panel-2: #252932; --border: #2f343f;
+    --text: #e8eaf0; --muted: #8b92a3; --orange: #E27730;
+    --green: #3fb96a; --amber: #e0a63a; --red: #e05252;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.5 system-ui, "Segoe UI", sans-serif; }
+  header { display: flex; align-items: center; gap: 12px; padding: 10px 18px; border-bottom: 1px solid var(--border); }
+  header h1 { font-size: 15px; font-weight: 600; margin: 0; }
+  header .sub { color: var(--muted); font-size: 12px; }
+  .layout { display: grid; grid-template-columns: 250px 1fr; min-height: calc(100vh - 45px); }
+  aside { border-right: 1px solid var(--border); padding: 10px; overflow-y: auto; }
+  aside .row { display: flex; align-items: center; gap: 8px; padding: 7px 9px; border-radius: 7px; cursor: pointer; }
+  aside .row:hover { background: var(--panel); }
+  aside .row.active { background: var(--panel-2); }
+  aside .row .slug { font-family: Consolas, monospace; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  aside .row .when { margin-left: auto; color: var(--muted); font-size: 10px; flex: none; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .dot.green { background: var(--green); } .dot.amber { background: var(--amber); }
+  .dot.red { background: var(--red); } .dot.gray { background: var(--muted); }
+  main { padding: 16px 20px; min-width: 0; }
+  .vhead { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-bottom: 10px; }
+  .vhead .slug { font-family: Consolas, monospace; font-size: 16px; font-weight: 600; }
+  .vhead .meta { color: var(--muted); font-size: 12px; }
+  .tier { background: rgba(226,119,48,.15); color: var(--orange); border: 1px solid rgba(226,119,48,.4); padding: 1px 9px; border-radius: 10px; font-size: 12px; }
+  .chips { display: flex; gap: 7px; flex-wrap: wrap; margin-bottom: 14px; }
+  .chip { border: 1px solid var(--border); border-radius: 9px; padding: 3px 10px; font-size: 12px; color: var(--muted); }
+  .chip b { font-weight: 600; }
+  .chip.pass { color: var(--green); border-color: rgba(63,185,106,.35); }
+  .chip.warn { color: var(--amber); border-color: rgba(224,166,58,.4); background: rgba(224,166,58,.08); }
+  .chip.fail { color: var(--red); border-color: rgba(224,82,82,.4); background: rgba(224,82,82,.08); }
+  .cols { display: grid; grid-template-columns: minmax(280px, 420px) 1fr; gap: 18px; align-items: start; }
+  video { width: 100%; max-height: 62vh; background: #000; border-radius: 8px; border: 1px solid var(--border); }
+  .strip { position: relative; height: 22px; background: var(--panel); border: 1px solid var(--border); border-radius: 5px; margin: 10px 0 4px; cursor: pointer; overflow: hidden; }
+  .strip .band { position: absolute; top: 0; bottom: 0; }
+  .strip .band.comma { background: rgba(139,146,163,.35); }
+  .strip .band.borderline { background: rgba(224,166,58,.55); }
+  .strip .band.bug { background: rgba(224,82,82,.65); }
+  .strip .band.withheld { background: repeating-linear-gradient(45deg, rgba(224,166,58,.4) 0 4px, transparent 4px 8px); }
+  .strip .cut { position: absolute; top: 0; bottom: 0; width: 2px; background: rgba(232,234,240,.5); }
+  .strip .cut.flagged { background: var(--red); }
+  .strip .spike { position: absolute; top: 0; width: 2px; height: 8px; background: var(--red); }
+  .strip .playhead { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--orange); pointer-events: none; }
+  .legend { color: var(--muted); font-size: 11px; margin-bottom: 10px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; vertical-align: -1px; margin: 0 4px 0 10px; }
+  .film { display: grid; grid-template-columns: repeat(auto-fill, minmax(72px, 1fr)); gap: 4px; margin-bottom: 14px; }
+  .film .thumb { position: relative; cursor: pointer; border: 1px solid var(--border); border-radius: 4px; overflow: hidden; background: var(--panel); }
+  .film .thumb:hover { border-color: var(--orange); }
+  .film canvas { display: block; width: 100%; height: auto; }
+  .film .t { position: absolute; right: 2px; bottom: 2px; background: rgba(0,0,0,.65); color: #fff; font-size: 10px; padding: 0 4px; border-radius: 3px; font-family: Consolas, monospace; }
+  .notes { background: var(--panel); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; }
+  .notes h2 { font-size: 13px; font-weight: 600; margin: 0 0 8px; }
+  .notes .note { display: flex; gap: 9px; align-items: baseline; padding: 4px 0; font-size: 13px; }
+  .notes .note .ts { font-family: Consolas, monospace; color: var(--orange); cursor: pointer; flex: none; }
+  .notes .note .del { margin-left: auto; color: var(--muted); cursor: pointer; border: 0; background: none; font-size: 12px; flex: none; }
+  .notes .note .del:hover { color: var(--red); }
+  .notes .add { display: flex; gap: 8px; margin-top: 10px; }
+  .notes input { flex: 1; background: var(--panel-2); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 6px 10px; font-size: 13px; }
+  .notes button, .copybtn { background: var(--panel-2); border: 1px solid var(--border); color: var(--text); border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; }
+  .notes button:hover, .copybtn:hover { border-color: var(--orange); }
+  .empty { color: var(--muted); padding: 40px; text-align: center; }
+  .banner { background: rgba(224,82,82,.1); border: 1px solid rgba(224,82,82,.4); color: var(--red); padding: 10px 14px; border-radius: 8px; margin: 16px; }
+  details.raw { margin-top: 14px; color: var(--muted); font-size: 12px; }
+  details.raw pre { background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 10px; overflow-x: auto; max-height: 300px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Video QC</h1>
+  <span class="sub" id="count"></span>
+  <span class="sub" style="margin-left:auto">renders + qc-report.json, live from this repo</span>
+</header>
+<div id="banner"></div>
+<div class="layout">
+  <aside id="list"></aside>
+  <main id="main"><div class="empty">Pick a video</div></main>
+</div>
+
+<script type="module">
+import { Input, ALL_FORMATS, UrlSource, CanvasSink } from '/vendor/mediabunny/mediabunny.min.mjs';
+
+const $ = (s, el = document) => el.querySelector(s);
+const listEl = $('#list'), mainEl = $('#main');
+let videos = [], current = null, filmstripToken = 0;
+
+const fmtT = (t) => t.toFixed(2) + 's';
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function statusOf(report) {
+  if (!report || !report.sections) return 'gray';
+  const s = report.sections;
+  for (const k of ['validator', 'smoke', 'narrationQc']) if (s[k] && s[k].pass === false) return 'red';
+  const dt = s.deadTime;
+  if (dt && (dt.runs || []).some((r) => r.verdict === 'PLANNING BUG' && !r.withheld)) return 'red';
+  if ((s.seamGate && s.seamGate.warnings > 0) || (dt && dt.longest > 1)) return 'amber';
+  return 'green';
+}
+
+async function loadIndex() {
+  let res;
+  try { res = await fetch('/__qc/videos.json?t=' + Date.now()); } catch (_) { res = null; }
+  if (!res || !res.ok) {
+    $('#banner').innerHTML = '<div class="banner">No /__qc/videos.json — this page needs the preview server: <code>node tools/preview.js --no-open</code> (bare serve.js has no QC index route).</div>';
+    return;
+  }
+  videos = await res.json();
+  $('#count').textContent = videos.length + ' video(s)';
+  const reports = await Promise.all(videos.map(async (v) => {
+    if (!v.report) return null;
+    try { return await (await fetch(v.report + '?t=' + Date.now())).json(); } catch (_) { return null; }
+  }));
+  listEl.innerHTML = videos.map((v, i) => {
+    v._report = reports[i];
+    const when = (v.updated || v.mp4Mtime || '').slice(5, 10);
+    return `<div class="row" data-slug="${esc(v.slug)}">
+      <span class="dot ${statusOf(v._report)}"></span>
+      <span class="slug" title="${esc(v.slug)}">${esc(v.slug)}</span>
+      <span class="when">${esc(when)}</span></div>`;
+  }).join('');
+  listEl.querySelectorAll('.row').forEach((row) => row.addEventListener('click', () => select(row.dataset.slug)));
+  const hash = location.hash.slice(1);
+  if (hash && videos.some((v) => v.slug === hash)) select(hash);
+}
+
+function chip(cls, label) { return `<span class="chip ${cls}">${label}</span>`; }
+
+function chipsHtml(report) {
+  if (!report || !Object.keys(report.sections || {}).length) return chip('', 'no qc-report.json yet — run the tools');
+  const s = report.sections, out = [];
+  if (s.validator) out.push(chip(s.validator.pass ? 'pass' : 'fail', `validator ${s.validator.errors}/${s.validator.warnings}`));
+  if (s.smoke) out.push(chip(s.smoke.pass ? 'pass' : 'fail', `smoke ${s.smoke.pass ? 'PASS' : 'FAIL(' + s.smoke.failures + ')'}`));
+  if (s.narrationQc) out.push(chip(s.narrationQc.pass ? 'pass' : 'fail', `narration-qc ${s.narrationQc.pass ? 'PASS' : s.narrationQc.flags + ' flag(s)'}`));
+  if (s.seamGate) out.push(chip(s.seamGate.pass ? 'pass' : 'warn', `seam-gate ${s.seamGate.cuts.length - countFlagged(s.seamGate)}/${s.seamGate.cuts.length}${s.seamGate.warnings ? ' · ' + s.seamGate.warnings + ' warn' : ''}`));
+  // compositionScan — framings + longest hold vs the film's band (ad band = the
+  // parked-stage check, 2026-09-03); 'static' = planned from the at: times, 'play' = measured.
+  if (s.compositionScan) { const cs = s.compositionScan; out.push(chip(cs.pass ? 'pass' : 'warn', `framings ${cs.compositions} · hold max <b>${cs.longest}s</b> · ${cs.mode === 'play' ? 'measured' : 'planned'}`)); }
+  for (const key of ['deadTime', 'deadTimeCrop']) {
+    const dt = s[key];
+    if (!dt) continue;
+    const bugs = (dt.runs || []).filter((r) => r.verdict === 'PLANNING BUG' && !r.withheld).length;
+    out.push(chip(bugs ? 'fail' : dt.longest > 1 ? 'warn' : 'pass',
+      `${key === 'deadTimeCrop' ? 'dead-time (crop)' : 'dead-time'} max <b>${dt.longest}s</b> · ${dt.totalPct}%${bugs ? ' · ' + bugs + ' BUG' : ''}`));
+  }
+  if (s.motionAudit && s.motionAudit.tier) out.push(`<span class="tier">tier ${esc(s.motionAudit.tier)}</span>`);
+  // machineQc is ADVISORY (LLM findings, non-deterministic) — it styles its own
+  // chip but never feeds statusOf(): the dot stays measured-gates-only.
+  if (s.machineQc) {
+    const n = (s.machineQc.findings || []).length, high = s.machineQc.high || 0;
+    out.push(chip(high ? 'warn' : n ? '' : 'pass',
+      `machine-qc ${n ? n + ' finding(s)' + (high ? ' · ' + high + ' high' : '') : 'clean'} (advisory)`));
+  }
+  return out.join('');
+}
+function countFlagged(sg) { return sg.cuts.filter((c) => c.flags && c.flags.length).length; }
+
+function stripHtml(report, duration) {
+  if (!duration) return '';
+  const s = (report && report.sections) || {};
+  const dt = s.deadTime;
+  let bands = '', legend = [];
+  if (dt) {
+    for (const r of dt.runs || []) {
+      const cls = r.withheld ? 'withheld' : r.verdict === 'PLANNING BUG' ? 'bug' : r.verdict === 'borderline' ? 'borderline' : 'comma';
+      bands += `<div class="band ${cls}" style="left:${(r.start / duration * 100).toFixed(2)}%;width:${Math.max(r.len / duration * 100, 0.4).toFixed(2)}%" title="${r.verdict}${r.withheld ? ' (withheld)' : ''} ${fmtT(r.start)} +${r.len}s"></div>`;
+    }
+    for (const c of dt.cutSpikes || []) bands += `<div class="spike" style="left:${(c.t / duration * 100).toFixed(2)}%" title="CUT? ${fmtT(c.t)} YAVG ${c.yavg}"></div>`;
+    legend.push('<i style="background:rgba(224,82,82,.65)"></i>bug', '<i style="background:rgba(224,166,58,.55)"></i>borderline', '<i style="background:rgba(139,146,163,.35)"></i>comma');
+  }
+  if (s.seamGate) {
+    for (const c of s.seamGate.cuts || []) {
+      bands += `<div class="cut ${c.flags.length ? 'flagged' : ''}" style="left:${(c.t / duration * 100).toFixed(2)}%" title="cut ${fmtT(c.t)}${c.label ? ' (' + esc(c.label) + ')' : ''} exit ${c.exit} / entry ${c.entry} px/s${c.flags.length ? ' — ' + esc(c.flags.join('; ')) : ''}"></div>`;
+    }
+    legend.push('<i style="background:rgba(232,234,240,.5)"></i>cut', '<i style="background:var(--red)"></i>flagged cut');
+  }
+  return `<div class="strip" id="strip">${bands}<div class="playhead" id="playhead" style="left:0"></div></div>
+    <div class="legend">click to seek${legend.length ? ' · ' + legend.join('') : ''}</div>`;
+}
+
+function notesKey(slug) { return 'qc-notes:' + slug; }
+function getNotes(slug) { try { return JSON.parse(localStorage.getItem(notesKey(slug))) || []; } catch (_) { return []; } }
+function setNotes(slug, notes) { localStorage.setItem(notesKey(slug), JSON.stringify(notes)); }
+
+function notesHtml(slug) {
+  const notes = getNotes(slug).sort((a, b) => a.t - b.t);
+  return `<div class="notes">
+    <h2>Feedback notes <button class="copybtn" id="copyNotes" style="float:right">Copy for chat</button></h2>
+    <div id="noteList">${notes.map((n, i) => `<div class="note"><span class="ts" data-t="${n.t}">${fmtT(n.t)}</span><span>${esc(n.text)}</span><button class="del" data-i="${i}" title="delete">✕</button></div>`).join('') || '<div style="color:var(--muted);font-size:12px">No notes yet. Pause the player where something is off, describe it, add.</div>'}</div>
+    <div class="add"><input id="noteText" placeholder="What's wrong at the current frame?"><button id="addNote">Add @ <span id="curT">0.00s</span></button></div>
+  </div>`;
+}
+
+async function select(slug) {
+  current = videos.find((v) => v.slug === slug);
+  if (!current) return;
+  location.hash = slug;
+  listEl.querySelectorAll('.row').forEach((r) => r.classList.toggle('active', r.dataset.slug === slug));
+  const report = current._report;
+  const meta = [];
+  if (current.mp4) meta.push(current.mp4.split('/').pop());
+  if (current.mp4Mtime) meta.push('rendered ' + current.mp4Mtime.slice(0, 10));
+  if (report && report.updated) meta.push('qc ' + report.updated.slice(0, 10));
+
+  mainEl.innerHTML = `
+    <div class="vhead"><span class="slug">${esc(slug)}</span><span class="meta">${esc(meta.join(' · '))}</span></div>
+    <div class="chips">${chipsHtml(report)}</div>
+    <div class="cols">
+      <div>
+        ${current.mp4 ? `<video id="player" src="${esc(current.mp4)}" controls preload="metadata"></video>` : '<div class="empty">No render yet — HTML film only. QC the render here once it exists; scrub the film itself via tools/preview.js.</div>'}
+        <div id="stripBox"></div>
+      </div>
+      <div>
+        <div class="film" id="film"></div>
+        ${notesHtml(slug)}
+        ${report ? `<details class="raw"><summary>raw qc-report.json</summary><pre>${esc(JSON.stringify(report, null, 2))}</pre></details>` : ''}
+      </div>
+    </div>`;
+
+  wireNotes(slug);
+  if (!current.mp4) return;
+
+  const player = $('#player');
+  const token = ++filmstripToken;
+  let duration = (report && report.sections && report.sections.deadTime && report.sections.deadTime.duration) || 0;
+
+  const renderStrip = () => {
+    $('#stripBox').innerHTML = stripHtml(report, duration);
+    const strip = $('#strip');
+    if (!strip) return;
+    strip.addEventListener('click', (e) => {
+      const r = strip.getBoundingClientRect();
+      player.currentTime = ((e.clientX - r.left) / r.width) * duration;
+    });
+    player.addEventListener('timeupdate', () => {
+      const ph = $('#playhead');
+      if (ph && duration) ph.style.left = (player.currentTime / duration * 100).toFixed(2) + '%';
+    });
+  };
+  if (duration) renderStrip();
+  player.addEventListener('loadedmetadata', () => {
+    if (!duration && isFinite(player.duration)) { duration = player.duration; renderStrip(); }
+  }, { once: true });
+
+  buildFilmstrip(current.mp4, token).catch((e) => {
+    $('#film').innerHTML = `<div style="grid-column:1/-1;color:var(--muted);font-size:12px">filmstrip failed: ${esc(e.message)}</div>`;
+  });
+}
+
+async function buildFilmstrip(url, token) {
+  const film = $('#film');
+  film.innerHTML = '<div style="grid-column:1/-1;color:var(--muted);font-size:12px">decoding filmstrip…</div>';
+  const input = new Input({ formats: ALL_FORMATS, source: new UrlSource(url) });
+  const track = await input.getPrimaryVideoTrack();
+  if (!track) throw new Error('no video track');
+  const duration = await input.computeDuration();
+  const N = 12;
+  const stamps = Array.from({ length: N }, (_, i) => (i + 0.5) * duration / N);
+  const sink = new CanvasSink(track, { width: 160 });
+  if (token !== filmstripToken) return;
+  film.innerHTML = '';
+  for await (const wrapped of sink.canvasesAtTimestamps(stamps)) {
+    if (token !== filmstripToken) return;
+    if (!wrapped) continue;
+    const div = document.createElement('div');
+    div.className = 'thumb';
+    div.appendChild(wrapped.canvas);
+    const label = document.createElement('span');
+    label.className = 't';
+    label.textContent = wrapped.timestamp.toFixed(1);
+    div.appendChild(label);
+    div.addEventListener('click', () => { const p = $('#player'); if (p) p.currentTime = wrapped.timestamp; });
+    film.appendChild(div);
+  }
+}
+
+function wireNotes(slug) {
+  const refresh = () => {
+    const box = $('.notes');
+    box.outerHTML = notesHtml(slug);
+    wireNotes(slug);
+  };
+  $('#addNote').addEventListener('click', () => {
+    const text = $('#noteText').value.trim();
+    if (!text) return;
+    const p = $('#player');
+    const t = p ? p.currentTime : 0;
+    setNotes(slug, [...getNotes(slug), { t: Number(t.toFixed(2)), text, at: new Date().toISOString() }]);
+    refresh();
+  });
+  $('#noteText').addEventListener('keydown', (e) => { if (e.key === 'Enter') $('#addNote').click(); });
+  $('#copyNotes').addEventListener('click', async () => {
+    const notes = getNotes(slug).sort((a, b) => a.t - b.t);
+    const md = `QC feedback — ${slug}\n` + notes.map((n) => `- ${fmtT(n.t)} — ${n.text}`).join('\n');
+    try { await navigator.clipboard.writeText(md); $('#copyNotes').textContent = 'Copied'; }
+    catch (_) { prompt('Copy:', md); }
+    setTimeout(() => { const b = $('#copyNotes'); if (b) b.textContent = 'Copy for chat'; }, 1200);
+  });
+  document.querySelectorAll('#noteList .del').forEach((b) => b.addEventListener('click', () => {
+    const notes = getNotes(slug).sort((a, b2) => a.t - b2.t);
+    notes.splice(Number(b.dataset.i), 1);
+    setNotes(slug, notes);
+    refresh();
+  }));
+  document.querySelectorAll('#noteList .ts').forEach((el) => el.addEventListener('click', () => {
+    const p = $('#player');
+    if (p) p.currentTime = Number(el.dataset.t);
+  }));
+  const p = $('#player');
+  if (p) p.addEventListener('timeupdate', () => { const c = $('#curT'); if (c) c.textContent = fmtT(p.currentTime); });
+}
+
+window.addEventListener('hashchange', () => {
+  const slug = location.hash.slice(1);
+  if (slug && slug !== (current && current.slug) && videos.some((v) => v.slug === slug)) select(slug);
+});
+
+loadIndex();
+</script>
+</body>
+</html>

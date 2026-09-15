@@ -1,0 +1,24 @@
+{
+  "_comment": "Entry Details for smart-tags fixture entry 7530 (form 1924) - the SAME submission the frontend-catering-confirmed snapshot shows, so the reference number matches across both payoffs. Captured at 1720x833.",
+  "targetPath": "/wp-admin/admin.php?page=wpforms-entries&view=details&entry_id=7530",
+  "variants": [
+    {
+      "slug": "admin-entry-detail-smarttags",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-entries&view=details&entry_id=7530",
+      "steps": [
+        {
+          "wait": 3500
+        },
+        {
+          "eval": "document.querySelectorAll('.wpforms-education-popup, .wpforms-admin-popup, .jconfirm, .notice, .update-nag').forEach(function(e){ e.remove(); });",
+          "settle": 400
+        },
+        {
+          "eval": "var n=[].slice.call(document.querySelectorAll('.wpforms-entry-field-name')).map(function(e){return e.textContent.trim();}); if(n.indexOf('Reference ID')===-1){ throw new Error('hidden-field rows missing from entry detail: '+n.join('|')); }",
+          "settle": 300
+        }
+      ],
+      "waitFor": "#wpforms-entry-fields"
+    }
+  ]
+}

@@ -1,53 +1,23 @@
-# Preview Server
+# Preview / static serving
 
-`tools/preview.js` is the authoring server for live reload and scrubber work.
+`node serve.js` is the plain static server on port 4321 — the review URL for
+any film is simply:
 
-```bash
-node tools/preview.js
-node tools/preview.js --video _phase-c-editorial-pilot
-node tools/preview.js --port 5173
-node tools/preview.js --no-open
+```
+http://localhost:4321/videos/<slug>/index.html
 ```
 
-`node serve.js` remains the plain static server on port 4321. `npm run dev` and `npm run preview` use `tools/preview.js`, which adds live reload and the real pause/seek scrubber.
+`npm run dev` / `npm run preview` start `tools/preview.js`, which wraps the
+same server with live reload. The old pause/seek scrubber UI belonged to the
+retired engine player and was removed on 2026-08-22; films are reviewed by
+playing the page directly, and timing work goes through the instrumentation
+globals (`__tl/__T0/__sched/__done/__dur`) plus:
 
-## Live Reload
+- `node tools/storyboard-sheet.js <slug>` — pre-render stills at beat marks
+- `node tools/smoke-singlehtml.js <slug> --seconds <n>` — headless playback check
+- `node tools/seam-gate.js <slug>` — exit/entry velocity at cuts
+- `node tools/dead-time.js <slug>` — full-track idle-motion scan
 
-Preview mode composes with `serve.js` and injects a small client script into served HTML. Direct `serve.js` access does not inject anything.
-
-Watched paths:
-
-- `videos/`
-- `runtime/`
-- `engine/`
-- `scenes/`
-- `videos/_shared/`
-- `vendor/gsap/`
-
-Changes are debounced and broadcast over `/__preview-ws`. Connected player pages log the reload and refresh.
-
-## Scrubber
-
-Open:
-
-```text
-http://localhost:4321/scrubber?video=<slug>
-```
-
-The scrubber embeds the player and listens through `BroadcastChannel`. It shows:
-
-- pause/resume controls;
-- chapter prev, next, and restart controls;
-- current chapter index and chapter list;
-- wall-clock cursor, read-only;
-- active `window.__hfTimelines.registry` entries;
-- click-to-seek on registered timeline rows.
-
-This is a custom timeline-bar rather than GSDevTools. It matches the repo's hybrid timing model: tutorial playback seeks at chapter boundaries, while registered editorial timelines are seekable within their own adapter windows.
-
-## Limitations
-
-- Wall-clock tutorial segments cannot be scrubbed mid-chapter.
-- Chapter seek restarts at the target chapter's first beat.
-- Registered timelines can be seeked, and resume continues from the selected adapter time.
-- Pause/resume is owned by `runtime/pause-manager.js`; see `docs/pause-manager.md`.
+Headless tools (`smoke-singlehtml`, `seam-gate`, `dead-time`) hold an advisory
+lock and refuse to run concurrently — a timing failure is re-run alone before
+it is believed.

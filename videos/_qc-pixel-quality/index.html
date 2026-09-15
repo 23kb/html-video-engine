@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>QC — Pixel Quality at Camera Zoom</title>
+<style>
+  /* ───────────────────────────────────────────────────────────────
+     Debug-only page. Four scattered panels using the SAME geometry
+     as klaviyo-bridge-2 (1280×720 panel slots on a 5200×2400 canvas).
+
+     Panel content is a synthetic "WP admin" mock (sharp text + thin
+     UI lines + dense grid). The mock div is `will-change: transform`
+     promoted, so Chromium rasterizes it as its own layer texture at
+     CSS-box size — exactly the same compositor behaviour as a real
+     iframe under an ancestor `transform: scale`. If a strategy keeps
+     this synthetic mock sharp under deep zoom, it'll keep the real
+     bridge iframes sharp too.
+
+     Controls toggle:
+       (A) inner-camera scaling:      transform-scale  vs  zoom
+       (B) iframe oversample factor:  1.0× / 1.5× / 2.25× / 3.0× / 4.0×
+     and pick a zoom level + focus panel.
+     ─────────────────────────────────────────────────────────────── */
+
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #0e1218;
+    color: #e6e9ee;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow: hidden;
+  }
+
+  .toolbar {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    height: 44px;
+    background: #1a1f29;
+    border-bottom: 1px solid #2a313e;
+    display: flex; align-items: center; gap: 14px;
+    padding: 0 14px;
+    z-index: 100;
+    font-size: 12px;
+  }
+  .toolbar .group { display: flex; align-items: center; gap: 4px; }
+  .toolbar .lbl {
+    color: #8a93a3;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 10px;
+    margin-right: 4px;
+  }
+  .toolbar button {
+    appearance: none; border: 1px solid #2a313e;
+    background: #20262f; color: #c6cbd4;
+    padding: 4px 9px; border-radius: 4px;
+    font-size: 11px; cursor: pointer;
+    font-family: inherit;
+  }
+  .toolbar button:hover { background: #283040; }
+  .toolbar button.active {
+    background: #2d5cdf; color: #fff; border-color: #2d5cdf;
+  }
+  .toolbar .sep { width: 1px; height: 20px; background: #2a313e; }
+
+  .stage-wrap {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 44px);
+    margin-top: 44px;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .stage {
+    position: relative;
+    width: 1920px; height: 1080px;
+    flex: 0 0 auto;
+    background: #0e1218;
+    overflow: hidden;
+  }
+
+  .scattered-camera {
+    position: absolute;
+    left: 0; top: 0;
+    width: 5200px; height: 2400px;
+    will-change: transform;
+    background:
+      radial-gradient(ellipse 1400px 900px at 50% 50%,
+        rgba(60, 80, 130, 0.20) 0%,
+        rgba(20, 30, 50, 0.0) 70%),
+      #0e1218;
+  }
+
+  .scattered-panel {
+    position: absolute;
+    width: 1280px; height: 720px;
+    overflow: hidden;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow:
+      0 36px 84px rgba(20, 15, 8, 0.35),
+      0 12px 26px rgba(20, 15, 8, 0.20);
+  }
+  .scattered-panel .panel-label {
+    position: absolute;
+    left: 12px; top: -28px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #c6cbd4;
+    letter-spacing: 0.02em;
+    pointer-events: none;
+  }
+
+  /* Real iframes — sized + scaled by JS so the oversample factor is
+     a live toggle. Same pattern as klaviyo-bridge-2's scattered-panel. */
+  .scattered-panel iframe.real {
+    position: absolute;
+    left: 0; top: 0;
+    border: 0;
+    background: #fff;
+    display: block;
+    pointer-events: none;
+    transform-origin: 0 0;
+  }
+  /* Legacy synthetic mock (no longer rendered, kept for ref). */
+  .mock {
+    position: absolute;
+    left: 0; top: 0;
+    transform-origin: 0 0;
+    will-change: transform;
+    background: #fff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: #1d2327;
+  }
+  .mock .mock-header {
+    height: 6%;
+    background: #1d2327;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 2%;
+    font-size: 1.1cqw;
+  }
+  .mock .mock-sidebar {
+    position: absolute;
+    left: 0; top: 6%;
+    width: 14%;
+    height: 94%;
+    background: #2c3338;
+    color: #c3c4c7;
+    padding: 1% 0;
+  }
+  .mock .mock-sidebar .item {
+    padding: 1.3% 8%;
+    font-size: 0.9cqw;
+    border-left: 3px solid transparent;
+  }
+  .mock .mock-sidebar .item.active {
+    background: #1d2327;
+    color: #fff;
+    border-left-color: #2271b1;
+  }
+  .mock .mock-content {
+    position: absolute;
+    left: 14%; top: 6%;
+    width: 86%;
+    height: 94%;
+    padding: 2%;
+  }
+  .mock .mock-content h1 {
+    font-size: 2.2cqw;
+    font-weight: 400;
+    margin: 0 0 1.2%;
+    color: #1d2327;
+  }
+  .mock .mock-content .breadcrumb {
+    font-size: 1.0cqw;
+    color: #646970;
+    margin-bottom: 1.5%;
+  }
+  .mock .mock-content .card {
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    padding: 2%;
+    margin-bottom: 1.5%;
+  }
+  .mock .mock-content .card h2 {
+    font-size: 1.4cqw;
+    margin: 0 0 1%;
+    color: #1d2327;
+  }
+  .mock .mock-content .card .row {
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #f0f0f1;
+    padding: 1% 0;
+    font-size: 1.0cqw;
+  }
+  .mock .mock-content .card .row:first-of-type { border-top: 0; }
+  .mock .mock-content .card .row .label {
+    flex: 0 0 22%;
+    color: #1d2327;
+    font-weight: 500;
+  }
+  .mock .mock-content .card .row .input {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #c3c4c7;
+    border-radius: 4px;
+    height: 1.8cqw;
+    padding: 0 0.7cqw;
+    color: #2c3338;
+    display: flex; align-items: center;
+    font-size: 0.95cqw;
+  }
+  .mock .mock-content .btn {
+    display: inline-block;
+    background: #2271b1;
+    color: #fff;
+    border: 0;
+    border-radius: 3px;
+    padding: 0.8% 1.4%;
+    font-size: 1.0cqw;
+    font-weight: 500;
+    margin-right: 0.5%;
+    box-shadow: 0 1px 0 #135e96;
+  }
+  .mock .mock-content .btn.secondary {
+    background: #f6f7f7;
+    color: #2271b1;
+    box-shadow: inset 0 0 0 1px #2271b1;
+  }
+  .mock .mock-content .small {
+    font-size: 0.9cqw;
+    color: #646970;
+    margin-top: 1%;
+    line-height: 1.5;
+  }
+  /* Container queries so font sizes track the actual rendered box. */
+  .mock {
+    container-type: inline-size;
+  }
+
+  #p1 { left:  760px; top:  840px; transform: rotate( 0deg); }
+  #p2 { left: 2060px; top:  240px; transform: rotate( 2deg); }
+  #p3 { left: 3460px; top: 1140px; transform: rotate(-1.5deg); }
+  #p4 { left:  240px; top:  240px; transform: rotate(-3deg); }
+
+  .scattered-panel.active {
+    outline: 3px solid #2d5cdf;
+    outline-offset: 2px;
+  }
+
+  .hud {
+    position: absolute;
+    left: 14px; bottom: 14px;
+    z-index: 50;
+    background: rgba(14, 18, 24, 0.88);
+    border: 1px solid #2a313e;
+    border-radius: 6px;
+    padding: 9px 12px;
+    font-family: 'SF Mono', Menlo, Consolas, monospace;
+    font-size: 11px;
+    color: #c6cbd4;
+    pointer-events: none;
+    line-height: 1.5;
+  }
+  .hud .k { color: #6d7686; }
+  .hud .v { color: #e6e9ee; font-weight: 600; }
+  .hud .calc { color: #4a9eff; margin-top: 4px; }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <div class="group">
+    <span class="lbl">camera</span>
+    <button data-cam="transform" class="active">transform</button>
+    <button data-cam="zoom">zoom</button>
+  </div>
+  <div class="sep"></div>
+
+  <div class="group">
+    <span class="lbl">oversample</span>
+    <button data-over="1.0">1.0×</button>
+    <button data-over="1.5" class="active">1.5×</button>
+    <button data-over="2.25">2.25×</button>
+    <button data-over="3.0">3.0×</button>
+    <button data-over="4.0">4.0×</button>
+  </div>
+  <div class="sep"></div>
+
+  <div class="group">
+    <span class="lbl">zoom</span>
+    <button data-zoom="0.32">0.32×</button>
+    <button data-zoom="1.0" class="active">1×</button>
+    <button data-zoom="1.55">1.55×</button>
+    <button data-zoom="2.3">2.3×</button>
+    <button data-zoom="3.0">3×</button>
+  </div>
+  <div class="sep"></div>
+
+  <div class="group">
+    <span class="lbl">focus</span>
+    <button data-panel="0" class="active">P1</button>
+    <button data-panel="1">P2</button>
+    <button data-panel="2">P3</button>
+    <button data-panel="3">P4</button>
+    <button data-panel="wide">wide</button>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="scattered-camera" id="camera">
+      <div class="scattered-panel" id="p1">
+        <div class="panel-label">P1 — Klaviyo Settings</div>
+        <iframe class="real" data-src="/snapshots/admin-settings-integrations-klaviyo-open/index.html" sandbox="allow-same-origin"></iframe>
+      </div>
+      <div class="scattered-panel" id="p2">
+        <div class="panel-label">P2 — Klaviyo Docs</div>
+        <iframe class="real" data-src="/snapshots/docs-klaviyo/klaviyo-api-created.html" sandbox="allow-same-origin"></iframe>
+      </div>
+      <div class="scattered-panel" id="p3">
+        <div class="panel-label">P3 — Builder Providers</div>
+        <iframe class="real" data-src="/snapshots/builder-providers-klaviyo/index.html" sandbox="allow-same-origin"></iframe>
+      </div>
+      <div class="scattered-panel" id="p4">
+        <div class="panel-label">P4 — Forms Overview</div>
+        <iframe class="real" data-src="/snapshots/admin-forms-overview/index.html" sandbox="allow-same-origin"></iframe>
+      </div>
+    </div>
+    <div class="hud" id="hud"></div>
+  </div>
+</div>
+
+<script>
+  const SC_W = 5200, SC_H = 2400;
+  const SC_OX = SC_W / 2, SC_OY = SC_H / 2;
+  const STAGE_W = 1920, STAGE_H = 1080;
+  const SC_CX = STAGE_W / 2, SC_CY = STAGE_H / 2;
+
+  const PANELS = [
+    { cx: 1400, cy: 1200 },
+    { cx: 2700, cy:  600 },
+    { cx: 4100, cy: 1500 },
+    { cx:  880, cy:  600 },
+  ];
+  const WIDE_POSE = { cx: 2600, cy: 1200, scale: 0.32 };
+
+  const state = {
+    cameraMode: 'transform',
+    oversample: 1.5,
+    zoom: 1.0,
+    focus: 0,
+  };
+
+  const stage  = document.getElementById('stage');
+  const camera = document.getElementById('camera');
+  const hud    = document.getElementById('hud');
+  const panels = [...document.querySelectorAll('.scattered-panel')];
+
+  // ── Render mock content into each panel ──
+  const MOCKS = {
+    settings: (variant) => `
+      <div class="mock-header">WPForms › Settings › Integrations</div>
+      <div class="mock-sidebar">
+        <div class="item">General</div>
+        <div class="item">Email</div>
+        <div class="item">Validation</div>
+        <div class="item">Captcha</div>
+        <div class="item active">Integrations</div>
+        <div class="item">Geolocation</div>
+        <div class="item">Access</div>
+        <div class="item">Misc</div>
+      </div>
+      <div class="mock-content">
+        <div class="breadcrumb">Settings › Integrations › Klaviyo</div>
+        <h1>Klaviyo Integration</h1>
+        <div class="card">
+          <h2>Account Connection</h2>
+          <div class="row"><div class="label">API Key</div><div class="input">pk_••••••••••••••••••••a1f3</div></div>
+          <div class="row"><div class="label">Account Name</div><div class="input">Sullie's Bakery</div></div>
+          <div class="row"><div class="label">Status</div><div class="input" style="background:#edf7ed;color:#1e6e2c">Connected</div></div>
+        </div>
+        <div>
+          <span class="btn">Add Another Account</span>
+          <span class="btn secondary">Disconnect</span>
+        </div>
+        <div class="small">Connect your Klaviyo account to start syncing form submissions as profiles in your Klaviyo lists. Multiple accounts can be connected.</div>
+      </div>
+    `,
+    docs: () => `
+      <div class="mock-header" style="background:#fff;color:#1d2327;border-bottom:1px solid #f0f0f1">klaviyo developer docs</div>
+      <div class="mock-content" style="left:0;width:100%;padding:2.4%">
+        <div class="breadcrumb">API Reference › Authentication › Private API Keys</div>
+        <h1>Create a Private API Key</h1>
+        <div class="small" style="margin:1% 0 2%">Private API keys authenticate server-side requests. Treat them like passwords. Created keys cannot be retrieved after the initial display.</div>
+        <div class="card">
+          <h2>Step 1 — Open API Keys Settings</h2>
+          <div class="small">Navigate to your Klaviyo account, then go to <b>Settings → Account → API Keys</b>. You will see two key types: Public and Private.</div>
+        </div>
+        <div class="card">
+          <h2>Step 2 — Generate a New Key</h2>
+          <div class="small">Click <b>Create Private API Key</b>. Give the key a descriptive name and choose the scopes your integration requires.</div>
+        </div>
+        <div class="card" style="background:#fef9e7;border-color:#f0c040">
+          <h2 style="color:#946a00">⚠ One-Time Display</h2>
+          <div class="small">Klaviyo shows the full key value only once. Copy it immediately and store it in a secure secrets manager before closing the dialog.</div>
+        </div>
+      </div>
+    `,
+    builder: () => `
+      <div class="mock-header">Builder › Marketing › Klaviyo</div>
+      <div class="mock-sidebar">
+        <div class="item">Setup</div>
+        <div class="item">Fields</div>
+        <div class="item">Settings</div>
+        <div class="item active">Marketing</div>
+        <div class="item">Payments</div>
+        <div class="item">Revisions</div>
+      </div>
+      <div class="mock-content">
+        <div class="breadcrumb">Marketing › Klaviyo › New Connection</div>
+        <h1>Klaviyo Connection</h1>
+        <div class="card">
+          <h2>Connection Settings</h2>
+          <div class="row"><div class="label">Connection Nickname</div><div class="input">Newsletter Signup → Main List</div></div>
+          <div class="row"><div class="label">Klaviyo Account</div><div class="input">Sullie's Bakery</div></div>
+          <div class="row"><div class="label">Action to Perform</div><div class="input">Create / Update Profile ▾</div></div>
+          <div class="row"><div class="label">List</div><div class="input">Main Newsletter ▾</div></div>
+          <div class="row"><div class="label">Email Field</div><div class="input">Email Address ▾</div></div>
+          <div class="row"><div class="label">Marketing Consent</div><div class="input">Field: Marketing Opt-in ▾</div></div>
+        </div>
+        <div>
+          <span class="btn">Save Connection</span>
+          <span class="btn secondary">Add New Connection</span>
+        </div>
+      </div>
+    `,
+    forms: () => `
+      <div class="mock-header">WPForms › All Forms</div>
+      <div class="mock-sidebar">
+        <div class="item active">All Forms</div>
+        <div class="item">Entries</div>
+        <div class="item">Payments</div>
+        <div class="item">Templates</div>
+        <div class="item">Addons</div>
+      </div>
+      <div class="mock-content">
+        <h1>All Forms</h1>
+        <div class="small" style="margin-bottom:1.5%">Manage all of your WPForms from here.</div>
+        <div class="card" style="padding:0">
+          <div class="row" style="padding:1.2% 2%;font-weight:600;background:#f6f7f7;border-bottom:1px solid #c3c4c7"><div style="flex:3">Form Name</div><div style="flex:1">Shortcode</div><div style="flex:1">Created</div><div style="flex:1">Entries</div></div>
+          <div class="row" style="padding:1.2% 2%"><div style="flex:3">Newsletter Signup</div><div style="flex:1">[wpforms id=12]</div><div style="flex:1">May 8</div><div style="flex:1">342</div></div>
+          <div class="row" style="padding:1.2% 2%"><div style="flex:3">Bakery Catering Request</div><div style="flex:1">[wpforms id=21]</div><div style="flex:1">May 5</div><div style="flex:1">87</div></div>
+          <div class="row" style="padding:1.2% 2%"><div style="flex:3">Custom Cake Order</div><div style="flex:1">[wpforms id=34]</div><div style="flex:1">Apr 28</div><div style="flex:1">156</div></div>
+          <div class="row" style="padding:1.2% 2%"><div style="flex:3">Wholesale Inquiry</div><div style="flex:1">[wpforms id=42]</div><div style="flex:1">Apr 14</div><div style="flex:1">23</div></div>
+          <div class="row" style="padding:1.2% 2%"><div style="flex:3">Contact Sullie</div><div style="flex:1">[wpforms id=55]</div><div style="flex:1">Mar 2</div><div style="flex:1">1,204</div></div>
+        </div>
+      </div>
+    `,
+  };
+
+  // Defer iframe loading until the page is interactive — keeps initial
+  // paint fast even though the snapshots are ~1 MB each.
+  document.querySelectorAll('iframe.real').forEach(f => {
+    if (f.dataset.src) f.src = f.dataset.src;
+  });
+
+  function applyOversample() {
+    const N = state.oversample;
+    const w = 1280 * N;
+    const h =  720 * N;
+    const invScale = 1 / N;
+    document.querySelectorAll('iframe.real').forEach(f => {
+      f.style.width  = w + 'px';
+      f.style.height = h + 'px';
+      f.style.transform = `scale(${invScale})`;
+    });
+  }
+
+  function poseFor(cx, cy, scale) {
+    return {
+      x: SC_CX - SC_OX - scale * (cx - SC_OX),
+      y: SC_CY - SC_OY - scale * (cy - SC_OY),
+      scale,
+    };
+  }
+  function currentPose() {
+    if (state.focus === 'wide') return poseFor(WIDE_POSE.cx, WIDE_POSE.cy, WIDE_POSE.scale);
+    const p = PANELS[state.focus];
+    return poseFor(p.cx, p.cy, state.zoom);
+  }
+  function applyCamera() {
+    if (state.cameraMode === 'zoom') {
+      // Chromium applies zoom THEN transform: translate in zoom-space, so
+      // translate values get multiplied by zoom on screen. Compensate by
+      // dividing the desired screen-space shift by zoom.
+      let fx, fy, scale;
+      if (state.focus === 'wide') { fx = WIDE_POSE.cx; fy = WIDE_POSE.cy; scale = WIDE_POSE.scale; }
+      else { fx = PANELS[state.focus].cx; fy = PANELS[state.focus].cy; scale = state.zoom; }
+      camera.style.zoom = scale;
+      camera.style.left = '0';
+      camera.style.top  = '0';
+      const tx = SC_CX / scale - fx;
+      const ty = SC_CY / scale - fy;
+      camera.style.transform = `translate(${tx}px, ${ty}px)`;
+    } else {
+      // transform: scale uses transform-origin which defaults to center.
+      // currentPose() computes the translate that lands the focus point
+      // at stage centre under that origin convention.
+      const { x, y, scale } = currentPose();
+      camera.style.zoom = '';
+      camera.style.left = '0';
+      camera.style.top  = '0';
+      camera.style.transform = `translate(${x}px, ${y}px) scale(${scale})`;
+    }
+  }
+
+  function applyStageFit() {
+    const w = window.innerWidth;
+    const h = window.innerHeight - 44;
+    const scale = Math.min(w / STAGE_W, h / STAGE_H) * 0.96;
+    stage.style.zoom = scale;
+  }
+  window.addEventListener('resize', applyStageFit);
+
+  function updateHUD() {
+    const rasterPx  = 1280 * state.oversample;
+    const displayPx = 1280 * state.zoom;
+    const ratio = displayPx / rasterPx;
+    const verdict =
+      ratio <= 1.0   ? 'DOWNSAMPLE (sharp)' :
+      ratio <= 1.05  ? 'near-identity (sharp)' :
+      ratio <= 1.20  ? 'mild upscale (acceptable)' :
+      ratio <= 1.50  ? 'visible blur' :
+                       'heavy blur';
+    hud.innerHTML = `
+      <div><span class="k">camera:</span>     <span class="v">${state.cameraMode}</span></div>
+      <div><span class="k">oversample:</span> <span class="v">${state.oversample.toFixed(2)}× → mock ${rasterPx.toFixed(0)}px</span></div>
+      <div><span class="k">zoom:</span>       <span class="v">${state.zoom.toFixed(2)}× → panel ${displayPx.toFixed(0)}px</span></div>
+      <div class="calc">ratio = ${ratio.toFixed(2)} → ${verdict}</div>
+    `;
+  }
+
+  function setActive(selector, value) {
+    document.querySelectorAll(selector).forEach(b => {
+      const v = b.dataset[Object.keys(b.dataset)[0]];
+      b.classList.toggle('active', v === String(value));
+    });
+  }
+  document.querySelectorAll('[data-cam]').forEach(b => b.addEventListener('click', () => { state.cameraMode = b.dataset.cam; setActive('[data-cam]', state.cameraMode); applyCamera(); updateHUD(); }));
+  document.querySelectorAll('[data-over]').forEach(b => b.addEventListener('click', () => { state.oversample = parseFloat(b.dataset.over); setActive('[data-over]', state.oversample); applyOversample(); updateHUD(); }));
+  document.querySelectorAll('[data-zoom]').forEach(b => b.addEventListener('click', () => { state.zoom = parseFloat(b.dataset.zoom); setActive('[data-zoom]', state.zoom); applyCamera(); updateHUD(); }));
+  document.querySelectorAll('[data-panel]').forEach(b => b.addEventListener('click', () => { const v = b.dataset.panel; state.focus = v === 'wide' ? 'wide' : parseInt(v, 10); setActive('[data-panel]', v); panels.forEach((p, i) => p.classList.toggle('active', i === state.focus)); applyCamera(); updateHUD(); }));
+
+  applyStageFit();
+  applyOversample();
+  applyCamera();
+  updateHUD();
+  panels[0].classList.add('active');
+
+  // Expose for headless capture script.
+  window.state = state;
+  window.applyOversample = applyOversample;
+  window.applyCamera = applyCamera;
+  window.updateHUD = updateHUD;
+</script>
+</body>
+</html>

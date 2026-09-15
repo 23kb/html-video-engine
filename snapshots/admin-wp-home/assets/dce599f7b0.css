@@ -1,0 +1,67 @@
+#dashboard-widgets .wpf-dash-widget {
+	--heading-color: #0073aa;
+	--latest-color: #008027;
+	--unreleased-color: #CB9838;
+	--border-color: #efefef;
+	--border-color-active: #cccccc;
+}
+#dashboard-widgets .wpf-dash-widget h3 {
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--heading-color);
+	border: 1px solid var(--border-color);
+	border-top: 1px solid transparent;
+	margin: 0 0 -1px 0;
+	padding: 10px;
+	transition: border .3s;
+}
+#dashboard-widgets .wpf-dash-widget h3:first-child {
+	border-top: 1px solid var(--border-color);
+}
+#dashboard-widgets .wpf-dash-widget h3:focus {
+	outline: none;
+}
+#dashboard-widgets .wpf-dash-widget h3.ui-accordion-header-active {
+	border-left: 1px solid var(--border-color-active);
+	border-top: 1px solid var(--border-color-active);
+	border-right: 1px solid var(--border-color-active);
+	border-bottom: 1px solid var(--border-color);;
+}
+#dashboard-widgets .wpf-dash-widget .wpf-release-info.ui-accordion-content-active {
+	border-top: 1px solid var(--border-color);;
+	border-left: 1px solid var(--border-color-active);
+	border-bottom: 1px solid var(--border-color-active);
+	border-right: 1px solid var(--border-color-active);
+}
+#dashboard-widgets .wpf-dash-widget h3 span {
+	float: right;
+	width: 55%;
+	display: block;
+}
+#dashboard-widgets .wpf-dash-widget h3 .wpf-latest {
+	color: var(--latest-color);
+}
+#dashboard-widgets .wpf-dash-widget h3 .wpf-latest .version {
+	color: #ccc;
+	font-family: monospace;
+	font-size: 12px;
+	width: auto;
+}
+#dashboard-widgets .wpf-dash-widget h3 .wpf-unreleased {
+	color: var(--unreleased-color);
+}
+#dashboard-widgets .wpf-dash-widget .wpf-release-info {
+	padding: 10px;
+	border: 1px solid var(--border-color);
+	transition: border .3s;
+}
+#dashboard-widgets .wpf-dash-widget h4 {
+	font-weight: 500;
+	color: #444444;
+}
+
+#dashboard-widgets .wpf-dash-widget ul {
+	list-style-type: disc;
+	padding: 0 0 0 20px;
+}

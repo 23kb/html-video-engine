@@ -1,5 +1,6 @@
 # Selector Hygiene
 
+> **HISTORICAL API NOTE (2026-08-28):** code examples below predate the 2026-08-22 engine retirement. The craft rules stand; the `engine/`/`runtime/`/manifest APIs they mention are gone — implement in single-HTML per CLAUDE.md.
 How to keep selectors stable, when they break, and the `_selectors.js` pattern that scales.
 
 Selectors are the most fragile part of any tutorial video — when WPForms ships a UI change, every selector that pointed at the old shape silently breaks. This doc captures the patterns that minimize breakage and the tools that catch it early.
@@ -175,5 +176,5 @@ Don't refactor mid-storyboard. The locked-shape skeleton has `import sel from '.
 ## See also
 
 - `wpforms-video` skill — chapter authoring rules; uses `_selectors.js` import.
-- `docs/chapter-module-contract.md` — locked interface spec for chapter modules.
+- `snapshots/<slug>/outline.md` — per-snapshot sidecar of author-targetable selectors; read it FIRST (`video-qc`). The chapter-module contract retired 2026-08-22.
 - `docs/wpforms-field-state-inventory.md` — canonical product-truth selector reference (query via field-state.js).

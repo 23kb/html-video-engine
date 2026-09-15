@@ -29,6 +29,28 @@ Across the 5d audit pass, every failed editorial / postIntro / interaction beat 
 
 The libraries fix all of the above. The job here is to **find the matching primitive, copy or compose it, do not rewrite it**.
 
+## ⛔ The settle-mode measurement doctrine (fix-round C2)
+
+**Never derive in-document coordinates from raw `getBoundingClientRect` once any camera work has happened.** After any zoom, IframeManager enters settle mode (`html.zoom = N`, resized box): raw rects return post-zoom pixels, scroll metrics stay layout-px, and camera `ty` has its own semantics. Measure through `cameraToElement` / `elementToStageCoords` / `elementToStageRect` (correct in every regime), or position within the anchor's own offset parent via `offsetTop`/`offsetLeft` (layout px in every regime). **Closed-loop beats open-loop:** measure → correct → re-measure, ≤3–4 iterations. **Camera move FIRST** (it clamps), then the loop centers inside the clamp.
+
+Five independent sightings earned this rule: mp F (framed a wrong page section), bac 7 (overlay at ×2 coordinates TWICE — the second time as a race where live timing won and render timing lost), ssn 9 (its cousin), as 1 (click misses after deep-zoom landings), ccs 7 (under-scroll from offsetTop — offsetTop is offset-parent-relative; document-absolute positions use rect + scrollTop).
+
+The closed-loop family in `iframe-helpers.js` (re-exported by `shorts-kit.js`):
+
+- `settleAndMeasure(ifm, target)` — waits for two consecutive identical stage rects before you trust one. Use on late-loading pages where layout keeps moving AFTER `load` resolves (~180px table growth measured).
+- `paneScrollTo(ifm, target, opts)` — closed-loop scroll of an inner builder pane. Resolves the scroller by walking UP from the target (never `querySelector` a pane class — inactive panels ship hidden 0×0 twins).
+- `pageCenter(ifm, target, opts)` — closed-loop window scroll for live frontend pages, with a post-settle re-check (late image decodes reflow ~1300px after the scroll lands).
+
+`smoothScrollIntoView` now resolves inner scroll containers too (as 3 fix) — but for centering a target under a deep zoom, prefer the closed-loop helpers above.
+
+### Camera judgment notes (fix-round B3)
+
+- **Fill/width rule of thumb** (mp E): a target wider than ~half the viewport makes `fill`-based framing compute a zoom ≈ the current zoom — the "camera move" visibly does nothing. Frame a SUB-REGION at explicit zoom instead. `flyToElement` now warns (`[camera]` prefix) when the computed zoom is within 10% of current.
+- ✅ **FIXED 2026-09-02 (AP-4, granted behaviour change)** — `flyToElement`'s `decompose: true` default is now a BLENDED flight: one `tweenCamera` call whose tx/ty span the full duration on the land ease while the zoom dips (`min(cur, target)×0.96`, clamped ≥1 from rest) over the first 42% and lands over the back 58% via `zoomKeyframes`. The old shape (two sequentially awaited tweens, zero blend — Umair twice: *"first it goes to right and then zooms"*, `geo` 8 / `wh` 5) is gone; no film opts in or out, and total duration is unchanged, so DUR budgets hold. `{ decompose: false }` remains for mostly-vertical moves where any dip arc reads as sideways drift (mp G).
+- **The zoom↔clamp trade** (ccs 23, measured): at high fill the edge clamp silently moves the pose off-center and the field-centre probe fails LATER. Error-by-fill curve on the measured page: fill 0.66 → 82px low, 0.78 → 36px, 0.86 → 5px, 0.90 → 0. `cameraToElement` now returns `clampedBy: {x, y}` (stage px the clamp moved the pose) — read it at authoring time instead of discovering it in the probe.
+- **Scroll, not transform, for below-viewport iframe content** (ccs 6/A6): an embedded iframe rasterizes only its own viewport — transforming the iframe can NEVER reveal content below it. Scroll inside (the closed-loop helpers above), then frame.
+- **Travel-to-center promotion trigger** (ccs 8/A8): `liftIdToCenter` exists video-locally in custom-css-targeting. Promote into motion-primitives on its SECOND use — recorded here so the next session finds it; do not promote preemptively.
+
 ## Quick Reference
 
 Scan this table first. For deeper context (why, when not to use, options), scroll to the detailed sections below.
@@ -49,14 +71,22 @@ Scan this table first. For deeper context (why, when not to use, options), scrol
 | Mount the Sullie brand bug | `mountSullieBug(opts)` | `({position, scale}) → element` | motion-primitives.js:1266 |
 | Compute finite loop count from duration | `boundedRepeats(cycle, visible)` | `(cycleSec, visibleSec) → number` | motion-primitives.js:46 |
 | Seeded RNG for deterministic randomness | `mulberry32(seed)` | `(seed) → () => number` | motion-primitives.js:58 |
-| **Defensive scroll + glide + click** | `glideClick({iframeManager, cursor}, target, opts)` | `(deps, el, opts) → Promise` | iframe-helpers.js:121 |
+| **Defensive scroll + glide + click** (off-frame points auto-recenter since 2026-09-02; `recenter:false` opts out) | `glideClick({iframeManager, cursor}, target, opts)` | `(deps, el, opts) → Promise` | iframe-helpers.js:121 |
+| Poll until a target exists AND has layout | `awaitLayout(ifm, target, { timeout })` | `(ifm, target, opts) → Promise<Element\|null>` | iframe-helpers.js (AP-10) |
+| Is the element's centre inside the camera window | `inCameraView(ifm, el, margin)` | `(ifm, el, margin) → boolean` | iframe-helpers.js (AP-10) |
+| Fly-then-centre for deep-below-fold targets | `flyCentered({iframeManager}, target, opts)` | `(ctx, target, flyOpts + {anchor, centerDuration}) → Promise<Element\|null>` | iframe-helpers.js (AP-10) |
+| Framed glide+click (awaitLayout → fly-if-outside → centre → click) | `gcFramed({iframeManager, cursor}, target, opts)` | `(ctx, target, {flyOpts, flyFn, ...glideClick opts}) → Promise<Element\|null>` | iframe-helpers.js (AP-10) |
 | Find iframe element by visible text | `findInIframeByText(ifm, text, opts)` | `(ifm, str, opts) → Element` | iframe-helpers.js:45 |
 | Glide+click an iframe element by text | `glideToText({iframeManager, cursor}, text, opts)` | `(deps, str, opts) → Promise` | iframe-helpers.js:183 |
-| **Decomposed tutorial camera flight** (dip→land, audit-clean) | `flyToElement({iframeManager}, target, opts)` | `(deps, el, {fill, pad, maxZoom, duration}) → Promise<pose\|null>` | iframe-helpers.js (FIX-1 fa-retest) |
+| **Blended tutorial camera flight** (dip + land in ONE tween, audit-clean) | `flyToElement({iframeManager}, target, opts)` | `(deps, el, {fill, pad, maxZoom, duration}) → Promise<pose\|null>` | iframe-helpers.js (FIX-1 fa-retest) |
 | Click "Add New Form" in admin | `ifm.navAddNewForm(opts)` | `IframeManager method` | wpforms-interactions.js:1385 |
 | Pick a template by slug | `ifm.selectTemplate(slug, opts)` | `IframeManager method` | wpforms-interactions.js:1410 |
 | Drag a field into form builder | `ifm.dragFieldToForm(slug, opts)` | `IframeManager method` | wpforms-interactions.js:1655 |
 | Open a field's option panel | `ifm.openFieldOptions(fieldId, opts)` | `IframeManager method` | wpforms-interactions.js:1914 |
+
+### Payoff instruments (`videos/_shared/instruments.js`)
+
+**When a beat explains a state, prefer a labelled instrument over a bare highlight ring — an instrument explains; a ring only points.** This applies to TEACHING beats, not just payoffs (the notifications short's → YOU chip is a teaching frame). Promoted by use-count from the shipped shorts (C-SPEC C5): `valueRoll` (number changes on real DOM — tween or split-flap slot, exact-value snap on complete), `sheenSweep` (contrast-aware carrier; dark tone for white admin panels), `stateChip` (labelled pill whose `.set()` slot-rolls in place), `routeChip` (fire-time anchor — never beat-start coords), `scanline`, `raceLane` (parameterized axis + coupled `onTick` scrub), `browserShell`. All `wpfi-` prefixed (guard-exempt for consumers), parked hidden at parse, tween-only. `bandToStage(y)` owns the BAND_Y=300 offset three films hand-rolled. QC: `videos/_qc-instruments/index.html`.
 
 ### Editorial named-effects (`videos/_shared/effects/`)
 
@@ -70,6 +100,37 @@ For pure-editorial / ad-style / marketing motion. Each `mountFoo({...})` returns
 | "Pick a form" — card stack fans horizontally + center lift | `mountCardsSpreadFan({cards, spacing})` | effect001 |
 | "Template library" — cards fly in at varied stops + emphasize center | `mountCardsFlyInStack({cards, stops})` | effect014 |
 | "Hundreds of templates" — phyllotaxis spiral bloom of N tiles | `mountConstellationPhyllotaxisBloom({count, palette})` | effect064 |
+| Premium surface over a moving world — frosted glass + slow sheen | `mountGlassCard({width, height, content})` + `glassSpringEase` | house (glass-style-demo) |
+| "One number" — card lands, value ticks UP | `mountStatCountUp({label, from, to, suffix})` | house |
+| House outro — Sullie + wordmark + CTA | `mountEndCard({title, cta, url})` | house |
+
+**Ad vocabulary — promoted from `videos/reel-ad-vocabulary` (2026-09-03).** All dark-ground by default (restyle the `--fx-*` vars for a light bed) and all inherit the film's font. Reach for these before hand-rolling an ad beat:
+
+| Need | Effect |
+|------|--------|
+| Ad opening — giant-type phrases whip in/out, last line carries an inline chip whose label hot-swaps + width-morphs (xai T7) | `mountPhraseChain({lines, chip:{from,to}, font, chipFont})` — `.tweenInto()` + `.swapChip()` |
+| "AI is doing the work" — checklist rows tick done: same-hue row wash, SVG check draws, chip swaps QUEUED → DONE | `mountTaskQueue({title, subtitle, rows, width})` |
+| "It builds itself" — skeleton bars dissolve and real fields materialize on the SAME coordinates, after a sheen wipe | `mountSkeletonToLive({width, height, skeleton, live})` — mounts as a content layer INSIDE a frame the film owns |
+| A big number that should LAND (not tick) — rolling digit columns, separators arrive after the digits | `mountOdometer({digits, separatorAfter, kicker, tail, live})` — `live:false` builds the settled pixel-match twin |
+| Social proof — tile grid pops in on a micro-stagger, then dims | `mountLogoWall({marks:[{name,src}], columns, rows})` — **ships no logos**; marks are caller-supplied with `// SOURCE:` cites |
+| The claim on top of the proof — testimonial card lifts + sheen | `mountQuoteCard({text, attribution, markFont})` |
+| "There is audio here" — seeded bars ladder in, then breathe at a fixed Hz (xai T2) | `mountWaveformBars({count, seed, width, height})` — `.tweenInto()` + `.wiggle({window})` |
+| Press reaction on the exact AEP ratios 1 → 0.8 → 1.1 → 1 (xai T6) | `pulseEmphasis(tl, target, {position})` — a composer, any target |
+
+**`mountStatCountUp` vs `mountOdometer`:** siblings, not modes. Count-up = white card, text node tweened by a numeric proxy, number ticks UP. Odometer = per-digit masked strips on a dark bed, number LANDS.
+
+**Seam grammar (`videos/_shared/effects/seams.js`)** — the five named scene-cut recipes, verbatim constants from `docs/hyperframes-seam-grammar-rnd-2026-09-03.md`, measured PASS on the proving reel. These are **composers, not mounts**: `(tl, outEl, inEl, cut, opts)` writing to the master at absolute `cut`, where `outEl`/`inEl` are whole-scene wrappers.
+
+| Cut you want | Recipe |
+|---|---|
+| The signature recede-and-punch-through | `seamZoomThrough` — ⚠ animates `filter: blur()`; **editorial / PNG-baked scenes ONLY**, never over a live iframe |
+| The workhorse throw (iframe-safe) | `seamThrowLeft` + `parkThrowEntry` / `seamThrowEntry` on the entering hero |
+| Continuity — shared elements at identical coordinates | `seamLockedCrossfade` (carry a shared element across at matched speed; a crossfade alone reads DEAD to `seam-gate`) |
+| Pixel-matched cut, no blend | `seamHardCut` — split one release ACROSS the cut so position *and* velocity agree mid-flight |
+| One cursor move spanning a cut | `seamCursorVelocitySplit({outEl, inEl, from, to, cut})` — takes two matched glyphs; never mounts a cursor |
+| Pin a beat's last frame to its end time | `holdFinalFrame(tl, cut)` — before every cut, always |
+
+**Wash (`videos/_shared/effects/wash-transition.js`)** — the whiteout cut for **await-driven tutorial films** with no master timeline: `await washTransition(outGroup, inGroup, { veil, axis })`, veil from `mountWashVeil(surface)`. Alternate the axis between consecutive washes. `unparkGroup(g)` reveals a group with no wash for isolated `?scene=` entry.
 
 Full vocabulary table + how to add a new effect: `videos/_shared/effects/README.md`. Full 101-port menu (not yet promoted): `reference/gsap-effects/CATALOG.md`. QC harness: `videos/_qc-effects/index.html`.
 
@@ -77,7 +138,7 @@ For the IframeManager class itself: `wpforms-interactions.js:103`. For the Curso
 
 ## Library scope philosophy
 
-The library codifies **hard-won patterns**: interactions where a naive implementation would re-introduce a bug already solved here, or multi-step choreography that benefits from being standardized once. Everything else stays inline in the per-video HTML / chapter module.
+The library codifies **hard-won patterns**: interactions where a naive implementation would re-introduce a bug already solved here, or multi-step choreography that benefits from being standardized once. Everything else stays inline in the per-video HTML.
 
 The library is a starting reference, not an exhaustive vocabulary. Future videos should compose from the shared primitives where they fit, then write small inline DOM puppetry for one-off beats, the same way old engine-path chapter `effect({ doc, cursor, sleep, ... })` callbacks composed engine helpers with local DOM mutations.
 
@@ -138,6 +199,12 @@ Actual Wave 2 Batch A examples to treat carefully: `setNotificationActive`, `col
 
 After a video ships, review its inline DOM puppetry blocks. If the same pattern appears in 3+ videos with the same shape, then promote it. Pre-promotion is over-promotion.
 
+### Inline DOM puppetry — rules (fix-round B7)
+
+- **The IframeManager accessors are `doc()`, `query()`, `queryAll()`, `iframe()`, `elementToStageCoords()`, `elementToStageRect()`, `currentSlug()`.** There is no `getDocument()` — guessing an accessor name and guarding it with `obj.method && obj.method()` no-opped every puppetry call in a shipped v1 (mp A; the call-it-and-let-it-throw rule lives in `wpforms-gsap-rules`).
+- **Text-match on leaves, act on the known-class ancestor** (mp D): `textContent` bubbles — matching `p, div` by prefix returned the CONTAINER holding the form and hid it (9s white screen). Constrain text-matched selection to leaf-ish nodes, then climb to the closest known-class ancestor. `findInIframeByText` in `iframe-helpers.js` already climbs correctly — prefer it over hand-rolled text matching.
+- **Teaching-CSS injection needs specificity armor** (ccs 22/A19): injected demo CSS uses `!important` or an ID-scoped selector — bare `.wpforms-form` (0,1,0) loses to the theme's `div.wpforms-container-full .wpforms-form` (0,2,1) and the "demo" silently does nothing. Its probe asserts COMPUTED style on the real elements, never the injected string.
+
 ## Decision flow
 
 Before writing any of the following, scan this skill:
@@ -151,7 +218,7 @@ Before writing any of the following, scan this skill:
 7. **Persistent Sullie brand anchor** → `mountSullieBug` (polished rest-api pattern).
 8. **Clean exit out of a focused card back to overview** → `cleanFastRejoin` (no blur smear).
 9. **Standard WPForms admin / builder interaction** (Add New, Select Template, Drag Field, Open Settings, etc.) → call the matching method on `WPFormsInteractions` from `videos/_shared/wpforms-interactions.js`. Do not hand-roll click + swap + wait sequences.
-10. **Snapshot-iframe slot with crossfade swap inside an editorial chapter** → use `IframeManager` from `wpforms-interactions.js`. (Tutorial chapters keep using the engine's iframe; this is for editorial / single-HTML scenes that need real product surface.)
+10. **Snapshot-iframe slot with crossfade swap** → use `IframeManager` from `wpforms-interactions.js` — the ONE iframe mount for every film: tutorials (the skeleton mounts it), mixed films and any editorial scene that needs a real product surface. There is no other iframe host; the engine's was retired 2026-08-22.
 11. **Glide cursor to an iframe element, scroll-into-view + click** (the recurring 4-10× pattern across single-HTML videos) → `glideClick({ iframeManager, cursor }, target, opts)` from `videos/_shared/iframe-helpers.js`. Wraps the entire `try { scrollIntoView + elementToStageCoords + glide + click } catch (warn)` choreography.
 12. **Interact with text in a SaaS-captured iframe** (Klaviyo, Mailchimp, Stripe — anything with content-hashed class names like `.sc-jTrPJq`) → `findInIframeByText(ifm, 'Settings')` or `glideToText({ ifm, cursor }, 'Settings', opts)` from `iframe-helpers.js`. Text content is stable across re-captures; class names are not.
 
@@ -164,9 +231,18 @@ Authoring helpers built on top of IframeManager + Cursor. Each earns library sta
 | Helper | When | Signature | Source |
 |---|---|---|---|
 | `findInIframeByText(iframeManager, text, opts?)` | Find a clickable element by VISIBLE TEXT inside iframe. For SaaS dashboards where class names are content-hashed `.sc-jTrPJq` and unstable across re-captures. Walks from text node → nearest clickable ancestor; skips hidden duplicates. | `(ifm, text, { clickableSelector?, maxDepth? })` → Element\|null | `iframe-helpers.js:30` |
-| `glideClick({ iframeManager, cursor }, target, opts?)` | The 10×-recurring pattern: scrollIntoView + elementToStageCoords + cursor.glide + cursor.click, all in one defensive try/catch. Catches the empty-rect throw (INV-12 signal) and the cursor null-guard. Logs failure, doesn't crash the timeline. | `(ctx, target, { click?, scroll?, glideDuration?, via?, ripple?, rippleColor?, silent? })` → Promise<Element\|null> | `iframe-helpers.js:96` |
+| `glideClick({ iframeManager, cursor }, target, opts?)` | The 10×-recurring pattern: scrollIntoView + elementToStageCoords + cursor.glide + cursor.click, all in one defensive try/catch. Catches the empty-rect throw (INV-12 signal) and the cursor null-guard. Logs failure, doesn't crash the timeline. Off-frame click points auto-recenter (closed loop) since 2026-09-02 — `recenter: false` restores warn-and-proceed for deliberate off-frame clicks. | `(ctx, target, { click?, scroll?, glideDuration?, via?, ripple?, rippleColor?, silent?, recenter?, dispatch? })` → Promise<Element\|null> — `dispatch: true` fires a real bubbling `click` MouseEvent into the iframe doc after the visual click so registered interactivity handlers run (`Cursor.click()` alone is visual-only) | `iframe-helpers.js:96` |
 | `glideToText({ iframeManager, cursor }, text, opts?)` | Convenience: `findInIframeByText` + `glideClick`. The shortest path to "click that 'Settings' link in the Klaviyo dashboard." | `(ctx, text, opts)` → Promise<Element\|null> | `iframe-helpers.js:165` |
 | `flyToElement({ iframeManager }, target, opts?)` | **The tutorial camera move.** Decomposed dip/pan → named-ease land arc to frame an iframe element. A bare `cameraToElement` + single `tweenCamera` reads as a slide projector and caps the motion audit at tier B — this helper is the audit-clean default for every single-HTML tutorial zoom. Iframe zoom ≤ 2.0 default (CSS pixel-doubling sharpness limit). | `(ctx, target, { fill?, pad?, maxZoom?, duration?, silent? })` → Promise<pose\|null> | `iframe-helpers.js` (FIX-1 fa-retest 2026-07-13) |
+| `settleAndMeasure(iframeManager, target, opts?)` | Wait for a stable stage rect on late-loading pages before deriving any position from it (ccs 7: layout grew ~180px after `load`). Two consecutive identical reads through the library's own projection. | `(ifm, target, { epsilon?, interval?, timeout?, silent? })` → Promise<rect\|null> | `iframe-helpers.js` (fix-round C2) |
+| `paneScrollTo(iframeManager, target, opts?)` | Closed-loop INNER-PANE scroll (builder settings panes). Walks UP to the real scroller (hidden 0×0 twins defeat querySelector — bac 5), measures via `elementToStageCoords`, corrects scrollTop by residual/zoom, iterates ≤3. Camera move first, then this centers inside the clamp. | `(ifm, target, { duration?, anchor?, tolerance? })` → Promise<Element\|null> | `iframe-helpers.js` (fix-round C2, promoted from bac 5) |
+| `pageCenter(iframeManager, target, opts?)` | Closed-loop WINDOW scroll for live frontend pages, ≤4 iterations + a post-settle re-check for late image decodes (nvc 4: ~1300px reflow after the scroll landed). | `(ifm, target, { duration?, anchor?, tolerance?, recheckDelay? })` → Promise<Element\|null> | `iframe-helpers.js` (fix-round C2, promoted from nvc 4) |
+| `reflowSubject(ifmOrDoc, opts)` | Re-layout as SHOT DESIGN, not probe damage-control: cap the subject to a width (default 560), center it, hide columns/rows, un-stick sticky cells (which pin to the full-width container edge no matter how narrow the table — ssn probe r2 measured Δx +1059 AFTER the width cap). Degrade-don't-throw `{applied, missing}`. Call BEFORE the camera move. | `(ifmOrDoc, { targets, maxWidth?, center?, hideColumns?, hideRows?, unstick? })` → `{applied, missing}` | `iframe-helpers.js` (C-SPEC C2, promoted from nvc/cc/ssn) |
+| `awaitLayout(ifm, target, { timeout = 1.5 })` | Poll until the target exists AND has layout (post-swap sections lay out late; hidden panel twins skipped for string targets). The 19-film inline shape, promoted (AP-10). | `(ifm, target, opts)` → Promise<Element\|null> | `iframe-helpers.js` (AP-10, 2026-09-02) |
+| `inCameraView(ifm, el, margin = 20)` | Centre-point test against the current camera window — beware: a partially cropped wide element still reads "in view" (force the fly for taught elements, sfb 6). | `(ifm, el, margin)` → boolean | `iframe-helpers.js` (AP-10) |
+| `flyCentered({ iframeManager }, target, opts?)` | Deep-below-fold pattern, 3-for-3 across films (ee 4 / geo 4): awaitLayout → flyToElement → closed-loop centre INSIDE the clamp (paneScrollTo/pageCenter, ~0.7s budget). | `(ctx, target, flyOpts + { anchor?, centerDuration?, timeout? })` → Promise<Element\|null> | `iframe-helpers.js` (AP-10) |
+| `gcFramed({ iframeManager, cursor }, target, opts?)` | The framed action: awaitLayout → fly-if-outside (`flyOpts` — even `{}` — forces it) → closed-loop centre → `glideClick(..., { scroll: false })`. Portrait films pass `flyFn` (their punch/pan wrapper). | `(ctx, target, { flyOpts?, flyFn?, timeout?, ...glideClick opts })` → Promise<Element\|null> | `iframe-helpers.js` (AP-10) |
+| `prepOnSwap(ifm, prepFn)` | **The swap-reapply trap, made impossible to forget:** a swap replaces the document and silently reverts every inline reflow — three films rediscovered this independently. Runs prepFn(doc) now AND after every load/swap on THIS instance (monkey-patches the instance, never the prototype). | `(ifm, prepFn)` → `{dispose}` | `iframe-helpers.js` (C-SPEC C2) |
 
 Source: Klaviyo tutorial v11 retro 2026-05-12 (`docs/sound-design-reference-2026-05-12.md` is unrelated; the retro lives in commit messages + this skill).
 
@@ -234,8 +310,8 @@ The Signature column's return type IS the contract (FIX-16):
 
 | Primitive | When | Signature | Source |
 |---|---|---|---|
-| `boundedRepeats(cycle, visible)` | Compute finite `repeat:` count from a cycle duration + total visible duration. Replaces `repeat: -1` (which violates GSAP L0 rule 7 and breaks `tools/render.js --seek`). | `(cycleDuration, visibleDuration) → number` | `motion-primitives.js:46` |
-| `mulberry32(seed)` | Seeded PRNG factory. Use anywhere `Math.random()` would have appeared. Duplicate of `videos/_shared/kit.js` `mulberry32` so the library has zero internal-kit dependencies. | `(seed) → () => number` | `motion-primitives.js:58` |
+| `boundedRepeats(cycle, visible)` | Compute finite `repeat:` count from a cycle duration + total visible duration. Replaces `repeat: -1` (which violates GSAP L0 rule 7, is a `validate-singlehtml` ERROR, and breaks every frame-stepped seek: `tools/probe-singlehtml.js`, `tools/storyboard-sheet.js`, a seek-mode render). | `(cycleDuration, visibleDuration) → number` | `motion-primitives.js:46` |
+| `mulberry32(seed)` | Seeded PRNG factory. Use anywhere `Math.random()` would have appeared. Self-contained in the library. | `(seed) → () => number` | `motion-primitives.js:58` |
 | `loadNarrationManifest(slug)` | Optional single-HTML narration manifest probe. Returns null when the video only has raw mp3 files. | `(slug) → Promise<object|null>` | `narration.js:37` |
 | `playNarration(slug, key, opts)` | Play one narration clip and duck active BGM until the clip ends. | `(slug, key, { keepDucked?, volume? }) → Promise<void>` | `narration.js:103` |
 | `startBGM(src, opts)` / `stopBGM(opts)` | Start, fade, duck, restore, and stop a portable music bed without engine/player coupling. | `(src, { volume?, fadeIn? })`, `({ fadeOut? })` | `narration.js:62` |
@@ -283,7 +359,7 @@ JSDoc convention in the source: `@prerequisite` (required snapshot), `@operation
 
 | Method | What it does | Prereq → Ends at | Op | Source |
 |---|---|---|---|---|
-| `dragFieldToForm(fieldSlug, opts?)` | Full visual drag from the left palette to the canvas: glide → press → ghost-clone carry → FLIP-reveal landing field at ~58% of carry → drop + fade. Mid-drag reveal makes the canvas grow BEFORE the ghost lands. | `builder-fields` → `builder-fields` (+1 field) | dom-only | `wpforms-interactions.js:730` |
+| `dragFieldToForm(fieldSlug, opts?)` | Full visual drag from the left palette to the canvas: glide → press → ghost-clone carry → FLIP-reveal landing field at ~58% of carry → drop + fade. Mid-drag reveal makes the canvas grow BEFORE the ghost lands. `opts.camera: 'follow'` (RECOMMENDED for new films, AP-11) tweens the camera to the landing field over the carry — the camera holds the SUBJECT, never pre-frames the destination (rulebook §4; sfc 6). Default `'hold'` = pre-2026-09-02 behaviour. | `builder-fields` → `builder-fields` (+1 field) | dom-only | `wpforms-interactions.js:730` |
 | `openFieldOptions(fieldId, opts?)` | Click a canvas field, swap the left panel from "Add Fields" to "Field Options," and expose the field's specific option panel. | `builder-fields` → `builder-fields` (options open) | dom-only | `wpforms-interactions.js:989` |
 | `navBuilderSidebar(section, opts?)` | Click a builder panel button (`setup` / `fields` / `settings` / `providers` / `payments` / `revisions`) and swap to the corresponding `builder-*` snapshot. `providers` is the slug for the Marketing panel. | any `builder-*` → mapped `builder-*` | snapshot-swap | `wpforms-interactions.js:1261` |
 | `openSettingsTab(tab, opts?)` | Click a Settings sub-tab (`general` / `notifications` / `confirmation` / `anti_spam` / `themes`) and swap to the corresponding `builder-settings-*`. | `builder-settings-*` → `builder-settings-<tab>` | snapshot-swap | `wpforms-interactions.js:1292` |
@@ -321,7 +397,7 @@ Use these for Settings → Notifications, smart tags, generic settings controls,
 
 ## When NOT to use these
 
-- **Tutorial chapters** keep using engine helpers (`ctx.cursor`, `ctx.swapToSnapshot`, etc.) — those are wired into the runtime pause/seek pipeline. The libraries here are for editorial / postIntro / single-HTML work where there is no engine ctx. The engine cursor and the `Cursor` class are different objects; do not mix in one beat.
+- **Not "instead of the skeleton's own wiring"** — tutorials use these libraries DIRECTLY in the single-HTML film (`IframeManager` + `Cursor` + `WPFormsInteractions` + `glideClick`/`flyToElement` are what `docs/examples/single-html-tutorial-skeleton.html` mounts). The engine helpers (`ctx.cursor`, `ctx.swapToSnapshot`) were retired 2026-08-22 and must not be reached for. One film has ONE cursor (the skeleton's `Cursor`); never mount a second.
 - **Pure-editorial videos** that don't need real WPForms surface — skip `wpforms-interactions.js` entirely; motion-primitives alone is enough. (See `reference/html-templates/` clones for the canonical shape.)
 - **One-off motion** that genuinely doesn't match any primitive — write it locally in the video package, document why no primitive fit, and flag it as a candidate for promotion. Do not "almost-fit" a primitive into the wrong shape.
 
@@ -331,9 +407,9 @@ Use these for Settings → Notifications, smart tags, generic settings controls,
 - `videos/_shared/wpforms-interactions.js` — full source + per-method `@prerequisite`/`@endsAt`/`@realDom` JSDoc.
 - `videos/_qc-primitives/index.html` — live primitive demos with statuses.
 - `videos/_qc-interactions/index.html` — live interaction demos with statuses.
-- `docs/wpforms-interactions-library-2026-05-11.md` — interaction-library usage doc (per-template button variants, hover-state inventory, sub-interaction notes).
-- `docs/winning-pattern-analysis-2026-05-10.md` — identity-continuity rule + 5-variable winning pattern that motivated the camera primitives.
-- `docs/polish-vocabulary-2026-05-11.md` — polished-vs-unpolished rest-api deltas behind `focusStationOverview`, `mountSullieBug`, `cleanFastRejoin`.
+- Per-template button variants, hover-state inventory, sub-interaction notes: read the QC pages above + `tools/inspect-snapshot.js` (the standalone usage doc retired 2026-08-22).
+- Identity continuity: one visual element threads the whole story (the rule behind the camera primitives; source postmortem retired 2026-08-22).
+- Polish deltas behind `focusStationOverview`, `mountSullieBug`, `cleanFastRejoin`: land-holds, shadow stacks, brand-true colors (source doc retired 2026-08-22).
 
 ## See Also
 
@@ -342,4 +418,4 @@ Use these for Settings → Notifications, smart tags, generic settings controls,
 - `wpforms-postintro` — every postIntro should compose from these primitives (Cursor + caretType + statusPillMorph + fieldStaggerReveal are direct fits for the multi-animation rule).
 - `wpforms-video` — tutorial chapters that include standard navigation flows should compose from `wpforms-interactions.js`, not hand-roll click+swap sequences.
 - `wpforms-marketing` — single-HTML / editorial clones combine these primitives with the blocks library + atmospheric kit + text-kit.
-- `wpforms-transitions` — `figjamFlight` covers the camera arc for cross-snapshot reveals; `flipBridge` still handles the actual snapshot swap.
+- `wpforms-marketing` — *Snapshot transitions*: `figjamFlight` covers the camera arc; `ifm.swap()` crossfades between snapshots.

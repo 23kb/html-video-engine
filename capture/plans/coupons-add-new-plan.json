@@ -1,0 +1,12 @@
+{
+  "variants": [
+    {
+      "slug": "admin-payments-coupons-add-new",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-payments&view=coupon",
+      "steps": [
+        { "wait": 6000 }
+      ],
+      "waitFor": "#wpforms-coupon-name"
+    }
+  ]
+}

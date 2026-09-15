@@ -1,0 +1,511 @@
+{
+  "slug": "admin-dashboard",
+  "registryPresent": true,
+  "transitions": [],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    },
+    {
+      "target": "builder-fields",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"][href*=\"view=fields\"]"
+    },
+    {
+      "target": "admin-settings-integrations",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=integrations\"]"
+    },
+    {
+      "target": "admin-settings-captcha",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=captcha\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-datepicker-popover-button",
+        "tag": "button",
+        "text": "Last 30 days",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"dashboard-universally-promo\"]",
+        "tag": "button",
+        "text": "Dismiss",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"dashboard-wp-mail-smtp\"]",
+        "tag": "button",
+        "text": "Dismiss",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-addon-tile__link",
+        "tag": "a",
+        "text": "Installed",
+        "count": 10,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-btn",
+        "tag": "button",
+        "text": "Save Changes",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-btn-blue",
+        "tag": "button",
+        "text": "Apply",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-btn-md",
+        "tag": "a",
+        "text": "View All Addons",
+        "count": 3,
+        "hidden": false,
+        "nav": "admin-addons"
+      },
+      {
+        "sel": ".wpforms-dashboard-arrow-link",
+        "tag": "a",
+        "text": "See What Else is New",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dashboard-doc-link",
+        "tag": "a",
+        "text": "Accessing Spam Protection and Security Settings",
+        "count": 9,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dashboard-spam-security-row-link",
+        "tag": "a",
+        "text": "ActiveLayer",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dashboard-widget-entries-graph-btn",
+        "tag": "button",
+        "text": "Show the chart for Sullie's Bakery Contact Form",
+        "count": 5,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dashboard-widget-integrations-view-all",
+        "tag": "a",
+        "text": "View All Integrations",
+        "count": 1,
+        "hidden": false,
+        "nav": "admin-settings-general"
+      },
+      {
+        "sel": ".wpforms-dashboard-widget-locations-promo-link",
+        "tag": "a",
+        "text": "Install & Activate",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dashboard-widget-settings-reset",
+        "tag": "button",
+        "text": "Reset to Default Settings",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-dashboard-wp-mail-smtp-cta",
+        "tag": "button",
+        "text": "Install WP Mail SMTP",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dismiss-container",
+        "tag": "div",
+        "text": "A Lot of Your Visitors in the Last 30 Days Read Latin Ameri…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-integration-card__link",
+        "tag": "a",
+        "text": "Manage",
+        "count": 8,
+        "hidden": false,
+        "nav": "admin-settings-general"
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#wpforms-dashboard-entries-count",
+        "tag": "select",
+        "text": "3 4 5 6 7 8 9 10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dashboard-locations-number_of_countries",
+        "tag": "select",
+        "text": "3 4 5 6 7 8 9 10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dashboard-overview-datepicker",
+        "tag": "input",
+        "text": "2026-08-15 - 2026-09-14",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dashboard-payments-number_of_payments",
+        "tag": "select",
+        "text": "3 4 5 6 7 8 9 10",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".wpforms-dashboard-widget-settings-panel",
+        "tag": "div",
+        "text": "Display Chart",
+        "count": 5,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#et-ajax-saving",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#loading",
+        "tag": "img",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_e2e-dashboard",
+        "tag": "li",
+        "text": "E2E Dashboard E2E Dashboard Recent Runs Nightly Tests",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_et_divi_options",
+        "tag": "li",
+        "text": "Divi Dashboard 1 Divi 5 Migrator Theme Options Theme Builde…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_vibe-ai",
+        "tag": "li",
+        "text": "Vibe AI Vibe AI Approval Log",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpcode",
+        "tag": "li",
+        "text": "Code Snippets Code Snippets + Add Snippet Header & Footer C…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms_dev_tools",
+        "tag": "li",
+        "text": "WPForms Dev WPForms Dev Analytics",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms Dashboard All Forms Setup Checklist 67% complete Ad…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dashboard",
+        "tag": "div",
+        "text": "Dashboard Last 30 days Forms 53 Total Entries 589 Total Vie…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-dashboard-attention",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-dashboard-column-main",
+        "tag": "div",
+        "text": "Entries Form Names Entries Views Interactions Conversion Ch…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-dashboard-column-sidebar",
+        "tag": "div",
+        "text": "WPForms Elite 2.0.2 WP Mail SMTP by WPForms FREE 4,000,000+…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-dashboard-stat-cards",
+        "tag": "div",
+        "text": "Forms 53 Total Entries 589 Total Views 4,914 Spam Entries 0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "Forms 53 Total Entries 589 Total Views 4,914 Spam Entries 0…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dashboard-spam-security-row",
+        "tag": "li",
+        "text": "ActiveLayer installed and configured, or…",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dashboard-spam-security-row-label",
+        "tag": "span",
+        "text": "ActiveLayer installed and configured, or…",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dashboard-stat-card-content",
+        "tag": "div",
+        "text": "Forms 53",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dashboard-stat-card-label",
+        "tag": "p",
+        "text": "Forms",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dashboard-title-actions",
+        "tag": "div",
+        "text": "Last 30 days",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dashboard-widget-payments-tile-content",
+        "tag": "span",
+        "text": "Total Sales $103,059.50",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dashboard-widget-settings-label",
+        "tag": "p",
+        "text": "Display Options",
+        "count": 7,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-datepicker-popover-content",
+        "tag": "div",
+        "text": "TodayYesterdayLast 7 daysLast 30 daysLast 90 daysLast 1 yea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-overview-chart-notice",
+        "tag": "div",
+        "text": "No Entries for Selected Period Please select a different pe…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-overview-chart-notice-content",
+        "tag": "div",
+        "text": "No Entries for Selected Period Please select a different pe…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

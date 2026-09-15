@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Geometry A/B — landscape</title>
+<style>
+  * { margin:0; box-sizing:border-box; }
+  html,body { background:#000; width:100%; height:100%; overflow:hidden; }
+  .stage { position:relative; width:1920px; height:1080px; background:#12161b; overflow:hidden;
+           font-family:-apple-system,"Segoe UI",Roboto,sans-serif; }
+  .seg { position:absolute; inset:0; opacity:0; }
+  .wrap { position:absolute; left:0; top:0; transform-origin:0 0; will-change:transform; }
+  .wrap img { display:block; width:1440px; }
+  .chip { position:absolute; left:40px; top:32px; z-index:10; background:rgba(18,22,27,.92);
+          color:#fff; border-left:6px solid #E27730; padding:14px 26px; font-size:34px; font-weight:700;
+          letter-spacing:.3px; border-radius:8px; opacity:0; }
+  .chip small { display:block; font-size:20px; font-weight:500; color:#c8cdd6; margin-top:4px; }
+  .cap { position:absolute; right:40px; bottom:36px; z-index:10; background:#E27730; color:#fff;
+         padding:10px 22px; font-size:28px; font-weight:700; border-radius:8px; opacity:0; }
+  .card { position:absolute; inset:0; z-index:20; background:#12161b; color:#fff; display:flex;
+          flex-direction:column; align-items:center; justify-content:center; gap:18px; }
+  .card h1 { font-size:56px; } .card h1 b { color:#E27730; }
+  .card p { font-size:28px; color:#aeb6c2; }
+</style>
+</head>
+<body>
+<div class="stage" id="stage">
+
+  <div class="seg" id="segA">
+    <div class="wrap" id="wrapA"><img src="shots/builder-fields-1440x900.png" alt=""></div>
+    <div class="chip" id="chipA">1440 × 900 <small>today's default — raster 1920×1200 on stage, +120px headroom</small></div>
+    <div class="cap" id="capA">pan headroom: 120px</div>
+  </div>
+
+  <div class="seg" id="segB">
+    <div class="wrap" id="wrapB"><img src="shots/builder-fields-1440x1080.png" alt=""></div>
+    <div class="chip" id="chipB">1440 × 1080 <small>candidate — raster 1920×1440 on stage, +360px headroom</small></div>
+    <div class="cap" id="capB">pan headroom: 360px</div>
+  </div>
+
+  <div class="card" id="card">
+    <h1>Capture height A/B — <b>landscape</b></h1>
+    <p>1920×1080 stage · same beats on both rasters: rest → pan to the raster's bottom edge → 2.0× punch-in</p>
+  </div>
+
+</div>
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script>
+  // Dummy geometry test card (Umair-requested A/B render, 2026-08-22).
+  // Not a film beat: linear one-shot timeline, deterministic, no repeats.
+  const F = 1920 / 1440; // capture-parity width-fill scale = 1.3333
+
+  // One segment = rest hold -> pan down to raster bottom -> back to mid -> 2.0x punch -> release.
+  function segment(tl, seg, wrap, chip, cap, rasterH, at) {
+    const panY = -(rasterH * F - 1080);           // -120 for 900-tall, -360 for 1080-tall
+    const punch = { s: 2.0, px: 780, py: Math.min(rasterH - 270, 560) }; // form-canvas region
+    tl.set(wrap, { scale: F, x: 0, y: 0 }, at);
+    tl.to(seg,  { opacity: 1, duration: 0.5 }, at);
+    tl.to(chip, { opacity: 1, duration: 0.4 }, at + 0.3);
+    tl.to(wrap, { y: panY, duration: 3.2, ease: 'power2.inOut' }, at + 2.2);       // the pan
+    tl.to(cap,  { opacity: 1, duration: 0.3 }, at + 4.6);
+    tl.to(cap,  { opacity: 0, duration: 0.3 }, at + 6.4);
+    tl.to(wrap, { y: panY / 2, duration: 1.2, ease: 'power2.inOut' }, at + 6.0);
+    // OVERRIDE: geometry test card, not a film — single-tween zoom is the point of the demo
+    tl.to(wrap, { scale: punch.s, x: 960 - punch.px * punch.s, y: 540 - punch.py * punch.s, duration: 2.2, ease: 'power3.inOut' }, at + 7.4);
+    tl.to(wrap, { scale: F, x: 0, y: panY / 2, duration: 1.6, ease: 'power2.inOut' }, at + 10.4);
+    tl.to(seg,  { opacity: 0, duration: 0.5 }, at + 12.1);
+    tl.to(chip, { opacity: 0, duration: 0.4 }, at + 12.1);
+  }
+
+  const tl = gsap.timeline({ paused: true });
+  tl.to('#card', { autoAlpha: 0, duration: 0.6 }, 1.6);
+  segment(tl, '#segA', '#wrapA', '#chipA', '#capA', 900,  2.0);
+  segment(tl, '#segB', '#wrapB', '#chipB', '#capB', 1080, 15.0);
+  tl.to({}, { duration: 0.5 }); // tail pad
+
+  window.__tl = tl;
+  window.addEventListener('load', () => tl.play(0));
+</script>
+</body>
+</html>

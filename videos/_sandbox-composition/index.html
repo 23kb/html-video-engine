@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SANDBOX — composition-scan --play fixture (scripted 3-composition schedule)</title>
+<style>
+  /* Clearly-marked sandbox (README ground rules), never wired into a video.
+     C-SPEC C4 runtime acceptance #2: a scripted schedule of exactly 3
+     compositions — punchIn A (~0.6s), punchIn B (~4.6s), editorial
+     {t, scene} cut (8.0s), __done at 12s. composition-scan --play must
+     report exactly 3, holds within ±0.3s of ~4.0 / ~3.4 / ~4.0.
+     Local scratch — videos/ is gitignored; stays untracked. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #12161b; }
+  .stage { position: relative; width: 1080px; height: 1920px; overflow: hidden; }
+  .band { position: absolute; left: 0; top: 300px; width: 1080px; height: 1200px; background: #f0f0f1; overflow: hidden; }
+  .iframe-stage { position: absolute; left: 0; top: 0; width: 1080px; height: 1200px; }
+</style>
+</head>
+<body>
+  <div class="stage"><div class="band"><div class="iframe-stage" id="iframeStage"></div></div></div>
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script src="/vendor/gsap/3.15.0/CustomEase.min.js"></script>
+<script type="module">
+import { IframeManager } from '/videos/_shared/wpforms-interactions.js';
+import { punchIn } from '/videos/_shared/shorts-kit.js';
+
+const ifm = new IframeManager(document.getElementById('iframeStage'), {
+  viewport: { width: 1080, height: 1200 },
+  iframeSize: { width: 1280, height: 720 },
+});
+const ctx = { iframeManager: ifm };
+const A = '.wpforms-panel-sidebar-section-anti_spam';                 // sidebar (left)
+const B = '#wpforms-panel-field-anti_spam-time_limit-enable-wrap';    // content row (right, tighter)
+
+await ifm.load('builder-settings-anti_spam');
+window.__T0 = performance.now();
+window.__done = false;
+window.__cuts = [];
+window.__beats = [];
+window.__sched = [];
+const now = () => (performance.now() - window.__T0) / 1000;
+
+punchIn(ctx, A, { fill: 0.62, duration: 0.5 });                       // comp 1 — pose ≈0.6s
+gsap.delayedCall(4, () => punchIn(ctx, B, { fill: 0.95, duration: 0.5 })); // comp 2 — pose ≈4.6s
+gsap.delayedCall(8, () => window.__cuts.push({ t: now(), scene: 'payoff-rebuild' })); // comp 3 — 8.0s
+gsap.delayedCall(12, () => {
+  window.__dur = now();
+  window.__done = true;
+});
+</script>
+</body>
+</html>

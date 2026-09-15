@@ -7,6 +7,7 @@ const PORT = Number(process.env.PORT) || 4321;
 const ROOT = __dirname;
 const TYPES = {
   '.html': 'text/html', '.css': 'text/css', '.js': 'application/javascript',
+  '.mjs': 'application/javascript',
   '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png',
   '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg', '.gif': 'image/gif',
   '.webp': 'image/webp', '.woff': 'font/woff', '.woff2': 'font/woff2',
@@ -14,6 +15,7 @@ const TYPES = {
   '.mp3': 'audio/mpeg', '.wav': 'audio/wav', '.m4a': 'audio/mp4',
   '.mp4': 'video/mp4', '.webm': 'video/webm',
 };
+const MEDIA_EXTS = new Set(['.mp4', '.webm', '.mp3', '.wav', '.m4a']);
 
 function safeFilePath(urlPath) {
   let filePath = path.join(ROOT, urlPath);
@@ -58,6 +60,31 @@ function createRequestHandler(options = {}) {
   }
   if (fs.existsSync(filePath) && fs.statSync(filePath).isDirectory()) {
     filePath = path.join(filePath, 'index.html');
+  }
+  // Media files honor HTTP Range so <video>/<audio> can seek and byte-range
+  // readers (QC dashboard) can read headers without pulling the whole file.
+  const mediaExt = path.extname(filePath);
+  if (MEDIA_EXTS.has(mediaExt) && fs.existsSync(filePath) && fs.statSync(filePath).isFile()) {
+    const size = fs.statSync(filePath).size;
+    const type = TYPES[mediaExt] || 'application/octet-stream';
+    const m = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || '');
+    if (m && (m[1] !== '' || m[2] !== '')) {
+      let start = m[1] === '' ? Math.max(0, size - Number(m[2])) : Number(m[1]);
+      let end = m[1] !== '' && m[2] !== '' ? Math.min(Number(m[2]), size - 1) : size - 1;
+      if (start > end || start >= size) {
+        res.writeHead(416, { 'Content-Range': `bytes */${size}` });
+        return res.end();
+      }
+      res.writeHead(206, {
+        'Content-Type': type,
+        'Content-Range': `bytes ${start}-${end}/${size}`,
+        'Content-Length': end - start + 1,
+        'Accept-Ranges': 'bytes',
+      });
+      return fs.createReadStream(filePath, { start, end }).pipe(res);
+    }
+    res.writeHead(200, { 'Content-Type': type, 'Content-Length': size, 'Accept-Ranges': 'bytes' });
+    return fs.createReadStream(filePath).pipe(res);
   }
   fs.readFile(filePath, (err, data) => {
     if (err) { res.writeHead(404); return res.end('Not found: ' + urlPath); }

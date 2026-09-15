@@ -1,0 +1,39 @@
+{
+  "_comment": "Rework pass — Umair QC 2026-08-19. (1) frontend re-captured with theme chrome + admin affordances stripped BEFORE freeze; (2) builder re-captured with Image Choices and Icon Choices toggled ON so the real picker sub-UI exists in markup (it renders on toggle, so it was never captured — and inventing it is barred by production truth).",
+  "variants": [
+    {
+      "_note": "A1: strip banner/nav/search/sidebar/footer, the admin-only 'Edit Form' link, and the noscript notice. The FORM itself is untouched — this is framing, not fabrication.",
+      "slug": "frontend-ranking-form",
+      "targetPath": "/bakery-favorites-survey/",
+      "steps": [
+        { "wait": 3000 },
+        { "eval": "document.querySelectorAll('header, footer, nav, aside, [role=banner], [role=complementary], [role=contentinfo], [role=navigation], form[role=search], .site-header, .site-footer, .sidebar, #sidebar, #secondary, .widget-area, .et_pb_menu, #main-header, #top-header, #et-top-navigation, .et_search_outer, #footer, #et-footer-nav, #main-footer').forEach(function(n){ n.remove(); });", "settle": 300 },
+        { "eval": "document.querySelectorAll('a[href*=\"wpforms-builder\"], .wpforms-error-noscript, noscript').forEach(function(n){ n.remove(); });", "settle": 300 },
+        { "eval": "var f=document.querySelector('.wpforms-container'); if(f){ var host=document.createElement('div'); host.id='wpf-solo'; host.style.cssText='max-width:820px;margin:64px auto;padding:0 24px;'; document.body.innerHTML=''; document.body.appendChild(host); host.appendChild(f); document.body.style.background='#ffffff'; }", "settle": 600 }
+      ],
+      "waitFor": ".wpforms-field-ranking"
+    },
+    {
+      "_note": "B16: Image Choices ON. Toggling renders the per-choice image picker sub-UI, which no existing capture contains.",
+      "slug": "builder-field-options-ranking-image-choices",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields",
+      "steps": [
+        { "wait": 4500 },
+        { "eval": "jQuery('#wpforms-field-5').trigger('click')", "settle": 1500 },
+        { "eval": "jQuery('#wpforms-field-option-5-choices_images').prop('checked', true).trigger('change')", "settle": 2000 }
+      ],
+      "waitFor": ".wpforms-field.active"
+    },
+    {
+      "_note": "B16: Icon Choices ON — separate sub-UI (icon picker + color + size), separate capture.",
+      "slug": "builder-field-options-ranking-icon-choices",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields",
+      "steps": [
+        { "wait": 4500 },
+        { "eval": "jQuery('#wpforms-field-5').trigger('click')", "settle": 1500 },
+        { "eval": "jQuery('#wpforms-field-option-5-choices_icons').prop('checked', true).trigger('change')", "settle": 2000 }
+      ],
+      "waitFor": ".wpforms-field.active"
+    }
+  ]
+}

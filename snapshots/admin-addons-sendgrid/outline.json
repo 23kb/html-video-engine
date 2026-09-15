@@ -1,0 +1,676 @@
+{
+  "slug": "admin-addons-sendgrid",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "addon-activate-toggle",
+      "event": "change",
+      "selector": "#wpforms-addons-toggle-wpforms-aweber",
+      "count": 51
+    }
+  ],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    },
+    {
+      "target": "admin-settings-integrations",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=integrations\"]"
+    },
+    {
+      "target": "admin-settings-payments",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=payments\"]"
+    },
+    {
+      "target": "admin-payments-coupons",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"][href*=\"view=coupons\"]"
+    },
+    {
+      "target": "admin-settings-geolocation",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=geolocation\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-addons-link",
+        "tag": "a",
+        "text": "Refresh Addons",
+        "count": 1,
+        "hidden": false,
+        "nav": "admin-addons"
+      },
+      {
+        "sel": ".wpforms-addons-list-item-footer-settings-link",
+        "tag": "a",
+        "text": "Settings",
+        "count": 29,
+        "hidden": false,
+        "nav": "admin-settings-general"
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#wpforms-addons-search",
+        "tag": "input",
+        "text": "Search Addons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-activecampaign",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-airtable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-authorize-net",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-aweber",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-calculations",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-campaign-monitor",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-conversational-forms",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-convertkit",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-coupons",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-drip",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-dropbox",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-entry-automation",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-form-abandonment",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-form-locker",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-form-pages",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-geolocation",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-getresponse",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-google-calendar",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-google-drive",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-google-sheets",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-hubspot",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-klaviyo",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-lead-forms",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-mailchimp",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-mailerlite",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-mailpoet",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-make",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-n8n",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-notion",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-offline-forms",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-paypal-commerce",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-paypal-standard",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-pdf",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-pipedrive",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-post-submissions",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-quiz",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-salesforce",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-save-resume",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-sendgrid",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-sendinblue",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-signatures",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-slack",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-square",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-stripe",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-surveys-polls",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-twilio",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-user-journey",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-user-registration",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-webhooks",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-zapier",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-toggle-wpforms-zoho-crm",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#wpforms-addons-list-section-all",
+        "tag": "div",
+        "text": "All Addons Make NEW With the WPForms Make addon, you can co…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-addons-list-section-installed",
+        "tag": "div",
+        "text": "Activated Addons AWeber The WPForms AWeber addon allows you…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_vibe-ai",
+        "tag": "li",
+        "text": "Vibe AI Vibe AI Approval Log",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms All Forms Add New Form Entries Payments NEW! Form T…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-addons-no-results",
+        "tag": "div",
+        "text": "Sorry, we didn't find any addons that match your criteria.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-addons",
+        "tag": "div",
+        "text": "WPForms Addons Refresh Addons Activated Addons AWeber The W…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-addons-header",
+        "tag": "h1",
+        "text": "WPForms Addons Refresh Addons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-addons-header-search",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-addons-list-item-footer-active",
+        "tag": "div",
+        "text": "Settings Activated",
+        "count": 47,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "Activated Addons AWeber The WPForms AWeber addon allows you…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      }
+    ]
+  }
+}

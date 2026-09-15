@@ -1,8 +1,9 @@
 # Deterministic Logic
 
 Render parity depends on repeatable timeline state. Any author-owned logic that
-changes across runs can make `tools/render.js --seek` disagree with the
-wall-clock preview, especially for editorial and registered-timeline work.
+changes across runs can make a frame-stepped seek (`tools/probe-singlehtml.js`,
+`tools/storyboard-sheet.js`, a seek-mode render) disagree with the wall-clock
+preview, especially for editorial work.
 
 ## Rule Set
 

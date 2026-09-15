@@ -1,0 +1,50 @@
+{
+  "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725",
+  "variants": [
+    {
+      "slug": "builder-settings-entry_automation",
+      "waitFor": ".wpforms-builder-entity-connection-add",
+      "steps": [
+        { "click": ".wpforms-panel-sidebar-section-entry_automation", "settle": 1200 },
+        { "eval": "document.querySelector('#wpforms-entry-automation-dashboard-notice .wpforms-dismiss-button')?.click()", "settle": 800 }
+      ]
+    },
+    {
+      "slug": "builder-settings-entry_automation-name-overlay",
+      "waitFor": "#wpforms-builder-entity-connection-name",
+      "steps": [
+        { "click": ".wpforms-panel-sidebar-section-entry_automation", "settle": 1200 },
+        { "eval": "document.querySelector('#wpforms-entry-automation-dashboard-notice .wpforms-dismiss-button')?.click()", "settle": 600 },
+        { "click": ".wpforms-builder-entity-connection-add", "settle": 1200 },
+        { "eval": "document.querySelector('#wpforms-builder-entity-connection-name').value = 'Weekly Catering Export'", "settle": 600 }
+      ]
+    },
+    {
+      "slug": "builder-settings-entry_automation-export-email",
+      "waitFor": ".wpforms-entry-automation-export-to",
+      "steps": [
+        { "click": ".wpforms-panel-sidebar-section-entry_automation", "settle": 1200 },
+        { "eval": "document.querySelector('#wpforms-entry-automation-dashboard-notice .wpforms-dismiss-button')?.click()", "settle": 600 },
+        { "click": ".wpforms-builder-entity-connection-add", "settle": 1200 },
+        { "eval": "document.querySelector('#wpforms-builder-entity-connection-name').value = 'Weekly Catering Export'", "settle": 400 },
+        { "click": ".jconfirm .btn-confirm", "settle": 3000 },
+        { "eval": "document.querySelector('.wpforms-entry-automation-task-type input[id$=\"-export\"]').click()", "settle": 3000 }
+      ]
+    },
+    {
+      "slug": "builder-settings-entry_automation-export-gdrive",
+      "waitFor": ".wpforms-builder-google-drive-provider-accounts, .wpforms-builder-inner-provider-connection-add",
+      "steps": [
+        { "click": ".wpforms-panel-sidebar-section-entry_automation", "settle": 1200 },
+        { "eval": "document.querySelector('#wpforms-entry-automation-dashboard-notice .wpforms-dismiss-button')?.click()", "settle": 600 },
+        { "click": ".wpforms-builder-entity-connection-add", "settle": 1200 },
+        { "eval": "document.querySelector('#wpforms-builder-entity-connection-name').value = 'Weekly Catering Export'", "settle": 400 },
+        { "click": ".jconfirm .btn-confirm", "settle": 3000 },
+        { "eval": "document.querySelector('.wpforms-entry-automation-task-type input[id$=\"-export\"]').click()", "settle": 3000 },
+        { "eval": "var s = document.querySelector('.wpforms-entry-automation-export-to'); s.value = 'google'; jQuery(s).trigger('change');", "settle": 3500 },
+        { "eval": "document.querySelector('.wpforms-builder-inner-provider-connection-add.google')?.click()", "settle": 3000 },
+        { "eval": "var a = document.querySelector('.js-wpforms-builder-google-drive-provider-connection-account'); if (a) { var o = Array.from(a.options).find(function(x){ return x.value; }); if (o) { a.value = o.value; jQuery(a).trigger('change'); } }", "settle": 4000 }
+      ]
+    }
+  ]
+}

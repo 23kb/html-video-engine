@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>mountSullieBug — QC</title>
+<style>
+  :root {
+    --bg: #14161C; --ink: #ebebed; --ink-mute: #8a8e99;
+    --accent: #E27730; --accent-blue: #0399ED;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    overflow: hidden;
+  }
+  .header {
+    padding: 14px 24px; border-bottom: 1px solid #2a2e3a;
+  }
+  .header h1 {
+    margin: 0 0 4px; font-size: 16px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--accent-blue);
+  }
+  .header .desc { font-size: 12px; color: var(--ink-mute); }
+  .header a { color: var(--accent); text-decoration: none; font-size: 12px; }
+  .header code { color: var(--accent); }
+
+  .stage-wrap {
+    position: fixed; inset: 70px 0 96px 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #0d0e10;
+  }
+  .stage {
+    position: relative;
+    width: 1280px; height: 720px;
+    background: linear-gradient(135deg, #1a1f2a 0%, #0d1019 100%);
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    transform-origin: center center;
+  }
+  /* Atmospheric backdrop so the bug has visual context. */
+  .stage::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 30%, rgba(122, 48, 226, 0.10), transparent 60%),
+      radial-gradient(ellipse at 70% 70%, rgba(226, 119, 48, 0.10), transparent 60%);
+    pointer-events: none;
+  }
+  .stage .copy {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+    text-align: center; max-width: 720px;
+  }
+  .stage .copy h2 {
+    margin: 0 0 12px; font-size: 32px; font-weight: 600; letter-spacing: -0.01em;
+    color: #ebebed;
+  }
+  .stage .copy p {
+    margin: 0; font-size: 16px; color: var(--ink-mute); line-height: 1.55;
+  }
+  .stage .copy code { color: var(--accent); font-family: ui-monospace, monospace; font-size: 14px; }
+
+  /* Override mountSullieBug's default `position: fixed` so the bug renders
+     INSIDE the stage (scaled) instead of pinned to the document viewport.
+     This is QC-only — production usage keeps fixed-positioning. */
+  #zlyvs-sullie-bug {
+    position: absolute !important;
+  }
+
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    padding: 12px 24px;
+    background: rgba(20,22,28,0.95);
+    border-top: 1px solid #2a2e3a;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .controls button {
+    background: rgba(255,255,255,0.10); border: 0; color: var(--ink);
+    height: 30px; padding: 0 12px; border-radius: 4px; cursor: pointer;
+    font-size: 12px; font-family: ui-monospace, monospace;
+  }
+  .controls button:hover { background: rgba(255,255,255,0.20); }
+  .controls .status {
+    margin-left: auto; color: var(--ink-mute); font-family: ui-monospace, monospace; font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>mountSullieBug — persistent brand anchor</h1>
+  <div class="desc">
+    Mounts a fixed-position Sullie image with a subtle yoyo float
+    (<code>boundedRepeats</code>, deterministic). Demo overrides
+    <code>position: fixed</code> → <code>absolute</code> so the bug stays inside the
+    1280×720 stage. Source: <a href="../_shared/motion-primitives.js"><code>motion-primitives.js</code></a>
+    <code>mountSullieBug</code> · <a href="index.html">← QC index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="copy">
+      <h2>Persistent brand anchor</h2>
+      <p>The Sullie bug should sit at <code>bottom: 24px, right: 24px</code> and float gently up-and-down (~6px peak, 2.5s yoyo). Subtle — should never grab attention from the foreground.</p>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="mountBtn">mount</button>
+  <button id="unmountBtn">unmount</button>
+  <button id="movePosBtn">move to top-left</button>
+  <span class="status" id="statusLabel">no bug mounted</span>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { mountSullieBug } from '/videos/_shared/motion-primitives.js';
+
+function fitStage() {
+  const stage = document.getElementById('stage');
+  const availW = window.innerWidth;
+  const availH = Math.max(200, window.innerHeight - 70 - 60);
+  const sx = availW / 1280;
+  const sy = availH / 720;
+  const scale = Math.min(sx, sy) * 0.96;
+  stage.style.transform = `scale(${Math.max(scale, 0.1)})`;
+}
+fitStage();
+window.addEventListener('resize', fitStage);
+
+const stage = document.getElementById('stage');
+const mountBtn = document.getElementById('mountBtn');
+const unmountBtn = document.getElementById('unmountBtn');
+const movePosBtn = document.getElementById('movePosBtn');
+const statusLabel = document.getElementById('statusLabel');
+
+let bug = null;
+let isTopLeft = false;
+
+function refreshStatus() {
+  const el = document.getElementById('zlyvs-sullie-bug');
+  statusLabel.textContent = el
+    ? `mounted · ${isTopLeft ? 'top-left 24/24' : 'bottom-right 24/24'} · ${el.style.width}`
+    : 'no bug mounted';
+}
+
+mountBtn.addEventListener('click', () => {
+  // Mount inside the stage so the demo viewport sees it. Default mountSullieBug
+  // appends to document.body; we move it into the stage after mounting.
+  bug = mountSullieBug();
+  if (bug.parentElement !== stage) stage.appendChild(bug);
+  isTopLeft = false;
+  refreshStatus();
+});
+
+unmountBtn.addEventListener('click', () => {
+  const el = document.getElementById('zlyvs-sullie-bug');
+  if (el) {
+    gsap.killTweensOf(el);
+    el.remove();
+    bug = null;
+  }
+  refreshStatus();
+});
+
+movePosBtn.addEventListener('click', () => {
+  const el = document.getElementById('zlyvs-sullie-bug');
+  if (!el) return;
+  isTopLeft = !isTopLeft;
+  if (isTopLeft) {
+    Object.assign(el.style, { top: '24px', left: '24px', bottom: 'auto', right: 'auto' });
+    movePosBtn.textContent = 'move to bottom-right';
+  } else {
+    Object.assign(el.style, { top: 'auto', left: 'auto', bottom: '24px', right: '24px' });
+    movePosBtn.textContent = 'move to top-left';
+  }
+  refreshStatus();
+});
+
+// Auto-mount on load so the QC viewer sees the bug immediately.
+mountBtn.click();
+</script>
+</body>
+</html>

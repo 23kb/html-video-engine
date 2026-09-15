@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>focusStationOverview — QC</title>
+<style>
+  :root {
+    --bg: #14161C; --ink: #ebebed; --ink-mute: #8a8e99;
+    --accent: #E27730; --accent-blue: #0399ED;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    overflow: hidden;
+  }
+  .header { padding: 14px 24px; border-bottom: 1px solid #2a2e3a; }
+  .header h1 {
+    margin: 0 0 4px; font-size: 16px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--accent-blue);
+  }
+  .header .desc { font-size: 12px; color: var(--ink-mute); }
+  .header a { color: var(--accent); text-decoration: none; font-size: 12px; }
+  .header code { color: var(--accent); }
+
+  .stage-wrap {
+    position: fixed; inset: 70px 0 96px 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #0d0e10;
+  }
+  .stage {
+    position: relative;
+    width: 1280px; height: 720px;
+    background: linear-gradient(135deg, #1a1f2a 0%, #0d1019 100%);
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    transform-origin: center center;
+  }
+  /* Stage-center crosshair so each pose can be visually validated. */
+  .stage::after {
+    content: '';
+    position: absolute; left: 640px; top: 0; width: 1px; height: 720px;
+    background: rgba(226, 119, 48, 0.40); pointer-events: none; z-index: 50;
+  }
+  .stage::before {
+    content: '';
+    position: absolute; left: 0; top: 360px; width: 1280px; height: 1px;
+    background: rgba(226, 119, 48, 0.40); pointer-events: none; z-index: 50;
+  }
+
+  /* Camera = 2400×1400 canvas. Origin = (1200, 700). */
+  .scene-camera {
+    position: absolute;
+    width: 2400px; height: 1400px;
+    left: 0; top: 0;
+    transform-origin: center center;
+    will-change: transform;
+    background:
+      radial-gradient(circle at 50% 50%, #2a2f3e 1px, transparent 1.5px) 0 0 / 36px 36px,
+      radial-gradient(ellipse at 50% 50%, #1a1f2e 0%, #0d1019 70%);
+  }
+
+  /* "Crystal" — the focus subject — at canvas center (1200, 700). */
+  .crystal {
+    position: absolute;
+    left: 1080px; top: 580px;
+    width: 240px; height: 240px;
+    background: linear-gradient(135deg, #056AAB 0%, #0399ED 50%, #E27730 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 80px rgba(3, 153, 237, 0.45),
+                0 0 160px rgba(226, 119, 48, 0.25);
+  }
+  .crystal::after {
+    content: 'crystal'; position: absolute; bottom: -30px; left: 50%;
+    transform: translateX(-50%); color: #fff; font-size: 14px;
+    font-family: ui-monospace, monospace;
+  }
+
+  /* Station — content card placed off to one side, where the camera dollies after focus. */
+  .station-card {
+    position: absolute;
+    left: 1500px; top: 480px;
+    width: 700px; height: 440px;
+    background: #fff; color: #2c2f33;
+    border-radius: 12px; padding: 32px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.40), 0 4px 12px rgba(0,0,0,0.20);
+  }
+  .station-card .badge {
+    display: inline-block; background: var(--accent); color: #fff;
+    padding: 4px 10px; border-radius: 4px;
+    font-size: 11px; font-weight: 700;
+    font-family: ui-monospace, monospace; letter-spacing: 0.04em;
+    margin-bottom: 16px;
+  }
+  .station-card h3 { margin: 0 0 12px; font-size: 22px; font-weight: 600; }
+  .station-card p { margin: 0; font-size: 14px; line-height: 1.55; color: #4a4f57; }
+  .station-card .row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 0; border-bottom: 1px solid #DCDCDE;
+    font-size: 13px;
+  }
+  .station-card .row .meta { color: #6A6F76; font-family: ui-monospace, monospace; }
+
+  /* Three context "satellites" so the overview reveals there's more than just the crystal. */
+  .satellite {
+    position: absolute;
+    width: 90px; height: 90px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.18);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: ui-monospace, monospace;
+    font-size: 12px; color: var(--ink-mute);
+  }
+  #s1 { left: 240px;  top: 220px; }
+  #s2 { left: 2050px; top: 220px; }
+  #s3 { left: 240px;  top: 1080px; }
+
+  .phase-label {
+    position: absolute;
+    bottom: 18px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; color: #fff;
+    background: rgba(20,22,28,0.90);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: ui-monospace, monospace;
+    z-index: 100;
+  }
+
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    padding: 12px 24px;
+    background: rgba(20,22,28,0.95);
+    border-top: 1px solid #2a2e3a;
+  }
+  .controls .row1 { display: flex; align-items: center; gap: 12px; }
+  .controls .row2 {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: 8px; flex-wrap: wrap;
+    font-family: ui-monospace, monospace; font-size: 11px;
+  }
+  .controls button {
+    background: rgba(255,255,255,0.10); border: 0; color: var(--ink);
+    height: 30px; padding: 0 12px; border-radius: 4px; cursor: pointer;
+    font-size: 12px; font-family: ui-monospace, monospace;
+  }
+  .controls button:hover { background: rgba(255,255,255,0.20); }
+  .controls button.pose { background: rgba(3, 153, 237, 0.18); color: var(--accent-blue); }
+  .controls input[type="range"] { flex: 1; }
+  .controls .time {
+    min-width: 110px; text-align: center;
+    font-family: ui-monospace, monospace; font-size: 12px; opacity: 0.9;
+  }
+  .controls .pose-label { color: var(--ink-mute); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>focusStationOverview — tutorial-grade camera arc</h1>
+  <div class="desc">
+    Polished rest-api shape: <code>focus → station → overview → short anchor</code>.
+    Each move uses <code>expo.inOut</code>. Models the polish-vocabulary
+    "focus-station-overview-with-short-anchor" pattern.
+    Source: <a href="../_shared/motion-primitives.js"><code>motion-primitives.js</code></a>
+    <code>focusStationOverview</code> · <a href="index.html">← QC index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="scene-camera" id="camera">
+      <div class="satellite" id="s1">satellite 1</div>
+      <div class="satellite" id="s2">satellite 2</div>
+      <div class="satellite" id="s3">satellite 3</div>
+      <div class="crystal"></div>
+      <div class="station-card">
+        <span class="badge">station shot</span>
+        <h3>GET /wp-json/wpforms/v1/forms/55</h3>
+        <p>Returns the full form schema. Drilling into Contact Us to read its 5 fields, settings, and notification rules.</p>
+        <div class="row"><span>id</span><span class="meta">55</span></div>
+        <div class="row"><span>title</span><span class="meta">"Contact Us"</span></div>
+        <div class="row"><span>fields</span><span class="meta">5</span></div>
+        <div class="row"><span>created</span><span class="meta">2026-04-22</span></div>
+      </div>
+    </div>
+    <div class="phase-label" id="phaseLabel">phase: idle</div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="row1">
+    <button id="playBtn">▶ play</button>
+    <button id="restartBtn">⟲ restart</button>
+    <input type="range" id="scrubber" min="0" max="1" step="0.001" value="0">
+    <div class="time" id="timeLabel">0.00 / 0.00</div>
+  </div>
+  <div class="row2">
+    <span class="pose-label">jump to pose:</span>
+    <button class="pose" data-pose="focus">FOCUS · on the crystal</button>
+    <button class="pose" data-pose="station">STATION · over to the card</button>
+    <button class="pose" data-pose="overview">OVERVIEW · pull back, reveal satellites</button>
+  </div>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { focusStationOverview } from '/videos/_shared/motion-primitives.js';
+
+function fitStage() {
+  const stage = document.getElementById('stage');
+  const availW = window.innerWidth;
+  const availH = Math.max(200, window.innerHeight - 70 - 96);
+  const sx = availW / 1280;
+  const sy = availH / 720;
+  const scale = Math.min(sx, sy) * 0.96;
+  stage.style.transform = `scale(${Math.max(scale, 0.1)})`;
+}
+fitStage();
+window.addEventListener('resize', fitStage);
+
+const camera = document.getElementById('camera');
+const phaseLabel = document.getElementById('phaseLabel');
+const playBtn = document.getElementById('playBtn');
+const restartBtn = document.getElementById('restartBtn');
+const scrubber = document.getElementById('scrubber');
+const timeLabel = document.getElementById('timeLabel');
+
+// ─── Camera math ──────────────────────────────────────────────────────────
+// Canvas: 2400 × 1400, transform-origin: center center → origin = (1200, 700).
+//   tx = 640 - 1200 - s*(cx - 1200);
+//   ty = 360 - 700  - s*(cy - 700);
+const ORIGIN_X = 1200, ORIGIN_Y = 700;
+function poseFor(cx, cy, scale = 1.0) {
+  return {
+    x: 640 - ORIGIN_X - scale * (cx - ORIGIN_X),
+    y: 360 - ORIGIN_Y - scale * (cy - ORIGIN_Y),
+    scale,
+    rotation: 0,
+  };
+}
+
+const POSE_FOCUS    = poseFor(1200, 700, 1.6);  // crystal at canvas center, zoomed in
+const POSE_STATION  = poseFor(1850, 700, 1.0);  // shift right to frame station-card
+const POSE_OVERVIEW = poseFor(1200, 700, 0.45); // pull back; reveal satellites + everything
+
+gsap.set(camera, POSE_FOCUS);
+
+// Use the primitive directly.
+const tl = focusStationOverview(camera, {
+  focusPose: POSE_FOCUS,
+  stationPose: POSE_STATION,
+  overviewPose: POSE_OVERVIEW,
+  focusDuration: 0.9,
+  holdAtFocus: 0.6,
+  stationDuration: 0.95,
+  overviewDuration: 1.2,
+  anchorHold: 0.18,
+});
+const TOTAL = tl.duration();
+timeLabel.textContent = `0.00 / ${TOTAL.toFixed(2)}`;
+
+// Phase-end times (matching the primitive's tween boundaries):
+const T_FOCUS_END    = 0.9;                    // 0.9
+const T_HOLD_END     = T_FOCUS_END + 0.6;      // 1.5
+const T_STATION_END  = T_HOLD_END + 0.95;      // 2.45
+const T_OVERVIEW_END = T_STATION_END + 1.2;    // 3.65
+
+tl.eventCallback('onUpdate', () => {
+  const t = tl.time();
+  let phase;
+  if      (t < T_FOCUS_END)    phase = '1: FOCUS arrival';
+  else if (t < T_HOLD_END)     phase = '2: hold at focus';
+  else if (t < T_STATION_END)  phase = '3: STATION dolly to card';
+  else if (t < T_OVERVIEW_END) phase = '4: OVERVIEW pull-back';
+  else                          phase = '5: short anchor hold';
+  phaseLabel.textContent = `phase: ${phase}`;
+  scrubber.value = t / TOTAL;
+  timeLabel.textContent = `${t.toFixed(2)} / ${TOTAL.toFixed(2)}`;
+});
+
+let isPlaying = false;
+function play() { tl.play(); playBtn.textContent = '⏸ pause'; isPlaying = true; }
+function pause() { tl.pause(); playBtn.textContent = '▶ play'; isPlaying = false; }
+
+playBtn.addEventListener('click', () => { isPlaying ? pause() : play(); });
+restartBtn.addEventListener('click', () => {
+  pause(); tl.time(0); gsap.set(camera, POSE_FOCUS);
+});
+scrubber.addEventListener('input', () => {
+  pause();
+  tl.time(parseFloat(scrubber.value) * TOTAL);
+});
+
+const POSE_MAP = { focus: POSE_FOCUS, station: POSE_STATION, overview: POSE_OVERVIEW };
+document.querySelectorAll('button.pose').forEach(btn => {
+  btn.addEventListener('click', () => {
+    pause();
+    const key = btn.dataset.pose;
+    const p = POSE_MAP[key];
+    gsap.killTweensOf(camera);
+    gsap.set(camera, p);
+    phaseLabel.textContent = `JUMPED → ${key.toUpperCase()} · scale=${p.scale}`;
+    scrubber.value = 0;
+    timeLabel.textContent = `pose ${key} (no time)`;
+  });
+});
+
+setTimeout(() => { play(); }, 250);
+</script>
+</body>
+</html>

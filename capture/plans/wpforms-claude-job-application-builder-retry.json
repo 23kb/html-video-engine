@@ -1,0 +1,14 @@
+{
+  "_comment": "Single-variant retry for the approved Job Application builder source after a cold LocalWP navigation timeout.",
+  "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=1882",
+  "variants": [
+    {
+      "slug": "builder-job-application-final",
+      "waitFor": "#wpforms-panel-fields",
+      "steps": [
+        { "wait": 5000 },
+        { "eval": "document.querySelectorAll('.wpforms-education-popup,.wpforms-admin-popup,.jconfirm,#wpforms-builder-lite-notice,.wpforms-fullscreen-notice').forEach(function(n){n.remove();});var add=document.querySelector('#add-fields');if(add){add.click();}document.querySelectorAll('.wpforms-field.active,.wpforms-field.wpforms-field-active').forEach(function(n){n.classList.remove('active','wpforms-field-active');});", "settle": 900 }
+      ]
+    }
+  ]
+}

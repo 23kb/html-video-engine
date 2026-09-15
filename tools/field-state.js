@@ -25,7 +25,87 @@ function usage() {
     '  node tools/field-state.js --field dropdown --section advanced',
     '  node tools/field-state.js --field checkbox --summary',
     '  node tools/field-state.js --search "Generate Choices"',
+    '  node tools/field-state.js --interactivity            # every registered transition + provenance',
+    '  node tools/field-state.js --interactivity ranking    # filtered',
+    '  node tools/field-state.js --interactivity --synthetic # only fabricated blocks (verify product UI!)',
+    '  node tools/field-state.js --interactivity --stale 30  # blocks whose @since is older than N days',
   ].join('\n');
+}
+
+// Which field types actually have snapshot interactivity?
+//
+// Handlers are added reactively, per video, so the gap is normally discovered
+// mid-build instead of at storyboard time — a beat gets promised, then the grep
+// says there is nothing to drive it (rf 4: ranking had zero handlers and
+// nothing flagged it). This lists what the shared registry really carries,
+// read from the source, so the question is answerable while planning.
+function printInteractivity(filter, opts = {}) {
+  const { staleDays = null, syntheticOnly = false } = opts;
+  const file = path.join(ROOT, 'snapshots', '_shared', 'interactivity.js');
+  if (!fs.existsSync(file)) {
+    console.error(`Not found: ${file}`);
+    process.exit(1);
+  }
+  const src = fs.readFileSync(file, 'utf8');
+  // Parse banner spans + their provenance line (AP-17, 2026-09-02):
+  //   // ─ Title ─────
+  //   // @since YYYY-MM-DD|uncommitted @source synthetic|captured|mirrors:<f> @verified DATE [@product v]
+  // Registry transition labels are kebab-case; the other `label:` strings in
+  // that file are field-palette display names ("Single Line Text"), not handlers.
+  const spans = [];
+  let cur = { title: '(top matter)', labels: [] };
+  spans.push(cur);
+  for (const line of src.split(/\r?\n/)) {
+    const b = line.match(/^\s*\/\/ ─ (.+?) ─+\s*$/);
+    if (b) { cur = { title: b[1].trim(), labels: [] }; spans.push(cur); continue; }
+    const meta = line.match(/^\s*\/\/ @since (\S+) @source (\S+) @verified (\S+)(?: @product (\S+))?/);
+    if (meta) { cur.since = meta[1]; cur.source = meta[2]; cur.verified = meta[3]; cur.product = meta[4]; continue; }
+    if (/fabricat/i.test(line) && !/label:/.test(line)) cur.sawFabricate = true;
+    const m = line.match(/label:\s*'([^']+)'/);
+    if (m && /^[a-z0-9]+(-[a-z0-9]+)*$/.test(m[1]) && !cur.labels.includes(m[1])) cur.labels.push(m[1]);
+  }
+  const now = Date.now();
+  const rows = [];
+  const seen = new Set();
+  for (const s of spans) {
+    const syn = s.source === 'synthetic' || (!s.source && s.sawFabricate);
+    for (const l of s.labels) {
+      if (seen.has(l)) continue;
+      seen.add(l);
+      rows.push({
+        label: l, syn,
+        since: s.since || '—',
+        verified: s.verified || '—',
+        source: s.source || (s.sawFabricate ? 'synthetic (untagged)' : '—'),
+      });
+    }
+  }
+  let shown = rows;
+  if (filter) shown = shown.filter(r => r.label.includes(filter.toLowerCase()));
+  if (syntheticOnly) shown = shown.filter(r => r.syn);
+  if (staleDays != null) {
+    shown = shown.filter(r => {
+      const d = Date.parse(r.since);
+      return Number.isFinite(d) && (now - d) / 86400000 > staleDays;
+    });
+  }
+  shown.sort((a, b) => a.label.localeCompare(b.label));
+  const suffix = [filter && `matching "${filter}"`, syntheticOnly && 'SYNTHETIC only', staleDays != null && `@since older than ${staleDays}d`].filter(Boolean).join(', ');
+  console.log(`# ${shown.length}${shown.length !== rows.length ? ` of ${rows.length}` : ''} registered transition(s) in snapshots/_shared/interactivity.js${suffix ? ` (${suffix})` : ''}`);
+  const pad = Math.max(12, ...shown.map(r => r.label.length));
+  for (const r of shown) {
+    console.log(`  ${r.syn ? 'SYNTHETIC ' : '          '}${r.label.padEnd(pad)}  since=${r.since}  verified=${r.verified}  source=${r.source}`);
+  }
+  if (!shown.length) {
+    console.log('  (none matching the filters)');
+  }
+  console.log('');
+  console.log('A field type with no entry here has NO per-field handlers — a beat that');
+  console.log('needs one is a build task, not a given. Universal handlers (label,');
+  console.log('description, size, required, placeholder) apply to every field.');
+  console.log('SYNTHETIC blocks fabricate UI with no captured template — verify the');
+  console.log('product still ships that UI before storyboarding on one (ee 1: the PDF');
+  console.log('block fabricates a retired UI).');
 }
 
 function argValue(name) {
@@ -204,6 +284,16 @@ function printSearch(lines, sections, query) {
 function main() {
   if (hasArg('--help') || process.argv.length <= 2) {
     console.log(usage());
+    return;
+  }
+
+  if (hasArg('--interactivity')) {
+    const raw = argValue('--interactivity') || '';
+    const staleRaw = argValue('--stale');
+    printInteractivity(raw.startsWith('--') ? '' : raw.toLowerCase(), {
+      staleDays: staleRaw != null && staleRaw !== '' && !staleRaw.startsWith('--') ? Number(staleRaw) : null,
+      syntheticOnly: hasArg('--synthetic'),
+    });
     return;
   }
 

@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>B2 robustness fixture</title>
+<style>html,body{margin:0}#stage{position:relative;width:1280px;height:720px;overflow:hidden;background:#223}</style>
+</head>
+<body>
+<div id="stage"></div>
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { IframeManager } from '/videos/_shared/wpforms-interactions.js';
+import { Cursor } from '/videos/_shared/motion-primitives.js';
+import { glideClick } from '/videos/_shared/iframe-helpers.js';
+const R = { warns: [] };
+const origWarn = console.warn;
+console.warn = (...a) => { R.warns.push(a.join(' ').slice(0, 140)); origWarn(...a); };
+try {
+  const stage = document.getElementById('stage');
+  const ifm = new IframeManager(stage, {
+    viewport: { width: 1280, height: 720 },
+    iframeSize: { width: 1280, height: 720 },
+  });
+
+  // 2) path-arg guard throws
+  try { await ifm.load('/snapshots/builder-settings-anti_spam/index.html'); R.pathThrow = 'NO THROW'; }
+  catch (e) { R.pathThrow = e.message.slice(0, 100); }
+  try { await ifm.load('builder-settings-anti_spam/index.html'); R.pathThrow2 = 'NO THROW'; }
+  catch (e) { R.pathThrow2 = e.message.slice(0, 60); }
+
+  // 1) settle re-read: deep zoom then glideClick — measure the miss
+  await ifm.load('builder-settings-anti_spam');
+  const cursor = new Cursor(stage, { initialX: 100, initialY: 100 });
+  const wraps = [...ifm.doc().querySelectorAll('.wpforms-panel-content [id^="wpforms-panel-field"]')]
+    .filter(w => w.offsetWidth > 0 && w.offsetHeight > 0);
+  const low = wraps.sort((a, b) => b.getBoundingClientRect().top - a.getBoundingClientRect().top)[0];
+  const pose = ifm.cameraToElement(low, { fill: 0.85, maxZoom: 2.0 });
+  await ifm.tweenCamera({ ...pose, duration: 0.5 });
+  // do NOT wait here — glideClick's own settle re-read must absorb the
+  // post-tween re-rasterization
+  const el = await glideClick({ iframeManager: ifm, cursor }, low, { glideDuration: 0.3 });
+  await new Promise(r => setTimeout(r, 150));
+  const ptNow = ifm.elementToStageCoords(low);
+  const cur = cursor.pos();
+  R.clickMiss = Math.hypot(ptNow.x - cur.x, ptNow.y - cur.y);
+  R.clicked = !!el;
+
+  // 3) tall-doc warn: 2318px page into a 720px iframe
+  await ifm.swap('frontend-contact-clean');
+  R.tallWarned = R.warns.some(w => w.includes('never renders'));
+
+  window.__results = R;
+} catch (e) { window.__results = { error: String(e.message), stack: String(e.stack).slice(0, 300), warns: R.warns }; }
+</script>
+</body>
+</html>

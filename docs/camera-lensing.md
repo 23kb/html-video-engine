@@ -1,5 +1,6 @@
 # Camera Lensing
 
+> **HISTORICAL API NOTE (2026-08-28):** code examples below predate the 2026-08-22 engine retirement. The craft rules stand; the `engine/`/`runtime/`/manifest APIs they mention are gone — implement in single-HTML per CLAUDE.md.
 Zoom level vocabulary. What `level: 1.0`, `1.5`, `1.8`, `2.2`, `2.4` actually read as on-screen, and how to pick.
 
 The `camera.level` field on a beat controls iframe scale. The math is simple: `level: 2.2` means the target element fills the stage at 2.2× the iframe's native scale. The visual reading is what matters.
@@ -68,7 +69,7 @@ registerCameraPose('overview', { focus: 'body',      level: 1.0,  pad: 0 });
 
 Three named seeds (`focus`, `station`, `overview`) cover most chapters. Add custom names per video.
 
-See `wpforms-transitions` skill for the camera-pose API.
+(The camera-pose registry retired with the engine on 2026-08-22; poses are now measured per beat through `cameraToElement` / `flyToElement`.)
 
 ## Smooth pan vs hard dolly
 
@@ -92,9 +93,7 @@ For continuous beats within a chapter (`sameChapter` true), the camera smooth-pa
 
 ## See also
 
-- `wpforms-video` skill — chapter shape with `camera` field.
-- `wpforms-transitions` skill — camera poses + chapter break / swap styles.
-- `engine/engine.js` `zoomTo` — the underlying API.
-- `runtime/camera-poses.js` — pose registry source.
-- `docs/camera-poses.md` — pose API reference.
+- `wpforms-video` skill — tutorial authoring; camera moves go through `flyToElement` (framed-action contract).
+- `wpforms-marketing` skill, *Snapshot transitions* — the boundary contract at cuts (successor to the retired `wpforms-transitions` skill).
+- `videos/_shared/iframe-helpers.js` `flyToElement` + `videos/_shared/motion-primitives.js` `cameraToElement` — the living camera API (engine `zoomTo` and `runtime/camera-poses.js` retired 2026-08-22).
 - `analysis-quality-and-transitions.md` §1.5 — REST API video lesson on framing the curl one-liner.

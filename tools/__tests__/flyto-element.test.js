@@ -1,11 +1,14 @@
 #!/usr/bin/env node
-// FIX-1 (fa-retest 2026-07-13) — flyToElement: decomposed tutorial camera.
+// FIX-1 (fa-retest 2026-07-13; blended 2026-09-02, AP-4) — flyToElement.
 //
 // Both FA test builds' v1 audits capped at tier B because the tutorial camera
 // shipped as a bare single-tween translate+scale. flyToElement is the library
-// form of the fix: a two-phase dip/pan → land arc. This test drives it against
-// a stub IframeManager (no browser, no gsap — the helper's Node-safe fallback
-// path) and asserts the arc's contract.
+// form of the fix — since 2026-09-02 a BLENDED flight: ONE tweenCamera call
+// whose tx/ty span the full duration while the zoom dips and lands via
+// zoomKeyframes inside the same tween (the old two-sequential-calls shape
+// read as pan-then-zoom — geo 8 / wh 5). This test drives it against a stub
+// IframeManager (no browser, no gsap — the helper's Node-safe fallback path)
+// and asserts the blended contract.
 //
 // Usage: node tools/__tests__/flyto-element.test.js
 
@@ -25,7 +28,7 @@ async function main() {
   const mod = await import(pathToFileURL(path.resolve(__dirname, '..', '..', 'videos', '_shared', 'iframe-helpers.js')).href);
   ok(typeof mod.flyToElement === 'function', 'flyToElement is exported from iframe-helpers.js');
 
-  section('Two-phase arc between poses');
+  section('Blended arc between poses — ONE call, zoom keyframed inside it');
   {
     const calls = [];
     const stub = {
@@ -34,18 +37,21 @@ async function main() {
       tweenCamera: (p) => { calls.push(p); return Promise.resolve(); },
     };
     const pose = await mod.flyToElement({ iframeManager: stub }, '.x', { duration: 1.0 });
-    ok(calls.length === 2, `exactly two tweenCamera phases (${calls.length})`);
-    ok(Math.abs(calls[0].zoom - 1.6 * 0.96) < 1e-9, 'dip zoom = min(cur, target) × 0.96');
-    ok(calls[0].zoom < Math.min(1.6, 1.8), 'dip sits below both poses (visible scale arc)');
-    ok(Math.abs(calls[0].tx - (-100 + (-300 - -100) * 0.42)) < 1e-9, 'dip phase covers 42% of the translation');
-    ok(Math.abs(calls[0].duration - 0.42) < 1e-9 && Math.abs(calls[1].duration - 0.58) < 1e-9, 'duration split 42/58');
-    ok(calls[0].ease === 'power2.in', 'dip phase uses power2.in');
-    ok(calls[1].zoom === 1.8 && calls[1].tx === -300 && calls[1].ty === -140, 'landing phase hits the measured pose exactly');
-    ok(calls[1].ease === 'power3.out', 'Node env (no CustomEase) falls back to power3.out');
+    ok(calls.length === 1, `exactly ONE blended tweenCamera call (${calls.length})`);
+    const c = calls[0];
+    ok(c.zoom === 1.8 && c.tx === -300 && c.ty === -140, 'tx/ty/zoom land on the measured pose exactly');
+    ok(Math.abs(c.duration - 1.0) < 1e-9, 'full duration in the one call — no DUR/beat budget shift');
+    ok(c.ease === 'power3.out', 'Node env (no CustomEase) falls back to power3.out for the land ease');
+    ok(Array.isArray(c.zoomKeyframes) && c.zoomKeyframes.length === 2, 'zoom rides two keyframes inside the same tween');
+    ok(Math.abs(c.zoomKeyframes[0].zoom - 1.6 * 0.96) < 1e-9, 'dip zoom = min(cur, target) × 0.96');
+    ok(c.zoomKeyframes[0].zoom < Math.min(1.6, 1.8), 'dip sits below both poses (visible scale arc)');
+    ok(Math.abs(c.zoomKeyframes[0].duration - 0.42) < 1e-9 && Math.abs(c.zoomKeyframes[1].duration - 0.58) < 1e-9, 'dip/land split 42/58');
+    ok(c.zoomKeyframes[0].ease === 'power2.in', 'dip keyframe uses power2.in');
+    ok(c.zoomKeyframes[1].zoom === 1.8 && c.zoomKeyframes[1].ease === 'power3.out', 'land keyframe hits target zoom on the land ease');
     ok(pose && pose.zoom === 1.8, 'resolves with the landed pose');
   }
 
-  section('From rest (zoom 1) the dip clamps to 1 — translate-then-zoom shape');
+  section('From rest (zoom 1) the dip clamps to 1 — translate blends into the rising zoom');
   {
     const calls = [];
     const stub = {
@@ -54,8 +60,8 @@ async function main() {
       tweenCamera: (p) => { calls.push(p); return Promise.resolve(); },
     };
     await mod.flyToElement({ iframeManager: stub }, '.x', {});
-    ok(calls[0].zoom === 1, 'dip clamps to zoom 1 (never below content edge)');
-    ok(calls[1].zoom === 1.8, 'still lands on the target zoom');
+    ok(calls[0].zoomKeyframes[0].zoom === 1, 'dip clamps to zoom 1 (never below content edge)');
+    ok(calls[0].zoomKeyframes[1].zoom === 1.8 && calls[0].zoom === 1.8, 'still lands on the target zoom');
   }
 
   section('Options pass through to cameraToElement');

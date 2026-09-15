@@ -31,6 +31,7 @@ Numbered for easy reference in code comments / commit messages.
 - MP4 capture records at native stage size. Sharp throughout.
 - The rule is "render natively; don't transform-scale to fit a smaller container." The 1920 number is the chosen native; the transform prohibition is the structural rule.
 - Verified in commit `79081e7` after the editorial pilot QC regression. Resolution default updated 2026-05-12 per user feedback: "earlier… stage was set to 1600 or 1080 so snapshots had to be compressed… when set to 1920, issue was fixed."
+- **Portrait clarification (2026-08-05, 9:16 shorts).** A 1080×1920 stage is a *different native*, not a smaller one, and is explicitly permitted for vertical shorts. It does not weaken this invariant: the stage still renders at its native size with no transform, and the blur this rule exists to prevent came from compressing a wide capture into a narrow stage — which the vertical path avoids by *cropping* the desktop raster with the camera rather than scaling it down. The landscape default for 16:9 work is unchanged at 1920×1080. Geometry, zoom floor and safe areas: `docs/vertical-shorts.md`.
 
 ### INV-2 — Iframe at native, single direct camera transform
 - IframeManager mounts the iframe at the captured snapshot's native viewport (default 1280×720, configurable).
@@ -78,9 +79,9 @@ Numbered for easy reference in code comments / commit messages.
 - Verified at commit `cf5ddf6`.
 
 ### INV-9 — No fetch/random/Date.now() at runtime
-- Repo determinism rule (CLAUDE.md). Video chapter + runtime cinematic code is deterministic logic. Required for `tools/render.js --seek` mode parity.
+- Repo determinism rule (CLAUDE.md). Film code is deterministic logic. Required for seek parity (frame-stepped probes, stills sheets, any seek-mode render).
 - No `Date.now()` outside the player driver.
-- No unseeded `Math.random()` — use `mulberry32(seed)` from `videos/_shared/kit.js`.
+- No unseeded `Math.random()` — use `mulberry32(seed)` from `videos/_shared/motion-primitives.js`.
 - No `fetch()` at runtime — assets must be loaded before render starts.
 - No `repeat: -1` — compute bounded repeats from visible duration.
 - Static check: `node tools/lint-determinism.js [--all]`
@@ -106,8 +107,9 @@ Outro (~5s)      → brand sign-off card. NO mac frame.
 - Mac frame wraps the Tutorial section ONLY (per INV-3). Intro / postIntro / outro have no chrome around them.
 - PostIntro is non-optional. It previews the workflow with an identity-continuity morph chain (single DOM element threading the beats). Reference: `reference/html-templates/wpforms-ai-prompt-open.html`.
 - PostIntro may have N sub-beats (multi-phase morph chains are encouraged). The section boundary is the mac-frame-fade-in: when the mac frame opacity tweens 0 → 1 with real product UI behind it, the PostIntro is over and the Tutorial has begun. Anything before that moment, no matter how many phases, is still PostIntro.
-- Skip the postIntro and the video reads as "PowerPoint" — generic chapter shapes, weak first impression. The first cut of every tutorial that skipped a real postIntro became generic per `docs/winning-pattern-analysis-2026-05-10.md` §C.
-- Source: user instruction 2026-05-12. Applies to all tutorial videos including the existing make-field-required pilot (retrofitted at commit `af504ea`) and Klaviyo tutorial (per `docs/codex-prompts/klaviyo-tutorial-continuation.md`).
+- Skip the postIntro and the video reads as "PowerPoint" — generic chapter shapes, weak first impression. The first cut of every tutorial that skipped a real postIntro became generic per `docs/winning-pattern-analysis-2026-05-10.md` (deleted 2026-08-22 — git history) §C.
+- **Amendment 2026-08-28 (Umair ruling, rulebook §8 "You author a tutorial"):** the Intro and Outro sections above are no longer authored. The HTML film opens on the PostIntro and closes on the final product wide shot; Kacie records the real bookends and `tools/stitch.js` concatenates them. The mac-frame rule and the PostIntro rules stand unchanged. Shorts are unaffected (Sullie sting + end card stay).
+- Source: user instruction 2026-05-12. Applies to all tutorial videos including the existing make-field-required pilot (retrofitted at commit `af504ea`) and Klaviyo tutorial (per `docs/codex-prompts/klaviyo-tutorial-continuation.md` (deleted 2026-08-22 — git history)).
 
 ### INV-12 — Selector scoping for provider / feature panels
 WPForms admin renders ALL provider connection forms in the DOM and hides inactive ones via `display: none` or accordion collapse. A naive query like `iframeManager.query('input[name="api_key"]')` matches the FIRST one in DOM order — which may be ConvertKit, ActiveCampaign, Mailchimp, or any other integration that happens to be earlier in the captured snapshot.
@@ -146,7 +148,7 @@ Two kinds of "system files" in this repo. They need different consumption:
 
 | Type | Examples | Right way to consume |
 |---|---|---|
-| **Reference / Rules** | This invariants doc; `reference/wpforms-brand/BRAND.md`; `docs/library-scope-frequency-2026-05-12.md`; `docs/sound-design-reference-2026-05-12.md`; `.claude/skills/wpforms-primitives/SKILL.md` (lookup index); `.claude/skills/wpforms-gsap-rules/SKILL.md` (rules reference). | **Read inline. File-read is fine.** Codex reading the architecture-invariants doc directly was the doc working as designed — it's data, not process. |
+| **Reference / Rules** | This invariants doc; `reference/wpforms-brand/BRAND.md`; `docs/library-scope-frequency-2026-05-12.md` (deleted 2026-08-22 — git history); `docs/sound-design-reference-2026-05-12.md`; `.claude/skills/wpforms-primitives/SKILL.md` (lookup index); `.claude/skills/wpforms-gsap-rules/SKILL.md` (rules reference). | **Read inline. File-read is fine.** Codex reading the architecture-invariants doc directly was the doc working as designed — it's data, not process. |
 | **Gates / Process** | `.claude/skills/wpforms-motion-audit/SKILL.md` (tier-scoring procedure with a recorded artifact); `.claude/skills/wpforms-video/SKILL.md` HARD-GATE storyboard approval; `.claude/skills/wpforms-postintro/SKILL.md` multi-animation rule check. | **Invoke via the Skill tool.** Reading the rubric ≠ running the scorer. The procedure produces an artifact (tier rating, approval, gate-passed marker) that file-read cannot. |
 
 **The Skill tool is the gate for procedural skills. Reading a skill's markdown file is NOT** — it shows you the rubric but doesn't produce the artifact (tier, approval, gate-passed). For reference skills (lookup indices, rules reference), reading is the entire interaction; no invocation needed.
@@ -164,7 +166,7 @@ Reference skills (file-read is sufficient, Skill tool invocation is optional):
 
 - **`wpforms-gsap-rules`** — L0 / L1 rules reference. Read it to consult before writing timeline code. No artifact produced by invocation.
 - **`wpforms-primitives`** — lookup index for motion-primitives + wpforms-interactions + iframe-helpers. Read it BEFORE writing motion code to check what exists (this is still important — both 2026-05-12 sessions skipped this step and hand-rolled approximations of existing primitives). But file-read is sufficient; the artifact is "I now know what exists in the libraries," which a read produces.
-- **`wpforms-transitions`** — chapter break / swap style reference. Read when relevant.
+- (`wpforms-transitions` retired 2026-08-22 with the engine — cross-snapshot movement lives in `wpforms-marketing`, *Snapshot transitions*.)
 
 Sessions reading this invariants doc inline (like Codex did on 2026-05-12) are using the correct consumption pattern. Sessions skipping `wpforms-motion-audit` because they "read about it" are using the wrong pattern — that one needs the Skill tool because the tier rating is the artifact.
 
@@ -238,6 +240,8 @@ git add videos/<slug>/index.html  # commit the unmodified clone FIRST
 # then start customizing
 ```
 
+**Amendment 2026-08-28 — the clone SOURCE:** the first write is the path's skeleton, not the exemplars: pure-editorial / ad / mixed → `docs/examples/single-html-ad-skeleton.html` (FIX-2, 2026-07-13: it bakes in the autoplay + `__T0/__sched/__done/__dur` contract smoke and the renderer need; `videos/klaviyo-bridge-2/` and the `reference/html-templates/` exemplars predate it and are never the first write); tutorial → `docs/examples/single-html-tutorial-skeleton.html`; 9:16 short → `reference/html-templates/vertical-short-skeleton.html`. The table below still governs which exemplar you customize the clone TOWARD. The commit-the-unmodified-clone rule is unchanged.
+
 **Why a separate commit for the clone:** the diff between the clone-commit and the customization-commits is the actual creative work. Without it, a reviewer can't see what was inherited from the proven template vs what was invented. Sessions hand-rolling from scratch destroyed this audit trail and reliably produced "horrible v1."
 
 **Closest template selection — match on stylistic intent, not topic:**
@@ -273,7 +277,7 @@ Patterns that signal trouble:
 | New `WPFormsInteractions.setXfieldValue()` method | INV-7 — single-click wrappers stay inline |
 | `iframe.pointerEvents = 'auto'` for debugging | INV-8 — re-enable per-instance only when needed |
 | Inline-styling a "looks like the product UI" fragment without a snapshot reference | INV-15 — every UI fragment needs `// SOURCE:` or `// OVERRIDE:` annotation |
-| First-writing `videos/<slug>/index.html` for an editorial video from blank | INV-16 — clone from `reference/html-templates/` first, commit, THEN customize |
+| First-writing `videos/<slug>/index.html` from blank — any path | INV-16 (amended 2026-08-28) — clone the path's `docs/examples/` skeleton (shorts: `reference/html-templates/vertical-short-skeleton.html`) first, commit, THEN customize toward the style references |
 | Stage width set to 1280 / 1440 / 1600 on a NEW pilot | INV-1 — use 1920×1080; lower resolutions blur snapshots |
 
 ## Commits this invariant set was learned from
@@ -304,10 +308,10 @@ Before declaring a pilot done:
 - [ ] Brand orange primary, no purple unless AI-feature (INV-10)
 - [ ] Stage at 1920×1080 for new pilots (INV-1)
 - [ ] Every inline UI fragment has `// SOURCE:` snapshot reference or `// OVERRIDE:` annotation (INV-15)
-- [ ] For pure-editorial videos: first commit is the unmodified `reference/html-templates/` clone (INV-16)
+- [ ] First commit is the unmodified skeleton clone (INV-16, amended 2026-08-28)
 
 ## Open items for the zoom-quality Codex session
 
-The current state is engine.js-equivalent quality at zoom 1 (sharp) and engine.js-equivalent quality at zoom > 1 (softens with pixel doubling). Codex's deep-dive prompt (`docs/codex-prompts/zoom-quality-deep-dive.md`) is exploring 10 approaches to sharpen the > 1 zoom case without regressing the at-rest case.
+The current state is engine.js-equivalent quality at zoom 1 (sharp) and engine.js-equivalent quality at zoom > 1 (softens with pixel doubling). Codex's deep-dive prompt (`docs/codex-prompts/zoom-quality-deep-dive.md` (deleted 2026-08-22 — git history)) is exploring 10 approaches to sharpen the > 1 zoom case without regressing the at-rest case.
 
 When their work lands, this doc will get a new INV-X covering the chosen approach. Until then, treat current iframe zoom-blur as the floor; pilots should cap aggressive emphasis zooms at ~2× and use `popOut` for any deeper zoom-equivalent emphasis (popOut clones the element into the parent doc where it renders fresh at any scale).

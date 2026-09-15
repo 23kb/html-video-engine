@@ -525,6 +525,228 @@
     }
   });
 
+  // ─── 9b. Ranking: drag reorder + arrow buttons ──────────────────────────
+  // Mirrors wpforms-surveys-polls/assets/js/ranking.js. Class names, arrow
+  // semantics and disabled-state rules are lifted from that file, not invented:
+  //   list  .wpforms-field-ranking-items      item .wpforms-field-ranking-item
+  //   arrow .wpforms-field-ranking-item-arrow (up variant adds -arrow-up)
+  //   ready .wpforms-field-ranking-ready      body .wpforms-ranking-grabbing
+  //   live  .wpforms-field-ranking-live       r/o  .wpforms-field-readonly
+  // The plugin drives drag through SortableJS; capture strips it, so the drag
+  // below is a pointer-event mirror of the same swap semantics.
+  //
+  // NOTE (R11): this exists so the SNAPSHOT is honest and hand-drivable in QC.
+  // Video beats must NOT delegate on-camera motion to it — handlers run at
+  // product speed and are event-driven, which breaks --seek render parity.
+  // Films animate the real <li> nodes with GSAP on the master timeline.
+
+  const RANKING = {
+    list: '.wpforms-field-ranking-items',
+    item: '.wpforms-field-ranking-item',
+    arrow: '.wpforms-field-ranking-item-arrow',
+    arrowUpClass: 'wpforms-field-ranking-item-arrow-up',
+    label: '.wpforms-field-ranking-item-label',
+    live: '.wpforms-field-ranking-live',
+    readOnlyClass: 'wpforms-field-readonly',
+    readyClass: 'wpforms-field-ranking-ready',
+    grabbingClass: 'wpforms-ranking-grabbing',
+  };
+
+  function rankingIsReadOnly(list) {
+    return !!list.closest('.' + RANKING.readOnlyClass);
+  }
+
+  function rankingItems(list) {
+    return $$(RANKING.item, list);
+  }
+
+  // Plugin parity: first item's up arrow and last item's down arrow are
+  // disabled, and a disabled arrow carries no tooltip (ranking.js:387-388).
+  function updateArrowsState(list) {
+    const items = rankingItems(list);
+    items.forEach((item, i) => {
+      const arrows = $$(RANKING.arrow, item);
+      if (!arrows.length) return;
+      const first = arrows[0];
+      const last = arrows[arrows.length - 1];
+      const isFirst = i === 0;
+      const isLast = i === items.length - 1;
+      first.disabled = isFirst;
+      first.setAttribute('title', isFirst ? '' : (first.dataset.wpfTitle || first.title || ''));
+      last.disabled = isLast;
+      last.setAttribute('title', isLast ? '' : (last.dataset.wpfTitle || last.title || ''));
+    });
+  }
+
+  function rankingAnnounce(list, item) {
+    const live = $(RANKING.live, list.closest('.wpforms-field') || document);
+    if (!live) return;
+    const label = $(RANKING.label, item);
+    const pos = rankingItems(list).indexOf(item) + 1;
+    if (label) live.textContent = `${label.textContent.trim()}, position ${pos} of ${rankingItems(list).length}`;
+  }
+
+  // FLIP: measure before the DOM moves, invert, then play to rest with an
+  // ease-in-out so options glide into their new slots instead of snapping.
+  // (Umair 2026-08-19: "add ease in out, like smooth animation, for when
+  // ranking options get organized.")
+  //
+  // R11 still holds: this is the SNAPSHOT being pleasant to hand-drive in QC.
+  // The film does not rely on it — beat 5 animates the real <li> nodes on the
+  // GSAP master timeline, because a CSS transition only advances while the page
+  // composites and is not seek-deterministic.
+  var RANK_EASE = 'cubic-bezier(0.45, 0, 0.25, 1)';   // ease-in-out
+  var RANK_MS = 560;   // Umair 2026-08-19: "add more time for transition - more smooth"
+
+  function flipReorder(list, mutate, skip) {
+    var items = rankingItems(list);
+    var first = [];
+    items.forEach(function (it) { first.push([it, it.getBoundingClientRect()]); });
+
+    mutate();
+
+    rankingItems(list).forEach(function (it) {
+      if (it === skip) return;                       // dragged node follows the pointer
+      var rec = null;
+      for (var i = 0; i < first.length; i++) { if (first[i][0] === it) { rec = first[i][1]; break; } }
+      if (!rec) return;
+      var last = it.getBoundingClientRect();
+      var dx = rec.left - last.left;
+      var dy = rec.top - last.top;
+      if (!dx && !dy) return;
+
+      it.style.transition = 'none';
+      it.style.transform = 'translate(' + dx + 'px,' + dy + 'px)';
+      // Force a reflow so the inverted position is committed before we play.
+      void it.offsetWidth;
+      it.style.transition = 'transform ' + RANK_MS + 'ms ' + RANK_EASE;
+      it.style.transform = '';
+
+      var done = function () {
+        it.style.transition = '';
+        it.style.transform = '';
+        it.removeEventListener('transitionend', done);
+      };
+      it.addEventListener('transitionend', done);
+    });
+  }
+
+  function afterRankingReorder(list, item) {
+    updateArrowsState(list);
+    rankingAnnounce(list, item);
+    // Plugin fires change on the first hidden input so listeners see a new value.
+    const hidden = $('input[type="hidden"]', list);
+    if (hidden) hidden.dispatchEvent(new Event('change', { bubbles: true }));
+  }
+
+  // Arrow clicks — up swaps with previous sibling, down with next.
+  document.addEventListener('click', (e) => {
+    const btn = e.target instanceof Element ? e.target.closest(RANKING.arrow) : null;
+    if (!btn || btn.disabled) return;
+    const item = btn.closest(RANKING.item);
+    const list = item && item.closest(RANKING.list);
+    if (!item || !list || rankingIsReadOnly(list)) return;
+    e.preventDefault();
+    const isUp = btn.classList.contains(RANKING.arrowUpClass);
+    const target = isUp ? item.previousElementSibling : item.nextElementSibling;
+    if (!target) return;
+    flipReorder(list, function () {
+      if (isUp) list.insertBefore(item, target);
+      else list.insertBefore(target, item);
+    });
+    afterRankingReorder(list, item);
+    btn.focus();
+  });
+
+  // Pointer drag — mirrors SortableJS swap-on-midpoint-cross.
+  function initRanking() {
+    $$(RANKING.list).forEach((list) => {
+      if (list.dataset.wpfRankingWired) return;
+      list.dataset.wpfRankingWired = '1';
+      list.classList.add(RANKING.readyClass);
+
+      // Stash original tooltips once so disabled/enabled cycles can restore them.
+      $$(RANKING.arrow, list).forEach((a) => {
+        if (!a.dataset.wpfTitle && a.title) a.dataset.wpfTitle = a.title;
+      });
+      updateArrowsState(list);
+
+      list.addEventListener('pointerdown', (e) => {
+        if (rankingIsReadOnly(list)) return;
+        if (e.target instanceof Element && e.target.closest(RANKING.arrow)) return;
+        const item = e.target instanceof Element ? e.target.closest(RANKING.item) : null;
+        if (!item) return;
+
+        // startX/startY are the drag ORIGIN, and they get re-baselined on every
+        // swap below. Without that, reordering mid-drag moves the item's layout
+        // box while its transform offset still measures from the old box — the
+        // item visibly leaps by one row the instant it swaps. (SortableJS does
+        // the same re-basing; this is parity, not embellishment.)
+        let startY = e.clientY;
+        let startX = e.clientX;
+        const isGrid = list.classList.contains('wpforms-field-ranking-layout-grid');
+        let dragging = false;
+
+        // Re-base the origin by however far the item's box actually moved, so
+        // the element stays put under the pointer across a swap.
+        const reswap = (mutate) => {
+          const before = item.getBoundingClientRect();
+          mutate();
+          const after = item.getBoundingClientRect();
+          if (isGrid) startX += after.left - before.left;
+          else startY += after.top - before.top;
+        };
+
+        const onMove = (ev) => {
+          const dx = ev.clientX - startX;
+          const dy = ev.clientY - startY;
+          if (!dragging && Math.abs(isGrid ? dx : dy) < 4) return;
+          if (!dragging) {
+            dragging = true;
+            document.body.classList.add(RANKING.grabbingClass);
+            item.style.position = 'relative';
+            item.style.zIndex = '10';
+            item.style.pointerEvents = 'none';
+          }
+          item.style.transform = isGrid ? `translateX(${dx}px)` : `translateY(${dy}px)`;
+
+          // Swap when the pointer crosses a neighbour's midpoint.
+          const neighbours = rankingItems(list).filter((n) => n !== item);
+          for (const n of neighbours) {
+            const r = n.getBoundingClientRect();
+            const mid = isGrid ? r.left + r.width / 2 : r.top + r.height / 2;
+            const p = isGrid ? ev.clientX : ev.clientY;
+            const isAfter = item.compareDocumentPosition(n) & Node.DOCUMENT_POSITION_FOLLOWING;
+            const swap = (mutate) => {
+              // reswap keeps the dragged node under the pointer; flipReorder
+              // glides the DISPLACED neighbours into their new slots. The
+              // dragged node is skipped — it is already following the cursor.
+              reswap(() => flipReorder(list, mutate, item));
+              item.style.transform = isGrid
+                ? `translateX(${ev.clientX - startX}px)` : `translateY(${ev.clientY - startY}px)`;
+            };
+            if (isAfter && p > mid) swap(() => list.insertBefore(n, item));
+            else if (!isAfter && p < mid) swap(() => list.insertBefore(item, n));
+          }
+        };
+
+        const onUp = () => {
+          document.removeEventListener('pointermove', onMove);
+          document.removeEventListener('pointerup', onUp);
+          document.body.classList.remove(RANKING.grabbingClass);
+          item.style.position = '';
+          item.style.zIndex = '';
+          item.style.pointerEvents = '';
+          item.style.transform = '';
+          if (dragging) afterRankingReorder(list, item);
+        };
+
+        document.addEventListener('pointermove', onMove);
+        document.addEventListener('pointerup', onUp);
+      });
+    });
+  }
+
   // ─── 10. Reset to start (for QC: ?reset rebuilds the form fresh) ────────
   // Triggered by reload; not exposed here.
 
@@ -533,6 +755,7 @@
   function runInits() {
     initSignaturePads();
     initRatingHover();
+    initRanking();
   }
 
   if (document.readyState === 'loading') {

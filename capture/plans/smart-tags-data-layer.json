@@ -1,0 +1,166 @@
+{
+  "_comment": "Smart Tags long-form tutorial (form 1924 'Sullie's Bakery Catering Request', page /catering-request/). WPForms 2.0.2 refresh of the smart-tag widget surfaces + the two payoff surfaces that need a real server round-trip. Existing builder-settings-notifications / builder-field-options-* snapshots are April 2026 pre-2.0 and are NOT overwritten. Captured at 1720x833 (Umair geometry ruling 2026-09-07): mounted 1:1 in the mac body, no CSS upscale.",
+  "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1924&view=settings",
+  "variants": [
+    {
+      "slug": "builder-smarttag-notifications",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1924&view=settings",
+      "steps": [
+        {
+          "wait": 5000
+        },
+        {
+          "eval": "document.querySelectorAll('.wpforms-education-popup, .wpforms-admin-popup, .jconfirm, #wpforms-builder-lite-notice, .wpforms-alert-info').forEach(function(e){ e.remove(); });",
+          "settle": 400
+        },
+        {
+          "click": ".wpforms-panel-sidebar-section-notifications",
+          "settle": 1800
+        },
+        {
+          "eval": "var w=document.querySelector('#wpforms-panel-field-notifications-1-subject'); if(w){ w.scrollIntoView({block:'center'}); }",
+          "settle": 900
+        }
+      ],
+      "waitFor": ".wpforms-smart-tags-widget-container"
+    },
+    {
+      "slug": "builder-smarttag-general-desc",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1924&view=settings",
+      "steps": [
+        {
+          "wait": 5000
+        },
+        {
+          "eval": "document.querySelectorAll('.wpforms-education-popup, .wpforms-admin-popup, .jconfirm, #wpforms-builder-lite-notice').forEach(function(e){ e.remove(); });",
+          "settle": 400
+        },
+        {
+          "click": ".wpforms-panel-sidebar-section-general",
+          "settle": 1600
+        },
+        {
+          "eval": "var d=document.querySelector('#wpforms-panel-field-settings-form_desc-wrap'); if(d){ d.scrollIntoView({block:'center'}); }",
+          "settle": 900
+        }
+      ],
+      "waitFor": ".wpforms-smart-tags-widget-container"
+    },
+    {
+      "slug": "builder-smarttag-hidden-advanced",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1924&view=fields",
+      "steps": [
+        {
+          "wait": 5000
+        },
+        {
+          "eval": "document.querySelectorAll('.wpforms-education-popup, .wpforms-admin-popup, .jconfirm, #wpforms-builder-lite-notice').forEach(function(e){ e.remove(); });",
+          "settle": 400
+        },
+        {
+          "eval": "var f=document.querySelector('#wpforms-field-4')||document.querySelector('.wpforms-field[data-field-id=\"4\"]'); if(f){ f.click(); } else { throw new Error('hidden field 4 not found'); }",
+          "settle": 1600
+        },
+        {
+          "eval": "var t=document.querySelector('#wpforms-field-option-advanced-4 .wpforms-field-option-group-toggle'); if(t){ t.click(); }",
+          "settle": 1400
+        },
+        {
+          "eval": "var g=document.querySelector('#wpforms-field-option-advanced-4'); if(g){ g.classList.add('wpforms-field-option-group-open'); }",
+          "settle": 600
+        },
+        {
+          "eval": "var r=document.querySelector('#wpforms-field-option-row-4-default_value'); if(r){ r.scrollIntoView({block:'center'}); }",
+          "settle": 900
+        }
+      ],
+      "waitFor": "#wpforms-field-option-row-4-default_value"
+    },
+    {
+      "slug": "builder-smarttag-email-advanced",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1924&view=fields",
+      "steps": [
+        {
+          "wait": 5000
+        },
+        {
+          "eval": "document.querySelectorAll('.wpforms-education-popup, .wpforms-admin-popup, .jconfirm, #wpforms-builder-lite-notice').forEach(function(e){ e.remove(); });",
+          "settle": 400
+        },
+        {
+          "eval": "var f=document.querySelector('#wpforms-field-2')||document.querySelector('.wpforms-field[data-field-id=\"2\"]'); if(f){ f.click(); } else { throw new Error('email field 2 not found'); }",
+          "settle": 1600
+        },
+        {
+          "eval": "var t=document.querySelector('#wpforms-field-option-advanced-2 .wpforms-field-option-group-toggle'); if(t){ t.click(); }",
+          "settle": 1400
+        },
+        {
+          "eval": "var g=document.querySelector('#wpforms-field-option-advanced-2'); if(g){ g.classList.add('wpforms-field-option-group-open'); }",
+          "settle": 600
+        },
+        {
+          "eval": "var r=document.querySelector('#wpforms-field-option-row-2-read_only')||document.querySelector('#wpforms-field-option-row-2-default_value'); if(r){ r.scrollIntoView({block:'center'}); }",
+          "settle": 900
+        }
+      ],
+      "waitFor": "#wpforms-field-option-row-2-default_value"
+    },
+    {
+      "slug": "frontend-catering-prefilled",
+      "targetPath": "/catering-request/",
+      "steps": [
+        {
+          "wait": 2500
+        },
+        {
+          "eval": "['header','nav','.site-header','#masthead','.main-navigation','#site-navigation','form[role=\"search\"]','.search-form','#secondary','.widget-area','aside','footer','.site-footer','#colophon','#wpadminbar','.post-edit-link','.wpforms-form-edit-link'].forEach(function(s){document.querySelectorAll(s).forEach(function(n){n.remove();});});document.body.style.margin='0';",
+          "settle": 400
+        },
+        {
+          "eval": "var e=document.querySelector('#wpforms-1924-field_2'); if(!e||!e.value){ throw new Error('email not prefilled by {user_email} \u2014 check logged-in state'); }",
+          "settle": 300
+        },
+        {
+          "eval": "var e=document.querySelector('.wpforms-description'); if(!e||e.textContent.indexOf('three days notice')===-1){ throw new Error('form description not rendered'); }",
+          "settle": 300
+        }
+      ],
+      "waitFor": ".wpforms-form"
+    },
+    {
+      "slug": "frontend-catering-confirmed",
+      "targetPath": "/",
+      "steps": [
+        {
+          "wait": 2000
+        },
+        {
+          "eval": "window.location.href='/catering-request/';",
+          "settle": 4500
+        },
+        {
+          "eval": "['header','nav','.site-header','#masthead','.main-navigation','#site-navigation','form[role=\"search\"]','.search-form','#secondary','.widget-area','aside','footer','.site-footer','#colophon','#wpadminbar','.post-edit-link','.wpforms-form-edit-link'].forEach(function(s){document.querySelectorAll(s).forEach(function(n){n.remove();});});document.body.style.margin='0';",
+          "settle": 400
+        },
+        {
+          "eval": "var t=document.querySelector('#wpforms-1924-field_3'); if(!t){ throw new Error('message textarea missing'); } t.value='Two dozen sourdough loaves and a birthday cake for Saturday the 14th.'; t.dispatchEvent(new Event('input',{bubbles:true}));",
+          "settle": 600
+        },
+        {
+          "click": "#wpforms-submit-1924",
+          "settle": 6000
+        },
+        {
+          "eval": "['header','nav','.site-header','#masthead','.main-navigation','#site-navigation','form[role=\"search\"]','.search-form','#secondary','.widget-area','aside','footer','.site-footer','#colophon','#wpadminbar','.post-edit-link','.wpforms-form-edit-link'].forEach(function(s){document.querySelectorAll(s).forEach(function(n){n.remove();});});document.body.style.margin='0';",
+          "settle": 400
+        },
+        {
+          "eval": "var c=document.querySelector('.wpforms-confirmation-container-full'); if(!c){ throw new Error('no confirmation container \u2014 submit failed'); }",
+          "settle": 300
+        }
+      ],
+      "waitFor": ".wpforms-confirmation-container-full"
+    }
+  ]
+}

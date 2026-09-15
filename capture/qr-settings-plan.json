@@ -1,0 +1,15 @@
+{
+  "_comment": "QR Code announcement videos — update builder-settings-general in place from sullies-bakery form 1779 (Bakery Favorites Survey). Form pre-seeded via site-eval: qr_code=page, qr_code_page_id=1798, qr_code_generated=http://sulliesbakery.com/bakery-favorites-survey/, logo=wpforms. Builder restoreState() renders the real qr-code-styling SVG and lands data-state=generated (Copy/Download visible). All other QR states live in the same DOM as hidden rows + data-state CSS, so ONE snapshot carries every state.",
+  "variants": [
+    {
+      "slug": "builder-settings-general",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=settings",
+      "steps": [
+        { "wait": 4500 },
+        { "awaitSel": { "sel": ".wpforms-qr-code-preview-canvas svg", "timeout": 20000 }, "settle": 800 },
+        { "eval": "const el = document.querySelector('#wpforms-panel-field-settings-qr_code-content'); const st = el && el.getAttribute('data-state'); if (st !== 'generated') { throw new Error('QR data-state=' + st + ' — expected generated; nothing serialized'); }", "settle": 400 }
+      ],
+      "waitFor": ".wpforms-qr-code-preview-canvas svg"
+    }
+  ]
+}

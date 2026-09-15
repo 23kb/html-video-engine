@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>statusPillMorph + form-morph — QC</title>
+<style>
+  :root {
+    --bg: #14161C; --ink: #ebebed; --ink-mute: #8a8e99;
+    --accent: #E27730; --accent-blue: #0399ED; --ai-purple: #7A30E2;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    overflow: hidden;
+  }
+  .header { padding: 14px 24px; border-bottom: 1px solid #2a2e3a; }
+  .header h1 {
+    margin: 0 0 4px; font-size: 16px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--accent-blue);
+  }
+  .header .desc { font-size: 12px; color: var(--ink-mute); }
+  .header a { color: var(--accent); text-decoration: none; font-size: 12px; }
+  .header code { color: var(--accent); }
+
+  .stage-wrap {
+    position: fixed; inset: 70px 0 96px 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #0d0e10;
+  }
+  /* WHITE-BG stage per Umair 2026-05-11 feedback. The dark gradient/glow
+     made the white pill read as flat. Soft warm gradient gives depth. */
+  .stage {
+    position: relative;
+    width: 1280px; height: 720px;
+    background: linear-gradient(135deg, #f6f7f7 0%, #e8e9e9 100%);
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    transform-origin: center center;
+    color: #2c2f33;
+  }
+  /* Subtle atmospheric tint so the pill has somewhere to sit. */
+  .stage::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 30% 30%, rgba(122, 48, 226, 0.06), transparent 60%),
+      radial-gradient(ellipse at 70% 70%, rgba(226, 119, 48, 0.05), transparent 60%);
+    pointer-events: none;
+  }
+
+  /* Morph host — the SAME DOM node carries identity from pill → form card.
+     This is the wpforms-ai-prompt-open identity-continuity pattern. */
+  .morph-host {
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 480px; height: 64px;
+    margin: -32px 0 0 -240px;  /* center via margin so width/height tween cleanly */
+    background: #fff;
+    border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08),
+                0 1px 3px rgba(0,0,0,0.06),
+                0 0 0 1px rgba(0,0,0,0.04);
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    will-change: width, height, margin, border-radius;
+  }
+
+  /* Status mode (default): pill shows label + spinner */
+  .morph-host .pill-content {
+    display: flex; align-items: center; gap: 12px;
+    color: #2c2f33;
+    font-size: 18px; font-weight: 500;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    letter-spacing: 0.005em;
+    padding: 0 24px;
+    white-space: nowrap;
+  }
+  .morph-host .spinner {
+    width: 16px; height: 16px;
+    border: 2px solid rgba(0,0,0,0.12);
+    border-top-color: var(--ai-purple);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    flex-shrink: 0;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* Form-card mode: revealed AFTER the morph expands the pill */
+  .morph-host .form-card {
+    position: absolute; inset: 0;
+    padding: 36px 40px;
+    opacity: 0;
+    pointer-events: none;
+    text-align: left;
+  }
+  .morph-host .form-card .title-row {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 24px;
+  }
+  .morph-host .form-card .title {
+    font-size: 22px; font-weight: 600; color: #2c2f33; margin: 0;
+  }
+  .morph-host .form-card .check {
+    width: 32px; height: 32px;
+    background: #06A35F; color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; font-weight: 700;
+  }
+  .form-field {
+    margin-bottom: 16px;
+  }
+  .form-field label {
+    display: block; font-size: 13px; font-weight: 500;
+    color: #3C434A; margin-bottom: 6px;
+  }
+  .form-field label .req { color: #d63638; }
+  .form-field input, .form-field textarea, .form-field select {
+    width: 100%; height: 38px; padding: 0 12px;
+    background: #F6F7F7; border: 1px solid #DCDCDE;
+    border-radius: 6px; font: inherit; font-size: 13px;
+    color: #3C434A;
+  }
+  .form-field textarea { height: 76px; padding: 8px 12px; resize: none; }
+  .form-card .submit {
+    height: 40px; padding: 0 20px;
+    background: var(--accent); color: #fff;
+    border: 0; border-radius: 6px; font-weight: 600;
+    cursor: pointer; font-size: 13px;
+    margin-top: 4px;
+  }
+
+  .phase-label {
+    position: absolute;
+    bottom: 18px; left: 50%; transform: translateX(-50%);
+    font-size: 12px; color: #fff;
+    background: rgba(20,22,28,0.90);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: ui-monospace, monospace;
+    z-index: 100;
+  }
+
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    padding: 12px 24px;
+    background: rgba(20,22,28,0.95);
+    border-top: 1px solid #2a2e3a;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .controls button {
+    background: rgba(255,255,255,0.10); border: 0; color: var(--ink);
+    height: 30px; padding: 0 12px; border-radius: 4px; cursor: pointer;
+    font-size: 12px; font-family: ui-monospace, monospace;
+  }
+  .controls button:hover { background: rgba(255,255,255,0.20); }
+  .controls .status {
+    margin-left: auto;
+    color: var(--ink-mute); font-family: ui-monospace, monospace; font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>statusPillMorph + form-morph — identity continuity</h1>
+  <div class="desc">
+    White pill morphs through 5 statuses (Thinking → Filling → Checking → Tightening → Done!).
+    On <strong>Done!</strong>, the same DOM node identity-morphs into a full form card and the fields cascade in.
+    Composes <code>statusPillMorph</code> + <code>fieldStaggerReveal</code>. Source:
+    <a href="../_shared/motion-primitives.js"><code>motion-primitives.js</code></a> ·
+    <a href="index.html">← QC index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="morph-host" id="host">
+      <div class="pill-content" id="pillContent">
+        <div class="spinner"></div>
+        <span id="pillText">Initializing…</span>
+      </div>
+      <div class="form-card" id="formCard">
+        <div class="title-row">
+          <h3 class="title">Customer Feedback</h3>
+          <div class="check">✓</div>
+        </div>
+        <div class="form-field"><label>Full Name <span class="req">*</span></label><input type="text" placeholder="Your full name"></div>
+        <div class="form-field"><label>Email Address <span class="req">*</span></label><input type="email" placeholder="you@example.com"></div>
+        <div class="form-field"><label>How did you hear about us?</label>
+          <select><option>Search engine</option><option>Social media</option></select>
+        </div>
+        <div class="form-field"><label>What can we improve? <span class="req">*</span></label><textarea placeholder="Tell us what worked…"></textarea></div>
+        <button class="submit">Submit Feedback</button>
+      </div>
+    </div>
+    <div class="phase-label" id="phaseLabel">phase: idle</div>
+  </div>
+</div>
+
+<div class="controls">
+  <button id="playBtn">▶ replay</button>
+  <span class="status" id="statusLabel">ready</span>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { statusPillMorph, fieldStaggerReveal } from '/videos/_shared/motion-primitives.js';
+
+function fitStage() {
+  const stage = document.getElementById('stage');
+  const availW = window.innerWidth;
+  const availH = Math.max(200, window.innerHeight - 70 - 60);
+  const sx = availW / 1280;
+  const sy = availH / 720;
+  const scale = Math.min(sx, sy) * 0.96;
+  stage.style.transform = `scale(${Math.max(scale, 0.1)})`;
+}
+fitStage();
+window.addEventListener('resize', fitStage);
+
+const playBtn = document.getElementById('playBtn');
+const phaseLabel = document.getElementById('phaseLabel');
+const statusLabel = document.getElementById('statusLabel');
+const host = document.getElementById('host');
+const pillContent = document.getElementById('pillContent');
+const pillText = document.getElementById('pillText');
+const formCard = document.getElementById('formCard');
+const fields = formCard.querySelectorAll('.form-field, .submit');
+
+const STATUSES = [
+  'Thinking…',
+  'Filling fields…',
+  'Checking formatting…',
+  'Tightening copy…',
+  'Done!',
+];
+
+// Dimensions for morph endpoints. Pill = 480×64, form card = 720×500.
+const PILL_W = 480, PILL_H = 64;
+const CARD_W = 720, CARD_H = 500;
+
+function resetAll() {
+  gsap.killTweensOf([host, pillContent, formCard, ...fields]);
+  // Reset host geometry to pill shape via inline styles
+  gsap.set(host, {
+    width: PILL_W, height: PILL_H,
+    marginTop: -PILL_H / 2, marginLeft: -PILL_W / 2,
+    borderRadius: 999,
+  });
+  gsap.set(pillContent, { opacity: 1, scale: 1 });
+  gsap.set(formCard, { opacity: 0 });
+  gsap.set(fields, { clearProps: 'all' });
+  pillText.textContent = STATUSES[0];
+  phaseLabel.textContent = 'phase: idle';
+}
+resetAll();
+
+async function runSequence() {
+  resetAll();
+  playBtn.disabled = true;
+  statusLabel.textContent = 'running…';
+
+  // ─ Phase 1: status spine via the statusPillMorph primitive
+  phaseLabel.textContent = 'phase: 1 · status spine';
+  const pillTl = statusPillMorph(pillText, STATUSES, {
+    holdEach: 1.0,
+    morphDuration: 0.40,
+  });
+  await new Promise(resolve => {
+    pillTl.eventCallback('onComplete', resolve);
+    pillTl.play();
+  });
+
+  // ─ Phase 2: pill identity-morphs into form card.
+  phaseLabel.textContent = 'phase: 2 · pill morphs into form card';
+  const morph = gsap.timeline();
+  // Step A: fade out the pill spinner+text first so we don't see it stretched
+  morph.to(pillContent, {
+    opacity: 0, scale: 0.96,
+    duration: 0.18, ease: 'power2.in',
+  });
+  // Step B: expand the host. Width/height tween with margin to keep it centered.
+  morph.to(host, {
+    width: CARD_W, height: CARD_H,
+    marginTop: -CARD_H / 2, marginLeft: -CARD_W / 2,
+    borderRadius: 12,
+    duration: 0.62,
+    ease: 'power3.inOut',
+  }, '-=0.06');
+  await morph;
+
+  // ─ Phase 3: form fields cascade in via fieldStaggerReveal primitive
+  phaseLabel.textContent = 'phase: 3 · fields cascade in';
+  gsap.set(formCard, { opacity: 1 });
+  const cascade = fieldStaggerReveal(fields, {
+    duration: 0.50,
+    stagger: 0.09,
+    rise: 18,
+    blurFrom: 6,
+  });
+  await new Promise(resolve => {
+    cascade.eventCallback('onComplete', resolve);
+    cascade.play();
+  });
+
+  phaseLabel.textContent = 'phase: complete · form ready';
+  statusLabel.textContent = 'done';
+  playBtn.disabled = false;
+  playBtn.textContent = '↻ replay';
+}
+
+playBtn.addEventListener('click', runSequence);
+
+// Auto-play on load
+setTimeout(runSequence, 350);
+</script>
+</body>
+</html>

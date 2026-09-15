@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>A2 snapshot-scope fixture</title>
+<style>html,body{margin:0}#stage{position:relative;width:1280px;height:720px;overflow:hidden;background:#223}</style>
+</head>
+<body>
+<div id="stage"></div>
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { IframeManager, WPFormsInteractions, Cursor } from '/videos/_shared/wpforms-interactions.js';
+const R = {};
+try {
+  const stage = document.getElementById('stage');
+  const ifm = new IframeManager(stage, {
+    viewport: { width: 1280, height: 720 },
+    iframeSize: { width: 1280, height: 720 },
+  });
+  await ifm.load('builder-settings-anti_spam');
+  const cursor = new Cursor(stage, { initialX: 640, initialY: 360 });
+  const wi = new WPFormsInteractions(stage, cursor, ifm);
+
+  // 1) no-opts call on a non-default snapshot must throw the SNAPSHOT assert
+  try {
+    await wi.selectFromDropdown('#nope-wrap', 'x');
+    R.noOpts = 'NO THROW (bad)';
+  } catch (e) { R.noOpts = e.message.slice(0, 80); }
+
+  // 2) opts.snapshot passes the assert; proceeds to the find/DOM contract
+  try {
+    await wi.selectFromDropdown('#nope-wrap', 'x', { snapshot: 'builder-settings-anti_spam' });
+    R.withOpts = 'NO THROW (unexpected)';
+  } catch (e) { R.withOpts = e.message.slice(0, 80); }
+
+  // 3) same pattern on toggleSettingControl
+  try {
+    await wi.toggleSettingControl('#nope-wrap', true, { snapshot: ['builder-settings-anti_spam'] });
+    R.toggleWithOpts = 'NO THROW (unexpected)';
+  } catch (e) { R.toggleWithOpts = e.message.slice(0, 80); }
+
+  window.__results = R;
+} catch (e) { window.__results = { error: String(e.message), stack: String(e.stack).slice(0, 400) }; }
+</script>
+</body>
+</html>

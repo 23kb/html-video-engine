@@ -1,5 +1,6 @@
 # Atmospheric Composition
 
+> **HISTORICAL API NOTE (2026-08-28):** code examples below predate the 2026-08-22 engine retirement. The craft rules stand; the `engine/`/`runtime/`/manifest APIs they mention are gone — implement in single-HTML per CLAUDE.md.
 When grain / sweep / parallax / scale-push work, when they distract, and how to layer them without crossing into "Stripe-imitation slop."
 
 `videos/_shared/atmospheric.js` exports five additive helpers, all with `tweenInto(tl, opts)`:
@@ -99,5 +100,4 @@ Atmospheric layers SHOULD run through all three phases (continuous), but the "br
 - `wpforms-marketing` skill — when atmospheric layers fit (editorial / ad-style work).
 - `videos/_shared/atmospheric.js` — source of the 5 helpers.
 - `hyperframes/hyperframes-rest-2/` — reference: editorial REST API composition with atmospheric layering.
-- `docs/stage-css.md` — z-stack interaction with atmospheric layers.
 - `analysis-quality-and-transitions.md` §1.2 — Phase 0 lesson on "atmospherics running but cream pastel WPForms background bleeding through."

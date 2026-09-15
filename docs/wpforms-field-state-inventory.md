@@ -759,7 +759,7 @@ Inline:             wpforms-list-inline
 
 **Snippet — canvas, Choice Layout = Inline:** identical except wrapper class is `wpforms-list-inline` (replacing `wpforms-list-2-columns`).
 
-> Implementation note: pure single-class swap on the field wrapper. Patchable as `setChoiceLayout(doc, fieldId, '1'|'2'|'3'|'inline')` — already shipped in `runtime/dom-prep.js` per the audit. This confirms the existing helper is correct.
+> Implementation note: pure single-class swap on the field wrapper. Patchable as `setChoiceLayout(doc, fieldId, '1'|'2'|'3'|'inline')` — already shipped in `runtime/dom-prep.js` (deleted 2026-08-22 — git history) per the audit. This confirms the existing helper is correct.
 
 **Other Advanced controls** *(not provided in detail; defaults from prior audit)*:
 - Randomize Choices (toggle) — `never` (frontend-only).
@@ -2315,7 +2315,7 @@ Default tag → `skip` for canvas, `narration-only` for the ink-color behaviour 
 1. Claude cross-references each entry against the audit and existing snapshots.
 2. For every state tagged `must` or `nice`, the registry gets one entry.
 3. Status is decided from evidence type:
-   - inline HTML here (or `reference/payoff-snippets/...`) → `supported-exact`.
+   - inline HTML here (or `reference/payoff-snippets/...` — deleted 2026-08-22, git history) → `supported-exact`.
    - "needs capture" → `blocked-needs-truth` with a slug.
    - `skip` / `never` → omitted, or `narration-only`.
 4. Compiler gate (Step 3) reads only the registry.

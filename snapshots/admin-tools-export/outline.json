@@ -1,0 +1,491 @@
+{
+  "slug": "admin-tools-export",
+  "registryPresent": true,
+  "transitions": [],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    },
+    {
+      "target": "admin-tools-export",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=export\"]"
+    },
+    {
+      "target": "admin-tools-entry-automation",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=entry-automation\"]"
+    },
+    {
+      "target": "admin-tools-system",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=system\"]"
+    },
+    {
+      "target": "admin-tools-action-scheduler",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=action-scheduler\"]"
+    },
+    {
+      "target": "admin-tools-logs",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=logs\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-export-form",
+        "tag": "button",
+        "text": "Export",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-export-template",
+        "tag": "button",
+        "text": "Export Template",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-cancel",
+        "tag": "a",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-submit",
+        "tag": "button",
+        "text": "Download Export File",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-clear-datetime-field",
+        "tag": "button",
+        "text": "Clear Start Date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#wpforms-tools",
+        "tag": "div",
+        "text": "Import Export Entry Automation System Info Scheduled Action…",
+        "count": 1,
+        "hidden": false,
+        "nav": "admin-tools-import"
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#nonce",
+        "tag": "input",
+        "text": "d9a6ec8156",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-options-date-flatpickr",
+        "tag": "input",
+        "text": "Select a date range",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-options-search-field",
+        "tag": "select",
+        "text": "Any form field No payment fields found Entry IDEntry NotesI…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-select-statuses",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-selectform",
+        "tag": "select",
+        "text": "Select a Form",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-export-nonce",
+        "tag": "input",
+        "text": "4cda2e4daf",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-form-export",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-form-template",
+        "tag": "select",
+        "text": "Select a Template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__input--cloned",
+        "tag": "input",
+        "text": "null",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-search-box-comparison",
+        "tag": "select",
+        "text": "contains does not contain is is not is empty is not empty",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-search-box-term",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#form-export",
+        "tag": "h4",
+        "text": "Export Forms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#template-export",
+        "tag": "h4",
+        "text": "Export a Form Template",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms All Forms Add New Form Entries Payments NEW! Form T…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-tools-entries-export",
+        "tag": "form",
+        "text": "Select a Form",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-notice",
+        "tag": "div",
+        "text": "If you need to export entries on a regular basis, you can n…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-options",
+        "tag": "div",
+        "text": "Form Fields The form does not have any fields for export. P…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-options-additional-info",
+        "tag": "section",
+        "text": "Additional Information Select All Entry ID Entry Date Entry…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-options-date",
+        "tag": "section",
+        "text": "Custom Date Range",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-options-fields",
+        "tag": "section",
+        "text": "Form Fields The form does not have any fields for export.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-options-fields-checkboxes",
+        "tag": "div",
+        "text": "The form does not have any fields for export.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-options-payment-fields",
+        "tag": "section",
+        "text": "Payment Fields The form does not have any fields for export.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-options-payment-fields-checkboxes",
+        "tag": "div",
+        "text": "The form does not have any fields for export.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-options-search",
+        "tag": "section",
+        "text": "Search Any form field No payment fields found Entry IDEntry…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-options-status",
+        "tag": "section",
+        "text": "Status No choices to choose from",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-options-type-info",
+        "tag": "section",
+        "text": "Export Options Export in Microsoft Excel (.xlsx) Separate d…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-process-msg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-selectform-msg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-entries-export-selectform-spinner",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "Select a FormAll-Fields FixtureBlank Capture FormBlank Form…",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "Export Entries Select a form to export entries, then select…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-setting-row",
+        "tag": "div",
+        "text": "Export Entries Select a form to export entries, then select…",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-tools-export-date-selector-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

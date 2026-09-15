@@ -1,5 +1,6 @@
 # GSAP Discipline (L0)
 
+> **HISTORICAL API NOTE (2026-08-28):** code examples below predate the 2026-08-22 engine retirement. The craft rules stand; the `engine/`/`runtime/`/manifest APIs they mention are gone — implement in single-HTML per CLAUDE.md.
 Universal rules. Apply regardless of authoring mode, surface mode, or
 storyboard. These are correctness/perf rules - the equivalent of "don't write
 SQL injection." They are not style choices.
@@ -114,7 +115,7 @@ Wrong:
 gsap.to(el, { width: '60%', top: 200 });
 ```
 
-Architecture note: `runtime/cinematic-rough-thought-to-draft.js:439-446`
+Architecture note (source removed 2026-08-22; pattern preserved in git history):
 currently morphs `width`, `minHeight`, `borderRadius`, and `padding` inside a
 timeline. That is a proven cinematic implementation, but it is not a new
 chapter-authoring contract. New work should use transform/filter/SVG motion or
@@ -162,7 +163,7 @@ if (spec.split) {
 ```
 
 ```js
-// runtime/cinematic-one-answer-enough.js:326-332
+// one-answer-enough concept (removed 2026-08-22; git history)
 await new Promise((resolve) => gsap.timeline({ onComplete: resolve })
   .to(cue, { opacity: 0, y: 8, duration: 0.18, ease: 'power2.in' }, 0)
   .to(wave, { opacity: 0.42, scale: 1.06, duration: 0.42, ease: 'power2.out' }, 0)
@@ -187,7 +188,7 @@ tomorrow. Vendor or pin.
 Correct:
 
 ```js
-// videos/_shared/kit.js
+// inline in your film (kit.js retired 2026-08-22)
 const s = document.createElement('script');
 s.src = '/vendor/gsap/3.15.0/gsap.min.js';
 s.onload = () => resolve(window.gsap);
@@ -213,12 +214,12 @@ the forensic source of warm pages is often a forgotten infinite repeat.
 Correct:
 
 ```js
-// runtime/cinematic-rough-thought-to-draft.js:493
+// rough-thought-to-draft concept (removed 2026-08-22; git history)
 gsap.to(dots, { opacity: 1, y: -4, duration: 0.32, ease: 'sine.inOut', stagger: 0.12, repeat: 2, yoyo: true });
 ```
 
 ```js
-// runtime/cinematic-one-answer-enough.js:313-317
+// one-answer-enough concept (git history)
 await new Promise((resolve) => gsap.timeline({ onComplete: resolve })
   .to(cue, { opacity: 1, y: 0, duration: 0.22, ease: 'power2.out' }, 0)
   .to(form, { x: -8, duration: 0.06, repeat: 5, yoyo: true, ease: 'power1.inOut' }, 0)
@@ -300,16 +301,17 @@ rewriting the rulebook.
 
 ## Status of L0 enforcement in this repo
 
-None of these rules is currently checked by `tools/validate-video.js`. The
-rulebook is documentation, not gating. Authors and reviewers enforce it by
-reading. Future enhancement: a small lint rule for common violations
-(`opacity`-for-show/hide, `repeat: -1`) could land if violations accumulate.
+Most of these rules are enforced by reading, not gating. Two exceptions have
+since landed: `tools/lint-determinism.js` catches `repeat: -1` (and the other
+determinism violations), and the `tools/hooks/video-guard.js` PreToolUse hook
+blocks `repeat: -1`, hand-mounted cursors, and single-tween cameras at
+write-time. The rest (`opacity`-for-show/hide etc.) stays author-enforced.
 
 ## Cleanup + Effects Patterns
 
 ### `awaitTween(tweenOrTimeline, { duration, fallbackMs })`
 
-Use `awaitTween()` from `videos/_shared/kit.js` when chapter code must wait for
+For wall-clock waits use a local `sleep = ms => new Promise(r => setTimeout(r, ms))` when code must wait for
 a GSAP tween/timeline but cannot rely on RAF-driven `onComplete`. Hidden tabs
 and headless smoke tests may throttle RAF heavily enough that `onComplete`
 never fires. `awaitTween()` resolves from the tween's expected duration plus a
@@ -318,7 +320,7 @@ out in `analysis-quality-and-transitions.md` §2.5.
 
 ### `withGsapContext(fn, scope)`
 
-Use `withGsapContext()` from `videos/_shared/kit.js` when an effect mounts
+Wrap mounted animation scopes in plain `gsap.context()` when an effect mounts
 temporary animation state that should be cleanly reverted at beat end or
 chapter swap. It wraps `gsap.context(fn, scope)` and returns `{ ctx, revert }`
 so chapter-local code can keep cleanup ergonomics consistent.
@@ -337,7 +339,7 @@ new or intentionally touched authoring surfaces.
 
 ## Frame Driver Patterns
 
-### Registered timelines (frame-driver opt-in)
+### Master timeline + instrumentation globals
 
 Editorial-layer GSAP timelines may opt in to runtime ownership via
 `registerTimeline(tl, { id })` from `videos/_shared/kit.js`. The frame

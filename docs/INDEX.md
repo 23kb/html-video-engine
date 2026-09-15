@@ -2,130 +2,102 @@
 
 One-line-per-doc map. Use this to find the right doc fast instead of grepping.
 
-For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.md`). Skills aggregate the high-frequency rules; the docs below are the deeper canonical reference material the skills link to.
+For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.md`). Skills aggregate the high-frequency rules; the docs below are the deeper canonical reference material.
 
-## Authoring contracts and skeletons
+Refreshed 2026-08-22 after legacy retirement: engine/manifest-path docs removed; every video is now single-HTML.
 
-- `authoring-prompts/README.md` — Reusable prompt templates for kicking off new video sessions. Per-kind copy-paste-then-fill-the-blanks briefs. Currently `builder-frontend-split.md` (single-field tutorial with builder left + frontend mirror right). Catalog will grow; README lists TODO kinds + future CLAUDE.md/skill-context wiring.
-- `authoring-api.md` — Public authoring contract. Manifest schema, chapter exports, descriptor mode, transitions, ctx helpers, validator behavior.
-- `current-workflow.md` — Thin pointer doc; the workflow loop lives in `wpforms-video` skill.
-- `kacie-intro-outro-recording-spec.md` — Recording spec for Kacie's real intro/outro bookends (standing delivery shape 2026-07-23) + pipeline notes: intake validation, stitch order, voice-seam QC, open Sullie-placement question.
-- `dom-prep.md` — Three-layer DOM staging model: universal baseline → per-snapshot profile → chapter-local delta.
-- `video-production-templates.md` — Storyboard / chapter / snapshot checklist + token budget + smoke spec.
-- `examples/legacy-manifest-skeleton.md` — Default manifest copy target.
-- `examples/legacy-chapter-skeleton.md` — Default legacy/effect-mode chapter shape.
-- `examples/legacy-postintro-effect-skeleton.md` — Video-local postIntro skeleton (HTML/CSS/SVG/GSAP).
-- `examples/legacy-audio-cued-skeleton.md` — Timestamp-locked narration with `waitAt(t)`.
-- `examples/choice-field-generate-choices-skeleton.md` — Choice-field AI Generate Choices flow.
+## Authoring contracts
 
-## PostIntro
+- `storyboard-format-morph-chain-2026-05-10.md` — REQUIRED morph-chain storyboard section for editorial films. Authoring contract.
+- `ad-camera-gap-analysis-2026-09-03.md` — Why the first WPVibe ad stayed dull through five QC rounds: a parked camera (5 framings/44s). Doctrine split (cut vs re-frame), `## Camera plan` storyboard section, `makeStageCamera` for editorial DOM, composition-scan ad band, motion-audit parked-stage ceiling. What landed / what is deferred.
+- `kacie-intro-outro-recording-spec.md` — Real Kacie intro/outro bookends (delivery shape since 2026-07-23) + pipeline notes.
+- `examples/` — **The first-write skeletons (INV-16):** `single-html-tutorial-skeleton.html` (tutorial: postIntro → chapters, no bookends, `BGM_PREVIEW`, sentinels, `// PAYOFF:` slot), `single-html-ad-skeleton.html` (pure-editorial / ad / mixed: playback + instrumentation contract), `single-html-postintro-skeleton.html` (postIntro block: named eases + primitives pre-wired). The 9:16 short skeleton lives at `reference/html-templates/vertical-short-skeleton.html`. `choice-field-generate-choices-skeleton.md` is engine-era (historical API note).
+- `authoring-prompts/README.md` — Reusable fill-the-blanks briefs for new video sessions (`builder-frontend-split.md`; the README lists TODO kinds).
+- `video-production-templates.md` — Storyboard / snapshot checklist / token budget / smoke-spec templates (read only the section needed).
+- `vertical-shorts.md` — The 9:16 path: crop-don't-shrink, band layout, zoom floor, stage-driven resolution. Read before portrait geometry work.
+- `kacie-intro-outro-recording-spec.md` — see above; `road-to-wpforms-2-handoff.md` — The Road recap film handoff (built, tier A; 2 siblings parked).
+- `wpforms-chatgpt-wpvibe-ad-handoff.md` — WPForms + ChatGPT ad (Ask River exact-replica, Mixed): paste-ready kickoff prompt, every captured source, rulings, capture gotchas, ElevenLabs audio brief, gate ledger. Storyboard APPROVED 2026-09-08 at `videos/wpforms-chatgpt-wpvibe-ad/storyboard.md`.
+- `lessons-index.md` — Index of the `LESSONS-*.md` files inside video folders (59 on disk as of 2026-09-14, grouped by track; 6 tutorial files unmined) + the standing capability asks.
+- `lessons-mining-2026-08-28.md` + `engine-action-points-2026-08-28.md` — The 2026-08-28 mining ledger and the ranked tooling/skill action points it produced (AP-1..20; the S-effort items shipped 2026-08-28).
+- `lessons-mining-2026-09-14.md` — The 2026-09-14 ledger: the reference-driven ad batch (`yjc` `cja` `itf` `cgw` `wcr` `wvb`) and the 2026-09-04/05 shorts, per-entry verdicts, 18 action points, the OPEN items for Umair.
+- `examples/qc-probe-skeleton.mjs` — Per-film QC probe skeleton (clone to `videos/<slug>/qc-probe.mjs` on v1): pointer-tip-inside-subject, monotonic camera move, frame-still window, computed colour/font, park-state visibility, `<img>` decoded, in-frame.
+- `shorts-qc-2026-08-13.md` — Shorts QC ledger: dead-time verdicts per short, the ≤2s band-run rule, animated-bookends ruling.
+- `ga4-video-priorities/README.md` — The curated next-video list (GA4 export): start here for "what video should we make next".
 
-- `postintro-patterns.md` — PostIntro design rules + canonical references + multi-animation rule rationale. Owned by `wpforms-postintro` skill.
+## PostIntro / craft
 
-## Authoring craft (granular references)
+Craft docs below carry a **HISTORICAL API NOTE (2026-08-28)**: their code examples predate the engine retirement; the craft rules stand.
 
-- `cursor-choreography.md` — `park` / `glideTo` / `dragGrab` / via-waypoint patterns.
-- `narration-writing.md` — voice, pacing, sentence shape, beat coupling.
-- `beat-pacing.md` — 6-second rule, splitting heuristics.
-- `camera-lensing.md` — `level` reading guide (1.0 / 1.18 / 2.2 / 2.4), pad, when to pick which.
-- `stage-css.md` — z-stack of every layer, leak surfaces, when to hide what, surface modes.
-- `color-palette.md` — WPForms brand orange + supporting accents, when to use which.
-- `atmospheric-composition.md` — when grain / sweep / parallax / scale-push work, layering rules.
-- `audio-mastering.md` — narration / BGM volume, ducking, SFX channels, `narrationSpeed`.
-- `selector-hygiene.md` — `_selectors.js` pattern, when selectors break, validator coverage.
-- `title-card-voice.md` — intro/outro shape, `subtitleVariants` array, CTA tone.
+- `postintro-patterns.md` — PostIntro design rules + multi-animation rule rationale. Owned by `wpforms-postintro` skill. (historical API note)
+- `cursor-choreography.md` — park / glide / drag / via-waypoint patterns. (historical API note)
+- `narration-writing.md` — Voice, pacing, sentence shape, beat coupling. (historical API note)
+- `beat-pacing.md` — 6-second rule, splitting heuristics. (historical API note)
+- `camera-lensing.md` — Zoom-level reading guide (1.0 / 1.18 / 2.2 / 2.4), pad, when to pick which. (historical API note)
+- `color-palette.md` — Brand orange + supporting accents. (historical API note)
+- `atmospheric-composition.md` — Grain / sweep / parallax / scale-push usage rules. (historical API note)
+- `selector-hygiene.md` — Selector source hierarchy, when selectors break. (historical API note; `_selectors.js` modules are engine-era — selectors live inline in the film now)
+- `audio-mastering.md` — **SUPERSEDED** (manifest/runtime-era audio). Live truth: `tools/render-singlehtml-audio.js` header (`--bgm-volume` bands, ducking, post-render check), `videos/_shared/narration.js`, `tools/sfx/CONTEXT.md`.
+- `title-card-voice.md` — **SUPERSEDED** (manifest-era intro/outro cards; tutorials carry no bookends since 2026-08-28). Its CTA-tone rules still read for shorts / editorial end cards.
 
 ## GSAP / animation
 
-- `gsap-rules.md` — L0 GSAP discipline canonical reference. Owned by `wpforms-gsap-rules` skill.
-- `gsap-flip-patterns.md` — Flip patterns: morphs, reflows, real-UI clones.
-- `effects-library.md` — `videos/_shared/effects.js` API: highlightPulse, fieldBurst, labelReveal, popOutTilt, cardReflow.
-- `frame-driver.md` — Paused-timeline driver contract. Read when registering timelines or migrating cinematics.
-- `pause-manager.md` — Pause/seek + `pausableRaf` contract.
+- `gsap-rules.md` — L0 discipline canonical reference (deep version). Owned by `wpforms-gsap-rules` skill. (historical API note — its registered-timeline / frame-driver / kit.js sections are retired; the master-timeline contract in the skill replaces them)
+- `gsap-flip-patterns.md` — Flip patterns: morphs, reflows, real-UI clones. (historical API note — sandbox chapter paths are gone)
+- `effects-library.md` — Registered-effect API in `videos/_shared/effects.js` (highlightPulse, fieldBurst, labelReveal, popOutTilt, cardReflow). (historical API note — `kit.js awaitTween` in the examples is gone)
+- `hyperframes-seam-grammar-rnd-2026-09-03.md` — Seam-transition recipes R&D'd from HeyGen's claude-paper-launch film: inverse zoom-through, leftward cut-the-curve, pixel-matched cut, position-locked crossfade, cursor velocity-split handoff, humanized typing. Code-first; prove video-local, promote on second use.
 
-## Transitions / surface modes / camera
-
-- `transitions.md` — Surface modes (`iframe` / `editorial` / `mixed`) + swap styles + `flipBridge`. Owned by `wpforms-transitions` skill.
-- `camera-poses.md` — Named camera-pose vocabulary (`focus`, `station`, `overview`).
-- `shared-scene.md` — Multi-chapter persistent Three.js / editorial scenes (used by `wpforms-rest-api-overview-polished`).
-
-## Marketing / ad-style / editorial
+## Marketing / editorial
 
 - `blocks.md` — `videos/_shared/blocks/` API: code-card, mac-window, phone-frame, pill, arrow, route-line, terminal.
 - `text-kit.md` — Pixel-Point-style text reveal presets.
-- `lottie-kit.md` — Lottie integration (bumpers, stings, badges, marker-driven micros).
+- `lottie-kit.md` — Lottie bumpers, stings, badges, marker micros. (historical API note — examples import a per-video `_kit.js`)
+- `sound-design-reference-2026-05-12.md` — **SUPERSEDED** by the shipped SFX pipeline: `tools/sfx/CONTEXT.md` (plan / tracks / clips / mux) + `tools/render-singlehtml-audio.js` (BGM + ducking). Historical plan doc.
 
-## Render / preview
+## Render / preview / QC
 
-- `render.md` — `tools/render.js` MP4 export. Wall-clock for tutorials, `--seek` only for `surface: editorial`.
-- `preview.md` — `tools/preview.js` live-reload server + scrubber UI.
-
-## Determinism / linting
-
+- `qc-dashboard.md` — **The QC surface.** Gate chips, render + dead-time bands, filmstrip, timestamped feedback notes. How to populate `qc-report.json` before a handoff and how the feedback block works.
+- `render.md` — MP4 pipeline: `render-singlehtml-audio.js` (ship path — narration + ducked BGM, stage-driven resolution, whole-second audio pad), `render-html.js` (silent), `stitch.js` (Kacie bookends). Rewritten 2026-08-28.
+- `preview.md` — Live-reload server notes.
 - `deterministic-logic.md` — Render-parity rules: no `Date.now()`, no unseeded `Math.random()`, no `fetch()`.
-- `deterministic-logic-findings.md` — Existing-video violations logged by the linter.
+- `deterministic-logic-findings.md` — **SUPERSEDED** (2026-05 linter pass over engine-era files that no longer exist). Re-run `node tools/lint-determinism.js --all` for the live picture.
+- `probe-playbook.md` — Playwright probe rules with receipts (pixel truth, console filters, beat contracts).
 
-## Skills
+## Architecture
 
-- `skills.md` — Skill bundle index.
+- `video-architecture-invariants-2026-05-12.md` — INV-1..16 hard rules for single-HTML videos, each cross-referenced to its teaching commit. Read before any new film. (INV-11 and INV-16 carry 2026-08-28 amendment notes: no tutorial bookends; first write = the `docs/examples/` skeleton.)
+- `snapshot-interactivity.md` — Conventions for `snapshots/_shared/interactivity.js`: transition registry, canvas/options model, admin-side systems.
 
-## Sound design (queued — not yet implemented in new architecture)
+## System context
 
-- `sound-design-reference-2026-05-12.md` — Reference doc combining (a) the "Music and SFX Selection for Tech Demo Videos" skill content received 2026-05-12, (b) our existing in-repo SFX pipeline state (`runtime/sfx.js` + `scenes/shared.js` BGM/ducking, engine-path coupled), and (c) gap analysis + recommended workflow for wiring sound into the new single-HTML pattern. Includes music matching matrix by content type, mix levels in dB, ducking specs (S-curve, 100-200ms attack, -6 to -8 dB reduction), royalty-free sources, and a 5-phase implementation plan for when sound work is greenlit.
+- `rulebook.md` — ~240 IF/THEN session rules mined from all LESSONS files; each names an enforcement slot + receipt. Read before first beat.
+- `track3-analysis-2026-09-03.md` — Track 3 reference analysis (Umair's 17-video drop): the measured bar for postIntro / TTS+script / sound / motion, what was built, and the pending U-items awaiting his ruling. Evidence in `reference/New folder/_extraction/_analysis/`.
+- `skills.md` — Index of the 9 live skills (procedural vs reference) + retired / file-read-only notes.
+- `jake-moran-workflow-adoption-2026-08-06.md`, `video-system-improvements-2026-08-06.md`, `video-system-improvements-round2-2026-08-08.md`, `fix-round-2026-08-14/`, `motion-design-round-2026-08-17/` — Dated system-improvement rounds (historical record of rulings + specs).
+- `product-truth/` — Per-feature plugin-truth notes captured during builds (entry-automation, anti-spam, custom-css, form-analytics, qr-code...). Each video doubles as a doc audit; log divergences here.
+- `surfaces/` — Per-builder-surface interaction notes (e.g. builder-settings-notifications).
 
-## Single-HTML video architecture (NEW default for tutorial videos)
+## Field / UI inventories (query, don't full-read)
 
-- `video-architecture-invariants-2026-05-12.md` — **11 hard rules (INV-1 through INV-11) for single-HTML videos.** Stage at native + no transform, iframe at native + single direct camera transform, mac frame is outer chrome only, cursor stage-local, snapshot field IDs vary per capture, smoothScrollIntoView before glide, library as reference (3-test promotion), pointer-events: none guard, determinism, real brand, required Intro→PostIntro→Tutorial→Outro shape. Cross-references each invariant to the commit it was learned from. Read before any new single-HTML video work.
-- `pilot-videos-plan-2026-05-12.md` — Original plan for the 3 pilot videos (editorial / mixed / tutorial). Reference for snapshot inventory + storyboard structure.
-- `library-scope-frequency-2026-05-12.md` — Empirical audit of 20 WPForms.com docs frequency-ranking interactions. Wave 2 Batch A retrospective: ~6 of 15 methods earned library status by ≥3-doc threshold. Use to decide library promotion candidates.
-- `engine-redundancy-audit-2026-05-12.md` — Per-export classification of engine + runtime: REPLACED / REPLACEABLE / WPFORMS-PORTABLE / LOAD-BEARING / DEAD. Reference for any engine-slimming work.
-- `engine-vs-libraries-architecture-2026-05-12.md` — Revised verdict after user pushback: engine is transitional, libraries can subsume. ~6,000 LOC deletable if all production migrates to single-HTML. But existing 12 videos stay on engine — engine is load-bearing for legacy.
-
-## System audits / postmortems / strategic context
-
-- `editorial-direction-audit-2026-05-10.md` — **Master synthesis + 7-phase plan after 3 failed editorial attempts.** Read this first if working on editorial-track.
-- `winning-pattern-analysis-2026-05-10.md` — What 3 winning videos share vs 3 failed editorial videos (Agent B).
-- `wpforms-source-inventory-2026-05-10.md` — Real WPForms brand + motion + UI inventory from live plugin source.
-- `engine-reading-notes-2026-05-10.md` — Engine primitive usage counts, what bypassing costs, when engine helps vs hurts.
-- `storyboard-format-morph-chain-2026-05-10.md` — Editorial storyboard format addition: required morph-chain section. Authoring contract.
-- `phase-2-skill-installs-report-2026-05-10.md` — Codex's Phase 2 outputs: 5 skills installed, custom `wpforms-motion-audit` skill built.
-- `engine-runtime-optimization-audit-2026-05-11.md` — Phase 5c Track 1 review-only proposals: dead primitives, duplication, hot-path logging.
-- `tools-optimization-audit-2026-05-11.md` — Phase 5c Track 2 review-only proposals: validator I/O, ffprobe caching, orphan scripts.
-- `skill-doc-token-audit-2026-05-11.md` — Phase 5c Track 3 review-only proposals: skill bloat, doc redundancy, broken refs.
-- `polish-vocabulary-2026-05-11.md` — Phase 5g (Codex): rest-api polished-vs-unpolished deltas; tutorial-polish primitive candidates.
-- `repo-architecture-audit-hyperframes.md` — Strategic context (Phase 2 + Phase 4b execution slice).
-
-## Field / UI inventories (canonical reference, not for full-read)
-
-- `wpforms-field-state-inventory.md` — Canonical field-state inventory (132 KB). **Do not full-read.** Query via `node tools/field-state.js --field <name>`. Cross-referenced from: `wpforms-video`, `wpforms-postintro`, `wpforms-transitions` (after Phase 5a).
+- `wpforms-field-state-inventory.md` — Canonical field-state inventory (132 KB). Query via `node tools/field-state.js --field <name>`.
 - `wpforms-ai-state-inventory.md` — WPForms AI UI state references.
-- `snapshot-interactivity.md` — Canonical conventions for `snapshots/_shared/interactivity.js`: transition registry, canvas/options model, admin-side systems (cross-snapshot nav, entrance fx, promote API), and the supporting tools.
-- `snapshot-health-report.md` — Snapshot inventory health (hand-written; not regenerated by tooling).
-
-## Per-video handoffs (read only when working on that video)
-
-- `checkboxes-rescue-handoff.md` — Working notes for `a-complete-guide-to-the-checkboxes-field`.
-- `wpforms-ai-guided-handoff.md` — Working notes for `build-forms-faster-with-wpforms-ai`.
-
-## Followups / backlog
-
-- `helper-rollout-backlog.md` — Candidate beats for `popOut` / `cursor.glideTo` / `lineDraw` rollout.
+- `snapshot-health-report.md` — Snapshot health (local-only; hand-written).
 
 ## Repo-root references
 
-- `CLAUDE.md` — Operator manual for Claude Code. Always loaded by Claude Code sessions. Boot order + path-decision tree + protected core + validation + push-back triggers.
-- `BACKLOG.md` — Living architectural-debt + future-phase candidate list.
-
-## Brand canonical truth
-
-- `reference/wpforms-brand/BRAND.md` — Canonical WPForms brand reference (colors, typography, Sullie, AI chat structure, real templates API). Use this; do not invent brand details.
-- `reference/wpforms-brand/tokens.css` — Drop-in CSS variables for any video.
-- `reference/wpforms-brand/assets/` — Real Sullie + loading-avatar + loading-spinner SVGs from plugin source, plus AI 3-dot chat spinner.
-- `reference/html-templates/` — Canonical clone-and-customize HTML video templates (the 3 winners + their per-beat specs).
+- `reference/New folder/new/analysis/README.md` — 11 reference-film reconstruction profiles with 24fps evidence: camera/object/text choreography, phased transitions, sound and HTML mapping. Search `catalog.json`, then read the chosen record in `recreation-library.json`; `index.html` provides video/shot/sheet review.
+- `CLAUDE.md` — Operator manual. Boot order, path decision tree, protected areas, validation.
+- `BACKLOG.md` — Living debt + future candidates (local-only, gitignored).
+- `implementation-notes.html` — Instruction-fidelity post-mortem behind CLAUDE.md's G1–G4 gates.
+- `reference/wpforms-brand/BRAND.md` — Canonical brand truth (colors, type, Sullie, real templates API).
+- `reference/html-templates/` — Style references for editorial work (the winners + per-beat specs) plus `vertical-short-skeleton.html`, the 9:16 first-write clone. Editorial / tutorial first writes clone `docs/examples/`.
 
 ## Code libraries (use, do not reinvent)
 
-- `videos/_shared/motion-primitives.js` — Executable motion primitives: `cinematicFlight`, `figjamFlight`, `focusStationOverview` (cameras); `Cursor` class with glide/click/hover/drag; `caretType`, `statusPillMorph`, `markerSweep`, `popOut`, `fieldStaggerReveal`, `mountSullieBug`, `cleanFastRejoin`, plus utilities. Owned by `wpforms-primitives` skill. QC at `videos/_qc-primitives/`.
-- `videos/_shared/wpforms-interactions.js` — Standard WPForms interactions. **Wave 1 (builder/admin):** `navAddNewForm`, `selectTemplate`, `navWPFormsSidebarMenu`, `openFormInList`, `dragFieldToForm`, `openFieldOptions`, `navBuilderSidebar`, `openSettingsTab` + sub-interactions. **Wave 2 Batch A (notifications + CL):** `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, `duplicateNotificationBlock`, notification setters (per `docs/library-scope-frequency-2026-05-12.md` retrospective ~6/15 earned status). **Plus `IframeManager`** with engine-pattern direct camera transform, OVERSAMPLE=1, pointer-events: none guard. Owned by `wpforms-primitives` skill. QC at `videos/_qc-interactions/`.
-- `videos/_shared/builder-frontend-split.js` — `BuilderFrontendSplit` class: split-screen authoring helper (builder left + frontend mirror right). Mounts two `IframeManager`s, auto-bridges `wpf:field-state` messages from builder to frontend, exposes `fadeInFrontend / fadeOutFrontend / isolateFrontend / showAllFrontend / setFieldState`. Mirror is automatic because `snapshots/_shared/interactivity.js` broadcasts and `snapshots/_shared/frontend.js` applies. Skeleton: `videos/_examples/builder-frontend-split-skeleton/index.html`. QC: `videos/_qc-frontend-mirror/index.html`.
-- `docs/wpforms-interactions-library-2026-05-11.md` — Per-interaction usage doc (template button variants, hover-state inventory, sub-interaction notes).
+- `videos/_shared/motion-primitives.js` — Cameras (`cinematicFlight`, `figjamFlight`, `focusStationOverview`), `Cursor`, typing (`caretType`, `typeIntoIframeInput`), reveals, brand bug, utils. QC: `videos/_qc-primitives/`.
+- `videos/_shared/wpforms-interactions.js` — `IframeManager` (mount/swap/preload + camera transform), builder/admin interactions Wave 1–2. QC: `videos/_qc-interactions/`.
+- `videos/_shared/narration.js` — say/beat/wait/startBGM + hardened awaits. Self-contained.
+- `videos/_shared/iframe-helpers.js` — `glideClick`, text-finding helpers for SaaS captures with hashed classes.
+- `videos/_shared/builder-frontend-split.js` — Split-screen builder⇄frontend mirror harness. Skeleton: `videos/_examples/builder-frontend-split-skeleton/`. QC: `videos/_qc-frontend-mirror/`.
+- `videos/_shared/effects/` — Named editorial effects vocabulary (text stacks, card fans, constellations). QC: `videos/_qc-effects/`.
+- `videos/_shared/instruments.js` — Payoff instruments + state chips (C-SPEC C5). QC: `videos/_qc-instruments/`.
+- `videos/_shared/shorts-kit.js` — 9:16 bookends/stings/surround. QC: `videos/_qc-shorts-kit/`.

@@ -1,0 +1,68 @@
+{
+  "_comment": "Ranking field video captures — form 1779 Bakery Favorites Survey, ranking field ID 5. Run capture/probe-chrome.js FIRST to confirm the tab + layout-select selectors before executing; the text-matching evals below are the robust fallback either way.",
+  "variants": [
+    {
+      "slug": "builder-fields-ranking",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields",
+      "steps": [
+        { "wait": 4500 }
+      ],
+      "waitFor": "#wpforms-panel-fields"
+    },
+    {
+      "slug": "builder-field-options-ranking",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields",
+      "steps": [
+        { "wait": 4500 },
+        { "eval": "jQuery('#wpforms-field-5').trigger('click')", "settle": 1500 }
+      ],
+      "waitFor": ".wpforms-field.active"
+    },
+    {
+      "slug": "builder-field-options-ranking-advanced",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields",
+      "steps": [
+        { "wait": 4500 },
+        { "eval": "jQuery('#wpforms-field-5').trigger('click')", "settle": 1500 },
+        { "eval": "[...document.querySelectorAll('.wpforms-field-option-group-toggle, .wpforms-field-options-tab, a, button')].find(e => /^\\s*Advanced\\s*$/i.test(e.textContent))?.click()", "settle": 1200 }
+      ],
+      "waitFor": ".wpforms-field.active"
+    },
+    {
+      "slug": "builder-field-options-ranking-grid",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields",
+      "steps": [
+        { "wait": 4500 },
+        { "eval": "jQuery('#wpforms-field-5').trigger('click')", "settle": 1500 },
+        { "eval": "[...document.querySelectorAll('.wpforms-field-option-group-toggle, .wpforms-field-options-tab, a, button')].find(e => /^\\s*Advanced\\s*$/i.test(e.textContent))?.click()", "settle": 1200 },
+        { "eval": "jQuery('#wpforms-field-option-5-input_layout').val('grid').trigger('change')", "settle": 2000 }
+      ],
+      "waitFor": ".wpforms-field.active"
+    },
+    {
+      "slug": "frontend-ranking-form",
+      "targetPath": "/bakery-favorites-survey/",
+      "steps": [
+        { "wait": 3000 }
+      ],
+      "waitFor": ".wpforms-field-ranking"
+    },
+    {
+      "slug": "admin-entries-ranking-results",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-entries&view=list&form_id=1779",
+      "steps": [
+        { "wait": 4000 }
+      ],
+      "waitFor": "#wpforms-entries-table, .wpforms-entries-table"
+    },
+    {
+      "_note": "URL confirmed from plugin source: wpforms-surveys-polls/src/Admin.php:191-201 builds page=wpforms-entries&view=survey&form_id=<id>. The on-camera click target in ch5 is a.wpforms-survey-graph-view-all (templates/entries/legend.php:33).",
+      "slug": "sp-results-ranking-full",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-entries&view=survey&form_id=1779",
+      "steps": [
+        { "wait": 4500 }
+      ],
+      "waitFor": ".wpforms-survey-graph, .wpforms-survey-graph-content-legend, body"
+    }
+  ]
+}

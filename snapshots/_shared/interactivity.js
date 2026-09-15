@@ -1900,8 +1900,362 @@
   // Each transition declares the event it listens on, a match predicate,
   // and an apply function that mirrors what the plugin's JS would do.
 
+  // ─── Ranking field (builder side) ────────────────────────────────────────
+  // Capture strips all JS, so the options panel is inert: tabs don't switch,
+  // and adding/removing a choice never reaches the preview. Structures below
+  // are lifted from the real capture, not invented:
+  //   options tabs   a.wpforms-field-option-group-toggle
+  //   option groups  .wpforms-field-option-group(.active) > .…-group-inner
+  //   choices rows   ul.choices-list > li[data-key] > input.label
+  //   canvas preview ul.wpforms-ranking-preview
+  //                    > li.wpforms-ranking-preview-item
+  //                        > span.wpforms-ranking-preview-label
+
+  function rankingFieldOf(el) {
+    const opt = el.closest('[class*="wpforms-field-option-"]');
+    const id = opt && (opt.id || '').match(/wpforms-field-option-(?:row-)?(\d+)/);
+    const fid = id ? id[1] : (opt && opt.dataset && opt.dataset.fieldId);
+    return fid ? document.getElementById('wpforms-field-' + fid) : null;
+  }
+
+  function rankingOptionRows(scope) {
+    return Array.from(scope.querySelectorAll('.wpforms-field-option-row-choices ul.choices-list > li'));
+  }
+
+  function rankingFieldIdOf(el) {
+    const opt = el.closest('[class*="wpforms-field-option-"]');
+    const m = opt && (opt.id || '').match(/wpforms-field-option-(?:row-)?(\d+)/);
+    return m ? m[1] : null;
+  }
+
+  const rankingOpt = (fid, name) => document.getElementById('wpforms-field-option-' + fid + '-' + name);
+
+  // Show/hide a conditional field-option row.
+  //
+  // Toggling `.wpforms-hidden` alone is NOT enough in a frozen snapshot:
+  // capture stamps `style="display: none"` INLINE onto every row that was
+  // hidden at capture time, and inline beats the class. Measured on
+  // ranking_columns — class correctly removed, row still `display: none`,
+  // box 0x0. Same failure shape as the graph context menus.
+  //
+  // Any handler that reveals a conditional option row needs this, not just
+  // Ranking's — so it lives here rather than inside one transition.
+  // Ease-in reveal for a per-choice media picker, matched to the ranking
+  // reorder easing in frontend.js so every ranking-side transition in the
+  // snapshot shares one voice (Umair 2026-08-19: "Make sure there is ease-in
+  // transition for this transition also like for every other in
+  // interactivity").
+  //
+  // display:none cannot be transitioned, so the element is displayed first,
+  // then opacity/translate are played on the next frame.
+  const MEDIA_EASE = 'cubic-bezier(0.45, 0, 0.25, 1)';
+  const MEDIA_MS = 320;
+
+  function revealChoiceMedia(el, show) {
+    if (!el) return;
+    if (show) {
+      // Set display EXPLICITLY, don't just clear the inline value: removing it
+      // only exposes a stylesheet rule that also hides the picker, so the
+      // element stayed `display: none` with the easing correctly attached.
+      // Values are the ones the real toggled-on captures render —
+      // builder-field-options-ranking-image-choices / -icon-choices.
+      el.style.setProperty(
+        'display',
+        el.classList.contains('wpforms-icon-select') ? 'flex' : 'block',
+        'important',
+      );
+      el.style.transition = 'none';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(-4px)';
+      // Synchronous style flush — NOT requestAnimationFrame. rAF is throttled
+      // in a hidden/non-compositing tab, so the second frame may never run and
+      // the picker would sit displayed at opacity 0: present, invisible, and
+      // impossible to diagnose from the markup. Same hazard as INV-17's RAF
+      // deadlock. Reading offsetWidth commits the start state immediately.
+      void el.offsetWidth;
+      el.style.transition =
+        `opacity ${MEDIA_MS}ms ${MEDIA_EASE}, transform ${MEDIA_MS}ms ${MEDIA_EASE}`;
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    } else {
+      // Hidden instantly, with no exit animation on purpose. Deferring
+      // display:none until transitionend is the same trap from the other
+      // direction — a throttled tab never fires the event and the picker stays
+      // on screen forever. The reveal carries the easing; the hide is state.
+      el.style.removeProperty('transition');
+      el.style.removeProperty('opacity');
+      el.style.removeProperty('transform');
+      el.style.setProperty('display', 'none');
+    }
+  }
+
+  function setOptionRowHidden(row, hidden) {
+    if (!row) return;
+    row.classList.toggle('wpforms-hidden', !!hidden);
+    if (hidden) row.style.setProperty('display', 'none');
+    else row.style.removeProperty('display');
+  }
+
+  // Faithful mirror of WPFormsSurveyBuilder.rankingPreviewUpdateStyle +
+  // rankingPreviewBuildItemHtml
+  // (wpforms-surveys-polls/assets/js/admin-survey-builder.js:717 and :795).
+  // Class list, dense threshold, grid-template-columns form, and the two
+  // distinct item structures are copied from there, not devised here.
+  function renderRankingPreview(field, optionScope) {
+    if (!field) return;
+    const list = field.querySelector('ul.wpforms-ranking-preview');
+    if (!list) return;
+    const fid = (field.id || '').replace('wpforms-field-', '');
+    const rows = rankingOptionRows(optionScope || document);
+    if (!rows.length) return;
+
+    const layoutEl = rankingOpt(fid, 'input_layout');
+    const layout = (layoutEl && layoutEl.value) || 'list';
+    const isGrid = layout === 'grid';
+    const colsEl = rankingOpt(fid, 'ranking_columns');
+    const columns = parseInt((colsEl && colsEl.value) || '3', 10);
+    const arrowsEl = rankingOpt(fid, 'input_arrows');
+    const showArrows = !!arrowsEl && arrowsEl.value === 'visible';
+
+    // ── style (plugin: rankingPreviewUpdateStyle) ──
+    list.classList.remove(
+      'wpforms-ranking-preview-list', 'wpforms-ranking-preview-grid',
+      'wpforms-ranking-preview-dense',
+    );
+    list.classList.add('wpforms-ranking-preview-' + layout);
+    list.classList.toggle('wpforms-ranking-preview-dense', isGrid && columns >= 4);
+    list.style.gridTemplateColumns = isGrid ? 'repeat(' + columns + ', 1fr)' : '';
+
+    // ── items (plugin: rankingPreviewBuildItemHtml) ──
+    // The per-choice media node is LIFTED from the current preview rather than
+    // rebuilt, so icon/image choices survive a layout switch untouched.
+    const priorMedia = Array.from(list.children).map((li) => {
+      const m = li.querySelector('.wpforms-ranking-preview-icon, .wpforms-ranking-preview-image');
+      return m ? m.cloneNode(true) : null;
+    });
+
+    const arrow = (dir) => {
+      const i = document.createElement('i');
+      i.className = 'fa fa-chevron-' + dir + ' wpforms-ranking-preview-arrow';
+      i.setAttribute('aria-hidden', 'true');
+      return i;
+    };
+
+    list.innerHTML = '';
+    rows.forEach((row, idx) => {
+      const input = row.querySelector('input.label');
+      const li = document.createElement('li');
+      li.className = 'wpforms-ranking-preview-item';
+
+      const label = document.createElement('span');
+      label.className = 'wpforms-ranking-preview-label';
+      label.textContent = input ? input.value : '';
+      const media = priorMedia[idx] ? priorMedia[idx].cloneNode(true) : null;
+
+      if (isGrid) {
+        if (showArrows) li.appendChild(arrow('left'));
+        const content = document.createElement('span');
+        content.className = 'wpforms-ranking-preview-content';
+        if (media) content.appendChild(media);
+        content.appendChild(label);
+        li.appendChild(content);
+        if (showArrows) li.appendChild(arrow('right'));
+      } else {
+        if (media) li.appendChild(media);
+        li.appendChild(label);
+        if (showArrows) {
+          const arrows = document.createElement('span');
+          arrows.className = 'wpforms-ranking-preview-arrows';
+          arrows.appendChild(arrow('up'));
+          arrows.appendChild(arrow('down'));
+          li.appendChild(arrows);
+        }
+        const grip = document.createElement('i');
+        grip.className = 'fa fa-grip-vertical wpforms-ranking-preview-grip';
+        grip.setAttribute('aria-hidden', 'true');
+        li.appendChild(grip);
+      }
+      list.appendChild(li);
+    });
+  }
+
+  const RANKING_BUILDER_TRANSITIONS = [
+    // ─ Field-options tabs: General / Advanced / Smart Logic ──────────────
+    // @since uncommitted @source captured @verified 2026-08-28
+    // Plugin: toggling .active on the group and showing its -inner.
+    {
+      // Generic — every field's options panel has these three tabs, not just
+      // Ranking. No prior transition covered them, so the Advanced tab was
+      // dead in every builder snapshot in the repo.
+      label: 'field-options-tab',
+      event: 'click',
+      match: (el) => el.closest('.wpforms-field-option-group-toggle') !== null,
+      apply: (el) => {
+        const toggle = el.closest('.wpforms-field-option-group-toggle');
+        const group = toggle.closest('.wpforms-field-option-group');
+        const panel = group && group.parentElement;
+        if (!panel) return;
+        panel.querySelectorAll(':scope > .wpforms-field-option-group').forEach((g) => {
+          const on = g === group;
+          g.classList.toggle('active', on);
+          const inner = g.querySelector(':scope > .wpforms-field-option-group-inner');
+          if (inner) inner.style.display = on ? 'block' : 'none';
+        });
+      },
+    },
+
+    // ─ Ranking canvas sync — RIDES the existing choices transitions ──────
+    // @since uncommitted @source captured @verified 2026-08-28
+    // `choices-add` / `choices-remove` / `choices-label-edit` already own the
+    // option-row mutations, and they update the generic canvas via
+    // `ul.primary-input` / `select.primary-input`. The Ranking field's canvas
+    // is neither — it is `ul.wpforms-ranking-preview` — so the rows changed and
+    // the preview never did. That is the whole of Umair's "adding an option is
+    // not showing in the form builder preview".
+    //
+    // These entries therefore mutate NOTHING. They re-render the ranking
+    // preview from whatever the option rows now say. An earlier version of this
+    // block re-implemented add/remove and the duplicate fired alongside the
+    // real one — one click, two rows.
+    //
+    // Deferred by a microtask because these entries sit at the FRONT of
+    // TRANSITIONS and `dispatch` applies matches in array order: without the
+    // defer, the preview would render from pre-mutation rows. A microtask runs
+    // after the synchronous dispatch loop and keeps render parity (no timer,
+    // INV-9 safe).
+    {
+      label: 'ranking-preview-sync-click',
+      event: 'click',
+      match: (el) =>
+        el.closest('.wpforms-field-option-row-choices') !== null &&
+        (el.closest('.add') !== null || el.closest('.remove') !== null),
+      apply: (el) => {
+        const scope = el.closest('.wpforms-field-option-row-choices').parentElement;
+        const field = rankingFieldOf(el);
+        if (field) queueMicrotask(() => renderRankingPreview(field, scope));
+      },
+    },
+    {
+      label: 'ranking-preview-sync-input',
+      event: 'input',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.classList.contains('label') &&
+        el.closest('.wpforms-field-option-row-choices') !== null,
+      apply: (el) => {
+        const scope = el.closest('.wpforms-field-option-row-choices').parentElement;
+        const field = rankingFieldOf(el);
+        if (field) queueMicrotask(() => renderRankingPreview(field, scope));
+      },
+    },
+
+    // ─ Layout / Columns / Arrows drive the canvas preview ────────────────
+    // @since uncommitted @source captured @verified 2026-08-28
+    // Plugin parity (admin-survey-builder.js:225-240): changing the layout
+    // select re-renders the preview AND shows/hides the Columns row, which
+    // only applies to grid. Columns and Arrows re-render the preview too.
+    {
+      label: 'ranking-layout',
+      event: 'change',
+      match: (el) =>
+        /-input_layout$/.test(el.id || '') &&
+        el.closest('.wpforms-field-option-ranking') !== null,
+      apply: (el) => {
+        const fid = rankingFieldIdOf(el);
+        if (!fid) return;
+        // Columns row is grid-only (plugin toggles .wpforms-hidden at :228).
+        setOptionRowHidden(
+          document.getElementById('wpforms-field-option-row-' + fid + '-ranking_columns'),
+          el.value !== 'grid',
+        );
+        // Grid forces Field Size to Large — real product behaviour, worth
+        // showing on camera rather than hiding.
+        const size = rankingOpt(fid, 'size');
+        if (size && el.value === 'grid') size.value = 'large';
+        renderRankingPreview(document.getElementById('wpforms-field-' + fid), document);
+      },
+    },
+    {
+      label: 'ranking-columns',
+      event: 'change',
+      match: (el) =>
+        /-ranking_columns$/.test(el.id || '') &&
+        el.closest('.wpforms-field-option-ranking') !== null,
+      apply: (el) => {
+        const fid = rankingFieldIdOf(el);
+        if (fid) renderRankingPreview(document.getElementById('wpforms-field-' + fid), document);
+      },
+    },
+    {
+      label: 'ranking-arrows',
+      event: 'change',
+      match: (el) =>
+        /-input_arrows$/.test(el.id || '') &&
+        el.closest('.wpforms-field-option-ranking') !== null,
+      apply: (el) => {
+        const fid = rankingFieldIdOf(el);
+        if (fid) renderRankingPreview(document.getElementById('wpforms-field-' + fid), document);
+      },
+    },
+
+    // ─ Use Image / Icon Choices reveal the per-choice picker ─────────────
+    // @since uncommitted @source captured @verified 2026-08-28
+    // `image-choices-toggle` / `icon-choices-toggle` already exist below and
+    // are NOT duplicated here — but they drive `ul.primary-input`, the generic
+    // canvas, which the Ranking field does not use. So toggling did nothing
+    // visible in the options panel.
+    //
+    // Nothing needs building: capture already contains BOTH picker blocks in
+    // every choice row — `.wpforms-image-upload` (preview + Upload Image
+    // button + hidden source input) and `.wpforms-icon-select` — each frozen
+    // at `display: none`. This only reveals them.
+    //
+    // Scoped to the ranking options panel so other choice fields keep their
+    // existing behaviour untouched.
+    {
+      label: 'ranking-choices-media-reveal',
+      event: 'change',
+      match: (el) =>
+        el instanceof HTMLInputElement &&
+        el.type === 'checkbox' &&
+        /-(choices_images|choices_icons)$/.test(el.id || '') &&
+        el.closest('.wpforms-field-option-ranking') !== null,
+      apply: (el) => {
+        const fid = rankingFieldIdOf(el);
+        if (!fid) return;
+        const wantImages = /choices_images$/.test(el.id);
+
+        // Image and Icon choices are mutually exclusive in the product.
+        const other = rankingOpt(fid, wantImages ? 'choices_icons' : 'choices_images');
+        if (el.checked && other) other.checked = false;
+
+        const imagesOn = !!(rankingOpt(fid, 'choices_images') || {}).checked;
+        const iconsOn = !!(rankingOpt(fid, 'choices_icons') || {}).checked;
+
+        const rows = rankingOptionRows(document);
+        rows.forEach((row) => {
+          revealChoiceMedia(row.querySelector('.wpforms-image-upload'), imagesOn);
+          revealChoiceMedia(row.querySelector('.wpforms-icon-select'), iconsOn);
+        });
+
+        // Sub-option rows that only apply while the mode is on.
+        setOptionRowHidden(document.getElementById('wpforms-field-option-row-' + fid + '-choices_images_style'), !imagesOn);
+        setOptionRowHidden(document.getElementById('wpforms-field-option-row-' + fid + '-choices_images_size'), !imagesOn);
+        setOptionRowHidden(document.getElementById('wpforms-field-option-row-' + fid + '-choices_icons_color'), !iconsOn);
+        setOptionRowHidden(document.getElementById('wpforms-field-option-row-' + fid + '-choices_icons_size'), !iconsOn);
+
+        renderRankingPreview(document.getElementById('wpforms-field-' + fid), document);
+      },
+    },
+
+    // NOTE: Use Image Choices / Use Icon Choices are NOT handled here —
+    // `image-choices-toggle` and `icon-choices-toggle` already exist below.
+  ];
+
   const TRANSITIONS = [
+    ...RANKING_BUILDER_TRANSITIONS,
     // ─ Universal: Label text (input event, not change) ──────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-label input -> field > .label-title .text
     {
       label: 'universal-label',
@@ -1924,6 +2278,7 @@
     },
 
     // ─ Universal: Required toggle (change event) ────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-required input -> field.required
     {
       label: 'universal-required',
@@ -1940,6 +2295,7 @@
     },
 
     // ─ Universal: Hide Label toggle (change event) ──────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-label_hide input -> field.label_hide
     // Layout shifts when label hides — wrap in fadeSwap on the field root.
     {
@@ -1959,6 +2315,7 @@
     },
 
     // ─ Universal: Field Size (Small / Medium / Large) ───────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-size select -> field size-{val}
     {
       label: 'universal-size',
@@ -1977,6 +2334,7 @@
     },
 
     // ─ Universal: Placeholder text -> .primary-input placeholder attr ───
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Text inputs: set placeholder attr.
     // Select fields: prepend (or update) a disabled <option value=""> that
     //   acts as the visible placeholder; remove it when value is cleared.
@@ -2014,6 +2372,7 @@
     },
 
     // ─ Universal: Subfield placeholder (Name + Address) ─────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin handlers:
     //   .wpforms-field-option .format-selected input.placeholder   (Name)
     //   .wpforms-field-option-address input.placeholder            (Address)
@@ -2042,6 +2401,7 @@
     },
 
     // ─ Universal: Read-Only toggle ──────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-read_only input ->
     //   field.toggleClass('readonly', checked); and cascades to Required
     //   toggle (disables it + unchecks while read-only is on, restores on
@@ -2090,6 +2450,7 @@
     },
 
     // ─ Universal: Description textarea ──────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-description textarea ->
     //   #wpforms-field-{id} > .description  (innerHTML, with nl2br branch)
     // We use textContent — safer than innerHTML and the snapshot doesn't
@@ -2109,6 +2470,7 @@
     },
 
     // ─ Email field: Allowlist / Denylist filter_type ────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-filter_type select ->
     //   on the option panel (#wpforms-field-option-{id}), swap classes
     //   wpforms-filter-allowlist / wpforms-filter-denylist. CSS in the
@@ -2128,6 +2490,7 @@
     },
 
     // ─ Date/Time field: Date Type (datepicker / dropdown) ───────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-date .type select ->
     //   $('#wpforms-field-'+id).find('.wpforms-date').addClass(t).removeClass(l)
     //   and same swap on the option panel.
@@ -2161,6 +2524,7 @@
     },
 
     // ─ Rating: Scale (1–10) ─────────────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-scale select -> show first N
     //   .rating-icon elements, hide the rest via inline display.
     {
@@ -2185,6 +2549,7 @@
     },
 
     // ─ Rating: Icon (Star / Heart / Thumb / Smiley) ─────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: removeClass fa-star fa-heart fa-thumbs-up fa-smile-o ->
     //   addClass matching the new icon family.
     {
@@ -2213,6 +2578,7 @@
     },
 
     // ─ Rating: Icon Size (Small / Medium / Large) ───────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: font-size 18 / 28 / 38 inline on .rating-icon.
     {
       label: 'rating-icon-size',
@@ -2238,6 +2604,7 @@
     },
 
     // ─ File Upload: Style (Modern / Classic) ────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin's fieldFileUploadPreviewUpdate juggles modern title/hint
     // localized strings and camera state — we mirror the core visual swap
     // only: toggle .wpforms-hide on the .wpforms-file-upload-builder-{type}
@@ -2264,6 +2631,7 @@
     },
 
     // ─ Rich Text: Editor Style (Basic / Full) ───────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: toggle `wpforms-field-richtext-toolbar-basic` on
     //   #wpforms-field-{id} .wpforms-richtext-wrap .mce-toolbar-grp when
     //   value !== 'full'.
@@ -2289,6 +2657,7 @@
     },
 
     // ─ Choices: Label edit (Checkbox / Radio / Multiple Choice) ─────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Canvas: <ul class="primary-input"><li>...<TEXT_NODE></li>...</ul>.
     // Option panel: <ul class="choices-list"><li data-key=N><input.label></li>...</ul>.
     // Match canvas li to option li by **position** (data-key may be sparse
@@ -2339,6 +2708,7 @@
     },
 
     // ─ Choices: Default toggle (which choice starts checked) ────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Mirror the option .default checkbox state onto the canvas <input> at
     // the same index. For radios, only one default is allowed — plugin
     // handles that by un-checking siblings; we mirror that here too.
@@ -2397,6 +2767,7 @@
     },
 
     // ─ Choices: Add (click on a.add inside choices-list) ────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Clone the row, increment data-next-id on the ul, patch name+id
     // attrs to use the new key, clear values + default state, append. On
     // the canvas, append a matching <li> with a fresh input.
@@ -2480,6 +2851,7 @@
     },
 
     // ─ Choices: Remove (click on a.remove inside choices-list) ──────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin blocks removing the last remaining choice. We mirror that.
     {
       label: 'choices-remove',
@@ -2515,6 +2887,7 @@
     },
 
     // ─ Password / Email: Enable Confirmation toggle ─────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-confirmation input ->
     //   #wpforms-field-{id} .wpforms-confirm toggles
     //     wpforms-confirm-enabled / wpforms-confirm-disabled
@@ -2548,6 +2921,7 @@
     },
 
     // ─ Checkbox / Radio: Disclaimer toggle ──────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-disclaimer_format input ->
     //   toggle .disclaimer on #wpforms-field-{id} .description.
     {
@@ -2567,6 +2941,7 @@
     },
 
     // ─ Choices: Layout (input_columns) ──────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-input_columns select ->
     //   field gets one of: wpforms-list-2-columns, wpforms-list-3-columns,
     //   wpforms-list-inline. Default (value "") is 1-column, no class.
@@ -2597,6 +2972,7 @@
     },
 
     // ─ Choices: Use Image Choices toggle ────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Class-only mirror (no per-li image placeholder render). On enable:
     //   - canvas field gets wpforms-image-choices + wpforms-image-choices-{style}
     //     using the current Image Choice Style select value
@@ -2676,6 +3052,7 @@
     },
 
     // ─ Choices: Image Choice Style sub-select ───────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'image-choices-style',
       event: 'change',
@@ -2699,6 +3076,7 @@
     },
 
     // ─ Choices: Use Icon Choices toggle ─────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Class-only mirror. On enable canvas gets wpforms-icon-choices +
     //   -{style} + -{size}; sub-rows reveal; mutex with Image Choices.
     // Icon Color (minicolors widget) is skipped — separate beast.
@@ -2777,6 +3155,7 @@
     },
 
     // ─ Choices: Icon Choice Style sub-select ────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'icon-choices-style',
       event: 'change',
@@ -2801,6 +3180,7 @@
     },
 
     // ─ Choices: Bulk Add toggle (paste-many-at-once UI) ─────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: clicking the "Bulk Add" link expands a textarea + "Add New
     //   Choices" / "Cancel" buttons under the Choices row. Pasting newline-
     //   separated lines and clicking Add creates one choice row per line.
@@ -2855,6 +3235,7 @@
     },
 
     // ─ Choices: Bulk Add — Cancel ───────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'choices-bulk-cancel',
       event: 'click',
@@ -2873,6 +3254,7 @@
     },
 
     // ─ Choices: Bulk Add — Submit ───────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Splits textarea by newlines, creates one choice row per non-empty
     //   line. Replaces the current choices (matches plugin behavior when
     //   the bulk-add modal hasn't been told to append). Mirrors to canvas.
@@ -2958,6 +3340,7 @@
     },
 
     // ─ Choices: Dynamic Choices (Off / Post Type / Taxonomy) ────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Live plugin: when set, replaces the field's choices with rows pulled
     //   from WordPress (posts of a given type, or terms of a taxonomy) and
     //   shows the "Dynamic Choices Active" alert. The option-panel choices
@@ -3081,6 +3464,7 @@
     },
 
     // ─ Choices: Icon Color swatch click -> native picker ────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // The minicolors widget grid/hue picker isn't re-implemented; instead
     // we hijack a swatch click and open the browser's native color picker.
     // The native picker's value writes back into the text input and fires
@@ -3101,6 +3485,7 @@
     },
 
     // ─ Choices: Icon Color picker live edit ─────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin uses minicolors widget. We listen on the text input directly
     // and accept any value that looks like a CSS color (#hex or named).
     // Updates: minicolors swatch background + canvas/option-list CSS var
@@ -3133,6 +3518,7 @@
     },
 
     // ─ Checkbox: Choice Limit (frontend-prep) ───────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: limits how many checkboxes a user can select on the frontend.
     // No visible builder-canvas effect. We persist the value to the canvas
     // field via data-choice-limit so the eventual frontend-form snapshot
@@ -3154,6 +3540,7 @@
     },
 
     // ─ Choices: Add Other Choice toggle (Radio / Checkbox) ──────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Live plugin behavior: canvas shows just an extra radio/checkbox + " Other"
     //   label (NO text input — the input only renders on the frontend, and
     //   only when Other is selected). other_size + other_placeholder are
@@ -3195,6 +3582,7 @@
     },
 
     // ─ Choices: Other Placeholder (frontend-prep) ───────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Canvas has no Other text input (only frontend renders it when picked).
     // Persist value to field dataset for the frontend-form snapshot.
     {
@@ -3213,6 +3601,7 @@
     },
 
     // ─ Choices: Other Size (frontend-prep) ──────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'choices-other-size',
       event: 'change',
@@ -3227,6 +3616,7 @@
     },
 
     // ─ Dropdown: Style (Modern / Classic) ───────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin renders Modern dropdowns via Choices.js. For snapshot purposes
     // we mirror the class on the canvas <select> so styling hooks apply;
     // the Choices.js overlay itself isn't re-rendered.
@@ -3251,6 +3641,7 @@
     },
 
     // ─ Dropdown: Multiple Options Selection toggle ──────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin sets the canvas <select multiple>. Visually this turns the
     // dropdown into a scrollable multi-select list.
     {
@@ -3273,6 +3664,7 @@
     },
 
     // ─ Date/Time: Date Format select ────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // The select <option> textContent already holds the formatted sample
     //   (e.g. "04/20/2026 (m/d/Y)"). Strip the parenthetical suffix and
     //   use it as the placeholder on the canvas datepicker input. For the
@@ -3308,6 +3700,7 @@
     },
 
     // ─ Date/Time: Time Format select (12H / 24H) ────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'time-format',
       event: 'change',
@@ -3325,6 +3718,7 @@
     },
 
     // ─ Date/Time: Date subfield placeholder ─────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'date-placeholder',
       event: 'input',
@@ -3341,6 +3735,7 @@
     },
 
     // ─ Date/Time: Time subfield placeholder ─────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'time-placeholder',
       event: 'input',
@@ -3357,6 +3752,7 @@
     },
 
     // ─ Universal: Default Value -> .primary-input value attr ────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // The default-value field is a contenteditable "smart tags" widget.
     //   Pills become `{tag_value}`, plain text passes through. Mirrors to
     //   the canvas primary input (covers <input> + <textarea>).
@@ -3380,6 +3776,7 @@
     },
 
     // ─ Signature: Ink Color (minicolors) ────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Signature pad is canvas-rendered (no live recolor of empty preview).
     // Persist to field dataset + update swatch + wire swatch->native picker.
     {
@@ -3414,6 +3811,7 @@
     },
 
     // ─ HTML field: Code -> rendered onto canvas .wpforms-field-html ─────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'html-field-code',
       event: 'input',
@@ -3430,6 +3828,7 @@
     },
 
     // ─ Content field: Content -> rendered onto canvas ───────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'content-field',
       event: 'input',
@@ -3447,6 +3846,7 @@
     },
 
     // ─ Divider: Hide line toggle ────────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'divider-hide-line',
       event: 'change',
@@ -3462,6 +3862,7 @@
     },
 
     // ─ Repeater: Display (Rows / Blocks) ────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Rows: shows .wpforms-field-repeater-display-rows-buttons, hides
     //   blocks-buttons, and hides the button-type + button-labels option
     //   sub-rows.
@@ -3500,6 +3901,7 @@
     },
 
     // ─ Repeater: Button Type ────────────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Renders the Add/Remove blocks-buttons in five visual modes:
     //   buttons_with_icons → icon left + text  (default; full button style)
     //   buttons            → text only         (full button style)
@@ -3555,6 +3957,7 @@
     },
 
     // ─ Repeater: Layout preset -> disable Field Size when not 1-column ──
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin locks Field Size when a multi-column preset is selected,
     //   because column width drives field width. The hint sub-label
     //   ".wpforms-notice-field-size" is un-hidden in that case.
@@ -3580,6 +3983,7 @@
     },
 
     // ─ Repeater: Add / Remove button labels ─────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'repeater-button-add-label',
       event: 'input',
@@ -3610,6 +4014,7 @@
     },
 
     // ─ Repeater: rows_limit_min / rows_limit_max (frontend-prep) ────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'repeater-rows-limit',
       event: 'input',
@@ -3627,6 +4032,7 @@
     },
 
     // ─ Pagebreak: Title -> bottom "Page Break" divider label ────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Adding a Page Break field renders TWO canvas elements in the live
     // plugin: a top "First Page / Progress Indicator" wrap and a bottom
     // dark "Page Break" divider. The snapshot only captured the top one,
@@ -3654,6 +4060,7 @@
     },
 
     // ─ Pagebreak: Progress Indicator type select ────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Swaps both the type class AND the inner markup, since each type
     // (progress / circles / connector / none) renders a different DOM shape.
     {
@@ -3691,6 +4098,7 @@
     },
 
     // ─ Pagebreak: Nav Align select -> class on buttons wrap ─────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'pagebreak-nav-align',
       event: 'change',
@@ -3712,6 +4120,7 @@
     },
 
     // ─ Pagebreak: Progress Text -> steps span content ───────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'pagebreak-progress-text',
       event: 'input',
@@ -3729,6 +4138,7 @@
     },
 
     // ─ Pagebreak: Indicator Color (minicolors swatch + text input) ──────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Updates swatch + recolors the injected progress bar live.
     {
       label: 'pagebreak-indicator-color',
@@ -3775,6 +4185,7 @@
     },
 
     // ─ Number: Min / Max range -> canvas input min/max attrs ───────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'number-min-max',
       event: 'input',
@@ -3799,6 +4210,7 @@
     },
 
     // ─ Universal: Sidebar tab toggle (Add Fields / Field Options) ───────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Clicking the "Add Fields" or "Field Options" tab nav swaps the
     // .active class on the <a> and toggles display of the two tab-content
     // panels (#wpforms-add-fields-tab and #wpforms-field-options).
@@ -3827,6 +4239,7 @@
     },
 
     // ─ Universal: Smart Tags toggle (tag icon click) ────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Clicking the .wpforms-show-smart-tags icon next to a Default Value
     // (or any) Smart Tags widget toggles the .closed class on the sibling
     // .insert-smart-tag-dropdown. The dropdown markup is already in the
@@ -3849,6 +4262,7 @@
     },
 
     // ─ Universal: Smart Tags item click -> insert pill into widget ──────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Clicking a Smart Tags <li data-value="..."> appends a pill span to
     // the contenteditable widget matching the live plugin shape:
     //   <span class="tag" contenteditable="false" data-value="...">Label<i class="fa fa-times-circle"></i></span>
@@ -3899,6 +4313,7 @@
     },
 
     // ─ Universal: Smart Tags pill delete (trash icon click) ─────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'smart-tags-pill-delete',
       event: 'click',
@@ -3914,6 +4329,7 @@
     },
 
     // ─ Universal: Smart Tags search filter ──────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'smart-tags-search',
       event: 'input',
@@ -3934,6 +4350,7 @@
     },
 
     // ─ Universal: Conditional Logic toggle (Smart Logic tab) ────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Same UI across all supported field types. Scoped to
     //   .wpforms-conditional-block-field so it doesn't fire on
     //   Notifications/Confirmations/Payment conditional logic toggles.
@@ -3961,6 +4378,7 @@
     },
 
     // ─ Conditional Logic: Field-select change ───────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Rebuild value cell based on chosen field's type. Choice-based fields
     // (radio / checkbox / select / payment-multiple / etc. / rating) get a
     // <select> with the field's choices. Text-based fields get a text or
@@ -3989,6 +4407,7 @@
     },
 
     // ─ Conditional Logic: Operator-select change ────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Operator dictates input shape: empty/not-empty → disabled input,
     // contains/starts/ends → text, >/< → number, is/is-not → respect type.
     {
@@ -4015,6 +4434,7 @@
     },
 
     // ─ Conditional Logic: Add rule (And button) ─────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'conditional-logic-rule-add',
       event: 'click',
@@ -4031,6 +4451,7 @@
     },
 
     // ─ Conditional Logic: Delete rule (trash icon) ──────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'conditional-logic-rule-delete',
       event: 'click',
@@ -4048,6 +4469,7 @@
     },
 
     // ─ Conditional Logic: Add new group (OR) ────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'conditional-logic-group-add',
       event: 'click',
@@ -4064,6 +4486,7 @@
     },
 
     // ─ Name: Subfield Default Value (Smart Tags widget per subfield) ────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Name field has format-specific subfield rows (simple / first / middle
     //   / last), each containing its own default-value smart-tags widget
     //   inside a `.default` column. Mirror the widget text to the canvas
@@ -4094,6 +4517,7 @@
     },
 
     // ─ Email: Confirmation Placeholder ─────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'email-confirmation-placeholder',
       event: 'input',
@@ -4110,6 +4534,7 @@
     },
 
     // ─ Universal: Hide sublabels toggle ─────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: toggles `sublabel_hide` class on the field which CSS uses
     //   to hide all `.wpforms-sub-label` children.
     {
@@ -4127,6 +4552,7 @@
     },
 
     // ─ Universal: Limit-toggle body reveal (data-toggle pattern) ────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // The plugin renders many sub-row groups as:
     //   <input type="checkbox" id="X" name="..."> +
     //   <div data-toggle="..." data-toggle-value="1" style="display:none">.
@@ -4152,6 +4578,7 @@
     },
 
     // ─ Choices: Icon Size sub-select ────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'icon-choices-size',
       event: 'change',
@@ -4175,6 +4602,7 @@
     },
 
     // ─ Password: Strength toggle ────────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: updatePasswordStrengthControls toggles wpforms-hidden on
     //   #wpforms-field-option-row-{id}-password-strength-level. Panel-only.
     {
@@ -4192,6 +4620,7 @@
     },
 
     // ─ Layout: Preset (1 col / 50-50 / 33-33-33 / 25-25-25-25 / etc.) ──
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin's presetChange rebuilds column DOM via generatePreviewColumns
     // and re-attaches any dropped fields. Snapshot fields are empty
     // placeholders, so we just regenerate the column wrappers from the
@@ -4238,6 +4667,7 @@
     },
 
     // ─ Layout: Display (Rows / Columns) ─────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: displayChange swaps wpforms-layout-display-rows /
     //   wpforms-layout-display-columns on .wpforms-field-layout-columns,
     //   mirrors the rows class on the panel preset row, and adjusts the
@@ -4270,6 +4700,7 @@
     },
 
     // ─ File Upload: Max File Uploads (max_file_number) ──────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: fieldFileUploadPreviewUpdate updates the .modern-hint text
     //   using wpforms_builder.file_upload.preview_hint (a localized
     //   "You can upload up to {maxFileNumber} files." string). The snapshot
@@ -4295,6 +4726,7 @@
     },
 
     // ─ File Upload: Access Restrictions toggle ──────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: optionsHandler() reveals user_restrictions + password_restrictions
     //   panel rows when is_restricted is on. user_roles_restrictions and
     //   user_names_restrictions cascade on user_restrictions === 'logged'.
@@ -4338,6 +4770,7 @@
     },
 
     // ─ File Upload: Camera Enabled toggle ───────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: toggleCameraOptions reveals camera_format and
     //   camera_aspect_ratio panel rows. Canvas (classic style only): show
     //   the .wpforms-file-upload-capture-camera-classic "Capture With Your
@@ -4365,6 +4798,7 @@
     },
 
     // ─ Rich Text: Allow Media Uploads (media_enabled) ───────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: toggle visibility of the media_controls panel row + toggle
     //   .wpforms-field-richtext-media-enabled on the canvas toolbar grp.
     {
@@ -4394,6 +4828,7 @@
     },
 
     // ─ Number Slider helpers ────────────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // The canvas has:
     //   <input type="range" id="wpforms-number-slider-{id}" ...>
     //   <div id="wpforms-number-slider-hint-{id}" data-hint="Selected Value: {value}">
@@ -4404,6 +4839,7 @@
     // so user-supplied template strings can't inject markup.
 
     // ─ Number Slider: Default Value ─────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'slider-default',
       event: 'input',
@@ -4421,6 +4857,7 @@
     },
 
     // ─ Number Slider: Min ───────────────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Also clamps default value up if it's now below the new min, matching
     // the plugin's updateNumberSliderDefaultValueAttr behavior.
     {
@@ -4440,6 +4877,7 @@
     },
 
     // ─ Number Slider: Max ───────────────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Also clamps default value down if it's now above the new max.
     {
       label: 'slider-max',
@@ -4458,6 +4896,7 @@
     },
 
     // ─ Number Slider: Step ──────────────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'slider-step',
       event: 'input',
@@ -4473,6 +4912,7 @@
     },
 
     // ─ Number Slider: Value Display (format string) ─────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: update data-hint on the hint element, then re-render using
     // the current default value.
     {
@@ -4493,6 +4933,7 @@
     },
 
     // ─ Rating: Icon Color ───────────────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-icon_color input.wpforms-color-picker
     //   -> set color on .wpforms-rating-field-icons i.fa.
     // Note: the minicolors swatch overlay isn't wired in snapshots; the
@@ -4518,6 +4959,7 @@
     },
 
     // ─ Rating: Label Position (Above / Below) ───────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: toggle `.wpforms-rating-field-labels-position-above` on the
     //   labels wrap when value === 'above'.
     {
@@ -4541,6 +4983,7 @@
     },
 
     // ─ Rating: Lowest / Highest Label text ──────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: set text on .wpforms-rating-field-{lowest|highest}-label;
     //   hide the labels container entirely when both spans are empty.
     {
@@ -4565,6 +5008,7 @@
     },
 
     // ─ Address: Hide subfield toggle ────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Hide toggles next to Address Line 2 / ZIP / Country. Real WPForms
     // doesn't update the builder canvas live (serialization-only), but the
     // tutorial demo wants the canvas to reflect the toggle. data-subfield
@@ -4591,6 +5035,7 @@
     },
 
     // ─ Phone: Format (Smart / US / International) ───────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin sets a data-format attribute on .wpforms-field-phone-input-container.
     // Phone has no .format-selected wrapper, so universal-format no-ops here.
     {
@@ -4610,6 +5055,7 @@
     },
 
     // ─ Address: Scheme (US / International) ─────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-scheme select ->
     //   add .wpforms-hide to all .wpforms-address-scheme; remove from the
     //   one matching the selected value. (We skip the panel-internal
@@ -4639,6 +5085,7 @@
     },
 
     // ─ Universal: Format select ─────────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Covers Name (simple/first-last/first-middle-last), Date/Time
     // (date/time/date-time), Phone (us/international/smart), and any future
     // field whose .format-selected wrap takes a format-selected-{value}
@@ -4672,6 +5119,7 @@
     },
 
     // ─ Choices: canvas re-sync when in Image/Icon mode ──────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // In image/icon mode the canvas li markup is richer than the bare
     // `<input> Label` shape. After any choice mutation (add/remove/label
     // edit/default toggle), re-render the full canvas list via
@@ -4758,6 +5206,7 @@
     },
 
     // ─ Likert: rebuild canvas table on rows/columns add/remove/label ────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Likert canvas is a <table>, not ul.primary-input. The universal
     // choices-add / choices-remove handlers run BEFORE this in registry
     // order. For remove, choices-remove detaches the clicked <li>, which
@@ -4795,6 +5244,7 @@
     },
 
     // ─ Likert: Style select (Modern / Classic) ──────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: .wpforms-field-option-row-style select -> table class swap.
     // Rebuild reads style from the panel.
     {
@@ -4811,6 +5261,7 @@
     },
 
     // ─ Likert: Single Row toggle ────────────────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: also hides the Rows option panel row when single_row is on.
     {
       label: 'likert-single-row-toggle',
@@ -4833,6 +5284,7 @@
     },
 
     // ─ Likert: Multiple Responses toggle (radio -> checkbox inputs) ─────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'likert-multiple-responses-toggle',
       event: 'change',
@@ -4848,6 +5300,7 @@
     },
 
     // ─ NPS: Lowest Score Label / Highest Score Label (input) ────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: writes input value into .not-likely / .extremely-likely
     // <span>s in the canvas table thead.
     {
@@ -4869,6 +5322,7 @@
     },
 
     // ─ NPS: Style select (Modern / Classic) ─────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // Plugin: table class swap, no markup rebuild.
     {
       label: 'nps-style',
@@ -4929,6 +5383,7 @@
     },
 
     // ─ Universal: Collapsible field group toggle ────────────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Real plugin: clicking .wpforms-panel-fields-group-title toggles the
     // inner block (Form CSS Class, Submit Button CSS Class, etc. on
     // Settings → General). Chevron rotates 90° when open. On open we
@@ -4976,6 +5431,7 @@
     },
 
     // ─ Settings → General: Tags pill delete (× icon) ────────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'settings-tags-pill-delete',
       event: 'click',
@@ -4985,6 +5441,7 @@
     },
 
     // ─ Settings → General: Tags dropdown option → add as pill ───────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Click a .choices__item--choice in the tags dropdown → move it into
     // the pill list, remove from the dropdown.
     {
@@ -5006,6 +5463,7 @@
     },
 
     // ─ Settings → General: Form Name (input) → toolbar mirror ──────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Two visible mirrors: <span class="wpforms-center-form-name
     // wpforms-form-name"> in the top toolbar ("Now editing X") and the
     // <h2 class="wpforms-form-name"> elsewhere in the chrome. Both get
@@ -5025,6 +5483,7 @@
     },
 
     // ─ Settings blocks (Notifications + Confirmations): toggle ──────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Click the chevron button → hide/show .wpforms-builder-settings-block-content.
     // Chevron icon swaps fa-chevron-circle-up ↔ fa-chevron-circle-down.
     // On open we stagger-reveal the inner rows for polish.
@@ -5073,6 +5532,7 @@
     },
 
     // ─ Settings blocks: pencil → enter name-edit mode ───────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'settings-block-edit-start',
       event: 'click',
@@ -5099,6 +5559,7 @@
     },
 
     // ─ Settings blocks: name-edit input → live mirror display span ─────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'settings-block-name-input',
       event: 'input',
@@ -5114,6 +5575,7 @@
     },
 
     // ─ Notifications: status pill (Active ↔ Inactive) ───────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Flip data-active, swap badge color + label + check/times icon, and
     // update the hidden -enable input that sits next to the pill.
     {
@@ -5143,6 +5605,7 @@
     },
 
     // ─ Settings blocks: delete (no confirmation modal) ──────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'settings-block-delete',
       event: 'click',
@@ -5159,6 +5622,7 @@
     },
 
     // ─ Notifications: clone block → insert NEW above the source ────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Scoped to notifications only (confirmations have no clone button).
     // Rewrites every `notifications-N-` segment in attribute strings so
     // ids stay unique. The clone loses `.wpforms-builder-settings-block-
@@ -5250,6 +5714,7 @@
     },
 
     // ─ Notifications/Confirmations: Conditional Logic toggle ────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // The captured DOM has only the enable checkbox; the rule builder is
     // lazy-mounted here using the existing buildConditionalLogicGroups
     // helper. Uses the block's numeric id as the field reference so the
@@ -5288,6 +5753,7 @@
     },
 
     // ─ Notifications Advanced: File Upload Attachment toggle ────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'notifications-file-upload-toggle',
       event: 'change',
@@ -5307,6 +5773,7 @@
     },
 
     // ─ Notifications Advanced: Entry CSV Attachment toggle ──────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'notifications-entry-csv-toggle',
       event: 'change',
@@ -5331,6 +5798,7 @@
     },
 
     // ─ Spam Protection: time_limit toggle → reveal duration field ──────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'spam-time-limit-toggle',
       event: 'change',
@@ -5346,6 +5814,7 @@
     },
 
     // ─ Spam Protection: country filter toggle → reveal body + message ──
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'spam-country-filter-toggle',
       event: 'change',
@@ -5364,6 +5833,7 @@
     },
 
     // ─ Spam Protection: keyword filter toggle → reveal body + message ──
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'spam-keyword-filter-toggle',
       event: 'change',
@@ -5382,6 +5852,7 @@
     },
 
     // ─ Confirmations: entry-preview toggle → reveal preview-style wrap ─
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'confirmations-entry-preview-toggle',
       event: 'change',
@@ -5399,6 +5870,7 @@
     },
 
     // ─ Settings: Choices.js dropdown → toggle open on click ────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Covers Confirmations page select + Anti-Spam country_codes select
     // (and any future settings-panel choices dropdown). Click on the
     // .choices wrapper (but NOT on a dropdown option) toggles is-open.
@@ -5441,6 +5913,7 @@
     },
 
     // ─ Settings: Choices.js dropdown → select option ────────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Handles both single-select (Confirmations page) and multi-select
     // (Anti-Spam country_codes) widgets.
     {
@@ -5541,6 +6014,7 @@
     },
 
     // ─ Spam Protection: pill remove (× on selected country chip) ────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'spam-choices-pill-remove',
       event: 'click',
@@ -5567,6 +6041,7 @@
     },
 
     // ─ Spam Protection: keyword filter "Edit keyword list" toggle ───────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'spam-keyword-list-toggle',
       event: 'click',
@@ -5599,6 +6074,7 @@
     },
 
     // ─ Themes: sidebar tab (General / Advanced) ─────────────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'themes-sidebar-tab',
       event: 'click',
@@ -5627,6 +6103,7 @@
     },
 
     // ─ Themes: collapsible group heading toggle ─────────────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Scoped to the themes sidebar so we don't fire on the Add Fields
     // sidebar of the main builder.
     {
@@ -5661,6 +6138,7 @@
     },
 
     // ─ Themes: control change → CSS var sync ────────────────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Single handler for every `wpforms-panel-field-themes-*` change.
     // Reads control id suffix, looks up the var mapping, writes onto the
     // preview container's inline style.
@@ -5683,6 +6161,7 @@
     },
 
     // ─ Themes: minicolors swatch click → open native color picker ──────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'themes-color-swatch',
       event: 'click',
@@ -5702,6 +6181,7 @@
     },
 
     // ─ Themes: theme button (radio group) ──────────────────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Visual select + apply the 5 palette colors exposed by indicators.
     // Full-preset (every CSS var per theme) is intentionally not wired —
     // the indicator swatches are the only authoritative theme data in
@@ -5728,6 +6208,7 @@
     },
 
     // ─ AI Choices: Generate Choices button → open prompt modal ─────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     {
       label: 'ai-choices-open',
       event: 'click',
@@ -5741,6 +6222,7 @@
     },
 
     // ─ AI Builder: sample-prompt click → seed textarea ─────────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Each <li data-prompt> wraps an anchor. data-prompt is either the
     // full prompt payload (quizzes) or empty (use the link's label as
     // the prompt). Skipping the link's default href navigation is handled
@@ -5766,6 +6248,7 @@
     },
 
     // ─ AI Builder: textarea input → enable/disable send button ─────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     {
       label: 'ai-chat-textarea-input',
       event: 'input',
@@ -5776,6 +6259,7 @@
     },
 
     // ─ AI Builder (empty state): Send → navigate to generated state ────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Brief "generating…" beat: swap send → stop, wait ~700ms, cross-
     // snapshot navigate to the generated state which already contains
     // the chat history + previewed fields.
@@ -5803,6 +6287,7 @@
     },
 
     // ─ AI Builder (empty state): Stop button → cancel "generating" ─────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     {
       label: 'ai-chat-stop-empty',
       event: 'click',
@@ -5819,6 +6304,7 @@
     },
 
     // ─ AI Builder (generated state): Send → re-generate (no-op visual) ─
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // For snapshot demo, re-clicking Send while in generated state just
     // briefly flashes the stop button then returns. Real plugin would
     // append a new question/answer pair.
@@ -5842,6 +6328,7 @@
     },
 
     // ─ AI Builder (generated state): Use This Form → builder-fields ────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     {
       label: 'ai-chat-use-form',
       event: 'click',
@@ -5854,6 +6341,7 @@
     },
 
     // ─ AI Builder (generated state): Dislike → toggle "disliked" mark ──
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     {
       label: 'ai-chat-dislike',
       event: 'click',
@@ -5878,6 +6366,7 @@
     },
 
     // ─ AI Builder: Back to Templates button → setup snapshot ───────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     {
       label: 'ai-chat-back-to-templates',
       event: 'click',
@@ -5887,6 +6376,7 @@
     },
 
     // ─ Confirmations: type select → show/hide sub-field wraps ──────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Three modes: message / page / redirect. The wraps are already in
     // the DOM, just toggle inline display.
     {
@@ -5918,6 +6408,7 @@
     },
 
     // ─ Universal: Top panel button → cross-snapshot nav ─────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Lives in every builder-* snapshot. Fields resolves to the last
     // non-settings snapshot we were on (sessionStorage), so Settings →
     // Fields returns to the original canvas. Marketing/Payments/Revisions
@@ -5957,6 +6448,7 @@
     },
 
     // ─ Universal: Settings sidebar section → cross-snapshot nav ─────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Lives in every builder-settings-* snapshot. Skips education-modal
     // upgrade links and the currently-active section.
     {
@@ -5978,6 +6470,7 @@
     },
 
     // ─ Payment Single: Item Price (input) ───────────────────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'payment-single-price',
       event: 'input',
@@ -5994,6 +6487,7 @@
     },
 
     // ─ Payment Single: Price Display (price_label template) ────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'payment-single-price-label',
       event: 'input',
@@ -6022,6 +6516,7 @@
     },
 
     // ─ Payment Single: Minimum Price (input) ─────────────────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'payment-single-min-price',
       event: 'input',
@@ -6036,6 +6531,7 @@
     },
 
     // ─ Payment Single / Select: Enable Quantity toggle ──────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'payment-enable-quantity',
       event: 'change',
@@ -6055,6 +6551,7 @@
     },
 
     // ─ Payment Choices: Show Price After Item Labels toggle ─────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'payment-choices-show-price-toggle',
       event: 'change',
@@ -6086,6 +6583,7 @@
     },
 
     // ─ Payment Choices: Resync labels after label-edit / add / remove ────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // The universal choices-label-edit / choices-add / choices-remove
     // handlers run first; this resync re-renders the canvas text with the
     // price suffix when show_price_after_labels is on (and rebuilds clean
@@ -6124,6 +6622,7 @@
     },
 
     // ─ Payment Coupon: Button Text ──────────────────────────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'payment-coupon-button-text',
       event: 'input',
@@ -6140,6 +6639,7 @@
     },
 
     // ─ Payment Coupon: Click .choices container → open dropdown ─────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // The choices.js list is hidden by default (CSS rule
     // `.choices__list--dropdown{display:none}` with `.is-active{display:block}`).
     // Clicking the inner select area toggles the `is-active` class.
@@ -6169,6 +6669,7 @@
     },
 
     // ─ Payment Coupon: Click dropdown option → add pill + close ─────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'payment-coupon-pick',
       event: 'click',
@@ -6188,6 +6689,7 @@
     },
 
     // ─ Payment Coupon: Click pill ✕ → remove pill ──────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     {
       label: 'payment-coupon-pill-remove',
       event: 'click',
@@ -6207,6 +6709,7 @@
     },
 
     // ─ Payment Total: Enable Summary toggle ─────────────────────────────
+    // @since 2026-05-14 @source captured @verified 2026-08-28
     // ON  → show .wpforms-order-summary-container, hide .wpforms-total-amount
     // OFF → hide .wpforms-order-summary-container, show .wpforms-total-amount
     // initial state synced via initPaymentTotalSummary on load (snapshot was
@@ -6227,6 +6730,7 @@
     },
 
     // ─ Calculations: Enable Calculation toggle ──────────────────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Supported field types: Single Line Text, Paragraph Text, Number, Hidden,
     // Single Item (payment-single). Toggle reveals/hides the formula editor
     // row (id: ...-calculation_code). No canvas effect — calcs run frontend.
@@ -6254,6 +6758,7 @@
     },
 
     // ─ Calculations: toolbar operator button (+ − * / ( ) ) ─────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // The toolbar has two buttons with class `button-plus` (one labeled "+",
     // one labeled "−") — disambiguate via textContent. Appends ` op ` to the
     // hidden source textarea + re-renders the visible CodeMirror line.
@@ -6278,6 +6783,7 @@
     },
 
     // ─ Calculations: Insert Field button → toggle dropdown ──────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'calculation-insert-field-toggle',
       event: 'click',
@@ -6297,6 +6803,7 @@
     },
 
     // ─ Calculations: expand / compress editor (full-screen toggle) ──────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     // Matches the plugin exactly:
     //   • Move .wpforms-calculations-editor-wrap from -collapsed → -expanded
     //   • Set inline `top: <wrap viewport top>px` on the expanded container
@@ -6340,6 +6847,7 @@
     },
 
     // ─ Calculations: Insert Field dropdown pick ─────────────────────────────
+    // @since 2026-05-15 @source captured @verified 2026-08-28
     {
       label: 'calculation-insert-field-pick',
       event: 'click',
@@ -6358,6 +6866,7 @@
     },
 
     // ─ Admin → Settings → Integrations: universal row accordion ─────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Click any provider row header to expand/collapse its accounts body.
     // Animates height + opacity (260ms ease-out). Promo / education-modal
     // rows (which have no accounts body in their markup) are silently
@@ -6453,6 +6962,7 @@
     },
 
     // ─ Admin → Integrations: Add New Account toggle ─────────────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // For rows with an inline API-key form, toggle its visibility with a
     // staggered field-by-field reveal (fade + 6px slide-up, 70ms between
     // each form row). OAuth rows (Constant Contact, Dropbox, Airtable,
@@ -6524,6 +7034,7 @@
     },
 
     // ─ Admin → Integrations: Connect submit → fake-connect ─────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Reads api_key + optional account_name from the inline form, appends
     // a connected <li> to the accounts list, hides the form, clears the
     // inputs. Deterministic per-click index keeps the disconnect key
@@ -6585,6 +7096,7 @@
     },
 
     // ─ Builder Marketing sidebar → section swap ─────────────────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Default behavior: in-place DOM swap (hide current active section,
     // show target). The base builder-providers snapshot contains every
     // first-party provider panel in the DOM (display:none siblings) —
@@ -6655,6 +7167,7 @@
     },
 
     // ─ Builder Payments sidebar → in-place section swap ─────────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Mirrors builder-providers-section-nav. All payment-gateway content
     // sections (Stripe, PayPal Commerce, Square) live in the captured
     // #wpforms-panel-payments DOM as display:none siblings; swapping is
@@ -6703,6 +7216,7 @@
     },
 
     // ─ Builder Payments: One-Time / Recurring enable toggle ─────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Show/hide the corresponding .wpforms-panel-content-section-payment-
     // toggled-body next to the toggle. Matches both Stripe and PayPal
     // Commerce gateways via the shared id pattern
@@ -6733,6 +7247,7 @@
     },
 
     // ─ Builder Payments: Plan head collapse toggle ─────────────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Click the chevron in a plan block's header to collapse/expand its
     // body. Swap chevron-circle-up ↔ -down.
     {
@@ -6762,6 +7277,7 @@
     },
 
     // ─ Builder Payments: Plan delete ────────────────────────────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     {
       label: 'builder-payments-plan-delete',
       event: 'click',
@@ -6794,6 +7310,7 @@
     },
 
     // ─ Builder Payments: Add New Plan ───────────────────────────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Clone the last existing plan block, bump data-plan-id, reset
     // name input + bumped title, append to the recurring body.
     {
@@ -6871,6 +7388,7 @@
     },
 
     // ─ Builder Payments → Stripe: Custom Metadata add row ──────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     {
       label: 'builder-payments-metadata-add',
       event: 'click',
@@ -6922,6 +7440,7 @@
     },
 
     // ─ Builder Payments → Stripe: Custom Metadata delete row ───────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     {
       label: 'builder-payments-metadata-delete',
       event: 'click',
@@ -6942,6 +7461,7 @@
     },
 
     // ─ Builder Payments: Conditional Logic toggle ───────────────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Same lazy-mount pattern as block-conditional-logic-toggle, but
     // scoped to payments[<gateway>] checkboxes whose ids end with
     // `-conditional_logic-checkbox`. data-reference is temporarily
@@ -6976,6 +7496,7 @@
     },
 
     // ─ Builder Marketing → Connection Conditional Logic toggle ────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Provider connection rule builders have IDs like
     // `wpforms-panel-field-<provider>-<connection_id>-conditional_logic`
     // where <connection_id> is a hex string. Neither the notifications/
@@ -7032,6 +7553,7 @@
     },
 
     // ─ Builder → Add New Connection (jconfirm-style modal) ──────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Fires from BOTH the Marketing panel (#wpforms-panel-providers) and
     // the Settings panel (#wpforms-panel-settings — storage providers
     // like Dropbox / Google Drive / Airtable / Notion live there). Real
@@ -7082,6 +7604,7 @@
     },
 
     // ─ Connection cascade reveal ───────────────────────────────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Inside a `.wpforms-builder-provider-connection`, real WPForms walks
     // the user through fields step-by-step: select Account → Action /
     // List unhides → sub-template renders. Real WPForms toggles
@@ -7141,6 +7664,7 @@
     },
 
     // ─ Form-level enable toggles ───────────────────────────────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Each settings-tab addon with an "Enable X" master checkbox gates a
     // specific sub-panel. Lookup keyed by checkbox id, value is either
     // a CSS selector string or an array of selectors that toggle in
@@ -7173,6 +7697,7 @@
     },
 
     // ─ Webhooks: Add New Webhook ────────────────────────────────────────
+    // @since 2026-05-17 @source captured @verified 2026-08-28
     // Captured DOM has a default webhook block hidden via the `hidden`
     // class on `.wpforms-builder-settings-block-webhook.wpforms-builder-
     // settings-block-default`. First click unhides the default block;
@@ -7237,6 +7762,7 @@
     },
 
     // ─ PDF: Add New PDF ─────────────────────────────────────────────────
+    // @since 2026-05-17 @source synthetic @verified 2026-08-28
     // No captured PDF block template — fabricate a minimal block mirror
     // of the WPForms shape (settings-block-* envelope, name input,
     // Default Template select, File Name Pattern text). Hides the
@@ -7311,6 +7837,7 @@
     },
 
     // ─ Entry Automation: Add New Task ──────────────────────────────────
+    // @since 2026-05-17 @source synthetic @verified 2026-08-28
     // Fabricates a minimal entity-task block; hides the empty-state
     // splash on first add. Subsequent clicks append additional tasks
     // with bumped data-block-id + ids/names.
@@ -7378,6 +7905,7 @@
     },
 
     // ─ Admin Addons: Activate / Deactivate toggle (change event) ────────
+    // @since 2026-07-21 @source captured @verified 2026-08-28
     // Plugin: .wpforms-addons-list-item-footer .wpforms-toggle-control input
     //   -> flips the status label (data-on/data-off) + footer state class.
     // Appended for addon-install tutorials (SendGrid etc.): lets the video
@@ -7406,7 +7934,217 @@
       },
     },
 
+    // ─ QR Code setting (Settings → General, WPForms 2.0.1) ────────────
+    // @since uncommitted @source mirrors:settings-qr-code.min.js @verified 2026-08-28 @product 2.0.1
+    // Mirrors assets/js/admin/builder/modules/settings-qr-code.min.js:
+    // a data-state attribute on #wpforms-panel-field-settings-qr_code-content
+    // drives the CSS visuals (generating spinner / success check / stale
+    // refresh overlay); the module toggles wpforms-hidden on rows and
+    // action buttons. Limitation of the fossil: the captured SVG always
+    // encodes the URL it was generated for — regenerating here replays
+    // the state machine but cannot re-encode a different destination.
+    {
+      label: 'qr-destination-change',
+      event: 'change',
+      match: (el) => el.id === 'wpforms-panel-field-settings-qr_code',
+      apply: (el) => {
+        const content = qrContent();
+        if (!content) return;
+        const type = el.value;
+        const pageRow = content.querySelector('.wpforms-panel-field-qr-code-page');
+        const urlRow = content.querySelector('.wpforms-panel-field-qr-code-url');
+        qrShow(content, type !== 'none');
+        qrShow(pageRow, type === 'page');
+        qrShow(urlRow, type === 'url');
+        if (type !== 'none') qrRefreshStale(content);
+      },
+    },
+    {
+      label: 'qr-destination-value-change',
+      event: 'change',
+      match: (el) =>
+        el.id === 'wpforms-panel-field-settings-qr_code_page_id' ||
+        el.id === 'wpforms-panel-field-settings-qr_code_url',
+      apply: () => {
+        const content = qrContent();
+        if (content) qrRefreshStale(content);
+      },
+    },
+    {
+      label: 'qr-destination-url-input',
+      event: 'input',
+      match: (el) => el.id === 'wpforms-panel-field-settings-qr_code_url',
+      apply: () => {
+        const content = qrContent();
+        if (content) qrRefreshStale(content);
+      },
+    },
+    {
+      label: 'qr-generate-click',
+      event: 'click',
+      match: (el) => el.closest?.('.wpforms-qr-code-generate') !== null,
+      apply: () => {
+        const content = qrContent();
+        if (content) qrRunGenerate(content);
+      },
+    },
+    {
+      label: 'qr-stale-preview-regenerate',
+      event: 'click',
+      match: (el) => {
+        const preview = el.closest?.('.wpforms-qr-code-preview');
+        if (!preview) return false;
+        const content = preview.closest('.wpforms-panel-field-qr-code-content');
+        return content?.getAttribute('data-state') === 'stale';
+      },
+      apply: () => {
+        const content = qrContent();
+        if (content) qrRunGenerate(content);
+      },
+    },
+    {
+      label: 'qr-action-menu-toggle',
+      event: 'click',
+      match: (el) => el.closest?.('.wpforms-qr-code-action') !== null,
+      apply: (el) => {
+        const btn = el.closest('.wpforms-qr-code-action');
+        const content = qrContent();
+        if (!btn || !content) return;
+        const menu = content.querySelector('.wpforms-qr-code-format-menu');
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        content.querySelectorAll('.wpforms-qr-code-action').forEach((b) =>
+          b.setAttribute('aria-expanded', 'false')
+        );
+        if (!menu) return;
+        if (expanded) {
+          qrShow(menu, false);
+          return;
+        }
+        btn.setAttribute('aria-expanded', 'true');
+        qrShow(menu, true);
+        menu.setAttribute('data-qr-menu-for', btn.getAttribute('data-qr-action') || '');
+      },
+    },
+    {
+      label: 'qr-format-pick',
+      event: 'click',
+      match: (el) => el.closest?.('.wpforms-qr-code-format') !== null,
+      apply: () => {
+        const content = qrContent();
+        if (!content) return;
+        const menu = content.querySelector('.wpforms-qr-code-format-menu');
+        qrShow(menu, false);
+        content.querySelectorAll('.wpforms-qr-code-action').forEach((b) =>
+          b.setAttribute('aria-expanded', 'false')
+        );
+      },
+    },
+    {
+      label: 'qr-logo-change',
+      event: 'change',
+      match: (el) => el.id === 'wpforms-panel-field-settings-qr_code_logo',
+      apply: (el) => {
+        const content = qrContent();
+        if (!content) return;
+        const customBlock = content.querySelector('.wpforms-qr-code-logo-custom');
+        const note = content.querySelector('.wpforms-qr-code-logo-note');
+        const isCustom = el.value === 'custom';
+        qrShow(customBlock, isCustom);
+        qrShow(note, !isCustom);
+        // Logo is decoration on top of the code (preview updates without a
+        // regenerate). The fossil's SVG embeds the WPForms Sullie mark.
+        const logoNode = content.querySelector('.wpforms-qr-code-preview-canvas svg image');
+        if (logoNode) logoNode.style.display = el.value === 'wpforms' ? '' : 'none';
+      },
+    },
+
   ];
+
+  // ─ QR Code helpers (hoisted; used by the qr-* transitions above) ────
+  // @since uncommitted @source mirrors:settings-qr-code.min.js @verified 2026-08-28 @product 2.0.1
+  // The frozen builder page carries a SECOND, inactive copy of the General
+  // section (product markup, baked hidden) — getElementById resolves to the
+  // active copy because it comes first in DOM order. Never target the QR
+  // block with a bare class selector from outside; go through the id.
+  function qrContent() {
+    return document.getElementById('wpforms-panel-field-settings-qr_code-content');
+  }
+
+  // Reveal/hide against BOTH the class contract and the capture's
+  // visibility bake (baked elements carry inline display:none, which a
+  // class toggle alone cannot undo).
+  function qrShow(el, on) {
+    if (!el) return;
+    el.classList.toggle('wpforms-hidden', !on);
+    if (on) el.style.removeProperty('display');
+    else el.style.setProperty('display', 'none');
+  }
+
+  function qrSetState(content, state) {
+    content.setAttribute('data-state', state);
+  }
+
+  function qrDestinationUrl(content) {
+    const type = document.getElementById('wpforms-panel-field-settings-qr_code')?.value;
+    if (type === 'page') {
+      const pageId = content.querySelector('#wpforms-panel-field-settings-qr_code_page_id')?.value;
+      let pages = {};
+      try { pages = JSON.parse(content.getAttribute('data-pages') || '{}'); } catch { /* frozen attr */ }
+      return (pageId && pages[pageId]) || '';
+    }
+    if (type === 'url') {
+      return (content.querySelector('#wpforms-panel-field-settings-qr_code_url')?.value || '').trim();
+    }
+    return '';
+  }
+
+  // Mirror of the module's refreshStale(): generated snapshot vs the live
+  // destination decides generated / stale / initial, and which action row
+  // (Generate vs Copy/Download) is on duty.
+  function qrRefreshStale(content) {
+    if (content.getAttribute('data-state') === 'generating') return;
+    const snapshotVal = content.querySelector('input[name="settings[qr_code_generated]"]')?.value || '';
+    const generateBtn = content.querySelector('.wpforms-qr-code-generate');
+    const generatedActions = content.querySelector('.wpforms-qr-code-actions-generated');
+    if (!snapshotVal) {
+      qrSetState(content, 'initial');
+      qrShow(generateBtn, true);
+      if (generateBtn) generateBtn.textContent = 'Generate QR Code';
+      qrShow(generatedActions, false);
+      return;
+    }
+    const isCurrent = qrDestinationUrl(content) === snapshotVal;
+    qrSetState(content, isCurrent ? 'generated' : 'stale');
+    qrShow(generateBtn, !isCurrent);
+    if (generateBtn) generateBtn.textContent = isCurrent ? 'Generate QR Code' : 'Regenerate QR Code';
+    qrShow(generatedActions, isCurrent);
+  }
+
+  // Generate / Regenerate: spinner → green check → generated, exactly the
+  // module's cadence (success holds 1s before refreshStale lands).
+  function qrRunGenerate(content) {
+    const dest = qrDestinationUrl(content);
+    if (!dest) {
+      const type = document.getElementById('wpforms-panel-field-settings-qr_code')?.value;
+      const field = type === 'url'
+        ? content.querySelector('#wpforms-panel-field-settings-qr_code_url')
+        : content.querySelector('.wpforms-panel-field-qr-code-page .choices');
+      if (field) {
+        field.classList.add('wpforms-qr-code-field-error');
+        setTimeout(() => field.classList.remove('wpforms-qr-code-field-error'), 2000);
+      }
+      return;
+    }
+    qrSetState(content, 'generating');
+    setTimeout(() => {
+      const snapshotInput = content.querySelector('input[name="settings[qr_code_generated]"]');
+      if (snapshotInput) snapshotInput.value = dest;
+      const preview = content.querySelector('.wpforms-qr-code-preview');
+      if (preview) preview.setAttribute('aria-label', 'QR code linking to ' + dest);
+      qrSetState(content, 'success');
+      setTimeout(() => qrRefreshStale(content), 1000);
+    }, 900);
+  }
 
   // Form-level addon "Enable X" toggle id → gated-element selector(s).
   const FORM_LEVEL_ENABLE_TOGGLES = {
@@ -7585,6 +8323,29 @@
       view = url.searchParams.get('view');
     } catch (_) { return null; }
     if (!page || page.indexOf('wpforms') !== 0) return null;
+
+    // Per-snapshot override, checked before the generic map.
+    //
+    // The switch below keys on `page` alone for some entries — notably
+    // `wpforms-entries`, which returns the overview for EVERY view, so
+    // `page=wpforms-entries&view=survey` (the Surveys & Polls report) lands on
+    // the entries list instead. The correct target is also form-specific
+    // (`sp-results-ranking-full`), which generic shared code cannot know.
+    //
+    // A capture declares its own routing on <body data-wpf-nav-map> as JSON
+    // keyed "page" or "page:view", e.g.
+    //   {"wpforms-entries:survey":"sp-results-ranking-full"}
+    // Added 2026-08-19 (Umair: View Survey Results must reach the report).
+    try {
+      const navRaw = document.body && document.body.getAttribute('data-wpf-nav-map');
+      if (navRaw) {
+        const navMap = JSON.parse(navRaw);
+        const key = view ? page + ':' + view : page;
+        if (navMap[key]) return navMap[key];
+        if (navMap[page]) return navMap[page];
+      }
+    } catch (_) { /* malformed map → fall through to the generic switch */ }
+
     switch (page) {
       case 'wpforms-settings':  return 'admin-settings-' + (view || 'general');
       case 'wpforms-tools':     return 'admin-tools-' + (view || 'import');
@@ -8648,6 +9409,7 @@
       const initialNavAlign = navAlignSelect?.value || 'left';
 
       // ─ A: progress indicator inside the top wrap ─────────────────────
+      // @since 2026-05-14 @source captured @verified 2026-08-28
       const indicator = document.createElement('div');
       indicator.className = `wpforms-page-indicator wpforms-page-indicator-${initialIndicator}`;
       indicator.setAttribute('data-allow-page-navigation', '0');

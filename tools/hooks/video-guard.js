@@ -143,6 +143,19 @@ const CONTENT_RULES = [
       'citation in this edit. Anti-pattern #6 / INV-15 — every invented UI fragment needs a snapshot ' +
       'citation or an explicit `// OVERRIDE: <user approval>` annotation.',
   },
+  {
+    id: 'hand-rolled-drag',
+    test: (c) =>
+      /\bcursor\.drag\(/.test(c) &&
+      /wpforms-add-fields-button|data-field-type|\.wpforms-field\b|wpforms-field-wrap/.test(c) &&
+      !/dragFieldToForm/.test(c),
+    msg:
+      'Hand-rolled `cursor.drag(` aimed at a builder field (AP-11). ' +
+      '`dragFieldToForm(slug, { camera: \'follow\' })` in videos/_shared/wpforms-interactions.js already does the ' +
+      'full ghost-carry + FLIP-reveal drop, and `camera: \'follow\'` keeps the camera on the carried subject ' +
+      '(rulebook §4: never pre-frame the destination — sfc 6 / lf shipped exactly that). If this drag is ' +
+      'genuinely non-palette (column reorder etc.), add `// OVERRIDE: <reason>`.',
+  },
 ];
 
 // Paths under videos/ that are libraries/harnesses, not authored videos — skip.
@@ -157,6 +170,47 @@ function isAuthoredVideoFile(path) {
 
 function isSnapshotIndex(path) {
   return /(?:^|\/)snapshots\/[^/]+\/index\.html$/.test(path) && !path.includes('_shared/');
+}
+
+// Comment-aware scan (fix-round B4, mp I): the select rule fired on the WORD
+// inside comments/prose. RULES/CONTENT_RULES run against a copy with
+// `<!-- … -->` blocks and full-line `//` comments blanked out — but the
+// OVERRIDE/lint-allow escapes are checked on the ORIGINAL lines, so a
+// same-line `<!-- OVERRIDE: … -->` escape still works (header self-test 4).
+// Blanking (not deleting) preserves line indices for the per-line escape map.
+// Trailing `//` and `/* … */` are blanked too (rf-election 7). The full-line
+// case alone was not enough: the anti-pattern NAMES are exactly what authors
+// type in comments, so `// no repeat:-1 here` next to the code it describes
+// blocked a Write and cost a full re-send of a ~700-line file. `//` preceded
+// by `:` is left alone so a URL in a string does not blank the rest of its
+// line and hide a real violation behind it.
+function commentBlanked(content) {
+  return content
+    .replace(/<!--[\s\S]*?-->/g, (m) => m.replace(/[^\n]/g, ' '))
+    .replace(/\/\*[\s\S]*?\*\//g, (m) => m.replace(/[^\n]/g, ' '))
+    .replace(/^\s*\/\/.*$/gm, '')
+    .replace(/(^|[^:])\/\/[^\n]*/g, (m, p1) => p1 + ' '.repeat(m.length - p1.length));
+}
+
+// Shared scanner for the stdin hook and the --file CLI. Returns
+// { blocks: [rule…], warns: [rule…] } (deduped, in rule order).
+function scanContent(content) {
+  const origLines = content.split('\n');
+  const scanLines = commentBlanked(content).split('\n');
+  const hits = [];
+  for (let i = 0; i < scanLines.length; i++) {
+    if (/OVERRIDE:|lint-allow/.test(origLines[i] || '')) continue; // explicit escape
+    for (const rule of RULES) {
+      if (rule.re.test(scanLines[i])) hits.push(rule);
+    }
+  }
+  const seen = new Set();
+  const blocks = hits.filter((h) => !seen.has(h.id) && seen.add(h.id));
+  let warns = [];
+  if (!/OVERRIDE:/.test(content)) {
+    warns = CONTENT_RULES.filter((r) => r.test(commentBlanked(content)));
+  }
+  return { blocks, warns };
 }
 
 function main() {
@@ -202,19 +256,9 @@ function main() {
     }
 
     if (content.trim()) {
-      const hits = [];
-      const lines = content.split('\n');
-      for (const line of lines) {
-        if (/OVERRIDE:|lint-allow/.test(line)) continue; // explicit escape
-        for (const rule of RULES) {
-          if (rule.re.test(line)) hits.push(rule);
-        }
-      }
-      if (hits.length) {
-        const seen = new Set();
-        const msgs = hits
-          .filter((h) => !seen.has(h.id) && seen.add(h.id))
-          .map((h, i) => `${i + 1}. [${h.id}] ${h.msg}`);
+      const { blocks, warns } = scanContent(content);
+      if (blocks.length) {
+        const msgs = blocks.map((h, i) => `${i + 1}. [${h.id}] ${h.msg}`);
         deny(
           `Motion anti-pattern(s) in this edit to ${path}:\n\n${msgs.join('\n\n')}\n\n` +
             `Fix by using the primitive, or — if this is a deliberate, approved exception — add ` +
@@ -224,14 +268,11 @@ function main() {
 
       // Content-level WARN heuristics (anti-patterns #4, #6). A content-wide
       // OVERRIDE: skips them — the author already declared the exception.
-      if (!/OVERRIDE:/.test(content)) {
-        const warns = CONTENT_RULES.filter((r) => r.test(content));
-        if (warns.length) {
-          warn(
-            `Heads-up on this edit to ${path}:\n\n` +
-              warns.map((w, i) => `${i + 1}. [${w.id}] ${w.msg}`).join('\n\n')
-          );
-        }
+      if (warns.length) {
+        warn(
+          `Heads-up on this edit to ${path}:\n\n` +
+            warns.map((w, i) => `${i + 1}. [${w.id}] ${w.msg}`).join('\n\n')
+        );
       }
     }
   }
@@ -239,7 +280,45 @@ function main() {
   allow();
 }
 
-// Rules are also consumed by tools/validate-singlehtml.js (file-wide re-scan).
-module.exports = { RULES, CONTENT_RULES, isAuthoredVideoFile };
+// --file <path> CLI (fix-round B4, ccs-A25): the stdin hook only sees
+// Edit/Write TOOL calls — any file written by a script bypasses it (ccs 29).
+// This entry scans a file on disk with the same rules. Exit 1 on blocks,
+// 0 clean (warns print but don't fail). Not wired into `npm run lint`
+// (rtk garbles composed npm scripts — standing note); invoke directly:
+//   node tools/hooks/video-guard.js --file videos/<slug>/index.html
+function fileMain(filePath) {
+  const fs = require('fs');
+  const p = norm(filePath);
+  let content;
+  try {
+    content = fs.readFileSync(filePath, 'utf-8');
+  } catch (e) {
+    console.error(`video-guard --file: cannot read ${filePath}: ${e.message}`);
+    process.exit(1);
+  }
+  if (!isAuthoredVideoFile(p)) {
+    console.log(`video-guard: ${p} is not an authored video file (videos/<slug>/*.html|js) — nothing to scan.`);
+    process.exit(0);
+  }
+  const { blocks, warns } = scanContent(content);
+  for (const w of warns) console.log(`WARN  [${w.id}] ${w.msg}`);
+  for (const b of blocks) console.log(`BLOCK [${b.id}] ${b.msg}`);
+  if (blocks.length) {
+    console.log(`\n✗ ${blocks.length} blocking anti-pattern(s) in ${p}`);
+    process.exit(1);
+  }
+  console.log(`✓ ${p}: no blocking anti-patterns${warns.length ? ` (${warns.length} warn)` : ''}`);
+  process.exit(0);
+}
 
-if (require.main === module) main();
+// Rules are also consumed by tools/validate-singlehtml.js (file-wide re-scan).
+module.exports = { RULES, CONTENT_RULES, isAuthoredVideoFile, scanContent };
+
+if (require.main === module) {
+  const fileIdx = process.argv.indexOf('--file');
+  if (fileIdx !== -1 && process.argv[fileIdx + 1]) {
+    fileMain(process.argv[fileIdx + 1]);
+  } else {
+    main();
+  }
+}

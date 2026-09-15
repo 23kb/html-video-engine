@@ -1,0 +1,12 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><title>_qc-sync-marker — renderer origin calibration</title>
+<style>html,body{margin:0;background:#111;color:#fff;font:700 160px monospace}.stage{position:relative;width:1920px;height:1080px;display:grid;place-items:center}</style></head>
+<body><div class="stage" id="stage"><div id="t">boot</div></div>
+<script>
+  // Sets __T0 synchronously at load and burns (performance.now()-__T0) into every frame.
+  // Reading the burned number at video t=0 gives the renderer's trim error directly.
+  // __T0 is set ~1s after load, like a real film with an async build, so the load-in trim is exercised:
+  // the burned number at video t=0 is then the trim ERROR (true screencast latency − the renderer constant).
+  const el = document.getElementById('t');
+  setTimeout(() => { window.__T0 = performance.now(); window.__sched = [{ key: 'ad', t: 0 }]; tick(); }, 1000);
+  function tick() { const s = (performance.now() - window.__T0) / 1000; el.textContent = 't=' + s.toFixed(2); if (s < 3) requestAnimationFrame(tick); else { window.__done = true; window.__dur = s; } }
+</script></body></html>

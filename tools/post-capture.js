@@ -35,6 +35,14 @@
 //   8b. lint-snapshot-assets.js       — load the snapshot headless, FAIL on
 //      any 4xx/5xx asset request (out-of-snapshot url() leakage; the
 //      entry-automation build hit 30 console 404s on first smoke)
+//   8c. capture-gates.js              — WARN-only quality gates (fix-round
+//      C6): geometry sanity (>3× viewport), live-vs-frozen paint diff
+//      (against live-reference.png when capture.js saved one), locale
+//      hazards (iti__ flags / date order / currency), admin-chrome assert,
+//      stacking-context hazards. Report-only; findings also land in
+//      outline.md's marked gates section. Runs AFTER the outline regen so
+//      the section survives. Standalone (read-only) form:
+//      `node tools/capture-gates.js <slug>`.
 //   9. waitFor re-verify              — if meta.json recorded the capture
 //      plan's waitFor selector, load the trimmed snapshot headless and FAIL
 //      LOUDLY if the anchor no longer resolves (over-trim detection; the
@@ -185,6 +193,9 @@ async function main() {
     run('strip-snapshot-comments.js', [slug]);
     run('neutralize-payment-iframes.js', ['--slug', slug]);
     run('dedup-snapshot-css.js', ['--slug', slug]);
+    // Identity transforms create stacking contexts that trap later-revealed
+    // overlays (ee 6 / as5 5) — strip them at birth (AP-12).
+    run('strip-identity-transforms.js', ['--slug', slug]);
     // Link BEFORE the outline runs — an unlinked snapshot's outline is born
     // saying "interactivity.js is not linked — no in-page transitions"
     // (top-ranked SendGrid dev-fix; re-hit on all 5 FA captures).
@@ -192,6 +203,7 @@ async function main() {
     run('generate-snapshot-catalog.js', [slug]);
     run('generate-snapshot-outline.js', [slug]);
     run('lint-snapshot-assets.js', [slug]);
+    run('capture-gates.js', [slug, '--write-outline']);
     registerInIndex(slug, { shows, topics, category });
   }
 

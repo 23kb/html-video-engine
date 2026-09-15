@@ -1,5 +1,7 @@
 node_modules/
 .env
+tools/avatar/.venv/
+tools/avatar/weights/
 .claude/settings.local.json
 probe-out/
 snapshot-backups/
@@ -20,7 +22,9 @@ REFACTOR-DONE.md
 BACKLOG.md
 docs/codex-prompts/
 repo-audit-findings.md
-videos/
+videos/*
+!videos/_*/
+videos/_*/render/
 docs/repo-architecture-audit-hyperframes.md
 
 # Preview server logs
@@ -56,3 +60,52 @@ docs/handoff-7-addons-providers-payments.md
 docs/handoff-8-settings-addons-handhold.md
 docs/project-overview-2026-05-16.md
 source-video-extracts/
+snapshots - Copy
+
+# Never push — personal / session notes / video work product (2026-09-04)
+# Per-video packages (videos/<slug>/) are WPForms work product; only videos/_* system dirs are tracked (rule above).
+LESSONS-*.md
+HANDOFF*.md
+HANDOVER*.md
+KICKOFF-PROMPT.md
+*-prompt.md
+*-handoff*.md
+docs/lessons-index.md
+docs/lessons-mining-*.md
+docs/session-handoff-*.md
+docs/engine-action-points-*.md
+docs/track3-analysis-*.md
+docs/claude-design-*.md
+docs/snapshot-cost-problem.md
+docs/qr-code-video-storyboards-*.md
+docs/*-test-video-*.md
+docs/shorts-qc/
+docs/fix-round-*/
+docs/motion-design-round-*/
+acceptance-test/
+analysis/
+approved-shorts/
+reference/New folder/
+reference/avatar-source/
+snapshots/google-oauth-signin/
+.probe-*.tmp.mjs
+# Probe dumps + renders inside the system dirs (code and harness HTML stay tracked)
+videos/_*/**/*.png
+videos/_*/**/*.mp4
+# More session / company-internal docs (2026-09-04, pass 2)
+docs/shorts-qc-*.md
+docs/helper-rollout-backlog.md
+docs/video-system-improvements-*.md
+docs/jake-moran-*.md
+style guide.md
+# Reference material stays local (2026-09-15)
+reference/
+# Local artefacts: AE projects + auto-saves, stray root renders, scratch, session/personal notes (2026-09-15)
+*.aep
+Auto-Save/
+/*.mp4
+tools/_tmp/
+UsersPC*/
+SLUG-CLAIMS-*.md
+docs/portrait-rebuild/
+config/avatar-looks.json

@@ -1,0 +1,28 @@
+{
+  "_comment": "Smart Tags long-form tutorial (form 1924 'Sullie's Bakery Catering Request', page /catering-request/). WPForms 2.0.2 refresh of the smart-tag widget surfaces + the two payoff surfaces that need a real server round-trip. Existing builder-settings-notifications / builder-field-options-* snapshots are April 2026 pre-2.0 and are NOT overwritten.",
+  "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1924&view=settings",
+  "variants": [
+    {
+      "slug": "frontend-catering-prefilled",
+      "targetPath": "/catering-request/",
+      "steps": [
+        {
+          "wait": 2500
+        },
+        {
+          "eval": "['header','nav','.site-header','#masthead','.main-navigation','#site-navigation','form[role=\"search\"]','.search-form','#secondary','.widget-area','aside','footer','.site-footer','#colophon','#wpadminbar','.post-edit-link','.wpforms-form-edit-link'].forEach(function(s){document.querySelectorAll(s).forEach(function(n){n.remove();});});document.body.style.margin='0';",
+          "settle": 400
+        },
+        {
+          "eval": "var e=document.querySelector('#wpforms-1924-field_2'); if(!e||!e.value){ throw new Error('email not prefilled by {user_email} \u2014 check logged-in state'); }",
+          "settle": 300
+        },
+        {
+          "eval": "var d=document.querySelector('.wpforms-description'); if(!d||d.textContent.indexOf('three days notice')===-1){ throw new Error('form description not rendered'); }",
+          "settle": 300
+        }
+      ],
+      "waitFor": ".wpforms-form"
+    }
+  ]
+}

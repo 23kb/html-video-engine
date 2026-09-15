@@ -93,6 +93,32 @@ async function main() {
       await ctx.close();
     }
 
+    // ── 1b. Word-mode captions (shorts) — in-page, real module ────────────
+    section('Word-mode captions');
+    {
+      const { ctx, page } = await newPage(browser);
+      await page.goto(FIXTURE_URL, { waitUntil: 'load', timeout: 15000 });
+      const res = await page.evaluate(async () => {
+        const m = await import('/videos/_shared/narration.js');
+        const el = document.createElement('div');
+        document.body.appendChild(el);
+        const t0 = performance.now();
+        m.showCaptionWords('Running a sale? Your form can take coupon codes.', { captionEl: el, durS: 4 });
+        const syncMs = performance.now() - t0;
+        const spans = el.querySelectorAll('span');
+        const count = spans.length;
+        const text = el.textContent.replace(/\s+/g, ' ').trim();
+        await new Promise(r => setTimeout(r, 600));
+        const vis = s => getComputedStyle(s).visibility !== 'hidden' && parseFloat(getComputedStyle(s).opacity) > 0.5;
+        return { syncMs, count, text, firstVisible: vis(spans[0]), lastStillHidden: !vis(spans[count - 1]) };
+      });
+      ok(res.count === 9, `one span per word (${res.count}/9)`);
+      ok(res.text === 'Running a sale? Your form can take coupon codes.', 'textContent preserves the full caption');
+      ok(res.syncMs < 100, `fire-and-forget: returns synchronously (${Math.round(res.syncMs)}ms)`);
+      ok(res.firstVisible, 'first word visible shortly after clip start');
+      ok(res.lastStillHidden, 'last word still pending at 0.6s of a 4s clip (paced, not all-at-once)');
+    }
+
     // ── 2. Frozen-RAF harness sanity (negative control) ───────────────────
     section('Frozen-RAF harness sanity');
     {

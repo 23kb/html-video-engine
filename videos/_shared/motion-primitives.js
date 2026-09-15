@@ -106,6 +106,8 @@ export function cinematicFlight(camera, opts) {
     scaleDipFactor = 0.95,
     rotationTilt = 1.2,
     microZoom = null,
+    anticipationFactor = 0.10,  // fraction of the delta nudged AWAY pre-flight; 0 disables
+    continuous = false,          // one unbroken velocity arc (no nudge, no mid-flight stall)
   } = opts;
 
   const tl = gsap.timeline({ paused: true });
@@ -116,8 +118,39 @@ export function cinematicFlight(camera, opts) {
   const midY = (from.y + to.y) * 0.5;
   const dx = to.x - from.x;
   const dy = to.y - from.y;
-  const anticipDx = -dx * 0.10;
-  const anticipDy = -dy * 0.10;
+  const anticipDx = -dx * anticipationFactor;
+  const anticipDy = -dy * anticipationFactor;
+
+  if (continuous) {
+    // Continuous-glide variant: x/y ride ONE tween across the whole flight
+    // (velocity never reverses or stalls at the midpoint), while the scale dip
+    // breathes as an overlapping pair. For films where flights repeat many
+    // times, the default anticipation nudge-back reads as a jerk — this mode
+    // trades it for a single premium arc. Same canonical primitive (HR3).
+    const t0 = (anticipationFactor > 0 && anticipationDuration > 0) ? anticipationDuration : 0;
+    if (t0 > 0) {
+      tl.to(camera, { x: from.x + anticipDx, y: from.y + anticipDy,
+        duration: t0, ease: 'sine.in' }, 0);
+    }
+    tl.to(camera, { x: to.x, y: to.y, rotation: toRot,
+      duration: flightDuration, ease: 'power3.inOut' }, t0);
+    if (scaleDipFactor < 1 && dipScale < Math.min(from.scale, to.scale)) {
+      tl.to(camera, { scale: dipScale, duration: flightDuration * 0.5, ease: 'sine.in' }, t0);
+      tl.to(camera, { scale: to.scale, duration: flightDuration * 0.5, ease: 'sine.out' },
+        t0 + flightDuration * 0.5);
+    } else {
+      tl.to(camera, { scale: to.scale, duration: flightDuration, ease: 'power3.inOut' }, t0);
+    }
+    tl.to({}, { duration: landHold }, t0 + flightDuration);
+    if (microZoom && microZoom.to) {
+      tl.to(camera, {
+        x: microZoom.to.x, y: microZoom.to.y, scale: microZoom.to.scale,
+        duration: microZoom.duration ?? 0.6,
+        ease: 'power3.out',
+      });
+    }
+    return tl;
+  }
 
   // Phase 1: Anticipation — slight nudge AWAY from target
   tl.to(camera, {
@@ -386,6 +419,11 @@ export class Cursor {
    * @param {number} [opts.initialX=0] — initial stage-coord x
    * @param {number} [opts.initialY=0] — initial stage-coord y
    * @param {number} [opts.zIndex=100]
+   * @param {'center'|'tip'} [opts.press='center'] — click press mode: 'tip' scales
+   *   about the arrow tip (12.5% 8.3% — measured on DEFAULT_CURSOR_SVG's M3 2 apex;
+   *   re-measure before using with a custom svg) with the seam-grammar §3.1 tap
+   *   constants; 'center' keeps the legacy center bounce. Approved opt-in 2026-09-03
+   *   (reel-tutorial-craft b2); default unchanged.
    */
   constructor(stage, opts = {}) {
     const {
@@ -394,6 +432,7 @@ export class Cursor {
       initialX = 0,
       initialY = 0,
       zIndex = 100,
+      press = 'center',
     } = opts;
 
     this.stage = stage;
@@ -417,6 +456,7 @@ export class Cursor {
     stage.appendChild(this.el);
     gsap.set(this.el, { x: initialX, y: initialY });
     this._pos = { x: initialX, y: initialY };
+    this._press = press;
   }
 
   /**
@@ -479,6 +519,13 @@ export class Cursor {
    * Synchronous spawn of the ripple element; cursor squash + restore on
    * the same timeline.
    *
+   * ⚠ VISUAL-ONLY — NO DOM event is dispatched. A registered interactivity
+   * handler (snapshots/_shared/interactivity.js) will NOT fire from this call;
+   * the beat silently no-ops (receipts fuf 1 / cpa 1 — two agents, same trap).
+   * To actually click an iframe element use
+   * `glideClick({ iframeManager, cursor }, target, { dispatch: true })` from
+   * iframe-helpers.js, or dispatch a MouseEvent on the target yourself.
+   *
    * @param {Object} [opts]
    * @param {string} [opts.rippleColor='rgba(226,119,48,0.92)'] — WPForms orange
    * @param {number} [opts.rippleScale=2.4]
@@ -515,9 +562,16 @@ export class Cursor {
     }
 
     return new Promise(resolve => {
-      gsap.timeline()
-        .to(this.el, { scale: 0.78, duration: 0.10, ease: 'power2.in' })
-        .to(this.el, { scale: 1.0, duration: 0.18, ease: 'back.out(2)', onComplete: resolve });
+      if (this._press === 'tip') {
+        // Seam-grammar §3.1 tap: press at the arrow tip, no bounce.
+        gsap.timeline()
+          .to(this.el, { scale: 0.84, duration: 0.10, ease: 'power2.in', transformOrigin: '12.5% 8.3%' })
+          .to(this.el, { scale: 1.0, duration: 0.22, ease: 'power2.out', transformOrigin: '12.5% 8.3%', onComplete: resolve });
+      } else {
+        gsap.timeline()
+          .to(this.el, { scale: 0.78, duration: 0.10, ease: 'power2.in' })
+          .to(this.el, { scale: 1.0, duration: 0.18, ease: 'back.out(2)', onComplete: resolve });
+      }
     });
   }
 
@@ -820,18 +874,32 @@ export function clickRipple(stage, x, y, opts = {}) {
  * @param {Object} [opts]
  * @param {number} [opts.charDuration=0.045] — seconds per char; 0.03–0.05 = realistic
  * @param {string} [opts.caretHtml='<span class="ml-caret">|</span>']
+ * @param {boolean} [opts.humanize=false] — seam-grammar §3.3 weight-curve pacing
+ *   (word breaths, punctuation pauses, end swell); deterministic, total duration
+ *   unchanged. The returned tween carries `.charT` (per-char reveal seconds) for
+ *   keystroke SFX coupling. Approved opt-in 2026-09-03 (reel-tutorial-craft b1).
  * @returns {gsap.core.Tween} — UNPAUSED (plays immediately, deliberate per regression-guard); tl.add() to re-schedule
  */
 export function caretType(el, text, opts = {}) {
-  const { charDuration = 0.045, caretHtml = '<span class="ml-caret">|</span>' } = opts;
+  const { charDuration = 0.045, caretHtml = '<span class="ml-caret">|</span>', humanize = false } = opts;
+  const N = text.length;
+  const dur = Math.max(0.01, N * charDuration);
+  const charT = (humanize && N > 0) ? humanizedCharTimes(text, dur) : null;
   const n = { val: 0 };
   let lastI = -1;
-  return gsap.to(n, {
-    val: text.length,
-    duration: Math.max(0.01, text.length * charDuration),
+  const tween = gsap.to(n, {
+    val: N,
+    duration: dur,
     ease: 'none',
     onUpdate: () => {
-      const i = Math.floor(n.val);
+      let i;
+      if (charT) {
+        const elapsed = (n.val / N) * dur;
+        i = 0;
+        while (i < N && charT[i] <= elapsed) i++;
+      } else {
+        i = Math.floor(n.val);
+      }
       if (i !== lastI) {
         el.innerHTML = text.slice(0, i) + caretHtml;
         lastI = i;
@@ -839,6 +907,37 @@ export function caretType(el, text, opts = {}) {
     },
     onComplete: () => { el.innerHTML = text + caretHtml; },
   });
+  tween.charT = charT;
+  return tween;
+}
+
+/**
+ * Deterministic per-character reveal times for humanized typing (seam-grammar
+ * §3.3): word breaths after spaces, punctuation pauses, a mid-string rhythm
+ * ramp, and an end swell. Pure function of the text — no RNG, so frame-stepped
+ * probes reproduce it exactly. The last character always lands at `totalDur`.
+ *
+ * @param {string} text
+ * @param {number} totalDur — seconds
+ * @returns {number[]} cumulative reveal time per character (seconds)
+ */
+function humanizedCharTimes(text, totalDur) {
+  const N = text.length;
+  const weights = [];
+  for (let i = 0; i < N; i++) {
+    const x = (N > 1) ? i / (N - 1) : 0;
+    let w = 1 + 0.25 * Math.sin(i * 2.7);
+    w *= 1.15 - 0.32 * Math.sin(Math.PI * x);
+    const prev = text[i - 1];
+    if (prev === ' ') w += 0.7;
+    if (prev === ',' || prev === '.') w += 0.9;
+    if (i === N - 1) w += 0.5;
+    weights.push(Math.max(0.25, w));
+  }
+  let acc = 0;
+  const cum = weights.map(w => (acc += w));
+  const scale = totalDur / cum[N - 1];
+  return cum.map(c => c * scale);
 }
 
 /**
@@ -856,24 +955,36 @@ export function caretType(el, text, opts = {}) {
  * @param {number} [opts.cps=22] — characters per second
  * @param {boolean} [opts.clear=true] — clear existing value before typing
  * @param {boolean} [opts.change=true] — dispatch `change` at the end
+ * @param {boolean} [opts.humanize=false] — seam-grammar §3.3 weight-curve pacing;
+ *   see caretType. The returned tween carries `.charT`. Approved opt-in 2026-09-03.
  * @returns {gsap.core.Tween} — UNPAUSED (plays immediately); tl.add() to re-schedule under a master
  */
 export function typeIntoIframeInput(input, text, opts = {}) {
-  const { cps = 22, clear = true, change = true } = opts;
+  const { cps = 22, clear = true, change = true, humanize = false } = opts;
   if (!input || !('value' in input)) {
     throw new Error('typeIntoIframeInput: target must be an input or textarea');
   }
   const win = input.ownerDocument?.defaultView || window;
   if (clear) input.value = '';
+  const N = text.length;
+  const charDuration = 1 / Math.max(1, cps);
+  const dur = Math.max(0.01, N * charDuration);
+  const charT = (humanize && N > 0) ? humanizedCharTimes(text, dur) : null;
   const n = { val: 0 };
   let lastI = -1;
-  const charDuration = 1 / Math.max(1, cps);
-  return gsap.to(n, {
-    val: text.length,
-    duration: Math.max(0.01, text.length * charDuration),
+  const tween = gsap.to(n, {
+    val: N,
+    duration: dur,
     ease: 'none',
     onUpdate: () => {
-      const i = Math.floor(n.val);
+      let i;
+      if (charT) {
+        const elapsed = (n.val / N) * dur;
+        i = 0;
+        while (i < N && charT[i] <= elapsed) i++;
+      } else {
+        i = Math.floor(n.val);
+      }
       if (i !== lastI) {
         input.value = text.slice(0, i);
         input.dispatchEvent(new win.Event('input', { bubbles: true }));
@@ -886,6 +997,8 @@ export function typeIntoIframeInput(input, text, opts = {}) {
       if (change) input.dispatchEvent(new win.Event('change', { bubbles: true }));
     },
   });
+  tween.charT = charT;
+  return tween;
 }
 
 /**
@@ -993,15 +1106,14 @@ export function markerSweep(textEl, opts = {}) {
 // HIGHLIGHT / EMPHASIS PRIMITIVES
 // ─────────────────────────────────────────────────────────────────────────
 
-// Re-export the proven clone-and-lift helpers from runtime/pop-out.js. The
-// runtime version is engine-coupled (assumes iframe.ui + engine layout); the
-// version below generalizes it for arbitrary iframes living inside any
-// transformed stage. Same visual recipe, same proven motion.
+// Re-export the proven clone-and-lift helpers from ./pop-out.js (extracted
+// from runtime/pop-out.js at legacy retirement, 2026-08-22). Same visual
+// recipe, same proven motion.
 import {
   injectIframeFonts as _injectIframeFonts,
   inlineTreeStyles as _inlineTreeStyles,
   stripBuilderChrome as _stripBuilderChrome,
-} from '../../runtime/pop-out.js';
+} from './pop-out.js';
 
 /**
  * Pop a UI block out of an iframe as a floating 2.5D card. Mirrors the
@@ -1240,8 +1352,8 @@ export function fieldStaggerReveal(fields, opts = {}) {
   } = opts;
   const tl = gsap.timeline({ paused: true });
   tl.fromTo(fields,
-    { opacity: 0, y: rise, filter: `blur(${blurFrom}px)` },
-    { opacity: 1, y: 0, filter: 'blur(0px)',
+    { autoAlpha: 0, y: rise, filter: `blur(${blurFrom}px)` },
+    { autoAlpha: 1, y: 0, filter: 'blur(0px)',
       duration, stagger, ease: 'power2.out' }
   );
   return tl;

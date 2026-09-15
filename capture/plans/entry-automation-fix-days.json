@@ -1,0 +1,21 @@
+{
+  "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725",
+  "variants": [
+    {
+      "slug": "_tmp-ea-fix-days",
+      "steps": [
+        { "click": ".wpforms-panel-sidebar-section-entry_automation", "settle": 1500 },
+        { "eval": "document.querySelectorAll('.wpforms-entry-automation-schedule-days input:checked').forEach(function(d){ if (d.value !== 'mon') { d.click(); } });", "settle": 1000 },
+        { "click": "#wpforms-save", "settle": 9000 }
+      ]
+    },
+    {
+      "slug": "builder-settings-entry_automation-task-saved",
+      "waitFor": ".wpforms-builder-entity-connection",
+      "steps": [
+        { "click": ".wpforms-panel-sidebar-section-entry_automation", "settle": 1500 },
+        { "eval": "document.querySelector('#wpforms-entry-automation-dashboard-notice .wpforms-dismiss-button')?.click()", "settle": 800 }
+      ]
+    }
+  ]
+}

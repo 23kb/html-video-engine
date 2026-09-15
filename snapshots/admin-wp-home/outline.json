@@ -1,0 +1,2154 @@
+{
+  "slug": "admin-wp-home",
+  "registryPresent": true,
+  "transitions": [],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-dash-widget-forms-more",
+        "tag": "button",
+        "text": "Show More",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-dash-widget-reset-chart",
+        "tag": "button",
+        "text": "Reset chart to display all forms",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-button",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dash-widget-settings-menu-save",
+        "tag": "button",
+        "text": "Save Changes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-dash-widget-single-chart-btn",
+        "tag": "button",
+        "text": "Display only this form data in the graph",
+        "count": 9,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#ui-id-1",
+        "tag": "h3",
+        "text": "WPForms Latest [2.0.2] - 2026-XX-XX",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-101",
+        "tag": "h3",
+        "text": "Zoho CRM Latest [1.0.0] - 2025-07-16",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-11",
+        "tag": "h3",
+        "text": "Calculations Latest [1.10.0] - 2026-01-27",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-13",
+        "tag": "h3",
+        "text": "Campaign Monitor Latest [1.4.0] - 2025-09-09",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-15",
+        "tag": "h3",
+        "text": "Conversational Forms Latest [1.20.0] - 2026-03-17",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-17",
+        "tag": "h3",
+        "text": "Kit Latest [1.2.0] - 2025-09-02",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-19",
+        "tag": "h3",
+        "text": "Coupons Latest [1.8.0] - 2026-04-28",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-21",
+        "tag": "h3",
+        "text": "Drip Latest [1.11.0] - 2026-02-03",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-23",
+        "tag": "h3",
+        "text": "Dropbox Latest [1.3.0] - 2026-03-24",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-25",
+        "tag": "h3",
+        "text": "Entry Automation Latest [1.3.0] - 2026-07-30",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-27",
+        "tag": "h3",
+        "text": "Form Abandonment Latest [1.14.0] - 2026-03-31",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-29",
+        "tag": "h3",
+        "text": "Form Locker Latest [2.10.0] - 2025-01-13",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-3",
+        "tag": "h3",
+        "text": "ActiveCampaign Latest [1.7.0] - 2025-09-02",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-31",
+        "tag": "h3",
+        "text": "Form Pages Latest [1.12.0] - 2026-04-21",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-33",
+        "tag": "h3",
+        "text": "Geolocation Latest [2.13.0] - 2026-02-24",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-35",
+        "tag": "h3",
+        "text": "Google Calendar Latest [1.0.0] - 2025-08-19",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-37",
+        "tag": "h3",
+        "text": "Google Drive Latest [1.3.0] - 2026-02-03",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-39",
+        "tag": "h3",
+        "text": "Google Sheets Latest [2.7.0] - 2026-08-25",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-41",
+        "tag": "h3",
+        "text": "HubSpot Latest [1.5.0] - 2026-04-02",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-43",
+        "tag": "h3",
+        "text": "Klaviyo Latest [1.0.0] - 2026-05-12",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-45",
+        "tag": "h3",
+        "text": "Lead Forms Latest [1.9.0] - 2026-03-17",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-47",
+        "tag": "h3",
+        "text": "Mailchimp Latest [2.6.0] - 2026-04-21",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-49",
+        "tag": "h3",
+        "text": "MailPoet Latest [1.0.0] - 2025-03-11",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-5",
+        "tag": "h3",
+        "text": "Airtable Latest [1.0.0] - 2025-10-21",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-51",
+        "tag": "h3",
+        "text": "Make Latest [1.2.0] - 2026-08-18",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-53",
+        "tag": "h3",
+        "text": "Mercado Pago Unreleased",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-55",
+        "tag": "h3",
+        "text": "n8n Latest [1.1.0] - 2026-01-20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-57",
+        "tag": "h3",
+        "text": "Notion Latest [1.0.0] - 2025-12-09",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-59",
+        "tag": "h3",
+        "text": "Offline Forms Latest [1.4.0] - 2026-04-21",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-61",
+        "tag": "h3",
+        "text": "PayPal Commerce Pro Latest [2.1.0] - 2026-05-12",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-63",
+        "tag": "h3",
+        "text": "PayPal Standard Latest [1.10.0] - 2024-02-20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-65",
+        "tag": "h3",
+        "text": "PDF Latest [1.4.0] - 2026-04-01",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-67",
+        "tag": "h3",
+        "text": "Pipedrive Latest [1.1.0] - 2026-03-24",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-69",
+        "tag": "h3",
+        "text": "Post Submissions Latest [1.8.0] - 2025-02-25",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-7",
+        "tag": "h3",
+        "text": "Authorize.Net Latest [1.11.0] - 2026-03-17",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-71",
+        "tag": "h3",
+        "text": "Quiz Latest [1.3.0] - 2026-03-17",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-73",
+        "tag": "h3",
+        "text": "Salesforce Latest [1.5.0] - 2025-10-22",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-75",
+        "tag": "h3",
+        "text": "Save and Resume Latest [1.13.0] - 2025-10-28",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-77",
+        "tag": "h3",
+        "text": "SendGrid Latest [1.0.0] - 2026-06-30",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-79",
+        "tag": "h3",
+        "text": "Brevo Latest [1.6.1] - 2026-05-08",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-81",
+        "tag": "h3",
+        "text": "Signatures Latest [1.13.0] - 2025-09-09",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-83",
+        "tag": "h3",
+        "text": "Slack Latest [1.1.0] - 2025-08-05",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-85",
+        "tag": "h3",
+        "text": "Square Pro Latest [2.0.0] - 2025-04-22",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-87",
+        "tag": "h3",
+        "text": "Stripe Pro Latest [3.5.0] - 2025-04-22",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-89",
+        "tag": "h3",
+        "text": "Surveys and Polls Latest [1.20.0] - 2026-08-18",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-9",
+        "tag": "h3",
+        "text": "AWeber Latest [2.1.0] - 2024-08-29",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-91",
+        "tag": "h3",
+        "text": "Twilio Latest [1.0.0] - 2025-01-21",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-93",
+        "tag": "h3",
+        "text": "User Journey Latest [1.7.0] - 2026-03-31",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-95",
+        "tag": "h3",
+        "text": "User Registration Latest [2.9.0] - 2026-04-28",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-97",
+        "tag": "h3",
+        "text": "Webhooks Latest [1.6.0] - 2026-01-29",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-99",
+        "tag": "h3",
+        "text": "Zapier Latest [1.9.0] - 2026-04-28",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-forms-list-table",
+        "tag": "table",
+        "text": "Sullie's Bakery Contact Form 181 Sullie's Bakery Catering O…",
+        "count": 1,
+        "hidden": false,
+        "nav": "admin-entries-overview"
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#_ajax_nonce-replyto-comment",
+        "tag": "input",
+        "text": "b867845aeb",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_wp_unfiltered_html_comment",
+        "tag": "input",
+        "text": "7a6668713e",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#action",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#author-email",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#author-name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#author-url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#checkbox",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment_ID",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment_post_ID",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#community-events-location",
+        "tag": "input",
+        "text": "Cincinnati",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#community-events-submit",
+        "tag": "input",
+        "text": "Submit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#content",
+        "tag": "textarea",
+        "text": "What’s on your mind?",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_activity-hide",
+        "tag": "input",
+        "text": "dashboard_activity",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-hide",
+        "tag": "input",
+        "text": "dashboard_primary",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-hide",
+        "tag": "input",
+        "text": "dashboard_quick_press",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-hide",
+        "tag": "input",
+        "text": "dashboard_right_now",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-hide",
+        "tag": "input",
+        "text": "dashboard_site_health",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#meta-box-order-nonce",
+        "tag": "input",
+        "text": "da738d4002",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mode",
+        "tag": "input",
+        "text": "dashboard",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#position",
+        "tag": "input",
+        "text": "-1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_block",
+        "tag": "input",
+        "text": "b-quote",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_ins",
+        "tag": "input",
+        "text": "ins",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quickpost-action",
+        "tag": "input",
+        "text": "post-quickdraft-save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replycontent",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#save-post",
+        "tag": "input",
+        "text": "Save Draft",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "84a0ca7e35",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#status",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#welcomepanelnonce",
+        "tag": "input",
+        "text": "ce584f6755",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp_welcome_panel-hide",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpf_plugin_status-hide",
+        "tag": "input",
+        "text": "wpf_plugin_status",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_pro-hide",
+        "tag": "input",
+        "text": "wpforms_reports_widget_pro",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-color-wp",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-color-wpforms",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-style-bar",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-style-line",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-timespan",
+        "tag": "select",
+        "text": "Last 7 days Last 30 days",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#welcome-panel",
+        "tag": "div",
+        "text": "Dismiss Welcome to WordPress! Learn more about the 7.1 vers…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#activity-widget",
+        "tag": "div",
+        "text": "Recently PublishedApr 28th, 1:21 pm Sullie’s World – BlogAp…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#addbtn",
+        "tag": "span",
+        "text": "Add Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#addhead",
+        "tag": "span",
+        "text": "Add Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Screen elements Some screen elements can be shown or hidden…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bar",
+        "tag": "circle",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#c",
+        "tag": "radialgradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#column3-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#column4-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#com-reply",
+        "tag": "div",
+        "text": "Edit Comment Reply to Comment Add Comment Comment Name Emai…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment-1",
+        "tag": "li",
+        "text": "From A WordPress Commenter on Sullie’s first blog [Pending]…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#community-events",
+        "tag": "div",
+        "text": "Enter your closest city to find nearby events. Select locat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#community-events-location-message",
+        "tag": "span",
+        "text": "Enter your closest city to find nearby events.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#d",
+        "tag": "mask",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_activity",
+        "tag": "div",
+        "text": "Activity Move up Move down Show or hide panel",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_activity-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_activity-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_activity-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_activity-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_activity-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_activity-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_activity-title",
+        "tag": "h2",
+        "text": "Activity",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_primary",
+        "tag": "div",
+        "text": "WordPress Events and News Move up Move down Show or hide pa…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_primary-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-title",
+        "tag": "h2",
+        "text": "WordPress Events and News",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_quick_press",
+        "tag": "div",
+        "text": "Quick Draft Move up Move down Show or hide panel Title Cont…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_quick_press-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-title",
+        "tag": "h2",
+        "text": "Quick Draft",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_right_now",
+        "tag": "div",
+        "text": "At a Glance Move up Move down Show or hide panel",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_right_now-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-title",
+        "tag": "h2",
+        "text": "At a Glance",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_site_health",
+        "tag": "div",
+        "text": "Site Health Status Move up Move down Show or hide panel",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_site_health-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-title",
+        "tag": "h2",
+        "text": "Site Health Status",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard-widgets",
+        "tag": "div",
+        "text": "WPForms Move up Move down Show or hide panel Total Entries:…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard-widgets-wrap",
+        "tag": "div",
+        "text": "WPForms Move up Move down Show or hide panel Total Entries:…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description-wrap",
+        "tag": "div",
+        "text": "Content",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#e",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#edithead",
+        "tag": "div",
+        "text": "Name Email URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#editlegend",
+        "tag": "span",
+        "text": "Edit Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#entry-count-text",
+        "tag": "span",
+        "text": "Total Entries",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#entry-count-value",
+        "tag": "span",
+        "text": "578",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#et-ajax-saving",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#f",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#g",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#h",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#i",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#latest-comments",
+        "tag": "div",
+        "text": "Recent Comments From A WordPress Commenter on Sullie’s firs…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#loading",
+        "tag": "img",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "WPForms Move up Move down Show or hide panel Total Entries:…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-1",
+        "tag": "div",
+        "text": "WPForms Move up Move down Show or hide panel Total Entries:…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-2",
+        "tag": "div",
+        "text": "Quick Draft Move up Move down Show or hide panel Title Cont…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-3",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-4",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#published-posts",
+        "tag": "div",
+        "text": "Recently PublishedApr 28th, 1:21 pm Sullie’s World – BlogAp…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-press",
+        "tag": "form",
+        "text": "Title Content",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#replybtn",
+        "tag": "span",
+        "text": "Submit Reply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replycontainer",
+        "tag": "div",
+        "text": "Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replyhead",
+        "tag": "span",
+        "text": "Reply to Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replyrow",
+        "tag": "div",
+        "text": "Edit Comment Reply to Comment Add Comment Comment Name Emai…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replysubmit",
+        "tag": "div",
+        "text": "Add Comment Update Comment Submit Reply Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#savebtn",
+        "tag": "span",
+        "text": "Update Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Screen elements Some screen elements can be shown or hidden…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#side-sortables",
+        "tag": "div",
+        "text": "Quick Draft Move up Move down Show or hide panel Title Cont…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#spam-undo-holder",
+        "tag": "div",
+        "text": "Comment by marked as spam. Undo",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#the-comment-list",
+        "tag": "ul",
+        "text": "From A WordPress Commenter on Sullie’s first blog [Pending]…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#title-wrap",
+        "tag": "div",
+        "text": "Title",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_e2e-dashboard",
+        "tag": "li",
+        "text": "E2E Dashboard E2E Dashboard Recent Runs Nightly Tests",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_et_divi_options",
+        "tag": "li",
+        "text": "Divi Dashboard 1 Divi 5 Migrator Theme Options Theme Builde…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_vibe-ai",
+        "tag": "li",
+        "text": "Vibe AI Vibe AI Approval Log",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpcode",
+        "tag": "li",
+        "text": "Code Snippets Code Snippets + Add Snippet Header & Footer C…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms_dev_tools",
+        "tag": "li",
+        "text": "WPForms Dev WPForms Dev Analytics",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms Dashboard All Forms Setup Checklist 67% complete Ad…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#trash-undo-holder",
+        "tag": "div",
+        "text": "Comment by moved to the Trash. Undo",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-10",
+        "tag": "div",
+        "text": "[2.1.0] - 2024-08-29ImportantSupport for PHP 5.6 has been d…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-100",
+        "tag": "div",
+        "text": "[1.9.0] - 2026-04-28AddedPassing abandoned entries to Zapie…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-102",
+        "tag": "div",
+        "text": "[1.0.0] - 2025-07-16AddedInitial release.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-12",
+        "tag": "div",
+        "text": "[1.10.0] - 2026-01-27AddedCopy/Paste and Undo/Redo compatib…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-14",
+        "tag": "div",
+        "text": "[1.4.0] - 2025-09-09ImportantSupport for PHP 7.1 has been d…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-16",
+        "tag": "div",
+        "text": "[1.20.0] - 2026-03-17ChangedImproved compatibility with WPF…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-18",
+        "tag": "div",
+        "text": "[1.2.0] - 2025-09-02ImportantAddon requires the cURL extens…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-2",
+        "tag": "div",
+        "text": "[2.0.2] - 2026-XX-XXAddedNew Dashboard that displays entrie…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-20",
+        "tag": "div",
+        "text": "[1.8.0] - 2026-04-28FixedRemoved excessive spacing between …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-22",
+        "tag": "div",
+        "text": "[1.11.0] - 2026-02-03AddedUndo/Redo compatibility.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-24",
+        "tag": "div",
+        "text": "[1.3.0] - 2026-03-24AddedThe Folder Name field now includes…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-26",
+        "tag": "div",
+        "text": "[1.3.0] - 2026-07-30AddedGeolocation Details, Dropbox Links…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-28",
+        "tag": "div",
+        "text": "[1.14.0] - 2026-03-31AddedSupport for User Journey data in …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-30",
+        "tag": "div",
+        "text": "[2.10.0] - 2025-01-13ImportantSupport for PHP 7.1 has been …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-32",
+        "tag": "div",
+        "text": "[1.12.0] - 2026-04-21AddedCompatibility with WPForms 1.10.0…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-34",
+        "tag": "div",
+        "text": "[2.13.0] - 2026-02-24AddedAdded a new Map field that lets u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-36",
+        "tag": "div",
+        "text": "[1.0.0] - 2025-08-19AddedInitial release.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-38",
+        "tag": "div",
+        "text": "[1.3.0] - 2026-02-03AddedSubfolders can now be automaticall…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-4",
+        "tag": "div",
+        "text": "[1.7.0] - 2025-09-02ImportantSupport for PHP 7.1 has been d…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-40",
+        "tag": "div",
+        "text": "[2.7.0] - 2026-08-25ChangedSelecting an existing spreadshee…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-42",
+        "tag": "div",
+        "text": "[1.5.0] - 2026-04-02FixedForm submissions failed when the p…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-44",
+        "tag": "div",
+        "text": "[1.0.0] - 2026-05-12AddedInitial release.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-46",
+        "tag": "div",
+        "text": "[1.9.0] - 2026-03-17",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-48",
+        "tag": "div",
+        "text": "[2.6.0] - 2026-04-21FixedMapping for required custom fields…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-50",
+        "tag": "div",
+        "text": "[1.0.0] - 2025-03-11AddedInitial release.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-52",
+        "tag": "div",
+        "text": "[1.2.0] - 2026-08-18AddedSupport for the Ranking field.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-54",
+        "tag": "div",
+        "text": "AddedInitial release.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-56",
+        "tag": "div",
+        "text": "[1.1.0] - 2026-01-20AddedCompatibility with upcoming releas…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-58",
+        "tag": "div",
+        "text": "[1.0.0] - 2025-12-09AddedInitial release.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-6",
+        "tag": "div",
+        "text": "[1.0.0] - 2025-10-21AddedInitial release.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-60",
+        "tag": "div",
+        "text": "[1.4.0] - 2026-04-21ImportantSupport for PHP 7.1 has been d…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-62",
+        "tag": "div",
+        "text": "[2.1.0] - 2026-05-12ChangedImproved the reliability of PayP…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-64",
+        "tag": "div",
+        "text": "[1.10.0] - 2024-02-20ImportantThe WPForms PayPal Standard i…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-66",
+        "tag": "div",
+        "text": "[1.4.0] - 2026-04-01FixedNotification template footer \"Sent…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-68",
+        "tag": "div",
+        "text": "[1.1.0] - 2026-03-24AddedPipeline and Stage can now be conf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-70",
+        "tag": "div",
+        "text": "[1.8.0] - 2025-02-25ImportantSupport for PHP 7.0 has been d…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-72",
+        "tag": "div",
+        "text": "[1.3.0] - 2026-03-17ChangedThe minimum WPForms version supp…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-74",
+        "tag": "div",
+        "text": "[1.5.0] - 2025-10-22ImportantSupport for PHP 7.1 has been d…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-76",
+        "tag": "div",
+        "text": "[1.13.0] - 2025-10-28ImportantSupport for PHP 7.1 has been …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-78",
+        "tag": "div",
+        "text": "[1.0.0] - 2026-06-30AddedInitial release.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-8",
+        "tag": "div",
+        "text": "[1.11.0] - 2026-03-17ImportantSupport for PHP 7.1 has been …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-80",
+        "tag": "div",
+        "text": "[1.6.1] - 2026-05-08FixedContact lists were not loading whe…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-82",
+        "tag": "div",
+        "text": "[1.13.0] - 2025-09-09ImportantSupport for PHP 7.1 has been …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-84",
+        "tag": "div",
+        "text": "[1.1.0] - 2025-08-05ImportantSupport for PHP 7.1 has been d…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-86",
+        "tag": "div",
+        "text": "[2.0.0] - 2025-04-22ImportantA significant part of the addo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-88",
+        "tag": "div",
+        "text": "[3.5.0] - 2025-04-22ImportantSupport for PHP 7.1 has been d…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-90",
+        "tag": "div",
+        "text": "[1.20.0] - 2026-08-18AddedThe new Ranking field lets respon…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-92",
+        "tag": "div",
+        "text": "[1.0.0] - 2025-01-21AddedInitial release.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-94",
+        "tag": "div",
+        "text": "[1.7.0] - 2026-03-31AddedSupport for abandoned entries.Chan…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-96",
+        "tag": "div",
+        "text": "[2.9.0] - 2026-04-28FixedForm was processed even when Captc…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-98",
+        "tag": "div",
+        "text": "[1.6.0] - 2026-01-29AddedFailed webhook requests can now be…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-replycontent-editor-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-replycontent-wrap",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-version",
+        "tag": "span",
+        "text": "WordPress 7.1 running Divi theme.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-version-message",
+        "tag": "p",
+        "text": "WordPress 7.1 running Divi theme.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpf_plugin_status",
+        "tag": "div",
+        "text": "WPForms & Addons Release Status Move up Move up Move down M…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpf_plugin_status-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpf_plugin_status-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpf_plugin_status-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpf_plugin_status-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpf_plugin_status-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpf_plugin_status-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpf_plugin_status-title",
+        "tag": "h2",
+        "text": "WPForms & Addons Release Status",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_pro",
+        "tag": "div",
+        "text": "WPForms Move up Move down Show or hide panel Total Entries:…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms_reports_widget_pro-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_pro-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_pro-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_pro-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_pro-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_pro-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_pro-title",
+        "tag": "h2",
+        "text": "WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-dash-widget-chart-title",
+        "tag": "h3",
+        "text": "Total Entries",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-forms-list-block",
+        "tag": "div",
+        "text": "Sullie's Bakery Contact Form 181 Sullie's Bakery Catering O…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-dash-widget-chart-block-container",
+        "tag": "div",
+        "text": "Total Entries",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dash-widget-content",
+        "tag": "div",
+        "text": "Total Entries: 578 Last 7 days Last 30 days Sullie's Bakery…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dash-widget-settings-container",
+        "tag": "div",
+        "text": "Graph Style Bar Line Color Scheme WPForms WordPress Save Ch…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

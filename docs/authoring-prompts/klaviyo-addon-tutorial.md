@@ -30,7 +30,7 @@ Source doc: https://wpforms.com/docs/klaviyo-addon/
 
 Architecture: single-HTML tutorial (CLAUDE.md default for NEW tutorial work).
 One videos/klaviyo-addon-tutorial/index.html + master gsap.timeline({paused:true})
-+ IframeManager (one iframe, cross-snapshot navigation via flipBridge) + Cursor
++ IframeManager (one iframe, cross-snapshot navigation via ifm.swap() crossfades) + Cursor
 from videos/_shared/motion-primitives.js + WPFormsInteractions from
 videos/_shared/wpforms-interactions.js + videos/_shared/narration.js.
 
@@ -192,11 +192,15 @@ discipline applies either way:
 
 Constraints (standing — repeat in case CLAUDE.md isn't in context):
   - Tutorial path, single-HTML (NOT legacy chapter/manifest).
-  - No edits to runtime/* or engine/*.
+  - No edits to protected core (videos/_shared/*, snapshots/**, validators/smoke
+  tools, capture/capture.js). runtime/ and engine/ no longer exist (retired 2026-08-22).
   - No visual QC from you — Umair QCs.
   - Storyboard gate FIRST per wpforms-video skill — write
     videos/klaviyo-addon-tutorial/storyboard.md and WAIT for Umair's
     explicit approval BEFORE authoring index.html or chapter timeline.
+    The storyboard names the HERO BEAT (the one that carries the video —
+    build it first, spend revisions there) and any RULES FOR THE WHOLE
+    RUN (cross-beat invariants; each is a literal contract).
   - Use motion-primitives Cursor for all cursor work. gsap.timeline for
     sequencing. Use WPFormsInteractions helpers where they exist; do NOT
     reinvent (openSettingsTab, etc.).
@@ -228,10 +232,11 @@ Required reading BEFORE authoring:
   - .claude/skills/wpforms-postintro (Skill tool — for postIntro design)
   - .claude/skills/wpforms-primitives (file-read OK — Cursor, IframeManager,
     caretType, statusPillMorph signatures)
-  - .claude/skills/wpforms-gsap-rules (file-read OK — registered timelines,
-    pausableRaf, boundedRepeats, L0 discipline)
-  - .claude/skills/wpforms-transitions (file-read OK — flipBridge swap,
-    camera poses)
+  - .claude/skills/wpforms-gsap-rules (file-read OK — the master-timeline +
+    instrumentation contract, pausableRaf, boundedRepeats, L0 discipline)
+  - .claude/skills/wpforms-marketing, "Snapshot transitions" section (file-read
+    OK — ifm.swap() crossfade vs one continuous timeline; boundary rules measured
+    by tools/seam-gate.js. The wpforms-transitions skill retired 2026-08-22.)
   - videos/klaviyo-quick-connect/storyboard.md (S/A-tier postIntro reference
     + 5-chapter tutorial scaffolding)
   - docs/video-architecture-invariants-2026-05-12.md (INV-1, INV-9,
@@ -243,9 +248,9 @@ Deliverables:
   - videos/klaviyo-addon-tutorial/narration/*.txt + rendered *.mp3
     (run: node tts/generate.js --video klaviyo-addon-tutorial)
   - Static checks pass:
+      node tools/validate-singlehtml.js klaviyo-addon-tutorial
       node tools/lint-determinism.js --video klaviyo-addon-tutorial
-      (single-HTML path may not need tools/validate-video.js — confirm
-      with current validator behavior; lint-determinism is mandatory.)
+      (validate-video.js retired 2026-08-22 with the engine; both are mandatory.)
   - Motion-audit on the postIntro: invoke wpforms-motion-audit Skill tool
     BEFORE handoff, record tier. Bar = tier A. Anything B or below needs
     fix or explicit override.

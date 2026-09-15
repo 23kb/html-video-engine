@@ -18,8 +18,24 @@
 //      re-runs the secret redaction, then runs post-capture.js.
 //
 // Usage:
-//   node tools/capture-saas.js <slug> [--from-download <file>]   (default: newest .html in ~/Downloads)
+//   node tools/capture-saas.js <slug> --expect "<string>"        (REQUIRED unless --no-expect)
+//                              [--from-download <file>]   (default: newest .html in ~/Downloads)
 //                              [--redact <regex>] [--no-post-capture]
+//
+// Ingest asserts (fix-round B1 — mp 1, ccs 3):
+//   --expect <string>  REQUIRED (or pass --no-expect explicitly): after
+//     normalization, the string must appear in the HTML or the ingest FAILS.
+//     A capture tool that can silently package the wrong page is the same
+//     bug class as a snapshot that lies — mercado-pago packaged the SAME
+//     stale download three times as three different "captures" (Chrome
+//     blocks repeated automatic downloads after the first; the serializer's
+//     a.click() silently no-ops; "newest .html in Downloads" re-ingested).
+//   Byte-identity: a download whose raw hash matches a PREVIOUS ingest for a
+//     DIFFERENT slug is refused (the mp 1 signature). Ledger:
+//     snapshots/.saas-ingest-hashes.json.
+//   SingleFile normalization: appends missing </body></html>; strips the
+//     restrictive CSP <meta> SingleFile embeds (it blocks the injected local
+//     interactivity.js). Both were hand-fixed once already (ccs 3).
 //
 // Exit: 0 ok · 1 failure · 3 usage.
 
@@ -46,11 +62,13 @@ const SECRET_PATTERNS = [
 
 function parseArgs(argv) {
   const a = argv.slice(2);
-  const out = { slug: null, from: null, redact: [], postCapture: true };
+  const out = { slug: null, from: null, redact: [], postCapture: true, expect: null, noExpect: false };
   for (let i = 0; i < a.length; i++) {
     if (a[i] === '--from-download') out.from = a[++i];
     else if (a[i] === '--redact') out.redact.push(new RegExp(a[++i], 'g'));
     else if (a[i] === '--no-post-capture') out.postCapture = false;
+    else if (a[i] === '--expect') out.expect = a[++i];
+    else if (a[i] === '--no-expect') out.noExpect = true;
     else if (!a[i].startsWith('--') && !out.slug) out.slug = a[i];
   }
   return out;
@@ -101,7 +119,13 @@ async function inlineCssAssets(css, baseHref) {
 async function main() {
   const args = parseArgs(process.argv);
   if (!args.slug) {
-    console.error('Usage: node tools/capture-saas.js <slug> [--from-download <file>] [--redact <regex>] [--no-post-capture]');
+    console.error('Usage: node tools/capture-saas.js <slug> --expect "<string>" [--no-expect] [--from-download <file>] [--redact <regex>] [--no-post-capture]');
+    process.exit(3);
+  }
+  if (!args.expect && !args.noExpect) {
+    console.error('✗ --expect "<string>" is REQUIRED (or pass --no-expect explicitly). A capture tool that can');
+    console.error('  silently package the wrong page is the same bug class as a snapshot that lies (mp 1).');
+    console.error('  Pick a string unique to the page you serialized (a heading, a form name).');
     process.exit(3);
   }
   const src = args.from ? path.resolve(args.from) : newestDownload();
@@ -111,6 +135,45 @@ async function main() {
   }
   console.log(`[capture-saas] source: ${src}`);
   let html = fs.readFileSync(src, 'utf8');
+
+  // Byte-identity refuse (mp 1): the same raw download ingested under a
+  // DIFFERENT slug means the browser served a stale file (Chrome blocks
+  // repeated automatic downloads; the serializer's a.click() silently no-ops).
+  const rawHash = require('crypto').createHash('sha256').update(html).digest('hex');
+  const ledgerPath = path.join(SNAP_ROOT, '.saas-ingest-hashes.json');
+  let ledger = {};
+  try { ledger = JSON.parse(fs.readFileSync(ledgerPath, 'utf8')); } catch {}
+  const dupSlug = Object.keys(ledger).find((s) => s !== args.slug && ledger[s] === rawHash);
+  if (dupSlug) {
+    console.error(`✗ this download is byte-identical to the file previously ingested for '${dupSlug}'.`);
+    console.error('  You are about to package the SAME page as a different capture (mp 1). Re-run the');
+    console.error('  serializer in the browser and confirm a NEW download actually landed before retrying.');
+    process.exit(1);
+  }
+
+  // SingleFile normalization (ccs 3): manual SingleFile saves sometimes lack
+  // the closing tags, and embed a restrictive CSP <meta> that blocks the
+  // injected local interactivity.js. Both were hand-fixed once already.
+  const cspMetas = html.match(/<meta[^>]+http-equiv=["']Content-Security-Policy["'][^>]*>/gi);
+  if (cspMetas) {
+    for (const tag of cspMetas) html = html.replace(tag, '<!-- CSP meta stripped by capture-saas (blocks injected interactivity.js) -->');
+    console.log(`  ✓ stripped ${cspMetas.length} restrictive CSP <meta> tag(s)`);
+  }
+  if (!/<\/body>\s*<\/html>\s*$/i.test(html)) {
+    if (!/<\/body>/i.test(html)) html += '\n</body>';
+    if (!/<\/html>\s*$/i.test(html)) html += '\n</html>';
+    console.log('  ✓ appended missing </body></html>');
+  }
+
+  // --expect assert (mp 1, ccs 3): fail loudly when the promised content is
+  // absent — the ingest packaged the wrong page.
+  if (args.expect && !html.includes(args.expect)) {
+    console.error(`✗ --expect string not found in the download: "${args.expect}"`);
+    console.error(`  ${path.basename(src)} is not the page you think it is. Re-run the serializer and`);
+    console.error('  check ~/Downloads for the NEW file (Chrome may have blocked the repeat download).');
+    process.exit(1);
+  }
+  if (args.expect) console.log(`  ✓ expect: "${args.expect}" present`);
 
   // Inline remaining cross-origin stylesheet <link>s (CORS-unreadable in-page).
   const links = [...html.matchAll(/<link\b[^>]*rel=["']stylesheet["'][^>]*>/gi)]
@@ -152,6 +215,12 @@ async function main() {
     variantSlug: args.slug,
   }, null, 2));
   console.log(`  ✓ wrote ${path.relative(ROOT, outDir)} (${(Buffer.byteLength(html) / 1024).toFixed(0)} KB, ${redactions} redaction(s))`);
+
+  // Record the raw-download hash for the byte-identity refuse on future ingests.
+  ledger[args.slug] = rawHash;
+  try { fs.writeFileSync(ledgerPath, JSON.stringify(ledger, null, 1) + '\n', 'utf8'); } catch (e) {
+    console.warn(`  ⚠ could not write ingest ledger: ${e.message}`);
+  }
 
   if (args.postCapture && !process.env.WP_SNAPSHOT_ROOT) {
     console.log('[capture-saas] running post-capture…');

@@ -1,0 +1,23 @@
+{
+  "_comment": "Real sources for wpvibe-one-less-tomorrow (storyboard: videos/wpvibe-one-less-tomorrow/storyboard.md). Fixture form 1965 'Photography Quote Request' on LocalWP sullies-bakery, created 2026-09-14 through the real wpforms/create-form ability (the path WPVibe uses) and tagged _wpf_video_fixture=wpvibe-one-less-tomorrow. Fields: Name*, Email*, Phone, Photography type* (modern dropdown), Event date* (date-time), Event location, Estimated budget (modern dropdown), Tell us about your project*, Reference photos (file-upload). Submit 'Request a quote'. Strip steps cloned from capture/plans/wpforms-chatgpt-wpvibe-ad.json.",
+  "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=1965",
+  "variants": [
+    {
+      "slug": "builder-photography-quote",
+      "waitFor": "#wpforms-panel-fields",
+      "steps": [
+        { "wait": 4000 },
+        { "eval": "document.querySelectorAll('.wpforms-education-popup,.wpforms-admin-popup,.jconfirm,#wpforms-builder-lite-notice,.wpforms-fullscreen-notice').forEach(function(n){n.remove();});var add=document.querySelector('#add-fields');if(add){add.click();}document.querySelectorAll('.wpforms-field.active,.wpforms-field.wpforms-field-active').forEach(function(n){n.classList.remove('active','wpforms-field-active');});", "settle": 900 }
+      ]
+    },
+    {
+      "slug": "frontend-photography-quote",
+      "targetPath": "/?wpforms_form_preview=1965",
+      "waitFor": "#wpforms-1965",
+      "steps": [
+        { "wait": 2500 },
+        { "eval": "['header','nav','.site-header','#masthead','.main-navigation','#site-navigation','form[role=\"search\"]','.search-form','#secondary','.widget-area','aside','footer','.site-footer','#colophon','#wpadminbar','.post-edit-link','.wpforms-form-edit-link','.wpforms-preview-notice','a[href*=\"wpforms-builder\"]','a[href*=\"wpforms-entries\"]'].forEach(function(s){document.querySelectorAll(s).forEach(function(n){n.remove();});});document.querySelectorAll('#wpforms-1965 input:not([type=\"submit\"]):not([type=\"button\"]),#wpforms-1965 textarea').forEach(function(n){n.value='';n.removeAttribute('value');n.removeAttribute('data-default-value');});document.body.style.margin='0';document.documentElement.style.margin='0';", "settle": 600 }
+      ]
+    }
+  ]
+}

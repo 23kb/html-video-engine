@@ -5,10 +5,10 @@
 //   1. GREEN on the 4 canary videos (exit 0, zero errors).
 //   2. RED on six fixtures each seeding exactly one violation class
 //      (fixtures/validate-singlehtml/<case>/index.html).
-//   3. Dispatch — validate-video.js on a manifest-less video delegates to
-//      validate-singlehtml.js instead of stack-tracing; manifest videos
-//      keep their legacy path.
-//   4. --all sweep exits 0 (legacy skip list holds).
+//   (Gates 3-4 removed 2026-08-22: Gate 3 tested the deleted validate-video.js
+//   dispatcher; Gate 4's repo-wide --all sweep is stale while ~40 pre-retirement
+//   experiment folders under videos/ fail the current validator. Revisit after
+//   the videos/ folder cleanup.)
 //
 // Usage: node tools/__tests__/validate-singlehtml.test.js
 
@@ -73,27 +73,7 @@ for (const [name, re] of RED) {
     `${name}: exactly 1 error, matching ${re} (got: ${errors.join(' | ').slice(0, 90) || 'none'})`);
 }
 
-// ── Gate 3: dispatch from validate-video.js ─────────────────────────────
-section('Gate 3 — validate-video.js dispatch');
-{
-  const r = runTool('validate-video.js', ['switch-to-wpforms-entry-importer']);
-  ok(r.code === 0, `manifest-less video exits 0 via dispatch (exit ${r.code})`);
-  ok(/\[dispatch\] single-HTML/.test(r.out), 'dispatch line printed');
-  ok(!/No manifest at|at loadVideo|throw/.test(r.out), 'no stack trace / raw loadVideo error');
-}
-{
-  // a manifest video still runs the legacy path untouched
-  const r = runTool('validate-video.js', ['wpforms-rest-api-overview']);
-  ok(r.code === 0 && !/\[dispatch\]/.test(r.out), `manifest video (wpforms-rest-api-overview) keeps the legacy path and passes (exit ${r.code})`);
-}
-
-// ── Gate 4: --all sweep ─────────────────────────────────────────────────
-section('Gate 4 — --all sweep green (legacy skip list holds)');
-{
-  const r = runTool('validate-singlehtml.js', ['--all']);
-  ok(r.code === 0, `--all exits 0 (exit ${r.code})`);
-  ok(/skipped \(/.test(r.out), 'legacy skips are reported, not silent');
-}
+// ── Gates 3-4 removed 2026-08-22 with legacy retirement (see header). ───
 
 console.log(`\n${failures ? '✗ FAIL' : '✓ PASS'} — ${checks - failures}/${checks} checks passed`);
 process.exit(failures ? 1 : 0);

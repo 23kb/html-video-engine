@@ -2,7 +2,9 @@
 /**
  * link-interactivity-script.js — idempotently inject
  *   <script src="../_shared/interactivity.js"></script>
- * before </body> in every targeted snapshot's index.html.
+ * before </body> in every targeted snapshot's index.html, plus
+ *   <script src="../_shared/frontend.js"></script>
+ * for frontend captures (a published form, no builder root, no admin chrome).
  *
  * Usage:
  *   node tools/link-interactivity-script.js --dry-run                # report only
@@ -20,6 +22,27 @@ const path = require('path');
 const SNAPSHOTS_DIR = path.join(__dirname, '..', 'snapshots');
 const SCRIPT_TAG = '<script src="../_shared/interactivity.js"></script>';
 const NEEDLE = 'interactivity.js';
+const FRONTEND_TAG = '<script src="../_shared/frontend.js"></script>';
+const FRONTEND_NEEDLE = '_shared/frontend.js';
+
+// A frontend capture needs frontend.js too. Nothing used to inject it — the
+// docs claimed it was "auto-loaded" and it never was, so every frontend
+// snapshot captured after frontend-published-form shipped silently inert:
+// handlers registered, nothing running, markup looking perfect (rf 11).
+//
+// Discriminator, measured across frontend / builder / admin captures: an
+// element whose class list carries the exact token `wpforms-form` (the
+// rendered form), with no builder root and no WP admin chrome. Substring
+// matching is not enough — builder canvases carry `wpforms-form-name` and
+// admin lists carry `wpforms-form-search-box`.
+function isFrontendCapture(html) {
+  if (html.includes('id="wpforms-builder"')) return false;
+  if (/id="(adminmenumain|wpcontent|wpwrap)"/.test(html)) return false;
+  for (const m of html.matchAll(/class="([^"]*)"/g)) {
+    if (m[1].split(/\s+/).includes('wpforms-form')) return true;
+  }
+  return false;
+}
 
 function parseArgs(argv) {
   const args = { dryRun: false, slugs: [], pattern: null, allBuilder: false };
@@ -55,13 +78,19 @@ function processSlug(slug, dryRun) {
   const file = path.join(SNAPSHOTS_DIR, slug, 'index.html');
   if (!fs.existsSync(file)) return { slug, status: 'missing' };
   const html = fs.readFileSync(file, 'utf8');
-  if (html.includes(NEEDLE)) return { slug, status: 'already-linked' };
+
+  const tags = [];
+  if (!html.includes(NEEDLE)) tags.push(SCRIPT_TAG);
+  if (isFrontendCapture(html) && !html.includes(FRONTEND_NEEDLE)) tags.push(FRONTEND_TAG);
+  if (!tags.length) return { slug, status: 'already-linked' };
+
   const idx = html.lastIndexOf('</body>');
   if (idx === -1) return { slug, status: 'no-body-close' };
-  if (dryRun) return { slug, status: 'would-inject' };
-  const next = html.slice(0, idx) + SCRIPT_TAG + html.slice(idx);
+  const what = tags.length === 2 ? 'both' : tags[0] === FRONTEND_TAG ? 'frontend.js' : 'interactivity.js';
+  if (dryRun) return { slug, status: `would-inject:${what}` };
+  const next = html.slice(0, idx) + tags.join('') + html.slice(idx);
   fs.writeFileSync(file, next, 'utf8');
-  return { slug, status: 'injected' };
+  return { slug, status: `injected:${what}` };
 }
 
 function main() {

@@ -1,0 +1,33 @@
+{
+  "_comment": "Chart rehydration pass v2. capture.js strips ALL <script> tags, so the extracted config rides on a body data-attribute instead. The eval records its own failure reason into the same attribute so a miss is diagnosable from the frozen snapshot.",
+  "variants": [
+    {
+      "slug": "admin-entries-ranking-results",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-entries&view=list&form_id=1779",
+      "steps": [
+        {
+          "wait": 5000
+        },
+        {
+          "eval": "(function(){var out=[],err='';try{if(!window.Chart){err='no window.Chart';}else{document.querySelectorAll('canvas').forEach(function(cv){var c=Chart.getChart?Chart.getChart(cv):null;if(!c){err+='[no instance for '+(cv.id||cv.className)+']';return;}var scales={};try{Object.keys(c.options.scales||{}).forEach(function(k){var s=c.options.scales[k];scales[k]={reverse:!!s.reverse,min:s.min,max:s.max,ticks:s.ticks?{stepSize:s.ticks.stepSize,color:s.ticks.color}:null,grid:s.grid?{display:s.grid.display,color:s.grid.color}:null};});}catch(e){err+='[scales:'+e.message+']';}var ds=(c.config.data.datasets||[]).map(function(d){return{label:d.label,data:d.data,borderColor:d.borderColor,backgroundColor:d.backgroundColor,pointBackgroundColor:d.pointBackgroundColor,hoverBorderColor:d.hoverBorderColor,hoverBackgroundColor:d.hoverBackgroundColor,fill:d.fill,tension:d.tension,borderWidth:d.borderWidth,pointRadius:d.pointRadius};});out.push({canvasId:cv.id||'',className:cv.className||'',type:c.config.type,labels:c.config.data.labels,datasets:ds,scales:scales});});}}catch(e){err+='[top:'+e.message+']';}document.body.setAttribute('data-wpf-charts',JSON.stringify({charts:out,err:err}));return out.length+' charts, err='+err;})()",
+          "settle": 800
+        }
+      ],
+      "waitFor": "body[data-wpf-charts]"
+    },
+    {
+      "slug": "sp-results-ranking-full",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-entries&view=survey&form_id=1779",
+      "steps": [
+        {
+          "wait": 5000
+        },
+        {
+          "eval": "(function(){var out=[],err='';try{if(!window.Chart){err='no window.Chart';}else{document.querySelectorAll('canvas').forEach(function(cv){var c=Chart.getChart?Chart.getChart(cv):null;if(!c){err+='[no instance for '+(cv.id||cv.className)+']';return;}var scales={};try{Object.keys(c.options.scales||{}).forEach(function(k){var s=c.options.scales[k];scales[k]={reverse:!!s.reverse,min:s.min,max:s.max,ticks:s.ticks?{stepSize:s.ticks.stepSize,color:s.ticks.color}:null,grid:s.grid?{display:s.grid.display,color:s.grid.color}:null};});}catch(e){err+='[scales:'+e.message+']';}var ds=(c.config.data.datasets||[]).map(function(d){return{label:d.label,data:d.data,borderColor:d.borderColor,backgroundColor:d.backgroundColor,pointBackgroundColor:d.pointBackgroundColor,hoverBorderColor:d.hoverBorderColor,hoverBackgroundColor:d.hoverBackgroundColor,fill:d.fill,tension:d.tension,borderWidth:d.borderWidth,pointRadius:d.pointRadius};});out.push({canvasId:cv.id||'',className:cv.className||'',type:c.config.type,labels:c.config.data.labels,datasets:ds,scales:scales});});}}catch(e){err+='[top:'+e.message+']';}document.body.setAttribute('data-wpf-charts',JSON.stringify({charts:out,err:err}));return out.length+' charts, err='+err;})()",
+          "settle": 800
+        }
+      ],
+      "waitFor": "body[data-wpf-charts]"
+    }
+  ]
+}

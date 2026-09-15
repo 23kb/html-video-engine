@@ -1,0 +1,37 @@
+{
+  "_comment": "Re-capture of the 4 builder snapshots ONLY, after clearing per-choice icon data on form 1779. Frontend + results snapshots are deliberately excluded — they carry the chrome-strip and chart-config work.",
+  "variants": [
+    {
+      "slug": "builder-field-options-ranking",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields",
+      "steps": [
+        {
+          "wait": 9000
+        },
+        {
+          "eval": "jQuery('#wpforms-field-5').trigger('click')",
+          "settle": 1500
+        }
+      ],
+      "waitFor": ".wpforms-field.active"
+    },
+    {
+      "slug": "builder-field-options-ranking-advanced",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields",
+      "steps": [
+        {
+          "wait": 9000
+        },
+        {
+          "eval": "jQuery('#wpforms-field-5').trigger('click')",
+          "settle": 1500
+        },
+        {
+          "eval": "[...document.querySelectorAll('.wpforms-field-option-group-toggle, .wpforms-field-options-tab, a, button')].find(e => /^\\s*Advanced\\s*$/i.test(e.textContent))?.click()",
+          "settle": 1200
+        }
+      ],
+      "waitFor": ".wpforms-field.active"
+    }
+  ]
+}

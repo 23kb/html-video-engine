@@ -87,7 +87,16 @@ async function main() {
     echo implode('|', $out);`;
   const r = siteEval(php, args.site);
   const m = (r.out || '').match(/BOOT_OK\|[^\n]*/);
-  row(r.status === 0 && Boolean(m), `wp-cli boots against ${site.path}${r.status !== 0 ? ` — ${(r.err || '').split('\n').filter(l => l.trim()).pop() || 'unknown error'}` : ''}`);
+  // "unknown error" swallowed the only two things worth knowing: whether wp-cli
+  // TIMED OUT (cold site / LocalWP stopped — rf 1: the 61.9s NO-GO was this, not
+  // the imagick startup warning it was blamed on) and, if it spoke, what it said.
+  // That warning is benign noise on this box, so it never reads as the cause.
+  const why = r.timedOut
+    ? `timed out after ${Math.round((r.timeoutMs || 60000) / 1000)}s — site cold or LocalWP stopped? start it, or raise WPF_SITE_EVAL_TIMEOUT`
+    : ((r.err || '').split('\n').map(l => l.trim())
+        .filter(l => l && !/^Warning: PHP Startup/.test(l)).pop()
+       || `exit ${r.status}, no stderr`);
+  row(r.status === 0 && Boolean(m), `wp-cli boots against ${site.path}${r.status !== 0 ? ` — ${why}` : ''}`);
   if (m) {
     const [, core, version, license, activeCsv] = m[0].split('|');
     if (core === 'CORE_OK') {

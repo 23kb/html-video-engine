@@ -62,7 +62,7 @@ _These admin links navigate when hand-browsing /snapshots/ but their handler bai
 - click `a[href*="page=wpforms-settings"]` → cross-snapshot nav → use `ifm.swap('admin-settings-general')`
 - click `a[href*="page=wpforms-templates"]` → cross-snapshot nav → use `ifm.swap('admin-templates')`
 - click `a[href*="page=wpforms-tools"][href*="view=action-scheduler"]` → cross-snapshot nav → use `ifm.swap('admin-tools-action-scheduler')`
+- click `a[href*="page=wpforms-tools"][href*="view=entry-automation"]` → cross-snapshot nav → use `ifm.swap('admin-tools-entry-automation')`
 - click `a[href*="page=wpforms-tools"][href*="view=export"]` → cross-snapshot nav → use `ifm.swap('admin-tools-export')`
 - click `a[href*="page=wpforms-tools"]` → cross-snapshot nav → use `ifm.swap('admin-tools-import')`
-- click `a[href*="page=wpforms-tools"][href*="view=logs"]` → cross-snapshot nav → use `ifm.swap('admin-tools-logs')`
-- _… +2 more admin links — all inert in-video; swap instead_
+- _… +3 more admin links — all inert in-video; swap instead_

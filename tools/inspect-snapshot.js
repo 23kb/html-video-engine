@@ -45,6 +45,81 @@ if (!slug) {
   process.exit(1);
 }
 
+// --emit-actions: action inventory (acceptance T-6, rebuilt AP-15 2026-09-02).
+// WIRED = interactivity.js fires in-video (a registry transition matches the
+// element — real matches() semantics, computed at outline generation);
+// HAND-BROWSE-ONLY = inert in video, ifm.swap to the named target;
+// INERT = no handler (a click there is a DEAD on-camera click — mfe 4).
+// Source of truth: snapshots/<slug>/outline.json (uncapped; written by
+// generate-snapshot-outline since AP-15). Snapshots that predate outline.json
+// fall back to parsing outline.md with the outline's REAL row shapes (the
+// original pass expected `ifm.swap(` on drivable rows and " - " separators,
+// so it reported WIRED 0 / INERT 0 on every snapshot).
+const emitActionsFlag = process.argv.includes('--emit-actions');
+if (emitActionsFlag) {
+  const snapRoot = process.env.WPF_SNAPSHOTS_DIR || path.join(__dirname, '..', 'snapshots');
+  const jsonPath = path.join(snapRoot, slug, 'outline.json');
+  const outlinePath = path.join(snapRoot, slug, 'outline.md');
+
+  let wired = [], handBrowse = [], inert = [];
+  let source = null;
+
+  if (fs.existsSync(jsonPath)) {
+    source = 'outline.json';
+    const o = JSON.parse(fs.readFileSync(jsonPath, 'utf8'));
+    const rows = [...(o.groups.actions || []), ...(o.groups.tabsNav || [])].filter((r) => !r.hidden);
+    for (const r of rows) {
+      if (r.wired) wired.push({ sel: r.sel, tag: r.tag, label: r.text || '', event: r.wiredEvent || 'click', transition: r.wired });
+      else if (r.nav) handBrowse.push({ sel: r.sel, tag: r.tag, label: r.text || '', target: r.nav });
+      else inert.push({ sel: r.sel, tag: r.tag, label: r.text || '' });
+    }
+  } else if (fs.existsSync(outlinePath)) {
+    source = 'outline.md (regex fallback — regenerate the outline for exact wiring)';
+    const md = fs.readFileSync(outlinePath, 'utf8');
+    const section = (title) => {
+      const idx = md.indexOf('## ' + title);
+      if (idx === -1) return '';
+      const rest = md.slice(idx + 3);
+      const next = rest.indexOf('\n## ');
+      return rest.slice(0, next === -1 ? undefined : next);
+    };
+    // Drivable rows: `- ${event} \`${selector}\` → \`${label}\``
+    const drivable = [...section('Interactions — drivable inside the video iframe')
+      .matchAll(/^- (\w+) `([^`]+)` → `([^`]+)`/gm)]
+      .map((m) => ({ event: m[1], selector: m[2], label: m[3] }));
+    // Nav rows: `- click \`${hrefSel}\` → cross-snapshot nav → use \`ifm.swap('${target}')\``
+    const nav = [...section('Interactions — HAND-BROWSE ONLY (inert in video; use ifm.swap)')
+      .matchAll(/^- click `([^`]+)` → cross-snapshot nav → use `ifm\.swap\('([^']+)'\)`/gm)]
+      .map((m) => ({ hrefSel: m[1], target: m[2] }));
+    // Action/tab rows use em-dash separators: `- \`sel\` — tag — "text"`
+    for (const title of ['Actions (buttons / links)', 'Tabs & nav']) {
+      for (const m of section(title).matchAll(/^- `([^`]+)` — ([a-z]+)(?: — "([^"]*)")?(.*)$/gm)) {
+        const sel = m[1], tag = m[2], label = m[3] || '', rest = m[4] || '';
+        if (/_\(hidden\)_/.test(rest)) continue;
+        // Best-effort string wiring in the fallback (no DOM here): exact or
+        // prefix relation between the row selector and a drivable selector.
+        const t = drivable.find((d) => d.selector === sel || sel.startsWith(d.selector + ' ') || d.selector.startsWith(sel + ' ') || d.selector === sel.split(' ').pop());
+        if (t) { wired.push({ sel, tag, label, event: t.event, transition: t.label }); continue; }
+        const n = nav.find((d) => d.hrefSel === sel || sel.includes(d.hrefSel) || d.hrefSel.includes(sel));
+        if (n) { handBrowse.push({ sel, tag, label, target: n.target }); continue; }
+        inert.push({ sel, tag, label });
+      }
+    }
+  } else {
+    console.error(`no outline.json or outline.md for ${slug} — run: node tools/generate-snapshot-outline.js ${slug}`);
+    process.exit(1);
+  }
+
+  console.log('# ' + slug + ' action inventory (' + source + ')');
+  console.log('WIRED (interactivity.js fires in-video): ' + wired.length);
+  wired.forEach((w) => console.log('  WIRED  ' + w.sel + '  → ' + (w.event || 'click') + ' `' + w.transition + '`' + (w.label ? '  "' + w.label + '"' : '')));
+  console.log('HAND-BROWSE-ONLY (inert in video; ifm.swap instead): ' + handBrowse.length);
+  handBrowse.forEach((h) => console.log('  SWAP   ' + h.sel + '  → ifm.swap(\'' + h.target + '\')'));
+  console.log('INERT (no handler — a click here is DEAD on camera): ' + inert.length);
+  inert.forEach((x) => console.log('  INERT  ' + x.sel + '  [' + x.tag + ']' + (x.label ? ' "' + x.label + '"' : '')));
+  process.exit(0);
+}
+
 // ── --emit-selectors: catalog-only, no Playwright ─────────────────────────
 if (emitSelectors) {
   // WPF_SNAPSHOTS_DIR override exists for the self-test (fixture snapshots).

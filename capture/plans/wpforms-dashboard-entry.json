@@ -1,0 +1,17 @@
+{
+  "_comment": "Entry-point snapshot for videos/wpforms-dashboard-tour. The film's first beat clicks WPForms in the admin menu and lands on the Dashboard, so it needs a page to cut FROM. The existing `wp-dashboard` snapshot cannot serve: it predates 2.0.2 (its WPForms link still points at page=wpforms-overview) and it was captured narrow enough that WordPress auto-folded #adminmenuwrap to 0px. Captured at the SAME 1600 width as admin-dashboard so the admin menu is pixel-identical in both and the cut does not jump. Height is modest because only the top of the WP home screen is ever framed. The eval records the WPForms menu href and the menu width so a later assertion does not have to re-derive them.",
+  "targetPath": "/wp-admin/index.php",
+  "variants": [
+    {
+      "slug": "admin-wp-home",
+      "steps": [
+        { "wait": 4000 },
+        {
+          "eval": "(function(){var out={err:'',href:'',menuWidth:0,itemBox:null,scrollHeight:0};try{var a=document.querySelector('#adminmenu a[href*=\"page=wpforms-dashboard\"]')||document.querySelector('#adminmenu a[href*=\"page=wpforms\"]');if(!a){out.err='no WPForms menu link';}else{out.href=a.getAttribute('href')||'';var r=a.getBoundingClientRect();out.itemBox={x:Math.round(r.x),y:Math.round(r.y),w:Math.round(r.width),h:Math.round(r.height)};}var w=document.querySelector('#adminmenuwrap');out.menuWidth=w?Math.round(w.getBoundingClientRect().width):0;if(!out.menuWidth)out.err+='[adminmenuwrap 0px - menu folded]';out.scrollHeight=document.body.scrollHeight;}catch(e){out.err+='[top:'+e.message+']';}document.body.setAttribute('data-wpf-entry',JSON.stringify(out));return JSON.stringify(out);})()",
+          "settle": 800
+        }
+      ],
+      "waitFor": "body[data-wpf-entry]"
+    }
+  ]
+}

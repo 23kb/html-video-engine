@@ -117,8 +117,10 @@ export class IframeManager {
       oversample = DEFAULT_OVERSAMPLE,
       snapshotBase = '/snapshots',
       indexFile = 'index.html',
+      killTransitions = true,
     } = opts;
     this.stage = stage;
+    this.killTransitions = killTransitions;
     this._viewport = { ...viewport };
     this.iframeSize = { ...iframeSize };
     this.oversample = Math.max(1, Number(oversample) || 1);
@@ -171,6 +173,17 @@ export class IframeManager {
   }
 
   _createIframe(slug) {
+    // Path-arg guard (mp 2, fix-round B2): load()/swap() take a SLUG. A
+    // path-shaped arg silently composed /snapshots//snapshots/<slug>/
+    // index.html/index.html and fell back to an empty stage that "passed
+    // visually". Throwing beats auto-repair — auto-repair would mask the
+    // caller's mental model being wrong. Both load() and swap() pass here.
+    if (/^\//.test(slug) || /\.html?$/i.test(slug)) {
+      throw new Error(
+        `IframeManager: load/swap take a snapshot SLUG (e.g. 'builder-fields'), got a path: '${slug}'. ` +
+        `The URL is composed as ${this.snapshotBase}/<slug>/${this.indexFile}.`
+      );
+    }
     const f = document.createElement('iframe');
     Object.assign(f.style, {
       position: 'absolute',
@@ -196,6 +209,26 @@ export class IframeManager {
     f.loading = 'eager';
     f.src = `${this.snapshotBase}/${slug}/${this.indexFile}`;
     return f;
+  }
+
+  // Tall-document warn (mp C, fix-round B2): a document taller than
+  // iframeSize.height silently never renders its lower content — the camera
+  // clamps near the top and cameraToElement frames nothing real (settings
+  // page 1982px vs iframe 1000px). Warn-only: some videos intentionally
+  // window a tall page.
+  _warnTallDoc(iframe, slug) {
+    try {
+      const doc = iframe.contentDocument;
+      const sh = doc && doc.documentElement && doc.documentElement.scrollHeight;
+      const ih = this.iframeSize && this.iframeSize.height;
+      if (sh && ih && sh > ih * 1.15) {
+        console.warn(
+          `[IframeManager] '${slug}' document is ${sh}px tall vs iframeSize.height ${ih}px — ` +
+          `content below ${ih}px never renders and the camera clamps near the top. ` +
+          `Measure the page before choosing iframeSize (or scroll inside, then frame).`
+        );
+      }
+    } catch (_) { /* cross-origin or missing doc — nothing to measure */ }
   }
 
   _cameraTransform({ zoom = this._camera.zoom, tx = this._camera.tx, ty = this._camera.ty } = {}) {
@@ -397,6 +430,64 @@ export class IframeManager {
   }
 
   /**
+   * Kill wall-clock motion inside a mounted station.
+   *
+   * A captured snapshot ships the product's own CSS transitions — e.g.
+   * `border-color .15s ease-in-out` on ranking rows, `opacity .15s` on the
+   * handles and arrows, `transition: all` on the results legend. That is a
+   * THIRD mover nobody declared: not a snapshot handler, not a GSAP tween.
+   * R11 says handlers set state off-camera and GSAP makes motion on camera;
+   * a captured transition obeys neither, and INV-9 never looked for it.
+   *
+   * What it breaks, measured (rf-weight 1): the film writes the correct value
+   * every frame and the COMPUTED value then crawls toward it over 150ms of
+   * wall clock, so `t(11.5) → t(24) → t(11.5)` does not reproduce the 11.5s
+   * frame — a row border read rgba(220,116,47,.925) inbound and
+   * rgba(196,103,42,.804) on the way back, never settling. A `--seek` render
+   * frame is exposed to exactly the same drift. The sibling failure is worse:
+   * a transition cannot advance AT ALL in a non-compositing tab, so a correct
+   * fix measures as broken and a wrong one can measure as working
+   * (rf-video 16, rf 16/17/22).
+   *
+   * Every mixed-surface film in this repo is exposed, not just the one that
+   * found it — so this is default-on. Opt out per manager with
+   * `new IframeManager({ killTransitions: false })` and say why.
+   */
+  _installDeterminismStyles(iframe, slug) {
+    if (this.killTransitions === false) return;
+    const doc = iframe && iframe.contentDocument;
+    if (!doc || !doc.head) return;
+    if (doc.querySelector('style[data-ifm-determinism]')) return;
+
+    // Report the exposure before removing it — an author who sees "37 elements
+    // carried live transitions" learns something a silent fix would hide.
+    let live = 0;
+    let sample = '';
+    try {
+      for (const el of doc.querySelectorAll('*')) {
+        const cs = doc.defaultView.getComputedStyle(el);
+        const dur = (cs.transitionDuration || '').split(',').some(d => parseFloat(d) > 0);
+        const anim = cs.animationName && cs.animationName !== 'none';
+        if (dur || anim) {
+          live++;
+          if (!sample && el.className && typeof el.className === 'string') {
+            sample = '.' + el.className.trim().split(/\s+/).slice(0, 2).join('.');
+          }
+        }
+      }
+    } catch (_) { /* measurement is a nicety; the kill-sheet is the point */ }
+
+    const style = doc.createElement('style');
+    style.setAttribute('data-ifm-determinism', 'true');
+    style.textContent = '*, *::before, *::after { transition: none !important; animation: none !important; }';
+    doc.head.appendChild(style);
+
+    if (live) {
+      console.warn(`[IframeManager] ${slug}: ${live} element(s) carried live CSS transitions/animations${sample ? ` (e.g. ${sample})` : ''} — suppressed. That is wall-clock motion the timeline does not own (rf-weight 1).`);
+    }
+  }
+
+  /**
    * Load a snapshot into the slot. Crossfades from the previous one if any.
    * @param {string} slug — snapshot folder slug
    * @returns {Promise<HTMLIFrameElement>} the loaded iframe element
@@ -409,6 +500,8 @@ export class IframeManager {
     this._slot.appendChild(f);
     await IframeManager._waitForIframeLoad(f, `${this.snapshotBase}/${slug}/${this.indexFile}`);
     this._installOversampleStyles(f);
+    this._installDeterminismStyles(f, slug);
+    this._warnTallDoc(f, slug);
     this._iframe = f;
     this._slug = slug;
     // Single-frame opacity flip via gsap so determinism check passes (no setTimeout).
@@ -446,6 +539,8 @@ export class IframeManager {
     this._slot.appendChild(next);
     await IframeManager._waitForIframeLoad(next, `${this.snapshotBase}/${slug}/${this.indexFile}`);
     this._installOversampleStyles(next);
+    this._installDeterminismStyles(next, slug);
+    this._warnTallDoc(next, slug);
     this._applyCameraToIframe(next);
     const prev = this._iframe;
     await new Promise(resolve => {
@@ -573,7 +668,16 @@ export class IframeManager {
 
   /**
    * Tween the engine-style camera directly on the iframe.
-   * @param {{zoom?:number,tx?:number,ty?:number,scale?:number,x?:number,y?:number,duration?:number,ease?:string,onUpdate?:Function}} pose
+   * @param {{zoom?:number,tx?:number,ty?:number,scale?:number,x?:number,y?:number,duration?:number,ease?:string,onUpdate?:Function,zoomKeyframes?:Array<{zoom:number,duration:number,ease?:string}>}} pose
+   *   `zoomKeyframes` (additive 2026-09-02, AP-4 — omit it and behaviour is
+   *   byte-identical to before): builds ONE gsap.timeline in which the tx/ty
+   *   tween runs the full `duration` on `ease` from position 0 while the zoom
+   *   plays the keyframes back-to-back from position 0 on the SAME state
+   *   object — a zoom dip can blend INSIDE one camera move. Two sequential
+   *   tweenCamera calls can never overlap (each kills the one in flight), so
+   *   this is the only way to overlap pan and zoom. The timeline is assigned
+   *   to `_cameraTween`, so kill semantics, `setCamera` interruption and
+   *   settle scheduling behave exactly as for a plain tween.
    * @returns {Promise<void>}
    */
   tweenCamera(pose = {}) {
@@ -584,6 +688,8 @@ export class IframeManager {
     };
     const duration = pose.duration ?? 0.72;
     const ease = pose.ease ?? 'power3.out';
+    const zoomKeyframes = Array.isArray(pose.zoomKeyframes) && pose.zoomKeyframes.length
+      ? pose.zoomKeyframes : null;
     if (this._cameraTween) this._cameraTween.kill();
     // Cancel any pending settle from a previous tween — the new tween needs
     // transform-mode for its duration.
@@ -596,6 +702,32 @@ export class IframeManager {
       return Promise.resolve();
     }
     const state = { ...this._camera };
+    if (zoomKeyframes) {
+      return new Promise(resolve => {
+        const tl = gsap.timeline({
+          onUpdate: () => {
+            this._camera = { zoom: state.zoom, tx: state.tx, ty: state.ty };
+            this._applyCameraToIframe();
+            if (pose.onUpdate) pose.onUpdate(this.cameraState());
+          },
+          onComplete: () => {
+            this._camera = { ...to };
+            this._applyCameraToIframe();
+            this._cameraTween = null;
+            // Schedule re-rasterization at native density for deep zooms.
+            if (to.zoom > SETTLE_THRESHOLD) this._scheduleSettleMode();
+            resolve();
+          },
+        });
+        tl.to(state, { tx: to.tx, ty: to.ty, duration, ease }, 0);
+        let at = 0;
+        for (const kf of zoomKeyframes) {
+          tl.to(state, { zoom: kf.zoom, duration: kf.duration, ease: kf.ease || 'none' }, at);
+          at += kf.duration;
+        }
+        this._cameraTween = tl;
+      });
+    }
     return new Promise(resolve => {
       this._cameraTween = gsap.to(state, {
         ...to,
@@ -671,8 +803,10 @@ export class IframeManager {
       (this._viewport.height * fill) / Math.max(1, r.height)
     );
     const zoom = Math.max(minZoom, Math.min(maxZoom, rawZoom));
-    let cx = r.left + r.width / 2;
-    let cy = r.top + r.height / 2;
+    const cxUn = r.left + r.width / 2;
+    const cyUn = r.top + r.height / 2;
+    let cx = cxUn;
+    let cy = cyUn;
     if (clamp) {
       const minCx = this._viewport.width / (2 * zoom);
       const maxCx = this.iframeSize.width - minCx;
@@ -683,7 +817,14 @@ export class IframeManager {
     }
     const tx = this._viewport.width / 2 - this._origin.x - cx * zoom;
     const ty = this._viewport.height / 2 - this._origin.y - cy * zoom;
-    return { zoom, tx, ty, scale: zoom, x: tx, y: ty, rect: r };
+    // clampedBy (ccs-A20, fix-round B3): stage px the clamp MOVED the pose
+    // away from true-center — the silent displacement that fails the
+    // field-centre probe later (ccs 23 measured the error-by-fill curve:
+    // fill 0.66 → 82px low, 0.78 → 36, 0.86 → 5, 0.90 → 0). {x:0,y:0} when
+    // the clamp didn't bite. Additive field; probe-short computes the same
+    // number externally.
+    const clampedBy = { x: (cx - cxUn) * zoom, y: (cy - cyUn) * zoom };
+    return { zoom, tx, ty, scale: zoom, x: tx, y: ty, rect: r, clampedBy };
   }
 
   /**
@@ -765,8 +906,30 @@ export class IframeManager {
 
   /**
    * Project a highlight ring and optional label over an iframe-doc element.
-   * The ring is mounted in the stage coordinate space so it follows the same
-   * transform stack as the iframe slot in single-HTML tutorial scenes.
+   *
+   * Three modes (fix-round C3):
+   *
+   *   anchor:'stage' (default) — ring + label mounted on the STAGE at the
+   *     element's projected coords, computed ONCE at creation. Byte-identical
+   *     to the pre-C3 behavior. ⚠ Any later camera move leaves it floating
+   *     over the wrong UI (as 2: a "seconds" label stranded over the
+   *     Protection heading) — use it only when the camera holds still for the
+   *     highlight's whole lifetime.
+   *   anchor:'doc' — the highlight is styled INSIDE the iframe document
+   *     (outline on the element itself + label appended to the element), so
+   *     it rides every camera move BY CONSTRUCTION. Ported from the
+   *     anti-spam-5-layers video-local fix. Recommended default whenever the
+   *     camera will move during the highlight's lifetime.
+   *   track:true (stage mode only) — a gsap.ticker callback re-reads
+   *     `elementToStageRect` each tick and re-positions ring + label
+   *     (nvc B's "tracking highlight that re-anchors per frame").
+   *     gsap.ticker is driven by the render driver in seek mode, so tracking
+   *     stays deterministic — do NOT swap this for a free-running rAF.
+   *
+   * Live-layout pages (nvc B): the just-swapped page reflows under a
+   * correctly-placed overlay (~380px miss). Mount highlights only after
+   * layout settles (`settleAndMeasure` in iframe-helpers.js is the tool) and
+   * compute coordinates AT FIRE TIME, not at storyboard time.
    *
    * @param {string|Element} target
    * @param {Object} [opts]
@@ -776,7 +939,15 @@ export class IframeManager {
    * @param {number} [opts.strokeWidth=2]
    * @param {number} [opts.fadeMs=220]
    * @param {number} [opts.holdMs=0] — 0 means caller controls removal
-   * @returns {{remove:Function, element:HTMLElement}}
+   * @param {number} [opts.labelFontSize=12] — label type size in stage px.
+   *   Padding / max-width / radius / offsets scale with it. 12 keeps the
+   *   landscape defaults byte-identical; portrait shorts pass ~30 (A4,
+   *   shorts fix round 2026-08-13 — 12px is ~1% of a phone-width frame).
+   *   Honored in every mode (doc mode scales the in-doc label identically).
+   * @param {'stage'|'doc'} [opts.anchor='stage']
+   * @param {boolean} [opts.track=false] — stage mode only
+   * @returns {{remove:Function, element:HTMLElement, label:HTMLElement|null}}
+   *   element = the stage ring (stage mode) or the in-doc target (doc mode)
    */
   highlightElement(target, opts = {}) {
     const {
@@ -786,9 +957,63 @@ export class IframeManager {
       strokeWidth = 2,
       fadeMs = 220,
       holdMs = 0,
+      labelFontSize = 12,
+      anchor = 'stage',
+      track = false,
     } = opts;
     const el = typeof target === 'string' ? this.query(target) : target;
     if (!el) throw new Error(`IframeManager.highlightElement: target not found: ${target}`);
+
+    // ── doc mode: style the target inside the iframe document ─────────────
+    // (ported from videos/anti-spam-5-layers — rides the camera by construction)
+    if (anchor === 'doc') {
+      const d = el.ownerDocument;
+      const k = labelFontSize / 12;
+      const prev = {
+        outline: el.style.outline, outlineOffset: el.style.outlineOffset,
+        transition: el.style.transition, position: el.style.position,
+        borderRadius: el.style.borderRadius,
+      };
+      el.style.transition = `outline-color ${fadeMs}ms ease`;
+      el.style.outline = `${strokeWidth}px solid rgba(226,119,48,0)`;
+      el.style.outlineOffset = (pad + 1) + 'px';
+      if (!el.style.borderRadius) el.style.borderRadius = '4px';
+      gsap.delayedCall(0.03, () => { el.style.outlineColor = color; });
+      let tag = null;
+      if (label) {
+        const win = d.defaultView;
+        if (win && win.getComputedStyle(el).position === 'static') el.style.position = 'relative';
+        tag = d.createElement('div');
+        tag.textContent = label;
+        const padV = Math.round(7 * k);
+        const padH = Math.round(12 * k);
+        tag.style.cssText = `position:absolute; left:${Math.round(-9 * k)}px; top:${Math.round(-46 * k)}px;`
+          + `padding:${padV}px ${padH}px;`
+          + `border-radius:${Math.round(6 * k)}px; background:#E27730; color:#fff; white-space:nowrap;`
+          + `font:700 ${Math.round(labelFontSize * 13 / 12)}px/1.3 -apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;`
+          + 'box-shadow:0 8px 18px rgba(0,0,0,0.18); opacity:0;'
+          + `transition:opacity ${fadeMs}ms ease; z-index:99999; pointer-events:none;`;
+        el.appendChild(tag);
+        gsap.delayedCall(0.03, () => { tag.style.opacity = '1'; });
+      }
+      let removedDoc = false;
+      const removeDoc = () => {
+        if (removedDoc) return;
+        removedDoc = true;
+        el.style.outlineColor = 'rgba(226,119,48,0)';
+        if (tag) tag.style.opacity = '0';
+        gsap.delayedCall(Math.max(0.25, fadeMs / 1000), () => {
+          el.style.outline = prev.outline; el.style.outlineOffset = prev.outlineOffset;
+          el.style.transition = prev.transition; el.style.position = prev.position;
+          el.style.borderRadius = prev.borderRadius;
+          if (tag) tag.remove();
+        });
+      };
+      if (holdMs > 0) gsap.delayedCall(holdMs / 1000, removeDoc);
+      return { remove: removeDoc, element: el, label: tag };
+    }
+
+    // ── stage mode (default; byte-identical to pre-C3 behavior) ───────────
     this._ensureHighlightStyles();
     const rect = this.elementToStageRect(el);
     const ring = document.createElement('div');
@@ -802,30 +1027,70 @@ export class IframeManager {
     });
     this.stage.appendChild(ring);
 
+    // A4: every geometry constant scales with labelFontSize/12 so the
+    // label reads at phone size in portrait. At the default 12 the k
+    // factor is 1 and this block reproduces the legacy numbers exactly.
+    const k = labelFontSize / 12;
+    const padV = Math.round(7 * k);
+    const padH = Math.round(10 * k);
+    const maxW = Math.round(232 * k);
+    const placeLabel = (labelNode, r) => {
+      const viewport = this.viewport();
+      const labelH = Math.round(labelFontSize * 1.3) + padV * 2;
+      const labelTop = r.y - pad - (labelH + Math.round(4 * k));
+      const placeBelow = labelTop < 8;
+      const x = Math.max(8, Math.min(r.x - pad, viewport.w - (maxW + 8)));
+      const y = placeBelow ? r.y + r.h + pad + Math.round(10 * k) : labelTop;
+      Object.assign(labelNode.style, {
+        left: x + 'px',
+        top: y + 'px',
+      });
+    };
+
     let labelEl = null;
     if (label) {
       labelEl = document.createElement('div');
       labelEl.className = 'ifm-highlight-label';
       labelEl.textContent = label;
+      if (labelFontSize !== 12) {
+        Object.assign(labelEl.style, {
+          font: `700 ${labelFontSize}px/1.3 -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif`,
+          padding: `${padV}px ${padH}px`,
+          borderRadius: `${Math.round(6 * k)}px`,
+          maxWidth: maxW + 'px',
+        });
+      }
       this.stage.appendChild(labelEl);
-      const viewport = this.viewport();
-      const labelTop = rect.y - pad - 34;
-      const placeBelow = labelTop < 8;
-      const x = Math.max(8, Math.min(rect.x - pad, viewport.w - 240));
-      const y = placeBelow ? rect.y + rect.h + pad + 10 : labelTop;
-      Object.assign(labelEl.style, {
-        left: x + 'px',
-        top: y + 'px',
-      });
+      placeLabel(labelEl, rect);
     }
 
     const nodes = labelEl ? [ring, labelEl] : [ring];
     gsap.to(nodes, { opacity: 1, duration: fadeMs / 1000, ease: 'power2.out' });
 
+    // track mode (nvc B): re-anchor ring + label per gsap.ticker tick. The
+    // ticker is paused/stepped by the render driver, so seek-mode frames stay
+    // stable (INV-9) — no free-running rAF here.
+    let tickFn = null;
+    if (track) {
+      tickFn = () => {
+        let r2;
+        try { r2 = this.elementToStageRect(el); } catch (_) { return; }
+        Object.assign(ring.style, {
+          left: (r2.x - pad) + 'px',
+          top: (r2.y - pad) + 'px',
+          width: (r2.w + pad * 2) + 'px',
+          height: (r2.h + pad * 2) + 'px',
+        });
+        if (labelEl) placeLabel(labelEl, r2);
+      };
+      gsap.ticker.add(tickFn);
+    }
+
     let removed = false;
     const remove = () => {
       if (removed) return;
       removed = true;
+      if (tickFn) { gsap.ticker.remove(tickFn); tickFn = null; }
       gsap.to(nodes, {
         opacity: 0,
         duration: fadeMs / 1000,
@@ -834,7 +1099,9 @@ export class IframeManager {
       });
     };
     if (holdMs > 0) gsap.delayedCall(holdMs / 1000, remove);
-    return { remove, element: ring };
+    // A4: label node exposed so shorts can choreograph it (pulse on the
+    // narration naming it, exit with motion) instead of a static tag.
+    return { remove, element: ring, label: labelEl };
   }
 
   _ensureHighlightStyles() {
@@ -949,6 +1216,64 @@ export class IframeManager {
     const root = doc.scrollingElement || doc.documentElement;
     const body = doc.body || root;
     if (!win || !root) return Promise.resolve(el);
+
+    // Inner-scroller fix (as 3, fix-round C2): this method used to drive ONLY
+    // the window scroller, silently no-oping when the target lives inside an
+    // inner overflow pane (builder settings panes). Resolve the element's real
+    // scroll container by walking UP (never by pane class — inactive builder
+    // panels ship hidden 0×0 twins); when a real inner scroller exists, drive
+    // ITS scrollTop with the same tween shape. Normal pages (no inner
+    // scroller) keep the window path below unchanged.
+    let pane = null;
+    for (let n = el.parentElement; n && n !== doc.documentElement && n !== doc.body; n = n.parentElement) {
+      const cs = win.getComputedStyle(n);
+      if (/(auto|scroll)/.test(cs.overflowY) && n.scrollHeight > n.clientHeight + 4) { pane = n; break; }
+    }
+    if (pane) {
+      const elRect = el.getBoundingClientRect();
+      const paneRect = pane.getBoundingClientRect();
+      const leading = elRect.top - paneRect.top; // el offset within the pane viewport
+      const paneView = pane.clientHeight;
+      const clampPane = (v2) => Math.max(0, Math.min(pane.scrollHeight - pane.clientHeight, v2));
+      let goal;
+      if (block === 'start') goal = pane.scrollTop + leading;
+      else if (block === 'end') goal = pane.scrollTop + leading + elRect.height - paneView;
+      else if (block === 'nearest') {
+        if (leading >= 0 && leading + elRect.height <= paneView) goal = pane.scrollTop;
+        else if (leading < 0) goal = pane.scrollTop + leading;
+        else goal = pane.scrollTop + leading + elRect.height - paneView;
+      } else goal = pane.scrollTop + leading + elRect.height / 2 - paneView / 2;
+      goal = clampPane(goal);
+      if (this._scrollTween) {
+        this._scrollTween.kill();
+        if (this._scrollResolve) this._scrollResolve();
+        this._scrollTween = null;
+        this._scrollResolve = null;
+      }
+      // scrollTo({behavior:'instant'}) — NOT scrollTop assignment: snapshot CSS
+      // ships scroll-behavior:smooth, which turns scrollTop writes into queued
+      // smooth animations that swallow subsequent writes. The tween supplies
+      // the smoothness; each tick must land instantly.
+      if (typeof gsap === 'undefined' || duration <= 0) {
+        pane.scrollTo({ top: goal, behavior: 'instant' });
+        return Promise.resolve(el);
+      }
+      const pos = { y: pane.scrollTop };
+      return new Promise(resolve => {
+        this._scrollResolve = () => resolve(el);
+        this._scrollTween = gsap.to(pos, {
+          y: goal,
+          duration,
+          ease,
+          onUpdate: () => { pane.scrollTo({ top: pos.y, behavior: 'instant' }); },
+          onComplete: () => {
+            this._scrollTween = null;
+            this._scrollResolve = null;
+            resolve(el);
+          },
+        });
+      });
+    }
 
     const rect = el.getBoundingClientRect();
     const viewportW = win.innerWidth || this.iframeSize.width;
@@ -1111,6 +1436,26 @@ export class WPFormsInteractions {
         `Call iframeManager.load('${expected[0]}') first.`
       );
     }
+  }
+
+  /**
+   * Resolve the snapshot allowlist for a slug-guarded method.
+   *
+   * The guards exist to stop a method running against markup it was not written
+   * for, but they check a NAME, not the markup — so a fresh capture of the same
+   * surface under a new slug is rejected even when the markup is identical.
+   * `opts.snapshot` lets a film name the slug(s) it captured, exactly as
+   * `toggleSettingControl` has always allowed. Defaults are unchanged: a call
+   * that passes nothing behaves exactly as it did before.
+   *
+   * @param {{snapshot?: string|string[]}} [opts]
+   * @param {string[]} defaults
+   * @returns {string[]}
+   */
+  _snapshotAllowlist(opts, defaults) {
+    const override = opts && opts.snapshot;
+    if (!override) return defaults;
+    return Array.isArray(override) ? override : [override];
   }
 
   _findOrThrow(selector, methodName) {
@@ -1672,11 +2017,28 @@ export class WPFormsInteractions {
    *
    * @param {string} fieldSlug — palette field type (e.g. 'text', 'email',
    *   'name', 'textarea', 'select', 'phone', 'address')
+   * @param {Object} [opts]
+   * @param {number} [opts.carryDuration=1.10]
+   * @param {'hold'|'follow'} [opts.camera='hold'] — 'hold' (default) leaves
+   *   the camera exactly as before (byte-identical for existing callers).
+   *   **'follow' is RECOMMENDED for new films** (AP-11; rulebook §4 "During a
+   *   drag the camera follows the SUBJECT"): the camera tweens toward the
+   *   landing field OVER the carry (started, not awaited), and the ghost +
+   *   cursor end point is measured in the LANDING pose — so the subject stays
+   *   the shot and the drop never happens in a pre-framed empty destination
+   *   (sfc 6: a deliberate `await fly(dest)` before the drag announced the
+   *   outcome and the ghost crossed an empty frame; same idiom in lf).
+   * @param {string} [opts.snapshot='builder-fields'] — expected snapshot slug.
+   *   Addon fields (Mercado Pago, Square, Authorize.Net…) only exist in their
+   *   own capture, so the builder-fields default would reject a perfectly
+   *   valid builder page. Pass the slug you loaded; the method still needs the
+   *   same DOM shape (`.wpforms-add-fields-button[data-field-type=…]` in the
+   *   palette and a `.wpforms-field-wrap` drop zone) and throws if it is absent.
    * @returns {Promise<void>}
    */
   async dragFieldToForm(fieldSlug, opts = {}) {
-    this._assertSnapshot('builder-fields', 'dragFieldToForm');
-    const { carryDuration = 1.10 } = opts;
+    this._assertSnapshot(opts.snapshot || 'builder-fields', 'dragFieldToForm');
+    const { carryDuration = 1.10, camera = 'hold' } = opts;
     const source = this._findOrThrow(
       `.wpforms-add-fields-button[data-field-type="${cssEscape(fieldSlug)}"]`,
       'dragFieldToForm'
@@ -1720,10 +2082,38 @@ export class WPFormsInteractions {
     const ifrR = this.iframe.iframe().getBoundingClientRect();
     const sx = ifrR.width / this.iframe.iframeSize.width;
     const sy = ifrR.height / this.iframe.iframeSize.height;
-    const toPt = this.iframe._viewportToStage(
+    let toPt = this.iframe._viewportToStage(
       ifrR.left + dropEnd.x * sx,
       ifrR.top + dropEnd.y * sy
     );
+
+    // camera:'follow' (AP-11, additive 2026-09-02): frame the LANDING field
+    // over the carry and re-project the drop point into that landing pose.
+    // The landed field is prepared hidden (display:none) — un-hide it
+    // invisibly for one synchronous measurement, then restore.
+    let followPose = null;
+    if (camera === 'follow') {
+      try {
+        const prevDisplay = landed.style.display;
+        const prevVisibility = landed.style.visibility;
+        landed.style.visibility = 'hidden';
+        landed.style.display = 'block';
+        followPose = this.iframe.cameraToElement(landed, { fill: 0.6 });
+        landed.style.display = prevDisplay;
+        landed.style.visibility = prevVisibility;
+      } catch (_) { followPose = null; /* fall back to 'hold' behaviour */ }
+      if (followPose) {
+        // Stage point of an iframe-doc point P (logical px) at pose (zoom,tx,ty)
+        // is origin + t + P·zoom — the inverse of cameraToElement's tx/ty
+        // derivation. dropEnd is in iframe-doc (oversampled) px.
+        const o = this.iframe.oversample;
+        const org = this.iframe._origin;
+        toPt = {
+          x: org.x + followPose.tx + (dropEnd.x / o) * followPose.zoom,
+          y: org.y + followPose.ty + (dropEnd.y / o) * followPose.zoom,
+        };
+      }
+    }
 
     // Glide cursor onto source (lifts before press).
     await this.cursor.glide(fromPt, { duration: 0.55 });
@@ -1740,6 +2130,14 @@ export class WPFormsInteractions {
       `left ${carryDuration}s cubic-bezier(.4,.1,.3,1), ` +
       `top ${carryDuration}s cubic-bezier(.4,.1,.3,1), ` +
       `transform 220ms ease, opacity 220ms ease`;
+    // camera:'follow' — start (do NOT await) the camera toward the landing
+    // pose right before the carry; ghost, cursor and camera land together.
+    if (followPose) {
+      this.iframe.tweenCamera({
+        zoom: followPose.zoom, tx: followPose.tx, ty: followPose.ty,
+        duration: carryDuration, ease: 'power2.inOut',
+      });
+    }
     requestAnimationFrame(() => {
       ghost.style.left = (toPt.x - ghost._halfW) + 'px';
       ghost.style.top = (toPt.y - ghost._halfH) + 'px';
@@ -1934,7 +2332,7 @@ export class WPFormsInteractions {
    * @returns {Promise<void>}
    */
   async openFieldOptions(fieldId, opts = {}) {
-    this._assertSnapshot('builder-fields', 'openFieldOptions');
+    this._assertSnapshotOneOf(this._snapshotAllowlist(opts, ['builder-fields']), 'openFieldOptions');
     const fieldSel = `.wpforms-field[data-field-id="${cssEscape(String(fieldId))}"]`;
     const field = this._findOrThrow(fieldSel, 'openFieldOptions');
     this.iframe.scrollIntoView(field);
@@ -2093,6 +2491,12 @@ export class WPFormsInteractions {
    * @returns {Promise<HTMLElement>} the mounted panel element
    */
   async _openFakeDropdown(selectEl, options, activeValue, opts = {}) {
+    // QC r5 (tutorial-system-fixes #18): in settle mode the root zoom doubles
+    // this panel's fixed-position math (the BCR is measured post-zoom, then the
+    // panel renders inside the zoomed root → zoom² displacement, ~200-400px at
+    // 1.55×). Exit settle to the transform camera before measuring — the panel
+    // then rides the iframe transform correctly at any zoom.
+    if (this.iframe._settleMode) this.iframe._applyCameraToIframe();
     const doc = this.iframe.doc();
     const panel = doc.createElement('div');
     panel.className = 'ifm-fake-dropdown';
@@ -2294,12 +2698,12 @@ export class WPFormsInteractions {
    * @param {{tag?:string,value?:string,label?:string,type?:string}} value
    * @returns {Promise<void>}
    */
-  async setNotificationSendTo(blockSel, value = { tag: 'Email', type: 'field' }) {
-    this._assertSnapshot('builder-settings-notifications', 'setNotificationSendTo');
+  async setNotificationSendTo(blockSel, value = { tag: 'Email', type: 'field' }, opts = {}) {
+    this._assertSnapshotOneOf(this._snapshotAllowlist(opts, ['builder-settings-notifications']), 'setNotificationSendTo');
     const block = this._findOrThrow(blockSel, 'setNotificationSendTo');
     const field = block.querySelector('[id$="-email-wrap"]');
     if (!field) throw new Error(`setNotificationSendTo: email wrap not found in ${blockSel}`);
-    await this.insertSmartTag(field, value);
+    await this.insertSmartTag(field, opts.snapshot ? { ...value, snapshot: opts.snapshot } : value);
   }
 
   /**
@@ -2317,8 +2721,8 @@ export class WPFormsInteractions {
    * @param {string} text
    * @returns {Promise<void>}
    */
-  async setNotificationSubject(blockSel, text) {
-    this._assertSnapshot('builder-settings-notifications', 'setNotificationSubject');
+  async setNotificationSubject(blockSel, text, opts = {}) {
+    this._assertSnapshotOneOf(this._snapshotAllowlist(opts, ['builder-settings-notifications']), 'setNotificationSubject');
     const block = this._findOrThrow(blockSel, 'setNotificationSubject');
     const wrap = block.querySelector('[id$="-subject-wrap"]');
     if (!wrap) throw new Error(`setNotificationSubject: subject wrap not found in ${blockSel}`);
@@ -2340,8 +2744,8 @@ export class WPFormsInteractions {
    * @param {string} text
    * @returns {Promise<void>}
    */
-  async setNotificationMessage(blockSel, text) {
-    this._assertSnapshot('builder-settings-notifications', 'setNotificationMessage');
+  async setNotificationMessage(blockSel, text, opts = {}) {
+    this._assertSnapshotOneOf(this._snapshotAllowlist(opts, ['builder-settings-notifications']), 'setNotificationMessage');
     const block = this._findOrThrow(blockSel, 'setNotificationMessage');
     const wrap = block.querySelector('[id$="-message-wrap"]');
     if (!wrap) throw new Error(`setNotificationMessage: message wrap not found in ${blockSel}`);
@@ -2364,7 +2768,7 @@ export class WPFormsInteractions {
    * @returns {Promise<HTMLElement>} the opened dropdown element
    */
   async openSmartTagPicker(fieldSel, opts = {}) {
-    this._assertSnapshotOneOf(['builder-settings-notifications', 'builder-fields'], 'openSmartTagPicker');
+    this._assertSnapshotOneOf(this._snapshotAllowlist(opts, ['builder-settings-notifications', 'builder-fields']), 'openSmartTagPicker');
     const wrap = this._resolveSmartTagWrap(fieldSel, 'openSmartTagPicker');
     const icon = wrap.querySelector('.wpforms-show-smart-tags');
     const dropdown = wrap.querySelector('.insert-smart-tag-dropdown');
@@ -2394,8 +2798,8 @@ export class WPFormsInteractions {
    *
    * @returns {Promise<void>}
    */
-  async closeSmartTagPicker() {
-    this._assertSnapshotOneOf(['builder-settings-notifications', 'builder-fields'], 'closeSmartTagPicker');
+  async closeSmartTagPicker(opts = {}) {
+    this._assertSnapshotOneOf(this._snapshotAllowlist(opts, ['builder-settings-notifications', 'builder-fields']), 'closeSmartTagPicker');
     for (const dropdown of this.iframe.queryAll('.insert-smart-tag-dropdown:not(.closed)')) {
       dropdown.classList.add('closed');
     }
@@ -2419,7 +2823,7 @@ export class WPFormsInteractions {
    * @returns {Promise<void>}
    */
   async insertSmartTag(fieldSel, opts = {}) {
-    this._assertSnapshotOneOf(['builder-settings-notifications', 'builder-fields'], 'insertSmartTag');
+    this._assertSnapshotOneOf(this._snapshotAllowlist(opts, ['builder-settings-notifications', 'builder-fields']), 'insertSmartTag');
     const { replaceChips = true } = opts;
     const wrap = this._resolveSmartTagWrap(fieldSel, 'insertSmartTag');
     const dropdown = await this.openSmartTagPicker(wrap, opts);
@@ -2442,7 +2846,7 @@ export class WPFormsInteractions {
       original.dispatchEvent(new original.ownerDocument.defaultView.Event('input', { bubbles: true }));
     }
     await this.iframe.wait(0.42);
-    await this.closeSmartTagPicker();
+    await this.closeSmartTagPicker(opts);
   }
 
   /**
@@ -2459,14 +2863,26 @@ export class WPFormsInteractions {
    *
    * @param {string} fieldWrapSel
    * @param {string} value option value or visible label
+   * @param {Object} [opts]
+   * @param {string|string[]} [opts.snapshot] — expected snapshot slug(s).
+   *   Settings selects exist on far more snapshots than the baked default
+   *   list (anti_spam, addon settings panels…) — the hard assert is why
+   *   block-a-country's Block/Allow dropdown was never opened and the
+   *   video's concept went invisible (bac 1). Pass the slug you loaded; the
+   *   method's REAL contract is DOM shape (`wrap.querySelector('select')`),
+   *   which it still throws on when absent. Omitted = the original
+   *   3-snapshot assert, byte-identical.
    * @returns {Promise<void>}
    */
-  async selectFromDropdown(fieldWrapSel, value) {
-    this._assertSnapshotOneOf([
-      'builder-settings-notifications',
-      'builder-settings-confirmation',
-      'builder-settings-notifications-cl',
-    ], 'selectFromDropdown');
+  async selectFromDropdown(fieldWrapSel, value, opts = {}) {
+    this._assertSnapshotOneOf(
+      opts.snapshot
+        ? (Array.isArray(opts.snapshot) ? opts.snapshot : [opts.snapshot])
+        : [
+          'builder-settings-notifications',
+          'builder-settings-confirmation',
+          'builder-settings-notifications-cl',
+        ], 'selectFromDropdown');
     const wrap = this._findOrThrow(fieldWrapSel, 'selectFromDropdown');
     const select = wrap.querySelector('select');
     if (!select) throw new Error(`selectFromDropdown: no select inside ${fieldWrapSel}`);
@@ -2487,14 +2903,23 @@ export class WPFormsInteractions {
    *
    * @param {string} fieldWrapSel
    * @param {boolean|'toggle'} [state=true]
+   * @param {Object} [opts]
+   * @param {string|string[]} [opts.snapshot] — expected snapshot slug(s).
+   *   Same unlock as selectFromDropdown (A2): the WPForms toggle-control
+   *   markup exists on every settings snapshot, not just the baked three.
+   *   The method's real contract is the checkbox+slider DOM shape, which it
+   *   still throws on. Omitted = the original assert, byte-identical.
    * @returns {Promise<void>}
    */
-  async toggleSettingControl(fieldWrapSel, state = true) {
-    this._assertSnapshotOneOf([
-      'builder-settings-notifications',
-      'builder-settings-confirmation',
-      'builder-settings-notifications-cl',
-    ], 'toggleSettingControl');
+  async toggleSettingControl(fieldWrapSel, state = true, opts = {}) {
+    this._assertSnapshotOneOf(
+      opts.snapshot
+        ? (Array.isArray(opts.snapshot) ? opts.snapshot : [opts.snapshot])
+        : [
+          'builder-settings-notifications',
+          'builder-settings-confirmation',
+          'builder-settings-notifications-cl',
+        ], 'toggleSettingControl');
     const wrap = this._findOrThrow(fieldWrapSel, 'toggleSettingControl');
     const input = wrap.querySelector('input[type="checkbox"]');
     const icon = wrap.querySelector('.wpforms-toggle-control-icon');

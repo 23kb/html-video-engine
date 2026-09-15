@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>C2 closed-loop helpers fixture</title>
+<style>html,body{margin:0}#stage{position:relative;width:1280px;height:720px;overflow:hidden;background:#223}</style>
+</head>
+<body>
+<div id="stage"></div>
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { IframeManager } from '/videos/_shared/wpforms-interactions.js';
+import { paneScrollTo, pageCenter, settleAndMeasure } from '/videos/_shared/iframe-helpers.js';
+
+const R = {};
+function scrollerFor(el) {
+  const d = el.ownerDocument, win = d.defaultView;
+  let n = el.parentElement;
+  while (n && n !== d.documentElement && n !== d.body) {
+    const cs = win.getComputedStyle(n);
+    if (/(auto|scroll)/.test(cs.overflowY) && n.scrollHeight > n.clientHeight + 4) return n;
+    n = n.parentElement;
+  }
+  return null;
+}
+try {
+  const ifm = new IframeManager(document.getElementById('stage'), {
+    viewport: { width: 1280, height: 720 },
+    iframeSize: { width: 1280, height: 720 },
+  });
+  await ifm.load('builder-settings-anti_spam');
+  const doc = ifm.doc();
+
+  // Pick the LOWEST visible field wrap in the settings pane as the "low row".
+  const wraps = [...doc.querySelectorAll('.wpforms-panel-content [id^="wpforms-panel-field"]')]
+    .filter(w => w.offsetWidth > 0 && w.offsetHeight > 0);
+  wraps.sort((a, b) => (b.getBoundingClientRect().top) - (a.getBoundingClientRect().top));
+  const low = wraps[0];
+  R.lowRowId = low ? low.id : null;
+  if (!low) throw new Error('no visible field wraps found');
+
+  // Camera FIRST: deep zoom framing the TOP of the pane, so centering the
+  // low row REQUIRES a real pane scroll (landscape camera alone could
+  // otherwise center it and the loop would no-op).
+  const high = wraps[wraps.length - 1]; // top-most visible wrap
+  const pose = ifm.cameraToElement(high, { fill: 0.85, maxZoom: 2.0 });
+  await ifm.tweenCamera({ ...pose, duration: 0.4 });
+  R.zoom = ifm.cameraState().zoom;
+  const paneEl = scrollerFor(low);
+  R.paneScrollBefore = paneEl ? paneEl.scrollTop : null;
+
+  // paneScrollTo closed-loop centering
+  const el = await paneScrollTo(ifm, low, {});
+  R.paneScrollAfter = paneEl ? paneEl.scrollTop : null;
+  const p = ifm.elementToStageCoords(el);
+  const v = ifm.viewport();
+  R.paneCenterErr = Math.abs(p.y - v.h * 0.5);
+  R.paneUsed = !!scrollerFor(low);
+
+  // smoothScrollIntoView INNER-PANE path: reset, call, assert scrollTop moved
+  const pane = scrollerFor(low);
+  if (pane) {
+    pane.scrollTop = 0;
+    await ifm.smoothScrollIntoView(low, { duration: 0.2 });
+    R.innerScrollTopAfter = pane.scrollTop;
+  }
+
+  // settleAndMeasure sanity on a static snapshot: must return a rect fast
+  const rect = await settleAndMeasure(ifm, low, { timeout: 1.5 });
+  R.settleRect = rect ? { y: Math.round(rect.y), h: Math.round(rect.h) } : null;
+
+  // WINDOW path regression: frontend page, normal window scroller
+  await ifm.load('frontend-contact-clean');
+  const d2 = ifm.doc(), w2 = d2.defaultView;
+  const root2 = d2.scrollingElement || d2.documentElement;
+  R.frontendScrollRange = Math.max(0, root2.scrollHeight - w2.innerHeight);
+  const els = [...d2.querySelectorAll('button, input, .wpforms-submit')]
+    .filter(e => e.offsetWidth > 0 && e.offsetHeight > 0);
+  els.sort((a, b) => (b.getBoundingClientRect().top + w2.scrollY) - (a.getBoundingClientRect().top + w2.scrollY));
+  const deep = els[0];
+  R.windowTargetInPane = !!scrollerFor(deep); // must be false → window path
+  w2.scrollTo(0, 0);
+  await ifm.smoothScrollIntoView(deep, { duration: 0.2 });
+  R.windowScrollYAfter = w2.scrollY;
+
+  // pageCenter closed-loop on the frontend page — target an element that CAN
+  // be centered (mid-page; the bottom submit is pinned by the max-scroll limit).
+  const midDocY = R.frontendScrollRange * 0.5 + w2.innerHeight * 0.5;
+  els.sort((a, b) => {
+    const ay = a.getBoundingClientRect().top + w2.scrollY, by = b.getBoundingClientRect().top + w2.scrollY;
+    return Math.abs(ay - midDocY) - Math.abs(by - midDocY);
+  });
+  const mid = els[0];
+  w2.scrollTo(0, 0);
+  const el3 = await pageCenter(ifm, mid, { duration: 0.2, recheckDelay: 0.1 });
+  const p3 = ifm.elementToStageCoords(el3);
+  R.pageCenterErr = Math.abs(p3.y - ifm.viewport().h * 0.5);
+
+  window.__results = R;
+} catch (e) {
+  window.__results = { error: String(e && e.message || e), stack: String(e && e.stack || '') };
+}
+</script>
+</body>
+</html>

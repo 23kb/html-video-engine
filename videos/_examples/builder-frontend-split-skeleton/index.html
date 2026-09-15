@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>SKELETON — Builder ⇄ Frontend Split-Screen Tutorial</title>
+<link rel="stylesheet" href="/reference/wpforms-brand/tokens.css" />
+<style>
+  /* ─────────────────────────────────────────────────────────────────────
+     SKELETON for split-screen builder + frontend tutorial videos.
+
+     Pattern: builder appears centered; cursor walks the user through the
+     field options. At a chosen beat, the frontend pane fades in on the
+     right. From then on, every option change in builder mirrors live to
+     the frontend. After the demonstration, the frontend can fade back out.
+
+     Files:
+       - this index.html — composition + timeline
+       - storyboard.md   — narrative + cursor beats (optional)
+       - narration/*.txt + narration/*.mp3 — voiceover (optional)
+
+     Stage is 2580×800 (wide-aspect for two 1280-native panes). For 1080p
+     output, render with the existing tools/render.js pipeline at a
+     downscale; or change stage size + camera setup if you need 1920×1080.
+   ────────────────────────────────────────────────────────────────────── */
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: #d8dbe2;
+    font-family: var(--wpf-font-stack);
+    overflow: hidden;
+    color: var(--wpf-ink);
+  }
+  .stage-wrap {
+    position: relative;
+    width: 100vw; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: auto;
+  }
+  .stage {
+    position: relative;
+    width: 2580px; height: 800px;
+    background: var(--wpf-bg-cream, #fbf7f0);
+    overflow: hidden;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.18);
+    flex: 0 0 auto;
+  }
+  .atmo {
+    position: absolute; inset: 0;
+    pointer-events: none; z-index: 0;
+    background: linear-gradient(155deg, #fbf7f0 0%, #f7ede0 60%, #f1e2cc 100%);
+  }
+  .cursor-layer {
+    position: absolute; inset: 0;
+    pointer-events: none; z-index: 100;
+  }
+  /* Title card (optional). Hidden by default — uncomment to use. */
+  .title-card {
+    position: absolute; inset: 0;
+    display: none;
+    z-index: 200;
+    pointer-events: none;
+  }
+</style>
+</head>
+<body>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="atmo"></div>
+    <!-- BuilderFrontendSplit mounts its two pane hosts here. -->
+    <div class="cursor-layer" id="cursor-layer"></div>
+  </div>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+  import { Cursor } from '/videos/_shared/motion-primitives.js';
+  import { BuilderFrontendSplit } from '/videos/_shared/builder-frontend-split.js';
+
+  // ─── Configure for THIS tutorial — change the slug + isolate IDs below ──
+  const TUTORIAL_FIELD = {
+    builderSlug: 'builder-field-options-checkbox', // builder-field-options-<TYPE>
+    frontendFieldIds: [7],                         // which frontend field(s) to show
+                                                   // field IDs in frontend-published-form:
+                                                   //   1=name, 2=email, 3=text, 4=textarea,
+                                                   //   5=select, 6=radio, 7=checkbox, 8=number,
+                                                   //   9=slider, 10=phone, 15/16=address,
+                                                   //   25=likert, 26=NPS, 35=signature, 36=rating,
+                                                   //   18-21=payment-*, 27=content, 28=html
+  };
+  // ────────────────────────────────────────────────────────────────────────
+
+  const stage = document.getElementById('stage');
+
+  const split = new BuilderFrontendSplit(stage, {
+    stage: { width: 2580, height: 800 },
+    pane: { width: 1280, height: 720 },
+    gap: 20,
+    autoBridge: true,
+  });
+
+  const cursor = new Cursor({
+    layer: document.getElementById('cursor-layer'),
+    stage,
+  });
+
+  // ─── Build the timeline ─────────────────────────────────────────────────
+
+  const tl = gsap.timeline({ paused: true });
+
+  // Beat 1 — open: builder appears centered, cursor settles.
+  // Use cursor.glide/click/type via cursor primitive. The builder iframe is
+  // mounted ahead of time below.
+  tl.call(() => cursor.snapTo({ x: 1290, y: 400 }), null, 0);
+
+  // Beat 2 — open the Field Options panel for the field you care about.
+  // The simplest path: cursor click on the field in the canvas to open its
+  // options. Coordinates depend on the chosen builder snapshot; tune with
+  // builder snapshot DOM inspection.
+  tl.add(() => cursor.glide({ x: 800, y: 300 }, 1.0), '+=0.3');
+  tl.add(() => cursor.click(), '+=0.0');
+
+  // Beat 3 — fade in the frontend pane. Once visible, isolate the relevant
+  // field(s) so the frontend shows only the field this tutorial is about.
+  tl.call(async () => {
+    await split.fadeInFrontend('frontend-published-form');
+    split.isolateFrontend(TUTORIAL_FIELD.frontendFieldIds);
+  }, null, '+=0.5');
+
+  // Beat 4 — narrate + cursor walks the General tab.
+  // Example: change the Label.
+  tl.add(() => cursor.glide({ x: 1830, y: 220 }, 0.8), '+=1.0');
+  tl.add(() => cursor.click(), '+=0.0');
+  tl.add(() => cursor.type('Pick your favorites', { perChar: 0.05 }), '+=0.2');
+
+  // Beat 5 — toggle Required.
+  tl.add(() => cursor.glide({ x: 1830, y: 360 }, 0.8), '+=0.6');
+  tl.add(() => cursor.click(), '+=0.1');
+
+  // Beat 6 — open Advanced tab (switch sidebar tab).
+  tl.add(() => cursor.glide({ x: 1700, y: 180 }, 0.8), '+=0.8');
+  tl.add(() => cursor.click(), '+=0.1');
+
+  // Beat 7 — tweak something on Advanced. Layout, choice limits, choice
+  // ordering — all mirror to the frontend automatically.
+  // (Replace coords + values for your tutorial.)
+  tl.add(() => cursor.glide({ x: 1830, y: 480 }, 0.8), '+=0.4');
+  tl.add(() => cursor.click(), '+=0.1');
+
+  // Beat 8 — close out: fade frontend out, optionally swap back to a
+  // wider builder framing.
+  tl.call(async () => {
+    await split.fadeOutFrontend();
+  }, null, '+=1.5');
+
+  // ─── Boot ───────────────────────────────────────────────────────────────
+
+  (async function boot() {
+    await split.mountBuilder(TUTORIAL_FIELD.builderSlug);
+    // Frontend mounts lazily inside fadeInFrontend(); to preload it
+    // (faster fade-in beat), uncomment:
+    // await split.mountFrontend('frontend-published-form');
+
+    // Once a play button / preview / render is ready, .play() the timeline.
+    // For dev preview: tl.play();
+    window.tl = tl;
+    window.split = split;
+    window.cursor = cursor;
+  })();
+</script>
+
+</body>
+</html>

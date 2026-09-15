@@ -1,5 +1,6 @@
 # Shared Effects Library
 
+> **HISTORICAL API NOTE (2026-08-28):** code examples below predate the 2026-08-22 engine retirement. The craft rules stand; the `engine/`/`runtime/`/manifest APIs they mention are gone — implement in single-HTML per CLAUDE.md.
 `videos/_shared/effects.js` registers reusable GSAP effects for chapter and
 editorial choreography. Import it once, wait for `effectsReady` when immediate
 use matters, then call `gsap.effects.<name>(target, opts)`.

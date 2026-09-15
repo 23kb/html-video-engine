@@ -1,0 +1,12 @@
+#wpadminbar .wpforms-menu-notification-counter { display: inline-block !important; min-width: 18px !important; height: 18px !important; border-radius: 9px !important; margin: 7px 0px 0px 2px !important; vertical-align: top !important; font-size: 11px !important; line-height: 1.6 !important; text-align: center !important; }
+#wpadminbar .wpforms-menu-notification-indicator { float: right !important; margin: 10px 0px 0px !important; width: 8px !important; height: 8px !important; border-radius: 4px !important; }
+#wpadminbar .wpforms-menu-notification-indicator::after { content: ""; display: block !important; position: absolute !important; width: inherit !important; height: inherit !important; border-radius: inherit !important; background-color: inherit !important; animation: 1.5s ease 0s infinite normal none running wpforms-menu-notification-indicator-pulse !important; }
+@keyframes wpforms-menu-notification-indicator-pulse { 
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+#wpadminbar .wpforms-menu-form-notifications { border-top: 1px solid rgb(60, 65, 70) !important; margin-top: 6px !important; padding-top: 6px !important; }
+#wpadminbar .wpforms-menu-form-notifications > .ab-item .wp-admin-bar-arrow::before { top: 6px !important; }
+#wpadminbar #wp-admin-bar-wpforms-upgrade a { background-color: rgb(0, 163, 42); color: rgb(255, 255, 255); }
+#wpadminbar #wp-admin-bar-wpforms-upgrade a:hover { background-color: rgb(0, 138, 32); }
+#wpadminbar .wpforms-menu-form-last { border-bottom: 1px solid rgb(60, 65, 70) !important; margin-bottom: 6px !important; padding-bottom: 6px !important; }

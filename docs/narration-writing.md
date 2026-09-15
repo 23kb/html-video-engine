@@ -1,8 +1,47 @@
 # Narration Writing
 
+> **HISTORICAL API NOTE (2026-08-28):** code examples below predate the 2026-08-22 engine retirement. The craft rules stand; the `engine/`/`runtime/`/manifest APIs they mention are gone — implement in single-HTML per CLAUDE.md.
 Voice, pacing, structure, and what makes a beat feel landed vs rushed.
 
 The narration is the spine of every tutorial video. Bad narration drags good visuals; good narration salvages mediocre ones. This doc captures the patterns from the videos that worked.
+
+## The measured bar (2026-09-03)
+
+Umair designated 7 reference narrations (44 min of audio); the numbers below are measured from them (`reference/New folder/_extraction/_analysis/analysis-tts-script.md`). Where this section and older guidance below disagree — notably the "short sentences" instinct under Voice — the measured bar wins for narration copy: the bar reads as flowing prose, not choppy fragments.
+
+**The numbers:**
+
+- 172–175 wpm sustained; the voice is never silent >0.91s anywhere in 44 min.
+- ~0.6s gaps at sentence boundaries; 0.8–0.9s reserved for section pivots ("Number N…", CTA turns).
+- Median delivery chunk: 15 words / 5.0s (validates the 6-second beat as the chunk size).
+- Sentences: flowing 15–25 words, ~30% over 25w, zero fragments. Long sentences breathe on commas.
+- Imperative-start ≤15% — steps ride the demonstrator voice ("I'm going to…", "you can…"); bare imperatives appear mid-flow at the action moment, not as sentence-openers marching in a row.
+- you/your-dense (36–81% of sentences). Questions are hook-position only (plus the standard ad outro) — zero mid-body rhetorical questions.
+
+**The 5 rules:**
+
+1. **Write flowing prose FIRST, then chunk** to ~15w / 5–6s clips — sentences may span beats. Never draft fragment-style clip copy directly.
+2. **Demonstrator POV** — "I'm going to… / you can…", not imperative drill.
+3. **Pauses are baked via punctuation, never clip gaps** — in-chapter VO gap ≤0.7s, ≤1.0s at chapter seams.
+4. **Mechanical signposting** — "Number N on our list is…", connective step openers (Afterwards / Next / Then / Once / From there) roughly every third sentence.
+5. **Hooks come from the 4-type taxonomy** — pain/goal question, relatable observation, "Maybe you… Or maybe you…" scenario pair, or (tutorial register) brand-first promise. Sentence 2 empathizes or affirms; ads stay product-free until the ~30–40% pivot.
+
+## Warmth mechanics (the craft layer, 2026-09-03)
+
+Umair's ruling: the MAIN point of the bar is the WRITING — what is spoken, style, arrangement, warmth. The numbers above are the floor; these twelve mechanics, extracted from the 7 reference scripts, are the register itself:
+
+1. **"Probably" empathy** — guess at the viewer's life kindly, without presuming: *"As a busy business owner, you've probably got a lot going on all at once."*
+2. **Validation before teaching** — affirm their goal before instructing: *"If so, that's a really good idea for a number of reasons."*
+3. **Advice, not commands** — wrap imperatives in counsel: *"you'll want to make sure…"*, "be sure to", "it would be a good idea to", "definitely look into".
+4. **Permission + modeled choice** — model a choice, then hand it over: *"In my case, I'm going to…"*, "or whatever you chose to name it", "change it to whatever you like".
+5. **ONE homely domestic joke per video, never a tech joke** — the vampire houseguest; a server as *"an old closet or garage"*. One concrete image, then straight back to work.
+6. **Plain-talk seasoning, ~1–2 per minute** — *"some folks out there"*, "a world of hurt", "clean house", "big bucks", "crazy simple". Seasoning, never the dish.
+7. **People, not a manual** — contractions throughout; a named human presenter in the bookends (*"I'm Daisy with WPForms"*); brand-as-people (*"At WPForms, we believe…"*).
+8. **Co-doing on hard parts** — *"So let's write it out together"*, followed by a meaning recap: *"What this formula is saying is…"*
+9. **Rhythm punch** — a long flowing sentence, then a short one: *"…incredibly useful. It can also be incredibly risky."*
+10. **Show BOTH branches at the payoff** — *"the field will appear. But if you don't pick the right date, it won't appear at all."*
+11. **Concrete specifics carry authority** — real numbers, five NAMED apps "and more", real example values; never vague plurals.
+12. **Situation-first ordering** — the viewer's world opens the script; the product enters only at the pivot.
 
 ## Voice
 
@@ -131,6 +170,5 @@ Tracked as a future enhancement (REFACTOR-BRIEF.md L6). Current TTS is sufficien
 
 - `wpforms-video` skill — beat-level pacing rules + storyboard gate.
 - `docs/beat-pacing.md` — the 6-second rule and splitting heuristics.
-- `docs/examples/legacy-manifest-skeleton.md` — `subtitleVariants` shape.
-- `docs/examples/legacy-chapter-skeleton.md` — `narration:` field on beats.
+- `docs/examples/single-html-tutorial-skeleton.html` — one narration `.txt` per `beat()` key; DUR pasted from `tools/measure-narration.js` (the legacy manifest / chapter skeletons retired 2026-08-22).
 - `analysis-quality-and-transitions.md` §1.7 — REST API video lesson on per-beat-narration vs BGM-only.

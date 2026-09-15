@@ -14,7 +14,7 @@
 // }
 //
 // Per-piece output discovery (convention):
-//   kind=html → videos/<slug>/render/<slug>.mp4  (per tools/render.js)
+//   kind=html → videos/<slug>/render/<slug>.mp4  (per tools/render-html.js)
 //   kind=hf   → <piece.path>/renders/<meta.id>.mp4  (per hyperframes render)
 //   Both can be overridden with piece.output = "...path/to.mp4"
 //

@@ -118,7 +118,7 @@ _Fire by driving the real control (click/change/type); interactivity.js mutates 
 - change `#wpforms-field-option-29-hide_divider_line` → `divider-hide-line`
 - change `#wpforms-field-option-5-multiple` → `dropdown-multiple`
 - change `#wpforms-field-option-5-style` → `dropdown-style`
-- _… +111 more drivable transitions — see interactivity.js_
+- _… +114 more drivable transitions — see interactivity.js_
 
 ## Interactions — HAND-BROWSE ONLY (inert in video; use ifm.swap)
 _These admin links navigate when hand-browsing /snapshots/ but their handler bails in-iframe (window.top !== window). In a video, swap snapshots instead._

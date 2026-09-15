@@ -1,5 +1,6 @@
 # Cursor Choreography
 
+> **HISTORICAL API NOTE (2026-08-28):** code examples below predate the 2026-08-22 engine retirement. The craft rules stand; the `engine/`/`runtime/`/manifest APIs they mention are gone — implement in single-HTML per CLAUDE.md.
 How the on-screen cursor reads as intentional vs robotic. Covers `park`, `moveTo`, `glideTo`, `dragGrab`, click timing, and the "via waypoint" pattern.
 
 The cursor is the most-watched element in tutorial videos. Stiff cursor moves are the #1 reason a beat reads as "automated demo" rather than "tutorial." This doc captures the patterns that make it feel deliberate.
@@ -131,10 +132,22 @@ For long inputs (>30 chars), split into beats with mid-pauses or use a `parallel
 | Multiple `cursor.moveTo` calls in a row with no narration coverage | Either `glideTo` with one waypoint, or use a single beat with multiple `await sleep()` accents |
 | Drag ghost is hidden because `hideCursor: true` was set | The drag itself replaces the cursor with the ghost; `hideCursor` is only for the cursor returning post-drag |
 
+## Size — what actually reads on screen
+
+The `Cursor` constructor takes `size` (default **24 px** — `videos/_shared/motion-primitives.js`). Do NOT change that library default: 12+ shipped videos share it, and a silent bump enlarges every cursor already out there. Size per video via the option.
+
+**Effective size = `size` × camera zoom.** The cursor is mounted inside the camera-transformed stage, so it scales with every camera move. A 24 px cursor at zoom 2.0 renders 48 px; the same cursor at an establishing 1.0 pose renders 24 px. Judge size at the zoom the beat actually plays at, not at the raw option value.
+
+| Context | Guidance |
+|---|---|
+| Landscape 1920×1080 tutorial | Default 24 px is calibrated for desktop-viewed tutorials at typical 1.3–2.0 zooms. |
+| 9:16 vertical shorts (phone-viewed) | The skeleton ships `size: 26`; with the portrait zoom band locked to 1.7–2.0 that's ~44–52 px effective. If a short's cursor still reads small on a phone, bump the *per-video* `size`, never the library default. |
+| Editorial / ad-style beats | The cursor is an **eye-guide, not a realism prop** — oversizing is legitimate. A deliberately large cursor that enters from off-screen, walks the viewer's eye to the trigger, then clicks is a house-quality pattern (HyperFrames' films run the cursor as the protagonist). |
+
+**Enter from off-screen.** Don't pop the cursor into existence mid-frame; give it an entrance vector from outside the frame (or `parkAt` before the beat starts and glide in). The walk toward the target is what directs attention — the click is the payoff, and per the transitions boundary contract, the click can be what *causes the next cut*.
+
 ## See also
 
-- `videos/_shared/kit.js` — `cursor.glideTo`, `cursor.parkAt`, etc.
-- `engine/interactions.js` — full semantic-cursor source.
-- `engine/engine.js` — primitive cursor methods (`park`, `moveTo`, `click`, `dragGrab`).
+- `videos/_shared/motion-primitives.js` — the `Cursor` class (`glide` with `via` waypoints, `click`, `hover`, `drag`) and `videos/_shared/iframe-helpers.js` — `glideClick` (kit.js `glideTo`/`parkAt` and the engine cursor retired 2026-08-22).
 - `wpforms-video` skill — cursor as a beat-level rule (chapter feel like a tutorial vs slide).
 - `wpforms-postintro` skill — cursor handoff at postIntro→chapter boundary.

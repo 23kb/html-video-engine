@@ -38,7 +38,7 @@ Right now this folder is unwired — finding it requires knowing the path. That'
 ## Guidelines for new templates
 
 - **Filled-in example at the bottom.** Every template ends with at least one concrete fill (e.g. a Checkbox example). Easier to adapt than a blank Mad Lib.
-- **Standing constraints repeated.** No edits to `runtime/*` / `engine/*`, no visual QC from Claude, deterministic-safe, etc. Don't trust the global CLAUDE.md to be loaded — re-state in the prompt.
+- **Standing constraints repeated.** No edits to protected core (`videos/_shared/*`, `snapshots/**`, the validators — `runtime/` and `engine/` no longer exist), no visual QC from Claude, deterministic-safe, etc. Don't trust the global CLAUDE.md to be loaded — re-state in the prompt.
 - **Point at the helper, not the implementation.** "Use `BuilderFrontendSplit`" not "instantiate two IframeManagers and bridge messages". The helper should hide the plumbing.
 - **Required-reading list.** Which skills to load before authoring. Saves a round trip.
 - **Deliverable bullet list.** Files expected, validations to run, review URL to share.

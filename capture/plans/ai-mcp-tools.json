@@ -1,0 +1,15 @@
+{
+  "_comment": "WPForms > Tools > AI MCP tab — the real Enable MCP Write Access toggle in its OFF (default) state. Needed by videos/short-claude-asks-first b6 ('Write access OFF by default') so the beat shows real UI instead of an editorial toggle chip. Write access flipped to false via site-eval before capture and restored after.",
+  "variants": [
+    {
+      "slug": "admin-tools-ai-mcp",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-tools&view=ai-mcp",
+      "steps": [
+        { "wait": 2500 },
+        { "awaitSel": { "sel": "#wpforms-ai-mcp-write-toggle", "timeout": 20000 }, "settle": 800 },
+        { "eval": "const t = document.querySelector('#wpforms-ai-mcp-write-toggle'); if (!t) { throw new Error('write toggle missing'); } if (t.checked) { throw new Error('write toggle is ON - expected OFF for this capture'); }", "settle": 300 }
+      ],
+      "waitFor": "#wpforms-ai-mcp-write-toggle"
+    }
+  ]
+}

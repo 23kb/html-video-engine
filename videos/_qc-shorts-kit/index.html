@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>QC — shorts-kit bookends (sting / intro / outro)</title>
+<style>
+  /* QC harness for the shorts-kit bookends (motion-design round 2026-08-17,
+     dev session 1). Proves the ruled shorts opening's sub-1s brand sting:
+     mountShortIntro({ seconds: 0.9, exitFloor: 0.4 }) — card removed before
+     t=1.0s, entrance tweens all fired — AND that the 1.9s default caller
+     contract is untouched (exit clamp still floors at 1.2).
+
+     Human QC: open via the preview server, press the buttons.
+     Numeric QC (no eyeballs): append ?auto=1 — both probes run, results land
+     in window.__qcResults and the on-page list; window.__done flips when
+     finished. Standing QC-page pattern (_qc-primitives / _qc-effects). */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #12161a; color: #dfe5ec; font-family: Bahnschrift, "DIN Alternate", system-ui, sans-serif; display: flex; gap: 24px; padding: 24px; }
+  .panel { width: 420px; flex: 0 0 auto; }
+  h1 { font-size: 20px; margin-bottom: 12px; color: #E27730; }
+  p  { font-size: 13px; line-height: 1.5; color: #9aa4b0; margin-bottom: 14px; }
+  button { display: block; width: 100%; margin-bottom: 8px; padding: 10px 14px; font: 600 14px Bahnschrift, system-ui, sans-serif; background: #1d232b; color: #dfe5ec; border: 1px solid #2c3542; border-radius: 8px; cursor: pointer; }
+  button:hover { border-color: #E27730; }
+  #results { margin-top: 16px; font: 12px/1.7 Consolas, monospace; white-space: pre-wrap; }
+  #results .pass { color: #46b450; }
+  #results .fail { color: #d63638; }
+  /* 1080×1920 portrait stage at 0.42 view scale — the stage itself is native
+     portrait (anti-pattern #9 exception); only the VIEW is scaled. */
+  .stage-view { width: 454px; height: 807px; flex: 0 0 auto; }
+  /* #12161b = the shorts skeleton's stage tone, so the surround probe
+     measures against the real retired-flat-paint baseline. */
+  .stage { position: relative; width: 1080px; height: 1920px; background: #12161b; overflow: hidden; transform: scale(0.42); transform-origin: 0 0; }
+  .fake-band { position: absolute; left: 0; top: 300px; width: 1080px; height: 1200px; background: #f0f0f1; z-index: 5; }
+</style>
+</head>
+<body>
+  <div class="panel">
+    <h1>shorts-kit bookends</h1>
+    <p>Sub-1s brand sting (ruled 2026-08-22: sting &rarr; per-video postIntro
+       &rarr; first product UI). Default 1.9s intro and the outro are the
+       untouched contracts, here for regression eyes.</p>
+    <button id="run-sting">Run STING — seconds: 0.9, exitFloor: 0.4</button>
+    <button id="run-intro">Run INTRO — 1.9s default (caller contract)</button>
+    <button id="run-outro">Run OUTRO — mountShortOutro (untouched)</button>
+    <button id="run-surround">Toggle SURROUND — warm-dark ground + grain + dock</button>
+    <button id="run-probes">Run numeric probes (sting + default clamp)</button>
+    <div id="results"></div>
+  </div>
+  <div class="stage-view"><div class="stage" id="stage"><div class="fake-band"></div></div></div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script src="/vendor/gsap/3.15.0/CustomEase.min.js"></script>
+<script type="module">
+import { mountShortIntro, mountShortOutro, mountSurround } from '/videos/_shared/shorts-kit.js';
+import { stateChip } from '/videos/_shared/instruments.js';
+
+const stage = document.getElementById('stage');
+
+// Surround toggle + window hooks for the headless pixel probe (the runner
+// screenshots zone clips control-vs-mounted; band bytes must not change).
+let surround = null;
+window.__qcSurround = {
+  mount() {
+    if (surround) return;
+    surround = mountSurround(stage, { grain: true });
+    const gate = stateChip(surround.dock, { label: 'GATE', value: '2', unit: 's', x: 700, y: 20 });
+    gate.tweenIn();
+    surround._demoChip = gate;
+  },
+  dispose() {
+    if (!surround) return;
+    if (surround._demoChip) surround._demoChip.dispose();
+    surround.dispose();
+    surround = null;
+  },
+};
+document.getElementById('run-surround').onclick = () =>
+  (surround ? window.__qcSurround.dispose() : window.__qcSurround.mount());
+const resultsEl = document.getElementById('results');
+const HOOK = 'Stop bots that submit too fast';
+
+function log(line, ok) {
+  const div = document.createElement('div');
+  if (ok === true) div.className = 'pass';
+  if (ok === false) div.className = 'fail';
+  div.textContent = (ok === true ? 'PASS  ' : ok === false ? 'FAIL  ' : '      ') + line;
+  resultsEl.appendChild(div);
+}
+
+const sleep = (s) => new Promise((r) => setTimeout(r, s * 1000));
+
+// ── Probe 1 — the sub-1s sting ──────────────────────────────────────────────
+// Asserts (P-SPEC P4 acceptance 1, timeline-free — DOM + computed-transform
+// evidence): entrance tweens all fired by 0.65s; card element REMOVED from
+// the DOM before t = 1.0s.
+async function probeSting() {
+  const checks = [];
+  const sting = mountShortIntro(stage, { hook: HOOK, seconds: 0.9, exitFloor: 0.4 });
+  const el = sting.el;
+  const sullie = el.querySelector('.sis-sullie');
+  const wordmark = el.querySelector('.sis-wordmark');
+  const hookEl = el.querySelector('.sis-hook');
+  const t0 = performance.now();
+  const done = sting.play();
+
+  // Sample mid-flight (entrances land by ~0.6s; exit runs 0.48–0.90s and its
+  // power3.in spends the first third barely moving — sample past midpoint).
+  await sleep(0.72);
+  const fired =
+    Number(gsap.getProperty(sullie, 'opacity')) > 0.9 &&
+    Math.abs(Number(gsap.getProperty(sullie, 'scale')) - 1) < 0.05 &&
+    Number(gsap.getProperty(wordmark, 'opacity')) > 0.9 &&
+    Number(gsap.getProperty(hookEl, 'opacity')) > 0.2;
+  checks.push({ name: 'sting: Sullie/wordmark/hook tweens all fired by 0.72s', ok: fired });
+  const exiting = Number(gsap.getProperty(el, 'y')) < -30;
+  checks.push({ name: 'sting: card exiting upward at 0.72s (exit un-clamped below 1.2)', ok: exiting });
+
+  await done;
+  // Poll for removal — el.remove() fires on the timeline's onComplete.
+  let removedAt = null;
+  while (performance.now() - t0 < 1400) {
+    if (!el.parentNode) { removedAt = (performance.now() - t0) / 1000; break; }
+    await sleep(0.016);
+  }
+  checks.push({
+    name: `sting: card removed from DOM before t=1.0s (removed at ${removedAt ? removedAt.toFixed(2) + 's' : 'NEVER <=1.4s'})`,
+    ok: removedAt !== null && removedAt < 1.0,
+  });
+  if (el.parentNode) el.remove();
+  return checks;
+}
+
+// ── Probe 2 — the 1.9s default caller contract ─────────────────────────────
+// exitFloor defaults to 1.2 → exitAt = max(1.2, 1.48) = 1.48, exactly the old
+// hard-coded clamp. Evidence: card still in the DOM at 1.30s, gone by 2.1s.
+async function probeDefault() {
+  const checks = [];
+  const sting = mountShortIntro(stage, { hook: HOOK, seconds: 1.9 });
+  const el = sting.el;
+  const t0 = performance.now();
+  const done = sting.play();
+  await sleep(1.30);
+  checks.push({ name: 'default: card still in DOM at 1.30s (clamp not lowered)', ok: !!el.parentNode });
+  await done;
+  let removedAt = null;
+  while (performance.now() - t0 < 2600) {
+    if (!el.parentNode) { removedAt = (performance.now() - t0) / 1000; break; }
+    await sleep(0.016);
+  }
+  checks.push({
+    name: `default: card removed by 2.1s (removed at ${removedAt ? removedAt.toFixed(2) + 's' : 'NEVER <=2.6s'})`,
+    ok: removedAt !== null && removedAt < 2.1,
+  });
+  if (el.parentNode) el.remove();
+  return checks;
+}
+
+async function runProbes() {
+  resultsEl.textContent = '';
+  log('probing…');
+  const checks = [...(await probeSting()), ...(await probeDefault())];
+  resultsEl.textContent = '';
+  for (const c of checks) log(c.name, c.ok);
+  const pass = checks.every((c) => c.ok);
+  log(pass ? 'ALL CHECKS PASS' : 'FAILURES ABOVE', pass);
+  window.__qcResults = { checks, pass };
+  return window.__qcResults;
+}
+
+document.getElementById('run-sting').onclick = () => {
+  mountShortIntro(stage, { hook: HOOK, seconds: 0.9, exitFloor: 0.4 }).play();
+};
+document.getElementById('run-intro').onclick = () => {
+  mountShortIntro(stage, { hook: HOOK, sub: 'One number tightens the gate', seconds: 1.9 }).play();
+};
+document.getElementById('run-outro').onclick = () => {
+  mountShortOutro(stage, {}).play();
+};
+document.getElementById('run-probes').onclick = runProbes;
+
+// Headless entry: ?auto=1 → run both probes, flip __done for the runner.
+window.__done = false;
+if (new URLSearchParams(location.search).has('auto')) {
+  runProbes().then(() => { window.__done = true; });
+} else {
+  window.__done = true;
+}
+</script>
+</body>
+</html>

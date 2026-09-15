@@ -1,11 +1,14 @@
 # PostIntro Patterns
 
+> **HISTORICAL API NOTE (2026-08-28):** code examples below predate the 2026-08-22 engine retirement. The craft rules stand; the `engine/`/`runtime/`/manifest APIs they mention are gone — implement in single-HTML per CLAUDE.md.
 Purpose: help agents design the short concept beat after the title card and
 before the product walkthrough.
 
 ## What PostIntro Is
 
-PostIntro is a short animated proof of value, usually 8-15 seconds. It should
+PostIntro is a short animated proof of value. It runs until the message is
+explained — story states, not seconds (ruled 2026-08-22; long-form references
+happen to sit 8-15s, the approved shorts prototype is 4.8s). It should
 teach the "why" of the video before entering the WPForms UI.
 
 It is not:
@@ -33,16 +36,19 @@ It is not:
 
 ## Multi-animation rule (mandatory)
 
-PostIntros are **never single-beat**. The canonical references all run
-**8–15 seconds with at least 5 distinct animation phases**. A new postIntro
+PostIntros are **never single-beat**. The canonical long-form references run
+8–15 seconds with at least 5 distinct animation phases. A new postIntro
 must:
 
-- Hit ≥ 5 distinct animation phases (mount, primary morph, payoff, secondary
-  morph or label reveal, exit/handoff). A single fade-in followed by a
-  fade-out does not count as a postIntro.
-- Run 8–15 seconds total.
+- Hit ≥ 5 distinct animation phases long-form, ≥ 3 on shorts (mount, primary
+  morph, payoff, secondary morph or label reveal, exit/handoff). A single
+  fade-in followed by a fade-out does not count as a postIntro.
+- Run until the message is explained and not one frame longer — story states,
+  not seconds; holds that exist to fit audio are defects (ruled 2026-08-22,
+  replaces the old fixed 8–15s rule).
 - Choreograph at least one cursor or pointer interaction with the editorial
-  DOM (click, hover, drag, type) so it does not feel like a slide.
+  DOM (click, hover, drag, type) on long-form so it does not feel like a
+  slide; optional on shorts.
 - End by handing off into the first content chapter — fade into the real
   snapshot, dive-zoom into a captured element, or hand the cursor to a
   product-truth control.
@@ -78,8 +84,8 @@ chapter's `setup()` completes. Therefore:
 
 There are two separate ideas:
 
-- **PostIntro story beat** — required by default. This is the 8-15 second
-  concept proof that comes after the title card.
+- **PostIntro story beat** — required by default. This is the concept proof
+  that comes after the title card (story-state length rule).
 - **Manifest `postIntro.kind` slot** — current runtime wiring. Today this slot
   resolves `kind` to `runtime/cinematic-<kind>.js`, calls `mount(opts)`, waits
   for `animPromise`, then calls `dismiss()`.

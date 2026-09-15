@@ -110,6 +110,13 @@ async function main() {
       reducedMotion: 'no-preference',
       recordVideo: { dir: tmpDir, size: { width, height } },
     });
+    // Live-reload isolation: if the serving process is tools/preview.js, its
+    // injected client probes HEAD /__preview-ws to decide whether to open the
+    // reload socket. Abort that exact request so a repo-file edit mid-capture
+    // can never reload the page and restart the film inside the recording
+    // (shipped once: a film that restarts at ~30s — mp B). Pattern-matches
+    // only __preview-ws; everything else is untouched.
+    await ctx.route('**/__preview-ws', r => r.abort());
     // Hide the preview-audio pill so it never records.
     await ctx.addInitScript(() => {
       const add = () => {

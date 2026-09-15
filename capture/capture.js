@@ -289,6 +289,77 @@ async function captureVariant(page, variant) {
     throw new Error(`error page detected (title: "${pageTitle}") — nothing written`);
   }
 
+  // (live-reference.png is saved further down, AFTER the chrome strip — see
+  // the "paint-diff reference" block below for why.)
+
+  // Visibility bake (ccs 1, fix-round B1): hidden overlays whose hidden state
+  // lives in JS/stylesheet rules can resurrect EXPANDED when serialization
+  // strips scripts — the WPCode picker serialized inline-expanded and produced
+  // a 32,766px page. Bake computed hidden state into inline styles so the
+  // frozen markup can't disagree with the live paint. Lossless for pages
+  // that don't need it (only writes where the computed state isn't already
+  // inline).
+  //
+  // `visibility` INHERITS, and that is what made this bake a trap. Stamping it
+  // on every descendant of a hidden container froze the Export menu at 32 of 33
+  // descendants individually hidden, so revealing the container later produced
+  // a correctly sized, correctly laid out, entirely EMPTY box — three debugging
+  // rounds across rf 16 / 17 / 20, roughly half that session. Only the element
+  // that actually TURNS hidden needs the stamp; the subtree follows it, exactly
+  // as it did live. `display: none` needs no such guard — computed display is
+  // not inherited, so descendants of a display:none node already report their
+  // own value and were never stamped.
+  const bakeStats = await page.evaluate(() => {
+    let stamped = 0, inheritedSkipped = 0;
+    for (const el of document.body.querySelectorAll('*')) {
+      try {
+        const cs = getComputedStyle(el);
+        if (cs.display === 'none' && el.style.display !== 'none') { el.style.display = 'none'; stamped++; }
+        else if (cs.visibility === 'hidden' && el.style.visibility !== 'hidden') {
+          const parent = el.parentElement;
+          if (parent && getComputedStyle(parent).visibility === 'hidden') { inheritedSkipped++; continue; }
+          el.style.visibility = 'hidden';
+          stamped++;
+        }
+      } catch {}
+    }
+    return { stamped, inheritedSkipped };
+  });
+  if (bakeStats.inheritedSkipped) {
+    console.log(`    · visibility bake: ${bakeStats.stamped} stamped, ${bakeStats.inheritedSkipped} skipped as inherited (they follow their hidden container — rf 17)`);
+  }
+
+  // CSSOM materialization (ccs 2, fix-round B1): JS-injected rules
+  // (insertRule into an empty <style>, adoptedStyleSheets) exist ONLY in the
+  // CSSOM — no static asset localizer sees them, which is why WPCode
+  // recaptures stayed visually wrong while element positions probed fine.
+  // Write each such sheet's cssRules back into serializable <style> text.
+  // Cross-origin sheets that throw on cssRules access are skipped (the SaaS
+  // path's ingest handles those).
+  const cssomReport = await page.evaluate(() => {
+    let materialized = 0;
+    for (const styleEl of document.querySelectorAll('style')) {
+      try {
+        const sheet = styleEl.sheet;
+        if (sheet && sheet.cssRules.length && !styleEl.textContent.trim()) {
+          styleEl.textContent = [...sheet.cssRules].map((r) => r.cssText).join('\n');
+          materialized++;
+        }
+      } catch {}
+    }
+    try {
+      for (const sheet of (document.adoptedStyleSheets || [])) {
+        const s = document.createElement('style');
+        s.setAttribute('data-adopted-sheet', '1');
+        s.textContent = [...sheet.cssRules].map((r) => r.cssText).join('\n');
+        document.head.appendChild(s);
+        materialized++;
+      }
+    } catch {}
+    return materialized;
+  });
+  if (cssomReport) console.log(`    ✓ materialized ${cssomReport} CSSOM-injected style sheet(s)`);
+
   // Bake property-level state into serializable attributes. JS-driven state
   // set during steps (input.value = …, radio.click(), select.value + change)
   // lives on DOM properties only; outerHTML serializes attributes, so without
@@ -376,10 +447,20 @@ async function captureVariant(page, variant) {
     for (const abs of cssRefs(css, href)) await ensureAsset(abs);
   }
 
-  // Rasterize <canvas> → <img> (canvas pixels aren't in outerHTML)
-  await page.evaluate(() => {
+  // Rasterize <canvas> → <img> (canvas pixels aren't in outerHTML).
+  //
+  // This is the right fallback and it used to be completely silent, which is
+  // the problem: the still looks perfect and the region is dead. A baked raster
+  // cannot be hovered, resized or animated as DOM, so it quietly turns a
+  // live-DOM film into a slideshow and the author cannot tell from the markup
+  // that anything died (rf 10). Every rasterization is now reported, and
+  // capture-gates WARNs on the result so it reaches outline.md.
+  const rasterized = await page.evaluate(() => {
+    const hits = [];
     for (const c of document.querySelectorAll('canvas')) {
       try {
+        const r0 = c.getBoundingClientRect();
+        hits.push({ w: Math.round(r0.width), h: Math.round(r0.height), cls: (c.className || '').slice(0, 60) });
         const dataUrl = c.toDataURL('image/png');
         const img = document.createElement('img');
         img.src = dataUrl;
@@ -392,7 +473,13 @@ async function captureVariant(page, variant) {
         c.parentNode.replaceChild(img, c);
       } catch {}
     }
+    return hits;
   });
+  if (rasterized.length) {
+    console.warn(`    ⚠ ${rasterized.length} <canvas> rasterized to PNG — DEAD in the snapshot (no hover, no resize, not animatable as DOM):`);
+    for (const h of rasterized) console.warn(`        ${h.w}×${h.h}${h.cls ? `  .${h.cls.split(/\s+/).join('.')}` : ''}`);
+    console.warn('      If a beat needs this region live, rehydrate it (see snapshots/_shared/survey-reporting.js) instead of filming the raster.');
+  }
 
   // Strip WP notices (always). Sidebar and top admin bar are independent.
   //
@@ -445,6 +532,28 @@ async function captureVariant(page, variant) {
       document.head.appendChild(reset);
     }
   }, { keepSidebar, keepTopAdminBar });
+
+  // Paint-diff reference (C6 gate support). Save the live page's paint so the
+  // post-capture gate (tools/capture-gates.js) can prove the frozen snapshot
+  // still paints the same — ccs 12: structural checks pass on visually
+  // destroyed pages; only a paint comparison catches them.
+  //
+  // Taken AFTER the chrome strip on purpose. It used to be taken before, so
+  // the gate compared a page that HAD the WP sidebar and admin bar against a
+  // snapshot we had deliberately removed them from, and then charged us for
+  // our own edit. Measured on sp-results-ranking-full: 31.0 mean abs diff
+  // full-frame vs 7.2 with those two bands excluded — the whole WARN was the
+  // chrome (rf 9). Everything between the page load and here is paint-neutral
+  // by design (the visibility bake writes already-computed values; CSSOM
+  // materialization re-states rules that were already applied), so this is
+  // still the live paint of the thing we actually intend to freeze.
+  try {
+    fs.mkdirSync(outDir, { recursive: true });
+    await page.screenshot({ path: path.join(outDir, 'live-reference.png') });
+    console.log('    ✓ live-reference.png saved (paint-diff gate reference, post-chrome-strip)');
+  } catch (e) {
+    console.warn('    [warn] live-reference screenshot failed:', e.message);
+  }
 
   // Inline stylesheet links and rewrite asset URLs in attributes — done in
   // DOM space so HTML entity encoding (`&` vs `&amp;`) doesn't break matching.
@@ -609,6 +718,9 @@ async function captureVariant(page, variant) {
     // Recorded so post-capture.js can re-verify the anchor still resolves
     // after the trim pipeline (over-trim detection).
     waitFor: waitFor || null,
+    // Recorded so capture-gates.js screenshots the frozen page at the SAME
+    // viewport as live-reference.png (paint-diff comparability).
+    viewport: page.viewportSize() || null,
   }, null, 2));
 
   console.log(`    ✓ wrote ${outDir} (${emittedCount} assets, ${skippedCount} unreferenced skipped)`);
@@ -692,9 +804,9 @@ async function captureVariant(page, variant) {
   }
   if (sanitizeReport.size) {
     const lines = [...sanitizeReport.entries()].map(([k, n]) => `  ${k}: ${n}`);
-    console.log(`✓ Sanitized embedded secrets:\n${lines.join('\n')}`);
+    console.log(`✓ Secret scan — redacted:\n${lines.join('\n')}`);
   } else {
-    console.log('✓ Sanitizer: no embedded secrets found.');
+    console.log('✓ Secret scan: no embedded secrets found. (Secrets only — NOT a visual check.)');
   }
   process.exit(failed.length ? 1 : 0);
 })().catch((e) => { console.error(e); process.exit(1); });

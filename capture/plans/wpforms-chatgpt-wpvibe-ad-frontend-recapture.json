@@ -1,0 +1,38 @@
+{
+  "_comment": "Frontend-only recapture 2026-09-08 after Umair sanitized the site theme (header/footer removed at source). Strip steps kept identical to the original plan so the two surfaces stay comparable.",
+  "targetPath": "/?wpforms_form_preview=1932",
+  "variants": [
+    {
+      "slug": "frontend-conference-registration",
+      "targetPath": "/?wpforms_form_preview=1932",
+      "waitFor": "#wpforms-1932",
+      "steps": [
+        {
+          "wait": 2500
+        },
+        {
+          "eval": "['header','nav','.site-header','#masthead','.main-navigation','#site-navigation','form[role=\"search\"]','.search-form','#secondary','.widget-area','aside','footer','.site-footer','#colophon','#wpadminbar','.post-edit-link','.wpforms-form-edit-link','.wpforms-preview-notice','a[href*=\"wpforms-builder\"]','a[href*=\"wpforms-entries\"]'].forEach(function(s){document.querySelectorAll(s).forEach(function(n){n.remove();});});document.querySelectorAll('#wpforms-1932 input:not([type=\"submit\"]):not([type=\"button\"]),#wpforms-1932 textarea').forEach(function(n){n.value='';n.removeAttribute('value');n.removeAttribute('data-default-value');});document.body.style.margin='0';document.documentElement.style.margin='0';",
+          "settle": 600
+        }
+      ]
+    },
+    {
+      "slug": "frontend-conference-registration-dropdown-open",
+      "targetPath": "/?wpforms_form_preview=1932",
+      "waitFor": "#wpforms-1932",
+      "steps": [
+        {
+          "wait": 2500
+        },
+        {
+          "eval": "['header','nav','.site-header','#masthead','.main-navigation','#site-navigation','form[role=\"search\"]','.search-form','#secondary','.widget-area','aside','footer','.site-footer','#colophon','#wpadminbar','.post-edit-link','.wpforms-form-edit-link','.wpforms-preview-notice','a[href*=\"wpforms-builder\"]','a[href*=\"wpforms-entries\"]'].forEach(function(s){document.querySelectorAll(s).forEach(function(n){n.remove();});});document.querySelectorAll('#wpforms-1932 input:not([type=\"submit\"]):not([type=\"button\"]),#wpforms-1932 textarea').forEach(function(n){n.value='';n.removeAttribute('value');n.removeAttribute('data-default-value');});document.body.style.margin='0';document.documentElement.style.margin='0';",
+          "settle": 600
+        },
+        {
+          "click": "#wpforms-1932-field_4-container .choices",
+          "settle": 900
+        }
+      ]
+    }
+  ]
+}

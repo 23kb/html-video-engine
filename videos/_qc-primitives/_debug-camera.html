@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>_debug-camera — 5-keyframe inter-snapshot math (no iframes)</title>
+<style>
+  :root {
+    --bg: #14161C; --ink: #ebebed; --ink-mute: #8a8e99;
+    --accent: #E27730; --accent-blue: #0399ED;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg); color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    overflow: hidden;
+  }
+  .header {
+    padding: 14px 24px; border-bottom: 1px solid #2a2e3a;
+  }
+  .header h1 {
+    margin: 0 0 4px; font-size: 16px;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    color: var(--accent-blue);
+  }
+  .header .desc { font-size: 12px; color: var(--ink-mute); }
+  .header a { color: var(--accent); text-decoration: none; font-size: 12px; }
+  .header code { color: var(--accent); }
+
+  .stage-wrap {
+    position: fixed; inset: 70px 0 96px 0;
+    display: flex; align-items: center; justify-content: center;
+    background: #0d0e10;
+  }
+
+  /* Stage = the visible viewport (1280x720). */
+  .stage {
+    position: relative;
+    width: 1280px; height: 720px;
+    background: #1a1f2a;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+    transform-origin: center center;
+  }
+
+  /* Stage-center crosshair (above camera) for debugging where the math lands. */
+  .stage::before, .stage::after {
+    content: '';
+    position: absolute; pointer-events: none; z-index: 50;
+    background: rgba(226, 119, 48, 0.55);
+  }
+  .stage::before { left: 640px; top: 0; width: 1px; height: 720px; }
+  .stage::after  { left: 0; top: 360px; width: 1280px; height: 1px; }
+
+  /* Camera = 3680px-wide canvas with transform-origin: center center.
+     Origin in element-local coords = (1840, 360). */
+  .scene-camera {
+    position: absolute;
+    width: 3680px; height: 720px;
+    left: 0; top: 0;
+    transform-origin: center center;
+    will-change: transform;
+    background-image:
+      radial-gradient(circle at 50% 50%, #2a2f3e 1px, transparent 1.5px);
+    background-size: 32px 32px;
+  }
+
+  /* Three blocks on the canvas at the three keyframe targets. */
+  .panel {
+    position: absolute;
+    top: 0; width: 1280px; height: 720px;
+    overflow: hidden;
+    border-radius: 6px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.25);
+    display: flex; flex-direction: column;
+  }
+  /* A — left panel, canvas x = 0..1280 (center cx=640) */
+  .panel.a { left: 0; background: #1c2740; color: #cbd6ec; }
+  .panel.a .head { background: #243454; padding: 18px 28px; font-size: 22px; font-weight: 600; }
+  .panel.a .body { padding: 24px 28px; font-size: 16px; line-height: 1.6; }
+  .panel.a .row {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  .panel.a .row .name { font-weight: 500; color: #e6ecf7; }
+  .panel.a .row .meta { font-size: 13px; color: #8da4cf; }
+  .panel.a .corner {
+    position: absolute; top: 12px; right: 16px;
+    background: var(--accent); color: #fff; font-weight: 700;
+    padding: 6px 14px; border-radius: 4px; font-size: 12px;
+    font-family: ui-monospace, monospace;
+  }
+  /* B — right panel, canvas x = 2400..3680 (center cx=3040) */
+  .panel.b { left: 2400px; background: #f6efe4; color: #2c2519; }
+  .panel.b .head { background: #e9dcc5; padding: 18px 28px; font-size: 22px; font-weight: 600; color: #3b3120; }
+  .panel.b .body { padding: 24px 28px; font-size: 15px; line-height: 1.6; color: #4a3f2c; }
+  .panel.b .chat-bubble {
+    background: #fff; border-radius: 0 24px 24px 24px;
+    padding: 18px 22px; margin-bottom: 14px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    max-width: 80%;
+  }
+  .panel.b .chat-bubble.user {
+    background: var(--accent); color: #fff;
+    border-radius: 24px 24px 0 24px; margin-left: auto;
+  }
+  .panel.b .corner {
+    position: absolute; top: 12px; right: 16px;
+    background: #7A30E2; color: #fff; font-weight: 700;
+    padding: 6px 14px; border-radius: 4px; font-size: 12px;
+    font-family: ui-monospace, monospace;
+  }
+
+  /* Mid-canvas marker at cx=1840 (canvas center, where WIDE_PAN_MID focuses) */
+  .mid-marker {
+    position: absolute;
+    left: 1280px; top: 0;
+    width: 1120px; height: 720px;
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none;
+  }
+  .mid-marker .badge {
+    background: rgba(226, 119, 48, 0.18);
+    border: 2px dashed rgba(226, 119, 48, 0.7);
+    color: var(--accent);
+    padding: 14px 22px; border-radius: 12px;
+    font-family: ui-monospace, monospace;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .phase-label {
+    position: absolute;
+    bottom: 18px; left: 50%; transform: translateX(-50%);
+    font-size: 13px; color: #fff;
+    background: rgba(20,22,28,0.9);
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-family: ui-monospace, monospace;
+    z-index: 100;
+  }
+
+  .controls {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    padding: 12px 24px;
+    background: rgba(20,22,28,0.95);
+    border-top: 1px solid #2a2e3a;
+  }
+  .controls .row1 { display: flex; align-items: center; gap: 12px; }
+  .controls .row2 {
+    display: flex; align-items: center; gap: 8px;
+    margin-top: 8px; flex-wrap: wrap;
+    font-family: ui-monospace, monospace; font-size: 11px;
+  }
+  .controls button {
+    background: rgba(255,255,255,0.10); border: 0; color: var(--ink);
+    height: 30px; padding: 0 12px; border-radius: 4px; cursor: pointer;
+    font-size: 12px; font-family: ui-monospace, monospace;
+  }
+  .controls button:hover { background: rgba(255,255,255,0.20); }
+  .controls button.pose { background: rgba(3, 153, 237, 0.18); color: var(--accent-blue); }
+  .controls button.pose:hover { background: rgba(3, 153, 237, 0.32); }
+  .controls input[type="range"] { flex: 1; }
+  .controls .time {
+    min-width: 110px; text-align: center;
+    font-family: ui-monospace, monospace; font-size: 12px; opacity: 0.9;
+  }
+  .controls .pose-label { color: var(--ink-mute); }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>_debug-camera — 5-keyframe inter-snapshot math (no iframes)</h1>
+  <div class="desc">
+    Proves the <code>transform-origin: center center</code> math for the inter-snapshot 3-act flight.
+    Canvas <code>3680×720</code>. A center cx=640, mid cx=1840, B center cx=3040.
+    Stage center (640) crosshair drawn in orange. Each pose should land its target dead-on the crosshair.
+    <a href="cinematic-flight-inter-snapshot.html">→ broken iframe demo</a> ·
+    <a href="index.html">← QC index</a>
+  </div>
+</div>
+
+<div class="stage-wrap">
+  <div class="stage" id="stage">
+    <div class="scene-camera" id="camera">
+      <div class="panel a">
+        <div class="corner">cx=640</div>
+        <div class="head">A — admin / forms-overview stand-in</div>
+        <div class="body">
+          <div class="row"><span class="name">Contact Us</span><span class="meta">42 entries · published</span></div>
+          <div class="row"><span class="name">Newsletter Signup</span><span class="meta">128 entries</span></div>
+          <div class="row"><span class="name">Support Request</span><span class="meta">7 entries</span></div>
+          <div class="row"><span class="name">Demo Request</span><span class="meta">19 entries</span></div>
+        </div>
+      </div>
+      <div class="mid-marker">
+        <div class="badge">
+          canvas mid · cx=1840<br>
+          (WIDE_PAN_MID target)
+        </div>
+      </div>
+      <div class="panel b">
+        <div class="corner">cx=3040</div>
+        <div class="head">B — wpforms-ai-builder stand-in</div>
+        <div class="body">
+          <div class="chat-bubble user">customer feedback form</div>
+          <div class="chat-bubble">I'll create a customer feedback form with 5 questions covering satisfaction, suggestions, and contact info.</div>
+        </div>
+      </div>
+    </div>
+    <div class="phase-label" id="phaseLabel">phase: idle</div>
+  </div>
+</div>
+
+<div class="controls">
+  <div class="row1">
+    <button id="playBtn">▶ play</button>
+    <button id="restartBtn">⟲ restart</button>
+    <input type="range" id="scrubber" min="0" max="1" step="0.001" value="0">
+    <div class="time" id="timeLabel">0.00 / 0.00</div>
+  </div>
+  <div class="row2">
+    <span class="pose-label">jump to pose:</span>
+    <button class="pose" data-pose="0">1 · FROM_A (0, 1.0)</button>
+    <button class="pose" data-pose="1">2 · ZOOM_OUT_AT_A (-816, 0.32)</button>
+    <button class="pose" data-pose="2">3 · WIDE_PAN_MID (-1200, 0.32) — skipped in autoplay</button>
+    <button class="pose" data-pose="3">4 · ZOOM_OUT_AT_B (-1584, 0.32)</button>
+    <button class="pose" data-pose="4">5 · TO_B (-2400, 1.0)</button>
+  </div>
+</div>
+
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+// Stage scaling — fits 1280x720 stage into the visible viewport.
+function fitStage() {
+  const stage = document.getElementById('stage');
+  const availW = window.innerWidth;
+  const availH = Math.max(200, window.innerHeight - 70 - 96);
+  const sx = availW / 1280;
+  const sy = availH / 720;
+  const scale = Math.min(sx, sy) * 0.96;
+  stage.style.transform = `scale(${Math.max(scale, 0.1)})`;
+}
+fitStage();
+window.addEventListener('resize', fitStage);
+
+const camera = document.getElementById('camera');
+const phaseLabel = document.getElementById('phaseLabel');
+const playBtn = document.getElementById('playBtn');
+const scrubber = document.getElementById('scrubber');
+const timeLabel = document.getElementById('timeLabel');
+const restartBtn = document.getElementById('restartBtn');
+
+// 5 keyframe poses — derived for transform-origin: center center on a 3680x720 canvas:
+//   doc_x = 1840 + s*(cx - 1840) + tx
+//   tx = (stage_center 640) - 1840 - s*(cx - 1840) = -1200 - s*(cx - 1840)
+//
+// Each entry has: meta (name + canvas focus point) for debug labels and
+// `vars` (the literal GSAP property bag — only x/y/scale/rotation, no name,
+// otherwise GSAP emits "Invalid property name set to FROM_A" warnings and
+// chokes the tween).
+const POSES = [
+  { name: 'FROM_A',         cx: 640,  vars: { x: 0,     y: 0, scale: 1.0,  rotation: 0 } },
+  { name: 'ZOOM_OUT_AT_A',  cx: 640,  vars: { x: -816,  y: 0, scale: 0.32, rotation: 0 } },
+  { name: 'WIDE_PAN_MID',   cx: 1840, vars: { x: -1200, y: 0, scale: 0.32, rotation: 0 } },
+  { name: 'ZOOM_OUT_AT_B',  cx: 3040, vars: { x: -1584, y: 0, scale: 0.32, rotation: 0 } },
+  { name: 'TO_B',           cx: 3040, vars: { x: -2400, y: 0, scale: 1.0,  rotation: 0 } },
+];
+
+gsap.set(camera, POSES[0].vars);
+
+// Build the timeline — same shape as the broken inter-snapshot demo, but
+// with duration/ease MERGED INTO the vars object. The 3-arg form
+// `tl.to(target, vars, position)` treats the third arg as a position
+// parameter (string like "+=2" or a number), NOT as additional vars.
+// Passing { duration, ease } as the 3rd arg silently drops them and each
+// tween defaults to 0.5s with power1.out — that's the root of the
+// "1.20 / X.XX halfway" bug Umair reported on the iframe demo.
+// 4-phase flight (POSES[2] WIDE_PAN_MID intentionally skipped — going through
+// canvas-mid as a keyframe creates a perceptible velocity dip / micro-hold
+// at the midpoint. Per Umair 2026-05-11: "phase 3a, dont want this, because
+// its slightly holding here at canvas mid". POSES[2] still in the array as
+// an inspectable jump-target.
+//
+// Eases pass 3 (per Umair 2026-05-11): velocity-matching at joints didn't
+// work because zoom-out's peak velocity (~1656 px/s) is much higher than
+// the pan's constant velocity (~548 px/s) — joint had a 3× speed drop that
+// read as a slowdown.
+//
+// New approach: use power2.inOut for all three phases. Each phase accelerates
+// from 0, peaks mid-phase, decelerates to 0. Joint velocities are 0 from
+// both sides (matched). The eye reads it as 3 symmetric pulse-paced beats
+// rather than asymmetric stutters. The pan also gets a slightly faster
+// duration (1.0s vs 1.4s) so its peak velocity (≈1100 px/s) is closer to
+// the zoom-out/in peaks (≈1656/1632), keeping perceived rhythm consistent.
+const tl = gsap.timeline({ paused: true });
+tl.to(camera, { x: POSES[0].vars.x + 12, duration: 0.15, ease: 'power2.in' });            // 1: anticipation
+tl.to(camera, { ...POSES[1].vars, duration: 1.0, ease: 'power2.inOut' });                  // 2: zoom out at A
+tl.to(camera, { ...POSES[3].vars, duration: 1.0, ease: 'power2.inOut' });                  // 3: pan A→B at wide
+tl.to(camera, { ...POSES[4].vars, duration: 1.0, ease: 'power2.inOut' });                  // 4: zoom in on B
+tl.to({}, { duration: 1.1 });                                                              // 5: hold (longer to keep total at 4.25s)
+
+const TOTAL = tl.duration();
+timeLabel.textContent = `0.00 / ${TOTAL.toFixed(2)}`;
+
+tl.eventCallback('onUpdate', () => {
+  const t = tl.time();
+  let phase = 'idle';
+  if (t < 0.15) phase = '1: anticipation';
+  else if (t < 1.15) phase = '2: ZOOM OUT (power2.inOut)';
+  else if (t < 2.15) phase = '3: PAN A → B (power2.inOut, no mid-stop)';
+  else if (t < 3.15) phase = '4: ZOOM IN on B (power2.inOut)';
+  else phase = '5: hold';
+  phaseLabel.textContent = `phase: ${phase}`;
+  scrubber.value = t / TOTAL;
+  timeLabel.textContent = `${t.toFixed(2)} / ${TOTAL.toFixed(2)}`;
+});
+
+let isPlaying = false;
+function play() { tl.play(); playBtn.textContent = '⏸ pause'; isPlaying = true; }
+function pause() { tl.pause(); playBtn.textContent = '▶ play'; isPlaying = false; }
+
+playBtn.addEventListener('click', () => {
+  if (isPlaying) pause(); else play();
+});
+restartBtn.addEventListener('click', () => {
+  pause(); tl.time(0); gsap.set(camera, POSES[0].vars);
+});
+scrubber.addEventListener('input', () => {
+  pause();
+  tl.time(parseFloat(scrubber.value) * TOTAL);
+});
+
+// Pose-jump buttons — instant set, no tween. Verifies each keyframe in isolation.
+document.querySelectorAll('button.pose').forEach(btn => {
+  btn.addEventListener('click', () => {
+    pause();
+    const i = parseInt(btn.dataset.pose, 10);
+    const p = POSES[i];
+    gsap.killTweensOf(camera);
+    gsap.set(camera, p.vars);
+    phaseLabel.textContent = `JUMPED → ${i+1}: ${p.name} · cx=${p.cx} · x=${p.vars.x}, scale=${p.vars.scale}`;
+    scrubber.value = 0;
+    timeLabel.textContent = `pose ${i+1} (no time)`;
+  });
+});
+
+// Autoplay after a short delay (no iframe wait — there are none).
+setTimeout(() => { play(); }, 200);
+</script>
+</body>
+</html>

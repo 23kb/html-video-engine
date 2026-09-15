@@ -21,6 +21,14 @@
       (clean SFX-only track to edit music against — Umair's recorded call)
     · morph-chain host with a stable id (declare the chain in the storyboard
       per docs/storyboard-format-morph-chain-2026-05-10.md)
+    · STAGE CAMERA (2026-09-03) — every editorial element sits inside #lens, a
+      transform-only wrapper driven by makeStageCamera (punch / macro / whip /
+      pullBack / drift / cut). The storyboard's "## Camera plan" is the list of
+      cam.* calls below, one landing every 2–4s; the literal `at:` numbers are
+      what tools/composition-scan.js reads in static mode. The first WPVibe ad
+      shipped with 5 framings in 44s because nothing like this existed for
+      editorial DOM (docs/ad-camera-gap-analysis-2026-09-03.md). Atmosphere,
+      grain, veils and end cards stay OUTSIDE #lens.
     · mark() helper for flow-boundary instrumentation — if the ad drives
       async real-UI flows (IframeManager choreography), CHAIN them
       (flowA().then(flowB)) instead of firing each from a fixed tl.call cue:
@@ -30,6 +38,8 @@
       MEASURED times (the marks also feed the SFX plan's cue times).
   Validate: node tools/validate-singlehtml.js <slug>
   Smoke:    node tools/smoke-singlehtml.js <slug> --seconds <TOTAL+10> --strict-glide
+  Camera:   node tools/composition-scan.js <slug>          (planned — before any browser)
+            node tools/composition-scan.js <slug> --play   (measured — before handoff)
 -->
 <style>
   :root {
@@ -63,6 +73,11 @@
     padding: 0.10em 0.08em 0.16em; margin: -0.10em -0.08em -0.16em; }
   .text-reveal-unit { display: inline-block; will-change: transform, opacity, filter; }
 
+  /* Stage camera — transform-origin 0 0 so a pose {zoom, tx, ty} maps stage point p to
+     p·zoom + (tx, ty). No will-change: Chromium re-rasters the layer at the landed scale
+     only when the transform is static, which is what keeps text crisp after a punch. */
+  #lens { position: absolute; inset: 0; z-index: 5; transform-origin: 0 0; }
+
   /* Morph-chain host — ONE element threads the story; id stays stable. */
   #chainHost { position: absolute; left: 50%; top: 44%; transform: translate(-50%, -50%);
     z-index: 30; font-family: var(--display-font); font-size: 150px; font-weight: 500;
@@ -81,9 +96,11 @@
 <div class="stage-wrap">
   <div class="atmo-base"></div>
   <div class="atmo atmo-warm" id="atmoWarm"></div>
-  <div class="stage" id="stage">
-    <div id="chainHost">Chain host</div>
-    <div class="ad-line" id="lineA">First masked line lands here.</div>
+  <div class="stage" id="stage" data-film-path="ad">
+    <div id="lens">
+      <div id="chainHost">Chain host</div>
+      <div class="ad-line" id="lineA">First masked line lands here.</div>
+    </div>
     <canvas id="grain" width="480" height="270"></canvas>
     <div id="blackout"></div>
   </div>
@@ -93,6 +110,7 @@
 <script src="/vendor/gsap/3.15.0/CustomEase.min.js"></script>
 <script type="module">
   import { reviewScene } from '/videos/_shared/scene-review.js';
+  import { logCameraPose } from '/videos/_shared/iframe-helpers.js';
 
   // Deterministic utils (bridge-2 shell)
   function pausableRaf(cb) {
@@ -117,6 +135,118 @@
   CustomEase.create('logo-arrival', 'M0,0 C0.16,0.20 0.20,0.98 1,1');
   CustomEase.create('recoil', 'M0,0 C0.20,0.95 0.30,1.00 1,1');
   CustomEase.create('resolve', 'M0,0 C0.42,0.00 0.58,1.00 1,1');
+  // Camera landing curves. cam-settle = fast start, soft landing (the drive half of
+  // anticipate); the punch/whip curves are the shorts-kit ones under stage names.
+  CustomEase.create('cam-settle', 'M0,0 C0.1,0.55 0.35,1 1,1');
+  CustomEase.create('cam-punch-land', 'M0,0 C0.2,0 0.28,1.02 0.52,1.03 C0.72,1.035 0.86,1 1,1');
+  CustomEase.create('cam-whip-land', 'M0,0 C0.1,0.6 0.3,1.01 0.55,1.015 C0.78,1.02 0.9,1 1,1');
+
+  // ── STAGE CAMERA (video-local pattern — promote to videos/_shared/ on second use) ──
+  // A transform-only camera for editorial DOM. A pose is {zoom, tx, ty} on #lens
+  // (transform-origin 0 0): stage point p lands at p·zoom + (tx, ty).
+  // Framing presets (move / punch / macro / whip / pullBack) say WHAT the frame becomes;
+  // the VOICE says how it gets there. The storyboard's "Ease voice:" line names the film
+  // default (the `voice` option below); any move can override with voice:. Anticipate is
+  // one voice, not the only one (Umair, 2026-09-04):
+  //   anticipate — pull AWAY from the target (6% of the travel, 1% zoom dip) on sine.in,
+  //                then drive on cam-settle. The AE "Anticipate" shape. Default.
+  //   glide      — one calm arc: translate power3.inOut + zoom power2.inOut. For films
+  //                whose UI stays put and the camera should be felt, not seen.
+  //   snap       — launch (30% of the travel, power2.in) then snap-stop on cam-whip-land.
+  //                Montage cuts, lateral re-frames, anything landing on an SFX hit.
+  //   punch      — crouch TOWARD the target, overshoot landing (cam-punch-land). The most
+  //                energetic voice; at a dense cadence it read as "dizzy". Sparingly.
+  // Every voice is a DECOMPOSED move (anti-pattern #2). Landings are pose-logged
+  // (window.__poses) for tools/composition-scan.js --play; the literal `at:` numbers feed
+  // its static mode. HOW OFTEN the camera lands is the storyboard's call — declared as
+  // `Cadence:` in its Camera plan, never a number this file supplies. Moves are scheduled
+  // in time order; one that starts before the previous lands is pushed to that landing.
+  function makeStageCamera(tl, lens, { minZoom = 1, maxZoom = 2.2, voice = 'anticipate' } = {}) {
+    const W = 1920, H = 1080;
+    const state = { zoom: 1, tx: 0, ty: 0, busyUntil: 0 };
+    const plan = (window.__cameraPlan = []);
+    const poseFor = (rect, { fill = 0.62, anchor = { x: 0.5, y: 0.5 }, zoom: zFix } = {}) => {
+      let zoom = zFix ?? Math.min(fill * W / rect.w, fill * H / rect.h);
+      zoom = Math.max(minZoom, Math.min(maxZoom, zoom));
+      const cx = rect.x + rect.w / 2, cy = rect.y + rect.h / 2;
+      return { zoom, tx: W * anchor.x - cx * zoom, ty: H * anchor.y - cy * zoom };
+    };
+    const begin = (verb, at) => {
+      if (at < state.busyUntil - 1e-6) {
+        console.warn(`[stageCamera] ${verb} at ${at}s starts before the previous move lands (${state.busyUntil.toFixed(2)}s) — pushed`);
+        at = state.busyUntil;
+      }
+      return at;
+    };
+    const land = (verb, label, pose, at, settled = true) => {
+      Object.assign(state, { zoom: pose.zoom, tx: pose.tx, ty: pose.ty, busyUntil: at });
+      plan.push({ t: +at.toFixed(3), verb, label, zoom: +pose.zoom.toFixed(3), settled });
+      tl.call(() => logCameraPose(verb, label, pose, settled), null, at); // lint-allow: seek-parity — telemetry only, no DOM
+    };
+    // drive — one landing in the chosen voice. Two phases (or two curves) per voice.
+    const drive = (verb, rect, o, fixedPose) => {
+      const { at: at0, duration = 0.7, label = 'subject', voice: v = voice } = o;
+      const at = begin(verb, at0);
+      const cur = { ...state }, pose = fixedPose || poseFor(rect, o);
+      const dx = pose.tx - cur.tx, dy = pose.ty - cur.ty;
+      if (v === 'glide') {
+        tl.to(lens, { x: pose.tx, y: pose.ty, duration, ease: 'power3.inOut' }, at);
+        tl.to(lens, { scale: pose.zoom, duration, ease: 'power2.inOut' }, at);
+      } else if (v === 'snap') {
+        tl.to(lens, { x: cur.tx + dx * 0.3, y: cur.ty + dy * 0.3, duration: duration * 0.32, ease: 'power2.in' }, at);
+        tl.to(lens, { scale: pose.zoom, x: pose.tx, y: pose.ty, duration: duration * 0.68, ease: 'cam-whip-land' }, at + duration * 0.32);
+      } else if (v === 'punch') {
+        const zoomingIn = pose.zoom >= cur.zoom - 0.01;
+        tl.to(lens, { scale: Math.max(minZoom, cur.zoom * 0.988), x: cur.tx + dx * 0.18, y: cur.ty + dy * 0.18,
+          duration: duration * 0.3, ease: 'power2.in' }, at);
+        tl.to(lens, { scale: pose.zoom, x: pose.tx, y: pose.ty, duration: duration * 0.7,
+          ease: zoomingIn ? 'cam-punch-land' : 'power3.out' }, at + duration * 0.3);
+      } else { // anticipate — away first, then drive, soft landing
+        tl.to(lens, { scale: Math.max(minZoom, cur.zoom * 0.99), x: cur.tx - dx * 0.06, y: cur.ty - dy * 0.06,
+          duration: duration * 0.2, ease: 'sine.in' }, at);
+        tl.to(lens, { scale: pose.zoom, x: pose.tx, y: pose.ty, duration: duration * 0.8, ease: 'cam-settle' }, at + duration * 0.2);
+      }
+      land(verb, label, pose, at + duration);
+      return pose;
+    };
+    const cam = {
+      poseFor,
+      // Framing presets — WHAT the frame becomes. `voice:` (or the film default) — HOW.
+      move(rect, o = {}) { return drive('move', rect, o); },                                   // any framing
+      punch(rect, o = {}) { return drive('punch', rect, { duration: 0.6, ...o }); },             // close on a subject
+      macro(rect, o = {}) { return drive('macro', rect, { duration: 0.6, fill: 0.55, ...o }); }, // tight: the "seen close" shot
+      whip(rect, o = {}) { return drive('whip', rect, { duration: 0.5, voice: 'snap', ...o, zoom: o.zoom ?? state.zoom }); }, // lateral, same zoom
+      pullBack(rect, o = {}) { return drive('pullBack', rect, { duration: 0.8, label: 'wide', ...o }, rect ? null : { zoom: minZoom, tx: 0, ty: 0 }); },
+      // drift — the consequence hold: one slow push across a hold, about the frame centre.
+      // Logged settled:false so the composition meter never counts it as a landing.
+      drift(o = {}) {
+        const { at: at0, duration = 1.2, zoomDelta = 0.06, dx = 0, dy = 0, label = 'drift' } = o;
+        const at = begin('drift', at0);
+        const zoom = Math.max(minZoom, Math.min(maxZoom, state.zoom + zoomDelta));
+        const cxs = (W / 2 - state.tx) / state.zoom, cys = (H / 2 - state.ty) / state.zoom;
+        const pose = { zoom, tx: W / 2 - cxs * zoom + dx, ty: H / 2 - cys * zoom + dy };
+        tl.to(lens, { scale: pose.zoom, x: pose.tx, y: pose.ty, duration, ease: 'power1.inOut' }, at);
+        land('drift', label, pose, at + duration, false);
+        return pose;
+      },
+      // cut — a composition change the camera does NOT make (a veil to a new card, a scene
+      // swap outside #lens). Pushed as a {t, scene} cut so the meter sees the new framing.
+      cut(scene, o = {}) {
+        const { at } = o;
+        plan.push({ t: +at.toFixed(3), verb: 'cut', label: scene, zoom: null, settled: true });
+        tl.call(() => { try { (window.__cuts || (window.__cuts = [])).push({ t: (performance.now() - window.__T0) / 1000, scene }); } catch (e) { /* telemetry */ } }, null, at); // lint-allow: seek-parity — telemetry only, no DOM
+      },
+      state: () => ({ ...state }),
+    };
+    return cam;
+  }
+  // Subject boxes in stage px — measure with #lens at identity and the subject at REST
+  // (before its park is applied, or with the park temporarily undone).
+  function stageRect(el) {
+    const r = el.getBoundingClientRect(), s = document.getElementById('stage').getBoundingClientRect();
+    const k = 1920 / s.width;
+    return { x: (r.left - s.left) * k, y: (r.top - s.top) * k, w: r.width * k, h: r.height * k };
+  }
 
   // Grain (seeded, ~8fps)
   (function startGrain() {
@@ -178,20 +308,43 @@
   const TOTAL = 12.0; // documentation only — end bookkeeping rides onComplete (FIX-3)
   const tl = gsap.timeline({ paused: true, defaults: { ease: 'power2.out' } });
 
+  // Stills contract. tools/storyboard-sheet.js hard-gates on window.__tl and
+  // reads __tl.labels for its beat marks, so a clone without these two lines
+  // cannot be look-approved on stills before the motion work — it just times
+  // out on the __tl gate (rf-video 1). Keep the assignment; replace the labels
+  // with one per beat of the real film.
+  window.__tl = tl;
+
+  // Camera — the film default voice is the storyboard's "Ease voice:" line. Measure
+  // subjects at rest BEFORE the parks below move them.
+  const cam = makeStageCamera(tl, $('lens'), { voice: 'anticipate' });
+  const R = { host: stageRect($('chainHost')), line: stageRect($('lineA')) };
+
   gsap.set('#chainHost', { scale: 1.3, autoAlpha: 0, filter: 'blur(10px)' });
   gsap.set(lineA, { x: -40, autoAlpha: 0, filter: 'blur(6px)' });
   gsap.set('#lineA', { autoAlpha: 1 });
 
   // SCENE hook (0–6) — chain host lands, line reveals
+  tl.addLabel('hook', 0);
   tl.to('#atmoWarm', { autoAlpha: 0.45, duration: 0.5, ease: 'power1.out' }, 0.05);
   tl.to('#chainHost', { scale: 1, autoAlpha: 1, filter: 'blur(0px)', duration: 0.7, ease: 'recoil' }, 0.4);
   tl.to(lineA, { x: 0, autoAlpha: 1, filter: 'blur(0px)', duration: 0.6, ease: 'power4.out' }, 1.25);
   // bounded breathe — infinite repeats are banned (compute finite counts)
   tl.to('#chainHost', { scale: 1.02, duration: 2.4, ease: 'sine.inOut', yoyo: true, repeat: 1 }, 2.1);
 
+  // ── CAMERA PLAN (mirror of storyboard.md "## Camera plan") — the storyboard declared
+  //    the cadence and the voice for THIS film; literal at: times; every move caused by
+  //    an event on screen. This 12s sample: Cadence ~1 landing / 3s, Ease voice anticipate. ──
+  cam.punch(R.host, { at: 1.2, duration: 0.7, fill: 0.7, label: 'chain-host' });      // the host has landed
+  cam.drift({ at: 2.4, duration: 2.6, zoomDelta: 0.04, label: 'reading' });            // carries the read hold
+  cam.pullBack(null, { at: 5.9, duration: 0.8, voice: 'glide', label: 'wide:cta' });   // release into the role morph
+  cam.punch(R.host, { at: 8.4, duration: 0.7, fill: 0.6, anchor: { x: 0.5, y: 0.56 }, label: 'host:morphed' });
+  cam.cut('blackout', { at: 10.8 });                                                   // the exit lives outside #lens
+
   // SCENE cta (6–12) — the HOST morphs role (same node), then real exit
+  tl.addLabel('cta', 6.0);
   tl.to('#chainHost', { y: 60, duration: 0.8, ease: 'resolve' }, 6.0);
-  tl.to('#stage > *:not(#blackout):not(#grain)', {
+  tl.to('#lens > *', {
     autoAlpha: 0, filter: 'blur(14px)', duration: 0.9, ease: 'power2.in',
   }, 10.4);
   tl.to('#blackout', { autoAlpha: 1, duration: 1.0, ease: 'power2.in' }, 10.8);
@@ -209,6 +362,19 @@
   const review = reviewScene();
   const SCENE_T = { hook: 0, cta: 6 };     // scene id → start T
   const SCENE_END = { hook: 6 };           // scene id → boundary to pause at
+  // SCENE_FLOWS convention (acceptance E-7, 2026-08-23) — REQUIRED the moment
+  // this film adds an async real-UI flow chain (filmFlows() driving
+  // IframeManager choreography on wall-clock time). tl.seek() below only moves
+  // the MASTER timeline; the flow chain still starts from zero, so a
+  // ?scene=<later> review opens on an empty canvas (shipped exactly that way).
+  // Mirror the tutorial skeleton's SCENE_PREP: one entry per scene that jumps
+  // the chain to that scene's ACCUMULATED state (load the right snapshot,
+  // replay prior flows' idempotent state writes), then start the chain there:
+  //   const SCENE_FLOWS = {
+  //     cta() { /* put the iframe/doc in the state flows have built by 6.0s */ },
+  //   };
+  //   if (review.scene && SCENE_FLOWS[review.scene]) SCENE_FLOWS[review.scene]();
+  // Keep SCENE_T, SCENE_END, and SCENE_FLOWS in sync — three views of one map.
   for (const [id, end] of Object.entries(SCENE_END)) {
     tl.call(() => { if (review.is(id)) { tl.pause(); playing = false; } }, null, end);
   }

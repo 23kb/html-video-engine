@@ -24,17 +24,27 @@ const fs = require('fs');
 const url = require('url');
 const { chromium } = require('playwright');
 const { ensureServer } = require('./generate-snapshot-outline.js');
+const { resolveResolution } = require('./stage-size');
+const { collectTextBoxesSource, judgeText } = require('./lib/text-overlap.js');
 
 // ── arg parse ──────────────────────────────────────────────────────────────
 const argv = process.argv.slice(2);
 const slug = argv.find((a) => !a.startsWith('--'));
 const portIdx = argv.indexOf('--port');
 const PORT = portIdx !== -1 ? Number(argv[portIdx + 1]) : Number(process.env.PORT) || 4321;
+const resIdx = argv.indexOf('--resolution');
 
 if (!slug) {
-  console.error('usage: node tools/probe-singlehtml.js <slug> [--port 4321]');
+  console.error('usage: node tools/probe-singlehtml.js <slug> [--port 4321] [--resolution WxH]');
   process.exit(2);
 }
+
+// Viewport follows the page's .stage box unless overridden — geometry checks on
+// a portrait short are meaningless in a landscape viewport.
+const RES = resolveResolution({
+  resolutionArg: resIdx !== -1 ? argv[resIdx + 1] : null,
+  htmlPath: path.join(__dirname, '..', 'videos', slug, 'index.html'),
+});
 
 const PROBE_PATH = path.join(__dirname, '..', 'videos', slug, 'qc-probe.mjs');
 const TARGET_URL = `http://localhost:${PORT}/videos/${slug}/index.html`;
@@ -98,7 +108,7 @@ async function main() {
     headless: true,
     args: ['--autoplay-policy=no-user-gesture-required'],
   });
-  const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+  const page = await browser.newPage({ viewport: { width: RES.width, height: RES.height } });
   const errors = [];
   page.on('pageerror', (e) => errors.push(String(e).split('\n')[0]));
 
@@ -113,6 +123,9 @@ async function main() {
   } else {
     await page.evaluate('window.__probeResolve = window.__qcDefault; void 0;');
   }
+  // C6 (AP-13): shared text-overlap collector — sampled at every checked t.
+  await page.evaluate(collectTextBoxesSource);
+  const textFindings = [];
 
   let failures = 0;
   for (const [t, asserts] of checks) {
@@ -133,6 +146,19 @@ async function main() {
       }
     });
     console.log('t=' + t + 's checked (' + asserts.length + ')');
+
+    // C6 (AP-13): text-overlap / duplicate-text sweep — WARN semantics only
+    // (reported + ledgered; nothing fails a film on text findings yet).
+    try {
+      const boxes = await page.evaluate(() => window.__wpfCollectTextBoxes(null));
+      const j = judgeText(boxes, { w: RES.width, h: RES.height });
+      if (j.offFrame.length || j.overlaps.length || j.duplicates.length) {
+        textFindings.push({ t, offFrame: j.offFrame, overlaps: j.overlaps, duplicates: j.duplicates });
+        for (const o of j.overlaps.slice(0, 3)) console.log('  ! text t=' + t + ': ' + o.a + ' overlaps ' + o.b + ' (' + o.ox + 'x' + o.oy + 'px)');
+        for (const d of j.duplicates.slice(0, 2)) console.log('  ! text t=' + t + ': duplicate copy "' + d.text + '" in ' + d.ids.join(' + '));
+        for (const f of j.offFrame.slice(0, 2)) console.log('  ! text t=' + t + ': ' + f.id + ' off-frame (' + f.x + ',' + f.y + ' ' + f.w + 'x' + f.h + ')');
+      }
+    } catch (_) { /* text sweep is a nicety — never fails the probe */ }
   }
 
   // optional tick-grid audit: every tween of `tweenDuration` on a target with
@@ -153,6 +179,18 @@ async function main() {
     }, { tweenDuration, t0, period, targetKey, g: tlGlobal });
     if (grid.length) { console.log('  x off-grid ticks at ' + grid.join(', ')); failures += grid.length; }
     else console.log(`tick grid: all ${Math.round(tweenDuration * 1000)}ms rolls on the ${Math.round(period * 1000)}ms lattice`);
+  }
+
+  if (checks.length) {
+    const totals = textFindings.reduce(
+      (a, f) => ({ off: a.off + f.offFrame.length, ov: a.ov + f.overlaps.length, dup: a.dup + f.duplicates.length }),
+      { off: 0, ov: 0, dup: 0 });
+    console.log(`text sweep: ${checks.length} sample(s) — ${totals.ov} overlap(s), ${totals.dup} duplicate(s), ${totals.off} off-frame (WARN-only)`);
+    require('./lib/qc-report').writeSection(slug, 'textOverlap', {
+      pass: !(totals.ov || totals.dup || totals.off), source: 'probe-singlehtml',
+      samples: checks.length, overlaps: totals.ov, duplicates: totals.dup, offFrame: totals.off,
+      findings: textFindings.slice(0, 20),
+    });
   }
 
   if (errors.length) { console.log('page errors: ' + errors.join(' | ')); failures += errors.length; }

@@ -15,7 +15,7 @@ cp .env.example .env       # only needed for new captures
 node serve.js              # http://localhost:4321
 ```
 
-Open a video at `http://localhost:4321/scenes/player.html?video=<slug>`.
+Open a video at `http://localhost:4321/videos/<slug>/index.html`.
 
 ---
 
@@ -31,12 +31,12 @@ The system is intentionally human-in-the-loop. The flow is:
 4. **STOP. Operator approves.** No chapter code before explicit sign-off.
 5. **Capture missing snapshots.** `capture/capture.js` against your local
    WPForms install (uses `.env` creds).
-6. **Build chapters.** Default mode is **legacy/effect**
-   (`docs/examples/legacy-chapter-skeleton.md`). Descriptor mode is
-   secondary and used only for simple beats.
+6. **Build the film.** Single-HTML: first write = clone
+   `docs/examples/single-html-tutorial-skeleton.html` (INV-16), commit the
+   unmodified clone, then customize.
 7. **Render narration.** `node tts/generate.js --video <slug>`.
-8. **Validate.** `node tools/validate-video.js <slug>` and
-   `node tools/check-video-playback.js <slug>`.
+8. **Validate.** `node tools/validate-singlehtml.js <slug>` and
+   `node tools/smoke-singlehtml.js <slug>`.
 9. **Hand off the playable URL.** Operator owns visual QC.
 10. **Revise.** Scoped fixes only.
 
@@ -79,14 +79,13 @@ card. See `docs/postintro-patterns.md`.
 
 Do not edit during normal video work:
 
-- `engine/*`
-- `runtime/player.js`, `chapter-runner.js`, `scene-helpers.js`,
-  `transitions.js`
-- `scenes/player.html`, `scenes/shared.js`
+- `videos/_shared/*` libraries
+- `snapshots/**` captures and their `_shared` assets
+- validators/smoke/lint tool behavior (`validate-singlehtml.js`, `smoke-singlehtml.js`, `lint-determinism.js`)
+- `capture/capture.js` pipeline
 - Existing accepted video packages (scoped fixes are fine on request)
 - Existing snapshots (capture new; do not edit captured DOM)
 
-New files under `runtime/`, including unwired helper sketches, are
 approval-gated. If a beat seems to need core, propose a video-local
 helper first.
 
@@ -98,8 +97,8 @@ helper first.
   `fix/<short-description>`.
 - Run validation before opening a PR:
   ```bash
-  node tools/validate-video.js <slug>
-  node tools/check-video-playback.js <slug>
+  node tools/validate-singlehtml.js <slug>
+  node tools/smoke-singlehtml.js <slug>
   ```
 - Include the playable review URL in the PR description.
 - Don't commit `.env`, `node_modules/`, `probe-out/`, `snapshot-backups/`,
@@ -111,15 +110,14 @@ helper first.
 
 | Need | Read |
 |---|---|
-| Workflow overview | `docs/current-workflow.md` |
-| Authoring contract (helpers, ctx, validators) | `docs/authoring-api.md` |
-| Chapter shape | `docs/examples/legacy-chapter-skeleton.md` |
+| Workflow overview + path selection | `CLAUDE.md` (pick-your-path table) + `docs/INDEX.md` |
+| Authoring contract (helpers, DUR, SCENE_PREP, instrumentation) | `docs/examples/single-html-tutorial-skeleton.html` |
+| Ad / editorial contract | `docs/examples/single-html-ad-skeleton.html` |
+| 9:16 shorts contract | `reference/html-templates/vertical-short-skeleton.html` + `docs/vertical-shorts.md` |
 | PostIntro design | `docs/postintro-patterns.md` |
-| Audio-cued timing | `docs/examples/legacy-audio-cued-skeleton.md` |
 | Choice-field flow (Dropdown / Multi / Checkboxes) | `docs/examples/choice-field-generate-choices-skeleton.md` |
 | Field-state inventory (large; query, don't full-read) | `docs/wpforms-field-state-inventory.md` via `node tools/field-state.js` |
 | Storyboard / chapter / smoke checklists | `docs/video-production-templates.md` |
-| Locked chapter interface | `docs/chapter-module-contract.md` |
 
 ---
 
@@ -131,8 +129,8 @@ node tools/list-snapshots.js [--for <slug>]       # snapshot inventory
 node tools/field-state.js --field <name>          # query field-state inventory
 node tools/inspect-snapshot.js <slug> --emit-selectors
 node tools/verify-selectors.js <slug> [sel...]
-node tools/validate-video.js <slug>               # static validator
-node tools/check-video-playback.js <slug>         # non-visual smoke (exit 0 = clean)
+node tools/validate-singlehtml.js <slug>               # static validator
+node tools/smoke-singlehtml.js <slug>         # non-visual smoke (exit 0 = clean)
 node tts/generate.js --video <slug>               # render narration
 node serve.js                                     # local server on :4321
 ```
@@ -143,5 +141,4 @@ node serve.js                                     # local server on :4321
 
 If a session feels off (agent skipping the storyboard gate, fabricating
 UI, weakening postIntro, editing protected core), stop and re-ground in
-`docs/current-workflow.md`. The operator manual (`CLAUDE.md`)
-explicitly forbids all four.
+the operator manual (`CLAUDE.md`) — it explicitly forbids all four.

@@ -1,66 +1,57 @@
-# Render Tool
+# Render — MP4 export for single-HTML films
 
-`tools/render.js` exports a playable HTML video to MP4 from the in-repo player.
+Three tools. The engine-era `tools/render.js` (wall-clock + `--seek`, silent output, `--chapter`) was retired 2026-08-22 with the runtime; every film is single-HTML now. Flags below were checked against each tool's own source on 2026-08-28.
+
+**Vocabulary (rulebook §1):** *snapshot capture* (`capture/capture.js`) freezes a live page and runs FIRST; *MP4 render* (this doc) turns a finished HTML film into video and runs LAST. Never let the bare word "capture" stand alone. Render only after Umair's sign-off or an explicit ask (rulebook §9).
+
+## `tools/render-singlehtml-audio.js` — the ship path (narration + ducked BGM)
 
 ```bash
-node tools/render.js <slug>
-node tools/render.js <slug> --chapter <id>
-node tools/render.js <slug> --fps 30
-node tools/render.js <slug> --resolution 1920x1080
-node tools/render.js <slug> --out videos/<slug>/render/custom.mp4
-node tools/render.js <slug> --seek
+node tools/render-singlehtml-audio.js <slug>
+node tools/render-singlehtml-audio.js <slug> --bgm bgms/2.mp3 --bgm-volume 0.12   # long-form band
+node tools/render-singlehtml-audio.js <slug> --bgm none                            # narration only
+node tools/render-singlehtml-audio.js <slug> --out /tmp/test.mp4 --max-seconds 200
+node tools/render-singlehtml-audio.js <slug> --resolution 3840x2160
+node tools/render-singlehtml-audio.js <slug> --query skip=postintro                # deliverable variant
+node tools/render-singlehtml-audio.js <slug> --print-mix
 ```
 
-## Default Mode
+What it does: serves the repo, opens `videos/<slug>/index.html` in headless Chromium with native video recording, waits for the film's instrumentation (`window.__T0`, `__sched`, `__done`, `__dur` — the contract the skeletons bake in and `validate-singlehtml` checks), then muxes with ffmpeg: each narration clip (`videos/<slug>/narration/<key>.mp3`) delayed to its `__sched` cue, the BGM trimmed + lowered + side-chain-ducked under the voice, the whole mix limited against clipping. Missing clips are skipped with a warning.
 
-Default rendering is wall-clock visual capture. The tool starts `serve.js` when needed, opens Chromium through Playwright, clicks the start gate, waits for `sceneBooted`, captures frames at the requested FPS, and stops at `sceneDone` or `--timeout`.
+Flags: `--bgm <path>|none` (default: `bgms/1.mp3` if present), `--bgm-volume` (default `0.17` — the ruled shorts / ad band; long-form passes `0.12` explicitly; measure every mix, never ship the tool default unmeasured — the derivation and the post-render RMS check live in the tool's header comment), `--out <path>`, `--max-seconds <n>` (wall-clock cap, default 200), `--resolution WxH`, `--query <str>` (extra URL query for deliverable variants — `?scene=` stays review-only and must not be used here), `--print-mix`. Exit: `0` ok · `1` failure · `2` not instrumented · `3` usage.
 
-The current implementation writes a silent H.264 MP4. Browser audio capture and narration/BGM muxing are intentionally documented as the next step because cross-platform system audio capture is fragile. The visual render path is useful immediately for review clips and editorial smoke output.
+Resolution defaults to the film's own `.stage` box (`tools/stage-size.js`): a 9:16 short renders 1080×1920 with no flag; `--resolution` overrides. See `docs/vertical-shorts.md`.
 
-Default output:
+**Muxer whole-second pad — audio truth (ruled 2026-08-28, AP-18):** the audio track is laid on `ceil(__dur + 0.25)` seconds, so the MP4 can outlast the film's last frame by up to ~1.25s. A "frozen tail" flagged inside that pad — by `dead-time.js`, or by a video ≥ audio check — IS the pad, not a defect. The real check is **"no frozen tail under LIVE audio"**, satisfied by an outro that keeps moving through the pad (rulebook §8; receipts senw 6, fan). Only narration cues in `__sched` reach the MP4: in-page `SFX_CUES` / `sfxCue()` previews and a `BGM_PREVIEW` bed never do — the ship path for sound design is `sfx/plan.json` + `tools/sfx/mux.mjs` (`tools/sfx/CONTEXT.md`).
 
-```text
-videos/<slug>/render/<slug>.mp4
+**Frame-stepped render — `tools/render-frames.js` (2026-09-04):** for a film whose motion rides ONE master timeline (no wall-clock cursor glides, no RAF motion), `node tools/render-frames.js <slug>` seeks `__tl` per frame and pipes lossless PNG screenshots to libx264 (crf 15). Pixel-exact text, no lost head frames, and the frame clock IS the timeline clock, so `sfx/plan.json` cue times need no offset. The film must honour `?render=frames` (build, expose `__tl`, do not autoplay, set `window.__renderReady`). ~2 fps wall (about 7 min for 25 s). Video-only — lay sound with `tools/sfx/mux.mjs`. First used on `wpforms-claude-job-application-ad` after the screencast render came back "not HD".
+
+**Load-in trim + screencast latency (measured 2026-09-04):** the renderer cuts the webm at `(__T0 − recStart) − 0.17s`. The 0.17s is the Playwright screencast's start latency — its first frame lands that long after `newPage()` — measured three times (HD and SD) with the burned-in clock page `videos/_qc-sync-marker/` (re-measure: render that slug with `--bgm none` and read the number at video t=0; ±0.05s run variance is normal). Before this, every film lost its first ~0.2–0.45s and every SFX/narration cue landed that much late. A heavy film can still lose frames right after `play()` (the Claude job-application ad measured a further 0.12s under HD load): settle the compositor before setting `__T0` (two rAFs + ~250ms after the async build), and when placing SFX, measure the residual on THAT render with a scene-change probe on a known hard cut and shift the plan's clip times by it (the plan keeps `t0` = film time, `t` = video time).
+
+After a render: re-run the QC gates (`dead-time.js`, `seam-gate.js`, `narration-qc.js`, one at a time — headless lock) — a re-render invalidates every dashboard chip.
+
+## `tools/render-html.js` — silent visual render
+
+```bash
+node tools/render-html.js <slug> --duration <seconds> [--fps 30] [--out path] [--resolution WxH] [--headed]
+node tools/render-html.js --path videos/<slug>/scenes/<file>.html --duration <seconds> [--out path]
 ```
 
-Chapter output:
+Records the page wall-clock for `--duration` seconds and transcodes the webm to MP4 at the requested fps. It trims its own boot lead-in — never correct for it (rulebook §9). No audio: use it for editorial review clips and one-off scene renders; ship through the audio renderer above. Default `--resolution` 1920x1080; default output `videos/<slug>/render/<slug>.mp4`.
 
-```text
-videos/<slug>/render/<slug>-<chapter>.mp4
+## `tools/stitch.js` — Kacie bookends around the HTML body
+
+```bash
+node tools/stitch.js videos/<slug>.video.json                  # render each piece, then concat (0.3s xfade)
+node tools/stitch.js videos/<slug>.video.json --no-render      # concat existing MP4s only
+node tools/stitch.js videos/<slug>.video.json --dry-run        # print the plan, do nothing
+node tools/stitch.js videos/<slug>.video.json --xfade <s> | --no-xfade | --fps <n> | --resolution WxH
 ```
 
-## Seek Mode
-
-`--seek` is for editorial-mode videos that register paused timelines through `registerTimeline(tl, { id })`. It seeks each registered adapter at FPS cadence and captures a frame after each seek.
-
-Tutorial-mode rendering is wall-clock screencast only. Seek-render is reserved for editorial-mode videos because snapshot swaps, typed text, narration waits, and imperative chapter effects are still chapter-boundary surfaces rather than arbitrary timeline positions. The tool refuses real tutorials with:
-
-```text
-seek mode is only valid for surface: 'editorial' videos or single-chapter editorial beats.
-```
-
-Known scope:
-
-- `surface: 'editorial'` with registered timelines is the intended seek target.
-- `surface: 'iframe'` tutorials should use default wall-clock mode.
-- Typed text, audio-cued `waitAt`, narration, and snapshot swaps are not deterministic mid-chapter seek surfaces.
-- Camera movement is pause-aware through the camera driver, but tutorial render seek still stays restricted to editorial registered timelines.
-
-Seek output defaults to:
-
-```text
-videos/<slug>/render/<slug>-seek.mp4
-```
+Delivery shape since 2026-07-23: **real-Kacie intro → HTML body → real-Kacie outro**, concatenated per the `.video.json` manifest (`pieces[]` of `{ kind, path, output?, renderer?, duration? }` + `output`; the manifest can override `xfade` / `fps` / `resolution`). `kind: "html"` pieces render through `tools/render-html.js` by default (`renderer` overrides — point it at `tools/render-singlehtml-audio.js` for the body); a finished MP4 (Kacie's trimmed, loudness-normalized recording) is a piece with an explicit `output` path run under `--no-render`. Recording spec: `docs/kacie-intro-outro-recording-spec.md`; flow: `dev-advocacy-video` step 5b. Tutorials author NO intro/outro cards — the HTML body opens on the postIntro.
 
 ## Requirements
 
-- Playwright Chromium, already used by the smoke tool.
-- `ffmpeg` and `ffprobe` available on `PATH`.
-
-## Examples
-
-```bash
-node tools/render.js _phase-c-editorial-pilot --fps 30 --timeout 60
-node tools/render.js _phase-c-editorial-pilot --seek --fps 30
-node tools/render.js a-complete-guide-to-the-checkboxes-field --seek
-```
+- Playwright Chromium (already used by the smoke tool); `ffmpeg` + `ffprobe` on `PATH`.
+- Stop `tools/preview.js` first and never edit repo files mid-render (rulebook §9). Renders run SOLO — a render + a probe at once produce invalid dead-time evidence.
+- Then the QC surface: `http://localhost:4321/tools/qc-dashboard/#<slug>` (`docs/qc-dashboard.md`).

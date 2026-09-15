@@ -1,5 +1,6 @@
 # Color Palette
 
+> **HISTORICAL API NOTE (2026-08-28):** code examples below predate the 2026-08-22 engine retirement. The craft rules stand; the `engine/`/`runtime/`/manifest APIs they mention are gone — implement in single-HTML per CLAUDE.md.
 WPForms brand colors, supporting accents, when to use which, and what NOT to do.
 
 ## Primary palette
@@ -87,7 +88,7 @@ For tutorial videos, the brand palette above is enough. No per-video DESIGN.md n
 ## See also
 
 - `wpforms-marketing` skill — editorial composition patterns.
-- `runtime/overlays-config.js` — single source of truth for highlight/label/ripple colors.
+- `reference/wpforms-brand/tokens.css` — single source of truth for brand colors (`runtime/overlays-config.js` retired 2026-08-22; ripple/highlight colors are per-call options on `Cursor.click` / `IframeManager.highlightElement`).
 - `hyperframes/hyperframes-rest-2/DESIGN.md` — full REST API design system.
 - `hyperframes/wpforms-ai-scene-10/DESIGN.md` — WPForms AI scene-10 design system.
 - `analysis-quality-and-transitions.md` §1.6 — REST API video lesson on over-cooked curl colors.

@@ -2,6 +2,25 @@
 // Used by generate.mjs (near-silent detection) and normalize.mjs (gain math).
 import { spawnSync } from 'child_process';
 
+// Peak of an arbitrary window, in dBFS. Lets a caller ask "is this louder at
+// the start than after it" — i.e. does the sound have an attack at all.
+export function probeSegmentPeak(file, start, length) {
+  const r = spawnSync('ffmpeg', [
+    '-hide_banner', '-ss', String(start), '-t', String(length),
+    '-i', file, '-af', 'astats', '-f', 'null', '-',
+  ], { encoding: 'utf8' });
+  const out = (r.stderr || '') + (r.stdout || '');
+  const m = [...out.matchAll(/Peak level dB:\s*(-?[\d.]+|-inf)/g)].pop();
+  if (!m) return null;
+  return m[1] === '-inf' ? -Infinity : parseFloat(m[1]);
+}
+
+// Duration in seconds via ffprobe (0 when unreadable).
+export function probeDuration(file) {
+  const r = spawnSync('ffprobe', ['-v', 'error', '-show_entries', 'format=duration', '-of', 'csv=p=0', file], { encoding: 'utf8' });
+  return parseFloat((r.stdout || '0').trim()) || 0;
+}
+
 // Returns { peakDb, rmsDb } (numbers, dBFS) or throws if ffmpeg fails.
 // astats prints per-channel then "Overall" — last occurrence wins.
 export function probeAstats(file) {

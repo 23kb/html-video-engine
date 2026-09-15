@@ -21,6 +21,11 @@
 //                                                             observed for --seconds, errors only)
 //   node tools/smoke-singlehtml.js <slug> --no-strict-glide  (glide-warns downgrade to ⚠;
 //                                                             they FAIL by default — issue-14)
+//   node tools/smoke-singlehtml.js <slug> --text-probe        (OPT-IN, AP-13: sample visible text
+//                                                             1.2s after each __sched cue; WARN-only
+//                                                             overlap/duplicate/off-frame findings →
+//                                                             qc-report textOverlap. Default OFF —
+//                                                             behaviour unchanged without the flag)
 //   node tools/smoke-singlehtml.js --path tools/__tests__/fixtures/mini-video/index.html?hang=1 --seconds 5
 //
 // Also reports beat motion overruns (P0-4): the shared beat() records
@@ -34,6 +39,7 @@ const path = require('path');
 const fs = require('fs');
 const { chromium } = require('playwright');
 const { ensureServer } = require('./generate-snapshot-outline.js');
+const { resolveResolution } = require('./stage-size');
 
 const ROOT = path.resolve(__dirname, '..');
 const PORT = Number(process.env.PORT) || 4321;
@@ -43,11 +49,14 @@ function parseArgs(argv) {
   // strictGlide defaults ON (issue-14, QC r4): r3 shipped with a sign-in
   // click silently no-opping while smoke passed green. --no-strict-glide
   // opts out; --strict-glide kept as an accepted no-op.
-  const out = { slug: null, scene: null, seconds: 200, path: null, strictGlide: true };
+  const out = { slug: null, scene: null, seconds: 200, path: null, strictGlide: true, resolution: null, report: false, textProbe: false };
   for (let i = 0; i < a.length; i++) {
-    if (a[i] === '--scene') out.scene = a[++i];
+    if (a[i] === '--resolution') out.resolution = a[++i];
+    else if (a[i] === '--scene') out.scene = a[++i];
     else if (a[i] === '--seconds') out.seconds = Number(a[++i]);
     else if (a[i] === '--path') out.path = a[++i];
+    else if (a[i] === '--report') out.report = true;
+    else if (a[i] === '--text-probe') out.textProbe = true;
     else if (a[i] === '--strict-glide') out.strictGlide = true;
     else if (a[i] === '--no-strict-glide') out.strictGlide = false;
     else if (!a[i].startsWith('--') && !out.slug) out.slug = a[i];
@@ -62,8 +71,10 @@ const GLIDE_WARN_RE = /^\[(glideClick|glideToText|flyToElement)\]/;
 
 async function main() {
   const args = parseArgs(process.argv);
+  // Timing-sensitive: runs alone (rf-video 25). --force overrides.
+  require('./headless-lock').acquire('smoke-singlehtml', { force: process.argv.includes('--force') });
   if (!args.slug && !args.path) {
-    console.error('Usage: node tools/smoke-singlehtml.js <slug> [--scene X] [--seconds N] | --path <repo-rel html path>');
+    console.error('Usage: node tools/smoke-singlehtml.js <slug> [--scene X] [--seconds N] [--resolution WxH] | --path <repo-rel html path>');
     process.exit(3);
   }
 
@@ -83,6 +94,11 @@ async function main() {
     urlPath = `/videos/${args.slug}/index.html${args.scene ? `?scene=${args.scene}` : ''}`;
   }
   const url = `http://localhost:${PORT}${urlPath}`;
+  // Viewport follows the page's .stage box (portrait shorts smoke portrait).
+  const res = resolveResolution({
+    resolutionArg: args.resolution,
+    htmlPath: path.join(ROOT, urlPath.split(/[?#]/)[0].replace(/^\//, '')),
+  });
 
   const server = await ensureServer(PORT);
   const browser = await chromium.launch({
@@ -95,7 +111,7 @@ async function main() {
   const pass = (msg) => { console.log('  ✓ ' + msg); };
 
   try {
-    const page = await browser.newPage({ viewport: { width: 1920, height: 1080 } });
+    const page = await browser.newPage({ viewport: { width: res.width, height: res.height } });
     const errors = [];
     const glideWarns = [];
     page.on('pageerror', (e) => errors.push(`pageerror: ${String(e).split('\n')[0]}`));
@@ -125,17 +141,77 @@ async function main() {
     try { await page.waitForFunction(() => window.__T0 != null, null, { timeout: 20000, polling: 100 }); }
     catch (_) { instrumented = false; }
     if (!instrumented) {
-      console.log('  ✗ window.__T0 never set — not instrumented (see render-singlehtml-audio.js contract)');
+      console.log('  x window.__T0 never set - not instrumented (see render-singlehtml-audio.js contract)');
+      // Acceptance T-3: a silent no-boot cost a full debug cycle - the page
+      // error that CAUSED the dead module was invisible from this exit path.
+      if (errors.length) {
+        console.log('  errors collected before the bail:');
+        errors.slice(0, 10).forEach((e) => console.log('    - ' + e));
+      } else {
+        console.log('  (no page/console errors captured - extract the <script type=module> and node --check it)');
+      }
       process.exitCode = 2;
       return;
     }
     pass('__T0 set without user gesture');
 
+    // ── OPT-IN text probe (AP-13, 2026-09-02). Inert without --text-probe. ──
+    const textFindings = [];
+    let textSamples = 0;
+    let textTimer = null;
+    if (args.textProbe) {
+      const { collectTextBoxesSource, judgeText } = require('./lib/text-overlap.js');
+      try { await page.evaluate(collectTextBoxesSource); } catch (_) {}
+      let lastSched = 0;
+      let dueAt = 0;
+      textTimer = setInterval(async () => {
+        try {
+          const n = await page.evaluate(() => (window.__sched || []).length);
+          const now = Date.now();
+          if (n > lastSched) { lastSched = n; dueAt = now + 1200; }
+          if (dueAt && now >= dueAt) {
+            dueAt = 0;
+            const boxes = await page.evaluate(() => window.__wpfCollectTextBoxes(null));
+            textSamples++;
+            const j = judgeText(boxes, { w: res.width, h: res.height });
+            if (j.offFrame.length || j.overlaps.length || j.duplicates.length) textFindings.push(j);
+          }
+        } catch (_) { /* sampling is a nicety — navigation/close races are fine */ }
+      }, 400);
+    }
+
     const budgetMs = args.seconds * 1000 * 1.2;
     let done = true;
     const t0 = Date.now();
+
+    // Mid-run reload detector (rf-weight 21). preview.js appends a live-reload
+    // client to everything it serves, and smoke reuses that server — so any
+    // file written under the watched root WHILE smoke runs reloads the page,
+    // resets __T0, restarts the timeline, and __done never fires. That failed
+    // three runs across three budgets on a 46.4s film, and got mis-diagnosed
+    // as a preload cost (measured preload: 0.6s) with the wrong advice shipped
+    // to the user. The tell was in the data the whole time: the page's own
+    // performance.now() - __T0 DECREASING between samples, which nothing but a
+    // reload can do. Cheap to watch, so watch it.
+    let reloaded = false;
+    let lastAge = -Infinity;
+    const ageTimer = setInterval(async () => {
+      try {
+        const age = await page.evaluate(() => (window.__T0 == null ? null : performance.now() - window.__T0));
+        if (age == null) return;
+        if (age < lastAge - 250) reloaded = true;
+        lastAge = age;
+      } catch (_) { /* navigation in flight — the next sample tells us */ }
+    }, 1000);
+
     try { await page.waitForFunction(() => window.__done === true, null, { timeout: budgetMs, polling: 250 }); }
     catch (_) { done = false; }
+    clearInterval(ageTimer);
+    if (textTimer) clearInterval(textTimer);
+
+    if (reloaded) {
+      fail('the page RELOADED mid-run (its own performance.now() - __T0 decreased) — preview.js live-reload fired. Nothing measured after that point means anything. Stop writing files under the repo root while smoke runs, then re-run');
+    }
     const state = await page.evaluate(() => ({
       sched: window.__sched || [], dur: window.__dur, done: window.__done === true,
       beatStats: window.__beatStats || null,
@@ -146,12 +222,17 @@ async function main() {
     } else if (done) {
       pass(`__done in ${((Date.now() - t0) / 1000).toFixed(0)}s (__dur ${state.dur ? state.dur.toFixed(1) : '?'}s)`);
     } else {
-      fail(`__done not reached within ${(budgetMs / 1000).toFixed(0)}s`);
+      fail(`__done not reached within ${(budgetMs / 1000).toFixed(0)}s${reloaded ? ' — but the page reloaded mid-run, so this number is not evidence of anything. Fix the quiet-tree problem first, do NOT raise --seconds' : ''}`);
     }
 
     if (state.sched.length) {
       const ordered = state.sched.every((s, i) => i === 0 || s.t >= state.sched[i - 1].t);
-      if (ordered) pass(`__sched: ${state.sched.length} cue(s), times non-decreasing`);
+      if (ordered) {
+        pass(`__sched: ${state.sched.length} cue(s), times non-decreasing`);
+        if (process.argv.includes('--dump-sched')) {
+          state.sched.forEach((s) => console.log('    ' + String(s.t).padStart(7) + 's  ' + (s.key || '(unnamed)')));
+        }
+      }
       else fail(`__sched cue times out of order: ${JSON.stringify(state.sched.map(s => s.t))}`);
     } else if (!args.scene) {
       fail('__sched empty — no narration cues fired');
@@ -175,6 +256,28 @@ async function main() {
       pass('no glide-warns (glideClick/glideToText/flyToElement all resolved)');
     }
 
+    // OPT-IN text-probe verdicts (WARN-only — never a failure).
+    if (args.textProbe) {
+      const totals = textFindings.reduce(
+        (a, f) => ({ off: a.off + f.offFrame.length, ov: a.ov + f.overlaps.length, dup: a.dup + f.duplicates.length }),
+        { off: 0, ov: 0, dup: 0 });
+      if (totals.ov || totals.dup || totals.off) {
+        console.log(`  ⚠ text-probe: ${totals.ov} overlap(s), ${totals.dup} duplicate(s), ${totals.off} off-frame across ${textSamples} sample(s) (WARN-only)`);
+        for (const f of textFindings.slice(0, 3)) {
+          for (const o of f.overlaps.slice(0, 2)) console.log(`      ${o.a} ∩ ${o.b} (${o.ox}x${o.oy}px)`);
+          for (const d of f.duplicates.slice(0, 1)) console.log(`      duplicate "${d.text}" in ${d.ids.join(' + ')}`);
+        }
+      } else {
+        pass(`text-probe: no overlaps / duplicates / off-frame across ${textSamples} sample(s)`);
+      }
+      if (args.slug) {
+        require('./lib/qc-report').writeSection(args.slug, 'textOverlap', {
+          pass: !(totals.ov || totals.dup || totals.off), source: 'smoke --text-probe',
+          samples: textSamples, overlaps: totals.ov, duplicates: totals.dup, offFrame: totals.off,
+        });
+      }
+    }
+
     // P0-4 — beat motion overruns: a motionFn outliving its narration clip is
     // the "trailing camReset fires during the NEXT beat's scroll" class.
     const OVERRUN_TOLERANCE = 0.5;
@@ -195,6 +298,12 @@ async function main() {
 
   if (failures) process.exitCode = 1;
   console.log(failures ? `✗ FAIL (${failures})` : '✓ PASS');
+  // Opt-in qc-report.json emit (QC dashboard). Default behavior unchanged.
+  if (args.report && args.slug) {
+    require('./lib/qc-report').writeSection(args.slug, 'smoke', {
+      pass: !failures, failures, seconds: args.seconds, scene: args.scene || null,
+    });
+  }
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });

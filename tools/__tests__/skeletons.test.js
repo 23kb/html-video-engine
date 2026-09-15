@@ -46,19 +46,25 @@ section('Tutorial skeleton');
   // The placeholder snapshot ref is the ONE expected error (a real video
   // replaces CHANGE-ME-snapshot); everything else must be clean. postintro
   // is staged because postIntro is mandatory for rock tutorials (2026-07-22).
-  const { errors } = stageAndValidate('single-html-tutorial-skeleton.html', ['intro', 'postintro', 'ch1-1', 'outro']);
+  // No intro/outro keys: tutorials carry no bookends (ruling 2026-08-28).
+  const { errors } = stageAndValidate('single-html-tutorial-skeleton.html', ['postintro', 'ch1-1', 'ch2-1']);
   const unexpected = errors.filter((e) => !/CHANGE-ME-snapshot/.test(e));
   ok(unexpected.length === 0, `no unexpected validator errors (${unexpected.length})`);
   for (const e of unexpected) console.log(`        ${e}`);
   ok(errors.some((e) => /CHANGE-ME-snapshot/.test(e)), 'placeholder snapshot ref correctly flagged (author must replace it)');
 
   // FIX-1 (fa-retest 2026-07-13) — the skeleton must steer authors to the
-  // decomposed camera + text-kit outro (both were v1 audit B-cappers twice).
+  // decomposed camera (a v1 audit B-capper twice).
   const src = fs.readFileSync(path.join(ROOT, 'docs', 'examples', 'single-html-tutorial-skeleton.html'), 'utf8');
   ok(/flyToElement/.test(src), 'example beat demonstrates flyToElement (decomposed camera)');
-  ok(/mountTextReveal/.test(src), 'outro mounts its headline via text-kit');
-  ok(!/gsap\.fromTo\('#signoff'/.test(src), 'no hand card-fade on the signoff');
   ok(!/await ifm\.tweenCamera\(/.test(src), 'no bare single-tween camera in the skeleton');
+  // Bookends ruling 2026-08-28 + AP-7 / AP-14 skeleton items.
+  ok(!/id="introCard"/.test(src) && !/id="signoff"/.test(src), 'no intro card / sign-off card markup — the film starts at the postIntro');
+  ok(!/\bintro:|\boutro:/.test(src.match(/const DUR = \{[\s\S]*?\};/)[0]), 'DUR carries no intro/outro keys');
+  ok(/\/\/ PAYOFF:/.test(src), 'payoff beat carries the // PAYOFF: marker');
+  ok(/const BGM_PREVIEW/.test(src) && /navigator\.webdriver/.test(src), 'BGM preview bed for the HTML scrub, hidden from headless capture');
+  ok(/===== BEATS-START =====/.test(src) && /===== BEATS-END =====/.test(src) && /===== DUR-START =====/.test(src), 'sentinel pairs anchor scripted edits');
+  ok(/async \(at\) =>/.test(src), 'example beats take the at() spoken-sync clock');
 }
 
 section('PostIntro skeleton');

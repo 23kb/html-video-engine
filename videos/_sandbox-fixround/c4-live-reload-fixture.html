@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>C4 live-reload fixture</title></head>
+<body>
+<div id="stage" style="width:640px;height:360px;background:#1a2a3a;color:#fff;font:16px monospace;padding:20px">
+  C4 fixture — load count: <span id="count">?</span>
+</div>
+<script>
+  // Reload detector: sessionStorage survives a same-tab reload.
+  var n = Number(sessionStorage.getItem('c4loads') || '0') + 1;
+  sessionStorage.setItem('c4loads', String(n));
+  document.getElementById('count').textContent = String(n);
+  window.__loadCount = n;
+  // Instrumented-film contract so render-html.js trims immediately.
+  window.__T0 = performance.now();
+</script>
+</body>
+</html>
+
+<!-- touch -->
+<!-- touch --><!-- midrender-touch -->

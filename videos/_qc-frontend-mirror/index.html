@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>QC — Frontend Mirror</title>
+<style>
+  :root {
+    --bg: #1a1d24;
+    --panel: #242832;
+    --border: #353945;
+    --text: #e7eaf0;
+    --muted: #8a8f9c;
+    --accent: #E27730;
+    --ok: #4ade80;
+    --err: #f87171;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--text);
+    font: 13px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  #app { display: grid; grid-template-rows: 36px 1fr 160px; height: 100vh; }
+  header { display: flex; align-items: center; gap: 12px; padding: 0 12px;
+    background: #14161b; border-bottom: 1px solid var(--border); }
+  header h1 { margin: 0; font-size: 13px; font-weight: 600; }
+  header .modes a { color: var(--muted); text-decoration: none; padding: 4px 10px; border-radius: 4px; }
+  header .modes a.active { background: var(--accent); color: white; }
+  header .pick { margin-left: auto; }
+  header .pick select { background: var(--panel); color: var(--text); border: 1px solid var(--border);
+    padding: 4px 8px; border-radius: 4px; font: inherit; }
+  main { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border);
+    overflow: hidden; }
+  .pane { background: var(--bg); display: flex; flex-direction: column; overflow: hidden; }
+  .pane h2 { margin: 0; padding: 6px 10px; font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--muted); background: #14161b; border-bottom: 1px solid var(--border); }
+  .pane iframe { flex: 1; width: 100%; border: 0; background: white; }
+  .panel-body { flex: 1; overflow: auto; padding: 12px; }
+  .panel-section { margin-bottom: 14px; }
+  .panel-section h3 { margin: 0 0 6px; font-size: 11px; color: var(--accent);
+    text-transform: uppercase; letter-spacing: 0.05em; }
+  .panel-row { display: grid; grid-template-columns: 120px 1fr auto; gap: 6px; margin-bottom: 4px;
+    align-items: center; }
+  .panel-row label { color: var(--muted); font-size: 12px; }
+  .panel-row input, .panel-row select {
+    background: var(--panel); color: var(--text); border: 1px solid var(--border);
+    padding: 4px 8px; border-radius: 4px; font: inherit; min-width: 0; }
+  .panel-row button {
+    background: var(--accent); color: white; border: 0; padding: 4px 10px; border-radius: 4px;
+    cursor: pointer; font: inherit; transition: transform 0.15s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.3s ease, box-shadow 0.3s ease; }
+  .panel-row button:hover { filter: brightness(1.15); }
+  .panel-row button:active { transform: scale(0.92); }
+  .panel-row button.sent {
+    background: var(--ok); color: #062a13;
+    box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.18);
+    animation: sentPulse 0.55s cubic-bezier(0.22, 1, 0.36, 1); }
+  @keyframes sentPulse {
+    0%   { transform: scale(1); }
+    35%  { transform: scale(1.12); box-shadow: 0 0 0 8px rgba(74, 222, 128, 0.30); }
+    100% { transform: scale(1); box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.18); }
+  }
+  .panel-row button.secondary { background: var(--panel); border: 1px solid var(--border); color: var(--text); }
+  #log { background: #0f1115; border-top: 1px solid var(--border); overflow: auto; padding: 6px 12px;
+    font: 12px/1.4 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  #log .line { padding: 2px 0; border-bottom: 1px dashed #1f242c; white-space: pre-wrap; }
+  #log .line .tag { color: var(--accent); }
+  #log .line .src { color: var(--muted); }
+  #log .line .ok { color: var(--ok); }
+  #log .line .err { color: var(--err); }
+  .hint { color: var(--muted); font-size: 11px; padding: 4px 12px; }
+</style>
+</head>
+<body>
+<div id="app">
+  <header>
+    <h1>Frontend Mirror QC</h1>
+    <span class="modes">
+      <a id="mode-panel" href="?mode=panel">Mode A · Control Panel</a>
+      <a id="mode-e2e" href="?mode=e2e">Mode B · End-to-End</a>
+    </span>
+    <span class="pick">
+      <label for="left-snap" style="color:var(--muted)">Builder snapshot:</label>
+      <select id="left-snap">
+        <option value="builder-field-options-text">text</option>
+        <option value="builder-field-options-textarea">textarea</option>
+        <option value="builder-field-options-email">email</option>
+        <option value="builder-field-options-number">number</option>
+        <option value="builder-field-options-number-slider">number-slider</option>
+        <option value="builder-field-options-select">select (dropdown)</option>
+        <option value="builder-field-options-radio">radio</option>
+        <option value="builder-field-options-checkbox">checkbox</option>
+        <option value="builder-field-options-name">name</option>
+        <option value="builder-field-options-address">address</option>
+        <option value="builder-field-options-phone">phone</option>
+        <option value="builder-field-options-date-time">date-time</option>
+        <option value="builder-field-options-rating">rating</option>
+        <option value="builder-field-options-likert_scale">likert</option>
+        <option value="builder-field-options-net_promoter_score">NPS</option>
+        <option value="builder-field-options-file-upload">file-upload</option>
+        <option value="builder-field-options-signature">signature</option>
+        <option value="builder-field-options-payment-fields">payments</option>
+      </select>
+    </span>
+  </header>
+  <main>
+    <section class="pane">
+      <h2 id="left-title">Left</h2>
+      <div id="left-host" style="flex:1;display:flex"></div>
+    </section>
+    <section class="pane">
+      <h2>Right · Frontend</h2>
+      <iframe id="frontend" src="../../snapshots/frontend-published-form/index.html"></iframe>
+    </section>
+  </main>
+  <div id="log"></div>
+</div>
+
+<script>
+(() => {
+  const params = new URLSearchParams(location.search);
+  const mode = params.get('mode') === 'e2e' ? 'e2e' : 'panel';
+  document.getElementById('mode-' + mode).classList.add('active');
+
+  const log = document.getElementById('log');
+  function logLine(html) {
+    const div = document.createElement('div');
+    div.className = 'line';
+    div.innerHTML = html;
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+  }
+  function fmtMsg(d, src) {
+    const value = JSON.stringify(d.value);
+    const meta = d.meta ? ' meta=' + JSON.stringify(d.meta) : '';
+    return `<span class="src">[${src}]</span> <span class="tag">${d.setting}</span> field=${d.fieldId} value=${value}${meta}`;
+  }
+
+  const frontend = document.getElementById('frontend');
+  const leftHost = document.getElementById('left-host');
+  const leftSnap = document.getElementById('left-snap');
+  const initial = params.get('snap');
+  if (initial) leftSnap.value = initial;
+
+  // Restore left iframe / panel based on mode
+  function mountLeft() {
+    leftHost.innerHTML = '';
+    if (mode === 'e2e') {
+      document.getElementById('left-title').textContent = 'Left · Builder · ' + leftSnap.value;
+      const f = document.createElement('iframe');
+      f.id = 'builder';
+      f.style.cssText = 'flex:1;width:100%;border:0;background:white';
+      f.src = '../../snapshots/' + leftSnap.value + '/index.html';
+      leftHost.appendChild(f);
+    } else {
+      document.getElementById('left-title').textContent = 'Left · Control Panel';
+      leftHost.appendChild(buildControlPanel());
+    }
+  }
+
+  leftSnap.addEventListener('change', () => {
+    const url = new URL(location.href);
+    url.searchParams.set('snap', leftSnap.value);
+    history.replaceState({}, '', url);
+    if (mode === 'e2e') mountLeft();
+  });
+
+  // Bridge — listen for any wpf:field-state and forward to frontend
+  window.addEventListener('message', (e) => {
+    const d = e?.data;
+    if (!d || d.type !== 'wpf:field-state') return;
+    const src = (e.source === document.getElementById('builder')?.contentWindow) ? 'builder' : 'panel';
+    logLine(fmtMsg(d, src));
+    // Forward to frontend iframe (unless the source IS the frontend, which it never should be)
+    if (e.source !== frontend.contentWindow) {
+      frontend.contentWindow.postMessage(d, '*');
+    }
+  });
+
+  // ─── Mode A — Control Panel ─────────────────────────────────────────────
+  function send(setting, fieldId, value, meta) {
+    const msg = { type: 'wpf:field-state', fieldId: String(fieldId), setting, value };
+    if (meta) msg.meta = meta;
+    frontend.contentWindow.postMessage(msg, '*');
+    logLine(fmtMsg(msg, 'panel'));
+  }
+
+  function row(labelText, controlEls, onSend) {
+    const div = document.createElement('div');
+    div.className = 'panel-row';
+    const lab = document.createElement('label');
+    lab.textContent = labelText;
+    div.appendChild(lab);
+    const ctrlWrap = document.createElement('div');
+    ctrlWrap.style.cssText = 'display:flex;gap:4px;min-width:0';
+    controlEls.forEach(c => ctrlWrap.appendChild(c));
+    div.appendChild(ctrlWrap);
+    const btn = document.createElement('button');
+    btn.textContent = 'Send';
+    btn.addEventListener('click', () => {
+      onSend(ctrlWrap);
+      btn.classList.remove('sent');
+      // Re-trigger animation: force reflow so the class re-application restarts the keyframes.
+      // eslint-disable-next-line no-unused-expressions
+      btn.offsetWidth;
+      btn.classList.add('sent');
+      setTimeout(() => btn.classList.remove('sent'), 600);
+    });
+    div.appendChild(btn);
+    return div;
+  }
+  function input(placeholder, value) {
+    const i = document.createElement('input');
+    i.placeholder = placeholder || '';
+    if (value != null) i.value = value;
+    i.style.flex = '1';
+    return i;
+  }
+  function select(opts) {
+    const s = document.createElement('select');
+    opts.forEach(o => {
+      const op = document.createElement('option');
+      op.value = o.value; op.textContent = o.label || o.value;
+      s.appendChild(op);
+    });
+    s.style.flex = '1';
+    return s;
+  }
+  function section(title) {
+    const sec = document.createElement('div');
+    sec.className = 'panel-section';
+    const h = document.createElement('h3');
+    h.textContent = title;
+    sec.appendChild(h);
+    return sec;
+  }
+
+  function buildControlPanel() {
+    const wrap = document.createElement('div');
+    wrap.className = 'panel-body';
+
+    const hint = document.createElement('div');
+    hint.className = 'hint';
+    hint.textContent = 'Pick a field id on the right (1=name, 2=email, 3=text, 5=select, 6=radio, 7=checkbox, 8=number, 9=slider, 10=phone, 25=likert, 26=NPS, 35=signature, 36=rating, 27=content, 28=html). Click Send. Watch the right pane react and the log capture the message.';
+    wrap.appendChild(hint);
+
+    // ─ Universal section
+    const u = section('Universal');
+    const fid1 = input('field id', '3');
+    const lab1 = input('Label text', 'Single Line Text');
+    u.appendChild(row('Label', [fid1, lab1], () => send('label', fid1.value, lab1.value)));
+
+    const fid2 = input('field id', '3');
+    const req2 = select([{value:'true',label:'on'},{value:'false',label:'off'}]);
+    u.appendChild(row('Required', [fid2, req2], () => send('required', fid2.value, req2.value === 'true')));
+
+    const fid3 = input('field id', '3');
+    const lh3 = select([{value:'true',label:'on'},{value:'false',label:'off'}]);
+    u.appendChild(row('Label hide', [fid3, lh3], () => send('label-hide', fid3.value, lh3.value === 'true')));
+
+    const fid4 = input('field id', '3');
+    const sz4 = select([{value:'small'},{value:'medium'},{value:'large'}]);
+    u.appendChild(row('Size', [fid4, sz4], () => send('size', fid4.value, sz4.value)));
+
+    const fid5 = input('field id', '3');
+    const ph5 = input('placeholder', 'Enter text…');
+    u.appendChild(row('Placeholder', [fid5, ph5], () => send('placeholder', fid5.value, ph5.value)));
+
+    const fid6 = input('field id', '3');
+    const ro6 = select([{value:'true',label:'on'},{value:'false',label:'off'}]);
+    u.appendChild(row('Read-only', [fid6, ro6], () => send('read-only', fid6.value, ro6.value === 'true')));
+
+    const fid7 = input('field id', '3');
+    const desc7 = input('description', 'Helpful hint for visitors');
+    u.appendChild(row('Description', [fid7, desc7], () => send('description', fid7.value, desc7.value)));
+
+    const fid8 = input('field id', '3');
+    const dv8 = input('default value', 'Pre-filled');
+    u.appendChild(row('Default value', [fid8, dv8], () => send('default-value', fid8.value, dv8.value)));
+
+    const fid9 = input('field id', '3');
+    const sh9 = select([{value:'true',label:'on'},{value:'false',label:'off'}]);
+    u.appendChild(row('Sublabel hide', [fid9, sh9], () => send('sublabel-hide', fid9.value, sh9.value === 'true')));
+
+    wrap.appendChild(u);
+
+    // ─ Choices section
+    const c = section('Choices (field 6=radio, 5=select, 7=checkbox)');
+    const cFid = input('field id', '6');
+    const cIdx = input('choice index', '1');
+    const cLab = input('new label', 'Updated');
+    c.appendChild(row('Edit choice', [cFid, cIdx, cLab], () =>
+      send('choice-label', cFid.value, cLab.value, { index: parseInt(cIdx.value, 10) })));
+
+    const aFid = input('field id', '6');
+    const aLab = input('new choice label', 'New Option');
+    c.appendChild(row('Add choice', [aFid, aLab], () =>
+      send('choice-add', aFid.value, aLab.value)));
+
+    const rFid = input('field id', '6');
+    const rIdx = input('choice index', '3');
+    c.appendChild(row('Remove choice', [rFid, rIdx], () =>
+      send('choice-remove', rFid.value, null, { index: parseInt(rIdx.value, 10) })));
+
+    const lFid = input('field id', '6');
+    const lSt = select([{value:'1-column'},{value:'2-columns'},{value:'3-columns'},{value:'inline'}]);
+    c.appendChild(row('Layout', [lFid, lSt], () => send('choices-layout', lFid.value, lSt.value)));
+
+    const dFid = input('field id', '6');
+    const dIdx = input('choice index', '2');
+    const dOn = select([{value:'true',label:'check'},{value:'false',label:'uncheck'}]);
+    c.appendChild(row('Default toggle', [dFid, dIdx, dOn], () =>
+      send('choice-default', dFid.value, dOn.value === 'true', { index: parseInt(dIdx.value, 10) })));
+
+    wrap.appendChild(c);
+
+    // ─ Slider / Number section
+    const s = section('Slider & Number (field 9=slider, 8=number)');
+    const sFid = input('field id', '9');
+    const sMin = input('min', '0');
+    const sMax = input('max', '100');
+    s.appendChild(row('Slider range', [sFid, sMin, sMax], () =>
+      send('slider-range', sFid.value, null, { min: parseFloat(sMin.value), max: parseFloat(sMax.value) })));
+
+    const sFid2 = input('field id', '9');
+    const sStep = input('step', '5');
+    s.appendChild(row('Slider step', [sFid2, sStep], () =>
+      send('slider-step', sFid2.value, parseFloat(sStep.value))));
+
+    const sFid3 = input('field id', '9');
+    const sDef = input('default value', '50');
+    s.appendChild(row('Slider default', [sFid3, sDef], () =>
+      send('slider-default', sFid3.value, parseFloat(sDef.value))));
+
+    wrap.appendChild(s);
+
+    // ─ Rating / NPS section
+    const r = section('Rating & NPS (field 36=rating, 26=NPS)');
+    const rFidR = input('field id', '36');
+    const rScale = select([{value:'5'},{value:'10'}]);
+    r.appendChild(row('Rating scale', [rFidR, rScale], () =>
+      send('rating-scale', rFidR.value, parseInt(rScale.value, 10))));
+
+    const rIcon = input('field id', '36');
+    const rIc = select([{value:'star'},{value:'heart'},{value:'thumb'},{value:'smiley'}]);
+    r.appendChild(row('Rating icon', [rIcon, rIc], () =>
+      send('rating-icon', rIcon.value, rIc.value)));
+
+    wrap.appendChild(r);
+
+    // ─ Payment section
+    const p = section('Payment (field 18=single)');
+    const pFid = input('field id', '18');
+    const pPrice = input('price', '49');
+    p.appendChild(row('Single price', [pFid, pPrice], () =>
+      send('payment-price', pFid.value, pPrice.value)));
+
+    wrap.appendChild(p);
+
+    // ─ Phone / Address / Date section
+    const t = section('Type-specific');
+    const tFid1 = input('field id', '10');
+    const tFmt1 = select([{value:'smart'},{value:'international'},{value:'us'}]);
+    t.appendChild(row('Phone format', [tFid1, tFmt1], () =>
+      send('phone-format', tFid1.value, tFmt1.value)));
+
+    const tFid2 = input('field id', '15');
+    const tSch = select([{value:'us'},{value:'international'}]);
+    t.appendChild(row('Address scheme', [tFid2, tSch], () =>
+      send('address-scheme', tFid2.value, tSch.value)));
+
+    const tFid3 = input('field id', '1');
+    const tNm = select([{value:'simple'},{value:'first-last'},{value:'first-middle-last'}]);
+    t.appendChild(row('Name format', [tFid3, tNm], () =>
+      send('name-format', tFid3.value, tNm.value)));
+
+    wrap.appendChild(t);
+
+    // ─ Quick test: reset frontend
+    const z = section('Utilities');
+    const reset = document.createElement('button');
+    reset.className = 'secondary';
+    reset.textContent = 'Reload frontend iframe';
+    reset.style.cssText = 'background:var(--panel);border:1px solid var(--border);color:var(--text);padding:6px 12px;border-radius:4px;cursor:pointer;font:inherit';
+    reset.addEventListener('click', () => { frontend.src = frontend.src; });
+    z.appendChild(reset);
+    wrap.appendChild(z);
+
+    return wrap;
+  }
+
+  mountLeft();
+})();
+</script>
+</body>
+</html>

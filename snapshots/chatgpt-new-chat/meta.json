@@ -1,0 +1,19 @@
+{
+  "sourceUrl": "https://chatgpt.com/ (browser Save-Page-As / SingleFile, 2026-09-08 06:44; file: Downloads/ChatGPT (08_09_2026 06：44：11).html)",
+  "capturedAt": "2026-09-08T01:44:00.000Z",
+  "external": true,
+  "displayOnly": true,
+  "theme": "dark (html.dark, color-scheme:dark, data-chat-theme=blue)",
+  "note": "Real chatgpt.com new-chat page, Work tab, empty composer, model pill 'GPT-5.6 Sol / Medium'. Single self-contained file: fonts (OpenAI Sans) and CSS inlined, no external stylesheets, no iframes, one ld+json script. DOM untouched. Personal chat titles in the sidebar are hidden at film time via injected CSS (never edited here). Live-state fragments captured 2026-09-08 from the same account via the Claude-in-Chrome extension (outerHTML -> clipboard -> file) live in ./states/: picker.json (model pill menu, level1 = effort slider + 'Select model' toggle, level2 = model list with Default / GPT-6 Astra / GPT-5.6 Sol (checked) / GPT-5.6 Terra / GPT-5.6 Luna / GPT-5.5) and plus-menu.json (composer + menu: Add photos & files, Add from library, Create image, Web search, Shopping, Deep research, GitHub, Gmail, Sites, 'Type to search plugins...'). WPVibe was NOT installed on the account at capture time, so the attached-chip, permission-card and response-turn states are still missing.",
+  "selectors": {
+    "composerPlus": "#composer-plus-btn (aria-label 'Add files and more')",
+    "modelPill": "button.__composer-pill .uFxlGa_SliderTriggerModelLabel / .uFxlGa_SliderTriggerEffortLabel",
+    "pickerContent": "[data-testid=composer-intelligence-picker-content]",
+    "pickerSelectModelToggle": "[role=menuitem][aria-label='Select model'].d1BZWq_ViewToggle",
+    "pickerModelRows": "[data-testid=composer-model-picker-slider-advanced-view] [role=menuitemradio]",
+    "plusMenu": "div.popover.RSj_va_surface (inline under composer, not a radix popper)",
+    "promptTextarea": "#prompt-textarea",
+    "placeholderH1": "h1 text 'What should we work on?'",
+    "sidebarPlugins": "[data-testid=plugins-button]"
+  }
+}

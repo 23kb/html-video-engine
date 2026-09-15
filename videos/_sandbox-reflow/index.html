@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SANDBOX — reflowSubject / prepOnSwap acceptance (never wired into a video)</title>
+<style>
+  /* Clearly-marked sandbox (README ground rules): the C-SPEC C2 acceptance
+     harness. Mounts frontend-contact-clean, runs reflowSubject, swaps to
+     frontend-contact-confirmed under prepOnSwap, and asserts the reflow
+     re-applied on the fresh document. ?auto=1 → window.__qcResults/__done.
+     Local scratch — videos/ is gitignored and this stays untracked. */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #12161a; color: #dfe5ec; font-family: Bahnschrift, system-ui, sans-serif; padding: 20px; }
+  #results { font: 12px/1.7 Consolas, monospace; white-space: pre-wrap; margin-bottom: 14px; }
+  #results .pass { color: #46b450; } #results .fail { color: #d63638; }
+  .band { position: relative; width: 1080px; height: 1200px; background: #f0f0f1; overflow: hidden; }
+</style>
+</head>
+<body>
+  <div id="results">loading…</div>
+  <div class="band" id="band"></div>
+<script src="/vendor/gsap/3.15.0/gsap.min.js"></script>
+<script type="module">
+import { IframeManager } from '/videos/_shared/wpforms-interactions.js';
+import { reflowSubject, prepOnSwap } from '/videos/_shared/shorts-kit.js';
+
+const resultsEl = document.getElementById('results');
+const checks = [];
+const push = (name, ok) => checks.push({ name, ok });
+
+async function run() {
+  const ifm = new IframeManager(document.getElementById('band'), {
+    viewport: { width: 1080, height: 1200 },
+    iframeSize: { width: 1280, height: 720 },
+  });
+  await ifm.load('frontend-contact-clean');
+
+  // The nvc slimFrontend case, via the library: cap + center form 406.
+  // Shorts mount runs 1:1 (the camera crops; no CSS scale) so stage px =
+  // logical px at zoom 1. The form is 645px logical uncapped (nvc's stated
+  // width-physics problem) — pre-measure so the cap is proven as a CHANGE.
+  const FORM = '#wpforms-form-406', CONFIRM = '#wpforms-confirmation-406';
+  const rect0 = ifm.elementToStageRect(FORM);
+  const r1 = reflowSubject(ifm, { targets: [FORM, CONFIRM] });
+  push(`missing selector reported, not thrown (missing: ${JSON.stringify(r1.missing)})`,
+    r1.missing.includes(CONFIRM) && r1.applied.includes(FORM));
+
+  const rect1 = ifm.elementToStageRect(FORM);
+  push(`form capped: ${rect0.w.toFixed(1)} -> ${rect1.w.toFixed(1)} stage px (<= 562, was > 600)`,
+    rect0.w > 600 && rect1.w <= 562);
+  push(`form centered: |center - 540| = ${Math.abs(rect1.x + rect1.w / 2 - 540).toFixed(1)}px <= 4`,
+    Math.abs(rect1.x + rect1.w / 2 - 540) <= 4);
+
+  // prepOnSwap: the same prep must survive a swap (a swap replaces the doc).
+  prepOnSwap(ifm, (d) => reflowSubject(d, { targets: [FORM, CONFIRM] }));
+  await ifm.swap('frontend-contact-confirmed');
+  await ifm.wait(0.4);
+  const rect2 = ifm.elementToStageRect(CONFIRM);
+  push(`after swap, confirmation box capped on the FRESH doc: ${rect2.w.toFixed(1)} <= 562`,
+    rect2.w <= 562);
+  push(`after swap, confirmation centered: |center - 540| = ${Math.abs(rect2.x + rect2.w / 2 - 540).toFixed(1)}px <= 4`,
+    Math.abs(rect2.x + rect2.w / 2 - 540) <= 4);
+
+  // Degrade contract: totally bogus selector — report, never throw.
+  let threw = false;
+  let r3 = null;
+  try { r3 = reflowSubject(ifm, { targets: '#no-such-element-xyz', hideColumns: ['.no-such-col'] }); }
+  catch (e) { threw = true; }
+  push(`bogus selectors degrade (missing: ${r3 ? r3.missing.length : '?'}), no throw`, !threw && r3 && r3.missing.length === 2);
+
+  resultsEl.textContent = '';
+  for (const c of checks) {
+    const div = document.createElement('div');
+    div.className = c.ok ? 'pass' : 'fail';
+    div.textContent = (c.ok ? 'PASS  ' : 'FAIL  ') + c.name;
+    resultsEl.appendChild(div);
+  }
+  window.__qcResults = { checks, pass: checks.every((c) => c.ok) };
+  window.__done = true;
+}
+window.__done = false;
+run().catch((e) => {
+  resultsEl.textContent = 'HARNESS ERROR: ' + e.message;
+  window.__qcResults = { checks, pass: false, error: String(e) };
+  window.__done = true;
+});
+</script>
+</body>
+</html>

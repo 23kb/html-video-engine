@@ -1,5 +1,6 @@
 # Beat Pacing
 
+> **HISTORICAL API NOTE (2026-08-28):** code examples below predate the 2026-08-22 engine retirement. The craft rules stand; the `engine/`/`runtime/`/manifest APIs they mention are gone — implement in single-HTML per CLAUDE.md.
 The 6-second rule, splitting heuristics, what breaks at 8s, what works at 4s, and how narration length should map to beat duration.
 
 A beat is one entry in a chapter's `default export` array (the per-beat-narration mode default) or one phase of a multi-phase audio-cued effect. Pacing rules apply to either.
@@ -87,6 +88,11 @@ These are warnings, not errors. The user reviews them on smoke output.
 | Multiple `await sleep(2000)` calls inside one effect with no visual changes between | Replace with a hold beat or chapter break; sleep without coverage is wasted runtime |
 | Postintro phases averaging 1s each | Phases that short don't register; combine or extend |
 
+## Locked-frame beats + the 1px/frame floor (fix-round B6)
+
+- **Locked-frame beats** (mp H): a deliberately still frame is measured on whether the SUBJECT changes, not on frame diff — the motion budget moves to the DOM (cursor arriving, focus ring, press state, a status arriving). The camera holding still is a choice; the subject holding still is a defect.
+- **The 1px/frame floor** (mp 4): a hold's consequence motion must move its subject ≥ ~1px per frame or it is idle no matter what the timeline says — a tween that "runs" at sub-pixel speed reads as a freeze and measures as one (`dead-time.js` will flag it; its static-region report names WHICH quadrant parked).
+
 ## Per-mode notes
 
 - **`per-beat-narration`** (default tutorial mode): each beat has its own clip. 4-8s sweet spot. Easiest to split when too long.
@@ -95,7 +101,7 @@ These are warnings, not errors. The user reviews them on smoke output.
 
 ## Postintro pacing (special case)
 
-PostIntros run 8-15s with 5+ phases. That's 1.5-3s per phase on average. The multi-animation rule (see `wpforms-postintro` skill) is what matters; the 6-second rule doesn't apply to postIntro phases internally.
+PostIntros run until the message is explained — story states, not seconds (ruled 2026-08-22) — with 5+ phases long-form / 3+ on shorts; long-form typically lands 8-15s, ≈1.5-3s per phase. The multi-animation rule (see `wpforms-postintro` skill) is what matters; the 6-second rule doesn't apply to postIntro phases internally.
 
 The postIntro AS A WHOLE is one chapter with one narration clip in most cases. Per-phase ≠ per-beat for pacing rules.
 
@@ -103,6 +109,5 @@ The postIntro AS A WHOLE is one chapter with one narration clip in most cases. P
 
 - `wpforms-video` skill — beat-level pacing rule embedded in chapter authoring.
 - `wpforms-postintro` skill — postIntro phase pacing rules.
-- `docs/examples/legacy-chapter-skeleton.md` — beat shape with narration coupling.
-- `docs/examples/legacy-audio-cued-skeleton.md` — `waitAt(t)` for long-cue beats.
+- `docs/examples/single-html-tutorial-skeleton.html` — the beat shape (`beat(key, text, async (at) => …)`) with narration coupling through the `at()` spoken-sync clock (the legacy chapter / audio-cued skeletons retired 2026-08-22).
 - `analysis-quality-and-transitions.md` §1.7 — the REST API video lesson on per-beat-narration vs BGM-only.
