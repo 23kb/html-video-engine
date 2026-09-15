@@ -43,15 +43,12 @@ function errorsFor(dir) {
 
 // ── Gate 1: canaries green ──────────────────────────────────────────────
 section('Gate 1 — canaries green');
-const CANARIES = [
-  'form-analytics-complete-guide',
-  'form-analytics-ad',
-  'switch-to-wpforms-entry-importer',
-  'klaviyo-quick-connect',
-];
-{
+const CANARIES = require('../lib/local-films.js').validatorCanaries || [];
+if (!CANARIES.length) {
+  console.log('  - skipped: no local canary list (tools/local-films.local.json)');
+} else {
   const r = runTool('validate-singlehtml.js', CANARIES);
-  ok(r.code === 0, `4 canaries validate clean (exit ${r.code})`);
+  ok(r.code === 0, `${CANARIES.length} canaries validate clean (exit ${r.code})`);
   for (const slug of CANARIES) {
     ok(new RegExp(`✓ ${slug}: 0 error`).test(r.out), `${slug}: 0 errors`);
   }

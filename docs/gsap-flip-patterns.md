@@ -88,8 +88,6 @@ const tween = Flip.from(state, {
 await flipDone(tween);
 ```
 
-Reference: `videos/flip-sandbox/chapters/flip-tour.js` Beat 1.
-
 ### 2. Parent-change Flip
 
 Element moves between containers via `appendChild`; Flip animates the
@@ -100,10 +98,6 @@ const state = Flip.getState(chip);
 binB.appendChild(chip);
 await flipDone(Flip.from(state, { duration: 0.8, ease: 'power3.inOut', clearProps: 'transform' }));
 ```
-
-Reference: `videos/flip-sandbox/chapters/flip-tour.js` Beat 2;
-`videos/flip-generate-card/chapters/generate-card-flip-tour.js` Beat 2 (real
-card flying into a shortlist pane).
 
 ### 3. Pin-to-UI Flip
 
@@ -122,8 +116,6 @@ card.style.left = left + 'px';   // + top, width, height
 await flipDone(Flip.from(state, { duration: 0.85, ease: 'power3.inOut', clearProps: 'transform' }));
 ```
 
-Reference: `videos/flip-sandbox/chapters/flip-tour.js` Beat 3.
-
 ### 4. State-driven reflow Flip
 
 Multiple siblings reposition under a parent class toggle; one Flip tween,
@@ -138,10 +130,6 @@ await flipDone(Flip.from(state, {
   clearProps: 'transform',
 }));
 ```
-
-Reference: `videos/flip-sandbox/chapters/flip-tour.js` Beat 4;
-`videos/flip-generate-card/chapters/generate-card-flip-tour.js` Beat 3
-(reflowing the inner blocks of a real template card).
 
 ### 5. Real-UI clone-and-Flip (product-truth-safe)
 
@@ -169,39 +157,14 @@ Constraints:
 - Flip cannot reach the original element across the iframe document
   boundary. All Flip work happens on the host-document clone.
 
-References:
-
-- `videos/flip-sandbox/chapters/flip-tour.js` Beat 5 — clones a form table
-  row's primary cell; lifts to a center-stage preview card.
-- `videos/flip-generate-card/chapters/generate-card-flip-tour.js` — full
-  4-beat tour on the same cloned card (`#wpforms-template-generate`):
-  lift → parent-change → internal reflow → snap back to original rect.
-
-## Sandboxes
-
-Both validated via `validate-video.js` + `check-video-playback.js`. Treat as
-canonical references for Flip work; do not delete without replacement.
-
-| Slug | Backdrop snapshot | What it proves |
-|---|---|---|
-| `flip-sandbox` | `admin-forms-overview` | Five Flip patterns on editorial DOM and cloned product DOM. |
-| `flip-generate-card` | `builder-setup` | Four Flip patterns on the same cloned real card (`#wpforms-template-generate`). |
-
-Run them locally:
-
-```
-http://localhost:4321/scenes/player.html?video=flip-sandbox
-http://localhost:4321/scenes/player.html?video=flip-generate-card
-```
-
 ## Open question — cross-snapshot Flip
 
 Flip across an `engine.loadSnapshot` swap is not yet implemented in this
 repo. The viable approach is a host-document **bridge clone**:
 
 1. Pre-swap: `cloneFromIframe(sourceSelector)`, mount on a layer parented to
-   `<html>` so it survives the body-wipe (see `videos/build-forms-faster-with-wpforms-ai/chapters/_kit.js`
-   `migrateOverlayToHtml` / `freezeChrome` for the existing pattern).
+   `<html>` so it survives the body-wipe (the `migrateOverlayToHtml` /
+   `freezeChrome` helpers are the existing pattern).
 2. `Flip.getState(clone)`.
 3. Trigger `swapToSnapshot(slug, { setup })`.
 4. Post-swap: measure destination element rect through the new iframe;

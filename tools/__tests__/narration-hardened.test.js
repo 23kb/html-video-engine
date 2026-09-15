@@ -165,7 +165,8 @@ async function main() {
 
     // ── 5. Static goldens on the two patched videos ───────────────────────
     section('Static goldens — patched videos use the shared hardened helpers');
-    for (const slug of ['switch-to-wpforms-entry-importer', 'form-analytics-complete-guide']) {
+    const LOCAL = require('../lib/local-films.js');   // gitignored slug list; checks skip without it
+    for (const slug of LOCAL.narrationGoldens || []) {
       const src = fs.readFileSync(path.join(ROOT, 'videos', slug, 'index.html'), 'utf8');
       ok(/import \{[^}]*narrBeat[^}]*\} from '\/videos\/_shared\/narration\.js'/.test(src),
         `${slug}: imports shared beat helpers`);
@@ -174,21 +175,18 @@ async function main() {
       ok(!/function say\(key/.test(src) && !/async function beat\(key/.test(src),
         `${slug}: no local say/beat copies`);
     }
-    {
-      const src = fs.readFileSync(path.join(ROOT, 'videos', 'switch-to-wpforms-entry-importer', 'index.html'), 'utf8');
+    if (LOCAL.narrationPostIntroGolden) {
+      const src = fs.readFileSync(path.join(ROOT, 'videos', LOCAL.narrationPostIntroGolden, 'index.html'), 'utf8');
       ok(/await withTimeout\(piCursor\.glide/.test(src) && /await withTimeout\(piCursor\.click/.test(src),
-        'entry-importer: postIntro cursor awaits wrapped in withTimeout');
+        'postIntro golden: cursor awaits wrapped in withTimeout');
       ok(/await withTimeout\(scrollTo\(/.test(src),
-        'entry-importer: top-level scrollTo wrapped in withTimeout');
+        'postIntro golden: top-level scrollTo wrapped in withTimeout');
     }
 
     // ── 6. --full: real videos end-to-end under frozen RAF ────────────────
     if (FULL) {
       section('FULL — real videos reach __done under frozen RAF');
-      for (const [slug, budgetMs] of [
-        ['switch-to-wpforms-entry-importer', 200000],
-        ['form-analytics-complete-guide', 280000],
-      ]) {
+      for (const [slug, budgetMs] of LOCAL.narrationFullRuns || []) {
         const { ctx, page } = await newPage(browser, { freezeRaf: true });
         const errors = [];
         page.on('pageerror', (e) => errors.push(String(e)));

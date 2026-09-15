@@ -1,7 +1,7 @@
 // SFX pipeline helper: measure every plan.json clip's source levels and show
 // (or set) the gains needed to land target mix levels. Replaces the manual
 // per-source `ffmpeg astats` + hand-written gainDb loop
-// (docs/system-fixes-plan-the-drop-2026-07-15.md #4, tooling TODO #3).
+// (system-fixes plan 2026-07-15 #4, tooling TODO #3).
 //
 // Usage:
 //   node tools/sfx/normalize.mjs --video <slug> [--plan <path>]

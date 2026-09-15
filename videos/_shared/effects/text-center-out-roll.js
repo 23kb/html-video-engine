@@ -5,7 +5,7 @@
 // starts at the center letter and propagates outward, then back down. Repeats
 // per sentence with adjustable per-line stagger.
 //
-// Source: reference/gsap-effects/effect041.html
+// Source: ported GSAP effect.
 // Vocabulary slot: text reveal — center-out-roll
 
 /* global gsap */

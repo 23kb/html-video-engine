@@ -31,12 +31,12 @@
 //
 // Approved-mix bed-only RMS (outro window, dur−4..dur−1) + speech window,
 // measured 2026-08-17:
-//   short-stop-fast-bots      (r5, 0.17, bed 8)  bed −27.6 dB  speech −16.1 dB
-//   short-spam-safety-net                        bed −31.6 dB  speech −18.6 dB
-//   short-block-a-country                        bed −31.5 dB  speech −15.0 dB
-//   short-notifications-vs-…  (0.32, bed 5)      bed −18.3 dB  speech −16.2 dB
-//   short-coupon-code         (0.32, bed 1)      bed −18.8 dB  speech −17.2 dB
-//   custom-css-targeting      (0.12, long-form)  bed −31.6 dB  speech −24.4 dB
+//   short A                   (r5, 0.17, bed 8)  bed −27.6 dB  speech −16.1 dB
+//   short B                                      bed −31.6 dB  speech −18.6 dB
+//   short C                                      bed −31.5 dB  speech −15.0 dB
+//   short D                   (0.32, bed 5)      bed −18.3 dB  speech −16.2 dB
+//   short E                   (0.32, bed 1)      bed −18.8 dB  speech −17.2 dB
+//   long-form tutorial        (0.12, long-form)  bed −31.6 dB  speech −24.4 dB
 // Beds: bgms/1 −11.70 LUFS · 2 −9.77 · 3 −18.16 · 4 −9.52 · 5 −11.78 ·
 //       6 −13.27 · 7 −14.13 · 8 −13.95 (file-average; sections vary ±5 dB).
 //

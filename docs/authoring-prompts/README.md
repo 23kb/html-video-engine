@@ -7,7 +7,7 @@ Reusable prompt templates for kicking off a new video session with Claude (or a 
 | File | Use when |
 |---|---|
 | [builder-frontend-split.md](builder-frontend-split.md) | Single-field tutorial where the builder is on the left and the published frontend mirrors changes on the right. Uses `BuilderFrontendSplit` from `videos/_shared/builder-frontend-split.js`. |
-| [klaviyo-addon-tutorial.md](klaviyo-addon-tutorial.md) | Full how-to for the Klaviyo addon (admin → Klaviyo dashboard → admin → builder → profile result). Concrete prompt, ~125-150s, single-HTML. Not parameterized — paste and go. |
+| [klaviyo-addon-tutorial.md](klaviyo-addon-tutorial.md) | Full how-to for the Klaviyo addon (admin → Klaviyo dashboard → admin → builder → profile result). Concrete prompt, ~125-150s, single-HTML. Fill in the slug, then paste. |
 
 ## TODO — expand the catalog (later)
 
@@ -19,7 +19,7 @@ Kinds to draft (rough list — adjust as we go):
 - **Single-surface frontend demo** (frontend only, no builder) — for "what the visitor sees" hero shots, marketing flavor.
 - **Settings-panel walkthrough** (no fields canvas, just builder settings tabs — covers handoffs 5/6 surface).
 - **AI builder demo** (`wpforms-ai-builder-empty` → `-feedback-generated` swap).
-- **Marketing / ad-style editorial** (no real UI, motion-heavy, clone from `reference/html-templates/`).
+- **Marketing / ad-style editorial** (no real UI, motion-heavy, clone from `docs/examples/single-html-ad-skeleton.html`).
 - **Multi-field tutorial** (chains several fields without losing the thread — e.g. "build a contact form from scratch").
 - **Integration / addon walkthrough** (admin Integrations connect flow + builder provider panel; pairs with handoff-7 work).
 - **PostIntro / cinematic concept beat** (per `wpforms-postintro` skill — usually the first 8-15s of a tutorial).

@@ -90,8 +90,8 @@ Numbered for easy reference in code comments / commit messages.
 - Primary: `--wpf-orange #E27730`
 - AI-feature accent only: `--wpf-ai-purple #7A30E2` (never primary)
 - System font stack: `-apple-system, BlinkMacSystemFont, "Segoe UI"...`
-- Real Sullie at `reference/wpforms-brand/assets/sullie-master.svg`
-- All tokens in `reference/wpforms-brand/tokens.css`
+- Real Sullie from the canonical brand assets
+- All tokens from the canonical brand tokens
 - No invented colors, no Inter web font, no fake characters
 
 ### INV-11 — Required tutorial video shape
@@ -105,11 +105,11 @@ Outro (~5s)      → brand sign-off card. NO mac frame.
 ```
 
 - Mac frame wraps the Tutorial section ONLY (per INV-3). Intro / postIntro / outro have no chrome around them.
-- PostIntro is non-optional. It previews the workflow with an identity-continuity morph chain (single DOM element threading the beats). Reference: `reference/html-templates/wpforms-ai-prompt-open.html`.
+- PostIntro is non-optional. It previews the workflow with an identity-continuity morph chain (single DOM element threading the beats).
 - PostIntro may have N sub-beats (multi-phase morph chains are encouraged). The section boundary is the mac-frame-fade-in: when the mac frame opacity tweens 0 → 1 with real product UI behind it, the PostIntro is over and the Tutorial has begun. Anything before that moment, no matter how many phases, is still PostIntro.
 - Skip the postIntro and the video reads as "PowerPoint" — generic chapter shapes, weak first impression. The first cut of every tutorial that skipped a real postIntro became generic per `docs/winning-pattern-analysis-2026-05-10.md` (deleted 2026-08-22 — git history) §C.
 - **Amendment 2026-08-28 (Umair ruling, rulebook §8 "You author a tutorial"):** the Intro and Outro sections above are no longer authored. The HTML film opens on the PostIntro and closes on the final product wide shot; Kacie records the real bookends and `tools/stitch.js` concatenates them. The mac-frame rule and the PostIntro rules stand unchanged. Shorts are unaffected (Sullie sting + end card stay).
-- Source: user instruction 2026-05-12. Applies to all tutorial videos including the existing make-field-required pilot (retrofitted at commit `af504ea`) and Klaviyo tutorial (per `docs/codex-prompts/klaviyo-tutorial-continuation.md` (deleted 2026-08-22 — git history)).
+- Source: user instruction 2026-05-12. Applies to all tutorial videos including the existing pilot (retrofitted at commit `af504ea`) and Klaviyo tutorial (per `docs/codex-prompts/klaviyo-tutorial-continuation.md` (deleted 2026-08-22 — git history)).
 
 ### INV-12 — Selector scoping for provider / feature panels
 WPForms admin renders ALL provider connection forms in the DOM and hides inactive ones via `display: none` or accordion collapse. A naive query like `iframeManager.query('input[name="api_key"]')` matches the FIRST one in DOM order — which may be ConvertKit, ActiveCampaign, Mailchimp, or any other integration that happens to be earlier in the captured snapshot.
@@ -140,7 +140,7 @@ const settingsLink = findInIframeByText(ifm, 'Settings');
 
 The library-side helper `findInIframeByText(iframeManager, text)` (in `videos/_shared/iframe-helpers.js`) walks from a leaf text node up to the nearest clickable ancestor, returning the element. Use this for any captured SaaS UI; reserve class/id selectors for WPForms admin where class names are stable across captures.
 
-Learned during Klaviyo tutorial v4 + v11 builds (`videos/klaviyo-quick-connect/index.html`). The empty-rect throw at `elementToStageCoords` caught real bugs both times — once on `input[name="api_key"]` matching the hidden ConvertKit form (v2), once on `.js-wpforms-builder-provider-connection-add` matching 11 hidden buttons (v11). Source: Klaviyo session retro 2026-05-12.
+Learned during Klaviyo tutorial v4 + v11 builds. The empty-rect throw at `elementToStageCoords` caught real bugs both times — once on `input[name="api_key"]` matching the hidden ConvertKit form (v2), once on `.js-wpforms-builder-provider-connection-add` matching 11 hidden buttons (v11). Source: Klaviyo session retro 2026-05-12.
 
 ### INV-13 — Skill tool invocation: required for GATES, not for REFERENCES
 
@@ -148,7 +148,7 @@ Two kinds of "system files" in this repo. They need different consumption:
 
 | Type | Examples | Right way to consume |
 |---|---|---|
-| **Reference / Rules** | This invariants doc; `reference/wpforms-brand/BRAND.md`; `docs/library-scope-frequency-2026-05-12.md` (deleted 2026-08-22 — git history); `docs/sound-design-reference-2026-05-12.md`; `.claude/skills/wpforms-primitives/SKILL.md` (lookup index); `.claude/skills/wpforms-gsap-rules/SKILL.md` (rules reference). | **Read inline. File-read is fine.** Codex reading the architecture-invariants doc directly was the doc working as designed — it's data, not process. |
+| **Reference / Rules** | This invariants doc; `docs/library-scope-frequency-2026-05-12.md` (deleted 2026-08-22 — git history); `docs/sound-design-reference-2026-05-12.md`; `.claude/skills/wpforms-primitives/SKILL.md` (lookup index); `.claude/skills/wpforms-gsap-rules/SKILL.md` (rules reference). | **Read inline. File-read is fine.** Codex reading the architecture-invariants doc directly was the doc working as designed — it's data, not process. |
 | **Gates / Process** | `.claude/skills/wpforms-motion-audit/SKILL.md` (tier-scoring procedure with a recorded artifact); `.claude/skills/wpforms-video/SKILL.md` HARD-GATE storyboard approval; `.claude/skills/wpforms-postintro/SKILL.md` multi-animation rule check. | **Invoke via the Skill tool.** Reading the rubric ≠ running the scorer. The procedure produces an artifact (tier rating, approval, gate-passed marker) that file-read cannot. |
 
 **The Skill tool is the gate for procedural skills. Reading a skill's markdown file is NOT** — it shows you the rubric but doesn't produce the artifact (tier, approval, gate-passed). For reference skills (lookup indices, rules reference), reading is the entire interaction; no invocation needed.
@@ -229,32 +229,32 @@ Authored inline DOM that depicts WPForms / Klaviyo / Stripe / etc. product UI mu
 
 Source: Editorial retros 2026-05-12 (rules 4, confirmed across 3 sessions).
 
-### INV-16 — Pure-editorial first write = clone from `reference/html-templates/`
+### INV-16 — Pure-editorial first write = clone from a reference template
 
-For any new pure-editorial video (path 2 in CLAUDE.md), the first write of `videos/<slug>/index.html` MUST be a literal copy from the closest reference template under `reference/html-templates/`. Authoring from a blank file is forbidden unless the user explicitly overrides with the phrase "author from scratch" (or equivalent).
+For any new pure-editorial video (path 2 in CLAUDE.md), the first write of `videos/<slug>/index.html` MUST be a literal copy from the closest reference template. Authoring from a blank file is forbidden unless the user explicitly overrides with the phrase "author from scratch" (or equivalent).
 
 **The mechanical rule:**
 ```bash
-cp reference/html-templates/<closest>.html videos/<slug>/index.html
+cp <closest-template>.html videos/<slug>/index.html
 git add videos/<slug>/index.html  # commit the unmodified clone FIRST
 # then start customizing
 ```
 
-**Amendment 2026-08-28 — the clone SOURCE:** the first write is the path's skeleton, not the exemplars: pure-editorial / ad / mixed → `docs/examples/single-html-ad-skeleton.html` (FIX-2, 2026-07-13: it bakes in the autoplay + `__T0/__sched/__done/__dur` contract smoke and the renderer need; `videos/klaviyo-bridge-2/` and the `reference/html-templates/` exemplars predate it and are never the first write); tutorial → `docs/examples/single-html-tutorial-skeleton.html`; 9:16 short → `reference/html-templates/vertical-short-skeleton.html`. The table below still governs which exemplar you customize the clone TOWARD. The commit-the-unmodified-clone rule is unchanged.
+**Amendment 2026-08-28 — the clone SOURCE:** the first write is the path's skeleton, not the exemplars: pure-editorial / ad / mixed → `docs/examples/single-html-ad-skeleton.html` (FIX-2, 2026-07-13: it bakes in the autoplay + `__T0/__sched/__done/__dur` contract smoke and the renderer need; the style exemplars predate it and are never the first write); tutorial → `docs/examples/single-html-tutorial-skeleton.html`; 9:16 short → the 9:16 short skeleton. The table below still governs which exemplar you customize the clone TOWARD. The commit-the-unmodified-clone rule is unchanged.
 
 **Why a separate commit for the clone:** the diff between the clone-commit and the customization-commits is the actual creative work. Without it, a reviewer can't see what was inherited from the proven template vs what was invented. Sessions hand-rolling from scratch destroyed this audit trail and reliably produced "horrible v1."
 
 **Closest template selection — match on stylistic intent, not topic:**
 | Stylistic intent | Closest template |
 |---|---|
-| **Default — premium product announcement / integration story** | **`videos/klaviyo-bridge-2/index.html`** (CORE REFERENCE, approved after 3 sessions) |
-| Identity-continuity morph (single element threading the story) | `reference/html-templates/wpforms-ai-prompt-open.html` (S-tier reference) |
-| Linear scene sequence with named atmospheres | `reference/html-templates/editorial-reference-36s.html` (A-tier, 13 beats) |
-| Atmospheric collage / parallel objects | `reference/html-templates/openai-replica-18s.html` (single-HTML proof) |
+| **Default — premium product announcement / integration story** | **the core pure-editorial reference** (CORE REFERENCE, approved after 3 sessions) |
+| Identity-continuity morph (single element threading the story) | the S-tier morph exemplar |
+| Linear scene sequence with named atmospheres | the A-tier linear-scene exemplar (13 beats) |
+| Atmospheric collage / parallel objects | the single-HTML collage proof |
 
-When in doubt, clone `videos/klaviyo-bridge-2/index.html`. It encodes the patterns the other three references demonstrate individually, refined through 3 sessions of feedback.
+When in doubt, clone the core reference. It encodes the patterns the other three references demonstrate individually, refined through 3 sessions of feedback.
 
-**Atmospheres also clone, not invent.** Session 3's pegboard halftone background was invented from scratch. User reaction: "the fuck is this… pegboard… what the fuck are all these motion design files in the system for if you're gonna make shit from your ass." Fix was to lift the atmosphere wholesale from `wpforms-ai-board/index.html`. Rule: when adding atmosphere to a beat, point at the reference HTML it comes from in a code comment (same SOURCE: convention as INV-15).
+**Atmospheres also clone, not invent.** Session 3's pegboard halftone background was invented from scratch. User reaction: "the fuck is this… pegboard… what the fuck are all these motion design files in the system for if you're gonna make shit from your ass." Fix was to lift the atmosphere wholesale from an existing reference film. Rule: when adding atmosphere to a beat, point at the reference HTML it comes from in a code comment (same SOURCE: convention as INV-15).
 
 **What this prevents (confirmed across 3 sessions, 2026-05-12):**
 - Codex editorial v1: authored from scratch despite `wpforms-marketing` skill saying clone-first. Skill rule was soft advisory; no code-time gate.
@@ -277,7 +277,7 @@ Patterns that signal trouble:
 | New `WPFormsInteractions.setXfieldValue()` method | INV-7 — single-click wrappers stay inline |
 | `iframe.pointerEvents = 'auto'` for debugging | INV-8 — re-enable per-instance only when needed |
 | Inline-styling a "looks like the product UI" fragment without a snapshot reference | INV-15 — every UI fragment needs `// SOURCE:` or `// OVERRIDE:` annotation |
-| First-writing `videos/<slug>/index.html` from blank — any path | INV-16 (amended 2026-08-28) — clone the path's `docs/examples/` skeleton (shorts: `reference/html-templates/vertical-short-skeleton.html`) first, commit, THEN customize toward the style references |
+| First-writing `videos/<slug>/index.html` from blank — any path | INV-16 (amended 2026-08-28) — clone the path's `docs/examples/` skeleton (shorts: the 9:16 short skeleton) first, commit, THEN customize toward the style references |
 | Stage width set to 1280 / 1440 / 1600 on a NEW pilot | INV-1 — use 1920×1080; lower resolutions blur snapshots |
 
 ## Commits this invariant set was learned from

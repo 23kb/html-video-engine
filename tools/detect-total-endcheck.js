@@ -59,14 +59,9 @@ function findTotalEndchecks(source) {
 // Pre-FIX-3 videos whose TOTAL end-check only drives their local scrubber /
 // play-button chrome (no __done instrumentation, not clone targets). Frozen:
 // do NOT add entries — new videos must use onComplete. Shared by
-// no-total-endcheck.test.js and validate-singlehtml.js.
-const LEGACY_ALLOWLIST = new Set([
-  'editorial-reference',
-  'scene-b-v2-drag-and-drop',
-  'scene-c-submissions-overview',
-  'wpforms-ai-prompt-open',
-  'wpforms-ai-smart-edit-rebuild',
-]);
+// no-total-endcheck.test.js and validate-singlehtml.js. The slugs live in the
+// gitignored tools/local-films.local.json; without it the list is empty.
+const LEGACY_ALLOWLIST = new Set(require('./lib/local-films.js').legacyEndcheckAllowlist || []);
 
 module.exports = { findTotalEndchecks, LEGACY_ALLOWLIST };
 

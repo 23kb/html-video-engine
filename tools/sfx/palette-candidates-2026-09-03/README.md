@@ -8,9 +8,7 @@
 > per-sound measurements: `tools/sfx/palette/README.md` + `manifest.json`.
 
 Standalone ElevenLabs one-shot candidates for Umair's listening pass (U4 rider:
-"we need similar sfx"). Reference snips + the measured cue-class table + the
-candidate→target comparison live in
-`reference/New folder/_extraction/_sfx-snips/LISTEN-ME.md`.
+"we need similar sfx").
 
 - `generate-palette.mjs` — standalone generator (mirrors `../generate.mjs`'s
   request path; does not touch it). Cached: existing mp3s are never re-generated.

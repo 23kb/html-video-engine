@@ -2,10 +2,7 @@
 
 Full how-to video for the WPForms Klaviyo addon. Walks the viewer from "addon installed" all the way to "form submission appears as a Klaviyo profile." Single-HTML tutorial path.
 
-Use this prompt when: starting a fresh session to author `videos/klaviyo-addon-tutorial/`. Distinct from the two existing Klaviyo videos:
-
-- `videos/klaviyo-quick-connect/` — morph-chain intro/teaser (~14s editorial postIntro + brief tutorial). It still runs (only references `klaviyo-example-profile` for cross-snapshot loads + DOM-puppets `admin-settings-integrations`), but its tutorial chapter was authored BEFORE handoff-7's snapshot interactivity landed — every state change is hand-rolled DOM puppetry. The new tutorial below uses the wired hooks (`settings-integrations-row-toggle`, `-add-account-toggle`, `-connect-submit`, `builder-providers-connection-add`, `connection-cascade-reveal`) instead, so chapter code stays small. Reference `klaviyo-quick-connect/storyboard.md` for its S/A-tier postIntro pattern + atmosphere; do NOT clone its chapter code.
-- `videos/klaviyo-bridge-2/` — pure editorial reference (no mac frame, no real product UI). Not a tutorial. Useful as a brand/atmosphere reference only.
+Use this prompt when: starting a fresh session to author the Klaviyo addon tutorial.
 
 This new video is the missing **full how-to** — long form, real product UI, narration-driven.
 
@@ -15,7 +12,7 @@ This new video is the missing **full how-to** — long form, real product UI, na
 
 1. Confirm the snapshots in the surface plan still exist (`node tools/list-snapshots.js --search klaviyo` + `--search integrations`).
 2. Copy the **Prompt** block below and paste it as the first message in a fresh Claude session.
-3. The session MUST write `videos/klaviyo-addon-tutorial/storyboard.md` FIRST and wait for your explicit approval before writing `index.html` or chapter code (HARD-GATE per `wpforms-video` skill).
+3. The session MUST write `videos/<slug>/storyboard.md` FIRST and wait for your explicit approval before writing `index.html` or chapter code (HARD-GATE per `wpforms-video` skill).
 4. The proposed storyboard skeleton at the bottom of this file is a starting point — the session can iterate it with you.
 
 ---
@@ -24,12 +21,12 @@ This new video is the missing **full how-to** — long form, real product UI, na
 
 ```
 Make the full how-to tutorial video for the WPForms Klaviyo addon. Slug:
-klaviyo-addon-tutorial.
+<slug>.
 
 Source doc: https://wpforms.com/docs/klaviyo-addon/
 
 Architecture: single-HTML tutorial (CLAUDE.md default for NEW tutorial work).
-One videos/klaviyo-addon-tutorial/index.html + master gsap.timeline({paused:true})
+One videos/<slug>/index.html + master gsap.timeline({paused:true})
 + IframeManager (one iframe, cross-snapshot navigation via ifm.swap() crossfades) + Cursor
 from videos/_shared/motion-primitives.js + WPFormsInteractions from
 videos/_shared/wpforms-interactions.js + videos/_shared/narration.js.
@@ -37,15 +34,6 @@ videos/_shared/wpforms-interactions.js + videos/_shared/narration.js.
 NOT the legacy engine + manifest + chapters/*.js path. NOT split-screen
 (BuilderFrontendSplit is wrong for this — multi-snapshot cross-surface, not
 single-field mirror).
-
-DO NOT duplicate existing Klaviyo videos:
-- videos/klaviyo-quick-connect/ — morph-chain intro/teaser. Reference its
-  storyboard.md for the S/A-tier postIntro pattern + the atmosphere /
-  mac-frame visual scaffold. DO NOT clone its tutorial chapter code: it
-  pre-dates handoff-7 snapshot interactivity and hand-rolls every state
-  change via DOM puppetry on admin-settings-integrations. Our chapter
-  code uses the wired hooks instead — much smaller surface.
-- videos/klaviyo-bridge-2/ — pure editorial reference, not a tutorial.
 
 This is the FULL end-to-end how-to. Audience: WPForms Plus+ users who
 just installed the Klaviyo addon and need to wire it up.
@@ -175,10 +163,9 @@ storyboard, do not silently pick:
      fades in. Five distinct animations: line draw, chip flight, caret
      typing, button squash, pill flight + profile fill.
 
-  B. Adapt the klaviyo-quick-connect chain
-     The existing klaviyo-quick-connect/storyboard.md describes a 9-phase
-     form → submission pill → profile card → audience cascade morph
-     chain. It is S/A-tier. Adapt rather than re-invent. The frame is
+  B. "Audience cascade" chain
+     A 9-phase form → submission pill → profile card → audience cascade
+     morph chain. The frame is
      "audience growth" (multiple profiles cascading), not "the
      connection itself" (the bridge concept). Different angle.
 
@@ -196,7 +183,7 @@ Constraints (standing — repeat in case CLAUDE.md isn't in context):
   tools, capture/capture.js). runtime/ and engine/ no longer exist (retired 2026-08-22).
   - No visual QC from you — Umair QCs.
   - Storyboard gate FIRST per wpforms-video skill — write
-    videos/klaviyo-addon-tutorial/storyboard.md and WAIT for Umair's
+    videos/<slug>/storyboard.md and WAIT for Umair's
     explicit approval BEFORE authoring index.html or chapter timeline.
     The storyboard names the HERO BEAT (the one that carries the video —
     build it first, spend revisions there) and any RULES FOR THE WHOLE
@@ -218,13 +205,9 @@ Constraints (standing — repeat in case CLAUDE.md isn't in context):
     field markup) needs a // SOURCE: snapshots/<name>/... citation OR
     // OVERRIDE: <user approval> annotation in the code itself.
   - INV-16: first write of index.html is not from blank. Copy
-    videos/klaviyo-quick-connect/index.html as the STRUCTURAL scaffold
-    only — keep atmosphere, mac frame, intro/outro shape, brand bug.
-    DELETE its tutorial chapter logic (the DOM-puppet helpers like
-    expandKlaviyoAccordion / markKlaviyoConnected) — those are obsolete
-    now that interactivity.js wires the same hooks. Rebuild chapters
-    using cursor clicks on real selectors. Cite the clone with
-    // SOURCE: videos/klaviyo-quick-connect/index.html at the top.
+    docs/examples/single-html-tutorial-skeleton.html and commit the
+    unmodified clone first. Build chapters using cursor clicks on real
+    selectors.
 
 Required reading BEFORE authoring:
   - .claude/skills/wpforms-video (Skill tool — procedural gate, file-read
@@ -237,26 +220,24 @@ Required reading BEFORE authoring:
   - .claude/skills/wpforms-marketing, "Snapshot transitions" section (file-read
     OK — ifm.swap() crossfade vs one continuous timeline; boundary rules measured
     by tools/seam-gate.js. The wpforms-transitions skill retired 2026-08-22.)
-  - videos/klaviyo-quick-connect/storyboard.md (S/A-tier postIntro reference
-    + 5-chapter tutorial scaffolding)
   - docs/video-architecture-invariants-2026-05-12.md (INV-1, INV-9,
     INV-11, INV-15, INV-16)
 
 Deliverables:
-  - videos/klaviyo-addon-tutorial/storyboard.md (writes FIRST, gated)
-  - videos/klaviyo-addon-tutorial/index.html
-  - videos/klaviyo-addon-tutorial/narration/*.txt + rendered *.mp3
-    (run: node tts/generate.js --video klaviyo-addon-tutorial)
+  - videos/<slug>/storyboard.md (writes FIRST, gated)
+  - videos/<slug>/index.html
+  - videos/<slug>/narration/*.txt + rendered *.mp3
+    (run: node tts/generate.js --video <slug>)
   - Static checks pass:
-      node tools/validate-singlehtml.js klaviyo-addon-tutorial
-      node tools/lint-determinism.js --video klaviyo-addon-tutorial
+      node tools/validate-singlehtml.js <slug>
+      node tools/lint-determinism.js --video <slug>
       (validate-video.js retired 2026-08-22 with the engine; both are mandatory.)
   - Motion-audit on the postIntro: invoke wpforms-motion-audit Skill tool
     BEFORE handoff, record tier. Bar = tier A. Anything B or below needs
     fix or explicit override.
 
 Plus a playable review URL:
-  - http://localhost:4321/videos/klaviyo-addon-tutorial/index.html
+  - http://localhost:4321/videos/<slug>/index.html
 
 Push back if:
   - Any required snapshot is missing or selector-broken after re-verification.
@@ -272,13 +253,13 @@ Push back if:
 
 ### Section A — Intro (0 → 3s)
 Editorial card centered, no mac frame:
-- Sullie SVG (`reference/wpforms-brand/assets/sullie-master.svg`)
+- Sullie SVG (the real brand asset)
 - Heading: **"Klaviyo Addon"**
 - Subhead: "Connect WPForms to Klaviyo — end to end"
 - Fade in (0.7s) → hold (1.6s) → fade out (0.7s)
 
 ### Section B — PostIntro (3.5 → ~11.5s, ~8s)
-Pick A (data bridge) or B (adapted audience-cascade chain). See Prompt block.
+Pick A (data bridge) or B (audience-cascade chain). See Prompt block.
 
 ### Section C — Tutorial (~11.5 → ~135s, ~123s)
 9 beats matching the surface plan in the Prompt block. Rough timing budget:

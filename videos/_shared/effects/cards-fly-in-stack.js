@@ -9,7 +9,7 @@
 // admin template picker). Default templates are a curated 6-card subset of
 // REAL_TEMPLATES from _wpforms-templates.js.
 //
-// Source: reference/gsap-effects/effect014.html
+// Source: ported GSAP effect.
 // Vocabulary slot: card layout — fly-in-stack
 
 /* global gsap */

@@ -51,8 +51,11 @@ section('Gate 2 — a video that never sets __done fails within budget');
 }
 
 section('Gate 3 — uninstrumented video exits 2, not 1');
-{
-  const r = smoke(['klaviyo-bridge-2', '--seconds', '5']);
+const UNINSTRUMENTED = require('../lib/local-films.js').smokeUninstrumented;
+if (!UNINSTRUMENTED) {
+  console.log('  - skipped: no local uninstrumented film (tools/local-films.local.json)');
+} else {
+  const r = smoke([UNINSTRUMENTED, '--seconds', '5']);
   ok(r.code === 2, `exit 2 for missing __T0 (got ${r.code})`);
   ok(/not instrumented/.test(r.out), 'says "not instrumented"');
 }

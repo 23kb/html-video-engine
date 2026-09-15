@@ -127,10 +127,10 @@ Per the skill, mapped to our actual video types:
 
 | Our video type | Mood | Style | BPM |
 |---|---|---|---|
-| WPForms tutorial (e.g., make-field-required) | Calm/Professional | Code-tutorial lo-fi | 70-90 |
-| AI-feature tutorial (build-forms-faster-with-wpforms-ai) | AI/ML demo ambient | Subtle synths, minimal percussion | 80-100 |
-| Marketing/announcement (e.g., wpforms-notifications-promise) | Uplifting corporate | Building energy, positive resolution | 100-120 |
-| Mixed (klaviyo-quick-connect, rest-api-overview-polished) | Tech corporate | Professional, modern, clean | 95-115 |
+| WPForms tutorial | Calm/Professional | Code-tutorial lo-fi | 70-90 |
+| AI-feature tutorial | AI/ML demo ambient | Subtle synths, minimal percussion | 80-100 |
+| Marketing/announcement | Uplifting corporate | Building energy, positive resolution | 100-120 |
+| Mixed | Tech corporate | Professional, modern, clean | 95-115 |
 | Performance/speed demo | High energy electronic | Driving beats | 120-140 |
 
 Use sparingly — most WPForms tutorial content lives at 80-110 BPM.

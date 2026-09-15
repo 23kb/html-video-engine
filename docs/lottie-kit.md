@@ -32,7 +32,7 @@ export default [{
   effect: async () => {
     const gsap = await loadGsap({ flip: false, motionPath: false });
     await loadLottie();
-    const lottie = mountLottie('/videos/lottie-sandbox/assets/bumper.json');
+    const lottie = mountLottie('/videos/<slug>/assets/bumper.json');
     const tl = gsap.timeline();
     lottie.tweenInto(tl, { duration: 2, position: 0 });
     await tlDone(tl);
@@ -58,7 +58,7 @@ export default [{
   effect: async () => {
     const gsap = await loadGsap({ flip: false, motionPath: false });
     await loadLottie();
-    const lottie = mountLottie('/videos/lottie-sandbox/assets/badge.json');
+    const lottie = mountLottie('/videos/<slug>/assets/badge.json');
     const tl = gsap.timeline();
     lottie.tweenMarker(tl, { from: 'enter', to: 'hold', duration: 0.6 });
     tl.to({}, { duration: 0.4 });

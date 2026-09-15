@@ -1,10 +1,10 @@
 // Voicebox / ElevenLabs → <target>/<slug>.mp3
 //
 // Per-video (preferred):
-//   node tts/generate.js --video creating-first-form              # all .txt in that video's narration dir
-//   node tts/generate.js --video creating-first-form cff-2-templates  # subset
+//   node tts/generate.js --video <slug>              # all .txt in that video's narration dir
+//   node tts/generate.js --video <slug> <clip-key>   # subset
 //
-// Engine selection (2026-07-22, entry-automation QC r4 issue 4):
+// Engine selection (2026-07-22, tutorial QC r4 issue 4):
 //   --engine voicebox     (default) local Voicebox drafts — unchanged behavior
 //   --engine elevenlabs   ElevenLabs API finals. Reads ELEVENLABS_API_KEY from
 //                         env or .env. Voice resolution: --voice <id> flag →

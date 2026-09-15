@@ -4,8 +4,8 @@
 // behind it (typically a dimmed logo wall), with an optional slow sheen that
 // carries the read hold.
 //
-// Source: videos/reel-ad-vocabulary/index.html beat b5 (ad-vocabulary proving
-// reel, 2026-09-03 — motion-audit tier A, seam-gate PASS). Pairs with
+// Source: promoted from the ad-vocabulary proving reel, beat b5
+// (2026-09-03 — motion-audit tier A, seam-gate PASS). Pairs with
 // `mountLogoWall`: wall pops → wall dims → card lifts.
 // Vocabulary slot: proof — testimonial card
 //

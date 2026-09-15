@@ -1,4 +1,4 @@
-// Capture klaviyo-bridge-2 at the paste-API-key zoom (iframeCard at scale 1.75)
+// Capture the film at the paste-API-key zoom (iframeCard at scale 1.75)
 // to confirm the blur the user reports.
 const { chromium } = require('playwright');
 const path = require('path');
@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const OUT_DIR = path.join(__dirname, 'card-shots');
 fs.mkdirSync(OUT_DIR, { recursive: true });
-const URL = 'http://localhost:52823/videos/klaviyo-bridge-2/index.html';
+const URL = process.argv[2] || 'http://localhost:4321/videos/<slug>/index.html';
 
 // Timeline seek points to test:
 //   17.0s — iframeCard zoomed to scale 1.75, paste-flow about to run

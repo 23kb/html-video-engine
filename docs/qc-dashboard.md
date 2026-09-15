@@ -17,7 +17,7 @@ node tools/preview.js --no-open
 Then open `http://localhost:4321/tools/qc-dashboard/`. The dashboard needs
 `preview.js` specifically — the video-index route (`/__qc/videos.json`) lives
 there, not in bare `serve.js`. Deep-link a video with
-`#<slug>`, e.g. `http://localhost:4321/tools/qc-dashboard/#short-form-columns`.
+`#<slug>`: `http://localhost:4321/tools/qc-dashboard/#<slug>`.
 
 ## What it shows
 
@@ -45,7 +45,7 @@ there, not in bare `serve.js`. Deep-link a video with
 The block looks like this:
 
 ```
-QC feedback — short-address-autocomplete
+QC feedback — <slug>
 - 15.90s — pane re-centers late after the reveal
 - 31.80s — payoff chip overlaps the field label
 ```

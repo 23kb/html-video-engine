@@ -36,7 +36,7 @@ export default {
 ```
 
 ```js
-// videos/<slug>/chapters/where-entries-live.js
+// videos/<slug>/chapters/<chapter>.js
 import sel from './_selectors.js';
 
 export default [{

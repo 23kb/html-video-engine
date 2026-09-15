@@ -4,13 +4,13 @@
 //
 // Manifest format (videos/<slug>.video.json):
 // {
-//   "slug": "klaviyo-addon-tutorial",
+//   "slug": "<slug>",
 //   "pieces": [
-//     { "kind": "hf",   "path": "videos/klaviyo-addon-tutorial-intro" },
-//     { "kind": "html", "path": "videos/klaviyo-addon-tutorial" },
-//     { "kind": "hf",   "path": "videos/klaviyo-addon-tutorial-outro" }
+//     { "kind": "hf",   "path": "videos/<slug>-intro" },
+//     { "kind": "html", "path": "videos/<slug>" },
+//     { "kind": "hf",   "path": "videos/<slug>-outro" }
 //   ],
-//   "output": "renders/klaviyo-addon-tutorial.mp4"
+//   "output": "renders/<slug>.mp4"
 // }
 //
 // Per-piece output discovery (convention):
@@ -30,7 +30,7 @@
 // The manifest can override CLI flags via top-level "xfade", "fps", "resolution" fields.
 //
 // Self-test (from repo root, assumes two existing MP4s exist):
-//   node tools/stitch.js videos/klaviyo-addon-tutorial.video.json --no-render --dry-run
+//   node tools/stitch.js videos/<slug>.video.json --no-render --dry-run
 //   # then with --no-render to verify ffprobe + concat against the real outputs
 
 const fs = require('fs');

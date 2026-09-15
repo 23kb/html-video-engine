@@ -587,8 +587,7 @@ add a Smart Tag, plan a dedicated Smart Tag beat using
 a default value, call it out in the relevant field beat unless the
 video's product focus makes the Smart Tag itself important.
 
-Use the existing `videos/form-notifications/chapters/smart-tags.js`
-flow as precedent: open the picker, select the token, and show the
+Follow the standard Smart Tag flow: open the picker, select the token, and show the
 inserted chip / token when the surface supports it. Missing picker
 or inserted-token states are internal capture gaps, never user
 questions.

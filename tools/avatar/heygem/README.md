@@ -43,9 +43,8 @@ verifies GPU passthrough.
 
 ## Client flow (built after the server is live)
 
-1. One-time: register Kacie's digital human from
-   `reference/avatar-source/kacie1-fullscreen-14s.mp4` (14s genuine
-   full-screen footage — passes check-base.py).
+1. One-time: register Kacie's digital human from 14s of genuine
+   full-screen footage (passes check-base.py).
 2. Per segment: `tools/avatar/generate-heygem.js --audio <mp3> --out <mp4>`
    → POST audio to `/v1/preprocess_and_tran` (:18180) → `/easy/submit`
    (:8383) → poll `/easy/query` → download MP4 → same duration check as the

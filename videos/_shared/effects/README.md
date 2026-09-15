@@ -1,6 +1,6 @@
 # Effects Library — motion vocabulary for editorial work
 
-This is the **named-effect vocabulary** for pure-editorial and mixed-surface videos. Each effect is a promoted GSAP-effect port from `reference/gsap-effects/`, restructured as a mountable JS module:
+This is the **named-effect vocabulary** for pure-editorial and mixed-surface videos. Each effect is a promoted GSAP-effect port, restructured as a mountable JS module:
 
 ```js
 import { mountTextStackFromRight } from '../../_shared/effects/index.js';
@@ -13,8 +13,6 @@ fx.tweenInto(tl, { position: 0.5 });
 ```
 
 All effects return `{ el, tweenInto(tl, opts), dispose() }`. The caller mounts `el` into the stage at whatever position they need, then composes the tween into a master timeline.
-
-**Source of motion:** [reference/gsap-effects/CATALOG.md](../../../reference/gsap-effects/CATALOG.md) — the full 101-port library. This `_shared/effects/` directory is the **production subset** — effects promoted to be importable. The full catalog stays in `reference/` as the visual menu.
 
 **QC harness:** [videos/_qc-effects/index.html](../../_qc-effects/index.html) — picker UI to scrub each effect.
 
@@ -44,7 +42,7 @@ apply the accent-contrast-per-ground rule to EVERY line, not just the accent.
 
 ### Ad-path surfaces
 
-Promoted from `videos/reel-ad-vocabulary` (proving reel, tier A, all gates green — Umair's ruling 2026-09-03). All four are **dark-ground** by default (ink card, cream text); restyle their `--fx-*` vars for a light bed. All four **inherit the film's font** on purpose, so their text metrics match the rest of the frame.
+Promoted from a proving reel (tier A, all gates green — Umair's ruling 2026-09-03). All four are **dark-ground** by default (ink card, cream text); restyle their `--fx-*` vars for a light bed. All four **inherit the film's font** on purpose, so their text metrics match the rest of the frame.
 
 | Effect | Intent | When to use |
 |---|---|---|
@@ -93,7 +91,7 @@ LIGHT ground; restyle the CSS vars on a dark bed.
 
 | Effect | Intent | When to use |
 |---|---|---|
-| `mountGlassCard` | Frosted-glass / holographic card: tinted gradient glass, true frost (`blur(22px) saturate(180%)`), soft-light sheen sweep (`sheenSweep`), soft-spring entrance (`glassSpringEase`) | Premium editorial surfaces over a rich moving "world" bed. Style reference: `videos/glass-style-demo/index.html` (approved 2026-09-02, from the glass-pilot-hyperframes study). |
+| `mountGlassCard` | Frosted-glass / holographic card: tinted gradient glass, true frost (`blur(22px) saturate(180%)`), soft-light sheen sweep (`sheenSweep`), soft-spring entrance (`glassSpringEase`) | Premium editorial surfaces over a rich moving "world" bed. |
 
 Glass needs a rich/dark world MOVING behind it (the true frost is the point);
 content inside the viewport is dark ink on light glass. Never animate the
@@ -105,7 +103,7 @@ sub-1s power2 whip was rejected in review.
 
 A seam composes ACROSS two beats that already exist, so there is nothing to mount: no `el`, no `tweenInto`, no `dispose`. These take `(tl, outEl, inEl, cut)` and write to the master timeline at absolute position `cut`. `outEl` / `inEl` are whole-scene wrappers — the master owns seams, scenes own beats, and the master never touches anything inside a scene.
 
-**`seams.js`** — the five recipes from `docs/hyperframes-seam-grammar-rnd-2026-09-03.md` §2.1–§2.5 (verbatim constants as defaults), proven on `videos/reel-ad-vocabulary` (5 cuts, `seam-gate` PASS with zero flags):
+**`seams.js`** — the five recipes from `docs/hyperframes-seam-grammar-rnd-2026-09-03.md` §2.1–§2.5 (verbatim constants as defaults), proven on the ad proving reel (5 cuts, `seam-gate` PASS with zero flags):
 
 | Export | Recipe | When to use |
 |---|---|---|
@@ -118,7 +116,7 @@ A seam composes ACROSS two beats that already exist, so there is nothing to moun
 
 Two structural rules make all five cheap (§1): **shared ground** — every scene sits on the same background bed, so a throw or zoom exposes identical ground and no edge flashes; and **hold the final frame**.
 
-**`wash-transition.js`** — the whiteout cut for await-driven (tutorial-path) films, from `videos/reel-tutorial-craft`:
+**`wash-transition.js`** — the whiteout cut for await-driven (tutorial-path) films, from the tutorial proving reel:
 
 | Export | Intent | When to use |
 |---|---|---|
@@ -172,7 +170,7 @@ Anything that owns DOM stays a mount. If you find yourself adding a third deviat
 
 ## Adding a new effect
 
-1. Pick the source port from `reference/gsap-effects/effectNNN.html`.
+1. Pick the source effect to port.
 2. Create `videos/_shared/effects/<category>-<motion-verb>.js` — name it by motion intent, not by source number.
 3. Extract from the source HTML:
    - **CSS** → scoped under `#${id}.${SCOPE}` (use `mountStyle` from `_utils.js`)
@@ -187,13 +185,13 @@ Anything that owns DOM stays a mount. If you find yourself adding a third deviat
 
 ## Promoting from a proving reel
 
-The standing gate is "prove it video-local, promote on second use". Umair's 2026-09-03 ruling adds a second door: **a QC-approved proving reel counts as the proof**, because a reel is built to exercise the vocabulary rather than to tell one story. Two reels went through it — `videos/reel-ad-vocabulary` (ad vocabulary + the 5 seam recipes, tier A, seam-gate PASS) and `videos/reel-tutorial-craft` (tutorial craft, tier A).
+The standing gate is "prove it video-local, promote on second use". Umair's 2026-09-03 ruling adds a second door: **a QC-approved proving reel counts as the proof**, because a reel is built to exercise the vocabulary rather than to tell one story. Two reels went through it — one for ad vocabulary + the 5 seam recipes (tier A, seam-gate PASS) and one for tutorial craft (tier A).
 
 A promotion out of a reel is only finished when the reel **imports the promoted module and its gates still pass at the same measured values**. An unexercised promotion is untested code: refactor the source film to the shared module, re-run its battery, and compare the numbers — for a film with cuts, the `seam-gate` velocities must be identical, not merely still-passing.
 
 ## External port source: Originkit (round-2 T3, 2026-08-08)
 
-Besides `reference/gsap-effects/`, **originkit.dev** is a free copy-paste component
+**originkit.dev** is a free copy-paste component
 library (~250 animations: shader backgrounds, pixel cards, dot matrices, text paths,
 text lifts, neon borders). Port pieces on demand through the steps above — never in bulk.
 

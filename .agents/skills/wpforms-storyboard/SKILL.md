@@ -47,7 +47,7 @@ In this order, with the tools — never a full read of a snapshot `index.html` (
 1. **Product truth** for every claim, value, metric name and ability limit (above).
 2. **Snapshot inventory:** `node tools/list-snapshots.js --search <q>` — what real UI exists. A state that appears on two surfaces (builder canvas AND published form) needs a capture per surface; enumerate **state × surface**. Status each: `exists` / `DOM-derived` / `NEEDS CAPTURE` / `ASK USER`. Hidden panels a snapshot carries: `outline.md` "Panels & modals" — mark in/out of scope.
 3. **Can the beat DRIVE the UI?** `node tools/field-state.js --interactivity <field>` — handlers are added per video; a beat that toggles an option needs one to exist.
-4. **Real references, not adjectives.** Every editorial-composition beat cites a real frame: the reference sheets in `reference/New folder/_extraction/` (Shipper, Codex, x.ai, Google Pics tiles), `reference/html-templates/` (the S/A-tier films), `videos/klaviyo-bridge-2/` (core editorial vocabulary), or a snapshot region. "Make it Apple-like" is not a reference.
+4. **Real references, not adjectives.** Every editorial-composition beat cites a real frame: a reference film's contact sheet (Shipper, Codex, x.ai, Google Pics tiles), a house S/A-tier film, or a snapshot region. "Make it Apple-like" is not a reference.
 5. **Existing kit for this shape:** `docs/authoring-prompts/` (e.g. `builder-frontend-split.md` for tweak-builder-watch-frontend tutorials), `docs/postintro-patterns.md`, the ad-format menu below.
 6. **Length + audio mode defaults** (override with a reason): tutorial 60–120s narrated; ad 25–45s, no VO (typed copy carries it — Shipper/Codex grammar), VO on request; short ≤60s, narration pins beat durations.
 
@@ -69,8 +69,8 @@ angle, script or caption copy (two films scratched on idea with green gates — 
 ## Step 3 — What this tool can execute (the capability map)
 
 Storyboard only what the build can do, and name it. Every beat row cites a primitive, effect,
-interaction or surface from this map; anything else is `Custom` — a flag that names the port in
-`reference/gsap-effects/CATALOG.md` (101 ports, promotable) it would come from, or asks.
+interaction or surface from this map; anything else is `Custom` — a flag that names where it
+would come from, or asks.
 
 ### Surfaces
 
@@ -139,7 +139,7 @@ puppetry the build writes by hand — say so in the row.
 
 Native `<select>` (faux overlay instead) · a fixed modal under a camera zoom · any invented UI fragment (needs `// OVERRIDE: <approval>` — list it in the storyboard) · fake WPForms UI, ever · mockups when a real capture exists (max C in audit) · invented template names/thumbnails (fetch `https://wpforms.com/templates/api/get/`) · a synthetic talking head (parked) · third-party footage without a rights check · purple as primary · a stage below 1920×1080 (portrait 1080×1920 is the one exception).
 
-**Discovery when the map is silent:** `node tools/skill-context.js`, the `wpforms-primitives` skill, `videos/_shared/effects/README.md`, `reference/gsap-effects/CATALOG.md`, the QC pages `videos/_qc-effects/`, `_qc-primitives/`, `_qc-interactions/`.
+**Discovery when the map is silent:** `node tools/skill-context.js`, the `wpforms-primitives` skill, `videos/_shared/effects/README.md`, the QC pages `videos/_qc-effects/`, `_qc-primitives/`, `_qc-interactions/`.
 
 ## Step 4 — Write the storyboard (`videos/<slug>/storyboard.md`)
 
@@ -160,7 +160,7 @@ Only after the angle and copy are approved. Agree the slug first. Sections, in o
 | Shot list | ✓ | ✓ | ✓ | One row per beat KEY (must match the film's `beat()` keys or `tl.addLabel` names): subject & hero frame / surround (portrait) / named vocabulary / transformation / carriers; composition map |
 | **Camera plan** | ✓ | ✓ | ✓ | Header: `Cadence:` (seconds per landing + the WHY), `Max hold:`, `Ease voice:` (film default + overrides), `Landings:` + zoom range. Then one row per landing: t, subject, fill or zoom (a number), voice + duration in, hold, what carries the hold. Format and voices: the format doc's *Camera plan* section |
 | Look gate | — | ✓ | ✓ | Per editorial-composition beat: the cited reference frame (sheet + tile) or "stills pass" — never an adjective |
-| Capability check | ✓ | ✓ | ✓ | Every primitive / effect / interaction named in the rows resolves to Step 3; `Custom` entries name their CATALOG port or ask |
+| Capability check | ✓ | ✓ | ✓ | Every primitive / effect / interaction named in the rows resolves to Step 3; `Custom` entries name where they would come from, or ask |
 | OVERRIDE items | ✓ | ✓ | ✓ | Invented chrome, staged pre-states, fragment presentation, co-brand assets, no-VO — approved with the copy |
 | Build order + handoff | ✓ | ✓ | ✓ | Skeleton clone committed unmodified → stills → hero beat → rest → gates; which skill builds |
 

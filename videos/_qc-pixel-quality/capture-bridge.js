@@ -1,4 +1,4 @@
-// Capture klaviyo-bridge-2 at the actual zoomed-in moments to see if the
+// Capture the film at the actual zoomed-in moments to see if the
 // "looks like 240p" complaint reproduces in headless render.
 const { chromium } = require('playwright');
 const path = require('path');
@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const OUT_DIR = path.join(__dirname, 'bridge-shots');
 fs.mkdirSync(OUT_DIR, { recursive: true });
-const URL = 'http://localhost:54557/videos/klaviyo-bridge-2/index.html';
+const URL = process.argv[2] || 'http://localhost:4321/videos/<slug>/index.html';
 
 // Camera poses we want to capture, with scFocus() args.
 // Mirrors what the GSAP timeline lands on at peak-zoom moments.

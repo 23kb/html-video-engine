@@ -6,9 +6,8 @@
 // because nothing reads them but a human mid-task, and by then the cost is
 // already paid. This reads every markdown path reference and checks disk.
 //
-// Scans: CLAUDE.md, docs/**/*.md, .claude/skills/**/*.md, capture/*.md,
-//        reference/**/*.md
-// Checks: repo-relative paths under videos/, snapshots/, reference/, tools/,
+// Scans: CLAUDE.md, docs/**/*.md, .claude/skills/**/*.md, capture/*.md
+// Checks: repo-relative paths under videos/, snapshots/, tools/,
 //         capture/, runtime/, engine/, docs/ that look like real files
 //         (they carry an extension) — plus bare directory refs under videos/.
 //
@@ -29,9 +28,9 @@ const skipVideos = args.includes('--skip-videos');
 const strict = args.includes('--strict');
 const quiet = args.includes('--quiet');
 
-const SCAN_ROOTS = ['docs', '.claude/skills', 'capture', 'reference'];
+const SCAN_ROOTS = ['docs', '.claude/skills', 'capture'];
 const SCAN_FILES = ['CLAUDE.md', 'README.md', 'CONTRIBUTING.md'];
-const REF_RE = /\b((?:videos|snapshots|reference|tools|capture|runtime|engine|docs)\/[A-Za-z0-9._\-/]+)/g;
+const REF_RE = /\b((?:videos|snapshots|tools|capture|runtime|engine|docs)\/[A-Za-z0-9._\-/]+)/g;
 
 function walk(dir, out = []) {
   if (!fs.existsSync(dir)) return out;

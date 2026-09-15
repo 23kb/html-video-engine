@@ -2315,7 +2315,7 @@ Default tag → `skip` for canvas, `narration-only` for the ink-color behaviour 
 1. Claude cross-references each entry against the audit and existing snapshots.
 2. For every state tagged `must` or `nice`, the registry gets one entry.
 3. Status is decided from evidence type:
-   - inline HTML here (or `reference/payoff-snippets/...` — deleted 2026-08-22, git history) → `supported-exact`.
+   - inline HTML here → `supported-exact`.
    - "needs capture" → `blocked-needs-truth` with a slug.
    - `skip` / `never` → omitted, or `narration-only`.
 4. Compiler gate (Step 3) reads only the registry.

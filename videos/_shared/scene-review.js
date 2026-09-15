@@ -6,7 +6,7 @@
 // the FULL timeline (tools/render-html.js never sets ?scene=), so this never
 // changes the deliverable.
 //
-// Reference impl: videos/switch-to-wpforms-entry-importer/index.html
+// Reference impl: an earlier shipped tutorial
 // (ISSUES.md #9 postintro-only, #10 per-chapter). This generalizes that inline
 // pattern so every single-HTML video wires ?scene= identically.
 //
@@ -45,7 +45,7 @@ export function reviewScene(search) {
 }
 
 // ?skip=a,b — the DELIVERABLE cut (fix-round B5; generalizes the
-// custom-css-targeting inline pattern, ccs 26).
+// an earlier film's inline pattern, ccs 26).
 //
 // Delivery shape since 2026-07-23: tools/stitch.js concats REAL-Kacie intro +
 // HTML body + REAL-Kacie outro, so the HTML must not render its own bookends

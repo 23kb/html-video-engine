@@ -14,7 +14,7 @@
 // wrong thing" -> pointer tip inside the subject's rect; "font looks off" ->
 // computed font-family and color), then fixed. The assertion never regresses.
 //
-// Distilled from videos/wpforms-claude-you-just-chat/qc-probe.mjs (22 checks, tier S).
+// Distilled from a shipped film's qc-probe.mjs (22 checks, tier S).
 //
 // Rules baked in:
 //   - a PRIVATE port by default (PORT env, else 4399): preview.js live-reload on

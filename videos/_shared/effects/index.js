@@ -16,7 +16,7 @@ export { mountStatCountUp }                   from './stat-count-up.js';
 export { mountEndCard }                       from './end-card.js';
 export { mountGlassCard, glassSpringEase }    from './glass-card.js';
 
-// ── Ad-path vocabulary, promoted from videos/reel-ad-vocabulary (2026-09-03) ──
+// ── Ad-path vocabulary, promoted from the ad-vocabulary proving reel (2026-09-03) ──
 export { mountPhraseChain }                   from './phrase-chain.js';
 export { mountTaskQueue }                     from './task-queue.js';
 export { mountSkeletonToLive }                from './skeleton-to-live.js';

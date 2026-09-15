@@ -45,9 +45,6 @@ curl -L -o "tools/avatar/Wav2Lip/face_detection/detection/sfd/s3fd.pth" "https:/
 curl -L -o "tools/avatar/weights/wav2lip_gan.pth" "https://huggingface.co/camenduru/Wav2Lip/resolve/main/checkpoints/wav2lip_gan.pth"
 ```
 
-Base footage lives at `reference/avatar-source/` — see the README there for
-shooting requirements.
-
 ## Usage
 
 ```bash
@@ -77,8 +74,7 @@ mouth (residual jaw/cheek motion) — measured sync correlation drops to
 **static still** base measures 0.47 with stable lag (healthy). There is no
 usable idle stretch in existing tutorial footage — she talks continuously.
 
-- Production: record a 60–90s idle "listening" take (see
-  reference/avatar-source/README.md). This is the durable fix.
+- Production: record a 60–90s idle "listening" take. This is the durable fix.
 - Interim/testing: pass a PNG still as `--base` — Wav2Lip's static mode
   (no blinks/head motion, passable at bubble size).
 - Objective sync check: `scratchpad sync_probe.py` pattern — mouth-region

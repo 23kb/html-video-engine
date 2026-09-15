@@ -1,4 +1,4 @@
-// Capture klaviyo-bridge-2 at the action-showcase moment to verify the
+// Capture the film at the action-showcase moment to verify the
 // settle-mode trick made the spProviders iframe content sharp under the
 // 2.30 camera zoom.
 const { chromium } = require('playwright');
@@ -7,7 +7,7 @@ const fs = require('fs');
 
 const OUT_DIR = path.join(__dirname, 'showcase-shots');
 fs.mkdirSync(OUT_DIR, { recursive: true });
-const URL = 'http://localhost:53025/videos/klaviyo-bridge-2/index.html';
+const URL = process.argv[2] || 'http://localhost:4321/videos/<slug>/index.html';
 
 (async () => {
   const browser = await chromium.launch({ headless: true });

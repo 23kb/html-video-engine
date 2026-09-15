@@ -6,7 +6,7 @@
 // Char slots are measured at mount; randomness is mulberry32-seeded so every
 // run is identical (INV-9 determinism).
 //
-// Source: reference/gsap-effects/effect090.html
+// Source: ported GSAP effect.
 // Vocabulary slot: text reveal — descramble (in/out)
 //
 // NOTE (fa-retest lesson): mounts PARKED — container autoAlpha 0 until

@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const OUT_DIR = path.join(__dirname, 'card-fix-shots');
 fs.mkdirSync(OUT_DIR, { recursive: true });
-const URL = 'http://localhost:54557/videos/klaviyo-bridge-2/index.html';
+const URL = process.argv[2] || 'http://localhost:4321/videos/<slug>/index.html';
 
 (async () => {
   const browser = await chromium.launch({ headless: true });

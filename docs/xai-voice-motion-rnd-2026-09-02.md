@@ -11,11 +11,6 @@ comes from the AEP's keyframes, not from eyeballing).
 |---|---|
 | AEP project | `C:\Users\PC\Downloads\x.ai recreation july 6 2026.aep` (28 MB, AE 2026, RIFX) |
 | Rendered video | `C:\Users\PC\Downloads\hroqYx5apSo8hxLY.mp4` (1280×720, 30fps, 45.06s) |
-| Distilled keyframe data | `reference/xai-recreation/techniques.json` — every animated layer: keyframe times (s), values, interpolation, ease speed/influence, expressions, text + fonts. 90 comps. |
-| Extraction pipeline | `reference/xai-recreation/tools/` — `pyaep-dump.py` (needs `pip install` of [forticheprod/aep_parser](https://github.com/forticheprod/aep_parser), the `py_aep` package) → full JSON; `distill.js` → animated-only; `digest.js "<comp name>"` → human-readable keyframe tables. Reusable on any future `.aep`. |
-
-Read a comp's exact keyframes any time with:
-`node reference/xai-recreation/tools/digest.js "Introducing"` (after pointing its require() at a fresh dump, or use techniques.json directly).
 
 ## Global system (why it feels expensive)
 
@@ -73,7 +68,7 @@ asymmetric influence. AE (speed 0) → CSS bezier conversion: `P1=(outInf/100, 0
 Motion durations: primary moves 0.33–0.67s (10–20 frames); micro-staggers 30–40ms
 (1 frame apart at 30fps); beat length ≈ 2s.
 
-## Technique catalog (exact parameters in techniques.json)
+## Technique catalog
 
 - **T1 Micro-stagger entrances.** Sibling elements enter 30–40ms apart, never together.
   `Introducing` cards: in-points 2.767 / 2.800 / 2.833s. Wave bars: 40ms ladder.

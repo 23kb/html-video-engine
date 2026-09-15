@@ -9,7 +9,7 @@ description: "Polish an existing already-shipped WPForms video without breaking 
 
 A safe, repeatable workflow for **incremental quality bumps** on a video that already works. Goal: better easing, tighter timing, refined typography, smoother handoffs — without changing what the video is about, breaking any choreography, or expanding scope.
 
-The hand-rolled pattern this skill codifies (klaviyo-bridge-2, 2026-05-12) ships polish edits in batches of 5–10, surgically, with a backup-first → analyze → execute → audit → handoff loop.
+The hand-rolled pattern this skill codifies (2026-05-12) ships polish edits in batches of 5–10, surgically, with a backup-first → analyze → execute → audit → handoff loop.
 
 ## What this skill IS NOT
 
@@ -74,7 +74,7 @@ After polish edits land, polish on cinematic / postIntro / editorial beats requi
 
 Confirm which video. There is one architecture:
 
-- **Single-HTML** — `videos/<slug>/index.html` (plus `storyboard.md`, `qc-probe.mjs`, `narration/` when present). Master GSAP timeline. Examples: klaviyo-bridge-2, klaviyo-quick-connect.
+- **Single-HTML** — `videos/<slug>/index.html` (plus `storyboard.md`, `qc-probe.mjs`, `narration/` when present). Master GSAP timeline.
 
 Legacy chapter/manifest videos no longer exist (engine retired 2026-08-22). If a legacy-era film is ever revisited, that is git-history work, not this skill.
 
@@ -87,7 +87,7 @@ Per Rule 1 above. Always. First action in the session.
 Use the `Plan` subagent_type. Brief it like a smart colleague:
 
 - Hand it the file path(s) and tell it the architecture.
-- Tell it to compare against a recent polish reference if one exists in the repo (e.g. `videos/klaviyo-bridge-2/index.html` — the film this workflow was codified from).
+- Tell it to compare against a recent polish reference if one exists in the repo.
 - Ask for 5–10 concrete polish edits: `file_path:line_number → current value → suggested value → reason`.
 - Ask explicitly for a **RED-flag list** of things it identified as too-risky-to-touch, so you can avoid them.
 - Cap the response under 600 words to keep your context lean.

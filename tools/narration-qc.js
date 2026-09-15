@@ -7,8 +7,7 @@
 //   1. Pace — words per second from narration/<key>.txt vs the mp3 duration.
 //      Acceptable band 2.6–3.0 w/s; hard FLAG >= 3.3. Calibrated 2026-09-03
 //      to Umair's designated reference narration (172–175 wpm sustained
-//      across 7 reference files; evidence reference/New folder/_extraction/
-//      _analysis/analysis-tts-script.md). U9 in
+//      across 7 reference files). U9 in
 //      docs/track3-analysis-2026-09-03.md lets him revert to the old
 //      2.3–2.8 / >3.0 band. Slur receipt stands: coupon-code b5 shipped at
 //      3.98 w/s — 24 words in 6s.

@@ -6,15 +6,15 @@ Adds a **morph chain** declaration to the editorial storyboard format. Drives Ph
 
 Per `winning-pattern-analysis-2026-05-10.md` (deleted 2026-08-22 — git history), the single biggest authoring-shape variable separating winning from failed editorial videos is **identity continuity across time**:
 
-> Winners have a single morphing element that carries viewer attention across beats — `wpforms-ai-prompt-open#cta` morphs Button → Input → Sullie pill → Chat panel over 12s. Failures stage a fresh composition per beat. Tables and per-beat storyboards cannot encode this — they encode states, not connecting tissue.
+> Winners have a single morphing element that carries viewer attention across beats — one winner's `#cta` morphs Button → Input → Sullie pill → Chat panel over 12s. Failures stage a fresh composition per beat. Tables and per-beat storyboards cannot encode this — they encode states, not connecting tissue.
 
 Per-beat storyboard tables describe **states**. Editorial videos that read as cinematic require **morph chains** — a host DOM element transforms its content/role across beats while its identity (the `id` and visual continuity) persists. The viewer's eye stays anchored.
 
-Without this declared up-front, Claude (and any author) defaults to staging fresh compositions per beat, which produces state-table editorial — exactly the failure mode of `wpforms-ai-zlyvs/`, `wpforms-ai-announcement/`, and the Anthropic-mimicry pattern.
+Without this declared up-front, Claude (and any author) defaults to staging fresh compositions per beat, which produces state-table editorial — exactly the failure mode of two early AI editorial films and the Anthropic-mimicry pattern.
 
 ## What a morph chain is
 
-A **morph chain** is one DOM element that takes on multiple visual identities across beats while preserving its `id` and (usually) position/scale envelope. Example, verbatim from `reference/html-templates/wpforms-ai-prompt-open.html:152` (the comment that flags the pattern):
+A **morph chain** is one DOM element that takes on multiple visual identities across beats while preserving its `id` and (usually) position/scale envelope. Example, verbatim from the code comment that flags the pattern in a winning film:
 
 > `Button → Input row → Sullie pill → Chat panel`
 
@@ -121,7 +121,7 @@ A film with a postIntro also carries the approved Story Proof phase table under 
 
 ### Camera plan (required for ad-style and shorts films — adopted 2026-09-03, recalibrated 2026-09-04)
 
-The shot list says what is on screen. The camera plan says how it is SEEN — and it is the section whose absence produced a parked stage: wpvibe-wpforms-ad's shot list had a "subject & hero frame" column that read "window center, 880px wide" on every row, so every row was the same mid-shot, the storyboard self-reported "9 compositions" that nobody measured, and when the v4 QC round replaced the chips with a persistent two-panel window nothing re-opened the storyboard — from v4 on, the 24s core had no plan at all. Written BEFORE motion work — paper → stills sheet → approval → code, never derived from code after the fact (the v6 plan was, and it came back "dizzy") — and re-opened whenever a QC round changes what fills the frame.
+The shot list says what is on screen. The camera plan says how it is SEEN — and it is the section whose absence produced a parked stage: the first WPVibe ad's shot list had a "subject & hero frame" column that read "window center, 880px wide" on every row, so every row was the same mid-shot, the storyboard self-reported "9 compositions" that nobody measured, and when the v4 QC round replaced the chips with a persistent two-panel window nothing re-opened the storyboard — from v4 on, the 24s core had no plan at all. Written BEFORE motion work — paper → stills sheet → approval → code, never derived from code after the fact (the v6 plan was, and it came back "dizzy") — and re-opened whenever a QC round changes what fills the frame.
 
 **The storyboarding pass is full creative.** The skill writing the storyboard DECIDES, per film and with reasons, the cadence, the ease voice, the shot vocabulary and the movement budget. There are no default numbers to fall back on: a film whose UI stays the same (wpvibe: one chat window, one form) is storyboarded with few, considered moves on story turns; a montage that switches subjects is storyboarded dense. The reviewer approves the numbers with the storyboard, and the tools measure the film against THOSE numbers.
 
@@ -166,7 +166,7 @@ Slot semantics:
 
 Approval blocks on: a missing Cadence / Max hold / Ease voice line; a missing fill number; a row whose hold exceeds the declared max; a plan that contradicts its own cadence; two consecutive rows with the same subject at the same zoom; a repeated task template (type → dots → stream → payoff ×N) whose rows repeat the previous task's framing verbatim without a reason. `tools/composition-scan.js` static mode reads the film's literal `at:` times (planned — run it before any browser); `--play` reads the pose log (measured); both judge against the declared cadence and write the `compositionScan` chip.
 
-**The literal verbs exist.** Editorial DOM gets `makeStageCamera` (shipped in `docs/examples/single-html-ad-skeleton.html`; first used video-local on `videos/wpvibe-wpforms-ad/`; promote to `videos/_shared/` on second use). A pose is `{zoom, tx, ty}` on a transform-only `#lens` wrapper; framing presets (`move / punch / macro / whip / pullBack`) say WHAT the frame becomes, the voice (`voice:` per move, film default from the plan) says HOW it gets there; every voice is decomposed, so anti-pattern #2 is satisfied by construction. Mixed films keep `flyToElement` / `cinematicFlight` for the iframe layer and the stage camera for the editorial layer above it. Shorts declare the same header in their storyboard (`dev-advocacy-video`, `docs/vertical-shorts.md`) and drive `shorts-kit`'s `punchIn / whipPan` at that cadence.
+**The literal verbs exist.** Editorial DOM gets `makeStageCamera` (shipped in `docs/examples/single-html-ad-skeleton.html`; first used video-local on the first WPVibe ad; promote to `videos/_shared/` on second use). A pose is `{zoom, tx, ty}` on a transform-only `#lens` wrapper; framing presets (`move / punch / macro / whip / pullBack`) say WHAT the frame becomes, the voice (`voice:` per move, film default from the plan) says HOW it gets there; every voice is decomposed, so anti-pattern #2 is satisfied by construction. Mixed films keep `flyToElement` / `cinematicFlight` for the iframe layer and the stage camera for the editorial layer above it. Shorts declare the same header in their storyboard (`dev-advocacy-video`, `docs/vertical-shorts.md`) and drive `shorts-kit`'s `punchIn / whipPan` at that cadence.
 
 ## Mechanics — how to author for it
 
@@ -213,9 +213,9 @@ tl.add(typographyTimeline(), 0);         // parallel typography
 
 The camera follows the morph host. It does NOT cut to staged compositions. Camera moves are continuous with the morph chain — they pan, push in, scale, but always with the host as the anchor.
 
-This is the difference between editorial cinematic motion (`reference/html-templates/wpforms-ai-prompt-open.html`) and slide-projector editorial (`videos/wpforms-ai-zlyvs/`). The former camera observes one host; the latter cuts between staged compositions.
+This is the difference between editorial cinematic motion and slide-projector editorial. The former camera observes one host; the latter cuts between staged compositions.
 
-**"Follow" was read as "park."** `videos/wpvibe-wpforms-ad/` v5 obeyed this section to the letter and shipped 5 framings in 44s, one 23.7s hold on a two-panel layout, camera scale 1.00–1.04 — Umair: "the animations weren't there, motion design non-existent" (`docs/ad-camera-gap-analysis-2026-09-03.md`). Two different things had one name:
+**"Follow" was read as "park."** The first WPVibe ad, v5, obeyed this section to the letter and shipped 5 framings in 44s, one 23.7s hold on a two-panel layout, camera scale 1.00–1.04 — Umair: "the animations weren't there, motion design non-existent" (`docs/ad-camera-gap-analysis-2026-09-03.md`). Two different things had one name:
 
 - **Composition cut** — a NEW subject in a NEW layout with no carrier. The slide-projector failure. Still banned.
 - **Re-frame** — the SAME host seen from a new distance: punch to the control being used, macro on the payoff, whip to the reply, pull back to the establishing pose. The reference films (Shipper, Codex) do this every 1–2s. **Required.**
@@ -224,17 +224,17 @@ Rule: **the host stays, the frame moves — at the cadence THIS film's storyboar
 
 ## Example morph chains worth modeling
 
-These are the canonical patterns in `reference/html-templates/`:
+These are the canonical patterns:
 
-### `wpforms-ai-prompt-open.html` — `#cta`: Button → Input → Sullie pill → Chat
+### Single host — `#cta`: Button → Input → Sullie pill → Chat
 
 Four-state chain over ~12s. Each transition uses a different mechanism (button-to-input is dimensional Flip morph; input-to-pill is content swap inside the pill container; pill-to-chat is Flip with content multiplication).
 
-### `editorial-reference-36s.html` — typography-as-host (multiple)
+### Typography-as-host (multiple)
 
 This 36s video doesn't have a single dominant morph host. Each beat has its own typographic host that morphs internally (caret-typing → typed text → input morph in beats 1-3; phone composition continuity in beats 4, 5, 12). For a 36s editorial with high beat density, multiple per-beat-internal morph chains are acceptable.
 
-### `openai-replica-18s.html` — landscape + foreground twin chains
+### Landscape + foreground twin chains
 
 Background landscape (pixel-art) is a static persistent host; foreground hero element morphs across beats. Two co-existing chains.
 
@@ -242,16 +242,15 @@ Background landscape (pixel-art) is a static persistent host; foreground hero el
 
 - **No morph chain declared in storyboard.** Editorial videos without an explicit morph chain in the storyboard get scored C or worse before the build even starts.
 - **Element re-mounting between beats.** `<div id="cta">…</div>` in beat 1 is removed; a new `<div id="cta">…</div>` is mounted in beat 2. Breaks identity continuity. Fix: keep the element mounted; mutate inside.
-- **Camera cutting to staged compositions instead of following the host.** This is the slide-projector failure mode in `wpforms-ai-zlyvs/`. Fix: every camera pose anchors on the morph host's bounding box.
-- **Parked stage.** The opposite failure, just as fatal: one host, one mid-shot, 40 seconds — only the content inside it changes (`wpvibe-wpforms-ad` v5: 5 framings, a 23.7s hold). A storyboard with no `## Camera plan` section, or a camera plan with no declared cadence, scores B or worse before the build starts. Fix: declare the cadence and re-frame the same host at it.
-- **Busy stage.** The over-correction: a system-imposed cadence instead of the film's own (`wpvibe-wpforms-ad` v6: 25 landings in 41s on a film whose UI never changes — "making me dizzy"). Cadence is declared per film by the storyboard, with the reason. A camera plan written FROM the code after the fact is the same defect in paper form.
+- **Camera cutting to staged compositions instead of following the host.** This is the slide-projector failure mode. Fix: every camera pose anchors on the morph host's bounding box.
+- **Parked stage.** The opposite failure, just as fatal: one host, one mid-shot, 40 seconds — only the content inside it changes (the first WPVibe ad, v5: 5 framings, a 23.7s hold). A storyboard with no `## Camera plan` section, or a camera plan with no declared cadence, scores B or worse before the build starts. Fix: declare the cadence and re-frame the same host at it.
+- **Busy stage.** The over-correction: a system-imposed cadence instead of the film's own (the same ad, v6: 25 landings in 41s on a film whose UI never changes — "making me dizzy"). Cadence is declared per film by the storyboard, with the reason. A camera plan written FROM the code after the fact is the same defect in paper form.
 - **Multiple competing protagonists.** Two morph hosts at same prominence at same time. Viewer's eye splits, identity continuity is destroyed. Fix: stagger them temporally, or subordinate one as supporting cast.
 
 ## Cross-references
 
 - `docs/editorial-direction-audit-2026-05-10.md` (deleted 2026-08-22 — git history) — Phase 4 in the master plan
 - `docs/winning-pattern-analysis-2026-05-10.md` (deleted 2026-08-22 — git history) — full identity-continuity analysis
-- `reference/html-templates/wpforms-ai-prompt-open.html:152-158` — the canonical morph chain comment
 - `.claude/skills/wpforms-motion-audit/references/score-examples.md` — auditor scores tied to morph-chain presence
 
 ## What this changes

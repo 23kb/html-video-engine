@@ -101,9 +101,6 @@ README. Provenance — the original generations and their prompts — stays at
 | `impact` | `impact-a`, `impact-b`, `impact-c` | hard cuts, and one settle (a counter landing) |
 | `boom` | `boom-a`, `boom-b` | the film's open (`boom-a`) and its close (`boom-b`), plus big landings |
 
-**Proof of placement:** `videos/reel-ad-vocabulary/sfx/plan.json` — 17 cues over
-20s. That is the cue map these earned their place on; read it before placing.
-
 Two things carry forward from the ratification and are detailed in the README:
 the palette sits on a measured **two-tier mix ladder** (ticks ≈ −16 dB, impacts
 and booms ≈ −10 dB — reproduce the ladder, never the gain numbers, per rfv 29),
@@ -125,8 +122,7 @@ in a real film against a real bed — never as bare snippets in a folder.
 
 ## Measured sound bar (2026-09-03) — U4/U5 RULED
 
-Measured from Umair's Track 3 reference drop (full tables + method:
-`reference/New folder/_extraction/_analysis/analysis-sound.md`). Rulings
+Measured from Umair's Track 3 reference drop. Rulings
 2026-09-03: **U4 — the AD path adopts this profile** (music-forward, bed at
 program level, arrangement drops instead of sidechain ducking, shaped arcs,
 fade-to-true-silence or hard-out endings); **U5 — tutorial/postIntro bed

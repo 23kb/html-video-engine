@@ -6,8 +6,8 @@
 // coordinates. The point is that nothing jumps: skeleton geometry and live
 // geometry are authored as one coordinate set.
 //
-// Source: videos/reel-ad-vocabulary/index.html beat b3 (ad-vocabulary proving
-// reel, 2026-09-03 — motion-audit tier A, seam-gate PASS).
+// Source: promoted from the ad-vocabulary proving reel, beat b3
+// (2026-09-03 — motion-audit tier A, seam-gate PASS).
 // Vocabulary slot: surface — skeleton resolves into real content
 //
 // The mount is a CONTENT LAYER (`position: absolute; inset: 0`), not a card:

@@ -21,7 +21,7 @@
 // Every function here is deterministic (INV-9): no Date.now, no unseeded
 // randomness, no infinite repeats, no fetch.
 //
-// Consumed by reference/html-templates/vertical-short-skeleton.html — clone
+// Consumed by the 9:16 short skeleton — clone
 // that, don't import this piecemeal into landscape work (landscape has its
 // own vocabulary in motion-primitives/effects).
 //
@@ -364,7 +364,7 @@ export function spokenAt(text, word, durS, { occurrence = 1 } = {}) {
 // gsap.delayedCall(x) counts from where the CODE runs; after awaited
 // nav/camera work those differ by seconds and every lattice event lands
 // late — on top of the very runs it was meant to break (ssn 9). Promoted
-// from short-spam-safety-net's video-local fix.
+// from a shipped short's video-local fix.
 //
 // Usage:  const t0 = nowS();
 //         …awaited camera/nav work…
@@ -520,8 +520,8 @@ export function stampDown(host, opts = {}) {
 // MERGED 2026-08-13: two sessions authored this pair concurrently (duplicate
 // exports broke the module). This is the union — the windup/decay mechanics
 // + flash channel from one, the `at` delay / rotation channel / `px`/`dip`
-// option aliases (already consumed by short-spam-safety-net and
-// short-block-a-country) from the other. Both vocabularies work.
+// option aliases (already consumed by two shipped shorts)
+// from the other. Both vocabularies work.
 //
 // @param {HTMLElement} el
 // @param {Object} [opts] { amplitude|px = 18, rot = 1.4, cycles = 3,
@@ -800,7 +800,7 @@ export function mountSurround(stage, {
 
 // ── Animated Sullie bookends (A5) — never a static slide ──────────────────
 //
-// Family look: videos/anti-spam-5-layers intro-card (real wordmark <img>,
+// Family look: a shipped film's intro-card (real wordmark <img>,
 // eyebrow, power3.out rises) on a full-stage orange wash, portrait-sized.
 // The standing Sullie-in-every-intro-and-outro rule applies to shorts as of
 // the 2026-08-13 ruling (system root cause #6 reversed the old spec).

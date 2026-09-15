@@ -28,7 +28,7 @@
 //     that turned a 45-false-positive report into a readable one (ccs 27).
 //   - a hard-cut check flags isolated single-frame diff spikes (as 13: a
 //     jump-cut shipped while the seam check called the spike "motion").
-//     Calibration (anti-spam-5-layers.mp4, 2026-08-17): a real hard cut
+//     Calibration (a long-form render, 2026-08-17): a real hard cut
 //     measured YAVG 22.8 with neighbors at 0.05/0.69 — one isolated spike;
 //     fast tweened motion (flipBridge-class) sustains YAVG 5-20 across many
 //     CONSECUTIVE frames. So a CUT? marker needs BOTH: YAVG >= --cut-threshold

@@ -1,68 +1,60 @@
 # WPForms Video Project
 
-A system for turning approved storyboards into playable HTML videos —
-both **tutorial videos** (real WPForms UI in a Mac-framed iframe) and
-**ad-style / release announcements** (editorial scenes, blocks, atmospheric
-kit). The agent (Claude or Codex) wires snapshots, narration, BGM,
-overlays, transitions, and a topic-specific postIntro into a deterministic
-playable URL. MP4 capture is **in-repo** via `tools/render-singlehtml-audio.js`.
+A system that turns approved storyboards into deterministic HTML films and
+renders them to MP4. It builds four kinds of video:
+
+- **Tutorials** — real WPForms UI (captured snapshots) with a cursor, a camera
+  and narration.
+- **Ad-style and release films** — editorial HTML/CSS/SVG/GSAP scenes.
+- **Mixed films** — editorial scenes over real product UI.
+- **9:16 shorts** — portrait films for YouTube and Facebook Shorts.
+
+Each film is one self-contained `videos/<slug>/index.html` on a paused master
+GSAP timeline. An agent (Claude or Codex) writes the film. A person approves
+the storyboard and owns visual QC.
+
+> Per-video packages (`videos/<slug>/`) are local work product. They are not in
+> this repository. The repository holds the system: shared libraries,
+> skeletons, snapshots, tools, docs and skills.
 
 ---
 
 ## Quickstart
 
 ```bash
-git clone <repo-url>
-cd <repo>
+git clone https://github.com/23kb/wpforms-automated-videos.git
+cd wpforms-automated-videos
 npm install
-
-# Optional — only needed if you'll capture new snapshots.
-# The existing snapshots play without this.
-cp .env.example .env
-# edit .env with your WordPress demo-site credentials
-
-# Live-reload preview server with scrubber
-node tools/preview.js
-# → http://localhost:4321
+npm run dev
 ```
 
-Open a video:
+`npm run dev` starts the live-reload preview server with a scrubber.
 
-```
-http://localhost:4321/videos/<slug>/index.html
-```
+- Film: `http://localhost:4321/videos/<slug>/index.html`
+- QC dashboard: `http://localhost:4321/tools/qc-dashboard/`
 
-Single chapter only:
-
-```
-```
-
-The slug is the folder name under `videos/`.
+Snapshot capture needs WordPress credentials. Copy `.env.example` to `.env`
+and fill it in. Add `ELEVENLABS_API_KEY` for final narration and
+`GEMINI_API_KEY` for machine QC. Never commit `.env`.
 
 ---
 
 ## Where to start
 
-**If you're an agent (Claude):**
+**Agents**
 
-1. Read `CLAUDE.md` — the canonical operator manual. It's intentionally
-   short; topic-scoped rules live in skills, not there.
-2. Run `node tools/skill-context.js` once per session.
-3. Load the skill that matches your task:
-   - `wpforms-video` — tutorial authoring, intake, storyboard gate
-   - `wpforms-postintro` — postIntro design + multi-animation rule
-   - `wpforms-gsap-rules` — GSAP discipline, registered timelines, `pausableRaf`
-   - `wpforms-marketing` — editorial / ad-style surfaces + blocks
+1. Read `CLAUDE.md` (Codex: `AGENTS.md`). It is the operator manual.
+2. Read `docs/rulebook.md` before the first beat.
+3. Run `node tools/skill-context.js` once per session.
+4. Pick the path (tutorial, ad-style, mixed or short) and load its skill.
 
-Skills live at `.claude/skills/<name>/SKILL.md`.
+**People**
 
-**If you're a human teammate:**
-
-- `docs/INDEX.md` — one-line-per-doc map. Use it to find the right doc fast.
-- `docs/examples/single-html-tutorial-skeleton.html` — the tutorial authoring
-  contract as a working clone-first skeleton (helpers, DUR, SCENE_PREP,
-  instrumentation).
-- `docs/postintro-patterns.md` — postIntro design rules.
+- `docs/INDEX.md` — one line per doc.
+- `docs/examples/` — clone-first skeletons for tutorials, ads and postIntros,
+  plus a QC probe skeleton.
+- `docs/vertical-shorts.md` — 9:16 stage and crop rules.
+- `docs/qc-dashboard.md` — how review notes come back as a work order.
 
 ---
 
@@ -70,65 +62,76 @@ Skills live at `.claude/skills/<name>/SKILL.md`.
 
 Tell the agent:
 
-> I want a new video. Slug: `<slug>`. Topic: `<short description>`.
-> Source links: `<docs you want covered>`. Audience: `<who>`.
+> Storyboard a new video. Slug: `<slug>`. Topic: `<short description>`.
+> Sources: `<docs to cover>`. Audience: `<who>`.
 
-The agent will:
+The agent then:
 
-1. Inventory existing snapshots (`tools/list-snapshots.js`).
-2. Propose a storyboard with chapters, narration drafts, postIntro concept.
-3. **Stop for explicit approval** before any chapter code.
-4. After approval: capture missing states, write chapters, render TTS
-   narration, validate, hand off a playable URL.
+1. Writes the storyboard with the `wpforms-storyboard` skill, camera plan
+   included.
+2. **Stops for approval.** No film code before sign-off.
+3. Captures any missing UI state as a real snapshot.
+4. Clones the matching skeleton and builds the film on the shared libraries.
+5. Renders narration and runs the validator, smoke test and motion audit.
+6. Hands off two URLs: the QC dashboard and the film itself.
 
-Visual QC is owned by the human reviewer.
+The MP4 render waits for the reviewer's sign-off.
+
+---
+
+## Skills
+
+Skills live in `.claude/skills/<name>/SKILL.md`. Codex copies live in
+`.agents/skills/`.
+
+| Skill | Use it for |
+|---|---|
+| `wpforms-storyboard` | The storyboard step for every track |
+| `wpforms-video` | Tutorial authoring |
+| `wpforms-marketing` | Ad-style, release and mixed films |
+| `wpforms-ad-to-short` | A 9:16 cut of an approved ad |
+| `dev-advocacy-video` | Choosing the next tutorial and its shorts |
+| `wpforms-postintro` | The concept beat after the intro |
+| `wpforms-gsap-rules` | Timeline and GSAP discipline |
+| `wpforms-primitives` | Lookup for the shared motion and interaction libraries |
+| `wpforms-motion-audit` | S–F tier scoring before handoff |
+| `wpforms-machine-qc` | Advisory Gemini QC on a rendered MP4 |
+| `wpforms-video-polish` | Safe polish passes on a shipped film |
+| `video-qc` | The review-and-fix loop |
+
+---
+
+## Shared libraries (`videos/_shared/`)
+
+- `motion-primitives.js` — cameras, `Cursor`, typing, reveals, the Sullie
+  bug, `mulberry32`, `boundedRepeats`.
+- `wpforms-interactions.js` — WPForms admin and builder interactions, plus
+  `IframeManager`.
+- `iframe-helpers.js` — click and find-by-text helpers for captured SaaS pages.
+- `builder-frontend-split.js` — builder on the left, live frontend mirror on
+  the right.
+- `shorts-kit.js` — the 9:16 motion vocabulary.
+- `narration.js`, `instruments.js`, `pop-out.js`, `blocks/`.
+- `effects/` — named effects: text reveals, cards, end card, glass card,
+  odometer, seams and more. See `videos/_shared/effects/README.md`.
+
+QC harnesses for these live in `videos/_qc-*/`.
 
 ---
 
 ## Narration (TTS)
 
-Wired to **Voicebox** (local Kokoro TTS).
-
-- Install Voicebox locally — runs on `http://127.0.0.1:17493` by default.
-- `node tts/generate.js --video <slug>` auto-connects there. No API key
-  or env var needed for the default setup.
-- Override per-machine if Voicebox runs elsewhere:
-  - `VOICEBOX_URL` — endpoint URL
-  - `VOICEBOX_PROFILE` — voice profile ID
-
-Switching to ElevenLabs or another TTS isn't supported out of the box —
-patch `tts/generate.js` (replace the three fetch calls; the rest of the
-pipeline stays the same).
-
----
-
-## Surface modes
-
-Videos are no longer iframe-only. Each chapter declares a surface:
-
-- `iframe` — real WPForms UI in a Mac-framed iframe (default for tutorials).
-- `editorial` — pure HTML/CSS/SVG/GSAP scene (ad-style / hero / cinematic).
-- `mixed` — editorial overlays composited over the iframe.
-
-Camera and transition vocabulary lives in `videos/_shared/motion-primitives.js`
-(`cinematicFlight`, `figjamFlight`, `focusStationOverview`) — see the
-`wpforms-primitives` skill for the per-primitive index.
-
----
-
-## Folder layout
-
+```bash
+node tts/generate.js --video <slug> [--engine voicebox|elevenlabs|fishaudio]
 ```
-videos/<slug>/         one folder per video (manifest + chapters + narration)
-videos/_shared/        shared kit, effects, blocks, text-kit, lottie-kit
-snapshots/<slug>/      captured WPForms UI, reused across videos
-capture/               Playwright snapshot tool
-tts/                   Voicebox TTS pipeline
-tools/                 inventory, validation, smoke, preview, render, lint
-docs/                  authoring contract, granular references, INDEX.md
-.claude/skills/        topic-scoped skill bundles (wpforms-*)
-CLAUDE.md              operator manual for agents
-```
+
+- `voicebox` (default) — local drafts on `http://127.0.0.1:17493`.
+- `elevenlabs` — finals. Needs `ELEVENLABS_API_KEY`.
+- `fishaudio` — Fish Audio API.
+
+Clip durations depend on the voice. After every TTS render, run
+`node tools/measure-narration.js <slug>` and paste the new `DUR` block into
+the film.
 
 ---
 
@@ -136,106 +139,112 @@ CLAUDE.md              operator manual for agents
 
 | Tool | Purpose |
 |---|---|
-| `tools/skill-context.js` | Canonical startup context dump |
+| `capture/capture.js` | Snapshot capture: live WordPress page → static snapshot |
+| `tools/post-capture.js` | Required after every capture: trim, CSS dedup, catalog |
+| `tools/capture-gates.js` | Post-capture quality gates |
 | `tools/list-snapshots.js` | Snapshot inventory (`--search`, `--for <slug>`) |
 | `tools/inspect-snapshot.js` | Selector emit (`--emit-selectors --filter`) |
-| `tools/verify-selectors.js` | Selector validation against snapshot DOM |
-| `tools/field-state.js` | Field-state inventory query (don't full-read the 132 KB doc) |
-| `tts/generate.js` | Render narration mp3s |
+| `tools/verify-selectors.js` | Selector check against snapshot DOM |
+| `tools/field-state.js` | Field-state and interactivity query |
+| `tools/skill-context.js` | Startup context dump |
+| `tools/preview.js` | Live-reload server, scrubber and QC dashboard |
+| `tools/storyboard-sheet.js` | Stills sheet from a paused film, before motion work |
 | `tools/validate-singlehtml.js` | Static validator for single-HTML films |
-| `tools/smoke-singlehtml.js` | Non-visual smoke test for single-HTML films |
-| `tools/preview.js` | Live-reload server + scrubber UI |
-| `tools/render-singlehtml-audio.js` | In-repo MP4 export with narration + ducked BGM |
-| `tools/lint-determinism.js` | Render-parity check (no `Date.now`, no unseeded `Math.random`, no `fetch`) |
-| `npm run lint` | Composes `validate-singlehtml.js --all` + `lint-determinism.js --all` |
+| `tools/smoke-singlehtml.js` | Non-visual smoke test |
+| `tools/probe-singlehtml.js` | Seek-step QC probe runner (`videos/<slug>/qc-probe.mjs`) |
+| `tools/lint-determinism.js` | Determinism check |
+| `tools/lint-doc-refs.js` | Checks that paths cited in docs still exist |
+| `tools/narration-qc.js` | Per-clip narration gate |
+| `tools/dead-time.js` | Frame-diff scan for dead time in a render |
+| `tools/seam-gate.js` | Exit and entry velocity at each cut |
+| `tools/composition-scan.js` | Composition and monotony metric |
+| `tools/machine-qc.js` | Advisory Gemini QC pass on an MP4 |
+| `tools/lib/qc-report.js` | Per-video gate ledger the dashboard reads |
+| `tools/render-singlehtml-audio.js` | MP4 render with narration and ducked BGM |
+| `tools/stitch.js` | Joins a recorded intro, the HTML body and a recorded outro |
+| `tools/keyframes.js` | Contact sheet from an MP4 |
+| `tools/sfx/` | Timeline-driven sound design, SFX palette, onset probe |
+
+`smoke-singlehtml`, `dead-time` and `seam-gate` share a lock. Run them one at
+a time.
 
 ---
 
 ## Validation and review
 
-Before review handoff:
+Before handoff:
 
 ```bash
-node tools/list-snapshots.js --for <slug>          # confirm snapshots resolve
-node tts/generate.js --video <slug>                # render narration
-node tools/validate-singlehtml.js <slug>                # static validator
-node tools/smoke-singlehtml.js <slug> --seconds 30   # non-visual smoke
+node tools/list-snapshots.js --for <slug>
+node tts/generate.js --video <slug>
+node tools/validate-singlehtml.js <slug> --report
+node tools/smoke-singlehtml.js <slug> --seconds 30 --report
 ```
 
-Then open the playable URL.
+Then score editorial and cinematic beats with `wpforms-motion-audit`. Tier A is
+the bar. Record it:
+
+```bash
+node tools/lib/qc-report.js <slug> --set motionAudit.tier=<tier>
+```
+
+Hand off both URLs:
+
+- `http://localhost:4321/tools/qc-dashboard/#<slug>`
+- `http://localhost:4321/videos/<slug>/index.html`
 
 ---
 
-## Recording an MP4
-
-In-repo, deterministic:
+## Rendering an MP4
 
 ```bash
-# wall-clock (default)
 node tools/render-singlehtml-audio.js <slug>
-node tools/render-singlehtml-audio.js <slug> --resolution WxH   # optional override
+node tools/render-singlehtml-audio.js <slug> --resolution WxH
 ```
 
-Audio (narration + ducked BGM) is baked into the page — the renderer
-captures it.
+The output size defaults to the film's `.stage` box, so a 9:16 short renders
+at 1080×1920 with no flag.
 
 ---
 
 ## Determinism
 
-Video chapter and runtime cinematic code is **deterministic logic**
-(required for `--seek` parity):
+Film code must give the same frame at the same timestamp:
 
 - No `Date.now()` outside the player driver.
-- No unseeded `Math.random()` — use `mulberry32(seed)` from
-  `videos/_shared/kit.js`.
-- No `fetch()` at runtime — assets must be loaded before render starts.
+- No unseeded `Math.random()`. Use `mulberry32(seed)` from
+  `motion-primitives.js`.
+- No `fetch()` at runtime. Preload assets.
+- No `repeat: -1`. Use `boundedRepeats(cycle, visible)`.
 
-Enforced by `node tools/lint-determinism.js`. See
-`docs/deterministic-logic.md` for rationale.
+`node tools/lint-determinism.js` enforces it. See
+`docs/deterministic-logic.md`.
 
 ---
 
 ## Protected areas
 
-Per-video work must NOT edit:
+Normal video work must not edit:
 
-- `videos/_shared/*` libraries (motion-primitives, wpforms-interactions,
-  narration, iframe-helpers, effects, blocks, shorts-kit)
-- Existing accepted video packages (except scoped fixes)
-- Existing snapshots (capture new ones; do not edit captured DOM)
-- `tools/validate-singlehtml.js`, `tools/smoke-singlehtml.js`, `capture/capture.js` behavior
+- `videos/_shared/*` libraries — propose additions instead.
+- Existing snapshots — capture new ones; never edit captured DOM.
+- `tools/validate-singlehtml.js`, `tools/smoke-singlehtml.js`,
+  `tools/lint-determinism.js`, `capture/capture.js` behavior.
 
-If a beat seems to need shared code, stop and propose a video-local helper
-first — promotion into `videos/_shared/` is approval-gated (second use).
-
----
-
-## Reference video packages
-
-| Slug | State |
-|---|---|
-
-| `klaviyo-bridge-2` | Core pure-editorial reference. |
-| `qr-code-doorway` / `qr-code-ink` | Mixed-surface announcements (Aug 2026). |
-| `ranking-field*` trio | Sound-design + seam-discipline reference. |
-| `short-stop-fast-bots` | Latest short (9:16) pattern. |
-
-Read reference packages on demand only after you can name the implementation pattern you need.
-implementation pattern you need.
+A new helper starts video-local. It moves into `videos/_shared/` on its second
+use.
 
 ---
 
 ## Non-negotiables
 
-- **Voicebox for TTS** (not ElevenLabs).
-- **WPForms UI is product truth** — no fabricated UI, no fake snapshot
-  folders. Capture what's missing.
-- **Storyboard approval is a hard gate.** No chapter code before sign-off.
-- **PostIntro is required** unless explicitly skipped — must be a
-  topic-specific concept beat with multiple animation phases, not a
-  second title card.
-- **Determinism** — render parity is enforced by the linter.
-- **Don't push to git** without operator confirmation.
+- **Storyboard approval is a hard gate.**
+- **WPForms UI is product truth.** No fabricated UI, no fake snapshots.
+  Capture what is missing.
+- **Tutorials need a postIntro:** a topic-specific concept beat with several
+  animation phases, not a second title card.
+- **Brand:** `#E27730` orange is primary. Purple is for AI features only.
+- **Determinism** is enforced by the linter.
+- **Visual QC belongs to the reviewer.**
 
-See `CONTRIBUTING.md` for the full team workflow.
+See `CONTRIBUTING.md` for the team workflow.

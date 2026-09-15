@@ -13,9 +13,9 @@
 //      captionWordStarts to answer "when does the TTS say this word", for
 //      standalone accents (slams, label pulses). Physics chains sequence off
 //      ARRIVAL, never off spokenAt — one element never has two owners (sfb 16).
-//   3. anti-spam's video-local `beatC` / `window.__capChunks` — CHUNK-level
-//      caption+cursor sync engine. Lives in exactly ONE video
-//      (videos/anti-spam-5-layers/index.html). Promote it HERE when a SECOND
+//   3. one film's video-local `beatC` / `window.__capChunks` — CHUNK-level
+//      caption+cursor sync engine. Lives in exactly ONE video.
+//      Promote it HERE when a SECOND
 //      long-form needs chunk-level sync (as 12's promotion condition) — not
 //      before.
 

@@ -7,7 +7,6 @@ probe-out/
 snapshot-backups/
 snapshots-published/
 docs/snapshot-health-report.md
-reference/hyperframes/
 future-enhancements.md
 prompt-quality-analysis.md
 prompt-wpf-rest-api-video-2.md
@@ -85,8 +84,6 @@ docs/motion-design-round-*/
 acceptance-test/
 analysis/
 approved-shorts/
-reference/New folder/
-reference/avatar-source/
 snapshots/google-oauth-signin/
 .probe-*.tmp.mjs
 # Probe dumps + renders inside the system dirs (code and harness HTML stay tracked)
@@ -98,8 +95,8 @@ docs/helper-rollout-backlog.md
 docs/video-system-improvements-*.md
 docs/jake-moran-*.md
 style guide.md
-# Reference material stays local (2026-09-15)
-reference/
+# Local-only folders (2026-09-15)
+/reference/
 # Local artefacts: AE projects + auto-saves, stray root renders, scratch, session/personal notes (2026-09-15)
 *.aep
 Auto-Save/
@@ -109,3 +106,9 @@ UsersPC*/
 SLUG-CLAIMS-*.md
 docs/portrait-rebuild/
 config/avatar-looks.json
+CLAUDE.local.md
+.claude/local/
+tools/validator-baseline.json
+tools/*.local.json
+tts/voice-reference.json
+videos/_shared/qc/probe-css-shorts.mjs

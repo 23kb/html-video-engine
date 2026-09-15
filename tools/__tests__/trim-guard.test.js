@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // P0-2 (tutorial-system-fixes 2026-07-22) — trim-builder-markup over-trim guard.
 //
-// The entry-automation build lost the Add New Connection button
+// A tutorial build lost the Add New Connection button
 // (.wpforms-builder-inner-provider-connection-add) to a silent trim. Gates:
 //   1. A chrome removal (#wpforms-builder-help) whose chunk contains
 //      load-bearing addon markup is SKIPPED loudly; the markup survives.

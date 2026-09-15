@@ -38,7 +38,6 @@ tweenInto(tl, { duration = 4, ease = 'sine.inOut', position = 0 } = {}) {
 ```
 
 ```js
-// videos/build-forms-faster-with-wpforms-ai/chapters/scene-1-hook.js:128-140
 const tl = gsap.timeline();
 tl.to(frags, {
   y: 0, opacity: 1, scale: 1,
@@ -98,7 +97,6 @@ tweenInto(tl, { duration = 6, ease = 'sine.inOut', position = 0 } = {}) {
 ```
 
 ```js
-// videos/build-forms-faster-with-wpforms-ai/chapters/scene-9-final-payoff.js:448-459
 tl.to(browserWrap, {
   y: 0, opacity: 1, scale: 1, filter: 'blur(0px)',
   duration: 0.72, ease: 'expo.out',
@@ -130,7 +128,6 @@ rules can lose to stale inline styles.
 Correct:
 
 ```js
-// videos/build-forms-faster-with-wpforms-ai/chapters/scene-2-add-new.js:205-208
 gsap.set(captionPop, {
   filter: 'drop-shadow(0 18px 30px rgba(26,34,56,0.10))',
   clearProps: 'x,y,rotation',
@@ -290,7 +287,7 @@ rewriting the rulebook.
 ## Hard rules
 
 - This rulebook codifies existing practice: atmospheric/text/lottie kits and
-  build-forms-faster patterns. It does not introduce new authoring contracts or
+  shipped cinematic patterns. It does not introduce new authoring contracts or
   new APIs.
 - If a proposed rule has no existing chapter or helper precedent, stop. That is
   a proposal, not documentation. Surface it as an architectural question.
@@ -404,5 +401,4 @@ const cancel = pausableRaf((ts) => {
 cancel();
 ```
 
-Migrated reference sites: `videos/wpforms-rest-api-overview/chapters/*.js` and
-`runtime/cinematic-rough-thought-to-draft.js`. Use them as patterns.
+Migrated reference site: `runtime/cinematic-rough-thought-to-draft.js`. Use it as a pattern.

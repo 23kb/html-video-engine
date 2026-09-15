@@ -2,7 +2,7 @@
 // Mirrors tools/sfx/generate.mjs's request path (POST /v1/sound-generation,
 // {text, duration_seconds, prompt_influence}, output_format=mp3_44100_128)
 // without touching it. 12 one-shots, prompts engineered to the envelopes
-// measured in reference/New folder/_extraction/_sfx-snips/LISTEN-ME.md.
+// measured in the reference SFX snips.
 // Cached like the pipeline: existing files are never regenerated.
 import fs from 'fs';
 import path from 'path';
@@ -13,7 +13,7 @@ const HERE = path.dirname(fileURLToPath(import.meta.url));
 // charged generations to a %20 path bug before any file landed; the remaining
 // budget under the <=15 hard cap is spent one name at a time).
 const ONLY = process.argv.slice(2).filter((a) => a !== '--allow-rejected');
-// REJECTED BY EAR 2026-09-03 (Umair, in-context QC on videos/reel-ad-vocabulary):
+// REJECTED BY EAR 2026-09-03 (Umair, in-context QC on the ad-vocabulary proving reel):
 // the shimmer and riser/whoosh CLASSES, not the individual rolls. Consistent with
 // the standing 2026-06-10 ad-sound ruling — punchy-clean, no cinematic whoosh or
 // sparkle cheese. The mp3s stay on disk as rejected candidates; regenerating the

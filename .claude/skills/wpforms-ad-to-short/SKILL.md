@@ -1,6 +1,6 @@
 ---
 name: wpforms-ad-to-short
-description: "Use when an APPROVED 16:9 ad-style film needs a 9:16 (1080×1920) cut for Shorts / Reels / TikTok — 'make the ad a short', '9:16 of <slug>', 'vertical cut', 'portrait version'. Converts videos/<slug>/ into a sibling videos/<slug>-9x16/ that keeps the ad's timeline, copy, SFX cues and bed VERBATIM and changes geometry only: stage flip, per-line type refit, horizontal groups to vertical stacks, a centred live-surface band for mixed films, remapped cursor paths, a re-pointed qc-probe. Branches on whether the ad has live IframeManager surfaces. NOT for carving a short from a tutorial (dev-advocacy-video shorts branch), NOT for an original editorial short (wpforms-storyboard + vertical-short-skeleton), NOT for an un-approved ad (finish the ad first). Triggers: 9:16, vertical, portrait, shorts cut, reel cut, TikTok cut, -9x16."
+description: "Use when an APPROVED 16:9 ad-style film needs a 9:16 (1080×1920) cut for Shorts / Reels / TikTok — 'make the ad a short', '9:16 of <slug>', 'vertical cut', 'portrait version'. Converts videos/<slug>/ into a sibling videos/<slug>-9x16/ that keeps the ad's timeline, copy, SFX cues and bed VERBATIM and changes geometry only: stage flip, per-line type refit, horizontal groups to vertical stacks, a centred live-surface band for mixed films, remapped cursor paths, a re-pointed qc-probe. Branches on whether the ad has live IframeManager surfaces. NOT for carving a short from a tutorial (dev-advocacy-video shorts branch), NOT for an original editorial short (wpforms-storyboard + the 9:16 short skeleton), NOT for an un-approved ad (finish the ad first). Triggers: 9:16, vertical, portrait, shorts cut, reel cut, TikTok cut, -9x16."
 ---
 
 # WPForms Ad → Short (16:9 → 9:16 cut)
@@ -12,18 +12,17 @@ LinkedIn and desktop-first placements; the portrait cut is for Shorts / Reels / 
 **The contract, in one line:** *same beats, same timing, same copy, same SFX cues, same
 bed — only the geometry is re-laid-out.* Every `at:`, `duration:`, `ease:`, label and
 `holdFinalFrame` survives byte-for-byte; a `diff` of the two films must show no time
-literal changed. This is what made the first two cuts (`wpforms-claude-you-just-chat-9x16`,
-`wpforms-chatgpt-wpvibe-ad-9x16`, 2026-09-14) ship in one session each, with one QC note
+literal changed. This is what made the first two cuts (2026-09-14) ship in one session each, with one QC note
 between them.
 
 **Why it is its own skill.** A 9:16 cut is the fourth source of shorts and behaves like none
 of the others: it is not carved from a tutorial (no narration, no `beat()`/`DUR` band), it is
 not an original editorial short (no storyboard divergence, no idea/copy gate — the copy is
-approved already), and it is not a clone of `vertical-short-skeleton.html` (the parent ad IS
+approved already), and it is not a clone of the 9:16 short skeleton (the parent ad IS
 the skeleton). The two shipped cuts used none of `shorts-kit.js` — they keep the ad's own
 Sullie-assembly sting and `mountEndCard`. Receipts: `wvb` 5 (editorial portrait shape),
 `wvb` 1 / `snpt` 1 (`fill` clamps in portrait), `sc3p` 5 (portrait amplitude), the
-chatgpt-9x16 QC note of 2026-09-14 (b10 form cut left and right).
+portrait-cut QC note of 2026-09-14 (b10 form cut left and right).
 
 ## Step 0 — Gates (do not start without all three)
 
@@ -31,8 +30,8 @@ chatgpt-9x16 QC note of 2026-09-14 (b10 form cut left and right).
    off is re-opened. Only changes that portrait *forces* are allowed, and each one is listed in
    the storyboard's portrait section (Step 2). An un-approved ad gets finished first.
 2. **Branch decided.** `grep -c "new IframeManager(" videos/<slug>/index.html`:
-   - **0 → Branch A, pure editorial DOM** (`you-just-chat`: static `<img>` captures, `makeStageCamera` only). No band, no zoom floor; every `cam.*` call site survives untouched.
-   - **≥1 → Branch B, mixed** (`chatgpt-wpvibe-ad`: 1440×900 desktop pages under an iframe camera). Needs the centred live-surface BAND, a viewport rebase and per-pose zoom re-derivation (Step 5).
+   - **0 → Branch A, pure editorial DOM** (static `<img>` captures, `makeStageCamera` only). No band, no zoom floor; every `cam.*` call site survives untouched.
+   - **≥1 → Branch B, mixed** (1440×900 desktop pages under an iframe camera). Needs the centred live-surface BAND, a viewport rebase and per-pose zoom re-derivation (Step 5).
 3. **Umair named the deliverable** ("9:16 of X"). This skill never self-starts a cut because a
    short "would be nice".
 
@@ -265,7 +264,7 @@ of the parent's.
 
 - Re-time, re-copy, re-mix, or re-open an approved beat. Portrait forces geometry; nothing else.
 - Mount `mountShortIntro` / `mountShortOutro`, `beat()` / `DUR`, narration or a title pill — the ad's own sting and `mountEndCard` stay; an ad cut is not a micro-tutorial short.
-- Clone `vertical-short-skeleton.html`. The parent film is the skeleton.
+- Clone the 9:16 short skeleton. The parent film is the skeleton.
 - Shrink the desktop raster to fit the width (letterbox), or run a full-width lockup on one line by shrinking its type (stack it).
 - Carry a landscape zoom into a portrait pose (the b10 defect). Every changed pose is derived from a measured rect and the band.
 - Ship the parent's `qc-probe.mjs`, `qc-report.json`, `render/` or `LESSONS-*.md` un-touched in the cut.
@@ -276,4 +275,3 @@ of the parent's.
 - `docs/rulebook.md` §5 Portrait — `fill` clamps in portrait (`wvb` 1, `snpt` 1), amplitude from `anchor.y` (`sc3p` 5), the editorial-short shape (`wvb` 5)
 - `wpforms-marketing` — the reference-driven recipe the parent ad was built with; `wpforms-storyboard` — the track table row for this path
 - `docs/examples/qc-probe-skeleton.mjs` — `inFrame`, `monotonic`, `stillAcross`, `computed`, `imagesDecoded`
-- Shipped cuts: `videos/wpforms-claude-you-just-chat-9x16/` (Branch A), `videos/wpforms-chatgpt-wpvibe-ad-9x16/` (Branch B, one QC round)

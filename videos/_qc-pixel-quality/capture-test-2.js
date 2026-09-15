@@ -1,4 +1,4 @@
-// Boot-check test-3d-scattered-2 — verify panels render, 3D flip-in
+// Boot-check a 3D scattered-panels video — verify panels render, 3D flip-in
 // fires, camera fly-ins land, and the deep-zoom variants apply.
 const { chromium } = require('playwright');
 const path = require('path');
@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const OUT_DIR = path.join(__dirname, 'test2-shots');
 fs.mkdirSync(OUT_DIR, { recursive: true });
-const URL = 'http://localhost:60488/videos/test-3d-scattered-2/index.html';
+const URL = process.argv[2] || 'http://localhost:4321/videos/<slug>/index.html';
 
 (async () => {
   const browser = await chromium.launch({ headless: true });

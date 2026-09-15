@@ -4,9 +4,9 @@
 // Bug class: end bookkeeping (tl.pause() / window.__done) guarded by a
 // comparison against a hand-summed TOTAL constant. If TOTAL drifts above the
 // real tl.duration() the guard is unreachable → __done never fires →
-// render-singlehtml-audio.js hangs. klaviyo-bridge-2 (the CORE editorial
-// clone target) carried it; the form-analytics-ad clone shipped the bug live
-// (TOTAL 37.0 vs real 36.95). End handling must use onComplete.
+// render-singlehtml-audio.js hangs. The core editorial clone target carried
+// it; an ad cloned from it shipped the bug live (TOTAL 37.0 vs real 36.95).
+// End handling must use onComplete.
 //
 // Usage: node tools/__tests__/no-total-endcheck.test.js
 
@@ -89,12 +89,13 @@ for (const o of offenders) {
   for (const f of o.findings) console.log(`        ${o.slug}:${f.line} ${f.kind} — ${f.excerpt}`);
 }
 
-// ── bridge-2 golden (the patched clone target) ───────────────────────────
-section('klaviyo-bridge-2 golden — patched end handling');
-{
-  const src = fs.readFileSync(path.join(videosDir, 'klaviyo-bridge-2', 'index.html'), 'utf8');
-  ok(findTotalEndchecks(src).length === 0, 'bridge-2 has zero TOTAL end-checks');
-  ok(/eventCallback\(\s*['"]onComplete['"]/.test(src), 'bridge-2 ends via tl.eventCallback(onComplete)');
+// ── Golden clone target (slug from tools/local-films.local.json; skipped without it) ──
+const GOLDEN = require('../lib/local-films.js').endcheckGolden;
+if (GOLDEN) {
+  section(`${GOLDEN} golden — patched end handling`);
+  const src = fs.readFileSync(path.join(videosDir, GOLDEN, 'index.html'), 'utf8');
+  ok(findTotalEndchecks(src).length === 0, 'golden has zero TOTAL end-checks');
+  ok(/eventCallback\(\s*['"]onComplete['"]/.test(src), 'golden ends via tl.eventCallback(onComplete)');
 }
 
 console.log(`\n${failures ? '✗ FAIL' : '✓ PASS'} — ${checks - failures}/${checks} checks passed`);

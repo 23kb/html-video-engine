@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // lint-snapshot-assets.js — load a snapshot headless and list every asset
 // request that 404s (P1-6, tutorial-system-fixes 2026-07-22: 30 console 404s
-// on the entry-automation first smoke — per-snapshot CSS resolving
+// on a tutorial's first smoke — per-snapshot CSS resolving
 // ../webfonts/*, root-absolute /wpforms/assets/... plugin images, etc.).
 //
 // Serves the repo root (same server the outline generator uses) so

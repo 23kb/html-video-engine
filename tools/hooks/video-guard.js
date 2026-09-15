@@ -2,8 +2,8 @@
 /**
  * video-guard.js — PreToolUse hook for the WPForms video repo.
  *
- * Purpose: hard-gate the recurring authoring mistakes catalogued in
- * `videos/wpforms-ai-smart-edit-notes/implementation-notes.html`. Those
+ * Purpose: hard-gate the recurring authoring mistakes catalogued in a past
+ * build's implementation notes. Those
  * mistakes were written as prose rules in CLAUDE.md and ignored anyway — the
  * notes' own conclusion was "this only works if it's hard-gated in the harness."
  * This is that hard gate.

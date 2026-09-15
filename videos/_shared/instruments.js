@@ -9,15 +9,15 @@
 //
 // Promoted implementations (verbatim mechanics, generalized surfaces):
 //   valueRoll    — 3 independent shipped copies: coupon $60→$48 total roll
-//                  (short-coupon-code), GATE digit slot-roll
-//                  (short-stop-fast-bots), rollSpamCount (short-spam-safety-net)
+//                  (coupon short), GATE digit slot-roll
+//                  (bot-gate short), rollSpamCount (spam short)
 //   sheenSweep   — 7+ shipped copies (coupon extracted it as darkSweep;
 //                  verbatim siblings in the other four shorts)
-//   stateChip    — short-stop-fast-bots GATE/TIMER chips
-//   routeChip    — short-notifications-vs-confirmations makeChip + motion
-//   scanline     — short-spam-safety-net red filter scan
-//   raceLane     — short-stop-fast-bots lane + botRun scrub
-//   browserShell — short-block-a-country visitor frames
+//   stateChip    — bot-gate short GATE/TIMER chips
+//   routeChip    — notifications short makeChip + motion
+//   scanline     — spam short red filter scan
+//   raceLane     — bot-gate short lane + botRun scrub
+//   browserShell — country-block short visitor frames
 //
 // Cross-cutting mechanics every export preserves (all shipped-and-measured):
 //   · FIRE-TIME COORDINATES — routeChip resolves its anchor() at fire time,

@@ -3,7 +3,7 @@
 // Word-by-word entrance from the right edge with 3D arrival and nudge-back settle.
 // Previously-placed words bump slightly down + back as each new word lands.
 //
-// Source: reference/gsap-effects/effect004.html
+// Source: ported GSAP effect.
 // Vocabulary slot: text reveal — stack-from-right
 
 /* global gsap */

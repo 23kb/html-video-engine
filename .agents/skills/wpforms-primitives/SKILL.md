@@ -49,7 +49,7 @@ The closed-loop family in `iframe-helpers.js` (re-exported by `shorts-kit.js`):
 - ✅ **FIXED 2026-09-02 (AP-4, granted behaviour change)** — `flyToElement`'s `decompose: true` default is now a BLENDED flight: one `tweenCamera` call whose tx/ty span the full duration on the land ease while the zoom dips (`min(cur, target)×0.96`, clamped ≥1 from rest) over the first 42% and lands over the back 58% via `zoomKeyframes`. The old shape (two sequentially awaited tweens, zero blend — Umair twice: *"first it goes to right and then zooms"*, `geo` 8 / `wh` 5) is gone; no film opts in or out, and total duration is unchanged, so DUR budgets hold. `{ decompose: false }` remains for mostly-vertical moves where any dip arc reads as sideways drift (mp G).
 - **The zoom↔clamp trade** (ccs 23, measured): at high fill the edge clamp silently moves the pose off-center and the field-centre probe fails LATER. Error-by-fill curve on the measured page: fill 0.66 → 82px low, 0.78 → 36px, 0.86 → 5px, 0.90 → 0. `cameraToElement` now returns `clampedBy: {x, y}` (stage px the clamp moved the pose) — read it at authoring time instead of discovering it in the probe.
 - **Scroll, not transform, for below-viewport iframe content** (ccs 6/A6): an embedded iframe rasterizes only its own viewport — transforming the iframe can NEVER reveal content below it. Scroll inside (the closed-loop helpers above), then frame.
-- **Travel-to-center promotion trigger** (ccs 8/A8): `liftIdToCenter` exists video-locally in custom-css-targeting. Promote into motion-primitives on its SECOND use — recorded here so the next session finds it; do not promote preemptively.
+- **Travel-to-center promotion trigger** (ccs 8/A8): `liftIdToCenter` exists video-locally in one tutorial. Promote into motion-primitives on its SECOND use — recorded here so the next session finds it; do not promote preemptively.
 
 ## Quick Reference
 
@@ -90,18 +90,18 @@ Scan this table first. For deeper context (why, when not to use, options), scrol
 
 ### Editorial named-effects (`videos/_shared/effects/`)
 
-For pure-editorial / ad-style / marketing motion. Each `mountFoo({...})` returns `{ el, tweenInto(tl, opts), dispose() }`. **Use these before writing custom GSAP for an editorial text or layout reveal.** Source ports live in `reference/gsap-effects/effectNNN.html`; promoted-and-named subset lives in `videos/_shared/effects/`.
+For pure-editorial / ad-style / marketing motion. Each `mountFoo({...})` returns `{ el, tweenInto(tl, opts), dispose() }`. **Use these before writing custom GSAP for an editorial text or layout reveal.** The named set lives in `videos/_shared/effects/`.
 
-| Need | Effect | Source port |
-|------|--------|-------------|
-| Sentence reveal — word stack from right with 3D arrival | `mountTextStackFromRight({text, highlight, fontSize})` | effect004 |
-| Title card — letter mask flip + accent recolor | `mountTextLetterMaskDomino({text, topColor, botColor})` | effect027 |
-| Multi-line punch — center-out letter wave per line | `mountTextCenterOutRoll({lines, accentColor})` | effect041 |
-| "Pick a form" — card stack fans horizontally + center lift | `mountCardsSpreadFan({cards, spacing})` | effect001 |
-| "Template library" — cards fly in at varied stops + emphasize center | `mountCardsFlyInStack({cards, stops})` | effect014 |
-| "Hundreds of templates" — phyllotaxis spiral bloom of N tiles | `mountConstellationPhyllotaxisBloom({count, palette})` | effect064 |
+| Need | Effect |
+|------|--------|
+| Sentence reveal — word stack from right with 3D arrival | `mountTextStackFromRight({text, highlight, fontSize})` |
+| Title card — letter mask flip + accent recolor | `mountTextLetterMaskDomino({text, topColor, botColor})` |
+| Multi-line punch — center-out letter wave per line | `mountTextCenterOutRoll({lines, accentColor})` |
+| "Pick a form" — card stack fans horizontally + center lift | `mountCardsSpreadFan({cards, spacing})` |
+| "Template library" — cards fly in at varied stops + emphasize center | `mountCardsFlyInStack({cards, stops})` |
+| "Hundreds of templates" — phyllotaxis spiral bloom of N tiles | `mountConstellationPhyllotaxisBloom({count, palette})` |
 
-Full vocabulary table + how to add a new effect: `videos/_shared/effects/README.md`. Full 101-port menu (not yet promoted): `reference/gsap-effects/CATALOG.md`. QC harness: `videos/_qc-effects/index.html`.
+Full vocabulary table + how to add a new effect: `videos/_shared/effects/README.md`. QC harness: `videos/_qc-effects/index.html`.
 
 For the IframeManager class itself: `wpforms-interactions.js:103`. For the Cursor class: `motion-primitives.js:380`. Other interactions (`openSettingsTab`, `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, etc.) are also IframeManager methods — grep `wpforms-interactions.js` for the method name to find its line.
 
@@ -251,7 +251,7 @@ The Signature column's return type IS the contract (FIX-16):
 
 | Primitive | When | Signature | QC status | Source |
 |---|---|---|---|---|
-| `caretType(el, text, opts)` | Letter-by-letter typing into a text element with a blinking caret. Avoids the wpforms-ai-board caret-drift bug from opacity-stagger char spans. | `{ charDuration?, caretHtml? }` → **UNPAUSED** tween (self-playing) | **ready** | `motion-primitives.js:735` |
+| `caretType(el, text, opts)` | Letter-by-letter typing into a text element with a blinking caret. Avoids the caret-drift bug from opacity-stagger char spans. | `{ charDuration?, caretHtml? }` → **UNPAUSED** tween (self-playing) | **ready** | `motion-primitives.js:735` |
 | `typeIntoIframeInput(input, text, opts)` | Type into a real iframe `<input>` / `<textarea>` and fire JS listeners. Use when WPForms option inputs or live mirrors need per-character `input` events. | `{ cps?, clear?, change? }` → **UNPAUSED** tween (self-playing) | **draft** — needs QC | `motion-primitives.js:844` |
 | `statusPillMorph(pill, texts[], opts)` | Single persistent pill morphs through a sequence of labels char-by-char ("Thinking… / Filling field… / Checking formatting…"). | `{ holdEach?, morphDuration? }` → paused timeline | **ready** | `motion-primitives.js:770` |
 | `markerSweep(textEl, opts)` | Highlight sweep behind text with color flip inside. WPForms orange default. | `{ color?, duration? }` → paused timeline | **ready** | `motion-primitives.js:822` |
@@ -260,7 +260,7 @@ The Signature column's return type IS the contract (FIX-16):
 
 | Primitive | When | Signature | QC status | Source |
 |---|---|---|---|---|
-| `popOut(iframe, selector, opts)` | Pull a real iframe-doc element forward as a 2.5D card lifted into the parent doc. Clones + inlines computed styles + materializes pseudo-elements. Multi-layer shadow stack at peak. No dimmer. **The "money shot" for real-UI ads** — used on the real goal-met arrow in form-analytics-ad-v2 v3+v4 (worked under camera zoom 2.0, through withTimeout). | `{ tilt?, tiltX?, lift?, perspective?, riseMs?, holdMs?, fallMs?, hideOriginal?, shadow?, border?, stripTextShadow?, caption? }` → Promise | **proven in production** (fa-retest 2026-07-13) | `motion-primitives.js:911` |
+| `popOut(iframe, selector, opts)` | Pull a real iframe-doc element forward as a 2.5D card lifted into the parent doc. Clones + inlines computed styles + materializes pseudo-elements. Multi-layer shadow stack at peak. No dimmer. **The "money shot" for real-UI ads** — used on the real goal-met arrow in a form analytics ad (v3+v4) (worked under camera zoom 2.0, through withTimeout). | `{ tilt?, tiltX?, lift?, perspective?, riseMs?, holdMs?, fallMs?, hideOriginal?, shadow?, border?, stripTextShadow?, caption? }` → Promise | **proven in production** (fa-retest 2026-07-13) | `motion-primitives.js:911` |
 
 ### Field / form
 
@@ -367,8 +367,7 @@ Use these for Settings → Notifications, smart tags, generic settings controls,
 ## When NOT to use these
 
 - **Not "instead of the skeleton's own wiring"** — tutorials use these libraries DIRECTLY in the single-HTML film (`IframeManager` + `Cursor` + `WPFormsInteractions` + `glideClick`/`flyToElement` are what `docs/examples/single-html-tutorial-skeleton.html` mounts). The engine helpers (`ctx.cursor`, `ctx.swapToSnapshot`) were retired 2026-08-22 and must not be reached for. One film has ONE cursor (the skeleton's `Cursor`); never mount a second.
-- **Pure-editorial videos** that don't need real WPForms surface — skip `wpforms-interactions.js` entirely; motion-primitives alone is enough. (See `reference/html-templates/` clones for the canonical shape.)
-- **One-off motion** that genuinely doesn't match any primitive — write it locally in the video package, document why no primitive fit, and flag it as a candidate for promotion. Do not "almost-fit" a primitive into the wrong shape.
+- **Pure-editorial videos** that don't need real WPForms surface — skip `wpforms-interactions.js` entirely; motion-primitives alone is enough.- **One-off motion** that genuinely doesn't match any primitive — write it locally in the video package, document why no primitive fit, and flag it as a candidate for promotion. Do not "almost-fit" a primitive into the wrong shape.
 
 ## References
 

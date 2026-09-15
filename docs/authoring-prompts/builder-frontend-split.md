@@ -84,7 +84,7 @@ Plus a review URL: http://localhost:4321/videos/{video-slug}/index.html
 ```
 Make a tutorial video about the Checkbox field in WPForms. Slug: checkbox-field-tutorial.
 
-Architecture: clone videos/_examples/builder-frontend-split-skeleton/ → videos/checkbox-field-tutorial/.
+Architecture: clone videos/_examples/builder-frontend-split-skeleton/ → videos/<slug>/.
 Use BuilderFrontendSplit from videos/_shared/builder-frontend-split.js — DO NOT reinvent.
 
 Surface plan:

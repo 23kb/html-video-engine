@@ -4,7 +4,7 @@
 // 1em height. Domino-style: top slides down out of view while bottom slides up
 // into place. Optional second pass returns to the top color for an exit.
 //
-// Source: reference/gsap-effects/effect027.html
+// Source: ported GSAP effect.
 // Vocabulary slot: text reveal — letter-mask-domino
 
 /* global gsap */

@@ -7,7 +7,7 @@ The narration is the spine of every tutorial video. Bad narration drags good vis
 
 ## The measured bar (2026-09-03)
 
-Umair designated 7 reference narrations (44 min of audio); the numbers below are measured from them (`reference/New folder/_extraction/_analysis/analysis-tts-script.md`). Where this section and older guidance below disagree — notably the "short sentences" instinct under Voice — the measured bar wins for narration copy: the bar reads as flowing prose, not choppy fragments.
+Umair designated 7 reference narrations (44 min of audio); the numbers below are measured from them. Where this section and older guidance below disagree — notably the "short sentences" instinct under Voice — the measured bar wins for narration copy: the bar reads as flowing prose, not choppy fragments.
 
 **The numbers:**
 

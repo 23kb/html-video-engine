@@ -29,7 +29,7 @@
 //         camera zoom below the 1.78 portrait floor     (bars on screen)
 //         target region PAINTS FLAT — pixel-level check (luma range below
 //         --luma-range over the region's screenshot). DOM lies about paint:
-//         custom-css-targeting ISSUES #4 shipped blank cards past a DOM-only
+//         one tutorial (ISSUES #4) shipped blank cards past a DOM-only
 //         probe. Geometry alone never certifies a beat here.
 //   WARN  natural (unclamped) zoom below the floor — the camera clamped, so
 //         the slice may crop the taught region; frame a tighter subgroup
@@ -197,7 +197,7 @@ function judge(m, { centerTol, floor, lumaRange }) {
     fails.push(`CONTROLS OVERLAP — ${m.overlap}: composite layout collision (QC2: Submit-over-Phone shipped unseen)`);
   }
   if (m.pixel && m.pixel.range != null && m.pixel.range < lumaRange) {
-    fails.push(`PAINTS FLAT (luma range ${m.pixel.range.toFixed(1)}, avg ${m.pixel.avg != null ? m.pixel.avg.toFixed(0) : '?'}) — region is blank on screen; DOM lies about paint (custom-css-targeting ISSUES #4)`);
+    fails.push(`PAINTS FLAT (luma range ${m.pixel.range.toFixed(1)}, avg ${m.pixel.avg != null ? m.pixel.avg.toFixed(0) : '?'}) — region is blank on screen; DOM lies about paint (tutorial ISSUES #4)`);
   } else if (!m.pixel) {
     warns.push('no pixel evidence for this sample (screenshot/ffmpeg unavailable) — geometry-only verdict');
   }

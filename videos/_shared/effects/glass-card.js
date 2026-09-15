@@ -6,7 +6,7 @@
 // whatever moves BEHIND the card, so pair it with a live gradient/photo
 // "world" layer underneath (worlds stay video-local — per-film art direction).
 //
-// Source: original house extract — videos/glass-style-demo/index.html
+// Source: original house extract from a glass-style study film
 // (approved 2026-09-02; style study of glass-pilot-hyperframes).
 // Vocabulary slot: surface — frosted glass card
 //

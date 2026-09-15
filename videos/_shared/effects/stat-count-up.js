@@ -4,7 +4,7 @@
 // card lands. Deterministic: the displayed value is a pure function of tween
 // progress (seek/scrub-safe for render.js --seek parity).
 //
-// Source: original house effect (no reference/gsap-effects port — the catalog's
+// Source: original house effect (no ported GSAP effect — the catalog's
 // "counter" hits are counter-rotation, unrelated). Slot vocabulary adopted from
 // docs/video-system-improvements-2026-08-06.md E1.
 // Vocabulary slot: stat — count-up card

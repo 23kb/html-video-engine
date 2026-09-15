@@ -5,8 +5,8 @@
 // final line carries an inline accent CHIP whose label hot-swaps in place while
 // the chip itself morphs width and flashes.
 //
-// Source: videos/reel-ad-vocabulary/index.html beat b1 (ad-vocabulary proving
-// reel, 2026-09-03 — motion-audit tier A, seam-gate PASS). Technique lineage:
+// Source: promoted from the ad-vocabulary proving reel, beat b1
+// (2026-09-03 — motion-audit tier A, seam-gate PASS). Technique lineage:
 // xai T7 (chip hot-swap: content slides out, container morphs, fill flashes) in
 // docs/xai-voice-motion-rnd-2026-09-02.md; ease voices E1 `whipSettle` (in) and
 // E2 `heldSnap` (out / morph) from the same doc.

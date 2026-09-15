@@ -41,7 +41,7 @@ Capture evidence: `snapshots/builder-field-options-layout`.
   `#wpforms-field-option-40-conditional_logic` present; the rule-builder
   subtree is NOT captured (cloned from
   `snapshots/builder-settings-notifications-cl` at runtime, per the
-  webhooks-addon precedent).
+  Webhooks addon tutorial precedent).
 
 ## Divergences found while building the video
 

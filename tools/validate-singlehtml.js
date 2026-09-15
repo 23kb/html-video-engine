@@ -51,11 +51,8 @@ const SNAP = path.join(ROOT, 'snapshots');
 // canaries are deliberately absent.
 const ALL_MODE_SKIP = new Map([
   ...[...LEGACY_ALLOWLIST].map((s) => [s, 'TOTAL end-check in local scrubber chrome (pre-FIX-3 frozen list)']),
-  ['wpforms-ai-board', 'accepted legacy — repeat:-1 atmosphere loops predate the validator'],
-  ['test-3d-scattered-2', 'accepted legacy — single-tween camera predates the validator'],
-  ['wpforms-ai-smart-edit-scene3', 'accepted legacy — single-tween camera predates the validator'],
-  ['wpforms-smart-edit-55656', 'accepted legacy — single-tween camera predates the validator'],
-  ['wpforms-smart-edit-56565', 'accepted legacy — single-tween camera predates the validator'],
+  // The other frozen entries are [slug, reason] pairs in tools/local-films.local.json.
+  ...(require('./lib/local-films.js').validatorAllModeSkip || []),
 ]);
 
 const ESCAPE_RE = /OVERRIDE:|lint-allow/;

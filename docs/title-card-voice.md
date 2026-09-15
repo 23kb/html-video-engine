@@ -120,7 +120,7 @@ Rules:
 
 ## `hold` (display duration)
 
-`intro.hold: 3` and `outro.hold: 3` are the title card display duration in seconds. Most videos use `hold: 3`. Some longer cinematic-heavy videos use `hold: 7-7.5` (build-forms-faster-with-wpforms-ai uses `hold: 7.4`).
+`intro.hold: 3` and `outro.hold: 3` are the title card display duration in seconds. Most videos use `hold: 3`. Some longer cinematic-heavy videos use `hold: 7-7.5` (one AI-feature video uses `hold: 7.4`).
 
 Hold longer when:
 - The intro has a custom theme/animation that needs time to play out.
@@ -138,11 +138,11 @@ Hold shorter (rare):
 - `accent: '#XXXXXX'` — accent color for theme elements.
 - `background: 'cool-paper'` (postIntro only) — uses the cool-paper backdrop.
 
-Tutorial videos usually omit `theme` and use defaults. Marketing-mode videos use custom themes (build-forms-faster-with-wpforms-ai uses a custom gradient `linear-gradient(to right, #C5796D, #DBE6F6)`).
+Tutorial videos usually omit `theme` and use defaults. Marketing-mode videos use custom themes (one AI-feature video uses a custom gradient `linear-gradient(to right, #C5796D, #DBE6F6)`).
 
 ## Subtitle / pill (optional)
 
-`intro.pill` adds a small badge above or alongside the title. Used by build-forms-faster-with-wpforms-ai: `"pill": "Rough idea. Ready draft."` — captures the postIntro's transformation in one phrase.
+`intro.pill` adds a small badge above or alongside the title. One AI-feature video uses: `"pill": "Rough idea. Ready draft."` — captures the postIntro's transformation in one phrase.
 
 Pills are optional. Use them when:
 - The video's promise is a transformation that fits in 3-5 words.
@@ -160,14 +160,6 @@ Pills are optional. Use them when:
 | Eyebrow is a full sentence | Eyebrow is `"WPForms Tutorial"` or `"WPForms"` |
 | `hold: 1` — title flashes by | Default 3; longer for cinematic intros |
 | Pill is 8 words long | Pill is 3-5 words |
-
-## Reference videos
-
-Read the manifest of these videos to see strong intro/outro examples:
-
-- `videos/a-complete-guide-to-the-checkboxes-field/manifest.json` — clean tutorial intro/outro.
-- `videos/build-forms-faster-with-wpforms-ai/manifest.json` — custom themed intro with pill.
-- `videos/form-entries-guide/manifest.json` — overview-tutorial intro/outro.
 
 ## See also
 

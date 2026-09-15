@@ -9,7 +9,7 @@
 // deterministic, and the frame clock IS the timeline clock — sfx/plan.json cue
 // times need no render-offset correction.
 //
-// Film contract (see videos/wpforms-claude-job-application-ad/index.html):
+// Film contract:
 //   · opened with ?render=frames the film BUILDS, sets window.__tl, does NOT autoplay,
 //     and sets window.__renderReady = true
 //   · every visible motion is on __tl (no wall-clock cursor glides, no RAF-driven motion)

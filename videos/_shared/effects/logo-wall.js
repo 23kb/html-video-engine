@@ -5,8 +5,8 @@
 // An optional seeded per-tile float keeps the grid alive through a long hold
 // without any tile drifting off its mark.
 //
-// Source: videos/reel-ad-vocabulary/index.html beat b5 (ad-vocabulary proving
-// reel, 2026-09-03 — motion-audit tier A, seam-gate PASS).
+// Source: promoted from the ad-vocabulary proving reel, beat b5
+// (2026-09-03 — motion-audit tier A, seam-gate PASS).
 // Vocabulary slot: proof — tile grid of partner marks
 //
 // ⚠ SHIPS NO LOGOS. `marks` is caller-supplied: [{ name, src }]. Real marks are

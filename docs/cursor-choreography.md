@@ -108,7 +108,7 @@ await cursor.dragGrab(sel.fieldButton, sel.canvasDropZone, {
 });
 ```
 
-The `revealAt` + `reveal` + `revealDisplay` pattern in chapter beat objects (see `videos/a-complete-guide-to-the-checkboxes-field/chapters/add-checkboxes-field.js`) reveals the actual field in the canvas at a fraction-through-drag point, simulating the drop.
+The `revealAt` + `reveal` + `revealDisplay` pattern in chapter beat objects reveals the actual field in the canvas at a fraction-through-drag point, simulating the drop.
 
 ## Typing
 

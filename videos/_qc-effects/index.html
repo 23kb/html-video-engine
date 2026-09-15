@@ -29,7 +29,7 @@
   .stage.dark { background: radial-gradient(ellipse at center, #2a221b 0%, #0a0806 80%); }
   .stage.cream-deep { background: radial-gradient(ellipse at center, #fdf8f0 0%, #e9dec8 100%); }
   .stage.cards-dark { background: #14110e; }
-  /* the ad-vocabulary bed — matches videos/reel-ad-vocabulary's atmo-base */
+  /* the ad-vocabulary bed — matches the proving reel's atmo-base */
   .stage.ink { background: radial-gradient(ellipse 1200px 800px at 50% 55%,
     #0c1119 0%, #0a0e14 40%, #050810 100%); }
   .scene-layer { position: absolute; inset: 0; will-change: transform, filter, opacity; }
@@ -288,7 +288,7 @@
       return { fx: { ...fx, dispose: () => { dispose(); world.remove(); } }, tl };
     },
 
-    // ── Ad vocabulary, promoted from videos/reel-ad-vocabulary (2026-09-03) ──
+    // ── Ad vocabulary, promoted from the ad-vocabulary proving reel (2026-09-03) ──
     // All five are DARK-ground effects; the `ink` stage matches the reel's bed.
 
     'phrase-chain': () => {

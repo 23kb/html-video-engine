@@ -258,7 +258,7 @@ are proposed, pending review.**
 | 7 | Collapse / expand block — `display:none` on `.wpforms-builder-settings-block-content` + chevron flip | line 1178–1181, 1227 | base covers expanded (default block); collapsed-only state is a variant only if a video walks closed→open on the *default* block | (rolled into #3 capture if any) |
 | 8 | Edit block name (rename inline) | `.wpforms-builder-settings-block-edit` | not its own variant — interactive, covered by chapter-level animation against the base | — |
 | 9 | Per-notification status active / inactive | `get_status_button()` line 1207 | variant if a video walks toggling per-block status | `builder-settings-notifications-block-inactive` (proposed; defer) |
-| 10 | Smart-tags dropdown open on any of the seven smart-tag-enabled fields | `.wpforms-show-smart-tags` button + smart-tags overlay | variant only when a video walks insertion; precedent: `form-notifications` (smart-tags scenes already shipped) | `builder-settings-notifications-smarttags-<field>` (proposed; defer per-field) |
+| 10 | Smart-tags dropdown open on any of the seven smart-tag-enabled fields | `.wpforms-show-smart-tags` button + smart-tags overlay | variant only when a video walks insertion; precedent: smart-tags scenes already shipped in a Notifications video | `builder-settings-notifications-smarttags-<field>` (proposed; defer per-field) |
 | 11 | Conditional Logic builder — no rules yet | `wpforms_conditional_logic()->builder_block` line 1412 | base may already include the empty CL block fully serialized; verify on inspect of refreshed base. If the CL builder defers any options to runtime, capture as variant. | (verify; otherwise rolled into base) |
 | 12 | Conditional Logic builder — one rule added (field/condition/value populated) | CL builder JS adds row(s) | **separate slug**, already named in `snapshots/CATALOG.md` as `_not generated` | `builder-settings-notifications-cl` |
 | 13 | Advanced group expanded | Settings.php `unfoldable: true` | **variant** — the entire Advanced sub-surface lives here | `builder-settings-notifications-advanced` |
@@ -330,7 +330,7 @@ Captured only when a specific video's plan needs the state.
 | `builder-settings-notifications-block-inactive` | A video walks per-block status toggle (row 9). |
 | `builder-settings-notifications-disabled` | A video walks the form-level Enable off→on flow (row 2). |
 | `builder-settings-notifications-email-template-modal` | A video walks the Email Template modal (row 16). |
-| `builder-settings-notifications-smarttags-<field>` | A video inserts a smart tag into one of the per-block text fields (row 10). One slug per `<field>` (`email`, `subject`, `sender_name`, `sender_address`, `replyto`, `message`). Per-field decision deferred; precedent in `form-notifications`. |
+| `builder-settings-notifications-smarttags-<field>` | A video inserts a smart tag into one of the per-block text fields (row 10). One slug per `<field>` (`email`, `subject`, `sender_name`, `sender_address`, `replyto`, `message`). Per-field decision deferred. |
 | `builder-settings-notifications-advanced-entry-csv-selected` | A video shows post-selection chips in Entry Information (row 21). |
 | `builder-settings-notifications-advanced-file-upload-selected` | A video shows post-selection chips in File Upload Fields (row 27). |
 
@@ -369,7 +369,7 @@ and inherited verbatim. Specific to this surface:
    (`-cl`). Empty-rules state may be subsumed by base if
    inspect confirms the empty CL DOM serializes inline.
 7. **Smart-tags dropdowns** are interactive variants per
-   field; precedent from `form-notifications` (smart-tags
+   field; precedent from an earlier Notifications video (smart-tags
    scenes shipped). One slug per field per surface,
    captured only on demand.
 

@@ -11,8 +11,8 @@
 //   node tools/generate-snapshot-catalog.js --consumer-surface
 //
 // --all                  emit for every directory under snapshots/
-// --consumer-surface     emit for snapshots referenced by videos
-//                        creating-first-form and _tests/verbs-probe only
+// --consumer-surface     emit for snapshots referenced by one legacy
+//                        tutorial and _tests/verbs-probe only
 //
 // Also refreshes snapshots/CATALOG.md as a generated index by shelling
 // out to capture/generate-catalog.js at the end (unless --no-index).

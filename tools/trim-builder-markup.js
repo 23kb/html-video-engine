@@ -28,7 +28,7 @@ const SNAPSHOTS_DIR = path.join(__dirname, '..', 'snapshots');
 // --- over-trim guard ---
 //
 // Server-AJAX-rendered addon sections inside the ACTIVE settings section are
-// load-bearing (entry-automation build 2026-07-22: the Add New Connection
+// load-bearing (a tutorial build 2026-07-22: the Add New Connection
 // button and the gdrive-signin task block were silently trimmed, masking a
 // real product-truth question for an hour). Chrome removals (#wpfooter,
 // builder-help, mceu orphans, off-canvas option panels) must never contain

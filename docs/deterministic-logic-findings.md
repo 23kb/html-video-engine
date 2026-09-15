@@ -17,24 +17,6 @@ sessions; the initial linter pass did not edit video packages.
 | `runtime/cinematic-cause-effect-gmail.js` | 1 | `Math.random()` |
 | `runtime/cinematic-one-answer-enough.js` | 2 | `Math.random()` |
 | `videos/_shared/kit.js` | 1 | `setTimeout()` |
-| `videos/build-forms-faster-with-wpforms-ai/chapters/_kit.js` | 2 | `setTimeout()` |
-| `videos/build-forms-faster-with-wpforms-ai/chapters/scene-1-hook.js` | 2 | `Math.random()` |
-| `videos/build-forms-faster-with-wpforms-ai/chapters/scene-10-form-crystallizes.js` | 2 | `setTimeout()` |
-| `videos/build-forms-faster-with-wpforms-ai/chapters/scene-2-add-new.js` | 1 | `setTimeout()` |
-| `videos/build-forms-faster-with-wpforms-ai/chapters/scene-3-prompt.js` | 2 | `Math.random()` |
-| `videos/build-forms-faster-with-wpforms-ai/chapters/scene-4-burst.js` | 6 | `Math.random()` |
-| `videos/build-forms-faster-with-wpforms-ai/chapters/scene-6-refine.js` | 4 | `Math.random()` |
-| `videos/build-forms-faster-with-wpforms-ai/chapters/scene-7-ai-choices.js` | 4 | `Math.random()` |
-| `videos/build-forms-faster-with-wpforms-ai/chapters/scene-8-feature-orbit.js` | 3 | `Math.random()`, `setTimeout()` |
-| `videos/form-entries-guide/chapters/postintro-mission-control.js` | 3 | `setTimeout()` |
-| `videos/surveys-and-polls-v4-final-synced/chapters/_helpers.js` | 1 | `setTimeout()` |
-| `videos/surveys-and-polls-v4-final-synced/chapters/carousel-opener.js` | 2 | `setTimeout()` |
-| `videos/surveys-and-polls-v4-final-synced/chapters/customize.js` | 1 | `setTimeout()` |
-| `videos/surveys-and-polls-v4-final-synced/chapters/hero-transform.js` | 2 | `setTimeout()` |
-| `videos/wpforms-rest-api-overview/chapters/intro-cold-open.js` | 2 | `Math.random()` |
-| `videos/wpforms-rest-api-overview/chapters/mcp-outro.js` | 2 | `Math.random()` |
-| `videos/wpforms-rest-api-overview/chapters/postintro-abilities-surface.js` | 2 | `Math.random()` |
-| `videos/wpforms-rest-api-overview/chapters/search-entries-constellation.js` | 11 | `Math.random()` |
 
 ## Follow-Up Shape
 

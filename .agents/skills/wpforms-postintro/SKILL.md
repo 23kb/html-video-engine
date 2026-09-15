@@ -11,7 +11,7 @@ It is **not**: a second title card, a copied cinematic from another topic, a ful
 
 ## 🎓 Tutorial branch — read this BEFORE assuming a tutorial needs a postIntro
 
-Added 2026-08-28 after Umair's QC note on `coupons-addon`: *"I feel like postIntro is not clear for tutorials — Codex is not clear about it."* He was right. Everything below this section was written for editorial / announcement films, and applying it unchanged to a tutorial produced a botched beat neither of us could map to a rule (receipt `cpa` 13–14).
+Added 2026-08-28 after Umair's QC note on one tutorial: *"I feel like postIntro is not clear for tutorials — Codex is not clear about it."* He was right. Everything below this section was written for editorial / announcement films, and applying it unchanged to a tutorial produced a botched beat neither of us could map to a rule (receipt `cpa` 13–14).
 
 ⚠️ **Correction 2026-08-28:** an earlier version of this section said a tutorial postIntro is "optional and the default answer is a short one or none at all." **That was wrong and contradicted a standing ruling.** Umair overruled the old "default: skip" on 2026-07-22 — **a postIntro is MANDATORY for rock tutorials** (`dev-advocacy-video`: "mandatory presence, negotiable content"). What is under-specified is the CONTENT, never the presence. Corrected here rather than left standing, per the rule that a stale sentence beside a live one reads as an exception.
 
@@ -30,7 +30,7 @@ So for a tutorial the question is never *whether* — it is *what*. Two things t
 
 ⚠️ **The rest is genuinely open and needs Umair, not a self-serve answer.** Six films reviewed on 2026-08-28 that carried a postIntro drew six postIntro notes — a 100% flag rate, including four films that otherwise passed with no defects. He has raised "postIntro capability" as a standing tool-level ask and said *"it's all about storyboarding."* Do not self-approve a tutorial postIntro concept while that is unresolved; put the premise to him in one sentence first.
 
-**If you build one, it carries a composition line, not just a phase table.** The phase table below audits MOTION only; it says nothing about the frame, which is how `coupons-addon` shipped six valid phases playing out in the bottom eighth of an empty stage. State before building:
+**If you build one, it carries a composition line, not just a phase table.** The phase table below audits MOTION only; it says nothing about the frame, which is how one tutorial shipped six valid phases playing out in the bottom eighth of an empty stage. State before building:
 
 - **Where the subject sits and what fraction of frame it fills.** Bottom-anchored cards on an empty stage read as broken. `tools/composition-scan.js` measures occupancy — run it on the postIntro, not just the film body.
 - **Which snapshot its product identity cites.** A mock WPForms form must cite a real snapshot the way any other UI fragment does (anti-pattern #6). "Doesn't look like a WPForms form" was a QC note, and it was a sourcing failure, not a styling one.
@@ -48,12 +48,12 @@ Sign-off requirement: every postIntro is run through `wpforms-motion-audit` (Ski
 
 **Every species-1 postIntro MUST hit all eight of these. The user will reject postIntros that feel like a single fade-in.**
 
-1. **Length — the story-state rule** (ruled 2026-08-22; replaces the old "8-15s. Not 4. Not 20." gate). A postIntro runs until the message is explained — and "explained" is measured in **story states, not seconds**. Every phase must change a state a viewer can name: the problem appears, the stakes land, the feature enters, the resolution shows. When the last state has landed, the postIntro is over. Holds that exist to fit audio are defects: **beat length is the budget; narration is written to it** (sfb 36) — shorts and long-form both. No fixed second-count in either direction: the canonical long-form references happen to sit 8-15s; the approved 4.8s `short-stop-fast-bots` cold open is the shorts prototype.
+1. **Length — the story-state rule** (ruled 2026-08-22; replaces the old "8-15s. Not 4. Not 20." gate). A postIntro runs until the message is explained — and "explained" is measured in **story states, not seconds**. Every phase must change a state a viewer can name: the problem appears, the stakes land, the feature enters, the resolution shows. When the last state has landed, the postIntro is over. Holds that exist to fit audio are defects: **beat length is the budget; narration is written to it** (sfb 36) — shorts and long-form both. No fixed second-count in either direction: the canonical long-form references happen to sit 8-15s; an approved 4.8s shorts cold open is the prototype.
 2. **At least 5 distinct animation phases long-form; at least 3 on shorts.** Examples: mount, primary morph, payoff, secondary morph or label reveal, exit/handoff. A fade-in + fade-out is **not** five phases. A phase whose "what changes" cell would be empty or repeat the previous phase is cut before build.
 3. **At least one cursor or pointer interaction with the editorial DOM** (click, hover, drag, type) on long-form; **optional on shorts** (ruled 2026-08-22). Without it a long-form postIntro feels like a slide, not a scene.
 4. **Hands off into the first content chapter** — fade into the real snapshot, dive-zoom into a captured element, or hand the cursor to a product-truth control. Never abruptly `.remove()` the editorial layer onto a bare snapshot.
-5. **Identity continuity via a morph chain** — one DOM element carries viewer attention through the phases, morphing in content/scale/role while preserving its `id`. The canonical example is `reference/html-templates/wpforms-ai-prompt-open.html#cta`: Button → Input → Sullie pill → Chat panel over 12 seconds. Per `docs/storyboard-format-morph-chain-2026-05-10.md` — the storyboard MUST declare the morph chain as its own section.
-6. **Demonstrate, never illustrate** (ruled 2026-08-22). The fix visibly causes the resolution, on camera, in one continuous read. Litmus at proposal time: *point at the frame where the mechanism acts.* If no single frame shows cause meeting effect, the concept is illustration — the anti-spam nested-rectangles failure mode (illustrate = dead, demonstrate = alive; the custom-css v4 real-form-plus-code-editor is the passing model).
+5. **Identity continuity via a morph chain** — one DOM element carries viewer attention through the phases, morphing in content/scale/role while preserving its `id`. The canonical example morphs one `#cta` element Button → Input → Sullie pill → Chat panel over 12 seconds. Per `docs/storyboard-format-morph-chain-2026-05-10.md` — the storyboard MUST declare the morph chain as its own section.
+6. **Demonstrate, never illustrate** (ruled 2026-08-22). The fix visibly causes the resolution, on camera, in one continuous read. Litmus at proposal time: *point at the frame where the mechanism acts.* If no single frame shows cause meeting effect, the concept is illustration — the anti-spam nested-rectangles failure mode (illustrate = dead, demonstrate = alive; a custom CSS tutorial's v4 real-form-plus-code-editor is the passing model).
 7. **Stakes before relief** (ruled 2026-08-22). The problem must read as a problem — red wash, failed state, the Bot leaning in — before the feature enters. A viewer who can't say what's at stake at the entrance beat has been shown a features list, not a story.
 8. **The carrier law applies inside postIntros** (ruled 2026-08-22). An area-visible event at least every ~2s, where area is a fraction of the FRAME (sfb 8/17/29/31 — proven four times). Micro-motion — blinks, 30px gestures — does not carry; washes, lunges, slams, and camera moves do.
 
@@ -136,17 +136,14 @@ The old runtime boot-flash survives the retirement in a smaller shape. In a sing
 
 Read **only** the cinematic whose semantics match your concept. Do not read all three for design inspiration; that produces frankenstein postIntros.
 
-- **Rough-thought-to-draft concept** — Read when the concept is *messy idea → polished output* or *generative AI*. ~15.2s, 5 phases (source removed 2026-08-22; recover via git history): type messy idea → erase + retype clean prompt → compress to chip → thinking → form draft reveal. Used by `build-forms-faster-with-wpforms-ai`.
-- **One-answer-enough concept** — Read when the concept is *limitation → richer answer* or *radio→checkbox morph* style. ~14s, 6 phases (source `runtime/cinematic-one-answer-enough.js` removed 2026-08-22; recover via git history): form mount → cursor → radio click → radio→checkbox morph → multi-select payoff → exit. Used by `a-complete-guide-to-the-checkboxes-field`.
-- **Notifications `form-to-inbox` teaser** — HISTORICAL (its source `scenes/notifications-combined.html` was removed 2026-08-22; recover via git history, do not look for it on disk). The concept for *form submission → email landing*: ~12s, multi-phase: browser chrome → form fill → click → Gmail slide-in → email ping. Used by `form-notifications`.
-
+- **Rough-thought-to-draft concept** — Read when the concept is *messy idea → polished output* or *generative AI*. ~15.2s, 5 phases (source removed 2026-08-22; recover via git history): type messy idea → erase + retype clean prompt → compress to chip → thinking → form draft reveal.- **One-answer-enough concept** — Read when the concept is *limitation → richer answer* or *radio→checkbox morph* style. ~14s, 6 phases (source `runtime/cinematic-one-answer-enough.js` removed 2026-08-22; recover via git history): form mount → cursor → radio click → radio→checkbox morph → multi-select payoff → exit.- **Notifications `form-to-inbox` teaser** — HISTORICAL (its source `scenes/notifications-combined.html` was removed 2026-08-22; recover via git history, do not look for it on disk). The concept for *form submission → email landing*: ~12s, multi-phase: browser chrome → form fill → click → Gmail slide-in → email ping.
 Other accepted package postIntros are not canonical references; treat them as historical, not design inspiration.
 
 ---
 
 ## 📐 Species 2 — illustrated montage (RULED 2026-09-03)
 
-**Live gate profile** (U1–U3 rulings; evidence `reference/New folder/_extraction/_analysis/analysis-postintro.md`). The species is chosen at the storyboard gate; the morph-chain species and its eight-point profile stay unchanged for videos that pick species 1. Morph-chain / cursor / demonstrate-don't-illustrate rules do NOT bind this species.
+**Live gate profile** (U1–U3 rulings). The species is chosen at the storyboard gate; the morph-chain species and its eight-point profile stay unchanged for videos that pick species 1. Morph-chain / cursor / demonstrate-don't-illustrate rules do NOT bind this species.
 
 1. **Cold open** — no sting, no title slate; straight into a fully-illustrated metaphor scene.
 2. **2–5 scenes, 4–9s each, ONE narration idea per scene.** Joined by hard cuts or 0.5–1s whiteout washes.
@@ -169,7 +166,7 @@ Every postIntro should compose from `videos/_shared/motion-primitives.js`. The l
 | PostIntro phase | Primitive to reach for |
 |---|---|
 | Cursor mount + glide/click/hover/drag (Multi-Animation rule #3) | `Cursor` class — built-in anti-frenzy guards, squash+ripple click, ghost-clone drag |
-| Letter-by-letter typing (e.g. AI prompt input) | `caretType` — scalar-tween + innerHTML mutation, avoids the wpforms-ai-board caret-drift bug |
+| Letter-by-letter typing (e.g. AI prompt input) | `caretType` — scalar-tween + innerHTML mutation, avoids the caret-drift bug |
 | Status / progress label morphing (Thinking → Filling → Done) | `statusPillMorph` |
 | Marker / highlighter sweep on key text | `markerSweep` |
 | Field cascade (AI generation, template apply) | `fieldStaggerReveal` |
@@ -236,7 +233,7 @@ Before declaring a postIntro done (cursor/mechanism items are species-1; for spe
 ## References (loaded on demand)
 
 - `docs/postintro-patterns.md` — Canonical reference for postIntro design rules. Read for the deepest rationale and historical context.
-- Living example of a video-local postIntro block: a recent film's opening section (e.g. `videos/klaviyo-bridge-2/index.html`) — read for vocabulary AFTER cloning `docs/examples/single-html-postintro-skeleton.html` (the skeleton is the first copy target, per Design Rules above).
+- Living example of a video-local postIntro block: a recent film's opening section — read for vocabulary AFTER cloning `docs/examples/single-html-postintro-skeleton.html` (the skeleton is the first copy target, per Design Rules above).
 - `docs/gsap-flip-patterns.md` — Read when the postIntro needs Flip-based morphs (radio→checkbox, card reflow, label-to-field).
 - `docs/blocks.md` — Read when composing editorial chrome (mac-window, code-card, etc.) into a postIntro.
 - `docs/text-kit.md` — Read when the postIntro includes text reveals (24 Pixel-Point-style presets).

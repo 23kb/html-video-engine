@@ -20,8 +20,6 @@
 // - docs/polish-vocabulary-2026-05-11.md — rest-api polished-vs-unpolished deltas
 // - .claude/skills/wpforms-motion-audit/SKILL.md — S-F tier criteria + hard rules
 // - .claude/skills/wpforms-gsap-rules/SKILL.md — L0 + L1 GSAP discipline
-// - videos/wpforms-ai-board/LESSONS.md — wpforms-ai-board build postmortem
-// - reference/html-templates/* — canonical winners these primitives generalize
 
 /* eslint-env browser */
 /* global gsap */
@@ -36,8 +34,7 @@
  * GSAP L0 rule and breaks `tools/render.js --seek` mode.
  *
  * Source: docs/polish-vocabulary-2026-05-11.md "duration-bounded-ambient"
- * (the polished rest-api kit went from repeat:-1 to this pattern at
- * videos/wpforms-rest-api-overview-polished/chapters/_kit.js:409).
+ * (the polished rest-api kit went from repeat:-1 to this pattern).
  *
  * @param {number} cycleDuration — seconds per cycle
  * @param {number} visibleDuration — total seconds the loop is on-screen
@@ -208,7 +205,7 @@ export function cinematicFlight(camera, opts) {
  * `cinematicFlight` is subtler — for inter-snapshot work where the gap
  * matters, use this primitive.
  *
- * Source: docs/editorial-reference-motion-spec.md (Anthropic Claude design-
+ * Source: an editorial motion spec (Anthropic Claude design-
  * tools virtual-board pattern), tools/ref-frames/motion-spec.md Ref 2.
  *
  * @param {HTMLElement} camera — the camera-transformed wrapper
@@ -284,7 +281,7 @@ export function figjamFlight(camera, opts) {
  * polished rest-api video.
  *
  * Source: docs/polish-vocabulary-2026-05-11.md camera-moves table; original
- * pattern in videos/wpforms-rest-api-overview-polished/chapters/_kit.js
+ * pattern in the polished rest-api video's chapter kit
  * (focus/station/overview poses) + auth-and-list-forms.js exit cadence.
  *
  * Same SHAPE as cinematicFlight but for shared-scene tutorials: focus on a
@@ -399,8 +396,8 @@ const DEFAULT_CURSOR_SVG = `
  * gets a consistent cursor without re-implementing mounting + glide + click
  * choreography.
  *
- * Source: anti-frenzy pattern from videos/wpforms-ai-board/LESSONS.md cursor
- * section. Click squash + ripple from videos/wpforms-ai-board/index.html.
+ * Source: anti-frenzy pattern from an earlier build's cursor lessons.
+ * Click squash + ripple from the same build.
  *
  * @example
  *   const cursor = new Cursor(stage, { initialX: 100, initialY: 100 });
@@ -423,7 +420,7 @@ export class Cursor {
    *   about the arrow tip (12.5% 8.3% — measured on DEFAULT_CURSOR_SVG's M3 2 apex;
    *   re-measure before using with a custom svg) with the seam-grammar §3.1 tap
    *   constants; 'center' keeps the legacy center bounce. Approved opt-in 2026-09-03
-   *   (reel-tutorial-craft b2); default unchanged.
+   *   (tutorial-craft proving reel, b2); default unchanged.
    */
   constructor(stage, opts = {}) {
     const {
@@ -854,14 +851,13 @@ export function clickRipple(stage, x, y, opts = {}) {
 /**
  * Letter-by-letter caret-typing into a text element. Replaces the
  * opacity-stagger-on-char-spans approach that caused the
- * videos/wpforms-ai-board caret-floats-500px-right bug (invisible chars
+ * earlier caret-floats-500px-right bug (invisible chars
  * still occupy layout space → caret position desyncs).
  *
  * Implementation: scalar gsap tween + onUpdate innerHTML mutation. A blinking
  * caret span is appended after the visible text.
  *
- * Source: docs/wpforms-ai-board-lessons (now in winning-pattern doc); fixed
- * pattern lives in reference/html-templates/wpforms-ai-prompt-open.html.
+ * Source: build lessons (now in winning-pattern doc).
  *
  * REGRESSION GUARD: returns a plain, paused-timeline-composable tween — insert
  * it with `tl.add(caretType(el, text), position)`. DO NOT add an internal
@@ -877,7 +873,7 @@ export function clickRipple(stage, x, y, opts = {}) {
  * @param {boolean} [opts.humanize=false] — seam-grammar §3.3 weight-curve pacing
  *   (word breaths, punctuation pauses, end swell); deterministic, total duration
  *   unchanged. The returned tween carries `.charT` (per-char reveal seconds) for
- *   keystroke SFX coupling. Approved opt-in 2026-09-03 (reel-tutorial-craft b1).
+ *   keystroke SFX coupling. Approved opt-in 2026-09-03 (tutorial-craft proving reel, b1).
  * @returns {gsap.core.Tween} — UNPAUSED (plays immediately, deliberate per regression-guard); tl.add() to re-schedule
  */
 export function caretType(el, text, opts = {}) {
@@ -1332,7 +1328,7 @@ export async function popOut(iframe, selector, opts = {}) {
  * generation or after a template applies. Each field rises + un-blurs +
  * fades in with a slight stagger.
  *
- * Source: videos/wpforms-ai-board/LESSONS.md Round 3 field-stagger fix +
+ * Source: an earlier build's Round 3 field-stagger fix +
  * docs/polish-vocabulary-2026-05-11.md "field-rise" custom-ease note.
  *
  * @param {NodeListOf<HTMLElement>|HTMLElement[]} fields
@@ -1369,7 +1365,7 @@ export function fieldStaggerReveal(fields, opts = {}) {
  * mounts Sullie once and keeps her across all 6 chapters. The unpolished
  * version doesn't, which makes the editorial canvas feel anonymous.
  *
- * Source: videos/wpforms-rest-api-overview-polished/chapters/_kit.js:277
+ * Source: the polished rest-api video's chapter kit
  * `mountSullieBug` (this is a refactor of that, with options).
  *
  * Returns the bug element (idempotent — re-mount returns existing).

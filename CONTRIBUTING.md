@@ -113,7 +113,7 @@ helper first.
 | Workflow overview + path selection | `CLAUDE.md` (pick-your-path table) + `docs/INDEX.md` |
 | Authoring contract (helpers, DUR, SCENE_PREP, instrumentation) | `docs/examples/single-html-tutorial-skeleton.html` |
 | Ad / editorial contract | `docs/examples/single-html-ad-skeleton.html` |
-| 9:16 shorts contract | `reference/html-templates/vertical-short-skeleton.html` + `docs/vertical-shorts.md` |
+| 9:16 shorts contract | `docs/vertical-shorts.md` |
 | PostIntro design | `docs/postintro-patterns.md` |
 | Choice-field flow (Dropdown / Multi / Checkboxes) | `docs/examples/choice-field-generate-choices-skeleton.md` |
 | Field-state inventory (large; query, don't full-read) | `docs/wpforms-field-state-inventory.md` via `node tools/field-state.js` |

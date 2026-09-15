@@ -220,7 +220,7 @@ Conflicts to respect: **no zoom-through blur over live iframes** (iframe-filter 
 2. **Cursor constants** — compare `Cursor.click()` against §3.1 (tip-origin, 0.10/0.22 in-out split); adopt the velocity-split handoff (§2.5) as the standard for cursor motion across scene cuts. Library change → propose-first (protected area).
 3. **Humanized typing** — `humanize` option for `caretType` per §3.3, SFX timestamps derived from `charT`. Prove on the same pilot.
 4. **Rulebook rows** (pure prevention, no code): same-hue-at-0-alpha highlights (§3.2); shared-ground requirement for throw/zoom seams (§1.1); hold-final-frame at every cut (§1.2).
-5. **`FRAME-wpforms.md` (parked until 1–3 prove out)** — a brand-at-frame-scale spec fusing `reference/wpforms-brand/tokens.css` + motion-audit calibration into one authoring-time file, modeled on their `FRAME-claude.md`: hero vw ramp with fit-to-measure headline steps (≤3 words → 9vw, 4–6 → 6.2vw, 7+ → 4.2vw), a 1.4vw legibility floor, orange-fires-once accent ration, squint/silence/restraint self-audit. Needs its own alignment pass before authoring.
+5. **`FRAME-wpforms.md` (parked until 1–3 prove out)** — a brand-at-frame-scale spec fusing the canonical brand tokens + motion-audit calibration into one authoring-time file, modeled on their `FRAME-claude.md`: hero vw ramp with fit-to-measure headline steps (≤3 words → 9vw, 4–6 → 6.2vw, 7+ → 4.2vw), a 1.4vw legibility floor, orange-fires-once accent ration, squint/silence/restraint self-audit. Needs its own alignment pass before authoring.
 
 ## 6 · Source pointers
 

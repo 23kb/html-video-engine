@@ -3,20 +3,20 @@
 Every rule here is a defect that shipped, was measured, and cost a rebuild.
 None are preferences. Mined from all 16 `LESSONS-*.md` files
 (`docs/lessons-index.md`) plus the fix round 2026-08-14 and the motion-design
-R&D round 2026-08-17. The four ranking-field files were mined 2026-08-20, in
+R&D round 2026-08-17. The four Ranking field files were mined 2026-08-20, in
 the same pass that built the enforcers for them — which is why a number of
 rows below say `LIB` or `PROBE` where they would otherwise say `WISH`. The
 two QR films (2026-08-21 autonomous builds) were mined 2026-08-22 — notably,
 both cite rulebook rows by receipt, and the second film applied the first's
 seam findings at authoring time: one QC probe round instead of three. The
 2026-08-28 pass mined the QC-series files (2026-08-23/24 builds reviewed
-2026-08-28), `form-analytics-ad-r2`, the acceptance trio's unmined remainder,
+2026-08-28), the Form Analytics ad, the acceptance trio's unmined remainder,
 and — low-priority, provenance-tagged — the GLM coupons batch. Ledger:
 `docs/lessons-mining-2026-08-28.md`. The 2026-09-14 pass mined the
 reference-driven ad batch (`yjc` `cja` `itf` `cgw` `wcr` `wvb`) and the
 2026-09-04/05 shorts (`snpt` `scaf` `sc3p` `sat` `scfw` `sml` `somr` `stte`);
 ledger `docs/lessons-mining-2026-09-14.md`. The four 2026-09-05 tutorial files
-(airtable, twilio, google-calendar, extra-text-fields) and the Sheets / n8n
+(airtable, twilio, google-calendar, extra text fields) and the Sheets / n8n
 long-forms remain UNMINED.
 
 **Read this before the first beat, not after the first rejection.**
@@ -72,56 +72,50 @@ list for the next hardening round.
 
 ## Receipt keys
 
-`as5` anti-spam-5-layers · `ccs` custom-css-targeting · `mp` mercado-pago-launch ·
-`bac` short-block-a-country · `cc` short-coupon-code ·
-`nvc` short-notifications-vs-confirmations · `ssn` short-spam-safety-net ·
-`sfb` short-stop-fast-bots · `aib` wpforms-ai-board
+`as5` anti-spam film · `ccs` custom CSS film · `mp` Mercado Pago film ·
+`bac`, `ssn`, `sfb` three anti-spam shorts · `cc` coupon short ·
+`nvc` notifications short · `aib` WPForms AI film
 
-The ranking-field family is four separate files and they are cited apart:
-`rf` ranking-field **snapshot/capture** · `rfv` ranking-field **video build** ·
-`rfe` ranking-field-election · `rfw` ranking-field-weight
+The Ranking field family is four separate files and they are cited apart:
+`rf` Ranking field **snapshot/capture** · `rfv` Ranking field **video build** ·
+`rfe` and `rfw` two more Ranking field films
 
-QR films (2026-08-21 autonomous overnight builds):
-`qrd` qr-code-doorway · `qri` qr-code-ink
+QR films (2026-08-21 autonomous overnight builds): `qrd` and `qri`
 
 QC series 2026-08-23/24 (reviewed + mined 2026-08-28):
-`geo` geolocation-addon · `ee` entry-exports · `wh` webhooks-addon ·
-`fuf` file-upload-field · `lf` layout-field · `saa` short-address-autocomplete ·
-`sfc` short-form-columns · `swaa` short-webhooks-any-app ·
-`scu` short-camera-uploads · `sscg` short-set-conversion-goal ·
-`sxf` short-export-filtered / short-export-one-entry (one shared note) ·
-`road` road-to-wpforms-2-full-circle · `fan` form-analytics-ad-r2
+`geo` Geolocation addon · `ee` entry exports · `wh` Webhooks addon ·
+`fuf` File Upload field · `lf` Layout field · `saa` address autocomplete short ·
+`sfc` form columns short · `swaa` webhooks short ·
+`scu` camera uploads short · `sscg` conversion goal short ·
+`sxf` two entry-export shorts (one shared note) ·
+`road` WPForms 2.0 recap ad · `fan` Form Analytics ad
 
 GLM batch (LOW priority — built 2026-08-26 without the manual, see
-`docs/lessons-index.md`): `cpa` coupons-addon · `cad` coupons-ad ·
-`scs` short-coupon-switch
+`docs/lessons-index.md`): `cpa` Coupons addon · `cad` Coupons ad ·
+`scs` coupon short
 
-Acceptance trio (2026-08-23): `mfe` managing-form-entries (tutorial) ·
-`ela` entries-lifecycle-ad (editorial) · `senw` short-entries-now-what (shorts)
+Acceptance trio (2026-08-23): `mfe` form entries (tutorial) ·
+`ela` entries (editorial) · `senw` entries (shorts)
 
-First WPVibe ad (2026-09-03, five QC rounds, camera pass v6): `wva` wpvibe-wpforms-ad —
+First WPVibe ad (2026-09-03, five QC rounds, camera pass v6): `wva` —
 analysis `docs/ad-camera-gap-analysis-2026-09-03.md`
 
-Ad SFX ratification (2026-09-03, ear QC in context): `rav` reel-ad-vocabulary —
+Ad SFX ratification (2026-09-03, ear QC in context): `rav` the ad proving reel —
 ratified palette `tools/sfx/palette/` (manifest + README)
 
 Reference-driven ads (2026-09-04 → 09-14, mined 2026-09-14): `yjc`
-wpforms-claude-you-just-chat (its `-9x16` twin carries an identical file) ·
-`cja` wpforms-claude-job-application-ad · `itf` wpforms-claude-idea-to-form ·
-`cgw` wpforms-chatgpt-wpvibe-ad (identical `-9x16` twin) · `wcr`
-wpvibe-control-room · `wvb` the WPVibe batch file
-(`videos/wpforms-claude-runs-on-forms-ad/LESSONS-wpvibe-batch-2026-09-04.md` —
-1 ad + 3 shorts; rows 1–10 the batch, 11–18 the ad's QC round)
+Claude ad 1 (its `-9x16` twin carries an identical file) ·
+`cja` Claude ad 2 · `itf` Claude ad 3 ·
+`cgw` ChatGPT ad (identical `-9x16` twin) · `wcr`
+WPVibe film · `wvb` the WPVibe batch file
+(1 ad + 3 shorts; rows 1–10 the batch, 11–18 the ad's QC round)
 
-Shorts 2026-09-04/05 (mined 2026-09-14): `snpt` short-n8n-payment-trigger ·
-`scaf` short-claude-asks-first · `sc3p` short-claude-first-3-prompts · `sat`
-short-auto-total · `scfw` short-close-form-when-full · `sml`
-short-mailchimp-leads · `somr` short-order-form-needs-one-more-row · `stte`
-short-stop-ticking-every-box
+Shorts 2026-09-04/05 (mined 2026-09-14), one code per short: `snpt` ·
+`scaf` · `sc3p` · `sat` · `scfw` · `sml` · `somr` · `stte`
 
 R&D teardowns (no film — receipts cite the doc's own § sections):
 `hfs` docs/hyperframes-seam-grammar-rnd-2026-09-03.md ·
-`trk3` reference/New folder/_extraction/_analysis/ (Track 3 reference measurements)
+`trk3` Track 3 reference measurements
 
 ---
 
@@ -134,7 +128,7 @@ R&D teardowns (no film — receipts cite the doc's own § sections):
 | A storyboard invariant can't be met with the assets on hand | Say so at asset-selection time. Don't ship a quiet exception | `WISH` | mp 5 — "real UI fills the frame" lost to a 430px crop, silently |
 | The storyboard promises a live field-option toggle | `node tools/field-state.js --interactivity <field>` — handlers are added reactively, per video, so the gap is normally found mid-build | `PROBE` | rf 4 — zero `ranking` handlers; found on a hunch, not by a check |
 | You need product truth for an admin URL or control selector | Read the plugin source, scoped: `--include=*.php` plus a `src/` or `templates/` path | `WISH` | rf 6 — an unscoped grep walked minified bundles and blew the 120s timeout |
-| You're about to first-write `videos/<slug>/index.html` | `cp` the path's skeleton first — `docs/examples/single-html-ad-skeleton.html` (editorial / ad / mixed), `docs/examples/single-html-tutorial-skeleton.html` (tutorial), `reference/html-templates/vertical-short-skeleton.html` (short) — commit the unmodified clone, then customize toward the style references | `WISH` (hook proposed) | INV-16 (amended 2026-08-28) — 3 sessions authored from blank files anyway; the exemplars predate the playback contract (FIX-2) |
+| You're about to first-write `videos/<slug>/index.html` | `cp` the path's skeleton first — `docs/examples/single-html-ad-skeleton.html` (editorial / ad / mixed), `docs/examples/single-html-tutorial-skeleton.html` (tutorial), the 9:16 short skeleton (short) — commit the unmodified clone, then customize toward the style references | `WISH` (hook proposed) | INV-16 (amended 2026-08-28) — 3 sessions authored from blank files anyway; the exemplars predate the playback contract (FIX-2) |
 | The storyboard names a state that appears on more than one surface | Enumerate **state × surface**, not state. Builder canvas and published form render the same `input_layout=grid` from different markup under different CSS | `ARTIFACT` | rf 23 — nine snapshots existed and none showed the published form in grid; a builder capture named `-grid` satisfied a quick read |
 | A skill, doc or handoff names a reference film to copy | Check it is still on disk before leaning on it: `node tools/lint-doc-refs.js` | `PROBE` | rfv 3 — 61 of 1272 cited paths in tracked docs are dead today |
 | A handoff hands you a selector tree | Run `verify-selectors` on it BEFORE first use, and check size ≠ 0×0 — not after the crash | `WISH` (no size check yet) | rfv 6, rfe 4 — the first TWO `.wpforms-survey-graph-content-legend` matches are 0×0 twins |

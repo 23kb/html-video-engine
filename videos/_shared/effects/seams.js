@@ -7,7 +7,7 @@
 //
 // Source: docs/hyperframes-seam-grammar-rnd-2026-09-03.md §2.1–§2.5 (verbatim
 // constants, kept as the defaults below). Proven video-local in
-// videos/reel-ad-vocabulary/index.html (5 cuts, seam-gate PASS with zero flags,
+// the ad-vocabulary proving reel (5 cuts, seam-gate PASS with zero flags,
 // motion-audit tier A) and promoted here on Umair's proving-reel ruling
 // (2026-09-03).
 // Vocabulary slot: seam — scene-to-scene cut grammar

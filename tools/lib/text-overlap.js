@@ -2,7 +2,7 @@
 // (C6 / AP-13, 2026-09-02). The class shipped three times after the lesson
 // was written (qri 12, cad 13, scs 8): two visible text layers over the same
 // pixels, or the same copy painted twice (sting + title pill). The proven
-// per-film shape is videos/ranking-field-weight/qc-probe.mjs (rect
+// per-film shape is a shipped film's qc-probe.mjs (rect
 // intersection > 4px on visible text boxes) — promoted here so every probe
 // shares one implementation. WARN semantics everywhere: findings inform,
 // nothing fails a film on them yet.

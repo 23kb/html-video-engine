@@ -7,7 +7,7 @@
 // per-tile rotation alternation, from deep z toward camera. Use for
 // "thousands of templates" / "all your forms in one place" payoff beats.
 //
-// Source: reference/gsap-effects/effect064.html
+// Source: ported GSAP effect.
 // Vocabulary slot: constellation — phyllotaxis-bloom
 
 /* global gsap */

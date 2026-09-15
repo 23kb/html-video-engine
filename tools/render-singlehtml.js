@@ -3,7 +3,7 @@
 // render path for the current architecture (master paused GSAP timeline +
 // the __tl / __T0 / __done instrumentation contract).
 //
-// Why seek-stepping is the default (proven on lights-come-on, 2026-07-20):
+// Why seek-stepping is the default (proven 2026-07-20):
 //   - Realtime screencast drops frames under load (visible stutter at 4K)
 //     and starts recording before the film boots (audio lands early unless
 //     trimmed). Seek-stepping renders every frame exactly: pause window.__tl,
@@ -34,9 +34,9 @@
 //        [--grain <opacity>] [--duration <s>] [--out <path>] [--no-audio]
 //
 // Examples:
-//   node tools/render-singlehtml.js lights-come-on                 # 1080p + audio
-//   node tools/render-singlehtml.js lights-come-on --scale 2 --grain 0.015
-//        --out videos/lights-come-on/render/lights-come-on-social-4k.mp4
+//   node tools/render-singlehtml.js <slug>                 # 1080p + audio
+//   node tools/render-singlehtml.js <slug> --scale 2 --grain 0.015
+//        --out videos/<slug>/render/<slug>-4k.mp4
 
 const fs = require('fs');
 const os = require('os');

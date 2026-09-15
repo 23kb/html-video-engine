@@ -127,8 +127,7 @@ For video-local concept beats, the practical tools are:
   promoting a reusable GSAP cinematic into `runtime/`.
 - **GSAP Flip plugin** for layout-change, parent-change, pin-to-UI,
   state-driven reflow, and real-UI clone-and-morph patterns. See
-  `docs/gsap-flip-patterns.md` for the loader, discipline rules, and the two
-  validated sandboxes (`flip-sandbox`, `flip-generate-card`).
+  `docs/gsap-flip-patterns.md` for the loader and discipline rules.
 - **Shared blocks** from `videos/_shared/blocks/` for parent-document editorial
   chrome such as code cards, mac windows, phone frames, pills, arrows, route
   lines, and terminals. Blocks sit above the iframe or inside editorial mode,
@@ -159,9 +158,8 @@ truth:
   a short cinematic lift. Good candidates: an Entries detail panel, an Add
   Notification button, or an export setting row.
 - `cursor.glideTo`: use for any non-trivial cursor travel where a waypoint
-  makes the motion feel intentional. Already used in `form-entries-guide` for
-  the WPForms sidebar to Entries submenu move, and in `form-notifications` for
-  the notification clone-button move.
+  makes the motion feel intentional. Already used for the WPForms sidebar to
+  Entries submenu move and for the notification clone-button move.
 - `lineDraw`: use for relationships between two or more concepts, especially
   when a highlight ring would only identify objects rather than explain how
   they connect. Good candidates: conditional-logic rule cells or Entries
@@ -173,8 +171,6 @@ These are the best references for ambition, timing, and construction. Read only
 the relevant postIntro/teaser code, not the full video package.
 
 ### WPForms AI: `rough-thought-to-draft`
-
-Route: `/scenes/player.html?video=build-forms-faster-with-wpforms-ai`
 
 Relevant code: `runtime/cinematic-rough-thought-to-draft.js`.
 
@@ -194,8 +190,6 @@ Do not reuse for non-WPForms-AI videos. Reuse the construction pattern:
 editorial HTML + CSS states + GSAP sequencing that proves the idea.
 
 ### Checkboxes: `one-answer-enough`
-
-Route: `/scenes/player.html?video=a-complete-guide-to-the-checkboxes-field`
 
 Relevant code: `runtime/cinematic-one-answer-enough.js`.
 

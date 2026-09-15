@@ -11,7 +11,7 @@ WPForms brand colors, supporting accents, when to use which, and what NOT to do.
 | **Cream paper** | `#FAF6EF` | Default `coverColor` for legacy swap covers. Reads as soft-focus / between-states. |
 | **Cool paper** | `#F4F7FB` | Alternate `coverColor` (used by checkboxes + AI build videos). Reads slightly cooler. |
 | **WPForms blue** | `#056AAB` | Secondary brand. Sometimes used as `theme.accent` for postIntros and editorial chrome. |
-| **AI blue** | `#0399ED` | WPForms AI-specific accent (used in `build-forms-faster-with-wpforms-ai`). |
+| **AI blue** | `#0399ED` | WPForms AI-specific accent. |
 
 ## Accent palette (editorial / ad-style)
 
@@ -27,8 +27,6 @@ Used in REST API video and other technical/editorial compositions.
 | **Violet ability light** | `#B178FF` | Technical accent (capability/feature highlights) |
 | **Amber endpoint slug** | `#F0B849` | Technical accent (URL slugs, identifiers) |
 | **Success green** | `#46B450` | Successful states, confirmations |
-
-Source: `hyperframes/hyperframes-rest-2/DESIGN.md` (REST API video design system).
 
 ## Highlight ring + instruction label color
 
@@ -81,14 +79,13 @@ Watermark (`#wpf-watermark`) uses a fixed orange variant. Don't override per-vid
 
 ## Per-video DESIGN.md (Hyperframes pattern)
 
-Ad-style / marketing-mode videos can declare a per-video `DESIGN.md` with palette + typography + motion rules. The `hyperframes/hyperframes-rest-2/DESIGN.md` and `hyperframes/wpforms-ai-scene-10/DESIGN.md` are reference examples.
+Ad-style / marketing-mode videos can declare a per-video `DESIGN.md` with palette + typography + motion rules. `hyperframes/wpforms-ai-scene-10/DESIGN.md` is a reference example.
 
 For tutorial videos, the brand palette above is enough. No per-video DESIGN.md needed.
 
 ## See also
 
 - `wpforms-marketing` skill — editorial composition patterns.
-- `reference/wpforms-brand/tokens.css` — single source of truth for brand colors (`runtime/overlays-config.js` retired 2026-08-22; ripple/highlight colors are per-call options on `Cursor.click` / `IframeManager.highlightElement`).
-- `hyperframes/hyperframes-rest-2/DESIGN.md` — full REST API design system.
+- The canonical brand tokens — single source of truth for brand colors (`runtime/overlays-config.js` retired 2026-08-22; ripple/highlight colors are per-call options on `Cursor.click` / `IframeManager.highlightElement`).
 - `hyperframes/wpforms-ai-scene-10/DESIGN.md` — WPForms AI scene-10 design system.
 - `analysis-quality-and-transitions.md` §1.6 — REST API video lesson on over-cooked curl colors.

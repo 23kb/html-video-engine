@@ -49,4 +49,4 @@ Secondary: the doc's title says "Beginner's Guide" while the backlog classifies 
 }
 ```
 
-`#wpforms-406` scopes to the one form · `.bakery-note` is the class assigned in the builder's Advanced tab · `!important` per the doc's own note. Accent is the real brand orange `#E27730` from `reference/wpforms-brand/tokens.css` (never the AI purple — this is not an AI feature).
+`#wpforms-406` scopes to the one form · `.bakery-note` is the class assigned in the builder's Advanced tab · `!important` per the doc's own note. Accent is the real brand orange `#E27730` from the canonical brand tokens (never the AI purple — this is not an AI feature).

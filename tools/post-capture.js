@@ -33,8 +33,8 @@
 //   node tools/validate-video.js --all
 //
 //   8b. lint-snapshot-assets.js       — load the snapshot headless, FAIL on
-//      any 4xx/5xx asset request (out-of-snapshot url() leakage; the
-//      entry-automation build hit 30 console 404s on first smoke)
+//      any 4xx/5xx asset request (out-of-snapshot url() leakage; a
+//      tutorial build hit 30 console 404s on first smoke)
 //   8c. capture-gates.js              — WARN-only quality gates (fix-round
 //      C6): geometry sanity (>3× viewport), live-vs-frozen paint diff
 //      (against live-reference.png when capture.js saved one), locale
@@ -45,8 +45,8 @@
 //      `node tools/capture-gates.js <slug>`.
 //   9. waitFor re-verify              — if meta.json recorded the capture
 //      plan's waitFor selector, load the trimmed snapshot headless and FAIL
-//      LOUDLY if the anchor no longer resolves (over-trim detection; the
-//      entry-automation build lost its Add New Connection button silently).
+//      LOUDLY if the anchor no longer resolves (over-trim detection; a
+//      tutorial build lost its Add New Connection button silently).
 //
 // Usage:
 //   node tools/post-capture.js <slug> [<slug2> ...] [--keep-fields 1,2,3]

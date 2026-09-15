@@ -88,7 +88,7 @@ GSAP and all plugins are vendored at `vendor/gsap/3.15.0/`. Load each piece you 
 
 ### 6b. Never tween an element whose centering rides a CSS `transform`
 
-GSAP owns the `transform` property when it tweens x/y/scale/rotation — it **replaces** any CSS `translate(-50%, -50%)` centering, so the element silently re-anchors to its top-left corner the moment a tween touches it. This shipped twice in one day (fa-retest ad v3: off-center stamps + drifted CTA pill; both caught only by the user's eyes).
+GSAP owns the `transform` property when it tweens x/y/scale/rotation — it **replaces** any CSS `translate(-50%, -50%)` centering, so the element silently re-anchors to its top-left corner the moment a tween touches it. This shipped twice in one day (form analytics ad v3: off-center stamps + drifted CTA pill; both caught only by the user's eyes).
 
 **The discipline:**
 - Hosts that center via CSS transform are **never tweened**. Tween their children.
@@ -132,7 +132,7 @@ Any `setCamera(...)` / `gsap.set` on a visible camera or carrier element at a be
 
 ## Authoring discipline — call it and let it throw (mp A)
 
-**Never `obj.method && obj.method()`.** Feature-detecting a method you believe exists converts a typo into silence: every puppetry call in mercado-pago v1 no-opped through `ifm.getDocument && ifm.getDocument()` — no such method (it's `doc()`) — and the whole video shipped visually empty into a 3/10 QC round with zero console errors. If the method should exist, call it; the throw is the diagnostic. Optional chaining for a method call (`obj.method?.()`) carries the same trap.
+**Never `obj.method && obj.method()`.** Feature-detecting a method you believe exists converts a typo into silence: every puppetry call in one launch film's v1 no-opped through `ifm.getDocument && ifm.getDocument()` — no such method (it's `doc()`) — and the whole video shipped visually empty into a 3/10 QC round with zero console errors. If the method should exist, call it; the throw is the diagnostic. Optional chaining for a method call (`obj.method?.()`) carries the same trap.
 
 ## L1 Camera Decomposition (Editorial / Cinematic Work)
 
@@ -142,14 +142,14 @@ Editorial camera moves and postIntro cinematic moments require multi-phase decom
 
 ### Phase-decomposition contract
 
-Any camera move that translates more than ~250px in canvas coords MUST decompose into phases. Single-tween translate-and-scale between fixed poses reads as a slide projector (the `wpforms-ai-zlyvs` failure mode).
+Any camera move that translates more than ~250px in canvas coords MUST decompose into phases. Single-tween translate-and-scale between fixed poses reads as a slide projector.
 
 | Phase | Duration | What happens |
 |---|---|---|
 | Anticipation | 0.10–0.20s | Pre-nudge in direction of (or away from) target. Camera "winds up" before flight. |
 | Flight outbound | 30–45% of move | Scale dips down to ≤0.95× target scale; translation begins. Wide-angle feel. |
 | Flight inbound | 30–45% of move | Scale climbs back up to target; translation completes. Lock-in feel. |
-| Land + hold | 0.30–0.50s | Camera arrives at pose, holds. 1s minimum hold for postIntros (per `videos/wpforms-ai-board/LESSONS.md` "land-hold-zoom rhythm"). |
+| Land + hold | 0.30–0.50s | Camera arrives at pose, holds. 1s minimum hold for postIntros (the "land-hold-zoom rhythm"). |
 | Micro-zoom (optional) | 0.40–0.60s | Tight zoom to inner target (e.g. a button, input, glyph) for "now look at this." Scale 3.0+ for inputs / 3.2+ for buttons / 2.8+ for cards. |
 
 ### Per-phase ease discipline
@@ -157,7 +157,7 @@ Any camera move that translates more than ~250px in canvas coords MUST decompose
 - Each phase uses its own ease — not one ease across the whole move.
 - Use `CustomEase` for phase-specific curves. Stock easings (`power2.out` etc.) are acceptable for individual phases but the **sum of phases** must read as decomposed motion.
 - Registered ease vocabulary: `videos/_shared/effects/xai-eases.js` — `registerXaiEases()` adds `whipSettle` (E1: instant launch, mile-long decel) and `heldSnap` (E2: hold, whip, dead stop); E3 = stock `power2.inOut`, E4 ≈ between `power3.in` and `expo.in`. Full AE-provenance table: `docs/xai-voice-motion-rnd-2026-09-02.md` ("The ease language").
-- Rotation tilt of ±1.0° to ±1.5° during the flight phases adds cinematic feel (verified in `wpforms-ai-board` lessons). Skip rotation for pure-product zoom moves.
+- Rotation tilt of ±1.0° to ±1.5° during the flight phases adds cinematic feel. Skip rotation for pure-product zoom moves.
 
 ### Concrete code shape
 
@@ -243,12 +243,9 @@ window.__tl = master;          // instrumentation + probe read the master
 ```
 
 **Offset bookkeeping:** shift everything downstream by the SAME offset — `SCENE_T`/review markers, `sfx/plan.json` clip `t` values, and `qc-probe.mjs` check times. But the nested child's own tween `startTime()`s stay **child-local** (relative to their direct parent), so a tick-grid audit that reads `startTime()` keeps working unchanged.
-
-Reference: `videos/road-to-wpforms-2-full-circle/index.html` — search `.paused(false)`: child timelines and paused-returning primitives are un-paused as they are `add()`ed to the master at absolute offsets. (The original example, `the-drop`'s `master.add(splashTl, 0)` block that nested a finished 45.8s film at `SPL = 3.2`, was retired 2026-08-22 — recover via git history.)
-
 ## pausableRaf for Author RAF Loops
 
-**Any `requestAnimationFrame` loop in a film must be pause-aware.** There is no shared helper — films define this tiny function locally (canonical shape, as in `qr-code-ink`, `klaviyo-bridge-2`):
+**Any `requestAnimationFrame` loop in a film must be pause-aware.** There is no shared helper — films define this tiny function locally (canonical shape):
 
 ```js
 function pausableRaf(cb) {

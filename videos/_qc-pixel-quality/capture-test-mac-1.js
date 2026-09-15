@@ -1,4 +1,4 @@
-// Boot-check the test-mac-frame-1 video — does it load, do the snapshot
+// Boot-check a video — does it load, do the snapshot
 // swaps happen, does the zoom-in fire?
 const { chromium } = require('playwright');
 const path = require('path');
@@ -6,7 +6,7 @@ const fs = require('fs');
 
 const OUT_DIR = path.join(__dirname, 'test1-shots');
 fs.mkdirSync(OUT_DIR, { recursive: true });
-const URL = 'http://localhost:57829/videos/test-mac-frame-1/index.html';
+const URL = process.argv[2] || 'http://localhost:4321/videos/<slug>/index.html';
 
 (async () => {
   const browser = await chromium.launch({ headless: true });

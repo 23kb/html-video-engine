@@ -319,7 +319,7 @@ function _scrollerFor(el) {
 /**
  * CLOSED-LOOP scroll of an inner PANE (builder settings pane, any
  * overflow-y container) until the target sits at `anchor` of the stage
- * viewport. Promoted from short-block-a-country (bac 5), where open-loop
+ * viewport. Promoted from a shipped short (bac 5), where open-loop
  * scroll math lost against the settle-mode coordinate regimes three times
  * (measured Δy swung +436 → −706 → −436 across three hand-derivations).
  *
@@ -371,7 +371,7 @@ export async function paneScrollTo(iframeManager, target, opts = {}) {
 /**
  * CLOSED-LOOP window scroll for LIVE frontend pages until the target sits at
  * `anchor` of the stage viewport. Promoted from
- * short-notifications-vs-confirmations (nvc 4): one-shot scrolls lose on
+ * a shipped short (nvc 4): one-shot scrolls lose on
  * live-layout pages — images decode late and reflow the page ~1300px AFTER
  * the scroll lands. Same convergence loop as `paneScrollTo` on
  * `window.scrollY`, ≤4 iterations, plus a post-settle RE-CHECK: after the
@@ -462,7 +462,7 @@ export async function awaitLayout(iframeManager, target, opts = {}) {
 /**
  * Is the element's centre inside the current camera window (stage coords)?
  * NOTE: a CENTER-point test — a partially cropped wide element still reads
- * "in view" (entry-automation QC r5 C2d: force the fly for taught elements).
+ * "in view" (tutorial QC r5 C2d: force the fly for taught elements).
  *
  * @param {IframeManager} iframeManager
  * @param {Element} el

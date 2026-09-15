@@ -224,7 +224,7 @@ Cost is a product requirement. Defaults; deviate with reason.
 ### Session entry
 
 - [ ] Read `CLAUDE.md`, run `node tools/skill-context.js`, load the path skill.
-- [ ] Use `reference/html-templates/` clones as first copy targets for new
+- [ ] Use the `docs/examples/` skeleton clones as first copy targets for new
       editorial films (INV-16); tutorials start from the most recent similar
       film.
 - [ ] Query field state (`tools/field-state.js`); never full-read the 132 KB

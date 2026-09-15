@@ -16,7 +16,7 @@
 //
 // Output: videos/<slug>/assets/brand/ (or --out DIR) with brand.json
 // (provenance: source URL + capture date + per-asset origin). WPForms' own
-// brand never goes through this — reference/wpforms-brand/ is canonical.
+// brand never goes through this.
 //
 // Usage:
 //   node tools/capture-brand.js <url> <slug> [--out dir] [--viewport 1380x900]

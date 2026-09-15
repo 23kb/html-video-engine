@@ -1,4 +1,4 @@
-// Capture klaviyo-bridge-2 at multiple beats to verify:
+// Capture the film at multiple beats to verify:
 //  - Iframe size bump (1280×720 → 1440×900) renders correctly
 //  - Page-fill backdrop reaches viewport edges (no black corners)
 const { chromium } = require('playwright');
@@ -7,7 +7,7 @@ const fs = require('fs');
 
 const OUT_DIR = path.join(__dirname, 'full-bridge-shots');
 fs.mkdirSync(OUT_DIR, { recursive: true });
-const URL = 'http://localhost:53502/videos/klaviyo-bridge-2/index.html';
+const URL = process.argv[2] || 'http://localhost:4321/videos/<slug>/index.html';
 
 const BEATS = [
   ['t02_intro_lockup',  2.0],

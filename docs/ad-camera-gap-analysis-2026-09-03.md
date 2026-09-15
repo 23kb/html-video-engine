@@ -1,7 +1,7 @@
 # Why the first WPVibe ad stayed dull — the camera gap (2026-09-03)
 
-Subject: `videos/wpvibe-wpforms-ad/` v5 (44s, shipped HD) against the reference set in
-`reference/New folder/motion design + sound/` (Shipper 27s, Codex 28s). Umair's verdict on v5:
+Subject: the first WPVibe ad at v5 (44s, shipped HD) against the reference set
+(Shipper 27s, Codex 28s). Umair's verdict on v5:
 content and accuracy good, "the animations weren't there, speed slow, motion design non-existent."
 Five QC rounds — real Claude UI, real fragments, US locale, HD render — did not move that verdict.
 
@@ -65,11 +65,11 @@ Ruled out (Umair): real UI is not the cause (the references are full of it); typ
 |---|---|---|
 | 1 | Doctrine: "composition cut" split from "re-frame"; **the host stays, the frame moves**, ≥1 re-frame per 4s in an ad, zoom wide→close. "Land-and-HOLD" re-scoped to move smoothness, not move frequency. Parked stage added to the anti-pattern list | `docs/storyboard-format-morph-chain-2026-05-10.md` §5 + anti-patterns; `.claude/skills/wpforms-marketing/SKILL.md` (transitions bullet + new *Ad camera doctrine* section + checklist); `CLAUDE.md` anti-pattern #2 |
 | 2 | Storyboard format: `## Camera plan` section required for ad-style films — one row per landing with numeric fill, verb + duration in, hold ≤4s, what carries the hold. Approval blocks on a missing number or a long hold; any QC change to what fills the frame re-opens it | `docs/storyboard-format-morph-chain-2026-05-10.md` (new section after Shot list) |
-| 3 | Stage camera for editorial DOM: `makeStageCamera` — `#lens` transform-only wrapper, verbs `punch / macro / whip / pullBack / drift / cut`, decomposed by construction (crouch → drive on two eases, or translate/zoom on different curves), time-ordered with mid-air overwrite protection, pose-logged | `docs/examples/single-html-ad-skeleton.html` (ships with the wrapper + a 6-landing plan); proven video-local in `videos/wpvibe-wpforms-ad/index.html`; promote to `videos/_shared/` on second use |
+| 3 | Stage camera for editorial DOM: `makeStageCamera` — `#lens` transform-only wrapper, verbs `punch / macro / whip / pullBack / drift / cut`, decomposed by construction (crouch → drive on two eases, or translate/zoom on different curves), time-ordered with mid-air overwrite protection, pose-logged | `docs/examples/single-html-ad-skeleton.html` (ships with the wrapper + a 6-landing plan); proven video-local in the first WPVibe ad; promote to `videos/_shared/` on second use |
 | 4 | Gate: `composition-scan` reads label-driven films (the literal `at:` times → planned landings + longest planned hold), has an **ad band** (rate-based: ≥1 landing / 3s, ≤1 / 1.2s, holds ≤4s, end card ≤6s) picked up from `data-film-path="ad"` or `--band ad`, uses the stage box for its Δ thresholds in that band, and writes the `compositionScan` qc-report section (measured in `--play`; planned with `--report`) | `tools/composition-scan.js` |
 | 5 | Motion audit ceiling: parked stage (hold >6s, <1 landing / 3s, zoom range <0.3) → max B, measured not estimated | `.claude/skills/wpforms-motion-audit/SKILL.md` HARD RULE 3 |
 | 6 | Rulebook rows `wva 1–6` (camera plan, follow ≠ park, re-open on QC change, repeated templates, editorial DOM camera, compression before carriers) + receipt key | `docs/rulebook.md` §4, §6, receipt keys |
-| 7 | **The film itself, v6:** 25 landings (+ opening frame), longest in-film hold 2.7s, zoom 1.0–2.2, content timing untouched. Camera plan written into `storyboard.md`. Measured: `composition-scan --play` 25 compositions in band, no hold over cap | `videos/wpvibe-wpforms-ad/index.html`, `storyboard.md` (backup: `index.v5-pre-camera.backup.html`) |
+| 7 | **The film itself, v6:** 25 landings (+ opening frame), longest in-film hold 2.7s, zoom 1.0–2.2, content timing untouched. Camera plan written into `storyboard.md`. Measured: `composition-scan --play` 25 compositions in band, no hold over cap | The film's `index.html` and `storyboard.md` |
 
 ## Not done — deliberately
 
@@ -87,16 +87,11 @@ Ruled out (Umair): real UI is not the cause (the references are full of it); typ
 ## How to check it
 
 ```
-node tools/composition-scan.js wpvibe-wpforms-ad            # planned — reads the at: times
-node tools/composition-scan.js wpvibe-wpforms-ad --play     # measured — pose log, writes the chip
-node tools/validate-singlehtml.js wpvibe-wpforms-ad
-node tools/smoke-singlehtml.js wpvibe-wpforms-ad --seconds 48
+node tools/composition-scan.js <slug>            # planned — reads the at: times
+node tools/composition-scan.js <slug> --play     # measured — pose log, writes the chip
+node tools/validate-singlehtml.js <slug>
+node tools/smoke-singlehtml.js <slug> --seconds 48
 ```
-
-Evidence: `reference/New folder/_extraction/motion design + sound/md-*.png` (reference sheets),
-`videos/wpvibe-wpforms-ad/render/wpvibe-wpforms-ad-keyframes.png` (v5 stills),
-`videos/wpvibe-wpforms-ad/ANALYSIS-why-not-reference-grade-2026-09-03.md` (first-pass analysis),
-`LESSONS-wpvibe-wpforms-ad-2026-09-03.md` (per-defect ledger, row 11 = this).
 
 ## QC notes on the v6 camera pass (Umair, 2026-09-04) — recorded, not acted on
 
@@ -136,4 +131,4 @@ What changed (the 2026-09-03 fixed numbers are withdrawn):
 | `docs/rulebook.md` | `wva` 1–2 amended (declared cadence); new `wva` 7 (no cadence from a rule), 8 (ease voices), 9 (plan written from code is backwards) |
 | `CLAUDE.md` anti-pattern #2 | "do not park it or busy it — at the cadence and ease voice the storyboard declares" |
 
-Untouched by ruling: `videos/wpvibe-wpforms-ad/` (film, storyboard, camera code). Its storyboard has no `Cadence:` line, so `composition-scan` now reports it UNDECLARED — which is the truthful state of a plan that was written from the code.
+Untouched by ruling: the film, its storyboard and its camera code. Its storyboard has no `Cadence:` line, so `composition-scan` now reports it UNDECLARED — which is the truthful state of a plan that was written from the code.

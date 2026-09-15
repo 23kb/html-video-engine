@@ -4,7 +4,7 @@
 // overflow mask: the base-color copy slides DOWN out of frame while the
 // accent-color copy slides down INTO frame. Punchy single-line statements.
 //
-// Source: reference/gsap-effects/effect015.html
+// Source: ported GSAP effect.
 // Vocabulary slot: text reveal — duplicate-word mask (dark out / orange in)
 //
 // NOTE (fa-retest lesson): mounts PARKED — container autoAlpha 0 until

@@ -5,8 +5,8 @@
 // per-column ease with a short stagger, separators fade in behind them, and the
 // whole line takes a settle nod as the value lands.
 //
-// Source: videos/reel-ad-vocabulary/index.html beat b4 (ad-vocabulary proving
-// reel, 2026-09-03 — motion-audit tier A, seam-gate PASS). Roll ease is E1
+// Source: promoted from the ad-vocabulary proving reel, beat b4
+// (2026-09-03 — motion-audit tier A, seam-gate PASS). Roll ease is E1
 // `whipSettle` from docs/xai-voice-motion-rnd-2026-09-02.md ("The ease
 // language"): instant launch, mile-long decel.
 // Vocabulary slot: stat — rolling digit columns

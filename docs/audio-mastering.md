@@ -31,9 +31,9 @@ Or `"bgm": "default"` to use the runtime default (low-level ambient).
 
 The reference videos use these baselines:
 
-- `a-complete-guide-to-the-checkboxes-field`: `narrationVolume: 0.25, bgm.volume: 0.2`
-- `form-entries-guide`: `narrationVolume: 0.3, bgm.volume: 0.05`
-- `wpforms-rest-api-overview`: BGM-only (no per-beat narration).
+- A field tutorial: `narrationVolume: 0.25, bgm.volume: 0.2`
+- An overview tutorial: `narrationVolume: 0.3, bgm.volume: 0.05`
+- An API overview: BGM-only (no per-beat narration).
 
 ## When to use per-beat narration vs BGM-only
 

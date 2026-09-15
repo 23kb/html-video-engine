@@ -22,8 +22,7 @@
 
 ## How to use it
 
-- **Read on demand only when working on a Notifications-specific video**
-  (e.g. `form-notifications`).
+- **Read on demand only when working on a Notifications-specific video**.
 - **Do not extend this directory.** New surface inventory work goes into
   `docs/wpforms-field-state-inventory.md` (queried via
   `node tools/field-state.js`).

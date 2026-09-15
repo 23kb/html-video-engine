@@ -47,7 +47,7 @@
 //
 //   DECLARED cadence (any film whose storyboard.md "## Camera plan" states
 //     `Cadence:` and `Max hold:`) — the band is derived from THOSE numbers,
-//     not from a system table. Ruled 2026-09-04 after the wpvibe-wpforms-ad
+//     not from a system table. Ruled 2026-09-04 after one ad's
 //     v6 camera pass (25 landings in 41s) came back "making me dizzy … our UI
 //     had to stay the same so too much motion made little sense": cadence is a
 //     creative decision the storyboard makes per film (sparse and considered

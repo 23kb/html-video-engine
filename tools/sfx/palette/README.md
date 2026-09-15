@@ -4,9 +4,7 @@ The eight one-shots Umair approved **by ear, in context, on real cuts**. This is
 the standing palette for ad-style films. Machine-readable copy: `manifest.json`.
 
 - **Ratified by** — Umair, 2026-09-03, listening to them placed on real cuts in
-  `videos/reel-ad-vocabulary/`. Not judged as bare snippets.
-- **In-context proof** — `videos/reel-ad-vocabulary/sfx/plan.json` (17 cues / 20s).
-  That file is the cue map these earned their place on; read it before placing.
+  the ad proving reel. Not judged as bare snippets.
 - **Provenance** — `tools/sfx/palette-candidates-2026-09-03/` keeps the original
   ElevenLabs one-shots and `generate-palette.mjs` (the prompts that made them).
   That folder stays intact as the record; **this** folder is the working home.

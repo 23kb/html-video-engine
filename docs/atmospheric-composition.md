@@ -99,5 +99,4 @@ Atmospheric layers SHOULD run through all three phases (continuous), but the "br
 
 - `wpforms-marketing` skill — when atmospheric layers fit (editorial / ad-style work).
 - `videos/_shared/atmospheric.js` — source of the 5 helpers.
-- `hyperframes/hyperframes-rest-2/` — reference: editorial REST API composition with atmospheric layering.
 - `analysis-quality-and-transitions.md` §1.2 — Phase 0 lesson on "atmospherics running but cream pastel WPForms background bleeding through."

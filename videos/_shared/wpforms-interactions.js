@@ -917,8 +917,8 @@ export class IframeManager {
    *     highlight's whole lifetime.
    *   anchor:'doc' — the highlight is styled INSIDE the iframe document
    *     (outline on the element itself + label appended to the element), so
-   *     it rides every camera move BY CONSTRUCTION. Ported from the
-   *     anti-spam-5-layers video-local fix. Recommended default whenever the
+   *     it rides every camera move BY CONSTRUCTION. Ported from a
+   *     shipped film's video-local fix. Recommended default whenever the
    *     camera will move during the highlight's lifetime.
    *   track:true (stage mode only) — a gsap.ticker callback re-reads
    *     `elementToStageRect` each tick and re-positions ring + label
@@ -965,7 +965,7 @@ export class IframeManager {
     if (!el) throw new Error(`IframeManager.highlightElement: target not found: ${target}`);
 
     // ── doc mode: style the target inside the iframe document ─────────────
-    // (ported from videos/anti-spam-5-layers — rides the camera by construction)
+    // (ported from a shipped film — rides the camera by construction)
     if (anchor === 'doc') {
       const d = el.ownerDocument;
       const k = labelFontSize / 12;

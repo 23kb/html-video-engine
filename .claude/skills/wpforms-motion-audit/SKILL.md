@@ -32,23 +32,23 @@ Score a WPForms video animation, camera move, postIntro, cinematic beat, or edit
 
 If the file being audited matches one of these **known cases**, you MUST use the score below. Do not re-derive. These scores are calibrated against actual reviewer judgments.
 
-| File pattern | Score | Why |
+| Known case | Score | Why |
 |---|---|---|
-| `videos/wpforms-ai-board/` (any file under this dir) | **B** | Virtual-board with real iframe DOM puppetry; CSS injection works; cinematic-flight pattern present; final score capped 6/10 after 4 rebuild rounds. Cursor frenzy and zoom-undershoot issues per `LESSONS.md`. |
-| `reference/html-templates/wpforms-ai-prompt-open.html` | **S** | Identity-continuity `#cta` morph Button → Input → Sullie pill → Chat over 12s (see comment at line 152); parallel motion tracks. |
-| `reference/html-templates/editorial-reference-36s.html` | **A** | 36s OpenAI Layo rebuild; 13 beats with named atmospheres + transitions; multi-phase camera moves. |
-| `reference/html-templates/openai-replica-18s.html` | **A** | First-try single-HTML proof; mimicked ssstwitter contact sheet; vendored GSAP. |
+| Virtual-board film | **B** | Virtual-board with real iframe DOM puppetry; CSS injection works; cinematic-flight pattern present; final score capped 6/10 after 4 rebuild rounds. Cursor frenzy and zoom-undershoot issues. |
+| Identity-continuity morph film | **S** | Identity-continuity `#cta` morph Button → Input → Sullie pill → Chat over 12s; parallel motion tracks. |
+| 36s linear-scene editorial rebuild | **A** | 36s OpenAI Layo rebuild; 13 beats with named atmospheres + transitions; multi-phase camera moves. |
+| First-try single-HTML proof | **A** | First-try single-HTML proof; mimicked ssstwitter contact sheet; vendored GSAP. |
 
-If the path you're scoring is in this table, **state the tier verbatim and skip to the "Why" + fix section**. Do not re-evaluate criteria.
+If the film you're scoring is in this table, **state the tier verbatim and skip to the "Why" + fix section**. Do not re-evaluate criteria.
 
 **Species-2 calibration (U1 ruling 2026-09-03):** a species-2 *illustrated-montage* postIntro (see `wpforms-postintro` "Species 2") is scored on ambient density, composition thresholds, scene-cut hygiene, and stakes-last — the absence of a morph-chain or cursor is NOT a deduction for that species.
 
 **Historical calibration (files deleted 2026-08-22 — cannot be path-matched; kept only for the tier LANGUAGE each one anchors):**
 
-- `videos/wpforms-ai-zlyvs/` — **F**: 4-tween-everything-changes camera; 5-layer atmosphere stacked; no identity continuity. The "slide projector" anchor for tier F.
-- `videos/wpforms-ai-announcement/` — **D**: editorial chrome painted OVER the real iframe (overlay panels as iframe siblings, not injected into iframe DOM); fake mosaic cards; purple as primary. The anchor for the sibling-overlay and purple-primary ceilings.
-- `videos/build-forms-faster-with-wpforms-ai/chapters/scene-2-add-new.js` — **A**: multi-phase choreography; clean iframe DOM puppetry via CSS injection + stage-position projection. The anchor for an A-tier product beat (engine era).
-- `videos/wpforms-rest-api-overview-polished/` — **A**: persistent Three.js shared-scene; multi-chapter camera choreography. The anchor for an A-tier polish pass (engine era; the polish pattern now lives in `videos/klaviyo-bridge-2/`).
+- Early AI editorial film — **F**: 4-tween-everything-changes camera; 5-layer atmosphere stacked; no identity continuity. The "slide projector" anchor for tier F.
+- AI announcement film — **D**: editorial chrome painted OVER the real iframe (overlay panels as iframe siblings, not injected into iframe DOM); fake mosaic cards; purple as primary. The anchor for the sibling-overlay and purple-primary ceilings.
+- Engine-era AI form-builder chapter — **A**: multi-phase choreography; clean iframe DOM puppetry via CSS injection + stage-position projection. The anchor for an A-tier product beat (engine era).
+- Engine-era REST API overview polish — **A**: persistent Three.js shared-scene; multi-chapter camera choreography. The anchor for an A-tier polish pass (engine era).
 
 ## HARD RULE 2: Tier criteria (apply only if not in known-case table)
 
@@ -63,7 +63,7 @@ If the path you're scoring is in this table, **state the tier verbatim and skip 
 |---|---|---|---|---|---|
 | **S** | Multi-phase decomposed: anticipation (0.10-0.20s pre-nudge) → flight w/ scale-dip (peak ≤ 0.95× target) → land → micro-zoom (≥ 0.4s after land) — **for slow, considered moves only.** On a move under ~0.5s or any click-triggered move the pre-nudge reads as a lurch and an overshooting land ease as a bounce: there `glide` (one blended arc) or `snap` (launch on the click frame — the click IS the anticipation) IS the S-tier shape. A dive moves one way only; a push followed by an animated retreat is a yo-yo — cut instead (`yjc` 6–8, 2026-09-04: applying this row to every move made the best film worse) | CustomEase per phase, named | Swap per beat | One element morphs across beats (identity continuity contract per `docs/storyboard-format-morph-chain-2026-05-10.md`) | Inputs 3.0+, buttons 3.2+, cards 2.8+ |
 | **A** | 3+ phases visible in timeline | At least 1 named CustomEase | Swap optional but visible variation | Visible scale arc | Close to S thresholds |
-| **B** | 2-phase, OR a single-HTML tutorial beat with proper cursor + zoom (`Cursor` + `flyToElement`) | Stock easing acceptable | No swap acceptable | Lands → 1s hold → zoom (per `videos/wpforms-ai-board/LESSONS.md`) | Content-appropriate |
+| **B** | 2-phase, OR a single-HTML tutorial beat with proper cursor + zoom (`Cursor` + `flyToElement`) | Stock easing acceptable | No swap acceptable | Lands → 1s hold → zoom | Content-appropriate |
 | **C** | Single-tween translate+scale | Stock easing | None | Per-beat states only | Anything |
 | **D** | Translate-only OR scale-only | None visible | None | None; OR overlay chrome painted over real iframe | Anything |
 | **F** | "Literal swipe like phone images" — single tween, no scale arc, no rotation, no anticipation. OR: 4-tween-everything-changes camera. OR: 5+ stacked atmosphere layers per beat. | Linear or one bezier | Stacked layers or none | None | Often too low (1.5-2.0 for inputs) |
@@ -81,7 +81,7 @@ These conditions **cap the maximum score regardless of other criteria**:
 - Cursor frenzy via motion-path single via point with `via.y = Math.min(fromY, toY) - 40` (overshoots target) → maximum **C**
 - **Ad-style density floor (fa-retest calibration, 2026-07-13):** an ad-style piece ≥25s using **fewer than 3 distinct motion-vocabulary items** (effects-library mounts, text-kit presets, real-DOM choreography sequences, camera arcs — count kinds, not instances) → maximum **C**. Rationale: the rubric scored a one-effect-plus-fades ad an A while the reviewer scored it 4/10 ("too basic, where did my motion graphics go") — rule-compliance without density is not an ad. Also verify the mechanical premium checklist before sign-off: no off-center/overlapping text (probe computed positions), real UI fills the frame when captures exist, BGM audible in the mux (`ffmpeg -af astats` — mix RMS better than ≈−30dB), SFX semantic not generic.
 - **Mockup product UI when a real capture exists** for the feature being advertised → maximum **C** (real-UI-not-mockups rule, wpforms-marketing HARD RULE §2)
-- **Camera off its own plan (wpvibe-wpforms-ad calibration, 2026-09-03/04):** an ad-style or shorts piece whose storyboard has no `## Camera plan` declaring `Cadence:` / `Max hold:` / `Ease voice:`, OR whose measured landings miss the declared cadence (`composition-scan --play` verdict FAIL or UNDECLARED), OR with any hold longer than the declared max → maximum **B**. Measure it, don't estimate it. Both directions fail: the parked v5 (5 framings in 44s, a 23.7s hold — this rubric scored it A with "no camera flights by design"; "by design" is not an exemption) and the busy v6 (25 landings in 41s on a film whose UI never changes — "making me dizzy"). Cadence is the storyboard's creative call per film; the audit checks that the film honoured it and that the ease voice is the declared one.
+- **Camera off its own plan (first WPVibe ad calibration, 2026-09-03/04):** an ad-style or shorts piece whose storyboard has no `## Camera plan` declaring `Cadence:` / `Max hold:` / `Ease voice:`, OR whose measured landings miss the declared cadence (`composition-scan --play` verdict FAIL or UNDECLARED), OR with any hold longer than the declared max → maximum **B**. Measure it, don't estimate it. Both directions fail: the parked v5 (5 framings in 44s, a 23.7s hold — this rubric scored it A with "no camera flights by design"; "by design" is not an exemption) and the busy v6 (25 landings in 41s on a film whose UI never changes — "making me dizzy"). Cadence is the storyboard's creative call per film; the audit checks that the film honoured it and that the ease voice is the declared one.
 - **Re-invented primitive when a canonical exists in `videos/_shared/motion-primitives.js`** (hand-written cursor mount/glide when `Cursor` class exists, hand-written 5-phase camera when `cinematicFlight` / `figjamFlight` / `focusStationOverview` exist, hand-written letter-stagger when `caretType` exists, hand-written status-pill morph or marker-sweep when those primitives exist, hand-written field-stagger when `fieldStaggerReveal` exists, hand-written Sullie mount when `mountSullieBug` exists, hand-written exit-with-blur when `cleanFastRejoin` exists) → maximum **B** (loses style points for not using the approved primitive — the primitives codify the shipped fix for the bug that hand-rolled versions keep re-introducing)
 
 ## Phase 1: Calibration check
@@ -99,8 +99,7 @@ Reference files (load on demand for deeper context):
 
 ## Phase 3: Prescribe
 
-For any score below A, list the specific fix(es) required to climb tiers. Cite the relevant tier criteria. Point to canonical-correct examples at `reference/html-templates/`.
-
+For any score below A, list the specific fix(es) required to climb tiers. Cite the relevant tier criteria.
 ## Output format (mandatory shape)
 
 ```md
@@ -118,9 +117,7 @@ For any score below A, list the specific fix(es) required to climb tiers. Cite t
 - [bullet] — fix: [specific change, citing tier criteria or hard rule]
 
 ### To climb to [next tier]
-- [specific change with file:line]
-- [reference: where this is done correctly in reference/html-templates/]
-```
+- [specific change with file:line]```
 
 ## Self-check before delivering the audit
 

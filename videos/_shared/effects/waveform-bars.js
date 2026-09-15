@@ -6,8 +6,8 @@
 // pattern looks organic and renders byte-identical every time. `pulseEmphasis`
 // is the paired press-reaction: the exact 1 → 0.8 → 1.1 → 1 bounce ratios.
 //
-// Source: videos/reel-ad-vocabulary/index.html beat b6 (ad-vocabulary proving
-// reel, 2026-09-03 — motion-audit tier A, seam-gate PASS). Constants T2 and T6
+// Source: promoted from the ad-vocabulary proving reel, beat b6
+// (2026-09-03 — motion-audit tier A, seam-gate PASS). Constants T2 and T6
 // from docs/xai-voice-motion-rnd-2026-09-02.md (AE teardown).
 // Vocabulary slot: audio — seeded waveform + press pulse
 //

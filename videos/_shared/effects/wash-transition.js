@@ -6,9 +6,9 @@
 // opposite side as the veil clears. Axis-configurable so consecutive washes
 // vary (y, then x) instead of reading as the same wipe twice.
 //
-// Source: videos/reel-tutorial-craft/index.html w1/w2 (tutorial-craft proving
-// reel, 2026-09-03 — motion-audit tier A). Reference bar it was built to:
-// reference/New folder/_extraction/_analysis/analysis-postintro.md rec #3
+// Source: promoted from the tutorial-craft proving reel, w1/w2
+// (2026-09-03 — motion-audit tier A). Reference bar it was built to:
+// the postIntro reference analysis, rec #3
 // ("elements fly out, ~1 blank tile, next set flies in").
 // Vocabulary slot: seam — whiteout wash between editorial beats
 //

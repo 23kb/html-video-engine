@@ -5,8 +5,7 @@ description: "Run the QC / review / iterate loop on a WPForms video efficiently.
 
 # Video QC — the cheap review/iterate loop
 
-This skill exists because past QC passes burned 7 iterations where 2 would do. Root cause every time: substituting your own short-circuit for the user's explicit guidance, and over-working builds you can't visually verify. Source post-mortem: `videos/switch-to-wpforms-entry-importer/ISSUES.md` ("Process cost retro").
-
+This skill exists because past QC passes burned 7 iterations where 2 would do. Root cause every time: substituting your own short-circuit for the user's explicit guidance, and over-working builds you can't visually verify.
 The user (Umair) owns ALL visual and audio judgment. Your job in QC is to turn his one-line report into the **minimal correct** edit, fast, give him the review URLs, and wait. Not to perfect it blind.
 
 ## 🎯 The QC dashboard is the QC surface (canonical since 2026-08-25)
@@ -172,7 +171,7 @@ QC feedback applied — <slug>
 Re-render + re-run gates: http://localhost:4321/tools/qc-dashboard/#<slug>
 ```
 
-If a fix needs the user's input (a missing asset, a visual/audio call), say so in one line and move on — don't guess (e.g. ISSUES.md #5 blocked on third-party logo assets).
+If a fix needs the user's input (a missing asset, a visual/audio call), say so in one line and move on — don't guess.
 
 ## Hero beat — where the iteration budget goes
 

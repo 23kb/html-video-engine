@@ -21,14 +21,14 @@ This skill is the WRAPPER. Authoring belongs to `wpforms-video` (tutorial path),
 
 ## Tutorial format contract — these are PROPER tutorials
 
-Rock videos read like tutorials, not films. the-drop / lights-come-on are launch-film precedents for RENDERING only, never for format.
+Rock videos read like tutorials, not films. Launch films are precedents for RENDERING only, never for format.
 
-- 🛑 **NO intro card, NO outro/sign-off card — the film STARTS at the postIntro** (Umair ruling 2026-08-28, receipt `webhooks` 8: *"for tutorials, we dont need intros and outros. Kacie will make those. Our videos should start from postIntro."*). This is the delivery architecture ruled 2026-05-19 finally applied: Kacie records the real bookends and `tools/stitch.js` concatenates them around the HTML body. Every tutorial had been building duplicates the pipeline replaces (`introCard`/`signoff` ×25 in webhooks-addon, geolocation-addon, entry-exports, layout-field alike). Consequences: the skeleton drops both cards; `intro` and `outro`/`close` narration clips are no longer generated for tutorials (the `.txt` files, if written, are Kacie's reading scripts); **the doc-URL duty moves to Kacie's outro — RESOLVED 2026-08-28, see below.** Shorts are UNAFFECTED (they keep the Sullie sting + end card, charter 2026-08-13).
+- 🛑 **NO intro card, NO outro/sign-off card — the film STARTS at the postIntro** (Umair ruling 2026-08-28, receipt `webhooks` 8: *"for tutorials, we dont need intros and outros. Kacie will make those. Our videos should start from postIntro."*). This is the delivery architecture ruled 2026-05-19 finally applied: Kacie records the real bookends and `tools/stitch.js` concatenates them around the HTML body. Every tutorial had been building duplicates the pipeline replaces (`introCard`/`signoff` ×25 in four tutorials alike). Consequences: the skeleton drops both cards; `intro` and `outro`/`close` narration clips are no longer generated for tutorials (the `.txt` files, if written, are Kacie's reading scripts); **the doc-URL duty moves to Kacie's outro — RESOLVED 2026-08-28, see below.** Shorts are UNAFFECTED (they keep the Sullie sting + end card, charter 2026-08-13).
 - **Shape:** postIntro → numbered step-by-step walkthrough of the REAL UI in the order a user would actually click → **the payoff**: the LAST content beat shows the outcome on a real frontend surface (a `frontend-*` snapshot), not the Save button (rulebook §1; `geo` 6, `ee`, `lf` 8). Where the outcome lives outside the product (webhooks-class) the storyboard declares it explicitly. Tag the beat `// PAYOFF:` in the film — the same "ONE payoff frame that proves it" rule the shorts carve already enforces. No self-authored bookends.
 - **The UI is the star.** Cursor, clicks, typing, panel focus, zoom-to-direct-attention. Motion exists to guide the eye, never to perform. No editorial/ad-style beats, no kinetic typography, no atmospheric sequences — that's the `wpforms-marketing` path, not this rock.
 - **Narration is instructional and doc-adjacent** ("Click Save. Next, open..."), synced beat-for-beat to the on-screen action. WPForms style-guide voice: conversational, 3rd-grade reading level — **blog-post voice, not robot-doc voice** (Umair ruling 2026-07-22). Pace the read with punctuation (dashes, ellipses, sentence breaks) and `[tone]` tags at the phrase boundaries the motion needs — the default `eleven_v3` model IGNORES `<break>` SSML (see Narration voice below). The video is a doc you can watch — a viewer should be able to DO the steps along with it.
 - **PostIntro is a MUST for rock tutorials** (Umair overruled the old "default: skip" 2026-07-22). Build it to the full multi-animation rule via `wpforms-postintro`; the CONCEPT still gets ruled at the storyboard gate — mandatory presence, negotiable content.
-- **Connect/OAuth flows are IN scope** for addon tutorials: if the doc walks through connecting an account, the video shows it — real sign-in state + a frozen real OAuth page (`tools/capture-external.js`), never fabricated. Scoping OAuth out caused the entry-automation ch3 rework.
+- **Connect/OAuth flows are IN scope** for addon tutorials: if the doc walks through connecting an account, the video shows it — real sign-in state + a frozen real OAuth page (`tools/capture-external.js`), never fabricated. Scoping OAuth out caused a chapter-3 rework on one addon tutorial.
 - **Chapter headings live in a top-of-stage pill**, never centered over the product UI.
 - **Product UI fills the frame** — mac body ≈ 90% stage width (the skeleton's 1720×868 outer mounts the INHERITED 1380×668 capture geometry at ×1.246377; capture geometry itself is decided per capture WITH Umair — 668 was never agreed as a standard, see `wpforms-video`). A 71%-width frame read as "too small" at first QC.
 - ✅ **RESOLVED 2026-08-28 — the doc URL is KACIE'S CALL.** It moves with the outro to her recording; we neither author an outro card nor place the URL on-screen ourselves. Do not re-open this. ~~Outro card carries the doc's FULL URL as on-screen text~~ (e.g. `https://wpforms.com/docs/entry-automation-addon/`) — the doc is the distribution target.
@@ -44,15 +44,14 @@ Rock videos read like tutorials, not films. the-drop / lights-come-on are launch
 ## Shorts branch (2 per week, carved from the long-form)
 
 Format + topic contract: `C:\Users\PC\Desktop\umair-wiki\video\shorts-brief.md`.
-In-repo mechanics: `docs/vertical-shorts.md`. First two built 2026-08-05:
-`videos/short-spam-safety-net`, `videos/short-block-a-country`.
+In-repo mechanics: `docs/vertical-shorts.md`. First two built 2026-08-05.
 
 **Mode — Umair picks per short:**
 
 | Mode | When | Shape |
 |---|---|---|
 | **Micro-tutorial (DEFAULT)** | Any normal week | ONE tiny specific task, 30-60s, real UI, animated Sullie sting + end card (charter 2026-08-13 — never static, never Kacie), cut straight into the UI |
-| **Ad-style spot** | Launch weeks only | Motion-design film. Precedents: `the-drop` 49s, `what-counts` 48.8s, `the-update` 35s, `form-analytics-ad-v2` 58.4s, `lights-come-on` 43.1s |
+| **Ad-style spot** | Launch weeks only | Motion-design film. Past launch spots ran 35–58s |
 
 Micro-tutorial is the default on evidence, not taste: @wpforms has **48 shorts, all
 micro-tutorials, zero ads**, and the winners are small field-level tweaks (CSV export
@@ -75,7 +74,7 @@ Otherwise cut straight into the UI. A postIntro is not a structural checkbox; it
 The storyboard states which trigger applies, or states that neither does and the short opens on the UI. Six of the seven shorts on disk carry a postIntro and one does not, with no gate either way (receipt `sscg` 1) — that undeclared drift is what this ruling closes.
 
 **Carve SURFACES, never beat structure (ruled 2026-08-28, receipt `scs` 11).**
-`short-coupon-switch` obeyed the carve rule perfectly — zero captures, full snapshot
+One coupon short obeyed the carve rule perfectly — zero captures, full snapshot
 and helper reuse — and was scratched 0/10 with *"Idea was not thought through."* It
 inherited the long-form's chapter mechanics instead of earning its own reason to
 exist. Before authoring, name and get agreed: **the ONE thing this short teaches**
@@ -100,7 +99,7 @@ Two more from the same rejection:
   VO is shorter VO.
 
 **Authoring a short:**
-1. `cp reference/html-templates/vertical-short-skeleton.html videos/<slug>/index.html`
+1. Clone the 9:16 short skeleton into `videos/<slug>/index.html`
 2. `git add -f videos/<slug>/index.html && git commit` — clone committed BEFORE
    customizing (INV-16); `videos/` is gitignored, hence `-f`.
 3. Storyboard still gates, just smaller: angle, 3-4 beats, **which beat carries the
@@ -124,7 +123,7 @@ Two more from the same rejection:
    written from the code afterwards is the defect that made the wpvibe ad's v6
    camera pass "dizzy" (`wva` 7–9).
    🛑 **Name the PROBLEM the short solves, in one sentence, before authoring**
-   (ruled 2026-08-28, receipt `sfc` 5). Umair on `short-form-columns`: *"no actual
+   (ruled 2026-08-28, receipt `sfc` 5). Umair on one short: *"no actual
    mistake, the videos are well made, its just that Shorts are suppose to solve a
    problem. this angle wasnt present."* Execution was clean and the short still
    missed — craft cannot rescue a missing angle after the fact.
@@ -237,7 +236,7 @@ Real Kacie on camera opens and closes every shipped tutorial; body stays HTML + 
 ### 6. Ship + close the loop
 1. MP4 to Kacie (she uploads to WPForms socials/YouTube).
 2. When her upload is live: **embed it in the matching wpforms.com doc** ("docs" is a named distribution target in the rock). Metric: docs-without-video baseline 231 (2026-07-21) ticks down per embed.
-3. **Doc-staleness feedback:** log any doc↔product divergences found while building into `docs/product-truth/<feature>.md` and TELL UMAIR — he owns the docs; each video doubles as a doc audit. (Precedent: entry-automation found the live addon renders the Drive account dropdown directly — the doc's "click Add New Connection" step no longer occurs.)
+3. **Doc-staleness feedback:** log any doc↔product divergences found while building into `docs/product-truth/<feature>.md` and TELL UMAIR — he owns the docs; each video doubles as a doc audit. (Precedent: one addon tutorial found the live addon renders the Drive account dropdown directly — the doc's "click Add New Connection" step no longer occurs.)
 4. Wiki write-backs (absolute paths above): one-liner to `log.md`; bump the `scorecard.md` videos row; move the topic to "Shipped" in `ideas.md`; clear "In flight". Remind Umair to keep rock status honest in the collective agenda (QR behavioral ask).
 
 ## Standing rules

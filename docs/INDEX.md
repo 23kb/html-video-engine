@@ -11,12 +11,10 @@ Refreshed 2026-08-22 after legacy retirement: engine/manifest-path docs removed;
 - `storyboard-format-morph-chain-2026-05-10.md` — REQUIRED morph-chain storyboard section for editorial films. Authoring contract.
 - `ad-camera-gap-analysis-2026-09-03.md` — Why the first WPVibe ad stayed dull through five QC rounds: a parked camera (5 framings/44s). Doctrine split (cut vs re-frame), `## Camera plan` storyboard section, `makeStageCamera` for editorial DOM, composition-scan ad band, motion-audit parked-stage ceiling. What landed / what is deferred.
 - `kacie-intro-outro-recording-spec.md` — Real Kacie intro/outro bookends (delivery shape since 2026-07-23) + pipeline notes.
-- `examples/` — **The first-write skeletons (INV-16):** `single-html-tutorial-skeleton.html` (tutorial: postIntro → chapters, no bookends, `BGM_PREVIEW`, sentinels, `// PAYOFF:` slot), `single-html-ad-skeleton.html` (pure-editorial / ad / mixed: playback + instrumentation contract), `single-html-postintro-skeleton.html` (postIntro block: named eases + primitives pre-wired). The 9:16 short skeleton lives at `reference/html-templates/vertical-short-skeleton.html`. `choice-field-generate-choices-skeleton.md` is engine-era (historical API note).
+- `examples/` — **The first-write skeletons (INV-16):** `single-html-tutorial-skeleton.html` (tutorial: postIntro → chapters, no bookends, `BGM_PREVIEW`, sentinels, `// PAYOFF:` slot), `single-html-ad-skeleton.html` (pure-editorial / ad / mixed: playback + instrumentation contract), `single-html-postintro-skeleton.html` (postIntro block: named eases + primitives pre-wired). `choice-field-generate-choices-skeleton.md` is engine-era (historical API note).
 - `authoring-prompts/README.md` — Reusable fill-the-blanks briefs for new video sessions (`builder-frontend-split.md`; the README lists TODO kinds).
 - `video-production-templates.md` — Storyboard / snapshot checklist / token budget / smoke-spec templates (read only the section needed).
 - `vertical-shorts.md` — The 9:16 path: crop-don't-shrink, band layout, zoom floor, stage-driven resolution. Read before portrait geometry work.
-- `kacie-intro-outro-recording-spec.md` — see above; `road-to-wpforms-2-handoff.md` — The Road recap film handoff (built, tier A; 2 siblings parked).
-- `wpforms-chatgpt-wpvibe-ad-handoff.md` — WPForms + ChatGPT ad (Ask River exact-replica, Mixed): paste-ready kickoff prompt, every captured source, rulings, capture gotchas, ElevenLabs audio brief, gate ledger. Storyboard APPROVED 2026-09-08 at `videos/wpforms-chatgpt-wpvibe-ad/storyboard.md`.
 - `lessons-index.md` — Index of the `LESSONS-*.md` files inside video folders (59 on disk as of 2026-09-14, grouped by track; 6 tutorial files unmined) + the standing capability asks.
 - `lessons-mining-2026-08-28.md` + `engine-action-points-2026-08-28.md` — The 2026-08-28 mining ledger and the ranked tooling/skill action points it produced (AP-1..20; the S-effort items shipped 2026-08-28).
 - `lessons-mining-2026-09-14.md` — The 2026-09-14 ledger: the reference-driven ad batch (`yjc` `cja` `itf` `cgw` `wcr` `wvb`) and the 2026-09-04/05 shorts, per-entry verdicts, 18 action points, the OPEN items for Umair.
@@ -70,7 +68,7 @@ Craft docs below carry a **HISTORICAL API NOTE (2026-08-28)**: their code exampl
 ## System context
 
 - `rulebook.md` — ~240 IF/THEN session rules mined from all LESSONS files; each names an enforcement slot + receipt. Read before first beat.
-- `track3-analysis-2026-09-03.md` — Track 3 reference analysis (Umair's 17-video drop): the measured bar for postIntro / TTS+script / sound / motion, what was built, and the pending U-items awaiting his ruling. Evidence in `reference/New folder/_extraction/_analysis/`.
+- `track3-analysis-2026-09-03.md` — Track 3 reference analysis (Umair's 17-video drop): the measured bar for postIntro / TTS+script / sound / motion, what was built, and the pending U-items awaiting his ruling.
 - `skills.md` — Index of the 9 live skills (procedural vs reference) + retired / file-read-only notes.
 - `jake-moran-workflow-adoption-2026-08-06.md`, `video-system-improvements-2026-08-06.md`, `video-system-improvements-round2-2026-08-08.md`, `fix-round-2026-08-14/`, `motion-design-round-2026-08-17/` — Dated system-improvement rounds (historical record of rulings + specs).
 - `product-truth/` — Per-feature plugin-truth notes captured during builds (entry-automation, anti-spam, custom-css, form-analytics, qr-code...). Each video doubles as a doc audit; log divergences here.
@@ -84,12 +82,9 @@ Craft docs below carry a **HISTORICAL API NOTE (2026-08-28)**: their code exampl
 
 ## Repo-root references
 
-- `reference/New folder/new/analysis/README.md` — 11 reference-film reconstruction profiles with 24fps evidence: camera/object/text choreography, phased transitions, sound and HTML mapping. Search `catalog.json`, then read the chosen record in `recreation-library.json`; `index.html` provides video/shot/sheet review.
 - `CLAUDE.md` — Operator manual. Boot order, path decision tree, protected areas, validation.
 - `BACKLOG.md` — Living debt + future candidates (local-only, gitignored).
 - `implementation-notes.html` — Instruction-fidelity post-mortem behind CLAUDE.md's G1–G4 gates.
-- `reference/wpforms-brand/BRAND.md` — Canonical brand truth (colors, type, Sullie, real templates API).
-- `reference/html-templates/` — Style references for editorial work (the winners + per-beat specs) plus `vertical-short-skeleton.html`, the 9:16 first-write clone. Editorial / tutorial first writes clone `docs/examples/`.
 
 ## Code libraries (use, do not reinvent)
 

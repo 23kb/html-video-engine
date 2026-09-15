@@ -155,7 +155,7 @@ Shorts captions reveal **word by word**, not as a whole block (Umair ruling
 
 ## Authoring a short
 
-1. `cp reference/html-templates/vertical-short-skeleton.html videos/<slug>/index.html`
+1. Copy the 9:16 short skeleton to `videos/<slug>/index.html`.
 2. `git add -f videos/<slug>/index.html && git commit` — **commit the clone before
    customizing** (INV-16). `videos/` is gitignored, hence `-f`.
 3. Storyboard first (A6 — approved before beats are built): seam ledger, a
