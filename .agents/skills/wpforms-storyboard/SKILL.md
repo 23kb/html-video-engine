@@ -154,7 +154,7 @@ puppetry the build writes by hand — say so in the row.
 ### Sound, narration, bookends
 
 - **Narration:** `narration.js` `beat()` / `say()` / word-timed captions; ElevenLabs (Kacie voice) for finals, Voicebox for drafts; DUR tables are voice-coupled (measured, never hand-estimated). Tutorials and shorts are narration-driven; ads carry copy as typed/animated text and take VO only on request.
-- **Sound:** SFX rig with a SEMANTIC palette (`assets/sfx/` — click only where a click happens, pop on a bubble, stamp on a slam; shimmers and riser-whooshes were rejected by ear; sheen sweeps ≤2 per film); BGM added at render. Ad mix: music-forward, no sidechain ducking, shaped arcs, 0.6–1.7s fade or hard-out. Tutorial bed 0.17 / 0.12 ducked.
+- **Sound:** SFX rig with a SEMANTIC palette (`assets/sfx/` — click only where a click happens, pop on a bubble, stamp on a slam; shimmers and riser-whooshes were rejected by ear; **tick sounds are banned in every film — never plan, place or generate one** (rejected 2026-09-17, files deleted 2026-09-18); sheen sweeps ≤2 per film; cue levels copy a measured reference — `tools/sfx/CONTEXT.md` § Reference-copy recipe); BGM added at render. Ad mix: music-forward, no sidechain ducking, shaped arcs, 0.6–1.7s fade or hard-out. Tutorial bed 0.17 / 0.12 ducked.
 - **Bookends:** tutorial = real Kacie intro + outro stitched at delivery (no in-film cards; Sullie lives inside the film via postIntro or brand bug); short = animated sting (`mountShortIntro`, owns the hook text) + end card (`mountShortOutro`); ad = animated Sullie-assembly sting opens, `mountEndCard` closes.
 
 ### Needs approval or is off the table

@@ -220,8 +220,10 @@ real citations. Receipts: `yjc` 1–8, `cja` 1/4, `cgw` 11, `wcr`, `itf`.
    (`ffmpeg -af loudnorm=print_format=summary`; the ruled profile is ≈ −12 LUFS mean, `tools/sfx/
    CONTEXT.md`) and tune ONE `LIFT` constant, never 28 gains. In-page `Audio` never reaches the
    MP4, and an ad with in-page SFX and no in-page bed is silent on the scrub URL where Umair
-   watches first (`yjc` 12, `wvb` 11). No typing ticks in an ad — the bed carries typing; ticks
-   are for state changes (`cja` 2).
+   watches first (`yjc` 12, `wvb` 11). **No tick sounds, ever, in any film** (class rejected
+   2026-09-17, files deleted 2026-09-18): the bed carries typing, and a state change gets a
+   designed material cue or nothing (`cja` 2). Set cue levels from a measured reference, not a
+   flat peak — `tools/sfx/CONTEXT.md` § Reference-copy recipe (our accents measured 6–7 dB hot).
 
 Three grammar rules the recipe earned, all mandatory on this path:
 
