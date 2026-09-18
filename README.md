@@ -90,6 +90,7 @@ Skills live in `.claude/skills/<name>/SKILL.md`. Codex copies live in
 | `wpforms-video` | Tutorial authoring |
 | `wpforms-marketing` | Ad-style, release and mixed films |
 | `wpforms-ad-to-short` | A 9:16 cut of an approved ad |
+| `wpforms-ae-build` | The After Effects build or twin of a film |
 | `dev-advocacy-video` | Choosing the next tutorial and its shorts |
 | `wpforms-postintro` | The concept beat after the intro |
 | `wpforms-gsap-rules` | Timeline and GSAP discipline |

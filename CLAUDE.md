@@ -121,6 +121,7 @@ Non-negotiable invocations for tutorial / postIntro / cinematic / editorial work
 - `wpforms-gsap-rules` — GSAP L0 discipline + camera-decomposition rules + designer principles (Emil / Krehel / Jhey)
 - `wpforms-marketing` — editorial / ad-style surfaces + blocks + atmospheric kit + brand canonical + **the reference-driven replication recipe** (reference film → frames → scene map → tile cited per beat in code → probe on v1 → badged-sheet handoff; 2026-09-14)
 - `wpforms-ad-to-short` — a 9:16 cut of an APPROVED ad into `videos/<slug>-9x16/`: timeline / copy / cues / bed verbatim, geometry only (stage flip, per-line type refit, stacks, the live-surface band for mixed films, remapped cursor, re-pointed probe). Not the carve path, not the portrait short skeleton path
+- `wpforms-ae-build` — the After Effects build or twin of a film through the AE connector (`ae_*`): the approved storyboard as contract, real snapshots rastered at 2×, the rig + stills gate before motion, the `execute_script` build pattern, the bridge rules, `aerender` + `ffprobe`, the shared `tools/sfx` sound path. The connector's own skills cover AE craft; this one covers the repo side
 - `wpforms-primitives` — lookup index for `videos/_shared/motion-primitives.js` (cameras / cursor / typing / field-reveal / brand-anchor / exit) and `videos/_shared/wpforms-interactions.js` (Wave 1 standard interactions). Reach here BEFORE writing any new GSAP cursor / camera / interaction code.
 - `wpforms-motion-audit` — score animations and camera moves S–F tier with hard-rule calibration. Run before any postIntro/cinematic handoff.
 - `wpforms-video-polish` — polish an existing already-shipped video without breaking it. Backup-first → analyze → surgical edits in batches of 5–10 → static verification → motion-audit if cinematic touched. NOT for new authoring, NOT for debug. Includes 8 canonical polish patterns.
@@ -281,6 +282,7 @@ Don't look here for these — load the skill instead:
 | Motion-primitives + wpforms-interactions library lookup (per-primitive when-to-use, signatures, QC status) | `wpforms-primitives` |
 | Polish an existing video (timing / easing / typography / handoffs) without breaking it | `wpforms-video-polish` |
 | 9:16 cut of an approved ad (band, type refit, stacks, probe re-point) | `wpforms-ad-to-short` |
+| After Effects build or twin (bridge rules, raster pipeline, render recipe, phase gates) | `wpforms-ae-build` |
 | Designer-grade audit (Emil Kowalski / Jakub Krehel / Jhey Tompkins) | file-read `.agents/skills/design-motion-principles/SKILL.md` + `references/` (not Skill-tool invocable) |
 
 Skills are at `.claude/skills/<name>/SKILL.md`. Each is a single file with YAML frontmatter (`name`, `description`).

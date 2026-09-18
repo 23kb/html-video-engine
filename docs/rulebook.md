@@ -556,6 +556,7 @@ Dashboard launch films (2026-09-15 → 09-17, mined 2026-09-18): `wdl` the After
 | You probe a tutorial on the async `play()` path (no `window.__tl`) | `probe-singlehtml`, `seam-gate` and the `qc-probe` skeleton all wait on `__tl` and time out. Report them N/A — never a timeout as a FAIL, never a fake `__tl`. The film's own `qc-probe.mjs` plays in real time, watches `__sched` / `__beatStats` for each new beat key, and asserts the PREVIOUS beat's end-state DOM in the LIVE document (IframeManager's hidden loader copy is a second document). Print the value each check read, not only pass/fail | `WISH` (`--wallclock` mode proposed — AP) | gsa 9; atb 10 — only the probe caught a modal that never mounted and a cascade that over-revealed, smoke green both times; atb 11 — a pass/fail probe cost two wrong turns, the one that printed its value ended the hunt |
 | A probe or tool runs a tutorial `?scene=chN` | `review.stopAfter('chN')` returns BEFORE `window.__done = true`, so a scene run ends without the end flag and a probe that waits on it times out on a good run. Key on the chapter's LAST `__beatStats` key plus the clip tail, or have the film set `__sceneDone` on the early return. Playwright's signature is `waitForFunction(fn, arg, options)`: options passed second land in the ARG slot and the 30s default stands | `WISH` (`stopAfter` sets `__sceneDone` — AP) | twl 8 — two timeouts on one chapter; gcal 15 — every assertion true, verdict FAIL |
 | Another session has built, reviewed or ruled on the same film (a twin engine, an earlier cut) | Read its memory and lessons for that film at session start, and again before you commit a cut | `WISH` | wdlh 11 — a review of the AE build and a build directive crossed on the same day; a 57.57s cut was committed after the ruling to cut to the spine had landed |
+| A film's picture is approved with few or no notes | Write `## What worked` in its lessons file the same day: each cause tied to an artifact (a storyboard section, a probe assertion, a staging step), so mining can lift it into the skill that owns that step. A defect-only file records what broke and loses why the film landed | `WISH` | dos — the best first-pass film so far was mined into defect rows only; its causes had to be rebuilt from the storyboard the next day |
 
 ---
 
@@ -566,5 +567,7 @@ Dashboard launch films (2026-09-15 → 09-17, mined 2026-09-18): `wdl` the After
 - The head digest holds ~7 entries, eleven at the absolute most (raised from ten by Umair, 2026-09-18). A digest that
   grows becomes the catalog again; an entry only enters by displacing one.
 - New rules arrive from `LESSONS-*.md` files. Add the row, cite the receipt.
+- Mining reads a file's `## What worked` section too. A success pattern goes into
+  the skill that owns the step, never into this table — these rows are defects.
 - When a `WISH` gets an enforcer, change its slot. That diff is the only
   measure of whether hardening is happening.

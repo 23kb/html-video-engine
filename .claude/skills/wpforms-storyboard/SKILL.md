@@ -47,6 +47,7 @@ In this order, with the tools — never a full read of a snapshot `index.html` (
 
 1. **Product truth** for every claim, value, metric name and ability limit (above).
 2. **Snapshot inventory:** `node tools/list-snapshots.js --search <q>` — what real UI exists. A state that appears on two surfaces (builder canvas AND published form) needs a capture per surface; enumerate **state × surface**. Status each: `exists` / `DOM-derived` / `NEEDS CAPTURE` / `ASK USER`. Hidden panels a snapshot carries: `outline.md` "Panels & modals" — mark in/out of scope.
+   **When the angle needs data no capture holds** (40 forms on one page, a busy chart), stage the site for the film and record it in `videos/<slug>/STAGING-<date>.md`: what was staged, and which captures came from it. Set `WP_DEBUG_DISPLAY` off before the capture (`dos` 9). Every number on screen is then a captured value, never a typed one.
 3. **Can the beat DRIVE the UI?** `node tools/field-state.js --interactivity <field>` — handlers are added per video; a beat that toggles an option needs one to exist.
 4. **Real references, not adjectives.** Every editorial-composition beat cites a real frame: a reference film's contact sheet (Shipper, Codex, x.ai, Google Pics tiles), a house S/A-tier film, or a snapshot region. "Make it Apple-like" is not a reference.
    **Ad-style films are reference replicas (2026-09-14).** When a reference film is declared, the
@@ -59,6 +60,10 @@ In this order, with the tools — never a full read of a snapshot `index.html` (
      **Reference analysis is a skill:** run the `reference-motion-spec` worker inside the `video-pipeline` skill (open its `SKILL.md`) on the mp4 (sheets, 24 fps
      strips, seam ledger, camera plan) and consume its `motion-spec.json` + `brief-generic.md`
      as the reference input here; the scene map and the seam ledger copy from them, tile cites included.
+     **Launch the workers at angle approval.** Until they return, write only intake, copy and
+     the morph chain. The mechanics columns (scene-map transitions, seam ledger, camera plan)
+     wait for the 24 fps read — mechanics written from 4 fps profiles were overturned the same
+     day (`dos` 1).
    - **One spine reference.** Write a `## Scene map` in the donor's order — one row per donor
      SCENE (composition, framing, transition type, duration) and the WPForms content that replaces
      the donor's. A citation names a **scene**, never a **phase**: "rows stack in, 0.25 s each" is
@@ -102,10 +107,26 @@ would come from, or asks.
 | Surface | What it is | Limits that shape shots |
 |---|---|---|
 | **Real UI** (all tracks) | Captured snapshots mounted through `IframeManager` at native 1280×720; live DOM you can mutate in place (`gsap.set`/tweens on iframe nodes, CSS injection), type into (`typeIntoIframeInput`), scroll (`paneScrollTo`, `pageCenter`), swap between (`ifm.swap`, crossfade, preload first); real hidden UI (popovers, modals) toggled open | Content below 720px needs a scroll-then-frame; never a CSS filter over the iframe (blur) — grade with veils; never `scalePush` the iframe; never swap iframes to show a state — mutate the one you have; a `position:fixed` modal cannot ride a camera zoom |
-| **Lifted fragments** (ad / mixed / short) | `liftComposite` copies real DOM pieces out of a snapshot onto editorial ground as floating cards (the WPVibe form, entries rows) — real, cited `// SOURCE: snapshots/…` | Geometry pseudos only (icon-font glyphs render as tofu); staged pre-states (a required star removed, a toggle off) are `OVERRIDE` items the storyboard lists |
+| **Lifted fragments** (ad / mixed / short) | `liftComposite` copies real DOM pieces out of a snapshot onto editorial ground as floating cards (the WPVibe form, entries rows) — real, cited `// SOURCE: snapshots/…` | Geometry pseudos only; icon-font glyphs render as tofu unless the build copies the icon rules alone (font-faces, `.fa*` / `.dashicons*` class rules incl. the `:is()` form, FA `:root` vars) from the live snapshot doc — never the whole admin sheet (`dos` 8); staged pre-states (a required star removed, a toggle off) are `OVERRIDE` items the storyboard lists |
 | **Two-panel mirror** (tutorial) | `BuilderFrontendSplit` — builder left, published form right, option changes mirrored live (`frontend.js` must be included in the frontend snapshot) | Single-field tutorials; see `docs/authoring-prompts/builder-frontend-split.md` |
 | **Editorial DOM** (ad / mixed) | The single-HTML ad skeleton: claims, cards, chips, atmosphere, everything inside `#lens` (the stage camera) | Brand orange `#E27730` primary; purple is AI-feature accent only; WPForms capitalized; invented chrome (a Claude window, a chip tray) is an `OVERRIDE` item Umair approves with the copy |
 | **Portrait stage** (short) | 1080×1920; the camera CROPS the desktop raster, never shrinks it; zoom band 1.78–2.0; a framed subject is at most ~607 logical px wide; no vertical pan (scroll the doc instead); top/bottom zones 0–300 / 1500–1920 are brand ground or an instrument dock (`mountSurround`) | Frame cells, never full-width rows; field-center rule ±80px |
+
+### Product films are components on a bed (ad / mixed — ruling 2026-09-17)
+
+Nine versions of a whole admin page under a moving camera came back as "a dashboard
+demonstration with camera movement". The next film's picture was approved in its first QC
+round. The difference is staging (`wdl`, `wdlr`):
+
+- **One component per scene, at hero scale.** A stat card, a chart, a tile grid — lifted off the
+  page onto a designed bed. One idea per scene. The full page appears only as the payoff.
+- **The previous scene sets up the next.** Press-in anticipation, an element that becomes the next
+  scene's bed, velocity carried across the cut. Write the setup in the seam ledger row.
+- **Some shots belong in page context** (site access, a date range). Name them in the row and say
+  why (`wdlr` 9).
+- **List what each shot reveals.** The payoff element stays out of every earlier frame (`wdlr` 11).
+- **Peers stay equal.** A track across four stat cards, never a zoom on one of them (`wdlr` 15).
+- **Clicks need air** — about 1 s apart, with a hold after the one that matters (`wdlr` 16).
 
 ### Camera — what the frame can do, per surface
 
@@ -179,6 +200,8 @@ Only after the angle and copy are approved. Agree the slug first. Sections, in o
 | Product truth + snapshot plan | ✓ | ✓ | ✓ | Claims sourced; snapshots as state × surface with statuses; hidden-panel inventory in/out of scope; interactivity confirmed; captures needed listed |
 | Morph chain | postIntro only | ✓ | opt | Host element `#id`, identity arc table, continuity contract (`docs/storyboard-format-morph-chain-2026-05-10.md`) |
 | **Scene map** (reference-driven) | — | ✓ when a reference film is declared | ✓ when carved from an ad (`wpforms-ad-to-short`) | Spine reference named (file path); one row per donor scene in donor order: donor t-range, composition, framing, transition (from the 24 fps read), duration → our content; tile ids per row; `OVERRIDE` on any row that is not a donor shot. **Plus an in-beat motion ledger per scene** (2026-09-14, `wcr` v2): every thing that MOVES inside the donor scene — what, from which frame to which, continuous or discrete, the ease shape read off the frames (launch fast / long settle = `whipSettle`; hold-whip-stop = `heldSnap`), what streams — and our equivalent for each. A donor scene whose subject is alive (text streaming, a label cycling, a card settling) gets a substitute that is alive the same way; a static snapshot in a live donor scene is where "like the reference but not good" comes from |
+| **Deviations from the donors** | — | ✓ when a reference film is declared | — | The complete list of places the film departs from its donors, each with its reason. A departure that is not on this list is a defect the build fixes, never a choice |
+| **Beds** | — | ✓ | opt | The bed per scene, from the brand tokens. One bed for the whole run reads flat ("dont keep it one only", QC 2026-09-17). Every bed change is a transition: it gets a seam ledger row and a donor. Measure text colour on each bed at storyboard time — white from a dark donor vanishes on cream (≈1.1:1); text that lands orange on cream uses `#CD6622`, and turns that cool go to ink (`dos` 10) |
 | Rules for the whole run + hero beat | ✓ | ✓ | ✓ | Literal invariants (G1 contracts); the one beat that carries the film, built first; current + reserved vectors |
 | PostIntro story | ✓ | — | if triggered | The approved Story Proof phase table (`wpforms-postintro`); shorts state which trigger applies or that the short opens on the UI |
 | Beats | ✓ | ✓ | ✓ | One row per beat: t, ground/surface, action, copy or narration, DOM mutation named (a beat whose answer is "the camera moves" is not a product beat); tutorials walk the task end to end and END on the payoff on a real frontend surface |
@@ -188,7 +211,7 @@ Only after the angle and copy are approved. Agree the slug first. Sections, in o
 | Look gate | — | ✓ | ✓ | Per editorial-composition beat: the cited reference frame (sheet + tile) or "stills pass" — never an adjective |
 | Capability check | ✓ | ✓ | ✓ | Every primitive / effect / interaction named in the rows resolves to Step 3; `Custom` entries name where they would come from, or ask |
 | OVERRIDE items | ✓ | ✓ | ✓ | Invented chrome, staged pre-states, fragment presentation, co-brand assets, no-VO — approved with the copy |
-| Build order + handoff | ✓ | ✓ | ✓ | Skeleton clone committed unmodified → stills → hero beat → rest → gates; which skill builds |
+| Build order + handoff | ✓ | ✓ | ✓ | Skeleton clone committed unmodified → stills → hero beat → rest → gates; which skill builds. **Two engines, one contract:** a film built in HTML and in After Effects shares this storyboard — the `## Beats` t-values, the `## Camera plan` rows, the copy and the captured data bind both builds; mechanisms differ. Stills are approved in the HTML build and the AE build matches them (`wpforms-ae-build`) |
 
 ### The camera plan is a creative decision — how this skill makes it
 
@@ -229,8 +252,8 @@ editorial-composition beat on the ad path; the hero + payoff on tutorials and sh
   "Sounds good" is not approval. Changes are re-confirmed as the final word.
 - After approval the storyboard is a literal contract: G1 (preserve the user's verb), G2 (state the
   target back), G3 (surgical edits). The build skill takes over: `wpforms-video` (tutorial),
-  `wpforms-marketing` (ad / mixed), `dev-advocacy-video` shorts branch. Hand them the file path
-  and the hero beat.
+  `wpforms-marketing` (ad / mixed), `dev-advocacy-video` shorts branch, `wpforms-ae-build` (an
+  After Effects build or twin). Hand them the file path and the hero beat.
 - **A QC round that changes what fills the frame re-opens the camera plan** — the storyboard is
   amended (dated) before the code is. The wpvibe storyboard stopped describing its film at v4;
   the 24s core shipped unplanned.
@@ -252,7 +275,10 @@ editorial-composition beat on the ad path; the hero + payoff on tutorials and sh
 - A reference-driven film cited by PHASE instead of SCENE — an original concept wearing a citation jacket; passed every gate, scored −5/10 (`wcr`).
 - Transitions read from a 4 fps strip; the seam ledger says "cut" where the reference dissolves over 3 frames (`cgw` 11).
 - Fill and zoom columns written by feel, disagreeing with each other; `snap` written over a shot the reference TRACKS (`cja` 1, 4).
-- Numbered section headings or "1.75 seconds" on the `Cadence:` line — the parsers want `## Camera plan` and `1.75s`; an approved plan reported UNDECLARED (`cja` 11).
+- Numbered section headings or "1.75 seconds" on the `Cadence:` line — the parsers want `## Camera plan` and `1.75s`; an approved plan reported UNDECLARED (`cja` 11). Exactly ONE seconds value on that line: "1.8s … in 30.6s" was read as their average and failed (`dos` 4).
+- A whole product page under a moving camera. Nine versions read as a demonstration; components on a bed fixed it (`wdl`, `wdlr`).
+- Mechanics columns written while the 24 fps reads were still running (`dos` 1).
+- An establishing shot that shows the payoff element before its reveal (`wdlr` 11).
 - A camera plan whose rows exceed its own `Max hold:` — sum the rows; write the landings from the beats table's verbs (press / lands / arrives), not the shot list's subjects (`wvb` 6, 7).
 
 ## References
