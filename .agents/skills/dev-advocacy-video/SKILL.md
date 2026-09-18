@@ -109,6 +109,19 @@ Two more from the same rejection:
    per cut (exit vector | entry vector | carrier | technique; a short has 2-4 cuts,
    so this is a 3-row table). A cut with no nameable carrier or causality gets fixed
    at the beat level before build — see *Snapshot transitions* in `wpforms-marketing`.
+   **Plus a `## Camera plan`** (ruled 2026-09-04 — the storyboarding pass is FULL
+   CREATIVE and is owned by `wpforms-storyboard`; invoke it for the storyboard step and
+   build from its file): the storyboard DECIDES this short's camera, with reasons, and writes
+   `Cadence:` (seconds per landing + why — a short whose UI stays on one panel moves
+   only on story turns; one that hops between surfaces moves densely), `Max hold:`,
+   `Ease voice:` (`anticipate` / `glide` / `snap` / `punch` — anticipate is one voice,
+   not the only one), then one row per landing with a numeric fill and what carries
+   the hold. Format: `docs/storyboard-format-morph-chain-2026-05-10.md` *Camera plan*.
+   No default cadence exists to fall back on; `composition-scan <slug>` judges the
+   built short against the numbers THIS storyboard declared (a `Cadence:` line
+   overrides the 2026-08-22 shorts band). Paper → stills → approval → code; a plan
+   written from the code afterwards is the defect that made the wpvibe ad's v6
+   camera pass "dizzy" (`wva` 7–9).
    🛑 **Name the PROBLEM the short solves, in one sentence, before authoring**
    (ruled 2026-08-28, receipt `sfc` 5). Umair on one short: *"no actual
    mistake, the videos are well made, its just that Shorts are suppose to solve a
@@ -166,7 +179,7 @@ BGM + SFX (charter 2026-08-13); the postIntro is optional by ruling (above).
 ### 0. Resume check (every run, before anything)
 Read `ideas.md` → "In flight". If a video is mid-pipeline, resume at its recorded stage. Only pick a new topic when nothing is in flight.
 
-### 1. Pick the work (Codex decides, Umair confirms)
+### 1. Pick the work (Claude decides, Umair confirms)
 
 A run is one of three things — check in this order:
 1. **Something built but unshipped?** Ship it. Two finished long-forms sat at QC with
@@ -203,7 +216,7 @@ block — each line is one report, worked in timestamp order. Commands and the
 full contract: `video-qc` ("The QC dashboard is the QC surface") and
 `docs/qc-dashboard.md`. Needs `node tools/preview.js --no-open` running.
 
-### 5. Render (Codex renders — NEVER OBS)
+### 5. Render (Claude renders — NEVER OBS)
 ```bash
 node tools/render-singlehtml-audio.js <slug> --resolution 3840x2160 --bgm-volume 0.12
 ```

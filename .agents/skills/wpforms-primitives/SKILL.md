@@ -5,7 +5,7 @@ description: "Use BEFORE writing motion, cursor, camera, typing, field-reveal, b
 
 # WPForms Primitives & Interactions — lookup index
 
-Two shipped libraries codify the motion + interaction vocabulary for this repo. Their authoritative rationale lives inline in the source files; this skill is the **when-to-use lookup table** so future Codex reaches for them instead of reinventing.
+Two shipped libraries codify the motion + interaction vocabulary for this repo. Their authoritative rationale lives inline in the source files; this skill is the **when-to-use lookup table** so future Claude reaches for them instead of reinventing.
 
 ## ⛔ INVOKE BEFORE WRITING ANY MOTION CODE
 
@@ -100,6 +100,37 @@ For pure-editorial / ad-style / marketing motion. Each `mountFoo({...})` returns
 | "Pick a form" — card stack fans horizontally + center lift | `mountCardsSpreadFan({cards, spacing})` |
 | "Template library" — cards fly in at varied stops + emphasize center | `mountCardsFlyInStack({cards, stops})` |
 | "Hundreds of templates" — phyllotaxis spiral bloom of N tiles | `mountConstellationPhyllotaxisBloom({count, palette})` |
+| Premium surface over a moving world — frosted glass + slow sheen | `mountGlassCard({width, height, content})` + `glassSpringEase` |
+| "One number" — card lands, value ticks UP | `mountStatCountUp({label, from, to, suffix})` |
+| House outro — Sullie + wordmark + CTA | `mountEndCard({title, cta, url})` |
+
+**Ad vocabulary — promoted from a proving reel (2026-09-03).** All dark-ground by default (restyle the `--fx-*` vars for a light bed) and all inherit the film's font. Reach for these before hand-rolling an ad beat:
+
+| Need | Effect |
+|------|--------|
+| Ad opening — giant-type phrases whip in/out, last line carries an inline chip whose label hot-swaps + width-morphs (xai T7) | `mountPhraseChain({lines, chip:{from,to}, font, chipFont})` — `.tweenInto()` + `.swapChip()` |
+| "AI is doing the work" — checklist rows tick done: same-hue row wash, SVG check draws, chip swaps QUEUED → DONE | `mountTaskQueue({title, subtitle, rows, width})` |
+| "It builds itself" — skeleton bars dissolve and real fields materialize on the SAME coordinates, after a sheen wipe | `mountSkeletonToLive({width, height, skeleton, live})` — mounts as a content layer INSIDE a frame the film owns |
+| A big number that should LAND (not tick) — rolling digit columns, separators arrive after the digits | `mountOdometer({digits, separatorAfter, kicker, tail, live})` — `live:false` builds the settled pixel-match twin |
+| Social proof — tile grid pops in on a micro-stagger, then dims | `mountLogoWall({marks:[{name,src}], columns, rows})` — **ships no logos**; marks are caller-supplied with `// SOURCE:` cites |
+| The claim on top of the proof — testimonial card lifts + sheen | `mountQuoteCard({text, attribution, markFont})` |
+| "There is audio here" — seeded bars ladder in, then breathe at a fixed Hz (xai T2) | `mountWaveformBars({count, seed, width, height})` — `.tweenInto()` + `.wiggle({window})` |
+| Press reaction on the exact AEP ratios 1 → 0.8 → 1.1 → 1 (xai T6) | `pulseEmphasis(tl, target, {position})` — a composer, any target |
+
+**`mountStatCountUp` vs `mountOdometer`:** siblings, not modes. Count-up = white card, text node tweened by a numeric proxy, number ticks UP. Odometer = per-digit masked strips on a dark bed, number LANDS.
+
+**Seam grammar (`videos/_shared/effects/seams.js`)** — the five named scene-cut recipes, verbatim constants from `docs/hyperframes-seam-grammar-rnd-2026-09-03.md`, measured PASS on the proving reel. These are **composers, not mounts**: `(tl, outEl, inEl, cut, opts)` writing to the master at absolute `cut`, where `outEl`/`inEl` are whole-scene wrappers.
+
+| Cut you want | Recipe |
+|---|---|
+| The signature recede-and-punch-through | `seamZoomThrough` — ⚠ animates `filter: blur()`; **editorial / PNG-baked scenes ONLY**, never over a live iframe |
+| The workhorse throw (iframe-safe) | `seamThrowLeft` + `parkThrowEntry` / `seamThrowEntry` on the entering hero |
+| Continuity — shared elements at identical coordinates | `seamLockedCrossfade` (carry a shared element across at matched speed; a crossfade alone reads DEAD to `seam-gate`) |
+| Pixel-matched cut, no blend | `seamHardCut` — split one release ACROSS the cut so position *and* velocity agree mid-flight |
+| One cursor move spanning a cut | `seamCursorVelocitySplit({outEl, inEl, from, to, cut})` — takes two matched glyphs; never mounts a cursor |
+| Pin a beat's last frame to its end time | `holdFinalFrame(tl, cut)` — before every cut, always |
+
+**Wash (`videos/_shared/effects/wash-transition.js`)** — the whiteout cut for **await-driven tutorial films** with no master timeline: `await washTransition(outGroup, inGroup, { veil, axis })`, veil from `mountWashVeil(surface)`. Alternate the axis between consecutive washes. `unparkGroup(g)` reveals a group with no wash for isolated `?scene=` entry.
 
 Full vocabulary table + how to add a new effect: `videos/_shared/effects/README.md`. QC harness: `videos/_qc-effects/index.html`.
 

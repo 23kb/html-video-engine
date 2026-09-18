@@ -92,6 +92,8 @@ The prompt is the brief. The skills are the gates. Both apply.
 
 ## 🛑 HARD-GATE: Storyboard Approval
 
+**The storyboard itself is written by `wpforms-storyboard` (2026-09-04) — invoke it for the storyboard step; it produces `videos/<slug>/storyboard.md` in the shape below plus the camera plan (cadence + ease voice decided per film). This gate is what the build waits on.**
+
 **Before writing ANY chapter code, DOM prep, or rendering narration mp3s, the user MUST have approved a storyboard proposal in this exact shape:**
 
 - Angle and audience

@@ -1,6 +1,6 @@
 ---
 name: wpforms-marketing
-description: "Use BEFORE starting any pure-editorial, ad-style, marketing, announcement, release, launch, or mixed WPForms video — owns the path-decision gate, brand canonical, clone-and-customize first-write rule (INV-16), atmospheric kit, blocks library, text-kit, and the editorial / mixed film shapes. 3 sessions authored from blank files despite clone-first rule; all needed manual rescue. Triggers: ad-style video, marketing video, release video, announcement video, launch video, editorial video, pure editorial, mixed surface, atmospheric, hero lockup. For tutorial videos showing real product UI, use wpforms-video instead."
+description: "Use BEFORE starting any pure-editorial, ad-style, marketing, announcement, release, launch, or mixed WPForms video — owns the path-decision gate, brand canonical, clone-and-customize first-write rule (INV-16), the reference-driven replication recipe (reference film → 3–5fps + 24fps frames → scene map → tile cited per beat in code → probe on v1 → badged-sheet handoff), atmospheric kit, blocks library, text-kit, and the editorial / mixed film shapes. 3 sessions authored from blank files despite clone-first rule; all needed manual rescue. Triggers: ad-style video, marketing video, release video, announcement video, launch video, editorial video, pure editorial, mixed surface, atmospheric, hero lockup, ditto, replicate the reference. For tutorial videos showing real product UI, use wpforms-video instead. For a 9:16 cut of a finished ad, use wpforms-ad-to-short."
 ---
 
 # WPForms Marketing / Ad-Style Videos
@@ -48,15 +48,15 @@ Two things an ad-style video MUST be, revised 2026-07-13 after the FA clean-room
 
 The failure that earns a low score is a basic piece: one text effect, a couple fades, mock tiles. An ad is judged on motion design. Before calling any ad-style build done, it must visibly use **most of** this vocabulary — not one token from it:
 
-- **Effects library (`videos/_shared/effects/`)** — text reveals (`mountTextStackFromRight`, `mountTextLetterMaskDomino`, `mountTextCenterOutRoll`), card layouts (`mountCardsSpreadFan`, `mountCardsFlyInStack`), constellations (`mountConstellationPhyllotaxisBloom`). If the storyboard names a motion archetype not yet promoted, **promote a matching effect into `videos/_shared/effects/`** rather than hand-rolling or skipping it. Using one effect when the piece has five beats is the 4/10 failure.
+- **Effects library (`videos/_shared/effects/`, promoted from the QC-approved proving reels)** — text reveals (`mountTextStackFromRight`, `mountTextLetterMaskDomino`, `mountTextCenterOutRoll`, `mountPhraseChain`), card layouts (`mountCardsSpreadFan`, `mountCardsFlyInStack`), constellations (`mountConstellationPhyllotaxisBloom`), glass (`mountGlassCard`), and the **ad surfaces** (`mountTaskQueue`, `mountSkeletonToLive`, `mountOdometer`, `mountLogoWall`, `mountQuoteCard`, `mountWaveformBars` + `pulseEmphasis`). If the storyboard names a motion archetype not yet promoted, **promote a matching effect into `videos/_shared/effects/`** rather than hand-rolling or skipping it. Using one effect when the piece has five beats is the 4/10 failure.
 - **Text animations** — `text-kit.js` (24 pixel-point presets) or the effects text reveals. Never a plain opacity fade on a headline.
-- **Real transitions between scenes** — morphs (Flip / same-node shape tween), camera flights (`cinematicFlight` / `figjamFlight` / `flyToElement`), wipes, mask reveals. Hard cuts and cross-fades alone are a fail. **Each camera move is the L1 cinematic decomposition at premium timing (~0.5–1.3s per move, eased, no jerks)** — Umair reviewed a fast "whip" pass as "too fast, not smooth" (v3→v4, 2026-07-13); that ruling is about the SMOOTHNESS of a move, never about how often the frame changes. Re-scoped 2026-09-03: "land-and-HOLD" was read as "park the stage" and the first WPVibe ad shipped 5 framings in 44s. The frame re-frames every ≤4s (see *Ad camera doctrine* below); each re-frame is still a decomposed, eased move.
+- **Real transitions between scenes** — morphs (Flip / same-node shape tween), camera flights (`cinematicFlight` / `figjamFlight` / `flyToElement`), wipes, mask reveals. Hard cuts and cross-fades alone are a fail. **Each camera move is the L1 cinematic decomposition at premium timing (~0.5–1.3s per move, eased, no jerks)** — Umair reviewed a fast "whip" pass as "too fast, not smooth" (v3→v4, 2026-07-13); that ruling is about the SMOOTHNESS of a move, never about how often the frame changes. Re-scoped 2026-09-03: "land-and-HOLD" was read as "park the stage" and the first WPVibe ad shipped 5 framings in 44s. The frame re-frames at the cadence the storyboard declares for THIS film (see *Ad camera doctrine* below); each re-frame is still a decomposed, eased move in the film's declared ease voice.
 - **Atmospheric kit** (`atmospheric.js`) — grain, sweep, parallax, scale-push, dark backdrop, per-beat atmosphere swaps.
 - **SFX** — the cue rig must be wired (punchy-clean, ad-energy per `[[feedback_sfx_ad_energy]]`), landing on the motion beats.
 
 If you finish an ad and it used one effect and some fades, it is not done — go back to the vocabulary.
 
-Two R&D teardowns extend it: `docs/hyperframes-seam-grammar-rnd-2026-09-03.md` (seam recipes — paste-ready GSAP for scene cuts; prove video-local first, promote to `videos/_shared/` on second use) and `docs/xai-voice-motion-rnd-2026-09-02.md` (technique catalog T1–T12 for ad beats + the E1–E4 ease table, registered in `videos/_shared/effects/xai-eases.js`). Caveat: the zoom-through seam's `filter: blur` never sits over a live iframe (R6 — grade with veils; camera animates transform only).
+Two R&D teardowns extend it: `docs/hyperframes-seam-grammar-rnd-2026-09-03.md` (seam recipes — **now PROMOTED and importable from `videos/_shared/effects/seams.js`**; the doc stays the rationale, the module is the code, so don't paste GSAP out of it) and `docs/xai-voice-motion-rnd-2026-09-02.md` (technique catalog T1–T12 for ad beats + the E1–E4 ease table, registered in `videos/_shared/effects/xai-eases.js`). Caveat: the zoom-through seam's `filter: blur` never sits over a live iframe (R6 — grade with veils; camera animates transform only).
 
 ### 2. When the feature has real captured UI, SHOW THE REAL UI — never a mockup.
 
@@ -135,24 +135,140 @@ Umair still picks — this changes what he picks FROM, not who decides. Ideation
 
 ## Ad camera doctrine (2026-09-03 — `docs/ad-camera-gap-analysis-2026-09-03.md`)
 
-The first WPVibe ad went through five QC rounds — real Codex UI, real fragments, locale fixes, HD render — and still read as dull. Every change was about WHAT was on screen; nothing touched HOW it was framed: 5 framings in 44s, a 23.7s hold, camera scale 1.00–1.04. The references (Shipper, Codex) re-frame every 1–2s and swing from a full window to a button filling 40% of the frame. Four rules, all mandatory for the ad path:
+The first WPVibe ad went through five QC rounds — real Claude UI, real fragments, locale fixes, HD render — and still read as dull. Every change was about WHAT was on screen; nothing touched HOW it was framed: 5 framings in 44s, a 23.7s hold, camera scale 1.00–1.04. The v6 camera pass then over-corrected — 25 landings in 41s on a film whose UI never changes — and came back "making me dizzy" (2026-09-04). Both failures had the same root: the cadence was decided by a rule instead of by the storyboard. Five rules, all mandatory for the ad path:
 
-1. **The host stays, the frame moves.** "The camera follows the morph host" means re-frame the SAME host — punch to the control in use, macro on the payoff, whip to the reply, pull back to establish — not park on it. At least one landing every 4s; zoom range wide (1.0) to close (≥1.8 on a payoff); every move caused by an event.
-2. **Camera plan before motion work.** The storyboard carries `## Camera plan` (`docs/storyboard-format-morph-chain-2026-05-10.md`): one row per landing, numeric fill, verb + duration in, hold length, what carries the hold. A row without a number, or a hold over 4s, is not approved. Any QC change to what fills the frame re-opens it.
-3. **Use the stage camera.** Editorial DOM has no iframe for `flyToElement` to drive — `makeStageCamera` (ad skeleton; proven video-local on the first WPVibe ad, promote on second use) wraps the editorial layer in a transform-only `#lens` with `punch / macro / whip / pullBack / drift / cut`, decomposed by construction and pose-logged for `composition-scan`. Do not invent a zoom wrapper.
-4. **Compression pass before any carrier is added.** Thinking dots ≤0.5s, post-payoff dwell ≤0.8s before the next trigger, and a repeated task template (type → dots → stream → payoff ×N) changes at least one landing per repeat. Carriers fill holds; the first question is whether the hold should exist.
+1. **The host stays, the frame moves — at the cadence the storyboard declares for THIS film.** "The camera follows the morph host" means re-frame the SAME host — punch to the control in use, macro on the payoff, whip to the reply, pull back to establish — not park on it. How often is a creative decision per video type: a film whose UI stays the same gets few, considered moves on story turns; a montage that switches subjects gets a dense one. Never a system number. Every move is caused by an event.
+2. **Storyboarding is full creative — and the camera plan comes BEFORE code.** The storyboard is written by `wpforms-storyboard` (invoke it on any "storyboard …" ask; this skill builds from its output). That skill decides, with reasons, the cadence, the ease voice, the shot vocabulary and the movement budget, and writes them into `## Camera plan` (`docs/storyboard-format-morph-chain-2026-05-10.md`): header lines `Cadence:` (with the why), `Max hold:`, `Ease voice:`, `Landings / Zoom range`, then one row per landing with a numeric fill and what carries the hold. Paper → stills sheet → approval → code. A plan derived from the code after the fact is a defect (the v6 plan was). Any QC change to what fills the frame re-opens it.
+3. **Ease voices — anticipate is one of four, not the only one.** `anticipate` (pull away, then drive, soft landing — the AE shape), `glide` (one calm arc; UI-stays-put films), `snap` (launch, snap-stop; montage and SFX hits), `punch` (crouch toward, overshoot landing; sparingly). The storyboard names the film default and per-move overrides; the crouch-toward + overshoot punch at a dense cadence is what read as dizzy.
+4. **Use the stage camera.** Editorial DOM has no iframe for `flyToElement` to drive — `makeStageCamera` (ad skeleton; first used video-local on the first WPVibe ad, promote on second use) wraps the editorial layer in a transform-only `#lens`; framing presets `move / punch / macro / whip / pullBack` say what the frame becomes, `voice:` says how it gets there; `drift` carries holds, `cut` declares a change the camera does not make. Pose-logged for `composition-scan`. Do not invent a zoom wrapper.
+5. **Compression pass before any carrier is added.** Thinking dots ≤0.5s, post-payoff dwell ≤0.8s before the next trigger, and a repeated task template (type → dots → stream → payoff ×N) changes at least one landing per repeat unless the plan says why not. Carriers fill holds; the first question is whether the hold should exist.
 
-Gate: `node tools/composition-scan.js <slug>` (static — reads the literal `at:` times; run before any browser) and `--play` (measured) both PASS on the ad band before the motion audit; the audit caps a parked stage at B.
+Gate: `node tools/composition-scan.js <slug>` (static — reads the literal `at:` times; run before any browser) and `--play` (measured) judge the film against the storyboard's DECLARED cadence and max hold; a plan with no `Cadence:` line reports UNDECLARED, which is a storyboard defect. The motion audit caps a film that ignores its own plan, or has none, at B.
+
+## ⛔ Reference-driven ad build — the replication recipe (mandatory when a reference film is declared; 2026-09-14)
+
+Ads on this path now ship as replicas of a reference film, not as inventions. The recipe below is
+what made one ad *"the best video this tool has produced motion
+wise"* (Umair, 2026-09-04), and every deviation from it since has been the defect: the one beat in
+that film where the agent substituted its own idea (an animated pull-back where the reference cuts)
+is the one beat he flagged; another ad scored −5/10 for an invented composition wearing
+real citations. Receipts: `yjc` 1–8, `cja` 1/4, `cgw` 11, `wcr`, `itf`.
+
+**The order is the recipe. Do it in this order.**
+
+1. **Get the reference as a file, then make it addressable.** A specific MP4 (or its analysis
+   folder), never an adjective. Extract contact sheets
+   at **3–5 fps** into `videos/<slug>/reference-frames/` (denser where the motion is), plus one
+   full-res frame at each pivotal moment. Then read **every cut at 24 fps in a 0.3 s window**
+   (`ffmpeg -ss <cut-0.05> -t 0.34 -vf fps=24,tile=4x2`) before writing the seam ledger — at 4 fps
+   a 1–7-frame blur-dissolve reads as a hard cut, and two rebuild rounds shipped "blinks" that way
+   (`cgw` 11). The 4 fps sheet is for composition; the 24 fps windows are for transitions —
+   **and for in-beat motion.** A reference that measures ~60% still at frame level is carried by
+   what no strip shows: text streaming a line on nearly every frame, a colour cycle on a label,
+   a live waveform, eased settles, and a full music bed. Transcribe those too; a film with the
+   reference's cut points and layouts and none of its in-beat movement is stills (`wcr` v2, 0/10,
+   five days after `cgw` 11 was written down).
+2. **Author a SCENE MAP, from ONE spine reference, in the donor's order.** One row per donor
+   SCENE: its composition, framing, transition type and duration — then the WPForms content that
+   replaces the donor's content. A citation names a **scene** ("one tilted workspace, camera
+   advancing across it"), never a **phase** ("rows stack in, 0.25 s each") — phases are portable to
+   any composition, which is exactly why citing them proves nothing about the composition. Pull
+   from a second donor only where the spine has no scene for a beat, and say so in the row. Any row
+   that cannot say "this is the donor's shot, reframed with our content" is an invention and gets
+   an `OVERRIDE`, not a citation. Each scene row carries an **in-beat motion ledger** (what moves
+   inside the donor scene, frame-to-frame, with its ease shape and what streams — and our
+   equivalent); the build transcribes that ledger, not just the cuts. Do not compare the reference
+   to ours with `dead-time`: the 270px meter sees neither the reference's streaming text and
+   settles nor ours, so "both ~60% dead" proves nothing (digest #7; `wcr` v2 drew exactly that
+   false equivalence). (`wcr` — eleven donors, a 3×3 wall no donor contains.)
+   Written by `wpforms-storyboard`; this skill builds from it.
+3. **Measure the reference's scale grammar; do not copy its shot list.** Per landing: zoom from a
+   reference frame (subject height ÷ frame height → stage zoom), the camera VERB the reference uses
+   (track vs cut vs hold), and one measured subject box in stage px from which fill OR zoom is
+   derived (the other is the check). A plan that writes `snap` over a tracking shot, or 2.2 where
+   the reference is a 4.5 macro, is a storyboard defect the build amends before code (`cja` 1, 4).
+   A **fixed camera is a valid plan** when the storyboard says why — `Cadence: 1 composition /
+   3.5s`, cuts logged through `cam.cut`, and `composition-scan --play` passes with zero landings
+   (`itf`).
+4. **Declare `Cadence:` / `Max hold:` / `Ease voice:` on paper** (the camera doctrine above), then
+   clone the skeleton, commit it unmodified, and build toward the reference. **Cite the tile per
+   beat IN THE CODE** (`// ref B-6 -> B-8`), not only in the storyboard — the citation in the code
+   is what survives into the build and turns "is this beat right?" into a comparison instead of an
+   opinion.
+5. **Look approval on stills, BEFORE motion, with the donor frame beside ours.** The stills sheet's
+   job is "does this look like the reference?", and it can only answer that side by side. Shot
+   after the build it becomes a bug-hunt tool and the composition question is never asked
+   (`wcr` 4). The hero conceit gets ONE still at final fidelity through the idea/copy gate
+   (`cja` 3 — approved on prose, "not executed well at all").
+6. **Write the per-film `qc-probe.mjs` on v1, before the first handoff.** Clone
+   `docs/examples/qc-probe-skeleton.mjs`. The shared battery measures broken-ness; it never
+   measures "is the thing where I said, in the colour I said, moving the way I said". Five defects
+   in one film were found only by computed-style / computed-transform assertions, three of them
+   documented traps that reading the rule did not prevent (`yjc` 3). Written after round 1 it cost
+   a round.
+7. **Hand off render + badged keyframe sheet + tile map in one message.** `tools/keyframes.js`
+   burns `#N t.ts` per tile, so notes come back as "00:08" and resolve to exactly one camera call.
+   Never a render alone (`yjc` 4). Ad deliverables render through `tools/render-frames.js --scale
+   2 --native` (4K, frame-stepped, cue clock == timeline clock) — the screencast renderer cannot be
+   HD and trimmed ~0.17 s off every film's head (`cja` 8); check a 1:1 crop before blaming an
+   encode (`cja` 9).
+8. **Per note: find the mechanical cause first, add the assertion, then fix.** "Not smooth" was a
+   yo-yo + a pre-nudge on short moves + an overshooting land ease — three faults, each now a
+   permanent probe check (`yjc` 2). "Clicks the wrong thing" → pointer tip inside the subject's
+   rect. "Font looks off" → computed `font-family` and `color`.
+9. **Audio last, after the picture locks.** Measure integrated loudness against the ad bar
+   (`ffmpeg -af loudnorm=print_format=summary`; the ruled profile is ≈ −12 LUFS mean, `tools/sfx/
+   CONTEXT.md`) and tune ONE `LIFT` constant, never 28 gains. In-page `Audio` never reaches the
+   MP4, and an ad with in-page SFX and no in-page bed is silent on the scrub URL where Umair
+   watches first (`yjc` 12, `wvb` 11). No typing ticks in an ad — the bed carries typing; ticks
+   are for state changes (`cja` 2).
+
+Three grammar rules the recipe earned, all mandatory on this path:
+
+- **Do not chase the audit tier.** The motion-audit S row's four-phase shape (anticipation → dip →
+  land → micro-zoom) is for slow, considered moves. Applied to every move — including 0.4 s
+  click-triggered dives — it produced the lurch Umair flagged. `glide` = ONE blended arc, the film
+  default; `snap` launches on the click frame (the click IS the anticipation); the four-phase shape
+  stays available for considered moves; micro-zoom is opt-in per call. A tier describes good work;
+  it is not a target to satisfy mechanically (`yjc` 6, 7 — the same failure as the v6 "dizzy" pass,
+  reached by a different road).
+- **A camera that goes in and straight back out is a yo-yo. Cut out the far side.** Replacing an
+  animated pull-back with a cut after the dive was the single largest quality jump in the film
+  (`yjc` 8). Every dive moves one way only — the probe samples the lens scale every 40 ms and fails
+  on any reversal; overshoot eases and deep zooms do not mix (`yjc` 2, 6).
+- **The agent's write must not look like a hand.** When the product's own agent performs a step
+  (WPVibe writing a field), the row unfolds and the value surfaces with a "just written" wash — no
+  cursor, no typing. User steps click; agent steps emerge (`cgw` 15). And a payoff arrives ON
+  camera: give the "before" ~0.6 s, then the change with its own motion (`cgw` 16).
+
+Verify assets, don't declare them: vendor the woff2 and `document.fonts.check(...)` at runtime;
+every fragment real and cited in `assets/SOURCES.md`; an asset you cannot get is substituted
+honestly and surfaced in the handoff, never redrawn (`yjc` 7).
 
 ## Editorial named-effects library (pass-1 vocabulary)
 
 For pass-1 motion, **pick from `videos/_shared/effects/`** before writing custom GSAP. The vocabulary covers the most common editorial archetypes:
 
-- **Text reveals:** `mountTextStackFromRight`, `mountTextLetterMaskDomino`, `mountTextCenterOutRoll`
+- **Text reveals:** `mountTextStackFromRight`, `mountTextLetterMaskDomino`, `mountTextCenterOutRoll`, `mountTextDescramble`, `mountTextDupWordMask`, `mountPhraseChain`
 - **Card layouts:** `mountCardsSpreadFan`, `mountCardsFlyInStack`
 - **Constellations:** `mountConstellationPhyllotaxisBloom`
-- **Glass surfaces:** `mountGlassCard` (+ `glassSpringEase`) — frosted-glass/holographic style (approved 2026-09-02). Needs a rich world MOVING behind it; sheen sweeps slow liquid (1.5s `sine.inOut`, never sub-1s); never over a real-UI iframe region that must stay readable.
-Each returns `{ el, tweenInto(tl, opts), dispose() }`. See `videos/_shared/effects/README.md` for the full vocabulary table + parameters. QC harness at `videos/_qc-effects/index.html`.
+- **Glass surfaces:** `mountGlassCard` (+ `glassSpringEase`) — frosted-glass/holographic style (approved 2026-09-02). Needs a rich world MOVING behind it; sheen sweeps slow liquid (1.5s `sine.inOut`, never sub-1s); never over a real-UI iframe region that must stay readable.- **Ad surfaces (promoted 2026-09-03):** `mountTaskQueue` (AI checklist ticking done), `mountSkeletonToLive` (skeleton bars → real fields in place), `mountOdometer` (rolling digit columns; `live:false` gives the settled pixel-match twin), `mountLogoWall` + `mountQuoteCard` (social proof, then the claim on top). Dark-ground by default. `mountLogoWall` **ships no logos** — pass `marks: [{name, src}]` from the film's own assets with per-file `// SOURCE:` cites (INV-15).
+- **Audio:** `mountWaveformBars` (xai T2, seeded) + `pulseEmphasis` (xai T6 press ratios, any target).
+- **Stats:** `mountStatCountUp` when the number should tick UP; `mountOdometer` when it should LAND. Siblings, not modes.
+
+Each mount returns `{ el, tweenInto(tl, opts), dispose() }`. See `videos/_shared/effects/README.md` for the full vocabulary table + parameters. QC harness at `videos/_qc-effects/index.html`.
+
+### Seams — use the recipes, don't hand-roll a cut
+
+`videos/_shared/effects/seams.js` carries the five named scene-cut recipes (verbatim constants from `docs/hyperframes-seam-grammar-rnd-2026-09-03.md`, measured PASS on the proving reel): `seamZoomThrough` (§2.1), `seamThrowLeft` + `parkThrowEntry`/`seamThrowEntry` (§2.4), `seamLockedCrossfade` (§2.2), `seamHardCut` (§2.3), `seamCursorVelocitySplit` (§2.5), plus `holdFinalFrame` (§1.2 — before every cut, always).
+
+These are **composers, not mounts**: `(tl, outEl, inEl, cut, opts)` on whole-scene wrappers. Three rules that decide which one you may use:
+
+- `seamZoomThrough` animates `filter: blur()`. **Never over a live-UI iframe** — a filter on any ancestor blurs the whole raster. Use `seamThrowLeft` or `seamLockedCrossfade` there instead.
+- Every scene in a throw/zoom seam must sit on the **same background bed**, or the cut flashes an edge.
+- A bare crossfade or a bare hard cut reads **DEAD** to `tools/seam-gate.js`. Carry a shared element across the boundary at matched velocity — best practice is to split one release across the cut so position *and* velocity agree mid-flight, not at rest.
+
+For an await-driven film with no master timeline, the whiteout equivalent is `washTransition` in `videos/_shared/effects/wash-transition.js` (alternate its `axis` between consecutive washes).
 
 If the storyboard names a motion archetype not yet in the library, promote it to `videos/_shared/effects/` per the README's "Adding a new effect" instructions, then use it.
 
@@ -201,7 +317,7 @@ Do NOT invent brand details. Use the canonical brand tokens and assets:
 
 Editorial storyboards MUST include a **morph-chain section** per `docs/storyboard-format-morph-chain-2026-05-10.md` (which also carries the "Rules for the whole run" invariants list, the hero-beat call, and the **seam ledger** — one row per cut: exit vector, entry vector, carrier, technique; ≤2 transition families per film). Without it, editorial videos default to state-table compositions and fail.
 
-All new single-HTML films (editorial included) also carry the **`## Shot list` section** from the same doc (ruled 2026-08-22): one row per beat — hero frame / surround / named vocabulary / DOM transformation / carriers — plus the film-level composition count. `validate-singlehtml` WARNs on beat↔row parity gaps; `tools/composition-scan.js` measures the count after the build. **Ad-style films additionally carry `## Camera plan`** (ruled 2026-09-03): one row per landing with a numeric fill and a hold ≤4s — the shot list says what is on screen, the camera plan says how it is seen, and the shot list alone produced a parked stage.
+All new single-HTML films (editorial included) also carry the **`## Shot list` section** from the same doc (ruled 2026-08-22): one row per beat — hero frame / surround / named vocabulary / DOM transformation / carriers — plus the film-level composition count. `validate-singlehtml` WARNs on beat↔row parity gaps; `tools/composition-scan.js` measures the count after the build. **Ad-style films additionally carry `## Camera plan`** (ruled 2026-09-03, recalibrated 2026-09-04): a declared `Cadence:` (with the why), `Max hold:` and `Ease voice:` for THIS film, then one row per landing with a numeric fill — the shot list says what is on screen, the camera plan says how it is seen, and the shot list alone produced a parked stage. The cadence is the storyboard's creative call, never a system number.
 
 **Current + reserved vectors (round-2 B1, 2026-08-08):** the storyboard names the film's dominant direction (its *current* — e.g. "Current: LEFT") and reserves off-current vectors for specific meanings ("Z-pull only for the big reveal, upward only for the thesis beat"). A reserved vector is spent once; spending it twice dilutes the meaning it bought.
 
@@ -349,7 +465,11 @@ Before declaring an ad-style video done:
 - [ ] Text reveals use `text-kit.js` presets, not hand-rolled
 - [ ] Atmospheric layers (grain, sweep, scale push) used where motion density helps; not over-layered on every beat
 - [ ] Build-breathe-resolve phase structure for beats ≥3s
-- [ ] `## Camera plan` in the storyboard; `composition-scan <slug>` static PASS before motion work, `--play` PASS before handoff (ad band: ≥1 landing / 3s, holds ≤4s, zoom range ≥0.8)
+- [ ] `## Camera plan` in the storyboard with `Cadence:` / `Max hold:` / `Ease voice:` declared for this film, approved BEFORE camera code; `composition-scan <slug>` static PASS before motion work, `--play` PASS before handoff (both judged against the declared cadence)
+- [ ] Reference-driven (a reference film was declared): `reference-frames/` extracted at 3–5 fps + 24 fps windows around every cut; `## Scene map` from ONE spine donor, scene-level citations; every beat cites its tile IN THE CODE; zooms measured off reference frames; stills approved beside the donor frames BEFORE motion
+- [ ] `videos/<slug>/qc-probe.mjs` written on v1 (clone `docs/examples/qc-probe-skeleton.mjs`) and passing; every QC note that came back has a matching assertion
+- [ ] Handoff = render + `tools/keyframes.js` badged sheet + tile map, in one message; ad render via `tools/render-frames.js --scale 2 --native`
+- [ ] Integrated loudness measured against the ad bar (`loudnorm`), not an RMS floor; an in-page bed exists for the scrub URL; no typing ticks
 - [ ] Compression pass done: dots ≤0.5s, post-payoff dwell ≤0.8s, repeated task templates re-framed per repeat
 - [ ] Final beat has a real exit (blur out, velocity-matched translate, fade-to-black) — not a hard cut
 - [ ] Every timeline rides the ONE master (`window.__tl`, paused, driven through `play()`); nested children un-paused after `add()` (see `wpforms-gsap-rules`)

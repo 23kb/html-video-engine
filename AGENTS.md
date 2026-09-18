@@ -5,7 +5,7 @@
 These patterns have repeatedly caused regressions in past video builds. Re-read this list before each beat:
 
 1. **DO NOT** hand-mount a cursor element (`<div class="cursor">` + `gsap.to(cursorEl, ...)`). Use `Cursor` from `motion-primitives.js`.
-2. **DO NOT** single-tween a camera move (`tl.to(camera, {x, y, scale})`). Slide-projector failure mode. Use `cinematicFlight` / `figjamFlight` / `focusStationOverview`; for editorial DOM with no iframe under it, the ad skeleton's `makeStageCamera` (`punch / macro / whip / pullBack / drift / cut`, decomposed by construction). **And DO NOT park it:** an ad re-frames the same host every ≤4s per its `## Camera plan` (wva, 2026-09-03).
+2. **DO NOT** single-tween a camera move (`tl.to(camera, {x, y, scale})`). Slide-projector failure mode. Use `cinematicFlight` / `figjamFlight` / `focusStationOverview`; for editorial DOM with no iframe under it, the ad skeleton's `makeStageCamera` (`punch / macro / whip / pullBack / drift / cut`, decomposed by construction). **And DO NOT park it or busy it:** an ad or short re-frames the same host at the cadence and in the ease voice its storyboard's `## Camera plan` declares — a creative call per film, never a system number (wva, 2026-09-03/04).
 3. **DO NOT** use a native `<select>` for an editorial dropdown — it can't be opened by JS. Use the faux-overlay pattern from `selectFromDropdown` in `wpforms-interactions.js`.
 4. **DO NOT** mount overlays as iframe SIBLINGS painting over the iframe. Inject into iframe DOM directly, OR mount in the parent doc using `elementToStageCoords` for positioning.
 5. **DO NOT** swap iframes to show state changes. Keep the same live iframe; mutate its DOM in place.
@@ -105,6 +105,7 @@ When a fresh session asks "make a video about X", check this folder first — if
 Same applies to `docs/video-architecture-invariants-2026-05-12.md` — pure reference, read inline.
 
 Non-negotiable invocations for tutorial / postIntro / cinematic / editorial work:
+- `wpforms-storyboard` whenever the ask is "storyboard …" — it owns the storyboard for every track and hands the approved file to the build skill
 - `wpforms-video` at session start for tutorial path
 - `wpforms-marketing` at session start for editorial / ad-style path
 - `wpforms-postintro` before designing any postIntro
@@ -114,10 +115,12 @@ Non-negotiable invocations for tutorial / postIntro / cinematic / editorial work
 
 ## Topic skills (load AFTER picking a path)
 
+- `wpforms-storyboard` — **the storyboard step for every track** (tutorial / ad / mixed / short): track detection (asks one question if unstated), intake, concept divergence + idea/copy gate, the full storyboard including the camera plan (cadence + ease voice decided per film, with reasons), capability check, stills-first pass, approval handoff. Invoke whenever Umair says "storyboard …". Writes storyboards, never film code
 - `wpforms-video` — tutorial authoring, intake, storyboard gate, default authoring mode
 - `wpforms-postintro` — postIntro design + multi-animation rule + morph-chain integration
 - `wpforms-gsap-rules` — GSAP L0 discipline + camera-decomposition rules + designer principles (Emil / Krehel / Jhey)
-- `wpforms-marketing` — editorial / ad-style surfaces + blocks + atmospheric kit + brand canonical
+- `wpforms-marketing` — editorial / ad-style surfaces + blocks + atmospheric kit + brand canonical + **the reference-driven replication recipe** (reference film → frames → scene map → tile cited per beat in code → probe on v1 → badged-sheet handoff; 2026-09-14)
+- `wpforms-ad-to-short` — a 9:16 cut of an APPROVED ad into `videos/<slug>-9x16/`: timeline / copy / cues / bed verbatim, geometry only (stage flip, per-line type refit, stacks, the live-surface band for mixed films, remapped cursor, re-pointed probe). Not the carve path, not the portrait short skeleton path
 - `wpforms-primitives` — lookup index for `videos/_shared/motion-primitives.js` (cameras / cursor / typing / field-reveal / brand-anchor / exit) and `videos/_shared/wpforms-interactions.js` (Wave 1 standard interactions). Reach here BEFORE writing any new GSAP cursor / camera / interaction code.
 - `wpforms-motion-audit` — score animations and camera moves S–F tier with hard-rule calibration. Run before any postIntro/cinematic handoff.
 - `wpforms-video-polish` — polish an existing already-shipped video without breaking it. Backup-first → analyze → surgical edits in batches of 5–10 → static verification → motion-audit if cinematic touched. NOT for new authoring, NOT for debug. Includes 8 canonical polish patterns.
@@ -219,7 +222,7 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 - `node tools/sfx/onset.mjs <file|dir>` — SFX head-silence probe (first sample >5% of peak): a click with a late onset fires frames late no matter how well the cue is placed; prints trim `-ss` suggestions. Cue-placement rules in `tools/sfx/CONTEXT.md`
 - `node tools/storyboard-sheet.js <slug> [--beats t1,t2,...]` — PRE-render stills sheet: seeks a paused single-HTML film to each beat mark (timeline labels or `--beats`), screenshots the stage, tiles with badges — look-approval on stills before motion work
 - `node tools/seam-gate.js <slug> [--cuts t1,t2,...]` — measures exit/entry velocity (px/s) at each cut of a single-HTML film; warns on dead exits/entries and velocity mismatches (the transitions boundary contract, measured); report-only
-- `node tools/machine-qc.js <slug | path.mp4> [--focus "..."] [--no-report]` — ADVISORY Gemini semantic QC pass on a rendered MP4 (frame-edge crops, endings, on-screen text, some narration sync); writes the `machineQc` advisory chip; never a gate, never feeds the dashboard dot. Stage + triage contract: `wpforms-machine-qc` skill. Needs `GEMINI_API_KEY` in `.env`; no headless lock
+- `node tools/machine-qc.js <slug | path.mp4> [--mode both|static|agentic] [--fps 24] [--res high|low] [--focus "..."] [--no-report]` — ADVISORY Gemini semantic QC pass on a rendered MP4: a 24 fps high-resolution static pass + an agentic navigation pass, merged (frame-edge crops, endings, on-screen text, blinks/pop-ins/cursor jumps, narration + SFX timing); writes the `machineQc` advisory chip; never a gate, never feeds the dashboard dot. Stage + triage contract: `wpforms-machine-qc` skill. Needs `GEMINI_API_KEY` in `.env`; no headless lock; ~400k tokens per 30–40 s film
 - `node tools/capture-brand.js <url> <slug>` — pull a PARTNER brand's real assets (logo SVGs, icons, palette, fonts) from its site into `videos/<slug>/assets/brand/` with provenance; for integration videos only — WPForms' own brand assets are never pulled this way
 - `node tools/preview.js [--video <slug>] [--port 4321]` — live-reload + scrubber; also serves the QC dashboard index route (`/__qc/videos.json`)
 - **QC dashboard** — `http://localhost:4321/tools/qc-dashboard/` (needs `tools/preview.js` running): per-video gate chips, render playback with dead-time bands + seam-cut ticks, in-browser filmstrip (vendored Mediabunny decodes the mp4 client-side), and timestamped feedback notes with a copy-for-chat export. Reads `videos/<slug>/qc-report.json`
@@ -277,6 +280,7 @@ Don't look here for these — load the skill instead:
 | Motion S–F tier scoring / hard-rule calibration / pre-handoff gate | `wpforms-motion-audit` |
 | Motion-primitives + wpforms-interactions library lookup (per-primitive when-to-use, signatures, QC status) | `wpforms-primitives` |
 | Polish an existing video (timing / easing / typography / handoffs) without breaking it | `wpforms-video-polish` |
+| 9:16 cut of an approved ad (band, type refit, stacks, probe re-point) | `wpforms-ad-to-short` |
 | Designer-grade audit (Emil Kowalski / Jakub Krehel / Jhey Tompkins) | file-read `.agents/skills/design-motion-principles/SKILL.md` + `references/` (not Skill-tool invocable) |
 
 Skills are at `.Codex/skills/<name>/SKILL.md`. Each is a single file with YAML frontmatter (`name`, `description`).

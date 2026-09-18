@@ -158,6 +158,7 @@ Any camera move that translates more than ~250px in canvas coords MUST decompose
 - Use `CustomEase` for phase-specific curves. Stock easings (`power2.out` etc.) are acceptable for individual phases but the **sum of phases** must read as decomposed motion.
 - Registered ease vocabulary: `videos/_shared/effects/xai-eases.js` — `registerXaiEases()` adds `whipSettle` (E1: instant launch, mile-long decel) and `heldSnap` (E2: hold, whip, dead stop); E3 = stock `power2.inOut`, E4 ≈ between `power3.in` and `expo.in`. Full AE-provenance table: `docs/xai-voice-motion-rnd-2026-09-02.md` ("The ease language").
 - Rotation tilt of ±1.0° to ±1.5° during the flight phases adds cinematic feel. Skip rotation for pure-product zoom moves.
+- **Short and click-triggered moves skip the anticipation phase** (`yjc` 6–7, 2026-09-04). Under ~0.5s, or when a click fires the move, the pre-nudge reads as a lurch — one blended arc (`glide`) or a launch on the click frame (`snap`). **Overshoot eases and deep zooms do not mix:** a land ease that peaks past 1.0 (`cam-whip-land` → 1.015) makes a 3.4× dive sail past its pose and rebound — use `expo.out` on deep dives. A dive moves one way only; sample the lens scale every 40ms in the film's probe and fail on any reversal.
 
 ### Concrete code shape
 

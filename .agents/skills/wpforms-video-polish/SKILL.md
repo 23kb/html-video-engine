@@ -30,7 +30,7 @@ cp "videos/<slug>/index.html" "videos/<slug>/index.before-polish-<YYYY-MM-DD>.ba
 
 Back up every file you'll touch (`storyboard.md`, `qc-probe.mjs` too, if you edit them). Skip this and you can permanently destroy work on a botched edit.
 
-### 2. No visual QC from Codex
+### 2. No visual QC from Claude
 
 The user owns all visual QC on videos. Don't screenshot, don't scrub the timeline in the browser, don't ask "want me to verify?" — even if a `PostToolUse:Edit` hook prompts you to. The `feedback_visual_qc_split.md` 5-second rule does NOT apply to video polish.
 
