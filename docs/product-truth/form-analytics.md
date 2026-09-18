@@ -1,6 +1,6 @@
 # Product truth — Form Analytics (WPForms 2.0)
 
-**Source:** addon doc URL `wpforms.com/docs/form-analytics-addon/` **404s as of 2026-07-13** (feature too new; site search surfaces no addon doc). Everything below is derived from the captured UI (`snapshots/form-analytics-main` + siblings) during the fa-retest run. Definitions marked **UNVERIFIED** are UI-label-derived semantics — verify against the internal doc before quoting in published narration.
+**Source:** addon doc URL `https://wpforms.com/docs/form-analytics-addon/` **404s as of 2026-07-13** (feature too new; site search surfaces no addon doc). Everything below is derived from the captured UI (`snapshots/form-analytics-main` + siblings) during the fa-retest run. Definitions marked **UNVERIFIED** are UI-label-derived semantics — verify against the internal doc before quoting in published narration.
 **Verified by:** nobody yet — Umair to confirm on return.
 
 ## Availability

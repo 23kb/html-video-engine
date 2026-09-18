@@ -70,12 +70,12 @@ If the effect finishes BEFORE the narration ends, the runner waits for narration
 
 ## The validator audio-vs-duration warning
 
-`tools/validate-video.js` includes an audio-vs-duration warning:
+The engine's `validate-video.js` (removed 2026-08-22) had an audio-vs-duration warning:
 
 - Warns if the narration mp3 duration is more than **1.5×** the beat's `duration` field. (For per-beat-narration, this catches "long narration with no dwell.")
 - Warns if `duration` is **<0.6s** for a narration beat. Rushes the audio.
 
-These are warnings, not errors. The user reviews them on smoke output.
+These were warnings, not errors. For single-HTML films, `tools/validate-singlehtml.js` runs a DUR drift check instead: it errors when a pasted `DUR` entry misses the measured mp3 plus settle by more than 0.15 s.
 
 ## Common mistakes
 

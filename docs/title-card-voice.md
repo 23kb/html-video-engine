@@ -163,7 +163,6 @@ Pills are optional. Use them when:
 
 ## See also
 
-- `docs/examples/legacy-manifest-skeleton.md` — locked manifest shape.
 - `docs/narration-writing.md` — voice rules for narration body.
 - `docs/color-palette.md` — brand colors used in title themes.
 - `wpforms-video` skill — manifest authoring context.

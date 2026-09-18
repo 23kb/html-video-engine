@@ -1,6 +1,6 @@
 # Storyboard Format — Morph Chain Section
 
-Adds a **morph chain** declaration to the editorial storyboard format. Drives Phase 4 of `editorial-direction-audit-2026-05-10.md` (deleted 2026-08-22 — git history).
+Adds a **morph chain** declaration to the editorial storyboard format. Drives Phase 4 of `editorial-direction-audit-2026-05-10.md` (deleted 2026-05-12 — git history).
 
 ## Why this exists
 
@@ -249,8 +249,8 @@ Background landscape (pixel-art) is a static persistent host; foreground hero el
 
 ## Cross-references
 
-- `docs/editorial-direction-audit-2026-05-10.md` (deleted 2026-08-22 — git history) — Phase 4 in the master plan
-- `docs/winning-pattern-analysis-2026-05-10.md` (deleted 2026-08-22 — git history) — full identity-continuity analysis
+- `editorial-direction-audit-2026-05-10.md` (deleted 2026-05-12 — git history) — Phase 4 in the master plan
+- `winning-pattern-analysis-2026-05-10.md` (deleted 2026-08-22 — git history) — full identity-continuity analysis
 - `.claude/skills/wpforms-motion-audit/references/score-examples.md` — auditor scores tied to morph-chain presence
 
 ## What this changes

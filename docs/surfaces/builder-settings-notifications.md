@@ -10,11 +10,15 @@
 > `C:\Users\PC\Local Sites\sullies-bakery\app\public\wp-content\plugins\wpforms`
 > (the prior `newsite.local` Local site is still active locally
 > but new capture planning targets `sulliesbakery.com`.)
-> **Inventory framework:** `docs/phase-7-source-driven-surface-inventory.md`.
+> **Inventory framework:** `phase-7-source-driven-surface-inventory.md`.
 > **Refresh task that consumes this inventory:**
-> `docs/phase-7-snapshot-refresh-builder-settings-notifications.md`.
+> `phase-7-snapshot-refresh-builder-settings-notifications.md`.
 > **Audit/readiness gate this inventory feeds into:**
-> `docs/phase-7-catalog-quality-gate.md`.
+> `phase-7-catalog-quality-gate.md`.
+> *(Note, 2026-09-18: none of the `phase-7-*` docs, the capture
+> `manifest.json` or `batch-capture.js` cited in this file were ever
+> committed to this repo. Captures now run through `capture/capture.js`
+> plan files. See `README.md` in this folder.)*
 
 ---
 
@@ -100,8 +104,8 @@ here only so prior-session notes and the older
 ambiguity. Capture-time wiring continues to reference the
 *fixture role* (Notifications fixture / all-fields fixture);
 the literal ID rides through `formId` in
-`capture/manifest.json` / `WP_FORM_ID` / per-job override in
-`capture/batch-capture.js` and is now `7` / `10`.
+the capture `manifest.json` / `WP_FORM_ID` / per-job override in
+`batch-capture.js` and is now `7` / `10`.
 
 ### 2.4 Active WPForms addons (observed)
 
@@ -345,7 +349,7 @@ Captured only when a specific video's plan needs the state.
 
 ## 6. Capture variant rules (recap)
 
-Codified in `docs/phase-7-source-driven-surface-inventory.md` §6
+Codified in `phase-7-source-driven-surface-inventory.md` §6
 and inherited verbatim. Specific to this surface:
 
 1. **Each meaningful UI state gets a named slug.** The §5
@@ -378,9 +382,9 @@ and inherited verbatim. Specific to this surface:
 ## 7. Settle / wait expectations
 
 Inherited from
-`docs/phase-7-snapshot-refresh-builder-settings-notifications.md`
+`phase-7-snapshot-refresh-builder-settings-notifications.md`
 §5 and the universal goal in
-`docs/phase-7-source-driven-surface-inventory.md` §6.8: no
+`phase-7-source-driven-surface-inventory.md` §6.8: no
 broken images, no empty panels, no spinners, no half-rendered
 WPForms UI.
 
@@ -420,7 +424,7 @@ fields) once a video targets them.
   backed up. See that folder's `MANIFEST.md`.
 - Originals under `snapshots/` are untouched.
 - The recapture proposal in
-  `docs/phase-7-snapshot-refresh-builder-settings-notifications.md`
+  `phase-7-snapshot-refresh-builder-settings-notifications.md`
   will reference this inventory for the variant matrix and
   acceptance criteria.
 
@@ -476,7 +480,7 @@ Snapshot of where this surface sits on 2026-04-26.
   tooling does not treat them as library snapshots). See
   `snapshot-backups/2026-04-25-pre-notifications-refresh/MANIFEST.md`.
 - ⏳ **Waiting on Sub-step 8 audit/readiness implementation.**
-  See `docs/phase-7-catalog-quality-implementation-plan.md`.
+  See `phase-7-catalog-quality-implementation-plan.md`.
   Capture cannot proceed until per-snapshot audit
   (`catalog-audit.json`) + library readiness rollup
   (`readiness.json`) tooling exists, so refreshed captures
@@ -503,7 +507,7 @@ capture plan once Sub-step 8 ships and authorization is
 explicit.
 
 - Base capture target — Settings → Notifications subtab on
-  form 7. The standard pattern in `capture/manifest.json` for
+  form 7. The standard pattern in the capture `manifest.json` for
   this slug is the "Settings → click `.wpforms-panel-sidebar-section-notifications`"
   hand-off; the verifier `[id^='wpforms-panel-field-notifications-']`
   remains valid.

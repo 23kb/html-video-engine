@@ -1,6 +1,6 @@
 # Product truth — WPForms Dashboard (2.0.2)
 
-**Source:** the published doc `wpforms.com/docs/navigating-the-wpforms-dashboard/` (final text mirrored at
+**Source:** the published doc `https://wpforms.com/docs/navigating-the-wpforms-dashboard/` (final text mirrored at
 `umair-wiki/CVs/newer/new 32.txt`, 2026-09-10) and the RC source notes
 `umair-wiki/wpforms-releases/release-2.0.2/notes/dashboard-ui-reference.md`. Every label below is verbatim
 from the product. Captured UI: `snapshots/admin-dashboard` (Elite, Geolocation + Coupons active, Last 30

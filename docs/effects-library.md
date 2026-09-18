@@ -89,7 +89,8 @@ Defaults:
 `{ lift: 18, rotate: -1.5, shadow: '0 22px 42px rgba(26,34,56,0.20)', duration: 0.65 }`
 
 Visual: lifts the element in place with a slight tilt, scale, and drop shadow,
-then settles it back. This is not `runtime/pop-out.js`: it does not clone
+then settles it back. This is not `popOut()` from `videos/_shared/motion-primitives.js`
+(clone helpers in `videos/_shared/pop-out.js`): it does not clone
 elements out of the iframe or create a host-stage actor. It only animates the
 target in place.
 

@@ -9,7 +9,7 @@ Combines:
 
 ## What we already have (in-repo)
 
-### Existing SFX pipeline — `runtime/sfx.js`
+### Existing SFX pipeline — engine `sfx.js` (removed 2026-08-22; SFX now ships via `tools/sfx/`)
 
 Full Web Audio API SFX engine, engine-path coupled. 9 channels, 8 MP3 assets at `assets/sfx/`:
 
@@ -150,7 +150,7 @@ Use sparingly — most WPForms tutorial content lives at 80-110 BPM.
 ## Recommended workflow (for when we do sound work)
 
 ### Phase 1 — Wire existing SFX into single-HTML pattern (~150 LOC)
-1. Move/refactor `runtime/sfx.js` → `videos/_shared/sfx.js` (or keep both, with single-HTML version as a wrapper)
+1. Move/refactor the engine `sfx.js` (removed 2026-08-22) → `videos/_shared/sfx.js` (or keep both, with single-HTML version as a wrapper)
 2. Add optional `sfx: true` parameter to `Cursor` constructor + `IframeManager` constructor
 3. When `sfx: true`, auto-play the right channel on `cursor.click()` / `iframeManager.swap()` / etc.
 4. Keep manual `playClick()` / `playSwoosh()` exports for one-off triggering
@@ -244,4 +244,4 @@ Below is the verbatim "Music and SFX Selection for Tech Demo Videos" skill recei
 - `video-pacing`: timing patterns that audio must sync with
 - `demo-producer`: full pipeline using these audio patterns
 
-These related skills aren't in our repo currently. If we expand sound design work, the ffmpeg mixing patterns from `audio-mixing-patterns` are likely the most directly useful for our `tools/render.js` MP4 pipeline.
+These related skills aren't in our repo currently. If we expand sound design work, the ffmpeg mixing patterns from `audio-mixing-patterns` are likely the most directly useful for our `render.js` MP4 pipeline (removed 2026-08-22; now `tools/render-singlehtml-audio.js`).

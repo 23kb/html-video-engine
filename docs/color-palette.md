@@ -34,7 +34,7 @@ The default highlight ring is **orange `#E27730`** with double soft-glow. The in
 
 Don't change this for tutorial videos. The orange-on-product-UI is the brand signature; viewers learn to read it as "click this."
 
-For ad-style / editorial videos with a different palette, you can override via `runtime/overlays-config.js` (Phase 0 audit confirmed it's a single source of truth). Don't override per-video unless the storyboard explicitly approves a non-orange highlight scheme.
+For ad-style / editorial videos with a different palette, pass the colors per call: `rippleColor` on `Cursor.click` and `color` on `IframeManager.highlightElement`. (The engine's `overlays-config.js` held them before its removal on 2026-08-22.) Don't override per-video unless the storyboard explicitly approves a non-orange highlight scheme.
 
 ## When to use brand orange
 
@@ -86,6 +86,6 @@ For tutorial videos, the brand palette above is enough. No per-video DESIGN.md n
 ## See also
 
 - `wpforms-marketing` skill — editorial composition patterns.
-- The canonical brand tokens — single source of truth for brand colors (`runtime/overlays-config.js` retired 2026-08-22; ripple/highlight colors are per-call options on `Cursor.click` / `IframeManager.highlightElement`).
+- The canonical brand tokens — single source of truth for brand colors (the engine's `overlays-config.js` retired 2026-08-22; ripple/highlight colors are per-call options on `Cursor.click` / `IframeManager.highlightElement`).
 - `hyperframes/wpforms-ai-scene-10/DESIGN.md` — WPForms AI scene-10 design system.
 - `analysis-quality-and-transitions.md` §1.6 — REST API video lesson on over-cooked curl colors.

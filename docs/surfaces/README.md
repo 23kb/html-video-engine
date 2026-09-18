@@ -7,8 +7,8 @@
 > canonical inventory pattern.
 >
 > The governance docs `builder-settings-notifications.md` references
-> (`docs/phase-7-source-driven-surface-inventory.md`,
-> `docs/phase-7-snapshot-refresh-builder-settings-notifications.md`) no
+> (`phase-7-source-driven-surface-inventory.md`,
+> `phase-7-snapshot-refresh-builder-settings-notifications.md`) no
 > longer exist in the repo.
 
 ## What's here

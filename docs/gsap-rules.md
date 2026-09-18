@@ -340,11 +340,13 @@ new or intentionally touched authoring surfaces.
 
 Editorial-layer GSAP timelines may opt in to runtime ownership via
 `registerTimeline(tl, { id })` from `videos/_shared/kit.js`. The frame
-driver (`runtime/frame-driver.js`) seeks each registered timeline on every
+driver (engine `frame-driver.js`, removed 2026-08-22) seeks each registered timeline on every
 tick using a per-registration `t0`, with a `setTimeout` fallback when RAF
 is throttled. This is the architectural fix for the hidden-tab GSAP hang
 (`analysis-quality-and-transitions.md` §2.5) for any animation expressed
-as a paused timeline.
+as a paused timeline. Single-HTML films have no external driver: one paused
+master timeline drives the film. See *The Master Timeline + instrumentation
+contract* in the `wpforms-gsap-rules` skill.
 
 Hard rules:
 
@@ -401,4 +403,4 @@ const cancel = pausableRaf((ts) => {
 cancel();
 ```
 
-Migrated reference site: `runtime/cinematic-rough-thought-to-draft.js`. Use it as a pattern.
+Reference site: the inline `pausableRaf` in `docs/examples/single-html-ad-skeleton.html`. Use it as a pattern.

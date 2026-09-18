@@ -53,12 +53,12 @@ must:
   snapshot, dive-zoom into a captured element, or hand the cursor to a
   product-truth control.
 
-Reference timelines:
+Reference timelines (source removed 2026-08-22; recover via git history):
 
-- `runtime/cinematic-rough-thought-to-draft.js` — ~15.2 s, 5 phases:
+- Rough-thought-to-draft — ~15.2 s, 5 phases:
   type messy idea → erase + retype clean prompt → compress to chip →
   thinking → form draft reveal.
-- `runtime/cinematic-one-answer-enough.js` — ~14 s, 6 phases: form mount →
+- One-answer-enough — ~14 s, 6 phases: form mount →
   cursor → radio click → radio→checkbox morph → multi-select payoff → exit.
 - Notifications form-to-inbox teaser — ~12 s, multiple phases: browser
   chrome → form fill → click → Gmail slide-in → email ping.
@@ -172,7 +172,7 @@ the relevant postIntro/teaser code, not the full video package.
 
 ### WPForms AI: `rough-thought-to-draft`
 
-Relevant code: `runtime/cinematic-rough-thought-to-draft.js`.
+Relevant code: the engine file `cinematic-rough-thought-to-draft.js`, removed 2026-08-22. Recover it via git history.
 
 What to study:
 
@@ -191,7 +191,7 @@ editorial HTML + CSS states + GSAP sequencing that proves the idea.
 
 ### Checkboxes: `one-answer-enough`
 
-Relevant code: `runtime/cinematic-one-answer-enough.js`.
+Relevant code: the engine file `cinematic-one-answer-enough.js`, removed 2026-08-22. Recover it via git history.
 
 What to study:
 

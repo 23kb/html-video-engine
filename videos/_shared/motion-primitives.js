@@ -1371,15 +1371,15 @@ export function fieldStaggerReveal(fields, opts = {}) {
  * Returns the bug element (idempotent — re-mount returns existing).
  *
  * @param {Object} [opts]
- * @param {string} [opts.src] — Sullie image path; default uses
- *   `/reference/wpforms-brand/assets/sullie-master.svg`. Adjust per video.
+ * @param {string} [opts.src] — Sullie image path; default uses the official
+ *   Sullie with arms, `/assets/sullie-with-arms.svg`. Adjust per video.
  * @param {string} [opts.id='zlyvs-sullie-bug'] — DOM id
  * @param {{bottom?:string,right?:string,top?:string,left?:string,size?:number}} [opts.position]
  * @returns {HTMLElement}
  */
 export function mountSullieBug(opts = {}) {
   const {
-    src = '/reference/wpforms-brand/assets/sullie-master.svg',
+    src = '/assets/sullie-with-arms.svg',
     id = 'zlyvs-sullie-bug',
     position = {},
   } = opts;
@@ -1402,7 +1402,8 @@ export function mountSullieBug(opts = {}) {
   img.src = src;
   img.alt = 'WPForms Sullie';
   img.draggable = false;
-  Object.assign(img.style, { width: '100%', height: '100%' });
+  // contain: the armed Sullie is 500×390, not square — never stretch it.
+  Object.assign(img.style, { width: '100%', height: '100%', objectFit: 'contain' });
   bug.appendChild(img);
   document.body.appendChild(bug);
   // Subtle float-y bob (bounded, not infinite)

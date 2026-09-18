@@ -14,7 +14,7 @@
 import { disposeEffect, mountStyle, nextEffectId, resolveColor } from './_utils.js';
 
 const SCOPE = 'fx-end-card';
-const SULLIE_SRC = '/reference/wpforms-brand/assets/sullie-master.svg';
+const SULLIE_SRC = '/assets/sullie-with-arms.svg'; // official Sullie, with arms
 
 function css(id) {
   return `

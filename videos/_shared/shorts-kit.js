@@ -16,7 +16,7 @@
 //              the word captions use, so type moments land as the TTS says
 //              the word
 //   brand    → real assets only: /assets/wordmark.svg +
-//              /reference/wpforms-brand/assets/sullie-master.svg
+//              /assets/sullie-with-arms.svg (official Sullie)
 //
 // Every function here is deterministic (INV-9): no Date.now, no unseeded
 // randomness, no infinite repeats, no fetch.
@@ -805,7 +805,7 @@ export function mountSurround(stage, {
 // The standing Sullie-in-every-intro-and-outro rule applies to shorts as of
 // the 2026-08-13 ruling (system root cause #6 reversed the old spec).
 
-const SULLIE_SRC = '/reference/wpforms-brand/assets/sullie-master.svg';
+const SULLIE_SRC = '/assets/sullie-with-arms.svg'; // official Sullie, with arms
 const WORDMARK_SRC = '/assets/wordmark.svg';
 
 // mountShortIntro — ~1.6–2.0s sting: orange wash, Sullie pops (back.out),

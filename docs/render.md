@@ -1,6 +1,6 @@
 # Render — MP4 export for single-HTML films
 
-Three tools. The engine-era `tools/render.js` (wall-clock + `--seek`, silent output, `--chapter`) was retired 2026-08-22 with the runtime; every film is single-HTML now. Flags below were checked against each tool's own source on 2026-08-28.
+Three tools. The engine-era `render.js` (wall-clock + `--seek`, silent output, `--chapter`) was retired 2026-08-22 with the runtime; every film is single-HTML now. Flags below were checked against each tool's own source on 2026-08-28.
 
 **Vocabulary (rulebook §1):** *snapshot capture* (`capture/capture.js`) freezes a live page and runs FIRST; *MP4 render* (this doc) turns a finished HTML film into video and runs LAST. Never let the bare word "capture" stand alone. Render only after Umair's sign-off or an explicit ask (rulebook §9).
 

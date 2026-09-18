@@ -27,7 +27,7 @@ Or `"bgm": "default"` to use the runtime default (low-level ambient).
 |---|---|---|
 | Narration | **0.25-0.5** | Should sit above BGM but not compete with click SFX |
 | BGM | **0.05-0.2** | Background presence only. >0.3 fights narration. |
-| SFX | (Web Audio master gain) | Per-channel via `runtime/sfx.js` config. Default master is balanced for narration at 0.25. |
+| SFX | (per-track gain) | Set per track in the film's `sfx/plan.json`; see `tools/sfx/CONTEXT.md`. The engine's `sfx.js` config was removed 2026-08-22. |
 
 The reference videos use these baselines:
 
@@ -68,7 +68,7 @@ The chapter-runner handles this automatically when chapter-level `narration: '<k
 
 ## SFX channels
 
-`runtime/sfx.js` exposes:
+The engine's `sfx.js` (removed 2026-08-22) exposed the channels below. Single-HTML films place SFX as Sound clips in the film's `sfx/plan.json` instead; see `tools/sfx/CONTEXT.md`.
 
 - **`click`** — primary cursor click.
 - **`clickAlt`** — alternate click for variety (avoid every click sounding identical).
@@ -80,7 +80,7 @@ The chapter-runner handles this automatically when chapter-level `narration: '<k
 - **`popUi`** — element pop-in accent.
 - **`popDrop`** — element drop-out accent.
 
-Per-channel volume is set in `runtime/overlays-config.js` `sfx.masterVolume` and per-channel ratios. Don't override per-video unless storyboard approves a different SFX scheme.
+Per-channel volume lived in the engine's `overlays-config.js` (`sfx.masterVolume` plus per-channel ratios), removed 2026-08-22. Today each SFX track carries its own gain in `sfx/plan.json`.
 
 **Note:** SFX uses Web Audio (zero-latency `BufferSource`), not `<audio>` tags. The pause-manager pauses Web Audio via `gsap.globalTimeline` + frame-driver, but Web Audio doesn't natively `.pause()` — SFX continues if mid-playback. SFX is short (200-500ms each) so this rarely matters.
 
@@ -105,7 +105,7 @@ The TTS is rendered at 1.0× and the manifest applies playback rate at runtime. 
 | Mixing per-beat narration + parallel BGM-only chapters in one video | Pick one mode per video |
 | `narrationSpeed: 1.3` to fit narration into too-short beats | Wrong direction — split beats or extend duration |
 | BGM file at root `/bgms/56.mp3` referenced but not committed | Tolerate missing audio (404 silent skip via `--allow-resource-404`), or commit the asset |
-| Click SFX volume too high relative to narration | Adjust `runtime/overlays-config.js sfx.masterVolume` (don't fight per-video) |
+| Click SFX volume too high relative to narration | Lower the SFX track gain in the film's `sfx/plan.json` |
 | No SFX at all (`sfx.enabled: false`) | Reads as silent product demo, not tutorial. Default SFX should be on. |
 
 ## TTS pipeline
@@ -116,13 +116,12 @@ ElevenLabs / higher-quality TTS replacement is a candidate future enhancement. C
 
 ## Known gap
 
-`assets/sfx/click-alt.mp3` and `bgms/56.mp3` are referenced in `runtime/sfx.js` and some manifests but not committed to the repo. Smoke tolerates missing audio via `--allow-resource-404`. Real fix: commit the assets OR alias `clickAlt` to `click` in `runtime/sfx.js`.
+`assets/sfx/click-alt.mp3` and `bgms/56.mp3` were referenced in the engine's `sfx.js` (removed 2026-08-22) and some manifests but not committed to the repo. Smoke tolerates missing audio via `--allow-resource-404`.
 
 ## See also
 
-- `runtime/sfx.js` — Web Audio SFX pipeline.
+- `tools/sfx/CONTEXT.md` — the SFX pipeline today: plan, tracks, clips, mux.
 - `scenes/shared.js` — `startBGM`, `stopBGM`, `playNarration` source.
-- `runtime/overlays-config.js` — SFX master volume + per-channel ratios.
 - `docs/beat-pacing.md` — narration ↔ beat duration coupling.
 - `docs/narration-writing.md` — voice + sentence structure.
 - `analysis-quality-and-transitions.md` §1.7 — per-beat-narration vs BGM-only lesson.

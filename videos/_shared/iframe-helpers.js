@@ -443,7 +443,8 @@ export async function pageCenter(iframeManager, target, opts = {}) {
  */
 export async function awaitLayout(iframeManager, target, opts = {}) {
   const { timeout = 1.5 } = opts;
-  const t0 = Date.now();
+  const step = 0.05;
+  let waited = 0; // poll-tick budget, not wall clock (INV-9)
   for (;;) {
     let el = null;
     try { el = typeof target === 'string' ? iframeManager.query(target) : target; } catch (_) { el = null; }
@@ -454,8 +455,9 @@ export async function awaitLayout(iframeManager, target, opts = {}) {
       } catch (_) { /* keep the first match */ }
     }
     if (el && el.offsetWidth > 0 && el.offsetHeight > 0) return el;
-    if (Date.now() - t0 > timeout * 1000) return null;
-    await iframeManager.wait(0.05);
+    if (waited > timeout) return null;
+    await iframeManager.wait(step);
+    waited += step;
   }
 }
 

@@ -71,14 +71,14 @@ Use selectors in this priority order:
 
 ## Validator coverage
 
-`node tools/validate-video.js <slug>` runs selector provenance checks:
+The engine's `validate-video.js` (removed 2026-08-22) ran selector provenance checks:
 
 - Every selector in chapter beats / descriptor steps must resolve in the chapter's `snapshot:`.
 - Every selector should have provenance — either an inline `// src: snapshot/catalog/path` comment or live in `_selectors.js`.
 - Drift detection: if the catalog anchor for a selector is no longer in the snapshot, the validator flags it.
 - Touched-vs-untouched classification via hash baseline.
 
-Errors block. Warnings surface. Run before every commit.
+No single-HTML tool runs these checks yet. Check each selector with `node tools/verify-selectors.js <snapshot> <selector...>`, and run `node tools/validate-singlehtml.js <slug>` before every commit.
 
 ## When selectors break
 
@@ -170,7 +170,7 @@ Don't refactor mid-storyboard. The locked-shape skeleton has `import sel from '.
 
 - `node tools/inspect-snapshot.js <snapshot> --emit-selectors [--filter <text>]` — emit catalog-grounded selectors.
 - `node tools/verify-selectors.js <snapshot> <selector...>` — check existence in snapshot DOM.
-- `node tools/validate-video.js <slug>` — validates every selector in the chapters resolves in the right snapshot.
+- `node tools/validate-singlehtml.js <slug>` — checks every snapshot the film loads exists and is registered in `snapshots/index.json`. It does not check selectors.
 - `node tools/field-state.js --field <name>` — query field-state inventory for selector hints.
 
 ## See also

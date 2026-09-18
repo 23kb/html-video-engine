@@ -48,10 +48,11 @@ Per-video `_kit.js` may re-export with a back-compat alias:
 export { loadGsap as loadGsapFlip } from '../../_shared/kit.js';
 ```
 
-`window.gsap` is shared with `runtime/cinematic-kit/gsap-loader.js` so a
-chapter and a runtime cinematic on the same page use the same library
-instance. See `docs/chapter-module-contract.md` → "Shared video-author kit"
-for the full contract.
+In the engine era, `window.gsap` was shared with the runtime cinematic
+loader so a chapter and a runtime cinematic on the same page used the same
+library instance. Both were removed 2026-08-22. Single-HTML films load the
+vendored GSAP with plain `<script>` tags; see
+`docs/examples/single-html-ad-skeleton.html`.
 
 ## Authoring discipline (mandatory)
 

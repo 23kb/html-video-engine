@@ -759,7 +759,7 @@ Inline:             wpforms-list-inline
 
 **Snippet — canvas, Choice Layout = Inline:** identical except wrapper class is `wpforms-list-inline` (replacing `wpforms-list-2-columns`).
 
-> Implementation note: pure single-class swap on the field wrapper. Patchable as `setChoiceLayout(doc, fieldId, '1'|'2'|'3'|'inline')` — already shipped in `runtime/dom-prep.js` (deleted 2026-08-22 — git history) per the audit. This confirms the existing helper is correct.
+> Implementation note: pure single-class swap on the field wrapper. Patchable as `setChoiceLayout(doc, fieldId, '1'|'2'|'3'|'inline')` — already shipped in the engine's `dom-prep.js` (deleted 2026-08-22 — git history) per the audit. This confirms the existing helper is correct.
 
 **Other Advanced controls** *(not provided in detail; defaults from prior audit)*:
 - Randomize Choices (toggle) — `never` (frontend-only).

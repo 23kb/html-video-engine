@@ -107,9 +107,9 @@ Outro (~5s)      → brand sign-off card. NO mac frame.
 - Mac frame wraps the Tutorial section ONLY (per INV-3). Intro / postIntro / outro have no chrome around them.
 - PostIntro is non-optional. It previews the workflow with an identity-continuity morph chain (single DOM element threading the beats).
 - PostIntro may have N sub-beats (multi-phase morph chains are encouraged). The section boundary is the mac-frame-fade-in: when the mac frame opacity tweens 0 → 1 with real product UI behind it, the PostIntro is over and the Tutorial has begun. Anything before that moment, no matter how many phases, is still PostIntro.
-- Skip the postIntro and the video reads as "PowerPoint" — generic chapter shapes, weak first impression. The first cut of every tutorial that skipped a real postIntro became generic per `docs/winning-pattern-analysis-2026-05-10.md` (deleted 2026-08-22 — git history) §C.
+- Skip the postIntro and the video reads as "PowerPoint" — generic chapter shapes, weak first impression. The first cut of every tutorial that skipped a real postIntro became generic per `winning-pattern-analysis-2026-05-10.md` (deleted 2026-08-22 — git history) §C.
 - **Amendment 2026-08-28 (Umair ruling, rulebook §8 "You author a tutorial"):** the Intro and Outro sections above are no longer authored. The HTML film opens on the PostIntro and closes on the final product wide shot; Kacie records the real bookends and `tools/stitch.js` concatenates them. The mac-frame rule and the PostIntro rules stand unchanged. Shorts are unaffected (Sullie sting + end card stay).
-- Source: user instruction 2026-05-12. Applies to all tutorial videos including the existing pilot (retrofitted at commit `af504ea`) and Klaviyo tutorial (per `docs/codex-prompts/klaviyo-tutorial-continuation.md` (deleted 2026-08-22 — git history)).
+- Source: user instruction 2026-05-12. Applies to all tutorial videos including the existing pilot (retrofitted at commit `af504ea`) and Klaviyo tutorial (per `codex-prompts/klaviyo-tutorial-continuation.md` (deleted 2026-05-12 — git history)).
 
 ### INV-12 — Selector scoping for provider / feature panels
 WPForms admin renders ALL provider connection forms in the DOM and hides inactive ones via `display: none` or accordion collapse. A naive query like `iframeManager.query('input[name="api_key"]')` matches the FIRST one in DOM order — which may be ConvertKit, ActiveCampaign, Mailchimp, or any other integration that happens to be earlier in the captured snapshot.
@@ -148,7 +148,7 @@ Two kinds of "system files" in this repo. They need different consumption:
 
 | Type | Examples | Right way to consume |
 |---|---|---|
-| **Reference / Rules** | This invariants doc; `docs/library-scope-frequency-2026-05-12.md` (deleted 2026-08-22 — git history); `docs/sound-design-reference-2026-05-12.md`; `.claude/skills/wpforms-primitives/SKILL.md` (lookup index); `.claude/skills/wpforms-gsap-rules/SKILL.md` (rules reference). | **Read inline. File-read is fine.** Codex reading the architecture-invariants doc directly was the doc working as designed — it's data, not process. |
+| **Reference / Rules** | This invariants doc; `library-scope-frequency-2026-05-12.md` (deleted 2026-08-22 — git history); `docs/sound-design-reference-2026-05-12.md`; `.claude/skills/wpforms-primitives/SKILL.md` (lookup index); `.claude/skills/wpforms-gsap-rules/SKILL.md` (rules reference). | **Read inline. File-read is fine.** Codex reading the architecture-invariants doc directly was the doc working as designed — it's data, not process. |
 | **Gates / Process** | `.claude/skills/wpforms-motion-audit/SKILL.md` (tier-scoring procedure with a recorded artifact); `.claude/skills/wpforms-video/SKILL.md` HARD-GATE storyboard approval; `.claude/skills/wpforms-postintro/SKILL.md` multi-animation rule check. | **Invoke via the Skill tool.** Reading the rubric ≠ running the scorer. The procedure produces an artifact (tier rating, approval, gate-passed marker) that file-read cannot. |
 
 **The Skill tool is the gate for procedural skills. Reading a skill's markdown file is NOT** — it shows you the rubric but doesn't produce the artifact (tier, approval, gate-passed). For reference skills (lookup indices, rules reference), reading is the entire interaction; no invocation needed.
@@ -312,6 +312,6 @@ Before declaring a pilot done:
 
 ## Open items for the zoom-quality Codex session
 
-The current state is engine.js-equivalent quality at zoom 1 (sharp) and engine.js-equivalent quality at zoom > 1 (softens with pixel doubling). Codex's deep-dive prompt (`docs/codex-prompts/zoom-quality-deep-dive.md` (deleted 2026-08-22 — git history)) is exploring 10 approaches to sharpen the > 1 zoom case without regressing the at-rest case.
+The current state is engine.js-equivalent quality at zoom 1 (sharp) and engine.js-equivalent quality at zoom > 1 (softens with pixel doubling). Codex's deep-dive prompt (`codex-prompts/zoom-quality-deep-dive.md` (deleted 2026-05-12 — git history)) is exploring 10 approaches to sharpen the > 1 zoom case without regressing the at-rest case.
 
 When their work lands, this doc will get a new INV-X covering the chosen approach. Until then, treat current iframe zoom-blur as the floor; pilots should cap aggressive emphasis zooms at ~2× and use `popOut` for any deeper zoom-equivalent emphasis (popOut clones the element into the parent doc where it renders fresh at any scale).
