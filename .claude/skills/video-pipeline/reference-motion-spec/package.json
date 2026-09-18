@@ -1,0 +1,21 @@
+{
+  "name": "reference-motion-spec",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Turn a reference video into a tool-neutral motion spec (sheets, seam windows, audio, brief).",
+  "type": "module",
+  "engines": { "node": ">=18" },
+  "scripts": {
+    "probe": "node scripts/probe.mjs",
+    "sheets": "node scripts/sheets.mjs",
+    "windows": "node scripts/windows.mjs",
+    "audio": "node scripts/audio.mjs",
+    "validate": "node scripts/validate-spec.mjs",
+    "brief": "node scripts/render-brief.mjs",
+    "library": "node scripts/library.mjs",
+    "spec-from-cuts": "node scripts/spec-from-cuts.mjs",
+    "palette": "node scripts/palette.mjs",
+    "frame": "node scripts/frame.mjs"
+  },
+  "dependencies": {}
+}

@@ -56,6 +56,9 @@ In this order, with the tools — never a full read of a snapshot `index.html` (
      moment; then **24 fps windows of 0.3 s around every cut** (`ffmpeg -ss <cut-0.05> -t 0.34 -vf
      fps=24,tile=4x2`) before the seam ledger — at 4 fps every 1–7-frame dissolve reads as a hard
      cut and the film ships blinks (`cgw` 11). 4 fps = composition; 24 fps = transitions.
+     **Reference analysis is a skill:** run the `reference-motion-spec` worker inside the `video-pipeline` skill (open its `SKILL.md`) on the mp4 (sheets, 24 fps
+     strips, seam ledger, camera plan) and consume its `motion-spec.json` + `brief-generic.md`
+     as the reference input here; the scene map and the seam ledger copy from them, tile cites included.
    - **One spine reference.** Write a `## Scene map` in the donor's order — one row per donor
      SCENE (composition, framing, transition type, duration) and the WPForms content that replaces
      the donor's. A citation names a **scene**, never a **phase**: "rows stack in, 0.25 s each" is

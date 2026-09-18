@@ -1,0 +1,3063 @@
+{
+  "version": 1,
+  "meta": {
+    "source": "ref-02",
+    "duration": 25.078,
+    "fps": 29.97,
+    "sample_fps": 24,
+    "width": 1280,
+    "height": 720,
+    "aspect": "16:9",
+    "audio": true,
+    "black_head": 0,
+    "black_tail": 0,
+    "time_precision": "24 fps resample; every time in this analysis is approximate within 1/24 s (0.0417 s). Nothing here is a recovered keyframe or a source ease.",
+    "presentation_chrome": "none - the full 1280x720 frame is the film (no editor, slide or device mock on the overview or any c-sheet)",
+    "use_when": "A 25 s product ad on a dark bed with a fixed lens and two travelled arrivals: cards that resolve soft-to-sharp in place and type their own text, a colour sweep into a product macro that pulls back to a yawed wide card, word-pop headlines that mature from accent green to white, glitch-scramble word swaps with grey placeholder blocks, and a static photo end card.",
+    "reference_brand_terms": []
+  },
+  "identity": {
+    "palette": [
+      {
+        "hex": "#193d3a",
+        "role": "ground",
+        "note": "dark green bed of acts 1, 2, 4, 5 (0.87 share at 6.0 s); vignette/haze lightens it to #294a48 near the top-left",
+        "evidence": [
+          {
+            "sheet": "frame-6.00",
+            "tiles": []
+          },
+          {
+            "sheet": "c-001",
+            "tiles": [
+              1,
+              12,
+              24
+            ]
+          }
+        ]
+      },
+      {
+        "hex": "#fcfdfc",
+        "role": "ink",
+        "note": "headline and card white",
+        "evidence": [
+          {
+            "sheet": "frame-1.75",
+            "tiles": []
+          }
+        ]
+      },
+      {
+        "hex": "#24b47b",
+        "role": "accent",
+        "note": "brand green: word-pop entry colour, done-state button, status chips, the pill, the chip flash, the sweep's tint on the dashboard",
+        "evidence": [
+          {
+            "sheet": "frame-12.50",
+            "tiles": []
+          },
+          {
+            "sheet": "c-002",
+            "tiles": [
+              16,
+              21
+            ]
+          }
+        ]
+      },
+      {
+        "hex": "#f4f4f4",
+        "role": "interstitial",
+        "note": "near-white bed of the logo interstitial 8.17-9.58 (0.97 share at 9.0 s)",
+        "evidence": [
+          {
+            "sheet": "frame-9.00",
+            "tiles": []
+          }
+        ]
+      },
+      {
+        "hex": "#103839",
+        "role": "ui-primary",
+        "note": "logo ink on the interstitial; also the dark teal the end-card lockup starts from",
+        "evidence": [
+          {
+            "sheet": "frame-9.00",
+            "tiles": []
+          },
+          {
+            "sheet": "f-010",
+            "tiles": [
+              42
+            ]
+          }
+        ]
+      },
+      {
+        "hex": "#fafbfb",
+        "role": "ui-surface",
+        "note": "dashboard / email / segment card surface",
+        "evidence": [
+          {
+            "sheet": "frame-10.50",
+            "tiles": []
+          }
+        ]
+      },
+      {
+        "hex": "#368dee",
+        "role": "ui-primary",
+        "note": "chart bars and the Add-to-cart button blue",
+        "evidence": [
+          {
+            "sheet": "frame-10.50",
+            "tiles": []
+          },
+          {
+            "sheet": "f-001",
+            "tiles": [
+              31
+            ]
+          }
+        ]
+      },
+      {
+        "hex": "#d3d2c6",
+        "role": "ground",
+        "note": "end-card photo (warm beige/white room), 19.71-25.08",
+        "evidence": [
+          {
+            "sheet": "frame-24.50",
+            "tiles": []
+          }
+        ]
+      }
+    ],
+    "type_roles": [
+      {
+        "role": "display",
+        "size_frac": 0.1,
+        "weight": "regular",
+        "style": "sans",
+        "case": "sentence",
+        "evidence": [
+          {
+            "sheet": "c-003",
+            "tiles": [
+              11
+            ]
+          },
+          {
+            "sheet": "f-009",
+            "tiles": [
+              39
+            ]
+          }
+        ]
+      },
+      {
+        "role": "title",
+        "size_frac": 0.065,
+        "weight": "regular",
+        "style": "sans",
+        "case": "sentence",
+        "evidence": [
+          {
+            "sheet": "c-001",
+            "tiles": [
+              27
+            ]
+          },
+          {
+            "sheet": "c-002",
+            "tiles": [
+              30
+            ]
+          }
+        ]
+      },
+      {
+        "role": "brand-mark",
+        "size_frac": 0.11,
+        "weight": "bold",
+        "style": "sans",
+        "case": "lower",
+        "evidence": [
+          {
+            "sheet": "frame-20.50",
+            "tiles": []
+          },
+          {
+            "sheet": "c-002",
+            "tiles": [
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "role": "caption",
+        "size_frac": 0.03,
+        "weight": "regular",
+        "style": "sans",
+        "case": "sentence",
+        "evidence": [
+          {
+            "sheet": "frame-24.50",
+            "tiles": []
+          }
+        ]
+      },
+      {
+        "role": "ui-body",
+        "size_frac": 0.02,
+        "weight": "regular",
+        "style": "sans",
+        "case": "sentence",
+        "evidence": [
+          {
+            "sheet": "frame-3.50",
+            "tiles": []
+          },
+          {
+            "sheet": "w-4.40",
+            "tiles": [
+              8
+            ]
+          }
+        ]
+      }
+    ],
+    "ground": "flat dark green with a soft light haze in the upper-left corner (a vignette that reads as a spotlight); flat near-white for the 1.4 s logo interstitial; a defocused photo of a bright room for the end card. No grid, no grain.",
+    "host_element": "a white rounded card on the dark bed - the video card, the email, the dashboard, the segment card, the journey nodes are all the same object family; each scene has one, resolving in place and growing or tilting as it fills",
+    "persistent_elements": [
+      "the dark green bed (0-8.17 and 9.58-19.71)",
+      "the upper-left haze"
+    ],
+    "brand_role": "accent"
+  },
+  "structure": {
+    "acts": [
+      {
+        "name": "A1 the moment and the late email",
+        "in": 0,
+        "out": 5.708,
+        "note": "headline -> a customer acting in a video card -> the marketing email writing itself, then flagged as a missed moment"
+      },
+      {
+        "name": "A2 the problem: data in five tools",
+        "in": 5.708,
+        "out": 8.167,
+        "note": "headline word-pops between five tool chips; the chips flash and crack"
+      },
+      {
+        "name": "A3 brand interstitial",
+        "in": 8.167,
+        "out": 9.583,
+        "note": "mark alone on near-white, wordmark letter-masks in"
+      },
+      {
+        "name": "A4 the product",
+        "in": 9.583,
+        "out": 16.167,
+        "note": "dashboard macro -> yawed wide with the one-place pill -> segment card -> journey nodes"
+      },
+      {
+        "name": "A5 the promise",
+        "in": 16.167,
+        "out": 19.708,
+        "note": "one headline line, last word swapped twice by scramble"
+      },
+      {
+        "name": "A6 end card",
+        "in": 19.708,
+        "out": 25.078,
+        "note": "photo bed, lockup ramps to white, tagline in two halves"
+      }
+    ],
+    "scenes": [
+      {
+        "id": "S1",
+        "in": 0,
+        "out": 0.917,
+        "subject": "two-word headline, centred, upper-middle",
+        "framing_fill": 0.1,
+        "composition": "centred horizontally, baseline at ~40% of height",
+        "movement_class": [
+          "content"
+        ],
+        "hold_carrier": "second word pops at 0.125; green -> white maturation; glitch exit from 0.79",
+        "evidence": [
+          {
+            "sheet": "c-001",
+            "tiles": [
+              1,
+              2,
+              3,
+              4
+            ]
+          },
+          {
+            "sheet": "f-001",
+            "tiles": [
+              1,
+              4,
+              13,
+              20
+            ]
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "S2",
+        "in": 0.917,
+        "out": 2.625,
+        "subject": "video card (a customer at a laptop) with a blue button, a mail icon, an hourglass icon and a chat bubble around it; cursor on the button",
+        "framing_fill": 0.44,
+        "composition": "centred, card ~62% of frame width",
+        "movement_class": [
+          "object",
+          "content"
+        ],
+        "hold_carrier": "card finishes a 7% scale settle to 1.46; bubble types on with a green trail; button swaps to its green done state 1.58-1.67; slow drift left ~5% of width 2.0-2.6",
+        "evidence": [
+          {
+            "sheet": "c-001",
+            "tiles": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ]
+          },
+          {
+            "sheet": "w-1.20",
+            "tiles": [
+              1,
+              5,
+              9
+            ]
+          },
+          {
+            "sheet": "f-001",
+            "tiles": [
+              27,
+              39,
+              41
+            ]
+          },
+          {
+            "sheet": "f-002",
+            "tiles": [
+              1,
+              13,
+              16
+            ]
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "S3",
+        "in": 2.625,
+        "out": 5.708,
+        "subject": "email card with a mail icon; grows from a one-line header to a four-line body; then tilts, gains a red border and two chips",
+        "framing_fill": 0.25,
+        "composition": "centred; height grows from ~0.25 to ~0.55 of frame height",
+        "movement_class": [
+          "object",
+          "content"
+        ],
+        "hold_carrier": "header type-on 2.75-3.46, hold, body type-on 4.08-4.6, 3D tilt + red border + chips at 4.62, tilt eases back by 5.0, slow drift",
+        "note": "framing_fill is the height at the landing; measured 0.55 at 4.5 (w-4.40 tile 6: 130/270)",
+        "evidence": [
+          {
+            "sheet": "c-001",
+            "tiles": [
+              12,
+              15,
+              17,
+              18,
+              19,
+              20,
+              21,
+              23
+            ]
+          },
+          {
+            "sheet": "w-4.40",
+            "tiles": [
+              1,
+              6,
+              9,
+              12
+            ]
+          },
+          {
+            "sheet": "f-003",
+            "tiles": [
+              16,
+              17,
+              25
+            ]
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "S4",
+        "in": 5.708,
+        "out": 8.167,
+        "subject": "six-word headline centred between five white tool chips (two above, two below, one left)",
+        "framing_fill": 0.8,
+        "composition": "headline centred; chips spread across ~85% of width and ~70% of height",
+        "movement_class": [
+          "content",
+          "object"
+        ],
+        "hold_carrier": "word pop 5.79-6.13 with green -> white maturation; from 6.5 each chip flashes green then cracks in two (stagger ~0.08 s); the cracked halves rock slowly to 8.13",
+        "evidence": [
+          {
+            "sheet": "c-001",
+            "tiles": [
+              24,
+              25,
+              26,
+              27,
+              28,
+              30
+            ]
+          },
+          {
+            "sheet": "c-002",
+            "tiles": [
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "sheet": "f-004",
+            "tiles": [
+              1,
+              13,
+              17,
+              21,
+              40
+            ]
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "S5",
+        "in": 8.167,
+        "out": 9.583,
+        "subject": "brand mark, then the full wordmark lockup, on near-white",
+        "framing_fill": 0.13,
+        "composition": "centred",
+        "movement_class": [
+          "content"
+        ],
+        "hold_carrier": "mark alone 0.35 s; letters mask in 8.54-8.96 while the lockup re-centres; still 9.0-9.5",
+        "evidence": [
+          {
+            "sheet": "c-002",
+            "tiles": [
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ]
+          },
+          {
+            "sheet": "f-005",
+            "tiles": [
+              8,
+              13,
+              18,
+              24,
+              36
+            ]
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "S6",
+        "in": 9.583,
+        "out": 11.042,
+        "subject": "product dashboard, macro: the surface overfills the frame (sidebar at the left edge, right column cut)",
+        "framing_fill": 1,
+        "composition": "top-left anchored crop of a surface ~1.2x the frame width; no bed visible after the sweep leaves",
+        "movement_class": [
+          "camera",
+          "content"
+        ],
+        "hold_carrier": "arrives x1.3 and settles by 10.125 (the sweep's incoming); chart bars grow left to right 10.0-10.25; green tint clears by 10.25; still 10.25-11.0",
+        "note": "fill measured as the surface's visible extent = full frame height (frame-10.50); zoom 1.5 relative to S7",
+        "evidence": [
+          {
+            "sheet": "c-002",
+            "tiles": [
+              10,
+              11,
+              12,
+              13,
+              14
+            ]
+          },
+          {
+            "sheet": "w-9.90",
+            "tiles": [
+              5,
+              9,
+              12
+            ]
+          },
+          {
+            "sheet": "frame-10.50",
+            "tiles": []
+          },
+          {
+            "sheet": "f-006",
+            "tiles": [
+              1,
+              7,
+              25
+            ]
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "S7",
+        "in": 11.042,
+        "out": 13,
+        "subject": "the same dashboard as a yawed card on the bed, a green pill at its right",
+        "framing_fill": 0.74,
+        "composition": "card ~78% of frame width, left of centre, yawed ~15 deg (right side receding) easing toward frontal",
+        "movement_class": [
+          "camera",
+          "object",
+          "content"
+        ],
+        "hold_carrier": "yaw eases; green wash 11.1-11.6; pill slides in from the right edge 11.17-11.42 and types 11.58-12.58 growing leftward; 2-frame blur pulse at 13.0",
+        "note": "fill = card height 200/270 on w-11.20 tile 1",
+        "evidence": [
+          {
+            "sheet": "c-002",
+            "tiles": [
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22
+            ]
+          },
+          {
+            "sheet": "w-11.20",
+            "tiles": [
+              1,
+              6,
+              12
+            ]
+          },
+          {
+            "sheet": "frame-12.50",
+            "tiles": []
+          },
+          {
+            "sheet": "f-007",
+            "tiles": [
+              1,
+              15,
+              25
+            ]
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "S8",
+        "in": 13,
+        "out": 14.5,
+        "subject": "segment-builder card centred with six small satellite chips around it",
+        "framing_fill": 0.65,
+        "composition": "card centred, ~40% of frame width; chips at the four corners and both sides",
+        "movement_class": [
+          "object",
+          "content"
+        ],
+        "hold_carrier": "arrives soft, slides ~10% left and grows ~8% while sharpening (13.0-13.33); condition rows micro-stagger in; corner gradient fades by 13.5; still to 14.46",
+        "note": "fill = card height 175/270 on w-13.20 tile 12",
+        "evidence": [
+          {
+            "sheet": "c-002",
+            "tiles": [
+              23,
+              24,
+              25,
+              26,
+              27,
+              28
+            ]
+          },
+          {
+            "sheet": "w-13.20",
+            "tiles": [
+              1,
+              6,
+              12
+            ]
+          },
+          {
+            "sheet": "frame-13.75",
+            "tiles": []
+          },
+          {
+            "sheet": "f-007",
+            "tiles": [
+              29,
+              33,
+              48
+            ]
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "S9",
+        "in": 14.5,
+        "out": 16.167,
+        "subject": "five small journey-node cards drifting on the left two-thirds; two-word headline at the right",
+        "framing_fill": 0.85,
+        "composition": "nodes spread over ~60% of width and ~80% of height, headline right-aligned at ~75% of width",
+        "movement_class": [
+          "object",
+          "content"
+        ],
+        "hold_carrier": "nodes drift continuously (each travels ~10-25% of width over 1.5 s on its own path); headline builds via placeholder blocks by 14.67; glitch exit from 15.96",
+        "evidence": [
+          {
+            "sheet": "c-002",
+            "tiles": [
+              29,
+              30
+            ]
+          },
+          {
+            "sheet": "c-003",
+            "tiles": [
+              1,
+              2,
+              3,
+              4,
+              5
+            ]
+          },
+          {
+            "sheet": "frame-15.50",
+            "tiles": []
+          },
+          {
+            "sheet": "f-008",
+            "tiles": [
+              13,
+              17,
+              25,
+              37,
+              48
+            ]
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "S10",
+        "in": 16.167,
+        "out": 19.708,
+        "subject": "one three-word headline line, centred",
+        "framing_fill": 0.1,
+        "composition": "centred horizontally, baseline at ~50% of height",
+        "movement_class": [
+          "content"
+        ],
+        "hold_carrier": "line builds 16.25-16.75 with a scrambled last word; last word swapped by scramble 17.13-17.58 and 18.5-19.33 with 1-2-frame grey blocks; otherwise still",
+        "evidence": [
+          {
+            "sheet": "c-003",
+            "tiles": [
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19
+            ]
+          },
+          {
+            "sheet": "frame-18.00",
+            "tiles": []
+          },
+          {
+            "sheet": "f-009",
+            "tiles": [
+              7,
+              9,
+              27,
+              39
+            ]
+          },
+          {
+            "sheet": "f-010",
+            "tiles": [
+              13,
+              33
+            ]
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "id": "S11",
+        "in": 19.708,
+        "out": 25.078,
+        "subject": "photo of a bright room (desk, two chairs, plant) with the white lockup and a two-part tagline",
+        "framing_fill": 0.11,
+        "composition": "lockup centred at ~50% of height, tagline below it; photo static",
+        "movement_class": [
+          "content"
+        ],
+        "hold_carrier": "lockup ramps dark teal -> white 19.71-20.2 and nudges up ~3.5% when the tagline lands; tagline words at 21.54/21.67 and 23.5/23.63; nothing else moves",
+        "note": "photo zoom checked: bottle and chair widths agree within ~5% between frame-20.50 and frame-24.50 - static",
+        "evidence": [
+          {
+            "sheet": "c-003",
+            "tiles": [
+              20,
+              21,
+              25,
+              27,
+              30
+            ]
+          },
+          {
+            "sheet": "c-004",
+            "tiles": [
+              1,
+              5,
+              10
+            ]
+          },
+          {
+            "sheet": "frame-20.50",
+            "tiles": []
+          },
+          {
+            "sheet": "frame-24.50",
+            "tiles": []
+          },
+          {
+            "sheet": "f-011",
+            "tiles": [
+              1,
+              38,
+              42
+            ]
+          },
+          {
+            "sheet": "f-012",
+            "tiles": [
+              37,
+              42
+            ]
+          },
+          {
+            "sheet": "f-013",
+            "tiles": [
+              25
+            ]
+          }
+        ],
+        "confidence": "high"
+      }
+    ]
+  },
+  "camera": {
+    "cadence_landings_per_s": 0.44,
+    "lens_moves": 2,
+    "max_hold": 5.37,
+    "ease_voice": "cut",
+    "zoom_range": [
+      1,
+      1.5
+    ],
+    "landings": [
+      {
+        "t": 0,
+        "subject": "headline on the dark bed (opening frame)",
+        "fill": 0.1,
+        "fill_basis": "height",
+        "zoom": 1,
+        "move_in": "cut",
+        "duration": 0,
+        "hold": 0.917,
+        "movement_class": "camera",
+        "ease": {
+          "gsap": "none",
+          "cubic_bezier": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "basis": "read from strip"
+        },
+        "note": "film opens on it",
+        "evidence": [
+          {
+            "sheet": "f-001",
+            "tiles": [
+              1
+            ]
+          },
+          {
+            "sheet": "c-001",
+            "tiles": [
+              1
+            ]
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "t": 0.917,
+        "subject": "video card centred",
+        "fill": 0.44,
+        "fill_basis": "height",
+        "zoom": 1,
+        "move_in": "cut",
+        "duration": 0,
+        "hold": 1.708,
+        "movement_class": "camera",
+        "ease": {
+          "gsap": "none",
+          "cubic_bezier": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "basis": "read from strip"
+        },
+        "onset_delta_ms": 33,
+        "note": "reached by seam 1 (clear-then-resolve); the card's 7% growth to #35 is the incoming's object settle, not a lens move",
+        "evidence": [
+          {
+            "sheet": "w-0.85",
+            "tiles": [
+              6,
+              10
+            ]
+          },
+          {
+            "sheet": "frame-1.75",
+            "tiles": []
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "t": 2.625,
+        "subject": "email card centred",
+        "fill": 0.25,
+        "fill_basis": "height",
+        "zoom": 1,
+        "move_in": "cut",
+        "duration": 0,
+        "hold": 3.083,
+        "movement_class": "camera",
+        "ease": {
+          "gsap": "none",
+          "cubic_bezier": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "basis": "read from strip"
+        },
+        "onset_delta_ms": 35,
+        "note": "reached by seam 2; the card's later growth in width and height is object motion",
+        "evidence": [
+          {
+            "sheet": "w-2.60",
+            "tiles": [
+              10
+            ]
+          },
+          {
+            "sheet": "frame-3.50",
+            "tiles": []
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "t": 5.708,
+        "subject": "headline between five chips",
+        "fill": 0.8,
+        "fill_basis": "height",
+        "zoom": 1,
+        "move_in": "cut",
+        "duration": 0,
+        "hold": 2.459,
+        "movement_class": "camera",
+        "ease": {
+          "gsap": "none",
+          "cubic_bezier": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "basis": "read from strip"
+        },
+        "onset_delta_ms": -28,
+        "note": "reached by seam 3 (melt + settle-in); the chips' convergence is the incoming's settle",
+        "evidence": [
+          {
+            "sheet": "w-5.60",
+            "tiles": [
+              11
+            ]
+          },
+          {
+            "sheet": "frame-6.00",
+            "tiles": []
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "t": 8.167,
+        "subject": "mark, then lockup, on near-white",
+        "fill": 0.13,
+        "fill_basis": "height",
+        "zoom": 1,
+        "move_in": "cut",
+        "duration": 0,
+        "hold": 1.416,
+        "movement_class": "camera",
+        "ease": {
+          "gsap": "none",
+          "cubic_bezier": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "basis": "read from strip"
+        },
+        "onset_delta_ms": 63,
+        "note": "reached by seam 4",
+        "evidence": [
+          {
+            "sheet": "w-8.10",
+            "tiles": [
+              9
+            ]
+          },
+          {
+            "sheet": "frame-9.00",
+            "tiles": []
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "t": 9.75,
+        "subject": "dashboard macro (surface overfills the frame)",
+        "fill": 1,
+        "fill_basis": "height",
+        "zoom": 1.5,
+        "move_in": "snap",
+        "duration": 0.375,
+        "hold": 0.917,
+        "movement_class": "camera",
+        "ease": {
+          "gsap": "expo.out",
+          "cubic_bezier": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "basis": "vocabulary default"
+        },
+        "onset_delta_ms": -70,
+        "note": "the sweep's incoming: the surface is behind the mass at x1.3 on #235 and settles to 1.0 by #244 with big first steps (dark band at the top 20% -> 12% -> 6% -> 0 over #236-240) - a travelled lens move; the chart draws during the settle",
+        "evidence": [
+          {
+            "sheet": "w-9.60",
+            "tiles": [
+              8,
+              9,
+              10,
+              11,
+              12
+            ]
+          },
+          {
+            "sheet": "w-9.90",
+            "tiles": [
+              1,
+              5,
+              9
+            ]
+          },
+          {
+            "sheet": "frame-10.50",
+            "tiles": []
+          }
+        ],
+        "confidence": "medium"
+      },
+      {
+        "t": 11.042,
+        "subject": "dashboard as a yawed wide card",
+        "fill": 0.74,
+        "fill_basis": "height",
+        "zoom": 1,
+        "move_in": "blur push",
+        "duration": 0.125,
+        "hold": 1.833,
+        "movement_class": "camera",
+        "ease": {
+          "gsap": "expo.out",
+          "cubic_bezier": [
+            0.16,
+            1,
+            0.3,
+            1
+          ],
+          "basis": "vocabulary default"
+        },
+        "onset_delta_ms": 88,
+        "note": "a PULL, not a push: the same surface at ~0.6x the macro crop, yawed ~15 deg, arriving soft in a 1-frame swap and sharp 2 frames later; the yaw then eases as object motion for ~1.5 s",
+        "evidence": [
+          {
+            "sheet": "w-10.90",
+            "tiles": [
+              5,
+              6,
+              7,
+              8
+            ]
+          },
+          {
+            "sheet": "frame-12.50",
+            "tiles": []
+          }
+        ],
+        "confidence": "medium"
+      },
+      {
+        "t": 13,
+        "subject": "segment card centred",
+        "fill": 0.65,
+        "fill_basis": "height",
+        "zoom": 1,
+        "move_in": "cut",
+        "duration": 0,
+        "hold": 1.5,
+        "movement_class": "camera",
+        "ease": {
+          "gsap": "none",
+          "cubic_bezier": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "basis": "read from strip"
+        },
+        "onset_delta_ms": 200,
+        "note": "reached by seam 7; the group's 10% slide and 8% growth are the incoming's settle",
+        "evidence": [
+          {
+            "sheet": "w-13.20",
+            "tiles": [
+              12
+            ]
+          },
+          {
+            "sheet": "frame-13.75",
+            "tiles": []
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "t": 14.5,
+        "subject": "journey nodes + headline",
+        "fill": 0.85,
+        "fill_basis": "height",
+        "zoom": 1,
+        "move_in": "cut",
+        "duration": 0,
+        "hold": 1.667,
+        "movement_class": "camera",
+        "ease": {
+          "gsap": "none",
+          "cubic_bezier": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "basis": "read from strip"
+        },
+        "onset_delta_ms": -110,
+        "note": "reached by seam 8 (hard cut)",
+        "evidence": [
+          {
+            "sheet": "w-14.40",
+            "tiles": [
+              6
+            ]
+          },
+          {
+            "sheet": "frame-15.50",
+            "tiles": []
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "t": 16.167,
+        "subject": "headline line centred",
+        "fill": 0.1,
+        "fill_basis": "height",
+        "zoom": 1,
+        "move_in": "cut",
+        "duration": 0,
+        "hold": 3.541,
+        "movement_class": "camera",
+        "ease": {
+          "gsap": "none",
+          "cubic_bezier": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "basis": "read from strip"
+        },
+        "onset_delta_ms": 3,
+        "note": "reached by seam 9 (match cut on the placeholder block)",
+        "evidence": [
+          {
+            "sheet": "w-16.10",
+            "tiles": [
+              6,
+              9
+            ]
+          },
+          {
+            "sheet": "frame-18.00",
+            "tiles": []
+          }
+        ],
+        "confidence": "high"
+      },
+      {
+        "t": 19.708,
+        "subject": "photo end card with lockup",
+        "fill": 0.11,
+        "fill_basis": "height",
+        "zoom": 1,
+        "move_in": "cut",
+        "duration": 0,
+        "hold": 5.37,
+        "movement_class": "camera",
+        "ease": {
+          "gsap": "none",
+          "cubic_bezier": [
+            0,
+            0,
+            1,
+            1
+          ],
+          "basis": "read from strip"
+        },
+        "onset_delta_ms": 182,
+        "note": "reached by seam 10 (hard cut); static to the end",
+        "evidence": [
+          {
+            "sheet": "w-19.60",
+            "tiles": [
+              7
+            ]
+          },
+          {
+            "sheet": "frame-20.50",
+            "tiles": []
+          },
+          {
+            "sheet": "frame-24.50",
+            "tiles": []
+          }
+        ],
+        "confidence": "high"
+      }
+    ],
+    "lens_note": "The lens travels twice: the dashboard arrives x1.3 under the colour sweep and settles to 1.0 over 9 frames (9.75-10.125), then pulls back to a yawed wide crop in a 1-frame swap under blur (11.04). Every other framing change is a 1-frame cut or a soft resolve in place; cards grow, tilt and drift as objects, and text types, pops and scrambles as content."
+  },
+  "seams": [
+    {
+      "id": "1",
+      "t": 0.917,
+      "t_end": 1.083,
+      "kind": "clear-then-resolve",
+      "frames_24": 5,
+      "duration": 0.208,
+      "from_scene": "S1",
+      "to_scene": "S2",
+      "outgoing": {
+        "treatment": "blur+slide",
+        "direction": "right",
+        "amount": "the second word smears horizontally into a glitch streak over 3 frames (#20-22) and is gone at #23; the first word stays sharp until #22",
+        "frames_24": 3
+      },
+      "incoming": {
+        "treatment": "settle-from-small+soft-then-sharp+fade-in",
+        "direction": "left",
+        "from_scale": 0.93,
+        "frames_24": 5,
+        "note": "card soft and ghosted at #23, readable at #26, sharp at #27; the right edge (the mail icon) stays put while the left edge extends ~7% of the card width until #35"
+      },
+      "carrier": "the bed (dark green with a top-left haze)",
+      "on_onset": true,
+      "onset_delta_ms": 33,
+      "settle_on_onset": false,
+      "ease": {
+        "gsap": "expo.out",
+        "cubic_bezier": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
+        "basis": "vocabulary default"
+      },
+      "evidence": [
+        {
+          "sheet": "w-0.85",
+          "tiles": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "sheet": "f-001",
+          "tiles": [
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ]
+        },
+        {
+          "sheet": "w-1.20",
+          "tiles": [
+            1,
+            5,
+            9
+          ]
+        }
+      ],
+      "confidence": "high",
+      "note": "Exit and entry never overlap: the glitched title is the subject through #22, the card is alone from #23. The join itself is a swap to a soft incoming on the same bed."
+    },
+    {
+      "id": "2",
+      "t": 2.625,
+      "t_end": 2.833,
+      "kind": "clear-then-resolve",
+      "frames_24": 6,
+      "duration": 0.25,
+      "from_scene": "S2",
+      "to_scene": "S3",
+      "outgoing": {
+        "treatment": "blur+slide",
+        "direction": "left",
+        "amount": "one frame (#64): the video card goes soft and shifts ~5% of width left; at #65 it is gone",
+        "frames_24": 1
+      },
+      "incoming": {
+        "treatment": "settle-from-small+soft-then-sharp",
+        "direction": "right",
+        "from_scale": 0.4,
+        "frames_24": 4,
+        "note": "the mail icon alone at #65-66 (motion-smeared, at the left third); at #67 a soft card has unfolded rightward around it with the first characters typing; sharp by #69; the card keeps widening with the type-on to #84"
+      },
+      "carrier": "the mail icon: it sits at the video card's top-right through #64, is alone and smeared at the left third at #65-66 (~27% of width in one frame), and is the email card's icon from #67",
+      "on_onset": true,
+      "onset_delta_ms": 35,
+      "settle_on_onset": true,
+      "ease": {
+        "gsap": "expo.out",
+        "cubic_bezier": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
+        "basis": "vocabulary default"
+      },
+      "evidence": [
+        {
+          "sheet": "w-2.60",
+          "tiles": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "sheet": "f-002",
+          "tiles": [
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22
+          ]
+        }
+      ],
+      "confidence": "medium",
+      "note": "Alternative read: an identity morph of the icon into the card (the icon's white tile is the seed the card grows from). Logged as clear-then-resolve because the card arrives soft and sharpens in place rather than the icon's outline deforming; a builder should carry the icon either way."
+    },
+    {
+      "id": "3",
+      "t": 5.708,
+      "t_end": 5.875,
+      "kind": "melt + settle-in",
+      "frames_24": 5,
+      "duration": 0.208,
+      "from_scene": "S3",
+      "to_scene": "S4",
+      "outgoing": {
+        "treatment": "blur+dim",
+        "direction": "none",
+        "amount": "slightly soft at #138, soft and half-dim at #139 with the incoming chips already ghosted at the frame edges, gone at #140",
+        "frames_24": 2
+      },
+      "incoming": {
+        "treatment": "settle-from-large+soft-then-sharp+fade-in",
+        "direction": "in",
+        "from_scale": 1.2,
+        "frames_24": 4,
+        "note": "the Database chip reads at in-tile x 390-470 on #139 and 210-310 on #143 (480 px tile): the five chips converge toward the centre while sharpening; the headline's first word pops at #140"
+      },
+      "carrier": "the bed",
+      "on_onset": true,
+      "onset_delta_ms": -28,
+      "settle_on_onset": false,
+      "ease": {
+        "gsap": "expo.out",
+        "cubic_bezier": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
+        "basis": "vocabulary default"
+      },
+      "evidence": [
+        {
+          "sheet": "w-5.60",
+          "tiles": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        },
+        {
+          "sheet": "f-003",
+          "tiles": [
+            41,
+            42,
+            43,
+            44,
+            45,
+            46
+          ]
+        }
+      ],
+      "confidence": "high",
+      "note": "Both sides visible at #139 (soft card + ghosted chips): the one overlapping seam in the film."
+    },
+    {
+      "id": "4",
+      "t": 8.167,
+      "t_end": 8.292,
+      "kind": "soft-to-sharp resolve",
+      "frames_24": 4,
+      "duration": 0.167,
+      "from_scene": "S4",
+      "to_scene": "S5",
+      "outgoing": {
+        "treatment": "blur",
+        "direction": "out",
+        "amount": "one frame (#197): the five chips smear outward; the headline stays sharp to the last frame",
+        "frames_24": 1
+      },
+      "incoming": {
+        "treatment": "soft-then-sharp",
+        "frames_24": 3,
+        "note": "light bed and the two-chevron mark arrive together at #198, mark soft; sharp at #200; the mark holds alone to #204, then the wordmark letter-masks in from 8.54"
+      },
+      "carrier": "none (bed flips dark green to near-white in one frame)",
+      "on_onset": false,
+      "onset_delta_ms": 63,
+      "settle_on_onset": true,
+      "ease": {
+        "gsap": "expo.out",
+        "cubic_bezier": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
+        "basis": "vocabulary default"
+      },
+      "evidence": [
+        {
+          "sheet": "w-8.10",
+          "tiles": [
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "sheet": "f-005",
+          "tiles": [
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        }
+      ],
+      "confidence": "medium",
+      "note": "The 1-frame chip smear could be read as the start of a blur-dissolve; logged as a resolve because nothing of the outgoing survives into #198 and the headline never softens. Near miss on the onset at 8.23 (+63 ms); the settle frame sits on the 8.31 hit."
+    },
+    {
+      "id": "5",
+      "t": 9.583,
+      "t_end": 10.125,
+      "kind": "colour sweep",
+      "frames_24": 14,
+      "duration": 0.583,
+      "from_scene": "S5",
+      "to_scene": "S6",
+      "outgoing": {
+        "treatment": "covered+blur",
+        "direction": "up",
+        "amount": "a soft-edged dark-green mass enters at the bottom edge (#231), covers ~20% at #232, ~35% at #233, ~55% at #234 while the lockup blurs; the lockup is gone at #235",
+        "frames_24": 4
+      },
+      "incoming": {
+        "treatment": "reveal-behind+settle-from-large+soft-then-sharp",
+        "direction": "up",
+        "from_scale": 1.3,
+        "frames_24": 9,
+        "note": "at #235 the dashboard's white surface is already behind the mass, oversized (sidebar at the left, title cut at the right); #236-239 the mass's trailing edge leaves through the top (dark band 20% -> 0 by #240) while the surface settles to place, green-tinted and soft; sharp with the chart drawn by #244; the green tint washes out fully by #247"
+      },
+      "carrier": "the brand green: the sweep mass is the act-1 bed colour and the arriving dashboard wears the same green as a tint",
+      "on_onset": false,
+      "onset_delta_ms": -133,
+      "settle_on_onset": true,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "evidence": [
+        {
+          "sheet": "w-9.60",
+          "tiles": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "sheet": "w-9.90",
+          "tiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "sheet": "f-005",
+          "tiles": [
+            39,
+            40,
+            41,
+            42,
+            43,
+            44,
+            45,
+            46,
+            47,
+            48
+          ]
+        },
+        {
+          "sheet": "f-006",
+          "tiles": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ],
+      "confidence": "high",
+      "note": "Mass travel bottom -> top in ~9 frames at near-equal steps (20/35/55% per frame): linear. The settle behind it decelerates (expo.out). The dashboard's arrival at x1.3 and settle to 1.0 is a lens travel and is counted as one in the camera plan."
+    },
+    {
+      "id": "6",
+      "t": 11.042,
+      "t_end": 11.125,
+      "kind": "blur push",
+      "frames_24": 3,
+      "duration": 0.125,
+      "from_scene": "S6",
+      "to_scene": "S7",
+      "outgoing": {
+        "treatment": "none",
+        "amount": "the macro crop is sharp to its last frame (#265)",
+        "frames_24": 0
+      },
+      "incoming": {
+        "treatment": "soft-then-sharp",
+        "direction": "out",
+        "from_scale": 1,
+        "frames_24": 2,
+        "note": "#266: the same dashboard, now a card ~78% of frame width, yawed ~15 deg about the vertical axis with the right side receding, soft and ghosted; #267 sharper; #268 sharp. The card's width is the same on #266 and #278 (in-tile 50-425 on both), so it arrives at its final scale; the yaw eases toward frontal over the next ~1.5 s"
+      },
+      "carrier": "the dashboard surface itself (same content, chart already drawn)",
+      "on_onset": false,
+      "onset_delta_ms": 88,
+      "settle_on_onset": true,
+      "ease": {
+        "gsap": "expo.out",
+        "cubic_bezier": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
+        "basis": "vocabulary default"
+      },
+      "evidence": [
+        {
+          "sheet": "w-10.90",
+          "tiles": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "sheet": "w-11.20",
+          "tiles": [
+            1,
+            2,
+            3,
+            12
+          ]
+        },
+        {
+          "sheet": "f-006",
+          "tiles": [
+            25,
+            26,
+            27,
+            28
+          ]
+        }
+      ],
+      "confidence": "medium",
+      "note": "Direction is the INVERSE of the vocabulary entry: the lens pulls back (the wide crop is ~0.6x the macro crop), the swap is 1 frame and only the incoming is soft. Named blur push because it is the same surface at a new scale under a transient blur, i.e. a lens move, not a dissolve. Build: a camera pull with a 2-frame blur on the arrival, plus a 3D yaw on the card."
+    },
+    {
+      "id": "7",
+      "t": 13,
+      "t_end": 13.333,
+      "kind": "soft-to-sharp resolve",
+      "frames_24": 9,
+      "duration": 0.375,
+      "from_scene": "S7",
+      "to_scene": "S8",
+      "outgoing": {
+        "treatment": "blur",
+        "direction": "none",
+        "amount": "a 2-frame blur pulse (#313-314: dashboard and pill smeared), then ONE sharp frame (#315) before the swap; nothing slides",
+        "frames_24": 2
+      },
+      "incoming": {
+        "treatment": "slide-in+soft-then-sharp+settle-from-small",
+        "direction": "left",
+        "from_scale": 0.92,
+        "frames_24": 6,
+        "note": "#316 the segment card alone, soft, with a green corner gradient; #317 its satellite chips ghost in; the card's left edge moves in-tile 190 -> 165 -> 160 -> 158 -> 155 -> 148 -> 145 -> 140 (#316-323, 480 px tile) while the chips spread outward: the group slides ~10% of width left and grows ~8% while sharpening; card text readable at #319, chips sharp by #321; the corner gradient fades by #325"
+      },
+      "carrier": "the bed",
+      "on_onset": false,
+      "onset_delta_ms": 200,
+      "settle_on_onset": false,
+      "ease": {
+        "gsap": "expo.out",
+        "cubic_bezier": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "evidence": [
+        {
+          "sheet": "w-12.90",
+          "tiles": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "sheet": "w-13.20",
+          "tiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ]
+        },
+        {
+          "sheet": "f-007",
+          "tiles": [
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31,
+            32,
+            33
+          ]
+        }
+      ],
+      "confidence": "medium",
+      "note": "The sharp #315 between the blur pulse and the swap is on both the strip and the f-sheet, so it is a source frame, not a resample artefact. Counted from the first departing frame (#313) per the rules; a builder may treat the pulse as a 2-frame pre-cut shake and the join as a plain resolve. No onset within 100 ms."
+    },
+    {
+      "id": "8",
+      "t": 14.5,
+      "t_end": 14.5,
+      "kind": "hard cut",
+      "frames_24": 1,
+      "duration": 0.042,
+      "from_scene": "S8",
+      "to_scene": "S9",
+      "outgoing": {
+        "treatment": "none"
+      },
+      "incoming": {
+        "treatment": "none",
+        "note": "the five journey nodes and the headline's second word are already full-opacity and sharp on #349; the nodes drift from the first frame (in-beat object motion), a grey placeholder block stands where the first word will land"
+      },
+      "carrier": "the bed",
+      "on_onset": false,
+      "onset_delta_ms": -110,
+      "settle_on_onset": false,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "evidence": [
+        {
+          "sheet": "w-14.40",
+          "tiles": [
+            5,
+            6
+          ]
+        },
+        {
+          "sheet": "f-008",
+          "tiles": [
+            12,
+            13
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "id": "9",
+      "t": 16.167,
+      "t_end": 16.167,
+      "kind": "match cut",
+      "frames_24": 1,
+      "duration": 0.042,
+      "from_scene": "S9",
+      "to_scene": "S10",
+      "outgoing": {
+        "treatment": "none",
+        "note": "the headline had already glitched out over #384-386 (block on the second word, first word cut at #386); the nodes are sharp and drifting to #388 and vanish at #389"
+      },
+      "incoming": {
+        "treatment": "none",
+        "note": "only the grey block on the bed at #389-390; 'The' pops beside it at #391, the block is replaced by the second word at #393 while the third word arrives as scrambled glyphs"
+      },
+      "carrier": "the grey placeholder block (~120x25 px on a 480 px tile): at the right third on #386-388, at the left third on #389, same size",
+      "on_onset": true,
+      "onset_delta_ms": 3,
+      "settle_on_onset": true,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "evidence": [
+        {
+          "sheet": "w-16.10",
+          "tiles": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "sheet": "f-009",
+          "tiles": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        }
+      ],
+      "confidence": "medium",
+      "note": "The block jumps ~190 px (of 480) in one frame rather than travelling, so its identity across the cut is inferred from size and role; a plain hard cut with a fresh block is the alternative read. Either way the block is the visible link."
+    },
+    {
+      "id": "10",
+      "t": 19.708,
+      "t_end": 19.708,
+      "kind": "hard cut",
+      "frames_24": 1,
+      "duration": 0.042,
+      "from_scene": "S10",
+      "to_scene": "S11",
+      "outgoing": {
+        "treatment": "none"
+      },
+      "incoming": {
+        "treatment": "none",
+        "note": "the photo arrives sharp at its final framing on #474; the lockup is already on it in a dark teal at partial opacity and ramps to solid white over ~12 frames (#474-486); no dip, no softness"
+      },
+      "carrier": "none",
+      "on_onset": false,
+      "onset_delta_ms": 182,
+      "settle_on_onset": false,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "evidence": [
+        {
+          "sheet": "w-19.60",
+          "tiles": [
+            6,
+            7,
+            8,
+            12
+          ]
+        },
+        {
+          "sheet": "w-20.00",
+          "tiles": [
+            1,
+            4,
+            8,
+            12
+          ]
+        },
+        {
+          "sheet": "f-010",
+          "tiles": [
+            41,
+            42,
+            43,
+            48
+          ]
+        }
+      ],
+      "confidence": "high"
+    }
+  ],
+  "pacing": {
+    "landing_cadence_per_s": 0.44,
+    "holds": [
+      {
+        "t": 0,
+        "duration": 0.917,
+        "carrier": "word pop of the second word at 0.125; both words mature from accent green to white by ~0.5; glitch exit from 0.79"
+      },
+      {
+        "t": 1.083,
+        "duration": 1.542,
+        "carrier": "card finishes a 7% scale settle to 1.46; bubble types on with a green trail band 1.0-1.75; cursor parked on the button; button swaps to its done state 1.58-1.67; slow leftward drift of ~5% of width 2.0-2.6"
+      },
+      {
+        "t": 2.833,
+        "duration": 2.875,
+        "carrier": "header type-on 2.75-3.46 (card widens); hold 3.5-4.04; body type-on in bursts 4.08-4.6 (card grows in height); at 4.62 the card tilts, gains a red border, two chips slide in from the sides; tilt eases back by 5.0; slow drift"
+      },
+      {
+        "t": 5.875,
+        "duration": 2.292,
+        "carrier": "word pop 5.79-6.125 with green-to-white maturation; from 6.5 each chip flashes green then cracks in two, staggered ~0.08 s; the cracked chips rock slowly to 8.13"
+      },
+      {
+        "t": 8.292,
+        "duration": 1.291,
+        "carrier": "mark alone 0.25 s; wordmark letter-masks in 8.54-8.96 while the lockup re-centres; still 9.0-9.5"
+      },
+      {
+        "t": 10.125,
+        "duration": 0.917,
+        "carrier": "chart bars grow left to right 10.0-10.25; green tint washes to white by 10.25; then still"
+      },
+      {
+        "t": 11.125,
+        "duration": 1.875,
+        "carrier": "card yaw eases from ~15 deg toward frontal; green wash rides the surface 11.1-11.6; pill slides in from the right edge 11.17-11.42 and types 37 chars 11.58-12.58, growing leftward"
+      },
+      {
+        "t": 13.333,
+        "duration": 1.167,
+        "carrier": "condition rows micro-stagger in 13.17-13.33; corner gradient fades by 13.5; then still with the six satellite chips"
+      },
+      {
+        "t": 14.5,
+        "duration": 1.667,
+        "carrier": "five nodes drift continuously; headline builds journeys -> block -> Automated -> Automated journeys by 14.67; glitch exit from 15.96"
+      },
+      {
+        "t": 16.167,
+        "duration": 3.541,
+        "carrier": "headline builds 16.25-16.75; two scramble swaps of the last word (17.13-17.58, 18.5-19.33) with 1-2-frame grey blocks; otherwise still"
+      },
+      {
+        "t": 19.708,
+        "duration": 5.37,
+        "carrier": "lockup ramps dark teal -> white 19.71-20.2; lockup nudges up ~3.5% of height and the tagline lands word by word at 21.54/21.67 and 23.5/23.63; photo is static (bottle and chair widths agree between frame-20.50 and frame-24.50)"
+      }
+    ],
+    "longest_hold": 5.37,
+    "cuts_per_10s": 4,
+    "seams_on_onsets": "4 of 10 seams within 60 ms of an onset (1, 2, 3, 9); chance level ~4.6 of 10 at 3.87 onsets/s, so the seam starts do not sit on the bed's hits more than chance. Settle frames hit on 4, 5, 6 (18 / -25 / +5 ms). 4 is a +63 ms near miss, 6 a +88 ms near miss.",
+    "typing_cadence": "35-60 chars/s: bubble 1.0-1.75 ~35 chars/s with a green band riding the newest characters; email header 2.75-3.46 ~55 chars/s steady, no caret, card widens with the text; email body 4.08-4.6 bursts of 10-12 chars per frame between 1-3-char steps, card grows in height; pill 11.58-12.58 ~37 chars/s in 1-2-char steps with a 4-frame pause before the last word, pill grows leftward; wordmark 8.54-8.96 ~1 letter per frame with a blurred leading edge (letter mask, no caret)",
+    "stagger_spacing": "tool-chip washes 0.04-0.08 s apart (6.50, 6.58, 6.63, 6.71, 6.79), each chip cracks 2-3 frames after its wash; segment-card rows ~0.04 s apart (13.17-13.33); satellite chips arrive together"
+  },
+  "ui_motion": {
+    "cursor_present": true,
+    "cursor_style": "black arrow, ~4.4% of frame height; already parked on the button when the card resolves (1.0-2.6), no approach shown, never moves; absent elsewhere",
+    "clicks": [
+      {
+        "t": 1.583,
+        "target": "the blue Add-to-cart button on the video card",
+        "reaction": "label swaps upward to its done state and the fill turns blue -> green over 3 frames (#39-41); cursor stays put",
+        "pre_pause": 0.58,
+        "evidence": [
+          {
+            "sheet": "f-001",
+            "tiles": [
+              25,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42
+            ]
+          }
+        ]
+      }
+    ],
+    "hover_states": [],
+    "typing_beats": [
+      {
+        "in": 1,
+        "out": 1.75,
+        "text_role": "ui-body (chat bubble on the video card)",
+        "cadence": "~35 chars/s, 1-3 chars per frame, no caret; a green band highlights the newest 3-4 characters and clears behind them",
+        "surface_growth": "bubble widens rightward with the text (x1.5 over 0.75 s)",
+        "evidence": [
+          {
+            "sheet": "f-001",
+            "tiles": [
+              25,
+              27,
+              29,
+              31,
+              33,
+              35,
+              37,
+              43
+            ]
+          },
+          {
+            "sheet": "w-1.20",
+            "tiles": [
+              1,
+              3,
+              5,
+              7,
+              9,
+              11
+            ]
+          }
+        ]
+      },
+      {
+        "in": 2.75,
+        "out": 3.46,
+        "text_role": "ui-body (email header, two lines)",
+        "cadence": "~55 chars/s steady, no caret; line 1 (10 chars) in 4 frames, line 2 (27 chars) in 12 frames",
+        "surface_growth": "card widens from ~0.4 to 1.0 of its final width with the text (2.75-3.25)",
+        "evidence": [
+          {
+            "sheet": "f-002",
+            "tiles": [
+              19,
+              20,
+              22,
+              24,
+              25,
+              28,
+              31,
+              34,
+              36
+            ]
+          }
+        ]
+      },
+      {
+        "in": 4.08,
+        "out": 4.6,
+        "text_role": "ui-body (email body, 4 lines)",
+        "cadence": "bursty: 3-4 chars per frame 4.08-4.25, then 10-12-char jumps per frame 4.29-4.42, then 1-2 chars per frame to 4.6",
+        "surface_growth": "card height grows ~1.35x (4.08-4.46) as lines are added",
+        "evidence": [
+          {
+            "sheet": "w-4.05",
+            "tiles": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ]
+          },
+          {
+            "sheet": "w-4.40",
+            "tiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8
+            ]
+          },
+          {
+            "sheet": "f-003",
+            "tiles": [
+              3,
+              4,
+              6,
+              8,
+              9,
+              10,
+              12,
+              14
+            ]
+          }
+        ]
+      },
+      {
+        "in": 11.58,
+        "out": 12.58,
+        "text_role": "ui-body (green pill on the dashboard)",
+        "cadence": "~37 chars/s in 1-2-char steps; a 4-frame pause at 12.29-12.42 before the last word",
+        "surface_growth": "pill grows leftward from a square to ~7x its width, right edge fixed",
+        "evidence": [
+          {
+            "sheet": "f-006",
+            "tiles": [
+              36,
+              39,
+              40,
+              42,
+              44,
+              46,
+              48
+            ]
+          },
+          {
+            "sheet": "f-007",
+            "tiles": [
+              1,
+              2,
+              4,
+              6,
+              8,
+              10,
+              12,
+              14,
+              15
+            ]
+          }
+        ]
+      }
+    ],
+    "dropdowns": [],
+    "card_rises": [],
+    "payoffs": [
+      {
+        "t": 1.583,
+        "what": "Add-to-cart button becomes its done state",
+        "emphasis": "colour swap blue -> green with a 3-frame upward label swap",
+        "before_hold": 0.58,
+        "evidence": [
+          {
+            "sheet": "f-001",
+            "tiles": [
+              38,
+              39,
+              40,
+              41
+            ]
+          }
+        ]
+      },
+      {
+        "t": 4.625,
+        "what": "the email is marked as a missed moment",
+        "emphasis": "card tilts ~8 deg in 3D and gains a red border; a timestamp chip slides in from the left (soft, 3 frames) and a status chip from the right (soft, 3 frames); tilt eases back by 5.0",
+        "before_hold": 2,
+        "evidence": [
+          {
+            "sheet": "w-4.40",
+            "tiles": [
+              9,
+              10,
+              11,
+              12
+            ]
+          },
+          {
+            "sheet": "f-003",
+            "tiles": [
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              25
+            ]
+          }
+        ]
+      },
+      {
+        "t": 6.5,
+        "what": "the five tool chips break",
+        "emphasis": "each chip flashes green for ~2 frames then splits along a crack and its halves tilt; staggered 6.50 / 6.58 / 6.63 / 6.71 / 6.79; the halves rock slowly afterwards",
+        "before_hold": 0.7,
+        "evidence": [
+          {
+            "sheet": "f-004",
+            "tiles": [
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21
+            ]
+          }
+        ]
+      },
+      {
+        "t": 10,
+        "what": "dashboard chart draws",
+        "emphasis": "bars grow from the baseline left to right over ~6 frames while the green tint clears",
+        "before_hold": 0,
+        "evidence": [
+          {
+            "sheet": "w-9.90",
+            "tiles": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12
+            ]
+          },
+          {
+            "sheet": "f-006",
+            "tiles": [
+              1,
+              3,
+              5,
+              7
+            ]
+          }
+        ]
+      },
+      {
+        "t": 11.1,
+        "what": "one-place claim lands on the dashboard",
+        "emphasis": "a green wash rides the whole surface 11.1-11.6 while the pill slides in from the right edge (~17% of width over 6 frames, decelerating) and then types",
+        "before_hold": 0.06,
+        "evidence": [
+          {
+            "sheet": "w-11.20",
+            "tiles": [
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9
+            ]
+          },
+          {
+            "sheet": "f-006",
+            "tiles": [
+              28,
+              29,
+              31,
+              33,
+              35,
+              37
+            ]
+          }
+        ]
+      },
+      {
+        "t": 14.625,
+        "what": "journeys headline completes",
+        "emphasis": "grey placeholder block for 2 frames, then the first word pops above it, then both words",
+        "before_hold": 0.125,
+        "evidence": [
+          {
+            "sheet": "w-14.40",
+            "tiles": [
+              6,
+              7,
+              8,
+              9,
+              10
+            ]
+          },
+          {
+            "sheet": "f-008",
+            "tiles": [
+              13,
+              14,
+              15,
+              16,
+              17
+            ]
+          }
+        ]
+      }
+    ],
+    "agent_vs_user": "One user action: the Add-to-cart click at 1.58 (cursor already parked, no approach shown). Everything else is system-performed: the email writes itself, the status chips arrive, the dashboard draws, the pill slides in and types, the segment rows fill, the journey nodes drift. No cursor after 2.6."
+  },
+  "text_motion": [
+    {
+      "t": 0,
+      "text_role": "display headline",
+      "mechanism": "word pop",
+      "direction": "entrance",
+      "per_word_timing": [
+        0,
+        0.125
+      ],
+      "duration": 0.125,
+      "hold": 0.67,
+      "note": "first word already on at #1 (film opens on it) in accent green; second word pops whole at #4 in green while the first turns white; the second word matures green -> white ~0.35 s later (white by #13)",
+      "evidence": [
+        {
+          "sheet": "f-001",
+          "tiles": [
+            1,
+            3,
+            4,
+            5,
+            7,
+            10,
+            13
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 0.792,
+      "text_role": "display headline",
+      "mechanism": "glitch",
+      "direction": "exit",
+      "duration": 0.125,
+      "hold": 0,
+      "note": "the second word smears horizontally into a streak over #20-22 (3 frames) and is gone at #23; the first word stays clean and vanishes with it",
+      "evidence": [
+        {
+          "sheet": "f-001",
+          "tiles": [
+            19,
+            20,
+            21,
+            22,
+            23
+          ]
+        },
+        {
+          "sheet": "w-0.85",
+          "tiles": [
+            2,
+            3,
+            4,
+            5,
+            6
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 1,
+      "text_role": "ui-body chat bubble",
+      "mechanism": "type-on",
+      "direction": "entrance",
+      "duration": 0.75,
+      "hold": 0.85,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "note": "~35 chars/s, no caret; a green band highlights the newest characters (gradient-trail idiom on a type-on); bubble widens with the text",
+      "evidence": [
+        {
+          "sheet": "f-001",
+          "tiles": [
+            25,
+            27,
+            29,
+            31,
+            33,
+            35,
+            37,
+            43
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 2.75,
+      "text_role": "ui-body email header",
+      "mechanism": "type-on",
+      "direction": "entrance",
+      "duration": 0.71,
+      "hold": 0.6,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "note": "~55 chars/s steady, no caret; the card widens with the text",
+      "evidence": [
+        {
+          "sheet": "f-002",
+          "tiles": [
+            19,
+            20,
+            22,
+            24,
+            25,
+            28,
+            31,
+            34,
+            36
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 4.083,
+      "text_role": "ui-body email body",
+      "mechanism": "type-on",
+      "direction": "entrance",
+      "duration": 0.52,
+      "hold": 1.1,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "note": "bursty: 3-4 chars/frame, then 10-12-char jumps (4.29-4.42), then 1-2 chars/frame; the card grows in height as lines are added",
+      "evidence": [
+        {
+          "sheet": "f-003",
+          "tiles": [
+            3,
+            4,
+            6,
+            8,
+            9,
+            10,
+            12,
+            14
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 5.792,
+      "text_role": "title headline",
+      "mechanism": "word pop",
+      "direction": "entrance",
+      "per_word_timing": [
+        5.792,
+        5.833,
+        5.917,
+        5.958,
+        6.042,
+        6.125
+      ],
+      "duration": 0.333,
+      "hold": 2.04,
+      "note": "each word pops whole in accent green and matures to white ~0.35-0.4 s after landing (first two words white by #148, last two by #157); no slide, no scale",
+      "evidence": [
+        {
+          "sheet": "f-003",
+          "tiles": [
+            44,
+            45,
+            47,
+            48
+          ]
+        },
+        {
+          "sheet": "f-004",
+          "tiles": [
+            1,
+            2,
+            4,
+            5,
+            7,
+            9,
+            13
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 8.542,
+      "text_role": "brand-mark wordmark",
+      "mechanism": "letter mask",
+      "direction": "entrance",
+      "duration": 0.42,
+      "hold": 0.62,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "note": "~1 letter per frame left to right with a blurred leading edge, no caret; the mark slides left as the word grows so the lockup stays centred; complete at #215-216",
+      "evidence": [
+        {
+          "sheet": "f-005",
+          "tiles": [
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 11.583,
+      "text_role": "ui-body green pill",
+      "mechanism": "type-on",
+      "direction": "entrance",
+      "duration": 1,
+      "hold": 0.42,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "note": "~37 chars/s in 1-2-char steps, a 4-frame pause before the last word; pill grows leftward, right edge fixed; the pill had slid in from the right edge 11.17-11.42 before typing",
+      "evidence": [
+        {
+          "sheet": "f-006",
+          "tiles": [
+            39,
+            40,
+            42,
+            44,
+            46,
+            48
+          ]
+        },
+        {
+          "sheet": "f-007",
+          "tiles": [
+            1,
+            2,
+            4,
+            6,
+            8,
+            10,
+            12,
+            14,
+            15
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 14.5,
+      "text_role": "title headline (two words, right of the nodes)",
+      "mechanism": "glitch",
+      "direction": "entrance",
+      "per_word_timing": [
+        14.625,
+        14.5
+      ],
+      "duration": 0.167,
+      "hold": 1.29,
+      "note": "second word cuts in at #349 with a grey block above it; at #351 both slots are grey blocks; at #352 the first word pops above a block; at #353 both words clean. Placeholder-block idiom, no scramble here",
+      "evidence": [
+        {
+          "sheet": "f-008",
+          "tiles": [
+            13,
+            14,
+            15,
+            16,
+            17
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 15.958,
+      "text_role": "title headline",
+      "mechanism": "glitch",
+      "direction": "exit",
+      "duration": 0.167,
+      "hold": 0,
+      "note": "second word replaced by a grey block with a trailing letter (#384-385), first word cut out at #386, block alone to #388, block carried across the cut at #389",
+      "evidence": [
+        {
+          "sheet": "f-009",
+          "tiles": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        {
+          "sheet": "w-16.10",
+          "tiles": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 16.25,
+      "text_role": "display headline",
+      "mechanism": "glitch",
+      "direction": "entrance",
+      "per_word_timing": [
+        16.25,
+        16.333,
+        16.333
+      ],
+      "duration": 0.5,
+      "hold": 0.38,
+      "note": "'The' pops beside the block at #391; the block becomes the second word at #393 while the third word arrives as symbol-scrambled glyphs; glyphs re-roll every ~2 frames and resolve left to right, parking at a near-final spelling from #403 (16.75) that never fully resolves before the next swap",
+      "evidence": [
+        {
+          "sheet": "f-009",
+          "tiles": [
+            7,
+            8,
+            9,
+            10,
+            12,
+            14,
+            16,
+            17,
+            19,
+            22,
+            27
+          ]
+        },
+        {
+          "sheet": "w-16.10",
+          "tiles": [
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 17.125,
+      "text_role": "display headline (last word)",
+      "mechanism": "glitch",
+      "direction": "swap",
+      "duration": 0.458,
+      "hold": 0.92,
+      "note": "scramble out from #412 (17.125); at #417 the SECOND word is covered by a grey block for 1 frame, then the third word's slot is a block for 2 frames (#418-419); new word scrambles in #420-422 and is clean at #423 (17.583)",
+      "evidence": [
+        {
+          "sheet": "f-009",
+          "tiles": [
+            28,
+            29,
+            31,
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 18.5,
+      "text_role": "display headline (last word)",
+      "mechanism": "glitch",
+      "direction": "swap",
+      "duration": 0.833,
+      "hold": 0.375,
+      "note": "scramble out from #445 (18.5), glyphs re-roll every 2 frames; second word blocked for 2 frames (#461-462), third word's slot blocked for 2 frames (#463-464); clean at #465 (19.333). Longer than the first swap (0.83 vs 0.46 s)",
+      "evidence": [
+        {
+          "sheet": "f-010",
+          "tiles": [
+            13,
+            14,
+            15,
+            17,
+            18,
+            20,
+            22,
+            25,
+            27,
+            29,
+            30,
+            31,
+            32,
+            33
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 19.708,
+      "text_role": "brand-mark lockup",
+      "mechanism": "other",
+      "direction": "entrance",
+      "duration": 0.5,
+      "hold": 4.87,
+      "ease": {
+        "gsap": "sine.inOut",
+        "cubic_bezier": [
+          0.37,
+          0,
+          0.63,
+          1
+        ],
+        "basis": "guess"
+      },
+      "note": "colour/opacity ramp: the lockup is on the photo from the cut's first frame in a dark teal at partial opacity and ramps to solid white over ~12 frames (#474-486); it nudges up ~3.5% of frame height when the tagline lands (frame-20.50 y 345-425 vs frame-24.50 y 320-400)",
+      "evidence": [
+        {
+          "sheet": "f-010",
+          "tiles": [
+            42,
+            44,
+            46,
+            48
+          ]
+        },
+        {
+          "sheet": "f-011",
+          "tiles": [
+            1,
+            3,
+            5,
+            6
+          ]
+        },
+        {
+          "sheet": "frame-20.50",
+          "tiles": []
+        },
+        {
+          "sheet": "frame-24.50",
+          "tiles": []
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "t": 21.542,
+      "text_role": "caption tagline (first half)",
+      "mechanism": "blur resolve",
+      "direction": "entrance",
+      "per_word_timing": [
+        21.542,
+        21.667
+      ],
+      "duration": 0.25,
+      "hold": 1.83,
+      "ease": {
+        "gsap": "expo.out",
+        "cubic_bezier": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
+        "basis": "vocabulary default"
+      },
+      "note": "each word arrives faint and soft and is sharp 2 frames later (#518->520, #521->523); 3 frames between the two words",
+      "evidence": [
+        {
+          "sheet": "f-011",
+          "tiles": [
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43
+          ]
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "t": 23.5,
+      "text_role": "caption tagline (second half)",
+      "mechanism": "blur resolve",
+      "direction": "entrance",
+      "per_word_timing": [
+        23.5,
+        23.625
+      ],
+      "duration": 0.25,
+      "hold": 1.33,
+      "ease": {
+        "gsap": "expo.out",
+        "cubic_bezier": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
+        "basis": "vocabulary default"
+      },
+      "note": "same two-frame soft-in per word (#565->567, #568->570); the line then holds to the end",
+      "evidence": [
+        {
+          "sheet": "f-012",
+          "tiles": [
+            36,
+            37,
+            38,
+            40,
+            41,
+            42,
+            43
+          ]
+        },
+        {
+          "sheet": "frame-24.50",
+          "tiles": []
+        }
+      ],
+      "confidence": "medium"
+    }
+  ],
+  "grammar": {
+    "entrances": [
+      "cards resolve soft-to-sharp in place (4-6 frames), often ghosted on the first frame, then grow or slide a little as they settle (7-10%)",
+      "the dashboard arrives oversized (x1.3) behind a colour sweep and settles in 9 frames",
+      "chips and the pill slide in from the nearest frame edge, soft, 3-6 frames, decelerating",
+      "headline words pop whole in accent green and mature to white ~0.35 s later",
+      "the wordmark letter-masks in at ~1 letter per frame with a blurred edge",
+      "headline words in the promise act arrive as a grey placeholder block, then symbol-scrambled glyphs that resolve left to right",
+      "end-card tagline words arrive faint and soft and sharpen in 2 frames"
+    ],
+    "exits": [
+      "most compositions vanish in one frame (hard cuts at 14.5, 16.17, 19.71)",
+      "a 1-2-frame blur pulse on the outgoing objects right before the swap (chips at 8.17, dashboard at 13.0, video card at 2.63)",
+      "the title glitch-smears its second word over 3 frames (0.79)",
+      "the email card melts (blur + dim, 2 frames) under the arriving chips (5.71)",
+      "headlines leave via a grey block on one word, then a 1-frame cut of the rest"
+    ],
+    "reveal_order": "the host card first (resolving in place), then its satellites (chips, icons) sliding in from the edges, then its text typing itself; the payoff (colour swap, tilt, wash, crack) lands 0.5-2 s after the text completes. Headlines and their objects arrive in the same frame (5.79, 14.5).",
+    "motifs": [
+      "accent green as the arrival colour: words, the done-state button, the pill, the chip flash, the dashboard tint - everything lands green and cools to white",
+      "grey placeholder block standing in for a word for 1-3 frames during every headline swap",
+      "the host card tilting in 3D at its payoff (email at 4.62, dashboard at 11.04)",
+      "a green wash as the payoff emphasis (chips 6.5-6.8, dashboard 11.1-11.6)",
+      "type-on with surface growth: the container widens or grows taller with its text, no caret",
+      "one-frame joins: the film never crossfades; softness lives on the incoming side only (except the melt at 5.71)"
+    ]
+  },
+  "sound": {
+    "present": true,
+    "measured": {
+      "integrated_lufs": -14.1,
+      "lra_lu": 2,
+      "true_peak_dbtp": -1,
+      "note": "Mixed program measurement. Not a delivery target. Stems, ducking and SFX counts cannot be recovered."
+    },
+    "layers": {
+      "vo": "not identifiable from the mixed program; no silence and a flat RMS suggest music-led with no voice-over (unverified)",
+      "music": "continuous rhythmic bed, 3.9 onsets/s, LRA 2 LU (very even), -14.1 LUFS integrated",
+      "sfx": "cannot be separated; the seam starts do not beat chance on the onset grid (4 of 10 vs ~4.6 expected), so no evidence of per-cut hits"
+    },
+    "energy_arc": "flat opening to middle; holds to the end",
+    "sync_points": [
+      {
+        "t": 0.917,
+        "visual": "video card resolves (seam 1)",
+        "audio": "onset at 0.95 (+33 ms)"
+      },
+      {
+        "t": 2.625,
+        "visual": "video card -> email (seam 2)",
+        "audio": "onset at 2.66 (+35 ms); settle frame 2.83 on the 2.85 onset"
+      },
+      {
+        "t": 5.708,
+        "visual": "melt into the five tools (seam 3)",
+        "audio": "onset at 5.68 (-28 ms)"
+      },
+      {
+        "t": 8.292,
+        "visual": "mark settles sharp (seam 4 settle)",
+        "audio": "onset at 8.31 (+18 ms)"
+      },
+      {
+        "t": 10.125,
+        "visual": "dashboard settles sharp after the sweep",
+        "audio": "onset at 10.1 (-25 ms)"
+      },
+      {
+        "t": 11.125,
+        "visual": "yawed card sharp after the pull (seam 6 settle)",
+        "audio": "onset at 11.13 (+5 ms)"
+      },
+      {
+        "t": 16.167,
+        "visual": "match cut on the placeholder block (seam 9)",
+        "audio": "onset at 16.17 (+3 ms)"
+      }
+    ],
+    "silence": [],
+    "ending": "sound runs to the last frame (tail silence 0.04 s); picture holds the static end card - a hard stop, no fade"
+  },
+  "eases": [
+    {
+      "name": "expo.out",
+      "gsap": "expo.out",
+      "cubic_bezier": [
+        0.16,
+        1,
+        0.3,
+        1
+      ],
+      "frames_24": 5,
+      "used_for": "every soft-to-sharp arrival (cards, mark, dashboard), the settle-from-large behind the sweep, the yawed card's arrival, tagline word soft-ins, chip and pill slide-ins",
+      "confidence": "medium"
+    },
+    {
+      "name": "power2.in",
+      "gsap": "power2.in",
+      "cubic_bezier": [
+        0.32,
+        0,
+        0.67,
+        0
+      ],
+      "frames_24": 2,
+      "used_for": "the 1-2-frame blur pulses before a swap (2.63, 8.17, 13.0) and the melt at 5.71",
+      "confidence": "low"
+    },
+    {
+      "name": "linear",
+      "gsap": "none",
+      "cubic_bezier": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "frames_24": 9,
+      "used_for": "the colour sweep's travel (near-equal steps), every type-on and letter mask, glyph scrambles, hard cuts and word pops (no tween)",
+      "confidence": "high"
+    },
+    {
+      "name": "power1.out",
+      "gsap": "power1.out",
+      "cubic_bezier": [
+        0.5,
+        1,
+        0.89,
+        1
+      ],
+      "frames_24": 6,
+      "used_for": "chart bars growing, the green wash clearing, chips settling after their slide",
+      "confidence": "low"
+    },
+    {
+      "name": "sine.inOut",
+      "gsap": "sine.inOut",
+      "cubic_bezier": [
+        0.37,
+        0,
+        0.63,
+        1
+      ],
+      "frames_24": 12,
+      "used_for": "the end-card lockup's dark-teal -> white ramp; the yaw easing on the dashboard card (~36 frames)",
+      "confidence": "low"
+    },
+    {
+      "name": "sine.inOut",
+      "gsap": "sine.inOut",
+      "cubic_bezier": [
+        0.37,
+        0,
+        0.63,
+        1
+      ],
+      "frames_24": 36,
+      "used_for": "slow drifts: the video card 2.0-2.6, the cracked chips rocking, the journey nodes floating",
+      "confidence": "low"
+    }
+  ],
+  "do_not": [
+    "Exact replica: do not add camera glides, re-aims, pushes or settles the reference never had. The lens moves twice (9.75 settle, 11.04 pull); every other framing change is a 1-frame cut or a soft resolve in place.",
+    "Do not crossfade any seam. No join here is a crossfade or a dip; softness is on the incoming side only, and the outgoing gets at most a 1-2-frame blur pulse.",
+    "Do not build the card growth, tilt, drift or the chips' convergence as camera zoom - they are object motion on a fixed lens.",
+    "Do not let headline words arrive white; they land in the accent green and cool to white ~0.35 s later.",
+    "Do not fade the end-card lockup up from transparent - it is on the photo from the cut's first frame in dark teal and ramps to white; do not zoom the photo (it is static).",
+    "Do not add a cursor approach: the pointer is already parked on the button when the card resolves and never moves; no cursor exists after 2.6.",
+    "Do not replace the glitch swaps with a plain crossfade or slide: they are symbol scrambles re-rolling every ~2 frames with a grey block covering a word for 1-3 frames; the second swap is longer (0.83 s) than the first (0.46 s).",
+    "Do not carry the 29.97 -> 24 fps jitter (repeated/dropped frames) into a build; timings here are +-1/24 s.",
+    "Do not copy the reference's copy, logo, product UI or photo - technique only."
+  ],
+  "evidence_rules": "Every seam and landing cites sheet + tile(s). A row with evidence:[] is a guess, carries confidence:\"low\", and is flagged by validate-spec.mjs. Sheet ids: c-NNN (4 fps composition, tiles 1-30), f-NNN (24 fps full, tiles 1-48), w-<t> (24 fps strip, tiles 1-N per windows/index.json), overview (cells 1-24). Tile numbers are per sheet: tile = badge frame - 30 x (sheet - 1) on c-sheets, - 48 x (sheet - 1) on f-sheets; map.txt resolves any cell. note fields are allowed on every row and are rendered in the briefs."
+}

@@ -1,0 +1,786 @@
+{
+  "source": "ref-01.mp4",
+  "present": true,
+  "method": "ffmpeg ebur128=peak=true; silencedetect; mono 16 kHz PCM for RMS deciles and onsets. Mixed program only.",
+  "limits": "No stem separation. Integrated loudness does not reveal music/voice balance. A music transient is not a click sound. Onsets are energy rises, not identified events.",
+  "codec": "aac",
+  "channels": 2,
+  "sample_rate": 44100,
+  "integrated_lufs": -13.1,
+  "lra_lu": 1.8,
+  "true_peak_dbtp": -0.1,
+  "silence_threshold_db": -50,
+  "silence": [],
+  "rms_dbfs_by_decile": [
+    -12.8,
+    -12.5,
+    -12.2,
+    -11.5,
+    -12.9,
+    -12.7,
+    -12.2,
+    -12.1,
+    -13.3,
+    -13.6
+  ],
+  "energy_arc": "flat opening to middle; holds to the end",
+  "onsets": [
+    {
+      "t": 0.07,
+      "level_db": -39.5,
+      "rise_db": 26.4
+    },
+    {
+      "t": 0.16,
+      "level_db": -27.3,
+      "rise_db": 11.4
+    },
+    {
+      "t": 0.47,
+      "level_db": -8.2,
+      "rise_db": 9.7
+    },
+    {
+      "t": 0.75,
+      "level_db": -16.6,
+      "rise_db": 7.7
+    },
+    {
+      "t": 1.07,
+      "level_db": -9.2,
+      "rise_db": 6.3
+    },
+    {
+      "t": 1.24,
+      "level_db": -18.4,
+      "rise_db": 7
+    },
+    {
+      "t": 1.34,
+      "level_db": -12.7,
+      "rise_db": 7.5
+    },
+    {
+      "t": 1.84,
+      "level_db": -17.9,
+      "rise_db": 8.1
+    },
+    {
+      "t": 2.17,
+      "level_db": -18.1,
+      "rise_db": 9.6
+    },
+    {
+      "t": 2.45,
+      "level_db": -9.6,
+      "rise_db": 15.4
+    },
+    {
+      "t": 2.68,
+      "level_db": -9.1,
+      "rise_db": 16.3
+    },
+    {
+      "t": 2.9,
+      "level_db": -9.5,
+      "rise_db": 12.7
+    },
+    {
+      "t": 3.23,
+      "level_db": -16.3,
+      "rise_db": 12.6
+    },
+    {
+      "t": 3.68,
+      "level_db": -12.5,
+      "rise_db": 9
+    },
+    {
+      "t": 3.89,
+      "level_db": -9.5,
+      "rise_db": 16.5
+    },
+    {
+      "t": 4.22,
+      "level_db": -10.6,
+      "rise_db": 14.5
+    },
+    {
+      "t": 4.35,
+      "level_db": -9.1,
+      "rise_db": 7.8
+    },
+    {
+      "t": 4.68,
+      "level_db": -12,
+      "rise_db": 9.5
+    },
+    {
+      "t": 4.97,
+      "level_db": -9,
+      "rise_db": 15.4
+    },
+    {
+      "t": 5.21,
+      "level_db": -10.2,
+      "rise_db": 22.8
+    },
+    {
+      "t": 5.69,
+      "level_db": -16.6,
+      "rise_db": 16.7
+    },
+    {
+      "t": 5.82,
+      "level_db": -17.5,
+      "rise_db": 15.9
+    },
+    {
+      "t": 6.05,
+      "level_db": -8.8,
+      "rise_db": 13.7
+    },
+    {
+      "t": 6.29,
+      "level_db": -10.4,
+      "rise_db": 16.1
+    },
+    {
+      "t": 6.44,
+      "level_db": -9.9,
+      "rise_db": 16.5
+    },
+    {
+      "t": 6.63,
+      "level_db": -12,
+      "rise_db": 6.5
+    },
+    {
+      "t": 6.92,
+      "level_db": -11.3,
+      "rise_db": 23.3
+    },
+    {
+      "t": 7.19,
+      "level_db": -33.7,
+      "rise_db": 11.1
+    },
+    {
+      "t": 7.32,
+      "level_db": -18.1,
+      "rise_db": 9.1
+    },
+    {
+      "t": 7.43,
+      "level_db": -20.5,
+      "rise_db": 6
+    },
+    {
+      "t": 7.81,
+      "level_db": -10.7,
+      "rise_db": 13.9
+    },
+    {
+      "t": 8.05,
+      "level_db": -12.1,
+      "rise_db": 6.7
+    },
+    {
+      "t": 8.28,
+      "level_db": -11.8,
+      "rise_db": 13
+    },
+    {
+      "t": 8.78,
+      "level_db": -12.7,
+      "rise_db": 10.6
+    },
+    {
+      "t": 9.1,
+      "level_db": -23,
+      "rise_db": 9.1
+    },
+    {
+      "t": 9.36,
+      "level_db": -20.7,
+      "rise_db": 10.8
+    },
+    {
+      "t": 9.77,
+      "level_db": -15.4,
+      "rise_db": 10.4
+    },
+    {
+      "t": 10.14,
+      "level_db": -10.9,
+      "rise_db": 11.7
+    },
+    {
+      "t": 10.29,
+      "level_db": -10.6,
+      "rise_db": 10.3
+    },
+    {
+      "t": 10.45,
+      "level_db": -14.4,
+      "rise_db": 8.5
+    },
+    {
+      "t": 10.75,
+      "level_db": -12.1,
+      "rise_db": 8.1
+    },
+    {
+      "t": 11.69,
+      "level_db": -17.3,
+      "rise_db": 11.4
+    },
+    {
+      "t": 11.79,
+      "level_db": -10.2,
+      "rise_db": 7
+    },
+    {
+      "t": 12.1,
+      "level_db": -5.7,
+      "rise_db": 7.8
+    },
+    {
+      "t": 12.48,
+      "level_db": -6.7,
+      "rise_db": 13
+    },
+    {
+      "t": 12.66,
+      "level_db": -9.5,
+      "rise_db": 11.7
+    },
+    {
+      "t": 12.85,
+      "level_db": -7.1,
+      "rise_db": 15.5
+    },
+    {
+      "t": 13.51,
+      "level_db": -8.3,
+      "rise_db": 6.5
+    },
+    {
+      "t": 13.74,
+      "level_db": -19.5,
+      "rise_db": 12.6
+    },
+    {
+      "t": 14.29,
+      "level_db": -17.6,
+      "rise_db": 8.5
+    },
+    {
+      "t": 14.77,
+      "level_db": -18.7,
+      "rise_db": 8.5
+    },
+    {
+      "t": 14.9,
+      "level_db": -12.2,
+      "rise_db": 6.4
+    },
+    {
+      "t": 15.15,
+      "level_db": -5.5,
+      "rise_db": 13.8
+    },
+    {
+      "t": 15.27,
+      "level_db": -6.6,
+      "rise_db": 9.8
+    },
+    {
+      "t": 15.62,
+      "level_db": -10.7,
+      "rise_db": 6.4
+    },
+    {
+      "t": 15.91,
+      "level_db": -10.5,
+      "rise_db": 12.8
+    },
+    {
+      "t": 16.24,
+      "level_db": -10.2,
+      "rise_db": 15
+    },
+    {
+      "t": 16.7,
+      "level_db": -10,
+      "rise_db": 9.5
+    },
+    {
+      "t": 17.09,
+      "level_db": -14,
+      "rise_db": 6.9
+    },
+    {
+      "t": 17.48,
+      "level_db": -7.4,
+      "rise_db": 11.4
+    },
+    {
+      "t": 17.95,
+      "level_db": -13.6,
+      "rise_db": 12.6
+    },
+    {
+      "t": 18.04,
+      "level_db": -14.7,
+      "rise_db": 18.3
+    },
+    {
+      "t": 18.21,
+      "level_db": -11.2,
+      "rise_db": 6.4
+    },
+    {
+      "t": 18.39,
+      "level_db": -13.7,
+      "rise_db": 11
+    },
+    {
+      "t": 18.57,
+      "level_db": -10.6,
+      "rise_db": 13.1
+    },
+    {
+      "t": 18.73,
+      "level_db": -22,
+      "rise_db": 18.3
+    },
+    {
+      "t": 19.42,
+      "level_db": -13.7,
+      "rise_db": 10.2
+    },
+    {
+      "t": 19.63,
+      "level_db": -21.3,
+      "rise_db": 7.6
+    },
+    {
+      "t": 19.75,
+      "level_db": -13.9,
+      "rise_db": 11.4
+    },
+    {
+      "t": 19.89,
+      "level_db": -7,
+      "rise_db": 15.4
+    },
+    {
+      "t": 20.15,
+      "level_db": -16.6,
+      "rise_db": 8.9
+    },
+    {
+      "t": 20.59,
+      "level_db": -15.8,
+      "rise_db": 12.5
+    },
+    {
+      "t": 20.9,
+      "level_db": -16.4,
+      "rise_db": 12.2
+    },
+    {
+      "t": 21.19,
+      "level_db": -13.7,
+      "rise_db": 27.9
+    },
+    {
+      "t": 21.61,
+      "level_db": -7.9,
+      "rise_db": 6
+    },
+    {
+      "t": 22.17,
+      "level_db": -27.2,
+      "rise_db": 10.4
+    },
+    {
+      "t": 22.3,
+      "level_db": -10.9,
+      "rise_db": 13.9
+    },
+    {
+      "t": 22.53,
+      "level_db": -8.1,
+      "rise_db": 16
+    },
+    {
+      "t": 22.69,
+      "level_db": -13.2,
+      "rise_db": 22.4
+    },
+    {
+      "t": 23.1,
+      "level_db": -16.5,
+      "rise_db": 14.3
+    },
+    {
+      "t": 23.2,
+      "level_db": -23.2,
+      "rise_db": 12
+    },
+    {
+      "t": 23.29,
+      "level_db": -5.7,
+      "rise_db": 15.7
+    },
+    {
+      "t": 23.73,
+      "level_db": -27.8,
+      "rise_db": 14.3
+    },
+    {
+      "t": 23.89,
+      "level_db": -9.4,
+      "rise_db": 31.2
+    },
+    {
+      "t": 24.09,
+      "level_db": -11.5,
+      "rise_db": 31.5
+    },
+    {
+      "t": 24.6,
+      "level_db": -14.1,
+      "rise_db": 13.8
+    },
+    {
+      "t": 24.78,
+      "level_db": -12.2,
+      "rise_db": 7.5
+    },
+    {
+      "t": 25.09,
+      "level_db": -12.2,
+      "rise_db": 9.3
+    },
+    {
+      "t": 25.29,
+      "level_db": -19.3,
+      "rise_db": 8.4
+    },
+    {
+      "t": 25.53,
+      "level_db": -8.7,
+      "rise_db": 21.7
+    },
+    {
+      "t": 25.86,
+      "level_db": -11,
+      "rise_db": 16.3
+    },
+    {
+      "t": 26.15,
+      "level_db": -10.2,
+      "rise_db": 23.5
+    },
+    {
+      "t": 26.81,
+      "level_db": -13.2,
+      "rise_db": 18.5
+    },
+    {
+      "t": 27.22,
+      "level_db": -8.1,
+      "rise_db": 7.9
+    },
+    {
+      "t": 27.59,
+      "level_db": -12.3,
+      "rise_db": 9.1
+    },
+    {
+      "t": 27.77,
+      "level_db": -9,
+      "rise_db": 20.4
+    },
+    {
+      "t": 27.91,
+      "level_db": -9.9,
+      "rise_db": 11
+    },
+    {
+      "t": 28.39,
+      "level_db": -10.7,
+      "rise_db": 13.3
+    },
+    {
+      "t": 28.72,
+      "level_db": -18.6,
+      "rise_db": 13.4
+    },
+    {
+      "t": 29.05,
+      "level_db": -7.8,
+      "rise_db": 15.1
+    },
+    {
+      "t": 29.26,
+      "level_db": -9.8,
+      "rise_db": 13.5
+    },
+    {
+      "t": 29.88,
+      "level_db": -13.7,
+      "rise_db": 11.2
+    },
+    {
+      "t": 30.12,
+      "level_db": -9.6,
+      "rise_db": 12.4
+    },
+    {
+      "t": 30.28,
+      "level_db": -20.6,
+      "rise_db": 10.4
+    },
+    {
+      "t": 30.44,
+      "level_db": -9.2,
+      "rise_db": 8.4
+    },
+    {
+      "t": 30.63,
+      "level_db": -14,
+      "rise_db": 7.2
+    },
+    {
+      "t": 30.85,
+      "level_db": -12.6,
+      "rise_db": 15.9
+    },
+    {
+      "t": 31.08,
+      "level_db": -6.9,
+      "rise_db": 17.8
+    },
+    {
+      "t": 31.49,
+      "level_db": -9.4,
+      "rise_db": 12.3
+    },
+    {
+      "t": 31.88,
+      "level_db": -11.2,
+      "rise_db": 12.5
+    },
+    {
+      "t": 32.31,
+      "level_db": -8.2,
+      "rise_db": 19.5
+    },
+    {
+      "t": 32.56,
+      "level_db": -9.3,
+      "rise_db": 14.3
+    },
+    {
+      "t": 33.13,
+      "level_db": -16.3,
+      "rise_db": 17.7
+    },
+    {
+      "t": 33.62,
+      "level_db": -24.2,
+      "rise_db": 10
+    },
+    {
+      "t": 33.88,
+      "level_db": -16.3,
+      "rise_db": 8.9
+    },
+    {
+      "t": 34.09,
+      "level_db": -9.8,
+      "rise_db": 15.9
+    },
+    {
+      "t": 34.33,
+      "level_db": -14.8,
+      "rise_db": 10.5
+    },
+    {
+      "t": 35.05,
+      "level_db": -21.8,
+      "rise_db": 10.6
+    },
+    {
+      "t": 35.27,
+      "level_db": -8.4,
+      "rise_db": 13.8
+    },
+    {
+      "t": 35.43,
+      "level_db": -19.1,
+      "rise_db": 16.3
+    },
+    {
+      "t": 35.87,
+      "level_db": -12.6,
+      "rise_db": 8
+    },
+    {
+      "t": 36.18,
+      "level_db": -16.3,
+      "rise_db": 12
+    },
+    {
+      "t": 36.44,
+      "level_db": -17.8,
+      "rise_db": 13.1
+    },
+    {
+      "t": 36.66,
+      "level_db": -12.8,
+      "rise_db": 8.7
+    },
+    {
+      "t": 37.08,
+      "level_db": -18.3,
+      "rise_db": 9.4
+    },
+    {
+      "t": 37.59,
+      "level_db": -21.1,
+      "rise_db": 7
+    },
+    {
+      "t": 37.73,
+      "level_db": -20.5,
+      "rise_db": 9.3
+    },
+    {
+      "t": 38.43,
+      "level_db": -13.1,
+      "rise_db": 9.7
+    },
+    {
+      "t": 38.95,
+      "level_db": -17.8,
+      "rise_db": 6.5
+    },
+    {
+      "t": 39.74,
+      "level_db": -29.5,
+      "rise_db": 7.6
+    },
+    {
+      "t": 39.98,
+      "level_db": -8,
+      "rise_db": 22.6
+    },
+    {
+      "t": 40.29,
+      "level_db": -11,
+      "rise_db": 14.2
+    },
+    {
+      "t": 40.5,
+      "level_db": -8.4,
+      "rise_db": 14.1
+    },
+    {
+      "t": 40.73,
+      "level_db": -29.9,
+      "rise_db": 6.2
+    },
+    {
+      "t": 40.97,
+      "level_db": -32.7,
+      "rise_db": 7.2
+    },
+    {
+      "t": 41.06,
+      "level_db": -18.9,
+      "rise_db": 12.2
+    },
+    {
+      "t": 41.51,
+      "level_db": -9.4,
+      "rise_db": 8.3
+    },
+    {
+      "t": 41.65,
+      "level_db": -6.4,
+      "rise_db": 9.7
+    },
+    {
+      "t": 41.89,
+      "level_db": -6.3,
+      "rise_db": 18.2
+    },
+    {
+      "t": 42.02,
+      "level_db": -8.5,
+      "rise_db": 6.6
+    },
+    {
+      "t": 42.34,
+      "level_db": -13.4,
+      "rise_db": 8.9
+    },
+    {
+      "t": 42.48,
+      "level_db": -22.9,
+      "rise_db": 6.4
+    },
+    {
+      "t": 42.58,
+      "level_db": -11.9,
+      "rise_db": 17.8
+    },
+    {
+      "t": 42.74,
+      "level_db": -11.6,
+      "rise_db": 10.6
+    },
+    {
+      "t": 42.93,
+      "level_db": -4.9,
+      "rise_db": 12.2
+    },
+    {
+      "t": 43.2,
+      "level_db": -23.6,
+      "rise_db": 15.1
+    },
+    {
+      "t": 43.54,
+      "level_db": -22.4,
+      "rise_db": 13.4
+    },
+    {
+      "t": 43.93,
+      "level_db": -35.6,
+      "rise_db": 7.2
+    },
+    {
+      "t": 44.22,
+      "level_db": -28.4,
+      "rise_db": 7.5
+    },
+    {
+      "t": 44.56,
+      "level_db": -18.5,
+      "rise_db": 6.1
+    }
+  ],
+  "onset_rate_per_s": 3.365,
+  "chance_hit_per_seam": 0.404,
+  "chance_note": "chance_hit_per_seam = min(1, onset_rate_per_s x 0.12 s): the probability a random seam lands within +-60 ms of an onset. pacing.seams_on_onsets is judged against that chance level (N of M seams on hits vs chance_hit_per_seam x M).",
+  "onset_method": "energy rise >= 6 dB over 30 ms on a 20 ms window / 10 ms hop, level > -45 dBFS, local maximum, >= 80 ms apart. A cue for \"does the seam land on a hit\"; not an event classifier.",
+  "program_end": 44.58,
+  "tail_silence": 0.002,
+  "ending": "sound runs to the end"
+}

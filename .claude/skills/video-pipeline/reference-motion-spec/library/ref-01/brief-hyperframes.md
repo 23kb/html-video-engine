@@ -1,0 +1,449 @@
+# Build brief — HyperFrames (GSAP timeline, data-start / data-duration clips) — ref-01
+
+Source: ref-01 · 44.58 s · 1280×720 (16:9) · 30 fps source, read on a 24 fps grid · audio: yes · presentation chrome: none - the 1280x720 frame is the film. The dark chat card, terminal cards and chat-app card inside it are content the camera visits, not an editor or a device mock around the film.
+
+Sections rendered: rules, mapping, identity, structure, camera plan, landings, clips, beat by beat, seam ledger, pacing, UI motion, grammar, sound, eases, do-not
+
+> Times are approximate within 1/24 s. Frame counts are on the 24 fps grid. No value below is a recovered keyframe or a source ease; eases are named from the strip's shape (see `basis`).
+
+**Evidence ids** (the files sit beside this brief): `c-NNN` = 4 fps composition sheet in `sheets/` (tiles 1–30, 0.25 s each); `f-NNN` = 24 fps sheet in `sheets/` (tiles 1–48, 2 s per sheet); `w-<t>` = 24 fps strip in `windows/` around one seam (tile count per strip in `windows/index.json`); `frame-<t>` = full-resolution measurement frame in `frames/`; `overview` = 24 evenly spaced cells. Cites read `sheet:tiles` with ranges (`f-003:22-23`); `sheets/map.txt` resolves any cell to a frame and a time.
+
+## Rules that made replicas work
+
+1. **Build an exact replica.** Say those words in the build brief. Left alone, a builder adds re-aims, glides and settles the reference never had. Every landing and seam below is the whole movement budget.
+2. **Read the seam strips before writing any transition.** A 4 fps read turns every 1–7-frame dissolve into a hard cut and the film ships blinks. The seam kinds below came from 24 fps strips; keep their frame counts.
+3. **Camera, object and content motion are three different things.** A card growing is an object move; text typing inside a stable box is content; only a whole-composition reframe is camera. Build each with its own mechanism.
+4. **A payoff arrives after a beat.** Show the "before" for the `before_hold` given, then the change with its own motion.
+5. **Hold what the reference holds.** A hold is carried by the subject's own motion (typing, cursor, settle), not by a drift the reference does not have.
+
+## Do not
+
+- Exact replica: do not add glides, re-aims or settles the reference never had. The lens travels exactly 10 times (8 blur pushes, 1 whip, 1 pan); every other join is a fixed-lens replacement.
+- Do not build the house join as a crossfade or blur-dissolve: nothing overlaps. The outgoing melts to the bed, the bed stands bare 1-3 frames, then the next element arrives.
+- Do not soften the three hard cuts (9.71, 20.46, 26.75 s) - they are 1-frame swaps to a sharp incoming.
+- Do not build the blur pushes as dissolves between two compositions: the incoming is the SAME element at x3-5.5, arriving soft and often still drifting; the caption may be replaced under the blur (23.75, 27.58 s).
+- Do not type with a visible caret unless a full-resolution frame shows one (none resolved at 480 px); keep the two speeds: plain lead 3-6 chars/frame, italic accent 1 char/frame.
+- Do not fill the static holds (25.0-26.7 s, 29.0-29.8 s, 42.58-44.58 s) with invented motion; they measure still in the reference.
+- Do not drop the chromatic-aberration fringe on dark edges or the radial vignette; both are on every frame.
+- Do not end on a fade: the picture holds the finished lockup for 2 s and stops with the bed.
+- The 24 fps grid is a resample of a 30 fps source: every frame count here is +-1 and no ease is a recovered keyframe.
+
+## Mapping
+
+- One clip per scene: `data-start` = scene `in`, `data-duration` = `out − in`. Seams are timeline overlaps: the outgoing clip runs `frames/24` s past the seam `t`, the incoming starts at `t`.
+- Camera landings: a transform tween on the scene wrapper with the GSAP ease named; `cut` = no tween, next clip.
+- Eases by GSAP name (the cubic-bezier is the fallback for CustomEase).
+
+## Identity
+
+Palette: `#f3f2ef` ground (the bed centre (71% of the opening frame)) · `#b6b6b5` ground-vignette (the bed's soft dark edges; with #c6c7c4 and #d9d9d6 the vignette ramp (~30% of every frame)) · `#0daf95` accent (teal: icons, pills, rings, checks, the italic accent words; #0c9a81 at the logo mark) · `#283c4c` ink (dark slate: the robot / man silhouettes and the display type) · `#0d1927` ui-surface (the dark chat-app and terminal cards (32% of the frame at 20.25 s)) · `#242423` ui-surface (the opening chat card (46% of the frame at 1.0 s)) · `#82888a` caption-grey (the plain (non-accent) caption words; #919a9e for the tagline)
+Type: caption 3.0% of frame height regular serif; the accent word italic and darker · caption-macro (after a blur push) 12.0% of frame height regular serif, italic accent · display two-liner 4.5% of frame height regular serif, second line italic · headline (the copy) 10.0% of frame height regular serif italic · wordmark 5.0% of frame height regular serif · tagline 1.8% of frame height regular sans · real-UI text (input bar, terminal, chat card) 4.5% of frame height regular serif in the input bar; mono / sans inside the cards · brand-mark 28.0% of frame height teal circular mark above the wordmark
+Ground: A warm off-white bed with a soft grey radial vignette (centre #f3f2ef, edges #b6b6b5); flat, no grid, no grain. Every dark edge (cards, icons, silhouettes) carries a chromatic-aberration fringe (red/cyan split) as a style constant. The bed never leaves; between compositions it stands bare for 1-3 frames.
+Host element: The icon-above-caption lockup: a teal (or slate) icon centred or at the left third with a serif caption typing beneath it - 14 of the 33 compositions. The robot mascot recurs in 6 of them and is the surface the lens pushes into twice.
+Brand colour role: accent
+
+## Structure
+
+- **The problem** 0.00–11.71 s — real chat card -> a coding agent you walk away from -> it is stuck -> nobody knows
+- **The brand answer** 11.71–15.00 s — logo lockup, the copy
+- **The feature run** 15.00–37.92 s — ten short claims, each an icon-above-caption lockup or a card, three of them pushed into at x3-5
+- **Close** 37.92–44.58 s — one thread / start to ship / static logo lockup for the last 2 s
+
+## Camera plan
+
+Cadence: 0.74 landings / s (~1 landing / 1.4 s across 33 landings, cuts included)
+Lens moves: 10 travelled landings
+Max hold: 3.75 s
+Ease voice: snap on the 10 travelled landing(s) (from their eases); every other framing change is a cut
+Zoom range: 1–7
+Lens: The lens travels 10 times in 44.6 s: eight blur pushes into the element already on screen (x3 to x5.5; one of them a blur PULL at 0.92 s), one lateral whip along the input bar at 1.92 s, one lateral pan across the macro orbit at 31.75 s. Every other join replaces the composition on a fixed lens: the house join melts the outgoing to blur, leaves the vignetted bed bare for 1-3 frames, and lets the next icon or caption arrive (fade + sharpen, or a type-on); four inverse zoom-throughs and three melt + settle-ins bring a new composition in oversized; three joins are true 1-frame hard cuts; two cards arrive as a slit that unfolds vertically. Holds are carried by typing, icons popping in, orbiting robots and slow drifts; two holds are truly static (25.0-26.7 s and 42.6-44.6 s). Landing t is the join's first frame; a cut landing's settle time is in its seam row.
+
+| t | subject | fill / zoom | move in | duration | hold | class | carries the hold | evidence | note |
+|---:|---|---|---|---:|---:|---|---|---|---|
+| 0.00 | bare bed; a chat pill pops in at fr 2 and holds small | fill 0.05 (height) zoom 1 | cut | 0.00 | 0.92 | camera | the pill pops from a dot fr 2-6, holds fr 7-14, grows into the card fr 15-22 | f-001:1-14 [high] | opening frame; the pill-to-card growth that follows (fr 15-22) is object motion, not a lens move |
+| 0.92 | dark chat card (the copy) at medium size | fill 0.45 (height) zoom 1 | blur push · expo.out | 0.13 | 0.38 | camera |  | w-0.55:13-18; f-001:21-25 [medium] | a blur PULL: the oversized card settles to medium under 2 frames of blur |
+| 1.42 | macro on the left end of the input bar inside the card (+ and mic icons, the line streaming) | fill 0.22 (height) zoom 7 | blur push · expo.out | 0.38 | 0.13 | camera |  | w-1.05:15-18; f-001:35-43 [high] | x7 into the input bar at the card bottom |
+| 1.92 | macro on the right end of the input bar (send arrow), the arrow cursor rising to it | fill 0.22 (height) zoom 7 | whip · expo.out | 0.46 | 1.04 | camera |  | w-1.95:4-18; w-2.35:1-8 [high] | lateral, left end -> right end of the bar; E1 settle creeps to 3.0 s |
+| 3.42 | teal terminal icon above the caption the copy | fill 0.13 (height) zoom 1 | cut · none | 0.00 | 1.33 | camera |  | w-3.35:6-15; w-3.60:1-9 [high] | reached by seam 4 (clear-then-resolve); settled at 3.75 s |
+| 4.75 | dark terminal card with a teal the copy pill | fill 0.47 (height) zoom 1 | cut · none | 0.00 | 1.08 | camera |  | w-4.65:8-18; f-003:19-31 [medium] | reached by seam 5 (other); settled at 5.25 s |
+| 5.83 | caption the copy with a spinner above the accent word | fill 0.13 (height) zoom 1 | cut · none | 0.00 | 0.71 | camera |  | w-5.85:5-10; f-003:45-48 [medium] | reached by seam 6 (clear-then-resolve); settled at 6 s |
+| 6.54 | the same caption at x3.3 (macro), spinner top-left, drifting left | fill 0.35 (height) zoom 3.3 | blur push · expo.out | 0.38 | 0.42 | camera |  | w-6.45:7-18 [high] | x3.3 into the caption |
+| 7.33 | robot icon above the caption the copy | fill 0.2 (height) zoom 1 | cut · none | 0.00 | 1.17 | camera |  | w-7.30:6-14 [high] | reached by seam 8 (clear-then-resolve); settled at 7.583 s |
+| 8.50 | big robot with question marks and three floating terminal cards | fill 0.85 (height) zoom 1 | cut · none | 0.00 | 1.21 | camera |  | w-8.45:7-17 [high] | reached by seam 9 (clear-then-resolve); settled at 8.917 s |
+| 9.71 | man-at-laptop icon above the caption the copy | fill 0.2 (height) zoom 1 | cut · none | 0.00 | 0.83 | camera | caption types; small question marks pop in around the man | w-9.60:7-8 [high] | reached by seam 10 (hard cut); settled at 9.708 s |
+| 10.54 | the same man at x3 with big question marks | fill 0.9 (height) zoom 3 | blur push · expo.out | 0.38 | 0.79 | camera |  | w-10.40:9-17 [high] | x3 into the man |
+| 11.71 | logo lockup: teal mark above the wordmark, then the copy letter-spaced beneath | fill 0.4 (height) zoom 1 | cut · none | 0.00 | 1.54 | camera |  | w-11.60:1-13 [medium] | reached by seam 12 (inverse zoom-through); settled at 11.917 s |
+| 13.25 | team icon + dash at the left third, caption the copy; robot and terminal icons pop into a thread diagram | fill 0.2 (height) zoom 1 | cut · none | 0.00 | 1.50 | camera |  | w-13.15:8-15 [high] | reached by seam 13 (clear-then-resolve); settled at 13.542 s |
+| 14.75 | teal monitor icon; a ring draws out around it; three robots pop onto the ring and orbit; the copy beside | fill 0.45 (height) zoom 1 | cut · none | 0.00 | 2.67 | camera |  | w-14.80:5-12 [medium] | reached by seam 14 (melt + settle-in); settled at 15.042 s |
+| 17.42 | terminal icon at the left third, caption the copy; robot icons pop into a row, then a check | fill 0.13 (height) zoom 1 | cut · none | 0.00 | 1.96 | camera |  | w-17.35:7-14 [high] | reached by seam 15 (clear-then-resolve); settled at 17.708 s |
+| 19.38 | dark chat-app card with a teal the copy pill and agent progress rows | fill 0.76 (height) zoom 1 | cut · none | 0.00 | 1.08 | camera |  | w-19.30:8-18; c-003:20-21 [medium] | reached by seam 16 (other); settled at 19.917 s |
+| 20.46 | caption the copy with a spinner that becomes a check | fill 0.13 (height) zoom 1 | cut · none | 0.00 | 1.58 | camera | bed bare 2 frames, then caption types; spinner appears, swaps to a check at ~21.2 s | w-20.35:7-12 [medium] | reached by seam 17 (hard cut); settled at 20.458 s |
+| 22.04 | robot icon above the caption the copy | fill 0.2 (height) zoom 1 | cut · none | 0.00 | 1.71 | camera |  | w-22.10:4-18 [high] | reached by seam 18 (clear-then-resolve); settled at 22.333 s |
+| 23.75 | big robot head with a teal steering wheel rising into its hands; display line the copy above | fill 0.85 (height) zoom 4.1 | blur push · expo.out | 0.33 | 2.67 | camera |  | w-23.60:8-16; f-013:1-4 [medium] | x4.1 into the robot; caption replaced under the blur |
+| 26.75 | teal gears icon above the caption the copy | fill 0.2 (height) zoom 1 | cut · none | 0.00 | 0.83 | camera | caption types; the group re-centres left as it grows | w-26.60:8-10 [high] | reached by seam 20 (hard cut); settled at 26.75 s |
+| 27.58 | the same gears at x3 lower-right of centre, display line the copy above | fill 0.7 (height) zoom 3 | blur push · expo.out | 0.54 | 0.63 | camera |  | w-27.40:10-18; f-015:1-3 [medium] | x3 into the gears, re-aimed lower-right; caption replaced under the blur |
+| 28.75 | italic headline the copy alone | fill 0.13 (height) zoom 1 | cut · none | 0.00 | 1.08 | camera |  | w-28.60:1-14; f-015:19-24 [medium] | reached by seam 22 (other); settled at 28.958 s |
+| 29.83 | teal eye icon; ring draws out; three robots pop onto the orbit | fill 0.4 (height) zoom 1 | cut · none | 0.00 | 1.46 | camera |  | w-29.80:7-12; f-015:45-48 [medium] | reached by seam 23 (inverse zoom-through); settled at 30.042 s |
+| 31.29 | macro eye with the orbit ring as an arc across the frame; robots large and soft at the bottom edge | fill 0.5 (height) zoom 5.5 | blur push · expo.out | 0.38 | 0.08 | camera |  | w-31.15:9-17; w-31.60:1-6 [high] | ANTICIPATE: pull x0.81 over 4 frames, then push x5.5 into the eye |
+| 31.75 | macro orbit panned right: arc at the left, a robot riding it, caption the copy centred | fill 0.08 (height) zoom 5.5 | snap · expo.out | 0.38 | 0.92 | camera |  | w-31.60:9-18 [medium] | lateral pan right across the macro orbit, ~40% of width in 9 frames, whip-settle |
+| 33.04 | man icon above the caption the copy | fill 0.2 (height) zoom 1 | cut · none | 0.00 | 1.21 | camera |  | w-33.05:5-11 [medium] | reached by seam 26 (inverse zoom-through); settled at 33.25 s |
+| 34.25 | agent network: operator card centre with the copy pill, six agent cards around it with progress bars | fill 0.75 (height) zoom 1 | cut · none | 0.00 | 1.67 | camera |  | w-34.30:5-18 [medium] | reached by seam 27 (melt + settle-in); settled at 34.583 s |
+| 35.92 | caption the copy with a robot icon fading in above | fill 0.2 (height) zoom 1 | cut · none | 0.00 | 0.71 | camera |  | w-35.85:7-11; f-019:1-3 [medium] | reached by seam 28 (clear-then-resolve); settled at 36.083 s |
+| 36.63 | the same caption at x3.5 with the robot head, drifting left to rest | fill 0.5 (height) zoom 3.5 | blur push · expo.out | 0.38 | 0.92 | camera |  | w-36.60:6-18; f-019:16-35 [high] | x3.5 into the caption; lands moving, drifts left ~15% of width to rest by 37.4 s |
+| 37.92 | terminal icon (becomes a check) above the caption the copy | fill 0.2 (height) zoom 1 | cut · none | 0.00 | 1.67 | camera |  | w-37.85:6-11; f-019:47-48 [medium] | reached by seam 30 (inverse zoom-through); settled at 38.083 s |
+| 39.58 | robot at a laptop with three terminal cards around it, caption the copy above | fill 0.75 (height) zoom 1 | cut · none | 0.00 | 1.25 | camera |  | w-39.60:5-16 [medium] | reached by seam 31 (melt + settle-in); settled at 39.917 s |
+| 40.83 | logo lockup: mark, wordmark, two-line tagline | fill 0.55 (height) zoom 1 | cut · none | 0.00 | 3.75 | camera |  | w-40.65:10-18; w-41.05:1-11 [high] | reached by seam 32 (clear-then-resolve); settled at 41.25 s |
+
+## Clips
+
+| clip | data-start | data-duration | subject | seam out | overlap |
+|---|---:|---:|---|---|---:|
+| S1 | 0.00 | 0.92 | bare bed, then a small grey chat pill that pops from a dot (fr 2-6) and holds; it grows into the dark chat card fr 15-22 | blur push | 0.13 s |
+| S2 | 1.00 | 0.42 | dark chat card (the copy) at medium size | blur push | 0.38 s |
+| S3 | 1.75 | 0.17 | macro on the left end of the input bar inside the card (+ and mic icons, the line streaming) | whip | 0.46 s |
+| S4 | 2.33 | 1.08 | macro on the right end of the input bar (send arrow), the arrow cursor rising to it | clear-then-resolve | 0.38 s |
+| S5 | 3.75 | 1.00 | teal terminal icon above the caption the copy | other | 0.54 s |
+| S6 | 5.25 | 0.58 | dark terminal card with a teal the copy pill | clear-then-resolve | 0.21 s |
+| S7 | 6.00 | 0.54 | caption the copy with a spinner above the accent word | blur push | 0.38 s |
+| S8 | 6.88 | 0.46 | the same caption at x3.3 (macro), spinner top-left, drifting left | clear-then-resolve | 0.29 s |
+| S9 | 7.58 | 0.92 | robot icon above the caption the copy | clear-then-resolve | 0.46 s |
+| S10 | 8.92 | 0.79 | big robot with question marks and three floating terminal cards | hard cut | 0.04 s |
+| S11 | 9.71 | 0.83 | man-at-laptop icon above the caption the copy | blur push | 0.38 s |
+| S12 | 10.88 | 0.83 | the same man at x3 with big question marks | inverse zoom-through | 0.25 s |
+| S13 | 11.92 | 1.33 | logo lockup: teal mark above the wordmark, then the copy letter-spaced beneath | clear-then-resolve | 0.33 s |
+| S14 | 13.54 | 1.21 | team icon + dash at the left third, caption the copy; robot and terminal icons pop into a thread diagram | melt + settle-in | 0.33 s |
+| S15 | 15.04 | 2.38 | teal monitor icon; a ring draws out around it; three robots pop onto the ring and orbit; the copy beside | clear-then-resolve | 0.33 s |
+| S16 | 17.71 | 1.67 | terminal icon at the left third, caption the copy; robot icons pop into a row, then a check | other | 0.58 s |
+| S17 | 19.92 | 0.54 | dark chat-app card with a teal the copy pill and agent progress rows | hard cut | 0.04 s |
+| S18 | 20.46 | 1.58 | caption the copy with a spinner that becomes a check | clear-then-resolve | 0.33 s |
+| S19 | 22.33 | 1.42 | robot icon above the caption the copy | blur push | 0.33 s |
+| S20 | 24.04 | 2.71 | big robot head with a teal steering wheel rising into its hands; display line the copy above | hard cut | 0.04 s |
+| S21 | 26.75 | 0.83 | teal gears icon above the caption the copy | blur push | 0.54 s |
+| S22 | 28.08 | 0.67 | the same gears at x3 lower-right of centre, display line the copy above | other | 0.25 s |
+| S23 | 28.96 | 0.88 | italic headline the copy alone | inverse zoom-through | 0.25 s |
+| S24 | 30.04 | 1.25 | teal eye icon; ring draws out; three robots pop onto the orbit | blur push | 0.38 s |
+| S25 | 31.63 | 0.13 | macro eye with the orbit ring as an arc across the frame; robots large and soft at the bottom edge | other | 0.38 s |
+| S26 | 32.08 | 0.96 | macro orbit panned right: arc at the left, a robot riding it, caption the copy centred | inverse zoom-through | 0.25 s |
+| S27 | 33.25 | 1.00 | man icon above the caption the copy | melt + settle-in | 0.38 s |
+| S28 | 34.58 | 1.33 | agent network: operator card centre with the copy pill, six agent cards around it with progress bars | clear-then-resolve | 0.21 s |
+| S29 | 36.08 | 0.54 | caption the copy with a robot icon fading in above | blur push | 0.38 s |
+| S30 | 36.96 | 0.96 | the same caption at x3.5 with the robot head, drifting left to rest | inverse zoom-through | 0.21 s |
+| S31 | 38.08 | 1.50 | terminal icon (becomes a check) above the caption the copy | melt + settle-in | 0.38 s |
+| S32 | 39.92 | 0.92 | robot at a laptop with three terminal cards around it, caption the copy above | clear-then-resolve | 0.46 s |
+| S33 | 41.25 | 3.33 | logo lockup: mark, wordmark, two-line tagline | — | — |
+
+## Beat by beat
+
+### S1 · 0.00–0.92 s · bare bed, then a small grey chat pill that pops from a dot (fr 2-6) and holds; it grows into the dark chat card fr 15-22
+
+- **On screen:** bare bed, then a small grey chat pill that pops from a dot (fr 2-6) and holds; it grows into the dark chat card fr 15-22. centred. Fill 0.05.
+- **What moves (class):** object, content. Hold carried by: the pill pops from a dot fr 2-6, holds fr 7-14, grows into the card fr 15-22.
+- **Note:** opening: the pill grows into the card as one element; the card is oversized (~75% of frame height) at fr 21-22 before the blur pull
+- **Landing 0.00 s:** cut → bare bed; a chat pill pops in at fr 2 and holds small, fill 0.05 height zoom 1; camera. f-001:1-14 Note: opening frame; the pill-to-card growth that follows (fr 15-22) is object motion, not a lens move
+- **Out (0.92 s): blur push**, 3 f. Outgoing scale-down+blur out (card height ~75% -> ~45% of frame over 2 frames while blurring); incoming settle-from-large+soft-then-sharp from ×1.6. Carrier: the chat card (same surface, smaller). Not on a hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-0.55:13-18; f-001:21-25 REVERSE direction: a blur PULL, not a push. Before it the card is one element growing from a pill (fr 15-22, object motion, content appears as it grows: f-001 tiles 15-22); at fr 23-24 the whole card shrinks and softens, fr 25 it is settled at the medium size. Same surface, new scale, under blur = lens move.
+
+### S2 · 1.00–1.42 s · dark chat card (the copy) at medium size
+
+- **On screen:** dark chat card (the copy) at medium size. centred, slight drift left. Fill 0.45.
+- **What moves (class):** content. Hold carried by: card holds; the input-bar line types small inside it (fr 29-34).
+- **Note:** the input-bar line types small along the card bottom from fr 29
+- **Out (1.42 s): blur push**, 9 f. Outgoing blur (whole card softens in place, no scale change, 4 frames); incoming soft-then-sharp from ×7. Carrier: the input bar inside the card (same surface x7). Not on a hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-1.05:15-18; f-001:35-43 fr 35-38 the card is soft at the same scale; fr 39 swaps to the macro left end of the input bar (soft, the copy and mic icons); sharp by fr 43. The bar caption re-types from the copy (fr 40) in the macro framing although the small bar already read most of the line at fr 34.
+
+### S3 · 1.75–1.92 s · macro on the left end of the input bar inside the card (+ and mic icons, the line streaming)
+
+- **On screen:** macro on the left end of the input bar inside the card (+ and mic icons, the line streaming). bar across the upper third, dark card fills the frame; cursor below. Fill 0.22.
+- **What moves (class):** content. Hold carried by: input-bar caption streams 3-5 chars/frame; arrow cursor drifts below.
+- **Typing 1.63–2.00 s:** input-bar line (real UI, light grey serif); 3-5 chars per frame (70-120 chars/s), no caret resolved; re-types from the start in the macro framing; none (bar fixed width). f-001:40-46; w-1.95:1-4
+- **Out (1.92 s): whip**, 11 f. Outgoing slide+blur left (bar slides left ~15% of width per frame at peak; fr 49-52 unreadable smear); incoming slide-in+soft-then-sharp+already-moving left. Carrier: the input bar and the arrow cursor under it (same surface, right end). Not on a hit. Ease expo.out cubic-bezier(0.0001, 0, 0, 1). w-1.95:4-18; w-2.35:1-8 Lateral whip along the same bar, left end -> right end (send arrow). Smear fr 49-52; readable fr 55; ~1 char/frame drift fr 57-60; sub-character creep continues to ~fr 72 (3.0 s) = E1 whip-settle. The cursor approaches the arrow from below-left fr 65-77 in decelerating steps.
+
+### S4 · 2.33–3.42 s · macro on the right end of the input bar (send arrow), the arrow cursor rising to it
+
+- **On screen:** macro on the right end of the input bar (send arrow), the arrow cursor rising to it. bar across the upper third; arrow at ~53% x. Fill 0.22.
+- **What moves (class):** content, object. Hold carried by: bar creeps left to rest; cursor approaches the send arrow (fr 65-77), rests 6 frames with the hover glow.
+- **Note:** the bar keeps creeping left to ~3.0 s; cursor rests on the arrow from 3.17 s with a teal hover glow
+- **Click 3.17 s:** send arrow at the right end of the input bar → teal outline/glow on the button (hover state, held); the whole macro then clears to the bed at 3.417 s; cursor rests 0.25 s first. w-3.35:1-7; w-2.35:13-18
+- **Out (3.42 s): clear-then-resolve**, 9 f. Outgoing scale-down+blur+slide up-left (macro bar blurs, the card shrinks and exits up-left over 3 frames); incoming fade-in+soft-then-sharp. Carrier: the vignetted bed. Not on a hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-3.35:6-15; w-3.60:1-9 Exit fr 83-85, bed bare 1 frame (fr 86), terminal icon fades in faint at final scale fr 87-90, solid fr 91 as the copy types.
+
+### S5 · 3.75–4.75 s · teal terminal icon above the caption the copy
+
+- **On screen:** teal terminal icon above the caption the copy. icon centred, caption left-anchored at ~32% growing right. Fill 0.13.
+- **What moves (class):** content. Hold carried by: two-speed type-on of the caption; ellipsis typed; static after 4.5 s.
+- **Text 3.75 s:** caption — type-on, 0.38 s, hold 0.60 s. w-3.80:1-8; f-003:1-4 Note: two-speed: plain lead ~4 chars/frame, italic tail 1 char/frame; ellipsis typed at 4.08-4.13 s
+- **Typing 3.75–4.13 s:** caption (plain lead + italic tail); chars per frame 2,3,6,4,5 then 2,1,1,1: ~100 chars/s lead, 24 chars/s italic tail; no caret; text left-anchored at ~32% of width; icon fixed at centre. w-3.80:1-8
+- **Out (4.75 s): other**, 13 f. Outgoing blur+dim (caption + icon soften and fade, 2 frames); incoming settle-from-small from ×0.15. Carrier: the vignetted bed. Not on a hit. The incoming settles on an audio hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-4.65:8-18; f-003:19-31 SLIT UNFOLD. fr 115-116 outgoing melts; fr 117 a dark terminal card appears as a horizontal slit ~8% of frame height, sharp, centred vertically; fr 117-120 it stays a slit and slides left ~3% of width per frame; fr 121-127 it grows vertically about its centre line: heights ~8, 15, 25, 35, 40, 42, 45% (big steps then small = expo.out) while the the copy pill types inside. No overlap tile, no bare tile.
+
+### S6 · 5.25–5.83 s · dark terminal card with a teal the copy pill
+
+- **On screen:** dark terminal card with a teal the copy pill. centred, drifting left ~1% of width per frame. Fill 0.47.
+- **What moves (class):** object, content. Hold carried by: the copy pill types inside the card; card drifts left ~1%/frame.
+- **Note:** arrives as a slit and unfolds (seam 5)
+- **Out (5.83 s): clear-then-resolve**, 5 f. Outgoing blur+dim (terminal card softens and fades to the bed, 2 frames); incoming fade-in. Carrier: the vignetted bed. Lands on an audio hit. The incoming settles on an audio hit. Ease none cubic-bezier(0, 0, 1, 1). w-5.85:5-10; f-003:45-48 Bed bare 1 frame (fr 143); the copy faint at fr 144; the copy sharp fr 145 and the caption keeps typing. Arrival is a type-on with a 1-frame fade, not a soft resolve.
+
+### S7 · 6.00–6.54 s · caption the copy with a spinner above the accent word
+
+- **On screen:** caption the copy with a spinner above the accent word. centred. Fill 0.13.
+- **What moves (class):** content. Hold carried by: caption types, spinner appears above and rotates.
+- **Out (6.54 s): blur push**, 9 f. Outgoing blur (caption + spinner soften in place, 5 frames, no scale change); incoming soft-then-sharp+already-moving from ×3.3. Carrier: the caption the copy (same surface x3.3). Not on a hit. The incoming settles on an audio hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-6.45:7-18 Caption cap height ~12 px -> ~40 px on a 270 px tile. Lands still drifting left (~1% of width per frame) through fr 176.
+
+### S8 · 6.88–7.33 s · the same caption at x3.3 (macro), spinner top-left, drifting left
+
+- **On screen:** the same caption at x3.3 (macro), spinner top-left, drifting left. right-end crop of the line, centred vertically. Fill 0.35.
+- **What moves (class):** camera, content. Hold carried by: headline drifts left ~1%/frame; spinner rotates.
+- **Out (7.33 s): clear-then-resolve**, 7 f. Outgoing scale-down+blur (headline shrinks ~x0.6 with a horizontal smear, 2 frames); incoming fade-in+soft-then-sharp. Carrier: the vignetted bed. Lands on an audio hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-7.30:6-14 Bed bare 2 frames (fr 179-180); robot icon faint fr 181, solid fr 183 as the copy types.
+
+### S9 · 7.58–8.50 s · robot icon above the caption the copy
+
+- **On screen:** robot icon above the caption the copy. icon centred, caption left-anchored. Fill 0.2.
+- **What moves (class):** content. Hold carried by: caption types under the robot icon.
+- **Text 7.58 s:** caption — type-on, 0.88 s, hold 0.04 s. w-7.30:13-18; w-8.45:1-6 Note: the copy; italic lead this time
+- **Out (8.50 s): clear-then-resolve**, 11 f. Outgoing blur+dim (icon + caption soften and fade, 2 frames); incoming fade-in+soft-then-sharp. Carrier: the vignetted bed. Not on a hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-8.45:7-17 Bed bare 1 frame (fr 207). Staggered arrival at final scale and position: question marks + card ghosts fr 208, the big robot fr 210, all sharp by fr 215.
+
+### S10 · 8.92–9.71 s · big robot with question marks and three floating terminal cards
+
+- **On screen:** big robot with question marks and three floating terminal cards. robot bottom-centre cropped at the frame edge; cards left / right / top. Fill 0.85.
+- **What moves (class):** object. Hold carried by: terminal cards float (parallax drift), question marks bob.
+- **Note:** cards float with a slow parallax; question marks bob
+- **Out (9.71 s): hard cut**, 1 f. Outgoing none; incoming none. Carrier: the vignetted bed. Not on a hit. Ease none cubic-bezier(0, 0, 1, 1). w-9.60:7-8 fr 233 robot scene sharp and full; fr 234 the man icon alone, sharp, at final scale and position. No soft frame either side. Caveat: the 30->24 resample drops 1 source frame in 5, so a 1-source-frame exit could be hidden.
+
+### S11 · 9.71–10.54 s · man-at-laptop icon above the caption the copy
+
+- **On screen:** man-at-laptop icon above the caption the copy. icon centred, caption left-anchored; small question marks pop in around him. Fill 0.2.
+- **What moves (class):** content, object. Hold carried by: caption types; small question marks pop in around the man.
+- **Landing 9.71 s:** cut (none, cubic-bezier(0, 0, 1, 1)) → man-at-laptop icon above the caption the copy, fill 0.2 height zoom 1; camera. w-9.60:7-8 Note: reached by seam 10 (hard cut); settled at 9.708 s
+- **Text 9.75 s:** caption — type-on, 0.50 s, hold 0.29 s. w-9.60:9-18 Note: the copy, ~2-3 chars/frame
+- **Out (10.54 s): blur push**, 9 f. Outgoing blur (man + caption soften in place, 4 frames); incoming soft-then-sharp from ×3. Carrier: the man icon (same surface x3). Not on a hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-10.40:9-17 Head width ~30 px -> ~90 px on a 270 px tile; the caption falls out of frame below.
+
+### S12 · 10.88–11.71 s · the same man at x3 with big question marks
+
+- **On screen:** the same man at x3 with big question marks. centred, cropped at the bottom; slow pull-back from 11.4 s. Fill 0.9.
+- **What moves (class):** camera, object. Hold carried by: question marks bob; slow pull-back x0.88 from 11.4 s.
+- **Out (11.71 s): inverse zoom-through**, 6 f. Outgoing scale-down+blur (slow pull x0.88 over fr 275-281, then x0.7 + horizontal streak bands at fr 282-283); incoming settle-from-large+soft-then-sharp from ×2. Carrier: none. Lands on an audio hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-11.60:1-13 fr 283 is the blurriest: the logo mark oversized (~x2) and soft with the wordmark smeared into horizontal bands; fr 284-286 it settles to size and sharpens; the copy -> the copy at fr 287.
+
+### S13 · 11.92–13.25 s · logo lockup: teal mark above the wordmark, then the copy letter-spaced beneath
+
+- **On screen:** logo lockup: teal mark above the wordmark, then the copy letter-spaced beneath. centred. Fill 0.4.
+- **What moves (class):** content. Hold carried by: wordmark completes; the copy types letter-spaced 12.25-13.0 s.
+- **Out (13.25 s): clear-then-resolve**, 8 f. Outgoing blur+dim (lockup softens and fades, 2 frames); incoming fade-in+soft-then-sharp. Carrier: the vignetted bed. Not on a hit. The incoming settles on an audio hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-13.15:8-15 Bed bare 1 frame (fr 321); a dash then the team icon fade in fr 322-325 at the left third; the copy types at fr 326.
+
+### S14 · 13.54–14.75 s · team icon + dash at the left third, caption the copy; robot and terminal icons pop into a thread diagram
+
+- **On screen:** team icon + dash at the left third, caption the copy; robot and terminal icons pop into a thread diagram. left third, growing right. Fill 0.2.
+- **What moves (class):** content, object. Hold carried by: caption types; robot and terminal icons pop into the thread diagram one by one.
+- **Text 13.54 s:** caption — type-on, 0.50 s, hold 0.70 s. w-13.15:15-18; c-002:25-29 Note: the copy: 8 chars in one frame then 2-4 per frame; icons pop into the diagram above one by one
+- **Out (14.75 s): melt + settle-in**, 8 f. Outgoing blur+dim+scale-down (diagram + caption soften, fade and shrink x0.86, 4 frames); incoming settle-from-large+soft-then-sharp from ×1.3. Carrier: the vignetted bed. Lands on an audio hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-14.80:5-12 No bare tile and no overlap tile at 24 fps: fr 358 faint outgoing, fr 359 the monitor icon alone, soft, ~x1.3, settling to size by fr 362. The ring then draws out from the icon fr 364-370 (object, E1 shape).
+
+### S15 · 15.04–17.42 s · teal monitor icon; a ring draws out around it; three robots pop onto the ring and orbit; the copy beside
+
+- **On screen:** teal monitor icon; a ring draws out around it; three robots pop onto the ring and orbit; the copy beside. orbit at the left third, two-line caption right of it. Fill 0.45.
+- **What moves (class):** object, content. Hold carried by: ring draws out from the icon (E1); robots pop onto the ring at ~15.5, 15.75, 16.0 s and orbit; caption types.
+- **Note:** ring draws fr 364-370; robots at ~15.5 / 15.75 / 16.0 s
+- **Text 16.00 s:** caption two-liner — type-on, 0.50 s, hold 0.90 s. c-003:5-7 Note: the copy beside the orbit
+- **Out (17.42 s): clear-then-resolve**, 8 f. Outgoing scale-down+blur (orbit scene shrinks x0.85 and the caption smears, 1 frame); incoming fade-in+soft-then-sharp. Carrier: the vignetted bed. Not on a hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-17.35:7-14 Bed bare 2 frames (fr 420-421); terminal icon fades in at the left third fr 422-425; the copy types at fr 426.
+
+### S16 · 17.71–19.38 s · terminal icon at the left third, caption the copy; robot icons pop into a row, then a check
+
+- **On screen:** terminal icon at the left third, caption the copy; robot icons pop into a row, then a check. left third growing right. Fill 0.13.
+- **What moves (class):** content, object. Hold carried by: caption types; robot icons pop in one by one; check mark fades in last (19.0-19.2 s).
+- **Text 17.71 s:** caption — type-on, 0.60 s, hold 1.00 s. w-17.35:14-18; c-003:12-17 Note: 13 chars in one frame then 3-6 per frame; robot icons pop in above ~0.25 s apart
+- **Payoff 19.00 s:** a check mark fades in at the end of the row of agent icons; emphasis fade-in of a teal check, 0.2 s; show the before for 1.00 s. w-19.30:1-5
+- **Out (19.38 s): other**, 14 f. Outgoing blur (row of icons + caption soften, 1 frame); incoming settle-from-small from ×0.15. Carrier: the vignetted bed. Lands on an audio hit. The incoming settles on an audio hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-19.30:8-18; c-003:20-21 SLIT UNFOLD, twin of seam 5 in mechanism: fr 467 a dark chat card appears as a horizontal slit, sharp; fr 467-470 slit slides left; fr 471+ it grows vertically while the copy types in a teal pill; full height by ~fr 479 (c-003 tile 81 = 20.0 s shows it complete). B is read from the c-sheet, so +-2 frames.
+
+### S17 · 19.92–20.46 s · dark chat-app card with a teal the copy pill and agent progress rows
+
+- **On screen:** dark chat-app card with a teal the copy pill and agent progress rows. centred. Fill 0.76.
+- **What moves (class):** object, content. Hold carried by: the copy pill types; progress bars fill.
+- **Note:** arrives as a slit and unfolds (seam 16); bars fill
+- **Out (20.46 s): hard cut**, 1 f. Outgoing none; incoming none. Carrier: the vignetted bed. Not on a hit. Ease none cubic-bezier(0, 0, 1, 1). w-20.35:7-12 The chat card vanishes in one frame to the bare bed (fr 491 sharp card, fr 492 bed). Bed bare fr 492-493; the copy faint fr 494, then the copy types. Resample caveat: a single-source-frame exit could be hidden.
+
+### S18 · 20.46–22.04 s · caption the copy with a spinner that becomes a check
+
+- **On screen:** caption the copy with a spinner that becomes a check. centred. Fill 0.13.
+- **What moves (class):** content. Hold carried by: bed bare 2 frames, then caption types; spinner appears, swaps to a check at ~21.2 s.
+- **Note:** bed bare 2 frames before the caption types
+- **Landing 20.46 s:** cut (none, cubic-bezier(0, 0, 1, 1)) → caption the copy with a spinner that becomes a check, fill 0.13 height zoom 1; camera. w-20.35:7-12 Note: reached by seam 17 (hard cut); settled at 20.458 s
+- **Text 20.54 s:** caption — type-on, 0.50 s, hold 1.00 s. w-20.35:10-18 Note: the copy: bursts 1,5,2,2,1,1,1,2
+- **Payoff 21.20 s:** the spinner above the copy becomes a teal check; emphasis icon swap; show the before for 0.45 s. c-003:24-26
+- **Out (22.04 s): clear-then-resolve**, 8 f. Outgoing blur+dim (check + caption soften and fade, 5 frames); incoming fade-in+soft-then-sharp. Carrier: the vignetted bed. Not on a hit. The incoming settles on an audio hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-22.10:4-18 Bed bare 1 frame (fr 535); the copy soft fr 536, sharp fr 537, caption types; the robot icon fades in separately fr 541-544 (5 frames after the text starts).
+
+### S19 · 22.33–23.75 s · robot icon above the caption the copy
+
+- **On screen:** robot icon above the caption the copy. icon centred, caption left-anchored. Fill 0.2.
+- **What moves (class):** content. Hold carried by: caption types; robot icon fades in 5 frames later.
+- **Out (23.75 s): blur push**, 8 f. Outgoing blur+dim (icon + caption soften and fade, 1 frame); incoming soft-then-sharp from ×4.1. Carrier: the robot mascot (icon -> head crop, same element x4). Lands on an audio hit. The incoming settles on an audio hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-23.60:8-16; f-013:1-4 Robot ears ~45 px -> ~185 px on a 480 px tile; the head lands a little lower than the icon sat. The caption is REPLACED under the blur: the old line is gone at fr 572 and the copy types above the head from fr 575. Read as a lens move because the robot is continuous; a builder could also stage it as a melt into a new composition.
+
+### S20 · 24.04–26.75 s · big robot head with a teal steering wheel rising into its hands; display line the copy above
+
+- **On screen:** big robot head with a teal steering wheel rising into its hands; display line the copy above. head bottom-centre cropped at the frame edge; text centred above. Fill 0.85.
+- **What moves (class):** camera, object, content. Hold carried by: second caption line types 12-24 chars/s to 24.58 s; steering wheel rises from below the frame 24.58-25.0 s; STATIC from 25.0 to 26.7 s (nothing measurable at 24 fps).
+- **Note:** wheel rises 24.58-25.0 s; STATIC 25.0-26.7 s
+- **Typing 24.00–24.58 s:** display two-liner (the copy); 1 char per 1-2 frames (12-24 chars/s), no caret; none. f-013:1-15
+- **Payoff 24.58 s:** a teal steering wheel rises into the robot's hands from below the frame; emphasis object rise, ~10 frames, ease-out; show the before for 0.50 s. f-013:15-25
+- **Out (26.75 s): hard cut**, 1 f. Outgoing none; incoming none. Carrier: the vignetted bed. Lands on an audio hit. The incoming settles on an audio hit. Ease none cubic-bezier(0, 0, 1, 1). w-26.60:8-10 fr 642 robot + wheel + headline sharp; fr 643 the gears icon alone, sharp, at final scale. the copy types at fr 644. The icon then drifts left ~5% of width over 9 frames as the caption grows (the group re-centres while typing).
+
+### S21 · 26.75–27.58 s · teal gears icon above the caption the copy
+
+- **On screen:** teal gears icon above the caption the copy. centred group that re-centres left while typing. Fill 0.2.
+- **What moves (class):** content. Hold carried by: caption types; the group re-centres left as it grows.
+- **Landing 26.75 s:** cut (none, cubic-bezier(0, 0, 1, 1)) → teal gears icon above the caption the copy, fill 0.2 height zoom 1; camera. w-26.60:8-10 Note: reached by seam 20 (hard cut); settled at 26.75 s
+- **Text 26.79 s:** caption — type-on, 0.50 s, hold 0.30 s. w-26.60:10-18 Note: the copy; the icon+caption group re-centres left as it grows (~5% of width over 9 frames)
+- **Out (27.58 s): blur push**, 13 f. Outgoing blur+dim (gears + caption soften and fade, 4 frames); incoming soft-then-sharp from ×3. Carrier: the gears icon (same element x3). Lands on an audio hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-27.40:10-18; f-015:1-3 Gears ~40 px -> ~120 px; they land lower-right of centre. The incoming stays soft 8 frames while the new caption the copy types above it (soft type-on), sharp at fr 675. Caption replaced under the blur, as in seam 19.
+
+### S22 · 28.08–28.75 s · the same gears at x3 lower-right of centre, display line the copy above
+
+- **On screen:** the same gears at x3 lower-right of centre, display line the copy above. gears lower-right, line upper-left. Fill 0.7.
+- **What moves (class):** camera, content. Hold carried by: slow drift; pull-back exit from ~28.5 s.
+- **Note:** slow drift, then a pull-back exit from ~28.5 s
+- **Out (28.75 s): other**, 6 f. Outgoing scale-down (whole composition pulls back x1 -> x0.35 over fr 683-691 (8 frames, accelerating); only the small gears remain at fr 691, caption gone); incoming soft-then-sharp. Carrier: the vignetted bed. Lands on an audio hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-28.60:1-14; f-015:19-24 HEADLINE SMEAR-IN. fr 692 the headline the copy arrives in one frame as a horizontal stretch (~x4 wide) with motion-blur streaks, only the middle letters readable; fr 693 the copy soft and slightly large; fr 694-695 the copy settling; fr 696 the copy sharp (the last letter lands last). Not a camera whip: the gears do not smear, the text does.
+
+### S23 · 28.96–29.83 s · italic headline the copy alone
+
+- **On screen:** italic headline the copy alone. centred. Fill 0.13.
+- **What moves (class):** none. Hold carried by: static headline (29.0-29.8 s, nothing measurable).
+- **Note:** STATIC 29.0-29.8 s
+- **Out (29.83 s): inverse zoom-through**, 6 f. Outgoing scale-down+blur (headline shrinks x0.65 with horizontal streaks, 2 frames); incoming settle-from-large from ×1.6. Carrier: none. Lands on an audio hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-29.80:7-12; f-015:45-48 The eye icon arrives SHARP at ~x1.6 (90 px) and settles to 55 px over fr 719-722. The ring then draws out from it fr 725-730.
+
+### S24 · 30.04–31.29 s · teal eye icon; ring draws out; three robots pop onto the orbit
+
+- **On screen:** teal eye icon; ring draws out; three robots pop onto the orbit. centred. Fill 0.4.
+- **What moves (class):** object. Hold carried by: ring draws out; robots pop onto the orbit 30.5-31.0 s and orbit; third robot fades in.
+- **Note:** third robot fades in 30.9-31.1 s
+- **Out (31.29 s): blur push**, 9 f. Outgoing scale-down+blur (ANTICIPATION: the orbit shrinks x0.81 (ring 105 -> 85 px) and softens over 4 frames before the push); incoming soft-then-sharp from ×5.5. Carrier: the eye + orbit ring (same surface x5.5). Not on a hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-31.15:9-17; w-31.60:1-6 Eye ~30 px -> ~170 px on a 480 px tile; the ring becomes an arc across the frame; the orbiting robots are large and soft at the bottom edge and keep orbiting.
+
+### S25 · 31.63–31.75 s · macro eye with the orbit ring as an arc across the frame; robots large and soft at the bottom edge
+
+- **On screen:** macro eye with the orbit ring as an arc across the frame; robots large and soft at the bottom edge. eye centred, arc top-left to right. Fill 0.5.
+- **What moves (class):** camera, object. Hold carried by: robots keep orbiting (large, soft, bottom edge).
+- **Note:** anticipation pull then push (seam 24)
+- **Out (31.75 s): other**, 9 f. Outgoing slide left (the eye exits left over fr 763-769 (~10% of width per frame at first, decelerating)); incoming slide-in+soft-then-sharp+already-moving left. Carrier: the orbit ring arc and the robots (the same macro surface). Not on a hit. Ease expo.out cubic-bezier(0.0001, 0, 0, 1). w-31.60:9-18 LATERAL PAN on the same surface: the lens travels right from the eye to the caption the copy, which arrives from the right under motion blur (fr 764-769) and lands centred and sharp at fr 770-771, still creeping left. No tile is unreadable, so not a whip; no scale change, so not a blur push. Landing verb: snap.
+
+### S26 · 32.08–33.04 s · macro orbit panned right: arc at the left, a robot riding it, caption the copy centred
+
+- **On screen:** macro orbit panned right: arc at the left, a robot riding it, caption the copy centred. caption centred, arc left. Fill 0.08.
+- **What moves (class):** camera, object. Hold carried by: caption creeps left to rest; robot rides the arc; arc sweeps.
+- **Out (33.04 s): inverse zoom-through**, 6 f. Outgoing scale-down+blur (the macro world pulls back to ~x0.5 in one frame (fr 795) with the caption smeared); incoming settle-from-large from ×1.6. Carrier: none. Not on a hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-33.05:5-11 fr 796 the man icon arrives sharp and oversized, settles fr 797-799; the copy types at fr 798.
+
+### S27 · 33.25–34.25 s · man icon above the caption the copy
+
+- **On screen:** man icon above the caption the copy. icon centred, caption left-anchored. Fill 0.2.
+- **What moves (class):** content. Hold carried by: caption types.
+- **Out (34.25 s): melt + settle-in**, 9 f. Outgoing blur+dim (man + caption soften and fade, 4 frames); incoming settle-from-large from ×1.12. Carrier: the vignetted bed. Not on a hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-34.30:5-18 The agent-network diagram arrives ~x1.12 (300 px -> 265 px wide on a 480 px tile) and settles by fr 831; softness on arrival not certain at this tile size. The the copy pill then types fr 831-840 and the outer cards' progress bars fill.
+
+### S28 · 34.58–35.92 s · agent network: operator card centre with the copy pill, six agent cards around it with progress bars
+
+- **On screen:** agent network: operator card centre with the copy pill, six agent cards around it with progress bars. centred. Fill 0.75.
+- **What moves (class):** content. Hold carried by: the copy pill types; progress bars fill; diagram drifts.
+- **Note:** bars fill; slight drift
+- **Text 34.63 s:** teal pill over the operator card — type-on, 0.40 s, hold 0.85 s. w-34.30:13-18 Note: the copy, 2 chars/frame
+- **Payoff 34.60 s:** the copy pill types over the operator card; the six agent cards' progress bars fill; emphasis pill type-on + bar fills; show the before for 0.20 s. w-34.30:13-18
+- **Out (35.92 s): clear-then-resolve**, 5 f. Outgoing scale-down+blur (diagram shrinks x0.68 and softens, 1 frame); incoming fade-in. Carrier: the vignetted bed. Lands on an audio hit. Ease none cubic-bezier(0, 0, 1, 1). w-35.85:7-11; f-019:1-3 Bed bare 2 frames (fr 864-865); the copy faint fr 866; the copy whole at fr 867 (10 characters in one frame), then the italic tail types 1-3 characters per frame.
+
+### S29 · 36.08–36.63 s · caption the copy with a robot icon fading in above
+
+- **On screen:** caption the copy with a robot icon fading in above. centred. Fill 0.2.
+- **What moves (class):** content. Hold carried by: caption types in bursts; robot icon fades in above.
+- **Out (36.63 s): blur push**, 9 f. Outgoing blur+dim (icon + caption soften and fade in place, 4 frames); incoming soft-then-sharp+already-moving from ×3.5. Carrier: the caption the copy + robot icon (same surface x3.5). Lands on an audio hit. Ease expo.out cubic-bezier(0.0001, 0, 0, 1). w-36.60:6-18; f-019:16-35 Lands moving: the surface drifts left after the swap (robot head x 31% -> 23% over fr 888-891, then 23% -> 17% over fr 891-899, at rest ~fr 899 = 37.4 s, a tiny creep back to 19% by fr 909). Whip-settle shape over ~15 frames, ~15% of width.
+
+### S30 · 36.96–37.92 s · the same caption at x3.5 with the robot head, drifting left to rest
+
+- **On screen:** the same caption at x3.5 with the robot head, drifting left to rest. right-end crop of the line, head above. Fill 0.5.
+- **What moves (class):** camera. Hold carried by: surface drifts left ~15% of width, whip-settle, at rest by 37.4 s; static 37.4-37.9 s.
+- **Note:** drift ~15% of width, at rest by 37.4 s
+- **Out (37.92 s): inverse zoom-through**, 5 f. Outgoing scale-down+blur (headline shrinks x0.5 with a horizontal smear, 1 frame); incoming settle-from-large from ×2. Carrier: none. Not on a hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-37.85:6-11; f-019:47-48 fr 912 the terminal icon arrives sharp at ~x2 (80 px), settles to 40 px by fr 915; the copy types at fr 915.
+
+### S31 · 38.08–39.58 s · terminal icon (becomes a check) above the caption the copy
+
+- **On screen:** terminal icon (becomes a check) above the caption the copy. icon centred, caption left-anchored. Fill 0.2.
+- **What moves (class):** content. Hold carried by: caption types; terminal icon swaps to a check mark (dot grows) at ~38.5 s.
+- **Text 38.08 s:** caption — type-on, 0.50 s, hold 1.00 s. w-37.85:11-18 Note: the copy, 1-5 chars/frame; icon above swaps to a check at ~38.5 s
+- **Payoff 38.50 s:** the terminal icon above the copy becomes a check (a dot grows into it); emphasis icon swap with scale-up; show the before for 0.40 s. c-006:4-6
+- **Out (39.58 s): melt + settle-in**, 9 f. Outgoing blur+dim (check + caption soften and fade, 2 frames); incoming settle-from-large+soft-then-sharp from ×1.25. Carrier: the vignetted bed. Not on a hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-39.60:5-16 The robot-at-laptop arrives soft at ~x1.25 (fr 953) and settles while the terminal cards stagger in around it: right card fr 955, left card fr 957, top-left card fr 961; the copy types above at fr 956; all sharp by fr 959.
+
+### S32 · 39.92–40.83 s · robot at a laptop with three terminal cards around it, caption the copy above
+
+- **On screen:** robot at a laptop with three terminal cards around it, caption the copy above. centred. Fill 0.75.
+- **What moves (class):** object, content. Hold carried by: caption types; third terminal card fades in.
+- **Note:** cards stagger in 39.75-40.0 s
+- **Out (40.83 s): clear-then-resolve**, 11 f. Outgoing blur+dim (robot scene softens and fades, 3 frames); incoming fade-in+soft-then-sharp. Carrier: the vignetted bed. Not on a hit. Ease expo.out cubic-bezier(0.16, 1, 0.3, 1). w-40.65:10-18; w-41.05:1-11 Bed bare 3 frames (fr 984-986), the longest bare beat in the film; the logo mark fades in at final scale fr 987-991 while the copy types 1 letter per frame and the tagline types beneath.
+
+### S33 · 41.25–44.58 s · logo lockup: mark, wordmark, two-line tagline
+
+- **On screen:** logo lockup: mark, wordmark, two-line tagline. centred. Fill 0.55.
+- **What moves (class):** content. Hold carried by: wordmark 1 letter/frame, tagline types to 42.58 s; STATIC 42.58-44.58 s (hard stop).
+- **Note:** types to 42.58 s then STATIC to the end (44.58 s)
+- **Typing 41.13–42.58 s:** wordmark + tagline lockup; wordmark 1 letter per frame; tagline ~1 char per 1-2 frames, second line slower (1 char per 2 frames); none. w-41.05:8-18; f-022:1-15
+
+## Seam ledger
+
+| # | t | kind | frames | outgoing | incoming | carrier | on hit | ease | evidence | note |
+|---|---:|---|---:|---|---|---|---|---|---|---|
+| 1 | 0.92 | blur push | 3 f | scale-down+blur out — card height ~75% -> ~45% of frame over 2 frames while blurring (2 f) | settle-from-large+soft-then-sharp from ×1.6 (1 f) | the chat card (same surface, smaller) | no (-153 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-0.55:13-18; f-001:21-25 [medium] | REVERSE direction: a blur PULL, not a push. Before it the card is one element growing from a pill (fr 15-22, object motion, content appears as it grows: f-001 tiles 15-22); at fr 23-24 the whole card shrinks and softens, fr 25 it is settled at the medium size. Same surface, new scale, under blur = lens move. |
+| 2 | 1.42 | blur push | 9 f | blur — whole card softens in place, no scale change, 4 frames (4 f) | soft-then-sharp from ×7 (4 f) | the input bar inside the card (same surface x7) | no (77 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-1.05:15-18; f-001:35-43 [high] | fr 35-38 the card is soft at the same scale; fr 39 swaps to the macro left end of the input bar (soft, the copy and mic icons); sharp by fr 43. The bar caption re-types from the copy (fr 40) in the macro framing although the small bar already read most of the line at fr 34. |
+| 3 | 1.92 | whip | 11 f | slide+blur left — bar slides left ~15% of width per frame at peak; fr 49-52 unreadable smear (6 f) | slide-in+soft-then-sharp+already-moving left (5 f) | the input bar and the arrow cursor under it (same surface, right end) | no (77 ms) | expo.out cubic-bezier(0.0001, 0, 0, 1) | w-1.95:4-18; w-2.35:1-8 [high] | Lateral whip along the same bar, left end -> right end (send arrow). Smear fr 49-52; readable fr 55; ~1 char/frame drift fr 57-60; sub-character creep continues to ~fr 72 (3.0 s) = E1 whip-settle. The cursor approaches the arrow from below-left fr 65-77 in decelerating steps. |
+| 4 | 3.42 | clear-then-resolve | 9 f | scale-down+blur+slide up-left — macro bar blurs, the card shrinks and exits up-left over 3 frames (3 f) | fade-in+soft-then-sharp (5 f) | the vignetted bed | no (187 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-3.35:6-15; w-3.60:1-9 [high] | Exit fr 83-85, bed bare 1 frame (fr 86), terminal icon fades in faint at final scale fr 87-90, solid fr 91 as the copy types. |
+| 5 | 4.75 | other (settle on onset) | 13 f | blur+dim — caption + icon soften and fade, 2 frames (2 f) | settle-from-small from ×0.15 (11 f) | the vignetted bed | no (70 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-4.65:8-18; f-003:19-31 [medium] | SLIT UNFOLD. fr 115-116 outgoing melts; fr 117 a dark terminal card appears as a horizontal slit ~8% of frame height, sharp, centred vertically; fr 117-120 it stays a slit and slides left ~3% of width per frame; fr 121-127 it grows vertically about its centre line: heights ~8, 15, 25, 35, 40, 42, 45% (big steps then small = expo.out) while the the copy pill types inside. No overlap tile, no bare tile. |
+| 6 | 5.83 | clear-then-resolve (settle on onset) | 5 f | blur+dim — terminal card softens and fades to the bed, 2 frames (2 f) | fade-in (1 f) | the vignetted bed | yes (13 ms) | none cubic-bezier(0, 0, 1, 1) | w-5.85:5-10; f-003:45-48 [medium] | Bed bare 1 frame (fr 143); the copy faint at fr 144; the copy sharp fr 145 and the caption keeps typing. Arrival is a type-on with a 1-frame fade, not a soft resolve. |
+| 7 | 6.54 | blur push (settle on onset) | 9 f | blur — caption + spinner soften in place, 5 frames, no scale change (5 f) | soft-then-sharp+already-moving from ×3.3 (4 f) | the caption the copy (same surface x3.3) | no (-88 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-6.45:7-18 [high] | Caption cap height ~12 px -> ~40 px on a 270 px tile. Lands still drifting left (~1% of width per frame) through fr 176. |
+| 8 | 7.33 | clear-then-resolve | 7 f | scale-down+blur — headline shrinks ~x0.6 with a horizontal smear, 2 frames (2 f) | fade-in+soft-then-sharp (3 f) | the vignetted bed | yes (13 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-7.30:6-14 [high] | Bed bare 2 frames (fr 179-180); robot icon faint fr 181, solid fr 183 as the copy types. |
+| 9 | 8.50 | clear-then-resolve | 11 f | blur+dim — icon + caption soften and fade, 2 frames (2 f) | fade-in+soft-then-sharp (8 f) | the vignetted bed | no (220 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-8.45:7-17 [high] | Bed bare 1 frame (fr 207). Staggered arrival at final scale and position: question marks + card ghosts fr 208, the big robot fr 210, all sharp by fr 215. |
+| 10 | 9.71 | hard cut | 1 f | none | none | the vignetted bed | no (-62 ms) | none cubic-bezier(0, 0, 1, 1) | w-9.60:7-8 [high] | fr 233 robot scene sharp and full; fr 234 the man icon alone, sharp, at final scale and position. No soft frame either side. Caveat: the 30->24 resample drops 1 source frame in 5, so a 1-source-frame exit could be hidden. |
+| 11 | 10.54 | blur push | 9 f | blur — man + caption soften in place, 4 frames (4 f) | soft-then-sharp from ×3 (4 f) | the man icon (same surface x3) | no (92 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-10.40:9-17 [high] | Head width ~30 px -> ~90 px on a 270 px tile; the caption falls out of frame below. |
+| 12 | 11.71 | inverse zoom-through | 6 f | scale-down+blur — slow pull x0.88 over fr 275-281, then x0.7 + horizontal streak bands at fr 282-283 (2 f) | settle-from-large+soft-then-sharp from ×2 (4 f) | none | yes (18 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-11.60:1-13 [medium] | fr 283 is the blurriest: the logo mark oversized (~x2) and soft with the wordmark smeared into horizontal bands; fr 284-286 it settles to size and sharpens; the copy -> the copy at fr 287. |
+| 13 | 13.25 | clear-then-resolve (settle on onset) | 8 f | blur+dim — lockup softens and fades, 2 frames (2 f) | fade-in+soft-then-sharp (4 f) | the vignetted bed | no (-260 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-13.15:8-15 [high] | Bed bare 1 frame (fr 321); a dash then the team icon fade in fr 322-325 at the left third; the copy types at fr 326. |
+| 14 | 14.75 | melt + settle-in | 8 f | blur+dim+scale-down — diagram + caption soften, fade and shrink x0.86, 4 frames (4 f) | settle-from-large+soft-then-sharp from ×1.3 (4 f) | the vignetted bed | yes (-20 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-14.80:5-12 [medium] | No bare tile and no overlap tile at 24 fps: fr 358 faint outgoing, fr 359 the monitor icon alone, soft, ~x1.3, settling to size by fr 362. The ring then draws out from the icon fr 364-370 (object, E1 shape). |
+| 15 | 17.42 | clear-then-resolve | 8 f | scale-down+blur — orbit scene shrinks x0.85 and the caption smears, 1 frame (1 f) | fade-in+soft-then-sharp (4 f) | the vignetted bed | no (-63 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-17.35:7-14 [high] | Bed bare 2 frames (fr 420-421); terminal icon fades in at the left third fr 422-425; the copy types at fr 426. |
+| 16 | 19.38 | other (settle on onset) | 14 f | blur — row of icons + caption soften, 1 frame (1 f) | settle-from-small from ×0.15 (13 f) | the vignetted bed | yes (-45 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-19.30:8-18; c-003:20-21 [medium] | SLIT UNFOLD, twin of seam 5 in mechanism: fr 467 a dark chat card appears as a horizontal slit, sharp; fr 467-470 slit slides left; fr 471+ it grows vertically while the copy types in a teal pill; full height by ~fr 479 (c-003 tile 81 = 20.0 s shows it complete). B is read from the c-sheet, so +-2 frames. |
+| 17 | 20.46 | hard cut | 1 f | none | none | the vignetted bed | no (-132 ms) | none cubic-bezier(0, 0, 1, 1) | w-20.35:7-12 [medium] | The chat card vanishes in one frame to the bare bed (fr 491 sharp card, fr 492 bed). Bed bare fr 492-493; the copy faint fr 494, then the copy types. Resample caveat: a single-source-frame exit could be hidden. |
+| 18 | 22.04 | clear-then-resolve (settle on onset) | 8 f | blur+dim — check + caption soften and fade, 5 frames (5 f) | fade-in+soft-then-sharp (2 f) | the vignetted bed | no (-128 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-22.10:4-18 [high] | Bed bare 1 frame (fr 535); the copy soft fr 536, sharp fr 537, caption types; the robot icon fades in separately fr 541-544 (5 frames after the text starts). |
+| 19 | 23.75 | blur push (settle on onset) | 8 f | blur+dim — icon + caption soften and fade, 1 frame (1 f) | soft-then-sharp from ×4.1 (6 f) | the robot mascot (icon -> head crop, same element x4) | yes (20 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-23.60:8-16; f-013:1-4 [medium] | Robot ears ~45 px -> ~185 px on a 480 px tile; the head lands a little lower than the icon sat. The caption is REPLACED under the blur: the old line is gone at fr 572 and the copy types above the head from fr 575. Read as a lens move because the robot is continuous; a builder could also stage it as a melt into a new composition. |
+| 20 | 26.75 | hard cut (settle on onset) | 1 f | none | none | the vignetted bed | yes (-60 ms) | none cubic-bezier(0, 0, 1, 1) | w-26.60:8-10 [high] | fr 642 robot + wheel + headline sharp; fr 643 the gears icon alone, sharp, at final scale. the copy types at fr 644. The icon then drifts left ~5% of width over 9 frames as the caption grows (the group re-centres while typing). |
+| 21 | 27.58 | blur push | 13 f | blur+dim — gears + caption soften and fade, 4 frames (4 f) | soft-then-sharp from ×3 (8 f) | the gears icon (same element x3) | yes (-7 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-27.40:10-18; f-015:1-3 [medium] | Gears ~40 px -> ~120 px; they land lower-right of centre. The incoming stays soft 8 frames while the new caption the copy types above it (soft type-on), sharp at fr 675. Caption replaced under the blur, as in seam 19. |
+| 22 | 28.75 | other | 6 f | scale-down — whole composition pulls back x1 -> x0.35 over fr 683-691 (8 frames, accelerating); only the small gears remain at fr 691, caption gone (8 f) | soft-then-sharp (4 f) | the vignetted bed | yes (30 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-28.60:1-14; f-015:19-24 [medium] | HEADLINE SMEAR-IN. fr 692 the headline the copy arrives in one frame as a horizontal stretch (~x4 wide) with motion-blur streaks, only the middle letters readable; fr 693 the copy soft and slightly large; fr 694-695 the copy settling; fr 696 the copy sharp (the last letter lands last). Not a camera whip: the gears do not smear, the text does. |
+| 23 | 29.83 | inverse zoom-through | 6 f | scale-down+blur — headline shrinks x0.65 with horizontal streaks, 2 frames (2 f) | settle-from-large from ×1.6 (3 f) | none | yes (-47 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-29.80:7-12; f-015:45-48 [medium] | The eye icon arrives SHARP at ~x1.6 (90 px) and settles to 55 px over fr 719-722. The ring then draws out from it fr 725-730. |
+| 24 | 31.29 | blur push | 9 f | scale-down+blur — ANTICIPATION: the orbit shrinks x0.81 (ring 105 -> 85 px) and softens over 4 frames before the push (4 f) | soft-then-sharp from ×5.5 (4 f) | the eye + orbit ring (same surface x5.5) | no (-198 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-31.15:9-17; w-31.60:1-6 [high] | Eye ~30 px -> ~170 px on a 480 px tile; the ring becomes an arc across the frame; the orbiting robots are large and soft at the bottom edge and keep orbiting. |
+| 25 | 31.75 | other | 9 f | slide left — the eye exits left over fr 763-769 (~10% of width per frame at first, decelerating) (7 f) | slide-in+soft-then-sharp+already-moving left (8 f) | the orbit ring arc and the robots (the same macro surface) | no (-130 ms) | expo.out cubic-bezier(0.0001, 0, 0, 1) | w-31.60:9-18 [medium] | LATERAL PAN on the same surface: the lens travels right from the eye to the caption the copy, which arrives from the right under motion blur (fr 764-769) and lands centred and sharp at fr 770-771, still creeping left. No tile is unreadable, so not a whip; no scale change, so not a blur push. Landing verb: snap. |
+| 26 | 33.04 | inverse zoom-through | 6 f | scale-down+blur — the macro world pulls back to ~x0.5 in one frame (fr 795) with the caption smeared (2 f) | settle-from-large from ×1.6 (3 f) | none | no (-88 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-33.05:5-11 [medium] | fr 796 the man icon arrives sharp and oversized, settles fr 797-799; the copy types at fr 798. |
+| 27 | 34.25 | melt + settle-in | 9 f | blur+dim — man + caption soften and fade, 4 frames (4 f) | settle-from-large from ×1.12 (4 f) | the vignetted bed | no (-80 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-34.30:5-18 [medium] | The agent-network diagram arrives ~x1.12 (300 px -> 265 px wide on a 480 px tile) and settles by fr 831; softness on arrival not certain at this tile size. The the copy pill then types fr 831-840 and the outer cards' progress bars fill. |
+| 28 | 35.92 | clear-then-resolve | 5 f | scale-down+blur — diagram shrinks x0.68 and softens, 1 frame (1 f) | fade-in (1 f) | the vignetted bed | yes (47 ms) | none cubic-bezier(0, 0, 1, 1) | w-35.85:7-11; f-019:1-3 [medium] | Bed bare 2 frames (fr 864-865); the copy faint fr 866; the copy whole at fr 867 (10 characters in one frame), then the italic tail types 1-3 characters per frame. |
+| 29 | 36.63 | blur push | 9 f | blur+dim — icon + caption soften and fade in place, 4 frames (4 f) | soft-then-sharp+already-moving from ×3.5 (4 f) | the caption the copy + robot icon (same surface x3.5) | yes (-35 ms) | expo.out cubic-bezier(0.0001, 0, 0, 1) | w-36.60:6-18; f-019:16-35 [high] | Lands moving: the surface drifts left after the swap (robot head x 31% -> 23% over fr 888-891, then 23% -> 17% over fr 891-899, at rest ~fr 899 = 37.4 s, a tiny creep back to 19% by fr 909). Whip-settle shape over ~15 frames, ~15% of width. |
+| 30 | 37.92 | inverse zoom-through | 5 f | scale-down+blur — headline shrinks x0.5 with a horizontal smear, 1 frame (1 f) | settle-from-large from ×2 (3 f) | none | no (187 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-37.85:6-11; f-019:47-48 [medium] | fr 912 the terminal icon arrives sharp at ~x2 (80 px), settles to 40 px by fr 915; the copy types at fr 915. |
+| 31 | 39.58 | melt + settle-in | 9 f | blur+dim — check + caption soften and fade, 2 frames (2 f) | settle-from-large+soft-then-sharp from ×1.25 (6 f) | the vignetted bed | no (-157 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-39.60:5-16 [medium] | The robot-at-laptop arrives soft at ~x1.25 (fr 953) and settles while the terminal cards stagger in around it: right card fr 955, left card fr 957, top-left card fr 961; the copy types above at fr 956; all sharp by fr 959. |
+| 32 | 40.83 | clear-then-resolve | 11 f | blur+dim — robot scene softens and fades, 3 frames (3 f) | fade-in+soft-then-sharp (5 f) | the vignetted bed | no (103 ms) | expo.out cubic-bezier(0.16, 1, 0.3, 1) | w-40.65:10-18; w-41.05:1-11 [high] | Bed bare 3 frames (fr 984-986), the longest bare beat in the film; the logo mark fades in at final scale fr 987-991 while the copy types 1 letter per frame and the tagline types beneath. |
+
+## Pacing
+
+- Landing cadence: 0.74 / s · longest hold 3.33 s · cuts per 10 s: 7.18
+- Seams on audio onsets: 12 of 32 seams within 60 ms of an audio onset (chance level ~12.9 of 32 at 3.365 onsets/s); the bed is dense (3.4 onsets/s, LRA 1.8 LU), so hits are not evidence of cutting to the music.
+- Typing cadence: Captions type without a visible caret (at 480 px). Two speeds: the plain lead of a line runs 3-6 characters per frame (70-140 chars/s, the copy in 4 frames), the italic accent tail 1 character per frame (24 chars/s, the copy fr 95-99). Whole words can land in one frame (the copy at fr 867). Display lines are slower: the copy 1 char per 1-2 frames (12-24 chars/s). Wordmark 1 letter per frame. · stagger spacing: Siblings ~0.25 s apart: robots onto the orbit ring at 15.5/15.75/16.0 s and 30.5/30.75/31.0 s; robot icons in the row at ~18.0/18.25/18.5/18.75 s, check 0.25 s later; terminal cards at 39.75/39.83/40.0 s (2-4 frames apart).
+- Holds: 1.00 s ×0.42 s (card holds; the input-bar line types small inside it (fr 29-34)); 1.75 s ×0.17 s (input-bar caption streams 3-5 chars/frame; arrow cursor drifts below); 2.33 s ×1.08 s (bar creeps left to rest; cursor approaches the send arrow (fr 65-77), rests 6 frames with the hover glow); 3.75 s ×1.00 s (two-speed type-on of the caption; ellipsis typed; static after 4.5 s); 5.25 s ×0.58 s (the copy pill types inside the card; card drifts left ~1%/frame); 6.00 s ×0.54 s (caption types, spinner appears above and rotates); 6.88 s ×0.46 s (headline drifts left ~1%/frame; spinner rotates); 7.58 s ×0.92 s (caption types under the robot icon); 8.92 s ×0.79 s (terminal cards float (parallax drift), question marks bob); 9.71 s ×0.83 s (caption types; small question marks pop in around the man); 10.88 s ×0.83 s (question marks bob; slow pull-back x0.88 from 11.4 s); 11.92 s ×1.33 s (wordmark completes; the copy types letter-spaced 12.25-13.0 s); 13.54 s ×1.21 s (caption types; robot and terminal icons pop into the thread diagram one by one); 15.04 s ×2.38 s (ring draws out from the icon (E1); robots pop onto the ring at ~15.5, 15.75, 16.0 s and orbit; caption types); 17.71 s ×1.67 s (caption types; robot icons pop in one by one; check mark fades in last (19.0-19.2 s)); 19.92 s ×0.54 s (the copy pill types; progress bars fill); 20.46 s ×1.58 s (bed bare 2 frames, then caption types; spinner appears, swaps to a check at ~21.2 s); 22.33 s ×1.42 s (caption types; robot icon fades in 5 frames later); 24.04 s ×2.71 s (second caption line types 12-24 chars/s to 24.58 s; steering wheel rises from below the frame 24.58-25.0 s; STATIC from 25.0 to 26.7 s (nothing measurable at 24 fps)); 26.75 s ×0.83 s (caption types; the group re-centres left as it grows); 28.08 s ×0.67 s (slow drift; pull-back exit from ~28.5 s); 28.96 s ×0.88 s (static headline (29.0-29.8 s, nothing measurable)); 30.04 s ×1.25 s (ring draws out; robots pop onto the orbit 30.5-31.0 s and orbit; third robot fades in); 31.63 s ×0.13 s (robots keep orbiting (large, soft, bottom edge)); 32.08 s ×0.96 s (caption creeps left to rest; robot rides the arc; arc sweeps); 33.25 s ×1.00 s (caption types); 34.58 s ×1.33 s (the copy pill types; progress bars fill; diagram drifts); 36.08 s ×0.54 s (caption types in bursts; robot icon fades in above); 36.96 s ×0.96 s (surface drifts left ~15% of width, whip-settle, at rest by 37.4 s; static 37.4-37.9 s); 38.08 s ×1.50 s (caption types; terminal icon swaps to a check mark (dot grows) at ~38.5 s); 39.92 s ×0.92 s (caption types; third terminal card fades in); 41.25 s ×3.33 s (wordmark 1 letter/frame, tagline types to 42.58 s; STATIC 42.58-44.58 s (hard stop))
+
+## UI motion
+
+- Cursor: present — arrow, ~6% of frame height in the macro input-bar framing (2.0-3.4 s); approaches the send arrow from below-left in decelerating steps over ~0.5 s (fr 65-77); the send button already shows a teal hover glow when the cursor arrives; the cursor stays on the button through the pull-out. No cursor anywhere after 3.5 s.
+- Agent vs user steps: User: one beat only, the cursor sends the message in the opening (2.7-3.4 s). Agent/system: everything else appears on its own (captions type, icons pop, cards unfold, checks fill, progress bars run).
+- Card rises: 4.83 s rise 0 of frame from ×0.15 over 0.46 s; 19.42 s rise 0 of frame from ×0.15 over 0.50 s; 39.67 s rise 0 of frame from ×1.25 soft over 0.25 s
+
+## Grammar
+
+- Entrances: icon fades in at final scale and position on the bare bed (3-5 frames), then the caption types beneath or beside it; a dark UI card arrives as a horizontal slit and unfolds vertically about its centre (expo.out heights over ~7 frames) while a teal pill types inside; a new composition arrives oversized (x1.1-2) and settles sharp in 3-6 frames (melt + settle-in / inverse zoom-through); the same element arrives x3-5.5 under 4 frames of blur (blur push), often still drifting; siblings pop in ~0.25 s apart: robots onto a ring, icons into a row, terminal cards around a scene; a headline arrives in one frame as a horizontal smear and settles sharp (once, the copy)
+- Exits: melt: the whole composition blurs and dims to the bed in 1-5 frames (the house exit); pull-back: the composition shrinks x0.35-0.85, often with a 1-frame horizontal streak, then the next composition arrives oversized; hard cut to the next icon with no treatment (3 times); the bed stands bare 1-3 frames after most exits
+- Reveal order: Icon first (fades or pops), then the caption types left to right; the plain lead types fast (3-6 chars/frame), the italic accent word last and slowest (1 char/frame); a payoff icon (check, spinner-to-check, wheel) arrives after the line completes; the blur push, when it comes, follows ~0.5-1 s after the caption is complete.
+- Motifs: blur push into the element already on screen (8 of 32 joins); melt to blur, bare bed 1-3 frames, next element arrives (9 of 32 joins); orbit ring drawn out from an icon with robots orbiting it (twice); dark UI card that unfolds from a slit with a teal typed pill (twice); icon-above-caption lockup with a two-speed type-on; chromatic-aberration fringe on every dark edge; spinner that becomes a check as the payoff
+
+## Sound
+
+Measured on the mixed program: -13.1 LUFS integrated, LRA 1.8 LU, true peak -0.1 dBTP. Mixed program measurement. Not a delivery target. Stems, ducking and SFX counts cannot be recovered.
+Layers: VO — not separable from the mixed program; the on-screen lines are narration-shaped but no voice is proven by the measurement; music — one continuous bed: 3.365 onsets/s, LRA 1.8 LU, RMS deciles within 2 dB (-11.5 to -13.6 dBFS), no silence, -13.1 LUFS integrated; SFX — not recoverable from the mix; 12 of 32 seams sit within 60 ms of an onset against a chance level of 12.9, so the cuts are not measurably placed on hits.
+Energy arc: flat opening to middle; holds to the end. Ending: hard stop: the bed runs to the last frame (tail silence 2 ms) while the picture holds the static logo lockup from 42.58 s to 44.58 s.
+Sync points: 5.83 s seam 6 (clear-then-resolve) ↔ energy onset +13 ms (chance-level hit on a dense bed); 7.33 s seam 8 (clear-then-resolve) ↔ energy onset +13 ms (chance-level hit on a dense bed); 11.71 s seam 12 (inverse zoom-through) ↔ energy onset +18 ms (chance-level hit on a dense bed); 14.75 s seam 14 (melt + settle-in) ↔ energy onset -20 ms (chance-level hit on a dense bed); 23.75 s seam 19 (blur push) ↔ energy onset +20 ms (chance-level hit on a dense bed); 27.58 s seam 21 (blur push) ↔ energy onset -7 ms (chance-level hit on a dense bed)
+
+## Eases
+
+| name | GSAP | cubic-bezier | frames | used for | GSAP |
+|---|---|---|---:|---|---|
+| E1 whip-settle | `expo.out` | (0.0001, 0, 0, 1) | 12 f | the whip settle along the input bar (creeps to 3.0 s), the pan settle at 31.75 s, the post-push drifts (36.96-37.4 s), the slit unfold heights | `expo.out` |
+| sharpen-in | `expo.out` | (0.16, 1, 0.3, 1) | 4 f | soft-then-sharp arrivals after every blur push and resolve; settle-from-large arrivals (3-6 frames) | `expo.out` |
+| melt-out | `power2.in` | (0.11, 0, 0.5, 0) | 3 f | blur + dim exits to the bed (1-5 frames) | `power2.in` |
+| pull-back exit | `power3.in` | (0.32, 0, 0.67, 0) | 8 f | the scale-down exits before the inverse zoom-throughs and before the copy (x1 -> 0.35 over 8 frames, accelerating) | `power3.in` |
+| linear | `none` | (0, 0, 1, 1) | 1 f | type-on characters, hard cuts, icon swaps, the smear frame | `none` |
+| object rise / draw | `power3.out` | (0.33, 1, 0.68, 1) | 10 f | the steering wheel rising into the robot's hands (24.58-25.0 s), the ring drawing out from an icon (6-7 frames) | `power3.out` |
+

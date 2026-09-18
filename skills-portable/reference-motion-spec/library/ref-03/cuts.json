@@ -1,0 +1,1907 @@
+{
+  "version": 1,
+  "source": "ref-03",
+  "candidates": [
+    {
+      "t": 0,
+      "from_sheet": "c-001",
+      "tiles": [
+        1,
+        2
+      ],
+      "note": "film opens inside a blue mass; title sharpens behind it"
+    },
+    {
+      "t": 0.85,
+      "from_sheet": "c-001",
+      "tiles": [
+        4,
+        5
+      ],
+      "note": "the brand title -> solid blue field 'Ai -'"
+    },
+    {
+      "t": 1.85,
+      "from_sheet": "c-001",
+      "tiles": [
+        8,
+        9
+      ],
+      "note": "blue field -> light bed with wide input (soft/faint)"
+    },
+    {
+      "t": 2.85,
+      "from_sheet": "c-001",
+      "tiles": [
+        12,
+        13
+      ],
+      "note": "wide input -> macro crop of the same input, caret; a lens move"
+    },
+    {
+      "t": 4.35,
+      "from_sheet": "c-001",
+      "tiles": [
+        18,
+        19
+      ],
+      "note": "macro left end -> right end of an input with send button + cursor, blue gradient bed"
+    },
+    {
+      "t": 5.35,
+      "from_sheet": "c-001",
+      "tiles": [
+        22,
+        23
+      ],
+      "note": "input right end -> checklist card (soft on tile 23)"
+    },
+    {
+      "t": 6.6,
+      "from_sheet": "c-001",
+      "tiles": [
+        27,
+        28
+      ],
+      "note": "checklist card -> small 'the brand.' on the light bed"
+    },
+    {
+      "t": 7.35,
+      "from_sheet": "c-001",
+      "tiles": [
+        30
+      ],
+      "note": "closing bed -> title under the blue mass (c-002 tile 1); loop join"
+    },
+    {
+      "t": 8.35,
+      "from_sheet": "c-002",
+      "tiles": [
+        4,
+        5
+      ],
+      "note": "cycle 2 twin of 0.85"
+    },
+    {
+      "t": 9.35,
+      "from_sheet": "c-002",
+      "tiles": [
+        8,
+        9
+      ],
+      "note": "cycle 2 twin of 1.85"
+    },
+    {
+      "t": 10.35,
+      "from_sheet": "c-002",
+      "tiles": [
+        12,
+        13
+      ],
+      "note": "cycle 2 twin of 2.85"
+    },
+    {
+      "t": 11.85,
+      "from_sheet": "c-002",
+      "tiles": [
+        18,
+        19
+      ],
+      "note": "cycle 2 twin of 4.35"
+    },
+    {
+      "t": 12.85,
+      "from_sheet": "c-002",
+      "tiles": [
+        22,
+        23
+      ],
+      "note": "cycle 2 twin of 5.35"
+    },
+    {
+      "t": 14.1,
+      "from_sheet": "c-002",
+      "tiles": [
+        27,
+        28
+      ],
+      "note": "cycle 2 twin of 6.6"
+    },
+    {
+      "t": 14.9,
+      "from_sheet": "c-002",
+      "tiles": [
+        30
+      ],
+      "note": "does a third join start before the end? (strip says no: film ends on frame 360)"
+    }
+  ],
+  "seams": [
+    {
+      "id": "1",
+      "t": 0,
+      "t_end": 0.333,
+      "kind": "colour sweep",
+      "opens_film": true,
+      "frames_24": 8,
+      "duration": 0.333,
+      "from_scene": "S7-prev-cycle",
+      "to_scene": "S1",
+      "outgoing": {
+        "treatment": "none",
+        "direction": "none",
+        "note": "no outgoing composition: the export starts on the sweep's first frame (frame 1 == frame 181)"
+      },
+      "incoming": {
+        "treatment": "reveal-behind+soft-then-sharp",
+        "direction": "right",
+        "frames_24": 8,
+        "note": "'the brand' title revealed left to right in the mass's wake; letters soft under the soft edge, sharp one tile later"
+      },
+      "carrier": "the the brand brand mark top-left (screen space) and the near-white bed; the blue mass itself continues from the previous cycle's closing frame",
+      "on_onset": false,
+      "onset_delta_ms": 70,
+      "settle_on_onset": false,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "evidence": [
+        {
+          "sheet": "w-0.00",
+          "tiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "note": "soft blue mass edge at x ~190, 230, 265, 300, 345, 390, 430, 470 of 480 on tiles 1-8 (~40 px/tile, constant); tile 9 clean"
+        },
+        {
+          "sheet": "f-001",
+          "tiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "note": "same frames; tile 8 keeps a blue trace at the bottom-right corner, tile 9 does not"
+        }
+      ],
+      "confidence": "high",
+      "note": "Mass travels rightward off frame at ~40/480 of the width per frame (linear). B is tile 8 or 9 (7-8 frames); 8 written. The film starts mid-sweep: the pre-roll rule."
+    },
+    {
+      "id": "2",
+      "t": 0.917,
+      "t_end": 0.917,
+      "kind": "hard cut",
+      "frames_24": 1,
+      "duration": 0.042,
+      "from_scene": "S1",
+      "to_scene": "S2",
+      "outgoing": {
+        "treatment": "slide",
+        "direction": "left",
+        "amount": "title x at 480-px strip scale 108,108,108,100,88,78 on frames 17-22: ~-6% of frame width, accelerating",
+        "frames_24": 4,
+        "note": "the title is already in exit motion; the bed does not move"
+      },
+      "incoming": {
+        "treatment": "none",
+        "note": "solid blue field with the word 'Ai' already present on the first incoming frame"
+      },
+      "carrier": "the the brand brand mark top-left (stays in place on the blue field); nothing else",
+      "on_onset": false,
+      "onset_delta_ms": -847,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "evidence": [
+        {
+          "sheet": "w-0.80",
+          "tiles": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "note": "A = tile 6 (frame 22, light bed, title at x 78), B = tile 7 (frame 23, blue, 'Ai'); both sharp, nothing between"
+        },
+        {
+          "sheet": "f-001",
+          "tiles": [
+            19,
+            20,
+            21,
+            22,
+            23
+          ]
+        }
+      ],
+      "confidence": "high",
+      "note": "Exit slide of the title reads power2.in (steps 0, -8, -12, -10 of 480 then the cut). The cut lands on the first word of the statement."
+    },
+    {
+      "id": "3",
+      "t": 1.875,
+      "t_end": 2.167,
+      "kind": "soft-to-sharp resolve",
+      "frames_24": 7,
+      "duration": 0.292,
+      "from_scene": "S2",
+      "to_scene": "S3",
+      "outgoing": {
+        "treatment": "none",
+        "note": "blue field sharp and static to the last frame; the bed flips blue -> near-white on the cut frame"
+      },
+      "incoming": {
+        "treatment": "settle-from-small+soft-then-sharp+fade-in",
+        "direction": "in",
+        "from_scale": 0.5,
+        "frames_24": 7,
+        "note": "heading + wide input arrive faint AND soft on the first frame after the cut, grow from roughly half size (measured by eye on two tiles) and sharpen in place over 7 frames; a residual line from the preceding source scene slides right and fades over the same frames"
+      },
+      "carrier": "the the brand brand mark top-left; the bed flips blue -> near-white in the same frame",
+      "on_onset": false,
+      "onset_delta_ms": -1805,
+      "ease": {
+        "gsap": "expo.out",
+        "cubic_bezier": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
+        "basis": "vocabulary default"
+      },
+      "evidence": [
+        {
+          "sheet": "w-1.90",
+          "tiles": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ],
+          "note": "A = tile 2 (frame 45, blue), first differing tile 3 (frame 46, light bed, ghost input + 'your broker portal.'), input readable by tile 9 (frame 52), full by tile 10 (frame 53)"
+        },
+        {
+          "sheet": "w-1.80",
+          "tiles": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "sheet": "f-001",
+          "tiles": [
+            45,
+            46,
+            47,
+            48
+          ]
+        },
+        {
+          "sheet": "f-002",
+          "tiles": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "confidence": "high",
+      "note": "Kind corrected from the blind read (hard cut + fade-in): the incoming is soft, not only faint — see w-1.90 tiles 3-6 at 480 px — and it grows, so this is a resolve with a settle-from-small incoming."
+    },
+    {
+      "id": "4",
+      "t": 2.917,
+      "t_end": 3.083,
+      "kind": "blur push",
+      "frames_24": 5,
+      "duration": 0.208,
+      "from_scene": "S3",
+      "to_scene": "S4",
+      "outgoing": {
+        "treatment": "blur+slide",
+        "direction": "right",
+        "amount": "heading x at 480-px scale 120,120,122,127,130,142,152,182 on frames 65-72 (accelerating, ~13% of width by frame 72); blur visible on frames 71-72",
+        "frames_24": 2,
+        "note": "the drift starts ~4 frames before the blur"
+      },
+      "incoming": {
+        "treatment": "slide-in+soft-then-sharp",
+        "direction": "right",
+        "from_scale": 1.9,
+        "frames_24": 3,
+        "note": "the same input box ~1.9x (box height 118 px wide framing -> 223 px macro, frame.mjs 2.5 s vs 4.0 s), arriving soft and left-shifted (box left edge 152,182,190,200 of 480 on frames 73-76), caret already in it; sharp by frame 75"
+      },
+      "carrier": "the input surface and its heading: same element, larger crop; the state changes under the blur (placeholder 'Write me a health benifits poem' -> empty box with a caret)",
+      "on_onset": false,
+      "onset_delta_ms": -2847,
+      "ease": {
+        "gsap": "expo.out",
+        "cubic_bezier": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
+        "basis": "vocabulary default"
+      },
+      "evidence": [
+        {
+          "sheet": "w-2.80",
+          "tiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "note": "A = tile 6 (frame 70), tiles 7-8 (71-72) soft and shifted right, tile 9 (frame 73) the same heading/input at ~2x soft, tile 11 (frame 75) sharp with 'C|'"
+        },
+        {
+          "sheet": "f-002",
+          "tiles": [
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27
+          ]
+        }
+      ],
+      "confidence": "high",
+      "note": "The one lens move of the cycle. Movement class camera: heading and box scale together, the frame edge crops the box's right end. Exit power2.in (vocabulary default); entry decelerates 30, 8, 10 of 480 over three tiles, too few to name a curve."
+    },
+    {
+      "id": "5",
+      "t": 4.458,
+      "t_end": 4.458,
+      "kind": "hard cut",
+      "frames_24": 1,
+      "duration": 0.042,
+      "from_scene": "S4",
+      "to_scene": "S5",
+      "outgoing": {
+        "treatment": "slide",
+        "direction": "left",
+        "amount": "macro box left edge at 480-px scale 207,207,205,200,197,188,183 on frames 101-107: ~-5% of width, accelerating",
+        "frames_24": 6,
+        "note": "typing continues to the last frame ('Compare the brand Pl|')"
+      },
+      "incoming": {
+        "treatment": "slide-in",
+        "direction": "left",
+        "frames_24": 4,
+        "note": "the send-state input's right end lands from the right: box right edge 355,345,340,337,335 of 480 on frames 108-112 (~4% of width, steps 10,5,3,2); the cursor enters with it at the lower right"
+      },
+      "carrier": "the the brand brand mark; a text input of the same family (rounded box) but a different crop, copy ('...u need to know'), border weight and bed, so no shared landmark holds its place",
+      "on_onset": false,
+      "onset_delta_ms": 1212,
+      "ease": {
+        "gsap": "power3.out",
+        "cubic_bezier": [
+          0.33,
+          1,
+          0.68,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "evidence": [
+        {
+          "sheet": "w-4.30",
+          "tiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "note": "A = tile 7 (frame 107, macro, sharp), B = tile 8 (frame 108, right-end crop, sharp, blue-gradient bed); tiles 8-12 the incoming settles leftward"
+        },
+        {
+          "sheet": "f-003",
+          "tiles": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16
+          ]
+        }
+      ],
+      "confidence": "high",
+      "note": "Not a reframe cut: the copy in the box changes ('Compare the brand Pl' -> '...u need to know'), the border becomes a 2-px blue stroke and the bed gains a blue gradient, so it is a new composition that happens to use the same input styling."
+    },
+    {
+      "id": "6",
+      "t": 5.5,
+      "t_end": 5.792,
+      "kind": "melt + settle-in",
+      "frames_24": 7,
+      "duration": 0.292,
+      "from_scene": "S5",
+      "to_scene": "S6",
+      "outgoing": {
+        "treatment": "blur",
+        "direction": "none",
+        "amount": "the input (right end, send button) goes soft over 2 frames (slightly, then unreadable); no dim; the bed is unchanged",
+        "frames_24": 2
+      },
+      "incoming": {
+        "treatment": "slide-in+soft-then-sharp",
+        "direction": "up",
+        "from_scale": 1,
+        "frames_24": 5,
+        "note": "the checklist card arrives soft about 12 % of frame height LOW (card top 70 px into a 270 px tile on the first frame, 40 px four frames later) and slides up while sharpening; its left edge stays at 100/480 and the heading width does not change, so no horizontal or scale settle"
+      },
+      "carrier": "the light-blue gradient bed (unchanged through the join) and the the brand brand mark",
+      "on_onset": false,
+      "onset_delta_ms": 170,
+      "settle_on_onset": false,
+      "ease": {
+        "gsap": "expo.out",
+        "cubic_bezier": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "evidence": [
+        {
+          "sheet": "w-5.30",
+          "tiles": [
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "note": "A = tile 8 (frame 132, sharp input), tiles 9-10 (133-134) input soft, tile 11 (frame 135) card soft in place, tile 12 (136) sharper"
+        },
+        {
+          "sheet": "f-003",
+          "tiles": [
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43
+          ],
+          "note": "B = tile 43 (frame 139, 5.75 s) card sharp"
+        }
+      ],
+      "confidence": "high",
+      "note": "Kind corrected from the blind read (blur-dissolve): the outgoing softens AND the incoming settles from an offset (up ~12 %), so this is melt + settle-in without a dim, not a dissolve in place."
+    },
+    {
+      "id": "7",
+      "t": 6.708,
+      "t_end": 6.708,
+      "kind": "hard cut",
+      "frames_24": 1,
+      "duration": 0.042,
+      "from_scene": "S6",
+      "to_scene": "S7",
+      "outgoing": {
+        "treatment": "none",
+        "note": "card sharp and static; the third tick completes on frame 161, the cut is on 162"
+      },
+      "incoming": {
+        "treatment": "none",
+        "note": "'the brand.' small bold line centred, whole on its first frame"
+      },
+      "carrier": "the light bed with the soft blue mass at the right edge (present on both sides), the the brand brand mark",
+      "on_onset": false,
+      "onset_delta_ms": 232,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "vocabulary default"
+      },
+      "evidence": [
+        {
+          "sheet": "w-6.55",
+          "tiles": [
+            7,
+            8,
+            9
+          ],
+          "note": "A = tile 7 (frame 161), B = tile 8 (frame 162); both sharp"
+        },
+        {
+          "sheet": "f-004",
+          "tiles": [
+            17,
+            18,
+            19
+          ]
+        }
+      ],
+      "confidence": "high",
+      "note": "The cut follows the third tick fill by one frame: payoff, then title."
+    },
+    {
+      "id": "8",
+      "t": 7.5,
+      "t_end": 7.792,
+      "kind": "colour sweep",
+      "loop_join": true,
+      "frames_24": 8,
+      "duration": 0.333,
+      "from_scene": "S7",
+      "to_scene": "S8",
+      "outgoing": {
+        "treatment": "covered",
+        "direction": "none",
+        "amount": "one-frame jump: the closing bed (blue mass ~35% of width at the right edge) is replaced by the sweep frame (mass ~60% of width, 'Ask' visible at left)",
+        "frames_24": 1,
+        "note": "the export loops here: frame 181 == frame 1"
+      },
+      "incoming": {
+        "treatment": "reveal-behind+soft-then-sharp",
+        "direction": "right",
+        "frames_24": 8,
+        "note": "identical to seam 1's incoming"
+      },
+      "carrier": "the blue colour (the right-edge mass of the closing scene becomes the sweep mass), the near-white bed, the the brand brand mark",
+      "on_onset": false,
+      "onset_delta_ms": -80,
+      "settle_on_onset": false,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "evidence": [
+        {
+          "sheet": "w-7.20",
+          "tiles": [
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ],
+          "note": "A = tile 10 (frame 180, 'the brand.' bed), tile 11 (frame 181) is the sweep's first frame, sweep clears by tile 17 (frame 187) / frame 188"
+        },
+        {
+          "sheet": "f-004",
+          "tiles": [
+            36,
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44
+          ]
+        }
+      ],
+      "confidence": "high",
+      "note": "A one-frame jump into a large moving mass is the sweep's first frame, not a corner swell (the mass grows only ~6% of width over frames 162-180 before the jump). The join is the loop point of the export."
+    },
+    {
+      "id": "9",
+      "t": 8.417,
+      "t_end": 8.417,
+      "kind": "hard cut",
+      "frames_24": 1,
+      "duration": 0.042,
+      "from_scene": "S8",
+      "to_scene": "S9",
+      "outgoing": {
+        "treatment": "slide",
+        "direction": "left",
+        "amount": "as seam 2: ~-6% of width over 4 frames",
+        "frames_24": 4
+      },
+      "incoming": {
+        "treatment": "none"
+      },
+      "carrier": "the the brand brand mark",
+      "on_onset": false,
+      "onset_delta_ms": 1033,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "evidence": [
+        {
+          "sheet": "w-8.30",
+          "tiles": [
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "note": "A = tile 6 (frame 202), B = tile 7 (frame 203); frame-for-frame twin of frames 22-23"
+        },
+        {
+          "sheet": "f-005",
+          "tiles": [
+            7,
+            8,
+            9,
+            10,
+            11
+          ]
+        }
+      ],
+      "confidence": "high",
+      "note": "Cycle 2 twin of seam 2 (frames +180)."
+    },
+    {
+      "id": "10",
+      "t": 9.375,
+      "t_end": 9.667,
+      "kind": "soft-to-sharp resolve",
+      "frames_24": 7,
+      "duration": 0.292,
+      "from_scene": "S9",
+      "to_scene": "S10",
+      "outgoing": {
+        "treatment": "none",
+        "note": "blue field sharp and static to the last frame; the bed flips blue -> near-white on the cut frame"
+      },
+      "incoming": {
+        "treatment": "settle-from-small+soft-then-sharp+fade-in",
+        "direction": "in",
+        "from_scale": 0.5,
+        "frames_24": 7,
+        "note": "heading + wide input arrive faint AND soft on the first frame after the cut, grow from roughly half size (measured by eye on two tiles) and sharpen in place over 7 frames; a residual line from the preceding source scene slides right and fades over the same frames"
+      },
+      "carrier": "the the brand brand mark",
+      "on_onset": false,
+      "onset_delta_ms": 75,
+      "ease": {
+        "gsap": "expo.out",
+        "cubic_bezier": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
+        "basis": "vocabulary default"
+      },
+      "evidence": [
+        {
+          "sheet": "w-9.30",
+          "tiles": [
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "note": "A = tile 5 (frame 225), first differing tile 6 (frame 226)"
+        },
+        {
+          "sheet": "f-005",
+          "tiles": [
+            33,
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ]
+        }
+      ],
+      "confidence": "high",
+      "note": "Cycle 2 twin of seam 3 (frames +180). Kind corrected from the blind read (hard cut + fade-in): the incoming is soft, not only faint — see w-1.90 tiles 3-6 at 480 px — and it grows, so this is a resolve with a settle-from-small incoming."
+    },
+    {
+      "id": "11",
+      "t": 10.417,
+      "t_end": 10.583,
+      "kind": "blur push",
+      "frames_24": 5,
+      "duration": 0.208,
+      "from_scene": "S10",
+      "to_scene": "S11",
+      "outgoing": {
+        "treatment": "blur+slide",
+        "direction": "right",
+        "amount": "as seam 4",
+        "frames_24": 2
+      },
+      "incoming": {
+        "treatment": "slide-in+soft-then-sharp",
+        "direction": "right",
+        "from_scale": 1.9,
+        "frames_24": 3
+      },
+      "carrier": "the input surface and its heading (same element, larger crop)",
+      "on_onset": false,
+      "onset_delta_ms": -277,
+      "ease": {
+        "gsap": "expo.out",
+        "cubic_bezier": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
+        "basis": "vocabulary default"
+      },
+      "evidence": [
+        {
+          "sheet": "w-10.30",
+          "tiles": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "note": "A = tile 6 (frame 250), tiles 7-8 soft and shifted, tile 9 (frame 253) macro soft, tile 11 (frame 255) sharp 'C|'"
+        },
+        {
+          "sheet": "f-006",
+          "tiles": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15
+          ]
+        }
+      ],
+      "confidence": "high",
+      "note": "Cycle 2 twin of seam 4; the second and last lens move of the film."
+    },
+    {
+      "id": "12",
+      "t": 11.958,
+      "t_end": 11.958,
+      "kind": "hard cut",
+      "frames_24": 1,
+      "duration": 0.042,
+      "from_scene": "S11",
+      "to_scene": "S12",
+      "outgoing": {
+        "treatment": "slide",
+        "direction": "left",
+        "amount": "as seam 5: ~-5% of width over 6 frames",
+        "frames_24": 6
+      },
+      "incoming": {
+        "treatment": "slide-in",
+        "direction": "left",
+        "frames_24": 4
+      },
+      "carrier": "the the brand brand mark",
+      "on_onset": false,
+      "onset_delta_ms": -718,
+      "ease": {
+        "gsap": "power3.out",
+        "cubic_bezier": [
+          0.33,
+          1,
+          0.68,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "evidence": [
+        {
+          "sheet": "w-11.80",
+          "tiles": [
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "note": "A = tile 7 (frame 287), B = tile 8 (frame 288)"
+        },
+        {
+          "sheet": "f-006",
+          "tiles": [
+            47,
+            48
+          ]
+        },
+        {
+          "sheet": "f-007",
+          "tiles": [
+            1,
+            2,
+            3,
+            4
+          ]
+        }
+      ],
+      "confidence": "high",
+      "note": "Cycle 2 twin of seam 5."
+    },
+    {
+      "id": "13",
+      "t": 13,
+      "t_end": 13.292,
+      "kind": "melt + settle-in",
+      "frames_24": 7,
+      "duration": 0.292,
+      "from_scene": "S12",
+      "to_scene": "S13",
+      "outgoing": {
+        "treatment": "blur",
+        "direction": "none",
+        "amount": "the input (right end, send button) goes soft over 2 frames (slightly, then unreadable); no dim; the bed is unchanged",
+        "frames_24": 2
+      },
+      "incoming": {
+        "treatment": "slide-in+soft-then-sharp",
+        "direction": "up",
+        "from_scale": 1,
+        "frames_24": 5,
+        "note": "the checklist card arrives soft about 12 % of frame height LOW (card top 70 px into a 270 px tile on the first frame, 40 px four frames later) and slides up while sharpening; its left edge stays at 100/480 and the heading width does not change, so no horizontal or scale settle"
+      },
+      "carrier": "the light-blue gradient bed and the the brand brand mark",
+      "on_onset": false,
+      "onset_delta_ms": 230,
+      "settle_on_onset": true,
+      "ease": {
+        "gsap": "expo.out",
+        "cubic_bezier": [
+          0.16,
+          1,
+          0.3,
+          1
+        ],
+        "basis": "read from strip"
+      },
+      "evidence": [
+        {
+          "sheet": "w-12.80",
+          "tiles": [
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "note": "A = tile 8 (frame 312), tiles 9-10 soft input, tile 11 (frame 315) card soft in place"
+        },
+        {
+          "sheet": "f-007",
+          "tiles": [
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+          ],
+          "note": "B = tile 31 (frame 319, 13.25 s) sharp"
+        }
+      ],
+      "confidence": "high",
+      "note": "Cycle 2 twin of seam 6 (frames +180). Kind corrected from the blind read (blur-dissolve): the outgoing softens AND the incoming settles from an offset (up ~12 %), so this is melt + settle-in without a dim, not a dissolve in place."
+    },
+    {
+      "id": "14",
+      "t": 14.208,
+      "t_end": 14.208,
+      "kind": "hard cut",
+      "frames_24": 1,
+      "duration": 0.042,
+      "from_scene": "S13",
+      "to_scene": "S14",
+      "outgoing": {
+        "treatment": "none"
+      },
+      "incoming": {
+        "treatment": "none"
+      },
+      "carrier": "the light bed with the blue mass at the right edge, the the brand brand mark",
+      "on_onset": false,
+      "onset_delta_ms": 302,
+      "ease": {
+        "gsap": "none",
+        "cubic_bezier": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "basis": "vocabulary default"
+      },
+      "evidence": [
+        {
+          "sheet": "w-14.05",
+          "tiles": [
+            7,
+            8,
+            9
+          ],
+          "note": "A = tile 7 (frame 341, third tick complete), B = tile 8 (frame 342)"
+        },
+        {
+          "sheet": "f-008",
+          "tiles": [
+            5,
+            6,
+            7
+          ]
+        }
+      ],
+      "confidence": "high",
+      "note": "Cycle 2 twin of seam 7. The film then holds on 'the brand.' to frame 360 (14.958) and stops one frame before a third join would land (w-14.70 tiles 1-17 all the closing bed)."
+    }
+  ],
+  "pacing": {
+    "landing_cadence_per_s": 0.93,
+    "holds": [
+      {
+        "t": 0.333,
+        "duration": 0.583,
+        "carrier": "'the brand' title static after the sweep clears; exit slide left begins at ~0.79"
+      },
+      {
+        "t": 0.917,
+        "duration": 0.958,
+        "carrier": "word pops 'Ai' (0.917) '-' (1.0) 'powered' (1.167), line re-centring on each pop; then static white on blue"
+      },
+      {
+        "t": 2.167,
+        "duration": 0.75,
+        "carrier": "gradient sweep trail on the heading (blue -> ink, left to right, 2.0-2.75); faint pale squares on the bed; drift right starts ~2.8"
+      },
+      {
+        "t": 3.083,
+        "duration": 1.333,
+        "carrier": "type-on 'Compare the brand Pl' at ~16-17 chars/s with a visible caret; the frame drifts left ~2% then accelerates out over the last 6 frames"
+      },
+      {
+        "t": 4.625,
+        "duration": 0.875,
+        "carrier": "cursor approach to the send button (diagonal up-right, decelerating), 0.2 s rest, fill flip blue -> grey at 5.083, cursor exits down-right from 5.25"
+      },
+      {
+        "t": 5.75,
+        "duration": 0.958,
+        "carrier": "three tick fills (clock wipe, 3 frames each) at 5.917, 6.292, 6.583"
+      },
+      {
+        "t": 6.708,
+        "duration": 0.792,
+        "carrier": "'the brand.' static; the blue mass at the right edge creeps in ~6% of width; pale squares on the bed"
+      },
+      {
+        "t": 7.833,
+        "duration": 0.583,
+        "carrier": "cycle 2 twin of the title hold"
+      },
+      {
+        "t": 8.417,
+        "duration": 0.958,
+        "carrier": "cycle 2 word pops at 8.417, 8.5, 8.667"
+      },
+      {
+        "t": 9.667,
+        "duration": 0.75,
+        "carrier": "cycle 2 gradient sweep on the heading"
+      },
+      {
+        "t": 10.583,
+        "duration": 1.333,
+        "carrier": "cycle 2 type-on"
+      },
+      {
+        "t": 12.125,
+        "duration": 0.875,
+        "carrier": "cycle 2 cursor approach + click at 12.583"
+      },
+      {
+        "t": 13.25,
+        "duration": 0.958,
+        "carrier": "cycle 2 tick fills at 13.417, 13.792, 14.083"
+      },
+      {
+        "t": 14.208,
+        "duration": 0.75,
+        "carrier": "'the brand.' static to the last frame (360); the blue mass creeps in; no third sweep"
+      }
+    ],
+    "longest_hold": 1.333,
+    "cuts_per_10s": 9.3,
+    "seams_on_onsets": "0 of 14 seams within +-60 ms of an audio onset (chance level ~1.6 of 14 at 0.93 onsets/s); two near misses at 70 ms (seam 1) and 75 ms (seam 10). One settle frame hits: the cycle-2 blur-dissolve settles at 13.25 against the 13.23 onset. The bed is flat (LRA 1.8 LU) and the cuts do not ride it.",
+    "typing_cadence": "~16-17 chars/s: one character on each of two consecutive frames, then one frame with none (2 chars per 3 frames); 23 characters ('Compare the brand Pl') over 1.33 s; caret visible throughout; no bursts longer than 2; the typing is cut off mid-word by the seam at 4.458",
+    "stagger_spacing": "word pops 0.083 s then 0.167 s apart; tick fills 0.375 s then 0.292 s apart; no sibling entrance staggers elsewhere"
+  },
+  "ui_motion": {
+    "cursor_present": true,
+    "cursor_style": "black arrow pointer, ~0.09 of frame height (65 px of 720 on frame.mjs 5.0 s; a macro-crop size); enters with the cut at 4.458 at ~(0.51, 0.87) of the frame and approaches the send button along one diagonal (up-right) in decelerating steps, reaching (0.62, 0.53) by frame 118; rests 5 frames; leaves down-right accelerating from frame 127 and is gone under the blur at 133",
+    "clicks": [
+      {
+        "t": 5.083,
+        "target": "send button (up-arrow) at the right end of the input",
+        "reaction": "fill blue (#4796f8) -> grey, no scale change, no ripple; the cursor stays on the button 4 more frames",
+        "pre_pause": 0.208,
+        "evidence": [
+          {
+            "sheet": "w-4.85",
+            "tiles": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              10
+            ],
+            "note": "cursor tip at rest on the button from tile 5 (frame 118); button blue through tile 9 (frame 122), grey on tile 10 (frame 123)"
+          },
+          {
+            "sheet": "f-003",
+            "tiles": [
+              22,
+              23,
+              24,
+              25,
+              26,
+              27
+            ]
+          }
+        ]
+      },
+      {
+        "t": 12.583,
+        "target": "send button (cycle 2 twin)",
+        "reaction": "fill blue -> grey",
+        "pre_pause": 0.208,
+        "evidence": [
+          {
+            "sheet": "f-007",
+            "tiles": [
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16
+            ],
+            "note": "read at 320 px: blue through tile 14 (frame 302), grey from tile 15 (frame 303)"
+          }
+        ]
+      }
+    ],
+    "hover_states": [],
+    "typing_beats": [
+      {
+        "in": 3.083,
+        "out": 4.417,
+        "text_role": "prompt text in the macro input",
+        "cadence": "~16-17 chars/s; 1 char per frame for 2 frames then 1 idle frame; steady, no long bursts; blue caret visible on every frame",
+        "surface_growth": "none: the input keeps its size; the camera drifts instead (box left edge 200 -> 183 of 480 across the beat)",
+        "evidence": [
+          {
+            "sheet": "f-002",
+            "tiles": [
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47,
+              48
+            ],
+            "note": "C 3.083 | Co 3.125 | Com 3.208 | Comp 3.25 | Compa 3.333 | Compar 3.375 | Compare 3.458 | 'Compare ' 3.5 | R 3.583 | Ri 3.625 | Riv 3.708 | Rive 3.75 | the brand 3.833 | 'the brand ' 3.875 | H 3.958"
+          },
+          {
+            "sheet": "f-003",
+            "tiles": [
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11
+            ],
+            "note": "He 4.0 | Hea 4.042 | Heal 4.125 | Healt 4.167 | Health 4.25 | 'Health ' 4.333 | P 4.375 | Pl 4.417, then the cut"
+          }
+        ]
+      },
+      {
+        "in": 10.583,
+        "out": 11.917,
+        "text_role": "prompt text in the macro input (cycle 2)",
+        "cadence": "as cycle 1",
+        "surface_growth": "none",
+        "evidence": [
+          {
+            "sheet": "f-006",
+            "tiles": [
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31,
+              32,
+              33,
+              34,
+              35,
+              36,
+              37,
+              38,
+              39,
+              40,
+              41,
+              42,
+              43,
+              44,
+              45,
+              46,
+              47
+            ]
+          }
+        ]
+      }
+    ],
+    "dropdowns": [],
+    "card_rises": [],
+    "payoffs": [
+      {
+        "t": 5.917,
+        "what": "tick 1 fills: hollow grey ring -> dark disc with a white check, drawn as a clockwise clock wipe from 12 o'clock",
+        "emphasis": "tick fill",
+        "before_hold": 0.333,
+        "evidence": [
+          {
+            "sheet": "f-003",
+            "tiles": [
+              46,
+              47,
+              48
+            ],
+            "note": "ring at 142, ~1/3 filled at 143, ~2/3 at 144"
+          },
+          {
+            "sheet": "f-004",
+            "tiles": [
+              1
+            ],
+            "note": "full check at 145 (6.0 s)"
+          }
+        ]
+      },
+      {
+        "t": 6.292,
+        "what": "tick 2 fills (same clock wipe)",
+        "emphasis": "tick fill",
+        "before_hold": 0.708,
+        "evidence": [
+          {
+            "sheet": "f-004",
+            "tiles": [
+              7,
+              8,
+              9,
+              10
+            ],
+            "note": "ring at 151, partial 152-153, full at 154 (6.375)"
+          }
+        ]
+      },
+      {
+        "t": 6.583,
+        "what": "tick 3 fills (same clock wipe); the cut to 'the brand.' follows one frame after it completes",
+        "emphasis": "tick fill",
+        "before_hold": 1,
+        "evidence": [
+          {
+            "sheet": "w-6.55",
+            "tiles": [
+              4,
+              5,
+              6,
+              7
+            ],
+            "note": "ring at 158, ~1/4 at 159, ~1/2 at 160, full at 161"
+          },
+          {
+            "sheet": "f-004",
+            "tiles": [
+              14,
+              15,
+              16,
+              17
+            ]
+          }
+        ]
+      },
+      {
+        "t": 13.417,
+        "what": "tick 1 fills (cycle 2)",
+        "emphasis": "tick fill",
+        "before_hold": 0.333,
+        "evidence": [
+          {
+            "sheet": "f-007",
+            "tiles": [
+              34,
+              35,
+              36,
+              37
+            ]
+          }
+        ]
+      },
+      {
+        "t": 13.792,
+        "what": "tick 2 fills (cycle 2)",
+        "emphasis": "tick fill",
+        "before_hold": 0.708,
+        "evidence": [
+          {
+            "sheet": "f-007",
+            "tiles": [
+              43,
+              44,
+              45,
+              46
+            ]
+          }
+        ]
+      },
+      {
+        "t": 14.083,
+        "what": "tick 3 fills (cycle 2)",
+        "emphasis": "tick fill",
+        "before_hold": 1,
+        "evidence": [
+          {
+            "sheet": "f-008",
+            "tiles": [
+              2,
+              3,
+              4,
+              5
+            ]
+          }
+        ]
+      }
+    ],
+    "agent_vs_user": "The prompt types itself with no pointer on screen (system-driven type-on, caret only). The send is a user step: a cursor approaches, rests 0.2 s and the button flips state. The three checklist ticks fill on their own after the send (agent). No dropdowns, no drags."
+  },
+  "text_motion": [
+    {
+      "t": 0,
+      "text_role": "display title 'the brand'",
+      "mechanism": "other",
+      "duration": 0.333,
+      "hold": 0.583,
+      "note": "Revealed left to right in the wake of the colour sweep: each letter is soft under the mass's soft edge and sharp one frame after the edge passes (a wipe-shaped blur reveal, not a mask and not an in-place blur resolve). 'Ask' is ink, 'the brand' a blue gradient. Exits by a 4-frame slide left at 0.79-0.875.",
+      "evidence": [
+        {
+          "sheet": "w-0.00",
+          "tiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "sheet": "f-001",
+          "tiles": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            19,
+            20,
+            21,
+            22
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 0.917,
+      "text_role": "statement 'Ai - powered' (white on brand blue)",
+      "mechanism": "word pop",
+      "per_word_timing": [
+        0.917,
+        1,
+        1.167
+      ],
+      "duration": 0.25,
+      "hold": 0.708,
+      "note": "Each word is whole at full size and opacity on its first frame; no tile shows an intermediate. The line re-centres on every pop: the 'Ai' glyph's left edge moves 195 -> 165 -> 120 of 480 on frames 23, 25, 29. The first word lands on the cut itself.",
+      "evidence": [
+        {
+          "sheet": "f-001",
+          "tiles": [
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30
+          ]
+        },
+        {
+          "sheet": "w-0.80",
+          "tiles": [
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 1.875,
+      "text_role": "residual line 'your broker portal.' (leftover of the source film's preceding scene)",
+      "mechanism": "letter mask",
+      "duration": 0.208,
+      "hold": 0,
+      "note": "An EXIT, not an entrance: the readable suffix shrinks from the left with a sharp edge over frames 46-50 ('your broker portal.' -> 'broker portal.' -> 'oker portal.' -> 'ker portal.' -> 'er portal.') while fading. Present only because the loop export starts the scene mid-transition; do not rebuild it.",
+      "evidence": [
+        {
+          "sheet": "w-1.90",
+          "tiles": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8
+          ]
+        },
+        {
+          "sheet": "f-001",
+          "tiles": [
+            46,
+            47,
+            48
+          ]
+        },
+        {
+          "sheet": "f-002",
+          "tiles": [
+            1,
+            2,
+            3
+          ]
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "t": 1.875,
+      "text_role": "heading 'Your AI assistant for all things the brand' + wide input with mono placeholder",
+      "mechanism": "blur resolve",
+      "duration": 0.292,
+      "hold": 0.75,
+      "note": "Opacity ramp over 7 frames (46-53); edges crisp while ghosted at 640 px. The heading arrives all light-blue and then matures to ink by a gradient sweep trail (next row). Corrected from the copy: the line is soft as well as faint on its first frames and sharpens in place while growing from ~0.5x.",
+      "evidence": [
+        {
+          "sheet": "w-1.90",
+          "tiles": [
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        },
+        {
+          "sheet": "f-002",
+          "tiles": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "t": 2,
+      "text_role": "heading 'Your AI assistant for all things the brand'",
+      "mechanism": "gradient sweep trail",
+      "duration": 0.75,
+      "hold": 0.167,
+      "note": "The blue-to-ink boundary rides left to right: whole line blue at 2.25 (f-002 tile 7), 'all things the brand' blue at 2.5 (tile 13, and frame.mjs 2.5), 'the brand' only at 2.625 (tile 16), all ink by 2.75 (tile 19). Measured pair: tile 7 vs tile 19.",
+      "evidence": [
+        {
+          "sheet": "f-002",
+          "tiles": [
+            7,
+            10,
+            13,
+            16,
+            19
+          ]
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "t": 3.083,
+      "text_role": "prompt text in the macro input",
+      "mechanism": "type-on",
+      "duration": 1.333,
+      "hold": 0,
+      "note": "See ui_motion.typing_beats for per-character times. 2 chars per 3 frames, caret on every frame, the box does not grow, cut off mid-word ('Pl') by the seam at 4.458.",
+      "evidence": [
+        {
+          "sheet": "f-002",
+          "tiles": [
+            27,
+            30,
+            33,
+            36,
+            39,
+            42,
+            45,
+            48
+          ]
+        },
+        {
+          "sheet": "f-003",
+          "tiles": [
+            1,
+            4,
+            7,
+            10,
+            11
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 5.583,
+      "text_role": "checklist card copy (heading, three titles, three subtitles)",
+      "mechanism": "blur resolve",
+      "duration": 0.167,
+      "hold": 0.958,
+      "note": "The whole card, copy included, is present soft on frame 135 and sharpens in place over 4 frames; no per-line stagger.",
+      "evidence": [
+        {
+          "sheet": "f-003",
+          "tiles": [
+            39,
+            40,
+            41,
+            42,
+            43
+          ]
+        },
+        {
+          "sheet": "w-5.30",
+          "tiles": [
+            11,
+            12
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 6.708,
+      "text_role": "closing line 'the brand.' (small bold, centred)",
+      "mechanism": "cut-in",
+      "duration": 0.042,
+      "hold": 0.792,
+      "note": "Whole on its first frame; static to the loop join.",
+      "evidence": [
+        {
+          "sheet": "w-6.55",
+          "tiles": [
+            7,
+            8,
+            9
+          ]
+        },
+        {
+          "sheet": "f-004",
+          "tiles": [
+            18,
+            19,
+            20
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 7.5,
+      "text_role": "display title 'the brand' (cycle 2)",
+      "mechanism": "other",
+      "duration": 0.333,
+      "hold": 0.583,
+      "note": "Twin of the 0.0 row.",
+      "evidence": [
+        {
+          "sheet": "w-7.20",
+          "tiles": [
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17
+          ]
+        },
+        {
+          "sheet": "f-004",
+          "tiles": [
+            37,
+            38,
+            39,
+            40,
+            41,
+            42,
+            43,
+            44
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 8.417,
+      "text_role": "statement 'Ai - powered' (cycle 2)",
+      "mechanism": "word pop",
+      "per_word_timing": [
+        8.417,
+        8.5,
+        8.667
+      ],
+      "duration": 0.25,
+      "hold": 0.708,
+      "note": "Twin of the 0.917 row.",
+      "evidence": [
+        {
+          "sheet": "f-005",
+          "tiles": [
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18
+          ]
+        },
+        {
+          "sheet": "w-8.30",
+          "tiles": [
+            6,
+            7,
+            8,
+            9,
+            10
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 9.375,
+      "text_role": "heading + wide input (cycle 2)",
+      "mechanism": "blur resolve",
+      "duration": 0.292,
+      "hold": 0.75,
+      "note": "Twin of the 1.875 row, residue included (f-005 tiles 34-38). Corrected from the copy: the line is soft as well as faint on its first frames and sharpens in place while growing from ~0.5x.",
+      "evidence": [
+        {
+          "sheet": "w-9.30",
+          "tiles": [
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "sheet": "f-005",
+          "tiles": [
+            34,
+            35,
+            36,
+            37,
+            38,
+            39,
+            40,
+            41
+          ]
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "t": 9.5,
+      "text_role": "heading (cycle 2)",
+      "mechanism": "gradient sweep trail",
+      "duration": 0.75,
+      "hold": 0.167,
+      "note": "Twin of the 2.0 row.",
+      "evidence": [
+        {
+          "sheet": "f-005",
+          "tiles": [
+            43,
+            46
+          ]
+        },
+        {
+          "sheet": "f-006",
+          "tiles": [
+            1,
+            4,
+            7
+          ]
+        }
+      ],
+      "confidence": "medium"
+    },
+    {
+      "t": 10.583,
+      "text_role": "prompt text in the macro input (cycle 2)",
+      "mechanism": "type-on",
+      "duration": 1.333,
+      "hold": 0,
+      "note": "Twin of the 3.083 row.",
+      "evidence": [
+        {
+          "sheet": "f-006",
+          "tiles": [
+            15,
+            18,
+            21,
+            24,
+            27,
+            30,
+            33,
+            36,
+            39,
+            42,
+            45,
+            47
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 13.083,
+      "text_role": "checklist card copy (cycle 2)",
+      "mechanism": "blur resolve",
+      "duration": 0.167,
+      "hold": 0.958,
+      "note": "Twin of the 5.583 row.",
+      "evidence": [
+        {
+          "sheet": "f-007",
+          "tiles": [
+            27,
+            28,
+            29,
+            30,
+            31
+          ]
+        }
+      ],
+      "confidence": "high"
+    },
+    {
+      "t": 14.208,
+      "text_role": "closing line 'the brand.' (cycle 2)",
+      "mechanism": "cut-in",
+      "duration": 0.042,
+      "hold": 0.75,
+      "note": "Twin of the 6.708 row; holds to the last frame.",
+      "evidence": [
+        {
+          "sheet": "w-14.05",
+          "tiles": [
+            8,
+            9,
+            10,
+            11,
+            12
+          ]
+        },
+        {
+          "sheet": "f-008",
+          "tiles": [
+            6,
+            7,
+            24
+          ]
+        }
+      ],
+      "confidence": "high"
+    }
+  ],
+  "camera_note": "The lens travels twice in the export (once per 7.5 s cycle): a blur push from the wide input into a 1.9x crop of its left end at 2.917 / 10.417. Every other framing change is a hard cut, a melt + settle-in or the colour sweep; what moves instead is object motion (exit slides of the title and the macro input, the incoming settle of the send-state input, the cursor) and content motion (word pops, gradient sweep on the heading, type-on, tick fills, the blue mass creeping in at the right edge)."
+}
