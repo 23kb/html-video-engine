@@ -1,0 +1,632 @@
+{
+  "slug": "admin-entries-list-191",
+  "registryPresent": true,
+  "transitions": [],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    },
+    {
+      "target": "builder-fields",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"][href*=\"view=fields\"]"
+    },
+    {
+      "target": "admin-tools-export",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=export\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-list-table-ext-edit-columns-cog",
+        "tag": "a",
+        "text": "Change columns to display",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-list-table-ext-edit-columns-select-submit",
+        "tag": "button",
+        "text": "Save Changes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#wpforms-entries-table",
+        "tag": "form",
+        "text": "All (340) | Unread (340) | Payments (0) | Starred (9) | Spa…",
+        "count": 1,
+        "hidden": false,
+        "nav": "admin-entries-overview"
+      },
+      {
+        "sel": "#wpforms-list-table-ext-edit-columns-select-container",
+        "tag": "div",
+        "text": "Your nameEmailPositionYears of experienceWhy are you a good…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-table-container",
+        "tag": "div",
+        "text": "Select All Your name Email Position Date Sort ascending. Ac…",
+        "count": 1,
+        "hidden": false,
+        "nav": "admin-entries-overview"
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Mark as Read Mark as Unread Star Unstar Print …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Mark as Read Mark as Unread Star Unstar Print …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "a683e50644",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_entries_per_page",
+        "tag": "input",
+        "text": "30",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-entries-table-edit-columns-select",
+        "tag": "select",
+        "text": "Your nameEmailPositionYears of experienceWhy are you a good…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-filter-date-selector",
+        "tag": "input",
+        "text": "Select a date range",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-form-search-box-comparison",
+        "tag": "select",
+        "text": "contains does not contain is is not is empty is not empty",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-form-search-box-field",
+        "tag": "select",
+        "text": "Any form field Your name Email Position Years of experience…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-multiselect-checkbox-input",
+        "tag": "input",
+        "text": "1, 2, 3, date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-multiselect-checkbox-search",
+        "tag": "input",
+        "text": "Search",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [
+      {
+        "sel": "[data-field-type=\"email\"]",
+        "tag": "div",
+        "text": "ethan.mitchell224@hotmail.com",
+        "count": 30,
+        "hidden": false
+      },
+      {
+        "sel": "[data-field-type=\"name\"]",
+        "tag": "div",
+        "text": "Ethan Mitchell",
+        "count": 30,
+        "hidden": false
+      },
+      {
+        "sel": "[data-field-type=\"select\"]",
+        "tag": "div",
+        "text": "Driver",
+        "count": 30,
+        "hidden": false
+      }
+    ],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#actions",
+        "tag": "th",
+        "text": "Actions",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#actions-foot",
+        "tag": "th",
+        "text": "Actions",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Pagination Number of entries per page:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-foot",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date",
+        "tag": "th",
+        "text": "Date Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date-foot",
+        "tag": "th",
+        "text": "Date Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#et-ajax-saving",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#indicators",
+        "tag": "th",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#indicators-foot",
+        "tag": "th",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#loading",
+        "tag": "img",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Pagination Number of entries per page:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 12",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Ethan Mitchell ethan.mitchell224@hotmail.com Driver May 18,…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_e2e-dashboard",
+        "tag": "li",
+        "text": "E2E Dashboard E2E Dashboard Recent Runs Nightly Tests",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_et_divi_options",
+        "tag": "li",
+        "text": "Divi Dashboard 1 Divi 5 Migrator Theme Options Theme Builde…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_vibe-ai",
+        "tag": "li",
+        "text": "Vibe AI Vibe AI Approval Log",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wp-mail-smtp",
+        "tag": "li",
+        "text": "WP Mail SMTP Settings Email Log Email Reports Tools Privacy…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpcode",
+        "tag": "li",
+        "text": "Code Snippets Code Snippets + Add Snippet Header & Footer C…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms_dev_tools",
+        "tag": "li",
+        "text": "WPForms Dev WPForms Dev Analytics",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms Dashboard All Forms Setup Checklist 67% complete Ad…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_field_1",
+        "tag": "th",
+        "text": "Your name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms_field_1-foot",
+        "tag": "th",
+        "text": "Your name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms_field_2",
+        "tag": "th",
+        "text": "Email",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms_field_2-foot",
+        "tag": "th",
+        "text": "Email",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms_field_3",
+        "tag": "th",
+        "text": "Position",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms_field_3-foot",
+        "tag": "th",
+        "text": "Position",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-entries-list",
+        "tag": "div",
+        "text": "Entries SELECT FORM Job Application Edit This Form Preview …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "SELECT FORM Job Application Edit This Form Preview Form Exp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-multiselect-checkbox-dropdown",
+        "tag": "div",
+        "text": "Your nameEmailPositionYears of experienceWhy are you a good…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}
