@@ -89,7 +89,7 @@ Measured practice from the HyperFrames public build (`docs/video-system-improvem
 
 ## RATIFIED PALETTE (2026-09-03) — the standing ad SFX set
 
-Eight one-shots, approved by Umair **by ear, in context, on real cuts**. They
+Five one-shots (eight when ratified; the three ticks were rejected 2026-09-17 and deleted 2026-09-18), approved by Umair **by ear, in context, on real cuts**. They
 live at **`tools/sfx/palette/`** with `manifest.json` (per-sound class, measured
 onset, duration, source peak, and the cue each earned its place on) and a
 README. Provenance — the original generations and their prompts — stays at
@@ -97,16 +97,14 @@ README. Provenance — the original generations and their prompts — stays at
 
 | Class | Sounds | Job |
 |---|---|---|
-| `tick` | `tick-a`, `tick-b`, `tick-c` | grid currency — a row completing, a chip swapping, a cursor press frame. Rotate all three so a run reads as three objects, not one sample |
 | `impact` | `impact-a`, `impact-b`, `impact-c` | hard cuts, and one settle (a counter landing) |
 | `boom` | `boom-a`, `boom-b` | the film's open (`boom-a`) and its close (`boom-b`), plus big landings |
 
 Two things carry forward from the ratification and are detailed in the README:
-the palette sits on a measured **two-tier mix ladder** (ticks ≈ −16 dB, impacts
-and booms ≈ −10 dB — reproduce the ladder, never the gain numbers, per rfv 29),
-and three sounds carry caveats (`tick-c` sits at the mp3 priming floor and is
-compensated at placement, never re-trimmed; `impact-b` / `impact-c` are under
-the −25 dB flag and ride large compensating gains).
+the palette sat on a measured mix ladder (impacts and booms ≈ −10 dB; the tick
+tier is gone — reproduce the ladder, never the gain numbers, per rfv 29), and
+`impact-b` / `impact-c` are under the −25 dB flag and ride large compensating
+gains. Compensate a late onset at placement; never re-trim.
 
 **REJECTED CLASSES (2026-09-03, by ear): `shimmer` and `riser`/whoosh** —
 `shimmer-a`, `shimmer-b`, `riser-a`, `riser-b`. Umair rejected the whole classes,
@@ -119,6 +117,45 @@ The moments they covered now get nothing; the bed carries them, by ruling.
 
 New sounds join the palette only after Umair hears them **placed on a real cut**
 in a real film against a real bed — never as bare snippets in a folder.
+
+**REJECTED CLASS 2026-09-17 (by ear, on a dashboard ad): `tick` — NEVER use tick sounds** — `tick-a`, `tick-b`,
+`tick-c`. Umair: *"remove the ticks from sfx. NEVER EVER add those again."* The rejection is the CLASS and it
+applies to every film, exactly like shimmer and riser above. On 2026-09-18 Umair had the three mp3s deleted from the
+repo and from disk; the manifest keeps their old measurements as the record, `generate-palette.mjs` refuses the
+names, `gen-candidates.mjs` refuses the class, and nothing places, generates or downloads a tick again. **The tick tier of the mix ladder
+no longer exists**: what is left is one accent tier (impacts and booms). The moments ticks used to cover — a row
+completing, a chip swapping, a panel arriving — get a designed MATERIAL cue (a real object doing a real thing:
+paper, wood, a mechanism) or they get nothing and the bed carries them.
+
+Two rulings came with it, both standing:
+
+- **A slow bed only works with good SFX.** Umair, same pass. If the SFX are thin, the bed cannot be slow; either
+  the cues carry the film or the tempo does. Do not ship a calm bed under sparse sound.
+- **"Volume down" is a LEVEL instruction, never a tempo one.** Asked for a quiet bed, this session wrote
+  "calm / patient / spacious / 104 bpm" into the generation prompt and delivered elevator music. Mix gain and
+  arrangement energy are separate dials — turn the gain down and leave the tempo and drive alone.
+
+## ONE BED PER FILM (ruled 2026-09-17, on a dashboard ad)
+
+Umair, on a film whose bed was two separately generated pieces: *"I don't need two background, only one background.
+The first BGM you use is good one."*
+
+**A film gets ONE piece of music.** Not two generations stitched together, however well they are level-matched — a
+second take is a different arrangement and the return reads as a track change, not as the music coming back.
+
+This does NOT ban a mid-film drop. Cut the hole out of the ONE take: generate a single piece long enough for the whole
+film, then split it with ffmpeg at the film's own cut times and place the segments at those times. The music that
+returns is the same performance carrying on where it would have been, so the drop reads as an arrangement drop. On this
+film a single 40s take became `music-1.mp3` (0 → 12.40) and `music-2.mp3` (the take's own 13.90 → 30.60), with the
+1.5s gap landing on the frame the pile floods the screen.
+
+**Generation length:** over-request and trim. The model puts an outro fade in roughly the final tenth to fifth whatever
+the prompt says — a 13s request returned ~8s of music, a 20s request held 16s, a 40s request held 36s.
+
+> Correction, same session: an earlier version of this section read "NEVER TWO SFX" and removed two accents. That was a
+> misread of *"never use 2 sfx"*, which Umair immediately corrected — he meant two BGMs. **There is no rule against two
+> SFX.** Accents may sit 1.66s apart; that film ships seven cues, two of them within two seconds of each other, and he
+> approved them. Do not re-derive a spacing rule from this.
 
 ## Measured sound bar (2026-09-03) — U4/U5 RULED
 

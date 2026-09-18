@@ -1,130 +1,183 @@
 {
-  "_": "Standing ad SFX palette. Ratified by ear 2026-09-03. Read this file before adding SFX to an ad; do not re-generate a class that is already here.",
-  "ratifiedOn": "2026-09-03",
-  "ratifiedBy": "Umair — ear QC, in context, on real cuts (not bare snippets)",
-  "scope": "ad-style / editorial films. Tutorials and shorts inherit it only where an ad-energy accent is wanted.",
-  "provenance": {
-    "path": "tools/sfx/palette-candidates-2026-09-03",
-    "note": "The original ElevenLabs one-shots plus generate-palette.mjs, the prompts that made them. Kept intact as the record; this folder is the working home."
+ "_": "Standing ad SFX palette. Ratified by ear 2026-09-03. Read this file before adding SFX to an ad; do not re-generate a class that is already here. NEVER use tick sounds (class rejected 2026-09-17, files deleted 2026-09-18). The audio files are local-only (gitignored, ElevenLabs terms).",
+ "ratifiedOn": "2026-09-03",
+ "ratifiedBy": "Umair — ear QC, in context, on real cuts (not bare snippets)",
+ "scope": "ad-style / editorial films. Tutorials and shorts inherit it only where an ad-energy accent is wanted.",
+ "provenance": {
+  "path": "tools/sfx/palette-candidates-2026-09-03",
+  "note": "The original ElevenLabs one-shots plus generate-palette.mjs, the prompts that made them. Kept intact as the record; this folder is the working home."
+ },
+ "measurement": {
+  "measuredOn": "2026-09-04",
+  "onset": "node tools/sfx/onset.mjs tools/sfx/palette   (first sample > 5% of the file's own peak, 30fps frame budget)",
+  "peak": "ffmpeg -i <f> -af volumedetect -f null -   (max_volume; rulebook rfe 37 — volumedetect, not astats)",
+  "duration": "ffprobe -show_entries format=duration"
+ },
+ "mixLadder": {
+  "_": "Measured from the reel's ratified gains (sourcePeak + clipGain). Two tiers, ~6 dB apart. Reproduce the LADDER, not the gain numbers — gains never port between films (rulebook rfv 29); re-measure with normalize.mjs every time.",
+  "currency_ticks_dB": "REJECTED CLASS as of 2026-09-17 — the tick tier no longer exists; accents only.",
+  "accent_impacts_booms_dB": -10
+ },
+ "sounds": {
+  "tick-a": {
+   "deleted": "2026-09-18 — file removed from repo and disk on Umair's order; tick is a rejected class (2026-09-17). NEVER use tick sounds. Kept below as the record only.",
+   "file": "tick-a.mp3",
+   "class": "tick",
+   "onsetMs": 0.1,
+   "onsetVerdict": "clean",
+   "durationSec": 0.48,
+   "peakDb": -3.2,
+   "reelGainDb": -13,
+   "landsAtDb": -16.2,
+   "useWhen": "The default tick. Grid currency — a row completing, a soft/locked crossfade cut, a cursor press frame. The most-placed of the three (4 of 17 reel cues).",
+   "reelCues": [
+    "1.30 phrase 2 whip-in",
+    "3.90 queue row 1 done",
+    "9.80 cut 3 locked crossfade (soft cut, soft cue)",
+    "17.02 tap press frame"
+   ],
+   "REJECTED": "Class rejected by Umair 2026-09-17 — never place, never regenerate."
   },
-  "measurement": {
-    "measuredOn": "2026-09-04",
-    "onset": "node tools/sfx/onset.mjs tools/sfx/palette   (first sample > 5% of the file's own peak, 30fps frame budget)",
-    "peak": "ffmpeg -i <f> -af volumedetect -f null -   (max_volume; rulebook rfe 37 — volumedetect, not astats)",
-    "duration": "ffprobe -show_entries format=duration"
+  "tick-b": {
+   "deleted": "2026-09-18 — file removed from repo and disk on Umair's order; tick is a rejected class (2026-09-17). NEVER use tick sounds. Kept below as the record only.",
+   "file": "tick-b.mp3",
+   "class": "tick",
+   "onsetMs": 0,
+   "onsetVerdict": "clean",
+   "durationSec": 0.48,
+   "peakDb": -8.7,
+   "reelGainDb": -7,
+   "landsAtDb": -15.7,
+   "useWhen": "Brighter tick. Second in a rotation, or the tick that starts a run (an odometer roll, a chip appearing).",
+   "reelCues": [
+    "2.15 phrase 3 + chip",
+    "4.70 queue row 2 done",
+    "10.60 odometer roll start"
+   ],
+   "REJECTED": "Class rejected by Umair 2026-09-17 — never place, never regenerate."
   },
-  "mixLadder": {
-    "_": "Measured from the reel's ratified gains (sourcePeak + clipGain). Two tiers, ~6 dB apart. Reproduce the LADDER, not the gain numbers — gains never port between films (rulebook rfv 29); re-measure with normalize.mjs every time.",
-    "currency_ticks_dB": -16,
-    "accent_impacts_booms_dB": -10
+  "tick-c": {
+   "deleted": "2026-09-18 — file removed from repo and disk on Umair's order; tick is a rejected class (2026-09-17). NEVER use tick sounds. Kept below as the record only.",
+   "file": "tick-c.mp3",
+   "class": "tick",
+   "onsetMs": 30,
+   "onsetVerdict": "LATE at 30fps — compensate at PLACEMENT (cue 30ms early), do NOT re-trim",
+   "durationSec": 0.48,
+   "peakDb": -0.3,
+   "reelGainDb": -16,
+   "landsAtDb": -16.3,
+   "useWhen": "Warmest/woodiest tick. Third in a rotation — the hot-swap, the last row, a tile popping.",
+   "reelCues": [
+    "2.579 chip hot-swap",
+    "5.479 queue row 3 done",
+    "13.379 wall tiles pop"
+   ],
+   "warning": "This file sits at the mp3 encoder priming floor (~20-30ms, rulebook rfw 24 / rfe 26) — re-encodes do not converge. The reel shipped a re-trimmed copy at -ss 0.029: its onset reads 21ms but its peak collapsed to -15.1 dB, because the trim cut past the transient. Onset is measured relative to the file's OWN peak, so destroying the transient FLATTERS the onset number. The palette keeps the un-trimmed original (-0.3 dB) and compensates at placement — the reel's t values ending .579/.479/.379 are exactly that compensation.",
+   "REJECTED": "Class rejected by Umair 2026-09-17 — never place, never regenerate."
   },
-  "sounds": {
-    "tick-a": {
-      "file": "tick-a.mp3",
-      "class": "tick",
-      "onsetMs": 0.1,
-      "onsetVerdict": "clean",
-      "durationSec": 0.48,
-      "peakDb": -3.2,
-      "reelGainDb": -13,
-      "landsAtDb": -16.2,
-      "useWhen": "The default tick. Grid currency — a row completing, a soft/locked crossfade cut, a cursor press frame. The most-placed of the three (4 of 17 reel cues).",
-      "reelCues": ["1.30 phrase 2 whip-in", "3.90 queue row 1 done", "9.80 cut 3 locked crossfade (soft cut, soft cue)", "17.02 tap press frame"]
-    },
-    "tick-b": {
-      "file": "tick-b.mp3",
-      "class": "tick",
-      "onsetMs": 0.0,
-      "onsetVerdict": "clean",
-      "durationSec": 0.48,
-      "peakDb": -8.7,
-      "reelGainDb": -7,
-      "landsAtDb": -15.7,
-      "useWhen": "Brighter tick. Second in a rotation, or the tick that starts a run (an odometer roll, a chip appearing).",
-      "reelCues": ["2.15 phrase 3 + chip", "4.70 queue row 2 done", "10.60 odometer roll start"]
-    },
-    "tick-c": {
-      "file": "tick-c.mp3",
-      "class": "tick",
-      "onsetMs": 30.0,
-      "onsetVerdict": "LATE at 30fps — compensate at PLACEMENT (cue 30ms early), do NOT re-trim",
-      "durationSec": 0.48,
-      "peakDb": -0.3,
-      "reelGainDb": -16,
-      "landsAtDb": -16.3,
-      "useWhen": "Warmest/woodiest tick. Third in a rotation — the hot-swap, the last row, a tile popping.",
-      "reelCues": ["2.579 chip hot-swap", "5.479 queue row 3 done", "13.379 wall tiles pop"],
-      "warning": "This file sits at the mp3 encoder priming floor (~20-30ms, rulebook rfw 24 / rfe 26) — re-encodes do not converge. The reel shipped a re-trimmed copy at -ss 0.029: its onset reads 21ms but its peak collapsed to -15.1 dB, because the trim cut past the transient. Onset is measured relative to the file's OWN peak, so destroying the transient FLATTERS the onset number. The palette keeps the un-trimmed original (-0.3 dB) and compensates at placement — the reel's t values ending .579/.479/.379 are exactly that compensation."
-    },
-    "impact-a": {
-      "file": "impact-a.mp3",
-      "class": "impact",
-      "onsetMs": 0.0,
-      "onsetVerdict": "clean",
-      "durationSec": 1.0,
-      "peakDb": -23.1,
-      "reelGainDb": 15,
-      "landsAtDb": -8.1,
-      "useWhen": "Hard cut. The throw/whip that lands a new scene. Cleanest of the three impacts.",
-      "reelCues": ["3.20 cut 1 throw hit"],
-      "warning": "Quiet source (-23.1). Needs ~+15 dB. This is the regen of a near-silent v1 (impact-a-v1-near-silent.mp3 is kept in the candidates folder as the failed roll)."
-    },
-    "impact-b": {
-      "file": "impact-b.mp3",
-      "class": "impact",
-      "onsetMs": 0.0,
-      "onsetVerdict": "clean",
-      "durationSec": 1.0,
-      "peakDb": -30.1,
-      "reelGainDb": 20,
-      "landsAtDb": -10.1,
-      "useWhen": "Hard cut, snappier/drier than impact-a. Use as the second impact so consecutive cuts do not read as one sample.",
-      "reelCues": ["13.00 cut 4 hard cut"],
-      "warning": "UNDER the -25 dB near-silence flag (rulebook rfv 28). Carries a +20 dB compensating gain, so it raises its own noise floor. Re-roll it when a generation budget exists; approved by ear at reel level, not certified clean."
-    },
-    "impact-c": {
-      "file": "impact-c.mp3",
-      "class": "impact",
-      "onsetMs": 0.0,
-      "onsetVerdict": "clean",
-      "durationSec": 1.0,
-      "peakDb": -29.1,
-      "reelGainDb": 19,
-      "landsAtDb": -10.1,
-      "useWhen": "Impact for a settle, not a cut — a counter landing, a value resolving.",
-      "reelCues": ["11.90 odometer settles"],
-      "warning": "UNDER the -25 dB near-silence flag (rulebook rfv 28). Carries a +19 dB compensating gain. Same re-roll note as impact-b."
-    },
-    "boom-a": {
-      "file": "boom-a.mp3",
-      "class": "boom",
-      "onsetMs": 0.0,
-      "onsetVerdict": "clean",
-      "durationSec": 1.0,
-      "peakDb": -18.1,
-      "reelGainDb": 8,
-      "landsAtDb": -10.1,
-      "useWhen": "Film OPEN, and any overshoot/pulse that wants weight without a cut under it. Rounded attack — it swells rather than snaps.",
-      "reelCues": ["0.45 b1 phrase 1 lands (film open)", "17.30 T6 pulse overshoot"]
-    },
-    "boom-b": {
-      "file": "boom-b.mp3",
-      "class": "boom",
-      "onsetMs": 0.0,
-      "onsetVerdict": "clean",
-      "durationSec": 1.48,
-      "peakDb": -1.4,
-      "reelGainDb": -9,
-      "landsAtDb": -10.4,
-      "useWhen": "Film CLOSE, and big landings — a zoom-through arriving, a scene receding into the lockup. Longest tail in the palette (1.48s); do not place one inside another's decay.",
-      "reelCues": ["6.60 cut 2 zoom-through landing", "18.90 scene recede + lockup land (film close)"]
-    }
+  "impact-a": {
+   "file": "impact-a.mp3",
+   "class": "impact",
+   "onsetMs": 0,
+   "onsetVerdict": "clean",
+   "durationSec": 1,
+   "peakDb": -23.1,
+   "reelGainDb": 15,
+   "landsAtDb": -8.1,
+   "useWhen": "Hard cut. The throw/whip that lands a new scene. Cleanest of the three impacts.",
+   "reelCues": [
+    "3.20 cut 1 throw hit"
+   ],
+   "warning": "Quiet source (-23.1). Needs ~+15 dB. This is the regen of a near-silent v1 (impact-a-v1-near-silent.mp3 is kept in the candidates folder as the failed roll)."
   },
-  "rejected": {
-    "_": "REJECTED BY EAR 2026-09-03. Files stay on disk in tools/sfx/palette-candidates-2026-09-03/ as rejected candidates. Never auto-select, never regenerate, never re-place. Consistent with the standing 2026-06-10 ad-sound ruling: punchy-clean, no cinematic whoosh/sparkle cheese.",
-    "classes": ["shimmer", "riser/whoosh"],
-    "files": ["shimmer-a.mp3", "shimmer-b.mp3", "riser-a.mp3", "riser-b.mp3"],
-    "verdict": "Umair, 2026-09-03: \"Fuck this SFX, specially the shimmer and swish woosh sounds.\"",
-    "consequence": "All 6 of their clips were unmapped from the reel and the 4 sounds dropped from its library. The cuts they covered keep their tick/impact/boom cues; the sheen moments and the invisible cursor-continuity cut get nothing — the bed carries them."
+  "impact-b": {
+   "file": "impact-b.mp3",
+   "class": "impact",
+   "onsetMs": 0,
+   "onsetVerdict": "clean",
+   "durationSec": 1,
+   "peakDb": -30.1,
+   "reelGainDb": 20,
+   "landsAtDb": -10.1,
+   "useWhen": "Hard cut, snappier/drier than impact-a. Use as the second impact so consecutive cuts do not read as one sample.",
+   "reelCues": [
+    "13.00 cut 4 hard cut"
+   ],
+   "warning": "UNDER the -25 dB near-silence flag (rulebook rfv 28). Carries a +20 dB compensating gain, so it raises its own noise floor. Re-roll it when a generation budget exists; approved by ear at reel level, not certified clean."
+  },
+  "impact-c": {
+   "file": "impact-c.mp3",
+   "class": "impact",
+   "onsetMs": 0,
+   "onsetVerdict": "clean",
+   "durationSec": 1,
+   "peakDb": -29.1,
+   "reelGainDb": 19,
+   "landsAtDb": -10.1,
+   "useWhen": "Impact for a settle, not a cut — a counter landing, a value resolving.",
+   "reelCues": [
+    "11.90 odometer settles"
+   ],
+   "warning": "UNDER the -25 dB near-silence flag (rulebook rfv 28). Carries a +19 dB compensating gain. Same re-roll note as impact-b."
+  },
+  "boom-a": {
+   "file": "boom-a.mp3",
+   "class": "boom",
+   "onsetMs": 0,
+   "onsetVerdict": "clean",
+   "durationSec": 1,
+   "peakDb": -18.1,
+   "reelGainDb": 8,
+   "landsAtDb": -10.1,
+   "useWhen": "Film OPEN, and any overshoot/pulse that wants weight without a cut under it. Rounded attack — it swells rather than snaps.",
+   "reelCues": [
+    "0.45 b1 phrase 1 lands (film open)",
+    "17.30 T6 pulse overshoot"
+   ]
+  },
+  "boom-b": {
+   "file": "boom-b.mp3",
+   "class": "boom",
+   "onsetMs": 0,
+   "onsetVerdict": "clean",
+   "durationSec": 1.48,
+   "peakDb": -1.4,
+   "reelGainDb": -9,
+   "landsAtDb": -10.4,
+   "useWhen": "Film CLOSE, and big landings — a zoom-through arriving, a scene receding into the lockup. Longest tail in the palette (1.48s); do not place one inside another's decay.",
+   "reelCues": [
+    "6.60 cut 2 zoom-through landing",
+    "18.90 scene recede + lockup land (film close)"
+   ]
   }
+ },
+ "rejected": {
+  "_": "REJECTED BY EAR 2026-09-03. Files stay on disk in tools/sfx/palette-candidates-2026-09-03/ as rejected candidates. Never auto-select, never regenerate, never re-place. Consistent with the standing 2026-06-10 ad-sound ruling: punchy-clean, no cinematic whoosh/sparkle cheese.",
+  "classes": [
+   "shimmer",
+   "riser/whoosh"
+  ],
+  "files": [
+   "shimmer-a.mp3",
+   "shimmer-b.mp3",
+   "riser-a.mp3",
+   "riser-b.mp3"
+  ],
+  "verdict": "Umair, 2026-09-03: \"Fuck this SFX, specially the shimmer and swish woosh sounds.\"",
+  "consequence": "All 6 of their clips were unmapped from the reel and the 4 sounds dropped from its library. The cuts they covered keep their tick/impact/boom cues; the sheen moments and the invisible cursor-continuity cut get nothing — the bed carries them."
+ },
+ "rejectedClasses": {
+  "tick": {
+   "rejectedOn": "2026-09-17",
+   "rejectedBy": "Umair — ear QC on a dashboard ad",
+   "quote": "remove the ticks from sfx. NEVER EVER add those again",
+   "scope": "EVERY film, not only the one that triggered it — same standing as the 2026-09-03 shimmer and riser rejections",
+   "sounds": [
+    "tick-a",
+    "tick-b",
+    "tick-c"
+   ],
+   "note": "The mp3s stay in tools/sfx/palette/ as the record and stay listed under sounds, but they are never placed and never regenerated. generate-palette.mjs refuses the three names."
+  }
+ }
 }

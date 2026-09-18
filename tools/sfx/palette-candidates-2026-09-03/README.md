@@ -6,6 +6,10 @@
 > (the whole shimmer and riser/whoosh classes); their mp3s stay here as rejected
 > candidates and `generate-palette.mjs` refuses those four names. Ruling and
 > per-sound measurements: `tools/sfx/palette/README.md` + `manifest.json`.
+>
+> **TICK: rejected 2026-09-17 for every film, files deleted 2026-09-18. Never
+> use tick sounds.** `generate-palette.mjs` refuses `tick-a/b/c` too. The mp3s
+> in this folder are local-only (gitignored, ElevenLabs terms).
 
 Standalone ElevenLabs one-shot candidates for Umair's listening pass (U4 rider:
 "we need similar sfx").

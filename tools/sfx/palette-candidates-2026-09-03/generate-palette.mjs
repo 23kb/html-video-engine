@@ -19,7 +19,10 @@ const ONLY = process.argv.slice(2).filter((a) => a !== '--allow-rejected');
 // sparkle cheese. The mp3s stay on disk as rejected candidates; regenerating the
 // class is a credit spend against a sound that will be rejected again, so these
 // names are refused. Ratified set + rationale: tools/sfx/palette/README.md.
-const REJECTED = new Set(['shimmer-a', 'shimmer-b', 'riser-a', 'riser-b']);
+// REJECTED BY EAR 2026-09-17 (Umair, on a dashboard ad): the TICK class —
+// 'remove the ticks from sfx. NEVER EVER add those again.' Ticks are out of the palette for
+// every film, not just that one. The moments they covered get a designed material cue or nothing.
+const REJECTED = new Set(['shimmer-a', 'shimmer-b', 'riser-a', 'riser-b', 'tick-a', 'tick-b', 'tick-c']);
 const ALLOW_REJECTED = process.argv.includes('--allow-rejected');
 const envFile = path.resolve('.env');
 if (fs.existsSync(envFile)) {
