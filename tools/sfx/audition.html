@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SFX Audition</title>
+<style>
+  :root {
+    --bg: #f6f5f2; --card: #fff; --ink: #1d1b18; --sub: #6b665e; --line: #e4e0d8;
+    --orange: #E27730; --ok: #2f8f5b; --bad: #c0392b; --warn: #b7791f; --chip: #efece6;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #151412; --card: #1f1d1a; --ink: #ece8e1; --sub: #a39d93; --line: #34312c; --chip: #2a2824; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font: 14px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); padding: 12px 20px; }
+  h1 { font-size: 18px; margin: 0 0 4px; }
+  .meta { color: var(--sub); font-size: 13px; }
+  .bar { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 8px; }
+  .bar label { color: var(--sub); }
+  .howto { max-width: 1100px; margin: 14px auto 0; padding: 0 20px; color: var(--sub); font-size: 13px; }
+  .howto ol { margin: 6px 0 0 18px; padding: 0; }
+  main { max-width: 1100px; margin: 0 auto; padding: 16px 20px 80px; display: grid; gap: 12px; }
+  .cue { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px; display: grid; grid-template-columns: 200px 1fr; gap: 14px; }
+  .cue.dim { opacity: .55; }
+  .cue img { width: 200px; border-radius: 6px; display: block; background: #000; }
+  .top { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+  .id { font-weight: 600; }
+  .t { color: var(--sub); font-variant-numeric: tabular-nums; }
+  .chip { background: var(--chip); border-radius: 999px; padding: 1px 8px; font-size: 12px; }
+  .chip.likely { background: color-mix(in srgb, var(--ok) 18%, transparent); color: var(--ok); }
+  .chip.rej { background: color-mix(in srgb, var(--bad) 16%, transparent); color: var(--bad); }
+  .chip.mask { background: color-mix(in srgb, var(--warn) 18%, transparent); color: var(--warn); }
+  .levels { color: var(--sub); font-size: 12px; margin-top: 2px; }
+  .row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-top: 8px; }
+  button { font: inherit; border: 1px solid var(--line); background: var(--chip); color: var(--ink); border-radius: 6px; padding: 3px 9px; cursor: pointer; }
+  button:hover { border-color: var(--orange); }
+  button.on-yes { background: var(--ok); color: #fff; border-color: var(--ok); }
+  button.on-no { background: var(--bad); color: #fff; border-color: var(--bad); }
+  select, input[type=text] { font: inherit; border: 1px solid var(--line); background: var(--card); color: var(--ink); border-radius: 6px; padding: 3px 6px; }
+  input[type=text] { flex: 1; min-width: 160px; }
+  .cands { margin-top: 10px; border-top: 1px dashed var(--line); padding-top: 8px; display: grid; gap: 6px; }
+  .cand { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .cand .name { min-width: 170px; font-weight: 500; }
+  .cand .d { color: var(--sub); font-size: 12px; min-width: 150px; }
+  .fit { font-size: 12px; color: var(--sub); }
+  #status { color: var(--sub); font-size: 12px; }
+  @media (max-width: 640px) { .cue { grid-template-columns: 1fr; } .cue img { width: 100%; } }
+</style>
+</head>
+<body>
+<header>
+  <h1>SFX Audition — <span id="ref"></span></h1>
+  <div class="meta" id="meta"></div>
+  <div class="bar">
+    <label><input type="checkbox" id="onlyLikely" checked> likely SFX only</label>
+    <label><input type="checkbox" id="hideRejected"> hide rejected classes</label>
+    <label>level <select id="level"><option value="match">match the reference cue</option><option value="raw">raw file level</option></select></label>
+    <span id="status"></span>
+  </div>
+</header>
+<div class="howto">
+  <ol>
+    <li><b>Reference cue:</b> play <i>in mix</i>, then <i>isolated</i>. Mark <b>SFX</b> or <b>not SFX</b>; fix the class if the guess is wrong.</li>
+    <li><b>Candidates:</b> <i>over bed</i> plays the candidate on the reference's own music, at the reference cue's level. <i>A/B</i> plays the reference in mix, then the candidate over bed.</li>
+    <li>Approve or reject. Saves as you click. An approval is a shortlist: a sound joins the palette only after you hear it placed in a real film.</li>
+  </ol>
+</div>
+<main id="list"></main>
+<script>
+const CLASSES = ['boom', 'impact', 'hit', 'pop', 'chime', 'click', 'tick', 'whoosh', 'riser', 'other'];
+const REJECTED = { tick: 'rejected 2026-09-17', shimmer: 'rejected 2026-09-03', riser: 'rejected 2026-09-03', whoosh: 'rejected 2026-09-03' };
+let D, dec, ctx, playing = [];
+const buffers = new Map();
+const $ = (s, el = document) => el.querySelector(s);
+const fileUrl = (p) => '/file?p=' + encodeURIComponent(p);
+
+async function buf(p) {
+  if (!buffers.has(p)) buffers.set(p, fetch(fileUrl(p)).then((r) => r.arrayBuffer()).then((b) => ctx.decodeAudioData(b)));
+  return buffers.get(p);
+}
+function stop() { for (const s of playing) { try { s.stop(); } catch {} } playing = []; }
+async function play(parts) {           // parts: [{ path, at, gainDb }]
+  ctx ||= new AudioContext();
+  await ctx.resume();
+  stop();
+  const t0 = ctx.currentTime + 0.05;
+  for (const p of parts) {
+    const b = await buf(p.path);
+    const src = ctx.createBufferSource(); src.buffer = b;
+    const g = ctx.createGain(); g.gain.value = Math.pow(10, (p.gainDb || 0) / 20);
+    src.connect(g).connect(ctx.destination);
+    src.start(t0 + (p.at || 0));
+    playing.push(src);
+  }
+}
+
+let saveTimer;
+function save() {
+  clearTimeout(saveTimer);
+  $('#status').textContent = 'saving…';
+  saveTimer = setTimeout(async () => {
+    const r = await fetch('/api/decisions', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(dec) });
+    $('#status').textContent = r.ok ? 'saved ' + new Date().toLocaleTimeString() : 'save FAILED';
+  }, 250);
+}
+const cueDec = (id) => (dec.cues[id] ||= { isSfx: null, class: null, note: '', picks: {} });
+
+function render() {
+  const list = $('#list'); list.innerHTML = '';
+  const onlyLikely = $('#onlyLikely').checked, hideRej = $('#hideRejected').checked;
+  const perCue = Object.fromEntries((D.match?.perCue || []).map((p) => [p.id, p]));
+  for (const c of D.cues.cues) {
+    const d = cueDec(c.id);
+    const cls = d.class || c.class;
+    const show = d.isSfx === true || (onlyLikely ? c.likelySfx && d.isSfx !== false : true);
+    if (!show || (hideRej && REJECTED[cls])) continue;
+    const el = document.createElement('section');
+    el.className = 'cue' + (d.isSfx === false ? ' dim' : '');
+    const lv = [
+      c.excessOverBedDb != null ? `adds ${c.excessOverBedDb} dB over the bed` : (c.overSilence ? 'over silence' : 'masked by the bed'),
+      c.cueVsProgramDb != null ? `${c.cueVsProgramDb} dB vs program` : null,
+      `${Math.round(c.features.durationMs)} ms`, `attack ${Math.round(c.features.attackMs)} ms`, `${Math.round(c.features.centroidHz)} Hz`,
+      c.cutDistMs <= 150 ? `on a cut (${c.cutDistMs} ms)` : null,
+    ].filter(Boolean).join(' · ');
+    el.innerHTML = `
+      ${c.files.frame ? `<img src="${fileUrl(c.files.frame)}" alt="frame at ${c.t}s">` : '<div></div>'}
+      <div>
+        <div class="top">
+          <span class="id">${c.id}</span><span class="t">${c.t.toFixed(2)} s</span>
+          <select class="cls">${CLASSES.map((k) => `<option ${k === cls ? 'selected' : ''}>${k}</option>`).join('')}</select>
+          ${c.likelySfx ? '<span class="chip likely">likely SFX</span>' : ''}
+          ${c.masked ? '<span class="chip mask">masked</span>' : ''}
+          ${REJECTED[cls] || c.rejected ? `<span class="chip rej">${REJECTED[cls] || c.rejected}</span>` : ''}
+          ${c.roll ? `<span class="chip">roll × ${c.roll.hits}</span>` : ''}
+        </div>
+        <div class="levels">${lv}</div>
+        <div class="row">
+          <button data-p="mix">▶ in mix</button><button data-p="iso">▶ isolated</button><button data-p="bed">▶ bed only</button><button data-p="stop">■</button>
+          <span style="width:10px"></span>
+          <button class="yes ${d.isSfx === true ? 'on-yes' : ''}">SFX</button>
+          <button class="no ${d.isSfx === false ? 'on-no' : ''}">not SFX</button>
+          <input type="text" class="note" placeholder="note" value="${(d.note || '').replace(/"/g, '&quot;')}">
+        </div>
+        <div class="cands"></div>
+      </div>`;
+    el.querySelector('[data-p=mix]').onclick = () => play([{ path: c.files.mix }]);
+    el.querySelector('[data-p=iso]').onclick = () => play([{ path: c.files.iso }]);
+    el.querySelector('[data-p=bed]').onclick = () => play([{ path: c.files.bed }]);
+    el.querySelector('[data-p=stop]').onclick = stop;
+    el.querySelector('.cls').onchange = (e) => { d.class = e.target.value === c.class ? null : e.target.value; save(); render(); };
+    el.querySelector('.yes').onclick = () => { d.isSfx = d.isSfx === true ? null : true; save(); render(); };
+    el.querySelector('.no').onclick = () => { d.isSfx = d.isSfx === false ? null : false; save(); render(); };
+    el.querySelector('.note').onchange = (e) => { d.note = e.target.value; save(); };
+    const pc = perCue[c.id];
+    const box = el.querySelector('.cands');
+    if (!pc) box.innerHTML = '<span class="fit">No candidates ranked for this cue. Run match-cues.mjs (it skips cues marked not SFX).</span>';
+    else {
+      box.innerHTML = `<span class="fit">fit: ${pc.fit}</span>`;
+      for (const k of pc.top) {
+        const row = document.createElement('div');
+        row.className = 'cand';
+        const pick = d.picks[k.file];
+        const refRms = c.features.rmsActiveDb;
+        const gain = () => ($('#level').value === 'match' ? refRms - k.rmsActiveDb : 0);
+        row.innerHTML = `<span class="name">${k.name}</span><span class="d">${k.pool} · distance ${k.distance}</span>
+          <button data-a>▶ alone</button><button data-b>▶ over bed</button><button data-ab>▶ A/B</button>
+          <button class="ok ${pick === 'approve' ? 'on-yes' : ''}">approve</button><button class="rj ${pick === 'reject' ? 'on-no' : ''}">reject</button>`;
+        const lead = c.files.bedLeadS || 0;
+        row.querySelector('[data-a]').onclick = () => play([{ path: k.file, gainDb: gain() }]);
+        row.querySelector('[data-b]').onclick = () => play([{ path: c.files.bed }, { path: k.file, at: lead, gainDb: gain() }]);
+        row.querySelector('[data-ab]').onclick = async () => {
+          const mix = await buf(c.files.mix);
+          play([{ path: c.files.mix }, { path: c.files.bed, at: mix.duration + 0.5 }, { path: k.file, at: mix.duration + 0.5 + lead, gainDb: gain() }]);
+        };
+        row.querySelector('.ok').onclick = () => { d.picks[k.file] = pick === 'approve' ? undefined : 'approve'; save(); render(); };
+        row.querySelector('.rj').onclick = () => { d.picks[k.file] = pick === 'reject' ? undefined : 'reject'; save(); render(); };
+        box.appendChild(row);
+      }
+    }
+    list.appendChild(el);
+  }
+}
+
+(async () => {
+  D = await (await fetch('/api/data')).json();
+  dec = D.decisions || { cues: {} };
+  dec.cues ||= {};
+  $('#ref').textContent = D.refId;
+  const p = D.cues.program || {};
+  const n = D.cues.cues.length, likely = D.cues.cues.filter((c) => c.likelySfx).length;
+  $('#meta').textContent = `${n} detected hits · ${likely} likely SFX · program ${p.I} LUFS · ${D.cues.tempoBpm} bpm · ${D.cues.visualCuts.length} visual cuts`
+    + (D.match ? ` · ${D.match.candidates} candidates ranked` : ' · no match-report yet');
+  for (const id of ['onlyLikely', 'hideRejected', 'level']) $('#' + id).onchange = render;
+  render();
+})();
+</script>
+</body>
+</html>

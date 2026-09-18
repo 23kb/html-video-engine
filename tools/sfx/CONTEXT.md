@@ -148,3 +148,91 @@ round this queued ("we need similar sfx" — Umair judges by ear) is **DONE**:
 6. **Endings** — 3 of 7 ad refs measure a 0.6–1.7s fade to TRUE silence; one hard-outs at full level; none hold silence mid-program.
 7. **postIntro bed level** — refs' bed-in-gaps (−22.9..−24.5 momentary) sits 3–5 dB hotter than our 0.17 default (−27.6) and 5–8 dB hotter than our long-form 0.12 (−29..−31). The tutorial ref matches our 0.17 band; one postIntro source runs its tutorial body with NO bed.
 8. **True peak** — ad refs master to +0.1..+2.6 dBTP (6 of 7 over 0); our limiter caps at 0.95 (≈ −0.4 dBFS). The liked intro sting is the quiet outlier (−19 I / −8.2 dBTP).
+
+## Reference-copy recipe (2026-09-18)
+
+Umair, 2026-09-18: our SFX sound **cheap** and sit **louder than the rest of the
+video**. Density and timing are fine. The fix: measure a reference ad he likes
+and copy two things from it, the **character** of each cue and its **level
+against the music**. Never its files. The reference audio belongs to another
+brand; everything it produces stays under `tools/sfx/refs/<id>/`
+(gitignored) and is for measurement only.
+
+**Setup, once:** `python -m venv tools/sfx/.venv`, then
+`tools/sfx/.venv/Scripts/python -m pip install demucs soundfile librosa`.
+The first split downloads the `htdemucs` model (~80 MB). The DSP lives in
+`tools/sfx/py/sfxref.py`; the `.mjs` wrappers find the venv through
+`lib-py.mjs` (override with `SFX_PYTHON`).
+
+**The steps, in order:**
+
+1. `node tools/sfx/split-reference.mjs --ref tools/sfx/refs/<id> --from <clip.mp4>`
+   — stems (vocals / drums / bass / other) plus `novocals.wav` and `bed.wav`
+   (bass + other), with LUFS per stem in `stems.json`.
+2. `node tools/sfx/reference-cues.mjs --ref <dir>` — finds the hits, guesses a
+   class, measures each one, writes `reference-cues.json` plus per-cue
+   `mix` / `iso` / `bed` WAVs and a frame. Heuristic: demucs splits music
+   stems, not SFX from music. A hit scores as likely SFX from how far it rises
+   over its stem, whether it sits on a visual cut, and whether it is off the
+   beat grid.
+3. `node tools/sfx/gen-candidates.mjs --ref <dir> [--dry-run]` — ElevenLabs
+   candidates whose prompts are written from the measurement (length, attack,
+   brightness, low end, tonality): three voices per class (plain, a real
+   material doing a real thing, clean UI). Cached in
+   `tools/sfx/candidates/<id>/` with a prompt sidecar. Prints the credit use.
+4. `node tools/sfx/match-cues.mjs --ref <dir>` — ranks every candidate against
+   every cue by feature distance. Fit: < 0.8 good, 0.8–1.3 fair, ≥ 1.3 poor.
+   `--self-test` must show each cue ranking its own clip #1 (32/33 on the
+   first reference).
+5. `node tools/sfx/audition.mjs --ref <dir>` → `http://localhost:4546/` —
+   Umair confirms each cue by ear (SFX / not SFX, class), plays the top three
+   candidates alone, over the reference's own bed at the reference cue's
+   level, and A/B against the reference. Decisions land in
+   `audition-decisions.json`; steps 3–4 and `normalize.mjs` honour them.
+6. Place the approved sounds in a film's `sfx/plan.json`, then
+   `node tools/sfx/normalize.mjs --video <slug> --from-reference <dir>/reference-cues.json`
+   — sets each cue's gain so the energy it **adds over the film's own
+   backdrop** matches the reference median for its class. Report first;
+   `--write` to apply. Changes over 10 dB and cues on a silent backdrop are
+   left for the ear. Then `onset.mjs`, `mux.mjs`, integrated LUFS.
+
+**Rules that still bind.** Rejected classes (tick, shimmer, riser/whoosh) are
+flagged in the cue map and refused by the generator and the matcher; a lone
+short bright `click` is treated as tick-like until Umair rules on it. An
+audition approval is a **shortlist**: a sound joins `tools/sfx/palette/` only
+after Umair hears it placed on a real cut in a real film. `candidates/` and
+`explore/` are gitignored (ElevenLabs terms: no redistributing generated
+sounds as files).
+
+**ElevenLabs library sounds (Explore tab).** The API only generates; there is
+no endpoint to browse or download the library. To use a library sound,
+download it by hand from the Sound Effects page into
+`tools/sfx/explore/<class>/<name>.mp3` and save its prompt in `<name>.json`
+next to it (`{"class": "pop", "prompt": "…"}`). `match-cues.mjs` ranks the
+folder with everything else. On a paid plan the sounds are royalty-free for
+commercial use with no credit line; sounds other users shared are licensed
+through ElevenLabs unless the creator opted out (low risk, not zero).
+
+### Measured: first reference vs our latest ad (2026-09-18)
+
+Reference `ref-2026-09-18-a` (a 40.3 s third-party ad): **no voice**
+(vocals stem −70 LUFS), program −23.8 LUFS / LRA 11.9 / TP −4.5 dBTP, bed
+(bass + other) −30.6 LUFS, ~100 bpm. 42 hits, 33 likely SFX, 12 of them
+within 150 ms of a visual cut. Ours: our latest 30 s ad's plan as
+it stood that night (program −22.2 LUFS).
+
+| Class | Reference: adds over bed (median, range) | Reference: cue vs program | Ours: adds over bed | Ours: cue vs program |
+|---|---|---|---|---|
+| boom | +4.7 dB (−10.2..+23.2, n=16) | −5.5 dB | boom-a +11.1 · boom-b +4.4 | +0.1 · +3.4 |
+| impact / hit | −1.4 dB (n=6) | −16.4 (hit) · −11.4 (impact) | impact-b +5.7 / +4.4 · impact-c −3.2 | +1.3 · −4.7 |
+| pop | −1.0 dB (−11.9..+1.3, n=5) | −11.7 dB | — | — |
+
+**What it says.** The reference tucks its SFX **into** the music: a typical
+hit adds about as much energy as the bed already has, and its pops and hits
+sit 11–16 dB under program loudness. Ours sit on top: our opening boom adds
+~6 dB more than the reference's, and our impacts run ~6–7 dB hotter over
+the bed and 12–17 dB hotter against program. Two things feed the gap: the
+palette impacts ride +18..+19 dB of gain on weak sources (their noise floor
+rises with them), and every hot cue pushes the mix into `mux.mjs`'s −1 dBFS
+limiter. Numbers only: no default changes until Umair has heard the
+reference-levelled version.
