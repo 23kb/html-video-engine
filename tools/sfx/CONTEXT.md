@@ -273,3 +273,24 @@ palette impacts ride +18..+19 dB of gain on weak sources (their noise floor
 rises with them), and every hot cue pushes the mix into `mux.mjs`'s −1 dBFS
 limiter. Numbers only: no default changes until Umair has heard the
 reference-levelled version.
+
+### Audition outcome, first reference (2026-09-18)
+
+Umair's ear pass on `ref-2026-09-18-a`: 5 of the 42 detected hits are real
+SFX (the rest are music), and **8 sounds are shortlisted** for the next film:
+
+| Sound | Where it came from | Approved against |
+|---|---|---|
+| `chime-a`, `pop-c` | generated from the measurement | the 14.46s hit |
+| `hit-b`, `pop-a`, `boom-b` | generated from the measurement | the 26.54s impact |
+| `boom-a` | generated from the measurement | the 28.07s and 28.94s booms |
+| `impact-a`, `impact-c` | the existing palette | the 28.07s boom |
+
+A shortlist is not the palette: each sound still has to earn its place on a
+real cut in a real film before it joins `tools/sfx/palette/`. The next film
+built is the one that tries them (Umair 2026-09-18: no existing film gets a
+retro-fitted SFX pass).
+
+Worth knowing for the next pass: the ranking is advisory. The 14.46s cue
+measured a **poor** fit against every candidate, and Umair approved two of
+them anyway. Rank to shortlist, then decide by ear.
