@@ -40,7 +40,8 @@ const { chromium } = require('playwright');
 const { extractEntries } = require('./generate-snapshot-catalog.js');
 
 const ROOT = path.resolve(__dirname, '..');
-const SNAP_DIR = path.join(ROOT, 'snapshots');
+const { snapshotsRoot, snapshotsUrlBase } = require('./lib/paths');
+const SNAP_DIR = snapshotsRoot();
 
 // Size guidance: target 3–8 KB; >12 KB is reported as an outlier (a genuinely
 // huge interaction surface is allowed, silent bloat is not).
@@ -318,7 +319,7 @@ function analyzeInFrame() {
     }
 
     // — #2a: drivable transitions (registry match against this DOM) —
-    const T = window.__wpfTransitions || null;
+    const T = window.__snapTransitions || window.__wpfTransitions || null;
     const registryPresent = Array.isArray(T);
     const transitions = [];
     if (registryPresent) {
@@ -581,7 +582,7 @@ async function emitFor(slug, browser, port, knownSlugs) {
   const page = await browser.newPage({ viewport: { width: 1600, height: 1000 } });
   let data;
   try {
-    const url = `http://localhost:${port}/scenes/snapshot-viewer.html?snap=${slug}`;
+    const url = `http://localhost:${port}/scenes/snapshot-viewer.html?snap=${slug}&root=${snapshotsUrlBase()}`;
     await page.goto(url, { waitUntil: 'load', timeout: 45000 });
     const frameHandle = await page.waitForSelector('iframe#frame', { state: 'attached', timeout: 15000 });
     const frame = await frameHandle.contentFrame();
@@ -592,7 +593,7 @@ async function emitFor(slug, browser, port, knownSlugs) {
     // 'complete' = fully parsed + subresources done + interactivity.js run.
     await frame.waitForFunction(() => document.readyState === 'complete', { timeout: 25000 });
     await frame.waitForFunction(
-      () => window.__wpfTransitions !== undefined || !document.querySelector('script[src*="interactivity"]'),
+      () => window.__wpfTransitions !== undefined || window.__snapTransitions !== undefined || !document.querySelector('script[src*="interactivity"]'),
       { timeout: 8000 }
     ).catch(() => {});
     await page.waitForTimeout(300); // settle any init-time rAF/setTimeout DOM tweaks

@@ -20,7 +20,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const SNAPSHOTS_DIR = path.join(__dirname, '..', 'snapshots');
+const SNAPSHOTS_DIR = require('./lib/paths').snapshotsRoot();
 const SHARED_DIR = path.join(SNAPSHOTS_DIR, '_shared', 'css');
 const MIN_SHARING = 2; // extract only if hash appears in ≥ this many snapshots
 const STYLE_RE = /<style\b([^>]*)>([\s\S]*?)<\/style>/gi;

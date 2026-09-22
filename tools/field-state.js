@@ -41,7 +41,7 @@ function usage() {
 // read from the source, so the question is answerable while planning.
 function printInteractivity(filter, opts = {}) {
   const { staleDays = null, syntheticOnly = false } = opts;
-  const file = path.join(ROOT, 'snapshots', '_shared', 'interactivity.js');
+  const file = path.join(require('./lib/paths').snapshotsRoot(), '_shared', 'interactivity.js');
   if (!fs.existsSync(file)) {
     console.error(`Not found: ${file}`);
     process.exit(1);

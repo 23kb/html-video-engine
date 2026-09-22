@@ -54,7 +54,7 @@ async function readStdin() {
   const page = await browser.newPage({ viewport: { width: 1440, height: 900 } });
 
   // Load snapshot directly — no iframe wrapper; we just want to query its DOM.
-  const url = `http://localhost:${port}/snapshots/${slug}/index.html`;
+  const url = `http://localhost:${port}${require('./lib/paths').snapshotUrlPath(slug)}`;
   try {
     await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 10000 });
   } catch (e) {

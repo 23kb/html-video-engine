@@ -25,7 +25,7 @@
 const fs   = require('fs');
 const path = require('path');
 
-const SNAPSHOTS_DIR = path.join(__dirname, '..', 'snapshots');
+const SNAPSHOTS_DIR = require('./lib/paths').snapshotsRoot();
 
 const arg = process.argv[2];
 if (!arg) {

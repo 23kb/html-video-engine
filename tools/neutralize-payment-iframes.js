@@ -62,7 +62,7 @@ function main() {
     process.exit(1);
   }
 
-  const snapDir = path.join(__dirname, '..', 'snapshots', slug);
+  const snapDir = require('./lib/paths').snapshotDir(slug);
   const htmlPath = path.join(snapDir, 'index.html');
   if (!fs.existsSync(htmlPath)) {
     console.error(`Unknown snapshot: ${slug} (${htmlPath})`);

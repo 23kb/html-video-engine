@@ -40,7 +40,8 @@ const { spawn } = require('child_process');
 const { chromium } = require('playwright');
 
 const ROOT = path.join(__dirname, '..');
-const SNAPSHOTS_DIR = path.join(ROOT, 'snapshots');
+const { snapshotsRoot, snapshotUrlPath } = require('./lib/paths');
+const SNAPSHOTS_DIR = snapshotsRoot();
 const PORT = Number(process.env.CLEAN_PORT) || 4395;
 
 const BASELINE_TYPES = ['name', 'email', 'textarea', 'phone', 'radio', 'checkbox'];
@@ -101,7 +102,7 @@ async function cleanSlug(page, slug, outRoot) {
     return { slug, ok: false, error: `missing snapshots/${slug}/index.html` };
   }
 
-  const url = `http://localhost:${PORT}/snapshots/${slug}/index.html`;
+  const url = `http://localhost:${PORT}${snapshotUrlPath(slug)}`;
   await page.goto(url, { waitUntil: 'domcontentloaded' });
 
   const result = await page.evaluate(({ BASELINE_TYPES, CLEAN_FORM_TITLE, QUIZ_TAB_SELECTORS, PAYPAL_SELECTORS }) => {

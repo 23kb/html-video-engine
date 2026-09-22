@@ -101,7 +101,7 @@ function trim(html) {
 function kb(n) { return (n / 1024).toFixed(1) + ' KB'; }
 
 function processSlug(slug, opts) {
-  const inPath = path.join(REPO_ROOT, 'snapshots', slug, 'index.html');
+  const inPath = path.join(require('./lib/paths').snapshotDir(slug), 'index.html');
   if (!fs.existsSync(inPath)) {
     console.error(`Skip ${slug}: not found at ${inPath}`);
     return;

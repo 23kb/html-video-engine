@@ -36,7 +36,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.resolve(__dirname, '..');
+const { snapshotDir, snapshotUrlPath } = require('./lib/paths');
 
 function parseArgs(argv) {
   const a = argv.slice(2);
@@ -109,7 +109,7 @@ async function verifyRemaining(slug, port) {
   const browser = await chromium.launch({ headless: true });
   try {
     const page = await browser.newPage({ viewport: { width: 1600, height: 1000 } });
-    await page.goto(`http://localhost:${port}/snapshots/${slug}/index.html`, { waitUntil: 'load', timeout: 45000 });
+    await page.goto(`http://localhost:${port}${snapshotUrlPath(slug)}`, { waitUntil: 'load', timeout: 45000 });
     await page.waitForTimeout(400);
     return await page.evaluate(() => {
       const left = [];
@@ -137,7 +137,7 @@ async function main() {
     console.error('Usage: node tools/strip-identity-transforms.js --slug <slug> [--dry-run] [--no-verify]');
     process.exit(2);
   }
-  const file = path.join(ROOT, 'snapshots', args.slug, 'index.html');
+  const file = path.join(snapshotDir(args.slug), 'index.html');
   if (!fs.existsSync(file)) {
     console.error(`✗ not found: snapshots/${args.slug}/index.html`);
     process.exit(1);

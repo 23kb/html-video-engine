@@ -22,7 +22,17 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 
 const ROOT     = path.join(__dirname, '..');
-const SNAP_DIR = path.join(ROOT, 'snapshots');
+const { snapshotsRoot, snapshotUrlPath, loadProduct } = require('./lib/paths');
+const SNAP_DIR = snapshotsRoot();
+
+// Role-like classes are kept by prefix. WPForms keeps its wpforms- rule; any
+// other product reads its own prefixes from product.json → classPrefixes.
+const PRODUCT = loadProduct();
+const CLASS_PREFIXES = PRODUCT ? (PRODUCT.classPrefixes || []) : ['wpforms-'];
+// Choices.js writes one id per dropdown option (hundreds on a timezone
+// picker); the outline already drops them (NOISE_SEL). Product roots drop
+// them here too; WPForms catalogs stay as they are.
+const NOISE_ID = PRODUCT ? /^choices--/ : null;
 
 // Consumer surface for Phase 6 Step 1a — snapshots referenced by the
 // videos currently touched by the phase. Bumped as the surface grows.
@@ -270,7 +280,7 @@ function extractEntries(html) {
       });
     };
 
-    if (attrs.id && !isChromeId(attrs.id)) {
+    if (attrs.id && !isChromeId(attrs.id) && !(NOISE_ID && NOISE_ID.test(attrs.id))) {
       record(ids, attrs.id, `#${attrs.id}`);
     }
     if (attrs['data-field-id']) {
@@ -298,7 +308,7 @@ function extractEntries(html) {
     if (attrs.class) {
       for (const c of attrs.class.split(/\s+/)) {
         if (!c) continue;
-        if (!c.startsWith('wpforms-') && c !== 'choices' && !c.startsWith('choices__')) continue;
+        if (!CLASS_PREFIXES.some((p) => c.startsWith(p)) && c !== 'choices' && !c.startsWith('choices__')) continue;
         const existing = classData.get(c);
         if (existing) {
           existing.count++;
@@ -391,7 +401,7 @@ function renderCatalog(slug, entries, sourceRel) {
   md += `> Source: \`${sourceRel}\`\n`;
   md += `> Generator: \`tools/generate-snapshot-catalog.js\`\n`;
   md += `> ${total} selector entries across ${countNonEmpty(entries)} sections.\n\n`;
-  md += `Provenance anchor form: \`snapshots/${slug}/catalog.md#<anchor>\`.\n`;
+  md += `Provenance anchor form: \`${sourceRel.replace(/index\.html$/, 'catalog.md')}#<anchor>\`.\n`;
   md += `Anchors are derived from the selector value and are stable across reruns.\n\n`;
   md += `---\n\n`;
 
@@ -452,7 +462,7 @@ function emitFor(slug) {
   if (entries.panelScoping === 'panels-no-active') {
     console.error(`[scoping] ${slug}: .wpforms-panel elements present but none carries 'active'; rule A skipped (keep-all fallback)`);
   }
-  const md = renderCatalog(slug, entries, `snapshots/${slug}/index.html`);
+  const md = renderCatalog(slug, entries, snapshotUrlPath(slug).slice(1));
   const outPath = path.join(snapDir, 'catalog.md');
   fs.writeFileSync(outPath, md);
   const total = entries.ids.length + entries.dataFieldIds.length

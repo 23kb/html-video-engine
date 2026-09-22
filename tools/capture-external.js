@@ -32,8 +32,7 @@ const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
 
-const ROOT = path.resolve(__dirname, '..');
-const SNAP = path.join(ROOT, 'snapshots');
+const SNAP = require('./lib/paths').snapshotsRoot();
 const INDEX_PATH = path.join(SNAP, 'index.json');
 
 function parseArgs(argv) {

@@ -45,6 +45,9 @@
 <script type="module">
 const qp = new URLSearchParams(location.search);
 const snap = qp.get('snap');
+// Snapshot root on this server: /snapshots (WPForms) or /products/<key>/snapshots.
+const root = qp.get('root') || '/snapshots';
+if (!root.startsWith('/')) throw new Error('?root= must be a server path starting with /');
 const doSanitize = qp.get('sanitize') === '1';
 let sanitizeOpts = {};
 if (qp.get('sanitizeOpts')) {
@@ -57,7 +60,7 @@ if (!snap) throw new Error('missing ?snap=');
 document.getElementById('macTitle').textContent = snap;
 
 const frame = document.getElementById('frame');
-frame.src = `/snapshots/${snap}/index.html`;
+frame.src = `${root}/${snap}/index.html`;
 
 // Fit iframe into the stage (same approach as the Mac frame in player.css).
 function fit() {

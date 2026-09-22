@@ -12,8 +12,6 @@ const fs = require('fs');
 const path = require('path');
 const { chromium } = require('playwright');
 
-const REPO_ROOT = path.resolve(__dirname, '..');
-
 function parseArgs(argv) {
   const args = { positional: [], flags: {} };
   for (const a of argv) {
@@ -31,7 +29,7 @@ function parseArgs(argv) {
   if (!slug) { console.error('usage: trim-snapshot-fields.js <slug> [keep-ids]'); process.exit(1); }
   const keep = keepStr.split(',').map(s => parseInt(s.trim(), 10));
 
-  const snapshotPath = path.join(REPO_ROOT, 'snapshots', slug, 'index.html');
+  const snapshotPath = path.join(require('./lib/paths').snapshotDir(slug), 'index.html');
   if (!fs.existsSync(snapshotPath)) { console.error('not found:', snapshotPath); process.exit(1); }
 
   // Relabels apply ONLY when the flag is explicitly passed — a bare

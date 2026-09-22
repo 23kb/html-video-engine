@@ -14,8 +14,8 @@ import { chromium } from 'playwright';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
+import paths from './lib/paths.js';
 
-const ROOT = 'C:/Users/PC/Desktop/Video Project - HTML only';
 const args = process.argv.slice(2);
 const slug = args[0];
 const opt = (k, d) => { const i = args.indexOf('--' + k); return i > -1 ? args[i + 1] : d; };
@@ -24,7 +24,7 @@ const OUT = opt('out', path.join(process.cwd(), `${slug}-ae.html`));
 const COMP_W = +opt('w', 1920), COMP_H = +opt('h', 1080), PAD = +opt('pad', 40);
 
 if (!slug) { console.error('usage: snapshot-to-ae.mjs <slug> [--scope sel]'); process.exit(1); }
-const src = path.join(ROOT, 'snapshots', slug, 'index.html');
+const src = path.join(paths.snapshotDir(slug), 'index.html');
 if (!fs.existsSync(src)) { console.error('no such snapshot:', src); process.exit(1); }
 
 // builder chrome + editor affordances that must never reach a film

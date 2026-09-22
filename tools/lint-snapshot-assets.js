@@ -20,7 +20,7 @@ const fs = require('fs');
 const { chromium } = require('playwright');
 const { ensureServer } = require('./generate-snapshot-outline.js');
 
-const ROOT = path.resolve(__dirname, '..');
+const { snapshotDir, snapshotUrlPath } = require('./lib/paths');
 const PORT = Number(process.env.PORT) || 4321;
 
 async function lintSlug(page, slug) {
@@ -37,7 +37,7 @@ async function lintSlug(page, slug) {
   page.on('response', onResponse);
   page.on('requestfailed', onFailed);
   try {
-    await page.goto(`http://localhost:${PORT}/snapshots/${slug}/index.html`, { waitUntil: 'load', timeout: 30000 });
+    await page.goto(`http://localhost:${PORT}${snapshotUrlPath(slug)}`, { waitUntil: 'load', timeout: 30000 });
     await page.waitForTimeout(1000); // late font/img fetches
   } finally {
     page.off('response', onResponse);
@@ -53,7 +53,7 @@ async function main() {
     process.exit(2);
   }
   for (const slug of slugs) {
-    if (!fs.existsSync(path.join(ROOT, 'snapshots', slug, 'index.html'))) {
+    if (!fs.existsSync(path.join(snapshotDir(slug), 'index.html'))) {
       console.error(`✗ snapshots/${slug}/index.html not found`);
       process.exit(2);
     }

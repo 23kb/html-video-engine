@@ -16,8 +16,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const ROOT = path.resolve(__dirname, '..');
-const SNAP_DIR = path.join(ROOT, 'snapshots');
+const SNAP_DIR = require('./lib/paths').snapshotsRoot();
 
 function parseArgs(argv) {
   const args = { apply: false, verify: false, slugs: [] };

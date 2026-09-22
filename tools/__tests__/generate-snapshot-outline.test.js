@@ -139,11 +139,21 @@ async function main() {
     // initCanvasFieldActiveSync etc. — so it's the stronger determinism test).
     section('Gate 3 — idempotency (byte-identical regeneration)');
     for (const idSlug of ['admin-tools-import-entries', 'builder-fields']) {
-      execFileSync(process.execPath, [GEN, idSlug], { stdio: 'ignore' });
-      const a = readOutline(idSlug);
-      execFileSync(process.execPath, [GEN, idSlug], { stdio: 'ignore' });
-      const b = readOutline(idSlug);
-      ok(a === b, `${idSlug}: two regenerations byte-identical`);
+      // Regenerate a temp copy beside the real one (so ../_shared/ resolves) —
+      // regenerating the real outline left snapshots/ modified after every run.
+      const copy = '_gate3-' + idSlug;
+      const copyDir = path.join(SNAP, copy);
+      try {
+        fs.rmSync(copyDir, { recursive: true, force: true });
+        fs.cpSync(path.join(SNAP, idSlug), copyDir, { recursive: true });
+        execFileSync(process.execPath, [GEN, copy], { stdio: 'ignore' });
+        const a = readOutline(copy);
+        execFileSync(process.execPath, [GEN, copy], { stdio: 'ignore' });
+        const b = readOutline(copy);
+        ok(a === b, `${idSlug}: two regenerations byte-identical`);
+      } finally {
+        fs.rmSync(copyDir, { recursive: true, force: true });
+      }
     }
 
     // ── Gate 4: interactivity goldens ───────────────────────────────────

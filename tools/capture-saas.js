@@ -45,7 +45,7 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..');
-const SNAP_ROOT = process.env.WP_SNAPSHOT_ROOT || path.join(ROOT, 'snapshots');
+const SNAP_ROOT = require('./lib/paths').snapshotsRoot();
 
 // Same catalog as capture/capture.js's sanitizer (kept in sync by the FIX-11 test).
 const SECRET_PATTERNS = [

@@ -5,14 +5,15 @@
 //   node tools/list-snapshots.js                # list all snapshots
 //   node tools/list-snapshots.js --for <slug>   # show which snapshots a video uses,
 //                                               # which exist, which are missing
-//   node tools/list-snapshots.js --search <q>   # filter by slug substring
+//   node tools/list-snapshots.js --search <q>   # filter by slug, description,
+//                                               # topics or category
 //   node tools/list-snapshots.js --json         # machine-readable
 
 const fs = require('fs');
 const path = require('path');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
-const SNAP_DIR = path.join(REPO_ROOT, 'snapshots');
+const SNAP_DIR = require('./lib/paths').snapshotsRoot();
 const INDEX_PATH = path.join(SNAP_DIR, 'index.json');
 
 function parseArgs(argv) {
@@ -34,7 +35,8 @@ function loadIndex() {
   // the most-used discovery tool, on every call. Repaired 2026-08-20; this
   // catches a recurrence at the point of use instead of years later.
   if (/[ÂÃâãð][-ÿ–—‘’“”†-…™]/.test(raw)) {
-    console.error('⚠ snapshots/index.json contains mis-encoded text (mojibake). Fix: node tools/fix-mojibake.js snapshots/index.json --write');
+    const rel = path.relative(REPO_ROOT, INDEX_PATH).split(path.sep).join('/');
+    console.error(`⚠ ${rel} contains mis-encoded text (mojibake). Fix: node tools/fix-mojibake.js ${rel} --write`);
   }
   return JSON.parse(raw);
 }
@@ -131,7 +133,12 @@ function main() {
   let rows = index.snapshots.slice();
   if (args.search) {
     const q = args.search.toLowerCase();
-    rows = rows.filter(s => s.slug.toLowerCase().includes(q) || (s.shows || '').toLowerCase().includes(q));
+    // slug + description + topics + category: a person searching "stripe" or
+    // "recurring" is asking what a screen SHOWS, and the topics list is where
+    // the capture recorded that (WO-306).
+    rows = rows.filter((s) => [
+      s.slug, s.shows, s.category, ...(Array.isArray(s.topics) ? s.topics : [s.topics]),
+    ].some((v) => String(v || '').toLowerCase().includes(q)));
   }
 
   if (args.json) {

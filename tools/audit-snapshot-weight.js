@@ -17,7 +17,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const SNAPSHOTS_DIR = path.join(__dirname, '..', 'snapshots');
+const SNAPSHOTS_DIR = require('./lib/paths').snapshotsRoot();
 
 function md5(s) {
   return crypto.createHash('md5').update(s).digest('hex').slice(0, 12);

@@ -22,7 +22,7 @@ const fs = require('fs');
 const path = require('path');
 const crypto = require('crypto');
 
-const SNAPSHOTS_DIR = path.join(__dirname, '..', 'snapshots');
+const SNAPSHOTS_DIR = require('./lib/paths').snapshotsRoot();
 const SHARED_ASSETS_DIR = path.join(SNAPSHOTS_DIR, '_shared', 'assets');
 
 function md5File(filePath) {

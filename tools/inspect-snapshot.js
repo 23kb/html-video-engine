@@ -29,6 +29,14 @@
 const fs  = require('fs');
 const path = require('path');
 
+// Repo-relative path of a slug's catalog, under whatever root VIDEO_PRODUCT
+// selects (`snapshots/…` or `products/<key>/snapshots/…`).
+function catalogRelPath(slug) {
+  const { REPO_ROOT } = require('./lib/paths');
+  const abs = path.join(require('./lib/paths').snapshotsRoot(), slug, 'catalog.md');
+  return path.relative(REPO_ROOT, abs).split(path.sep).join('/');
+}
+
 const args = process.argv.slice(2);
 const slug = args.find(a => !a.startsWith('--'));
 const doSanitize = args.includes('--sanitize');
@@ -57,7 +65,7 @@ if (!slug) {
 // so it reported WIRED 0 / INERT 0 on every snapshot).
 const emitActionsFlag = process.argv.includes('--emit-actions');
 if (emitActionsFlag) {
-  const snapRoot = process.env.WPF_SNAPSHOTS_DIR || path.join(__dirname, '..', 'snapshots');
+  const snapRoot = require('./lib/paths').snapshotsRoot();
   const jsonPath = path.join(snapRoot, slug, 'outline.json');
   const outlinePath = path.join(snapRoot, slug, 'outline.md');
 
@@ -123,7 +131,7 @@ if (emitActionsFlag) {
 // ── --emit-selectors: catalog-only, no Playwright ─────────────────────────
 if (emitSelectors) {
   // WPF_SNAPSHOTS_DIR override exists for the self-test (fixture snapshots).
-  const snapRoot = process.env.WPF_SNAPSHOTS_DIR || path.join(__dirname, '..', 'snapshots');
+  const snapRoot = require('./lib/paths').snapshotsRoot();
   const catalogPath = path.join(snapRoot, slug, 'catalog.md');
   if (!fs.existsSync(catalogPath)) {
     console.error(`catalog not found: ${catalogPath}`);
@@ -495,7 +503,10 @@ if (emitSelectors) {
 
   const lines = [];
   lines.push('// Auto-generated starter selector sheet — authoring aid only.');
-  lines.push('// Catalog authority: `snapshots/' + slug + '/catalog.md`.');
+  // The root follows VIDEO_PRODUCT, so the sheet must name the root it was
+  // actually generated from — a product pack's sheet that says `snapshots/`
+  // points a reader at the WPForms tree (WO-306).
+  lines.push('// Catalog authority: `' + catalogRelPath(slug) + '`.');
   lines.push('// Every entry is mechanically derived from a real catalog anchor.');
   lines.push('// Safe to rename/delete entries. Do NOT add selectors that are not');
   lines.push('// indexed in catalog.md — if catalog and sheet disagree, catalog wins.');
@@ -548,7 +559,7 @@ const INTERACTIVE = [
 ];
 
 (async () => {
-  const url = `http://localhost:${port}/scenes/snapshot-viewer.html?snap=${slug}${doSanitize ? '&sanitize=1' : ''}`;
+  const url = `http://localhost:${port}/scenes/snapshot-viewer.html?snap=${slug}&root=${require('./lib/paths').snapshotsUrlBase()}${doSanitize ? '&sanitize=1' : ''}`;
   console.log('[inspect] opening', url);
 
   const browser = await chromium.launch();
