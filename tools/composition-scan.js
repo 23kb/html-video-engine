@@ -77,6 +77,12 @@ const fs = require('fs');
 const path = require('path');
 const { resolveResolution } = require('./stage-size');
 const { writeSection } = require('./lib/qc-report');
+const { loadPack, packClassRe } = require('./lib/paths');
+const { filmProduct } = require('./lib/brand');
+
+// Selectors that belong to the product UI: the film's pack class prefixes
+// (products/<key>/pack.json; WPForms: /wpforms/). Set per film in main().
+let PRODUCT_RE = packClassRe(loadPack('wpforms'));
 
 // ── declared cadence (storyboard.md "## Camera plan" header) ────────────────
 // Reads `Cadence:` (seconds per landing — "1 landing / 5s", "every 4–6s",
@@ -320,7 +326,7 @@ function resolveTarget(raw, SEL) {
   if (selRef) return SEL[selRef[1]] || null;
   if (/^['"]/.test(raw.trim())) return raw.trim().slice(1, -1);
   // already unquoted literal (metaField strips quotes) or an identifier
-  if (/[.#\s:[]/.test(raw) || /wpforms/.test(raw)) return raw;
+  if (/[.#\s:[]/.test(raw) || PRODUCT_RE.test(raw)) return raw;
   return null; // bare identifier we can't resolve statically
 }
 
@@ -536,6 +542,7 @@ function main() {
   if (!slug) { console.log('usage: node tools/composition-scan.js <slug> [--static] [--play]'); process.exit(0); }
   const htmlPath = path.join(ROOT, 'videos', slug, 'index.html');
   if (!fs.existsSync(htmlPath)) { console.log(`[composition-scan] no such video: videos/${slug}/index.html`); process.exit(0); }
+  PRODUCT_RE = packClassRe(loadPack(filmProduct(slug)));
   const src = fs.readFileSync(htmlPath, 'utf8');
   const masked = maskComments(src);
 
@@ -621,10 +628,10 @@ function main() {
       addTo(`untargeted:${b.key}`, 'untargeted', b);
     } else if (String(resolved || b.target).startsWith('stage:')) {
       addTo(String(resolved || b.target), 'editorial', b);
-    } else if (resolved && /wpforms/.test(resolved)) {
+    } else if (resolved && PRODUCT_RE.test(resolved)) {
       addTo(`${b.snapshot}|${familyOf(resolved)}`, 'product', b);
     } else {
-      const camTargets = bodyCameraTargets(b.body, SEL).filter((t) => /wpforms/.test(t));
+      const camTargets = bodyCameraTargets(b.body, SEL).filter((t) => PRODUCT_RE.test(t));
       if (camTargets.length) addTo(`${b.snapshot}|${familyOf(camTargets[0])}`, 'product', b, undefined);
       else addTo(`target:${b.target}`, 'unresolved', b);
     }

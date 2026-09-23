@@ -102,6 +102,24 @@ function loadProduct(key = activeProduct()) {
   return JSON.parse(fs.readFileSync(productFile(key), 'utf8'));
 }
 
+// products/<key>/pack.json — the committed per-pack tool data: classPrefixes
+// (the product's own CSS class / id prefixes) and pluginDirs (its WordPress
+// plugin folders). product.json stays local; this is the part tools share.
+// A pack without pack.json falls back to the WPForms one.
+function loadPack(key = activeProduct()) {
+  for (const k of [key, 'wpforms']) {
+    const f = path.join(REPO_ROOT, 'products', k, 'pack.json');
+    if (KEY_RE.test(k) && fs.existsSync(f)) return JSON.parse(fs.readFileSync(f, 'utf8'));
+  }
+  throw new Error('no products/wpforms/pack.json');
+}
+
+// A RegExp that matches any of the pack's class prefixes anywhere in a string.
+function packClassRe(pack) {
+  const esc = (p) => p.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  return new RegExp(pack.classPrefixes.map(esc).join('|'));
+}
+
 module.exports = {
   REPO_ROOT,
   productKey,
@@ -112,4 +130,6 @@ module.exports = {
   snapshotUrlPath,
   activeProduct,
   loadProduct,
+  loadPack,
+  packClassRe,
 };

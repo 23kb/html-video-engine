@@ -137,7 +137,7 @@ Use the real WPForms brand assets. Do not invent.
 - CSS tokens: `--wpf-orange #E27730` primary, `--wpf-ai-purple` AI-feature-only
 - Real Sullie + loading visuals + AI 3-dot spinner — never redraw them
 - Real templates API: `https://wpforms.com/templates/api/get/` — fetch it directly; the old cache helper is gone
-- **Brand is data, per product pack.** A film names its product with `<meta name="film:product" content="<key>">` (no meta = WPForms). The brand bug, end card, shorts bookends, task queue and the cursor ripple / hover / marker colours read `products/<key>/brand/brand.json` through `videos/_shared/brand.js`; the pack's CSS tokens are `products/<key>/brand/tokens.css`. The old `/reference/wpforms-brand/tokens.css` link is served from the WPForms pack. TTS voice and the machine-QC brand line read the same file.
+- **Brand is data, per product pack.** A film names its product with `<meta name="film:product" content="<key>">` (no meta = WPForms). The brand bug, end card, shorts bookends, task queue and the cursor ripple / hover / marker colours read `products/<key>/brand/brand.json` through `videos/_shared/brand.js`; the pack's CSS tokens are `products/<key>/brand/tokens.css`. The old `/reference/wpforms-brand/tokens.css` link is served from the WPForms pack. TTS voice and the machine-QC brand line read the same file. Tool-side pack data (CSS class prefixes, plugin folders) is `products/<key>/pack.json`; `product.json` stays local.
 
 ## Start Here
 

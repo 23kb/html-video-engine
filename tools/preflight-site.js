@@ -25,6 +25,7 @@ const fs = require('fs');
 const http = require('http');
 const path = require('path');
 const { siteEval, loadSite } = require('./site-eval.js');
+const { activeProduct, loadPack } = require('./lib/paths');
 
 const PHAR = path.join(__dirname, 'vendor', 'wp-cli.phar');
 
@@ -74,8 +75,21 @@ async function main() {
   // 1. phar
   row(fs.existsSync(PHAR), `wp-cli phar vendored at tools/vendor/wp-cli.phar`);
 
-  // 2+3+4. one eval: boot + core + license + active wpforms plugins
-  const php = `
+  // 2+3+4. one eval: boot + core + license + active wpforms plugins.
+  // VIDEO_PRODUCT picks the pack (default WPForms). Another pack checks its own
+  // plugin folders instead (products/<key>/pack.json pluginDirs; the first one
+  // is its core plugin) and has no version / license row.
+  const product = activeProduct();
+  const pack = loadPack(product);
+  const php = product !== 'wpforms' ? `
+    $out = ['BOOT_OK'];
+    $dirs = ${JSON.stringify(pack.pluginDirs)};
+    $act = array_values(array_filter((array) get_option('active_plugins'), function($p) use ($dirs) {
+      foreach ($dirs as $d) { if (strpos($p, $d . '/') === 0) return true; } return false; }));
+    $core = false; foreach ($act as $p) { if (strpos($p, $dirs[0] . '/') === 0) $core = true; }
+    $out[] = $core ? 'CORE_OK' : 'CORE_INACTIVE'; $out[] = ''; $out[] = '';
+    $out[] = implode(',', $act);
+    echo implode('|', $out);` : `
     $out = ['BOOT_OK'];
     if (function_exists('wpforms')) {
       $out[] = 'CORE_OK';
@@ -99,13 +113,15 @@ async function main() {
   row(r.status === 0 && Boolean(m), `wp-cli boots against ${site.path}${r.status !== 0 ? ` — ${why}` : ''}`);
   if (m) {
     const [, core, version, license, activeCsv] = m[0].split('|');
-    if (core === 'CORE_OK') {
+    if (product !== 'wpforms') {
+      row(core === 'CORE_OK', `${pack.pluginDirs[0]} plugin ${core === 'CORE_OK' ? 'ACTIVE' : 'INACTIVE — activate it under wp-admin → Plugins'}`);
+    } else if (core === 'CORE_OK') {
       row(true, `wpforms core ACTIVE — v${version}, license: ${license}`);
     } else {
       row(false, `wpforms core plugin INACTIVE — every wpforms admin page wp_dies until it's re-activated. Fix: node tools/site-eval.js "include_once ABSPATH.'wp-admin/includes/plugin.php'; activate_plugin('wpforms/wpforms.php');"`);
     }
     const active = activeCsv ? activeCsv.split(',') : [];
-    info(`active wpforms plugins: ${active.length ? active.join(', ') : '(none)'}`);
+    info(`active ${product} plugins: ${active.length ? active.join(', ') : '(none)'}`);
     for (const addon of args.addons) {
       row(active.some((p) => p.startsWith(addon + '/') || p.includes('/' + addon + '.php') || p.startsWith(addon)), `addon active: ${addon}`);
     }
@@ -120,7 +136,9 @@ async function main() {
   }
 
   // 6. table counts (opt-in)
-  if (args.tables) {
+  if (args.tables && product !== 'wpforms') {
+    info(`--tables counts WPForms tables only — skipped for ${product}`);
+  } else if (args.tables) {
     const tphp = `
       global $wpdb;
       $tables = $wpdb->get_col("SHOW TABLES LIKE '%wpforms%'");

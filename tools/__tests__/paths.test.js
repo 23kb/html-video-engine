@@ -61,6 +61,9 @@ try {
   ok(paths.mapLegacySnapshotUrl('/videos/x/index.html') === '/videos/x/index.html', 'other URLs pass through');
   ok(paths.mapLegacySnapshotUrl('/reference/wpforms-brand/tokens.css') === '/products/wpforms/brand/tokens.css', 'the old local brand tokens URL maps onto the WPForms pack tokens');
   ok(fs.existsSync(path.join(paths.REPO_ROOT, 'products', 'wpforms', 'brand', 'tokens.css')), 'the WPForms pack tokens file exists');
+  ok(paths.packClassRe(paths.loadPack('wpforms')).source === 'wpforms', 'the WPForms pack class regex is /wpforms/ (the old hard-coded test)');
+  ok(paths.packClassRe(paths.loadPack('wp-mail-smtp')).test('.wpms-card') && !paths.packClassRe(paths.loadPack('wp-mail-smtp')).test('#wpforms-x'), 'a pack regex matches its own prefixes only');
+  ok(paths.loadPack('no-such-pack').key === 'wpforms', 'a pack without pack.json falls back to WPForms');
   ok(paths.snapshotUrlPath('admin-x', 'outline.md') === '/products/wpforms/snapshots/admin-x/outline.md', 'snapshotUrlPath() takes a file');
   setEnv({ VIDEO_PRODUCT: '' });
   ok(paths.productKey() === null, 'an empty VIDEO_PRODUCT counts as unset');
