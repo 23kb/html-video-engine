@@ -1,0 +1,439 @@
+{
+  "slug": "admin-tools-action-scheduler--pending",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "flyout-quick-links",
+      "event": "click",
+      "selector": "a.wp-mail-smtp-flyout-button.wp-mail-smtp-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-quick-links",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-item-1",
+        "tag": "a",
+        "text": "Follow on Facebook",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#args-hide",
+        "tag": "input",
+        "text": "args",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#group-hide",
+        "tag": "input",
+        "text": "group",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hook-hide",
+        "tag": "input",
+        "text": "hook",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#log_entries-hide",
+        "tag": "input",
+        "text": "log_entries",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#plugin-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#recurrence-hide",
+        "tag": "input",
+        "text": "recurrence",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#schedule-hide",
+        "tag": "input",
+        "text": "schedule",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "f96279567c",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#status-hide",
+        "tag": "input",
+        "text": "status",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp_mail_smtp_page_wp_mail_smtp_tools_per_page",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#action-scheduler-filter",
+        "tag": "form",
+        "text": "Search hook, args, action ID and claim ID: Select bulk acti…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Hook Status Arguments Group Recurrence Scheduled Da…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#args",
+        "tag": "th",
+        "text": "Arguments",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WP Mail SMTP ★★★★★ on WordPress.org to help us …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#group",
+        "tag": "th",
+        "text": "Group Sort descending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#hook",
+        "tag": "th",
+        "text": "Hook Sort descending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#log_entries",
+        "tag": "th",
+        "text": "Log",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#recurrence",
+        "tag": "th",
+        "text": "Recurrence",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#schedule",
+        "tag": "th",
+        "text": "Scheduled Date Sort descending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Hook Status Arguments Group Recurrence Scheduled Da…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#status",
+        "tag": "th",
+        "text": "Status",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 3",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "sugar_calendar_pro_advanced_recurring_as_regenerate ID: 422…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wp-mail-smtp",
+        "tag": "li",
+        "text": "WP Mail SMTP Setup Checklist 67% complete Dashboard Setting…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp",
+        "tag": "div",
+        "text": "Email Test Export Scheduled Actions Debug Events Code Snipp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Follow on Facebook Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-header",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-header-temp",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-page-content",
+        "tag": "div",
+        "text": "Scheduled Actions Scheduled Actions WP Mail SMTP is using t…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-menu-parent-link",
+        "tag": "li",
+        "text": "Dashboard",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,580 @@
+{
+  "slug": "admin-settings-control--some-off",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "flyout-quick-links",
+      "event": "click",
+      "selector": "a.wp-mail-smtp-flyout-button.wp-mail-smtp-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_admin_email_attempt",
+        "tag": "div",
+        "text": "Site Admin Email Change Attempt ON Change of site admin ema…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_admin_email_changed",
+        "tag": "div",
+        "text": "Site Admin Email Changed ON Site admin email address was ch…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_auto_updates_full_log",
+        "tag": "div",
+        "text": "Full Log ON Full log of background update results which inc…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_auto_updates_plugin_status",
+        "tag": "div",
+        "text": "Plugin Status ON Completion or failure of a background auto…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_auto_updates_status",
+        "tag": "div",
+        "text": "WP Core Status ON Completion or failure of a background aut…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_auto_updates_theme_status",
+        "tag": "div",
+        "text": "Theme Status ON Completion or failure of a background autom…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_comments_awaiting_moderation",
+        "tag": "div",
+        "text": "Awaiting Moderation OFF Comment is awaiting moderation. Sen…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_comments_published",
+        "tag": "div",
+        "text": "Published OFF Comment has been published. Sent to the post …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_new_user_created_to_admin",
+        "tag": "div",
+        "text": "Created (Admin) ON A new user was created. Sent to the site…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_new_user_created_to_user",
+        "tag": "div",
+        "text": "Created (User) ON A new user was created. Sent to the new u…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_personal_data_erased_data",
+        "tag": "div",
+        "text": "Admin Erased Data ON Site admin clicked \"Erase Personal Dat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_personal_data_sent_export_link",
+        "tag": "div",
+        "text": "Admin Sent Link to Export Data ON Site admin clicked \"Email…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_personal_data_user_confirmed",
+        "tag": "div",
+        "text": "User Confirmed Export / Erasure Request ON User clicked a c…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_user_details_email_change_attempt",
+        "tag": "div",
+        "text": "Email Change Attempt ON User attempted to change their emai…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_user_details_email_changed",
+        "tag": "div",
+        "text": "Email Changed ON User changed their email address. Sent to …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_user_details_password_changed",
+        "tag": "div",
+        "text": "Password Changed ON User changed their password. Sent to th…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_user_details_password_reset",
+        "tag": "div",
+        "text": "Password Reset Successfully ON User reset their password fr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-control_dis_user_details_password_reset_request",
+        "tag": "div",
+        "text": "Reset Password Request ON User requested a password reset v…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-btn",
+        "tag": "button",
+        "text": "Save Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-quick-links",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-item-1",
+        "tag": "a",
+        "text": "Follow on Facebook",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-alerts",
+        "tag": "a",
+        "text": "Alerts",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-connections",
+        "tag": "a",
+        "text": "Additional Connections",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-logs",
+        "tag": "a",
+        "text": "Email Log",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-misc",
+        "tag": "a",
+        "text": "Misc",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-routing",
+        "tag": "a",
+        "text": "Smart Routing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-settings",
+        "tag": "a",
+        "text": "General",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-toggle",
+        "tag": "label",
+        "text": "OFF",
+        "count": 18,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#wp-mail-smtp-setting-dis_admin_email_attempt",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_admin_email_changed",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_auto_updates_full_log",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_auto_updates_plugin_status",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_auto_updates_status",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_auto_updates_theme_status",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_comments_awaiting_moderation",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_comments_published",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_new_user_created_to_admin",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_new_user_created_to_user",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_personal_data_erased_data",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_personal_data_sent_export_link",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_personal_data_user_confirmed",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_user_details_email_change_attempt",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_user_details_email_changed",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_user_details_password_changed",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_user_details_password_reset",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-dis_user_details_password_reset_request",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".wp-mail-smtp-setting-row",
+        "tag": "div",
+        "text": "Email Controls WordPress, by default, will send out emails …",
+        "count": 25,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WP Mail SMTP ★★★★★ on WordPress.org to help us …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wp-mail-smtp",
+        "tag": "li",
+        "text": "WP Mail SMTP Setup Checklist 67% complete Dashboard Setting…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp",
+        "tag": "div",
+        "text": "General Email Log Alerts Additional Connections Smart Routi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Follow on Facebook Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-header",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-email-heading-admin_email",
+        "tag": "div",
+        "text": "Change of Admin Email",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-email-heading-auto_updates",
+        "tag": "div",
+        "text": "Automatic Updates",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-email-heading-comments",
+        "tag": "div",
+        "text": "Comments",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-email-heading-new_user",
+        "tag": "div",
+        "text": "New User",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-email-heading-personal_data",
+        "tag": "div",
+        "text": "Personal Data Requests",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-email-heading-user_details",
+        "tag": "div",
+        "text": "Change of User Email or Password",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-page-content",
+        "tag": "div",
+        "text": "Email Controls Email Controls WordPress, by default, will s…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setting-field",
+        "tag": "div",
+        "text": "Email Controls WordPress, by default, will send out emails …",
+        "count": 25,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setting-label",
+        "tag": "div",
+        "text": "Awaiting Moderation",
+        "count": 18,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-menu-parent-link",
+        "tag": "li",
+        "text": "Dashboard",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,376 @@
+{
+  "slug": "admin-settings-logs--off",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "logs-enabled-rows",
+      "event": "change",
+      "selector": "#wp-mail-smtp-setting-logs_enabled",
+      "count": 1
+    },
+    {
+      "label": "flyout-quick-links",
+      "event": "click",
+      "selector": "a.wp-mail-smtp-flyout-button.wp-mail-smtp-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-btn",
+        "tag": "button",
+        "text": "Save Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-quick-links",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-item-1",
+        "tag": "a",
+        "text": "Follow on Facebook",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-alerts",
+        "tag": "a",
+        "text": "Alerts",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-connections",
+        "tag": "a",
+        "text": "Additional Connections",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-control",
+        "tag": "a",
+        "text": "Email Controls",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-misc",
+        "tag": "a",
+        "text": "Misc",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-routing",
+        "tag": "a",
+        "text": "Smart Routing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-settings",
+        "tag": "a",
+        "text": "General",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-toggle",
+        "tag": "label",
+        "text": "OFF",
+        "count": 5,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": ".wp-mail-smtp-setting-row",
+        "tag": "div",
+        "text": "Email Log",
+        "count": 7,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#wp-mail-smtp-setting-log_retention_period",
+        "tag": "select",
+        "text": "Forever 1 Day 1 Week 1 Month 6 Months 1 Year",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-logs_click_link_tracking",
+        "tag": "input",
+        "text": "true",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-logs_enabled",
+        "tag": "input",
+        "text": "true",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-logs_log_email_content",
+        "tag": "input",
+        "text": "true",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-logs_open_email_tracking",
+        "tag": "input",
+        "text": "true",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-logs_save_attachments",
+        "tag": "input",
+        "text": "true",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WP Mail SMTP ★★★★★ on WordPress.org to help us …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wp-mail-smtp",
+        "tag": "li",
+        "text": "WP Mail SMTP Setup Checklist 67% complete Dashboard Setting…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp",
+        "tag": "div",
+        "text": "General Email Log Alerts Additional Connections Smart Routi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Follow on Facebook Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-header",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-log_retention_period",
+        "tag": "div",
+        "text": "Log Retention Period Forever 1 Day 1 Week 1 Month 6 Months …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-logs_click_link_tracking",
+        "tag": "div",
+        "text": "Click Link Tracking On Off Track clicked links in emails. T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-logs_enabled",
+        "tag": "div",
+        "text": "Enable Log OFF Keep a record of basic details for all email…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-logs_log_email_content",
+        "tag": "div",
+        "text": "Log Email Content On Off Keep a record of all content for a…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-logs_open_email_tracking",
+        "tag": "div",
+        "text": "Open Email Tracking On Off Track when an email is opened. T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-logs_save_attachments",
+        "tag": "div",
+        "text": "Save Attachments On Off Save the sent attachments to the Em…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-page-content",
+        "tag": "div",
+        "text": "Email Log Email Log Enable Log OFF Keep a record of basic d…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setting-field",
+        "tag": "div",
+        "text": "Email Log",
+        "count": 7,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setting-label",
+        "tag": "div",
+        "text": "Enable Log",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-menu-parent-link",
+        "tag": "li",
+        "text": "Dashboard",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

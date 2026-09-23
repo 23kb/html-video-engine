@@ -1,0 +1,522 @@
+{
+  "slug": "admin-logs-archive--search-results",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "email-preview-modal",
+      "event": "click",
+      "selector": ".email-preview.thickbox",
+      "count": 10
+    },
+    {
+      "label": "flyout-quick-links",
+      "event": "click",
+      "selector": "a.wp-mail-smtp-flyout-button.wp-mail-smtp-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-delete-all-logs-button",
+        "tag": "button",
+        "text": "Delete All Logs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-filter-date__btn",
+        "tag": "button",
+        "text": "Filter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-quick-links",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-item-1",
+        "tag": "a",
+        "text": "Follow on Facebook",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#bcc-hide",
+        "tag": "input",
+        "text": "bcc",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Delete Resend Re-check status",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Delete Resend Re-check status",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cc-hide",
+        "tag": "input",
+        "text": "cc",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clicked-hide",
+        "tag": "input",
+        "text": "clicked",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#date_sent-hide",
+        "tag": "input",
+        "text": "date_sent",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#from-hide",
+        "tag": "input",
+        "text": "from",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#initiator-hide",
+        "tag": "input",
+        "text": "initiator",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mailer-hide",
+        "tag": "input",
+        "text": "mailer",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#opened-hide",
+        "tag": "input",
+        "text": "opened",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "f96279567c",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#subject-hide",
+        "tag": "input",
+        "text": "subject",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#to-hide",
+        "tag": "input",
+        "text": "to",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp_mail_smtp_log_entries_per_page",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-delete-log-entries-nonce",
+        "tag": "input",
+        "text": "1d09fd296f",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-logs-archive-search-input",
+        "tag": "input",
+        "text": "mateo.silva@example.com",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-filter-date__control",
+        "tag": "input",
+        "text": "Select a date range",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Subject From To Source Mailer CC BCC Opened Clicked…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bcc",
+        "tag": "th",
+        "text": "BCC",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cc",
+        "tag": "th",
+        "text": "CC",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clicked",
+        "tag": "th",
+        "text": "Clicked",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date_sent",
+        "tag": "th",
+        "text": "Date Sent Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WP Mail SMTP ★★★★★ on WordPress.org to help us …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#from",
+        "tag": "th",
+        "text": "From",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#initiator",
+        "tag": "th",
+        "text": "Source",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#mailer",
+        "tag": "th",
+        "text": "Mailer",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#opened",
+        "tag": "th",
+        "text": "Opened",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Subject From To Source Mailer CC BCC Opened Clicked…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#status",
+        "tag": "th",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#subject",
+        "tag": "th",
+        "text": "Subject Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Your Pattie's Post order #2069 is confirmed View Log | View…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#to",
+        "tag": "th",
+        "text": "To",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wp-mail-smtp",
+        "tag": "li",
+        "text": "WP Mail SMTP Setup Checklist 67% complete Dashboard Setting…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp",
+        "tag": "div",
+        "text": "Email Log Email Log Found 10 email logs where Email Address…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Follow on Facebook Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-header",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-header-temp",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-reset-filter",
+        "tag": "div",
+        "text": "Found 10 email logs where Email Address is \"mateo.silva@exa…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-page-content",
+        "tag": "div",
+        "text": "Found 10 email logs where Email Address is \"mateo.silva@exa…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-menu-parent-link",
+        "tag": "li",
+        "text": "Dashboard",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

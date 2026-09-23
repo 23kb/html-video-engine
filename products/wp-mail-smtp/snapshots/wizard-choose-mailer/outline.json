@@ -1,0 +1,122 @@
+{
+  "slug": "wizard-choose-mailer",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wizard-next-step",
+      "event": "click",
+      "selector": "button.wp-mail-smtp-button.wp-mail-smtp-button-main",
+      "count": 1
+    },
+    {
+      "label": "wizard-styled-radio",
+      "event": "click",
+      "selector": "label[data-v-e219b6fa]",
+      "count": 17
+    },
+    {
+      "label": "wizard-sendlayer-card",
+      "event": "click",
+      "selector": "div.wp-mail-smtp-sendlayer-card",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": ".wp-mail-smtp-button",
+        "tag": "button",
+        "text": "Save and Continue",
+        "count": 1,
+        "hidden": false,
+        "wired": "wizard-next-step",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-container",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-content",
+        "tag": "main",
+        "text": "Step 1 of 6 Choose Your SMTP Mailer Which mailer would you …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-content-container",
+        "tag": "div",
+        "text": "Step 1 of 6 Choose Your SMTP Mailer Which mailer would you …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-form-row",
+        "tag": "div",
+        "text": "RECOMMENDED Easily start sending emails from your site in j…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-header",
+        "tag": "header",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-timeline-step-active",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-content-header",
+        "tag": "div",
+        "text": "Choose Your SMTP Mailer Which mailer would you like to use …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-exit-link",
+        "tag": "p",
+        "text": "Close and exit the Setup Wizard",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-sendlayer-card__top-row",
+        "tag": "div",
+        "text": "RECOMMENDED",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

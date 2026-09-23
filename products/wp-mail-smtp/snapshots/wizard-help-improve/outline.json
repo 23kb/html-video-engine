@@ -1,0 +1,144 @@
+{
+  "slug": "wizard-help-improve",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wizard-next-step",
+      "event": "click",
+      "selector": "button.wp-mail-smtp-button.wp-mail-smtp-button-main",
+      "count": 1
+    },
+    {
+      "label": "wizard-skip-step",
+      "event": "click",
+      "selector": "button.wp-mail-smtp-button",
+      "count": 1
+    },
+    {
+      "label": "wizard-previous-step",
+      "event": "click",
+      "selector": "div.wp-mail-smtp-setup-wizard-step-footer a",
+      "count": 1
+    },
+    {
+      "label": "wizard-checkbox",
+      "event": "change",
+      "selector": "#wp-mail-smtp-settings-checkbox-usage_tracking",
+      "count": 1
+    },
+    {
+      "label": "wizard-tooltip",
+      "event": "click",
+      "selector": "span.wp-mail-smtp-info.has-tooltip",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": ".wp-mail-smtp-button",
+        "tag": "button",
+        "text": "Skip this Step",
+        "count": 2,
+        "hidden": false,
+        "wired": "wizard-skip-step",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wp-mail-smtp-button-main",
+        "tag": "button",
+        "text": "Save and Continue",
+        "count": 1,
+        "hidden": false,
+        "wired": "wizard-next-step",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#input-email",
+        "tag": "input",
+        "text": "pattie@example.com",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-settings-checkbox-usage_tracking",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-container",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-content",
+        "tag": "main",
+        "text": "Step 0 of 6 Help Improve WP Mail SMTP + Smart Recommendatio…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-content-container",
+        "tag": "div",
+        "text": "Step 0 of 6 Help Improve WP Mail SMTP + Smart Recommendatio…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-header",
+        "tag": "header",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-content-header",
+        "tag": "div",
+        "text": "Help Improve WP Mail SMTP + Smart Recommendations Get helpf…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-exit-link",
+        "tag": "p",
+        "text": "Close and exit the Setup Wizard",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-help-improve-header",
+        "tag": "div",
+        "text": "Step 0 of 6 Help Improve WP Mail SMTP + Smart Recommendatio…",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

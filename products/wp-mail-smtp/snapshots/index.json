@@ -1,0 +1,1905 @@
+{
+ "product": "wp-mail-smtp",
+ "generatedAt": "2026-09-20T11:02:31.139Z",
+ "count": 164,
+ "snapshots": [
+  {
+   "slug": "admin-about",
+   "category": "admin/page",
+   "shows": "WP Mail SMTP > About Us: the team story and the grid of sister plugins with their install / activate status",
+   "topics": [
+    "about",
+    "plugins"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-about"
+  },
+  {
+   "slug": "admin-dashboard",
+   "category": "admin/page",
+   "shows": "WP Mail SMTP Dashboard, the page's own default Last 30 Days: stat cards (Total Emails / Sent / Failed / Opened), Emails Overview chart, Email Log, Email Sources donut, Connections, Setup Checklist Overview, Getting Started, Growth Tools, Version - with all four range payloads parked",
+   "topics": [
+    "dashboard",
+    "reports",
+    "email-log"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-dashboard"
+  },
+  {
+   "slug": "admin-dashboard--range-14",
+   "category": "admin/page",
+   "shows": "WP Mail SMTP Dashboard with Last 14 Days selected",
+   "topics": [
+    "dashboard",
+    "reports",
+    "email-log"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-dashboard&date=2026-09-06%20-%202026-09-19"
+  },
+  {
+   "slug": "admin-dashboard--range-30",
+   "category": "admin/page",
+   "shows": "WP Mail SMTP Dashboard with Last 30 Days named in the URL (the same range as the default view)",
+   "topics": [
+    "dashboard",
+    "reports",
+    "email-log"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-dashboard&date=2026-08-21%20-%202026-09-19"
+  },
+  {
+   "slug": "admin-dashboard--range-7",
+   "category": "admin/page",
+   "shows": "WP Mail SMTP Dashboard with Last 7 Days selected",
+   "topics": [
+    "dashboard",
+    "reports",
+    "email-log"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-dashboard&date=2026-09-13%20-%202026-09-19"
+  },
+  {
+   "slug": "admin-dashboard--range-custom",
+   "category": "admin/page",
+   "shows": "WP Mail SMTP Dashboard with a Custom Date Range of two weeks in the middle of the month, the range picker revealed",
+   "topics": [
+    "dashboard",
+    "reports",
+    "email-log"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-dashboard&date=2026-09-02%20-%202026-09-15"
+  },
+  {
+   "slug": "admin-dashboard-widget",
+   "category": "admin/page",
+   "shows": "WordPress Dashboard with the WP Mail SMTP widget only: the email chart (rasterized), the timespan and email-type selects, and the sent / failed totals",
+   "topics": [
+    "dashboard",
+    "dashboard-widget",
+    "chart",
+    "stats"
+   ],
+   "sourcePath": "/wp-admin/index.php"
+  },
+  {
+   "slug": "admin-dashboard-widget--email-type-delivered",
+   "category": "admin/page",
+   "shows": "WordPress Dashboard widget showing Confirmed (delivered) emails only",
+   "topics": [
+    "dashboard-widget",
+    "reports"
+   ],
+   "sourcePath": "/wp-admin/index.php"
+  },
+  {
+   "slug": "admin-dashboard-widget--email-type-unsent",
+   "category": "admin/page",
+   "shows": "WordPress Dashboard widget showing Failed emails only",
+   "topics": [
+    "dashboard-widget",
+    "reports"
+   ],
+   "sourcePath": "/wp-admin/index.php"
+  },
+  {
+   "slug": "admin-dashboard-widget--settings-open",
+   "category": "admin/state",
+   "shows": "WP Mail SMTP dashboard widget with its settings menu open: graph style (bar / line) and color scheme",
+   "topics": [
+    "dashboard",
+    "dashboard-widget",
+    "settings-menu"
+   ],
+   "sourcePath": "/wp-admin/index.php"
+  },
+  {
+   "slug": "admin-dashboard-widget--timespan-14",
+   "category": "admin/page",
+   "shows": "WordPress Dashboard widget with Last 14 days selected",
+   "topics": [
+    "dashboard-widget",
+    "reports"
+   ],
+   "sourcePath": "/wp-admin/index.php"
+  },
+  {
+   "slug": "admin-dashboard-widget--timespan-30",
+   "category": "admin/page",
+   "shows": "WordPress Dashboard widget with Last 30 days selected",
+   "topics": [
+    "dashboard-widget",
+    "reports"
+   ],
+   "sourcePath": "/wp-admin/index.php"
+  },
+  {
+   "slug": "admin-logs-archive",
+   "category": "admin/page",
+   "shows": "Email Log, All view: the 10 newest emails of Pattie's Post with status dots, Subject, From, To, Source, Mailer, CC, BCC, Opened, Clicked and Date Sent; the views bar shows All, Sent, Failed and Blocked",
+   "topics": [
+    "email-log",
+    "logs",
+    "archive",
+    "status",
+    "tracking"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs"
+  },
+  {
+   "slug": "admin-logs-archive--bulk-selected",
+   "category": "admin/page",
+   "shows": "Email Log with every row on the page selected for a bulk action (nothing applied)",
+   "topics": [
+    "email-log",
+    "bulk-actions"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs"
+  },
+  {
+   "slug": "admin-logs-archive--date-filtered",
+   "category": "admin/page",
+   "shows": "Email Log filtered to the last 7 days with the date filter",
+   "topics": [
+    "email-log",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&date=2026-09-13%20-%202026-09-19"
+  },
+  {
+   "slug": "admin-logs-archive--datepicker-open",
+   "category": "admin/page",
+   "shows": "Email Log with the date-range picker open",
+   "topics": [
+    "email-log",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs"
+  },
+  {
+   "slug": "admin-logs-archive--delete-all-modal",
+   "category": "admin/state",
+   "shows": "Email Log with the Delete All Logs confirmation modal open (never confirmed)",
+   "topics": [
+    "email-log",
+    "logs",
+    "delete",
+    "modal"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs"
+  },
+  {
+   "slug": "admin-logs-archive--search-results",
+   "category": "admin/page",
+   "shows": "Email Log search by email address (mateo.silva@example.com): every email sent to or from that customer",
+   "topics": [
+    "email-log",
+    "search"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&search%5Bplace%5D=people&search%5Bterm%5D=mateo.silva%40example.com"
+  },
+  {
+   "slug": "admin-logs-archive--status-blocked",
+   "category": "admin/state",
+   "shows": "Email Log filtered to Blocked: four marketing emails stopped by the Do Not Send setting during a maintenance window (the view shows because Log Blocked Emails is on)",
+   "topics": [
+    "email-log",
+    "logs",
+    "status",
+    "blocked",
+    "do-not-send"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&status=4"
+  },
+  {
+   "slug": "admin-logs-archive--status-failed",
+   "category": "admin/state",
+   "shows": "Email Log filtered to Failed: a bounced order confirmation, SMTP 550 and 535 failures, a 401 and a 429 from SendLayer, and a PHP mail failure",
+   "topics": [
+    "email-log",
+    "logs",
+    "status",
+    "failed",
+    "errors"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&status=0"
+  },
+  {
+   "slug": "admin-logs-archive--status-sent",
+   "category": "admin/state",
+   "shows": "Email Log filtered to Sent: today's 'This week at Pattie's Post' newsletter sent through the Shop Newsletter connection (Other SMTP)",
+   "topics": [
+    "email-log",
+    "logs",
+    "status",
+    "sent",
+    "newsletter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&status=1"
+  },
+  {
+   "slug": "admin-logs-preview--d00-contact-leo",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'New contact form entry: Wedding invitation enquiry': the logged plain-text body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=21&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-invoice-2069",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'Invoice #2069 from Pattie's Post': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content",
+    "invoice"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=37&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-nl-autumn-benji",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'This week at Pattie's Post: the autumn card collection': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=27&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-nl-autumn-chloe",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'This week at Pattie's Post: the autumn card collection': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=28&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-nl-autumn-grace",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'This week at Pattie's Post: the autumn card collection': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=33&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-nl-autumn-isla",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'This week at Pattie's Post: the autumn card collection': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=26&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-nl-autumn-lucas",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'This week at Pattie's Post: the autumn card collection': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=34&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-nl-autumn-maya",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'This week at Pattie's Post: the autumn card collection': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=31&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-nl-autumn-ruby",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'This week at Pattie's Post: the autumn card collection': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=24&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-nl-autumn-samuel",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'This week at Pattie's Post: the autumn card collection': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=29&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-nl-autumn-theo",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'This week at Pattie's Post: the autumn card collection': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=25&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-nl-autumn-weston",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'This week at Pattie's Post: the autumn card collection': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content",
+    "newsletter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=30&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-nl-autumn-zoe",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'This week at Pattie's Post: the autumn card collection': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=32&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-order-2068",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'Your Pattie's Post order #2068 is confirmed': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=40&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-order-2070",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'Your Pattie's Post order #2070 is confirmed': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=23&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-order-2071",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'Your Pattie's Post order #2071 is confirmed': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=20&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d00-reset-hannah",
+   "category": "admin/page",
+   "shows": "View Email preview document for '[Pattie's Post] Password Reset': the logged plain-text body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=22&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d03-reset-zoe",
+   "category": "admin/page",
+   "shows": "View Email preview document for '[Pattie's Post] Password Reset': the logged plain-text body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=53&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d06-blocked-basket-isla",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'You left something in your basket': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content",
+    "basket-reminder"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=58&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d06-blocked-basket-marcus",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'You left something in your basket': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=59&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d06-blocked-promo-kai",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'Last chance: 15% off wedding stationery': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=61&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d06-blocked-review-2055",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'How was your order #2055?': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=60&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d11-order-2057",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'Your Pattie's Post order #2057 is confirmed': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=70&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d14-nl-giftwrap-firsttry-grace",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'This week at Pattie's Post: new gift wrap papers': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content",
+    "newsletter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=72&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--d24-reset-lucas",
+   "category": "admin/page",
+   "shows": "View Email preview document for '[Pattie's Post] Password Reset': the logged plain-text body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content",
+    "password-reset"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=86&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--m-f0034",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'Thanks for your order': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=2273&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--m-f0035",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'New contact form entry: Gift wrap request': the logged plain-text body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=2274&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--m-f0036",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'Thanks for your order': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=2275&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--m-f0037",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'How was your order?': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=2276&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--m-f0038",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'You left something in your basket': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=2277&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--m-f0039",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'New contact form entry: Wholesale enquiry': the logged plain-text body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=2278&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--x12-thanks-failed",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'Thanks for your order': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=451&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--x19-blocked-basket",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'You left something in your basket': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=454&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--x19-blocked-review",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'How was your order?': the logged HTML body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=455&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--x19-reset-failed",
+   "category": "admin/page",
+   "shows": "View Email preview document for '[Pattie's Post] Password Reset': the logged plain-text body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=452&mode=preview"
+  },
+  {
+   "slug": "admin-logs-preview--x26-contact-failed",
+   "category": "admin/page",
+   "shows": "View Email preview document for 'New contact form entry: Custom printing': the logged plain-text body, as the Email Log popup shows it",
+   "topics": [
+    "email-log",
+    "preview",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=453&mode=preview"
+  },
+  {
+   "slug": "admin-logs-print",
+   "category": "admin/page",
+   "shows": "Print view of email log #2070 (standalone page, no admin chrome): the email details, Compact view / Close / Print buttons and the email body",
+   "topics": [
+    "email-log",
+    "print",
+    "single-log"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&mode=print&email_id=23"
+  },
+  {
+   "slug": "admin-logs-print--compact",
+   "category": "admin/state",
+   "shows": "Print view of email log #2070 switched to Compact view (the toggle now reads Normal view)",
+   "topics": [
+    "email-log",
+    "print",
+    "single-log"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&mode=print&email_id=23"
+  },
+  {
+   "slug": "admin-logs-single",
+   "category": "admin/page",
+   "shows": "Single email log: order confirmation #2070, delivered through SendLayer, opened and clicked; people, email details and actions boxes, Technical Details closed",
+   "topics": [
+    "email-log",
+    "single-log",
+    "delivered",
+    "opened",
+    "clicked"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=23&mode=view"
+  },
+  {
+   "slug": "admin-logs-single--awaiting",
+   "category": "admin/state",
+   "shows": "Email log awaiting delivery confirmation: order #2071 sent through SendLayer minutes ago (the Recheck link needs an API primary mailer, so it is not shown)",
+   "topics": [
+    "email-log",
+    "single-log",
+    "awaiting-confirmation"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=20&mode=view"
+  },
+  {
+   "slug": "admin-logs-single--blocked",
+   "category": "admin/state",
+   "shows": "Blocked email log: a basket reminder stopped by the Do Not Send setting; Technical Details open with the blocked note",
+   "topics": [
+    "email-log",
+    "single-log",
+    "blocked",
+    "do-not-send"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=58&mode=view"
+  },
+  {
+   "slug": "admin-logs-single--extra-details-open",
+   "category": "admin/state",
+   "shows": "Single email log #2070 with Technical Details open: the raw headers of the SendLayer send",
+   "topics": [
+    "email-log",
+    "single-log",
+    "technical-details",
+    "headers"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=23&mode=view"
+  },
+  {
+   "slug": "admin-logs-single--failed-bounce",
+   "category": "admin/state",
+   "shows": "Failed email log: an order confirmation to a mistyped address; Technical Details open with the bounce SendLayer's delivery check reported (550 5.1.1 User unknown)",
+   "topics": [
+    "email-log",
+    "single-log",
+    "failed",
+    "bounce",
+    "error"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=40&mode=view"
+  },
+  {
+   "slug": "admin-logs-single--failed-default-mailer",
+   "category": "admin/state",
+   "shows": "Failed email log: a password reset sent with the Default (none) PHP mailer failed with 'Could not instantiate mail function.'; Technical Details open",
+   "topics": [
+    "email-log",
+    "single-log",
+    "failed",
+    "php-mail",
+    "error"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=86&mode=view"
+  },
+  {
+   "slug": "admin-logs-single--failed-smtp-535",
+   "category": "admin/state",
+   "shows": "Failed email log: the Shop Newsletter connection's first send failed with 'SMTP Error: Could not authenticate.'; Technical Details open",
+   "topics": [
+    "email-log",
+    "single-log",
+    "failed",
+    "smtp",
+    "authentication"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=72&mode=view"
+  },
+  {
+   "slug": "admin-logs-single--failed-smtp-550",
+   "category": "admin/state",
+   "shows": "Failed email log: one newsletter recipient rejected at send time through the Shop Newsletter connection (SMTP 550 5.1.1 Recipient address rejected); Technical Details open",
+   "topics": [
+    "email-log",
+    "single-log",
+    "failed",
+    "smtp",
+    "error"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=30&mode=view"
+  },
+  {
+   "slug": "admin-logs-single--invalid-id",
+   "category": "admin/page",
+   "shows": "Email Log single view for an email id that does not exist",
+   "topics": [
+    "email-log"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&mode=view&email_id=999999"
+  },
+  {
+   "slug": "admin-logs-single--resend-modal",
+   "category": "admin/state",
+   "shows": "Single email log #2070 with the Resend modal open (never confirmed): the recipient field prefilled with the original address and the connection picker",
+   "topics": [
+    "email-log",
+    "single-log",
+    "resend",
+    "modal"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=23&mode=view"
+  },
+  {
+   "slug": "admin-logs-single--with-attachments",
+   "category": "admin/state",
+   "shows": "Email log with an attachment: Invoice #2069 from Pattie's Post carries invoice-2069.pdf in the Attachments box",
+   "topics": [
+    "email-log",
+    "single-log",
+    "attachments",
+    "invoice"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-logs&email_id=37&mode=view"
+  },
+  {
+   "slug": "admin-recommended-wpconsent",
+   "category": "admin/page",
+   "shows": "WP Mail SMTP > Privacy Compliance: the WPConsent recommendation page with its three steps (install, set up, done); nothing installed",
+   "topics": [
+    "recommended-plugin",
+    "privacy",
+    "wpconsent"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-recommended-wpconsent"
+  },
+  {
+   "slug": "admin-reports",
+   "category": "admin/page",
+   "shows": "Email Reports, Last 7 days: stats strip (total, sent, failed, open count, click count), the email chart (rasterized), and the subject table led by the 'This week at Pattie's Post' newsletter",
+   "topics": [
+    "reports",
+    "email-reports",
+    "chart",
+    "stats",
+    "tracking"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-reports&tab=reports"
+  },
+  {
+   "slug": "admin-reports--range-14",
+   "category": "admin/page",
+   "shows": "Email Reports, Last 14 days: stats, chart, and the per-subject table",
+   "topics": [
+    "reports"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-reports&tab=reports&timespan=14"
+  },
+  {
+   "slug": "admin-reports--range-30",
+   "category": "admin/page",
+   "shows": "Email Reports, Last 30 days: stats, chart, and the per-subject table",
+   "topics": [
+    "reports"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-reports&tab=reports&timespan=30"
+  },
+  {
+   "slug": "admin-reports--range-custom",
+   "category": "admin/page",
+   "shows": "Email Reports with a custom date range of two weeks in the middle of the month",
+   "topics": [
+    "reports"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-reports&tab=reports&timespan=custom&date=2026-09-02%20-%202026-09-15"
+  },
+  {
+   "slug": "admin-reports--search",
+   "category": "admin/page",
+   "shows": "Email Reports searched by subject ('order')",
+   "topics": [
+    "reports",
+    "search"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-reports&tab=reports&s=order"
+  },
+  {
+   "slug": "admin-settings-alerts",
+   "category": "admin/page",
+   "shows": "Settings > Alerts: the Email channel is on and sends to alerts@example.com; Slack, Discord, Teams, Twilio SMS, Custom Webhook, Push Notifications and WhatsApp are off and collapsed",
+   "topics": [
+    "settings",
+    "alerts",
+    "email-alerts",
+    "notifications"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=alerts"
+  },
+  {
+   "slug": "admin-settings-alerts--custom-webhook-open",
+   "category": "admin/state",
+   "shows": "Settings > Alerts with the Custom Webhook channel switched on (not saved): its Webhook URL filled with https://example.com/hooks/wp-mail-smtp-alerts; the Email channel stays on for alerts@example.com",
+   "topics": [
+    "settings",
+    "alerts",
+    "custom-webhook",
+    "notifications"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=alerts"
+  },
+  {
+   "slug": "admin-settings-alerts--discord-webhook-open",
+   "category": "admin/state",
+   "shows": "Settings > Alerts with the Discord channel switched on (not saved): its Webhook URL filled with an obviously fake discord.com webhook URL; the Email channel stays on for alerts@example.com",
+   "topics": [
+    "settings",
+    "alerts",
+    "discord-webhook",
+    "notifications"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=alerts"
+  },
+  {
+   "slug": "admin-settings-alerts--email-two-connections",
+   "category": "admin/state",
+   "shows": "Settings > Alerts, Email channel with a second Send To address added (not saved): alerts@example.com and ops@example.com, each with a remove button",
+   "topics": [
+    "settings",
+    "alerts",
+    "email-alerts"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=alerts"
+  },
+  {
+   "slug": "admin-settings-alerts--slack-webhook-open",
+   "category": "admin/state",
+   "shows": "Settings > Alerts with the Slack channel switched on (not saved): its Webhook URL filled with an obviously fake hooks.slack.com URL; the Email channel stays on for alerts@example.com",
+   "topics": [
+    "settings",
+    "alerts",
+    "slack-webhook",
+    "notifications"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=alerts"
+  },
+  {
+   "slug": "admin-settings-alerts--teams-webhook-open",
+   "category": "admin/state",
+   "shows": "Settings > Alerts with the Microsoft Teams channel switched on (not saved): its Webhook URL filled with an obviously fake webhook.office.com URL; the Email channel stays on for alerts@example.com",
+   "topics": [
+    "settings",
+    "alerts",
+    "teams-webhook",
+    "notifications"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=alerts"
+  },
+  {
+   "slug": "admin-settings-alerts--twilio-sms-open",
+   "category": "admin/state",
+   "shows": "Settings > Alerts with the Twilio SMS channel switched on (not saved): Account SID, Auth Token and the From / To numbers filled with obviously fake values (555-01xx numbers); the Email channel stays on for alerts@example.com",
+   "topics": [
+    "settings",
+    "alerts",
+    "twilio-sms",
+    "notifications"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=alerts"
+  },
+  {
+   "slug": "admin-settings-alerts--whatsapp-open",
+   "category": "admin/state",
+   "shows": "Settings > Alerts with the WhatsApp channel switched on (not saved): Access Token, WhatsApp Business Account ID, Phone Number ID and To number filled with obviously fake values (Re-check status is never clicked); the Email channel stays on for alerts@example.com",
+   "topics": [
+    "settings",
+    "alerts",
+    "whatsapp",
+    "notifications"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=alerts"
+  },
+  {
+   "slug": "admin-settings-connections",
+   "category": "admin/page",
+   "shows": "Settings > Additional Connections with two saved connections: Shop Orders and Shop Newsletter (both Other SMTP)",
+   "topics": [
+    "settings",
+    "additional-connections",
+    "connections",
+    "smart-routing"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=connections"
+  },
+  {
+   "slug": "admin-settings-connections--edit-newsletter",
+   "category": "admin/page",
+   "shows": "Editing the Shop Newsletter connection (Other SMTP, smtp.example.com, from news@example.com): the saved password shows as a locked field with a Remove button, plus Use as Primary Connection and the Delete link",
+   "topics": [
+    "settings",
+    "connections",
+    "additional-connections",
+    "edit",
+    "password"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=connections&mode=edit&connection_id=6aad88c59f962"
+  },
+  {
+   "slug": "admin-settings-connections--edit-orders",
+   "category": "admin/page",
+   "shows": "Editing the Shop Orders connection (Other SMTP, smtp.example.com, from orders@example.com): the saved password shows as a locked field with a Remove button, plus Use as Primary Connection and the Delete link",
+   "topics": [
+    "settings",
+    "connections",
+    "additional-connections",
+    "edit",
+    "password"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=connections&mode=edit&connection_id=6aad88c59e42a"
+  },
+  {
+   "slug": "admin-settings-connections--new",
+   "category": "admin/page",
+   "shows": "Settings > Additional Connections > Add New: an empty Connection Nickname, the full mailer tile grid and the From Email / From Name rows",
+   "topics": [
+    "settings",
+    "connections",
+    "additional-connections",
+    "new"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=connections&mode=new"
+  },
+  {
+   "slug": "admin-settings-control",
+   "category": "admin/page",
+   "shows": "Settings > Email Controls: every WordPress notification email switched on, grouped as Comments, Change of Admin Email, Change of User Email or Password, Personal Data Requests, Automatic Updates and New User",
+   "topics": [
+    "settings",
+    "email-controls",
+    "notifications",
+    "wordpress-emails"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=control"
+  },
+  {
+   "slug": "admin-settings-control--some-off",
+   "category": "admin/state",
+   "shows": "Settings > Email Controls with both Comments emails switched off (not saved): Awaiting Moderation and Published; every other notification stays on",
+   "topics": [
+    "settings",
+    "email-controls",
+    "comments",
+    "notifications"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=control"
+  },
+  {
+   "slug": "admin-settings-general",
+   "category": "admin/page",
+   "shows": "WP Mail SMTP Settings > General: license key (dummy), From Email and From Name for Pattie's Post, Return Path, the mailer picker with Default (none) as the saved mailer, and the backup connection row",
+   "topics": [
+    "settings",
+    "general",
+    "mailer",
+    "mailer-picker",
+    "from-email",
+    "license"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--backup-connection-set",
+   "category": "admin/state",
+   "shows": "Settings > General, Backup Connection row with Shop Orders (Other SMTP) chosen (not saved); the primary mailer is Default (none)",
+   "topics": [
+    "settings",
+    "backup-connection",
+    "connections"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-amazonses",
+   "category": "admin/state",
+   "shows": "Settings > General with the Amazon SES mailer tile clicked (not saved): the Amazon SES block. This site is served over http, so the block truthfully shows the plugin's 'Amazon SES requires an SSL certificate' message instead of its settings",
+   "topics": [
+    "settings",
+    "mailer",
+    "amazonses",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-elasticemail",
+   "category": "admin/state",
+   "shows": "Settings > General with the Elastic Email mailer tile clicked (not saved): the Elastic Email block with its API Key field",
+   "topics": [
+    "settings",
+    "mailer",
+    "elasticemail",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-gmail",
+   "category": "admin/state",
+   "shows": "Settings > General after clicking the Google / Gmail tile (not saved): the Gmail block as it renders by default, One-Click Setup switch and the custom app rows",
+   "topics": [
+    "settings",
+    "general",
+    "mailer",
+    "gmail",
+    "google"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-mailersend",
+   "category": "admin/state",
+   "shows": "Settings > General with the MailerSend mailer tile clicked (not saved): the MailerSend block with its API Key field and Professional Plan toggle",
+   "topics": [
+    "settings",
+    "mailer",
+    "mailersend",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-mailgun",
+   "category": "admin/state",
+   "shows": "Settings > General with the Mailgun mailer tile clicked (not saved): the Mailgun block with its API Key, Domain Name and Region fields",
+   "topics": [
+    "settings",
+    "mailer",
+    "mailgun",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-mailjet",
+   "category": "admin/state",
+   "shows": "Settings > General with the Mailjet mailer tile clicked (not saved): the Mailjet block with its API Key and Secret Key fields",
+   "topics": [
+    "settings",
+    "mailer",
+    "mailjet",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-mandrill",
+   "category": "admin/state",
+   "shows": "Settings > General with the Mandrill mailer tile clicked (not saved): the Mandrill block with its API Key field",
+   "topics": [
+    "settings",
+    "mailer",
+    "mandrill",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-outlook",
+   "category": "admin/state",
+   "shows": "Settings > General with the 365 / Outlook mailer tile clicked (not saved): the 365 / Outlook block with its One-Click Setup toggle. This site is served over http, so the block truthfully shows the plugin's '365 / Outlook requires an SSL certificate' message, and Authorization asks to save settings first",
+   "topics": [
+    "settings",
+    "mailer",
+    "outlook",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-postmark",
+   "category": "admin/state",
+   "shows": "Settings > General with the Postmark mailer tile clicked (not saved): the Postmark block with its Server API Token and Message Stream ID fields",
+   "topics": [
+    "settings",
+    "mailer",
+    "postmark",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-resend",
+   "category": "admin/state",
+   "shows": "Settings > General with the Resend mailer tile clicked (not saved): the Resend block with its API Key field",
+   "topics": [
+    "settings",
+    "mailer",
+    "resend",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-sendgrid",
+   "category": "admin/state",
+   "shows": "Settings > General with the SendGrid mailer tile clicked (not saved): the SendGrid block with its API Key and Sending Domain fields",
+   "topics": [
+    "settings",
+    "mailer",
+    "sendgrid",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-sendinblue",
+   "category": "admin/state",
+   "shows": "Settings > General with the Brevo mailer tile clicked (not saved): the Brevo block with its API Key and Sending Domain fields",
+   "topics": [
+    "settings",
+    "mailer",
+    "sendinblue",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-sendlayer",
+   "category": "admin/state",
+   "shows": "Settings > General after clicking the SendLayer tile (not saved): the Quick Connect row and the manual API key link",
+   "topics": [
+    "settings",
+    "general",
+    "mailer",
+    "sendlayer",
+    "mailer-picker"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-sendlayer-manual-key",
+   "category": "admin/state",
+   "shows": "SendLayer block after 'Connect manually with API Key' (not saved): the empty API Key row replaces the Quick Connect link",
+   "topics": [
+    "settings",
+    "general",
+    "mailer",
+    "sendlayer",
+    "api-key"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-smtp",
+   "category": "admin/state",
+   "shows": "Settings > General after clicking the Other SMTP tile (not saved): SMTP Host, Encryption, Port, Auto TLS, Authentication, Username and Password rows",
+   "topics": [
+    "settings",
+    "general",
+    "mailer",
+    "smtp",
+    "mailer-picker"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-smtp-auth-off",
+   "category": "admin/state",
+   "shows": "Other SMTP block with Authentication switched off (not saved): the Username and Password rows are dimmed (class inactive, assets/js/smtp-admin.js)",
+   "topics": [
+    "settings",
+    "general",
+    "mailer",
+    "smtp",
+    "authentication"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-smtp-filled",
+   "category": "admin/state",
+   "shows": "Settings > General, Other SMTP filled in but not saved: host smtp.example.com, TLS encryption with port 587, authentication on, username orders@example.com and a typed password (shown as dots)",
+   "topics": [
+    "settings",
+    "mailer",
+    "smtp",
+    "setup",
+    "password"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-smtp2go",
+   "category": "admin/state",
+   "shows": "Settings > General with the SMTP2GO mailer tile clicked (not saved): the SMTP2GO block with its API Key field",
+   "topics": [
+    "settings",
+    "mailer",
+    "smtp2go",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-smtpcom",
+   "category": "admin/state",
+   "shows": "Settings > General with the SMTP.com mailer tile clicked (not saved): the SMTP.com block with its API Key and Sender Name fields",
+   "topics": [
+    "settings",
+    "mailer",
+    "smtpcom",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-sparkpost",
+   "category": "admin/state",
+   "shows": "Settings > General with the SparkPost mailer tile clicked (not saved): the SparkPost block with its API Key and Region fields",
+   "topics": [
+    "settings",
+    "mailer",
+    "sparkpost",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-general--mailer-zoho",
+   "category": "admin/state",
+   "shows": "Settings > General with the Zoho Mail mailer tile clicked (not saved): the Zoho Mail block with its Region, Client ID, Client Secret and Redirect URI fields; Authorization asks to save settings first",
+   "topics": [
+    "settings",
+    "mailer",
+    "zoho",
+    "setup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp"
+  },
+  {
+   "slug": "admin-settings-logs",
+   "category": "admin/page",
+   "shows": "Settings > Email Log with logging on: Log Email Content, Save Attachments, Open and Click Tracking and Log Retention rows are shown",
+   "topics": [
+    "settings",
+    "email-log",
+    "logging",
+    "tracking",
+    "attachments"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=logs"
+  },
+  {
+   "slug": "admin-settings-logs--off",
+   "category": "admin/state",
+   "shows": "Settings > Email Log with Enable Log switched off (not saved): the content, attachment, open and click tracking rows are hidden",
+   "topics": [
+    "settings",
+    "email-log",
+    "logging"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=logs"
+  },
+  {
+   "slug": "admin-settings-misc",
+   "category": "admin/page",
+   "shows": "Settings > Misc: Do Not Send, notification and error-banner toggles, dashboard widget, usage tracking, summary report email, optimized sending, email rate limiting (off) and uninstall",
+   "topics": [
+    "settings",
+    "misc",
+    "rate-limit",
+    "do-not-send"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=misc"
+  },
+  {
+   "slug": "admin-settings-misc--do-not-send-on",
+   "category": "admin/state",
+   "shows": "Settings > Misc with Do Not Send switched on (not saved): the Log Blocked Emails option appears under it",
+   "topics": [
+    "settings",
+    "misc",
+    "do-not-send",
+    "blocked"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=misc"
+  },
+  {
+   "slug": "admin-settings-misc--rate-limit-on",
+   "category": "admin/state",
+   "shows": "Settings > Misc with Email Rate Limiting switched on (not saved): the per-minute, hour, day, week and month limit fields appear, empty",
+   "topics": [
+    "settings",
+    "misc",
+    "rate-limit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=misc"
+  },
+  {
+   "slug": "admin-settings-routing",
+   "category": "admin/page",
+   "shows": "Settings > Smart Routing, enabled, with the seeded route: emails whose subject contains 'This week at' go through the Shop Newsletter connection",
+   "topics": [
+    "settings",
+    "smart-routing",
+    "routing",
+    "conditional-logic",
+    "connections"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=routing"
+  },
+  {
+   "slug": "admin-settings-routing--two-routes",
+   "category": "admin/state",
+   "shows": "Settings > Smart Routing after Add New Route (not saved): the seeded newsletter route and a second, empty route below it",
+   "topics": [
+    "settings",
+    "smart-routing",
+    "routing",
+    "conditional-logic"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&tab=routing"
+  },
+  {
+   "slug": "admin-setup-checklist",
+   "category": "admin/page",
+   "shows": "Setup Checklist: Connect Your Mailer and Improve Your Email Sending Experience, with the progress the site itself has recorded",
+   "topics": [
+    "setup-checklist",
+    "onboarding"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-checklist"
+  },
+  {
+   "slug": "admin-summary-report-preview",
+   "category": "admin/page",
+   "shows": "The weekly email summary report as the admin receives it, rendered in the browser: total emails sent with last week's change, and the per-email stats",
+   "topics": [
+    "reports",
+    "summary-report",
+    "email-content"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp&mode=summary_report_email_preview"
+  },
+  {
+   "slug": "admin-tools-action-scheduler",
+   "category": "admin/page",
+   "shows": "Tools > Scheduled Actions: the Action Scheduler table filtered to WP Mail SMTP's own background tasks, with the Pending / Complete / Failed views",
+   "topics": [
+    "tools",
+    "action-scheduler",
+    "scheduled-actions",
+    "troubleshooting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=action-scheduler&s=wp_mail_smtp"
+  },
+  {
+   "slug": "admin-tools-action-scheduler--complete",
+   "category": "admin/page",
+   "shows": "Tools → Scheduled Actions, Complete view",
+   "topics": [
+    "tools",
+    "action-scheduler"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=action-scheduler&status=complete"
+  },
+  {
+   "slug": "admin-tools-action-scheduler--failed",
+   "category": "admin/page",
+   "shows": "Tools → Scheduled Actions, Failed view",
+   "topics": [
+    "tools",
+    "action-scheduler"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=action-scheduler&status=failed"
+  },
+  {
+   "slug": "admin-tools-action-scheduler--pending",
+   "category": "admin/page",
+   "shows": "Tools → Scheduled Actions, Pending view",
+   "topics": [
+    "tools",
+    "action-scheduler"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=action-scheduler&status=pending"
+  },
+  {
+   "slug": "admin-tools-ai-mcp",
+   "category": "admin/page",
+   "shows": "Tools > AI MCP: connect AI assistants to the site through WPVibe; WPVibe is active here, so the button reads Set Up WPVibe",
+   "topics": [
+    "tools",
+    "ai-mcp",
+    "wpvibe",
+    "ai"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=ai-mcp"
+  },
+  {
+   "slug": "admin-tools-code-snippets",
+   "category": "admin/page",
+   "shows": "Tools > Code Snippets with WPCode active: the WP Mail SMTP snippet cards from the WPCode library, each with Install Snippet and View, and the snippet search box",
+   "topics": [
+    "tools",
+    "code-snippets",
+    "wpcode"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=code-snippets"
+  },
+  {
+   "slug": "admin-tools-code-snippets--snippet-modal",
+   "category": "admin/state",
+   "shows": "Tools > Code Snippets with the first snippet's View modal open: its title, note and read-only code, with Install Snippet (never clicked)",
+   "topics": [
+    "tools",
+    "code-snippets",
+    "wpcode",
+    "modal"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=code-snippets"
+  },
+  {
+   "slug": "admin-tools-debug-events",
+   "category": "admin/page",
+   "shows": "Tools > Debug Events, All view: the event-type and retention settings, then the list of mailer errors (SendLayer 401 / 429 / 503, Other SMTP authentication and recipient failures, PHP mail) and debug entries",
+   "topics": [
+    "tools",
+    "debug-events",
+    "errors",
+    "troubleshooting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=debug-events"
+  },
+  {
+   "slug": "admin-tools-debug-events--event-modal",
+   "category": "admin/state",
+   "shows": "Debug event details modal for the Shop Newsletter connection's 'SMTP Error: Could not authenticate.' event: type, date, full content with the SMTP debug transcript, and the caller",
+   "topics": [
+    "tools",
+    "debug-events",
+    "errors",
+    "smtp",
+    "modal"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=debug-events"
+  },
+  {
+   "slug": "admin-tools-debug-events--type-debug",
+   "category": "admin/state",
+   "shows": "Tools > Debug Events filtered to Debug: 'An email request was sent.' entries and the email alert request",
+   "topics": [
+    "tools",
+    "debug-events",
+    "debug"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=debug-events&type=1"
+  },
+  {
+   "slug": "admin-tools-debug-events--type-error",
+   "category": "admin/state",
+   "shows": "Tools > Debug Events filtered to Error: the mailer errors only",
+   "topics": [
+    "tools",
+    "debug-events",
+    "errors"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=debug-events&type=0"
+  },
+  {
+   "slug": "admin-tools-email-detective",
+   "category": "admin/page",
+   "shows": "Tools → Email Detective at rest: what it checks and the Start button (never clicked: it sends a test email and asks detective.sendlayer.com for a report)",
+   "topics": [
+    "tools",
+    "email-detective",
+    "deliverability"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=email-detective"
+  },
+  {
+   "slug": "admin-tools-export",
+   "category": "admin/page",
+   "shows": "Tools > Export: export email logs as CSV (default), with the common fields, additional information, date range and search filters",
+   "topics": [
+    "tools",
+    "export",
+    "email-log",
+    "csv"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=export"
+  },
+  {
+   "slug": "admin-tools-export--datepicker-open",
+   "category": "admin/state",
+   "shows": "Tools > Export with the Custom Date Range calendar open (flatpickr range picker, nothing picked yet)",
+   "topics": [
+    "tools",
+    "export",
+    "date-range"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=export"
+  },
+  {
+   "slug": "admin-tools-export--eml",
+   "category": "admin/state",
+   "shows": "Tools > Export with Export in EML (.eml) chosen: the common-fields and additional-information sections hide, leaving the date range and search filters",
+   "topics": [
+    "tools",
+    "export",
+    "email-log",
+    "eml"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=export"
+  },
+  {
+   "slug": "admin-tools-export--xlsx",
+   "category": "admin/state",
+   "shows": "Tools > Export with Export in Microsoft Excel (.xlsx) chosen: the common and additional field checkboxes, date range and search filters",
+   "topics": [
+    "tools",
+    "export",
+    "email-log",
+    "xlsx"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=export"
+  },
+  {
+   "slug": "admin-tools-test",
+   "category": "admin/page",
+   "shows": "Tools > Email Test: the Send To field (pattie@example.com), the HTML switch and the Send Email button",
+   "topics": [
+    "tools",
+    "email-test",
+    "test-email"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-tools&tab=test",
+   "navAliases": [
+    "admin.php?page=wp-mail-smtp-tools"
+   ]
+  },
+  {
+   "slug": "wizard-choose-mailer",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Choose Your SMTP Mailer step: the mailer cards grid, SendLayer recommended",
+   "topics": [
+    "setup-wizard",
+    "choose-mailer",
+    "mailer"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/choose_mailer",
+   "navAliases": [
+    "admin.php?page=wp-mail-smtp-setup-wizard",
+    "admin.php?page=wp-mail-smtp-setup-wizard&type=local#/"
+   ]
+  },
+  {
+   "slug": "wizard-configure-email-logs",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Email Logs step: the email log options (content, attachments, open and click tracking)",
+   "topics": [
+    "setup-wizard",
+    "email-log"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_email_logs"
+  },
+  {
+   "slug": "wizard-configure-mailer-amazonses",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for Amazon SES: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "amazonses"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/amazoneses"
+  },
+  {
+   "slug": "wizard-configure-mailer-elasticemail",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for Elastic Email: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "elasticemail"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/elasticemail"
+  },
+  {
+   "slug": "wizard-configure-mailer-gmail",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for Google / Gmail: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "gmail"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/gmail"
+  },
+  {
+   "slug": "wizard-configure-mailer-mailersend",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for MailerSend: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "mailersend"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/mailersend"
+  },
+  {
+   "slug": "wizard-configure-mailer-mailgun",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for Mailgun: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "mailgun"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/mailgun"
+  },
+  {
+   "slug": "wizard-configure-mailer-mailjet",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for Mailjet: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "mailjet"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/mailjet"
+  },
+  {
+   "slug": "wizard-configure-mailer-mandrill",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for Mandrill: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "mandrill"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/mandrill"
+  },
+  {
+   "slug": "wizard-configure-mailer-outlook",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for 365 / Outlook: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "outlook"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/outlook"
+  },
+  {
+   "slug": "wizard-configure-mailer-postmark",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for Postmark: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "postmark"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/postmark"
+  },
+  {
+   "slug": "wizard-configure-mailer-resend",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for Resend: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "resend"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/resend"
+  },
+  {
+   "slug": "wizard-configure-mailer-sendgrid",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for SendGrid: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "sendgrid"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/sendgrid"
+  },
+  {
+   "slug": "wizard-configure-mailer-sendinblue",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for Brevo: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "sendinblue"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/sendinblue"
+  },
+  {
+   "slug": "wizard-configure-mailer-sendlayer",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for SendLayer: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "sendlayer"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/sendlayer"
+  },
+  {
+   "slug": "wizard-configure-mailer-smtp",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for Other SMTP: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "smtp"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/smtp"
+  },
+  {
+   "slug": "wizard-configure-mailer-smtp2go",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for SMTP2GO: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "smtp2go"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/smtp2go"
+  },
+  {
+   "slug": "wizard-configure-mailer-smtpcom",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for SMTP.com: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "smtpcom"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/smtpcom"
+  },
+  {
+   "slug": "wizard-configure-mailer-sparkpost",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for SparkPost: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "sparkpost"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/sparkpost"
+  },
+  {
+   "slug": "wizard-configure-mailer-zoho",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Configure Mailer step for Zoho Mail: its settings form, empty, as the wizard shows it before anything is saved",
+   "topics": [
+    "setup-wizard",
+    "configure-mailer",
+    "mailer",
+    "zoho"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/configure_mailer/zoho"
+  },
+  {
+   "slug": "wizard-failure",
+   "category": "admin/page",
+   "shows": "Setup Wizard failure screen: the 'not configured properly' message with troubleshooting and feedback options",
+   "topics": [
+    "setup-wizard",
+    "failure",
+    "troubleshooting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/failed_configuration"
+  },
+  {
+   "slug": "wizard-help-improve",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Help Improve step (reached by URL; the Pro flow skips it): the email field and usage-tracking consent",
+   "topics": [
+    "setup-wizard",
+    "help-improve"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/help_improve"
+  },
+  {
+   "slug": "wizard-import",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Import step: bring settings over from another SMTP plugin (none are installed on this site)",
+   "topics": [
+    "setup-wizard",
+    "import"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/import"
+  },
+  {
+   "slug": "wizard-plugin-features",
+   "category": "admin/page",
+   "shows": "Setup Wizard, Plugin Features step: the feature checklist (deliverability, error tracking, email log, reports, alerts and more)",
+   "topics": [
+    "setup-wizard",
+    "plugin-features"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/plugin_features"
+  },
+  {
+   "slug": "wizard-success",
+   "category": "admin/page",
+   "shows": "Setup Wizard success screen: the congratulations message and the recommended plugin cards",
+   "topics": [
+    "setup-wizard",
+    "success"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wp-mail-smtp-setup-wizard&type=local#/step/successful_configuration"
+  }
+ ],
+ "notes": ""
+}

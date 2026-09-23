@@ -1,0 +1,445 @@
+{
+  "slug": "admin-reports--search",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "reports-chart-live",
+      "event": "wpms:ready",
+      "selector": "body.wp-admin.wp-core-ui",
+      "count": 1
+    },
+    {
+      "label": "reports-subject-chart",
+      "event": "click",
+      "selector": ".js-wp-mail-smtp-toggle-single-stats[data-subject]",
+      "count": 17
+    },
+    {
+      "label": "reports-subject-link",
+      "event": "click",
+      "selector": ".subject-toggle-single-stats[data-subject]",
+      "count": 17
+    },
+    {
+      "label": "flyout-quick-links",
+      "event": "click",
+      "selector": "a.wp-mail-smtp-flyout-button.wp-mail-smtp-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false,
+        "wired": "reports-chart-live",
+        "wiredEvent": "wpms:ready"
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "reports-chart-live",
+        "wiredEvent": "wpms:ready"
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "reports-chart-live",
+        "wiredEvent": "wpms:ready"
+      },
+      {
+        "sel": ".wp-mail-smtp-filter-date__btn",
+        "tag": "button",
+        "text": "Filter",
+        "count": 1,
+        "hidden": false,
+        "wired": "reports-chart-live",
+        "wiredEvent": "wpms:ready"
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true,
+        "wired": "reports-chart-live",
+        "wiredEvent": "wpms:ready"
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "reports-chart-live",
+        "wiredEvent": "wpms:ready"
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-item-1",
+        "tag": "a",
+        "text": "Follow on Facebook",
+        "count": 1,
+        "hidden": true,
+        "wired": "reports-chart-live",
+        "wiredEvent": "wpms:ready"
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true,
+        "wired": "reports-chart-live",
+        "wiredEvent": "wpms:ready"
+      },
+      {
+        "sel": ".wp-mail-smtp-toggle-single-stats-btn-container",
+        "tag": "div",
+        "text": "",
+        "count": 17,
+        "hidden": false,
+        "wired": "reports-chart-live",
+        "wiredEvent": "wpms:ready"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#click_count-hide",
+        "tag": "input",
+        "text": "click_count",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#graph-hide",
+        "tag": "input",
+        "text": "graph",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#open_count-hide",
+        "tag": "input",
+        "text": "open_count",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "f96279567c",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sent_count-hide",
+        "tag": "input",
+        "text": "sent_count",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#subject-hide",
+        "tag": "input",
+        "text": "subject",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#total_count-hide",
+        "tag": "input",
+        "text": "total_count",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#unsent_count-hide",
+        "tag": "input",
+        "text": "unsent_count",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp_mail_smtp_report_items_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-reports-search-input-search-input",
+        "tag": "input",
+        "text": "order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-filter-date__control",
+        "tag": "select",
+        "text": "Last 7 days Last 14 days Last 30 days Custom Date Range",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-filter-date-selector",
+        "tag": "input",
+        "text": "Select a date range",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Subject Total Sent Failed Open Count Click Count Gr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#click_count",
+        "tag": "th",
+        "text": "Click Count Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WP Mail SMTP ★★★★★ on WordPress.org to help us …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#graph",
+        "tag": "th",
+        "text": "Graph",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#open_count",
+        "tag": "th",
+        "text": "Open Count Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Subject Total Sent Failed Open Count Click Count Gr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sent_count",
+        "tag": "th",
+        "text": "Sent Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#subject",
+        "tag": "th",
+        "text": "Subject Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Thanks for your order 134 132 (98%) 2 (1%) 75 (55%) 14 (10%…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wp-mail-smtp",
+        "tag": "li",
+        "text": "WP Mail SMTP Setup Checklist 67% complete Dashboard Setting…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#total_count",
+        "tag": "th",
+        "text": "Total Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#unsent_count",
+        "tag": "th",
+        "text": "Failed Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp",
+        "tag": "div",
+        "text": "Email Reports Email Reports Search Results 294 total 290 se…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Follow on Facebook Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-header",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-header-temp",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-reset-filter",
+        "tag": "div",
+        "text": "Found 20 items where the subject contains order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-page-content",
+        "tag": "div",
+        "text": "Email Reports Search Results 294 total 290 sent 4 failed 16…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-menu-parent-link",
+        "tag": "li",
+        "text": "Dashboard",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,1259 @@
+{
+  "slug": "admin-settings-general--mailer-mandrill",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "mailer-tile-image",
+      "event": "click",
+      "selector": ".wp-mail-smtp-mailer-image",
+      "count": 19
+    },
+    {
+      "label": "mailer-tile-switch",
+      "event": "click",
+      "selector": ".js-wp-mail-smtp-setting-mailer-radio-input[data-title]",
+      "count": 19
+    },
+    {
+      "label": "mailer-supported-settings",
+      "event": "change",
+      "selector": ".js-wp-mail-smtp-setting-mailer-radio-input[data-title]",
+      "count": 19
+    },
+    {
+      "label": "smtp-auth-rows",
+      "event": "change",
+      "selector": "#wp-mail-smtp-setting-smtp-auth",
+      "count": 1
+    },
+    {
+      "label": "smtp-encryption-port",
+      "event": "change",
+      "selector": "#wp-mail-smtp-setting-smtp-enc-none",
+      "count": 3
+    },
+    {
+      "label": "sendlayer-show-api-key",
+      "event": "click",
+      "selector": "#wp-mail-smtp-sendlayer-show-api-key",
+      "count": 1
+    },
+    {
+      "label": "gmail-one-click-groups",
+      "event": "change",
+      "selector": "#wp-mail-smtp-setting-gmail-one_click_setup_enabled",
+      "count": 1
+    },
+    {
+      "label": "outlook-one-click-groups",
+      "event": "change",
+      "selector": "#wp-mail-smtp-setting-outlook-one_click_setup_enabled",
+      "count": 1
+    },
+    {
+      "label": "flyout-quick-links",
+      "event": "click",
+      "selector": "a.wp-mail-smtp-flyout-button.wp-mail-smtp-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-sendlayer-connect-btn",
+        "tag": "button",
+        "text": "Quick Connect",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-sendlayer-show-api-key",
+        "tag": "a",
+        "text": "Connect manually with API Key",
+        "count": 1,
+        "hidden": true,
+        "wired": "sendlayer-show-api-key",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-mailersend-has_pro_plan",
+        "tag": "div",
+        "text": "Professional Plan On Off Activate if you have a Professiona…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-setup-wizard-button",
+        "tag": "div",
+        "text": "Setup Wizard Launch Setup Wizard We'll guide you through ea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-smtp-auth",
+        "tag": "div",
+        "text": "Authentication On Off",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-smtp-autotls",
+        "tag": "div",
+        "text": "Auto TLS On Off By default, TLS encryption is automatically…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-license-key-field-deactivate",
+        "tag": "button",
+        "text": "Remove Key",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-btn-blueish",
+        "tag": "a",
+        "text": "Launch Setup Wizard",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-btn-red",
+        "tag": "a",
+        "text": "Remove OAuth Connection",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-quick-links",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-item-1",
+        "tag": "a",
+        "text": "Follow on Facebook",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-input-btn-row",
+        "tag": "div",
+        "text": "",
+        "count": 17,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-mailer-notice-dismiss",
+        "tag": "a",
+        "text": "Dismiss this notice",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-alerts",
+        "tag": "a",
+        "text": "Alerts",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-connections",
+        "tag": "a",
+        "text": "Additional Connections",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-control",
+        "tag": "a",
+        "text": "Email Controls",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-logs",
+        "tag": "a",
+        "text": "Email Log",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-misc",
+        "tag": "a",
+        "text": "Misc",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-tab-routing",
+        "tag": "a",
+        "text": "Smart Routing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-toggle",
+        "tag": "label",
+        "text": "ON",
+        "count": 8,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-license-key-field__link",
+        "tag": "a",
+        "text": "status refresh",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#wp-mail-smtp-sendlayer-quick-connect-connection-id",
+        "tag": "input",
+        "text": "primary",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-sendlayer-quick-connect-return-url",
+        "tag": "input",
+        "text": "http://example.com/wp-admin/admin.php?page=wp-mail-smtp",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-elasticemail-api_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-from_email",
+        "tag": "input",
+        "text": "orders@example.com",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-from_email_force",
+        "tag": "input",
+        "text": "true",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-from_name",
+        "tag": "input",
+        "text": "Pattie's Post",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-from_name_force",
+        "tag": "input",
+        "text": "true",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-gmail-client_id",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-gmail-client_redirect",
+        "tag": "input",
+        "text": "https://connect.wpmailsmtp.com/google/",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-gmail-client_secret",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-gmail-one_click_setup_enabled",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-amazonses",
+        "tag": "input",
+        "text": "amazonses",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-elasticemail",
+        "tag": "input",
+        "text": "elasticemail",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-gmail",
+        "tag": "input",
+        "text": "gmail",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-mail",
+        "tag": "input",
+        "text": "mail",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-mailersend",
+        "tag": "input",
+        "text": "mailersend",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-mailgun",
+        "tag": "input",
+        "text": "mailgun",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-mailjet",
+        "tag": "input",
+        "text": "mailjet",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-mandrill",
+        "tag": "input",
+        "text": "mandrill",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-outlook",
+        "tag": "input",
+        "text": "outlook",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-postmark",
+        "tag": "input",
+        "text": "postmark",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-resend",
+        "tag": "input",
+        "text": "resend",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-sendgrid",
+        "tag": "input",
+        "text": "sendgrid",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-sendinblue",
+        "tag": "input",
+        "text": "sendinblue",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-sendlayer",
+        "tag": "input",
+        "text": "sendlayer",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-smtp",
+        "tag": "input",
+        "text": "smtp",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-smtp2go",
+        "tag": "input",
+        "text": "smtp2go",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-smtpcom",
+        "tag": "input",
+        "text": "smtpcom",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-sparkpost",
+        "tag": "input",
+        "text": "sparkpost",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailer-zoho",
+        "tag": "input",
+        "text": "zoho",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailersend-api_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailersend-has_pro_plan",
+        "tag": "input",
+        "text": "true",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailgun-api_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailgun-domain",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailgun-region-eu",
+        "tag": "input",
+        "text": "EU",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailgun-region-us",
+        "tag": "input",
+        "text": "US",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailjet-api_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mailjet-secret_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-mandrill-api_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-outlook-one_click_setup_enabled",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-postmark-message_stream",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-postmark-server_api_token",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-resend-api_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-return_path",
+        "tag": "input",
+        "text": "true",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-backup_connection_6aad88c59e42a",
+        "tag": "input",
+        "text": "6aad88c59e42a",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-backup_connection_6aad88c59f962",
+        "tag": "input",
+        "text": "6aad88c59f962",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-backup_connection_none",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-sendgrid-api_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-sendgrid-domain",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-sendinblue-api_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-sendinblue-domain",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-sendlayer-api_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-smtp-auth",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-smtp-autotls",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-smtp-enc-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-smtp-enc-ssl",
+        "tag": "input",
+        "text": "ssl",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-smtp-enc-tls",
+        "tag": "input",
+        "text": "tls",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-smtp-host",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-smtp-pass",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-smtp-port",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-smtp-user",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-smtp2go-api_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-smtpcom-api_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-smtpcom-channel",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-sparkpost-api_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-sparkpost-region-eu",
+        "tag": "input",
+        "text": "EU",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-sparkpost-region-us",
+        "tag": "input",
+        "text": "US",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-zoho-client_id",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-zoho-client_redirect",
+        "tag": "input",
+        "text": "http://example.com/wp-admin/admin.php?page=wp-mail-smtp&tab…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-zoho-client_secret",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-zoho-domain",
+        "tag": "select",
+        "text": "United States (US) Europe (EU) India (IN) China (CN) Austra…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-license-key-field-input",
+        "tag": "input",
+        "text": "00000000000000000000000000000000",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WP Mail SMTP ★★★★★ on WordPress.org to help us …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wp-mail-smtp",
+        "tag": "li",
+        "text": "WP Mail SMTP Setup Checklist 67% complete Dashboard Setting…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp",
+        "tag": "div",
+        "text": "General Email Log Alerts Additional Connections Smart Routi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Follow on Facebook Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-header",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-mailer-options",
+        "tag": "div",
+        "text": "Mandrill Mandrill is a transactional email API for MailChim…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-backup_connection",
+        "tag": "div",
+        "text": "Backup Connection None Shop Orders (Other SMTP) Shop Newsle…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-elasticemail-api_key",
+        "tag": "div",
+        "text": "API Key Follow this link to get an API Key from Elastic Ema…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-from_email",
+        "tag": "div",
+        "text": "From Email The email address that emails are sent from. If …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-from_email_force",
+        "tag": "div",
+        "text": "Force From Email ON If checked, the From Email setting abov…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-from_name",
+        "tag": "div",
+        "text": "From Name The name that emails are sent from.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-from_name_force",
+        "tag": "div",
+        "text": "Force From Name OFF If checked, the From Name setting above…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-gmail-authorize",
+        "tag": "div",
+        "text": "Authorization You need to save settings with Client ID and …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-gmail-client_id",
+        "tag": "div",
+        "text": "Client ID",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-gmail-client_redirect",
+        "tag": "div",
+        "text": "Authorized redirect URI Please copy this URL into the \"Auth…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-gmail-client_secret",
+        "tag": "div",
+        "text": "Client Secret",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-gmail-one-click-setup-authorize",
+        "tag": "div",
+        "text": "Authorization Remove OAuth Connection Connected as orders@e…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-license_key",
+        "tag": "div",
+        "text": "License Key Remove Key Your license level is Elite. If your…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-license-heading",
+        "tag": "div",
+        "text": "License Your license key provides access to WP Mail SMTP Pr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-mailer",
+        "tag": "div",
+        "text": "Mailer Default (none) SendLayer SMTP.com Brevo Amazon SES E…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-mailersend-api_key",
+        "tag": "div",
+        "text": "API Key Follow this link to get an API Key from MailerSend:…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-mailgun-api_key",
+        "tag": "div",
+        "text": "Mailgun API Key Follow this link to get a Mailgun API Key. …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-mailgun-domain",
+        "tag": "div",
+        "text": "Domain Name Follow this link to get a Domain Name from Mail…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-mailgun-region",
+        "tag": "div",
+        "text": "Region US EU Define which endpoint you want to use for send…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-mailjet-api_key",
+        "tag": "div",
+        "text": "API Key Follow this link to get the API key from Mailjet: A…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-mailjet-secret_key",
+        "tag": "div",
+        "text": "Secret Key Follow this link to get the Secret key from Mail…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-mandrill-api_key",
+        "tag": "div",
+        "text": "API Key Follow this link to get an API Key from Mandrill: G…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-outlook-one-click-setup-authorize",
+        "tag": "div",
+        "text": "Authorization You need to save settings before you can proc…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-postmark-message_stream",
+        "tag": "div",
+        "text": "Message Stream ID Message Stream ID is optional. By default…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-postmark-server_api_token",
+        "tag": "div",
+        "text": "Server API Token Follow this link to get a Server API Token…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-resend-api_key",
+        "tag": "div",
+        "text": "API Key Follow this link to get the API key from Resend: AP…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-return_path",
+        "tag": "div",
+        "text": "Return Path On Off Return Path indicates where non-delivery…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-sendgrid-api_key",
+        "tag": "div",
+        "text": "API Key Follow this link to get an API Key from SendGrid: C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-sendgrid-domain",
+        "tag": "div",
+        "text": "Sending Domain Please input the sending domain/subdomain yo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-sendinblue-client_id",
+        "tag": "div",
+        "text": "API Key Follow this link to get an API Key: Get v3 API Key.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-sendinblue-domain",
+        "tag": "div",
+        "text": "Sending Domain Please input the sending domain/subdomain yo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-sendlayer-api_key",
+        "tag": "div",
+        "text": "API Key Follow this link to get an API Key from SendLayer: …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-sendlayer-connect",
+        "tag": "div",
+        "text": "Quick Connect Takes about 2 mins",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-smtp-encryption",
+        "tag": "div",
+        "text": "Encryption None SSL TLS For most servers TLS is the recomme…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-smtp-host",
+        "tag": "div",
+        "text": "SMTP Host",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-smtp-pass",
+        "tag": "div",
+        "text": "SMTP Password The password is encrypted in the database, bu…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-smtp-port",
+        "tag": "div",
+        "text": "SMTP Port",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-smtp-user",
+        "tag": "div",
+        "text": "SMTP Username",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-smtp2go-api_key",
+        "tag": "div",
+        "text": "API Key Generate an API key on the Sending → API Keys page …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-smtpcom-api_key",
+        "tag": "div",
+        "text": "API Key Follow this link to get an API Key from SMTP.com: G…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-smtpcom-channel",
+        "tag": "div",
+        "text": "Sender Name Follow this link to get a Sender Name from SMTP…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-sparkpost-api_key",
+        "tag": "div",
+        "text": "API Key Follow this link to get an API Key from SparkPost: …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-sparkpost-region",
+        "tag": "div",
+        "text": "Region US EU Select your SparkPost account region. More inf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-zoho-authorize",
+        "tag": "div",
+        "text": "Authorization To access this section, please add a Domain, …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-zoho-client_id",
+        "tag": "div",
+        "text": "Client ID",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-zoho-client_redirect",
+        "tag": "div",
+        "text": "Redirect URI This is the page on your site that you will be…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-zoho-client_secret",
+        "tag": "div",
+        "text": "Client Secret",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-setting-row-zoho-domain",
+        "tag": "div",
+        "text": "Region United States (US) Europe (EU) India (IN) China (CN)…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-license-key-field-error",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-connected-row",
+        "tag": "div",
+        "text": "Remove OAuth Connection Connected as orders@example.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-mailer-option",
+        "tag": "div",
+        "text": "Default (none) You currently have the Default (none) mailer…",
+        "count": 19,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-page-content",
+        "tag": "div",
+        "text": "General License Your license key provides access to WP Mail…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-license-key-field",
+        "tag": "div",
+        "text": "Remove Key Your license level is Elite. If your license has…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-menu-parent-link",
+        "tag": "li",
+        "text": "Dashboard",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

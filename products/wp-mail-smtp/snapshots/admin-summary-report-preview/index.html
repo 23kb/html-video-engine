@@ -1,0 +1,747 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" style="margin-top: 0px; padding-top: 0px;"><head><link rel="stylesheet" href="../_shared/css/29467a00741c.css">
+			<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1.0">
+			<!--[if !mso]><!-->
+			<meta http-equiv="X-UA-Compatible" content="IE=edge">
+			<!--<![endif]-->
+			<meta name="color-scheme" content="light dark">
+			<meta name="supported-color-schemes" content="light dark">
+			<title>WP Mail SMTP Weekly Email Summary</title>
+			<style type="text/css">
+				/* General styles. */
+
+#outlook a {
+	padding: 0;
+}
+
+.ExternalClass {
+	width: 100%;
+}
+
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {
+	line-height: 100%;
+}
+
+#backgroundTable {
+	margin: 0;
+	padding: 0;
+	width: 100% !important;
+	line-height: 100% !important;
+}
+
+/* Prevent blue links in subject. */
+.stats-subject-heading a {
+	color: inherit !important;
+	text-decoration: none !important;
+}
+
+/* Mobile styles. */
+
+@media only screen and (max-width: 599px) {
+	table.body .container {
+		width: 94% !important;
+		max-width: 600px !important;
+	}
+
+	.header img {
+		width: 240px !important;
+		height: auto !important;
+	}
+
+	.content {
+		padding: 30px !important;
+	}
+
+	.main-heading {
+		font-size: 16px !important;
+		line-height: 20px !important;
+	}
+
+	.main-description {
+		margin-bottom: 20px !important;
+	}
+
+	.stats-totals-wrapper.two .stats-totals-item-wrapper {
+		width: 50% !important;
+	}
+
+	.stats-totals-wrapper.three .stats-totals-item-wrapper {
+		width: 33.3% !important;
+	}
+
+	.stats-totals-wrapper.four .stats-totals-item-wrapper {
+		width: 25% !important;
+	}
+
+	.stats-totals-wrapper {
+		border-collapse: separate !important;
+		border: 1px solid #DDDDDD !important;
+		border-radius: 4px !important;
+	}
+
+	.stats-total-item {
+		width: 100% !important;
+		min-width: 100% !important;
+	}
+
+	.stats-total-item-inner {
+		border: none !important;
+	}
+
+	.stats-total-item-icon-wrapper {
+		height: 24px !important;
+	}
+
+	.stats-total-item-icon {
+		width: 24px !important;
+		height: 24px !important;
+	}
+
+	.stats-totals-wrapper.three .stats-total-item-title,
+	.stats-totals-wrapper.four .stats-total-item-title {
+		display: none !important;
+	}
+
+	.stats-total-item-value {
+		font-size: 18px !important;
+		line-height: 22px !important;
+	}
+
+	.stats-total-item-percent {
+		font-size: 12px !important;
+		line-height: 14px !important;
+	}
+
+	.stats-total-item-percent img {
+		width: 9px !important;
+		height: 9px !important;
+	}
+
+	.stats-heading th {
+		display: block !important;
+		width: 100% !important;
+		min-width: 100% !important;
+		padding-right: 0 !important;
+		padding-left: 0 !important;
+		text-align: center !important;
+	}
+
+	.stats-heading .first-col {
+		padding-top: 20px !important;
+		padding-bottom: 5px !important;
+	}
+
+	.stats-heading .second-col {
+		padding-top: 0 !important;
+		padding-bottom: 20px !important;
+	}
+
+	.stats-heading h2 {
+		text-align: center !important;
+		font-size: 15px !important;
+		line-height: 18px !important;
+	}
+
+	.stats-heading a {
+		font-size: 13px !important;
+		line-height: 16px !important;
+	}
+
+	.stats-subject-heading {
+		text-align: center !important;
+	}
+
+	.stats-subject-row {
+		text-align: center !important;
+	}
+
+	.stats-subject-column.total,
+	.stats-subject-column.sent,
+	.stats-subject-column.confirmed,
+	.stats-subject-column.unconfirmed,
+	.stats-subject-column.unsent {
+		max-width: 64px !important;
+	}
+
+	.stats-subject-column.opened,
+	.stats-subject-column.clicked {
+		max-width: 111px !important;
+	}
+
+	.spacer-40 {
+		line-height: 20px !important;
+		height: 20px !important;
+	}
+
+	.upgrade-heading {
+		font-size: 18px !important;
+		line-height: 22px !important;
+	}
+
+	.upgrade-text {
+		font-size: 14px !important;
+		line-height: 20px !important;
+	}
+}
+
+@media only screen and (max-width: 360px) {
+	.content {
+		padding: 20px !important;
+	}
+
+	.stats-subject-column.total,
+	.stats-subject-column.sent,
+	.stats-subject-column.confirmed,
+	.stats-subject-column.unconfirmed,
+	.stats-subject-column.unsent {
+		max-width: 61px !important;
+	}
+}
+
+/* Dark Mode. */
+
+@media (prefers-color-scheme: dark) {
+	.dark-body-bg {
+		background: #1C1E20 !important;
+	}
+
+	.dark-content-bg {
+		background: #23282C !important;
+	}
+
+	.dark-bg {
+		background: #202326 !important;
+	}
+
+	.dark-white-color {
+		color: #ffffff !important;
+	}
+
+	.dark-img {
+		display: block !important;
+		width: auto !important;
+		overflow: visible !important;
+		float: none !important;
+		max-height: inherit !important;
+		max-width: inherit !important;
+		line-height: auto !important;
+		margin-top: 0px !important;
+		visibility: inherit !important;
+	}
+
+	.light-img {
+		display: none !important;
+	}
+
+	.stats-total-item-inner,
+	.stats-heading {
+		border-color: #395360 !important;
+	}
+
+	.stats-subject-column-value,
+	.stats-total-item-percent,
+	.footer {
+		color: #8C8F94 !important;
+	}
+
+	.stats-subject-column-value span {
+		color: #4A5057 !important;
+	}
+
+	.upgrade-text {
+		color: #8C8F94 !important;
+	}
+}
+
+/* Dark Mode Outlook. */
+
+[data-ogsc] .dark-body-bg {
+	background: #1C1E20 !important;
+}
+
+[data-ogsc] .dark-content-bg {
+	background: #23282C !important;
+}
+
+[data-ogsc] .dark-bg {
+	background: #202326 !important;
+}
+
+[data-ogsc] .dark-white-color {
+	color: #ffffff !important;
+}
+
+[data-ogsc] .dark-img {
+	display: block !important;
+	width: auto !important;
+	overflow: visible !important;
+	float: none !important;
+	max-height: inherit !important;
+	max-width: inherit !important;
+	line-height: auto !important;
+	margin-top: 0px !important;
+	visibility: inherit !important;
+}
+
+[data-ogsc] .light-img {
+	display: none !important;
+}
+
+[data-ogsc] .stats-total-item-inner,
+[data-ogsc] .stats-heading {
+	border-color: #395360 !important;
+}
+
+[data-ogsc] .stats-subject-column-value,
+[data-ogsc] .stats-total-item-percent,
+[data-ogsc] .footer {
+	color: #8C8F94 !important;
+}
+
+[data-ogsc] .stats-subject-column-value span {
+	color: #4A5057 !important;
+}
+
+[data-ogsc] .upgrade-text {
+	color: #8C8F94 !important;
+}
+			</style>
+		<link rel="stylesheet" href="../_shared/css/0fa9a8527ebc.css"></head>
+		<body class="dark-body-bg" style="margin: 0;padding: 0;min-width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;background: #f1f1f1;text-align: left;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;mso-line-height-rule: exactly;line-height: 140%;font-size: 14px;height: 100% !important;width: 100% !important;-webkit-font-smoothing: antialiased !important;-moz-osx-font-smoothing: grayscale !important;">
+		<table class="body dark-body-bg" border="0" cellpadding="0" cellspacing="0" width="100%" height="100%" style="border-collapse: collapse;border-spacing: 0;padding: 0;vertical-align: top;text-align: left;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;margin: 0;min-width: 100%;-moz-box-sizing: border-box;-webkit-box-sizing: border-box;box-sizing: border-box;background: #f1f1f1;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;mso-line-height-rule: exactly;line-height: 140%;font-size: 14px;height: 100% !important;width: 100%;-webkit-font-smoothing: antialiased !important;-moz-osx-font-smoothing: grayscale !important;">
+		<tbody><tr style="padding: 0;vertical-align: top;text-align: left;">
+		<td align="center" valign="top" style="word-wrap: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0;vertical-align: top;text-align: center;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;margin: 0;mso-line-height-rule: exactly;line-height: 140%;font-size: 14px;border-collapse: collapse !important;">
+		
+		<table border="0" cellpadding="0" cellspacing="0" class="container" style="border-collapse: collapse;border-spacing: 0;padding: 0;vertical-align: top;text-align: inherit;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;width: 600px;margin: 0 auto 0 auto;">
+		
+		<tbody><tr style="padding: 0;vertical-align: top;text-align: left;">
+			<td align="center" valign="middle" class="header" style="word-wrap: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 15px 0px;vertical-align: top;text-align: center;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;margin: 0;mso-line-height-rule: exactly;line-height: 140%;font-size: 14px;border-collapse: collapse !important;">
+				<div class="light-img">
+					<img src="../_shared/assets/757f4c92bc4e.png" width="321" alt="WP Mail SMTP Logo" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 321px;max-width: 100%;clear: both;display: inline-block !important;height: auto !important;">
+				</div>
+				<!--[if !mso]><! -->
+				<div class="dark-img" style="display:none; overflow:hidden; float:left; width:0px; max-height:0px; max-width:0px; line-height:0px; visibility:hidden;" align="center">
+					<img src="../_shared/assets/ca7975d592bc.png" width="321" alt="WP Mail SMTP Logo" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 321px;max-width: 100%;clear: both;display: inline-block !important;height: auto !important;">
+				</div>
+				<!--<![endif]-->
+			</td>
+		</tr>
+		
+		<tr style="padding: 0;vertical-align: top;text-align: left;">
+		<td align="left" valign="top" class="content dark-content-bg" style="word-wrap: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 60px;vertical-align: top;text-align: left;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;margin: 0;mso-line-height-rule: exactly;line-height: 140%;font-size: 14px;background: #ffffff;border-radius: 6px;border-collapse: collapse !important;">
+				<h6 class="main-heading dark-white-color" style="margin: 0;padding: 0;color: #444444;word-wrap: normal;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: bold;mso-line-height-rule: exactly;line-height: 22px;;text-align: left;font-size: 18px;margin-bottom: 10px;">
+			Hi there,		</h6>
+		<p class="main-description dark-white-color" style="margin: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;padding: 0;text-align: left;mso-line-height-rule: exactly;line-height: 19px;font-size: 16px;margin-bottom: 40px;">
+			Let’s see how your emails performed in the past week.		</p>
+
+		<table class="stats-totals-wrapper three" style="border-collapse: collapse;border-spacing: 0;padding: 0;vertical-align: top;text-align: left;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;width: 100%;">
+			<tbody><tr style="padding: 0;vertical-align: top;text-align: left;">
+				<td class="stats-totals-item-wrapper" style="word-wrap: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0;vertical-align: top;text-align: left;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;margin: 0;mso-line-height-rule: exactly;line-height: 140%;font-size: 14px;border-collapse: collapse !important;">
+							<table class="stats-total-item" style="border-spacing: 0;padding: 0;vertical-align: top;text-align: left;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;width: 140px;display: inline-table;min-width:140px;" width="140">
+			<tbody><tr style="padding: 0;vertical-align: top;text-align: left;">
+				<td class="stats-total-item-inner" style="word-wrap: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 15px 5px;vertical-align: top;text-align: center;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;margin: 0;mso-line-height-rule: exactly;line-height: 140%;font-size: 14px;border-collapse: collapse !important; width: 100%; min-width:100%; border: 1px solid #DDDDDD;border-radius: 4px;">
+					<p class="stats-total-item-icon-wrapper" style="margin: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #809EB0;padding: 0;text-align: center;mso-line-height-rule: exactly;margin-bottom: 10px;height: 32px;">
+						<img class="stats-total-item-icon" src="../_shared/assets/2a3d7cd35f61.png" alt="Total Emails" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 34px;height:32px;clear: both;display: inline-block;" width="34" height="32">
+					</p>
+					<p class="stats-total-item-title" style="margin: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #809EB0;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: bold;padding: 0;text-align: center;mso-line-height-rule: exactly;line-height: 14px;font-size: 13px;margin-bottom: 11px;white-space: nowrap;">
+						Total Emails					</p>
+					<p class="stats-total-item-value dark-white-color" style="margin: 0 0 12px 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: bold;padding: 0;text-align: center;mso-line-height-rule: exactly;line-height: 28px;font-size: 28px;">
+						518					</p>
+					<p class="stats-total-item-percent" style="margin: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #777777;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;padding: 0;text-align: center;mso-line-height-rule: exactly;line-height: 14px;font-size: 14px;white-space: nowrap;">
+						<img src="../_shared/assets/b81dbe3da866.png" alt="Total Emails" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 12px;height: 12px;max-width: 100%;clear: both;" width="12" height="12">
+						<span style="padding-left: 1px;">
+							<!--[if mso]>&nbsp;<![endif]-->
+							-7.8%
+						</span>
+					</p>
+				</td>
+			</tr>
+		</tbody></table>
+						</td>
+
+									<td class="stats-totals-item-wrapper" style="word-wrap: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0;vertical-align: top;text-align: center;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;margin: 0;mso-line-height-rule: exactly;line-height: 140%;font-size: 14px;border-collapse: collapse !important;">
+								<table class="stats-total-item" style="border-spacing: 0;padding: 0;vertical-align: top;text-align: left;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;width: 140px;display: inline-table;min-width:140px;" width="140">
+			<tbody><tr style="padding: 0;vertical-align: top;text-align: left;">
+				<td class="stats-total-item-inner" style="word-wrap: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 15px 5px;vertical-align: top;text-align: center;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;margin: 0;mso-line-height-rule: exactly;line-height: 140%;font-size: 14px;border-collapse: collapse !important; width: 100%; min-width:100%; border: 1px solid #DDDDDD;border-radius: 4px;">
+					<p class="stats-total-item-icon-wrapper" style="margin: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #6AA08B;padding: 0;text-align: center;mso-line-height-rule: exactly;margin-bottom: 10px;height: 32px;">
+						<img class="stats-total-item-icon" src="../_shared/assets/f564c233aee0.png" alt="Sent" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 32px;height:32px;clear: both;display: inline-block;" width="32" height="32">
+					</p>
+					<p class="stats-total-item-title" style="margin: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #6AA08B;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: bold;padding: 0;text-align: center;mso-line-height-rule: exactly;line-height: 14px;font-size: 13px;margin-bottom: 11px;white-space: nowrap;">
+						Sent					</p>
+					<p class="stats-total-item-value dark-white-color" style="margin: 0 0 12px 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: bold;padding: 0;text-align: center;mso-line-height-rule: exactly;line-height: 28px;font-size: 28px;">
+						507					</p>
+					<p class="stats-total-item-percent" style="margin: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #777777;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;padding: 0;text-align: center;mso-line-height-rule: exactly;line-height: 14px;font-size: 14px;white-space: nowrap;">
+						<img src="../_shared/assets/b81dbe3da866.png" alt="Sent" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 12px;height: 12px;max-width: 100%;clear: both;" width="12" height="12">
+						<span style="padding-left: 1px;">
+							<!--[if mso]>&nbsp;<![endif]-->
+							-7.8%
+						</span>
+					</p>
+				</td>
+			</tr>
+		</tbody></table>
+							</td>
+				
+				<td class="stats-totals-item-wrapper" style="word-wrap: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0;vertical-align: top;text-align: right;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;margin: 0;mso-line-height-rule: exactly;line-height: 140%;font-size: 14px;border-collapse: collapse !important;">
+							<table class="stats-total-item" style="border-spacing: 0;padding: 0;vertical-align: top;text-align: left;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;width: 140px;display: inline-table;min-width:140px;" width="140">
+			<tbody><tr style="padding: 0;vertical-align: top;text-align: left;">
+				<td class="stats-total-item-inner" style="word-wrap: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 15px 5px;vertical-align: top;text-align: center;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;margin: 0;mso-line-height-rule: exactly;line-height: 140%;font-size: 14px;border-collapse: collapse !important; width: 100%; min-width:100%; border: 1px solid #DDDDDD;border-radius: 4px;">
+					<p class="stats-total-item-icon-wrapper" style="margin: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #D63638;padding: 0;text-align: center;mso-line-height-rule: exactly;margin-bottom: 10px;height: 32px;">
+						<img class="stats-total-item-icon" src="../_shared/assets/4546a2dfb9a1.png" alt="Failed" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 32px;height:32px;clear: both;display: inline-block;" width="32" height="32">
+					</p>
+					<p class="stats-total-item-title" style="margin: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #D63638;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: bold;padding: 0;text-align: center;mso-line-height-rule: exactly;line-height: 14px;font-size: 13px;margin-bottom: 11px;white-space: nowrap;">
+						Failed					</p>
+					<p class="stats-total-item-value dark-white-color" style="margin: 0 0 12px 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: bold;padding: 0;text-align: center;mso-line-height-rule: exactly;line-height: 28px;font-size: 28px;">
+						11					</p>
+					<p class="stats-total-item-percent" style="margin: 0;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #777777;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;padding: 0;text-align: center;mso-line-height-rule: exactly;line-height: 14px;font-size: 14px;white-space: nowrap;">
+						<img src="../_shared/assets/b81dbe3da866.png" alt="Failed" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 12px;height: 12px;max-width: 100%;clear: both;" width="12" height="12">
+						<span style="padding-left: 1px;">
+							<!--[if mso]>&nbsp;<![endif]-->
+							-8.3%
+						</span>
+					</p>
+				</td>
+			</tr>
+		</tbody></table>
+						</td>
+			</tr>
+		</tbody></table>
+
+					<table class="stats-heading" style="border-collapse: collapse;border-spacing: 0;padding: 0;vertical-align: top;text-align: left;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;width: 100%;border-bottom: 1px solid #dddddd;">
+				<tbody><tr style="padding: 0;text-align: left;">
+					<th class="first-col" style="word-wrap: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0;vertical-align: top;text-align: left;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;margin: 0;mso-line-height-rule: exactly;line-height: 140%;font-size: 14px;padding-top: 40px;padding-bottom: 20px;border-collapse: collapse !important;padding-right: 10px;">
+						<h2 style="margin: 0;padding: 0;color: #809EB0;word-wrap: normal;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: bold;mso-line-height-rule: exactly;line-height: 20px;text-align: left;font-size: 16px;text-transform: uppercase;">
+							Last Week’s Top Emails						</h2>
+					</th>
+					<th class="second-col" style="word-wrap: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 0;vertical-align: top;text-align: right;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #444444;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;margin: 0;mso-line-height-rule: exactly;line-height: 140%;font-size: 14px;padding-top: 40px;padding-bottom: 20px;border-collapse: collapse !important;">
+						<a href="http://sulliesbakery.com/wp-admin/admin.php?page=wp-mail-smtp-reports&amp;orderby=total&amp;order=desc&amp;timespan=custom&amp;date=2026-09-13 - 2026-09-19" style="-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #8C8F94;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;mso-line-height-rule: exactly;line-height: 17px;text-decoration: underline;font-size: 14px;text-decoration-line: underline;">
+							View All Emails						</a>
+					</th>
+				</tr>
+			</tbody></table>
+
+			<div class="stats-subject stats-subject-5">
+									<h6 class="stats-subject-heading dark-white-color" style="margin: 0;padding: 0;color: #444444;word-wrap: normal;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;mso-line-height-rule: exactly;line-height: 18px;text-align: left;font-size: 15px;margin-top: 20px;margin-bottom: 10px;padding-right: 10px;">
+						Thanks for your order					</h6>
+					<!--[if mso]>
+					<table role="presentation" width="100%">
+						<tr>
+							<td style="line-height: 15px;background: #F8F8F8;padding: 10px 0px 0px 0px;border-radius: 4px;">
+							<![endif]-->
+								<div class="stats-subject-row dark-bg" style="font-size:0;line-height: 15px;text-align:left;background: #F8F8F8;padding: 10px 10px 0px 10px;border-radius: 4px;">
+									<!--[if mso]>
+									<table role="presentation" width="100%" style="text-align:center;">
+										<tr>
+										<![endif]-->
+													<!--[if mso]>
+		<td style="width:75px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column total" style="width:100%;max-width:75px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/2a3d7cd35f61.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 16px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="16" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					134				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:69px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column sent" style="width:100%;max-width:69px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/f564c233aee0.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					132				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:69px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column unsent" style="width:100%;max-width:69px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/4546a2dfb9a1.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					2				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:122px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column opened" style="width:100%;max-width:122px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/582ff2065c4e.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					75 <span style="color: #8C8F94;white-space: nowrap !important">(55%)</span>				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:122px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column clicked" style="width:100%;max-width:122px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/d3d965442a0d.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					14 <span style="color: #8C8F94;white-space: nowrap !important">(10%)</span>				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+												<!--[if mso]>
+										</tr>
+									</table>
+									<![endif]-->
+								</div>
+							<!--[if mso]>
+							</td>
+						</tr>
+					</table>
+					<![endif]-->
+									<h6 class="stats-subject-heading dark-white-color" style="margin: 0;padding: 0;color: #444444;word-wrap: normal;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;mso-line-height-rule: exactly;line-height: 18px;text-align: left;font-size: 15px;margin-top: 20px;margin-bottom: 10px;padding-right: 10px;">
+						Your order has shipped					</h6>
+					<!--[if mso]>
+					<table role="presentation" width="100%">
+						<tr>
+							<td style="line-height: 15px;background: #F8F8F8;padding: 10px 0px 0px 0px;border-radius: 4px;">
+							<![endif]-->
+								<div class="stats-subject-row dark-bg" style="font-size:0;line-height: 15px;text-align:left;background: #F8F8F8;padding: 10px 10px 0px 10px;border-radius: 4px;">
+									<!--[if mso]>
+									<table role="presentation" width="100%" style="text-align:center;">
+										<tr>
+										<![endif]-->
+													<!--[if mso]>
+		<td style="width:75px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column total" style="width:100%;max-width:75px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/2a3d7cd35f61.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 16px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="16" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					91				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:69px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column sent" style="width:100%;max-width:69px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/f564c233aee0.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					91				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:69px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column unsent" style="width:100%;max-width:69px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/4546a2dfb9a1.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					0				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:122px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column opened" style="width:100%;max-width:122px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/582ff2065c4e.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					56 <span style="color: #8C8F94;white-space: nowrap !important">(61%)</span>				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:122px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column clicked" style="width:100%;max-width:122px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/d3d965442a0d.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					12 <span style="color: #8C8F94;white-space: nowrap !important">(13%)</span>				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+												<!--[if mso]>
+										</tr>
+									</table>
+									<![endif]-->
+								</div>
+							<!--[if mso]>
+							</td>
+						</tr>
+					</table>
+					<![endif]-->
+									<h6 class="stats-subject-heading dark-white-color" style="margin: 0;padding: 0;color: #444444;word-wrap: normal;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;mso-line-height-rule: exactly;line-height: 18px;text-align: left;font-size: 15px;margin-top: 20px;margin-bottom: 10px;padding-right: 10px;">
+						This week at Pattie's Post: the autumn card collection					</h6>
+					<!--[if mso]>
+					<table role="presentation" width="100%">
+						<tr>
+							<td style="line-height: 15px;background: #F8F8F8;padding: 10px 0px 0px 0px;border-radius: 4px;">
+							<![endif]-->
+								<div class="stats-subject-row dark-bg" style="font-size:0;line-height: 15px;text-align:left;background: #F8F8F8;padding: 10px 10px 0px 10px;border-radius: 4px;">
+									<!--[if mso]>
+									<table role="presentation" width="100%" style="text-align:center;">
+										<tr>
+										<![endif]-->
+													<!--[if mso]>
+		<td style="width:75px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column total" style="width:100%;max-width:75px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/2a3d7cd35f61.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 16px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="16" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					89				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:69px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column sent" style="width:100%;max-width:69px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/f564c233aee0.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					88				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:69px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column unsent" style="width:100%;max-width:69px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/4546a2dfb9a1.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					1				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:122px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column opened" style="width:100%;max-width:122px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/582ff2065c4e.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					46 <span style="color: #8C8F94;white-space: nowrap !important">(51%)</span>				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:122px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column clicked" style="width:100%;max-width:122px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/d3d965442a0d.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					9 <span style="color: #8C8F94;white-space: nowrap !important">(10%)</span>				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+												<!--[if mso]>
+										</tr>
+									</table>
+									<![endif]-->
+								</div>
+							<!--[if mso]>
+							</td>
+						</tr>
+					</table>
+					<![endif]-->
+									<h6 class="stats-subject-heading dark-white-color" style="margin: 0;padding: 0;color: #444444;word-wrap: normal;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;mso-line-height-rule: exactly;line-height: 18px;text-align: left;font-size: 15px;margin-top: 20px;margin-bottom: 10px;padding-right: 10px;">
+						How was your order?					</h6>
+					<!--[if mso]>
+					<table role="presentation" width="100%">
+						<tr>
+							<td style="line-height: 15px;background: #F8F8F8;padding: 10px 0px 0px 0px;border-radius: 4px;">
+							<![endif]-->
+								<div class="stats-subject-row dark-bg" style="font-size:0;line-height: 15px;text-align:left;background: #F8F8F8;padding: 10px 10px 0px 10px;border-radius: 4px;">
+									<!--[if mso]>
+									<table role="presentation" width="100%" style="text-align:center;">
+										<tr>
+										<![endif]-->
+													<!--[if mso]>
+		<td style="width:75px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column total" style="width:100%;max-width:75px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/2a3d7cd35f61.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 16px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="16" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					40				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:69px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column sent" style="width:100%;max-width:69px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/f564c233aee0.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					39				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:69px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column unsent" style="width:100%;max-width:69px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/4546a2dfb9a1.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					1				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:122px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column opened" style="width:100%;max-width:122px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/582ff2065c4e.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					19 <span style="color: #8C8F94;white-space: nowrap !important">(47%)</span>				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+				<!--[if mso]>
+		<td style="width:122px;padding:0px 0px 10px 0px;" valign="top">
+		<![endif]-->
+			<div class="stats-subject-column clicked" style="width:100%;max-width:122px;display:inline-block;vertical-align:top;padding:0px 0px 10px 0px;font-size:13px;line-height:15px;">
+				<img src="../_shared/assets/d3d965442a0d.png" alt="" style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 15px;height: 15px;max-width: 100%;clear: both;vertical-align: bottom;" width="15" height="15">&nbsp;
+				<span class="stats-subject-column-value" style="line-height: 100%;white-space: nowrap !important; color: #50575E;">
+					3 <span style="color: #8C8F94;white-space: nowrap !important">(7%)</span>				</span>
+			</div>
+		<!--[if mso]>
+		</td>
+		<![endif]-->
+												<!--[if mso]>
+										</tr>
+									</table>
+									<![endif]-->
+								</div>
+							<!--[if mso]>
+							</td>
+						</tr>
+					</table>
+					<![endif]-->
+							</div>
+						</td>
+		</tr>
+		
+		<tr style="padding: 0;vertical-align: top;text-align: left;">
+			<td class="footer" align="center" valign="top" style="word-wrap: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;padding: 30px 0px;vertical-align: top;text-align: center;mso-table-lspace: 0pt;mso-table-rspace: 0pt;-ms-text-size-adjust: 100%;-webkit-text-size-adjust: 100%;color: #777777;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;margin: 0;mso-line-height-rule: exactly;line-height: 140%;font-size: 13px;border-collapse: collapse !important;">
+				This email was auto-generated and sent from <a href="http://sulliesbakery.com" style="color: #72777c;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 140%;text-decoration: underline">Pattie's Post</a>. Learn <a href="http://sulliesbakery.com/wp-admin/admin.php?page=wp-mail-smtp&amp;tab=misc" style="color: #72777c;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;font-weight: normal;padding: 0;margin: 0;text-align: left;line-height: 140%;text-decoration: underline">how to disable it</a>.			</td>
+		</tr>
+		</tbody></table>
+		</td>
+		</tr>
+		</tbody></table>
+		
+		
+		<script src="../../../_runtime/core.js"></script><script src="../_shared/nav.js"></script><script src="../_shared/interactivity.js"></script></body></html>

@@ -1,0 +1,132 @@
+{
+  "slug": "wizard-success",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wizard-leave",
+      "event": "click",
+      "selector": "div.wp-mail-smtp-setup-wizard-step-footer button.wp-mail-smtp-button",
+      "count": 2
+    },
+    {
+      "label": "wizard-uncaptured-action",
+      "event": "click",
+      "selector": ".wp-mail-smtp-button",
+      "count": 8
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": ".wp-mail-smtp-button",
+        "tag": "button",
+        "text": "Install",
+        "count": 10,
+        "hidden": false,
+        "wired": "wizard-uncaptured-action",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wp-mail-smtp-button-main",
+        "tag": "button",
+        "text": "Finish Setup",
+        "count": 1,
+        "hidden": false,
+        "wired": "wizard-leave",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wp-mail-smtp-plugin-wp-call-button",
+        "tag": "div",
+        "text": "WP Call Button Install",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-container",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-content",
+        "tag": "main",
+        "text": "Step 6 of 6 Congrats, you’ve successfully set up WP Mail SM…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-content-container",
+        "tag": "div",
+        "text": "Step 6 of 6 Congrats, you’ve successfully set up WP Mail SM…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-header",
+        "tag": "header",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-timeline-line-active",
+        "tag": "div",
+        "text": "",
+        "count": 5,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-timeline-step-active",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-configuration-success-header",
+        "tag": "div",
+        "text": "Step 6 of 6 Congrats, you’ve successfully set up WP Mail SM…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-content-header",
+        "tag": "div",
+        "text": "Congrats, you’ve successfully set up WP Mail SMTP! Here’s w…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-plugin-item-title-container",
+        "tag": "span",
+        "text": "All in One SEO",
+        "count": 7,
+        "hidden": false
+      }
+    ]
+  }
+}

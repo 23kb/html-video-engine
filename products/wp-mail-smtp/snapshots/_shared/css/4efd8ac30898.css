@@ -1,0 +1,134 @@
+
+			#wp-mail-smtp-settings-area {
+				visibility: hidden;
+				animation: loadWpMailSMTPSettingsNoJSView 0s 2s forwards;
+			}
+
+			@keyframes loadWpMailSMTPSettingsNoJSView{
+				to { visibility: visible; }
+			}
+
+			body {
+				background: #F1F1F1;
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+				margin: 0;
+			}
+
+			#wp-mail-smtp-settings-area .wp-mail-smtp-setup-wizard-header {
+				text-align: center;
+				border-top: 4px solid #E27730;
+			}
+
+			#wp-mail-smtp-settings-area .wp-mail-smtp-setup-wizard-header h1 {
+				margin: 0;
+			}
+
+			#wp-mail-smtp-settings-area .wp-mail-smtp-logo {
+				display: inline-block;
+				width: 320px;
+				margin-top: 10px;
+				padding: 0 10px;
+			}
+
+			#wp-mail-smtp-settings-area .wp-mail-smtp-logo img {
+				width: 100%;
+				height: 100%;
+			}
+
+			#wp-mail-smtp-settings-error-loading-area {
+				box-sizing: border-box;
+				max-width: 90%;
+				width: auto;
+				margin: 0 auto;
+				background: #fff;
+				border: 1px solid #DDDDDD;
+				border-radius: 6px;
+				-webkit-box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+				box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.05);
+				padding: 20px 30px;
+			}
+
+			#wp-mail-smtp-settings-area .wp-mail-smtp-error-footer {
+				text-align: center;
+				margin-top: 20px;
+				font-size: 14px;
+			}
+
+			#wp-mail-smtp-settings-area .wp-mail-smtp-error-footer a {
+				color: #999999;
+			}
+
+			#wp-mail-smtp-error-js h3 {
+				font-size: 24px;
+				font-weight: 500;
+				line-height: 23px;
+				margin: 0 0 15px;
+				color: #444444;
+			}
+
+			#wp-mail-smtp-error-js p.info,
+			#wp-mail-smtp-error-js ul.info {
+				color: #777777;
+				font-size: 16px;
+				line-height: 23px;
+				margin: 0 0 10px;
+			}
+
+			#wp-mail-smtp-error-js ul.info {
+				margin: -10px 0 20px;
+			}
+
+			#wp-mail-smtp-error-js a.button {
+				display: inline-block;
+				background-color: #E27730;
+				color: #ffffff;
+				line-height: 22px;
+				font-size: 16px;
+				padding: 14px 30px;
+				font-weight: 500;
+				border-radius: 3px;
+				border: none;
+				cursor: pointer;
+				text-decoration: none;
+				margin-top: 7px;
+			}
+
+			#wp-mail-smtp-error-js a.button:hover {
+				background-color: #c45e1b;
+			}
+
+			#wp-mail-smtp-error-js .medium-bold {
+				font-weight: 500;
+			}
+
+			#wp-mail-smtp-nojs-error-message > div {
+				border: 1px solid #DDDDDD;
+				border-left: 4px solid #DC3232;
+				color: #777777;
+				font-size: 14px;
+				padding: 18px 18px 18px 21px;
+				font-weight: 300;
+				text-align: left;
+			}
+
+			@media (min-width: 782px) {
+				#wp-mail-smtp-settings-area .wp-mail-smtp-logo {
+					margin-top: 50px;
+					padding: 0;
+				}
+
+				#wp-mail-smtp-settings-error-loading-area {
+					width: 650px;
+					margin-top: 40px;
+					padding: 52px 67px 49px;
+				}
+
+				#wp-mail-smtp-settings-area .wp-mail-smtp-error-footer {
+					margin-top: 50px;
+				}
+
+				#wp-mail-smtp-error-js p.info {
+					margin: 0 0 20px;
+				}
+			}
+		

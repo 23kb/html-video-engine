@@ -1,0 +1,544 @@
+{
+  "slug": "admin-dashboard-widget",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "dash-widget-chart-live",
+      "event": "wpms:ready",
+      "selector": "body.wp-admin.wp-core-ui",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false,
+        "wired": "dash-widget-chart-live",
+        "wiredEvent": "wpms:ready"
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "dash-widget-chart-live",
+        "wiredEvent": "wpms:ready"
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "dash-widget-chart-live",
+        "wiredEvent": "wpms:ready"
+      },
+      {
+        "sel": "#wp-mail-smtp-dash-widget-settings-button",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": false,
+        "wired": "dash-widget-chart-live",
+        "wiredEvent": "wpms:ready"
+      },
+      {
+        "sel": ".wp-mail-smtp-dash-widget-settings-menu-save",
+        "tag": "button",
+        "text": "Save Changes",
+        "count": 1,
+        "hidden": true,
+        "wired": "dash-widget-chart-live",
+        "wiredEvent": "wpms:ready"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#wp-mail-smtp-dash-widget-email-stats-table",
+        "tag": "table",
+        "text": "518 total 507 sent 11 failed",
+        "count": 1,
+        "hidden": false,
+        "wired": "dash-widget-chart-live",
+        "wiredEvent": "wpms:ready"
+      },
+      {
+        "sel": ".wp-mail-smtp-dash-widget-email-stats-table-cell-container",
+        "tag": "div",
+        "text": "518 total",
+        "count": 3,
+        "hidden": false,
+        "wired": "dash-widget-chart-live",
+        "wiredEvent": "wpms:ready"
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#dashboard_activity-hide",
+        "tag": "input",
+        "text": "dashboard_activity",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-hide",
+        "tag": "input",
+        "text": "dashboard_primary",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-hide",
+        "tag": "input",
+        "text": "dashboard_quick_press",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-hide",
+        "tag": "input",
+        "text": "dashboard_right_now",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-hide",
+        "tag": "input",
+        "text": "dashboard_site_health",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#duplicator_dashboard_widget-hide",
+        "tag": "input",
+        "text": "duplicator_dashboard_widget",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#meta-box-order-nonce",
+        "tag": "input",
+        "text": "c508b5112c",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "65b3cc3945",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_dashboard_widget-hide",
+        "tag": "input",
+        "text": "sugar_calendar_dashboard_widget",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp_mail_smtp_reports_widget_pro-hide",
+        "tag": "input",
+        "text": "wp_mail_smtp_reports_widget_pro",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp_welcome_panel-hide",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-dash-widget-email-type",
+        "tag": "select",
+        "text": "All Emails Sent Emails Failed Emails",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-mail-smtp-dash-widget-settings-color-smtp",
+        "tag": "input",
+        "text": "smtp",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-dash-widget-settings-color-wp",
+        "tag": "input",
+        "text": "wp",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-dash-widget-settings-style-bar",
+        "tag": "input",
+        "text": "bar",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-dash-widget-settings-style-line",
+        "tag": "input",
+        "text": "line",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-dash-widget-timespan",
+        "tag": "select",
+        "text": "Last 7 days Last 14 days Last 30 days",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpf_plugin_status-hide",
+        "tag": "input",
+        "text": "wpf_plugin_status",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_pro-hide",
+        "tag": "input",
+        "text": "wpforms_reports_widget_pro",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpvibe_dashboard-hide",
+        "tag": "input",
+        "text": "wpvibe_dashboard",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Screen elements Some screen elements can be shown or hidden…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#column3-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#column4-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard-widgets",
+        "tag": "div",
+        "text": "WP Mail SMTP Move up Move down Show or hide panel All Email…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard-widgets-wrap",
+        "tag": "div",
+        "text": "WP Mail SMTP Move up Move down Show or hide panel All Email…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "WP Mail SMTP Move up Move down Show or hide panel All Email…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-1",
+        "tag": "div",
+        "text": "WP Mail SMTP Move up Move down Show or hide panel All Email…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-2",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-3",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-4",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Screen elements Some screen elements can be shown or hidden…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#side-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wp-mail-smtp",
+        "tag": "li",
+        "text": "WP Mail SMTP Setup Checklist 67% complete Dashboard Setting…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp_mail_smtp_reports_widget_pro",
+        "tag": "div",
+        "text": "WP Mail SMTP Move up Move down Show or hide panel All Email…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp_mail_smtp_reports_widget_pro-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp_mail_smtp_reports_widget_pro-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp_mail_smtp_reports_widget_pro-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp_mail_smtp_reports_widget_pro-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp_mail_smtp_reports_widget_pro-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp_mail_smtp_reports_widget_pro-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp_mail_smtp_reports_widget_pro-title",
+        "tag": "h2",
+        "text": "WP Mail SMTP",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-mail-smtp-dash-widget-email-stats-block",
+        "tag": "div",
+        "text": "518 total 507 sent 11 failed",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-dash-widget-chart-block-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-dash-widget-settings-container",
+        "tag": "div",
+        "text": "Graph Style Bar Line Color Scheme WP Mail SMTP WordPress Sa…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-menu-parent-link",
+        "tag": "li",
+        "text": "Dashboard",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

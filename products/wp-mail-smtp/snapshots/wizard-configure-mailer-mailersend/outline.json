@@ -1,0 +1,173 @@
+{
+  "slug": "wizard-configure-mailer-mailersend",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wizard-next-step",
+      "event": "click",
+      "selector": "button.wp-mail-smtp-button.wp-mail-smtp-button-main",
+      "count": 1
+    },
+    {
+      "label": "wizard-previous-step",
+      "event": "click",
+      "selector": "div.wp-mail-smtp-setup-wizard-step-footer a",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": ".wp-mail-smtp-button",
+        "tag": "button",
+        "text": "Save and Continue",
+        "count": 1,
+        "hidden": false,
+        "wired": "wizard-next-step",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wp-mail-smtp-link",
+        "tag": "a",
+        "text": "Read how to set up MailerSend",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#input-api_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#input-from_email",
+        "tag": "input",
+        "text": "orders@example.com",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#input-from_email_force",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#input-from_name",
+        "tag": "input",
+        "text": "Pattie's Post",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#input-from_name_force",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#input-has_pro_plan",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-container",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-content",
+        "tag": "main",
+        "text": "Step 2 of 6 Configure Mailer Settings Below, we'll show you…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-content-container",
+        "tag": "div",
+        "text": "Step 2 of 6 Configure Mailer Settings Below, we'll show you…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-header",
+        "tag": "header",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-timeline-line-active",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-setup-wizard-timeline-step-active",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wp-mail-smtp-configure-mailer-header",
+        "tag": "div",
+        "text": "Step 2 of 6 Configure Mailer Settings Below, we'll show you…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-configure-mailer-header-container",
+        "tag": "div",
+        "text": "Step 2 of 6 Configure Mailer Settings Below, we'll show you…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-content-header",
+        "tag": "div",
+        "text": "Configure Mailer Settings Below, we'll show you all of the …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wp-mail-smtp-exit-link",
+        "tag": "p",
+        "text": "Close and exit the Setup Wizard",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}
