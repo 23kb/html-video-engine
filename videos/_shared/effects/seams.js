@@ -5,7 +5,7 @@
 // ≈ entry velocity at the cut instant, which is exactly what
 // `tools/seam-gate.js` measures.
 //
-// Source: docs/hyperframes-seam-grammar-rnd-2026-09-03.md §2.1–§2.5 (verbatim
+// Source: docs/hyperframes-seam-grammar-rnd-2026-09-03.md (local-only) §2.1–§2.5 (verbatim
 // constants, kept as the defaults below). Proven video-local in
 // the ad-vocabulary proving reel (5 cuts, seam-gate PASS with zero flags,
 // motion-audit tier A) and promoted here on Umair's proving-reel ruling

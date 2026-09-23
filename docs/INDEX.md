@@ -9,7 +9,7 @@ Refreshed 2026-08-22 after legacy retirement: engine/manifest-path docs removed;
 ## Authoring contracts
 
 - `storyboard-format-morph-chain-2026-05-10.md` — REQUIRED morph-chain storyboard section for editorial films. Authoring contract.
-- `ad-camera-gap-analysis-2026-09-03.md` — Why the first WPVibe ad stayed dull through five QC rounds: a parked camera (5 framings/44s). Doctrine split (cut vs re-frame), `## Camera plan` storyboard section, `makeStageCamera` for editorial DOM, composition-scan ad band, motion-audit parked-stage ceiling. What landed / what is deferred.
+- `ad-camera-gap-analysis-2026-09-03.md` (local-only) — Why the first WPVibe ad stayed dull through five QC rounds: a parked camera (5 framings/44s). Doctrine split (cut vs re-frame), `## Camera plan` storyboard section, `makeStageCamera` for editorial DOM, composition-scan ad band, motion-audit parked-stage ceiling. What landed / what is deferred.
 - `kacie-intro-outro-recording-spec.md` — Real Kacie intro/outro bookends (delivery shape since 2026-07-23) + pipeline notes.
 - `examples/` — **The first-write skeletons (INV-16):** `single-html-tutorial-skeleton.html` (tutorial: postIntro → chapters, no bookends, `BGM_PREVIEW`, sentinels, `// PAYOFF:` slot), `single-html-ad-skeleton.html` (pure-editorial / ad / mixed: playback + instrumentation contract), `single-html-postintro-skeleton.html` (postIntro block: named eases + primitives pre-wired). `choice-field-generate-choices-skeleton.md` is engine-era (historical API note).
 - `authoring-prompts/README.md` — Reusable fill-the-blanks briefs for new video sessions (`builder-frontend-split.md`; the README lists TODO kinds).
@@ -42,7 +42,7 @@ Craft docs below carry a **HISTORICAL API NOTE (2026-08-28)**: their code exampl
 - `gsap-rules.md` — L0 discipline canonical reference (deep version). Owned by `wpforms-gsap-rules` skill. (historical API note — its registered-timeline / frame-driver / kit.js sections are retired; the master-timeline contract in the skill replaces them)
 - `gsap-flip-patterns.md` — Flip patterns: morphs, reflows, real-UI clones. (historical API note — sandbox chapter paths are gone)
 - `effects-library.md` — Registered-effect API in `videos/_shared/effects.js` (highlightPulse, fieldBurst, labelReveal, popOutTilt, cardReflow). (historical API note — `kit.js awaitTween` in the examples is gone)
-- `hyperframes-seam-grammar-rnd-2026-09-03.md` — Seam-transition recipes R&D'd from HeyGen's claude-paper-launch film: inverse zoom-through, leftward cut-the-curve, pixel-matched cut, position-locked crossfade, cursor velocity-split handoff, humanized typing. Code-first; prove video-local, promote on second use.
+- `hyperframes-seam-grammar-rnd-2026-09-03.md` (local-only) — Seam-transition recipes R&D'd from HeyGen's claude-paper-launch film: inverse zoom-through, leftward cut-the-curve, pixel-matched cut, position-locked crossfade, cursor velocity-split handoff, humanized typing. Code-first; prove video-local, promote on second use.
 
 ## Marketing / editorial
 

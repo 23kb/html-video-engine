@@ -7,7 +7,7 @@
 //
 // Source: promoted from the ad-vocabulary proving reel, beat b4
 // (2026-09-03 — motion-audit tier A, seam-gate PASS). Roll ease is E1
-// `whipSettle` from docs/xai-voice-motion-rnd-2026-09-02.md ("The ease
+// `whipSettle` from docs/xai-voice-motion-rnd-2026-09-02.md (local-only) ("The ease
 // language"): instant launch, mile-long decel.
 // Vocabulary slot: stat — rolling digit columns
 //

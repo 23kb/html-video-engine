@@ -258,7 +258,7 @@ editorial-composition beat on the ad path; the hero + payoff on tutorials and sh
 ## References
 
 - `docs/storyboard-format-morph-chain-2026-05-10.md` — the section formats (morph chain, rules, seam ledger, shot list, **camera plan + ease voices**)
-- `docs/ad-camera-gap-analysis-2026-09-03.md` — why the camera plan exists; both failure poles
+- `docs/ad-camera-gap-analysis-2026-09-03.md` (local-only) — why the camera plan exists; both failure poles
 - `docs/rulebook.md` — §1 intake, §4 camera, §6 motion, §9 process; receipt keys
 - `wpforms-postintro` — Story Proof; `wpforms-primitives` — the library index; `videos/_shared/effects/README.md`
 - `docs/vertical-shorts.md` — portrait geometry; `docs/authoring-prompts/` — reusable briefs

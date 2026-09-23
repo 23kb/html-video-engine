@@ -56,7 +56,7 @@ The failure that earns a low score is a basic piece: one text effect, a couple f
 
 If you finish an ad and it used one effect and some fades, it is not done — go back to the vocabulary.
 
-Two R&D teardowns extend it: `docs/hyperframes-seam-grammar-rnd-2026-09-03.md` (seam recipes — **now PROMOTED and importable from `videos/_shared/effects/seams.js`**; the doc stays the rationale, the module is the code, so don't paste GSAP out of it) and `docs/xai-voice-motion-rnd-2026-09-02.md` (technique catalog T1–T12 for ad beats + the E1–E4 ease table, registered in `videos/_shared/effects/xai-eases.js`). Caveat: the zoom-through seam's `filter: blur` never sits over a live iframe (R6 — grade with veils; camera animates transform only).
+Two R&D teardowns extend it: `docs/hyperframes-seam-grammar-rnd-2026-09-03.md` (local-only) (seam recipes — **now PROMOTED and importable from `videos/_shared/effects/seams.js`**; the doc stays the rationale, the module is the code, so don't paste GSAP out of it) and `docs/xai-voice-motion-rnd-2026-09-02.md` (local-only) (technique catalog T1–T12 for ad beats + the E1–E4 ease table, registered in `videos/_shared/effects/xai-eases.js`). Caveat: the zoom-through seam's `filter: blur` never sits over a live iframe (R6 — grade with veils; camera animates transform only).
 
 ### 2. When the feature has real captured UI, SHOW THE REAL UI — never a mockup.
 
@@ -133,7 +133,7 @@ Umair still picks — this changes what he picks FROM, not who decides. Ideation
 - **Ad MIX doctrine (U4 — ad path adopts the measured profile):** music-forward; bed at program level; **NO sidechain ducking** — drop the arrangement under VO instead; shaped loudness arcs; endings = 0.6–1.7s fade to true silence or hard-out. Numbers: `tools/sfx/CONTEXT.md` "Measured sound bar". Tutorial/postIntro bed defaults stay 0.17/0.12 (U5).
 - **Storyboard-strip format** (persistent top strip of board thumbnails stepping per scene cut, film below): approved at 1920×1080 but **PARKED (U6) — build LAST; do not scope it into builds.**
 
-## Ad camera doctrine (2026-09-03 — `docs/ad-camera-gap-analysis-2026-09-03.md`)
+## Ad camera doctrine (2026-09-03 — `docs/ad-camera-gap-analysis-2026-09-03.md` (local-only))
 
 The first WPVibe ad went through five QC rounds — real Claude UI, real fragments, locale fixes, HD render — and still read as dull. Every change was about WHAT was on screen; nothing touched HOW it was framed: 5 framings in 44s, a 23.7s hold, camera scale 1.00–1.04. The v6 camera pass then over-corrected — 25 landings in 41s on a film whose UI never changes — and came back "making me dizzy" (2026-09-04). Both failures had the same root: the cadence was decided by a rule instead of by the storyboard. Five rules, all mandatory for the ad path:
 
@@ -262,7 +262,7 @@ Each mount returns `{ el, tweenInto(tl, opts), dispose() }`. See `videos/_shared
 
 ### Seams — use the recipes, don't hand-roll a cut
 
-`videos/_shared/effects/seams.js` carries the five named scene-cut recipes (verbatim constants from `docs/hyperframes-seam-grammar-rnd-2026-09-03.md`, measured PASS on the proving reel): `seamZoomThrough` (§2.1), `seamThrowLeft` + `parkThrowEntry`/`seamThrowEntry` (§2.4), `seamLockedCrossfade` (§2.2), `seamHardCut` (§2.3), `seamCursorVelocitySplit` (§2.5), plus `holdFinalFrame` (§1.2 — before every cut, always).
+`videos/_shared/effects/seams.js` carries the five named scene-cut recipes (verbatim constants from `docs/hyperframes-seam-grammar-rnd-2026-09-03.md` (local-only), measured PASS on the proving reel): `seamZoomThrough` (§2.1), `seamThrowLeft` + `parkThrowEntry`/`seamThrowEntry` (§2.4), `seamLockedCrossfade` (§2.2), `seamHardCut` (§2.3), `seamCursorVelocitySplit` (§2.5), plus `holdFinalFrame` (§1.2 — before every cut, always).
 
 These are **composers, not mounts**: `(tl, outEl, inEl, cut, opts)` on whole-scene wrappers. Three rules that decide which one you may use:
 

@@ -119,7 +119,7 @@ For pure-editorial / ad-style / marketing motion. Each `mountFoo({...})` returns
 
 **`mountStatCountUp` vs `mountOdometer`:** siblings, not modes. Count-up = white card, text node tweened by a numeric proxy, number ticks UP. Odometer = per-digit masked strips on a dark bed, number LANDS.
 
-**Seam grammar (`videos/_shared/effects/seams.js`)** — the five named scene-cut recipes, verbatim constants from `docs/hyperframes-seam-grammar-rnd-2026-09-03.md`, measured PASS on the proving reel. These are **composers, not mounts**: `(tl, outEl, inEl, cut, opts)` writing to the master at absolute `cut`, where `outEl`/`inEl` are whole-scene wrappers.
+**Seam grammar (`videos/_shared/effects/seams.js`)** — the five named scene-cut recipes, verbatim constants from `docs/hyperframes-seam-grammar-rnd-2026-09-03.md` (local-only), measured PASS on the proving reel. These are **composers, not mounts**: `(tl, outEl, inEl, cut, opts)` writing to the master at absolute `cut`, where `outEl`/`inEl` are whole-scene wrappers.
 
 | Cut you want | Recipe |
 |---|---|

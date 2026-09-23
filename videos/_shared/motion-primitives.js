@@ -206,7 +206,7 @@ export function cinematicFlight(camera, opts) {
  * matters, use this primitive.
  *
  * Source: an editorial motion spec (Anthropic Claude design-
- * tools virtual-board pattern), tools/ref-frames/motion-spec.md Ref 2.
+ * tools virtual-board pattern), tools/ref-frames/motion-spec.md (local-only) Ref 2.
  *
  * @param {HTMLElement} camera — the camera-transformed wrapper
  * @param {Object} opts
@@ -1003,7 +1003,7 @@ export function typeIntoIframeInput(input, text, opts = {}) {
  * viewer attention across multiple state labels (e.g. ZlyVs reference
  * "Thinking… / Filling field… / Checking formatting…").
  *
- * Source: tools/ref-frames/motion-spec.md Ref 3 status-pill spine + Phase 5g
+ * Source: tools/ref-frames/motion-spec.md (local-only) Ref 3 status-pill spine + Phase 5g
  * polish-vocabulary "narrate-and-move" pattern.
  *
  * @param {HTMLElement} pill
@@ -1054,7 +1054,7 @@ export function statusPillMorph(pill, texts, opts = {}) {
  * the sweep. Used for emphasizing key phrases (per ZlyVs Ref 3 "Replit
  * Slides" marker-sweep).
  *
- * Source: tools/ref-frames/motion-spec.md Ref 4 marker-sweep section.
+ * Source: tools/ref-frames/motion-spec.md (local-only) Ref 4 marker-sweep section.
  *
  * Requires the target element to be positioned (relative or absolute). The
  * primitive injects an absolutely-positioned overlay inside it.

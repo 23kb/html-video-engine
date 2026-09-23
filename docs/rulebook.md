@@ -110,7 +110,7 @@ Acceptance trio (2026-08-23): `mfe` form entries (tutorial) ·
 `ela` entries (editorial) · `senw` entries (shorts)
 
 First WPVibe ad (2026-09-03, five QC rounds, camera pass v6): `wva` —
-analysis `docs/ad-camera-gap-analysis-2026-09-03.md`
+analysis `docs/ad-camera-gap-analysis-2026-09-03.md` (local-only)
 
 Ad SFX ratification (2026-09-03, ear QC in context): `rav` the ad proving reel —
 ratified palette `tools/sfx/palette/` (manifest + README)
@@ -130,7 +130,7 @@ Tutorials 2026-09-04/05 (mined 2026-09-18): `gsa` Google Sheets addon ·
 `gcal` Google Calendar addon · `etf` extra text fields (one file, with its carved short)
 
 R&D teardowns (no film — receipts cite the doc's own § sections):
-`hfs` docs/hyperframes-seam-grammar-rnd-2026-09-03.md ·
+`hfs` docs/hyperframes-seam-grammar-rnd-2026-09-03.md (local-only) ·
 `trk3` Track 3 reference measurements
 
 Dashboard launch films (2026-09-15 → 09-17, mined 2026-09-18): `wdl` the After Effects build ·

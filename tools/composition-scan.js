@@ -586,7 +586,7 @@ function main() {
     if (plan.length) { reportPlanned(slug, band, plan, plannedDur, argv); return; }
     if (/tl\.addLabel\(/.test(masked)) {
       console.log('label-driven film with NO stage camera calls (cam.punch/macro/whip/pullBack/move) — every frame is the opening frame.');
-      console.log(`verdict (planned): 1 framing${band.undeclared ? '' : ` vs band ${band.min}–${band.max}`} → FAIL (a parked stage; see docs/ad-camera-gap-analysis-2026-09-03.md)`);
+      console.log(`verdict (planned): 1 framing${band.undeclared ? '' : ` vs band ${band.min}–${band.max}`} → FAIL (a parked stage; see docs/ad-camera-gap-analysis-2026-09-03.md (local-only))`);
       if (argv.includes('--report')) writeSection(slug, 'compositionScan', { mode: 'static', pass: false, compositions: 1, longest: plannedDur, longestAt: 0, band: { kind: band.kind, min: band.min, max: band.max, hold: band.hold }, duration: plannedDur });
       if (argv.includes('--gate')) process.exitCode = 1;
       return;

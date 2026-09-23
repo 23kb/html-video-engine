@@ -7,7 +7,7 @@
 //
 // Source: promoted from the ad-vocabulary proving reel, beat b2
 // (2026-09-03 — motion-audit tier A, seam-gate PASS). Technique lineage:
-// the checklist beat in docs/hyperframes-seam-grammar-rnd-2026-09-03.md §6
+// the checklist beat in docs/hyperframes-seam-grammar-rnd-2026-09-03.md (local-only) §6
 // (compose-ui.html) + the §3.2 same-hue highlight rule.
 // Vocabulary slot: agent — task queue ticking done
 //

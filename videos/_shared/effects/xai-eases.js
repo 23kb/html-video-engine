@@ -1,7 +1,7 @@
 // videos/_shared/effects/xai-eases.js
 //
 // AE-provenance ease vocabulary from the xAI voice-agent launch teardown.
-// Source: docs/xai-voice-motion-rnd-2026-09-02.md — "The ease language".
+// Source: docs/xai-voice-motion-rnd-2026-09-02.md (local-only) — "The ease language".
 // Nearly no keyframe in that film uses default easing: everything is speed-0
 // endpoints with wildly asymmetric influence. AE (speed 0) → CSS bezier
 // conversion: P1 = (outInf/100, 0), P2 = (1 − inInf/100, 1).

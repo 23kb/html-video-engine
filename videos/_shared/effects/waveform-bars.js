@@ -8,7 +8,7 @@
 //
 // Source: promoted from the ad-vocabulary proving reel, beat b6
 // (2026-09-03 — motion-audit tier A, seam-gate PASS). Constants T2 and T6
-// from docs/xai-voice-motion-rnd-2026-09-02.md (AE teardown).
+// from docs/xai-voice-motion-rnd-2026-09-02.md (local-only) (AE teardown).
 // Vocabulary slot: audio — seeded waveform + press pulse
 //
 // Determinism: amplitudes come from mulberry32(seed), never Math.random(); the

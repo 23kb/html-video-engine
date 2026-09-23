@@ -8,7 +8,7 @@
 // Source: promoted from the ad-vocabulary proving reel, beat b1
 // (2026-09-03 — motion-audit tier A, seam-gate PASS). Technique lineage:
 // xai T7 (chip hot-swap: content slides out, container morphs, fill flashes) in
-// docs/xai-voice-motion-rnd-2026-09-02.md; ease voices E1 `whipSettle` (in) and
+// docs/xai-voice-motion-rnd-2026-09-02.md (local-only); ease voices E1 `whipSettle` (in) and
 // E2 `heldSnap` (out / morph) from the same doc.
 // Vocabulary slot: text — phrase whips with an inline label swap
 //

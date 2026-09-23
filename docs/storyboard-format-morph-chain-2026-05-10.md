@@ -215,7 +215,7 @@ The camera follows the morph host. It does NOT cut to staged compositions. Camer
 
 This is the difference between editorial cinematic motion and slide-projector editorial. The former camera observes one host; the latter cuts between staged compositions.
 
-**"Follow" was read as "park."** The first WPVibe ad, v5, obeyed this section to the letter and shipped 5 framings in 44s, one 23.7s hold on a two-panel layout, camera scale 1.00–1.04 — Umair: "the animations weren't there, motion design non-existent" (`docs/ad-camera-gap-analysis-2026-09-03.md`). Two different things had one name:
+**"Follow" was read as "park."** The first WPVibe ad, v5, obeyed this section to the letter and shipped 5 framings in 44s, one 23.7s hold on a two-panel layout, camera scale 1.00–1.04 — Umair: "the animations weren't there, motion design non-existent" (`docs/ad-camera-gap-analysis-2026-09-03.md` (local-only)). Two different things had one name:
 
 - **Composition cut** — a NEW subject in a NEW layout with no carrier. The slide-projector failure. Still banned.
 - **Re-frame** — the SAME host seen from a new distance: punch to the control being used, macro on the payoff, whip to the reply, pull back to the establishing pose. The reference films (Shipper, Codex) do this every 1–2s. **Required.**

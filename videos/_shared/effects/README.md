@@ -103,7 +103,7 @@ sub-1s power2 whip was rejected in review.
 
 A seam composes ACROSS two beats that already exist, so there is nothing to mount: no `el`, no `tweenInto`, no `dispose`. These take `(tl, outEl, inEl, cut)` and write to the master timeline at absolute position `cut`. `outEl` / `inEl` are whole-scene wrappers — the master owns seams, scenes own beats, and the master never touches anything inside a scene.
 
-**`seams.js`** — the five recipes from `docs/hyperframes-seam-grammar-rnd-2026-09-03.md` §2.1–§2.5 (verbatim constants as defaults), proven on the ad proving reel (5 cuts, `seam-gate` PASS with zero flags):
+**`seams.js`** — the five recipes from `docs/hyperframes-seam-grammar-rnd-2026-09-03.md` (local-only) §2.1–§2.5 (verbatim constants as defaults), proven on the ad proving reel (5 cuts, `seam-gate` PASS with zero flags):
 
 | Export | Recipe | When to use |
 |---|---|---|
@@ -128,7 +128,7 @@ Two structural rules make all five cheap (§1): **shared ground** — every scen
 
 | Module | Intent | When to use |
 |---|---|---|
-| `xai-eases.js` | AE-provenance ease vocabulary (xAI voice-agent teardown): `registerXaiEases()` registers `whipSettle` (E1 — instant launch, mile-long decel) + `heldSnap` (E2 — hold, whip, dead stop); documents E3 = `power2.inOut` and E4 ≈ power3.in–expo.in in one place | Text slides, list rolls, chip swaps (E1); card rises (E2). Full table + durations: `docs/xai-voice-motion-rnd-2026-09-02.md` ("The ease language"). |
+| `xai-eases.js` | AE-provenance ease vocabulary (xAI voice-agent teardown): `registerXaiEases()` registers `whipSettle` (E1 — instant launch, mile-long decel) + `heldSnap` (E2 — hold, whip, dead stop); documents E3 = `power2.inOut` and E4 ≈ power3.in–expo.in in one place | Text slides, list rolls, chip swaps (E1); card rises (E2). Full table + durations: `docs/xai-voice-motion-rnd-2026-09-02.md` (local-only) ("The ease language"). |
 
 Not a mount — no DOM, no `tweenInto`, and not exported from `index.js`. Import
 directly and call once after `CustomEase.min.js` loads (no-ops with a warn if
