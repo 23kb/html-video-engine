@@ -57,16 +57,16 @@ Constraints (standing — repeat in case CLAUDE.md isn't in context):
 - Single-HTML path (NOT chapter/manifest legacy).
 - No edits to protected core (videos/_shared/*, products/wpforms/snapshots/**, validators/smoke tools, capture/capture.js). runtime/ and engine/ no longer exist (retired 2026-08-22).
 - No visual QC from you — I QC.
-- Storyboard gate first if narration is non-trivial (per wpforms-video skill).
+- Storyboard gate first if narration is non-trivial (per film-tutorial skill).
 - Use motion-primitives Cursor for all cursor work, gsap.timeline for sequencing.
 - Mirror happens automatically — only call split.setFieldState(...) for
   effects you want WITHOUT a corresponding builder click (e.g. show a state
   before the cursor demonstrates it).
 
 Required reading before authoring:
-- .claude/skills/wpforms-video (Skill tool, not file-read)
-- .claude/skills/wpforms-primitives (file-read OK)
-- .claude/skills/wpforms-gsap-rules (file-read OK)
+- .claude/skills/film-tutorial (Skill tool, not file-read)
+- .claude/skills/film-primitives (file-read OK)
+- .claude/skills/film-gsap-rules (file-read OK)
 
 Deliverable:
 - videos/{video-slug}/index.html

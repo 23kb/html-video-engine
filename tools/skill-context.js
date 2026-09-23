@@ -59,35 +59,35 @@ const PATHS = [
     name: 'Tutorial',
     when: 'Real product UI, narration-driven, viewer learns a workflow',
     architecture: 'Engine + manifest.json + chapters/*.js + narration mp3s, surface: iframe (default)',
-    primarySkill: 'wpforms-video',
-    auditGate: 'wpforms-motion-audit on any postIntro/cinematic beat'
+    primarySkill: 'film-tutorial',
+    auditGate: 'film-motion-audit on any postIntro/cinematic beat'
   },
   {
     name: 'Pure editorial / ad-style',
     when: 'No real product UI, motion-heavy, ad/announcement piece',
     architecture: 'Single self-contained HTML (videos/<slug>/index.html), vendored GSAP, NO runtime/player.js, clone docs/examples/single-html-ad-skeleton.html',
-    primarySkill: 'wpforms-marketing',
-    auditGate: 'wpforms-motion-audit (mandatory) + morph-chain storyboard section (docs/storyboard-format-morph-chain-2026-05-10.md)'
+    primarySkill: 'film-marketing',
+    auditGate: 'film-motion-audit (mandatory) + morph-chain storyboard section (docs/storyboard-format-morph-chain-2026-05-10.md)'
   },
   {
     name: 'Mixed',
     when: 'Editorial chrome composited over real product UI',
     architecture: 'Engine + chapters with surface: mixed',
-    primarySkill: 'wpforms-marketing',
-    auditGate: 'wpforms-motion-audit (mandatory)'
+    primarySkill: 'film-marketing',
+    auditGate: 'film-motion-audit (mandatory)'
   },
 ];
 
 const SKILLS = [
-  { name: 'wpforms-video',       path: '.claude/skills/wpforms-video/SKILL.md',       use: 'Tutorial authoring, intake, storyboard gate, default authoring mode, legacy chapter shape, modes, production truth.' },
-  { name: 'wpforms-postintro',   path: '.claude/skills/wpforms-postintro/SKILL.md',   use: 'PostIntro design + multi-animation rule + canonical references + snapshot handoff + morph-chain integration.' },
-  { name: 'wpforms-gsap-rules',  path: '.claude/skills/wpforms-gsap-rules/SKILL.md',  use: 'GSAP L0 discipline + camera-decomposition + registered timelines + pausableRaf + Flip + effects library + designer principles (Emil/Krehel/Jhey).' },
-  { name: 'wpforms-marketing',   path: '.claude/skills/wpforms-marketing/SKILL.md',   use: 'Editorial / ad-style surfaces (surface: editorial/mixed) + brand canonical + blocks + atmospheric kit + text-kit.' },
+  { name: 'film-tutorial',       path: '.claude/skills/film-tutorial/SKILL.md',       use: 'Tutorial authoring, intake, storyboard gate, default authoring mode, legacy chapter shape, modes, production truth.' },
+  { name: 'film-postintro',   path: '.claude/skills/film-postintro/SKILL.md',   use: 'PostIntro design + multi-animation rule + canonical references + snapshot handoff + morph-chain integration.' },
+  { name: 'film-gsap-rules',  path: '.claude/skills/film-gsap-rules/SKILL.md',  use: 'GSAP L0 discipline + camera-decomposition + registered timelines + pausableRaf + Flip + effects library + designer principles (Emil/Krehel/Jhey).' },
+  { name: 'film-marketing',   path: '.claude/skills/film-marketing/SKILL.md',   use: 'Editorial / ad-style surfaces (surface: editorial/mixed) + brand canonical + blocks + atmospheric kit + text-kit.' },
   
-  { name: 'wpforms-primitives', path: '.claude/skills/wpforms-primitives/SKILL.md', use: 'Lookup index for videos/_shared/motion-primitives.js (cameras / Cursor / typing / field-reveal / brand-anchor / exit) and videos/_shared/wpforms-interactions.js (Wave 1 builder/admin + Wave 2 Batch A notifications/CL/smart-tags). Includes the library-as-reference philosophy + 3-test promotion rule. Reach here BEFORE writing GSAP cursor / camera / interaction code AND before adding any new library method.' },
-  { name: 'wpforms-motion-audit', path: '.claude/skills/wpforms-motion-audit/SKILL.md', use: 'Score animations and camera moves S-F tier with hard-rule calibration. MUST run before any postIntro/cinematic/editorial handoff.' },
-  { name: 'wpforms-video-polish', path: '.claude/skills/wpforms-video-polish/SKILL.md', use: 'Polish an existing already-shipped video without breaking it. Backup-first → Plan agent analysis → vet against determinism/protected-core/RED-flag rules → surgical edits in batches of 5–10 → static verification only (no visual QC) → motion-audit if cinematic beats touched. Includes 8 canonical polish patterns (repeated expo.out, settle-into-rest, unused CustomEase, one-shot-pulse-with-tail, display-serif letter-spacing, frozen-camera handoff, redundant interactive cycle, block-centred zoom gutter). NOT for new authoring (use wpforms-video / wpforms-marketing), NOT for debug.' },
-  { name: 'video-qc', path: '.claude/skills/video-qc/SKILL.md', use: 'The cheap QC/review/iterate loop when the user reviews a built video and reports fixes scene-by-scene. Bakes the cost retro (edit only what was reported, ship-first-then-review, batch edits, reuse selectors, terse) + workflow contracts (read outline.md FIRST, state-change hierarchy drive>puppet>swap, preserve the literal verb G1, state the target back with evidence G2, surgical edits G3, no visual/audio QC). NOT first-time authoring, NOT proactive polish (wpforms-video-polish), NOT debug.' },
+  { name: 'film-primitives', path: '.claude/skills/film-primitives/SKILL.md', use: 'Lookup index for videos/_shared/motion-primitives.js (cameras / Cursor / typing / field-reveal / brand-anchor / exit) and videos/_shared/wpforms-interactions.js (Wave 1 builder/admin + Wave 2 Batch A notifications/CL/smart-tags). Includes the library-as-reference philosophy + 3-test promotion rule. Reach here BEFORE writing GSAP cursor / camera / interaction code AND before adding any new library method.' },
+  { name: 'film-motion-audit', path: '.claude/skills/film-motion-audit/SKILL.md', use: 'Score animations and camera moves S-F tier with hard-rule calibration. MUST run before any postIntro/cinematic/editorial handoff.' },
+  { name: 'film-polish', path: '.claude/skills/film-polish/SKILL.md', use: 'Polish an existing already-shipped video without breaking it. Backup-first → Plan agent analysis → vet against determinism/protected-core/RED-flag rules → surgical edits in batches of 5–10 → static verification only (no visual QC) → motion-audit if cinematic beats touched. Includes 8 canonical polish patterns (repeated expo.out, settle-into-rest, unused CustomEase, one-shot-pulse-with-tail, display-serif letter-spacing, frozen-camera handoff, redundant interactive cycle, block-centred zoom gutter). NOT for new authoring (use film-tutorial / film-marketing), NOT for debug.' },
+  { name: 'video-qc', path: '.claude/skills/video-qc/SKILL.md', use: 'The cheap QC/review/iterate loop when the user reviews a built video and reports fixes scene-by-scene. Bakes the cost retro (edit only what was reported, ship-first-then-review, batch edits, reuse selectors, terse) + workflow contracts (read outline.md FIRST, state-change hierarchy drive>puppet>swap, preserve the literal verb G1, state the target back with evidence G2, surgical edits G3, no visual/audio QC). NOT first-time authoring, NOT proactive polish (film-polish), NOT debug.' },
 ];
 
 const LIBRARIES = [
@@ -109,12 +109,12 @@ const LIBRARIES = [
   },
   {
     path: 'products/wpforms/film/wpforms-interactions.js',
-    use: 'WPFormsInteractions extends UIInteractions. Films import it (with IframeManager, Cursor, clickRipple) through the videos/_shared/wpforms-interactions.js shim. Standard WPForms interactions. Wave 1 (builder/admin): navAddNewForm, selectTemplate, navWPFormsSidebarMenu, openFormInList, dragFieldToForm, openFieldOptions, navBuilderSidebar, openSettingsTab, plus sub-interactions setFieldLabel/setNameFormat/toggleEmailConfirmation. Wave 2 Batch A (notifications + CL): addNotification, insertSmartTag (+openSmartTagPicker/closeSmartTagPicker), selectFromDropdown (generic faux-native-select), addConditionalLogicRule, duplicateNotificationBlock, plus notification setters setNotificationSendTo/Subject/Message. Library scope: ~6 of 15 Wave 2 methods earned status by ≥3-doc threshold — prefer inline DOM for one-off clicks (philosophy in wpforms-primitives skill). QC at videos/_qc-interactions/. Compose these for tutorial chapters.',
+    use: 'WPFormsInteractions extends UIInteractions. Films import it (with IframeManager, Cursor, clickRipple) through the videos/_shared/wpforms-interactions.js shim. Standard WPForms interactions. Wave 1 (builder/admin): navAddNewForm, selectTemplate, navWPFormsSidebarMenu, openFormInList, dragFieldToForm, openFieldOptions, navBuilderSidebar, openSettingsTab, plus sub-interactions setFieldLabel/setNameFormat/toggleEmailConfirmation. Wave 2 Batch A (notifications + CL): addNotification, insertSmartTag (+openSmartTagPicker/closeSmartTagPicker), selectFromDropdown (generic faux-native-select), addConditionalLogicRule, duplicateNotificationBlock, plus notification setters setNotificationSendTo/Subject/Message. Library scope: ~6 of 15 Wave 2 methods earned status by ≥3-doc threshold — prefer inline DOM for one-off clicks (philosophy in film-primitives skill). QC at videos/_qc-interactions/. Compose these for tutorial chapters.',
   },
 ];
 
 const AUTO_TRIGGER_EXTERNAL_SKILLS = [
-  { name: 'design-motion-principles', source: 'kylezantos (installed at .agents/skills/)', use: 'Designer-grade audit by Emil Kowalski / Jakub Krehel / Jhey Tompkins principles. Complements wpforms-motion-audit (which scores; this critiques per designer philosophy).' },
+  { name: 'design-motion-principles', source: 'kylezantos (installed at .agents/skills/)', use: 'Designer-grade audit by Emil Kowalski / Jakub Krehel / Jhey Tompkins principles. Complements film-motion-audit (which scores; this critiques per designer philosophy).' },
 ];
 
 const OPERATOR_MANUALS = [
@@ -132,9 +132,9 @@ const KEY_DOCS = [
 
 const SHARED_KITS = [
   { path: 'videos/_shared/effects/',       use: 'Named effects: mountTextStackFromRight, mountCardsSpreadFan, mountEndCard, seams, odometer… See videos/_shared/effects/README.md.' },
-  { path: 'videos/_shared/atmospheric.js', use: 'Marketing-mode helpers: grain, sweep, parallax pair, scale push, dark backdrop. See wpforms-marketing.' },
-  { path: 'videos/_shared/blocks/',        use: 'Editorial blocks: code-card, mac-window, phone-frame, pill, arrow, route-line, terminal. See wpforms-marketing.' },
-  { path: 'videos/_shared/text-kit.js',    use: '24 Pixel-Point-style text-reveal presets. See wpforms-marketing.' },
+  { path: 'videos/_shared/atmospheric.js', use: 'Marketing-mode helpers: grain, sweep, parallax pair, scale push, dark backdrop. See film-marketing.' },
+  { path: 'videos/_shared/blocks/',        use: 'Editorial blocks: code-card, mac-window, phone-frame, pill, arrow, route-line, terminal. See film-marketing.' },
+  { path: 'videos/_shared/text-kit.js',    use: '24 Pixel-Point-style text-reveal presets. See film-marketing.' },
   { path: 'videos/_shared/lottie-kit.js',  use: 'Lottie editorial bumpers, stings, badges.' },
   { path: 'videos/_shared/three-kit.js',   use: 'Three.js scene helpers (loaded separately from kit.js).' },
 ];

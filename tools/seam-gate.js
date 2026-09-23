@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // tools/seam-gate.js — measure exit/entry velocity (px/s) at every cut of a
 // single-HTML film. Enforcement tooling for the transitions boundary contract
-// (wpforms-marketing skill, "Snapshot transitions" — causality · velocity · direction):
+// (film-marketing skill, "Snapshot transitions" — causality · velocity · direction):
 // exits should still be moving, entries should already be in flight, and the
 // two speeds should be within the same order of magnitude.
 // Adopted from the workflow review: docs/video-system-improvements-2026-08-06.md S2

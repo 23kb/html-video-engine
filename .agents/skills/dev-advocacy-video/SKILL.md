@@ -1,6 +1,6 @@
 ---
 name: dev-advocacy-video
-description: "Rock-level production line for Umair's Dev Advocacy rock (Rock 4): DECIDES which tutorial video to make from the ranked topic backlog, then drives it end-to-end — doc research, authoring via wpforms-video (its gates apply), review via video-qc, headless render, ship to Kacie, embed in the doc, write back to the wiki (log + scorecard + in-flight state). Also owns the weekly shape of 1 long-form + 2 YouTube/Facebook Shorts, where the shorts are CARVED out of that week's long-form (never built independently) and rendered 9:16 vertical. Use when Umair says 'continue on dev advocacy rock', 'dev advocacy', 'video day', 'next video', 'what video should I make', 'rock 4', 'shorts', 'make a short', 'vertical video', '9:16', or resumes video production. NOT the authoring skill itself (that's wpforms-video), NOT for marketing/launch films (wpforms-marketing), NOT for polish passes on shipped videos (wpforms-video-polish)."
+description: "Rock-level production line for Umair's Dev Advocacy rock (Rock 4): DECIDES which tutorial video to make from the ranked topic backlog, then drives it end-to-end — doc research, authoring via film-tutorial (its gates apply), review via video-qc, headless render, ship to Kacie, embed in the doc, write back to the wiki (log + scorecard + in-flight state). Also owns the weekly shape of 1 long-form + 2 YouTube/Facebook Shorts, where the shorts are CARVED out of that week's long-form (never built independently) and rendered 9:16 vertical. Use when Umair says 'continue on dev advocacy rock', 'dev advocacy', 'video day', 'next video', 'what video should I make', 'rock 4', 'shorts', 'make a short', 'vertical video', '9:16', or resumes video production. NOT the authoring skill itself (that's film-tutorial), NOT for marketing/launch films (film-marketing), NOT for polish passes on shipped videos (film-polish)."
 ---
 
 # Dev Advocacy Video — the Rock 4 production line
@@ -9,7 +9,7 @@ The rock (Q3 2026): "2 x educational / short product video aimed at developers a
 
 **Weekly shape (expanded 2026-08, David approved): 1 long-form tutorial + 2 shorts.** The two shorts are **carved out of that week's long-form** — same snapshots, same product truth, same build session. Three independent builds a week is not survivable; one tutorial plus two 45-second slices of its own UI is. See the Shorts branch below.
 
-This skill is the WRAPPER. Authoring belongs to `wpforms-video` (tutorial path), review to `video-qc`, postIntro to `wpforms-postintro`. This skill decides WHAT to build, adds the render/ship/logging tail those skills stop short of, and keeps the rock's state in the wiki.
+This skill is the WRAPPER. Authoring belongs to `film-tutorial` (tutorial path), review to `video-qc`, postIntro to `film-postintro`. This skill decides WHAT to build, adds the render/ship/logging tail those skills stop short of, and keeps the rock's state in the wiki.
 
 ## Wiki state (absolute paths — sessions run in THIS repo, state lives in the wiki)
 
@@ -25,12 +25,12 @@ Rock videos read like tutorials, not films. Launch films are precedents for REND
 
 - 🛑 **NO intro card, NO outro/sign-off card — the film STARTS at the postIntro** (Umair ruling 2026-08-28, receipt `webhooks` 8: *"for tutorials, we dont need intros and outros. Kacie will make those. Our videos should start from postIntro."*). This is the delivery architecture ruled 2026-05-19 finally applied: Kacie records the real bookends and `tools/stitch.js` concatenates them around the HTML body. Every tutorial had been building duplicates the pipeline replaces (`introCard`/`signoff` ×25 in four tutorials alike). Consequences: the skeleton drops both cards; `intro` and `outro`/`close` narration clips are no longer generated for tutorials (the `.txt` files, if written, are Kacie's reading scripts); **the doc-URL duty moves to Kacie's outro — RESOLVED 2026-08-28, see below.** Shorts are UNAFFECTED (they keep the Sullie sting + end card, charter 2026-08-13).
 - **Shape:** postIntro → numbered step-by-step walkthrough of the REAL UI in the order a user would actually click → **the payoff**: the LAST content beat shows the outcome on a real frontend surface (a `frontend-*` snapshot), not the Save button (rulebook §1; `geo` 6, `ee`, `lf` 8). Where the outcome lives outside the product (webhooks-class) the storyboard declares it explicitly. Tag the beat `// PAYOFF:` in the film — the same "ONE payoff frame that proves it" rule the shorts carve already enforces. No self-authored bookends.
-- **The UI is the star.** Cursor, clicks, typing, panel focus, zoom-to-direct-attention. Motion exists to guide the eye, never to perform. No editorial/ad-style beats, no kinetic typography, no atmospheric sequences — that's the `wpforms-marketing` path, not this rock.
+- **The UI is the star.** Cursor, clicks, typing, panel focus, zoom-to-direct-attention. Motion exists to guide the eye, never to perform. No editorial/ad-style beats, no kinetic typography, no atmospheric sequences — that's the `film-marketing` path, not this rock.
 - **Narration is instructional and doc-adjacent** ("Click Save. Next, open..."), synced beat-for-beat to the on-screen action. WPForms style-guide voice: conversational, 3rd-grade reading level — **blog-post voice, not robot-doc voice** (Umair ruling 2026-07-22). Pace the read with punctuation (dashes, ellipses, sentence breaks) and `[tone]` tags at the phrase boundaries the motion needs — the default `eleven_v3` model IGNORES `<break>` SSML (see Narration voice below). The video is a doc you can watch — a viewer should be able to DO the steps along with it.
-- **PostIntro is a MUST for rock tutorials** (Umair overruled the old "default: skip" 2026-07-22). Build it to the full multi-animation rule via `wpforms-postintro`; the CONCEPT still gets ruled at the storyboard gate — mandatory presence, negotiable content.
+- **PostIntro is a MUST for rock tutorials** (Umair overruled the old "default: skip" 2026-07-22). Build it to the full multi-animation rule via `film-postintro`; the CONCEPT still gets ruled at the storyboard gate — mandatory presence, negotiable content.
 - **Connect/OAuth flows are IN scope** for addon tutorials: if the doc walks through connecting an account, the video shows it — real sign-in state + a frozen real OAuth page (`tools/capture-external.js`), never fabricated. Scoping OAuth out caused a chapter-3 rework on one addon tutorial.
 - **Chapter headings live in a top-of-stage pill**, never centered over the product UI.
-- **Product UI fills the frame** — mac body ≈ 90% stage width (the skeleton's 1720×868 outer mounts the INHERITED 1380×668 capture geometry at ×1.246377; capture geometry itself is decided per capture WITH Umair — 668 was never agreed as a standard, see `wpforms-video`). A 71%-width frame read as "too small" at first QC.
+- **Product UI fills the frame** — mac body ≈ 90% stage width (the skeleton's 1720×868 outer mounts the INHERITED 1380×668 capture geometry at ×1.246377; capture geometry itself is decided per capture WITH Umair — 668 was never agreed as a standard, see `film-tutorial`). A 71%-width frame read as "too small" at first QC.
 - ✅ **RESOLVED 2026-08-28 — the doc URL is KACIE'S CALL.** It moves with the outro to her recording; we neither author an outro card nor place the URL on-screen ourselves. Do not re-open this. ~~Outro card carries the doc's FULL URL as on-screen text~~ (e.g. `https://wpforms.com/docs/entry-automation-addon/`) — the doc is the distribution target.
 
 ## Narration voice — ElevenLabs + Kacie's voice ID (SHIPPED 2026-07-22)
@@ -108,9 +108,9 @@ Two more from the same rejection:
    contracts), snapshot plan, product-truth rulings, and a **seam ledger** — one row
    per cut (exit vector | entry vector | carrier | technique; a short has 2-4 cuts,
    so this is a 3-row table). A cut with no nameable carrier or causality gets fixed
-   at the beat level before build — see *Snapshot transitions* in `wpforms-marketing`.
+   at the beat level before build — see *Snapshot transitions* in `film-marketing`.
    **Plus a `## Camera plan`** (ruled 2026-09-04 — the storyboarding pass is FULL
-   CREATIVE and is owned by `wpforms-storyboard`; invoke it for the storyboard step and
+   CREATIVE and is owned by `film-storyboard`; invoke it for the storyboard step and
    build from its file): the storyboard DECIDES this short's camera, with reasons, and writes
    `Cadence:` (seconds per landing + why — a short whose UI stays on one panel moves
    only on story turns; one that hops between surfaces moves densely), `Max hold:`,
@@ -141,7 +141,7 @@ Two more from the same rejection:
    traveling to the next control, the toggle's effect still settling, a highlight still
    sweeping). True stillness is allowed only as a **reading hold** — the viewer must
    read a panel to follow along — and is capped at ~1.5-2s per hold. The D1 recipe
-   ("How to hold without idling") is in `wpforms-marketing`.
+   ("How to hold without idling") is in `film-marketing`.
 4. Narration → `node tts/generate.js --video <slug> --engine elevenlabs` →
    `node tools/measure-narration.js <slug>` → paste DUR. Model resolves to
    `eleven_v3` (tool default since fix-round C9; the stale `.env` v2 pin was
@@ -172,7 +172,7 @@ pane instead; **never call `camReset()`** — zoom 1 is bars by definition.
 
 **Shorts skip:** Kacie bookends and 4K. They KEEP the animated Sullie sting + end card,
 BGM + SFX (charter 2026-08-13); the postIntro is optional by ruling (above).
-`wpforms-motion-audit` is mandatory — the bookends are editorial beats (CLAUDE.md path table).
+`film-motion-audit` is mandatory — the bookends are editorial beats (CLAUDE.md path table).
 
 ## Pipeline
 
@@ -194,7 +194,7 @@ Then, for a long-form:
 3. State the pick with its numbers (sessions / revenue / video-on-doc) and the one-sentence reason. Confirm before spending time. If Umair names a topic, skip the ceremony.
 
 ### 2. Doc research → angle note (~15 min)
-Fetch the live doc (curl, not WebFetch). Reduce to ONE teachable promise — not the whole doc. Angle note: promise, 3-5 beats, target runtime (1-3 min; "short product video" is the lane), UI states each beat needs. This note is the intake for `wpforms-video`.
+Fetch the live doc (curl, not WebFetch). Reduce to ONE teachable promise — not the whole doc. Angle note: promise, 3-5 beats, target runtime (1-3 min; "short product video" is the lane), UI states each beat needs. This note is the intake for `film-tutorial`.
 
 Audience check: does it teach a developer or advanced user? If it drifted general-audience, flag it (Tier C needs David's OK).
 
@@ -202,9 +202,9 @@ Audience check: does it teach a developer or advanced user? If it drifted genera
 
 **Diverge before the gate (added 2026-09-02):** the promise is doc-derived, but the HOOK (and a short's problem sentence) goes to Umair as options — 3–5 distinct directions (seed-string trick: random alphanumeric strings, one creative direction interpreted from each), at least one deliberately ambitious beside the safe pick. Films get scratched on idea, not execution (`cad` 9 / `scs` 9 / `sfc` 5); divergence costs one message here vs a rebuild later. Ideation-only — post-approval the angle is a literal contract. Source: Anshu Chimala (Lenny's Newsletter).
 
-### 3. Author — INVOKE `wpforms-video` (its rules govern)
+### 3. Author — INVOKE `film-tutorial` (its rules govern)
 Hand over the angle note + the Tutorial format contract above. That skill owns: snapshot inventory (`tools/list-snapshots.js`), capture (real UI only, local WP — **ask which local site if not stated**; needs WPForms Pro + target addon active), the 🛑 storyboard approval gate, single-HTML authoring (skeleton clone → beats on the master timeline), narration (draft voice per Narration section — Voicebox for drafts, confirm running at `http://127.0.0.1:17493`; Kacie voice ID for finals), validation, review URL.
-- PostIntro: REQUIRED per the format contract (full multi-animation rule via `wpforms-postintro`); the concept gets ruled at the storyboard gate.
+- PostIntro: REQUIRED per the format contract (full multi-animation rule via `film-postintro`); the concept gets ruled at the storyboard gate.
 
 ### 4. Review loop — per `video-qc`
 Umair owns all visual/audio judgment. Minimal correct edits, review URLs back, wait. No self-QC theater.
@@ -245,4 +245,4 @@ Real Kacie on camera opens and closes every shipped tutorial; body stays HTML + 
 - Pausing mid-video: write slug + stage + next action to `ideas.md` "In flight" before the session ends.
 - Tool development never happens inside a video slot. Gaps (4K verification, audio one-command mux, avatar phases) go to the rock file's tool-work queue.
 - **The 9:16 vertical path already exists** (built 2026-08-05, outside a video slot): `tools/stage-size.js` + portrait skeleton + `docs/vertical-shorts.md`. Don't rebuild it, and don't "fix" a 1080×1920 stage back to 1920×1080 — CLAUDE.md anti-pattern #9 and INV-1 both carry the exception.
-- Launch/marketing clips are NOT this rock (Rock 3 / wpforms-marketing).
+- Launch/marketing clips are NOT this rock (Rock 3 / film-marketing).

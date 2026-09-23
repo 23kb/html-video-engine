@@ -168,7 +168,7 @@ Tracked as a future enhancement (REFACTOR-BRIEF.md L6). Current TTS is sufficien
 
 ## See also
 
-- `wpforms-video` skill — beat-level pacing rules + storyboard gate.
+- `film-tutorial` skill — beat-level pacing rules + storyboard gate.
 - `docs/beat-pacing.md` — the 6-second rule and splitting heuristics.
 - `docs/examples/single-html-tutorial-skeleton.html` — one narration `.txt` per `beat()` key; DUR pasted from `tools/measure-narration.js` (the legacy manifest / chapter skeletons retired 2026-08-22).
 - `analysis-quality-and-transitions.md` §1.7 — REST API video lesson on per-beat-narration vs BGM-only.

@@ -9,7 +9,7 @@
 // Source: Klaviyo tutorial v11 retrospective 2026-05-12. Empirical recurrence
 // data drove every promotion here.
 //
-// Library scope philosophy (`.claude/skills/wpforms-primitives/SKILL.md`):
+// Library scope philosophy (`.claude/skills/film-primitives/SKILL.md`):
 //   Library = REFERENCE for hard-won + recurring patterns.
 //   Inline DOM = NORMAL for one-off interactions.
 //   These helpers earn library status by the recurrence-test (10× for
@@ -243,7 +243,7 @@ export async function glideToText({ iframeManager, cursor }, text, opts = {}) {
 }
 
 // ── Closed-loop measurement family (fix-round C2, 2026-08-17) ───────────────
-// THE DOCTRINE (full text in wpforms-primitives skill): once any camera work
+// THE DOCTRINE (full text in film-primitives skill): once any camera work
 // has happened, never derive in-document coordinates from raw
 // getBoundingClientRect — settle mode re-rasterizes at html.zoom=N and raw
 // rects return post-zoom pixels while scroll metrics stay layout-px and
@@ -559,7 +559,7 @@ let _camLandRegistered = false;
  * replacement for a bare single-tween `cameraToElement` + `tweenCamera` pair.
  *
  * A single-tween translate+scale between fixed poses reads as a slide
- * projector and caps a motion audit at tier B/C (wpforms-motion-audit HARD
+ * projector and caps a motion audit at tier B/C (film-motion-audit HARD
  * RULE 2/3). This helper BLENDS the move into a single tween carrying a
  * two-curve arc (FIX-1 fa-retest 2026-07-13; re-shaped 2026-09-02, AP-4 —
  * the old version ran the dip and the land as two sequentially awaited
@@ -580,7 +580,7 @@ let _camLandRegistered = false;
  * The beat's narration hold supplies the land-and-hold third phase.
  *
  * Iframe zoom stays ≤ 2.0 by default — the documented CSS pixel-doubling
- * sharpness limit for iframe content (see wpforms-primitives skill).
+ * sharpness limit for iframe content (see film-primitives skill).
  *
  * @param {Object} ctx
  * @param {IframeManager} ctx.iframeManager

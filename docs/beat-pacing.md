@@ -101,13 +101,13 @@ These were warnings, not errors. For single-HTML films, `tools/validate-singleht
 
 ## Postintro pacing (special case)
 
-PostIntros run until the message is explained — story states, not seconds (ruled 2026-08-22) — with 5+ phases long-form / 3+ on shorts; long-form typically lands 8-15s, ≈1.5-3s per phase. The multi-animation rule (see `wpforms-postintro` skill) is what matters; the 6-second rule doesn't apply to postIntro phases internally.
+PostIntros run until the message is explained — story states, not seconds (ruled 2026-08-22) — with 5+ phases long-form / 3+ on shorts; long-form typically lands 8-15s, ≈1.5-3s per phase. The multi-animation rule (see `film-postintro` skill) is what matters; the 6-second rule doesn't apply to postIntro phases internally.
 
 The postIntro AS A WHOLE is one chapter with one narration clip in most cases. Per-phase ≠ per-beat for pacing rules.
 
 ## See also
 
-- `wpforms-video` skill — beat-level pacing rule embedded in chapter authoring.
-- `wpforms-postintro` skill — postIntro phase pacing rules.
+- `film-tutorial` skill — beat-level pacing rule embedded in chapter authoring.
+- `film-postintro` skill — postIntro phase pacing rules.
 - `docs/examples/single-html-tutorial-skeleton.html` — the beat shape (`beat(key, text, async (at) => …)`) with narration coupling through the `at()` spoken-sync clock (the legacy chapter / audio-cued skeletons retired 2026-08-22).
 - `analysis-quality-and-transitions.md` §1.7 — the REST API video lesson on per-beat-narration vs BGM-only.

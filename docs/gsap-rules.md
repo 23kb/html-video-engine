@@ -341,7 +341,7 @@ is throttled. This is the architectural fix for the hidden-tab GSAP hang
 (`analysis-quality-and-transitions.md` §2.5) for any animation expressed
 as a paused timeline. Single-HTML films have no external driver: one paused
 master timeline drives the film. See *The Master Timeline + instrumentation
-contract* in the `wpforms-gsap-rules` skill.
+contract* in the `film-gsap-rules` skill.
 
 Hard rules:
 

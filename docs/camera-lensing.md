@@ -93,7 +93,7 @@ For continuous beats within a chapter (`sameChapter` true), the camera smooth-pa
 
 ## See also
 
-- `wpforms-video` skill — tutorial authoring; camera moves go through `flyToElement` (framed-action contract).
-- `wpforms-marketing` skill, *Snapshot transitions* — the boundary contract at cuts (successor to the retired `wpforms-transitions` skill).
+- `film-tutorial` skill — tutorial authoring; camera moves go through `flyToElement` (framed-action contract).
+- `film-marketing` skill, *Snapshot transitions* — the boundary contract at cuts (successor to the retired `wpforms-transitions` skill).
 - `videos/_shared/iframe-helpers.js` `flyToElement` + `videos/_shared/motion-primitives.js` `cameraToElement` — the living camera API (engine `zoomTo` and `camera-poses.js` retired 2026-08-22).
 - `analysis-quality-and-transitions.md` §1.5 — REST API video lesson on framing the curl one-liner.

@@ -12,7 +12,7 @@
 //
 // NOTE: backdrop-filter re-samples on every frame something moves behind the
 // card. Never animate the filter itself; tween transform/autoAlpha only
-// (wpforms-gsap-rules L0). Never mount over a real-UI iframe region you care
+// (film-gsap-rules L0). Never mount over a real-UI iframe region you care
 // about reading sharply at small sizes — the frost is the point, but it frosts.
 
 /* global gsap, CustomEase */

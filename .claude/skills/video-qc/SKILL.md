@@ -1,6 +1,6 @@
 ---
 name: video-qc
-description: "Run the QC / review / iterate loop on a WPForms video efficiently. Use when the user is reviewing a built video and reporting fixes scene-by-scene ('scene 2 looks wrong', 'QC this video', 'review pass', 'the intro is off', 'fix this then give me the scene URL'), OR when you're about to enter a build→review→iterate cycle and want it to be cheap. Bakes the cost-control discipline + workflow contracts (read outline.md first; state-change hierarchy; preserve the literal verb; state the target back with evidence; surgical edits; no visual/audio QC). NOT for first-time authoring (use wpforms-video / wpforms-marketing), NOT for breakage-free quality bumps on a shipped video (use wpforms-video-polish), NOT for debugging a broken video."
+description: "Run the QC / review / iterate loop on a WPForms video efficiently. Use when the user is reviewing a built video and reporting fixes scene-by-scene ('scene 2 looks wrong', 'QC this video', 'review pass', 'the intro is off', 'fix this then give me the scene URL'), OR when you're about to enter a build→review→iterate cycle and want it to be cheap. Bakes the cost-control discipline + workflow contracts (read outline.md first; state-change hierarchy; preserve the literal verb; state the target back with evidence; surgical edits; no visual/audio QC). NOT for first-time authoring (use film-tutorial / film-marketing), NOT for breakage-free quality bumps on a shipped video (use film-polish), NOT for debugging a broken video."
 ---
 
 # Video QC — the cheap review/iterate loop
@@ -48,8 +48,8 @@ at that exact second.
 ## When to use vs. neighbours
 
 - **video-qc (this)** — the user is reviewing and reporting fixes; you iterate cheaply against his eye.
-- **wpforms-video / wpforms-marketing** — first-time authoring (storyboard gate, build).
-- **wpforms-video-polish** — proactive quality bumps (easing/timing/typography) on a shipped, working video, no user-in-the-loop.
+- **film-tutorial / film-marketing** — first-time authoring (storyboard gate, build).
+- **film-polish** — proactive quality bumps (easing/timing/typography) on a shipped, working video, no user-in-the-loop.
 - **debug first** — if the video is actually broken (console errors, missing assets), fix that with normal tooling before QC.
 
 ## ⛔ The five cost rules (from the retro — worst first)
@@ -109,7 +109,7 @@ Shorts handoffs run the mandatory frame sweep per `docs/vertical-shorts.md` ("Ha
 The complement to the no-visual-QC rule: your lane is **measurement off render-truth**. "Looks right" is Umair's call; "measures right" is yours, and nearly every defect a measured pass finds is one no amount of looking would have. The menu:
 
 - **Seams:** sample the carrier's position per frame either side of a cut; compare exit vs entry velocity (`node tools/seam-gate.js <slug>` does this). Target: cut on the peak-velocity frame.
-- **"Double reveal" / "flash" reports:** count *direction reversals* per frame, and check whether the element is visible before its tween starts — nearly always the parked-state trap (`wpforms-gsap-rules` seek-render trap #1).
+- **"Double reveal" / "flash" reports:** count *direction reversals* per frame, and check whether the element is visible before its tween starts — nearly always the parked-state trap (`film-gsap-rules` seek-render trap #1).
 - **Motion continuity:** sample composite speed per frame across a hand-off; a butt-joined rig passes through exactly 0. "Looks smoother" is not a check.
 - **Layout / cursor targets:** read the real rect and compute from it — "obviously right" coordinates have landed 20px off the target.
 - **Renders:** exit code 0 is not proof. Decode frames and check for flat/frozen runs (`node tools/dead-time.js <mp4>`); verify background videos actually play (frame-diff over their region).
@@ -145,7 +145,7 @@ The complement to the no-visual-QC rule: your lane is **measurement off render-t
    Then hand over BOTH complete, copy-pasteable URLs (memory: complete URLs always):
    - **Render QC** — `http://localhost:4321/tools/qc-dashboard/#<slug>`
    - **Film scrub** — `http://localhost:<port>/videos/<slug>/index.html?scene=<id>`
-     (the `?scene=` convention in `wpforms-video`)
+     (the `?scene=` convention in `film-tutorial`)
 
    Say in one line what the gates measured — as not-broken evidence, never as a
    quality verdict — and never re-paste raw tool stdout; the chips carry it now. A re-render invalidates every chip, so re-run the gates
@@ -175,7 +175,7 @@ If a fix needs the user's input (a missing asset, a visual/audio call), say so i
 
 ## Hero beat — where the iteration budget goes
 
-The storyboard names **which beat carries the video** (see the `wpforms-video` gate). That beat is built first, at higher fidelity, and it's where Umair's review passes and your fixes should concentrate; supporting beats get one pass unless broken.
+The storyboard names **which beat carries the video** (see the `film-tutorial` gate). That beat is built first, at higher fidelity, and it's where Umair's review passes and your fixes should concentrate; supporting beats get one pass unless broken.
 
 **This does NOT dilute cost rule 1.** Hero-beat priority governs build order and where *Umair* spends review passes — it is not license to keep polishing the hero beat unprompted. You still edit only what was reported.
 

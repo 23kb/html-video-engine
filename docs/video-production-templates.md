@@ -2,7 +2,7 @@
 
 Last updated: 2026-08-22 (post legacy-retirement refresh; every video is now single-HTML)
 
-Reusable scaffolding for guided video sessions. Pair with the `wpforms-video`
+Reusable scaffolding for guided video sessions. Pair with the `film-tutorial`
 skill (workflow) and `docs/storyboard-format-morph-chain-2026-05-10.md`
 (required morph-chain section for editorial films).
 
@@ -39,7 +39,7 @@ Cross-snapshot movement (if any): <ifm.swap() crossfade between snapshots | one 
 ## PostIntro concept
 <Required unless user explicitly skips it. Describe the original visual concept
 beat in 2–3 sentences: what changes on screen, what product truth it uses,
-and why it previews the topic. Use `wpforms-postintro` skill rules — never a
+and why it previews the topic. Use `film-postintro` skill rules — never a
 second title card.>
 
 ## Morph chain (REQUIRED for editorial films)
@@ -156,7 +156,7 @@ Run mentally before writing each beat of `videos/<slug>/index.html`.
 - [ ] Film structure follows the master-timeline + instrumentation contract:
       one `gsap.timeline({ paused: true })` master exposed as `window.__tl`,
       started with `window.__T0`, cue marks in `__sched`, completion sets
-      `__done`/`__dur`. See `wpforms-gsap-rules`.
+      `__done`/`__dur`. See `film-gsap-rules`.
 - [ ] Base snapshots + DOM staging where truthful. No fabricated product UI.
       Staged states documented in the storyboard snapshot table.
 - [ ] Protected areas untouched: `videos/_shared/*`, `snapshots/**`,
@@ -168,7 +168,7 @@ Run mentally before writing each beat of `videos/<slug>/index.html`.
 - [ ] RAF loops pause-aware (inline `pausableRaf` shape). No raw
       never-stopping loops.
 - [ ] No `repeat: -1`; use finite repeats sized to visible duration.
-- [ ] Cross-snapshot moves follow *Snapshot transitions* in `wpforms-marketing`
+- [ ] Cross-snapshot moves follow *Snapshot transitions* in `film-marketing`
       (`ifm.swap()` crossfade or continuous timeline); preload before swap.
 - [ ] Narration `.mp3`s exist under `videos/<slug>/narration/`; DUR block pasted
       from `node tools/measure-narration.js <slug>` (never hand-estimated).

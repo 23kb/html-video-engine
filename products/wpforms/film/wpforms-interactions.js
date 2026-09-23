@@ -19,8 +19,8 @@
 //
 // Source references:
 // - videos/_shared/motion-primitives.js — Cursor + cinematicFlight + clickRipple
-// - .claude/skills/wpforms-gsap-rules/SKILL.md — L0 GSAP discipline
-// - .claude/skills/wpforms-motion-audit/SKILL.md — S–F tier criteria
+// - .claude/skills/film-gsap-rules/SKILL.md — L0 GSAP discipline
+// - .claude/skills/film-motion-audit/SKILL.md — S–F tier criteria
 //
 // Determinism: no Date.now, no unseeded Math.random, no fetch, no repeat:-1.
 

@@ -14,8 +14,8 @@
     · morph-chain HOST WITH A STABLE id — one element threads the phases
       (identity continuity; declare the chain in the storyboard per
       docs/storyboard-format-morph-chain-2026-05-10.md)
-    · phase comments matching the multi-phase requirement (wpforms-postintro)
-  Audit gate: run the wpforms-motion-audit skill on v1 — tier A is the bar.
+    · phase comments matching the multi-phase requirement (film-postintro)
+  Audit gate: run the film-motion-audit skill on v1 — tier A is the bar.
 -->
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -58,7 +58,7 @@ const $ = id => document.getElementById(id);
 const host = $('chainHost');
 
 // One master timeline per beat, position params, autoAlpha not opacity,
-// transform/opacity/filter only — see wpforms-gsap-rules before editing.
+// transform/opacity/filter only — see film-gsap-rules before editing.
 const tl = gsap.timeline({ paused: true, defaults: { ease: 'power2.out' } });
 
 // ── Phase 1 — arrival: the chain host lands ─────────────────────────────

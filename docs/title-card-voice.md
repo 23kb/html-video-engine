@@ -165,5 +165,5 @@ Pills are optional. Use them when:
 
 - `docs/narration-writing.md` — voice rules for narration body.
 - `docs/color-palette.md` — brand colors used in title themes.
-- `wpforms-video` skill — manifest authoring context.
-- `wpforms-marketing` skill — title cards in editorial / ad-style work.
+- `film-tutorial` skill — manifest authoring context.
+- `film-marketing` skill — title cards in editorial / ad-style work.

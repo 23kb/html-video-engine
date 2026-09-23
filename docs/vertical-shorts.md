@@ -72,7 +72,7 @@ const ifm = new IframeManager(iframeStage, {
 });
 ```
 
-Anti-pattern #2 and the `wpforms-primitives` write-time gate both still apply. If a
+Anti-pattern #2 and the `film-primitives` write-time gate both still apply. If a
 portrait beat seems to need a new camera primitive, it almost certainly needs
 different `fill` / `minZoom` instead.
 

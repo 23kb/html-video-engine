@@ -19,8 +19,8 @@
 // Source references:
 // - docs/winning-pattern-analysis-2026-05-10.md — identity-continuity rule
 // - docs/polish-vocabulary-2026-05-11.md — rest-api polished-vs-unpolished deltas
-// - .claude/skills/wpforms-motion-audit/SKILL.md — S-F tier criteria + hard rules
-// - .claude/skills/wpforms-gsap-rules/SKILL.md — L0 + L1 GSAP discipline
+// - .claude/skills/film-motion-audit/SKILL.md — S-F tier criteria + hard rules
+// - .claude/skills/film-gsap-rules/SKILL.md — L0 + L1 GSAP discipline
 
 /* eslint-env browser */
 /* global gsap */
@@ -77,7 +77,7 @@ export function mulberry32(seed) {
  * stock ease, which reads as a slide projector swipe.
  *
  * This primitive enforces the L1 camera-decomposition contract from
- * .claude/skills/wpforms-gsap-rules/SKILL.md:
+ * .claude/skills/film-gsap-rules/SKILL.md:
  *   anticipation (pre-nudge) → flight outbound (scale dip) → flight inbound
  *   (scale recovery) → land + hold → optional micro-zoom.
  *

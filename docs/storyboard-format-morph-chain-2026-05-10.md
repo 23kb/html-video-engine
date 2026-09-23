@@ -71,7 +71,7 @@ Each line is a **G1-level literal contract**: implement it exactly, and if one t
 
 ### Seam ledger (required for editorial storyboards, adopted 2026-08-08 — round-2 B1)
 
-Below the beat table, the storyboard carries a **ledger**: one row per cut, filled in before build. This is the boundary contract (`wpforms-marketing`, *Snapshot transitions* — successor to the retired `wpforms-transitions` skill) in checklist form — a cut whose row can't be filled honestly is a slide change, and the *beat* gets fixed before any transition style is picked.
+Below the beat table, the storyboard carries a **ledger**: one row per cut, filled in before build. This is the boundary contract (`film-marketing`, *Snapshot transitions* — successor to the retired `wpforms-transitions` skill) in checklist form — a cut whose row can't be filled honestly is a slide change, and the *beat* gets fixed before any transition style is picked.
 
 ```markdown
 ## Seam ledger
@@ -110,14 +110,14 @@ Slot semantics:
 
 - **subject & hero frame** — one concrete line: what fills the frame, at what scale, what is cropped away. (Layout-before-animation, in one cell.)
 - **surround** — portrait only: what occupies the 0–300 / 1500–1920 zones (brand ground default; instrument dock opt-in — `mountSurround` in `shorts-kit.js`). Landscape films write "—".
-- **vocabulary** — named primitives/effects/instruments only (`wpforms-primitives`, `videos/_shared/instruments.js`, `effects/README.md`). "Custom" is allowed but is a flag, not a default.
+- **vocabulary** — named primitives/effects/instruments only (`film-primitives`, `videos/_shared/instruments.js`, `effects/README.md`). "Custom" is allowed but is a flag, not a default.
 - **transformation** — the DOM mutation this beat performs, named. `"—"` is legal only for declared orientation/payoff-dwell beats; **"the camera moves" is not a transformation** (mp 0).
 - **carriers** — the area-visible events that carry any hold ≥2s (the carrier law).
 - **Composition count + map** — film-level: how many distinct compositions, which beats share one. `tools/composition-scan.js` measures this number after the build (shorts band 6–8/≤6s; long-form 12–18/≤10s provisional).
 
 **Enforcement:** `tools/validate-singlehtml.js` parses the film's `beat()`/`vo()` keys and WARNs on any key with no shot-list row and on any row with an empty transformation cell. WARN this season; flips to ERROR after two films ship with shot lists (ruled 2026-08-22). Films storyboarded before 2026-08-22 are grandfathered (one notice line, no per-beat noise).
 
-A film with a postIntro also carries the approved Story Proof phase table under a `## PostIntro story` heading (`wpforms-postintro`) — the same phase-table shape scoped to postIntro phases; the shot list's postIntro row just points at it.
+A film with a postIntro also carries the approved Story Proof phase table under a `## PostIntro story` heading (`film-postintro`) — the same phase-table shape scoped to postIntro phases; the shot list's postIntro row just points at it.
 
 ### Camera plan (required for ad-style and shorts films — adopted 2026-09-03, recalibrated 2026-09-04)
 
@@ -238,7 +238,7 @@ This 36s video doesn't have a single dominant morph host. Each beat has its own 
 
 Background landscape (pixel-art) is a static persistent host; foreground hero element morphs across beats. Two co-existing chains.
 
-## Anti-patterns (rejected by `wpforms-motion-audit` skill)
+## Anti-patterns (rejected by `film-motion-audit` skill)
 
 - **No morph chain declared in storyboard.** Editorial videos without an explicit morph chain in the storyboard get scored C or worse before the build even starts.
 - **Element re-mounting between beats.** `<div id="cta">…</div>` in beat 1 is removed; a new `<div id="cta">…</div>` is mounted in beat 2. Breaks identity continuity. Fix: keep the element mounted; mutate inside.
@@ -251,8 +251,8 @@ Background landscape (pixel-art) is a static persistent host; foreground hero el
 
 - `editorial-direction-audit-2026-05-10.md` (deleted 2026-05-12 — git history) — Phase 4 in the master plan
 - `winning-pattern-analysis-2026-05-10.md` (deleted 2026-08-22 — git history) — full identity-continuity analysis
-- `.claude/skills/wpforms-motion-audit/references/score-examples.md` — auditor scores tied to morph-chain presence
+- `.claude/skills/film-motion-audit/references/score-examples.md` — auditor scores tied to morph-chain presence
 
 ## What this changes
 
-When `wpforms-marketing` skill is updated in Phase 5 (deferred), it must require this section in any editorial storyboard. Until then, this doc is the explicit authoring contract — storyboards that lack a morph chain section are out of scope for editorial authoring on this repo.
+When `film-marketing` skill is updated in Phase 5 (deferred), it must require this section in any editorial storyboard. Until then, this doc is the explicit authoring contract — storyboards that lack a morph chain section are out of scope for editorial authoring on this repo.

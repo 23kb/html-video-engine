@@ -126,23 +126,23 @@ The MP4 render waits for the reviewer's sign-off.
 ## Skills
 
 Skills live in `.claude/skills/<name>/SKILL.md`. Codex copies live in
-`.agents/skills/`. The `wpforms-*` names are historical; the bodies apply to
-any product pack and are being renamed to `film-*`.
+`.agents/skills/`. The `film-*` skills apply to any product pack (they were
+`wpforms-*` until 2026-09-23); `dev-advocacy-video` is the WPForms Rock 4 workflow.
 
 | Skill | Use it for |
 |---|---|
-| `wpforms-storyboard` | The storyboard step for every track |
-| `wpforms-video` | Tutorial authoring |
-| `wpforms-marketing` | Ad-style, release and mixed films |
-| `wpforms-ad-to-short` | A 9:16 cut of an approved ad |
-| `wpforms-ae-build` | The After Effects build or twin of a film |
+| `film-storyboard` | The storyboard step for every track |
+| `film-tutorial` | Tutorial authoring |
+| `film-marketing` | Ad-style, release and mixed films |
+| `film-ad-to-short` | A 9:16 cut of an approved ad |
+| `film-ae-build` | The After Effects build or twin of a film |
 | `dev-advocacy-video` | Choosing the next tutorial and its shorts |
-| `wpforms-postintro` | The concept beat after the intro |
-| `wpforms-gsap-rules` | Timeline and GSAP discipline |
-| `wpforms-primitives` | Lookup for the shared motion and interaction libraries |
-| `wpforms-motion-audit` | S–F tier scoring before handoff |
-| `wpforms-machine-qc` | Advisory Gemini QC on a rendered MP4 |
-| `wpforms-video-polish` | Safe polish passes on a shipped film |
+| `film-postintro` | The concept beat after the intro |
+| `film-gsap-rules` | Timeline and GSAP discipline |
+| `film-primitives` | Lookup for the shared motion and interaction libraries |
+| `film-motion-audit` | S–F tier scoring before handoff |
+| `film-machine-qc` | Advisory Gemini QC on a rendered MP4 |
+| `film-polish` | Safe polish passes on a shipped film |
 | `video-qc` | The review-and-fix loop |
 
 ---

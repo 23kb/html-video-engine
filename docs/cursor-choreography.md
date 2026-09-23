@@ -149,5 +149,5 @@ The `Cursor` constructor takes `size` (default **24 px** — `videos/_shared/mot
 ## See also
 
 - `videos/_shared/motion-primitives.js` — the `Cursor` class (`glide` with `via` waypoints, `click`, `hover`, `drag`) and `videos/_shared/iframe-helpers.js` — `glideClick` (kit.js `glideTo`/`parkAt` and the engine cursor retired 2026-08-22).
-- `wpforms-video` skill — cursor as a beat-level rule (chapter feel like a tutorial vs slide).
-- `wpforms-postintro` skill — cursor handoff at postIntro→chapter boundary.
+- `film-tutorial` skill — cursor as a beat-level rule (chapter feel like a tutorial vs slide).
+- `film-postintro` skill — cursor handoff at postIntro→chapter boundary.

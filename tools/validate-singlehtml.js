@@ -366,7 +366,7 @@ function validateVideoDir(dir, { report }) {
   // authoring convention from the Story Proof flow) must carry the approved
   // phase table in storyboard.md under "## PostIntro story".
   if (/data-postintro/.test(src) && !(sb != null && /^##\s+PostIntro story\s*$/mi.test(sb))) {
-    report('warning', `index.html carries a data-postintro marker but storyboard.md ${sb == null ? 'is missing' : 'has no "## PostIntro story" section'} — copy the approved Story Proof phase table there (wpforms-postintro)`);
+    report('warning', `index.html carries a data-postintro marker but storyboard.md ${sb == null ? 'is missing' : 'has no "## PostIntro story" section'} — copy the approved Story Proof phase table there (film-postintro)`);
   }
 }
 

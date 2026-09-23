@@ -69,7 +69,7 @@ Numbered for easy reference in code comments / commit messages.
 ### INV-7 — Library is REFERENCE, inline DOM is normal
 - The libraries (`motion-primitives.js`, `wpforms-interactions.js`) codify HARD-WON patterns (cursor anti-frenzy, faux-dropdown, smartTag chip insertion, cream-flash-free swap).
 - For one-off clicks / typewriters / single-step toggles, write inline DOM in the video's master timeline. Same shape the old engine-path chapter `effect({ doc, cursor, sleep, ... })` callbacks used.
-- 3-test for promotion (per `wpforms-primitives` skill): hard-won pattern + multi-step choreography (≥3 sequential UI steps) + recurrence (≥3 videos OR ≥3 docs). 2 of 3 to earn library status.
+- 3-test for promotion (per `film-primitives` skill): hard-won pattern + multi-step choreography (≥3 sequential UI steps) + recurrence (≥3 videos OR ≥3 docs). 2 of 3 to earn library status.
 - Pre-promotion is over-promotion. Promote AFTER a video ships and the inline pattern has been seen 3+ times.
 - Source: commit `60b93bc` (philosophy update), `5ceccaf` (empirical frequency audit).
 
@@ -148,34 +148,34 @@ Two kinds of "system files" in this repo. They need different consumption:
 
 | Type | Examples | Right way to consume |
 |---|---|---|
-| **Reference / Rules** | This invariants doc; `library-scope-frequency-2026-05-12.md` (deleted 2026-08-22 — git history); `.claude/skills/wpforms-primitives/SKILL.md` (lookup index); `.claude/skills/wpforms-gsap-rules/SKILL.md` (rules reference). | **Read inline. File-read is fine.** Codex reading the architecture-invariants doc directly was the doc working as designed — it's data, not process. |
-| **Gates / Process** | `.claude/skills/wpforms-motion-audit/SKILL.md` (tier-scoring procedure with a recorded artifact); `.claude/skills/wpforms-video/SKILL.md` HARD-GATE storyboard approval; `.claude/skills/wpforms-postintro/SKILL.md` multi-animation rule check. | **Invoke via the Skill tool.** Reading the rubric ≠ running the scorer. The procedure produces an artifact (tier rating, approval, gate-passed marker) that file-read cannot. |
+| **Reference / Rules** | This invariants doc; `library-scope-frequency-2026-05-12.md` (deleted 2026-08-22 — git history); `.claude/skills/film-primitives/SKILL.md` (lookup index); `.claude/skills/film-gsap-rules/SKILL.md` (rules reference). | **Read inline. File-read is fine.** Codex reading the architecture-invariants doc directly was the doc working as designed — it's data, not process. |
+| **Gates / Process** | `.claude/skills/film-motion-audit/SKILL.md` (tier-scoring procedure with a recorded artifact); `.claude/skills/film-tutorial/SKILL.md` HARD-GATE storyboard approval; `.claude/skills/film-postintro/SKILL.md` multi-animation rule check. | **Invoke via the Skill tool.** Reading the rubric ≠ running the scorer. The procedure produces an artifact (tier rating, approval, gate-passed marker) that file-read cannot. |
 
 **The Skill tool is the gate for procedural skills. Reading a skill's markdown file is NOT** — it shows you the rubric but doesn't produce the artifact (tier, approval, gate-passed). For reference skills (lookup indices, rules reference), reading is the entire interaction; no invocation needed.
 
-The Klaviyo tutorial v11 (2026-05-12) shipped after 12 postIntro iterations WITHOUT ever invoking `wpforms-motion-audit`. Per the session's own retro: "going straight from CLAUDE.md → codex prompt → code was efficient but bypassed the skill system entirely." That bypass means we have no tier rating for the final postIntro. Skill gates were SOLVED PROBLEMS that got re-opened.
+The Klaviyo tutorial v11 (2026-05-12) shipped after 12 postIntro iterations WITHOUT ever invoking `film-motion-audit`. Per the session's own retro: "going straight from CLAUDE.md → codex prompt → code was efficient but bypassed the skill system entirely." That bypass means we have no tier rating for the final postIntro. Skill gates were SOLVED PROBLEMS that got re-opened.
 
 Non-negotiable Skill tool invocations (these are PROCEDURAL — they produce artifacts beyond what reading gives you):
 
-- **`wpforms-video`** — session start, tutorial path. Storyboard gate, path-decision gate.
-- **`wpforms-marketing`** — session start, editorial path. Path-decision + brand canonical + clone-target enforcement.
-- **`wpforms-postintro`** — before designing any postIntro. Multi-animation rule check + morph-chain requirement check.
-- **`wpforms-motion-audit`** — before declaring postIntro / cinematic / editorial done. HARD GATE. Tier rating is the artifact; reading the rubric does not produce it.
+- **`film-tutorial`** — session start, tutorial path. Storyboard gate, path-decision gate.
+- **`film-marketing`** — session start, editorial path. Path-decision + brand canonical + clone-target enforcement.
+- **`film-postintro`** — before designing any postIntro. Multi-animation rule check + morph-chain requirement check.
+- **`film-motion-audit`** — before declaring postIntro / cinematic / editorial done. HARD GATE. Tier rating is the artifact; reading the rubric does not produce it.
 
 Reference skills (file-read is sufficient, Skill tool invocation is optional):
 
-- **`wpforms-gsap-rules`** — L0 / L1 rules reference. Read it to consult before writing timeline code. No artifact produced by invocation.
-- **`wpforms-primitives`** — lookup index for motion-primitives + wpforms-interactions + iframe-helpers. Read it BEFORE writing motion code to check what exists (this is still important — both 2026-05-12 sessions skipped this step and hand-rolled approximations of existing primitives). But file-read is sufficient; the artifact is "I now know what exists in the libraries," which a read produces.
-- (`wpforms-transitions` retired 2026-08-22 with the engine — cross-snapshot movement lives in `wpforms-marketing`, *Snapshot transitions*.)
+- **`film-gsap-rules`** — L0 / L1 rules reference. Read it to consult before writing timeline code. No artifact produced by invocation.
+- **`film-primitives`** — lookup index for motion-primitives + wpforms-interactions + iframe-helpers. Read it BEFORE writing motion code to check what exists (this is still important — both 2026-05-12 sessions skipped this step and hand-rolled approximations of existing primitives). But file-read is sufficient; the artifact is "I now know what exists in the libraries," which a read produces.
+- (`wpforms-transitions` retired 2026-08-22 with the engine — cross-snapshot movement lives in `film-marketing`, *Snapshot transitions*.)
 
-Sessions reading this invariants doc inline (like Codex did on 2026-05-12) are using the correct consumption pattern. Sessions skipping `wpforms-motion-audit` because they "read about it" are using the wrong pattern — that one needs the Skill tool because the tier rating is the artifact.
+Sessions reading this invariants doc inline (like Codex did on 2026-05-12) are using the correct consumption pattern. Sessions skipping `film-motion-audit` because they "read about it" are using the wrong pattern — that one needs the Skill tool because the tier rating is the artifact.
 
 If you're working from a detailed codex prompt at `docs/codex-prompts/*.md`, the prompt is the brief. The skills are STILL the gates. Both apply. Detailed prompts do NOT obviate skill invocation.
 
 **The two most-bypassed skills across all 3 sessions (Klaviyo tutorial v11 + Codex editorial + Claude editorial, all 2026-05-12):**
 
-- `wpforms-primitives` — all sessions skipped reading it before writing. All hand-rolled approximations of primitives that already exist in `motion-primitives.js` / `wpforms-interactions.js` / `iframe-helpers.js`. **For this reference-style skill, file-read is the correct consumption** — but it has to actually happen BEFORE writing motion code, not mid-build after the hand-rolling started. The skill description "Use BEFORE writing any motion..." is literal.
-- `wpforms-motion-audit` — all sessions skipped it. Klaviyo went 12 postIntro iterations without scoring. Codex editorial admitted "should have run on v1 — would've caught the failures." Claude editorial produced a "horrible v1" that needed manual scene-by-scene rescue (would have failed motion-audit hard rules — likely caught by audit on v1). **This is the PROCEDURAL skill — Skill tool invocation, not just file-read.** The tier rating is the artifact. Applies to v1 build review + major restructures + final handoff. Not just final handoff.
+- `film-primitives` — all sessions skipped reading it before writing. All hand-rolled approximations of primitives that already exist in `motion-primitives.js` / `wpforms-interactions.js` / `iframe-helpers.js`. **For this reference-style skill, file-read is the correct consumption** — but it has to actually happen BEFORE writing motion code, not mid-build after the hand-rolling started. The skill description "Use BEFORE writing any motion..." is literal.
+- `film-motion-audit` — all sessions skipped it. Klaviyo went 12 postIntro iterations without scoring. Codex editorial admitted "should have run on v1 — would've caught the failures." Claude editorial produced a "horrible v1" that needed manual scene-by-scene rescue (would have failed motion-audit hard rules — likely caught by audit on v1). **This is the PROCEDURAL skill — Skill tool invocation, not just file-read.** The tier rating is the artifact. Applies to v1 build review + major restructures + final handoff. Not just final handoff.
 
 Common rationalizations for skipping (all wrong):
 - "The prompt covered what I needed." → The prompt is the brief; the skills + invariants still apply.
@@ -186,16 +186,16 @@ Source: Klaviyo session retro (2026-05-12) + Codex editorial retro (2026-05-12) 
 
 ### INV-14 — Continuation sessions re-fire procedural skill gates on inherited state
 
-Procedural skill gates (`wpforms-motion-audit`, `wpforms-video` storyboard gate, `wpforms-postintro` multi-animation check) produce artifacts that are PER-BUILD, not PER-SESSION. A continuation session inheriting a partial build does NOT inherit those artifacts.
+Procedural skill gates (`film-motion-audit`, `film-tutorial` storyboard gate, `film-postintro` multi-animation check) produce artifacts that are PER-BUILD, not PER-SESSION. A continuation session inheriting a partial build does NOT inherit those artifacts.
 
 **A continuation session must invoke procedural skills on the inherited build's last user-visible state BEFORE extending it.**
 
 Why: handoffs are invisible gate-skip moments. The continuation Claude has zero forcing function to re-invoke gates unless the handoff itself triggers them. Default assumption ("the prior session must have audited") is wrong — almost certainly they didn't, and even if they did, the artifact isn't visible to the continuation session.
 
-The editorial continuation session (Claude 3, 2026-05-12) inherited Codex's 25.5s build with a Connected pill animation and assumed it must have passed audit because the user said "good, much better." Never invoked `wpforms-motion-audit`. Result: continued extending a state with inherited bugs (inline-override styling on the pill, narrow cleanup selector causing duplicate stacking) that an audit would have caught.
+The editorial continuation session (Claude 3, 2026-05-12) inherited Codex's 25.5s build with a Connected pill animation and assumed it must have passed audit because the user said "good, much better." Never invoked `film-motion-audit`. Result: continued extending a state with inherited bugs (inline-override styling on the pill, narrow cleanup selector causing duplicate stacking) that an audit would have caught.
 
 Cadence for continuation sessions:
-1. At session start, invoke `wpforms-motion-audit` on the last user-visible build state. Record tier.
+1. At session start, invoke `film-motion-audit` on the last user-visible build state. Record tier.
 2. Fix any hard-rule violations BEFORE extending. Inheriting bugs costs more than fixing inherited bugs.
 3. Invoke audit on each NEW beat before showing to user (same rule as cold-start sessions).
 4. Final handoff audit (same rule as cold-start).
@@ -257,7 +257,7 @@ When in doubt, clone the core reference. It encodes the patterns the other three
 **Atmospheres also clone, not invent.** Session 3's pegboard halftone background was invented from scratch. User reaction: "the fuck is this… pegboard… what the fuck are all these motion design files in the system for if you're gonna make shit from your ass." Fix was to lift the atmosphere wholesale from an existing reference film. Rule: when adding atmosphere to a beat, point at the reference HTML it comes from in a code comment (same SOURCE: convention as INV-15).
 
 **What this prevents (confirmed across 3 sessions, 2026-05-12):**
-- Codex editorial v1: authored from scratch despite `wpforms-marketing` skill saying clone-first. Skill rule was soft advisory; no code-time gate.
+- Codex editorial v1: authored from scratch despite `film-marketing` skill saying clone-first. Skill rule was soft advisory; no code-time gate.
 - Claude editorial v1: same.
 - Session 3: invented pegboard atmosphere. Same root cause.
 

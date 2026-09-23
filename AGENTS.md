@@ -10,7 +10,7 @@ These patterns have repeatedly caused regressions in past video builds. Re-read 
 4. **DO NOT** mount overlays as iframe SIBLINGS painting over the iframe. Inject into iframe DOM directly, OR mount in the parent doc using `elementToStageCoords` for positioning.
 5. **DO NOT** swap iframes to show state changes. Keep the same live iframe; mutate its DOM in place.
 6. **DO NOT** invent UI fragments (chips, result cards, payoff overlays) without explicit user approval. Every inline UI fragment needs a `// SOURCE: products/<key>/snapshots/<name>/...` snapshot citation OR `// OVERRIDE: <user approval>` annotation in the code itself. See INV-15.
-7. **DO NOT** ship a postIntro / cinematic / editorial beat without invoking `wpforms-motion-audit` (Skill tool) and recording the tier rating.
+7. **DO NOT** ship a postIntro / cinematic / editorial beat without invoking `film-motion-audit` (Skill tool) and recording the tier rating.
 8. **DO NOT** first-write `videos/<slug>/index.html` from a blank file — any path. First write = the path's skeleton clone: pure-editorial / ad / mixed → `cp docs/examples/single-html-ad-skeleton.html videos/<slug>/index.html`; tutorial → `docs/examples/single-html-tutorial-skeleton.html`; 9:16 short → the portrait short skeleton. Commit the unmodified clone, THEN customize it toward the house style references — those predate the playback/instrumentation contract and are never the first write. See INV-16 (amended 2026-08-28).
 9. **DO NOT** set a new pilot's stage to anything less than 1920×1080. Lower stage resolutions (1280 / 1440 / 1600) cause snapshot compression that reads as blur. See INV-1. **Exception — 9:16 vertical shorts:** a `1080×1920` stage is a different native, not a smaller one, and is correct for the shorts path. Clone the portrait short skeleton and read `docs/vertical-shorts.md` before touching portrait geometry. Do not "fix" a portrait stage back to 1920×1080.
 
@@ -67,10 +67,10 @@ Four paths. Pick before loading any topic skill. **Also pick the aspect ratio:**
 
 | Path | Use when | Architecture | Primary skill | Audit gate |
 |---|---|---|---|---|
-| **Short (9:16)** | YouTube/Facebook Shorts, ≤60s, one tiny task, real UI. An **ad-style spot that teaches** (charter 2026-08-13): full kinetic on real UI, animated Sullie bookends (never static; Kacie bookends/postIntro still long-form-only), full ad sound. Default mode for the 2 shorts/week cadence; carved out of that week's long-form, never an independent build | Single-HTML portrait — clone the portrait short skeleton, 1080×1920 stage, camera CROPS the desktop raster (never shrinks it). Motion vocabulary: `videos/_shared/shorts-kit.js`. Mechanics: `docs/vertical-shorts.md` | `dev-advocacy-video` (shorts branch) + `wpforms-video` | `wpforms-motion-audit` mandatory — the bookends are editorial beats, every short has them |
-| **Tutorial** | Real product UI, narration-driven, viewer learns a workflow | Single-HTML — `videos/<slug>/index.html` + master `gsap.timeline({paused:true})` + `IframeManager` + `Cursor` + `WPFormsInteractions` + `videos/_shared/narration.js`. (The legacy engine/manifest path was retired 2026-08-22.) | `wpforms-video` | `wpforms-motion-audit` for any postIntro/cinematic beat |
-| **Pure editorial / ad-style** | No real product UI, motion-heavy, ad/announcement piece | Single self-contained HTML, vendored GSAP. Clone `docs/examples/single-html-ad-skeleton.html`. | `wpforms-marketing` | `wpforms-motion-audit` mandatory; morph-chain storyboard section required per `docs/storyboard-format-morph-chain-2026-05-10.md` |
-| **Mixed** (editorial chrome + real product UI) | Hybrid: real product geometry beneath editorial chrome | One single-HTML film: editorial DOM composited over iframe surfaces | `wpforms-marketing` | `wpforms-motion-audit` mandatory |
+| **Short (9:16)** | YouTube/Facebook Shorts, ≤60s, one tiny task, real UI. An **ad-style spot that teaches** (charter 2026-08-13): full kinetic on real UI, animated Sullie bookends (never static; Kacie bookends/postIntro still long-form-only), full ad sound. Default mode for the 2 shorts/week cadence; carved out of that week's long-form, never an independent build | Single-HTML portrait — clone the portrait short skeleton, 1080×1920 stage, camera CROPS the desktop raster (never shrinks it). Motion vocabulary: `videos/_shared/shorts-kit.js`. Mechanics: `docs/vertical-shorts.md` | `dev-advocacy-video` (shorts branch) + `film-tutorial` | `film-motion-audit` mandatory — the bookends are editorial beats, every short has them |
+| **Tutorial** | Real product UI, narration-driven, viewer learns a workflow | Single-HTML — `videos/<slug>/index.html` + master `gsap.timeline({paused:true})` + `IframeManager` + `Cursor` + `WPFormsInteractions` + `videos/_shared/narration.js`. (The legacy engine/manifest path was retired 2026-08-22.) | `film-tutorial` | `film-motion-audit` for any postIntro/cinematic beat |
+| **Pure editorial / ad-style** | No real product UI, motion-heavy, ad/announcement piece | Single self-contained HTML, vendored GSAP. Clone `docs/examples/single-html-ad-skeleton.html`. | `film-marketing` | `film-motion-audit` mandatory; morph-chain storyboard section required per `docs/storyboard-format-morph-chain-2026-05-10.md` |
+| **Mixed** (editorial chrome + real product UI) | Hybrid: real product geometry beneath editorial chrome | One single-HTML film: editorial DOM composited over iframe surfaces | `film-marketing` | `film-motion-audit` mandatory |
 
 If the user's request is ambiguous, ask **one question**: "Tutorial showing real product UI workflow, or editorial / ad-style piece?" (And if it's for Shorts, say so — that changes the stage, not just the crop.) Then pick the path. Do not build a tutorial without the tutorial libraries (`IframeManager` + `Cursor` + `WPFormsInteractions` in the tutorial skeleton); do not mount an iframe stack for pure-editorial work.
 
@@ -78,13 +78,13 @@ If the user's request is ambiguous, ask **one question**: "Tutorial showing real
 
 For any motion / camera / cursor / typing / field-reveal / brand-anchor / WPForms interaction / iframe-glue / split-screen-mirror / named-effect work, the executable code **already exists** in `videos/_shared/`. Reach for the library first. Inventing a new approximation is a recurring failure mode that re-opens bugs the library already fixed (cursor frenzy, caret drift, slide-projector cameras, snapshot-swap cream-flash).
 
-- **`motion-primitives.js`** — animation kit: cameras (`cinematicFlight`, `figjamFlight`, `focusStationOverview`), `Cursor` class (glide / click / hover / drag), text (`caretType`, `statusPillMorph`, `markerSweep`), reveal (`popOut`, `fieldStaggerReveal`), brand (`mountBrandBug` — `mountSullieBug` is its WPForms alias — `cleanFastRejoin`), utils (`boundedRepeats`, `mulberry32`). Full when-to-use in `wpforms-primitives` skill. QC at `videos/_qc-primitives/index.html`.
-- **`iframe-manager.js` + the interaction classes** — `IframeManager` lives in `iframe-manager.js` (native 1280×720 mount, engine-pattern camera transform, `pointer-events: none` guard). It picks the snapshot pack from `<meta name="film:product" content="<key>">`, else WPForms. The WPForms admin/builder interactions (`navAddNewForm`, `selectTemplate`, `openSettingsTab`, `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, `dragFieldToForm`) are `WPFormsInteractions` in `products/wpforms/film/wpforms-interactions.js`. That class extends `UIInteractions` (`ui-interactions.js`), the product-neutral base. `videos/_shared/wpforms-interactions.js` is a shim: it re-exports `IframeManager`, `WPFormsInteractions`, `Cursor` and `clickRipple`, so existing films keep working. Full list in `wpforms-primitives` skill. QC at `videos/_qc-interactions/index.html`.
+- **`motion-primitives.js`** — animation kit: cameras (`cinematicFlight`, `figjamFlight`, `focusStationOverview`), `Cursor` class (glide / click / hover / drag), text (`caretType`, `statusPillMorph`, `markerSweep`), reveal (`popOut`, `fieldStaggerReveal`), brand (`mountBrandBug` — `mountSullieBug` is its WPForms alias — `cleanFastRejoin`), utils (`boundedRepeats`, `mulberry32`). Full when-to-use in `film-primitives` skill. QC at `videos/_qc-primitives/index.html`.
+- **`iframe-manager.js` + the interaction classes** — `IframeManager` lives in `iframe-manager.js` (native 1280×720 mount, engine-pattern camera transform, `pointer-events: none` guard). It picks the snapshot pack from `<meta name="film:product" content="<key>">`, else WPForms. The WPForms admin/builder interactions (`navAddNewForm`, `selectTemplate`, `openSettingsTab`, `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, `dragFieldToForm`) are `WPFormsInteractions` in `products/wpforms/film/wpforms-interactions.js`. That class extends `UIInteractions` (`ui-interactions.js`), the product-neutral base. `videos/_shared/wpforms-interactions.js` is a shim: it re-exports `IframeManager`, `WPFormsInteractions`, `Cursor` and `clickRipple`, so existing films keep working. Full list in `film-primitives` skill. QC at `videos/_qc-interactions/index.html`.
 - **`iframe-helpers.js`** — defensive-pattern glue: `glideClick` (scrollIntoView + glide + click in one call), `findInIframeByText` / `glideToText` for SaaS captures with content-hashed class names (Klaviyo `.sc-jTrPJq`, Mailchimp, Stripe). Use whenever class names won't survive a re-capture.
 - **`builder-frontend-split.js`** (source in the WPForms pack, `products/wpforms/film/builder-frontend-split.js`; the `videos/_shared/` path is a shim) — split-screen authoring helper for "tweak the builder, watch the frontend mirror live" tutorial shape. `BuilderFrontendSplit` class mounts two `IframeManager`s side-by-side, auto-bridges builder→frontend `wpf:field-state` messages, exposes `fadeInFrontend / fadeOutFrontend / isolateFrontend / showAllFrontend / setFieldState`. Mirror works because `products/wpforms/snapshots/_shared/interactivity.js` broadcasts every option change and `products/wpforms/snapshots/_shared/frontend.js` applies the change to frontend DOM. **`frontend.js` is NOT auto-injected** — a frontend snapshot needs a hand-added `<script src="../_shared/frontend.js"></script>` before `</body>` or its handlers never run and the snapshot is silently inert (rf 11). Skeleton at `videos/_examples/builder-frontend-split-skeleton/index.html`. QC harness at `videos/_qc-frontend-mirror/index.html`.
 - **`effects/`** — named-effect vocabulary of ported GSAP effects. Each effect is a `mountFoo({...})` function returning `{ el, tweenInto(tl, opts), dispose() }`. Current vocabulary: `mountTextStackFromRight`, `mountTextLetterMaskDomino`, `mountTextCenterOutRoll`, `mountCardsSpreadFan`, `mountCardsFlyInStack`, `mountConstellationPhyllotaxisBloom`. **Use this for editorial / ad-style motion BEFORE writing custom GSAP** — the vocabulary covers text reveals, card layouts, and constellations. Full table in `videos/_shared/effects/README.md`. QC at `videos/_qc-effects/index.html`. To add a new effect, promote a port per the README instructions.
 
-**Load the `wpforms-primitives` skill BEFORE writing motion / cursor / interaction code.** The skill is the per-primitive when-to-use index. Scanning the QC pages above is the fastest way to confirm a primitive matches your need before authoring.
+**Load the `film-primitives` skill BEFORE writing motion / cursor / interaction code.** The skill is the per-primitive when-to-use index. Scanning the QC pages above is the fastest way to confirm a primitive matches your need before authoring.
 
 **Hard rule:** if you're about to write `gsap.to(cursor, ...)` or hand-mount a cursor element, stop and use the `Cursor` class. If you're about to write a click-Add-New-Form sequence, stop and call `navAddNewForm()`. If you're about to mount two `<iframe>`s side-by-side and bridge messages between them, stop and use `BuilderFrontendSplit`.
 
@@ -98,36 +98,36 @@ When a fresh session asks "make a video about X", check this folder first — if
 
 ## ⛔ Two consumption patterns — match the skill type
 
-**Procedural skills** (`wpforms-video`, `wpforms-marketing`, `wpforms-postintro`, `wpforms-motion-audit`) define gates that produce artifacts (tier rating, storyboard approval, multi-animation rule check). **Invoke via the Skill tool — file-read is NOT sufficient.** Reading the rubric ≠ running the scorer.
+**Procedural skills** (`film-tutorial`, `film-marketing`, `film-postintro`, `film-motion-audit`) define gates that produce artifacts (tier rating, storyboard approval, multi-animation rule check). **Invoke via the Skill tool — file-read is NOT sufficient.** Reading the rubric ≠ running the scorer.
 
-**Reference skills** (`wpforms-primitives`, `wpforms-gsap-rules`) are lookup indices + rules references. **File-read IS sufficient.** Skill tool invocation is optional. But you still have to READ them at the right moment — `wpforms-primitives` before writing motion code, `wpforms-gsap-rules` before timeline work.
+**Reference skills** (`film-primitives`, `film-gsap-rules`) are lookup indices + rules references. **File-read IS sufficient.** Skill tool invocation is optional. But you still have to READ them at the right moment — `film-primitives` before writing motion code, `film-gsap-rules` before timeline work.
 
 Same applies to `docs/video-architecture-invariants-2026-05-12.md` — pure reference, read inline.
 
 Non-negotiable invocations for tutorial / postIntro / cinematic / editorial work:
-- `wpforms-storyboard` whenever the ask is "storyboard …" — it owns the storyboard for every track and hands the approved file to the build skill
-- `wpforms-video` at session start for tutorial path
-- `wpforms-marketing` at session start for editorial / ad-style path
-- `wpforms-postintro` before designing any postIntro
-- `wpforms-gsap-rules` before writing any timeline beat (registered timelines, pausableRaf, boundedRepeats)
-- **`wpforms-primitives` BEFORE writing any motion code** — WRITE-TIME gate, not a lookup-when-you-think-of-it reference. Sessions that skip it hand-roll approximations of existing primitives.
-- **`wpforms-motion-audit` on the v1 build AND before final handoff** — HARD GATE. Applies to v1 review, major restructures, and final handoff. Must record tier S/A/B/C/D/F.
+- `film-storyboard` whenever the ask is "storyboard …" — it owns the storyboard for every track and hands the approved file to the build skill
+- `film-tutorial` at session start for tutorial path
+- `film-marketing` at session start for editorial / ad-style path
+- `film-postintro` before designing any postIntro
+- `film-gsap-rules` before writing any timeline beat (registered timelines, pausableRaf, boundedRepeats)
+- **`film-primitives` BEFORE writing any motion code** — WRITE-TIME gate, not a lookup-when-you-think-of-it reference. Sessions that skip it hand-roll approximations of existing primitives.
+- **`film-motion-audit` on the v1 build AND before final handoff** — HARD GATE. Applies to v1 review, major restructures, and final handoff. Must record tier S/A/B/C/D/F.
 
 ## Topic skills (load AFTER picking a path)
 
-- `wpforms-storyboard` — **the storyboard step for every track** (tutorial / ad / mixed / short): track detection (asks one question if unstated), intake, concept divergence + idea/copy gate, the full storyboard including the camera plan (cadence + ease voice decided per film, with reasons), capability check, stills-first pass, approval handoff. Invoke whenever Umair says "storyboard …". Writes storyboards, never film code
-- `wpforms-video` — tutorial authoring, intake, storyboard gate, default authoring mode
-- `wpforms-postintro` — postIntro design + multi-animation rule + morph-chain integration
-- `wpforms-gsap-rules` — GSAP L0 discipline + camera-decomposition rules + designer principles (Emil / Krehel / Jhey)
-- `wpforms-marketing` — editorial / ad-style surfaces + blocks + atmospheric kit + brand canonical + **the reference-driven replication recipe** (reference film → frames → scene map → tile cited per beat in code → probe on v1 → badged-sheet handoff; 2026-09-14)
-- `wpforms-ad-to-short` — a 9:16 cut of an APPROVED ad into `videos/<slug>-9x16/`: timeline / copy / cues / bed verbatim, geometry only (stage flip, per-line type refit, stacks, the live-surface band for mixed films, remapped cursor, re-pointed probe). Not the carve path, not the portrait short skeleton path
-- `wpforms-ae-build` — the After Effects build or twin of a film through the AE connector (`ae_*`): the approved storyboard as contract, real snapshots rastered at 2×, the rig + stills gate before motion, the `execute_script` build pattern, the bridge rules, `aerender` + `ffprobe`, the shared `tools/sfx` sound path. The connector's own skills cover AE craft; this one covers the repo side
-- `wpforms-primitives` — lookup index for `videos/_shared/motion-primitives.js` (cameras / cursor / typing / field-reveal / brand-anchor / exit) and `videos/_shared/wpforms-interactions.js` (Wave 1 standard interactions). Reach here BEFORE writing any new GSAP cursor / camera / interaction code.
-- `wpforms-motion-audit` — score animations and camera moves S–F tier with hard-rule calibration. Run before any postIntro/cinematic handoff.
-- `wpforms-video-polish` — polish an existing already-shipped video without breaking it. Backup-first → analyze → surgical edits in batches of 5–10 → static verification → motion-audit if cinematic touched. NOT for new authoring, NOT for debug. Includes 8 canonical polish patterns.
+- `film-storyboard` — **the storyboard step for every track** (tutorial / ad / mixed / short): track detection (asks one question if unstated), intake, concept divergence + idea/copy gate, the full storyboard including the camera plan (cadence + ease voice decided per film, with reasons), capability check, stills-first pass, approval handoff. Invoke whenever Umair says "storyboard …". Writes storyboards, never film code
+- `film-tutorial` — tutorial authoring, intake, storyboard gate, default authoring mode
+- `film-postintro` — postIntro design + multi-animation rule + morph-chain integration
+- `film-gsap-rules` — GSAP L0 discipline + camera-decomposition rules + designer principles (Emil / Krehel / Jhey)
+- `film-marketing` — editorial / ad-style surfaces + blocks + atmospheric kit + brand canonical + **the reference-driven replication recipe** (reference film → frames → scene map → tile cited per beat in code → probe on v1 → badged-sheet handoff; 2026-09-14)
+- `film-ad-to-short` — a 9:16 cut of an APPROVED ad into `videos/<slug>-9x16/`: timeline / copy / cues / bed verbatim, geometry only (stage flip, per-line type refit, stacks, the live-surface band for mixed films, remapped cursor, re-pointed probe). Not the carve path, not the portrait short skeleton path
+- `film-ae-build` — the After Effects build or twin of a film through the AE connector (`ae_*`): the approved storyboard as contract, real snapshots rastered at 2×, the rig + stills gate before motion, the `execute_script` build pattern, the bridge rules, `aerender` + `ffprobe`, the shared `tools/sfx` sound path. The connector's own skills cover AE craft; this one covers the repo side
+- `film-primitives` — lookup index for `videos/_shared/motion-primitives.js` (cameras / cursor / typing / field-reveal / brand-anchor / exit) and `videos/_shared/wpforms-interactions.js` (Wave 1 standard interactions). Reach here BEFORE writing any new GSAP cursor / camera / interaction code.
+- `film-motion-audit` — score animations and camera moves S–F tier with hard-rule calibration. Run before any postIntro/cinematic handoff.
+- `film-polish` — polish an existing already-shipped video without breaking it. Backup-first → analyze → surgical edits in batches of 5–10 → static verification → motion-audit if cinematic touched. NOT for new authoring, NOT for debug. Includes 8 canonical polish patterns.
 
 Plus the designer-grade pass (file-read, NOT a Skill-tool gate):
-- Emil Kowalski / Jakub Krehel / Jhey Tompkins designer-grade audit — file-read `.agents/skills/design-motion-principles/SKILL.md` + its `references/`. It is installed outside `.Codex/skills/`, so the Skill tool cannot invoke it and nothing fires it automatically. Complements `wpforms-motion-audit`.
+- Emil Kowalski / Jakub Krehel / Jhey Tompkins designer-grade audit — file-read `.agents/skills/design-motion-principles/SKILL.md` + its `references/`. It is installed outside `.Codex/skills/`, so the Skill tool cannot invoke it and nothing fires it automatically. Complements `film-motion-audit`.
 
 ## Brand canonical source
 
@@ -225,7 +225,7 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 - `node tools/sfx/onset.mjs <file|dir>` — SFX head-silence probe (first sample >5% of peak): a click with a late onset fires frames late no matter how well the cue is placed; prints trim `-ss` suggestions. Cue-placement rules in `tools/sfx/CONTEXT.md`
 - `node tools/storyboard-sheet.js <slug> [--beats t1,t2,...]` — PRE-render stills sheet: seeks a paused single-HTML film to each beat mark (timeline labels or `--beats`), screenshots the stage, tiles with badges — look-approval on stills before motion work
 - `node tools/seam-gate.js <slug> [--cuts t1,t2,...]` — measures exit/entry velocity (px/s) at each cut of a single-HTML film; warns on dead exits/entries and velocity mismatches (the transitions boundary contract, measured); report-only
-- `node tools/machine-qc.js <slug | path.mp4> [--mode both|static|agentic] [--fps 24] [--res high|low] [--focus "..."] [--no-report]` — ADVISORY Gemini semantic QC pass on a rendered MP4: a 24 fps high-resolution static pass + an agentic navigation pass, merged (frame-edge crops, endings, on-screen text, blinks/pop-ins/cursor jumps, narration + SFX timing); writes the `machineQc` advisory chip; never a gate, never feeds the dashboard dot. Stage + triage contract: `wpforms-machine-qc` skill. Needs `GEMINI_API_KEY` in `.env`; no headless lock; ~400k tokens per 30–40 s film
+- `node tools/machine-qc.js <slug | path.mp4> [--mode both|static|agentic] [--fps 24] [--res high|low] [--focus "..."] [--no-report]` — ADVISORY Gemini semantic QC pass on a rendered MP4: a 24 fps high-resolution static pass + an agentic navigation pass, merged (frame-edge crops, endings, on-screen text, blinks/pop-ins/cursor jumps, narration + SFX timing); writes the `machineQc` advisory chip; never a gate, never feeds the dashboard dot. Stage + triage contract: `film-machine-qc` skill. Needs `GEMINI_API_KEY` in `.env`; no headless lock; ~400k tokens per 30–40 s film
 - `node tools/capture-brand.js <url> <slug>` — pull a PARTNER brand's real assets (logo SVGs, icons, palette, fonts) from its site into `videos/<slug>/assets/brand/` with provenance; for integration videos only — WPForms' own brand assets are never pulled this way
 - `node tools/preview.js [--video <slug>] [--port 4321]` — live-reload + scrubber; also serves the QC dashboard index route (`/__qc/videos.json`)
 - **QC dashboard** — `http://localhost:4321/tools/qc-dashboard/` (needs `tools/preview.js` running): per-video gate chips, render playback with dead-time bands + seam-cut ticks, in-browser filmstrip (vendored Mediabunny decodes the mp4 client-side), and timestamped feedback notes with a copy-for-chat export. Reads `videos/<slug>/qc-report.json`
@@ -244,8 +244,8 @@ Before review handoff:
 2. `node tts/generate.js --video <slug>`
 3. Static validator — `node tools/validate-singlehtml.js <slug> --report`
 4. Smoke - `node tools/smoke-singlehtml.js <slug> --seconds 30 --report`
-5. **For postIntro/cinematic/editorial beats:** ask `wpforms-motion-audit` skill to score them. Tier A or higher is the merge bar; anything B or below needs a fix or an explicit override. Record it: `node tools/lib/qc-report.js <slug> --set motionAudit.tier=<tier>`
-6. **Populate the rest of the gate ledger** so the QC dashboard's chips are truthful — an empty chip means "not measured" and wastes Umair's review pass. Run one at a time (headless lock): `narration-qc.js <slug>`, `dead-time.js <slug>` (shorts: also `--crop 1080:1200:0:300`), `seam-gate.js <slug>`. Then `machine-qc.js <slug>` (advisory, no lock — see `wpforms-machine-qc` skill; verify findings against source before acting, re-run after every re-render).
+5. **For postIntro/cinematic/editorial beats:** ask `film-motion-audit` skill to score them. Tier A or higher is the merge bar; anything B or below needs a fix or an explicit override. Record it: `node tools/lib/qc-report.js <slug> --set motionAudit.tier=<tier>`
+6. **Populate the rest of the gate ledger** so the QC dashboard's chips are truthful — an empty chip means "not measured" and wastes Umair's review pass. Run one at a time (headless lock): `narration-qc.js <slug>`, `dead-time.js <slug>` (shorts: also `--crop 1080:1200:0:300`), `seam-gate.js <slug>`. Then `machine-qc.js <slug>` (advisory, no lock — see `film-machine-qc` skill; verify findings against source before acting, re-run after every re-render).
 
 Visual QC belongs to the user unless explicitly requested. If you do run a browser check, keep it scoped and report what you verified.
 
@@ -260,11 +260,11 @@ Never re-paste raw tool stdout into a handoff — the chips carry it. Summarize 
 
 Stop and push back when:
 
-- Storyboard approval has not happened — see `wpforms-video` skill HARD-GATE
+- Storyboard approval has not happened — see `film-tutorial` skill HARD-GATE
 - Editorial storyboard lacks the morph-chain section — see `docs/storyboard-format-morph-chain-2026-05-10.md`
 - A requested state would require fake WPForms UI
 - A snapshot is missing and cannot be truthfully derived
-- PostIntro is being weakened instead of built with approved animation surfaces — see `wpforms-postintro` skill
+- PostIntro is being weakened instead of built with approved animation surfaces — see `film-postintro` skill
 - Implementation pressure points toward protected core
 - A custom postIntro or a specific approved animation is being downgraded to a generic focus/title beat (the retired descriptor-mode failure — the rule survives)
 - An editorial build is being authored from scratch instead of cloned from its skeleton (`docs/examples/single-html-ad-skeleton.html`)
@@ -276,15 +276,15 @@ Don't look here for these — load the skill instead:
 
 | Topic | Skill |
 |---|---|
-| Path selection / intake / storyboard gate / production truth / legacy chapter shape / modes | `wpforms-video` |
-| PostIntro multi-animation rule / build order / canonical references / morph-chain | `wpforms-postintro` |
-| GSAP L0 discipline / camera-decomposition / registered timelines / `pausableRaf` / Flip patterns / designer principles | `wpforms-gsap-rules` |
-| `surface: 'editorial' / 'mixed'` / blocks library / atmospheric kit / text-kit / hero composition / brand canonical | `wpforms-marketing` |
-| Motion S–F tier scoring / hard-rule calibration / pre-handoff gate | `wpforms-motion-audit` |
-| Motion-primitives + wpforms-interactions library lookup (per-primitive when-to-use, signatures, QC status) | `wpforms-primitives` |
-| Polish an existing video (timing / easing / typography / handoffs) without breaking it | `wpforms-video-polish` |
-| 9:16 cut of an approved ad (band, type refit, stacks, probe re-point) | `wpforms-ad-to-short` |
-| After Effects build or twin (bridge rules, raster pipeline, render recipe, phase gates) | `wpforms-ae-build` |
+| Path selection / intake / storyboard gate / production truth / legacy chapter shape / modes | `film-tutorial` |
+| PostIntro multi-animation rule / build order / canonical references / morph-chain | `film-postintro` |
+| GSAP L0 discipline / camera-decomposition / registered timelines / `pausableRaf` / Flip patterns / designer principles | `film-gsap-rules` |
+| `surface: 'editorial' / 'mixed'` / blocks library / atmospheric kit / text-kit / hero composition / brand canonical | `film-marketing` |
+| Motion S–F tier scoring / hard-rule calibration / pre-handoff gate | `film-motion-audit` |
+| Motion-primitives + wpforms-interactions library lookup (per-primitive when-to-use, signatures, QC status) | `film-primitives` |
+| Polish an existing video (timing / easing / typography / handoffs) without breaking it | `film-polish` |
+| 9:16 cut of an approved ad (band, type refit, stacks, probe re-point) | `film-ad-to-short` |
+| After Effects build or twin (bridge rules, raster pipeline, render recipe, phase gates) | `film-ae-build` |
 | Designer-grade audit (Emil Kowalski / Jakub Krehel / Jhey Tompkins) | file-read `.agents/skills/design-motion-principles/SKILL.md` + `references/` (not Skill-tool invocable) |
 
 Skills are at `.Codex/skills/<name>/SKILL.md`. Each is a single file with YAML frontmatter (`name`, `description`).

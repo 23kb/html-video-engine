@@ -2,7 +2,7 @@
 
 One-line-per-doc map. Use this to find the right doc fast instead of grepping.
 
-For topic-scoped rules, **load a skill first** (`.claude/skills/wpforms-*/SKILL.md`). Skills aggregate the high-frequency rules; the docs below are the deeper canonical reference material.
+For topic-scoped rules, **load a skill first** (`.claude/skills/film-*/SKILL.md`). Skills aggregate the high-frequency rules; the docs below are the deeper canonical reference material.
 
 Refreshed 2026-08-22 after legacy retirement: engine/manifest-path docs removed; every video is now single-HTML.
 
@@ -26,7 +26,7 @@ Refreshed 2026-08-22 after legacy retirement: engine/manifest-path docs removed;
 
 Craft docs below carry a **HISTORICAL API NOTE (2026-08-28)**: their code examples predate the engine retirement; the craft rules stand.
 
-- `postintro-patterns.md` — PostIntro design rules + multi-animation rule rationale. Owned by `wpforms-postintro` skill. (historical API note)
+- `postintro-patterns.md` — PostIntro design rules + multi-animation rule rationale. Owned by `film-postintro` skill. (historical API note)
 - `cursor-choreography.md` — park / glide / drag / via-waypoint patterns. (historical API note)
 - `narration-writing.md` — Voice, pacing, sentence shape, beat coupling. (historical API note)
 - `beat-pacing.md` — 6-second rule, splitting heuristics. (historical API note)
@@ -38,7 +38,7 @@ Craft docs below carry a **HISTORICAL API NOTE (2026-08-28)**: their code exampl
 
 ## GSAP / animation
 
-- `gsap-rules.md` — L0 discipline canonical reference (deep version). Owned by `wpforms-gsap-rules` skill. (historical API note — its registered-timeline / frame-driver / kit.js sections are retired; the master-timeline contract in the skill replaces them)
+- `gsap-rules.md` — L0 discipline canonical reference (deep version). Owned by `film-gsap-rules` skill. (historical API note — its registered-timeline / frame-driver / kit.js sections are retired; the master-timeline contract in the skill replaces them)
 - `gsap-flip-patterns.md` — Flip patterns: morphs, reflows, real-UI clones. (historical API note — sandbox chapter paths are gone)
 - `../videos/_shared/effects/README.md` — the named-effect vocabulary (mountTextStackFromRight, mountCardsSpreadFan, mountEndCard, seams, odometer…); QC page `videos/_qc-effects/`.
 - `hyperframes-seam-grammar-rnd-2026-09-03.md` (local-only) — Seam-transition recipes R&D'd from HeyGen's claude-paper-launch film: inverse zoom-through, leftward cut-the-curve, pixel-matched cut, position-locked crossfade, cursor velocity-split handoff, humanized typing. Code-first; prove video-local, promote on second use.

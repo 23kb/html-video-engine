@@ -85,7 +85,7 @@ For tutorial videos, the brand palette above is enough. No per-video DESIGN.md n
 
 ## See also
 
-- `wpforms-marketing` skill — editorial composition patterns.
+- `film-marketing` skill — editorial composition patterns.
 - The canonical brand tokens — single source of truth for brand colors (the engine's `overlays-config.js` retired 2026-08-22; ripple/highlight colors are per-call options on `Cursor.click` / `IframeManager.highlightElement`).
 - `hyperframes/wpforms-ai-scene-10/DESIGN.md` — WPForms AI scene-10 design system.
 - `analysis-quality-and-transitions.md` §1.6 — REST API video lesson on over-cooked curl colors.

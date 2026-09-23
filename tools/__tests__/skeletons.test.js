@@ -95,12 +95,12 @@ section('Ad skeleton (FIX-2 fa-retest — playback/instrumentation contract bake
 
 section('Skill wiring');
 {
-  ok(/single-html-tutorial-skeleton\.html/.test(fs.readFileSync(path.join(ROOT, '.claude/skills/wpforms-video/SKILL.md'), 'utf8')),
-    'wpforms-video names the tutorial skeleton as first copy target');
-  ok(/single-html-postintro-skeleton\.html/.test(fs.readFileSync(path.join(ROOT, '.claude/skills/wpforms-postintro/SKILL.md'), 'utf8')),
-    'wpforms-postintro names the postintro skeleton as first copy target');
-  ok(/single-html-ad-skeleton\.html/.test(fs.readFileSync(path.join(ROOT, '.claude/skills/wpforms-marketing/SKILL.md'), 'utf8')),
-    'wpforms-marketing names the ad skeleton as first copy target (bridge-2 = vocabulary)');
+  ok(/single-html-tutorial-skeleton\.html/.test(fs.readFileSync(path.join(ROOT, '.claude/skills/film-tutorial/SKILL.md'), 'utf8')),
+    'film-tutorial names the tutorial skeleton as first copy target');
+  ok(/single-html-postintro-skeleton\.html/.test(fs.readFileSync(path.join(ROOT, '.claude/skills/film-postintro/SKILL.md'), 'utf8')),
+    'film-postintro names the postintro skeleton as first copy target');
+  ok(/single-html-ad-skeleton\.html/.test(fs.readFileSync(path.join(ROOT, '.claude/skills/film-marketing/SKILL.md'), 'utf8')),
+    'film-marketing names the ad skeleton as first copy target (bridge-2 = vocabulary)');
 }
 
 console.log(`\n${failures ? '✗ FAIL' : '✓ PASS'} — ${checks - failures}/${checks} checks passed`);

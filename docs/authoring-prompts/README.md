@@ -21,7 +21,7 @@ Kinds to draft (rough list — adjust as we go):
 - **Marketing / ad-style editorial** (no real UI, motion-heavy, clone from `docs/examples/single-html-ad-skeleton.html`).
 - **Multi-field tutorial** (chains several fields without losing the thread — e.g. "build a contact form from scratch").
 - **Integration / addon walkthrough** (admin Integrations connect flow + builder provider panel; pairs with handoff-7 work).
-- **PostIntro / cinematic concept beat** (per `wpforms-postintro` skill — usually the first 8-15s of a tutorial).
+- **PostIntro / cinematic concept beat** (per `film-postintro` skill — usually the first 8-15s of a tutorial).
 
 ## TODO — wire CLAUDE.md and friends (later)
 
@@ -30,7 +30,7 @@ Once we have 3-5 templates here, wire discoverability so Claude reaches for the 
 - Add a section to root `CLAUDE.md` pointing at `docs/authoring-prompts/README.md` from the "Pick your path FIRST" table — one column "Suggested prompt template".
 - Add an entry to `docs/INDEX.md` so it shows up in the one-line-per-doc index.
 - Optionally extend `tools/skill-context.js` so the startup context dump mentions the prompt-templates folder.
-- Consider adding `authoring-prompts` discovery to the `wpforms-video` skill so it surfaces during intake.
+- Consider adding `authoring-prompts` discovery to the `film-tutorial` skill so it surfaces during intake.
 
 Right now this folder is unwired — finding it requires knowing the path. That's fine for v0; revisit once we have a critical mass of templates.
 
