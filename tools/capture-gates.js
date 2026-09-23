@@ -60,7 +60,8 @@ const http = require('http');
 const { spawnSync } = require('child_process');
 
 const REPO = path.resolve(__dirname, '..');
-const SNAPSHOTS_DIR = path.join(REPO, 'snapshots');
+const { snapshotsRoot, snapshotUrlPath } = require('./lib/paths');
+const SNAPSHOTS_DIR = snapshotsRoot();
 
 const MIME = {
   '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css',
@@ -154,7 +155,7 @@ async function runGates(slug, opts) {
   const browser = await chromium.launch({ headless: true });
   try {
     const page = await browser.newPage({ viewport: { width: viewport.width, height: viewport.height } });
-    await page.goto(`http://localhost:${port}/snapshots/${slug}/index.html`, { waitUntil: 'load', timeout: 45000 }).catch(() => {});
+    await page.goto(`http://localhost:${port}${snapshotUrlPath(slug)}`, { waitUntil: 'load', timeout: 45000 }).catch(() => {});
     await page.waitForTimeout(600);
 
     // G1 geometry
