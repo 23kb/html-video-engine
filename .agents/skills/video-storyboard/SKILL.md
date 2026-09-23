@@ -65,7 +65,7 @@ decided it), or approve anything — `storyboard.md` says `DRAFT` until a human 
 | `scripts/scene-map.mjs` | `scene-map.json` skeleton: one row per reference scene with its time, composition, framing, seam out, in-beat motion, landings, text beats, clicks (seeded as triggers with press frames), evidence; our columns empty; durations seeded by the target ratio |
 | `scripts/pick-reference.mjs` | ranks a library of specs for a need (wraps skill 1's `library.mjs --query`); top 3 with one reason each and the next command |
 | `scripts/screens.mjs` | `screens-needed.json` from the filled map: unique screen × state, which scenes need each, what must be visible, the capture route (profile-aware) |
-| `scripts/Codex-design.mjs` | what the storyboard adds to a Codex Design brief: our `OM_SCENES`, camera focus points (fx, fy, s) in stage px from the measured anchors, `<Captions>` items and `TWEAK_DEFAULTS` from the copy table, the voice-over skeleton at a wpm |
+| `scripts/claude-design.mjs` | what the storyboard adds to a Claude Design brief: our `OM_SCENES`, camera focus points (fx, fy, s) in stage px from the measured anchors, `<Captions>` items and `TWEAK_DEFAULTS` from the copy table, the voice-over skeleton at a wpm |
 | `scripts/fill-anchors.mjs` | after the snapshots exist: `--list` names the words each snapshot's `targets.json` must map; then fills `anchor_px`, `anchor_selector`, every press's `selector` + `px` and the row's `mount` from the measured `targets.json` |
 | `scripts/render-storyboard.mjs` | `storyboard.md` from the map + screens list — the document a human approves; the JSON is the source of truth |
 | `scripts/validate-storyboard.mjs` | every row cites a reference scene or carries OVERRIDE; `visible` on every kept row; copy covers every text beat; camera header equals the spec's; every screen in the map is in the screens list; durations sum to the target ±5 %; every click has a press frame; storyboard.md matches the map |
@@ -92,7 +92,7 @@ node scripts/scene-map.mjs <motion-spec.json> --topic "…" [--length s] [--prod
 node scripts/screens.mjs <out>                                            # 5  screens-needed.json
 node scripts/render-storyboard.mjs <out>                                  # 6  storyboard.md
 node scripts/validate-storyboard.mjs <out>                                # 7  0 errors before hand-off; fix the map, re-render
-node scripts/render-brief.mjs <out> --target <tool> [--wpm 140|relaxed]  # 8  brief-<tool>.md via skill 1's renderer (wpm: the Codex-design voice-over budget)
+node scripts/render-brief.mjs <out> --target <tool> [--wpm 140|relaxed] [--with-ref]  # 8  brief-<tool>.md via skill 1's renderer (wpm: the claude-design voice-over budget; --with-ref keeps the reference's nouns in brackets for a motion question — never for the build)
 # 8b once the snapshots exist: node scripts/fill-anchors.mjs <out> --snapshots <root> --list → targets.json per snapshot → html-snapshot's targets.mjs → fill-anchors.mjs (no --list) → re-run 6, 7, 8
 # 9  write <out>/decisions.md; say the next-step line (references/handoffs.md)
 ```
@@ -220,13 +220,16 @@ Two rules the build depends on:
   families read from the product's own stylesheet (a snapshot's `index.html` carries it), the
   logo from the page header, and `roles` — bed, emphasis, cursor, ink, trail — the editorial
   colours OURS uses (a decision; the reference's are not ours). `type` names an embeddable family
-  (a woff2 you can ship), never only a system stack. It is ours, not the reference's, and not a guess.
+  (a woff2 you can ship), never only a system stack; `type_scale` gives hero / subline / cta sizes as
+  % of stage height. It is ours, not the reference's, and not a guess.
+- A seam of kind `other` is described in our nouns in `our.carrier` and `our.motion`: the ledger's
+  mechanics are the reference's; the build needs what OUR elements do at that join.
 - A default on an open question never rearranges the real UI: a whip lands on the real geometry
   ("down-left to Save Settings"), it does not move Save Settings.
 - A scene with more than one landing fills `landing_anchors[]`: a glide lands on a different
   element than the cut it left; the rig, the handoff and the focus points read the landing's
   anchor first. The validator warns while a landing after the first has no anchor.
-- For a target that is not HTML (After Effects, Codex Design, Remotion), every press that changes
+- For a target that is not HTML (After Effects, Claude Design, Remotion), every press that changes
   the screen needs its result as a captured state in `screens-needed.json` (`states.mjs`), because
   those tools rebuild from rasters and a live DOM flip does not exist there.
 - The storyboard renders a `## Sound` section from the spec (bed, SFX, energy, the sync points

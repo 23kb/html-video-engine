@@ -41,7 +41,7 @@ pre-upgrade behaviour; `--mode agentic` alone is the quick second opinion.
 ## When to run (the stage)
 
 Run **after every MP4 render, before the review handoff** — same slot as the
-other gate-ledger populators in AGENTS.md Validation step 6:
+other gate-ledger populators in CLAUDE.md Validation step 6:
 
 ```
 render → narration-qc → dead-time → seam-gate → machine-qc → handoff URLs

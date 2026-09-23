@@ -146,6 +146,7 @@ const selOf = (r, t) => { if (t.selector) return { selector: t.selector, center:
 const presses = screenRows.flatMap(r => r.triggers.map(t => `- ${t.scene}: ${t.action} — ${t.target}${t.t != null ? ` · ${t.t.toFixed(2)} s${fps ? ` · f${Math.round(t.t * Number(fps))}` : ''}` : ''}${selOf(r, t) ? ` · \`${selOf(r, t).selector}\`${selOf(r, t).center ? ` · page px ${selOf(r, t).center.join(',')}` : ''}` : ' · selector not measured'} (\`${rel(r.folder)}\`)`));
 if (presses.length) { L.push(''); L.push('Presses the film performs on the snapshots (the build session drives them through the DOM, never by navigating; a target it cannot find is reported, not invented):'); L.push(''); L.push(...presses); }
 L.push('');
+{ const need = rows.filter(r => r.our?.rasters_needed?.length).flatMap(r => r.our.rasters_needed.map(n => `- ${r.ref_scene}: ${n.why} → \`manifest.mjs <slug> --select "${n.selector || '(no selector measured)'}" --dpr ${n.dpr}\``)); if (need.length) { L.push('Rasters the build needs beyond the mount (a soft iframe above 2×, a clone that leaves the mount):'); L.push(''); L.push(...need); L.push(''); } }
 L.push('## Open questions');
 L.push('');
 if (openQuestions) { L.push('From the storyboard. The build session asks these first, or takes the storyboard\'s stated default and says so; it never resolves one silently.'); L.push(''); L.push(openQuestions); }
@@ -198,6 +199,8 @@ L.push('');
   if (multiRows.length) missing.push(`${multiRows.length} scene(s) with several camera landings but not a measured anchor per landing (${multiRows.map(r => r.ref_scene).join(', ')}) — fill our.landing_anchors[] and re-run the measure pass`);
   const roles = ['bed', 'emphasis', 'cursor', 'ink']; const io2 = map?.identity_ours || {}; const noRole = roles.filter(k => !(io2.roles && String(io2.roles[k] || '').trim()));
   if (map && (io.palette || []).length && noRole.length) missing.push(`identity_ours.roles missing ${noRole.join(', ')} — the editorial colours ours uses (a decision, not the reference's)`);
+  const ts = io2.type_scale || {}; const noScale = ['hero', 'subline', 'cta'].filter(k => !(String(ts[k] || '').trim()));
+  if (map && (io.palette || []).length && noScale.length) missing.push(`identity_ours.type_scale missing ${noScale.join(', ')} — sizes as % of stage height (the reference's Identity sizes are the starting point)`);
 }
 const steps = st.steps || {};
 const complete = missing.length === 0 && ['1', '2', '3'].every(k => steps[k] === 'done');

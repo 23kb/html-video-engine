@@ -54,7 +54,7 @@ at that exact second.
 
 ## ⛔ The five cost rules (from the retro — worst first)
 
-1. **Edit only what was reported. One change → one verifiable result.** Don't "improve" adjacent scenes. The biggest past waste was edit → revert → redo from doing more than asked. (Edge of AGENTS.md G3 / §3.)
+1. **Edit only what was reported. One change → one verifiable result.** Don't "improve" adjacent scenes. The biggest past waste was edit → revert → redo from doing more than asked. (Edge of CLAUDE.md G3 / §3.)
 2. **Ship a reasonable first pass, then let the eye review — don't over-deliberate blind.** Long reasoning to get a build "perfect" when you cannot see it has near-zero value. Make a sound choice, hand over the `?scene=` URL, iterate on the actual feedback.
 3. **Batch all edits for a scene in one pass; one syntax check at the end.** Don't re-read a region you just wrote. Don't one-edit-per-message.
 4. **Reuse selectors already proven in the file** (e.g. `tbody#the-list`). Inspect a snapshot only when the selector is genuinely unknown — and then read its `outline.md` first (below), not the raw `index.html`.
@@ -63,7 +63,7 @@ at that exact second.
 ## ⛔ Workflow contracts (do not violate during QC)
 
 ### Read `outline.md` FIRST for any selector/interaction question
-`products/<key>/snapshots/<slug>/outline.md` is the per-snapshot sidecar (~1.5K tokens): the author-targetable selectors + which `interactivity.js` transitions actually fire. Read it before `inspect-snapshot.js`, before grep, and NEVER `Read` the raw `index.html` (often ~1 MB — AGENTS.md G4). `catalog.md` is the deep fallback when the outline's capped lists say "+N more".
+`products/<key>/snapshots/<slug>/outline.md` is the per-snapshot sidecar (~1.5K tokens): the author-targetable selectors + which `interactivity.js` transitions actually fire. Read it before `inspect-snapshot.js`, before grep, and NEVER `Read` the raw `index.html` (often ~1 MB — CLAUDE.md G4). `catalog.md` is the deep fallback when the outline's capped lists say "+N more".
 
 ### State-change hierarchy — drive the real UI, don't fake it
 When a scene changes product state, use the highest-applicable rung (canonical: the plan's hierarchy + INV):
@@ -73,7 +73,7 @@ When a scene changes product state, use the highest-applicable rung (canonical: 
 4. **NEVER** — capture or fabricate a new snapshot to fake an in-page change.
 
 ### Preserve the literal verb (G1)
-If the report says zoom, implement a camera transform — not a cross-fade. morph → the same element changes shape — not a swap of two elements. move/click/type/fade each have a literal implementation (AGENTS.md G1 table). If the literal verb is genuinely hard, say so and ask — do not silently substitute and ship.
+If the report says zoom, implement a camera transform — not a cross-fade. morph → the same element changes shape — not a swap of two elements. move/click/type/fade each have a literal implementation (CLAUDE.md G1 table). If the literal verb is genuinely hard, say so and ask — do not silently substitute and ship.
 
 ### State the target back with evidence before coding (G2)
 When the report names a part of the UI (especially a class/ID), find the **exact** handle in the snapshot's `outline.md` and state it back in one line before editing: *"Target is `.wpforms-field[data-field-id]`; confirming."* A one-line correction is far cheaper than a wrong build.

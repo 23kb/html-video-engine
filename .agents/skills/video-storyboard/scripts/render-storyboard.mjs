@@ -10,13 +10,14 @@
 
 import fs from 'node:fs';
 import path from 'node:path';
-import { parseArgs, usage, loadMap, resolveSpec, readJson, exists, timeline, copyById, isEditorial, cell, t2, fpsOf, triggerTable, rigTable, rigLandings, cameraHeader } from './lib.mjs';
+import { parseArgs, usage, loadMap, resolveSpec, readJson, exists, timeline, copyById, isEditorial, cell, t2, fpsOf, triggerTable, rigTable, rigLandings, cameraHeader, fixEase, easeFromTable } from './lib.mjs';
 const r3 = x => Math.round(x * 1000) / 1000;
 
 const args = parseArgs(process.argv.slice(2), { out: 'string' });
 if (!args._[0]) usage('usage: render-storyboard.mjs <folder | scene-map.json> [--out file]');
 const { folder, map } = loadMap(args._[0]);
 const { spec } = resolveSpec(map, folder);
+map.__spec = spec; // for ease-name correction by bezier (never written back)
 const screensFile = path.join(folder, 'screens-needed.json');
 const screens = exists(screensFile) ? readJson(screensFile) : null;
 const tl = timeline(map);
@@ -109,7 +110,7 @@ rows.forEach((r, i) => {
   }
 });
 for (const { s, ourT, carrier, skipped } of seamLines) {
-  push(`| ${s.id ?? ''} | ${t2(ourT)} | ${t2(s.t)} | ${s.kind}${s.opens_film ? ' (opens the film)' : ''}${s.loop_join ? ' (loop join)' : ''}${skipped?.length ? ` — ref joins to ${skipped.join(', ')} (dropped); here it joins the next kept scene` : ''} | ${s.frames_24 ?? '?'} f | ${cell(s.outgoing || 'none')} | ${cell(s.incoming || 'none')} | ${cell(carrier ? `${carrier} (ref: ${s.carrier || 'none'})` : `— not set (ref: ${s.carrier || 'none'})`)} | ${s.on_onset ? 'yes' : 'no'}${s.settle_on_onset ? ' (settle)' : ''} | ${s.ease ?? '—'} | ${cell(s.evidence)} |`);
+  push(`| ${s.id ?? ''} | ${t2(ourT)} | ${t2(s.t)} | ${s.kind}${s.opens_film ? ' (opens the film)' : ''}${s.loop_join ? ' (loop join)' : ''}${skipped?.length ? ` — ref joins to ${skipped.join(', ')} (dropped); here it joins the next kept scene` : ''} | ${s.frames_24 ?? '?'} f | ${cell(s.outgoing || 'none')} | ${cell(s.incoming || 'none')} | ${cell(carrier ? `${carrier} (ref: ${s.carrier || 'none'})` : `— not set (ref: ${s.carrier || 'none'})`)} | ${s.on_onset ? 'yes' : 'no'}${s.settle_on_onset ? ' (settle)' : ''} | ${s.ease ? (fixEase(easeFromTable(map, s.ease)).gsap) : '—'} | ${cell(s.evidence)} |`);
 }
 push('');
 

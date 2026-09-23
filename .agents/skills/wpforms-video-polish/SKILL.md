@@ -44,7 +44,7 @@ Verification is **static only**:
 
 See INV-9 in `docs/video-architecture-invariants-2026-05-12.md` for the canonical list (no `Date.now()`, no unseeded `Math.random()`, no `fetch()` at runtime, no `repeat: -1`). The most common polish-suggestion that violates this is `repeat: -1` on ambient atmosphere — reject it, don't apply it. Use `boundedRepeats(cycle, visible)` from `videos/_shared/motion-primitives.js` instead.
 
-### 4. Do NOT touch protected core (AGENTS.md)
+### 4. Do NOT touch protected core (CLAUDE.md)
 
 `videos/_shared/*` libraries, `products/<key>/snapshots/` captures + their `_shared` assets, validators/smoke tools, `capture/capture.js`.
 
@@ -62,7 +62,7 @@ Note these explicitly in the plan as "do not touch". Polish goes around them, no
 
 ### 6. Reach for primitives, not hand-rolled motion
 
-If a polish suggestion would re-implement a primitive (custom cursor element, single-tween camera, `gsap.to(menu)` for a faux native-select, etc.), use the library instead. See `wpforms-primitives` skill. The AGENTS.md anti-pattern catalog applies just as hard during polish as during authoring.
+If a polish suggestion would re-implement a primitive (custom cursor element, single-tween camera, `gsap.to(menu)` for a faux native-select, etc.), use the library instead. See `wpforms-primitives` skill. The CLAUDE.md anti-pattern catalog applies just as hard during polish as during authoring.
 
 ### 7. Motion audit before final handoff
 
@@ -102,7 +102,7 @@ Typical polish categories to cover in the brief:
 - **Filter/shadow/blur** polish.
 - **Handoff smoothness** — frozen-camera gaps during snapshot crossfades. Run motion concurrent with the swap so motion masks the asset change.
 - **Cursor / motion-primitive** quality.
-- **AGENTS.md anti-patterns** — hand-mounted cursors, single-tween cameras, iframe swaps to show state changes, faux native `<select>`s, mock iframe siblings painting over real iframes, invented UI fragments.
+- **CLAUDE.md anti-patterns** — hand-mounted cursors, single-tween cameras, iframe swaps to show state changes, faux native `<select>`s, mock iframe siblings painting over real iframes, invented UI fragments.
 
 ### Step 3 — Vet each suggestion against rules 3–6
 
@@ -213,7 +213,7 @@ When polish lands, the user wants a punch list — not a wall of text:
 N. B13 crossfade → zoom-out — separate anticipation removed, zoom-out concurrent with crossfade (motion masks the snapshot swap)
 
 **Skipped intentionally**
-- `atmoDrift repeat: -1` — violates AGENTS.md determinism rule
+- `atmoDrift repeat: -1` — violates CLAUDE.md determinism rule
 - `#sp3` transformOrigin mid-rotation — visual snap risk
 
 Backup at: videos/<slug>/index.before-polish-<date>.backup.html

@@ -15,11 +15,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { pathToFileURL } from 'node:url';
-import { parseArgs, usage, loadMap, resolveSpec, writeJson, timeline, copyById, isEditorial, findSkill1Script, skill1Missing, r3, fpsOf, triggersOf, triggerTable, rigTable, cameraHeader, cell } from './lib.mjs';
+import { parseArgs, usage, loadMap, resolveSpec, writeJson, timeline, copyById, isEditorial, findSkill1Script, skill1Missing, r3, fpsOf, triggersOf, triggerTable, rigTable, cameraHeader, cell, fixEase } from './lib.mjs';
 
 const TARGETS = ['hyperframes', 'claude-design', 'after-effects', 'remotion', 'generic'];
 import { claudeDesignSections } from './claude-design.mjs';
-const args = parseArgs(process.argv.slice(2), { target: 'string', fps: 'number', renderer: 'string', wpm: 'string' });
+const args = parseArgs(process.argv.slice(2), { target: 'string', fps: 'number', renderer: 'string', wpm: 'string', 'with-ref': 'boolean' });
 if (!args._[0]) usage(`usage: render-brief.mjs <folder | scene-map.json> --target <${TARGETS.join('|')}> [--fps N] [--renderer <path>]`);
 const { folder, map } = loadMap(args._[0]);
 const target = args.target || map.target?.tool || 'generic';
@@ -61,6 +61,7 @@ rows.forEach((r, i) => {
   out.structure.scenes.push({
     ...sc, in: tm.in, out: tm.out,
     subject: ourSubject(r, sc.subject),
+    composition: o.composition ? `${o.composition} [ref: ${sc.composition}]` : (sc.composition ? `[ref] ${sc.composition}` : sc.composition),
     hold_carrier: o.motion ? `${o.motion} [ref: ${sc.hold_carrier}]` : sc.hold_carrier,
     note: [o.copy?.length ? `Copy: ${copyText(o.copy)}` : '', trig ? `Triggers: ${trig}` : '', o.in_frame_at_result ? `In frame at the result: ${o.in_frame_at_result}` : '', (o.forbidden_overlaps || []).length ? `Forbidden overlaps: ${o.forbidden_overlaps.join('; ')}` : '', o.status === 'override' ? `OVERRIDE: ${o.override_reason}` : '', o.note || '', sc.note ? `Ref note: ${sc.note}` : '', tm.ratio != null && tm.ratio !== 1 ? `Time ratio ${tm.ratio} (ref ${r3(r.ref_out - r.ref_in)} s → ours ${tm.duration} s)` : ''].filter(Boolean).join(' — ') || undefined,
   });
@@ -80,22 +81,29 @@ for (const s of spec.seams || []) {
   const dur = (s.frames_24 || 1) / 24;
   const start = from.r.seam_out?.t != null ? remap(from.r.seam_out.t) : null;
   const t = start != null ? r3(start) : r3(from.tm.out - dur);
-  out.seams.push({ ...s, t, t_end: r3(t + dur), cue: r3(from.tm.out), carrier: ours(from.r).carrier ? `${ours(from.r).carrier} [ref: ${s.carrier}]` : s.carrier, note: [s.note, toDropped ? `ref joined to ${s.to_scene}, dropped here; the incoming composition is the next kept scene` : ''].filter(Boolean).join(' — ') || undefined });
+  const tagRef = x => x && typeof x === 'object' ? { ...x, ...(x.amount ? { amount: `[ref] ${x.amount}` } : {}), ...(x.note ? { note: `[ref] ${x.note}` } : {}) } : x;
+  out.seams.push({ ...s, t, t_end: r3(t + dur), cue: r3(from.tm.out), ease: fixEase(s.ease), outgoing: tagRef(s.outgoing), incoming: tagRef(s.incoming), carrier: ours(from.r).carrier ? `${ours(from.r).carrier} [ref: ${s.carrier}]` : s.carrier, note: [s.note, toDropped ? `ref joined to ${s.to_scene}, dropped here; the incoming composition is the next kept scene` : ''].filter(Boolean).join(' — ') || undefined });
 }
 
 // landings, text, ui, pacing, sound — re-timed; anything in a dropped scene vanishes
 const retime = (list, key = 't') => (list || []).map(x => { const t = remap(x[key]); return t == null ? null : { ...x, [key]: t }; }).filter(Boolean);
 out.camera = { ...(spec.camera || {}) };
 // landings: re-timed; the subject comes from the scene the ORIGINAL time falls in
-out.camera.landings = (spec.camera?.landings || []).map(l => { const t = remap(l.t); if (t == null) return null; const at = rowAt(l.t); const r = at?.r; return { ...l, t, subject: r ? ourSubject(r, l.subject) : l.subject }; }).filter(Boolean);
+out.camera.landings = (spec.camera?.landings || []).map(l => { const t = remap(l.t); if (t == null) return null; const at = rowAt(l.t); const r = at?.r; const la = r ? (ours(r).landing_anchors || []).find(a => Math.abs((Number(a.t) ?? -1) - l.t) < 0.03 && (a.anchor || '').trim()) : null; const subj = la ? `${la.anchor}${Array.isArray(la.anchor_px) ? ` (page px ${la.anchor_px.join(',')})` : ''} [ref: ${l.subject}]` : (r ? ourSubject(r, l.subject) : l.subject); return { ...l, t, subject: subj, ease: fixEase(l.ease) }; }).filter(Boolean);
 out.camera.landings.forEach((l, k, arr) => { const next = arr[k + 1]; l.hold = r3((next ? next.t : tl.total) - l.t - (l.duration || 0)); });
-out.text_motion = (spec.text_motion || []).map(tm => { const t = remap(tm.t); if (t == null) return null; const at = rowAt(tm.t); const c = at ? copyText(ours(at.r).copy) : ''; return { ...tm, t, text_role: c ? `${tm.text_role} → ours: ${c}` : tm.text_role }; }).filter(Boolean);
+out.text_motion = (spec.text_motion || []).map(tm => { const t = remap(tm.t); if (t == null) return null; const at = rowAt(tm.t); const c = at ? copyText(ours(at.r).copy) : ''; const real = at && !isEditorial(at.r); const role = real ? `real UI text, rendered by the mounted page — no type-on unless our.motion says so (${ours(at.r).motion ? 'ours: ' + ours(at.r).motion.slice(0, 120) : 'no motion of ours'}) [ref: ${tm.text_role}]` : (c ? `ours: ${c} [ref: ${tm.text_role}]` : tm.text_role); return { ...tm, t, text_role: role, ease: fixEase(tm.ease) }; }).filter(Boolean);
 const u = spec.ui_motion || {};
-out.ui_motion = { ...u, clicks: retime(u.clicks), payoffs: retime(u.payoffs), dropdowns: retime(u.dropdowns), card_rises: retime(u.card_rises),
-  typing_beats: (u.typing_beats || []).map(b => { const i = remap(b.in), o = remap(Math.max(b.in, b.out - 0.001)); if (i == null || o == null) return null; const at = rowAt(b.in); const c = at ? copyText(ours(at.r).copy) : ''; return { ...b, in: i, out: r3(o + 0.001), text_role: c ? `${b.text_role} → ours: ${c}` : b.text_role }; }).filter(Boolean) };
+const ourClick = c => { const at = rowAt(c.t); if (!at) return c; const tr = (ours(at.r).triggers || []).find(x => x && x.target && Math.abs((Number(x.ref_t) ?? -1) - c.t) < 0.06) || (ours(at.r).triggers || []).find(x => x && x.target && (x.action || 'press') === 'press'); return tr ? { ...c, target: `${tr.target}${tr.selector ? ` \`${tr.selector}\`` : ''} [ref: ${c.target}]`, reaction: `${ours(at.r).in_frame_at_result ? 'ours: ' + ours(at.r).in_frame_at_result + ' ' : ''}[ref: ${c.reaction}]` } : c; };
+const ourPayoff = p => { const at = rowAt(p.t); if (!at) return p; const o = ours(at.r); return { ...p, what: `${o.in_frame_at_result ? 'ours: ' + o.in_frame_at_result : (o.motion ? 'ours: ' + o.motion.slice(0, 160) : 'ours: (no result named — fill in_frame_at_result)')} [ref: ${p.what}]` }; };
+out.ui_motion = { ...u, clicks: retime(u.clicks).map(ourClick), payoffs: retime(u.payoffs).map(ourPayoff), dropdowns: retime(u.dropdowns), card_rises: retime(u.card_rises),
+  typing_beats: (u.typing_beats || []).map(b => { const i = remap(b.in), o = remap(Math.max(b.in, b.out - 0.001)); if (i == null || o == null) return null; const at = rowAt(b.in); const c = at ? copyText(ours(at.r).copy) : ''; if (at && !isEditorial(at.r)) return { ...b, in: i, out: r3(o + 0.001), text_role: `real UI text — the page renders it; no typing unless our.motion says so [ref: ${b.text_role}]` }; return { ...b, in: i, out: r3(o + 0.001), text_role: c ? `${b.text_role} → ours: ${c}` : b.text_role }; }).filter(Boolean) };
 out.pacing = { ...(spec.pacing || {}), holds: retime(spec.pacing?.holds) };
 if (spec.sound?.sync_points) out.sound = { ...spec.sound, sync_points: retime(spec.sound.sync_points) };
-out.do_not = [...(spec.do_not || []), ...rows.filter(r => ['override', 'added'].includes(r.our?.status)).map(r => `STORYBOARD OVERRIDE ${r.ref_scene || 'added'}: ${r.our.override_reason}`)];
+out.eases = (spec.eases || []).map(fixEase);
+// The brief speaks in our nouns: the "[ref: …]" brackets (the reference's subjects and copy) are dropped unless --with-ref.
+// The "[ref] " tag on seam mechanics stays — those are the reference's mechanics, applied to our elements.
+if (!args['with-ref']) { const strip = v => typeof v === 'string' ? v.replace(/\s*\[ref:[^\]]*\]/g, '').replace(/\s{2,}/g, ' ').trim() : v; (function walk(o) { if (Array.isArray(o)) { o.forEach((x, i) => { if (typeof x === 'string') o[i] = strip(x); else walk(x); }); return; } if (o && typeof o === 'object') for (const k of Object.keys(o)) { if (k === 'evidence_rules') continue; if (typeof o[k] === 'string') o[k] = strip(o[k]); else walk(o[k]); } })(out); }
+out.do_not = [...(spec.do_not || []).map(d => `[ref] ${d}`), ...rows.filter(r => ['override', 'added'].includes(r.our?.status)).map(r => `STORYBOARD OVERRIDE ${r.ref_scene || 'added'}: ${r.our.override_reason}`)];
 out.evidence_rules = (spec.evidence_rules || '') + ' Scene subjects, hold carriers, seam carriers and text roles carry OUR content with the reference\'s in brackets; times are re-mapped through the storyboard\'s scene map (see storyboard.md § Scene map for the ratio per scene).';
 
 const oursFile = path.join(folder, 'spec-ours.json');
@@ -117,12 +125,12 @@ if (fs.existsSync(briefFile)) {
   const io = map.identity_ours || {};
   const S = ['', '> The sections above describe the reference\'s motion in the reference\'s nouns (seam ledger outgoing / incoming, pacing, UI motion, sound sync): copy the motion, never the nouns. Ours are in the tables below and in the storyboard rows.', '',
     '## Stage and mount (from the storyboard)', '',
-    `- Stage: ${stage.width}×${stage.height} at ${fps} fps. Every fill in this brief is a fraction of this stage; the reference's export size and its panel are not the frame.`,
+    `- Stage: ${stage.width}×${stage.height} at ${fps} fps. The fill values are the reference's framing; our zoom is what the rig table gives (derived from fill and the measured box where the spec had none). The reference's export size and its panel are not the frame.`,
     '- Base scale: zoom 1 (scale 100 %) = the mount at its capture width, one page px = one stage px; zoom 2 shows half the mount width across the stage. Anchor px are page px of the capture; the camera centres that point.',
     ...(mounts.size ? [...mounts.values()].map(m => `- Mount \`${m.folder}\`: captured ${m.width} px wide, document ${m.doc_height ?? '?'} px tall. Mount it at ${m.width} px wide and let the camera scale the mount; anchor px below are page px of that capture (from its targets.json).`) : ['- Mounts: not measured yet — run fill-anchors.mjs after the snapshots exist.']),
     ...(map.spec?.presentation_chrome ? [`- The reference sat in a frame of its own: ${String(map.spec.presentation_chrome).slice(0, 220)}`] : []), '',
     '## Identity — ours (from the storyboard)', '',
-    ...((io.palette || []).length || (io.type || []).length ? [`- Palette: ${(io.palette || []).join(' · ') || '—'}`, `- Type: ${(io.type || []).join(' · ') || '—'} — an embeddable family (a woff2 you ship); a system stack renders differently per machine`, `- Logo: ${io.logo || '—'}`, `- Editorial roles (ours, not the reference's): ${['bed', 'emphasis', 'cursor', 'ink', 'trail'].map(k => `${k} = ${io.roles?.[k] || 'NOT DECIDED — the reference\'s above'}`).join(' · ')}`, ...(io.notes ? [`- ${io.notes}`] : [])] : ['- Not filled: the Identity section above is the reference\'s. Fill identity_ours in scene-map.json (palette hex, font families, logo asset, roles: bed / emphasis / cursor / ink / trail) and re-render.']), '',
+    ...((io.palette || []).length || (io.type || []).length ? [`- Palette: ${(io.palette || []).join(' · ') || '—'}`, `- Type: ${(io.type || []).join(' · ') || '—'} — an embeddable family (a woff2 you ship); a system stack renders differently per machine`, `- Logo: ${io.logo || '—'}`, `- Editorial roles (ours, not the reference's): ${['bed', 'emphasis', 'cursor', 'ink', 'trail'].map(k => `${k} = ${io.roles?.[k] || 'NOT DECIDED — the reference\'s above'}`).join(' · ')}`, `- Type scale (% of stage height): ${io.type_scale && Object.keys(io.type_scale).length ? Object.entries(io.type_scale).map(([k, v]) => `${k} ${v}`).join(' · ') : 'NOT DECIDED — the reference\'s Identity sizes above are the starting point (hero, subline, cta at least)'}`, ...(io.notes ? [`- ${io.notes}`] : [])] : ['- Not filled: the Identity section above is the reference\'s. Fill identity_ours in scene-map.json (palette hex, font families, logo asset, roles: bed / emphasis / cursor / ink / trail) and re-render.']), '',
     '## Our motion per scene (from the storyboard)', '',
     '| scene | screen / state | visible | motion | carrier out | anchor (page px · selector) |', '|---|---|---|---|---|---|',
     ...rows.filter(r => r.our?.status !== 'dropped').map(r => { const o = ours(r); const a = o.anchor ? `${o.anchor}${Array.isArray(o.anchor_px) ? ` · ${o.anchor_px.join(',')}` : ' · not measured'}${o.anchor_selector ? ` · \`${o.anchor_selector}\`` : ''}` : '—'; return `| ${r.ref_scene || '(added)'} | ${isEditorial(r) ? 'editorial' : `${o.screen} / ${o.state || 'default'}`} | ${cell(o.visible || '')} | ${cell(o.motion || '')} | ${cell(o.carrier || '')} | ${cell(a)} |`; }), '',
@@ -134,7 +142,13 @@ if (fs.existsSync(briefFile)) {
     ...triggerTable(map, tl, fps), '',
     '## Literal copy (from the storyboard)', '',
     ...((map.copy || []).length ? ['| id | where | scene | text |', '|---|---|---|---|', ...map.copy.map(c => `| ${c.id} | ${cell(c.where)} | ${cell((c.scene || []).join?.(', ') ?? c.scene)} | ${cell(c.text)} |`)] : ['_(no copy rows)_']), ''];
-  if (target === 'claude-design') S.push(...claudeDesignSections({ map, rows, ours, isEditorial, cell, stage, wpm: args.wpm }));
+  if (target === 'claude-design') {
+    // Ours replace the spec renderer's OM_SCENES and focus-point table: one literal, one camera table.
+    let txt = fs.readFileSync(briefFile, 'utf8');
+    for (const h of ['## OM_SCENES (the outline — write this literal first)', '## Camera as focus points (fx, fy, s)']) { const i = txt.indexOf(h); if (i < 0) continue; const j = txt.indexOf('\n## ', i + h.length); txt = txt.slice(0, i) + `${h.split(' (')[0]} — see the storyboard's section below (ours).\n\n` + (j < 0 ? '' : txt.slice(j + 1)); }
+    fs.writeFileSync(briefFile, txt, 'utf8');
+    S.push(...claudeDesignSections({ map, rows, ours, isEditorial, cell, stage, wpm: args.wpm }));
+  }
   fs.appendFileSync(briefFile, S.join('\n') + '\n', 'utf8');
   console.log(`appended the rig camera table, triggers / results / overlaps and the copy table to ${briefFile}`);
 }

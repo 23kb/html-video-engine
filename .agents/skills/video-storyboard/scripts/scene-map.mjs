@@ -59,6 +59,10 @@ const seamRow = s => s ? ({
 
 const rows = scenes.map((sc, i) => {
   const so = seamOutOf(sc), si = seamInOf(sc);
+  // A landing that starts inside the seam window before a boundary is the INCOMING scene's: a macro that arrives
+  // through a blur push, a whip that lands in the next composition. Its anchor is the destination, never the start.
+  const prevSo = i > 0 ? seamOutOf(scenes[i - 1]) : null; const winIn = prevSo ? (prevSo.frames_24 || 0) / 24 : 0, winOut = so ? (so.frames_24 || 0) / 24 : 0, nextSc = scenes[i + 1];
+  const landingBelongs = l => l.t >= sc.in - winIn - 0.03 && l.t < (nextSc ? nextSc.in - winOut : sc.out) - 0.03;
   const refDur = r3(sc.out - sc.in);
   // A row owns its seam out: its span runs to the next scene's in (or the end of the film), so
   // the rows tile the timeline and the seam starts at (span end − its frames), never at the end.
@@ -72,7 +76,7 @@ const rows = scenes.map((sc, i) => {
     ref_repeats: sc.repeats ?? null, ref_note: sc.note ?? '', ref_confidence: sc.confidence ?? null,
     ...(si ? { seam_in: seamRow(si) } : {}),
     seam_out: seamRow(so),
-    landings: landings.filter(l => inScene(l.t, sc)).map(l => ({
+    landings: landings.filter(landingBelongs).map(l => ({
       t: l.t, subject: l.subject, fill: l.fill ?? null, fill_basis: l.fill_basis ?? null, zoom: l.zoom ?? null,
       move_in: l.move_in, duration: l.duration ?? 0, hold: l.hold ?? null, movement_class: l.movement_class,
       ease: l.ease ? { gsap: l.ease.gsap ?? null, cubic_bezier: l.ease.cubic_bezier ?? null } : null, evidence: ev(l.evidence), note: l.note ?? '',
@@ -100,7 +104,7 @@ const rows = scenes.map((sc, i) => {
       in_frame_at_result: '', forbidden_overlaps: [],
       anchor: '', anchor_px: null, anchor_selector: '', mount: null, rotation_deg: 0,
       // One anchor per reference landing in this scene: a glide inside a scene lands on a different element than the cut it started from.
-      landing_anchors: landings.filter(l => inScene(l.t, sc)).map(l => ({ t: l.t, ref_subject: l.subject || '', anchor: '', anchor_px: null, anchor_selector: '' })),
+      landing_anchors: landings.filter(landingBelongs).map(l => ({ t: l.t, ref_subject: l.subject || '', anchor: '', anchor_px: null, anchor_selector: '' })),
       duration: r3(spanDur * ratio),
       status: 'kept', override_reason: '', note: '',
     },

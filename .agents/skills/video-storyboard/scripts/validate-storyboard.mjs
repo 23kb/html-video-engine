@@ -41,6 +41,14 @@ for (const [i, q] of (map.open_questions || []).entries()) if (!/default/i.test(
 { const un = rows.filter(r => r.our?.status !== 'dropped' && !isEditorial(r) && (r.our?.anchor || '').trim() && !Array.isArray(r.our?.anchor_px)); if (un.length) warn(`${un.length} row(s) have an anchor but no anchor_px (${un.map(r => r.ref_scene).join(', ')}) - after the snapshots exist run fill-anchors.mjs --snapshots <root>`); }
 // A scene with more than one landing lands on more than one element: every landing after the first needs its own anchor.
 { const multi = rows.filter(r => r.our?.status !== 'dropped' && !isEditorial(r) && (r.landings || []).length > 1 && ((r.our?.landing_anchors || []).filter(a => (a?.anchor || '').trim()).length < (r.landings || []).length)); if (multi.length) warn(`${multi.length} row(s) have several landings but not an anchor per landing (${multi.map(r => r.ref_scene).join(', ')}) - fill our.landing_anchors[].anchor (a glide lands on a different element than the cut it left)`); }
+// Once identity_ours.roles exist, rows name the role (the bed, the emphasis colour), never the reference's colour.
+{ const roles = map.identity_ours?.roles || {}; if (Object.keys(roles).length) { const re = /\b(blue|cyan|teal|magenta|purple|violet|pink|red|green|yellow|amber|navy|indigo|turquoise)\b|#[0-9a-f]{6}\b/i; const bad = rows.filter(r => r.our?.status !== 'dropped' && re.test(`${r.our?.visible || ''} ${r.our?.motion || ''}`)).map(r => r.ref_scene); if (bad.length) warn(`${bad.length} row(s) name a colour in visible / motion (${bad.join(', ')}) - say the role (the bed, the emphasis colour, the cursor) so identity_ours.roles decides it; the reference's colours are not ours`); } }
+// A seam of kind "other" has no recipe: our.carrier and our.motion must say what OUR elements do at that join.
+{ const oth = rows.filter(r => r.our?.status !== 'dropped' && /^other$/i.test(String(r.seam_out?.kind || '')) && !((r.our?.carrier || '').trim() && (r.our?.motion || '').trim())); if (oth.length) warn(`${oth.length} seam(s) of kind "other" without our carrier + motion (${oth.map(r => r.ref_scene).join(', ')}) - describe the join in our nouns, or pick the nearest vocabulary kind in the spec`); }
+// A travelled move whose destination equals its start (same anchor px, same zoom) is a pan with nowhere to go.
+{ const seq = []; for (const r of rows) { if (r.our?.status === 'dropped') continue; const o = r.our || {}; for (const l of (r.landings || [])) { const la = (o.landing_anchors || []).find(a => Math.abs((Number(a.t) ?? -1) - l.t) < 0.03 && Array.isArray(a.anchor_px)); const px = la ? la.anchor_px : (isEditorial(r) ? null : o.anchor_px); seq.push({ scene: r.ref_scene, t: l.t, move: l.move_in, dur: l.duration || 0, px, zoom: l.zoom }); } }
+  const dead = []; for (let k = 1; k < seq.length; k++) { const a = seq[k - 1], b = seq[k]; if (b.dur > 0 && b.move !== 'cut' && b.move !== 'hold' && Array.isArray(a.px) && Array.isArray(b.px) && a.px[0] === b.px[0] && a.px[1] === b.px[1] && (a.zoom ?? null) === (b.zoom ?? null)) dead.push(`${b.scene}@${b.t} (${b.move})`); }
+  if (dead.length) warn(`${dead.length} travelled move(s) land where they start (${dead.join(', ')}) - a whip or glide needs a destination anchor that differs from the previous landing`); }
 if (map.version !== 1) err(`scene-map.json version ${map.version} (expected 1)`);
 if (!rows.length) err('scene-map.json has no rows');
 
@@ -132,7 +140,8 @@ let screens = null;
 if (!exists(screensFile)) { if (needs.size) err(`screens-needed.json missing and the map names ${needs.size} screen × state pair(s) — run screens.mjs`); else ok('no screens needed (all editorial)'); }
 else {
   screens = readJson(screensFile);
-  const have = new Set((screens.screens || []).map(s => `${s.slug}::${s.state || 'default'}`));
+  // States screens.mjs derives from presses (`required_for`) are captures the build needs, not rows of the map; they are never "stale".
+  const have = new Set((screens.screens || []).filter(s => !s.required_for).map(s => `${s.slug}::${s.state || 'default'}`));
   for (const [k, sc] of needs) if (!have.has(k)) err(`screen × state ${k.replace('::', ' / ')} (scenes ${sc.join(', ')}) is not in screens-needed.json — re-run screens.mjs`);
   for (const k of have) if (!needs.has(k)) warn(`screens-needed.json lists ${k.replace('::', ' / ')} which no row needs any more (stale) — re-run screens.mjs`);
   if (needs.size && [...needs.keys()].every(k => have.has(k))) ok(`${needs.size} screen × state pair(s) all in screens-needed.json`);

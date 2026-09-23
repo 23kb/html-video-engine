@@ -1,6 +1,6 @@
 ---
 name: video-pipeline
-description: "The driver for the video-material skills: runs reference-motion-spec → video-storyboard → html-snapshot in order for one ask, reports progress after each step, and keeps a state file so any later ask knows what is done and what is next. Use when asked to make a video like <clip> about <topic>, a video from this reference and this page, continue the video, where are we, which skill do I run now, write the handoff, hand off the video material, video-handoff.md."
+description: "Video material from a reference clip: analyzes the clip into a motion spec, storyboards a topic against it, freezes the real UI as HTML snapshots, and writes one handoff for HyperFrames, Claude Design, After Effects, Remotion or HTML. Use for: make a video like <clip> about <topic>, analyze this reference, motion spec, storyboard this, snapshot this page, continue the video, write the handoff."
 ---
 
 # video-pipeline
@@ -8,7 +8,7 @@ description: "The driver for the video-material skills: runs reference-motion-sp
 Three skills make the **material** for a video. This one runs them in the right order, keeps
 score, and ends by writing `video-handoff.md`: the one file that maps every deliverable, which
 the user hands to the tool that builds the video. It does not build the video: the build happens
-afterwards in whatever tool the brief targets (HyperFrames, Codex Design, After Effects,
+afterwards in whatever tool the brief targets (HyperFrames, Claude Design, After Effects,
 Remotion, plain HTML), from that handoff.
 
 ## Say this
@@ -24,8 +24,10 @@ Remotion, plain HTML), from that handoff.
   hand, and it is not the storyboard skill's one-line "next step" pointer
 - "which skill do I run now" — routing only
 
-For a single step, use that skill directly: analyze a clip → `reference-motion-spec`;
-storyboard from a spec → `video-storyboard`; freeze a page → `html-snapshot`.
+For a single step, open that worker's own `SKILL.md` inside this folder and follow it as if it
+were the skill: analyze a clip → `reference-motion-spec/SKILL.md`; storyboard from a spec →
+`video-storyboard/SKILL.md`; freeze a page → `html-snapshot/SKILL.md`. Their scripts run by path
+from this folder, for example `node <this skill>/html-snapshot/scripts/freeze.mjs`.
 
 ## The order, and what each step produces
 
@@ -98,13 +100,23 @@ file still exists, and prints done / next / remaining. "Continue the video" and 
 start from that output. Never re-run a step whose output exists unless the user asks; say
 "spec exists from <date>, reusing" instead.
 
-## When a skill is missing
+## Layout — one skill, three workers inside it
 
-Check for `reference-motion-spec`, `video-storyboard`, `html-snapshot` under the project's
-`.Codex/skills/` or `~/.Codex/skills/`. If one is missing, say which step needs it and where
-to get it (`references/install.md`), then continue with the steps that can run. Skill 2 also
-borrows skill 1's brief renderer: without skill 1 installed, the storyboard writes but the
-brief does not.
+This folder is the whole set. Beside this file sit `scripts/` and `references/` (the driver's),
+and three worker folders, each a complete skill with its own `SKILL.md`, `scripts/` and
+`references/`:
+
+```
+video-pipeline/            ← this SKILL.md, scripts/status.mjs, scripts/handoff.mjs, references/
+  reference-motion-spec/   ← step 1: clip → motion spec (+ the library of four references)
+  video-storyboard/        ← step 2: spec + topic → storyboard, screens list, briefs
+  html-snapshot/           ← step 3: page → snapshot, gates, targets, manifest (needs `npm install` once)
+```
+
+When a step runs, read that worker's `SKILL.md` first and follow it; run its scripts by path from
+this folder. The workers find each other as siblings (the storyboard borrows the spec skill's brief
+renderer from `../reference-motion-spec/`), so the folder is moved or copied whole, never split.
+If a worker folder is missing, say which step needs it and stop that step; the others still run.
 
 ## What this skill never does
 

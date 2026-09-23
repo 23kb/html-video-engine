@@ -207,7 +207,7 @@ The motion-audit skill caps the maximum score at C/D/F when these are detected. 
 
 ### Designer principles
 
-Designer-grade pass (Emil Kowalski / Jakub Krehel / Jhey Tompkins): when the audit critique cites them by name, file-read `.agents/skills/design-motion-principles/SKILL.md` + its `references/` for the full per-designer material — it is NOT Skill-tool invocable (installed outside `.Codex/skills/`), and nothing fires it automatically. High-level summary:
+Designer-grade pass (Emil Kowalski / Jakub Krehel / Jhey Tompkins): when the audit critique cites them by name, file-read `.agents/skills/design-motion-principles/SKILL.md` + its `references/` for the full per-designer material — it is NOT Skill-tool invocable (installed outside `.claude/skills/`), and nothing fires it automatically. High-level summary:
 
 - **Emil Kowalski (UI motion):** every animation needs a purpose; default UI durations 180–240ms; exits should be faster than entrances; no animation on keyboard-driven hot paths.
 - **Jakub Krehel (animation principles):** identity continuity across beats; rhythmic-not-uniform pacing; the camera follows the protagonist, doesn't cut to staged shots.

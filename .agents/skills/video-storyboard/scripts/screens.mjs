@@ -47,6 +47,15 @@ for (const r of map.rows || []) {
   if (!e.page && o.page) e.page = o.page.trim();
 }
 
+// The state after every press is a capture too: tools that rebuild from rasters (After Effects, Claude Design,
+// Remotion) cannot flip a live DOM, and an HTML mount wants the truth of the result to check its flip against.
+const afterPress = [];
+for (const r of map.rows || []) {
+  if (r.our?.status === 'dropped' || isEditorial(r)) continue; const o = r.our;
+  for (const t of (o.triggers || [])) { if (!t || !t.target || (t.action || 'press') !== 'press') continue; if (!(o.in_frame_at_result || '').trim()) continue;
+    const slug = o.screen.trim(); const state = ((o.state || '').trim() || 'default'); const key = `${slug}::${state}::after::${t.target}`; if (afterPress.some(x => x.key === key)) continue;
+    afterPress.push({ key, slug, surface: (o.surface || '').trim() || (hints?.default_surface_for_app || 'app'), page: (o.page || '').trim(), state: `${state}--after-${String(t.target).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40)}`, visible: `the result of pressing ${t.target}: ${o.in_frame_at_result.trim()}`, scenes: [r.ref_scene || 'added'], capture: `states.mjs from state "${state}": press ${t.target}${t.selector ? ` (\`${t.selector}\`)` : ''}, then freeze the result`, required_for: 'targets that rebuild from rasters (after-effects, claude-design, remotion); optional for an HTML mount, which flips the DOM live' }); }
+}
 const screens = [...byKey.values()].map(e => {
   const surf = e.surface.toLowerCase();
   const h = hints?.surfaces?.[surf];
@@ -60,6 +69,7 @@ const screens = [...byKey.values()].map(e => {
   };
 });
 
+for (const a of afterPress) { const { key, ...rest } = a; screens.push(rest); }
 const out = {
   version: 1,
   topic: map.topic, slug: map.slug,

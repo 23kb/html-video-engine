@@ -5,7 +5,7 @@ description: "Use BEFORE starting any pure-editorial, ad-style, marketing, annou
 
 # WPForms Marketing / Ad-Style Videos
 
-The repo has three authoring paths (see `AGENTS.md` for the full table):
+The repo has three authoring paths (see `CLAUDE.md` for the full table):
 
 1. **Tutorial** — real WPForms product UI in an iframe (covered by `wpforms-video`).
 2. **Pure editorial / ad-style** — single self-contained HTML, no engine. First write = the `docs/examples/single-html-ad-skeleton.html` clone (INV-16), customized toward the house style references. Covered here.
@@ -247,6 +247,38 @@ Verify assets, don't declare them: vendor the woff2 and `document.fonts.check(..
 every fragment real and cited in `assets/SOURCES.md`; an asset you cannot get is substituted
 honestly and surfaced in the handoff, never redrawn (`yjc` 7).
 
+## Components on a bed — build rules from the one-screen product film (2026-09-17)
+
+A product film is built from **components on a designed bed**, one idea per scene, the full page
+only as the payoff. The staging rules, the `## Beds` section and the `## Deviations from the
+donors` section are written by `wpforms-storyboard`; this skill builds from them. The film that
+first followed them had its picture approved in QC round 1. Its build earned six rules:
+
+1. **One owner per animated element.** Two tweens on one element jump where they overlap, and on
+   a backward seek the earlier tween wins. Give each element one proxy whose segments start from
+   the pose the element has at that moment (a video-local `poseChannel`; promote on second use).
+   Assert per-frame continuity in `qc-probe.mjs` — the first probe failure found one case, a
+   sweep of the class found the rest (`dos` 12).
+2. **A flood finishes ON the swap frame.** Start = swap − duration. One frame late shows the old
+   bed through the disc (`dos` 14).
+3. **Name eases from measurements.** Build the named CustomEase from the reference strip's
+   samples (a video-local `easeFromSamples`). Never rename a stock ease to satisfy the audit's
+   easing column (`dos` 15).
+4. **Camera rows are literal calls.** `composition-scan` static counts only
+   `cam.<verb>(…, { at: N })`; a `forEach` over a table or a custom verb is invisible and the plan
+   reports a false hold. Stills-pass framing changes go through `cam.cut` (`dos` 5).
+5. **Harness globals are reserved:** `__tl`, `__T0`, `__done`, `__sched`, `__poses`,
+   `__renderReady`. Film debug globals take a `__film` prefix — a film that set `__poses` made
+   every pose push throw silently (`dos` 13).
+6. **Lifted clones need the icon rules, and only those** — font-faces, `.fa*` / `.dashicons*`
+   class rules (incl. the `:is()` form) and the FA `:root` vars, copied from the live snapshot
+   doc at build. `document.fonts.check()` returns true for a family nobody defined, so it proves
+   nothing here (`dos` 8).
+
+**Two engines.** When the storyboard orders an After Effects twin, the HTML build owns the stills
+pass and the sound plan; the AE build matches the approved stills from the same `## Beats` and
+`## Camera plan`. Invoke `wpforms-ae-build` for the AE side.
+
 ## Editorial named-effects library (pass-1 vocabulary)
 
 For pass-1 motion, **pick from `videos/_shared/effects/`** before writing custom GSAP. The vocabulary covers the most common editorial archetypes:
@@ -304,7 +336,7 @@ Do NOT invent brand details. Use the canonical brand tokens and assets:
 ### Audit gates — MUST run before handoff
 
 - `wpforms-motion-audit` skill — score every postIntro/cinematic/editorial beat S-F tier. Tier A or higher is merge bar.
-- Designer-grade pass (Emil Kowalski / Jakub Krehel / Jhey Tompkins): file-read `.agents/skills/design-motion-principles/SKILL.md` + its `references/` — it is NOT Skill-tool invocable (installed outside `.Codex/skills/`), and nothing fires it automatically (FIX-8).
+- Designer-grade pass (Emil Kowalski / Jakub Krehel / Jhey Tompkins): file-read `.agents/skills/design-motion-principles/SKILL.md` + its `references/` — it is NOT Skill-tool invocable (installed outside `.claude/skills/`), and nothing fires it automatically (FIX-8).
 
 **Async-approver clause:** if the user has explicitly ordered the finished deliverable and is unavailable to approve mid-run, the storyboard/brief gates convert to: write the artifact to disk, mark it `AUTO-APPROVED-BY-DIRECTIVE (review on return)`, proceed, and surface it FIRST in the handoff. Do not improvise a different self-override.
 
@@ -503,3 +535,4 @@ Before declaring an ad-style video done:
 - `wpforms-video` — for tutorial-mode work (the other half of the dual mandate).
 - `wpforms-postintro` — postIntros often share patterns with ad-style work.
 - `wpforms-gsap-rules` — the master-timeline contract + `pausableRaf` are how editorial beats become scrubbable.
+- `wpforms-ae-build` — the After Effects build or twin of a film, from the same storyboard.

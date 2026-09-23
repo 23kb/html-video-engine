@@ -81,6 +81,13 @@ for (const [, e] of perFolder) {
     }
   }
 }
+// Rasters a build needs beyond the manifest: a macro landing (zoom > 2) on real UI, and the carrier of a seam that crosses into editorial (a clone must exist outside the mount).
+let rasters = 0;
+for (let i = 0; i < rows.length; i++) { const r = rows[i]; const o = r.our || {}; if (o.status === 'dropped' || isEditorial(r) || !(o.screen || '').trim()) continue; const need = [];
+  for (const l of (r.landings || [])) if (l.zoom > 2) { const la = (o.landing_anchors || []).find(a => Math.abs((Number(a.t) ?? -1) - l.t) < 0.03 && a.anchor_selector) || null; need.push({ why: `macro landing at ${l.t} (zoom ${l.zoom})`, selector: la ? la.anchor_selector : (o.anchor_selector || ''), dpr: 4 }); }
+  const next = rows.slice(i + 1).find(x => x.our?.status !== 'dropped'); if (next && isEditorial(next) && /flip morph|match cut|melt/i.test(String(r.seam_out?.kind || ''))) need.push({ why: `carrier of the ${r.seam_out.kind} into ${next.ref_scene} (a clone outside the mount)`, selector: o.anchor_selector || '', dpr: 2 });
+  if (need.length) { o.rasters_needed = need; rasters += need.length; } else delete o.rasters_needed; }
+if (rasters) console.log(`rasters needed: ${rasters} — per snapshot: node html-snapshot/scripts/manifest.mjs <slug> --select "<selector>" --dpr <dpr> (listed in the handoff)`);
 fs.writeFileSync(mapFile, JSON.stringify(map, null, 2) + '\n');
 console.log(`fill-anchors: ${filled} filled, ${unfilled} unfilled, ${mounts} row mount(s) recorded → ${path.basename(mapFile)}. Re-render: render-storyboard.mjs, render-brief.mjs.`);
 if (unfilled) process.exitCode = 2;

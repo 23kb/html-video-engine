@@ -24,7 +24,7 @@ Rows marked `WISH` fire nothing. Those are the ones you have to remember.
 
 ## Path check — read this first
 
-This skill is for the **Tutorial path** (real product UI, narration-driven). If the task is editorial / ad-style / motion-heavy without real product UI, **stop and load `wpforms-marketing` instead**. If the task is mixed (editorial chrome composited over real product UI in ONE single-HTML film), load `wpforms-marketing` (see its *Snapshot transitions* section). See the path table in `AGENTS.md`.
+This skill is for the **Tutorial path** (real product UI, narration-driven). If the task is editorial / ad-style / motion-heavy without real product UI, **stop and load `wpforms-marketing` instead**. If the task is mixed (editorial chrome composited over real product UI in ONE single-HTML film), load `wpforms-marketing` (see its *Snapshot transitions* section). See the path table in `CLAUDE.md`.
 
 For postIntro/cinematic beats inside a tutorial, also load `wpforms-postintro` and run `wpforms-motion-audit` before handoff.
 
@@ -77,9 +77,9 @@ For a new video session, work in this order. Don't skip steps.
 
 ## ⛔ Skill invocation is non-negotiable
 
-**This skill must be INVOKED (via the Skill tool), not just read inline.** Reading `.Codex/skills/wpforms-video/SKILL.md` as a markdown file does not trigger this skill's gates. Use `/wpforms-video` or programmatic Skill invocation at session start when working on tutorial video work.
+**This skill must be INVOKED (via the Skill tool), not just read inline.** Reading `.claude/skills/wpforms-video/SKILL.md` as a markdown file does not trigger this skill's gates. Use `/wpforms-video` or programmatic Skill invocation at session start when working on tutorial video work.
 
-The Klaviyo tutorial v11 (2026-05-12) was built without invoking this skill OR wpforms-motion-audit OR wpforms-postintro. The postIntro went through 12 iterations without ever being formally scored. The author's own retro: "going straight from AGENTS.md → codex prompt → code was efficient but bypassed the skill system entirely." Don't repeat that.
+The Klaviyo tutorial v11 (2026-05-12) was built without invoking this skill OR wpforms-motion-audit OR wpforms-postintro. The postIntro went through 12 iterations without ever being formally scored. The author's own retro: "going straight from CLAUDE.md → codex prompt → code was efficient but bypassed the skill system entirely." Don't repeat that.
 
 Sessions working from a detailed codex prompt file (`docs/codex-prompts/*.md`) MUST still invoke:
 - This skill (`wpforms-video`) at session start
@@ -222,7 +222,7 @@ Source: Klaviyo session retro 2026-05-12; standing ruling "668 was never agreed"
 
 ### When to skip skill-context.js boot dump
 
-`node tools/skill-context.js` is helpful for fresh sessions exploring the repo cold. For CONTINUATION sessions where the prompt names the path/files in scope (e.g., Codex executor prompts at `docs/codex-prompts/`), the boot dump is noise. The author can go directly from AGENTS.md → the prompt → the code.
+`node tools/skill-context.js` is helpful for fresh sessions exploring the repo cold. For CONTINUATION sessions where the prompt names the path/files in scope (e.g., Codex executor prompts at `docs/codex-prompts/`), the boot dump is noise. The author can go directly from CLAUDE.md → the prompt → the code.
 
 Rule: run `skill-context.js` only when you don't already know which path / files you're working on. If the user (or prompt) said "work on this file" or "continue this video," skip it.
 
@@ -414,7 +414,7 @@ only way to get the truth. Two rules:
 1. Full-read `docs/wpforms-field-state-inventory.md` during normal authoring (it's 132 KB; query via `field-state.js`).
 2. List or read `videos/` packages at startup. Accepted packages are reference/debug only after you can name the exact pattern needed.
 3. Inspect runtime internals during normal authoring. Use the skills, validators, and snapshot tools first.
-4. Read AGENTS.md as a substitute for this skill. AGENTS.md is the operator manual; this skill is the authoring contract.
+4. Read CLAUDE.md as a substitute for this skill. CLAUDE.md is the operator manual; this skill is the authoring contract.
 
 ## Output Checklist
 
@@ -449,7 +449,7 @@ Stop and push back when:
 - `docs/video-production-templates.md` — Read only the section needed (storyboard / chapter / snapshot checklist / token budget / smoke spec).
 - `docs/examples/choice-field-generate-choices-skeleton.md` — Read for choice-field videos (Dropdown, Multiple Choice, Checkboxes) that include AI Generate Choices. Engine-era module (historical API note): lift the beat plan and the product-truth rules, not the code.
 - `docs/wpforms-field-state-inventory.md` — Canonical reference only. **Do not full-read.** Query via `node tools/field-state.js --field <name>`.
-- `AGENTS.md` — Operator manual (boot order, protected core, validation commands, push-back triggers). Read for repo-wide rules; this skill owns video-authoring rules.
+- `CLAUDE.md` — Operator manual (boot order, protected core, validation commands, push-back triggers). Read for repo-wide rules; this skill owns video-authoring rules.
 
 ## Granular references (load on demand for the specific topic)
 

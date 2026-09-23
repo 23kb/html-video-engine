@@ -212,11 +212,11 @@ rewritten to a Windows path on the command line: paste the URL into the browser 
 node scripts/manifest.mjs <slug> [--root dir] [--viewport WxH] [--dpr 2] [--min-size 8] [--select <css>] [--all]
 ```
 
-A snapshot can also be rebuilt as native layers in After Effects, Figma, Remotion or Codex
-Design instead of mounted as an iframe. For Codex Design this is the only route: its exporter
+A snapshot can also be rebuilt as native layers in After Effects, Figma, Remotion or Claude
+Design instead of mounted as an iframe. For Claude Design this is the only route: its exporter
 serializes the stage to svg/foreignObject, so a live iframe exports empty; the deliverable for
 that target is the manifest (measured layers, real text, PNG crops) plus `page-full.png`, and the
-build recreates the screen with real data instead of inventing rows. Real Codex Design projects
+build recreates the screen with real data instead of inventing rows. Real Claude Design projects
 redrew every captured screen as a React mock with hand-typed geometry constants; the manifest's
 measured boxes and real text ARE those constants — copy them — and `page-full.png` at stage scale
 is the tracing image. The manifest is what that rebuild needs, learned from a real After Effects
@@ -297,7 +297,10 @@ means).
    word the storyboard's `fill-anchors.mjs --list` names (anchors and presses), then run
    `node scripts/targets.mjs <slug>`: it measures each into page px and reports a miss. Record a
    target that is not there in `decisions.md`; never invent it.
-8. Only then hand the slug to the film.
+8. Rasters the storyboard flags (`our.rasters_needed` after `fill-anchors.mjs`: a macro landing above
+   2× on real UI, the carrier of a morph into editorial): `node scripts/manifest.mjs <slug> --select
+   "<selector>" --dpr 4` writes the crop into `manifest/raster/`; an iframe raster reads soft above 2×.
+9. Only then hand the slug to the film.
 
 ## Privacy
 

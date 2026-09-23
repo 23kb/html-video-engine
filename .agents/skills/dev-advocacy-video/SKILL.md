@@ -172,7 +172,7 @@ pane instead; **never call `camReset()`** — zoom 1 is bars by definition.
 
 **Shorts skip:** Kacie bookends and 4K. They KEEP the animated Sullie sting + end card,
 BGM + SFX (charter 2026-08-13); the postIntro is optional by ruling (above).
-`wpforms-motion-audit` is mandatory — the bookends are editorial beats (AGENTS.md path table).
+`wpforms-motion-audit` is mandatory — the bookends are editorial beats (CLAUDE.md path table).
 
 ## Pipeline
 
@@ -244,5 +244,5 @@ Real Kacie on camera opens and closes every shipped tutorial; body stays HTML + 
 - Timebox: new-surface video ≤ half a day; existing-surface ≤ 3h. Overrun → cut scope (shorter video, existing postIntro kind), never the sleep (QR: sustainability is explicit).
 - Pausing mid-video: write slug + stage + next action to `ideas.md` "In flight" before the session ends.
 - Tool development never happens inside a video slot. Gaps (4K verification, audio one-command mux, avatar phases) go to the rock file's tool-work queue.
-- **The 9:16 vertical path already exists** (built 2026-08-05, outside a video slot): `tools/stage-size.js` + portrait skeleton + `docs/vertical-shorts.md`. Don't rebuild it, and don't "fix" a 1080×1920 stage back to 1920×1080 — AGENTS.md anti-pattern #9 and INV-1 both carry the exception.
+- **The 9:16 vertical path already exists** (built 2026-08-05, outside a video slot): `tools/stage-size.js` + portrait skeleton + `docs/vertical-shorts.md`. Don't rebuild it, and don't "fix" a 1080×1920 stage back to 1920×1080 — CLAUDE.md anti-pattern #9 and INV-1 both carry the exception.
 - Launch/marketing clips are NOT this rock (Rock 3 / wpforms-marketing).

@@ -1,25 +1,22 @@
-# Installing the set
+# Installing
 
-Four folders, each a skill. Copy the ones you need into your skills directory and keep the
-folder names:
+One folder, one skill. Copy `video-pipeline/` whole into your skills directory and keep its name;
+the three workers live inside it and find each other as siblings:
 
 ```
 # project-local
-cp -r video-pipeline reference-motion-spec video-storyboard html-snapshot  <your-project>/.claude/skills/
+cp -r video-pipeline  <your-project>/.claude/skills/
 # or user-wide
-cp -r video-pipeline reference-motion-spec video-storyboard html-snapshot  ~/.claude/skills/
-cd <skills>/html-snapshot && npm install          # Playwright, for html-snapshot only
+cp -r video-pipeline  ~/.claude/skills/
+cd <skills>/video-pipeline/html-snapshot && npm install     # Playwright, for html-snapshot only
 ```
 
-Requirements: Node 18+; `ffmpeg` / `ffprobe` on PATH for reference-motion-spec; Playwright
-(installed by the `npm install` above) for html-snapshot. Nothing else. Nothing leaves the machine.
+Requirements: Node 18+; `ffmpeg` / `ffprobe` on PATH for the reference read; Playwright
+(installed by the `npm install` above) for snapshots. Nothing else. Nothing leaves the machine.
 
-Dependencies between them:
+Never split the folder: `video-storyboard` borrows `reference-motion-spec`'s brief renderer from
+the folder beside it, and the driver's handoff reads `references/tool-notes.md` beside its own
+script. To use one worker alone, open its `SKILL.md` and run its scripts by path; it needs no
+driver.
 
-- `video-storyboard` needs `reference-motion-spec` beside it (it borrows the brief renderer;
-  without it the storyboard writes but the brief does not).
-- `video-pipeline` needs all three to run a whole pass; with fewer it runs the steps it can and
-  says which one is missing.
-- `html-snapshot` needs nothing else.
-
-Download: `<link to the shared package — fill in when published>`
+Where the set is published: <link>

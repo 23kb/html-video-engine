@@ -63,7 +63,7 @@ The validator does not enforce these rules. You enforce them. If the storyboard 
 
 Before declaring a postIntro done, **run `wpforms-motion-audit` skill** on the postIntro block of `videos/<slug>/index.html`. Tier A or higher is the merge bar; B or below needs a fix or explicit user override. The audit checks: multi-phase camera decomposition, atmosphere-swap discipline, identity-continuity host, zoom levels, easings, automatic-ceiling triggers (heavy blur exits, dead-air holds, `repeat: -1`).
 
-Designer-grade pass (Emil Kowalski / Jakub Krehel / Jhey Tompkins): file-read `.agents/skills/design-motion-principles/SKILL.md` + its `references/` — NOT Skill-tool invocable (installed outside `.Codex/skills/`); nothing fires it automatically.
+Designer-grade pass (Emil Kowalski / Jakub Krehel / Jhey Tompkins): file-read `.agents/skills/design-motion-principles/SKILL.md` + its `references/` — NOT Skill-tool invocable (installed outside `.claude/skills/`); nothing fires it automatically.
 
 **Async-approver clause:** if the user has explicitly ordered the finished deliverable and is unavailable to approve mid-run, approval-shaped steps (concept sign-off, B-tier override) convert to: write the artifact to disk, mark it `AUTO-APPROVED-BY-DIRECTIVE (review on return)`, proceed, and surface it FIRST in the handoff. Do not improvise a different self-override.
 
