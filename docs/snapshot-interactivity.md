@@ -5,7 +5,7 @@ session-handoff docs at the repo root (`SNAPSHOT-INTERACTIVITY-HANDOFF-3.md`,
 `-4.md`, `SNAPSHOT-WORK-HANDOFF.md`). Those docs are deleted; this is the
 canonical reference for anyone wiring or modifying snapshot interactivity.
 
-The **code** lives at [snapshots/_shared/interactivity.js](../snapshots/_shared/interactivity.js).
+The **code** lives at [products/wpforms/snapshots/_shared/interactivity.js](..products/wpforms/snapshots/_shared/interactivity.js).
 This document describes its conventions; it does not re-document the code.
 
 ---
@@ -13,7 +13,7 @@ This document describes its conventions; it does not re-document the code.
 ## Architecture in one paragraph
 
 Each snapshot loads a single shared script
-`snapshots/_shared/interactivity.js` via `<script src="../_shared/interactivity.js"></script>`
+`products/wpforms/snapshots/_shared/interactivity.js` via `<script src="../_shared/interactivity.js"></script>`
 injected before `</body>` (automated by `tools/link-interactivity-script.js`).
 The script holds an append-mostly `TRANSITIONS[]` registry, where each entry
 is `{ label, event, match, apply }`. Listeners are keyed by **selector
@@ -235,9 +235,9 @@ form would gate the video on access to a specific WP environment. See
 ## Tools (one-line reminder; see each tool's `--help` for detail)
 
 - `tools/audit-snapshot-weight.js` — per-snapshot weight breakdown
-- `tools/dedup-snapshot-css.js` — extracts identical `<style>` blocks into `snapshots/_shared/css/<hash>.css`
-- `tools/extract-data-uris.js` — pulls base64 fonts/images into `snapshots/_shared/data-uris/<hash>.<ext>`
-- `tools/consolidate-snapshot-assets.js` — moves per-snapshot `assets/` into `snapshots/_shared/assets/<contenthash>.<ext>`, rewrites refs
+- `tools/dedup-snapshot-css.js` — extracts identical `<style>` blocks into `products/wpforms/snapshots/_shared/css/<hash>.css`
+- `tools/extract-data-uris.js` — pulls base64 fonts/images into `products/wpforms/snapshots/_shared/data-uris/<hash>.<ext>`
+- `tools/consolidate-snapshot-assets.js` — moves per-snapshot `assets/` into `products/wpforms/snapshots/_shared/assets/<contenthash>.<ext>`, rewrites refs
 - `tools/trim-builder-markup.js` — strips dead-weight markup from `builder-*` snapshots; respects `KEEP_ALL_PANELS`
 - `tools/clean-builder-snapshot-canvas.js` — strips non-baseline canvas fields (skip for combined-field snapshots)
 - `tools/link-interactivity-script.js` — injects the `_shared/interactivity.js` script tag into a snapshot
@@ -266,7 +266,7 @@ earlier). Three admin-specific systems live in `interactivity.js`:
 
 ### Cross-snapshot navigation (`initAdminCrossSnapshotNav`)
 
-Hand-browsing only (`window.top === window`, served from `/snapshots/`).
+Hand-browsing only (`window.top === window`, served from `products/wpforms/snapshots/`).
 Clicks on `admin.php?page=wpforms-*` links are intercepted and mapped to
 sibling snapshot folders:
 

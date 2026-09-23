@@ -1,7 +1,7 @@
 # Product truth — WPForms anti-spam stack
 
 Source: https://wpforms.com/docs/how-to-prevent-spam-in-wpforms/ (fetched live 2026-07-31, doc updated Sep 24 2024, author Umair Majeed).
-Capture evidence: `snapshots/builder-settings-anti_spam/` (builder Settings → Spam Protection and Security) + `snapshots/admin-settings-captcha/` (WPForms → Settings → CAPTCHA, empty state).
+Capture evidence: `products/wpforms/snapshots/builder-settings-anti_spam/` (builder Settings → Spam Protection and Security) + `products/wpforms/snapshots/admin-settings-captcha/` (WPForms → Settings → CAPTCHA, empty state).
 
 ## Where the settings live
 

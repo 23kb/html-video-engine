@@ -2,7 +2,7 @@
 
 Source: https://wpforms.com/docs/how-to-style-wpforms-with-custom-css-beginners-guide/ (fetched live 2026-08-07, doc updated May 21 2024, author Umair Majeed, reviewed by David Ozokoye).
 Site evidence: `sullies-bakery` LocalWP, WPForms **2.0.0.3**, license **elite** (via `tools/preflight-site.js`, 2026-08-07).
-Capture evidence: `snapshots/frontend-contact-clean/` (published form **406**), plus the three captures listed under "Capture plan" below.
+Capture evidence: `products/wpforms/snapshots/frontend-contact-clean/` (published form **406**), plus the three captures listed under "Capture plan" below.
 
 ## The three targeting levels (doc-grounded)
 
@@ -16,9 +16,9 @@ The doc names two of these explicitly and implies the third. The video teaches a
 
 ## Verified facts
 
-- **Form ID 406 = "Sullie's Bakery Contact Form"** (`tools/site-eval.js` over `get_posts(post_type=wpforms)`, 2026-08-07). This is the same form rendered in `snapshots/frontend-contact-clean/`, whose wrapper is `#wpforms-406` and whose fields are `#wpforms-406-field_1` (Name), `_2` (Email), `_3` (Comment or Message, a `textarea`), `_4` (Phone). Verified against that snapshot's `outline.md`.
-- **The form ID is discoverable from the Shortcode column** on WPForms → All Forms. The doc says: "go to WPForms » All Forms and look in the Shortcode column." Column header IDs `#shortcode` / `#shortcode-foot` are present in `snapshots/admin-forms-overview/catalog.md`, confirming the column exists in this WPForms version.
-- **The per-field CSS Classes input is real and lives in the field's Advanced tab.** Confirmed in `snapshots/builder-field-options-email/catalog.md`: `#wpforms-field-option-advanced-2` (the Advanced section) and `#wpforms-field-option-2-css` (the CSS Classes input). The `-2-` segment is the field ID, so the pattern is `#wpforms-field-option-{fieldId}-css` — per **INV-6**, field IDs vary per capture, so the video resolves this selector from its own capture, never hard-codes `-2-`.
+- **Form ID 406 = "Sullie's Bakery Contact Form"** (`tools/site-eval.js` over `get_posts(post_type=wpforms)`, 2026-08-07). This is the same form rendered in `products/wpforms/snapshots/frontend-contact-clean/`, whose wrapper is `#wpforms-406` and whose fields are `#wpforms-406-field_1` (Name), `_2` (Email), `_3` (Comment or Message, a `textarea`), `_4` (Phone). Verified against that snapshot's `outline.md`.
+- **The form ID is discoverable from the Shortcode column** on WPForms → All Forms. The doc says: "go to WPForms » All Forms and look in the Shortcode column." Column header IDs `#shortcode` / `#shortcode-foot` are present in `products/wpforms/snapshots/admin-forms-overview/catalog.md`, confirming the column exists in this WPForms version.
+- **The per-field CSS Classes input is real and lives in the field's Advanced tab.** Confirmed in `products/wpforms/snapshots/builder-field-options-email/catalog.md`: `#wpforms-field-option-advanced-2` (the Advanced section) and `#wpforms-field-option-2-css` (the CSS Classes input). The `-2-` segment is the field ID, so the pattern is `#wpforms-field-option-{fieldId}-css` — per **INV-6**, field IDs vary per capture, so the video resolves this selector from its own capture, never hard-codes `-2-`.
 - **`!important` is doc-sanctioned, not a hack.** The doc: "it might be necessary to include !important before the semicolon to ensure your custom styles are applied successfully."
 
 ## Doc divergence / gap found while building

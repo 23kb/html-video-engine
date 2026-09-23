@@ -152,7 +152,7 @@ Use the real WPForms brand assets. Do not invent.
 
 - Use targeted tools before broad shell searches.
 - Snapshot inventory: `node tools/list-snapshots.js [--search <q>] [--for <slug>]`.
-- **Snapshot packs live in `products/<key>/snapshots/`** — WPForms is `products/wpforms/snapshots/` (moved from `snapshots/` on 2026-09-23), then `products/wp-mail-smtp/`, `products/sugar-calendar/`, …. Every snapshot tool defaults to WPForms; `VIDEO_PRODUCT=<key>` points it at another pack (`VIDEO_PRODUCT=sugar-calendar node tools/list-snapshots.js`). Film URLs: `/products/<key>/snapshots/<slug>/index.html`; `IframeManager` defaults to the WPForms pack, pass `snapshotBase` for another. Old films that still say `/snapshots/<slug>/` keep loading — the repo servers map that URL onto the WPForms pack.
+- **Snapshot packs live in `products/<key>/snapshots/`** — WPForms is `products/wpforms/snapshots/` (moved from the old top-level folder on 2026-09-23), then `products/wp-mail-smtp/`, `products/sugar-calendar/`, …. Every snapshot tool defaults to WPForms; `VIDEO_PRODUCT=<key>` points it at another pack (`VIDEO_PRODUCT=sugar-calendar node tools/list-snapshots.js`). Film URLs: `/products/<key>/snapshots/<slug>/index.html`; `IframeManager` defaults to the WPForms pack, pass `snapshotBase` for another. Old films that still say `products/wpforms/snapshots/<slug>/` keep loading — the repo servers map that URL onto the WPForms pack.
 - Selector discovery: `node tools/inspect-snapshot.js <snapshot> --emit-selectors [--filter <text>]`.
 - Selector validation: `node tools/verify-selectors.js <snapshot> ...`.
 - Field-state evidence: `node tools/field-state.js --field <name> [--summary]`. **Do not full-read** `docs/wpforms-field-state-inventory.md` (132 KB).

@@ -33,6 +33,6 @@ Majeed, reviewed David Ozokoye) + plugin source read 2026-08-21
 
 - Do NOT say "links to your form" — it links to the page/URL the form lives on (FAQ 1 phrasing: "opens a page or a web address that you choose").
 - Do NOT show a code re-pointing after print — the truthful story is the STALE flag + Regenerate + reprint.
-- Do NOT put Copy-to-clipboard on screen claiming it works everywhere — fine to show (production https renders it; our capture note in `snapshots/builder-settings-general/fragments/README.md` explains the http artifact).
+- Do NOT put Copy-to-clipboard on screen claiming it works everywhere — fine to show (production https renders it; our capture note in `products/wpforms/snapshots/builder-settings-general/fragments/README.md` explains the http artifact).
 - The Logo control on lower licenses is a locked control (education class) — our capture is elite, full control. Don't show the locked state as the normal state.
 - The captured SVG encodes `http://sulliesbakery.com/bakery-favorites-survey/` — beats must not claim it encodes anything else.

@@ -24,8 +24,8 @@ Architecture: clone videos/_examples/builder-frontend-split-skeleton/ → videos
 Use BuilderFrontendSplit from videos/_shared/builder-frontend-split.js — DO NOT reinvent.
 
 Surface plan:
-- Left: builder snapshot snapshots/builder-field-options-{TYPE}/.
-- Right (faded in at beat 3): snapshots/frontend-published-form/, isolated to field IDs [{IDS}].
+- Left: builder snapshot products/wpforms/snapshots/builder-field-options-{TYPE}/.
+- Right (faded in at beat 3): products/wpforms/snapshots/frontend-published-form/, isolated to field IDs [{IDS}].
 
 Storyboard (~60-90s):
 1. Open on builder centered. Cursor settles. Narration: "Let's set up a {FIELD_NAME} field."
@@ -55,7 +55,7 @@ Rules for the whole run (invariants — literal contracts, hold across every bea
 
 Constraints (standing — repeat in case CLAUDE.md isn't in context):
 - Single-HTML path (NOT chapter/manifest legacy).
-- No edits to protected core (videos/_shared/*, snapshots/**, validators/smoke tools, capture/capture.js). runtime/ and engine/ no longer exist (retired 2026-08-22).
+- No edits to protected core (videos/_shared/*, products/wpforms/snapshots/**, validators/smoke tools, capture/capture.js). runtime/ and engine/ no longer exist (retired 2026-08-22).
 - No visual QC from you — I QC.
 - Storyboard gate first if narration is non-trivial (per wpforms-video skill).
 - Use motion-primitives Cursor for all cursor work, gsap.timeline for sequencing.
@@ -88,8 +88,8 @@ Architecture: clone videos/_examples/builder-frontend-split-skeleton/ → videos
 Use BuilderFrontendSplit from videos/_shared/builder-frontend-split.js — DO NOT reinvent.
 
 Surface plan:
-- Left: builder snapshot snapshots/builder-field-options-checkbox/.
-- Right (faded in at beat 3): snapshots/frontend-published-form/, isolated to field IDs [7].
+- Left: builder snapshot products/wpforms/snapshots/builder-field-options-checkbox/.
+- Right (faded in at beat 3): products/wpforms/snapshots/frontend-published-form/, isolated to field IDs [7].
 
 Storyboard (~75s):
 1. Open on builder centered. Cursor settles near the canvas Checkbox field.
@@ -119,7 +119,7 @@ Field-specific config:
 
 ## Frontend field-ID reference
 
-For setting `TUTORIAL_FIELD.frontendFieldIds`, these are the field IDs in `snapshots/frontend-published-form/`:
+For setting `TUTORIAL_FIELD.frontendFieldIds`, these are the field IDs in `products/wpforms/snapshots/frontend-published-form/`:
 
 | Field type | IDs |
 |---|---|
@@ -153,4 +153,4 @@ For setting `TUTORIAL_FIELD.frontendFieldIds`, these are the field IDs in `snaps
 | signature | 35 |
 | rating | 36 |
 
-For builder slug, the pattern is `builder-field-options-<TYPE>` — e.g. `builder-field-options-checkbox`, `builder-field-options-date-time`, `builder-field-options-payment-fields`. Confirm a snapshot exists with `ls snapshots/ | grep builder-field-options-` before authoring.
+For builder slug, the pattern is `builder-field-options-<TYPE>` — e.g. `builder-field-options-checkbox`, `builder-field-options-date-time`, `builder-field-options-payment-fields`. Confirm a snapshot exists with `ls products/wpforms/snapshots/ | grep builder-field-options-` before authoring.

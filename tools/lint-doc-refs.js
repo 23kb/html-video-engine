@@ -30,7 +30,9 @@ const quiet = args.includes('--quiet');
 
 const SCAN_ROOTS = ['docs', '.claude/skills', 'capture'];
 const SCAN_FILES = ['CLAUDE.md', 'README.md', 'CONTRIBUTING.md'];
-const REF_RE = /\b((?:videos|snapshots|tools|capture|runtime|engine|docs)\/[A-Za-z0-9._\-/]+)/g;
+// products/ is a root since the packs moved there (2026-09-23); the lookbehind
+// keeps `snapshots/` inside `products/wpforms/snapshots/…` from matching twice.
+const REF_RE = /(?<![A-Za-z0-9_\/.-])((?:products|videos|snapshots|tools|capture|runtime|engine|docs)\/[A-Za-z0-9._\-/]+)/g;
 
 function walk(dir, out = []) {
   if (!fs.existsSync(dir)) return out;

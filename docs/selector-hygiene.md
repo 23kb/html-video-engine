@@ -55,7 +55,7 @@ Use selectors in this priority order:
 
 1. **`tools/inspect-snapshot.js <snapshot> --emit-selectors`** — auto-emitted from the snapshot's catalog. Always start here.
 2. **`tools/verify-selectors.js <snapshot> <selector...>`** — confirm the selector exists in the snapshot before using it.
-3. **`snapshots/<name>/catalog.md`** — human-readable inventory of known-good selectors per snapshot.
+3. **`products/wpforms/snapshots/<name>/catalog.md`** — human-readable inventory of known-good selectors per snapshot.
 4. **Inspect the snapshot HTML directly** — last resort. If you find a selector that's not in the catalog, add it (or auto-regenerate the catalog).
 
 **Don't:**
@@ -170,11 +170,11 @@ Don't refactor mid-storyboard. The locked-shape skeleton has `import sel from '.
 
 - `node tools/inspect-snapshot.js <snapshot> --emit-selectors [--filter <text>]` — emit catalog-grounded selectors.
 - `node tools/verify-selectors.js <snapshot> <selector...>` — check existence in snapshot DOM.
-- `node tools/validate-singlehtml.js <slug>` — checks every snapshot the film loads exists and is registered in `snapshots/index.json`. It does not check selectors.
+- `node tools/validate-singlehtml.js <slug>` — checks every snapshot the film loads exists and is registered in `products/wpforms/snapshots/index.json`. It does not check selectors.
 - `node tools/field-state.js --field <name>` — query field-state inventory for selector hints.
 
 ## See also
 
 - `wpforms-video` skill — chapter authoring rules; uses `_selectors.js` import.
-- `snapshots/<slug>/outline.md` — per-snapshot sidecar of author-targetable selectors; read it FIRST (`video-qc`). The chapter-module contract retired 2026-08-22.
+- `products/wpforms/snapshots/<slug>/outline.md` — per-snapshot sidecar of author-targetable selectors; read it FIRST (`video-qc`). The chapter-module contract retired 2026-08-22.
 - `docs/wpforms-field-state-inventory.md` — canonical product-truth selector reference (query via field-state.js).

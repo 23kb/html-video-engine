@@ -42,7 +42,7 @@ LEVERAGE the wired snapshot interactivity (from handoffs 5-7) — DO NOT
 reinvent DOM puppetry where a hook already exists. The captured snapshots
 behave like the real plugin when the right selector is clicked. Pattern:
 cursor click on a REAL selector → wired TRANSITIONS handler in
-snapshots/_shared/interactivity.js runs → state changes. DOM puppetry is
+products/wpforms/snapshots/_shared/interactivity.js runs → state changes. DOM puppetry is
 the FALLBACK for things no hook covers (currently in this video:
 cycling the Action To Perform dropdown to demonstrate Unsubscribe and
 Remove from List variants). When in doubt, try the cursor-click path
@@ -60,29 +60,29 @@ Target total: ~125-150s.
 
 Surface plan — 9 beats, the snapshot for each, in order:
 
-  1. snapshots/admin-settings-integrations/ — entry. Expand the Klaviyo
+  1. products/wpforms/snapshots/admin-settings-integrations/ — entry. Expand the Klaviyo
      row using the wired interactivity hook (settings-integrations-row-toggle),
      then trigger the add-account-toggle to reveal the API Key / Account
      Nickname / Connect to Klaviyo inputs.
 
-  2. snapshots/klaviyo-dashboard/ — viewer "switches" to a Klaviyo browser
+  2. products/wpforms/snapshots/klaviyo-dashboard/ — viewer "switches" to a Klaviyo browser
      tab. Cursor lands on the account-switcher (#account-switcher-toggle)
      and opens the account menu → Settings.
 
-  3. snapshots/klaviyo-settings/ — Klaviyo product Settings page (account
+  3. products/wpforms/snapshots/klaviyo-settings/ — Klaviyo product Settings page (account
      context). Brief stop. Cursor moves to the API Keys link in the sidebar.
 
-  4. snapshots/klaviyo-api-keys/ — API Keys list. Cursor highlights the
+  4. products/wpforms/snapshots/klaviyo-api-keys/ — API Keys list. Cursor highlights the
      Create Private API Key button.
 
-  5. snapshots/klaviyo-create-api-key/ — Create form. Type "WPForms" into
+  5. products/wpforms/snapshots/klaviyo-create-api-key/ — Create form. Type "WPForms" into
      the Name field via caretType, click Full Access scope, click Create.
 
-  6. snapshots/klaviyo-private-key-confirmation/ — generated-key modal.
+  6. products/wpforms/snapshots/klaviyo-private-key-confirmation/ — generated-key modal.
      Reveal the masked key, cursor on the Copy button. Narration emphasizes
      "Klaviyo only shows this key once."
 
-  7. snapshots/admin-settings-integrations/ — return to WPForms. Crossfading
+  7. products/wpforms/snapshots/admin-settings-integrations/ — return to WPForms. Crossfading
      back via IframeManager.swap() reloads the snapshot fresh — state from
      beat 1 is lost. Restore it by programmatically dispatching the right
      events ON the iframe document so the wired hooks re-fire:
@@ -94,7 +94,7 @@ Surface plan — 9 beats, the snapshot for each, in order:
      "Connect to Klaviyo" — settings-integrations-connect-submit drives
      the transition to "Connected ✓" (green pill + accounts list row added).
 
-  8. snapshots/builder-providers-klaviyo/ — Form Builder, Marketing tab,
+  8. products/wpforms/snapshots/builder-providers-klaviyo/ — Form Builder, Marketing tab,
      Klaviyo provider selected. Cursor clicks Add New Connection
      (button.js-wpforms-builder-provider-connection-add). The wired
      builder-providers-connection-add hook opens the nickname modal
@@ -102,7 +102,7 @@ Surface plan — 9 beats, the snapshot for each, in order:
      custom overlay needed. Cursor types the nickname into the modal
      prompt, clicks OK, IframeManager auto-swaps to the connection panel.
 
-  9. snapshots/builder-providers-klaviyo-connection/ — Connection settings
+  9. products/wpforms/snapshots/builder-providers-klaviyo-connection/ — Connection settings
      panel. With Create / Update Profile selected (default), demonstrate
      the cascade reveal by cursor-clicking the real connection-block
      fields in order: Select Account → Action To Perform → Email field →
@@ -123,13 +123,13 @@ Surface plan — 9 beats, the snapshot for each, in order:
 
      If you find a wired hook for Action-dropdown change that already
      toggles the correct subfield visibility, USE IT and skip puppetry.
-     Check with: grep -n "action.*change\|provider-action" snapshots/_shared/interactivity.js
+     Check with: grep -n "action.*change\|provider-action" products/wpforms/snapshots/_shared/interactivity.js
      before authoring this section.
 
      (Any inline UI fragment beyond what's in the captured DOM needs
      INV-15 // SOURCE: or // OVERRIDE: annotation.)
 
- 10. snapshots/klaviyo-example-profile/ — payoff. Swap to the real Klaviyo
+ 10. products/wpforms/snapshots/klaviyo-example-profile/ — payoff. Swap to the real Klaviyo
      profile that resulted from a form submission. Cursor lands on the
      profile, narration: "Every submission becomes a profile, automatically."
 
@@ -179,7 +179,7 @@ discipline applies either way:
 
 Constraints (standing — repeat in case CLAUDE.md isn't in context):
   - Tutorial path, single-HTML (NOT legacy chapter/manifest).
-  - No edits to protected core (videos/_shared/*, snapshots/**, validators/smoke
+  - No edits to protected core (videos/_shared/*, products/wpforms/snapshots/**, validators/smoke
   tools, capture/capture.js). runtime/ and engine/ no longer exist (retired 2026-08-22).
   - No visual QC from you — Umair QCs.
   - Storyboard gate FIRST per wpforms-video skill — write
@@ -202,7 +202,7 @@ Constraints (standing — repeat in case CLAUDE.md isn't in context):
   - INV-1: stage at native resolution (1440×820 or 1920×1080), no CSS
     transform on stage.
   - INV-15: any inline UI fragment (chips, overlays, action-variant
-    field markup) needs a // SOURCE: snapshots/<name>/... citation OR
+    field markup) needs a // SOURCE: products/wpforms/snapshots/<name>/... citation OR
     // OVERRIDE: <user approval> annotation in the code itself.
   - INV-16: first write of index.html is not from blank. Copy
     docs/examples/single-html-tutorial-skeleton.html and commit the
@@ -305,7 +305,7 @@ Expected (all real, captured, on disk today):
 - `builder-providers-klaviyo-connection`
 - `klaviyo-example-profile`
 
-If any are missing, capture before pasting the Prompt (workflow: open in LocalWP / Klaviyo, resize browser to 1380×668 to match mac-body inner width per `wpforms-video` skill capture standard, SingleFile capture, drop into `snapshots/<name>/`).
+If any are missing, capture before pasting the Prompt (workflow: open in LocalWP / Klaviyo, resize browser to 1380×668 to match mac-body inner width per `wpforms-video` skill capture standard, SingleFile capture, drop into `products/wpforms/snapshots/<name>/`).
 
 ---
 

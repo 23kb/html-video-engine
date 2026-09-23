@@ -85,7 +85,7 @@ These show on most fields. Default tag is `skip` unless the video is specificall
 
 ## 1. Name field
 
-Base snapshot: `snapshots/builder-field-options-name/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-name/`
 
 ### General tab
 
@@ -158,7 +158,7 @@ Each value swaps which sub-field block is visible on the canvas. The wrapper's `
 
 ## 2. Email field
 
-Base snapshot: `snapshots/builder-field-options-email/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-email/`
 
 ### General tab
 
@@ -233,7 +233,7 @@ When enabled, a second "Confirm Email" sub-input appears on the canvas. Wrapper'
 
 ## 3. Paragraph Text field
 
-Base snapshot: `snapshots/builder-field-options-textarea/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-textarea/`
 
 ### General tab
 
@@ -283,7 +283,7 @@ Nothing field-specific worth filming. Standard Label / Description / Required.
 
 ## 4. Single Line Text  (`builder-field-options-text`)
 
-Base snapshot: `snapshots/builder-field-options-text/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-text/`
 
 Nothing special. All controls are universals (Label, Description, Required, Field Size, Placeholder, Default Value, Limit Length, Input Mask, Hide Label, Read-Only, CSS Classes, Conditional Logic). Default tag → `skip` for film coverage unless the tutorial is specifically about that universal.
 
@@ -291,7 +291,7 @@ Nothing special. All controls are universals (Label, Description, Required, Fiel
 
 ## 5. Dropdown  (`builder-field-options-select`)
 
-Base snapshot: `snapshots/builder-field-options-select/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-select/`
 
 ### General tab
 
@@ -434,7 +434,7 @@ Classic renders a plain native `<select>`. Modern wraps it with the full Choices
 **Dynamic Choices** (dropdown: Off / Post Type / Taxonomy) — **must** for sidebar reveal.
 When set to Post Type or Taxonomy, additional sub-rows reveal in the sidebar (source selector). The canvas `<select>` options are then **replaced** by sample post titles or taxonomies pulled from the WordPress site. **Canvas-side payoff requires capture or live data** — not a pure DOM patch (the post titles are unknown to the snapshot).
 
-> No canvas snippet provided. **Default approach**: derive the populated state from `snapshots/builder-field-options-select/` using product-truth DOM in this inventory plus a real captured DOM snippet of the post-titles list. Recapture only if the structural base is missing or not truthfully derivable from the live site. (The earlier per-state capture was intentionally deleted.)
+> No canvas snippet provided. **Default approach**: derive the populated state from `products/wpforms/snapshots/builder-field-options-select/` using product-truth DOM in this inventory plus a real captured DOM snippet of the post-titles list. Recapture only if the structural base is missing or not truthfully derivable from the live site. (The earlier per-state capture was intentionally deleted.)
 
 **Snippet — Dynamic Choices dropdown row (revealed values):**
 
@@ -464,7 +464,7 @@ When set to Post Type or Taxonomy, additional sub-rows reveal in the sidebar (so
 
 ## 6. Multiple Choice  (`builder-field-options-radio`)
 
-Base snapshot: `snapshots/builder-field-options-radio/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-radio/`
 
 > Note: this field is `data-field-type="radio"` and the wrapper carries `wpforms-field-radio`. Same family as Checkboxes (`data-field-type="checkbox"`); the Image / Icon / Layout patterns documented here transfer 1-to-1 to Checkboxes.
 
@@ -778,7 +778,7 @@ Inline:             wpforms-list-inline
 
 ## 7. Checkboxes  (`builder-field-options-checkbox`)
 
-Base snapshot: `snapshots/builder-field-options-checkbox/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-checkbox/`
 
 > **Inherits from Multiple Choice (#6) verbatim.** Same General-tab and Advanced-tab controls, same DOM patterns, same `must / nice / never` tags, same Image Choices XOR Icon Choices constraint, same Choice Layout pattern. The only differences are:
 >
@@ -831,7 +831,7 @@ Everything else: see Multiple Choice (#6).
 
 ## 8. Numbers  (`builder-field-options-number`)
 
-Base snapshot: `snapshots/builder-field-options-number/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-number/`
 
 ### General tab
 
@@ -865,7 +865,7 @@ Universals: Field Size, Placeholder, Default Value, Hide Label, CSS Classes, Con
 
 ## 9. Phone  (`builder-field-options-phone`)
 
-Base snapshot: `snapshots/builder-field-options-phone/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-phone/`
 
 ### General tab
 
@@ -917,7 +917,7 @@ Nothing canvas-changing. Universals only.
 
 ## 10. Address  (`builder-field-options-address`)
 
-Base snapshot: `snapshots/builder-field-options-address/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-address/`
 
 ### General tab
 
@@ -1030,7 +1030,7 @@ Inserts a new map placeholder block **above** the scheme blocks: `<div class="wp
 
 ## 11. Date / Time  (`builder-field-options-date-time`)
 
-Base snapshot: `snapshots/builder-field-options-date-time/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-date-time/`
 
 ### General tab
 
@@ -1221,13 +1221,13 @@ The wrapper of the inner block flips between `.format-selected-date-time`, `.for
 
 ## 12. Website / URL  (`builder-field-options-url`)
 
-Base snapshot: `snapshots/builder-field-options-url/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-url/`
 
 Nothing field-specific. All controls are universals (Label, Description, Required, Field Size, Placeholder, Default Value, Hide Label, Read-Only, CSS Classes, Conditional Logic). Defaults to `skip` for video coverage unless a tutorial is specifically about one of those universals.
 
 ## 13. File Upload  (`builder-field-options-file-upload`)
 
-Base snapshot: `snapshots/builder-field-options-file-upload/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-file-upload/`
 
 ### General tab
 
@@ -1446,7 +1446,7 @@ TODO — not provided. Likely Allowed File Extensions, Max File Size, Max File N
 
 ## 14. Password  (`builder-field-options-password`)
 
-Base snapshot: `snapshots/builder-field-options-password/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-password/`
 
 ### General tab
 
@@ -1530,7 +1530,7 @@ All universals: Field Size, Placeholder, Default Value, Hide Label, Read-Only, C
 
 ## 15. Rich Text  (`builder-field-options-richtext`)
 
-Base snapshot: `snapshots/builder-field-options-richtext/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-richtext/`
 
 > Note: the canvas renders a static TinyMCE host — `.wpforms-richtext-wrap.tmce-active` containing tab buttons (`.wp-switch-editor`), an editor container (`.wp-editor-container`), the toolbar group (`.mce-toolbar-grp`), the underlying textarea, and a status bar. **The actual TinyMCE toolbar buttons (Bold / Italic / Link / Image icons) are mounted by TinyMCE JS at runtime — not in the static snapshot.** The static container shows an empty `.mce-toolbar-grp` div. If a tutorial films the visible toolbar buttons, that needs a captured snapshot of the live builder with TinyMCE initialised.
 
@@ -1624,7 +1624,7 @@ Field Style = Basic: <div class="mce-toolbar-grp wpforms-field-richtext-media-en
 
 ## 16. Number Slider  (`builder-field-options-number-slider`)
 
-Base snapshot: `snapshots/builder-field-options-number-slider/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-number-slider/`
 
 ### General tab
 
@@ -1656,13 +1656,13 @@ Nothing canvas-changing. Universals only (Min, Max, Step would live here as side
 
 ## 17. Hidden Field  (`builder-field-options-hidden`)
 
-Base snapshot: `snapshots/builder-field-options-hidden/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-hidden/`
 
 Nothing special. By design hidden fields render no visible canvas or frontend payoff — they only carry a hidden `<input>` in the live form. All controls are universals (Label, Default Value). Default tag → `never` for canvas, narration-only if a video discusses hidden fields at all.
 
 ## 18. HTML  (`builder-field-options-html`)
 
-Base snapshot: `snapshots/builder-field-options-html/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-html/`
 
 Nothing field-specific. The field renders whatever HTML body the user enters (Code textarea in the options panel) directly into the canvas. No state toggles, no sub-controls.
 
@@ -1673,7 +1673,7 @@ Default tag → `skip` unless the tutorial is specifically about embedding HTML.
 
 ## 19. Content  (`builder-field-options-content`)
 
-Base snapshot: `snapshots/builder-field-options-content/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-content/`
 
 Nothing field-specific in terms of canvas state. The field has a TinyMCE rich-text editor **in the field options panel (sidebar)** — not on the canvas. The canvas just renders the entered content.
 
@@ -1698,7 +1698,7 @@ Default tag → `skip` for canvas; `nice` for the editor sidebar if a tutorial i
 
 ## 20. Page Break  (`builder-field-options-pagebreak`)
 
-Base snapshot: `snapshots/builder-field-options-pagebreak/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-pagebreak/`
 
 > Note: Page Break does **not** have a Smart Logic tab. Conditional Logic doesn't apply.
 
@@ -1811,7 +1811,7 @@ The whole `.wpforms-page-indicator` block in the canvas (top page-break) re-rend
 
 ## 21. Section Divider  (`builder-field-options-divider`)
 
-Base snapshot: `snapshots/builder-field-options-divider/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-divider/`
 
 ### General tab
 
@@ -1834,7 +1834,7 @@ Universals: CSS Classes, Conditional Logic.
 
 ## 22. Layout  (`builder-field-options-layout`)
 
-Base snapshot: `snapshots/builder-field-options-layout/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-layout/`
 
 Layout is a container field. It renders a row of empty columns into which other fields can be dragged. The DOM shape is the same family as Repeater's column system.
 
@@ -1964,7 +1964,7 @@ Nothing special. Universals only (CSS Classes, Conditional Logic).
 
 ## 23. Repeater  (`builder-field-options-repeater`)
 
-Base snapshot: `snapshots/builder-field-options-repeater/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-repeater/`
 
 ### General tab
 
@@ -2152,7 +2152,7 @@ Only **Field Size** and **Description** (universal `skip`). No Hide Label, no Re
 
 ## 24. Rating  (`builder-field-options-rating`)
 
-Base snapshot: `snapshots/builder-field-options-rating/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-rating/`
 
 > Note: the canvas always renders **10** `<i>` icon elements. Visibility per-icon is controlled by inline `style` (`display:inline-block` for visible, `display:none` for hidden). The Scale value decides how many of the 10 are visible.
 
@@ -2297,7 +2297,7 @@ Above:           <div class="wpforms-rating-field-labels wpforms-rating-field-la
 
 ## 25. Signature  (`builder-field-options-signature`)
 
-Base snapshot: `snapshots/builder-field-options-signature/`
+Base snapshot: `products/wpforms/snapshots/builder-field-options-signature/`
 
 Mostly empty in the builder. The canvas shows a static signature pad placeholder; the live signing widget is JS-mounted on the frontend.
 

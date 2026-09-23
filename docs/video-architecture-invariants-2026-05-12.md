@@ -206,13 +206,13 @@ Source: Editorial continuation session retro 2026-05-12. Author's own framing: "
 
 ### INV-15 — Real-UI proof gate: every UI fragment cites a snapshot or has explicit override
 
-Authored inline DOM that depicts WPForms / Klaviyo / Stripe / etc. product UI must derive from a real captured snapshot under `snapshots/<name>/index.html`. Hand-styled facsimiles ("I'll just CSS up a row that looks like an integration card") are forbidden by default — they produce subtle brand drift (spacing, color, icon, type) that compounds across beats and breaks product truth.
+Authored inline DOM that depicts WPForms / Klaviyo / Stripe / etc. product UI must derive from a real captured snapshot under `products/wpforms/snapshots/<name>/index.html`. Hand-styled facsimiles ("I'll just CSS up a row that looks like an integration card") are forbidden by default — they produce subtle brand drift (spacing, color, icon, type) that compounds across beats and breaks product truth.
 
 **The gate, at write time:**
-1. Before authoring an inline UI fragment, identify the source snapshot (`snapshots/<name>/index.html`) and the specific element selector or DOM excerpt the fragment derives from.
+1. Before authoring an inline UI fragment, identify the source snapshot (`products/wpforms/snapshots/<name>/index.html`) and the specific element selector or DOM excerpt the fragment derives from.
 2. Add a code-level annotation at the top of the fragment:
    ```js
-   // SOURCE: snapshots/admin-settings-integrations/index.html
+   // SOURCE: products/wpforms/snapshots/admin-settings-integrations/index.html
    //         `#wpforms-integration-klaviyo .wpforms-settings-provider-accounts-connect`
    ```
 3. If no snapshot exists and the fragment is unavoidable, get explicit user override BEFORE writing — and annotate with the override:
