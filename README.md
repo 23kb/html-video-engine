@@ -204,6 +204,7 @@ the film.
 | `tools/probe-singlehtml.js` | Seek-step QC probe runner (`videos/<slug>/qc-probe.mjs`) |
 | `tools/lint-determinism.js` | Determinism check |
 | `tools/lint-doc-refs.js` | Checks that paths cited in docs still exist |
+| `tools/lint-neutrality.js` | Keeps the engine product-neutral (a ratchet on product-brand term counts) |
 | `tools/narration-qc.js` | Per-clip narration gate |
 | `tools/dead-time.js` | Frame-diff scan for dead time in a render |
 | `tools/seam-gate.js` | Exit and entry velocity at each cut |

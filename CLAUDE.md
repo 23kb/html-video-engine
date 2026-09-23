@@ -232,7 +232,7 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 - `node tools/lib/qc-report.js <slug> --set motionAudit.tier=A | --show` — per-video `qc-report.json` gate ledger the dashboard reads. `dead-time.js`, `seam-gate.js`, `narration-qc.js`, `machine-qc.js` write their sections automatically; `validate-singlehtml.js` / `smoke-singlehtml.js` write theirs only with the opt-in `--report` flag (default behavior unchanged)
 - `node tools/lint-determinism.js [--all] [--video <slug>]` — determinism check
 - `node tools/post-capture.js <slug> [--keep-fields 1,2,3]` — MANDATORY after every new capture: field trim (opt-in) + builder markup trim + CSS dedup + catalog regen, so snapshots are born lean
-- `npm run lint` — composes `validate-singlehtml.js --all` + `lint-determinism.js --all`
+- `npm run lint` — composes `validate-singlehtml.js --all` + `lint-determinism.js --all` + `lint-neutrality.js` (a ratchet on product-brand terms: outside the default pack, the snapshot packs and the Rock 4 skill, no tracked file may name them more often than `tools/neutrality-baseline.json` allows; `--update` tightens it after a clean-up)
 
 Use standard tools instead of ad hoc `find`, `grep`, custom Playwright, or runtime spelunking unless there is a concrete gap.
 
