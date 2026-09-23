@@ -7,7 +7,7 @@
 //
 // Card markup + styling come from snapshots/admin-templates/ (real WPForms
 // admin template picker). Default templates are a curated 6-card subset of
-// REAL_TEMPLATES from _wpforms-templates.js.
+// REAL_TEMPLATES from the WPForms pack (products/wpforms/film/wpforms-templates.js).
 //
 // Source: ported GSAP effect.
 // Vocabulary slot: card layout — fly-in-stack
@@ -20,7 +20,7 @@ import {
   templateCardInnerHTML,
   templateCardInnerCSS,
   TEMPLATE_BASE_STYLES,
-} from './_wpforms-templates.js';
+} from '../../../products/wpforms/film/wpforms-templates.js';
 
 const SCOPE = 'fx-cards-fly-in-stack';
 

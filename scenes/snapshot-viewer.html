@@ -78,7 +78,9 @@ frame.addEventListener('load', async () => {
   const doc = frame.contentDocument;
   if (doSanitize) {
     try {
-      const mod = await import(`/sanitize/${snap}.js`);
+      // The pack's sanitizers sit beside its snapshots: /products/<key>/sanitize/.
+      const sanitizeRoot = root.endsWith('/snapshots') ? root.slice(0, -'/snapshots'.length) + '/sanitize' : '/products/wpforms/sanitize';
+      const mod = await import(`${sanitizeRoot}/${snap}.js`);
       if (mod.default) mod.default(doc, sanitizeOpts);
     } catch (e) { console.warn('sanitize failed', e); }
   }

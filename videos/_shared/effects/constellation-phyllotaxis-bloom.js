@@ -13,7 +13,7 @@
 /* global gsap */
 
 import { disposeEffect, escapeHtml, mountStyle, nextEffectId } from './_utils.js';
-import { REAL_TEMPLATES, DEFAULT_THUMB_BASE } from './_wpforms-templates.js';
+import { REAL_TEMPLATES, DEFAULT_THUMB_BASE } from '../../../products/wpforms/film/wpforms-templates.js';
 
 const SCOPE = 'fx-constellation-phyllotaxis-bloom';
 
