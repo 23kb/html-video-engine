@@ -6,7 +6,7 @@ These patterns have repeatedly caused regressions in past video builds. Re-read 
 
 1. **DO NOT** hand-mount a cursor element (`<div class="cursor">` + `gsap.to(cursorEl, ...)`). Use `Cursor` from `motion-primitives.js`.
 2. **DO NOT** single-tween a camera move (`tl.to(camera, {x, y, scale})`). Slide-projector failure mode. Use `cinematicFlight` / `figjamFlight` / `focusStationOverview`; for editorial DOM with no iframe under it, the ad skeleton's `makeStageCamera` (`punch / macro / whip / pullBack / drift / cut`, decomposed by construction). **And DO NOT park it or busy it:** an ad or short re-frames the same host at the cadence and in the ease voice its storyboard's `## Camera plan` declares — a creative call per film, never a system number (wva, 2026-09-03/04).
-3. **DO NOT** use a native `<select>` for an editorial dropdown — it can't be opened by JS. Use the faux-overlay pattern from `selectFromDropdown` in `wpforms-interactions.js`.
+3. **DO NOT** use a native `<select>` for an editorial dropdown — it can't be opened by JS. Use the faux-overlay pattern (`_openFakeDropdown` / `_selectElementFromDropdown` in `videos/_shared/ui-interactions.js`).
 4. **DO NOT** mount overlays as iframe SIBLINGS painting over the iframe. Inject into iframe DOM directly, OR mount in the parent doc using `elementToStageCoords` for positioning.
 5. **DO NOT** swap iframes to show state changes. Keep the same live iframe; mutate its DOM in place.
 6. **DO NOT** invent UI fragments (chips, result cards, payoff overlays) without explicit user approval. Every inline UI fragment needs a `// SOURCE: products/<key>/snapshots/<name>/...` snapshot citation OR `// OVERRIDE: <user approval>` annotation in the code itself. See INV-15.
@@ -67,16 +67,16 @@ Four paths. Pick before loading any topic skill. **Also pick the aspect ratio:**
 
 | Path | Use when | Architecture | Primary skill | Audit gate |
 |---|---|---|---|---|
-| **Short (9:16)** | YouTube/Facebook Shorts, ≤60s, one tiny task, real UI. An **ad-style spot that teaches** (charter 2026-08-13): full kinetic on real UI, animated Sullie bookends (never static; Kacie bookends/postIntro still long-form-only), full ad sound. Default mode for the 2 shorts/week cadence; carved out of that week's long-form, never an independent build | Single-HTML portrait — clone the portrait short skeleton, 1080×1920 stage, camera CROPS the desktop raster (never shrinks it). Motion vocabulary: `videos/_shared/shorts-kit.js`. Mechanics: `docs/vertical-shorts.md` | `dev-advocacy-video` (shorts branch) + `film-tutorial` | `film-motion-audit` mandatory — the bookends are editorial beats, every short has them |
-| **Tutorial** | Real product UI, narration-driven, viewer learns a workflow | Single-HTML — `videos/<slug>/index.html` + master `gsap.timeline({paused:true})` + `IframeManager` + `Cursor` + `WPFormsInteractions` + `videos/_shared/narration.js`. (The legacy engine/manifest path was retired 2026-08-22.) | `film-tutorial` | `film-motion-audit` for any postIntro/cinematic beat |
+| **Short (9:16)** | YouTube/Facebook Shorts, ≤60s, one tiny task, real UI. An **ad-style spot that teaches** (charter 2026-08-13): full kinetic on real UI, animated brand bookends from the pack (never static; presenter bookends and the mandatory postIntro stay long-form-only), full ad sound. Default mode for the 2 shorts/week cadence; carved out of that week's long-form, never an independent build | Single-HTML portrait — clone the portrait short skeleton, 1080×1920 stage, camera CROPS the desktop raster (never shrinks it). Motion vocabulary: `videos/_shared/shorts-kit.js`. Mechanics: `docs/vertical-shorts.md` | `dev-advocacy-video` (shorts branch) + `film-tutorial` | `film-motion-audit` mandatory — the bookends are editorial beats, every short has them |
+| **Tutorial** | Real product UI, narration-driven, viewer learns a workflow | Single-HTML — `videos/<slug>/index.html` + master `gsap.timeline({paused:true})` + `IframeManager` + `Cursor` + the pack's interaction class (WPForms: `WPFormsInteractions`) + `videos/_shared/narration.js`. (The legacy engine/manifest path was retired 2026-08-22.) | `film-tutorial` | `film-motion-audit` for any postIntro/cinematic beat |
 | **Pure editorial / ad-style** | No real product UI, motion-heavy, ad/announcement piece | Single self-contained HTML, vendored GSAP. Clone `docs/examples/single-html-ad-skeleton.html`. | `film-marketing` | `film-motion-audit` mandatory; morph-chain storyboard section required per `docs/storyboard-format-morph-chain-2026-05-10.md` |
 | **Mixed** (editorial chrome + real product UI) | Hybrid: real product geometry beneath editorial chrome | One single-HTML film: editorial DOM composited over iframe surfaces | `film-marketing` | `film-motion-audit` mandatory |
 
-If the user's request is ambiguous, ask **one question**: "Tutorial showing real product UI workflow, or editorial / ad-style piece?" (And if it's for Shorts, say so — that changes the stage, not just the crop.) Then pick the path. Do not build a tutorial without the tutorial libraries (`IframeManager` + `Cursor` + `WPFormsInteractions` in the tutorial skeleton); do not mount an iframe stack for pure-editorial work.
+If the user's request is ambiguous, ask **one question**: "Tutorial showing real product UI workflow, or editorial / ad-style piece?" (And if it's for Shorts, say so — that changes the stage, not just the crop.) Then pick the path. Do not build a tutorial without the tutorial libraries (`IframeManager` + `Cursor` + the pack's interaction class, as the tutorial skeleton mounts them); do not mount an iframe stack for pure-editorial work.
 
 ## Five libraries — use these, don't reinvent
 
-For any motion / camera / cursor / typing / field-reveal / brand-anchor / WPForms interaction / iframe-glue / split-screen-mirror / named-effect work, the executable code **already exists** in `videos/_shared/`. Reach for the library first. Inventing a new approximation is a recurring failure mode that re-opens bugs the library already fixed (cursor frenzy, caret drift, slide-projector cameras, snapshot-swap cream-flash).
+For any motion / camera / cursor / typing / field-reveal / brand-anchor / product-UI interaction / iframe-glue / split-screen-mirror / named-effect work, the executable code **already exists** in `videos/_shared/`. Reach for the library first. Inventing a new approximation is a recurring failure mode that re-opens bugs the library already fixed (cursor frenzy, caret drift, slide-projector cameras, snapshot-swap cream-flash).
 
 - **`motion-primitives.js`** — animation kit: cameras (`cinematicFlight`, `figjamFlight`, `focusStationOverview`), `Cursor` class (glide / click / hover / drag), text (`caretType`, `statusPillMorph`, `markerSweep`), reveal (`popOut`, `fieldStaggerReveal`), brand (`mountBrandBug` — `mountSullieBug` is its WPForms alias — `cleanFastRejoin`), utils (`boundedRepeats`, `mulberry32`). Full when-to-use in `film-primitives` skill. QC at `videos/_qc-primitives/index.html`.
 - **`iframe-manager.js` + the interaction classes** — `IframeManager` lives in `iframe-manager.js` (native 1280×720 mount, engine-pattern camera transform, `pointer-events: none` guard). It picks the snapshot pack from `<meta name="film:product" content="<key>">`, else WPForms. The WPForms admin/builder interactions (`navAddNewForm`, `selectTemplate`, `openSettingsTab`, `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, `dragFieldToForm`) are `WPFormsInteractions` in `products/wpforms/film/wpforms-interactions.js`. That class extends `UIInteractions` (`ui-interactions.js`), the product-neutral base. `videos/_shared/wpforms-interactions.js` is a shim: it re-exports `IframeManager`, `WPFormsInteractions`, `Cursor` and `clickRipple`, so existing films keep working. Full list in `film-primitives` skill. QC at `videos/_qc-interactions/index.html`.
@@ -122,7 +122,7 @@ Non-negotiable invocations for tutorial / postIntro / cinematic / editorial work
 - `film-marketing` — editorial / ad-style surfaces + blocks + atmospheric kit + brand canonical + **the reference-driven replication recipe** (reference film → frames → scene map → tile cited per beat in code → probe on v1 → badged-sheet handoff; 2026-09-14)
 - `film-ad-to-short` — a 9:16 cut of an APPROVED ad into `videos/<slug>-9x16/`: timeline / copy / cues / bed verbatim, geometry only (stage flip, per-line type refit, stacks, the live-surface band for mixed films, remapped cursor, re-pointed probe). Not the carve path, not the portrait short skeleton path
 - `film-ae-build` — the After Effects build or twin of a film through the AE connector (`ae_*`): the approved storyboard as contract, real snapshots rastered at 2×, the rig + stills gate before motion, the `execute_script` build pattern, the bridge rules, `aerender` + `ffprobe`, the shared `tools/sfx` sound path. The connector's own skills cover AE craft; this one covers the repo side
-- `film-primitives` — lookup index for `videos/_shared/motion-primitives.js` (cameras / cursor / typing / field-reveal / brand-anchor / exit) and `videos/_shared/wpforms-interactions.js` (Wave 1 standard interactions). Reach here BEFORE writing any new GSAP cursor / camera / interaction code.
+- `film-primitives` — lookup index for `videos/_shared/motion-primitives.js` (cameras / cursor / typing / field-reveal / brand-anchor / exit) and the interaction layer (`iframe-manager.js`, `ui-interactions.js`, the pack's interaction class). Reach here BEFORE writing any new GSAP cursor / camera / interaction code.
 - `film-motion-audit` — score animations and camera moves S–F tier with hard-rule calibration. Run before any postIntro/cinematic handoff.
 - `film-polish` — polish an existing already-shipped video without breaking it. Backup-first → analyze → surgical edits in batches of 5–10 → static verification → motion-audit if cinematic touched. NOT for new authoring, NOT for debug. Includes 8 canonical polish patterns.
 
@@ -131,12 +131,9 @@ Plus the designer-grade pass (file-read, NOT a Skill-tool gate):
 
 ## Brand canonical source
 
-Use the real WPForms brand assets. Do not invent.
+Use the real brand assets of the film's product pack. Do not invent.
 
-- Brand usage doc + anti-patterns — read it before any brand work
-- CSS tokens: `--wpf-orange #E27730` primary, `--wpf-ai-purple` AI-feature-only
-- Real Sullie + loading visuals + AI 3-dot spinner — never redraw them
-- Real templates API: `https://wpforms.com/templates/api/get/` — fetch it directly; the old cache helper is gone
+- **The pack's own rules** (colour roles, mascot, presenter, brand usage doc, data sources) live in `products/<key>/PRODUCT.md`. WPForms is the default pack: read `products/wpforms/PRODUCT.md` before any brand work on a WPForms film.
 - **Brand is data, per product pack.** A film names its product with `<meta name="film:product" content="<key>">` (no meta = WPForms). The brand bug, end card, shorts bookends, task queue and the cursor ripple / hover / marker colours read `products/<key>/brand/brand.json` through `videos/_shared/brand.js`; the pack's CSS tokens are `products/<key>/brand/tokens.css`. The old `/reference/wpforms-brand/tokens.css` link is served from the WPForms pack. TTS voice and the machine-QC brand line read the same file. Tool-side pack data (CSS class prefixes, plugin folders) is `products/<key>/pack.json`; `product.json` stays local.
 
 ## Start Here
@@ -201,8 +198,8 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 
 - `node capture/capture.js [--site <name>] --variants <plan.json>` — **snapshot capture**: live page → static snapshot folder. Lives in `capture/`, not `tools/`. Plan schema + eval/waitFor steps: `capture/capture-library.md`
 - `node tools/capture-gates.js <slug> ...` — post-capture quality gates (geometry / paint diff / locale / admin chrome / stacking). Report-only; a paint WARN is cleared by LOOKING at the two PNGs or fixing the capture, never by explaining it (rf 9)
-- `node tools/preflight-site.js` — pre-capture site check (wp-cli boot, WPForms active, admin login, TTS)
-- `node tools/site-eval.js "<php>" [--as-admin]` — wp-cli `eval` wrapper for the LocalWP test sites. **Every staging write needs `--as-admin` and a read-back**: wp-cli boots with no current user, so a WPForms write API fails its capability check and returns `false` — identical to "nothing needed writing". Assert on the value you read back, never on the return value (rf 8)
+- `node tools/preflight-site.js` — pre-capture site check (wp-cli boot, the pack's plugin active — `VIDEO_PRODUCT` picks the pack, admin login, TTS)
+- `node tools/site-eval.js "<php>" [--as-admin]` — wp-cli `eval` wrapper for the LocalWP test sites. **Every staging write needs `--as-admin` and a read-back**: wp-cli boots with no current user, so a plugin's write API fails its capability check and returns `false` — identical to "nothing needed writing". Assert on the value you read back, never on the return value (rf 8)
 - `node tools/skill-context.js` — canonical startup context dump
 - `node tools/list-snapshots.js [--search <q>] [--for <slug>]` — snapshot inventory
 - `node tools/fix-mojibake.js <file> [--write]` — repair UTF-8-read-as-cp1252 text (`â€"` → `—`); `list-snapshots.js` warns when `index.json` needs it
@@ -218,7 +215,7 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 - `node tools/smoke-singlehtml.js <slug> [--seconds <n>]` — non-visual smoke for single-HTML videos
 - `node tools/render-html.js <slug> --duration <seconds> [--fps 30] [--out path]` — single-HTML editorial → MP4 (no engine)
 - `node tools/render-singlehtml-audio.js <slug> [--bgm <path>|none] [--resolution WxH]` — single-HTML → MP4 **with narration + ducked BGM**; this is the renderer the tutorials and shorts actually ship through. Resolution defaults to the video's own `.stage` box (`tools/stage-size.js`), so a 9:16 short renders 1080×1920 with no flag — see `docs/vertical-shorts.md`
-- `node tools/stitch.js videos/<slug>.video.json [--no-render] [--xfade <s>] [--dry-run]` — render pieces + ffmpeg-concat **real-Kacie intro + HTML body + real-Kacie outro** into one MP4 (delivery shape since 2026-07-23; HF bookends superseded — recording spec `docs/kacie-intro-outro-recording-spec.md`, flow in `dev-advocacy-video` step 5b)
+- `node tools/stitch.js videos/<slug>.video.json [--no-render] [--xfade <s>] [--dry-run]` — render pieces + ffmpeg-concat **a recorded presenter intro + HTML body + recorded presenter outro** into one MP4 (the tutorial delivery shape since 2026-07-23; the presenter, recording spec and flow are the pack's — WPForms: `products/wpforms/PRODUCT.md`)
 - `node tools/keyframes.js <video.mp4> [--frames 16 --cols 4]` — contact-sheet grid from an MP4 for visual QC handoff; each tile carries a burned-in `#N t.ts` badge and the tile→timestamp map prints to stdout, so "frame 7" feedback resolves to an exact second
 - `node tools/dead-time.js <video.mp4 | slug> [--min-run 0.3] [--fail-over 1.0]` — full-track frame-diff scan of a render: reports runs of no-change frames with the pause-test taxonomy (comma ≤0.45s / borderline / PLANNING BUG >1s); the measured form of the D1 idle-motion rule, also catches frozen-video render defects; report-only. A PLANNING BUG is WITHHELD when full-res freezedetect or a quadrant re-measure disagrees — at 270px the meter cannot see small-area motion (rf-weight 28)
 - **`smoke-singlehtml`, `dead-time` and `seam-gate` hold an advisory lock and refuse to start while another one runs** (`tools/headless-lock.js`, `--force` overrides). Concurrent headless runs make the sampler read a timeline going backwards, and the failure looks like the film's fault (rf-video 25). A timing failure is re-run alone before it is believed
@@ -226,7 +223,7 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 - `node tools/storyboard-sheet.js <slug> [--beats t1,t2,...]` — PRE-render stills sheet: seeks a paused single-HTML film to each beat mark (timeline labels or `--beats`), screenshots the stage, tiles with badges — look-approval on stills before motion work
 - `node tools/seam-gate.js <slug> [--cuts t1,t2,...]` — measures exit/entry velocity (px/s) at each cut of a single-HTML film; warns on dead exits/entries and velocity mismatches (the transitions boundary contract, measured); report-only
 - `node tools/machine-qc.js <slug | path.mp4> [--mode both|static|agentic] [--fps 24] [--res high|low] [--focus "..."] [--no-report]` — ADVISORY Gemini semantic QC pass on a rendered MP4: a 24 fps high-resolution static pass + an agentic navigation pass, merged (frame-edge crops, endings, on-screen text, blinks/pop-ins/cursor jumps, narration + SFX timing); writes the `machineQc` advisory chip; never a gate, never feeds the dashboard dot. Stage + triage contract: `film-machine-qc` skill. Needs `GEMINI_API_KEY` in `.env`; no headless lock; ~400k tokens per 30–40 s film
-- `node tools/capture-brand.js <url> <slug>` — pull a PARTNER brand's real assets (logo SVGs, icons, palette, fonts) from its site into `videos/<slug>/assets/brand/` with provenance; for integration videos only — WPForms' own brand assets are never pulled this way
+- `node tools/capture-brand.js <url> <slug>` — pull a PARTNER brand's real assets (logo SVGs, icons, palette, fonts) from its site into `videos/<slug>/assets/brand/` with provenance; for integration videos only — a pack's own brand assets live in `products/<key>/brand/` and are never pulled this way
 - `node tools/preview.js [--video <slug>] [--port 4321]` — live-reload + scrubber; also serves the QC dashboard index route (`/__qc/videos.json`)
 - **QC dashboard** — `http://localhost:4321/tools/qc-dashboard/` (needs `tools/preview.js` running): per-video gate chips, render playback with dead-time bands + seam-cut ticks, in-browser filmstrip (vendored Mediabunny decodes the mp4 client-side), and timestamped feedback notes with a copy-for-chat export. Reads `videos/<slug>/qc-report.json`
 - `node tools/lib/qc-report.js <slug> --set motionAudit.tier=A | --show` — per-video `qc-report.json` gate ledger the dashboard reads. `dead-time.js`, `seam-gate.js`, `narration-qc.js`, `machine-qc.js` write their sections automatically; `validate-singlehtml.js` / `smoke-singlehtml.js` write theirs only with the opt-in `--report` flag (default behavior unchanged)
@@ -262,13 +259,13 @@ Stop and push back when:
 
 - Storyboard approval has not happened — see `film-tutorial` skill HARD-GATE
 - Editorial storyboard lacks the morph-chain section — see `docs/storyboard-format-morph-chain-2026-05-10.md`
-- A requested state would require fake WPForms UI
+- A requested state would require fake product UI
 - A snapshot is missing and cannot be truthfully derived
 - PostIntro is being weakened instead of built with approved animation surfaces — see `film-postintro` skill
 - Implementation pressure points toward protected core
 - A custom postIntro or a specific approved animation is being downgraded to a generic focus/title beat (the retired descriptor-mode failure — the rule survives)
 - An editorial build is being authored from scratch instead of cloned from its skeleton (`docs/examples/single-html-ad-skeleton.html`)
-- Purple is being used as primary brand (it's AI-feature-only — `--wpf-orange #E27730` is primary)
+- A brand rule from the pack's `PRODUCT.md` is being broken (colour roles, mascot, presenter)
 
 ## Where Topic Rules Live (Quick Map)
 
@@ -281,7 +278,7 @@ Don't look here for these — load the skill instead:
 | GSAP L0 discipline / camera-decomposition / registered timelines / `pausableRaf` / Flip patterns / designer principles | `film-gsap-rules` |
 | `surface: 'editorial' / 'mixed'` / blocks library / atmospheric kit / text-kit / hero composition / brand canonical | `film-marketing` |
 | Motion S–F tier scoring / hard-rule calibration / pre-handoff gate | `film-motion-audit` |
-| Motion-primitives + wpforms-interactions library lookup (per-primitive when-to-use, signatures, QC status) | `film-primitives` |
+| Motion-primitives + interaction-layer library lookup (per-primitive when-to-use, signatures, QC status) | `film-primitives` |
 | Polish an existing video (timing / easing / typography / handoffs) without breaking it | `film-polish` |
 | 9:16 cut of an approved ad (band, type refit, stacks, probe re-point) | `film-ad-to-short` |
 | After Effects build or twin (bridge rules, raster pipeline, render recipe, phase gates) | `film-ae-build` |

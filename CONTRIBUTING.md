@@ -44,7 +44,7 @@ The system is intentionally human-in-the-loop. The flow is:
 10. **Revise.** Scoped fixes only.
 
 Don't skip step 4. Storyboard approval is the only thing standing between
-"approved beats" and "fabricated WPForms UI."
+"approved beats" and "fabricated product UI."
 
 ---
 

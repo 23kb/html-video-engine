@@ -55,7 +55,8 @@ products/
 
 Next to its snapshots, a pack keeps `pack.json` (its CSS class prefixes and
 plugin folders, for the tools) and `brand/` (`brand.json` + `tokens.css`: name,
-URL, mascot, wordmark, colours). A film names its pack with
+URL, mascot, wordmark, colours), plus `PRODUCT.md` for the rules that bind only
+that product. A film names its pack with
 `<meta name="film:product" content="<key>">`.
 
 Each snapshot folder holds `index.html`, `catalog.md` (selectors), `outline.md`
