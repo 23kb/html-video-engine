@@ -17,7 +17,7 @@ function css(id) {
     #${id}.${SCOPE} {
       perspective: 1500px;
       margin: 0;
-      font-family: var(--wpf-font-stack, system-ui, sans-serif);
+      font-family: var(--brand-font, var(--wpf-font-stack, system-ui, sans-serif));
       letter-spacing: -0.025em;
       line-height: 1.15;
       text-align: left;
@@ -39,7 +39,7 @@ function css(id) {
  *   Color names: orange, blue, purple, green, amber, teal, pink, or any CSS color.
  * @param {string} [opts.fontSize='80px']
  * @param {string|number} [opts.fontWeight=600]
- * @param {string} [opts.color='var(--wpf-ink, #14110e)'] — default word color
+ * @param {string} [opts.color='var(--brand-ink, var(--wpf-ink, #14110e))'] — default word color
  * @returns {{ el: HTMLElement, tweenInto: Function, dispose: Function }}
  */
 export function mountTextStackFromRight({
@@ -47,7 +47,7 @@ export function mountTextStackFromRight({
   highlight = {},
   fontSize = '80px',
   fontWeight = 600,
-  color = 'var(--wpf-ink, #14110e)',
+  color = 'var(--brand-ink, var(--wpf-ink, #14110e))',
 } = {}) {
   const id = nextEffectId(SCOPE);
   const style = mountStyle(`${id}-style`, css(id));

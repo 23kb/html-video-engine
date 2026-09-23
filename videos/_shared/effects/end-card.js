@@ -1,6 +1,7 @@
 // videos/_shared/effects/end-card.js
 //
-// House end-card — real Sullie mark + "WPForms" wordmark + CTA line + URL line.
+// House end-card — the brand mascot (WPForms: real Sullie) + product name +
+// CTA line + URL line, all from the film's brand pack (../brand.js).
 // The canonical outro composition for editorial/ad-style films, restylable per
 // film via options (S3 in docs/video-system-improvements-2026-08-06.md; every
 // intro AND outro carries the real Sullie — standing rule).
@@ -12,10 +13,9 @@
 /* global gsap */
 
 import { disposeEffect, mountStyle, nextEffectId, resolveColor } from './_utils.js';
+import { brand } from '../brand.js';
 
 const SCOPE = 'fx-end-card';
-const SULLIE_SRC = '/assets/sullie-with-arms.svg'; // official Sullie, with arms
-
 function css(id) {
   return `
     #${id}.${SCOPE} {
@@ -24,7 +24,7 @@ function css(id) {
       align-items: center;
       gap: 18px;
       text-align: center;
-      font-family: var(--wpf-font-stack, system-ui, sans-serif);
+      font-family: var(--brand-font, var(--wpf-font-stack, system-ui, sans-serif));
     }
     #${id} .sullie {
       width: var(--fx-endcard-sullie, 160px);
@@ -49,7 +49,7 @@ function css(id) {
     #${id} .url {
       font-size: 28px;
       font-weight: 600;
-      color: var(--fx-endcard-accent, #E27730);
+      color: var(--fx-endcard-accent, var(--brand-primary, #E27730));
       padding-bottom: 6px;
       position: relative;
       will-change: transform, opacity;
@@ -67,20 +67,20 @@ function css(id) {
 
 /**
  * @param {Object} opts
- * @param {string} [opts.title='WPForms'] — wordmark line ("WPForms" always capitalized)
+ * @param {string} [opts.title] — wordmark line; default brand.name (WPForms: 'WPForms')
  * @param {string} [opts.cta=''] — one CTA sentence, e.g. 'Read the full guide'
- * @param {string} [opts.url='WPForms.com'] — display URL line (capitalize "WPForms.com")
- * @param {string} [opts.accent='orange'] — URL/accent color; name or CSS color
- * @param {string} [opts.sullieSrc] — override the Sullie asset path (default: tracked brand asset)
+ * @param {string} [opts.url] — display URL line; default brand.url (WPForms: 'WPForms.com')
+ * @param {string} [opts.accent='brand'] — URL/accent color; name or CSS color ('brand' = the brand primary)
+ * @param {string} [opts.sullieSrc] — override the mascot path (default brand.mascot.src)
  * @param {string} [opts.sullieSize='160px']
  * @returns {{ el: HTMLElement, tweenInto: Function, dispose: Function }}
  */
 export function mountEndCard({
-  title = 'WPForms',
+  title = brand.name,
   cta = '',
-  url = 'WPForms.com',
-  accent = 'orange',
-  sullieSrc = SULLIE_SRC,
+  url = brand.url,
+  accent = 'brand',
+  sullieSrc = brand.mascot.src,
   sullieSize = '160px',
 } = {}) {
   const id = nextEffectId(SCOPE);
@@ -95,7 +95,7 @@ export function mountEndCard({
   const sullie = document.createElement('img');
   sullie.className = 'sullie';
   sullie.src = sullieSrc;
-  sullie.alt = 'Sullie, the WPForms mascot';
+  sullie.alt = brand.mascot.alt;
 
   const wordmark = document.createElement('div');
   wordmark.className = 'wordmark';

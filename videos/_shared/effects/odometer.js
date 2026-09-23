@@ -47,7 +47,7 @@ function css(id, slotW, slotH, sepW, plusW, glyphSize) {
       font-weight: 800; color: var(--fx-odo-ink, #f4ecd9); line-height: ${slotH}px; text-align: center; }
     #${id} .odo-glyph { width: ${slotW}px; height: ${slotH}px; }
     #${id} .odo-sep { width: ${sepW}px; }
-    #${id} .odo-plus { width: ${plusW}px; color: var(--fx-odo-accent, #E27730); }
+    #${id} .odo-plus { width: ${plusW}px; color: var(--fx-odo-accent, var(--brand-primary, #E27730)); }
     #${id} .stat-tail { font-size: 34px; font-weight: 600; color: var(--fx-odo-ink-soft, #d9d2c0); }
   `;
 }
@@ -80,7 +80,7 @@ export function mountOdometer({
   separatorWidth = 40,
   suffixWidth = 66,
   glyphSize = 112,
-  accent = 'orange',
+  accent = 'brand',
 } = {}) {
   const id = nextEffectId(SCOPE);
   const style = mountStyle(`${id}-style`,

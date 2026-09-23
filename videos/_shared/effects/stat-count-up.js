@@ -26,7 +26,7 @@ function css(id) {
       border-radius: 24px;
       background: var(--fx-stat-bg, #ffffff);
       box-shadow: 0 24px 60px rgba(20, 17, 14, 0.12);
-      font-family: var(--wpf-font-stack, system-ui, sans-serif);
+      font-family: var(--brand-font, var(--wpf-font-stack, system-ui, sans-serif));
       will-change: transform, opacity;
     }
     #${id} .label {

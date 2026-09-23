@@ -1,0 +1,118 @@
+/* WPForms brand tokens — products/wpforms/brand/tokens.css
+ *
+ * The WPForms pack's CSS tokens. Films link this file:
+ *   <link rel="stylesheet" href="/products/wpforms/brand/tokens.css" />
+ * The old path /reference/wpforms-brand/tokens.css is served from here too
+ * (tools/lib/paths.js maps it), so films that still link it keep working.
+ *
+ * Values come from the live WPForms plugin (admin CSS + icon fills) and the
+ * WPForms design system. Do NOT redeclare them elsewhere: no --wpf-purple, no
+ * outside palettes, no custom font stacks. Purple is the AI-feature accent
+ * only; using it as the primary brand color is a known mistake.
+ *
+ * The shared engine reads brand roles as var(--brand-x, var(--wpf-x, …));
+ * see the note at the end of :root.
+ */
+:root {
+  /* Brand orange — primary accent, the WPForms identity color
+   * (.wpforms-btn-orange in the admin CSS, the WPForms icon fill). */
+  --wpf-orange: #E27730;
+  --wpf-orange-hover: #CD6622;
+
+  /* Secondary blue — TWO different blues, don't mix them up.
+   *
+   * --wpf-blue (#066AAB) is the FRONTEND form default accent: a standard blue
+   * works with more themes out of the box. Use it for rendered forms on a page.
+   *
+   * --wpf-blue-admin (#036AAB) is the ADMIN/BUILDER brand blue: toggles, focus
+   * borders, interactive controls, links on hover. It is the one you almost
+   * always want when drawing WPForms admin chrome.
+   */
+  --wpf-blue: #066AAB;
+  --wpf-blue-light: #0399ED;
+  --wpf-blue-admin: #036AAB;
+  --wpf-blue-admin-hover: #215D8F;
+
+  /* AI feature accent — purple is correct for AI-feature elements (the AI chat
+   * send button, AI status indicators, "Powered by AI" tags). NEVER use it as
+   * a primary brand color. */
+  --wpf-ai-purple: #7A30E2;
+  --wpf-ai-purple-deep: #5C24A9;
+
+  /* Neutrals */
+  --wpf-bg-warm: #F4F1EC;
+  --wpf-bg-cream: #FAF6EE;
+  --wpf-ink: #14161C;
+  --wpf-ink-soft: #2A2A2E;
+  --wpf-ink-mute: #5B5F6E;
+
+  /* Typography — OS system stack. WPForms does NOT use a custom webfont.
+   * Don't import Inter, don't import Roboto. Use the system stack. */
+  --wpf-font-stack: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  /* Spinner timing — the canonical AI thinking spinner uses 0.8s linear infinite.
+   * If you build your own loading indicator, match this cadence. */
+  --wpf-spinner-duration: 0.8s;
+
+  /* ─────────────────────────────────────────────────────────────────────────
+   * Everything below comes from the WPForms design system (rules cited two or
+   * more times in its UI/UX reviews unless noted).
+   * ───────────────────────────────────────────────────────────────────────── */
+
+  /* Status colors. Red is both the error red and the required-field asterisk.
+   * Green: #008A20 superseded #00A32A in 2023-06. */
+  --wpf-red: #D63638;
+  --wpf-green: #008A20;
+
+  /* Greys — TWO families, and they are not interchangeable.
+   *
+   * WP-core family: admin chrome, utility/dismiss/disabled icons, dividers.
+   * Builder family: the form builder's own panel text and field styling. */
+  --wpf-icon-grey: #A7AAAD;          /* utility / dismiss / disabled icons */
+  --wpf-icon-grey-hover: #6A6F76;    /* those same icons on hover */
+  --wpf-divider: #DCDCDE;            /* separators, progress-bar tracks, menu-item hover bg */
+  --wpf-text-tertiary: #646970;      /* de-emphasized helper text, "no results" */
+
+  --wpf-text-primary: #444444;       /* builder primary text */
+  --wpf-text-secondary: #777777;     /* builder secondary text, select arrows, close-icon hover */
+  --wpf-field-border: #B0B6BD;       /* field + selector borders, placeholder text */
+  --wpf-fields-secondary: #86919E;   /* builder panel input text before focus */
+
+  /* Surfaces */
+  --wpf-zebra-odd: #F6F6F6;          /* odd table rows + table headers; even rows are #fff */
+  --wpf-skeleton-bg: #F0F0F1;        /* loading placeholder bars... */
+  --wpf-skeleton-fg: #C3C4C7;        /* ...and their fill */
+
+  /* Shadows. Containers use box-shadow, not border — it follows border-radius
+   * more cleanly by sitting outside it. */
+  --wpf-shadow-card: 0 1px 2px rgba(0,0,0,0.07);
+  --wpf-shadow-notice: 0 2px 2px rgba(0,0,0,0.05);
+  --wpf-shadow-modal: 0 0 1px 0 rgba(0,0,0,0.25), 0 10px 30px 0 rgba(0,0,0,0.15);
+  --wpf-shadow-elevation: 0 15px 50px rgba(0,0,0,0.15); /* floating modals, framed hero imagery */
+
+  /* Radii */
+  --wpf-radius-popup: 6px;
+  --wpf-radius-control: 4px;         /* admin fields, option tiles (3px also acceptable) */
+
+  /* Typography rules that are values, not prose.
+   * 600 ALWAYS for emphasis — 500 renders too light on Windows, 700 too heavy. */
+  --wpf-weight-emphasis: 600;
+  --wpf-font-min: 14px;              /* builder UI floor; never drop to 12-13px */
+
+  /* Motion — the product's real transition tiers. A video that fakes a WPForms
+   * hover, toggle, or expanding panel should use these, not a guess.
+   * The design system names durations but never an easing curve, so don't
+   * cite it as authority for one. */
+  --wpf-t-hover: 0.05s;              /* hover / state change, admin outside builder */
+  --wpf-t-move: 0.15s;               /* anything involving movement */
+  --wpf-t-slow: 0.25s;               /* large elements, expanding sections */
+
+  /* No --brand-* roles here on purpose. The engine reads
+   * var(--brand-x, var(--wpf-x, fallback)), so WPForms films resolve through
+   * the --wpf-* names above, including a film's own local overrides.
+   * videos/_shared/brand.js sets --brand-primary and --brand-primary-rgb at
+   * runtime. Another product's pack defines --brand-* in its own tokens.css. */
+}
+
+/* If a video needs a default body font without redeclaring on every selector */
+.wpf-system-font { font-family: var(--wpf-font-stack); }

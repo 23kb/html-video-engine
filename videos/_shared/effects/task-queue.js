@@ -24,6 +24,7 @@
 /* global gsap */
 
 import { disposeEffect, escapeHtml, mountStyle, nextEffectId, resolveColor } from './_utils.js';
+import { brand } from '../brand.js';
 
 const SCOPE = 'fx-task-queue';
 
@@ -47,10 +48,10 @@ function css(id) {
       border-radius: 12px; position: relative; opacity: 0;
       will-change: transform, opacity; }
     #${id} .tq-row .row-glow { position: absolute; inset: 0; border-radius: 12px;
-      background: var(--fx-tq-glow, rgba(226, 119, 48, 0.16)); opacity: 0; will-change: opacity; }
+      background: var(--fx-tq-glow, rgba(var(--brand-primary-rgb, 226, 119, 48), 0.16)); opacity: 0; will-change: opacity; }
     #${id} .tq-row svg { width: 34px; height: 34px; flex: 0 0 auto; }
     #${id} .tq-row svg circle { stroke: var(--fx-tq-ring, rgba(244, 236, 217, 0.25)); stroke-width: 2.5; fill: none; }
-    #${id} .tq-row svg path { stroke: var(--fx-tq-accent, #E27730); stroke-width: 3.5; fill: none;
+    #${id} .tq-row svg path { stroke: var(--fx-tq-accent, var(--brand-primary, #E27730)); stroke-width: 3.5; fill: none;
       stroke-linecap: round; stroke-linejoin: round;
       stroke-dasharray: 30; stroke-dashoffset: 30; }
     #${id} .tq-row .row-label { font-size: 26px; color: var(--fx-tq-ink-soft, #d9d2c0); flex: 1; position: relative; }
@@ -62,30 +63,30 @@ function css(id) {
     #${id} .tq-chip .st-q { color: var(--fx-tq-ink-mute, #8a8678); }
     #${id} .tq-chip .st-d { color: #fff; opacity: 0; }
     #${id} .tq-chip .chip-fill { position: absolute; inset: 0; border-radius: 22px;
-      background: var(--fx-tq-accent, #E27730); opacity: 0; will-change: opacity; }
+      background: var(--fx-tq-accent, var(--brand-primary, #E27730)); opacity: 0; will-change: opacity; }
   `;
 }
 
 /**
  * @param {Object} opts
- * @param {string} [opts.title='WPForms AI'] — bold half of the title line
+ * @param {string} [opts.title] — bold half of the title line; default brand.aiName, else brand.name (WPForms: 'WPForms AI')
  * @param {string} [opts.subtitle='is building your form'] — accent half
  * @param {string[]} [opts.rows] — task labels, one row each
  * @param {number} [opts.width=800]
  * @param {string} [opts.queuedLabel='QUEUED']
  * @param {string} [opts.doneLabel='DONE']
- * @param {string} [opts.accent='orange'] — check + chip fill + row wash hue
+ * @param {string} [opts.accent='brand'] — check + chip fill hue ('brand' = the brand primary)
  * @param {string} [opts.aiAccent='purple'] — the dot + subtitle (AI features only)
  * @returns {{ el: HTMLElement, rows: HTMLElement[], tweenInto: Function, dispose: Function }}
  */
 export function mountTaskQueue({
-  title = 'WPForms AI',
+  title = brand.aiName || brand.name,
   subtitle = 'is building your form',
   rows = ['Add a Name field', 'Add an Email field', 'Write the confirmation'],
   width = 800,
   queuedLabel = 'QUEUED',
   doneLabel = 'DONE',
-  accent = 'orange',
+  accent = 'brand',
   aiAccent = 'purple',
 } = {}) {
   const id = nextEffectId(SCOPE);

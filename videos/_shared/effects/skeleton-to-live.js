@@ -35,7 +35,7 @@ function css(id, shimmerWidth, shimmerHeight, shimmerAlpha) {
     #${id} .lv-label { font-size: 22px; font-weight: 600; color: var(--fx-sk-ink-soft, #d9d2c0); }
     #${id} .lv-input { border-radius: 10px; background: var(--fx-sk-input, #0b1018);
       border: 1px solid var(--fx-sk-input-line, rgba(244, 236, 217, 0.16)); }
-    #${id} .lv-btn { border-radius: 12px; background: var(--fx-sk-accent, #E27730); color: #fff;
+    #${id} .lv-btn { border-radius: 12px; background: var(--fx-sk-accent, var(--brand-primary, #E27730)); color: #fff;
       font-size: 24px; font-weight: 800; display: flex; align-items: center;
       justify-content: center; }
     #${id} .sk-shimmer { position: absolute; top: 0; left: 0;
@@ -80,7 +80,7 @@ export function mountSkeletonToLive({
   rise = 10,
   shimmerWidth = 260,
   shimmerAlpha = 0.10,
-  accent = 'orange',
+  accent = 'brand',
 } = {}) {
   const id = nextEffectId(SCOPE);
   const style = mountStyle(`${id}-style`, css(id, shimmerWidth, height, shimmerAlpha));

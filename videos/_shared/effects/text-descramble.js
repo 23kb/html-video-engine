@@ -31,7 +31,7 @@ function mulberry32(a) {
 function css(id, color) {
   return `
     #${id}.${SCOPE} {
-      font-family: var(--wpf-font-stack, system-ui, sans-serif);
+      font-family: var(--brand-font, var(--wpf-font-stack, system-ui, sans-serif));
       font-weight: 600;
       letter-spacing: -0.02em;
       line-height: 1.2;
@@ -49,7 +49,7 @@ function css(id, color) {
  * @param {string} opts.text
  * @param {string} [opts.fontSize='72px']
  * @param {string|number} [opts.fontWeight=600]
- * @param {string} [opts.color='var(--wpf-ink, #14110e)']
+ * @param {string} [opts.color='var(--brand-ink, var(--wpf-ink, #14110e))']
  * @param {number} [opts.seed=90]
  * @returns {{ el: HTMLElement, chars: HTMLElement[], tweenInto: Function, dispose: Function }}
  *   tweenInto(tl, { position, direction: 'in'|'out', stagger, travelDuration, ease })
@@ -58,7 +58,7 @@ export function mountTextDescramble({
   text = '',
   fontSize = '72px',
   fontWeight = 600,
-  color = 'var(--wpf-ink, #14110e)',
+  color = 'var(--brand-ink, var(--wpf-ink, #14110e))',
   seed = 90,
 } = {}) {
   const id = nextEffectId(SCOPE);

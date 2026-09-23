@@ -34,6 +34,7 @@ export function escapeHtml(value = '') {
 
 export function resolveColor(name) {
   switch (name) {
+    case 'brand':  return 'var(--brand-primary, var(--wpf-orange, #E27730))';
     case 'orange': return 'var(--wpf-orange, #E27730)';
     case 'blue':   return 'var(--wpf-blue, #2c6fd6)';
     case 'purple': return 'var(--wpf-ai-purple, #7a30e2)';

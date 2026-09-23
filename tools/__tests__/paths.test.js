@@ -59,6 +59,8 @@ try {
   ok(paths.snapshotUrlPath('admin-x') === '/products/wpforms/snapshots/admin-x/index.html', 'snapshotUrlPath() defaults to index.html');
   ok(paths.mapLegacySnapshotUrl('/snapshots/admin-x/index.html') === '/products/wpforms/snapshots/admin-x/index.html', 'an old /snapshots/ URL maps onto the moved pack');
   ok(paths.mapLegacySnapshotUrl('/videos/x/index.html') === '/videos/x/index.html', 'other URLs pass through');
+  ok(paths.mapLegacySnapshotUrl('/reference/wpforms-brand/tokens.css') === '/products/wpforms/brand/tokens.css', 'the old local brand tokens URL maps onto the WPForms pack tokens');
+  ok(fs.existsSync(path.join(paths.REPO_ROOT, 'products', 'wpforms', 'brand', 'tokens.css')), 'the WPForms pack tokens file exists');
   ok(paths.snapshotUrlPath('admin-x', 'outline.md') === '/products/wpforms/snapshots/admin-x/outline.md', 'snapshotUrlPath() takes a file');
   setEnv({ VIDEO_PRODUCT: '' });
   ok(paths.productKey() === null, 'an empty VIDEO_PRODUCT counts as unset');

@@ -5,7 +5,8 @@
 // but invents a single-tween implementation that reads as a slide projector.
 //
 // Each function here is:
-// - Standalone (only depends on GSAP + standard browser APIs)
+// - Standalone (depends on GSAP + standard browser APIs; brand colors and
+//   the brand bug read ./brand.js)
 // - JSDoc'd with rationale and a citation to the lessons-doc or winning-video
 //   pattern it codifies
 // - Determinism-safe (no Date.now, no unseeded Math.random, no fetch, no repeat:-1)
@@ -23,6 +24,8 @@
 
 /* eslint-env browser */
 /* global gsap */
+
+import { brand, brandRgba, WPFORMS_BRAND } from './brand.js';
 
 // ─────────────────────────────────────────────────────────────────────────
 // UTILITIES (small, used by larger primitives)
@@ -524,7 +527,7 @@ export class Cursor {
    * iframe-helpers.js, or dispatch a MouseEvent on the target yourself.
    *
    * @param {Object} [opts]
-   * @param {string} [opts.rippleColor='rgba(226,119,48,0.92)'] — WPForms orange
+   * @param {string} [opts.rippleColor] — default: the brand primary at 0.92 (WPForms: rgba(226, 119, 48, 0.92))
    * @param {number} [opts.rippleScale=2.4]
    * @param {number} [opts.rippleDuration=0.55]
    * @param {boolean} [opts.ripple=true] — set false to skip ripple
@@ -532,7 +535,7 @@ export class Cursor {
    */
   click(opts = {}) {
     const {
-      rippleColor = 'rgba(226, 119, 48, 0.92)',
+      rippleColor = brandRgba(0.92),
       rippleScale = 2.4,
       rippleDuration = 0.55,
       ripple = true,
@@ -582,7 +585,7 @@ export class Cursor {
    * @param {Object} [opts]
    * @param {HTMLElement|null} [opts.target=null] — element to apply hover effect to
    * @param {number} [opts.hoverScale=1.05] — target scale during hover (1.0 = no scale)
-   * @param {string} [opts.hoverGlow='0 0 0 4px rgba(226,119,48,0.35)'] — box-shadow on target
+   * @param {string} [opts.hoverGlow] — box-shadow on target; default: two brand-primary glows (0.35 ring, 0.25 drop)
    * @param {number} [opts.duration=0.95]
    * @param {number} [opts.jitterAmplitude=1.5]
    * @param {number} [opts.settleDuration=0.6]
@@ -593,7 +596,7 @@ export class Cursor {
     const {
       target = null,
       hoverScale = 1.05,
-      hoverGlow = '0 0 0 4px rgba(226,119,48,0.35), 0 8px 24px rgba(226,119,48,0.25)',
+      hoverGlow = `0 0 0 4px ${brandRgba(0.35)}, 0 8px 24px ${brandRgba(0.25)}`,
       duration = 0.95,
       jitterAmplitude = 1.5,
       settleDuration = 0.6,
@@ -816,14 +819,14 @@ export function cursorGlideStraight(cursor, from, to, opts = {}) {
  * @param {number} x — stage-coord x (px)
  * @param {number} y — stage-coord y (px)
  * @param {Object} [opts]
- * @param {string} [opts.color='rgba(226,119,48,0.92)'] — WPForms orange default
+ * @param {string} [opts.color] — default: the brand primary at 0.92 (WPForms: rgba(226, 119, 48, 0.92))
  * @param {number} [opts.scale=2.4]
  * @param {number} [opts.duration=0.55]
  * @returns {gsap.core.Timeline} — UNPAUSED (plays immediately); tl.add() to re-schedule under a master
  */
 export function clickRipple(stage, x, y, opts = {}) {
   const {
-    color = 'rgba(226, 119, 48, 0.92)',
+    color = brandRgba(0.92),
     scale = 2.4,
     duration = 0.55,
   } = opts;
@@ -1061,12 +1064,12 @@ export function statusPillMorph(pill, texts, opts = {}) {
  *
  * @param {HTMLElement} textEl — wraps the text; will receive an overlay child
  * @param {Object} [opts]
- * @param {string} [opts.color='#E27730'] — WPForms orange default
+ * @param {string} [opts.color] — default: the brand primary (WPForms: #E27730)
  * @param {number} [opts.duration=0.3]
  * @returns {gsap.core.Timeline} — PAUSED: call .play() or add into a running master timeline, or it renders nothing
  */
 export function markerSweep(textEl, opts = {}) {
-  const { color = '#E27730', duration = 0.3 } = opts;
+  const { color = brand.colors.primary, duration = 0.3 } = opts;
   const originalColor = getComputedStyle(textEl).color;
   // Ensure parent is positioned
   if (getComputedStyle(textEl).position === 'static') {
@@ -1265,7 +1268,7 @@ export async function popOut(iframe, selector, opts = {}) {
       left: (stageX + srcRect.width * totalScale / 2) + 'px',
       top:  (stageY + srcRect.height * totalScale + 14) + 'px',
       transform: 'translate(-50%, -8px)',
-      background: '#E27730',
+      background: brand.colors.primary,
       color: '#fff',
       padding: '8px 14px',
       borderRadius: '6px',
@@ -1360,7 +1363,8 @@ export function fieldStaggerReveal(fields, opts = {}) {
 // ─────────────────────────────────────────────────────────────────────────
 
 /**
- * Mount the persistent Sullie bug (brand anchor) in the parent body. Per
+ * Mount the persistent brand bug (brand anchor) in the parent body — the
+ * film's mascot from its brand pack (brand.mascot; WPForms: Sullie). Per
  * polish-vocabulary "persistent-brand-anchor" — the polished rest-api video
  * mounts Sullie once and keeps her across all 6 chapters. The unpolished
  * version doesn't, which makes the editorial canvas feel anonymous.
@@ -1371,15 +1375,17 @@ export function fieldStaggerReveal(fields, opts = {}) {
  * Returns the bug element (idempotent — re-mount returns existing).
  *
  * @param {Object} [opts]
- * @param {string} [opts.src] — Sullie image path; default uses the official
- *   Sullie with arms, `/assets/sullie-with-arms.svg`. Adjust per video.
+ * @param {string} [opts.src] — mascot image path; default brand.mascot.src
+ *   (WPForms: the official Sullie with arms, `/assets/sullie-with-arms.svg`).
+ * @param {string} [opts.alt] — default brand.mascot.alt
  * @param {string} [opts.id='zlyvs-sullie-bug'] — DOM id
  * @param {{bottom?:string,right?:string,top?:string,left?:string,size?:number}} [opts.position]
  * @returns {HTMLElement}
  */
-export function mountSullieBug(opts = {}) {
+export function mountBrandBug(opts = {}) {
   const {
-    src = '/assets/sullie-with-arms.svg',
+    src = brand.mascot.src,
+    alt = brand.mascot.alt,
     id = 'zlyvs-sullie-bug',
     position = {},
   } = opts;
@@ -1400,9 +1406,9 @@ export function mountSullieBug(opts = {}) {
   });
   const img = document.createElement('img');
   img.src = src;
-  img.alt = 'WPForms Sullie';
+  img.alt = alt;
   img.draggable = false;
-  // contain: the armed Sullie is 500×390, not square — never stretch it.
+  // contain: mascots are not square (the armed Sullie is 500×390) — never stretch.
   Object.assign(img.style, { width: '100%', height: '100%', objectFit: 'contain' });
   bug.appendChild(img);
   document.body.appendChild(bug);
@@ -1415,6 +1421,14 @@ export function mountSullieBug(opts = {}) {
     repeat: boundedRepeats(5.0, 60), // ~60s default visibility
   });
   return bug;
+}
+
+/**
+ * The WPForms brand bug: Sullie, whatever product the film declares. Kept for
+ * the films that call it; new films call mountBrandBug().
+ */
+export function mountSullieBug(opts = {}) {
+  return mountBrandBug({ src: WPFORMS_BRAND.mascot.src, alt: WPFORMS_BRAND.mascot.alt, ...opts });
 }
 
 /**

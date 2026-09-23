@@ -30,7 +30,7 @@ function css(id, barWidth, barHeight) {
   return `
     #${id}.${SCOPE} { display: flex; align-items: center; justify-content: space-between; }
     #${id} .wbar { width: ${barWidth}px; height: ${barHeight}px; border-radius: ${barWidth / 2}px;
-      background: var(--fx-wave-accent, #E27730); transform-origin: 50% 50%; opacity: 0;
+      background: var(--fx-wave-accent, var(--brand-primary, #E27730)); transform-origin: 50% 50%; opacity: 0;
       will-change: transform, opacity; }
   `;
 }
@@ -59,7 +59,7 @@ export function mountWaveformBars({
   rest = [0.22, 0.44],
   swing = [15, 47],
   parkScaleY = 0.06,
-  accent = 'orange',
+  accent = 'brand',
 } = {}) {
   const id = nextEffectId(SCOPE);
   const style = mountStyle(`${id}-style`, css(id, barWidth, barHeight));

@@ -60,8 +60,11 @@ function snapshotsRoot() {
 
 // Films and pages written before the move ask for /snapshots/<slug>/…. The
 // repo servers (serve.js, preview.js, the render server) pass every URL
-// through here, so those films load the moved pack unchanged.
+// through here, so those films load the moved pack unchanged. Films that
+// link the old local brand tokens get the WPForms pack's tokens.css.
+const LEGACY_TOKENS_URL = '/reference/wpforms-brand/tokens.css';
 function mapLegacySnapshotUrl(urlPath) {
+  if (urlPath === LEGACY_TOKENS_URL) return '/products/wpforms/brand/tokens.css';
   if (!/^\/snapshots(\/|$)/.test(urlPath) || hasPack(LEGACY_ROOT)) return urlPath;
   return '/products/wpforms/snapshots' + urlPath.slice('/snapshots'.length);
 }

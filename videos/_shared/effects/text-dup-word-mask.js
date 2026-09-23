@@ -19,7 +19,7 @@ const SCOPE = 'fx-text-dup-word-mask';
 function css(id, baseColor, accentColor) {
   return `
     #${id}.${SCOPE} {
-      font-family: var(--wpf-font-stack, system-ui, sans-serif);
+      font-family: var(--brand-font, var(--wpf-font-stack, system-ui, sans-serif));
       letter-spacing: -0.025em;
       line-height: 1.1;
       text-align: center;
@@ -36,7 +36,7 @@ function css(id, baseColor, accentColor) {
  * @param {string} opts.text
  * @param {string} [opts.fontSize='110px']
  * @param {string|number} [opts.fontWeight=700]
- * @param {string} [opts.baseColor='var(--wpf-ink, #14110e)']
+ * @param {string} [opts.baseColor='var(--brand-ink, var(--wpf-ink, #14110e))']
  * @param {string} [opts.accentColor='orange']
  * @returns {{ el: HTMLElement, words: HTMLElement[], tweenInto: Function, dispose: Function }}
  *   tweenInto(tl, { position, perWordDelay, duration, ease })
@@ -45,7 +45,7 @@ export function mountTextDupWordMask({
   text = '',
   fontSize = '110px',
   fontWeight = 700,
-  baseColor = 'var(--wpf-ink, #14110e)',
+  baseColor = 'var(--brand-ink, var(--wpf-ink, #14110e))',
   accentColor = 'orange',
 } = {}) {
   const id = nextEffectId(SCOPE);

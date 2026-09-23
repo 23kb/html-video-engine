@@ -16,7 +16,7 @@ const SCOPE = 'fx-text-letter-mask-domino';
 function css(id, topColor, botColor) {
   return `
     #${id}.${SCOPE} {
-      font-family: var(--wpf-font-stack, system-ui, sans-serif);
+      font-family: var(--brand-font, var(--wpf-font-stack, system-ui, sans-serif));
       letter-spacing: -0.035em;
       line-height: 1;
       list-style: none;

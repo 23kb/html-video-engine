@@ -31,7 +31,7 @@ function css(id, sheenWidth, sheenAlpha, markFont) {
       padding: 44px 48px 36px; box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.85);
       opacity: 0; will-change: transform, opacity; overflow: hidden; }
     #${id} .q-mark { font-family: ${markFont}; font-size: 70px;
-      color: var(--fx-quote-accent, #E27730); line-height: 0.6; margin-bottom: 18px; }
+      color: var(--fx-quote-accent, var(--brand-primary, #E27730)); line-height: 0.6; margin-bottom: 18px; }
     #${id} .q-text { font-size: 34px; font-weight: 600; line-height: 1.35;
       color: var(--fx-quote-ink, #f4ecd9); }
     #${id} .q-attr { margin-top: 22px; font-size: 20px; font-weight: 700;
@@ -63,7 +63,7 @@ export function mountQuoteCard({
   sheen = true,
   sheenWidth = 220,
   sheenAlpha = 0.09,
-  accent = 'orange',
+  accent = 'brand',
   parkY = 30,
   parkScale = 0.94,
 } = {}) {

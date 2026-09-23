@@ -39,7 +39,7 @@ function css(id, top, fontSize, fontWeight, font, chipW, chipH, chipFont, chipFo
       white-space: nowrap; opacity: 0; will-change: transform, opacity, filter; }
     #${id} .hl-chip { display: inline-block; vertical-align: baseline; position: relative;
       width: ${chipW}px; height: ${chipH}px; border-radius: ${radius}px;
-      background: var(--fx-chip-bg, #E27730);
+      background: var(--fx-chip-bg, var(--brand-primary, #E27730));
       margin-left: 26px; overflow: hidden; will-change: transform, opacity; }
     #${id} .chip-label { position: absolute; inset: 0; display: flex;
       align-items: center; justify-content: center; font-family: ${chipFont};
@@ -79,7 +79,7 @@ export function mountPhraseChain({
   parkX = -420,
   parkScaleX = 0.72,
   labelParkX = 34,
-  accent = 'orange',
+  accent = 'brand',
 } = {}) {
   const id = nextEffectId(SCOPE);
   const style = mountStyle(`${id}-style`,

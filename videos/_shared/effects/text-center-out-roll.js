@@ -19,7 +19,7 @@ function css(id, baseColor, accentColor) {
     #${id}.${SCOPE} {
       display: flex; flex-direction: column;
       gap: 30px;
-      font-family: var(--wpf-font-stack, system-ui, sans-serif);
+      font-family: var(--brand-font, var(--wpf-font-stack, system-ui, sans-serif));
     }
     #${id} .item { position: relative; }
     #${id} .item .hidden,
@@ -44,14 +44,14 @@ function css(id, baseColor, accentColor) {
  * @param {Object} opts
  * @param {string[]} opts.lines — one entry per line, e.g. ['Build the form.', 'Capture the lead.']
  * @param {string} [opts.fontSize='78px']
- * @param {string} [opts.baseColor='var(--wpf-ink, #14110e)']
+ * @param {string} [opts.baseColor='var(--brand-ink, var(--wpf-ink, #14110e))']
  * @param {string} [opts.accentColor='orange'] — name (orange/blue/purple/...) or any CSS color
  * @returns {{ el: HTMLElement, tweenInto: Function, dispose: Function }}
  */
 export function mountTextCenterOutRoll({
   lines = [],
   fontSize = '78px',
-  baseColor = 'var(--wpf-ink, #14110e)',
+  baseColor = 'var(--brand-ink, var(--wpf-ink, #14110e))',
   accentColor = 'orange',
 } = {}) {
   const id = nextEffectId(SCOPE);

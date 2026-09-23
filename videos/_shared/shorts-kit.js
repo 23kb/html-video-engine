@@ -15,8 +15,8 @@
 //   slam sync→ captionWordStarts from narration.js — the SAME pacing model
 //              the word captions use, so type moments land as the TTS says
 //              the word
-//   brand    → real assets only: /assets/wordmark.svg +
-//              /assets/sullie-with-arms.svg (official Sullie)
+//   brand    → real assets only, from the film's brand pack (./brand.js;
+//              WPForms: /assets/wordmark.svg + /assets/sullie-with-arms.svg)
 //
 // Every function here is deterministic (INV-9): no Date.now, no unseeded
 // randomness, no infinite repeats, no fetch.
@@ -51,6 +51,7 @@
 /* global gsap, CustomEase */
 
 import { boundedRepeats, mulberry32 } from './motion-primitives.js';
+import { brand } from './brand.js';
 import { captionWordStarts, wait } from './narration.js';
 // Closed-loop scroll family (fix-round C2): shorts imports stay one-module.
 // paneScrollTo — builder panes (hidden 0×0 twins resolved by walking UP);
@@ -399,14 +400,14 @@ export function beatAt(t0, x) {
 //   x = 540, y = 900,    — stage coords of the slam center
 //   size = 150,          — font px
 //   rotate = -4,         — resting tilt (deg)
-//   accent = '#E27730',  — chip color
+//   accent = brand primary (WPForms #E27730) — chip color
 //   exitDir = 1,         — +1 exits right, -1 exits left
 // }
 // @returns {{ el: HTMLElement, tl: gsap.core.Timeline }}
 export function slamKeyword(stage, opts = {}) {
   const {
     word, at = 0, holdS = 1.1, x = 540, y = 900,
-    size = 150, rotate = -4, accent = '#E27730', exitDir = 1,
+    size = 150, rotate = -4, accent = brand.colors.primary, exitDir = 1,
   } = opts;
   const el = document.createElement('div');
   el.className = 'kw-slam';
@@ -459,7 +460,7 @@ export function slamKeyword(stage, opts = {}) {
 // @param {HTMLElement} host — stage or any positioned layer
 // @param {Object} opts {
 //   word, at = 0, x, y, size = 96, rotate = -8,
-//   accent = '#E27730',       — border/text color (filled: false) or bg
+//   accent = brand primary,   — border/text color (filled: false) or bg
 //   filled = false,           — false = bordered stamp, true = solid chip
 //   holdS = null,             — seconds before auto-fade; null = caller owns
 // }
@@ -467,7 +468,7 @@ export function slamKeyword(stage, opts = {}) {
 export function stampDown(host, opts = {}) {
   const {
     word, at = 0, x = 540, y = 900, size = 96, rotate = -8,
-    accent = '#E27730', filled = false, holdS = null,
+    accent = brand.colors.primary, filled = false, holdS = null,
   } = opts;
   const el = document.createElement('div');
   el.className = 'kw-stamp';
@@ -805,8 +806,13 @@ export function mountSurround(stage, {
 // The standing Sullie-in-every-intro-and-outro rule applies to shorts as of
 // the 2026-08-13 ruling (system root cause #6 reversed the old spec).
 
-const SULLIE_SRC = '/assets/sullie-with-arms.svg'; // official Sullie, with arms
-const WORDMARK_SRC = '/assets/wordmark.svg';
+// Mascot + wordmark come from the film's brand pack (WPForms: the official
+// Sullie with arms + /assets/wordmark.svg). The intro wash is the pack's
+// shortIntroWash, or a gradient built from its primary color.
+const MASCOT = brand.mascot;
+const WORDMARK = brand.wordmark;
+const INTRO_WASH = brand.shortIntroWash
+  || `linear-gradient(12deg, color-mix(in srgb, ${brand.colors.primary} 80%, black), ${brand.colors.primary} 58%, color-mix(in srgb, ${brand.colors.primary} 85%, white))`;
 
 // mountShortIntro — ~1.6–2.0s sting: orange wash, Sullie pops (back.out),
 // wordmark + hook rise, then the whole card exits UPWARD with velocity,
@@ -831,14 +837,14 @@ export function mountShortIntro(stage, { hook = '', sub = '', seconds = 1.9, exi
   el.className = 'shorts-intro-sting';
   // OVERRIDE: shorts charter 2026-08-13 (Umair) — editorial composition pre-authorized
   el.innerHTML = `
-    <img class="sis-sullie" src="${SULLIE_SRC}" alt="Sullie, the WPForms mascot">
-    <img class="sis-wordmark" src="${WORDMARK_SRC}" alt="WPForms">
+    <img class="sis-sullie" src="${MASCOT.src}" alt="${MASCOT.alt}">
+    <img class="sis-wordmark" src="${WORDMARK.src}" alt="${WORDMARK.alt}">
     <div class="sis-hook"></div>
     ${sub ? '<div class="sis-sub"></div>' : ''}
   `;
   Object.assign(el.style, {
     position: 'absolute', inset: '0', zIndex: 80,
-    background: 'linear-gradient(168deg, #E8834229 , transparent 40%), linear-gradient(12deg, #B85C1F, #E27730 58%, #ED8A47)',
+    background: INTRO_WASH,
     display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center',
     gap: '34px', textAlign: 'center', visibility: 'hidden',
   });
@@ -893,20 +899,21 @@ export function mountShortIntro(stage, { hook = '', sub = '', seconds = 1.9, exi
   };
 }
 
-// mountShortOutro — ~2.5–3.0s end card: Sullie + real wordmark +
-// "WPForms.com" CTA with an underline sweep and a bounded Sullie bob so the
+// mountShortOutro — ~2.5–3.0s end card: mascot + real wordmark +
+// brand URL CTA (WPForms: "WPForms.com") with an underline sweep and a bounded Sullie bob so the
 // final frames never freeze. No exit — the video ends on it.
 //
 // @param {HTMLElement} stage
-// @param {Object} opts { cta = 'Full guide on WPForms.com', url = 'WPForms.com', seconds = 2.8 }
+// @param {Object} opts { cta = brand.cta, url = brand.url, seconds = 2.8 }
+//   (WPForms: 'Full guide on WPForms.com', 'WPForms.com')
 // @returns {{ el, play(): Promise<void> }}
-export function mountShortOutro(stage, { cta = 'Full guide on WPForms.com', url = 'WPForms.com', seconds = 2.8 } = {}) {
+export function mountShortOutro(stage, { cta = brand.cta, url = brand.url, seconds = 2.8 } = {}) {
   const el = document.createElement('div');
   el.className = 'shorts-outro-card';
   // OVERRIDE: shorts charter 2026-08-13 (Umair) — editorial composition pre-authorized
   el.innerHTML = `
-    <img class="soc-sullie" src="${SULLIE_SRC}" alt="Sullie, the WPForms mascot">
-    <img class="soc-wordmark" src="${WORDMARK_SRC}" alt="WPForms">
+    <img class="soc-sullie" src="${MASCOT.src}" alt="${MASCOT.alt}">
+    <img class="soc-wordmark" src="${WORDMARK.src}" alt="${WORDMARK.alt}">
     <div class="soc-cta"></div>
     <div class="soc-url"><span class="soc-url-text"></span><span class="soc-underline"></span></div>
   `;
@@ -926,7 +933,7 @@ export function mountShortOutro(stage, { cta = 'Full guide on WPForms.com', url 
   Object.assign(wordmark.style, { height: '58px', width: 'auto' });
   ctaEl.textContent = cta;
   Object.assign(ctaEl.style, { font: '500 42px/1.3 Bahnschrift, system-ui, sans-serif', color: '#55504a', maxWidth: '860px' });
-  Object.assign(urlEl.style, { position: 'relative', font: '700 52px/1.1 Bahnschrift, system-ui, sans-serif', color: '#E27730', paddingBottom: '10px' });
+  Object.assign(urlEl.style, { position: 'relative', font: '700 52px/1.1 Bahnschrift, system-ui, sans-serif', color: brand.colors.primary, paddingBottom: '10px' });
   urlText.textContent = url;
   Object.assign(underline.style, {
     position: 'absolute', left: '0', right: '0', bottom: '0', height: '5px',
