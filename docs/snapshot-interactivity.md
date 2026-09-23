@@ -241,7 +241,7 @@ form would gate the video on access to a specific WP environment. See
 - `tools/trim-builder-markup.js` — strips dead-weight markup from `builder-*` snapshots; respects `KEEP_ALL_PANELS`
 - `tools/clean-builder-snapshot-canvas.js` — strips non-baseline canvas fields (skip for combined-field snapshots)
 - `tools/link-interactivity-script.js` — injects the `_shared/interactivity.js` script tag into a snapshot
-- `tools/field-state.js --field <name> [--summary] | --search <q>` — query the field-state inventory; **do not full-read** `docs/wpforms-field-state-inventory.md` (132 KB)
+- `tools/field-state.js --field <name> [--summary] | --search <q>` — query the field-state inventory; **do not full-read** `products/wpforms/docs/wpforms-field-state-inventory.md` (132 KB)
 
 ---
 

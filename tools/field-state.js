@@ -1,11 +1,11 @@
 #!/usr/bin/env node
-// Query docs/wpforms-field-state-inventory.md without full-reading it in chat.
+// Query products/wpforms/docs/wpforms-field-state-inventory.md without full-reading it in chat.
 
 const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const INVENTORY = path.join(ROOT, 'docs', 'wpforms-field-state-inventory.md');
+const INVENTORY = path.join(ROOT, 'products', 'wpforms', 'docs', 'wpforms-field-state-inventory.md');
 
 const ALIASES = new Map([
   ['dropdown', 'Dropdown'],

@@ -21,7 +21,7 @@ Use this kind when: tutorial about a single field (Checkbox, Date/Time, Rating�
 Make a tutorial video about the {FIELD_NAME} field in WPForms. Slug: {video-slug}.
 
 Architecture: clone videos/_examples/builder-frontend-split-skeleton/ → videos/{video-slug}/.
-Use BuilderFrontendSplit from videos/_shared/builder-frontend-split.js — DO NOT reinvent.
+Use BuilderFrontendSplit from products/wpforms/film/builder-frontend-split.js — DO NOT reinvent.
 
 Surface plan:
 - Left: builder snapshot products/wpforms/snapshots/builder-field-options-{TYPE}/.
@@ -85,7 +85,7 @@ Plus a review URL: http://localhost:4321/videos/{video-slug}/index.html
 Make a tutorial video about the Checkbox field in WPForms. Slug: checkbox-field-tutorial.
 
 Architecture: clone videos/_examples/builder-frontend-split-skeleton/ → videos/<slug>/.
-Use BuilderFrontendSplit from videos/_shared/builder-frontend-split.js — DO NOT reinvent.
+Use BuilderFrontendSplit from products/wpforms/film/builder-frontend-split.js — DO NOT reinvent.
 
 Surface plan:
 - Left: builder snapshot products/wpforms/snapshots/builder-field-options-checkbox/.

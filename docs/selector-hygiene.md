@@ -177,4 +177,4 @@ Don't refactor mid-storyboard. The locked-shape skeleton has `import sel from '.
 
 - `wpforms-video` skill — chapter authoring rules; uses `_selectors.js` import.
 - `products/wpforms/snapshots/<slug>/outline.md` — per-snapshot sidecar of author-targetable selectors; read it FIRST (`video-qc`). The chapter-module contract retired 2026-08-22.
-- `docs/wpforms-field-state-inventory.md` — canonical product-truth selector reference (query via field-state.js).
+- `products/wpforms/docs/wpforms-field-state-inventory.md` — canonical product-truth selector reference (query via field-state.js).

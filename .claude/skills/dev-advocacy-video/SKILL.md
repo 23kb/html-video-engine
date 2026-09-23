@@ -236,7 +236,7 @@ Real Kacie on camera opens and closes every shipped tutorial; body stays HTML + 
 ### 6. Ship + close the loop
 1. MP4 to Kacie (she uploads to WPForms socials/YouTube).
 2. When her upload is live: **embed it in the matching wpforms.com doc** ("docs" is a named distribution target in the rock). Metric: docs-without-video baseline 231 (2026-07-21) ticks down per embed.
-3. **Doc-staleness feedback:** log any doc↔product divergences found while building into `docs/product-truth/<feature>.md` and TELL UMAIR — he owns the docs; each video doubles as a doc audit. (Precedent: one addon tutorial found the live addon renders the Drive account dropdown directly — the doc's "click Add New Connection" step no longer occurs.)
+3. **Doc-staleness feedback:** log any doc↔product divergences found while building into `products/wpforms/product-truth/<feature>.md` and TELL UMAIR — he owns the docs; each video doubles as a doc audit. (Precedent: one addon tutorial found the live addon renders the Drive account dropdown directly — the doc's "click Add New Connection" step no longer occurs.)
 4. Wiki write-backs (absolute paths above): one-liner to `log.md`; bump the `scorecard.md` videos row; move the topic to "Shipped" in `ideas.md`; clear "In flight". Remind Umair to keep rock status honest in the collective agenda (QR behavioral ask).
 
 ## Standing rules

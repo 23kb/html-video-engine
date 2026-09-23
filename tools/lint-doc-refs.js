@@ -6,7 +6,8 @@
 // because nothing reads them but a human mid-task, and by then the cost is
 // already paid. This reads every markdown path reference and checks disk.
 //
-// Scans: CLAUDE.md, docs/**/*.md, .claude/skills/**/*.md, capture/*.md
+// Scans: CLAUDE.md, docs/**/*.md, .claude/skills/**/*.md, capture/*.md,
+//        products/<key>/{docs,product-truth}/**/*.md
 // Checks: repo-relative paths under videos/, snapshots/, tools/,
 //         capture/, runtime/, engine/, docs/ that look like real files
 //         (they carry an extension) — plus bare directory refs under videos/.
@@ -28,7 +29,12 @@ const skipVideos = args.includes('--skip-videos');
 const strict = args.includes('--strict');
 const quiet = args.includes('--quiet');
 
-const SCAN_ROOTS = ['docs', '.claude/skills', 'capture'];
+// A pack's own docs moved out of docs/ on 2026-09-23 (rename Phase 3).
+const PACK_DOC_DIRS = (fs.existsSync(path.join(ROOT, 'products')) ? fs.readdirSync(path.join(ROOT, 'products'), { withFileTypes: true }) : [])
+  .filter((e) => e.isDirectory())
+  .flatMap((e) => ['docs', 'product-truth'].map((d) => path.join('products', e.name, d)))
+  .filter((d) => fs.existsSync(path.join(ROOT, d)));
+const SCAN_ROOTS = ['docs', '.claude/skills', 'capture', ...PACK_DOC_DIRS];
 const SCAN_FILES = ['CLAUDE.md', 'README.md', 'CONTRIBUTING.md'];
 // products/ is a root since the packs moved there (2026-09-23); the lookbehind
 // keeps `snapshots/` inside `products/wpforms/snapshots/…` from matching twice.

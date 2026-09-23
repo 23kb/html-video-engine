@@ -155,8 +155,9 @@ any product pack and are being renamed to `film-*`.
 - `wpforms-interactions.js` — a shim for existing films: re-exports
   `IframeManager`, `WPFormsInteractions`, `Cursor` and `clickRipple`.
 - `iframe-helpers.js` — click and find-by-text helpers for captured SaaS pages.
-- `builder-frontend-split.js` — builder on the left, live frontend mirror on
-  the right.
+- `builder-frontend-split.js` — a shim for
+  `products/wpforms/film/builder-frontend-split.js`: builder on the left, live
+  frontend mirror on the right.
 - `shorts-kit.js` — the 9:16 motion vocabulary.
 - `narration.js`, `instruments.js`, `pop-out.js`, `blocks/`.
 - `effects/` — named effects: text reveals, cards, end card, glass card,

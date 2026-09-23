@@ -867,7 +867,7 @@ export class WPFormsInteractions extends UIInteractions {
   // sub-control, (b) updates the option DOM (the actual control value), and
   // (c) mirrors the change to the field's canvas representation so the
   // viewer sees the form update in real time. State references come from
-  // `docs/wpforms-field-state-inventory.md` (queryable via
+  // `products/wpforms/docs/wpforms-field-state-inventory.md` (queryable via
   // `node tools/field-state.js --field <name>`).
 
   /**

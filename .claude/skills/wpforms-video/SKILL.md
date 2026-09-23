@@ -65,7 +65,7 @@ These were the editorial defects in the EEI one-shot. Bake them in:
 
 For a new video session, work in this order. Don't skip steps.
 
-1. **Intake** — capture topic, slug, source links, audience, must-show states, constraints. From the user's prompt and reasonable defaults. Don't run a 5-question ritual; ask only blockers. **Check `docs/product-truth/<feature>.md` first** (FIX-5 fa-retest): if the source doc is reachable, WRITE/refresh that note during intake (metric/feature definitions with a source line); if unreachable, derive definitions from snapshots and mark them `UNVERIFIED` in the note — narration definitions must never be silent guesses.
+1. **Intake** — capture topic, slug, source links, audience, must-show states, constraints. From the user's prompt and reasonable defaults. Don't run a 5-question ritual; ask only blockers. **Check `products/wpforms/product-truth/<feature>.md` first** (FIX-5 fa-retest): if the source doc is reachable, WRITE/refresh that note during intake (metric/feature definitions with a source line); if unreachable, derive definitions from snapshots and mark them `UNVERIFIED` in the note — narration definitions must never be silent guesses.
    - **Third-party handoffs are an intake decision** (ccs 15/A14): when the anchor doc outsources a step ("see this WPBeginner article"), the substitution the video makes is an explicit intake question to the user, never a silent pick.
 2. **Snapshot inventory** — `node tools/list-snapshots.js --search <topic>`. Identify which snapshots exist vs need capture vs need DOM-derivation.
 3. **Storyboard proposal** — angle, postIntro concept, chapter list, narration drafts, snapshot plan with statuses.
@@ -292,7 +292,7 @@ host.innerHTML = `<div class="wpforms-dropdown-open">
 **RIGHT — DOM-derived from product truth:**
 ```js
 // Open the real dropdown using the puppetry helper, grounded in
-// docs/wpforms-field-state-inventory.md (queried via tools/field-state.js).
+// products/wpforms/docs/wpforms-field-state-inventory.md (queried via tools/field-state.js).
 await selectDropdown(sel.dropdownField, { pick: { type: 'option', label: 'Urgent' } });
 ```
 
@@ -391,7 +391,7 @@ Use targeted tools before broad shell searches:
 - `node tools/list-snapshots.js [--search <q>] [--for <slug>]` — snapshot inventory.
 - `node tools/inspect-snapshot.js <snapshot> --emit-selectors [--filter <text>]` — selector discovery.
 - `node tools/verify-selectors.js <snapshot> ...` — selector validation.
-- `node tools/field-state.js --field <name> [--summary]` — field-state evidence (don't full-read `docs/wpforms-field-state-inventory.md` directly).
+- `node tools/field-state.js --field <name> [--summary]` — field-state evidence (don't full-read `products/wpforms/docs/wpforms-field-state-inventory.md` directly).
 
 ### Querying plugin source for product truth (rf 6, rf 19)
 
@@ -411,7 +411,7 @@ only way to get the truth. Two rules:
 
 **Never:**
 
-1. Full-read `docs/wpforms-field-state-inventory.md` during normal authoring (it's 132 KB; query via `field-state.js`).
+1. Full-read `products/wpforms/docs/wpforms-field-state-inventory.md` during normal authoring (it's 132 KB; query via `field-state.js`).
 2. List or read `videos/` packages at startup. Accepted packages are reference/debug only after you can name the exact pattern needed.
 3. Inspect runtime internals during normal authoring. Use the skills, validators, and snapshot tools first.
 4. Read CLAUDE.md as a substitute for this skill. CLAUDE.md is the operator manual; this skill is the authoring contract.
@@ -448,7 +448,7 @@ Stop and push back when:
 - `docs/postintro-patterns.md` — Read when designing or implementing a postIntro. Owned by the `wpforms-postintro` skill.
 - `docs/video-production-templates.md` — Read only the section needed (storyboard / chapter / snapshot checklist / token budget / smoke spec).
 - `docs/examples/choice-field-generate-choices-skeleton.md` — Read for choice-field videos (Dropdown, Multiple Choice, Checkboxes) that include AI Generate Choices. Engine-era module (historical API note): lift the beat plan and the product-truth rules, not the code.
-- `docs/wpforms-field-state-inventory.md` — Canonical reference only. **Do not full-read.** Query via `node tools/field-state.js --field <name>`.
+- `products/wpforms/docs/wpforms-field-state-inventory.md` — Canonical reference only. **Do not full-read.** Query via `node tools/field-state.js --field <name>`.
 - `CLAUDE.md` — Operator manual (boot order, protected core, validation commands, push-back triggers). Read for repo-wide rules; this skill owns video-authoring rules.
 
 ## Granular references (load on demand for the specific topic)

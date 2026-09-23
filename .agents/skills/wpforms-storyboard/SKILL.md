@@ -36,7 +36,7 @@ own divergence, angle approval and slug. Do not ship three shades of one idea.
 
 Subject forms and where product truth lives:
 
-- **A feature** ("entry exports") → `docs/product-truth/<feature>.md` if present, else the wpforms.com doc (WebFetch) and write the note during intake (UI-derived facts get an `UNVERIFIED` marker).
+- **A feature** ("entry exports") → `products/wpforms/product-truth/<feature>.md` if present, else the wpforms.com doc (WebFetch) and write the note during intake (UI-derived facts get an `UNVERIFIED` marker).
 - **A doc** ("for this doc" + URL or path) → read it end to end; the task walk in the doc IS the chapter list for a tutorial.
 - **An angle** ("wpforms x claude through wpvibe") → the brief + backlog in `umair-wiki/video/wpvibe-social-push.md`; the abilities doc (`wpforms.com/docs/using-wpforms-with-ai-assistants`) is product truth — approval before execution, documented abilities only.
 - **No subject** ("storyboard tutorial") → offer the top three from `docs/ga4-video-priorities/README.md` and ask which. Do not pick silently.

@@ -73,7 +73,7 @@ card. See `docs/postintro-patterns.md`.
 - Snapshots are base structural surfaces, not one snapshot per visible
   state.
 - DOM-derived states are allowed when grounded by `tools/field-state.js`,
-  real captured DOM, or `docs/wpforms-field-state-inventory.md`.
+  real captured DOM, or `products/wpforms/docs/wpforms-field-state-inventory.md`.
 - No fabricated UI. No fake snapshot folders.
 
 ---
@@ -119,7 +119,7 @@ helper first.
 | 9:16 shorts contract | `docs/vertical-shorts.md` |
 | PostIntro design | `docs/postintro-patterns.md` |
 | Choice-field flow (Dropdown / Multi / Checkboxes) | `docs/examples/choice-field-generate-choices-skeleton.md` |
-| Field-state inventory (large; query, don't full-read) | `docs/wpforms-field-state-inventory.md` via `node tools/field-state.js` |
+| Field-state inventory (large; query, don't full-read) | `products/wpforms/docs/wpforms-field-state-inventory.md` via `node tools/field-state.js` |
 | Storyboard / chapter / smoke checklists | `docs/video-production-templates.md` |
 
 ---

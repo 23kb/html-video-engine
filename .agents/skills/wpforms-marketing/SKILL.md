@@ -310,7 +310,7 @@ If the storyboard names a motion archetype not yet in the library, promote it to
 
 Before writing any editorial or mixed single-HTML film, **load these**:
 
-**Product truth for claims/values:** check `docs/product-truth/<feature>.md` (FIX-5 fa-retest) before putting any feature claim, metric name, or number on screen; when the note is missing and the source doc is reachable, write it during intake — UI-derived semantics get an `UNVERIFIED` marker.
+**Product truth for claims/values:** check `products/wpforms/product-truth/<feature>.md` (FIX-5 fa-retest) before putting any feature claim, metric name, or number on screen; when the note is missing and the source doc is reachable, write it during intake — UI-derived semantics get an `UNVERIFIED` marker.
 
 ### Canonical clone-and-customize templates
 

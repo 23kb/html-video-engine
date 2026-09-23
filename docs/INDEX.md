@@ -69,12 +69,12 @@ Craft docs below carry a **HISTORICAL API NOTE (2026-08-28)**: their code exampl
 - `track3-analysis-2026-09-03.md` — Track 3 reference analysis (Umair's 17-video drop): the measured bar for postIntro / TTS+script / sound / motion, what was built, and the pending U-items awaiting his ruling.
 - `skills.md` — Index of the 9 live skills (procedural vs reference) + retired / file-read-only notes.
 - `jake-moran-workflow-adoption-2026-08-06.md`, `video-system-improvements-2026-08-06.md`, `video-system-improvements-round2-2026-08-08.md`, `fix-round-2026-08-14/`, `motion-design-round-2026-08-17/` — Dated system-improvement rounds (historical record of rulings + specs).
-- `product-truth/` — Per-feature plugin-truth notes captured during builds (entry-automation, anti-spam, custom-css, form-analytics, qr-code...). Each video doubles as a doc audit; log divergences here.
+- `../products/wpforms/product-truth/` (moved into the WPForms pack 2026-09-23) — Per-feature plugin-truth notes captured during builds (entry-automation, anti-spam, custom-css, form-analytics, qr-code...). Each video doubles as a doc audit; log divergences here.
 - `surfaces/` — Per-builder-surface interaction notes (e.g. builder-settings-notifications).
 
 ## Field / UI inventories (query, don't full-read)
 
-- `wpforms-field-state-inventory.md` — Canonical field-state inventory (132 KB). Query via `node tools/field-state.js --field <name>`.
+- `../products/wpforms/docs/wpforms-field-state-inventory.md` (moved into the WPForms pack 2026-09-23) — Canonical field-state inventory (132 KB). Query via `node tools/field-state.js --field <name>`.
 - `snapshot-health-report.md` — Snapshot health (local-only; hand-written).
 
 ## Repo-root references
@@ -89,7 +89,7 @@ Craft docs below carry a **HISTORICAL API NOTE (2026-08-28)**: their code exampl
 - `videos/_shared/wpforms-interactions.js` — `IframeManager` (mount/swap/preload + camera transform), builder/admin interactions Wave 1–2. QC: `videos/_qc-interactions/`.
 - `videos/_shared/narration.js` — say/beat/wait/startBGM + hardened awaits. Self-contained.
 - `videos/_shared/iframe-helpers.js` — `glideClick`, text-finding helpers for SaaS captures with hashed classes.
-- `videos/_shared/builder-frontend-split.js` — Split-screen builder⇄frontend mirror harness. Skeleton: `videos/_examples/builder-frontend-split-skeleton/`. QC: `videos/_qc-frontend-mirror/`.
+- `products/wpforms/film/builder-frontend-split.js` (old `videos/_shared/` path is a shim) — Split-screen builder⇄frontend mirror harness. Skeleton: `videos/_examples/builder-frontend-split-skeleton/`. QC: `videos/_qc-frontend-mirror/`.
 - `videos/_shared/effects/` — Named editorial effects vocabulary (text stacks, card fans, constellations). QC: `videos/_qc-effects/`.
 - `videos/_shared/instruments.js` — Payoff instruments + state chips (C-SPEC C5). QC: `videos/_qc-instruments/`.
 - `videos/_shared/shorts-kit.js` — 9:16 bookends/stings/surround. QC: `videos/_qc-shorts-kit/`.
