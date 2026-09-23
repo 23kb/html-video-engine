@@ -8,14 +8,17 @@ follow `CLAUDE.md` — that goes deeper.
 ## Setup
 
 ```bash
-git clone <repo-url>
-cd <repo>
+git clone https://github.com/23kb/html-video-engine.git
+cd html-video-engine
 npm install
-cp .env.example .env       # only needed for new captures
+cp .env.example .env       # only needed for narration / machine QC keys
 node serve.js              # http://localhost:4321
 ```
 
-Open a video at `http://localhost:4321/videos/<slug>/index.html`.
+Open a video at `http://localhost:4321/videos/<slug>/index.html`, or a
+snapshot at `http://localhost:4321/products/<key>/snapshots/<slug>/index.html`.
+Snapshot packs live in `products/<key>/snapshots/`; tools default to the
+WPForms pack and take `VIDEO_PRODUCT=<key>` for another one.
 
 ---
 
@@ -29,8 +32,8 @@ The system is intentionally human-in-the-loop. The flow is:
 3. **Storyboard proposal.** Agent drafts angle, chapters, narration,
    postIntro concept, snapshot plan.
 4. **STOP. Operator approves.** No chapter code before explicit sign-off.
-5. **Capture missing snapshots.** `capture/capture.js` against your local
-   WPForms install (uses `.env` creds).
+5. **Check the pack for every state the film needs.** Capturing new snapshots
+   is internal tooling (not in this repository); ask for the state.
 6. **Build the film.** Single-HTML: first write = clone
    `docs/examples/single-html-tutorial-skeleton.html` (INV-16), commit the
    unmodified clone, then customize.
@@ -66,7 +69,7 @@ card. See `docs/postintro-patterns.md`.
 
 **Production truth:**
 
-- Real WPForms UI is the source of truth.
+- Captured product UI is the source of truth.
 - Snapshots are base structural surfaces, not one snapshot per visible
   state.
 - DOM-derived states are allowed when grounded by `tools/field-state.js`,
@@ -80,7 +83,7 @@ card. See `docs/postintro-patterns.md`.
 Do not edit during normal video work:
 
 - `videos/_shared/*` libraries
-- `snapshots/**` captures and their `_shared` assets
+- `products/<key>/snapshots/**` captures and their `_shared` assets
 - validators/smoke/lint tool behavior (`validate-singlehtml.js`, `smoke-singlehtml.js`, `lint-determinism.js`)
 - `capture/capture.js` pipeline
 - Existing accepted video packages (scoped fixes are fine on request)
@@ -101,8 +104,8 @@ helper first.
   node tools/smoke-singlehtml.js <slug>
   ```
 - Include the playable review URL in the PR description.
-- Don't commit `.env`, `node_modules/`, `probe-out/`, `snapshot-backups/`,
-  or `snapshots-published/` — all are gitignored.
+- Don't commit `.env`, `tools/sites.json`, `node_modules/`, `probe-out/`,
+  `snapshot-backups/` or `snapshots-published/` — all are gitignored.
 
 ---
 

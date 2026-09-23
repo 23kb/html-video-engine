@@ -1,29 +1,30 @@
-# WPForms Video Project
+# html-video-engine
 
-A system that turns approved storyboards into deterministic HTML films and
-renders them to MP4. It builds four kinds of video:
+A deterministic HTML video engine. It turns an approved storyboard into one
+self-contained film on a paused GSAP timeline, then renders it to MP4. It
+builds four kinds of video:
 
-- **Tutorials** — real WPForms UI (captured snapshots) with a cursor, a camera
+- **Tutorials** — real product UI (captured snapshots) with a cursor, a camera
   and narration.
 - **Ad-style and release films** — editorial HTML/CSS/SVG/GSAP scenes.
 - **Mixed films** — editorial scenes over real product UI.
 - **9:16 shorts** — portrait films for YouTube and Facebook Shorts.
 
-Each film is one self-contained `videos/<slug>/index.html` on a paused master
-GSAP timeline. An agent (Claude or Codex) writes the film. A person approves
-the storyboard and owns visual QC.
+Each film is one `videos/<slug>/index.html` on a paused master GSAP timeline.
+An agent (Claude or Codex) writes the film. A person approves the storyboard
+and owns visual QC.
 
-> Per-video packages (`videos/<slug>/`) are local work product. They are not in
-> this repository. The repository holds the system: shared libraries,
-> skeletons, snapshots, tools, docs and skills.
+> Per-video packages (`videos/<slug>/`) are local work product and are not in
+> this repository. The repository holds the engine: shared libraries,
+> skeletons, snapshot packs, tools, docs and skills.
 
 ---
 
 ## Quickstart
 
 ```bash
-git clone https://github.com/23kb/wpforms-automated-videos.git
-cd wpforms-automated-videos
+git clone https://github.com/23kb/html-video-engine.git
+cd html-video-engine
 npm install
 npm run dev
 ```
@@ -32,10 +33,49 @@ npm run dev
 
 - Film: `http://localhost:4321/videos/<slug>/index.html`
 - QC dashboard: `http://localhost:4321/tools/qc-dashboard/`
+- A snapshot: `http://localhost:4321/products/<key>/snapshots/<slug>/index.html`
 
-Snapshot capture needs WordPress credentials. Copy `.env.example` to `.env`
-and fill it in. Add `ELEVENLABS_API_KEY` for final narration and
-`GEMINI_API_KEY` for machine QC. Never commit `.env`.
+Add `ELEVENLABS_API_KEY` to `.env` for final narration and `GEMINI_API_KEY`
+for machine QC. Never commit `.env`.
+
+---
+
+## Snapshot packs
+
+Real product UI comes from **snapshot packs**: static, interactive captures of
+a product's admin and frontend screens.
+
+```
+products/
+  _runtime/core.js        the runtime every snapshot loads (nav, transitions, charts)
+  wpforms/snapshots/      203 snapshots
+  wp-mail-smtp/snapshots/ 164 snapshots
+  sugar-calendar/snapshots/ 481 snapshots
+```
+
+Each snapshot folder holds `index.html`, `catalog.md` (selectors), `outline.md`
+(what a film can drive) and `meta.json`. Each pack's `_shared/` carries its CSS,
+assets, `nav.js` and `interactivity.js`; every snapshot ends with three script
+tags that make it navigable and interactive.
+
+Fetch one snapshot without cloning everything:
+
+```bash
+git clone --depth 1 --filter=blob:none --sparse https://github.com/23kb/html-video-engine.git
+cd html-video-engine
+git sparse-checkout set products/_runtime products/<key>/snapshots/_shared products/<key>/snapshots/<slug>
+```
+
+Tools default to the WPForms pack. `VIDEO_PRODUCT=<key>` points them at
+another one:
+
+```bash
+VIDEO_PRODUCT=sugar-calendar node tools/list-snapshots.js --search venue
+```
+
+Capturing **new** snapshots is internal tooling and is not part of this
+repository. `capture/capture.js` is the original WPForms-era capturer, kept
+for reference.
 
 ---
 
@@ -67,10 +107,9 @@ Tell the agent:
 
 The agent then:
 
-1. Writes the storyboard with the `wpforms-storyboard` skill, camera plan
-   included.
+1. Writes the storyboard with the storyboard skill, camera plan included.
 2. **Stops for approval.** No film code before sign-off.
-3. Captures any missing UI state as a real snapshot.
+3. Checks the snapshot pack for every UI state the film needs.
 4. Clones the matching skeleton and builds the film on the shared libraries.
 5. Renders narration and runs the validator, smoke test and motion audit.
 6. Hands off two URLs: the QC dashboard and the film itself.
@@ -82,7 +121,8 @@ The MP4 render waits for the reviewer's sign-off.
 ## Skills
 
 Skills live in `.claude/skills/<name>/SKILL.md`. Codex copies live in
-`.agents/skills/`.
+`.agents/skills/`. The `wpforms-*` names are historical; the bodies apply to
+any product pack and are being renamed to `film-*`.
 
 | Skill | Use it for |
 |---|---|
@@ -104,10 +144,11 @@ Skills live in `.claude/skills/<name>/SKILL.md`. Codex copies live in
 
 ## Shared libraries (`videos/_shared/`)
 
-- `motion-primitives.js` — cameras, `Cursor`, typing, reveals, the Sullie
+- `motion-primitives.js` — cameras, `Cursor`, typing, reveals, the brand
   bug, `mulberry32`, `boundedRepeats`.
-- `wpforms-interactions.js` — WPForms admin and builder interactions, plus
-  `IframeManager`.
+- `wpforms-interactions.js` — `IframeManager` (mounts any pack's snapshots;
+  pass `snapshotBase` for a non-WPForms pack) plus the WPForms admin and
+  builder interactions.
 - `iframe-helpers.js` — click and find-by-text helpers for captured SaaS pages.
 - `builder-frontend-split.js` — builder on the left, live frontend mirror on
   the right.
@@ -140,9 +181,6 @@ the film.
 
 | Tool | Purpose |
 |---|---|
-| `capture/capture.js` | Snapshot capture: live WordPress page → static snapshot |
-| `tools/post-capture.js` | Required after every capture: trim, CSS dedup, catalog |
-| `tools/capture-gates.js` | Post-capture quality gates |
 | `tools/list-snapshots.js` | Snapshot inventory (`--search`, `--for <slug>`) |
 | `tools/inspect-snapshot.js` | Selector emit (`--emit-selectors --filter`) |
 | `tools/verify-selectors.js` | Selector check against snapshot DOM |
@@ -162,9 +200,11 @@ the film.
 | `tools/machine-qc.js` | Advisory Gemini QC pass on an MP4 |
 | `tools/lib/qc-report.js` | Per-video gate ledger the dashboard reads |
 | `tools/render-singlehtml-audio.js` | MP4 render with narration and ducked BGM |
-| `tools/stitch.js` | Joins a recorded intro, the HTML body and a recorded outro |
+| `tools/render-frames.js` | Frame-stepped lossless render |
 | `tools/keyframes.js` | Contact sheet from an MP4 |
 | `tools/sfx/` | Timeline-driven sound design, SFX palette, onset probe |
+| `tools/post-capture.js`, `tools/capture-gates.js` | Post-capture trims and quality gates for a pack |
+| `tools/site-eval.js` | wp-cli wrapper for a local WordPress site (`tools/sites.example.json` → `tools/sites.json`) |
 
 `smoke-singlehtml`, `dead-time` and `seam-gate` share a lock. Run them one at
 a time.
@@ -182,8 +222,8 @@ node tools/validate-singlehtml.js <slug> --report
 node tools/smoke-singlehtml.js <slug> --seconds 30 --report
 ```
 
-Then score editorial and cinematic beats with `wpforms-motion-audit`. Tier A is
-the bar. Record it:
+Then score editorial and cinematic beats with the motion-audit skill. Tier A
+is the bar. Record it:
 
 ```bash
 node tools/lib/qc-report.js <slug> --set motionAudit.tier=<tier>
@@ -228,7 +268,7 @@ Film code must give the same frame at the same timestamp:
 Normal video work must not edit:
 
 - `videos/_shared/*` libraries — propose additions instead.
-- Existing snapshots — capture new ones; never edit captured DOM.
+- Existing snapshot packs under `products/` — never edit captured DOM.
 - `tools/validate-singlehtml.js`, `tools/smoke-singlehtml.js`,
   `tools/lint-determinism.js`, `capture/capture.js` behavior.
 
@@ -237,14 +277,23 @@ use.
 
 ---
 
+## What is not in this repository
+
+- Per-video packages (`videos/<slug>/`), renders and narration audio.
+- The snapshot capture tooling, capture plans, seed data and product configs.
+- Planning notes, handoffs, lessons files and reference material.
+- `.env`, `tools/sites.json` (copy `tools/sites.example.json`).
+
+---
+
 ## Non-negotiables
 
 - **Storyboard approval is a hard gate.**
-- **WPForms UI is product truth.** No fabricated UI, no fake snapshots.
-  Capture what is missing.
+- **Captured product UI is the truth.** No fabricated UI, no fake snapshots.
 - **Tutorials need a postIntro:** a topic-specific concept beat with several
   animation phases, not a second title card.
-- **Brand:** `#E27730` orange is primary. Purple is for AI features only.
+- **Brand comes from the product pack.** For WPForms: `#E27730` orange is
+  primary and purple is for AI features only.
 - **Determinism** is enforced by the linter.
 - **Visual QC belongs to the reviewer.**
 
