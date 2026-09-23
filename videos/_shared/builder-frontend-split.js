@@ -25,7 +25,7 @@
 /* eslint-env browser */
 /* global gsap */
 
-import { IframeManager } from './wpforms-interactions.js';
+import { IframeManager } from './iframe-manager.js';
 
 const DEFAULT_STAGE = { width: 1920, height: 1080 };
 const DEFAULT_PANE = { width: 1280, height: 720 };
