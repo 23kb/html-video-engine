@@ -45,8 +45,8 @@
 <script type="module">
 const qp = new URLSearchParams(location.search);
 const snap = qp.get('snap');
-// Snapshot root on this server: /snapshots (WPForms) or /products/<key>/snapshots.
-const root = qp.get('root') || '/snapshots';
+// Snapshot root on this server: /products/<key>/snapshots (WPForms: /products/wpforms/snapshots).
+const root = qp.get('root') || '/products/wpforms/snapshots';
 if (!root.startsWith('/')) throw new Error('?root= must be a server path starting with /');
 const doSanitize = qp.get('sanitize') === '1';
 let sanitizeOpts = {};

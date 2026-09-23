@@ -27,7 +27,7 @@ export const REAL_TEMPLATES = [
   { slug: 'auction-item-registration-form-template', name: 'Auction Item Registration Form', desc: 'Register items that will be up for bidding in your auction.', thumb: '5b3bfb98e990.jpg' },
 ];
 
-export const DEFAULT_THUMB_BASE = '/snapshots/_shared/assets/';
+export const DEFAULT_THUMB_BASE = '/products/wpforms/snapshots/_shared/assets/';
 
 /**
  * Build the inner HTML for a WPForms admin template card. The caller wraps

@@ -96,6 +96,7 @@ const path = require('path');
 const { spawnSync } = require('child_process');
 const { chromium } = require('playwright');
 const { resolveResolution } = require('./stage-size');
+const { mapLegacySnapshotUrl } = require('./lib/paths');
 
 const REPO = path.resolve(__dirname, '..');
 
@@ -203,7 +204,7 @@ async function main() {
 
   // ── static server ──
   const server = http.createServer((req, res) => {
-    let p = decodeURIComponent((req.url || '/').split('?')[0]);
+    let p = mapLegacySnapshotUrl(decodeURIComponent((req.url || '/').split('?')[0]));
     let fp = path.join(REPO, p);
     try { if (fs.statSync(fp).isDirectory()) fp = path.join(fp, 'index.html'); } catch (_) {}
     fs.readFile(fp, (e, buf) => {

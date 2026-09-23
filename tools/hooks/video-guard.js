@@ -137,9 +137,9 @@ const CONTENT_RULES = [
     id: 'invented-ui-fragment',
     test: (c) =>
       /class=["'][^"']*\b(?:chip|result-card|payoff)\b/.test(c) &&
-      !/SOURCE:\s*snapshots\//.test(c),
+      !/SOURCE:\s*(?:products\/[a-z0-9-]+\/)?snapshots\//.test(c),
     msg:
-      'Inline UI fragment (`chip` / `result-card` / `payoff`) with no `// SOURCE: snapshots/<name>/...` ' +
+      'Inline UI fragment (`chip` / `result-card` / `payoff`) with no `// SOURCE: products/<key>/snapshots/<name>/...` ' +
       'citation in this edit. Anti-pattern #6 / INV-15 — every invented UI fragment needs a snapshot ' +
       'citation or an explicit `// OVERRIDE: <user approval>` annotation.',
   },

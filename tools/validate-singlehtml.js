@@ -43,7 +43,9 @@ const { RULES } = require('./hooks/video-guard.js');
 
 const ROOT = path.resolve(__dirname, '..');
 const VIDEOS = path.join(ROOT, 'videos');
-const SNAP = path.join(ROOT, 'snapshots');
+// The WPForms pack root (products/wpforms/snapshots/ since 2026-09-23; the
+// servers map a film's old /snapshots/<slug>/ URLs onto it).
+const SNAP = require('./lib/paths').snapshotsRoot();
 
 // Legacy single-HTML videos frozen before this validator existed (accepted,
 // don't touch — surgical rule). Skipped in --all mode ONLY (still validatable
@@ -83,20 +85,39 @@ function validateVideoDir(dir, { report }) {
   }
 
   // ── 2. snapshot references exist + registered ───────────────────────────
-  let indexSlugs = null;
-  try {
-    const idx = JSON.parse(fs.readFileSync(path.join(SNAP, 'index.json'), 'utf8'));
-    indexSlugs = new Set((idx.snapshots || []).map((s) => s.slug));
-  } catch (_) { report('warning', 'snapshots/index.json unreadable — registration check skipped'); }
+  // Bare slugs and legacy /snapshots/<slug>/ URLs are the WPForms pack;
+  // /products/<key>/snapshots/<slug>/ names its pack.
+  const rel = (p) => path.relative(ROOT, p).split(path.sep).join('/');
+  const indexes = new Map();
+  const indexOf = (root) => {
+    if (!indexes.has(root)) {
+      let slugs = null;
+      try {
+        const idx = JSON.parse(fs.readFileSync(path.join(root, 'index.json'), 'utf8'));
+        slugs = new Set((idx.snapshots || []).map((s) => s.slug));
+      } catch (_) { report('warning', `${rel(path.join(root, 'index.json'))} unreadable — registration check skipped`); }
+      indexes.set(root, slugs);
+    }
+    return indexes.get(root);
+  };
   const snapRefs = new Set();
+  const refRoots = [];
   for (const m of src.matchAll(/ifm\.(?:load|swap)\(\s*['"]([^'"]+)['"]/g)) snapRefs.add(m[1]);
   for (const m of src.matchAll(/['"(]\/?snapshots\/([^/'"]+)\//g)) snapRefs.add(m[1]);
-  for (const ref of snapRefs) {
-    if (ref === '_shared') continue;
-    if (!fs.existsSync(path.join(SNAP, ref, 'index.html'))) {
-      report('error', `snapshot reference does not exist on disk: snapshots/${ref}/`);
-    } else if (indexSlugs && !indexSlugs.has(ref)) {
-      report('error', `snapshot "${ref}" not registered in snapshots/index.json (run post-capture / add it)`);
+  for (const ref of snapRefs) refRoots.push([SNAP, ref]);
+  for (const m of src.matchAll(/['"(]\/?products\/([a-z0-9-]+)\/snapshots\/([^/'"]+)\//g)) {
+    refRoots.push([path.join(ROOT, 'products', m[1], 'snapshots'), m[2]]);
+    snapRefs.add(m[2]);
+  }
+  const seen = new Set();
+  for (const [root, ref] of refRoots) {
+    if (ref === '_shared' || seen.has(root + '|' + ref)) continue;
+    seen.add(root + '|' + ref);
+    const slugs = indexOf(root);
+    if (!fs.existsSync(path.join(root, ref, 'index.html'))) {
+      report('error', `snapshot reference does not exist on disk: ${rel(path.join(root, ref))}/`);
+    } else if (slugs && !slugs.has(ref)) {
+      report('error', `snapshot "${ref}" not registered in ${rel(path.join(root, 'index.json'))} (run post-capture / add it)`);
     }
   }
 

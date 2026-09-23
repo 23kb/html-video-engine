@@ -191,7 +191,7 @@ WP_URL=... WP_USER=... WP_PASS=... node capture/capture.js --variants ./plan.jso
 ```
 
 Between variants the page reloads to `targetPath` to reset state. Each
-variant writes its own full `snapshots/<slug>/assets/` — no cross-variant
+variant writes its own full `products/<key>/snapshots/<slug>/assets/` — no cross-variant
 dedup (deferred).
 
 Single-variant CLI `node capture.js <targetPath> <slug>` plus

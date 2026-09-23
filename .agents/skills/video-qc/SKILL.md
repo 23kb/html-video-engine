@@ -63,7 +63,7 @@ at that exact second.
 ## ⛔ Workflow contracts (do not violate during QC)
 
 ### Read `outline.md` FIRST for any selector/interaction question
-`snapshots/<slug>/outline.md` is the per-snapshot sidecar (~1.5K tokens): the author-targetable selectors + which `interactivity.js` transitions actually fire. Read it before `inspect-snapshot.js`, before grep, and NEVER `Read` the raw `index.html` (often ~1 MB — AGENTS.md G4). `catalog.md` is the deep fallback when the outline's capped lists say "+N more".
+`products/<key>/snapshots/<slug>/outline.md` is the per-snapshot sidecar (~1.5K tokens): the author-targetable selectors + which `interactivity.js` transitions actually fire. Read it before `inspect-snapshot.js`, before grep, and NEVER `Read` the raw `index.html` (often ~1 MB — AGENTS.md G4). `catalog.md` is the deep fallback when the outline's capped lists say "+N more".
 
 ### State-change hierarchy — drive the real UI, don't fake it
 When a scene changes product state, use the highest-applicable rung (canonical: the plan's hierarchy + INV):

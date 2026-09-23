@@ -23,7 +23,7 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..', '..');
-const SNAP = path.join(ROOT, 'snapshots');
+const SNAP = require('../lib/paths').snapshotsRoot();
 const GUARD_SLUG = 'builder-zzguard-test';
 const FIELDS_SLUG = 'builder-fields-zzguard-test';
 

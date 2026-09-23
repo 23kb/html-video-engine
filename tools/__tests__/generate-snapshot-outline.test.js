@@ -25,7 +25,7 @@ const { chromium } = require('playwright');
 const { ensureServer, allSnapshotSlugs } = require('../generate-snapshot-outline.js');
 
 const ROOT = path.resolve(__dirname, '..', '..');
-const SNAP = path.join(ROOT, 'snapshots');
+const SNAP = require('../lib/paths').snapshotsRoot();
 const GEN = path.join(ROOT, 'tools', 'generate-snapshot-outline.js');
 const POST = path.join(ROOT, 'tools', 'post-capture.js');
 const PORT = Number(process.env.PORT) || 4321;

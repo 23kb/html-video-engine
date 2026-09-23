@@ -21,7 +21,7 @@ try {
   });
 
   // 2) path-arg guard throws
-  try { await ifm.load('/snapshots/builder-settings-anti_spam/index.html'); R.pathThrow = 'NO THROW'; }
+  try { await ifm.load('/products/wpforms/snapshots/builder-settings-anti_spam/index.html'); R.pathThrow = 'NO THROW'; }
   catch (e) { R.pathThrow = e.message.slice(0, 100); }
   try { await ifm.load('builder-settings-anti_spam/index.html'); R.pathThrow2 = 'NO THROW'; }
   catch (e) { R.pathThrow2 = e.message.slice(0, 60); }

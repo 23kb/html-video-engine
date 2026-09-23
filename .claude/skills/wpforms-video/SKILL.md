@@ -103,7 +103,7 @@ The prompt is the brief. The skills are the gates. Both apply.
 - **Rules for the whole run** — invariants that hold across every beat: things that must never re-layout, never reverse direction, never change color roles, never be substituted. These are G1-level literal contracts — implement them exactly, and if one is genuinely hard, say so and ask (do not silently relax it).
 - Narration drafts per chapter
 - Snapshot plan with statuses: `exists`, `DOM-derived`, `NEEDS CAPTURE`, `ASK USER`, enumerated as **state × surface, not state** (rf 23): a state that appears on more than one surface needs a capture per surface. Builder canvas and published form render the same `input_layout=grid` from different markup under different CSS, so a capture named `-grid` can satisfy a quick read of a "List vs Grid" beat while covering only one of the two surfaces the beat needs. Before promising a beat that DRIVES the UI, check the handlers exist: `node tools/field-state.js --interactivity <field>` (rf 4 — handlers are added per video, so the gap is normally found mid-build)
-- *(optional)* Per-beat visual reference — a snapshot citation (`snapshots/<name>` + region) or a one-line described composition, so the look is approved before code. **Exception: on the pure-editorial path the HERO BEAT's reference is REQUIRED** (round-2 B4 — see `wpforms-marketing` "Reference as design law"); a real frame beats an adjective
+- *(optional)* Per-beat visual reference — a snapshot citation (`products/<key>/snapshots/<name>` + region) or a one-line described composition, so the look is approved before code. **Exception: on the pure-editorial path the HERO BEAT's reference is REQUIRED** (round-2 B4 — see `wpforms-marketing` "Reference as design law"); a real frame beats an adjective
 - **Snapshot-state inventory** (FIX-7 fa-retest): list the hidden panels / modals / popovers each chosen snapshot carries (outline.md "Panels & modals" section + `(hidden)` annotations) and mark each in-scope or out-of-scope. A captured state the storyboard never mentions is how the clean-room rebuild silently dropped the Ask-WPForms-AI chapter its predecessor had.
 - Capture / API / postIntro gaps explicitly listed
 - **DOM mutation per product beat** (mp 0): for each product beat, name the DOM mutation it performs — a beat whose answer is "the camera moves" is not a product beat. Realness is the state change, earned on camera, never pre-baked into the capture.
@@ -440,7 +440,7 @@ Stop and push back when:
 - A requested state would require fake WPForms UI.
 - A snapshot is missing and cannot be truthfully derived.
 - PostIntro is being weakened instead of built with approved animation surfaces.
-- Implementation pressure points toward protected core (`videos/_shared/*` libraries, `snapshots/` captures and their `_shared` assets, the validators/smoke tools, `capture/capture.js`).
+- Implementation pressure points toward protected core (`videos/_shared/*` libraries, `products/<key>/snapshots/` captures and their `_shared` assets, the validators/smoke tools, `capture/capture.js`).
 - A custom postIntro or a specific approved animation is being downgraded to a generic focus/title beat (the retired descriptor-mode failure — the rule survives).
 
 ## References (loaded on demand)

@@ -31,6 +31,7 @@ const path = require('path');
 const { spawn } = require('child_process');
 const { chromium } = require('playwright');
 const { resolveResolution } = require('./stage-size');
+const { mapLegacySnapshotUrl } = require('./lib/paths');
 
 const REPO = path.resolve(__dirname, '..');
 const MIME = {
@@ -61,7 +62,7 @@ function parseArgs(a) {
 function serveRepo() {
   return new Promise((resolve) => {
     const server = http.createServer((req, res) => {
-      const p = decodeURIComponent(new URL(req.url, 'http://x').pathname);
+      const p = mapLegacySnapshotUrl(decodeURIComponent(new URL(req.url, 'http://x').pathname));
       const f = path.join(REPO, p.replace(/^\/+/, ''));
       if (!f.startsWith(REPO) || !fs.existsSync(f) || fs.statSync(f).isDirectory()) { res.writeHead(404); res.end(); return; }
       res.writeHead(200, { 'Content-Type': MIME[path.extname(f).toLowerCase()] || 'application/octet-stream', 'Cache-Control': 'no-store' });

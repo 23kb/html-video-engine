@@ -15,7 +15,7 @@ const { execFileSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..', '..');
 const SLUG = 'admin-addons-sendgrid';
-const OUTLINE = path.join(ROOT, 'snapshots', SLUG, 'outline.md');
+const OUTLINE = path.join(require('../lib/paths').snapshotDir(SLUG), 'outline.md');
 
 let failures = 0;
 let checks = 0;

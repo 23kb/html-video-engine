@@ -2,6 +2,7 @@
 const http = require('http');
 const fs   = require('fs');
 const path = require('path');
+const { mapLegacySnapshotUrl } = require('./tools/lib/paths');
 
 const PORT = Number(process.env.PORT) || 4321;
 const ROOT = __dirname;
@@ -45,7 +46,7 @@ function createRequestHandler(options = {}) {
   });
 
   return (req, res) => {
-  const urlPath = decodeURIComponent(req.url.split('?')[0]);
+  const urlPath = mapLegacySnapshotUrl(decodeURIComponent(req.url.split('?')[0]));
   if (urlPath === '/scrubber' && scrubberHtml) {
     const url = new URL(req.url, 'http://localhost');
     const video = url.searchParams.get('video') || '_phase-c-editorial-pilot';

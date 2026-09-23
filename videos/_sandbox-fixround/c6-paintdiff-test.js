@@ -8,7 +8,7 @@ const { execFileSync } = require('child_process');
 const { chromium } = require('playwright');
 
 const REPO = path.resolve(__dirname, '..', '..');
-const SNAP = path.join(REPO, 'snapshots');
+const SNAP = path.join(REPO, 'products', 'wpforms', 'snapshots');
 const SCRATCH = path.join(SNAP, '_gates-scratch');
 
 async function shot(url, viewport, out) {

@@ -1,7 +1,8 @@
 // paths.js — the one place that knows where snapshot roots live.
 //
 // VIDEO_PRODUCT=<key> points the snapshot tools at products/<key>/snapshots/.
-// Unset = today's behaviour on snapshots/ (the WPForms root). The two older
+// Unset = WPForms, at products/wpforms/snapshots/ (snapshots/ before the
+// 2026-09-23 move; still honoured while that folder exists). The two older
 // overrides keep working and win over the product root:
 //   WP_SNAPSHOT_ROOT   — capture.js / capture-saas.js test sandboxes
 //   WPF_SNAPSHOTS_DIR  — inspect-snapshot.js / snapshot-grep.js fixtures
@@ -35,12 +36,34 @@ function productKey() {
   return key;
 }
 
+// The WPForms pack lives in products/wpforms/snapshots/ like every other
+// product (moved from snapshots/ on 2026-09-23). The old root is still used
+// while it exists, so a checkout from before the move keeps working.
+const WPFORMS_ROOT = path.join(REPO_ROOT, 'products', 'wpforms', 'snapshots');
+const LEGACY_ROOT = path.join(REPO_ROOT, 'snapshots');
+
+// A pack is its index.json: an emptied folder left behind (Windows can hold a
+// directory open) is not a root.
+const hasPack = (root) => fs.existsSync(path.join(root, 'index.json'));
+
+function wpformsRoot() {
+  return hasPack(LEGACY_ROOT) && !hasPack(WPFORMS_ROOT) ? LEGACY_ROOT : WPFORMS_ROOT;
+}
+
 function snapshotsRoot() {
   const key = productKey(); // validated even when an override wins
   if (process.env.WP_SNAPSHOT_ROOT) return process.env.WP_SNAPSHOT_ROOT;
   if (process.env.WPF_SNAPSHOTS_DIR) return process.env.WPF_SNAPSHOTS_DIR;
   if (key) return path.join(REPO_ROOT, 'products', key, 'snapshots');
-  return path.join(REPO_ROOT, 'snapshots');
+  return wpformsRoot();
+}
+
+// Films and pages written before the move ask for /snapshots/<slug>/…. The
+// repo servers (serve.js, preview.js, the render server) pass every URL
+// through here, so those films load the moved pack unchanged.
+function mapLegacySnapshotUrl(urlPath) {
+  if (!/^\/snapshots(\/|$)/.test(urlPath) || hasPack(LEGACY_ROOT)) return urlPath;
+  return '/products/wpforms/snapshots' + urlPath.slice('/snapshots'.length);
 }
 
 function snapshotDir(slug) {
@@ -48,7 +71,7 @@ function snapshotDir(slug) {
 }
 
 // URL path of the root on the repo-root server (serve.js and the tools' own
-// servers): /snapshots or /products/<key>/snapshots.
+// servers): /products/<key>/snapshots (WPForms: /products/wpforms/snapshots).
 function snapshotsUrlBase() {
   const root = snapshotsRoot();
   const rel = path.relative(REPO_ROOT, root);
@@ -80,6 +103,7 @@ module.exports = {
   REPO_ROOT,
   productKey,
   snapshotsRoot,
+  mapLegacySnapshotUrl,
   snapshotDir,
   snapshotsUrlBase,
   snapshotUrlPath,

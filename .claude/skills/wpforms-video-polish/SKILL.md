@@ -15,7 +15,7 @@ The hand-rolled pattern this skill codifies (2026-05-12) ships polish edits in b
 
 - Not a redesign. If the user wants new choreography, use `wpforms-video` (tutorial) or `wpforms-marketing` (editorial).
 - Not a debug pass. If the video has actual bugs (broken animations, missing assets, console errors), fix those first using normal video tooling.
-- Not architectural. Don't re-architect the film's timeline or playback block; don't touch protected core (`videos/_shared/*`, snapshots/, validators).
+- Not architectural. Don't re-architect the film's timeline or playback block; don't touch protected core (`videos/_shared/*`, `products/<key>/snapshots/`, validators).
 - Not a license to refactor. Every changed line traces directly to a polish opportunity.
 
 ## ⛔ Non-negotiable rules (in order)
@@ -46,7 +46,7 @@ See INV-9 in `docs/video-architecture-invariants-2026-05-12.md` for the canonica
 
 ### 4. Do NOT touch protected core (CLAUDE.md)
 
-`videos/_shared/*` libraries, `snapshots/` captures + their `_shared` assets, validators/smoke tools, `capture/capture.js`.
+`videos/_shared/*` libraries, `products/<key>/snapshots/` captures + their `_shared` assets, validators/smoke tools, `capture/capture.js`.
 
 ### 5. Do NOT touch load-bearing logic in the target video
 

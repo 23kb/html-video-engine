@@ -39,7 +39,7 @@ export class BuilderFrontendSplit {
    * @param {Object} [opts]
    * @param {{width:number, height:number}} [opts.stage]
    * @param {{width:number, height:number}} [opts.pane] - iframe logical size per pane
-   * @param {string} [opts.snapshotBase='/snapshots']
+   * @param {string} [opts.snapshotBase='/products/wpforms/snapshots']
    * @param {boolean} [opts.autoBridge=true] - relay wpf:field-state from builder to frontend
    * @param {number} [opts.gap=24] - px gap between panes when split is active
    */
@@ -47,7 +47,7 @@ export class BuilderFrontendSplit {
     const cfg = {
       stage: opts.stage || DEFAULT_STAGE,
       pane: opts.pane || DEFAULT_PANE,
-      snapshotBase: opts.snapshotBase || '/snapshots',
+      snapshotBase: opts.snapshotBase || '/products/wpforms/snapshots',
       autoBridge: opts.autoBridge !== false,
       gap: opts.gap != null ? opts.gap : 24,
     };

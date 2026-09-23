@@ -107,7 +107,7 @@ export class IframeManager {
    * @param {{width:number,height:number}} [opts.viewport] — visible stage size
    * @param {{width:number,height:number}} [opts.iframeSize] — logical snapshot layout size
    * @param {number} [opts.oversample=4] — iframe backing multiplier
-   * @param {string} [opts.snapshotBase='/snapshots'] — URL prefix for snapshot folders
+   * @param {string} [opts.snapshotBase='/products/wpforms/snapshots'] — URL prefix for snapshot folders
    * @param {string} [opts.indexFile='index.html'] — file name inside each snapshot folder
    */
   constructor(stage, opts = {}) {
@@ -115,7 +115,7 @@ export class IframeManager {
       viewport = DEFAULT_VIEWPORT,
       iframeSize = viewport,
       oversample = DEFAULT_OVERSAMPLE,
-      snapshotBase = '/snapshots',
+      snapshotBase = '/products/wpforms/snapshots',
       indexFile = 'index.html',
       killTransitions = true,
     } = opts;
@@ -174,7 +174,7 @@ export class IframeManager {
 
   _createIframe(slug) {
     // Path-arg guard (mp 2, fix-round B2): load()/swap() take a SLUG. A
-    // path-shaped arg silently composed /snapshots//snapshots/<slug>/
+    // path-shaped arg silently composed <base>//<base>/<slug>/
     // index.html/index.html and fell back to an empty stage that "passed
     // visually". Throwing beats auto-repair — auto-repair would mask the
     // caller's mental model being wrong. Both load() and swap() pass here.

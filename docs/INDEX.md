@@ -63,7 +63,7 @@ Craft docs below carry a **HISTORICAL API NOTE (2026-08-28)**: their code exampl
 ## Architecture
 
 - `video-architecture-invariants-2026-05-12.md` — INV-1..16 hard rules for single-HTML videos, each cross-referenced to its teaching commit. Read before any new film. (INV-11 and INV-16 carry 2026-08-28 amendment notes: no tutorial bookends; first write = the `docs/examples/` skeleton.)
-- `snapshot-interactivity.md` — Conventions for `snapshots/_shared/interactivity.js`: transition registry, canvas/options model, admin-side systems.
+- `snapshot-interactivity.md` — Conventions for `products/wpforms/snapshots/_shared/interactivity.js`: transition registry, canvas/options model, admin-side systems.
 
 ## System context
 

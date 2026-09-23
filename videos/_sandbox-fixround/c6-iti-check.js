@@ -3,7 +3,7 @@ const path = require('path');
 (async () => {
   const b = await chromium.launch({ headless: true });
   const p = await b.newPage();
-  const file = path.resolve(__dirname, '..', '..', 'snapshots', 'frontend-contact-clean', 'index.html');
+  const file = path.resolve(__dirname, '..', '..', 'products', 'wpforms', 'snapshots', 'frontend-contact-clean', 'index.html');
   await p.goto('file://' + file.replace(/\\/g, '/'), { waitUntil: 'domcontentloaded' });
   const r = await p.evaluate(() => {
     const out = [];

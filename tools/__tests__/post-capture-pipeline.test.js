@@ -22,7 +22,7 @@ const path = require('path');
 const { execFileSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..', '..');
-const SNAP = path.join(ROOT, 'snapshots');
+const SNAP = require('../lib/paths').snapshotsRoot();
 const SOURCE = 'form-analytics-date-open';
 const TMP = 'zz-pc-pipeline-test'; // non-underscore: _-prefixed slugs are never index-registered (infra convention)
 const TMP_DIR = path.join(SNAP, TMP);
