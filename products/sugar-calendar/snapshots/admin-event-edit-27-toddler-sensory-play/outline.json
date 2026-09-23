@@ -1,0 +1,3956 @@
+{
+  "slug": "admin-event-edit-27-toddler-sensory-play",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "metabox-section-tabs",
+      "event": "click",
+      "selector": ".sugar-calendar-metabox__navigation__button[data-id]",
+      "count": 8
+    },
+    {
+      "label": "all-day-times",
+      "event": "change",
+      "selector": "#all_day",
+      "count": 1
+    },
+    {
+      "label": "recurrence-rows",
+      "event": "change",
+      "selector": "#recurrence",
+      "count": 1
+    },
+    {
+      "label": "recurrence-end-type",
+      "event": "click",
+      "selector": "#recurrence_end_type_never",
+      "count": 3
+    },
+    {
+      "label": "rsvp-unique-per-occurrence",
+      "event": "change",
+      "selector": "#recurrence",
+      "count": 1
+    },
+    {
+      "label": "online-provider-rows",
+      "event": "change",
+      "selector": "#online_provider",
+      "count": 1
+    },
+    {
+      "label": "venue-add-new-form",
+      "event": "click",
+      "selector": "#venue-add-new",
+      "count": 2
+    },
+    {
+      "label": "tickets-rsvp-exclusive",
+      "event": "change",
+      "selector": "#rsvp_enable",
+      "count": 2
+    },
+    {
+      "label": "rsvp-capacity-row",
+      "event": "change",
+      "selector": "#rsvp_enable_capacity",
+      "count": 1
+    },
+    {
+      "label": "ticket-limit-capacity",
+      "event": "change",
+      "selector": "#ticket_limit_capacity",
+      "count": 1
+    },
+    {
+      "label": "choices-dropdown",
+      "event": "click",
+      "selector": ".choices[data-type]",
+      "count": 4
+    },
+    {
+      "label": "flyout-menu",
+      "event": "click",
+      "selector": "a.sc-flyout-button.sc-flyout-head",
+      "count": 1
+    },
+    {
+      "label": "registration-form-live",
+      "event": "sc:ready",
+      "selector": "body.wp-admin.wp-core-ui",
+      "count": 1
+    },
+    {
+      "label": "speaker-add-new-form",
+      "event": "click",
+      "selector": "#speaker-add-new",
+      "count": 3
+    },
+    {
+      "label": "speaker-title-save",
+      "event": "keyup",
+      "selector": "#sugar-calendar-setting-sugarcalendar_speaker_post_title",
+      "count": 1
+    },
+    {
+      "label": "ticket-add-another",
+      "event": "click",
+      "selector": "button.button.button-secondary",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#fes-submit",
+        "tag": "div",
+        "text": "Frontend Event Submission Move up Move down Show or hide pa…",
+        "count": 1,
+        "hidden": false,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#insert-media-button",
+        "tag": "button",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": false,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#post_content-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": false,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#post_content-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": false,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#post-preview",
+        "tag": "a",
+        "text": "Preview Changes (opens in a new tab)",
+        "count": 1,
+        "hidden": false,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#sc_event_category-add",
+        "tag": "p",
+        "text": "Add New Calendar Parent Calendar: — Parent Calendar — Class…",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#sc_event_category-add-toggle",
+        "tag": "a",
+        "text": "Add New Calendar",
+        "count": 1,
+        "hidden": false,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#sc_event_category-clear",
+        "tag": "a",
+        "text": "Clear",
+        "count": 1,
+        "hidden": false,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#set-post-thumbnail",
+        "tag": "a",
+        "text": "Set featured image",
+        "count": 1,
+        "hidden": false,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#speaker-edit-cancel",
+        "tag": "button",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#speaker-edit-save",
+        "tag": "button",
+        "text": "Save",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#sugar-calendar-header-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#sugar-calendar-metabox__navigation__button-adv-recurrence",
+        "tag": "button",
+        "text": "Recurrence",
+        "count": 1,
+        "hidden": false,
+        "wired": "metabox-section-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sugar-calendar-metabox__navigation__button-duration",
+        "tag": "button",
+        "text": "General",
+        "count": 1,
+        "hidden": false,
+        "wired": "metabox-section-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sugar-calendar-metabox__navigation__button-location",
+        "tag": "button",
+        "text": "Location",
+        "count": 1,
+        "hidden": false,
+        "wired": "metabox-section-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sugar-calendar-metabox__navigation__button-registration",
+        "tag": "button",
+        "text": "Registration Form",
+        "count": 1,
+        "hidden": false,
+        "wired": "metabox-section-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sugar-calendar-metabox__navigation__button-rsvp",
+        "tag": "button",
+        "text": "RSVP",
+        "count": 1,
+        "hidden": false,
+        "wired": "metabox-section-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sugar-calendar-metabox__navigation__button-speakers",
+        "tag": "button",
+        "text": "Speakers",
+        "count": 1,
+        "hidden": false,
+        "wired": "metabox-section-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sugar-calendar-metabox__navigation__button-tickets",
+        "tag": "button",
+        "text": "Tickets",
+        "count": 1,
+        "hidden": false,
+        "wired": "metabox-section-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sugar-calendar-metabox__navigation__button-url",
+        "tag": "button",
+        "text": "Link",
+        "count": 1,
+        "hidden": false,
+        "wired": "metabox-section-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#venue-edit-cancel",
+        "tag": "button",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": true,
+        "wired": "venue-add-new-form",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#venue-edit-save",
+        "tag": "button",
+        "text": "Save This Venue",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#wpcode-add-snippet-toggle",
+        "tag": "button",
+        "text": "+ Choose Snippet",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#wpcode-close-drawer",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#wpcode-metabox-load-more",
+        "tag": "button",
+        "text": "Load more snippets",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#wpcode-show-all-snippets",
+        "tag": "button",
+        "text": "3 Other Revisions",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".choices__button",
+        "tag": "button",
+        "text": "Remove item",
+        "count": 3,
+        "hidden": false,
+        "wired": "choices-dropdown",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sc-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-menu",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-item-1",
+        "tag": "a",
+        "text": "Join Community",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sc-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sc-insert-shortcode-button",
+        "tag": "button",
+        "text": "Add Sugar Calendar",
+        "count": 1,
+        "hidden": false,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sc-insert-shortcode-confirm",
+        "tag": "button",
+        "text": "Add Shortcode",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sc-toggle-label",
+        "tag": "span",
+        "text": "Off",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sc-toggle-row",
+        "tag": "label",
+        "text": "Off",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sugar-calendar-metabox__copy",
+        "tag": "button",
+        "text": "Copy",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sugar-calendar-metabox__create-meeting",
+        "tag": "a",
+        "text": "Create Meeting",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sugar-calendar-toggle-control",
+        "tag": "span",
+        "text": "NO",
+        "count": 13,
+        "hidden": false,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#wpcode-tab-body",
+        "tag": "div",
+        "text": "Add scripts below to the Body section of this page. Disable…",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#wpcode-tab-code",
+        "tag": "div",
+        "text": "Choose the snippets you want to run on this page. Please no…",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#wpcode-tab-footer",
+        "tag": "div",
+        "text": "Add scripts below to the Footer section of this page. Disab…",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#wpcode-tab-header",
+        "tag": "div",
+        "text": "Add scripts below to the Header section of this page. Disab…",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#wpcode-tab-revisions",
+        "tag": "div",
+        "text": "As you make changes to your page scripts and save, you will…",
+        "count": 1,
+        "hidden": true,
+        "wired": "registration-form-live",
+        "wiredEvent": "sc:ready"
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#_ajax_nonce-add-sc_event_category",
+        "tag": "input",
+        "text": "7458c2ebd3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_thumbnail_id",
+        "tag": "input",
+        "text": "-1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#active_post_lock",
+        "tag": "input",
+        "text": "1789840321:1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#all_day",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_hh",
+        "tag": "input",
+        "text": "17",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_jj",
+        "tag": "input",
+        "text": "19",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_mm",
+        "tag": "input",
+        "text": "09",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_mn",
+        "tag": "input",
+        "text": "52",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom_link_url",
+        "tag": "input",
+        "text": "Add your link here",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#enable_tickets",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#end_date",
+        "tag": "input",
+        "text": "2026-09-07",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#end_time_am_pm",
+        "tag": "select",
+        "text": "AM PM",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#end_time_hour",
+        "tag": "select",
+        "text": "01 02 03 04 05 06 07 08 09 10 11 12",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#end_time_minute",
+        "tag": "select",
+        "text": "00 05 10 15 20 25 30 35 40 45 50 55",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#excerpt",
+        "tag": "textarea",
+        "text": "A gentle hour of messy, sensory play for under-fours and th…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#featured",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hh",
+        "tag": "input",
+        "text": "14",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_hh",
+        "tag": "input",
+        "text": "14",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_jj",
+        "tag": "input",
+        "text": "19",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_mm",
+        "tag": "input",
+        "text": "09",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_mn",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_post_status",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden-post-password",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden-post-visibility",
+        "tag": "input",
+        "text": "public",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hiddenaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-sc_event_category-14",
+        "tag": "input",
+        "text": "14",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-sc_event_category-15",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-sc_event_category-16",
+        "tag": "input",
+        "text": "16",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-sc_event_category-17",
+        "tag": "input",
+        "text": "17",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-sc_event_category-18",
+        "tag": "input",
+        "text": "18",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#jj",
+        "tag": "input",
+        "text": "19",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#meta-box-order-nonce",
+        "tag": "input",
+        "text": "ecd50fa662",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mm",
+        "tag": "select",
+        "text": "01-Jan 02-Feb 03-Mar 04-Apr 05-May 06-Jun 07-Jul 08-Aug 09-…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mn",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#newsc_event_category",
+        "tag": "input",
+        "text": "New Calendar Name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#newsc_event_category_parent",
+        "tag": "select",
+        "text": "— Parent Calendar — Classes Community Market My Calendar Pr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#online_provider",
+        "tag": "select",
+        "text": "None Zoom (not connected) Custom Link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_post_status",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_publish",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#originalaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_author",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_content",
+        "tag": "textarea",
+        "text": "Toddler Sensory Play is a calm hour for children under four…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post_ID",
+        "tag": "input",
+        "text": "2141",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_name",
+        "tag": "input",
+        "text": "toddler-sensory-play",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_password",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_status",
+        "tag": "select",
+        "text": "Published Pending Review Draft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_type",
+        "tag": "input",
+        "text": "sc_event",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#publish",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_block",
+        "tag": "input",
+        "text": "b-quote",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_box",
+        "tag": "input",
+        "text": "box",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_button",
+        "tag": "input",
+        "text": "button",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_digg",
+        "tag": "input",
+        "text": "digg",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_facebook",
+        "tag": "input",
+        "text": "facebook",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_feedburner",
+        "tag": "input",
+        "text": "feedburner",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_learn_more",
+        "tag": "input",
+        "text": "learn_more",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_one_fourth",
+        "tag": "input",
+        "text": "one fourth",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_one_fourth_last",
+        "tag": "input",
+        "text": "one fourth last",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_one_half",
+        "tag": "input",
+        "text": "one half",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_one_half_last",
+        "tag": "input",
+        "text": "one half last",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_one_third",
+        "tag": "input",
+        "text": "one third",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_one_third_last",
+        "tag": "input",
+        "text": "one third last",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_protected",
+        "tag": "input",
+        "text": "protected",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_raw",
+        "tag": "input",
+        "text": "raw",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_retweet",
+        "tag": "input",
+        "text": "retweet",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_slide",
+        "tag": "input",
+        "text": "slide",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_slider",
+        "tag": "input",
+        "text": "slider",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_stumble",
+        "tag": "input",
+        "text": "stumble",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_three_fourth",
+        "tag": "input",
+        "text": "three fourth",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_three_fourth_last",
+        "tag": "input",
+        "text": "three fourth last",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_tooltip",
+        "tag": "input",
+        "text": "tooltip",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_twitter",
+        "tag": "input",
+        "text": "x",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_two_third",
+        "tag": "input",
+        "text": "two third",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ed_two_third_last",
+        "tag": "input",
+        "text": "two third last",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ins",
+        "tag": "input",
+        "text": "ins",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_more",
+        "tag": "input",
+        "text": "more",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#recurrence",
+        "tag": "select",
+        "text": "Never Daily Weekly Monthly Yearly",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_byday",
+        "tag": "select",
+        "text": "Sunday Monday Tuesday Wednesday Thursday Friday Saturday da…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonth_1",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonth_10",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonth_11",
+        "tag": "input",
+        "text": "11",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonth_12",
+        "tag": "input",
+        "text": "12",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonth_2",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonth_3",
+        "tag": "input",
+        "text": "3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonth_4",
+        "tag": "input",
+        "text": "4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonth_5",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonth_6",
+        "tag": "input",
+        "text": "6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonth_7",
+        "tag": "input",
+        "text": "7",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonth_8",
+        "tag": "input",
+        "text": "8",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonth_9",
+        "tag": "input",
+        "text": "9",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_1",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_10",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_11",
+        "tag": "input",
+        "text": "11",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_12",
+        "tag": "input",
+        "text": "12",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_13",
+        "tag": "input",
+        "text": "13",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_14",
+        "tag": "input",
+        "text": "14",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_15",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_16",
+        "tag": "input",
+        "text": "16",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_17",
+        "tag": "input",
+        "text": "17",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_18",
+        "tag": "input",
+        "text": "18",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_19",
+        "tag": "input",
+        "text": "19",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_2",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_20",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_21",
+        "tag": "input",
+        "text": "21",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_22",
+        "tag": "input",
+        "text": "22",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_23",
+        "tag": "input",
+        "text": "23",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_24",
+        "tag": "input",
+        "text": "24",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_25",
+        "tag": "input",
+        "text": "25",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_26",
+        "tag": "input",
+        "text": "26",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_27",
+        "tag": "input",
+        "text": "27",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_28",
+        "tag": "input",
+        "text": "28",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_29",
+        "tag": "input",
+        "text": "29",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_3",
+        "tag": "input",
+        "text": "3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_30",
+        "tag": "input",
+        "text": "30",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_31",
+        "tag": "input",
+        "text": "31",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_4",
+        "tag": "input",
+        "text": "4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_5",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_6",
+        "tag": "input",
+        "text": "6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_7",
+        "tag": "input",
+        "text": "7",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_8",
+        "tag": "input",
+        "text": "8",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bymonthday_9",
+        "tag": "input",
+        "text": "9",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_bypos",
+        "tag": "select",
+        "text": "first second third fourth fifth last",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_end_count",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_end_date",
+        "tag": "input",
+        "text": "Date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_end_type_count",
+        "tag": "input",
+        "text": "count",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_end_type_date",
+        "tag": "input",
+        "text": "date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_end_type_never",
+        "tag": "input",
+        "text": "never",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_interval",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_weekly_byday_FR",
+        "tag": "input",
+        "text": "FR",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_weekly_byday_MO",
+        "tag": "input",
+        "text": "MO",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_weekly_byday_SA",
+        "tag": "input",
+        "text": "SA",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_weekly_byday_SU",
+        "tag": "input",
+        "text": "SU",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_weekly_byday_TH",
+        "tag": "input",
+        "text": "TH",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_weekly_byday_TU",
+        "tag": "input",
+        "text": "TU",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#recurrence_weekly_byday_WE",
+        "tag": "input",
+        "text": "WE",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#referredby",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rsvp_additional_attendee_per_rsvp",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rsvp_allow_not_going",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rsvp_capacity",
+        "tag": "input",
+        "text": "12",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rsvp_enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rsvp_enable_capacity",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rsvp_phone_required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rsvp_show_attendee_list",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rsvp_unique_per_occurrence",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#samplepermalinknonce",
+        "tag": "input",
+        "text": "182004ebf2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#save",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_category-add-submit",
+        "tag": "input",
+        "text": "Add New Calendar",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_tags_metabox_nonce",
+        "tag": "input",
+        "text": "47b212ca6d",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_mb_nonce",
+        "tag": "input",
+        "text": "6c99bff61d",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_registration_form_schema",
+        "tag": "input",
+        "text": "{\"version\":1,\"enabled\":false,\"show\":\"before_checkout\",\"coll…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-event-url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-event-url-redirect",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-event-url-target",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-event-url-text",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-all-calendars",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-calendars",
+        "tag": "select",
+        "text": "Classes Community Market My Calendar Private Hire Workshops",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-allow-user-change-display",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-display",
+        "tag": "select",
+        "text": "Month Week Day",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-featured-only",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-show-block-header",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-show-filters",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-show-search",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-allow-user-change-display",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-display",
+        "tag": "select",
+        "text": "List Grid Plain",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-events-per-page",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-featured-only",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-group-events-by-week",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-image-position",
+        "tag": "select",
+        "text": "Left Right",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-maximum-events-to-show",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-date-cards",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-descriptions",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-featured-images",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-filters",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-search",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-show-block-header",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shortlink",
+        "tag": "input",
+        "text": "http://example.com/?p=2141",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#show_map",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_details_nonce",
+        "tag": "input",
+        "text": "558050e8c8",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ss",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#start_date",
+        "tag": "input",
+        "text": "2026-09-07",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#start_time_am_pm",
+        "tag": "select",
+        "text": "AM PM",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#start_time_hour",
+        "tag": "select",
+        "text": "01 02 03 04 05 06 07 08 09 10 11 12",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#start_time_minute",
+        "tag": "select",
+        "text": "00 05 10 15 20 25 30 35 40 45 50 55",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-event-speakers-nonce",
+        "tag": "input",
+        "text": "3aac5f4153",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-event-venue-nonce",
+        "tag": "input",
+        "text": "658c7d74e9",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-speakers",
+        "tag": "select",
+        "text": "Rosa DelgadoAda BasseyMarco FerreiraGia",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_email",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_facebook",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_instagram",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_linkedin",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_phone",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_post_id",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_post_title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_twitter",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_website",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_youtube",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_venue_address_1",
+        "tag": "input",
+        "text": "12 Mill Lane",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_venue_address_2",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_venue_city",
+        "tag": "input",
+        "text": "Riverside",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_venue_country",
+        "tag": "select",
+        "text": "Select a Country Afghanistan Åland Islands Albania Algeria …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_venue_id",
+        "tag": "input",
+        "text": "2025",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_venue_phone",
+        "tag": "input",
+        "text": "(555) 555-0110",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_venue_postal_code",
+        "tag": "input",
+        "text": "97000",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_venue_state",
+        "tag": "input",
+        "text": "OR",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_venue_title",
+        "tag": "input",
+        "text": "Gia's Studio — Main Hall",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_venue_website",
+        "tag": "input",
+        "text": "https://example.com/visit/main-hall/",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-venue",
+        "tag": "select",
+        "text": "Gia’s Studio — Main Hall Riverside Market SquareGia's Studi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ticket_limit_capacity",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tickets_sell_per_occurrence",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#title",
+        "tag": "input",
+        "text": "Toddler Sensory Play",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-id",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#venue_details_nonce",
+        "tag": "input",
+        "text": "47ddb25a1f",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-password",
+        "tag": "input",
+        "text": "password",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-private",
+        "tag": "input",
+        "text": "private",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-public",
+        "tag": "input",
+        "text": "public",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-preview",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-search-snippets",
+        "tag": "input",
+        "text": "Search snippets",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__input",
+        "tag": "select",
+        "text": "beginnerceramicscommunityeveningfamilyfreeholidaykidsoutdoo…",
+        "count": 8,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-toggle",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-shortcode-helper-modal",
+        "tag": "div",
+        "text": "Select what you would like to insert Events Calendar Events…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility",
+        "tag": "div",
+        "text": "Visibility: Public Edit Edit visibility",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-sh-display-options",
+        "tag": "div",
+        "text": "Display Month Week Day Show Block Header Allow Users to Cha…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-query-options",
+        "tag": "div",
+        "text": "Display events from all calendars Select Calendar to displa…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-section",
+        "tag": "div",
+        "text": "Select what you would like to insert Events Calendar Events…",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-metabox__online-section",
+        "tag": "div",
+        "text": "Online None Zoom (not connected) Custom Link Choose your on…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#_goober",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#above_event_editor-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#advanced-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#attendee_name",
+        "tag": "th",
+        "text": "Attendee Name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#below_event_editor-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#custom_link_url-error",
+        "tag": "p",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#delete-action",
+        "tag": "div",
+        "text": "Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit-slug-box",
+        "tag": "div",
+        "text": "Permalink: http://example.com/events/toddler-sensory-play/ …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit-slug-buttons",
+        "tag": "span",
+        "text": "Edit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editable-post-name",
+        "tag": "span",
+        "text": "toddler-sensory-play",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editable-post-name-full",
+        "tag": "span",
+        "text": "toddler-sensory-play",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#email",
+        "tag": "th",
+        "text": "Email",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#end_date-error",
+        "tag": "p",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#fes-submit-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#fes-submit-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#fes-submit-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#fes-submit-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#fes-submit-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#fes-submit-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#fes-submit-title",
+        "tag": "h2",
+        "text": "Frontend Event Submission",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#id",
+        "tag": "th",
+        "text": "ID",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#major-publishing-actions",
+        "tag": "div",
+        "text": "Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#minor-publishing",
+        "tag": "div",
+        "text": "Preview Changes (opens in a new tab) Status: Published Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#minor-publishing-actions",
+        "tag": "div",
+        "text": "Preview Changes (opens in a new tab)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#misc-publishing-actions",
+        "tag": "div",
+        "text": "Status: Published Edit Edit status Visibility: Public Edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "Sugar Calendar Event Settings Move up Move down Show or hid…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_date",
+        "tag": "th",
+        "text": "Date",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#password-span",
+        "tag": "span",
+        "text": "Password:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post",
+        "tag": "form",
+        "text": "Name this event Permalink: http://example.com/events/toddle…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body",
+        "tag": "div",
+        "text": "Name this event Permalink: http://example.com/events/toddle…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body-content",
+        "tag": "div",
+        "text": "Name this event Permalink: http://example.com/events/toddle…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-lock-dialog",
+        "tag": "div",
+        "text": "Saving revision… Your latest changes were saved as a revisi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-status-display",
+        "tag": "span",
+        "text": "Published",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-status-select",
+        "tag": "div",
+        "text": "Set status Published Pending Review Draft OK Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-visibility-display",
+        "tag": "span",
+        "text": "Public",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-visibility-select",
+        "tag": "div",
+        "text": "Public Password protected Password: Private OK Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postbox-container-1",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Preview Change…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-2",
+        "tag": "div",
+        "text": "Sugar Calendar Event Settings Move up Move down Show or hid…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postexcerpt",
+        "tag": "div",
+        "text": "Excerpt Move up Move down Show or hide panel Excerpt Excerp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postexcerpt-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postexcerpt-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postexcerpt-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postexcerpt-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postexcerpt-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postexcerpt-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postexcerpt-title",
+        "tag": "h2",
+        "text": "Excerpt",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postimagediv",
+        "tag": "div",
+        "text": "Featured Image Move up Move down Show or hide panel Set fea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postimagediv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-title",
+        "tag": "h2",
+        "text": "Featured Image",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#poststuff",
+        "tag": "div",
+        "text": "Name this event Permalink: http://example.com/events/toddle…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-action",
+        "tag": "div",
+        "text": "Preview Changes (opens in a new tab)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#publishing-action",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_post_content_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#repeat-interval",
+        "tag": "label",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#repeat-occurrence",
+        "tag": "span",
+        "text": "time",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rsvp-2163",
+        "tag": "tr",
+        "text": "Lucy Ward Edit|Send Confirmation Email|Trash lucy.ward@exam…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2164",
+        "tag": "tr",
+        "text": "Samir Aziz Edit|Send Confirmation Email|Trash samir.aziz@ex…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2165",
+        "tag": "tr",
+        "text": "Olga Petersen Edit|Send Confirmation Email|Trash olga.peter…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2166",
+        "tag": "tr",
+        "text": "Tariq Hussain Edit|Send Confirmation Email|Trash tariq.huss…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2168",
+        "tag": "tr",
+        "text": "Hana Sato Edit|Send Confirmation Email|Trash hana.sato@exam…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sample-permalink",
+        "tag": "span",
+        "text": "http://example.com/events/toddler-sensory-play/",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#save-action",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_category-14",
+        "tag": "li",
+        "text": "My Calendar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_category-15",
+        "tag": "li",
+        "text": "Classes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_category-16",
+        "tag": "li",
+        "text": "Workshops",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_category-17",
+        "tag": "li",
+        "text": "Community Market",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_category-18",
+        "tag": "li",
+        "text": "Private Hire",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_category-adder",
+        "tag": "div",
+        "text": "Add New Calendar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_category-ajax-response",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_category-all",
+        "tag": "div",
+        "text": "Classes Community Market My Calendar Private Hire Workshops…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_categorychecklist",
+        "tag": "ul",
+        "text": "Classes Community Market My Calendar Private Hire Workshops",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_categorydiv",
+        "tag": "div",
+        "text": "Calendars Move up Move down Show or hide panel Classes Comm…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_categorydiv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_categorydiv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_categorydiv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_categorydiv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_categorydiv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_categorydiv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_categorydiv-title",
+        "tag": "h2",
+        "text": "Calendars",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_tags_metabox",
+        "tag": "div",
+        "text": "Tags Move up Move down Show or hide panel family Remove ite…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_tags_metabox-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_tags_metabox-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_tags_metabox-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_tags_metabox-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_tags_metabox-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_tags_metabox-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_event_tags_metabox-title",
+        "tag": "h2",
+        "text": "Tags",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-url-error",
+        "tag": "p",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-label-adv-recurrence",
+        "tag": "span",
+        "text": "Recurrence",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-label-duration",
+        "tag": "span",
+        "text": "General",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-label-location",
+        "tag": "span",
+        "text": "Location",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-label-registration",
+        "tag": "span",
+        "text": "Registration Form",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-label-rsvp",
+        "tag": "span",
+        "text": "RSVP",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-label-speakers",
+        "tag": "span",
+        "text": "Speakers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-label-tickets",
+        "tag": "span",
+        "text": "Tickets",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-label-url",
+        "tag": "span",
+        "text": "Link",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-registration-form-editor",
+        "tag": "div",
+        "text": "Registration FormOffCollect additional details from your at…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#side-sortables",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Preview Change…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#slugdiv",
+        "tag": "div",
+        "text": "Slug Move up Move up Move down Move down Show or hide panel…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-title",
+        "tag": "h2",
+        "text": "Slug",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker-add-new",
+        "tag": "span",
+        "text": "Add New",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#start_date-error",
+        "tag": "p",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#status",
+        "tag": "th",
+        "text": "Status",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submitdiv",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Preview Change…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submitdiv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-title",
+        "tag": "h2",
+        "text": "Publish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submitpost",
+        "tag": "div",
+        "text": "Preview Changes (opens in a new tab) Status: Published Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar_calendar_details",
+        "tag": "div",
+        "text": "Details Move up Move down Show or hide panel Add MediaAdd S…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar_calendar_details-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_details-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_details-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_details-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_details-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_details-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_details-title",
+        "tag": "h2",
+        "text": "Details",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_attendees_overview",
+        "tag": "div",
+        "text": "Attendees Overview Move up Move down Show or hide panel Goi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_attendees_overview-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_attendees_overview-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_attendees_overview-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_attendees_overview-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_attendees_overview-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_attendees_overview-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_attendees_overview-title",
+        "tag": "h2",
+        "text": "Attendees Overview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_details",
+        "tag": "div",
+        "text": "Sugar Calendar Event Settings Move up Move down Show or hid…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_details-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_details-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_details-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_details-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_details-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_details-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_details-title",
+        "tag": "h2",
+        "text": "Sugar Calendar Event Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_recent_registrations",
+        "tag": "div",
+        "text": "Recent Registrations Move up Move down Show or hide panel A…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_recent_registrations-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_recent_registrations-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_recent_registrations-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_recent_registrations-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_recent_registrations-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_recent_registrations-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar_calendar_editor_event_recent_registrations-title",
+        "tag": "h2",
+        "text": "Recent Registrations",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-admin-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-lite-sidebar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-metabox__field-row__child-rsvp_enable_capacity",
+        "tag": "div",
+        "text": "Capacity Additional Attendees per RSVP",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-metabox__field-row--tickets_sell_per_occurrence",
+        "tag": "div",
+        "text": "Unique per Occurrence ON OFF Enable this option to sell sep…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-metabox__rsvp-enable-notice",
+        "tag": "div",
+        "text": "RSVP cannot be used when Ticket Sales are turned on for thi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-metabox__section__adv-recurrence",
+        "tag": "div",
+        "text": "Repeat Never Daily Weekly Monthly Yearly Every On Sun Mon T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-metabox__section__duration",
+        "tag": "div",
+        "text": "All Day NO Start at 01 02 03 04 05 06 07 08 09 10 11 12 : 0…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-metabox__section__location",
+        "tag": "div",
+        "text": "Venue Gia’s Studio — Main Hall Riverside Market SquareGia's…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-metabox__section__registration",
+        "tag": "div",
+        "text": "Registration FormOffCollect additional details from your at…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-metabox__section__rsvp",
+        "tag": "div",
+        "text": "RSVP ON OFF RSVP cannot be used when Ticket Sales are turne…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-metabox__section__speakers",
+        "tag": "div",
+        "text": "Speakers Rosa DelgadoAda BasseyMarco FerreiraGiaAda BasseyG…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-metabox__section__tickets",
+        "tag": "div",
+        "text": "Configure the setting below to enable and sell tickets for …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-metabox__section__url",
+        "tag": "div",
+        "text": "Add a custom URL which will be displayed in the event detai…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-metabox__section--speakers",
+        "tag": "div",
+        "text": "Speakers Rosa DelgadoAda BasseyMarco FerreiraGiaAda BasseyG…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-metabox__stripe-connection-notice",
+        "tag": "div",
+        "text": "Tickets will be free until you set up a payment method for …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-metabox__ticket-enable-notice",
+        "tag": "div",
+        "text": "Ticket Sales cannot be used when RSVP is turned on for this…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-speakers",
+        "tag": "div",
+        "text": "Rosa DelgadoAda BasseyMarco FerreiraGiaAda BasseyGiaMarco F…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_email",
+        "tag": "div",
+        "text": "Email",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_facebook",
+        "tag": "div",
+        "text": "Facebook",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_instagram",
+        "tag": "div",
+        "text": "Instagram",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_linkedin",
+        "tag": "div",
+        "text": "LinkedIn",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_phone",
+        "tag": "div",
+        "text": "Phone",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_post_id",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_post_title",
+        "tag": "div",
+        "text": "Name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_title",
+        "tag": "div",
+        "text": "Title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_twitter",
+        "tag": "div",
+        "text": "X (Twitter)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_website",
+        "tag": "div",
+        "text": "Website",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_youtube",
+        "tag": "div",
+        "text": "YouTube",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_venue_address_1",
+        "tag": "div",
+        "text": "Address",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_venue_address_2",
+        "tag": "div",
+        "text": "Address 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_venue_city",
+        "tag": "div",
+        "text": "City",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_venue_country",
+        "tag": "div",
+        "text": "Country Select a Country Afghanistan Åland Islands Albania …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_venue_id",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_venue_phone",
+        "tag": "div",
+        "text": "Phone",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_venue_postal_code",
+        "tag": "div",
+        "text": "Postal Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_venue_state",
+        "tag": "div",
+        "text": "State/Province",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_venue_title",
+        "tag": "div",
+        "text": "Venue Name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_venue_website",
+        "tag": "div",
+        "text": "Website",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-venue",
+        "tag": "div",
+        "text": "Gia’s Studio — Main Hall Riverside Market SquareGia's Studi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#taxonomy-sc_event_category",
+        "tag": "div",
+        "text": "Classes Community Market My Calendar Private Hire Workshops…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Hana Sato Edit|Send Confirmation Email|Trash hana.sato@exam…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#timestamp",
+        "tag": "span",
+        "text": "Published on: Sep 19, 2026 at 14:10",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#timestampdiv",
+        "tag": "fieldset",
+        "text": "Date and time Month 01-Jan 02-Feb 03-Mar 04-Apr 05-May 06-J…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#title-prompt-text",
+        "tag": "label",
+        "text": "Name this event",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#titlediv",
+        "tag": "div",
+        "text": "Name this event Permalink: http://example.com/events/toddle…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#titlewrap",
+        "tag": "div",
+        "text": "Name this event",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ui-datepicker-div",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#venue-add-new",
+        "tag": "span",
+        "text": "Add New Venue",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#venue-edit-open",
+        "tag": "span",
+        "text": "Edit Venue",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-post_content-editor-container",
+        "tag": "div",
+        "text": "Toddler Sensory Play is a calm hour for children under four…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-post_content-editor-tools",
+        "tag": "div",
+        "text": "Add MediaAdd Sugar Calendar Visual Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-post_content-media-buttons",
+        "tag": "div",
+        "text": "Add MediaAdd Sugar Calendar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-post_content-wrap",
+        "tag": "div",
+        "text": "Add MediaAdd Sugar Calendar Visual Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-choose-snippets",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-chooser-spinner",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-snippets",
+        "tag": "div",
+        "text": "WPCode Page Scripts Move up Move down Show or hide panel",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-metabox-snippets-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-snippets-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-snippets-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-snippets-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-snippets-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-snippets-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-snippets-title",
+        "tag": "h2",
+        "text": "WPCode Page Scripts",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-picked-snippets",
+        "tag": "div",
+        "text": "Show site currency Page location Insert After Post Banner A…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-snippet-chooser",
+        "tag": "div",
+        "text": "Select snippets Load more snippets",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "beginnerceramicscommunityeveningfreeholidayoutdoorprintmaki…",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-field-label",
+        "tag": "span",
+        "text": "Registration Form",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-settings-field",
+        "tag": "div",
+        "text": "Registration FormOffCollect additional details from your at…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-content",
+        "tag": "div",
+        "text": "Select what you would like to insert Events Calendar Events…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-field",
+        "tag": "div",
+        "text": "Display events from all calendars",
+        "count": 21,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-field-label",
+        "tag": "label",
+        "text": "Display events from all calendars",
+        "count": 21,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-field-options",
+        "tag": "div",
+        "text": "Display Month Week Day",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-option",
+        "tag": "label",
+        "text": "Events Calendar",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-options",
+        "tag": "div",
+        "text": "Events Calendar Events List",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-metabox__field-row",
+        "tag": "div",
+        "text": "All Day NO",
+        "count": 42,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-setting-field",
+        "tag": "span",
+        "text": "Gia’s Studio — Main Hall Riverside Market SquareGia's Studi…",
+        "count": 23,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-setting-label",
+        "tag": "span",
+        "text": "Venue Name",
+        "count": 19,
+        "hidden": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,258 @@
+{
+  "slug": "admin-addons",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "flyout-menu",
+      "event": "click",
+      "selector": "a.sc-flyout-button.sc-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-menu",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-item-1",
+        "tag": "a",
+        "text": "Join Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-addons-link",
+        "tag": "a",
+        "text": "Refresh Addons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-toggle-control",
+        "tag": "span",
+        "text": "ACTIVATED",
+        "count": 3,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#sugar-calendar-addons-toggle-sc-event-ticketing",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-addons-toggle-sc-rsvp",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-addons-toggle-sc-zapier",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#sugar-calendar-addons-list-section-all",
+        "tag": "div",
+        "text": "All Addons Zapier The Zapier add-on connects Sugar Calendar…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-addons-list-section-installed",
+        "tag": "div",
+        "text": "Activated Addons Event Ticketing The Event Ticketing add-on…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-addons",
+        "tag": "div",
+        "text": "Addons Activated Addons Event Ticketing The Event Ticketing…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-admin-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-addons-list-item-footer-actions",
+        "tag": "div",
+        "text": "ACTIVATED",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-addons-list-item-footer-active",
+        "tag": "div",
+        "text": "ACTIVATED",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-addons-list-item-header",
+        "tag": "div",
+        "text": "Event Ticketing The Event Ticketing add-on allows you to se…",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-admin-content",
+        "tag": "div",
+        "text": "Addons Activated Addons Event Ticketing The Event Ticketing…",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

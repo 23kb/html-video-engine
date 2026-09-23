@@ -1,0 +1,429 @@
+{
+  "slug": "frontend-calendar-workshops",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "block-popover-toggle",
+      "event": "click",
+      "selector": ".sugar-calendar-block__controls__settings__btn",
+      "count": 2
+    },
+    {
+      "label": "block-filter-accordion",
+      "event": "click",
+      "selector": "div.sugar-calendar-block__popover__calendar_selector__container__days",
+      "count": 5
+    },
+    {
+      "label": "block-filter-indicators",
+      "event": "change",
+      "selector": "#sc-day-sc-code-1-Sunday",
+      "count": 25
+    },
+    {
+      "label": "block-display-mode",
+      "event": "click",
+      "selector": ".sugar-calendar-block__popover__display_selector__container__body__option[data-mode]",
+      "count": 3
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": ".sc-filter-toggle-row",
+        "tag": "div",
+        "text": "Featured Only",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-filter-toggle-row-label",
+        "tag": "label",
+        "text": "Featured Only",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-filters-apply",
+        "tag": "button",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-filters-clear",
+        "tag": "button",
+        "text": "Clear All",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-toggle",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-block__controls__right__view__btn",
+        "tag": "button",
+        "text": "List",
+        "count": 1,
+        "hidden": false,
+        "wired": "block-popover-toggle",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#sc-day-sc-code-1-Friday",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-day-sc-code-1-Monday",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-day-sc-code-1-Saturday",
+        "tag": "input",
+        "text": "6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-day-sc-code-1-Sunday",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-day-sc-code-1-Thursday",
+        "tag": "input",
+        "text": "4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-day-sc-code-1-Tuesday",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-day-sc-code-1-Wednesday",
+        "tag": "input",
+        "text": "3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-featured-only-sc-code-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-speaker-sc-code-1-2028",
+        "tag": "input",
+        "text": "2028",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-speaker-sc-code-1-2029",
+        "tag": "input",
+        "text": "2029",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-speaker-sc-code-1-2030",
+        "tag": "input",
+        "text": "2030",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-speaker-sc-code-1-2031",
+        "tag": "input",
+        "text": "2031",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-tag-sc-code-1-19",
+        "tag": "input",
+        "text": "19",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-tag-sc-code-1-20",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-tag-sc-code-1-21",
+        "tag": "input",
+        "text": "21",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-tag-sc-code-1-22",
+        "tag": "input",
+        "text": "22",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-tag-sc-code-1-23",
+        "tag": "input",
+        "text": "23",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-tag-sc-code-1-24",
+        "tag": "input",
+        "text": "24",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-venue-sc-code-1-2025",
+        "tag": "input",
+        "text": "2025",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-venue-sc-code-1-2026",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-venue-sc-code-1-2027",
+        "tag": "input",
+        "text": "2027",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tod-sc-code-1-afternoon",
+        "tag": "input",
+        "text": "afternoon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tod-sc-code-1-all_day",
+        "tag": "input",
+        "text": "all_day",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tod-sc-code-1-evening",
+        "tag": "input",
+        "text": "evening",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tod-sc-code-1-morning",
+        "tag": "input",
+        "text": "morning",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tod-sc-code-1-night",
+        "tag": "input",
+        "text": "night",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#content-area",
+        "tag": "div",
+        "text": "Workshops List MON 21 Open Studio Night September 21, 2026 …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#divi-dynamic-critical-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#divi-style-inline-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#et-boc",
+        "tag": "div",
+        "text": "Workshops List MON 21 Open Studio Night September 21, 2026 …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#et-critical-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#et-main-area",
+        "tag": "div",
+        "text": "Workshops List MON 21 Open Studio Night September 21, 2026 …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#left-area",
+        "tag": "div",
+        "text": "Workshops List MON 21 Open Studio Night September 21, 2026 …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-content",
+        "tag": "div",
+        "text": "Workshops List MON 21 Open Studio Night September 21, 2026 …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#page-container",
+        "tag": "div",
+        "text": "Workshops List MON 21 Open Studio Night September 21, 2026 …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-7575000",
+        "tag": "article",
+        "text": "Workshops List MON 21 Open Studio Night September 21, 2026 …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-code-1",
+        "tag": "div",
+        "text": "List MON 21 Open Studio Night September 21, 2026 at 6:00 pm…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-block-group-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-heading-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-latest-comments-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-latest-posts-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-library-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-search-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpf-frontend-canonical",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-block__base-container",
+        "tag": "div",
+        "text": "MON 21 Open Studio Night September 21, 2026 at 6:00 pm - 9:…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-block__events-display-container",
+        "tag": "div",
+        "text": "MON 21 Open Studio Night September 21, 2026 at 6:00 pm - 9:…",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

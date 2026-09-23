@@ -1,0 +1,5723 @@
+{
+ "product": "sugar-calendar",
+ "generatedAt": "2026-09-20T10:56:52.292Z",
+ "count": 481,
+ "snapshots": [
+  {
+   "slug": "admin-addons",
+   "category": "admin/page",
+   "shows": "Addons: Sugar Calendar addon cards with Activated badges",
+   "topics": [
+    "addons"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-addons"
+  },
+  {
+   "slug": "admin-calendar-edit-classes",
+   "category": "admin/page",
+   "shows": "Edit Calendar (Classes): name, slug, parent, description, colour and the calendar’s feed links",
+   "topics": [
+    "calendars",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-calendar-edit&calendar_id=15&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_category%26post_type%3Dsc_event"
+  },
+  {
+   "slug": "admin-calendar-edit-classes--color-open",
+   "category": "admin/page",
+   "shows": "Edit Calendar (Classes) with the colour picker open",
+   "topics": [
+    "calendars",
+    "edit",
+    "color-picker"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-calendar-edit&calendar_id=15&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_category%26post_type%3Dsc_event"
+  },
+  {
+   "slug": "admin-calendar-edit-community-market",
+   "category": "admin/page",
+   "shows": "Edit Calendar (Community Market): name, slug, parent, description, colour and the calendar’s feed links",
+   "topics": [
+    "calendars",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-calendar-edit&calendar_id=17&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_category%26post_type%3Dsc_event"
+  },
+  {
+   "slug": "admin-calendar-edit-my-calendar",
+   "category": "admin/page",
+   "shows": "Edit Calendar (My Calendar (the plugin’s default calendar, not seeded)): name, slug, parent, description, colour and the calendar’s feed links",
+   "topics": [
+    "calendars",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-calendar-edit&calendar_id=14&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_category%26post_type%3Dsc_event"
+  },
+  {
+   "slug": "admin-calendar-edit-private-hire",
+   "category": "admin/page",
+   "shows": "Edit Calendar (Private Hire): name, slug, parent, description, colour and the calendar’s feed links",
+   "topics": [
+    "calendars",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-calendar-edit&calendar_id=18&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_category%26post_type%3Dsc_event"
+  },
+  {
+   "slug": "admin-calendar-edit-workshops",
+   "category": "admin/page",
+   "shows": "Edit Calendar (Workshops): name, slug, parent, description, colour and the calendar’s feed links",
+   "topics": [
+    "calendars",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-calendar-edit&calendar_id=16&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_category%26post_type%3Dsc_event"
+  },
+  {
+   "slug": "admin-calendar-new",
+   "category": "admin/page",
+   "shows": "Add New Calendar form: name, slug, parent calendar, description and colour",
+   "topics": [
+    "calendars",
+    "new",
+    "form"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-calendar-new"
+  },
+  {
+   "slug": "admin-calendar-new--color-open",
+   "category": "admin/page",
+   "shows": "Add New Calendar form with the colour picker open",
+   "topics": [
+    "calendars",
+    "new",
+    "color-picker"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-calendar-new"
+  },
+  {
+   "slug": "admin-calendars",
+   "category": "admin/page",
+   "shows": "Calendars list: five calendars with colours, descriptions and event counts",
+   "topics": [
+    "calendars",
+    "taxonomy",
+    "colors"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_category&post_type=sc_event"
+  },
+  {
+   "slug": "admin-calendars--cog-open",
+   "category": "admin/page",
+   "shows": "Calendars list with the screen-options cog open: column toggles and items per page",
+   "topics": [
+    "calendars",
+    "screen-options"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_category&post_type=sc_event"
+  },
+  {
+   "slug": "admin-calendars--feeds-open",
+   "category": "admin/page",
+   "shows": "Calendars list with the Classes row’s Feeds panel open: Google, Microsoft, Apple, webcal, direct and download links",
+   "topics": [
+    "calendars",
+    "feeds"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_category&post_type=sc_event"
+  },
+  {
+   "slug": "admin-calendars--sort-color",
+   "category": "admin/page",
+   "shows": "Calendars list sorted by colour",
+   "topics": [
+    "calendars",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_category&post_type=sc_event&orderby=color&order=asc"
+  },
+  {
+   "slug": "admin-calendars--sort-color-desc",
+   "category": "admin/page",
+   "shows": "Calendars list sorted by color (descending)",
+   "topics": [
+    "calendars",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_category&post_type=sc_event&orderby=color&order=desc"
+  },
+  {
+   "slug": "admin-calendars--sort-description",
+   "category": "admin/page",
+   "shows": "Calendars list sorted by description",
+   "topics": [
+    "calendars",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_category&post_type=sc_event&orderby=description&order=asc"
+  },
+  {
+   "slug": "admin-calendars--sort-description-desc",
+   "category": "admin/page",
+   "shows": "Calendars list sorted by description (descending)",
+   "topics": [
+    "calendars",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_category&post_type=sc_event&orderby=description&order=desc"
+  },
+  {
+   "slug": "admin-calendars--sort-name",
+   "category": "admin/page",
+   "shows": "Calendars list sorted by name (descending)",
+   "topics": [
+    "calendars",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_category&post_type=sc_event&orderby=name&order=desc"
+  },
+  {
+   "slug": "admin-calendars--sort-name-asc",
+   "category": "admin/page",
+   "shows": "Calendars list sorted by name (ascending)",
+   "topics": [
+    "calendars",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_category&post_type=sc_event&orderby=name&order=asc"
+  },
+  {
+   "slug": "admin-calendars--sort-slug",
+   "category": "admin/page",
+   "shows": "Calendars list sorted by slug",
+   "topics": [
+    "calendars",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_category&post_type=sc_event&orderby=slug&order=asc"
+  },
+  {
+   "slug": "admin-calendars--sort-slug-desc",
+   "category": "admin/page",
+   "shows": "Calendars list sorted by slug (descending)",
+   "topics": [
+    "calendars",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_category&post_type=sc_event&orderby=slug&order=desc"
+  },
+  {
+   "slug": "admin-event-edit",
+   "category": "admin/page",
+   "shows": "Edit Event (Photography Bootcamp): populated editor, Event Details metabox on the General pane, Calendars and Tags boxes",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2048&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--general",
+   "category": "admin/page",
+   "shows": "Edit Event (Morning Yoga Flow), General pane: start and end date and time, All Day off",
+   "topics": [
+    "event",
+    "editor",
+    "date",
+    "time"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2032&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--general-allday",
+   "category": "admin/page",
+   "shows": "Edit Event (Studio Closed — Staff Training), General pane with All Day on: the time fields are hidden",
+   "topics": [
+    "event",
+    "editor",
+    "all-day"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2037&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--general-datepicker",
+   "category": "admin/page",
+   "shows": "Edit Event, General pane with the start-date picker open on September 2026",
+   "topics": [
+    "event",
+    "editor",
+    "datepicker"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2032&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--location",
+   "category": "admin/page",
+   "shows": "Edit Event (Morning Yoga Flow), Location pane: venue Gia's Studio — Main Hall selected, online event off",
+   "topics": [
+    "event",
+    "editor",
+    "venue",
+    "location"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2032&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--location-none",
+   "category": "admin/page",
+   "shows": "Edit Event (Studio Closed — Staff Training), Location pane with no venue chosen",
+   "topics": [
+    "event",
+    "editor",
+    "venue",
+    "location"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2037&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--location-online",
+   "category": "admin/page",
+   "shows": "Edit Event (Virtual Watercolour Class), Location pane: online event with a custom link",
+   "topics": [
+    "event",
+    "editor",
+    "online",
+    "location"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2040&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--location-venue-open",
+   "category": "admin/page",
+   "shows": "Edit Event, Location pane with the venue dropdown open: the three venues",
+   "topics": [
+    "event",
+    "editor",
+    "venue",
+    "dropdown"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2032&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--location-zoom",
+   "category": "admin/page",
+   "shows": "Edit Event, Location pane with the online provider switched to Zoom (not saved): Zoom is not connected on this site",
+   "topics": [
+    "event",
+    "editor",
+    "online",
+    "zoom"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2040&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--recurrence",
+   "category": "admin/page",
+   "shows": "Edit Event (Community Market), Recurrence pane: repeats weekly, with day-of-week checkboxes and the end rule",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "weekly"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2034&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--recurrence-daily",
+   "category": "admin/page",
+   "shows": "Edit Event (Morning Yoga Flow), Recurrence pane with Repeat switched to Daily (not saved): every-N-days and end rule",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "daily"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2032&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--recurrence-monthly",
+   "category": "admin/page",
+   "shows": "Edit Event (Monthly Book Club), Recurrence pane: repeats monthly, by day of month or nth weekday",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "monthly"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2035&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--recurrence-none",
+   "category": "admin/page",
+   "shows": "Edit Event (Morning Yoga Flow), Recurrence pane: Repeat set to Never",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2032&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--recurrence-yearly",
+   "category": "admin/page",
+   "shows": "Edit Event (Annual Winter Fair), Recurrence pane: repeats yearly",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "yearly"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2036&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--rsvp",
+   "category": "admin/page",
+   "shows": "Edit Event (Morning Yoga Flow), RSVP pane with RSVP off",
+   "topics": [
+    "event",
+    "editor",
+    "rsvp"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2032&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--rsvp-on",
+   "category": "admin/page",
+   "shows": "Edit Event (Kids Craft Party), RSVP pane: RSVP on, capacity limit, extra attendees, attendee list, Not Going allowed",
+   "topics": [
+    "event",
+    "editor",
+    "rsvp",
+    "capacity"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2046&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--rsvp-on--notify-open",
+   "category": "admin/page",
+   "shows": "Edit Event (Kids Craft Party), RSVP pane with the Notify Attendees sidebar opened from it: the event is preselected in the picker",
+   "topics": [
+    "event",
+    "editor",
+    "rsvp",
+    "notify-attendees",
+    "emails"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2046&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--tickets",
+   "category": "admin/page",
+   "shows": "Edit Event (Morning Yoga Flow), Tickets pane with tickets off",
+   "topics": [
+    "event",
+    "editor",
+    "tickets"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2032&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--tickets-multi-type",
+   "category": "admin/page",
+   "shows": "Edit Event (Photography Bootcamp), Tickets pane: three ticket types (Early Bird, Standard, Pair)",
+   "topics": [
+    "event",
+    "editor",
+    "tickets",
+    "ticket-types"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2048&action=edit"
+  },
+  {
+   "slug": "admin-event-edit--tickets-on",
+   "category": "admin/page",
+   "shows": "Edit Event (Paint and Sip Night), Tickets pane: tickets on, one paid ticket type ($45), and the no-payment-method notice",
+   "topics": [
+    "event",
+    "editor",
+    "tickets",
+    "stripe"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2047&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-01-morning-yoga-flow",
+   "category": "admin/page",
+   "shows": "Edit Event (Morning Yoga Flow): an ordinary timed event with a venue and a speaker, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2032&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-02-wheel-throwing",
+   "category": "admin/page",
+   "shows": "Edit Event (Wheel-Throwing Masterclass): a long single-day event (09:00–15:00), Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2033&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-03-community-market",
+   "category": "admin/page",
+   "shows": "Edit Event (Community Market): a weekly recurring event, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2034&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-04-book-club",
+   "category": "admin/page",
+   "shows": "Edit Event (Monthly Book Club): a monthly recurring event, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2035&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-05-winter-fair",
+   "category": "admin/page",
+   "shows": "Edit Event (Annual Winter Fair): a yearly recurring event, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2036&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-06-staff-training",
+   "category": "admin/page",
+   "shows": "Edit Event (Studio Closed — Staff Training): an all-day event, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2037&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-07-riverside-arts-festival",
+   "category": "admin/page",
+   "shows": "Edit Event (Riverside Arts Festival): an all-day event over three days, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2038&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-08-open-mic",
+   "category": "admin/page",
+   "shows": "Edit Event (Late-Night Open Mic): an event that crosses midnight, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2039&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-09-virtual-watercolour",
+   "category": "admin/page",
+   "shows": "Edit Event (Virtual Watercolour Class): an online event, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2040&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-10-sound-bath",
+   "category": "admin/page",
+   "shows": "Edit Event (Sound Bath and Meditation): an event with tags, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2041&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-11-pottery-taster",
+   "category": "admin/page",
+   "shows": "Edit Event (Pottery Taster): an Open Studio Day event, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2042&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-12-kids-craft-hour",
+   "category": "admin/page",
+   "shows": "Edit Event (Kids Craft Hour): an Open Studio Day event, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2043&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-13-life-drawing",
+   "category": "admin/page",
+   "shows": "Edit Event (Life Drawing): an Open Studio Day event, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2044&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-14-evening-yoga",
+   "category": "admin/page",
+   "shows": "Edit Event (Evening Yoga): an Open Studio Day event, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2045&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-15-kids-craft-party",
+   "category": "admin/page",
+   "shows": "Edit Event (Kids Craft Party): an event with RSVP on, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2046&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-16-paint-and-sip",
+   "category": "admin/page",
+   "shows": "Edit Event (Paint and Sip Night): a ticketed event, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2047&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-16-paint-and-sip--tickets-add-another",
+   "category": "admin/page",
+   "shows": "Edit Event (Paint and Sip Night), Tickets tab, after Add Another Ticket: a second, empty ticket type row",
+   "topics": [
+    "event",
+    "editor",
+    "tickets"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2047&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-18-jazz-supper-club",
+   "category": "admin/page",
+   "shows": "Edit Event (Jazz Supper Club): a ticketed event with a registration form, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2049&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-18-jazz-supper-club--regform",
+   "category": "admin/page",
+   "shows": "Edit Event (Jazz Supper Club), Registration Form tab: three questions",
+   "topics": [
+    "event",
+    "editor",
+    "registration-form"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2049&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-18-jazz-supper-club--regform-show-after",
+   "category": "admin/page",
+   "shows": "Edit Event (Jazz Supper Club), Registration Form tab with When to fill the form set to After Checkout: Edit after submission is enabled and its helper changes",
+   "topics": [
+    "events",
+    "registration-form",
+    "settings"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2049&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-19-pop-up-makers-market",
+   "category": "admin/page",
+   "shows": "Edit Event (Pop-Up Makers Market): a featured event, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2050&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-20-garden-social",
+   "category": "admin/page",
+   "shows": "Edit Event (Summer Garden Social): a draft event, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2051&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-22-birthday",
+   "category": "admin/page",
+   "shows": "Edit Event (Gia’s Birthday): an all-day yearly event; its edit link opens the occurrence editor, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2053&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-23-open-studio-night",
+   "category": "admin/page",
+   "shows": "Edit Event (Open Studio Night): a free ticketed event, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2094&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-24-screen-printing-basics",
+   "category": "admin/page",
+   "shows": "Edit Event (Screen Printing Basics): a morning workshop, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2138&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-25-repair-cafe",
+   "category": "admin/page",
+   "shows": "Edit Event (Repair Café): a free community event with RSVP on, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2139&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-26-candle-making",
+   "category": "admin/page",
+   "shows": "Edit Event (Candle Making Workshop): a ticketed evening workshop, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2140&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-27-toddler-sensory-play",
+   "category": "admin/page",
+   "shows": "Edit Event (Toddler Sensory Play): a small class with RSVP on, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2141&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-28-weaving-course",
+   "category": "admin/page",
+   "shows": "Edit Event (Two-Day Weaving Course): a timed event over two days, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2142&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-29-artist-talk",
+   "category": "admin/page",
+   "shows": "Edit Event (Artist Talk: Clay and Colour): a talk with RSVP on and a speaker, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2143&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-30-private-birthday-party",
+   "category": "admin/page",
+   "shows": "Edit Event (Private Hire: Birthday Party): a Private Hire booking, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2144&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-31-lantern-walk",
+   "category": "admin/page",
+   "shows": "Edit Event (Lantern Walk): an outdoor family event with RSVP on, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2145&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-32-bookbinding",
+   "category": "admin/page",
+   "shows": "Edit Event (Intro to Bookbinding): an evening workshop, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2146&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-33-yoga-retreat-day",
+   "category": "admin/page",
+   "shows": "Edit Event (Yoga Retreat Day): a full-day class with a speaker, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2147&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-34-art-camp",
+   "category": "admin/page",
+   "shows": "Edit Event (Four-Day Art Camp): a timed event over four days, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2148&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-35-seconds-sale",
+   "category": "admin/page",
+   "shows": "Edit Event (Ceramics Seconds Sale): a market-calendar sale, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2149&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-36-drop-in-drawing-club",
+   "category": "admin/page",
+   "shows": "Edit Event (Drop-in Drawing Club): an evening club with RSVP on, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2150&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-37-members-show",
+   "category": "admin/page",
+   "shows": "Edit Event (Members’ Show): an all-day event over ten days, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2151&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-38-linocut-cards",
+   "category": "admin/page",
+   "shows": "Edit Event (Linocut Greeting Cards): a morning workshop, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2152&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-39-poetry-evening",
+   "category": "admin/page",
+   "shows": "Edit Event (Poetry and Tea Evening): an evening with a speaker, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2153&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-40-clay-club",
+   "category": "admin/page",
+   "shows": "Edit Event (Clay Club): a weekly recurring event, Event Details metabox on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2154&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-01",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Community Market, 5 August 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=25&post=8000025&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-02",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Community Market, 12 August 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=26&post=8000026&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-03",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Community Market, 19 August 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=27&post=8000027&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-04",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Community Market, 26 August 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=28&post=8000028&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-05",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Monthly Book Club, 1 September 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=37&post=8000037&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-06",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Community Market, 2 September 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=29&post=8000029&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-07",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Clay Club, 6 September 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=49&post=8000049&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-08",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Gia's Birthday, 8 September 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=46&post=8000046&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-09",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Community Market, 9 September 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=30&post=8000030&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-10",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Clay Club, 13 September 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=50&post=8000050&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-11",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Community Market, 16 September 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=31&post=8000031&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-12",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Clay Club, 20 September 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=51&post=8000051&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-13",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Community Market, 23 September 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=32&post=8000032&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-14",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Clay Club, 27 September 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=52&post=8000052&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-15",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Community Market, 30 September 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=33&post=8000033&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-16",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Monthly Book Club, 1 October 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=38&post=8000038&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-17",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Clay Club, 4 October 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=53&post=8000053&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-18",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Community Market, 7 October 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=34&post=8000034&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-19",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Clay Club, 11 October 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=54&post=8000054&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-20",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Community Market, 14 October 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=35&post=8000035&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-21",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Clay Club, 18 October 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=55&post=8000055&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-22",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Community Market, 21 October 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=36&post=8000036&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-23",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Clay Club, 25 October 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=56&post=8000056&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-24",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Annual Winter Fair, 28 October 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=43&post=8000043&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-25",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Monthly Book Club, 1 November 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=39&post=8000039&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-26",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Monthly Book Club, 1 December 2026), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=40&post=8000040&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-27",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Monthly Book Club, 1 January 2027), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=41&post=8000041&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-28",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Monthly Book Club, 1 February 2027), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=42&post=8000042&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-29",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Gia's Birthday, 8 September 2027), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=47&post=8000047&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-30",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Annual Winter Fair, 28 October 2027), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=44&post=8000044&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-31",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Gia's Birthday, 8 September 2028), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=48&post=8000048&action=edit"
+  },
+  {
+   "slug": "admin-event-edit-occurrence-32",
+   "category": "admin/page",
+   "shows": "Edit Event, one occurrence of a recurring event (Annual Winter Fair, 28 October 2028), on the General pane",
+   "topics": [
+    "event",
+    "editor",
+    "recurrence",
+    "occurrence"
+   ],
+   "sourcePath": "/wp-admin/post.php?sc-occurrence=45&post=8000045&action=edit"
+  },
+  {
+   "slug": "admin-event-new",
+   "category": "admin/page",
+   "shows": "Add New Event: blank classic editor with the Sugar Calendar Event Details metabox, General pane selected",
+   "topics": [
+    "event",
+    "editor",
+    "new"
+   ],
+   "sourcePath": "/wp-admin/post-new.php?post_type=sc_event"
+  },
+  {
+   "slug": "admin-event-new--regform-on",
+   "category": "admin/page",
+   "shows": "Add New Event, Registration Form tab, turned on: a first text question and the form settings",
+   "topics": [
+    "event",
+    "editor",
+    "registration-form"
+   ],
+   "sourcePath": "/wp-admin/post-new.php?post_type=sc_event"
+  },
+  {
+   "slug": "admin-events--day",
+   "category": "admin/page",
+   "shows": "Events > Day view, 15 September 2026: four Open Studio Day events on the time grid",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=15"
+  },
+  {
+   "slug": "admin-events--day-01",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 1 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=01"
+  },
+  {
+   "slug": "admin-events--day-02",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 2 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=02"
+  },
+  {
+   "slug": "admin-events--day-03",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 3 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=03"
+  },
+  {
+   "slug": "admin-events--day-04",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 4 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=04"
+  },
+  {
+   "slug": "admin-events--day-05",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 5 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=05"
+  },
+  {
+   "slug": "admin-events--day-06",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 6 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=06"
+  },
+  {
+   "slug": "admin-events--day-07",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 7 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=07"
+  },
+  {
+   "slug": "admin-events--day-08",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 8 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=08"
+  },
+  {
+   "slug": "admin-events--day-09",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 9 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=09"
+  },
+  {
+   "slug": "admin-events--day-10",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 10 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=10"
+  },
+  {
+   "slug": "admin-events--day-11",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 11 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=11"
+  },
+  {
+   "slug": "admin-events--day-12",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 12 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=12"
+  },
+  {
+   "slug": "admin-events--day-13",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 13 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=13"
+  },
+  {
+   "slug": "admin-events--day-14",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 14 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=14"
+  },
+  {
+   "slug": "admin-events--day-15",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 15 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=15"
+  },
+  {
+   "slug": "admin-events--day-16",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 16 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=16"
+  },
+  {
+   "slug": "admin-events--day-17",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 17 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=17"
+  },
+  {
+   "slug": "admin-events--day-18",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 18 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=18"
+  },
+  {
+   "slug": "admin-events--day-19",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 19 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=19"
+  },
+  {
+   "slug": "admin-events--day-20",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 20 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=20"
+  },
+  {
+   "slug": "admin-events--day-21",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 21 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=21"
+  },
+  {
+   "slug": "admin-events--day-22",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 22 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=22"
+  },
+  {
+   "slug": "admin-events--day-23",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 23 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=23"
+  },
+  {
+   "slug": "admin-events--day-24",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 24 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=24"
+  },
+  {
+   "slug": "admin-events--day-25",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 25 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=25"
+  },
+  {
+   "slug": "admin-events--day-26",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 26 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=26"
+  },
+  {
+   "slug": "admin-events--day-27",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 27 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=27"
+  },
+  {
+   "slug": "admin-events--day-28",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 28 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=28"
+  },
+  {
+   "slug": "admin-events--day-29",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 29 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=29"
+  },
+  {
+   "slug": "admin-events--day-30",
+   "category": "admin/page",
+   "shows": "Events > Day view, day 30 of September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=30"
+  },
+  {
+   "slug": "admin-events--day-featured",
+   "category": "admin/page",
+   "shows": "Events > Day view, 15 September 2026, Featured view",
+   "topics": [
+    "events",
+    "day-view",
+    "status"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=15&status=featured"
+  },
+  {
+   "slug": "admin-events--day-published",
+   "category": "admin/page",
+   "shows": "Events > Day view, 15 September 2026, Published view",
+   "topics": [
+    "events",
+    "day-view",
+    "status"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=day&cy=2026&cm=9&cd=15&status=publish"
+  },
+  {
+   "slug": "admin-events--filter-calendar-classes",
+   "category": "admin/page",
+   "shows": "Events filtered to the Classes calendar, in the saved month view of the current month",
+   "topics": [
+    "events",
+    "calendar",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&sc_event_category=classes"
+  },
+  {
+   "slug": "admin-events--filter-calendar-community-market",
+   "category": "admin/page",
+   "shows": "Events filtered to the Community Market calendar, in the saved month view of the current month",
+   "topics": [
+    "events",
+    "calendar",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&sc_event_category=community-market"
+  },
+  {
+   "slug": "admin-events--filter-calendar-my-calendar",
+   "category": "admin/page",
+   "shows": "Events filtered to the My Calendar calendar, in the saved month view of the current month",
+   "topics": [
+    "events",
+    "calendar",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&sc_event_category=my-calendar"
+  },
+  {
+   "slug": "admin-events--filter-calendar-private-hire",
+   "category": "admin/page",
+   "shows": "Events filtered to the Private Hire calendar, in the saved month view of the current month",
+   "topics": [
+    "events",
+    "calendar",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&sc_event_category=private-hire"
+  },
+  {
+   "slug": "admin-events--filter-calendar-workshops",
+   "category": "admin/page",
+   "shows": "Events filtered to the Workshops calendar, in the saved month view of the current month",
+   "topics": [
+    "events",
+    "calendar",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&sc_event_category=workshops"
+  },
+  {
+   "slug": "admin-events--list",
+   "category": "admin/page",
+   "shows": "Events > List view: every event with calendar, date and status columns; views All / Published / Draft / Trash / Featured",
+   "topics": [
+    "events",
+    "list-view",
+    "table"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cystart=2026&cy=2026&cm=9&cd=1"
+  },
+  {
+   "slug": "admin-events--list-calendar-classes",
+   "category": "admin/page",
+   "shows": "Events > List view filtered to the Classes calendar",
+   "topics": [
+    "events",
+    "list-view",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&sc_event_category=classes"
+  },
+  {
+   "slug": "admin-events--list-calendar-community-market",
+   "category": "admin/page",
+   "shows": "Events > List view filtered to the Community Market calendar",
+   "topics": [
+    "events",
+    "list-view",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&sc_event_category=community-market"
+  },
+  {
+   "slug": "admin-events--list-calendar-private-hire",
+   "category": "admin/page",
+   "shows": "Events > List view filtered to the Private Hire calendar",
+   "topics": [
+    "events",
+    "list-view",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&sc_event_category=private-hire"
+  },
+  {
+   "slug": "admin-events--list-calendar-workshops",
+   "category": "admin/page",
+   "shows": "Events > List view filtered to the Workshops calendar",
+   "topics": [
+    "events",
+    "list-view",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&sc_event_category=workshops"
+  },
+  {
+   "slug": "admin-events--list-draft",
+   "category": "admin/page",
+   "shows": "Events > List view, Draft view",
+   "topics": [
+    "events",
+    "list-view",
+    "status"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&status=draft"
+  },
+  {
+   "slug": "admin-events--list-featured",
+   "category": "admin/page",
+   "shows": "Events > List view, Featured view",
+   "topics": [
+    "events",
+    "list-view",
+    "status"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&status=featured"
+  },
+  {
+   "slug": "admin-events--list-published",
+   "category": "admin/page",
+   "shows": "Events > List view, Published view",
+   "topics": [
+    "events",
+    "list-view",
+    "status"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&status=publish"
+  },
+  {
+   "slug": "admin-events--list-sort-end",
+   "category": "admin/page",
+   "shows": "Events > List view sorted by end date",
+   "topics": [
+    "events",
+    "list-view",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&orderby=end&order=asc"
+  },
+  {
+   "slug": "admin-events--list-sort-start",
+   "category": "admin/page",
+   "shows": "Events > List view sorted by start date",
+   "topics": [
+    "events",
+    "list-view",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&orderby=start&order=asc"
+  },
+  {
+   "slug": "admin-events--list-sort-title",
+   "category": "admin/page",
+   "shows": "Events > List view sorted by title",
+   "topics": [
+    "events",
+    "list-view",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&orderby=title&order=asc"
+  },
+  {
+   "slug": "admin-events--list-tag-beginner",
+   "category": "admin/page",
+   "shows": "Events > List view filtered to the beginner tag",
+   "topics": [
+    "events",
+    "list-view",
+    "tags"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&sc_event_tags=21"
+  },
+  {
+   "slug": "admin-events--list-tag-holiday",
+   "category": "admin/page",
+   "shows": "Events > List view filtered to the holiday tag",
+   "topics": [
+    "events",
+    "list-view",
+    "tags"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&sc_event_tags=23"
+  },
+  {
+   "slug": "admin-events--list-tag-kids",
+   "category": "admin/page",
+   "shows": "Events > List view filtered to the kids tag",
+   "topics": [
+    "events",
+    "list-view",
+    "tags"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&sc_event_tags=20"
+  },
+  {
+   "slug": "admin-events--list-tag-outdoor",
+   "category": "admin/page",
+   "shows": "Events > List view filtered to the outdoor tag",
+   "topics": [
+    "events",
+    "list-view",
+    "tags"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&sc_event_tags=22"
+  },
+  {
+   "slug": "admin-events--list-tag-yoga",
+   "category": "admin/page",
+   "shows": "Events > List view filtered to the yoga tag",
+   "topics": [
+    "events",
+    "list-view",
+    "tags"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&sc_event_tags=19"
+  },
+  {
+   "slug": "admin-events--list-trash",
+   "category": "admin/page",
+   "shows": "Events > List view, Trash view",
+   "topics": [
+    "events",
+    "list-view",
+    "status"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2026&cm=9&cd=1&cystart=2026&status=trash"
+  },
+  {
+   "slug": "admin-events--list-year-minus-1",
+   "category": "admin/page",
+   "shows": "Events > List view after the year link to 2025",
+   "topics": [
+    "events",
+    "list-view",
+    "table"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2025&cm=9&cd=1&cystart=2026"
+  },
+  {
+   "slug": "admin-events--list-year-minus-10",
+   "category": "admin/page",
+   "shows": "Events > List view after the year link to 2016",
+   "topics": [
+    "events",
+    "list-view",
+    "table"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2016&cm=9&cd=1&cystart=2026"
+  },
+  {
+   "slug": "admin-events--list-year-plus-1",
+   "category": "admin/page",
+   "shows": "Events > List view after the year link to 2027",
+   "topics": [
+    "events",
+    "list-view",
+    "table"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2027&cm=9&cd=1&cystart=2026"
+  },
+  {
+   "slug": "admin-events--list-year-plus-10",
+   "category": "admin/page",
+   "shows": "Events > List view after the year link to 2036",
+   "topics": [
+    "events",
+    "list-view",
+    "table"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=list&cy=2036&cm=9&cd=1&cystart=2026"
+  },
+  {
+   "slug": "admin-events--month",
+   "category": "admin/page",
+   "shows": "Events > Month view, September 2026 (the current month, where the Events menu opens): colour-coded event entries across the month grid",
+   "topics": [
+    "events",
+    "calendar",
+    "month-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=month&cy=2026&cm=9&cd=1",
+   "navAliases": [
+    "admin.php?page=sugar-calendar",
+    "edit.php?post_type=sc_event"
+   ]
+  },
+  {
+   "slug": "admin-events--month-featured",
+   "category": "admin/page",
+   "shows": "Events > Month view, September 2026, Featured view: the one featured event",
+   "topics": [
+    "events",
+    "month-view",
+    "status"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=month&cy=2026&cm=9&cd=1&status=featured"
+  },
+  {
+   "slug": "admin-events--month-next",
+   "category": "admin/page",
+   "shows": "Events > Month view, October 2026 (the month after)",
+   "topics": [
+    "events",
+    "calendar",
+    "month-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=month&cy=2026&cm=10&cd=1"
+  },
+  {
+   "slug": "admin-events--month-next-year",
+   "category": "admin/page",
+   "shows": "Events > Month view, September 2027 (the same month a year after)",
+   "topics": [
+    "events",
+    "calendar",
+    "month-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=month&cy=2027&cm=9&cd=1"
+  },
+  {
+   "slug": "admin-events--month-notify-open",
+   "category": "admin/page",
+   "shows": "Events > Month with the Notify Attendees sidebar open (event picker, subject and message)",
+   "topics": [
+    "events",
+    "notify-attendees",
+    "emails"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=month&cy=2026&cm=9&cd=1"
+  },
+  {
+   "slug": "admin-events--month-popover",
+   "category": "admin/page",
+   "shows": "Events > Month view, September 2026, with the Pottery Taster popover open over its day cell",
+   "topics": [
+    "events",
+    "month-view",
+    "popover"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=month&cy=2026&cm=9&cd=1"
+  },
+  {
+   "slug": "admin-events--month-prev",
+   "category": "admin/page",
+   "shows": "Events > Month view, August 2026 (the month before)",
+   "topics": [
+    "events",
+    "calendar",
+    "month-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=month&cy=2026&cm=8&cd=1"
+  },
+  {
+   "slug": "admin-events--month-prev-year",
+   "category": "admin/page",
+   "shows": "Events > Month view, September 2025 (the same month a year before)",
+   "topics": [
+    "events",
+    "calendar",
+    "month-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=month&cy=2025&cm=9&cd=1"
+  },
+  {
+   "slug": "admin-events--month-published",
+   "category": "admin/page",
+   "shows": "Events > Month view, September 2026, Published view",
+   "topics": [
+    "events",
+    "month-view",
+    "status"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=month&cy=2026&cm=9&cd=1&status=publish"
+  },
+  {
+   "slug": "admin-events--week",
+   "category": "admin/page",
+   "shows": "Events > Week view, 14–20 September 2026: time grid with the four Open Studio Day events on 15 September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "week-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=week&cy=2026&cm=9&cd=15"
+  },
+  {
+   "slug": "admin-events--week-01",
+   "category": "admin/page",
+   "shows": "Events > Week view, 31 August – 6 September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "week-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=week&cy=2026&cm=8&cd=31"
+  },
+  {
+   "slug": "admin-events--week-02",
+   "category": "admin/page",
+   "shows": "Events > Week view, 7–13 September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "week-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=week&cy=2026&cm=9&cd=7"
+  },
+  {
+   "slug": "admin-events--week-03",
+   "category": "admin/page",
+   "shows": "Events > Week view, 21–27 September 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "week-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=week&cy=2026&cm=9&cd=21"
+  },
+  {
+   "slug": "admin-events--week-04",
+   "category": "admin/page",
+   "shows": "Events > Week view, 28 September – 4 October 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "week-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=week&cy=2026&cm=9&cd=28"
+  },
+  {
+   "slug": "admin-events--week-05",
+   "category": "admin/page",
+   "shows": "Events > Week view, 5–11 October 2026",
+   "topics": [
+    "events",
+    "calendar",
+    "week-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=week&cy=2026&cm=10&cd=5"
+  },
+  {
+   "slug": "admin-events--week-06",
+   "category": "admin/page",
+   "shows": "Events > Week view, 27 July – 2 August 2026, opened on Saturday 1 August (the Friday–Sunday screen)",
+   "topics": [
+    "events",
+    "calendar",
+    "week-view"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=week&cy=2026&cm=8&cd=1"
+  },
+  {
+   "slug": "admin-events--week-featured",
+   "category": "admin/page",
+   "shows": "Events > Week view, 14–20 September 2026, Featured view",
+   "topics": [
+    "events",
+    "week-view",
+    "status"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=week&cy=2026&cm=9&cd=15&status=featured"
+  },
+  {
+   "slug": "admin-events--week-published",
+   "category": "admin/page",
+   "shows": "Events > Week view, 14–20 September 2026, Published view",
+   "topics": [
+    "events",
+    "week-view",
+    "status"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar&mode=week&cy=2026&cm=9&cd=15&status=publish"
+  },
+  {
+   "slug": "admin-order-01",
+   "category": "admin/page",
+   "shows": "Order #1 (Nora Whitfield, paid) for Paint and Sip Night: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=1",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=1"
+   ]
+  },
+  {
+   "slug": "admin-order-01--notice-receipt-resent",
+   "category": "admin/page",
+   "shows": "Order #1 with the plugin’s success notice after Resend Email Receipt: \"Receipt successfully resent.\"",
+   "topics": [
+    "tickets",
+    "orders",
+    "notice"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=1&sc-notice-id=email-resend&sc-notice-type=updated"
+  },
+  {
+   "slug": "admin-order-02",
+   "category": "admin/page",
+   "shows": "Order #2 (Tomas Berg, paid) for Paint and Sip Night: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=2",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=2"
+   ]
+  },
+  {
+   "slug": "admin-order-03",
+   "category": "admin/page",
+   "shows": "Order #3 (Priya Raman, paid) for Paint and Sip Night: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=3",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=3"
+   ]
+  },
+  {
+   "slug": "admin-order-04",
+   "category": "admin/page",
+   "shows": "Order #4 (Jonah Clarke, pending) for Paint and Sip Night: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=4",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=4"
+   ]
+  },
+  {
+   "slug": "admin-order-05",
+   "category": "admin/page",
+   "shows": "Order #5 (Elena Petrova, refunded) for Paint and Sip Night: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=5",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=5"
+   ]
+  },
+  {
+   "slug": "admin-order-06",
+   "category": "admin/page",
+   "shows": "Order #6 (Sam Okafor, paid) for Photography Bootcamp: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=6",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=6"
+   ]
+  },
+  {
+   "slug": "admin-order-07",
+   "category": "admin/page",
+   "shows": "Order #7 (Beatriz Lima, paid) for Photography Bootcamp: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=7",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=7"
+   ]
+  },
+  {
+   "slug": "admin-order-08",
+   "category": "admin/page",
+   "shows": "Order #8 (Hugo Martin, paid) for Photography Bootcamp: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=8",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=8"
+   ]
+  },
+  {
+   "slug": "admin-order-09",
+   "category": "admin/page",
+   "shows": "Order #9 (Imani Brooks, paid) for Photography Bootcamp: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=9",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=9"
+   ]
+  },
+  {
+   "slug": "admin-order-10",
+   "category": "admin/page",
+   "shows": "Order #10 (Leo Fontana, pending) for Photography Bootcamp: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=10",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=10"
+   ]
+  },
+  {
+   "slug": "admin-order-11",
+   "category": "admin/page",
+   "shows": "Order #11 (Maya Anders, paid) for Jazz Supper Club: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=11",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=11"
+   ]
+  },
+  {
+   "slug": "admin-order-12",
+   "category": "admin/page",
+   "shows": "Order #12 (Otto Lindgren, paid) for Jazz Supper Club: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=12",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=12"
+   ]
+  },
+  {
+   "slug": "admin-order-13",
+   "category": "admin/page",
+   "shows": "Order #13 (Ruth Delacroix, paid) for Jazz Supper Club: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=13",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=13"
+   ]
+  },
+  {
+   "slug": "admin-order-14",
+   "category": "admin/page",
+   "shows": "Order #14 (Kenji Watanabe, refunded) for Jazz Supper Club: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=14",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=14"
+   ]
+  },
+  {
+   "slug": "admin-order-15",
+   "category": "admin/page",
+   "shows": "Order #15 (Aisha Karim, paid) for Paint and Sip Night: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=15",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=15"
+   ]
+  },
+  {
+   "slug": "admin-order-16",
+   "category": "admin/page",
+   "shows": "Order #16 (Grace Hollis, paid) for Paint and Sip Night: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=16",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=16"
+   ]
+  },
+  {
+   "slug": "admin-order-17",
+   "category": "admin/page",
+   "shows": "Order #17 (Victor Moreno, paid) for Paint and Sip Night: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=17",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=17"
+   ]
+  },
+  {
+   "slug": "admin-order-18",
+   "category": "admin/page",
+   "shows": "Order #18 (Hannah Price, paid) for Paint and Sip Night: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=18",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=18"
+   ]
+  },
+  {
+   "slug": "admin-order-19",
+   "category": "admin/page",
+   "shows": "Order #19 (Felix Wagner, paid) for Photography Bootcamp: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=19",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=19"
+   ]
+  },
+  {
+   "slug": "admin-order-20",
+   "category": "admin/page",
+   "shows": "Order #20 (Chloe Dubois, paid) for Photography Bootcamp: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=20",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=20"
+   ]
+  },
+  {
+   "slug": "admin-order-21",
+   "category": "admin/page",
+   "shows": "Order #21 (Ravi Menon, paid) for Photography Bootcamp: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=21",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=21"
+   ]
+  },
+  {
+   "slug": "admin-order-22",
+   "category": "admin/page",
+   "shows": "Order #22 (Theo Grant, paid) for Jazz Supper Club: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=22",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=22"
+   ]
+  },
+  {
+   "slug": "admin-order-23",
+   "category": "admin/page",
+   "shows": "Order #23 (Nina Kowalski, pending) for Jazz Supper Club: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=23",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=23"
+   ]
+  },
+  {
+   "slug": "admin-order-24",
+   "category": "admin/page",
+   "shows": "Order #24 (Bruno Silva, paid) for Jazz Supper Club: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=24",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=24"
+   ]
+  },
+  {
+   "slug": "admin-order-25",
+   "category": "admin/page",
+   "shows": "Order #25 (Wendy Cho, paid (free)) for Open Studio Night: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=25",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=25"
+   ]
+  },
+  {
+   "slug": "admin-order-26",
+   "category": "admin/page",
+   "shows": "Order #26 (Isaac Levi, paid (free)) for Open Studio Night: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=26",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=26"
+   ]
+  },
+  {
+   "slug": "admin-order-27",
+   "category": "admin/page",
+   "shows": "Order #27 (Mei Tanaka, paid (free)) for Open Studio Night: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=27",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=27"
+   ]
+  },
+  {
+   "slug": "admin-order-28",
+   "category": "admin/page",
+   "shows": "Order #28 (Adam Novak, paid (free)) for Open Studio Night: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=28",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=28"
+   ]
+  },
+  {
+   "slug": "admin-order-29",
+   "category": "admin/page",
+   "shows": "Order #29 (Sophie Laurent, paid) for Candle Making Workshop: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=29",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=29"
+   ]
+  },
+  {
+   "slug": "admin-order-30",
+   "category": "admin/page",
+   "shows": "Order #30 (Liam Byrne, paid) for Candle Making Workshop: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=30",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=30"
+   ]
+  },
+  {
+   "slug": "admin-order-31",
+   "category": "admin/page",
+   "shows": "Order #31 (Freya Olsen, refunded) for Candle Making Workshop: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=31",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=31"
+   ]
+  },
+  {
+   "slug": "admin-order-32",
+   "category": "admin/page",
+   "shows": "Order #32 (Jasmine Ali, paid) for Candle Making Workshop: order details, attendees and their tickets",
+   "topics": [
+    "tickets",
+    "orders",
+    "order"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&view=order&order_id=32",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&order_id=32"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-edit-01",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Alice Moreau, going, two guests) for Kids Craft Party",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2072&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-02",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Daniel Ortiz, going, one guest) for Kids Craft Party",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2073&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-03",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Farah Nasser, going, two guests) for Kids Craft Party",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2074&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-04",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Ivan Kovac, going) for Kids Craft Party",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2075&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-05",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Julia Sandberg, going) for Kids Craft Party",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2076&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-06",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Karim Haddad, going) for Kids Craft Party",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2077&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-07",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Lena Fischer, going) for Kids Craft Party",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2078&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-08",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Miguel Santos, going) for Kids Craft Party",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2079&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-09",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Nadia Rahman, going) for Kids Craft Party",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2080&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-10",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Oscar Bright, not going) for Kids Craft Party",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2081&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-11",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Petra Novak, not going) for Kids Craft Party",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2082&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-12",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Quinn Adeyemi, not going) for Kids Craft Party",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2083&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-25-01",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Martin Hale, going, one guest) for Repair Café",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2155&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-25-02",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Selma Brandt, going) for Repair Café",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2156&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-25-03",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Kofi Mensah, going) for Repair Café",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2157&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-25-04",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Irene Walsh, going, one guest) for Repair Café",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2158&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-25-05",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Dmitri Volkov, going) for Repair Café",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2159&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-25-06",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Carmen Ruiz, going) for Repair Café",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2160&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-25-07",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Harold Finch, not going) for Repair Café",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2161&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-25-08",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Beth Ingram, not going) for Repair Café",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2162&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-27-01",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Lucy Ward, going, one guest) for Toddler Sensory Play",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2163&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-27-02",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Samir Aziz, going, one guest) for Toddler Sensory Play",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2164&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-27-03",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Olga Petersen, going, one guest) for Toddler Sensory Play",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2165&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-27-04",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Tariq Hussain, going, one guest) for Toddler Sensory Play",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2166&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-27-05",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Emma Doyle, going, one guest) for Toddler Sensory Play",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2167&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-27-06",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Hana Sato, not going) for Toddler Sensory Play",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2168&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-29-01",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Peter Lang, going, one guest) for Artist Talk: Clay and Colour",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2169&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-29-02",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Alma Reyes, going) for Artist Talk: Clay and Colour",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2170&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-29-03",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Owen Hart, going) for Artist Talk: Clay and Colour",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2171&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-29-04",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Fatima Noor, going, one guest) for Artist Talk: Clay and Colour",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2172&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-29-05",
+   "category": "admin/page",
+   "shows": "Edit Attendee (George Ellis, going) for Artist Talk: Clay and Colour",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2173&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-29-06",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Bianca Rossi, going) for Artist Talk: Clay and Colour",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2174&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-29-07",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Ken Adams, not going) for Artist Talk: Clay and Colour",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2175&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-29-08",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Lotte Visser, going, one guest) for Artist Talk: Clay and Colour",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2176&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-29-09",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Marcus Webb, going) for Artist Talk: Clay and Colour",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2177&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-31-01",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Sarah Quinn, going, two guests) for Lantern Walk",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2178&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-31-02",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Ahmed Saleh, going, two guests) for Lantern Walk",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2179&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-31-03",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Joanna Pike, going, three guests) for Lantern Walk",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2180&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-31-04",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Rafael Costa, going, one guest) for Lantern Walk",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2181&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-31-05",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Helen Moore, going) for Lantern Walk",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2182&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-31-06",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Chen Wei, going, one guest) for Lantern Walk",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2183&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-31-07",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Oliver Frost, not going) for Lantern Walk",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2184&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-31-08",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Maria Lopez, going, two guests) for Lantern Walk",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2185&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-36-01",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Tessa Moon, going) for Drop-in Drawing Club",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2186&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-36-02",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Ibrahim Kaya, going) for Drop-in Drawing Club",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2187&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-36-03",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Ruby Fields, going) for Drop-in Drawing Club",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2188&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-36-04",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Stefan Braun, going) for Drop-in Drawing Club",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2189&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-36-05",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Clara Jensen, going) for Drop-in Drawing Club",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2190&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-edit-36-06",
+   "category": "admin/page",
+   "shows": "Edit Attendee (Nils Ekman, not going) for Drop-in Drawing Club",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2191&action=edit"
+  },
+  {
+   "slug": "admin-rsvp-list",
+   "category": "admin/page",
+   "shows": "RSVP list: the responses to the six RSVP events, with their additional attendees; views All / Going / Not Going / Trash",
+   "topics": [
+    "rsvp",
+    "list",
+    "attendees"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp"
+  },
+  {
+   "slug": "admin-rsvp-list--cog-open",
+   "category": "admin/page",
+   "shows": "RSVP list with the cog open: items per page and show additional attendees",
+   "topics": [
+    "rsvp",
+    "table",
+    "screen-options"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp"
+  },
+  {
+   "slug": "admin-rsvp-list--filtered-by-event",
+   "category": "admin/page",
+   "shows": "RSVP list filtered to Kids Craft Party (the event editor’s \"View RSVPs\" link)",
+   "topics": [
+    "rsvp",
+    "table",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&event_id=15",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=all&event_id=15",
+    "admin.php?page=sc-rsvp&event_id=15&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--filtered-by-event-25-repair-cafe",
+   "category": "admin/page",
+   "shows": "RSVP list filtered to Repair Café",
+   "topics": [
+    "rsvp",
+    "table",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&event_id=25",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=all&event_id=25",
+    "admin.php?page=sc-rsvp&event_id=25&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--filtered-by-event-27-toddler-sensory-play",
+   "category": "admin/page",
+   "shows": "RSVP list filtered to Toddler Sensory Play",
+   "topics": [
+    "rsvp",
+    "table",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&event_id=27",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=all&event_id=27",
+    "admin.php?page=sc-rsvp&event_id=27&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--filtered-by-event-29-artist-talk",
+   "category": "admin/page",
+   "shows": "RSVP list filtered to Artist Talk: Clay and Colour",
+   "topics": [
+    "rsvp",
+    "table",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&event_id=29",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=all&event_id=29",
+    "admin.php?page=sc-rsvp&event_id=29&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--filtered-by-event-31-lantern-walk",
+   "category": "admin/page",
+   "shows": "RSVP list filtered to Lantern Walk",
+   "topics": [
+    "rsvp",
+    "table",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&event_id=31",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=all&event_id=31",
+    "admin.php?page=sc-rsvp&event_id=31&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--filtered-by-event-36-drop-in-drawing-club",
+   "category": "admin/page",
+   "shows": "RSVP list filtered to Drop-in Drawing Club",
+   "topics": [
+    "rsvp",
+    "table",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&event_id=36",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=all&event_id=36",
+    "admin.php?page=sc-rsvp&event_id=36&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--filtered-by-event-sort-attendee-name",
+   "category": "admin/page",
+   "shows": "RSVP list filtered to Kids Craft Party, sorted by attendee name",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&event_id=15&orderby=attendee_name&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&event_id=15&orderby=attendee_name&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--filtered-by-event-sort-date",
+   "category": "admin/page",
+   "shows": "RSVP list filtered to Kids Craft Party, sorted by date",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&event_id=15&orderby=date_created&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&event_id=15&orderby=date_created&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--filtered-by-event-sort-id",
+   "category": "admin/page",
+   "shows": "RSVP list filtered to Kids Craft Party, sorted by id",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&event_id=15&orderby=id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&event_id=15&orderby=id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--filtered-by-event-sort-total-attendees",
+   "category": "admin/page",
+   "shows": "RSVP list filtered to Kids Craft Party, sorted by total attendees",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&event_id=15&orderby=total_attendees&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&event_id=15&orderby=total_attendees&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--going",
+   "category": "admin/page",
+   "shows": "RSVP list, Going view: the Going responses with their additional attendees",
+   "topics": [
+    "rsvp",
+    "table"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=going",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=going&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--going-sort-attendee-name",
+   "category": "admin/page",
+   "shows": "RSVP list, Going view, sorted by attendee name",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=going&orderby=attendee_name&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=going&orderby=attendee_name&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--going-sort-date",
+   "category": "admin/page",
+   "shows": "RSVP list, Going view, sorted by date",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=going&orderby=date_created&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=going&orderby=date_created&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--going-sort-id",
+   "category": "admin/page",
+   "shows": "RSVP list, Going view, sorted by id",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=going&orderby=id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=going&orderby=id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--going-sort-total-attendees",
+   "category": "admin/page",
+   "shows": "RSVP list, Going view, sorted by total attendees",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=going&orderby=total_attendees&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=going&orderby=total_attendees&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--not-going",
+   "category": "admin/page",
+   "shows": "RSVP list, Not Going view: the Not Going responses",
+   "topics": [
+    "rsvp",
+    "table"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=not_going",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=not_going&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--not-going-sort-attendee-name",
+   "category": "admin/page",
+   "shows": "RSVP list, Not Going view, sorted by attendee name",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=not_going&orderby=attendee_name&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=not_going&orderby=attendee_name&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--not-going-sort-date",
+   "category": "admin/page",
+   "shows": "RSVP list, Not Going view, sorted by date",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=not_going&orderby=date_created&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=not_going&orderby=date_created&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--not-going-sort-id",
+   "category": "admin/page",
+   "shows": "RSVP list, Not Going view, sorted by id",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=not_going&orderby=id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=not_going&orderby=id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--not-going-sort-total-attendees",
+   "category": "admin/page",
+   "shows": "RSVP list, Not Going view, sorted by total attendees",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=not_going&orderby=total_attendees&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=not_going&orderby=total_attendees&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--sort-attendee-name",
+   "category": "admin/page",
+   "shows": "RSVP list sorted by attendee name",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&orderby=attendee_name&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&orderby=attendee_name&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--sort-date",
+   "category": "admin/page",
+   "shows": "RSVP list sorted by date",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&orderby=date_created&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&orderby=date_created&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--sort-id",
+   "category": "admin/page",
+   "shows": "RSVP list sorted by id",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&orderby=id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&orderby=id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--sort-total-attendees",
+   "category": "admin/page",
+   "shows": "RSVP list sorted by total attendees",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&orderby=total_attendees&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&orderby=total_attendees&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--trash",
+   "category": "admin/page",
+   "shows": "RSVP list, Trash view: empty",
+   "topics": [
+    "rsvp",
+    "table",
+    "empty"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=trash",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=trash&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--trash-sort-attendee-name",
+   "category": "admin/page",
+   "shows": "RSVP list, Trash view, sorted by attendee name",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=trash&orderby=attendee_name&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=trash&orderby=attendee_name&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--trash-sort-date",
+   "category": "admin/page",
+   "shows": "RSVP list, Trash view, sorted by date",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=trash&orderby=date_created&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=trash&orderby=date_created&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--trash-sort-id",
+   "category": "admin/page",
+   "shows": "RSVP list, Trash view, sorted by id",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=trash&orderby=id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=trash&orderby=id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-list--trash-sort-total-attendees",
+   "category": "admin/page",
+   "shows": "RSVP list, Trash view, sorted by total attendees",
+   "topics": [
+    "rsvp",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-rsvp&status=trash&orderby=total_attendees&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-rsvp&status=trash&orderby=total_attendees&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-rsvp-new",
+   "category": "admin/page",
+   "shows": "Add New Attendee: blank RSVP form with the event picker",
+   "topics": [
+    "rsvp",
+    "attendee",
+    "new"
+   ],
+   "sourcePath": "/wp-admin/post-new.php?post_type=sc_rsvp"
+  },
+  {
+   "slug": "admin-settings-email-et-receipt",
+   "category": "admin/page",
+   "shows": "Settings > Emails > Ticket receipt (to the buyer): status, subject and message",
+   "topics": [
+    "settings",
+    "emails"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=emails&email_cfg=sc_et_receipt_email"
+  },
+  {
+   "slug": "admin-settings-email-et-sale-admin",
+   "category": "admin/page",
+   "shows": "Settings > Emails > Ticket sale (to the admin): status, subject and message",
+   "topics": [
+    "settings",
+    "emails"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=emails&email_cfg=sc_et_ticket_sale_email_to_admin"
+  },
+  {
+   "slug": "admin-settings-email-et-ticket",
+   "category": "admin/page",
+   "shows": "Settings > Emails > Ticket (to each attendee): status, subject and message",
+   "topics": [
+    "settings",
+    "emails"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=emails&email_cfg=sc_et_ticket_email"
+  },
+  {
+   "slug": "admin-settings-email-registration-answers",
+   "category": "admin/page",
+   "shows": "Settings > Emails > Registration answers confirmation: status, subject and message",
+   "topics": [
+    "settings",
+    "emails"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=emails&email_cfg=sc_registration_answers_confirmation_email"
+  },
+  {
+   "slug": "admin-settings-email-registration-reminder",
+   "category": "admin/page",
+   "shows": "Settings > Emails > Registration reminder: status, subject and message",
+   "topics": [
+    "settings",
+    "emails"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=emails&email_cfg=sc_registration_reminder_email"
+  },
+  {
+   "slug": "admin-settings-email-rsvp-going-admin",
+   "category": "admin/page",
+   "shows": "Settings > Emails > RSVP Going (to the admin): status, subject and message",
+   "topics": [
+    "settings",
+    "emails"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=emails&email_cfg=sc_rsvp_going_email_to_admin"
+  },
+  {
+   "slug": "admin-settings-email-rsvp-going-attendee",
+   "category": "admin/page",
+   "shows": "Settings > Emails > RSVP Going (to the attendee): status, subject and message",
+   "topics": [
+    "settings",
+    "emails"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=emails&email_cfg=sc_rsvp_going_email_to_attendee"
+  },
+  {
+   "slug": "admin-settings-email-rsvp-not-going-admin",
+   "category": "admin/page",
+   "shows": "Settings > Emails > RSVP Not Going (to the admin): status, subject and message",
+   "topics": [
+    "settings",
+    "emails"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=emails&email_cfg=sc_rsvp_not_going_email_to_admin"
+  },
+  {
+   "slug": "admin-settings-email-rsvp-not-going-attendee",
+   "category": "admin/page",
+   "shows": "Settings > Emails > RSVP Not Going (to the attendee): status, subject and message",
+   "topics": [
+    "settings",
+    "emails"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=emails&email_cfg=sc_rsvp_not_going_email_to_attendee"
+  },
+  {
+   "slug": "admin-settings-emails",
+   "category": "admin/page",
+   "shows": "Settings > Emails: sender name and address, and the per-audience email cards with their on/off toggles",
+   "topics": [
+    "settings",
+    "emails"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=emails"
+  },
+  {
+   "slug": "admin-settings-feeds",
+   "category": "admin/page",
+   "shows": "Settings > Feeds: which calendar feed buttons show (Google, Microsoft, Apple, webcal, download, direct link)",
+   "topics": [
+    "settings",
+    "feeds"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=feeds"
+  },
+  {
+   "slug": "admin-settings-general",
+   "category": "admin/page",
+   "shows": "Sugar Calendar Settings > General tab: display options (events per page, date and time formats), editing options and time zone settings",
+   "topics": [
+    "settings",
+    "general",
+    "display",
+    "date-format",
+    "time-zone"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=general"
+  },
+  {
+   "slug": "admin-settings-general--timezones-multi",
+   "category": "admin/page",
+   "shows": "Settings > General with Time Zones switched to Multiple (not saved): the time zone fields for per-event zones",
+   "topics": [
+    "settings",
+    "general",
+    "time-zone"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=general"
+  },
+  {
+   "slug": "admin-settings-integrations",
+   "category": "admin/page",
+   "shows": "Settings > Integrations: Google Maps, Zoom and coming-soon cards, all Not Connected",
+   "topics": [
+    "settings",
+    "integrations"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=integrations",
+   "navAliases": [
+    "admin.php?page=sugarcalendar-settings&section=integrations&integration=google-maps"
+   ]
+  },
+  {
+   "slug": "admin-settings-integrations-zoom",
+   "category": "admin/page",
+   "shows": "Settings > Integrations > Zoom: Connect with Zoom, not connected",
+   "topics": [
+    "settings",
+    "integrations",
+    "zoom"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=integrations&integration=zoom"
+  },
+  {
+   "slug": "admin-settings-license-usage",
+   "category": "admin/page",
+   "shows": "Settings > License & Usage: license key (masked), Elite license level, usage tracking",
+   "topics": [
+    "settings",
+    "license"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=license-usage",
+   "navAliases": [
+    "admin.php?page=sugarcalendar-settings"
+   ]
+  },
+  {
+   "slug": "admin-settings-misc",
+   "category": "admin/page",
+   "shows": "Settings > Misc: hide announcements",
+   "topics": [
+    "settings",
+    "misc"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=misc"
+  },
+  {
+   "slug": "admin-settings-payments",
+   "category": "admin/page",
+   "shows": "Settings > Payments: Stripe not connected, Test Mode off, currency and receipt / ticket pages",
+   "topics": [
+    "settings",
+    "payments",
+    "stripe"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=payments"
+  },
+  {
+   "slug": "admin-settings-payments--sandbox-on",
+   "category": "admin/page",
+   "shows": "Settings > Payments with Test Mode switched on (not saved)",
+   "topics": [
+    "settings",
+    "payments",
+    "test-mode"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=payments"
+  },
+  {
+   "slug": "admin-settings-rsvp",
+   "category": "admin/page",
+   "shows": "Settings > RSVP: spam prevention method cards, None selected",
+   "topics": [
+    "settings",
+    "rsvp",
+    "spam"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=rsvp"
+  },
+  {
+   "slug": "admin-settings-rsvp--recaptcha",
+   "category": "admin/page",
+   "shows": "Settings > RSVP with reCAPTCHA chosen (not saved): site key, secret key and reCAPTCHA type options",
+   "topics": [
+    "settings",
+    "rsvp",
+    "recaptcha"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=rsvp"
+  },
+  {
+   "slug": "admin-settings-rsvp--turnstile",
+   "category": "admin/page",
+   "shows": "Settings > RSVP with Turnstile chosen (not saved): site key, secret key and theme options",
+   "topics": [
+    "settings",
+    "rsvp",
+    "turnstile"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=rsvp"
+  },
+  {
+   "slug": "admin-speaker-edit-ada",
+   "category": "admin/page",
+   "shows": "Edit Speaker (Ada Bassey): role, contact details, links and bio",
+   "topics": [
+    "speakers",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2030&action=edit"
+  },
+  {
+   "slug": "admin-speaker-edit-gia",
+   "category": "admin/page",
+   "shows": "Edit Speaker (Gia): role, contact details, links and bio",
+   "topics": [
+    "speakers",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2028&action=edit"
+  },
+  {
+   "slug": "admin-speaker-edit-marco",
+   "category": "admin/page",
+   "shows": "Edit Speaker (Marco Ferreira): role, contact details, links and bio",
+   "topics": [
+    "speakers",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2029&action=edit"
+  },
+  {
+   "slug": "admin-speaker-edit-rosa",
+   "category": "admin/page",
+   "shows": "Edit Speaker (Rosa Delgado): role, contact details, links and bio",
+   "topics": [
+    "speakers",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2031&action=edit"
+  },
+  {
+   "slug": "admin-speaker-new",
+   "category": "admin/page",
+   "shows": "Add New Speaker: blank speaker form",
+   "topics": [
+    "speakers",
+    "new"
+   ],
+   "sourcePath": "/wp-admin/post-new.php?post_type=sc_speakers"
+  },
+  {
+   "slug": "admin-speakers",
+   "category": "admin/page",
+   "shows": "Speakers list: four speakers with their titles and emails",
+   "topics": [
+    "speakers",
+    "table"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-speaker",
+   "navAliases": [
+    "admin.php?page=sugar-calendar-speaker&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-speakers--sort-modified-desc",
+   "category": "admin/page",
+   "shows": "Speakers list sorted by modified (descending)",
+   "topics": [
+    "speakers",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-speaker&orderby=modified&order=desc",
+   "navAliases": [
+    "admin.php?page=sugar-calendar-speaker&orderby=modified&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-speakers--sort-title-desc",
+   "category": "admin/page",
+   "shows": "Speakers list sorted by title (descending)",
+   "topics": [
+    "speakers",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-speaker&orderby=title&order=desc",
+   "navAliases": [
+    "admin.php?page=sugar-calendar-speaker&orderby=title&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tag-edit-beginner",
+   "category": "admin/page",
+   "shows": "Edit Tag (beginner): name, slug and description",
+   "topics": [
+    "tags",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-tag-edit&tag_id=21&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_tags"
+  },
+  {
+   "slug": "admin-tag-edit-ceramics",
+   "category": "admin/page",
+   "shows": "Edit Tag (ceramics): name, slug and description",
+   "topics": [
+    "tags",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-tag-edit&tag_id=25&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_tags"
+  },
+  {
+   "slug": "admin-tag-edit-community",
+   "category": "admin/page",
+   "shows": "Edit Tag (community): name, slug and description",
+   "topics": [
+    "tags",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-tag-edit&tag_id=30&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_tags"
+  },
+  {
+   "slug": "admin-tag-edit-evening",
+   "category": "admin/page",
+   "shows": "Edit Tag (evening): name, slug and description",
+   "topics": [
+    "tags",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-tag-edit&tag_id=29&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_tags"
+  },
+  {
+   "slug": "admin-tag-edit-family",
+   "category": "admin/page",
+   "shows": "Edit Tag (family): name, slug and description",
+   "topics": [
+    "tags",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-tag-edit&tag_id=27&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_tags"
+  },
+  {
+   "slug": "admin-tag-edit-free",
+   "category": "admin/page",
+   "shows": "Edit Tag (free): name, slug and description",
+   "topics": [
+    "tags",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-tag-edit&tag_id=28&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_tags"
+  },
+  {
+   "slug": "admin-tag-edit-holiday",
+   "category": "admin/page",
+   "shows": "Edit Tag (holiday): name, slug and description",
+   "topics": [
+    "tags",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-tag-edit&tag_id=23&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_tags"
+  },
+  {
+   "slug": "admin-tag-edit-kids",
+   "category": "admin/page",
+   "shows": "Edit Tag (kids): name, slug and description",
+   "topics": [
+    "tags",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-tag-edit&tag_id=20&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_tags"
+  },
+  {
+   "slug": "admin-tag-edit-outdoor",
+   "category": "admin/page",
+   "shows": "Edit Tag (outdoor): name, slug and description",
+   "topics": [
+    "tags",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-tag-edit&tag_id=22&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_tags"
+  },
+  {
+   "slug": "admin-tag-edit-printmaking",
+   "category": "admin/page",
+   "shows": "Edit Tag (printmaking): name, slug and description",
+   "topics": [
+    "tags",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-tag-edit&tag_id=26&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_tags"
+  },
+  {
+   "slug": "admin-tag-edit-sold-out",
+   "category": "admin/page",
+   "shows": "Edit Tag (sold-out): name, slug and description",
+   "topics": [
+    "tags",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-tag-edit&tag_id=24&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_tags"
+  },
+  {
+   "slug": "admin-tag-edit-yoga",
+   "category": "admin/page",
+   "shows": "Edit Tag (yoga): name, slug and description",
+   "topics": [
+    "tags",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-tag-edit&tag_id=19&wp_http_referer=%2Fwp-admin%2Fedit-tags.php%3Ftaxonomy%3Dsc_event_tags"
+  },
+  {
+   "slug": "admin-tag-new",
+   "category": "admin/page",
+   "shows": "Add New Tag: blank tag form",
+   "topics": [
+    "tags",
+    "new"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-tag-new"
+  },
+  {
+   "slug": "admin-tags",
+   "category": "admin/page",
+   "shows": "Tags: Add New Tag form and the tags",
+   "topics": [
+    "tags",
+    "table"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_tags"
+  },
+  {
+   "slug": "admin-tags--sort-description-asc",
+   "category": "admin/page",
+   "shows": "Tags list sorted by description (ascending)",
+   "topics": [
+    "tags",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_tags&orderby=description&order=asc"
+  },
+  {
+   "slug": "admin-tags--sort-name-desc",
+   "category": "admin/page",
+   "shows": "Tags list sorted by name (descending)",
+   "topics": [
+    "tags",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_tags&orderby=name&order=desc"
+  },
+  {
+   "slug": "admin-tags--sort-slug-asc",
+   "category": "admin/page",
+   "shows": "Tags list sorted by slug (ascending)",
+   "topics": [
+    "tags",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=sc_event_tags&orderby=slug&order=asc"
+  },
+  {
+   "slug": "admin-tickets",
+   "category": "admin/page",
+   "shows": "Tickets list: attendee, email, ticket code, event and order columns",
+   "topics": [
+    "tickets",
+    "ticketing",
+    "list"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing",
+    "admin.php?page=sc-event-ticketing&paged=1&tab=tickets"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to one event: Paint and Sip Night",
+   "topics": [
+    "tickets",
+    "ticketing",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=16",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&event_id=16&paged=1&tab=tickets"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event-17-photography-bootcamp",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to Photography Bootcamp",
+   "topics": [
+    "tickets",
+    "table",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=17",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&event_id=17",
+    "admin.php?page=sc-event-ticketing&tab=tickets&event_id=17&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event-18-jazz-supper-club",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to Jazz Supper Club",
+   "topics": [
+    "tickets",
+    "table",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=18",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&event_id=18",
+    "admin.php?page=sc-event-ticketing&tab=tickets&event_id=18&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event-23-open-studio-night",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to Open Studio Night",
+   "topics": [
+    "tickets",
+    "table",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=23",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&event_id=23",
+    "admin.php?page=sc-event-ticketing&tab=tickets&event_id=23&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event-26-candle-making",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to Candle Making Workshop",
+   "topics": [
+    "tickets",
+    "table",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=26",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&event_id=26",
+    "admin.php?page=sc-event-ticketing&tab=tickets&event_id=26&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event-sort-attendee",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to Paint and Sip Night, sorted by attendee (ascending)",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=16&orderby=attendee_id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&event_id=16&orderby=attendee_id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event-sort-attendee-desc",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to Paint and Sip Night, sorted by attendee (descending)",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=16&orderby=attendee_id&order=desc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&event_id={{seed:event.16-paint-and-sip.row}}&orderby=attendee_id&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event-sort-date",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to Paint and Sip Night, sorted by date (ascending)",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=16&orderby=date_created&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&event_id=16&orderby=date_created&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event-sort-date-desc",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to Paint and Sip Night, sorted by date (descending)",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=16&orderby=date_created&order=desc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&event_id={{seed:event.16-paint-and-sip.row}}&orderby=date_created&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event-sort-id",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to Paint and Sip Night, sorted by id (ascending)",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=16&orderby=id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&event_id=16&orderby=id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event-sort-id-desc",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to Paint and Sip Night, sorted by id (descending)",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting",
+    "filter"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=16&orderby=id&order=desc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&event_id={{seed:event.16-paint-and-sip.row}}&orderby=id&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event-trash",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to Paint and Sip Night, Trash view",
+   "topics": [
+    "tickets",
+    "table",
+    "trash"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=16&status=trash",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&event_id=16&status=trash&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event-trash-sort-attendee",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to Paint and Sip Night, Trash view, sorted by attendee",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting",
+    "trash"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=16&status=trash&orderby=attendee_id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&event_id={{seed:event.16-paint-and-sip.row}}&status=trash&orderby=attendee_id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event-trash-sort-date",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to Paint and Sip Night, Trash view, sorted by date",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting",
+    "trash"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=16&status=trash&orderby=date_created&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&event_id={{seed:event.16-paint-and-sip.row}}&status=trash&orderby=date_created&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--filtered-by-event-trash-sort-id",
+   "category": "admin/page",
+   "shows": "Tickets list filtered to Paint and Sip Night, Trash view, sorted by id",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting",
+    "trash"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&event_id=16&status=trash&orderby=id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&event_id={{seed:event.16-paint-and-sip.row}}&status=trash&orderby=id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--notice-email-sent",
+   "category": "admin/page",
+   "shows": "Tickets list with the plugin’s success notice after Send Email: \"Ticket successfully emailed.\"",
+   "topics": [
+    "tickets",
+    "table",
+    "notice"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&sc-notice-id=email-send&sc-notice-type=updated"
+  },
+  {
+   "slug": "admin-tickets--sort-attendee",
+   "category": "admin/page",
+   "shows": "Tickets list, sorted by attendee (ascending)",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&orderby=attendee_id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&orderby=attendee_id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--sort-attendee-desc",
+   "category": "admin/page",
+   "shows": "Tickets list sorted by attendee (descending)",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&orderby=attendee_id&order=desc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&orderby=attendee_id&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--sort-date",
+   "category": "admin/page",
+   "shows": "Tickets list, sorted by date (ascending)",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&orderby=date_created&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&orderby=date_created&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--sort-date-desc",
+   "category": "admin/page",
+   "shows": "Tickets list sorted by date (descending)",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&orderby=date_created&order=desc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&orderby=date_created&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--sort-id",
+   "category": "admin/page",
+   "shows": "Tickets list, sorted by id (ascending)",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&orderby=id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&orderby=id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--sort-id-desc",
+   "category": "admin/page",
+   "shows": "Tickets list sorted by id (descending)",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&orderby=id&order=desc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&orderby=id&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--trash",
+   "category": "admin/page",
+   "shows": "Tickets list, Trash view: the tickets of the refunded orders",
+   "topics": [
+    "tickets",
+    "table",
+    "trash"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&status=trash",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&status=trash&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--trash-sort-attendee",
+   "category": "admin/page",
+   "shows": "Tickets list, Trash view, sorted by attendee",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting",
+    "trash"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&status=trash&orderby=attendee_id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&status=trash&orderby=attendee_id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--trash-sort-date",
+   "category": "admin/page",
+   "shows": "Tickets list, Trash view, sorted by date",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting",
+    "trash"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&status=trash&orderby=date_created&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&status=trash&orderby=date_created&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets--trash-sort-id",
+   "category": "admin/page",
+   "shows": "Tickets list, Trash view, sorted by id",
+   "topics": [
+    "tickets",
+    "table",
+    "sorting",
+    "trash"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=tickets&status=trash&orderby=id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=tickets&status=trash&orderby=id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders",
+   "category": "admin/page",
+   "shows": "Orders list: paid, pending and refunded orders, with status views All / Pending / Paid / Refunded",
+   "topics": [
+    "orders",
+    "ticketing",
+    "list"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&paged=1&tab=orders"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--paid",
+   "category": "admin/page",
+   "shows": "Orders list, Paid view: the paid orders",
+   "topics": [
+    "tickets",
+    "orders",
+    "table"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=paid",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=paid&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--paid-sort-date",
+   "category": "admin/page",
+   "shows": "Orders list, Paid view, sorted by date",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=paid&orderby=date_created&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=paid&orderby=date_created&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--paid-sort-id",
+   "category": "admin/page",
+   "shows": "Orders list, Paid view, sorted by id",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=paid&orderby=id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=paid&orderby=id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--paid-sort-status",
+   "category": "admin/page",
+   "shows": "Orders list, Paid view, sorted by status",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=paid&orderby=status&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=paid&orderby=status&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--paid-sort-total",
+   "category": "admin/page",
+   "shows": "Orders list, Paid view, sorted by total",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=paid&orderby=total&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=paid&orderby=total&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--pending",
+   "category": "admin/page",
+   "shows": "Orders list, Pending view: the pending orders",
+   "topics": [
+    "tickets",
+    "orders",
+    "table"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=pending",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=pending&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--pending-sort-date",
+   "category": "admin/page",
+   "shows": "Orders list, Pending view, sorted by date",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=pending&orderby=date_created&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=pending&orderby=date_created&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--pending-sort-id",
+   "category": "admin/page",
+   "shows": "Orders list, Pending view, sorted by id",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=pending&orderby=id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=pending&orderby=id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--pending-sort-status",
+   "category": "admin/page",
+   "shows": "Orders list, Pending view, sorted by status",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=pending&orderby=status&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=pending&orderby=status&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--pending-sort-total",
+   "category": "admin/page",
+   "shows": "Orders list, Pending view, sorted by total",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=pending&orderby=total&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=pending&orderby=total&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--refunded",
+   "category": "admin/page",
+   "shows": "Orders list filtered to Refunded",
+   "topics": [
+    "orders",
+    "ticketing",
+    "refunded"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=refunded",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&paged=1&status=refunded&tab=orders"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--refunded-sort-date",
+   "category": "admin/page",
+   "shows": "Orders list, Refunded view, sorted by date (ascending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=date_created&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=date_created&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--refunded-sort-date-desc",
+   "category": "admin/page",
+   "shows": "Orders list, Refunded view, sorted by date (descending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=date_created&order=desc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=date_created&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--refunded-sort-id",
+   "category": "admin/page",
+   "shows": "Orders list, Refunded view, sorted by id (ascending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--refunded-sort-id-desc",
+   "category": "admin/page",
+   "shows": "Orders list, Refunded view, sorted by id (descending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=id&order=desc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=id&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--refunded-sort-status",
+   "category": "admin/page",
+   "shows": "Orders list, Refunded view, sorted by status (ascending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=status&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=status&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--refunded-sort-status-desc",
+   "category": "admin/page",
+   "shows": "Orders list, Refunded view, sorted by status (descending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=status&order=desc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=status&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--refunded-sort-total",
+   "category": "admin/page",
+   "shows": "Orders list, Refunded view, sorted by total (ascending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=total&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=total&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--refunded-sort-total-desc",
+   "category": "admin/page",
+   "shows": "Orders list, Refunded view, sorted by total (descending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=total&order=desc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&status=refunded&orderby=total&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--sort-date",
+   "category": "admin/page",
+   "shows": "Orders list, sorted by date (ascending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&orderby=date_created&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&orderby=date_created&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--sort-date-desc",
+   "category": "admin/page",
+   "shows": "Orders list sorted by date (descending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&orderby=date_created&order=desc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&orderby=date_created&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--sort-id",
+   "category": "admin/page",
+   "shows": "Orders list, sorted by id (ascending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&orderby=id&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&orderby=id&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--sort-id-desc",
+   "category": "admin/page",
+   "shows": "Orders list sorted by id (descending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&orderby=id&order=desc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&orderby=id&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--sort-status",
+   "category": "admin/page",
+   "shows": "Orders list, sorted by status (ascending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&orderby=status&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&orderby=status&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--sort-status-desc",
+   "category": "admin/page",
+   "shows": "Orders list sorted by status (descending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&orderby=status&order=desc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&orderby=status&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--sort-total",
+   "category": "admin/page",
+   "shows": "Orders list, sorted by total (ascending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&orderby=total&order=asc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&orderby=total&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tickets-orders--sort-total-desc",
+   "category": "admin/page",
+   "shows": "Orders list sorted by total (descending)",
+   "topics": [
+    "tickets",
+    "orders",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-event-ticketing&tab=orders&orderby=total&order=desc",
+   "navAliases": [
+    "admin.php?page=sc-event-ticketing&tab=orders&orderby=total&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-tools-ai",
+   "category": "admin/page",
+   "shows": "Tools > AI",
+   "topics": [
+    "tools",
+    "ai"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-tools&section=ai"
+  },
+  {
+   "slug": "admin-tools-export",
+   "category": "admin/page",
+   "shows": "Tools > Export: choose events and download them",
+   "topics": [
+    "tools",
+    "export"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-tools&section=export"
+  },
+  {
+   "slug": "admin-tools-import",
+   "category": "admin/page",
+   "shows": "Tools > Import: Sugar Calendar JSON/CSV import and ICS import",
+   "topics": [
+    "tools",
+    "import"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sc-tools"
+  },
+  {
+   "slug": "admin-venue-edit-loft",
+   "category": "admin/page",
+   "shows": "Edit Venue (Gia’s Studio — Loft Room): address fields",
+   "topics": [
+    "venues",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2026&action=edit"
+  },
+  {
+   "slug": "admin-venue-edit-main",
+   "category": "admin/page",
+   "shows": "Edit Venue (Gia’s Studio — Main Hall): address fields",
+   "topics": [
+    "venues",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2025&action=edit"
+  },
+  {
+   "slug": "admin-venue-edit-market",
+   "category": "admin/page",
+   "shows": "Edit Venue (Riverside Market Square): address fields",
+   "topics": [
+    "venues",
+    "edit"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=2027&action=edit"
+  },
+  {
+   "slug": "admin-venue-new",
+   "category": "admin/page",
+   "shows": "Add New Venue: blank address form",
+   "topics": [
+    "venues",
+    "new"
+   ],
+   "sourcePath": "/wp-admin/post-new.php?post_type=sugarcalendar_venue"
+  },
+  {
+   "slug": "admin-venues",
+   "category": "admin/page",
+   "shows": "Venues list: three venues with their addresses",
+   "topics": [
+    "venues",
+    "list"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-venue",
+   "navAliases": [
+    "edit.php?post_type=sugarcalendar_venue",
+    "admin.php?page=sugar-calendar-venue&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-venues--sort-address",
+   "category": "admin/page",
+   "shows": "Venues list sorted by address (descending)",
+   "topics": [
+    "venues",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-venue&orderby=address&order=desc",
+   "navAliases": [
+    "admin.php?page=sugar-calendar-venue&orderby=address&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-venues--sort-address-asc",
+   "category": "admin/page",
+   "shows": "Venues list sorted by address (ascending)",
+   "topics": [
+    "venues",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-venue&orderby=address&order=asc",
+   "navAliases": [
+    "admin.php?page=sugar-calendar-venue&orderby=address&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-venues--sort-author",
+   "category": "admin/page",
+   "shows": "Venues list sorted by author (descending)",
+   "topics": [
+    "venues",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-venue&orderby=author&order=desc",
+   "navAliases": [
+    "admin.php?page=sugar-calendar-venue&orderby=author&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-venues--sort-author-asc",
+   "category": "admin/page",
+   "shows": "Venues list sorted by author (ascending)",
+   "topics": [
+    "venues",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-venue&orderby=author&order=asc",
+   "navAliases": [
+    "admin.php?page=sugar-calendar-venue&orderby=author&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-venues--sort-modified",
+   "category": "admin/page",
+   "shows": "Venues list sorted by modified (descending)",
+   "topics": [
+    "venues",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-venue&orderby=modified&order=desc",
+   "navAliases": [
+    "admin.php?page=sugar-calendar-venue&orderby=modified&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-venues--sort-modified-asc",
+   "category": "admin/page",
+   "shows": "Venues list sorted by modified (ascending)",
+   "topics": [
+    "venues",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-venue&orderby=modified&order=asc",
+   "navAliases": [
+    "admin.php?page=sugar-calendar-venue&orderby=modified&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-venues--sort-title",
+   "category": "admin/page",
+   "shows": "Venues list sorted by title (descending)",
+   "topics": [
+    "venues",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-venue&orderby=title&order=desc",
+   "navAliases": [
+    "admin.php?page=sugar-calendar-venue&orderby=title&order=desc&paged=1"
+   ]
+  },
+  {
+   "slug": "admin-venues--sort-title-asc",
+   "category": "admin/page",
+   "shows": "Venues list sorted by title (ascending)",
+   "topics": [
+    "venues",
+    "table",
+    "sorting"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugar-calendar-venue&orderby=title&order=asc",
+   "navAliases": [
+    "admin.php?page=sugar-calendar-venue&orderby=title&order=asc&paged=1"
+   ]
+  },
+  {
+   "slug": "frontend-calendar-block--day",
+   "category": "frontend/page",
+   "shows": "Events calendar block, day view after switching from month: the capture day",
+   "topics": [
+    "frontend",
+    "calendar",
+    "day-view"
+   ],
+   "sourcePath": "/events-calendar/"
+  },
+  {
+   "slug": "frontend-calendar-block--display-open",
+   "category": "frontend/page",
+   "shows": "Events calendar block with the display menu open: Month / Week / Day",
+   "topics": [
+    "frontend",
+    "calendar",
+    "popover"
+   ],
+   "sourcePath": "/events-calendar/"
+  },
+  {
+   "slug": "frontend-calendar-block--event-popover",
+   "category": "frontend/page",
+   "shows": "Events calendar block, September 2026, with the Pottery Taster event popover open (no image: the site has no event images)",
+   "topics": [
+    "frontend",
+    "calendar",
+    "popover"
+   ],
+   "sourcePath": "/events-calendar/"
+  },
+  {
+   "slug": "frontend-calendar-block--filters-open",
+   "category": "frontend/page",
+   "shows": "Events calendar block with the filters open: Featured only, Calendars, days of the week, time of day, speakers, venues, tags",
+   "topics": [
+    "frontend",
+    "calendar",
+    "filters",
+    "popover"
+   ],
+   "sourcePath": "/events-calendar/"
+  },
+  {
+   "slug": "frontend-calendar-block--month",
+   "category": "frontend/page",
+   "shows": "Events calendar block, month view: the current month (September 2026) with its events",
+   "topics": [
+    "frontend",
+    "calendar",
+    "month-view"
+   ],
+   "sourcePath": "/events-calendar/",
+   "navPrimary": true
+  },
+  {
+   "slug": "frontend-calendar-block--week",
+   "category": "frontend/page",
+   "shows": "Events calendar block, week view after switching from month: the week of the capture day",
+   "topics": [
+    "frontend",
+    "calendar",
+    "week-view"
+   ],
+   "sourcePath": "/events-calendar/"
+  },
+  {
+   "slug": "frontend-calendar-classes",
+   "category": "frontend/page",
+   "shows": "Calendar archive page (Classes): the calendar's upcoming events as a list",
+   "topics": [
+    "frontend",
+    "calendar",
+    "archive"
+   ],
+   "sourcePath": "/events/calendar/classes/"
+  },
+  {
+   "slug": "frontend-calendar-community-market",
+   "category": "frontend/page",
+   "shows": "Calendar archive page (Community Market): the calendar's upcoming events as a list",
+   "topics": [
+    "frontend",
+    "calendar",
+    "archive"
+   ],
+   "sourcePath": "/events/calendar/community-market/"
+  },
+  {
+   "slug": "frontend-calendar-my-calendar",
+   "category": "frontend/page",
+   "shows": "Calendar archive page (My Calendar): the calendar's upcoming events as a list",
+   "topics": [
+    "frontend",
+    "calendar",
+    "archive"
+   ],
+   "sourcePath": "/events/calendar/my-calendar/"
+  },
+  {
+   "slug": "frontend-calendar-private-hire",
+   "category": "frontend/page",
+   "shows": "Calendar archive page (Private Hire): the calendar's upcoming events as a list",
+   "topics": [
+    "frontend",
+    "calendar",
+    "archive"
+   ],
+   "sourcePath": "/events/calendar/private-hire/"
+  },
+  {
+   "slug": "frontend-calendar-workshops",
+   "category": "frontend/page",
+   "shows": "Calendar archive page (Workshops): the calendar's upcoming events as a list",
+   "topics": [
+    "frontend",
+    "calendar",
+    "archive"
+   ],
+   "sourcePath": "/events/calendar/workshops/"
+  },
+  {
+   "slug": "frontend-event-evening-yoga",
+   "category": "frontend/page",
+   "shows": "Single event page (Evening Yoga)",
+   "topics": [
+    "frontend",
+    "event"
+   ],
+   "sourcePath": "/events/evening-yoga/"
+  },
+  {
+   "slug": "frontend-event-jazz-supper-club",
+   "category": "frontend/page",
+   "shows": "Single event page (Jazz Supper Club)",
+   "topics": [
+    "frontend",
+    "event"
+   ],
+   "sourcePath": "/events/jazz-supper-club/"
+  },
+  {
+   "slug": "frontend-event-kids-craft-hour",
+   "category": "frontend/page",
+   "shows": "Single event page (Kids Craft Hour)",
+   "topics": [
+    "frontend",
+    "event"
+   ],
+   "sourcePath": "/events/kids-craft-hour/"
+  },
+  {
+   "slug": "frontend-event-late-night-open-mic",
+   "category": "frontend/page",
+   "shows": "Single event page (Late Night Open Mic)",
+   "topics": [
+    "frontend",
+    "event"
+   ],
+   "sourcePath": "/events/late-night-open-mic/"
+  },
+  {
+   "slug": "frontend-event-life-drawing",
+   "category": "frontend/page",
+   "shows": "Single event page (Life Drawing)",
+   "topics": [
+    "frontend",
+    "event"
+   ],
+   "sourcePath": "/events/life-drawing/"
+  },
+  {
+   "slug": "frontend-event-list-block--grid",
+   "category": "frontend/page",
+   "shows": "Events list block, grid view: upcoming events as cards (no images)",
+   "topics": [
+    "frontend",
+    "event-list",
+    "grid-view"
+   ],
+   "sourcePath": "/whats-on-grid/"
+  },
+  {
+   "slug": "frontend-event-list-block--list",
+   "category": "frontend/page",
+   "shows": "Events list block, list view grouped by week: the week of the capture day",
+   "topics": [
+    "frontend",
+    "event-list",
+    "list-view"
+   ],
+   "sourcePath": "/whats-on/"
+  },
+  {
+   "slug": "frontend-event-occurrence-01",
+   "category": "frontend/page",
+   "shows": "Occurrence page of a recurring event (Community Market, 5 August 2026)",
+   "topics": [
+    "frontend",
+    "event",
+    "recurrence"
+   ],
+   "sourcePath": "/events/community-market/2026-08-05/"
+  },
+  {
+   "slug": "frontend-event-occurrence-02",
+   "category": "frontend/page",
+   "shows": "Occurrence page of a recurring event (Monthly Book Club, 1 September 2026)",
+   "topics": [
+    "frontend",
+    "event",
+    "recurrence"
+   ],
+   "sourcePath": "/events/monthly-book-club/2026-09-01/"
+  },
+  {
+   "slug": "frontend-event-occurrence-03",
+   "category": "frontend/page",
+   "shows": "Occurrence page of a recurring event (Community Market, 2 September 2026)",
+   "topics": [
+    "frontend",
+    "event",
+    "recurrence"
+   ],
+   "sourcePath": "/events/community-market/2026-09-02/"
+  },
+  {
+   "slug": "frontend-event-occurrence-04",
+   "category": "frontend/page",
+   "shows": "Occurrence page of a recurring event (Gia's Birthday, 8 September 2026)",
+   "topics": [
+    "frontend",
+    "event",
+    "recurrence"
+   ],
+   "sourcePath": "/events/gias-birthday/2026-09-08/"
+  },
+  {
+   "slug": "frontend-event-occurrence-05",
+   "category": "frontend/page",
+   "shows": "Occurrence page of a recurring event (Community Market, 9 September 2026)",
+   "topics": [
+    "frontend",
+    "event",
+    "recurrence"
+   ],
+   "sourcePath": "/events/community-market/2026-09-09/"
+  },
+  {
+   "slug": "frontend-event-occurrence-06",
+   "category": "frontend/page",
+   "shows": "Occurrence page of a recurring event (Community Market, 16 September 2026)",
+   "topics": [
+    "frontend",
+    "event",
+    "recurrence"
+   ],
+   "sourcePath": "/events/community-market/2026-09-16/"
+  },
+  {
+   "slug": "frontend-event-occurrence-07",
+   "category": "frontend/page",
+   "shows": "Occurrence page of a recurring event (Community Market, 23 September 2026)",
+   "topics": [
+    "frontend",
+    "event",
+    "recurrence"
+   ],
+   "sourcePath": "/events/community-market/2026-09-23/"
+  },
+  {
+   "slug": "frontend-event-occurrence-08",
+   "category": "frontend/page",
+   "shows": "Occurrence page of a recurring event (Community Market, 30 September 2026)",
+   "topics": [
+    "frontend",
+    "event",
+    "recurrence"
+   ],
+   "sourcePath": "/events/community-market/2026-09-30/"
+  },
+  {
+   "slug": "frontend-event-occurrence-09",
+   "category": "frontend/page",
+   "shows": "Occurrence page of a recurring event (Monthly Book Club, 1 October 2026)",
+   "topics": [
+    "frontend",
+    "event",
+    "recurrence"
+   ],
+   "sourcePath": "/events/monthly-book-club/2026-10-01/"
+  },
+  {
+   "slug": "frontend-event-occurrence-10",
+   "category": "frontend/page",
+   "shows": "Occurrence page of a recurring event (Community Market, 7 October 2026)",
+   "topics": [
+    "frontend",
+    "event",
+    "recurrence"
+   ],
+   "sourcePath": "/events/community-market/2026-10-07/"
+  },
+  {
+   "slug": "frontend-event-occurrence-11",
+   "category": "frontend/page",
+   "shows": "Occurrence page of a recurring event (Annual Winter Fair, 28 October 2026)",
+   "topics": [
+    "frontend",
+    "event",
+    "recurrence"
+   ],
+   "sourcePath": "/events/annual-winter-fair/2026-10-28/"
+  },
+  {
+   "slug": "frontend-event-photography-bootcamp",
+   "category": "frontend/page",
+   "shows": "Single event page (Photography Bootcamp)",
+   "topics": [
+    "frontend",
+    "event"
+   ],
+   "sourcePath": "/events/photography-bootcamp/"
+  },
+  {
+   "slug": "frontend-event-pottery-taster",
+   "category": "frontend/page",
+   "shows": "Single event page (Pottery Taster)",
+   "topics": [
+    "frontend",
+    "event"
+   ],
+   "sourcePath": "/events/pottery-taster/"
+  },
+  {
+   "slug": "frontend-event-riverside-arts-festival",
+   "category": "frontend/page",
+   "shows": "Single event page (Riverside Arts Festival)",
+   "topics": [
+    "frontend",
+    "event"
+   ],
+   "sourcePath": "/events/riverside-arts-festival/"
+  },
+  {
+   "slug": "frontend-event-single",
+   "category": "frontend/page",
+   "shows": "Single event page (Morning Yoga Flow): date, time, add-to-calendar links, speaker, venue and calendar",
+   "topics": [
+    "frontend",
+    "event"
+   ],
+   "sourcePath": "/events/morning-yoga-flow/"
+  },
+  {
+   "slug": "frontend-event-single--featured",
+   "category": "frontend/page",
+   "shows": "Single event page (Pop-Up Makers Market) with the Featured badge",
+   "topics": [
+    "frontend",
+    "event",
+    "featured"
+   ],
+   "sourcePath": "/events/pop-up-makers-market/"
+  },
+  {
+   "slug": "frontend-event-single--paid-tickets-hidden",
+   "category": "frontend/page",
+   "shows": "Single event page (Paint and Sip Night) of a paid ticketed event: no ticket box, because no payment method is connected on this site",
+   "topics": [
+    "frontend",
+    "event",
+    "tickets"
+   ],
+   "sourcePath": "/events/paint-and-sip-night/"
+  },
+  {
+   "slug": "frontend-event-single--rsvp",
+   "category": "frontend/page",
+   "shows": "Single event page (Kids Craft Party) with the RSVP box: 14 of 20 going, Going / Not Going buttons",
+   "topics": [
+    "frontend",
+    "event",
+    "rsvp"
+   ],
+   "sourcePath": "/events/kids-craft-party/",
+   "navPrimary": true
+  },
+  {
+   "slug": "frontend-event-single--tickets",
+   "category": "frontend/page",
+   "shows": "Single event page (Open Studio Night) with the ticket box: free tickets, quantity, Go to Checkout, 30 available",
+   "topics": [
+    "frontend",
+    "event",
+    "tickets"
+   ],
+   "sourcePath": "/events/open-studio-night/"
+  },
+  {
+   "slug": "frontend-event-sound-bath-and-meditation",
+   "category": "frontend/page",
+   "shows": "Single event page (Sound Bath And Meditation)",
+   "topics": [
+    "frontend",
+    "event"
+   ],
+   "sourcePath": "/events/sound-bath-and-meditation/"
+  },
+  {
+   "slug": "frontend-event-studio-closed-staff-training",
+   "category": "frontend/page",
+   "shows": "Single event page (Studio Closed Staff Training)",
+   "topics": [
+    "frontend",
+    "event"
+   ],
+   "sourcePath": "/events/studio-closed-staff-training/"
+  },
+  {
+   "slug": "frontend-event-virtual-watercolour-class",
+   "category": "frontend/page",
+   "shows": "Single event page (Virtual Watercolour Class)",
+   "topics": [
+    "frontend",
+    "event"
+   ],
+   "sourcePath": "/events/virtual-watercolour-class/"
+  },
+  {
+   "slug": "frontend-event-wheel-throwing-masterclass",
+   "category": "frontend/page",
+   "shows": "Single event page (Wheel Throwing Masterclass)",
+   "topics": [
+    "frontend",
+    "event"
+   ],
+   "sourcePath": "/events/wheel-throwing-masterclass/"
+  },
+  {
+   "slug": "frontend-rsvp-modal",
+   "category": "frontend/page",
+   "shows": "RSVP modal after clicking Going: your details, additional attendees, event summary (not submitted)",
+   "topics": [
+    "frontend",
+    "rsvp",
+    "modal"
+   ],
+   "sourcePath": "/events/kids-craft-party/"
+  },
+  {
+   "slug": "frontend-rsvp-modal--add-attendee",
+   "category": "frontend/page",
+   "shows": "RSVP modal with one additional attendee row added (not submitted)",
+   "topics": [
+    "frontend",
+    "rsvp",
+    "modal",
+    "attendees"
+   ],
+   "sourcePath": "/events/kids-craft-party/"
+  },
+  {
+   "slug": "frontend-rsvp-modal--not-going",
+   "category": "frontend/page",
+   "shows": "RSVP modal after clicking Not Going (not submitted)",
+   "topics": [
+    "frontend",
+    "rsvp",
+    "modal"
+   ],
+   "sourcePath": "/events/kids-craft-party/"
+  },
+  {
+   "slug": "frontend-rsvp-verify-email",
+   "category": "frontend/page",
+   "shows": "RSVP \"Already registered?\" modal: email field to get a link to your response (not submitted)",
+   "topics": [
+    "frontend",
+    "rsvp",
+    "modal"
+   ],
+   "sourcePath": "/events/kids-craft-party/"
+  },
+  {
+   "slug": "frontend-speaker-ada-bassey",
+   "category": "frontend/page",
+   "shows": "Speaker page (Ada Bassey): title, contact details and related events",
+   "topics": [
+    "frontend",
+    "speakers"
+   ],
+   "sourcePath": "/speakers/ada-bassey/"
+  },
+  {
+   "slug": "frontend-speaker-gia",
+   "category": "frontend/page",
+   "shows": "Speaker page (Gia): title, contact details and related events",
+   "topics": [
+    "frontend",
+    "speakers"
+   ],
+   "sourcePath": "/speakers/gia/"
+  },
+  {
+   "slug": "frontend-speaker-marco-ferreira",
+   "category": "frontend/page",
+   "shows": "Speaker page (Marco Ferreira): title, contact details and related events",
+   "topics": [
+    "frontend",
+    "speakers"
+   ],
+   "sourcePath": "/speakers/marco-ferreira/"
+  },
+  {
+   "slug": "frontend-speaker-rosa-delgado",
+   "category": "frontend/page",
+   "shows": "Speaker page (Rosa Delgado): title, contact details and related events",
+   "topics": [
+    "frontend",
+    "speakers"
+   ],
+   "sourcePath": "/speakers/rosa-delgado/"
+  },
+  {
+   "slug": "frontend-ticket-checkout",
+   "category": "frontend/page",
+   "shows": "Ticket checkout modal (Open Studio Night, free): billing details, attendee information, event and order summary; no card field for a free ticket (not submitted)",
+   "topics": [
+    "frontend",
+    "tickets",
+    "checkout",
+    "modal"
+   ],
+   "sourcePath": "/events/open-studio-night/"
+  },
+  {
+   "slug": "frontend-ticket-checkout--two-attendees",
+   "category": "frontend/page",
+   "shows": "Ticket checkout modal with quantity 2: an attendee row per ticket (not submitted)",
+   "topics": [
+    "frontend",
+    "tickets",
+    "checkout",
+    "modal",
+    "attendees"
+   ],
+   "sourcePath": "/events/open-studio-night/"
+  },
+  {
+   "slug": "frontend-ticket-details--preview",
+   "category": "frontend/page",
+   "shows": "Ticket page preview (Settings > Payments > Ticket Page > Preview): the plugin’s sample ticket in the current colours",
+   "topics": [
+    "frontend",
+    "tickets",
+    "preview"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=payments"
+  },
+  {
+   "slug": "frontend-ticket-receipt--invalid-link",
+   "category": "frontend/page",
+   "shows": "Ticket receipt page opened without a receipt link: \"This link is not valid\"",
+   "topics": [
+    "frontend",
+    "tickets",
+    "receipt"
+   ],
+   "sourcePath": "/ticket-receipt/"
+  },
+  {
+   "slug": "frontend-ticket-receipt--preview",
+   "category": "frontend/page",
+   "shows": "Receipt page preview (Settings > Payments > Receipt Page > Preview): the plugin’s sample order in the current colours",
+   "topics": [
+    "frontend",
+    "tickets",
+    "receipt",
+    "preview"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=sugarcalendar-settings&section=payments"
+  },
+  {
+   "slug": "frontend-venue-gias-studio-loft-room",
+   "category": "frontend/page",
+   "shows": "Venue page (Gia’s Studio Loft Room): address, contact details and related events",
+   "topics": [
+    "frontend",
+    "venues"
+   ],
+   "sourcePath": "/venues/gias-studio-loft-room/"
+  },
+  {
+   "slug": "frontend-venue-gias-studio-main-hall",
+   "category": "frontend/page",
+   "shows": "Venue page (Gia’s Studio Main Hall): address, contact details and related events",
+   "topics": [
+    "frontend",
+    "venues"
+   ],
+   "sourcePath": "/venues/gias-studio-main-hall/"
+  },
+  {
+   "slug": "frontend-venue-riverside-market-square",
+   "category": "frontend/page",
+   "shows": "Venue page (Riverside Market Square): address, contact details and related events",
+   "topics": [
+    "frontend",
+    "venues"
+   ],
+   "sourcePath": "/venues/riverside-market-square/"
+  }
+ ],
+ "notes": ""
+}

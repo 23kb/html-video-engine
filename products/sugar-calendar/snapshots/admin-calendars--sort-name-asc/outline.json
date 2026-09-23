@@ -1,0 +1,639 @@
+{
+  "slug": "admin-calendars--sort-name-asc",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "list-screen-options",
+      "event": "click",
+      "selector": "#sugar-calendar-table-screen-options-toggle",
+      "count": 1
+    },
+    {
+      "label": "list-columns",
+      "event": "change",
+      "selector": "form > fieldset:nth-of-type(1) > label:nth-of-type(1) > input",
+      "count": 4
+    },
+    {
+      "label": "flyout-menu",
+      "event": "click",
+      "selector": "a.sc-flyout-button.sc-flyout-head",
+      "count": 1
+    },
+    {
+      "label": "color-picker-live",
+      "event": "sc:ready",
+      "selector": "body.wp-admin.wp-core-ui",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false,
+        "wired": "color-picker-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#sugar-calendar-header-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false,
+        "wired": "color-picker-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#sugar-calendar-table-screen-options-toggle",
+        "tag": "button",
+        "text": "Change columns to display",
+        "count": 1,
+        "hidden": false,
+        "wired": "list-screen-options",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true,
+        "wired": "color-picker-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sc-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-menu",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-item-1",
+        "tag": "a",
+        "text": "Join Community",
+        "count": 1,
+        "hidden": true,
+        "wired": "color-picker-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sc-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true,
+        "wired": "color-picker-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sugar-calendar-btn",
+        "tag": "a",
+        "text": "Add Calendar",
+        "count": 1,
+        "hidden": false,
+        "wired": "color-picker-live",
+        "wiredEvent": "sc:ready"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_inline_edit",
+        "tag": "input",
+        "text": "3364568b9b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-15",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-16",
+        "tag": "input",
+        "text": "16",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-17",
+        "tag": "input",
+        "text": "17",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-18",
+        "tag": "input",
+        "text": "18",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#parent",
+        "tag": "select",
+        "text": "None Classes Community Market My Calendar Private Hire Work…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submit",
+        "tag": "input",
+        "text": "Add New Calendar",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-calendars-per-page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-calendars-screen-options-nonce",
+        "tag": "input",
+        "text": "42f872bf39",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tag-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tag-name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tag-search-input",
+        "tag": "input",
+        "text": "Search Calendar...",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-slug",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#term-color",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#addtag",
+        "tag": "form",
+        "text": "Name The name is how it appears on your site. Slug The “slu…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-container",
+        "tag": "div",
+        "text": "Select bulk action Bulk actions Delete 5 items Calendars li…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-left",
+        "tag": "div",
+        "text": "Add New Calendar Name The name is how it appears on your si…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#col-right",
+        "tag": "div",
+        "text": "Select bulk action Bulk actions Delete 5 items Calendars li…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#color",
+        "tag": "th",
+        "text": "Color Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description",
+        "tag": "th",
+        "text": "Description Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description-description",
+        "tag": "p",
+        "text": "The description is not prominent by default; however, some …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#event",
+        "tag": "th",
+        "text": "Events",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inline_14",
+        "tag": "div",
+        "text": "My Calendarmy-calendar0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_15",
+        "tag": "div",
+        "text": "Classesclasses0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_16",
+        "tag": "div",
+        "text": "Workshopsworkshops0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_17",
+        "tag": "div",
+        "text": "Community Marketcommunity-market0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_18",
+        "tag": "div",
+        "text": "Private Hireprivate-hire0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-edit",
+        "tag": "tr",
+        "text": "Quick Edit Name Slug Color Update Calendar Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inlineedit",
+        "tag": "tbody",
+        "text": "Quick Edit Name Slug Color Update Calendar Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#name",
+        "tag": "th",
+        "text": "Name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#name-description",
+        "tag": "p",
+        "text": "The name is how it appears on your site.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#parent-description",
+        "tag": "p",
+        "text": "Assign a parent term to create a hierarchy. The term Jazz, …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#posts-filter",
+        "tag": "form",
+        "text": "Select bulk action Bulk actions Delete 5 items Calendars li…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#slug",
+        "tag": "th",
+        "text": "Slug Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#slug-description",
+        "tag": "p",
+        "text": "The “slug” is the URL-friendly version of the name. It is u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-admin-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-calendar-feeds-14",
+        "tag": "template",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-calendar-feeds-15",
+        "tag": "template",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-calendar-feeds-16",
+        "tag": "template",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-calendar-feeds-17",
+        "tag": "template",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-calendar-feeds-18",
+        "tag": "template",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tag-14",
+        "tag": "tr",
+        "text": "My Calendar Edit | Feeds | View The default calendar events…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-15",
+        "tag": "tr",
+        "text": "Select Classes Classes Edit | Feeds | Delete | View — No de…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-16",
+        "tag": "tr",
+        "text": "Select Workshops Workshops Edit | Feeds | Delete | View — N…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-17",
+        "tag": "tr",
+        "text": "Select Community Market Community Market Edit | Feeds | Del…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-18",
+        "tag": "tr",
+        "text": "Select Private Hire Private Hire Edit | Feeds | Delete | Vi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Select Classes Classes Edit | Feeds | Delete | View — No de…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-metabox__field-row",
+        "tag": "div",
+        "text": "Color Select ColorColor value Assign calendars a custom col…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-screen-options",
+        "tag": "div",
+        "text": "Columns Description Slug Events Color Items per page Save O…",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

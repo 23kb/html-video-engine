@@ -1,0 +1,1204 @@
+{
+  "slug": "admin-rsvp-edit-25-02",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "choices-dropdown",
+      "event": "click",
+      "selector": ".choices[data-type]",
+      "count": 2
+    },
+    {
+      "label": "flyout-menu",
+      "event": "click",
+      "selector": "a.sc-flyout-button.sc-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__edit__add-attendee-btn",
+        "tag": "div",
+        "text": "Add Another Attendee",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__edit__send-email__btn",
+        "tag": "a",
+        "text": "Send Confirmation Email",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_rsvp_going",
+        "tag": "div",
+        "text": "Going? ON",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".choices__button",
+        "tag": "button",
+        "text": "Remove item",
+        "count": 1,
+        "hidden": false,
+        "wired": "choices-dropdown",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-menu",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-item-1",
+        "tag": "a",
+        "text": "Join Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-insert-shortcode-confirm",
+        "tag": "button",
+        "text": "Add Shortcode",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-btn",
+        "tag": "a",
+        "text": "Back to All RSVPs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-toggle-control",
+        "tag": "span",
+        "text": "ON",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#active_post_lock",
+        "tag": "input",
+        "text": "1789850203:1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_hh",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_jj",
+        "tag": "input",
+        "text": "19",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_mm",
+        "tag": "input",
+        "text": "09",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_mn",
+        "tag": "input",
+        "text": "36",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hh",
+        "tag": "input",
+        "text": "14",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_hh",
+        "tag": "input",
+        "text": "14",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_jj",
+        "tag": "input",
+        "text": "19",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_mm",
+        "tag": "input",
+        "text": "09",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_mn",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_post_status",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden-post-password",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden-post-visibility",
+        "tag": "input",
+        "text": "public",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hiddenaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#jj",
+        "tag": "input",
+        "text": "19",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#meta-box-order-nonce",
+        "tag": "input",
+        "text": "46daf3e497",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mm",
+        "tag": "select",
+        "text": "01-Jan 02-Feb 03-Mar 04-Apr 05-May 06-Jun 07-Jul 08-Aug 09-…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mn",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_post_status",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_publish",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#originalaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_author",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_ID",
+        "tag": "input",
+        "text": "2156",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_name",
+        "tag": "input",
+        "text": "selma-brandt",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_password",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_status",
+        "tag": "select",
+        "text": "Published Pending Review Draft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_type",
+        "tag": "input",
+        "text": "sc_rsvp",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#publish",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#referredby",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rsvp_main_attendee_nonce",
+        "tag": "input",
+        "text": "ba2aaca327",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#save",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-all-calendars",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-calendars",
+        "tag": "select",
+        "text": "Classes Community Market My Calendar Private Hire Workshops",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-allow-user-change-display",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-display",
+        "tag": "select",
+        "text": "Month Week Day",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-featured-only",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-show-block-header",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-show-filters",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-show-search",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-allow-user-change-display",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-display",
+        "tag": "select",
+        "text": "List Grid Plain",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-events-per-page",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-featured-only",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-group-events-by-week",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-image-position",
+        "tag": "select",
+        "text": "Left Right",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-maximum-events-to-show",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-date-cards",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-descriptions",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-featured-images",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-filters",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-search",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-show-block-header",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ss",
+        "tag": "input",
+        "text": "12",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__delete__additional-attendees",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__edit__additional-attendees",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__main-attendee-id",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_rsvp_event",
+        "tag": "select",
+        "text": "Repair Café Kids Craft PartyToddler Sensory PlayArtist Talk…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_rsvp_event_email",
+        "tag": "input",
+        "text": "selma.brandt@example.com",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_rsvp_event_occurrence",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_rsvp_event_phone",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_rsvp_going",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_rsvp_name",
+        "tag": "input",
+        "text": "Selma Brandt",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-id",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-password",
+        "tag": "input",
+        "text": "password",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-private",
+        "tag": "input",
+        "text": "private",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-public",
+        "tag": "input",
+        "text": "public",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#sc-shortcode-helper-modal",
+        "tag": "div",
+        "text": "Select what you would like to insert Events Calendar Events…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility",
+        "tag": "div",
+        "text": "Visibility: Public Edit Edit visibility Public Password pro…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-display-options",
+        "tag": "div",
+        "text": "Display Month Week Day Show Block Header Allow Users to Cha…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-query-options",
+        "tag": "div",
+        "text": "Display events from all calendars Select Calendar to displa…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-section",
+        "tag": "div",
+        "text": "Select what you would like to insert Events Calendar Events…",
+        "count": 4,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#advanced-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#delete-action",
+        "tag": "div",
+        "text": "Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#major-publishing-actions",
+        "tag": "div",
+        "text": "Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#minor-publishing",
+        "tag": "div",
+        "text": "Status: Published Edit Edit status",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#minor-publishing-actions",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#misc-publishing-actions",
+        "tag": "div",
+        "text": "Status: Published Edit Edit status",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "Main Attendee Details Move up Move down Show or hide panel …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#password-span",
+        "tag": "span",
+        "text": "Password:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post",
+        "tag": "form",
+        "text": "Publish Move up Move down Show or hide panel Status: Publis…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Status: Publis…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-lock-dialog",
+        "tag": "div",
+        "text": "Saving revision… Your latest changes were saved as a revisi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-status-display",
+        "tag": "span",
+        "text": "Published",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-status-select",
+        "tag": "div",
+        "text": "Set status Published Pending Review Draft OK Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-visibility-display",
+        "tag": "span",
+        "text": "Public",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-visibility-select",
+        "tag": "div",
+        "text": "Public Password protected Password: Private OK Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postbox-container-1",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Status: Publis…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-2",
+        "tag": "div",
+        "text": "Main Attendee Details Move up Move down Show or hide panel …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#poststuff",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Status: Publis…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#publishing-action",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#save-action",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_rsvp_main_attendee",
+        "tag": "div",
+        "text": "Main Attendee Details Move up Move down Show or hide panel …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_rsvp_main_attendee-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_rsvp_main_attendee-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_rsvp_main_attendee-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_rsvp_main_attendee-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_rsvp_main_attendee-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_rsvp_main_attendee-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_rsvp_main_attendee-title",
+        "tag": "h2",
+        "text": "Main Attendee Details",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#side-sortables",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Status: Publis…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#slugdiv",
+        "tag": "div",
+        "text": "Slug Move up Move up Move down Move down Show or hide panel…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-title",
+        "tag": "h2",
+        "text": "Slug",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Status: Publis…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submitdiv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-title",
+        "tag": "h2",
+        "text": "Publish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submitpost",
+        "tag": "div",
+        "text": "Status: Published Edit Edit status Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-admin-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__edit__attendee-template",
+        "tag": "template",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__edit__event-occurrence",
+        "tag": "div",
+        "text": "Specific Occurrence",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_rsvp_event",
+        "tag": "div",
+        "text": "Event Repair Café Remove item",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_rsvp_event_email",
+        "tag": "div",
+        "text": "Email *",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_rsvp_event_occurrence",
+        "tag": "div",
+        "text": "Specific Occurrence",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_rsvp_event_phone",
+        "tag": "div",
+        "text": "Phone",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_rsvp_name",
+        "tag": "div",
+        "text": "Name *",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#timestamp",
+        "tag": "span",
+        "text": "Published on: Sep 19, 2026 at 14:10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#timestampdiv",
+        "tag": "fieldset",
+        "text": "Date and time Month 01-Jan 02-Feb 03-Mar 04-Apr 05-May 06-J…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "Kids Craft PartyToddler Sensory PlayArtist Talk: Clay and C…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-content",
+        "tag": "div",
+        "text": "Select what you would like to insert Events Calendar Events…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-field",
+        "tag": "div",
+        "text": "Display events from all calendars",
+        "count": 21,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-field-label",
+        "tag": "label",
+        "text": "Display events from all calendars",
+        "count": 21,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-field-options",
+        "tag": "div",
+        "text": "Display Month Week Day",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-option",
+        "tag": "label",
+        "text": "Events Calendar",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-options",
+        "tag": "div",
+        "text": "Events Calendar Events List",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-setting-field",
+        "tag": "span",
+        "text": "",
+        "count": 7,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-setting-label",
+        "tag": "span",
+        "text": "Name *",
+        "count": 7,
+        "hidden": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,447 @@
+{
+  "slug": "admin-events--day-04",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "events-screen-options",
+      "event": "click",
+      "selector": "#sugar-calendar-screen-options-toggle",
+      "count": 1
+    },
+    {
+      "label": "events-columns",
+      "event": "click",
+      "selector": "form > fieldset:nth-of-type(1) > label:nth-of-type(1) > input",
+      "count": 2
+    },
+    {
+      "label": "events-calendar-filter",
+      "event": "change",
+      "selector": "#sc_event_category",
+      "count": 1
+    },
+    {
+      "label": "events-filter-submit",
+      "event": "submit",
+      "selector": "form.sugar-calendar-item-filters",
+      "count": 3
+    },
+    {
+      "label": "choices-dropdown",
+      "event": "click",
+      "selector": "div.choices",
+      "count": 1
+    },
+    {
+      "label": "flyout-menu",
+      "event": "click",
+      "selector": "a.sc-flyout-button.sc-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-btn-notify-attendees",
+        "tag": "a",
+        "text": "Notify Attendees",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-screen-options-toggle",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": false,
+        "wired": "events-screen-options",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sugar-calendar-tags-filter-button",
+        "tag": "button",
+        "text": "Filter",
+        "count": 1,
+        "hidden": false,
+        "wired": "events-filter-submit",
+        "wiredEvent": "submit"
+      },
+      {
+        "sel": ".sc-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-menu",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-item-1",
+        "tag": "a",
+        "text": "Join Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-btn",
+        "tag": "a",
+        "text": "Add New Event",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-view-mode",
+        "tag": "a",
+        "text": "Month",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-view-mode-day",
+        "tag": "a",
+        "text": "Day",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-view-mode-list",
+        "tag": "a",
+        "text": "List",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-view-mode-week",
+        "tag": "a",
+        "text": "Week",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#sugar-calendar-table-grid-column-layout",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#cd",
+        "tag": "input",
+        "text": "4",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cm",
+        "tag": "select",
+        "text": "January February March April May June July August September…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cy",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "View",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#event-search-input",
+        "tag": "input",
+        "text": "Search Event...",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_category",
+        "tag": "select",
+        "text": "All Calendars No Calendars Classes Community Market My Cale…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-tags-filter",
+        "tag": "select",
+        "text": "beginnerholidaykidsoutdoorsold-outyoga",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#_goober",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#friday",
+        "tag": "div",
+        "text": "Friday, September 4, 2026",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#hour",
+        "tag": "div",
+        "text": "Week 37",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#posts-filter",
+        "tag": "form",
+        "text": "Switch to this month January February March April May June …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-admin-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-events",
+        "tag": "div",
+        "text": "Events Search All (0) | Featured (0) Switch to this month J…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-lite-sidebar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "beginnerholidaykidsoutdoorsold-outyoga",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-admin-content",
+        "tag": "div",
+        "text": "Events Search All (0) | Featured (0) Switch to this month J…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-screen-options",
+        "tag": "div",
+        "text": "Columns Week 37 Friday, September 4, 2026 Start of Week Sun…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-tags-filter",
+        "tag": "div",
+        "text": "Filter",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

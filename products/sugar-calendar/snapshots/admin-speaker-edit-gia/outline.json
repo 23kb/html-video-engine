@@ -1,0 +1,1952 @@
+{
+  "slug": "admin-speaker-edit-gia",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "choices-dropdown",
+      "event": "click",
+      "selector": "div.choices",
+      "count": 1
+    },
+    {
+      "label": "flyout-menu",
+      "event": "click",
+      "selector": "a.sc-flyout-button.sc-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#insert-media-button",
+        "tag": "button",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-preview",
+        "tag": "a",
+        "text": "Preview Changes (opens in a new tab)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#set-post-thumbnail",
+        "tag": "a",
+        "text": "Set featured image",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#speaker_description_editor-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#speaker_description_editor-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-add-snippet-toggle",
+        "tag": "button",
+        "text": "+ Choose Snippet",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-close-drawer",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-load-more",
+        "tag": "button",
+        "text": "Load more snippets",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-show-all-snippets",
+        "tag": "button",
+        "text": "3 Other Revisions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-menu",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-item-1",
+        "tag": "a",
+        "text": "Join Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-insert-shortcode-button",
+        "tag": "button",
+        "text": "Add Sugar Calendar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-insert-shortcode-confirm",
+        "tag": "button",
+        "text": "Add Shortcode",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-btn",
+        "tag": "a",
+        "text": "Back to All Speakers",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#wpcode-tab-body",
+        "tag": "div",
+        "text": "Add scripts below to the Body section of this page. Disable…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-tab-code",
+        "tag": "div",
+        "text": "Choose the snippets you want to run on this page. Please no…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-tab-footer",
+        "tag": "div",
+        "text": "Add scripts below to the Footer section of this page. Disab…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-tab-header",
+        "tag": "div",
+        "text": "Add scripts below to the Header section of this page. Disab…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-tab-revisions",
+        "tag": "div",
+        "text": "As you make changes to your page scripts and save, you will…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#_thumbnail_id",
+        "tag": "input",
+        "text": "-1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#active_post_lock",
+        "tag": "input",
+        "text": "1789830746:1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_hh",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_jj",
+        "tag": "input",
+        "text": "19",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_mm",
+        "tag": "input",
+        "text": "09",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_mn",
+        "tag": "input",
+        "text": "12",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hh",
+        "tag": "input",
+        "text": "18",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_hh",
+        "tag": "input",
+        "text": "18",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_jj",
+        "tag": "input",
+        "text": "18",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_mm",
+        "tag": "input",
+        "text": "09",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_mn",
+        "tag": "input",
+        "text": "41",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_post_status",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden-post-password",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden-post-visibility",
+        "tag": "input",
+        "text": "public",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hiddenaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#jj",
+        "tag": "input",
+        "text": "18",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#meta-box-order-nonce",
+        "tag": "input",
+        "text": "f9ee5298b6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mm",
+        "tag": "select",
+        "text": "01-Jan 02-Feb 03-Mar 04-Apr 05-May 06-Jun 07-Jul 08-Aug 09-…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mn",
+        "tag": "input",
+        "text": "41",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_post_status",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_publish",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#originalaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_author",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_ID",
+        "tag": "input",
+        "text": "2028",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_name",
+        "tag": "input",
+        "text": "gia",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_password",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_status",
+        "tag": "select",
+        "text": "Published Pending Review Draft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_type",
+        "tag": "input",
+        "text": "sc_speakers",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#publish",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_block",
+        "tag": "input",
+        "text": "b-quote",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_box",
+        "tag": "input",
+        "text": "box",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_button",
+        "tag": "input",
+        "text": "button",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_digg",
+        "tag": "input",
+        "text": "digg",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_facebook",
+        "tag": "input",
+        "text": "facebook",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_feedburner",
+        "tag": "input",
+        "text": "feedburner",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_learn_more",
+        "tag": "input",
+        "text": "learn_more",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_one_fourth",
+        "tag": "input",
+        "text": "one fourth",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_one_fourth_last",
+        "tag": "input",
+        "text": "one fourth last",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_one_half",
+        "tag": "input",
+        "text": "one half",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_one_half_last",
+        "tag": "input",
+        "text": "one half last",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_one_third",
+        "tag": "input",
+        "text": "one third",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_one_third_last",
+        "tag": "input",
+        "text": "one third last",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_protected",
+        "tag": "input",
+        "text": "protected",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_raw",
+        "tag": "input",
+        "text": "raw",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_retweet",
+        "tag": "input",
+        "text": "retweet",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_slide",
+        "tag": "input",
+        "text": "slide",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_slider",
+        "tag": "input",
+        "text": "slider",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_stumble",
+        "tag": "input",
+        "text": "stumble",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_three_fourth",
+        "tag": "input",
+        "text": "three fourth",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_three_fourth_last",
+        "tag": "input",
+        "text": "three fourth last",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_tooltip",
+        "tag": "input",
+        "text": "tooltip",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_twitter",
+        "tag": "input",
+        "text": "x",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_two_third",
+        "tag": "input",
+        "text": "two third",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ed_two_third_last",
+        "tag": "input",
+        "text": "two third last",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ins",
+        "tag": "input",
+        "text": "ins",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_more",
+        "tag": "input",
+        "text": "more",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#referredby",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#samplepermalinknonce",
+        "tag": "input",
+        "text": "325e4e683a",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#save",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-all-calendars",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-calendars",
+        "tag": "select",
+        "text": "Classes Community Market My Calendar Private Hire Workshops",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-allow-user-change-display",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-display",
+        "tag": "select",
+        "text": "Month Week Day",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-featured-only",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-show-block-header",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-show-filters",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_calendar-show-search",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-allow-user-change-display",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-display",
+        "tag": "select",
+        "text": "List Grid Plain",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-events-per-page",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-featured-only",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-group-events-by-week",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-image-position",
+        "tag": "select",
+        "text": "Left Right",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-maximum-events-to-show",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-date-cards",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-descriptions",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-featured-images",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-filters",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-sc_events_list-show-search",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-sh-show-block-header",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shortlink",
+        "tag": "input",
+        "text": "http://example.com/?p=2028",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_description_editor",
+        "tag": "textarea",
+        "text": "Gia founded the studio and still teaches most of our yoga a…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#speaker_description_nonce",
+        "tag": "input",
+        "text": "7ac50ebe20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_details_nonce",
+        "tag": "input",
+        "text": "3654e43a6d",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ss",
+        "tag": "input",
+        "text": "02",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_email",
+        "tag": "input",
+        "text": "gia@example.com",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_facebook",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_instagram",
+        "tag": "input",
+        "text": "https://example.com/instagram/gia",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_linkedin",
+        "tag": "input",
+        "text": "https://example.com/linkedin/gia",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_phone",
+        "tag": "input",
+        "text": "(555) 555-0120",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_title",
+        "tag": "input",
+        "text": "Founder, Yoga and Photography Teacher",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_twitter",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_website",
+        "tag": "input",
+        "text": "https://example.com/team/gia/",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_speaker_youtube",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#title",
+        "tag": "input",
+        "text": "Gia",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-id",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-password",
+        "tag": "input",
+        "text": "password",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-private",
+        "tag": "input",
+        "text": "private",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-public",
+        "tag": "input",
+        "text": "public",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-preview",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-search-snippets",
+        "tag": "input",
+        "text": "Search snippets",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-shortcode-helper-modal",
+        "tag": "div",
+        "text": "Select what you would like to insert Events Calendar Events…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility",
+        "tag": "div",
+        "text": "Visibility: Public Edit Edit visibility Public Password pro…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-display-options",
+        "tag": "div",
+        "text": "Display Month Week Day Show Block Header Allow Users to Cha…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-query-options",
+        "tag": "div",
+        "text": "Display events from all calendars Select Calendar to displa…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-section",
+        "tag": "div",
+        "text": "Select what you would like to insert Events Calendar Events…",
+        "count": 4,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#advanced-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#delete-action",
+        "tag": "div",
+        "text": "Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit-slug-box",
+        "tag": "div",
+        "text": "Permalink: http://example.com/speakers/gia/ ‎Edit Get Short…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit-slug-buttons",
+        "tag": "span",
+        "text": "Edit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editable-post-name",
+        "tag": "span",
+        "text": "gia",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editable-post-name-full",
+        "tag": "span",
+        "text": "gia",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#major-publishing-actions",
+        "tag": "div",
+        "text": "Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#minor-publishing",
+        "tag": "div",
+        "text": "Status: Published Edit Edit status",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#minor-publishing-actions",
+        "tag": "div",
+        "text": "Preview Changes (opens in a new tab)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#misc-publishing-actions",
+        "tag": "div",
+        "text": "Status: Published Edit Edit status",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "Speaker Details Move up Move down Show or hide panel Name t…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#password-span",
+        "tag": "span",
+        "text": "Password:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post",
+        "tag": "form",
+        "text": "Full Name Permalink: http://example.com/speakers/gia/ ‎Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body",
+        "tag": "div",
+        "text": "Full Name Permalink: http://example.com/speakers/gia/ ‎Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body-content",
+        "tag": "div",
+        "text": "Full Name Permalink: http://example.com/speakers/gia/ ‎Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-lock-dialog",
+        "tag": "div",
+        "text": "Saving revision… Your latest changes were saved as a revisi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-status-display",
+        "tag": "span",
+        "text": "Published",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-status-select",
+        "tag": "div",
+        "text": "Set status Published Pending Review Draft OK Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-visibility-display",
+        "tag": "span",
+        "text": "Public",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-visibility-select",
+        "tag": "div",
+        "text": "Public Password protected Password: Private OK Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postbox-container-1",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Status: Publis…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-2",
+        "tag": "div",
+        "text": "Speaker Details Move up Move down Show or hide panel Name t…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postimagediv",
+        "tag": "div",
+        "text": "Featured Image Move up Move down Show or hide panel Set fea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postimagediv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-title",
+        "tag": "h2",
+        "text": "Featured Image",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#poststuff",
+        "tag": "div",
+        "text": "Full Name Permalink: http://example.com/speakers/gia/ ‎Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-action",
+        "tag": "div",
+        "text": "Preview Changes (opens in a new tab)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#publishing-action",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_speaker_description_editor_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sample-permalink",
+        "tag": "span",
+        "text": "http://example.com/speakers/gia/",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#save-action",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#side-sortables",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Status: Publis…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#slugdiv",
+        "tag": "div",
+        "text": "Slug Move up Move up Move down Move down Show or hide panel…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-title",
+        "tag": "h2",
+        "text": "Slug",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_description_metabox",
+        "tag": "div",
+        "text": "Description Move up Move down Show or hide panel Add MediaA…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#speaker_description_metabox-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_description_metabox-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_description_metabox-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_description_metabox-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_description_metabox-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_description_metabox-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_description_metabox-title",
+        "tag": "h2",
+        "text": "Description",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#speaker_details_metabox",
+        "tag": "div",
+        "text": "Speaker Details Move up Move down Show or hide panel Name t…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#speaker_details_metabox-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_details_metabox-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_details_metabox-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_details_metabox-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_details_metabox-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_details_metabox-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#speaker_details_metabox-title",
+        "tag": "h2",
+        "text": "Speaker Details",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submitdiv",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Status: Publis…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submitdiv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-title",
+        "tag": "h2",
+        "text": "Publish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submitpost",
+        "tag": "div",
+        "text": "Status: Published Edit Edit status Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-admin-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_email",
+        "tag": "div",
+        "text": "Email",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_facebook",
+        "tag": "div",
+        "text": "Facebook",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_instagram",
+        "tag": "div",
+        "text": "Instagram",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_linkedin",
+        "tag": "div",
+        "text": "LinkedIn",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_phone",
+        "tag": "div",
+        "text": "Phone",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_title",
+        "tag": "div",
+        "text": "Title",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_twitter",
+        "tag": "div",
+        "text": "X (Twitter)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_website",
+        "tag": "div",
+        "text": "Website",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugarcalendar_speaker_youtube",
+        "tag": "div",
+        "text": "YouTube",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#timestamp",
+        "tag": "span",
+        "text": "Published on: Sep 18, 2026 at 18:41",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#timestampdiv",
+        "tag": "fieldset",
+        "text": "Date and time Month 01-Jan 02-Feb 03-Mar 04-Apr 05-May 06-J…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#title-prompt-text",
+        "tag": "label",
+        "text": "Full Name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#titlediv",
+        "tag": "div",
+        "text": "Full Name Permalink: http://example.com/speakers/gia/ ‎Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#titlewrap",
+        "tag": "div",
+        "text": "Full Name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-speaker_description_editor-editor-container",
+        "tag": "div",
+        "text": "Gia founded the studio and still teaches most of our yoga a…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-speaker_description_editor-editor-tools",
+        "tag": "div",
+        "text": "Add MediaAdd Sugar Calendar Visual Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-speaker_description_editor-media-buttons",
+        "tag": "div",
+        "text": "Add MediaAdd Sugar Calendar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-speaker_description_editor-wrap",
+        "tag": "div",
+        "text": "Add MediaAdd Sugar Calendar Visual Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-choose-snippets",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-chooser-spinner",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-snippets",
+        "tag": "div",
+        "text": "WPCode Page Scripts Move up Move down Show or hide panel",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-metabox-snippets-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-snippets-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-snippets-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-snippets-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-snippets-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-snippets-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-metabox-snippets-title",
+        "tag": "h2",
+        "text": "WPCode Page Scripts",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-picked-snippets",
+        "tag": "div",
+        "text": "Show site currency Page location Insert After Post Banner A…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-snippet-chooser",
+        "tag": "div",
+        "text": "Select snippets Load more snippets",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "ClassesCommunity MarketMy CalendarPrivate HireWorkshops",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-content",
+        "tag": "div",
+        "text": "Select what you would like to insert Events Calendar Events…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-field",
+        "tag": "div",
+        "text": "Display events from all calendars",
+        "count": 21,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-field-label",
+        "tag": "label",
+        "text": "Display events from all calendars",
+        "count": 21,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-field-options",
+        "tag": "div",
+        "text": "Display Month Week Day",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-option",
+        "tag": "label",
+        "text": "Events Calendar",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-sh-options",
+        "tag": "div",
+        "text": "Events Calendar Events List",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-setting-field",
+        "tag": "span",
+        "text": "",
+        "count": 9,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-setting-label",
+        "tag": "span",
+        "text": "Title",
+        "count": 9,
+        "hidden": false
+      }
+    ]
+  }
+}

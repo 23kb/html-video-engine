@@ -1,0 +1,473 @@
+{
+  "slug": "frontend-ticket-checkout--two-attendees",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "bootstrap-modal-open",
+      "event": "click",
+      "selector": "[data-target][data-toggle]",
+      "count": 2
+    },
+    {
+      "label": "bootstrap-modal-close",
+      "event": "click",
+      "selector": "#sc-event-ticketing-modal",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#sc-event-ticketing-buy-button",
+        "tag": "a",
+        "text": "Go to Checkout",
+        "count": 1,
+        "hidden": false,
+        "wired": "bootstrap-modal-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sc-event-ticketing-cancel",
+        "tag": "button",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": false,
+        "wired": "bootstrap-modal-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sc-event-ticketing-copy-billing-attendee",
+        "tag": "a",
+        "text": "Copy from Billing Details.",
+        "count": 1,
+        "hidden": false,
+        "wired": "bootstrap-modal-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sc-event-ticketing-purchase",
+        "tag": "button",
+        "text": "Purchase",
+        "count": 1,
+        "hidden": false,
+        "wired": "bootstrap-modal-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-frontend-single-event__details__add-to-calendar__menu__item-apple",
+        "tag": "a",
+        "text": "Apple Calendar",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-frontend-single-event__details__add-to-calendar__menu__item-download",
+        "tag": "a",
+        "text": "Download",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-frontend-single-event__details__add-to-calendar__menu__item-google",
+        "tag": "a",
+        "text": "Google Calendar",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-frontend-single-event__details__add-to-calendar__menu__item-microsoft",
+        "tag": "a",
+        "text": "Microsoft Outlook",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#sc_et_event_id",
+        "tag": "input",
+        "text": "23",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_et_nonce",
+        "tag": "input",
+        "text": "0ca082bacf",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_et_quantity",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc_et_ticket_price",
+        "tag": "input",
+        "text": "0.00",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-event-ticketing-email",
+        "tag": "input",
+        "text": "Enter email address",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-first-name",
+        "tag": "input",
+        "text": "Your first name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-last-name",
+        "tag": "input",
+        "text": "Your last name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-quantity",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#sc-event-ticketing-modal",
+        "tag": "div",
+        "text": "Event Tickets Billing Details First Name* Last Name* Email …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-modal-attendee-fieldset",
+        "tag": "fieldset",
+        "text": "Attendee Information Enter the name and email of all attend…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-modal-attendee-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-modal-billing-fieldset",
+        "tag": "fieldset",
+        "text": "Billing Details First Name* Last Name* Email Address*",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-modal-payment-fieldset",
+        "tag": "fieldset",
+        "text": "Payment Card",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-event-ticketing-modalLabel",
+        "tag": "h3",
+        "text": "Event Tickets",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-et-modal-content",
+        "tag": "div",
+        "text": "Event Tickets Billing Details First Name* Last Name* Email …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-et-modal-header",
+        "tag": "div",
+        "text": "Event Tickets",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-event-ticketing-price-wrap__add-to-cart-section",
+        "tag": "div",
+        "text": "Go to Checkout 30 available",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#content-area",
+        "tag": "div",
+        "text": "Open Studio Night by Gia | Sep 18, 2026 Buy Tickets - Free …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#divi-style-inline-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#et-boc",
+        "tag": "div",
+        "text": "Open Studio Night by Gia | Sep 18, 2026 Buy Tickets - Free …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#et-critical-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#et-main-area",
+        "tag": "div",
+        "text": "Open Studio Night by Gia | Sep 18, 2026 Buy Tickets - Free …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#fit-vids-style",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#left-area",
+        "tag": "div",
+        "text": "Open Studio Night by Gia | Sep 18, 2026 Buy Tickets - Free …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-content",
+        "tag": "div",
+        "text": "Open Studio Night by Gia | Sep 18, 2026 Buy Tickets - Free …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#page-container",
+        "tag": "div",
+        "text": "Open Studio Night by Gia | Sep 18, 2026 Buy Tickets - Free …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-2094",
+        "tag": "article",
+        "text": "Open Studio Night by Gia | Sep 18, 2026 Buy Tickets - Free …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_details_2094",
+        "tag": "div",
+        "text": "Buy Tickets - Free Date: September 21, 2026 Add to Calendar…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-card-element",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-event-ticketing-card-errors",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-event-ticketing-checkout",
+        "tag": "form",
+        "text": "Event Tickets Billing Details First Name* Last Name* Email …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-checkout-main",
+        "tag": "div",
+        "text": "Billing Details First Name* Last Name* Email Address* Atten…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-checkout-total",
+        "tag": "span",
+        "text": "Free",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-checkout-totals",
+        "tag": "div",
+        "text": "Event Summary Event: Open Studio Night Date: September 21, …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-checkout-totals-total-wrap",
+        "tag": "p",
+        "text": "Total: Free",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-price-wrap",
+        "tag": "div",
+        "text": "Qty Free per ticket Go to Checkout 30 available",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-quantity-span",
+        "tag": "span",
+        "text": "2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-event-ticketing-wrap",
+        "tag": "div",
+        "text": "Event Tickets Qty Free per ticket Go to Checkout 30 availab…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-block-group-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-heading-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-latest-comments-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-latest-posts-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-library-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-search-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpf-frontend-canonical",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-et-card-header",
+        "tag": "div",
+        "text": "Event Tickets",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-et-container",
+        "tag": "div",
+        "text": "Qty Free per ticket Go to Checkout 30 available",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-et-label",
+        "tag": "label",
+        "text": "First Name*",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-et-row",
+        "tag": "div",
+        "text": "Qty Free per ticket Go to Checkout 30 available",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-event-ticketing-price-wrap__add-to-cart-section__btn-container",
+        "tag": "div",
+        "text": "Go to Checkout",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-frontend-single-event__details-row",
+        "tag": "div",
+        "text": "Date: September 21, 2026 Add to Calendar",
+        "count": 5,
+        "hidden": false
+      }
+    ]
+  }
+}

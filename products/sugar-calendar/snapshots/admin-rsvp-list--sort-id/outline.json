@@ -1,0 +1,663 @@
+{
+  "slug": "admin-rsvp-list--sort-id",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "choices-dropdown",
+      "event": "click",
+      "selector": "div.choices",
+      "count": 1
+    },
+    {
+      "label": "flyout-menu",
+      "event": "click",
+      "selector": "a.sc-flyout-button.sc-flyout-head",
+      "count": 1
+    },
+    {
+      "label": "notify-attendees-open",
+      "event": "click",
+      "selector": "#sugar-calendar-btn-notify-attendees",
+      "count": 1
+    },
+    {
+      "label": "notify-attendees-preselected",
+      "event": "click",
+      "selector": "#sugar-calendar-btn-notify-attendees",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-rsvp-admin__add-new-btn",
+        "tag": "a",
+        "text": "Add New Attendee",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-btn-notify-attendees",
+        "tag": "a",
+        "text": "Notify Attendees",
+        "count": 1,
+        "hidden": false,
+        "wired": "notify-attendees-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sugar-calendar-header-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__list__cog-form-wrapper__submit__button",
+        "tag": "button",
+        "text": "Save Options",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__list__cog-icon",
+        "tag": "button",
+        "text": "Change columns to display",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__subheader__right__export-btn",
+        "tag": "a",
+        "text": "Export List",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-menu",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-item-1",
+        "tag": "a",
+        "text": "Join Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-screen-option-pagination_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-screen-option-view_show_additional_attendees",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-attendees",
+        "tag": "input",
+        "text": "Search Attendee...",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar_calendar_rsvp_admin_list_cog_settings_nonce",
+        "tag": "input",
+        "text": "9415d75e7f",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sugarcalendar_rsvp_event",
+        "tag": "select",
+        "text": "Kids Craft PartyRepair CaféToddler Sensory PlayArtist Talk:…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#_goober",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#attendee_name",
+        "tag": "th",
+        "text": "Attendee Name Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#email",
+        "tag": "th",
+        "text": "Email",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#event",
+        "tag": "th",
+        "text": "Event",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#id",
+        "tag": "th",
+        "text": "ID",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_date",
+        "tag": "th",
+        "text": "Date Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rsvp-2072",
+        "tag": "tr",
+        "text": "Alice Moreau Edit|Send Confirmation Email|Trash alice.morea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2073",
+        "tag": "tr",
+        "text": "Daniel Ortiz Edit|Send Confirmation Email|Trash daniel.orti…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2074",
+        "tag": "tr",
+        "text": "Farah Nasser Edit|Send Confirmation Email|Trash farah.nasse…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2075",
+        "tag": "tr",
+        "text": "Ivan Kovac Edit|Send Confirmation Email|Trash ivan.kovac@ex…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2076",
+        "tag": "tr",
+        "text": "Julia Sandberg Edit|Send Confirmation Email|Trash julia.san…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2077",
+        "tag": "tr",
+        "text": "Karim Haddad Edit|Send Confirmation Email|Trash karim.hadda…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2078",
+        "tag": "tr",
+        "text": "Lena Fischer Edit|Send Confirmation Email|Trash lena.fische…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2079",
+        "tag": "tr",
+        "text": "Miguel Santos Edit|Send Confirmation Email|Trash miguel.san…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2080",
+        "tag": "tr",
+        "text": "Nadia Rahman Edit|Send Confirmation Email|Trash nadia.rahma…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2081",
+        "tag": "tr",
+        "text": "Oscar Bright Edit|Send Confirmation Email|Trash oscar.brigh…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2082",
+        "tag": "tr",
+        "text": "Petra Novak Edit|Send Confirmation Email|Trash petra.novak@…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2083",
+        "tag": "tr",
+        "text": "Quinn Adeyemi Edit|Send Confirmation Email|Trash quinn.adey…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2155",
+        "tag": "tr",
+        "text": "Martin Hale Edit|Send Confirmation Email|Trash martin.hale@…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2156",
+        "tag": "tr",
+        "text": "Selma Brandt Edit|Send Confirmation Email|Trash selma.brand…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2157",
+        "tag": "tr",
+        "text": "Kofi Mensah Edit|Send Confirmation Email|Trash kofi.mensah@…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2158",
+        "tag": "tr",
+        "text": "Irene Walsh Edit|Send Confirmation Email|Trash irene.walsh@…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2159",
+        "tag": "tr",
+        "text": "Dmitri Volkov Edit|Send Confirmation Email|Trash dmitri.vol…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2160",
+        "tag": "tr",
+        "text": "Carmen Ruiz Edit|Send Confirmation Email|Trash carmen.ruiz@…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2161",
+        "tag": "tr",
+        "text": "Harold Finch Edit|Send Confirmation Email|Trash harold.finc…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rsvp-2162",
+        "tag": "tr",
+        "text": "Beth Ingram Edit|Send Confirmation Email|Trash beth.ingram@…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#status",
+        "tag": "th",
+        "text": "Status",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-admin-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-lite-sidebar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__list__cog-form-wrapper",
+        "tag": "div",
+        "text": "Columns Attendee NameEmailEventTotalIDStatusDate Items per …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__list__cog-form-wrapper__body",
+        "tag": "div",
+        "text": "Columns Attendee NameEmailEventTotalIDStatusDate",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__list__cog-form-wrapper__body__title",
+        "tag": "legend",
+        "text": "Columns",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__list__cog-form-wrapper__submit",
+        "tag": "div",
+        "text": "Save Options",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__subheader",
+        "tag": "div",
+        "text": "RSVP Add New Attendee Notify Attendees Export List",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__subheader__left",
+        "tag": "div",
+        "text": "RSVP Add New Attendee",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__subheader__right",
+        "tag": "div",
+        "text": "Notify Attendees Export List",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-rsvp__admin__subheader__right__cog",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 3",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Alice Moreau Edit|Send Confirmation Email|Trash alice.morea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#total_attendees",
+        "tag": "th",
+        "text": "Total Sort ascending.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "Kids Craft PartyRepair CaféToddler Sensory PlayArtist Talk:…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      }
+    ]
+  }
+}

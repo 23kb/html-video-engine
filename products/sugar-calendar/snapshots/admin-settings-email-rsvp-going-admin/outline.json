@@ -1,0 +1,482 @@
+{
+  "slug": "admin-settings-email-rsvp-going-admin",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "flyout-menu",
+      "event": "click",
+      "selector": "a.sc-flyout-button.sc-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#insert-media-button",
+        "tag": "button",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_rsvp_email_admin_going_message-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_rsvp_email_admin_going_message-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-email_enabled_sc_rsvp_going_email_to_admin",
+        "tag": "div",
+        "text": "Status ON Disabling stops automatic delivery. Manual resend…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-menu",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-item-1",
+        "tag": "a",
+        "text": "Join Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-insert-shortcode-button",
+        "tag": "button",
+        "text": "Add Sugar Calendar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-btn",
+        "tag": "button",
+        "text": "Save Settings",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-btn-secondary",
+        "tag": "button",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-toggle-control",
+        "tag": "span",
+        "text": "ON",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#qt_sc_rsvp_email_admin_going_message_block",
+        "tag": "input",
+        "text": "b-quote",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_sc_rsvp_email_admin_going_message_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_sc_rsvp_email_admin_going_message_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_sc_rsvp_email_admin_going_message_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_sc_rsvp_email_admin_going_message_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_sc_rsvp_email_admin_going_message_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_sc_rsvp_email_admin_going_message_ins",
+        "tag": "input",
+        "text": "ins",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_sc_rsvp_email_admin_going_message_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_sc_rsvp_email_admin_going_message_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_sc_rsvp_email_admin_going_message_more",
+        "tag": "input",
+        "text": "more",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_sc_rsvp_email_admin_going_message_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_sc_rsvp_email_admin_going_message_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_sc_rsvp_email_admin_going_message_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_rsvp_email_admin_going_message",
+        "tag": "textarea",
+        "text": "<p>A new RSVP response has been received.</p> <p>RSVP RSVP …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-email_enabled_sc_rsvp_going_email_to_admin",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sc_rsvp_email_admin_going_subject",
+        "tag": "input",
+        "text": "New RSVP for {event_title}: {name} is going",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_sc_rsvp_email_admin_going_message_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-admin-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sc_rsvp_email_admin_going_message",
+        "tag": "div",
+        "text": "Email Message Add Media Add Sugar Calendar Visual Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sc_rsvp_email_admin_going_subject",
+        "tag": "div",
+        "text": "Email Subject The subject line of the notification sent to …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-settings",
+        "tag": "div",
+        "text": "License & Usage General Payments Emails Feeds RSVP Integrat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-settings-emails-configuration-back-to-emails",
+        "tag": "div",
+        "text": "Back to Emails",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-sc_rsvp_email_admin_going_message-editor-container",
+        "tag": "div",
+        "text": "<p>A new RSVP response has been received.</p> <p>RSVP RSVP …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-sc_rsvp_email_admin_going_message-editor-tools",
+        "tag": "div",
+        "text": "Add Media Add Sugar Calendar Visual Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-sc_rsvp_email_admin_going_message-media-buttons",
+        "tag": "div",
+        "text": "Add Media Add Sugar Calendar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-sc_rsvp_email_admin_going_message-wrap",
+        "tag": "div",
+        "text": "Add Media Add Sugar Calendar Visual Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-admin-content",
+        "tag": "div",
+        "text": "Settings Back to Emails RSVP “Going” Email To Admin Status …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-setting-field",
+        "tag": "span",
+        "text": "ON Disabling stops automatic delivery. Manual resend action…",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-setting-label",
+        "tag": "span",
+        "text": "Status",
+        "count": 3,
+        "hidden": false
+      }
+    ]
+  }
+}

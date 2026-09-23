@@ -1,0 +1,461 @@
+{
+  "slug": "admin-settings-payments",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "payments-test-mode-link",
+      "event": "change",
+      "selector": "#sugar-calendar-setting-sandbox",
+      "count": 1
+    },
+    {
+      "label": "flyout-menu",
+      "event": "click",
+      "selector": "a.sc-flyout-button.sc-flyout-head",
+      "count": 1
+    },
+    {
+      "label": "color-scheme-live",
+      "event": "sc:ready",
+      "selector": "body.wp-admin.wp-core-ui",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false,
+        "wired": "color-scheme-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#sugar-calendar-header-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false,
+        "wired": "color-scheme-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-attendee_fields_is_required",
+        "tag": "div",
+        "text": "Attendee Information is Required OFF Visitors purchasing yo…",
+        "count": 1,
+        "hidden": false,
+        "wired": "color-scheme-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sandbox",
+        "tag": "div",
+        "text": "Test Mode OFF While in test mode no live payments are proce…",
+        "count": 1,
+        "hidden": false,
+        "wired": "color-scheme-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-use_legacy_template",
+        "tag": "div",
+        "text": "Use Legacy Template OFF Use the legacy HTML table instead o…",
+        "count": 1,
+        "hidden": false,
+        "wired": "color-scheme-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sc-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true,
+        "wired": "color-scheme-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sc-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-menu",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-item-1",
+        "tag": "a",
+        "text": "Join Community",
+        "count": 1,
+        "hidden": true,
+        "wired": "color-scheme-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sc-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true,
+        "wired": "color-scheme-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sugar-calendar-btn",
+        "tag": "button",
+        "text": "Preview",
+        "count": 3,
+        "hidden": false,
+        "wired": "color-scheme-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sugar-calendar-btn-primary",
+        "tag": "button",
+        "text": "Save Settings",
+        "count": 1,
+        "hidden": false,
+        "wired": "color-scheme-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sugar-calendar-stripe-connect",
+        "tag": "a",
+        "text": "Connect with",
+        "count": 1,
+        "hidden": false,
+        "wired": "color-scheme-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sugar-calendar-toggle-control",
+        "tag": "span",
+        "text": "OFF",
+        "count": 3,
+        "hidden": false,
+        "wired": "color-scheme-live",
+        "wiredEvent": "sc:ready"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#sugar-calendar-setting-attendee_fields_is_required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-receipt_page",
+        "tag": "select",
+        "text": "Catering Request Contact Contact Us Gia's Studio Events Cal…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sandbox",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-sc_et_currency",
+        "tag": "select",
+        "text": "US Dollar Euro Argentine Peso Australian Dollar Bangladeshi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sc_et_currency_position",
+        "tag": "select",
+        "text": "Before ($10) After (10$)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sc_et_decimal_separator",
+        "tag": "input",
+        "text": ".",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sc_et_thousands_separator",
+        "tag": "input",
+        "text": ",",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-sc_et_ticket_page",
+        "tag": "select",
+        "text": "Catering Request Contact Contact Us Gia's Studio Events Cal…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-ticketing_pages_color_accent",
+        "tag": "input",
+        "text": "#ff641f",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-ticketing_pages_color_background",
+        "tag": "input",
+        "text": "#e9eaec",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-ticketing_pages_color_body",
+        "tag": "input",
+        "text": "#ffffff",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-ticketing_pages_color_text",
+        "tag": "input",
+        "text": "#333333",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-use_legacy_template",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-admin-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-color_scheme",
+        "tag": "div",
+        "text": "Color Scheme Background Body Text Accent",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-receipt_page",
+        "tag": "div",
+        "text": "Payment Success Page Catering Request Contact Contact Us Gi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sc_et_currency",
+        "tag": "div",
+        "text": "Currency US Dollar Euro Argentine Peso Australian Dollar Ba…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sc_et_currency_position",
+        "tag": "div",
+        "text": "Currency Symbol Position Before ($10) After (10$) Choose th…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sc_et_decimal_separator",
+        "tag": "div",
+        "text": "Decimal Separator The symbol to separate decimal points. Us…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sc_et_thousands_separator",
+        "tag": "div",
+        "text": "Thousands Separator The symbol to separate thousandths. Usu…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sc_et_ticket_page",
+        "tag": "div",
+        "text": "Ticket Details Page Catering Request Contact Contact Us Gia…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-stripe-connect",
+        "tag": "div",
+        "text": "Connection Status Connect with Securely connect to Stripe w…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-stripe-connection",
+        "tag": "div",
+        "text": "Stripe Easily collect credit card payments with Stripe. For…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-stripe-connection",
+        "tag": "h4",
+        "text": "Stripe",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-settings",
+        "tag": "div",
+        "text": "License & Usage General Payments Emails Feeds RSVP Integrat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-admin-content",
+        "tag": "div",
+        "text": "Settings Stripe Easily collect credit card payments with St…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-color-input",
+        "tag": "span",
+        "text": "Background",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-setting-field",
+        "tag": "span",
+        "text": "Stripe Easily collect credit card payments with Stripe. For…",
+        "count": 14,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-setting-field-row",
+        "tag": "span",
+        "text": "Catering Request Contact Contact Us Gia's Studio Events Cal…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-setting-label",
+        "tag": "span",
+        "text": "Connection Status",
+        "count": 11,
+        "hidden": false
+      }
+    ]
+  }
+}

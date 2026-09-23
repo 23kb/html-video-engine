@@ -1,0 +1,384 @@
+{
+  "slug": "admin-tools-export",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "flyout-menu",
+      "event": "click",
+      "selector": "a.sc-flyout-button.sc-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-menu",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-item-1",
+        "tag": "a",
+        "text": "Join Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-btn",
+        "tag": "button",
+        "text": "Export",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#sc_admin_tools_export_format_0",
+        "tag": "input",
+        "text": "json",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_admin_tools_export_format_1",
+        "tag": "input",
+        "text": "csv",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-checkbox-calendars",
+        "tag": "input",
+        "text": "calendars",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-checkbox-custom_fields",
+        "tag": "input",
+        "text": "custom_fields",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-checkbox-events",
+        "tag": "input",
+        "text": "events",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-checkbox-orders",
+        "tag": "input",
+        "text": "orders",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-checkbox-registration_responses",
+        "tag": "input",
+        "text": "registration_responses",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-checkbox-speakers",
+        "tag": "input",
+        "text": "speakers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-checkbox-tags",
+        "tag": "input",
+        "text": "tags",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-checkbox-venues",
+        "tag": "input",
+        "text": "venues",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-date-range",
+        "tag": "input",
+        "text": "Custom date range",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-admin-tools-export-date-range-end",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-admin-tools-export-date-range-start",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".sc-admin-tools-section-label",
+        "tag": "h4",
+        "text": "Select data to export",
+        "count": 3,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-context-calendars",
+        "tag": "li",
+        "text": "Calendars",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-context-custom_fields",
+        "tag": "li",
+        "text": "Custom Fields",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-context-events",
+        "tag": "li",
+        "text": "Events",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-context-orders",
+        "tag": "li",
+        "text": "Tickets, Orders and Attendees",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-context-registration_responses",
+        "tag": "li",
+        "text": "Registration Responses",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-context-speakers",
+        "tag": "li",
+        "text": "Speakers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-context-tags",
+        "tag": "li",
+        "text": "Tags",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-context-venues",
+        "tag": "li",
+        "text": "Venues",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-admin-tools-export-form",
+        "tag": "form",
+        "text": "Select data to export Events Custom Fields Calendars Ticket…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-admin-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-tools",
+        "tag": "div",
+        "text": "Import Export AI MCP Tools Export Select the Sugar Calendar…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-admin-tools-form-content",
+        "tag": "div",
+        "text": "Select data to export Events Custom Fields Calendars Ticket…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-admin-content",
+        "tag": "div",
+        "text": "Tools Export Select the Sugar Calendar data that you would …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-setting-field",
+        "tag": "span",
+        "text": "Export",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-setting-row",
+        "tag": "div",
+        "text": "Export",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

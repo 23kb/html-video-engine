@@ -1,0 +1,656 @@
+{
+  "slug": "admin-tags",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "flyout-menu",
+      "event": "click",
+      "selector": "a.sc-flyout-button.sc-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-menu",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-item-1",
+        "tag": "a",
+        "text": "Join Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-btn",
+        "tag": "a",
+        "text": "Add New Tag",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_inline_edit",
+        "tag": "input",
+        "text": "c6c8f0fe9a",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-19",
+        "tag": "input",
+        "text": "19",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-20",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-21",
+        "tag": "input",
+        "text": "21",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-22",
+        "tag": "input",
+        "text": "22",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-23",
+        "tag": "input",
+        "text": "23",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-24",
+        "tag": "input",
+        "text": "24",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-25",
+        "tag": "input",
+        "text": "25",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-26",
+        "tag": "input",
+        "text": "26",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-27",
+        "tag": "input",
+        "text": "27",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-28",
+        "tag": "input",
+        "text": "28",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-29",
+        "tag": "input",
+        "text": "29",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-30",
+        "tag": "input",
+        "text": "30",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submit",
+        "tag": "input",
+        "text": "Add New Tag",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tag-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tag-name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tag-search-input",
+        "tag": "input",
+        "text": "Search Tag..",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-slug",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#addtag",
+        "tag": "form",
+        "text": "Name The name is how it appears on your site. Slug The “slu…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-container",
+        "tag": "div",
+        "text": "Select bulk action Bulk actions Delete 12 items Tags list T…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-left",
+        "tag": "div",
+        "text": "Add New Tag Name The name is how it appears on your site. S…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#col-right",
+        "tag": "div",
+        "text": "Select bulk action Bulk actions Delete 12 items Tags list T…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description",
+        "tag": "th",
+        "text": "Description Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description-description",
+        "tag": "p",
+        "text": "The description is not prominent by default; however, some …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#event",
+        "tag": "th",
+        "text": "Events",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inline_19",
+        "tag": "div",
+        "text": "yogayoga0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_20",
+        "tag": "div",
+        "text": "kidskids0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_21",
+        "tag": "div",
+        "text": "beginnerbeginner0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_22",
+        "tag": "div",
+        "text": "outdooroutdoor0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_23",
+        "tag": "div",
+        "text": "holidayholiday0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_24",
+        "tag": "div",
+        "text": "sold-outsold-out0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_25",
+        "tag": "div",
+        "text": "ceramicsceramics0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_26",
+        "tag": "div",
+        "text": "printmakingprintmaking0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_27",
+        "tag": "div",
+        "text": "familyfamily0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_28",
+        "tag": "div",
+        "text": "freefree0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_29",
+        "tag": "div",
+        "text": "eveningevening0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_30",
+        "tag": "div",
+        "text": "communitycommunity0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-edit",
+        "tag": "tr",
+        "text": "Quick Edit Name Slug Update Tag Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inlineedit",
+        "tag": "tbody",
+        "text": "Quick Edit Name Slug Update Tag Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#name",
+        "tag": "th",
+        "text": "Name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#name-description",
+        "tag": "p",
+        "text": "The name is how it appears on your site.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#posts-filter",
+        "tag": "form",
+        "text": "Select bulk action Bulk actions Delete 12 items Tags list T…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#slug",
+        "tag": "th",
+        "text": "Slug Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#slug-description",
+        "tag": "p",
+        "text": "The “slug” is the URL-friendly version of the name. It is u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-admin-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tag-19",
+        "tag": "tr",
+        "text": "Select yoga yoga Edit | Quick Edit | Delete | View — No des…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-20",
+        "tag": "tr",
+        "text": "Select kids kids Edit | Quick Edit | Delete | View — No des…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-21",
+        "tag": "tr",
+        "text": "Select beginner beginner Edit | Quick Edit | Delete | View …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-22",
+        "tag": "tr",
+        "text": "Select outdoor outdoor Edit | Quick Edit | Delete | View — …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-23",
+        "tag": "tr",
+        "text": "Select holiday holiday Edit | Quick Edit | Delete | View — …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-24",
+        "tag": "tr",
+        "text": "Select sold-out sold-out Edit | Quick Edit | Delete | View …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-25",
+        "tag": "tr",
+        "text": "Select ceramics ceramics Edit | Quick Edit | Delete | View …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-26",
+        "tag": "tr",
+        "text": "Select printmaking printmaking Edit | Quick Edit | Delete |…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-27",
+        "tag": "tr",
+        "text": "Select family family Edit | Quick Edit | Delete | View — No…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-28",
+        "tag": "tr",
+        "text": "Select free free Edit | Quick Edit | Delete | View — No des…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-29",
+        "tag": "tr",
+        "text": "Select evening evening Edit | Quick Edit | Delete | View — …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-30",
+        "tag": "tr",
+        "text": "Select community community Edit | Quick Edit | Delete | Vie…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Select beginner beginner Edit | Quick Edit | Delete | View …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      }
+    ]
+  }
+}

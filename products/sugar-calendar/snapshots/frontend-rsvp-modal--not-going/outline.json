@@ -1,0 +1,406 @@
+{
+  "slug": "frontend-rsvp-modal--not-going",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "bootstrap-modal-open",
+      "event": "click",
+      "selector": "a[data-target][data-toggle]",
+      "count": 3
+    },
+    {
+      "label": "bootstrap-modal-close",
+      "event": "click",
+      "selector": "#sc-rsvp-frontend-modal__response",
+      "count": 1
+    },
+    {
+      "label": "rsvp-add-attendee",
+      "event": "click",
+      "selector": "#sc-rsvp-frontend-modal__response__add-attendees",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#sc-rsvp-frontend-modal__response__add-attendees",
+        "tag": "a",
+        "text": "Add",
+        "count": 1,
+        "hidden": true,
+        "wired": "bootstrap-modal-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sc-rsvp-frontend-modal__response__submit",
+        "tag": "a",
+        "text": "Submit",
+        "count": 1,
+        "hidden": false,
+        "wired": "bootstrap-modal-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sc-rsvp-frontend-modal__verify-email__submit",
+        "tag": "a",
+        "text": "Submit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-frontend-single-event__details__add-to-calendar__menu__item-apple",
+        "tag": "a",
+        "text": "Apple Calendar",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-frontend-single-event__details__add-to-calendar__menu__item-download",
+        "tag": "a",
+        "text": "Download",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-frontend-single-event__details__add-to-calendar__menu__item-google",
+        "tag": "a",
+        "text": "Google Calendar",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-frontend-single-event__details__add-to-calendar__menu__item-microsoft",
+        "tag": "a",
+        "text": "Microsoft Outlook",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-rsvp__btn",
+        "tag": "a",
+        "text": "Going",
+        "count": 6,
+        "hidden": false,
+        "wired": "bootstrap-modal-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-rsvp__btn-secondary",
+        "tag": "a",
+        "text": "Not Going",
+        "count": 1,
+        "hidden": false,
+        "wired": "bootstrap-modal-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-rsvp-frontend-actions__already-registered",
+        "tag": "a",
+        "text": "Already registered?",
+        "count": 1,
+        "hidden": false,
+        "wired": "bootstrap-modal-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-rsvp-frontend-modal__response__label-close",
+        "tag": "span",
+        "text": "Close",
+        "count": 1,
+        "hidden": true,
+        "wired": "bootstrap-modal-close",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#sc-rsvp__form__email",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-rsvp__form__full-name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-rsvp__form__phone",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-rsvp-frontend-modal__verify-email__field",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#sc-rsvp-frontend-modal__response",
+        "tag": "div",
+        "text": "Please add your details to submit your response Your Detail…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-rsvp-frontend-modal__response__add-attendees__orig",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-rsvp-frontend-modal__response__add-attendees-btn-row",
+        "tag": "div",
+        "text": "Add",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-rsvp-frontend-modal__response__default-actions",
+        "tag": "div",
+        "text": "Going Not Going Already registered?",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-rsvp-frontend-modal__response__form",
+        "tag": "form",
+        "text": "Your Details Full Name* Phone Email Address* Event Summary …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-rsvp-frontend-modal__response__form__modalLabel",
+        "tag": "h3",
+        "text": "Please add your details to submit your response",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-rsvp-frontend-modal__response__max-permitted",
+        "tag": "div",
+        "text": "Max 2 permitted",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-rsvp-frontend-modal__verify-email",
+        "tag": "div",
+        "text": "Verify your email address We will send you a verification l…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#content-area",
+        "tag": "div",
+        "text": "Kids Craft Party by Gia | Sep 18, 2026 kids Date: September…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#divi-style-inline-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#et-boc",
+        "tag": "div",
+        "text": "Kids Craft Party by Gia | Sep 18, 2026 kids Date: September…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#et-critical-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#et-main-area",
+        "tag": "div",
+        "text": "Kids Craft Party by Gia | Sep 18, 2026 kids Date: September…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#fit-vids-style",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#left-area",
+        "tag": "div",
+        "text": "Kids Craft Party by Gia | Sep 18, 2026 kids Date: September…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-content",
+        "tag": "div",
+        "text": "Kids Craft Party by Gia | Sep 18, 2026 kids Date: September…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#page-container",
+        "tag": "div",
+        "text": "Kids Craft Party by Gia | Sep 18, 2026 kids Date: September…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-2046",
+        "tag": "article",
+        "text": "Kids Craft Party by Gia | Sep 18, 2026 kids Date: September…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc_event_details_2046",
+        "tag": "div",
+        "text": "kids Date: September 23, 2026 Add to Calendar Time: 2:00 pm…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-rsvp",
+        "tag": "div",
+        "text": "RSVP 14 Attending Going Not Going Already registered? 6 ava…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-rsvp__response__g-recaptcha",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-rsvp__response__turnstile",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-rsvp__verify-email__g-recaptcha",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sc-rsvp__verify-email__turnstile",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-group-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-heading-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-latest-comments-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-latest-posts-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-library-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-search-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpf-frontend-canonical",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-frontend-single-event__details-row",
+        "tag": "div",
+        "text": "Date: September 23, 2026 Add to Calendar",
+        "count": 5,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-label",
+        "tag": "span",
+        "text": "kids",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

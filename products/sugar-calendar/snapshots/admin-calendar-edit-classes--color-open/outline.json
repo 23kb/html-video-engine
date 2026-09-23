@@ -1,0 +1,323 @@
+{
+  "slug": "admin-calendar-edit-classes--color-open",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "color-picker-live",
+      "event": "sc:ready",
+      "selector": "body.wp-admin.wp-core-ui",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false,
+        "wired": "color-picker-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": "#sugar-calendar-header-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false,
+        "wired": "color-picker-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sugar-calendar-btn",
+        "tag": "a",
+        "text": "Back to All Calendars",
+        "count": 10,
+        "hidden": false,
+        "wired": "color-picker-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sugar-calendar-btn-md",
+        "tag": "button",
+        "text": "Update Calendar",
+        "count": 1,
+        "hidden": false,
+        "wired": "color-picker-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sugar-calendar-btn-tertiary",
+        "tag": "a",
+        "text": "Visit",
+        "count": 8,
+        "hidden": false,
+        "wired": "color-picker-live",
+        "wiredEvent": "sc:ready"
+      },
+      {
+        "sel": ".sugar-calendar-feed-url__copy",
+        "tag": "button",
+        "text": "Copy",
+        "count": 4,
+        "hidden": false,
+        "wired": "color-picker-live",
+        "wiredEvent": "sc:ready"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#name",
+        "tag": "input",
+        "text": "Classes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#parent",
+        "tag": "select",
+        "text": "None Community Market My Calendar Private Hire Workshops",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-feed-url-apple",
+        "tag": "input",
+        "text": "webcal://example.com/events/calendar/classes/ics/",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-feed-url-download",
+        "tag": "input",
+        "text": "http://example.com/events/calendar/classes/ics/?download=1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-feed-url-google",
+        "tag": "input",
+        "text": "https://www.google.com/calendar/render?cid=webcal%3A%2F%2Fe…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sc-feed-url-microsoft",
+        "tag": "input",
+        "text": "webcal://example.com/events/calendar/classes/ics/",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-slug",
+        "tag": "input",
+        "text": "classes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#term-color",
+        "tag": "input",
+        "text": "#FF641F",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#calendar_settings",
+        "tag": "div",
+        "text": "Options Show or hide panel Slug The “slug” is the URL-frien…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#calendar_settings-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calendar_settings-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calendar_settings-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calendar_settings-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calendar_settings-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calendar_settings-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calendar_settings-title",
+        "tag": "h2",
+        "text": "Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "Options Show or hide panel Slug The “slug” is the URL-frien…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-admin-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-calendar",
+        "tag": "div",
+        "text": "Edit Calendar Options Show or hide panel Slug The “slug” is…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-admin-content",
+        "tag": "div",
+        "text": "Edit Calendar Options Show or hide panel Slug The “slug” is…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-feed-url-row",
+        "tag": "div",
+        "text": "Google Calendar Visit Copy",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-metabox__field-row",
+        "tag": "div",
+        "text": "Slug The “slug” is the URL-friendly version of the name. It…",
+        "count": 5,
+        "hidden": false
+      }
+    ]
+  }
+}

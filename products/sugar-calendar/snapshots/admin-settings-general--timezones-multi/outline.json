@@ -1,0 +1,480 @@
+{
+  "slug": "admin-settings-general--timezones-multi",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "choices-dropdown",
+      "event": "click",
+      "selector": "div.choices",
+      "count": 1
+    },
+    {
+      "label": "flyout-menu",
+      "event": "click",
+      "selector": "a.sc-flyout-button.sc-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-custom_fields",
+        "tag": "div",
+        "text": "Custom Fields OFF Allow developers to extend post types tha…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-timezone_convert",
+        "tag": "div",
+        "text": "Visitor Conversion OFF Attempts to update theme-side Event …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sc-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "flyout-menu",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sc-flyout-item-1",
+        "tag": "a",
+        "text": "Join Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-btn",
+        "tag": "button",
+        "text": "Save Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-toggle-control",
+        "tag": "span",
+        "text": "OFF",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#default_calendar",
+        "tag": "select",
+        "text": "— No Default — Classes Community Market My Calendar Private…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar_timezone",
+        "tag": "select",
+        "text": "Floating UTC Abidjan Accra Addis Ababa Algiers Asmara Bamak…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-custom_fields",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-date_format_0",
+        "tag": "input",
+        "text": "F j, Y",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-date_format_1",
+        "tag": "input",
+        "text": "Y-m-d",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-date_format_2",
+        "tag": "input",
+        "text": "m/d/Y",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-date_format_3",
+        "tag": "input",
+        "text": "d/m/Y",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-date_format_4",
+        "tag": "input",
+        "text": "jS F, Y",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-date_format_custom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-date_format_custom_format",
+        "tag": "input",
+        "text": "F j, Y",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-day_color_style",
+        "tag": "select",
+        "text": "None Each First Blend",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-editor_type",
+        "tag": "select",
+        "text": "Block Editor Classic Editor",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-number_of_events",
+        "tag": "input",
+        "text": "30",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-single_event_appearance_mode",
+        "tag": "select",
+        "text": "Light Dark",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-start_of_week",
+        "tag": "select",
+        "text": "Sunday Monday Tuesday Wednesday Thursday Friday Saturday",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-time_format_0",
+        "tag": "input",
+        "text": "g:i a",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-time_format_1",
+        "tag": "input",
+        "text": "g:i A",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-time_format_2",
+        "tag": "input",
+        "text": "H:i",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-time_format_custom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-time_format_custom_format",
+        "tag": "input",
+        "text": "g:i a",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-timezone_convert",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sugar-calendar-setting-timezone_type",
+        "tag": "select",
+        "text": "Off Single Multi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".choices__input--cloned",
+        "tag": "input",
+        "text": "Floating",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-admin-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-date_format",
+        "tag": "div",
+        "text": "Date Format September 19, 2026 F j, Y 2026-09-19 Y-m-d 09/1…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-day_color_style",
+        "tag": "div",
+        "text": "Calendar Day Colors None Each First Blend The theme-side Ca…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-default_calendar",
+        "tag": "div",
+        "text": "Default Event Calendar — No Default — Classes Community Mar…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-editor_type",
+        "tag": "div",
+        "text": "Editor Type Block Editor Classic Editor The interface to us…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-number_of_events",
+        "tag": "div",
+        "text": "Maximum Events Number of events to include in any theme-sid…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-single_event_appearance_mode",
+        "tag": "div",
+        "text": "Event Page Appearance Light Dark Adjust the frontend displa…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-start_of_week",
+        "tag": "div",
+        "text": "Start of Week Sunday Monday Tuesday Wednesday Thursday Frid…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-sugar-calendar_timezone",
+        "tag": "div",
+        "text": "Default Time Zone Floating When time zones are enabled, new…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-time_format",
+        "tag": "div",
+        "text": "Time Format 5:06 pm g:i a 5:06 PM g:i A 17:06 H:i Custom Lo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-setting-row-timezone_type",
+        "tag": "div",
+        "text": "Time Zones Off Single Multi Off by default (Existing time z…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sugar-calendar-settings",
+        "tag": "div",
+        "text": "License & Usage General Payments Emails Feeds RSVP Integrat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "AfricaAbidjanAccraAddis AbabaAlgiersAsmaraBamakoBanguiBanju…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sc-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".sugar-calendar-admin-content",
+        "tag": "div",
+        "text": "Settings Display Maximum Events Number of events to include…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-setting-field",
+        "tag": "span",
+        "text": "Display",
+        "count": 15,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-setting-label",
+        "tag": "span",
+        "text": "Maximum Events",
+        "count": 12,
+        "hidden": false
+      },
+      {
+        "sel": ".sugar-calendar-setting-row",
+        "tag": "div",
+        "text": "Display",
+        "count": 15,
+        "hidden": false
+      }
+    ]
+  }
+}
