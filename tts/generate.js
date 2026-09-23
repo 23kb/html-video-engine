@@ -8,7 +8,9 @@
 //   --engine voicebox     (default) local Voicebox drafts — unchanged behavior
 //   --engine elevenlabs   ElevenLabs API finals. Reads ELEVENLABS_API_KEY from
 //                         env or .env. Voice resolution: --voice <id> flag →
-//                         ELEVENLABS_VOICE_ID_KACIE env — no silent stock
+//                         ELEVENLABS_VOICE_ID_<KEY> env, KEY = the film's brand
+//                         voice (products/<key>/brand/brand.json "voice";
+//                         WPForms: KACIE; default KACIE) — no silent stock
 //                         fallback (finals must never render on a stock voice
 //                         by accident; pass --voice explicitly for tests).
 //                         Model: --model / ELEVENLABS_MODEL, default
@@ -47,7 +49,8 @@
 //   beats shift.
 //   --engine fishaudio    Fish Audio API. Model: --model / FISHAUDIO_MODEL,
 //                         default s2.1-pro (s2.1-pro-free = $0 drafts). Keys:
-//                         FISHAUDIO_API_KEY + FISHAUDIO_VOICE_ID_KACIE in .env.
+//                         FISHAUDIO_API_KEY + FISHAUDIO_VOICE_ID_<KEY> in .env
+//                         (KEY as above).
 //                         Residual <break> tags translate to Fish-native
 //                         [break]/[long-break] at synth time.
 //
@@ -76,6 +79,7 @@ import path from 'node:path';
 import crypto from 'node:crypto';
 import { spawn } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
+import brandLib from '../tools/lib/brand.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 
@@ -127,7 +131,9 @@ if (!['voicebox', 'elevenlabs', 'fishaudio'].includes(engineArg)) {
 }
 // ElevenLabs config — resolved once, validated before any rendering starts.
 const EL_KEY   = process.env.ELEVENLABS_API_KEY;
-const EL_VOICE = voiceArg || process.env.ELEVENLABS_VOICE_ID_KACIE;
+// Voice key from the film's brand pack (brand.json "voice"); KACIE when unset.
+const VOICE_KEY = (videoSlug && brandLib.brandForFilm(videoSlug).voice) || 'KACIE';
+const EL_VOICE = voiceArg || process.env[`ELEVENLABS_VOICE_ID_${VOICE_KEY}`];
 // Default eleven_v3 (fix-round C9; was eleven_multilingual_v2 — see the
 // breaking-change note in the header: v3 ignores <break> SSML).
 const EL_MODEL = modelArg || process.env.ELEVENLABS_MODEL || 'eleven_v3';
@@ -145,18 +151,18 @@ const EL_STYLE = (() => {
 if (engineArg === 'elevenlabs') {
   if (!EL_KEY) { console.error('✗ ELEVENLABS_API_KEY not set (checked env + .env)'); process.exit(1); }
   if (!EL_VOICE) {
-    console.error('✗ No ElevenLabs voice: pass --voice <id> (stock test) or set ELEVENLABS_VOICE_ID_KACIE in .env (finals).');
+    console.error(`✗ No ElevenLabs voice: pass --voice <id> (stock test) or set ELEVENLABS_VOICE_ID_${VOICE_KEY} in .env (finals).`);
     process.exit(1);
   }
 }
 // Fish Audio config — same fail-fast shape as the ElevenLabs block above.
 const FISH_KEY   = process.env.FISHAUDIO_API_KEY;
-const FISH_VOICE = voiceArg || process.env.FISHAUDIO_VOICE_ID_KACIE;
+const FISH_VOICE = voiceArg || process.env[`FISHAUDIO_VOICE_ID_${VOICE_KEY}`];
 const FISH_MODEL = (engineArg === 'fishaudio' && modelArg) || process.env.FISHAUDIO_MODEL || 's2.1-pro';
 if (engineArg === 'fishaudio') {
   if (!FISH_KEY) { console.error('✗ FISHAUDIO_API_KEY not set (checked env + .env)'); process.exit(1); }
   if (!FISH_VOICE) {
-    console.error('✗ No Fish Audio voice: pass --voice <id> or set FISHAUDIO_VOICE_ID_KACIE in .env.');
+    console.error(`✗ No Fish Audio voice: pass --voice <id> or set FISHAUDIO_VOICE_ID_${VOICE_KEY} in .env.`);
     process.exit(1);
   }
 }

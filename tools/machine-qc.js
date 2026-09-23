@@ -41,6 +41,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { brandForFilm } = require('./lib/brand');
 
 const ROOT = path.resolve(__dirname, '..');
 const API = 'https://generativelanguage.googleapis.com';
@@ -125,12 +126,12 @@ function gatherContext(slug) {
   return parts;
 }
 
-const CHECKLIST = `You are a QC reviewer for short WPForms product videos (tutorials and ad-style spots built as deterministic HTML films, rendered to MP4). Videos reach you because defects are suspected — be adversarial, not charitable. {{SAMPLING}} For EVERY beat: (a) check each narration/storyboard claim actually appears on screen at that moment, (b) inspect all four frame edges for UI cut off mid-content, (c) check whether animations the storyboard promises actually fire, and how they move. Check specifically:
+const CHECKLIST = `You are a QC reviewer for short {{PRODUCT}} product videos (tutorials and ad-style spots built as deterministic HTML films, rendered to MP4). Videos reach you because defects are suspected — be adversarial, not charitable. {{SAMPLING}} For EVERY beat: (a) check each narration/storyboard claim actually appears on screen at that moment, (b) inspect all four frame edges for UI cut off mid-content, (c) check whether animations the storyboard promises actually fire, and how they move. Check specifically:
 
 1. CURSOR/CLICK INTEGRITY — the animated cursor must visually land ON its click target (button, field, menu item) before the UI reacts. Flag clicks that miss, UI that reacts with no cursor near it, or a cursor that teleports.
 2. TEXT RENDERING — clipped/overflowing text, truncated labels, garbled characters (mojibake like "â€"" instead of an em dash), typos in on-screen copy, lorem-ipsum placeholders.
 3. NARRATION/VISUAL SYNC — if narration is audible or a script is provided: does the footage show what the words claim, at roughly the time they claim it? Flag mismatches (narration names a button/tab/field that never appears or appears much later).
-4. BRAND — "WPForms" must be capitalized exactly like that in all rendered text. Primary brand color is orange (#E27730); purple accents are only legitimate on AI features. Flag lowercase "wpforms" in text, or purple used as the primary/dominant brand color on non-AI content.
+4. BRAND — {{BRAND_RULE}}
 5. COMPOSITION — the UI element being discussed should be clearly framed (not half off-screen, not tiny in a corner). Flag beats where the subject of the moment is hard to find.
 6. VISUAL DEFECTS — blur on UI that should be sharp, low-resolution scaling artifacts, elements popping in/out with no transition, overlapping/z-fighting layers, an obviously broken layout.
 7. ENDING — the video should end deliberately (outro/lockup/end state), not cut off mid-motion.
@@ -142,6 +143,13 @@ Do NOT report: frozen frames / dead time / pacing (measured by a dedicated frame
 Severity: "high" = a viewer would notice and lose trust (wrong click, garbled text, narration contradicts footage). "medium" = noticeable on second watch. "low" = minor polish.
 
 If the video is clean, return an empty findings array — do not invent findings.`;
+
+// The BRAND line: the film's brand pack rule (products/<key>/brand/brand.json
+// qcBrandRule), or one built from its name and primary color.
+function brandRule(b) {
+  return b.qcBrandRule
+    || `"${b.name}" must be written exactly like that in all rendered text. Primary brand color is ${b.colors && b.colors.primary}. Flag any other spelling or capitalization of "${b.name}".`;
+}
 
 const RESPONSE_SCHEMA = {
   type: 'object',
@@ -205,12 +213,12 @@ async function uploadVideo(key, file) {
 }
 
 // One Gemini pass. pass = { kind: 'static', fps } | { kind: 'agentic' }.
-async function analyze(key, model, fileInfo, contextParts, focus, pass, mediaRes) {
+async function analyze(key, model, fileInfo, contextParts, focus, pass, mediaRes, brand) {
   const sampling = pass.kind === 'static'
     ? `You are seeing every frame sampled at ${pass.fps} frames per second plus the full audio track, so sub-second events (a ${(1 / pass.fps).toFixed(2)}s blink, a cursor path, an ease that snaps) are visible to you — inspect them.`
     : 'You can navigate the video yourself: re-sample any window at a higher frame rate and pull the audio or transcript when a beat looks suspicious — do that around every cut, click and transition rather than trusting a single pass.';
   const prompt = [
-    CHECKLIST.replace('{{SAMPLING}}', sampling),
+    CHECKLIST.replace('{{SAMPLING}}', sampling).replace('{{PRODUCT}}', brand.name).replace('{{BRAND_RULE}}', brandRule(brand)),
     ...contextParts,
     focus ? `## Extra reviewer instruction for this run\n\n${focus}` : null,
   ].filter(Boolean).join('\n\n---\n\n');
@@ -280,6 +288,7 @@ async function main() {
   console.log(`  passes: ${passes.map(p => p.kind === 'static' ? `static @ ${p.fps} fps` : 'agentic').join(' + ')} · media resolution ${args.res}${fps !== args.fps ? ` · fps clamped ${args.fps}→${fps} to fit the token budget` : ''}`);
 
   const contextParts = gatherContext(vid.slug);
+  const brand = brandForFilm(vid.slug);
   console.log(`  context: ${contextParts.length ? contextParts.map(p => p.split('\n')[0].replace(/^## /, '')).join(' + ') : 'none (no storyboard/narration found)'}`);
 
   console.log('  uploading to Gemini Files API…');
@@ -288,7 +297,7 @@ async function main() {
   for (const pass of passes) {
     const t0 = Date.now();
     console.log(`  analyzing (${pass.kind})…`);
-    const r = await analyze(key, args.model, fileInfo, contextParts, args.focus, pass, args.res);
+    const r = await analyze(key, args.model, fileInfo, contextParts, args.focus, pass, args.res, brand);
     const secs = ((Date.now() - t0) / 1000).toFixed(0);
     console.log(`    ${(r.parsed.findings || []).length} finding(s) · ${r.usage.totalTokenCount || 0} tokens${pass.kind === 'agentic' ? ` · ${r.navSteps} navigation step(s)` : ''} · ${secs}s`);
     results.push({ pass: pass.kind, ...r });
