@@ -1,128 +1,109 @@
 node_modules/
 .env*
 !.env.example
-tools/avatar/.venv/
-tools/avatar/weights/
 .claude/settings.local.json
-probe-out/
-snapshot-backups/
-snapshots-published/
-docs/snapshot-health-report.md
-future-enhancements.md
-prompt-quality-analysis.md
-prompt-wpf-rest-api-video-2.md
-prompt-wpforms-rest-api-video.md
-analysis-quality-and-transitions.md
-hyperframes/hyperframes-rest-2/
-prompt-wpforms-rest-api-final.md
-tools/qc-out/
-REFACTOR-BRIEF.md
-REFACTOR-PROGRESS.md
-REFACTOR-DONE.md
-BACKLOG.md
-docs/codex-prompts/
-repo-audit-findings.md
+.claude/local/
+.claude/scheduled_tasks.lock
+CLAUDE.local.md
+
+# Per-video packages are work product; only the videos/_* system dirs are tracked.
 videos/*
 !videos/_*/
 videos/_*/render/
-docs/repo-architecture-audit-hyperframes.md
+videos/_*/**/*.png
+videos/_*/**/*.mp4
+videos/_shared/qc/probe-css-shorts.mjs
 
-# Preview server logs
-.preview-*.out.log
-.preview-*.err.log
-
-# Regenerable outputs + scratch experiments
+# Regenerable outputs, scratch and backups
 renders/
 tmp/
-snapshots-trim-test/
+probe-out/
 experiments/
-
-# Local-only working notes / session handoffs (never push)
-CODEX-CONTINUE-*.md
-MASTER-PLAN-PROMPT.md
-SHOWCASE.md
-implementation-notes.html
-docs/ga4-video-priorities/
-docs/plans/
-
-# Auto-memory + scratch
-core-factors/
 sandbox/
-.claude/scheduled_tasks.lock
-
-# Stitched MP4 output (regenerable from committed source via tools/stitch.js)
-renders/
-
-# Session handoff + overview docs (local only)
-docs/handoff-5-settings-interactivity.md
-docs/handoff-6-settings-spam-notifications-confirmations.md
-docs/handoff-7-addons-providers-payments.md
-docs/handoff-8-settings-addons-handhold.md
-docs/project-overview-2026-05-16.md
-source-video-extracts/
+core-factors/
+snapshot-backups/
+snapshots-published/
+snapshots-trim-test/
 snapshots - Copy
+source-video-extracts/
+tools/qc-out/
+tools/_tmp/
+tools/validator-baseline.json
+tools/*.local.json
+tts/voice-reference.json
+config/avatar-looks.json
+.probe-*.tmp.mjs
+.preview-*.out.log
+.preview-*.err.log
+*.aep
+Auto-Save/
+/*.mp4
 
-# Never push — personal / session notes / video work product (2026-09-04)
-# Per-video packages (videos/<slug>/) are WPForms work product; only videos/_* system dirs are tracked (rule above).
+# Local-only: reference material, the site registry (see tools/sites.example.json), per-snapshot exceptions
+/reference/
+tools/sites.json
+products/wpforms/snapshots/google-oauth-signin/
+hyperframes/
+skills-portable/
+
+# Local-only: plans, handoffs, lessons, prompts, session and review notes — never pushed
+docs/plans/
+docs/codex-prompts/
+docs/portrait-rebuild/
+docs/*-priorities/
+docs/*-round-*/
+docs/*-qc/
+docs/handoff*.md
+docs/*handoff*.md
+docs/session-*.md
+docs/lessons-*.md
+docs/project-overview-*.md
+docs/claude-design-*.md
+docs/*-analysis*.md
+docs/*-audit*.md
+docs/*-report*.md
+docs/*-findings*.md
+docs/*-backlog*.md
+docs/*-improvements-*.md
+docs/*-action-points-*.md
+docs/*-storyboards-*.md
+docs/*-test-video-*.md
+docs/*-qc-*.md
+docs/*-problem.md
 LESSONS-*.md
 HANDOFF*.md
 HANDOVER*.md
 KICKOFF-PROMPT.md
+CODEX-CONTINUE-*.md
+SLUG-CLAIMS-*.md
+*-PROMPT.md
 *-prompt.md
+prompt-*.md
 *-handoff*.md
-docs/lessons-index.md
-docs/lessons-mining-*.md
-docs/session-handoff-*.md
-docs/engine-action-points-*.md
-docs/track3-analysis-*.md
-docs/claude-design-*.md
-docs/snapshot-cost-problem.md
-docs/qr-code-video-storyboards-*.md
-docs/*-test-video-*.md
-docs/shorts-qc/
-docs/fix-round-*/
-docs/motion-design-round-*/
+*-findings.md
+*-analysis*.md
+analysis-*.md
+future-*.md
+REFACTOR-*.md
+BACKLOG.md
+SHOWCASE.md
+implementation-notes.html
+style guide.md
 acceptance-test/
 analysis/
 approved-shorts/
-products/wpforms/snapshots/google-oauth-signin/
-.probe-*.tmp.mjs
-# Probe dumps + renders inside the system dirs (code and harness HTML stay tracked)
-videos/_*/**/*.png
-videos/_*/**/*.mp4
-# More session / company-internal docs (2026-09-04, pass 2)
-docs/shorts-qc-*.md
-docs/helper-rollout-backlog.md
-docs/video-system-improvements-*.md
-docs/jake-moran-*.md
-style guide.md
-# Local-only folders (2026-09-15)
-/reference/
-# Local artefacts: AE projects + auto-saves, stray root renders, scratch, session/personal notes (2026-09-15)
-*.aep
-Auto-Save/
-/*.mp4
-tools/_tmp/
-UsersPC*/
-SLUG-CLAIMS-*.md
-docs/portrait-rebuild/
-config/avatar-looks.json
-CLAUDE.local.md
-.claude/local/
-tools/validator-baseline.json
-tools/*.local.json
-tts/voice-reference.json
-videos/_shared/qc/probe-css-shorts.mjs
 
-# SFX reference-copy (2026-09-18): generated/downloaded ElevenLabs sounds and third-party
-# reference measurements stay local
-# (ElevenLabs terms: no redistributing generated sounds as standalone files)
+# Tooling environments and large local caches
+tools/avatar/.venv/
+tools/avatar/weights/
+
+# SFX (2026-09-18): generated/downloaded ElevenLabs sounds and third-party reference
+# measurements stay local (ElevenLabs terms: no redistributing generated sounds as standalone files)
 tools/sfx/candidates/
 tools/sfx/explore/
 tools/sfx/refs/
 tools/sfx/palette/*.mp3
-tools/sfx/palette-candidates-*/*.mp3
+tools/sfx/palette-candidates-*/
 
-# Portable skills: third-party reference frames are internal-only; the zip is a rebuildable bundle
+# Portable skills: third-party reference frames are internal-only
 **/reference-motion-spec/library/*/windows/
-skills-portable/*.zip
