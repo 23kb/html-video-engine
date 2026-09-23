@@ -42,6 +42,8 @@ try {
   console.log('\nGate 4 — exempt paths are never counted');
   ok(!Object.keys(base).some((f) => /^products\/wpforms\//.test(f) || /^products\/[^/]+\/snapshots\//.test(f) || /skills\/dev-advocacy-video\//.test(f)),
     'no products/wpforms/, snapshots/ or dev-advocacy-video path in the baseline');
+  ok(!('tools/lint-neutrality.js' in base) && !('tools/__tests__/lint-neutrality.test.js' in base),
+    'the lint and its test are exempt, not baselined');
 } finally {
   fs.rmSync(tmp, { force: true });
 }

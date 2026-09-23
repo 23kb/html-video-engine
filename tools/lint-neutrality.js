@@ -10,7 +10,8 @@
 //     tighten the baseline with --update
 //
 // Exempt (WPForms by definition): products/wpforms/**, every pack's
-// snapshots/**, and the dev-advocacy-video skill (the WPForms Rock 4 workflow).
+// snapshots/**, the dev-advocacy-video skill (the WPForms Rock 4 workflow),
+// and this lint + its test (they must name the terms they hunt).
 // Everything else that still names WPForms is in the baseline, so the number
 // can only go down. Rename programme, Phase 4 (2026-09-23).
 //
@@ -33,6 +34,9 @@ const EXEMPT = [
   /^products\/[^/]+\/snapshots\//,
   /^\.(claude|agents)\/skills\/dev-advocacy-video\//,
   /^tools\/neutrality-baseline\.json$/,
+  // The lint and its test must name the terms they hunt.
+  /^tools\/lint-neutrality\.js$/,
+  /^tools\/__tests__\/lint-neutrality\.test\.js$/,
 ];
 const BINARY = /\.(png|jpe?g|gif|webp|svg|ico|mp3|mp4|m4a|wav|webm|woff2?|ttf|otf|eot|pdf|zip|phar|aep|lottie|glb)$/i;
 
