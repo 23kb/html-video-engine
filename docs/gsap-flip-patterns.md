@@ -29,11 +29,9 @@ touching protected core.
 
 ## Loader pattern
 
-Flip is loaded via `videos/_shared/kit.js`'s `loadGsap()`, which lazy-loads
-the vendored GSAP at `/vendor/gsap/3.12.5/` plus Flip and MotionPathPlugin
-from the same vendor directory. Chapter modules either import `loadGsap`
-directly from shared, or via a per-video `_kit.js` that re-exports from
-shared (with optional back-compat aliases like `loadGsapFlip`).
+Load the vendored GSAP with script tags — `/vendor/gsap/3.15.0/gsap.min.js` then
+`/vendor/gsap/3.15.0/Flip.min.js` — and call `gsap.registerPlugin(Flip)` once,
+as the single-HTML skeletons do. (The engine-era `loadGsap()` loader is gone.)
 
 ```js
 // Direct import from shared (recommended for new videos):

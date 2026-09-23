@@ -16,7 +16,7 @@ standing palette for ad-style films. Machine-readable copy: `manifest.json`.
 
 - **Ratified by** — Umair, 2026-09-03, listening to them placed on real cuts in
   the ad proving reel. Not judged as bare snippets.
-- **Provenance** — `tools/sfx/palette-candidates-2026-09-03/` keeps the original
+- **Provenance** — `tools/sfx/palette-candidates-2026-09-03/` (local-only, not in git since 2026-09-24) keeps the original
   ElevenLabs one-shots and `generate-palette.mjs` (the prompts that made them).
   That folder stays intact as the record; **this** folder is the working home.
 

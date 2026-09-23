@@ -270,13 +270,7 @@ await sleep(520); // duration + ~20ms settle
 
 ## Shared Effects Library
 
-`videos/_shared/effects.js` registers reusable named effects via `gsap.registerEffect()`. Each is callable as `gsap.effects.<name>(target, opts)`:
-
-- **`highlightPulse`** — quick attention pulse (scale + filter flash)
-- **`fieldBurst`** — small radial burst at element center
-- **`labelReveal`** — character cascade text reveal (uses SplitText)
-- **`popOutTilt`** — z-pop + tilt + shadow ("this is the thing")
-- **`cardReflow`** — Flip-based layout reflow (uses Flip plugin)
+The shared vocabulary is `videos/_shared/effects/` — named effects, each a `mountFoo({...})` returning `{ el, tweenInto(tl, opts), dispose() }` (text reveals, cards, end card, glass card, seams, odometer, waveform bars…). Catalogue: `videos/_shared/effects/README.md`; QC page `videos/_qc-effects/`.
 
 **Use these before hand-rolling.** They follow all L0 rules and use `gsap.context()` for cleanup.
 
@@ -346,7 +340,7 @@ Before declaring GSAP work done:
 ## References (loaded on demand)
 
 - `docs/gsap-rules.md` — Canonical L0 rule reference with full examples and audit notes. Read for the deepest rationale.
-- `docs/effects-library.md` — Read when picking or composing a registered effect (`highlightPulse`, etc.) — full API for each.
+- `videos/_shared/effects/README.md` — Read when picking a named effect (mountTextStackFromRight, mountCardsSpreadFan, …) — signature and QC status for each.
 - `docs/gsap-flip-patterns.md` — Read when using Flip for morphs, reflows, or label-to-field transforms.
 - `docs/deterministic-logic.md` — Read for the determinism rule rationale and `tools/lint-determinism.js` behavior.
 - `docs/deterministic-logic-findings.md` — Read when investigating an existing-video determinism warning before migrating it.

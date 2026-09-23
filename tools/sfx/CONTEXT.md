@@ -93,7 +93,7 @@ Five one-shots (eight when ratified; the three ticks were rejected 2026-09-17 an
 live at **`tools/sfx/palette/`** with `manifest.json` (per-sound class, measured
 onset, duration, source peak, and the cue each earned its place on) and a
 README. Provenance — the original generations and their prompts — stays at
-`tools/sfx/palette-candidates-2026-09-03/`.
+`tools/sfx/palette-candidates-2026-09-03/` (local-only since 2026-09-24: prompts, one-shots and `generate-palette.mjs` are not in git).
 
 | Class | Sounds | Job |
 |---|---|---|

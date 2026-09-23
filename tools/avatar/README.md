@@ -1,8 +1,8 @@
 # tools/avatar — local talking-head lip-sync pipeline
 
 > **STATUS 2026-07-23: PARKED.** All Wav2Lip variants failed visual QC (soft
-> 96px mouth; static-frame head), and the Heygem-on-GPU-VM pivot
-> (tools/avatar/heygem/) was skipped in favor of a simpler decision: **real
+> 96px mouth; static-frame head), and a Heygem-on-GPU-VM pivot
+> was skipped in favor of a simpler decision: **real
 > Kacie recordings for intro + outro** (spec:
 > docs/kacie-intro-outro-recording-spec.md), TTS-narrated body, no synthetic
 > face anywhere. This tooling stays for two reasons: `check-base.py` is the

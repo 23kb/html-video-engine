@@ -41,7 +41,7 @@ Craft docs below carry a **HISTORICAL API NOTE (2026-08-28)**: their code exampl
 
 - `gsap-rules.md` — L0 discipline canonical reference (deep version). Owned by `wpforms-gsap-rules` skill. (historical API note — its registered-timeline / frame-driver / kit.js sections are retired; the master-timeline contract in the skill replaces them)
 - `gsap-flip-patterns.md` — Flip patterns: morphs, reflows, real-UI clones. (historical API note — sandbox chapter paths are gone)
-- `effects-library.md` — Registered-effect API in `videos/_shared/effects.js` (highlightPulse, fieldBurst, labelReveal, popOutTilt, cardReflow). (historical API note — `kit.js awaitTween` in the examples is gone)
+- `../videos/_shared/effects/README.md` — the named-effect vocabulary (mountTextStackFromRight, mountCardsSpreadFan, mountEndCard, seams, odometer…); QC page `videos/_qc-effects/`.
 - `hyperframes-seam-grammar-rnd-2026-09-03.md` (local-only) — Seam-transition recipes R&D'd from HeyGen's claude-paper-launch film: inverse zoom-through, leftward cut-the-curve, pixel-matched cut, position-locked crossfade, cursor velocity-split handoff, humanized typing. Code-first; prove video-local, promote on second use.
 
 ## Marketing / editorial

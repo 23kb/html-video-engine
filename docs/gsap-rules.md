@@ -191,8 +191,7 @@ s.src = '/vendor/gsap/3.15.0/gsap.min.js';
 s.onload = () => resolve(window.gsap);
 ```
 
-Repo status: vendored at `vendor/gsap/3.12.5/` with GSAP core, Flip, and
-MotionPathPlugin, and at `vendor/gsap/3.15.0/` with core plus the full
+Repo status: vendored at `vendor/gsap/3.15.0/` with core plus the full
 free-plugin set: Flip, MotionPathPlugin, SplitText, MorphSVGPlugin,
 DrawSVGPlugin, CustomEase, GSDevTools, and MotionPathHelper. New shared
 authoring code loads from `3.15.0`.
@@ -322,17 +321,13 @@ temporary animation state that should be cleanly reverted at beat end or
 chapter swap. It wraps `gsap.context(fn, scope)` and returns `{ ctx, revert }`
 so chapter-local code can keep cleanup ergonomics consistent.
 
-### Shared `registerEffect` Library
+### Shared effects
 
-Import `videos/_shared/effects.js` to register the shared effect
-vocabulary. Existing videos are not migrated; these effects are for
-new or intentionally touched authoring surfaces.
-
-- `highlightPulse(target, opts)` - quick transform/filter attention pulse.
-- `fieldBurst(target, opts)` - finite radial particle burst with no leftover DOM.
-- `labelReveal(target, opts)` - SplitText-backed character cascade.
-- `popOutTilt(target, opts)` - in-place lift/tilt emphasis for a target element.
-- `cardReflow(targets, opts)` - Flip-backed layout reflow after DOM mutation.
+The shared vocabulary is the named-effect library in `videos/_shared/effects/`
+(`mountTextStackFromRight`, `mountCardsSpreadFan`, `mountEndCard`, …), each a
+`mountFoo({...})` returning `{ el, tweenInto(tl, opts), dispose() }`. Catalogue:
+`videos/_shared/effects/README.md`; QC page `videos/_qc-effects/`. (The older
+`gsap.registerEffect` file was removed on 2026-09-24; nothing imported it.)
 
 ## Frame Driver Patterns
 

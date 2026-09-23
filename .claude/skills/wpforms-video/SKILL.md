@@ -374,7 +374,7 @@ Modern features worth reaching for. Each links to its dedicated skill or doc. **
 | `pausableRaf(cb)` | **Required** for any author Three.js / render-loop in a chapter. Vanilla `requestAnimationFrame` won't honor scrubber pause. | `wpforms-gsap-rules` |
 | Editorial / mixed film shape | Ad-style / marketing video, or a hybrid (editorial chrome composited over real UI in ONE single-HTML film) | `wpforms-marketing` |
 | `videos/_shared/blocks/` | Editorial chrome (code-card, mac-window, phone-frame, pill, arrow, route-line, terminal). Don't re-implement per video. | `wpforms-marketing` |
-| `videos/_shared/effects.js` | Standard registered effects: `highlightPulse`, `fieldBurst`, `labelReveal`, `popOutTilt`, `cardReflow`. Call by name. | `wpforms-gsap-rules` |
+| `videos/_shared/effects/` | Named effects (`mountTextStackFromRight`, `mountCardsSpreadFan`, `mountEndCard`, …); see `videos/_shared/effects/README.md`. | `wpforms-gsap-rules` |
 | `text-kit.js` 24 presets | Hero text reveals (mask-reveal-up, spring-scale-in, focus-blur-resolve, ...). 24 Pixel-Point presets. | `wpforms-marketing` |
 | `videos/_shared/atmospheric.js` | Marketing-mode helpers: grain, gradient sweep, parallax pair, scale push, dark backdrop. Use sparingly on tutorial beats; right at home in postIntros + ad-style chapters. | `wpforms-marketing` |
 | `tools/render-singlehtml-audio.js <slug>` | In-repo MP4 export with narration + ducked BGM. Resolution auto-derives from the film's `.stage`. | - |

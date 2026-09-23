@@ -123,7 +123,7 @@ const KEY_DOCS = [
 ];
 
 const SHARED_KITS = [
-  { path: 'videos/_shared/effects.js',     use: 'gsap.registerEffect library: highlightPulse, fieldBurst, labelReveal, popOutTilt, cardReflow. See wpforms-gsap-rules.' },
+  { path: 'videos/_shared/effects/',       use: 'Named effects: mountTextStackFromRight, mountCardsSpreadFan, mountEndCard, seams, odometer… See videos/_shared/effects/README.md.' },
   { path: 'videos/_shared/atmospheric.js', use: 'Marketing-mode helpers: grain, sweep, parallax pair, scale push, dark backdrop. See wpforms-marketing.' },
   { path: 'videos/_shared/blocks/',        use: 'Editorial blocks: code-card, mac-window, phone-frame, pill, arrow, route-line, terminal. See wpforms-marketing.' },
   { path: 'videos/_shared/text-kit.js',    use: '24 Pixel-Point-style text-reveal presets. See wpforms-marketing.' },

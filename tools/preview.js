@@ -9,7 +9,7 @@ const { createRequestHandler, ROOT } = require('../serve.js');
 const { previewClientScript } = require('./preview-client.js');
 
 function parseArgs(argv) {
-  const args = { port: 4321, open: true, video: '_phase-c-editorial-pilot' };
+  const args = { port: 4321, open: true, video: null };
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--port') args.port = Number(argv[++i]);
@@ -138,7 +138,9 @@ function main() {
   });
 
   server.listen(args.port, () => {
-    const player = `http://localhost:${args.port}/videos/${encodeURIComponent(args.video)}/index.html`;
+    const player = args.video
+      ? `http://localhost:${args.port}/videos/${encodeURIComponent(args.video)}/index.html`
+      : `http://localhost:${args.port}/tools/qc-dashboard/`;
     console.log('Preview server (live reload)');
     console.log(`  player:   ${player}`);
     console.log(`  watches:  ${watched.join(', ')}`);
