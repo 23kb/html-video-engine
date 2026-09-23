@@ -93,7 +93,7 @@ const SKILLS = [
 const LIBRARIES = [
   {
     path: 'videos/_shared/motion-primitives.js',
-    use: 'Animation primitives: cinematicFlight, figjamFlight, focusStationOverview (cameras); Cursor class with glide/click/hover/drag (cursor); caretType, statusPillMorph, markerSweep (typing/text); popOut, fieldStaggerReveal (highlight/fields); mountSullieBug, cleanFastRejoin (tutorial polish); boundedRepeats, mulberry32, clickRipple (utilities). QC at videos/_qc-primitives/. Copy from here; do not reinvent.',
+    use: 'Animation primitives: cinematicFlight, figjamFlight, focusStationOverview (cameras); Cursor class with glide/click/hover/drag (cursor); caretType, statusPillMorph, markerSweep (typing/text); popOut, fieldStaggerReveal (highlight/fields); mountBrandBug (+ mountSullieBug alias), cleanFastRejoin (tutorial polish); brand colors + mascot from videos/_shared/brand.js; boundedRepeats, mulberry32, clickRipple (utilities). QC at videos/_qc-primitives/. Copy from here; do not reinvent.',
   },
   {
     path: 'videos/_shared/iframe-helpers.js',

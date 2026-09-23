@@ -68,7 +68,7 @@ Scan this table first. For deeper context (why, when not to use, options), scrol
 | Animate pill text + color morph | `statusPillMorph(pill, texts, opts)` | `(el, [strings], opts) → tl` | motion-primitives.js:901 |
 | Highlighter sweep across text | `markerSweep(textEl, opts)` | `(el, {color, duration}) → tl` | motion-primitives.js:953 |
 | Stagger-reveal a list of fields | `fieldStaggerReveal(fields, opts)` | `([els], {stagger, dur}) → tl` | motion-primitives.js:1228 |
-| Mount the Sullie brand bug | `mountSullieBug(opts)` | `({position, scale}) → element` | motion-primitives.js:1266 |
+| Mount the brand bug (the film's mascot; WPForms: Sullie) | `mountBrandBug(opts)` (`mountSullieBug` = always Sullie) | `({src?, alt?, id?, position}) → element` | motion-primitives.js:1385 |
 | Compute finite loop count from duration | `boundedRepeats(cycle, visible)` | `(cycleSec, visibleSec) → number` | motion-primitives.js:46 |
 | Seeded RNG for deterministic randomness | `mulberry32(seed)` | `(seed) → () => number` | motion-primitives.js:58 |
 | **Defensive scroll + glide + click** (off-frame points auto-recenter since 2026-09-02; `recenter:false` opts out) | `glideClick({iframeManager, cursor}, target, opts)` | `(deps, el, opts) → Promise` | iframe-helpers.js:121 |
@@ -215,7 +215,7 @@ Before writing any of the following, scan this skill:
 4. **Persistent status label morphing through 2+ texts** → `statusPillMorph`.
 5. **Marker / highlighter sweep behind text** → `markerSweep`.
 6. **Per-field cascade reveal during AI generation or template apply** → `fieldStaggerReveal`.
-7. **Persistent Sullie brand anchor** → `mountSullieBug` (polished rest-api pattern).
+7. **Persistent brand anchor** → `mountBrandBug` (polished rest-api pattern; the mascot comes from the film's brand pack — WPForms: Sullie).
 8. **Clean exit out of a focused card back to overview** → `cleanFastRejoin` (no blur smear).
 9. **Standard WPForms admin / builder interaction** (Add New, Select Template, Drag Field, Open Settings, etc.) → call the matching method on `WPFormsInteractions` (source: `products/wpforms/film/wpforms-interactions.js`; films import it through the `videos/_shared/wpforms-interactions.js` shim). Do not hand-roll click + swap + wait sequences.
 10. **Snapshot-iframe slot with crossfade swap** → use `IframeManager` from `videos/_shared/iframe-manager.js` — the ONE iframe mount for every film: tutorials (the skeleton mounts it), mixed films and any editorial scene that needs a real product surface. There is no other iframe host; the engine's was retired 2026-08-22.
@@ -303,7 +303,7 @@ The Signature column's return type IS the contract (FIX-16):
 
 | Primitive | When | Signature | QC status | Source |
 |---|---|---|---|---|
-| `mountSullieBug(opts)` | Persistent brand anchor — Sullie bottom-right with subtle 6px yoyo float (bounded, deterministic). Polish-vocabulary "persistent-brand-anchor" — mount once, keep across chapters. | `{ src?, id?, position? }` → HTMLElement (idempotent) | **ready** | `motion-primitives.js:1118` |
+| `mountBrandBug(opts)` | Persistent brand anchor — the film's mascot (`brand.mascot`; WPForms: Sullie) bottom-right with subtle 6px yoyo float (bounded, deterministic). Polish-vocabulary "persistent-brand-anchor" — mount once, keep across chapters. `mountSullieBug(opts)` is the same bug, always Sullie. | `{ src?, alt?, id?, position? }` → HTMLElement (idempotent) | **ready** | `motion-primitives.js:1385` |
 | `cleanFastRejoin(target, opts)` | Polished rest-api exit pattern: 500ms breathe → scale 1.02 + sine.in 0.35s → reveal shared anchor → 120ms hold → 180ms layer fade. No blur smear. | `{ breatheDuration?, exitDuration?, exitScale?, onSharedAnchor?, onPanToOverview?, layer? }` → Promise | **ready** | `motion-primitives.js:1179` |
 
 ### Utilities
