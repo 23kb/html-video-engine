@@ -244,7 +244,7 @@ Authoring helpers built on top of IframeManager + Cursor. Each earns library sta
 | `gcFramed({ iframeManager, cursor }, target, opts?)` | The framed action: awaitLayout → fly-if-outside (`flyOpts` — even `{}` — forces it) → closed-loop centre → `glideClick(..., { scroll: false })`. Portrait films pass `flyFn` (their punch/pan wrapper). | `(ctx, target, { flyOpts?, flyFn?, timeout?, ...glideClick opts })` → Promise<Element\|null> | `iframe-helpers.js` (AP-10) |
 | `prepOnSwap(ifm, prepFn)` | **The swap-reapply trap, made impossible to forget:** a swap replaces the document and silently reverts every inline reflow — three films rediscovered this independently. Runs prepFn(doc) now AND after every load/swap on THIS instance (monkey-patches the instance, never the prototype). | `(ifm, prepFn)` → `{dispose}` | `iframe-helpers.js` (C-SPEC C2) |
 
-Source: Klaviyo tutorial v11 retro 2026-05-12 (`docs/sound-design-reference-2026-05-12.md` is unrelated; the retro lives in commit messages + this skill).
+Source: Klaviyo tutorial v11 retro 2026-05-12 (the retro lives in commit messages + this skill).
 
 ## Library 1 — `videos/_shared/motion-primitives.js`
 

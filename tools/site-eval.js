@@ -32,7 +32,7 @@ const TIMEOUT_MS = Number(process.env.WPF_SITE_EVAL_TIMEOUT || 60000);
 
 function loadSite(name) {
   if (!fs.existsSync(SITES)) {
-    console.error(`✗ tools/sites.json not found`);
+    console.error(`✗ tools/sites.json not found — copy tools/sites.example.json to tools/sites.json and fill in your LocalWP sites (the real file stays local, never committed)`);
     process.exit(2);
   }
   const reg = JSON.parse(fs.readFileSync(SITES, 'utf8'));

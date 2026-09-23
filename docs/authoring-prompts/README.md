@@ -7,7 +7,6 @@ Reusable prompt templates for kicking off a new video session with Claude (or a 
 | File | Use when |
 |---|---|
 | [builder-frontend-split.md](builder-frontend-split.md) | Single-field tutorial where the builder is on the left and the published frontend mirrors changes on the right. Uses `BuilderFrontendSplit` from `videos/_shared/builder-frontend-split.js`. |
-| [klaviyo-addon-tutorial.md](klaviyo-addon-tutorial.md) | Full how-to for the Klaviyo addon (admin → Klaviyo dashboard → admin → builder → profile result). Concrete prompt, ~125-150s, single-HTML. Fill in the slug, then paste. |
 
 ## TODO — expand the catalog (later)
 

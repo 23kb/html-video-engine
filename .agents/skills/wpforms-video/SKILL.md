@@ -458,7 +458,7 @@ Stop and push back when:
 - `docs/beat-pacing.md` — Read when a beat feels long or rushed; covers the 6-second rule and split heuristics.
 - `docs/camera-lensing.md` — Read when picking `level:` for a beat. `1.0 / 1.18 / 2.2 / 2.4` reading guide.
 - `docs/color-palette.md` — Read when adding any color to editorial chrome. Brand orange placement rules.
-- Narration / BGM / SFX levels — `tools/render-singlehtml-audio.js` header (`--bgm-volume` bands + the post-render RMS check) and `tools/sfx/CONTEXT.md`. (`docs/audio-mastering.md` is the superseded manifest-era doc.)
+- Narration / BGM / SFX levels — `tools/render-singlehtml-audio.js` header (`--bgm-volume` bands + the post-render RMS check) and `tools/sfx/CONTEXT.md`.
 - `docs/selector-hygiene.md` — Read when selectors break (selector source hierarchy; its `_selectors.js` modules are engine-era — selectors live inline in the film now).
 - `docs/title-card-voice.md` — HISTORICAL (manifest-era intro/outro title cards, superseded 2026-08-28: tutorials carry no bookends). Its CTA-tone rules still read for shorts / editorial end cards.
 

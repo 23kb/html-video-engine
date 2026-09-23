@@ -1,0 +1,37 @@
+{
+  "_comment": "Copy to tools/sites.json (local, never committed) and fill in your LocalWP sites. Keys: url, path (site root with app/public), php, phpIni (LocalWP bundled PHP + its php.ini), adminUser, adminPass (or adminPassEnv naming a .env key for a site reachable from the internet), coreAddons.",
+  "default": "sullies-bakery",
+  "sites": {
+    "sullies-bakery": {
+      "url": "http://example.local",
+      "path": "C:/Users/<you>/Local Sites/<site>/app/public",
+      "php": "C:/Users/<you>/AppData/Roaming/Local/lightning-services/php-<ver>/bin/win64/php.exe",
+      "phpIni": "C:/Users/<you>/AppData/Roaming/Local/run/<run-id>/conf/php/php.ini",
+      "adminUser": "admin",
+      "adminPass": "CHANGE-ME",
+      "coreAddons": [
+        "wpforms"
+      ]
+    },
+    "wpvibe-story": {
+      "url": "https://example.com",
+      "path": "C:/Users/<you>/Local Sites/<site>/app/public",
+      "php": "C:/Users/<you>/AppData/Roaming/Local/lightning-services/php-<ver>/bin/win64/php.exe",
+      "phpIni": "C:/Users/<you>/AppData/Roaming/Local/run/<run-id>/conf/php/php.ini",
+      "adminUser": "admin",
+      "adminPassEnv": "BAKERY_WP_PASS",
+      "coreAddons": []
+    },
+    "sullies-lite": {
+      "url": "http://example.local",
+      "path": "C:/Users/<you>/Local Sites/<site>/app/public",
+      "php": "C:/Users/<you>/AppData/Roaming/Local/lightning-services/php-<ver>/bin/win64/php.exe",
+      "phpIni": "C:/Users/<you>/AppData/Roaming/Local/run/<run-id>/conf/php/php.ini",
+      "adminUser": "admin",
+      "adminPass": "CHANGE-ME",
+      "coreAddons": [
+        "wpforms-lite"
+      ]
+    }
+  }
+}

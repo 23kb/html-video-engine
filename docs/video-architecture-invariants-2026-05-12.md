@@ -148,7 +148,7 @@ Two kinds of "system files" in this repo. They need different consumption:
 
 | Type | Examples | Right way to consume |
 |---|---|---|
-| **Reference / Rules** | This invariants doc; `library-scope-frequency-2026-05-12.md` (deleted 2026-08-22 — git history); `docs/sound-design-reference-2026-05-12.md`; `.claude/skills/wpforms-primitives/SKILL.md` (lookup index); `.claude/skills/wpforms-gsap-rules/SKILL.md` (rules reference). | **Read inline. File-read is fine.** Codex reading the architecture-invariants doc directly was the doc working as designed — it's data, not process. |
+| **Reference / Rules** | This invariants doc; `library-scope-frequency-2026-05-12.md` (deleted 2026-08-22 — git history); `.claude/skills/wpforms-primitives/SKILL.md` (lookup index); `.claude/skills/wpforms-gsap-rules/SKILL.md` (rules reference). | **Read inline. File-read is fine.** Codex reading the architecture-invariants doc directly was the doc working as designed — it's data, not process. |
 | **Gates / Process** | `.claude/skills/wpforms-motion-audit/SKILL.md` (tier-scoring procedure with a recorded artifact); `.claude/skills/wpforms-video/SKILL.md` HARD-GATE storyboard approval; `.claude/skills/wpforms-postintro/SKILL.md` multi-animation rule check. | **Invoke via the Skill tool.** Reading the rubric ≠ running the scorer. The procedure produces an artifact (tier rating, approval, gate-passed marker) that file-read cannot. |
 
 **The Skill tool is the gate for procedural skills. Reading a skill's markdown file is NOT** — it shows you the rubric but doesn't produce the artifact (tier, approval, gate-passed). For reference skills (lookup indices, rules reference), reading is the entire interaction; no invocation needed.

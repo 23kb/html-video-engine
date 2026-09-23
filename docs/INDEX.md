@@ -34,7 +34,6 @@ Craft docs below carry a **HISTORICAL API NOTE (2026-08-28)**: their code exampl
 - `color-palette.md` — Brand orange + supporting accents. (historical API note)
 - `atmospheric-composition.md` — Grain / sweep / parallax / scale-push usage rules. (historical API note)
 - `selector-hygiene.md` — Selector source hierarchy, when selectors break. (historical API note; `_selectors.js` modules are engine-era — selectors live inline in the film now)
-- `audio-mastering.md` — **SUPERSEDED** (manifest/runtime-era audio). Live truth: `tools/render-singlehtml-audio.js` header (`--bgm-volume` bands, ducking, post-render check), `videos/_shared/narration.js`, `tools/sfx/CONTEXT.md`.
 - `title-card-voice.md` — **SUPERSEDED** (manifest-era intro/outro cards; tutorials carry no bookends since 2026-08-28). Its CTA-tone rules still read for shorts / editorial end cards.
 
 ## GSAP / animation
@@ -49,7 +48,6 @@ Craft docs below carry a **HISTORICAL API NOTE (2026-08-28)**: their code exampl
 - `blocks.md` — `videos/_shared/blocks/` API: code-card, mac-window, phone-frame, pill, arrow, route-line, terminal.
 - `text-kit.md` — Pixel-Point-style text reveal presets.
 - `lottie-kit.md` — Lottie bumpers, stings, badges, marker micros. (historical API note — examples import a per-video `_kit.js`)
-- `sound-design-reference-2026-05-12.md` — **SUPERSEDED** by the shipped SFX pipeline: `tools/sfx/CONTEXT.md` (plan / tracks / clips / mux) + `tools/render-singlehtml-audio.js` (BGM + ducking). Historical plan doc.
 
 ## Render / preview / QC
 
@@ -77,7 +75,6 @@ Craft docs below carry a **HISTORICAL API NOTE (2026-08-28)**: their code exampl
 ## Field / UI inventories (query, don't full-read)
 
 - `wpforms-field-state-inventory.md` — Canonical field-state inventory (132 KB). Query via `node tools/field-state.js --field <name>`.
-- `wpforms-ai-state-inventory.md` — WPForms AI UI state references.
 - `snapshot-health-report.md` — Snapshot health (local-only; hand-written).
 
 ## Repo-root references
