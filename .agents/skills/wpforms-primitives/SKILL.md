@@ -79,10 +79,10 @@ Scan this table first. For deeper context (why, when not to use, options), scrol
 | Find iframe element by visible text | `findInIframeByText(ifm, text, opts)` | `(ifm, str, opts) → Element` | iframe-helpers.js:45 |
 | Glide+click an iframe element by text | `glideToText({iframeManager, cursor}, text, opts)` | `(deps, str, opts) → Promise` | iframe-helpers.js:183 |
 | **Blended tutorial camera flight** (dip + land in ONE tween, audit-clean) | `flyToElement({iframeManager}, target, opts)` | `(deps, el, {fill, pad, maxZoom, duration}) → Promise<pose\|null>` | iframe-helpers.js (FIX-1 fa-retest) |
-| Click "Add New Form" in admin | `ifm.navAddNewForm(opts)` | `IframeManager method` | wpforms-interactions.js:1385 |
-| Pick a template by slug | `ifm.selectTemplate(slug, opts)` | `IframeManager method` | wpforms-interactions.js:1410 |
-| Drag a field into form builder | `ifm.dragFieldToForm(slug, opts)` | `IframeManager method` | wpforms-interactions.js:1655 |
-| Open a field's option panel | `ifm.openFieldOptions(fieldId, opts)` | `IframeManager method` | wpforms-interactions.js:1914 |
+| Click "Add New Form" in admin | `ifm.navAddNewForm(opts)` | `IframeManager method` | wpforms-interactions.js:309 |
+| Pick a template by slug | `ifm.selectTemplate(slug, opts)` | `IframeManager method` | wpforms-interactions.js:334 |
+| Drag a field into form builder | `ifm.dragFieldToForm(slug, opts)` | `IframeManager method` | wpforms-interactions.js:596 |
+| Open a field's option panel | `ifm.openFieldOptions(fieldId, opts)` | `IframeManager method` | wpforms-interactions.js:831 |
 
 ### Payoff instruments (`videos/_shared/instruments.js`)
 
@@ -134,7 +134,7 @@ For pure-editorial / ad-style / marketing motion. Each `mountFoo({...})` returns
 
 Full vocabulary table + how to add a new effect: `videos/_shared/effects/README.md`. QC harness: `videos/_qc-effects/index.html`.
 
-For the IframeManager class itself: `wpforms-interactions.js:103`. For the Cursor class: `motion-primitives.js:380`. Other interactions (`openSettingsTab`, `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, etc.) are also IframeManager methods — grep `wpforms-interactions.js` for the method name to find its line.
+For the IframeManager class itself: `iframe-manager.js:101`. For the Cursor class: `motion-primitives.js:380`. Other interactions (`openSettingsTab`, `addNotification`, `insertSmartTag`, `selectFromDropdown`, `addConditionalLogicRule`, etc.) are `WPFormsInteractions` methods — grep `products/wpforms/film/wpforms-interactions.js` for the method name to find its line.
 
 ## Library scope philosophy
 
@@ -217,8 +217,8 @@ Before writing any of the following, scan this skill:
 6. **Per-field cascade reveal during AI generation or template apply** → `fieldStaggerReveal`.
 7. **Persistent Sullie brand anchor** → `mountSullieBug` (polished rest-api pattern).
 8. **Clean exit out of a focused card back to overview** → `cleanFastRejoin` (no blur smear).
-9. **Standard WPForms admin / builder interaction** (Add New, Select Template, Drag Field, Open Settings, etc.) → call the matching method on `WPFormsInteractions` from `videos/_shared/wpforms-interactions.js`. Do not hand-roll click + swap + wait sequences.
-10. **Snapshot-iframe slot with crossfade swap** → use `IframeManager` from `wpforms-interactions.js` — the ONE iframe mount for every film: tutorials (the skeleton mounts it), mixed films and any editorial scene that needs a real product surface. There is no other iframe host; the engine's was retired 2026-08-22.
+9. **Standard WPForms admin / builder interaction** (Add New, Select Template, Drag Field, Open Settings, etc.) → call the matching method on `WPFormsInteractions` (source: `products/wpforms/film/wpforms-interactions.js`; films import it through the `videos/_shared/wpforms-interactions.js` shim). Do not hand-roll click + swap + wait sequences.
+10. **Snapshot-iframe slot with crossfade swap** → use `IframeManager` from `videos/_shared/iframe-manager.js` — the ONE iframe mount for every film: tutorials (the skeleton mounts it), mixed films and any editorial scene that needs a real product surface. There is no other iframe host; the engine's was retired 2026-08-22.
 11. **Glide cursor to an iframe element, scroll-into-view + click** (the recurring 4-10× pattern across single-HTML videos) → `glideClick({ iframeManager, cursor }, target, opts)` from `videos/_shared/iframe-helpers.js`. Wraps the entire `try { scrollIntoView + elementToStageCoords + glide + click } catch (warn)` choreography.
 12. **Interact with text in a SaaS-captured iframe** (Klaviyo, Mailchimp, Stripe — anything with content-hashed class names like `.sc-jTrPJq`) → `findInIframeByText(ifm, 'Settings')` or `glideToText({ ifm, cursor }, 'Settings', opts)` from `iframe-helpers.js`. Text content is stable across re-captures; class names are not.
 
@@ -317,9 +317,17 @@ The Signature column's return type IS the contract (FIX-16):
 | `startBGM(src, opts)` / `stopBGM(opts)` | Start, fade, duck, restore, and stop a portable music bed without engine/player coupling. | `(src, { volume?, fadeIn? })`, `({ fadeOut? })` | `narration.js:62` |
 | `setNarrationBase(path)` / `cleanupAudio()` | Override mp3 base path and release narration/BGM resources when a single-HTML video closes. | `(path)`, `() → Promise<void>` | `narration.js:26`, `narration.js:135` |
 
-## Library 2 — `videos/_shared/wpforms-interactions.js`
+## Library 2 — `IframeManager` + the interaction classes
 
-High-level interaction sequences that drive real WPForms selectors. Built on top of motion-primitives (re-exports `Cursor` + `clickRipple`).
+Split on 2026-09-23 (product-neutral rename, Phase 1) into three files:
+
+- `videos/_shared/iframe-manager.js` — `IframeManager`. Generic: any product pack.
+- `videos/_shared/ui-interactions.js` — `UIInteractions`, the product-neutral base: the constructor, `_assertSnapshot` / `_assertSnapshotOneOf` / `_snapshotAllowlist`, `_findOrThrow`, `_glideAndClick`, `_visibleTarget`, `_typeIntoIframeInput`, `_slideBlockIn`, `_selectElementFromDropdown`, `_openFakeDropdown` / `_closeFakeDropdown`, `_buildSidebarPillGhost`.
+- `products/wpforms/film/wpforms-interactions.js` — `WPFormsInteractions extends UIInteractions`: every WPForms method and slug map below.
+
+`videos/_shared/wpforms-interactions.js` is now a shim that re-exports `IframeManager`, `WPFormsInteractions`, `Cursor` and `clickRipple`, so existing films keep working. A new film imports `IframeManager` from `iframe-manager.js` and `Cursor` from `motion-primitives.js`; only a film that drives WPForms UI needs `WPFormsInteractions`.
+
+High-level interaction sequences that drive real WPForms selectors. Built on top of motion-primitives.
 
 QC: open `videos/_qc-interactions/index.html` in the preview server. Wave 1 is built and in active QC iteration; check the QC index for the current per-interaction status before relying on one in production.
 
@@ -327,7 +335,7 @@ QC: open `videos/_qc-interactions/index.html` in the preview server. Wave 1 is b
 
 | Class / method | Use |
 |---|---|
-| `new IframeManager(stage, opts)` | Mount a snapshot iframe slot inside a stage. Renders at native captured viewport (default 1444×900) and CSS-scales to stage viewport (default 1280×720). |
+| `new IframeManager(stage, opts)` | Mount a snapshot iframe slot inside a stage. Renders at native captured viewport (default 1444×900) and CSS-scales to stage viewport (default 1280×720). Snapshot pack: `opts.snapshotBase` when passed, else `/products/<key>/snapshots` from the film's `<meta name="film:product" content="<key>">`, else the WPForms pack. |
 | `.load(slug)` / `.swap(slug, opts)` | Load a snapshot, or crossfade to a different one. No flash-guard cover needed — both iframes coexist during the fade. |
 | `.query(selector)` / `.queryAll(selector)` | Run a selector against the iframe document. |
 | `.elementToStageCoords(target)` | Convert an iframe-doc element (or selector) to its center point in stage-local coords. **This is what `Cursor.glide` consumes.** |
@@ -337,11 +345,11 @@ QC: open `videos/_qc-interactions/index.html` in the preview server. Wave 1 is b
 | `.doc()` / `.iframe()` / `.currentSlug()` | Accessors. |
 | `.wait(seconds)` | `setTimeout`-backed wait that survives backgrounded preview throttling. |
 
-Source: `wpforms-interactions.js:66`.
+Source: `iframe-manager.js:101`.
 
 ### WPFormsInteractions methods (Wave 1)
 
-Constructor: `new WPFormsInteractions(stage, cursor, iframeManager)`. Each method below assumes you've called `iframeManager.load(<prereq>)` first; methods enforce the prerequisite via `_assertSnapshot` and throw a useful error otherwise.
+Constructor: `new WPFormsInteractions(stage, cursor, iframeManager)` (inherited from `UIInteractions`). Each method below assumes you've called `iframeManager.load(<prereq>)` first; methods enforce the prerequisite via `_assertSnapshot` and throw a useful error otherwise.
 
 JSDoc convention in the source: `@prerequisite` (required snapshot), `@operation` (`snapshot-swap` / `dom-only` / `hybrid`), `@endsAt` (snapshot after the call), `@primitives` (which motion-primitives are used), `@realDom` (the captured selector), `@duration` (approximate runtime).
 
@@ -349,20 +357,20 @@ JSDoc convention in the source: `@prerequisite` (required snapshot), `@operation
 
 | Method | What it does | Prereq → Ends at | Op | Source |
 |---|---|---|---|---|
-| `navAddNewForm(opts?)` | Click the orange "Add New" button in the All Forms header, crossfade to the template library. | `admin-forms-overview` → `admin-templates` | snapshot-swap | `wpforms-interactions.js:460` |
-| `selectTemplate(slug, opts?)` | Pick a template card by `data-slug`. Scrolls in, hover-reveals the action buttons, clicks the primary action ("Create Blank Form" / "Use Template" / "Generate Form" per variant). Does NOT swap by itself — the handoff to `builder-setup` belongs to a separate call. | `admin-templates` → `admin-templates` (with active card) | hybrid | `wpforms-interactions.js:485` |
-| `navWPFormsSidebarMenu(item, opts?)` | Click a WPForms submenu item in the WordPress sidebar. Strips the "NEW!" badge before matching by visible text. Optional `swap: false` to click without swap. | any admin-* or builder-* → mapped snapshot (see `WPF_SIDEBAR_TARGETS` in source) | snapshot-swap | `wpforms-interactions.js:587` |
-| `openFormInList(formId, opts?)` | Click a form-row title to open it in the builder. Applies per-form profile after swap so the three demo forms don't all look like the all-fields fixture. | `admin-forms-overview` → `builder-fields` | snapshot-swap | `wpforms-interactions.js:627` |
-| `applyFormProfile(formId)` | Public form-profile apply (sets toolbar + canvas form name + hides non-allowed fields). Use directly when mounting on `builder-fields` without going through `openFormInList`. | `builder-fields` | dom-only | `wpforms-interactions.js:665` |
+| `navAddNewForm(opts?)` | Click the orange "Add New" button in the All Forms header, crossfade to the template library. | `admin-forms-overview` → `admin-templates` | snapshot-swap | `wpforms-interactions.js:309` |
+| `selectTemplate(slug, opts?)` | Pick a template card by `data-slug`. Scrolls in, hover-reveals the action buttons, clicks the primary action ("Create Blank Form" / "Use Template" / "Generate Form" per variant). Does NOT swap by itself — the handoff to `builder-setup` belongs to a separate call. | `admin-templates` → `admin-templates` (with active card) | hybrid | `wpforms-interactions.js:334` |
+| `navWPFormsSidebarMenu(item, opts?)` | Click a WPForms submenu item in the WordPress sidebar. Strips the "NEW!" badge before matching by visible text. Optional `swap: false` to click without swap. | any admin-* or builder-* → mapped snapshot (see `WPF_SIDEBAR_TARGETS` in source) | snapshot-swap | `wpforms-interactions.js:436` |
+| `openFormInList(formId, opts?)` | Click a form-row title to open it in the builder. Applies per-form profile after swap so the three demo forms don't all look like the all-fields fixture. | `admin-forms-overview` → `builder-fields` | snapshot-swap | `wpforms-interactions.js:476` |
+| `applyFormProfile(formId)` | Public form-profile apply (sets toolbar + canvas form name + hides non-allowed fields). Use directly when mounting on `builder-fields` without going through `openFormInList`. | `builder-fields` | dom-only | `wpforms-interactions.js:514` |
 
 #### Builder-side
 
 | Method | What it does | Prereq → Ends at | Op | Source |
 |---|---|---|---|---|
-| `dragFieldToForm(fieldSlug, opts?)` | Full visual drag from the left palette to the canvas: glide → press → ghost-clone carry → FLIP-reveal landing field at ~58% of carry → drop + fade. Mid-drag reveal makes the canvas grow BEFORE the ghost lands. `opts.camera: 'follow'` (RECOMMENDED for new films, AP-11) tweens the camera to the landing field over the carry — the camera holds the SUBJECT, never pre-frames the destination (rulebook §4; sfc 6). Default `'hold'` = pre-2026-09-02 behaviour. | `builder-fields` → `builder-fields` (+1 field) | dom-only | `wpforms-interactions.js:730` |
-| `openFieldOptions(fieldId, opts?)` | Click a canvas field, swap the left panel from "Add Fields" to "Field Options," and expose the field's specific option panel. | `builder-fields` → `builder-fields` (options open) | dom-only | `wpforms-interactions.js:989` |
-| `navBuilderSidebar(section, opts?)` | Click a builder panel button (`setup` / `fields` / `settings` / `providers` / `payments` / `revisions`) and swap to the corresponding `builder-*` snapshot. `providers` is the slug for the Marketing panel. | any `builder-*` → mapped `builder-*` | snapshot-swap | `wpforms-interactions.js:1261` |
-| `openSettingsTab(tab, opts?)` | Click a Settings sub-tab (`general` / `notifications` / `confirmation` / `anti_spam` / `themes`) and swap to the corresponding `builder-settings-*`. | `builder-settings-*` → `builder-settings-<tab>` | snapshot-swap | `wpforms-interactions.js:1292` |
+| `dragFieldToForm(fieldSlug, opts?)` | Full visual drag from the left palette to the canvas: glide → press → ghost-clone carry → FLIP-reveal landing field at ~58% of carry → drop + fade. Mid-drag reveal makes the canvas grow BEFORE the ghost lands. `opts.camera: 'follow'` (RECOMMENDED for new films, AP-11) tweens the camera to the landing field over the carry — the camera holds the SUBJECT, never pre-frames the destination (rulebook §4; sfc 6). Default `'hold'` = pre-2026-09-02 behaviour. | `builder-fields` → `builder-fields` (+1 field) | dom-only | `wpforms-interactions.js:596` |
+| `openFieldOptions(fieldId, opts?)` | Click a canvas field, swap the left panel from "Add Fields" to "Field Options," and expose the field's specific option panel. | `builder-fields` → `builder-fields` (options open) | dom-only | `wpforms-interactions.js:831` |
+| `navBuilderSidebar(section, opts?)` | Click a builder panel button (`setup` / `fields` / `settings` / `providers` / `payments` / `revisions`) and swap to the corresponding `builder-*` snapshot. `providers` is the slug for the Marketing panel. | any `builder-*` → mapped `builder-*` | snapshot-swap | `wpforms-interactions.js:1595` |
+| `openSettingsTab(tab, opts?)` | Click a Settings sub-tab (`general` / `notifications` / `confirmation` / `anti_spam` / `themes`) and swap to the corresponding `builder-settings-*`. | `builder-settings-*` → `builder-settings-<tab>` | snapshot-swap | `wpforms-interactions.js:1626` |
 
 #### Field-option sub-interactions
 
@@ -370,9 +378,9 @@ After `openFieldOptions(fieldId)` exposes a panel, these drive specific sub-cont
 
 | Method | What it does | Source |
 |---|---|---|
-| `setFieldLabel(fieldId, newLabel, opts?)` | Click the Label input, clear it, letter-type the new label with per-char canvas mirror. | `wpforms-interactions.js:1045` |
-| `setNameFormat(fieldId, format)` | Switch a Name field between `simple` / `first-last` / `first-middle-last`. Builds a fake dropdown overlay (the native `<select>` popover can't be visually driven), clicks the option, flips the canvas wrapper's `format-selected-*` class. | `wpforms-interactions.js:1094` |
-| `toggleEmailConfirmation(fieldId, on?)` | Flip the Enable Email Confirmation toggle. Click the visible slider (not the hidden checkbox), update both the option control and the canvas `wpforms-confirm-enabled/disabled` class. | `wpforms-interactions.js:1221` |
+| `setFieldLabel(fieldId, newLabel, opts?)` | Click the Label input, clear it, letter-type the new label with per-char canvas mirror. | `wpforms-interactions.js:887` |
+| `setNameFormat(fieldId, format)` | Switch a Name field between `simple` / `first-last` / `first-middle-last`. Builds a fake dropdown overlay (the native `<select>` popover can't be visually driven), clicks the option, flips the canvas wrapper's `format-selected-*` class. | `wpforms-interactions.js:936` |
+| `toggleEmailConfirmation(fieldId, on?)` | Flip the Enable Email Confirmation toggle. Click the visible slider (not the hidden checkbox), update both the option control and the canvas `wpforms-confirm-enabled/disabled` class. | `wpforms-interactions.js:993` |
 
 #### Wave 2 Batch A — Notifications + Conditional Logic
 
@@ -380,20 +388,20 @@ Use these for Settings → Notifications, smart tags, generic settings controls,
 
 | Method | What it does | Source |
 |---|---|---|
-| `addNotification(opts?)` | Click Add New Notification, complete the modal prompt, clone a real notification block, and slide the new block in. | `wpforms-interactions.js:1563` |
-| `editNotificationName(blockSel, newName)` | Click a block edit pencil, type a replacement name, and update the block header label. | `wpforms-interactions.js:1609` |
-| `setNotificationSendTo(blockSel, value)` | Insert a smart-tag chip into a notification's Send To Email Address field. | `wpforms-interactions.js:1644` |
-| `setNotificationSubject(blockSel, text)` | Type into a notification's Email Subject Line input with input/change events. | `wpforms-interactions.js:1667` |
-| `setNotificationMessage(blockSel, text)` | Type into a notification's Email Message textarea with input/change events. | `wpforms-interactions.js:1691` |
-| `openSmartTagPicker(fieldSel, opts?)` / `closeSmartTagPicker()` | Lower-level smart-tag picker controls for hand-scripted beats. | `wpforms-interactions.js:1715` |
-| `insertSmartTag(fieldSel, opts?)` | Open the smart-tag picker, pick a real dropdown item, insert a chip, and close the picker. | `wpforms-interactions.js:1770` |
-| `selectFromDropdown(fieldWrapSel, value)` | Generic faux-dropdown for any native WPForms `<select>` inside a field wrap. | `wpforms-interactions.js:1813` |
-| `toggleSettingControl(fieldWrapSel, state?)` | Generic WPForms toggle-control for any checkbox slider in settings panels. | `wpforms-interactions.js:1853` |
-| `duplicateNotificationBlock(blockSel, opts?)` | Click a notification clone icon, clone the block DOM, and slide in the duplicate. | `wpforms-interactions.js:1888` |
-| `setNotificationActive(blockSel, isActive)` | Toggle and update a notification block's Active / Inactive badge. | `wpforms-interactions.js:1920` |
-| `collapseNotificationBlock(blockSel)` | Click the block caret and collapse the notification content area. | `wpforms-interactions.js:1954` |
-| `expandSettingsSection(groupSel)` | Expand a collapsed panel-fields group such as Notifications Advanced. | `wpforms-interactions.js:1982` |
-| `addConditionalLogicRule(opts?)` | Enable notification conditional logic and populate one Field / Operator / Value rule. | `wpforms-interactions.js:2014` |
+| `addNotification(opts?)` | Click Add New Notification, complete the modal prompt, clone a real notification block, and slide the new block in. | `wpforms-interactions.js:1034` |
+| `editNotificationName(blockSel, newName)` | Click a block edit pencil, type a replacement name, and update the block header label. | `wpforms-interactions.js:1081` |
+| `setNotificationSendTo(blockSel, value)` | Insert a smart-tag chip into a notification's Send To Email Address field. | `wpforms-interactions.js:1116` |
+| `setNotificationSubject(blockSel, text)` | Type into a notification's Email Subject Line input with input/change events. | `wpforms-interactions.js:1139` |
+| `setNotificationMessage(blockSel, text)` | Type into a notification's Email Message textarea with input/change events. | `wpforms-interactions.js:1162` |
+| `openSmartTagPicker(fieldSel, opts?)` / `closeSmartTagPicker()` | Lower-level smart-tag picker controls for hand-scripted beats. | `wpforms-interactions.js:1185` |
+| `insertSmartTag(fieldSel, opts?)` | Open the smart-tag picker, pick a real dropdown item, insert a chip, and close the picker. | `wpforms-interactions.js:1240` |
+| `selectFromDropdown(fieldWrapSel, value)` | Generic faux-dropdown for any native WPForms `<select>` inside a field wrap. | `wpforms-interactions.js:1292` |
+| `toggleSettingControl(fieldWrapSel, state?)` | Generic WPForms toggle-control for any checkbox slider in settings panels. | `wpforms-interactions.js:1329` |
+| `duplicateNotificationBlock(blockSel, opts?)` | Click a notification clone icon, clone the block DOM, and slide in the duplicate. | `wpforms-interactions.js:1367` |
+| `setNotificationActive(blockSel, isActive)` | Toggle and update a notification block's Active / Inactive badge. | `wpforms-interactions.js:1399` |
+| `collapseNotificationBlock(blockSel)` | Click the block caret and collapse the notification content area. | `wpforms-interactions.js:1433` |
+| `expandSettingsSection(groupSel)` | Expand a collapsed panel-fields group such as Notifications Advanced. | `wpforms-interactions.js:1478` |
+| `addConditionalLogicRule(opts?)` | Enable notification conditional logic and populate one Field / Operator / Value rule. | `wpforms-interactions.js:1517` |
 
 ## When NOT to use these
 
@@ -403,7 +411,9 @@ Use these for Settings → Notifications, smart tags, generic settings controls,
 ## References
 
 - `videos/_shared/motion-primitives.js` — full source + inline JSDoc rationale + citation back to the lessons docs.
-- `videos/_shared/wpforms-interactions.js` — full source + per-method `@prerequisite`/`@endsAt`/`@realDom` JSDoc.
+- `videos/_shared/iframe-manager.js` — `IframeManager` source.
+- `videos/_shared/ui-interactions.js` — `UIInteractions` base (shared helpers).
+- `products/wpforms/film/wpforms-interactions.js` — WPForms methods + per-method `@prerequisite`/`@endsAt`/`@realDom` JSDoc. `videos/_shared/wpforms-interactions.js` is the re-export shim.
 - `videos/_qc-primitives/index.html` — live primitive demos with statuses.
 - `videos/_qc-interactions/index.html` — live interaction demos with statuses.
 - Per-template button variants, hover-state inventory, sub-interaction notes: read the QC pages above + `tools/inspect-snapshot.js` (the standalone usage doc retired 2026-08-22).

@@ -146,9 +146,14 @@ any product pack and are being renamed to `film-*`.
 
 - `motion-primitives.js` — cameras, `Cursor`, typing, reveals, the brand
   bug, `mulberry32`, `boundedRepeats`.
-- `wpforms-interactions.js` — `IframeManager` (mounts any pack's snapshots;
-  pass `snapshotBase` for a non-WPForms pack) plus the WPForms admin and
-  builder interactions.
+- `iframe-manager.js` — `IframeManager`: mounts any pack's snapshots. The
+  pack comes from `<meta name="film:product" content="<key>">`, else
+  WPForms; `snapshotBase` overrides both.
+- `ui-interactions.js` — `UIInteractions`, the product-neutral base for a
+  pack's interaction class. The WPForms admin and builder interactions
+  (`WPFormsInteractions`) live in `products/wpforms/film/`.
+- `wpforms-interactions.js` — a shim for existing films: re-exports
+  `IframeManager`, `WPFormsInteractions`, `Cursor` and `clickRipple`.
 - `iframe-helpers.js` — click and find-by-text helpers for captured SaaS pages.
 - `builder-frontend-split.js` — builder on the left, live frontend mirror on
   the right.
