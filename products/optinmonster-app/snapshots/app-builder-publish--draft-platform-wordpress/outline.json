@@ -1,0 +1,130 @@
+{
+  "slug": "app-builder-publish--draft-platform-wordpress",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "builder-header-tab",
+      "event": "click",
+      "selector": "a.HeaderNavLink--design",
+      "count": 5
+    },
+    {
+      "label": "publish-platform-tile",
+      "event": "click",
+      "selector": ".EDoxI",
+      "count": 6
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": ".HeaderNavButton--close",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".HeaderNavLink--analytics",
+        "tag": "a",
+        "text": "Analytics",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--design",
+        "tag": "a",
+        "text": "Design",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--integrations",
+        "tag": "a",
+        "text": "Integrations",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--publish",
+        "tag": "a",
+        "text": "Publish",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--rulesets",
+        "tag": "a",
+        "text": "Display Rules",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#_goober",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ace-tm",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#classic-theme-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#core-block-supports-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#root",
+        "tag": "div",
+        "text": "Design Display Rules Integrations Analytics Publish Support…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

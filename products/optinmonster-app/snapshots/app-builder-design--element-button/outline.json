@@ -1,0 +1,381 @@
+{
+  "slug": "app-builder-design--element-button",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "builder-header-tab",
+      "event": "click",
+      "selector": "a.HeaderNavLink--design",
+      "count": 5
+    },
+    {
+      "label": "builder-view-select",
+      "event": "click",
+      "selector": ".ViewSelector__Item.sc-hA-DEym[data-handler-id]",
+      "count": 3
+    },
+    {
+      "label": "builder-device-switch",
+      "event": "click",
+      "selector": "button.bPjHOo",
+      "count": 3
+    },
+    {
+      "label": "builder-settings-open",
+      "event": "click",
+      "selector": "div.lchuSE:nth-of-type(2) > div.jwcgDX:nth-of-type(4) > div.jZRAwn > button.sc-hA-DEym:nth-of-type(3)",
+      "count": 1
+    },
+    {
+      "label": "builder-settings-tab",
+      "event": "click",
+      "selector": "button.iBmFyE",
+      "count": 2
+    },
+    {
+      "label": "builder-block-select",
+      "event": "click",
+      "selector": ".Element__content.sibley-ele-content",
+      "count": 3
+    },
+    {
+      "label": "builder-import-view-open",
+      "event": "click",
+      "selector": "div.lchuSE:nth-of-type(2) > div.jwcgDX:nth-of-type(4) > div.jZRAwn > button.sc-hA-DEym:nth-of-type(4)",
+      "count": 1
+    },
+    {
+      "label": "builder-campaign-details-open",
+      "event": "click",
+      "selector": "div.dWAHBK:nth-of-type(2) > div.cCZCdH:nth-of-type(2) > div.hLjHus:nth-of-type(2) > button.sc-hA-DEym",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#sibley-NoButtonElement--LYlPHaDxxct7imbnQltN",
+        "tag": "button",
+        "text": "No Thanks I don't want this",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-block-select",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#sibley-YesButtonElement--LYlPHaDxxct7imbnQltN",
+        "tag": "button",
+        "text": "Yes, I Need This!",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-block-select",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavButton--close",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".HeaderNavLink--analytics",
+        "tag": "a",
+        "text": "Analytics",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--design",
+        "tag": "a",
+        "text": "Design",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--integrations",
+        "tag": "a",
+        "text": "Integrations",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--publish",
+        "tag": "a",
+        "text": "Published",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--rulesets",
+        "tag": "a",
+        "text": "Display Rules",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".ViewSelector__Item",
+        "tag": "button",
+        "text": "Yes/No",
+        "count": 3,
+        "hidden": false,
+        "wired": "builder-view-select",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".ViewSelector__optin",
+        "tag": "button",
+        "text": "Optin",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-view-select",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".ViewSelector__success",
+        "tag": "button",
+        "text": "Success",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-view-select",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#react-select-2-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-3-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-4-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#width",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#om-tjrnkuhbdzfebjblahxo",
+        "tag": "div",
+        "text": "\"It's my go-to email every week to learn how to grow my bus…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#_goober",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ace-tm",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#classic-theme-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#core-block-supports-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mask0_1_af4c",
+        "tag": "mask",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mask0_1_wsg5",
+        "tag": "mask",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mask0_2_5cv5",
+        "tag": "mask",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mask0_2_x7ah",
+        "tag": "mask",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tjrnkuhbdzfebjblahxo-CampaignCSS",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tjrnkuhbdzfebjblahxo-CustomCSS",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tjrnkuhbdzfebjblahxo-CustomJS",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tjrnkuhbdzfebjblahxo-ResetCSS",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tjrnkuhbdzfebjblahxo-yesno",
+        "tag": "div",
+        "text": "\"It's my go-to email every week to learn how to grow my bus…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#root",
+        "tag": "div",
+        "text": "Design Display Rules Integrations Analytics Published Suppo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sibley-TextElement--wrapper--jcfdg055iJv0EcJ97Kdr",
+        "tag": "div",
+        "text": "Join over 5,000+ other online business owners that receive …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sibley-TextElement--wrapper--ZXPw8gqNQu6PMnjVFTE3",
+        "tag": "div",
+        "text": "\"It's my go-to email every week to learn how to grow my bus…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sibley-YesButtonElement--wrapper--LYlPHaDxxct7imbnQltN",
+        "tag": "div",
+        "text": "Yes, I Need This! No Thanks I don't want this",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".Footer__left-content",
+        "tag": "div",
+        "text": "Yes/No Optin Success",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".Footer__right-content",
+        "tag": "div",
+        "text": "Add View Welcome Offer – 10% Off Your First Order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".om-row",
+        "tag": "div",
+        "text": "\"It's my go-to email every week to learn how to grow my bus…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".SettingsAccordion",
+        "tag": "li",
+        "text": "Yes Button Button Text Button Click Action Go to a view Go …",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".SettingsAccordion__NoButton",
+        "tag": "li",
+        "text": "No Button",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".SettingsAccordion__YesNoButtonSuccessScripts",
+        "tag": "li",
+        "text": "Success Scripts",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".SettingsDropdown",
+        "tag": "li",
+        "text": "Font Settings",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

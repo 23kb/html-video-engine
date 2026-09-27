@@ -1,0 +1,59 @@
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+.omapi-statswidget__graph .omapi-card-content {
+  padding: 1px 5px !important;
+}
+.omapi-statswidget__graph-labels {
+  fill: #6C7781 !important;
+}
+.omapi-statswidget__graph .apexcharts-tooltip {
+  overflow: visible;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+  transform: translate(50%, -50%);
+}
+.omapi-statswidget__graph .apexcharts-tooltip-series-group {
+  width: auto;
+  box-sizing: border-box;
+  justify-content: center;
+  position: relative;
+  background-color: #23282D;
+  border-color: #23282D;
+  border-radius: 2px;
+  padding: 0;
+  padding: 6px 12px;
+  color: #FFFFFF;
+  text-align: center;
+  box-shadow: none;
+  font-size: 13px;
+  font-weight: 300;
+  display: flex;
+}
+.omapi-statswidget__graph .apexcharts-tooltip-series-group.active, .omapi-statswidget__graph .apexcharts-tooltip-series-group:last-child {
+  margin: 0 !important;
+  padding: 6px 12px;
+}
+.omapi-statswidget__graph .apexcharts-tooltip-y-group {
+  padding: 0;
+}
+.omapi-statswidget__graph .apexcharts-tooltip-text-value {
+  font-weight: normal;
+  margin: 0;
+  line-height: 1em;
+}
+.omapi-statswidget__graph .apexcharts-tooltip-count-value {
+  font-weight: bold;
+}
+.omapi-screen .omapi-statswidget__graph .omapi-has-tooltip .popper .popper__arrow {
+  bottom: -18px;
+  left: 50%;
+  margin-left: -6px;
+}

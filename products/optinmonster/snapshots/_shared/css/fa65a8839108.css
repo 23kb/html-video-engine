@@ -1,0 +1,229 @@
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+.omapi-card {
+  background-color: #FFFFFF;
+  box-shadow: 0 3px 2px rgba(0, 0, 0, 0.05);
+  margin-bottom: 16px;
+  position: relative;
+  flex-grow: 0;
+  flex-shrink: 1;
+  flex-basis: 100%;
+  color: #23282D;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.omapi-card .fa {
+  color: #646970;
+}
+.omapi-card__flex {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.omapi-card__half {
+  flex-basis: 49%;
+}
+.omapi-card__third {
+  flex-basis: 32%;
+}
+.omapi-card__third-two {
+  flex-basis: 67%;
+}
+.omapi-card__fourth {
+  flex-basis: 23.5%;
+}
+.omapi-card__fifth {
+  flex-basis: calc(20% - 16px);
+}
+.omapi-card__sixth {
+  flex-basis: calc(16% - 16px);
+}
+.omapi-card__closed {
+  margin: 0;
+}
+.omapi-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 24px 30px 22px;
+  border-bottom: solid 1px #DDDDDD;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.omapi-campaign-settings__publishstatus > .omapi-card-title {
+  border-bottom: none;
+  padding-bottom: 4px;
+  font-size: 18px;
+}
+.omapi-campaign-settings__wrapper > .omapi-card-title {
+  border-bottom: none;
+  padding-bottom: 8px;
+}
+.omapi-card-content {
+  padding: 20px 30px 0;
+  cursor: default;
+}
+.omapi-campaign-settings__publishstatus > .omapi-card-content, .omapi-campaign-settings__wrapper > .omapi-card-content {
+  padding-top: 4px;
+}
+.omapi-card.omapi-card__nofooter.omapi-campaign-settings__publishstatus .omapi-card-content {
+  padding-bottom: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+@media screen and (max-width: 1024px) {
+.omapi-card.omapi-card__nofooter.omapi-campaign-settings__publishstatus .omapi-card-content > p {
+    flex: 0 0 40%;
+    box-sizing: border-box;
+}
+}
+@media screen and (max-width: 1024px) {
+.omapi-card.omapi-card__nofooter.omapi-campaign-settings__publishstatus .omapi-card-content > div {
+    flex: 0 0 60%;
+    box-sizing: border-box;
+    text-align: right;
+}
+}
+@media screen and (max-width: 768px) {
+.omapi-card.omapi-card__nofooter.omapi-campaign-settings__publishstatus .omapi-card-content > div {
+    text-align: center;
+    margin-top: 10px;
+}
+}
+@media screen and (max-width: 768px) {
+.omapi-card.omapi-card__nofooter.omapi-campaign-settings__publishstatus .omapi-card-content {
+    display: block;
+    text-align: center;
+}
+}
+.omapi-card.omapi-card__nofooter.omapi-campaign-settings__publishstatus .omapi-campaign-settings__publishstatus-buttons {
+  margin-top: -16px;
+}
+.omapi-card.omapi-card__notitle .omapi-card-content {
+  padding-top: 30px;
+}
+.omapi-card.omapi-card__notitle .omapi-card-icon__close {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+.omapi-card.omapi-card__nofooter .omapi-card-content {
+  padding-bottom: 30px;
+}
+.omapi-card-footer {
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: default;
+}
+.omapi-card-footer :last-child {
+  margin-right: 0;
+}
+.omapi-card-footer .omapi-status .omapi-multi-column__meta-attr {
+  color: #646970;
+  font-size: 14px;
+  line-height: 21px;
+}
+.omapi-card-footer .omapi-status .omapi-multi-column__meta-value {
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 600;
+  color: #23282D;
+}
+.omapi-card-footer .omapi-status .omapi-multi-column__meta-green {
+  color: #46B450;
+}
+.omapi-card-footer .omapi-status .omapi-multi-column__meta-red {
+  color: #DC3232;
+}
+.omapi-card-icon {
+  color: #606A73;
+  cursor: pointer;
+}
+.omapi-card-icon__close {
+  content: none;
+}
+.omapi-card-icon__min-open {
+  content: url(../assets/9be22a9c21f0.svg);
+  transition: transform 0.5s;
+}
+.omapi-card-icon__min-closed {
+  content: url(../assets/9be22a9c21f0.svg);
+  transform: rotate(180deg);
+  transition: transform 0.5s;
+}
+.omapi-card__border {
+  border-bottom: solid 1px #DDDDDD;
+  padding-bottom: 10px;
+}
+.omapi-card__no-border {
+  border-bottom: none;
+}
+.omapi-card__no-padding > .omapi-card-content.omapi-card-content,
+.omapi-card__no-padding > .omapi-card-title.omapi-card-title,
+.omapi-card__no-padding > .omapi-card-footer.omapi-card-footer {
+  padding: 0;
+}
+.omapi-card__child {
+  padding: 0;
+}
+.omapi-card__child .omapi-card {
+  margin-bottom: 0;
+}
+.omapi-card-setting-section {
+  border-bottom: 1px solid #F1F1F1;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+}
+.omapi-card-setting-section.disabled > * {
+  position: relative;
+}
+.omapi-card-setting-section.disabled > *:before {
+  content: "";
+  background: #FFFFFF;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  opacity: 0.5;
+  z-index: 1;
+}
+.omapi-card-setting-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.omapi-card-setting-section > header {
+  flex: 0 0 210px;
+  padding-right: 20px;
+}
+@media screen and (max-width: 850px) {
+.omapi-card-setting-section > header {
+    flex: 0 0 150px;
+}
+}
+.omapi-card-setting-section > header > * {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+.omapi-card label.omapi-campaign-settings__user-setting {
+  padding: 24px 30px 22px;
+  border-bottom: solid 1px #dddddd;
+  gap: 10px;
+  display: flex;
+  flex-direction: column;
+}

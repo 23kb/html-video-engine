@@ -1,0 +1,28 @@
+.input-select {
+  display: inline-block;
+  position: relative;
+}
+.input-select .caret,
+.input-select .clear-results {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 50;
+  color: #9db3dc;
+}
+.input-select .caret svg,
+.input-select .clear-results svg {
+  vertical-align: top;
+  width: 10px;
+  height: auto;
+  transition: 0.2s;
+  cursor: pointer;
+}
+.input-select .caret + .multiselect__clear .clear-results {
+  top: 13px;
+  right: 38px;
+}
+.input-select .caret + .multiselect__clear .clear-results .clear-results-icon {
+  width: 8px;
+  height: auto;
+}

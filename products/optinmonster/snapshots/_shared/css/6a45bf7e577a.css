@@ -1,0 +1,169 @@
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+.omapi-screen .omapi-alert-bar {
+  background: #F7F8FB;
+  padding: 8px 0 9px;
+  height: 38px;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 18px;
+  position: relative;
+}
+@media screen and (max-width: 950px) {
+.omapi-screen .omapi-alert-bar {
+    height: 60px;
+}
+}
+.omapi-screen .omapi-alert-bar a,
+.omapi-screen .omapi-alert-bar a:hover {
+  color: #F56E28 !important;
+  text-decoration: underline;
+}
+@media screen and (max-width: 950px) {
+.omapi-screen .omapi-alert-bar a,
+  .omapi-screen .omapi-alert-bar a:hover {
+    display: block;
+}
+}
+.omapi-screen .omapi-alert-bar:before {
+  content: "";
+  background: url(../assets/4c686e25069f.svg) center center no-repeat;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  position: relative;
+  left: -4px;
+  top: 3px;
+}
+.omapi-screen .omapi-alert-bar__needs-connection .om-circle-loading {
+  display: inline-block;
+  margin: 0px 5px -5px;
+}
+.omapi-screen .omapi-alert-bar__needs-connection.ringing:before, .omapi-screen .omapi-alert-bar__needs-upgrade.ringing:before {
+  animation: omringbell 4s 0s ease-in-out 1;
+  transform-origin: 50% 4px;
+}
+.omapi-screen.omapi-has-alert .omapi-plugin-header {
+  padding-top: 38px;
+}
+@media screen and (max-width: 950px) {
+.omapi-screen.omapi-has-alert .omapi-plugin-header {
+    padding-top: 60px;
+}
+}
+.omapi-screen.omapi-has-alert .omapi-alert-bar-wrapper {
+  position: absolute;
+  top: -112px;
+  right: 0;
+  width: 100%;
+  height: 38px;
+  background: #F7F8FB;
+  z-index: 1;
+}
+@media screen and (max-width: 950px) {
+.omapi-screen.omapi-has-alert .omapi-alert-bar-wrapper {
+    height: 60px;
+    top: -134px;
+}
+}
+.omapi-screen.omapi-has-alert .omapi-alert-bar {
+  position: fixed;
+  right: 0;
+  left: 0;
+  margin-left: 160px;
+  border: 1px solid #e0e0e0;
+}
+@media screen and (max-width: 960px) {
+.omapi-screen.omapi-has-alert .omapi-alert-bar {
+    margin-left: 36px;
+}
+}
+@media screen and (max-width: 782px) {
+.omapi-screen.omapi-has-alert .omapi-alert-bar {
+    margin-left: 0px;
+}
+}
+.omapi-screen.omapi-has-alert.folded .omapi-alert-bar {
+  margin-left: 36px;
+}
+@keyframes omringbell {
+0% {
+    transform: rotate(0);
+}
+1% {
+    transform: rotate(30deg);
+}
+3% {
+    transform: rotate(-28deg);
+}
+5% {
+    transform: rotate(34deg);
+}
+7% {
+    transform: rotate(-32deg);
+}
+9% {
+    transform: rotate(30deg);
+}
+11% {
+    transform: rotate(-28deg);
+}
+13% {
+    transform: rotate(26deg);
+}
+15% {
+    transform: rotate(-24deg);
+}
+17% {
+    transform: rotate(22deg);
+}
+19% {
+    transform: rotate(-20deg);
+}
+21% {
+    transform: rotate(18deg);
+}
+23% {
+    transform: rotate(-16deg);
+}
+25% {
+    transform: rotate(14deg);
+}
+27% {
+    transform: rotate(-12deg);
+}
+29% {
+    transform: rotate(10deg);
+}
+31% {
+    transform: rotate(-8deg);
+}
+33% {
+    transform: rotate(6deg);
+}
+35% {
+    transform: rotate(-4deg);
+}
+37% {
+    transform: rotate(2deg);
+}
+39% {
+    transform: rotate(-1deg);
+}
+41% {
+    transform: rotate(1deg);
+}
+43% {
+    transform: rotate(0);
+}
+100% {
+    transform: rotate(0);
+}
+}

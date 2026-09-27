@@ -1,0 +1,89 @@
+.omapi-screen .omapi-monsterleads__filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+.omapi-screen .omapi-monsterleads__filters-campaign {
+  position: relative;
+}
+.omapi-screen .omapi-monsterleads__filters-campaign-label {
+  display: inline-block;
+  position: relative;
+  min-width: 164px;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 140%;
+  cursor: pointer;
+  margin: 0;
+}
+.omapi-screen .omapi-monsterleads__filters-campaign-label-arrow {
+  display: inline-block;
+  position: relative;
+  z-index: 99;
+}
+.omapi-screen .omapi-monsterleads__filters-campaign-label-arrow:before {
+  content: url(../assets/9be22a9c21f0.svg);
+  border: none;
+  display: block;
+  transform: rotate(180deg);
+}
+.omapi-screen .omapi-monsterleads__filters-campaign-select-wrap {
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  top: 2px;
+  left: 10px;
+}
+.omapi-screen .omapi-monsterleads__filters-campaign-select {
+  position: absolute;
+  top: 12px;
+  left: -169px;
+  width: 338px;
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
+}
+.omapi-screen .omapi-monsterleads__filters-campaign-select .multiselect__content-wrapper {
+  box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.1);
+}
+.omapi-screen .omapi-monsterleads__filters-campaign-select .multiselect__tags {
+  position: relative;
+  z-index: 99999;
+}
+.omapi-screen .omapi-monsterleads__filters-campaign-select .multiselect__tags:after {
+  right: 11px !important;
+}
+.omapi-screen .omapi-monsterleads__filters-campaign-select:before, .omapi-screen .omapi-monsterleads__filters-campaign-select:after {
+  content: "";
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  display: block;
+  transform: rotate(45deg);
+}
+.omapi-screen .omapi-monsterleads__filters-campaign-select:before {
+  height: 6px;
+  width: 6px;
+  top: -4px;
+  margin-left: 1px;
+  border: 2px solid #c9d0d6;
+}
+.omapi-screen .omapi-monsterleads__filters-campaign-select:after {
+  height: 8px;
+  width: 8px;
+  top: -3px;
+  margin-left: 2px;
+  z-index: 55;
+}
+.omapi-screen .omapi-monsterleads__filters-right {
+  display: flex;
+  align-items: center;
+}
+.omapi-screen .omapi-monsterleads__filters-right .omapi-monsterleads__filters-tag {
+  margin-left: 10px;
+  height: 31px;
+  line-height: 1.2em;
+  width: 160px;
+}
+.omapi-screen .omapi-monsterleads__filters-date .omapi-dropdown__select {
+  width: 160px;
+}

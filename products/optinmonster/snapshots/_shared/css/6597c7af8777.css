@@ -1,0 +1,57 @@
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+.campaign-type-filter-options {
+  margin-top: 24px;
+}
+.campaign-type-devices .campaign-type-device {
+  background: #ffffff;
+  border: 1px solid #C9D0D6;
+  padding: 10px 20px;
+  width: 100%;
+  border-radius: 3px;
+  margin-bottom: 8px;
+  font-size: 13px;
+  text-align: left;
+  color: #555D66;
+  display: flex;
+  align-items: center;
+}
+.campaign-type-devices .campaign-type-device.selected, .campaign-type-devices .campaign-type-device:hover {
+  color: #23282D;
+  border-color: #087CE1;
+}
+.campaign-type-devices .campaign-type-device:hover {
+  cursor: pointer;
+}
+.campaign-type-devices .campaign-type-device .campaign-type-device-img {
+  width: 33px;
+  margin-right: 10px;
+}
+.campaign-type-devices .campaign-type-device .campaign-type-device-name small {
+  font-size: 11px;
+}
+.campaign-type-devices .campaign-type-device.selected .campaign-type-device-name {
+  position: relative;
+  overflow: visible;
+}
+.campaign-type-devices .campaign-type-device.selected .campaign-type-device-name::before {
+  content: "";
+  background: url(../assets/52fe5261f0a9.svg);
+  background-size: contain;
+  height: 13px;
+  width: 13px;
+  position: absolute;
+  right: -18px;
+  top: 2px;
+}
+.clear-button {
+  font-weight: 400 !important;
+  width: 100%;
+}

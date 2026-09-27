@@ -1,0 +1,41 @@
+/* The toggle - the box around the toggle-switch */
+.form-toggle {
+  position: relative;
+  display: inline-block;
+  width: 21px;
+  height: 14px;
+}
+.form-toggle input {
+  display: none;
+}
+.form-toggle input:checked + .toggle-switch {
+  background-color: #74ba0d;
+}
+.form-toggle input:checked + .toggle-switch:before {
+  transform: translateX(7px);
+}
+.form-toggle input:focus + .toggle-switch {
+  box-shadow: 0 0 1px #74ba0d;
+}
+.form-toggle .toggle-switch {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ce1f32;
+  border-radius: 15px;
+  transition: 0.2s;
+}
+.form-toggle .toggle-switch:before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 1px;
+  bottom: 1px;
+  background-color: white;
+  border-radius: 50%;
+  transition: 0.2s;
+}

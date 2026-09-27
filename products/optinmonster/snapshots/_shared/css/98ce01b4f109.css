@@ -1,0 +1,68 @@
+.form-checkbox-no-label,
+.form-checkbox-no-label .form-checkbox-wrapper {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  line-height: 18px;
+}
+.form-checkbox {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  font: normal normal normal 14px/1 FontAwesome;
+  color: white;
+  vertical-align: bottom;
+  text-align: center;
+  /* Hide default HTML checkbox */
+}
+.form-checkbox input {
+  display: none;
+}
+.form-checkbox input:checked + .fancy-checkbox {
+  background: #0d82df;
+}
+.form-checkbox input:checked + .fancy-checkbox:before {
+  background: transparent;
+}
+.form-checkbox input:disabled + .fancy-checkbox {
+  cursor: default;
+}
+.form-checkbox input.error + .fancy-checkbox {
+  background: #ff9999;
+}
+.form-checkbox .fancy-checkbox svg {
+  color: #fff;
+  width: 12px;
+  height: 12px;
+}
+.form-checkbox {
+  /* The fancy-checkbox */
+}
+.form-checkbox span {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #d7e5ff;
+  transition: 0.2s;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.form-checkbox span:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 1px;
+  bottom: 1px;
+  background-color: white;
+  transition: 0.2s;
+  font-size: 16px;
+  line-height: 18px;
+  border-radius: 2px;
+}

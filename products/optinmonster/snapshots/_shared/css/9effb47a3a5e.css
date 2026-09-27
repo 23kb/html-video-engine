@@ -1,0 +1,111 @@
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+.omapi-screen .omapi-settings-general .omapi-button:not(.loading-button)[disabled] {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  opacity: 1;
+}
+.omapi-screen .omapi-settings-general .omapi-button:not(.loading-button)[disabled] > span {
+  color: transparent;
+  height: 0;
+}
+.omapi-screen .omapi-settings-page .omapi-button .om-circle-loading {
+  margin: 0;
+}
+.omapi-screen .omapi-settings-page .omapi-settings-page__plugin-connected.omapi-alert {
+  padding: 6px 20px 5px;
+  display: inline-flex;
+}
+.omapi-screen .omapi-settings-page .omapi-settings-page__plugin-connected.omapi-alert .alert-message {
+  font-weight: 600;
+}
+.omapi-screen .omapi-settings-page .omapi-has-tooltip .popper {
+  max-width: 1000px;
+}
+.omapi-screen .omapi-settings-page__disconnect.omapi-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+.omapi-screen .omapi-settings-page__disconnect.omapi-button svg {
+  width: 10px;
+  height: 10px;
+  margin-right: 3px;
+}
+.omapi-action-box {
+  background-color: #F7F8FB;
+  color: #646970;
+  padding: 20px;
+}
+.omapi-action-box header {
+  color: #23282D;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+.omapi-user-info {
+  margin-top: 20px;
+}
+.your-plan {
+  margin: 0 0 20px;
+}
+.row-connect-buttons {
+  align-content: center;
+  align-items: center;
+  display: flex;
+  margin: 0 0 20px;
+}
+@media screen and (max-width: 920px) {
+.row-connect-buttons {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-bottom: 0;
+}
+}
+.row-connect-buttons .omapi-button {
+  margin: 0 !important;
+}
+@media screen and (max-width: 920px) {
+.row-connect-buttons .omapi-button {
+    margin-bottom: 10px !important;
+}
+}
+.row-connect-buttons .omapi-settings-page__connected.omapi-alert {
+  padding: 6px 20px 5px;
+  margin-right: 18px;
+  margin-bottom: 0;
+}
+@media screen and (max-width: 920px) {
+.row-connect-buttons .omapi-settings-page__connected.omapi-alert {
+    margin-bottom: 10px;
+}
+}
+.row-connect-buttons .omapi-settings-page__connected.omapi-alert .alert-message {
+  font-weight: 600;
+}
+.row-connect-buttons .omapi-button.omapi-button__medium {
+  font-size: 14px;
+}
+.row-connect-buttons-or {
+  align-self: center;
+  margin: 0 10px;
+}
+.gravatar-image {
+  width: 80px;
+  height: 80px;
+}
+.mt-6 {
+  margin-top: 6px !important;
+}
+.mb-0 {
+  margin-bottom: 0 !important;
+}

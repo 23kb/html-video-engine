@@ -1,0 +1,54 @@
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+.omapi-subscribers-overview .omapi-subscribers-campaigns {
+  width: 100%;
+}
+.omapi-subscribers-overview .omapi-subscribers-campaigns .omapi-table {
+  border: none;
+}
+.omapi-subscribers-overview .omapi-subscribers-campaigns .omapi-table.striped > tbody > :nth-child(odd) {
+  background-color: #F7F8FB;
+}
+.omapi-subscribers-overview .omapi-subscribers-campaigns .omapi-table th {
+  padding: 14px 30px;
+  font-size: 13px;
+  line-height: 1.5em;
+  color: #23282D;
+  border-bottom-color: #DDDDDD;
+}
+.omapi-subscribers-overview .omapi-subscribers-campaigns .omapi-table th.campaign-table-created {
+  width: 110px;
+}
+.omapi-subscribers-overview .omapi-subscribers-campaigns .omapi-table td {
+  padding: 13px 13px 13px 9px;
+}
+.omapi-subscribers-overview .omapi-subscribers-campaigns .omapi-table .campaign-table-name {
+  padding-left: 30px;
+}
+.omapi-subscribers-overview .omapi-subscribers-campaigns .omapi-table .campaign-table-name__title {
+  color: #23282D;
+  font-weight: 600;
+  margin-bottom: 1px;
+}
+.omapi-subscribers-overview .omapi-subscribers-campaigns .omapi-table .campaign-table-stats,
+.omapi-subscribers-overview .omapi-subscribers-campaigns .omapi-table .campaign-table-created {
+  text-align: center;
+}
+.omapi-subscribers-overview .omapi-subscribers-campaigns .omapi-pagination {
+  display: flex;
+  justify-content: flex-end;
+}
+.omapi-subscribers-overview .omapi-subscribers-campaigns__refreshing {
+  opacity: 0.5;
+}
+.omapi-subscribers-overview .omapi-subscribers-campaigns__refreshing.omapi-subscribers-campaigns__no-data td {
+  padding-top: 34px;
+  padding-bottom: 33px;
+}
