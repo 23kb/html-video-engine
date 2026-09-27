@@ -335,11 +335,18 @@
   // They ride on the target URL when hand-browsing and on the message in a
   // film; the target snapshot reads them back with SnapRuntime.params().
   var faded = null;
+  // opts.pack: another product pack's snapshot (2026-09-27, OptinMonster: the
+  // plugin's admin links open the web app). Hand-browsing goes to
+  // ../../../<pack>/snapshots/<slug>/; in a film the message carries `pack`
+  // and `base` (the pack's snapshot root on the repo server) for the host to
+  // switch its snapshotBase. A same-slug guard never applies across packs.
   function goto(slug, opts) {
     var pairs = paramPairs(opts && opts.params);
-    if (!slug || (slug === currentSlug() && !pairs.length)) return;
+    var pack = opts && opts.pack ? String(opts.pack) : '';
+    if (!slug || (!pack && slug === currentSlug() && !pairs.length)) return;
     if (window.parent !== window) {
       var msg = { slug: slug };
+      if (pack) { msg.pack = pack; msg.base = '/products/' + pack + '/snapshots'; }   // no trailing slash: IframeManager appends /<slug>/
       if (pairs.length) {
         msg.params = {};
         for (var i = 0; i < pairs.length; i++) msg.params[pairs[i][0]] = pairs[i][1];
@@ -348,7 +355,7 @@
       return;
     }
     var fade = motionOff() ? 0 : opts && opts.fade != null ? opts.fade : 120;
-    var target = '../' + slug + '/index.html' + (pairs.length ? '?' + paramQuery(pairs) : '');
+    var target = (pack ? '../../../' + pack + '/snapshots/' : '../') + slug + '/index.html' + (pairs.length ? '?' + paramQuery(pairs) : '');
     var host = document.getElementById('wpbody-content') || document.body;
     if (!host || !(fade > 0)) {
       window.location.href = target;

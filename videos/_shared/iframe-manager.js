@@ -149,7 +149,12 @@ export class IframeManager {
     this._onSnapshotNavigate = (e) => {
       const d = e && e.data;
       if (!d || d.type !== 'snapshot:navigate' || typeof d.slug !== 'string') return;
-      if (this._slug === d.slug) return;
+      // A message may name another pack's snapshot root (`base`, from
+      // SnapRuntime.goto(slug, { pack })): the plugin pack's admin links open
+      // the web app pack (OptinMonster, 2026-09-27). Switch roots, then load.
+      const switchBase = typeof d.base === 'string' && d.base && d.base !== this.snapshotBase;
+      if (switchBase) this.snapshotBase = d.base;
+      if (this._slug === d.slug && !switchBase) return;
       this.loadSnapshot(d.slug);
     };
     window.addEventListener('message', this._onSnapshotNavigate);
