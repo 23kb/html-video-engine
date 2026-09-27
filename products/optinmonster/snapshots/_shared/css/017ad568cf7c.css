@@ -1,0 +1,80 @@
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+.campaign-type-selector {
+  align-items: center;
+  margin: 0 -8px 33px;
+  justify-content: flex-start;
+}
+.campaign-type-selector .omapi-card {
+  align-items: center;
+  margin: 8px;
+  flex-grow: 1;
+  justify-content: center;
+  cursor: pointer;
+  box-sizing: border-box;
+  height: 161px;
+}
+.campaign-type-selector .omapi-card.selected, .campaign-type-selector .omapi-card:hover {
+  position: relative;
+  border: 2px solid #087CE1;
+}
+.campaign-type-selector .omapi-card.selected:before {
+  content: url(../assets/52fe5261f0a9.svg);
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 21px;
+  height: 21px;
+}
+.campaign-type-selector .omapi-card__half {
+  max-width: calc(50% - 16px);
+}
+.campaign-type-selector .omapi-card__third {
+  max-width: calc(33.333333333% - 16px);
+}
+.campaign-type-selector .omapi-card__fourth {
+  max-width: calc(25% - 16px);
+}
+@media screen and (max-width: 580px) {
+.campaign-type-selector .omapi-card__fourth {
+    max-width: 160px;
+}
+}
+.campaign-type-selector .omapi-card__fifth {
+  max-width: calc(20% - 16px);
+}
+@media screen and (max-width: 1000px) {
+.campaign-type-selector .omapi-card__fifth {
+    max-width: 160px;
+}
+}
+.campaign-type-selector .omapi-card__sixth {
+  max-width: calc(16.66666666% - 16px);
+}
+@media screen and (max-width: 1024px) {
+.campaign-type-selector .omapi-card__sixth {
+    max-width: calc(33.3333333% - 16px);
+    flex-basis: 33%;
+}
+}
+.campaign-type-selector .omapi-card .omapi-card-content {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+.campaign-type-selector .omapi-card .omapi-card-content h5 {
+  font-size: 15px;
+  font-weight: 600;
+  padding-top: 3px;
+  margin: 0;
+}

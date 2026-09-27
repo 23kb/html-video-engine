@@ -1,0 +1,105 @@
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+body .v--modal-overlay.omapi-leadexport__wrapper .v--modal .header {
+  background-color: #F7F8FB;
+  color: #23282D;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+body .v--modal-overlay.omapi-leadexport__wrapper .v--modal .header .close button {
+  width: 13px;
+  height: 14px;
+}
+body .v--modal-overlay.omapi-leadexport__wrapper .v--modal .header .close button svg path {
+  fill: #a0a4a8;
+}
+.omapi-leadexport__wrapper .v--modal {
+  border-radius: 0 !important;
+}
+.omapi-leadexport__wrapper .v--modal .content {
+  padding: 20px 40px !important;
+}
+.omapi-leadexport__wrapper .v--modal .export-options-slide {
+  display: none;
+  width: 100%;
+}
+.omapi-leadexport__wrapper .v--modal .export-options-slide.active {
+  display: block;
+}
+.omapi-leadexport__wrapper .v--modal .export-options-slide__action {
+  margin-top: 20px;
+}
+.omapi-leadexport__wrapper .v--modal .export-options-slide__action .omapi-button {
+  font-size: 14px;
+  padding: 10px 20px;
+}
+.omapi-leadexport__wrapper .v--modal .export-options-slide__action .omapi-link-arrow-after {
+  margin-right: 0;
+  padding-right: 0;
+}
+.omapi-leadexport__wrapper .v--modal .export-option {
+  display: flex;
+  border-bottom: 1px solid #f7f8fb;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  padding-top: 20px;
+  width: 100%;
+}
+.omapi-leadexport__wrapper .v--modal .export-option__details-title {
+  font-family: "Helvetica", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+.omapi-leadexport__wrapper .v--modal .export-option__details-description {
+  color: #646970;
+  font-size: 14px;
+  margin: 0;
+}
+.omapi-leadexport__wrapper .v--modal .export-option__details-warning {
+  color: #646970;
+  font-size: 16px;
+}
+.omapi-leadexport__wrapper .v--modal .export-option__check .export-button {
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  height: 24px;
+  width: 24px;
+}
+.omapi-leadexport__wrapper .v--modal .export-option__check .export-button:hover {
+  cursor: pointer;
+}
+.omapi-leadexport__wrapper .v--modal .export-option__check .export-button:focus {
+  outline: none;
+}
+.omapi-leadexport__wrapper .v--modal .export-option__check .export-button.selected {
+  background-color: #087CE1;
+  background-image: url(../assets/d3670b22b058.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  border-color: #087CE1;
+}
+.omapi-leadexport__wrapper .v--modal .export-option__check .export-button span {
+  display: none;
+}
+.omapi-leadexport__wrapper .v--modal .data-options-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 20px;
+}
+.omapi-leadexport__wrapper .v--modal .data-options-list .omapi-checkbox {
+  align-items: normal;
+  width: 35%;
+  flex-direction: row;
+}

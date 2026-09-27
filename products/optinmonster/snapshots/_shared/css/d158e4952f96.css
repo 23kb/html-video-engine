@@ -1,0 +1,131 @@
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+.omapi-screen .omapi-statswidget {
+  flex-basis: 100%;
+}
+.omapi-screen .omapi-statswidget__heading {
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 14px 0 20px;
+}
+.omapi-screen .omapi-statswidget__heading h5 {
+  font-size: 16px;
+  line-height: 140%;
+  margin: 0;
+}
+.omapi-screen .omapi-statswidget__heading .omapi-dropdown__select .omapi-dropdown__toggle {
+  width: 168px;
+  margin: 0;
+}
+.omapi-screen .omapi-statswidget__stats .omapi-card-content {
+  display: flex;
+  height: 100%;
+}
+@media screen and (max-width: 1045px) {
+.omapi-screen .omapi-statswidget__stats {
+    flex-basis: 100%;
+}
+}
+.omapi-screen .omapi-statswidget__desc {
+  font-size: 16px;
+  font-weight: 600;
+  color: #6C7781;
+  line-height: 1.4em;
+  margin: 0;
+}
+.omapi-screen .omapi-statswidget__results {
+  padding: 38px 87px;
+}
+@media screen and (max-width: 1300px) {
+.omapi-screen .omapi-statswidget__results {
+    padding: 38px;
+}
+}
+.omapi-screen .omapi-statswidget__meta {
+  color: #6C7781;
+}
+.omapi-screen .omapi-statswidget__change {
+  padding: 55px 61px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 26px;
+  font-weight: bold;
+  line-height: 1.3em;
+  background-color: #F7F8FB;
+  color: #555D66;
+}
+.omapi-screen .omapi-statswidget__change:before {
+  margin-bottom: 5px;
+}
+.omapi-screen .omapi-statswidget__change.positive {
+  color: #46B450;
+}
+.omapi-screen .omapi-statswidget__change.positive:before {
+  content: url(../assets/9d211d499dd9.svg);
+}
+.omapi-screen .omapi-statswidget__change.negative {
+  color: #6C7781;
+}
+.omapi-screen .omapi-statswidget__change.negative:before {
+  content: none;
+}
+@media screen and (max-width: 1300px) {
+.omapi-screen .omapi-statswidget__change {
+    padding: 55px 45px;
+}
+}
+.omapi-screen .omapi-statswidget__resources .omapi-card-content {
+  display: flex;
+  padding: 37px 54px 43px;
+  align-items: center;
+}
+.omapi-screen .omapi-statswidget__resources .omapi-card-content .omapi-icon-wrapper {
+  flex-basis: 114px;
+  padding-right: 30px;
+  flex-grow: 0;
+  flex-shrink: 0;
+}
+.omapi-screen .omapi-statswidget__resources .omapi-card-content .omapi-icon-wrapper img {
+  max-width: 114px;
+  width: 114px;
+  height: auto;
+}
+.omapi-screen .omapi-statswidget__resources .omapi-card-content .omapi-multi-column__title {
+  font-weight: 600;
+  line-height: 1.5em;
+}
+.omapi-screen .omapi-statswidget__resources .omapi-card-content .omapi-multi-column__text {
+  color: #23282D;
+  line-height: 1.5em;
+  font-size: 14px;
+}
+.omapi-screen .omapi-statswidget__resources .omapi-card-content .omapi-multi-column__buttons .omapi-button__small {
+  padding: 6px 8px;
+  line-height: 1em;
+}
+@media screen and (max-width: 1045px) {
+.omapi-screen .omapi-statswidget__resources {
+    flex-basis: 100%;
+}
+}
+.omapi-screen .omapi-statswidget__stat {
+  font-size: 48px;
+  font-weight: 600;
+  line-height: 1.2em;
+}
+.omapi-screen .omapi-statswidget__desc {
+  color: #6C7781;
+  font-size: 18px;
+  margin-top: 5px;
+}

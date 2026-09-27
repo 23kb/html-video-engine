@@ -1,0 +1,2901 @@
+{
+  "slug": "app-new-campaign--filter-goals",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "header-dropdown-toggle",
+      "event": "click",
+      "selector": "div.inline-user-leads-link a.nav-link",
+      "count": 2
+    },
+    {
+      "label": "new-campaign-type",
+      "event": "click",
+      "selector": ".campaign-types__type[data-campaign-prettytype][data-campaign-type]",
+      "count": 6
+    },
+    {
+      "label": "new-campaign-filter",
+      "event": "click",
+      "selector": ".filter-item[data-filter-item-id][data-filter-slug]",
+      "count": 42
+    },
+    {
+      "label": "new-campaign-favorites",
+      "event": "click",
+      "selector": "button.filter-favorites",
+      "count": 1
+    },
+    {
+      "label": "new-campaign-use-template",
+      "event": "click",
+      "selector": ".button.select-template[data-template][data-template-type]",
+      "count": 123
+    },
+    {
+      "label": "new-campaign-name-close",
+      "event": "click",
+      "selector": "a.close",
+      "count": 1
+    },
+    {
+      "label": "new-campaign-filter-group",
+      "event": "click",
+      "selector": ".category-filters-title",
+      "count": 5
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#edit-default-site",
+        "tag": "a",
+        "text": "Update your default site",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#filter-item-device-desktop",
+        "tag": "a",
+        "text": "All Devices (Responsive)",
+        "count": 1,
+        "hidden": false,
+        "wired": "new-campaign-filter",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#filter-item-device-mobile",
+        "tag": "a",
+        "text": "Mobile Optimized",
+        "count": 1,
+        "hidden": false,
+        "wired": "new-campaign-filter",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#preview-button-ag4dfdbxhnjfjm8e0lgg",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-agd7c0ny8jylgbzbszro",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-aktmsiybgus7lgkty6ev",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-asxwh9hayzcbrkjrqoww",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-aun9sh7ta9dofdchp1q9",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-b9svrygtwibnvqlslhyj",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-bnkosiv8lqzmn1wf5kua",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-brwf3hsiywjv2h0zljk2",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-c71smhxccoky1149xowr",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-ca38tinp2omw6phwa28b",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-ca7thzdgwyahhtmbb9rt",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-cexsnlnlw6pxrxbfhgr0",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-ciq4ft3y4lvj3dl8cdfo",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-cjssqdkyfzg0ntodueus",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-d1amgohudprz7tgndnzu",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-d2kanliljgktrqxrrunr",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-dqd14jxb2lmgi2epilup",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-dtqjvx2mljkpwq6jmf2t",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-dwmlluwi1ac5gxyx6w4g",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-e2z8s6zs0npe0mnasgrk",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-eabasyqc4m837scttg7a",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-eb9bjb9nqvkygdz1sdsa",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-ee9b29xuwe9gfs8ejxbf",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-eeiuhpxrcm1a9qa4xsca",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-fe1be8esaqr8v7pxu6ya",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-fgkmr7hlayx7xhilxnbk",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-g0ekxvfxdjkozr7pnswm",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-gyijz8ovucgmuiisfb5q",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-h68emcwdy4jqoem4rzty",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-hgcckr7gkxhahkgtegxo",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-hjnuipwmnipzruvnpyei",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-hl1s8spt7apgtqa9melb",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-hnetz9jf4zz01rbrkfew",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-hu8oorb69eqkpawccq9w",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-il3ocrvjvqdittaxhalq",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-j8nmpvld0vzwc83zwwx4",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-jajr4pgvee4roeeajy3o",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-jgf1srcqwlc1kv1yzuld",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-jjywwhevappr09oua4y2",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-js1jrs09z5q31dixjhgl",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-jt2g0gqlwmv00od976n6",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-k2ues17q6bgsceguok1f",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-kdinxr8pt0njh79u0udz",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-krun0hz74g58tg3ajkqb",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-kvalqzys5eggfr8ycwla",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-ldfmkyiq3k2hyqu5hfrx",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-lep1gsu3rkhx6lurlwuz",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-ljxangrlp5muh2bfx01s",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-lo9bhrvflhqgptdkttgh",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-lortrpzysuelowm2ydnb",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-lpjkr2y5t4dcz2fpj0jb",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-mbmbzjwbhykc5fvlwrnt",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-mcyjwocp13czhgtj46t9",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-mkjj7e2ujqmquhb8rwsy",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-mtpk2gpveunisnwbcmvm",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-n8xnkhydrjlcmmuhcmcu",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-njdu19v6w9auajayz017",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-npa1ydxmgbqjiwfkkf0z",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-npkuzbkbq3u7ckv6tjpe",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-o4vicavtcq4tjjsqsx2n",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-o9rtqi0il73jalwcredr",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-oazjjjc0b1flbbioejds",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-oburbqzg8mxqptv2u52z",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-og18gmcaorrtbqwtfqcp",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-oh4cq4smyfipu87ejkcx",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-ohufviwbyx99vbrho0fz",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-oiva0zkksfrhh3zy4zqa",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-oiwk0lqgnnbikukuz2q9",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-p3wjcljcz5nq073bw5gv",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-pkoqcqfiwsotkxmble2l",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-pm6fxouxl07dfnaxiqtp",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-pqpytalsvovd0wyntr0k",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-pvw2l9jey2w6itfrjreg",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-qs5o9tbthlzpgdazfi5j",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-qxae3d24ccmwvsxxugqq",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-rbdko9bob1jcgjqyvm02",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-rhjewqk151yfyhyxqvic",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-rotca31gt4jvjhnrcdgi",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-s9nbpu1hoszsgyu99cyl",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-sfnxepv92ts4ivhziwtm",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-sl8vmiuqkfg6ig14qldt",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-stzyxl3svotjsdpib8cf",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-swwhldkjpf4bcuuhz9sg",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-t7qypzndgxleonjpe4og",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-tbfhlq6m3qydyvmy8vzm",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-tbjxcltpcevxgqjsmivo",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-tgtp09kynmsqhxdaxkhw",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-thprvzphhc2flkxvyyo4",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-tlgqd5clxgyvi9rfillk",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-tp0cplupjh5tysz4ruky",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-tu5jvxomnrex1pnswiio",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-u1i6lh7zl2j9luzt80cb",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-udxbqpyamol4jw0vsvo4",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-ufyjjfihqj5b6kgaxbsh",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-uizs4xp7ko1sbp2iiqnb",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-uoaisudfogl1gbh4acjf",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-upi8pzyw06fhxfpthua8",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-upjogavfndnl1lo3tp6x",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-usfj9239qczr9jkkl6ij",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-uuw3qigfmjqllxw5mson",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-v2smj5vc9uvlii9fq2bm",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-vb6n17snpobi3x7npyt8",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-vegfmsf0esaztgocfzyo",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-vi16lxjmtlfrhxcrl4pi",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-vs3fbcj7m38ld4yeiibl",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-wbwmpvmueqblrna6n16p",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-wdaciausionziz2cymj8",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-wildd7uupfqvvb0drbjx",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-x9fau1z95klzrrg4ghtr",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-xap7l670gmlwe0c1ni1t",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-xcr4h1grjyqkpbflekss",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-xhlpfrlsgxqcgnodqgwc",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-xmuwe8rbrj9tfkr2z1b8",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-y2stdc8eseorccpydnsc",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-y4hqfp35sstsmjcswmrr",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-ygd7b7cm2hlgzyg5hhaz",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-yqxdvukk9qr7bycxihqx",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-ysdkstdsvapqqccyoxuv",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-ythqjuklhvdj41ndbvs2",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-zfoswz6qvnmh57kqqppl",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-zohktxgvovgzccjucz9a",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-zxdn4uu3ra92l0yabk0x",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-button-zygfgjcpaw6zthggshor",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".category-filters-apply-button",
+        "tag": "div",
+        "text": "Clear Filters",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".choices__button",
+        "tag": "button",
+        "text": "Remove item",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".filter-favorites",
+        "tag": "button",
+        "text": "My Favorites",
+        "count": 1,
+        "hidden": false,
+        "wired": "new-campaign-favorites",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".nav-link",
+        "tag": "a",
+        "text": "Dashboard",
+        "count": 7,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#campaign-name",
+        "tag": "input",
+        "text": "Name your campaign",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#site-domain",
+        "tag": "input",
+        "text": "google.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#site-name",
+        "tag": "input",
+        "text": "Google",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sites",
+        "tag": "select",
+        "text": "Archie's Pantry (example.com)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__input--cloned",
+        "tag": "input",
+        "text": "Choose one or more sites",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#ace-tm",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-ag4dfdbxhnjfjm8e0lgg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-agd7c0ny8jylgbzbszro",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-aktmsiybgus7lgkty6ev",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-asxwh9hayzcbrkjrqoww",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-aun9sh7ta9dofdchp1q9",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-b9svrygtwibnvqlslhyj",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-bnkosiv8lqzmn1wf5kua",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-brwf3hsiywjv2h0zljk2",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-c71smhxccoky1149xowr",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-ca38tinp2omw6phwa28b",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-ca7thzdgwyahhtmbb9rt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-cexsnlnlw6pxrxbfhgr0",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-ciq4ft3y4lvj3dl8cdfo",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-cjssqdkyfzg0ntodueus",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-d1amgohudprz7tgndnzu",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-d2kanliljgktrqxrrunr",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-dqd14jxb2lmgi2epilup",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-dtqjvx2mljkpwq6jmf2t",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-dwmlluwi1ac5gxyx6w4g",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-e2z8s6zs0npe0mnasgrk",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-eabasyqc4m837scttg7a",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-eb9bjb9nqvkygdz1sdsa",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-ee9b29xuwe9gfs8ejxbf",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-eeiuhpxrcm1a9qa4xsca",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-fe1be8esaqr8v7pxu6ya",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-fgkmr7hlayx7xhilxnbk",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-filters-device",
+        "tag": "div",
+        "text": "All Devices (Responsive) Mobile Optimized",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#campaign-g0ekxvfxdjkozr7pnswm",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-gyijz8ovucgmuiisfb5q",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-h68emcwdy4jqoem4rzty",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-hgcckr7gkxhahkgtegxo",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-hjnuipwmnipzruvnpyei",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-hl1s8spt7apgtqa9melb",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-hnetz9jf4zz01rbrkfew",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-hu8oorb69eqkpawccq9w",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-il3ocrvjvqdittaxhalq",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-j8nmpvld0vzwc83zwwx4",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-jajr4pgvee4roeeajy3o",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-jgf1srcqwlc1kv1yzuld",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-jjywwhevappr09oua4y2",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-js1jrs09z5q31dixjhgl",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-jt2g0gqlwmv00od976n6",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-k2ues17q6bgsceguok1f",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-kdinxr8pt0njh79u0udz",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-krun0hz74g58tg3ajkqb",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-kvalqzys5eggfr8ycwla",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-ldfmkyiq3k2hyqu5hfrx",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-lep1gsu3rkhx6lurlwuz",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-ljxangrlp5muh2bfx01s",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-lo9bhrvflhqgptdkttgh",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-lortrpzysuelowm2ydnb",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-lpjkr2y5t4dcz2fpj0jb",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-mbmbzjwbhykc5fvlwrnt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-mcyjwocp13czhgtj46t9",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-mkjj7e2ujqmquhb8rwsy",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-mtpk2gpveunisnwbcmvm",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-n8xnkhydrjlcmmuhcmcu",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-njdu19v6w9auajayz017",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-npa1ydxmgbqjiwfkkf0z",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-npkuzbkbq3u7ckv6tjpe",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-o4vicavtcq4tjjsqsx2n",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-o9rtqi0il73jalwcredr",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-oazjjjc0b1flbbioejds",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-oburbqzg8mxqptv2u52z",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-og18gmcaorrtbqwtfqcp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-oh4cq4smyfipu87ejkcx",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-ohufviwbyx99vbrho0fz",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-oiva0zkksfrhh3zy4zqa",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-oiwk0lqgnnbikukuz2q9",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-p3wjcljcz5nq073bw5gv",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-pkoqcqfiwsotkxmble2l",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-pm6fxouxl07dfnaxiqtp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-pqpytalsvovd0wyntr0k",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-pvw2l9jey2w6itfrjreg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-qs5o9tbthlzpgdazfi5j",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-qxae3d24ccmwvsxxugqq",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-rbdko9bob1jcgjqyvm02",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-rhjewqk151yfyhyxqvic",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-rotca31gt4jvjhnrcdgi",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-s9nbpu1hoszsgyu99cyl",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-sfnxepv92ts4ivhziwtm",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-sl8vmiuqkfg6ig14qldt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-stzyxl3svotjsdpib8cf",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-swwhldkjpf4bcuuhz9sg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-t7qypzndgxleonjpe4og",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-tbfhlq6m3qydyvmy8vzm",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-tbjxcltpcevxgqjsmivo",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-tgtp09kynmsqhxdaxkhw",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-thprvzphhc2flkxvyyo4",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-tlgqd5clxgyvi9rfillk",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-tp0cplupjh5tysz4ruky",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-tu5jvxomnrex1pnswiio",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-u1i6lh7zl2j9luzt80cb",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-udxbqpyamol4jw0vsvo4",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-ufyjjfihqj5b6kgaxbsh",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-uizs4xp7ko1sbp2iiqnb",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-uoaisudfogl1gbh4acjf",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-upi8pzyw06fhxfpthua8",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-upjogavfndnl1lo3tp6x",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-usfj9239qczr9jkkl6ij",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-uuw3qigfmjqllxw5mson",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-v2smj5vc9uvlii9fq2bm",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-vb6n17snpobi3x7npyt8",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-vegfmsf0esaztgocfzyo",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-vi16lxjmtlfrhxcrl4pi",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-vs3fbcj7m38ld4yeiibl",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-wbwmpvmueqblrna6n16p",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-wdaciausionziz2cymj8",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-wildd7uupfqvvb0drbjx",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-x9fau1z95klzrrg4ghtr",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-xap7l670gmlwe0c1ni1t",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-xcr4h1grjyqkpbflekss",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-xhlpfrlsgxqcgnodqgwc",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-xmuwe8rbrj9tfkr2z1b8",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-y2stdc8eseorccpydnsc",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-y4hqfp35sstsmjcswmrr",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-ygd7b7cm2hlgzyg5hhaz",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-yqxdvukk9qr7bycxihqx",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-ysdkstdsvapqqccyoxuv",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-ythqjuklhvdj41ndbvs2",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-zfoswz6qvnmh57kqqppl",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-zohktxgvovgzccjucz9a",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-zxdn4uu3ra92l0yabk0x",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#campaign-zygfgjcpaw6zthggshor",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#classic-theme-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clip0",
+        "tag": "clippath",
+        "text": "",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": "#content",
+        "tag": "section",
+        "text": "Select a Campaign Type: Popup Fullscreen Slide-in Floating …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#core-block-supports-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#filter-categories-content",
+        "tag": "div",
+        "text": "Blogger/Publisher SaaS Non-Profit Other Local Business Mark…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#filter-device-content",
+        "tag": "div",
+        "text": "All Devices (Responsive) Mobile Optimized",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#filter-features-content",
+        "tag": "div",
+        "text": "Exit Intent Coupon wheel Countdown timer Two-step campaigns…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#filter-goals-content",
+        "tag": "div",
+        "text": "Grow My Email List Reduce Abandoning Visitors Redirect Visi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#filter-seasons-content",
+        "tag": "div",
+        "text": "New Year's Valentine's St. Patrick's Day Spring Holi Summer…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#filter-tags-content",
+        "tag": "div",
+        "text": "Popular",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer",
+        "tag": "footer",
+        "text": "OptinMonster Copyright © 2026 Retyp, LLC. OptinMonster® and…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#masthead",
+        "tag": "header",
+        "text": "OptinMonster Dashboard Campaigns Leads Proof University Sup…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#new-campaign__set-default-site",
+        "tag": "p",
+        "text": "Set your default site to speed up the process. Update your …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-ag4dfdbxhnjfjm8e0lgg-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-agd7c0ny8jylgbzbszro-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-aktmsiybgus7lgkty6ev-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-asxwh9hayzcbrkjrqoww-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-aun9sh7ta9dofdchp1q9-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-b9svrygtwibnvqlslhyj-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-bnkosiv8lqzmn1wf5kua-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-brwf3hsiywjv2h0zljk2-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-c71smhxccoky1149xowr-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-ca38tinp2omw6phwa28b-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-ca7thzdgwyahhtmbb9rt-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-cexsnlnlw6pxrxbfhgr0-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-ciq4ft3y4lvj3dl8cdfo-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-cjssqdkyfzg0ntodueus-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-d1amgohudprz7tgndnzu-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-d2kanliljgktrqxrrunr-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-dqd14jxb2lmgi2epilup-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-dtqjvx2mljkpwq6jmf2t-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-dwmlluwi1ac5gxyx6w4g-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-e2z8s6zs0npe0mnasgrk-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-eabasyqc4m837scttg7a-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-eb9bjb9nqvkygdz1sdsa-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-ee9b29xuwe9gfs8ejxbf-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-eeiuhpxrcm1a9qa4xsca-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-fe1be8esaqr8v7pxu6ya-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-fgkmr7hlayx7xhilxnbk-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-g0ekxvfxdjkozr7pnswm-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-gyijz8ovucgmuiisfb5q-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-h68emcwdy4jqoem4rzty-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-hgcckr7gkxhahkgtegxo-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-hjnuipwmnipzruvnpyei-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-hl1s8spt7apgtqa9melb-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-hnetz9jf4zz01rbrkfew-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-hu8oorb69eqkpawccq9w-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-il3ocrvjvqdittaxhalq-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-j8nmpvld0vzwc83zwwx4-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-jajr4pgvee4roeeajy3o-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-jgf1srcqwlc1kv1yzuld-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-jjywwhevappr09oua4y2-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-js1jrs09z5q31dixjhgl-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-jt2g0gqlwmv00od976n6-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-k2ues17q6bgsceguok1f-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-kdinxr8pt0njh79u0udz-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-krun0hz74g58tg3ajkqb-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-kvalqzys5eggfr8ycwla-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-ldfmkyiq3k2hyqu5hfrx-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-lep1gsu3rkhx6lurlwuz-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-ljxangrlp5muh2bfx01s-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-lo9bhrvflhqgptdkttgh-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-lortrpzysuelowm2ydnb-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-lpjkr2y5t4dcz2fpj0jb-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-mbmbzjwbhykc5fvlwrnt-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-mcyjwocp13czhgtj46t9-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-mkjj7e2ujqmquhb8rwsy-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-mtpk2gpveunisnwbcmvm-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-n8xnkhydrjlcmmuhcmcu-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-njdu19v6w9auajayz017-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-npa1ydxmgbqjiwfkkf0z-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-npkuzbkbq3u7ckv6tjpe-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-o4vicavtcq4tjjsqsx2n-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-o9rtqi0il73jalwcredr-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-oazjjjc0b1flbbioejds-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-oburbqzg8mxqptv2u52z-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-og18gmcaorrtbqwtfqcp-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-oh4cq4smyfipu87ejkcx-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-ohufviwbyx99vbrho0fz-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-oiva0zkksfrhh3zy4zqa-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-oiwk0lqgnnbikukuz2q9-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-p3wjcljcz5nq073bw5gv-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-pkoqcqfiwsotkxmble2l-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-pm6fxouxl07dfnaxiqtp-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-pqpytalsvovd0wyntr0k-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-pvw2l9jey2w6itfrjreg-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-qs5o9tbthlzpgdazfi5j-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-qxae3d24ccmwvsxxugqq-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-rbdko9bob1jcgjqyvm02-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-rhjewqk151yfyhyxqvic-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-rotca31gt4jvjhnrcdgi-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-s9nbpu1hoszsgyu99cyl-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-sfnxepv92ts4ivhziwtm-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-sl8vmiuqkfg6ig14qldt-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-stzyxl3svotjsdpib8cf-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-swwhldkjpf4bcuuhz9sg-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-t7qypzndgxleonjpe4og-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tbfhlq6m3qydyvmy8vzm-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tbjxcltpcevxgqjsmivo-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tgtp09kynmsqhxdaxkhw-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-thprvzphhc2flkxvyyo4-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tlgqd5clxgyvi9rfillk-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tp0cplupjh5tysz4ruky-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tu5jvxomnrex1pnswiio-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-u1i6lh7zl2j9luzt80cb-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-udxbqpyamol4jw0vsvo4-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-ufyjjfihqj5b6kgaxbsh-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-uizs4xp7ko1sbp2iiqnb-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-uoaisudfogl1gbh4acjf-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-upi8pzyw06fhxfpthua8-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-upjogavfndnl1lo3tp6x-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-usfj9239qczr9jkkl6ij-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-uuw3qigfmjqllxw5mson-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-v2smj5vc9uvlii9fq2bm-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-vb6n17snpobi3x7npyt8-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-vegfmsf0esaztgocfzyo-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-vi16lxjmtlfrhxcrl4pi-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-vs3fbcj7m38ld4yeiibl-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-wbwmpvmueqblrna6n16p-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-wdaciausionziz2cymj8-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-wildd7uupfqvvb0drbjx-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-x9fau1z95klzrrg4ghtr-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-xap7l670gmlwe0c1ni1t-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-xcr4h1grjyqkpbflekss-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-xhlpfrlsgxqcgnodqgwc-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-xmuwe8rbrj9tfkr2z1b8-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-y2stdc8eseorccpydnsc-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-y4hqfp35sstsmjcswmrr-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-ygd7b7cm2hlgzyg5hhaz-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-yqxdvukk9qr7bycxihqx-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-ysdkstdsvapqqccyoxuv-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-ythqjuklhvdj41ndbvs2-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-zfoswz6qvnmh57kqqppl-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-zohktxgvovgzccjucz9a-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-zxdn4uu3ra92l0yabk0x-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-zygfgjcpaw6zthggshor-holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#optin-monster-app",
+        "tag": "div",
+        "text": "OptinMonster Dashboard Campaigns Leads Proof University Sup…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#optin-monster-demo",
+        "tag": "div",
+        "text": "Select a Campaign Type: Popup Fullscreen Slide-in Floating …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#set-default-site",
+        "tag": "span",
+        "text": "Set your default site to speed up the process.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".campaign-filters-search",
+        "tag": "form",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".campaign-step-header",
+        "tag": "div",
+        "text": "Select a Campaign Type:",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "No more sites to choose from. Add a New Website",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".templates-header",
+        "tag": "div",
+        "text": "Campaign Templates",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

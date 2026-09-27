@@ -1,0 +1,44 @@
+.omapi-effect {
+  display: flex;
+  margin-bottom: 80px;
+  width: 100%;
+}
+.omapi-effect .omapi-effect_col:first-of-type {
+  width: 55%;
+}
+@media screen and (max-width: 1065px) {
+.omapi-effect .omapi-effect_col:first-of-type {
+    width: 100%;
+}
+}
+.omapi-effect .omapi-effect_col:last-of-type {
+  width: 45%;
+}
+.omapi-effect .omapi-effect_col:last-of-type img {
+  height: auto;
+  width: 100%;
+}
+@media screen and (max-width: 1065px) {
+.omapi-effect .omapi-effect_col:last-of-type img {
+    max-width: 500px;
+    margin: 10px auto 0;
+}
+}
+@media screen and (max-width: 1065px) {
+.omapi-effect .omapi-effect_col:last-of-type {
+    width: 100%;
+}
+}
+.omapi-effect h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-top: 0;
+  line-height: 1.25;
+}
+@media screen and (max-width: 1065px) {
+.omapi-effect {
+    flex-direction: column;
+    text-align: center;
+    margin-bottom: 30px;
+}
+}

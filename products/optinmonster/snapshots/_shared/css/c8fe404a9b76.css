@@ -1,0 +1,68 @@
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+.omapi-screen .omapi-notifications {
+  overflow: hidden;
+  margin-top: 12px;
+}
+.omapi-screen .omapi-notifications.omapi-card__notitle.omapi-card__nofooter .omapi-card-content {
+  padding: 24px 17px;
+}
+.omapi-screen .omapi-notifications__image svg {
+  margin-right: 26px;
+}
+.omapi-screen .omapi-notifications__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+}
+.omapi-screen .omapi-notifications__title {
+  font-size: 21px;
+  line-height: 1.4em;
+  margin-bottom: 7px;
+  font-weight: 600;
+}
+.omapi-screen .omapi-notifications__text {
+  font-size: 13px;
+  line-height: 1.5em;
+  color: #646970;
+  margin-bottom: 10px;
+}
+.omapi-screen .omapi-notifications__buttons {
+  height: 27px;
+  display: flex;
+  align-items: center;
+}
+.omapi-screen .omapi-notifications__buttons .omapi-button.omapi-button__small {
+  line-height: 1em;
+  padding: 6px 10px;
+}
+.omapi-screen .omapi-notifications__nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: -26px;
+}
+.omapi-screen .omapi-notifications__nav .omapi-button.omapi-pagination__button-symbol {
+  font-size: 20px;
+  font-weight: 400;
+  color: #606A73;
+  padding: 2px 10px !important;
+  line-height: 1em;
+}
+.omapi-screen .omapi-notifications__nav .omapi-button.omapi-pagination__button-symbol:hover, .omapi-screen .omapi-notifications__nav .omapi-button.omapi-pagination__button-symbol:focus, .omapi-screen .omapi-notifications__nav .omapi-button.omapi-pagination__button-symbol:active {
+  color: #FFFFFF;
+}
+.omapi-screen .omapi-notifications__nav .omapi-button.omapi-pagination__button-symbol[disabled] {
+  opacity: 0.5;
+}
+.omapi-screen .omapi-notifications__nav .omapi-pagination__count {
+  padding-right: 5px;
+}

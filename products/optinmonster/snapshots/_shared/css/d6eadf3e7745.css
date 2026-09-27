@@ -1,0 +1,125 @@
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+.omapi-screen .omapi-subscribers-segments .omapi-table {
+  border: none;
+}
+.omapi-screen .omapi-subscribers-segments .omapi-table.striped > tbody > :nth-child(odd) {
+  background-color: #F7F8FB;
+}
+.omapi-screen .omapi-subscribers-segments .omapi-table th {
+  padding: 14px 30px;
+  font-size: 13px;
+  line-height: 1.5em;
+  color: #23282D;
+  border-bottom-color: #DDDDDD;
+}
+.omapi-screen .omapi-subscribers-segments .omapi-table th.tag-table-name {
+  width: 150px;
+}
+@media screen and (max-width: 1380px) {
+.omapi-screen .omapi-subscribers-segments .omapi-table th.tag-table-name {
+    width: 75px;
+}
+}
+@media screen and (max-width: 1170px) {
+.omapi-screen .omapi-subscribers-segments .omapi-table th.tag-table-name {
+    width: 40px;
+}
+}
+.omapi-screen .omapi-subscribers-segments .omapi-table th.tag-table-created {
+  width: 110px;
+}
+@media screen and (max-width: 1380px) {
+.omapi-screen .omapi-subscribers-segments .omapi-table th.tag-table-created {
+    width: 75px;
+}
+}
+.omapi-screen .omapi-subscribers-segments .omapi-table th.tag-table-stats {
+  width: 50px;
+  text-align: center;
+}
+@media screen and (max-width: 1170px) {
+.omapi-screen .omapi-subscribers-segments .omapi-table th.tag-table-stats {
+    width: 40px;
+}
+}
+.omapi-screen .omapi-subscribers-segments .omapi-table td {
+  padding: 22px 30px 23px;
+  font-size: 13px;
+  line-height: 1.5em;
+}
+.omapi-screen .omapi-subscribers-segments .omapi-table td.tag-table-stats {
+  text-align: center;
+}
+.omapi-screen .omapi-subscribers-segments .omapi-table .tag-table-name {
+  padding-left: 30px;
+}
+.omapi-screen .omapi-subscribers-segments .omapi-table .tag-table-name__title {
+  margin-bottom: 1px;
+}
+.omapi-screen .omapi-subscribers-segments .omapi-table .tag-table-name__title a {
+  color: #23282D;
+  font-weight: 600;
+}
+.omapi-screen .omapi-subscribers-segments .omapi-table .tag-table-name__title a:hover {
+  color: #087CE1;
+  text-decoration: none;
+}
+.omapi-screen .omapi-subscribers-segments .omapi-table__footer td {
+  font-weight: 600;
+  color: #23282D;
+}
+.omapi-screen .omapi-subscribers-segments .omapi-table__footer td .omapi-table__footer-add {
+  color: #23282D;
+}
+.omapi-screen .omapi-subscribers-segments .omapi-table__footer td .omapi-table__footer-add:hover {
+  color: #087CE1;
+  text-decoration: none;
+}
+.omapi-screen .omapi-subscribers-segments .omapi-pagination {
+  margin: 16px 0;
+  justify-content: flex-end;
+  height: 30px;
+}
+@media screen and (max-width: 1150px) {
+.omapi-screen .omapi-subscribers-segments .omapi-pagination {
+    justify-content: flex-start;
+}
+}
+.omapi-screen .omapi-subscribers-segments__search {
+  display: flex;
+  justify-content: flex-end;
+  margin: -74px -10px 32px 0;
+}
+@media screen and (max-width: 1150px) {
+.omapi-screen .omapi-subscribers-segments__search {
+    justify-content: flex-start;
+    margin: 0 0 16px;
+}
+.omapi-screen .omapi-subscribers-segments__search input[type=search].omapi-input__inline {
+    margin-left: 0;
+}
+}
+.omapi-screen .omapi-subscribers-segments__refreshing {
+  opacity: 0.5;
+}
+.omapi-screen .omapi-subscribers-segments__refreshing.omapi-subscribers-segments__no-data td {
+  padding-top: 34px;
+  padding-bottom: 33px;
+}
+@media screen and (max-width: 1150px) {
+.omapi-app-monsterleads #wpbody-content {
+    overflow-x: scroll !important;
+}
+.omapi-app-monsterleads #wpbody-content .omapi-subscribers-segments {
+    min-width: 910px;
+    padding-right: 40px;
+}
+}

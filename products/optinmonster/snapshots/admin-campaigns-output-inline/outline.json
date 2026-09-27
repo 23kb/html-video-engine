@@ -1,0 +1,858 @@
+{
+  "slug": "admin-campaigns-output-inline",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "card-minimize",
+      "event": "click",
+      "selector": "div.omapi-card.omapi-can-minimize div.omapi-card-title.capital",
+      "count": 2
+    },
+    {
+      "label": "publish-status-step",
+      "event": "click",
+      "selector": ".omapi-button.omapi-button__steps",
+      "count": 3
+    },
+    {
+      "label": "inline-output-mode",
+      "event": "change",
+      "selector": "label.omapi-radio input",
+      "count": 2
+    },
+    {
+      "label": "quick-links-flyout",
+      "event": "click",
+      "selector": "a.om-flyout-button.om-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-button",
+        "tag": "button",
+        "text": "Draft",
+        "count": 7,
+        "hidden": false,
+        "wired": "publish-status-step",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".omapi-button__blue",
+        "tag": "button",
+        "text": "Published",
+        "count": 1,
+        "hidden": false,
+        "wired": "publish-status-step",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".omapi-button__link",
+        "tag": "a",
+        "text": "Return to Campaigns List",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-button__outline",
+        "tag": "button",
+        "text": "Save",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-button__secondary",
+        "tag": "button",
+        "text": "Select All",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".omapi-input",
+        "tag": "span",
+        "text": "Yes No",
+        "count": 8,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-link-arrow-after",
+        "tag": "a",
+        "text": "Edit Campaign",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": ".omapi-input__select",
+        "tag": "select",
+        "text": "All Visitors and Logged-In Users Visitors Only Logged-In Us…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate OptinMonster ★★★★★ on WordPress.org to help us …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#listbox-null",
+        "tag": "ul",
+        "text": "(2744) (2760) (2890) (2888) (2757) (2755) (2886) (2873) (28…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-0",
+        "tag": "li",
+        "text": "(2744)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-1",
+        "tag": "li",
+        "text": "(2760)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-10",
+        "tag": "li",
+        "text": "(2753)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-11",
+        "tag": "li",
+        "text": "(2747)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-12",
+        "tag": "li",
+        "text": "(2783)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-13",
+        "tag": "li",
+        "text": "(2742)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-14",
+        "tag": "li",
+        "text": "(2733)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-15",
+        "tag": "li",
+        "text": "(2730)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-16",
+        "tag": "li",
+        "text": "(2867)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-17",
+        "tag": "li",
+        "text": "(2728)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-18",
+        "tag": "li",
+        "text": "(2785)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-19",
+        "tag": "li",
+        "text": "(2849)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-2",
+        "tag": "li",
+        "text": "(2890)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-20",
+        "tag": "li",
+        "text": "(2841)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-21",
+        "tag": "li",
+        "text": "(2839)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-22",
+        "tag": "li",
+        "text": "(2793)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-23",
+        "tag": "li",
+        "text": "(2798)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-24",
+        "tag": "li",
+        "text": "(2835)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-25",
+        "tag": "li",
+        "text": "(2827)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-26",
+        "tag": "li",
+        "text": "(2825)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-27",
+        "tag": "li",
+        "text": "(2821)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-28",
+        "tag": "li",
+        "text": "(2800)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-29",
+        "tag": "li",
+        "text": "(2813)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-3",
+        "tag": "li",
+        "text": "(2888)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-30",
+        "tag": "li",
+        "text": "(2811)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-31",
+        "tag": "li",
+        "text": "(2807)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-32",
+        "tag": "li",
+        "text": "3-Speed Bike (1619)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-33",
+        "tag": "li",
+        "text": "About Us (24)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-34",
+        "tag": "li",
+        "text": "Account (901)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-35",
+        "tag": "li",
+        "text": "Affiliate Area (404)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-36",
+        "tag": "li",
+        "text": "Black and White Summer Portrait (1621)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-37",
+        "tag": "li",
+        "text": "Blog (65)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-38",
+        "tag": "li",
+        "text": "Cart (863)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-39",
+        "tag": "li",
+        "text": "Cart (74)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-4",
+        "tag": "li",
+        "text": "(2757)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-40",
+        "tag": "li",
+        "text": "Checkout (864)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-41",
+        "tag": "li",
+        "text": "Default Kit (468)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-42",
+        "tag": "li",
+        "text": "Download (22)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-43",
+        "tag": "li",
+        "text": "Elementor #2986 (2986)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-44",
+        "tag": "li",
+        "text": "Elementor #663 (663)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-45",
+        "tag": "li",
+        "text": "Hello World (311)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-46",
+        "tag": "li",
+        "text": "Hello world (305)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-47",
+        "tag": "li",
+        "text": "Hello World (300)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-48",
+        "tag": "li",
+        "text": "Hello world! (1)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-49",
+        "tag": "li",
+        "text": "Homemade Granola Recipe (Our Pantry Favorite) (3036)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-5",
+        "tag": "li",
+        "text": "(2755)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-50",
+        "tag": "li",
+        "text": "klaviyo beacon (2035)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-51",
+        "tag": "li",
+        "text": "Leather-Clad Leisure Chair (1623)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-52",
+        "tag": "li",
+        "text": "Login (902)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-53",
+        "tag": "li",
+        "text": "MailPoet Page (448)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-54",
+        "tag": "li",
+        "text": "My account (865)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-55",
+        "tag": "li",
+        "text": "Archie (724)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-56",
+        "tag": "li",
+        "text": "Post 1 (26)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-57",
+        "tag": "li",
+        "text": "Post 2 (28)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-58",
+        "tag": "li",
+        "text": "Post 3 (30)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-59",
+        "tag": "li",
+        "text": "Post 4 (32)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-6",
+        "tag": "li",
+        "text": "(2886)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-60",
+        "tag": "li",
+        "text": "Privacy Policy (3)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-61",
+        "tag": "li",
+        "text": "QA WC 10.9 Product (2977)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-62",
+        "tag": "li",
+        "text": "QA85 block redo (3002)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-63",
+        "tag": "li",
+        "text": "QA85 shortcode redo (3001)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-64",
+        "tag": "li",
+        "text": "RND (1569)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-65",
+        "tag": "li",
+        "text": "Sample Page (2)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-66",
+        "tag": "li",
+        "text": "Shoes (1617)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-67",
+        "tag": "li",
+        "text": "Shop (862)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-68",
+        "tag": "li",
+        "text": "T-shirt (1660)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-69",
+        "tag": "li",
+        "text": "Test (722)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-7",
+        "tag": "li",
+        "text": "(2873)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-70",
+        "tag": "li",
+        "text": "Test 1 (19)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-71",
+        "tag": "li",
+        "text": "Thank You (900)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-72",
+        "tag": "li",
+        "text": "Ticket Details (889)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-73",
+        "tag": "li",
+        "text": "Ticket Receipt (888)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-74",
+        "tag": "li",
+        "text": "Vintage Typewriter (1625)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-75",
+        "tag": "li",
+        "text": "WP7 persist manual (2774)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-76",
+        "tag": "li",
+        "text": "WP7 settings persist (2771)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-77",
+        "tag": "li",
+        "text": "WP7 settings persist (2804)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-78",
+        "tag": "li",
+        "text": "WP7 settings persist (2781)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-79",
+        "tag": "li",
+        "text": "WP7 settings persist (2818)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-8",
+        "tag": "li",
+        "text": "(2871)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-80",
+        "tag": "li",
+        "text": "WP7 settings persist (2832)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-81",
+        "tag": "li",
+        "text": "WP7 settings persist (2790)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-82",
+        "tag": "li",
+        "text": "WP7 settings persist (2846)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-83",
+        "tag": "li",
+        "text": "WP7 settings persist (2778)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-84",
+        "tag": "li",
+        "text": "WP7 settings persist (2878)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#null-9",
+        "tag": "li",
+        "text": "(2869)",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#om-app",
+        "tag": "div",
+        "text": "Return to Campaigns List Edit Campaign Join the Snack Club …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#om-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#om-flyout-items",
+        "tag": "div",
+        "text": "Suggest a FeatureJoin Our CommunitySupport & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#om-notification-campaign",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#omwp-plugin-banner",
+        "tag": "div",
+        "text": "Campaign Output Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#snap-offsite-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsDefs1002",
+        "tag": "defs",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsPath1004",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsPolyline1003",
+        "tag": "polyline",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsSvg1001",
+        "tag": "svg",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_optin-monster-dashboard",
+        "tag": "li",
+        "text": "OptinMonster Dashboard Campaigns Templates Playbooks Subscr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".omapi-card-content",
+        "tag": "div",
+        "text": "To publish your campaign live on your site, click Publish, …",
+        "count": 5,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-plugin-header",
+        "tag": "div",
+        "text": "Campaign Output Settings",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,242 @@
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+@media screen and (max-width: 1145px) {
+.omapi-app-campaigns #wpbody-content {
+    overflow-x: scroll !important;
+}
+.omapi-app-campaigns #wpbody-content .omapi-campaigns-table {
+    min-width: 765px;
+}
+}
+.omapi-table th.checkbox-cell {
+  width: 1px;
+}
+.omapi-table th.campaign-table-name {
+  width: 155px;
+}
+@media screen and (max-width: 1055px) {
+.omapi-table th.campaign-table-name {
+    width: 120px;
+}
+}
+.omapi-table th.campaign-table-stats {
+  width: 76px;
+}
+.omapi-table th.campaign-table-ab {
+  width: 44px;
+}
+.omapi-table th.campaign-table-status {
+  width: 36px;
+}
+.omapi-table th.campaign-table-actions {
+  width: 214px;
+}
+.omapi-table th.campaign-table-actions span {
+  display: block;
+  text-align: right;
+  padding-right: 169px;
+}
+.omapi-table td.campaign-table-actions {
+  text-align: right;
+}
+.omapi-table td.campaign-table-actions > span {
+  vertical-align: top;
+}
+.omapi-table td.campaign-table-actions .omapi-has-tooltip {
+  display: inline-block;
+  margin-right: 10px;
+}
+.omapi-table td.campaign-table-actions .omapi-has-tooltip:last-child {
+  margin-right: 0;
+}
+.omapi-table td.campaign-table-actions .omapi-dropdown__container {
+  text-align: left;
+}
+.omapi-table tr.child-row tr.child-row td {
+  position: relative;
+}
+.omapi-table tr.child-row tr.child-row td:before {
+  content: "";
+  background-color: #F1F1F1;
+  width: calc(100% + 20px);
+  top: 0;
+  left: 0px;
+  position: absolute;
+  height: 1px;
+}
+.omapi-table tr.child-row tr.child-row td:last-child:before {
+  width: calc(100% - 13px);
+}
+.omapi-table tr.child-row tr.child-row td:nth-child(1):before {
+  display: none;
+}
+.omapi-table th {
+  color: #23282D;
+}
+.omapi-table td {
+  color: #6C7781;
+  padding: 12px 13px 11px 9px;
+}
+.omapi-table td .form-checkbox-wrapper {
+  position: relative;
+}
+.omapi-table .campaign-table-indicators {
+  display: inline-flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  padding: 3px 6px 0 0;
+}
+.omapi-table .campaign-table-row-title a {
+  display: block;
+  font-weight: 600;
+  color: #23282D;
+}
+.omapi-table .campaign-table-row-title a:hover {
+  color: #087CE1;
+  text-decoration: none !important;
+}
+.omapi-table .campaign-on-fire {
+  color: #FE3B00;
+}
+.omapi-table .row-actions {
+  font-size: 0.9em;
+  flex-basis: 100%;
+}
+.omapi-table .campaign-table-name {
+  padding-left: 6px;
+}
+.omapi-table .campaign-table-name-has-indicators {
+  display: flex;
+  flex-wrap: wrap;
+}
+.omapi-table .campaign-table-name .campaign-table-icon {
+  font-size: 14px;
+  padding: 0 0 3px 0;
+  max-width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 5px 0;
+}
+.omapi-table .campaign-table-name .campaign-table-icon.campaign-on-fire {
+  padding-top: 2px;
+}
+.omapi-table .campaign-table-name .campaign-table-icon svg {
+  height: auto;
+  width: 100%;
+  height: 15px;
+  width: auto;
+}
+.omapi-table .campaign-table-name .campaign-table-icon div:first-child:not(.popper) {
+  max-width: 17px;
+}
+.omapi-table .campaign-table-name .campaign-table-icon div {
+  flex-grow: 1;
+}
+.omapi-table .campaign-table-name .campaign-table-icon.on-fire svg {
+  color: #FE3B00;
+}
+.omapi-table .campaign-table-name .campaign-table-icon.has-split svg {
+  color: #A0A5AA;
+}
+.omapi-table .campaign-table-stats ul {
+  margin: 0;
+}
+.omapi-table .campaign-table-stats ul li {
+  margin-bottom: 2px;
+}
+.omapi-table .campaign-table-stats__scheduled:after {
+  content: none;
+  width: 20px;
+  height: 20px;
+  padding: 3px 14px 3px 3px;
+  vertical-align: text-top;
+}
+.omapi-table .campaign-table-status__scheduled:after {
+  content: none;
+  width: 20px;
+  height: 20px;
+  padding: 3px 14px 3px 3px;
+  vertical-align: text-top;
+}
+.omapi-table .campaign-table-status-indicators button.omapi-button__link {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  color: #6C7781;
+  border-bottom: 1px solid transparent;
+}
+.omapi-table .campaign-table-status-indicators button.omapi-button__link .omapi-has-tooltip {
+  display: block;
+  margin-left: 3px;
+  height: 14px;
+}
+.omapi-table .campaign-table-status-indicators button.omapi-button__link:hover {
+  color: #087CE1;
+  text-decoration: underline;
+  text-decoration: none !important;
+  border-bottom: 1px solid #087CE1;
+}
+.omapi-table .campaign-table-status-indicators.status-is-scheduled + .omapi-has-tooltip svg {
+  padding: 2px 0 0 3px;
+}
+.omapi-table .campaign-table-status-indicators.status-is-scheduled + .omapi-has-tooltip svg:hover {
+  color: #087CE1;
+}
+.omapi-table .campaign-table-status-indicators .omapi-has-tooltip .popper {
+  max-width: 840px;
+  width: auto;
+  white-space: normal;
+}
+.omapi-table .omapi-has-tooltip .popper {
+  max-width: 200px;
+  white-space: nowrap;
+}
+.omapi-table th .fancy-checkbox, .omapi-table td .fancy-checkbox {
+  background-color: #C9D0D6;
+}
+.omapi-campaigns-table table.omapi-table {
+  border: 0;
+}
+.omapi-campaigns-table table.omapi-table thead th {
+  border-color: #dddddd;
+  padding-bottom: 12px;
+  padding-top: 15px;
+}
+.omapi-campaigns-table table.omapi-table .alternate {
+  background-color: #f7f8fb;
+}
+.omapi-campaigns-table .stripe-gray {
+  background-color: #f9f9f9;
+}
+.omapi-campaigns-table-refreshing {
+  opacity: 0.5;
+}
+.omapi-campaigns-table-refreshing.omapi-campaigns-table-no-data td {
+  padding-top: 34px;
+  padding-bottom: 33px;
+}
+.omapi-campaign-table__mods .bulk-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.omapi-campaign-table__mods .bulk-actions select {
+  max-width: 168px;
+  margin-right: 5px;
+}
+.omapi-campaign-table__mods .bulk-actions .omapi-dropdown__container {
+  max-width: 168px;
+}
+.omapi-campaign-table__mods-bottom .bulk-actions {
+  margin-bottom: 0;
+}

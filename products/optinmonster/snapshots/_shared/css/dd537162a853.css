@@ -1,0 +1,109 @@
+.playbook-upsell {
+  background: #f3f9fe;
+  border: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 2px !important;
+  padding-left: 30px !important;
+  padding-right: 40px !important;
+  padding-top: 21px !important;
+}
+@media screen and (max-width: 1055px) {
+.playbook-upsell {
+    width: 120px;
+}
+}
+@media screen and (max-width: 1200px) {
+.playbook-upsell {
+    flex-direction: column;
+}
+}
+.playbook-upsell.container {
+  width: auto;
+  padding-bottom: 2px;
+  padding-left: 30px;
+  padding-right: 40px;
+  padding-top: 21px;
+  margin-bottom: 30px;
+}
+.playbook-upsell__image {
+  margin-right: 19px;
+  width: 100px;
+  height: auto;
+}
+@media screen and (max-width: 1200px) {
+.playbook-upsell__image {
+    margin: 0 0 10px 0;
+}
+}
+.playbook-upsell__text {
+  margin-right: 0;
+  margin-bottom: 21px;
+  flex: 1 1;
+  text-align: left;
+}
+.playbook-upsell__text__heading {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3em;
+}
+@media screen and (max-width: 1200px) {
+.playbook-upsell__text__heading {
+    font-size: 16px;
+    text-align: center;
+}
+}
+.playbook-upsell__text__desc {
+  font-size: 18px;
+  line-height: 1.3em;
+  font-weight: 400;
+}
+@media screen and (max-width: 1200px) {
+.playbook-upsell__text__desc {
+    font-size: 12px;
+    text-align: center;
+}
+}
+.playbook-upsell__right {
+  margin-right: 0;
+  margin-bottom: 21px;
+  font-size: 18.5px;
+  line-height: 1.5em;
+  text-align: right;
+  padding-left: 10px;
+}
+.playbook-upsell__right__cta {
+  background: #0d82df;
+  border-radius: 3px;
+  padding: 10px 25px;
+  font-size: 16px;
+  color: #fff !important;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1em;
+  font-weight: 600;
+}
+.playbook-upsell__right__cta:hover {
+  color: #fff;
+}
+.playbook-upsell__right svg {
+  margin-right: 7px;
+  vertical-align: sub;
+}
+.playbook-upsell__right svg.svg-available circle {
+  stroke: #fff;
+}
+.playbook-upsell__right svg.svg-available path {
+  fill: #fff;
+}
+.done-for-you {
+  padding-top: 3px;
+}
+.done-for-you .upsell-text,
+.done-for-you .upsell-right {
+  margin-bottom: 0;
+}
+.hire-expert .upsell-image {
+  width: 110px;
+}

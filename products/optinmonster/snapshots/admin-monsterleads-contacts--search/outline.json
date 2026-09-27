@@ -1,0 +1,348 @@
+{
+  "slug": "admin-monsterleads-contacts--search",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "dropdown-toggle",
+      "event": "click",
+      "selector": "button.omapi-dropdown__toggle.nohover",
+      "count": 1
+    },
+    {
+      "label": "subscribers-modal-open",
+      "event": "click",
+      "selector": "button.omapi-app-exit.omapi-button__link",
+      "count": 4
+    },
+    {
+      "label": "stats-date-option",
+      "event": "click",
+      "selector": "a[data-v-ca0ccec6]",
+      "count": 4
+    },
+    {
+      "label": "page-tabnav",
+      "event": "click",
+      "selector": ".omapi-tabnav__item",
+      "count": 3
+    },
+    {
+      "label": "contacts-campaign-filter",
+      "event": "click",
+      "selector": "h2.omapi-monsterleads__filters-campaign-label",
+      "count": 2
+    },
+    {
+      "label": "quick-links-flyout",
+      "event": "click",
+      "selector": "a.om-flyout-button.om-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-app-exit",
+        "tag": "button",
+        "text": "Export",
+        "count": 1,
+        "hidden": false,
+        "wired": "subscribers-modal-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".omapi-button",
+        "tag": "button",
+        "text": "Search",
+        "count": 7,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-button__secondary",
+        "tag": "button",
+        "text": "Last 30 Days",
+        "count": 3,
+        "hidden": false,
+        "wired": "dropdown-toggle",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": ".omapi-tabnav__item-active",
+        "tag": "div",
+        "text": "Contacts",
+        "count": 1,
+        "hidden": false,
+        "wired": "page-tabnav",
+        "wiredEvent": "click"
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#select-demo1000",
+        "tag": "input",
+        "text": "demo1000",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".omapi-input",
+        "tag": "input",
+        "text": "maria",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-input__select",
+        "tag": "select",
+        "text": "All Tags newsletter snack-club coupon-wheel",
+        "count": 3,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#apexcharts-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate OptinMonster ★★★★★ on WordPress.org to help us …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#listbox-null",
+        "tag": "ul",
+        "text": "All Campaign Contacts Welcome Offer – 10% Off Your First Or…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#null-0",
+        "tag": "li",
+        "text": "All Campaign Contacts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#null-1",
+        "tag": "li",
+        "text": "Welcome Offer – 10% Off Your First Order",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#null-2",
+        "tag": "li",
+        "text": "Weekly Recipe Newsletter",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#null-3",
+        "tag": "li",
+        "text": "Join the Snack Club",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#null-4",
+        "tag": "li",
+        "text": "Don't Leave Hungry – Exit Offer",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#null-5",
+        "tag": "li",
+        "text": "Spin to Win a Pantry Treat",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#null-6",
+        "tag": "li",
+        "text": "Welcome Offer – Variant B (Free Recipe eBook)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-app",
+        "tag": "div",
+        "text": "Overview Contacts Segments 1 search results for “maria” Sea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#om-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#om-flyout-items",
+        "tag": "div",
+        "text": "Suggest a FeatureJoin Our CommunitySupport & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#omwp-plugin-banner",
+        "tag": "div",
+        "text": "Subscribers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#snap-offsite-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsDefs1002",
+        "tag": "defs",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsPath1004",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsPolyline1003",
+        "tag": "polyline",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsSvg1001",
+        "tag": "svg",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_optin-monster-dashboard",
+        "tag": "li",
+        "text": "OptinMonster Dashboard Campaigns Templates Playbooks Subscr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".omapi-dropdown",
+        "tag": "nav",
+        "text": "Last 30 Days",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-monsterleads__actions-link",
+        "tag": "span",
+        "text": "Export",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-monsterleads__filters-campaign-label",
+        "tag": "h2",
+        "text": "All Campaign Contacts",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-monsterleads__filters-campaign-select",
+        "tag": "div",
+        "text": "Type to search... All Campaign Contacts Welcome Offer – 10%…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".omapi-plugin-header",
+        "tag": "div",
+        "text": "Subscribers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-search",
+        "tag": "form",
+        "text": "Search",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

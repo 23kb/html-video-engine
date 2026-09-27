@@ -1,0 +1,110 @@
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+.omapi-screen .om-circle-loading {
+  margin: 10px auto;
+}
+.omapi-screen .omapi-monsterleads__table .omapi-table {
+  border: none;
+}
+.omapi-screen .omapi-monsterleads__table .omapi-table.striped > tbody > :nth-child(odd) {
+  background-color: #F7F8FB;
+}
+.omapi-screen .omapi-monsterleads__table th {
+  padding: 14px 10px;
+  border-bottom-color: #DDDDDD;
+}
+.omapi-screen .omapi-monsterleads__table th.checkbox-cell {
+  width: 12px;
+  padding: 16px 13px;
+}
+.omapi-screen .omapi-monsterleads__table th.monsterleads-table-name {
+  width: 330px;
+}
+@media screen and (max-width: 1455px) {
+.omapi-screen .omapi-monsterleads__table th.monsterleads-table-name {
+    width: 155px;
+}
+}
+.omapi-screen .omapi-monsterleads__table th.monsterleads-table-email {
+  width: 359px;
+}
+@media screen and (max-width: 1455px) {
+.omapi-screen .omapi-monsterleads__table th.monsterleads-table-email {
+    width: 250px;
+}
+}
+.omapi-screen .omapi-monsterleads__table th.monsterleads-table-date {
+  width: 240px;
+}
+.omapi-screen .omapi-monsterleads__table th.monsterleads-table-actions {
+  width: 175px;
+}
+.omapi-screen .omapi-monsterleads__table td {
+  padding: 13px 13px 12px 9px;
+}
+.omapi-screen .omapi-monsterleads__table td.om-table-cell-has-checkbox {
+  padding: 16px 13px;
+}
+.omapi-screen .omapi-monsterleads__table td.monsterleads-table-name {
+  color: #23282D;
+  font-weight: 600;
+}
+.omapi-screen .omapi-monsterleads__table td.monsterleads-table-name .row-actions {
+  font-weight: 400;
+}
+.omapi-screen .omapi-monsterleads__table td.monsterleads-table-email {
+  text-decoration: underline;
+}
+.omapi-screen .omapi-monsterleads__table tfoot th {
+  padding: 8px 10px;
+  border-top-color: #F1F1F1;
+}
+.omapi-screen .omapi-monsterleads__table tfoot th.monsterleads-table-name {
+  color: #6C7781;
+}
+.omapi-screen .omapi-monsterleads__table tfoot th.monsterleads-table-email, .omapi-screen .omapi-monsterleads__table tfoot th.monsterleads-table-date, .omapi-screen .omapi-monsterleads__table tfoot th.monsterleads-table-actions {
+  color: #FFFFFF;
+}
+.omapi-screen .omapi-monsterleads__bottom {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  align-items: center;
+}
+.omapi-screen .omapi-monsterleads__search-wrap {
+  display: flex;
+  justify-content: flex-end;
+  margin: -74px -10px 32px 0;
+}
+@media screen and (max-width: 1150px) {
+.omapi-screen .omapi-monsterleads__search-wrap {
+    justify-content: flex-start;
+    margin: 0 0 16px;
+}
+.omapi-screen .omapi-monsterleads__search-wrap input[type=search].omapi-input__inline {
+    margin-left: 0;
+}
+}
+.omapi-screen .omapi-monsterleads__refreshing {
+  opacity: 0.5;
+}
+.omapi-screen .omapi-monsterleads__refreshing.omapi-monsterleads__no-data td {
+  padding-top: 34px;
+  padding-bottom: 33px;
+}
+@media screen and (max-width: 1145px) {
+.omapi-app-monsterleads #wpbody-content {
+    overflow-x: scroll !important;
+}
+.omapi-app-monsterleads #wpbody-content .omapi-monsterleads__table {
+    min-width: 945px;
+    padding-right: 40px;
+}
+}

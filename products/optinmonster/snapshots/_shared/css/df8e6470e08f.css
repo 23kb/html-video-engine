@@ -1,0 +1,26 @@
+/* PushEngage Admin Menu Styling */
+/*
+ * Group separators. Visible submenu order:
+ *  Dashboard | Push Broadcasts, Drip, Triggers, Workflows
+ *  Design, Audience, Analytics | WooCommerce, WhatsApp, Chat Widgets
+ *  Settings, About Us, Upgrade to Pro
+ * The submenu has a hidden first <li>, so nth-child is offset by +1 from the
+ * visible position. To draw a line *after* a visible item N, target nth-child(N+1):
+ * after Workflows (visible 5 -> 6), after Analytics (visible 8 -> 9),
+ * after Chat Widgets (visible 11 -> 12). Dashboard uses the .wp-first-item class.
+ */
+#toplevel_page_pushengage .wp-submenu li.wp-first-item::after,
+#toplevel_page_pushengage .wp-submenu li:nth-child(6)::after,
+#toplevel_page_pushengage .wp-submenu li:nth-child(9)::after,
+#toplevel_page_pushengage .wp-submenu li:nth-child(12)::after {
+  content: "";
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  display: block;
+  float: left;
+  margin: 8px 0;
+  width: 100%;
+}
+
+#toplevel_page_pushengage .wp-submenu li {
+  clear: both;
+}

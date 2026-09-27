@@ -1,0 +1,413 @@
+{
+  "slug": "admin-campaigns--duplicate-modal",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "dropdown-toggle",
+      "event": "click",
+      "selector": ".omapi-dropdown__toggle[data-v-130c7fd3]",
+      "count": 25
+    },
+    {
+      "label": "row-change-status",
+      "event": "click",
+      "selector": "td.om-table-cell:nth-of-type(2) > div.row-actions:nth-of-type(2) > span:nth-of-type(3) > a",
+      "count": 13
+    },
+    {
+      "label": "campaign-status-item",
+      "event": "click",
+      "selector": "a[data-v-130c7fd3]",
+      "count": 38
+    },
+    {
+      "label": "campaign-modal-open",
+      "event": "click",
+      "selector": "button.omapi-add-new.omapi-button",
+      "count": 76
+    },
+    {
+      "label": "modal-close",
+      "event": "click",
+      "selector": "button.unbutton",
+      "count": 2
+    },
+    {
+      "label": "modal-background-close",
+      "event": "mousedown",
+      "selector": "div.v--modal-background-click",
+      "count": 1
+    },
+    {
+      "label": "ab-tests-toggle",
+      "event": "click",
+      "selector": "div.omapi-has-tooltip.omapi-has-tooltip__no-icon button.omapi-button__link",
+      "count": 1
+    },
+    {
+      "label": "quick-links-flyout",
+      "event": "click",
+      "selector": "a.om-flyout-button.om-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-add-new",
+        "tag": "button",
+        "text": "Add New",
+        "count": 1,
+        "hidden": false,
+        "wired": "campaign-modal-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".omapi-button__blue",
+        "tag": "button",
+        "text": "Create Duplicate",
+        "count": 1,
+        "hidden": false,
+        "wired": "modal-background-close",
+        "wiredEvent": "mousedown"
+      },
+      {
+        "sel": ".omapi-button__large",
+        "tag": "button",
+        "text": "Search",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-button__link",
+        "tag": "button",
+        "text": "Create Test",
+        "count": 26,
+        "hidden": false,
+        "wired": "campaign-modal-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".omapi-button__secondary",
+        "tag": "button",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-dropdown__toggle",
+        "tag": "button",
+        "text": "Draft",
+        "count": 25,
+        "hidden": false,
+        "wired": "dropdown-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".omapi-toggle",
+        "tag": "span",
+        "text": "Yes No",
+        "count": 1,
+        "hidden": false,
+        "wired": "modal-background-close",
+        "wiredEvent": "mousedown"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#og58etphgug990yklomy-mobile-toggle",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#og58etphgug990yklomy-name",
+        "tag": "input",
+        "text": "Mobile App Coming Soon - Copy",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#og58etphgug990yklomy-notes",
+        "tag": "textarea",
+        "text": "Enter some notes about this duplicate campaign...",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#og58etphgug990yklomy-type",
+        "tag": "select",
+        "text": "Popup Floating Bar Inline Slide-in Fullscreen",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select-a3bnrrvujqyqkrh6crzb",
+        "tag": "input",
+        "text": "a3bnrrvujqyqkrh6crzb",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select-grrukufuemnpqbic9rpd",
+        "tag": "input",
+        "text": "grrukufuemnpqbic9rpd",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select-iyhsmlkgka71mde8ytjt",
+        "tag": "input",
+        "text": "iyhsmlkgka71mde8ytjt",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select-jghe2dlhssaqoe4llijs",
+        "tag": "input",
+        "text": "jghe2dlhssaqoe4llijs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select-jls8l43qdmv5hvxl0x5b",
+        "tag": "input",
+        "text": "jls8l43qdmv5hvxl0x5b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select-og58etphgug990yklomy",
+        "tag": "input",
+        "text": "og58etphgug990yklomy",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select-pwxtlfngfvmll6ad3jkh",
+        "tag": "input",
+        "text": "pwxtlfngfvmll6ad3jkh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select-rurs58pqxwh1hlveqtqr",
+        "tag": "input",
+        "text": "rurs58pqxwh1hlveqtqr",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select-tjrnkuhbdzfebjblahxo",
+        "tag": "input",
+        "text": "tjrnkuhbdzfebjblahxo",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select-vjz6fwbtj4cxmg2hbyhz",
+        "tag": "input",
+        "text": "vjz6fwbtj4cxmg2hbyhz",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select-y2gijiipwpaadvnxwrgz",
+        "tag": "input",
+        "text": "y2gijiipwpaadvnxwrgz",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select-y576knrgpnho3oqvvkoe",
+        "tag": "input",
+        "text": "y576knrgpnho3oqvvkoe",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select-y7dpzqcjcwhaclysy7vu",
+        "tag": "input",
+        "text": "y7dpzqcjcwhaclysy7vu",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".omapi-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".omapi-modal",
+        "tag": "div",
+        "text": "Create Duplicate Create a Duplicate of the Mobile App Comin…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate OptinMonster ★★★★★ on WordPress.org to help us …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#om-app",
+        "tag": "div",
+        "text": "CampaignsAdd New Search Filter by Date All Time Last 7 Days…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#om-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#om-flyout-items",
+        "tag": "div",
+        "text": "Suggest a FeatureJoin Our CommunitySupport & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#omwp-plugin-banner",
+        "tag": "div",
+        "text": "Campaigns",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#snap-offsite-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsDefs1002",
+        "tag": "defs",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsPath1004",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsPolyline1003",
+        "tag": "polyline",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsSvg1001",
+        "tag": "svg",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_optin-monster-dashboard",
+        "tag": "li",
+        "text": "OptinMonster Dashboard Campaigns Templates Playbooks Subscr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".omapi-dropdown",
+        "tag": "nav",
+        "text": "Draft",
+        "count": 25,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-plugin-header",
+        "tag": "div",
+        "text": "Campaigns",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".omapi-search",
+        "tag": "form",
+        "text": "Search",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

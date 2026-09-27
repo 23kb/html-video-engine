@@ -1,0 +1,82 @@
+.omapi-top-4__title {
+  margin-bottom: 80px;
+  text-align: center;
+}
+.omapi-top-4__title h2 {
+  font-size: 20px;
+  font-weight: 700;
+}
+.omapi-top-4__title h3 {
+  color: #646970 !important;
+  font-size: 15px;
+  font-weight: 700;
+}
+.omapi-top-4__items {
+  margin: 0 auto !important;
+  width: 90%;
+}
+.omapi-top-4__items .omapi-top-4__item {
+  display: flex;
+  margin-bottom: 40px;
+}
+.omapi-top-4__items .omapi-top-4__item .omapi-top-4__icon,
+.omapi-top-4__items .omapi-top-4__item .omapi-top-4__copy {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.omapi-top-4__items .omapi-top-4__item .omapi-top-4__icon img {
+  height: auto;
+  width: 350px;
+}
+@media screen and (max-width: 1065px) {
+.omapi-top-4__items .omapi-top-4__item .omapi-top-4__icon img {
+    max-width: 350px;
+    margin: 0 auto 10px;
+}
+}
+.omapi-top-4__items .omapi-top-4__item .omapi-top-4__icon.mr {
+  margin-right: 80px;
+}
+@media screen and (max-width: 1065px) {
+.omapi-top-4__items .omapi-top-4__item .omapi-top-4__icon.mr {
+    margin-right: 0;
+}
+}
+.omapi-top-4__items .omapi-top-4__item .omapi-top-4__icon.ml {
+  margin-left: 80px;
+}
+@media screen and (max-width: 1065px) {
+.omapi-top-4__items .omapi-top-4__item .omapi-top-4__icon.ml {
+    margin-left: 0;
+}
+}
+.omapi-top-4__items .omapi-top-4__item .omapi-top-4__copy h4 {
+  font-size: 16px;
+  font-weight: 700;
+}
+.omapi-top-4__items .omapi-top-4__item .omapi-top-4__copy p {
+  font-size: 14px;
+}
+.omapi-top-4__items .omapi-top-4__item.measuring .omapi-top-4__copy {
+  margin-right: 40px;
+}
+.omapi-top-4__items .omapi-top-4__item.measuring .omapi-top-4__icon img {
+  height: auto;
+  width: 400px;
+}
+@media screen and (max-width: 1065px) {
+.omapi-top-4__items .omapi-top-4__item.measuring .omapi-top-4__icon img {
+    max-width: 400px;
+    margin: 0 auto 10px;
+}
+}
+@media screen and (max-width: 1065px) {
+.omapi-top-4__items .omapi-top-4__item {
+    flex-direction: column;
+    text-align: center;
+}
+.omapi-top-4__items .omapi-top-4__item:nth-child(2n) {
+    flex-direction: column-reverse;
+}
+}

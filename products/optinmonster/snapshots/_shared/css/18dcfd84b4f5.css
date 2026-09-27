@@ -1,0 +1,163 @@
+@charset "UTF-8";
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+.omapi-create-new-modal.v--modal-overlay .v--modal .header {
+  background-color: #087CE1;
+  font-size: 20px;
+  max-height: none;
+  padding: 15px 40px;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .header .close svg path {
+  fill: #abb7ce;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content {
+  text-align: center;
+  padding: 50px 99px;
+  color: #60656f;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content a:hover {
+  text-decoration: none;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content.canvas-template {
+  padding: 50px 90px;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content.canvas-template .back-button {
+  display: block;
+  margin-top: 24px;
+  margin-left: 1em;
+  padding-left: 7px;
+  position: relative;
+  display: inline-block;
+  color: #087CE1;
+  text-decoration: none;
+  cursor: pointer;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content.canvas-template .back-button:before {
+  content: "←";
+  font-family: "FontAwesome";
+  position: absolute;
+  right: 100%;
+  top: 0;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__title {
+  font-size: 42px;
+  font-weight: 700;
+  line-height: 1.4em;
+  margin-bottom: 16px;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__description {
+  color: #60656f;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5em;
+  margin-bottom: 20px;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__options {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 33px;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__option {
+  border: 2px solid #F1F1F1;
+  border-radius: 3px;
+  flex-grow: 1;
+  flex-basis: 30%;
+  margin-right: 16px;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  transition: all 0.3s ease;
+  color: #646970;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__option-image {
+  max-width: 200px;
+  margin: 20px auto 35px;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__option-title {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.4em;
+  margin-bottom: 10px;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__option-description {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3em;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__option:last-child {
+  margin-right: 0;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__option:hover {
+  border-color: #087CE1;
+  background-color: #E8E8EB;
+  cursor: pointer;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__button {
+  padding: 16px 41px;
+  font-size: 18px;
+  line-height: 1em;
+  font-weight: 700;
+  border: none;
+  height: auto;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__canvas {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__canvas-option {
+  border: 2px solid #F1F1F1;
+  border-radius: 3px;
+  margin: 18px 14px 0 0;
+  padding: 20px 33px;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  color: #646970;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 21px;
+  text-transform: capitalize;
+  position: relative;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__canvas-option:nth-child(5), .omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__canvas-option:nth-child(7) {
+  margin-right: 0;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__canvas-option:hover {
+  border-color: #087CE1;
+  background-color: #E8E8EB;
+  cursor: pointer;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__canvas-option svg {
+  max-width: 108px;
+  width: 114px;
+  height: 100px;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .omapi-modal__canvas-option .mobile-icon {
+  width: 16px;
+  height: 26px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .button.green {
+  border-color: #46B450;
+  background-color: #46B450;
+  color: white;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .button.green:visited, .omapi-create-new-modal.v--modal-overlay .v--modal .content .button.green:active, .omapi-create-new-modal.v--modal-overlay .v--modal .content .button.green:focus, .omapi-create-new-modal.v--modal-overlay .v--modal .content .button.green:hover {
+  text-decoration: none;
+  color: white;
+}
+.omapi-create-new-modal.v--modal-overlay .v--modal .content .button.green:hover {
+  border-color: #3FA548;
+  background-color: #3FA548;
+}

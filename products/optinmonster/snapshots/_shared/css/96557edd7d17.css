@@ -1,0 +1,46 @@
+body .v--modal-overlay {
+  background: rgba(255, 255, 255, 0.7);
+}
+body .v--modal-overlay .v--modal {
+  color: #41495b;
+  border-radius: 5px;
+}
+body .v--modal-overlay .v--modal-box {
+  overflow: visible;
+}
+body .v--modal-overlay .v--modal .header {
+  color: #fff;
+  background: #41495b;
+  padding: 14px 20px;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  max-height: 50px;
+  border-radius: 5px 5px 0 0;
+}
+body .v--modal-overlay .v--modal .header svg {
+  width: 20px;
+  margin-right: 10px;
+}
+body .v--modal-overlay .v--modal .header .close {
+  color: #fff;
+  display: flex;
+  flex-grow: 1;
+  max-height: 50px;
+  justify-content: flex-end;
+  align-items: center;
+}
+body .v--modal-overlay .v--modal .header .close button {
+  display: flex;
+  align-items: center;
+}
+body .v--modal-overlay .v--modal .header .close svg {
+  width: 16px !important;
+  height: 16px;
+  margin-right: 0;
+  cursor: pointer;
+}
+body .v--modal-overlay .v--modal .content {
+  padding: 20px;
+}

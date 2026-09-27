@@ -1,0 +1,145 @@
+.preloader {
+  position: relative;
+}
+.preloader svg,
+.preloader img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(137.75, 148.0576923077, 171.25);
+}
+.preloader svg:not(.archie-icon),
+.preloader img:not(.archie-icon) {
+  max-width: 192px;
+}
+.circle-clipper,
+.gap-patch {
+  overflow: hidden;
+  border-color: inherit;
+}
+.circle,
+.circle-clipper,
+.gap-patch,
+.preloader,
+.preloader-wrapper,
+.spinner-layer {
+  font-size: 0;
+  box-sizing: border-box;
+}
+.preloader-aligner {
+  display: flex;
+  justify-content: center;
+}
+.preloader-wrapper {
+  width: 240px;
+  height: 240px;
+  display: inline-block;
+  position: relative;
+  animation: container-rotate 1568ms linear infinite;
+}
+.gap-patch,
+.spinner-layer {
+  position: absolute;
+  height: 100%;
+}
+@keyframes container-rotate {
+to {
+    transform: rotate(360deg);
+}
+}
+.spinner-layer {
+  width: 100%;
+  opacity: 0;
+  border-color: rgb(137.75, 148.0576923077, 171.25);
+}
+.active .spinner-layer {
+  opacity: 1;
+  animation: fill-unfill-rotate 5332ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+}
+@keyframes fill-unfill-rotate {
+12.5% {
+    transform: rotate(135deg);
+}
+25% {
+    transform: rotate(270deg);
+}
+37.5% {
+    transform: rotate(405deg);
+}
+50% {
+    transform: rotate(540deg);
+}
+62.5% {
+    transform: rotate(675deg);
+}
+75% {
+    transform: rotate(810deg);
+}
+87.5% {
+    transform: rotate(945deg);
+}
+to {
+    transform: rotate(1080deg);
+}
+}
+.gap-patch {
+  top: 0;
+  left: 45%;
+  width: 10%;
+}
+.gap-patch .circle {
+  width: 1000%;
+  left: -450%;
+}
+.circle-clipper {
+  display: inline-block;
+  position: relative;
+  width: 50%;
+  height: 100%;
+}
+.circle-clipper .circle {
+  width: 200%;
+  height: 100%;
+  border-style: solid;
+  border-color: inherit;
+  border-bottom-color: transparent !important;
+  border-radius: 50%;
+  animation: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
+.circle-clipper.left .circle {
+  left: 0;
+  border-right-color: transparent !important;
+  transform: rotate(129deg);
+}
+.circle-clipper.right .circle {
+  left: -100%;
+  border-left-color: transparent !important;
+  transform: rotate(-129deg);
+}
+.active .circle-clipper.left .circle {
+  animation: left-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+}
+.active .circle-clipper.right .circle {
+  animation: right-spin 1333ms cubic-bezier(0.4, 0, 0.2, 1) infinite both;
+}
+@keyframes left-spin {
+from, to {
+    transform: rotate(130deg);
+}
+50% {
+    transform: rotate(-5deg);
+}
+}
+@keyframes right-spin {
+from, to {
+    transform: rotate(-130deg);
+}
+50% {
+    transform: rotate(5deg);
+}
+}

@@ -1,0 +1,559 @@
+{
+  "slug": "app-builder-design--block-text-inline",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "builder-header-tab",
+      "event": "click",
+      "selector": "a.HeaderNavLink--design",
+      "count": 5
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#align-1",
+        "tag": "button",
+        "text": "Align",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#backgroundColor-1",
+        "tag": "button",
+        "text": "Background Color",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bold-1",
+        "tag": "button",
+        "text": "Bold",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#clearFormatting-1",
+        "tag": "button",
+        "text": "Clear Formatting",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#emoticons-1",
+        "tag": "button",
+        "text": "Emoticons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#fontSize-1",
+        "tag": "button",
+        "text": "28",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#fontWeight-1",
+        "tag": "button",
+        "text": "Font Weight",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#formatOL-1",
+        "tag": "button",
+        "text": "Ordered List",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#formatOLOptions-1",
+        "tag": "button",
+        "text": "Ordered List",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#formatUL-1",
+        "tag": "button",
+        "text": "Unordered List",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#formatULOptions-1",
+        "tag": "button",
+        "text": "Unordered List",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#indent-1",
+        "tag": "button",
+        "text": "Increase Indent",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#insertLink-1",
+        "tag": "button",
+        "text": "Insert Link",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#italic-1",
+        "tag": "button",
+        "text": "Italic",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#letterSpacing-1",
+        "tag": "button",
+        "text": "V/A Letter Spacing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#lineHeight-1",
+        "tag": "button",
+        "text": "Line Height",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#moreText-1",
+        "tag": "button",
+        "text": "More Text",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#omFontFamily-1",
+        "tag": "button",
+        "text": "Helvetica Neue",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#outdent-1",
+        "tag": "button",
+        "text": "Decrease Indent",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#redo-1",
+        "tag": "button",
+        "text": "Redo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#selectAll-1",
+        "tag": "button",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sibley-NoButtonElement--LYlPHaDxxct7imbnQltN",
+        "tag": "button",
+        "text": "No Thanks I don't want this",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sibley-YesButtonElement--LYlPHaDxxct7imbnQltN",
+        "tag": "button",
+        "text": "Yes, I Need This!",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#smartTags-1",
+        "tag": "button",
+        "text": "{ } Smart Tags",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#strikeThrough-1",
+        "tag": "button",
+        "text": "Strikethrough",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#subscript-1",
+        "tag": "button",
+        "text": "Subscript",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#superscript-1",
+        "tag": "button",
+        "text": "Superscript",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#textColor-1",
+        "tag": "button",
+        "text": "Text Color",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#textTransform-1",
+        "tag": "button",
+        "text": "Text Transform",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#underline-1",
+        "tag": "button",
+        "text": "Underline",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#undo-1",
+        "tag": "button",
+        "text": "Undo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".HeaderNavButton--close",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".HeaderNavLink--analytics",
+        "tag": "a",
+        "text": "Analytics",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--design",
+        "tag": "a",
+        "text": "Design",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--integrations",
+        "tag": "a",
+        "text": "Integrations",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--publish",
+        "tag": "a",
+        "text": "Published",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--rulesets",
+        "tag": "a",
+        "text": "Display Rules",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".ViewSelector__Item",
+        "tag": "button",
+        "text": "Yes/No",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".ViewSelector__optin",
+        "tag": "button",
+        "text": "Optin",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".ViewSelector__success",
+        "tag": "button",
+        "text": "Success",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#om-tjrnkuhbdzfebjblahxo",
+        "tag": "div",
+        "text": "Helvetica Neue Arial Georgia Helvetica Helvetica Neue Lucid…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#_goober",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ace-tm",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#classic-theme-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#core-block-supports-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dropdown-menu-align-1",
+        "tag": "div",
+        "text": "Align Left Align Center Align Right Align Justify",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dropdown-menu-fontSize-1",
+        "tag": "div",
+        "text": "8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 2…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dropdown-menu-fontWeight-1",
+        "tag": "div",
+        "text": "100 200 300 400 500 600 700 800 900",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dropdown-menu-formatOLOptions-1",
+        "tag": "div",
+        "text": "Default Lower Alpha Lower Greek Lower Roman Upper Alpha Upp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dropdown-menu-formatULOptions-1",
+        "tag": "div",
+        "text": "Default Circle Disc Square",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dropdown-menu-letterSpacing-1",
+        "tag": "div",
+        "text": "-10px -9px -8px -7px -6px -5px -4px -3px -2px -1px 0px 1px …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dropdown-menu-lineHeight-1",
+        "tag": "div",
+        "text": "Default Single Double 1.1 1.2 1.3 1.4 1.5 1.6 1.7 1.8 1.9 2…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dropdown-menu-omFontFamily-1",
+        "tag": "div",
+        "text": "Arial Georgia Helvetica Helvetica Neue Lucida Grande System…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dropdown-menu-smartTags-1",
+        "tag": "div",
+        "text": "{{campaign_name}} {{country}} {{country_code}} {{zip}} {{po…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dropdown-menu-textTransform-1",
+        "tag": "div",
+        "text": "none capitalize uppercase lowercase",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mask0_1_9fs4",
+        "tag": "mask",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mask0_1_jos9",
+        "tag": "mask",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mask0_2_mef4",
+        "tag": "mask",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mask0_2_umvb",
+        "tag": "mask",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tjrnkuhbdzfebjblahxo-CampaignCSS",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tjrnkuhbdzfebjblahxo-CustomCSS",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tjrnkuhbdzfebjblahxo-CustomJS",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tjrnkuhbdzfebjblahxo-ResetCSS",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#om-tjrnkuhbdzfebjblahxo-yesno",
+        "tag": "div",
+        "text": "Helvetica Neue Arial Georgia Helvetica Helvetica Neue Lucid…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#root",
+        "tag": "div",
+        "text": "Design Display Rules Integrations Analytics Published Suppo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sibley-TextElement--wrapper--jcfdg055iJv0EcJ97Kdr",
+        "tag": "div",
+        "text": "Join over 5,000+ other online business owners that receive …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sibley-TextElement--wrapper--ZXPw8gqNQu6PMnjVFTE3",
+        "tag": "div",
+        "text": "Helvetica Neue Arial Georgia Helvetica Helvetica Neue Lucid…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sibley-YesButtonElement--wrapper--LYlPHaDxxct7imbnQltN",
+        "tag": "div",
+        "text": "Yes, I Need This! No Thanks I don't want this",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".Footer__left-content",
+        "tag": "div",
+        "text": "Yes/No Optin Success",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".Footer__right-content",
+        "tag": "div",
+        "text": "Add View Welcome Offer – 10% Off Your First Order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".om-row",
+        "tag": "div",
+        "text": "Helvetica Neue Arial Georgia Helvetica Helvetica Neue Lucid…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".SettingsAccordion",
+        "tag": "li",
+        "text": "Container Styling Style Solid Gradient Background Color Box…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".SettingsDropdown",
+        "tag": "li",
+        "text": "Box Shadow",
+        "count": 4,
+        "hidden": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,131 @@
+/* ========================================
+Colors
+======================================== */
+/* ========================================
+Fonts
+======================================== */
+/* ========================================
+Item-Specific
+======================================== */
+.omapi-screen .omapi-dash__cards-wrapper {
+  width: calc(49% + 6px);
+}
+@media screen and (max-width: 969px) {
+.omapi-screen .omapi-dash__cards-wrapper {
+    width: 100%;
+}
+}
+.omapi-screen .omapi-dash__cards-wrapper div {
+  -moz-column-break-inside: avoid;
+       break-inside: avoid;
+}
+@media screen and (max-width: 1024px) {
+.omapi-screen .omapi-dash__cards-wrapper div.omapi-card__half {
+    flex-basis: 100%;
+}
+}
+.omapi-screen .omapi-dash__cards-banner {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 15px;
+}
+.omapi-screen .omapi-dash__cards-banner * {
+  max-width: 100%;
+}
+.omapi-screen .omapi-dash__create-card {
+  flex-basis: calc(50% - 8px);
+}
+.omapi-screen .omapi-dash__create-card .omapi-card-content {
+  text-align: center;
+  cursor: pointer;
+  border: solid 2px transparent;
+}
+.omapi-screen .omapi-dash__create-card .omapi-card-content:hover {
+  border-color: #087CE1;
+  background-color: #FCFDFF;
+}
+.omapi-screen .omapi-dash__create-card .omapi-card-content h5 {
+  font-size: 16px;
+  margin: 0 0 8px;
+  line-height: 140%;
+}
+.omapi-screen .omapi-dash__resources .omapi-link-title {
+  line-height: 150%;
+}
+.omapi-screen .omapi-dash__resources .omapi-link-title:before {
+  position: relative;
+  top: 4px;
+  width: 24px;
+  display: inline-block;
+}
+.omapi-screen .omapi-dash__resources .omapi-detailed-list > li:last-child {
+  border-bottom: none;
+  padding-bottom: 7px;
+}
+.omapi-screen .omapi-dash__top-none {
+  padding: 70px 0 65px;
+}
+.omapi-screen .omapi-dash__announcements .omapi-multi-column__primary > .omapi-multi-column__primary {
+  display: flex;
+  justify-content: space-between;
+}
+.omapi-screen .omapi-dash__announcements .omapi-multi-column__title {
+  font-size: 15px;
+  line-height: 21px;
+  font-weight: 700;
+}
+.omapi-screen .omapi-dash__announcements .omapi-multi-column__secondary {
+  margin-top: 2px;
+  font-size: 11px;
+  line-height: 14px;
+  color: #6C7781;
+}
+.omapi-screen .omapi-dash__announcements .omapi-multi-column__buttons .omapi-button {
+  line-height: 13px;
+}
+.omapi-screen .omapi-dash__upsell .upsell__subtitle {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 5px;
+  color: #087CE1;
+}
+.omapi-screen .omapi-dash__upsell .upsell__title {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 22px;
+  margin-bottom: 24px;
+}
+.omapi-screen .omapi-dash__upsell .upsell__features {
+  font-size: 15px;
+  line-height: 23px;
+  display: flex;
+  flex-wrap: wrap;
+}
+@media screen and (max-width: 1100px) {
+.omapi-screen .omapi-dash__upsell .upsell__features {
+    flex-direction: column;
+}
+}
+.omapi-screen .omapi-dash__upsell .upsell__feature {
+  margin-bottom: 10px;
+  flex: 0 1 50%;
+  display: flex;
+  align-items: center;
+}
+.omapi-screen .omapi-dash__upsell .upsell__feature-icon {
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+.omapi-screen .omapi-dash__upsell .upsell__feature:nth-child(even) .upsell__feature-icon {
+  margin-left: 3px;
+}
+@media screen and (max-width: 1100px) {
+.omapi-screen .omapi-dash__upsell .upsell__feature:nth-child(even) .upsell__feature-icon {
+    margin-left: 0;
+}
+}
+.omapi-screen .omapi-dash__upsell .omapi-button {
+  margin-top: 14px;
+  line-height: 13px;
+}

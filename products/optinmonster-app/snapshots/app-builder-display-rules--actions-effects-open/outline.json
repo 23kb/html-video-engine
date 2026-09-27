@@ -1,0 +1,398 @@
+{
+  "slug": "app-builder-display-rules--actions-effects-open",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "builder-header-tab",
+      "event": "click",
+      "selector": "a.HeaderNavLink--design",
+      "count": 5
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": ".HeaderNavButton--close",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".HeaderNavLink--analytics",
+        "tag": "a",
+        "text": "Analytics",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--design",
+        "tag": "a",
+        "text": "Design",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--integrations",
+        "tag": "a",
+        "text": "Integrations",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--publish",
+        "tag": "a",
+        "text": "Published",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".HeaderNavLink--rulesets",
+        "tag": "a",
+        "text": "Display Rules",
+        "count": 1,
+        "hidden": false,
+        "wired": "builder-header-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".RuleStepSelector__actions",
+        "tag": "button",
+        "text": "Actions",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".RuleStepSelector__conditions",
+        "tag": "button",
+        "text": "Conditions",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".RuleStepSelector__summary",
+        "tag": "button",
+        "text": "Summary",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#react-select-2-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-3-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-4-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-5-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-6-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#_goober",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ace-tm",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aria-context",
+        "tag": "span",
+        "text": "option None focused, 1 of 27. 27 results available. Use Up …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aria-selection-event",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#classic-theme-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#core-block-supports-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#react-select-2-option-0",
+        "tag": "div",
+        "text": "None",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-1",
+        "tag": "div",
+        "text": "Bounce",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-10",
+        "tag": "div",
+        "text": "Bounce In (Down)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-11",
+        "tag": "div",
+        "text": "Bounce In (Left)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-12",
+        "tag": "div",
+        "text": "Bounce In (Right)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-13",
+        "tag": "div",
+        "text": "Bounce In (Up)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-14",
+        "tag": "div",
+        "text": "Flip",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-15",
+        "tag": "div",
+        "text": "Flip Down",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-16",
+        "tag": "div",
+        "text": "Flip Side",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-17",
+        "tag": "div",
+        "text": "Light Speed",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-18",
+        "tag": "div",
+        "text": "Rotate",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-19",
+        "tag": "div",
+        "text": "Rotate (Down Left)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-2",
+        "tag": "div",
+        "text": "Flash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-20",
+        "tag": "div",
+        "text": "Rotate (Down Right)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-21",
+        "tag": "div",
+        "text": "Rotate (Up Left)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-22",
+        "tag": "div",
+        "text": "Rotate (Up Right)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-23",
+        "tag": "div",
+        "text": "Slide In (Down)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-24",
+        "tag": "div",
+        "text": "Slide In (Left)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-25",
+        "tag": "div",
+        "text": "Slide In (Right)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-26",
+        "tag": "div",
+        "text": "Roll In",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-3",
+        "tag": "div",
+        "text": "Pulse",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-4",
+        "tag": "div",
+        "text": "Rubber Band",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-5",
+        "tag": "div",
+        "text": "Shake",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-6",
+        "tag": "div",
+        "text": "Swing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-7",
+        "tag": "div",
+        "text": "Tada",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-8",
+        "tag": "div",
+        "text": "Wobble",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-option-9",
+        "tag": "div",
+        "text": "Bounce In",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#root",
+        "tag": "div",
+        "text": "Design Display Rules Integrations Analytics Published Suppo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".Footer__left-content",
+        "tag": "div",
+        "text": "Conditions Actions Summary",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".Footer__right-content",
+        "tag": "div",
+        "text": "Welcome Offer – 10% Off Your First Order",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,33 @@
+.omapi-testimonials {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto !important;
+  width: 90%;
+}
+.omapi-testimonials .omapi-testimonials__item {
+  border: 1px solid #dddddd;
+  box-shadow: 0px 3px 2px rgba(0, 0, 0, 0.05);
+  flex: 0 0 25%;
+  padding: 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.omapi-testimonials .omapi-testimonials__item .icon-rating {
+  display: block;
+  margin-bottom: 20px;
+}
+.omapi-testimonials .omapi-testimonials__item .icon-rating .person {
+  width: 80px;
+  margin-bottom: 10px;
+}
+.omapi-testimonials .omapi-testimonials__item .copy p {
+  color: #646970;
+  font-size: 14px;
+}
+@media screen and (max-width: 950px) {
+.omapi-testimonials {
+    flex-direction: column;
+}
+}
