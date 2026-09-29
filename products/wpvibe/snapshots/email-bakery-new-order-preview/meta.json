@@ -1,0 +1,15 @@
+{
+  "sourceUrl": "https://bakery.example.com/wp-admin/admin.php?page=wc-settings&tab=email",
+  "finalUrl": "https://bakery.example.com/wp-admin/?preview_woocommerce_mail=true&_wpnonce=redacted",
+  "capturedAt": "2026-09-20T10:10:38.794Z",
+  "assetCount": 1,
+  "assetCountSkipped": 263,
+  "variantSlug": "email-bakery-new-order-preview",
+  "waitFor": "body",
+  "viewport": {
+    "width": 1440,
+    "height": 900
+  },
+  "renamedFrom": "email-bakery-new-order",
+  "renamedWhy": "WooCommerce's email preview always renders a dummy order (Hi John, Dummy Download) and ignores the type parameter, so this is the template, not order 35."
+}
