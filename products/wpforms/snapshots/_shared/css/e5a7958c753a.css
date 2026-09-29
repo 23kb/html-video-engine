@@ -1,0 +1,14 @@
+
+      @keyframes claude-pulse {
+        0%, 100% { opacity: 0.6; }
+        50% { opacity: 1; }
+      }
+      #claude-agent-glow-border-inner {
+        animation: claude-pulse 2s ease-in-out infinite;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #claude-agent-glow-border-inner {
+          animation: none;
+        }
+      }
+    

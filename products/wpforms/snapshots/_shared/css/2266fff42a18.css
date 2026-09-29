@@ -1,0 +1,9 @@
+.gEaYGq_Input { z-index: 1; appearance: none; cursor: pointer; background: 0px 0px; width: calc(100% - 15px); height: 26px; margin: 0px; position: absolute; inset-inline: 7.5px; }
+.gEaYGq_Input:disabled { cursor: default; }
+.gEaYGq_Input::-webkit-slider-runnable-track { background: 0px 0px; height: 17px; }
+.gEaYGq_Input::-webkit-slider-thumb { appearance: none; border: .5px solid var(--border-heavy); background: rgb(255, 255, 255); border-radius: 16px; width: 9px; height: 26px; margin-top: -4.5px; transition: transform 0.15s cubic-bezier(0.23, 1, 0.32, 1); box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 2px, rgba(0, 0, 0, 0.07) 0px 6px 16px; }
+.gEaYGq_Input:hover::-webkit-slider-thumb, .gEaYGq_Input:focus-visible::-webkit-slider-thumb { transform: scaleX(1.12); }
+.gEaYGq_Input:focus-visible::-webkit-slider-thumb { outline: 2px solid var(--border-heavy); outline-offset: 2px; }
+.gEaYGq_Input:focus-visible { outline: none; }
+@media (prefers-reduced-motion: reduce) {
+}

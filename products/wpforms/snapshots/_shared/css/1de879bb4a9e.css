@@ -1,0 +1,22 @@
+@property --cot-v5-reasoning-title-shimmer-position { syntax: "<percentage>"; inherits: true; initial-value: -100%; }
+.J1K0aq_Root, .J1K0aq_Static { color: var(--text-tertiary); user-select: none; padding-bottom: 2px; }
+.J1K0aq_Root { --cot-v5-reasoning-title-shimmer-position: -100%; --cubic-enter: cubic-bezier(.19, 1, .22, 1); --cubic-exit: cubic-bezier(.8, 0, .4, 1); font-variant-numeric: tabular-nums; animation: J1K0aq_Shimmer var(--cot-shimmer-duration,2s) infinite; align-self: flex-start; display: inline-block; position: relative; }
+[dir="rtl"] .J1K0aq_Root { animation-name: J1K0aq_ShimmerRtl; }
+.J1K0aq_ReasoningTitle, .J1K0aq_Number { --shimmer-contrast: #ffffffbf; --shimmer-text-secondary: var(--text-tertiary); background-image: ; background-attachment: ; background-origin: ; background-color: ; background-position: var(--cot-v5-reasoning-title-shimmer-position) top; color: rgba(0, 0, 0, 0); white-space: pre; background-repeat: no-repeat; background-size: 50% 200%; background-clip: text; display: inline-block; }
+.dark :is(.J1K0aq_ReasoningTitle, .J1K0aq_Number) { --shimmer-contrast: #0009; --shimmer-text-secondary: var(--text-tertiary); }
+.J1K0aq_NumberSlot { position: absolute; inset: 0px; }
+@keyframes J1K0aq_Shimmer { 
+  0% { --cot-v5-reasoning-title-shimmer-position: -100%; }
+  100% { --cot-v5-reasoning-title-shimmer-position: 250%; }
+}
+@keyframes J1K0aq_ShimmerRtl { 
+  0% { --cot-v5-reasoning-title-shimmer-position: 200%; }
+  100% { --cot-v5-reasoning-title-shimmer-position: -150%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .J1K0aq_Root { animation: auto ease 0s 1 normal none running none; }
+  .J1K0aq_ReasoningTitle, .J1K0aq_Number { color: inherit; background: 0px 0px; }
+}
+.KFijYq_Scroller { --cot-v5-work-activity-fade-height: 56px; --cot-v5-work-activity-fade-top: #000; --cot-v5-work-activity-fade-bottom: #000; --cot-v5-work-activity-fade-mask: linear-gradient(to bottom, var(--cot-v5-work-activity-fade-top), #000 min(var(--cot-v5-work-activity-fade-height), 50%), #000 max(calc(100% - var(--cot-v5-work-activity-fade-height)), 50%), var(--cot-v5-work-activity-fade-bottom)); mask-image: var(--cot-v5-work-activity-fade-mask); }
+.KFijYq_Scroller[data-fade-top="true"] { --cot-v5-work-activity-fade-top: transparent; }
+.KFijYq_Scroller[data-fade-bottom="true"] { --cot-v5-work-activity-fade-bottom: transparent; }

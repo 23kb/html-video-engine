@@ -1,0 +1,22 @@
+@supports not (overflow:clip) {
+  .lxnfua_clipPathFallback { clip-path: inset(-1px round 26px); }
+}
+@keyframes codeBlockFadeIn { 
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes codeBlockFadeOut { 
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+.active-view-transition.code-block-fullscreen-transition #page-header { view-transition-name: code-block-page-header; }
+.active-view-transition.code-block-fullscreen-transition #thread-bottom-container { view-transition-name: code-block-thread-bottom-container; }
+@media (prefers-reduced-motion: reduce) {
+  .active-view-transition.code-block-fullscreen-transition::view-transition { display: none; }
+}
+.active-view-transition.code-block-fullscreen-transition::view-transition-old(code-block-page-header), .active-view-transition.code-block-fullscreen-transition::view-transition-new(code-block-page-header), .active-view-transition.code-block-fullscreen-transition::view-transition-group(code-block-page-header) { z-index: 1000; }
+.active-view-transition.code-block-fullscreen-transition::view-transition-old(code-block-thread-bottom-container), .active-view-transition.code-block-fullscreen-transition::view-transition-new(code-block-thread-bottom-container), .active-view-transition.code-block-fullscreen-transition::view-transition-group(code-block-thread-bottom-container) { z-index: 1000; }
+.active-view-transition.code-block-fullscreen-transition::view-transition-old(code-block-code-pane) { transform-origin: 0px 0px; animation: 0.22s ease-out 0s 1 normal both running codeBlockFadeOut; transform: none; }
+.active-view-transition.code-block-fullscreen-transition::view-transition-new(code-block-code-pane) { transform-origin: 0px 0px; animation: 0.22s ease-out 0s 1 normal both running codeBlockFadeIn; transform: none; }
+.active-view-transition.code-block-fullscreen-transition::view-transition-old(code-block-preview-pane) { animation: 0.22s ease-out 0s 1 normal both running codeBlockFadeOut; }
+.active-view-transition.code-block-fullscreen-transition::view-transition-new(code-block-preview-pane) { animation: 0.22s ease-out 0s 1 normal both running codeBlockFadeIn; }
