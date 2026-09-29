@@ -1,0 +1,93 @@
+
+
+            .toplevel_page_botiga-dashboard #wpbody-content>.updated.botiga-campaign-notice, 
+            .toplevel_page_botiga-dashboard #wpbody-content>.notice.botiga-campaign-notice {
+                display: block !important;
+                margin: -1px -1px 0px -20px;
+            }
+
+            .botiga-campaign-notice {
+                position: relative !important;
+                background: none;
+                background-size: cover;
+                background-position: center;
+                padding: 30px 30px 0px !important;
+                border-left: 0;
+            }
+
+            @media(min-width: 1270px) {
+                .botiga-campaign-notice {
+                    padding: 45px 61px 40px !important;
+                }
+            }
+
+            .botiga-campaign-notice h3 {
+                color: #212121;
+                font-size: 42px;
+                font-weight: 700;
+                line-height: 1.1;
+                margin-bottom: 40px;
+            }
+
+            @media(min-width: 576px) {
+                .botiga-campaign-notice h3 {
+                    min-width: 425px;
+                    max-width: 25%;
+                    line-height: 0.8;
+                }   
+            }
+
+            .botiga-campaign-notice h3 span {
+                position: relative;
+                top: 12px;
+                display: inline-flex;
+                align-items: center;
+                gap: 10px;
+                color: #68B43A;
+            }
+
+            .botiga-campaign-notice-thumbnail {
+                max-width: 100%;
+                height: auto;
+                margin-top: 30px;
+            }
+
+            @media(min-width: 1270px) {
+                .botiga-campaign-notice-thumbnail {
+                    position: absolute;
+                    right: 40px;
+                    bottom: 0;
+                    max-width: 553px;
+                    margin-top: 0;
+                }
+            }
+
+            @media(min-width: 1300px) {
+                .botiga-campaign-notice-thumbnail {
+                    max-width: 663px;
+                }
+            }
+
+            .botiga-campaign-notice-percent {
+                position: relative;
+                max-width: 118px;
+                top: -2px;
+            }
+
+            .botiga-campaign-notice .botiga-btn {
+                font-size: 19px;
+                padding: 19px 41px;
+                border-radius: 7px;
+            }
+
+            .botiga-campaign-notice .notice-dismiss,
+            .botiga-campaign-notice .notice-dismiss:before {
+                color: #212121;
+            }
+
+            .botiga-campaign-notice .notice-dismiss:active:before, 
+            .botiga-campaign-notice .notice-dismiss:focus:before, 
+            .botiga-campaign-notice .notice-dismiss:hover:before {
+                color: #757575;
+            }
+        

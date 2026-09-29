@@ -1,0 +1,1 @@
+import{_ as n}from"./_plugin-vue_export-helper.eefbdd86.js";import{i as o,j as r}from"./vendor-vue-ui.235cc81c.js";const t={};function e(c,s){return o(),r("div")}const i=n(t,[["render",e]]);export{i as C};
