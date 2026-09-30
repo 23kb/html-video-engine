@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/duplicator/snapshots/admin-settings-general/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 90 selector entries across 2 sections.
+> 92 selector entries across 2 sections.
 
 Provenance anchor form: `products/duplicator/snapshots/admin-settings-general/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_79 entries_
+_81 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -22,6 +22,8 @@ _79 entries_
 | <a id="id--_unhook_third_party_js"></a>`id--_unhook_third_party_js` | `#_unhook_third_party_js` | input | Disable Check this option if JavaScript from the theme or o… | 1 |
 | <a id="id--activity_log_retention_months"></a>`id--activity_log_retention_months` | `#activity_log_retention_months` | input | &nbsp; months Set how many months to keep activity log entr… | 1 |
 | <a id="id--advanced-section-header"></a>`id--advanced-section-header` | `#advanced-section-header` | h3 | Advanced | 1 |
+| <a id="id--aioseo-admin"></a>`id--aioseo-admin` | `#aioseo-admin` | div |  | 1 |
+| <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--crypt"></a>`id--crypt` | `#crypt` | input | Enable settings encryption When this option is enabled, all… | 1 |
