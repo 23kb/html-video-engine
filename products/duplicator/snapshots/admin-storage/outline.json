@@ -1,0 +1,579 @@
+{
+  "slug": "admin-storage",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "help-modal-open",
+      "event": "click",
+      "selector": "a.dup-global-help",
+      "count": 1
+    },
+    {
+      "label": "storage-edit-link",
+      "event": "click",
+      "selector": "td.storage-name a",
+      "count": 32
+    },
+    {
+      "label": "storage-quick-view",
+      "event": "click",
+      "selector": "#main-view-3 > td.storage-name:nth-of-type(2) > div.sub-menu > a:nth-of-type(2)",
+      "count": 32
+    },
+    {
+      "label": "list-select-all",
+      "event": "click",
+      "selector": "#dupli-chk-all",
+      "count": 1
+    },
+    {
+      "label": "storage-bulk-apply",
+      "event": "click",
+      "selector": "#dup-pack-bulk-apply",
+      "count": 1
+    },
+    {
+      "label": "storage-row-delete",
+      "event": "click",
+      "selector": "#main-view-15 > td.storage-name:nth-of-type(2) > div.sub-menu > a:nth-of-type(4)",
+      "count": 14
+    },
+    {
+      "label": "storage-copy-never",
+      "event": "click",
+      "selector": "#main-view-15 > td.storage-name:nth-of-type(2) > div.sub-menu > a:nth-of-type(3)",
+      "count": 13
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-create-new",
+        "tag": "a",
+        "text": "Add New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-storage-cloud-cta",
+        "tag": "a",
+        "text": "Explore plans and features",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#bulk_action",
+        "tag": "select",
+        "text": "Bulk Actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-pack-bulk-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-selected-storage",
+        "tag": "input",
+        "text": "null",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-chk-all",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-dlg-1-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-cancel",
+        "tag": "input",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".dup-messages-section",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-ajax-loader",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-ajax-loader-img-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-meta-screen",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-schedule-check-tpl",
+        "tag": "template",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-schedule-item-tpl",
+        "tag": "template",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-storage-form",
+        "tag": "form",
+        "text": "Name Type Location Default Edit | Quick View Default Local …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-dlg-1",
+        "tag": "div",
+        "text": "Please select an action from the \"Bulk Actions\" drop down m…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1_message",
+        "tag": "span",
+        "text": "Please select an action from the \"Bulk Actions\" drop down m…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1-alert-txt",
+        "tag": "div",
+        "text": "Please select an action from the \"Bulk Actions\" drop down m…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2",
+        "tag": "div",
+        "text": "Please select at least one storage to delete!",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2_message",
+        "tag": "span",
+        "text": "Please select at least one storage to delete!",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-alert-txt",
+        "tag": "div",
+        "text": "Please select at least one storage to delete!",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3",
+        "tag": "div",
+        "text": "Removing Storages, Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3_message",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-confirm-txt",
+        "tag": "div",
+        "text": "Removing Storages, Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-progress",
+        "tag": "div",
+        "text": "Removing Storages, Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate Duplicator ★★★★★ on WordPress.org to help us sp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-15",
+        "tag": "tr",
+        "text": "Print archive (Amazon S3) Edit | Quick View | Copy | Delete…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-16",
+        "tag": "tr",
+        "text": "Studio NAS (MinIO) Edit | Quick View | Copy | Delete S3 Com…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-17",
+        "tag": "tr",
+        "text": "Backblaze offsite Edit | Quick View | Copy | Delete Backbla…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-18",
+        "tag": "tr",
+        "text": "Wasabi cold storage Edit | Quick View | Copy | Delete Wasab…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-19",
+        "tag": "tr",
+        "text": "Cloudflare R2 Edit | Quick View | Copy | Delete Cloudflare …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-20",
+        "tag": "tr",
+        "text": "Vultr object storage Edit | Quick View | Copy | Delete Vult…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-21",
+        "tag": "tr",
+        "text": "DreamObjects Edit | Quick View | Copy | Delete Dream Object…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-22",
+        "tag": "tr",
+        "text": "Spaces (client galleries) Edit | Quick View | Copy | Delete…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-23",
+        "tag": "tr",
+        "text": "Google Cloud Storage (negatives) Edit | Quick View | Copy |…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-24",
+        "tag": "tr",
+        "text": "Studio FTP Edit | Quick View | Copy | Delete FTP FTP connec…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-25",
+        "tag": "tr",
+        "text": "Dana's Google Drive Edit | Quick View | Copy | Delete Googl…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-26",
+        "tag": "tr",
+        "text": "Dana's Dropbox Edit | Quick View | Copy | Delete Dropbox Co…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-27",
+        "tag": "tr",
+        "text": "Studio OneDrive Edit | Quick View | Copy | Delete OneDrive …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-3",
+        "tag": "tr",
+        "text": "Default Edit | Quick View Default Local C:/Users/dana/Local…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-40",
+        "tag": "tr",
+        "text": "Darkroom archive drive Edit | Quick View | Delete Local C:/…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#main-view-5",
+        "tag": "tr",
+        "text": "Duplicator Cloud Edit | Quick View Duplicator Cloud Connect…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#quick-view-15",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Print archive (Amazon S3) Notes: Offsite co…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-16",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Studio NAS (MinIO) Notes: The file server i…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-17",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Backblaze offsite Notes: (no notes) Type: B…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-18",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Wasabi cold storage Notes: (no notes) Type:…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-19",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Cloudflare R2 Notes: (no notes) Type: Cloud…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-20",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Vultr object storage Notes: (no notes) Type…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-21",
+        "tag": "tr",
+        "text": "QUICK VIEWName: DreamObjects Notes: (no notes) Type: Dream …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-22",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Spaces (client galleries) Notes: Client gal…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-23",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Google Cloud Storage (negatives) Notes: Sca…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-24",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Studio FTP Notes: (no notes) Type: FTP Serv…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-25",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Dana's Google Drive Notes: Not connected. T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-26",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Dana's Dropbox Notes: Not connected. Type: …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-27",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Studio OneDrive Notes: Not connected. Type:…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-3",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Default Notes: The default location for sto…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-40",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Darkroom archive drive Notes: Second copy o…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-view-5",
+        "tag": "tr",
+        "text": "QUICK VIEWName: Duplicator Cloud Notes: (no notes) Type: Du…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_duplicator",
+        "tag": "li",
+        "text": "Duplicator Pro Backups Import Backups Staging Schedule Back…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-body-header",
+        "tag": "div",
+        "text": "Storage Add New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-global-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

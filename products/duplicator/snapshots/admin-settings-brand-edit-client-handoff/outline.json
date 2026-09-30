@@ -1,0 +1,547 @@
+{
+  "slug": "admin-settings-brand-edit-client-handoff",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "tooltips-load",
+      "event": "dup:ready",
+      "selector": "body.wp-admin.wp-core-ui",
+      "count": 1
+    },
+    {
+      "label": "help-modal-open",
+      "event": "click",
+      "selector": "a.dup-global-help",
+      "count": 1
+    },
+    {
+      "label": "brand-style-guide",
+      "event": "click",
+      "selector": "div.style-guide-link a.button.secondary",
+      "count": 1
+    },
+    {
+      "label": "brand-logo-preview",
+      "event": "input",
+      "selector": "#brand-logo",
+      "count": 1
+    },
+    {
+      "label": "brand-save-never",
+      "event": "click",
+      "selector": "#dup-save-brand-button",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-save-brand-button",
+        "tag": "button",
+        "text": "Save Brand",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-brand",
+        "tag": "a",
+        "text": "Installer Branding",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-capabilities",
+        "tag": "a",
+        "text": "Access",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-general",
+        "tag": "a",
+        "text": "General",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-import",
+        "tag": "a",
+        "text": "Import",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-migrate",
+        "tag": "a",
+        "text": "Import/Export Settings",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-package",
+        "tag": "a",
+        "text": "Backups",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-schedule",
+        "tag": "a",
+        "text": "Schedules",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-storage",
+        "tag": "a",
+        "text": "Storage",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#insert-media-button",
+        "tag": "button",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#brand-attachments",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#brand-id",
+        "tag": "input",
+        "text": "42",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#brand-logo",
+        "tag": "textarea",
+        "text": "<i class=\"fa fa-images fa-sm\"></i> Client handoff",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#brand-name",
+        "tag": "input",
+        "text": "Client handoff",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#brand-notes",
+        "tag": "textarea",
+        "text": "For wedding clients",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-dlg-1-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_brand-logo_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_brand-logo_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_brand-logo_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_brand-logo_ins",
+        "tag": "input",
+        "text": "ins",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_brand-logo_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_brand-logo_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-action-form-action",
+        "tag": "input",
+        "text": "save-brand",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-messages-section",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-ajax-loader",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-ajax-loader-img-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-meta-screen",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-dlg-1",
+        "tag": "div",
+        "text": "The brandable area allows for a loose set of html and custo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1_message",
+        "tag": "span",
+        "text": "The brandable area allows for a loose set of html and custo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1-alert-txt",
+        "tag": "div",
+        "text": "The brandable area allows for a loose set of html and custo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2",
+        "tag": "div",
+        "text": "WARNING: Brand name cannot be named like Default because it…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2_message",
+        "tag": "span",
+        "text": "WARNING: Brand name cannot be named like Default because it…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-alert-txt",
+        "tag": "div",
+        "text": "WARNING: Brand name cannot be named like Default because it…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3",
+        "tag": "div",
+        "text": "WARNING: Brand logo has a wrong URL.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3_message",
+        "tag": "span",
+        "text": "WARNING: Brand logo has a wrong URL.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-alert-txt",
+        "tag": "div",
+        "text": "WARNING: Brand logo has a wrong URL.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-package-brand-form",
+        "tag": "form",
+        "text": "Name Displayed as the page title of the installer. Notes Lo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate Duplicator ★★★★★ on WordPress.org to help us sp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#preview-logo",
+        "tag": "div",
+        "text": "Client handoff",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_brand-logo_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_duplicator",
+        "tag": "li",
+        "text": "Duplicator Pro Backups Import Backups Staging Schedule Back…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-brand-logo-editor-container",
+        "tag": "div",
+        "text": "<i class=\"fa fa-images fa-sm\"></i> Client handoff",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-brand-logo-editor-tools",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-brand-logo-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-brand-logo-wrap",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-body-header",
+        "tag": "div",
+        "text": "Settings General Backups Installer Branding Schedules Stora…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-global-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

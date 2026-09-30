@@ -1,0 +1,413 @@
+{
+  "slug": "admin-staging",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "help-modal-open",
+      "event": "click",
+      "selector": "a.dup-global-help",
+      "count": 1
+    },
+    {
+      "label": "box-toggle",
+      "event": "click",
+      "selector": "div.dup-box-title.no-toggle",
+      "count": 1
+    },
+    {
+      "label": "backups-select-all",
+      "event": "click",
+      "selector": "#dup-chk-all",
+      "count": 1
+    },
+    {
+      "label": "get-form-submit",
+      "event": "submit",
+      "selector": "#dupli-staging-create-form",
+      "count": 1
+    },
+    {
+      "label": "staging-create-modal",
+      "event": "click",
+      "selector": ".button.primary",
+      "count": 2
+    },
+    {
+      "label": "staging-bulk-apply",
+      "event": "click",
+      "selector": "#dupli-staging-bulk-apply",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-staging-cancel-btn",
+        "tag": "button",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": true,
+        "wired": "get-form-submit",
+        "wiredEvent": "submit"
+      },
+      {
+        "sel": "#dupli-staging-create-btn",
+        "tag": "button",
+        "text": "Create Staging Site",
+        "count": 1,
+        "hidden": true,
+        "wired": "get-form-submit",
+        "wiredEvent": "submit"
+      },
+      {
+        "sel": "#dupli-staging-create-new-btn",
+        "tag": "button",
+        "text": "Add New",
+        "count": 1,
+        "hidden": false,
+        "wired": "staging-create-modal",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".dupli-staging-open-modal-btn",
+        "tag": "button",
+        "text": "Create Your First Staging Site",
+        "count": 1,
+        "hidden": false,
+        "wired": "staging-create-modal",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#dup-chk-all",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-dlg-1-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-cancel",
+        "tag": "input",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-staging-backup-select",
+        "tag": "select",
+        "text": "-- Select a backup -- [1:34 pm] 20260919_danasdarkroom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-staging-bulk-actions",
+        "tag": "select",
+        "text": "Bulk Actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-staging-bulk-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-staging-color-scheme",
+        "tag": "select",
+        "text": "Modern Fresh Light Blue Midnight Sunrise Ectoplasm Ocean Co…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-staging-title",
+        "tag": "input",
+        "text": "Staging - September 30, 2026",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#dupli-staging-create-modal-content",
+        "tag": "div",
+        "text": "Create New Staging Site Source Backup -- Select a backup --…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-box-panel",
+        "tag": "div",
+        "text": "Source Backup -- Select a backup -- [1:34 pm] 20260919_dana…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-messages-section",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dupli-staging-create-modal",
+        "tag": "div",
+        "text": "Create New Staging Site Source Backup -- Select a backup --…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-ajax-loader",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-ajax-loader-img-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-meta-screen",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-dlg-1",
+        "tag": "div",
+        "text": "Please select an action from the \"Bulk Actions\" drop down m…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1_message",
+        "tag": "span",
+        "text": "Please select an action from the \"Bulk Actions\" drop down m…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1-alert-txt",
+        "tag": "div",
+        "text": "Please select an action from the \"Bulk Actions\" drop down m…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2",
+        "tag": "div",
+        "text": "Please select at least one staging site to delete!",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2_message",
+        "tag": "span",
+        "text": "Please select at least one staging site to delete!",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-alert-txt",
+        "tag": "div",
+        "text": "Please select at least one staging site to delete!",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3",
+        "tag": "div",
+        "text": "Removing Staging Sites, Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3_message",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-confirm-txt",
+        "tag": "div",
+        "text": "Removing Staging Sites, Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-progress",
+        "tag": "div",
+        "text": "Removing Staging Sites, Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-staging-create-form",
+        "tag": "form",
+        "text": "Source Backup -- Select a backup -- [1:34 pm] 20260919_dana…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-staging-form",
+        "tag": "form",
+        "text": "Name Status Source Backup Details Created No staging sites …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-staging-validation-result",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate Duplicator ★★★★★ on WordPress.org to help us sp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_duplicator",
+        "tag": "li",
+        "text": "Duplicator Pro Backups Import Backups Staging Schedule Back…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-body-header",
+        "tag": "div",
+        "text": "Staging Sites Add New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-global-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dupli-staging-form-actions",
+        "tag": "div",
+        "text": "Cancel Create Staging Site",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,637 @@
+{
+  "slug": "admin-backups-transfer-db-0929",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "help-modal-open",
+      "event": "click",
+      "selector": "a.dup-global-help",
+      "count": 1
+    },
+    {
+      "label": "box-toggle",
+      "event": "click",
+      "selector": "div.dup-box-title",
+      "count": 1
+    },
+    {
+      "label": "transfer-overview-toggle",
+      "event": "click",
+      "selector": "#dup-trans-ovr",
+      "count": 1
+    },
+    {
+      "label": "transfer-start",
+      "event": "click",
+      "selector": "#dupli-transfer-btn",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-detail",
+        "tag": "a",
+        "text": "Details",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-list",
+        "tag": "a",
+        "text": "Backups",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-transfer",
+        "tag": "a",
+        "text": "Transfer",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-trans-ovr",
+        "tag": "button",
+        "text": "Details",
+        "count": 1,
+        "hidden": false,
+        "wired": "transfer-overview-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#dupli-stop-transfer-btn",
+        "tag": "button",
+        "text": "Stop Transfer",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-transfer-btn",
+        "tag": "button",
+        "text": "Start Transfer",
+        "count": 1,
+        "hidden": false,
+        "wired": "transfer-start",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".dup-box-arrow",
+        "tag": "button",
+        "text": "Toggle panel: Transfer Log",
+        "count": 1,
+        "hidden": false,
+        "wired": "box-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".dup-storage-cloud-cta",
+        "tag": "a",
+        "text": "Explore plans and features",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#dup-chkbox-15",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chkbox-16",
+        "tag": "input",
+        "text": "16",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chkbox-17",
+        "tag": "input",
+        "text": "17",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chkbox-18",
+        "tag": "input",
+        "text": "18",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chkbox-19",
+        "tag": "input",
+        "text": "19",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chkbox-20",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chkbox-21",
+        "tag": "input",
+        "text": "21",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chkbox-22",
+        "tag": "input",
+        "text": "22",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chkbox-23",
+        "tag": "input",
+        "text": "23",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chkbox-24",
+        "tag": "input",
+        "text": "24",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chkbox-25",
+        "tag": "input",
+        "text": "25",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chkbox-26",
+        "tag": "input",
+        "text": "26",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chkbox-27",
+        "tag": "input",
+        "text": "27",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chkbox-40",
+        "tag": "input",
+        "text": "40",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chkbox-5",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-dlg-1-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-7-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#location-quick",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#location-storage",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#dup-transfer-transfer-log",
+        "tag": "div",
+        "text": "StartedStoppedStatusTypeDescription- No transactions found …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-messages-section",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-ajax-loader",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-ajax-loader-img-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-meta-screen",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-pack-details-trans-log-count",
+        "tag": "td",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1",
+        "tag": "div",
+        "text": "No Backup in default location so transfer is disabled.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1_message",
+        "tag": "span",
+        "text": "No Backup in default location so transfer is disabled.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1-alert-txt",
+        "tag": "div",
+        "text": "No Backup in default location so transfer is disabled.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2",
+        "tag": "div",
+        "text": "At least one storage location must be selected.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2_message",
+        "tag": "span",
+        "text": "At least one storage location must be selected.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-alert-txt",
+        "tag": "div",
+        "text": "At least one storage location must be selected.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3",
+        "tag": "div",
+        "text": "Transfer failure when calling duplicator_manual_transfer_st…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3_message",
+        "tag": "span",
+        "text": "Transfer failure when calling duplicator_manual_transfer_st…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-alert-txt",
+        "tag": "div",
+        "text": "Transfer failure when calling duplicator_manual_transfer_st…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4",
+        "tag": "div",
+        "text": "Failed to stop build",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4_message",
+        "tag": "span",
+        "text": "Failed to stop build",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4-alert-txt",
+        "tag": "div",
+        "text": "Failed to stop build",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5",
+        "tag": "div",
+        "text": "Failed to stop build due to AJAX error.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5_message",
+        "tag": "span",
+        "text": "Failed to stop build due to AJAX error.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5-alert-txt",
+        "tag": "div",
+        "text": "Failed to stop build due to AJAX error.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6_message",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6-alert-txt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-7",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-7_message",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-7-alert-txt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-progress-bar-area",
+        "tag": "div",
+        "text": "Stop Transfer",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-progress-bar-percent",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-progress-bar-percent-help",
+        "tag": "div",
+        "text": "Full Backup percentage shown on Backups screen",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-progress-bar-text",
+        "tag": "div",
+        "text": "Processing",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate Duplicator ★★★★★ on WordPress.org to help us sp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#location-storage-opts",
+        "tag": "div",
+        "text": "Name Type Location Darkroom archive drive Local C:/Users/da…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#step1-ovr",
+        "tag": "div",
+        "text": "File Overview These files will be transferred to the select…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#step2-section",
+        "tag": "div",
+        "text": "Step 1: Choose Location Name Type Location Darkroom archive…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#step3-section",
+        "tag": "div",
+        "text": "Step 2: Transfer Files Start Transfer",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#storage_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_duplicator",
+        "tag": "li",
+        "text": "Duplicator Pro Backups Import Backups Staging Schedule Back…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-body-header",
+        "tag": "div",
+        "text": "Backup: 20260929_danasdarkroom_db Backups Details Transfer",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-global-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dupli-progress-bar-container",
+        "tag": "div",
+        "text": "Stop Transfer",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

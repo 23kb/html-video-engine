@@ -1,0 +1,2051 @@
+{
+  "slug": "admin-storage-new--google-drive",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "tooltips-load",
+      "event": "dup:ready",
+      "selector": "body.wp-admin.wp-core-ui",
+      "count": 1
+    },
+    {
+      "label": "help-modal-open",
+      "event": "click",
+      "selector": "a.dup-global-help",
+      "count": 1
+    },
+    {
+      "label": "storage-copy-never",
+      "event": "click",
+      "selector": "#dup-copy-storage-btn",
+      "count": 1
+    },
+    {
+      "label": "storage-type-toggle",
+      "event": "click",
+      "selector": "#dup-storage-toggle",
+      "count": 1
+    },
+    {
+      "label": "storage-type-card",
+      "event": "click",
+      "selector": ".dup-storage-card[data-storage-disabled][data-storage-name]",
+      "count": 15
+    },
+    {
+      "label": "storage-type-select",
+      "event": "change",
+      "selector": "#change-mode",
+      "count": 1
+    },
+    {
+      "label": "s3-region-autofill",
+      "event": "change",
+      "selector": "#s3_endpoint_9",
+      "count": 10
+    },
+    {
+      "label": "local-filter-protection",
+      "event": "change",
+      "selector": "#_local_filter_protection",
+      "count": 1
+    },
+    {
+      "label": "dupcloud-token-field",
+      "event": "click",
+      "selector": "#dupli-dupcloud-connect-btn",
+      "count": 1
+    },
+    {
+      "label": "storage-remote-never",
+      "event": "click",
+      "selector": "#auth-redirect",
+      "count": 8
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#auth-redirect",
+        "tag": "button",
+        "text": "Authorize Dropbox",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#button_file_test",
+        "tag": "button",
+        "text": "Test Storage",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#button_save_provider",
+        "tag": "button",
+        "text": "Save Provider",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dropbox-finalize-setup",
+        "tag": "button",
+        "text": "Finalize Setup",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-storage-toggle",
+        "tag": "button",
+        "text": "Select",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupcloud-finalize-setup",
+        "tag": "button",
+        "text": "Finalize Setup",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupli-dropbox-connect-btn",
+        "tag": "button",
+        "text": "Connect to Dropbox",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupli-dupcloud-connect-btn",
+        "tag": "button",
+        "text": "Connect Duplicator Cloud Token",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupli-dupcloud-learn-more",
+        "tag": "a",
+        "text": "Explore plans and features",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupli-dupcloud-license-connect-btn",
+        "tag": "button",
+        "text": "Connect via Duplicator Pro License",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupli-gdrive-connect-btn",
+        "tag": "button",
+        "text": "Connect to Google Drive",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupli-onedrive-msgraph-auth-btn",
+        "tag": "button",
+        "text": "Authorize OneDrive",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupli-onedrive-msgraph-connect-btn",
+        "tag": "button",
+        "text": "Connect to OneDrive",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#gdrive-auth-window-button",
+        "tag": "button",
+        "text": "Authorize Google Drive",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#gdrive-finalize-setup",
+        "tag": "button",
+        "text": "Finalize Setup",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#onedrive-msgraph-finalize-setup",
+        "tag": "button",
+        "text": "Finalize Setup",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider--2",
+        "tag": "table",
+        "text": "LocationC:/Users/dana/Local Sites/danas-darkroom/app/public…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-0",
+        "tag": "table",
+        "text": "Storage Folder Filter Protection Filter the Storage Folder …",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-1",
+        "tag": "table",
+        "text": "Authorization Connect to Dropbox Getting Dropbox request to…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-10",
+        "tag": "table",
+        "text": "S3 Setup Guide: Step-by-Step and User Bucket Policy. Docume…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-11",
+        "tag": "table",
+        "text": "S3 Setup Guide: Step-by-Step and User Bucket Policy. Docume…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-12",
+        "tag": "table",
+        "text": "S3 Setup Guide: Step-by-Step and User Bucket Policy. Docume…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-13",
+        "tag": "table",
+        "text": "S3 Setup Guide: Step-by-Step and User Bucket Policy. Docume…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-14",
+        "tag": "table",
+        "text": "S3 Setup Guide: Step-by-Step and User Bucket Policy. Docume…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-16",
+        "tag": "table",
+        "text": "S3 Setup Guide: Step-by-Step and User Bucket Policy. Docume…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-17",
+        "tag": "table",
+        "text": "AuthorizationNew to Duplicator Cloud? Explore plans and fea…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-2",
+        "tag": "table",
+        "text": "CredentialsServer Port UsernamePasswordRetype PasswordSetti…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-3",
+        "tag": "table",
+        "text": "Authorization Connect to Google Drive Storage Folder //Goog…",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-4",
+        "tag": "table",
+        "text": "Amazon S3 Setup Guide: Step-by-Step and User Bucket Policy.…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-5",
+        "tag": "table",
+        "text": "CredentialsServer Port UsernamePrivate Key FileOptional: Pr…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-7",
+        "tag": "table",
+        "text": "Authorization Are you using a business account? By default,…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-8",
+        "tag": "table",
+        "text": "S3 Setup Guide: Step-by-Step and User Bucket Policy. Docume…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#provider-9",
+        "tag": "table",
+        "text": "S3 Setup Guide: Step-by-Step and User Bucket Policy. Docume…",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_dropbox_storage_folder",
+        "tag": "input",
+        "text": "danasdarkroom.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_ftp_passive_mode",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_ftp_ssl",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_ftp_storage_folder",
+        "tag": "input",
+        "text": "danasdarkroom.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_ftp_use_curl_0",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_ftp_use_curl_1",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_gdrive_storage_folder",
+        "tag": "input",
+        "text": "danasdarkroom.com",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#_local_filter_protection",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_local_storage_folder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_onedrive_msgraph_storage_folder",
+        "tag": "input",
+        "text": "danasdarkroom.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_s3_storage_folder_10",
+        "tag": "input",
+        "text": "danasdarkroom.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_s3_storage_folder_11",
+        "tag": "input",
+        "text": "danasdarkroom.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_s3_storage_folder_12",
+        "tag": "input",
+        "text": "danasdarkroom.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_s3_storage_folder_13",
+        "tag": "input",
+        "text": "danasdarkroom.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_s3_storage_folder_14",
+        "tag": "input",
+        "text": "danasdarkroom.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_s3_storage_folder_16",
+        "tag": "input",
+        "text": "danasdarkroom.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_s3_storage_folder_8",
+        "tag": "input",
+        "text": "danasdarkroom.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_s3_storage_folder_9",
+        "tag": "input",
+        "text": "danasdarkroom.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_s3_storage_folder_amazon",
+        "tag": "input",
+        "text": "danasdarkroom.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_sftp_storage_folder",
+        "tag": "input",
+        "text": "danasdarkroom.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#change-mode",
+        "tag": "select",
+        "text": "Local Google Drive Dropbox OneDrive Amazon S3 S3 Compatible…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dropbox_max_files",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dropbox-auth-code",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-copy-source-id-select",
+        "tag": "select",
+        "text": "Copy From Dana's Google Drive [Google Drive] Dana's Dropbox…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-copy-storage-btn",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupcloud_max_files",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupcloud-compound-token",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6_textarea",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-7-cancel",
+        "tag": "input",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-7-confirm",
+        "tag": "input",
+        "text": "Continue",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ftp_max_files",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ftp_password",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ftp_password2",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ftp_port",
+        "tag": "input",
+        "text": "21",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ftp_server",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ftp_timeout",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ftp_username",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gdrive_max_files",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#gdrive-auth-code",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#local_max_files",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#max_default_store_files",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#name",
+        "tag": "input",
+        "text": "New Storage",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#notes",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#onedrive_msgraph_all_folders_read_write_perm",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#onedrive_msgraph_max_files",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#onedrive-msgraph-auth-code",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_10",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_11",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_12",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_13",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_14",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_16",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_8",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_9",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_amazon",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_ACL_full_control_10",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_ACL_full_control_12",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_ACL_full_control_16",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_ACL_full_control_8",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_bucket_10",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_bucket_11",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_bucket_12",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_bucket_13",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_bucket_14",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_bucket_16",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_bucket_8",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_bucket_9",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_bucket_amazon",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_endpoint_10",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_endpoint_11",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_endpoint_12",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_endpoint_13",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_endpoint_14",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_endpoint_16",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_endpoint_8",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_endpoint_9",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_10",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_11",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_12",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_13",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_14",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_16",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_8",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_9",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_amazon",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_region_10",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_region_11",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_region_12",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_region_13",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_region_14",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_region_16",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_region_8",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_region_9",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_region_amazon",
+        "tag": "select",
+        "text": "US East (N. Virginia) - 'us-east-1' US East (Ohio) - 'us-ea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_10",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_11",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_12",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_13",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_14",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_16",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_8",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_9",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_amazon",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_storage_class_10",
+        "tag": "select",
+        "text": "Standard",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_storage_class_11",
+        "tag": "select",
+        "text": "Standard",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_storage_class_12",
+        "tag": "select",
+        "text": "Standard",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_storage_class_13",
+        "tag": "select",
+        "text": "Standard",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_storage_class_14",
+        "tag": "select",
+        "text": "Standard",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_storage_class_16",
+        "tag": "select",
+        "text": "Standard",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_storage_class_8",
+        "tag": "select",
+        "text": "Standard",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_storage_class_9",
+        "tag": "select",
+        "text": "Standard",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_storage_class_amazon",
+        "tag": "select",
+        "text": "Reduced Redundancy Standard Standard IA",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_max_files",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_password",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_password2",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_port",
+        "tag": "input",
+        "text": "22",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_private_key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_private_key_file",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_server",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_timeout",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_username",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#storage_id",
+        "tag": "input",
+        "text": "-1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-action-form-action",
+        "tag": "input",
+        "text": "save",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".dup-messages-section",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#_local_filter_protection_message",
+        "tag": "div",
+        "text": "Unchecking filter protection is not recommended. This setti…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_local_storage_folder_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dropbox_max_files_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dropbox-auth-code-area",
+        "tag": "div",
+        "text": "Step 2: Paste code from Dropbox authorization page.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-ajax-loader",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-ajax-loader-img-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-all-onedrive-allperms-wrapper",
+        "tag": "div",
+        "text": "Are you using a business account? By default, we only reque…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-meta-screen",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-storage-current",
+        "tag": "span",
+        "text": "Google Drive",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-storage-form",
+        "tag": "form",
+        "text": "Copy storage action Copy From Dana's Google Drive [Google D…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-storage-grid",
+        "tag": "div",
+        "text": "Local Google Drive Dropbox OneDrive Amazon S3 S3 Compatible…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-storage-type-selector",
+        "tag": "div",
+        "text": "Google Drive Select Local Google Drive Dropbox OneDrive Ama…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupcloud_max_files_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupcloud-state-unauthorized",
+        "tag": "div",
+        "text": "New to Duplicator Cloud? Explore plans and features Already…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1_message",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1-alert-txt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2_message",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-alert-txt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3_message",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-alert-txt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4_message",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4-alert-txt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5",
+        "tag": "div",
+        "text": "testings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5_message",
+        "tag": "span",
+        "text": "testings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5-alert-txt",
+        "tag": "div",
+        "text": "testings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6",
+        "tag": "div",
+        "text": "Status",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6_message",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6-alert-txt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-7",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-7_message",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-7-confirm-txt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dupcloud-token-area",
+        "tag": "div",
+        "text": "Step 1: Get your authentication token from Duplicator.com G…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-gdrive-connect-btn-area",
+        "tag": "div",
+        "text": "Connect to Google Drive",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-gdrive-connect-progress",
+        "tag": "div",
+        "text": "Getting Google Drive Request Token...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-gdrive-steps",
+        "tag": "div",
+        "text": "Step 1: Duplicator needs to authorize Google Drive. Make su…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate Duplicator ★★★★★ on WordPress.org to help us sp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ftp_max_files_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ftp_password_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ftp_password2_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ftp_server_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ftp_timeout_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ftp_username_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gdrive_max_files_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#gdrive-state-unauthorized",
+        "tag": "div",
+        "text": "Connect to Google Drive",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#local_max_files_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#max_default_store_files_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#name_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#onedrive_msgraph_max_files_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#onedrive_msgraph_storage_folder_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#onedrive-msgraph-state-authorized",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#onedrive-msgraph-state-unauthorized",
+        "tag": "div",
+        "text": "Are you using a business account? By default, we only reque…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_10_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_11_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_12_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_13_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_14_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_16_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_8_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_9_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_access_key_amazon_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_bucket_amazon_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_10_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_11_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_12_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_13_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_14_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_16_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_8_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_9_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_max_files_amazon_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_10_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_11_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_12_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_13_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_14_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_16_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_8_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_9_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s3_secret_key_amazon_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_max_files_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_password_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_password2_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_private_key_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_server_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_timeout_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sftp_username_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#state-authorized",
+        "tag": "div",
+        "text": "Cancel Authorization Disassociates the storage provider fro…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#state-unauthorized",
+        "tag": "div",
+        "text": "Connect to Dropbox",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#state-waiting-for-access-token",
+        "tag": "div",
+        "text": "Performing final authorization...Please wait",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#state-waiting-for-auth-button-click",
+        "tag": "div",
+        "text": "Step 1: Duplicator needs to authorize at the Dropbox.com we…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#state-waiting-for-request-token",
+        "tag": "div",
+        "text": "Getting Dropbox request token...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_duplicator",
+        "tag": "li",
+        "text": "Duplicator Pro Backups Import Backups Staging Schedule Back…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-body-header",
+        "tag": "div",
+        "text": "Storage",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-global-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

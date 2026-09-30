@@ -1,0 +1,830 @@
+{
+  "slug": "admin-tools-templates-edit-db-only",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "help-modal-open",
+      "event": "click",
+      "selector": "a.dup-global-help",
+      "count": 1
+    },
+    {
+      "label": "box-toggle",
+      "event": "click",
+      "selector": "div.dup-box.dup-archive-filters-wrapper div.dup-box-title",
+      "count": 2
+    },
+    {
+      "label": "password-eye-toggle",
+      "event": "click",
+      "selector": "span.dup-password-toggle.width-xlarge button",
+      "count": 1
+    },
+    {
+      "label": "pseudo-checkbox",
+      "event": "click",
+      "selector": ".table-item[data-tooltip]",
+      "count": 85
+    },
+    {
+      "label": "dupli-tabs-switch",
+      "event": "click",
+      "selector": "#dupli-bsc-tab-lbl",
+      "count": 2
+    },
+    {
+      "label": "installer-use-current",
+      "event": "click",
+      "selector": "div.dup-package-hdr-usecurrent a",
+      "count": 2
+    },
+    {
+      "label": "installer-password-mode",
+      "event": "click",
+      "selector": ".dupli-security-mode-radio[data-parsley-multiple][data-snap-baked]",
+      "count": 3
+    },
+    {
+      "label": "name-format-tag",
+      "event": "change",
+      "selector": "select.dup-format-name-tags.width-medium",
+      "count": 1
+    },
+    {
+      "label": "file-filters-toggle",
+      "event": "change",
+      "selector": "#files-filter-on",
+      "count": 1
+    },
+    {
+      "label": "filter-preset-links",
+      "event": "click",
+      "selector": "small.filter-links.margin-bottom-1 a",
+      "count": 8
+    },
+    {
+      "label": "components-shortcut",
+      "event": "change",
+      "selector": ".dup-components-shortcut-radio[data-parsley-multiple][data-snap-baked]",
+      "count": 4
+    },
+    {
+      "label": "components-checkbox",
+      "event": "change",
+      "selector": ".dup-components-checkbox[data-parsley-multiple]",
+      "count": 8
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#brand-preview",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clear-extension-filters",
+        "tag": "a",
+        "text": "(clear)",
+        "count": 1,
+        "hidden": true,
+        "wired": "filter-preset-links",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#clear-path-filters",
+        "tag": "a",
+        "text": "(clear)",
+        "count": 1,
+        "hidden": true,
+        "wired": "filter-preset-links",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-tools-ai",
+        "tag": "a",
+        "text": "AI",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-tools-auto-tune",
+        "tag": "a",
+        "text": "AutoTune",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-tools-general",
+        "tag": "a",
+        "text": "General",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-tools-logs",
+        "tag": "a",
+        "text": "Duplicator Logs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-tools-php-logs",
+        "tag": "a",
+        "text": "PHP Logs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-tools-recovery",
+        "tag": "a",
+        "text": "Recovery",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-tools-server-info",
+        "tag": "a",
+        "text": "Server Info",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-tools-templates",
+        "tag": "a",
+        "text": "Templates",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-box-arrow",
+        "tag": "button",
+        "text": "Toggle panel: Backup Filters",
+        "count": 2,
+        "hidden": false,
+        "wired": "box-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".dup-goto-templates-btn",
+        "tag": "a",
+        "text": "Templates",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-password-toggle",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-save-template-btn",
+        "tag": "button",
+        "text": "Save Template",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#dup-db-tables-exclude",
+        "tag": "div",
+        "text": "wp_actionscheduler_actions wp_actionscheduler_claims wp_act…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-db-tables-exclude-wrapper",
+        "tag": "div",
+        "text": "wp_actionscheduler_actions wp_actionscheduler_claims wp_act…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-bsc-tab-lbl",
+        "tag": "li",
+        "text": "Toggle Tab: Basic",
+        "count": 1,
+        "hidden": true,
+        "wired": "dupli-tabs-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#dupli-cpnl-tab-lbl",
+        "tag": "li",
+        "text": "Toggle Tab: cPanel",
+        "count": 1,
+        "hidden": true,
+        "wired": "dupli-tabs-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".dupli-package-setup-section",
+        "tag": "div",
+        "text": "Presets: Full Site Database Only Media Only Custom Componen…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dupli-security-section",
+        "tag": "div",
+        "text": "Caution: Passwords are case-sensitive and cannot be recover…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#brand",
+        "tag": "select",
+        "text": "Default Dana's Darkroom Client handoff",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cpnl-dbaction",
+        "tag": "select",
+        "text": "Default Create A New Database Connect and Delete Any Existi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cpnl-dbhost",
+        "tag": "input",
+        "text": "example: localhost (value is optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cpnl-dbname",
+        "tag": "input",
+        "text": "example: DatabaseName (value is optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cpnl-dbuser",
+        "tag": "input",
+        "text": "example: DatabaseUserName (value is optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cpnl-enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cpnl-host",
+        "tag": "input",
+        "text": "example: cpanelHost (value is optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cpnl-user",
+        "tag": "input",
+        "text": "example: cpanelUser (value is optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#db-prefix-filter",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dbfilter-on",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dbhost",
+        "tag": "input",
+        "text": "example: localhost (value is optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dbname",
+        "tag": "input",
+        "text": "example: DatabaseName (value is optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dbuser",
+        "tag": "input",
+        "text": "example: DatabaseUser (value is optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-component-shortcut-action-all",
+        "tag": "input",
+        "text": "all",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-component-shortcut-action-custom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-component-shortcut-action-database",
+        "tag": "input",
+        "text": "database",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-component-shortcut-action-media",
+        "tag": "input",
+        "text": "media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-db-tables-lists",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-source-template-id",
+        "tag": "select",
+        "text": "Copy From Active Build Settings Default Lightweight snapsho…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#files-filter-on",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#filter-exts",
+        "tag": "textarea",
+        "text": "ext1;ext2;ext3;",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#filter-paths",
+        "tag": "textarea",
+        "text": "/full_path/dir/; /full_path/file;",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#package_component_core",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#package_component_db",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#package_component_other",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#package_component_plugins",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#package_component_plugins_active",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#package_component_themes",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#package_component_themes_active",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#package_component_uploads",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#package-name-format",
+        "tag": "input",
+        "text": "%year%%month%%day%_danasdarkroom_db",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#package-notes",
+        "tag": "textarea",
+        "text": "Nightly database copy without the entry and email logs.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#secure-on-arc-encrypt",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#secure-on-inst-pwd",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#secure-on-none",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#secure-pass",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#template-name",
+        "tag": "input",
+        "text": "Database only",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-action-form-action",
+        "tag": "input",
+        "text": "copy-template",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-format-name-tags",
+        "tag": "select",
+        "text": "Dynamic Tags %year% %month% %day% %hour% %minute% %second% …",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#dup-notes-area",
+        "tag": "div",
+        "text": "Notes Optional notes stored with this Backup.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-pack-archive-panel",
+        "tag": "div",
+        "text": "Presets: Full Site Database Only Media Only Custom Componen…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-pack-installer-panel",
+        "tag": "div",
+        "text": "Installer Header Branding Default Dana's Darkroom Client ha…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#s1-installer-dbcpanel",
+        "tag": "div",
+        "text": "Action: Default Create A New Database Connect and Delete An…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-box-panel",
+        "tag": "div",
+        "text": "Template Name: Backup Name Format: Dynamic Tags %year% %mon…",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-messages-section",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#components_error_container",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dball",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dbnone",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-ajax-loader",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-ajax-loader-img-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-archive-db-only-icon",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-archive-filter-db-icon",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-archive-filter-file-icon",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-archive-media-only-icon",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-db-filter-items",
+        "tag": "div",
+        "text": "wp_actionscheduler_actions wp_actionscheduler_claims wp_act…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-meta-screen",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-dlg-1",
+        "tag": "div",
+        "text": "You can't exclude all sites!",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1_message",
+        "tag": "span",
+        "text": "You can't exclude all sites!",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1-alert-txt",
+        "tag": "div",
+        "text": "You can't exclude all sites!",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-install-secure-lock-icon",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-recovery-status-icon",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-template-form",
+        "tag": "form",
+        "text": "General Template Name: Backup Name Format: Dynamic Tags %ye…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-template-toolbar-form",
+        "tag": "form",
+        "text": "Copy Template action Copy From Active Build Settings Defaul…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate Duplicator ★★★★★ on WordPress.org to help us sp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#s1-installer-dbbasic",
+        "tag": "div",
+        "text": "Host: Database: User:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#secure-on-parsely-error",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#template_name_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#template_package_name_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_duplicator",
+        "tag": "li",
+        "text": "Duplicator Pro Backups Import Backups Staging Schedule Back…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-body-header",
+        "tag": "div",
+        "text": "Tools General AutoTune Server Info Duplicator Logs PHP Logs…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-global-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

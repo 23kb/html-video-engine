@@ -1,0 +1,1151 @@
+{
+  "slug": "admin-backups",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "tooltips-load",
+      "event": "dup:ready",
+      "selector": "body.wp-admin.wp-core-ui",
+      "count": 1
+    },
+    {
+      "label": "help-modal-open",
+      "event": "click",
+      "selector": "a.dup-global-help",
+      "count": 1
+    },
+    {
+      "label": "backup-row-toggle",
+      "event": "click",
+      "selector": ".dup-cell-btns.dup-cell-toggle-btn",
+      "count": 10
+    },
+    {
+      "label": "backup-rows-toggle-all",
+      "event": "click",
+      "selector": "#dup-header-chkall",
+      "count": 1
+    },
+    {
+      "label": "download-menu-toggle",
+      "event": "click",
+      "selector": ".can-enabled.dup-dnload-btn[data-tooltip]",
+      "count": 10
+    },
+    {
+      "label": "backup-environment-dialog",
+      "event": "click",
+      "selector": ".dupli-backup-environment-open.link-style[data-dialog-id]",
+      "count": 10
+    },
+    {
+      "label": "backups-select-all",
+      "event": "click",
+      "selector": "#dup-chk-all",
+      "count": 1
+    },
+    {
+      "label": "backups-bulk-apply",
+      "event": "click",
+      "selector": "#dup-pack-bulk-apply",
+      "count": 1
+    },
+    {
+      "label": "backup-row-delete-confirm",
+      "event": "click",
+      "selector": ".alert.button",
+      "count": 10
+    },
+    {
+      "label": "backup-row-transfer",
+      "event": "click",
+      "selector": ".button.dup-transfer",
+      "count": 10
+    },
+    {
+      "label": "backup-row-storages",
+      "event": "click",
+      "selector": ".button.dupli-row-storages-btn",
+      "count": 10
+    },
+    {
+      "label": "backup-restore-never",
+      "event": "click",
+      "selector": ".can-enabled.dup-restore-backup[data-needs-download][data-package-id]",
+      "count": 10
+    },
+    {
+      "label": "plugin-writes-never",
+      "event": "click",
+      "selector": "button.dup-dnload-both.dupli-menu-x",
+      "count": 50
+    },
+    {
+      "label": "in-page-anchor",
+      "event": "click",
+      "selector": "a.screen-reader-shortcut",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#btn-logs-dialog",
+        "tag": "a",
+        "text": "",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-dupcloud-manage-website",
+        "tag": "a",
+        "text": "Cloud Dashboard",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupli-backups-autotune-link",
+        "tag": "a",
+        "text": "AutoTune",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupli-create-new",
+        "tag": "a",
+        "text": "Add New",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": ".dup-cell-toggle-btn",
+        "tag": "td",
+        "text": "",
+        "count": 10,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": ".dup-details",
+        "tag": "a",
+        "text": "View Details",
+        "count": 10,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": ".dup-dnload-archive",
+        "tag": "button",
+        "text": "Archive (daf)",
+        "count": 10,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": ".dup-dnload-both",
+        "tag": "button",
+        "text": "Both Files",
+        "count": 10,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": ".dup-dnload-btn",
+        "tag": "button",
+        "text": "Download",
+        "count": 10,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": ".dup-dnload-installer",
+        "tag": "button",
+        "text": "Installer",
+        "count": 10,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": ".dup-restore-backup",
+        "tag": "button",
+        "text": "Restore",
+        "count": 10,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": ".dup-transfer",
+        "tag": "button",
+        "text": "Transfer Backup",
+        "count": 10,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": ".dupli-backup-environment-open",
+        "tag": "button",
+        "text": "65 View active theme and plugins",
+        "count": 10,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": ".dupli-backup-name-link",
+        "tag": "a",
+        "text": "20260930_danasdarkroom",
+        "count": 10,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": ".dupli-btn-open-recovery-box",
+        "tag": "button",
+        "text": "Disaster Recovery",
+        "count": 10,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": ".dupli-delete-backup",
+        "tag": "button",
+        "text": "Delete",
+        "count": 10,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": ".dupli-row-storages-btn",
+        "tag": "button",
+        "text": "Storages",
+        "count": 10,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-chk-all",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-pack-bulk-actions",
+        "tag": "select",
+        "text": "Bulk Actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-pack-bulk-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-age-hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-created-hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-10-cancel",
+        "tag": "input",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-10-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4-cancel",
+        "tag": "input",
+        "text": "No",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4-confirm",
+        "tag": "input",
+        "text": "Yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-7-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-8-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-9-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-note-hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-per-page",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-size-hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "572983cd5b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#stop-backup-id",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-action-form-action",
+        "tag": "input",
+        "text": "stop_package_build",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".dup-messages-section",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dupli-row-ovr-section",
+        "tag": "section",
+        "text": "EnvironmentWordPress7.1.2Duplicator5.0.4 Active Theme Divi …",
+        "count": 30,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Note Size Created Age Pagination Backups Per Page C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-ajax-loader",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-ajax-loader-img-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-header-chkall",
+        "tag": "th",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-meta-screen",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-remote-package-download-wrapper",
+        "tag": "div",
+        "text": "No download is currently in progress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-row-pack-id-12",
+        "tag": "tr",
+        "text": "20260929_danasdarkroom_db 4.7MB 2026-09-29 02:00 Download R…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-row-pack-id-12-details",
+        "tag": "tr",
+        "text": "Backup Overview View Details Transfer Backup Storages Disas…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-row-pack-id-13",
+        "tag": "tr",
+        "text": "20260929_danasdarkroom 30.97MB 2026-09-29 10:12 Download Re…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-row-pack-id-13-details",
+        "tag": "tr",
+        "text": "Backup Overview View Details Transfer Backup Storages Disas…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-row-pack-id-14",
+        "tag": "tr",
+        "text": "20260930_danasdarkroom_db 4.72MB 2026-09-30 00:58 Download …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-row-pack-id-14-details",
+        "tag": "tr",
+        "text": "Backup Overview View Details Transfer Backup Storages Disas…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-row-pack-id-15",
+        "tag": "tr",
+        "text": "20260930_danasdarkroom 30.98MB 2026-09-30 01:22 Download Re…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-row-pack-id-15-details",
+        "tag": "tr",
+        "text": "Backup Overview View Details Transfer Backup Storages Disas…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-row-pack-id-3",
+        "tag": "tr",
+        "text": "20260920_danasdarkroom 30.75MB 2026-09-20 10:42 Download Re…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-row-pack-id-3-details",
+        "tag": "tr",
+        "text": "Backup Overview View Details Transfer Backup Storages Disas…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-row-pack-id-5",
+        "tag": "tr",
+        "text": "20260921_danasdarkroom_db 4.67MB 2026-09-21 02:00 Download …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-row-pack-id-5-details",
+        "tag": "tr",
+        "text": "Backup Overview View Details Transfer Backup Storages Disas…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-row-pack-id-6",
+        "tag": "tr",
+        "text": "20260923_danasdarkroom 30.93MB 2026-09-23 16:05 Download Re…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-row-pack-id-6-details",
+        "tag": "tr",
+        "text": "Backup Overview View Details Transfer Backup Storages Disas…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-row-pack-id-7",
+        "tag": "tr",
+        "text": "20260925_danasdarkroom_db 4.67MB 2026-09-25 02:00 Download …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-row-pack-id-7-details",
+        "tag": "tr",
+        "text": "Backup Overview View Details Transfer Backup Storages Disas…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-row-pack-id-8",
+        "tag": "tr",
+        "text": "20260926_danasdarkroom 30.94MB 2026-09-26 11:18 Download Re…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-row-pack-id-8-details",
+        "tag": "tr",
+        "text": "Backup Overview View Details Transfer Backup Storages Disas…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-row-pack-id-9",
+        "tag": "tr",
+        "text": "20260928_danasdarkroom_db 4.69MB 2026-09-28 02:00 Download …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-row-pack-id-9-details",
+        "tag": "tr",
+        "text": "Backup Overview View Details Transfer Backup Storages Disas…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-backup-environment-12",
+        "tag": "div",
+        "text": "Active Theme Divi 5.1.0 Active Plugins (58)Duplicator Pro 5…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-backup-environment-13",
+        "tag": "div",
+        "text": "Active Theme Divi 5.1.0 Active Plugins (58)Duplicator Pro 5…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-backup-environment-14",
+        "tag": "div",
+        "text": "Active Theme Divi 5.1.0 Active Plugins (58)Duplicator Pro 5…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-backup-environment-15",
+        "tag": "div",
+        "text": "Active Theme Divi 5.1.0 Active Plugins (58)Duplicator Pro 5…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-backup-environment-3",
+        "tag": "div",
+        "text": "Active Theme Divi 5.1.0 Active Plugins (58)Duplicator Pro 5…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-backup-environment-5",
+        "tag": "div",
+        "text": "Active Theme Divi 5.1.0 Active Plugins (58)Duplicator Pro 5…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-backup-environment-6",
+        "tag": "div",
+        "text": "Active Theme Divi 5.1.0 Active Plugins (58)Duplicator Pro 5…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-backup-environment-7",
+        "tag": "div",
+        "text": "Active Theme Divi 5.1.0 Active Plugins (58)Duplicator Pro 5…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-backup-environment-8",
+        "tag": "div",
+        "text": "Active Theme Divi 5.1.0 Active Plugins (58)Duplicator Pro 5…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-backup-environment-9",
+        "tag": "div",
+        "text": "Active Theme Divi 5.1.0 Active Plugins (58)Duplicator Pro 5…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1",
+        "tag": "div",
+        "text": "The backup is currently being downloaded. Please wait for t…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1_message",
+        "tag": "span",
+        "text": "The backup is currently being downloaded. Please wait for t…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1-alert-txt",
+        "tag": "div",
+        "text": "The backup is currently being downloaded. Please wait for t…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-10",
+        "tag": "div",
+        "text": "Are you sure you want to delete the selected Backup(s)?Note…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-10_message",
+        "tag": "div",
+        "text": "Are you sure you want to delete the selected Backup(s)?Note…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-10-confirm-txt",
+        "tag": "div",
+        "text": "Are you sure you want to delete the selected Backup(s)?Note…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-10-progress",
+        "tag": "div",
+        "text": "Removing Backups, Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-11",
+        "tag": "div",
+        "text": "Disaster Recovery - None Set The recovery point can quickly…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-11_message",
+        "tag": "span",
+        "text": "Disaster Recovery - None Set The recovery point can quickly…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-11-alert-txt",
+        "tag": "div",
+        "text": "Disaster Recovery - None Set The recovery point can quickly…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-12",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-12_message",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-12-alert-txt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-13",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-13_message",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-13-alert-txt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2",
+        "tag": "div",
+        "text": "Loading Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2_message",
+        "tag": "span",
+        "text": "Loading Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-alert-txt",
+        "tag": "div",
+        "text": "Loading Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3",
+        "tag": "div",
+        "text": "No download is currently in progress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3_message",
+        "tag": "span",
+        "text": "No download is currently in progress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-alert-txt",
+        "tag": "div",
+        "text": "No download is currently in progress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4",
+        "tag": "div",
+        "text": "The backup does not exist in any storage. Would you like to…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4_message",
+        "tag": "div",
+        "text": "The backup does not exist in any storage. Would you like to…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4-confirm-txt",
+        "tag": "div",
+        "text": "The backup does not exist in any storage. Would you like to…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5",
+        "tag": "div",
+        "text": "Loading. Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5_message",
+        "tag": "span",
+        "text": "Loading. Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5-alert-txt",
+        "tag": "div",
+        "text": "Loading. Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6",
+        "tag": "div",
+        "text": "No selections made! Please select at least one Backup to de…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6_message",
+        "tag": "span",
+        "text": "No selections made! Please select at least one Backup to de…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6-alert-txt",
+        "tag": "div",
+        "text": "No selections made! Please select at least one Backup to de…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-7",
+        "tag": "div",
+        "text": "No selections made! Please select an action from the \"Bulk …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-7_message",
+        "tag": "span",
+        "text": "No selections made! Please select an action from the \"Bulk …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-7-alert-txt",
+        "tag": "div",
+        "text": "No selections made! Please select an action from the \"Bulk …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-8",
+        "tag": "div",
+        "text": "Got an error or a warning: undefined",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-8_message",
+        "tag": "span",
+        "text": "Got an error or a warning: undefined",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-8-alert-txt",
+        "tag": "div",
+        "text": "Got an error or a warning: undefined",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-9",
+        "tag": "div",
+        "text": "Failed to get details.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-9_message",
+        "tag": "span",
+        "text": "Failed to get details.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-9-alert-txt",
+        "tag": "div",
+        "text": "Failed to get details.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-paged-buttons",
+        "tag": "div",
+        "text": "11 items « ‹ Current Page of 2 Next page › Last page »",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate Duplicator ★★★★★ on WordPress.org to help us sp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#form-duplicator",
+        "tag": "form",
+        "text": "Select bulk action Bulk Actions Delete Backups list Name St…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#form-duplicator-nav",
+        "tag": "form",
+        "text": "11 items « ‹ Current Page of 2 Next page › Last page »",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Note Size Created Age Pagination Backups Per Page C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_duplicator",
+        "tag": "li",
+        "text": "Duplicator Pro Backups Import Backups Staging Schedule Back…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-body-header",
+        "tag": "div",
+        "text": "Backups Add New Cloud Dashboard AutoTune",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-global-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dupli-backups-header-actions",
+        "tag": "div",
+        "text": "Cloud Dashboard AutoTune",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dupli-kv-label",
+        "tag": "span",
+        "text": "Active Theme",
+        "count": 20,
+        "hidden": true
+      },
+      {
+        "sel": ".dupli-row-ovr-hdr-actions",
+        "tag": "div",
+        "text": "View Details Transfer Backup Storages Disaster Recovery Del…",
+        "count": 10,
+        "hidden": true
+      },
+      {
+        "sel": ".dupli-row-res-actions",
+        "tag": "span",
+        "text": "Copy Link",
+        "count": 20,
+        "hidden": true
+      },
+      {
+        "sel": ".dupli-row-res-label",
+        "tag": "span",
+        "text": "Backup File",
+        "count": 20,
+        "hidden": true
+      }
+    ]
+  }
+}

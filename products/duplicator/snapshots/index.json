@@ -1,0 +1,1498 @@
+{
+ "product": "duplicator",
+ "generatedAt": "2026-09-30T03:50:29.406Z",
+ "count": 130,
+ "snapshots": [
+  {
+   "slug": "admin-activity-log",
+   "category": "admin/state",
+   "shows": "Activity Log: the parent events (license activation, manual scans, backup creations including the failed attempt), newest first",
+   "topics": [
+    "activity-log",
+    "list"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log"
+  },
+  {
+   "slug": "admin-activity-log--date-range",
+   "category": "admin/state",
+   "shows": "Activity Log filtered to 2026-09-25 through 2026-09-28",
+   "topics": [
+    "activity-log",
+    "filter",
+    "date-range"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&filter_date_from=2026-09-25&filter_date_to=2026-09-28"
+  },
+  {
+   "slug": "admin-activity-log--detail-db-0921",
+   "category": "admin/state",
+   "shows": "Activity Log event detail: creation of the 2026-09-21 database-only backup",
+   "topics": [
+    "activity-log",
+    "detail",
+    "modal",
+    "backup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&open_log_id=23"
+  },
+  {
+   "slug": "admin-activity-log--detail-db-0929",
+   "category": "admin/state",
+   "shows": "Activity Log event detail: creation of the 2026-09-29 database-only backup",
+   "topics": [
+    "activity-log",
+    "detail",
+    "modal",
+    "backup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&open_log_id=62"
+  },
+  {
+   "slug": "admin-activity-log--detail-db-0930",
+   "category": "admin/state",
+   "shows": "Activity Log event detail: creation of the 2026-09-30 database-only backup",
+   "topics": [
+    "activity-log",
+    "detail",
+    "modal",
+    "backup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&open_log_id=76"
+  },
+  {
+   "slug": "admin-activity-log--detail-db-notes",
+   "category": "admin/state",
+   "shows": "Activity Log event detail: creation of the 2026-09-28 database-only backup with notes",
+   "topics": [
+    "activity-log",
+    "detail",
+    "modal",
+    "backup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&open_log_id=51"
+  },
+  {
+   "slug": "admin-activity-log--detail-db-only",
+   "category": "admin/state",
+   "shows": "Activity Log event detail: creation of the 2026-09-25 database-only backup",
+   "topics": [
+    "activity-log",
+    "detail",
+    "modal",
+    "backup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&open_log_id=37"
+  },
+  {
+   "slug": "admin-activity-log--detail-failed-backup",
+   "category": "admin/state",
+   "shows": "Activity Log event detail: the failed first attempt of the 2026-09-21 database backup (severity error)",
+   "topics": [
+    "activity-log",
+    "detail",
+    "modal",
+    "backup",
+    "error"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&open_log_id=18"
+  },
+  {
+   "slug": "admin-activity-log--detail-full-site",
+   "category": "admin/state",
+   "shows": "Activity Log event detail: creation of the full-site backup 20260919 (steps, sizes, duration)",
+   "topics": [
+    "activity-log",
+    "detail",
+    "modal",
+    "backup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&open_log_id=4"
+  },
+  {
+   "slug": "admin-activity-log--detail-lightweight",
+   "category": "admin/state",
+   "shows": "Activity Log event detail: creation of the 2026-09-20 Lightweight snapshot backup",
+   "topics": [
+    "activity-log",
+    "detail",
+    "modal",
+    "backup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&open_log_id=11"
+  },
+  {
+   "slug": "admin-activity-log--detail-lightweight-0923",
+   "category": "admin/state",
+   "shows": "Activity Log event detail: creation of the 2026-09-23 Lightweight snapshot backup",
+   "topics": [
+    "activity-log",
+    "detail",
+    "modal",
+    "backup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&open_log_id=30"
+  },
+  {
+   "slug": "admin-activity-log--detail-lightweight-0926",
+   "category": "admin/state",
+   "shows": "Activity Log event detail: creation of the 2026-09-26 Lightweight snapshot backup",
+   "topics": [
+    "activity-log",
+    "detail",
+    "modal",
+    "backup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&open_log_id=44"
+  },
+  {
+   "slug": "admin-activity-log--detail-lightweight-0929",
+   "category": "admin/state",
+   "shows": "Activity Log event detail: creation of the 2026-09-29 Lightweight snapshot backup",
+   "topics": [
+    "activity-log",
+    "detail",
+    "modal",
+    "backup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&open_log_id=69"
+  },
+  {
+   "slug": "admin-activity-log--detail-lightweight-0930",
+   "category": "admin/state",
+   "shows": "Activity Log event detail: creation of the 2026-09-30 Lightweight snapshot backup",
+   "topics": [
+    "activity-log",
+    "detail",
+    "modal",
+    "backup"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&open_log_id=83"
+  },
+  {
+   "slug": "admin-activity-log--detail-scan",
+   "category": "admin/state",
+   "shows": "Activity Log event detail: a Manual Scan event",
+   "topics": [
+    "activity-log",
+    "detail",
+    "modal",
+    "scan"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&open_log_id=9"
+  },
+  {
+   "slug": "admin-activity-log--search",
+   "category": "admin/state",
+   "shows": "Activity Log searched for danasdarkroom_db: the database-only backups",
+   "topics": [
+    "activity-log",
+    "filter",
+    "search"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&filter_search=danasdarkroom_db"
+  },
+  {
+   "slug": "admin-activity-log--search-no-results",
+   "category": "admin/state",
+   "shows": "Activity Log search with no match: the empty No items found row",
+   "topics": [
+    "activity-log",
+    "filter",
+    "search",
+    "empty"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&filter_search=invoice"
+  },
+  {
+   "slug": "admin-activity-log--severity-error",
+   "category": "admin/state",
+   "shows": "Activity Log filtered to severity Error: the failed first attempt of the 2026-09-21 database backup",
+   "topics": [
+    "activity-log",
+    "filter",
+    "severity",
+    "error"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&filter_severity=30"
+  },
+  {
+   "slug": "admin-activity-log--show-all",
+   "category": "admin/state",
+   "shows": "Activity Log with Show all events: child events (database dump, file dump, transfer, end) listed with their parents, page 1 of 2",
+   "topics": [
+    "activity-log",
+    "filter",
+    "show-all"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&filter_show_all=1"
+  },
+  {
+   "slug": "admin-activity-log--show-all-page-2",
+   "category": "admin/state",
+   "shows": "Activity Log with Show all events, page 2: the oldest events",
+   "topics": [
+    "activity-log",
+    "filter",
+    "show-all",
+    "pagination"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&filter_show_all=1&paged=2"
+  },
+  {
+   "slug": "admin-activity-log--type-backup-create",
+   "category": "admin/state",
+   "shows": "Activity Log filtered to type Backup creation",
+   "topics": [
+    "activity-log",
+    "filter",
+    "type"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-activity-log&filter_type=backup_create"
+  },
+  {
+   "slug": "admin-backups",
+   "category": "admin/page",
+   "shows": "Duplicator Pro Backups list: the full-site backup and the seeded lightweight / database-only backups with name, created date, size and storage; no AutoTune notice",
+   "topics": [
+    "backups",
+    "list"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator",
+   "navPrimary": true
+  },
+  {
+   "slug": "admin-backups--autotune-notice",
+   "category": "admin/state",
+   "shows": "Duplicator Pro Backups list with the AutoTune suggestion notice (Optimize Backup Settings with AutoTune), dismissible",
+   "topics": [
+    "backups",
+    "list",
+    "notice",
+    "autotune"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator"
+  },
+  {
+   "slug": "admin-backups--building",
+   "category": "admin/state",
+   "shows": "Backups list while a backup builds: the progress row with the build phase, percent, progress bar and Stop Build above the completed backups",
+   "topics": [
+    "backups",
+    "list",
+    "building",
+    "progress"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator"
+  },
+  {
+   "slug": "admin-backups--page-2",
+   "category": "admin/state",
+   "shows": "Backups list page 2: the oldest backup (the full-site backup) after the first 10, with the pagination links",
+   "topics": [
+    "backups",
+    "list",
+    "pagination"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&paged=2"
+  },
+  {
+   "slug": "admin-backups-detail--not-found",
+   "category": "admin/state",
+   "shows": "Backup detail for a backup id that does not exist: Duplicator Pro 5.0.4 prints a TEMPLATE EXCEPTION line (Object package not found, details_wpbody_header) instead of its Backup: Not Found page. A faithful product bug.",
+   "topics": [
+    "backups",
+    "detail",
+    "not-found",
+    "error",
+    "product-bug"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=detail&id=999999"
+  },
+  {
+   "slug": "admin-backups-detail-db-0921",
+   "category": "admin/page",
+   "shows": "Backup detail of the 2026-09-21 database-only backup (no notes)",
+   "topics": [
+    "backups",
+    "detail",
+    "database-only"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=detail&id=5"
+  },
+  {
+   "slug": "admin-backups-detail-db-0929",
+   "category": "admin/page",
+   "shows": "Backup detail of the 2026-09-29 database-only backup (no notes)",
+   "topics": [
+    "backups",
+    "detail",
+    "database-only"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=detail&id=12"
+  },
+  {
+   "slug": "admin-backups-detail-db-0930",
+   "category": "admin/page",
+   "shows": "Backup detail of the 2026-09-30 database-only backup (no notes)",
+   "topics": [
+    "backups",
+    "detail",
+    "database-only"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=detail&id=14"
+  },
+  {
+   "slug": "admin-backups-detail-db-notes",
+   "category": "admin/page",
+   "shows": "Backup detail of a database-only backup with notes (Before the price list update)",
+   "topics": [
+    "backups",
+    "detail",
+    "database-only",
+    "notes"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=detail&id=9"
+  },
+  {
+   "slug": "admin-backups-detail-db-only",
+   "category": "admin/page",
+   "shows": "Backup detail of a database-only backup with table filters, no notes",
+   "topics": [
+    "backups",
+    "detail",
+    "database-only"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=detail&id=7"
+  },
+  {
+   "slug": "admin-backups-detail-full-site",
+   "category": "admin/page",
+   "shows": "Backup detail of the full-site backup (DupArchive, Default storage): general, environment, installer prefills, files and database cards",
+   "topics": [
+    "backups",
+    "detail",
+    "full-site"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=detail&id=2"
+  },
+  {
+   "slug": "admin-backups-detail-lightweight",
+   "category": "admin/page",
+   "shows": "Backup detail of a Lightweight snapshot backup: custom components (database, core, other), table filters on, with notes",
+   "topics": [
+    "backups",
+    "detail",
+    "components",
+    "notes",
+    "filters"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=detail&id=3"
+  },
+  {
+   "slug": "admin-backups-detail-lightweight-0923",
+   "category": "admin/page",
+   "shows": "Backup detail of the 2026-09-23 Lightweight snapshot backup, notes Before the booking form changes",
+   "topics": [
+    "backups",
+    "detail",
+    "components",
+    "notes",
+    "filters"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=detail&id=6"
+  },
+  {
+   "slug": "admin-backups-detail-lightweight-0926",
+   "category": "admin/page",
+   "shows": "Backup detail of the 2026-09-26 Lightweight snapshot backup, notes Before the print shop sale",
+   "topics": [
+    "backups",
+    "detail",
+    "components",
+    "notes",
+    "filters"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=detail&id=8"
+  },
+  {
+   "slug": "admin-backups-detail-lightweight-0929",
+   "category": "admin/page",
+   "shows": "Backup detail of the 2026-09-29 Lightweight snapshot backup, notes After the autumn portfolio upload",
+   "topics": [
+    "backups",
+    "detail",
+    "components",
+    "notes",
+    "filters"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=detail&id=13"
+  },
+  {
+   "slug": "admin-backups-detail-lightweight-0930",
+   "category": "admin/page",
+   "shows": "Backup detail of the 2026-09-30 Lightweight snapshot backup, notes Before the client gallery launch (the newest backup)",
+   "topics": [
+    "backups",
+    "detail",
+    "components",
+    "notes",
+    "filters"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=detail&id=15"
+  },
+  {
+   "slug": "admin-backups-new-scan",
+   "category": "admin/page",
+   "shows": "New backup step 2 Scan Complete report: Setup, Archive (size, file checks) and Database sections, with Create Backup (not clicked)",
+   "topics": [
+    "backups",
+    "new",
+    "scan",
+    "wizard"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator",
+   "navLandsOn": "inner_page=new2",
+   "navAliases": [
+    "/wp-admin/admin.php?page=duplicator&inner_page=new2"
+   ]
+  },
+  {
+   "slug": "admin-backups-new-setup",
+   "category": "admin/page",
+   "shows": "New backup step 1 Setup: name, storage, backup components, installer and requirements, with Next",
+   "topics": [
+    "backups",
+    "new",
+    "setup",
+    "wizard"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator",
+   "navLandsOn": "inner_page=new1",
+   "navAliases": [
+    "/wp-admin/admin.php?page=duplicator&inner_page=new1"
+   ]
+  },
+  {
+   "slug": "admin-backups-transfer-db-0921",
+   "category": "admin/page",
+   "shows": "Transfer backup page for the 2026-09-21 database-only backup",
+   "topics": [
+    "backups",
+    "transfer",
+    "storage"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=transfer&id=5"
+  },
+  {
+   "slug": "admin-backups-transfer-db-0929",
+   "category": "admin/page",
+   "shows": "Transfer backup page for the 2026-09-29 database-only backup",
+   "topics": [
+    "backups",
+    "transfer",
+    "storage"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=transfer&id=12"
+  },
+  {
+   "slug": "admin-backups-transfer-db-0930",
+   "category": "admin/page",
+   "shows": "Transfer backup page for the 2026-09-30 database-only backup",
+   "topics": [
+    "backups",
+    "transfer",
+    "storage"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=transfer&id=14"
+  },
+  {
+   "slug": "admin-backups-transfer-db-notes",
+   "category": "admin/page",
+   "shows": "Transfer backup page for the 2026-09-28 database-only backup with notes",
+   "topics": [
+    "backups",
+    "transfer",
+    "storage"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=transfer&id=9"
+  },
+  {
+   "slug": "admin-backups-transfer-db-only",
+   "category": "admin/page",
+   "shows": "Transfer backup page for the 2026-09-25 database-only backup",
+   "topics": [
+    "backups",
+    "transfer",
+    "storage"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=transfer&id=7"
+  },
+  {
+   "slug": "admin-backups-transfer-full-site",
+   "category": "admin/page",
+   "shows": "Transfer backup page for the full-site backup 20260919: archive and installer names, Step 1 Choose Location storage checklist, transfer log",
+   "topics": [
+    "backups",
+    "transfer",
+    "storage"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=transfer&id=2"
+  },
+  {
+   "slug": "admin-backups-transfer-lightweight",
+   "category": "admin/page",
+   "shows": "Transfer backup page: archive and installer names, Step 1 Choose Location storage checklist, transfer log",
+   "topics": [
+    "backups",
+    "transfer",
+    "storage"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=transfer&id=8"
+  },
+  {
+   "slug": "admin-backups-transfer-lightweight-0920",
+   "category": "admin/page",
+   "shows": "Transfer backup page for the 2026-09-20 Lightweight snapshot backup",
+   "topics": [
+    "backups",
+    "transfer",
+    "storage"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=transfer&id=3"
+  },
+  {
+   "slug": "admin-backups-transfer-lightweight-0923",
+   "category": "admin/page",
+   "shows": "Transfer backup page for the 2026-09-23 Lightweight snapshot backup",
+   "topics": [
+    "backups",
+    "transfer",
+    "storage"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=transfer&id=6"
+  },
+  {
+   "slug": "admin-backups-transfer-lightweight-0929",
+   "category": "admin/page",
+   "shows": "Transfer backup page for the 2026-09-29 Lightweight snapshot backup",
+   "topics": [
+    "backups",
+    "transfer",
+    "storage"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=transfer&id=13"
+  },
+  {
+   "slug": "admin-backups-transfer-lightweight-0930",
+   "category": "admin/page",
+   "shows": "Transfer backup page for the 2026-09-30 Lightweight snapshot backup",
+   "topics": [
+    "backups",
+    "transfer",
+    "storage"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator&inner_page=transfer&id=15"
+  },
+  {
+   "slug": "admin-dashboard--widget",
+   "category": "admin/state",
+   "shows": "WordPress Dashboard with the Duplicator Pro widget: recent backups, Create Backup, and the schedules and templates sections",
+   "topics": [
+    "dashboard",
+    "widget",
+    "backups"
+   ],
+   "sourcePath": "/wp-admin/index.php"
+  },
+  {
+   "slug": "admin-email-summary-preview",
+   "category": "admin/page",
+   "shows": "Email summary preview: the weekly Duplicator summary email (backups made, storages, failures) as it would be sent; nothing is sent",
+   "topics": [
+    "email",
+    "summary",
+    "preview"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-email-summary-preview"
+  },
+  {
+   "slug": "admin-help",
+   "category": "admin/page",
+   "shows": "Help page with no tag articles: the knowledge-base categories and search. The plugin renders exactly this for the empty tag (Staging, Activity Log) and for the tags that have no articles today (backup_step_2, storages, storage_edit, tools, settings)",
+   "topics": [
+    "help",
+    "knowledge-base"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-dynamic-help&tag=",
+   "navAliases": [
+    "/wp-admin/admin.php?page=duplicator-dynamic-help&tag=backup_step_2",
+    "/wp-admin/admin.php?page=duplicator-dynamic-help&tag=storages",
+    "/wp-admin/admin.php?page=duplicator-dynamic-help&tag=storage_edit",
+    "/wp-admin/admin.php?page=duplicator-dynamic-help&tag=tools",
+    "/wp-admin/admin.php?page=duplicator-dynamic-help&tag=settings"
+   ]
+  },
+  {
+   "slug": "admin-help-backup-step-1",
+   "category": "admin/page",
+   "shows": "Help page for New backup step 1 Setup (tag backup_step_1): the articles for that screen, the knowledge-base categories and search, as the Help button opens it in a modal",
+   "topics": [
+    "help",
+    "knowledge-base",
+    "backup-step-1"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-dynamic-help&tag=backup_step_1"
+  },
+  {
+   "slug": "admin-help-backups",
+   "category": "admin/page",
+   "shows": "Help page for Backups (tag backups): the articles for that screen, the knowledge-base categories and search, as the Help button opens it in a modal",
+   "topics": [
+    "help",
+    "knowledge-base",
+    "backups"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-dynamic-help&tag=backups"
+  },
+  {
+   "slug": "admin-help-import",
+   "category": "admin/page",
+   "shows": "Help page for Import Backups (tag import): the articles for that screen, the knowledge-base categories and search, as the Help button opens it in a modal",
+   "topics": [
+    "help",
+    "knowledge-base",
+    "import"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-dynamic-help&tag=import"
+  },
+  {
+   "slug": "admin-help-recovery",
+   "category": "admin/page",
+   "shows": "Help page for Tools > Recovery (tag recovery): the articles for that screen, the knowledge-base categories and search, as the Help button opens it in a modal",
+   "topics": [
+    "help",
+    "knowledge-base",
+    "recovery"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-dynamic-help&tag=recovery"
+  },
+  {
+   "slug": "admin-help-schedule-edit",
+   "category": "admin/page",
+   "shows": "Help page for Schedule edit (tag schedule_edit): the articles for that screen, the knowledge-base categories and search, as the Help button opens it in a modal",
+   "topics": [
+    "help",
+    "knowledge-base",
+    "schedule-edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-dynamic-help&tag=schedule_edit"
+  },
+  {
+   "slug": "admin-help-schedules",
+   "category": "admin/page",
+   "shows": "Help page for Schedule Backups list (tag schedules): the articles for that screen, the knowledge-base categories and search, as the Help button opens it in a modal",
+   "topics": [
+    "help",
+    "knowledge-base",
+    "schedules"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-dynamic-help&tag=schedules"
+  },
+  {
+   "slug": "admin-help-template-edit",
+   "category": "admin/page",
+   "shows": "Help page for Tools > Templates edit (tag template_edit): the articles for that screen, the knowledge-base categories and search, as the Help button opens it in a modal",
+   "topics": [
+    "help",
+    "knowledge-base",
+    "template-edit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-dynamic-help&tag=template_edit"
+  },
+  {
+   "slug": "admin-help-templates",
+   "category": "admin/page",
+   "shows": "Help page for Tools > Templates (tag templates): the articles for that screen, the knowledge-base categories and search, as the Help button opens it in a modal",
+   "topics": [
+    "help",
+    "knowledge-base",
+    "templates"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-dynamic-help&tag=templates"
+  },
+  {
+   "slug": "admin-import",
+   "category": "admin/page",
+   "shows": "Import Backups page, upload step: drag-and-drop area and the (empty) list of backups in the import folder",
+   "topics": [
+    "import",
+    "migrate",
+    "upload"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-import"
+  },
+  {
+   "slug": "admin-schedules",
+   "category": "admin/page",
+   "shows": "Schedule Backups list: four inactive schedules (nightly database, weekly full site, monthly offsite, media every 6 hours) with storages, next run, last ran, Active No",
+   "topics": [
+    "schedules",
+    "list"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-schedules"
+  },
+  {
+   "slug": "admin-schedules--empty",
+   "category": "admin/state",
+   "shows": "Duplicator Pro Schedule Backups list with no schedules: the No Schedules Found row and its Add New Schedule link",
+   "topics": [
+    "schedules",
+    "list",
+    "empty"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-schedules"
+  },
+  {
+   "slug": "admin-schedules-edit--new",
+   "category": "admin/page",
+   "shows": "Add New Schedule form: name, template, storages, repeat (weekly default), start time, Active",
+   "topics": [
+    "schedules",
+    "new"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-schedules&inner_page=edit"
+  },
+  {
+   "slug": "admin-schedules-edit-daily",
+   "category": "admin/page",
+   "shows": "Edit schedule Nightly database: daily at 02:00, Database only template, Default storage, inactive",
+   "topics": [
+    "schedules",
+    "edit",
+    "daily"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-schedules&inner_page=edit&schedule_id=36"
+  },
+  {
+   "slug": "admin-schedules-edit-hourly",
+   "category": "admin/page",
+   "shows": "Edit schedule Media every 6 hours: hourly every 6, Media library template, Default + Wasabi, inactive",
+   "topics": [
+    "schedules",
+    "edit",
+    "hourly"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-schedules&inner_page=edit&schedule_id=39"
+  },
+  {
+   "slug": "admin-schedules-edit-monthly",
+   "category": "admin/page",
+   "shows": "Edit schedule Monthly offsite archive: day 1 at 04:00, Default + Amazon S3 + Backblaze, inactive",
+   "topics": [
+    "schedules",
+    "edit",
+    "monthly"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-schedules&inner_page=edit&schedule_id=38"
+  },
+  {
+   "slug": "admin-schedules-edit-weekly",
+   "category": "admin/page",
+   "shows": "Edit schedule Weekly full site: weekly on Sunday 03:00, Default template, Default + Studio NAS, inactive",
+   "topics": [
+    "schedules",
+    "edit",
+    "weekly"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-schedules&inner_page=edit&schedule_id=37"
+  },
+  {
+   "slug": "admin-settings-brand",
+   "category": "admin/page",
+   "shows": "Settings > Installer Branding: the Default brand plus the two seeded brands (Dana's Darkroom active, Client handoff)",
+   "topics": [
+    "settings",
+    "brand",
+    "installer"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-settings&tab=brand"
+  },
+  {
+   "slug": "admin-settings-brand--default-only",
+   "category": "admin/state",
+   "shows": "Settings > Installer Branding before any brand exists: the list holds only the read-only Default brand",
+   "topics": [
+    "settings",
+    "brand",
+    "installer",
+    "empty"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-settings&tab=brand"
+  },
+  {
+   "slug": "admin-settings-brand-edit--default",
+   "category": "admin/page",
+   "shows": "Installer Branding: the read-only Default brand",
+   "topics": [
+    "settings",
+    "brand",
+    "installer",
+    "default"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-settings&tab=brand&inner_page=edit&id=0"
+  },
+  {
+   "slug": "admin-settings-brand-edit--new",
+   "category": "admin/page",
+   "shows": "Installer Branding: a new brand form (name, notes, logo editor, activation) before it is saved",
+   "topics": [
+    "settings",
+    "brand",
+    "installer",
+    "new"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-settings&tab=brand&inner_page=edit&id=-1"
+  },
+  {
+   "slug": "admin-settings-brand-edit-client-handoff",
+   "category": "admin/page",
+   "shows": "Installer Branding: the Client handoff brand (not active), notes For wedding clients",
+   "topics": [
+    "settings",
+    "brand",
+    "installer",
+    "seed"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-settings&tab=brand&inner_page=edit&id=42"
+  },
+  {
+   "slug": "admin-settings-brand-edit-darkroom",
+   "category": "admin/page",
+   "shows": "Installer Branding: the Dana's Darkroom brand with its logo and preview",
+   "topics": [
+    "settings",
+    "brand",
+    "installer",
+    "seed"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-settings&tab=brand&inner_page=edit&id=41"
+  },
+  {
+   "slug": "admin-settings-capabilities",
+   "category": "admin/page",
+   "shows": "Settings > Access: the roles and users that hold each Duplicator capability",
+   "topics": [
+    "settings",
+    "capabilities",
+    "access",
+    "roles"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-settings&tab=capabilities"
+  },
+  {
+   "slug": "admin-settings-general",
+   "category": "admin/page",
+   "shows": "Settings > General: license key (dummy) with its status and Deactivate, license visibility, plugin settings, email summary, debug and advanced options",
+   "topics": [
+    "settings",
+    "general",
+    "license"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-settings"
+  },
+  {
+   "slug": "admin-settings-import",
+   "category": "admin/page",
+   "shows": "Settings > Import: upload chunk size, custom import path and the recovery custom path",
+   "topics": [
+    "settings",
+    "import"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-settings&tab=import"
+  },
+  {
+   "slug": "admin-settings-migrate",
+   "category": "admin/page",
+   "shows": "Settings > Import/Export Settings: the Export and Import panels (dialogs not opened)",
+   "topics": [
+    "settings",
+    "migrate",
+    "export",
+    "import"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-settings&tab=migrate"
+  },
+  {
+   "slug": "admin-settings-package",
+   "category": "admin/page",
+   "shows": "Settings > Backups: database engine, archive engine, processing, installer and advanced options (kickoff, AJAX protocol, basic auth)",
+   "topics": [
+    "settings",
+    "backups",
+    "engine"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-settings&tab=package"
+  },
+  {
+   "slug": "admin-settings-schedule",
+   "category": "admin/page",
+   "shows": "Settings > Schedules: email-on-build options and the notification address",
+   "topics": [
+    "settings",
+    "schedules",
+    "email"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-settings&tab=schedule"
+  },
+  {
+   "slug": "admin-settings-storage",
+   "category": "admin/page",
+   "shows": "Settings > Storage: backups folder, htaccess, purge records, SSL and each storage addon's global options",
+   "topics": [
+    "settings",
+    "storage"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-settings&tab=storage"
+  },
+  {
+   "slug": "admin-staging",
+   "category": "admin/page",
+   "shows": "Staging: no staging sites yet, with the Create Staging Site button (backups exist)",
+   "topics": [
+    "staging",
+    "empty"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-staging"
+  },
+  {
+   "slug": "admin-storage",
+   "category": "admin/page",
+   "shows": "Storage list: Default local storage, Duplicator Cloud (not connected), the Darkroom archive drive local storage and the seeded storages of every type, with type and location",
+   "topics": [
+    "storage",
+    "list"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage"
+  },
+  {
+   "slug": "admin-storage-edit--saved-message",
+   "category": "admin/state",
+   "shows": "Edit the Amazon S3 storage right after a save: the Storage Updated. notice above the form",
+   "topics": [
+    "storage",
+    "edit",
+    "saved",
+    "notice"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=15&dup-save-message=Storage%20Updated."
+  },
+  {
+   "slug": "admin-storage-edit-amazon-s3",
+   "category": "admin/page",
+   "shows": "Edit the seeded Amazon S3 storage with its saved (demo) settings",
+   "topics": [
+    "storage",
+    "edit",
+    "amazon-s3"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=15"
+  },
+  {
+   "slug": "admin-storage-edit-backblaze-b2",
+   "category": "admin/page",
+   "shows": "Edit the seeded Backblaze B2 storage with its saved (demo) settings",
+   "topics": [
+    "storage",
+    "edit",
+    "backblaze-b2"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=17"
+  },
+  {
+   "slug": "admin-storage-edit-cloudflare-r2",
+   "category": "admin/page",
+   "shows": "Edit the seeded Cloudflare R2 storage with its saved (demo) settings",
+   "topics": [
+    "storage",
+    "edit",
+    "cloudflare-r2"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=19"
+  },
+  {
+   "slug": "admin-storage-edit-default",
+   "category": "admin/page",
+   "shows": "Edit the Default local storage: max backups and the backups folder",
+   "topics": [
+    "storage",
+    "edit",
+    "default",
+    "local"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=3"
+  },
+  {
+   "slug": "admin-storage-edit-digitalocean-spaces",
+   "category": "admin/page",
+   "shows": "Edit the seeded DigitalOcean Spaces storage with its saved (demo) settings",
+   "topics": [
+    "storage",
+    "edit",
+    "digitalocean-spaces"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=22"
+  },
+  {
+   "slug": "admin-storage-edit-dream-objects",
+   "category": "admin/page",
+   "shows": "Edit the seeded Dream Objects storage with its saved (demo) settings",
+   "topics": [
+    "storage",
+    "edit",
+    "dream-objects"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=21"
+  },
+  {
+   "slug": "admin-storage-edit-dropbox",
+   "category": "admin/page",
+   "shows": "Edit the seeded Dropbox storage, not connected (unauthorized state)",
+   "topics": [
+    "storage",
+    "edit",
+    "dropbox"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=26"
+  },
+  {
+   "slug": "admin-storage-edit-duplicator-cloud",
+   "category": "admin/page",
+   "shows": "Edit the Duplicator Cloud storage, not connected (unauthorized state)",
+   "topics": [
+    "storage",
+    "edit",
+    "duplicator-cloud"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=5"
+  },
+  {
+   "slug": "admin-storage-edit-ftp",
+   "category": "admin/page",
+   "shows": "Edit the seeded FTP storage with its saved (demo) settings",
+   "topics": [
+    "storage",
+    "edit",
+    "ftp"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=24"
+  },
+  {
+   "slug": "admin-storage-edit-google-cloud-storage",
+   "category": "admin/page",
+   "shows": "Edit the seeded Google Cloud Storage storage with its saved (demo) settings",
+   "topics": [
+    "storage",
+    "edit",
+    "google-cloud-storage"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=23"
+  },
+  {
+   "slug": "admin-storage-edit-google-drive",
+   "category": "admin/page",
+   "shows": "Edit the seeded Google Drive storage, not connected (unauthorized state)",
+   "topics": [
+    "storage",
+    "edit",
+    "google-drive"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=25"
+  },
+  {
+   "slug": "admin-storage-edit-local",
+   "category": "admin/page",
+   "shows": "Edit the Darkroom archive drive local storage: its folder on the server, max backups and folder protection",
+   "topics": [
+    "storage",
+    "edit",
+    "local"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=40"
+  },
+  {
+   "slug": "admin-storage-edit-onedrive",
+   "category": "admin/page",
+   "shows": "Edit the seeded OneDrive storage, not connected (unauthorized state)",
+   "topics": [
+    "storage",
+    "edit",
+    "onedrive"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=27"
+  },
+  {
+   "slug": "admin-storage-edit-s3-compatible",
+   "category": "admin/page",
+   "shows": "Edit the seeded S3 Compatible storage with its saved (demo) settings",
+   "topics": [
+    "storage",
+    "edit",
+    "s3-compatible"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=16"
+  },
+  {
+   "slug": "admin-storage-edit-vultr",
+   "category": "admin/page",
+   "shows": "Edit the seeded Vultr storage with its saved (demo) settings",
+   "topics": [
+    "storage",
+    "edit",
+    "vultr"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=20"
+  },
+  {
+   "slug": "admin-storage-edit-wasabi",
+   "category": "admin/page",
+   "shows": "Edit the seeded Wasabi storage with its saved (demo) settings",
+   "topics": [
+    "storage",
+    "edit",
+    "wasabi"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit&storage_id=18"
+  },
+  {
+   "slug": "admin-storage-new",
+   "category": "admin/page",
+   "shows": "Add New Storage: Local selected, type grid closed, Local folder settings",
+   "topics": [
+    "storage",
+    "new",
+    "local"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit"
+  },
+  {
+   "slug": "admin-storage-new--amazon-s3",
+   "category": "admin/state",
+   "shows": "Add New Storage with Amazon S3 picked: the empty Amazon S3 settings form",
+   "topics": [
+    "storage",
+    "new",
+    "amazon-s3"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit"
+  },
+  {
+   "slug": "admin-storage-new--backblaze-b2",
+   "category": "admin/state",
+   "shows": "Add New Storage with Backblaze B2 picked: the empty Backblaze B2 settings form",
+   "topics": [
+    "storage",
+    "new",
+    "backblaze-b2"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit"
+  },
+  {
+   "slug": "admin-storage-new--cloudflare-r2",
+   "category": "admin/state",
+   "shows": "Add New Storage with Cloudflare R2 picked: the empty Cloudflare R2 settings form",
+   "topics": [
+    "storage",
+    "new",
+    "cloudflare-r2"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit"
+  },
+  {
+   "slug": "admin-storage-new--digitalocean-spaces",
+   "category": "admin/state",
+   "shows": "Add New Storage with DigitalOcean Spaces picked: the empty DigitalOcean Spaces settings form",
+   "topics": [
+    "storage",
+    "new",
+    "digitalocean-spaces"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit"
+  },
+  {
+   "slug": "admin-storage-new--dream-objects",
+   "category": "admin/state",
+   "shows": "Add New Storage with Dream Objects picked: the empty Dream Objects settings form",
+   "topics": [
+    "storage",
+    "new",
+    "dream-objects"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit"
+  },
+  {
+   "slug": "admin-storage-new--dropbox",
+   "category": "admin/state",
+   "shows": "Add New Storage with Dropbox picked: the Dropbox block with its Connect button (not clicked)",
+   "topics": [
+    "storage",
+    "new",
+    "dropbox"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit"
+  },
+  {
+   "slug": "admin-storage-new--ftp",
+   "category": "admin/state",
+   "shows": "Add New Storage with FTP picked: the empty FTP settings form",
+   "topics": [
+    "storage",
+    "new",
+    "ftp"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit"
+  },
+  {
+   "slug": "admin-storage-new--google-cloud-storage",
+   "category": "admin/state",
+   "shows": "Add New Storage with Google Cloud Storage picked: the empty Google Cloud Storage settings form",
+   "topics": [
+    "storage",
+    "new",
+    "google-cloud-storage"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit"
+  },
+  {
+   "slug": "admin-storage-new--google-drive",
+   "category": "admin/state",
+   "shows": "Add New Storage with Google Drive picked: the Google Drive block with its Connect button (not clicked)",
+   "topics": [
+    "storage",
+    "new",
+    "google-drive"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit"
+  },
+  {
+   "slug": "admin-storage-new--onedrive",
+   "category": "admin/state",
+   "shows": "Add New Storage with OneDrive picked: the OneDrive block with its Connect button (not clicked)",
+   "topics": [
+    "storage",
+    "new",
+    "onedrive"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit"
+  },
+  {
+   "slug": "admin-storage-new--s3-compatible",
+   "category": "admin/state",
+   "shows": "Add New Storage with S3 Compatible picked: the empty S3 Compatible settings form",
+   "topics": [
+    "storage",
+    "new",
+    "s3-compatible"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit"
+  },
+  {
+   "slug": "admin-storage-new--vultr",
+   "category": "admin/state",
+   "shows": "Add New Storage with Vultr picked: the empty Vultr settings form",
+   "topics": [
+    "storage",
+    "new",
+    "vultr"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit"
+  },
+  {
+   "slug": "admin-storage-new--wasabi",
+   "category": "admin/state",
+   "shows": "Add New Storage with Wasabi picked: the empty Wasabi settings form",
+   "topics": [
+    "storage",
+    "new",
+    "wasabi"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-storage&inner_page=edit"
+  },
+  {
+   "slug": "admin-tools-ai",
+   "category": "admin/page",
+   "shows": "Tools > AI: the AI-ready card and which abilities are available",
+   "topics": [
+    "tools",
+    "ai"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools&tab=ai"
+  },
+  {
+   "slug": "admin-tools-auto-tune",
+   "category": "admin/page",
+   "shows": "Tools > AutoTune: the server overview with its check chips and the Start AutoTune panel (not started)",
+   "topics": [
+    "tools",
+    "autotune",
+    "performance"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools&tab=auto-tune"
+  },
+  {
+   "slug": "admin-tools-general",
+   "category": "admin/page",
+   "shows": "Tools > General: the diagnostics buttons (support toolkit, reset backups, check remote backups, remove installer files, clear build cache) and the scan validator",
+   "topics": [
+    "tools",
+    "general",
+    "diagnostics"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools"
+  },
+  {
+   "slug": "admin-tools-logs",
+   "category": "admin/page",
+   "shows": "Tools > Duplicator Logs: the build log list and the newest build log in the viewer",
+   "topics": [
+    "tools",
+    "logs",
+    "build-log"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools&tab=logs"
+  },
+  {
+   "slug": "admin-tools-php-logs",
+   "category": "admin/page",
+   "shows": "Tools > PHP Logs: the PHP error log viewer with the log path and the recent lines (a short, clean log)",
+   "topics": [
+    "tools",
+    "logs",
+    "php"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools&tab=php-logs"
+  },
+  {
+   "slug": "admin-tools-recovery",
+   "category": "admin/page",
+   "shows": "Tools > Recovery: recovery point not set, selector of the recoverable backups grouped by day (all 11 backups)",
+   "topics": [
+    "tools",
+    "recovery"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools&tab=recovery"
+  },
+  {
+   "slug": "admin-tools-server-info",
+   "category": "admin/page",
+   "shows": "Tools > Server Info: the server settings tables and phpinfo (scrubbed: no environment, no cookies, documentation IPs)",
+   "topics": [
+    "tools",
+    "server-info",
+    "phpinfo"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools&tab=server-info"
+  },
+  {
+   "slug": "admin-tools-templates",
+   "category": "admin/page",
+   "shows": "Tools > Templates: the Default template and the four seeded templates (Lightweight snapshot, Database only, Media library, Plugins and themes)",
+   "topics": [
+    "tools",
+    "templates",
+    "list"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools&tab=templates"
+  },
+  {
+   "slug": "admin-tools-templates--default-only",
+   "category": "admin/state",
+   "shows": "Duplicator Pro Tools > Templates with only the Default template (Total: 1)",
+   "topics": [
+    "tools",
+    "templates",
+    "list",
+    "default"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools&tab=templates"
+  },
+  {
+   "slug": "admin-tools-templates-edit--new",
+   "category": "admin/page",
+   "shows": "Tools > Templates: a new template form (name, notes, backup components, filters, installer) before it is saved",
+   "topics": [
+    "tools",
+    "templates",
+    "edit",
+    "new"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools&tab=templates&inner_page=edit"
+  },
+  {
+   "slug": "admin-tools-templates-edit-code",
+   "category": "admin/page",
+   "shows": "Tools > Templates: the Plugins and themes template",
+   "topics": [
+    "tools",
+    "templates",
+    "edit",
+    "seed",
+    "components"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools&tab=templates&inner_page=edit&package_template_id=35"
+  },
+  {
+   "slug": "admin-tools-templates-edit-db-only",
+   "category": "admin/page",
+   "shows": "Tools > Templates: the Database only template (big log tables filtered)",
+   "topics": [
+    "tools",
+    "templates",
+    "edit",
+    "seed",
+    "database-only"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools&tab=templates&inner_page=edit&package_template_id=33"
+  },
+  {
+   "slug": "admin-tools-templates-edit-default",
+   "category": "admin/page",
+   "shows": "Tools > Templates: the Default template (full site)",
+   "topics": [
+    "tools",
+    "templates",
+    "edit",
+    "default"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools&tab=templates&inner_page=edit&package_template_id=6"
+  },
+  {
+   "slug": "admin-tools-templates-edit-lightweight",
+   "category": "admin/page",
+   "shows": "Tools > Templates: the Lightweight snapshot template (database, core and loose files; the big log tables filtered)",
+   "topics": [
+    "tools",
+    "templates",
+    "edit",
+    "seed",
+    "components",
+    "filters"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools&tab=templates&inner_page=edit&package_template_id=32"
+  },
+  {
+   "slug": "admin-tools-templates-edit-media",
+   "category": "admin/page",
+   "shows": "Tools > Templates: the Media library template (uploads only)",
+   "topics": [
+    "tools",
+    "templates",
+    "edit",
+    "seed",
+    "media"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=duplicator-tools&tab=templates&inner_page=edit&package_template_id=34"
+  }
+ ],
+ "notes": ""
+}

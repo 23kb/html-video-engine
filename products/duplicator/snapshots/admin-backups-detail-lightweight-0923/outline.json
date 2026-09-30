@@ -1,0 +1,468 @@
+{
+  "slug": "admin-backups-detail-lightweight-0923",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "help-modal-open",
+      "event": "click",
+      "selector": "a.dup-global-help",
+      "count": 1
+    },
+    {
+      "label": "download-menu-toggle",
+      "event": "click",
+      "selector": "button.dup-dnload-btn.can-enabled",
+      "count": 1
+    },
+    {
+      "label": "detail-toggle-data",
+      "event": "click",
+      "selector": ".dupli-toggle-btn",
+      "count": 4
+    },
+    {
+      "label": "detail-download-menu",
+      "event": "click",
+      "selector": "button.dup-dnload-btn.can-enabled",
+      "count": 1
+    },
+    {
+      "label": "detail-delete-confirm",
+      "event": "click",
+      "selector": "section.dupli-backup-detail-card > header.dupli-backup-detail-card-head > div.dupli-detail-actions > button.button",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-detail",
+        "tag": "a",
+        "text": "Details",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-list",
+        "tag": "a",
+        "text": "Backups",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-transfer",
+        "tag": "a",
+        "text": "Transfer",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-dnload-archive",
+        "tag": "button",
+        "text": "Archive (daf)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-dnload-both",
+        "tag": "button",
+        "text": "Both Files",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-dnload-btn",
+        "tag": "button",
+        "text": "Download",
+        "count": 1,
+        "hidden": false,
+        "wired": "download-menu-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".dup-dnload-installer",
+        "tag": "button",
+        "text": "Installer",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-link-build-log",
+        "tag": "a",
+        "text": "Build Log",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dupli-delete-backup",
+        "tag": "button",
+        "text": "Delete",
+        "count": 1,
+        "hidden": false,
+        "wired": "detail-delete-confirm",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".dupli-link-activity-log",
+        "tag": "a",
+        "text": "Activity Log",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dupli-toggle-btn",
+        "tag": "button",
+        "text": "Show details",
+        "count": 4,
+        "hidden": false,
+        "wired": "detail-toggle-data",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#dupli-dlg-1-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-cancel",
+        "tag": "input",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-confirm",
+        "tag": "input",
+        "text": "Delete",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6-cancel",
+        "tag": "input",
+        "text": "No",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6-confirm",
+        "tag": "input",
+        "text": "Yes",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#dup-package-dtl-general-panel",
+        "tag": "div",
+        "text": "NAME 20260923_danasdarkroom CREATED 2026-09-23 16:05:48 DUP…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-messages-section",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-ajax-loader",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-ajax-loader-img-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-meta-screen",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-remote-package-download-wrapper",
+        "tag": "div",
+        "text": "No download is currently in progress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1",
+        "tag": "div",
+        "text": "No Backup in default location so transfer is disabled.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1_message",
+        "tag": "span",
+        "text": "No Backup in default location so transfer is disabled.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1-alert-txt",
+        "tag": "div",
+        "text": "No Backup in default location so transfer is disabled.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2",
+        "tag": "div",
+        "text": "Are you sure you want to delete this Backup?Remote copies w…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2_message",
+        "tag": "div",
+        "text": "Are you sure you want to delete this Backup?Remote copies w…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-confirm-txt",
+        "tag": "div",
+        "text": "Are you sure you want to delete this Backup?Remote copies w…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-progress",
+        "tag": "div",
+        "text": "Removing Backup, Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3",
+        "tag": "div",
+        "text": "The backup is currently being downloaded. Please wait for t…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3_message",
+        "tag": "span",
+        "text": "The backup is currently being downloaded. Please wait for t…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-alert-txt",
+        "tag": "div",
+        "text": "The backup is currently being downloaded. Please wait for t…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4",
+        "tag": "div",
+        "text": "Loading Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4_message",
+        "tag": "span",
+        "text": "Loading Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4-alert-txt",
+        "tag": "div",
+        "text": "Loading Please Wait...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5",
+        "tag": "div",
+        "text": "No download is currently in progress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5_message",
+        "tag": "span",
+        "text": "No download is currently in progress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-5-alert-txt",
+        "tag": "div",
+        "text": "No download is currently in progress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6",
+        "tag": "div",
+        "text": "The backup does not exist in any storage. Would you like to…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6_message",
+        "tag": "div",
+        "text": "The backup does not exist in any storage. Would you like to…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-6-confirm-txt",
+        "tag": "div",
+        "text": "The backup does not exist in any storage. Would you like to…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate Duplicator ★★★★★ on WordPress.org to help us sp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_duplicator",
+        "tag": "li",
+        "text": "Duplicator Pro Backups Import Backups Staging Schedule Back…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-body-header",
+        "tag": "div",
+        "text": "Backup: 20260923_danasdarkroom Backups Details Transfer",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-global-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dupli-detail-actions",
+        "tag": "div",
+        "text": "Download Build Log Activity Log Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dupli-kv-label",
+        "tag": "span",
+        "text": "NAME",
+        "count": 18,
+        "hidden": false
+      }
+    ]
+  }
+}

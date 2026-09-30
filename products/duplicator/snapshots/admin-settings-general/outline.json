@@ -1,0 +1,697 @@
+{
+  "slug": "admin-settings-general",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "tooltips-load",
+      "event": "dup:ready",
+      "selector": "body.wp-admin.wp-core-ui",
+      "count": 1
+    },
+    {
+      "label": "help-modal-open",
+      "event": "click",
+      "selector": "a.dup-global-help",
+      "count": 1
+    },
+    {
+      "label": "dupcloud-token-field",
+      "event": "click",
+      "selector": "#dupli-dupcloud-connect-btn",
+      "count": 1
+    },
+    {
+      "label": "storage-remote-never",
+      "event": "click",
+      "selector": "#dupcloud-finalize-setup",
+      "count": 1
+    },
+    {
+      "label": "license-visibility-preview",
+      "event": "click",
+      "selector": ".margin-0[data-parsley-multiple]",
+      "count": 3
+    },
+    {
+      "label": "license-actions-never",
+      "event": "click",
+      "selector": ".button.hollow",
+      "count": 3
+    },
+    {
+      "label": "settings-reset-confirm",
+      "event": "click",
+      "selector": "#dupli-reset-all",
+      "count": 1
+    },
+    {
+      "label": "activity-logs-delete-confirm",
+      "event": "click",
+      "selector": "#dup-delete-activity-logs",
+      "count": 1
+    },
+    {
+      "label": "trace-log-download-never",
+      "event": "click",
+      "selector": "div.dup-accordion-wrapper:nth-of-type(8) > div.accordion-content:nth-of-type(2) > div.margin-bottom-1:nth-of-type(3) > button.button",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-delete-activity-logs",
+        "tag": "button",
+        "text": "Delete All Logs",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-license-activation-btn",
+        "tag": "button",
+        "text": "Deactivate",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-license-clear-btn",
+        "tag": "button",
+        "text": "Clear Key",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-brand",
+        "tag": "a",
+        "text": "Installer Branding",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-capabilities",
+        "tag": "a",
+        "text": "Access",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-general",
+        "tag": "a",
+        "text": "General",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-import",
+        "tag": "a",
+        "text": "Import",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-migrate",
+        "tag": "a",
+        "text": "Import/Export Settings",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-package",
+        "tag": "a",
+        "text": "Backups",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-schedule",
+        "tag": "a",
+        "text": "Schedules",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dup-submenu-l2-duplicator-settings-storage",
+        "tag": "a",
+        "text": "Storage",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupcloud-finalize-setup",
+        "tag": "button",
+        "text": "Finalize Setup",
+        "count": 1,
+        "hidden": true,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupli-dupcloud-connect-btn",
+        "tag": "button",
+        "text": "Connect Duplicator Cloud Token",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupli-dupcloud-learn-more",
+        "tag": "a",
+        "text": "Explore plans and features",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupli-dupcloud-license-connect-btn",
+        "tag": "button",
+        "text": "Connect via Duplicator Pro License",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#dupli-reset-all",
+        "tag": "button",
+        "text": "Reset All Settings",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      },
+      {
+        "sel": "#show_hide",
+        "tag": "button",
+        "text": "Change Visibility",
+        "count": 1,
+        "hidden": false,
+        "wired": "tooltips-load",
+        "wiredEvent": "dup:ready"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_key_password",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#_key_password_confirmation",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#_license_key",
+        "tag": "input",
+        "text": "a1b2c3d4e5f60718293a4b5c6d7e8f90",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#_unhook_third_party_js",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#activity_log_retention_months",
+        "tag": "input",
+        "text": "6",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#crypt",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup_am_notices",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupcloud-compound-token",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1-confirm",
+        "tag": "input",
+        "text": "OK",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-cancel",
+        "tag": "input",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-confirm",
+        "tag": "input",
+        "text": "Continue",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-cancel",
+        "tag": "input",
+        "text": "No",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-confirm",
+        "tag": "input",
+        "text": "Yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4-cancel",
+        "tag": "input",
+        "text": "No",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4-confirm",
+        "tag": "input",
+        "text": "Yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#email-summary-frequency",
+        "tag": "select",
+        "text": "Never Daily Weekly Monthly",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#email-summary-recipients",
+        "tag": "select",
+        "text": "orders@danasdarkroom.com",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#name",
+        "tag": "input",
+        "text": "Duplicator Cloud",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#storage_id",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submit",
+        "tag": "input",
+        "text": "Save Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#trace_max_size",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#unhook_third_party_css",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#uninstall_packages",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#uninstall_settings",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#usage_tracking",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-action-form-action",
+        "tag": "input",
+        "text": "change_visibility",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".dup-messages-section",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#advanced-section-header",
+        "tag": "h3",
+        "text": "Advanced",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-ajax-loader",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-ajax-loader-img-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dup-license-info",
+        "tag": "div",
+        "text": "License: Elite Expire date: September 19, 2027 (354 days le…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-license-visibility-form",
+        "tag": "form",
+        "text": "Visibility License Visible Info Only License Invisible Pass…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-meta-screen",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-settings-form",
+        "tag": "form",
+        "text": "Plugin Version 5.0.4 Uninstall Delete plugin settings Remov…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-storage-form",
+        "tag": "form",
+        "text": "New to Duplicator Cloud? Explore plans and features Already…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-tr-license-key-and-description",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dup-tr-license-type",
+        "tag": "div",
+        "text": "If your license has been updated or is incorrect, then plea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupcloud-state-unauthorized",
+        "tag": "div",
+        "text": "New to Duplicator Cloud? Explore plans and features Already…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dupli-dlg-1",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1_message",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-1-alert-txt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2_message",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-2-confirm-txt",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3",
+        "tag": "div",
+        "text": "Are you sure you want to reset settings to defaults?",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3_message",
+        "tag": "div",
+        "text": "Are you sure you want to reset settings to defaults?",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-3-confirm-txt",
+        "tag": "div",
+        "text": "Are you sure you want to reset settings to defaults?",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4",
+        "tag": "div",
+        "text": "Are you sure you want to delete all activity logs? This act…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4_message",
+        "tag": "div",
+        "text": "Are you sure you want to delete all activity logs? This act…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dlg-4-confirm-txt",
+        "tag": "div",
+        "text": "Are you sure you want to delete all activity logs? This act…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dupli-dupcloud-token-area",
+        "tag": "div",
+        "text": "Step 1: Get your authentication token from Duplicator.com G…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate Duplicator ★★★★★ on WordPress.org to help us sp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_duplicator",
+        "tag": "li",
+        "text": "Duplicator Pro Backups Import Backups Staging Schedule Back…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#trace_max_size_error_container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".dup-body-header",
+        "tag": "div",
+        "text": "Settings General Backups Installer Branding Schedules Stora…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-global-help",
+        "tag": "a",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".dup-header",
+        "tag": "div",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}
