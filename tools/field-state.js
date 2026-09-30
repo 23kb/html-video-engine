@@ -26,9 +26,12 @@ function usage() {
     '  node tools/field-state.js --field checkbox --summary',
     '  node tools/field-state.js --search "Generate Choices"',
     '  node tools/field-state.js --interactivity            # every registered transition + provenance',
-    '  node tools/field-state.js --interactivity ranking    # filtered',
+    '  node tools/field-state.js --interactivity <word>     # filtered: transition label, block title or target slug',
     '  node tools/field-state.js --interactivity --synthetic # only fabricated blocks (verify product UI!)',
     '  node tools/field-state.js --interactivity --stale 30  # blocks whose @since is older than N days',
+    '',
+    '--interactivity reads the active pack: VIDEO_PRODUCT=<key> → products/<key>/snapshots/_shared/interactivity.js',
+    '(unset = the default pack). --list / --field / --search read the field-state inventory.',
   ].join('\n');
 }
 
@@ -41,7 +44,10 @@ function usage() {
 // read from the source, so the question is answerable while planning.
 function printInteractivity(filter, opts = {}) {
   const { staleDays = null, syntheticOnly = false } = opts;
-  const file = path.join(require('./lib/paths').snapshotsRoot(), '_shared', 'interactivity.js');
+  const paths = require('./lib/paths');
+  const snapRoot = paths.snapshotsRoot();
+  const file = path.join(snapRoot, '_shared', 'interactivity.js');
+  const fileRel = path.relative(ROOT, file).split(path.sep).join('/');
   if (!fs.existsSync(file)) {
     console.error(`Not found: ${file}`);
     process.exit(1);
@@ -53,35 +59,60 @@ function printInteractivity(filter, opts = {}) {
   // Registry transition labels are kebab-case; the other `label:` strings in
   // that file are field-palette display names ("Single Line Text"), not handlers.
   const spans = [];
-  let cur = { title: '(top matter)', labels: [] };
+  let cur = { title: '(top matter)', labels: [], text: [] };
   spans.push(cur);
   for (const line of src.split(/\r?\n/)) {
     const b = line.match(/^\s*\/\/ ─ (.+?) ─+\s*$/);
-    if (b) { cur = { title: b[1].trim(), labels: [] }; spans.push(cur); continue; }
+    if (b) { cur = { title: b[1].trim(), labels: [], text: [] }; spans.push(cur); continue; }
+    cur.text.push(line);
     const meta = line.match(/^\s*\/\/ @since (\S+) @source (\S+) @verified (\S+)(?: @product (\S+))?/);
     if (meta) { cur.since = meta[1]; cur.source = meta[2]; cur.verified = meta[3]; cur.product = meta[4]; continue; }
     if (/fabricat/i.test(line) && !/label:/.test(line)) cur.sawFabricate = true;
     const m = line.match(/label:\s*'([^']+)'/);
     if (m && /^[a-z0-9]+(-[a-z0-9]+)*$/.test(m[1]) && !cur.labels.includes(m[1])) cur.labels.push(m[1]);
   }
+  // Target slugs: the pack's own snapshot slugs a block names in quotes (the
+  // states it hands off to), so "which behaviour lands on admin-redirects"
+  // is answerable from the filter.
+  const slugs = new Set(require('./lib/snapshot-search').loadIndex(snapRoot).map(e => e.slug));
   const now = Date.now();
   const rows = [];
   const seen = new Set();
   for (const s of spans) {
     const syn = s.source === 'synthetic' || (!s.source && s.sawFabricate);
+    const targets = [];
+    for (const m of s.text.join('\n').matchAll(/['"]([a-z0-9]+(?:-{1,2}[a-z0-9]+)+)['"]/g)) {
+      if (slugs.has(m[1]) && !targets.includes(m[1])) targets.push(m[1]);
+    }
     for (const l of s.labels) {
       if (seen.has(l)) continue;
       seen.add(l);
       rows.push({
         label: l, syn,
+        title: s.title,
+        targets,
         since: s.since || '—',
         verified: s.verified || '—',
         source: s.source || (s.sawFabricate ? 'synthetic (untagged)' : '—'),
       });
     }
   }
+  // The filter matches the label as before, then the block title and the
+  // target slugs; spaces, hyphens and underscores count the same, so
+  // "local seo" finds admin-local-seo-* targets.
+  const norm = (v) => String(v || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   let shown = rows;
-  if (filter) shown = shown.filter(r => r.label.includes(filter.toLowerCase()));
+  if (filter) {
+    const f = filter.toLowerCase();
+    const nf = norm(filter);
+    shown = shown.filter((r) => {
+      if (r.label.includes(f)) return true;
+      if (nf && norm(r.title).includes(nf)) { r.via = 'title: ' + r.title; return true; }
+      const t = nf ? r.targets.filter((x) => x.includes(nf)) : [];
+      if (t.length) { r.via = 'targets: ' + t.join(', '); return true; }
+      return false;
+    });
+  }
   if (syntheticOnly) shown = shown.filter(r => r.syn);
   if (staleDays != null) {
     shown = shown.filter(r => {
@@ -91,18 +122,21 @@ function printInteractivity(filter, opts = {}) {
   }
   shown.sort((a, b) => a.label.localeCompare(b.label));
   const suffix = [filter && `matching "${filter}"`, syntheticOnly && 'SYNTHETIC only', staleDays != null && `@since older than ${staleDays}d`].filter(Boolean).join(', ');
-  console.log(`# ${shown.length}${shown.length !== rows.length ? ` of ${rows.length}` : ''} registered transition(s) in snapshots/_shared/interactivity.js${suffix ? ` (${suffix})` : ''}`);
+  console.log(`# ${shown.length}${shown.length !== rows.length ? ` of ${rows.length}` : ''} registered transition(s) in ${fileRel}${suffix ? ` (${suffix})` : ''}`);
   const pad = Math.max(12, ...shown.map(r => r.label.length));
   for (const r of shown) {
-    console.log(`  ${r.syn ? 'SYNTHETIC ' : '          '}${r.label.padEnd(pad)}  since=${r.since}  verified=${r.verified}  source=${r.source}`);
+    console.log(`  ${r.syn ? 'SYNTHETIC ' : '          '}${r.label.padEnd(pad)}  since=${r.since}  verified=${r.verified}  source=${r.source}${r.via ? `  (${r.via})` : ''}`);
   }
   if (!shown.length) {
     console.log('  (none matching the filters)');
   }
   console.log('');
-  console.log('A field type with no entry here has NO per-field handlers — a beat that');
-  console.log('needs one is a build task, not a given. Universal handlers (label,');
-  console.log('description, size, required, placeholder) apply to every field.');
+  console.log('A control, screen or field with no entry here has NO handler — a beat that');
+  console.log('needs one is a build task, not a given.');
+  if (!paths.productKey()) {   // the default pack's field palette
+    console.log('Universal field handlers (label, description, size, required,');
+    console.log('placeholder) apply to every field.');
+  }
   console.log('SYNTHETIC blocks fabricate UI with no captured template — verify the');
   console.log('product still ships that UI before storyboarding on one (ee 1: the PDF');
   console.log('block fabricates a retired UI).');

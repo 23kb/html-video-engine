@@ -53,6 +53,18 @@ if (!slug) {
   process.exit(1);
 }
 
+// A slug that is not in the active pack is usually another pack's: say which
+// one has it and which VIDEO_PRODUCT reaches it, instead of a bare "not found"
+// against the wrong root.
+{
+  const snapRoot = require('./lib/paths').snapshotsRoot();
+  if (!fs.existsSync(path.join(snapRoot, slug))) {
+    console.error(`snapshot not found: ${path.join(snapRoot, slug)}`);
+    for (const line of require('./lib/snapshot-search').missingSlugHint(slug, snapRoot)) console.error(line);
+    process.exit(1);
+  }
+}
+
 // --emit-actions: action inventory (acceptance T-6, rebuilt AP-15 2026-09-02).
 // WIRED = interactivity.js fires in-video (a registry transition matches the
 // element — real matches() semantics, computed at outline generation);

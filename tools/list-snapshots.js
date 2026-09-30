@@ -5,46 +5,90 @@
 //   node tools/list-snapshots.js                # list all snapshots
 //   node tools/list-snapshots.js --for <slug>   # show which snapshots a video uses,
 //                                               # which exist, which are missing
-//   node tools/list-snapshots.js --search <q>   # filter by slug, description,
-//                                               # topics or category
+//   node tools/list-snapshots.js --search <q>   # ranked search over slug, description,
+//                                               # topics and category
+//   node tools/list-snapshots.js --search <q> --all-packs
+//                                               # the same search in every products/<key>/ pack
 //   node tools/list-snapshots.js --json         # machine-readable
+//   node tools/list-snapshots.js --help
+//
+// The pack is VIDEO_PRODUCT (unset = the default pack); the first line names it.
 
 const fs = require('fs');
 const path = require('path');
 
 const REPO_ROOT = path.resolve(__dirname, '..');
-const SNAP_DIR = require('./lib/paths').snapshotsRoot();
-const INDEX_PATH = path.join(SNAP_DIR, 'index.json');
+const paths = require('./lib/paths');
+const search = require('./lib/snapshot-search');
+
+const USAGE = [
+  'Usage:',
+  '  node tools/list-snapshots.js                          # every snapshot in the pack',
+  '  node tools/list-snapshots.js --search <query>         # ranked: slug, topics, description, category',
+  '  node tools/list-snapshots.js --search <query> --all-packs   # every products/<key>/ pack, hits labelled',
+  '  node tools/list-snapshots.js --for <video-slug>       # snapshots a video uses, which are missing',
+  '  node tools/list-snapshots.js ... --json               # machine-readable',
+  '',
+  'The pack is VIDEO_PRODUCT=<key> (products/<key>/snapshots/); unset = the default pack.',
+  'Search words are split on spaces, hyphens, underscores and slashes, so',
+  '"local seo" finds admin-local-seo-*; every word that matches raises the rank.',
+].join('\n');
 
 function parseArgs(argv) {
-  const args = { for: null, search: null, json: false };
+  const args = { for: null, search: null, json: false, allPacks: false, help: false };
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
-    if (a === '--for') args.for = argv[++i];
-    else if (a === '--search') args.search = argv[++i];
+    if (a === '--for') args.for = argv[++i] || '';
+    else if (a === '--search') args.search = argv[++i] || '';
     else if (a === '--json') args.json = true;
+    else if (a === '--all-packs') args.allPacks = true;
+    else if (a === '--help' || a === '-h') args.help = true;
+    else {
+      // An unknown flag used to fall through to a full default-pack listing, which
+      // reads like an answer. Say what went wrong instead.
+      console.error('unknown argument: ' + a + '\n\n' + USAGE);
+      process.exit(2);
+    }
+  }
+  if (args.for === '' || args.search === '') {
+    console.error((args.for === '' ? '--for' : '--search') + ' needs a value\n\n' + USAGE);
+    process.exit(2);
+  }
+  if (args.allPacks && !args.search) {
+    console.error('--all-packs goes with --search <query>\n\n' + USAGE);
+    process.exit(2);
   }
   return args;
 }
 
-function loadIndex() {
-  if (!fs.existsSync(INDEX_PATH)) return { count: 0, snapshots: [] };
-  const raw = fs.readFileSync(INDEX_PATH, 'utf8');
+const SNAP_DIR = paths.snapshotsRoot();
+const INDEX_PATH = path.join(SNAP_DIR, 'index.json');
+
+// "<key> — products/<key>/snapshots": which pack a listing came from.
+function packLabel(root) {
+  const rel = path.relative(REPO_ROOT, root).split(path.sep).join('/');
+  const key = search.packOf(root);
+  return key ? `${key} — ${rel}` : rel;
+}
+
+function loadIndex(indexPath = INDEX_PATH) {
+  if (!fs.existsSync(indexPath)) return { count: 0, snapshots: [] };
+  const raw = fs.readFileSync(indexPath, 'utf8');
   // Mojibake guard (rf 5): index.json descriptions were once written as UTF-8
   // and read back as cp1252, so every em-dash rendered "â€”" in the output of
   // the most-used discovery tool, on every call. Repaired 2026-08-20; this
   // catches a recurrence at the point of use instead of years later.
-  if (/[ÂÃâãð][-ÿ–—‘’“”†-…™]/.test(raw)) {
-    const rel = path.relative(REPO_ROOT, INDEX_PATH).split(path.sep).join('/');
+  if (/[ÂÃâãð][-ÿ–—‘’“”†-…™]/.test(raw)) {
+    const rel = path.relative(REPO_ROOT, indexPath).split(path.sep).join('/');
     console.error(`⚠ ${rel} contains mis-encoded text (mojibake). Fix: node tools/fix-mojibake.js ${rel} --write`);
   }
   return JSON.parse(raw);
 }
 
-function listOnDisk() {
-  if (!fs.existsSync(SNAP_DIR)) return new Set();
+function listOnDisk(root = SNAP_DIR) {
+  if (!fs.existsSync(root)) return new Set();
   return new Set(
-    fs.readdirSync(SNAP_DIR, { withFileTypes: true })
+    fs.readdirSync(root, { withFileTypes: true })
       .filter(d => d.isDirectory())
       .map(d => d.name)
   );
@@ -96,8 +140,37 @@ function snapshotsReferencedByVideo(slug) {
   return refs;
 }
 
+// --all-packs: the same ranked search in every pack, one list, each hit
+// labelled with its pack, ranked across packs by score.
+function searchAllPacks(args) {
+  const hits = [];
+  const searched = [];
+  for (const p of search.packs()) {
+    const index = loadIndex(path.join(p.root, 'index.json'));
+    const onDisk = listOnDisk(p.root);
+    searched.push(p.key);
+    for (const r of search.rank(index.snapshots || [], args.search)) {
+      hits.push({ pack: p.key, score: r.score, onDisk: onDisk.has(r.entry.slug), ...r.entry });
+    }
+  }
+  hits.sort((a, b) => b.score - a.score || a.pack.localeCompare(b.pack) || a.slug.localeCompare(b.slug));
+  if (args.json) {
+    process.stdout.write(JSON.stringify({ packs: searched, query: args.search, count: hits.length, snapshots: hits }, null, 2) + '\n');
+    return;
+  }
+  console.log(`# packs: ${searched.join(', ')}`);
+  console.log(`# ${hits.length} snapshot(s) matching "${args.search}" across ${searched.length} pack(s)`);
+  for (const h of hits) {
+    const shows = h.shows ? ` — ${h.shows}` : '';
+    console.log(`[${h.pack}] ${h.slug}${shows}${h.onDisk ? '' : '  [INDEX-ONLY, no folder]'}`);
+  }
+  if (hits.length) console.log('\nOpen one with VIDEO_PRODUCT=<pack> (unset = the default pack).');
+}
+
 function main() {
   const args = parseArgs(process.argv);
+  if (args.help) { console.log(USAGE); return; }
+  if (args.allPacks) { searchAllPacks(args); return; }
   const index = loadIndex();
   const onDisk = listOnDisk();
 
@@ -132,20 +205,26 @@ function main() {
   // List mode
   let rows = index.snapshots.slice();
   if (args.search) {
-    const q = args.search.toLowerCase();
     // slug + description + topics + category: a person searching "stripe" or
     // "recurring" is asking what a screen SHOWS, and the topics list is where
-    // the capture recorded that (WO-306).
-    rows = rows.filter((s) => [
-      s.slug, s.shows, s.category, ...(Array.isArray(s.topics) ? s.topics : [s.topics]),
-    ].some((v) => String(v || '').toLowerCase().includes(q)));
+    // the capture recorded that (WO-306). Ranked and tokenised (lib/snapshot-
+    // search.js): "local seo" finds admin-local-seo-*, best match first. The
+    // plain substring the tool used before still counts, so nothing it found
+    // is lost.
+    rows = search.rank(rows, args.search).map((r) => r.entry);
   }
 
   if (args.json) {
-    process.stdout.write(JSON.stringify({ count: rows.length, snapshots: rows }, null, 2) + '\n');
+    process.stdout.write(JSON.stringify({
+      pack: search.packOf(SNAP_DIR) || paths.activeProduct(),
+      root: path.relative(REPO_ROOT, SNAP_DIR).split(path.sep).join('/'),
+      count: rows.length,
+      snapshots: rows,
+    }, null, 2) + '\n');
     return;
   }
 
+  console.log(`# pack: ${packLabel(SNAP_DIR)}`);
   console.log(`# ${rows.length} snapshot(s)${args.search ? ` matching "${args.search}"` : ''}`);
   for (const s of rows) {
     const onDiskFlag = onDisk.has(s.slug) ? '' : '  [INDEX-ONLY, no folder]';
