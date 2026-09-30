@@ -1,0 +1,73 @@
+
+
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework {
+			padding: 4px 6px;
+		}
+
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework .ab-sub-wrapper {
+			max-width: 500px;
+			max-height: calc(100vh - 64px);
+			overflow-y: hidden;
+			padding: 6px;
+			margin-top: 4px;
+		}
+
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework .ab-sub-wrapper div.ab-item {
+			height: max-content;
+			word-wrap: break-word;
+			white-space: normal;
+			line-height: 1.4em;
+			display: inline-block;
+		}
+
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework .ab-sub-wrapper div.ab-item * {
+			line-height: 1em;
+		}
+
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework .ab-sub-wrapper div.ab-item strong {
+			color: #fff;
+			font-weight: 500;
+		}
+
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework > a {
+			background-color: orangered;
+			position: relative;
+			border-radius: 3px;
+			height: 24px;
+			line-height: 24px;
+			font-size: 12px;
+		}
+
+		#wp-admin-bar-et-builder-shortcode-framework-migrator {
+			border-top: 1px solid #494e56;
+			margin-top: 10px !important;
+			padding-top: 10px !important;
+		}
+
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework > a:hover,
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework > a:hover::before,
+		#wpadminbar li#wp-admin-bar-et-builder-shortcode-framework.hover .ab-item::before,
+		#wpadminbar li#wp-admin-bar-et-builder-shortcode-framework.hover > a,
+		#wpadminbar:not(.mobile) .ab-top-menu>li:hover > .ab-item,
+		#wpadminbar:not(.mobile) .ab-top-menu>li>.ab-item:focus {
+			color: #fff !important;
+		}
+
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework > a::before {
+			font-family: ETmodules !important;
+			font-weight: 400;
+			content: "";
+			color: #fff;
+			padding: 4px 0;
+			font-size: 16px;
+		}
+
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework,
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework-loaded,
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework-option,
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework-constant,
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework-hook,
+		#wpadminbar #wp-admin-bar-et-builder-shortcode-framework-constant-value {
+			display: none;
+		}
+		

@@ -1,0 +1,906 @@
+{
+  "slug": "admin-search-statistics-content-rankings",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "main-tab-route",
+      "event": "click",
+      "selector": ".var--box.var-tab",
+      "count": 6
+    },
+    {
+      "label": "help-center-toggle",
+      "event": "click",
+      "selector": "div.aioseo-container:nth-of-type(1) > div.aioseo-header-content > div.header-actions > span.round:nth-of-type(3)",
+      "count": 2
+    },
+    {
+      "label": "help-center-section",
+      "event": "click",
+      "selector": "li.aioseo-help-category.opened header",
+      "count": 6
+    },
+    {
+      "label": "help-center-view-all",
+      "event": "click",
+      "selector": ".aioseo-button.aioseo-help-docs-viewall",
+      "count": 6
+    },
+    {
+      "label": "header-drawer-open",
+      "event": "click",
+      "selector": ".round",
+      "count": 2
+    },
+    {
+      "label": "search-statistics-sample",
+      "event": "click",
+      "selector": "a.aioseo-button.blue",
+      "count": 1
+    },
+    {
+      "label": "live-only-button",
+      "event": "click",
+      "selector": "a.aioseo-button.green",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-alert-close",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-button",
+        "tag": "a",
+        "text": "Connect to Google Search Console",
+        "count": 10,
+        "hidden": false,
+        "wired": "live-only-button",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".aioseo-flyout-menu-button",
+        "tag": "div",
+        "text": "Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-categories-toggle",
+        "tag": "ul",
+        "text": "Getting Started How to Upgrade From All in One SEO Lite to …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-docs-support",
+        "tag": "button",
+        "text": "Submit a Support Ticket",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-docs-viewall",
+        "tag": "button",
+        "text": "View All Getting Started Docs",
+        "count": 7,
+        "hidden": false,
+        "wired": "help-center-view-all",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#aioseo-search-statistics-post-table",
+        "tag": "div",
+        "text": "All Content Types Filter 10 items«‹of 1›» Title TruSEO Scor…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-tab-content",
+        "tag": "div",
+        "text": "The Content Rankings report provides valuable insights into…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-wp-table-header",
+        "tag": "div",
+        "text": "All Content Types Filter 10 items«‹of 1›»",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#post-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#aioseo-help-modal",
+        "tag": "div",
+        "text": "Getting Started How to Upgrade From All in One SEO Lite to …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-modal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-app",
+        "tag": "div",
+        "text": "Search Statistics Dashboard SEO Statistics Keyword Rank Tra…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-flyout-menu",
+        "tag": "div",
+        "text": "Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-footer-links",
+        "tag": "div",
+        "text": "Made with ♥ by the AIOSEO Team Support/Docs/Free Plugins",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-categories",
+        "tag": "div",
+        "text": "Getting Started How to Upgrade From All in One SEO Lite to …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-close",
+        "tag": "div",
+        "text": "Close",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-footer",
+        "tag": "div",
+        "text": "View Documentation Browse documentation, reference material…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-logo",
+        "tag": "svg",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-result",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-search",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexcharts-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#apexcharts56u530x5l",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartsbfn239sq",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartsdn4h1n44g",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartsemux8owg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartsiy3vbr9f",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartslv0a77zd",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartsohzniecfk",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartsq7ufkzmu",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartsq9h55501",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartsxo8r50ii",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate All in One SEO Pro ★★★★★ on WordPress.org to he…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#forecastMask56u530x5l",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#forecastMaskbfn239sq",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#forecastMaskdn4h1n44g",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#forecastMaskemux8owg",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#forecastMaskiy3vbr9f",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#forecastMasklv0a77zd",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#forecastMaskohzniecfk",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#forecastMaskq7ufkzmu",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#forecastMaskq9h55501",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#forecastMaskxo8r50ii",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectBarMask56u530x5l",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectBarMaskbfn239sq",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectBarMaskdn4h1n44g",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectBarMaskemux8owg",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectBarMaskiy3vbr9f",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectBarMasklv0a77zd",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectBarMaskohzniecfk",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectBarMaskq7ufkzmu",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectBarMaskq9h55501",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectBarMaskxo8r50ii",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMarkerMask56u530x5l",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMarkerMaskbfn239sq",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMarkerMaskdn4h1n44g",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMarkerMaskemux8owg",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMarkerMaskiy3vbr9f",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMarkerMasklv0a77zd",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMarkerMaskohzniecfk",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMarkerMaskq7ufkzmu",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMarkerMaskq9h55501",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMarkerMaskxo8r50ii",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMask56u530x5l",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMaskbfn239sq",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMaskdn4h1n44g",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMaskemux8owg",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMaskiy3vbr9f",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMasklv0a77zd",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMaskohzniecfk",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMaskq7ufkzmu",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMaskq9h55501",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMaskxo8r50ii",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nonForecastMask56u530x5l",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nonForecastMaskbfn239sq",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nonForecastMaskdn4h1n44g",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nonForecastMaskemux8owg",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nonForecastMaskiy3vbr9f",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nonForecastMasklv0a77zd",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nonForecastMaskohzniecfk",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nonForecastMaskq7ufkzmu",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nonForecastMaskq9h55501",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nonForecastMaskxo8r50ii",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsGradient21",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsGradient22",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsGradient23",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsGradient24",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsGradient25",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsGradient26",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsGradient27",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsGradient28",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsGradient29",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsGradient30",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_aioseo",
+        "tag": "li",
+        "text": "All in One SEO Notifications Dashboard General Settings Sea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-circle-close",
+        "tag": "svg",
+        "text": "",
+        "count": 16,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-close",
+        "tag": "svg",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-container",
+        "tag": "div",
+        "text": "Search Statistics",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-flyout-menu-label",
+        "tag": "span",
+        "text": "Support & Docs",
+        "count": 7,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-folder-open",
+        "tag": "svg",
+        "text": "",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-header",
+        "tag": "div",
+        "text": "Search Statistics",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-header-content",
+        "tag": "div",
+        "text": "Search Statistics",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-category",
+        "tag": "li",
+        "text": "Getting Started How to Upgrade From All in One SEO Lite to …",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-header",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-input",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-input-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-link",
+        "tag": "svg",
+        "text": "",
+        "count": 20,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-message",
+        "tag": "svg",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-row",
+        "tag": "div",
+        "text": "Search traffic insights Improved visibility Track page and …",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

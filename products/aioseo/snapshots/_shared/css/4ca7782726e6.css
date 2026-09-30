@@ -1,0 +1,44 @@
+/**
+ * Bulk Embed CSS
+ *
+ * @since {VERSION}
+ */
+
+.jconfirm-content .wpf-bulk-embed-list {
+	text-align: left;
+}
+
+.wpf-bulk-embed-table {
+	width: 100%;
+}
+
+.jconfirm-content .wpf-bulk-embed-list .edit {
+	text-align: right;
+}
+
+.jconfirm-content .wpf-bulk-embed-list .status a:after {
+	font-family: "FontAwesome";
+	content: "\f08e";
+	margin-left: 3px;
+	font-size: 80%;
+	position: relative;
+	top: -3px;
+	line-height: 1;
+}
+
+@keyframes spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+.wpf-bulk-embed-list .spinner {
+	background-image: url(../assets/fa9e5bf01cf2.svg);
+	width: 14px;
+	height: 15px;
+	display: inline-block;
+	animation: spin 1s linear infinite;
+}

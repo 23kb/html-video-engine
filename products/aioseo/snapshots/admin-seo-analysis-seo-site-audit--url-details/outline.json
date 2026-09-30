@@ -1,0 +1,507 @@
+{
+  "slug": "admin-seo-analysis-seo-site-audit--url-details",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "main-tab-route",
+      "event": "click",
+      "selector": ".var--box.var-tab",
+      "count": 4
+    },
+    {
+      "label": "card-tab-switch",
+      "event": "click",
+      "selector": "div.var-tab.var--box",
+      "count": 3
+    },
+    {
+      "label": "help-center-toggle",
+      "event": "click",
+      "selector": "div.aioseo-container:nth-of-type(1) > div.aioseo-header-content > div.header-actions > span.round:nth-of-type(3)",
+      "count": 2
+    },
+    {
+      "label": "help-center-section",
+      "event": "click",
+      "selector": "li.aioseo-help-category.opened header",
+      "count": 6
+    },
+    {
+      "label": "help-center-view-all",
+      "event": "click",
+      "selector": ".aioseo-button.aioseo-help-docs-viewall",
+      "count": 6
+    },
+    {
+      "label": "header-drawer-open",
+      "event": "click",
+      "selector": ".round",
+      "count": 2
+    },
+    {
+      "label": "live-only-button",
+      "event": "click",
+      "selector": "a.aioseo-button.blue",
+      "count": 12
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-button",
+        "tag": "a",
+        "text": "Fix",
+        "count": 18,
+        "hidden": false,
+        "wired": "live-only-button",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".aioseo-flyout-menu-button",
+        "tag": "div",
+        "text": "Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-categories-toggle",
+        "tag": "ul",
+        "text": "Getting Started How to Upgrade From All in One SEO Lite to …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-docs-support",
+        "tag": "button",
+        "text": "Submit a Support Ticket",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-docs-viewall",
+        "tag": "button",
+        "text": "View All Getting Started Docs",
+        "count": 7,
+        "hidden": false,
+        "wired": "help-center-view-all",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".aioseo-seo-site-analysis-all-urls-results__result-toggle",
+        "tag": "div",
+        "text": "",
+        "count": 20,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#aioseo-seo-analysis-all-urls-wp-table",
+        "tag": "div",
+        "text": "All Content Types Posts Pages Locations Categories Tags Loc…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-seo-analysis-issues-posts-report-wp-table",
+        "tag": "div",
+        "text": "Issues The SEO title is too long. Fix Ignore The H1 tag doe…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-tab-content",
+        "tag": "div",
+        "text": "Site Overview 362 Total Checks 266 Good 41 Warnings 55 Issu…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-wp-table-header",
+        "tag": "div",
+        "text": "All Content Types Posts Pages Locations Categories Tags Loc…",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#post-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#aioseo-help-modal",
+        "tag": "div",
+        "text": "Getting Started How to Upgrade From All in One SEO Lite to …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-app",
+        "tag": "div",
+        "text": "SEO Analysis Homepage Audit Site Audit Analyze Competitor S…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-flyout-menu",
+        "tag": "div",
+        "text": "Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-footer-links",
+        "tag": "div",
+        "text": "Made with ♥ by the AIOSEO Team Support/Docs/Free Plugins",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-categories",
+        "tag": "div",
+        "text": "Getting Started How to Upgrade From All in One SEO Lite to …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-close",
+        "tag": "div",
+        "text": "Close",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-footer",
+        "tag": "div",
+        "text": "View Documentation Browse documentation, reference material…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-logo",
+        "tag": "svg",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-result",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-search",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate All in One SEO Pro ★★★★★ on WordPress.org to he…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2466",
+        "tag": "div",
+        "text": "vegetable bed",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2467",
+        "tag": "div",
+        "text": "shade perennials",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2468",
+        "tag": "div",
+        "text": "composting",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2469",
+        "tag": "div",
+        "text": "prune hydrangeas",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2470",
+        "tag": "div",
+        "text": "native plants",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2472",
+        "tag": "div",
+        "text": "bulb planting",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2473",
+        "tag": "div",
+        "text": "watering schedule",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2474",
+        "tag": "div",
+        "text": "container herbs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2475",
+        "tag": "div",
+        "text": "garden tools",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2476",
+        "tag": "div",
+        "text": "garden center",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2478",
+        "tag": "div",
+        "text": "Add Focus Keyword",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2480",
+        "tag": "div",
+        "text": "garden design",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2482",
+        "tag": "div",
+        "text": "Add Focus Keyword",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2491",
+        "tag": "div",
+        "text": "plant care",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#keyword-2506",
+        "tag": "div",
+        "text": "gift cards",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_aioseo",
+        "tag": "li",
+        "text": "All in One SEO Notifications Dashboard General Settings Sea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-circle-close",
+        "tag": "svg",
+        "text": "",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-close",
+        "tag": "svg",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-container",
+        "tag": "div",
+        "text": "SEO Analysis",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-flyout-menu-label",
+        "tag": "span",
+        "text": "Support & Docs",
+        "count": 7,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-folder-open",
+        "tag": "svg",
+        "text": "",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-header",
+        "tag": "div",
+        "text": "SEO Analysis",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-header-content",
+        "tag": "div",
+        "text": "SEO Analysis",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-category",
+        "tag": "li",
+        "text": "Getting Started How to Upgrade From All in One SEO Lite to …",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-header",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-input",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-input-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-message",
+        "tag": "svg",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-seo-site-analysis-url-details-results__row-actions",
+        "tag": "div",
+        "text": "Fix Ignore",
+        "count": 5,
+        "hidden": false
+      }
+    ]
+  }
+}

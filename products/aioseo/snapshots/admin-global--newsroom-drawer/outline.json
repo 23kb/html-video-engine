@@ -1,0 +1,492 @@
+{
+  "slug": "admin-global--newsroom-drawer",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "card-collapse",
+      "event": "click",
+      "selector": ".header.toggles",
+      "count": 5
+    },
+    {
+      "label": "help-center-toggle",
+      "event": "click",
+      "selector": "div.aioseo-container:nth-of-type(1) > div.aioseo-header-content > div.header-actions > span.round:nth-of-type(3)",
+      "count": 2
+    },
+    {
+      "label": "help-center-section",
+      "event": "click",
+      "selector": "li.aioseo-help-category.opened header",
+      "count": 6
+    },
+    {
+      "label": "help-center-view-all",
+      "event": "click",
+      "selector": ".aioseo-button.aioseo-help-docs-viewall",
+      "count": 6
+    },
+    {
+      "label": "header-drawer-open",
+      "event": "click",
+      "selector": ".round",
+      "count": 2
+    },
+    {
+      "label": "newsroom-drawer-close",
+      "event": "click",
+      "selector": "button.newsroom-close",
+      "count": 2
+    },
+    {
+      "label": "live-only-button",
+      "event": "click",
+      "selector": ".aioseo-button.aioseo-button1",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-button",
+        "tag": "a",
+        "text": "Launch the Setup Wizard →",
+        "count": 14,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-button1",
+        "tag": "a",
+        "text": "Enable Email Reports",
+        "count": 2,
+        "hidden": false,
+        "wired": "live-only-button",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".aioseo-button2",
+        "tag": "button",
+        "text": "All Good, I'm already getting it",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-flyout-menu-button",
+        "tag": "div",
+        "text": "Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-categories-toggle",
+        "tag": "ul",
+        "text": "Getting Started How to Upgrade From All in One SEO Lite to …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-docs-support",
+        "tag": "button",
+        "text": "Submit a Support Ticket",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-docs-viewall",
+        "tag": "button",
+        "text": "View All Getting Started Docs",
+        "count": 7,
+        "hidden": false,
+        "wired": "help-center-view-all",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": ".aioseo-tab-content",
+        "tag": "div",
+        "text": "How to Get Started Welcome to All in One SEO Thank you for …",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "inputs": [],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#aioseo-help-modal",
+        "tag": "div",
+        "text": "Getting Started How to Upgrade From All in One SEO Lite to …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-row",
+        "tag": "div",
+        "text": "Launch the Setup Wizard → Read the Setup Guide",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-setup-wizard-container",
+        "tag": "div",
+        "text": "How to Get Started Welcome to All in One SEO Thank you for …",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#_clip1",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-app",
+        "tag": "div",
+        "text": "Dashboard What's New ✕ AIOSEO v5.0.1. August 26, 2026 TruSE…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-flyout-menu",
+        "tag": "div",
+        "text": "Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-footer-links",
+        "tag": "div",
+        "text": "Made with ♥ by the AIOSEO Team Support/Docs/Free Plugins",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-categories",
+        "tag": "div",
+        "text": "Getting Started How to Upgrade From All in One SEO Lite to …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-close",
+        "tag": "div",
+        "text": "Close",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-footer",
+        "tag": "div",
+        "text": "View Documentation Browse documentation, reference material…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-logo",
+        "tag": "svg",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-result",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-help-search",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#clip0_2264_27508",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clip1_2264_27508",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clip2_2264_27508",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clip3_2264_27508",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#filter0_dd_2264_27508",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate All in One SEO Pro ★★★★★ on WordPress.org to he…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#image0_2264_27508",
+        "tag": "image",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#image1_2264_27508",
+        "tag": "image",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mask0_2264_27508",
+        "tag": "mask",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#paint0_linear_2264_27508",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pattern0",
+        "tag": "pattern",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pattern1",
+        "tag": "pattern",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_aioseo",
+        "tag": "li",
+        "text": "All in One SEO Notifications Dashboard General Settings Sea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-close",
+        "tag": "svg",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-container",
+        "tag": "div",
+        "text": "Dashboard",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-flyout-menu-label",
+        "tag": "span",
+        "text": "Support & Docs",
+        "count": 7,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-folder-open",
+        "tag": "svg",
+        "text": "",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-header",
+        "tag": "div",
+        "text": "Dashboard What's New ✕ AIOSEO v5.0.1. August 26, 2026 TruSE…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-header-content",
+        "tag": "div",
+        "text": "Dashboard",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-category",
+        "tag": "li",
+        "text": "Getting Started How to Upgrade From All in One SEO Lite to …",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-help-header",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-input",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-input-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-message",
+        "tag": "svg",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-quicklinks-cards-row",
+        "tag": "div",
+        "text": "Quicklinks Search Appearance Configure how your website con…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-select",
+        "tag": "div",
+        "text": "Posts",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-seo-setup-content",
+        "tag": "div",
+        "text": "Step 0 of 5 You're almost there! Once you complete the SEO …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-settings-row",
+        "tag": "div",
+        "text": "Read the All in One SEO user guide",
+        "count": 4,
+        "hidden": false
+      }
+    ]
+  }
+}

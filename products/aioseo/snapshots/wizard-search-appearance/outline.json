@@ -1,0 +1,159 @@
+{
+  "slug": "wizard-search-appearance",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "settings-control-change",
+      "event": "change",
+      "selector": "#id_underConstruction_0",
+      "count": 10
+    },
+    {
+      "label": "wizard-next-step",
+      "event": "click",
+      "selector": ".aioseo-button",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": ".aioseo-button",
+        "tag": "button",
+        "text": "Skip this Step",
+        "count": 2,
+        "hidden": false,
+        "wired": "wizard-next-step",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".aioseo-close-and-exit-modal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-radio-toggle",
+        "tag": "div",
+        "text": "Under Construction Live Site",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-toggle",
+        "tag": "label",
+        "text": "Include All Post Types",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#id_emailReports_0",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#id_emailReports_1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#id_multipleAuthors_0",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#id_multipleAuthors_1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#id_redirectAttachmentPages_0",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#id_redirectAttachmentPages_1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#id_underConstruction_0",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#id_underConstruction_1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-wizard-container",
+        "tag": "div",
+        "text": "Step 4 of 5 Search Appearance The way your site is displaye…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-wizard-header",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-app",
+        "tag": "div",
+        "text": "Step 4 of 5 Search Appearance The way your site is displaye…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-settings-row",
+        "tag": "div",
+        "text": "SERP Preview Rosa's Garden Co. http://rosasgardenco.com",
+        "count": 7,
+        "hidden": false
+      }
+    ]
+  }
+}
