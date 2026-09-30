@@ -190,6 +190,18 @@ Use `lead` to start a glide slightly early so the click lands ON the word rather
 
 Default model is **`eleven_v3`** for ALL videos (Umair 2026-08-14: "v2 needs to be fixed for tutorials also, its currently soulless and not lively"). Tutorial preset: `--stability 0.5` (Natural), moderate audio tags, the STANDARD `narration-qc` gate first — widen to `--expressive` only if the gate fights a read you like; never chase the voice-cluster gate by raising stability (that playbook shipped the monotone — ssn 10/11). Shorts preset: `--stability 0` + audio tags + `--expressive`.
 
+**v3 / v4 A/B (2026-10-01).** Render both with `node tts/generate.js --engine elevenlabs --video <slug> --models eleven_v3,eleven_v4`. v3 stays the primary `narration/` set the film plays and its DUR table is measured from. v4 lands in `narration/eleven_v4/`; measure it with `measure-narration.js <slug> --variant eleven_v4`. A v4 cut needs its own DUR table: v4 clips run a different length. v4 clips are sent joined (the neighbouring clips' text as context) by default; `--no-context` turns that off.
+
+**v4 audio-tag vocabulary (Umair 2026-10-01, from the v4 tag × stability grid).** Tag wording is the intensity control; stability is a separate, global setting, so never lower or raise stability to tame one tag.
+
+| Use | Never use on v4 |
+|---|---|
+| `[slightly excited]`, `[upbeat]` (warmer energy than excited) | `[excited]`, `[very excited]`: too hot for the tutorial voice |
+| `[confident]` | `[quietly confident]`, `[boldly confident]` |
+| `[slightly warm]`, `[warmly]`, `[very warm]`: all fine | `[cheerful]`, `[pleased]`: never in tutorials |
+
+`tts/generate.js` warns when a banned tag goes to v4.
+
 **v3 pacing is written IN the copy, not in markup** — v3 ignores `<break>` SSML. The copy rules, each measured in the shorts round:
 
 - **Flowing spoken sentences, never caption fragments** — fragments destabilize synthesis (bac B; the fragment-instability measurement is ssn 10's "caught. Safe." takes).

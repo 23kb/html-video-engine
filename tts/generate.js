@@ -33,6 +33,21 @@
 //   Mixing v3 stability tiers inside one video is fine when the cluster
 //   passes (bac A). Voice stays Kacie — v3 fixes the delivery, not the voice.
 //
+// ── v3 / v4 A/B (2026-10-01) ────────────────────────────────────────────────
+//   eleven_v4 reads the same markup as v3: [tone] tags honored, <break>
+//   ignored. So v3-era .txt files go to v4 unchanged.
+//   --models eleven_v3,eleven_v4   one run, both takes. The FIRST model writes
+//                         the primary narration/<key>.mp3 — the file the film
+//                         plays and the DUR table is measured from, so film
+//                         sync is untouched. Every other model writes
+//                         narration/<model>/<key>.mp3; measure that set with
+//                         `measure-narration.js <slug> --variant <model>`.
+//   v4 joins: each eleven_v4 clip is sent with its neighbours' text (film
+//   order: intro, postintro, ch1-1, ch1-2 … outro) as previous_text /
+//   next_text, so the read carries across clips instead of resetting.
+//   v3 refuses these fields (HTTP 400). --no-context turns it off, e.g. for
+//   test folders whose clips are not one script.
+//
 // ── ⚠ BREAKING-CHANGE NOTE (the v2→v3 default flip) ─────────────────────────
 //   v2 honors <break time="0.6s"/> SSML pause tags; eleven_v3 silently
 //   IGNORES <break> — on v3, pacing is written as punctuation (dashes,
@@ -110,7 +125,8 @@ const beatArg    = flagValue('--beat');           // e.g. "cff-chapter-3:click-s
 const engineArg  = flagValue('--engine') || process.env.TTS_ENGINE || 'voicebox';
 const voiceArg   = flagValue('--voice');          // elevenlabs voice id override (stock-voice tests)
 const modelArg   = flagValue('--model');          // elevenlabs model id override
-const flagValues = new Set([videoSlug, chapterArg, beatArg, flagValue('--engine'), voiceArg, modelArg, flagValue('--stability'), flagValue('--style')].filter(Boolean));
+const modelsArg  = flagValue('--models');         // elevenlabs A/B: comma list, first = primary
+const flagValues = new Set([videoSlug, chapterArg, beatArg, flagValue('--engine'), voiceArg, modelArg, modelsArg, flagValue('--stability'), flagValue('--style')].filter(Boolean));
 const rest = positional.filter(a => !flagValues.has(a));
 const allMode = flags.has('--all');
 const force   = flags.has('--force');
@@ -136,7 +152,13 @@ const VOICE_KEY = (videoSlug && brandLib.brandForFilm(videoSlug).voice) || 'KACI
 const EL_VOICE = voiceArg || process.env[`ELEVENLABS_VOICE_ID_${VOICE_KEY}`];
 // Default eleven_v3 (fix-round C9; was eleven_multilingual_v2 — see the
 // breaking-change note in the header: v3 ignores <break> SSML).
-const EL_MODEL = modelArg || process.env.ELEVENLABS_MODEL || 'eleven_v3';
+const EL_MODELS = (modelsArg || modelArg || process.env.ELEVENLABS_MODEL || 'eleven_v3')
+  .split(',').map(s => s.trim()).filter(Boolean);
+const EL_MODEL = EL_MODELS[0];
+if (modelsArg && engineArg !== 'elevenlabs') {
+  console.error('--models is ElevenLabs-only; pass --engine elevenlabs.');
+  process.exit(1);
+}
 // QC r6: stability override for the v3 voice-drift fix (--stability 1.0 = Robust).
 const EL_STABILITY = (() => {
   const v = parseFloat(flagValue('--stability') ?? process.env.ELEVENLABS_STABILITY ?? '0.5');
@@ -228,10 +250,63 @@ async function shouldSkip(txtPath, mp3Path) {
 }
 
 // ── synthesis ──────────────────────────────────────────────────────────────
+// Where a model's take lands: the first model is the primary (narration/),
+// the rest go to narration/<model>/ (see the v3 / v4 A/B header note).
+function modelDir(dir, model) {
+  return model === EL_MODELS[0] ? dir : path.join(dir, model);
+}
+const renderedModels = new Set();   // per bucket; decides which .tts.json sidecars to write
+
+// v4 joins: the clips before and after this one, in film order (see header).
+const contextModel = m => /^eleven_v4/.test(m) && !flags.has('--no-context');
+function clipRank(k) {
+  if (k === 'intro') return [0];
+  if (k === 'postintro') return [1];
+  const ch = k.match(/^ch(\d+)(?:-(\d+))?(.*)$/);
+  if (ch) return [2, +ch[1], +(ch[2] || 0), ch[3]];
+  if (k === 'outro') return [4];
+  return [3, 0, 0, k];
+}
+function compareClips(a, b) {
+  const ra = clipRank(a), rb = clipRank(b);
+  for (let i = 0; i < Math.max(ra.length, rb.length); i++) {
+    if (ra[i] === undefined) return -1;
+    if (rb[i] === undefined) return 1;
+    if (ra[i] !== rb[i]) return ra[i] < rb[i] ? -1 : 1;
+  }
+  return 0;
+}
+async function neighbourText(dir, slug) {
+  const order = (await slugsIn(dir)).sort(compareClips);
+  const i = order.indexOf(slug);
+  const read = async s => s ? (await fs.readFile(path.join(dir, `${s}.txt`), 'utf8')).trim() : undefined;
+  return { prev: await read(order[i - 1]), next: await read(order[i + 1]) };
+}
+
 async function synth(dir, slug) {
   const txtPath = path.join(dir, `${slug}.txt`);
-  const outMp3  = path.join(dir, `${slug}.mp3`);
 
+  if (engineArg === 'elevenlabs') {
+    let text = null, rendered = null;
+    for (const model of EL_MODELS) {
+      const outDir = modelDir(dir, model);
+      const outMp3 = path.join(outDir, `${slug}.mp3`);
+      if (await shouldSkip(txtPath, outMp3)) {
+        console.log(`[${slug}] skip ${model} (mp3 newer than txt; pass --force to rerender)`);
+        continue;
+      }
+      text ??= (await fs.readFile(txtPath, 'utf8')).trim();
+      if (!text) throw new Error(`empty narration: ${txtPath}`);
+      await fs.mkdir(outDir, { recursive: true });
+      const ctx = contextModel(model) ? await neighbourText(dir, slug) : {};
+      const r = await synthElevenLabs(slug, text, outMp3, model, ctx);
+      renderedModels.add(model);
+      rendered ??= r;   // the primary's duration, or the first variant rendered
+    }
+    return rendered || { slug, skipped: true };
+  }
+
+  const outMp3  = path.join(dir, `${slug}.mp3`);
   if (await shouldSkip(txtPath, outMp3)) {
     console.log(`[${slug}] skip (mp3 newer than txt; pass --force to rerender)`);
     return { slug, skipped: true };
@@ -240,7 +315,6 @@ async function synth(dir, slug) {
   const text = (await fs.readFile(txtPath, 'utf8')).trim();
   if (!text) throw new Error(`empty narration: ${txtPath}`);
 
-  if (engineArg === 'elevenlabs') return synthElevenLabs(slug, text, outMp3);
   if (engineArg === 'fishaudio')  return synthFishAudio(slug, text, outMp3);
 
   process.stdout.write(`[${slug}] ${text.length} chars → voicebox... `);
@@ -288,30 +362,38 @@ async function synth(dir, slug) {
 }
 
 // ── ElevenLabs synthesis — direct mp3, no ffmpeg step ──────────────────────
-async function synthElevenLabs(slug, text, outMp3) {
-  // QC r6: [warmly]/[curious]-style audio tags are eleven_v3-only markup —
-  // earlier models (multilingual_v2 etc.) read them ALOUD. Strip when not v3.
-  const isV3 = /_v3/.test(EL_MODEL);
-  const elText = isV3
+const V4_BANNED_TAGS = /\[(?:very )?excited\]|\[(?:quietly|boldly) confident\]|\[cheerful\]|\[pleased\]/gi;
+async function synthElevenLabs(slug, text, outMp3, model, { prev, next } = {}) {
+  // QC r6: [warmly]/[curious]-style audio tags are v3/v4-only markup —
+  // earlier models (multilingual_v2 etc.) read them ALOUD. Strip for those.
+  const isTagModel = /_v[34](_|$)/.test(model);
+  const elText = isTagModel
     ? text
     : text.replace(/\s*\[[a-z][a-z -]*\]\s*/gi, ' ').replace(/\s{2,}/g, ' ').trim();
   // C9 migration guard: v2-era .txt files pace with <break> SSML, which v3
-  // silently ignores — the clip loses its pauses. Warn, don't block.
-  if (isV3 && /<break[\s/>]/i.test(elText)) {
-    console.warn(`\n  ⚠ [${slug}] contains <break> SSML but model ${EL_MODEL} IGNORES it — this is v2-era text. Rewrite pacing as punctuation/dashes/ellipses (header note), or pass --model eleven_multilingual_v2.`);
+  // and v4 silently ignore — the clip loses its pauses. Warn, don't block.
+  if (isTagModel && /<break[\s/>]/i.test(elText)) {
+    console.warn(`\n  ⚠ [${slug}] contains <break> SSML but model ${model} IGNORES it — this is v2-era text. Rewrite pacing as punctuation/dashes/ellipses (header note), or pass --model eleven_multilingual_v2.`);
   }
-  process.stdout.write(`[${slug}] ${elText.length} chars → elevenlabs (${EL_MODEL}, stab ${EL_STABILITY})... `);
+  // v4 tag vocabulary (Umair 2026-10-01; film-tutorial skill): these tags are banned on v4.
+  const banned = /^eleven_v4/.test(model) && elText.match(V4_BANNED_TAGS);
+  if (banned) {
+    console.warn(`\n  ⚠ [${slug}] ${[...new Set(banned)].join(' ')} on ${model}: banned on v4. Use [slightly excited] or [upbeat] for energy, [confident] for confidence; no [cheerful] / [pleased] in tutorials.`);
+  }
+  process.stdout.write(`[${slug}] ${elText.length} chars → elevenlabs (${model}, stab ${EL_STABILITY}${prev || next ? ', joined' : ''})... `);
   const url = `https://api.elevenlabs.io/v1/text-to-speech/${EL_VOICE}?output_format=mp3_44100_128`;
   const res = await fetch(url, {
     method: 'POST',
     headers: { 'xi-api-key': EL_KEY, 'content-type': 'application/json' },
     body: JSON.stringify({
       text: elText,
-      model_id: EL_MODEL,
+      model_id: model,
       // stability 0.5 = "Natural" (v3 rounds to 0.0/0.5/1.0; 1.0 = "Robust" — most
       // consistent clip-to-clip + closest clone adherence, 0.0 = hallucination-prone).
       // QC r6: overridable via --stability / ELEVENLABS_STABILITY for the voice-drift fix.
       voice_settings: { stability: EL_STABILITY, similarity_boost: 0.75, style: EL_STYLE, use_speaker_boost: true },
+      ...(prev ? { previous_text: prev } : {}),
+      ...(next ? { next_text: next } : {}),
     }),
   });
   if (!res.ok) throw new Error(`HTTP ${res.status}: ${(await res.text()).slice(0, 300)}`);
@@ -399,7 +481,7 @@ if (engineArg === 'voicebox') {
 } else if (engineArg === 'fishaudio') {
   console.log(`[fishaudio] model=${FISH_MODEL}  voice=${FISH_VOICE.slice(0, 8)}…${voiceArg ? ' (--voice override)' : ''}`);
 } else {
-  console.log(`[elevenlabs] model=${EL_MODEL}  voice=${EL_VOICE.slice(0, 8)}…${voiceArg ? ' (--voice override)' : ''}`);
+  console.log(`[elevenlabs] model=${EL_MODELS.join(' + ')}  voice=${EL_VOICE.slice(0, 8)}…${voiceArg ? ' (--voice override)' : ''}`);
 }
 // ── .tts.json sidecar (AP-9, 2026-09-02) ────────────────────────────────────
 // narration-qc.js judges voice consistency against a per-voice centroid
@@ -407,14 +489,14 @@ if (engineArg === 'voicebox') {
 // The sidecar records WHICH voice/model/stability rendered this folder so the
 // gate can pick the right reference. The raw voice id NEVER lands on disk —
 // only sha1(id).slice(0, 8).
-async function writeTtsSidecar(dir) {
+async function writeTtsSidecar(dir, model = EL_MODEL) {
   try {
     const id = engineArg === 'elevenlabs' ? EL_VOICE
       : engineArg === 'fishaudio' ? FISH_VOICE
       : PROFILE_ID;
     const sidecar = {
       voice: crypto.createHash('sha1').update(String(id || '')).digest('hex').slice(0, 8),
-      model: engineArg === 'elevenlabs' ? EL_MODEL : engineArg === 'fishaudio' ? FISH_MODEL : 'kokoro',
+      model: engineArg === 'elevenlabs' ? model : engineArg === 'fishaudio' ? FISH_MODEL : 'kokoro',
       stability: engineArg === 'elevenlabs' ? EL_STABILITY : null,
       engine: engineArg,
       at: new Date().toISOString(),
@@ -430,6 +512,7 @@ for (const { dir, slugs, label } of buckets) {
   if (!slugs.length) continue;
   console.log(`\n--- ${label} (${dir}) ---`);
   let renderedHere = 0;
+  renderedModels.clear();
   for (const slug of slugs) {
     try {
       const r = await synth(dir, slug);
@@ -440,6 +523,9 @@ for (const { dir, slugs, label } of buckets) {
       process.exitCode = 1;
     }
   }
-  if (renderedHere) await writeTtsSidecar(dir);
+  if (renderedHere) {
+    if (engineArg === 'elevenlabs') for (const m of renderedModels) await writeTtsSidecar(modelDir(dir, m), m);
+    else await writeTtsSidecar(dir);
+  }
 }
 console.log(`\n✓ ${ok} rendered, ${skipped} skipped, ${totalDur.toFixed(2)}s total`);

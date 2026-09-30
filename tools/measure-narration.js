@@ -9,7 +9,10 @@
 // re-render means re-measure.
 //
 // Usage:
-//   node tools/measure-narration.js <slug> [--settle 0.4]
+//   node tools/measure-narration.js <slug> [--settle 0.4] [--variant <model>]
+//
+// --variant measures an A/B take set, narration/<model>/ (tts/generate.js
+// --models), instead of the primary narration/ the film plays.
 //
 // Output: per-clip measured durations, then the DUR block with
 // (duration + settle) per key, grouped by chapter, intro/postintro first,
@@ -24,9 +27,10 @@ const ROOT = path.resolve(__dirname, '..');
 
 function parseArgs(argv) {
   const a = argv.slice(2);
-  const out = { slug: null, settle: 0.4 };
+  const out = { slug: null, settle: 0.4, variant: null };
   for (let i = 0; i < a.length; i++) {
     if (a[i] === '--settle') out.settle = Number(a[++i]);
+    else if (a[i] === '--variant') out.variant = a[++i];
     else if (!a[i].startsWith('--') && !out.slug) out.slug = a[i];
   }
   return out;
@@ -86,7 +90,7 @@ async function main() {
     console.error('Usage: node tools/measure-narration.js <slug> [--settle 0.4]');
     process.exit(1);
   }
-  const dir = path.join(ROOT, 'videos', args.slug, 'narration');
+  const dir = path.join(ROOT, 'videos', args.slug, 'narration', args.variant || '');
   if (!fs.existsSync(dir)) {
     console.error(`✗ ${path.relative(ROOT, dir)} not found`);
     process.exit(1);
@@ -111,7 +115,7 @@ async function main() {
   }
   rows.sort((a, b) => compareKeys(a.key, b.key));
 
-  console.log(`measured ${rows.length} clip(s) in videos/${args.slug}/narration (settle +${args.settle}s):`);
+  console.log(`measured ${rows.length} clip(s) in ${path.relative(ROOT, dir).replace(/\\/g, '/')} (settle +${args.settle}s):`);
   for (const r of rows) {
     console.log(`  ${r.key.padEnd(12)} ${r.dur.toFixed(2)}s → ${(r.dur + args.settle).toFixed(1)}`);
   }
