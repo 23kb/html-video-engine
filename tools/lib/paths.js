@@ -20,6 +20,17 @@ function productFile(key) {
   return path.join(REPO_ROOT, 'products', key, 'product.json');
 }
 
+// A product exists when any of its files does: product.json (local only, never
+// committed), pack.json or snapshots/index.json (both committed). A fresh clone
+// has only the last two, so they must be enough.
+function productExists(key) {
+  const dir = path.join(REPO_ROOT, 'products', key);
+  return ['product.json', 'pack.json', path.join('snapshots', 'index.json')]
+    .some((f) => fs.existsSync(path.join(dir, f)));
+}
+const unknownProduct = (key) =>
+  new Error(`unknown product "${key}" — no products/${key}/ pack (product.json, pack.json or snapshots/index.json)`);
+
 // The active product key, or null for WPForms. A typo must never create a
 // stray root, so an unknown key throws instead of falling back. `wpforms`
 // counts as unset until its pack (products/wpforms/product.json) exists.
@@ -30,9 +41,7 @@ function productKey() {
   if (!KEY_RE.test(key)) {
     throw new Error(`invalid VIDEO_PRODUCT "${key}" — use a lowercase key like wp-mail-smtp`);
   }
-  if (!fs.existsSync(productFile(key))) {
-    throw new Error(`unknown product "${key}" — no products/${key}/product.json`);
-  }
+  if (!productExists(key)) throw unknownProduct(key);
   return key;
 }
 
@@ -94,12 +103,16 @@ function activeProduct() {
 }
 
 // Parsed products/<key>/product.json, or null for wpforms while it has no pack.
+// On a fresh clone (no product.json) it falls back to the committed pack.json
+// (key, name, classPrefixes, pluginDirs), or to { key } when only the
+// snapshots exist.
 function loadProduct(key = activeProduct()) {
   if (key === 'wpforms' && !fs.existsSync(productFile(key))) return null;
-  if (!KEY_RE.test(key) || !fs.existsSync(productFile(key))) {
-    throw new Error(`unknown product "${key}" — no products/${key}/product.json`);
-  }
-  return JSON.parse(fs.readFileSync(productFile(key), 'utf8'));
+  if (!KEY_RE.test(key) || !productExists(key)) throw unknownProduct(key);
+  if (fs.existsSync(productFile(key))) return JSON.parse(fs.readFileSync(productFile(key), 'utf8'));
+  const packFile = path.join(REPO_ROOT, 'products', key, 'pack.json');
+  const pack = fs.existsSync(packFile) ? JSON.parse(fs.readFileSync(packFile, 'utf8')) : {};
+  return { key, displayName: pack.name, classPrefixes: [], ...pack };
 }
 
 // products/<key>/pack.json — the committed per-pack tool data: classPrefixes

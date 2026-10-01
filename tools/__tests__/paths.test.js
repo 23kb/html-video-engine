@@ -23,6 +23,7 @@ const paths = require('../lib/paths');
 
 const TEST_KEY = 'zz-paths-test';
 const TEST_DIR = path.join(ROOT, 'products', TEST_KEY);
+const PACK_KEY = 'zz-paths-pack-only';
 const ENV_KEYS = ['VIDEO_PRODUCT', 'WP_SNAPSHOT_ROOT', 'WPF_SNAPSHOTS_DIR'];
 const savedEnv = Object.fromEntries(ENV_KEYS.map((k) => [k, process.env[k]]));
 
@@ -122,8 +123,27 @@ try {
   setEnv({ WP_SNAPSHOT_ROOT: tmpA });
   ok(throwsWith(() => paths.snapshotsUrlBase(), /outside the repo/), 'snapshotsUrlBase() throws');
   ok(throwsWith(() => paths.snapshotUrlPath('x'), /outside the repo/), 'snapshotUrlPath() throws');
+
+  section('Gate 6 — a fresh clone: committed pack files are enough (no product.json)');
+  const PACK_DIR = path.join(ROOT, 'products', PACK_KEY);
+  fs.mkdirSync(path.join(PACK_DIR, 'snapshots'), { recursive: true });
+  fs.writeFileSync(path.join(PACK_DIR, 'pack.json'), JSON.stringify({ key: PACK_KEY, name: 'Pack Only', classPrefixes: ['po-'] }));
+  fs.writeFileSync(path.join(PACK_DIR, 'snapshots', 'index.json'), JSON.stringify({ snapshots: [] }));
+  setEnv({ VIDEO_PRODUCT: PACK_KEY });
+  ok(paths.productKey() === PACK_KEY, 'pack.json + snapshots, no product.json → productKey() accepts it');
+  ok(paths.snapshotsRoot() === path.join(PACK_DIR, 'snapshots'), 'and snapshotsRoot() is its snapshots folder');
+  const lp = paths.loadProduct();
+  ok(lp && lp.key === PACK_KEY && lp.displayName === 'Pack Only' && lp.classPrefixes[0] === 'po-', 'loadProduct() falls back to pack.json');
+  fs.rmSync(path.join(PACK_DIR, 'pack.json'));
+  ok(paths.productKey() === PACK_KEY, 'snapshots/index.json alone is enough');
+  ok((paths.loadProduct() || {}).key === PACK_KEY && paths.loadProduct().classPrefixes.length === 0, 'loadProduct() then returns { key } with no prefixes');
+  const env6 = { ...process.env, VIDEO_PRODUCT: PACK_KEY };
+  for (const k of ['WP_SNAPSHOT_ROOT', 'WPF_SNAPSHOTS_DIR']) delete env6[k];
+  const r6 = spawnSync(process.execPath, [path.join(ROOT, 'tools', 'list-snapshots.js')], { encoding: 'utf8', env: env6 });
+  ok(r6.status === 0, `VIDEO_PRODUCT=${PACK_KEY} list-snapshots.js runs (${r6.status})`);
 } finally {
   fs.rmSync(TEST_DIR, { recursive: true, force: true });
+  fs.rmSync(path.join(ROOT, 'products', PACK_KEY), { recursive: true, force: true });
   for (const k of ENV_KEYS) {
     if (savedEnv[k] === undefined) delete process.env[k];
     else process.env[k] = savedEnv[k];
