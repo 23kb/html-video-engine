@@ -31,7 +31,10 @@ const USAGE = [
   '',
   'The pack is VIDEO_PRODUCT=<key> (products/<key>/snapshots/); unset = the default pack.',
   'Search words are split on spaces, hyphens, underscores and slashes, so',
-  '"local seo" finds admin-local-seo-*; every word that matches raises the rank.',
+  '"local seo" finds admin-local-seo-*; every word that matches raises the rank,',
+  'a rare word counts more than one on every screen, and a base screen ranks',
+  'above its own "--state" and per-record captures. With --all-packs a product',
+  'name in the query picks that pack (names: products/<key>/pack.json).',
 ].join('\n');
 
 function parseArgs(argv) {
@@ -141,24 +144,36 @@ function snapshotsReferencedByVideo(slug) {
 }
 
 // --all-packs: the same ranked search in every pack, one list, each hit
-// labelled with its pack, ranked across packs by score.
+// labelled with its pack, ranked across packs by score. Word rarity (IDF) is
+// taken over every pack at once, so the scores compare across packs. A product
+// name in the query ("WP Mail SMTP dashboard") names the pack: its hits come
+// first and the name's words leave the query, so another pack's screens ABOUT
+// that product do not win on the name alone. The names come from each pack's
+// pack.json / product.json (lib/snapshot-search.js packNames).
 function searchAllPacks(args) {
   const hits = [];
   const searched = [];
-  for (const p of search.packs()) {
-    const index = loadIndex(path.join(p.root, 'index.json'));
+  const packs = search.packs().map((p) => ({ ...p, entries: loadIndex(path.join(p.root, 'index.json')).snapshots || [] }));
+  const hint = search.packHint(args.search, packs);
+  const query = hint && hint.rest.length ? hint.rest : args.search;
+  const idf = search.idfFor(packs.flatMap((p) => p.entries), Array.isArray(query) ? query : search.toks(query));
+  for (const p of packs) {
     const onDisk = listOnDisk(p.root);
     searched.push(p.key);
-    for (const r of search.rank(index.snapshots || [], args.search)) {
-      hits.push({ pack: p.key, score: r.score, onDisk: onDisk.has(r.entry.slug), ...r.entry });
-    }
+    search.rank(p.entries, query, { idf }).forEach((r, i) => {
+      hits.push({ pack: p.key, score: r.score, onDisk: onDisk.has(r.entry.slug), ...r.entry, _at: i });
+    });
   }
-  hits.sort((a, b) => b.score - a.score || a.pack.localeCompare(b.pack) || a.slug.localeCompare(b.slug));
+  const named = (h) => (hint && h.pack === hint.key ? 0 : 1);
+  // within one pack at equal score, the pack's own order (bare screens first)
+  hits.sort((a, b) => named(a) - named(b) || b.score - a.score || a.pack.localeCompare(b.pack) || a._at - b._at);
+  for (const h of hits) delete h._at;
   if (args.json) {
-    process.stdout.write(JSON.stringify({ packs: searched, query: args.search, count: hits.length, snapshots: hits }, null, 2) + '\n');
+    process.stdout.write(JSON.stringify({ packs: searched, query: args.search, hint: hint ? { pack: hint.key, name: hint.name.join(' ') } : null, count: hits.length, snapshots: hits }, null, 2) + '\n');
     return;
   }
   console.log(`# packs: ${searched.join(', ')}`);
+  if (hint) console.log(`# "${hint.name.join(' ')}" names the ${hint.key} pack: its hits come first, the other words are the search`);
   console.log(`# ${hits.length} snapshot(s) matching "${args.search}" across ${searched.length} pack(s)`);
   for (const h of hits) {
     const shows = h.shows ? ` — ${h.shows}` : '';

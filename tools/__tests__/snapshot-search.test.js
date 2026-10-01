@@ -4,7 +4,6 @@
 // root when they do it.
 //
 //   which snapshots exist, what does each show   list-snapshots.js [--search]
-//   which snapshots contain X                    snapshot-grep.js --all
 //   what selectors does a snapshot offer         inspect-snapshot.js --emit-selectors
 //   is a selector still valid                    verify-selectors.js   (browser; not run here)
 //
@@ -34,15 +33,16 @@ function ok(cond, msg) {
 }
 function section(t) { console.log('\n' + t); }
 
-function tool(name, argv) {
+function tool(name, argv, env = {}) {
   const r = spawnSync(process.execPath, [path.join(ROOT, 'tools', name), ...argv], {
     encoding: 'utf8',
     maxBuffer: 1e8,
     // VIDEO_PRODUCT is the only switch; no tool takes a product argument.
-    env: { ...process.env, VIDEO_PRODUCT: KEY, WP_SNAPSHOT_ROOT: '', WPF_SNAPSHOTS_DIR: '' },
+    env: { ...process.env, VIDEO_PRODUCT: KEY, WP_SNAPSHOT_ROOT: '', WPF_SNAPSHOTS_DIR: '', ...env },
   });
   return { code: r.status, out: r.stdout || '', err: r.stderr || '' };
 }
+const slugsOf = (out) => out.split('\n').filter((l) => l && !l.startsWith('#')).map((l) => l.split(' ')[0]);
 
 function build() {
   fs.rmSync(PACK, { recursive: true, force: true });
@@ -53,6 +53,9 @@ function build() {
     { slug: 'admin-orders-empty', category: 'admin/list', shows: 'Orders with nothing in them yet', topics: ['orders', 'empty-state'] },
     { slug: 'admin-orders-one', category: 'admin/list', shows: 'Orders with a single paid order', topics: ['orders', 'after-run'] },
     { slug: 'frontend-checkout', category: 'frontend/page', shows: 'The checkout page as a buyer sees it', topics: ['storefront'] },
+    // A screen ABOUT the other pack (its name in the slug): the --all-packs
+    // pack-hint check needs one that would win on the name's words alone.
+    { slug: 'admin-other-pack-hours', category: 'admin/list', shows: 'Hours synced from the other pack', topics: ['sync'] },
   ];
   for (const s of snaps) {
     fs.mkdirSync(path.join(SNAPS, s.slug), { recursive: true });
@@ -92,7 +95,19 @@ function build() {
   fs.rmSync(PACK2, { recursive: true, force: true });
   fs.mkdirSync(SNAPS2, { recursive: true });
   fs.writeFileSync(path.join(PACK2, 'product.json'), JSON.stringify({ key: KEY2, displayName: 'Other Pack' }, null, 2));
-  const other = [{ slug: 'admin-local-seo-hours', category: 'admin/page', shows: 'Opening hours grid', topics: ['local-seo'] }];
+  // The hours list, its own "--state" and per-record captures (same text, so
+  // only the ranking rules tell them apart), a state of ANOTHER screen that
+  // sorts before it alphabetically, and one screen whose rare word must beat
+  // the word every other screen carries ("local").
+  const hours = { category: 'admin/page', shows: 'Local opening hours grid', topics: ['local-seo'] };
+  const other = [
+    { slug: 'admin-local-seo-hours', ...hours },
+    { slug: 'admin-hours-list', ...hours },
+    { slug: 'admin-hours-list--editing', ...hours },
+    { slug: 'admin-hours-list-12', ...hours },
+    { slug: 'admin-grid--hours', ...hours },
+    { slug: 'admin-import-listings', category: 'admin/page', shows: 'Import listings from a CSV file', topics: ['import'] },
+  ];
   for (const s of other) {
     fs.mkdirSync(path.join(SNAPS2, s.slug), { recursive: true });
     fs.writeFileSync(path.join(SNAPS2, s.slug, 'index.html'), '<html><body><p>hours</p></body></html>');
@@ -108,7 +123,7 @@ try {
   {
     const { code, out } = tool('list-snapshots.js', []);
     ok(code === 0 || code === undefined, 'runs against a product pack');
-    ok(/# 3 snapshot\(s\)/.test(out), 'counts the pack, not the default pack');
+    ok(/# 4 snapshot\(s\)/.test(out), 'counts the pack, not the default pack');
     ok(/admin-orders-one — Orders with a single paid order/.test(out), 'prints the description beside the slug');
     ok(!/INDEX-ONLY/.test(out), 'every index entry has its folder');
   }
@@ -139,6 +154,48 @@ try {
     ok(/2 snapshot\(s\)/.test(plural.out), 'a singular finds the plural (stemmed)');
     const none = tool('list-snapshots.js', ['--search', 'zzzqqq']);
     ok(/# 0 snapshot\(s\)/.test(none.out), 'a word nothing holds finds nothing');
+  }
+
+  section('list-snapshots --search — a base screen outranks its own states; a rare word outranks a common one');
+  {
+    const env = { VIDEO_PRODUCT: KEY2 };
+    // Equal text everywhere: admin-hours-list, admin-local-seo-hours and
+    // admin-grid--hours score the same for "opening hours".
+    const h = slugsOf(tool('list-snapshots.js', ['--search', 'opening hours'], env).out);
+    ok(h[0] === 'admin-hours-list', `the base screen ranks first (${h.join(', ')})`);
+    ok(h[2] === 'admin-grid--hours', 'at equal score a bare screen sorts before a state capture, whatever the alphabet says');
+    ok(h.indexOf('admin-hours-list--editing') > h.indexOf('admin-grid--hours'), 'its own "--state" capture ranks under it (×0.9)');
+    ok(h.indexOf('admin-hours-list-12') > h.indexOf('admin-hours-list--editing'), 'its per-record capture ranks lower still (×0.8)');
+    // "local" is on five of six screens, "import" on one: the import screen
+    // wins "local import" although admin-local-seo-hours carries "local" in
+    // three fields — rare words weigh more (IDF). Before this rule the hours
+    // screen won (7 points to 5.5).
+    const r = slugsOf(tool('list-snapshots.js', ['--search', 'local import'], env).out);
+    ok(r[0] === 'admin-import-listings', `the rare word decides: "local import" finds the import screen first (${r[0]})`);
+    const lib = require(path.join(ROOT, 'tools', 'lib', 'snapshot-search.js'));
+    ok(lib.baseOf('admin-hours-list--editing') === 'admin-hours-list' && lib.baseOf('admin-hours-list-12') === 'admin-hours-list'
+      && lib.baseOf('admin-order-01') === 'admin-order' && lib.baseOf('admin-tickets--paid-sort-date') === 'admin-tickets' && lib.baseOf('admin-hours-list') === null,
+    'baseOf() names the screen a capture is a state of');
+  }
+
+  section('list-snapshots --search --all-packs — a product name in the query picks its pack');
+  {
+    // KEY2 is "Other Pack" (product.json displayName). KEY's own screen is
+    // ABOUT the other pack — its slug carries the name — and would win on the
+    // name's words alone. With the name recognised, the hours grid of the
+    // named pack comes first.
+    // Only the two throwaway packs are judged: the real packs are searched too
+    // and their scores are not comparable here.
+    const all = JSON.parse(tool('list-snapshots.js', ['--search', 'other pack hours', '--all-packs', '--json']).out);
+    const mine = all.snapshots.filter((s) => s.pack === KEY || s.pack === KEY2).map((s) => `${s.pack}/${s.slug}`);
+    ok(all.hint && all.hint.pack === KEY2, `the query names the ${KEY2} pack (hint: ${JSON.stringify(all.hint)})`);
+    ok(mine[0] === `${KEY2}/admin-hours-list` || mine[0] === `${KEY2}/admin-local-seo-hours`, `the named pack's hours screen ranks first (${mine[0]})`);
+    ok(mine.indexOf(`${KEY}/admin-other-pack-hours`) > 1, 'the screen about the other pack still lists, below it');
+    const none = JSON.parse(tool('list-snapshots.js', ['--search', 'hours', '--all-packs', '--json']).out);
+    ok(none.hint === null, 'no product name, no hint');
+    const lib = require(path.join(ROOT, 'tools', 'lib', 'snapshot-search.js'));
+    const names = lib.packNames({ key: 'some-thing-pro', root: path.join(ROOT, 'products', 'zz-none', 'snapshots') });
+    ok(JSON.stringify(names) === JSON.stringify([['some', 'thing']]), 'a pack with no pack.json answers to its key (minus an edition suffix)');
   }
 
   section('list-snapshots — --help, bad flags, --all-packs');
