@@ -1,7 +1,26 @@
 {
   "slug": "admin-dashboard-widgets",
   "registryPresent": true,
-  "transitions": [],
+  "transitions": [
+    {
+      "label": "native-controls",
+      "event": "click",
+      "selector": "div.aioseo-overview-selector select",
+      "count": 1
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-has-submenu:nth-of-type(7) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 6
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 19
+    }
+  ],
   "nav": [],
   "groups": {
     "actions": [
@@ -31,14 +50,18 @@
         "tag": "a",
         "text": "View all updates →",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-newsroom-widget__title",
         "tag": "a",
         "text": "TruSEO for Taxonomies: Get SEO Scores for Your Category Pag…",
         "count": 4,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [],
@@ -123,7 +146,7 @@
       {
         "sel": "#meta-box-order-nonce",
         "tag": "input",
-        "text": "348b25693b",
+        "text": "84fcabed39",
         "count": 1,
         "hidden": true
       },
@@ -144,7 +167,7 @@
       {
         "sel": "#screenoptionnonce",
         "tag": "input",
-        "text": "7d246b7539",
+        "text": "cd43d91be7",
         "count": 1,
         "hidden": true
       },
@@ -158,7 +181,7 @@
       {
         "sel": "#welcomepanelnonce",
         "tag": "input",
-        "text": "8b5ffd5ff8",
+        "text": "7602d3a2ec",
         "count": 1,
         "hidden": true
       },
@@ -191,7 +214,7 @@
       {
         "sel": "#activity-widget",
         "tag": "div",
-        "text": "Recently PublishedToday, 12:40 am Free Composting Workshop …",
+        "text": "Recently PublishedSep 30th, 12:40 am Free Composting Worksh…",
         "count": 1,
         "hidden": true
       },
@@ -905,7 +928,7 @@
       {
         "sel": "#published-posts",
         "tag": "div",
-        "text": "Recently PublishedToday, 12:40 am Free Composting Workshop …",
+        "text": "Recently PublishedSep 30th, 12:40 am Free Composting Worksh…",
         "count": 1,
         "hidden": true
       },

@@ -15,6 +15,54 @@
       "count": 1
     },
     {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": "div.multiselect--above.multiselect",
+      "count": 1
+    },
+    {
+      "label": "content-analysis-tab",
+      "event": "click",
+      "selector": ".aioseo-content-analysis-tab",
+      "count": 5
+    },
+    {
+      "label": "round3-captured-state",
+      "event": "click",
+      "selector": "div.aioseo-keywords-add__row button.aioseo-button.blue",
+      "count": 1
+    },
+    {
+      "label": "live-only-button",
+      "event": "click",
+      "selector": "div.aioseo-keywords-add__row button.aioseo-button.blue",
+      "count": 1
+    },
+    {
+      "label": "small-controls",
+      "event": "click",
+      "selector": "div.header",
+      "count": 1
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.editor-header__settings a.components-button.is-compact",
+      "count": 4
+    },
+    {
+      "label": "plain-label",
+      "event": "click",
+      "selector": "label.aioseo-reviewed-by-label",
+      "count": 1
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(2)",
+      "count": 1
+    },
+    {
       "label": "editor-seo-sidebar",
       "event": "click",
       "selector": "div.interface-pinned-items button.components-button.is-compact",
@@ -73,14 +121,18 @@
         "tag": "button",
         "text": "Optimize with AI",
         "count": 4,
-        "hidden": false
+        "hidden": false,
+        "wired": "small-controls",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-content-analysis-tab",
         "tag": "button",
         "text": "Keywords",
         "count": 5,
-        "hidden": false
+        "hidden": false,
+        "wired": "content-analysis-tab",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-discover-keywords__link",
@@ -108,7 +160,9 @@
         "tag": "label",
         "text": "",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "small-controls",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
@@ -180,7 +234,7 @@
       {
         "sel": "#meta-box-order-nonce",
         "tag": "input",
-        "text": "79251389e9",
+        "text": "3df31b6b65",
         "count": 1,
         "hidden": true
       },
@@ -215,7 +269,7 @@
       {
         "sel": "#PostSettingsNonce",
         "tag": "input",
-        "text": "e28bfeeb7a",
+        "text": "865d8bea90",
         "count": 1,
         "hidden": true
       },
@@ -229,14 +283,14 @@
       {
         "sel": "#samplepermalinknonce",
         "tag": "input",
-        "text": "58d9482cb2",
+        "text": "6f6416fb19",
         "count": 1,
         "hidden": true
       },
       {
         "sel": "#toggle-custom-fields-nonce",
         "tag": "input",
-        "text": "f6d4d78186",
+        "text": "750173792e",
         "count": 1,
         "hidden": true
       },
@@ -309,7 +363,7 @@
     ],
     "other": [
       {
-        "sel": "#a-aioseo-1-1",
+        "sel": "#a-aioseo-1-10",
         "tag": "clippath",
         "text": "",
         "count": 1,
@@ -444,9 +498,9 @@
       {
         "sel": "#aioseo-text-width-measurement",
         "tag": "div",
-        "text": "How to Plan a Vegetable Bed That Feeds You All Year - Rosa'…",
+        "text": "",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#aioseo-writing-assistant-metabox",
@@ -512,28 +566,28 @@
         "hidden": false
       },
       {
-        "sel": "#b-aioseo-1-1",
+        "sel": "#b-aioseo-1-10",
         "tag": "filter",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#c-aioseo-1-1",
+        "sel": "#c-aioseo-1-10",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#d-aioseo-1-1",
+        "sel": "#d-aioseo-1-10",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#e-aioseo-1-1",
+        "sel": "#e-aioseo-1-10",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
@@ -561,14 +615,14 @@
         "hidden": true
       },
       {
-        "sel": "#f-aioseo-1-1",
+        "sel": "#f-aioseo-1-10",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#g-aioseo-1-1",
+        "sel": "#g-aioseo-1-10",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
@@ -806,10 +860,10 @@
         "hidden": true
       },
       {
-        "sel": ".aioseo-truseo-locale-menu__option",
+        "sel": ".aioseo-truseo-locale-menu__option--indent",
         "tag": "li",
         "text": "English (US)",
-        "count": 29,
+        "count": 11,
         "hidden": true
       }
     ]

@@ -16,15 +16,17 @@ _Selectors validated against the live DOM — every one resolves._
 - `#content-area` — div — "How to Plan a Vegetable Bed That Feeds You All Year by Rosa…"
 - `#divi-style-inline-inline-css` — link _(hidden)_
 - `#et-boc` — div — "How to Plan a Vegetable Bed That Feeds You All Year by Rosa…"
+- `#et-critical-inline-css` — link _(hidden)_
 - `#et-main-area` — div — "How to Plan a Vegetable Bed That Feeds You All Year by Rosa…"
 - `#fit-vids-style` — link _(hidden)_
-- `#global-styles-inline-css` — link _(hidden)_
-- _… +13 more — see catalog.md_
+- _… +14 more — see catalog.md_
 
 ## Interactions — drivable inside the video iframe
 _Fire by driving the real control (click/change/type); interactivity.js mutates the DOM in place._
 
+- click `ul.ab-sub-secondary.ab-submenu li a.ab-item` → `external-link` _(×13)_
 - click `a.ab-item` → `seo-preview-open`
+- click `a.ab-item` → `unresolved-link`
 
 ## Interactions — HAND-BROWSE ONLY (inert in video; use ifm.swap)
 _These admin links navigate when hand-browsing /snapshots/ but their handler bails in-iframe (window.top !== window). In a video, swap snapshots instead._

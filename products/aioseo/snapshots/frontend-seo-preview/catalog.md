@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/frontend-seo-preview/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 34 selector entries across 2 sections.
+> 35 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/frontend-seo-preview/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_27 entries_
+_28 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -27,6 +27,7 @@ _27 entries_
 | <a id="id--content-area"></a>`id--content-area` | `#content-area` | div | How to Plan a Vegetable Bed That Feeds You All Year by | 1 |
 | <a id="id--divi-style-inline-inline-css"></a>`id--divi-style-inline-inline-css` | `#divi-style-inline-inline-css` | link |  | 1 |
 | <a id="id--et-boc"></a>`id--et-boc` | `#et-boc` | div | How | 1 |
+| <a id="id--et-critical-inline-css"></a>`id--et-critical-inline-css` | `#et-critical-inline-css` | link |  | 1 |
 | <a id="id--et-main-area"></a>`id--et-main-area` | `#et-main-area` | div | How to Plan a Vegetable Bed That | 1 |
 | <a id="id--fit-vids-style"></a>`id--fit-vids-style` | `#fit-vids-style` | link |  | 1 |
 | <a id="id--global-styles-inline-css"></a>`id--global-styles-inline-css` | `#global-styles-inline-css` | link |  | 1 |

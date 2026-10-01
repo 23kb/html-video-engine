@@ -39,10 +39,28 @@
       "count": 2
     },
     {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": "div.multiselect.aioseo-select",
+      "count": 1
+    },
+    {
       "label": "live-only-button",
       "event": "click",
-      "selector": ".aioseo-button.aioseo-button1",
-      "count": 2
+      "selector": "div.actions a.aioseo-button.blue",
+      "count": 4
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 51
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "a.newsroom-item__title",
+      "count": 204
     }
   ],
   "nav": [],
@@ -60,7 +78,9 @@
         "tag": "a",
         "text": "Launch the Setup Wizard →",
         "count": 14,
-        "hidden": false
+        "hidden": false,
+        "wired": "unresolved-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-button1",
@@ -97,7 +117,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",

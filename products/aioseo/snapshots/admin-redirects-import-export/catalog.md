@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-redirects-import-export/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 46 selector entries across 2 sections.
+> 56 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-redirects-import-export/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_25 entries_
+_35 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -32,6 +32,16 @@ _25 entries_
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | Redirection not installed | 2 |
+| <a id="id--null-0"></a>`id--null-0` | `#null-0` | li | Redirection not installed | 2 |
+| <a id="id--null-1"></a>`id--null-1` | `#null-1` | li | Yoast SEO Premium not installed | 2 |
+| <a id="id--null-2"></a>`id--null-2` | `#null-2` | li | Simple 301 Redirects not installed | 2 |
+| <a id="id--null-3"></a>`id--null-3` | `#null-3` | li | Safe Redirect Manager not installed | 1 |
+| <a id="id--null-4"></a>`id--null-4` | `#null-4` | li | 301 Redirects Pro not installed | 1 |
+| <a id="id--null-5"></a>`id--null-5` | `#null-5` | li | 301 Redirects not installed | 1 |
+| <a id="id--null-6"></a>`id--null-6` | `#null-6` | li | Page Links To not installed | 1 |
+| <a id="id--null-7"></a>`id--null-7` | `#null-7` | li | SEOPress PRO not installed | 1 |
+| <a id="id--null-8"></a>`id--null-8` | `#null-8` | li | Rank Math SEO not installed | 1 |
 | <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
@@ -48,7 +58,7 @@ _21 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Choose a File | 14 |
+| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Choose a File | 26 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |
@@ -65,9 +75,9 @@ _21 entries_
 | <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 3 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
 | <a id="class--aioseo-modal"></a>`class--aioseo-modal` | `.aioseo-modal` | div |  | 1 |
-| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div |  | 2 |
-| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 2 |
-| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Export to JSON, .htaccess or .nginx. The JSON format contai… | 1 |
+| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div |  | 6 |
+| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 6 |
+| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Export to JSON, .htaccess or .nginx. The JSON format contai… | 5 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
 
 ---

@@ -34,6 +34,7 @@ _Selectors validated against the live DOM — every one resolves._
 ## Interactions — drivable inside the video iframe
 _Fire by driving the real control (click/change/type); interactivity.js mutates the DOM in place._
 
+- click `.default` → `already-selected` _(×4)_
 - change `#id_underConstruction_0` → `settings-control-change` _(×10)_
 - click `.aioseo-button` → `wizard-next-step` _(×2)_
 

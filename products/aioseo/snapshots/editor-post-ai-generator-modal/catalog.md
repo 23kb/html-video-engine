@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/editor-post-ai-generator-modal/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 139 selector entries across 2 sections.
+> 156 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/editor-post-ai-generator-modal/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_109 entries_
+_126 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -50,7 +50,7 @@ _109 entries_
 | <a id="id--aioseo-settings-handlediv"></a>`id--aioseo-settings-handlediv` | `#aioseo-settings-handlediv` | span | Show or hide panel | 1 |
 | <a id="id--aioseo-settings-handlediv-text"></a>`id--aioseo-settings-handlediv-text` | `#aioseo-settings-handlediv-text` | span | Show or hide panel | 1 |
 | <a id="id--aioseo-settings-title"></a>`id--aioseo-settings-title` | `#aioseo-settings-title` | h2 | AIOSEO Settings | 1 |
-| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div | How to Plan a Vegetable Bed That Feeds You All Year - Rosa'… | 1 |
+| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div |  | 1 |
 | <a id="id--aioseo-writing-assistant-metabox"></a>`id--aioseo-writing-assistant-metabox` | `#aioseo-writing-assistant-metabox` | div | AIOSEO Writing Assistant | 1 |
 | <a id="id--aioseo-writing-assistant-metabox-app"></a>`id--aioseo-writing-assistant-metabox-app` | `#aioseo-writing-assistant-metabox-app` | div | Elevate your SEO with AIOSEO Writing Assistant Now Integrat… | 1 |
 | <a id="id--aioseo-writing-assistant-metabox-handle-order-higher-description"></a>`id--aioseo-writing-assistant-metabox-handle-order-higher-description` | `#aioseo-writing-assistant-metabox-handle-order-higher-description` | span | Move up | 1 |
@@ -87,11 +87,28 @@ _109 entries_
 | <a id="id--id_previewGeneralIsMobile_1"></a>`id--id_previewGeneralIsMobile_1` | `#id_previewGeneralIsMobile_1` | input |  | 2 |
 | <a id="id--iris-css"></a>`id--iris-css` | `#iris-css` | link |  | 1 |
 | <a id="id--link-modal-title"></a>`id--link-modal-title` | `#link-modal-title` | h1 | Insert/edit link | 1 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | Analytical Concise | 2 |
 | <a id="id--main-settings-cont"></a>`id--main-settings-cont` | `#main-settings-cont` | div |  | 2 |
 | <a id="id--meta-box-order-nonce"></a>`id--meta-box-order-nonce` | `#meta-box-order-nonce` | input |  | 1 |
 | <a id="id--metaboxes"></a>`id--metaboxes` | `#metaboxes` | div |  | 1 |
 | <a id="id--most-recent-results"></a>`id--most-recent-results` | `#most-recent-results` | div | No search term specified. Showing recent items. Search or u… | 1 |
 | <a id="id--normal-sortables"></a>`id--normal-sortables` | `#normal-sortables` | div | AIOSEO Settings | 1 |
+| <a id="id--null-0"></a>`id--null-0` | `#null-0` | li | Analytical | 2 |
+| <a id="id--null-1"></a>`id--null-1` | `#null-1` | li | Concise | 2 |
+| <a id="id--null-10"></a>`id--null-10` | `#null-10` | li | Persuasive | 1 |
+| <a id="id--null-11"></a>`id--null-11` | `#null-11` | li | Playful | 1 |
+| <a id="id--null-12"></a>`id--null-12` | `#null-12` | li | Professional | 1 |
+| <a id="id--null-13"></a>`id--null-13` | `#null-13` | li | Serious | 1 |
+| <a id="id--null-14"></a>`id--null-14` | `#null-14` | li | Storytelling | 1 |
+| <a id="id--null-15"></a>`id--null-15` | `#null-15` | li | Urgent | 1 |
+| <a id="id--null-2"></a>`id--null-2` | `#null-2` | li | Empathetic | 2 |
+| <a id="id--null-3"></a>`id--null-3` | `#null-3` | li | Friendly | 2 |
+| <a id="id--null-4"></a>`id--null-4` | `#null-4` | li | Formal | 2 |
+| <a id="id--null-5"></a>`id--null-5` | `#null-5` | li | Humorous | 2 |
+| <a id="id--null-6"></a>`id--null-6` | `#null-6` | li | Informal | 2 |
+| <a id="id--null-7"></a>`id--null-7` | `#null-7` | li | Informative | 2 |
+| <a id="id--null-8"></a>`id--null-8` | `#null-8` | li | Motivational | 1 |
+| <a id="id--null-9"></a>`id--null-9` | `#null-9` | li | Neutral | 1 |
 | <a id="id--original_post_status"></a>`id--original_post_status` | `#original_post_status` | input |  | 1 |
 | <a id="id--originalaction"></a>`id--originalaction` | `#originalaction` | input |  | 1 |
 | <a id="id--post_ID"></a>`id--post_ID` | `#post_ID` | input |  | 1 |

@@ -1,7 +1,26 @@
 {
   "slug": "admin-edit-tags-category",
   "registryPresent": true,
-  "transitions": [],
+  "transitions": [
+    {
+      "label": "native-controls",
+      "event": "click",
+      "selector": "#bulk-action-selector-top",
+      "count": 2
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-has-submenu:nth-of-type(7) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 31
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 3
+    }
+  ],
   "nav": [],
   "groups": {
     "actions": [
@@ -32,7 +51,7 @@
       {
         "sel": "#_inline_edit",
         "tag": "input",
-        "text": "4c368482bf",
+        "text": "42f66ca1dc",
         "count": 1,
         "hidden": true
       },
@@ -165,7 +184,7 @@
       {
         "sel": "#screenoptionnonce",
         "tag": "input",
-        "text": "49b09d5ee7",
+        "text": "dfbf0bc513",
         "count": 1,
         "hidden": true
       },
@@ -296,9 +315,9 @@
       {
         "sel": "#aioseo-text-width-measurement",
         "tag": "div",
-        "text": "Vegetable Gardening Guides - Rosa's Garden Co.",
+        "text": "",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#ajax-response",

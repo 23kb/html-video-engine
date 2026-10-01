@@ -51,10 +51,64 @@
       "count": 7
     },
     {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": ".aioseo-add-template-tag",
+      "count": 11
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": ".ql-editor",
+      "count": 4
+    },
+    {
+      "label": "smart-tag-menu-open",
+      "event": "click",
+      "selector": ".aioseo-view-all-tags",
+      "count": 4
+    },
+    {
+      "label": "smart-tag-pill-switch",
+      "event": "click",
+      "selector": ".mention[data-custom-value][data-denotation-char]",
+      "count": 8
+    },
+    {
+      "label": "emoji-picker-toggle",
+      "event": "click",
+      "selector": ".aioseo-show-emoji-button",
+      "count": 4
+    },
+    {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": "div.multiselect.aioseo-select",
+      "count": 1
+    },
+    {
       "label": "live-only-button",
       "event": "click",
       "selector": ".aioseo-button.blue",
       "count": 2
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.aioseo-documentation-link a",
+      "count": 207
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(2)",
+      "count": 7
     }
   ],
   "nav": [],
@@ -102,7 +156,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -125,14 +181,18 @@
         "tag": "button",
         "text": "😀",
         "count": 4,
-        "hidden": false
+        "hidden": false,
+        "wired": "emoji-picker-toggle",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-view-all-tags",
         "tag": "a",
         "text": "View all tags →",
         "count": 4,
-        "hidden": false
+        "hidden": false,
+        "wired": "smart-tag-menu-open",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
@@ -452,32 +512,11 @@
         "hidden": false
       },
       {
-        "sel": ".aioseo-input",
-        "tag": "div",
-        "text": "",
-        "count": 17,
-        "hidden": true
-      },
-      {
-        "sel": ".aioseo-input-container",
-        "tag": "div",
-        "text": "",
-        "count": 17,
-        "hidden": true
-      },
-      {
         "sel": ".aioseo-message",
         "tag": "svg",
         "text": "",
         "count": 1,
         "hidden": true
-      },
-      {
-        "sel": ".aioseo-row",
-        "tag": "div",
-        "text": "Schema Type Article",
-        "count": 10,
-        "hidden": false
       },
       {
         "sel": ".aioseo-search",
@@ -491,13 +530,6 @@
         "tag": "div",
         "text": "Article",
         "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-settings-content",
-        "tag": "div",
-        "text": "Article",
-        "count": 10,
         "hidden": false
       },
       {

@@ -45,9 +45,75 @@
       "count": 2
     },
     {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": ".aioseo-add-template-tag",
+      "count": 6
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": "div.ql-editor.ql-blank",
+      "count": 1
+    },
+    {
+      "label": "smart-tag-menu-open",
+      "event": "click",
+      "selector": "a.aioseo-view-all-tags",
+      "count": 1
+    },
+    {
+      "label": "phone-country-open",
+      "event": "click",
+      "selector": ".vti__dropdown",
+      "count": 2
+    },
+    {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.medium",
+      "count": 4
+    },
+    {
+      "label": "display-slider-change",
+      "event": "change",
+      "selector": "#id_ui-element-slider_0",
+      "count": 4
+    },
+    {
       "label": "live-only-button",
       "event": "click",
       "selector": ".aioseo-button.medium",
+      "count": 3
+    },
+    {
+      "label": "native-controls",
+      "event": "click",
+      "selector": ".vti__dropdown",
+      "count": 2
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 42
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.aioseo-documentation-link a",
+      "count": 197
+    },
+    {
+      "label": "image-uploader-remove",
+      "event": "click",
+      "selector": "button.aioseo-button.gray",
+      "count": 1
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.var-tab.var--box",
       "count": 3
     }
   ],
@@ -103,7 +169,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -126,7 +194,9 @@
         "tag": "a",
         "text": "View all tags →",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "smart-tag-menu-open",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [

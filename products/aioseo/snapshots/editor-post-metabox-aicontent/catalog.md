@@ -50,7 +50,7 @@ _109 entries_
 | <a id="id--aioseo-settings-handlediv"></a>`id--aioseo-settings-handlediv` | `#aioseo-settings-handlediv` | span | Show or hide panel | 1 |
 | <a id="id--aioseo-settings-handlediv-text"></a>`id--aioseo-settings-handlediv-text` | `#aioseo-settings-handlediv-text` | span | Show or hide panel | 1 |
 | <a id="id--aioseo-settings-title"></a>`id--aioseo-settings-title` | `#aioseo-settings-title` | h2 | AIOSEO Settings | 1 |
-| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div | How to Plan a Vegetable Bed That Feeds You All Year - Rosa'… | 1 |
+| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div |  | 1 |
 | <a id="id--aioseo-writing-assistant-metabox"></a>`id--aioseo-writing-assistant-metabox` | `#aioseo-writing-assistant-metabox` | div | AIOSEO Writing Assistant | 1 |
 | <a id="id--aioseo-writing-assistant-metabox-app"></a>`id--aioseo-writing-assistant-metabox-app` | `#aioseo-writing-assistant-metabox-app` | div | Elevate your SEO with AIOSEO Writing Assistant Now Integrat… | 1 |
 | <a id="id--aioseo-writing-assistant-metabox-handle-order-higher-description"></a>`id--aioseo-writing-assistant-metabox-handle-order-higher-description` | `#aioseo-writing-assistant-metabox-handle-order-higher-description` | span | Move up | 1 |

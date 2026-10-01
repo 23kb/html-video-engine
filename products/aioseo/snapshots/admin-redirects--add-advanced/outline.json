@@ -45,15 +45,63 @@
       "count": 15
     },
     {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.medium",
+      "count": 2
+    },
+    {
       "label": "live-only-button",
       "event": "click",
       "selector": "button.aioseo-button.blue",
-      "count": 1
+      "count": 16
     },
     {
       "label": "state-handoff",
       "event": "click",
       "selector": "svg.aioseo-gear",
+      "count": 1
+    },
+    {
+      "label": "small-controls",
+      "event": "click",
+      "selector": "a.add-source-url",
+      "count": 14
+    },
+    {
+      "label": "table-view-sort-row",
+      "event": "click",
+      "selector": "span.name a",
+      "count": 49
+    },
+    {
+      "label": "native-controls",
+      "event": "click",
+      "selector": "div.aioseo-wp-bulk-actions.alignleft select",
+      "count": 4
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.aioseo-description.source-description span a",
+      "count": 192
+    },
+    {
+      "label": "plain-label",
+      "event": "click",
+      "selector": "label.screen-reader-text",
+      "count": 1
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.var-tab.var--box",
       "count": 1
     }
   ],
@@ -95,7 +143,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",

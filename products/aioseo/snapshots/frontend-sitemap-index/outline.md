@@ -11,7 +11,7 @@ _Selectors validated against the live DOM — every one resolves._
 ## Interactions — drivable inside the video iframe
 _Fire by driving the real control (click/change/type); interactivity.js mutates the DOM in place._
 
-_No interactivity.js transitions fire on this snapshot's DOM._
+- click `#content-head p a` → `external-link` _(×10)_
 
 ## Interactions — HAND-BROWSE ONLY (inert in video; use ifm.swap)
 _These admin links navigate when hand-browsing /snapshots/ but their handler bails in-iframe (window.top !== window). In a video, swap snapshots instead._

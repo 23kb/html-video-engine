@@ -47,8 +47,8 @@ _18 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button |  | 9 |
-| <a id="class--aioseo-circle-close"></a>`class--aioseo-circle-close` | `.aioseo-circle-close` | svg |  | 1 |
+| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button |  | 14 |
+| <a id="class--aioseo-circle-close"></a>`class--aioseo-circle-close` | `.aioseo-circle-close` | svg |  | 4 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |

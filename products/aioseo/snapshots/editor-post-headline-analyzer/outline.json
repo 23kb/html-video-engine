@@ -27,6 +27,60 @@
       "count": 3
     },
     {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": ".aioseo-add-template-tag",
+      "count": 12
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": ".ql-editor",
+      "count": 4
+    },
+    {
+      "label": "smart-tag-menu-open",
+      "event": "click",
+      "selector": ".aioseo-view-all-tags",
+      "count": 4
+    },
+    {
+      "label": "smart-tag-pill-switch",
+      "event": "click",
+      "selector": ".mention[data-custom-value][data-denotation-char]",
+      "count": 2
+    },
+    {
+      "label": "emoji-picker-toggle",
+      "event": "click",
+      "selector": ".aioseo-show-emoji-button",
+      "count": 4
+    },
+    {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.multiselect",
+      "count": 3
+    },
+    {
+      "label": "live-only-button",
+      "event": "click",
+      "selector": ".aioseo-keyword-menu__item.aioseo-keyword-menu__item--danger",
+      "count": 2
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.editor-header__settings a.components-button.is-compact",
+      "count": 21
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.var-tab.var--box",
+      "count": 3
+    },
+    {
       "label": "editor-seo-sidebar",
       "event": "click",
       "selector": "div.interface-pinned-items button.components-button.is-compact",
@@ -98,7 +152,9 @@
         "tag": "a",
         "text": "Leave a 5-star Review",
         "count": 5,
-        "hidden": true
+        "hidden": true,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-discover-keywords__link",
@@ -112,7 +168,9 @@
         "tag": "a",
         "text": "Learn More",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-open-headline-analyzer",
@@ -147,7 +205,9 @@
         "tag": "button",
         "text": "😀",
         "count": 4,
-        "hidden": true
+        "hidden": true,
+        "wired": "emoji-picker-toggle",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-spelling-manage-link",
@@ -168,7 +228,9 @@
         "tag": "a",
         "text": "View all tags →",
         "count": 4,
-        "hidden": true
+        "hidden": true,
+        "wired": "smart-tag-menu-open",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
@@ -254,7 +316,7 @@
       {
         "sel": "#meta-box-order-nonce",
         "tag": "input",
-        "text": "04bdb584b9",
+        "text": "607028d75b",
         "count": 1,
         "hidden": true
       },
@@ -289,7 +351,7 @@
       {
         "sel": "#PostSettingsNonce",
         "tag": "input",
-        "text": "3302cf234e",
+        "text": "4083749988",
         "count": 1,
         "hidden": true
       },
@@ -303,14 +365,14 @@
       {
         "sel": "#samplepermalinknonce",
         "tag": "input",
-        "text": "b667c010fa",
+        "text": "16d2397df1",
         "count": 1,
         "hidden": true
       },
       {
         "sel": "#toggle-custom-fields-nonce",
         "tag": "input",
-        "text": "1415e7fb69",
+        "text": "17ce0a88e9",
         "count": 1,
         "hidden": true
       },
@@ -581,9 +643,9 @@
       {
         "sel": "#aioseo-text-width-measurement",
         "tag": "div",
-        "text": "How to Plan a Vegetable Bed That Feeds You All Year - Rosa'…",
+        "text": "",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#aioseo-writing-assistant-metabox",

@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-sitemaps-html-sitemap/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 59 selector entries across 2 sections.
+> 66 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-sitemaps-html-sitemap/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_33 entries_
+_38 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -31,15 +31,20 @@ _33 entries_
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
-| <a id="id--id_compactArchives_0"></a>`id--id_compactArchives_0` | `#id_compactArchives_0` | input | Disabled Enabled This setting allows you to toggle between … | 1 |
-| <a id="id--id_compactArchives_1"></a>`id--id_compactArchives_1` | `#id_compactArchives_1` | input | Enabled This setting allows you to toggle between the regul… | 1 |
-| <a id="id--id_publicationDate_0"></a>`id--id_publicationDate_0` | `#id_publicationDate_0` | input | Hide Show This setting only applies to posts and pages. | 1 |
-| <a id="id--id_publicationDate_1"></a>`id--id_publicationDate_1` | `#id_publicationDate_1` | input | Show This setting only applies to posts and pages. Compact … | 1 |
+| <a id="id--id_compactArchives_0"></a>`id--id_compactArchives_0` | `#id_compactArchives_0` | input | Disabled Enabled This setting allows you to toggle between … | 5 |
+| <a id="id--id_compactArchives_1"></a>`id--id_compactArchives_1` | `#id_compactArchives_1` | input | Enabled This setting allows you to toggle between the regul… | 5 |
+| <a id="id--id_publicationDate_0"></a>`id--id_publicationDate_0` | `#id_publicationDate_0` | input | Hide Show This setting only applies to posts and pages. | 5 |
+| <a id="id--id_publicationDate_1"></a>`id--id_publicationDate_1` | `#id_publicationDate_1` | input | Show This setting only applies to posts and pages. Compact … | 5 |
 | <a id="id--id_ui-element-slider_0"></a>`id--id_ui-element-slider_0` | `#id_ui-element-slider_0` | input |  | 1 |
 | <a id="id--id_ui-element-slider_1"></a>`id--id_ui-element-slider_1` | `#id_ui-element-slider_1` | input |  | 1 |
 | <a id="id--id_ui-element-slider_2"></a>`id--id_ui-element-slider_2` | `#id_ui-element-slider_2` | input |  | 1 |
 | <a id="id--id_ui-element-slider_3"></a>`id--id_ui-element-slider_3` | `#id_ui-element-slider_3` | input |  | 1 |
 | <a id="id--id_ui-element-slider_4"></a>`id--id_ui-element-slider_4` | `#id_ui-element-slider_4` | input |  | 1 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | Publish Date | 2 |
+| <a id="id--null-0"></a>`id--null-0` | `#null-0` | li | Publish Date | 2 |
+| <a id="id--null-1"></a>`id--null-1` | `#null-1` | li | Last Updated Date | 2 |
+| <a id="id--null-2"></a>`id--null-2` | `#null-2` | li | Alphabetical | 1 |
+| <a id="id--null-3"></a>`id--null-3` | `#null-3` | li | Post/Term ID | 1 |
 | <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
@@ -52,12 +57,12 @@ _33 entries_
 
 ## Role-like classes
 
-_26 entries_
+_28 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="class--aioseo-box-toggle"></a>`class--aioseo-box-toggle` | `.aioseo-box-toggle` | div |  | 1 |
-| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 11 |
+| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 16 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |
@@ -70,18 +75,20 @@ _26 entries_
 | <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
 | <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
-| <a id="class--aioseo-html-sitemaps-disabled-button"></a>`class--aioseo-html-sitemaps-disabled-button` | `.aioseo-html-sitemaps-disabled-button` | button |  | 1 |
-| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 2 |
-| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 2 |
+| <a id="class--aioseo-highlight-toggle"></a>`class--aioseo-highlight-toggle` | `.aioseo-highlight-toggle` | div |  | 9 |
+| <a id="class--aioseo-html-sitemaps-disabled-button"></a>`class--aioseo-html-sitemaps-disabled-button` | `.aioseo-html-sitemaps-disabled-button` | button |  | 2 |
+| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 3 |
+| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 3 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
-| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div | Hide | 2 |
-| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Enable Sitemap | 10 |
-| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 2 |
-| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 8 |
-| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Using the custom-built tools below, you can add an HTML sit… | 9 |
-| <a id="class--aioseo-slide-content"></a>`class--aioseo-slide-content` | `.aioseo-slide-content` | div | Display the sitemap on a dedicated page: | 1 |
+| <a id="class--aioseo-post-type-options-toggle"></a>`class--aioseo-post-type-options-toggle` | `.aioseo-post-type-options-toggle` | div |  | 2 |
+| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div | Hide | 10 |
+| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Enable Sitemap | 40 |
+| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 12 |
+| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 35 |
+| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Using the custom-built tools below, you can add an HTML sit… | 37 |
+| <a id="class--aioseo-slide-content"></a>`class--aioseo-slide-content` | `.aioseo-slide-content` | div | Display the sitemap on a dedicated page: | 6 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
-| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 2 |
+| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 4 |
 
 ---
 

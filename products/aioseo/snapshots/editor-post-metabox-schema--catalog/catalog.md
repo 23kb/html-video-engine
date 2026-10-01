@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/editor-post-metabox-schema--catalog/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 142 selector entries across 2 sections.
+> 145 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/editor-post-metabox-schema--catalog/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_111 entries_
+_115 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -43,7 +43,7 @@ _111 entries_
 | <a id="id--aioseo-post-settings-sidebar-vue"></a>`id--aioseo-post-settings-sidebar-vue` | `#aioseo-post-settings-sidebar-vue` | div | Schema | 1 |
 | <a id="id--aioseo-post-settings-sidebar-aioseo-post-settings-sidebar"></a>`id--aioseo-post-settings-sidebar-aioseo-post-settings-sidebar` | `#aioseo-post-settings-sidebar:aioseo-post-settings-sidebar` | div | AIOSEO | 1 |
 | <a id="id--aioseo-redirects-add-redirect-standalone"></a>`id--aioseo-redirects-add-redirect-standalone` | `#aioseo-redirects-add-redirect-standalone` | div |  | 1 |
-| <a id="id--aioseo-schema-generator-main"></a>`id--aioseo-schema-generator-main` | `#aioseo-schema-generator-main` | div | Schema Catalog | 1 |
+| <a id="id--aioseo-schema-generator-main"></a>`id--aioseo-schema-generator-main` | `#aioseo-schema-generator-main` | div | Schema Catalog | 5 |
 | <a id="id--aioseo-settings"></a>`id--aioseo-settings` | `#aioseo-settings` | div | AIOSEO Settings | 1 |
 | <a id="id--aioseo-settings-handle-order-higher-description"></a>`id--aioseo-settings-handle-order-higher-description` | `#aioseo-settings-handle-order-higher-description` | span | Move up | 1 |
 | <a id="id--aioseo-settings-handle-order-higher-description-text"></a>`id--aioseo-settings-handle-order-higher-description-text` | `#aioseo-settings-handle-order-higher-description-text` | span | Move up | 1 |
@@ -52,7 +52,7 @@ _111 entries_
 | <a id="id--aioseo-settings-handlediv"></a>`id--aioseo-settings-handlediv` | `#aioseo-settings-handlediv` | span | Show or hide panel | 1 |
 | <a id="id--aioseo-settings-handlediv-text"></a>`id--aioseo-settings-handlediv-text` | `#aioseo-settings-handlediv-text` | span | Show or hide panel | 1 |
 | <a id="id--aioseo-settings-title"></a>`id--aioseo-settings-title` | `#aioseo-settings-title` | h2 | AIOSEO Settings | 1 |
-| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div | How to Plan a Vegetable Bed That Feeds You All Year - Rosa'… | 1 |
+| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div |  | 1 |
 | <a id="id--aioseo-writing-assistant-metabox"></a>`id--aioseo-writing-assistant-metabox` | `#aioseo-writing-assistant-metabox` | div | AIOSEO Writing Assistant | 1 |
 | <a id="id--aioseo-writing-assistant-metabox-app"></a>`id--aioseo-writing-assistant-metabox-app` | `#aioseo-writing-assistant-metabox-app` | div | Elevate your SEO with AIOSEO Writing Assistant Now Integrat… | 1 |
 | <a id="id--aioseo-writing-assistant-metabox-handle-order-higher-description"></a>`id--aioseo-writing-assistant-metabox-handle-order-higher-description` | `#aioseo-writing-assistant-metabox-handle-order-higher-description` | span | Move up | 1 |
@@ -71,6 +71,7 @@ _111 entries_
 | <a id="id--base-ui--rb"></a>`id--base-ui--rb` | `#base-ui-:rb:` | button |  | 1 |
 | <a id="id--c-aioseo-1-0"></a>`id--c-aioseo-1-0` | `#c-aioseo-1-0` | lineargradient |  | 1 |
 | <a id="id--c-aioseo-2-0"></a>`id--c-aioseo-2-0` | `#c-aioseo-2-0` | lineargradient |  | 1 |
+| <a id="id--custom-schema-editor"></a>`id--custom-schema-editor` | `#custom-schema-editor` | div |  | 1 |
 | <a id="id--d-aioseo-1-0"></a>`id--d-aioseo-1-0` | `#d-aioseo-1-0` | lineargradient |  | 1 |
 | <a id="id--d-aioseo-2-0"></a>`id--d-aioseo-2-0` | `#d-aioseo-2-0` | lineargradient |  | 1 |
 | <a id="id--e-aioseo-1-0"></a>`id--e-aioseo-1-0` | `#e-aioseo-1-0` | lineargradient |  | 1 |
@@ -87,6 +88,8 @@ _111 entries_
 | <a id="id--hiddenaction"></a>`id--hiddenaction` | `#hiddenaction` | input |  | 1 |
 | <a id="id--id_previewGeneralIsMobile_0"></a>`id--id_previewGeneralIsMobile_0` | `#id_previewGeneralIsMobile_0` | input |  | 1 |
 | <a id="id--id_previewGeneralIsMobile_1"></a>`id--id_previewGeneralIsMobile_1` | `#id_previewGeneralIsMobile_1` | input |  | 1 |
+| <a id="id--id_schema-editor-mode_0"></a>`id--id_schema-editor-mode_0` | `#id_schema-editor-mode_0` | input | Edit Preview | 1 |
+| <a id="id--id_schema-editor-mode_1"></a>`id--id_schema-editor-mode_1` | `#id_schema-editor-mode_1` | input | Preview | 1 |
 | <a id="id--iris-css"></a>`id--iris-css` | `#iris-css` | link |  | 1 |
 | <a id="id--link-modal-title"></a>`id--link-modal-title` | `#link-modal-title` | h1 | Insert/edit link | 1 |
 | <a id="id--main-settings-cont"></a>`id--main-settings-cont` | `#main-settings-cont` | div |  | 2 |
@@ -105,6 +108,7 @@ _111 entries_
 | <a id="id--quill-mention-list"></a>`id--quill-mention-list` | `#quill-mention-list` | ul |  | 4 |
 | <a id="id--referredby"></a>`id--referredby` | `#referredby` | input |  | 1 |
 | <a id="id--samplepermalinknonce"></a>`id--samplepermalinknonce` | `#samplepermalinknonce` | input |  | 1 |
+| <a id="id--schema-validator"></a>`id--schema-validator` | `#schema-validator` | div | { "@context": "https://schema.org", "@graph": [ { "@type": … | 1 |
 | <a id="id--search-panel"></a>`id--search-panel` | `#search-panel` | div | Search | 1 |
 | <a id="id--search-results"></a>`id--search-results` | `#search-results` | div |  | 1 |
 | <a id="id--side-sortables"></a>`id--side-sortables` | `#side-sortables` | div |  | 1 |
@@ -130,7 +134,7 @@ _111 entries_
 
 ## Role-like classes
 
-_31 entries_
+_30 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -139,11 +143,10 @@ _31 entries_
 | <a id="class--aioseo-ai-content-meta-description-modal"></a>`class--aioseo-ai-content-meta-description-modal` | `.aioseo-ai-content-meta-description-modal` | div |  | 1 |
 | <a id="class--aioseo-ai-content-meta-title-modal"></a>`class--aioseo-ai-content-meta-title-modal` | `.aioseo-ai-content-meta-title-modal` | div |  | 1 |
 | <a id="class--aioseo-append-button"></a>`class--aioseo-append-button` | `.aioseo-append-button` | div | Use AI Generator | 4 |
-| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | a | Leave a 5-star Review | 28 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 2 |
 | <a id="class--aioseo-documentation-link"></a>`class--aioseo-documentation-link` | `.aioseo-documentation-link` | div | Learn more about Smart Tags | 4 |
-| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 19 |
-| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 19 |
+| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 22 |
+| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 22 |
 | <a id="class--aioseo-modal"></a>`class--aioseo-modal` | `.aioseo-modal` | div |  | 13 |
 | <a id="class--aioseo-out-of-credits-modal"></a>`class--aioseo-out-of-credits-modal` | `.aioseo-out-of-credits-modal` | div |  | 2 |
 | <a id="class--aioseo-post-schema-confirmation-modal"></a>`class--aioseo-post-schema-confirmation-modal` | `.aioseo-post-schema-confirmation-modal` | div |  | 2 |
@@ -151,12 +154,12 @@ _31 entries_
 | <a id="class--aioseo-post-schema-naming-modal"></a>`class--aioseo-post-schema-naming-modal` | `.aioseo-post-schema-naming-modal` | div |  | 1 |
 | <a id="class--aioseo-post-settings-modal"></a>`class--aioseo-post-settings-modal` | `.aioseo-post-settings-modal` | div |  | 1 |
 | <a id="class--aioseo-post-settings-sidebar"></a>`class--aioseo-post-settings-sidebar` | `.aioseo-post-settings-sidebar` | div | Schema | 1 |
-| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div |  | 1 |
+| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div |  | 2 |
 | <a id="class--aioseo-review-cta-actions"></a>`class--aioseo-review-cta-actions` | `.aioseo-review-cta-actions` | div | Leave a 5-star Review | 2 |
 | <a id="class--aioseo-review-cta-content"></a>`class--aioseo-review-cta-content` | `.aioseo-review-cta-content` | div | Has AIOSEO helped to improve your rankings? | 2 |
 | <a id="class--aioseo-review-cta-link"></a>`class--aioseo-review-cta-link` | `.aioseo-review-cta-link` | a | Nope, maybe later | 4 |
 | <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | SERP Preview SERP: Search Engine Results Page preview. Your… | 13 |
-| <a id="class--aioseo-search"></a>`class--aioseo-search` | `.aioseo-search` | svg |  | 13 |
+| <a id="class--aioseo-search"></a>`class--aioseo-search` | `.aioseo-search` | svg |  | 15 |
 | <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 3 |
 | <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 13 |
 | <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | SERP Preview SERP: Search Engine Results Page preview. Your… | 13 |

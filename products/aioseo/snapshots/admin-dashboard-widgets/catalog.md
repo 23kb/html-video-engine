@@ -16,7 +16,7 @@ _141 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="id--activity-widget"></a>`id--activity-widget` | `#activity-widget` | div | Recently Published Today, 12:40 am Free Composting Workshop… | 1 |
+| <a id="id--activity-widget"></a>`id--activity-widget` | `#activity-widget` | div | Recently Published Sep 30th, 12:40 am Free Composting Works… | 1 |
 | <a id="id--adv-settings"></a>`id--adv-settings` | `#adv-settings` | form | Screen elements Some screen elements can be shown or hidden… | 1 |
 | <a id="id--aioseo-admin"></a>`id--aioseo-admin` | `#aioseo-admin` | div |  | 1 |
 | <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
@@ -132,7 +132,7 @@ _141 entries_
 | <a id="id--postbox-container-2"></a>`id--postbox-container-2` | `#postbox-container-2` | div | Quick Draft Your Recent Drafts | 1 |
 | <a id="id--postbox-container-3"></a>`id--postbox-container-3` | `#postbox-container-3` | div |  | 1 |
 | <a id="id--postbox-container-4"></a>`id--postbox-container-4` | `#postbox-container-4` | div |  | 1 |
-| <a id="id--published-posts"></a>`id--published-posts` | `#published-posts` | div | Recently Published Today, 12:40 am Free Composting Workshop… | 1 |
+| <a id="id--published-posts"></a>`id--published-posts` | `#published-posts` | div | Recently Published Sep 30th, 12:40 am Free Composting Works… | 1 |
 | <a id="id--quick-press"></a>`id--quick-press` | `#quick-press` | form | Title Content | 1 |
 | <a id="id--quickpost-action"></a>`id--quickpost-action` | `#quickpost-action` | input |  | 1 |
 | <a id="id--save-post"></a>`id--save-post` | `#save-post` | input | Your Recent Drafts Planning Next Year’s Seed Orders Septemb… | 1 |

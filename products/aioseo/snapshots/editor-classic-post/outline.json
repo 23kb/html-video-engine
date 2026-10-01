@@ -21,6 +21,60 @@
       "count": 2
     },
     {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": ".aioseo-add-template-tag",
+      "count": 12
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": ".ql-editor",
+      "count": 4
+    },
+    {
+      "label": "smart-tag-menu-open",
+      "event": "click",
+      "selector": ".aioseo-view-all-tags",
+      "count": 4
+    },
+    {
+      "label": "smart-tag-pill-switch",
+      "event": "click",
+      "selector": ".mention[data-custom-value][data-denotation-char]",
+      "count": 2
+    },
+    {
+      "label": "emoji-picker-toggle",
+      "event": "click",
+      "selector": ".aioseo-show-emoji-button",
+      "count": 4
+    },
+    {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.multiselect",
+      "count": 4
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div:nth-of-type(2) > div.contextual-help-sidebar:nth-of-type(2) > p:nth-of-type(3) > a",
+      "count": 25
+    },
+    {
+      "label": "plain-label",
+      "event": "click",
+      "selector": "label.aioseo-reviewed-by-label",
+      "count": 1
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.var-tab.var--box",
+      "count": 3
+    },
+    {
       "label": "editor-seo-sidebar",
       "event": "click",
       "selector": "#aioseo-post-settings-sidebar-button",
@@ -68,20 +122,6 @@
         "hidden": false
       },
       {
-        "sel": "#et_pb_fb_cta",
-        "tag": "a",
-        "text": "Build On The Front End",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#et_pb_toggle_builder",
-        "tag": "a",
-        "text": "Use The Divi Builder",
-        "count": 1,
-        "hidden": false
-      },
-      {
         "sel": "#insert-media-button",
         "tag": "button",
         "text": "Add Media",
@@ -98,9 +138,9 @@
       {
         "sel": "#newmeta-button",
         "tag": "button",
-        "text": "Enter new",
+        "text": "Enter new Cancel",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#post_tag-check-num-0",
@@ -163,7 +203,9 @@
         "tag": "a",
         "text": "Leave a 5-star Review",
         "count": 2,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-radio-toggle",
@@ -184,14 +226,18 @@
         "tag": "button",
         "text": "😀",
         "count": 4,
-        "hidden": false
+        "hidden": false,
+        "wired": "emoji-picker-toggle",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-view-all-tags",
         "tag": "a",
         "text": "View all tags →",
         "count": 4,
-        "hidden": false
+        "hidden": false,
+        "wired": "smart-tag-menu-open",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
@@ -228,28 +274,28 @@
       {
         "sel": "#_ajax_fetch_list_nonce",
         "tag": "input",
-        "text": "6cd856d4e0",
+        "text": "3b3834d5e2",
         "count": 1,
         "hidden": true
       },
       {
         "sel": "#_ajax_nonce-add-category",
         "tag": "input",
-        "text": "5990542a36",
+        "text": "3d174f7d81",
         "count": 1,
         "hidden": true
       },
       {
         "sel": "#_ajax_nonce-add-meta",
         "tag": "input",
-        "text": "aa60179e11",
+        "text": "4eb29e3d4a",
         "count": 1,
         "hidden": true
       },
       {
         "sel": "#_ajax_nonce-replyto-comment",
         "tag": "input",
-        "text": "abfd7ee63e",
+        "text": "30eba623d4",
         "count": 1,
         "hidden": true
       },
@@ -263,7 +309,7 @@
       {
         "sel": "#_wp_unfiltered_html_comment",
         "tag": "input",
-        "text": "79a86be951",
+        "text": "bb34374552",
         "count": 1,
         "hidden": true
       },
@@ -284,14 +330,14 @@
       {
         "sel": "#active_post_lock",
         "tag": "input",
-        "text": "1790792871:1",
+        "text": "1790890274:1",
         "count": 1,
         "hidden": true
       },
       {
         "sel": "#add_comment_nonce",
         "tag": "input",
-        "text": "4e927e3011",
+        "text": "dfd1fc6220",
         "count": 1,
         "hidden": true
       },
@@ -445,28 +491,28 @@
       {
         "sel": "#cur_hh",
         "tag": "input",
-        "text": "18",
+        "text": "21",
         "count": 1,
         "hidden": true
       },
       {
         "sel": "#cur_jj",
         "tag": "input",
-        "text": "30",
+        "text": "01",
         "count": 1,
         "hidden": true
       },
       {
         "sel": "#cur_mm",
         "tag": "input",
-        "text": "09",
+        "text": "10",
         "count": 1,
         "hidden": true
       },
       {
         "sel": "#cur_mn",
         "tag": "input",
-        "text": "27",
+        "text": "31",
         "count": 1,
         "hidden": true
       },
@@ -478,46 +524,11 @@
         "hidden": true
       },
       {
-        "sel": "#et_builder_version",
-        "tag": "input",
-        "text": "",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#et_pb_last_post_modified",
-        "tag": "input",
-        "text": "2026-09-15 09:30:00",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#et_pb_old_content",
-        "tag": "textarea",
-        "text": "",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#et_pb_settings_nonce",
-        "tag": "input",
-        "text": "371e1b4a1e",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#et_pb_use_builder",
-        "tag": "input",
-        "text": "",
-        "count": 1,
-        "hidden": true
-      },
-      {
         "sel": "#excerpt",
         "tag": "textarea",
         "text": "",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#formatdiv-hide",
@@ -704,7 +715,7 @@
       {
         "sel": "#meta-box-order-nonce",
         "tag": "input",
-        "text": "3a21c5a2f6",
+        "text": "ec44ef6e99",
         "count": 1,
         "hidden": true
       },
@@ -720,14 +731,14 @@
         "tag": "select",
         "text": "— Select — footnotes sugarcalendar_speaker_email sugarcalen…",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#metavalue",
         "tag": "textarea",
         "text": "",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#mm",
@@ -776,7 +787,7 @@
         "tag": "input",
         "text": "Add Custom Field",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#original_post_status",
@@ -870,6 +881,13 @@
         "hidden": false
       },
       {
+        "sel": "#post-format-aside",
+        "tag": "input",
+        "text": "aside",
+        "count": 1,
+        "hidden": false
+      },
+      {
         "sel": "#post-format-audio",
         "tag": "input",
         "text": "audio",
@@ -877,9 +895,23 @@
         "hidden": false
       },
       {
+        "sel": "#post-format-chat",
+        "tag": "input",
+        "text": "chat",
+        "count": 1,
+        "hidden": false
+      },
+      {
         "sel": "#post-format-gallery",
         "tag": "input",
         "text": "gallery",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-format-image",
+        "tag": "input",
+        "text": "image",
         "count": 1,
         "hidden": false
       },
@@ -894,6 +926,13 @@
         "sel": "#post-format-quote",
         "tag": "input",
         "text": "quote",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-format-status",
+        "tag": "input",
+        "text": "status",
         "count": 1,
         "hidden": false
       },
@@ -928,7 +967,7 @@
       {
         "sel": "#PostSettingsNonce",
         "tag": "input",
-        "text": "40e45b8b23",
+        "text": "4f913645a9",
         "count": 1,
         "hidden": true
       },
@@ -964,174 +1003,6 @@
         "sel": "#qt_content_del",
         "tag": "input",
         "text": "del",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_box",
-        "tag": "input",
-        "text": "box",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_button",
-        "tag": "input",
-        "text": "button",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_digg",
-        "tag": "input",
-        "text": "digg",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_facebook",
-        "tag": "input",
-        "text": "facebook",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_feedburner",
-        "tag": "input",
-        "text": "feedburner",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_learn_more",
-        "tag": "input",
-        "text": "learn_more",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_one_fourth",
-        "tag": "input",
-        "text": "one fourth",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_one_fourth_last",
-        "tag": "input",
-        "text": "one fourth last",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_one_half",
-        "tag": "input",
-        "text": "one half",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_one_half_last",
-        "tag": "input",
-        "text": "one half last",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_one_third",
-        "tag": "input",
-        "text": "one third",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_one_third_last",
-        "tag": "input",
-        "text": "one third last",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_protected",
-        "tag": "input",
-        "text": "protected",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_raw",
-        "tag": "input",
-        "text": "raw",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_retweet",
-        "tag": "input",
-        "text": "retweet",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_slide",
-        "tag": "input",
-        "text": "slide",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_slider",
-        "tag": "input",
-        "text": "slider",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_stumble",
-        "tag": "input",
-        "text": "stumble",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_three_fourth",
-        "tag": "input",
-        "text": "three fourth",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_three_fourth_last",
-        "tag": "input",
-        "text": "three fourth last",
-        "count": 2,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_tooltip",
-        "tag": "input",
-        "text": "tooltip",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_twitter",
-        "tag": "input",
-        "text": "x",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_two_third",
-        "tag": "input",
-        "text": "two third",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_content_ed_two_third_last",
-        "tag": "input",
-        "text": "two third last",
         "count": 1,
         "hidden": true
       },
@@ -1227,174 +1098,6 @@
         "hidden": true
       },
       {
-        "sel": "#qt_replycontent_ed_box",
-        "tag": "input",
-        "text": "box",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_button",
-        "tag": "input",
-        "text": "button",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_digg",
-        "tag": "input",
-        "text": "digg",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_facebook",
-        "tag": "input",
-        "text": "facebook",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_feedburner",
-        "tag": "input",
-        "text": "feedburner",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_learn_more",
-        "tag": "input",
-        "text": "learn_more",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_one_fourth",
-        "tag": "input",
-        "text": "one fourth",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_one_fourth_last",
-        "tag": "input",
-        "text": "one fourth last",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_one_half",
-        "tag": "input",
-        "text": "one half",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_one_half_last",
-        "tag": "input",
-        "text": "one half last",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_one_third",
-        "tag": "input",
-        "text": "one third",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_one_third_last",
-        "tag": "input",
-        "text": "one third last",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_protected",
-        "tag": "input",
-        "text": "protected",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_raw",
-        "tag": "input",
-        "text": "raw",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_retweet",
-        "tag": "input",
-        "text": "retweet",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_slide",
-        "tag": "input",
-        "text": "slide",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_slider",
-        "tag": "input",
-        "text": "slider",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_stumble",
-        "tag": "input",
-        "text": "stumble",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_three_fourth",
-        "tag": "input",
-        "text": "three fourth",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_three_fourth_last",
-        "tag": "input",
-        "text": "three fourth last",
-        "count": 2,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_tooltip",
-        "tag": "input",
-        "text": "tooltip",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_twitter",
-        "tag": "input",
-        "text": "x",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_two_third",
-        "tag": "input",
-        "text": "two third",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#qt_replycontent_ed_two_third_last",
-        "tag": "input",
-        "text": "two third last",
-        "count": 1,
-        "hidden": true
-      },
-      {
         "sel": "#qt_replycontent_em",
         "tag": "input",
         "text": "i",
@@ -1467,7 +1170,7 @@
       {
         "sel": "#samplepermalinknonce",
         "tag": "input",
-        "text": "a1b89e3b38",
+        "text": "4e219d3971",
         "count": 1,
         "hidden": true
       },
@@ -1481,7 +1184,7 @@
       {
         "sel": "#screenoptionnonce",
         "tag": "input",
-        "text": "73a3934754",
+        "text": "f8b667ff32",
         "count": 1,
         "hidden": true
       },
@@ -1673,7 +1376,7 @@
     ],
     "other": [
       {
-        "sel": "#a-aioseo-1-0",
+        "sel": "#a-aioseo-1-8",
         "tag": "clippath",
         "text": "",
         "count": 1,
@@ -1871,9 +1574,9 @@
       {
         "sel": "#aioseo-text-width-measurement",
         "tag": "div",
-        "text": "Planting Fruit Trees in Small Yards - Rosa's Garden Co.",
+        "text": "",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#aioseo-writing-assistant-metabox",
@@ -1943,7 +1646,7 @@
         "tag": "div",
         "text": "",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#authordiv",
@@ -2002,14 +1705,14 @@
         "hidden": true
       },
       {
-        "sel": "#b-aioseo-1-0",
+        "sel": "#b-aioseo-1-8",
         "tag": "filter",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#c-aioseo-1-0",
+        "sel": "#c-aioseo-1-8",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
@@ -2240,7 +1943,7 @@
         "hidden": true
       },
       {
-        "sel": "#d-aioseo-1-0",
+        "sel": "#d-aioseo-1-8",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
@@ -2254,7 +1957,7 @@
         "hidden": false
       },
       {
-        "sel": "#e-aioseo-1-0",
+        "sel": "#e-aioseo-1-8",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
@@ -2314,17 +2017,10 @@
         "tag": "span",
         "text": "Enter new",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
-        "sel": "#et_pb_main_editor_wrap",
-        "tag": "div",
-        "text": "Add Media Visual Code Paragraph Word count: 98 Last edited …",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#f-aioseo-1-0",
+        "sel": "#f-aioseo-1-8",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
@@ -2387,7 +2083,7 @@
         "hidden": false
       },
       {
-        "sel": "#g-aioseo-1-0",
+        "sel": "#g-aioseo-1-8",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
@@ -2434,13 +2130,6 @@
         "text": "News",
         "count": 1,
         "hidden": false
-      },
-      {
-        "sel": "#iris-css",
-        "tag": "link",
-        "text": "",
-        "count": 1,
-        "hidden": true
       },
       {
         "sel": "#last-edit",
@@ -2503,14 +2192,14 @@
         "tag": "table",
         "text": "Name Value — Select — footnotes sugarcalendar_speaker_email…",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#newmetaleft",
         "tag": "td",
         "text": "— Select — footnotes sugarcalendar_speaker_email sugarcalen…",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#no-comments",
@@ -2599,7 +2288,7 @@
       {
         "sel": "#post-formats-select",
         "tag": "div",
-        "text": "Post Formats Standard Video Audio Quote Gallery Link",
+        "text": "Post Formats Standard Aside Audio Chat Gallery Image Link Q…",
         "count": 1,
         "hidden": false
       },
@@ -2662,9 +2351,9 @@
       {
         "sel": "#postcustom",
         "tag": "div",
-        "text": "Custom Fields Move up Move down Show or hide panel Add Cust…",
+        "text": "Custom Fields Move up Move up Move down Move down Show or h…",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#postcustom-handle-order-higher-description",
@@ -2713,14 +2402,14 @@
         "tag": "h2",
         "text": "Custom Fields",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#postcustomstuff",
         "tag": "div",
-        "text": "Add Custom Field: Name Value — Select — footnotes sugarcale…",
+        "text": "Name Value Add Custom Field: Name Value — Select — footnote…",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#postdivrich",
@@ -2732,9 +2421,9 @@
       {
         "sel": "#postexcerpt",
         "tag": "div",
-        "text": "Excerpt Move up Move down Show or hide panel Excerpt Excerp…",
+        "text": "Excerpt Move up Move up Move down Move down Show or hide pa…",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#postexcerpt-handle-order-higher-description",
@@ -2783,7 +2472,7 @@
         "tag": "h2",
         "text": "Excerpt",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#postimagediv",
@@ -3434,20 +3123,6 @@
         "tag": "div",
         "text": "Learn more about Smart Tags →",
         "count": 4,
-        "hidden": true
-      },
-      {
-        "sel": ".aioseo-input",
-        "tag": "div",
-        "text": "",
-        "count": 18,
-        "hidden": true
-      },
-      {
-        "sel": ".aioseo-input-container",
-        "tag": "div",
-        "text": "",
-        "count": 18,
         "hidden": true
       },
       {

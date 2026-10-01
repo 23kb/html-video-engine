@@ -15,6 +15,42 @@
       "count": 3
     },
     {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.multiselect",
+      "count": 3
+    },
+    {
+      "label": "small-controls",
+      "event": "click",
+      "selector": ".aioseo-breadcrumb",
+      "count": 3
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "span.aioseo-breadcrumb a",
+      "count": 2
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.editor-header__settings a.components-button.is-compact",
+      "count": 6
+    },
+    {
+      "label": "plain-label",
+      "event": "click",
+      "selector": "label.aioseo-reviewed-by-label",
+      "count": 1
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(8)",
+      "count": 1
+    },
+    {
       "label": "editor-seo-sidebar",
       "event": "click",
       "selector": "div.interface-pinned-items button.components-button.is-compact",
@@ -41,39 +77,13 @@
         "hidden": false
       },
       {
-        "sel": "#ui-id-1",
-        "tag": "a",
-        "text": "Export",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#ui-id-2",
-        "tag": "a",
-        "text": "Import",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#ui-id-3",
-        "tag": "a",
-        "text": "Export",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#ui-id-4",
-        "tag": "a",
-        "text": "Import",
-        "count": 1,
-        "hidden": true
-      },
-      {
         "sel": ".aioseo-button",
         "tag": "a",
         "text": "Leave a 5-star Review",
         "count": 2,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-review-cta-link",
@@ -152,7 +162,7 @@
       {
         "sel": "#meta-box-order-nonce",
         "tag": "input",
-        "text": "a660b0804b",
+        "text": "997e28fb2b",
         "count": 1,
         "hidden": true
       },
@@ -187,7 +197,7 @@
       {
         "sel": "#PostSettingsNonce",
         "tag": "input",
-        "text": "32d88daf58",
+        "text": "a1a71da611",
         "count": 1,
         "hidden": true
       },
@@ -201,14 +211,14 @@
       {
         "sel": "#samplepermalinknonce",
         "tag": "input",
-        "text": "39dd4b2c46",
+        "text": "bd1e1ed941",
         "count": 1,
         "hidden": true
       },
       {
         "sel": "#toggle-custom-fields-nonce",
         "tag": "input",
-        "text": "0f1196345a",
+        "text": "bd2f57ff5c",
         "count": 1,
         "hidden": true
       },
@@ -227,20 +237,6 @@
         "tag": "div",
         "text": "",
         "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#et-core-portability-export",
-        "tag": "div",
-        "text": "Exporting your Divi Builder Layout will create a JSON file …",
-        "count": 2,
-        "hidden": true
-      },
-      {
-        "sel": "#et-core-portability-import",
-        "tag": "div",
-        "text": "Importing a previously-exported Divi Builder Layout file wi…",
-        "count": 2,
         "hidden": true
       },
       {
@@ -274,7 +270,7 @@
     ],
     "other": [
       {
-        "sel": "#a-aioseo-1-1",
+        "sel": "#a-aioseo-1-9",
         "tag": "clippath",
         "text": "",
         "count": 1,
@@ -430,9 +426,9 @@
       {
         "sel": "#aioseo-text-width-measurement",
         "tag": "div",
-        "text": "How to Plan a Vegetable Bed That Feeds You All Year - Rosa'…",
+        "text": "",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#aioseo-writing-assistant-metabox",
@@ -498,28 +494,28 @@
         "hidden": false
       },
       {
-        "sel": "#b-aioseo-1-1",
+        "sel": "#b-aioseo-1-9",
         "tag": "filter",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#c-aioseo-1-1",
+        "sel": "#c-aioseo-1-9",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#d-aioseo-1-1",
+        "sel": "#d-aioseo-1-9",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#e-aioseo-1-1",
+        "sel": "#e-aioseo-1-9",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
@@ -540,21 +536,14 @@
         "hidden": true
       },
       {
-        "sel": "#et-gb-sidebar-style",
-        "tag": "link",
-        "text": "",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#f-aioseo-1-1",
+        "sel": "#f-aioseo-1-9",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#g-aioseo-1-1",
+        "sel": "#g-aioseo-1-9",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
@@ -562,13 +551,6 @@
       },
       {
         "sel": "#global-styles-css-custom-properties-inline-css",
-        "tag": "link",
-        "text": "",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#iris-css",
         "tag": "link",
         "text": "",
         "count": 1,

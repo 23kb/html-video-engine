@@ -39,10 +39,28 @@
       "count": 2
     },
     {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": "div.multiselect.aioseo-select",
+      "count": 1
+    },
+    {
       "label": "live-only-button",
       "event": "click",
-      "selector": ".aioseo-button.aioseo-button1",
-      "count": 4
+      "selector": "a.aioseo-button.blue",
+      "count": 9
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 56
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "a.text-white",
+      "count": 196
     }
   ],
   "nav": [],
@@ -90,7 +108,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -154,7 +174,7 @@
       {
         "sel": "#aioseo-app",
         "tag": "div",
-        "text": "(2) New Notifications Email Reports 11 hours ago Stay ahead…",
+        "text": "(2) New Notifications Email Reports 19 hours ago Stay ahead…",
         "count": 1,
         "hidden": false
       },

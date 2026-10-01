@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-redirects-http-headers/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 42 selector entries across 2 sections.
+> 66 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-redirects-http-headers/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_24 entries_
+_48 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -31,6 +31,30 @@ _24 entries_
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | Site | 2 |
+| <a id="id--null-0"></a>`id--null-0` | `#null-0` | li | Site | 2 |
+| <a id="id--null-1"></a>`id--null-1` | `#null-1` | li | Redirect | 2 |
+| <a id="id--null-10"></a>`id--null-10` | `#null-10` | li | Security | 1 |
+| <a id="id--null-11"></a>`id--null-11` | `#null-11` | li | X-Frame-Options | 1 |
+| <a id="id--null-12"></a>`id--null-12` | `#null-12` | li | X-XSS-Protection | 1 |
+| <a id="id--null-13"></a>`id--null-13` | `#null-13` | li | X-Content-Type-Options | 1 |
+| <a id="id--null-14"></a>`id--null-14` | `#null-14` | li | Strict-Transport-Security | 1 |
+| <a id="id--null-15"></a>`id--null-15` | `#null-15` | li | Feature-Policy | 1 |
+| <a id="id--null-16"></a>`id--null-16` | `#null-16` | li | Clear-Site-Data | 1 |
+| <a id="id--null-17"></a>`id--null-17` | `#null-17` | li | Referrer-Policy | 1 |
+| <a id="id--null-18"></a>`id--null-18` | `#null-18` | li | Content-Security-Policy | 1 |
+| <a id="id--null-19"></a>`id--null-19` | `#null-19` | li | Content-Security-Policy-Report-Only | 1 |
+| <a id="id--null-2"></a>`id--null-2` | `#null-2` | li | X-Robots-Tag | 1 |
+| <a id="id--null-20"></a>`id--null-20` | `#null-20` | li | P3P | 1 |
+| <a id="id--null-21"></a>`id--null-21` | `#null-21` | li | Custom | 1 |
+| <a id="id--null-22"></a>`id--null-22` | `#null-22` | li | Custom | 1 |
+| <a id="id--null-3"></a>`id--null-3` | `#null-3` | li | CORS | 1 |
+| <a id="id--null-4"></a>`id--null-4` | `#null-4` | li | Access-Control-Allow-Headers | 1 |
+| <a id="id--null-5"></a>`id--null-5` | `#null-5` | li | Access-Control-Allow-Methods | 1 |
+| <a id="id--null-6"></a>`id--null-6` | `#null-6` | li | Access-Control-Max-Age | 1 |
+| <a id="id--null-7"></a>`id--null-7` | `#null-7` | li | Access-Control-Allow-Credentials | 1 |
+| <a id="id--null-8"></a>`id--null-8` | `#null-8` | li | Access-Control-Allow-Origin | 1 |
+| <a id="id--null-9"></a>`id--null-9` | `#null-9` | li | Access-Control-Expose-Headers | 1 |
 | <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |

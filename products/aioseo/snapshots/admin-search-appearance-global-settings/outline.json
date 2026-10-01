@@ -45,6 +45,48 @@
       "count": 3
     },
     {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": ".aioseo-add-template-tag",
+      "count": 9
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": ".ql-editor",
+      "count": 5
+    },
+    {
+      "label": "smart-tag-menu-open",
+      "event": "click",
+      "selector": ".aioseo-view-all-tags",
+      "count": 5
+    },
+    {
+      "label": "smart-tag-pill-switch",
+      "event": "click",
+      "selector": "span.mention",
+      "count": 1
+    },
+    {
+      "label": "emoji-picker-toggle",
+      "event": "click",
+      "selector": ".aioseo-show-emoji-button",
+      "count": 5
+    },
+    {
+      "label": "date-picker-open",
+      "event": "click",
+      "selector": "div.aioseo-datepicker-picker.aioseo-datepicker-picker--large",
+      "count": 1
+    },
+    {
+      "label": "phone-country-open",
+      "event": "click",
+      "selector": "div.vti__dropdown",
+      "count": 1
+    },
+    {
       "label": "title-separator-pick",
       "event": "click",
       "selector": "div.aioseo-settings-content > div.aioseo-row > div.aioseo-col:nth-of-type(2) > div.separator",
@@ -53,7 +95,13 @@
     {
       "label": "title-separator-show-more",
       "event": "click",
-      "selector": "div.show-more a",
+      "selector": "div.show-more",
+      "count": 1
+    },
+    {
+      "label": "round3-captured-state",
+      "event": "click",
+      "selector": "button.aioseo-button.black",
       "count": 1
     },
     {
@@ -61,6 +109,42 @@
       "event": "click",
       "selector": ".aioseo-button.medium",
       "count": 3
+    },
+    {
+      "label": "native-controls",
+      "event": "click",
+      "selector": "div.vti__dropdown",
+      "count": 3
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.aioseo-documentation-link a",
+      "count": 212
+    },
+    {
+      "label": "image-uploader-remove",
+      "event": "click",
+      "selector": "button.aioseo-button.gray",
+      "count": 1
+    },
+    {
+      "label": "plain-label",
+      "event": "click",
+      "selector": "div.aioseo-row:nth-of-type(9) > div.aioseo-col:nth-of-type(2) > div.aioseo-settings-content > label:nth-of-type(2)",
+      "count": 3
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.var-tab.var--box",
+      "count": 2
     }
   ],
   "nav": [],
@@ -108,7 +192,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -131,7 +217,9 @@
         "tag": "button",
         "text": "😀",
         "count": 5,
-        "hidden": false
+        "hidden": false,
+        "wired": "emoji-picker-toggle",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-toggle",
@@ -145,7 +233,9 @@
         "tag": "a",
         "text": "View all tags →",
         "count": 5,
-        "hidden": false
+        "hidden": false,
+        "wired": "smart-tag-menu-open",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
@@ -159,7 +249,7 @@
     ],
     "inputs": [
       {
-        "sel": "#el-id-12-1",
+        "sel": "#el-id-4337-3",
         "tag": "input",
         "text": "2014-04-12",
         "count": 1,
@@ -304,14 +394,14 @@
         "hidden": false
       },
       {
-        "sel": "#el-id-12-0",
+        "sel": "#el-id-4337-2",
         "tag": "div",
         "text": "2014 AprilSunMonTueWedThuFriSat3031123456789101112131415161…",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#el-popper-container-12",
+        "sel": "#el-popper-container-4337",
         "tag": "div",
         "text": "2014 AprilSunMonTueWedThuFriSat3031123456789101112131415161…",
         "count": 1,
@@ -341,7 +431,7 @@
       {
         "sel": "#quill-mention-list",
         "tag": "ul",
-        "text": "",
+        "text": "Author First NameThe first name of the post author.Author L…",
         "count": 5,
         "hidden": true
       },
@@ -491,20 +581,6 @@
         "text": "",
         "count": 1,
         "hidden": false
-      },
-      {
-        "sel": ".aioseo-input",
-        "tag": "div",
-        "text": "",
-        "count": 26,
-        "hidden": true
-      },
-      {
-        "sel": ".aioseo-input-container",
-        "tag": "div",
-        "text": "",
-        "count": 26,
-        "hidden": true
       },
       {
         "sel": ".aioseo-message",

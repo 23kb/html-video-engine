@@ -39,6 +39,12 @@
       "count": 2
     },
     {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": "div.multiselect--above.multiselect",
+      "count": 1
+    },
+    {
       "label": "search-statistics-sample",
       "event": "click",
       "selector": "a.aioseo-button.blue",
@@ -49,6 +55,36 @@
       "event": "click",
       "selector": "a.aioseo-button.green",
       "count": 1
+    },
+    {
+      "label": "small-controls",
+      "event": "click",
+      "selector": ".header",
+      "count": 5
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 48
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "ul.aioseo-help-docs li a",
+      "count": 191
+    },
+    {
+      "label": "search-statistics-connect-overlay",
+      "event": "click",
+      "selector": "div.connect-cta",
+      "count": 1
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": ".var--box.var-tab",
+      "count": 3
     }
   ],
   "nav": [],
@@ -89,7 +125,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -105,7 +143,9 @@
         "tag": "div",
         "text": "65/100",
         "count": 10,
-        "hidden": false
+        "hidden": false,
+        "wired": "search-statistics-connect-overlay",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
@@ -114,7 +154,9 @@
         "tag": "div",
         "text": "# Title TruSEO Score Indexed Clicks Impressions Position Di…",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "search-statistics-connect-overlay",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-tab-content",
@@ -228,35 +270,35 @@
         "hidden": true
       },
       {
-        "sel": "#apexchartsa12vdmk2",
+        "sel": "#apexchartsfe89nhw8h",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartsjvrvfj6t",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartsnu05otr4",
         "tag": "div",
         "text": "50 40 30 20 10 0 24 Oct 2022 7 Nov 2022 21 Nov 2022 5 Dec 2…",
         "count": 1,
         "hidden": false
       },
       {
-        "sel": "#apexchartse2elpyis",
+        "sel": "#apexchartst21cx646k",
         "tag": "div",
         "text": "",
         "count": 1,
         "hidden": false
       },
       {
-        "sel": "#apexchartsj6tskrwxf",
-        "tag": "div",
-        "text": "",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#apexchartsl5syzpbw",
-        "tag": "div",
-        "text": "",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#apexchartsq100umw7",
+        "sel": "#apexchartszf4ozkihh",
         "tag": "div",
         "text": "",
         "count": 1,
@@ -277,175 +319,175 @@
         "hidden": false
       },
       {
-        "sel": "#forecastMaska12vdmk2",
+        "sel": "#forecastMaskfe89nhw8h",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#forecastMaske2elpyis",
+        "sel": "#forecastMaskjvrvfj6t",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#forecastMaskj6tskrwxf",
+        "sel": "#forecastMasknu05otr4",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#forecastMaskl5syzpbw",
+        "sel": "#forecastMaskt21cx646k",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#forecastMaskq100umw7",
+        "sel": "#forecastMaskzf4ozkihh",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMaska12vdmk2",
+        "sel": "#gridRectBarMaskfe89nhw8h",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMaske2elpyis",
+        "sel": "#gridRectBarMaskjvrvfj6t",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMaskj6tskrwxf",
+        "sel": "#gridRectBarMasknu05otr4",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMaskl5syzpbw",
+        "sel": "#gridRectBarMaskt21cx646k",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMaskq100umw7",
+        "sel": "#gridRectBarMaskzf4ozkihh",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMaska12vdmk2",
+        "sel": "#gridRectMarkerMaskfe89nhw8h",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMaske2elpyis",
+        "sel": "#gridRectMarkerMaskjvrvfj6t",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMaskj6tskrwxf",
+        "sel": "#gridRectMarkerMasknu05otr4",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMaskl5syzpbw",
+        "sel": "#gridRectMarkerMaskt21cx646k",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMaskq100umw7",
+        "sel": "#gridRectMarkerMaskzf4ozkihh",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMaska12vdmk2",
+        "sel": "#gridRectMaskfe89nhw8h",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMaske2elpyis",
+        "sel": "#gridRectMaskjvrvfj6t",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMaskj6tskrwxf",
+        "sel": "#gridRectMasknu05otr4",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMaskl5syzpbw",
+        "sel": "#gridRectMaskt21cx646k",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMaskq100umw7",
+        "sel": "#gridRectMaskzf4ozkihh",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMaska12vdmk2",
+        "sel": "#nonForecastMaskfe89nhw8h",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMaske2elpyis",
+        "sel": "#nonForecastMaskjvrvfj6t",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMaskj6tskrwxf",
+        "sel": "#nonForecastMasknu05otr4",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMaskl5syzpbw",
+        "sel": "#nonForecastMaskt21cx646k",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMaskq100umw7",
+        "sel": "#nonForecastMaskzf4ozkihh",
         "tag": "clippath",
         "text": "",
         "count": 1,
@@ -574,7 +616,7 @@
         "sel": ".aioseo-circle-close",
         "tag": "svg",
         "text": "",
-        "count": 14,
+        "count": 10,
         "hidden": true
       },
       {
@@ -646,13 +688,6 @@
         "text": "",
         "count": 1,
         "hidden": false
-      },
-      {
-        "sel": ".aioseo-link",
-        "tag": "svg",
-        "text": "",
-        "count": 20,
-        "hidden": true
       },
       {
         "sel": ".aioseo-message",

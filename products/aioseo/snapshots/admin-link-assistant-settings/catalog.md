@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-link-assistant-settings/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 51 selector entries across 2 sections.
+> 48 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-link-assistant-settings/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_26 entries_
+_27 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -31,8 +31,9 @@ _26 entries_
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
-| <a id="id--postStatuses"></a>`id--postStatuses` | `#postStatuses` | div |  | 1 |
-| <a id="id--postTypes"></a>`id--postTypes` | `#postTypes` | div |  | 1 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | No elements found. Consider changing the search query. List… | 2 |
+| <a id="id--postStatuses"></a>`id--postStatuses` | `#postStatuses` | div |  | 10 |
+| <a id="id--postTypes"></a>`id--postTypes` | `#postTypes` | div |  | 10 |
 | <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
@@ -45,11 +46,11 @@ _26 entries_
 
 ## Role-like classes
 
-_25 entries_
+_21 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 12 |
+| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 32 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |
@@ -62,18 +63,14 @@ _25 entries_
 | <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
 | <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
-| <a id="class--aioseo-highlight-toggle"></a>`class--aioseo-highlight-toggle` | `.aioseo-highlight-toggle` | div |  | 8 |
-| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 2 |
-| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 2 |
+| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 12 |
+| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 12 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
-| <a id="class--aioseo-post-status-options-toggle"></a>`class--aioseo-post-status-options-toggle` | `.aioseo-post-status-options-toggle` | div |  | 1 |
-| <a id="class--aioseo-post-type-options-toggle"></a>`class--aioseo-post-type-options-toggle` | `.aioseo-post-type-options-toggle` | div |  | 1 |
-| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Post Types | 8 |
-| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 2 |
-| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 6 |
-| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Post Types | 6 |
+| <a id="class--aioseo-post-status-options-toggle"></a>`class--aioseo-post-status-options-toggle` | `.aioseo-post-status-options-toggle` | div |  | 10 |
+| <a id="class--aioseo-post-type-options-toggle"></a>`class--aioseo-post-type-options-toggle` | `.aioseo-post-type-options-toggle` | div |  | 10 |
+| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 22 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
-| <a id="class--aioseo-textarea-autosize"></a>`class--aioseo-textarea-autosize` | `.aioseo-textarea-autosize` | textarea | a a's able about above according accordingly across actuall… | 1 |
+| <a id="class--aioseo-textarea-autosize"></a>`class--aioseo-textarea-autosize` | `.aioseo-textarea-autosize` | textarea | a a's able about above according accordingly across actuall… | 11 |
 
 ---
 

@@ -11,7 +11,7 @@ _Selectors validated against the live DOM — every one resolves._
 - `#show-settings-link` — button — "Screen Options"
 
 ### Inputs & controls
-- `#_inline_edit` — input — "86675bf84f" _(hidden)_
+- `#_inline_edit` — input — "95e4b37c7b" _(hidden)_
 - `#aioseo-details-hide` — input — "aioseo-details" _(hidden)_
 - `#bulk_edit` — input — "Update" _(hidden)_
 - `#bulk-action-selector-bottom` — select — "Bulk actions Bulk edit Move to Trash Generate SEO Titles wi…"
@@ -43,7 +43,11 @@ _Selectors validated against the live DOM — every one resolves._
 ## Interactions — drivable inside the video iframe
 _Fire by driving the real control (click/change/type); interactivity.js mutates the DOM in place._
 
-- click `button.button.button-primary` → `live-only-button`
+- click `fieldset.metabox-prefs.view-mode label` → `already-selected`
+- click `#footer-thankyou a` → `external-link`
+- click `#screen-options-apply` → `live-only-button` _(×9)_
+- click `div.alignleft.actions label.screen-reader-text` → `native-controls` _(×10)_
+- click `li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a` → `unresolved-link` _(×54)_
 
 ## Interactions — HAND-BROWSE ONLY (inert in video; use ifm.swap)
 _These admin links navigate when hand-browsing /snapshots/ but their handler bails in-iframe (window.top !== window). In a video, swap snapshots instead._

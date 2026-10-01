@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/editor-post-primary-term/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 144 selector entries across 2 sections.
+> 147 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/editor-post-primary-term/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_116 entries_
+_119 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -51,7 +51,7 @@ _116 entries_
 | <a id="id--aioseo-settings-handlediv"></a>`id--aioseo-settings-handlediv` | `#aioseo-settings-handlediv` | span | Show or hide panel | 1 |
 | <a id="id--aioseo-settings-handlediv-text"></a>`id--aioseo-settings-handlediv-text` | `#aioseo-settings-handlediv-text` | span | Show or hide panel | 1 |
 | <a id="id--aioseo-settings-title"></a>`id--aioseo-settings-title` | `#aioseo-settings-title` | h2 | AIOSEO Settings | 1 |
-| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div | When to Prune Hydrangeas - Rosa's Garden Co. | 1 |
+| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div |  | 1 |
 | <a id="id--aioseo-writing-assistant-metabox"></a>`id--aioseo-writing-assistant-metabox` | `#aioseo-writing-assistant-metabox` | div | AIOSEO Writing Assistant | 1 |
 | <a id="id--aioseo-writing-assistant-metabox-app"></a>`id--aioseo-writing-assistant-metabox-app` | `#aioseo-writing-assistant-metabox-app` | div | Elevate your SEO with AIOSEO Writing Assistant Now Integrat… | 1 |
 | <a id="id--aioseo-writing-assistant-metabox-handle-order-higher-description"></a>`id--aioseo-writing-assistant-metabox-handle-order-higher-description` | `#aioseo-writing-assistant-metabox-handle-order-higher-description` | span | Move up | 1 |
@@ -90,11 +90,14 @@ _116 entries_
 | <a id="id--inspector-checkbox-control-5"></a>`id--inspector-checkbox-control-5` | `#inspector-checkbox-control-5` | input | Vegetables | 1 |
 | <a id="id--iris-css"></a>`id--iris-css` | `#iris-css` | link |  | 1 |
 | <a id="id--link-modal-title"></a>`id--link-modal-title` | `#link-modal-title` | h1 | Insert/edit link | 1 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | Marco Ortiz (rosa@rosa.com) | 2 |
 | <a id="id--main-settings-cont"></a>`id--main-settings-cont` | `#main-settings-cont` | div |  | 1 |
 | <a id="id--meta-box-order-nonce"></a>`id--meta-box-order-nonce` | `#meta-box-order-nonce` | input |  | 1 |
 | <a id="id--metaboxes"></a>`id--metaboxes` | `#metaboxes` | div |  | 1 |
 | <a id="id--most-recent-results"></a>`id--most-recent-results` | `#most-recent-results` | div | No search term specified. Showing recent items. Search or u… | 1 |
 | <a id="id--normal-sortables"></a>`id--normal-sortables` | `#normal-sortables` | div | AIOSEO Settings | 1 |
+| <a id="id--null-0"></a>`id--null-0` | `#null-0` | li | Marco Ortiz (rosa@rosa.com) | 2 |
+| <a id="id--null-1"></a>`id--null-1` | `#null-1` | li | Rosa Reyes (rosa@rosasgardenco.com) | 2 |
 | <a id="id--original_post_status"></a>`id--original_post_status` | `#original_post_status` | input |  | 1 |
 | <a id="id--originalaction"></a>`id--originalaction` | `#originalaction` | input |  | 1 |
 | <a id="id--post_ID"></a>`id--post_ID` | `#post_ID` | input |  | 1 |

@@ -1,0 +1,890 @@
+{
+  "slug": "editor-post-p-shade-loving-perennials",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "card-tab-switch",
+      "event": "click",
+      "selector": ".var--box.var-tab",
+      "count": 10
+    },
+    {
+      "label": "card-collapse",
+      "event": "click",
+      "selector": ".header.toggles",
+      "count": 2
+    },
+    {
+      "label": "settings-control-change",
+      "event": "change",
+      "selector": "#id_previewGeneralIsMobile_0",
+      "count": 2
+    },
+    {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": ".aioseo-add-template-tag",
+      "count": 12
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": ".ql-editor",
+      "count": 4
+    },
+    {
+      "label": "smart-tag-menu-open",
+      "event": "click",
+      "selector": ".aioseo-view-all-tags",
+      "count": 4
+    },
+    {
+      "label": "smart-tag-pill-switch",
+      "event": "click",
+      "selector": ".mention[data-custom-value][data-denotation-char]",
+      "count": 2
+    },
+    {
+      "label": "emoji-picker-toggle",
+      "event": "click",
+      "selector": ".aioseo-show-emoji-button",
+      "count": 4
+    },
+    {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.multiselect",
+      "count": 4
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.editor-header__settings a.components-button.is-compact",
+      "count": 20
+    },
+    {
+      "label": "plain-label",
+      "event": "click",
+      "selector": "label.aioseo-reviewed-by-label",
+      "count": 1
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.var-tab.var--box",
+      "count": 3
+    },
+    {
+      "label": "editor-seo-sidebar",
+      "event": "click",
+      "selector": "div.interface-pinned-items button.components-button.is-compact",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#aioseo-post-settings-sidebar-button",
+        "tag": "div",
+        "text": "73 /100",
+        "count": 1,
+        "hidden": false,
+        "wired": "editor-seo-sidebar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#aioseo-writing-assistant-sidebar-button",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-append-button",
+        "tag": "div",
+        "text": "Use AI Generator",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-button",
+        "tag": "a",
+        "text": "Leave a 5-star Review",
+        "count": 2,
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".aioseo-radio-toggle",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-review-cta-link",
+        "tag": "a",
+        "text": "Nope, maybe later",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-show-emoji-button",
+        "tag": "button",
+        "text": "😀",
+        "count": 4,
+        "hidden": false,
+        "wired": "emoji-picker-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".aioseo-view-all-tags",
+        "tag": "a",
+        "text": "View all tags →",
+        "count": 4,
+        "hidden": false,
+        "wired": "smart-tag-menu-open",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": ".aioseo-tab",
+        "tag": "div",
+        "text": "Search Appearance SERP Preview Rosa's Garden Co. http://ros…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-tab-content",
+        "tag": "div",
+        "text": "Search Appearance SERP Preview Rosa's Garden Co. http://ros…",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#aioseo-limit-modified-date-input",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-post-settings",
+        "tag": "input",
+        "text": "{\"context\":\"post\",\"tags\":{\"title\":\"5 Shade-Loving Perennial…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseop-add-nofollow",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseop-add-sponsored",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseop-add-ugc",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hiddenaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#id_previewGeneralIsMobile_0",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#id_previewGeneralIsMobile_1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#meta-box-order-nonce",
+        "tag": "input",
+        "text": "07f8f20914",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_post_status",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#originalaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_ID",
+        "tag": "input",
+        "text": "2467",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_type",
+        "tag": "input",
+        "text": "post",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#PostSettingsNonce",
+        "tag": "input",
+        "text": "355418e397",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#referredby",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#samplepermalinknonce",
+        "tag": "input",
+        "text": "e6bb428b95",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toggle-custom-fields-nonce",
+        "tag": "input",
+        "text": "cfbf333cf8",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#user-id",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-ai-content-feature-modal",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-ai-content-meta-description-modal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-modal",
+        "tag": "div",
+        "text": "",
+        "count": 9,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-out-of-credits-modal",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-post-settings-modal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#a-aioseo-1-8",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#advanced-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-card-postSettingsSearchAppearance",
+        "tag": "div",
+        "text": "Search Appearance SERP Preview Rosa's Garden Co. http://ros…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-card-postSettingsSocialAppearance",
+        "tag": "div",
+        "text": "Social Appearance Facebook X (Twitter) Facebook Preview All…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-limit-modified-date",
+        "tag": "div",
+        "text": "Don't update the modified date",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-post-facebook-image-source",
+        "tag": "div",
+        "text": "Image Source Featured Image",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-post-score",
+        "tag": "span",
+        "text": "73",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-post-score-disabled",
+        "tag": "span",
+        "text": "N/A",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-post-settings-facebook",
+        "tag": "div",
+        "text": "Facebook Title Click on the tags below to insert variables …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-post-settings-field",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-post-settings-meta-description-row",
+        "tag": "div",
+        "text": "Meta Description Click on the tags below to insert variable…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-post-settings-metabox",
+        "tag": "div",
+        "text": "Appearance Optimization NEW! Schema AI Copilot Link Assista…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-post-settings-post-title-row",
+        "tag": "div",
+        "text": "Post Title Click on the tags below to insert variables into…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-redirects-add-redirect-standalone",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-reviewed-by",
+        "tag": "div",
+        "text": "REVIEWER Type to search for a reviewer",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-settings",
+        "tag": "div",
+        "text": "AIOSEO Settings Move up Move down Show or hide panel Appear…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-settings-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-settings-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-settings-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-settings-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-settings-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-settings-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-settings-title",
+        "tag": "h2",
+        "text": "AIOSEO Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-text-width-measurement",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-writing-assistant-metabox",
+        "tag": "div",
+        "text": "AIOSEO Writing Assistant Move up Move down Show or hide pan…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-writing-assistant-metabox-app",
+        "tag": "div",
+        "text": "Elevate your SEO with AIOSEO Writing Assistant Now Integrat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-writing-assistant-metabox-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-writing-assistant-metabox-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-writing-assistant-metabox-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-writing-assistant-metabox-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-writing-assistant-metabox-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-writing-assistant-metabox-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-writing-assistant-metabox-title",
+        "tag": "h2",
+        "text": "AIOSEO Writing Assistant",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#b-aioseo-1-8",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#c-aioseo-1-8",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#d-aioseo-1-8",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#e-aioseo-1-8",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#editor",
+        "tag": "div",
+        "text": "5 Shade-Loving Perennials for Small Yards · Post 73 /100 Sa…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editor-post-featured-image-2452-describedby",
+        "tag": "div",
+        "text": "Current image: Shade border planted with hostas, ferns and …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#f-aioseo-1-8",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#g-aioseo-1-8",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-css-custom-properties-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#main-settings-cont",
+        "tag": "div",
+        "text": "Appearance Optimization NEW! Schema AI Copilot Link Assista…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#metaboxes",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "AIOSEO Settings Move up Move down Show or hide panel Appear…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-2",
+        "tag": "div",
+        "text": "AIOSEO Settings Move up Move down Show or hide panel Appear…",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": "#poststuff",
+        "tag": "div",
+        "text": "AIOSEO Settings Move up Move down Show or hide panel Appear…",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quill-mention-list",
+        "tag": "ul",
+        "text": "",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#side-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toggle-custom-fields-form",
+        "tag": "form",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Title …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-gutenberg-form-selector-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-ai-content",
+        "tag": "svg",
+        "text": "",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-documentation-link",
+        "tag": "div",
+        "text": "Learn more about Smart Tags →",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-review-cta-actions",
+        "tag": "div",
+        "text": "Leave a 5-star Review Nope, maybe later I already did",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-review-cta-content",
+        "tag": "div",
+        "text": "HAS AIOSEO HELPED TO IMPROVE YOUR RANKINGS? Have you seen a…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-reviewed-by-label",
+        "tag": "label",
+        "text": "REVIEWER",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-row",
+        "tag": "div",
+        "text": "SERP Preview Rosa's Garden Co. http://rosasgardenco.com › s…",
+        "count": 12,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-search",
+        "tag": "svg",
+        "text": "",
+        "count": 12,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-select",
+        "tag": "div",
+        "text": "Featured Image",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-settings-content",
+        "tag": "div",
+        "text": "Rosa's Garden Co. http://rosasgardenco.com › shade-loving-p…",
+        "count": 12,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-tag-search",
+        "tag": "div",
+        "text": "",
+        "count": 4,
+        "hidden": true
+      }
+    ]
+  }
+}

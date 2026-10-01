@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-search-statistics-dashboard/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 87 selector entries across 2 sections.
+> 89 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-search-statistics-dashboard/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_64 entries_
+_67 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -28,41 +28,44 @@ _64 entries_
 | <a id="id--aioseo-help-result"></a>`id--aioseo-help-result` | `#aioseo-help-result` | div |  | 1 |
 | <a id="id--aioseo-help-search"></a>`id--aioseo-help-search` | `#aioseo-help-search` | div |  | 1 |
 | <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
-| <a id="id--aioseo-search-statistics-post-table"></a>`id--aioseo-search-statistics-post-table` | `#aioseo-search-statistics-post-table` | div | # Title | 1 |
+| <a id="id--aioseo-search-statistics-post-table"></a>`id--aioseo-search-statistics-post-table` | `#aioseo-search-statistics-post-table` | div | # Title | 4 |
 | <a id="id--apexcharts-css"></a>`id--apexcharts-css` | `#apexcharts-css` | link |  | 1 |
-| <a id="id--apexchartsa12vdmk2"></a>`id--apexchartsa12vdmk2` | `#apexchartsa12vdmk2` | div |  | 1 |
-| <a id="id--apexchartse2elpyis"></a>`id--apexchartse2elpyis` | `#apexchartse2elpyis` | div |  | 1 |
-| <a id="id--apexchartsj6tskrwxf"></a>`id--apexchartsj6tskrwxf` | `#apexchartsj6tskrwxf` | div |  | 1 |
-| <a id="id--apexchartsl5syzpbw"></a>`id--apexchartsl5syzpbw` | `#apexchartsl5syzpbw` | div |  | 1 |
-| <a id="id--apexchartsq100umw7"></a>`id--apexchartsq100umw7` | `#apexchartsq100umw7` | div |  | 1 |
+| <a id="id--apexchartsfe89nhw8h"></a>`id--apexchartsfe89nhw8h` | `#apexchartsfe89nhw8h` | div |  | 1 |
+| <a id="id--apexchartsjvrvfj6t"></a>`id--apexchartsjvrvfj6t` | `#apexchartsjvrvfj6t` | div |  | 1 |
+| <a id="id--apexchartsnu05otr4"></a>`id--apexchartsnu05otr4` | `#apexchartsnu05otr4` | div |  | 1 |
+| <a id="id--apexchartst21cx646k"></a>`id--apexchartst21cx646k` | `#apexchartst21cx646k` | div |  | 1 |
+| <a id="id--apexchartszf4ozkihh"></a>`id--apexchartszf4ozkihh` | `#apexchartszf4ozkihh` | div |  | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
-| <a id="id--forecastMaska12vdmk2"></a>`id--forecastMaska12vdmk2` | `#forecastMaska12vdmk2` | clippath |  | 1 |
-| <a id="id--forecastMaske2elpyis"></a>`id--forecastMaske2elpyis` | `#forecastMaske2elpyis` | clippath |  | 1 |
-| <a id="id--forecastMaskj6tskrwxf"></a>`id--forecastMaskj6tskrwxf` | `#forecastMaskj6tskrwxf` | clippath |  | 1 |
-| <a id="id--forecastMaskl5syzpbw"></a>`id--forecastMaskl5syzpbw` | `#forecastMaskl5syzpbw` | clippath |  | 1 |
-| <a id="id--forecastMaskq100umw7"></a>`id--forecastMaskq100umw7` | `#forecastMaskq100umw7` | clippath |  | 1 |
-| <a id="id--gridRectBarMaska12vdmk2"></a>`id--gridRectBarMaska12vdmk2` | `#gridRectBarMaska12vdmk2` | clippath |  | 1 |
-| <a id="id--gridRectBarMaske2elpyis"></a>`id--gridRectBarMaske2elpyis` | `#gridRectBarMaske2elpyis` | clippath |  | 1 |
-| <a id="id--gridRectBarMaskj6tskrwxf"></a>`id--gridRectBarMaskj6tskrwxf` | `#gridRectBarMaskj6tskrwxf` | clippath |  | 1 |
-| <a id="id--gridRectBarMaskl5syzpbw"></a>`id--gridRectBarMaskl5syzpbw` | `#gridRectBarMaskl5syzpbw` | clippath |  | 1 |
-| <a id="id--gridRectBarMaskq100umw7"></a>`id--gridRectBarMaskq100umw7` | `#gridRectBarMaskq100umw7` | clippath |  | 1 |
-| <a id="id--gridRectMarkerMaska12vdmk2"></a>`id--gridRectMarkerMaska12vdmk2` | `#gridRectMarkerMaska12vdmk2` | clippath |  | 1 |
-| <a id="id--gridRectMarkerMaske2elpyis"></a>`id--gridRectMarkerMaske2elpyis` | `#gridRectMarkerMaske2elpyis` | clippath |  | 1 |
-| <a id="id--gridRectMarkerMaskj6tskrwxf"></a>`id--gridRectMarkerMaskj6tskrwxf` | `#gridRectMarkerMaskj6tskrwxf` | clippath |  | 1 |
-| <a id="id--gridRectMarkerMaskl5syzpbw"></a>`id--gridRectMarkerMaskl5syzpbw` | `#gridRectMarkerMaskl5syzpbw` | clippath |  | 1 |
-| <a id="id--gridRectMarkerMaskq100umw7"></a>`id--gridRectMarkerMaskq100umw7` | `#gridRectMarkerMaskq100umw7` | clippath |  | 1 |
-| <a id="id--gridRectMaska12vdmk2"></a>`id--gridRectMaska12vdmk2` | `#gridRectMaska12vdmk2` | clippath |  | 1 |
-| <a id="id--gridRectMaske2elpyis"></a>`id--gridRectMaske2elpyis` | `#gridRectMaske2elpyis` | clippath |  | 1 |
-| <a id="id--gridRectMaskj6tskrwxf"></a>`id--gridRectMaskj6tskrwxf` | `#gridRectMaskj6tskrwxf` | clippath |  | 1 |
-| <a id="id--gridRectMaskl5syzpbw"></a>`id--gridRectMaskl5syzpbw` | `#gridRectMaskl5syzpbw` | clippath |  | 1 |
-| <a id="id--gridRectMaskq100umw7"></a>`id--gridRectMaskq100umw7` | `#gridRectMaskq100umw7` | clippath |  | 1 |
-| <a id="id--nonForecastMaska12vdmk2"></a>`id--nonForecastMaska12vdmk2` | `#nonForecastMaska12vdmk2` | clippath |  | 1 |
-| <a id="id--nonForecastMaske2elpyis"></a>`id--nonForecastMaske2elpyis` | `#nonForecastMaske2elpyis` | clippath |  | 1 |
-| <a id="id--nonForecastMaskj6tskrwxf"></a>`id--nonForecastMaskj6tskrwxf` | `#nonForecastMaskj6tskrwxf` | clippath |  | 1 |
-| <a id="id--nonForecastMaskl5syzpbw"></a>`id--nonForecastMaskl5syzpbw` | `#nonForecastMaskl5syzpbw` | clippath |  | 1 |
-| <a id="id--nonForecastMaskq100umw7"></a>`id--nonForecastMaskq100umw7` | `#nonForecastMaskq100umw7` | clippath |  | 1 |
+| <a id="id--forecastMaskfe89nhw8h"></a>`id--forecastMaskfe89nhw8h` | `#forecastMaskfe89nhw8h` | clippath |  | 1 |
+| <a id="id--forecastMaskjvrvfj6t"></a>`id--forecastMaskjvrvfj6t` | `#forecastMaskjvrvfj6t` | clippath |  | 1 |
+| <a id="id--forecastMasknu05otr4"></a>`id--forecastMasknu05otr4` | `#forecastMasknu05otr4` | clippath |  | 1 |
+| <a id="id--forecastMaskt21cx646k"></a>`id--forecastMaskt21cx646k` | `#forecastMaskt21cx646k` | clippath |  | 1 |
+| <a id="id--forecastMaskzf4ozkihh"></a>`id--forecastMaskzf4ozkihh` | `#forecastMaskzf4ozkihh` | clippath |  | 1 |
+| <a id="id--gridRectBarMaskfe89nhw8h"></a>`id--gridRectBarMaskfe89nhw8h` | `#gridRectBarMaskfe89nhw8h` | clippath |  | 1 |
+| <a id="id--gridRectBarMaskjvrvfj6t"></a>`id--gridRectBarMaskjvrvfj6t` | `#gridRectBarMaskjvrvfj6t` | clippath |  | 1 |
+| <a id="id--gridRectBarMasknu05otr4"></a>`id--gridRectBarMasknu05otr4` | `#gridRectBarMasknu05otr4` | clippath |  | 1 |
+| <a id="id--gridRectBarMaskt21cx646k"></a>`id--gridRectBarMaskt21cx646k` | `#gridRectBarMaskt21cx646k` | clippath |  | 1 |
+| <a id="id--gridRectBarMaskzf4ozkihh"></a>`id--gridRectBarMaskzf4ozkihh` | `#gridRectBarMaskzf4ozkihh` | clippath |  | 1 |
+| <a id="id--gridRectMarkerMaskfe89nhw8h"></a>`id--gridRectMarkerMaskfe89nhw8h` | `#gridRectMarkerMaskfe89nhw8h` | clippath |  | 1 |
+| <a id="id--gridRectMarkerMaskjvrvfj6t"></a>`id--gridRectMarkerMaskjvrvfj6t` | `#gridRectMarkerMaskjvrvfj6t` | clippath |  | 1 |
+| <a id="id--gridRectMarkerMasknu05otr4"></a>`id--gridRectMarkerMasknu05otr4` | `#gridRectMarkerMasknu05otr4` | clippath |  | 1 |
+| <a id="id--gridRectMarkerMaskt21cx646k"></a>`id--gridRectMarkerMaskt21cx646k` | `#gridRectMarkerMaskt21cx646k` | clippath |  | 1 |
+| <a id="id--gridRectMarkerMaskzf4ozkihh"></a>`id--gridRectMarkerMaskzf4ozkihh` | `#gridRectMarkerMaskzf4ozkihh` | clippath |  | 1 |
+| <a id="id--gridRectMaskfe89nhw8h"></a>`id--gridRectMaskfe89nhw8h` | `#gridRectMaskfe89nhw8h` | clippath |  | 1 |
+| <a id="id--gridRectMaskjvrvfj6t"></a>`id--gridRectMaskjvrvfj6t` | `#gridRectMaskjvrvfj6t` | clippath |  | 1 |
+| <a id="id--gridRectMasknu05otr4"></a>`id--gridRectMasknu05otr4` | `#gridRectMasknu05otr4` | clippath |  | 1 |
+| <a id="id--gridRectMaskt21cx646k"></a>`id--gridRectMaskt21cx646k` | `#gridRectMaskt21cx646k` | clippath |  | 1 |
+| <a id="id--gridRectMaskzf4ozkihh"></a>`id--gridRectMaskzf4ozkihh` | `#gridRectMaskzf4ozkihh` | clippath |  | 1 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | Posts | 1 |
+| <a id="id--nonForecastMaskfe89nhw8h"></a>`id--nonForecastMaskfe89nhw8h` | `#nonForecastMaskfe89nhw8h` | clippath |  | 1 |
+| <a id="id--nonForecastMaskjvrvfj6t"></a>`id--nonForecastMaskjvrvfj6t` | `#nonForecastMaskjvrvfj6t` | clippath |  | 1 |
+| <a id="id--nonForecastMasknu05otr4"></a>`id--nonForecastMasknu05otr4` | `#nonForecastMasknu05otr4` | clippath |  | 1 |
+| <a id="id--nonForecastMaskt21cx646k"></a>`id--nonForecastMaskt21cx646k` | `#nonForecastMaskt21cx646k` | clippath |  | 1 |
+| <a id="id--nonForecastMaskzf4ozkihh"></a>`id--nonForecastMaskzf4ozkihh` | `#nonForecastMaskzf4ozkihh` | clippath |  | 1 |
+| <a id="id--null-0"></a>`id--null-0` | `#null-0` | li | Posts | 1 |
+| <a id="id--null-1"></a>`id--null-1` | `#null-1` | li | Pages | 1 |
 | <a id="id--SvgjsGradient17"></a>`id--SvgjsGradient17` | `#SvgjsGradient17` | lineargradient |  | 1 |
 | <a id="id--SvgjsGradient18"></a>`id--SvgjsGradient18` | `#SvgjsGradient18` | lineargradient |  | 1 |
 | <a id="id--SvgjsGradient19"></a>`id--SvgjsGradient19` | `#SvgjsGradient19` | lineargradient |  | 1 |
@@ -83,12 +86,12 @@ _64 entries_
 
 ## Role-like classes
 
-_23 entries_
+_22 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | a | Connect to Google Search Console | 10 |
-| <a id="class--aioseo-circle-close"></a>`class--aioseo-circle-close` | `.aioseo-circle-close` | svg |  | 14 |
+| <a id="class--aioseo-circle-close"></a>`class--aioseo-circle-close` | `.aioseo-circle-close` | svg |  | 40 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |
@@ -103,11 +106,10 @@ _23 entries_
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
 | <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 1 |
 | <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 1 |
-| <a id="class--aioseo-link"></a>`class--aioseo-link` | `.aioseo-link` | svg |  | 20 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
 | <a id="class--aioseo-modal"></a>`class--aioseo-modal` | `.aioseo-modal` | div |  | 1 |
 | <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div |  | 3 |
-| <a id="class--aioseo-score-button"></a>`class--aioseo-score-button` | `.aioseo-score-button` | div | 65/100 | 10 |
+| <a id="class--aioseo-score-button"></a>`class--aioseo-score-button` | `.aioseo-score-button` | div | 65/100 | 40 |
 | <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 1 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
 

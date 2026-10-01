@@ -37,6 +37,42 @@
       "event": "click",
       "selector": ".round",
       "count": 2
+    },
+    {
+      "label": "analysis-result-toggle",
+      "event": "click",
+      "selector": ".result-toggle",
+      "count": 11
+    },
+    {
+      "label": "small-controls",
+      "event": "click",
+      "selector": ".header",
+      "count": 2
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "span.popper span a",
+      "count": 193
+    },
+    {
+      "label": "site-audit-legend-link",
+      "event": "click",
+      "selector": ".is-link.legend-label",
+      "count": 3
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(2)",
+      "count": 3
     }
   ],
   "nav": [],
@@ -77,14 +113,16 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
       {
         "sel": ".aioseo-tab-content",
         "tag": "div",
-        "text": "Site Overview 362 Total Checks 266 Good 41 Warnings 55 Issu…",
+        "text": "Site Overview 368 Total Checks 269 Good 42 Warnings 57 Issu…",
         "count": 1,
         "hidden": false
       }

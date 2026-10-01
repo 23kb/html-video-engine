@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-settings-content-optimization/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 47 selector entries across 2 sections.
+> 43 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-settings-content-optimization/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -43,11 +43,11 @@ _24 entries_
 
 ## Role-like classes
 
-_23 entries_
+_19 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 12 |
+| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 14 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |
@@ -60,16 +60,12 @@ _23 entries_
 | <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
 | <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
-| <a id="class--aioseo-highlight-toggle"></a>`class--aioseo-highlight-toggle` | `.aioseo-highlight-toggle` | div |  | 5 |
 | <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 1 |
 | <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 1 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
-| <a id="class--aioseo-post-type-options-toggle"></a>`class--aioseo-post-type-options-toggle` | `.aioseo-post-type-options-toggle` | div |  | 1 |
-| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | TruSEO | 10 |
-| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 9 |
-| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | TruSEO | 10 |
+| <a id="class--aioseo-post-type-options-toggle"></a>`class--aioseo-post-type-options-toggle` | `.aioseo-post-type-options-toggle` | div |  | 12 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
-| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 4 |
+| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 46 |
 
 ---
 

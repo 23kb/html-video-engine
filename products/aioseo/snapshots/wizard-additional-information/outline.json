@@ -9,6 +9,36 @@
       "count": 3
     },
     {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": ".aioseo-add-template-tag",
+      "count": 2
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": ".ql-editor",
+      "count": 2
+    },
+    {
+      "label": "smart-tag-menu-open",
+      "event": "click",
+      "selector": ".aioseo-view-all-tags",
+      "count": 2
+    },
+    {
+      "label": "emoji-picker-toggle",
+      "event": "click",
+      "selector": ".aioseo-show-emoji-button",
+      "count": 2
+    },
+    {
+      "label": "phone-country-open",
+      "event": "click",
+      "selector": "div.vti__dropdown",
+      "count": 1
+    },
+    {
       "label": "live-only-button",
       "event": "click",
       "selector": ".aioseo-button.black[data-v-972281dd]",
@@ -18,6 +48,30 @@
       "label": "wizard-next-step",
       "event": "click",
       "selector": "button.aioseo-button.blue",
+      "count": 1
+    },
+    {
+      "label": "native-controls",
+      "event": "click",
+      "selector": "div.vti__dropdown",
+      "count": 1
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.aioseo-documentation-link a",
+      "count": 8
+    },
+    {
+      "label": "image-uploader-remove",
+      "event": "click",
+      "selector": ".aioseo-button.gray[data-v-972281dd]",
+      "count": 2
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "label.default",
       "count": 1
     }
   ],
@@ -36,7 +90,9 @@
         "tag": "button",
         "text": "",
         "count": 5,
-        "hidden": false
+        "hidden": false,
+        "wired": "image-uploader-remove",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-close-and-exit-modal",
@@ -57,14 +113,18 @@
         "tag": "button",
         "text": "😀",
         "count": 2,
-        "hidden": false
+        "hidden": false,
+        "wired": "emoji-picker-toggle",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-view-all-tags",
         "tag": "a",
         "text": "View all tags →",
         "count": 2,
-        "hidden": false
+        "hidden": false,
+        "wired": "smart-tag-menu-open",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [],
@@ -147,7 +207,7 @@
       {
         "sel": "#quill-mention-list",
         "tag": "ul",
-        "text": "",
+        "text": "SeparatorThe separator defined in the search appearance set…",
         "count": 2,
         "hidden": true
       },

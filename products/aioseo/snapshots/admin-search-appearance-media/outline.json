@@ -51,10 +51,58 @@
       "count": 11
     },
     {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": ".aioseo-add-template-tag",
+      "count": 3
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": "div.ql-editor",
+      "count": 1
+    },
+    {
+      "label": "smart-tag-menu-open",
+      "event": "click",
+      "selector": "a.aioseo-view-all-tags",
+      "count": 1
+    },
+    {
+      "label": "smart-tag-pill-switch",
+      "event": "click",
+      "selector": "span.mention",
+      "count": 1
+    },
+    {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.medium",
+      "count": 2
+    },
+    {
       "label": "live-only-button",
       "event": "click",
-      "selector": ".aioseo-button.blue",
-      "count": 2
+      "selector": ".aioseo-button.medium",
+      "count": 4
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.aioseo-settings-row.aioseo-section-description div span a",
+      "count": 197
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(4)",
+      "count": 6
     }
   ],
   "nav": [],
@@ -75,15 +123,6 @@
         "hidden": false
       },
       {
-        "sel": ".aioseo-button",
-        "tag": "button",
-        "text": "Save Changes",
-        "count": 14,
-        "hidden": false,
-        "wired": "live-only-button",
-        "wiredEvent": "click"
-      },
-      {
         "sel": ".aioseo-flyout-menu-button",
         "tag": "div",
         "text": "Quick Links",
@@ -102,7 +141,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -114,18 +155,13 @@
         "wiredEvent": "click"
       },
       {
-        "sel": ".aioseo-radio-toggle",
-        "tag": "div",
-        "text": "Disabled Attachment Attachment Parent",
-        "count": 4,
-        "hidden": false
-      },
-      {
         "sel": ".aioseo-view-all-tags",
         "tag": "a",
         "text": "View all tags →",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "smart-tag-menu-open",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
@@ -459,20 +495,6 @@
         "hidden": false
       },
       {
-        "sel": ".aioseo-input",
-        "tag": "div",
-        "text": "",
-        "count": 5,
-        "hidden": true
-      },
-      {
-        "sel": ".aioseo-input-container",
-        "tag": "div",
-        "text": "",
-        "count": 5,
-        "hidden": true
-      },
-      {
         "sel": ".aioseo-message",
         "tag": "svg",
         "text": "",
@@ -480,31 +502,10 @@
         "hidden": true
       },
       {
-        "sel": ".aioseo-row",
-        "tag": "div",
-        "text": "Redirect Attachment URLs Disabled Attachment Attachment Par…",
-        "count": 7,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-search",
-        "tag": "svg",
-        "text": "",
-        "count": 2,
-        "hidden": true
-      },
-      {
         "sel": ".aioseo-select",
         "tag": "div",
         "text": "Type to search...",
         "count": 2,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-settings-content",
-        "tag": "div",
-        "text": "Disabled Attachment Attachment Parent We recommended redire…",
-        "count": 7,
         "hidden": false
       },
       {

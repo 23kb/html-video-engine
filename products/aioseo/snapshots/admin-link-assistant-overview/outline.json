@@ -43,6 +43,30 @@
       "event": "click",
       "selector": ".round",
       "count": 2
+    },
+    {
+      "label": "link-assistant-report-link",
+      "event": "click",
+      "selector": "a.aioseo-link-count",
+      "count": 18
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "a.tooltip-url",
+      "count": 194
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": ".var--box.var-tab",
+      "count": 2
     }
   ],
   "nav": [],
@@ -83,14 +107,16 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
       {
         "sel": ".aioseo-tab-content",
         "tag": "div",
-        "text": "20 Posts Crawled 10 Orphaned Posts 4 External Links 30 Inte…",
+        "text": "23 Posts Crawled 13 Orphaned Posts 4 External Links 30 Inte…",
         "count": 1,
         "hidden": false
       },
@@ -348,7 +374,7 @@
       {
         "sel": ".aioseo-row",
         "tag": "div",
-        "text": "20 Posts Crawled 10 Orphaned Posts 4 External Links 30 Inte…",
+        "text": "23 Posts Crawled 13 Orphaned Posts 4 External Links 30 Inte…",
         "count": 3,
         "hidden": false
       },

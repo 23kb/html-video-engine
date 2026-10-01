@@ -13,6 +13,72 @@
       "event": "change",
       "selector": "div.toggle-content input",
       "count": 3
+    },
+    {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": "div.aioseo-add-template-tag",
+      "count": 1
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": "div.ql-editor",
+      "count": 1
+    },
+    {
+      "label": "smart-tag-menu-open",
+      "event": "click",
+      "selector": "a.aioseo-view-all-tags",
+      "count": 1
+    },
+    {
+      "label": "smart-tag-pill-switch",
+      "event": "click",
+      "selector": "span.mention",
+      "count": 1
+    },
+    {
+      "label": "emoji-picker-toggle",
+      "event": "click",
+      "selector": "button.aioseo-show-emoji-button",
+      "count": 1
+    },
+    {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.medium",
+      "count": 3
+    },
+    {
+      "label": "round3-captured-state",
+      "event": "click",
+      "selector": "button.aioseo-button.black",
+      "count": 1
+    },
+    {
+      "label": "live-only-button",
+      "event": "click",
+      "selector": ".aioseo-button.black",
+      "count": 2
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-has-submenu:nth-of-type(7) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 3
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 9
+    },
+    {
+      "label": "image-uploader-remove",
+      "event": "click",
+      "selector": "button.aioseo-button.gray",
+      "count": 1
     }
   ],
   "nav": [],
@@ -100,14 +166,18 @@
         "tag": "button",
         "text": "Add Item",
         "count": 3,
-        "hidden": false
+        "hidden": false,
+        "wired": "round3-captured-state",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-show-emoji-button",
         "tag": "button",
         "text": "😀",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "emoji-picker-toggle",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-toggle",
@@ -121,7 +191,9 @@
         "tag": "a",
         "text": "View all tags →",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "smart-tag-menu-open",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
@@ -256,7 +328,7 @@
       {
         "sel": "#color-nonce",
         "tag": "input",
-        "text": "4bdaa82a5e",
+        "text": "0a268d9bff",
         "count": 1,
         "hidden": true
       },
@@ -444,13 +516,6 @@
         "text": "Search No search term specified. Showing recent items. Sear…",
         "count": 1,
         "hidden": true
-      },
-      {
-        "sel": ".aioseo-settings-row",
-        "tag": "div",
-        "text": "The fields below provide structured information for search …",
-        "count": 30,
-        "hidden": false
       }
     ],
     "other": [
@@ -686,6 +751,13 @@
         "hidden": true
       },
       {
+        "sel": "#ui-id-2",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
         "sel": "#wp-aioseo-author-bio-textarea-wrap",
         "tag": "div",
         "text": "Add media Visual Code Paragraph",
@@ -798,27 +870,6 @@
         "hidden": true
       },
       {
-        "sel": ".aioseo-input",
-        "tag": "div",
-        "text": "",
-        "count": 25,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-input-container",
-        "tag": "div",
-        "text": "",
-        "count": 25,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-row",
-        "tag": "div",
-        "text": "Enable Author Info",
-        "count": 28,
-        "hidden": false
-      },
-      {
         "sel": ".aioseo-search",
         "tag": "svg",
         "text": "",
@@ -830,13 +881,6 @@
         "tag": "div",
         "text": "Vegetable Gardening Native Plants Composting",
         "count": 3,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-settings-content",
-        "tag": "div",
-        "text": "",
-        "count": 28,
         "hidden": false
       },
       {

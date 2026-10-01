@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/editor-post-metabox-general-social/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 138 selector entries across 2 sections.
+> 190 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/editor-post-metabox-general-social/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_109 entries_
+_161 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -50,7 +50,7 @@ _109 entries_
 | <a id="id--aioseo-settings-handlediv"></a>`id--aioseo-settings-handlediv` | `#aioseo-settings-handlediv` | span | Show or hide panel | 1 |
 | <a id="id--aioseo-settings-handlediv-text"></a>`id--aioseo-settings-handlediv-text` | `#aioseo-settings-handlediv-text` | span | Show or hide panel | 1 |
 | <a id="id--aioseo-settings-title"></a>`id--aioseo-settings-title` | `#aioseo-settings-title` | h2 | AIOSEO Settings | 1 |
-| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div | How to Plan a Vegetable Bed That Feeds You All Year - Rosa'… | 1 |
+| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div |  | 1 |
 | <a id="id--aioseo-writing-assistant-metabox"></a>`id--aioseo-writing-assistant-metabox` | `#aioseo-writing-assistant-metabox` | div | AIOSEO Writing Assistant | 1 |
 | <a id="id--aioseo-writing-assistant-metabox-app"></a>`id--aioseo-writing-assistant-metabox-app` | `#aioseo-writing-assistant-metabox-app` | div | Elevate your SEO with AIOSEO Writing Assistant Now Integrat… | 1 |
 | <a id="id--aioseo-writing-assistant-metabox-handle-order-higher-description"></a>`id--aioseo-writing-assistant-metabox-handle-order-higher-description` | `#aioseo-writing-assistant-metabox-handle-order-higher-description` | span | Move up | 1 |
@@ -87,11 +87,61 @@ _109 entries_
 | <a id="id--id_previewGeneralIsMobile_1"></a>`id--id_previewGeneralIsMobile_1` | `#id_previewGeneralIsMobile_1` | input |  | 1 |
 | <a id="id--iris-css"></a>`id--iris-css` | `#iris-css` | link |  | 1 |
 | <a id="id--link-modal-title"></a>`id--link-modal-title` | `#link-modal-title` | h1 | Insert/edit link | 1 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | Default Image Source (Set in Social Networks) | 3 |
 | <a id="id--main-settings-cont"></a>`id--main-settings-cont` | `#main-settings-cont` | div |  | 2 |
 | <a id="id--meta-box-order-nonce"></a>`id--meta-box-order-nonce` | `#meta-box-order-nonce` | input |  | 1 |
 | <a id="id--metaboxes"></a>`id--metaboxes` | `#metaboxes` | div |  | 1 |
 | <a id="id--most-recent-results"></a>`id--most-recent-results` | `#most-recent-results` | div | No search term specified. Showing recent items. Search or u… | 1 |
+| <a id="id--nav"></a>`id--nav` | `#nav` | nav |  | 1 |
 | <a id="id--normal-sortables"></a>`id--normal-sortables` | `#normal-sortables` | div | AIOSEO Settings | 1 |
+| <a id="id--null-0"></a>`id--null-0` | `#null-0` | li | Default Image Source (Set in Social Networks) | 2 |
+| <a id="id--null-1"></a>`id--null-1` | `#null-1` | li | Featured Image | 2 |
+| <a id="id--null-10"></a>`id--null-10` | `#null-10` | li | Restaurant | 1 |
+| <a id="id--null-11"></a>`id--null-11` | `#null-11` | li | Groups | 1 |
+| <a id="id--null-12"></a>`id--null-12` | `#null-12` | li | Cause | 1 |
+| <a id="id--null-13"></a>`id--null-13` | `#null-13` | li | Sports League | 1 |
+| <a id="id--null-14"></a>`id--null-14` | `#null-14` | li | Sports Team | 1 |
+| <a id="id--null-15"></a>`id--null-15` | `#null-15` | li | Organizations | 1 |
+| <a id="id--null-16"></a>`id--null-16` | `#null-16` | li | Band | 1 |
+| <a id="id--null-17"></a>`id--null-17` | `#null-17` | li | Non-Profit | 1 |
+| <a id="id--null-18"></a>`id--null-18` | `#null-18` | li | School | 1 |
+| <a id="id--null-19"></a>`id--null-19` | `#null-19` | li | University | 1 |
+| <a id="id--null-2"></a>`id--null-2` | `#null-2` | li | Attached Image | 2 |
+| <a id="id--null-20"></a>`id--null-20` | `#null-20` | li | People | 1 |
+| <a id="id--null-21"></a>`id--null-21` | `#null-21` | li | Actor | 1 |
+| <a id="id--null-22"></a>`id--null-22` | `#null-22` | li | Athlete | 1 |
+| <a id="id--null-23"></a>`id--null-23` | `#null-23` | li | Author | 1 |
+| <a id="id--null-24"></a>`id--null-24` | `#null-24` | li | Director | 1 |
+| <a id="id--null-25"></a>`id--null-25` | `#null-25` | li | Musician | 1 |
+| <a id="id--null-26"></a>`id--null-26` | `#null-26` | li | Politician | 1 |
+| <a id="id--null-27"></a>`id--null-27` | `#null-27` | li | Profile | 1 |
+| <a id="id--null-28"></a>`id--null-28` | `#null-28` | li | Public Figure | 1 |
+| <a id="id--null-29"></a>`id--null-29` | `#null-29` | li | Places | 1 |
+| <a id="id--null-3"></a>`id--null-3` | `#null-3` | li | First Image in Content | 2 |
+| <a id="id--null-30"></a>`id--null-30` | `#null-30` | li | City | 1 |
+| <a id="id--null-31"></a>`id--null-31` | `#null-31` | li | Country | 1 |
+| <a id="id--null-32"></a>`id--null-32` | `#null-32` | li | Landmark | 1 |
+| <a id="id--null-33"></a>`id--null-33` | `#null-33` | li | State/Province | 1 |
+| <a id="id--null-34"></a>`id--null-34` | `#null-34` | li | Products &amp; Entertainment | 1 |
+| <a id="id--null-35"></a>`id--null-35` | `#null-35` | li | Album | 1 |
+| <a id="id--null-36"></a>`id--null-36` | `#null-36` | li | Book | 1 |
+| <a id="id--null-37"></a>`id--null-37` | `#null-37` | li | Drink | 1 |
+| <a id="id--null-38"></a>`id--null-38` | `#null-38` | li | Food | 1 |
+| <a id="id--null-39"></a>`id--null-39` | `#null-39` | li | Game | 1 |
+| <a id="id--null-4"></a>`id--null-4` | `#null-4` | li | Image from Custom Field | 2 |
+| <a id="id--null-40"></a>`id--null-40` | `#null-40` | li | Movie | 1 |
+| <a id="id--null-41"></a>`id--null-41` | `#null-41` | li | Product | 1 |
+| <a id="id--null-42"></a>`id--null-42` | `#null-42` | li | Song | 1 |
+| <a id="id--null-43"></a>`id--null-43` | `#null-43` | li | TV Show | 1 |
+| <a id="id--null-44"></a>`id--null-44` | `#null-44` | li | Episode | 1 |
+| <a id="id--null-45"></a>`id--null-45` | `#null-45` | li | Websites | 1 |
+| <a id="id--null-46"></a>`id--null-46` | `#null-46` | li | Article | 1 |
+| <a id="id--null-47"></a>`id--null-47` | `#null-47` | li | Website | 1 |
+| <a id="id--null-5"></a>`id--null-5` | `#null-5` | li | Post Author Image | 2 |
+| <a id="id--null-6"></a>`id--null-6` | `#null-6` | li | First Available Image | 2 |
+| <a id="id--null-7"></a>`id--null-7` | `#null-7` | li | Custom Image | 2 |
+| <a id="id--null-8"></a>`id--null-8` | `#null-8` | li | Cafe | 1 |
+| <a id="id--null-9"></a>`id--null-9` | `#null-9` | li | Hotel | 1 |
 | <a id="id--original_post_status"></a>`id--original_post_status` | `#original_post_status` | input |  | 1 |
 | <a id="id--originalaction"></a>`id--originalaction` | `#originalaction` | input |  | 1 |
 | <a id="id--post_ID"></a>`id--post_ID` | `#post_ID` | input |  | 1 |
@@ -99,9 +149,11 @@ _109 entries_
 | <a id="id--postbox-container-2"></a>`id--postbox-container-2` | `#postbox-container-2` | div | AIOSEO Settings | 3 |
 | <a id="id--PostSettingsNonce"></a>`id--PostSettingsNonce` | `#PostSettingsNonce` | input |  | 1 |
 | <a id="id--poststuff"></a>`id--poststuff` | `#poststuff` | div | AIOSEO Settings | 3 |
+| <a id="id--preview"></a>`id--preview` | `#preview` | div |  | 1 |
 | <a id="id--query-notice-message"></a>`id--query-notice-message` | `#query-notice-message` | div | No search term specified. Showing recent items. Search or u… | 1 |
-| <a id="id--quill-mention-list"></a>`id--quill-mention-list` | `#quill-mention-list` | ul |  | 6 |
+| <a id="id--quill-mention-list"></a>`id--quill-mention-list` | `#quill-mention-list` | ul |  | 8 |
 | <a id="id--referredby"></a>`id--referredby` | `#referredby` | input |  | 1 |
+| <a id="id--root"></a>`id--root` | `#root` | section |  | 1 |
 | <a id="id--samplepermalinknonce"></a>`id--samplepermalinknonce` | `#samplepermalinknonce` | input |  | 1 |
 | <a id="id--search-panel"></a>`id--search-panel` | `#search-panel` | div | Search | 1 |
 | <a id="id--search-results"></a>`id--search-results` | `#search-results` | div |  | 1 |
@@ -139,9 +191,9 @@ _29 entries_
 | <a id="class--aioseo-append-button"></a>`class--aioseo-append-button` | `.aioseo-append-button` | div | Use AI Generator | 6 |
 | <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | a | Leave a 5-star Review | 5 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 2 |
-| <a id="class--aioseo-documentation-link"></a>`class--aioseo-documentation-link` | `.aioseo-documentation-link` | div | Learn more about Smart Tags | 6 |
-| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 28 |
-| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 28 |
+| <a id="class--aioseo-documentation-link"></a>`class--aioseo-documentation-link` | `.aioseo-documentation-link` | div | Learn more about Smart Tags | 8 |
+| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 32 |
+| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 32 |
 | <a id="class--aioseo-modal"></a>`class--aioseo-modal` | `.aioseo-modal` | div |  | 9 |
 | <a id="class--aioseo-modal-content"></a>`class--aioseo-modal-content` | `.aioseo-modal-content` | div | Search Appearance | 1 |
 | <a id="class--aioseo-out-of-credits-modal"></a>`class--aioseo-out-of-credits-modal` | `.aioseo-out-of-credits-modal` | div |  | 2 |
@@ -152,14 +204,14 @@ _29 entries_
 | <a id="class--aioseo-review-cta-content"></a>`class--aioseo-review-cta-content` | `.aioseo-review-cta-content` | div | Has AIOSEO helped to improve your rankings? | 2 |
 | <a id="class--aioseo-review-cta-link"></a>`class--aioseo-review-cta-link` | `.aioseo-review-cta-link` | a | Nope, maybe later | 4 |
 | <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | SERP Preview SERP: Search Engine Results Page preview. Your… | 23 |
-| <a id="class--aioseo-search"></a>`class--aioseo-search` | `.aioseo-search` | svg |  | 18 |
+| <a id="class--aioseo-search"></a>`class--aioseo-search` | `.aioseo-search` | svg |  | 20 |
 | <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 6 |
 | <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 23 |
 | <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | SERP Preview SERP: Search Engine Results Page preview. Your… | 23 |
 | <a id="class--aioseo-show-emoji-button"></a>`class--aioseo-show-emoji-button` | `.aioseo-show-emoji-button` | button | 😀 | 6 |
 | <a id="class--aioseo-tab"></a>`class--aioseo-tab` | `.aioseo-tab` | div |  | 2 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 4 |
-| <a id="class--aioseo-tag-search"></a>`class--aioseo-tag-search` | `.aioseo-tag-search` | div |  | 6 |
+| <a id="class--aioseo-tag-search"></a>`class--aioseo-tag-search` | `.aioseo-tag-search` | div |  | 8 |
 | <a id="class--aioseo-view-all-tags"></a>`class--aioseo-view-all-tags` | `.aioseo-view-all-tags` | a | View all tags&nbsp;→ | 6 |
 
 ---

@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-seo-analysis-seo-site-audit/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 42 selector entries across 2 sections.
+> 48 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-seo-analysis-seo-site-audit/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -43,12 +43,12 @@ _24 entries_
 
 ## Role-like classes
 
-_18 entries_
+_24 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | View All Getting Started Docs | 8 |
-| <a id="class--aioseo-circle-close"></a>`class--aioseo-circle-close` | `.aioseo-circle-close` | svg |  | 1 |
+| <a id="class--aioseo-circle-close"></a>`class--aioseo-circle-close` | `.aioseo-circle-close` | svg |  | 5 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |
@@ -61,9 +61,15 @@ _18 entries_
 | <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
 | <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
+| <a id="class--aioseo-highlight-toggle"></a>`class--aioseo-highlight-toggle` | `.aioseo-highlight-toggle` | div |  | 14 |
 | <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 1 |
 | <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 1 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
+| <a id="class--aioseo-post-status-options-toggle"></a>`class--aioseo-post-status-options-toggle` | `.aioseo-post-status-options-toggle` | div |  | 1 |
+| <a id="class--aioseo-post-type-options-toggle"></a>`class--aioseo-post-type-options-toggle` | `.aioseo-post-type-options-toggle` | div |  | 2 |
+| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Post Types | 6 |
+| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 3 |
+| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Customize your SEO Audit by selecting which Post Types, Pos… | 4 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
 
 ---

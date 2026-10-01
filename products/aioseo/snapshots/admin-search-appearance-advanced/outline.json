@@ -45,10 +45,58 @@
       "count": 7
     },
     {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": "div.aioseo-add-template-tag",
+      "count": 1
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": "div.ql-editor",
+      "count": 1
+    },
+    {
+      "label": "smart-tag-pill-switch",
+      "event": "click",
+      "selector": ".mention[data-custom-value][data-denotation-char]",
+      "count": 2
+    },
+    {
+      "label": "emoji-picker-toggle",
+      "event": "click",
+      "selector": "button.aioseo-show-emoji-button",
+      "count": 1
+    },
+    {
       "label": "live-only-button",
       "event": "click",
       "selector": ".aioseo-button.blue",
       "count": 2
+    },
+    {
+      "label": "small-controls",
+      "event": "click",
+      "selector": "div.aioseo-card.aioseo-rss-content-advanced div.header",
+      "count": 2
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.aioseo-description a",
+      "count": 199
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(7)",
+      "count": 3
     }
   ],
   "nav": [],
@@ -96,7 +144,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -119,7 +169,9 @@
         "tag": "button",
         "text": "😀",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "emoji-picker-toggle",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-toggle",
@@ -287,7 +339,7 @@
       {
         "sel": "#quill-mention-list",
         "tag": "ul",
-        "text": "",
+        "text": "Page NumberThe page number for the current paginated page.S…",
         "count": 1,
         "hidden": true
       },

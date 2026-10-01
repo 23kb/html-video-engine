@@ -29,7 +29,7 @@ _83 entries_
 | <a id="id--aioseo-details-35"></a>`id--aioseo-details-35` | `#aioseo-details-35` | div | Custom SEO title written for this term | 1 |
 | <a id="id--aioseo-details-hide"></a>`id--aioseo-details-hide` | `#aioseo-details-hide` | input | AIOSEO Details Pagination Number of items per page: | 1 |
 | <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
-| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div | Vegetable Gardening Guides - Rosa's Garden Co. | 1 |
+| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div |  | 1 |
 | <a id="id--ajax-response"></a>`id--ajax-response` | `#ajax-response` | div |  | 1 |
 | <a id="id--bulk-action-selector-bottom"></a>`id--bulk-action-selector-bottom` | `#bulk-action-selector-bottom` | select | Bulk actions Delete | 1 |
 | <a id="id--bulk-action-selector-top"></a>`id--bulk-action-selector-top` | `#bulk-action-selector-top` | select | Bulk actions Delete | 1 |

@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-settings-webmaster-tools--google/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 80 selector entries across 2 sections.
+> 79 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-settings-webmaster-tools--google/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -75,13 +75,12 @@ _56 entries_
 
 ## Role-like classes
 
-_24 entries_
+_23 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--aioseo-alert-close"></a>`class--aioseo-alert-close` | `.aioseo-alert-close` | span |  | 1 |
 | <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 11 |
-| <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 2 |
+| <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |
 | <a id="class--aioseo-flyout-menu-label"></a>`class--aioseo-flyout-menu-label` | `.aioseo-flyout-menu-label` | span | Support &amp; Docs | 7 |

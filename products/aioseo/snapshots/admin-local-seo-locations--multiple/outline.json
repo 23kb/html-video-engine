@@ -45,10 +45,34 @@
       "count": 8
     },
     {
+      "label": "display-slider-change",
+      "event": "change",
+      "selector": "#id_ui-element-slider_0",
+      "count": 4
+    },
+    {
       "label": "live-only-button",
       "event": "click",
       "selector": ".aioseo-button.blue",
       "count": 2
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "ul.aioseo-help-docs li a",
+      "count": 191
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.var-tab.var--box",
+      "count": 5
     }
   ],
   "nav": [],
@@ -96,7 +120,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",

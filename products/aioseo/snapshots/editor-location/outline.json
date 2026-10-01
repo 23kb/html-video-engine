@@ -21,10 +21,82 @@
       "count": 2
     },
     {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": ".aioseo-add-template-tag",
+      "count": 16
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": ".ql-editor",
+      "count": 5
+    },
+    {
+      "label": "smart-tag-menu-open",
+      "event": "click",
+      "selector": ".aioseo-view-all-tags",
+      "count": 5
+    },
+    {
+      "label": "smart-tag-pill-switch",
+      "event": "click",
+      "selector": ".mention[data-custom-value][data-denotation-char]",
+      "count": 9
+    },
+    {
+      "label": "emoji-picker-toggle",
+      "event": "click",
+      "selector": ".aioseo-show-emoji-button",
+      "count": 4
+    },
+    {
+      "label": "phone-country-open",
+      "event": "click",
+      "selector": ".vti__dropdown",
+      "count": 2
+    },
+    {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.multiselect",
+      "count": 7
+    },
+    {
       "label": "live-only-button",
       "event": "click",
-      "selector": "button.aioseo-button.black",
+      "selector": "button.components-button.editor-post-publish-button",
+      "count": 3
+    },
+    {
+      "label": "native-controls",
+      "event": "click",
+      "selector": ".vti__dropdown",
+      "count": 2
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "a.components-button.editor-header__post-preview-button",
+      "count": 2
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.aioseo-documentation-link a",
+      "count": 23
+    },
+    {
+      "label": "image-uploader-remove",
+      "event": "click",
+      "selector": "button.aioseo-button.gray",
       "count": 1
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.var-tab.var--box",
+      "count": 4
     },
     {
       "label": "editor-seo-sidebar",
@@ -92,7 +164,9 @@
         "tag": "button",
         "text": "",
         "count": 4,
-        "hidden": false
+        "hidden": false,
+        "wired": "image-uploader-remove",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-radio-toggle",
@@ -113,14 +187,18 @@
         "tag": "button",
         "text": "😀",
         "count": 4,
-        "hidden": false
+        "hidden": false,
+        "wired": "emoji-picker-toggle",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-view-all-tags",
         "tag": "a",
         "text": "View all tags →",
         "count": 5,
-        "hidden": false
+        "hidden": false,
+        "wired": "smart-tag-menu-open",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
@@ -199,7 +277,7 @@
       {
         "sel": "#meta-box-order-nonce",
         "tag": "input",
-        "text": "b3621c4478",
+        "text": "df0601aea8",
         "count": 1,
         "hidden": true
       },
@@ -234,7 +312,7 @@
       {
         "sel": "#PostSettingsNonce",
         "tag": "input",
-        "text": "b879f1b2ba",
+        "text": "08c831b129",
         "count": 1,
         "hidden": true
       },
@@ -248,14 +326,14 @@
       {
         "sel": "#samplepermalinknonce",
         "tag": "input",
-        "text": "61a62faca0",
+        "text": "c0bd9a4166",
         "count": 1,
         "hidden": true
       },
       {
         "sel": "#toggle-custom-fields-nonce",
         "tag": "input",
-        "text": "24442a8f0d",
+        "text": "16e1bf6bec",
         "count": 1,
         "hidden": true
       },
@@ -342,7 +420,7 @@
     ],
     "other": [
       {
-        "sel": "#a-aioseo-1-0",
+        "sel": "#a-aioseo-1-7",
         "tag": "clippath",
         "text": "",
         "count": 1,
@@ -596,9 +674,9 @@
       {
         "sel": "#aioseo-text-width-measurement",
         "tag": "div",
-        "text": "Riverside Nursery - Rosa's Garden Co.",
+        "text": "",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#aioseo-writing-assistant-metabox",
@@ -664,28 +742,28 @@
         "hidden": false
       },
       {
-        "sel": "#b-aioseo-1-0",
+        "sel": "#b-aioseo-1-7",
         "tag": "filter",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#c-aioseo-1-0",
+        "sel": "#c-aioseo-1-7",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#d-aioseo-1-0",
+        "sel": "#d-aioseo-1-7",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#e-aioseo-1-0",
+        "sel": "#e-aioseo-1-7",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
@@ -713,14 +791,14 @@
         "hidden": true
       },
       {
-        "sel": "#f-aioseo-1-0",
+        "sel": "#f-aioseo-1-7",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#g-aioseo-1-0",
+        "sel": "#g-aioseo-1-7",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
@@ -916,20 +994,6 @@
         "hidden": true
       },
       {
-        "sel": ".aioseo-input",
-        "tag": "div",
-        "text": "",
-        "count": 39,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-input-container",
-        "tag": "div",
-        "text": "",
-        "count": 39,
-        "hidden": false
-      },
-      {
         "sel": ".aioseo-review-cta-actions",
         "tag": "div",
         "text": "Leave a 5-star Review Nope, maybe later I already did",
@@ -944,13 +1008,6 @@
         "hidden": false
       },
       {
-        "sel": ".aioseo-row",
-        "tag": "div",
-        "text": "Name Your name or company name.",
-        "count": 21,
-        "hidden": false
-      },
-      {
         "sel": ".aioseo-search",
         "tag": "svg",
         "text": "",
@@ -962,13 +1019,6 @@
         "tag": "div",
         "text": "Store",
         "count": 7,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-settings-content",
-        "tag": "div",
-        "text": "Your name or company name.",
-        "count": 21,
         "hidden": false
       },
       {

@@ -31,6 +31,36 @@
       "event": "click",
       "selector": ".round",
       "count": 2
+    },
+    {
+      "label": "live-only-button",
+      "event": "click",
+      "selector": ".action.button",
+      "count": 2
+    },
+    {
+      "label": "native-controls",
+      "event": "click",
+      "selector": "div.aioseo-wp-bulk-actions.alignleft select",
+      "count": 3
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 45
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "ul.aioseo-help-docs li a",
+      "count": 191
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.var-tab.var--box",
+      "count": 1
     }
   ],
   "nav": [],
@@ -69,7 +99,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -92,7 +124,7 @@
       {
         "sel": ".aioseo-wp-table-header",
         "tag": "div",
-        "text": "4 items«‹of 1›»",
+        "text": "Bulk Actions Delete Apply 4 items«‹of 1›»",
         "count": 1,
         "hidden": false
       }
@@ -194,9 +226,16 @@
         "hidden": false
       },
       {
+        "sel": "#aioseo-popper-portal",
+        "tag": "div",
+        "text": "Delete Link",
+        "count": 1,
+        "hidden": false
+      },
+      {
         "sel": "#aioseo-post-report-inbound-internal",
         "tag": "div",
-        "text": "4 items«‹of 1›» Post Title Phrase No items found. Post Titl…",
+        "text": "Bulk Actions Delete Apply 4 items«‹of 1›» Post Title Phrase…",
         "count": 1,
         "hidden": false
       },
@@ -353,6 +392,13 @@
         "text": "",
         "count": 1,
         "hidden": true
+      },
+      {
+        "sel": ".aioseo-wp-bulk-actions",
+        "tag": "div",
+        "text": "Bulk Actions Delete Apply",
+        "count": 2,
+        "hidden": false
       }
     ]
   }

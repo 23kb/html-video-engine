@@ -31,6 +31,42 @@
       "event": "click",
       "selector": ".round",
       "count": 2
+    },
+    {
+      "label": "live-only-button",
+      "event": "click",
+      "selector": "button.button.action",
+      "count": 5
+    },
+    {
+      "label": "table-view-sort-row",
+      "event": "click",
+      "selector": ".delete-all-links",
+      "count": 3
+    },
+    {
+      "label": "native-controls",
+      "event": "click",
+      "selector": "div.aioseo-wp-bulk-actions.alignleft select",
+      "count": 3
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "a.view",
+      "count": 194
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(3)",
+      "count": 1
     }
   ],
   "nav": [],
@@ -71,7 +107,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [

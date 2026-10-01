@@ -21,6 +21,60 @@
       "count": 2
     },
     {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": ".aioseo-add-template-tag",
+      "count": 12
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": ".ql-editor",
+      "count": 4
+    },
+    {
+      "label": "smart-tag-menu-open",
+      "event": "click",
+      "selector": ".aioseo-view-all-tags",
+      "count": 4
+    },
+    {
+      "label": "smart-tag-pill-switch",
+      "event": "click",
+      "selector": ".mention[data-custom-value][data-denotation-char]",
+      "count": 2
+    },
+    {
+      "label": "emoji-picker-toggle",
+      "event": "click",
+      "selector": ".aioseo-show-emoji-button",
+      "count": 4
+    },
+    {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.multiselect",
+      "count": 5
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.editor-header__settings a.components-button.is-compact",
+      "count": 20
+    },
+    {
+      "label": "plain-label",
+      "event": "click",
+      "selector": "label.aioseo-reviewed-by-label",
+      "count": 1
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.var-tab.var--box",
+      "count": 3
+    },
+    {
       "label": "editor-seo-sidebar",
       "event": "click",
       "selector": "div.interface-pinned-items button.components-button.is-compact",
@@ -86,7 +140,9 @@
         "tag": "a",
         "text": "Leave a 5-star Review",
         "count": 2,
-        "hidden": true
+        "hidden": true,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-radio-toggle",
@@ -107,14 +163,18 @@
         "tag": "button",
         "text": "😀",
         "count": 4,
-        "hidden": true
+        "hidden": true,
+        "wired": "emoji-picker-toggle",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-view-all-tags",
         "tag": "a",
         "text": "View all tags →",
         "count": 4,
-        "hidden": true
+        "hidden": true,
+        "wired": "smart-tag-menu-open",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
@@ -235,7 +295,7 @@
       {
         "sel": "#meta-box-order-nonce",
         "tag": "input",
-        "text": "5fc1aca9ac",
+        "text": "c13b4edb9e",
         "count": 1,
         "hidden": true
       },
@@ -270,7 +330,7 @@
       {
         "sel": "#PostSettingsNonce",
         "tag": "input",
-        "text": "f29806bb00",
+        "text": "85cd5f3bc0",
         "count": 1,
         "hidden": true
       },
@@ -284,14 +344,14 @@
       {
         "sel": "#samplepermalinknonce",
         "tag": "input",
-        "text": "9a117add47",
+        "text": "0400665eb1",
         "count": 1,
         "hidden": true
       },
       {
         "sel": "#toggle-custom-fields-nonce",
         "tag": "input",
-        "text": "fc3fb5ac36",
+        "text": "e70bea6b41",
         "count": 1,
         "hidden": true
       },
@@ -555,9 +615,9 @@
       {
         "sel": "#aioseo-text-width-measurement",
         "tag": "div",
-        "text": "When to Prune Hydrangeas - Rosa's Garden Co.",
+        "text": "",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#aioseo-writing-assistant-metabox",

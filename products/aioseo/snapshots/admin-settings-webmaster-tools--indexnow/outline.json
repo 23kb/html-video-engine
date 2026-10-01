@@ -42,13 +42,31 @@
       "label": "live-only-button",
       "event": "click",
       "selector": ".aioseo-button.blue",
-      "count": 2
+      "count": 3
     },
     {
       "label": "webmaster-tool-toggle",
       "event": "click",
       "selector": "div.aioseo-col.col-xs-12 div",
       "count": 8
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "p.aioseo-description a",
+      "count": 195
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(3)",
+      "count": 1
     }
   ],
   "nav": [],
@@ -58,13 +76,6 @@
         "sel": "#collapse-button",
         "tag": "button",
         "text": "Collapse Menu",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-alert-close",
-        "tag": "span",
-        "text": "",
         "count": 1,
         "hidden": false
       },
@@ -96,7 +107,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -112,7 +125,7 @@
       {
         "sel": ".aioseo-tab-content",
         "tag": "div",
-        "text": "Have you connected your site to Google Search Console? AIOS…",
+        "text": "Webmaster Tools Verification Enter your verification codes …",
         "count": 1,
         "hidden": false
       }
@@ -350,7 +363,7 @@
         "sel": ".aioseo-close",
         "tag": "svg",
         "text": "",
-        "count": 2,
+        "count": 1,
         "hidden": false
       },
       {

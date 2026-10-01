@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-sitemaps-news-sitemap/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 49 selector entries across 2 sections.
+> 50 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-sitemaps-news-sitemap/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -31,7 +31,7 @@ _25 entries_
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
-| <a id="id--news-sitemap-publication-name"></a>`id--news-sitemap-publication-name` | `#news-sitemap-publication-name` | div | Publication Name | 1 |
+| <a id="id--news-sitemap-publication-name"></a>`id--news-sitemap-publication-name` | `#news-sitemap-publication-name` | div | Publication Name | 5 |
 | <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
@@ -44,12 +44,12 @@ _25 entries_
 
 ## Role-like classes
 
-_24 entries_
+_25 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="class--aioseo-alert-close"></a>`class--aioseo-alert-close` | `.aioseo-alert-close` | span |  | 1 |
-| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 11 |
+| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 15 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 2 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |
@@ -62,16 +62,17 @@ _24 entries_
 | <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
 | <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
-| <a id="class--aioseo-highlight-toggle"></a>`class--aioseo-highlight-toggle` | `.aioseo-highlight-toggle` | div |  | 3 |
-| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 2 |
-| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 2 |
+| <a id="class--aioseo-highlight-toggle"></a>`class--aioseo-highlight-toggle` | `.aioseo-highlight-toggle` | div |  | 12 |
+| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 6 |
+| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 6 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
-| <a id="class--aioseo-post-type-options-toggle"></a>`class--aioseo-post-type-options-toggle` | `.aioseo-post-type-options-toggle` | div |  | 1 |
-| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Enable Sitemap | 5 |
-| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 4 |
-| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | The Google News Sitemap lets you control which content you … | 5 |
+| <a id="class--aioseo-post-type-options-toggle"></a>`class--aioseo-post-type-options-toggle` | `.aioseo-post-type-options-toggle` | div |  | 4 |
+| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Enable Sitemap | 19 |
+| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 2 |
+| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 15 |
+| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | The Google News Sitemap lets you control which content you … | 17 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
-| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 2 |
+| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 4 |
 
 ---
 

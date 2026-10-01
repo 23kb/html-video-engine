@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-redirects-full-site-redirect/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 42 selector entries across 2 sections.
+> 46 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-redirects-full-site-redirect/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -43,7 +43,7 @@ _24 entries_
 
 ## Role-like classes
 
-_18 entries_
+_22 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -60,11 +60,15 @@ _18 entries_
 | <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
 | <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
-| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 2 |
-| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 2 |
+| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 3 |
+| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 3 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
+| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Your old site address | 4 |
+| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 1 |
+| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 2 |
+| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Redirect from HTTP to HTTPS | 2 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
-| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 2 |
+| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 5 |
 
 ---
 

@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-search-appearance-author-seo/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 60 selector entries across 2 sections.
+> 62 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-search-appearance-author-seo/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_33 entries_
+_35 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -35,11 +35,13 @@ _33 entries_
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
-| <a id="id--id_authorBioInjection_0"></a>`id--id_authorBioInjection_0` | `#id_authorBioInjection_0` | input | Disabled Enabled Choose whether AIOSEO should automatically… | 1 |
-| <a id="id--id_authorBioInjection_1"></a>`id--id_authorBioInjection_1` | `#id_authorBioInjection_1` | input | Enabled Choose whether AIOSEO should automatically append a… | 1 |
-| <a id="id--id_ui-element-slider_0"></a>`id--id_ui-element-slider_0` | `#id_ui-element-slider_0` | input |  | 1 |
-| <a id="id--id_ui-element-slider_1"></a>`id--id_ui-element-slider_1` | `#id_ui-element-slider_1` | input |  | 1 |
-| <a id="id--id_ui-element-slider_2"></a>`id--id_ui-element-slider_2` | `#id_ui-element-slider_2` | input |  | 1 |
+| <a id="id--id_authorBioInjection_0"></a>`id--id_authorBioInjection_0` | `#id_authorBioInjection_0` | input | Disabled Enabled Choose whether AIOSEO should automatically… | 5 |
+| <a id="id--id_authorBioInjection_1"></a>`id--id_authorBioInjection_1` | `#id_authorBioInjection_1` | input | Enabled Choose whether AIOSEO should automatically append a… | 5 |
+| <a id="id--id_ui-element-slider_0"></a>`id--id_ui-element-slider_0` | `#id_ui-element-slider_0` | input |  | 5 |
+| <a id="id--id_ui-element-slider_1"></a>`id--id_ui-element-slider_1` | `#id_ui-element-slider_1` | input |  | 5 |
+| <a id="id--id_ui-element-slider_2"></a>`id--id_ui-element-slider_2` | `#id_ui-element-slider_2` | input |  | 5 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | https://en.wikipedia.org/wiki/Vegetable_farming No elements… | 4 |
+| <a id="id--null-0"></a>`id--null-0` | `#null-0` | li | https://en.wikipedia.org/wiki/Vegetable_farming | 4 |
 | <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
@@ -56,7 +58,7 @@ _27 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--aioseo-box-toggle"></a>`class--aioseo-box-toggle` | `.aioseo-box-toggle` | div |  | 1 |
+| <a id="class--aioseo-box-toggle"></a>`class--aioseo-box-toggle` | `.aioseo-box-toggle` | div |  | 5 |
 | <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 11 |
 | <a id="class--aioseo-circle-close"></a>`class--aioseo-circle-close` | `.aioseo-circle-close` | svg |  | 8 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 5 |
@@ -71,17 +73,17 @@ _27 entries_
 | <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
 | <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
-| <a id="class--aioseo-highlight-toggle"></a>`class--aioseo-highlight-toggle` | `.aioseo-highlight-toggle` | div |  | 2 |
+| <a id="class--aioseo-highlight-toggle"></a>`class--aioseo-highlight-toggle` | `.aioseo-highlight-toggle` | div |  | 6 |
 | <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 9 |
 | <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 9 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
-| <a id="class--aioseo-post-type-options-toggle"></a>`class--aioseo-post-type-options-toggle` | `.aioseo-post-type-options-toggle` | div |  | 1 |
-| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div | Disabled | 1 |
-| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Display Info | 5 |
+| <a id="class--aioseo-post-type-options-toggle"></a>`class--aioseo-post-type-options-toggle` | `.aioseo-post-type-options-toggle` | div |  | 3 |
+| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div | Disabled | 5 |
+| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Display Info | 22 |
 | <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 4 |
-| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 3 |
-| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Display Info | 4 |
-| <a id="class--aioseo-slide-content"></a>`class--aioseo-slide-content` | `.aioseo-slide-content` | div | The following blocks are available in the Block Editor: AIO… | 1 |
+| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 14 |
+| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Display Info | 15 |
+| <a id="class--aioseo-slide-content"></a>`class--aioseo-slide-content` | `.aioseo-slide-content` | div | The following blocks are available in the Block Editor: AIO… | 12 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
 
 ---

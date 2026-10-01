@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-link-assistant-post-report/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 45 selector entries across 2 sections.
+> 52 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-link-assistant-post-report/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_25 entries_
+_30 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -28,7 +28,12 @@ _25 entries_
 | <a id="id--aioseo-help-result"></a>`id--aioseo-help-result` | `#aioseo-help-result` | div |  | 1 |
 | <a id="id--aioseo-help-search"></a>`id--aioseo-help-search` | `#aioseo-help-search` | div |  | 1 |
 | <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
-| <a id="id--aioseo-post-report-inbound-internal"></a>`id--aioseo-post-report-inbound-internal` | `#aioseo-post-report-inbound-internal` | div | 4 items « ‹ | 1 |
+| <a id="id--aioseo-popper-portal"></a>`id--aioseo-popper-portal` | `#aioseo-popper-portal` | div | Delete Link | 1 |
+| <a id="id--aioseo-post-report-affiliate"></a>`id--aioseo-post-report-affiliate` | `#aioseo-post-report-affiliate` | div | 0 items « ‹ | 1 |
+| <a id="id--aioseo-post-report-external"></a>`id--aioseo-post-report-external` | `#aioseo-post-report-external` | div | 0 items « ‹ | 1 |
+| <a id="id--aioseo-post-report-inbound-internal"></a>`id--aioseo-post-report-inbound-internal` | `#aioseo-post-report-inbound-internal` | div | Bulk Actions Delete Apply | 2 |
+| <a id="id--aioseo-post-report-inbound-suggestions"></a>`id--aioseo-post-report-inbound-suggestions` | `#aioseo-post-report-inbound-suggestions` | div | 0 items « ‹ | 1 |
+| <a id="id--aioseo-post-report-outbound-internal"></a>`id--aioseo-post-report-outbound-internal` | `#aioseo-post-report-outbound-internal` | div | Bulk Actions Delete Apply | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
@@ -44,12 +49,13 @@ _25 entries_
 
 ## Role-like classes
 
-_20 entries_
+_22 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button |  | 9 |
-| <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
+| <a id="class--aioseo-alert-close"></a>`class--aioseo-alert-close` | `.aioseo-alert-close` | span |  | 1 |
+| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button |  | 14 |
+| <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 2 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |
 | <a id="class--aioseo-flyout-menu-label"></a>`class--aioseo-flyout-menu-label` | `.aioseo-flyout-menu-label` | span | Support &amp; Docs | 7 |
@@ -67,7 +73,8 @@ _20 entries_
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
 | <a id="class--aioseo-modal"></a>`class--aioseo-modal` | `.aioseo-modal` | div |  | 1 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div | ← Back to Links Report | 1 |
-| <a id="class--aioseo-wp-table-header"></a>`class--aioseo-wp-table-header` | `.aioseo-wp-table-header` | div | 4 items « ‹ | 1 |
+| <a id="class--aioseo-wp-bulk-actions"></a>`class--aioseo-wp-bulk-actions` | `.aioseo-wp-bulk-actions` | div | Bulk Actions Delete Apply | 4 |
+| <a id="class--aioseo-wp-table-header"></a>`class--aioseo-wp-table-header` | `.aioseo-wp-table-header` | div | Bulk Actions Delete Apply | 6 |
 
 ---
 

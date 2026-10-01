@@ -31,16 +31,16 @@ _34 entries_
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
-| <a id="id--id_enhancedSearch_0"></a>`id--id_enhancedSearch_0` | `#id_enhancedSearch_0` | input | Off On Include business locations in site-wide search resul… | 1 |
-| <a id="id--id_enhancedSearch_1"></a>`id--id_enhancedSearch_1` | `#id_enhancedSearch_1` | input | On Include business locations in site-wide search results. … | 1 |
-| <a id="id--id_enhancedSearchExcerpt_0"></a>`id--id_enhancedSearchExcerpt_0` | `#id_enhancedSearchExcerpt_0` | input | Off On Shows the location address appended to the search re… | 1 |
-| <a id="id--id_enhancedSearchExcerpt_1"></a>`id--id_enhancedSearchExcerpt_1` | `#id_enhancedSearchExcerpt_1` | input | On Shows the location address appended to the search result… | 1 |
-| <a id="id--id_multipleLocations_0"></a>`id--id_multipleLocations_0` | `#id_multipleLocations_0` | input | No Yes Use the Locations | 1 |
-| <a id="id--id_multipleLocations_1"></a>`id--id_multipleLocations_1` | `#id_multipleLocations_1` | input | Yes Use the Locations Post Type in the menu on the left to … | 1 |
-| <a id="id--id_ui-element-slider_0"></a>`id--id_ui-element-slider_0` | `#id_ui-element-slider_0` | input |  | 1 |
-| <a id="id--id_ui-element-slider_1"></a>`id--id_ui-element-slider_1` | `#id_ui-element-slider_1` | input |  | 1 |
-| <a id="id--id_ui-element-slider_2"></a>`id--id_ui-element-slider_2` | `#id_ui-element-slider_2` | input |  | 1 |
-| <a id="id--id_ui-element-slider_3"></a>`id--id_ui-element-slider_3` | `#id_ui-element-slider_3` | input |  | 1 |
+| <a id="id--id_enhancedSearch_0"></a>`id--id_enhancedSearch_0` | `#id_enhancedSearch_0` | input | Off On Include business locations in site-wide search resul… | 5 |
+| <a id="id--id_enhancedSearch_1"></a>`id--id_enhancedSearch_1` | `#id_enhancedSearch_1` | input | On Include business locations in site-wide search results. … | 5 |
+| <a id="id--id_enhancedSearchExcerpt_0"></a>`id--id_enhancedSearchExcerpt_0` | `#id_enhancedSearchExcerpt_0` | input | Off On Shows the location address appended to the search re… | 4 |
+| <a id="id--id_enhancedSearchExcerpt_1"></a>`id--id_enhancedSearchExcerpt_1` | `#id_enhancedSearchExcerpt_1` | input | On Shows the location address appended to the search result… | 4 |
+| <a id="id--id_multipleLocations_0"></a>`id--id_multipleLocations_0` | `#id_multipleLocations_0` | input | No Yes Use the Locations | 2 |
+| <a id="id--id_multipleLocations_1"></a>`id--id_multipleLocations_1` | `#id_multipleLocations_1` | input | Yes Use the Locations Post Type in the menu on the left to … | 2 |
+| <a id="id--id_ui-element-slider_0"></a>`id--id_ui-element-slider_0` | `#id_ui-element-slider_0` | input |  | 2 |
+| <a id="id--id_ui-element-slider_1"></a>`id--id_ui-element-slider_1` | `#id_ui-element-slider_1` | input |  | 2 |
+| <a id="id--id_ui-element-slider_2"></a>`id--id_ui-element-slider_2` | `#id_ui-element-slider_2` | input |  | 2 |
+| <a id="id--id_ui-element-slider_3"></a>`id--id_ui-element-slider_3` | `#id_ui-element-slider_3` | input |  | 2 |
 | <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
@@ -57,7 +57,7 @@ _23 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--aioseo-box-toggle"></a>`class--aioseo-box-toggle` | `.aioseo-box-toggle` | div |  | 1 |
+| <a id="class--aioseo-box-toggle"></a>`class--aioseo-box-toggle` | `.aioseo-box-toggle` | div |  | 2 |
 | <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 10 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
@@ -71,14 +71,14 @@ _23 entries_
 | <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
 | <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
-| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 3 |
-| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 3 |
+| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 13 |
+| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 13 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
-| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div | No | 3 |
-| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Multiple Locations | 8 |
-| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div | No | 7 |
-| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Whether your business has multiple locations, or just one, … | 8 |
-| <a id="class--aioseo-slide-content"></a>`class--aioseo-slide-content` | `.aioseo-slide-content` | div | To add this block, edit a page or post and search for the "… | 1 |
+| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div | No | 11 |
+| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Multiple Locations | 30 |
+| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div | No | 28 |
+| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Whether your business has multiple locations, or just one, … | 30 |
+| <a id="class--aioseo-slide-content"></a>`class--aioseo-slide-content` | `.aioseo-slide-content` | div | To add this block, edit a page or post and search for the "… | 6 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
 
 ---

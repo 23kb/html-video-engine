@@ -1,7 +1,20 @@
 {
   "slug": "admin-seo-revisions",
   "registryPresent": true,
-  "transitions": [],
+  "transitions": [
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.aioseo-footer div a",
+      "count": 8
+    }
+  ],
   "nav": [],
   "groups": {
     "actions": [

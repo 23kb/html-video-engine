@@ -36,6 +36,54 @@
       "label": "live-only-button",
       "event": "click",
       "selector": "button.aioseo-button.green",
+      "count": 2
+    },
+    {
+      "label": "small-controls",
+      "event": "click",
+      "selector": ".header",
+      "count": 2
+    },
+    {
+      "label": "table-view-sort-row",
+      "event": "click",
+      "selector": "th.aioseo-manage-column.manage-column a",
+      "count": 6
+    },
+    {
+      "label": "native-controls",
+      "event": "click",
+      "selector": "div.aioseo-wp-additional-filters.alignleft select",
+      "count": 1
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "ul.aioseo-help-docs li a",
+      "count": 191
+    },
+    {
+      "label": "search-statistics-connect-overlay",
+      "event": "click",
+      "selector": "div.connect-cta",
+      "count": 1
+    },
+    {
+      "label": "plain-label",
+      "event": "click",
+      "selector": "label.screen-reader-text",
+      "count": 1
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(2)",
       "count": 1
     }
   ],
@@ -77,7 +125,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -231,7 +281,7 @@
         "hidden": true
       },
       {
-        "sel": "#apexcharts7foj53nq",
+        "sel": "#apexchartsjc0r2fyo",
         "tag": "div",
         "text": "1.4M 1.3M 1.2M 1.1M 1M 900K 800K Impressions 24 Oct 2022 31…",
         "count": 1,
@@ -252,35 +302,35 @@
         "hidden": false
       },
       {
-        "sel": "#forecastMask7foj53nq",
+        "sel": "#forecastMaskjc0r2fyo",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMask7foj53nq",
+        "sel": "#gridRectBarMaskjc0r2fyo",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMask7foj53nq",
+        "sel": "#gridRectMarkerMaskjc0r2fyo",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMask7foj53nq",
+        "sel": "#gridRectMaskjc0r2fyo",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMask7foj53nq",
+        "sel": "#nonForecastMaskjc0r2fyo",
         "tag": "clippath",
         "text": "",
         "count": 1,
@@ -367,7 +417,7 @@
         "sel": ".aioseo-circle-close",
         "tag": "svg",
         "text": "",
-        "count": 8,
+        "count": 20,
         "hidden": true
       },
       {

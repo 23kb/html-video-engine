@@ -47,8 +47,32 @@
     {
       "label": "live-only-button",
       "event": "click",
-      "selector": ".aioseo-button.blue",
+      "selector": ".aioseo-button.medium",
+      "count": 4
+    },
+    {
+      "label": "highlight-style-pick",
+      "event": "click",
+      "selector": ".highlight-style-options__option",
       "count": 2
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.aioseo-settings-row.aioseo-section-description span a",
+      "count": 193
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(6)",
+      "count": 1
     }
   ],
   "nav": [],
@@ -89,7 +113,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -99,13 +125,6 @@
         "hidden": false,
         "wired": "help-center-view-all",
         "wiredEvent": "click"
-      },
-      {
-        "sel": ".aioseo-highlight-toggle",
-        "tag": "div",
-        "text": "Categories",
-        "count": 5,
-        "hidden": false
       },
       {
         "sel": ".aioseo-post-type-options-toggle",
@@ -373,20 +392,6 @@
         "text": "",
         "count": 1,
         "hidden": true
-      },
-      {
-        "sel": ".aioseo-row",
-        "tag": "div",
-        "text": "TruSEO Enable TruSEO to analyze your content for basic SEO …",
-        "count": 10,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-settings-content",
-        "tag": "div",
-        "text": "Enable TruSEO to analyze your content for basic SEO issues,…",
-        "count": 9,
-        "hidden": false
       }
     ]
   }

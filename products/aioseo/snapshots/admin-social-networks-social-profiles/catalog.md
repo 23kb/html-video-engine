@@ -16,7 +16,7 @@ _27 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="id--A"></a>`id--A` | `#A` | clippath |  | 1 |
+| <a id="id--A"></a>`id--A` | `#A` | clippath |  | 2 |
 | <a id="id--aioseo-admin"></a>`id--aioseo-admin` | `#aioseo-admin` | div |  | 1 |
 | <a id="id--aioseo-app"></a>`id--aioseo-app` | `#aioseo-app` | div |  | 1 |
 | <a id="id--aioseo-flyout-menu"></a>`id--aioseo-flyout-menu` | `#aioseo-flyout-menu` | div | Support &amp; Docs | 1 |
@@ -29,8 +29,8 @@ _27 entries_
 | <a id="id--aioseo-help-result"></a>`id--aioseo-help-result` | `#aioseo-help-result` | div |  | 1 |
 | <a id="id--aioseo-help-search"></a>`id--aioseo-help-search` | `#aioseo-help-search` | div |  | 1 |
 | <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
-| <a id="id--clip0_905_2655"></a>`id--clip0_905_2655` | `#clip0_905_2655` | clippath |  | 1 |
-| <a id="id--clip0_905_2659"></a>`id--clip0_905_2659` | `#clip0_905_2659` | clippath |  | 1 |
+| <a id="id--clip0_905_2655"></a>`id--clip0_905_2655` | `#clip0_905_2655` | clippath |  | 2 |
+| <a id="id--clip0_905_2659"></a>`id--clip0_905_2659` | `#clip0_905_2659` | clippath |  | 2 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
@@ -63,12 +63,12 @@ _20 entries_
 | <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
 | <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
-| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 16 |
-| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 16 |
+| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 32 |
+| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 32 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
-| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div |  | 16 |
-| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 16 |
-| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | To let search engines know which profiles are associated wi… | 17 |
+| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div |  | 34 |
+| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 33 |
+| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | To let search engines know which profiles are associated wi… | 35 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
 
 ---

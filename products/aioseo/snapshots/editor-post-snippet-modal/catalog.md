@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/editor-post-snippet-modal/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 138 selector entries across 2 sections.
+> 141 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/editor-post-snippet-modal/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_109 entries_
+_112 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -50,7 +50,7 @@ _109 entries_
 | <a id="id--aioseo-settings-handlediv"></a>`id--aioseo-settings-handlediv` | `#aioseo-settings-handlediv` | span | Show or hide panel | 1 |
 | <a id="id--aioseo-settings-handlediv-text"></a>`id--aioseo-settings-handlediv-text` | `#aioseo-settings-handlediv-text` | span | Show or hide panel | 1 |
 | <a id="id--aioseo-settings-title"></a>`id--aioseo-settings-title` | `#aioseo-settings-title` | h2 | AIOSEO Settings | 1 |
-| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div | How to Plan a Vegetable Bed That Feeds You All Year - Rosa'… | 1 |
+| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div |  | 1 |
 | <a id="id--aioseo-writing-assistant-metabox"></a>`id--aioseo-writing-assistant-metabox` | `#aioseo-writing-assistant-metabox` | div | AIOSEO Writing Assistant | 1 |
 | <a id="id--aioseo-writing-assistant-metabox-app"></a>`id--aioseo-writing-assistant-metabox-app` | `#aioseo-writing-assistant-metabox-app` | div | Elevate your SEO with AIOSEO Writing Assistant Now Integrat… | 1 |
 | <a id="id--aioseo-writing-assistant-metabox-handle-order-higher-description"></a>`id--aioseo-writing-assistant-metabox-handle-order-higher-description` | `#aioseo-writing-assistant-metabox-handle-order-higher-description` | span | Move up | 1 |
@@ -91,6 +91,7 @@ _109 entries_
 | <a id="id--meta-box-order-nonce"></a>`id--meta-box-order-nonce` | `#meta-box-order-nonce` | input |  | 1 |
 | <a id="id--metaboxes"></a>`id--metaboxes` | `#metaboxes` | div |  | 1 |
 | <a id="id--most-recent-results"></a>`id--most-recent-results` | `#most-recent-results` | div | No search term specified. Showing recent items. Search or u… | 1 |
+| <a id="id--nav"></a>`id--nav` | `#nav` | nav |  | 1 |
 | <a id="id--normal-sortables"></a>`id--normal-sortables` | `#normal-sortables` | div | AIOSEO Settings | 1 |
 | <a id="id--original_post_status"></a>`id--original_post_status` | `#original_post_status` | input |  | 1 |
 | <a id="id--originalaction"></a>`id--originalaction` | `#originalaction` | input |  | 1 |
@@ -99,9 +100,11 @@ _109 entries_
 | <a id="id--postbox-container-2"></a>`id--postbox-container-2` | `#postbox-container-2` | div | AIOSEO Settings | 3 |
 | <a id="id--PostSettingsNonce"></a>`id--PostSettingsNonce` | `#PostSettingsNonce` | input |  | 1 |
 | <a id="id--poststuff"></a>`id--poststuff` | `#poststuff` | div | AIOSEO Settings | 3 |
+| <a id="id--preview"></a>`id--preview` | `#preview` | div |  | 1 |
 | <a id="id--query-notice-message"></a>`id--query-notice-message` | `#query-notice-message` | div | No search term specified. Showing recent items. Search or u… | 1 |
-| <a id="id--quill-mention-list"></a>`id--quill-mention-list` | `#quill-mention-list` | ul |  | 6 |
+| <a id="id--quill-mention-list"></a>`id--quill-mention-list` | `#quill-mention-list` | ul |  | 8 |
 | <a id="id--referredby"></a>`id--referredby` | `#referredby` | input |  | 1 |
+| <a id="id--root"></a>`id--root` | `#root` | section |  | 1 |
 | <a id="id--samplepermalinknonce"></a>`id--samplepermalinknonce` | `#samplepermalinknonce` | input |  | 1 |
 | <a id="id--search-panel"></a>`id--search-panel` | `#search-panel` | div | Search | 1 |
 | <a id="id--search-results"></a>`id--search-results` | `#search-results` | div |  | 1 |
@@ -139,9 +142,9 @@ _29 entries_
 | <a id="class--aioseo-append-button"></a>`class--aioseo-append-button` | `.aioseo-append-button` | div | Use AI Generator | 6 |
 | <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | a | Leave a 5-star Review | 5 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 2 |
-| <a id="class--aioseo-documentation-link"></a>`class--aioseo-documentation-link` | `.aioseo-documentation-link` | div | Learn more about Smart Tags | 6 |
-| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 26 |
-| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 26 |
+| <a id="class--aioseo-documentation-link"></a>`class--aioseo-documentation-link` | `.aioseo-documentation-link` | div | Learn more about Smart Tags | 8 |
+| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 30 |
+| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 30 |
 | <a id="class--aioseo-modal"></a>`class--aioseo-modal` | `.aioseo-modal` | div |  | 13 |
 | <a id="class--aioseo-modal-content"></a>`class--aioseo-modal-content` | `.aioseo-modal-content` | div | Search Appearance | 1 |
 | <a id="class--aioseo-out-of-credits-modal"></a>`class--aioseo-out-of-credits-modal` | `.aioseo-out-of-credits-modal` | div |  | 4 |
@@ -152,14 +155,14 @@ _29 entries_
 | <a id="class--aioseo-review-cta-content"></a>`class--aioseo-review-cta-content` | `.aioseo-review-cta-content` | div | Has AIOSEO helped to improve your rankings? | 2 |
 | <a id="class--aioseo-review-cta-link"></a>`class--aioseo-review-cta-link` | `.aioseo-review-cta-link` | a | Nope, maybe later | 4 |
 | <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | SERP Preview SERP: Search Engine Results Page preview. Your… | 17 |
-| <a id="class--aioseo-search"></a>`class--aioseo-search` | `.aioseo-search` | svg |  | 18 |
+| <a id="class--aioseo-search"></a>`class--aioseo-search` | `.aioseo-search` | svg |  | 20 |
 | <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 3 |
 | <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 17 |
 | <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | SERP Preview SERP: Search Engine Results Page preview. Your… | 17 |
 | <a id="class--aioseo-show-emoji-button"></a>`class--aioseo-show-emoji-button` | `.aioseo-show-emoji-button` | button | 😀 | 6 |
 | <a id="class--aioseo-tab"></a>`class--aioseo-tab` | `.aioseo-tab` | div |  | 2 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 4 |
-| <a id="class--aioseo-tag-search"></a>`class--aioseo-tag-search` | `.aioseo-tag-search` | div |  | 6 |
+| <a id="class--aioseo-tag-search"></a>`class--aioseo-tag-search` | `.aioseo-tag-search` | div |  | 8 |
 | <a id="class--aioseo-view-all-tags"></a>`class--aioseo-view-all-tags` | `.aioseo-view-all-tags` | a | View all tags&nbsp;→ | 6 |
 
 ---

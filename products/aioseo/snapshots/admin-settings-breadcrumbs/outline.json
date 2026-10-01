@@ -51,6 +51,36 @@
       "count": 8
     },
     {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": ".aioseo-add-template-tag",
+      "count": 2
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": ".ql-editor",
+      "count": 3
+    },
+    {
+      "label": "smart-tag-pill-switch",
+      "event": "click",
+      "selector": ".mention[data-custom-value][data-denotation-char]",
+      "count": 2
+    },
+    {
+      "label": "emoji-picker-toggle",
+      "event": "click",
+      "selector": ".aioseo-show-emoji-button",
+      "count": 3
+    },
+    {
+      "label": "display-slider-change",
+      "event": "change",
+      "selector": "#id_ui-element-slider_0",
+      "count": 4
+    },
+    {
       "label": "title-separator-pick",
       "event": "click",
       "selector": "div.aioseo-col.col-xs-2 div.separator",
@@ -59,7 +89,7 @@
     {
       "label": "title-separator-show-more",
       "event": "click",
-      "selector": "div.show-more a",
+      "selector": "div.show-more",
       "count": 1
     },
     {
@@ -67,6 +97,30 @@
       "event": "click",
       "selector": ".aioseo-button.blue",
       "count": 2
+    },
+    {
+      "label": "small-controls",
+      "event": "click",
+      "selector": ".aioseo-breadcrumb",
+      "count": 20
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 51
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.aioseo-settings-row.aioseo-section-description span a",
+      "count": 205
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(4)",
+      "count": 4
     }
   ],
   "nav": [],
@@ -121,7 +175,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -144,14 +200,9 @@
         "tag": "button",
         "text": "😀",
         "count": 3,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-toggle",
-        "tag": "label",
-        "text": "",
-        "count": 6,
-        "hidden": false
+        "hidden": false,
+        "wired": "emoji-picker-toggle",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
@@ -222,13 +273,6 @@
         "text": "",
         "count": 1,
         "hidden": true
-      },
-      {
-        "sel": ".aioseo-settings-row",
-        "tag": "div",
-        "text": "Breadcrumbs are an essential part of SEO. By default AIOSEO…",
-        "count": 14,
-        "hidden": false
       }
     ],
     "other": [
@@ -319,7 +363,7 @@
       {
         "sel": "#quill-mention-list",
         "tag": "ul",
-        "text": "",
+        "text": "Post Type NameThe archive post type name.",
         "count": 2,
         "hidden": true
       },
@@ -450,46 +494,11 @@
         "hidden": false
       },
       {
-        "sel": ".aioseo-input",
-        "tag": "div",
-        "text": "",
-        "count": 13,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-input-container",
-        "tag": "div",
-        "text": "",
-        "count": 13,
-        "hidden": false
-      },
-      {
         "sel": ".aioseo-message",
         "tag": "svg",
         "text": "",
         "count": 1,
         "hidden": true
-      },
-      {
-        "sel": ".aioseo-row",
-        "tag": "div",
-        "text": "Show Breadcrumbs on Your Website Gutenberg Block Shortcode …",
-        "count": 19,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-search",
-        "tag": "svg",
-        "text": "",
-        "count": 8,
-        "hidden": true
-      },
-      {
-        "sel": ".aioseo-settings-content",
-        "tag": "div",
-        "text": "Gutenberg Block Shortcode Widget PHP Code To add this block…",
-        "count": 13,
-        "hidden": false
       },
       {
         "sel": ".aioseo-slide-content",

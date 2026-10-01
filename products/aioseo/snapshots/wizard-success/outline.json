@@ -1,7 +1,14 @@
 {
   "slug": "wizard-success",
   "registryPresent": true,
-  "transitions": [],
+  "transitions": [
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": ".aioseo-button.default",
+      "count": 3
+    }
+  ],
   "nav": [],
   "groups": {
     "actions": [
@@ -10,7 +17,9 @@
         "tag": "a",
         "text": "Follow on Facebook",
         "count": 4,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [],

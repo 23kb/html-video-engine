@@ -45,9 +45,45 @@
       "count": 14
     },
     {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.medium",
+      "count": 6
+    },
+    {
       "label": "live-only-button",
       "event": "click",
-      "selector": ".aioseo-button.blue",
+      "selector": ".aioseo-button",
+      "count": 4
+    },
+    {
+      "label": "small-controls",
+      "event": "click",
+      "selector": "div.aioseo-card.disabled div.header",
+      "count": 1
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.content div span a",
+      "count": 193
+    },
+    {
+      "label": "redirect-method-change",
+      "event": "change",
+      "selector": "#id_breadcrumbsType_0",
+      "count": 2
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(6)",
       "count": 2
     }
   ],
@@ -96,7 +132,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -119,13 +157,6 @@
         "tag": "div",
         "text": "Posts Pages Locations",
         "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-toggle",
-        "tag": "label",
-        "text": "Cache Redirects",
-        "count": 11,
         "hidden": false
       }
     ],
@@ -411,13 +442,6 @@
         "hidden": true
       },
       {
-        "sel": ".aioseo-row",
-        "tag": "div",
-        "text": "Redirect Method Choose how redirects are processed on your …",
-        "count": 8,
-        "hidden": false
-      },
-      {
         "sel": ".aioseo-select",
         "tag": "div",
         "text": "1 hour",
@@ -428,6 +452,13 @@
         "sel": ".aioseo-settings-content",
         "tag": "div",
         "text": "Choose how redirects are processed on your server for optim…",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-settings-row",
+        "tag": "div",
+        "text": "Redirect Method Choose how redirects are processed on your …",
         "count": 6,
         "hidden": false
       }

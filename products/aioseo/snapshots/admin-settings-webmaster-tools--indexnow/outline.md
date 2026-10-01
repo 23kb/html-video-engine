@@ -6,7 +6,6 @@
 _Selectors validated against the live DOM — every one resolves._
 
 ### Actions (buttons / links)
-- `.aioseo-alert-close` — span
 - `.aioseo-button` — button — "Save Changes" _(×11)_
 - `.aioseo-flyout-menu-button` — div — "Quick Links"
 - `.aioseo-help-categories-toggle` — ul — "Getting Started How to Upgrade From All in One SEO Lite to …"
@@ -15,14 +14,14 @@ _Selectors validated against the live DOM — every one resolves._
 - `#collapse-button` — button — "Collapse Menu"
 
 ### Tabs & nav
-- `.aioseo-tab-content` — div — "Have you connected your site to Google Search Console? AIOS…"
+- `.aioseo-tab-content` — div — "Webmaster Tools Verification Enter your verification codes …"
 
 ### Panels & modals
 - `#aioseo-help-modal` — div — "Getting Started How to Upgrade From All in One SEO Lite to …"
 - `#aioseo-modal-portal` — div _(hidden)_
 
 ### Other anchors
-- `.aioseo-close` — svg _(×2)_
+- `.aioseo-close` — svg
 - `.aioseo-container` — div — "General Settings" _(×2)_
 - `.aioseo-flyout-menu-label` — span — "Support & Docs" _(×7)_ _(hidden)_
 - `.aioseo-folder-open` — svg _(×6)_
@@ -37,13 +36,16 @@ _Selectors validated against the live DOM — every one resolves._
 ## Interactions — drivable inside the video iframe
 _Fire by driving the real control (click/change/type); interactivity.js mutates the DOM in place._
 
+- click `div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(3)` → `already-selected`
 - click `div.header.toggles` → `card-collapse`
+- click `p.aioseo-description a` → `external-link` _(×195)_
 - click `.round` → `header-drawer-open` _(×2)_
 - click `li.aioseo-help-category.opened header` → `help-center-section` _(×6)_
 - click `div.aioseo-container:nth-of-type(1) > div.aioseo-header-content > div.header-actions > span.round:nth-of-type(3)` → `help-center-toggle` _(×2)_
 - click `.aioseo-button.aioseo-help-docs-viewall` → `help-center-view-all` _(×6)_
-- click `.aioseo-button.blue` → `live-only-button` _(×2)_
+- click `.aioseo-button.blue` → `live-only-button` _(×3)_
 - click `.var--box.var-tab` → `main-tab-route` _(×8)_
+- click `li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a` → `unresolved-link` _(×44)_
 - click `div.aioseo-col.col-xs-12 div` → `webmaster-tool-toggle` _(×8)_
 
 ## Interactions — HAND-BROWSE ONLY (inert in video; use ifm.swap)

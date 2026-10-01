@@ -30,15 +30,15 @@ _35 entries_
 | <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
 | <a id="id--aioseo-search-statistics-post-table"></a>`id--aioseo-search-statistics-post-table` | `#aioseo-search-statistics-post-table` | div |  | 1 |
 | <a id="id--apexcharts-css"></a>`id--apexcharts-css` | `#apexcharts-css` | link |  | 1 |
-| <a id="id--apexcharts7foj53nq"></a>`id--apexcharts7foj53nq` | `#apexcharts7foj53nq` | div |  | 1 |
+| <a id="id--apexchartsjc0r2fyo"></a>`id--apexchartsjc0r2fyo` | `#apexchartsjc0r2fyo` | div |  | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
-| <a id="id--forecastMask7foj53nq"></a>`id--forecastMask7foj53nq` | `#forecastMask7foj53nq` | clippath |  | 1 |
-| <a id="id--gridRectBarMask7foj53nq"></a>`id--gridRectBarMask7foj53nq` | `#gridRectBarMask7foj53nq` | clippath |  | 1 |
-| <a id="id--gridRectMarkerMask7foj53nq"></a>`id--gridRectMarkerMask7foj53nq` | `#gridRectMarkerMask7foj53nq` | clippath |  | 1 |
-| <a id="id--gridRectMask7foj53nq"></a>`id--gridRectMask7foj53nq` | `#gridRectMask7foj53nq` | clippath |  | 1 |
-| <a id="id--nonForecastMask7foj53nq"></a>`id--nonForecastMask7foj53nq` | `#nonForecastMask7foj53nq` | clippath |  | 1 |
+| <a id="id--forecastMaskjc0r2fyo"></a>`id--forecastMaskjc0r2fyo` | `#forecastMaskjc0r2fyo` | clippath |  | 1 |
+| <a id="id--gridRectBarMaskjc0r2fyo"></a>`id--gridRectBarMaskjc0r2fyo` | `#gridRectBarMaskjc0r2fyo` | clippath |  | 1 |
+| <a id="id--gridRectMarkerMaskjc0r2fyo"></a>`id--gridRectMarkerMaskjc0r2fyo` | `#gridRectMarkerMaskjc0r2fyo` | clippath |  | 1 |
+| <a id="id--gridRectMaskjc0r2fyo"></a>`id--gridRectMaskjc0r2fyo` | `#gridRectMaskjc0r2fyo` | clippath |  | 1 |
+| <a id="id--nonForecastMaskjc0r2fyo"></a>`id--nonForecastMaskjc0r2fyo` | `#nonForecastMaskjc0r2fyo` | clippath |  | 1 |
 | <a id="id--post-search-input"></a>`id--post-search-input` | `#post-search-input` | input | All Content Types Filter | 1 |
 | <a id="id--SvgjsGradient7"></a>`id--SvgjsGradient7` | `#SvgjsGradient7` | lineargradient |  | 1 |
 | <a id="id--SvgjsGradient8"></a>`id--SvgjsGradient8` | `#SvgjsGradient8` | lineargradient |  | 1 |
@@ -59,7 +59,7 @@ _23 entries_
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Connect to Google Search Console | 9 |
-| <a id="class--aioseo-circle-close"></a>`class--aioseo-circle-close` | `.aioseo-circle-close` | svg |  | 8 |
+| <a id="class--aioseo-circle-close"></a>`class--aioseo-circle-close` | `.aioseo-circle-close` | svg |  | 20 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |

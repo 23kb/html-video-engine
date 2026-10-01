@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-edit-posts--inline-edit/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 214 selector entries across 2 sections.
+> 217 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-edit-posts--inline-edit/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_202 entries_
+_205 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -39,7 +39,7 @@ _202 entries_
 | <a id="id--aioseo-details-hide"></a>`id--aioseo-details-hide` | `#aioseo-details-hide` | input | AIOSEO Details Pagination Number of items per page: | 1 |
 | <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
 | <a id="id--aioseo-redirects-add-redirect-standalone"></a>`id--aioseo-redirects-add-redirect-standalone` | `#aioseo-redirects-add-redirect-standalone` | div |  | 1 |
-| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div | How to Plan a Vegetable Bed That Feeds You All Year - Rosa'… | 1 |
+| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div |  | 1 |
 | <a id="id--ajax-response"></a>`id--ajax-response` | `#ajax-response` | div |  | 1 |
 | <a id="id--author"></a>`id--author` | `#author` | th | Author | 1 |
 | <a id="id--author-hide"></a>`id--author-hide` | `#author-hide` | input | Author Categories Tags | 1 |
@@ -145,6 +145,7 @@ _202 entries_
 | <a id="id--inline-edit-post_tag-desc"></a>`id--inline-edit-post_tag-desc` | `#inline-edit-post_tag-desc` | p | Separate tags with commas | 2 |
 | <a id="id--inlineedit"></a>`id--inlineedit` | `#inlineedit` | tbody | Quick Edit | 1 |
 | <a id="id--list-view-mode"></a>`id--list-view-mode` | `#list-view-mode` | input | Compact view Extended view | 1 |
+| <a id="id--nav"></a>`id--nav` | `#nav` | nav |  | 1 |
 | <a id="id--post_tag_2466"></a>`id--post_tag_2466` | `#post_tag_2466` | div | Watering | 1 |
 | <a id="id--post_tag_2467"></a>`id--post_tag_2467` | `#post_tag_2467` | div | Shade Gardens | 1 |
 | <a id="id--post_tag_2468"></a>`id--post_tag_2468` | `#post_tag_2468` | div | Composting | 1 |
@@ -180,8 +181,10 @@ _202 entries_
 | <a id="id--post-query-submit"></a>`id--post-query-submit` | `#post-query-submit` | input | 16 items « ‹ Current Page | 1 |
 | <a id="id--post-search-input"></a>`id--post-search-input` | `#post-search-input` | input |  | 1 |
 | <a id="id--posts-filter"></a>`id--posts-filter` | `#posts-filter` | form | Search Posts: | 1 |
+| <a id="id--preview"></a>`id--preview` | `#preview` | div |  | 1 |
 | <a id="id--quick-edit-legend"></a>`id--quick-edit-legend` | `#quick-edit-legend` | legend | Quick Edit | 1 |
-| <a id="id--quill-mention-list"></a>`id--quill-mention-list` | `#quill-mention-list` | ul |  | 1 |
+| <a id="id--quill-mention-list"></a>`id--quill-mention-list` | `#quill-mention-list` | ul |  | 2 |
+| <a id="id--root"></a>`id--root` | `#root` | section |  | 1 |
 | <a id="id--score-button-2466"></a>`id--score-button-2466` | `#score-button-2466` | div |  | 1 |
 | <a id="id--score-button-2467"></a>`id--score-button-2467` | `#score-button-2467` | div |  | 1 |
 | <a id="id--score-button-2468"></a>`id--score-button-2468` | `#score-button-2468` | div |  | 1 |
@@ -228,14 +231,14 @@ _12 entries_
 | <a id="class--aioseo-append-button"></a>`class--aioseo-append-button` | `.aioseo-append-button` | div |  | 1 |
 | <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Cancel | 2 |
 | <a id="class--aioseo-details-column__editor-actions"></a>`class--aioseo-details-column__editor-actions` | `.aioseo-details-column__editor-actions` | div | Cancel Save | 1 |
-| <a id="class--aioseo-documentation-link"></a>`class--aioseo-documentation-link` | `.aioseo-documentation-link` | div | Learn more about Smart Tags | 1 |
-| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 4 |
-| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 4 |
+| <a id="class--aioseo-documentation-link"></a>`class--aioseo-documentation-link` | `.aioseo-documentation-link` | div | Learn more about Smart Tags | 2 |
+| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 6 |
+| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 6 |
 | <a id="class--aioseo-modal"></a>`class--aioseo-modal` | `.aioseo-modal` | div |  | 1 |
 | <a id="class--aioseo-score-button"></a>`class--aioseo-score-button` | `.aioseo-score-button` | div |  | 16 |
-| <a id="class--aioseo-search"></a>`class--aioseo-search` | `.aioseo-search` | svg |  | 3 |
+| <a id="class--aioseo-search"></a>`class--aioseo-search` | `.aioseo-search` | svg |  | 4 |
 | <a id="class--aioseo-show-emoji-button"></a>`class--aioseo-show-emoji-button` | `.aioseo-show-emoji-button` | button | 😀 | 1 |
-| <a id="class--aioseo-tag-search"></a>`class--aioseo-tag-search` | `.aioseo-tag-search` | div |  | 1 |
+| <a id="class--aioseo-tag-search"></a>`class--aioseo-tag-search` | `.aioseo-tag-search` | div |  | 2 |
 | <a id="class--aioseo-view-all-tags"></a>`class--aioseo-view-all-tags` | `.aioseo-view-all-tags` | a | View all tags&nbsp;→ | 1 |
 
 ---

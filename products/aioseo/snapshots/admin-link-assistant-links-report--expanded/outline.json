@@ -39,10 +39,64 @@
       "count": 2
     },
     {
+      "label": "live-only-button",
+      "event": "click",
+      "selector": "button.button.action",
+      "count": 21
+    },
+    {
       "label": "state-handoff",
       "event": "click",
       "selector": ".toggle-row-button",
       "count": 20
+    },
+    {
+      "label": "link-assistant-report-filter",
+      "event": "click",
+      "selector": "span.name a",
+      "count": 2
+    },
+    {
+      "label": "small-controls",
+      "event": "click",
+      "selector": "div.post-title a",
+      "count": 20
+    },
+    {
+      "label": "table-view-sort-row",
+      "event": "click",
+      "selector": "a.next-page.button",
+      "count": 24
+    },
+    {
+      "label": "native-controls",
+      "event": "click",
+      "selector": "div.aioseo-wp-additional-filters.alignleft select",
+      "count": 2
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 45
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "ul.aioseo-help-docs li a",
+      "count": 191
+    },
+    {
+      "label": "plain-label",
+      "event": "click",
+      "selector": "label.screen-reader-text",
+      "count": 1
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(2)",
+      "count": 2
     }
   ],
   "nav": [],
@@ -81,7 +135,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -97,21 +153,21 @@
       {
         "sel": "#aioseo-link-assistant-links-report-wp-table",
         "tag": "div",
-        "text": "All (20) | Linking Opportunities (9) | Orphaned Posts (10) …",
+        "text": "All (23) | Linking Opportunities (9) | Orphaned Posts (13) …",
         "count": 1,
         "hidden": false
       },
       {
         "sel": ".aioseo-tab-content",
         "tag": "div",
-        "text": "All (20) | Linking Opportunities (9) | Orphaned Posts (10) …",
+        "text": "All (23) | Linking Opportunities (9) | Orphaned Posts (13) …",
         "count": 1,
         "hidden": false
       },
       {
         "sel": ".aioseo-wp-table-header",
         "tag": "div",
-        "text": "All (20) | Linking Opportunities (9) | Orphaned Posts (10) …",
+        "text": "All (23) | Linking Opportunities (9) | Orphaned Posts (13) …",
         "count": 2,
         "hidden": false
       }

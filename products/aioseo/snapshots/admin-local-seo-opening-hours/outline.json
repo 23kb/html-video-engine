@@ -45,10 +45,40 @@
       "count": 18
     },
     {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.medium",
+      "count": 14
+    },
+    {
+      "label": "display-slider-change",
+      "event": "change",
+      "selector": "#id_ui-element-slider_0",
+      "count": 4
+    },
+    {
       "label": "live-only-button",
       "event": "click",
       "selector": ".aioseo-button.blue",
       "count": 2
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "ul.aioseo-help-docs li a",
+      "count": 191
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(2)",
+      "count": 3
     }
   ],
   "nav": [],
@@ -96,7 +126,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -416,27 +448,6 @@
         "text": "",
         "count": 1,
         "hidden": true
-      },
-      {
-        "sel": ".aioseo-row",
-        "tag": "div",
-        "text": "Show Opening Hours No Yes",
-        "count": 7,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-select",
-        "tag": "div",
-        "text": "08:00 AM",
-        "count": 14,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-settings-content",
-        "tag": "div",
-        "text": "No Yes",
-        "count": 6,
-        "hidden": false
       },
       {
         "sel": ".aioseo-slide-content",

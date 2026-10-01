@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-settings-breadcrumbs/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 60 selector entries across 2 sections.
+> 62 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-settings-breadcrumbs/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_31 entries_
+_38 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -31,13 +31,20 @@ _31 entries_
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
-| <a id="id--id_homepageLink_0"></a>`id--id_homepageLink_0` | `#id_homepageLink_0` | input | Off On Homepage label | 1 |
-| <a id="id--id_homepageLink_1"></a>`id--id_homepageLink_1` | `#id_homepageLink_1` | input | On Homepage label Label used for homepage link (first item)… | 1 |
+| <a id="id--id_homepageLink_0"></a>`id--id_homepageLink_0` | `#id_homepageLink_0` | input | Off On Homepage label | 4 |
+| <a id="id--id_homepageLink_1"></a>`id--id_homepageLink_1` | `#id_homepageLink_1` | input | On Homepage label Label used for homepage link (first item)… | 4 |
+| <a id="id--id_showPaged_0"></a>`id--id_showPaged_0` | `#id_showPaged_0` | input | Off On Show a breadcrumb for the current page. | 3 |
+| <a id="id--id_showPaged_1"></a>`id--id_showPaged_1` | `#id_showPaged_1` | input | On Show a breadcrumb for the current page. Paged Format | 3 |
+| <a id="id--id_taxonomySkipUnselected_0"></a>`id--id_taxonomySkipUnselected_0` | `#id_taxonomySkipUnselected_0` | input | Include Remove Show/hide parent terms that are not explicit… | 3 |
+| <a id="id--id_taxonomySkipUnselected_1"></a>`id--id_taxonomySkipUnselected_1` | `#id_taxonomySkipUnselected_1` | input | Remove Show/hide parent terms that are not explicitly selec… | 3 |
 | <a id="id--id_ui-element-slider_0"></a>`id--id_ui-element-slider_0` | `#id_ui-element-slider_0` | input |  | 1 |
 | <a id="id--id_ui-element-slider_1"></a>`id--id_ui-element-slider_1` | `#id_ui-element-slider_1` | input |  | 1 |
 | <a id="id--id_ui-element-slider_2"></a>`id--id_ui-element-slider_2` | `#id_ui-element-slider_2` | input |  | 1 |
 | <a id="id--id_ui-element-slider_3"></a>`id--id_ui-element-slider_3` | `#id_ui-element-slider_3` | input |  | 1 |
-| <a id="id--quill-mention-list"></a>`id--quill-mention-list` | `#quill-mention-list` | ul |  | 2 |
+| <a id="id--nav"></a>`id--nav` | `#nav` | nav |  | 1 |
+| <a id="id--preview"></a>`id--preview` | `#preview` | div |  | 1 |
+| <a id="id--quill-mention-list"></a>`id--quill-mention-list` | `#quill-mention-list` | ul |  | 32 |
+| <a id="id--root"></a>`id--root` | `#root` | section |  | 1 |
 | <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
@@ -50,16 +57,16 @@ _31 entries_
 
 ## Role-like classes
 
-_29 entries_
+_24 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--aioseo-append-button"></a>`class--aioseo-append-button` | `.aioseo-append-button` | div |  | 3 |
+| <a id="class--aioseo-append-button"></a>`class--aioseo-append-button` | `.aioseo-append-button` | div |  | 34 |
 | <a id="class--aioseo-box-toggle"></a>`class--aioseo-box-toggle` | `.aioseo-box-toggle` | div |  | 1 |
 | <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 10 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
-| <a id="class--aioseo-documentation-link"></a>`class--aioseo-documentation-link` | `.aioseo-documentation-link` | div | Learn more about Smart Tags | 2 |
+| <a id="class--aioseo-documentation-link"></a>`class--aioseo-documentation-link` | `.aioseo-documentation-link` | div | Learn more about Smart Tags | 32 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |
 | <a id="class--aioseo-flyout-menu-label"></a>`class--aioseo-flyout-menu-label` | `.aioseo-flyout-menu-label` | span | Support &amp; Docs | 7 |
 | <a id="class--aioseo-folder-open"></a>`class--aioseo-folder-open` | `.aioseo-folder-open` | svg |  | 6 |
@@ -70,19 +77,14 @@ _29 entries_
 | <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
 | <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
-| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 13 |
-| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 13 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
-| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div | Off | 1 |
-| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Show Breadcrumbs on Your Website | 19 |
-| <a id="class--aioseo-search"></a>`class--aioseo-search` | `.aioseo-search` | svg |  | 8 |
-| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 13 |
-| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Breadcrumbs are an essential part of SEO. By default AIOSEO… | 14 |
-| <a id="class--aioseo-show-emoji-button"></a>`class--aioseo-show-emoji-button` | `.aioseo-show-emoji-button` | button | 😀 | 3 |
-| <a id="class--aioseo-slide-content"></a>`class--aioseo-slide-content` | `.aioseo-slide-content` | div | To add this block, edit a page or post and search for the "… | 1 |
+| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div | Off | 10 |
+| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 2 |
+| <a id="class--aioseo-show-emoji-button"></a>`class--aioseo-show-emoji-button` | `.aioseo-show-emoji-button` | button | 😀 | 34 |
+| <a id="class--aioseo-slide-content"></a>`class--aioseo-slide-content` | `.aioseo-slide-content` | div | To add this block, edit a page or post and search for the "… | 5 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
-| <a id="class--aioseo-tag-search"></a>`class--aioseo-tag-search` | `.aioseo-tag-search` | div |  | 2 |
-| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 6 |
+| <a id="class--aioseo-tag-search"></a>`class--aioseo-tag-search` | `.aioseo-tag-search` | div |  | 32 |
+| <a id="class--aioseo-view-all-tags"></a>`class--aioseo-view-all-tags` | `.aioseo-view-all-tags` | a | View all tags&nbsp;→ | 20 |
 
 ---
 

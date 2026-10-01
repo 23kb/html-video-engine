@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-settings-advanced/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 54 selector entries across 2 sections.
+> 55 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-settings-advanced/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -18,7 +18,7 @@ _32 entries_
 | --- | --- | --- | --- | --- |
 | <a id="id--aioseo-admin"></a>`id--aioseo-admin` | `#aioseo-admin` | div |  | 1 |
 | <a id="id--aioseo-app"></a>`id--aioseo-app` | `#aioseo-app` | div |  | 1 |
-| <a id="id--aioseo-email-summary-row"></a>`id--aioseo-email-summary-row` | `#aioseo-email-summary-row` | div | Email Reports | 1 |
+| <a id="id--aioseo-email-summary-row"></a>`id--aioseo-email-summary-row` | `#aioseo-email-summary-row` | div | Email Reports | 13 |
 | <a id="id--aioseo-flyout-menu"></a>`id--aioseo-flyout-menu` | `#aioseo-flyout-menu` | div | Support &amp; Docs | 1 |
 | <a id="id--aioseo-footer-links"></a>`id--aioseo-footer-links` | `#aioseo-footer-links` | div | Made with ♥ by the AIOSEO Team | 1 |
 | <a id="id--aioseo-help-categories"></a>`id--aioseo-help-categories` | `#aioseo-help-categories` | div |  | 1 |
@@ -32,13 +32,13 @@ _32 entries_
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
-| <a id="id--id_adminBarMenu_0"></a>`id--id_adminBarMenu_0` | `#id_adminBarMenu_0` | input | Hide Show This adds AIOSEO to the admin toolbar for easy ac… | 1 |
-| <a id="id--id_adminBarMenu_1"></a>`id--id_adminBarMenu_1` | `#id_adminBarMenu_1` | input | Show This adds AIOSEO to the admin toolbar for easy access … | 1 |
-| <a id="id--id_announcements_0"></a>`id--id_announcements_0` | `#id_announcements_0` | input | Hide Show This allows you to hide plugin announcements and … | 1 |
-| <a id="id--id_announcements_1"></a>`id--id_announcements_1` | `#id_announcements_1` | input | Show This allows you to hide plugin announcements and updat… | 1 |
-| <a id="id--id_autoUpdates_0"></a>`id--id_autoUpdates_0` | `#id_autoUpdates_0` | input | All (recommended) Minor Only None You are g | 1 |
-| <a id="id--id_autoUpdates_1"></a>`id--id_autoUpdates_1` | `#id_autoUpdates_1` | input | Minor Only None You are getting the latest features, bugfix… | 1 |
-| <a id="id--id_autoUpdates_2"></a>`id--id_autoUpdates_2` | `#id_autoUpdates_2` | input | None You are getting the latest features, bugfixes, and sec… | 1 |
+| <a id="id--id_adminBarMenu_0"></a>`id--id_adminBarMenu_0` | `#id_adminBarMenu_0` | input | Hide Show This adds AIOSEO to the admin toolbar for easy ac… | 13 |
+| <a id="id--id_adminBarMenu_1"></a>`id--id_adminBarMenu_1` | `#id_adminBarMenu_1` | input | Show This adds AIOSEO to the admin toolbar for easy access … | 13 |
+| <a id="id--id_announcements_0"></a>`id--id_announcements_0` | `#id_announcements_0` | input | Hide Show This allows you to hide plugin announcements and … | 13 |
+| <a id="id--id_announcements_1"></a>`id--id_announcements_1` | `#id_announcements_1` | input | Show This allows you to hide plugin announcements and updat… | 13 |
+| <a id="id--id_autoUpdates_0"></a>`id--id_autoUpdates_0` | `#id_autoUpdates_0` | input | All (recommended) Minor Only None You are g | 13 |
+| <a id="id--id_autoUpdates_1"></a>`id--id_autoUpdates_1` | `#id_autoUpdates_1` | input | Minor Only None You are getting the latest features, bugfix… | 13 |
+| <a id="id--id_autoUpdates_2"></a>`id--id_autoUpdates_2` | `#id_autoUpdates_2` | input | None You are getting the latest features, bugfixes, and sec… | 13 |
 | <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
@@ -51,13 +51,14 @@ _32 entries_
 
 ## Role-like classes
 
-_22 entries_
+_23 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 10 |
+| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 12 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
+| <a id="class--aioseo-email-summary__table-row"></a>`class--aioseo-email-summary__table-row` | `.aioseo-email-summary__table-row` | div |  | 1 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |
 | <a id="class--aioseo-flyout-menu-label"></a>`class--aioseo-flyout-menu-label` | `.aioseo-flyout-menu-label` | span | Support &amp; Docs | 7 |
 | <a id="class--aioseo-folder-open"></a>`class--aioseo-folder-open` | `.aioseo-folder-open` | svg |  | 6 |
@@ -68,15 +69,15 @@ _22 entries_
 | <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
 | <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
-| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 1 |
-| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 1 |
+| <a id="class--aioseo-highlight-toggle"></a>`class--aioseo-highlight-toggle` | `.aioseo-highlight-toggle` | div |  | 10 |
+| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 2 |
+| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 2 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
-| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div | Hide | 3 |
-| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Post Type Columns | 9 |
-| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 8 |
-| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Post Type Columns | 8 |
+| <a id="class--aioseo-post-type-options-toggle"></a>`class--aioseo-post-type-options-toggle` | `.aioseo-post-type-options-toggle` | div |  | 2 |
+| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div | Hide | 39 |
+| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 1 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
-| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 2 |
+| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 26 |
 
 ---
 

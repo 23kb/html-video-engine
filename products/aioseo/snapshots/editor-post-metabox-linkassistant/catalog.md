@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/editor-post-metabox-linkassistant/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 143 selector entries across 2 sections.
+> 148 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/editor-post-metabox-linkassistant/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_110 entries_
+_114 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -29,7 +29,11 @@ _110 entries_
 | <a id="id--aioseo-card-postSettingsSocialAppearance"></a>`id--aioseo-card-postSettingsSocialAppearance` | `#aioseo-card-postSettingsSocialAppearance` | div |  | 1 |
 | <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
 | <a id="id--aioseo-post-facebook-image-source"></a>`id--aioseo-post-facebook-image-source` | `#aioseo-post-facebook-image-source` | div | Image Source | 1 |
-| <a id="id--aioseo-post-report-inbound-internal"></a>`id--aioseo-post-report-inbound-internal` | `#aioseo-post-report-inbound-internal` | div | Bulk Actions Delete Apply | 1 |
+| <a id="id--aioseo-post-report-affiliate"></a>`id--aioseo-post-report-affiliate` | `#aioseo-post-report-affiliate` | div | 0 items « ‹ | 1 |
+| <a id="id--aioseo-post-report-external"></a>`id--aioseo-post-report-external` | `#aioseo-post-report-external` | div | 0 items « ‹ | 1 |
+| <a id="id--aioseo-post-report-inbound-internal"></a>`id--aioseo-post-report-inbound-internal` | `#aioseo-post-report-inbound-internal` | div | Bulk Actions Delete Apply | 2 |
+| <a id="id--aioseo-post-report-inbound-suggestions"></a>`id--aioseo-post-report-inbound-suggestions` | `#aioseo-post-report-inbound-suggestions` | div | 0 items « ‹ | 1 |
+| <a id="id--aioseo-post-report-outbound-internal"></a>`id--aioseo-post-report-outbound-internal` | `#aioseo-post-report-outbound-internal` | div | Bulk Actions Delete Apply | 1 |
 | <a id="id--aioseo-post-score"></a>`id--aioseo-post-score` | `#aioseo-post-score` | span | 76 | 1 |
 | <a id="id--aioseo-post-score-disabled"></a>`id--aioseo-post-score-disabled` | `#aioseo-post-score-disabled` | span | N/A | 1 |
 | <a id="id--aioseo-post-settings"></a>`id--aioseo-post-settings` | `#aioseo-post-settings` | input |  | 1 |
@@ -51,7 +55,7 @@ _110 entries_
 | <a id="id--aioseo-settings-handlediv"></a>`id--aioseo-settings-handlediv` | `#aioseo-settings-handlediv` | span | Show or hide panel | 1 |
 | <a id="id--aioseo-settings-handlediv-text"></a>`id--aioseo-settings-handlediv-text` | `#aioseo-settings-handlediv-text` | span | Show or hide panel | 1 |
 | <a id="id--aioseo-settings-title"></a>`id--aioseo-settings-title` | `#aioseo-settings-title` | h2 | AIOSEO Settings | 1 |
-| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div | How to Plan a Vegetable Bed That Feeds You All Year - Rosa'… | 1 |
+| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div |  | 1 |
 | <a id="id--aioseo-writing-assistant-metabox"></a>`id--aioseo-writing-assistant-metabox` | `#aioseo-writing-assistant-metabox` | div | AIOSEO Writing Assistant | 1 |
 | <a id="id--aioseo-writing-assistant-metabox-app"></a>`id--aioseo-writing-assistant-metabox-app` | `#aioseo-writing-assistant-metabox-app` | div | Elevate your SEO with AIOSEO Writing Assistant Now Integrat… | 1 |
 | <a id="id--aioseo-writing-assistant-metabox-handle-order-higher-description"></a>`id--aioseo-writing-assistant-metabox-handle-order-higher-description` | `#aioseo-writing-assistant-metabox-handle-order-higher-description` | span | Move up | 1 |
@@ -129,7 +133,7 @@ _110 entries_
 
 ## Role-like classes
 
-_33 entries_
+_34 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -137,9 +141,10 @@ _33 entries_
 | <a id="class--aioseo-ai-content-feature-modal"></a>`class--aioseo-ai-content-feature-modal` | `.aioseo-ai-content-feature-modal` | div |  | 2 |
 | <a id="class--aioseo-ai-content-meta-description-modal"></a>`class--aioseo-ai-content-meta-description-modal` | `.aioseo-ai-content-meta-description-modal` | div |  | 1 |
 | <a id="class--aioseo-ai-content-meta-title-modal"></a>`class--aioseo-ai-content-meta-title-modal` | `.aioseo-ai-content-meta-title-modal` | div |  | 1 |
+| <a id="class--aioseo-alert-close"></a>`class--aioseo-alert-close` | `.aioseo-alert-close` | span |  | 1 |
 | <a id="class--aioseo-append-button"></a>`class--aioseo-append-button` | `.aioseo-append-button` | div | Use AI Generator | 4 |
-| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | a | Leave a 5-star Review | 5 |
-| <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 2 |
+| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | a | Leave a 5-star Review | 7 |
+| <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 3 |
 | <a id="class--aioseo-documentation-link"></a>`class--aioseo-documentation-link` | `.aioseo-documentation-link` | div | Learn more about Smart Tags | 4 |
 | <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 18 |
 | <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 18 |
@@ -164,8 +169,8 @@ _33 entries_
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 4 |
 | <a id="class--aioseo-tag-search"></a>`class--aioseo-tag-search` | `.aioseo-tag-search` | div |  | 4 |
 | <a id="class--aioseo-view-all-tags"></a>`class--aioseo-view-all-tags` | `.aioseo-view-all-tags` | a | View all tags&nbsp;→ | 4 |
-| <a id="class--aioseo-wp-bulk-actions"></a>`class--aioseo-wp-bulk-actions` | `.aioseo-wp-bulk-actions` | div | Bulk Actions Delete Apply | 1 |
-| <a id="class--aioseo-wp-table-header"></a>`class--aioseo-wp-table-header` | `.aioseo-wp-table-header` | div | Bulk Actions Delete Apply | 1 |
+| <a id="class--aioseo-wp-bulk-actions"></a>`class--aioseo-wp-bulk-actions` | `.aioseo-wp-bulk-actions` | div | Bulk Actions Delete Apply | 3 |
+| <a id="class--aioseo-wp-table-header"></a>`class--aioseo-wp-table-header` | `.aioseo-wp-table-header` | div | Bulk Actions Delete Apply | 6 |
 
 ---
 

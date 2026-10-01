@@ -29,7 +29,7 @@ _78 entries_
 | <a id="id--aioseo-location-category_2487"></a>`id--aioseo-location-category_2487` | `#aioseo-location-category_2487` | div | 43 | 1 |
 | <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
 | <a id="id--aioseo-redirects-add-redirect-standalone"></a>`id--aioseo-redirects-add-redirect-standalone` | `#aioseo-redirects-add-redirect-standalone` | div |  | 1 |
-| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div | Hillcrest Design Studio - Rosa's Garden Co. | 1 |
+| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div |  | 1 |
 | <a id="id--ajax-response"></a>`id--ajax-response` | `#ajax-response` | div |  | 1 |
 | <a id="id--bulk_edit"></a>`id--bulk_edit` | `#bulk_edit` | input | Cancel | 1 |
 | <a id="id--bulk-action-selector-bottom"></a>`id--bulk-action-selector-bottom` | `#bulk-action-selector-bottom` | select | Bulk actions Bulk edit Move to Trash Generate SEO Titles wi… | 1 |

@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-sitemaps-general-sitemap--additional-pages/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 67 selector entries across 2 sections.
+> 84 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-sitemaps-general-sitemap--additional-pages/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_37 entries_
+_51 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -30,18 +30,32 @@ _37 entries_
 | <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
-| <a id="id--el-id-5042-0"></a>`id--el-id-5042-0` | `#el-id-5042-0` | div |  | 1 |
-| <a id="id--el-id-5042-1"></a>`id--el-id-5042-1` | `#el-id-5042-1` | input |  | 1 |
-| <a id="id--el-id-5042-2"></a>`id--el-id-5042-2` | `#el-id-5042-2` | input |  | 1 |
-| <a id="id--el-id-5042-3"></a>`id--el-id-5042-3` | `#el-id-5042-3` | input |  | 1 |
-| <a id="id--el-popper-container-5042"></a>`id--el-popper-container-5042` | `#el-popper-container-5042` | div |  | 1 |
+| <a id="id--el-id-3897-10"></a>`id--el-id-3897-10` | `#el-id-3897-10` | input |  | 2 |
+| <a id="id--el-id-3897-11"></a>`id--el-id-3897-11` | `#el-id-3897-11` | input |  | 2 |
+| <a id="id--el-id-3897-8"></a>`id--el-id-3897-8` | `#el-id-3897-8` | div |  | 2 |
+| <a id="id--el-id-3897-9"></a>`id--el-id-3897-9` | `#el-id-3897-9` | input |  | 1 |
+| <a id="id--el-popper-container-3897"></a>`id--el-popper-container-3897` | `#el-popper-container-3897` | div |  | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
-| <a id="id--id_authorSitemap_0"></a>`id--id_authorSitemap_0` | `#id_authorSitemap_0` | input | Disabled Enabled Include Author Archives in your sitemap. | 1 |
-| <a id="id--id_authorSitemap_1"></a>`id--id_authorSitemap_1` | `#id_authorSitemap_1` | input | Enabled Include Author Archives in your sitemap. Learn More | 1 |
-| <a id="id--id_dateArchiveSitemap_0"></a>`id--id_dateArchiveSitemap_0` | `#id_dateArchiveSitemap_0` | input | Disabled Enabled Include Date Archives in your sitemap. | 1 |
-| <a id="id--id_dateArchiveSitemap_1"></a>`id--id_dateArchiveSitemap_1` | `#id_dateArchiveSitemap_1` | input | Enabled Include Date Archives in your sitemap. Learn More | 1 |
-| <a id="id--id_sitemapIndexes_0"></a>`id--id_sitemapIndexes_0` | `#id_sitemapIndexes_0` | input | Disabled Enabled Organize sitemap entries into distinct fil… | 1 |
-| <a id="id--id_sitemapIndexes_1"></a>`id--id_sitemapIndexes_1` | `#id_sitemapIndexes_1` | input | Enabled Organize sitemap entries into distinct files in you… | 1 |
+| <a id="id--id_authorSitemap_0"></a>`id--id_authorSitemap_0` | `#id_authorSitemap_0` | input | Disabled Enabled Include Author Archives in your sitemap. | 6 |
+| <a id="id--id_authorSitemap_1"></a>`id--id_authorSitemap_1` | `#id_authorSitemap_1` | input | Enabled Include Author Archives in your sitemap. Learn More | 6 |
+| <a id="id--id_dateArchiveSitemap_0"></a>`id--id_dateArchiveSitemap_0` | `#id_dateArchiveSitemap_0` | input | Disabled Enabled Include Date Archives in your sitemap. | 6 |
+| <a id="id--id_dateArchiveSitemap_1"></a>`id--id_dateArchiveSitemap_1` | `#id_dateArchiveSitemap_1` | input | Enabled Include Date Archives in your sitemap. Learn More | 6 |
+| <a id="id--id_excludeImages_0"></a>`id--id_excludeImages_0` | `#id_excludeImages_0` | input | No Yes Exclude Images from your sitemap. | 1 |
+| <a id="id--id_excludeImages_1"></a>`id--id_excludeImages_1` | `#id_excludeImages_1` | input | Yes Exclude Images from your sitemap. Learn More | 1 |
+| <a id="id--id_sitemapIndexes_0"></a>`id--id_sitemapIndexes_0` | `#id_sitemapIndexes_0` | input | Disabled Enabled Organize sitemap entries into distinct fil… | 6 |
+| <a id="id--id_sitemapIndexes_1"></a>`id--id_sitemapIndexes_1` | `#id_sitemapIndexes_1` | input | Enabled Organize sitemap entries into distinct files in you… | 6 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | 0.0 0.1 | 2 |
+| <a id="id--null-0"></a>`id--null-0` | `#null-0` | li | 0.0 | 2 |
+| <a id="id--null-1"></a>`id--null-1` | `#null-1` | li | 0.1 | 2 |
+| <a id="id--null-10"></a>`id--null-10` | `#null-10` | li | 1.0 | 1 |
+| <a id="id--null-2"></a>`id--null-2` | `#null-2` | li | 0.2 | 2 |
+| <a id="id--null-3"></a>`id--null-3` | `#null-3` | li | 0.3 | 2 |
+| <a id="id--null-4"></a>`id--null-4` | `#null-4` | li | 0.4 | 2 |
+| <a id="id--null-5"></a>`id--null-5` | `#null-5` | li | 0.5 | 2 |
+| <a id="id--null-6"></a>`id--null-6` | `#null-6` | li | 0.6 | 2 |
+| <a id="id--null-7"></a>`id--null-7` | `#null-7` | li | 0.7 | 1 |
+| <a id="id--null-8"></a>`id--null-8` | `#null-8` | li | 0.8 | 1 |
+| <a id="id--null-9"></a>`id--null-9` | `#null-9` | li | 0.9 | 1 |
 | <a id="id--post-search-input"></a>`id--post-search-input` | `#post-search-input` | input | Bulk Actions Delete Apply | 1 |
 | <a id="id--sitemap-additional-pages"></a>`id--sitemap-additional-pages` | `#sitemap-additional-pages` | div | Bulk Actions | 1 |
 | <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
@@ -56,14 +70,14 @@ _37 entries_
 
 ## Role-like classes
 
-_30 entries_
+_33 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="class--aioseo-add-additional-pages-modal"></a>`class--aioseo-add-additional-pages-modal` | `.aioseo-add-additional-pages-modal` | div |  | 1 |
 | <a id="class--aioseo-additional-pages-modal"></a>`class--aioseo-additional-pages-modal` | `.aioseo-additional-pages-modal` | div |  | 1 |
 | <a id="class--aioseo-alert-close"></a>`class--aioseo-alert-close` | `.aioseo-alert-close` | span |  | 1 |
-| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 13 |
+| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 17 |
 | <a id="class--aioseo-circle-close"></a>`class--aioseo-circle-close` | `.aioseo-circle-close` | svg |  | 1 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 2 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
@@ -77,17 +91,20 @@ _30 entries_
 | <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
 | <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
-| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 3 |
-| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 3 |
+| <a id="class--aioseo-highlight-toggle"></a>`class--aioseo-highlight-toggle` | `.aioseo-highlight-toggle` | div |  | 10 |
+| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 7 |
+| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 7 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
 | <a id="class--aioseo-modal"></a>`class--aioseo-modal` | `.aioseo-modal` | div |  | 2 |
-| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div | Disabled | 3 |
-| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Enable Sitemap | 8 |
-| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 2 |
-| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 8 |
-| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | An XML Sitemap is a list of all your content that search en… | 9 |
+| <a id="class--aioseo-post-type-options-toggle"></a>`class--aioseo-post-type-options-toggle` | `.aioseo-post-type-options-toggle` | div |  | 2 |
+| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div | Disabled | 19 |
+| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Enable Sitemap | 46 |
+| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 10 |
+| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 44 |
+| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | An XML Sitemap is a list of all your content that search en… | 46 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
-| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 3 |
+| <a id="class--aioseo-table-row"></a>`class--aioseo-table-row` | `.aioseo-table-row` | div |  | 6 |
+| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 8 |
 | <a id="class--aioseo-wp-bulk-actions"></a>`class--aioseo-wp-bulk-actions` | `.aioseo-wp-bulk-actions` | div | Bulk Actions Delete Apply | 2 |
 | <a id="class--aioseo-wp-table-header"></a>`class--aioseo-wp-table-header` | `.aioseo-wp-table-header` | div | Bulk Actions Delete | 1 |
 

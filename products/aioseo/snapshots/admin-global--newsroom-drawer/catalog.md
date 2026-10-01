@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-global--newsroom-drawer/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 61 selector entries across 2 sections.
+> 64 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-global--newsroom-drawer/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_36 entries_
+_39 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -39,7 +39,10 @@ _36 entries_
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
 | <a id="id--image0_2264_27508"></a>`id--image0_2264_27508` | `#image0_2264_27508` | image |  | 1 |
 | <a id="id--image1_2264_27508"></a>`id--image1_2264_27508` | `#image1_2264_27508` | image |  | 1 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | Posts | 1 |
 | <a id="id--mask0_2264_27508"></a>`id--mask0_2264_27508` | `#mask0_2264_27508` | mask |  | 1 |
+| <a id="id--null-0"></a>`id--null-0` | `#null-0` | li | Posts | 1 |
+| <a id="id--null-1"></a>`id--null-1` | `#null-1` | li | Pages | 1 |
 | <a id="id--paint0_linear_2264_27508"></a>`id--paint0_linear_2264_27508` | `#paint0_linear_2264_27508` | lineargradient |  | 1 |
 | <a id="id--pattern0"></a>`id--pattern0` | `#pattern0` | pattern |  | 1 |
 | <a id="id--pattern1"></a>`id--pattern1` | `#pattern1` | pattern |  | 1 |

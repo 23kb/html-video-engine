@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-redirects-logs/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 47 selector entries across 2 sections.
+> 48 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-redirects-logs/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_26 entries_
+_27 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -28,11 +28,12 @@ _26 entries_
 | <a id="id--aioseo-help-result"></a>`id--aioseo-help-result` | `#aioseo-help-result` | div |  | 1 |
 | <a id="id--aioseo-help-search"></a>`id--aioseo-help-search` | `#aioseo-help-search` | div |  | 1 |
 | <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
-| <a id="id--aioseo-redirects-logs-wp-table"></a>`id--aioseo-redirects-logs-wp-table` | `#aioseo-redirects-logs-wp-table` | div | Bulk Actions | 1 |
+| <a id="id--aioseo-redirects-404-logs-wp-table"></a>`id--aioseo-redirects-404-logs-wp-table` | `#aioseo-redirects-404-logs-wp-table` | div | Bulk Actions | 1 |
+| <a id="id--aioseo-redirects-logs-wp-table"></a>`id--aioseo-redirects-logs-wp-table` | `#aioseo-redirects-logs-wp-table` | div | Bulk Actions | 2 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
-| <a id="id--post-search-input"></a>`id--post-search-input` | `#post-search-input` | input | Bulk Actions Delete Apply | 1 |
+| <a id="id--post-search-input"></a>`id--post-search-input` | `#post-search-input` | input | Bulk Actions Delete Apply | 3 |
 | <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
@@ -68,8 +69,8 @@ _21 entries_
 | <a id="class--aioseo-modal"></a>`class--aioseo-modal` | `.aioseo-modal` | div |  | 2 |
 | <a id="class--aioseo-redirects-logs-modal"></a>`class--aioseo-redirects-logs-modal` | `.aioseo-redirects-logs-modal` | div |  | 2 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div | Redirect | 1 |
-| <a id="class--aioseo-wp-bulk-actions"></a>`class--aioseo-wp-bulk-actions` | `.aioseo-wp-bulk-actions` | div | Bulk Actions Delete Apply | 2 |
-| <a id="class--aioseo-wp-table-header"></a>`class--aioseo-wp-table-header` | `.aioseo-wp-table-header` | div | Bulk Actions Delete | 1 |
+| <a id="class--aioseo-wp-bulk-actions"></a>`class--aioseo-wp-bulk-actions` | `.aioseo-wp-bulk-actions` | div | Bulk Actions Delete Apply | 6 |
+| <a id="class--aioseo-wp-table-header"></a>`class--aioseo-wp-table-header` | `.aioseo-wp-table-header` | div | Bulk Actions Delete | 3 |
 
 ---
 

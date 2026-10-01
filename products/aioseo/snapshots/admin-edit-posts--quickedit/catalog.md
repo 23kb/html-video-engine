@@ -39,7 +39,7 @@ _203 entries_
 | <a id="id--aioseo-details-hide"></a>`id--aioseo-details-hide` | `#aioseo-details-hide` | input | AIOSEO Details Pagination Number of items per page: | 1 |
 | <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
 | <a id="id--aioseo-redirects-add-redirect-standalone"></a>`id--aioseo-redirects-add-redirect-standalone` | `#aioseo-redirects-add-redirect-standalone` | div |  | 1 |
-| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div | How to Plan a Vegetable Bed That Feeds You All Year - Rosa'… | 1 |
+| <a id="id--aioseo-text-width-measurement"></a>`id--aioseo-text-width-measurement` | `#aioseo-text-width-measurement` | div |  | 1 |
 | <a id="id--ajax-response"></a>`id--ajax-response` | `#ajax-response` | div |  | 1 |
 | <a id="id--author"></a>`id--author` | `#author` | th | Author | 1 |
 | <a id="id--author-hide"></a>`id--author-hide` | `#author-hide` | input | Author Categories Tags | 1 |

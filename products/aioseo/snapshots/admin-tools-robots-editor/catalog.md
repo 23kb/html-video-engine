@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-tools-robots-editor/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 53 selector entries across 2 sections.
+> 54 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-tools-robots-editor/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_27 entries_
+_32 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -31,9 +31,14 @@ _27 entries_
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
-| <a id="id--id_preventCrawling_0"></a>`id--id_preventCrawling_0` | `#id_preventCrawling_0` | input | Off On Add a 'disallow' rule to your robots.txt file to pre… | 1 |
-| <a id="id--id_preventCrawling_1"></a>`id--id_preventCrawling_1` | `#id_preventCrawling_1` | input | On Add a 'disallow' rule to your robots.txt file to prevent… | 1 |
-| <a id="id--search-cleanup-prevent-crawling"></a>`id--search-cleanup-prevent-crawling` | `#search-cleanup-prevent-crawling` | div | Block Crawling of Internal Site Search URLs | 1 |
+| <a id="id--id_preventCrawling_0"></a>`id--id_preventCrawling_0` | `#id_preventCrawling_0` | input | Off On Add a 'disallow' rule to your robots.txt file to pre… | 8 |
+| <a id="id--id_preventCrawling_1"></a>`id--id_preventCrawling_1` | `#id_preventCrawling_1` | input | On Add a 'disallow' rule to your robots.txt file to prevent… | 8 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | Allow | 4 |
+| <a id="id--null-0"></a>`id--null-0` | `#null-0` | li | Allow | 4 |
+| <a id="id--null-1"></a>`id--null-1` | `#null-1` | li | Disallow | 4 |
+| <a id="id--null-2"></a>`id--null-2` | `#null-2` | li | Clean-param | 4 |
+| <a id="id--null-3"></a>`id--null-3` | `#null-3` | li | Crawl-delay | 4 |
+| <a id="id--search-cleanup-prevent-crawling"></a>`id--search-cleanup-prevent-crawling` | `#search-cleanup-prevent-crawling` | div | Block Crawling of Internal Site Search URLs | 8 |
 | <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
@@ -46,11 +51,11 @@ _27 entries_
 
 ## Role-like classes
 
-_26 entries_
+_22 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 13 |
+| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 34 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |
@@ -63,19 +68,15 @@ _26 entries_
 | <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
 | <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
-| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 17 |
-| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 17 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
 | <a id="class--aioseo-modal"></a>`class--aioseo-modal` | `.aioseo-modal` | div |  | 1 |
-| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div | Off | 1 |
+| <a id="class--aioseo-radio-toggle"></a>`class--aioseo-radio-toggle` | `.aioseo-radio-toggle` | div | Off | 8 |
 | <a id="class--aioseo-robots-import-modal"></a>`class--aioseo-robots-import-modal` | `.aioseo-robots-import-modal` | div |  | 1 |
-| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Preview | 5 |
-| <a id="class--aioseo-search"></a>`class--aioseo-search` | `.aioseo-search` | svg |  | 1 |
-| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 7 |
-| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 6 |
-| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | The robots.txt editor in AIOSEO allows you to set up a robo… | 7 |
+| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Preview | 40 |
+| <a id="class--aioseo-search"></a>`class--aioseo-search` | `.aioseo-search` | svg |  | 8 |
+| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div |  | 48 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
-| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 1 |
+| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label |  | 8 |
 
 ---
 

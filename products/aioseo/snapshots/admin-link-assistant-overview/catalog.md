@@ -66,7 +66,7 @@ _20 entries_
 | <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div |  | 3 |
 | <a id="class--aioseo-search"></a>`class--aioseo-search` | `.aioseo-search` | svg |  | 1 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
-| <a id="class--aioseo-table-row"></a>`class--aioseo-table-row` | `.aioseo-table-row` | div | Post Title | 10 |
+| <a id="class--aioseo-table-row"></a>`class--aioseo-table-row` | `.aioseo-table-row` | div | Post Title | 22 |
 
 ---
 

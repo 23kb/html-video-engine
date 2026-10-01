@@ -1,0 +1,889 @@
+{
+  "slug": "admin-profile-aioseo--add-item",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "card-collapse",
+      "event": "click",
+      "selector": ".header.toggles",
+      "count": 2
+    },
+    {
+      "label": "settings-control-change",
+      "event": "change",
+      "selector": "div.toggle-content input",
+      "count": 3
+    },
+    {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": "div.aioseo-add-template-tag",
+      "count": 1
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": "div.ql-editor",
+      "count": 1
+    },
+    {
+      "label": "smart-tag-menu-open",
+      "event": "click",
+      "selector": "a.aioseo-view-all-tags",
+      "count": 1
+    },
+    {
+      "label": "smart-tag-pill-switch",
+      "event": "click",
+      "selector": "span.mention",
+      "count": 1
+    },
+    {
+      "label": "emoji-picker-toggle",
+      "event": "click",
+      "selector": "button.aioseo-show-emoji-button",
+      "count": 1
+    },
+    {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.medium",
+      "count": 3
+    },
+    {
+      "label": "live-only-button",
+      "event": "click",
+      "selector": ".aioseo-button.black",
+      "count": 2
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-has-submenu:nth-of-type(7) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 3
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 9
+    },
+    {
+      "label": "image-uploader-remove",
+      "event": "click",
+      "selector": "button.aioseo-button.gray",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#aioseo-author-bio-textarea-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-author-bio-textarea-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#destroy-sessions",
+        "tag": "button",
+        "text": "Log Out Everywhere Else",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#do_new_application_password",
+        "tag": "button",
+        "text": "Add Application Password",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#revoke-all-application-passwords",
+        "tag": "button",
+        "text": "Revoke all application passwords",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#revoke-application-password-178bcb66-143e-462b-836d-c0aaf22f9004",
+        "tag": "button",
+        "text": "Revoke",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#revoke-application-password-17d0261e-f939-487e-939a-b67eeccc025a",
+        "tag": "button",
+        "text": "Revoke",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#revoke-application-password-7a4256e7-af5f-4958-8a2d-b2e40bf246a7",
+        "tag": "button",
+        "text": "Revoke",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#revoke-application-password-9ff4d0cb-3c98-4a84-aee0-51f34e2eff36",
+        "tag": "button",
+        "text": "Revoke",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-append-button",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-button",
+        "tag": "button",
+        "text": "Add Item",
+        "count": 3,
+        "hidden": false,
+        "wired": "live-only-button",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".aioseo-show-emoji-button",
+        "tag": "button",
+        "text": "😀",
+        "count": 1,
+        "hidden": false,
+        "wired": "emoji-picker-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".aioseo-toggle",
+        "tag": "label",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-view-all-tags",
+        "tag": "a",
+        "text": "View all tags →",
+        "count": 1,
+        "hidden": false,
+        "wired": "smart-tag-menu-open",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#aioseo-user-profile-tab",
+        "tag": "div",
+        "text": "Personal Options Author SEO Author Info The fields below pr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-user-profile-tab-wrapper",
+        "tag": "div",
+        "text": "Personal Options Author SEO Author Info The fields below pr…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#admin_bar_front",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#admin_color_blue",
+        "tag": "input",
+        "text": "blue",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#admin_color_coffee",
+        "tag": "input",
+        "text": "coffee",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#admin_color_ectoplasm",
+        "tag": "input",
+        "text": "ectoplasm",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#admin_color_fresh",
+        "tag": "input",
+        "text": "fresh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#admin_color_light",
+        "tag": "input",
+        "text": "light",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#admin_color_midnight",
+        "tag": "input",
+        "text": "midnight",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#admin_color_modern",
+        "tag": "input",
+        "text": "modern",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#admin_color_ocean",
+        "tag": "input",
+        "text": "ocean",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#admin_color_sunrise",
+        "tag": "input",
+        "text": "sunrise",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-author-bio-textarea",
+        "tag": "textarea",
+        "text": "<p>Rosa Reyes founded Rosa's Garden Co. in 2014 with one gr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-author-seo-meta-data-input",
+        "tag": "input",
+        "text": "{\"enabled\":true,\"alumniOf\":[{\"name\":\"Oregon State Universit…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-user-social-profiles",
+        "tag": "input",
+        "text": "{\"sameUsername\":{\"enable\":false,\"username\":\"\",\"included\":[\"…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseop-add-nofollow",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseop-add-sponsored",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseop-add-ugc",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#color-nonce",
+        "tag": "input",
+        "text": "c39235870f",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment_shortcuts",
+        "tag": "input",
+        "text": "true",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#display_name",
+        "tag": "select",
+        "text": "Rosa Baker Rosa Reyes Baker Rosa",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#email",
+        "tag": "input",
+        "text": "rosa@rosasgardenco.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#first_name",
+        "tag": "input",
+        "text": "Rosa",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#infinite_scrolling",
+        "tag": "input",
+        "text": "false",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#last_name",
+        "tag": "input",
+        "text": "Baker",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#locale",
+        "tag": "select",
+        "text": "Site Default English (United States) Afrikaans አማርኛ Aragoné…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#new_application_password_name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nickname",
+        "tag": "input",
+        "text": "Rosa",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pass1",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pass2",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_aioseo-author-bio-textarea_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_aioseo-author-bio-textarea_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_aioseo-author-bio-textarea_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_aioseo-author-bio-textarea_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_aioseo-author-bio-textarea_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_aioseo-author-bio-textarea_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_aioseo-author-bio-textarea_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submit",
+        "tag": "input",
+        "text": "Update Profile",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#syntax_highlighting",
+        "tag": "input",
+        "text": "false",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#url",
+        "tag": "input",
+        "text": "http://rosasgardenco.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#user_id",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#A",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-author-bio-settings-row",
+        "tag": "div",
+        "text": "Author Bio Add media Visual Code Paragraph A detailed descr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-author-bio-textarea_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-author-meta-data",
+        "tag": "div",
+        "text": "Author Info The fields below provide structured information…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aioseo-author-seo-meta-data",
+        "tag": "div",
+        "text": "Author Info The fields below provide structured information…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#application-passwords-section",
+        "tag": "div",
+        "text": "Application Passwords Application passwords allow authentic…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#caps-warning",
+        "tag": "div",
+        "text": "Caps lock is on.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clip0_905_2655",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clip0_905_2659",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#color-picker",
+        "tag": "fieldset",
+        "text": "Administration Color Scheme Default Fresh Light Blue Coffee…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#created",
+        "tag": "th",
+        "text": "Created",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#email-description",
+        "tag": "p",
+        "text": "If you change this, an email will be sent at your new addre…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#last_ip",
+        "tag": "th",
+        "text": "Last IP",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#last_used",
+        "tag": "th",
+        "text": "Last Used",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#name",
+        "tag": "th",
+        "text": "Name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#new_application_password_name_desc",
+        "tag": "p",
+        "text": "Required to create an Application Password, but not to upda…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pass-strength-result",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pass2-desc",
+        "tag": "p",
+        "text": "Type your new password again.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#password",
+        "tag": "tr",
+        "text": "New Password Set New Password Caps lock is on. Hide Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#profile-page",
+        "tag": "div",
+        "text": "Profile Personal Options Author SEO Author Info The fields …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#pw-weak-text-label",
+        "tag": "span",
+        "text": "Confirm use of weak password",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_aioseo-author-bio-textarea_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quill-mention-list",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#revoke",
+        "tag": "th",
+        "text": "Revoke",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "apitestShow more detailsMay 6, 2026May 6, 2026127.0.0.1Revo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_aioseo",
+        "tag": "li",
+        "text": "All in One SEO Notifications Dashboard General Settings Sea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ui-id-1",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-2",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-aioseo-author-bio-textarea-wrap",
+        "tag": "div",
+        "text": "Add media Visual Code Paragraph",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Title …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#your-profile",
+        "tag": "form",
+        "text": "Personal Options Author SEO Author Info The fields below pr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-circle-close",
+        "tag": "svg",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-close",
+        "tag": "svg",
+        "text": "",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-documentation-link",
+        "tag": "div",
+        "text": "Learn more about Smart Tags →",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-search",
+        "tag": "svg",
+        "text": "",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".aioseo-select",
+        "tag": "div",
+        "text": "Vegetable Gardening Native Plants Composting",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".aioseo-tag-search",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

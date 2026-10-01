@@ -1,7 +1,14 @@
 {
   "slug": "frontend-breadcrumbs",
   "registryPresent": true,
-  "transitions": [],
+  "transitions": [
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "span.aioseo-breadcrumb a",
+      "count": 3
+    }
+  ],
   "nav": [],
   "groups": {
     "actions": [],

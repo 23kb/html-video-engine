@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-ai-insights-ai-content/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 45 selector entries across 2 sections.
+> 62 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-ai-insights-ai-content/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_24 entries_
+_41 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -31,6 +31,23 @@ _24 entries_
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | Analytical Concise | 5 |
+| <a id="id--null-0"></a>`id--null-0` | `#null-0` | li | Analytical | 5 |
+| <a id="id--null-1"></a>`id--null-1` | `#null-1` | li | Concise | 5 |
+| <a id="id--null-10"></a>`id--null-10` | `#null-10` | li | Persuasive | 1 |
+| <a id="id--null-11"></a>`id--null-11` | `#null-11` | li | Playful | 1 |
+| <a id="id--null-12"></a>`id--null-12` | `#null-12` | li | Professional | 1 |
+| <a id="id--null-13"></a>`id--null-13` | `#null-13` | li | Serious | 1 |
+| <a id="id--null-14"></a>`id--null-14` | `#null-14` | li | Storytelling | 1 |
+| <a id="id--null-15"></a>`id--null-15` | `#null-15` | li | Urgent | 1 |
+| <a id="id--null-2"></a>`id--null-2` | `#null-2` | li | Empathetic | 3 |
+| <a id="id--null-3"></a>`id--null-3` | `#null-3` | li | Friendly | 2 |
+| <a id="id--null-4"></a>`id--null-4` | `#null-4` | li | Formal | 2 |
+| <a id="id--null-5"></a>`id--null-5` | `#null-5` | li | Humorous | 2 |
+| <a id="id--null-6"></a>`id--null-6` | `#null-6` | li | Informal | 2 |
+| <a id="id--null-7"></a>`id--null-7` | `#null-7` | li | Informative | 2 |
+| <a id="id--null-8"></a>`id--null-8` | `#null-8` | li | Motivational | 1 |
+| <a id="id--null-9"></a>`id--null-9` | `#null-9` | li | Neutral | 1 |
 | <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |

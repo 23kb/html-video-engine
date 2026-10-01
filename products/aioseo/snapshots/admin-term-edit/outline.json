@@ -19,6 +19,60 @@
       "event": "change",
       "selector": "#id_previewGeneralIsMobile_0",
       "count": 2
+    },
+    {
+      "label": "smart-tag-chip",
+      "event": "click",
+      "selector": ".aioseo-add-template-tag",
+      "count": 12
+    },
+    {
+      "label": "smart-tag-field-input",
+      "event": "input",
+      "selector": ".ql-editor",
+      "count": 4
+    },
+    {
+      "label": "smart-tag-menu-open",
+      "event": "click",
+      "selector": ".aioseo-view-all-tags",
+      "count": 4
+    },
+    {
+      "label": "smart-tag-pill-switch",
+      "event": "click",
+      "selector": ".mention[data-custom-value][data-denotation-char]",
+      "count": 2
+    },
+    {
+      "label": "emoji-picker-toggle",
+      "event": "click",
+      "selector": ".aioseo-show-emoji-button",
+      "count": 4
+    },
+    {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.multiselect",
+      "count": 3
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-has-submenu:nth-of-type(7) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 2
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.aioseo-documentation-link a",
+      "count": 17
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.var-tab.var--box",
+      "count": 3
     }
   ],
   "nav": [],
@@ -50,14 +104,18 @@
         "tag": "button",
         "text": "😀",
         "count": 4,
-        "hidden": false
+        "hidden": false,
+        "wired": "emoji-picker-toggle",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-view-all-tags",
         "tag": "a",
         "text": "View all tags →",
         "count": 4,
-        "hidden": false
+        "hidden": false,
+        "wired": "smart-tag-menu-open",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
@@ -136,7 +194,7 @@
       {
         "sel": "#TermSettingsNonce",
         "tag": "input",
-        "text": "ca38acdd4e",
+        "text": "7d9f30a326",
         "count": 1,
         "hidden": true
       }
@@ -232,9 +290,9 @@
       {
         "sel": "#aioseo-text-width-measurement",
         "tag": "div",
-        "text": "Vegetable Gardening Guides - Rosa's Garden Co.",
+        "text": "",
         "count": 1,
-        "hidden": false
+        "hidden": true
       },
       {
         "sel": "#ajax-response",
@@ -388,20 +446,6 @@
         "tag": "div",
         "text": "Learn more about Smart Tags →",
         "count": 4,
-        "hidden": true
-      },
-      {
-        "sel": ".aioseo-input",
-        "tag": "div",
-        "text": "",
-        "count": 18,
-        "hidden": true
-      },
-      {
-        "sel": ".aioseo-input-container",
-        "tag": "div",
-        "text": "",
-        "count": 18,
         "hidden": true
       },
       {

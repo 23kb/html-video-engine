@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/aioseo/snapshots/admin-redirects-settings/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 53 selector entries across 2 sections.
+> 72 selector entries across 2 sections.
 
 Provenance anchor form: `products/aioseo/snapshots/admin-redirects-settings/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_27 entries_
+_48 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -28,12 +28,33 @@ _27 entries_
 | <a id="id--aioseo-help-result"></a>`id--aioseo-help-result` | `#aioseo-help-result` | div |  | 1 |
 | <a id="id--aioseo-help-search"></a>`id--aioseo-help-search` | `#aioseo-help-search` | div |  | 1 |
 | <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
-| <a id="id--clip0_193_17475"></a>`id--clip0_193_17475` | `#clip0_193_17475` | clippath |  | 1 |
+| <a id="id--clip0_193_17475"></a>`id--clip0_193_17475` | `#clip0_193_17475` | clippath |  | 9 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
-| <a id="id--id_breadcrumbsType_0"></a>`id--id_breadcrumbsType_0` | `#id_breadcrumbsType_0` | input |  | 1 |
-| <a id="id--id_breadcrumbsType_1"></a>`id--id_breadcrumbsType_1` | `#id_breadcrumbsType_1` | input |  | 1 |
+| <a id="id--id_breadcrumbsType_0"></a>`id--id_breadcrumbsType_0` | `#id_breadcrumbsType_0` | input |  | 9 |
+| <a id="id--id_breadcrumbsType_1"></a>`id--id_breadcrumbsType_1` | `#id_breadcrumbsType_1` | input |  | 9 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | 1 hour | 6 |
+| <a id="id--null-0"></a>`id--null-0` | `#null-0` | li | 1 hour | 6 |
+| <a id="id--null-1"></a>`id--null-1` | `#null-1` | li | 1 day | 6 |
+| <a id="id--null-10"></a>`id--null-10` | `#null-10` | li | 410 Gone | 1 |
+| <a id="id--null-11"></a>`id--null-11` | `#null-11` | li | 418 I'm a Teapot | 1 |
+| <a id="id--null-12"></a>`id--null-12` | `#null-12` | li | 451 Unavailable for Legal Reasons | 1 |
+| <a id="id--null-13"></a>`id--null-13` | `#null-13` | li | 500 Internal Server Error | 1 |
+| <a id="id--null-14"></a>`id--null-14` | `#null-14` | li | 501 Not Implemented | 1 |
+| <a id="id--null-15"></a>`id--null-15` | `#null-15` | li | 502 Bad Gateway | 1 |
+| <a id="id--null-16"></a>`id--null-16` | `#null-16` | li | 503 Service Unavailable | 1 |
+| <a id="id--null-17"></a>`id--null-17` | `#null-17` | li | 504 Gateway Timeout | 1 |
+| <a id="id--null-18"></a>`id--null-18` | `#null-18` | li | 505 HTTP Version Not Supported | 1 |
+| <a id="id--null-19"></a>`id--null-19` | `#null-19` | li | Pass through | 1 |
+| <a id="id--null-2"></a>`id--null-2` | `#null-2` | li | 1 week | 5 |
+| <a id="id--null-3"></a>`id--null-3` | `#null-3` | li | Forever | 5 |
+| <a id="id--null-4"></a>`id--null-4` | `#null-4` | li | 307 Temporary Redirect | 1 |
+| <a id="id--null-5"></a>`id--null-5` | `#null-5` | li | 308 Permanent Redirect | 1 |
+| <a id="id--null-6"></a>`id--null-6` | `#null-6` | li | 400 Bad Request | 1 |
+| <a id="id--null-7"></a>`id--null-7` | `#null-7` | li | 401 Unauthorized | 1 |
+| <a id="id--null-8"></a>`id--null-8` | `#null-8` | li | 403 Forbidden | 1 |
+| <a id="id--null-9"></a>`id--null-9` | `#null-9` | li | 404 Not Found | 1 |
 | <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
@@ -46,12 +67,12 @@ _27 entries_
 
 ## Role-like classes
 
-_26 entries_
+_24 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--aioseo-box-toggle"></a>`class--aioseo-box-toggle` | `.aioseo-box-toggle` | div |  | 1 |
-| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 12 |
+| <a id="class--aioseo-box-toggle"></a>`class--aioseo-box-toggle` | `.aioseo-box-toggle` | div |  | 9 |
+| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 22 |
 | <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
 | <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
 | <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |
@@ -64,18 +85,16 @@ _26 entries_
 | <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
 | <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
 | <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
-| <a id="class--aioseo-highlight-toggle"></a>`class--aioseo-highlight-toggle` | `.aioseo-highlight-toggle` | div |  | 3 |
+| <a id="class--aioseo-highlight-toggle"></a>`class--aioseo-highlight-toggle` | `.aioseo-highlight-toggle` | div |  | 24 |
 | <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 1 |
 | <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 1 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
-| <a id="class--aioseo-post-type-options-toggle"></a>`class--aioseo-post-type-options-toggle` | `.aioseo-post-type-options-toggle` | div |  | 1 |
-| <a id="class--aioseo-row"></a>`class--aioseo-row` | `.aioseo-row` | div | Redirect Method | 8 |
-| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 6 |
-| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div | Choose how redirects are processed on your server for optim… | 6 |
-| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Redirect Method | 6 |
+| <a id="class--aioseo-post-type-options-toggle"></a>`class--aioseo-post-type-options-toggle` | `.aioseo-post-type-options-toggle` | div |  | 8 |
+| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 45 |
+| <a id="class--aioseo-settings-content"></a>`class--aioseo-settings-content` | `.aioseo-settings-content` | div | Choose how redirects are processed on your server for optim… | 50 |
+| <a id="class--aioseo-settings-row"></a>`class--aioseo-settings-row` | `.aioseo-settings-row` | div | Redirect Method | 50 |
 | <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
-| <a id="class--aioseo-table-row"></a>`class--aioseo-table-row` | `.aioseo-table-row` | div |  | 8 |
-| <a id="class--aioseo-toggle"></a>`class--aioseo-toggle` | `.aioseo-toggle` | label | Cache Redirects | 11 |
+| <a id="class--aioseo-table-row"></a>`class--aioseo-table-row` | `.aioseo-table-row` | div |  | 50 |
 
 ---
 

@@ -45,9 +45,57 @@
       "count": 11
     },
     {
+      "label": "date-picker-open",
+      "event": "click",
+      "selector": "div.aioseo-datepicker-picker.aioseo-datepicker-picker--large",
+      "count": 1
+    },
+    {
+      "label": "dropdown-open",
+      "event": "click",
+      "selector": ".aioseo-select.medium",
+      "count": 2
+    },
+    {
       "label": "live-only-button",
       "event": "click",
-      "selector": ".aioseo-button",
+      "selector": "button.aioseo-button.blue",
+      "count": 10
+    },
+    {
+      "label": "small-controls",
+      "event": "click",
+      "selector": "a.aioseo-button.blue",
+      "count": 5
+    },
+    {
+      "label": "table-view-sort-row",
+      "event": "click",
+      "selector": "a.edit",
+      "count": 6
+    },
+    {
+      "label": "native-controls",
+      "event": "click",
+      "selector": "#el-id-3897-9",
+      "count": 7
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.aioseo-settings-row.aioseo-section-description span a",
+      "count": 207
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.var-tab.var--box",
       "count": 4
     }
   ],
@@ -103,7 +151,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -147,25 +197,25 @@
     ],
     "inputs": [
       {
-        "sel": "#el-id-5042-1",
+        "sel": "#el-id-3897-10",
         "tag": "input",
-        "text": "2026-09-30 00:00:00",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#el-id-5042-2",
-        "tag": "input",
-        "text": "2026-09-30",
+        "text": "2026-10-01",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#el-id-5042-3",
+        "sel": "#el-id-3897-11",
         "tag": "input",
         "text": "00:00:00",
         "count": 1,
         "hidden": true
+      },
+      {
+        "sel": "#el-id-3897-9",
+        "tag": "input",
+        "text": "2026-10-01 00:00:00",
+        "count": 1,
+        "hidden": false
       },
       {
         "sel": "#id_authorSitemap_0",
@@ -327,16 +377,16 @@
         "hidden": false
       },
       {
-        "sel": "#el-id-5042-0",
+        "sel": "#el-id-3897-8",
         "tag": "div",
-        "text": "2026 SeptemberSunMonTueWedThuFriSat303112345678910111213141…",
+        "text": "2026 OctoberSunMonTueWedThuFriSat27282930123456789101112131…",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#el-popper-container-5042",
+        "sel": "#el-popper-container-3897",
         "tag": "div",
-        "text": "2026 SeptemberSunMonTueWedThuFriSat303112345678910111213141…",
+        "text": "2026 OctoberSunMonTueWedThuFriSat27282930123456789101112131…",
         "count": 1,
         "hidden": false
       },

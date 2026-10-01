@@ -1,0 +1,99 @@
+# Catalog — `admin-redirects-http-headers--security-presets`
+
+> Auto-generated. Do not edit by hand.
+> Source: `products/aioseo/snapshots/admin-redirects-http-headers--security-presets/index.html`
+> Generator: `tools/generate-snapshot-catalog.js`
+> 66 selector entries across 2 sections.
+
+Provenance anchor form: `products/aioseo/snapshots/admin-redirects-http-headers--security-presets/catalog.md#<anchor>`.
+Anchors are derived from the selector value and are stable across reruns.
+
+---
+
+## IDs
+
+_48 entries_
+
+| Anchor | Selector | Tag | Text | Count |
+| --- | --- | --- | --- | --- |
+| <a id="id--aioseo-admin"></a>`id--aioseo-admin` | `#aioseo-admin` | div |  | 1 |
+| <a id="id--aioseo-app"></a>`id--aioseo-app` | `#aioseo-app` | div |  | 1 |
+| <a id="id--aioseo-flyout-menu"></a>`id--aioseo-flyout-menu` | `#aioseo-flyout-menu` | div | Support &amp; Docs | 1 |
+| <a id="id--aioseo-footer-links"></a>`id--aioseo-footer-links` | `#aioseo-footer-links` | div | Made with ♥ by the AIOSEO Team | 1 |
+| <a id="id--aioseo-help-categories"></a>`id--aioseo-help-categories` | `#aioseo-help-categories` | div |  | 1 |
+| <a id="id--aioseo-help-close"></a>`id--aioseo-help-close` | `#aioseo-help-close` | div |  | 1 |
+| <a id="id--aioseo-help-footer"></a>`id--aioseo-help-footer` | `#aioseo-help-footer` | div |  | 1 |
+| <a id="id--aioseo-help-logo"></a>`id--aioseo-help-logo` | `#aioseo-help-logo` | svg |  | 1 |
+| <a id="id--aioseo-help-modal"></a>`id--aioseo-help-modal` | `#aioseo-help-modal` | div |  | 1 |
+| <a id="id--aioseo-help-result"></a>`id--aioseo-help-result` | `#aioseo-help-result` | div |  | 1 |
+| <a id="id--aioseo-help-search"></a>`id--aioseo-help-search` | `#aioseo-help-search` | div |  | 1 |
+| <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
+| <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
+| <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
+| <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate All in One SEO Pro ★★★★★ on WordPress.org to he… | 1 |
+| <a id="id--listbox-null"></a>`id--listbox-null` | `#listbox-null` | ul | Site | 16 |
+| <a id="id--null-0"></a>`id--null-0` | `#null-0` | li | Site | 16 |
+| <a id="id--null-1"></a>`id--null-1` | `#null-1` | li | Redirect | 15 |
+| <a id="id--null-10"></a>`id--null-10` | `#null-10` | li | Security | 6 |
+| <a id="id--null-11"></a>`id--null-11` | `#null-11` | li | X-Frame-Options | 6 |
+| <a id="id--null-12"></a>`id--null-12` | `#null-12` | li | X-XSS-Protection | 6 |
+| <a id="id--null-13"></a>`id--null-13` | `#null-13` | li | X-Content-Type-Options | 6 |
+| <a id="id--null-14"></a>`id--null-14` | `#null-14` | li | Strict-Transport-Security | 6 |
+| <a id="id--null-15"></a>`id--null-15` | `#null-15` | li | Feature-Policy | 6 |
+| <a id="id--null-16"></a>`id--null-16` | `#null-16` | li | Clear-Site-Data | 6 |
+| <a id="id--null-17"></a>`id--null-17` | `#null-17` | li | Referrer-Policy | 6 |
+| <a id="id--null-18"></a>`id--null-18` | `#null-18` | li | Content-Security-Policy | 6 |
+| <a id="id--null-19"></a>`id--null-19` | `#null-19` | li | Content-Security-Policy-Report-Only | 6 |
+| <a id="id--null-2"></a>`id--null-2` | `#null-2` | li | X-Robots-Tag | 9 |
+| <a id="id--null-20"></a>`id--null-20` | `#null-20` | li | P3P | 6 |
+| <a id="id--null-21"></a>`id--null-21` | `#null-21` | li | Custom | 6 |
+| <a id="id--null-22"></a>`id--null-22` | `#null-22` | li | Custom | 6 |
+| <a id="id--null-3"></a>`id--null-3` | `#null-3` | li | CORS | 8 |
+| <a id="id--null-4"></a>`id--null-4` | `#null-4` | li | Access-Control-Allow-Headers | 7 |
+| <a id="id--null-5"></a>`id--null-5` | `#null-5` | li | Access-Control-Allow-Methods | 7 |
+| <a id="id--null-6"></a>`id--null-6` | `#null-6` | li | Access-Control-Max-Age | 7 |
+| <a id="id--null-7"></a>`id--null-7` | `#null-7` | li | Access-Control-Allow-Credentials | 7 |
+| <a id="id--null-8"></a>`id--null-8` | `#null-8` | li | Access-Control-Allow-Origin | 6 |
+| <a id="id--null-9"></a>`id--null-9` | `#null-9` | li | Access-Control-Expose-Headers | 6 |
+| <a id="id--toplevel_page_aioseo"></a>`id--toplevel_page_aioseo` | `#toplevel_page_aioseo` | li |  | 1 |
+| <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
+| <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
+| <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
+| <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
+| <a id="id--wp-view-transitions-admin-inline-css"></a>`id--wp-view-transitions-admin-inline-css` | `#wp-view-transitions-admin-inline-css` | link |  | 1 |
+| <a id="id--wpforms-setup-checklist-menu-styles"></a>`id--wpforms-setup-checklist-menu-styles` | `#wpforms-setup-checklist-menu-styles` | link |  | 1 |
+| <a id="id--wpms-setup-checklist-menu-styles"></a>`id--wpms-setup-checklist-menu-styles` | `#wpms-setup-checklist-menu-styles` | link |  | 1 |
+
+## Role-like classes
+
+_18 entries_
+
+| Anchor | Selector | Tag | Text | Count |
+| --- | --- | --- | --- | --- |
+| <a id="class--aioseo-button"></a>`class--aioseo-button` | `.aioseo-button` | button | Save Changes | 13 |
+| <a id="class--aioseo-close"></a>`class--aioseo-close` | `.aioseo-close` | svg |  | 1 |
+| <a id="class--aioseo-container"></a>`class--aioseo-container` | `.aioseo-container` | div |  | 2 |
+| <a id="class--aioseo-flyout-menu-button"></a>`class--aioseo-flyout-menu-button` | `.aioseo-flyout-menu-button` | div | Quick Links | 1 |
+| <a id="class--aioseo-flyout-menu-label"></a>`class--aioseo-flyout-menu-label` | `.aioseo-flyout-menu-label` | span | Support &amp; Docs | 7 |
+| <a id="class--aioseo-folder-open"></a>`class--aioseo-folder-open` | `.aioseo-folder-open` | svg |  | 6 |
+| <a id="class--aioseo-header"></a>`class--aioseo-header` | `.aioseo-header` | div |  | 1 |
+| <a id="class--aioseo-header-content"></a>`class--aioseo-header-content` | `.aioseo-header-content` | div |  | 1 |
+| <a id="class--aioseo-help-categories-toggle"></a>`class--aioseo-help-categories-toggle` | `.aioseo-help-categories-toggle` | ul |  | 1 |
+| <a id="class--aioseo-help-category"></a>`class--aioseo-help-category` | `.aioseo-help-category` | li | Gett | 6 |
+| <a id="class--aioseo-help-docs-support"></a>`class--aioseo-help-docs-support` | `.aioseo-help-docs-support` | button | Submit a Support Ticket | 1 |
+| <a id="class--aioseo-help-docs-viewall"></a>`class--aioseo-help-docs-viewall` | `.aioseo-help-docs-viewall` | button | View All Getting Started Docs | 7 |
+| <a id="class--aioseo-help-header"></a>`class--aioseo-help-header` | `.aioseo-help-header` | div |  | 1 |
+| <a id="class--aioseo-input"></a>`class--aioseo-input` | `.aioseo-input` | div |  | 3 |
+| <a id="class--aioseo-input-container"></a>`class--aioseo-input-container` | `.aioseo-input-container` | div |  | 3 |
+| <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
+| <a id="class--aioseo-select"></a>`class--aioseo-select` | `.aioseo-select` | div |  | 16 |
+| <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div |  | 1 |
+
+---
+
+## Notes
+
+- This catalog lists *candidate* selectors extracted statically from the snapshot's `index.html`. Not every entry is a stable chapter target — authors still pick the selector that best matches intent.
+- Role-like classes are filtered to (a) names matching a known interaction suffix (`-button`, `-tab`, `-toggle`, `-add`, …) OR (b) classes whose first in-scope occurrence is on an interactive tag (`button`, `a`, `input`, `textarea`, `select`, `li`) carrying non-empty text. `Tag` and `Text` columns are sourced from that first occurrence. The full WPForms class vocabulary is larger; run `tools/inspect-snapshot.js` for visibility-aware detail.
+- Duplicate IDs in captured HTML (a known sanitization debt) surface here as `Count > 1` — prefer a more specific selector when this happens.

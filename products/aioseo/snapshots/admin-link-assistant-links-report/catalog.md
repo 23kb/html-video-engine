@@ -27,7 +27,7 @@ _26 entries_
 | <a id="id--aioseo-help-modal"></a>`id--aioseo-help-modal` | `#aioseo-help-modal` | div |  | 1 |
 | <a id="id--aioseo-help-result"></a>`id--aioseo-help-result` | `#aioseo-help-result` | div |  | 1 |
 | <a id="id--aioseo-help-search"></a>`id--aioseo-help-search` | `#aioseo-help-search` | div |  | 1 |
-| <a id="id--aioseo-link-assistant-links-report-wp-table"></a>`id--aioseo-link-assistant-links-report-wp-table` | `#aioseo-link-assistant-links-report-wp-table` | div | All &nbsp;(20) \| Linking Opportunities &nbsp;(9) \| Orphaned… | 1 |
+| <a id="id--aioseo-link-assistant-links-report-wp-table"></a>`id--aioseo-link-assistant-links-report-wp-table` | `#aioseo-link-assistant-links-report-wp-table` | div | All &nbsp;(23) \| Linking Opportunities &nbsp;(9) \| Orphaned… | 1 |
 | <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
@@ -67,8 +67,8 @@ _20 entries_
 | <a id="class--aioseo-link-assistant-confirmation-modal"></a>`class--aioseo-link-assistant-confirmation-modal` | `.aioseo-link-assistant-confirmation-modal` | div |  | 1 |
 | <a id="class--aioseo-message"></a>`class--aioseo-message` | `.aioseo-message` | svg |  | 1 |
 | <a id="class--aioseo-modal"></a>`class--aioseo-modal` | `.aioseo-modal` | div |  | 1 |
-| <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div | All &nbsp;(20) \| Linking | 1 |
-| <a id="class--aioseo-wp-table-header"></a>`class--aioseo-wp-table-header` | `.aioseo-wp-table-header` | div | All &nbsp;(20) \| Linking Opportunities &nbsp;(9) \| Orphaned… | 1 |
+| <a id="class--aioseo-tab-content"></a>`class--aioseo-tab-content` | `.aioseo-tab-content` | div | All &nbsp;(23) \| Linking | 1 |
+| <a id="class--aioseo-wp-table-header"></a>`class--aioseo-wp-table-header` | `.aioseo-wp-table-header` | div | All &nbsp;(23) \| Linking Opportunities &nbsp;(9) \| Orphaned… | 1 |
 
 ---
 

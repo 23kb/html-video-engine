@@ -47,8 +47,50 @@
     {
       "label": "live-only-button",
       "event": "click",
-      "selector": "a.aioseo-button.green",
+      "selector": "button.aioseo-button.blue",
+      "count": 13
+    },
+    {
+      "label": "table-view-sort-row",
+      "event": "click",
+      "selector": "th.aioseo-manage-column.manage-column a",
+      "count": 26
+    },
+    {
+      "label": "native-controls",
+      "event": "click",
+      "selector": "div.aioseo-wp-bulk-actions.alignleft select",
+      "count": 4
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 44
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "span.edit a",
+      "count": 199
+    },
+    {
+      "label": "search-statistics-connect-overlay",
+      "event": "click",
+      "selector": "div.connect-cta",
       "count": 1
+    },
+    {
+      "label": "plain-label",
+      "event": "click",
+      "selector": "label.screen-reader-text",
+      "count": 1
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(3)",
+      "count": 3
     }
   ],
   "nav": [],
@@ -59,13 +101,6 @@
         "tag": "button",
         "text": "Collapse Menu",
         "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": ".aioseo-button",
-        "tag": "button",
-        "text": "Add Keywords",
-        "count": 27,
         "hidden": false
       },
       {
@@ -87,7 +122,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-help-docs-viewall",
@@ -105,7 +142,9 @@
         "tag": "div",
         "text": "Bulk Actions Delete Add to Group Apply Filter by Group All …",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "search-statistics-connect-overlay",
+        "wiredEvent": "click"
       },
       {
         "sel": ".aioseo-tab-content",
@@ -119,7 +158,9 @@
         "tag": "div",
         "text": "Bulk Actions Delete Add to Group Apply Filter by Group All …",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "search-statistics-connect-overlay",
+        "wiredEvent": "click"
       }
     ],
     "inputs": [
@@ -241,72 +282,72 @@
         "hidden": true
       },
       {
-        "sel": "#apexcharts30bqk62u",
+        "sel": "#apexcharts3k7lkmw2",
         "tag": "div",
         "text": "",
         "count": 1,
         "hidden": false
       },
       {
-        "sel": "#apexcharts5234hxbe",
+        "sel": "#apexchartse8b789vlg",
         "tag": "div",
         "text": "",
         "count": 1,
         "hidden": false
       },
       {
-        "sel": "#apexcharts6splixei",
-        "tag": "div",
-        "text": "",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#apexchartsba0a4dmo",
-        "tag": "div",
-        "text": "",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#apexchartskg0if0tl",
-        "tag": "div",
-        "text": "",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#apexchartsmicws9ln",
-        "tag": "div",
-        "text": "",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#apexchartsn857pntn",
+        "sel": "#apexchartseh4xz2o2",
         "tag": "div",
         "text": "50 40 30 20 10 0 24 Oct 2022 7 Nov 2022 21 Nov 2022 5 Dec 2…",
         "count": 1,
         "hidden": false
       },
       {
-        "sel": "#apexchartstu2dxksr",
+        "sel": "#apexchartsn91n5a1ii",
         "tag": "div",
         "text": "",
         "count": 1,
         "hidden": false
       },
       {
-        "sel": "#apexchartsu4mm5sg2",
+        "sel": "#apexchartsnd8nk826",
         "tag": "div",
         "text": "",
         "count": 1,
         "hidden": false
       },
       {
-        "sel": "#apexchartsulyodtsr",
+        "sel": "#apexchartsp02c5m8h",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartspgceu47zj",
         "tag": "div",
         "text": "100% 50% 0% Top 3 Position 4-10 Position 11-50 Position 50-…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartsubvvay6c",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartsygq3n34s",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartszhe9f8m9",
+        "tag": "div",
+        "text": "",
         "count": 1,
         "hidden": false
       },
@@ -325,441 +366,441 @@
         "hidden": false
       },
       {
-        "sel": "#forecastMask30bqk62u",
+        "sel": "#forecastMask3k7lkmw2",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#forecastMask5234hxbe",
+        "sel": "#forecastMaske8b789vlg",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#forecastMask6splixei",
+        "sel": "#forecastMaskeh4xz2o2",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#forecastMaskba0a4dmo",
+        "sel": "#forecastMaskn91n5a1ii",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#forecastMaskkg0if0tl",
+        "sel": "#forecastMasknd8nk826",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#forecastMaskmicws9ln",
+        "sel": "#forecastMaskp02c5m8h",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#forecastMaskn857pntn",
+        "sel": "#forecastMaskpgceu47zj",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#forecastMasktu2dxksr",
+        "sel": "#forecastMaskubvvay6c",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#forecastMasku4mm5sg2",
+        "sel": "#forecastMaskygq3n34s",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#forecastMaskulyodtsr",
+        "sel": "#forecastMaskzhe9f8m9",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMask30bqk62u",
+        "sel": "#gridRectBarMask3k7lkmw2",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMask5234hxbe",
+        "sel": "#gridRectBarMaske8b789vlg",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMask6splixei",
+        "sel": "#gridRectBarMaskeh4xz2o2",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMaskba0a4dmo",
+        "sel": "#gridRectBarMaskn91n5a1ii",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMaskkg0if0tl",
+        "sel": "#gridRectBarMasknd8nk826",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMaskmicws9ln",
+        "sel": "#gridRectBarMaskp02c5m8h",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMaskn857pntn",
+        "sel": "#gridRectBarMaskpgceu47zj",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMasktu2dxksr",
+        "sel": "#gridRectBarMaskubvvay6c",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMasku4mm5sg2",
+        "sel": "#gridRectBarMaskygq3n34s",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectBarMaskulyodtsr",
+        "sel": "#gridRectBarMaskzhe9f8m9",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMask30bqk62u",
+        "sel": "#gridRectMarkerMask3k7lkmw2",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMask5234hxbe",
+        "sel": "#gridRectMarkerMaske8b789vlg",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMask6splixei",
+        "sel": "#gridRectMarkerMaskeh4xz2o2",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMaskba0a4dmo",
+        "sel": "#gridRectMarkerMaskn91n5a1ii",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMaskkg0if0tl",
+        "sel": "#gridRectMarkerMasknd8nk826",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMaskmicws9ln",
+        "sel": "#gridRectMarkerMaskp02c5m8h",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMaskn857pntn",
+        "sel": "#gridRectMarkerMaskpgceu47zj",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMasktu2dxksr",
+        "sel": "#gridRectMarkerMaskubvvay6c",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMasku4mm5sg2",
+        "sel": "#gridRectMarkerMaskygq3n34s",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMarkerMaskulyodtsr",
+        "sel": "#gridRectMarkerMaskzhe9f8m9",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMask30bqk62u",
+        "sel": "#gridRectMask3k7lkmw2",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMask5234hxbe",
+        "sel": "#gridRectMaske8b789vlg",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMask6splixei",
+        "sel": "#gridRectMaskeh4xz2o2",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMaskba0a4dmo",
+        "sel": "#gridRectMaskn91n5a1ii",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMaskkg0if0tl",
+        "sel": "#gridRectMasknd8nk826",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMaskmicws9ln",
+        "sel": "#gridRectMaskp02c5m8h",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMaskn857pntn",
+        "sel": "#gridRectMaskpgceu47zj",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMasktu2dxksr",
+        "sel": "#gridRectMaskubvvay6c",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMasku4mm5sg2",
+        "sel": "#gridRectMaskygq3n34s",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#gridRectMaskulyodtsr",
+        "sel": "#gridRectMaskzhe9f8m9",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMask30bqk62u",
+        "sel": "#nonForecastMask3k7lkmw2",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMask5234hxbe",
+        "sel": "#nonForecastMaske8b789vlg",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMask6splixei",
+        "sel": "#nonForecastMaskeh4xz2o2",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMaskba0a4dmo",
+        "sel": "#nonForecastMaskn91n5a1ii",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMaskkg0if0tl",
+        "sel": "#nonForecastMasknd8nk826",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMaskmicws9ln",
+        "sel": "#nonForecastMaskp02c5m8h",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMaskn857pntn",
+        "sel": "#nonForecastMaskpgceu47zj",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMasktu2dxksr",
+        "sel": "#nonForecastMaskubvvay6c",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMasku4mm5sg2",
+        "sel": "#nonForecastMaskygq3n34s",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#nonForecastMaskulyodtsr",
+        "sel": "#nonForecastMaskzhe9f8m9",
         "tag": "clippath",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#SvgjsGradient27",
+        "sel": "#SvgjsGradient62",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#SvgjsGradient28",
+        "sel": "#SvgjsGradient63",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#SvgjsGradient29",
+        "sel": "#SvgjsGradient64",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#SvgjsGradient30",
+        "sel": "#SvgjsGradient65",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#SvgjsGradient31",
+        "sel": "#SvgjsGradient66",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#SvgjsGradient32",
+        "sel": "#SvgjsGradient67",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#SvgjsGradient33",
+        "sel": "#SvgjsGradient68",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#SvgjsGradient34",
+        "sel": "#SvgjsGradient69",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#SvgjsGradient35",
+        "sel": "#SvgjsGradient70",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#SvgjsGradient36",
+        "sel": "#SvgjsGradient71",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#SvgjsGradient37",
+        "sel": "#SvgjsGradient72",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#SvgjsGradient38",
+        "sel": "#SvgjsGradient73",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#SvgjsGradient39",
+        "sel": "#SvgjsGradient74",
         "tag": "lineargradient",
         "text": "",
         "count": 1,
@@ -915,7 +956,7 @@
       {
         "sel": ".aioseo-settings-row",
         "tag": "div",
-        "text": "Total Keywords 8 Search Impressions 36.6K Clicks 3.8K Avg. …",
+        "text": "Total Keywords 8 Search Impressions 43.2K Clicks 4.5K Avg. …",
         "count": 2,
         "hidden": false
       },

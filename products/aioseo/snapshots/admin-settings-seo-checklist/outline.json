@@ -31,6 +31,78 @@
       "event": "click",
       "selector": ".round",
       "count": 2
+    },
+    {
+      "label": "round3-captured-state",
+      "event": "click",
+      "selector": "th.aioseo-manage-column.manage-column a",
+      "count": 2
+    },
+    {
+      "label": "live-only-button",
+      "event": "click",
+      "selector": "button.button.action",
+      "count": 17
+    },
+    {
+      "label": "checklist-explanation",
+      "event": "click",
+      "selector": ".has-separator.secondary-link",
+      "count": 9
+    },
+    {
+      "label": "state-handoff",
+      "event": "click",
+      "selector": "span.name a",
+      "count": 1
+    },
+    {
+      "label": "seo-checklist-action-link",
+      "event": "click",
+      "selector": "a.action-link",
+      "count": 35
+    },
+    {
+      "label": "small-controls",
+      "event": "click",
+      "selector": "div.header",
+      "count": 1
+    },
+    {
+      "label": "table-view-sort-row",
+      "event": "click",
+      "selector": "th.aioseo-manage-column.manage-column a",
+      "count": 4
+    },
+    {
+      "label": "native-controls",
+      "event": "click",
+      "selector": "div.aioseo-wp-bulk-actions.alignleft select",
+      "count": 4
+    },
+    {
+      "label": "unresolved-link",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 50
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "ul.aioseo-help-docs li a",
+      "count": 191
+    },
+    {
+      "label": "plain-label",
+      "event": "click",
+      "selector": "label.screen-reader-text",
+      "count": 1
+    },
+    {
+      "label": "already-selected",
+      "event": "click",
+      "selector": "div.tabs-scroller:nth-of-type(1) > div.var-tabs > div.var-tabs__tab-wrap > div.var-tab:nth-of-type(2)",
+      "count": 1
     }
   ],
   "nav": [],
@@ -71,7 +143,9 @@
         "tag": "button",
         "text": "Submit a Support Ticket",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
