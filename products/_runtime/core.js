@@ -1105,6 +1105,33 @@
     IS.slug = currentSlug();
     IS.product = productOf();
     announceParams();
+    applyFocus();
+  }
+
+  // ?snap-focus=<css selector> (set by the capture wrapper's framePreview.focus on an
+  // editor's preview iframe): scroll that element to the middle of this window and draw
+  // the editor's selection outline on it, the way a live Elementor / Customizer preview
+  // shows the widget being edited. window.scrollTo only, so a parent page never scrolls.
+  function applyFocus() {
+    var sel = openedWith()['snap-focus'];
+    if (!sel) return;
+    var el = null;
+    try { el = document.querySelector(sel); } catch (_) { el = null; }
+    if (!el) { console.log('[snap] snap-focus: no element matches ' + sel); return; }
+    if (!document.getElementById('snap-focus-style')) {
+      var st = document.createElement('style');
+      st.id = 'snap-focus-style';
+      st.textContent = '.snap-focus{outline:2px solid var(--snap-focus-color,#71d7f7)!important;outline-offset:-1px;}';
+      (document.head || document.documentElement).appendChild(st);
+    }
+    el.classList.add('snap-focus');
+    var place = function () {
+      var r = el.getBoundingClientRect();
+      var y = (window.pageYOffset || 0) + r.top - Math.max(0, (window.innerHeight - r.height) / 2);
+      window.scrollTo(0, Math.max(0, y));
+    };
+    place();
+    setTimeout(place, 300);   // late layout (fonts, images) moves the target
   }
 
   // A snapshot opened with carried params announces them once, on <body>, as a
