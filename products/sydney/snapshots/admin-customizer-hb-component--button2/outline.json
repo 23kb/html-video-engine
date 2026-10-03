@@ -1,0 +1,2441 @@
+{
+  "slug": "admin-customizer-hb-component--button2",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "customizer-open-section",
+      "event": "click",
+      "selector": "h3.accordion-section-title",
+      "count": 72
+    },
+    {
+      "label": "customizer-back",
+      "event": "click",
+      "selector": "button.customize-section-back",
+      "count": 10
+    },
+    {
+      "label": "customizer-tab",
+      "event": "click",
+      "selector": ".control-tab[data-connected]",
+      "count": 2
+    },
+    {
+      "label": "customizer-device",
+      "event": "click",
+      "selector": "button[data-device]",
+      "count": 12
+    },
+    {
+      "label": "customizer-collapse",
+      "event": "click",
+      "selector": "button.collapse-sidebar.button",
+      "count": 1
+    },
+    {
+      "label": "customizer-color-open",
+      "event": "click",
+      "selector": ".sydney-color-picker[data-default-color]",
+      "count": 12
+    },
+    {
+      "label": "customizer-publish-guard",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "shfb-chip",
+      "event": "click",
+      "selector": ".shfb-button[data-shfb-focus-section][data-shfb-id]",
+      "count": 54
+    },
+    {
+      "label": "shfb-device",
+      "event": "click",
+      "selector": ".sydney-shfb-device-link[data-device]",
+      "count": 4
+    },
+    {
+      "label": "customizer-help",
+      "event": "click",
+      "selector": "button.customize-help-toggle.dashicons",
+      "count": 1
+    },
+    {
+      "label": "customizer-radio-log",
+      "event": "change",
+      "selector": "#customize-selected-changeset-status-control-input-131-publish",
+      "count": 9
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "a.customize-controls-close",
+      "count": 4
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#accordion-section-sydney_stylebook_toggle",
+        "tag": "li",
+        "text": "Open Style Book",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-default-input-128",
+        "tag": "button",
+        "text": "Discard changes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-shfb_button2_newtab",
+        "tag": "li",
+        "text": "Open In A New Tab?",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-trash_changeset",
+        "tag": "li",
+        "text": "Discard changes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-save-button-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#publish-settings",
+        "tag": "button",
+        "text": "Publish Settings",
+        "count": 1,
+        "hidden": true,
+        "wired": "customizer-publish-guard",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sydney-dimensions-link-btn",
+        "tag": "button",
+        "text": "Link values together",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-shfb-bottom-display",
+        "tag": "a",
+        "text": "Hide",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".sydney-shfb-device-link",
+        "tag": "a",
+        "text": "Desktop",
+        "count": 4,
+        "hidden": false,
+        "wired": "shfb-device",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#customize-control-sydney_section_hb_component__button2_tabs",
+        "tag": "li",
+        "text": "General Style",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#_customize-input-shfb_button2_class",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#_customize-input-shfb_button2_link",
+        "tag": "input",
+        "text": "#",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#_customize-input-shfb_button2_text",
+        "tag": "input",
+        "text": "Click me",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#create-item-input-page",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-item-input-post",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-item-input-sydney-projects",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-menu-item-name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-menu-item-submit",
+        "tag": "input",
+        "text": "Add to Menu",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-menu-item-type",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-menu-item-url",
+        "tag": "input",
+        "text": "https://",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-selected-changeset-status-control-input-131-draft",
+        "tag": "input",
+        "text": "draft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-selected-changeset-status-control-input-131-future",
+        "tag": "input",
+        "text": "future",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-selected-changeset-status-control-input-131-publish",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el130-customize-preview-link-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el133-date-time-day",
+        "tag": "input",
+        "text": "02",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el133-date-time-hour",
+        "tag": "input",
+        "text": "6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el133-date-time-meridian",
+        "tag": "select",
+        "text": "AM PM",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el133-date-time-minute",
+        "tag": "input",
+        "text": "03",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el133-date-time-month",
+        "tag": "select",
+        "text": "1-Jan 2-Feb 3-Mar 4-Apr 5-May 6-Jun 7-Jul 8-Aug 9-Sep 10-Oc…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el133-date-time-year",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-items-__i__",
+        "tag": "select",
+        "text": "1234567891011121314151617181920",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-show-author-__i__",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-show-date-__i__",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-show-summary-__i__",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-title-__i__",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-url-__i__",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#save",
+        "tag": "input",
+        "text": "Published",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shfb_button2_newtab",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-__i__-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-__i__-dropdown",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-block-__i__-content",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-block-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-calendar-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-calendar-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-dropdown",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-hierarchical",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-custom_html-__i__-content",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-custom_html-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-custom_html-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-fp_social-__i__-nav_menu",
+        "tag": "select",
+        "text": "— Select — Footer 1Footer 2Footer 3Main",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-fp_social-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-fp_social-__i__-style",
+        "tag": "select",
+        "text": "Style 1 Style 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-fp_social-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-attachment_id",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-flac",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-loop",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-m4a",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-mp3",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-ogg",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-preload",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-wav",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-columns",
+        "tag": "input",
+        "text": "3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-ids",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-link_type",
+        "tag": "input",
+        "text": "post",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-orderby_random",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-size",
+        "tag": "input",
+        "text": "thumbnail",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-alt",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-attachment_id",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-caption",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-height",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-image_classes",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-image_title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_classes",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_rel",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_target_blank",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_type",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-size",
+        "tag": "input",
+        "text": "medium",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-width",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-attachment_id",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-content",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-flv",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-loop",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-m4v",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-mp4",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-ogv",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-preload",
+        "tag": "input",
+        "text": "metadata",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-webm",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-meta-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-meta-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-__i__-nav_menu",
+        "tag": "select",
+        "text": "— Select — Footer 1 Footer 2 Footer 3 Main",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-pages-__i__-exclude",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-pages-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-pages-__i__-sortby",
+        "tag": "select",
+        "text": "Page title Page order Page ID",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-pages-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-__i__-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-__i__-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-__i__-show_date",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-rss-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-search-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-search-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-sydney_contact_info-__i__-address",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-sydney_contact_info-__i__-email",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-sydney_contact_info-__i__-phone",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-sydney_contact_info-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-sydney_contact_info-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tag_cloud-__i__-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tag_cloud-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tag_cloud-__i__-taxonomy",
+        "tag": "select",
+        "text": "Categories Tags Link Categories Categories Portfolio catego…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tag_cloud-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-filter",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-text",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-visual",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-form_id",
+        "tag": "select",
+        "text": "Select your formContact",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-show_desc",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-show_title",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widgets-search",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-color-input",
+        "tag": "input",
+        "text": "#212121",
+        "count": 12,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dimensions-input",
+        "tag": "input",
+        "text": "",
+        "count": 24,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dimensions-unit",
+        "tag": "select",
+        "text": "px % rem em vw vh",
+        "count": 6,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#accordion-panel-nav_menus",
+        "tag": "li",
+        "text": "Menus",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-sydney_hooks_panel",
+        "tag": "li",
+        "text": "Hooks",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-sydney_panel_blog",
+        "tag": "li",
+        "text": "Blog",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-sydney_panel_cpt_e-floating-buttons",
+        "tag": "li",
+        "text": "Floating Elements",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-sydney_panel_cpt_sydney-projects",
+        "tag": "li",
+        "text": "Portfolio",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-sydney_panel_footer",
+        "tag": "li",
+        "text": "Footer",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-sydney_panel_general",
+        "tag": "li",
+        "text": "General",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-sydney_panel_header",
+        "tag": "li",
+        "text": "Header",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-sydney_panel_hero",
+        "tag": "li",
+        "text": "Hero area",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-sydney_panel_typography",
+        "tag": "li",
+        "text": "Typography",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-sydney_pro_panel",
+        "tag": "li",
+        "text": "Extra options",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-widgets",
+        "tag": "li",
+        "text": "Widgets",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-colors",
+        "tag": "li",
+        "text": "Colors",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-custom_css",
+        "tag": "li",
+        "text": "Additional CSS",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-publish_settings",
+        "tag": "li",
+        "text": "Publish Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-static_front_page",
+        "tag": "li",
+        "text": "Homepage Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_cpt_page",
+        "tag": "li",
+        "text": "Pages",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_footer_contact",
+        "tag": "li",
+        "text": "Pre-footer",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__above_header_row_column1",
+        "tag": "li",
+        "text": "Column 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__above_header_row_column2",
+        "tag": "li",
+        "text": "Column 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__above_header_row_column3",
+        "tag": "li",
+        "text": "Column 3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__above_header_row_column4",
+        "tag": "li",
+        "text": "Column 4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__above_header_row_column5",
+        "tag": "li",
+        "text": "Column 5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__above_header_row_column6",
+        "tag": "li",
+        "text": "Column 6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__below_header_row_column1",
+        "tag": "li",
+        "text": "Column 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__below_header_row_column2",
+        "tag": "li",
+        "text": "Column 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__below_header_row_column3",
+        "tag": "li",
+        "text": "Column 3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__below_header_row_column4",
+        "tag": "li",
+        "text": "Column 4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__below_header_row_column5",
+        "tag": "li",
+        "text": "Column 5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__below_header_row_column6",
+        "tag": "li",
+        "text": "Column 6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__main_header_row_column1",
+        "tag": "li",
+        "text": "Column 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__main_header_row_column2",
+        "tag": "li",
+        "text": "Column 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__main_header_row_column3",
+        "tag": "li",
+        "text": "Column 3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__main_header_row_column4",
+        "tag": "li",
+        "text": "Column 4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__main_header_row_column5",
+        "tag": "li",
+        "text": "Column 5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_header_row__main_header_row_column6",
+        "tag": "li",
+        "text": "Column 6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_above_header_row",
+        "tag": "li",
+        "text": "Top Row",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_below_header_row",
+        "tag": "li",
+        "text": "Bottom Row",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__button",
+        "tag": "li",
+        "text": "Button",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__button2",
+        "tag": "li",
+        "text": "Button 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__contact_info",
+        "tag": "li",
+        "text": "Contact Info",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__html",
+        "tag": "li",
+        "text": "HTML",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__html2",
+        "tag": "li",
+        "text": "HTML 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__logo",
+        "tag": "li",
+        "text": "Logo",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__menu",
+        "tag": "li",
+        "text": "Primary Menu",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__mobile_hamburger",
+        "tag": "li",
+        "text": "Menu Toggle",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__mobile_offcanvas_menu",
+        "tag": "li",
+        "text": "Mobile Offcanvas Menu",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__search",
+        "tag": "li",
+        "text": "Search",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__secondary_menu",
+        "tag": "li",
+        "text": "Secondary Menu",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__shortcode",
+        "tag": "li",
+        "text": "Shortcode",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__shortcode2",
+        "tag": "li",
+        "text": "Shortcode",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__shortcode3",
+        "tag": "li",
+        "text": "Shortcode",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__social",
+        "tag": "li",
+        "text": "Social Icons",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_component__woo_icons",
+        "tag": "li",
+        "text": "WooCommerce Icons",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_main_header_row",
+        "tag": "li",
+        "text": "Main Row",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_mobile_offcanvas",
+        "tag": "li",
+        "text": "Mobile Offcanvas",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_presets",
+        "tag": "li",
+        "text": "Header Layouts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_section_hb_wrapper",
+        "tag": "li",
+        "text": "Header Builder",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-sydney_toolbox_portfolio",
+        "tag": "li",
+        "text": "Portfolio",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-themes",
+        "tag": "li",
+        "text": "Active theme Sydney Pro Change",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-title_tagline",
+        "tag": "li",
+        "text": "Site Identity",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-footer-1",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-footer-2",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-footer-3",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-footer-4",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-sidebar-1",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-page",
+        "tag": "div",
+        "text": "Pages No items Add Page Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-page-content",
+        "tag": "div",
+        "text": "Add Page Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-post",
+        "tag": "div",
+        "text": "Posts No items Add Post Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-post-content",
+        "tag": "div",
+        "text": "Add Post Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-sydney-projects",
+        "tag": "div",
+        "text": "Portfolio No items Add New Project Add Please enter an item…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-sydney-projects-content",
+        "tag": "div",
+        "text": "Add New Project Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-search",
+        "tag": "div",
+        "text": "Search Menu Items The search results will be updated as you…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-category",
+        "tag": "div",
+        "text": "Categories No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-category-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-post_format",
+        "tag": "div",
+        "text": "Formats No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-post_format-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-post_tag",
+        "tag": "div",
+        "text": "Tags No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-post_tag-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-project_cats",
+        "tag": "div",
+        "text": "Portfolio categories No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-project_cats-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-info",
+        "tag": "div",
+        "text": "You are customizing Northline Studio An unexpected error oc…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#new-custom-menu-item",
+        "tag": "div",
+        "text": "Custom Links URL Please provide a valid link. Link Text The…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#new-custom-menu-item-content",
+        "tag": "div",
+        "text": "URL Please provide a valid link. Link Text The link text ca…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sub-accordion-panel-sydney_panel_header",
+        "tag": "ul",
+        "text": "Back You are customizing Header Site Identity Header Builde…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sub-accordion-section-publish_settings",
+        "tag": "ul",
+        "text": "Back Updating Publish Settings Action Publish Save Draft Sc…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sub-accordion-section-sydney_section_hb_component__button2",
+        "tag": "ul",
+        "text": "Back Customizing ▸ Header Button 2 General Style Button Tex…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#available-menu-items",
+        "tag": "div",
+        "text": "Back Customizing ▸ Menus Add Menu Items Search Menu Items T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-widgets",
+        "tag": "div",
+        "text": "Back Customizing ▸ Widgets Add a Widget Search Widgets Clea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-widgets-filter",
+        "tag": "div",
+        "text": "Search Widgets Clear Results The search results will be upd…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-widgets-list",
+        "tag": "div",
+        "text": "Edit widget: Archives Add widget: Archives Edit Add Archive…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-input-page-error",
+        "tag": "span",
+        "text": "Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-input-post-error",
+        "tag": "span",
+        "text": "Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-input-sydney-projects-error",
+        "tag": "span",
+        "text": "Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-name-error",
+        "tag": "span",
+        "text": "The link text cannot be empty.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-url-error",
+        "tag": "span",
+        "text": "Please provide a valid link.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-changeset_preview_link",
+        "tag": "li",
+        "text": "Share Preview Link See how changes would look live on your …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-changeset_scheduled_date",
+        "tag": "li",
+        "text": "Schedule your customization changes to publish (\"go live\") …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-changeset_status",
+        "tag": "li",
+        "text": "Action Publish Save Draft Schedule",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-shfb_button2",
+        "tag": "li",
+        "text": "Text Color Normal Hover",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-shfb_button2_background",
+        "tag": "li",
+        "text": "Background Color Normal Hover",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-shfb_button2_border",
+        "tag": "li",
+        "text": "Border Color Normal Hover",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-shfb_button2_class",
+        "tag": "li",
+        "text": "Button Class",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-shfb_button2_default_state_title",
+        "tag": "li",
+        "text": "Default state",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-shfb_button2_link",
+        "tag": "li",
+        "text": "Button Link",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-shfb_button2_margin",
+        "tag": "li",
+        "text": "Wrapper Margin px % rem em vw vh px % rem em vw vh px % rem…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-shfb_button2_padding",
+        "tag": "li",
+        "text": "Wrapper Padding px % rem em vw vh px % rem em vw vh px % re…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-shfb_button2_sticky",
+        "tag": "li",
+        "text": "Text Color Normal Hover",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-shfb_button2_sticky_background",
+        "tag": "li",
+        "text": "Background Color Normal Hover",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-shfb_button2_sticky_border",
+        "tag": "li",
+        "text": "Border Color Normal Hover",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-shfb_button2_sticky_title",
+        "tag": "li",
+        "text": "Sticky Header - Active State",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-shfb_button2_text",
+        "tag": "li",
+        "text": "Button Text",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-shfb_button2_visibility",
+        "tag": "li",
+        "text": "Visibility Visible Hidden",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-controls",
+        "tag": "form",
+        "text": "Close Back Customizing ▸ Header Button 2 General Style Butt…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-footer-actions",
+        "tag": "div",
+        "text": "Hide Controls Desktop Tablet Mobile",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-header-actions",
+        "tag": "div",
+        "text": "Close",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-notifications-area",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-outer-theme-controls",
+        "tag": "div",
+        "text": "Back Back Back Back Back Back Updating Publish Settings Act…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-preview",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-sidebar-outer-content",
+        "tag": "div",
+        "text": "Back Back Back Back Back Back Updating Publish Settings Act…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-theme-controls",
+        "tag": "div",
+        "text": "Back Customizing ▸ Header Button 2 General Style Button Tex…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#global-styles-css-custom-properties-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney-block-editor-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney-shfb-elements",
+        "tag": "div",
+        "text": "Secondary MenuSocialSearchContact InfoHTMLButton 2HTML 2Sho…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney-style-book-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-1",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-1_archives-__i__",
+        "tag": "div",
+        "text": "Edit widget: Archives Add widget: Archives Edit Add Archive…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-10_nav_menu-__i__",
+        "tag": "div",
+        "text": "Edit widget: Navigation Menu Add widget: Navigation Menu Ed…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-11_pages-__i__",
+        "tag": "div",
+        "text": "Edit widget: Pages Add widget: Pages Edit Add Pages Pages T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-12_recent-comments-__i__",
+        "tag": "div",
+        "text": "Edit widget: Recent Comments Add widget: Recent Comments Ed…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-13_recent-posts-__i__",
+        "tag": "div",
+        "text": "Edit widget: Recent Posts Add widget: Recent Posts Edit Add…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-14_rss-__i__",
+        "tag": "div",
+        "text": "Edit widget: RSS Add widget: RSS Edit Add RSS RSS Enter the…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-15_search-__i__",
+        "tag": "div",
+        "text": "Edit widget: Search Add widget: Search Edit Add Search Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-16_sydney_contact_info-__i__",
+        "tag": "div",
+        "text": "Edit widget: Sydney: Contact info Add widget: Sydney: Conta…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-17_fp_social-__i__",
+        "tag": "div",
+        "text": "Edit widget: Sydney FP: Social Profile Add widget: Sydney F…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-18_tag_cloud-__i__",
+        "tag": "div",
+        "text": "Edit widget: Tag Cloud Add widget: Tag Cloud Edit Add Tag C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-19_text-__i__",
+        "tag": "div",
+        "text": "Edit widget: Text Add widget: Text Edit Add Text Text Delet…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-2_media_audio-__i__",
+        "tag": "div",
+        "text": "Edit widget: Audio Add widget: Audio Edit Add Audio Audio D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-20_media_video-__i__",
+        "tag": "div",
+        "text": "Edit widget: Video Add widget: Video Edit Add Video Video D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-21_wpforms-widget-__i__",
+        "tag": "div",
+        "text": "Edit widget: WPForms Add widget: WPForms Edit Add WPForms W…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-3_block-__i__",
+        "tag": "div",
+        "text": "Edit widget: Block Add widget: Block Edit Add Block Block B…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-4_calendar-__i__",
+        "tag": "div",
+        "text": "Edit widget: Calendar Add widget: Calendar Edit Add Calenda…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-5_categories-__i__",
+        "tag": "div",
+        "text": "Edit widget: Categories Add widget: Categories Edit Add Cat…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-6_custom_html-__i__",
+        "tag": "div",
+        "text": "Edit widget: Custom HTML Add widget: Custom HTML Edit Add C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-7_media_gallery-__i__",
+        "tag": "div",
+        "text": "Edit widget: Gallery Add widget: Gallery Edit Add Gallery G…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-8_media_image-__i__",
+        "tag": "div",
+        "text": "Edit widget: Image Add widget: Image Edit Add Image Image D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-9_meta-__i__",
+        "tag": "div",
+        "text": "Edit widget: Meta Add widget: Meta Edit Add Meta Meta Title…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-archives-1",
+        "tag": "div",
+        "text": "Edit widget: Archives Add widget: Archives Edit Add Archive…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-block-2",
+        "tag": "div",
+        "text": "Edit widget: Block Add widget: Block Edit Add Block Block B…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-calendar-1",
+        "tag": "div",
+        "text": "Edit widget: Calendar Add widget: Calendar Edit Add Calenda…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-categories-1",
+        "tag": "div",
+        "text": "Edit widget: Categories Add widget: Categories Edit Add Cat…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-custom_html-1",
+        "tag": "div",
+        "text": "Edit widget: Custom HTML Add widget: Custom HTML Edit Add C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-fp_social-1",
+        "tag": "div",
+        "text": "Edit widget: Sydney FP: Social Profile Add widget: Sydney F…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-media_audio-1",
+        "tag": "div",
+        "text": "Edit widget: Audio Add widget: Audio Edit Add Audio Audio D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-media_gallery-1",
+        "tag": "div",
+        "text": "Edit widget: Gallery Add widget: Gallery Edit Add Gallery G…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-media_image-1",
+        "tag": "div",
+        "text": "Edit widget: Image Add widget: Image Edit Add Image Image D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-media_video-1",
+        "tag": "div",
+        "text": "Edit widget: Video Add widget: Video Edit Add Video Video D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-meta-1",
+        "tag": "div",
+        "text": "Edit widget: Meta Add widget: Meta Edit Add Meta Meta Title…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-nav_menu-1",
+        "tag": "div",
+        "text": "Edit widget: Navigation Menu Add widget: Navigation Menu Ed…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-pages-1",
+        "tag": "div",
+        "text": "Edit widget: Pages Add widget: Pages Edit Add Pages Pages T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-recent-comments-1",
+        "tag": "div",
+        "text": "Edit widget: Recent Comments Add widget: Recent Comments Ed…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-recent-posts-1",
+        "tag": "div",
+        "text": "Edit widget: Recent Posts Add widget: Recent Posts Edit Add…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-rss-1",
+        "tag": "div",
+        "text": "Edit widget: RSS Add widget: RSS Edit Add RSS RSS Enter the…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-search-1",
+        "tag": "div",
+        "text": "Edit widget: Search Add widget: Search Edit Add Search Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-sydney_contact_info-1",
+        "tag": "div",
+        "text": "Edit widget: Sydney: Contact info Add widget: Sydney: Conta…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-tag_cloud-1",
+        "tag": "div",
+        "text": "Edit widget: Tag Cloud Add widget: Tag Cloud Edit Add Tag C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-text-4",
+        "tag": "div",
+        "text": "Edit widget: Text Add widget: Text Edit Add Text Text Delet…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-wpforms-widget-1",
+        "tag": "div",
+        "text": "Edit widget: WPForms Add widget: WPForms Edit Add WPForms W…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widgets-left",
+        "tag": "div",
+        "text": "Back Customizing ▸ Widgets Add a Widget Search Widgets Clea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#widgets-right",
+        "tag": "div",
+        "text": "Back Customizing ▸ Header Button 2 General Style Button Tex…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#widgets-search-desc",
+        "tag": "p",
+        "text": "The search results will be updated as you type.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".shfb-active",
+        "tag": "body",
+        "text": "Close Back Customizing ▸ Header Button 2 General Style Butt…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sydney-dimensions-header",
+        "tag": "div",
+        "text": "px % rem em vw vh px % rem em vw vh px % rem em vw vh",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dimensions-icon-link",
+        "tag": "i",
+        "text": "",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dimensions-input-label",
+        "tag": "label",
+        "text": "Top",
+        "count": 24,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-shfb-above-row",
+        "tag": "div",
+        "text": "TOP ROW",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".sydney-shfb-below-row",
+        "tag": "div",
+        "text": "BOTTOM ROW",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".sydney-shfb-header",
+        "tag": "div",
+        "text": "Desktop Tablet/Mobile Site Identity Primary Menu Button Hide",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sydney-shfb-main-row",
+        "tag": "div",
+        "text": "Site Identity Primary Menu Button",
+        "count": 4,
+        "hidden": false
+      }
+    ]
+  }
+}

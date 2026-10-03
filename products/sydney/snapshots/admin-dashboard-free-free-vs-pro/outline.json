@@ -1,0 +1,447 @@
+{
+  "slug": "admin-dashboard-free-free-vs-pro",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "dashboard-tab",
+      "event": "click",
+      "selector": ".sydney-dashboard-tabs-nav-link[data-tab-to]",
+      "count": 5
+    },
+    {
+      "label": "dashboard-notifications-toggle",
+      "event": "click",
+      "selector": "a.sydney-dashboard-theme-notifications",
+      "count": 1
+    },
+    {
+      "label": "dashboard-notifications-close",
+      "event": "click",
+      "selector": "a.sydney-dashboard-notifications-sidebar-close",
+      "count": 1
+    },
+    {
+      "label": "dashboard-write-guard",
+      "event": "click",
+      "selector": "a.sydney-dashboard-link.sydney-dashboard-link-danger",
+      "count": 5
+    },
+    {
+      "label": "builder-part-options",
+      "event": "click",
+      "selector": "span.not-selected",
+      "count": 16
+    },
+    {
+      "label": "builder-part-panel",
+      "event": "click",
+      "selector": "span.select-existing",
+      "count": 16
+    },
+    {
+      "label": "builder-part-pick",
+      "event": "change",
+      "selector": ".existing-parts-select",
+      "count": 8
+    },
+    {
+      "label": "builder-part-reset",
+      "event": "click",
+      "selector": ".reset",
+      "count": 8
+    },
+    {
+      "label": "builder-part-live",
+      "event": "click",
+      "selector": "span.edit-part",
+      "count": 24
+    },
+    {
+      "label": "builder-row-edit",
+      "event": "click",
+      "selector": "a.duplicate-template",
+      "count": 5
+    },
+    {
+      "label": "builder-conditions-open",
+      "event": "click",
+      "selector": ".sydney-display-conditions-modal-toggle",
+      "count": 2
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "ul.elementor-submenu-flyout.elementor-level-3 li a",
+      "count": 146
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#save-templates",
+        "tag": "button",
+        "text": "Save",
+        "count": 1,
+        "hidden": true,
+        "wired": "dashboard-write-guard",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sydney-dashboard-customize-link",
+        "tag": "a",
+        "text": "Customize",
+        "count": 8,
+        "hidden": true,
+        "wired": "external-link",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sydney-dashboard-external-link",
+        "tag": "a",
+        "text": "Go To Customizer",
+        "count": 6,
+        "hidden": true,
+        "wired": "external-link",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sydney-dashboard-footer-link",
+        "tag": "a",
+        "text": "Sydney",
+        "count": 1,
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sydney-dashboard-link-danger",
+        "tag": "a",
+        "text": "Deactivate",
+        "count": 2,
+        "hidden": true,
+        "wired": "dashboard-write-guard",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sydney-dashboard-link-info",
+        "tag": "a",
+        "text": "Customize",
+        "count": 1,
+        "hidden": true,
+        "wired": "external-link",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sydney-dashboard-link-primary",
+        "tag": "a",
+        "text": "Relaunch Wizard",
+        "count": 1,
+        "hidden": true,
+        "wired": "external-link",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sydney-dashboard-link-success",
+        "tag": "a",
+        "text": "Activate",
+        "count": 3,
+        "hidden": true,
+        "wired": "dashboard-write-guard",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sydney-dashboard-notifications-sidebar-close",
+        "tag": "a",
+        "text": "Close the sidebar",
+        "count": 1,
+        "hidden": true,
+        "wired": "dashboard-notifications-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sydney-dashboard-option-switcher",
+        "tag": "a",
+        "text": "Activate",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dashboard-tabs-nav-link",
+        "tag": "a",
+        "text": "Home",
+        "count": 5,
+        "hidden": false,
+        "wired": "dashboard-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sydney-dashboard-theme-notifications",
+        "tag": "a",
+        "text": "1",
+        "count": 1,
+        "hidden": false,
+        "wired": "dashboard-notifications-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sydney-dashboard-theme-website",
+        "tag": "a",
+        "text": "Website",
+        "count": 1,
+        "hidden": false,
+        "wired": "external-link",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sydney-display-conditions-modal-toggle",
+        "tag": "a",
+        "text": "Display conditions",
+        "count": 2,
+        "hidden": true,
+        "wired": "builder-conditions-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".sydney-editor-close",
+        "tag": "a",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": ".sydney-dashboard-tab-content",
+        "tag": "div",
+        "text": "No notifications found",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dashboard-tabs-nav-item",
+        "tag": "li",
+        "text": "Home",
+        "count": 5,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": ".sydney-display-conditions-textarea",
+        "tag": "input",
+        "text": "",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".sydney-dashboard-card-section",
+        "tag": "div",
+        "text": "Get Sydney Pro Take Sydney to a whole other level by upgrad…",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-display-conditions-modal",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#add-new-template",
+        "tag": "span",
+        "text": "Add Template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clip0_1_1797",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating your website with Sydney.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sydney-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#template-builder",
+        "tag": "div",
+        "text": "Global Template Display conditions Duplicate Delete Select …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_elementor",
+        "tag": "li",
+        "text": "Elementor ElementorQuick startSubmissions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_elementor-home",
+        "tag": "li",
+        "text": "Elementor Home Editor Upgrade",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sydney-dashboard",
+        "tag": "li",
+        "text": "Sydney Theme Dashboard Customize Starter Sites Patcher Upgr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dashboard-box-link",
+        "tag": "div",
+        "text": "Activate",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dashboard-card-header",
+        "tag": "div",
+        "text": "Customize your site Go To Customizer",
+        "count": 9,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dashboard-container",
+        "tag": "div",
+        "text": "Home Starter Sites Template Builder Settings Free vs Pro Ge…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".sydney-dashboard-feature-card-actions",
+        "tag": "div",
+        "text": "Customize",
+        "count": 28,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dashboard-module-card-header",
+        "tag": "div",
+        "text": "Get Sydney Pro Take Sydney to a whole other level by upgrad…",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dashboard-module-card-header-actions",
+        "tag": "div",
+        "text": "Upgrade Now",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dashboard-notification-content",
+        "tag": "div",
+        "text": "No notifications found",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dashboard-notifications-sidebar",
+        "tag": "div",
+        "text": "New Update No notifications found",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dashboard-notifications-sidebar-header",
+        "tag": "div",
+        "text": "New Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dashboard-notifications-sidebar-header-content",
+        "tag": "div",
+        "text": "New Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".sydney-dashboard-row",
+        "tag": "div",
+        "text": "Home Starter Sites Template Builder Settings Free vs Pro",
+        "count": 11,
+        "hidden": false
+      }
+    ]
+  }
+}
