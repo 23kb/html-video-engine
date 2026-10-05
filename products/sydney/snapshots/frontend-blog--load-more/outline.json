@@ -3,6 +3,12 @@
   "registryPresent": true,
   "transitions": [
     {
+      "label": "blog-load-more",
+      "event": "click",
+      "selector": "div.roll-button.button",
+      "count": 1
+    },
+    {
       "label": "external-link",
       "event": "click",
       "selector": "a.desktop-logo-link",
@@ -226,13 +232,6 @@
         "text": "Home Services Work Journal Studio About Contact",
         "count": 1,
         "hidden": false
-      },
-      {
-        "sel": "#sydney-style-min-inline-css",
-        "tag": "link",
-        "text": "",
-        "count": 1,
-        "hidden": true
       },
       {
         "sel": "#text-4",

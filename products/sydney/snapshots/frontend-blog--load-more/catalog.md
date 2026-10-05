@@ -3,7 +3,7 @@
 > Auto-generated. Do not edit by hand.
 > Source: `products/sydney/snapshots/frontend-blog--load-more/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 38 selector entries across 2 sections.
+> 41 selector entries across 2 sections.
 
 Provenance anchor form: `products/sydney/snapshots/frontend-blog--load-more/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
@@ -12,7 +12,7 @@ Anchors are derived from the selector value and are stable across reruns.
 
 ## IDs
 
-_30 entries_
+_33 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -28,6 +28,10 @@ _30 entries_
 | <a id="id--nav_menu-3"></a>`id--nav_menu-3` | `#nav_menu-3` | aside | Legal Privacy policy | 1 |
 | <a id="id--page"></a>`id--page` | `#page` | div | Skip to content | 1 |
 | <a id="id--post-1"></a>`id--post-1` | `#post-1` | article |  | 1 |
+| <a id="id--post-1526"></a>`id--post-1526` | `#post-1526` | article |  | 1 |
+| <a id="id--post-1527"></a>`id--post-1527` | `#post-1527` | article |  | 1 |
+| <a id="id--post-1528"></a>`id--post-1528` | `#post-1528` | article |  | 1 |
+| <a id="id--post-1529"></a>`id--post-1529` | `#post-1529` | article |  | 1 |
 | <a id="id--post-329"></a>`id--post-329` | `#post-329` | article |  | 1 |
 | <a id="id--post-330"></a>`id--post-330` | `#post-330` | article |  | 1 |
 | <a id="id--post-331"></a>`id--post-331` | `#post-331` | article |  | 1 |
@@ -39,7 +43,6 @@ _30 entries_
 | <a id="id--search-form-2"></a>`id--search-form-2` | `#search-form-2` | input |  | 1 |
 | <a id="id--search-form-3"></a>`id--search-form-3` | `#search-form-3` | input |  | 1 |
 | <a id="id--site-navigation"></a>`id--site-navigation` | `#site-navigation` | nav | Home | 1 |
-| <a id="id--sydney-style-min-inline-css"></a>`id--sydney-style-min-inline-css` | `#sydney-style-min-inline-css` | link |  | 1 |
 | <a id="id--text-4"></a>`id--text-4` | `#text-4` | aside | Visit 1120 NW Couch St, Suite 300 Portland, OR 97209 hello@… | 1 |
 | <a id="id--toptarget"></a>`id--toptarget` | `#toptarget` | span |  | 1 |
 | <a id="id--wp-block-library-inline-css"></a>`id--wp-block-library-inline-css` | `#wp-block-library-inline-css` | link |  | 1 |

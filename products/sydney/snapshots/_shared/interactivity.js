@@ -39,6 +39,28 @@
   }
 
   R.register([
+    // ─ Blog "Load more posts" ────────────────────────────────────────────
+    // @since 2026-10-05 @source sydney-pro-ii/js/infinite-load.js (sydney.infiniteScroll.init: the button hides on click,
+    // InfiniteScroll appends the next page's .post items, the button shows again; on the last page it stays hidden)
+    // @verified 2026-10-05 @product sydney. Pages are parked at capture (cleanup park-load-more → more-posts-<n>).
+    {
+      label: 'blog-load-more',
+      event: 'click',
+      match: function (el) { return !!up(el, '.load-more-container .load-more-posts'); },
+      apply: function (el) {
+        var b = up(el, '.load-more-posts'), wrap = $('.row[data-pagination="button"]'); if (!wrap) return;
+        // Live (checked 2026-10-05): the click hides the button; the append handler shows it again even after the last
+        // page, and a click past the last page only hides it (InfiniteScroll canLoad is false, nothing appends).
+        var next = +(wrap.getAttribute('data-snap-next-page') || 2), parked = +(wrap.getAttribute('data-snap-more-pages') || 0);
+        b.style.display = 'none';
+        if (next - 1 > parked) return;
+        var f = frag('more-posts-' + next);
+        if (!f) { R.miss('journal page ' + next, 'page not parked'); return; }
+        wrap.appendChild(f);
+        wrap.setAttribute('data-snap-next-page', String(next + 1));
+        b.style.display = 'inline-block';
+      }
+    },
     // ─ Sydney dashboard ──────────────────────────────────────────────────
     // @since 2026-10-03 @source sydney-pro-ii/inc/dashboard/assets/js/sydney-dashboard.js:515-542 @verified 2026-10-03 @product sydney
     {
