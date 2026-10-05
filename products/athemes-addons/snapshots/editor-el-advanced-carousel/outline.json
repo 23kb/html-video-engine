@@ -1,0 +1,1135 @@
+{
+  "slug": "editor-el-advanced-carousel",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "link-world-page",
+      "event": "click",
+      "selector": "div.wp-auth-fallback p a",
+      "count": 1
+    },
+    {
+      "label": "link-external",
+      "event": "click",
+      "selector": "div.elementor-control-field-description a",
+      "count": 7
+    },
+    {
+      "label": "el-panel-tab",
+      "event": "click",
+      "selector": ".elementor-component-tab.elementor-panel-navigation-tab[data-tab]",
+      "count": 3
+    },
+    {
+      "label": "el-panel-section",
+      "event": "click",
+      "selector": ".elementor-panel-heading",
+      "count": 2
+    },
+    {
+      "label": "el-repeater",
+      "event": "click",
+      "selector": "button.elementor-repeater-row-item-title",
+      "count": 16
+    },
+    {
+      "label": "el-panel-promo",
+      "event": "click",
+      "selector": "button[data-event]",
+      "count": 10
+    },
+    {
+      "label": "el-notice-dismiss",
+      "event": "click",
+      "selector": ".elementor-control-notice-dismiss.tooltip-target[data-event][data-tooltip]",
+      "count": 5
+    },
+    {
+      "label": "el-url-options",
+      "event": "click",
+      "selector": ".elementor-control-unit-1.elementor-control-url-more[data-tooltip]",
+      "count": 5
+    },
+    {
+      "label": "el-choose",
+      "event": "click",
+      "selector": ".elementor-choices-label.elementor-control-unit-1[data-tooltip]",
+      "count": 20
+    },
+    {
+      "label": "el-responsive-switcher",
+      "event": "click",
+      "selector": ".elementor-responsive-switcher.tooltip-target[data-device][data-tooltip]",
+      "count": 9
+    },
+    {
+      "label": "el-control-label",
+      "event": "click",
+      "selector": "div.elementor-control-content label",
+      "count": 64
+    },
+    {
+      "label": "el-device",
+      "event": "click",
+      "selector": ".MuiButtonBase-root.MuiTab-root[data-testid]",
+      "count": 3
+    },
+    {
+      "label": "el-topbar",
+      "event": "click",
+      "selector": "button.MuiButtonBase-root.MuiToggleButton-root",
+      "count": 50
+    },
+    {
+      "label": "native-select",
+      "event": "click",
+      "selector": "select[data-setting]",
+      "count": 13
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#elementor-navigator__ai-titles",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__close",
+        "tag": "button",
+        "text": "Close structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__toggle-all",
+        "tag": "button",
+        "text": "Expand all elements",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel__editor__help__link",
+        "tag": "a",
+        "text": "Need Help",
+        "count": 1,
+        "hidden": false,
+        "wired": "link-external",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-footer-history",
+        "tag": "button",
+        "text": "History",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-navigator",
+        "tag": "button",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-responsive",
+        "tag": "button",
+        "text": "Responsive Mode",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-options",
+        "tag": "div",
+        "text": "Last edited on Oct 2, 17:42 by Ingrid Vale Save Draft Save …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-preview",
+        "tag": "button",
+        "text": "Preview Changes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-settings",
+        "tag": "button",
+        "text": "Page Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-header-add-button",
+        "tag": "button",
+        "text": "Widgets Panel",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-kit-back",
+        "tag": "button",
+        "text": "Back",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-kit-close",
+        "tag": "button",
+        "text": "Close",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-menu-button",
+        "tag": "button",
+        "text": "Menu",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-saver-button-publish",
+        "tag": "button",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-saver-button-save-options",
+        "tag": "button",
+        "text": "Save Options",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#elementor-control-custom_attributes-c3639",
+        "tag": "input",
+        "text": "key|value",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-custom_attributes-c3677",
+        "tag": "input",
+        "text": "key|value",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-custom_attributes-c3715",
+        "tag": "input",
+        "text": "key|value",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-custom_attributes-c3753",
+        "tag": "input",
+        "text": "key|value",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-custom_attributes-c3791",
+        "tag": "input",
+        "text": "key|value",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-custom-c3632",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-custom-c3670",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-custom-c3708",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-custom-c3746",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-custom-c3784",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2887",
+        "tag": "select",
+        "text": "1 2 3 4 5 6",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-default-c2888",
+        "tag": "select",
+        "text": "1 2 3 4 5 6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2889",
+        "tag": "select",
+        "text": "1 2 3 4 5 6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3634",
+        "tag": "input",
+        "text": "https://www.youtube.com/watch?v=9uOETcuFjbE",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3636",
+        "tag": "input",
+        "text": "Homepage",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3637",
+        "tag": "textarea",
+        "text": "Climate data your team can act on.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3638",
+        "tag": "select",
+        "text": "None Media File Custom URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3639",
+        "tag": "input",
+        "text": "https://your-link.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3640",
+        "tag": "select",
+        "text": "Select Services 1 (section) Call to action 1 (section) Agen…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3672",
+        "tag": "input",
+        "text": "https://www.youtube.com/watch?v=9uOETcuFjbE",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3674",
+        "tag": "input",
+        "text": "Brand system",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3675",
+        "tag": "textarea",
+        "text": "Navy, teal and a single accent violet.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3676",
+        "tag": "select",
+        "text": "None Media File Custom URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3677",
+        "tag": "input",
+        "text": "https://your-link.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3678",
+        "tag": "select",
+        "text": "Select Services 1 (section) Call to action 1 (section) Agen…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3710",
+        "tag": "input",
+        "text": "https://www.youtube.com/watch?v=9uOETcuFjbE",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3712",
+        "tag": "input",
+        "text": "Sister site: Lumen Health",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3713",
+        "tag": "textarea",
+        "text": "The same grid, a calmer palette.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3714",
+        "tag": "select",
+        "text": "None Media File Custom URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3715",
+        "tag": "input",
+        "text": "https://your-link.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3716",
+        "tag": "select",
+        "text": "Select Services 1 (section) Call to action 1 (section) Agen…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3748",
+        "tag": "input",
+        "text": "https://www.youtube.com/watch?v=9uOETcuFjbE",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3750",
+        "tag": "input",
+        "text": "Lumen palette",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3751",
+        "tag": "textarea",
+        "text": "Teal and green for a patient portal.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3752",
+        "tag": "select",
+        "text": "None Media File Custom URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3753",
+        "tag": "input",
+        "text": "https://your-link.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3754",
+        "tag": "select",
+        "text": "Select Services 1 (section) Call to action 1 (section) Agen…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3786",
+        "tag": "input",
+        "text": "https://www.youtube.com/watch?v=9uOETcuFjbE",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3788",
+        "tag": "input",
+        "text": "Saltmarsh cans",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3789",
+        "tag": "textarea",
+        "text": "Three styles, one system.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3790",
+        "tag": "select",
+        "text": "None Media File Custom URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3791",
+        "tag": "input",
+        "text": "https://your-link.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3792",
+        "tag": "select",
+        "text": "Select Services 1 (section) Call to action 1 (section) Agen…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3632",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3670",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3708",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3746",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3784",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-is_external-c3639",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-is_external-c3677",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-is_external-c3715",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-is_external-c3753",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-is_external-c3791",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-nofollow-c3639",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-nofollow-c3677",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-nofollow-c3715",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-nofollow-c3753",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-nofollow-c3791",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3632",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3670",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3708",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3746",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3784",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-video-c3632",
+        "tag": "input",
+        "text": "video",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-video-c3670",
+        "tag": "input",
+        "text": "video",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-video-c3708",
+        "tag": "input",
+        "text": "video",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-video-c3746",
+        "tag": "input",
+        "text": "video",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-video-c3784",
+        "tag": "input",
+        "text": "video",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-mode-switcher-preview-input",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#elementor-panel",
+        "tag": "aside",
+        "text": "Edit Advanced Carousel Content Style Advanced Slides Slides…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel__editor__help",
+        "tag": "div",
+        "text": "Need Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-content-wrapper",
+        "tag": "main",
+        "text": "Content Style Advanced Slides Slides Homepage Brand system …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-footer",
+        "tag": "footer",
+        "text": "Update Last edited on Oct 2, 17:42 by Ingrid Vale Save Draf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-preview-label",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-publish",
+        "tag": "div",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-sub-menu-item-save-draft",
+        "tag": "div",
+        "text": "Save Draft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-sub-menu-item-save-template",
+        "tag": "div",
+        "text": "Save as Template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-tools",
+        "tag": "nav",
+        "text": "Update Last edited on Oct 2, 17:42 by Ingrid Vale Save Draf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-header",
+        "tag": "div",
+        "text": "Edit Advanced Carousel",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-header-title",
+        "tag": "h2",
+        "text": "Edit Advanced Carousel",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-header-wrapper",
+        "tag": "header",
+        "text": "Edit Advanced Carousel",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-inner",
+        "tag": "div",
+        "text": "Edit Advanced Carousel Content Style Advanced Slides Slides…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-page-editor",
+        "tag": "div",
+        "text": "Content Style Advanced Slides Slides Homepage Brand system …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-saver-button-publish-label",
+        "tag": "span",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-state-loading",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#_goober",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ace-tm",
+        "tag": "link",
+        "text": "",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-controls",
+        "tag": "div",
+        "text": "Slides Slides Homepage Brand system Sister site: Lumen Heal…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-editor-wrapper",
+        "tag": "div",
+        "text": "Edit Advanced Carousel Content Style Advanced Slides Slides…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-editor-wrapper-v2",
+        "tag": "div",
+        "text": "Selected work Publish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-loading",
+        "tag": "div",
+        "text": "Loading",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-mode-switcher",
+        "tag": "div",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-mode-switcher-inner",
+        "tag": "div",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-mode-switcher-preview",
+        "tag": "label",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-navigator",
+        "tag": "aside",
+        "text": "Structure Show/hide inner elements Container Show/hide Elem…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__elements",
+        "tag": "div",
+        "text": "Show/hide inner elements Container Show/hide Element Show/h…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__footer",
+        "tag": "div",
+        "text": "Resize structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__footer__resize-bar",
+        "tag": "div",
+        "text": "Resize structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__header",
+        "tag": "div",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__header__title",
+        "tag": "h2",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__inner",
+        "tag": "div",
+        "text": "Structure Show/hide inner elements Container Show/hide Elem…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-preview",
+        "tag": "main",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-preview-iframe",
+        "tag": "iframe",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-preview-loading",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-preview-responsive-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-responsive-bar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-try-safe-mode",
+        "tag": "div",
+        "text": "Can't Edit? Enable Safe Mode Having problems loading Elemen…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gt1",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gt2",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gt3",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gt4",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gt5",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-1",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-2",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-3",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-4",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-5",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aafe-template-link-container",
+        "tag": "div",
+        "text": "",
+        "count": 5,
+        "hidden": true
+      }
+    ]
+  }
+}

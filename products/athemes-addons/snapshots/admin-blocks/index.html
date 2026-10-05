@@ -1,0 +1,610 @@
+<!doctype html>
+<html data-snap-unbaked="29" class="" lang="en-US" style="margin-top: 0px; padding-top: 0px;"><head><link rel="stylesheet" href="../_shared/css/29467a00741c.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>aThemes Blocks ‹ Northline Studio — WordPress</title>
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="stylesheet" href="../_shared/css/c4f47334cae1.css" data-origin="/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load%5Bchunk_0%5D=dashicons,admin-bar,common,forms,admin-menu,dashboard,list-tables,edit,revisions,media,themes,about,nav-menus,wp-pointer,widgets&amp;load%5Bchunk_1%5D=,site-icon,l10n,wp-base-styles,wp-tooltip,buttons,wp-auth-check,wp-theme,wp-components,wp-commands,media-views&amp;ver=7.1.2">
+<link rel="stylesheet" href="../_shared/css/7132a8e5594c.css">
+<link rel="stylesheet" href="../_shared/css/a578fe7f46dd.css" data-origin="/wp-content/plugins/wpforms-lite/assets/lib/font-awesome/css/all.min.css?ver=7.0.1">
+<link rel="stylesheet" href="../_shared/css/46f6e065b71d.css" data-origin="/wp-content/plugins/wpforms-lite/assets/lib/font-awesome/css/v4-shims.min.css?ver=4.7.0">
+<link rel="stylesheet" href="../_shared/css/9622fe018ae2.css" data-origin="/wp-admin/css/colors/modern/colors.min.css?ver=7.1.2">
+<link rel="stylesheet" href="../_shared/css/5c70cddb98f6.css" id="wp-view-transitions-admin-inline-css">
+<style data-origin="/wp-content/plugins/athemes-blocks/assets/css/admin/plugin-dashboard/sidebar-notifications.css?ver=1.1.4">/*!********************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/sass/admin/plugin-dashboard/sidebar-notifications.scss ***!
+  \********************************************************************************************************************************************************/
+/* Notifications Sidebar */
+.atb-dashboard-notifications-sidebar {
+  position: fixed;
+  top: 96px;
+  right: 0;
+  width: 100%;
+  max-width: 500px;
+  height: calc(100vh - 92px);
+  background-color: #FFF;
+  box-shadow: -10px 12px 14px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(100%, 0, 0);
+  transition: ease transform 300ms, ease opacity 300ms;
+  z-index: 1000;
+}
+.atb-dashboard-notifications-sidebar.opened {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.atb-dashboard-notifications-sidebar.closing {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  transition: ease opacity 300ms;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-close:hover {
+  opacity: 0.7;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #EAEEF2;
+  padding: 20px 22px;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-header .atb-dashboard-notifications-sidebar-header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #FFF;
+  border: 1px solid #EBEDEF;
+  border-radius: 35px;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-header .atb-dashboard-notifications-sidebar-header-icon svg {
+  position: relative;
+  top: -2px;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-header .atb-dashboard-notifications-sidebar-header-content h3 {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+  color: #3858E9;
+  margin: 0;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-header .atb-dashboard-notifications-sidebar-header-content p {
+  font-size: 13px;
+  line-height: 18px;
+  color: #757575;
+  margin: 0;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-tabs {
+  position: relative;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-tabs:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  width: calc(100% - 40px);
+  border-bottom: 1px solid #F0F0F1;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-tabs + .atb-dashboard-notifications-sidebar-body {
+  max-height: calc(100vh - 232px);
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-body {
+  padding: 20px;
+  overflow-y: auto;
+  max-height: calc(100vh - 180px);
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-body::-webkit-scrollbar {
+  width: 5px;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-body::-webkit-scrollbar-track {
+  background: #e2e2e2;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-body::-webkit-scrollbar-thumb {
+  background-color: #CCC;
+}
+
+/* Notifications (card) */
+.atb-dashboard-notification .atb-dashboard-notification-date {
+  display: block;
+  font-size: 13px;
+  line-height: 18px;
+  color: #757575;
+}
+.atb-dashboard-notification .atb-dashboard-notification-date + .atb-dashboard-notification-content {
+  margin-top: 20px;
+}
+.atb-dashboard-notification .changelog-tag {
+  display: inline-block;
+  font-size: 10px;
+  line-height: 18px;
+  color: #FFF;
+  padding: 0px 10px;
+  background-color: #CCC;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.atb-dashboard-notification .changelog-tag.changelog-added {
+  background-color: #73B189;
+}
+.atb-dashboard-notification .changelog-tag.changelog-changed {
+  background-color: #F6CA45;
+}
+.atb-dashboard-notification .changelog-tag.changelog-fixed {
+  background-color: #967BE3;
+}
+.atb-dashboard-notification .changelog-description {
+  display: block;
+  font-size: 13px;
+  line-height: 21px;
+  font-weight: 400;
+  color: #757575;
+  margin-top: 5px;
+}
+.atb-dashboard-notification .atb-dashboard-notification-content ul {
+  margin: 0;
+}
+.atb-dashboard-notification .atb-dashboard-notification-content ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+  color: #101517;
+}
+.atb-dashboard-notification .atb-dashboard-notification-content ul li + li {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #E7E7E7;
+}
+.atb-dashboard-notification + .atb-dashboard-notification {
+  margin: 20px -20px 0px;
+  padding: 20px 20px 0px;
+  border-top: 1px solid #E7E7E7;
+}
+
+.atb-dashboard__top-bar-item-notification.read .atb-dashboard__top-bar-item-notification-count {
+  display: none;
+}
+
+/*# sourceMappingURL=sidebar-notifications.css.map*/</style>
+<link rel="stylesheet" href="../_shared/css/1cf53140bb5d.css" data-origin="/css2?family=Roboto:wght@400;500;700&amp;display=swap&amp;ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/78b7be432b3a.css" data-origin="/wp-content/plugins/elementor/vendor/elementor/wp-one-package/assets/build/common.css?ver=1.0.62">
+<link rel="stylesheet" href="../_shared/css/695eb5781f1f.css" data-origin="/wp-content/plugins/elementor/assets/css/modules/editor-one/admin-menu.min.css?ver=4.0.9">
+<link rel="stylesheet" href="../_shared/css/7fb6fff6e7da.css" data-origin="/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.48.0">
+<link rel="stylesheet" href="../_shared/css/b88e5518f5b9.css" data-origin="/wp-content/plugins/elementor/assets/css/common.min.css?ver=4.0.9">
+<link rel="stylesheet" href="../_shared/css/3ce0d9d570fd.css" data-origin="/wp-content/plugins/elementor/assets/css/theme-light.min.css?ver=4.0.9">
+<link rel="stylesheet" href="../_shared/css/4b76679d6261.css" data-origin="/wp-content/plugins/elementor/assets/css/admin.min.css?ver=4.0.9">
+<link rel="stylesheet" href="../_shared/css/4ace89f62980.css" data-origin="/wp-includes/js/thickbox/thickbox.css?ver=7.1.2">
+<link rel="stylesheet" href="../_shared/css/eacb23c21a0f.css" data-origin="/wp-content/plugins/wpforms-lite/assets/css/admin-bar.min.css?ver=1.10.0.5">
+<link rel="stylesheet" href="../_shared/css/c720a7f5e432.css" data-origin="/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17">
+<link rel="stylesheet" href="../_shared/css/ea958276b7de.css" data-origin="/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=7.1.2">
+<link rel="stylesheet" href="../_shared/css/72dccd689b5d.css" data-origin="/wp-includes/js/imgareaselect/imgareaselect.css?ver=0.9.8">
+<link rel="stylesheet" href="../_shared/css/ba282c0dd22f.css" id="wp-emoji-styles-inline-css">
+
+
+        <link rel="stylesheet" href="../_shared/css/ac1d84bc0efd.css">
+        		<link rel="stylesheet" href="../_shared/css/04f147b8f1ea.css">
+				<link rel="stylesheet" href="../_shared/css/86153420b704.css">
+		
+	
+	
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"><link rel="stylesheet" href="../_shared/css/2e89200c8716.css"><link rel="stylesheet" href="../_shared/css/7fd350c669e5.css"><link rel="stylesheet" href="../_shared/css/c765558cabc1.css"><link rel="stylesheet" href="../_shared/css/f8c5b631a9fc.css"><link rel="stylesheet" href="../_shared/css/b9aef0c2c3d4.css"><link rel="stylesheet" href="../_shared/css/064ccc048836.css"><link rel="stylesheet" href="../_shared/css/9d042873285b.css"><link rel="stylesheet" href="../_shared/css/65f19012e821.css"><link rel="stylesheet" href="../_shared/css/542e5e048421.css"><link rel="stylesheet" href="../_shared/css/0f377f0a1c5d.css"><link rel="stylesheet" href="../_shared/css/d33d880870f0.css"><link rel="stylesheet" href="../_shared/css/c1ffdec3a6c7.css"><link rel="stylesheet" href="../_shared/css/f0615b626179.css"><link rel="stylesheet" href="../_shared/css/40e44ecd0eb8.css"><link rel="stylesheet" href="../_shared/css/4d636d379c49.css"><link rel="stylesheet" href="../_shared/css/99f9725500ef.css"><link rel="stylesheet" href="../_shared/css/1f51979cb68d.css"><link rel="stylesheet" href="../_shared/css/195a803ff4b5.css"><link rel="stylesheet" href="../_shared/css/22163b486ad7.css"><link rel="stylesheet" href="../_shared/css/61e6713a98f2.css"><link rel="stylesheet" href="../_shared/css/93893b6f6254.css"><link rel="stylesheet" href="../_shared/css/aaa0e5dff106.css"><link rel="stylesheet" href="../_shared/css/603348353aa4.css"><link rel="stylesheet" href="../_shared/css/367f8cedd175.css"><link rel="stylesheet" href="../_shared/css/a65d581e420f.css"><link rel="stylesheet" href="../_shared/css/4d4c0c6f20df.css"><link rel="stylesheet" href="../_shared/css/dc941bb72ab0.css"><link rel="stylesheet" href="../_shared/css/48cbb88d12b4.css"><link rel="stylesheet" href="../_shared/css/61041c01af68.css"><style data-emotion="css" data-s="">.css-13ety0k-classes{margin-bottom:calc(4px * 3);}/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkB3b3JkcHJlc3MvY29tcG9uZW50cy9zcmMvdG9nZ2xlLWNvbnRyb2wvaW5kZXgudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWdEK0IiLCJmaWxlIjoiQHdvcmRwcmVzcy9jb21wb25lbnRzL3NyYy90b2dnbGUtY29udHJvbC9pbmRleC50c3giLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEV4dGVybmFsIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgdHlwZSB7IENoYW5nZUV2ZW50LCBGb3J3YXJkZWRSZWYgfSBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBjc3MgfSBmcm9tICdAZW1vdGlvbi9yZWFjdCc7XG5pbXBvcnQgY2xzeCBmcm9tICdjbHN4JztcblxuLyoqXG4gKiBXb3JkUHJlc3MgZGVwZW5kZW5jaWVzXG4gKi9cbmltcG9ydCB7IGZvcndhcmRSZWYgfSBmcm9tICdAd29yZHByZXNzL2VsZW1lbnQnO1xuaW1wb3J0IHsgdXNlSW5zdGFuY2VJZCB9IGZyb20gJ0B3b3JkcHJlc3MvY29tcG9zZSc7XG5pbXBvcnQgZGVwcmVjYXRlZCBmcm9tICdAd29yZHByZXNzL2RlcHJlY2F0ZWQnO1xuXG4vKipcbiAqIEludGVybmFsIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgeyBGbGV4QmxvY2sgfSBmcm9tICcuLi9mbGV4JztcbmltcG9ydCBGb3JtVG9nZ2xlIGZyb20gJy4uL2Zvcm0tdG9nZ2xlJztcbmltcG9ydCBCYXNlQ29udHJvbCBmcm9tICcuLi9iYXNlLWNvbnRyb2wnO1xuaW1wb3J0IHR5cGUgeyBXb3JkUHJlc3NDb21wb25lbnRQcm9wcyB9IGZyb20gJy4uL2NvbnRleHQvd29yZHByZXNzLWNvbXBvbmVudCc7XG5pbXBvcnQgdHlwZSB7IFRvZ2dsZUNvbnRyb2xQcm9wcyB9IGZyb20gJy4vdHlwZXMnO1xuaW1wb3J0IHsgSFN0YWNrIH0gZnJvbSAnLi4vaC1zdGFjayc7XG5pbXBvcnQgeyB1c2VDeCB9IGZyb20gJy4uL3V0aWxzJztcbmltcG9ydCB7IHNwYWNlIH0gZnJvbSAnLi4vdXRpbHMvc3BhY2UnO1xuXG5mdW5jdGlvbiBVbmZvcndhcmRlZFRvZ2dsZUNvbnRyb2woXG5cdHtcblx0XHRfX25leHRIYXNOb01hcmdpbkJvdHRvbSxcblx0XHRsYWJlbCxcblx0XHRjaGVja2VkLFxuXHRcdGhlbHAsXG5cdFx0Y2xhc3NOYW1lLFxuXHRcdG9uQ2hhbmdlLFxuXHRcdGRpc2FibGVkLFxuXHR9OiBXb3JkUHJlc3NDb21wb25lbnRQcm9wczwgVG9nZ2xlQ29udHJvbFByb3BzLCAnaW5wdXQnLCBmYWxzZSA+LFxuXHRyZWY6IEZvcndhcmRlZFJlZjwgSFRNTElucHV0RWxlbWVudCA+XG4pIHtcblx0ZnVuY3Rpb24gb25DaGFuZ2VUb2dnbGUoIGV2ZW50OiBDaGFuZ2VFdmVudDwgSFRNTElucHV0RWxlbWVudCA+ICkge1xuXHRcdG9uQ2hhbmdlKCBldmVudC50YXJnZXQuY2hlY2tlZCApO1xuXHR9XG5cdGNvbnN0IGluc3RhbmNlSWQgPSB1c2VJbnN0YW5jZUlkKCBUb2dnbGVDb250cm9sICk7XG5cdGNvbnN0IGlkID0gYGluc3BlY3Rvci10b2dnbGUtY29udHJvbC0keyBpbnN0YW5jZUlkIH1gO1xuXG5cdGNvbnN0IGN4ID0gdXNlQ3goKTtcblx0Y29uc3QgY2xhc3NlcyA9IGN4KFxuXHRcdCdjb21wb25lbnRzLXRvZ2dsZS1jb250cm9sJyxcblx0XHRjbGFzc05hbWUsXG5cdFx0ISBfX25leHRIYXNOb01hcmdpbkJvdHRvbSAmJiBjc3MoIHsgbWFyZ2luQm90dG9tOiBzcGFjZSggMyApIH0gKVxuXHQpO1xuXG5cdGlmICggISBfX25leHRIYXNOb01hcmdpbkJvdHRvbSApIHtcblx0XHRkZXByZWNhdGVkKCAnQm90dG9tIG1hcmdpbiBzdHlsZXMgZm9yIHdwLmNvbXBvbmVudHMuVG9nZ2xlQ29udHJvbCcsIHtcblx0XHRcdHNpbmNlOiAnNi43Jyxcblx0XHRcdHZlcnNpb246ICc3LjAnLFxuXHRcdFx0aGludDogJ1NldCB0aGUgYF9fbmV4dEhhc05vTWFyZ2luQm90dG9tYCBwcm9wIHRvIHRydWUgdG8gc3RhcnQgb3B0aW5nIGludG8gdGhlIG5ldyBzdHlsZXMsIHdoaWNoIHdpbGwgYmVjb21lIHRoZSBkZWZhdWx0IGluIGEgZnV0dXJlIHZlcnNpb24uJyxcblx0XHR9ICk7XG5cdH1cblxuXHRsZXQgZGVzY3JpYmVkQnksIGhlbHBMYWJlbDtcblx0aWYgKCBoZWxwICkge1xuXHRcdGlmICggdHlwZW9mIGhlbHAgPT09ICdmdW5jdGlvbicgKSB7XG5cdFx0XHQvLyBgaGVscGAgYXMgYSBmdW5jdGlvbiB3b3JrcyBvbmx5IGZvciBjb250cm9sbGVkIGNvbXBvbmVudHMgd2hlcmVcblx0XHRcdC8vIGBjaGVja2VkYCBpcyBwYXNzZWQgZG93biBmcm9tIHBhcmVudCBjb21wb25lbnQuIFVuY29udHJvbGxlZFxuXHRcdFx0Ly8gY29tcG9uZW50IGNhbiBzaG93IG9ubHkgYSBzdGF0aWMgaGVscCBsYWJlbC5cblx0XHRcdGlmICggY2hlY2tlZCAhPT0gdW5kZWZpbmVkICkge1xuXHRcdFx0XHRoZWxwTGFiZWwgPSBoZWxwKCBjaGVja2VkICk7XG5cdFx0XHR9XG5cdFx0fSBlbHNlIHtcblx0XHRcdGhlbHBMYWJlbCA9IGhlbHA7XG5cdFx0fVxuXHRcdGlmICggaGVscExhYmVsICkge1xuXHRcdFx0ZGVzY3JpYmVkQnkgPSBpZCArICdfX2hlbHAnO1xuXHRcdH1cblx0fVxuXG5cdHJldHVybiAoXG5cdFx0PEJhc2VDb250cm9sXG5cdFx0XHRpZD17IGlkIH1cblx0XHRcdGhlbHA9e1xuXHRcdFx0XHRoZWxwTGFiZWwgJiYgKFxuXHRcdFx0XHRcdDxzcGFuIGNsYXNzTmFtZT1cImNvbXBvbmVudHMtdG9nZ2xlLWNvbnRyb2xfX2hlbHBcIj5cblx0XHRcdFx0XHRcdHsgaGVscExhYmVsIH1cblx0XHRcdFx0XHQ8L3NwYW4+XG5cdFx0XHRcdClcblx0XHRcdH1cblx0XHRcdGNsYXNzTmFtZT17IGNsYXNzZXMgfVxuXHRcdFx0X19uZXh0SGFzTm9NYXJnaW5Cb3R0b21cblx0XHQ+XG5cdFx0XHQ8SFN0YWNrIGp1c3RpZnk9XCJmbGV4LXN0YXJ0XCIgc3BhY2luZz17IDIgfT5cblx0XHRcdFx0PEZvcm1Ub2dnbGVcblx0XHRcdFx0XHRpZD17IGlkIH1cblx0XHRcdFx0XHRjaGVja2VkPXsgY2hlY2tlZCB9XG5cdFx0XHRcdFx0b25DaGFuZ2U9eyBvbkNoYW5nZVRvZ2dsZSB9XG5cdFx0XHRcdFx0YXJpYS1kZXNjcmliZWRieT17IGRlc2NyaWJlZEJ5IH1cblx0XHRcdFx0XHRkaXNhYmxlZD17IGRpc2FibGVkIH1cblx0XHRcdFx0XHRyZWY9eyByZWYgfVxuXHRcdFx0XHQvPlxuXHRcdFx0XHQ8RmxleEJsb2NrXG5cdFx0XHRcdFx0YXM9XCJsYWJlbFwiXG5cdFx0XHRcdFx0aHRtbEZvcj17IGlkIH1cblx0XHRcdFx0XHRjbGFzc05hbWU9eyBjbHN4KCAnY29tcG9uZW50cy10b2dnbGUtY29udHJvbF9fbGFiZWwnLCB7XG5cdFx0XHRcdFx0XHQnaXMtZGlzYWJsZWQnOiBkaXNhYmxlZCxcblx0XHRcdFx0XHR9ICkgfVxuXHRcdFx0XHQ+XG5cdFx0XHRcdFx0eyBsYWJlbCB9XG5cdFx0XHRcdDwvRmxleEJsb2NrPlxuXHRcdFx0PC9IU3RhY2s+XG5cdFx0PC9CYXNlQ29udHJvbD5cblx0KTtcbn1cblxuLyoqXG4gKiBUb2dnbGVDb250cm9sIGlzIHVzZWQgdG8gZ2VuZXJhdGUgYSB0b2dnbGUgdXNlciBpbnRlcmZhY2UuXG4gKlxuICogYGBganN4XG4gKiBpbXBvcnQgeyBUb2dnbGVDb250cm9sIH0gZnJvbSAnQHdvcmRwcmVzcy9jb21wb25lbnRzJztcbiAqIGltcG9ydCB7IHVzZVN0YXRlIH0gZnJvbSAnQHdvcmRwcmVzcy9lbGVtZW50JztcbiAqXG4gKiBjb25zdCBNeVRvZ2dsZUNvbnRyb2wgPSAoKSA9PiB7XG4gKiAgIGNvbnN0IFsgdmFsdWUsIHNldFZhbHVlIF0gPSB1c2VTdGF0ZSggZmFsc2UgKTtcbiAqXG4gKiAgIHJldHVybiAoXG4gKiAgICAgPFRvZ2dsZUNvbnRyb2xcbiAqICAgICAgIF9fbmV4dEhhc05vTWFyZ2luQm90dG9tXG4gKiAgICAgICBsYWJlbD1cIkZpeGVkIEJhY2tncm91bmRcIlxuICogICAgICAgY2hlY2tlZD17IHZhbHVlIH1cbiAqICAgICAgIG9uQ2hhbmdlPXsgKCkgPT4gc2V0VmFsdWUoICggc3RhdGUgKSA9PiAhIHN0YXRlICkgfVxuICogICAgIC8+XG4gKiAgICk7XG4gKiB9O1xuICogYGBgXG4gKi9cbmV4cG9ydCBjb25zdCBUb2dnbGVDb250cm9sID0gZm9yd2FyZFJlZiggVW5mb3J3YXJkZWRUb2dnbGVDb250cm9sICk7XG5cbmV4cG9ydCBkZWZhdWx0IFRvZ2dsZUNvbnRyb2w7XG4iXX0= */</style><style data-emotion="css" data-s="">.css-a57899-Flex{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;}</style><style data-emotion="css" data-s="">.css-1vi1huw-base{-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;gap:calc(4px * 2);-webkit-box-pack:start;-ms-flex-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start;width:100%;}/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkB3b3JkcHJlc3MvY29tcG9uZW50cy9zcmMvZmxleC9mbGV4L2hvb2sudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBZ0VlIiwiZmlsZSI6IkB3b3JkcHJlc3MvY29tcG9uZW50cy9zcmMvZmxleC9mbGV4L2hvb2sudHMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEV4dGVybmFsIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgeyBjc3MgfSBmcm9tICdAZW1vdGlvbi9yZWFjdCc7XG5cbi8qKlxuICogV29yZFByZXNzIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgeyB1c2VNZW1vIH0gZnJvbSAnQHdvcmRwcmVzcy9lbGVtZW50JztcbmltcG9ydCBkZXByZWNhdGVkIGZyb20gJ0B3b3JkcHJlc3MvZGVwcmVjYXRlZCc7XG5cbi8qKlxuICogSW50ZXJuYWwgZGVwZW5kZW5jaWVzXG4gKi9cbmltcG9ydCB0eXBlIHsgV29yZFByZXNzQ29tcG9uZW50UHJvcHMgfSBmcm9tICcuLi8uLi9jb250ZXh0JztcbmltcG9ydCB7IHVzZUNvbnRleHRTeXN0ZW0gfSBmcm9tICcuLi8uLi9jb250ZXh0JztcbmltcG9ydCB7IHVzZVJlc3BvbnNpdmVWYWx1ZSB9IGZyb20gJy4uLy4uL3V0aWxzL3VzZS1yZXNwb25zaXZlLXZhbHVlJztcbmltcG9ydCB7IHNwYWNlIH0gZnJvbSAnLi4vLi4vdXRpbHMvc3BhY2UnO1xuaW1wb3J0ICogYXMgc3R5bGVzIGZyb20gJy4uL3N0eWxlcyc7XG5pbXBvcnQgeyB1c2VDeCB9IGZyb20gJy4uLy4uL3V0aWxzJztcbmltcG9ydCB0eXBlIHsgRmxleFByb3BzIH0gZnJvbSAnLi4vdHlwZXMnO1xuXG5mdW5jdGlvbiB1c2VEZXByZWNhdGVkUHJvcHMoXG5cdHByb3BzOiBXb3JkUHJlc3NDb21wb25lbnRQcm9wczwgRmxleFByb3BzLCAnZGl2JyA+XG4pOiBPbWl0PCB0eXBlb2YgcHJvcHMsICdpc1JldmVyc2VkJyA+IHtcblx0Y29uc3QgeyBpc1JldmVyc2VkLCAuLi5vdGhlclByb3BzIH0gPSBwcm9wcztcblxuXHRpZiAoIHR5cGVvZiBpc1JldmVyc2VkICE9PSAndW5kZWZpbmVkJyApIHtcblx0XHRkZXByZWNhdGVkKCAnRmxleCBpc1JldmVyc2VkJywge1xuXHRcdFx0YWx0ZXJuYXRpdmU6ICdGbGV4IGRpcmVjdGlvbj1cInJvdy1yZXZlcnNlXCIgb3IgXCJjb2x1bW4tcmV2ZXJzZVwiJyxcblx0XHRcdHNpbmNlOiAnNS45Jyxcblx0XHR9ICk7XG5cdFx0cmV0dXJuIHtcblx0XHRcdC4uLm90aGVyUHJvcHMsXG5cdFx0XHRkaXJlY3Rpb246IGlzUmV2ZXJzZWQgPyAncm93LXJldmVyc2UnIDogJ3JvdycsXG5cdFx0fTtcblx0fVxuXG5cdHJldHVybiBvdGhlclByb3BzO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gdXNlRmxleCggcHJvcHM6IFdvcmRQcmVzc0NvbXBvbmVudFByb3BzPCBGbGV4UHJvcHMsICdkaXYnID4gKSB7XG5cdGNvbnN0IHtcblx0XHRhbGlnbixcblx0XHRjbGFzc05hbWUsXG5cdFx0ZGlyZWN0aW9uOiBkaXJlY3Rpb25Qcm9wID0gJ3JvdycsXG5cdFx0ZXhwYW5kZWQgPSB0cnVlLFxuXHRcdGdhcCA9IDIsXG5cdFx0anVzdGlmeSA9ICdzcGFjZS1iZXR3ZWVuJyxcblx0XHR3cmFwID0gZmFsc2UsXG5cdFx0Li4ub3RoZXJQcm9wc1xuXHR9ID0gdXNlQ29udGV4dFN5c3RlbSggdXNlRGVwcmVjYXRlZFByb3BzKCBwcm9wcyApLCAnRmxleCcgKTtcblxuXHRjb25zdCBkaXJlY3Rpb25Bc0FycmF5ID0gQXJyYXkuaXNBcnJheSggZGlyZWN0aW9uUHJvcCApXG5cdFx0PyBkaXJlY3Rpb25Qcm9wXG5cdFx0OiBbIGRpcmVjdGlvblByb3AgXTtcblx0Y29uc3QgZGlyZWN0aW9uID0gdXNlUmVzcG9uc2l2ZVZhbHVlKCBkaXJlY3Rpb25Bc0FycmF5ICk7XG5cblx0Y29uc3QgaXNDb2x1bW4gPVxuXHRcdHR5cGVvZiBkaXJlY3Rpb24gPT09ICdzdHJpbmcnICYmICEhIGRpcmVjdGlvbi5pbmNsdWRlcyggJ2NvbHVtbicgKTtcblxuXHRjb25zdCBjeCA9IHVzZUN4KCk7XG5cblx0Y29uc3QgY2xhc3NlcyA9IHVzZU1lbW8oICgpID0+IHtcblx0XHRjb25zdCBiYXNlID0gY3NzKCB7XG5cdFx0XHRhbGlnbkl0ZW1zOiBhbGlnbiA/PyAoIGlzQ29sdW1uID8gJ25vcm1hbCcgOiAnY2VudGVyJyApLFxuXHRcdFx0ZmxleERpcmVjdGlvbjogZGlyZWN0aW9uLFxuXHRcdFx0ZmxleFdyYXA6IHdyYXAgPyAnd3JhcCcgOiB1bmRlZmluZWQsXG5cdFx0XHRnYXA6IHNwYWNlKCBnYXAgKSxcblx0XHRcdGp1c3RpZnlDb250ZW50OiBqdXN0aWZ5LFxuXHRcdFx0aGVpZ2h0OiBpc0NvbHVtbiAmJiBleHBhbmRlZCA/ICcxMDAlJyA6IHVuZGVmaW5lZCxcblx0XHRcdHdpZHRoOiAhIGlzQ29sdW1uICYmIGV4cGFuZGVkID8gJzEwMCUnIDogdW5kZWZpbmVkLFxuXHRcdH0gKTtcblxuXHRcdHJldHVybiBjeChcblx0XHRcdHN0eWxlcy5GbGV4LFxuXHRcdFx0YmFzZSxcblx0XHRcdGlzQ29sdW1uID8gc3R5bGVzLkl0ZW1zQ29sdW1uIDogc3R5bGVzLkl0ZW1zUm93LFxuXHRcdFx0Y2xhc3NOYW1lXG5cdFx0KTtcblx0fSwgW1xuXHRcdGFsaWduLFxuXHRcdGNsYXNzTmFtZSxcblx0XHRjeCxcblx0XHRkaXJlY3Rpb24sXG5cdFx0ZXhwYW5kZWQsXG5cdFx0Z2FwLFxuXHRcdGlzQ29sdW1uLFxuXHRcdGp1c3RpZnksXG5cdFx0d3JhcCxcblx0XSApO1xuXG5cdHJldHVybiB7IC4uLm90aGVyUHJvcHMsIGNsYXNzTmFtZTogY2xhc3NlcywgaXNDb2x1bW4gfTtcbn1cbiJdfQ== */</style><style data-emotion="css" data-s="">.css-1ozeagb-ItemsRow{}</style><style data-emotion="css" data-s="">.css-1ozeagb-ItemsRow >*{min-width:0;}</style><style data-emotion="css" data-s="">.css-14ac8g8-Item{display:block;max-height:100%;max-width:100%;min-height:0;min-width:0;}</style><style data-emotion="css" data-s="">.css-c5mbv8-sx-Base{}/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkB3b3JkcHJlc3MvY29tcG9uZW50cy9zcmMvZmxleC9mbGV4LWl0ZW0vaG9vay50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFnQ1ciLCJmaWxlIjoiQHdvcmRwcmVzcy9jb21wb25lbnRzL3NyYy9mbGV4L2ZsZXgtaXRlbS9ob29rLnRzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBFeHRlcm5hbCBkZXBlbmRlbmNpZXNcbiAqL1xuaW1wb3J0IHR5cGUgeyBTZXJpYWxpemVkU3R5bGVzIH0gZnJvbSAnQGVtb3Rpb24vcmVhY3QnO1xuaW1wb3J0IHsgY3NzIH0gZnJvbSAnQGVtb3Rpb24vcmVhY3QnO1xuXG4vKipcbiAqIEludGVybmFsIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgdHlwZSB7IFdvcmRQcmVzc0NvbXBvbmVudFByb3BzIH0gZnJvbSAnLi4vLi4vY29udGV4dCc7XG5pbXBvcnQgeyB1c2VDb250ZXh0U3lzdGVtIH0gZnJvbSAnLi4vLi4vY29udGV4dCc7XG5pbXBvcnQgeyB1c2VGbGV4Q29udGV4dCB9IGZyb20gJy4uL2NvbnRleHQnO1xuaW1wb3J0ICogYXMgc3R5bGVzIGZyb20gJy4uL3N0eWxlcyc7XG5pbXBvcnQgeyB1c2VDeCB9IGZyb20gJy4uLy4uL3V0aWxzL2hvb2tzL3VzZS1jeCc7XG5pbXBvcnQgdHlwZSB7IEZsZXhJdGVtUHJvcHMgfSBmcm9tICcuLi90eXBlcyc7XG5cbmV4cG9ydCBmdW5jdGlvbiB1c2VGbGV4SXRlbShcblx0cHJvcHM6IFdvcmRQcmVzc0NvbXBvbmVudFByb3BzPCBGbGV4SXRlbVByb3BzLCAnZGl2JyA+XG4pIHtcblx0Y29uc3Qge1xuXHRcdGNsYXNzTmFtZSxcblx0XHRkaXNwbGF5OiBkaXNwbGF5UHJvcCxcblx0XHRpc0Jsb2NrID0gZmFsc2UsXG5cdFx0Li4ub3RoZXJQcm9wc1xuXHR9ID0gdXNlQ29udGV4dFN5c3RlbSggcHJvcHMsICdGbGV4SXRlbScgKTtcblxuXHRjb25zdCBzeDoge1xuXHRcdEJhc2U/OiBTZXJpYWxpemVkU3R5bGVzO1xuXHR9ID0ge307XG5cblx0Y29uc3QgY29udGV4dERpc3BsYXkgPSB1c2VGbGV4Q29udGV4dCgpLmZsZXhJdGVtRGlzcGxheTtcblxuXHRzeC5CYXNlID0gY3NzKCB7XG5cdFx0ZGlzcGxheTogZGlzcGxheVByb3AgfHwgY29udGV4dERpc3BsYXksXG5cdH0gKTtcblxuXHRjb25zdCBjeCA9IHVzZUN4KCk7XG5cblx0Y29uc3QgY2xhc3NlcyA9IGN4KFxuXHRcdHN0eWxlcy5JdGVtLFxuXHRcdHN4LkJhc2UsXG5cdFx0aXNCbG9jayAmJiBzdHlsZXMuYmxvY2ssXG5cdFx0Y2xhc3NOYW1lXG5cdCk7XG5cblx0cmV0dXJuIHtcblx0XHQuLi5vdGhlclByb3BzLFxuXHRcdGNsYXNzTmFtZTogY2xhc3Nlcyxcblx0fTtcbn1cbiJdfQ== */</style><style data-emotion="css" data-s="">.css-1ya6i3g-block{-webkit-flex:1;-ms-flex:1;flex:1;}</style><style data-emotion="css" data-s="">.css-1vw8bmi{position:relative;width:100%;}</style><style data-emotion="css" data-s="">.css-1vw8bmi *{box-sizing:border-box;}</style><style data-emotion="css" data-s="">.css-1vw8bmi a{}</style><style data-emotion="css" data-s="">.css-1vw8bmi a:focus{outline:none;box-shadow:none;}</style><style data-emotion="css" data-s="">.css-1vw8bmi .atb-dashboard__card{background-color:#FFF;border-radius:10px;padding:16px;}</style><style data-emotion="css" data-s="">.css-1vw8bmi .atb-dashboard__pages-wrapper{position:relative;max-width:1235px;margin:0 auto;z-index:1;}</style><style data-emotion="css" data-s="">.css-ww4109{position:relative;width:100%;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:18px 24px;background-color:#FFF;color:#97A3B6;margin-bottom:36px;}</style><style data-emotion="css" data-s="">.css-ww4109 .atb-dashboard__top-bar-item{}</style><style data-emotion="css" data-s="">.css-ww4109 .atb-dashboard__top-bar-item--version{margin-left:auto;}</style><style data-emotion="css" data-s="">.css-ww4109 .atb-dashboard__top-bar-item-notification{position:relative;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;width:24px;height:24px;border:1px solid #EBEBEF;border-radius:50%;cursor:pointer;margin-left:21px;}</style><style data-emotion="css" data-s="">.css-ww4109 .atb-dashboard__top-bar-item-notification-count{position:absolute;top:-3px;right:-3px;width:10px;height:10px;border-radius:50%;background-color:#FF453A;font-size:6px;line-height:1.8;font-weight:500;color:#FFF;text-align:center;}</style><style data-emotion="css" data-s="">.css-ww4109 .atb-dashboard__top-bar-item-notification svg{width:13px;height:11px;}</style><style data-emotion="css" data-s="">.css-ww4109 .atb-dashboard__top-bar-item-notification:before,.css-ww4109 .atb-dashboard__top-bar-item-notification:after{content:'';display:block;position:absolute;top:50%;height:calc( 100% - 10px );border-left:1px solid #EBEBEF;-webkit-transform:translate3d(0, -50%, 0);-moz-transform:translate3d(0, -50%, 0);-ms-transform:translate3d(0, -50%, 0);transform:translate3d(0, -50%, 0);}</style><style data-emotion="css" data-s="">.css-ww4109 .atb-dashboard__top-bar-item-notification:before{right:calc( 100% + 10px );}</style><style data-emotion="css" data-s="">.css-ww4109 .atb-dashboard__top-bar-item-notification:after{left:calc( 100% + 10px );}</style><style data-emotion="css" data-s="">.css-ww4109 .atb-dashboard__top-bar-item--website{margin-left:21px;}</style><style data-emotion="css" data-s="">.css-ww4109 .atb-dashboard__top-bar-item--website a{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:7px;color:#3858E9;font-weight:500;}</style><style data-emotion="css" data-s="">.css-19z13a3{position:relative;max-width:1235px;margin:0 auto;padding:60px 60px 60px 0;z-index:0;}</style><style data-emotion="css" data-s="">.css-19z13a3 .atb-dashboard__hero-title{font-size:24px;font-weight:600;line-height:34px;color:#101517;margin:0 0 4px;}</style><style data-emotion="css" data-s="">.css-19z13a3 .atb-dashboard__hero-description{font-size:16px;line-height:24px;color:#4B5563;margin:0 0 20px;}</style><style data-emotion="css" data-s="">.css-19z13a3 .atb-dashboard__hero-button{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:10px;padding:12px 24px;background-color:#3858E9;color:#FFF;border-radius:2px;-webkit-text-decoration:none;text-decoration:none;font-size:13px;font-weight:500;line-height:18px;-webkit-transition:background-color 0.3s ease;transition:background-color 0.3s ease;}</style><style data-emotion="css" data-s="">.css-19z13a3 .atb-dashboard__hero-button:hover{background-color:#2F48C5;}</style><style data-emotion="css" data-s="">.css-19z13a3 .atb-dashboard__hero-image{position:absolute;top:16px;right:0px;width:370px;height:100%;object-fit:contain;object-position:center bottom;}</style><style data-emotion="css" data-s="">.css-e6ud9m{position:relative;max-width:1235px;margin:0 auto 24px;}</style><style data-emotion="css" data-s="">.css-e6ud9m:after{content:'';display:block;position:absolute;bottom:0;left:50%;width:calc(100% + 32px);border-bottom:2px solid #EBEBEF;-webkit-transform:translate3d(-50%, 0, 0);-moz-transform:translate3d(-50%, 0, 0);-ms-transform:translate3d(-50%, 0, 0);transform:translate3d(-50%, 0, 0);z-index:0;}</style><style data-emotion="css" data-s="">.css-e6ud9m .atb-dashboard__navigation{position:relative;z-index:1;}</style><style data-emotion="css" data-s="">.css-e6ud9m .atb-dashboard__navigation ul{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;padding:0;margin:0;}</style><style data-emotion="css" data-s="">.css-e6ud9m .atb-dashboard__navigation ul li{list-style:none;margin:0;}</style><style data-emotion="css" data-s="">.css-e6ud9m .atb-dashboard__navigation ul li a{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:8px;font-size:16px;line-height:30px;padding:19px 21px;color:#97A3B6;background-color:none;border-bottom-width:2px;border-bottom-style:solid;border-bottom-color:transparent;-webkit-text-decoration:none;text-decoration:none;-webkit-transition:all 0.3s ease;transition:all 0.3s ease;font-weight:500;}</style><style data-emotion="css" data-s="">.css-e6ud9m .atb-dashboard__navigation ul li.active,.css-e6ud9m .atb-dashboard__navigation ul li:hover,.css-e6ud9m .atb-dashboard__navigation ul li:focus,.css-e6ud9m .atb-dashboard__navigation ul li:active{}</style><style data-emotion="css" data-s="">.css-e6ud9m .atb-dashboard__navigation ul li.active a,.css-e6ud9m .atb-dashboard__navigation ul li:hover a,.css-e6ud9m .atb-dashboard__navigation ul li:focus a,.css-e6ud9m .atb-dashboard__navigation ul li:active a{color:#101517;}</style><style data-emotion="css" data-s="">.css-e6ud9m .atb-dashboard__navigation ul li.active .atb-dashboard__navigation-icon,.css-e6ud9m .atb-dashboard__navigation ul li:hover .atb-dashboard__navigation-icon,.css-e6ud9m .atb-dashboard__navigation ul li:focus .atb-dashboard__navigation-icon,.css-e6ud9m .atb-dashboard__navigation ul li:active .atb-dashboard__navigation-icon{}</style><style data-emotion="css" data-s="">.css-e6ud9m .atb-dashboard__navigation ul li.active .atb-dashboard__navigation-icon svg,.css-e6ud9m .atb-dashboard__navigation ul li:hover .atb-dashboard__navigation-icon svg,.css-e6ud9m .atb-dashboard__navigation ul li:focus .atb-dashboard__navigation-icon svg,.css-e6ud9m .atb-dashboard__navigation ul li:active .atb-dashboard__navigation-icon svg{}</style><style data-emotion="css" data-s="">.css-e6ud9m .atb-dashboard__navigation ul li.active .atb-dashboard__navigation-icon svg path,.css-e6ud9m .atb-dashboard__navigation ul li:hover .atb-dashboard__navigation-icon svg path,.css-e6ud9m .atb-dashboard__navigation ul li:focus .atb-dashboard__navigation-icon svg path,.css-e6ud9m .atb-dashboard__navigation ul li:active .atb-dashboard__navigation-icon svg path{fill:#3858E9;}</style><style data-emotion="css" data-s="">.css-e6ud9m .atb-dashboard__navigation ul li.active{}</style><style data-emotion="css" data-s="">.css-e6ud9m .atb-dashboard__navigation ul li.active a{border-bottom-color:#3858E9;}</style><style data-emotion="css" data-s="">.css-e6ud9m .atb-dashboard__navigation .atb-dashboard__navigation-icon{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;width:24px;height:24px;}</style><style data-emotion="css" data-s="">.css-1377me3{display:grid;grid-template-columns:minmax(200px, 3fr) minmax(363px, 1fr);gap:24px;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;max-width:1235px;margin:0 auto;}</style><style data-emotion="css" data-s="">.css-h1h6dd{display:grid;grid-template-columns:repeat( 2, 1fr );gap:16px;}</style><style data-emotion="css" data-s="">.css-12q6uut{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;gap:24px;padding:24px;background-color:#FFF;border:1px solid #EBEBEF;border-radius:10px;box-shadow:2px 2px 4px 0px #00285005;}</style><style data-emotion="css" data-s="">.css-12q6uut .atb-dashboard__blocks-card-title{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-webkit-justify-content:space-between;justify-content:space-between;width:100%;font-size:16px;line-height:26px;font-weight:600;color:#101517;margin:0;}</style><style data-emotion="css" data-s="">.css-12q6uut .atb-dashboard__blocks-card-title .components-base-control{margin:0;}</style><style data-emotion="css" data-s="">.css-12q6uut .atb-dashboard__blocks-card-description{font-size:15px;line-height:24px;color:#4B5563;margin:0;}</style><style data-emotion="css" data-s="">.css-12q6uut .atb-dashboard__blocks-card-icon{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;padding:4px 0;}</style><style data-emotion="css" data-s="">.css-12q6uut.atb-dashboard__blocks-card--suggested-products{gap:16px;}</style><style data-emotion="css" data-s="">.css-12q6uut.atb-dashboard__blocks-card--suggested-products .atb-dashboard__blocks-card-title{font-size:20px;line-height:30px;}</style><style data-emotion="css" data-s="">.css-12q6uut.atb-dashboard__blocks-card--quick-links{gap:16px;}</style><style data-emotion="css" data-s="">.css-12q6uut.atb-dashboard__blocks-card--quick-links .atb-dashboard__blocks-card-title{font-size:20px;line-height:30px;}</style><style data-emotion="css" data-s="">.css-12q6uut.atb-dashboard__blocks-card--settings{gap:41px;}</style><style data-emotion="css" data-s="">.css-yi7www-Wrapper-boxSizingReset-classes{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen-Sans,Ubuntu,Cantarell,'Helvetica Neue',sans-serif;font-size:13px;box-sizing:border-box;margin-bottom:calc(4px * 3);}/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkB3b3JkcHJlc3MvY29tcG9uZW50cy9zcmMvdG9nZ2xlLWNvbnRyb2wvaW5kZXgudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWdEK0IiLCJmaWxlIjoiQHdvcmRwcmVzcy9jb21wb25lbnRzL3NyYy90b2dnbGUtY29udHJvbC9pbmRleC50c3giLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEV4dGVybmFsIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgdHlwZSB7IENoYW5nZUV2ZW50LCBGb3J3YXJkZWRSZWYgfSBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBjc3MgfSBmcm9tICdAZW1vdGlvbi9yZWFjdCc7XG5pbXBvcnQgY2xzeCBmcm9tICdjbHN4JztcblxuLyoqXG4gKiBXb3JkUHJlc3MgZGVwZW5kZW5jaWVzXG4gKi9cbmltcG9ydCB7IGZvcndhcmRSZWYgfSBmcm9tICdAd29yZHByZXNzL2VsZW1lbnQnO1xuaW1wb3J0IHsgdXNlSW5zdGFuY2VJZCB9IGZyb20gJ0B3b3JkcHJlc3MvY29tcG9zZSc7XG5pbXBvcnQgZGVwcmVjYXRlZCBmcm9tICdAd29yZHByZXNzL2RlcHJlY2F0ZWQnO1xuXG4vKipcbiAqIEludGVybmFsIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgeyBGbGV4QmxvY2sgfSBmcm9tICcuLi9mbGV4JztcbmltcG9ydCBGb3JtVG9nZ2xlIGZyb20gJy4uL2Zvcm0tdG9nZ2xlJztcbmltcG9ydCBCYXNlQ29udHJvbCBmcm9tICcuLi9iYXNlLWNvbnRyb2wnO1xuaW1wb3J0IHR5cGUgeyBXb3JkUHJlc3NDb21wb25lbnRQcm9wcyB9IGZyb20gJy4uL2NvbnRleHQvd29yZHByZXNzLWNvbXBvbmVudCc7XG5pbXBvcnQgdHlwZSB7IFRvZ2dsZUNvbnRyb2xQcm9wcyB9IGZyb20gJy4vdHlwZXMnO1xuaW1wb3J0IHsgSFN0YWNrIH0gZnJvbSAnLi4vaC1zdGFjayc7XG5pbXBvcnQgeyB1c2VDeCB9IGZyb20gJy4uL3V0aWxzJztcbmltcG9ydCB7IHNwYWNlIH0gZnJvbSAnLi4vdXRpbHMvc3BhY2UnO1xuXG5mdW5jdGlvbiBVbmZvcndhcmRlZFRvZ2dsZUNvbnRyb2woXG5cdHtcblx0XHRfX25leHRIYXNOb01hcmdpbkJvdHRvbSxcblx0XHRsYWJlbCxcblx0XHRjaGVja2VkLFxuXHRcdGhlbHAsXG5cdFx0Y2xhc3NOYW1lLFxuXHRcdG9uQ2hhbmdlLFxuXHRcdGRpc2FibGVkLFxuXHR9OiBXb3JkUHJlc3NDb21wb25lbnRQcm9wczwgVG9nZ2xlQ29udHJvbFByb3BzLCAnaW5wdXQnLCBmYWxzZSA+LFxuXHRyZWY6IEZvcndhcmRlZFJlZjwgSFRNTElucHV0RWxlbWVudCA+XG4pIHtcblx0ZnVuY3Rpb24gb25DaGFuZ2VUb2dnbGUoIGV2ZW50OiBDaGFuZ2VFdmVudDwgSFRNTElucHV0RWxlbWVudCA+ICkge1xuXHRcdG9uQ2hhbmdlKCBldmVudC50YXJnZXQuY2hlY2tlZCApO1xuXHR9XG5cdGNvbnN0IGluc3RhbmNlSWQgPSB1c2VJbnN0YW5jZUlkKCBUb2dnbGVDb250cm9sICk7XG5cdGNvbnN0IGlkID0gYGluc3BlY3Rvci10b2dnbGUtY29udHJvbC0keyBpbnN0YW5jZUlkIH1gO1xuXG5cdGNvbnN0IGN4ID0gdXNlQ3goKTtcblx0Y29uc3QgY2xhc3NlcyA9IGN4KFxuXHRcdCdjb21wb25lbnRzLXRvZ2dsZS1jb250cm9sJyxcblx0XHRjbGFzc05hbWUsXG5cdFx0ISBfX25leHRIYXNOb01hcmdpbkJvdHRvbSAmJiBjc3MoIHsgbWFyZ2luQm90dG9tOiBzcGFjZSggMyApIH0gKVxuXHQpO1xuXG5cdGlmICggISBfX25leHRIYXNOb01hcmdpbkJvdHRvbSApIHtcblx0XHRkZXByZWNhdGVkKCAnQm90dG9tIG1hcmdpbiBzdHlsZXMgZm9yIHdwLmNvbXBvbmVudHMuVG9nZ2xlQ29udHJvbCcsIHtcblx0XHRcdHNpbmNlOiAnNi43Jyxcblx0XHRcdHZlcnNpb246ICc3LjAnLFxuXHRcdFx0aGludDogJ1NldCB0aGUgYF9fbmV4dEhhc05vTWFyZ2luQm90dG9tYCBwcm9wIHRvIHRydWUgdG8gc3RhcnQgb3B0aW5nIGludG8gdGhlIG5ldyBzdHlsZXMsIHdoaWNoIHdpbGwgYmVjb21lIHRoZSBkZWZhdWx0IGluIGEgZnV0dXJlIHZlcnNpb24uJyxcblx0XHR9ICk7XG5cdH1cblxuXHRsZXQgZGVzY3JpYmVkQnksIGhlbHBMYWJlbDtcblx0aWYgKCBoZWxwICkge1xuXHRcdGlmICggdHlwZW9mIGhlbHAgPT09ICdmdW5jdGlvbicgKSB7XG5cdFx0XHQvLyBgaGVscGAgYXMgYSBmdW5jdGlvbiB3b3JrcyBvbmx5IGZvciBjb250cm9sbGVkIGNvbXBvbmVudHMgd2hlcmVcblx0XHRcdC8vIGBjaGVja2VkYCBpcyBwYXNzZWQgZG93biBmcm9tIHBhcmVudCBjb21wb25lbnQuIFVuY29udHJvbGxlZFxuXHRcdFx0Ly8gY29tcG9uZW50IGNhbiBzaG93IG9ubHkgYSBzdGF0aWMgaGVscCBsYWJlbC5cblx0XHRcdGlmICggY2hlY2tlZCAhPT0gdW5kZWZpbmVkICkge1xuXHRcdFx0XHRoZWxwTGFiZWwgPSBoZWxwKCBjaGVja2VkICk7XG5cdFx0XHR9XG5cdFx0fSBlbHNlIHtcblx0XHRcdGhlbHBMYWJlbCA9IGhlbHA7XG5cdFx0fVxuXHRcdGlmICggaGVscExhYmVsICkge1xuXHRcdFx0ZGVzY3JpYmVkQnkgPSBpZCArICdfX2hlbHAnO1xuXHRcdH1cblx0fVxuXG5cdHJldHVybiAoXG5cdFx0PEJhc2VDb250cm9sXG5cdFx0XHRpZD17IGlkIH1cblx0XHRcdGhlbHA9e1xuXHRcdFx0XHRoZWxwTGFiZWwgJiYgKFxuXHRcdFx0XHRcdDxzcGFuIGNsYXNzTmFtZT1cImNvbXBvbmVudHMtdG9nZ2xlLWNvbnRyb2xfX2hlbHBcIj5cblx0XHRcdFx0XHRcdHsgaGVscExhYmVsIH1cblx0XHRcdFx0XHQ8L3NwYW4+XG5cdFx0XHRcdClcblx0XHRcdH1cblx0XHRcdGNsYXNzTmFtZT17IGNsYXNzZXMgfVxuXHRcdFx0X19uZXh0SGFzTm9NYXJnaW5Cb3R0b21cblx0XHQ+XG5cdFx0XHQ8SFN0YWNrIGp1c3RpZnk9XCJmbGV4LXN0YXJ0XCIgc3BhY2luZz17IDIgfT5cblx0XHRcdFx0PEZvcm1Ub2dnbGVcblx0XHRcdFx0XHRpZD17IGlkIH1cblx0XHRcdFx0XHRjaGVja2VkPXsgY2hlY2tlZCB9XG5cdFx0XHRcdFx0b25DaGFuZ2U9eyBvbkNoYW5nZVRvZ2dsZSB9XG5cdFx0XHRcdFx0YXJpYS1kZXNjcmliZWRieT17IGRlc2NyaWJlZEJ5IH1cblx0XHRcdFx0XHRkaXNhYmxlZD17IGRpc2FibGVkIH1cblx0XHRcdFx0XHRyZWY9eyByZWYgfVxuXHRcdFx0XHQvPlxuXHRcdFx0XHQ8RmxleEJsb2NrXG5cdFx0XHRcdFx0YXM9XCJsYWJlbFwiXG5cdFx0XHRcdFx0aHRtbEZvcj17IGlkIH1cblx0XHRcdFx0XHRjbGFzc05hbWU9eyBjbHN4KCAnY29tcG9uZW50cy10b2dnbGUtY29udHJvbF9fbGFiZWwnLCB7XG5cdFx0XHRcdFx0XHQnaXMtZGlzYWJsZWQnOiBkaXNhYmxlZCxcblx0XHRcdFx0XHR9ICkgfVxuXHRcdFx0XHQ+XG5cdFx0XHRcdFx0eyBsYWJlbCB9XG5cdFx0XHRcdDwvRmxleEJsb2NrPlxuXHRcdFx0PC9IU3RhY2s+XG5cdFx0PC9CYXNlQ29udHJvbD5cblx0KTtcbn1cblxuLyoqXG4gKiBUb2dnbGVDb250cm9sIGlzIHVzZWQgdG8gZ2VuZXJhdGUgYSB0b2dnbGUgdXNlciBpbnRlcmZhY2UuXG4gKlxuICogYGBganN4XG4gKiBpbXBvcnQgeyBUb2dnbGVDb250cm9sIH0gZnJvbSAnQHdvcmRwcmVzcy9jb21wb25lbnRzJztcbiAqIGltcG9ydCB7IHVzZVN0YXRlIH0gZnJvbSAnQHdvcmRwcmVzcy9lbGVtZW50JztcbiAqXG4gKiBjb25zdCBNeVRvZ2dsZUNvbnRyb2wgPSAoKSA9PiB7XG4gKiAgIGNvbnN0IFsgdmFsdWUsIHNldFZhbHVlIF0gPSB1c2VTdGF0ZSggZmFsc2UgKTtcbiAqXG4gKiAgIHJldHVybiAoXG4gKiAgICAgPFRvZ2dsZUNvbnRyb2xcbiAqICAgICAgIF9fbmV4dEhhc05vTWFyZ2luQm90dG9tXG4gKiAgICAgICBsYWJlbD1cIkZpeGVkIEJhY2tncm91bmRcIlxuICogICAgICAgY2hlY2tlZD17IHZhbHVlIH1cbiAqICAgICAgIG9uQ2hhbmdlPXsgKCkgPT4gc2V0VmFsdWUoICggc3RhdGUgKSA9PiAhIHN0YXRlICkgfVxuICogICAgIC8+XG4gKiAgICk7XG4gKiB9O1xuICogYGBgXG4gKi9cbmV4cG9ydCBjb25zdCBUb2dnbGVDb250cm9sID0gZm9yd2FyZFJlZiggVW5mb3J3YXJkZWRUb2dnbGVDb250cm9sICk7XG5cbmV4cG9ydCBkZWZhdWx0IFRvZ2dsZUNvbnRyb2w7XG4iXX0= */</style><style data-emotion="css" data-s="">.css-yi7www-Wrapper-boxSizingReset-classes *,.css-yi7www-Wrapper-boxSizingReset-classes *::before,.css-yi7www-Wrapper-boxSizingReset-classes *::after{box-sizing:inherit;}/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkB3b3JkcHJlc3MvY29tcG9uZW50cy9zcmMvdG9nZ2xlLWNvbnRyb2wvaW5kZXgudHN4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQWdEK0IiLCJmaWxlIjoiQHdvcmRwcmVzcy9jb21wb25lbnRzL3NyYy90b2dnbGUtY29udHJvbC9pbmRleC50c3giLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEV4dGVybmFsIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgdHlwZSB7IENoYW5nZUV2ZW50LCBGb3J3YXJkZWRSZWYgfSBmcm9tICdyZWFjdCc7XG5pbXBvcnQgeyBjc3MgfSBmcm9tICdAZW1vdGlvbi9yZWFjdCc7XG5pbXBvcnQgY2xzeCBmcm9tICdjbHN4JztcblxuLyoqXG4gKiBXb3JkUHJlc3MgZGVwZW5kZW5jaWVzXG4gKi9cbmltcG9ydCB7IGZvcndhcmRSZWYgfSBmcm9tICdAd29yZHByZXNzL2VsZW1lbnQnO1xuaW1wb3J0IHsgdXNlSW5zdGFuY2VJZCB9IGZyb20gJ0B3b3JkcHJlc3MvY29tcG9zZSc7XG5pbXBvcnQgZGVwcmVjYXRlZCBmcm9tICdAd29yZHByZXNzL2RlcHJlY2F0ZWQnO1xuXG4vKipcbiAqIEludGVybmFsIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgeyBGbGV4QmxvY2sgfSBmcm9tICcuLi9mbGV4JztcbmltcG9ydCBGb3JtVG9nZ2xlIGZyb20gJy4uL2Zvcm0tdG9nZ2xlJztcbmltcG9ydCBCYXNlQ29udHJvbCBmcm9tICcuLi9iYXNlLWNvbnRyb2wnO1xuaW1wb3J0IHR5cGUgeyBXb3JkUHJlc3NDb21wb25lbnRQcm9wcyB9IGZyb20gJy4uL2NvbnRleHQvd29yZHByZXNzLWNvbXBvbmVudCc7XG5pbXBvcnQgdHlwZSB7IFRvZ2dsZUNvbnRyb2xQcm9wcyB9IGZyb20gJy4vdHlwZXMnO1xuaW1wb3J0IHsgSFN0YWNrIH0gZnJvbSAnLi4vaC1zdGFjayc7XG5pbXBvcnQgeyB1c2VDeCB9IGZyb20gJy4uL3V0aWxzJztcbmltcG9ydCB7IHNwYWNlIH0gZnJvbSAnLi4vdXRpbHMvc3BhY2UnO1xuXG5mdW5jdGlvbiBVbmZvcndhcmRlZFRvZ2dsZUNvbnRyb2woXG5cdHtcblx0XHRfX25leHRIYXNOb01hcmdpbkJvdHRvbSxcblx0XHRsYWJlbCxcblx0XHRjaGVja2VkLFxuXHRcdGhlbHAsXG5cdFx0Y2xhc3NOYW1lLFxuXHRcdG9uQ2hhbmdlLFxuXHRcdGRpc2FibGVkLFxuXHR9OiBXb3JkUHJlc3NDb21wb25lbnRQcm9wczwgVG9nZ2xlQ29udHJvbFByb3BzLCAnaW5wdXQnLCBmYWxzZSA+LFxuXHRyZWY6IEZvcndhcmRlZFJlZjwgSFRNTElucHV0RWxlbWVudCA+XG4pIHtcblx0ZnVuY3Rpb24gb25DaGFuZ2VUb2dnbGUoIGV2ZW50OiBDaGFuZ2VFdmVudDwgSFRNTElucHV0RWxlbWVudCA+ICkge1xuXHRcdG9uQ2hhbmdlKCBldmVudC50YXJnZXQuY2hlY2tlZCApO1xuXHR9XG5cdGNvbnN0IGluc3RhbmNlSWQgPSB1c2VJbnN0YW5jZUlkKCBUb2dnbGVDb250cm9sICk7XG5cdGNvbnN0IGlkID0gYGluc3BlY3Rvci10b2dnbGUtY29udHJvbC0keyBpbnN0YW5jZUlkIH1gO1xuXG5cdGNvbnN0IGN4ID0gdXNlQ3goKTtcblx0Y29uc3QgY2xhc3NlcyA9IGN4KFxuXHRcdCdjb21wb25lbnRzLXRvZ2dsZS1jb250cm9sJyxcblx0XHRjbGFzc05hbWUsXG5cdFx0ISBfX25leHRIYXNOb01hcmdpbkJvdHRvbSAmJiBjc3MoIHsgbWFyZ2luQm90dG9tOiBzcGFjZSggMyApIH0gKVxuXHQpO1xuXG5cdGlmICggISBfX25leHRIYXNOb01hcmdpbkJvdHRvbSApIHtcblx0XHRkZXByZWNhdGVkKCAnQm90dG9tIG1hcmdpbiBzdHlsZXMgZm9yIHdwLmNvbXBvbmVudHMuVG9nZ2xlQ29udHJvbCcsIHtcblx0XHRcdHNpbmNlOiAnNi43Jyxcblx0XHRcdHZlcnNpb246ICc3LjAnLFxuXHRcdFx0aGludDogJ1NldCB0aGUgYF9fbmV4dEhhc05vTWFyZ2luQm90dG9tYCBwcm9wIHRvIHRydWUgdG8gc3RhcnQgb3B0aW5nIGludG8gdGhlIG5ldyBzdHlsZXMsIHdoaWNoIHdpbGwgYmVjb21lIHRoZSBkZWZhdWx0IGluIGEgZnV0dXJlIHZlcnNpb24uJyxcblx0XHR9ICk7XG5cdH1cblxuXHRsZXQgZGVzY3JpYmVkQnksIGhlbHBMYWJlbDtcblx0aWYgKCBoZWxwICkge1xuXHRcdGlmICggdHlwZW9mIGhlbHAgPT09ICdmdW5jdGlvbicgKSB7XG5cdFx0XHQvLyBgaGVscGAgYXMgYSBmdW5jdGlvbiB3b3JrcyBvbmx5IGZvciBjb250cm9sbGVkIGNvbXBvbmVudHMgd2hlcmVcblx0XHRcdC8vIGBjaGVja2VkYCBpcyBwYXNzZWQgZG93biBmcm9tIHBhcmVudCBjb21wb25lbnQuIFVuY29udHJvbGxlZFxuXHRcdFx0Ly8gY29tcG9uZW50IGNhbiBzaG93IG9ubHkgYSBzdGF0aWMgaGVscCBsYWJlbC5cblx0XHRcdGlmICggY2hlY2tlZCAhPT0gdW5kZWZpbmVkICkge1xuXHRcdFx0XHRoZWxwTGFiZWwgPSBoZWxwKCBjaGVja2VkICk7XG5cdFx0XHR9XG5cdFx0fSBlbHNlIHtcblx0XHRcdGhlbHBMYWJlbCA9IGhlbHA7XG5cdFx0fVxuXHRcdGlmICggaGVscExhYmVsICkge1xuXHRcdFx0ZGVzY3JpYmVkQnkgPSBpZCArICdfX2hlbHAnO1xuXHRcdH1cblx0fVxuXG5cdHJldHVybiAoXG5cdFx0PEJhc2VDb250cm9sXG5cdFx0XHRpZD17IGlkIH1cblx0XHRcdGhlbHA9e1xuXHRcdFx0XHRoZWxwTGFiZWwgJiYgKFxuXHRcdFx0XHRcdDxzcGFuIGNsYXNzTmFtZT1cImNvbXBvbmVudHMtdG9nZ2xlLWNvbnRyb2xfX2hlbHBcIj5cblx0XHRcdFx0XHRcdHsgaGVscExhYmVsIH1cblx0XHRcdFx0XHQ8L3NwYW4+XG5cdFx0XHRcdClcblx0XHRcdH1cblx0XHRcdGNsYXNzTmFtZT17IGNsYXNzZXMgfVxuXHRcdFx0X19uZXh0SGFzTm9NYXJnaW5Cb3R0b21cblx0XHQ+XG5cdFx0XHQ8SFN0YWNrIGp1c3RpZnk9XCJmbGV4LXN0YXJ0XCIgc3BhY2luZz17IDIgfT5cblx0XHRcdFx0PEZvcm1Ub2dnbGVcblx0XHRcdFx0XHRpZD17IGlkIH1cblx0XHRcdFx0XHRjaGVja2VkPXsgY2hlY2tlZCB9XG5cdFx0XHRcdFx0b25DaGFuZ2U9eyBvbkNoYW5nZVRvZ2dsZSB9XG5cdFx0XHRcdFx0YXJpYS1kZXNjcmliZWRieT17IGRlc2NyaWJlZEJ5IH1cblx0XHRcdFx0XHRkaXNhYmxlZD17IGRpc2FibGVkIH1cblx0XHRcdFx0XHRyZWY9eyByZWYgfVxuXHRcdFx0XHQvPlxuXHRcdFx0XHQ8RmxleEJsb2NrXG5cdFx0XHRcdFx0YXM9XCJsYWJlbFwiXG5cdFx0XHRcdFx0aHRtbEZvcj17IGlkIH1cblx0XHRcdFx0XHRjbGFzc05hbWU9eyBjbHN4KCAnY29tcG9uZW50cy10b2dnbGUtY29udHJvbF9fbGFiZWwnLCB7XG5cdFx0XHRcdFx0XHQnaXMtZGlzYWJsZWQnOiBkaXNhYmxlZCxcblx0XHRcdFx0XHR9ICkgfVxuXHRcdFx0XHQ+XG5cdFx0XHRcdFx0eyBsYWJlbCB9XG5cdFx0XHRcdDwvRmxleEJsb2NrPlxuXHRcdFx0PC9IU3RhY2s+XG5cdFx0PC9CYXNlQ29udHJvbD5cblx0KTtcbn1cblxuLyoqXG4gKiBUb2dnbGVDb250cm9sIGlzIHVzZWQgdG8gZ2VuZXJhdGUgYSB0b2dnbGUgdXNlciBpbnRlcmZhY2UuXG4gKlxuICogYGBganN4XG4gKiBpbXBvcnQgeyBUb2dnbGVDb250cm9sIH0gZnJvbSAnQHdvcmRwcmVzcy9jb21wb25lbnRzJztcbiAqIGltcG9ydCB7IHVzZVN0YXRlIH0gZnJvbSAnQHdvcmRwcmVzcy9lbGVtZW50JztcbiAqXG4gKiBjb25zdCBNeVRvZ2dsZUNvbnRyb2wgPSAoKSA9PiB7XG4gKiAgIGNvbnN0IFsgdmFsdWUsIHNldFZhbHVlIF0gPSB1c2VTdGF0ZSggZmFsc2UgKTtcbiAqXG4gKiAgIHJldHVybiAoXG4gKiAgICAgPFRvZ2dsZUNvbnRyb2xcbiAqICAgICAgIF9fbmV4dEhhc05vTWFyZ2luQm90dG9tXG4gKiAgICAgICBsYWJlbD1cIkZpeGVkIEJhY2tncm91bmRcIlxuICogICAgICAgY2hlY2tlZD17IHZhbHVlIH1cbiAqICAgICAgIG9uQ2hhbmdlPXsgKCkgPT4gc2V0VmFsdWUoICggc3RhdGUgKSA9PiAhIHN0YXRlICkgfVxuICogICAgIC8+XG4gKiAgICk7XG4gKiB9O1xuICogYGBgXG4gKi9cbmV4cG9ydCBjb25zdCBUb2dnbGVDb250cm9sID0gZm9yd2FyZFJlZiggVW5mb3J3YXJkZWRUb2dnbGVDb250cm9sICk7XG5cbmV4cG9ydCBkZWZhdWx0IFRvZ2dsZUNvbnRyb2w7XG4iXX0= */</style><style data-emotion="css" data-s="">.css-2txpkp-StyledField{}/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkB3b3JkcHJlc3MvY29tcG9uZW50cy9zcmMvYmFzZS1jb250cm9sL3N0eWxlcy9iYXNlLWNvbnRyb2wtc3R5bGVzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQTRCcUMiLCJmaWxlIjoiQHdvcmRwcmVzcy9jb21wb25lbnRzL3NyYy9iYXNlLWNvbnRyb2wvc3R5bGVzL2Jhc2UtY29udHJvbC1zdHlsZXMudHMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEV4dGVybmFsIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgc3R5bGVkIGZyb20gJ0BlbW90aW9uL3N0eWxlZCc7XG5pbXBvcnQgeyBjc3MgfSBmcm9tICdAZW1vdGlvbi9yZWFjdCc7XG5cbi8qKlxuICogSW50ZXJuYWwgZGVwZW5kZW5jaWVzXG4gKi9cbmltcG9ydCB7IGJhc2VMYWJlbFR5cG9ncmFwaHksIGJveFNpemluZ1Jlc2V0LCBmb250LCBDT0xPUlMgfSBmcm9tICcuLi8uLi91dGlscyc7XG5pbXBvcnQgeyBzcGFjZSB9IGZyb20gJy4uLy4uL3V0aWxzL3NwYWNlJztcblxuZXhwb3J0IGNvbnN0IFdyYXBwZXIgPSBzdHlsZWQuZGl2YFxuXHRmb250LWZhbWlseTogJHsgZm9udCggJ2RlZmF1bHQuZm9udEZhbWlseScgKSB9O1xuXHRmb250LXNpemU6ICR7IGZvbnQoICdkZWZhdWx0LmZvbnRTaXplJyApIH07XG5cblx0JHsgYm94U2l6aW5nUmVzZXQgfVxuYDtcblxuY29uc3QgZGVwcmVjYXRlZE1hcmdpbkZpZWxkID0gKCB7IF9fbmV4dEhhc05vTWFyZ2luQm90dG9tID0gZmFsc2UgfSApID0+IHtcblx0cmV0dXJuIChcblx0XHQhIF9fbmV4dEhhc05vTWFyZ2luQm90dG9tICYmXG5cdFx0Y3NzYFxuXHRcdFx0bWFyZ2luLWJvdHRvbTogJHsgc3BhY2UoIDIgKSB9O1xuXHRcdGBcblx0KTtcbn07XG5cbmV4cG9ydCBjb25zdCBTdHlsZWRGaWVsZCA9IHN0eWxlZC5kaXZgXG5cdCR7IGRlcHJlY2F0ZWRNYXJnaW5GaWVsZCB9XG5cblx0LmNvbXBvbmVudHMtcGFuZWxfX3JvdyAmIHtcblx0XHRtYXJnaW4tYm90dG9tOiBpbmhlcml0O1xuXHR9XG5gO1xuXG5jb25zdCBsYWJlbFN0eWxlcyA9IGNzc2Bcblx0JHsgYmFzZUxhYmVsVHlwb2dyYXBoeSB9O1xuXG5cdGRpc3BsYXk6IGJsb2NrO1xuXHRtYXJnaW4tYm90dG9tOiAkeyBzcGFjZSggMiApIH07XG5cdC8qKlxuXHQgKiBSZW1vdmVzIENocm9tZS9TYWZhcmkvRmlyZWZveCB1c2VyIGFnZW50IHN0eWxlc2hlZXQgcGFkZGluZyBmcm9tXG5cdCAqIFN0eWxlZExhYmVsIHdoZW4gaXQgaXMgcmVuZGVyZWQgYXMgYSBsZWdlbmQuXG5cdCAqL1xuXHRwYWRkaW5nOiAwO1xuYDtcblxuZXhwb3J0IGNvbnN0IFN0eWxlZExhYmVsID0gc3R5bGVkLmxhYmVsYFxuXHQkeyBsYWJlbFN0eWxlcyB9XG5gO1xuXG5jb25zdCBkZXByZWNhdGVkTWFyZ2luSGVscCA9ICggeyBfX25leHRIYXNOb01hcmdpbkJvdHRvbSA9IGZhbHNlIH0gKSA9PiB7XG5cdHJldHVybiAoXG5cdFx0ISBfX25leHRIYXNOb01hcmdpbkJvdHRvbSAmJlxuXHRcdGNzc2Bcblx0XHRcdG1hcmdpbi1ib3R0b206IHJldmVydDtcblx0XHRgXG5cdCk7XG59O1xuXG5leHBvcnQgY29uc3QgU3R5bGVkSGVscCA9IHN0eWxlZC5wYFxuXHRtYXJnaW4tdG9wOiAkeyBzcGFjZSggMiApIH07XG5cdG1hcmdpbi1ib3R0b206IDA7XG5cdGZvbnQtc2l6ZTogJHsgZm9udCggJ2hlbHBUZXh0LmZvbnRTaXplJyApIH07XG5cdGZvbnQtc3R5bGU6IG5vcm1hbDtcblx0Y29sb3I6ICR7IENPTE9SUy5ncmF5WyA3MDAgXSB9O1xuXG5cdCR7IGRlcHJlY2F0ZWRNYXJnaW5IZWxwIH1cbmA7XG5cbmV4cG9ydCBjb25zdCBTdHlsZWRWaXN1YWxMYWJlbCA9IHN0eWxlZC5zcGFuYFxuXHQkeyBsYWJlbFN0eWxlcyB9XG5gO1xuIl19 */</style><style data-emotion="css" data-s="">.components-panel__row .css-2txpkp-StyledField{margin-bottom:inherit;}/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkB3b3JkcHJlc3MvY29tcG9uZW50cy9zcmMvYmFzZS1jb250cm9sL3N0eWxlcy9iYXNlLWNvbnRyb2wtc3R5bGVzLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQTRCcUMiLCJmaWxlIjoiQHdvcmRwcmVzcy9jb21wb25lbnRzL3NyYy9iYXNlLWNvbnRyb2wvc3R5bGVzL2Jhc2UtY29udHJvbC1zdHlsZXMudHMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEV4dGVybmFsIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgc3R5bGVkIGZyb20gJ0BlbW90aW9uL3N0eWxlZCc7XG5pbXBvcnQgeyBjc3MgfSBmcm9tICdAZW1vdGlvbi9yZWFjdCc7XG5cbi8qKlxuICogSW50ZXJuYWwgZGVwZW5kZW5jaWVzXG4gKi9cbmltcG9ydCB7IGJhc2VMYWJlbFR5cG9ncmFwaHksIGJveFNpemluZ1Jlc2V0LCBmb250LCBDT0xPUlMgfSBmcm9tICcuLi8uLi91dGlscyc7XG5pbXBvcnQgeyBzcGFjZSB9IGZyb20gJy4uLy4uL3V0aWxzL3NwYWNlJztcblxuZXhwb3J0IGNvbnN0IFdyYXBwZXIgPSBzdHlsZWQuZGl2YFxuXHRmb250LWZhbWlseTogJHsgZm9udCggJ2RlZmF1bHQuZm9udEZhbWlseScgKSB9O1xuXHRmb250LXNpemU6ICR7IGZvbnQoICdkZWZhdWx0LmZvbnRTaXplJyApIH07XG5cblx0JHsgYm94U2l6aW5nUmVzZXQgfVxuYDtcblxuY29uc3QgZGVwcmVjYXRlZE1hcmdpbkZpZWxkID0gKCB7IF9fbmV4dEhhc05vTWFyZ2luQm90dG9tID0gZmFsc2UgfSApID0+IHtcblx0cmV0dXJuIChcblx0XHQhIF9fbmV4dEhhc05vTWFyZ2luQm90dG9tICYmXG5cdFx0Y3NzYFxuXHRcdFx0bWFyZ2luLWJvdHRvbTogJHsgc3BhY2UoIDIgKSB9O1xuXHRcdGBcblx0KTtcbn07XG5cbmV4cG9ydCBjb25zdCBTdHlsZWRGaWVsZCA9IHN0eWxlZC5kaXZgXG5cdCR7IGRlcHJlY2F0ZWRNYXJnaW5GaWVsZCB9XG5cblx0LmNvbXBvbmVudHMtcGFuZWxfX3JvdyAmIHtcblx0XHRtYXJnaW4tYm90dG9tOiBpbmhlcml0O1xuXHR9XG5gO1xuXG5jb25zdCBsYWJlbFN0eWxlcyA9IGNzc2Bcblx0JHsgYmFzZUxhYmVsVHlwb2dyYXBoeSB9O1xuXG5cdGRpc3BsYXk6IGJsb2NrO1xuXHRtYXJnaW4tYm90dG9tOiAkeyBzcGFjZSggMiApIH07XG5cdC8qKlxuXHQgKiBSZW1vdmVzIENocm9tZS9TYWZhcmkvRmlyZWZveCB1c2VyIGFnZW50IHN0eWxlc2hlZXQgcGFkZGluZyBmcm9tXG5cdCAqIFN0eWxlZExhYmVsIHdoZW4gaXQgaXMgcmVuZGVyZWQgYXMgYSBsZWdlbmQuXG5cdCAqL1xuXHRwYWRkaW5nOiAwO1xuYDtcblxuZXhwb3J0IGNvbnN0IFN0eWxlZExhYmVsID0gc3R5bGVkLmxhYmVsYFxuXHQkeyBsYWJlbFN0eWxlcyB9XG5gO1xuXG5jb25zdCBkZXByZWNhdGVkTWFyZ2luSGVscCA9ICggeyBfX25leHRIYXNOb01hcmdpbkJvdHRvbSA9IGZhbHNlIH0gKSA9PiB7XG5cdHJldHVybiAoXG5cdFx0ISBfX25leHRIYXNOb01hcmdpbkJvdHRvbSAmJlxuXHRcdGNzc2Bcblx0XHRcdG1hcmdpbi1ib3R0b206IHJldmVydDtcblx0XHRgXG5cdCk7XG59O1xuXG5leHBvcnQgY29uc3QgU3R5bGVkSGVscCA9IHN0eWxlZC5wYFxuXHRtYXJnaW4tdG9wOiAkeyBzcGFjZSggMiApIH07XG5cdG1hcmdpbi1ib3R0b206IDA7XG5cdGZvbnQtc2l6ZTogJHsgZm9udCggJ2hlbHBUZXh0LmZvbnRTaXplJyApIH07XG5cdGZvbnQtc3R5bGU6IG5vcm1hbDtcblx0Y29sb3I6ICR7IENPTE9SUy5ncmF5WyA3MDAgXSB9O1xuXG5cdCR7IGRlcHJlY2F0ZWRNYXJnaW5IZWxwIH1cbmA7XG5cbmV4cG9ydCBjb25zdCBTdHlsZWRWaXN1YWxMYWJlbCA9IHN0eWxlZC5zcGFuYFxuXHQkeyBsYWJlbFN0eWxlcyB9XG5gO1xuIl19 */</style><style data-emotion="css" data-s="">.css-1ub13jk-PolymorphicDiv-Flex-base-ItemsRow{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;gap:calc(4px * 2);-webkit-box-pack:start;-ms-flex-pack:start;-webkit-justify-content:flex-start;justify-content:flex-start;width:100%;}/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkB3b3JkcHJlc3MvY29tcG9uZW50cy9zcmMvZmxleC9mbGV4L2hvb2sudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBZ0VlIiwiZmlsZSI6IkB3b3JkcHJlc3MvY29tcG9uZW50cy9zcmMvZmxleC9mbGV4L2hvb2sudHMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEV4dGVybmFsIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgeyBjc3MgfSBmcm9tICdAZW1vdGlvbi9yZWFjdCc7XG5cbi8qKlxuICogV29yZFByZXNzIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgeyB1c2VNZW1vIH0gZnJvbSAnQHdvcmRwcmVzcy9lbGVtZW50JztcbmltcG9ydCBkZXByZWNhdGVkIGZyb20gJ0B3b3JkcHJlc3MvZGVwcmVjYXRlZCc7XG5cbi8qKlxuICogSW50ZXJuYWwgZGVwZW5kZW5jaWVzXG4gKi9cbmltcG9ydCB0eXBlIHsgV29yZFByZXNzQ29tcG9uZW50UHJvcHMgfSBmcm9tICcuLi8uLi9jb250ZXh0JztcbmltcG9ydCB7IHVzZUNvbnRleHRTeXN0ZW0gfSBmcm9tICcuLi8uLi9jb250ZXh0JztcbmltcG9ydCB7IHVzZVJlc3BvbnNpdmVWYWx1ZSB9IGZyb20gJy4uLy4uL3V0aWxzL3VzZS1yZXNwb25zaXZlLXZhbHVlJztcbmltcG9ydCB7IHNwYWNlIH0gZnJvbSAnLi4vLi4vdXRpbHMvc3BhY2UnO1xuaW1wb3J0ICogYXMgc3R5bGVzIGZyb20gJy4uL3N0eWxlcyc7XG5pbXBvcnQgeyB1c2VDeCB9IGZyb20gJy4uLy4uL3V0aWxzJztcbmltcG9ydCB0eXBlIHsgRmxleFByb3BzIH0gZnJvbSAnLi4vdHlwZXMnO1xuXG5mdW5jdGlvbiB1c2VEZXByZWNhdGVkUHJvcHMoXG5cdHByb3BzOiBXb3JkUHJlc3NDb21wb25lbnRQcm9wczwgRmxleFByb3BzLCAnZGl2JyA+XG4pOiBPbWl0PCB0eXBlb2YgcHJvcHMsICdpc1JldmVyc2VkJyA+IHtcblx0Y29uc3QgeyBpc1JldmVyc2VkLCAuLi5vdGhlclByb3BzIH0gPSBwcm9wcztcblxuXHRpZiAoIHR5cGVvZiBpc1JldmVyc2VkICE9PSAndW5kZWZpbmVkJyApIHtcblx0XHRkZXByZWNhdGVkKCAnRmxleCBpc1JldmVyc2VkJywge1xuXHRcdFx0YWx0ZXJuYXRpdmU6ICdGbGV4IGRpcmVjdGlvbj1cInJvdy1yZXZlcnNlXCIgb3IgXCJjb2x1bW4tcmV2ZXJzZVwiJyxcblx0XHRcdHNpbmNlOiAnNS45Jyxcblx0XHR9ICk7XG5cdFx0cmV0dXJuIHtcblx0XHRcdC4uLm90aGVyUHJvcHMsXG5cdFx0XHRkaXJlY3Rpb246IGlzUmV2ZXJzZWQgPyAncm93LXJldmVyc2UnIDogJ3JvdycsXG5cdFx0fTtcblx0fVxuXG5cdHJldHVybiBvdGhlclByb3BzO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gdXNlRmxleCggcHJvcHM6IFdvcmRQcmVzc0NvbXBvbmVudFByb3BzPCBGbGV4UHJvcHMsICdkaXYnID4gKSB7XG5cdGNvbnN0IHtcblx0XHRhbGlnbixcblx0XHRjbGFzc05hbWUsXG5cdFx0ZGlyZWN0aW9uOiBkaXJlY3Rpb25Qcm9wID0gJ3JvdycsXG5cdFx0ZXhwYW5kZWQgPSB0cnVlLFxuXHRcdGdhcCA9IDIsXG5cdFx0anVzdGlmeSA9ICdzcGFjZS1iZXR3ZWVuJyxcblx0XHR3cmFwID0gZmFsc2UsXG5cdFx0Li4ub3RoZXJQcm9wc1xuXHR9ID0gdXNlQ29udGV4dFN5c3RlbSggdXNlRGVwcmVjYXRlZFByb3BzKCBwcm9wcyApLCAnRmxleCcgKTtcblxuXHRjb25zdCBkaXJlY3Rpb25Bc0FycmF5ID0gQXJyYXkuaXNBcnJheSggZGlyZWN0aW9uUHJvcCApXG5cdFx0PyBkaXJlY3Rpb25Qcm9wXG5cdFx0OiBbIGRpcmVjdGlvblByb3AgXTtcblx0Y29uc3QgZGlyZWN0aW9uID0gdXNlUmVzcG9uc2l2ZVZhbHVlKCBkaXJlY3Rpb25Bc0FycmF5ICk7XG5cblx0Y29uc3QgaXNDb2x1bW4gPVxuXHRcdHR5cGVvZiBkaXJlY3Rpb24gPT09ICdzdHJpbmcnICYmICEhIGRpcmVjdGlvbi5pbmNsdWRlcyggJ2NvbHVtbicgKTtcblxuXHRjb25zdCBjeCA9IHVzZUN4KCk7XG5cblx0Y29uc3QgY2xhc3NlcyA9IHVzZU1lbW8oICgpID0+IHtcblx0XHRjb25zdCBiYXNlID0gY3NzKCB7XG5cdFx0XHRhbGlnbkl0ZW1zOiBhbGlnbiA/PyAoIGlzQ29sdW1uID8gJ25vcm1hbCcgOiAnY2VudGVyJyApLFxuXHRcdFx0ZmxleERpcmVjdGlvbjogZGlyZWN0aW9uLFxuXHRcdFx0ZmxleFdyYXA6IHdyYXAgPyAnd3JhcCcgOiB1bmRlZmluZWQsXG5cdFx0XHRnYXA6IHNwYWNlKCBnYXAgKSxcblx0XHRcdGp1c3RpZnlDb250ZW50OiBqdXN0aWZ5LFxuXHRcdFx0aGVpZ2h0OiBpc0NvbHVtbiAmJiBleHBhbmRlZCA/ICcxMDAlJyA6IHVuZGVmaW5lZCxcblx0XHRcdHdpZHRoOiAhIGlzQ29sdW1uICYmIGV4cGFuZGVkID8gJzEwMCUnIDogdW5kZWZpbmVkLFxuXHRcdH0gKTtcblxuXHRcdHJldHVybiBjeChcblx0XHRcdHN0eWxlcy5GbGV4LFxuXHRcdFx0YmFzZSxcblx0XHRcdGlzQ29sdW1uID8gc3R5bGVzLkl0ZW1zQ29sdW1uIDogc3R5bGVzLkl0ZW1zUm93LFxuXHRcdFx0Y2xhc3NOYW1lXG5cdFx0KTtcblx0fSwgW1xuXHRcdGFsaWduLFxuXHRcdGNsYXNzTmFtZSxcblx0XHRjeCxcblx0XHRkaXJlY3Rpb24sXG5cdFx0ZXhwYW5kZWQsXG5cdFx0Z2FwLFxuXHRcdGlzQ29sdW1uLFxuXHRcdGp1c3RpZnksXG5cdFx0d3JhcCxcblx0XSApO1xuXG5cdHJldHVybiB7IC4uLm90aGVyUHJvcHMsIGNsYXNzTmFtZTogY2xhc3NlcywgaXNDb2x1bW4gfTtcbn1cbiJdfQ== */</style><style data-emotion="css" data-s="">.css-1ub13jk-PolymorphicDiv-Flex-base-ItemsRow >*{min-width:0;}/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkB3b3JkcHJlc3MvY29tcG9uZW50cy9zcmMvZmxleC9mbGV4L2hvb2sudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBZ0VlIiwiZmlsZSI6IkB3b3JkcHJlc3MvY29tcG9uZW50cy9zcmMvZmxleC9mbGV4L2hvb2sudHMiLCJzb3VyY2VzQ29udGVudCI6WyIvKipcbiAqIEV4dGVybmFsIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgeyBjc3MgfSBmcm9tICdAZW1vdGlvbi9yZWFjdCc7XG5cbi8qKlxuICogV29yZFByZXNzIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgeyB1c2VNZW1vIH0gZnJvbSAnQHdvcmRwcmVzcy9lbGVtZW50JztcbmltcG9ydCBkZXByZWNhdGVkIGZyb20gJ0B3b3JkcHJlc3MvZGVwcmVjYXRlZCc7XG5cbi8qKlxuICogSW50ZXJuYWwgZGVwZW5kZW5jaWVzXG4gKi9cbmltcG9ydCB0eXBlIHsgV29yZFByZXNzQ29tcG9uZW50UHJvcHMgfSBmcm9tICcuLi8uLi9jb250ZXh0JztcbmltcG9ydCB7IHVzZUNvbnRleHRTeXN0ZW0gfSBmcm9tICcuLi8uLi9jb250ZXh0JztcbmltcG9ydCB7IHVzZVJlc3BvbnNpdmVWYWx1ZSB9IGZyb20gJy4uLy4uL3V0aWxzL3VzZS1yZXNwb25zaXZlLXZhbHVlJztcbmltcG9ydCB7IHNwYWNlIH0gZnJvbSAnLi4vLi4vdXRpbHMvc3BhY2UnO1xuaW1wb3J0ICogYXMgc3R5bGVzIGZyb20gJy4uL3N0eWxlcyc7XG5pbXBvcnQgeyB1c2VDeCB9IGZyb20gJy4uLy4uL3V0aWxzJztcbmltcG9ydCB0eXBlIHsgRmxleFByb3BzIH0gZnJvbSAnLi4vdHlwZXMnO1xuXG5mdW5jdGlvbiB1c2VEZXByZWNhdGVkUHJvcHMoXG5cdHByb3BzOiBXb3JkUHJlc3NDb21wb25lbnRQcm9wczwgRmxleFByb3BzLCAnZGl2JyA+XG4pOiBPbWl0PCB0eXBlb2YgcHJvcHMsICdpc1JldmVyc2VkJyA+IHtcblx0Y29uc3QgeyBpc1JldmVyc2VkLCAuLi5vdGhlclByb3BzIH0gPSBwcm9wcztcblxuXHRpZiAoIHR5cGVvZiBpc1JldmVyc2VkICE9PSAndW5kZWZpbmVkJyApIHtcblx0XHRkZXByZWNhdGVkKCAnRmxleCBpc1JldmVyc2VkJywge1xuXHRcdFx0YWx0ZXJuYXRpdmU6ICdGbGV4IGRpcmVjdGlvbj1cInJvdy1yZXZlcnNlXCIgb3IgXCJjb2x1bW4tcmV2ZXJzZVwiJyxcblx0XHRcdHNpbmNlOiAnNS45Jyxcblx0XHR9ICk7XG5cdFx0cmV0dXJuIHtcblx0XHRcdC4uLm90aGVyUHJvcHMsXG5cdFx0XHRkaXJlY3Rpb246IGlzUmV2ZXJzZWQgPyAncm93LXJldmVyc2UnIDogJ3JvdycsXG5cdFx0fTtcblx0fVxuXG5cdHJldHVybiBvdGhlclByb3BzO1xufVxuXG5leHBvcnQgZnVuY3Rpb24gdXNlRmxleCggcHJvcHM6IFdvcmRQcmVzc0NvbXBvbmVudFByb3BzPCBGbGV4UHJvcHMsICdkaXYnID4gKSB7XG5cdGNvbnN0IHtcblx0XHRhbGlnbixcblx0XHRjbGFzc05hbWUsXG5cdFx0ZGlyZWN0aW9uOiBkaXJlY3Rpb25Qcm9wID0gJ3JvdycsXG5cdFx0ZXhwYW5kZWQgPSB0cnVlLFxuXHRcdGdhcCA9IDIsXG5cdFx0anVzdGlmeSA9ICdzcGFjZS1iZXR3ZWVuJyxcblx0XHR3cmFwID0gZmFsc2UsXG5cdFx0Li4ub3RoZXJQcm9wc1xuXHR9ID0gdXNlQ29udGV4dFN5c3RlbSggdXNlRGVwcmVjYXRlZFByb3BzKCBwcm9wcyApLCAnRmxleCcgKTtcblxuXHRjb25zdCBkaXJlY3Rpb25Bc0FycmF5ID0gQXJyYXkuaXNBcnJheSggZGlyZWN0aW9uUHJvcCApXG5cdFx0PyBkaXJlY3Rpb25Qcm9wXG5cdFx0OiBbIGRpcmVjdGlvblByb3AgXTtcblx0Y29uc3QgZGlyZWN0aW9uID0gdXNlUmVzcG9uc2l2ZVZhbHVlKCBkaXJlY3Rpb25Bc0FycmF5ICk7XG5cblx0Y29uc3QgaXNDb2x1bW4gPVxuXHRcdHR5cGVvZiBkaXJlY3Rpb24gPT09ICdzdHJpbmcnICYmICEhIGRpcmVjdGlvbi5pbmNsdWRlcyggJ2NvbHVtbicgKTtcblxuXHRjb25zdCBjeCA9IHVzZUN4KCk7XG5cblx0Y29uc3QgY2xhc3NlcyA9IHVzZU1lbW8oICgpID0+IHtcblx0XHRjb25zdCBiYXNlID0gY3NzKCB7XG5cdFx0XHRhbGlnbkl0ZW1zOiBhbGlnbiA/PyAoIGlzQ29sdW1uID8gJ25vcm1hbCcgOiAnY2VudGVyJyApLFxuXHRcdFx0ZmxleERpcmVjdGlvbjogZGlyZWN0aW9uLFxuXHRcdFx0ZmxleFdyYXA6IHdyYXAgPyAnd3JhcCcgOiB1bmRlZmluZWQsXG5cdFx0XHRnYXA6IHNwYWNlKCBnYXAgKSxcblx0XHRcdGp1c3RpZnlDb250ZW50OiBqdXN0aWZ5LFxuXHRcdFx0aGVpZ2h0OiBpc0NvbHVtbiAmJiBleHBhbmRlZCA/ICcxMDAlJyA6IHVuZGVmaW5lZCxcblx0XHRcdHdpZHRoOiAhIGlzQ29sdW1uICYmIGV4cGFuZGVkID8gJzEwMCUnIDogdW5kZWZpbmVkLFxuXHRcdH0gKTtcblxuXHRcdHJldHVybiBjeChcblx0XHRcdHN0eWxlcy5GbGV4LFxuXHRcdFx0YmFzZSxcblx0XHRcdGlzQ29sdW1uID8gc3R5bGVzLkl0ZW1zQ29sdW1uIDogc3R5bGVzLkl0ZW1zUm93LFxuXHRcdFx0Y2xhc3NOYW1lXG5cdFx0KTtcblx0fSwgW1xuXHRcdGFsaWduLFxuXHRcdGNsYXNzTmFtZSxcblx0XHRjeCxcblx0XHRkaXJlY3Rpb24sXG5cdFx0ZXhwYW5kZWQsXG5cdFx0Z2FwLFxuXHRcdGlzQ29sdW1uLFxuXHRcdGp1c3RpZnksXG5cdFx0d3JhcCxcblx0XSApO1xuXG5cdHJldHVybiB7IC4uLm90aGVyUHJvcHMsIGNsYXNzTmFtZTogY2xhc3NlcywgaXNDb2x1bW4gfTtcbn1cbiJdfQ== */</style><style data-emotion="css" data-s="">.css-1mqm1jz-PolymorphicDiv-Item-sx-Base-block{display:block;max-height:100%;max-width:100%;min-height:0;min-width:0;-webkit-flex:1;-ms-flex:1;flex:1;}/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIkB3b3JkcHJlc3MvY29tcG9uZW50cy9zcmMvZmxleC9mbGV4LWl0ZW0vaG9vay50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFnQ1ciLCJmaWxlIjoiQHdvcmRwcmVzcy9jb21wb25lbnRzL3NyYy9mbGV4L2ZsZXgtaXRlbS9ob29rLnRzIiwic291cmNlc0NvbnRlbnQiOlsiLyoqXG4gKiBFeHRlcm5hbCBkZXBlbmRlbmNpZXNcbiAqL1xuaW1wb3J0IHR5cGUgeyBTZXJpYWxpemVkU3R5bGVzIH0gZnJvbSAnQGVtb3Rpb24vcmVhY3QnO1xuaW1wb3J0IHsgY3NzIH0gZnJvbSAnQGVtb3Rpb24vcmVhY3QnO1xuXG4vKipcbiAqIEludGVybmFsIGRlcGVuZGVuY2llc1xuICovXG5pbXBvcnQgdHlwZSB7IFdvcmRQcmVzc0NvbXBvbmVudFByb3BzIH0gZnJvbSAnLi4vLi4vY29udGV4dCc7XG5pbXBvcnQgeyB1c2VDb250ZXh0U3lzdGVtIH0gZnJvbSAnLi4vLi4vY29udGV4dCc7XG5pbXBvcnQgeyB1c2VGbGV4Q29udGV4dCB9IGZyb20gJy4uL2NvbnRleHQnO1xuaW1wb3J0ICogYXMgc3R5bGVzIGZyb20gJy4uL3N0eWxlcyc7XG5pbXBvcnQgeyB1c2VDeCB9IGZyb20gJy4uLy4uL3V0aWxzL2hvb2tzL3VzZS1jeCc7XG5pbXBvcnQgdHlwZSB7IEZsZXhJdGVtUHJvcHMgfSBmcm9tICcuLi90eXBlcyc7XG5cbmV4cG9ydCBmdW5jdGlvbiB1c2VGbGV4SXRlbShcblx0cHJvcHM6IFdvcmRQcmVzc0NvbXBvbmVudFByb3BzPCBGbGV4SXRlbVByb3BzLCAnZGl2JyA+XG4pIHtcblx0Y29uc3Qge1xuXHRcdGNsYXNzTmFtZSxcblx0XHRkaXNwbGF5OiBkaXNwbGF5UHJvcCxcblx0XHRpc0Jsb2NrID0gZmFsc2UsXG5cdFx0Li4ub3RoZXJQcm9wc1xuXHR9ID0gdXNlQ29udGV4dFN5c3RlbSggcHJvcHMsICdGbGV4SXRlbScgKTtcblxuXHRjb25zdCBzeDoge1xuXHRcdEJhc2U/OiBTZXJpYWxpemVkU3R5bGVzO1xuXHR9ID0ge307XG5cblx0Y29uc3QgY29udGV4dERpc3BsYXkgPSB1c2VGbGV4Q29udGV4dCgpLmZsZXhJdGVtRGlzcGxheTtcblxuXHRzeC5CYXNlID0gY3NzKCB7XG5cdFx0ZGlzcGxheTogZGlzcGxheVByb3AgfHwgY29udGV4dERpc3BsYXksXG5cdH0gKTtcblxuXHRjb25zdCBjeCA9IHVzZUN4KCk7XG5cblx0Y29uc3QgY2xhc3NlcyA9IGN4KFxuXHRcdHN0eWxlcy5JdGVtLFxuXHRcdHN4LkJhc2UsXG5cdFx0aXNCbG9jayAmJiBzdHlsZXMuYmxvY2ssXG5cdFx0Y2xhc3NOYW1lXG5cdCk7XG5cblx0cmV0dXJuIHtcblx0XHQuLi5vdGhlclByb3BzLFxuXHRcdGNsYXNzTmFtZTogY2xhc3Nlcyxcblx0fTtcbn1cbiJdfQ== */</style><style data-emotion="css" data-s="">.css-14wzran{display:grid;grid-template-columns:repeat( 1, 1fr );gap:16px;}</style><style data-emotion="css" data-s="">.css-1uh2l0w{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:16px;width:100%;padding:16px;background-color:#FFF;border:1px solid #F6F6F8;border-radius:10px;box-shadow:2px 2px 4px 0px #00285005;}</style><style data-emotion="css" data-s="">.css-1uh2l0w .atb-dashboard__products-card-title{font-size:16px;line-height:26px;font-weight:600;color:#101517;margin:0;}</style><style data-emotion="css" data-s="">.css-1uh2l0w .atb-dashboard__products-card-action{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:4px;font-size:13px;line-height:20px;font-weight:600;color:#101517;margin:0 0 0 auto;}</style><style data-emotion="css" data-s="">.css-1uh2l0w .atb-dashboard__products-card-action--active{color:#3FB28F;}</style><style data-emotion="css" data-s="">.css-1uh2l0w .atb-dashboard__products-card-action--install,.css-1uh2l0w .atb-dashboard__products-card-action--inactive{color:#3858E9;}</style><style data-emotion="css" data-s="">.css-11initw{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-align-items:flex-start;-webkit-box-align:flex-start;-ms-flex-align:flex-start;align-items:flex-start;gap:10px;width:100%;padding:20px;background-color:#FFF;border:1px solid #F6F6F8;border-radius:10px;box-shadow:2px 2px 4px 0px #00285005;}</style><style data-emotion="css" data-s="">.css-11initw .atb-dashboard__links-card-title{font-size:16px;line-height:26px;font-weight:600;color:#101517;margin:0;}</style><style data-emotion="css" data-s="">.css-11initw .atb-dashboard__links-card-description{font-size:15px;line-height:24px;color:#4B5563;margin:0 0 5px 0;}</style><style data-emotion="css" data-s="">.css-11initw.atb-dashboard__links-card--active{border-color:#3858E9;}</style><style data-emotion="css" data-s="">.css-11initw .atb-dashboard__links-card-link{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;gap:8px;font-size:13px;line-height:20px;font-weight:600;}</style><style data-emotion="css" data-s="">.css-11initw .atb-dashboard__links-card-link--underline{-webkit-text-decoration:underline;text-decoration:underline;color:#3858E9;-webkit-transition:ease opacity 250ms;transition:ease opacity 250ms;}</style><style data-emotion="css" data-s="">.css-11initw .atb-dashboard__links-card-link--underline:hover{opacity:0.8;}</style><style data-emotion="css" data-s="">.css-11initw .atb-dashboard__links-card-link--button{background-color:transparent;color:#3858E9;border:1px solid #3858E9;padding:8px 16px;border-radius:4px;-webkit-text-decoration:none;text-decoration:none;-webkit-transition:ease color 250ms,ease background-color 250ms;transition:ease color 250ms,ease background-color 250ms;}</style><style data-emotion="css" data-s="">.css-11initw .atb-dashboard__links-card-link--button:hover{background-color:#3858E9;color:#FFF;}</style><link rel="stylesheet" href="../_shared/css/273e9de41af0.css"><link rel="stylesheet" href="../_shared/css/0fa9a8527ebc.css"></head>
+<body class="wp-admin wp-core-ui js toplevel_page_at-blocks auto-fold branch-7-1 version-7-1-2 admin-color-modern locale-en-us svg wp-theme-sydney-pro-ii customize-support dialog-body dialog-buttons-body dialog-container dialog-buttons-container sticky-menu e--ua-blink e--ua-webkit" style="margin-top: 0px; padding-top: 0px;">
+
+
+
+
+<div id="wpwrap">
+
+<div id="adminmenumain" role="navigation" aria-label="Main menu">
+<a href="#wpbody-content" class="screen-reader-shortcut">Skip to main content</a>
+<a href="#wp-toolbar" class="screen-reader-shortcut">Skip to toolbar</a>
+<div id="adminmenuback"></div>
+<div id="adminmenuwrap">
+<ul id="adminmenu">
+
+
+	<li class="wp-first-item wp-has-submenu wp-not-current-submenu menu-top menu-top-first menu-icon-dashboard" id="menu-dashboard">
+	<a href="index.php" class="wp-first-item wp-has-submenu wp-not-current-submenu menu-top menu-top-first menu-icon-dashboard" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-dashboard" aria-hidden="true"><br></div><div class="wp-menu-name">Dashboard</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Dashboard</li><li class="wp-first-item"><a href="index.php" class="wp-first-item">Home</a></li><li><a href="update-core.php">Updates </a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-generic toplevel_page_elementor-home menu-top-last" id="toplevel_page_elementor-home">
+	<a href="admin.php?page=elementor-home" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-generic toplevel_page_elementor-home menu-top-last" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-generic" aria-hidden="true"><br></div><div class="wp-menu-name">Elementor</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Elementor</li><li class="wp-first-item"><a href="admin.php?page=elementor-home" class="wp-first-item">Home</a></li><li class="elementor-has-flyout"><a href="admin.php?page=elementor">Editor</a><ul class="elementor-submenu-flyout elementor-level-3"><li data-group-id=""><a href="http://northlinestudio.com/wp-admin/admin.php?page=elementor">Quick Start</a></li><li data-group-id=""><a href="http://northlinestudio.com/wp-admin/admin.php?page=elementor-settings">Settings</a></li><li data-group-id=""><a href="http://northlinestudio.com/wp-admin/admin.php?page=elementor-tools">Tools</a></li><li data-group-id=""><a href="http://northlinestudio.com/wp-admin/admin.php?page=elementor-role-manager">Role Manager</a></li><li data-group-id=""><a href="http://northlinestudio.com/wp-admin/admin.php?page=e-form-submissions">Submissions</a></li><li data-group-id="elementor-editor-templates"><a href="http://northlinestudio.com/wp-admin/edit.php?post_type=elementor_library&amp;tabs_group=library">Templates</a></li><li data-group-id="elementor-editor-custom-elements"><a href="http://northlinestudio.com/wp-admin/admin.php?page=elementor_custom_fonts">Custom Elements</a></li><li data-group-id="elementor-editor-system"><a href="http://northlinestudio.com/wp-admin/admin.php?page=elementor-system-info">System</a></li></ul></li><li><a href="admin.php?page=elementor-one-upgrade" target="_blank">Upgrade</a></li></ul></li>
+	<li class="wp-not-current-submenu wp-menu-separator" aria-hidden="true"><div class="separator"></div></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" id="menu-posts">
+	<a href="edit.php" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-post" aria-hidden="true"><br></div><div class="wp-menu-name">Posts</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Posts</li><li class="wp-first-item"><a href="edit.php" class="wp-first-item">All Posts</a></li><li><a href="post-new.php">Add Post</a></li><li><a href="edit-tags.php?taxonomy=category">Categories</a></li><li><a href="edit-tags.php?taxonomy=post_tag">Tags</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" id="menu-media">
+	<a href="upload.php" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-media" aria-hidden="true"><br></div><div class="wp-menu-name">Media</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Media</li><li class="wp-first-item"><a href="upload.php" class="wp-first-item">Library</a></li><li><a href="media-new.php">Add Media File</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" id="menu-pages">
+	<a href="edit.php?post_type=page" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-page" aria-hidden="true"><br></div><div class="wp-menu-name">Pages</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Pages</li><li class="wp-first-item"><a href="edit.php?post_type=page" class="wp-first-item">All Pages</a></li><li><a href="post-new.php?post_type=page">Add Page</a></li></ul></li>
+	<li class="wp-not-current-submenu menu-top menu-icon-comments" id="menu-comments">
+	<a href="edit-comments.php" class="wp-not-current-submenu menu-top menu-icon-comments"><div class="wp-menu-image dashicons-before dashicons-admin-comments" aria-hidden="true"><br></div><div class="wp-menu-name">Comments </div></a></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-elementor_library" id="menu-posts-elementor_library">
+	<a href="edit.php?post_type=elementor_library" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-elementor_library" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-page" aria-hidden="true"><br></div><div class="wp-menu-name">Templates</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Templates</li><li class="wp-first-item"><a href="edit.php?post_type=elementor_library" class="wp-first-item">All Templates</a></li><li><a href="post-new.php?post_type=elementor_library">Add New Template</a></li><li><a href="edit-tags.php?taxonomy=elementor_library_category&amp;post_type=elementor_library">Categories</a></li></ul></li>
+	
+	<li class="wp-has-submenu wp-not-current-submenu menu-top toplevel_page_athemes-addons" id="toplevel_page_athemes-addons"><a href="admin.php?page=athemes-addons" class="wp-has-submenu wp-not-current-submenu menu-top toplevel_page_athemes-addons" data-ariahaspopup=""><div class="wp-menu-image dashicons-before" aria-hidden="true"><img src="../_shared/assets/651fec07c006.svg" alt=""></div><div class="wp-menu-name">aThemes Addons</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">aThemes Addons</li><li class="wp-first-item"><a href="admin.php?page=athemes-addons" class="wp-first-item">Widgets</a></li><li><a href="admin.php?page=athemes-addons&amp;section=extensions">Extensions</a></li><li><a href="admin.php?page=athemes-addons&amp;section=settings">Settings</a></li><li><a href="admin.php?page=athemes-patcher-preview-ap">Patcher</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-generic toplevel_page_elementor" id="toplevel_page_elementor"><a href="admin.php?page=elementor" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-generic toplevel_page_elementor" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-generic" aria-hidden="true"><br></div><div class="wp-menu-name">Elementor</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Elementor</li><li class="wp-first-item"><a href="admin.php?page=elementor" class="wp-first-item">Quick start</a></li><li><a href="admin.php?page=e-form-submissions">Submissions</a></li></ul></li>
+	
+	<li class="wp-has-submenu wp-has-current-submenu wp-menu-open menu-top toplevel_page_at-blocks menu-top-last" id="toplevel_page_at-blocks"><a href="admin.php?page=at-blocks&amp;path=blocks" class="wp-has-submenu wp-has-current-submenu wp-menu-open menu-top toplevel_page_at-blocks menu-top-last"><div class="wp-menu-image dashicons-before" aria-hidden="true"><img src="../_shared/assets/8fb9ec11151f.svg" alt=""></div><div class="wp-menu-name">aThemes Blocks</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">aThemes Blocks</li><li class="wp-first-item"><a href="admin.php?page=at-blocks&amp;path=blocks" class="wp-first-item">Blocks</a></li><li><a href="admin.php?page=at-blocks&amp;path=settings&amp;section=editor-options">Settings</a></li><li class="current"><a href="admin.php?page=at-blocks" class="current" aria-current="page">aThemes Blocks</a></li></ul></li>
+	<li class="wp-not-current-submenu wp-menu-separator" aria-hidden="true"><div class="separator"></div></li>
+	
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance" id="menu-appearance">
+	<a href="themes.php" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-appearance" aria-hidden="true"><br></div><div class="wp-menu-name">Appearance</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Appearance</li><li class="wp-first-item"><a href="themes.php" class="wp-first-item">Themes </a></li><li><a href="site-editor.php">Design</a></li><li class="hide-if-no-customize"><a href="customize.php?return=%2Fwp-admin%2Fadmin.php%3Fpage%3Dat-blocks%26path%3Dblocks" class="hide-if-no-customize">Customize</a></li><li><a href="widgets.php">Widgets</a></li><li><a href="font-library.php">Fonts</a></li><li><a href="nav-menus.php">Menus</a></li><li class="hide-if-no-customize"><a href="customize.php?return=%2Fwp-admin%2Fadmin.php%3Fpage%3Dat-blocks%26path%3Dblocks&amp;autofocus%5Bcontrol%5D=header_image" class="hide-if-no-customize">Header</a></li><li class="hide-if-no-customize"><a href="customize.php?return=%2Fwp-admin%2Fadmin.php%3Fpage%3Dat-blocks%26path%3Dblocks&amp;autofocus%5Bcontrol%5D=background_image" class="hide-if-no-customize">Background</a></li><li><a href="edit.php?post_type=athemes_hf">Sydney Templates</a></li><li><a href="edit.php?post_type=aafe_templates">Templates</a></li><li><a href="themes.php?page=custom-header">Header</a></li><li><a href="themes.php?page=custom-background">Background</a></li><li><a href="theme-editor.php">Theme File Editor</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-plugins" id="menu-plugins">
+	<a href="plugins.php" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-plugins" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-plugins" aria-hidden="true"><br></div><div class="wp-menu-name">Plugins </div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Plugins </li><li class="wp-first-item"><a href="plugins.php" class="wp-first-item">Installed Plugins</a></li><li><a href="plugin-install.php">Add Plugin</a></li><li><a href="plugin-editor.php">Plugin File Editor</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" id="menu-users">
+	<a href="users.php" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-users" aria-hidden="true"><br></div><div class="wp-menu-name">Users</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Users</li><li class="wp-first-item"><a href="users.php" class="wp-first-item">All Users</a></li><li><a href="user-new.php">Add User</a></li><li><a href="profile.php">Profile</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" id="menu-tools">
+	<a href="tools.php" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-tools" aria-hidden="true"><br></div><div class="wp-menu-name">Tools</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Tools</li><li class="wp-first-item"><a href="tools.php" class="wp-first-item">Available Tools</a></li><li><a href="import.php">Import</a></li><li><a href="export.php">Export</a></li><li><a href="site-health.php">Site Health <span class="menu-counter site-health-counter count-0"><span class="count">0</span></span></a></li><li><a href="export-personal-data.php">Export Personal Data</a></li><li><a href="erase-personal-data.php">Erase Personal Data</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" id="menu-settings">
+	<a href="options-general.php" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-settings" aria-hidden="true"><br></div><div class="wp-menu-name">Settings</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Settings</li><li class="wp-first-item"><a href="options-general.php" class="wp-first-item">General</a></li><li><a href="options-connectors.php">Connectors</a></li><li><a href="options-writing.php">Writing</a></li><li><a href="options-reading.php">Reading</a></li><li><a href="options-discussion.php">Discussion</a></li><li><a href="options-media.php">Media</a></li><li><a href="options-permalink.php">Permalinks</a></li><li><a href="options-privacy.php">Privacy</a></li></ul></li><li id="collapse-menu" class="hide-if-no-js"><button type="button" id="collapse-button" aria-label="Collapse Main menu" aria-expanded="true"><span class="collapse-button-icon" aria-hidden="true"></span><span class="collapse-button-label">Collapse Menu</span></button></li></ul>
+</div>
+</div>
+<div id="wpcontent">
+
+		
+
+		
+<div id="wpbody" role="main">
+
+<div id="wpbody-content">
+		<div id="screen-meta" class="metabox-prefs">
+
+			<div id="contextual-help-wrap" class="hidden no-sidebar" tabindex="-1" aria-label="Contextual Help Tab">
+				<div id="contextual-help-back"></div>
+				<div id="contextual-help-columns">
+					<div class="contextual-help-tabs">
+						<ul>
+												</ul>
+					</div>
+
+					
+					<div class="contextual-help-tabs-wrap">
+											</div>
+				</div>
+			</div>
+				</div>
+				
+	<div id="at-blocks-root"><div class="atb-dashboard css-1vw8bmi"><div class="atb-dashboard__top-bar css-ww4109"><div class="atb-dashboard__top-bar-item atb-dashboard__top-bar-item--logo"><a href="https://athemes.com" target="_blank"><img src="../_shared/assets/25df10485c53.png" width="95" height="auto" alt="aThemes"></a></div><div class="atb-dashboard__top-bar-item atb-dashboard__top-bar-item--version"><span>1.1.4</span></div><div class="atb-dashboard__top-bar-item"><div class="atb-dashboard__top-bar-item-notification"><span class="atb-dashboard__top-bar-item-notification-count">1</span><svg width="10" height="8" viewBox="0 0 10 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.86194 0.131242C8.75503 0.0584347 8.63276 0.0143876 8.50589 0.0029728C8.37902 -0.00844195 8.25143 0.0131252 8.13433 0.0657785L4.29726 1.65655C4.20642 1.69547 4.10927 1.71548 4.01119 1.71547H1.55473C1.34856 1.71547 1.15083 1.80168 1.00505 1.95514C0.859264 2.1086 0.777363 2.31674 0.777363 2.53377V2.59923H0V4.56315H0.777363V4.64825C0.782235 4.86185 0.866281 5.06498 1.01154 5.21422C1.1568 5.36346 1.35175 5.44697 1.55473 5.44691L2.48756 7.52866C2.55073 7.66885 2.65017 7.78744 2.77448 7.87081C2.89878 7.95418 3.04291 7.99896 3.1903 8H3.58209C3.78718 7.99827 3.98331 7.9113 4.12775 7.75802C4.27219 7.60475 4.35324 7.3976 4.35323 7.1817V5.52547L8.13433 7.11624C8.22733 7.1552 8.32652 7.17519 8.42662 7.17515C8.58191 7.17252 8.73314 7.12249 8.86194 7.03114C8.96423 6.95843 9.0486 6.86114 9.10808 6.7473C9.16755 6.63347 9.20043 6.50636 9.20398 6.3765V0.80552C9.20341 0.672312 9.17196 0.541263 9.11235 0.423757C9.05274 0.30625 8.96678 0.205839 8.86194 0.131242ZM3.57587 2.53377V4.64825H1.55473V2.53377H3.57587ZM3.57587 7.1817H3.18408L2.41915 5.44691H3.57587V7.1817ZM4.58333 4.74645C4.5095 4.70672 4.4325 4.67387 4.35323 4.64825V2.48794C4.43174 2.47089 4.50872 2.4468 4.58333 2.41593L8.42662 0.80552V6.35686L4.58333 4.74645ZM9.22264 2.76289V4.39949C9.42881 4.39949 9.62653 4.31327 9.77232 4.15981C9.9181 4.00635 10 3.79821 10 3.58119C10 3.36416 9.9181 3.15602 9.77232 3.00256C9.62653 2.8491 9.42881 2.76289 9.22264 2.76289Z" fill="#1E1E1E"></path></svg></div></div><div class="atb-dashboard__top-bar-item atb-dashboard__top-bar-item--website"><a href="https://athemes.com" target="_blank">Website<svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4375 0.5H8.25C7.94531 0.5 7.66406 0.6875 7.54688 0.992188C7.42969 1.27344 7.5 1.60156 7.71094 1.8125L8.67188 2.77344L4.14844 7.29688C3.84375 7.57812 3.84375 8.07031 4.14844 8.35156C4.28906 8.49219 4.47656 8.5625 4.6875 8.5625C4.875 8.5625 5.0625 8.49219 5.20312 8.35156L9.72656 3.82812L10.6875 4.78906C10.8281 4.92969 11.0156 5 11.2266 5C11.3203 5 11.4141 5 11.5078 4.95312C11.8125 4.83594 12 4.55469 12 4.25V1.0625C12 0.757812 11.7422 0.5 11.4375 0.5ZM9.1875 8C8.85938 8 8.625 8.25781 8.625 8.5625V11.1875C8.625 11.3047 8.53125 11.375 8.4375 11.375H1.3125C1.19531 11.375 1.125 11.3047 1.125 11.1875V4.0625C1.125 3.96875 1.19531 3.875 1.3125 3.875H3.9375C4.24219 3.875 4.5 3.64062 4.5 3.3125C4.5 3.00781 4.24219 2.75 3.9375 2.75H1.3125C0.585938 2.75 0 3.35938 0 4.0625V11.1875C0 11.9141 0.585938 12.5 1.3125 12.5H8.4375C9.14062 12.5 9.75 11.9141 9.75 11.1875V8.5625C9.75 8.25781 9.49219 8 9.1875 8Z" fill="#3858E9"></path></svg></a></div></div><div class="atb-dashboard__hero css-19z13a3"><h1 class="atb-dashboard__hero-title">Welcome to aThemes Blocks <img draggable="false" role="img" class="emoji" alt="👋" src="../_shared/assets/df7ba0f4020c.svg"></h1><p class="atb-dashboard__hero-description">We’re glad to see you :)</p><a href="http://northlinestudio.com/wp-admin/post-new.php?post_type=page" class="atb-dashboard__hero-button">Create New Page</a><img src="../_shared/assets/540f99c8d577.png" width="40" height="40" alt="Welcome to aThemes Blocks 👋" class="atb-dashboard__hero-image"></div><div class="atb-dashboard__pages-wrapper atb-dashboard__card"><div class="atb-dashboard__main-navigation css-e6ud9m"><nav class="atb-dashboard__navigation"><ul><li class="active"><a href="/wp-admin/admin.php?page=at-blocks&amp;path=blocks" data-discover="true">Blocks</a></li><li class=""><a href="/wp-admin/admin.php?page=at-blocks&amp;path=settings&amp;section=editor-options" data-discover="true">Settings</a></li></ul></nav></div><div class="atb-dashboard__page atb-dashboard__page--blocks css-1377me3"><div class="atb-dashboard__grid-list css-h1h6dd"><div class="atb-dashboard__blocks-card undefined css-12q6uut"><h3 class="atb-dashboard__blocks-card-title">Flex Container<div class="components-base-control components-toggle-control css-yi7www-Wrapper-boxSizingReset-classes ej5x27r4"><div class="components-base-control__field css-2txpkp-StyledField ej5x27r3"><div data-wp-c16t="true" data-wp-component="HStack" class="components-flex components-h-stack css-1ub13jk-PolymorphicDiv-Flex-base-ItemsRow e19lxcc00"><span class="components-form-toggle is-checked"><input class="components-form-toggle__input" id="inspector-toggle-control-0" type="checkbox" checked="checked" style=""><span class="components-form-toggle__track"></span><span class="components-form-toggle__thumb"></span></span><label data-wp-c16t="true" data-wp-component="FlexBlock" for="inspector-toggle-control-0" class="components-flex-item components-flex-block components-toggle-control__label css-1mqm1jz-PolymorphicDiv-Item-sx-Base-block e19lxcc00"></label></div></div></div></h3><p class="atb-dashboard__blocks-card-description">Arrange multiple blocks flexibly with customizable layout options</p><a href="https://docs.athemes.com/article/flex-container-block/" class="atb-dashboard__blocks-card-icon" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.4C3 5.3832 3 3.8744 3.9376 2.9376C4.8744 2 6.3832 2 9.4 2H11C14.0168 2 15.5256 2 16.4624 2.9376C17.4 3.8744 17.4 5.3832 17.4 8.4V11.6C17.4 14.6168 17.4 16.1256 16.4624 17.0624C15.5256 18 14.0168 18 11 18H9.4C6.3832 18 4.8744 18 3.9376 17.0624C3 16.1256 3 14.6168 3 11.6V8.4Z" stroke="#5C5F62" stroke-width="1.5"></path><path d="M7 8.39929H13.4M7 11.5993H11" stroke="#5C5F62" stroke-width="1.5" stroke-linecap="round"></path></svg></a></div><div class="atb-dashboard__blocks-card undefined css-12q6uut"><h3 class="atb-dashboard__blocks-card-title">Heading<div class="components-base-control components-toggle-control css-yi7www-Wrapper-boxSizingReset-classes ej5x27r4"><div class="components-base-control__field css-2txpkp-StyledField ej5x27r3"><div data-wp-c16t="true" data-wp-component="HStack" class="components-flex components-h-stack css-1ub13jk-PolymorphicDiv-Flex-base-ItemsRow e19lxcc00"><span class="components-form-toggle is-checked"><input class="components-form-toggle__input" id="inspector-toggle-control-1" type="checkbox" checked="checked" style=""><span class="components-form-toggle__track"></span><span class="components-form-toggle__thumb"></span></span><label data-wp-c16t="true" data-wp-component="FlexBlock" for="inspector-toggle-control-1" class="components-flex-item components-flex-block components-toggle-control__label css-1mqm1jz-PolymorphicDiv-Item-sx-Base-block e19lxcc00"></label></div></div></div></h3><p class="atb-dashboard__blocks-card-description">Add prominent headings to structure content sections effectively</p><a href="https://docs.athemes.com/article/heading-block/" class="atb-dashboard__blocks-card-icon" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.4C3 5.3832 3 3.8744 3.9376 2.9376C4.8744 2 6.3832 2 9.4 2H11C14.0168 2 15.5256 2 16.4624 2.9376C17.4 3.8744 17.4 5.3832 17.4 8.4V11.6C17.4 14.6168 17.4 16.1256 16.4624 17.0624C15.5256 18 14.0168 18 11 18H9.4C6.3832 18 4.8744 18 3.9376 17.0624C3 16.1256 3 14.6168 3 11.6V8.4Z" stroke="#5C5F62" stroke-width="1.5"></path><path d="M7 8.39929H13.4M7 11.5993H11" stroke="#5C5F62" stroke-width="1.5" stroke-linecap="round"></path></svg></a></div><div class="atb-dashboard__blocks-card undefined css-12q6uut"><h3 class="atb-dashboard__blocks-card-title">Button<div class="components-base-control components-toggle-control css-yi7www-Wrapper-boxSizingReset-classes ej5x27r4"><div class="components-base-control__field css-2txpkp-StyledField ej5x27r3"><div data-wp-c16t="true" data-wp-component="HStack" class="components-flex components-h-stack css-1ub13jk-PolymorphicDiv-Flex-base-ItemsRow e19lxcc00"><span class="components-form-toggle is-checked"><input class="components-form-toggle__input" id="inspector-toggle-control-2" type="checkbox" checked="checked" style=""><span class="components-form-toggle__track"></span><span class="components-form-toggle__thumb"></span></span><label data-wp-c16t="true" data-wp-component="FlexBlock" for="inspector-toggle-control-2" class="components-flex-item components-flex-block components-toggle-control__label css-1mqm1jz-PolymorphicDiv-Item-sx-Base-block e19lxcc00"></label></div></div></div></h3><p class="atb-dashboard__blocks-card-description">Create engaging call-to-action buttons with customizable styles and link options</p><a href="https://docs.athemes.com/article/button-block/" class="atb-dashboard__blocks-card-icon" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.4C3 5.3832 3 3.8744 3.9376 2.9376C4.8744 2 6.3832 2 9.4 2H11C14.0168 2 15.5256 2 16.4624 2.9376C17.4 3.8744 17.4 5.3832 17.4 8.4V11.6C17.4 14.6168 17.4 16.1256 16.4624 17.0624C15.5256 18 14.0168 18 11 18H9.4C6.3832 18 4.8744 18 3.9376 17.0624C3 16.1256 3 14.6168 3 11.6V8.4Z" stroke="#5C5F62" stroke-width="1.5"></path><path d="M7 8.39929H13.4M7 11.5993H11" stroke="#5C5F62" stroke-width="1.5" stroke-linecap="round"></path></svg></a></div><div class="atb-dashboard__blocks-card undefined css-12q6uut"><h3 class="atb-dashboard__blocks-card-title">Text<div class="components-base-control components-toggle-control css-yi7www-Wrapper-boxSizingReset-classes ej5x27r4"><div class="components-base-control__field css-2txpkp-StyledField ej5x27r3"><div data-wp-c16t="true" data-wp-component="HStack" class="components-flex components-h-stack css-1ub13jk-PolymorphicDiv-Flex-base-ItemsRow e19lxcc00"><span class="components-form-toggle is-checked"><input class="components-form-toggle__input" id="inspector-toggle-control-3" type="checkbox" checked="checked" style=""><span class="components-form-toggle__track"></span><span class="components-form-toggle__thumb"></span></span><label data-wp-c16t="true" data-wp-component="FlexBlock" for="inspector-toggle-control-3" class="components-flex-item components-flex-block components-toggle-control__label css-1mqm1jz-PolymorphicDiv-Item-sx-Base-block e19lxcc00"></label></div></div></div></h3><p class="atb-dashboard__blocks-card-description">Insert and format text content to convey information or messages clearly</p><a href="https://docs.athemes.com/article/text-block/" class="atb-dashboard__blocks-card-icon" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.4C3 5.3832 3 3.8744 3.9376 2.9376C4.8744 2 6.3832 2 9.4 2H11C14.0168 2 15.5256 2 16.4624 2.9376C17.4 3.8744 17.4 5.3832 17.4 8.4V11.6C17.4 14.6168 17.4 16.1256 16.4624 17.0624C15.5256 18 14.0168 18 11 18H9.4C6.3832 18 4.8744 18 3.9376 17.0624C3 16.1256 3 14.6168 3 11.6V8.4Z" stroke="#5C5F62" stroke-width="1.5"></path><path d="M7 8.39929H13.4M7 11.5993H11" stroke="#5C5F62" stroke-width="1.5" stroke-linecap="round"></path></svg></a></div><div class="atb-dashboard__blocks-card undefined css-12q6uut"><h3 class="atb-dashboard__blocks-card-title">Icon<div class="components-base-control components-toggle-control css-yi7www-Wrapper-boxSizingReset-classes ej5x27r4"><div class="components-base-control__field css-2txpkp-StyledField ej5x27r3"><div data-wp-c16t="true" data-wp-component="HStack" class="components-flex components-h-stack css-1ub13jk-PolymorphicDiv-Flex-base-ItemsRow e19lxcc00"><span class="components-form-toggle is-checked"><input class="components-form-toggle__input" id="inspector-toggle-control-4" type="checkbox" checked="checked" style=""><span class="components-form-toggle__track"></span><span class="components-form-toggle__thumb"></span></span><label data-wp-c16t="true" data-wp-component="FlexBlock" for="inspector-toggle-control-4" class="components-flex-item components-flex-block components-toggle-control__label css-1mqm1jz-PolymorphicDiv-Item-sx-Base-block e19lxcc00"></label></div></div></div></h3><p class="atb-dashboard__blocks-card-description">Add icons to visually highlight key points, features, or calls to action</p><a href="https://docs.athemes.com/article/icon-block/" class="atb-dashboard__blocks-card-icon" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.4C3 5.3832 3 3.8744 3.9376 2.9376C4.8744 2 6.3832 2 9.4 2H11C14.0168 2 15.5256 2 16.4624 2.9376C17.4 3.8744 17.4 5.3832 17.4 8.4V11.6C17.4 14.6168 17.4 16.1256 16.4624 17.0624C15.5256 18 14.0168 18 11 18H9.4C6.3832 18 4.8744 18 3.9376 17.0624C3 16.1256 3 14.6168 3 11.6V8.4Z" stroke="#5C5F62" stroke-width="1.5"></path><path d="M7 8.39929H13.4M7 11.5993H11" stroke="#5C5F62" stroke-width="1.5" stroke-linecap="round"></path></svg></a></div><div class="atb-dashboard__blocks-card undefined css-12q6uut"><h3 class="atb-dashboard__blocks-card-title">Image<div class="components-base-control components-toggle-control css-yi7www-Wrapper-boxSizingReset-classes ej5x27r4"><div class="components-base-control__field css-2txpkp-StyledField ej5x27r3"><div data-wp-c16t="true" data-wp-component="HStack" class="components-flex components-h-stack css-1ub13jk-PolymorphicDiv-Flex-base-ItemsRow e19lxcc00"><span class="components-form-toggle is-checked"><input class="components-form-toggle__input" id="inspector-toggle-control-5" type="checkbox" checked="checked" style=""><span class="components-form-toggle__track"></span><span class="components-form-toggle__thumb"></span></span><label data-wp-c16t="true" data-wp-component="FlexBlock" for="inspector-toggle-control-5" class="components-flex-item components-flex-block components-toggle-control__label css-1mqm1jz-PolymorphicDiv-Item-sx-Base-block e19lxcc00"></label></div></div></div></h3><p class="atb-dashboard__blocks-card-description">Showcase images to visually represent products, services, or content sections</p><a href="https://docs.athemes.com/article/image-block/" class="atb-dashboard__blocks-card-icon" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.4C3 5.3832 3 3.8744 3.9376 2.9376C4.8744 2 6.3832 2 9.4 2H11C14.0168 2 15.5256 2 16.4624 2.9376C17.4 3.8744 17.4 5.3832 17.4 8.4V11.6C17.4 14.6168 17.4 16.1256 16.4624 17.0624C15.5256 18 14.0168 18 11 18H9.4C6.3832 18 4.8744 18 3.9376 17.0624C3 16.1256 3 14.6168 3 11.6V8.4Z" stroke="#5C5F62" stroke-width="1.5"></path><path d="M7 8.39929H13.4M7 11.5993H11" stroke="#5C5F62" stroke-width="1.5" stroke-linecap="round"></path></svg></a></div><div class="atb-dashboard__blocks-card undefined css-12q6uut"><h3 class="atb-dashboard__blocks-card-title">Testimonial<div class="components-base-control components-toggle-control css-yi7www-Wrapper-boxSizingReset-classes ej5x27r4"><div class="components-base-control__field css-2txpkp-StyledField ej5x27r3"><div data-wp-c16t="true" data-wp-component="HStack" class="components-flex components-h-stack css-1ub13jk-PolymorphicDiv-Flex-base-ItemsRow e19lxcc00"><span class="components-form-toggle is-checked"><input class="components-form-toggle__input" id="inspector-toggle-control-6" type="checkbox" checked="checked" style=""><span class="components-form-toggle__track"></span><span class="components-form-toggle__thumb"></span></span><label data-wp-c16t="true" data-wp-component="FlexBlock" for="inspector-toggle-control-6" class="components-flex-item components-flex-block components-toggle-control__label css-1mqm1jz-PolymorphicDiv-Item-sx-Base-block e19lxcc00"></label></div></div></div></h3><p class="atb-dashboard__blocks-card-description">Display customer feedback, reviews, or quotes to build social proof</p><a href="https://docs.athemes.com/article/testimonial-block/" class="atb-dashboard__blocks-card-icon" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.4C3 5.3832 3 3.8744 3.9376 2.9376C4.8744 2 6.3832 2 9.4 2H11C14.0168 2 15.5256 2 16.4624 2.9376C17.4 3.8744 17.4 5.3832 17.4 8.4V11.6C17.4 14.6168 17.4 16.1256 16.4624 17.0624C15.5256 18 14.0168 18 11 18H9.4C6.3832 18 4.8744 18 3.9376 17.0624C3 16.1256 3 14.6168 3 11.6V8.4Z" stroke="#5C5F62" stroke-width="1.5"></path><path d="M7 8.39929H13.4M7 11.5993H11" stroke="#5C5F62" stroke-width="1.5" stroke-linecap="round"></path></svg></a></div><div class="atb-dashboard__blocks-card undefined css-12q6uut"><h3 class="atb-dashboard__blocks-card-title">Google Maps<div class="components-base-control components-toggle-control css-yi7www-Wrapper-boxSizingReset-classes ej5x27r4"><div class="components-base-control__field css-2txpkp-StyledField ej5x27r3"><div data-wp-c16t="true" data-wp-component="HStack" class="components-flex components-h-stack css-1ub13jk-PolymorphicDiv-Flex-base-ItemsRow e19lxcc00"><span class="components-form-toggle is-checked"><input class="components-form-toggle__input" id="inspector-toggle-control-7" type="checkbox" checked="checked" style=""><span class="components-form-toggle__track"></span><span class="components-form-toggle__thumb"></span></span><label data-wp-c16t="true" data-wp-component="FlexBlock" for="inspector-toggle-control-7" class="components-flex-item components-flex-block components-toggle-control__label css-1mqm1jz-PolymorphicDiv-Item-sx-Base-block e19lxcc00"></label></div></div></div></h3><p class="atb-dashboard__blocks-card-description">Integrate interactive maps to pinpoint locations or provide directions</p><a href="https://docs.athemes.com/article/google-maps-block/" class="atb-dashboard__blocks-card-icon" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.4C3 5.3832 3 3.8744 3.9376 2.9376C4.8744 2 6.3832 2 9.4 2H11C14.0168 2 15.5256 2 16.4624 2.9376C17.4 3.8744 17.4 5.3832 17.4 8.4V11.6C17.4 14.6168 17.4 16.1256 16.4624 17.0624C15.5256 18 14.0168 18 11 18H9.4C6.3832 18 4.8744 18 3.9376 17.0624C3 16.1256 3 14.6168 3 11.6V8.4Z" stroke="#5C5F62" stroke-width="1.5"></path><path d="M7 8.39929H13.4M7 11.5993H11" stroke="#5C5F62" stroke-width="1.5" stroke-linecap="round"></path></svg></a></div><div class="atb-dashboard__blocks-card undefined css-12q6uut"><h3 class="atb-dashboard__blocks-card-title">Post Grid<div class="components-base-control components-toggle-control css-yi7www-Wrapper-boxSizingReset-classes ej5x27r4"><div class="components-base-control__field css-2txpkp-StyledField ej5x27r3"><div data-wp-c16t="true" data-wp-component="HStack" class="components-flex components-h-stack css-1ub13jk-PolymorphicDiv-Flex-base-ItemsRow e19lxcc00"><span class="components-form-toggle is-checked"><input class="components-form-toggle__input" id="inspector-toggle-control-8" type="checkbox" checked="checked" style=""><span class="components-form-toggle__track"></span><span class="components-form-toggle__thumb"></span></span><label data-wp-c16t="true" data-wp-component="FlexBlock" for="inspector-toggle-control-8" class="components-flex-item components-flex-block components-toggle-control__label css-1mqm1jz-PolymorphicDiv-Item-sx-Base-block e19lxcc00"></label></div></div></div></h3><p class="atb-dashboard__blocks-card-description">Display multiple posts in a structured grid layout with various styling options</p><a href="https://docs.athemes.com/article/post-grid-block/" class="atb-dashboard__blocks-card-icon" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.4C3 5.3832 3 3.8744 3.9376 2.9376C4.8744 2 6.3832 2 9.4 2H11C14.0168 2 15.5256 2 16.4624 2.9376C17.4 3.8744 17.4 5.3832 17.4 8.4V11.6C17.4 14.6168 17.4 16.1256 16.4624 17.0624C15.5256 18 14.0168 18 11 18H9.4C6.3832 18 4.8744 18 3.9376 17.0624C3 16.1256 3 14.6168 3 11.6V8.4Z" stroke="#5C5F62" stroke-width="1.5"></path><path d="M7 8.39929H13.4M7 11.5993H11" stroke="#5C5F62" stroke-width="1.5" stroke-linecap="round"></path></svg></a></div><div class="atb-dashboard__blocks-card undefined css-12q6uut"><h3 class="atb-dashboard__blocks-card-title">Taxonomy Grid<div class="components-base-control components-toggle-control css-yi7www-Wrapper-boxSizingReset-classes ej5x27r4"><div class="components-base-control__field css-2txpkp-StyledField ej5x27r3"><div data-wp-c16t="true" data-wp-component="HStack" class="components-flex components-h-stack css-1ub13jk-PolymorphicDiv-Flex-base-ItemsRow e19lxcc00"><span class="components-form-toggle is-checked"><input class="components-form-toggle__input" id="inspector-toggle-control-9" type="checkbox" checked="checked" style=""><span class="components-form-toggle__track"></span><span class="components-form-toggle__thumb"></span></span><label data-wp-c16t="true" data-wp-component="FlexBlock" for="inspector-toggle-control-9" class="components-flex-item components-flex-block components-toggle-control__label css-1mqm1jz-PolymorphicDiv-Item-sx-Base-block e19lxcc00"></label></div></div></div></h3><p class="atb-dashboard__blocks-card-description">Arrange categories, tags, or terms in a visually organized grid layout</p><a href="https://docs.athemes.com/article/taxonomy-grid-block/" class="atb-dashboard__blocks-card-icon" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.4C3 5.3832 3 3.8744 3.9376 2.9376C4.8744 2 6.3832 2 9.4 2H11C14.0168 2 15.5256 2 16.4624 2.9376C17.4 3.8744 17.4 5.3832 17.4 8.4V11.6C17.4 14.6168 17.4 16.1256 16.4624 17.0624C15.5256 18 14.0168 18 11 18H9.4C6.3832 18 4.8744 18 3.9376 17.0624C3 16.1256 3 14.6168 3 11.6V8.4Z" stroke="#5C5F62" stroke-width="1.5"></path><path d="M7 8.39929H13.4M7 11.5993H11" stroke="#5C5F62" stroke-width="1.5" stroke-linecap="round"></path></svg></a></div><div class="atb-dashboard__blocks-card undefined css-12q6uut"><h3 class="atb-dashboard__blocks-card-title">Team Member<div class="components-base-control components-toggle-control css-yi7www-Wrapper-boxSizingReset-classes ej5x27r4"><div class="components-base-control__field css-2txpkp-StyledField ej5x27r3"><div data-wp-c16t="true" data-wp-component="HStack" class="components-flex components-h-stack css-1ub13jk-PolymorphicDiv-Flex-base-ItemsRow e19lxcc00"><span class="components-form-toggle is-checked"><input class="components-form-toggle__input" id="inspector-toggle-control-10" type="checkbox" checked="checked" style=""><span class="components-form-toggle__track"></span><span class="components-form-toggle__thumb"></span></span><label data-wp-c16t="true" data-wp-component="FlexBlock" for="inspector-toggle-control-10" class="components-flex-item components-flex-block components-toggle-control__label css-1mqm1jz-PolymorphicDiv-Item-sx-Base-block e19lxcc00"></label></div></div></div></h3><p class="atb-dashboard__blocks-card-description">Highlight team members with a beautiful profile card</p><a href="https://docs.athemes.com/article/team-block/" class="atb-dashboard__blocks-card-icon" target="_blank"><svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 8.4C3 5.3832 3 3.8744 3.9376 2.9376C4.8744 2 6.3832 2 9.4 2H11C14.0168 2 15.5256 2 16.4624 2.9376C17.4 3.8744 17.4 5.3832 17.4 8.4V11.6C17.4 14.6168 17.4 16.1256 16.4624 17.0624C15.5256 18 14.0168 18 11 18H9.4C6.3832 18 4.8744 18 3.9376 17.0624C3 16.1256 3 14.6168 3 11.6V8.4Z" stroke="#5C5F62" stroke-width="1.5"></path><path d="M7 8.39929H13.4M7 11.5993H11" stroke="#5C5F62" stroke-width="1.5" stroke-linecap="round"></path></svg></a></div></div><div class="atb-dashboard__grid-list css-14wzran"><div class="atb-dashboard__blocks-card atb-dashboard__blocks-card--suggested-products css-12q6uut"><h3 class="atb-dashboard__blocks-card-title">Suggested Products</h3><div class="atb-dashboard__products-card css-1uh2l0w"><img src="../_shared/assets/b0ef9d9c5b6e.png" width="40" height="40" alt="WPForms"><p class="atb-dashboard__products-card-title">WPForms</p><p class="atb-dashboard__products-card-action atb-dashboard__products-card-action--active">Activated<svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.5 11.5C8.53759 11.5 11 9.03759 11 6C11 2.96244 8.53759 0.5 5.5 0.5C2.46244 0.5 0 2.96244 0 6C0 9.03759 2.46244 11.5 5.5 11.5ZM7.65741 3.84258C7.8364 4.02156 7.8364 4.31177 7.65741 4.49076L6.14821 6L7.65741 7.50926C7.8364 7.68826 7.8364 7.97841 7.65741 8.15741C7.47841 8.3364 7.18826 8.3364 7.00926 8.15741L5.5 6.64821L3.99076 8.15741C3.81177 8.3364 3.52156 8.3364 3.34258 8.15741C3.16359 7.97841 3.16359 7.68826 3.34258 7.50926L4.85179 6L3.34258 4.49076C3.16359 4.31177 3.16359 4.02156 3.34258 3.84258C3.52156 3.66359 3.81177 3.66359 3.99076 3.84258L5.5 5.35179L7.00926 3.84258C7.18826 3.66359 7.47841 3.66359 7.65741 3.84258Z" fill="#3FB28F"></path><rect x="1.8335" y="2.33264" width="6.11111" height="6.72222" fill="#3FB28F"></rect><path d="M7.59229 4.04529L8.03076 4.35681L8.15967 4.44763L8.06201 4.57166L5.43018 7.92615L5.34131 8.03943L5.22412 7.95642L3.57959 6.77966L3.45068 6.68787L3.54932 6.56482L3.87842 6.14978L3.96631 6.03748L4.08252 6.12048L5.17236 6.90173L7.38721 4.07458L7.47607 3.96228L7.59229 4.04529Z" fill="white" stroke="white" stroke-width="0.3"></path></svg></p></div><div class="atb-dashboard__products-card css-1uh2l0w"><img src="../_shared/assets/ec2bca35c275.png" width="40" height="40" alt="Merchant"><p class="atb-dashboard__products-card-title">Merchant</p><a class="atb-dashboard__products-card-action atb-dashboard__products-card-action--inactive" href="#">Activate</a></div></div><div class="atb-dashboard__blocks-card atb-dashboard__blocks-card--quick-links css-12q6uut"><h3 class="atb-dashboard__blocks-card-title">Quick Links</h3><div class="atb-dashboard__links-card css-11initw"><p class="atb-dashboard__links-card-title">Leave a review</p><p class="atb-dashboard__links-card-description">It makes us happy to hear from our users. We would appreciate a review.</p><a href="https://wordpress.org/support/plugin/athemes-blocks/reviews/?filter=5#new-post" target="_blank" class="atb-dashboard__links-card-link atb-dashboard__links-card-link--button">Submit a Review</a></div><div class="atb-dashboard__links-card css-11initw"><p class="atb-dashboard__links-card-title">Knowledge base</p><p class="atb-dashboard__links-card-description">Browse documentation, reference material, and tutorials for aThemes Blocks.</p><a href="https://docs.athemes.com/documentation/athemes-blocks/" target="_blank" class="atb-dashboard__links-card-link atb-dashboard__links-card-link--button">View All</a></div><div class="atb-dashboard__links-card css-11initw"><p class="atb-dashboard__links-card-title">Support</p><p class="atb-dashboard__links-card-description">Have a question? Hit a bug? Find solutions or ask a member of our expert team for help.</p><a href="https://athemes.com/support/" target="_blank" class="atb-dashboard__links-card-link atb-dashboard__links-card-link--button">Get Support</a></div><div class="atb-dashboard__links-card css-11initw"><p class="atb-dashboard__links-card-title">Have an idea or feedback?</p><p class="atb-dashboard__links-card-description">Got an idea for how to improve aThemes Blocks? Let us know.</p><a href="https://athemes.com/feature-request/" target="_blank" class="atb-dashboard__links-card-link atb-dashboard__links-card-link--underline">Suggest an Idea<svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.4375 0.5H8.25C7.94531 0.5 7.66406 0.6875 7.54688 0.992188C7.42969 1.27344 7.5 1.60156 7.71094 1.8125L8.67188 2.77344L4.14844 7.29688C3.84375 7.57812 3.84375 8.07031 4.14844 8.35156C4.28906 8.49219 4.47656 8.5625 4.6875 8.5625C4.875 8.5625 5.0625 8.49219 5.20312 8.35156L9.72656 3.82812L10.6875 4.78906C10.8281 4.92969 11.0156 5 11.2266 5C11.3203 5 11.4141 5 11.5078 4.95312C11.8125 4.83594 12 4.55469 12 4.25V1.0625C12 0.757812 11.7422 0.5 11.4375 0.5ZM9.1875 8C8.85938 8 8.625 8.25781 8.625 8.5625V11.1875C8.625 11.3047 8.53125 11.375 8.4375 11.375H1.3125C1.19531 11.375 1.125 11.3047 1.125 11.1875V4.0625C1.125 3.96875 1.19531 3.875 1.3125 3.875H3.9375C4.24219 3.875 4.5 3.64062 4.5 3.3125C4.5 3.00781 4.24219 2.75 3.9375 2.75H1.3125C0.585938 2.75 0 3.35938 0 4.0625V11.1875C0 11.9141 0.585938 12.5 1.3125 12.5H8.4375C9.14062 12.5 9.75 11.9141 9.75 11.1875V8.5625C9.75 8.25781 9.49219 8 9.1875 8Z" fill="#3858E9"></path></svg></a></div><div class="atb-dashboard__links-card css-11initw"><p class="atb-dashboard__links-card-title">Join our Facebook community</p><p class="atb-dashboard__links-card-description">Want to share your awesome project or just say hi? Join our wonderful community!</p><a href="https://www.facebook.com/groups/athemes/" target="_blank" class="atb-dashboard__links-card-link atb-dashboard__links-card-link--button">Join Now</a></div></div></div></div></div></div></div>        <div class="atb-dashboard-notifications-sidebar">
+            <a href="#" class="atb-dashboard-notifications-sidebar-close" title="Close the sidebar">
+                <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.4584 4.54038L12.4597 3.54163L8.50008 7.50121L4.5405 3.54163L3.54175 4.54038L7.50133 8.49996L3.54175 12.4595L4.5405 13.4583L8.50008 9.49871L12.4597 13.4583L13.4584 12.4595L9.49883 8.49996L13.4584 4.54038Z" fill="black"></path>
+                </svg>
+            </a>
+            <div class="atb-dashboard-notifications-sidebar-inner">
+
+                <div class="atb-dashboard-notifications-sidebar-header">
+                    <div class="atb-dashboard-notifications-sidebar-header-icon">
+                        <svg width="26" height="25" viewBox="0 0 26 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M11.9441 20.5818C12.3228 20.8497 12.7752 20.9936 13.2391 20.9937L11.9441 20.5818ZM11.9441 20.5818C11.6044 20.3416 11.3391 20.0122 11.1764 19.6313M11.9441 20.5818L11.1764 19.6313M11.1764 19.6313H15.3018C15.1392 20.0122 14.8738 20.3416 14.5341 20.5818C14.1554 20.8497 13.703 20.9936 13.2391 20.9937L11.1764 19.6313ZM5.42653 19.6313H5.4266H9.33118C9.5281 20.5037 10.0116 21.2861 10.7057 21.8526C11.4209 22.4365 12.3158 22.7554 13.2391 22.7554C14.1624 22.7554 15.0573 22.4365 15.7725 21.8526C16.4666 21.2861 16.9501 20.5037 17.147 19.6313H21.0516H21.0517C21.344 19.6309 21.631 19.5534 21.8838 19.4068C22.1366 19.2601 22.3462 19.0494 22.4916 18.7959C22.637 18.5424 22.713 18.255 22.712 17.9628C22.7109 17.6705 22.6329 17.3837 22.4856 17.1313C21.9553 16.2176 21.1516 13.5951 21.1516 10.1562C21.1516 8.05772 20.318 6.04515 18.8341 4.56127C17.3502 3.07739 15.3376 2.24375 13.2391 2.24375C11.1406 2.24375 9.128 3.07739 7.64412 4.56127C6.16024 6.04515 5.3266 8.05772 5.3266 10.1562C5.3266 13.5963 4.52185 16.2179 3.99149 17.1314L4.07797 17.1816L3.99158 17.1313C3.84432 17.3838 3.76625 17.6707 3.76524 17.963C3.76424 18.2554 3.84034 18.5428 3.98587 18.7964C4.1314 19.0499 4.34121 19.2606 4.59414 19.4072C4.84708 19.5537 5.13419 19.631 5.42653 19.6313ZM5.59668 17.8687C6.33498 16.4852 7.0891 13.5615 7.0891 10.1562C7.0891 8.52517 7.73705 6.96089 8.8904 5.80754C10.0437 4.65419 11.608 4.00625 13.2391 4.00625C14.8702 4.00625 16.4345 4.65419 17.5878 5.80754C18.7412 6.96089 19.3891 8.52517 19.3891 10.1562C19.3891 13.5589 20.1415 16.4827 20.8815 17.8687H5.59668Z" fill="#3858E9" stroke="#3858E9" stroke-width="0.2"></path>
+                        </svg>
+                    </div>
+                    <div class="atb-dashboard-notifications-sidebar-header-content">
+                        <h3>
+                            New Update                        </h3>
+                        <p>Check the latest news from Botiga</p>
+                    </div>
+                </div>
+                                <div class="atb-dashboard-notifications-sidebar-body atb-dashboard-tab-content-wrapper" data-tab-wrapper-id="notifications-sidebar">
+                    <div class="atb-dashboard-tab-content active" data-tab-content-id="notifications-sidebar-botiga">
+                        
+                            
+                                <div class="atb-dashboard-notification">
+                                                                            <span class="atb-dashboard-notification-date" data-raw-date="2025-09-16 14:07:59">
+                                            September 16, 2025                                                                                    </span>
+                                                                                                                <div class="atb-dashboard-notification-content">
+                                            
+<ul>
+  <li><span class="changelog-tag changelog-fixed">Fixed</span>Fixed double block registration warning for legacy block.</li>
+</ul>
+                                        </div>
+                                                                    </div>
+                            
+                                <div class="atb-dashboard-notification">
+                                                                            <span class="atb-dashboard-notification-date" data-raw-date="2025-08-12 23:27:39">
+                                            August 12, 2025                                                                                            <span class="atb-dashboard-notification-version">(Version 1.1.0)</span>
+                                                                                    </span>
+                                                                                                                <div class="atb-dashboard-notification-content">
+                                            
+<ul class="wp-block-list">
+<li>Added: 11 new blocks (Container, Heading, Button, Text, Icon, Image, Testimonial, Post Grid, Taxonomy Grid, Team Member, Google Map)</li>
+
+
+
+<li>Added: Block Management Dashboard - enable/disable individual blocks</li>
+</ul>
+                                        </div>
+                                                                    </div>
+                            
+                        
+                    </div>
+
+                    
+                </div>
+
+            </div>
+        </div>
+        
+<div class="clear"></div></div>
+<div class="clear"></div></div>
+<div class="clear"></div></div>
+
+<div id="wpfooter" role="contentinfo">
+		<p id="footer-left" class="alignleft">
+		<span id="footer-thankyou">Thank you for creating with <a href="https://wordpress.org/">WordPress</a>.</span>	</p>
+	<p id="footer-upgrade" class="alignright">
+		Version 7.1.2	</p>
+	<div class="clear"></div>
+</div>
+        <style>
+            
+            #toplevel_page_at-blocks a[href="admin.php?page=at-blocks"] {
+                display: none;
+            }
+        
+                #toplevel_page_at-blocks a[href="admin.php?page=at-blocks&path=blocks"] {
+                    font-weight: 600;
+                    color: #FFF;
+                }
+                    </style>
+                
+        			
+					
+
+		        <link rel="stylesheet" href="../_shared/css/16be88ec5264.css">
+        
+        
+
+
+
+
+
+
+
+
+
+			<style>
+				#adminmenu .toplevel_page_athemes-addons .wp-submenu li.current a {
+                    color: rgba(240, 246, 252, 0.7);
+                    font-weight: 400;
+                }
+
+				#adminmenu .toplevel_page_athemes-addons .wp-submenu li a[href="admin.php?page=at-blocks&path=blocks"] {
+					color: #fff;
+                    font-weight: 600;
+				}
+
+				#adminmenu .toplevel_page_athemes-addons .wp-submenu a[href="https://athemes.com/addons?utm_source=theme_submenu_page&#038;utm_medium=button&#038;utm_campaign=Addons"] {
+					color: #05d105;
+				}
+			</style>
+            
+					
+		
+		 
+   
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		<div id="wp-auth-check-wrap" class="hidden">
+	<div id="wp-auth-check-bg"></div>
+	<div id="wp-auth-check">
+	<button type="button" class="wp-auth-check-close button-link"><span class="screen-reader-text">
+		Close dialog	</span></button>
+			<div id="wp-auth-check-form" class="loading" data-src="http://northlinestudio.com/wp-login.php?interim-login=1&amp;wp_lang=en_US"></div>
+			<div class="wp-auth-fallback">
+		<p><b class="wp-auth-fallback-expired" tabindex="0">Session expired</b></p>
+		<p><a href="http://northlinestudio.com/wp-login.php" target="_blank">Please log in again.</a>
+		The login page will open in a new tab. After logging in you can close it and return to this page.</p>
+	</div>
+	</div>
+	</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="clear"></div></div><div></div>
+
+
+
+<p id="a11y-speak-intro-text" class="a11y-speak-intro-text" style="position: absolute; margin: -1px; padding: 0px; height: 1px; width: 1px; overflow: hidden; clip-path: inset(50%); border: 0px; overflow-wrap: normal !important; word-break: normal !important;" hidden="">Notifications</p><div id="a11y-speak-assertive" class="a11y-speak-region" style="position:absolute;margin:-1px;padding:0;height:1px;width:1px;overflow:hidden;clip-path:inset(50%);border:0;word-wrap:normal !important;word-break:normal !important;" aria-live="assertive" aria-relevant="additions text" aria-atomic="true"></div><div id="a11y-speak-polite" class="a11y-speak-region" style="position:absolute;margin:-1px;padding:0;height:1px;width:1px;overflow:hidden;clip-path:inset(50%);border:0;word-wrap:normal !important;word-break:normal !important;" aria-live="polite" aria-relevant="additions text" aria-atomic="true"></div><script src="../../../_runtime/core.js"></script><script src="../_shared/nav.js"></script><script src="../_shared/interactivity.js"></script></body></html>

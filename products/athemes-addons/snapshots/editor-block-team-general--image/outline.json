@@ -1,0 +1,601 @@
+{
+  "slug": "editor-block-team-general--image",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "link-world-page",
+      "event": "click",
+      "selector": "div.editor-header__settings a.components-button.is-compact",
+      "count": 3
+    },
+    {
+      "label": "blk-tabs",
+      "event": "click",
+      "selector": ".atblocks-tabs-navigation__item.components-button[data-tab]",
+      "count": 3
+    },
+    {
+      "label": "blk-panel-body",
+      "event": "click",
+      "selector": ".components-button.components-panel__body-toggle",
+      "count": 4
+    },
+    {
+      "label": "blk-sidebar-toggle",
+      "event": "click",
+      "selector": "div.interface-pinned-items button.components-button.is-compact",
+      "count": 2
+    },
+    {
+      "label": "blk-format",
+      "event": "click",
+      "selector": ".components-button.components-toolbar-button[data-toolbar-item]",
+      "count": 2
+    },
+    {
+      "label": "blk-meta-boxes",
+      "event": "click",
+      "selector": "div.edit-post-meta-boxes-main__presenter button",
+      "count": 5
+    },
+    {
+      "label": "blk-chrome",
+      "event": "click",
+      "selector": "button.components-button.components-toolbar__control",
+      "count": 62
+    },
+    {
+      "label": "native-select",
+      "event": "click",
+      "selector": ".components-select-control__input.e1mv6sxx2",
+      "count": 2
+    },
+    {
+      "label": "wp-form-buttons",
+      "event": "click",
+      "selector": "button.components-button.editor-post-publish-button",
+      "count": 1
+    },
+    {
+      "label": "wp-setting-label",
+      "event": "click",
+      "selector": "div.inside p label",
+      "count": 5
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#elementor-switch-mode-button",
+        "tag": "button",
+        "text": "Edit with Elementor",
+        "count": 1,
+        "hidden": false,
+        "wired": "blk-chrome",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wp-components-base-control-1",
+        "tag": "div",
+        "text": "Top Bottom Left Right",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-components-base-control-1-3",
+        "tag": "button",
+        "text": "Top",
+        "count": 1,
+        "hidden": false,
+        "wired": "blk-chrome",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wp-components-base-control-1-4",
+        "tag": "button",
+        "text": "Bottom",
+        "count": 1,
+        "hidden": false,
+        "wired": "blk-chrome",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wp-components-base-control-1-5",
+        "tag": "button",
+        "text": "Left",
+        "count": 1,
+        "hidden": false,
+        "wired": "blk-chrome",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wp-components-base-control-1-6",
+        "tag": "button",
+        "text": "Right",
+        "count": 1,
+        "hidden": false,
+        "wired": "blk-chrome",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wp-components-base-control-2",
+        "tag": "div",
+        "text": "Normal Circle Square Rounded",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-components-base-control-2-10",
+        "tag": "button",
+        "text": "Rounded",
+        "count": 1,
+        "hidden": false,
+        "wired": "blk-chrome",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wp-components-base-control-2-7",
+        "tag": "button",
+        "text": "Normal",
+        "count": 1,
+        "hidden": false,
+        "wired": "blk-chrome",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wp-components-base-control-2-8",
+        "tag": "button",
+        "text": "Circle",
+        "count": 1,
+        "hidden": false,
+        "wired": "blk-chrome",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wp-components-base-control-2-9",
+        "tag": "button",
+        "text": "Square",
+        "count": 1,
+        "hidden": false,
+        "wired": "blk-chrome",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#hiddenaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-input-control-4",
+        "tag": "input",
+        "text": "85",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-range-control-4",
+        "tag": "input",
+        "text": "85",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-select-control-2",
+        "tag": "select",
+        "text": "Thumbnail Medium Large Full",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-select-control-3",
+        "tag": "select",
+        "text": "px % vw vh",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#meta-box-order-nonce",
+        "tag": "input",
+        "text": "abaa46d010",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_post_status",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#originalaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_ID",
+        "tag": "input",
+        "text": "1850",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_type",
+        "tag": "input",
+        "text": "page",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#referredby",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#samplepermalinknonce",
+        "tag": "input",
+        "text": "45a98c56e7",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_cat_field",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_inner_custom_box_nonce",
+        "tag": "input",
+        "text": "f299f7b98f",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_single_page_box_nonce",
+        "tag": "input",
+        "text": "26178a192c",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toggle-custom-fields-nonce",
+        "tag": "input",
+        "text": "af46dff26d",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#user-id",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#advanced-sortables",
+        "tag": "div",
+        "text": "Custom post type category Move up Move up Move down Move do…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-editor-block-mover-button__description-0",
+        "tag": "div",
+        "text": "Move Team block from position 3 up to position 2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-editor-block-mover-button__description-1",
+        "tag": "div",
+        "text": "Move Team block from position 3 down to position 4",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#components-button__description-34",
+        "tag": "span",
+        "text": "Change block type or style",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editor",
+        "tag": "div",
+        "text": "Edit with Elementor People and proof · Page Save Change blo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-switch-mode",
+        "tag": "div",
+        "text": "Edit with Elementor",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#global-styles-css-custom-properties-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#metaboxes",
+        "tag": "div",
+        "text": "Sydney page options Move up Move up Move down Move down Sho…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postbox-container-2",
+        "tag": "div",
+        "text": "",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "#poststuff",
+        "tag": "div",
+        "text": "",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#side-sortables",
+        "tag": "div",
+        "text": "Sydney page options Move up Move up Move down Move down Sho…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_cat_metabox",
+        "tag": "div",
+        "text": "Custom post type category Move up Move up Move down Move do…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_cat_metabox-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_cat_metabox-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_cat_metabox-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_cat_metabox-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_cat_metabox-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_cat_metabox-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_cat_metabox-title",
+        "tag": "h2",
+        "text": "Custom post type category",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_single_page_metabox",
+        "tag": "div",
+        "text": "Sydney page options Move up Move up Move down Move down Sho…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_single_page_metabox-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_single_page_metabox-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_single_page_metabox-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_single_page_metabox-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_single_page_metabox-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_single_page_metabox-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney_single_page_metabox-title",
+        "tag": "h2",
+        "text": "Sydney page options",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney-block-editor-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toggle-custom-fields-form",
+        "tag": "form",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

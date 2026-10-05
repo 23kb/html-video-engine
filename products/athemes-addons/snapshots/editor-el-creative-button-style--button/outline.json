@@ -1,0 +1,3437 @@
+{
+  "slug": "editor-el-creative-button-style--button",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "link-world-page",
+      "event": "click",
+      "selector": "div.wp-auth-fallback p a",
+      "count": 1
+    },
+    {
+      "label": "link-external",
+      "event": "click",
+      "selector": "#elementor-panel__editor__help__link",
+      "count": 2
+    },
+    {
+      "label": "el-panel-tab",
+      "event": "click",
+      "selector": ".elementor-component-tab.elementor-panel-navigation-tab[data-tab]",
+      "count": 3
+    },
+    {
+      "label": "el-panel-section",
+      "event": "click",
+      "selector": "button.elementor-panel-heading",
+      "count": 1
+    },
+    {
+      "label": "el-color-picker",
+      "event": "click",
+      "selector": ".pcr-button",
+      "count": 13
+    },
+    {
+      "label": "el-panel-promo",
+      "event": "click",
+      "selector": "button[data-event]",
+      "count": 8
+    },
+    {
+      "label": "el-notice-dismiss",
+      "event": "click",
+      "selector": ".elementor-control-notice-dismiss.tooltip-target[data-event][data-tooltip]",
+      "count": 4
+    },
+    {
+      "label": "el-link-dimensions",
+      "event": "click",
+      "selector": ".elementor-link-dimensions.tooltip-target[data-tooltip]",
+      "count": 9
+    },
+    {
+      "label": "el-choose",
+      "event": "click",
+      "selector": ".elementor-choices-label.elementor-control-unit-1[data-tooltip]",
+      "count": 4
+    },
+    {
+      "label": "el-responsive-switcher",
+      "event": "click",
+      "selector": ".elementor-responsive-switcher.tooltip-target[data-device][data-tooltip]",
+      "count": 279
+    },
+    {
+      "label": "el-control-label",
+      "event": "click",
+      "selector": "label.elementor-control-title",
+      "count": 466
+    },
+    {
+      "label": "el-device",
+      "event": "click",
+      "selector": ".MuiButtonBase-root.MuiTab-root[data-testid]",
+      "count": 3
+    },
+    {
+      "label": "el-topbar",
+      "event": "click",
+      "selector": "button.MuiButtonBase-root.MuiToggleButton-root",
+      "count": 39
+    },
+    {
+      "label": "native-select",
+      "event": "click",
+      "selector": "select[data-setting]",
+      "count": 52
+    },
+    {
+      "label": "select2-open",
+      "event": "click",
+      "selector": ".select2-selection.select2-selection--single",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#elementor-navigator__ai-titles",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__close",
+        "tag": "button",
+        "text": "Close structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__toggle-all",
+        "tag": "button",
+        "text": "Expand all elements",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel__editor__help__link",
+        "tag": "a",
+        "text": "Need Help",
+        "count": 1,
+        "hidden": false,
+        "wired": "link-external",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-footer-history",
+        "tag": "button",
+        "text": "History",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-navigator",
+        "tag": "button",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-responsive",
+        "tag": "button",
+        "text": "Responsive Mode",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-options",
+        "tag": "div",
+        "text": "Last edited on Oct 2, 16:51 by Ingrid Vale Save Draft Save …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-preview",
+        "tag": "button",
+        "text": "Preview Changes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-settings",
+        "tag": "button",
+        "text": "Page Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-header-add-button",
+        "tag": "button",
+        "text": "Widgets Panel",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-kit-back",
+        "tag": "button",
+        "text": "Back",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-kit-close",
+        "tag": "button",
+        "text": "Close",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-menu-button",
+        "tag": "button",
+        "text": "Menu",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-saver-button-publish",
+        "tag": "button",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-saver-button-save-options",
+        "tag": "button",
+        "text": "Save Options",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#elementor-choose-c3081typography_font_sizecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3081typography_font_sizeem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3081typography_font_sizepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3081typography_font_sizerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3081typography_font_sizevw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3082typography_font_size_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3082typography_font_size_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3082typography_font_size_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3082typography_font_size_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3082typography_font_size_tabletvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3083typography_font_size_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3083typography_font_size_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3083typography_font_size_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3083typography_font_size_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3083typography_font_size_mobilevw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3088typography_line_heightcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3088typography_line_heightem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3088typography_line_heightlh",
+        "tag": "input",
+        "text": "lh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3088typography_line_heightpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3088typography_line_heightrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3088typography_line_heightrlh",
+        "tag": "input",
+        "text": "rlh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3089typography_line_height_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3089typography_line_height_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3089typography_line_height_tabletlh",
+        "tag": "input",
+        "text": "lh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3089typography_line_height_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3089typography_line_height_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3089typography_line_height_tabletrlh",
+        "tag": "input",
+        "text": "rlh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3090typography_line_height_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3090typography_line_height_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3090typography_line_height_mobilelh",
+        "tag": "input",
+        "text": "lh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3090typography_line_height_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3090typography_line_height_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3090typography_line_height_mobilerlh",
+        "tag": "input",
+        "text": "rlh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3091typography_letter_spacingcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3091typography_letter_spacingem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3091typography_letter_spacingpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3091typography_letter_spacingrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3092typography_letter_spacing_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3092typography_letter_spacing_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3092typography_letter_spacing_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3092typography_letter_spacing_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3093typography_letter_spacing_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3093typography_letter_spacing_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3093typography_letter_spacing_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3093typography_letter_spacing_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3094typography_word_spacingcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3094typography_word_spacingem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3094typography_word_spacingpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3094typography_word_spacingrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3095typography_word_spacing_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3095typography_word_spacing_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3095typography_word_spacing_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3095typography_word_spacing_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3096typography_word_spacing_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3096typography_word_spacing_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3096typography_word_spacing_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3096typography_word_spacing_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3105background_color_stopcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3106background_color_stop_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3107background_color_stop_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3109background_color_b_stopcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3110background_color_b_stop_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3111background_color_b_stop_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3113background_gradient_anglecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3113background_gradient_angledeg",
+        "tag": "input",
+        "text": "deg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3113background_gradient_anglegrad",
+        "tag": "input",
+        "text": "grad",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3113background_gradient_anglerad",
+        "tag": "input",
+        "text": "rad",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3113background_gradient_angleturn",
+        "tag": "input",
+        "text": "turn",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3114background_gradient_angle_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3114background_gradient_angle_tabletdeg",
+        "tag": "input",
+        "text": "deg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3114background_gradient_angle_tabletgrad",
+        "tag": "input",
+        "text": "grad",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3114background_gradient_angle_tabletrad",
+        "tag": "input",
+        "text": "rad",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3114background_gradient_angle_tabletturn",
+        "tag": "input",
+        "text": "turn",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3115background_gradient_angle_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3115background_gradient_angle_mobiledeg",
+        "tag": "input",
+        "text": "deg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3115background_gradient_angle_mobilegrad",
+        "tag": "input",
+        "text": "grad",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3115background_gradient_angle_mobilerad",
+        "tag": "input",
+        "text": "rad",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3115background_gradient_angle_mobileturn",
+        "tag": "input",
+        "text": "turn",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3122background_xposcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3122background_xposem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3122background_xpospx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3122background_xposrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3122background_xposvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3123background_xpos_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3123background_xpos_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3123background_xpos_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3123background_xpos_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3123background_xpos_tabletvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3124background_xpos_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3124background_xpos_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3124background_xpos_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3124background_xpos_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3124background_xpos_mobilevw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3125background_yposcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3125background_yposem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3125background_ypospx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3125background_yposrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3125background_yposvh",
+        "tag": "input",
+        "text": "vh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3126background_ypos_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3126background_ypos_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3126background_ypos_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3126background_ypos_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3126background_ypos_tabletvh",
+        "tag": "input",
+        "text": "vh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3127background_ypos_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3127background_ypos_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3127background_ypos_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3127background_ypos_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3127background_ypos_mobilevh",
+        "tag": "input",
+        "text": "vh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3136background_bg_widthcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3136background_bg_widthem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3136background_bg_widthpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3136background_bg_widthrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3136background_bg_widthvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3137background_bg_width_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3137background_bg_width_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3137background_bg_width_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3137background_bg_width_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3137background_bg_width_tabletvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3138background_bg_width_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3138background_bg_width_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3138background_bg_width_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3138background_bg_width_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3138background_bg_width_mobilevw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3165button_background_hover_color_stopcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3166button_background_hover_color_stop_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3167button_background_hover_color_stop_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3169button_background_hover_color_b_stopcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3170button_background_hover_color_b_stop_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3171button_background_hover_color_b_stop_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3173button_background_hover_gradient_anglecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3173button_background_hover_gradient_angledeg",
+        "tag": "input",
+        "text": "deg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3173button_background_hover_gradient_anglegrad",
+        "tag": "input",
+        "text": "grad",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3173button_background_hover_gradient_anglerad",
+        "tag": "input",
+        "text": "rad",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3173button_background_hover_gradient_angleturn",
+        "tag": "input",
+        "text": "turn",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3174button_background_hover_gradient_angle_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3174button_background_hover_gradient_angle_tabletdeg",
+        "tag": "input",
+        "text": "deg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3174button_background_hover_gradient_angle_tabletgrad",
+        "tag": "input",
+        "text": "grad",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3174button_background_hover_gradient_angle_tabletrad",
+        "tag": "input",
+        "text": "rad",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3174button_background_hover_gradient_angle_tabletturn",
+        "tag": "input",
+        "text": "turn",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3175button_background_hover_gradient_angle_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3175button_background_hover_gradient_angle_mobiledeg",
+        "tag": "input",
+        "text": "deg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3175button_background_hover_gradient_angle_mobilegrad",
+        "tag": "input",
+        "text": "grad",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3175button_background_hover_gradient_angle_mobilerad",
+        "tag": "input",
+        "text": "rad",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3175button_background_hover_gradient_angle_mobileturn",
+        "tag": "input",
+        "text": "turn",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3182button_background_hover_xposcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3182button_background_hover_xposem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3182button_background_hover_xpospx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3182button_background_hover_xposrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3182button_background_hover_xposvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3183button_background_hover_xpos_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3183button_background_hover_xpos_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3183button_background_hover_xpos_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3183button_background_hover_xpos_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3183button_background_hover_xpos_tabletvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3184button_background_hover_xpos_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3184button_background_hover_xpos_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3184button_background_hover_xpos_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3184button_background_hover_xpos_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3184button_background_hover_xpos_mobilevw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3185button_background_hover_yposcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3185button_background_hover_yposem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3185button_background_hover_ypospx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3185button_background_hover_yposrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3185button_background_hover_yposvh",
+        "tag": "input",
+        "text": "vh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3186button_background_hover_ypos_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3186button_background_hover_ypos_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3186button_background_hover_ypos_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3186button_background_hover_ypos_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3186button_background_hover_ypos_tabletvh",
+        "tag": "input",
+        "text": "vh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3187button_background_hover_ypos_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3187button_background_hover_ypos_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3187button_background_hover_ypos_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3187button_background_hover_ypos_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3187button_background_hover_ypos_mobilevh",
+        "tag": "input",
+        "text": "vh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3196button_background_hover_bg_widthcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3196button_background_hover_bg_widthem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3196button_background_hover_bg_widthpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3196button_background_hover_bg_widthrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3196button_background_hover_bg_widthvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3197button_background_hover_bg_width_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3197button_background_hover_bg_width_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3197button_background_hover_bg_width_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3197button_background_hover_bg_width_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3197button_background_hover_bg_width_tabletvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3198button_background_hover_bg_width_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3198button_background_hover_bg_width_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3198button_background_hover_bg_width_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3198button_background_hover_bg_width_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3198button_background_hover_bg_width_mobilevw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3223border_widthcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3223border_widthem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3223border_widthpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3223border_widthrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3223border_widthvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3224border_width_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3224border_width_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3224border_width_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3224border_width_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3224border_width_tabletvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3225border_width_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3225border_width_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3225border_width_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3225border_width_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3225border_width_mobilevw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3227border_radiuscustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3227border_radiusem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3227border_radiuspx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3227border_radiusrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3228border_radius_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3228border_radius_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3228border_radius_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3228border_radius_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3229border_radius_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3229border_radius_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3229border_radius_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3229border_radius_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3233text_paddingcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3233text_paddingem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3233text_paddingpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3233text_paddingrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3233text_paddingvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3234text_padding_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3234text_padding_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3234text_padding_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3234text_padding_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3234text_padding_tabletvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3235text_padding_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3235text_padding_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3235text_padding_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3235text_padding_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c3235text_padding_mobilevw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-blur-c3098",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-blur-c3231",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-bottom-c3223",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-bottom-c3224",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-bottom-c3225",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-bottom-c3227",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-bottom-c3228",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-bottom-c3229",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-bottom-c3233",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-bottom-c3234",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-bottom-c3235",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-classic-c3102",
+        "tag": "input",
+        "text": "classic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-classic-c3162",
+        "tag": "input",
+        "text": "classic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3079-custom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3079-default",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3080",
+        "tag": "select",
+        "text": "Default Arial Tahoma Verdana Helvetica Times New Roman Treb…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3081",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3082",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3083",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3084",
+        "tag": "select",
+        "text": "100 (Thin) 200 (Extra Light) 300 (Light) 400 (Normal) 500 (…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3085",
+        "tag": "select",
+        "text": "Default Uppercase Lowercase Capitalize Normal",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3086",
+        "tag": "select",
+        "text": "Default Normal Italic Oblique",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3087",
+        "tag": "select",
+        "text": "Default Underline Overline Line Through None",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3088",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3089",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3090",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3091",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3092",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3093",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3094",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3095",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3096",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3097-custom",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3097-default",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3105",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3106",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3107",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3109",
+        "tag": "input",
+        "text": "100",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3110",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3111",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3112",
+        "tag": "select",
+        "text": "Linear Radial",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3113",
+        "tag": "input",
+        "text": "180",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3114",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3115",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3116",
+        "tag": "select",
+        "text": "Center Center Center Left Center Right Top Center Top Left …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3117",
+        "tag": "select",
+        "text": "Center Center Center Left Center Right Top Center Top Left …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3118",
+        "tag": "select",
+        "text": "Center Center Center Left Center Right Top Center Top Left …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3119",
+        "tag": "select",
+        "text": "Default Center Center Center Left Center Right Top Center T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3120",
+        "tag": "select",
+        "text": "Default Center Center Center Left Center Right Top Center T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3121",
+        "tag": "select",
+        "text": "Default Center Center Center Left Center Right Top Center T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3122",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3123",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3124",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3125",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3126",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3127",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3128",
+        "tag": "select",
+        "text": "Default Scroll Fixed",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3130",
+        "tag": "select",
+        "text": "Default No-repeat Repeat Repeat-x Repeat-y",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3131",
+        "tag": "select",
+        "text": "Default No-repeat Repeat Repeat-x Repeat-y",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3132",
+        "tag": "select",
+        "text": "Default No-repeat Repeat Repeat-x Repeat-y",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3133",
+        "tag": "select",
+        "text": "Default Auto Cover Contain Custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3134",
+        "tag": "select",
+        "text": "Default Auto Cover Contain Custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3135",
+        "tag": "select",
+        "text": "Default Auto Cover Contain Custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3136",
+        "tag": "input",
+        "text": "100",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3137",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3138",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3139",
+        "tag": "input",
+        "text": "https://www.youtube.com/watch?v=XHOmBV4js_E",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3140",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3141",
+        "tag": "input",
+        "text": "70",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3142",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3143",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3144",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3147",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3148",
+        "tag": "input",
+        "text": "5000",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3149",
+        "tag": "select",
+        "text": "Fade Slide Right Slide Left Slide Up Slide Down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3150",
+        "tag": "input",
+        "text": "500",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3151",
+        "tag": "select",
+        "text": "Default Auto Cover Contain",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3152",
+        "tag": "select",
+        "text": "Default Auto Cover Contain",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3153",
+        "tag": "select",
+        "text": "Default Auto Cover Contain",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3154",
+        "tag": "select",
+        "text": "Default Center Center Center Left Center Right Top Center T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3155",
+        "tag": "select",
+        "text": "Default Center Center Center Left Center Right Top Center T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3156",
+        "tag": "select",
+        "text": "Default Center Center Center Left Center Right Top Center T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3157",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3158",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3159",
+        "tag": "select",
+        "text": "In Out",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3165",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3166",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3167",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3169",
+        "tag": "input",
+        "text": "100",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3170",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3171",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3172",
+        "tag": "select",
+        "text": "Linear Radial",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3173",
+        "tag": "input",
+        "text": "180",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3174",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3175",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3176",
+        "tag": "select",
+        "text": "Center Center Center Left Center Right Top Center Top Left …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3177",
+        "tag": "select",
+        "text": "Center Center Center Left Center Right Top Center Top Left …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3178",
+        "tag": "select",
+        "text": "Center Center Center Left Center Right Top Center Top Left …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3179",
+        "tag": "select",
+        "text": "Default Center Center Center Left Center Right Top Center T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3180",
+        "tag": "select",
+        "text": "Default Center Center Center Left Center Right Top Center T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3181",
+        "tag": "select",
+        "text": "Default Center Center Center Left Center Right Top Center T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3182",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3183",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3184",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3185",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3186",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3187",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3188",
+        "tag": "select",
+        "text": "Default Scroll Fixed",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3190",
+        "tag": "select",
+        "text": "Default No-repeat Repeat Repeat-x Repeat-y",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3191",
+        "tag": "select",
+        "text": "Default No-repeat Repeat Repeat-x Repeat-y",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3192",
+        "tag": "select",
+        "text": "Default No-repeat Repeat Repeat-x Repeat-y",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3193",
+        "tag": "select",
+        "text": "Default Auto Cover Contain Custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3194",
+        "tag": "select",
+        "text": "Default Auto Cover Contain Custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3195",
+        "tag": "select",
+        "text": "Default Auto Cover Contain Custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3196",
+        "tag": "input",
+        "text": "100",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3197",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3198",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3199",
+        "tag": "input",
+        "text": "https://www.youtube.com/watch?v=XHOmBV4js_E",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3200",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3201",
+        "tag": "input",
+        "text": "70",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3202",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3203",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3204",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3207",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3208",
+        "tag": "input",
+        "text": "5000",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3209",
+        "tag": "select",
+        "text": "Fade Slide Right Slide Left Slide Up Slide Down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3210",
+        "tag": "input",
+        "text": "500",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3211",
+        "tag": "select",
+        "text": "Default Auto Cover Contain",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3212",
+        "tag": "select",
+        "text": "Default Auto Cover Contain",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3213",
+        "tag": "select",
+        "text": "Default Auto Cover Contain",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3214",
+        "tag": "select",
+        "text": "Default Center Center Center Left Center Right Top Center T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3215",
+        "tag": "select",
+        "text": "Default Center Center Center Left Center Right Top Center T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3216",
+        "tag": "select",
+        "text": "Default Center Center Center Left Center Right Top Center T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3217",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3218",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3219",
+        "tag": "select",
+        "text": "In Out",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3221",
+        "tag": "select",
+        "text": "None Grow Shrink Pulse Pulse Grow Pulse Shrink Push Pop Bou…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3222",
+        "tag": "select",
+        "text": "Default None Solid Double Dotted Dashed Groove",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-default-c3230-custom",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3230-default",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3232",
+        "tag": "select",
+        "text": "Outline Inset",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-gradient-c3102",
+        "tag": "input",
+        "text": "gradient",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-gradient-c3162",
+        "tag": "input",
+        "text": "gradient",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-horizontal-c3098",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-horizontal-c3231",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-left-c3223",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-left-c3224",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-left-c3225",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-left-c3227",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-left-c3228",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-left-c3229",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-left-c3233",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-left-c3234",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-left-c3235",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-right-c3223",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-right-c3224",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-right-c3225",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-right-c3227",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-right-c3228",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-right-c3229",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-right-c3233",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-right-c3234",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-right-c3235",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-spread-c3231",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-top-c3223",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-top-c3224",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-top-c3225",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-top-c3227",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-top-c3228",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-top-c3229",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-top-c3233",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-top-c3234",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-top-c3235",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-vertical-c3098",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-vertical-c3231",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-mode-switcher-preview-input",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#elementor-panel",
+        "tag": "aside",
+        "text": "Edit Creative Button Content Style Advanced Button Typograp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel__editor__help",
+        "tag": "div",
+        "text": "Need Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-content-wrapper",
+        "tag": "main",
+        "text": "Content Style Advanced Button Typography Edit Text Shadow E…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-footer",
+        "tag": "footer",
+        "text": "Update Last edited on Oct 2, 16:51 by Ingrid Vale Save Draf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-preview-label",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-publish",
+        "tag": "div",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-sub-menu-item-save-draft",
+        "tag": "div",
+        "text": "Save Draft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-sub-menu-item-save-template",
+        "tag": "div",
+        "text": "Save as Template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-tools",
+        "tag": "nav",
+        "text": "Update Last edited on Oct 2, 16:51 by Ingrid Vale Save Draf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-header",
+        "tag": "div",
+        "text": "Edit Creative Button",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-header-title",
+        "tag": "h2",
+        "text": "Edit Creative Button",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-header-wrapper",
+        "tag": "header",
+        "text": "Edit Creative Button",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-inner",
+        "tag": "div",
+        "text": "Edit Creative Button Content Style Advanced Button Typograp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-page-editor",
+        "tag": "div",
+        "text": "Content Style Advanced Button Typography Edit Text Shadow E…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-saver-button-publish-label",
+        "tag": "span",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-state-loading",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#_goober",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-controls",
+        "tag": "div",
+        "text": "Button Typography Edit Text Shadow Edit Normal Hover Text C…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-editor-wrapper",
+        "tag": "div",
+        "text": "Edit Creative Button Content Style Advanced Button Typograp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-editor-wrapper-v2",
+        "tag": "div",
+        "text": "Work with us Publish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-loading",
+        "tag": "div",
+        "text": "Loading",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-mode-switcher",
+        "tag": "div",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-mode-switcher-inner",
+        "tag": "div",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-mode-switcher-preview",
+        "tag": "label",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-navigator",
+        "tag": "aside",
+        "text": "Structure Show/hide inner elements Container Show/hide Elem…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__elements",
+        "tag": "div",
+        "text": "Show/hide inner elements Container Show/hide Element Show/h…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__footer",
+        "tag": "div",
+        "text": "Resize structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__footer__resize-bar",
+        "tag": "div",
+        "text": "Resize structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__header",
+        "tag": "div",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__header__title",
+        "tag": "h2",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__inner",
+        "tag": "div",
+        "text": "Structure Show/hide inner elements Container Show/hide Elem…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-preview",
+        "tag": "main",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-preview-iframe",
+        "tag": "iframe",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-preview-loading",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-preview-responsive-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-responsive-bar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-try-safe-mode",
+        "tag": "div",
+        "text": "Can't Edit? Enable Safe Mode Having problems loading Elemen…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-elementor-control-default-c3080-container",
+        "tag": "span",
+        "text": "Default",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-elementor-control-default-c3221-container",
+        "tag": "span",
+        "text": "None",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

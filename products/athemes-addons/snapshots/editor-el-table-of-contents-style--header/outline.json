@@ -1,0 +1,1445 @@
+{
+  "slug": "editor-el-table-of-contents-style--header",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "link-world-page",
+      "event": "click",
+      "selector": "div.wp-auth-fallback p a",
+      "count": 1
+    },
+    {
+      "label": "link-external",
+      "event": "click",
+      "selector": "#elementor-panel__editor__help__link",
+      "count": 2
+    },
+    {
+      "label": "el-panel-tab",
+      "event": "click",
+      "selector": ".elementor-component-tab.elementor-panel-navigation-tab[data-tab]",
+      "count": 3
+    },
+    {
+      "label": "el-panel-section",
+      "event": "click",
+      "selector": ".elementor-panel-heading",
+      "count": 4
+    },
+    {
+      "label": "el-color-picker",
+      "event": "click",
+      "selector": ".clear.pcr-button",
+      "count": 3
+    },
+    {
+      "label": "el-link-dimensions",
+      "event": "click",
+      "selector": ".elementor-link-dimensions.tooltip-target[data-tooltip]",
+      "count": 6
+    },
+    {
+      "label": "el-responsive-switcher",
+      "event": "click",
+      "selector": ".elementor-responsive-switcher.tooltip-target[data-device][data-tooltip]",
+      "count": 63
+    },
+    {
+      "label": "el-control-label",
+      "event": "click",
+      "selector": "label.elementor-control-title",
+      "count": 137
+    },
+    {
+      "label": "el-device",
+      "event": "click",
+      "selector": ".MuiButtonBase-root.MuiTab-root[data-testid]",
+      "count": 3
+    },
+    {
+      "label": "el-topbar",
+      "event": "click",
+      "selector": "button.MuiButtonBase-root.MuiToggleButton-root",
+      "count": 23
+    },
+    {
+      "label": "native-select",
+      "event": "click",
+      "selector": "select[data-setting]",
+      "count": 6
+    },
+    {
+      "label": "select2-open",
+      "event": "click",
+      "selector": "span.select2-selection.select2-selection--single",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#elementor-navigator__ai-titles",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__close",
+        "tag": "button",
+        "text": "Close structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__toggle-all",
+        "tag": "button",
+        "text": "Expand all elements",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel__editor__help__link",
+        "tag": "a",
+        "text": "Need Help",
+        "count": 1,
+        "hidden": false,
+        "wired": "link-external",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-footer-history",
+        "tag": "button",
+        "text": "History",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-navigator",
+        "tag": "button",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-responsive",
+        "tag": "button",
+        "text": "Responsive Mode",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-options",
+        "tag": "div",
+        "text": "Last edited on Oct 2, 16:51 by Ingrid Vale Save Draft Save …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-preview",
+        "tag": "button",
+        "text": "Preview Changes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-settings",
+        "tag": "button",
+        "text": "Page Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-header-add-button",
+        "tag": "button",
+        "text": "Widgets Panel",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-kit-back",
+        "tag": "button",
+        "text": "Back",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-kit-close",
+        "tag": "button",
+        "text": "Close",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-menu-button",
+        "tag": "button",
+        "text": "Menu",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-saver-button-publish",
+        "tag": "button",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-saver-button-save-options",
+        "tag": "button",
+        "text": "Save Options",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#elementor-choose-c2970title_typography_font_sizecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2970title_typography_font_sizeem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2970title_typography_font_sizepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2970title_typography_font_sizerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2970title_typography_font_sizevw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2971title_typography_font_size_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2971title_typography_font_size_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2971title_typography_font_size_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2971title_typography_font_size_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2971title_typography_font_size_tabletvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2972title_typography_font_size_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2972title_typography_font_size_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2972title_typography_font_size_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2972title_typography_font_size_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2972title_typography_font_size_mobilevw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2977title_typography_line_heightcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2977title_typography_line_heightem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2977title_typography_line_heightlh",
+        "tag": "input",
+        "text": "lh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2977title_typography_line_heightpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2977title_typography_line_heightrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2977title_typography_line_heightrlh",
+        "tag": "input",
+        "text": "rlh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2978title_typography_line_height_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2978title_typography_line_height_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2978title_typography_line_height_tabletlh",
+        "tag": "input",
+        "text": "lh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2978title_typography_line_height_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2978title_typography_line_height_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2978title_typography_line_height_tabletrlh",
+        "tag": "input",
+        "text": "rlh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2979title_typography_line_height_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2979title_typography_line_height_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2979title_typography_line_height_mobilelh",
+        "tag": "input",
+        "text": "lh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2979title_typography_line_height_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2979title_typography_line_height_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2979title_typography_line_height_mobilerlh",
+        "tag": "input",
+        "text": "rlh",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2980title_typography_letter_spacingcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2980title_typography_letter_spacingem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2980title_typography_letter_spacingpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2980title_typography_letter_spacingrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2981title_typography_letter_spacing_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2981title_typography_letter_spacing_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2981title_typography_letter_spacing_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2981title_typography_letter_spacing_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2982title_typography_letter_spacing_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2982title_typography_letter_spacing_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2982title_typography_letter_spacing_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2982title_typography_letter_spacing_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2983title_typography_word_spacingcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2983title_typography_word_spacingem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2983title_typography_word_spacingpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2983title_typography_word_spacingrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2984title_typography_word_spacing_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2984title_typography_word_spacing_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2984title_typography_word_spacing_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2984title_typography_word_spacing_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2985title_typography_word_spacing_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2985title_typography_word_spacing_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2985title_typography_word_spacing_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2985title_typography_word_spacing_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2990header_paddingem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2990header_paddingpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2991header_padding_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2991header_padding_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2992header_padding_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2992header_padding_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2994header_border_widthcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2994header_border_widthem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2994header_border_widthpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2994header_border_widthrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2994header_border_widthvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2995header_border_width_tabletcustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2995header_border_width_tabletem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2995header_border_width_tabletpx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2995header_border_width_tabletrem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2995header_border_width_tabletvw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2996header_border_width_mobilecustom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2996header_border_width_mobileem",
+        "tag": "input",
+        "text": "em",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2996header_border_width_mobilepx",
+        "tag": "input",
+        "text": "px",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2996header_border_width_mobilerem",
+        "tag": "input",
+        "text": "rem",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-choose-c2996header_border_width_mobilevw",
+        "tag": "input",
+        "text": "vw",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-bottom-c2990",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-bottom-c2991",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-bottom-c2992",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-bottom-c2994",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-bottom-c2995",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-bottom-c2996",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2968-custom",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2968-default",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2969",
+        "tag": "select",
+        "text": "Default Arial Tahoma Verdana Helvetica Times New Roman Treb…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2970",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2971",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2972",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2973",
+        "tag": "select",
+        "text": "100 (Thin) 200 (Extra Light) 300 (Light) 400 (Normal) 500 (…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2974",
+        "tag": "select",
+        "text": "Default Uppercase Lowercase Capitalize Normal",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2975",
+        "tag": "select",
+        "text": "Default Normal Italic Oblique",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2976",
+        "tag": "select",
+        "text": "Default Underline Overline Line Through None",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2977",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2978",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2979",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2980",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2981",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2982",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2983",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2984",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2985",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2986",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-default-c2987",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2988",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2993",
+        "tag": "select",
+        "text": "Default None Solid Double Dotted Dashed Groove",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-left-c2990",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-left-c2991",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-left-c2992",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-left-c2994",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-left-c2995",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-left-c2996",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-right-c2990",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-right-c2991",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-right-c2992",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-right-c2994",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-right-c2995",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-right-c2996",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-top-c2990",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-top-c2991",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-top-c2992",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-top-c2994",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-top-c2995",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-top-c2996",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-mode-switcher-preview-input",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#elementor-panel",
+        "tag": "aside",
+        "text": "Edit Table of Contents Content Style Advanced Wrapper Heade…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel__editor__help",
+        "tag": "div",
+        "text": "Need Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-content-wrapper",
+        "tag": "main",
+        "text": "Content Style Advanced Wrapper Header Title Color Title Typ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-footer",
+        "tag": "footer",
+        "text": "Update Last edited on Oct 2, 16:51 by Ingrid Vale Save Draf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-preview-label",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-publish",
+        "tag": "div",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-sub-menu-item-save-draft",
+        "tag": "div",
+        "text": "Save Draft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-sub-menu-item-save-template",
+        "tag": "div",
+        "text": "Save as Template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-tools",
+        "tag": "nav",
+        "text": "Update Last edited on Oct 2, 16:51 by Ingrid Vale Save Draf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-header",
+        "tag": "div",
+        "text": "Edit Table of Contents",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-header-title",
+        "tag": "h2",
+        "text": "Edit Table of Contents",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-header-wrapper",
+        "tag": "header",
+        "text": "Edit Table of Contents",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-inner",
+        "tag": "div",
+        "text": "Edit Table of Contents Content Style Advanced Wrapper Heade…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-page-editor",
+        "tag": "div",
+        "text": "Content Style Advanced Wrapper Header Title Color Title Typ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-saver-button-publish-label",
+        "tag": "span",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-state-loading",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#_goober",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-controls",
+        "tag": "div",
+        "text": "Wrapper Header Title Color Title Typography Edit Title Spac…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-editor-wrapper",
+        "tag": "div",
+        "text": "Edit Table of Contents Content Style Advanced Wrapper Heade…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-editor-wrapper-v2",
+        "tag": "div",
+        "text": "How we work Publish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-loading",
+        "tag": "div",
+        "text": "Loading",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-mode-switcher",
+        "tag": "div",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-mode-switcher-inner",
+        "tag": "div",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-mode-switcher-preview",
+        "tag": "label",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-navigator",
+        "tag": "aside",
+        "text": "Structure Show/hide inner elements Container Show/hide Elem…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__elements",
+        "tag": "div",
+        "text": "Show/hide inner elements Container Show/hide Element Show/h…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__footer",
+        "tag": "div",
+        "text": "Resize structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__footer__resize-bar",
+        "tag": "div",
+        "text": "Resize structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__header",
+        "tag": "div",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__header__title",
+        "tag": "h2",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__inner",
+        "tag": "div",
+        "text": "Structure Show/hide inner elements Container Show/hide Elem…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-preview",
+        "tag": "main",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-preview-iframe",
+        "tag": "iframe",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-preview-loading",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-preview-responsive-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-responsive-bar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-try-safe-mode",
+        "tag": "div",
+        "text": "Can't Edit? Enable Safe Mode Having problems loading Elemen…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-elementor-control-default-c2969-container",
+        "tag": "span",
+        "text": "Default",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

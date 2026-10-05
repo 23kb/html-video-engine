@@ -1,0 +1,81 @@
+
+			.elementor-safe-mode-toast {
+				position: absolute;
+				z-index: 10000; /* Over the loading layer */
+				inset-block-end: 10px;
+				inset-inline-end: 10px;
+				width: 400px;
+				line-height: 30px;
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+				color: var(--e-a-color-txt);
+				background: var(--e-a-bg-default);
+				padding: 20px 25px 25px;
+				box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+				border-radius: 5px;
+				font-family: var(--e-a-font-family);
+			}
+
+			#elementor-try-safe-mode {
+				display: none;
+			}
+
+			.elementor-safe-mode-toast .elementor-toast-content {
+				font-size: 13px;
+				line-height: 22px;
+			}
+
+			.elementor-safe-mode-toast .elementor-toast-content a {
+				color: var(--e-a-color-info);
+			}
+
+			.elementor-safe-mode-toast .elementor-toast-content hr {
+				margin: 15px auto;
+				border: 0 none;
+				border-block-start: var(--e-a-border);
+			}
+
+			.elementor-safe-mode-toast header {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
+
+			.elementor-safe-mode-toast header i {
+				font-size: 25px;
+				color: var(--e-a-color-warning);
+			}
+
+			.elementor-safe-mode-toast header h2 {
+				flex-grow: 1;
+				font-size: 18px;
+			}
+
+			.elementor-safe-mode-list {
+				display: flex;
+				flex-direction: column;
+				gap: 10px;
+			}
+
+			.elementor-safe-mode-list-item {
+				margin-inline-start: 15px;
+				list-style: outside;
+			}
+
+			.elementor-safe-mode-list-item-content {
+				font-style: italic;
+				color: var(--e-a-color-txt);
+			}
+
+			.elementor-safe-mode-list-item-title {
+				font-weight: 500;
+			}
+
+			.elementor-safe-mode-mu-plugins {
+				background-color: var(--e-a-bg-hover);
+				color: var(--e-a-color-txt-hover);
+				margin-block-start: 20px;
+				padding: 10px 15px;
+			}
+		

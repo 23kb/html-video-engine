@@ -1,0 +1,1054 @@
+{
+  "slug": "admin-addons-settings--license-active",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "link-world-page",
+      "event": "click",
+      "selector": "div.wp-auth-fallback p a",
+      "count": 1
+    },
+    {
+      "label": "link-external",
+      "event": "click",
+      "selector": "a.athemes-addons-top-bar-logo",
+      "count": 144
+    },
+    {
+      "label": "hash-link",
+      "event": "click",
+      "selector": "a.athemes-addons-notifications",
+      "count": 2
+    },
+    {
+      "label": "native-select",
+      "event": "click",
+      "selector": "select.athemes-addons-modules-filter-button-category",
+      "count": 2
+    },
+    {
+      "label": "self-link",
+      "event": "click",
+      "selector": "a.wp-first-item.current",
+      "count": 3
+    },
+    {
+      "label": "wp-form-buttons",
+      "event": "click",
+      "selector": ".button",
+      "count": 2
+    },
+    {
+      "label": "tb-cond-backdrop",
+      "event": "click",
+      "selector": ".athemes-addons-display-conditions-modal",
+      "count": 4
+    },
+    {
+      "label": "tb-cond-toggle",
+      "event": "click",
+      "selector": ".athemes-addons-display-conditions-modal-toggle",
+      "count": 4
+    },
+    {
+      "label": "tb-header-type",
+      "event": "change",
+      "selector": "select.aafe-header-type-select",
+      "count": 1
+    },
+    {
+      "label": "tb-template-actions",
+      "event": "click",
+      "selector": "div.athemes-addons-tb-element.aafe-create-template",
+      "count": 16
+    },
+    {
+      "label": "aafe-news",
+      "event": "click",
+      "selector": "a.athemes-addons-notifications",
+      "count": 2
+    },
+    {
+      "label": "aafe-module-toggle",
+      "event": "change",
+      "selector": ".toggle-switch-checkbox",
+      "count": 82
+    },
+    {
+      "label": "aafe-module-filter",
+      "event": "change",
+      "selector": "div.module-filter-group.athemes-addons-module-page-setting-field-radio div label input",
+      "count": 6
+    },
+    {
+      "label": "aafe-filter-label",
+      "event": "click",
+      "selector": "label[data-filter]",
+      "count": 6
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".aafe-save-settings",
+        "tag": "button",
+        "text": "Save",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-form-buttons",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".athemes-addons-close-modal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".athemes-addons-display-conditions-modal-toggle",
+        "tag": "span",
+        "text": "Display conditions",
+        "count": 4,
+        "hidden": true,
+        "wired": "tb-cond-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".athemes-addons-notifications",
+        "tag": "a",
+        "text": "1",
+        "count": 1,
+        "hidden": false,
+        "wired": "hash-link",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".athemes-addons-notifications-sidebar-close",
+        "tag": "a",
+        "text": "Close the sidebar",
+        "count": 1,
+        "hidden": true,
+        "wired": "hash-link",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".athemes-addons-pro-license-button",
+        "tag": "button",
+        "text": "Deactivate",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-form-buttons",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".athemes-addons-tab-nav-item",
+        "tag": "a",
+        "text": "Widgets",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".athemes-addons-website",
+        "tag": "a",
+        "text": "Website",
+        "count": 1,
+        "hidden": false,
+        "wired": "link-external",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#extensions",
+        "tag": "div",
+        "text": "Custom CSS Add custom CSS to any element Saved! Page Duplic…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#settings",
+        "tag": "div",
+        "text": "License Activation Deactivate License Status:Active MailChi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#theme-builder",
+        "tag": "div",
+        "text": "What are you building today? Create Header Create Footer Cr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widgets",
+        "tag": "div",
+        "text": "Select Category Posts Content Media Business & Commerce Soc…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".athemes-addons-tab-content",
+        "tag": "div",
+        "text": "July 28, 2026 Added Abilities API support Added Add Free/Pr…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#active-modules",
+        "tag": "input",
+        "text": "active",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#advanced-button",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#advanced-carousel",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#advanced-google-maps",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#advanced-heading",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#advanced-social",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#advanced-tabs",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#all-modules",
+        "tag": "input",
+        "text": "all",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#animated-heading",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#animation-effects",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes_addons_pro_license_nonce",
+        "tag": "input",
+        "text": "458b16e452",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#audio-player",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#before-after-image",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#business-hours",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#call-to-action",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#charts",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#click-to-call",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#contact-form7",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#content-protection",
+        "tag": "input",
+        "text": "1",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#content-reveal",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#content-switcher",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#countdown",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#coupon-code",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#creative-button",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cursor-effects",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-css",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-js",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#display-conditions",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dual-buttons",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dual-heading",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dynamic-tags",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#events-calendar",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#flip-box",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#food-menu",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#free-modules",
+        "tag": "input",
+        "text": "free",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gallery",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#glassmorphism",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#google-reviews",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gravity-forms",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#image-accordion",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#image-card",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#image-hotspots",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#image-scroll",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inactive-modules",
+        "tag": "input",
+        "text": "inactive",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#logo-carousel",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#lottie",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mailchimp",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#modal",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#news-ticker",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ninja-forms",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#offcanvas",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#page-duplicator",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#page-list",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#parallax",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#particles",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pdf-viewer",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#posts-carousel",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#posts-list",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#posts-timeline",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pricing-list",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pricing-table",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pro-modules",
+        "tag": "input",
+        "text": "pro",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#progress-bar",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#service-box",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#service-group",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slider",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#social-proof",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#step-flow",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sticky",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-of-contents",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#taxonomy-terms",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#team-carousel",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#team-member",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#telegram-chat",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#template",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#testimonials",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#timeline",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tooltips",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#video-carousel",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#video-gallery",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#video-playlist",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#video-popup",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#weforms",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#whatsapp-chat",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woo-product-grid",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aafe-header-type-select",
+        "tag": "select",
+        "text": "Regular Transparent Sticky",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".athemes-addons-display-conditions-textarea",
+        "tag": "input",
+        "text": "[{\"type\":\"include\",\"condition\":\"cpt-post-id\",\"id\":1860}]",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".athemes-addons-modules-filter-button-category",
+        "tag": "select",
+        "text": "Select Category Posts Content Media Business & Commerce Soc…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".athemes-addons-modules-search",
+        "tag": "input",
+        "text": "Search modules …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".athemes-addons-pro-license-code-input",
+        "tag": "input",
+        "text": "demo0athemes0addons0license00000",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".athemes-addons-display-conditions-modal",
+        "tag": "div",
+        "text": "",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".athemes-addons-modules-panel",
+        "tag": "div",
+        "text": "Widgets Theme Builder Extensions Settings License Activatio…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#athemes-addons-elementor-iframe",
+        "tag": "iframe",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#license-activation",
+        "tag": "div",
+        "text": "Deactivate",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_at-blocks",
+        "tag": "li",
+        "text": "aThemes Blocks Blocks Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_athemes-addons",
+        "tag": "li",
+        "text": "aThemes Addons Widgets Extensions Settings Patcher",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_elementor",
+        "tag": "li",
+        "text": "Elementor ElementorQuick startSubmissions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_elementor-home",
+        "tag": "li",
+        "text": "Elementor Home Editor Upgrade",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".athemes-addons-header-type-select",
+        "tag": "label",
+        "text": "Saved! Regular Transparent Sticky Note: if you create a sti…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".athemes-addons-license-key-input",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".athemes-addons-module-filter",
+        "tag": "div",
+        "text": "Select Category Posts Content Media Business & Commerce Soc…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".athemes-addons-module-page-setting-field",
+        "tag": "div",
+        "text": "",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".athemes-addons-modules-header",
+        "tag": "div",
+        "text": "Welcome To aThemes Addons for Elementor We’re glad to see y…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".athemes-addons-modules-header-shortlinks-feedback",
+        "tag": "li",
+        "text": "Have an idea or feedback?",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".athemes-addons-modules-header-shortlinks-get-help",
+        "tag": "li",
+        "text": "Get help and support",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".athemes-addons-modules-header-shortlinks-leave-review",
+        "tag": "li",
+        "text": "Leave a review",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".athemes-addons-notification-content",
+        "tag": "div",
+        "text": "Added Abilities API support Added Add Free/Pro filter to Ad…",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".athemes-addons-notifications-sidebar",
+        "tag": "div",
+        "text": "New Update Check the latest news from aThemes Addons for El…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".athemes-addons-notifications-sidebar-header",
+        "tag": "div",
+        "text": "New Update Check the latest news from aThemes Addons for El…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".athemes-addons-notifications-sidebar-header-content",
+        "tag": "div",
+        "text": "New Update Check the latest news from aThemes Addons for El…",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

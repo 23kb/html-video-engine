@@ -1,0 +1,498 @@
+{
+  "slug": "frontend-how-we-work",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "link-world-page",
+      "event": "click",
+      "selector": "a.desktop-logo-link",
+      "count": 36
+    },
+    {
+      "label": "link-external",
+      "event": "click",
+      "selector": "div.textwidget p a",
+      "count": 6
+    },
+    {
+      "label": "aafe-tabs",
+      "event": "click",
+      "selector": ".athemes-tab-title[data-tab]",
+      "count": 8
+    },
+    {
+      "label": "aafe-content-switcher",
+      "event": "click",
+      "selector": "div.switcher-item",
+      "count": 3
+    },
+    {
+      "label": "aafe-content-reveal",
+      "event": "click",
+      "selector": "span.aafe-button",
+      "count": 1
+    },
+    {
+      "label": "aafe-modal-open",
+      "event": "click",
+      "selector": "a.button.aafe-button",
+      "count": 1
+    },
+    {
+      "label": "aafe-modal-close",
+      "event": "click",
+      "selector": "#athemes-addons-modal-bc82a00",
+      "count": 1
+    },
+    {
+      "label": "aafe-offcanvas",
+      "event": "click",
+      "selector": "span.offcanvas-close",
+      "count": 3
+    },
+    {
+      "label": "aafe-toc",
+      "event": "click",
+      "selector": "a[data-heading-id]",
+      "count": 8
+    },
+    {
+      "label": "hash-link",
+      "event": "click",
+      "selector": "a.menu-toggle",
+      "count": 4
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": ".aafe-button",
+        "tag": "span",
+        "text": "Read more",
+        "count": 2,
+        "hidden": false,
+        "wired": "aafe-content-reveal",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".athemes-addons-modal-close",
+        "tag": "span",
+        "text": "Close",
+        "count": 1,
+        "hidden": true,
+        "wired": "aafe-modal-close",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#athemes-tab-content-9031",
+        "tag": "div",
+        "text": "A research summary, five customer interviews, a competitor …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#athemes-tab-content-9032",
+        "tag": "div",
+        "text": "Positioning statement, naming shortlist with trademark pre-…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-tab-content-9033",
+        "tag": "div",
+        "text": "Logo suite, colour and type system, key layouts and the web…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-tab-content-9034",
+        "tag": "div",
+        "text": "Final artwork in every format, a 40-page brand guide, a lau…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-tab-title-9031",
+        "tag": "div",
+        "text": "Discover Weeks 1–2",
+        "count": 1,
+        "hidden": false,
+        "wired": "aafe-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#athemes-tab-title-9032",
+        "tag": "div",
+        "text": "Define Weeks 3–4",
+        "count": 1,
+        "hidden": false,
+        "wired": "aafe-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#athemes-tab-title-9033",
+        "tag": "div",
+        "text": "Design Weeks 5–8",
+        "count": 1,
+        "hidden": false,
+        "wired": "aafe-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#athemes-tab-title-9034",
+        "tag": "div",
+        "text": "Deliver Weeks 9–10",
+        "count": 1,
+        "hidden": false,
+        "wired": "aafe-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#primary-menu",
+        "tag": "ul",
+        "text": "Home Services Work Journal Studio About Contact",
+        "count": 3,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#search-form-1",
+        "tag": "input",
+        "text": "Search …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-form-2",
+        "tag": "input",
+        "text": "Search …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-form-3",
+        "tag": "input",
+        "text": "Search …",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#athemes-addons-modal-bc82a00",
+        "tag": "div",
+        "text": "Book a discovery call Thirty minutes with Ingrid or Priya t…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#book-a-discovery-call",
+        "tag": "h2",
+        "text": "Book a discovery call",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".athemes-addons-modal-content",
+        "tag": "div",
+        "text": "Book a discovery call Thirty minutes with Ingrid or Priya t…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#athemes-blocks-button-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-blocks-common-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-blocks-flex-container-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-blocks-google-maps-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-blocks-heading-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-blocks-icon-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-blocks-image-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-blocks-post-grid-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-blocks-team-member-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-blocks-team-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-blocks-testimonials-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-blocks-text-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#colophon",
+        "tag": "footer",
+        "text": "Visit 1120 NW Couch St, Suite 300 Portland, OR 97209 hello@…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#content",
+        "tag": "div",
+        "text": "HOW WE WORK From first call to launch day Every project run…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#countdown-timer-e1802c2",
+        "tag": "div",
+        "text": "42 Days : 11 Hours : 09 Minutes : 24 Seconds",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#custom-background-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-device-mode",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#four-phases",
+        "tag": "h2",
+        "text": "Four phases",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#free-portfolio-reviews-close-soon",
+        "tag": "h2",
+        "text": "Free portfolio reviews close soon",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#main",
+        "tag": "main",
+        "text": "HOW WE WORK From first call to launch day Every project run…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#mainnav",
+        "tag": "nav",
+        "text": "Home Services Work Journal Studio About Contact",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#nav_menu-1",
+        "tag": "aside",
+        "text": "Services Brand identity Web design Print & editorial Packag…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#nav_menu-2",
+        "tag": "aside",
+        "text": "Studio About Work Journal Contact",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#nav_menu-3",
+        "tag": "aside",
+        "text": "Legal Privacy policy Terms of service",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#page",
+        "tag": "div",
+        "text": "Skip to content Home Services Work Journal Studio About Con…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#primary",
+        "tag": "div",
+        "text": "HOW WE WORK From first call to launch day Every project run…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#project-or-retainer",
+        "tag": "h2",
+        "text": "Project or retainer?",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation",
+        "tag": "nav",
+        "text": "Home Services Work Journal Studio About Contact",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#studio-contacts",
+        "tag": "h2",
+        "text": "Studio contacts",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sydney-style-min-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#text-4",
+        "tag": "aside",
+        "text": "Visit 1120 NW Couch St, Suite 300 Portland, OR 97209 hello@…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toptarget",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#twelve-years-on-couch-street",
+        "tag": "h2",
+        "text": "Twelve years on Couch Street",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#what-each-phase-hands-over",
+        "tag": "h2",
+        "text": "What each phase hands over",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#why-we-keep-the-team-small",
+        "tag": "h2",
+        "text": "Why we keep the team small",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-custom-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aafe-switcher-content",
+        "tag": "div",
+        "text": "A fixed-scope project One brief, one price, one launch date…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".athemes-addons-offcanvas-content",
+        "tag": "div",
+        "text": "Studio contacts New projects Ingrid Vale, ingrid@northlines…",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

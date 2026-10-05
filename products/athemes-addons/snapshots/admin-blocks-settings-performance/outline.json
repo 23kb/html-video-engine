@@ -1,0 +1,212 @@
+{
+  "slug": "admin-blocks-settings-performance",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "link-world-page",
+      "event": "click",
+      "selector": "div.wp-auth-fallback p a",
+      "count": 1
+    },
+    {
+      "label": "link-external",
+      "event": "click",
+      "selector": "div.atb-dashboard__top-bar-item.atb-dashboard__top-bar-item--logo a",
+      "count": 3
+    },
+    {
+      "label": "hash-link",
+      "event": "click",
+      "selector": "a.atb-dashboard-notifications-sidebar-close",
+      "count": 1
+    },
+    {
+      "label": "self-link",
+      "event": "click",
+      "selector": "a.current",
+      "count": 2
+    },
+    {
+      "label": "wp-setting-label",
+      "event": "click",
+      "selector": "label.atb-dashboard__setting-label",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".atb-dashboard__hero-button",
+        "tag": "a",
+        "text": "Create New Page",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".atb-dashboard-notifications-sidebar-close",
+        "tag": "a",
+        "text": "Close the sidebar",
+        "count": 1,
+        "hidden": true,
+        "wired": "hash-link",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": ".atb-dashboard-tab-content",
+        "tag": "div",
+        "text": "September 16, 2025 FixedFixed double block registration war…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#inspector-toggle-control-0",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#at-blocks-root",
+        "tag": "div",
+        "text": "1.1.4 1 Website Welcome to aThemes Blocks We’re glad to see…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_at-blocks",
+        "tag": "li",
+        "text": "aThemes Blocks Blocks Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_athemes-addons",
+        "tag": "li",
+        "text": "aThemes Addons Widgets Extensions Settings Patcher",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_elementor",
+        "tag": "li",
+        "text": "Elementor ElementorQuick startSubmissions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_elementor-home",
+        "tag": "li",
+        "text": "Elementor Home Editor Upgrade",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".atb-dashboard__setting-label",
+        "tag": "label",
+        "text": "Load Google Fonts Locally",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".atb-dashboard-notification-content",
+        "tag": "div",
+        "text": "FixedFixed double block registration warning for legacy blo…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".atb-dashboard-notifications-sidebar",
+        "tag": "div",
+        "text": "New Update Check the latest news from Botiga September 16, …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".atb-dashboard-notifications-sidebar-header",
+        "tag": "div",
+        "text": "New Update Check the latest news from Botiga",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".atb-dashboard-notifications-sidebar-header-content",
+        "tag": "div",
+        "text": "New Update Check the latest news from Botiga",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

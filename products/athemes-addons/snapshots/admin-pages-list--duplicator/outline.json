@@ -1,0 +1,886 @@
+{
+  "slug": "admin-pages-list--duplicator",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "link-world-page",
+      "event": "click",
+      "selector": "span.view a",
+      "count": 21
+    },
+    {
+      "label": "link-external",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 3
+    },
+    {
+      "label": "native-select",
+      "event": "click",
+      "selector": "#bulk-action-selector-top",
+      "count": 13
+    },
+    {
+      "label": "self-link",
+      "event": "click",
+      "selector": "a.wp-has-submenu.wp-has-current-submenu",
+      "count": 3
+    },
+    {
+      "label": "wp-pagination",
+      "event": "click",
+      "selector": "span.tablenav-pages-navspan.button",
+      "count": 8
+    },
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "wp-row-actions",
+      "event": "click",
+      "selector": "a.row-title",
+      "count": 135
+    },
+    {
+      "label": "wp-form-buttons",
+      "event": "click",
+      "selector": ".button",
+      "count": 5
+    },
+    {
+      "label": "wp-setting-label",
+      "event": "click",
+      "selector": "fieldset.metabox-prefs label",
+      "count": 53
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_inline_edit",
+        "tag": "input",
+        "text": "9352a290bb",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#author-hide",
+        "tag": "input",
+        "text": "author",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk_edit",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk_edit_post_parent",
+        "tag": "select",
+        "text": "— No Change — Main Page (no parent) About Clients & reviews…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Bulk edit Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Bulk edit Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-10",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1529",
+        "tag": "input",
+        "text": "1529",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1533",
+        "tag": "input",
+        "text": "1533",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1553",
+        "tag": "input",
+        "text": "1553",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1557",
+        "tag": "input",
+        "text": "1557",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1569",
+        "tag": "input",
+        "text": "1569",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1573",
+        "tag": "input",
+        "text": "1573",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1577",
+        "tag": "input",
+        "text": "1577",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1585",
+        "tag": "input",
+        "text": "1585",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1589",
+        "tag": "input",
+        "text": "1589",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1593",
+        "tag": "input",
+        "text": "1593",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1629",
+        "tag": "input",
+        "text": "1629",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1839",
+        "tag": "input",
+        "text": "1839",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1849",
+        "tag": "input",
+        "text": "1849",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1850",
+        "tag": "input",
+        "text": "1850",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1851",
+        "tag": "input",
+        "text": "1851",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-413",
+        "tag": "input",
+        "text": "413",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-536",
+        "tag": "input",
+        "text": "536",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-708",
+        "tag": "input",
+        "text": "708",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-8",
+        "tag": "input",
+        "text": "8",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comments-hide",
+        "tag": "input",
+        "text": "comments",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date-hide",
+        "tag": "input",
+        "text": "date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit_page_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#excerpt-view-mode",
+        "tag": "input",
+        "text": "excerpt",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#filter-by-date",
+        "tag": "select",
+        "text": "All dates October 2026 January 2022",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#list-view-mode",
+        "tag": "input",
+        "text": "list",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_parent",
+        "tag": "select",
+        "text": "Main Page (no parent) About Clients & reviews Contact Conta…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-query-submit",
+        "tag": "input",
+        "text": "Filter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "3c70a66550",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ss",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Author Comments Date Pagination Number of items per…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#author",
+        "tag": "th",
+        "text": "Author",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-edit",
+        "tag": "tr",
+        "text": "Bulk Edit Author — No Change — Ingrid Vale (ingrid vale) Pa…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-legend",
+        "tag": "legend",
+        "text": "Bulk Edit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-title-div",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-titles",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comments",
+        "tag": "th",
+        "text": "Comments Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date",
+        "tag": "th",
+        "text": "Date Sort descending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inline_10",
+        "tag": "div",
+        "text": "Journal journal 1 closed closed publish 10 01 2022 08 29 32…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1529",
+        "tag": "div",
+        "text": "How we work how-we-work 1 closed closed publish 02 10 2026 …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1533",
+        "tag": "div",
+        "text": "Studio in numbers studio-in-numbers 1 closed closed publish…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1553",
+        "tag": "div",
+        "text": "Selected work selected-work 1 closed closed publish 02 10 2…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1557",
+        "tag": "div",
+        "text": "Studio films studio-films 1 closed closed publish 02 10 202…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1569",
+        "tag": "div",
+        "text": "Services & pricing services-pricing 1 closed closed publish…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1573",
+        "tag": "div",
+        "text": "Our team our-team 1 closed closed publish 02 10 2026 15 21 …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1577",
+        "tag": "div",
+        "text": "Clients & reviews clients-reviews 1 closed closed publish 0…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1585",
+        "tag": "div",
+        "text": "Contact Northline contact-northline 1 closed closed publish…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1589",
+        "tag": "div",
+        "text": "Find the studio find-the-studio 1 closed closed publish 02 …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1593",
+        "tag": "div",
+        "text": "Studio journal studio-journal 1 closed closed publish 02 10…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1629",
+        "tag": "div",
+        "text": "Privacy Policy privacy-policy 1 closed closed publish 02 10…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1839",
+        "tag": "div",
+        "text": "Studio extras studio-extras 1 closed closed publish 02 10 2…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1849",
+        "tag": "div",
+        "text": "Studio basics studio-basics 1 closed closed publish 02 10 2…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1850",
+        "tag": "div",
+        "text": "People and proof people-and-proof 1 closed closed publish 0…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1851",
+        "tag": "div",
+        "text": "From the journal journal-blocks 1 closed closed publish 02 …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_413",
+        "tag": "div",
+        "text": "About about 1 closed closed publish 12 01 2022 11 17 10 0pa…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_536",
+        "tag": "div",
+        "text": "Services services 1 closed closed publish 13 01 2022 07 52 …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_708",
+        "tag": "div",
+        "text": "Contact contact 1 closed closed publish 14 01 2022 10 20 49…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_8",
+        "tag": "div",
+        "text": "Home home 1 closed closed publish 10 01 2022 08 29 24 0page…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-edit",
+        "tag": "tr",
+        "text": "Quick Edit Title Slug Date Month 01-Jan 02-Feb 03-Mar 04-Ap…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inlineedit",
+        "tag": "tbody",
+        "text": "Quick Edit Title Slug Date Month 01-Jan 02-Feb 03-Mar 04-Ap…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-10",
+        "tag": "tr",
+        "text": "Select Journal Journal — Posts Page Edit | Quick Edit | Tra…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1529",
+        "tag": "tr",
+        "text": "Select How we work How we work — Elementor Edit | Quick Edi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1533",
+        "tag": "tr",
+        "text": "Select Studio in numbers Studio in numbers — Elementor Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1553",
+        "tag": "tr",
+        "text": "Select Selected work Selected work — Elementor Edit | Quick…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1557",
+        "tag": "tr",
+        "text": "Select Studio films Studio films — Elementor Edit | Quick E…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1569",
+        "tag": "tr",
+        "text": "Select Services & pricing Services & pricing — Elementor Ed…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1573",
+        "tag": "tr",
+        "text": "Select Our team Our team — Elementor Edit | Quick Edit | Tr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1577",
+        "tag": "tr",
+        "text": "Select Clients & reviews Clients & reviews — Elementor Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1585",
+        "tag": "tr",
+        "text": "Select Contact Northline Contact Northline — Elementor Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1589",
+        "tag": "tr",
+        "text": "Select Find the studio Find the studio — Elementor Edit | Q…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1593",
+        "tag": "tr",
+        "text": "Select Studio journal Studio journal — Elementor Edit | Qui…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1629",
+        "tag": "tr",
+        "text": "Select Privacy Policy Privacy Policy — Privacy Policy Page …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1839",
+        "tag": "tr",
+        "text": "Select Studio extras Studio extras — Elementor Edit | Quick…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1849",
+        "tag": "tr",
+        "text": "Select Studio basics Studio basics Edit | Quick Edit | Tras…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1850",
+        "tag": "tr",
+        "text": "Select People and proof People and proof Edit | Quick Edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1851",
+        "tag": "tr",
+        "text": "Select From the journal From the journal Edit | Quick Edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-413",
+        "tag": "tr",
+        "text": "Select About About — Elementor Edit | Quick Edit | Trash | …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-536",
+        "tag": "tr",
+        "text": "Select Services Services — Elementor Edit | Quick Edit | Tr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-708",
+        "tag": "tr",
+        "text": "Select Contact Contact — Elementor Edit | Quick Edit | Tras…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-8",
+        "tag": "tr",
+        "text": "Select Home Home — Front Page, Elementor Edit | Quick Edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts-filter",
+        "tag": "form",
+        "text": "Search Pages: Select bulk action Bulk actions Bulk edit Mov…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#quick-edit-legend",
+        "tag": "legend",
+        "text": "Quick Edit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Author Comments Date Pagination Number of items per…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Select About About — Elementor Edit | Quick Edit | Trash | …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#title",
+        "tag": "th",
+        "text": "Title",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_at-blocks",
+        "tag": "li",
+        "text": "aThemes Blocks Blocks Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_athemes-addons",
+        "tag": "li",
+        "text": "aThemes Addons Widgets Extensions Settings Patcher",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_elementor",
+        "tag": "li",
+        "text": "Elementor ElementorQuick startSubmissions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_elementor-home",
+        "tag": "li",
+        "text": "Elementor Home Editor Upgrade",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

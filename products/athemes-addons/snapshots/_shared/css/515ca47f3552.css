@@ -1,0 +1,167 @@
+/*!********************************************************************************************************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./assets/sass/admin/plugin-dashboard/sidebar-notifications.scss ***!
+  \********************************************************************************************************************************************************/
+/* Notifications Sidebar */
+.atb-dashboard-notifications-sidebar {
+  position: fixed;
+  top: 96px;
+  right: 0;
+  width: 100%;
+  max-width: 500px;
+  height: calc(100vh - 92px);
+  background-color: #FFF;
+  box-shadow: -10px 12px 14px rgba(0, 0, 0, 0.05);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate3d(100%, 0, 0);
+  transition: ease transform 300ms, ease opacity 300ms;
+  z-index: 1000;
+}
+.atb-dashboard-notifications-sidebar.opened {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+.atb-dashboard-notifications-sidebar.closing {
+  opacity: 0;
+  transform: translate3d(100%, 0, 0);
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  transition: ease opacity 300ms;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-close:hover {
+  opacity: 0.7;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #EAEEF2;
+  padding: 20px 22px;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-header .atb-dashboard-notifications-sidebar-header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #FFF;
+  border: 1px solid #EBEDEF;
+  border-radius: 35px;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-header .atb-dashboard-notifications-sidebar-header-icon svg {
+  position: relative;
+  top: -2px;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-header .atb-dashboard-notifications-sidebar-header-content h3 {
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+  color: #3858E9;
+  margin: 0;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-header .atb-dashboard-notifications-sidebar-header-content p {
+  font-size: 13px;
+  line-height: 18px;
+  color: #757575;
+  margin: 0;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-tabs {
+  position: relative;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-tabs:after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 20px;
+  width: calc(100% - 40px);
+  border-bottom: 1px solid #F0F0F1;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-tabs + .atb-dashboard-notifications-sidebar-body {
+  max-height: calc(100vh - 232px);
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-body {
+  padding: 20px;
+  overflow-y: auto;
+  max-height: calc(100vh - 180px);
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-body::-webkit-scrollbar {
+  width: 5px;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-body::-webkit-scrollbar-track {
+  background: #e2e2e2;
+}
+.atb-dashboard-notifications-sidebar .atb-dashboard-notifications-sidebar-body::-webkit-scrollbar-thumb {
+  background-color: #CCC;
+}
+
+/* Notifications (card) */
+.atb-dashboard-notification .atb-dashboard-notification-date {
+  display: block;
+  font-size: 13px;
+  line-height: 18px;
+  color: #757575;
+}
+.atb-dashboard-notification .atb-dashboard-notification-date + .atb-dashboard-notification-content {
+  margin-top: 20px;
+}
+.atb-dashboard-notification .changelog-tag {
+  display: inline-block;
+  font-size: 10px;
+  line-height: 18px;
+  color: #FFF;
+  padding: 0px 10px;
+  background-color: #CCC;
+  border-radius: 3px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.atb-dashboard-notification .changelog-tag.changelog-added {
+  background-color: #73B189;
+}
+.atb-dashboard-notification .changelog-tag.changelog-changed {
+  background-color: #F6CA45;
+}
+.atb-dashboard-notification .changelog-tag.changelog-fixed {
+  background-color: #967BE3;
+}
+.atb-dashboard-notification .changelog-description {
+  display: block;
+  font-size: 13px;
+  line-height: 21px;
+  font-weight: 400;
+  color: #757575;
+  margin-top: 5px;
+}
+.atb-dashboard-notification .atb-dashboard-notification-content ul {
+  margin: 0;
+}
+.atb-dashboard-notification .atb-dashboard-notification-content ul li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 16px;
+  line-height: 26px;
+  font-weight: 600;
+  color: #101517;
+}
+.atb-dashboard-notification .atb-dashboard-notification-content ul li + li {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #E7E7E7;
+}
+.atb-dashboard-notification + .atb-dashboard-notification {
+  margin: 20px -20px 0px;
+  padding: 20px 20px 0px;
+  border-top: 1px solid #E7E7E7;
+}
+
+.atb-dashboard__top-bar-item-notification.read .atb-dashboard__top-bar-item-notification-count {
+  display: none;
+}
+
+/*# sourceMappingURL=sidebar-notifications.css.map*/

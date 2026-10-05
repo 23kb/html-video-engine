@@ -1,0 +1,868 @@
+{
+  "slug": "editor-el-coupon-code",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "link-world-page",
+      "event": "click",
+      "selector": "div.wp-auth-fallback p a",
+      "count": 1
+    },
+    {
+      "label": "link-external",
+      "event": "click",
+      "selector": "div.elementor-control-field-description a",
+      "count": 3
+    },
+    {
+      "label": "hash-link",
+      "event": "click",
+      "selector": "#mceu_44 a",
+      "count": 1
+    },
+    {
+      "label": "el-panel-tab",
+      "event": "click",
+      "selector": ".elementor-component-tab.elementor-panel-navigation-tab[data-tab]",
+      "count": 3
+    },
+    {
+      "label": "el-panel-section",
+      "event": "click",
+      "selector": "button.elementor-panel-heading",
+      "count": 1
+    },
+    {
+      "label": "el-url-options",
+      "event": "click",
+      "selector": "button.elementor-control-url-more.tooltip-target",
+      "count": 1
+    },
+    {
+      "label": "el-choose",
+      "event": "click",
+      "selector": ".elementor-choices-label.elementor-control-unit-1[data-tooltip]",
+      "count": 11
+    },
+    {
+      "label": "el-responsive-switcher",
+      "event": "click",
+      "selector": ".elementor-responsive-switcher.tooltip-target[data-device][data-tooltip]",
+      "count": 9
+    },
+    {
+      "label": "el-control-label",
+      "event": "click",
+      "selector": "label.elementor-control-title",
+      "count": 16
+    },
+    {
+      "label": "el-device",
+      "event": "click",
+      "selector": ".MuiButtonBase-root.MuiTab-root[data-testid]",
+      "count": 3
+    },
+    {
+      "label": "el-topbar",
+      "event": "click",
+      "selector": "button.MuiButtonBase-root.MuiToggleButton-root",
+      "count": 24
+    },
+    {
+      "label": "native-select",
+      "event": "click",
+      "selector": "select[data-setting]",
+      "count": 4
+    },
+    {
+      "label": "tinymce-buttons",
+      "event": "click",
+      "selector": "#insert-media-button",
+      "count": 38
+    },
+    {
+      "label": "tinymce-switch",
+      "event": "click",
+      "selector": ".wp-switch-editor[data-wp-editor-id]",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#elementor-navigator__ai-titles",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__close",
+        "tag": "button",
+        "text": "Close structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__toggle-all",
+        "tag": "button",
+        "text": "Expand all elements",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel__editor__help__link",
+        "tag": "a",
+        "text": "Need Help",
+        "count": 1,
+        "hidden": false,
+        "wired": "link-external",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-footer-history",
+        "tag": "button",
+        "text": "History",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-navigator",
+        "tag": "button",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-responsive",
+        "tag": "button",
+        "text": "Responsive Mode",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-options",
+        "tag": "div",
+        "text": "Last edited on Oct 2, 15:26 by Ingrid Vale Save Draft Save …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-preview",
+        "tag": "button",
+        "text": "Preview Changes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-settings",
+        "tag": "button",
+        "text": "Page Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-header-add-button",
+        "tag": "button",
+        "text": "Widgets Panel",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-kit-back",
+        "tag": "button",
+        "text": "Back",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-kit-close",
+        "tag": "button",
+        "text": "Close",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-menu-button",
+        "tag": "button",
+        "text": "Menu",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-saver-button-publish",
+        "tag": "button",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-saver-button-save-options",
+        "tag": "button",
+        "text": "Save Options",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview4013-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview4013-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#insert-media-button",
+        "tag": "button",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-buttons",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#elementor-control-aligncenter-c3038",
+        "tag": "input",
+        "text": "aligncenter",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-aligncenter-c3039",
+        "tag": "input",
+        "text": "aligncenter",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-aligncenter-c3040",
+        "tag": "input",
+        "text": "aligncenter",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-alignleft-c3038",
+        "tag": "input",
+        "text": "alignleft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-alignleft-c3039",
+        "tag": "input",
+        "text": "alignleft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-alignleft-c3040",
+        "tag": "input",
+        "text": "alignleft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-alignright-c3038",
+        "tag": "input",
+        "text": "alignright",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-alignright-c3039",
+        "tag": "input",
+        "text": "alignright",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-alignright-c3040",
+        "tag": "input",
+        "text": "alignright",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-custom_attributes-c3042",
+        "tag": "input",
+        "text": "key|value",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3030",
+        "tag": "select",
+        "text": "Style 1 Style 2 Style 3",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-default-c3031",
+        "tag": "select",
+        "text": "Inline Stacked",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-default-c3032",
+        "tag": "input",
+        "text": "NORTHLINE15",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-default-c3035",
+        "tag": "input",
+        "text": "Copy code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-default-c3036",
+        "tag": "input",
+        "text": "Quote the code in your enquiry. Valid until 31 December 202…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-default-c3037",
+        "tag": "input",
+        "text": "Copied",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-default-c3042",
+        "tag": "input",
+        "text": "http://northlinestudio.com/contact/",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-default-c3043",
+        "tag": "select",
+        "text": "Copy Copy and Redirect",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-control-default-c3046",
+        "tag": "select",
+        "text": "Style 1 Style 2 Style 3 Style 4 Style 5 Style 6 Style 7",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-horizontal-c3045",
+        "tag": "input",
+        "text": "horizontal",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-is_external-c3042",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-nofollow-c3042",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-vertical-c3045",
+        "tag": "input",
+        "text": "vertical",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-mode-switcher-preview-input",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview4013",
+        "tag": "textarea",
+        "text": "15% off your first brand audit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4013_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4013_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4013_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4013_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4013_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4013_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#elementor-panel",
+        "tag": "aside",
+        "text": "Edit Coupon Code Content Style Advanced Coupon Code Style S…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel__editor__help",
+        "tag": "div",
+        "text": "Need Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-content-wrapper",
+        "tag": "main",
+        "text": "Content Style Advanced Coupon Code Style Style 1 Style 2 St…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-footer",
+        "tag": "footer",
+        "text": "Update Last edited on Oct 2, 15:26 by Ingrid Vale Save Draf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-preview-label",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-publish",
+        "tag": "div",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-sub-menu-item-save-draft",
+        "tag": "div",
+        "text": "Save Draft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-sub-menu-item-save-template",
+        "tag": "div",
+        "text": "Save as Template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-tools",
+        "tag": "nav",
+        "text": "Update Last edited on Oct 2, 15:26 by Ingrid Vale Save Draf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-header",
+        "tag": "div",
+        "text": "Edit Coupon Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-header-title",
+        "tag": "h2",
+        "text": "Edit Coupon Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-header-wrapper",
+        "tag": "header",
+        "text": "Edit Coupon Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-inner",
+        "tag": "div",
+        "text": "Edit Coupon Code Content Style Advanced Coupon Code Style S…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-page-editor",
+        "tag": "div",
+        "text": "Content Style Advanced Coupon Code Style Style 1 Style 2 St…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-saver-button-publish-label",
+        "tag": "span",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-state-loading",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#_goober",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-controls",
+        "tag": "div",
+        "text": "Coupon Code Style Style 1 Style 2 Style 3 Layout Inline Sta…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-editor-wrapper",
+        "tag": "div",
+        "text": "Edit Coupon Code Content Style Advanced Coupon Code Style S…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-editor-wrapper-v2",
+        "tag": "div",
+        "text": "Services & pricing Publish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-loading",
+        "tag": "div",
+        "text": "Loading",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-mode-switcher",
+        "tag": "div",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-mode-switcher-inner",
+        "tag": "div",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-mode-switcher-preview",
+        "tag": "label",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-navigator",
+        "tag": "aside",
+        "text": "Structure Show/hide inner elements Container Show/hide Elem…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__elements",
+        "tag": "div",
+        "text": "Show/hide inner elements Container Show/hide Element Show/h…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__footer",
+        "tag": "div",
+        "text": "Resize structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__footer__resize-bar",
+        "tag": "div",
+        "text": "Resize structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__header",
+        "tag": "div",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__header__title",
+        "tag": "h2",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__inner",
+        "tag": "div",
+        "text": "Structure Show/hide inner elements Container Show/hide Elem…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-preview",
+        "tag": "main",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-preview-iframe",
+        "tag": "iframe",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-preview-loading",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-preview-responsive-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-responsive-bar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-try-safe-mode",
+        "tag": "div",
+        "text": "Can't Edit? Enable Safe Mode Having problems loading Elemen…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview4013_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4013_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-1",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-2",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview4013-editor-container",
+        "tag": "div",
+        "text": "Paragraph p15% off your first brand audit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview4013-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview4013-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview4013-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph p15% off your first brand a…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

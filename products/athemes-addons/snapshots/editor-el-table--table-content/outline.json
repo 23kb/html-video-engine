@@ -1,0 +1,5953 @@
+{
+  "slug": "editor-el-table--table-content",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "link-world-page",
+      "event": "click",
+      "selector": "div.wp-auth-fallback p a",
+      "count": 1
+    },
+    {
+      "label": "link-external",
+      "event": "click",
+      "selector": "#elementor-panel__editor__help__link",
+      "count": 2
+    },
+    {
+      "label": "hash-link",
+      "event": "click",
+      "selector": "#mceu_44 a",
+      "count": 25
+    },
+    {
+      "label": "el-panel-tab",
+      "event": "click",
+      "selector": ".elementor-component-tab.elementor-panel-navigation-tab[data-tab]",
+      "count": 3
+    },
+    {
+      "label": "el-panel-section",
+      "event": "click",
+      "selector": ".elementor-panel-heading",
+      "count": 5
+    },
+    {
+      "label": "el-repeater",
+      "event": "click",
+      "selector": "button.elementor-repeater-row-item-title",
+      "count": 76
+    },
+    {
+      "label": "el-color-picker",
+      "event": "click",
+      "selector": ".clear.pcr-button",
+      "count": 50
+    },
+    {
+      "label": "el-panel-promo",
+      "event": "click",
+      "selector": "button[data-event]",
+      "count": 50
+    },
+    {
+      "label": "el-notice-dismiss",
+      "event": "click",
+      "selector": ".elementor-control-notice-dismiss.tooltip-target[data-event][data-tooltip]",
+      "count": 25
+    },
+    {
+      "label": "el-choose",
+      "event": "click",
+      "selector": ".elementor-choices-label.elementor-control-unit-1[data-tooltip]",
+      "count": 200
+    },
+    {
+      "label": "el-control-label",
+      "event": "click",
+      "selector": "div.elementor-control-content label",
+      "count": 276
+    },
+    {
+      "label": "el-device",
+      "event": "click",
+      "selector": ".MuiButtonBase-root.MuiTab-root[data-testid]",
+      "count": 3
+    },
+    {
+      "label": "el-topbar",
+      "event": "click",
+      "selector": "button.MuiButtonBase-root.MuiToggleButton-root",
+      "count": 245
+    },
+    {
+      "label": "native-select",
+      "event": "click",
+      "selector": "select[data-setting]",
+      "count": 50
+    },
+    {
+      "label": "tinymce-buttons",
+      "event": "click",
+      "selector": "button.button.insert-media",
+      "count": 950
+    },
+    {
+      "label": "tinymce-switch",
+      "event": "click",
+      "selector": ".wp-switch-editor[data-wp-editor-id]",
+      "count": 50
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#elementor-navigator__ai-titles",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__close",
+        "tag": "button",
+        "text": "Close structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__toggle-all",
+        "tag": "button",
+        "text": "Expand all elements",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel__editor__help__link",
+        "tag": "a",
+        "text": "Need Help",
+        "count": 1,
+        "hidden": false,
+        "wired": "link-external",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-footer-history",
+        "tag": "button",
+        "text": "History",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-navigator",
+        "tag": "button",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-responsive",
+        "tag": "button",
+        "text": "Responsive Mode",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-options",
+        "tag": "div",
+        "text": "Last edited on Oct 2, 16:51 by Ingrid Vale Save Draft Save …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-preview",
+        "tag": "button",
+        "text": "Preview Changes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-settings",
+        "tag": "button",
+        "text": "Page Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-header-add-button",
+        "tag": "button",
+        "text": "Widgets Panel",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-kit-back",
+        "tag": "button",
+        "text": "Back",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-kit-close",
+        "tag": "button",
+        "text": "Close",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-header-menu-button",
+        "tag": "button",
+        "text": "Menu",
+        "count": 1,
+        "hidden": true,
+        "wired": "el-topbar",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementor-panel-saver-button-publish",
+        "tag": "button",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-saver-button-save-options",
+        "tag": "button",
+        "text": "Save Options",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview2686-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview2686-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview2744-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview2744-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview2802-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview2802-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview2860-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview2860-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview2918-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview2918-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview2976-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview2976-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3034-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3034-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3092-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3092-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3150-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3150-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3208-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3208-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3266-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3266-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3324-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3324-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3382-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3382-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3440-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3440-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3498-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3498-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3556-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3556-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3614-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3614-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3672-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3672-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3730-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3730-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3788-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3788-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3846-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3846-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3904-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3904-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3962-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview3962-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview4020-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview4020-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview4078-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#elementorwpeditorview4078-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#insert-media-button",
+        "tag": "button",
+        "text": "Add Media",
+        "count": 25,
+        "hidden": true,
+        "wired": "tinymce-buttons",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#elementor-control-default-c2653",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2657",
+        "tag": "input",
+        "text": "Text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2658-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2658-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2658-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2661",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2664",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2665",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2666",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2711",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2715",
+        "tag": "input",
+        "text": "Brand sprint",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2716-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2716-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2716-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2719",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2722",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2723",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2724",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2769",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2773",
+        "tag": "input",
+        "text": "4 weeks",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2774-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2774-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2774-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2777",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2780",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2781",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2782",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2827",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2831",
+        "tag": "input",
+        "text": "2 people",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2832-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2832-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2832-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2835",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2838",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2839",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2840",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2885",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2889",
+        "tag": "input",
+        "text": "$12,000",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2890-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2890-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2890-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2893",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2896",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2897",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2898",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2943",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2947",
+        "tag": "input",
+        "text": "Text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2948-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2948-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2948-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2951",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2954",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2955",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c2956",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3001",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3005",
+        "tag": "input",
+        "text": "Brand identity",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3006-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3006-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3006-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3009",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3012",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3013",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3014",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3059",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3063",
+        "tag": "input",
+        "text": "6–8 weeks",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3064-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3064-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3064-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3067",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3070",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3071",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3072",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3117",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3121",
+        "tag": "input",
+        "text": "3 people",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3122-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3122-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3122-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3125",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3128",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3129",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3130",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3175",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3179",
+        "tag": "input",
+        "text": "$18,000",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3180-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3180-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3180-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3183",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3186",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3187",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3188",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3233",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3237",
+        "tag": "input",
+        "text": "Text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3238-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3238-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3238-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3241",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3244",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3245",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3246",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3291",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3295",
+        "tag": "input",
+        "text": "Website",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3296-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3296-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3296-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3299",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3302",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3303",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3304",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3349",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3353",
+        "tag": "input",
+        "text": "10 weeks",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3354-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3354-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3354-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3357",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3360",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3361",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3362",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3407",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3411",
+        "tag": "input",
+        "text": "4 people",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3412-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3412-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3412-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3415",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3418",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3419",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3420",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3465",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3469",
+        "tag": "input",
+        "text": "$24,000",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3470-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3470-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3470-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3473",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3476",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3477",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3478",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3523",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3527",
+        "tag": "input",
+        "text": "Text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3528-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3528-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3528-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3531",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3534",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3535",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3536",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3581",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3585",
+        "tag": "input",
+        "text": "Packaging range",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3586-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3586-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3586-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3589",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3592",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3593",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3594",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3639",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3643",
+        "tag": "input",
+        "text": "6 weeks",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3644-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3644-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3644-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3647",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3650",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3651",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3652",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3697",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3701",
+        "tag": "input",
+        "text": "2 people",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3702-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3702-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3702-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3705",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3708",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3709",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3710",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3755",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3759",
+        "tag": "input",
+        "text": "$9,000",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3760-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3760-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3760-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3763",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3766",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3767",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3768",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3813",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3817",
+        "tag": "input",
+        "text": "Text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3818-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3818-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3818-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3821",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3824",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3825",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3826",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3871",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3875",
+        "tag": "input",
+        "text": "Annual report",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3876-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3876-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3876-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3879",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3882",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3883",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3884",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3929",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3933",
+        "tag": "input",
+        "text": "5 weeks",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3934-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3934-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3934-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3937",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3940",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3941",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3942",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3987",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3991",
+        "tag": "input",
+        "text": "2 people",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3992-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3992-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3992-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3995",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3998",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c3999",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c4000",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c4045",
+        "tag": "select",
+        "text": "Row Column",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c4049",
+        "tag": "input",
+        "text": "$11,000",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c4050-icon",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c4050-none",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c4050-svg",
+        "tag": "input",
+        "text": "svg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c4053",
+        "tag": "select",
+        "text": "Default Kit Services 1 Call to action 1 Agency 1 Testimonia…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c4056",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c4057",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-default-c4058",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c2656",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c2714",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c2772",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c2830",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c2888",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c2946",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3004",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3062",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3120",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3178",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3236",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3294",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3352",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3410",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3468",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3526",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3584",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3642",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3700",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3758",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3816",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3874",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3932",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c3990",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-icon-c4048",
+        "tag": "input",
+        "text": "icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c2656",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c2714",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c2772",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c2830",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c2888",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c2946",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3004",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3062",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3120",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3178",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3236",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3294",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3352",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3410",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3468",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3526",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3584",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3642",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3700",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3758",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3816",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3874",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3932",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c3990",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-image-c4048",
+        "tag": "input",
+        "text": "image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c2656",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c2714",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c2772",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c2830",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c2888",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c2946",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3004",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3062",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3120",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3178",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3236",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3294",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3352",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3410",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3468",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3526",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3584",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3642",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3700",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3758",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3816",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3874",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3932",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c3990",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-template-c4048",
+        "tag": "input",
+        "text": "template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c2656",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c2714",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c2772",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c2830",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c2888",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c2946",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3004",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3062",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3120",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3178",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3236",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3294",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3352",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3410",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3468",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3526",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3584",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3642",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3700",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3758",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3816",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3874",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3932",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c3990",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-text-c4048",
+        "tag": "input",
+        "text": "text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c2656",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c2714",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c2772",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c2830",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c2888",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c2946",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3004",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3062",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3120",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3178",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3236",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3294",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3352",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3410",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3468",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3526",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3584",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3642",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3700",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3758",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3816",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3874",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3932",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c3990",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-control-wywiwyg-c4048",
+        "tag": "input",
+        "text": "wywiwyg",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-mode-switcher-preview-input",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview2686",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview2744",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview2802",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview2860",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview2918",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview2976",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3034",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3092",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3150",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3208",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3266",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3324",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3382",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3440",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3498",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3556",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3614",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3672",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3730",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3788",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3846",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3904",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3962",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview4020",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview4078",
+        "tag": "textarea",
+        "text": "WYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2686_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2686_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2686_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2686_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2686_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2686_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2744_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2744_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2744_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2744_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2744_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2744_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2802_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2802_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2802_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2802_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2802_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2802_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2860_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2860_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2860_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2860_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2860_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2860_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2918_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2918_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2918_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2918_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2918_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2918_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2976_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2976_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2976_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2976_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2976_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2976_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3034_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3034_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3034_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3034_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3034_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3034_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3092_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3092_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3092_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3092_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3092_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3092_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3150_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3150_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3150_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3150_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3150_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3150_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3208_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3208_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3208_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3208_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3208_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3208_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3266_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3266_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3266_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3266_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3266_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3266_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3324_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3324_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3324_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3324_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3324_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3324_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3382_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3382_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3382_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3382_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3382_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3382_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3440_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3440_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3440_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3440_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3440_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3440_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3498_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3498_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3498_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3498_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3498_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3498_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3556_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3556_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3556_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3556_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3556_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3556_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3614_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3614_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3614_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3614_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3614_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3614_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3672_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3672_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3672_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3672_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3672_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3672_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3730_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3730_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3730_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3730_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3730_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3730_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3788_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3788_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3788_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3788_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3788_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3788_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3846_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3846_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3846_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3846_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3846_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3846_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3904_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3904_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3904_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3904_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3904_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3904_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3962_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3962_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3962_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3962_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3962_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3962_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4020_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4020_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4020_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4020_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4020_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4020_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4078_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4078_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4078_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4078_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4078_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4078_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#elementor-panel",
+        "tag": "aside",
+        "text": "Edit Table Content Style Advanced Source Header Content Row…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel__editor__help",
+        "tag": "div",
+        "text": "Need Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-content-wrapper",
+        "tag": "main",
+        "text": "Content Style Advanced Source Header Content Row Column: Br…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-footer",
+        "tag": "footer",
+        "text": "Update Last edited on Oct 2, 16:51 by Ingrid Vale Save Draf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-preview-label",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-saver-publish",
+        "tag": "div",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-sub-menu-item-save-draft",
+        "tag": "div",
+        "text": "Save Draft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-sub-menu-item-save-template",
+        "tag": "div",
+        "text": "Save as Template",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-footer-tools",
+        "tag": "nav",
+        "text": "Update Last edited on Oct 2, 16:51 by Ingrid Vale Save Draf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-header",
+        "tag": "div",
+        "text": "Edit Table",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-header-title",
+        "tag": "h2",
+        "text": "Edit Table",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-header-wrapper",
+        "tag": "header",
+        "text": "Edit Table",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-inner",
+        "tag": "div",
+        "text": "Edit Table Content Style Advanced Source Header Content Row…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-page-editor",
+        "tag": "div",
+        "text": "Content Style Advanced Source Header Content Row Column: Br…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-panel-saver-button-publish-label",
+        "tag": "span",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-panel-state-loading",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#_goober",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-controls",
+        "tag": "div",
+        "text": "Source Header Content Row Column: Brand sprint Column: 4 we…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-editor-wrapper",
+        "tag": "div",
+        "text": "Edit Table Content Style Advanced Source Header Content Row…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-editor-wrapper-v2",
+        "tag": "div",
+        "text": "Studio in numbers Publish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-loading",
+        "tag": "div",
+        "text": "Loading",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-mode-switcher",
+        "tag": "div",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-mode-switcher-inner",
+        "tag": "div",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-mode-switcher-preview",
+        "tag": "label",
+        "text": "Hide Panel (Ctrl + P)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-navigator",
+        "tag": "aside",
+        "text": "Structure Show/hide inner elements Container Show/hide Elem…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__elements",
+        "tag": "div",
+        "text": "Show/hide inner elements Container Show/hide Element Show/h…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__footer",
+        "tag": "div",
+        "text": "Resize structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__footer__resize-bar",
+        "tag": "div",
+        "text": "Resize structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__header",
+        "tag": "div",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__header__title",
+        "tag": "h2",
+        "text": "Structure",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-navigator__inner",
+        "tag": "div",
+        "text": "Structure Show/hide inner elements Container Show/hide Elem…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-preview",
+        "tag": "main",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-preview-iframe",
+        "tag": "iframe",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-preview-loading",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-preview-responsive-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-responsive-bar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-try-safe-mode",
+        "tag": "div",
+        "text": "Can't Edit? Enable Safe Mode Having problems loading Elemen…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview2686_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview2744_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview2802_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview2860_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview2918_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview2976_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3034_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3092_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3150_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3208_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3266_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3324_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3382_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3440_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3498_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3556_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3614_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3672_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3730_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3788_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3846_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3904_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview3962_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview4020_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementorwpeditorview4078_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2686_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2744_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2802_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2860_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2918_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview2976_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3034_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3092_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3150_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3208_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3266_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3324_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3382_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3440_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3498_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3556_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3614_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3672_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3730_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3788_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3846_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3904_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview3962_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4020_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_elementorwpeditorview4078_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-1",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-10",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-11",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-12",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-13",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-14",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-15",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-16",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-17",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-18",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-19",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-2",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-20",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-21",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-22",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-23",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-24",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-25",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-3",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-4",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-5",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-6",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-7",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-8",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-9",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2686-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2686-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2686-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2686-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2744-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2744-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2744-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2744-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2802-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2802-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2802-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2802-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2860-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2860-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2860-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2860-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2918-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2918-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2918-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2918-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2976-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2976-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2976-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview2976-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3034-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3034-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3034-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3034-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3092-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3092-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3092-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3092-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3150-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3150-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3150-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3150-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3208-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3208-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3208-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3208-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3266-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3266-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3266-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3266-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3324-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3324-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3324-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3324-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3382-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3382-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3382-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3382-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3440-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3440-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3440-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3440-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3498-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3498-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3498-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3498-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3556-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3556-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3556-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3556-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3614-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3614-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3614-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3614-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3672-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3672-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3672-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3672-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3730-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3730-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3730-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3730-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3788-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3788-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3788-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3788-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3846-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3846-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3846-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3846-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3904-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3904-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3904-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3904-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3962-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3962-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3962-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview3962-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview4020-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview4020-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview4020-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview4020-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview4078-editor-container",
+        "tag": "div",
+        "text": "Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview4078-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview4078-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-elementorwpeditorview4078-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph pWYSIWYG",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".aafe-template-link-container",
+        "tag": "div",
+        "text": "",
+        "count": 25,
+        "hidden": true
+      }
+    ]
+  }
+}

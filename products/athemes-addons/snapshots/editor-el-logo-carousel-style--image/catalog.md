@@ -1,0 +1,226 @@
+# Catalog — `editor-el-logo-carousel-style--image`
+
+> Auto-generated. Do not edit by hand.
+> Source: `products/athemes-addons/snapshots/editor-el-logo-carousel-style--image/index.html`
+> Generator: `tools/generate-snapshot-catalog.js`
+> 200 selector entries across 1 sections.
+
+Provenance anchor form: `products/athemes-addons/snapshots/editor-el-logo-carousel-style--image/catalog.md#<anchor>`.
+Anchors are derived from the selector value and are stable across reruns.
+
+---
+
+## IDs
+
+_200 entries_
+
+| Anchor | Selector | Tag | Text | Count |
+| --- | --- | --- | --- | --- |
+| <a id="id--_goober"></a>`id--_goober` | `#_goober` | link |  | 1 |
+| <a id="id--elementor-choose-c3383image_border_radius"></a>`id--elementor-choose-c3383image_border_radius` | `#elementor-choose-c3383image_border_radius%` | input | % | 1 |
+| <a id="id--elementor-choose-c3383image_border_radiuspx"></a>`id--elementor-choose-c3383image_border_radiuspx` | `#elementor-choose-c3383image_border_radiuspx` | input | px | 1 |
+| <a id="id--elementor-choose-c3385image_border_widthcustom"></a>`id--elementor-choose-c3385image_border_widthcustom` | `#elementor-choose-c3385image_border_widthcustom` | input | Custom unit | 1 |
+| <a id="id--elementor-choose-c3385image_border_widthem"></a>`id--elementor-choose-c3385image_border_widthem` | `#elementor-choose-c3385image_border_widthem` | input | em | 1 |
+| <a id="id--elementor-choose-c3385image_border_widthpx"></a>`id--elementor-choose-c3385image_border_widthpx` | `#elementor-choose-c3385image_border_widthpx` | input | px | 1 |
+| <a id="id--elementor-choose-c3385image_border_widthrem"></a>`id--elementor-choose-c3385image_border_widthrem` | `#elementor-choose-c3385image_border_widthrem` | input | rem | 1 |
+| <a id="id--elementor-choose-c3385image_border_widthvw"></a>`id--elementor-choose-c3385image_border_widthvw` | `#elementor-choose-c3385image_border_widthvw` | input | vw | 1 |
+| <a id="id--elementor-choose-c3386image_border_width_tabletcustom"></a>`id--elementor-choose-c3386image_border_width_tabletcustom` | `#elementor-choose-c3386image_border_width_tabletcustom` | input | Custom unit | 1 |
+| <a id="id--elementor-choose-c3386image_border_width_tabletem"></a>`id--elementor-choose-c3386image_border_width_tabletem` | `#elementor-choose-c3386image_border_width_tabletem` | input | em | 1 |
+| <a id="id--elementor-choose-c3386image_border_width_tabletpx"></a>`id--elementor-choose-c3386image_border_width_tabletpx` | `#elementor-choose-c3386image_border_width_tabletpx` | input | px | 1 |
+| <a id="id--elementor-choose-c3386image_border_width_tabletrem"></a>`id--elementor-choose-c3386image_border_width_tabletrem` | `#elementor-choose-c3386image_border_width_tabletrem` | input | rem | 1 |
+| <a id="id--elementor-choose-c3386image_border_width_tabletvw"></a>`id--elementor-choose-c3386image_border_width_tabletvw` | `#elementor-choose-c3386image_border_width_tabletvw` | input | vw | 1 |
+| <a id="id--elementor-choose-c3387image_border_width_mobilecustom"></a>`id--elementor-choose-c3387image_border_width_mobilecustom` | `#elementor-choose-c3387image_border_width_mobilecustom` | input | Custom unit | 1 |
+| <a id="id--elementor-choose-c3387image_border_width_mobileem"></a>`id--elementor-choose-c3387image_border_width_mobileem` | `#elementor-choose-c3387image_border_width_mobileem` | input | em | 1 |
+| <a id="id--elementor-choose-c3387image_border_width_mobilepx"></a>`id--elementor-choose-c3387image_border_width_mobilepx` | `#elementor-choose-c3387image_border_width_mobilepx` | input | px | 1 |
+| <a id="id--elementor-choose-c3387image_border_width_mobilerem"></a>`id--elementor-choose-c3387image_border_width_mobilerem` | `#elementor-choose-c3387image_border_width_mobilerem` | input | rem | 1 |
+| <a id="id--elementor-choose-c3387image_border_width_mobilevw"></a>`id--elementor-choose-c3387image_border_width_mobilevw` | `#elementor-choose-c3387image_border_width_mobilevw` | input | vw | 1 |
+| <a id="id--elementor-choose-c3389image_padding"></a>`id--elementor-choose-c3389image_padding` | `#elementor-choose-c3389image_padding%` | input | % | 1 |
+| <a id="id--elementor-choose-c3389image_paddingpx"></a>`id--elementor-choose-c3389image_paddingpx` | `#elementor-choose-c3389image_paddingpx` | input | px | 1 |
+| <a id="id--elementor-choose-c3390image_padding_tablet"></a>`id--elementor-choose-c3390image_padding_tablet` | `#elementor-choose-c3390image_padding_tablet%` | input | % | 1 |
+| <a id="id--elementor-choose-c3390image_padding_tabletpx"></a>`id--elementor-choose-c3390image_padding_tabletpx` | `#elementor-choose-c3390image_padding_tabletpx` | input | px | 1 |
+| <a id="id--elementor-choose-c3391image_padding_mobile"></a>`id--elementor-choose-c3391image_padding_mobile` | `#elementor-choose-c3391image_padding_mobile%` | input | % | 1 |
+| <a id="id--elementor-choose-c3391image_padding_mobilepx"></a>`id--elementor-choose-c3391image_padding_mobilepx` | `#elementor-choose-c3391image_padding_mobilepx` | input | px | 1 |
+| <a id="id--elementor-choose-c3404image_border_radius_hover"></a>`id--elementor-choose-c3404image_border_radius_hover` | `#elementor-choose-c3404image_border_radius_hover%` | input | % | 1 |
+| <a id="id--elementor-choose-c3404image_border_radius_hoverpx"></a>`id--elementor-choose-c3404image_border_radius_hoverpx` | `#elementor-choose-c3404image_border_radius_hoverpx` | input | px | 1 |
+| <a id="id--elementor-choose-c3406image_border_hover_widthcustom"></a>`id--elementor-choose-c3406image_border_hover_widthcustom` | `#elementor-choose-c3406image_border_hover_widthcustom` | input | Custom unit | 1 |
+| <a id="id--elementor-choose-c3406image_border_hover_widthem"></a>`id--elementor-choose-c3406image_border_hover_widthem` | `#elementor-choose-c3406image_border_hover_widthem` | input | em | 1 |
+| <a id="id--elementor-choose-c3406image_border_hover_widthpx"></a>`id--elementor-choose-c3406image_border_hover_widthpx` | `#elementor-choose-c3406image_border_hover_widthpx` | input | px | 1 |
+| <a id="id--elementor-choose-c3406image_border_hover_widthrem"></a>`id--elementor-choose-c3406image_border_hover_widthrem` | `#elementor-choose-c3406image_border_hover_widthrem` | input | rem | 1 |
+| <a id="id--elementor-choose-c3406image_border_hover_widthvw"></a>`id--elementor-choose-c3406image_border_hover_widthvw` | `#elementor-choose-c3406image_border_hover_widthvw` | input | vw | 1 |
+| <a id="id--elementor-choose-c3407image_border_hover_width_tabletcustom"></a>`id--elementor-choose-c3407image_border_hover_width_tabletcustom` | `#elementor-choose-c3407image_border_hover_width_tabletcustom` | input | Custom unit | 1 |
+| <a id="id--elementor-choose-c3407image_border_hover_width_tabletem"></a>`id--elementor-choose-c3407image_border_hover_width_tabletem` | `#elementor-choose-c3407image_border_hover_width_tabletem` | input | em | 1 |
+| <a id="id--elementor-choose-c3407image_border_hover_width_tabletpx"></a>`id--elementor-choose-c3407image_border_hover_width_tabletpx` | `#elementor-choose-c3407image_border_hover_width_tabletpx` | input | px | 1 |
+| <a id="id--elementor-choose-c3407image_border_hover_width_tabletrem"></a>`id--elementor-choose-c3407image_border_hover_width_tabletrem` | `#elementor-choose-c3407image_border_hover_width_tabletrem` | input | rem | 1 |
+| <a id="id--elementor-choose-c3407image_border_hover_width_tabletvw"></a>`id--elementor-choose-c3407image_border_hover_width_tabletvw` | `#elementor-choose-c3407image_border_hover_width_tabletvw` | input | vw | 1 |
+| <a id="id--elementor-choose-c3408image_border_hover_width_mobilecustom"></a>`id--elementor-choose-c3408image_border_hover_width_mobilecustom` | `#elementor-choose-c3408image_border_hover_width_mobilecustom` | input | Custom unit | 1 |
+| <a id="id--elementor-choose-c3408image_border_hover_width_mobileem"></a>`id--elementor-choose-c3408image_border_hover_width_mobileem` | `#elementor-choose-c3408image_border_hover_width_mobileem` | input | em | 1 |
+| <a id="id--elementor-choose-c3408image_border_hover_width_mobilepx"></a>`id--elementor-choose-c3408image_border_hover_width_mobilepx` | `#elementor-choose-c3408image_border_hover_width_mobilepx` | input | px | 1 |
+| <a id="id--elementor-choose-c3408image_border_hover_width_mobilerem"></a>`id--elementor-choose-c3408image_border_hover_width_mobilerem` | `#elementor-choose-c3408image_border_hover_width_mobilerem` | input | rem | 1 |
+| <a id="id--elementor-choose-c3408image_border_hover_width_mobilevw"></a>`id--elementor-choose-c3408image_border_hover_width_mobilevw` | `#elementor-choose-c3408image_border_hover_width_mobilevw` | input | vw | 1 |
+| <a id="id--elementor-choose-c3410image_padding_hover"></a>`id--elementor-choose-c3410image_padding_hover` | `#elementor-choose-c3410image_padding_hover%` | input | % | 1 |
+| <a id="id--elementor-choose-c3410image_padding_hoverpx"></a>`id--elementor-choose-c3410image_padding_hoverpx` | `#elementor-choose-c3410image_padding_hoverpx` | input | px | 1 |
+| <a id="id--elementor-choose-c3411image_padding_hover_tablet"></a>`id--elementor-choose-c3411image_padding_hover_tablet` | `#elementor-choose-c3411image_padding_hover_tablet%` | input | % | 1 |
+| <a id="id--elementor-choose-c3411image_padding_hover_tabletpx"></a>`id--elementor-choose-c3411image_padding_hover_tabletpx` | `#elementor-choose-c3411image_padding_hover_tabletpx` | input | px | 1 |
+| <a id="id--elementor-choose-c3412image_padding_hover_mobile"></a>`id--elementor-choose-c3412image_padding_hover_mobile` | `#elementor-choose-c3412image_padding_hover_mobile%` | input | % | 1 |
+| <a id="id--elementor-choose-c3412image_padding_hover_mobilepx"></a>`id--elementor-choose-c3412image_padding_hover_mobilepx` | `#elementor-choose-c3412image_padding_hover_mobilepx` | input | px | 1 |
+| <a id="id--elementor-control-blur-c3393"></a>`id--elementor-control-blur-c3393` | `#elementor-control-blur-c3393` | input | Spread | 1 |
+| <a id="id--elementor-control-blur-c3414"></a>`id--elementor-control-blur-c3414` | `#elementor-control-blur-c3414` | input | Spread | 1 |
+| <a id="id--elementor-control-bottom-c3383"></a>`id--elementor-control-bottom-c3383` | `#elementor-control-bottom-c3383` | input | Bottom Left | 1 |
+| <a id="id--elementor-control-bottom-c3385"></a>`id--elementor-control-bottom-c3385` | `#elementor-control-bottom-c3385` | input | Bottom Left | 1 |
+| <a id="id--elementor-control-bottom-c3386"></a>`id--elementor-control-bottom-c3386` | `#elementor-control-bottom-c3386` | input | Bottom Left | 1 |
+| <a id="id--elementor-control-bottom-c3387"></a>`id--elementor-control-bottom-c3387` | `#elementor-control-bottom-c3387` | input | Bottom Left | 1 |
+| <a id="id--elementor-control-bottom-c3389"></a>`id--elementor-control-bottom-c3389` | `#elementor-control-bottom-c3389` | input | Bottom Left | 1 |
+| <a id="id--elementor-control-bottom-c3390"></a>`id--elementor-control-bottom-c3390` | `#elementor-control-bottom-c3390` | input | Bottom Left | 1 |
+| <a id="id--elementor-control-bottom-c3391"></a>`id--elementor-control-bottom-c3391` | `#elementor-control-bottom-c3391` | input | Bottom Left | 1 |
+| <a id="id--elementor-control-bottom-c3404"></a>`id--elementor-control-bottom-c3404` | `#elementor-control-bottom-c3404` | input | Bottom Left | 1 |
+| <a id="id--elementor-control-bottom-c3406"></a>`id--elementor-control-bottom-c3406` | `#elementor-control-bottom-c3406` | input | Bottom Left | 1 |
+| <a id="id--elementor-control-bottom-c3407"></a>`id--elementor-control-bottom-c3407` | `#elementor-control-bottom-c3407` | input | Bottom Left | 1 |
+| <a id="id--elementor-control-bottom-c3408"></a>`id--elementor-control-bottom-c3408` | `#elementor-control-bottom-c3408` | input | Bottom Left | 1 |
+| <a id="id--elementor-control-bottom-c3410"></a>`id--elementor-control-bottom-c3410` | `#elementor-control-bottom-c3410` | input | Bottom Left | 1 |
+| <a id="id--elementor-control-bottom-c3411"></a>`id--elementor-control-bottom-c3411` | `#elementor-control-bottom-c3411` | input | Bottom Left | 1 |
+| <a id="id--elementor-control-bottom-c3412"></a>`id--elementor-control-bottom-c3412` | `#elementor-control-bottom-c3412` | input | Bottom Left | 1 |
+| <a id="id--elementor-control-default-c3384"></a>`id--elementor-control-default-c3384` | `#elementor-control-default-c3384` | select | Default None Solid Double Dotted Dashed | 1 |
+| <a id="id--elementor-control-default-c3392-custom"></a>`id--elementor-control-default-c3392-custom` | `#elementor-control-default-c3392-custom` | input | Edit | 1 |
+| <a id="id--elementor-control-default-c3392-default"></a>`id--elementor-control-default-c3392-default` | `#elementor-control-default-c3392-default` | input | Back to default | 1 |
+| <a id="id--elementor-control-default-c3394"></a>`id--elementor-control-default-c3394` | `#elementor-control-default-c3394` | select | Outline Inset | 1 |
+| <a id="id--elementor-control-default-c3395"></a>`id--elementor-control-default-c3395` | `#elementor-control-default-c3395` | input | CSS Filters | 1 |
+| <a id="id--elementor-control-default-c3396-custom"></a>`id--elementor-control-default-c3396-custom` | `#elementor-control-default-c3396-custom` | input | Edit | 1 |
+| <a id="id--elementor-control-default-c3396-default"></a>`id--elementor-control-default-c3396-default` | `#elementor-control-default-c3396-default` | input | Back to default | 1 |
+| <a id="id--elementor-control-default-c3397"></a>`id--elementor-control-default-c3397` | `#elementor-control-default-c3397` | input |  | 1 |
+| <a id="id--elementor-control-default-c3398"></a>`id--elementor-control-default-c3398` | `#elementor-control-default-c3398` | input |  | 1 |
+| <a id="id--elementor-control-default-c3399"></a>`id--elementor-control-default-c3399` | `#elementor-control-default-c3399` | input |  | 1 |
+| <a id="id--elementor-control-default-c3400"></a>`id--elementor-control-default-c3400` | `#elementor-control-default-c3400` | input |  | 1 |
+| <a id="id--elementor-control-default-c3401"></a>`id--elementor-control-default-c3401` | `#elementor-control-default-c3401` | input |  | 1 |
+| <a id="id--elementor-control-default-c3405"></a>`id--elementor-control-default-c3405` | `#elementor-control-default-c3405` | select | Default None Solid Double Dotted Dashed | 1 |
+| <a id="id--elementor-control-default-c3413-custom"></a>`id--elementor-control-default-c3413-custom` | `#elementor-control-default-c3413-custom` | input | Edit | 1 |
+| <a id="id--elementor-control-default-c3413-default"></a>`id--elementor-control-default-c3413-default` | `#elementor-control-default-c3413-default` | input | Back to default | 1 |
+| <a id="id--elementor-control-default-c3415"></a>`id--elementor-control-default-c3415` | `#elementor-control-default-c3415` | select | Outline Inset | 1 |
+| <a id="id--elementor-control-default-c3416"></a>`id--elementor-control-default-c3416` | `#elementor-control-default-c3416` | input | CSS Filters | 1 |
+| <a id="id--elementor-control-default-c3417-custom"></a>`id--elementor-control-default-c3417-custom` | `#elementor-control-default-c3417-custom` | input | Edit | 1 |
+| <a id="id--elementor-control-default-c3417-default"></a>`id--elementor-control-default-c3417-default` | `#elementor-control-default-c3417-default` | input | Back to default | 1 |
+| <a id="id--elementor-control-default-c3418"></a>`id--elementor-control-default-c3418` | `#elementor-control-default-c3418` | input |  | 1 |
+| <a id="id--elementor-control-default-c3419"></a>`id--elementor-control-default-c3419` | `#elementor-control-default-c3419` | input |  | 1 |
+| <a id="id--elementor-control-default-c3420"></a>`id--elementor-control-default-c3420` | `#elementor-control-default-c3420` | input |  | 1 |
+| <a id="id--elementor-control-default-c3421"></a>`id--elementor-control-default-c3421` | `#elementor-control-default-c3421` | input |  | 1 |
+| <a id="id--elementor-control-default-c3422"></a>`id--elementor-control-default-c3422` | `#elementor-control-default-c3422` | input |  | 1 |
+| <a id="id--elementor-control-horizontal-c3393"></a>`id--elementor-control-horizontal-c3393` | `#elementor-control-horizontal-c3393` | input | Vertical | 1 |
+| <a id="id--elementor-control-horizontal-c3414"></a>`id--elementor-control-horizontal-c3414` | `#elementor-control-horizontal-c3414` | input | Vertical | 1 |
+| <a id="id--elementor-control-left-c3383"></a>`id--elementor-control-left-c3383` | `#elementor-control-left-c3383` | input | Left Link values t | 1 |
+| <a id="id--elementor-control-left-c3385"></a>`id--elementor-control-left-c3385` | `#elementor-control-left-c3385` | input | Left Link values t | 1 |
+| <a id="id--elementor-control-left-c3386"></a>`id--elementor-control-left-c3386` | `#elementor-control-left-c3386` | input | Left Link values t | 1 |
+| <a id="id--elementor-control-left-c3387"></a>`id--elementor-control-left-c3387` | `#elementor-control-left-c3387` | input | Left Link values t | 1 |
+| <a id="id--elementor-control-left-c3389"></a>`id--elementor-control-left-c3389` | `#elementor-control-left-c3389` | input | Left Link values t | 1 |
+| <a id="id--elementor-control-left-c3390"></a>`id--elementor-control-left-c3390` | `#elementor-control-left-c3390` | input | Left Link values t | 1 |
+| <a id="id--elementor-control-left-c3391"></a>`id--elementor-control-left-c3391` | `#elementor-control-left-c3391` | input | Left Link values t | 1 |
+| <a id="id--elementor-control-left-c3404"></a>`id--elementor-control-left-c3404` | `#elementor-control-left-c3404` | input | Left Link values t | 1 |
+| <a id="id--elementor-control-left-c3406"></a>`id--elementor-control-left-c3406` | `#elementor-control-left-c3406` | input | Left Link values t | 1 |
+| <a id="id--elementor-control-left-c3407"></a>`id--elementor-control-left-c3407` | `#elementor-control-left-c3407` | input | Left Link values t | 1 |
+| <a id="id--elementor-control-left-c3408"></a>`id--elementor-control-left-c3408` | `#elementor-control-left-c3408` | input | Left Link values t | 1 |
+| <a id="id--elementor-control-left-c3410"></a>`id--elementor-control-left-c3410` | `#elementor-control-left-c3410` | input | Left Link values t | 1 |
+| <a id="id--elementor-control-left-c3411"></a>`id--elementor-control-left-c3411` | `#elementor-control-left-c3411` | input | Left Link values t | 1 |
+| <a id="id--elementor-control-left-c3412"></a>`id--elementor-control-left-c3412` | `#elementor-control-left-c3412` | input | Left Link values t | 1 |
+| <a id="id--elementor-control-right-c3383"></a>`id--elementor-control-right-c3383` | `#elementor-control-right-c3383` | input | Right Bottom | 1 |
+| <a id="id--elementor-control-right-c3385"></a>`id--elementor-control-right-c3385` | `#elementor-control-right-c3385` | input | Right Bottom | 1 |
+| <a id="id--elementor-control-right-c3386"></a>`id--elementor-control-right-c3386` | `#elementor-control-right-c3386` | input | Right Bottom | 1 |
+| <a id="id--elementor-control-right-c3387"></a>`id--elementor-control-right-c3387` | `#elementor-control-right-c3387` | input | Right Bottom | 1 |
+| <a id="id--elementor-control-right-c3389"></a>`id--elementor-control-right-c3389` | `#elementor-control-right-c3389` | input | Right Bottom | 1 |
+| <a id="id--elementor-control-right-c3390"></a>`id--elementor-control-right-c3390` | `#elementor-control-right-c3390` | input | Right Bottom | 1 |
+| <a id="id--elementor-control-right-c3391"></a>`id--elementor-control-right-c3391` | `#elementor-control-right-c3391` | input | Right Bottom | 1 |
+| <a id="id--elementor-control-right-c3404"></a>`id--elementor-control-right-c3404` | `#elementor-control-right-c3404` | input | Right Bottom | 1 |
+| <a id="id--elementor-control-right-c3406"></a>`id--elementor-control-right-c3406` | `#elementor-control-right-c3406` | input | Right Bottom | 1 |
+| <a id="id--elementor-control-right-c3407"></a>`id--elementor-control-right-c3407` | `#elementor-control-right-c3407` | input | Right Bottom | 1 |
+| <a id="id--elementor-control-right-c3408"></a>`id--elementor-control-right-c3408` | `#elementor-control-right-c3408` | input | Right Bottom | 1 |
+| <a id="id--elementor-control-right-c3410"></a>`id--elementor-control-right-c3410` | `#elementor-control-right-c3410` | input | Right Bottom | 1 |
+| <a id="id--elementor-control-right-c3411"></a>`id--elementor-control-right-c3411` | `#elementor-control-right-c3411` | input | Right Bottom | 1 |
+| <a id="id--elementor-control-right-c3412"></a>`id--elementor-control-right-c3412` | `#elementor-control-right-c3412` | input | Right Bottom | 1 |
+| <a id="id--elementor-control-spread-c3393"></a>`id--elementor-control-spread-c3393` | `#elementor-control-spread-c3393` | input |  | 1 |
+| <a id="id--elementor-control-spread-c3414"></a>`id--elementor-control-spread-c3414` | `#elementor-control-spread-c3414` | input |  | 1 |
+| <a id="id--elementor-control-top-c3383"></a>`id--elementor-control-top-c3383` | `#elementor-control-top-c3383` | input | Top Right | 1 |
+| <a id="id--elementor-control-top-c3385"></a>`id--elementor-control-top-c3385` | `#elementor-control-top-c3385` | input | Top Right | 1 |
+| <a id="id--elementor-control-top-c3386"></a>`id--elementor-control-top-c3386` | `#elementor-control-top-c3386` | input | Top Right | 1 |
+| <a id="id--elementor-control-top-c3387"></a>`id--elementor-control-top-c3387` | `#elementor-control-top-c3387` | input | Top Right | 1 |
+| <a id="id--elementor-control-top-c3389"></a>`id--elementor-control-top-c3389` | `#elementor-control-top-c3389` | input | Top Right | 1 |
+| <a id="id--elementor-control-top-c3390"></a>`id--elementor-control-top-c3390` | `#elementor-control-top-c3390` | input | Top Right | 1 |
+| <a id="id--elementor-control-top-c3391"></a>`id--elementor-control-top-c3391` | `#elementor-control-top-c3391` | input | Top Right | 1 |
+| <a id="id--elementor-control-top-c3404"></a>`id--elementor-control-top-c3404` | `#elementor-control-top-c3404` | input | Top Right | 1 |
+| <a id="id--elementor-control-top-c3406"></a>`id--elementor-control-top-c3406` | `#elementor-control-top-c3406` | input | Top Right | 1 |
+| <a id="id--elementor-control-top-c3407"></a>`id--elementor-control-top-c3407` | `#elementor-control-top-c3407` | input | Top Right | 1 |
+| <a id="id--elementor-control-top-c3408"></a>`id--elementor-control-top-c3408` | `#elementor-control-top-c3408` | input | Top Right | 1 |
+| <a id="id--elementor-control-top-c3410"></a>`id--elementor-control-top-c3410` | `#elementor-control-top-c3410` | input | Top Right | 1 |
+| <a id="id--elementor-control-top-c3411"></a>`id--elementor-control-top-c3411` | `#elementor-control-top-c3411` | input | Top Right | 1 |
+| <a id="id--elementor-control-top-c3412"></a>`id--elementor-control-top-c3412` | `#elementor-control-top-c3412` | input | Top Right | 1 |
+| <a id="id--elementor-control-vertical-c3393"></a>`id--elementor-control-vertical-c3393` | `#elementor-control-vertical-c3393` | input | Blur | 1 |
+| <a id="id--elementor-control-vertical-c3414"></a>`id--elementor-control-vertical-c3414` | `#elementor-control-vertical-c3414` | input | Blur | 1 |
+| <a id="id--elementor-controls"></a>`id--elementor-controls` | `#elementor-controls` | div |  | 1 |
+| <a id="id--elementor-editor-wrapper"></a>`id--elementor-editor-wrapper` | `#elementor-editor-wrapper` | div |  | 1 |
+| <a id="id--elementor-editor-wrapper-v2"></a>`id--elementor-editor-wrapper-v2` | `#elementor-editor-wrapper-v2` | div |  | 1 |
+| <a id="id--elementor-loading"></a>`id--elementor-loading` | `#elementor-loading` | div |  | 1 |
+| <a id="id--elementor-mode-switcher"></a>`id--elementor-mode-switcher` | `#elementor-mode-switcher` | div | Hide Panel (Ctrl + P) | 1 |
+| <a id="id--elementor-mode-switcher-inner"></a>`id--elementor-mode-switcher-inner` | `#elementor-mode-switcher-inner` | div | Hide Panel (Ctrl + P) | 1 |
+| <a id="id--elementor-mode-switcher-preview"></a>`id--elementor-mode-switcher-preview` | `#elementor-mode-switcher-preview` | label | Hide Panel (Ctrl + P) | 1 |
+| <a id="id--elementor-mode-switcher-preview-input"></a>`id--elementor-mode-switcher-preview-input` | `#elementor-mode-switcher-preview-input` | input |  | 1 |
+| <a id="id--elementor-navigator"></a>`id--elementor-navigator` | `#elementor-navigator` | aside |  | 1 |
+| <a id="id--elementor-navigator__ai-titles"></a>`id--elementor-navigator__ai-titles` | `#elementor-navigator__ai-titles` | button |  | 1 |
+| <a id="id--elementor-navigator__close"></a>`id--elementor-navigator__close` | `#elementor-navigator__close` | button |  | 1 |
+| <a id="id--elementor-navigator__elements"></a>`id--elementor-navigator__elements` | `#elementor-navigator__elements` | div |  | 1 |
+| <a id="id--elementor-navigator__footer"></a>`id--elementor-navigator__footer` | `#elementor-navigator__footer` | div | Resize structure | 1 |
+| <a id="id--elementor-navigator__footer__resize-bar"></a>`id--elementor-navigator__footer__resize-bar` | `#elementor-navigator__footer__resize-bar` | div | Resize structure | 1 |
+| <a id="id--elementor-navigator__header"></a>`id--elementor-navigator__header` | `#elementor-navigator__header` | div | Structure | 1 |
+| <a id="id--elementor-navigator__header__title"></a>`id--elementor-navigator__header__title` | `#elementor-navigator__header__title` | h2 | Structure | 1 |
+| <a id="id--elementor-navigator__inner"></a>`id--elementor-navigator__inner` | `#elementor-navigator__inner` | div | Structure | 1 |
+| <a id="id--elementor-navigator__toggle-all"></a>`id--elementor-navigator__toggle-all` | `#elementor-navigator__toggle-all` | button |  | 1 |
+| <a id="id--elementor-panel"></a>`id--elementor-panel` | `#elementor-panel` | aside |  | 1 |
+| <a id="id--elementor-panel__editor__help"></a>`id--elementor-panel__editor__help` | `#elementor-panel__editor__help` | div | Need Help | 1 |
+| <a id="id--elementor-panel__editor__help__link"></a>`id--elementor-panel__editor__help__link` | `#elementor-panel__editor__help__link` | a | Need Help | 1 |
+| <a id="id--elementor-panel-content-wrapper"></a>`id--elementor-panel-content-wrapper` | `#elementor-panel-content-wrapper` | main | Content | 1 |
+| <a id="id--elementor-panel-footer"></a>`id--elementor-panel-footer` | `#elementor-panel-footer` | footer |  | 1 |
+| <a id="id--elementor-panel-footer-history"></a>`id--elementor-panel-footer-history` | `#elementor-panel-footer-history` | button |  | 1 |
+| <a id="id--elementor-panel-footer-navigator"></a>`id--elementor-panel-footer-navigator` | `#elementor-panel-footer-navigator` | button |  | 1 |
+| <a id="id--elementor-panel-footer-responsive"></a>`id--elementor-panel-footer-responsive` | `#elementor-panel-footer-responsive` | button |  | 1 |
+| <a id="id--elementor-panel-footer-saver-options"></a>`id--elementor-panel-footer-saver-options` | `#elementor-panel-footer-saver-options` | div |  | 1 |
+| <a id="id--elementor-panel-footer-saver-preview"></a>`id--elementor-panel-footer-saver-preview` | `#elementor-panel-footer-saver-preview` | button |  | 1 |
+| <a id="id--elementor-panel-footer-saver-preview-label"></a>`id--elementor-panel-footer-saver-preview-label` | `#elementor-panel-footer-saver-preview-label` | span |  | 1 |
+| <a id="id--elementor-panel-footer-saver-publish"></a>`id--elementor-panel-footer-saver-publish` | `#elementor-panel-footer-saver-publish` | div | Update | 1 |
+| <a id="id--elementor-panel-footer-settings"></a>`id--elementor-panel-footer-settings` | `#elementor-panel-footer-settings` | button |  | 1 |
+| <a id="id--elementor-panel-footer-sub-menu-item-save-draft"></a>`id--elementor-panel-footer-sub-menu-item-save-draft` | `#elementor-panel-footer-sub-menu-item-save-draft` | div | Save Draft | 1 |
+| <a id="id--elementor-panel-footer-sub-menu-item-save-template"></a>`id--elementor-panel-footer-sub-menu-item-save-template` | `#elementor-panel-footer-sub-menu-item-save-template` | div | Save as Template | 1 |
+| <a id="id--elementor-panel-footer-tools"></a>`id--elementor-panel-footer-tools` | `#elementor-panel-footer-tools` | nav |  | 1 |
+| <a id="id--elementor-panel-header"></a>`id--elementor-panel-header` | `#elementor-panel-header` | div |  | 1 |
+| <a id="id--elementor-panel-header-add-button"></a>`id--elementor-panel-header-add-button` | `#elementor-panel-header-add-button` | button |  | 1 |
+| <a id="id--elementor-panel-header-kit-back"></a>`id--elementor-panel-header-kit-back` | `#elementor-panel-header-kit-back` | button |  | 1 |
+| <a id="id--elementor-panel-header-kit-close"></a>`id--elementor-panel-header-kit-close` | `#elementor-panel-header-kit-close` | button |  | 1 |
+| <a id="id--elementor-panel-header-menu-button"></a>`id--elementor-panel-header-menu-button` | `#elementor-panel-header-menu-button` | button |  | 1 |
+| <a id="id--elementor-panel-header-title"></a>`id--elementor-panel-header-title` | `#elementor-panel-header-title` | h2 | Edit Logo Carousel | 1 |
+| <a id="id--elementor-panel-header-wrapper"></a>`id--elementor-panel-header-wrapper` | `#elementor-panel-header-wrapper` | header |  | 1 |
+| <a id="id--elementor-panel-inner"></a>`id--elementor-panel-inner` | `#elementor-panel-inner` | div |  | 1 |
+| <a id="id--elementor-panel-page-editor"></a>`id--elementor-panel-page-editor` | `#elementor-panel-page-editor` | div | Content Style | 1 |
+| <a id="id--elementor-panel-saver-button-publish"></a>`id--elementor-panel-saver-button-publish` | `#elementor-panel-saver-button-publish` | button | Update | 1 |
+| <a id="id--elementor-panel-saver-button-publish-label"></a>`id--elementor-panel-saver-button-publish-label` | `#elementor-panel-saver-button-publish-label` | span | Update | 1 |
+| <a id="id--elementor-panel-saver-button-save-options"></a>`id--elementor-panel-saver-button-save-options` | `#elementor-panel-saver-button-save-options` | button |  | 1 |
+| <a id="id--elementor-panel-state-loading"></a>`id--elementor-panel-state-loading` | `#elementor-panel-state-loading` | div |  | 1 |
+| <a id="id--elementor-preview"></a>`id--elementor-preview` | `#elementor-preview` | main |  | 1 |
+| <a id="id--elementor-preview-iframe"></a>`id--elementor-preview-iframe` | `#elementor-preview-iframe` | iframe |  | 1 |
+| <a id="id--elementor-preview-loading"></a>`id--elementor-preview-loading` | `#elementor-preview-loading` | div |  | 1 |
+| <a id="id--elementor-preview-responsive-wrapper"></a>`id--elementor-preview-responsive-wrapper` | `#elementor-preview-responsive-wrapper` | div |  | 1 |
+| <a id="id--elementor-responsive-bar"></a>`id--elementor-responsive-bar` | `#elementor-responsive-bar` | div |  | 1 |
+| <a id="id--elementor-try-safe-mode"></a>`id--elementor-try-safe-mode` | `#elementor-try-safe-mode` | div | Can't Edit? Enable Safe Mode Having problems loading Elemen… | 1 |
+| <a id="id--link-modal-title"></a>`id--link-modal-title` | `#link-modal-title` | h1 | Insert/edit link | 1 |
+| <a id="id--most-recent-results"></a>`id--most-recent-results` | `#most-recent-results` | div | No search term specified. Showing recent items. Search or u… | 1 |
+| <a id="id--query-notice-message"></a>`id--query-notice-message` | `#query-notice-message` | div | No search term specified. Showing recent items. Search or u… | 1 |
+| <a id="id--search-panel"></a>`id--search-panel` | `#search-panel` | div | Search | 1 |
+| <a id="id--search-results"></a>`id--search-results` | `#search-results` | div |  | 1 |
+| <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
+| <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
+| <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
+| <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-link"></a>`id--wp-link` | `#wp-link` | form | Insert/edit link Close Enter the destination URL | 1 |
+| <a id="id--wplink-enter-url"></a>`id--wplink-enter-url` | `#wplink-enter-url` | p | Enter the destination URL | 1 |
+| <a id="id--wplink-link-existing-content"></a>`id--wplink-link-existing-content` | `#wplink-link-existing-content` | p | Or link to existing content | 1 |
+
+---
+
+## Notes
+
+- This catalog lists *candidate* selectors extracted statically from the snapshot's `index.html`. Not every entry is a stable chapter target — authors still pick the selector that best matches intent.
+- Role-like classes are filtered to (a) names matching a known interaction suffix (`-button`, `-tab`, `-toggle`, `-add`, …) OR (b) classes whose first in-scope occurrence is on an interactive tag (`button`, `a`, `input`, `textarea`, `select`, `li`) carrying non-empty text. `Tag` and `Text` columns are sourced from that first occurrence. The full WPForms class vocabulary is larger; run `tools/inspect-snapshot.js` for visibility-aware detail.
+- Duplicate IDs in captured HTML (a known sanitization debt) surface here as `Count > 1` — prefer a more specific selector when this happens.
