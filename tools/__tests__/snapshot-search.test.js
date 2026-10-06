@@ -198,6 +198,61 @@ try {
     ok(JSON.stringify(names) === JSON.stringify([['some', 'thing']]), 'a pack with no pack.json answers to its key (minus an edition suffix)');
   }
 
+  section('hubs, filler words, families, ties and --category (aThemes search pass, 2026-10-07)');
+  {
+    const lib = require(path.join(ROOT, 'tools', 'lib', 'snapshot-search.js'));
+    // A hub names ten other screens of its pack in its topics; the same entry with those
+    // screens absent is not a hub. Same IDF both ways, so only the hub rule differs.
+    const names = ['alpha', 'bravo', 'charlie', 'delta', 'echo', 'foxtrot', 'golf', 'hotel', 'india', 'juliet'];
+    const hub = { slug: 'admin-home', shows: 'Home with the module cards', topics: [...names, 'kilo'] };
+    const mods = names.map((n) => ({ slug: `admin-module-${n}`, shows: `${n} settings`, topics: [n] }));
+    const idf = [1];
+    const asHub = lib.scoreAll([hub, ...mods], ['kilo'], idf)[0];
+    const alone = lib.scoreAll([hub], ['kilo'], idf)[0];
+    ok(Math.abs(asHub - alone * 0.7) < 1e-9, `a hub hit only in its topics scores 0.7 of the same screen that is no hub (${asHub.toFixed(2)} vs ${alone.toFixed(2)})`);
+    const viaShows = lib.scoreAll([hub, ...mods], ['card'], idf)[0];
+    const viaShowsAlone = lib.scoreAll([hub], ['card'], idf)[0];
+    ok(viaShows === viaShowsAlone, 'a hub whose description carries the word keeps its full score');
+    const nine = lib.scoreAll([{ ...hub, topics: names.slice(0, 9).concat('kilo') }, ...mods], ['kilo'], idf)[0];
+    ok(nine === lib.scoreAll([{ ...hub, topics: names.slice(0, 9).concat('kilo') }], ['kilo'], idf)[0], 'nine borrowed topics is not a hub');
+
+    ok(JSON.stringify(lib.queryToks('How to configure the copyright area')) === '["configure","copyright","area"]', 'queryToks drops filler words');
+    ok(JSON.stringify(lib.queryToks('how to')) === '["how","to"]', 'a query of nothing but filler keeps it');
+    const r = lib.rank([{ slug: 'x-how', shows: '', topics: [] }, { slug: 'y-other', shows: '', topics: [] }], 'how other');
+    ok(r.length === 2, 'one-pack ranking keeps filler words (they can mark a doc heading pasted into the topics)');
+    ok(lib.rank([{ slug: 'x-how', shows: '', topics: [] }, { slug: 'y-other', shows: '', topics: [] }], 'how other', { stop: true }).length === 1, 'stop: true drops them');
+
+    // Two throwaway packs of one family, each holding the same screen.
+    const famKeys = [`zz-fam-a-${process.pid}`, `zz-fam-b-${process.pid}`];
+    try {
+      for (const k of famKeys) {
+        const dir = path.join(ROOT, 'products', k, 'snapshots');
+        fs.mkdirSync(path.join(dir, 'admin-blog-archive'), { recursive: true });
+        fs.mkdirSync(path.join(dir, 'admin-blog-archive--style'), { recursive: true });
+        fs.writeFileSync(path.join(ROOT, 'products', k, 'pack.json'), JSON.stringify({ key: k, name: k, family: 'Zzfamily' }));
+        fs.writeFileSync(path.join(dir, 'index.json'), JSON.stringify({ snapshots: [
+          { slug: 'admin-blog-archive', category: 'admin/customizer', shows: 'Blog archive zzquux panel', topics: ['zzquux'] },
+          { slug: 'admin-blog-archive--style', category: 'admin/customizer', shows: 'Blog archive zzquux panel, Style tab', topics: ['zzquux'] },
+        ] }));
+      }
+      const j = JSON.parse(tool('list-snapshots.js', ['--search', 'zzfamily zzquux', '--all-packs', '--json']).out);
+      ok(j.hint && j.hint.family === 'Zzfamily' && famKeys.every((k) => j.hint.packs.includes(k)), `a family name names every pack of the family (${JSON.stringify(j.hint)})`);
+      ok(j.tie && famKeys.every((k) => j.tie.includes(k)), 'the same screen in two packs is reported as a tie');
+      const top = j.snapshots.slice(0, 4).map((s) => `${s.pack}/${s.slug}`);
+      ok(top[0].endsWith('/admin-blog-archive') && top[1].endsWith('/admin-blog-archive') && top[0] !== top[1], `at equal score the packs take turns (${top.join(', ')})`);
+      const txt = tool('list-snapshots.js', ['--search', 'zzquux', '--all-packs']).out;
+      ok(/# the best hit ties across .*zz-fam-a-.*zz-fam-b-/.test(txt), 'the text output says the best hit ties and where');
+    } finally {
+      for (const k of famKeys) fs.rmSync(path.join(ROOT, 'products', k), { recursive: true, force: true });
+    }
+
+    const c = tool('list-snapshots.js', ['--search', 'orders', '--category', 'admin/list']);
+    ok(/# 2 snapshot\(s\)/.test(c.out), '--category keeps the screens whose category starts with it');
+    ok(/# 0 snapshot\(s\)/.test(tool('list-snapshots.js', ['--search', 'orders', '--category', 'frontend']).out), '--category drops the rest');
+    ok(/# 1 snapshot\(s\)/.test(tool('list-snapshots.js', ['--category', 'frontend/page']).out), '--category works without --search');
+    ok(tool('list-snapshots.js', ['--category']).code === 2, '--category without a value is a usage error');
+  }
+
   section('list-snapshots — --help, bad flags, --all-packs');
   {
     const h = tool('list-snapshots.js', ['--help']);

@@ -9,6 +9,8 @@
 //                                               # topics and category
 //   node tools/list-snapshots.js --search <q> --all-packs
 //                                               # the same search in every products/<key>/ pack
+//   node tools/list-snapshots.js --search <q> --category <prefix>
+//                                               # only screens whose category starts with it
 //   node tools/list-snapshots.js --json         # machine-readable
 //   node tools/list-snapshots.js --help
 //
@@ -26,6 +28,7 @@ const USAGE = [
   '  node tools/list-snapshots.js                          # every snapshot in the pack',
   '  node tools/list-snapshots.js --search <query>         # ranked: slug, topics, description, category',
   '  node tools/list-snapshots.js --search <query> --all-packs   # every products/<key>/ pack, hits labelled',
+  '  node tools/list-snapshots.js ... --category <prefix>   # only screens whose category starts with it (frontend/checkout)',
   '  node tools/list-snapshots.js --for <video-slug>       # snapshots a video uses, which are missing',
   '  node tools/list-snapshots.js ... --json               # machine-readable',
   '',
@@ -33,16 +36,20 @@ const USAGE = [
   'Search words are split on spaces, hyphens, underscores and slashes, so',
   '"local seo" finds admin-local-seo-*; every word that matches raises the rank,',
   'a rare word counts more than one on every screen, and a base screen ranks',
-  'above its own "--state" and per-record captures. With --all-packs a product',
-  'name in the query picks that pack (names: products/<key>/pack.json).',
+  'above its own "--state" and per-record captures. With --all-packs filler',
+  'words ("how to", "the", "your") are dropped, a product name in the query',
+  'picks that pack, a family name ("athemes") picks every pack of the family',
+  '(names and families: products/<key>/pack.json), and when the best hit ties',
+  'across packs the output says so: add the product name to pick one.',
 ].join('\n');
 
 function parseArgs(argv) {
-  const args = { for: null, search: null, json: false, allPacks: false, help: false };
+  const args = { for: null, search: null, category: null, json: false, allPacks: false, help: false };
   for (let i = 2; i < argv.length; i++) {
     const a = argv[i];
     if (a === '--for') args.for = argv[++i] || '';
     else if (a === '--search') args.search = argv[++i] || '';
+    else if (a === '--category') args.category = argv[++i] || '';
     else if (a === '--json') args.json = true;
     else if (a === '--all-packs') args.allPacks = true;
     else if (a === '--help' || a === '-h') args.help = true;
@@ -53,8 +60,8 @@ function parseArgs(argv) {
       process.exit(2);
     }
   }
-  if (args.for === '' || args.search === '') {
-    console.error((args.for === '' ? '--for' : '--search') + ' needs a value\n\n' + USAGE);
+  if (args.for === '' || args.search === '' || args.category === '') {
+    console.error((args.for === '' ? '--for' : args.search === '' ? '--search' : '--category') + ' needs a value\n\n' + USAGE);
     process.exit(2);
   }
   if (args.allPacks && !args.search) {
@@ -143,6 +150,14 @@ function snapshotsReferencedByVideo(slug) {
   return refs;
 }
 
+// --category <prefix>: only the screens whose category starts with it
+// ("frontend/checkout", "admin/module"). No prefix keeps every screen.
+function byCategory(entries, prefix) {
+  if (!prefix) return entries;
+  const p = prefix.toLowerCase();
+  return entries.filter((e) => String(e.category || '').toLowerCase().startsWith(p));
+}
+
 // --all-packs: the same ranked search in every pack, one list, each hit
 // labelled with its pack, ranked across packs by score. Word rarity (IDF) is
 // taken over every pack at once, so the scores compare across packs. A product
@@ -153,27 +168,36 @@ function snapshotsReferencedByVideo(slug) {
 function searchAllPacks(args) {
   const hits = [];
   const searched = [];
-  const packs = search.packs().map((p) => ({ ...p, entries: loadIndex(path.join(p.root, 'index.json')).snapshots || [] }));
+  const packs = search.packs().map((p) => ({ ...p, entries: byCategory(loadIndex(path.join(p.root, 'index.json')).snapshots || [], args.category) }));
   const hint = search.packHint(args.search, packs);
   const query = hint && hint.rest.length ? hint.rest : args.search;
-  const idf = search.idfFor(packs.flatMap((p) => p.entries), Array.isArray(query) ? query : search.toks(query));
+  const idf = search.idfFor(packs.flatMap((p) => p.entries), Array.isArray(query) ? query : search.queryToks(query));
   for (const p of packs) {
     const onDisk = listOnDisk(p.root);
     searched.push(p.key);
-    search.rank(p.entries, query, { idf }).forEach((r, i) => {
+    search.rank(p.entries, query, { idf, stop: true }).forEach((r, i) => {
       hits.push({ pack: p.key, score: r.score, onDisk: onDisk.has(r.entry.slug), ...r.entry, _at: i });
     });
   }
-  const named = (h) => (hint && h.pack === hint.key ? 0 : 1);
-  // within one pack at equal score, the pack's own order (bare screens first)
-  hits.sort((a, b) => named(a) - named(b) || b.score - a.score || a.pack.localeCompare(b.pack) || a._at - b._at);
+  const hinted = hint ? (hint.key ? [hint.key] : hint.keys) : [];
+  const named = (h) => (hinted.includes(h.pack) ? 0 : 1);
+  // At equal score the packs take turns, each in its own order (bare screens
+  // first): look-alike packs (two themes with the same Customizer panel)
+  // both show in the top hits instead of one pack filling them by name.
+  hits.sort((a, b) => named(a) - named(b) || b.score - a.score || a._at - b._at || a.pack.localeCompare(b.pack));
   for (const h of hits) delete h._at;
+  // The best hit is tied when another pack scores the same for it.
+  const tie = hits.length ? [...new Set(hits.filter((h) => named(h) === named(hits[0]) && h.score === hits[0].score).map((h) => h.pack))] : [];
+  const tied = tie.length > 1 ? tie : null;
+  const hintJson = !hint ? null : hint.key ? { pack: hint.key, name: hint.name.join(' ') } : { family: hint.family, packs: hint.keys };
   if (args.json) {
-    process.stdout.write(JSON.stringify({ packs: searched, query: args.search, hint: hint ? { pack: hint.key, name: hint.name.join(' ') } : null, count: hits.length, snapshots: hits }, null, 2) + '\n');
+    process.stdout.write(JSON.stringify({ packs: searched, query: args.search, hint: hintJson, tie: tied, count: hits.length, snapshots: hits }, null, 2) + '\n');
     return;
   }
   console.log(`# packs: ${searched.join(', ')}`);
-  if (hint) console.log(`# "${hint.name.join(' ')}" names the ${hint.key} pack: its hits come first, the other words are the search`);
+  if (hint && hint.key) console.log(`# "${hint.name.join(' ')}" names the ${hint.key} pack: its hits come first, the other words are the search`);
+  if (hint && !hint.key) console.log(`# "${hint.family}" names a family of packs (${hint.keys.join(', ')}): their hits come first, the other words are the search`);
+  if (tied) console.log(`# the best hit ties across ${tied.join(', ')}: the same screen exists in each; add the product name to pick one`);
   console.log(`# ${hits.length} snapshot(s) matching "${args.search}" across ${searched.length} pack(s)`);
   for (const h of hits) {
     const shows = h.shows ? ` — ${h.shows}` : '';
@@ -218,7 +242,7 @@ function main() {
   }
 
   // List mode
-  let rows = index.snapshots.slice();
+  let rows = byCategory(index.snapshots.slice(), args.category);
   if (args.search) {
     // slug + description + topics + category: a person searching "stripe" or
     // "recurring" is asking what a screen SHOWS, and the topics list is where

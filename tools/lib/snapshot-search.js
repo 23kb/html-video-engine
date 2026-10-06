@@ -13,6 +13,13 @@
 // hit anything, and a state or record capture ("--open", "-list-100",
 // "-order-01", "-edit-03-…", "-sort-", "-filtered-by") ranks under its own
 // base screen. At equal score a bare screen sorts before a state capture.
+// Across packs (--all-packs, a family) filler words in a query ("how to
+// configure the copyright area") are dropped before scoring: one pack whose
+// topics carry whole doc titles would otherwise win every "how to" query. In
+// one pack they stay, where they mark a doc heading pasted into the topics.
+// A hub screen (its topics name ten or more other screens: a dashboard that
+// lists every module) ranks at 0.7 when the query hits only its topics, not
+// its slug or description, so it stops outranking the module's own screen.
 // CommonJS, no dependencies.
 
 const fs = require('fs');
@@ -24,6 +31,42 @@ const stem = (w) => (w.length > 4 && w.endsWith('ies') ? w.slice(0, -3) + 'y'
   : w.length > 3 && w.endsWith('s') && !w.endsWith('ss') ? w.slice(0, -1) : w);
 const toks = (s) => String(s || '').toLowerCase().split(/[^a-z0-9]+/).filter(Boolean).map(stem);
 const WEIGHT = { slug: 3, topics: 2.5, shows: 1.5, category: 1 };
+
+// Filler a doc title or a question carries ("How to add a logo in your
+// header"). Dropped from a cross-pack query only; a query of nothing else
+// keeps them.
+const STOP = new Set(['a', 'an', 'the', 'to', 'how', 'in', 'of', 'and', 'or', 'for', 'with', 'your', 'you',
+  'is', 'are', 'do', 'does', 'can', 'what', 'when', 'why', 'this', 'that', 'it', 'from', 'by', 'at', 'into', 'using'].map(stem));
+function queryToks(q) {
+  const t = toks(q);
+  const kept = t.filter((w) => !STOP.has(w));
+  return kept.length ? kept : t;
+}
+
+// A hub: a screen whose topics name this many other screens (a dashboard
+// listing every module, a builder listing every component). A topic names
+// another screen when all its words are in that screen's slug and not all in
+// the hub's own; states of the hub's own screen do not count. A module page
+// whose topics are its own settings labels names few (Merchant's: 8 at most).
+const HUB_BORROWED = 10;
+const HUB_WEIGHT = 0.7;
+function hubsOf(entries) {
+  const slugT = entries.map((e) => new Set(toks(e.slug)));
+  const hubs = new Set();
+  entries.forEach((e, j) => {
+    const t = topicsOf(e);
+    if (t.length < HUB_BORROWED) return;
+    const base = String(e.slug).split('--')[0];
+    let n = 0;
+    for (const x of t) {
+      const w = toks(x);
+      if (!w.length || w.every((v) => slugT[j].has(v))) continue;
+      if (entries.some((o, i) => i !== j && !String(o.slug).startsWith(base) && w.every((v) => slugT[i].has(v)))) n++;
+      if (n >= HUB_BORROWED) { hubs.add(j); return; }
+    }
+  });
+  return hubs;
+}
 
 function topicsOf(e) {
   return Array.isArray(e.topics) ? e.topics : e.topics ? [e.topics] : [];
@@ -83,12 +126,16 @@ function idfFor(entries, words) {
 // `words` are tokens from toks(). Returns one number per entry.
 function scoreAll(entries, words, idf = idfFor(entries, words)) {
   const hits = entries.map((e) => { const f = fieldsOf(e); return words.map((w) => wordHit(f, w)); });
+  const hubs = hubsOf(entries);
   const raw = entries.map((e, j) => {
     if (!words.length) return 0;
     let sum = 0;
     let hit = 0;
     hits[j].forEach((g, i) => { sum += g * idf[i]; if (g) hit++; });
-    return sum * (0.4 + 0.6 * hit / words.length);
+    const s = sum * (0.4 + 0.6 * hit / words.length);
+    if (!hubs.has(j)) return s;
+    const own = { slug: toks(e.slug), shows: toks(e.shows) };
+    return words.some((w) => wordHit(own, w)) ? s : s * HUB_WEIGHT;
   });
   const bySlug = new Map(entries.map((e, j) => [String(e.slug), raw[j]]));
   return raw.map((s, j) => {
@@ -113,9 +160,10 @@ function substringHit(e, q) {
 // Index entries ranked for a query (a string, or tokens from toks()): highest
 // score first, a bare screen before a state capture at equal score, then slug
 // order. Returns [{ entry, score }] for every entry with a score or a
-// substring hit. `idf` (from idfFor over a wider corpus) replaces the pack's own.
-function rank(entries, query, { idf } = {}) {
-  const words = Array.isArray(query) ? query : toks(query);
+// substring hit. `idf` (from idfFor over a wider corpus) replaces the pack's own;
+// `stop` drops filler words from a string query (cross-pack searches).
+function rank(entries, query, { idf, stop = false } = {}) {
+  const words = Array.isArray(query) ? query : stop ? queryToks(query) : toks(query);
   const scores = scoreAll(entries, words, idf);
   const out = [];
   entries.forEach((e, i) => {
@@ -174,21 +222,57 @@ function packNames(p) {
   return out;
 }
 
+// The family a pack belongs to: pack.json `family` (one vendor's themes and
+// plugins, e.g. "athemes" for Sydney, Botiga, Merchant and aThemes Addons).
+// '' when the pack names none.
+function packFamily(p) {
+  const pack = readJson(path.join(path.dirname(p.root), 'pack.json')) || {};
+  return String(pack.family || '').trim();
+}
+
+// Where `name` (a token list) sits in the query tokens `q` as a run of words:
+// the start index and the run's length, which takes in an edition word right
+// after it ("botiga pro wishlist" → botiga pro). null when it is not there.
+function findRun(q, name) {
+  for (let i = 0; i + name.length <= q.length; i++) {
+    if (name.every((t, k) => q[i + k] === t)) {
+      const n = name.length + (/^(pro|lite)$/.test(q[i + name.length] || '') ? 1 : 0);
+      return { i, n };
+    }
+  }
+  return null;
+}
+
+// The query's words with the matched run taken out and filler dropped.
+function restOf(q, at) {
+  const rest = [...q.slice(0, at.i), ...q.slice(at.i + at.n)];
+  const kept = rest.filter((w) => !STOP.has(w));
+  return kept.length ? kept : rest;
+}
+
 // The pack a query names, if any: the longest pack name that appears in the
 // query as a run of words ("WP Mail SMTP dashboard" → wp-mail-smtp; the
-// product's own name beats a shorter one it contains). Returns
-// { key, name, rest } where rest is the query's other words, or null.
+// product's own name beats a shorter one it contains). With no pack name, a
+// family name ("athemes header builder") names every pack of that family.
+// Returns { key, name, rest } for a pack, { key: null, family, keys, name,
+// rest } for a family, where rest is the query's other words; or null.
 function packHint(query, packList = packs()) {
   const q = toks(query);
   let best = null;
   for (const p of packList) {
     for (const name of packNames(p)) {
-      for (let i = 0; i + name.length <= q.length; i++) {
-        if (name.every((t, k) => q[i + k] === t) && (!best || name.length > best.name.length)) {
-          best = { key: p.key, name, rest: [...q.slice(0, i), ...q.slice(i + name.length)] };
-        }
-      }
+      const at = findRun(q, name);
+      if (at && (!best || name.length > best.name.length)) best = { key: p.key, name, rest: restOf(q, at) };
     }
+  }
+  if (best) return best;
+  for (const p of packList) {
+    const family = packFamily(p);
+    const fam = toks(family);
+    const at = fam.length ? findRun(q, fam) : null;
+    if (!at) continue;
+    if (!best) best = { key: null, family, keys: [], name: fam, rest: restOf(q, at) };
+    if (best.family === family) best.keys.push(p.key);
   }
   return best;
 }
@@ -223,4 +307,4 @@ function missingSlugHint(slug, root) {
   return lines;
 }
 
-module.exports = { stem, toks, idfFor, scoreAll, rank, baseOf, substringHit, packs, loadIndex, packNames, packHint, packOf, packsWithSlug, missingSlugHint, WEIGHT };
+module.exports = { stem, toks, queryToks, idfFor, scoreAll, rank, baseOf, substringHit, packs, loadIndex, packNames, packFamily, packHint, packOf, packsWithSlug, missingSlugHint, WEIGHT };
