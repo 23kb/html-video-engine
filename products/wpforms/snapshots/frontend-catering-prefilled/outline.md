@@ -13,7 +13,7 @@ _Selectors validated against the live DOM — every one resolves._
 ### Inputs & controls
 - `#wpforms-1924-field_1` — input — "Sullie"
 - `#wpforms-1924-field_1-last` — input — "Baker"
-- `#wpforms-1924-field_2` — input — "sullie@sulliesbakery.com"
+- `#wpforms-1924-field_2` — input — "sullie@example.com"
 - `#wpforms-1924-field_3` — textarea
 - `#wpforms-1924-field_4` — input _(hidden)_
 - `#wpforms-1924-field_5` — input — "::1" _(hidden)_
@@ -50,6 +50,3 @@ _Fire by driving the real control (click/change/type); interactivity.js mutates 
 _These admin links navigate when hand-browsing /snapshots/ but their handler bails in-iframe (window.top !== window). In a video, swap snapshots instead._
 
 - click `a[href*="page=wpforms-builder"][href*="view=fields"]` → cross-snapshot nav → use `ifm.swap('builder-fields')`
-
-<!-- capture-gates:start -->
-<!-- capture-gates:end -->

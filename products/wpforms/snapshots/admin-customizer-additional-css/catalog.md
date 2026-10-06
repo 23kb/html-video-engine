@@ -1,11 +1,11 @@
 # Catalog — `admin-customizer-additional-css`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-customizer-additional-css/index.html`
+> Source: `products/wpforms/snapshots/admin-customizer-additional-css/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 660 selector entries across 1 sections.
 
-Provenance anchor form: `snapshots/admin-customizer-additional-css/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-customizer-additional-css/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

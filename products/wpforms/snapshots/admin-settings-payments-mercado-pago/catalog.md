@@ -1,62 +1,21 @@
 # Catalog — `admin-settings-payments-mercado-pago`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-settings-payments-mercado-pago/index.html`
+> Source: `products/wpforms/snapshots/admin-settings-payments-mercado-pago/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 138 selector entries across 2 sections.
+> 97 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-settings-payments-mercado-pago/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-settings-payments-mercado-pago/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_108 entries_
+_67 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="id--choices--wpforms-setting-currency-item-choice-1"></a>`id--choices--wpforms-setting-currency-item-choice-1` | `#choices--wpforms-setting-currency-item-choice-1` | div | Argentine Peso (ARS $) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-10"></a>`id--choices--wpforms-setting-currency-item-choice-10` | `#choices--wpforms-setting-currency-item-choice-10` | div | Czech Koruna (CZK Kč) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-11"></a>`id--choices--wpforms-setting-currency-item-choice-11` | `#choices--wpforms-setting-currency-item-choice-11` | div | Danish Krone (DKK kr.) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-12"></a>`id--choices--wpforms-setting-currency-item-choice-12` | `#choices--wpforms-setting-currency-item-choice-12` | div | Euro (EUR €) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-13"></a>`id--choices--wpforms-setting-currency-item-choice-13` | `#choices--wpforms-setting-currency-item-choice-13` | div | Hong Kong Dollar (HKD $) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-14"></a>`id--choices--wpforms-setting-currency-item-choice-14` | `#choices--wpforms-setting-currency-item-choice-14` | div | Hungarian Forint (HUF Ft) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-15"></a>`id--choices--wpforms-setting-currency-item-choice-15` | `#choices--wpforms-setting-currency-item-choice-15` | div | Indian Rupee (INR ₹) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-16"></a>`id--choices--wpforms-setting-currency-item-choice-16` | `#choices--wpforms-setting-currency-item-choice-16` | div | Israeli New Sheqel (ILS ₪) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-17"></a>`id--choices--wpforms-setting-currency-item-choice-17` | `#choices--wpforms-setting-currency-item-choice-17` | div | Japanese Yen (JPY ¥) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-18"></a>`id--choices--wpforms-setting-currency-item-choice-18` | `#choices--wpforms-setting-currency-item-choice-18` | div | Malaysian Ringgit (MYR RM) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-19"></a>`id--choices--wpforms-setting-currency-item-choice-19` | `#choices--wpforms-setting-currency-item-choice-19` | div | Mexican Peso (MXN $) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-2"></a>`id--choices--wpforms-setting-currency-item-choice-2` | `#choices--wpforms-setting-currency-item-choice-2` | div | Australian Dollar (AUD $) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-20"></a>`id--choices--wpforms-setting-currency-item-choice-20` | `#choices--wpforms-setting-currency-item-choice-20` | div | New Zealand Dollar (NZD $) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-21"></a>`id--choices--wpforms-setting-currency-item-choice-21` | `#choices--wpforms-setting-currency-item-choice-21` | div | Norwegian Krone (NOK Kr) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-22"></a>`id--choices--wpforms-setting-currency-item-choice-22` | `#choices--wpforms-setting-currency-item-choice-22` | div | Peruvian Sol (PEN S/) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-23"></a>`id--choices--wpforms-setting-currency-item-choice-23` | `#choices--wpforms-setting-currency-item-choice-23` | div | Philippine Peso (PHP Php) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-24"></a>`id--choices--wpforms-setting-currency-item-choice-24` | `#choices--wpforms-setting-currency-item-choice-24` | div | Polish Zloty (PLN zł) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-25"></a>`id--choices--wpforms-setting-currency-item-choice-25` | `#choices--wpforms-setting-currency-item-choice-25` | div | Pound Sterling (GBP £) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-26"></a>`id--choices--wpforms-setting-currency-item-choice-26` | `#choices--wpforms-setting-currency-item-choice-26` | div | Romanian Leu (RON lei) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-27"></a>`id--choices--wpforms-setting-currency-item-choice-27` | `#choices--wpforms-setting-currency-item-choice-27` | div | Russian Ruble (RUB pyб) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-28"></a>`id--choices--wpforms-setting-currency-item-choice-28` | `#choices--wpforms-setting-currency-item-choice-28` | div | Saudi Arabian Riyal (SAR ﷼) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-29"></a>`id--choices--wpforms-setting-currency-item-choice-29` | `#choices--wpforms-setting-currency-item-choice-29` | div | Serbian Dinar (RSD din. ) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-3"></a>`id--choices--wpforms-setting-currency-item-choice-3` | `#choices--wpforms-setting-currency-item-choice-3` | div | Brazilian Real (BRL R$) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-30"></a>`id--choices--wpforms-setting-currency-item-choice-30` | `#choices--wpforms-setting-currency-item-choice-30` | div | Singapore Dollar (SGD $) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-31"></a>`id--choices--wpforms-setting-currency-item-choice-31` | `#choices--wpforms-setting-currency-item-choice-31` | div | South African Rand (ZAR R) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-32"></a>`id--choices--wpforms-setting-currency-item-choice-32` | `#choices--wpforms-setting-currency-item-choice-32` | div | South Korean Won (KRW ₩) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-33"></a>`id--choices--wpforms-setting-currency-item-choice-33` | `#choices--wpforms-setting-currency-item-choice-33` | div | Sri Lankan Rupee (LKR Rs ) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-34"></a>`id--choices--wpforms-setting-currency-item-choice-34` | `#choices--wpforms-setting-currency-item-choice-34` | div | Swedish Krona (SEK Kr) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-35"></a>`id--choices--wpforms-setting-currency-item-choice-35` | `#choices--wpforms-setting-currency-item-choice-35` | div | Swiss Franc (CHF CHF) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-36"></a>`id--choices--wpforms-setting-currency-item-choice-36` | `#choices--wpforms-setting-currency-item-choice-36` | div | Taiwan New Dollar (TWD $) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-37"></a>`id--choices--wpforms-setting-currency-item-choice-37` | `#choices--wpforms-setting-currency-item-choice-37` | div | Thai Baht (THB ฿) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-38"></a>`id--choices--wpforms-setting-currency-item-choice-38` | `#choices--wpforms-setting-currency-item-choice-38` | div | Turkish Lira (TRY ₺) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-39"></a>`id--choices--wpforms-setting-currency-item-choice-39` | `#choices--wpforms-setting-currency-item-choice-39` | div | United Arab Emirates Dirham (AED د.إ) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-4"></a>`id--choices--wpforms-setting-currency-item-choice-4` | `#choices--wpforms-setting-currency-item-choice-4` | div | Bulgarian Lev (BGN лв) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-40"></a>`id--choices--wpforms-setting-currency-item-choice-40` | `#choices--wpforms-setting-currency-item-choice-40` | div | Uruguayan Peso (UYU $U) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-41"></a>`id--choices--wpforms-setting-currency-item-choice-41` | `#choices--wpforms-setting-currency-item-choice-41` | div | U.S. Dollar (USD $) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-5"></a>`id--choices--wpforms-setting-currency-item-choice-5` | `#choices--wpforms-setting-currency-item-choice-5` | div | Canadian Dollar (CAD $) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-6"></a>`id--choices--wpforms-setting-currency-item-choice-6` | `#choices--wpforms-setting-currency-item-choice-6` | div | Central African CFA Franc (XAF F.CFA ) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-7"></a>`id--choices--wpforms-setting-currency-item-choice-7` | `#choices--wpforms-setting-currency-item-choice-7` | div | Chilean Peso (CLP $) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-8"></a>`id--choices--wpforms-setting-currency-item-choice-8` | `#choices--wpforms-setting-currency-item-choice-8` | div | Colombian Peso (COP $) | 1 |
-| <a id="id--choices--wpforms-setting-currency-item-choice-9"></a>`id--choices--wpforms-setting-currency-item-choice-9` | `#choices--wpforms-setting-currency-item-choice-9` | div | Costa Rican Colón (CRC ₡) | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--dark-mode-custom-link"></a>`id--dark-mode-custom-link` | `#dark-mode-custom-link` | link |  | 1 |
@@ -94,7 +53,7 @@ _108 entries_
 | <a id="id--wpforms-setting-paypal-commerce-sandbox-mode"></a>`id--wpforms-setting-paypal-commerce-sandbox-mode` | `#wpforms-setting-paypal-commerce-sandbox-mode` | input | Off Prevent PayPal Commerce from processing live transactio… | 1 |
 | <a id="id--wpforms-setting-row-currency"></a>`id--wpforms-setting-row-currency` | `#wpforms-setting-row-currency` | div | Currency | 1 |
 | <a id="id--wpforms-setting-row-mercado_pago-connection-status-live"></a>`id--wpforms-setting-row-mercado_pago-connection-status-live` | `#wpforms-setting-row-mercado_pago-connection-status-live` | div | Connection Status Not connected to Mercado Pago. | 1 |
-| <a id="id--wpforms-setting-row-mercado_pago-connection-status-test"></a>`id--wpforms-setting-row-mercado_pago-connection-status-test` | `#wpforms-setting-row-mercado_pago-connection-status-test` | div | Connection Status Connected to Mercado Pago as bountyhunt93… | 1 |
+| <a id="id--wpforms-setting-row-mercado_pago-connection-status-test"></a>`id--wpforms-setting-row-mercado_pago-connection-status-test` | `#wpforms-setting-row-mercado_pago-connection-status-test` | div | Connection Status Connected to Mercado Pago as sullie@examp… | 1 |
 | <a id="id--wpforms-setting-row-mercado_pago-heading"></a>`id--wpforms-setting-row-mercado_pago-heading` | `#wpforms-setting-row-mercado_pago-heading` | div | Mercado Pago Easily collect card payments with Mercado Pago… | 1 |
 | <a id="id--wpforms-setting-row-mercado_pago-live-access-token"></a>`id--wpforms-setting-row-mercado_pago-live-access-token` | `#wpforms-setting-row-mercado_pago-live-access-token` | div | Production Access Token | 1 |
 | <a id="id--wpforms-setting-row-mercado_pago-live-public-key"></a>`id--wpforms-setting-row-mercado_pago-live-public-key` | `#wpforms-setting-row-mercado_pago-live-public-key` | div | Production Public Key The pu | 1 |

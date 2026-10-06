@@ -1,6 +1,6 @@
 {
- "generatedAt": "2026-10-01T09:21:44.873Z",
- "count": 217,
+ "generatedAt": "2026-10-06T14:24:15.230Z",
+ "count": 343,
  "snapshots": [
   {
    "slug": "admin-addons",
@@ -55,6 +55,85 @@
     "locations"
    ],
    "sourcePath": "/wp-admin/admin.php?page=wpforms-dashboard"
+  },
+  {
+   "slug": "admin-email-preview--classic",
+   "category": "admin/page",
+   "shows": "Notification email preview, Classic template, with WPForms' placeholder entry (Name, Email, Comment or Message).",
+   "topics": [
+    "email",
+    "notifications",
+    "email template",
+    "Classic",
+    "Choosing an Email Template",
+    "Previewing Your Email Template"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=email"
+  },
+  {
+   "slug": "admin-email-preview--compact",
+   "category": "admin/page",
+   "shows": "Notification email preview, Compact template.",
+   "topics": [
+    "email",
+    "notifications",
+    "email template",
+    "Compact",
+    "Previewing Your Email Template"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=email"
+  },
+  {
+   "slug": "admin-email-preview--elegant",
+   "category": "admin/page",
+   "shows": "Notification email preview, Elegant template (Pro).",
+   "topics": [
+    "email",
+    "notifications",
+    "email template",
+    "Elegant",
+    "Previewing Your Email Template"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=email"
+  },
+  {
+   "slug": "admin-email-preview--modern",
+   "category": "admin/page",
+   "shows": "Notification email preview, Modern template (Pro).",
+   "topics": [
+    "email",
+    "notifications",
+    "email template",
+    "Modern",
+    "Previewing Your Email Template"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=email"
+  },
+  {
+   "slug": "admin-email-preview--plain",
+   "category": "admin/page",
+   "shows": "Notification email preview, Plain Text template.",
+   "topics": [
+    "email",
+    "notifications",
+    "email template",
+    "Plain Text",
+    "Previewing Your Email Template"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=email"
+  },
+  {
+   "slug": "admin-email-preview--tech",
+   "category": "admin/page",
+   "shows": "Notification email preview, Tech template (Pro).",
+   "topics": [
+    "email",
+    "notifications",
+    "email template",
+    "Tech",
+    "Previewing Your Email Template"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=email"
   },
   {
    "slug": "admin-entries-406-all",
@@ -127,6 +206,43 @@
    "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=list&form_id=1725"
   },
   {
+   "slug": "admin-entries-list-1725--starred",
+   "category": "admin/state",
+   "shows": "Entries list for the catering form, Starred view: 5 starred entries.",
+   "topics": [
+    "entries",
+    "starred entries",
+    "Form Entries Page"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=list&form_id=1725&type=starred"
+  },
+  {
+   "slug": "admin-entries-list-1725--trash",
+   "category": "admin/state",
+   "shows": "Entries list for the catering form, Trash view: 3 trashed entries with Restore / Delete Permanently, Empty Trash button, bulk Restore / Delete.",
+   "topics": [
+    "entries",
+    "trash",
+    "Viewing Your Trashed Entries",
+    "Restoring Trashed Form Entries",
+    "Permanently Deleting Form Entries",
+    "Trashing Multiple Entries"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=list&form_id=1725&status=trash"
+  },
+  {
+   "slug": "admin-entries-list-1725--unread",
+   "category": "admin/state",
+   "shows": "Entries list for the catering form, Unread view: unread entries with the unread dot.",
+   "topics": [
+    "entries",
+    "unread entries",
+    "Form Entries Page",
+    "Mark All Read"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=list&form_id=1725&type=unread"
+  },
+  {
    "slug": "admin-entries-list-191",
    "category": "admin/page",
    "shows": "Entries list for form 191 (Job Application) on the staged site, 30 rows, columns Name / Email / third field / Date / Actions. One of four entries pages captured for the 'open one, then the next' beat of videos/wpforms-dashboard-one-screen. Fixture emails visible in the Email column.",
@@ -177,7 +293,7 @@
   {
    "slug": "admin-entries-spam",
    "category": "admin/page",
-   "shows": "Entries list for form 406 (Sullie's Bakery Contact Form) — Spam view, 32 spam entries; first row Sarah Mitchell (sarah@brightleaf.co, \"Do you offer bulk pricing?\") with View | Not Spam | Trash row actions. Bulk actions include Mark as Spam / Not Spam. For anti-spam and \"review your spam folder\" beats. Sibling: admin-entries-406-all.",
+   "shows": "Entries list for form 406 (Sullie's Bakery Contact Form) — Spam view, 32 spam entries; first row Sarah Mitchell (sarah@example.com, \"Do you offer bulk pricing?\") with View | Not Spam | Trash row actions. Bulk actions include Mark as Spam / Not Spam. For anti-spam and \"review your spam folder\" beats. Sibling: admin-entries-406-all.",
    "topics": [
     "entries",
     "spam",
@@ -202,6 +318,20 @@
    "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=details&entry_id=5"
   },
   {
+   "slug": "admin-entry-detail--pdf",
+   "category": "admin/state",
+   "shows": "Entry detail for Emma Murphy's catering order (Sullie's Bakery Catering Order form) with the PDFs row: Catering-Order-Emma-Murphy.pdf, Invoice-SB-7829.pdf and Catering-Agreement-Emma-Murphy.pdf (protected download link).",
+   "topics": [
+    "pdf",
+    "viewing generated pdfs",
+    "entries",
+    "entry details",
+    "download pdf",
+    "pdf link"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=details&entry_id=7829"
+  },
+  {
    "slug": "admin-entry-detail-smarttags",
    "category": "admin/page",
    "shows": "Entry Details for the catering entry — the three hidden rows the visitor never saw: Referring Page, Visitor IP, Reference ID",
@@ -213,6 +343,29 @@
     "payoff"
    ],
    "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=details&entry_id=7529"
+  },
+  {
+   "slug": "admin-entry-edit",
+   "category": "admin/page",
+   "shows": "Edit Entry for a catering order (form 1725): editable Name, Email, Phone, Date / Time, Select, Number, Paragraph; Back to Entry; Update.",
+   "topics": [
+    "entries",
+    "edit entry",
+    "Editing Form Entries"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=edit&entry_id=7829"
+  },
+  {
+   "slug": "admin-entry-print",
+   "category": "admin/page",
+   "shows": "Print preview of a catering entry with the Print button and the cog settings menu (Field Description, Empty Fields, Unselected Choices, HTML/Content fields, Section Dividers, Page Breaks, Maintain Layout, Compact View, Entry Date, Entry ID, Notes).",
+   "topics": [
+    "entries",
+    "print entry",
+    "Printing Individual Entries",
+    "Customizing Printing Options"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-entries&view=print&entry_id=7829"
   },
   {
    "slug": "admin-forms-overview",
@@ -321,11 +474,13 @@
   {
    "slug": "admin-privacy-compliance",
    "category": "admin/page",
-   "shows": "Privacy Compliance page",
+   "shows": "Privacy Compliance page (WPConsent): what the cookie-consent plugin adds and the Install button (not clicked).",
    "topics": [
     "privacy",
     "gdpr",
-    "compliance"
+    "compliance",
+    "cookie consent",
+    "wpconsent"
    ],
    "sourcePath": "/wp-admin/admin.php?page=wpforms-privacy-compliance"
   },
@@ -482,6 +637,19 @@
    "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=ai-mcp"
   },
   {
+   "slug": "admin-tools-code-snippets",
+   "category": "admin/page",
+   "shows": "WPForms → Tools → Code Snippets: header, search box, WPForms snippet cards from the WPCode library with Install Snippet / Edit Snippet.",
+   "topics": [
+    "tools",
+    "code snippets",
+    "wpcode",
+    "Adding WPForms Code Snippets",
+    "Editing a Code Snippet"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=wpcode"
+  },
+  {
    "slug": "admin-tools-entry-automation",
    "category": "admin/page",
    "shows": "Tools → Entry Automation tab — task list with one Active task for form 1725 (Sullie's Bakery Catering Order): All (1) / Active (1) / Inactive (0) / Failed (0), Search Tasks, bulk Activate / Deactivate, plus the \"Heads Up About Scheduling\" WP-Cron notice. Entry Automation addon; the per-form task editor is the builder-settings-entry_automation-* set.",
@@ -501,9 +669,25 @@
    "shows": "Tools → Export forms/entries",
    "topics": [
     "tools",
-    "export"
+    "export",
+    "export entries",
+    "export fields"
    ],
    "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=export"
+  },
+  {
+   "slug": "admin-tools-export-templates",
+   "category": "admin/page",
+   "shows": "Tools → Export → Export a Form Template: pick a form to get the PHP code that registers it as a custom template.",
+   "topics": [
+    "tools",
+    "export",
+    "form template",
+    "export a form template",
+    "custom template",
+    "generate code"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=export&tab=templates"
   },
   {
    "slug": "admin-tools-import",
@@ -535,7 +719,9 @@
    "topics": [
     "tools",
     "logs",
-    "debug"
+    "debug",
+    "log record",
+    "view log"
    ],
    "sourcePath": "/wp-admin/admin.php?page=wpforms-tools&view=logs"
   },
@@ -603,6 +789,22 @@
    "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=406"
   },
   {
+   "slug": "builder-calculation-editor-active",
+   "category": "builder/state",
+   "shows": "Number field on the Custom Cookie Order form, Advanced tab: Enable Calculation on and the formula editor (CodeMirror) with $F2 + $F3, Insert Field and operator buttons, Validate Formula, Cheatsheet and Generate Formula.",
+   "topics": [
+    "calculations",
+    "calculations addon",
+    "enabling calculation mode",
+    "validating your formula",
+    "accessing the calculations addon cheatsheet",
+    "formula builder",
+    "using field variables",
+    "calculation"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=40&snap=8"
+  },
+  {
    "slug": "builder-conference-registration",
    "category": "builder/panel",
    "shows": "Form builder, Fields panel, form 1932 Conference Registration on WPForms 2.0.2 — seven real fields (Name*, Email*, Company, Ticket Type* modern dropdown Standard/Student/Speaker, Dietary Requirements, Accessibility Needs, How did you hear about us?), no field active, submit Register. Created through the real wpforms/create-form ability for a WPVibe ad",
@@ -653,7 +855,38 @@
     "address",
     "pro"
    ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=401&view=fields"
+  },
+  {
+   "slug": "builder-field-options-camera",
+   "category": "builder/field-options",
+   "shows": "Camera field selected: Format Photo/Video, Aspect Ratio, Time Limit (Video), Max File Size; Advanced Style Button/Link, Media Library, File Access Restrictions; Smart Logic.",
+   "topics": [
+    "fields",
+    "camera",
+    "Choosing the Capture Format",
+    "Setting the Maximum File Size",
+    "Changing the Camera Button Style",
+    "Storing Camera Uploads",
+    "Restricting File Access",
+    "field options"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=2633&snap=317"
+  },
+  {
+   "slug": "builder-field-options-captcha",
+   "category": "builder/field-options",
+   "shows": "Custom Captcha field selected (Question and Answer, 2 bakery questions): General, Advanced and Smart Logic tabs all in the DOM.",
+   "topics": [
+    "fields",
+    "custom captcha",
+    "Adding a Custom Captcha Field",
+    "Math Captcha",
+    "Custom Question and Answer",
+    "field options",
+    "smart logic"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=2633&snap=314"
   },
   {
    "slug": "builder-field-options-checkbox",
@@ -723,7 +956,7 @@
     "fields",
     "divider"
    ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=401&view=fields"
   },
   {
    "slug": "builder-field-options-email",
@@ -733,7 +966,21 @@
     "fields",
     "email"
    ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=401&view=fields"
+  },
+  {
+   "slug": "builder-field-options-entry-preview",
+   "category": "builder/field-options",
+   "shows": "Entry Preview field selected: Display Preview Notice + Preview Notice (General), Style Basic / Compact / Table / Table Compact (Advanced). No Smart Logic tab.",
+   "topics": [
+    "fields",
+    "entry preview",
+    "Customizing Your Entry Preview Field",
+    "Choosing an Entry Preview Style",
+    "multi-page form",
+    "field options"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=2633&snap=316"
   },
   {
    "slug": "builder-field-options-file-upload",
@@ -744,7 +991,7 @@
     "upload",
     "pro"
    ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=401&view=fields"
   },
   {
    "slug": "builder-field-options-hidden",
@@ -774,7 +1021,7 @@
     "fields",
     "layout"
    ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=401&view=fields"
   },
   {
    "slug": "builder-field-options-likert_scale",
@@ -786,6 +1033,23 @@
     "survey"
    ],
    "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
+  },
+  {
+   "slug": "builder-field-options-map",
+   "category": "builder/field-options",
+   "shows": "Map field selected with 2 bakery locations: Locations rows (marker icon, colour, size), Find Nearby, Show List, Allow Location Selection, Zoom; Advanced presentation / interactive settings; Smart Logic.",
+   "topics": [
+    "fields",
+    "map",
+    "geolocation",
+    "Configuring Map Locations",
+    "Customizing Map Markers",
+    "Setting Zoom Level",
+    "Configuring Advanced Map Settings",
+    "Enabling Location Selection",
+    "field options"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=2633&snap=315"
   },
   {
    "slug": "builder-field-options-name",
@@ -851,6 +1115,20 @@
    "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
   },
   {
+   "slug": "builder-field-options-payment-checkbox",
+   "category": "builder/field-options",
+   "shows": "Checkbox Items 'Add-ons' selected: items with prices, image / icon choices; Advanced Choice Layout + Choice Limit; Smart Logic.",
+   "topics": [
+    "fields",
+    "payment",
+    "checkbox items",
+    "Checkbox Items",
+    "choice limit",
+    "field options"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=2573&snap=320"
+  },
+  {
    "slug": "builder-field-options-payment-fields",
    "category": "builder/field-options",
    "shows": "Combined payment fields options — single, checkbox, multiple, select, coupon, total + Stripe + PayPal Commerce canvases preserved",
@@ -862,6 +1140,63 @@
    "sourcePath": "/wp-admin/admin.php?page=wpforms-builder"
   },
   {
+   "slug": "builder-field-options-payment-multiple",
+   "category": "builder/field-options",
+   "shows": "Multiple Items 'Box size' selected: items with prices, Show Price After Item Labels, Use Image Choices, Use Icon Choices; Advanced Choice Layout; Smart Logic.",
+   "topics": [
+    "fields",
+    "payment",
+    "multiple items",
+    "Multiple Items",
+    "image choices",
+    "icon choices",
+    "field options"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=2573&snap=319"
+  },
+  {
+   "slug": "builder-field-options-payment-select",
+   "category": "builder/field-options",
+   "shows": "Dropdown Items 'Delivery window' selected: items with prices, Show Price After Item Labels, Enable Quantity; Advanced Style Classic/Modern; Smart Logic.",
+   "topics": [
+    "fields",
+    "payment",
+    "dropdown items",
+    "Dropdown Items",
+    "quantity",
+    "field options"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=2573&snap=321"
+  },
+  {
+   "slug": "builder-field-options-payment-single",
+   "category": "builder/field-options",
+   "shows": "Single Item 'Catering deposit' $50 selected: Item Price, Item Type (Single Item / User Defined / Hidden), Enable Quantity; Advanced Price Display; Smart Logic.",
+   "topics": [
+    "fields",
+    "payment",
+    "single item",
+    "Single Item",
+    "quantity",
+    "field options"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=2573&snap=318"
+  },
+  {
+   "slug": "builder-field-options-payment-total",
+   "category": "builder/field-options",
+   "shows": "Total field selected with Enable Summary on: example order summary on the canvas, info alert; Advanced Field Size; Smart Logic.",
+   "topics": [
+    "fields",
+    "payment",
+    "total",
+    "Total",
+    "order summary",
+    "field options"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=2573&snap=322"
+  },
+  {
    "slug": "builder-field-options-phone",
    "category": "builder/field-options",
    "shows": "Field Options — Phone (Pro)",
@@ -870,7 +1205,7 @@
     "phone",
     "pro"
    ],
-   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=401&view=fields"
   },
   {
    "slug": "builder-field-options-radio",
@@ -1054,6 +1389,33 @@
    "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=fields"
   },
   {
+   "slug": "builder-fields-lead_forms",
+   "category": "builder/state",
+   "shows": "Lead Forms form in the Fields panel: the multi-step canvas with page breaks, the first page break selected and its options.",
+   "topics": [
+    "lead forms",
+    "page break",
+    "multi-step form",
+    "Lead Forms addon"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=2579&snap=233"
+  },
+  {
+   "slug": "builder-fields-quiz",
+   "category": "builder/state",
+   "shows": "Form builder Fields panel, \"Know Your Bakes\": a graded Multiple Choice question active, Include in Quiz Scoring on, the correct answer marked, Answer Explanation filled.",
+   "topics": [
+    "quiz",
+    "adding questions for graded quiz",
+    "marking correct answers for graded quizzes",
+    "include in quiz scoring",
+    "correct answer",
+    "answer explanation",
+    "converting an existing form into a quiz"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=fields&form_id=2576&snap=204"
+  },
+  {
    "slug": "builder-fields-ranking",
    "category": "builder/panel",
    "shows": "Builder → Fields for form 1779 (Bakery Favorites Survey) with the Add Fields panel open (Standard / Fancy / Payment field lists) and the Ranking field already on the canvas with its three choices plus an Email Address field and Submit Survey button. The \"drag the Ranking field onto the form\" start state; select the field to reach builder-field-options-ranking.",
@@ -1139,32 +1501,63 @@
   {
    "slug": "builder-providers-activecampaign",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — ActiveCampaign provider selected, Add New Connection visible"
+   "shows": "Form builder Marketing panel — ActiveCampaign provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-activecampaign-connection",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — ActiveCampaign with a connection block mounted + cascading fields"
+   "shows": "Form builder Marketing panel — ActiveCampaign with a connection block mounted + cascading fields",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-aweber_v2",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — AWeber provider selected, Add New Connection visible"
+   "shows": "Form builder Marketing panel — AWeber provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-aweber_v2-connection",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — AWeber with a connection block mounted + cascading fields"
+   "shows": "Form builder Marketing panel — AWeber with a connection block mounted + cascading fields",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
+  },
+  {
+   "slug": "builder-providers-campaign-monitor",
+   "category": "builder/panel",
+   "shows": "Builder → Marketing → Campaign Monitor: 'Add New Connection' and the default screen (no account).",
+   "topics": [
+    "marketing",
+    "campaign monitor",
+    "Adding Campaign Monitor Integration to Your Forms",
+    "email marketing"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2571&snap=304"
+  },
+  {
+   "slug": "builder-providers-campaign-monitor-connection",
+   "category": "builder/panel",
+   "shows": "Campaign Monitor connection block with the inline Add New Account form: API Key, Client ID, Account Nickname, Connect (no account on the site).",
+   "topics": [
+    "marketing",
+    "campaign monitor",
+    "Connecting Your Campaign Monitor Account to WPForms",
+    "api key",
+    "client id"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2571&snap=305"
   },
   {
    "slug": "builder-providers-constant-contact-v3",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — Constant Contact provider selected, Add New Connection visible"
+   "shows": "Form builder Marketing panel — Constant Contact provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-constant-contact-v3-connection",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — Constant Contact with a connection block mounted + cascading fields"
+   "shows": "Form builder Marketing panel — Constant Contact with a connection block mounted + cascading fields",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-convertkit",
@@ -1181,27 +1574,32 @@
   {
    "slug": "builder-providers-convertkit-connection",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — Kit (ConvertKit) with a connection block mounted + cascading fields"
+   "shows": "Form builder Marketing panel — Kit (ConvertKit) with a connection block mounted + cascading fields",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-drip",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — Drip provider selected, Add New Connection visible"
+   "shows": "Form builder Marketing panel — Drip provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-drip-connection",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — Drip with a connection block mounted + cascading fields"
+   "shows": "Form builder Marketing panel — Drip with a connection block mounted + cascading fields",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-hubspot",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — HubSpot provider selected, Add New Connection visible"
+   "shows": "Form builder Marketing panel — HubSpot provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-hubspot-connection",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — HubSpot with a connection block mounted + cascading fields"
+   "shows": "Form builder Marketing panel — HubSpot with a connection block mounted + cascading fields",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-klaviyo",
@@ -1217,57 +1615,232 @@
   {
    "slug": "builder-providers-klaviyo-connection",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — Klaviyo with a connection block mounted + cascading fields"
+   "shows": "Form builder Marketing panel — Klaviyo with a connection block mounted + cascading fields",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-mailchimpv3",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — Mailchimp v3 provider selected, Add New Connection visible"
+   "shows": "Form builder Marketing panel — Mailchimp v3 provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-mailchimpv3-connection",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — Mailchimp v3 with a connection block mounted + cascading fields"
+   "shows": "Form builder Marketing panel — Mailchimp v3 with a connection block mounted + cascading fields",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
+  },
+  {
+   "slug": "builder-providers-mailpoet",
+   "category": "builder/panel",
+   "shows": "Builder → Marketing → MailPoet: 'MailPoet Plugin Required' screen with Learn More and an 'Install Now' button (MailPoet plugin not installed).",
+   "topics": [
+    "marketing",
+    "mailpoet",
+    "Installing and Setting Up the MailPoet Plugin",
+    "plugin required"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2571&snap=306"
+  },
+  {
+   "slug": "builder-providers-make",
+   "category": "builder/panel",
+   "shows": "Builder → Marketing → Make: education notice, 'Enable Make Integration' off. The default block is in the DOM, hidden; the toggle reveals it in-page.",
+   "topics": [
+    "marketing",
+    "make",
+    "integromat",
+    "Connecting Make to WPForms",
+    "webhook",
+    "automation"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2633&snap=310"
+  },
+  {
+   "slug": "builder-providers-make-connection",
+   "category": "builder/panel",
+   "shows": "Make enabled: block 'Catering leads to Make' with Webhook URL, Field Mapping (name, email, interests ↔ form fields), Add Custom Value, conditional logic.",
+   "topics": [
+    "marketing",
+    "make",
+    "Connecting Make to WPForms",
+    "Field Mapping",
+    "Setting Up Conditional Logic (Optional)"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2571&snap=311"
   },
   {
    "slug": "builder-providers-n8n",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — n8n provider selected, settings-block-default shown"
+   "shows": "Form builder Marketing panel — n8n provider selected, settings-block-default shown",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-n8n-connection",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — n8n settings block, conditional logic ready"
+   "shows": "Form builder Marketing panel — n8n settings block, conditional logic ready",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-pipedrive",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — Pipedrive provider selected, Add New Connection visible"
+   "shows": "Form builder Marketing panel — Pipedrive provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-pipedrive-connection",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — Pipedrive with a connection block mounted + cascading fields"
+   "shows": "Form builder Marketing panel — Pipedrive with a connection block mounted + cascading fields",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
+  },
+  {
+   "slug": "builder-providers-salesforce",
+   "category": "builder/panel",
+   "shows": "Builder → Marketing → Salesforce with no account: 'Add New Account' button and the 'Get the most out of WPForms' screen. Parked: the New Salesforce Account modal (Consumer Key, Consumer Secret, Callback URL with copy button).",
+   "topics": [
+    "marketing",
+    "salesforce",
+    "Connecting Salesforce to WPForms",
+    "Callback URL",
+    "Adding Salesforce Integration to a Form",
+    "crm"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2571&snap=301"
+  },
+  {
+   "slug": "builder-providers-salesforce-connection",
+   "category": "builder/providers",
+   "shows": "TODO-describe: builder providers salesforce connection",
+   "topics": [
+    "builder",
+    "providers",
+    "salesforce",
+    "connection"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2680&snap=804&snap_fx=1"
+  },
+  {
+   "slug": "builder-providers-sendgrid-connection",
+   "category": "builder/providers",
+   "shows": "TODO-describe: builder providers sendgrid connection",
+   "topics": [
+    "builder",
+    "providers",
+    "sendgrid",
+    "connection"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2680&snap=814&snap_fx=1"
+  },
+  {
+   "slug": "builder-providers-sendinblue",
+   "category": "builder/panel",
+   "shows": "Builder → Marketing → Brevo with no account: 'Add New Account' and the default screen. Parked: New Brevo Account modal (API Key *, Account Nickname).",
+   "topics": [
+    "marketing",
+    "brevo",
+    "sendinblue",
+    "Adding Your API Key to WPForms",
+    "email marketing"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2571&snap=303"
+  },
+  {
+   "slug": "builder-providers-sendinblue-connection",
+   "category": "builder/panel",
+   "shows": "Brevo connection mounted: Account (dummy) selected, Action select (Subscribe, Unsubscribe, Delete, Track Event), conditional logic toggle. Lists and field mapping not shown (need Brevo data).",
+   "topics": [
+    "marketing",
+    "brevo",
+    "sendinblue",
+    "Adding a Brevo Integration to Your Forms"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2571&snap=313"
   },
   {
    "slug": "builder-providers-slack",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — Slack provider selected, Add New Connection visible"
+   "shows": "Form builder Marketing panel — Slack provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-slack-connection",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — Slack with a connection block mounted + cascading fields"
+   "shows": "Form builder Marketing panel — Slack with a connection block mounted + cascading fields",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-twilio",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — Twilio provider selected, Add New Connection visible"
+   "shows": "Form builder Marketing panel — Twilio provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
   },
   {
    "slug": "builder-providers-twilio-connection",
    "category": "builder/panel",
-   "shows": "Form builder Marketing panel — Twilio with a connection block mounted + cascading fields"
+   "shows": "Form builder Marketing panel — Twilio with a connection block mounted + cascading fields",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=55"
+  },
+  {
+   "slug": "builder-providers-uncanny-automator",
+   "category": "builder/panel",
+   "shows": "Builder → Marketing → Uncanny Automator (plugin not installed): 'Put Your WordPress Site on Autopilot', Learn More, 'Install Now'.",
+   "topics": [
+    "marketing",
+    "uncanny automator",
+    "Installing Uncanny Automator",
+    "automation"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2571&snap=307"
+  },
+  {
+   "slug": "builder-providers-zapier",
+   "category": "builder/panel",
+   "shows": "Builder → Marketing → Zapier: description, 'Get started connecting WPForms with Zapier', Your WPForms Zapier API key (dummy), website URL, Include Abandoned Entries toggle, Popular ways to use WPForms + Zapier.",
+   "topics": [
+    "marketing",
+    "zapier",
+    "Installing the Zapier Addon",
+    "api key",
+    "automation"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2573&snap=308"
+  },
+  {
+   "slug": "builder-providers-zapier-connection",
+   "category": "builder/panel",
+   "shows": "Builder → Marketing → Zapier with one connected Zap 'New catering lead → Google Sheets': Date Connected, Live Yes.",
+   "topics": [
+    "marketing",
+    "zapier",
+    "zap",
+    "Creating a Zap in Zapier"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2571&snap=309"
+  },
+  {
+   "slug": "builder-providers-zoho-crm",
+   "category": "builder/panel",
+   "shows": "Builder → Marketing → Zoho CRM with no account: 'Add New Account' (OAuth) and the default screen.",
+   "topics": [
+    "marketing",
+    "zoho crm",
+    "Connecting WPForms to Your Zoho Account",
+    "crm"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2571&snap=302"
+  },
+  {
+   "slug": "builder-providers-zoho-crm-connection",
+   "category": "builder/panel",
+   "shows": "Zoho CRM connection 'Catering leads to Zoho' mounted: Account (dummy Sullie's Bakery account) selected, Action select enabled (Create/Update Contact, Delete Contact, Create/Update Lead, Delete Lead), conditional logic toggle. Field mapping not shown (needs Zoho data).",
+   "topics": [
+    "marketing",
+    "zoho crm",
+    "Adding a Zoho CRM Connection to Your Form",
+    "Setting Up Connection Actions",
+    "Enabling Conditional Logic (Optional)"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=providers&form_id=2571&snap=312"
   },
   {
    "slug": "builder-revisions",
@@ -1282,12 +1855,14 @@
   {
    "slug": "builder-settings-airtable",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Airtable provider selected, Add New Connection visible"
+   "shows": "Form builder Settings → Airtable provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2680&section=airtable&snap=709&snap_fx=1"
   },
   {
    "slug": "builder-settings-airtable-connection",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Airtable connection mounted, cascade fields hidden"
+   "shows": "Form builder Settings → Airtable connection mounted, cascade fields hidden",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2680&section=airtable&snap=710&snap_fx=1"
   },
   {
    "slug": "builder-settings-anti_spam",
@@ -1309,6 +1884,22 @@
     "thank-you"
    ],
    "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}"
+  },
+  {
+   "slug": "builder-settings-confirmation--pdf-smarttags",
+   "category": "builder/state",
+   "shows": "Confirmation message editor with the Smart Tags menu open: PDF URL and PDF Link for Catering Order Summary, Bakery Invoice and Catering Agreement, then PDF Links, among the form's other tags.",
+   "topics": [
+    "pdf",
+    "letting users download a pdf from the confirmation message",
+    "working with multiple pdfs",
+    "pdf link smart tag",
+    "pdf url smart tag",
+    "pdf links smart tag",
+    "confirmations",
+    "smart tags"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&section=confirmation&snap=6"
   },
   {
    "slug": "builder-settings-confirmation-dropdown-closed",
@@ -1335,22 +1926,26 @@
   {
    "slug": "builder-settings-conversational_forms",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Conversational Forms panel"
+   "shows": "Form builder Settings → Conversational Forms panel",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55"
   },
   {
    "slug": "builder-settings-dropbox",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Dropbox provider selected, Add New Connection visible"
+   "shows": "Form builder Settings → Dropbox provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2680&section=dropbox&snap=701&snap_fx=1"
   },
   {
    "slug": "builder-settings-dropbox-connection",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Dropbox connection mounted, cascade fields hidden"
+   "shows": "Form builder Settings → Dropbox connection mounted, cascade fields hidden",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2680&section=dropbox&snap=702&snap_fx=1"
   },
   {
    "slug": "builder-settings-entry_automation",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Entry Automation panel"
+   "shows": "Form builder Settings → Entry Automation panel",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&section=entry_automation&snap=501&snap_fx=1"
   },
   {
    "slug": "builder-settings-entry_automation-export-email",
@@ -1426,9 +2021,63 @@
    "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725"
   },
   {
+   "slug": "builder-settings-form_abandonment",
+   "category": "builder/settings",
+   "shows": "Form builder Settings → Form Abandonment on the catering form, off.",
+   "topics": [
+    "form abandonment",
+    "form abandonment addon",
+    "enabling form abandonment features in wpforms",
+    "enable form abandonment lead capture"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&snap=215"
+  },
+  {
+   "slug": "builder-settings-form_abandonment--on",
+   "category": "builder/state",
+   "shows": "Form builder Settings → Form Abandonment on the seeded form: lead capture on, \"Always save abandoned entries\", Prevent duplicate abandon entries on.",
+   "topics": [
+    "form abandonment",
+    "configuring form abandonment options",
+    "always save abandoned entries",
+    "prevent duplicate abandon entries"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2623&snap=216"
+  },
+  {
    "slug": "builder-settings-form_locker",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Form Locker panel"
+   "shows": "Form builder Settings → Form Locker panel",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55"
+  },
+  {
+   "slug": "builder-settings-form_pages",
+   "category": "builder/settings",
+   "shows": "Form builder Settings → Form Pages on the catering form, off: Enable Form Page Mode toggle.",
+   "topics": [
+    "form pages",
+    "form pages addon",
+    "setting up form pages",
+    "enable form page mode"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&snap=211"
+  },
+  {
+   "slug": "builder-settings-form_pages--on",
+   "category": "builder/state",
+   "shows": "Form builder Settings → Form Pages on the seeded form page: title, message, permalink with View, header logo, colour scheme, Modern style, footer text, Hide WPForms Branding.",
+   "topics": [
+    "form pages",
+    "preview form page",
+    "form page title and message",
+    "permalink",
+    "header logo",
+    "footer text",
+    "hide wpforms branding",
+    "color scheme",
+    "style"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2594&snap=212"
   },
   {
    "slug": "builder-settings-general",
@@ -1443,34 +2092,82 @@
    "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=settings"
   },
   {
+   "slug": "builder-settings-general--offline",
+   "category": "builder/state",
+   "shows": "Form builder Settings → General → Advanced with \"Enable offline mode for the form\" on (Offline Forms addon).",
+   "topics": [
+    "offline forms",
+    "offline forms addon",
+    "enabling offline mode for a form",
+    "enable offline mode for the form",
+    "advanced"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2623&snap=220"
+  },
+  {
    "slug": "builder-settings-google-calendar",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Google Calendar provider selected, Add New Connection visible"
+   "shows": "Form builder Settings → Google Calendar provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2680&section=google-calendar&snap=707&snap_fx=1"
   },
   {
    "slug": "builder-settings-google-calendar-connection",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Google Calendar connection mounted, cascade fields hidden"
+   "shows": "Form builder Settings → Google Calendar connection mounted, cascade fields hidden",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2680&section=google-calendar&snap=708&snap_fx=1"
   },
   {
    "slug": "builder-settings-google-drive",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Google Drive provider selected, Add New Connection visible"
+   "shows": "Form builder Settings → Google Drive provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2680&section=google-drive&snap=703&snap_fx=1"
   },
   {
    "slug": "builder-settings-google-drive-connection",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Google Drive connection mounted, cascade fields hidden"
+   "shows": "Form builder Settings → Google Drive connection mounted, cascade fields hidden",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2680&section=google-drive&snap=704&snap_fx=1"
   },
   {
    "slug": "builder-settings-google-sheets",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Google Sheets provider selected, Add New Connection visible"
+   "shows": "Form builder Settings → Google Sheets provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2680&section=google-sheets&snap=705&snap_fx=1"
   },
   {
    "slug": "builder-settings-google-sheets-connection",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Google Sheets connection mounted, cascade fields hidden"
+   "shows": "Form builder Settings → Google Sheets connection mounted, cascade fields hidden",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2680&section=google-sheets&snap=706&snap_fx=1"
+  },
+  {
+   "slug": "builder-settings-lead_forms",
+   "category": "builder/settings",
+   "shows": "Form builder Settings → Lead Forms on the catering form, off: intro text and the Enable Lead Form Mode toggle.",
+   "topics": [
+    "lead forms",
+    "lead forms addon",
+    "enabling lead form mode",
+    "enable lead form mode"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&snap=205"
+  },
+  {
+   "slug": "builder-settings-lead_forms--on",
+   "category": "builder/state",
+   "shows": "Form builder Settings → Lead Forms on the seeded 3-step catering lead form: Lead Form Title, Accent Color, Advanced Style Settings on with Form Container, Drop Shadow, Rounded Corners and the four colours.",
+   "topics": [
+    "lead forms",
+    "customizing your lead form",
+    "lead form title",
+    "accent color",
+    "advanced style settings",
+    "form container",
+    "export / import style settings",
+    "drop shadow",
+    "rounded corners"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2579&snap=206"
   },
   {
    "slug": "builder-settings-notifications",
@@ -1481,6 +2178,34 @@
     "email"
    ],
    "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}"
+  },
+  {
+   "slug": "builder-settings-notifications--abandoned",
+   "category": "builder/state",
+   "shows": "Form builder Settings → Notifications on the Form Abandonment form: the \"Enable for abandoned forms entries\" toggle on the notification.",
+   "topics": [
+    "form abandonment",
+    "notifications",
+    "sending abandoned form emails",
+    "enable for abandoned forms entries"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2623&snap=217"
+  },
+  {
+   "slug": "builder-settings-notifications--pdf-smarttags",
+   "category": "builder/state",
+   "shows": "Notification message with the Smart Tags menu open: PDF URL and PDF Link for each of the three PDFs, then PDF Links. Two notifications on the form (Default Notification, Customer Confirmation).",
+   "topics": [
+    "pdf",
+    "working with multiple pdfs",
+    "pdf link smart tag",
+    "pdf url smart tag",
+    "pdf links smart tag",
+    "notifications",
+    "smart tags",
+    "email pdf"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&section=notifications&snap=7"
   },
   {
    "slug": "builder-settings-notifications-cl",
@@ -1495,27 +2220,305 @@
   {
    "slug": "builder-settings-notion",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Notion provider selected, Add New Connection visible"
+   "shows": "Form builder Settings → Notion provider selected, Add New Connection visible",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2680&section=notion&snap=711&snap_fx=1"
   },
   {
    "slug": "builder-settings-notion-connection",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Notion connection mounted, cascade fields hidden"
+   "shows": "Form builder Settings → Notion connection mounted, cascade fields hidden",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2680&section=notion&snap=712&snap_fx=1"
   },
   {
    "slug": "builder-settings-pdf",
    "category": "builder/panel",
-   "shows": "Form builder Settings → PDF panel"
+   "shows": "Form builder Settings → PDF: the PDF settings screen on the catering form with its three PDFs (Catering Order Summary, Bakery Invoice, Catering Agreement), each with Active badge and Clone / Delete / Open, Add New PDF, and the PDF Preview sidebar.",
+   "topics": [
+    "pdf",
+    "pdfs",
+    "pdf settings",
+    "pdf addon",
+    "wpforms pdf",
+    "pdf builder settings",
+    "creating a pdf",
+    "add new pdf",
+    "pdf list",
+    "pdf preview",
+    "pdf templates"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&section=pdf&snap=601"
+  },
+  {
+   "slug": "builder-settings-pdf--empty",
+   "category": "builder/state",
+   "shows": "Form builder Settings → PDF on a form with no PDFs yet (Custom Cake Design Request): the PDF section empty state with Add New PDF.",
+   "topics": [
+    "pdf empty state",
+    "no pdfs",
+    "add first pdf",
+    "add new pdf",
+    "creating a new pdf"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55"
+  },
+  {
+   "slug": "builder-settings-pdf--list",
+   "category": "builder/state",
+   "shows": "Form builder Settings > PDF on the catering form: three PDFs (Catering Order Summary, Bakery Invoice, Catering Agreement), all collapsed, each with its Active badge and Clone / Delete / Open buttons; PDF Preview sidebar on the left.",
+   "topics": [
+    "pdf",
+    "pdf addon",
+    "creating a new pdf",
+    "add new pdf",
+    "working with multiple pdfs",
+    "pdf list"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&section=pdf&snap=1"
+  },
+  {
+   "slug": "builder-settings-pdf-editor",
+   "category": "builder/state",
+   "shows": "PDF editor open on \"Catering Order Summary\" (Notification — Modern, theme Sandstone, bakery logo): File Name, Notifications, Conditional Logic, Template (Category, Style, View All Templates), Appearance (Theme, Edit Theme Colors, Logo, fonts and colours), Advanced (Paper Size, Orientation, Access Restrictions); live PDF Preview on the left. The other Notification styles (Classic, Compact, Elegant, Tech) switch in place.",
+   "topics": [
+    "pdf",
+    "pdf addon",
+    "customizing template fields",
+    "choosing a template",
+    "styling the appearance",
+    "selecting a theme",
+    "adding and positioning a logo",
+    "adjusting advanced settings",
+    "paper size and orientation",
+    "enable access restrictions",
+    "live preview",
+    "pdf editor",
+    "notification template",
+    "notification — classic",
+    "notification classic",
+    "notification — compact",
+    "notification compact",
+    "notification — modern",
+    "notification modern",
+    "notification — elegant",
+    "notification elegant",
+    "notification — tech",
+    "notification tech"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&section=pdf&snap=2"
+  },
+  {
+   "slug": "builder-settings-pdf-editor--certificate",
+   "category": "builder/state",
+   "shows": "PDF editor with \"Catering Order Summary\" switched to the Certificate category (Classic): headings, recipient name, content, Show Signature and Show Badge toggles and the General appearance set; live certificate preview. The other Certificate styles (Modern, Elegant) switch in place. Not saved.",
+   "topics": [
+    "pdf",
+    "pdf addon",
+    "customizing template fields",
+    "choosing a template",
+    "styling the appearance",
+    "selecting a theme",
+    "adding and positioning a logo",
+    "adjusting advanced settings",
+    "paper size and orientation",
+    "enable access restrictions",
+    "live preview",
+    "pdf editor",
+    "certificate template",
+    "editing field text",
+    "toggling optional elements",
+    "show badge",
+    "show signature",
+    "certificate — classic",
+    "certificate classic",
+    "certificate — modern",
+    "certificate modern",
+    "certificate — elegant",
+    "certificate elegant"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&section=pdf&snap=5"
+  },
+  {
+   "slug": "builder-settings-pdf-editor--document",
+   "category": "builder/state",
+   "shows": "PDF editor open on \"Catering Agreement\" (Document, custom template \"Catering Agreement\" based on Legal, theme Amber, access restriction + password on): content, business details, signature and date fields; live preview. The other Document styles (Basic, Legal, Application, Cover Page, Table, Sidebar) switch in place.",
+   "topics": [
+    "pdf",
+    "pdf addon",
+    "customizing template fields",
+    "choosing a template",
+    "styling the appearance",
+    "selecting a theme",
+    "adding and positioning a logo",
+    "adjusting advanced settings",
+    "paper size and orientation",
+    "enable access restrictions",
+    "live preview",
+    "pdf editor",
+    "document template",
+    "editing field text",
+    "formatting larger content areas",
+    "toggling optional elements",
+    "signature",
+    "password protection",
+    "custom template",
+    "document — basic",
+    "document basic",
+    "document — legal",
+    "document legal",
+    "document — application",
+    "document application",
+    "document — coverpage",
+    "document coverpage",
+    "document — table",
+    "document table",
+    "document — sidebar",
+    "document sidebar"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&section=pdf&snap=4"
+  },
+  {
+   "slug": "builder-settings-pdf-editor--financial",
+   "category": "builder/state",
+   "shows": "PDF editor open on \"Bakery Invoice\" (Financial, custom template \"Bakery Invoice\" based on Modern, theme Espresso): the invoice text fields (headings, billing, details, payment, terms) and the General appearance set; live preview of the invoice. The other Financial styles (Classic, Modern, Sidebar) switch in place.",
+   "topics": [
+    "pdf",
+    "pdf addon",
+    "customizing template fields",
+    "choosing a template",
+    "styling the appearance",
+    "selecting a theme",
+    "adding and positioning a logo",
+    "adjusting advanced settings",
+    "paper size and orientation",
+    "enable access restrictions",
+    "live preview",
+    "pdf editor",
+    "financial template",
+    "invoice",
+    "editing field text",
+    "formatting larger content areas",
+    "using smart tags",
+    "changing text color",
+    "custom template",
+    "financial — classic",
+    "financial classic",
+    "financial — modern",
+    "financial modern",
+    "financial — sidebar",
+    "financial sidebar"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&section=pdf&snap=3"
+  },
+  {
+   "slug": "builder-settings-post_submissions",
+   "category": "builder/settings",
+   "shows": "Form builder Settings → Post Submissions on the catering form, off.",
+   "topics": [
+    "post submissions",
+    "post submissions addon",
+    "configuring post submissions settings",
+    "enable post submissions"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&snap=213"
+  },
+  {
+   "slug": "builder-settings-post_submissions--on",
+   "category": "builder/state",
+   "shows": "Form builder Settings → Post Submissions on the seeded Blog Post Submission form: Post Title / Content / Excerpt / Featured Image mapped, Post Type Post, Status Pending Review, Author, two Custom Post Meta rows.",
+   "topics": [
+    "post submissions",
+    "mapping form fields to wordpress posts",
+    "choosing a post type",
+    "setting the default post status",
+    "selecting the post author",
+    "adding custom post meta",
+    "post title",
+    "post content",
+    "post featured image",
+    "custom post meta"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2620&snap=214"
+  },
+  {
+   "slug": "builder-settings-quiz",
+   "category": "builder/settings",
+   "shows": "Form builder Settings → Quiz on the catering form, quiz off: the \"Easily Create Interactive Quizzes\" default screen with the Enable button; tabs Questions / Outcomes / Results disabled.",
+   "topics": [
+    "quiz",
+    "quiz addon",
+    "enabling quiz mode",
+    "enable quiz",
+    "builder settings"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&snap=201"
+  },
+  {
+   "slug": "builder-settings-quiz--graded",
+   "category": "builder/state",
+   "shows": "Form builder Settings → Quiz on \"Know Your Bakes\" (2576): quiz on, Quiz Type Graded, Grading Scale A–F, Feedback \"Show the correct answer as soon as a choice is made\" with the Correct / Incorrect texts, Enable Time Limit on.",
+   "topics": [
+    "quiz",
+    "graded quiz",
+    "choosing a quiz type",
+    "setting up the grading scale",
+    "setting feedback for graded quizzes",
+    "adding a time limit",
+    "grading scale",
+    "feedback",
+    "enable time limit"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2576&snap=202"
+  },
+  {
+   "slug": "builder-settings-quiz--outcomes",
+   "category": "builder/state",
+   "shows": "Form builder Settings → Quiz → Outcomes: three outcomes for \"Know Your Bakes\" (top, middle, low score) with Show-when rules on the quiz grade and the Add New Outcome button.",
+   "topics": [
+    "quiz",
+    "outcomes",
+    "setting up outcomes",
+    "creating an outcome",
+    "using smart tags for outcomes",
+    "showing different outcomes based on results",
+    "add new outcome"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2576&snap=203"
+  },
+  {
+   "slug": "builder-settings-quiz--personality",
+   "category": "builder/state",
+   "shows": "Builder → Settings → Quiz on a personality quiz (\"Which Pastry Are You?\"): quiz type Personality, the personality types with names and descriptions, outcomes per type.",
+   "topics": [
+    "quiz",
+    "personality quiz",
+    "Creating a Personality Quiz",
+    "quiz outcomes"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2652&snap=231"
+  },
+  {
+   "slug": "builder-settings-quiz--weighted",
+   "category": "builder/state",
+   "shows": "Builder → Settings → Quiz on a weighted quiz (\"Bread Baking Basics\"): quiz type Weighted and score-range outcomes.",
+   "topics": [
+    "quiz",
+    "weighted quiz",
+    "Creating a Weighted Quiz",
+    "quiz outcomes"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2654&snap=232"
   },
   {
    "slug": "builder-settings-save_resume",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Save and Resume panel"
+   "shows": "Form builder Settings → Save and Resume panel",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55"
   },
   {
    "slug": "builder-settings-surveys_polls",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Surveys and Polls panel"
+   "shows": "Form builder Settings → Surveys and Polls panel",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55"
   },
   {
    "slug": "builder-settings-themes",
@@ -1529,9 +2532,99 @@
    "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}"
   },
   {
+   "slug": "builder-settings-user_registration",
+   "category": "builder/settings",
+   "shows": "Form builder Settings → User Registration on an ordinary form: the two action cards (create a new user / update an existing user), both panels closed.",
+   "topics": [
+    "user registration",
+    "user registration addon",
+    "customizing user registration settings"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&snap=207"
+  },
+  {
+   "slug": "builder-settings-user_registration--login",
+   "category": "builder/state",
+   "shows": "Form builder Settings → User Registration on the seeded User Login Form: Hide form if user is logged in, with the Logged In Message.",
+   "topics": [
+    "user registration",
+    "login form",
+    "creating a custom login form",
+    "customizing the login form",
+    "hide form if user is logged in",
+    "logged in message"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2582&snap=209"
+  },
+  {
+   "slug": "builder-settings-user_registration--register",
+   "category": "builder/state",
+   "shows": "Form builder Settings → User Registration on the seeded registration form: profile fields mapped, role Subscriber, Enable user activation on with User Email activation (subject + message), activation confirmation page, hide-if-logged-in toggle, the three email toggles.",
+   "topics": [
+    "user registration",
+    "mapping user profile fields",
+    "enabling user activation and login options",
+    "choosing a user activation method",
+    "user email activation",
+    "manual user activation",
+    "logging users in automatically",
+    "hiding your registration form from logged-in users",
+    "setting up registration emails",
+    "mapping custom user meta fields",
+    "user activation method",
+    "enable user activation"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2591&snap=208"
+  },
+  {
+   "slug": "builder-settings-user_registration--reset",
+   "category": "builder/state",
+   "shows": "Form builder Settings → User Registration on the seeded password reset form: reset email subject and message, hide-if-logged-in toggle.",
+   "topics": [
+    "user registration",
+    "password reset form",
+    "creating a custom password reset form",
+    "customizing password reset form",
+    "{user_registration_password_reset}"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2586&snap=210"
+  },
+  {
    "slug": "builder-settings-webhooks",
    "category": "builder/panel",
-   "shows": "Form builder Settings → Webhooks panel"
+   "shows": "Form builder Settings → Webhooks panel",
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=55"
+  },
+  {
+   "slug": "builder-settings-wpf_sc_settings",
+   "category": "builder/settings",
+   "shows": "Form builder Settings → Sugar Calendar (Event Submissions) on the catering form: event creation Off, the event field-mapping rows unmapped.",
+   "topics": [
+    "sugar calendar",
+    "event submissions",
+    "frontend event submissions",
+    "allowing users to submit events",
+    "enable sugar calendar event creation"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=1725&snap=218"
+  },
+  {
+   "slug": "builder-settings-wpf_sc_settings--on",
+   "category": "builder/state",
+   "shows": "Form builder Settings → Sugar Calendar on the seeded event-submission form: On, Title / Description / Start / End / Featured Image / Calendar / Tags / All Day / Venue mapped, status Draft.",
+   "topics": [
+    "sugar calendar",
+    "event submissions",
+    "configuring form builders",
+    "title",
+    "description",
+    "start date and time",
+    "end date and time",
+    "event featured image",
+    "calendar",
+    "venue"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=settings&form_id=2629&snap=219"
   },
   {
    "slug": "builder-setup",
@@ -1962,6 +3055,205 @@
    "sourcePath": "/contact/"
   },
   {
+   "slug": "frontend-conversational-form",
+   "category": "frontend",
+   "shows": "Conversational form page: logo, title, message and the Start button, progress footer.",
+   "topics": [
+    "conversational forms",
+    "conversational form title and message",
+    "header logo",
+    "color scheme",
+    "progress bar",
+    "frontend"
+   ],
+   "sourcePath": "/bakery-chat/"
+  },
+  {
+   "slug": "frontend-conversational-form--question",
+   "category": "frontend/state",
+   "shows": "Conversational form after Start: the first question active with its Done button and keyboard hint, later questions faded below.",
+   "topics": [
+    "conversational forms",
+    "frontend",
+    "one question at a time"
+   ],
+   "sourcePath": "/bakery-chat/"
+  },
+  {
+   "slug": "frontend-entry-preview",
+   "category": "frontend/state",
+   "shows": "Entry Preview on the last page of the 3-page form: the visitor's answers listed for review before Submit, with the preview notice.",
+   "topics": [
+    "entry preview",
+    "how to show entry previews",
+    "display preview notice",
+    "basic",
+    "frontend"
+   ],
+   "sourcePath": "/weekly-bread-box/"
+  },
+  {
+   "slug": "frontend-form-locker--age",
+   "category": "frontend/state",
+   "shows": "Age-restricted form: locker message and the date-of-birth month / day / year prompt.",
+   "topics": [
+    "form locker",
+    "restricting form access by age",
+    "age",
+    "frontend"
+   ],
+   "sourcePath": "/cider-tasting-rsvp/"
+  },
+  {
+   "slug": "frontend-form-locker--age-error",
+   "category": "frontend/state",
+   "shows": "Form Locker age gate after an under-age date: the error message.",
+   "topics": [
+    "form locker",
+    "age verification",
+    "minimum age"
+   ],
+   "sourcePath": "/cider-tasting-rsvp/"
+  },
+  {
+   "slug": "frontend-form-locker--age-unlocked",
+   "category": "frontend/state",
+   "shows": "Age-restricted form after a date of birth over the minimum age: the Cider Tasting RSVP form itself.",
+   "topics": [
+    "form locker",
+    "age verification",
+    "minimum age",
+    "age unlocked",
+    "frontend"
+   ],
+   "sourcePath": "/cider-tasting-rsvp/"
+  },
+  {
+   "slug": "frontend-form-locker--email",
+   "category": "frontend/state",
+   "shows": "Form Locker email verification: the email prompt shown before the form.",
+   "topics": [
+    "form locker",
+    "email verification",
+    "verify email before submit"
+   ],
+   "sourcePath": "/members-price-list/"
+  },
+  {
+   "slug": "frontend-form-locker--entry-limit",
+   "category": "frontend/state",
+   "shows": "Form that reached its entry limit (5 of 5): the closed message instead of the form.",
+   "topics": [
+    "form locker",
+    "limiting the total number of entries for a form",
+    "enable total entry limit",
+    "closed message",
+    "frontend"
+   ],
+   "sourcePath": "/holiday-pie-preorder/"
+  },
+  {
+   "slug": "frontend-form-locker--logged-in-member",
+   "category": "frontend/state",
+   "shows": "Logged-in-only form seen by a logged-in member: the Recipe Swap form itself.",
+   "topics": [
+    "form locker",
+    "restricting access to logged-in users",
+    "logged in member",
+    "frontend"
+   ],
+   "sourcePath": "/recipe-swap/"
+  },
+  {
+   "slug": "frontend-form-locker--logged-in-only",
+   "category": "frontend/state",
+   "shows": "Logged-in-only form seen by a visitor: the restricted-access message.",
+   "topics": [
+    "form locker",
+    "restricting access to logged-in users",
+    "logged in users only",
+    "frontend"
+   ],
+   "sourcePath": "/recipe-swap/?snap_guest=1"
+  },
+  {
+   "slug": "frontend-form-locker--password",
+   "category": "frontend/state",
+   "shows": "Password-protected form: locker message and the password prompt instead of the form.",
+   "topics": [
+    "form locker",
+    "requiring a password for form access",
+    "password",
+    "enable verification",
+    "frontend"
+   ],
+   "sourcePath": "/wholesale-price-list/"
+  },
+  {
+   "slug": "frontend-form-locker--password-error",
+   "category": "frontend/state",
+   "shows": "Password-protected form after a wrong password: \"The password is incorrect.\"",
+   "topics": [
+    "form locker",
+    "requiring a password for form access",
+    "incorrect password",
+    "frontend"
+   ],
+   "sourcePath": "/wholesale-price-list/"
+  },
+  {
+   "slug": "frontend-form-locker--password-unlocked",
+   "category": "frontend/state",
+   "shows": "Password-protected form after the right password: the Wholesale Price List form itself.",
+   "topics": [
+    "form locker",
+    "requiring a password for form access",
+    "password unlocked",
+    "frontend"
+   ],
+   "sourcePath": "/wholesale-price-list/"
+  },
+  {
+   "slug": "frontend-form-locker--schedule-closed",
+   "category": "frontend/state",
+   "shows": "Scheduled form after its end date: the closed message.",
+   "topics": [
+    "form locker",
+    "scheduling form access",
+    "form scheduling",
+    "closed message",
+    "frontend"
+   ],
+   "sourcePath": "/summer-baking-class/"
+  },
+  {
+   "slug": "frontend-form-page",
+   "category": "frontend",
+   "shows": "Form Pages landing page for the seeded form: header logo, title and message, the form, footer text, modern style in the seeded colour.",
+   "topics": [
+    "form pages",
+    "form page title and message",
+    "header logo",
+    "footer text",
+    "color scheme",
+    "style",
+    "modern",
+    "frontend"
+   ],
+   "sourcePath": "/catering-quote/"
+  },
+  {
+   "slug": "frontend-form-page--classic",
+   "category": "frontend",
+   "shows": "Form Pages, Classic style: the form on its own landing page.",
+   "topics": [
+    "form pages",
+    "classic style",
+    "Form Pages addon"
+   ],
+   "sourcePath": "/catering-quote-classic/"
+  },
+  {
    "slug": "frontend-job-application-preview",
    "category": "frontend",
    "shows": "Frontend preview of form 1882 (Job Application) — Name (First / Last), Email, Phone, Resume Upload (\"Drag & Drop Files, Choose Files to Upload\") and the Submit Application button, on the Sullie's Bakery theme with the preview notice. Applicant view of builder-job-application-final.",
@@ -1976,6 +3268,18 @@
    "sourcePath": "/?wpforms_form_preview=1882"
   },
   {
+   "slug": "frontend-lead-form",
+   "category": "frontend",
+   "shows": "Published 3-step catering lead form, step 1 with the Lead Form title and progress bar; steps 2 and 3 in the page, hidden.",
+   "topics": [
+    "lead forms",
+    "frontend",
+    "multi-step",
+    "progress bar"
+   ],
+   "sourcePath": "/plan-your-catering/"
+  },
+  {
    "slug": "frontend-mercado-pago-field",
    "category": "frontend",
    "shows": "Frontend preview of form 1759 (Mercado Pago Test) — Name, Single Item at $3,000.00, Mercado Pago card field (cardholder, card number, expiry, CVC), Email and Submit, on the Sullie's Bakery theme. Live form for builder-mercado-pago-field.",
@@ -1988,6 +3292,82 @@
     "preview"
    ],
    "sourcePath": "/?wpforms_form_preview=1759"
+  },
+  {
+   "slug": "frontend-multipage",
+   "category": "frontend",
+   "shows": "Published 3-page form, page 1, with the progress bar (Step 1 of 3) and Next; pages 2 and 3 in the page, hidden.",
+   "topics": [
+    "multi-page forms",
+    "page break",
+    "first page settings and progress bar styles",
+    "progress indicator",
+    "frontend"
+   ],
+   "sourcePath": "/weekly-bread-box/"
+  },
+  {
+   "slug": "frontend-multipage--circles",
+   "category": "frontend",
+   "shows": "Multi-page form with the Circles page indicator (form preview).",
+   "topics": [
+    "page break",
+    "multi-page form",
+    "progress indicator",
+    "circles"
+   ],
+   "sourcePath": "/?wpforms_form_preview=2659"
+  },
+  {
+   "slug": "frontend-offline-form--offline",
+   "category": "frontend/state",
+   "shows": "Offline Forms: the form after the browser goes offline (the addon's offline notice).",
+   "topics": [
+    "offline forms",
+    "offline mode",
+    "submit when back online"
+   ],
+   "sourcePath": "/custom-order-inquiry/"
+  },
+  {
+   "slug": "frontend-pdf-access--denied",
+   "category": "frontend/page",
+   "shows": "PDF download page refusing access (403): what a visitor sees for a PDF restricted to logged-in users, or for a link that is not valid.",
+   "topics": [
+    "pdf",
+    "pdf access",
+    "enable access restrictions",
+    "user restrictions",
+    "logged-in users",
+    "access denied"
+   ],
+   "sourcePath": "/?wpforms_pdf_download=demo-pdf-download-token"
+  },
+  {
+   "slug": "frontend-pdf-access--not-found",
+   "category": "frontend/page",
+   "shows": "PDF download page when the PDF file is not on the server (404 message).",
+   "topics": [
+    "pdf",
+    "pdf access",
+    "pdf not found",
+    "pdf download link"
+   ],
+   "sourcePath": "/?wpforms_pdf_download=demo-pdf-download-token"
+  },
+  {
+   "slug": "frontend-pdf-access--password",
+   "category": "frontend/page",
+   "shows": "PDF download page for a password-protected PDF (Catering Agreement): password field and Submit, no admin bar.",
+   "topics": [
+    "pdf",
+    "pdf access",
+    "password protection",
+    "enable access restrictions",
+    "protected pdf download"
+   ],
+   "sourcePath": "/?wpforms_pdf_download=demo-pdf-download-token",
+   "navPrimary": true
   },
   {
    "slug": "frontend-photography-quote",
@@ -2005,6 +3385,41 @@
    "sourcePath": "/?wpforms_form_preview=1962"
   },
   {
+   "slug": "frontend-poll-results",
+   "category": "frontend/state",
+   "shows": "Poll confirmation after voting: thank-you message followed by the results bars with percentages and counts (20 seeded votes).",
+   "topics": [
+    "surveys and polls",
+    "displaying poll results",
+    "displaying poll results in a confirmation message",
+    "enable poll results",
+    "frontend"
+   ],
+   "sourcePath": "/next-pastry-poll/?wpforms_return=demo-return-token"
+  },
+  {
+   "slug": "frontend-poll-results--shortcode",
+   "category": "frontend",
+   "shows": "Poll results embedded on a page with the poll results shortcode (bars, percentages, vote counts).",
+   "topics": [
+    "surveys and polls",
+    "poll results shortcode",
+    "display poll results"
+   ],
+   "sourcePath": "/pastry-poll-results/"
+  },
+  {
+   "slug": "frontend-post-submission-post",
+   "category": "frontend/state",
+   "shows": "The post created by a Post Submissions entry (pending review, admin preview): title, content, featured image, category.",
+   "topics": [
+    "post submissions",
+    "frontend",
+    "user-submitted post"
+   ],
+   "sourcePath": "/?p=2622&preview=true"
+  },
+  {
    "slug": "frontend-published-form",
    "category": "frontend",
    "shows": "Published form on a public WP page — fullmarket-form-embedded",
@@ -2014,6 +3429,43 @@
     "publish"
    ],
    "sourcePath": "/master-form-embedded/"
+  },
+  {
+   "slug": "frontend-quiz",
+   "category": "frontend",
+   "shows": "Published \"Know Your Bakes\" quiz page: five questions, Submit.",
+   "topics": [
+    "quiz",
+    "frontend",
+    "graded quiz"
+   ],
+   "sourcePath": "/know-your-bakes/"
+  },
+  {
+   "slug": "frontend-quiz--feedback",
+   "category": "frontend/state",
+   "shows": "Quiz on the frontend after answering the first question: the per-answer feedback (correct / incorrect) under the question.",
+   "topics": [
+    "quiz",
+    "answer feedback",
+    "show correct answers",
+    "frontend quiz"
+   ],
+   "sourcePath": "/know-your-bakes/"
+  },
+  {
+   "slug": "frontend-quiz--result",
+   "category": "frontend/state",
+   "shows": "\"Know Your Bakes\" result screen: grade badge, score percentage, correct answers out of total, quiz summary link.",
+   "topics": [
+    "quiz",
+    "outcomes",
+    "quiz result",
+    "frontend",
+    "confirmation",
+    "using smart tags for outcomes"
+   ],
+   "sourcePath": "/know-your-bakes/?wpforms_return=demo-return-token&snap_entry=8019"
   },
   {
    "slug": "frontend-ranking-form",
@@ -2053,6 +3505,127 @@
     "blocks"
    ],
    "sourcePath": "/?wpforms_form_preview=2289"
+  },
+  {
+   "slug": "frontend-save-resume",
+   "category": "frontend",
+   "shows": "Multi-page form with Save and Resume: the \"Save and Resume Later\" link beside Next; disclaimer and confirmation screens in the page, hidden.",
+   "topics": [
+    "save and resume",
+    "customizing save and resume link text",
+    "enabling a disclaimer page",
+    "customizing the save and resume confirmation page",
+    "enabling the resume link",
+    "creating a resume email notification",
+    "save and resume later",
+    "frontend"
+   ],
+   "sourcePath": "/save-your-order/"
+  },
+  {
+   "slug": "frontend-save-resume--email-sent",
+   "category": "frontend/state",
+   "shows": "Save and Resume after the resume link was emailed: the \"We sent the link to your inbox.\" message in place of the form.",
+   "topics": [
+    "save and resume",
+    "creating a resume email notification",
+    "frontend"
+   ],
+   "sourcePath": "/save-your-order/?wpforms_sr_email_is_sent=2613"
+  },
+  {
+   "slug": "frontend-save-resume--expired",
+   "category": "frontend/state",
+   "shows": "Save and Resume link that was already used: the \"Unfortunately, the link you used to resume the form submission has expired.\" message.",
+   "topics": [
+    "save and resume",
+    "resume link expired",
+    "resume link"
+   ],
+   "sourcePath": "/save-your-order/?wpforms_resume_entry=demo-resume-token"
+  },
+  {
+   "slug": "frontend-save-resume--resume",
+   "category": "frontend/state",
+   "shows": "The same form opened from a resume link: fields prefilled from the saved partial entry.",
+   "topics": [
+    "save and resume",
+    "resume link",
+    "partial entry",
+    "frontend"
+   ],
+   "sourcePath": "/save-your-order/?wpforms_resume_entry=demo-resume-token"
+  },
+  {
+   "slug": "frontend-user-login",
+   "category": "frontend",
+   "shows": "Published member login form: Username or Email, Password, Remember me, Log in button.",
+   "topics": [
+    "user registration",
+    "login form",
+    "creating a custom login form",
+    "frontend"
+   ],
+   "sourcePath": "/member-login/"
+  },
+  {
+   "slug": "frontend-user-login--logged-in",
+   "category": "frontend/state",
+   "shows": "Login form page seen by a logged-in user: \"Hi Sullie, you’re already logged in.\" with a Log out link, instead of the form.",
+   "topics": [
+    "user registration",
+    "login form",
+    "hide form if user is logged in",
+    "logged in message",
+    "frontend"
+   ],
+   "sourcePath": "/member-area/"
+  },
+  {
+   "slug": "frontend-user-register",
+   "category": "frontend",
+   "shows": "Published user registration form: name, username, email, password, Register.",
+   "topics": [
+    "user registration",
+    "registration form",
+    "frontend"
+   ],
+   "sourcePath": "/join-the-bakery-club/"
+  },
+  {
+   "slug": "frontend-user-reset",
+   "category": "frontend",
+   "shows": "Published password reset form, step 1: username or email and the Reset button.",
+   "topics": [
+    "user registration",
+    "password reset form",
+    "creating a custom password reset form",
+    "frontend"
+   ],
+   "sourcePath": "/reset-your-password/"
+  },
+  {
+   "slug": "frontend-user-reset--invalid",
+   "category": "frontend/state",
+   "shows": "Password reset page opened with an invalid reset link: the error the addon shows.",
+   "topics": [
+    "user registration",
+    "password reset",
+    "invalid reset link"
+   ],
+   "sourcePath": "/reset-your-password/?action=wpforms_rp&login=nobody&key=demo-reset-key"
+  },
+  {
+   "slug": "frontend-user-reset--new-password",
+   "category": "frontend/state",
+   "shows": "Password reset form, step 2 after opening the emailed link: new password and confirm password.",
+   "topics": [
+    "user registration",
+    "password reset form",
+    "new password",
+    "frontend"
+   ],
+   "sourcePath": "/reset-your-password/?action=wpforms_rp&login=pip_reset&key=demo-reset-key"
   },
   {
    "slug": "klaviyo-api-keys",
@@ -2145,6 +3718,261 @@
    "shows": "Legacy Notifications single-notif capture — prefer builder-settings-notifications",
    "topics": [],
    "sourcePath": "(not in manifest)"
+  },
+  {
+   "slug": "pdf-output--certificate-classic",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Certificate — Classic template, as the addon's own HTML (browser layout of the document the PDF engine receives), bakery logo, theme Sandstone.",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "certificate — classic",
+    "certificate classic",
+    "certificate template"
+   ],
+   "sourcePath": "/?snap_pdf_output=certificate-classic&entry=7829"
+  },
+  {
+   "slug": "pdf-output--certificate-elegant",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Certificate — Elegant template, as the addon's own HTML (browser layout of the document the PDF engine receives), bakery logo, theme Sandstone.",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "certificate — elegant",
+    "certificate elegant",
+    "certificate template"
+   ],
+   "sourcePath": "/?snap_pdf_output=certificate-elegant&entry=7829"
+  },
+  {
+   "slug": "pdf-output--certificate-modern",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Certificate — Modern template, as the addon's own HTML (browser layout of the document the PDF engine receives), bakery logo, theme Sandstone.",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "certificate — modern",
+    "certificate modern",
+    "certificate template"
+   ],
+   "sourcePath": "/?snap_pdf_output=certificate-modern&entry=7829"
+  },
+  {
+   "slug": "pdf-output--document-application",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Document — Application template, as the addon's own HTML (browser layout of the document the PDF engine receives), bakery logo, theme Sandstone.",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "document — application",
+    "document application",
+    "document template"
+   ],
+   "sourcePath": "/?snap_pdf_output=document-application&entry=7829"
+  },
+  {
+   "slug": "pdf-output--document-basic",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Document — Basic template, as the addon's own HTML (browser layout of the document the PDF engine receives), bakery logo, theme Sandstone.",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "document — basic",
+    "document basic",
+    "document template"
+   ],
+   "sourcePath": "/?snap_pdf_output=document-basic&entry=7829"
+  },
+  {
+   "slug": "pdf-output--document-coverpage",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Document — Coverpage template, as the addon's own HTML (browser layout of the document the PDF engine receives), bakery logo, theme Sandstone.",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "document — coverpage",
+    "document coverpage",
+    "document template"
+   ],
+   "sourcePath": "/?snap_pdf_output=document-coverpage&entry=7829"
+  },
+  {
+   "slug": "pdf-output--document-legal",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Document — Legal template, as the addon's own HTML (browser layout of the document the PDF engine receives); the seeded Catering Agreement (PDF 3, custom template Catering Agreement; the template name is a setting, not printed).",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "document — legal",
+    "document legal",
+    "document template"
+   ],
+   "sourcePath": "/?snap_pdf_output=document-legal&entry=7829"
+  },
+  {
+   "slug": "pdf-output--document-sidebar",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Document — Sidebar template, as the addon's own HTML (browser layout of the document the PDF engine receives), bakery logo, theme Sandstone.",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "document — sidebar",
+    "document sidebar",
+    "document template"
+   ],
+   "sourcePath": "/?snap_pdf_output=document-sidebar&entry=7829"
+  },
+  {
+   "slug": "pdf-output--document-table",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Document — Table template, as the addon's own HTML (browser layout of the document the PDF engine receives), bakery logo, theme Sandstone.",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "document — table",
+    "document table",
+    "document template"
+   ],
+   "sourcePath": "/?snap_pdf_output=document-table&entry=7829"
+  },
+  {
+   "slug": "pdf-output--financial-classic",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Financial — Classic template, as the addon's own HTML (browser layout of the document the PDF engine receives), bakery logo, theme Sandstone.",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "financial — classic",
+    "financial classic",
+    "financial template"
+   ],
+   "sourcePath": "/?snap_pdf_output=financial-classic&entry=7829"
+  },
+  {
+   "slug": "pdf-output--financial-modern",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Financial — Modern template, as the addon's own HTML (browser layout of the document the PDF engine receives); the seeded Bakery Invoice (PDF 2, custom template Bakery Invoice; the template name is a setting, not printed).",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "financial — modern",
+    "financial modern",
+    "financial template"
+   ],
+   "sourcePath": "/?snap_pdf_output=financial-modern&entry=7829"
+  },
+  {
+   "slug": "pdf-output--financial-sidebar",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Financial — Sidebar template, as the addon's own HTML (browser layout of the document the PDF engine receives), bakery logo, theme Sandstone.",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "financial — sidebar",
+    "financial sidebar",
+    "financial template"
+   ],
+   "sourcePath": "/?snap_pdf_output=financial-sidebar&entry=7829"
+  },
+  {
+   "slug": "pdf-output--notification-classic",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Notification — Classic template, as the addon's own HTML (browser layout of the document the PDF engine receives), bakery logo, theme Sandstone.",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "notification — classic",
+    "notification classic",
+    "notification template"
+   ],
+   "sourcePath": "/?snap_pdf_output=notification-classic&entry=7829"
+  },
+  {
+   "slug": "pdf-output--notification-compact",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Notification — Compact template, as the addon's own HTML (browser layout of the document the PDF engine receives), bakery logo, theme Sandstone.",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "notification — compact",
+    "notification compact",
+    "notification template"
+   ],
+   "sourcePath": "/?snap_pdf_output=notification-compact&entry=7829"
+  },
+  {
+   "slug": "pdf-output--notification-elegant",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Notification — Elegant template, as the addon's own HTML (browser layout of the document the PDF engine receives), bakery logo, theme Sandstone.",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "notification — elegant",
+    "notification elegant",
+    "notification template"
+   ],
+   "sourcePath": "/?snap_pdf_output=notification-elegant&entry=7829"
+  },
+  {
+   "slug": "pdf-output--notification-modern",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Notification — Modern template, as the addon's own HTML (browser layout of the document the PDF engine receives); the seeded Catering Order Summary (PDF 1).",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "notification — modern",
+    "notification modern",
+    "notification template"
+   ],
+   "sourcePath": "/?snap_pdf_output=notification-modern&entry=7829"
+  },
+  {
+   "slug": "pdf-output--notification-tech",
+   "category": "output/document",
+   "shows": "The PDF the addon generates for Emma Murphy's catering order in the Notification — Tech template, as the addon's own HTML (browser layout of the document the PDF engine receives), bakery logo, theme Sandstone.",
+   "topics": [
+    "pdf",
+    "generated pdf",
+    "how pdfs are generated",
+    "viewing generated pdfs",
+    "notification — tech",
+    "notification tech",
+    "notification template"
+   ],
+   "sourcePath": "/?snap_pdf_output=notification-tech&entry=7829"
   },
   {
    "slug": "sp-results-new-418-base",

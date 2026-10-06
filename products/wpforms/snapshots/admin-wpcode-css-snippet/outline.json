@@ -1,0 +1,520 @@
+{
+  "slug": "admin-wpcode-css-snippet",
+  "registryPresent": true,
+  "transitions": [],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode_execute_now",
+        "tag": "button",
+        "text": "Execute Snippet Now",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode_save_to_library",
+        "tag": "button",
+        "text": "Save to Library",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-ai-improve",
+        "tag": "button",
+        "text": "Use AI to improve your snippet by describing the changes yo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-check-for-updates",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-close-code-type-picker",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-dismiss-all",
+        "tag": "button",
+        "text": "Dismiss all",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-live-preview-button",
+        "tag": "a",
+        "text": "Live Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-notifications-button",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-notifications-show-active",
+        "tag": "button",
+        "text": "Active Notifications",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-notifications-show-dismissed",
+        "tag": "button",
+        "text": "Dismissed Notifications",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-show-all-snippets",
+        "tag": "button",
+        "text": "3 Other Revisions",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#-any",
+        "tag": "input",
+        "text": "any",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#-desktop",
+        "tag": "input",
+        "text": "desktop",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#-mobile",
+        "tag": "input",
+        "text": "mobile",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode_active",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode_compress_output",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode_conditional_logic_enable",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode_note",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode_priority",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode_snippet_as_file",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode_snippet_code",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode_snippet_type",
+        "tag": "select",
+        "text": "HTML Snippet Text Snippet Blocks Snippet (PRO) CSS Snippet …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-schedule-end",
+        "tag": "input",
+        "text": "End Date",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-schedule-start",
+        "tag": "input",
+        "text": "Start Date",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-toggle-testing-mode",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#et-ajax-saving",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPCode ★★★★★ on WordPress.org to help us spread…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_e2e-dashboard",
+        "tag": "li",
+        "text": "E2E Dashboard E2E Dashboard Recent Runs Nightly Tests",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_et_divi_options",
+        "tag": "li",
+        "text": "Divi Dashboard 1 Divi 5 Migrator Theme Options Theme Builde…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_vibe-ai",
+        "tag": "li",
+        "text": "Vibe AI Vibe AI Approval Log",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpcode",
+        "tag": "li",
+        "text": "Code Snippets Code Snippets + Add Snippet Header & Footer C…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms_dev_tools",
+        "tag": "li",
+        "text": "WPForms Dev WPForms Dev Analytics",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms All Forms Setup Checklist 67% complete Add New Form…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ui-id-1",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-2",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-admin-canonical",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-wpcode_note-editor-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-wpcode_note-wrap",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-wpcode_snippet_text-wrap",
+        "tag": "div",
+        "text": "/*! This file is auto-generated */.mce-tinymce{box-shadow:n…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode_auto_insert_location",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode_cl_picker",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode_compress_output_option",
+        "tag": "div",
+        "text": "Compress Output PRO Compress code output by removing spaces…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode_note_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode_snippet_as_file_option",
+        "tag": "div",
+        "text": "Load as file PRO If enabled, this snippet will be loaded as…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode_snippet_type-holder",
+        "tag": "div",
+        "text": "Code Type HTML Snippet Text Snippet Blocks Snippet (PRO) CS…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-active-title",
+        "tag": "h3",
+        "text": "New Notifications (0)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-admin-spinner",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-code-type-list",
+        "tag": "div",
+        "text": "HTML Snippet Easily insert scripts from other sites or buil…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-code-type-picker-backdrop",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-dismissed-title",
+        "tag": "h3",
+        "text": "Notifications ()",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-docs-overlay",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-header-between",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-header-logo",
+        "tag": "svg",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-help-logo",
+        "tag": "svg",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-notice-area",
+        "tag": "div",
+        "text": "NEW!Connect to the WPCode Library to get access to 314 FREE…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-notice-global-wpcode-library-connect-lite",
+        "tag": "div",
+        "text": "NEW!Connect to the WPCode Library to get access to 314 FREE…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-notifications-count",
+        "tag": "span",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-notifications-drawer",
+        "tag": "div",
+        "text": "New Notifications (0) Notifications () Dismissed Notificati…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-selected-location-display",
+        "tag": "div",
+        "text": "Site Wide Header",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpcode-shortcode-attributes-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpcode-snippet-manager-form",
+        "tag": "form",
+        "text": "Testing Mode Help Create Custom Snippet Save to Library Sni…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

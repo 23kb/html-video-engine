@@ -1,11 +1,11 @@
 # Catalog — `admin-forms-overview-shortcode`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-forms-overview-shortcode/index.html`
+> Source: `products/wpforms/snapshots/admin-forms-overview-shortcode/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 103 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-forms-overview-shortcode/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-forms-overview-shortcode/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

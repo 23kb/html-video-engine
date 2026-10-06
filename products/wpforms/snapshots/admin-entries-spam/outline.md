@@ -32,7 +32,7 @@ _Selectors validated against the live DOM — every one resolves._
 - _… +6 more — see catalog.md_
 
 ### Fields (canvas)
-- `[data-field-type="email"]` — div — "sarah@brightleaf.co" _(×30)_
+- `[data-field-type="email"]` — div — "sarah@example.com" _(×30)_
 - `[data-field-type="name"]` — div — "Sarah Mitchell" _(×30)_
 - `[data-field-type="textarea"]` — div — "Hi! Do you offer bulk pricing? We would love to order for o…" _(×30)_
 

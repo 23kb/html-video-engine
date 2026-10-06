@@ -1,18 +1,18 @@
 # Catalog — `frontend-photography-quote`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/frontend-photography-quote/index.html`
+> Source: `products/wpforms/snapshots/frontend-photography-quote/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 346 selector entries across 4 sections.
+> 335 selector entries across 4 sections.
 
-Provenance anchor form: `snapshots/frontend-photography-quote/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/frontend-photography-quote/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_307 entries_
+_296 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -20,17 +20,6 @@ _307 entries_
 | <a id="id--block-2"></a>`id--block-2` | `#block-2` | div |  | 1 |
 | <a id="id--block-3"></a>`id--block-3` | `#block-3` | div | Recent Posts Sullie’s World – Blog | 1 |
 | <a id="id--block-4"></a>`id--block-4` | `#block-4` | div | Recent Comments | 1 |
-| <a id="id--choices--wpforms-1965-field_4-item-choice-1"></a>`id--choices--wpforms-1965-field_4-item-choice-1` | `#choices--wpforms-1965-field_4-item-choice-1` | div |  | 1 |
-| <a id="id--choices--wpforms-1965-field_4-item-choice-2"></a>`id--choices--wpforms-1965-field_4-item-choice-2` | `#choices--wpforms-1965-field_4-item-choice-2` | div | Wedding | 1 |
-| <a id="id--choices--wpforms-1965-field_4-item-choice-3"></a>`id--choices--wpforms-1965-field_4-item-choice-3` | `#choices--wpforms-1965-field_4-item-choice-3` | div | Portrait | 1 |
-| <a id="id--choices--wpforms-1965-field_4-item-choice-4"></a>`id--choices--wpforms-1965-field_4-item-choice-4` | `#choices--wpforms-1965-field_4-item-choice-4` | div | Event | 1 |
-| <a id="id--choices--wpforms-1965-field_4-item-choice-5"></a>`id--choices--wpforms-1965-field_4-item-choice-5` | `#choices--wpforms-1965-field_4-item-choice-5` | div | Commercial | 1 |
-| <a id="id--choices--wpforms-1965-field_4-item-choice-6"></a>`id--choices--wpforms-1965-field_4-item-choice-6` | `#choices--wpforms-1965-field_4-item-choice-6` | div | Other | 1 |
-| <a id="id--choices--wpforms-1965-field_7-item-choice-1"></a>`id--choices--wpforms-1965-field_7-item-choice-1` | `#choices--wpforms-1965-field_7-item-choice-1` | div |  | 1 |
-| <a id="id--choices--wpforms-1965-field_7-item-choice-2"></a>`id--choices--wpforms-1965-field_7-item-choice-2` | `#choices--wpforms-1965-field_7-item-choice-2` | div | Under $500 | 1 |
-| <a id="id--choices--wpforms-1965-field_7-item-choice-3"></a>`id--choices--wpforms-1965-field_7-item-choice-3` | `#choices--wpforms-1965-field_7-item-choice-3` | div | $500 – $1,000 | 1 |
-| <a id="id--choices--wpforms-1965-field_7-item-choice-4"></a>`id--choices--wpforms-1965-field_7-item-choice-4` | `#choices--wpforms-1965-field_7-item-choice-4` | div | $1,000 – $2,500 | 1 |
-| <a id="id--choices--wpforms-1965-field_7-item-choice-5"></a>`id--choices--wpforms-1965-field_7-item-choice-5` | `#choices--wpforms-1965-field_7-item-choice-5` | div | $2,500 and up | 1 |
 | <a id="id--choices-listbox-wpforms-1965-field_4"></a>`id--choices-listbox-wpforms-1965-field_4` | `#choices-listbox-wpforms-1965-field_4` | div |  | 1 |
 | <a id="id--choices-listbox-wpforms-1965-field_7"></a>`id--choices-listbox-wpforms-1965-field_7` | `#choices-listbox-wpforms-1965-field_7` | div |  | 1 |
 | <a id="id--content-area"></a>`id--content-area` | `#content-area` | div | Photography Quote Request Preview by | 1 |

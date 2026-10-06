@@ -1,11 +1,11 @@
 # Catalog — `chatgpt-bakery-plan`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/chatgpt-bakery-plan/index.html`
+> Source: `products/wpforms/snapshots/chatgpt-bakery-plan/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 42 selector entries across 1 sections.
 
-Provenance anchor form: `snapshots/chatgpt-bakery-plan/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/chatgpt-bakery-plan/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

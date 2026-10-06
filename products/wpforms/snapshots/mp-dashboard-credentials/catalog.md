@@ -1,11 +1,11 @@
 # Catalog — `mp-dashboard-credentials`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/mp-dashboard-credentials/index.html`
+> Source: `products/wpforms/snapshots/mp-dashboard-credentials/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 192 selector entries across 1 sections.
 
-Provenance anchor form: `snapshots/mp-dashboard-credentials/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/mp-dashboard-credentials/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

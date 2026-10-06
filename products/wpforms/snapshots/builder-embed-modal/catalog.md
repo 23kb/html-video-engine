@@ -1,32 +1,22 @@
 # Catalog — `builder-embed-modal`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/builder-embed-modal/index.html`
+> Source: `products/wpforms/snapshots/builder-embed-modal/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 2416 selector entries across 6 sections.
+> 2406 selector entries across 6 sections.
 
-Provenance anchor form: `snapshots/builder-embed-modal/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/builder-embed-modal/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_2177 entries_
+_2167 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="id--add-fields"></a>`id--add-fields` | `#add-fields` | li | Add Fields | 1 |
-| <a id="id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-2"></a>`id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-2` | `#choices--wpforms-field-option-30-user_roles_restrictions-item-choice-2` | div | Author | 1 |
-| <a id="id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-3"></a>`id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-3` | `#choices--wpforms-field-option-30-user_roles_restrictions-item-choice-3` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-4"></a>`id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-4` | `#choices--wpforms-field-option-30-user_roles_restrictions-item-choice-4` | div | Editor | 1 |
-| <a id="id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-5"></a>`id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-5` | `#choices--wpforms-field-option-30-user_roles_restrictions-item-choice-5` | div | Subscriber | 1 |
-| <a id="id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-2"></a>`id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-2` | `#choices--wpforms-field-option-31-user_roles_restrictions-item-choice-2` | div | Author | 1 |
-| <a id="id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-3"></a>`id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-3` | `#choices--wpforms-field-option-31-user_roles_restrictions-item-choice-3` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-4"></a>`id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-4` | `#choices--wpforms-field-option-31-user_roles_restrictions-item-choice-4` | div | Editor | 1 |
-| <a id="id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-5"></a>`id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-5` | `#choices--wpforms-field-option-31-user_roles_restrictions-item-choice-5` | div | Subscriber | 1 |
-| <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1` | div | master form embedded | 1 |
-| <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2` | div | Sample Page | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--field-options"></a>`id--field-options` | `#field-options` | li | Field Options | 1 |

@@ -1,11 +1,11 @@
 # Catalog — `admin-forms-overview-staged`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-forms-overview-staged/index.html`
+> Source: `products/wpforms/snapshots/admin-forms-overview-staged/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 104 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-forms-overview-staged/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-forms-overview-staged/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

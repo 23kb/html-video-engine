@@ -1,11 +1,11 @@
 # Catalog — `admin-entries-imported`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-entries-imported/index.html`
+> Source: `products/wpforms/snapshots/admin-entries-imported/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 82 selector entries across 3 sections.
 
-Provenance anchor form: `snapshots/admin-entries-imported/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-entries-imported/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -35,7 +35,7 @@ _56 entries_
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate WPForms ★★★★★ on WordPress.org to help us sprea… | 1 |
 | <a id="id--indicators"></a>`id--indicators` | `#indicators` | th |  | 1 |
 | <a id="id--indicators-foot"></a>`id--indicators-foot` | `#indicators-foot` | th |  | 1 |
-| <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input | Screen Option | 1 |
+| <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input | Screen O | 1 |
 | <a id="id--screen-options-link-wrap"></a>`id--screen-options-link-wrap` | `#screen-options-link-wrap` | div | Screen Options | 1 |
 | <a id="id--screen-options-wrap"></a>`id--screen-options-wrap` | `#screen-options-wrap` | div | Pagination Number of entries per page: | 1 |
 | <a id="id--screenoptionnonce"></a>`id--screenoptionnonce` | `#screenoptionnonce` | input | Screen Options | 1 |
@@ -63,7 +63,7 @@ _56 entries_
 | <a id="id--wpforms_field_3-foot"></a>`id--wpforms_field_3-foot` | `#wpforms_field_3-foot` | th | Comment or Message | 1 |
 | <a id="id--wpforms-entries-list"></a>`id--wpforms-entries-list` | `#wpforms-entries-list` | div | Entries Select Form Sullie's Bakery Contact Form | 1 |
 | <a id="id--wpforms-entries-search-input"></a>`id--wpforms-entries-search-input` | `#wpforms-entries-search-input` | input | Search | 1 |
-| <a id="id--wpforms-entries-table"></a>`id--wpforms-entries-table` | `#wpforms-entries-table` | form | All&nbsp; ( 1200 ) | 1 |
+| <a id="id--wpforms-entries-table"></a>`id--wpforms-entries-table` | `#wpforms-entries-table` | form | All&nbsp; ( 1200 | 1 |
 | <a id="id--wpforms-entries-table-edit-columns-select"></a>`id--wpforms-entries-table-edit-columns-select` | `#wpforms-entries-table-edit-columns-select` | select | Name Email Comment or Message Phone Entry ID Entry Notes Da… | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |
@@ -79,7 +79,7 @@ _3 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="data-field-type--email"></a>`data-field-type--email` | `[data-field-type="email"]` | div | ethan.barnes@gmail.com | 30 |
+| <a id="data-field-type--email"></a>`data-field-type--email` | `[data-field-type="email"]` | div | ethan.barnes@example.com | 30 |
 | <a id="data-field-type--name"></a>`data-field-type--name` | `[data-field-type="name"]` | div | Ethan Barnes | 30 |
 | <a id="data-field-type--textarea"></a>`data-field-type--textarea` | `[data-field-type="textarea"]` | div | Brownie Box — Gift wrap if possible. | 30 |
 

@@ -1,11 +1,11 @@
 # Catalog — `sp-results-new-418-export-open`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/sp-results-new-418-export-open/index.html`
+> Source: `products/wpforms/snapshots/sp-results-new-418-export-open/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 63 selector entries across 4 sections.
 
-Provenance anchor form: `snapshots/sp-results-new-418-export-open/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/sp-results-new-418-export-open/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -23,7 +23,7 @@ _14 entries_
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
 | <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms-datepicker-popover-button"></a>`id--wpforms-datepicker-popover-button` | `#wpforms-datepicker-popover-button` | button | All Time | 1 |
-| <a id="id--wpforms-entries-list"></a>`id--wpforms-entries-list` | `#wpforms-entries-list` | div | Survey Results Back to | 1 |
+| <a id="id--wpforms-entries-list"></a>`id--wpforms-entries-list` | `#wpforms-entries-list` | div | Survey Results Bac | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-header"></a>`id--wpforms-header` | `#wpforms-header` | div |  | 1 |

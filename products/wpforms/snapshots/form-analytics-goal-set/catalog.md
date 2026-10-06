@@ -1,11 +1,11 @@
 # Catalog — `form-analytics-goal-set`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/form-analytics-goal-set/index.html`
+> Source: `products/wpforms/snapshots/form-analytics-goal-set/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 42 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/form-analytics-goal-set/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/form-analytics-goal-set/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -26,7 +26,7 @@ _17 entries_
 | <a id="id--wpforms-admin-single-navigation-prev-link"></a>`id--wpforms-admin-single-navigation-prev-link` | `#wpforms-admin-single-navigation-prev-link` | a |  | 1 |
 | <a id="id--wpforms-ai-chat-fab"></a>`id--wpforms-ai-chat-fab` | `#wpforms-ai-chat-fab` | button |  | 1 |
 | <a id="id--wpforms-ai-chat-modal"></a>`id--wpforms-ai-chat-modal` | `#wpforms-ai-chat-modal` | div | WPForms AI | 1 |
-| <a id="id--wpforms-analytics"></a>`id--wpforms-analytics` | `#wpforms-analytics` | div | Forms Analytics Back to All Forms | 1 |
+| <a id="id--wpforms-analytics"></a>`id--wpforms-analytics` | `#wpforms-analytics` | div | Forms Analytics Back to Al | 1 |
 | <a id="id--wpforms-analytics-field-table"></a>`id--wpforms-analytics-field-table` | `#wpforms-analytics-field-table` | table | Name Type Views | 1 |
 | <a id="id--wpforms-analytics-overview-datepicker"></a>`id--wpforms-analytics-overview-datepicker` | `#wpforms-analytics-overview-datepicker` | input |  | 1 |
 | <a id="id--wpforms-datepicker-popover-button"></a>`id--wpforms-datepicker-popover-button` | `#wpforms-datepicker-popover-button` | button | Last 30 days | 1 |

@@ -1,0 +1,545 @@
+{
+  "slug": "admin-entries-overview",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wpf-charts-live",
+      "event": "wpf:charts",
+      "selector": "body.wpforms-admin-page.wp-admin",
+      "count": 1
+    },
+    {
+      "label": "wpf-parked-modal-open",
+      "event": "click",
+      "selector": "a.wpforms-link.wpforms-link-whats-new",
+      "count": 1
+    },
+    {
+      "label": "wpf-flyout",
+      "event": "click",
+      "selector": "a.wpforms-flyout-button.wpforms-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-charts-live",
+        "wiredEvent": "wpf:charts"
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-charts-live",
+        "wiredEvent": "wpf:charts"
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-charts-live",
+        "wiredEvent": "wpf:charts"
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-button",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-charts-live",
+        "wiredEvent": "wpf:charts"
+      },
+      {
+        "sel": "#wpforms-datepicker-popover-button",
+        "tag": "button",
+        "text": "Last 30 days",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-charts-live",
+        "wiredEvent": "wpf:charts"
+      },
+      {
+        "sel": ".wpforms-btn-blue",
+        "tag": "button",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true,
+        "wired": "wpf-charts-live",
+        "wiredEvent": "wpf:charts"
+      },
+      {
+        "sel": ".wpforms-dash-widget-settings-menu-save",
+        "tag": "button",
+        "text": "Save Changes",
+        "count": 1,
+        "hidden": true,
+        "wired": "wpf-charts-live",
+        "wiredEvent": "wpf:charts"
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true,
+        "wired": "wpf-charts-live",
+        "wiredEvent": "wpf:charts"
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-charts-live",
+        "wiredEvent": "wpf:charts"
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true,
+        "wired": "wpf-charts-live",
+        "wiredEvent": "wpf:charts"
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true,
+        "wired": "wpf-charts-live",
+        "wiredEvent": "wpf:charts"
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false,
+        "wired": "wpf-charts-live",
+        "wiredEvent": "wpf:charts"
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-charts-live",
+        "wiredEvent": "wpf:charts"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#all_time-hide",
+        "tag": "input",
+        "text": "all_time",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#created-hide",
+        "tag": "input",
+        "text": "created",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#graph-hide",
+        "tag": "input",
+        "text": "graph",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#last_entry-hide",
+        "tag": "input",
+        "text": "last_entry",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pagination_per_page",
+        "tag": "input",
+        "text": "30",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "b71cc916b8",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#timespan-hide",
+        "tag": "input",
+        "text": "timespan",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#view_show_form_templates",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-color-wp",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-color-wpforms",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-style-bar",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-style-line",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-overview-datepicker",
+        "tag": "input",
+        "text": "2026-09-06 - 2026-10-06",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Created Last Entry All Time Last 30 days Graph Pagi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#all_time",
+        "tag": "th",
+        "text": "All Time Sort Ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#created",
+        "tag": "th",
+        "text": "Created Sort Ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#graph",
+        "tag": "th",
+        "text": "Graph",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#last_entry",
+        "tag": "th",
+        "text": "Last Entry Sort Ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#name",
+        "tag": "th",
+        "text": "Form Name Sort Ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Created Last Entry All Time Last 30 days Graph Pagi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 3",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Bakery Order — Every Field October 6, 2026 – 0 0 Custom Cak…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#timespan",
+        "tag": "th",
+        "text": "Last 30 Days Sort Ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms Dashboard All Forms Setup Checklist 67% complete Ad…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-list",
+        "tag": "div",
+        "text": "Entries All Forms Last 30 days Total Entries: 138 Form Name…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "All Forms Last 30 days Total Entries: 138 Form Name Sort As…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-dash-widget-settings-container",
+        "tag": "div",
+        "text": "Graph Style Bar Line Color Scheme WPForms WordPress Save Ch…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-datepicker-popover-content",
+        "tag": "div",
+        "text": "TodayYesterdayLast 7 daysLast 30 daysLast 90 daysLast 1 yea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-overview-chart-notice",
+        "tag": "div",
+        "text": "No entries for selected period Please select a different pe…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-overview-chart-notice-content",
+        "tag": "div",
+        "text": "No entries for selected period Please select a different pe…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

@@ -1,11 +1,11 @@
 # Catalog — `chatgpt-wpvibe-permission-card`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/chatgpt-wpvibe-permission-card/index.html`
+> Source: `products/wpforms/snapshots/chatgpt-wpvibe-permission-card/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 44 selector entries across 1 sections.
 
-Provenance anchor form: `snapshots/chatgpt-wpvibe-permission-card/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/chatgpt-wpvibe-permission-card/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

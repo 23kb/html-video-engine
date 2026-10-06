@@ -1,11 +1,11 @@
 # Catalog — `admin-payment-detail`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-payment-detail/index.html`
+> Source: `products/wpforms/snapshots/admin-payment-detail/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 54 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-payment-detail/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-payment-detail/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

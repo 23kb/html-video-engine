@@ -30,6 +30,3 @@ _No interactivity.js transitions fire on this snapshot's DOM._
 _These admin links navigate when hand-browsing /snapshots/ but their handler bails in-iframe (window.top !== window). In a video, swap snapshots instead._
 
 _None._
-
-<!-- capture-gates:start -->
-<!-- capture-gates:end -->

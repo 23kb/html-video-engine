@@ -1,24 +1,26 @@
 # Catalog — `admin-entries-list-100`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-entries-list-100/index.html`
+> Source: `products/wpforms/snapshots/admin-entries-list-100/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 118 selector entries across 4 sections.
+> 121 selector entries across 4 sections.
 
-Provenance anchor form: `snapshots/admin-entries-list-100/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-entries-list-100/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_63 entries_
+_60 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="id--actions"></a>`id--actions` | `#actions` | th | Actions | 1 |
 | <a id="id--actions-foot"></a>`id--actions-foot` | `#actions-foot` | th | Actions | 1 |
 | <a id="id--adv-settings"></a>`id--adv-settings` | `#adv-settings` | form | Pagination Number of entries per page: | 1 |
+| <a id="id--aioseo-admin"></a>`id--aioseo-admin` | `#aioseo-admin` | div |  | 1 |
+| <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
 | <a id="id--bulk-action-selector-bottom"></a>`id--bulk-action-selector-bottom` | `#bulk-action-selector-bottom` | select | Bulk actions Mark as Read Mark as Unread Star Unstar Print … | 1 |
 | <a id="id--bulk-action-selector-top"></a>`id--bulk-action-selector-top` | `#bulk-action-selector-top` | select | Bulk actions Mark as Read Mark as Unread Star Unstar Print … | 1 |
 | <a id="id--cb"></a>`id--cb` | `#cb` | td | Select All | 1 |
@@ -32,12 +34,11 @@ _63 entries_
 | <a id="id--date-foot"></a>`id--date-foot` | `#date-foot` | th | Date Sort ascending. | 1 |
 | <a id="id--doaction"></a>`id--doaction` | `#doaction` | input |  | 1 |
 | <a id="id--doaction2"></a>`id--doaction2` | `#doaction2` | input | 486 items « ‹ Current Page | 1 |
-| <a id="id--et-ajax-saving"></a>`id--et-ajax-saving` | `#et-ajax-saving` | div |  | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate WPForms ★★★★★ on WordPress.org to help us sprea… | 1 |
 | <a id="id--indicators"></a>`id--indicators` | `#indicators` | th |  | 1 |
 | <a id="id--indicators-foot"></a>`id--indicators-foot` | `#indicators-foot` | th |  | 1 |
 | <a id="id--iris-css"></a>`id--iris-css` | `#iris-css` | link |  | 1 |
-| <a id="id--loading"></a>`id--loading` | `#loading` | img |  | 1 |
+| <a id="id--jconfirm-box72902"></a>`id--jconfirm-box72902` | `#jconfirm-box72902` | div | What’s New in WPForms We've added some great new features t… | 1 |
 | <a id="id--screen-options-apply"></a>`id--screen-options-apply` | `#screen-options-apply` | input |  | 1 |
 | <a id="id--screen-options-link-wrap"></a>`id--screen-options-link-wrap` | `#screen-options-link-wrap` | div | Screen Options | 1 |
 | <a id="id--screen-options-wrap"></a>`id--screen-options-wrap` | `#screen-options-wrap` | div | Pagination Number of entries per page: | 1 |
@@ -45,12 +46,6 @@ _63 entries_
 | <a id="id--show-settings-link"></a>`id--show-settings-link` | `#show-settings-link` | button | Screen Options | 1 |
 | <a id="id--table-paging"></a>`id--table-paging` | `#table-paging` | span | 1 of 17 | 1 |
 | <a id="id--the-list"></a>`id--the-list` | `#the-list` | tbody |  | 1 |
-| <a id="id--toplevel_page_e2e-dashboard"></a>`id--toplevel_page_e2e-dashboard` | `#toplevel_page_e2e-dashboard` | li | E2E Dashboard | 1 |
-| <a id="id--toplevel_page_et_divi_options"></a>`id--toplevel_page_et_divi_options` | `#toplevel_page_et_divi_options` | li | Divi | 1 |
-| <a id="id--toplevel_page_vibe-ai"></a>`id--toplevel_page_vibe-ai` | `#toplevel_page_vibe-ai` | li |  | 1 |
-| <a id="id--toplevel_page_wp-mail-smtp"></a>`id--toplevel_page_wp-mail-smtp` | `#toplevel_page_wp-mail-smtp` | li |  | 1 |
-| <a id="id--toplevel_page_wpcode"></a>`id--toplevel_page_wpcode` | `#toplevel_page_wpcode` | li |  | 1 |
-| <a id="id--toplevel_page_wpforms_dev_tools"></a>`id--toplevel_page_wpforms_dev_tools` | `#toplevel_page_wpforms_dev_tools` | li | WPForms Dev | 1 |
 | <a id="id--toplevel_page_wpforms-overview"></a>`id--toplevel_page_wpforms-overview` | `#toplevel_page_wpforms-overview` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
@@ -66,11 +61,11 @@ _63 entries_
 | <a id="id--wpforms_field_3"></a>`id--wpforms_field_3` | `#wpforms_field_3` | th | Your Experience | 1 |
 | <a id="id--wpforms_field_3-foot"></a>`id--wpforms_field_3-foot` | `#wpforms_field_3-foot` | th | Your Experience | 1 |
 | <a id="id--wpforms-datepicker-popover-button"></a>`id--wpforms-datepicker-popover-button` | `#wpforms-datepicker-popover-button` | button | All Time | 1 |
-| <a id="id--wpforms-entries-list"></a>`id--wpforms-entries-list` | `#wpforms-entries-list` | div | Entries Select Form Sullie's Bakery Customer Feedback Survey | 1 |
+| <a id="id--wpforms-entries-list"></a>`id--wpforms-entries-list` | `#wpforms-entries-list` | div | Entries Select Form Sullie’s Bakery Customer Feedback Survey | 1 |
 | <a id="id--wpforms-entries-search-input"></a>`id--wpforms-entries-search-input` | `#wpforms-entries-search-input` | input | Search | 1 |
-| <a id="id--wpforms-entries-table"></a>`id--wpforms-entries-table` | `#wpforms-entries-table` | form | All&n | 1 |
+| <a id="id--wpforms-entries-table"></a>`id--wpforms-entries-table` | `#wpforms-entries-table` | form |  | 1 |
 | <a id="id--wpforms-entries-table-edit-columns-select"></a>`id--wpforms-entries-table-edit-columns-select` | `#wpforms-entries-table-edit-columns-select` | select | Name Email Your Experience How can we improve? How satisfie… | 1 |
-| <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
+| <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | S | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-header"></a>`id--wpforms-header` | `#wpforms-header` | div |  | 1 |
 | <a id="id--wpforms-header-temp"></a>`id--wpforms-header-temp` | `#wpforms-header-temp` | div |  | 1 |
@@ -78,7 +73,9 @@ _63 entries_
 | <a id="id--wpforms-list-table-ext-edit-columns-select-container"></a>`id--wpforms-list-table-ext-edit-columns-select-container` | `#wpforms-list-table-ext-edit-columns-select-container` | div |  | 1 |
 | <a id="id--wpforms-list-table-ext-edit-columns-select-submit"></a>`id--wpforms-list-table-ext-edit-columns-select-submit` | `#wpforms-list-table-ext-edit-columns-select-submit` | button | Save Changes | 1 |
 | <a id="id--wpforms-setup-checklist-menu-styles"></a>`id--wpforms-setup-checklist-menu-styles` | `#wpforms-setup-checklist-menu-styles` | link |  | 1 |
+| <a id="id--wpforms-splash-modal"></a>`id--wpforms-splash-modal` | `#wpforms-splash-modal` | div | What’s New in WPForms We've added some great new features t… | 1 |
 | <a id="id--wpforms-survey-overview-datepicker"></a>`id--wpforms-survey-overview-datepicker` | `#wpforms-survey-overview-datepicker` | input | Cancel Apply | 1 |
+| <a id="id--wpms-setup-checklist-menu-styles"></a>`id--wpms-setup-checklist-menu-styles` | `#wpms-setup-checklist-menu-styles` | link |  | 1 |
 
 ## data-field-id
 
@@ -94,18 +91,21 @@ _3 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="data-field-type--email"></a>`data-field-type--email` | `[data-field-type="email"]` | div | ben.hall155@yahoo.com | 30 |
+| <a id="data-field-type--email"></a>`data-field-type--email` | `[data-field-type="email"]` | div | ben.hall155@example.com | 30 |
 | <a id="data-field-type--name"></a>`data-field-type--name` | `[data-field-type="name"]` | div | Ben Hall | 30 |
 | <a id="data-field-type--rating"></a>`data-field-type--rating` | `[data-field-type="rating"]` | div | Your Experience | 31 |
 
 ## Role-like classes
 
-_51 entries_
+_57 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--wpforms-admin-content"></a>`class--wpforms-admin-content` | `.wpforms-admin-content` | div | Select Form Sullie's Bakery Customer Feedback Survey | 1 |
+| <a id="class--wpforms-admin-content"></a>`class--wpforms-admin-content` | `.wpforms-admin-content` | div | Select Form Sullie’s Bakery Customer Feedback Survey | 1 |
+| <a id="class--wpforms-btn"></a>`class--wpforms-btn` | `.wpforms-btn` | a | Try It Out | 20 |
 | <a id="class--wpforms-btn-blue"></a>`class--wpforms-btn-blue` | `.wpforms-btn-blue` | button | Apply | 1 |
+| <a id="class--wpforms-btn-bordered"></a>`class--wpforms-btn-bordered` | `.wpforms-btn-bordered` | a | Learn More | 10 |
+| <a id="class--wpforms-btn-orange"></a>`class--wpforms-btn-orange` | `.wpforms-btn-orange` | a | Try It Out | 10 |
 | <a id="class--wpforms-datepicker-popover-content"></a>`class--wpforms-datepicker-popover-content` | `.wpforms-datepicker-popover-content` | div | All Time Today | 1 |
 | <a id="class--wpforms-entries-table-edit-columns-select"></a>`class--wpforms-entries-table-edit-columns-select` | `.wpforms-entries-table-edit-columns-select` | select | Name Email Your Experience How can we improve? How satisfie… | 1 |
 | <a id="class--wpforms-filter-date-selector"></a>`class--wpforms-filter-date-selector` | `.wpforms-filter-date-selector` | input | Filter 486 items | 2 |
@@ -129,7 +129,10 @@ _51 entries_
 | <a id="class--wpforms-multiselect-checkbox-search"></a>`class--wpforms-multiselect-checkbox-search` | `.wpforms-multiselect-checkbox-search` | input | Form Fields Name | 1 |
 | <a id="class--wpforms-setup-checklist-menu-item"></a>`class--wpforms-setup-checklist-menu-item` | `.wpforms-setup-checklist-menu-item` | li | Setup Checklist 67% complete | 2 |
 | <a id="class--wpforms-setup-checklist-menu-label"></a>`class--wpforms-setup-checklist-menu-label` | `.wpforms-setup-checklist-menu-label` | span | Setup Checklist | 1 |
+| <a id="class--wpforms-splash-header-content"></a>`class--wpforms-splash-header-content` | `.wpforms-splash-header-content` | div | What’s New in WPForms We've added some great new features t… | 1 |
 | <a id="class--wpforms-splash-modal-open"></a>`class--wpforms-splash-modal-open` | `.wpforms-splash-modal-open` | a |  | 1 |
+| <a id="class--wpforms-splash-section"></a>`class--wpforms-splash-section` | `.wpforms-splash-section` | section | Create QR Codes Without Leaving the Form Builder Point one … | 10 |
+| <a id="class--wpforms-splash-section-content"></a>`class--wpforms-splash-section-content` | `.wpforms-splash-section-content` | div | Create QR Codes Without Leaving the Form Builder Point one … | 10 |
 | <a id="class--wpforms-survey-graph-button"></a>`class--wpforms-survey-graph-button` | `.wpforms-survey-graph-button` | button | Export | 12 |
 | <a id="class--wpforms-survey-graph-content"></a>`class--wpforms-survey-graph-content` | `.wpforms-survey-graph-content` | div |  | 1 |
 | <a id="class--wpforms-survey-graph-content-loader-message"></a>`class--wpforms-survey-graph-content-loader-message` | `.wpforms-survey-graph-content-loader-message` | div | Calculating Survey Results | 1 |

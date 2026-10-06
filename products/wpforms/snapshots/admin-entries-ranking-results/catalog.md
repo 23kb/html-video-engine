@@ -1,11 +1,11 @@
 # Catalog — `admin-entries-ranking-results`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-entries-ranking-results/index.html`
+> Source: `products/wpforms/snapshots/admin-entries-ranking-results/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 102 selector entries across 4 sections.
 
-Provenance anchor form: `snapshots/admin-entries-ranking-results/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-entries-ranking-results/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -89,7 +89,7 @@ _2 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="data-field-type--email"></a>`data-field-type--email` | `[data-field-type="email"]` | div | tomas.silva@gmail.com | 6 |
+| <a id="data-field-type--email"></a>`data-field-type--email` | `[data-field-type="email"]` | div | tomas.silva@example.com | 6 |
 | <a id="data-field-type--ranking"></a>`data-field-type--ranking` | `[data-field-type="ranking"]` | div | Which treats should we bake more often? | 7 |
 
 ## Role-like classes

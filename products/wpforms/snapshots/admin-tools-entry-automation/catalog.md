@@ -1,11 +1,11 @@
 # Catalog — `admin-tools-entry-automation`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-tools-entry-automation/index.html`
+> Source: `products/wpforms/snapshots/admin-tools-entry-automation/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 72 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-tools-entry-automation/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-tools-entry-automation/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

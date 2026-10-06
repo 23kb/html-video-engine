@@ -1,0 +1,850 @@
+{
+  "slug": "sendgrid-create-api-key",
+  "registryPresent": false,
+  "transitions": [],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#closeComplianceSuspendedBannerId",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#closeConsumerTrustSuspendedBannerId",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#id-4hqttk-1",
+        "tag": "button",
+        "text": "TwilioMessaging, Voice, Verify, Video, Flex and more",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#id-4hqttk-3",
+        "tag": "button",
+        "text": "Twilio SegmentCustomer data platform",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#id-4hqttk-5",
+        "tag": "button",
+        "text": "Twilio SendGridEmail",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#id-6lpk6a-1",
+        "tag": "button",
+        "text": "Help & Support",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#id-6lpk6a-2",
+        "tag": "button",
+        "text": "SendGrid Preferences",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#id-6lpk6a-3",
+        "tag": "button",
+        "text": "Setup Guide",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#id-d4ju0h-1",
+        "tag": "button",
+        "text": "View all accounts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#id-g1n0ln-1",
+        "tag": "a",
+        "text": "User Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#id-g1n0ln-2",
+        "tag": "a",
+        "text": "Logout",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_Automation-full-access",
+        "tag": "input",
+        "text": "full",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_Automation-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_BCC-full-access",
+        "tag": "input",
+        "text": "full",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_BCC-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_BCC-read-access",
+        "tag": "input",
+        "text": "read",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_Footer-full-access",
+        "tag": "input",
+        "text": "full",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_Footer-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_Footer-read-access",
+        "tag": "input",
+        "text": "read",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_Geographical-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_Geographical-read-access",
+        "tag": "input",
+        "text": "read",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_Marketing-full-access",
+        "tag": "input",
+        "text": "full",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_Marketing-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_Suppressions-full-access",
+        "tag": "input",
+        "text": "full",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_Suppressions-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_Suppressions-read-access",
+        "tag": "input",
+        "text": "read",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_Timezone-full-access",
+        "tag": "input",
+        "text": "full",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_Timezone-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_Timezone-read-access",
+        "tag": "input",
+        "text": "read",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Alerts-full-access",
+        "tag": "input",
+        "text": "full",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Alerts-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Alerts-read-access",
+        "tag": "input",
+        "text": "read",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing-access-radio",
+        "tag": "input",
+        "text": "Billing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#custom-access-radio",
+        "tag": "input",
+        "text": "Custom",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#full-access-radio",
+        "tag": "input",
+        "text": "Full",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Marketing-full-access",
+        "tag": "input",
+        "text": "full",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Marketing-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nameContainer-input-id",
+        "tag": "input",
+        "text": "WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Partners-full-access",
+        "tag": "input",
+        "text": "full",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Partners-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Partners-read-access",
+        "tag": "input",
+        "text": "read",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Security-full-access",
+        "tag": "input",
+        "text": "full",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Security-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Security-read-access",
+        "tag": "input",
+        "text": "read",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Stats-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Stats-read-access",
+        "tag": "input",
+        "text": "read",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Suppressions-full-access",
+        "tag": "input",
+        "text": "full",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Suppressions-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Suppressions-read-access",
+        "tag": "input",
+        "text": "read",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#talon",
+        "tag": "input",
+        "text": "{\"0\":0,\"2\":2143639967,\"3\":\"86f999ff50e76a626ff245fc248e5953…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Teammates-full-access",
+        "tag": "input",
+        "text": "full",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Teammates-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Teammates-read-access",
+        "tag": "input",
+        "text": "read",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Tracking-no-access",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Tracking-read-access",
+        "tag": "input",
+        "text": "read",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#_hjSafeContext_27763536",
+        "tag": "iframe",
+        "text": "_hjSafeContext",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#account-region-error",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Ads",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#api",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#banner_ad",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Barbershop-UI-Guide",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#basemockui",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bg-icon",
+        "tag": "rect",
+        "text": "",
+        "count": 5,
+        "hidden": false
+      },
+      {
+        "sel": "#Check",
+        "tag": "polygon",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Circle",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#globalNavBar",
+        "tag": "div",
+        "text": "My SendGrid Account Friendly Name Trial: API & MC Upgrade S…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#group",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Group",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Group_1_",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#icon",
+        "tag": "g",
+        "text": "",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": "#Icon",
+        "tag": "g",
+        "text": "",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": "#icon-api",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#id-4hqttk",
+        "tag": "div",
+        "text": "TwilioMessaging, Voice, Verify, Video, Flex and moreTwilio …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#id-6lpk6a",
+        "tag": "div",
+        "text": "Help & SupportSendGrid Preferences Setup Guide",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#id-d4ju0h",
+        "tag": "div",
+        "text": "View all accounts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#id-g1n0ln",
+        "tag": "div",
+        "text": "User SettingsLogout",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#items",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Layer_1",
+        "tag": "svg",
+        "text": "",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": "#marketing-legacy",
+        "tag": "g",
+        "text": "",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#marketing-new",
+        "tag": "g",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#mockUI",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Nav",
+        "tag": "g",
+        "text": "",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#Nav_1_",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#nav_x2F_tiara",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Navbar",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#NeutralIcon-17",
+        "tag": "title",
+        "text": "(information)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Outline_Icons",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Outline_Icons_1_",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Oval",
+        "tag": "circle",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Page-1",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Path",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Rectangle",
+        "tag": "path",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#Rectangle_1_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Rectangle_2_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Rectangle_3_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Rectangle_4_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Rectangle_6_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Rectangle_7_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Rectangle_8_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shape",
+        "tag": "path",
+        "text": "",
+        "count": 20,
+        "hidden": false
+      },
+      {
+        "sel": "#Shape",
+        "tag": "path",
+        "text": "",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": "#Shape_1_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Shape_2_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Stats",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Stroke",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Stroke_1_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Stroke_2_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Stroke_3_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Stroke_4_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Stroke_5_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Stroke_6_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#Stroke_7_",
+        "tag": "path",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#SupportIcon-4",
+        "tag": "title",
+        "text": "Support action options",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#Symbols",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#topbar",
+        "tag": "div",
+        "text": "My SendGrid Account Friendly Name Trial: API & MC Upgrade S…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-settings",
+        "tag": "div",
+        "text": "User settings optionsMuhammad sulliesullie@example.comUser …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#UserIcon-12",
+        "tag": "title",
+        "text": "User settings options",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#UserIcon-14",
+        "tag": "title",
+        "text": "User settings options",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#validation",
+        "tag": "g",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

@@ -1,11 +1,11 @@
 # Catalog — `admin-tools-ai-mcp`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-tools-ai-mcp/index.html`
+> Source: `products/wpforms/snapshots/admin-tools-ai-mcp/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 47 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-tools-ai-mcp/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-tools-ai-mcp/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

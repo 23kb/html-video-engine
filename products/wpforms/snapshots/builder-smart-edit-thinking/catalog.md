@@ -1,11 +1,11 @@
 # Catalog — `builder-smart-edit-thinking`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/builder-smart-edit-thinking/index.html`
+> Source: `products/wpforms/snapshots/builder-smart-edit-thinking/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 424 selector entries across 6 sections.
 
-Provenance anchor form: `snapshots/builder-smart-edit-thinking/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/builder-smart-edit-thinking/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -256,7 +256,7 @@ _294 entries_
 | <a id="id--wpforms-field-option-row-2-sublabel_hide"></a>`id--wpforms-field-option-row-2-sublabel_hide` | `#wpforms-field-option-row-2-sublabel_hide` | div | Hide Sublabels | 1 |
 | <a id="id--wpforms-field-option-row-2-unique_answer"></a>`id--wpforms-field-option-row-2-unique_answer` | `#wpforms-field-option-row-2-unique_answer` | div | Require unique answer | 1 |
 | <a id="id--wpforms-field-option-row-3-calculation_code"></a>`id--wpforms-field-option-row-3-calculation_code` | `#wpforms-field-option-row-3-calculation_code` | div | Formula | 1 |
-| <a id="id--wpforms-field-option-row-3-calculation_is_enabled"></a>`id--wpforms-field-option-row-3-calculation_is_enabled` | `#wpforms-field-option-row-3-calculation_is_enabled` | div | Enable Calcula | 1 |
+| <a id="id--wpforms-field-option-row-3-calculation_is_enabled"></a>`id--wpforms-field-option-row-3-calculation_is_enabled` | `#wpforms-field-option-row-3-calculation_is_enabled` | div | Enable Cal | 1 |
 | <a id="id--wpforms-field-option-row-3-conditional_logic"></a>`id--wpforms-field-option-row-3-conditional_logic` | `#wpforms-field-option-row-3-conditional_logic` | div |  | 1 |
 | <a id="id--wpforms-field-option-row-3-css"></a>`id--wpforms-field-option-row-3-css` | `#wpforms-field-option-row-3-css` | div | CSS Classes Show Layouts | 1 |
 | <a id="id--wpforms-field-option-row-3-default_value"></a>`id--wpforms-field-option-row-3-default_value` | `#wpforms-field-option-row-3-default_value` | div | Default Value | 1 |
@@ -279,7 +279,7 @@ _294 entries_
 | <a id="id--wpforms-field-option-row-3-survey"></a>`id--wpforms-field-option-row-3-survey` | `#wpforms-field-option-row-3-survey` | div | Enable Survey Reporting | 1 |
 | <a id="id--wpforms-field-option-row-3-unique_answer"></a>`id--wpforms-field-option-row-3-unique_answer` | `#wpforms-field-option-row-3-unique_answer` | div | Require unique answer | 1 |
 | <a id="id--wpforms-field-option-row-4-calculation_code"></a>`id--wpforms-field-option-row-4-calculation_code` | `#wpforms-field-option-row-4-calculation_code` | div | Formula | 1 |
-| <a id="id--wpforms-field-option-row-4-calculation_is_enabled"></a>`id--wpforms-field-option-row-4-calculation_is_enabled` | `#wpforms-field-option-row-4-calculation_is_enabled` | div | Enable Calcula | 1 |
+| <a id="id--wpforms-field-option-row-4-calculation_is_enabled"></a>`id--wpforms-field-option-row-4-calculation_is_enabled` | `#wpforms-field-option-row-4-calculation_is_enabled` | div | Enable Cal | 1 |
 | <a id="id--wpforms-field-option-row-4-conditional_logic"></a>`id--wpforms-field-option-row-4-conditional_logic` | `#wpforms-field-option-row-4-conditional_logic` | div |  | 1 |
 | <a id="id--wpforms-field-option-row-4-css"></a>`id--wpforms-field-option-row-4-css` | `#wpforms-field-option-row-4-css` | div | CSS Classes Show Layouts | 1 |
 | <a id="id--wpforms-field-option-row-4-default_value"></a>`id--wpforms-field-option-row-4-default_value` | `#wpforms-field-option-row-4-default_value` | div | Default Value | 1 |
@@ -302,7 +302,7 @@ _294 entries_
 | <a id="id--wpforms-help"></a>`id--wpforms-help` | `#wpforms-help` | button | Help | 1 |
 | <a id="id--wpforms-icon-choices-custom-properties"></a>`id--wpforms-icon-choices-custom-properties` | `#wpforms-icon-choices-custom-properties` | link |  | 1 |
 | <a id="id--wpforms-panel-fields"></a>`id--wpforms-panel-fields` | `#wpforms-panel-fields` | div |  | 1 |
-| <a id="id--wpforms-panels-toggle"></a>`id--wpforms-panels-toggle` | `#wpforms-panels-toggle` | div | Setup Fields S | 1 |
+| <a id="id--wpforms-panels-toggle"></a>`id--wpforms-panels-toggle` | `#wpforms-panels-toggle` | div | Setup Fields | 1 |
 | <a id="id--wpforms-preview-btn"></a>`id--wpforms-preview-btn` | `#wpforms-preview-btn` | a | Preview | 1 |
 | <a id="id--wpforms-preview-dropdown-btn"></a>`id--wpforms-preview-dropdown-btn` | `#wpforms-preview-dropdown-btn` | button | More Preview Options | 1 |
 | <a id="id--wpforms-preview-dropdown-menu"></a>`id--wpforms-preview-dropdown-menu` | `#wpforms-preview-dropdown-menu` | ul |  | 1 |
@@ -454,9 +454,9 @@ _75 entries_
 | <a id="class--wpforms-panel-sidebar"></a>`class--wpforms-panel-sidebar` | `.wpforms-panel-sidebar` | div | Add Fields Field Options | 1 |
 | <a id="class--wpforms-panel-sidebar-content"></a>`class--wpforms-panel-sidebar-content` | `.wpforms-panel-sidebar-content` | div |  | 1 |
 | <a id="class--wpforms-panel-sidebar-toggle"></a>`class--wpforms-panel-sidebar-toggle` | `.wpforms-panel-sidebar-toggle` | div |  | 1 |
-| <a id="class--wpforms-panels-toggle"></a>`class--wpforms-panels-toggle` | `.wpforms-panels-toggle` | div | Setup Fields S | 1 |
+| <a id="class--wpforms-panels-toggle"></a>`class--wpforms-panels-toggle` | `.wpforms-panels-toggle` | div | Setup Fields | 1 |
 | <a id="class--wpforms-preview-dropdown-addon-active"></a>`class--wpforms-preview-dropdown-addon-active` | `.wpforms-preview-dropdown-addon-active` | button | Conversational Form | 3 |
-| <a id="class--wpforms-preview-dropdown-item"></a>`class--wpforms-preview-dropdown-item` | `.wpforms-preview-dropdown-item` | li | Standard | 4 |
+| <a id="class--wpforms-preview-dropdown-item"></a>`class--wpforms-preview-dropdown-item` | `.wpforms-preview-dropdown-item` | li | Stan | 4 |
 | <a id="class--wpforms-preview-dropdown-label"></a>`class--wpforms-preview-dropdown-label` | `.wpforms-preview-dropdown-label` | span | Standard Form Preview | 4 |
 | <a id="class--wpforms-preview-dropdown-link"></a>`class--wpforms-preview-dropdown-link` | `.wpforms-preview-dropdown-link` | a | Standard Form Preview | 4 |
 | <a id="class--wpforms-quiz-answer-required-content"></a>`class--wpforms-quiz-answer-required-content` | `.wpforms-quiz-answer-required-content` | span | Quiz Answer Required | 2 |

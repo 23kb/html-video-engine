@@ -1,14 +1,7 @@
 {
   "slug": "frontend-repeater-blocks",
   "registryPresent": true,
-  "transitions": [
-    {
-      "label": "activate-canvas-field",
-      "event": "click",
-      "selector": "#wpforms-2289-field_1-container",
-      "count": 1
-    }
-  ],
+  "transitions": [],
   "nav": [
     {
       "target": "builder-fields",
@@ -23,6 +16,13 @@
   ],
   "groups": {
     "actions": [
+      {
+        "sel": "#wp-skip-link",
+        "tag": "a",
+        "text": "Skip to content",
+        "count": 1,
+        "hidden": false
+      },
       {
         "sel": "#wpforms-2289",
         "tag": "div",
@@ -42,9 +42,7 @@
         "tag": "button",
         "text": "Add",
         "count": 1,
-        "hidden": false,
-        "wired": "activate-canvas-field",
-        "wiredEvent": "click"
+        "hidden": false
       },
       {
         "sel": ".wpforms-submit-container",
@@ -56,13 +54,6 @@
     ],
     "tabsNav": [],
     "inputs": [
-      {
-        "sel": "#wp-block-search__input-1",
-        "tag": "input",
-        "text": "",
-        "count": 1,
-        "hidden": true
-      },
       {
         "sel": "#wpforms-2289-field_2",
         "tag": "input",
@@ -76,6 +67,13 @@
         "text": "1",
         "count": 1,
         "hidden": false
+      },
+      {
+        "sel": ".wpforms-field-repeater-clone-list",
+        "tag": "input",
+        "text": "[]",
+        "count": 1,
+        "hidden": true
       }
     ],
     "fields": [
@@ -107,66 +105,32 @@
         "hidden": false
       }
     ],
-    "panelsModals": [],
+    "panelsModals": [
+      {
+        "sel": "#modal-1",
+        "tag": "div",
+        "text": "About Rosa’s Garden Co. Bakery Favorites Survey Catering Re…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#modal-1-content",
+        "tag": "div",
+        "text": "About Rosa’s Garden Co. Bakery Favorites Survey Catering Re…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
     "other": [
       {
-        "sel": "#admin-bar-inline-css",
+        "sel": "#block-style-variation-styles-inline-css",
         "tag": "link",
         "text": "",
         "count": 1,
         "hidden": true
       },
       {
-        "sel": "#block-2",
-        "tag": "div",
-        "text": "SearchSearch",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#block-3",
-        "tag": "div",
-        "text": "Recent PostsSullie’s World – Blog Sullie’s first blog",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#block-4",
-        "tag": "div",
-        "text": "Recent Comments",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#content-area",
-        "tag": "div",
-        "text": "Order Form Preview by Sullie Baker | Sep 25, 2026 This is a…",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#divi-style-inline-inline-css",
-        "tag": "link",
-        "text": "",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#et-boc",
-        "tag": "div",
-        "text": "Order Form Preview by Sullie Baker | Sep 25, 2026 This is a…",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#et-main-area",
-        "tag": "div",
-        "text": "Order Form Preview by Sullie Baker | Sep 25, 2026 This is a…",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#fit-vids-style",
+        "sel": "#core-block-supports-inline-css",
         "tag": "link",
         "text": "",
         "count": 1,
@@ -180,37 +144,23 @@
         "hidden": true
       },
       {
-        "sel": "#left-area",
-        "tag": "div",
-        "text": "Order Form Preview by Sullie Baker | Sep 25, 2026 This is a…",
+        "sel": "#twentytwentyfive-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp--skip-link--target",
+        "tag": "main",
+        "text": "Order Form Preview Written by Sullie Baker in This is a pre…",
         "count": 1,
         "hidden": false
       },
       {
-        "sel": "#main-content",
-        "tag": "div",
-        "text": "Order Form Preview by Sullie Baker | Sep 25, 2026 This is a…",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#page-container",
-        "tag": "div",
-        "text": "Order Form Preview by Sullie Baker | Sep 25, 2026 This is a…",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#post-2289",
-        "tag": "article",
-        "text": "Order Form Preview by Sullie Baker | Sep 25, 2026 This is a…",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#sidebar",
-        "tag": "div",
-        "text": "SearchSearchRecent PostsSullie’s World – Blog Sullie’s firs…",
+        "sel": "#wp-block-columns-inline-css",
+        "tag": "link",
+        "text": "",
         "count": 1,
         "hidden": true
       },
@@ -229,20 +179,6 @@
         "hidden": true
       },
       {
-        "sel": "#wp-block-latest-comments-inline-css",
-        "tag": "link",
-        "text": "",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#wp-block-latest-posts-inline-css",
-        "tag": "link",
-        "text": "",
-        "count": 1,
-        "hidden": true
-      },
-      {
         "sel": "#wp-block-library-inline-css",
         "tag": "link",
         "text": "",
@@ -250,7 +186,105 @@
         "hidden": true
       },
       {
-        "sel": "#wp-block-search-inline-css",
+        "sel": "#wp-block-navigation-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-navigation-link-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-page-list-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-paragraph-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-post-author-name-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-post-content-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-post-date-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-post-navigation-link-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-post-template-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-post-title-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-site-title-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-spacer-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-template-skip-link-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
         "tag": "link",
         "text": "",
         "count": 1,

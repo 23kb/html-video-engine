@@ -1,0 +1,448 @@
+{
+  "slug": "admin-settings-access",
+  "registryPresent": true,
+  "transitions": [],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    },
+    {
+      "target": "admin-settings-email",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=email\"]"
+    },
+    {
+      "target": "admin-settings-captcha",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=captcha\"]"
+    },
+    {
+      "target": "admin-settings-validation",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=validation\"]"
+    },
+    {
+      "target": "admin-settings-payments",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=payments\"]"
+    },
+    {
+      "target": "admin-settings-integrations",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=integrations\"]"
+    },
+    {
+      "target": "admin-settings-geolocation",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=geolocation\"]"
+    },
+    {
+      "target": "admin-settings-access",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=access\"]"
+    },
+    {
+      "target": "admin-settings-misc",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=misc\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".choices__button",
+        "tag": "button",
+        "text": "Remove item",
+        "count": 11,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-btn",
+        "tag": "button",
+        "text": "Save Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#wpforms-setting-wpforms_create_forms",
+        "tag": "select",
+        "text": "Author",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-wpforms_delete_entries_others_forms",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-wpforms_delete_entries_own_forms",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-wpforms_delete_others_forms",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-wpforms_delete_own_forms",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-wpforms_edit_entries_others_forms",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-wpforms_edit_entries_own_forms",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-wpforms_edit_others_forms",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-wpforms_edit_own_forms",
+        "tag": "select",
+        "text": "Author",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-wpforms_view_entries_others_forms",
+        "tag": "select",
+        "text": "EditorSubscriber",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-wpforms_view_entries_own_forms",
+        "tag": "select",
+        "text": "ContributorEditor",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-wpforms_view_others_forms",
+        "tag": "select",
+        "text": "EditorSubscriber",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-wpforms_view_own_forms",
+        "tag": "select",
+        "text": "AuthorContributorEditor",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms All Forms Add New Form Entries Payments NEW! Form T…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-access-entries-heading",
+        "tag": "div",
+        "text": "Entries Select the user roles that are allowed to manage en…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-access-forms-heading",
+        "tag": "div",
+        "text": "Forms Select the user roles that are allowed to manage form…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-access-heading",
+        "tag": "div",
+        "text": "Access By default, all permissions are provided only to adm…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-create_forms",
+        "tag": "div",
+        "text": "Create Forms Author Remove item Can create new forms.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-delete_entries",
+        "tag": "div",
+        "text": "Delete Entries Can delete entries of forms created by thems…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-delete_forms",
+        "tag": "div",
+        "text": "Delete Forms Can delete forms created by themselves. Can de…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-edit_entries",
+        "tag": "div",
+        "text": "Edit Entries Can edit entries of forms created by themselve…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-edit_forms",
+        "tag": "div",
+        "text": "Edit Forms Author Remove item Can edit forms created by the…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-view_entries",
+        "tag": "div",
+        "text": "View Entries Contributor Remove item Editor Remove item Can…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-view_forms",
+        "tag": "div",
+        "text": "View Forms Author Remove item Contributor Remove item Edito…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-settings",
+        "tag": "div",
+        "text": "General Email CAPTCHA Validation Payments Integrations Geol…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "ContributorEditorSubscriber",
+        "count": 13,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "Access By default, all permissions are provided only to adm…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-setting-field",
+        "tag": "span",
+        "text": "Access By default, all permissions are provided only to adm…",
+        "count": 10,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setting-label",
+        "tag": "span",
+        "text": "Create Forms",
+        "count": 7,
+        "hidden": false
+      }
+    ]
+  }
+}

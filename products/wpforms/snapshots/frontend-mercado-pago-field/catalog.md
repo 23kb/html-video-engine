@@ -1,11 +1,11 @@
 # Catalog — `frontend-mercado-pago-field`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/frontend-mercado-pago-field/index.html`
+> Source: `products/wpforms/snapshots/frontend-mercado-pago-field/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 71 selector entries across 4 sections.
 
-Provenance anchor form: `snapshots/frontend-mercado-pago-field/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/frontend-mercado-pago-field/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

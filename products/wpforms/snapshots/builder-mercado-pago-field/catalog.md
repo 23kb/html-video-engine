@@ -1,28 +1,22 @@
 # Catalog — `builder-mercado-pago-field`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/builder-mercado-pago-field/index.html`
+> Source: `products/wpforms/snapshots/builder-mercado-pago-field/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 1160 selector entries across 6 sections.
+> 1154 selector entries across 6 sections.
 
-Provenance anchor form: `snapshots/builder-mercado-pago-field/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/builder-mercado-pago-field/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_1006 entries_
+_1000 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="id--add-fields"></a>`id--add-fields` | `#add-fields` | li | Add Fields | 1 |
-| <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1` | div | Contact | 1 |
-| <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2` | div | Contact Us | 1 |
-| <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-3"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-3` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-3` | div | Numbers Only Test Page | 1 |
-| <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-4"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-4` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-4` | div | Page - Frontend Contact Fixture | 1 |
-| <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-5"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-5` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-5` | div | Sample Page | 1 |
-| <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-6"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-6` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-6` | div | Search for a page | 1 |
 | <a id="id--et-ajax-saving"></a>`id--et-ajax-saving` | `#et-ajax-saving` | div |  | 1 |
 | <a id="id--field-options"></a>`id--field-options` | `#field-options` | li | Field Options | 1 |
 | <a id="id--link-modal-title"></a>`id--link-modal-title` | `#link-modal-title` | h1 | Insert/edit link | 1 |
@@ -829,7 +823,7 @@ _1006 entries_
 | <a id="id--wpforms-ai-chat-fab"></a>`id--wpforms-ai-chat-fab` | `#wpforms-ai-chat-fab` | button |  | 1 |
 | <a id="id--wpforms-ai-chat-modal"></a>`id--wpforms-ai-chat-modal` | `#wpforms-ai-chat-modal` | div | WPForms AI | 1 |
 | <a id="id--wpforms-builder"></a>`id--wpforms-builder` | `#wpforms-builder` | div |  | 1 |
-| <a id="id--wpforms-builder-form"></a>`id--wpforms-builder-form` | `#wpforms-builder-form` | form | Now editing | 1 |
+| <a id="id--wpforms-builder-form"></a>`id--wpforms-builder-form` | `#wpforms-builder-form` | form |  | 1 |
 | <a id="id--wpforms-builder-help"></a>`id--wpforms-builder-help` | `#wpforms-builder-help` | div |  | 1 |
 | <a id="id--wpforms-builder-help-categories"></a>`id--wpforms-builder-help-categories` | `#wpforms-builder-help-categories` | div | Getting Started | 1 |
 | <a id="id--wpforms-builder-help-close"></a>`id--wpforms-builder-help-close` | `#wpforms-builder-help-close` | div |  | 1 |
@@ -990,7 +984,7 @@ _1006 entries_
 | <a id="id--wpforms-field-option-row-3-sublabel_hide"></a>`id--wpforms-field-option-row-3-sublabel_hide` | `#wpforms-field-option-row-3-sublabel_hide` | div | Hide Sublabels | 1 |
 | <a id="id--wpforms-field-option-row-3-unique_answer"></a>`id--wpforms-field-option-row-3-unique_answer` | `#wpforms-field-option-row-3-unique_answer` | div | Require unique answer | 1 |
 | <a id="id--wpforms-field-option-row-4-calculation_code"></a>`id--wpforms-field-option-row-4-calculation_code` | `#wpforms-field-option-row-4-calculation_code` | div | Formula | 1 |
-| <a id="id--wpforms-field-option-row-4-calculation_is_enabled"></a>`id--wpforms-field-option-row-4-calculation_is_enabled` | `#wpforms-field-option-row-4-calculation_is_enabled` | div | Enable Calcul | 1 |
+| <a id="id--wpforms-field-option-row-4-calculation_is_enabled"></a>`id--wpforms-field-option-row-4-calculation_is_enabled` | `#wpforms-field-option-row-4-calculation_is_enabled` | div | Enable Ca | 1 |
 | <a id="id--wpforms-field-option-row-4-conditional_logic"></a>`id--wpforms-field-option-row-4-conditional_logic` | `#wpforms-field-option-row-4-conditional_logic` | div |  | 1 |
 | <a id="id--wpforms-field-option-row-4-css"></a>`id--wpforms-field-option-row-4-css` | `#wpforms-field-option-row-4-css` | div | CSS Classes Show Layouts | 1 |
 | <a id="id--wpforms-field-option-row-4-description"></a>`id--wpforms-field-option-row-4-description` | `#wpforms-field-option-row-4-description` | div | Description | 1 |
@@ -1011,7 +1005,7 @@ _1006 entries_
 | <a id="id--wpforms-help"></a>`id--wpforms-help` | `#wpforms-help` | button | Help | 1 |
 | <a id="id--wpforms-icon-choices-custom-properties"></a>`id--wpforms-icon-choices-custom-properties` | `#wpforms-icon-choices-custom-properties` | link |  | 1 |
 | <a id="id--wpforms-panel-fields"></a>`id--wpforms-panel-fields` | `#wpforms-panel-fields` | div |  | 1 |
-| <a id="id--wpforms-panels-toggle"></a>`id--wpforms-panels-toggle` | `#wpforms-panels-toggle` | div | Setup Fields S | 1 |
+| <a id="id--wpforms-panels-toggle"></a>`id--wpforms-panels-toggle` | `#wpforms-panels-toggle` | div | Setup Fields | 1 |
 | <a id="id--wpforms-paypal-commerce-buttons-wrapper"></a>`id--wpforms-paypal-commerce-buttons-wrapper` | `#wpforms-paypal-commerce-buttons-wrapper` | div |  | 1 |
 | <a id="id--wpforms-preview-btn"></a>`id--wpforms-preview-btn` | `#wpforms-preview-btn` | a | Preview | 1 |
 | <a id="id--wpforms-preview-dropdown-btn"></a>`id--wpforms-preview-dropdown-btn` | `#wpforms-preview-dropdown-btn` | button | More Preview Options | 1 |
@@ -1192,10 +1186,10 @@ _97 entries_
 | <a id="class--wpforms-panel-sidebar"></a>`class--wpforms-panel-sidebar` | `.wpforms-panel-sidebar` | div | Add Fields Field Options | 1 |
 | <a id="class--wpforms-panel-sidebar-content"></a>`class--wpforms-panel-sidebar-content` | `.wpforms-panel-sidebar-content` | div |  | 1 |
 | <a id="class--wpforms-panel-sidebar-toggle"></a>`class--wpforms-panel-sidebar-toggle` | `.wpforms-panel-sidebar-toggle` | div |  | 1 |
-| <a id="class--wpforms-panels-toggle"></a>`class--wpforms-panels-toggle` | `.wpforms-panels-toggle` | div | Setup Fields S | 1 |
+| <a id="class--wpforms-panels-toggle"></a>`class--wpforms-panels-toggle` | `.wpforms-panels-toggle` | div | Setup Fields | 1 |
 | <a id="class--wpforms-paypal-commerce-button"></a>`class--wpforms-paypal-commerce-button` | `.wpforms-paypal-commerce-button` | div |  | 3 |
 | <a id="class--wpforms-preview-dropdown-addon-active"></a>`class--wpforms-preview-dropdown-addon-active` | `.wpforms-preview-dropdown-addon-active` | button | Conversational Form | 3 |
-| <a id="class--wpforms-preview-dropdown-item"></a>`class--wpforms-preview-dropdown-item` | `.wpforms-preview-dropdown-item` | li | Standa | 4 |
+| <a id="class--wpforms-preview-dropdown-item"></a>`class--wpforms-preview-dropdown-item` | `.wpforms-preview-dropdown-item` | li | St | 4 |
 | <a id="class--wpforms-preview-dropdown-label"></a>`class--wpforms-preview-dropdown-label` | `.wpforms-preview-dropdown-label` | span | Standard Form Preview | 4 |
 | <a id="class--wpforms-preview-dropdown-link"></a>`class--wpforms-preview-dropdown-link` | `.wpforms-preview-dropdown-link` | a | Standard Form Preview | 4 |
 | <a id="class--wpforms-save-resume-button"></a>`class--wpforms-save-resume-button` | `.wpforms-save-resume-button` | a | Save and Resume Later | 1 |

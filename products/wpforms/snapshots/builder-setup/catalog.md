@@ -1,23 +1,21 @@
 # Catalog — `builder-setup`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/builder-setup/index.html`
+> Source: `products/wpforms/snapshots/builder-setup/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 2929 selector entries across 3 sections.
+> 2927 selector entries across 3 sections.
 
-Provenance anchor form: `snapshots/builder-setup/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/builder-setup/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_2889 entries_
+_2887 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1` | div | master form embedded | 1 |
-| <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2` | div | Sample Page | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--link-modal-title"></a>`id--link-modal-title` | `#link-modal-title` | h1 | Insert/edit link | 1 |

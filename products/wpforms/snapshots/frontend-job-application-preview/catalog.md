@@ -1,11 +1,11 @@
 # Catalog — `frontend-job-application-preview`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/frontend-job-application-preview/index.html`
+> Source: `products/wpforms/snapshots/frontend-job-application-preview/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 301 selector entries across 4 sections.
 
-Provenance anchor form: `snapshots/frontend-job-application-preview/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/frontend-job-application-preview/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

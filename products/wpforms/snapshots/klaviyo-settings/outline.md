@@ -6,7 +6,7 @@
 _Selectors validated against the live DOM — every one resolves._
 
 ### Actions (buttons / links)
-- `#account-switcher-toggle` — button — "SU Sullie's Flowers"
+- `#account-switcher-toggle` — button — "SU Sullie's Bakery"
 - `#Analytics-accordion` — button — "Analytics"
 - `#app-shell-header-logo-link` — a — "Dashboard"
 - `#app-shell-notification-toggle` — button — "0 unread notifications"
@@ -19,7 +19,7 @@ _Selectors validated against the live DOM — every one resolves._
 - _… +2 more — see catalog.md_
 
 ### Inputs & controls
-- `#email` — input — "sullie@wpforms.com"
+- `#email` — input — "sullie@example.com"
 - `#firstName` — input — "Sullie"
 - `#lastName` — input — "Eloso"
 - `#newPassword1` — input

@@ -1,23 +1,22 @@
 # Catalog — `builder-field-options-payment-fields`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/builder-field-options-payment-fields/index.html`
+> Source: `products/wpforms/snapshots/builder-field-options-payment-fields/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 495 selector entries across 6 sections.
+> 494 selector entries across 6 sections.
 
-Provenance anchor form: `snapshots/builder-field-options-payment-fields/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/builder-field-options-payment-fields/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_353 entries_
+_352 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="id--add-fields"></a>`id--add-fields` | `#add-fields` | li | Add Fields | 1 |
-| <a id="id--choices--wpforms-field-option-16-allowed_coupons-item-choice-1"></a>`id--choices--wpforms-field-option-16-allowed_coupons-item-choice-1` | `#choices--wpforms-field-option-16-allowed_coupons-item-choice-1` | div | Oliver Norton | 1 |
 | <a id="id--field-options"></a>`id--field-options` | `#field-options` | li | Field Options | 1 |
 | <a id="id--ui-id-1"></a>`id--ui-id-1` | `#ui-id-1` | ul |  | 1 |
 | <a id="id--ui-id-2"></a>`id--ui-id-2` | `#ui-id-2` | ul |  | 1 |

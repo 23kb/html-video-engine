@@ -1,11 +1,11 @@
 # Catalog — `admin-forms-overview-analytics`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-forms-overview-analytics/index.html`
+> Source: `products/wpforms/snapshots/admin-forms-overview-analytics/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 95 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-forms-overview-analytics/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-forms-overview-analytics/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -55,7 +55,7 @@ _60 entries_
 | <a id="id--the-list"></a>`id--the-list` | `#the-list` | tbody |  | 1 |
 | <a id="id--toplevel_page_e2e-dashboard"></a>`id--toplevel_page_e2e-dashboard` | `#toplevel_page_e2e-dashboard` | li | E2E Dashboard | 1 |
 | <a id="id--toplevel_page_vibe-ai"></a>`id--toplevel_page_vibe-ai` | `#toplevel_page_vibe-ai` | li |  | 1 |
-| <a id="id--toplevel_page_wpforms_dev_tools"></a>`id--toplevel_page_wpforms_dev_tools` | `#toplevel_page_wpforms_dev_tools` | li | WPForms Dev WPForms | 1 |
+| <a id="id--toplevel_page_wpforms_dev_tools"></a>`id--toplevel_page_wpforms_dev_tools` | `#toplevel_page_wpforms_dev_tools` | li | WPForms Dev WPForm | 1 |
 | <a id="id--toplevel_page_wpforms-overview"></a>`id--toplevel_page_wpforms-overview` | `#toplevel_page_wpforms-overview` | li |  | 1 |
 | <a id="id--view_show_form_templates"></a>`id--view_show_form_templates` | `#view_show_form_templates` | input | Show form templates | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
@@ -66,7 +66,7 @@ _60 entries_
 | <a id="id--wp-view-transitions-admin-inline-css"></a>`id--wp-view-transitions-admin-inline-css` | `#wp-view-transitions-admin-inline-css` | link |  | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |
-| <a id="id--wpforms-forms-table-edit-columns-select"></a>`id--wpforms-forms-table-edit-columns-select` | `#wpforms-forms-table-edit-columns-select` | select | ID Name Tags Author Shortcode Date Entries Views | 1 |
+| <a id="id--wpforms-forms-table-edit-columns-select"></a>`id--wpforms-forms-table-edit-columns-select` | `#wpforms-forms-table-edit-columns-select` | select | ID Name Tags Author Shortcode Date Entries View | 1 |
 | <a id="id--wpforms-header"></a>`id--wpforms-header` | `#wpforms-header` | div |  | 1 |
 | <a id="id--wpforms-header-temp"></a>`id--wpforms-header-temp` | `#wpforms-header-temp` | div |  | 1 |
 | <a id="id--wpforms-list-table-ext-edit-columns-cog"></a>`id--wpforms-list-table-ext-edit-columns-cog` | `#wpforms-list-table-ext-edit-columns-cog` | a |  | 1 |
@@ -85,7 +85,7 @@ _35 entries_
 | --- | --- | --- | --- | --- |
 | <a id="class--choices__input--cloned"></a>`class--choices__input--cloned` | `.choices__input--cloned` | input | No tags to choose from Filter | 2 |
 | <a id="class--choices__list--dropdown"></a>`class--choices__list--dropdown` | `.choices__list--dropdown` | div | No tags to choose from | 2 |
-| <a id="class--wpforms-admin-content"></a>`class--wpforms-admin-content` | `.wpforms-admin-content` | div | Search Forms: | 1 |
+| <a id="class--wpforms-admin-content"></a>`class--wpforms-admin-content` | `.wpforms-admin-content` | div | Sear | 1 |
 | <a id="class--wpforms-analytics-conversion-link"></a>`class--wpforms-analytics-conversion-link` | `.wpforms-analytics-conversion-link` | a | 33.5% | 20 |
 | <a id="class--wpforms-analytics-interactions-link"></a>`class--wpforms-analytics-interactions-link` | `.wpforms-analytics-interactions-link` | a | 1,882 | 20 |
 | <a id="class--wpforms-analytics-views-link"></a>`class--wpforms-analytics-views-link` | `.wpforms-analytics-views-link` | a | 170 | 20 |
@@ -101,11 +101,11 @@ _35 entries_
 | <a id="class--wpforms-flyout-item-2"></a>`class--wpforms-flyout-item-2` | `.wpforms-flyout-item-2` | a | Support &amp; Docs | 1 |
 | <a id="class--wpforms-flyout-label"></a>`class--wpforms-flyout-label` | `.wpforms-flyout-label` | div | Suggest a Feature | 4 |
 | <a id="class--wpforms-forms-search-box-term"></a>`class--wpforms-forms-search-box-term` | `.wpforms-forms-search-box-term` | input | Search Forms All&nbsp; (39) \| Forms&nbsp; (39) \| | 1 |
-| <a id="class--wpforms-forms-table-edit-columns-select"></a>`class--wpforms-forms-table-edit-columns-select` | `.wpforms-forms-table-edit-columns-select` | select | ID Name Tags Author Shortcode Date Entries Views | 1 |
+| <a id="class--wpforms-forms-table-edit-columns-select"></a>`class--wpforms-forms-table-edit-columns-select` | `.wpforms-forms-table-edit-columns-select` | select | ID Name Tags Author Shortcode Date Entries View | 1 |
 | <a id="class--wpforms-header"></a>`class--wpforms-header` | `.wpforms-header` | div |  | 1 |
 | <a id="class--wpforms-header-show-screen-options"></a>`class--wpforms-header-show-screen-options` | `.wpforms-header-show-screen-options` | div |  | 1 |
 | <a id="class--wpforms-link"></a>`class--wpforms-link` | `.wpforms-link` | a |  | 4 |
-| <a id="class--wpforms-list-table-ext-edit-columns-select"></a>`class--wpforms-list-table-ext-edit-columns-select` | `.wpforms-list-table-ext-edit-columns-select` | select | ID Name Tags Author Shortcode Date Entries Views | 1 |
+| <a id="class--wpforms-list-table-ext-edit-columns-select"></a>`class--wpforms-list-table-ext-edit-columns-select` | `.wpforms-list-table-ext-edit-columns-select` | select | ID Name Tags Author Shortcode Date Entries View | 1 |
 | <a id="class--wpforms-locations-link"></a>`class--wpforms-locations-link` | `.wpforms-locations-link` | a | /?page_id=181 | 3 |
 | <a id="class--wpforms-manage-tags"></a>`class--wpforms-manage-tags` | `.wpforms-manage-tags` | button | Manage Tags | 2 |
 | <a id="class--wpforms-message"></a>`class--wpforms-message` | `.wpforms-message` | div |  | 1 |

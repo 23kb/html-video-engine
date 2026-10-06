@@ -1,0 +1,477 @@
+{
+  "slug": "admin-tools-action-scheduler",
+  "registryPresent": true,
+  "transitions": [],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    },
+    {
+      "target": "admin-tools-export",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=export\"]"
+    },
+    {
+      "target": "admin-tools-entry-automation",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=entry-automation\"]"
+    },
+    {
+      "target": "admin-tools-system",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=system\"]"
+    },
+    {
+      "target": "admin-tools-action-scheduler",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=action-scheduler\"]"
+    },
+    {
+      "target": "admin-tools-logs",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=logs\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#wpforms-tools",
+        "tag": "div",
+        "text": "Import Export Entry Automation System Info Scheduled Action…",
+        "count": 1,
+        "hidden": false,
+        "nav": "admin-tools-import"
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#args-hide",
+        "tag": "input",
+        "text": "args",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#group-hide",
+        "tag": "input",
+        "text": "group",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hook-hide",
+        "tag": "input",
+        "text": "hook",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#log_entries-hide",
+        "tag": "input",
+        "text": "log_entries",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#plugin-search-input",
+        "tag": "input",
+        "text": "wpforms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#recurrence-hide",
+        "tag": "input",
+        "text": "recurrence",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#schedule-hide",
+        "tag": "input",
+        "text": "schedule",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "950d670a8e",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#status-hide",
+        "tag": "input",
+        "text": "status",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_page_wpforms_tools_per_page",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#action-scheduler-filter",
+        "tag": "form",
+        "text": "Search hook, args and claim ID: Select bulk action Bulk act…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Hook Status Arguments Group Recurrence Scheduled Da…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#args",
+        "tag": "th",
+        "text": "Arguments",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#group",
+        "tag": "th",
+        "text": "Group Sort descending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#hook",
+        "tag": "th",
+        "text": "Hook Sort descending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#log_entries",
+        "tag": "th",
+        "text": "Log",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#recurrence",
+        "tag": "th",
+        "text": "Recurrence",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#schedule",
+        "tag": "th",
+        "text": "Scheduled Date Sort descending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Hook Status Arguments Group Recurrence Scheduled Da…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#status",
+        "tag": "th",
+        "text": "Status Sort descending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 15",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "wpforms_email_summaries_fetch_info_blocks Complete 'tasks_m…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms All Forms Add New Form Entries Payments NEW! Form T…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-reset-filter",
+        "tag": "div",
+        "text": "Search results for wpforms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "Scheduled Actions WPForms is using the Action Scheduler lib…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      }
+    ]
+  }
+}

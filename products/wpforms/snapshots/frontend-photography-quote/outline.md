@@ -58,11 +58,3 @@ _Fire by driving the real control (click/change/type); interactivity.js mutates 
 _These admin links navigate when hand-browsing /snapshots/ but their handler bails in-iframe (window.top !== window). In a video, swap snapshots instead._
 
 _None._
-
-<!-- capture-gates:start -->
-## Capture gates (auto, 2026-09-14)
-
-- ⚠ locale: SELECTED intl-tel flag(s) ≠ us: pk — the phone flag reads wrong to a US audience (ccs 21, bac D; swap the class in the loader doc before lifting)
-- ⚠ stripped presentation: .choices__list--dropdown .choices__list→position:static when shown (overlay presentation stripped) — capture inlined styles for visible elements only, so this reveal target has no box/overlay chrome when shown (geo 3 / fuf 2; restore the product's own box inline)
-- ⚠ stripped presentation: .choices__list--dropdown .choices__list→transparent background when shown (panel chrome stripped) — capture inlined styles for visible elements only, so this reveal target has no box/overlay chrome when shown (geo 3 / fuf 2; restore the product's own box inline)
-<!-- capture-gates:end -->

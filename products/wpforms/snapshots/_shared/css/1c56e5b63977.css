@@ -1,0 +1,27 @@
+
+	body, table, h1, h2, h3, h4, h5, h6, p, td, th, a {
+		font-family: var( --wpforms-appearance-font, var( --wpforms-appearance-font-default, "Inter", sans-serif ) ) !important;
+	}
+
+	body {
+		background-color: var( --wpforms-appearance-page_background_color, var( --wpforms-appearance-page_background_color-default, #f4f5f7 ) );
+	}
+
+	@page {
+		background-color: var( --wpforms-appearance-page_background_color, var( --wpforms-appearance-page_background_color-default, #f4f5f7 ) );
+	}
+
+	.container-content {
+		background: var( --wpforms-appearance-container_background_color, var( --wpforms-appearance-container_background_color-default, #ffffff ) );
+	}
+
+	.content, .content table td, .content p, .content a, .content span, .content div {
+		color: var( --wpforms-appearance-text_color, var( --wpforms-appearance-text_color-default, #212529 ) );
+		font-size: var( --wpforms-appearance-font_size, var( --wpforms-appearance-font_size-default, 16px ) );
+		font-family: var( --wpforms-appearance-font, var( --wpforms-appearance-font-default, "Inter", sans-serif ) ) !important;
+	}
+
+	.content a {
+		color: var( --wpforms-appearance-link_color, var( --wpforms-appearance-link_color-default, #343A40 ) );
+	}
+

@@ -74,6 +74,9 @@ function snapshotsRoot() {
 const LEGACY_TOKENS_URL = '/reference/wpforms-brand/tokens.css';
 function mapLegacySnapshotUrl(urlPath) {
   if (urlPath === LEGACY_TOKENS_URL) return '/products/wpforms/brand/tokens.css';
+  // A snapshot opened as /snapshots/<slug>/ asks for ../../../_runtime/core.js,
+  // which resolves to /_runtime/core.js (2026-10-06).
+  if (/^\/_runtime\//.test(urlPath)) return '/products' + urlPath;
   if (!/^\/snapshots(\/|$)/.test(urlPath) || hasPack(LEGACY_ROOT)) return urlPath;
   return '/products/wpforms/snapshots' + urlPath.slice('/snapshots'.length);
 }

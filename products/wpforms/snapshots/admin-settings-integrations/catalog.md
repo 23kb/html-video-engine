@@ -1,11 +1,11 @@
 # Catalog — `admin-settings-integrations`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-settings-integrations/index.html`
+> Source: `products/wpforms/snapshots/admin-settings-integrations/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 108 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-settings-integrations/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-settings-integrations/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -27,8 +27,8 @@ _69 entries_
 | <a id="id--provider-convertkit"></a>`id--provider-convertkit` | `#provider-convertkit` | div |  | 1 |
 | <a id="id--provider-drip"></a>`id--provider-drip` | `#provider-drip` | div |  | 1 |
 | <a id="id--provider-dropbox"></a>`id--provider-dropbox` | `#provider-dropbox` | div |  | 1 |
-| <a id="id--provider-google-calendar"></a>`id--provider-google-calendar` | `#provider-google-calendar` | div | sullie@wpforms.com Connected on: May 10, 2026 Disconnect | 1 |
-| <a id="id--provider-google-drive"></a>`id--provider-google-drive` | `#provider-google-drive` | div | sullie@wpforms.com Connected on: April 27, 2026 Disconnect | 1 |
+| <a id="id--provider-google-calendar"></a>`id--provider-google-calendar` | `#provider-google-calendar` | div | sullie@example.com Connected on: May 10, 2026 Disconnect | 1 |
+| <a id="id--provider-google-drive"></a>`id--provider-google-drive` | `#provider-google-drive` | div | sullie@example.com Connected on: April 27, 2026 Disconnect | 1 |
 | <a id="id--provider-google-sheets"></a>`id--provider-google-sheets` | `#provider-google-sheets` | div |  | 1 |
 | <a id="id--provider-hubspot"></a>`id--provider-hubspot` | `#provider-hubspot` | div |  | 1 |
 | <a id="id--provider-klaviyo"></a>`id--provider-klaviyo` | `#provider-klaviyo` | div | Sullie Eloso Connected on: May 10, 2026 Disconnect | 1 |
@@ -40,7 +40,7 @@ _69 entries_
 | <a id="id--provider-sendinblue"></a>`id--provider-sendinblue` | `#provider-sendinblue` | div |  | 1 |
 | <a id="id--provider-slack"></a>`id--provider-slack` | `#provider-slack` | div |  | 1 |
 | <a id="id--provider-twilio"></a>`id--provider-twilio` | `#provider-twilio` | div |  | 1 |
-| <a id="id--provider-zapier"></a>`id--provider-zapier` | `#provider-zapier` | div | Your WPForms Zapier API key: 2vnfok67h0ciqs6asgmz Your webs… | 1 |
+| <a id="id--provider-zapier"></a>`id--provider-zapier` | `#provider-zapier` | div | Your WPForms Zapier API key: demo-secret-61-not-real Your w… | 1 |
 | <a id="id--provider-zoho-crm"></a>`id--provider-zoho-crm` | `#provider-zoho-crm` | div |  | 1 |
 | <a id="id--toplevel_page_wpforms-overview"></a>`id--toplevel_page_wpforms-overview` | `#toplevel_page_wpforms-overview` | li |  | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |

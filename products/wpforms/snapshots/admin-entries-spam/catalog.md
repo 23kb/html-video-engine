@@ -1,11 +1,11 @@
 # Catalog — `admin-entries-spam`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-entries-spam/index.html`
+> Source: `products/wpforms/snapshots/admin-entries-spam/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 88 selector entries across 3 sections.
 
-Provenance anchor form: `snapshots/admin-entries-spam/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-entries-spam/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -83,7 +83,7 @@ _3 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="data-field-type--email"></a>`data-field-type--email` | `[data-field-type="email"]` | div | sarah@brightleaf.co | 30 |
+| <a id="data-field-type--email"></a>`data-field-type--email` | `[data-field-type="email"]` | div | sarah@example.com | 30 |
 | <a id="data-field-type--name"></a>`data-field-type--name` | `[data-field-type="name"]` | div | Sarah Mitchell | 30 |
 | <a id="data-field-type--textarea"></a>`data-field-type--textarea` | `[data-field-type="textarea"]` | div | Hi! Do you offer bulk pricing? We would love to order for o… | 30 |
 

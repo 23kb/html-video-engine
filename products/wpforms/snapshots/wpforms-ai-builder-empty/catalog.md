@@ -1,23 +1,21 @@
 # Catalog — `wpforms-ai-builder-empty`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/wpforms-ai-builder-empty/index.html`
+> Source: `products/wpforms/snapshots/wpforms-ai-builder-empty/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 2270 selector entries across 3 sections.
+> 2268 selector entries across 3 sections.
 
-Provenance anchor form: `snapshots/wpforms-ai-builder-empty/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/wpforms-ai-builder-empty/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_2222 entries_
+_2220 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1` | div | Page - Frontend Contact Fixture | 1 |
-| <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2` | div | Sample Page | 1 |
 | <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
 | <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
 | <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |

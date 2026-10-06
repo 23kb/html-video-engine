@@ -1,11 +1,11 @@
 # Catalog — `admin-settings-geolocation`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-settings-geolocation/index.html`
+> Source: `products/wpforms/snapshots/admin-settings-geolocation/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 51 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-settings-geolocation/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-settings-geolocation/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -42,7 +42,7 @@ _27 entries_
 | <a id="id--wpforms-setting-row-geolocation-google-places-preview"></a>`id--wpforms-setting-row-geolocation-google-places-preview` | `#wpforms-setting-row-geolocation-google-places-preview` | div | Preview | 1 |
 | <a id="id--wpforms-setting-row-geolocation-heading"></a>`id--wpforms-setting-row-geolocation-heading` | `#wpforms-setting-row-geolocation-heading` | div | Geolocation Geolocation provides address autocomplete for A… | 1 |
 | <a id="id--wpforms-setting-row-geolocation-mapbox-search-access-token"></a>`id--wpforms-setting-row-geolocation-mapbox-search-access-token` | `#wpforms-setting-row-geolocation-mapbox-search-access-token` | div | Access Token Paste your Access Token to connect to Mapbox S… | 1 |
-| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPT | 1 |
+| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPTCHA | 1 |
 
 ## Role-like classes
 

@@ -1,18 +1,18 @@
 # Catalog — `frontend-conference-registration-dropdown-open`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/frontend-conference-registration-dropdown-open/index.html`
+> Source: `products/wpforms/snapshots/frontend-conference-registration-dropdown-open/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 78 selector entries across 4 sections.
+> 74 selector entries across 4 sections.
 
-Provenance anchor form: `snapshots/frontend-conference-registration-dropdown-open/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/frontend-conference-registration-dropdown-open/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_50 entries_
+_46 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -20,10 +20,6 @@ _50 entries_
 | <a id="id--block-2"></a>`id--block-2` | `#block-2` | div |  | 1 |
 | <a id="id--block-3"></a>`id--block-3` | `#block-3` | div | Recent Posts Sullie’s World – Blog | 1 |
 | <a id="id--block-4"></a>`id--block-4` | `#block-4` | div | Recent Comments | 1 |
-| <a id="id--choices--wpforms-1932-field_4-item-choice-1"></a>`id--choices--wpforms-1932-field_4-item-choice-1` | `#choices--wpforms-1932-field_4-item-choice-1` | div |  | 1 |
-| <a id="id--choices--wpforms-1932-field_4-item-choice-2"></a>`id--choices--wpforms-1932-field_4-item-choice-2` | `#choices--wpforms-1932-field_4-item-choice-2` | div | Standard | 1 |
-| <a id="id--choices--wpforms-1932-field_4-item-choice-3"></a>`id--choices--wpforms-1932-field_4-item-choice-3` | `#choices--wpforms-1932-field_4-item-choice-3` | div | Student | 1 |
-| <a id="id--choices--wpforms-1932-field_4-item-choice-4"></a>`id--choices--wpforms-1932-field_4-item-choice-4` | `#choices--wpforms-1932-field_4-item-choice-4` | div | Speaker | 1 |
 | <a id="id--choices-listbox-wpforms-1932-field_4"></a>`id--choices-listbox-wpforms-1932-field_4` | `#choices-listbox-wpforms-1932-field_4` | div |  | 1 |
 | <a id="id--content-area"></a>`id--content-area` | `#content-area` | div | Conference Registration Preview by S | 1 |
 | <a id="id--divi-style-inline-inline-css"></a>`id--divi-style-inline-inline-css` | `#divi-style-inline-inline-css` | link |  | 1 |

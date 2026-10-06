@@ -1,0 +1,388 @@
+{
+  "slug": "sp-results-new-418-base",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wpf-flyout",
+      "event": "click",
+      "selector": "a.wpforms-flyout-button.wpforms-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"][href*=\"view=list\"]"
+    },
+    {
+      "target": "builder-fields",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"][href*=\"view=fields\"]"
+    },
+    {
+      "target": "admin-tools-export",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=export\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#wpforms-datepicker-popover-button",
+        "tag": "button",
+        "text": "All Time",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-btn",
+        "tag": "a",
+        "text": "Back to All Entries",
+        "count": 1,
+        "hidden": false,
+        "nav": "admin-entries-overview"
+      },
+      {
+        "sel": ".wpforms-btn-blue",
+        "tag": "button",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-flyout",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-survey-graph-button",
+        "tag": "button",
+        "text": "Export",
+        "count": 14,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-survey-graph-menu-field-toggle",
+        "tag": "span",
+        "text": "",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-survey-graph-menu-footer-export",
+        "tag": "button",
+        "text": "Export Results",
+        "count": 8,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-survey-graph-menu-footer-update-filters",
+        "tag": "button",
+        "text": "Update Filters",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-survey-graph-menu-footer-update-settings",
+        "tag": "button",
+        "text": "Save Changes",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-survey-graph-menu-modal-close",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#wpforms-survey-overview-datepicker",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-survey-minicolor-input",
+        "tag": "input",
+        "text": "",
+        "count": 5,
+        "hidden": true
+      }
+    ],
+    "fields": [
+      {
+        "sel": "[data-field-type=\"checkbox\"]",
+        "tag": "div",
+        "text": "Which items did you try today? Export ANSWERS RESPONSES Cro…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-field-type=\"likert_scale\"]",
+        "tag": "div",
+        "text": "How satisfied were you with... Export VERY UNSATISFIED UNSA…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "[data-field-type=\"net_promoter_score\"]",
+        "tag": "div",
+        "text": "How likely are you to recommend Sullie's Bakery to a friend…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-field-type=\"radio\"]",
+        "tag": "div",
+        "text": "What brings you in most often? Export Filters ANSWERS RESPO…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-field-type=\"rating\"]",
+        "tag": "div",
+        "text": "How would you rate your visit? Export ANSWERS RESPONSES 1 s…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-field-type=\"select\"]",
+        "tag": "div",
+        "text": "How did you hear about us? Export ANSWERS RESPONSES Walked …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-field-type=\"textarea\"]",
+        "tag": "div",
+        "text": "What could we do better? Export ANSWERS DATE Staff is alway…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "panelsModals": [
+      {
+        "sel": ".wpforms-survey-graph-menu-modal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-survey-graph-menu-modal-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-entries-list",
+        "tag": "div",
+        "text": "Survey Results Back to All Entries SELECT FORM Sullie's Bak…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-survey-report",
+        "tag": "div",
+        "text": "What brings you in most often? Export Filters ANSWERS RESPO…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "SELECT FORM Sullie's Bakery Customer Feedback Edit This For…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-datepicker-popover-content",
+        "tag": "div",
+        "text": "All Time Today Yesterday Last 7 days Last 30 days Last 90 d…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-survey-graph-content",
+        "tag": "div",
+        "text": "ANSWERS RESPONSES Morning coffee 28% 12 Lunch break 28% 12 …",
+        "count": 8,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-survey-graph-content-loader-message",
+        "tag": "div",
+        "text": "Calculating Survey Results",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-survey-graph-header",
+        "tag": "div",
+        "text": "What brings you in most often? Export Filters",
+        "count": 8,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-survey-graph-menu-content",
+        "tag": "div",
+        "text": "Export Current Question All Questions Content Graph + Data …",
+        "count": 14,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-survey-graph-menu-field-item",
+        "tag": "li",
+        "text": "What brings you in most often?",
+        "count": 38,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-survey-graph-menu-footer-actions",
+        "tag": "div",
+        "text": "",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-survey-graph-preview-questions-item-selected-select",
+        "tag": "div",
+        "text": "How did you hear about us?",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-survey-question-content",
+        "tag": "div",
+        "text": "ANSWERS DATE Staff is always friendly. Keep doing what you'…",
+        "count": 3,
+        "hidden": false
+      }
+    ]
+  }
+}

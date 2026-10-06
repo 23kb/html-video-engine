@@ -1,11 +1,11 @@
 # Catalog — `admin-entries-406-all`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-entries-406-all/index.html`
+> Source: `products/wpforms/snapshots/admin-entries-406-all/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 87 selector entries across 3 sections.
 
-Provenance anchor form: `snapshots/admin-entries-406-all/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-entries-406-all/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -82,7 +82,7 @@ _3 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="data-field-type--email"></a>`data-field-type--email` | `[data-field-type="email"]` | div | abigail.diaz@gmail.com | 30 |
+| <a id="data-field-type--email"></a>`data-field-type--email` | `[data-field-type="email"]` | div | abigail.diaz@example.com | 30 |
 | <a id="data-field-type--name"></a>`data-field-type--name` | `[data-field-type="name"]` | div | Abigail Diaz | 30 |
 | <a id="data-field-type--textarea"></a>`data-field-type--textarea` | `[data-field-type="textarea"]` | div | Brownie Box — No frosting on half. | 30 |
 

@@ -1,11 +1,11 @@
 # Catalog — `admin-tools-action-scheduler`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-tools-action-scheduler/index.html`
+> Source: `products/wpforms/snapshots/admin-tools-action-scheduler/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 60 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-tools-action-scheduler/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-tools-action-scheduler/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -63,7 +63,7 @@ _48 entries_
 | <a id="id--wpforms-header"></a>`id--wpforms-header` | `#wpforms-header` | div |  | 1 |
 | <a id="id--wpforms-header-temp"></a>`id--wpforms-header-temp` | `#wpforms-header-temp` | div |  | 1 |
 | <a id="id--wpforms-reset-filter"></a>`id--wpforms-reset-filter` | `#wpforms-reset-filter` | div | Search results for wpforms | 1 |
-| <a id="id--wpforms-tools"></a>`id--wpforms-tools` | `#wpforms-tools` | div | Import Export Entr | 1 |
+| <a id="id--wpforms-tools"></a>`id--wpforms-tools` | `#wpforms-tools` | div | Import Export Entry Automation | 1 |
 
 ## Role-like classes
 

@@ -1,11 +1,11 @@
 # Catalog — `admin-settings-misc`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-settings-misc/index.html`
+> Source: `products/wpforms/snapshots/admin-settings-misc/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 48 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-settings-misc/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-settings-misc/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -42,7 +42,7 @@ _27 entries_
 | <a id="id--wpforms-setting-row-misc-heading"></a>`id--wpforms-setting-row-misc-heading` | `#wpforms-setting-row-misc-heading` | div | Miscellaneous | 1 |
 | <a id="id--wpforms-setting-row-uninstall-data"></a>`id--wpforms-setting-row-uninstall-data` | `#wpforms-setting-row-uninstall-data` | div | Uninstall WPForms | 1 |
 | <a id="id--wpforms-setting-uninstall-data"></a>`id--wpforms-setting-uninstall-data` | `#wpforms-setting-uninstall-data` | input | Off Remove ALL WPForms data upon plugin deletion. All forms… | 1 |
-| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPT | 1 |
+| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPTCHA | 1 |
 
 ## Role-like classes
 

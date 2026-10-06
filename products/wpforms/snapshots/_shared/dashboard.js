@@ -1039,7 +1039,9 @@
       }
 
       var gb = t.closest(S.graphBtn);
-      if (gb) { e.preventDefault(); scopeChart(gb.getAttribute('data-form-id')); return; }
+      // A row whose chart data the capture did not record does nothing on a click (B9 gate); the throw
+      // stays for scripted callers (films), who must ask for a harvested form.
+      if (gb) { e.preventDefault(); try { scopeChart(gb.getAttribute('data-form-id')); } catch (err) { console.info('[snap] ' + err.message); } return; }
       if (t.closest(S.graphReset)) { e.preventDefault(); resetChartScope(); return; }
 
       var tile = t.closest(S.paymentsTile);

@@ -1,0 +1,815 @@
+{
+  "slug": "admin-settings-integrations",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "settings-integrations-row-toggle",
+      "event": "click",
+      "selector": ".wpforms-clear.wpforms-settings-provider-header[data-provider]",
+      "count": 23
+    },
+    {
+      "label": "settings-integrations-add-account-toggle",
+      "event": "click",
+      "selector": "a[data-provider]",
+      "count": 11
+    },
+    {
+      "label": "settings-integrations-connect-submit",
+      "event": "click",
+      "selector": "button.wpforms-btn.wpforms-btn-md[data-provider=\"aweber_v2\"]",
+      "count": 9
+    }
+  ],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    },
+    {
+      "target": "admin-settings-email",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=email\"]"
+    },
+    {
+      "target": "admin-settings-captcha",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=captcha\"]"
+    },
+    {
+      "target": "admin-settings-validation",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=validation\"]"
+    },
+    {
+      "target": "admin-settings-payments",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=payments\"]"
+    },
+    {
+      "target": "admin-settings-integrations",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=integrations\"]"
+    },
+    {
+      "target": "admin-settings-geolocation",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=geolocation\"]"
+    },
+    {
+      "target": "admin-settings-access",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=access\"]"
+    },
+    {
+      "target": "admin-settings-misc",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=misc\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-airtable-sign-in-button",
+        "tag": "div",
+        "text": "Add New Account",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-aweber_v2-auth",
+        "tag": "a",
+        "text": "authorize the connection with AWeber",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-aweber_v2-docs",
+        "tag": "a",
+        "text": "read our documentation",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-btn",
+        "tag": "a",
+        "text": "Add New Account",
+        "count": 28,
+        "hidden": true,
+        "wired": "settings-integrations-add-account-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-btn-orange",
+        "tag": "button",
+        "text": "Connect to AWeber",
+        "count": 10,
+        "hidden": true,
+        "wired": "settings-integrations-connect-submit",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-campaign-monitor-docs",
+        "tag": "a",
+        "text": "read our documentation",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-constant-contact-v3-auth",
+        "tag": "a",
+        "text": "Add New Account",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-google-sign-in-button",
+        "tag": "div",
+        "text": "Continue with Google Continue with Google",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-hubspot-auth",
+        "tag": "a",
+        "text": "Add New Account",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-notion-sign-in-button",
+        "tag": "div",
+        "text": "Add New Account",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-settings-provider-accounts-dropbox-authorize-button",
+        "tag": "a",
+        "text": "Add New Account",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-settings-provider-accounts-pipedrive-authorize-button",
+        "tag": "a",
+        "text": "Add New Account",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-settings-provider-accounts-toggle",
+        "tag": "p",
+        "text": "Add New Account",
+        "count": 11,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-settings-provider-submit",
+        "tag": "button",
+        "text": "Connect to Salesforce",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-slack-auth",
+        "tag": "a",
+        "text": "Add New Account",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-zoho-crm-oauth",
+        "tag": "a",
+        "text": "Add New Account",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#wpforms-salesforce-redirect-uri",
+        "tag": "input",
+        "text": "http://sulliesbakery.com/wp-admin/admin.php?page=wpforms-se…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-aweber_v2-code_verifier",
+        "tag": "input",
+        "text": "VRd0cqMJxGYx7K4qY1OItB4j1NPuJY-534RUKss6_F2POyRdMrSad34dRG0…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-google-sheets-setting-field-redirect-uri-input",
+        "tag": "input",
+        "text": "https://google.wpforms.com/v2/auth/new/custom/complete/",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-required",
+        "tag": "input",
+        "text": "AWeber Authorization Code *",
+        "count": 18,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#wpforms-integration-getresponse",
+        "tag": "div",
+        "text": "GetResponse Integrate GetResponse with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-mailerlite",
+        "tag": "div",
+        "text": "MailerLite Integrate MailerLite with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-make",
+        "tag": "div",
+        "text": "Make Integrate Make with WPForms",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-activecampaign",
+        "tag": "div",
+        "text": "Add New Account Please fill out all of the fields below to …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-airtable",
+        "tag": "div",
+        "text": "Add New Account If you need help connecting WPForms to Airt…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-aweber_v2",
+        "tag": "div",
+        "text": "Add New Account Please fill out all of the fields below to …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-campaign-monitor",
+        "tag": "div",
+        "text": "Add New Account Please fill out all of the fields below to …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-constant-contact-v3",
+        "tag": "div",
+        "text": "Add New Account Click here for documentation on connecting …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-convertkit",
+        "tag": "div",
+        "text": "Add New Account Please fill out all of the fields below to …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-drip",
+        "tag": "div",
+        "text": "Add New Account Please fill out all of the fields below to …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-dropbox",
+        "tag": "div",
+        "text": "Add New Account If you need help connecting WPForms to Drop…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-google-calendar",
+        "tag": "div",
+        "text": "sullie@example.comConnected on: May 10, 2026Disconnect Cont…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-google-drive",
+        "tag": "div",
+        "text": "sullie@example.comConnected on: April 27, 2026Disconnect Co…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-google-sheets",
+        "tag": "div",
+        "text": "Continue with Google Continue with Google If you need help …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-hubspot",
+        "tag": "div",
+        "text": "Add New Account If you need help connecting WPForms to HubS…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-klaviyo",
+        "tag": "div",
+        "text": "Sullie ElosoConnected on: May 10, 2026Disconnect Add New Ac…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-mailchimpv3",
+        "tag": "div",
+        "text": "Add New Account Please fill out all of the fields below to …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-mailpoet",
+        "tag": "div",
+        "text": "To connect, you must first install the MailPoet plugin. If …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-notion",
+        "tag": "div",
+        "text": "Add New Account If you need help connecting WPForms to Noti…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-pipedrive",
+        "tag": "div",
+        "text": "Add New Account If you need help connecting WPForms to Pipe…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-salesforce",
+        "tag": "div",
+        "text": "Add New Account Please fill out all of the fields below to …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-sendinblue",
+        "tag": "div",
+        "text": "Add New Account Please fill out all of the fields below to …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-slack",
+        "tag": "div",
+        "text": "Add New Account If you need help connecting WPForms to Slac…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-twilio",
+        "tag": "div",
+        "text": "Add New Account Please fill out all of the fields below to …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-zapier",
+        "tag": "div",
+        "text": "Your WPForms Zapier API key: demo-secret-61-not-real Your w…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#provider-zoho-crm",
+        "tag": "div",
+        "text": "Add New Account If you need help connecting WPForms to Zoho…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms All Forms Add New Form Entries Payments NEW! Form T…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-google-drive-sign-in",
+        "tag": "div",
+        "text": "Continue with Google Continue with Google",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-google-sheets-sign-in",
+        "tag": "div",
+        "text": "Continue with Google Continue with Google",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-activecampaign",
+        "tag": "div",
+        "text": "ActiveCampaign Integrate ActiveCampaign with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-airtable",
+        "tag": "div",
+        "text": "Airtable Integrate Airtable with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-aweber_v2",
+        "tag": "div",
+        "text": "AWeber Integrate AWeber with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-campaign-monitor",
+        "tag": "div",
+        "text": "Campaign Monitor Integrate Campaign Monitor with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-constant-contact-v3",
+        "tag": "div",
+        "text": "Constant Contact Integrate Constant Contact with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-convertkit",
+        "tag": "div",
+        "text": "Kit Integrate Kit with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-drip",
+        "tag": "div",
+        "text": "Drip Integrate Drip with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-dropbox",
+        "tag": "div",
+        "text": "Dropbox Integrate Dropbox with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-google-calendar",
+        "tag": "div",
+        "text": "Google Calendar Integrate Google Calendar with WPForms Conn…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-google-drive",
+        "tag": "div",
+        "text": "Google Drive Integrate Google Drive with WPForms Connected",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-google-sheets",
+        "tag": "div",
+        "text": "Google Sheets Integrate Google Sheets with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-hubspot",
+        "tag": "div",
+        "text": "HubSpot Integrate HubSpot with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-klaviyo",
+        "tag": "div",
+        "text": "Klaviyo Integrate Klaviyo with WPForms Connected",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-mailchimpv3",
+        "tag": "div",
+        "text": "Mailchimp Integrate Mailchimp with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-mailpoet",
+        "tag": "div",
+        "text": "MailPoet Integrate MailPoet with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-notion",
+        "tag": "div",
+        "text": "Notion Integrate Notion with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-pipedrive",
+        "tag": "div",
+        "text": "Pipedrive Integrate Pipedrive with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-salesforce",
+        "tag": "div",
+        "text": "Salesforce Integrate Salesforce with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-sendinblue",
+        "tag": "div",
+        "text": "Brevo Integrate Brevo with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-slack",
+        "tag": "div",
+        "text": "Slack Integrate Slack with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-twilio",
+        "tag": "div",
+        "text": "Twilio Integrate Twilio with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-zapier",
+        "tag": "div",
+        "text": "Zapier Integrate Zapier with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-integration-zoho-crm",
+        "tag": "div",
+        "text": "Zoho CRM Integrate Zoho CRM with WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-salesforce-new-account-connection-form",
+        "tag": "form",
+        "text": "If you need help connecting WPForms to Salesforce, read our…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-integrations-heading",
+        "tag": "div",
+        "text": "Integrations Manage integrations with popular providers suc…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-settings",
+        "tag": "div",
+        "text": "General Email CAPTCHA Validation Payments Integrations Geol…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-settings-providers",
+        "tag": "div",
+        "text": "AWeber Integrate AWeber with WPForms ActiveCampaign Integra…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "Integrations Manage integrations with popular providers suc…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-google-sheets-setting-field-redirect-uri-row",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-setting-field",
+        "tag": "span",
+        "text": "Integrations Manage integrations with popular providers suc…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-settings-provider-header",
+        "tag": "div",
+        "text": "AWeber Integrate AWeber with WPForms",
+        "count": 26,
+        "hidden": false
+      }
+    ]
+  }
+}

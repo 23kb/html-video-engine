@@ -371,6 +371,10 @@
     const cur = currentPageNum(form);
     const total = totalPages(form);
     if (action === 'next' && cur < total) {
+      // Live validates the page before it moves on (wpforms.js pagebreak "next": required / format
+      // errors with "This field is required." and stay). Only the current page's fields are visible.
+      const invalid = validateForm(form);
+      if (invalid) { invalid.scrollIntoView({ behavior: 'smooth', block: 'center' }); return; }
       showPage(form, cur + 1);
     } else if (action === 'prev' && cur > 1) {
       showPage(form, cur - 1);
@@ -427,11 +431,14 @@
     $$('.wpforms-field', form).forEach((container) => {
       if (!isVisible(container)) return;
       clearFieldError(container);
-      const required = container.classList.contains('required');
       const type = container.dataset.fieldType;
       const inputs = $$('input, select, textarea', container).filter(
         (el) => el.type !== 'hidden' && !el.classList.contains('wpforms-screen-reader-element'),
       );
+      // The builder mirror sets a `required` class; a captured frontend marks the inputs themselves
+      // (required attribute / wpforms-field-required, wpforms/includes/class-frontend.php field properties).
+      const required = container.classList.contains('required')
+        || inputs.some((i) => i.required || i.classList.contains('wpforms-field-required'));
       // Required check
       if (required) {
         const groupName = inputs[0]?.name;

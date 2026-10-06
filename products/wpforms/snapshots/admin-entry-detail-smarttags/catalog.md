@@ -1,11 +1,11 @@
 # Catalog — `admin-entry-detail-smarttags`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-entry-detail-smarttags/index.html`
+> Source: `products/wpforms/snapshots/admin-entry-detail-smarttags/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 95 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-entry-detail-smarttags/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-entry-detail-smarttags/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

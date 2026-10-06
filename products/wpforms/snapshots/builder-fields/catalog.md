@@ -1,32 +1,22 @@
 # Catalog — `builder-fields`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/builder-fields/index.html`
+> Source: `products/wpforms/snapshots/builder-fields/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 2292 selector entries across 6 sections.
+> 2282 selector entries across 6 sections.
 
-Provenance anchor form: `snapshots/builder-fields/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/builder-fields/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_2043 entries_
+_2033 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="id--add-fields"></a>`id--add-fields` | `#add-fields` | li | Add Fields | 1 |
-| <a id="id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-2"></a>`id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-2` | `#choices--wpforms-field-option-30-user_roles_restrictions-item-choice-2` | div | Author | 1 |
-| <a id="id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-3"></a>`id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-3` | `#choices--wpforms-field-option-30-user_roles_restrictions-item-choice-3` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-4"></a>`id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-4` | `#choices--wpforms-field-option-30-user_roles_restrictions-item-choice-4` | div | Editor | 1 |
-| <a id="id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-5"></a>`id--choices--wpforms-field-option-30-user_roles_restrictions-item-choice-5` | `#choices--wpforms-field-option-30-user_roles_restrictions-item-choice-5` | div | Subscriber | 1 |
-| <a id="id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-2"></a>`id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-2` | `#choices--wpforms-field-option-31-user_roles_restrictions-item-choice-2` | div | Author | 1 |
-| <a id="id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-3"></a>`id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-3` | `#choices--wpforms-field-option-31-user_roles_restrictions-item-choice-3` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-4"></a>`id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-4` | `#choices--wpforms-field-option-31-user_roles_restrictions-item-choice-4` | div | Editor | 1 |
-| <a id="id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-5"></a>`id--choices--wpforms-field-option-31-user_roles_restrictions-item-choice-5` | `#choices--wpforms-field-option-31-user_roles_restrictions-item-choice-5` | div | Subscriber | 1 |
-| <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-1` | div | Page - Frontend Contact Fixture | 1 |
-| <a id="id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2"></a>`id--choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2` | `#choices--wpforms-setting-form-embed-wizard-choicesjs-select-pages-item-choice-2` | div | Sample Page | 1 |
 | <a id="id--fa-caret-square-o-up"></a>`id--fa-caret-square-o-up` | `#fa-caret-square-o-up` | path |  | 4 |
 | <a id="id--field-options"></a>`id--field-options` | `#field-options` | li | Field Options | 1 |
 | <a id="id--fields-37-choices-0-address"></a>`id--fields-37-choices-0-address` | `#fields-37-choices-0-address` | input |  | 1 |

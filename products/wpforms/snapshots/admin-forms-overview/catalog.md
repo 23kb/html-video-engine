@@ -1,11 +1,11 @@
 # Catalog — `admin-forms-overview`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-forms-overview/index.html`
+> Source: `products/wpforms/snapshots/admin-forms-overview/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 85 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-forms-overview/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-forms-overview/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -80,7 +80,7 @@ _30 entries_
 | --- | --- | --- | --- | --- |
 | <a id="class--choices__input--cloned"></a>`class--choices__input--cloned` | `.choices__input--cloned` | input | No tags to choose from Filter | 2 |
 | <a id="class--choices__list--dropdown"></a>`class--choices__list--dropdown` | `.choices__list--dropdown` | div | No tags to choose from | 2 |
-| <a id="class--wpforms-admin-content"></a>`class--wpforms-admin-content` | `.wpforms-admin-content` | div |  | 1 |
+| <a id="class--wpforms-admin-content"></a>`class--wpforms-admin-content` | `.wpforms-admin-content` | div | Sear | 1 |
 | <a id="class--wpforms-btn"></a>`class--wpforms-btn` | `.wpforms-btn` | a | Add New | 1 |
 | <a id="class--wpforms-btn-orange"></a>`class--wpforms-btn-orange` | `.wpforms-btn-orange` | a | Add New | 1 |
 | <a id="class--wpforms-bulk-edit-tags-cancel"></a>`class--wpforms-bulk-edit-tags-cancel` | `.wpforms-bulk-edit-tags-cancel` | button | Cancel | 1 |

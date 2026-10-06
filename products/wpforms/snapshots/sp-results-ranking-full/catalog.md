@@ -1,11 +1,11 @@
 # Catalog — `sp-results-ranking-full`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/sp-results-ranking-full/index.html`
+> Source: `products/wpforms/snapshots/sp-results-ranking-full/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 50 selector entries across 4 sections.
 
-Provenance anchor form: `snapshots/sp-results-ranking-full/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/sp-results-ranking-full/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

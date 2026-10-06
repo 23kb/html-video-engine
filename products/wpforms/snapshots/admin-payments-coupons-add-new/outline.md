@@ -66,6 +66,3 @@ _These admin links navigate when hand-browsing /snapshots/ but their handler bai
 - click `a[href*="page=wpforms-tools"]` → cross-snapshot nav → use `ifm.swap('admin-tools-import')`
 - click `a[href*="page=wpforms-builder"][href*="view=fields"]` → cross-snapshot nav → use `ifm.swap('builder-fields')`
 - click `a[href*="page=wpforms-builder"]` → cross-snapshot nav → use `ifm.swap('builder-setup')`
-
-<!-- capture-gates:start -->
-<!-- capture-gates:end -->

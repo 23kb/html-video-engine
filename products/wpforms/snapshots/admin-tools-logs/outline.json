@@ -1,0 +1,591 @@
+{
+  "slug": "admin-tools-logs",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wpf-parked-modal-open",
+      "event": "click",
+      "selector": "a[data-snap-modal]",
+      "count": 21
+    },
+    {
+      "label": "wpf-flyout",
+      "event": "click",
+      "selector": "a.wpforms-flyout-button.wpforms-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    },
+    {
+      "target": "admin-tools-export",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=export\"]"
+    },
+    {
+      "target": "admin-tools-entry-automation",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=entry-automation\"]"
+    },
+    {
+      "target": "admin-tools-ai-mcp",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=ai-mcp\"]"
+    },
+    {
+      "target": "admin-tools-system",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=system\"]"
+    },
+    {
+      "target": "admin-tools-action-scheduler",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=action-scheduler\"]"
+    },
+    {
+      "target": "admin-tools-logs",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=logs\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-logs-enable",
+        "tag": "div",
+        "text": "Enable Logs OFF Start logging WPForms-related events. This …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-btn",
+        "tag": "button",
+        "text": "Save Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-flyout",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-parked-modal-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-toggle-control",
+        "tag": "span",
+        "text": "OFF",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#wpforms-tools",
+        "tag": "div",
+        "text": "Import Export Entry Automation AI MCP System Info Scheduled…",
+        "count": 1,
+        "hidden": false,
+        "nav": "admin-tools-import"
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date-hide",
+        "tag": "input",
+        "text": "date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#form_id-hide",
+        "tag": "input",
+        "text": "form_id",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#log_title-hide",
+        "tag": "input",
+        "text": "log_title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#message-hide",
+        "tag": "input",
+        "text": "message",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#plugin-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "a06c6f58a1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#types-hide",
+        "tag": "input",
+        "text": "types",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_page_wpforms_tools_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-logs-enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-logs-types",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-logs-user-roles",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-logs-users",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-tools-logs-nonce",
+        "tag": "input",
+        "text": "0628b43b3c",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Log Title Message Form ID Types Date Pagination Num…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date",
+        "tag": "th",
+        "text": "Date",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#form_id",
+        "tag": "th",
+        "text": "Form ID",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#log_title",
+        "tag": "th",
+        "text": "Log Title",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#logs-filter",
+        "tag": "form",
+        "text": "View Logs Search Logs: All Logs Conditional Logic Entries E…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#message",
+        "tag": "th",
+        "text": "Message",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Log Title Message Form ID Types Date Pagination Num…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 6",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Migration Migration of WPForms Pro to 2.0.2.2 is fully comp…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms Dashboard All Forms Setup Checklist 67% complete Ad…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#types",
+        "tag": "th",
+        "text": "Types",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-logs-user-roles-selectform-spinner",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-logs-users-selectform-spinner",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-log-types",
+        "tag": "div",
+        "text": "Log Types Conditional Logic Entries Errors Log Payment Prov…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-log-user-roles",
+        "tag": "div",
+        "text": "User Roles Administrator Author Contributor Editor SEO Edit…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-log-users",
+        "tag": "div",
+        "text": "Users Cora Baker Pip Reset Sullie Baker Sullie Eloso Log ev…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "Conditional Logic Entries Errors Log Payment Providers Secu…",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "Log Settings Enable and configure the logging functionality…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-admin-content-header",
+        "tag": "div",
+        "text": "View Logs Search Logs:",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-setting-field",
+        "tag": "div",
+        "text": "OFF Start logging WPForms-related events. This is recommend…",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setting-label",
+        "tag": "div",
+        "text": "Enable Logs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setting-row",
+        "tag": "div",
+        "text": "Log Settings Enable and configure the logging functionality…",
+        "count": 5,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

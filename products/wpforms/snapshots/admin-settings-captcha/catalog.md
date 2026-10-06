@@ -1,11 +1,11 @@
 # Catalog — `admin-settings-captcha`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-settings-captcha/index.html`
+> Source: `products/wpforms/snapshots/admin-settings-captcha/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 72 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-settings-captcha/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-settings-captcha/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

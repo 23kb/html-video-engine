@@ -1,11 +1,11 @@
 # Catalog — `admin-payments-coupons`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-payments-coupons/index.html`
+> Source: `products/wpforms/snapshots/admin-payments-coupons/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 61 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-payments-coupons/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-payments-coupons/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -55,7 +55,7 @@ _46 entries_
 | <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
 | <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms_coupons_per_page"></a>`id--wpforms_coupons_per_page` | `#wpforms_coupons_per_page` | input |  | 1 |
-| <a id="id--wpforms-coupons-overview-table"></a>`id--wpforms-coupons-overview-table` | `#wpforms-coupons-overview-table` | form | Published (1) \| Archived | 1 |
+| <a id="id--wpforms-coupons-overview-table"></a>`id--wpforms-coupons-overview-table` | `#wpforms-coupons-overview-table` | form | Published (1) \| Archived (0) | 1 |
 | <a id="id--wpforms-coupons-search-input-search-input"></a>`id--wpforms-coupons-search-input-search-input` | `#wpforms-coupons-search-input-search-input` | input |  | 1 |
 | <a id="id--wpforms-flyout"></a>`id--wpforms-flyout` | `#wpforms-flyout` | div | Suggest a Feature | 1 |
 | <a id="id--wpforms-flyout-items"></a>`id--wpforms-flyout-items` | `#wpforms-flyout-items` | div | Suggest a Feature | 1 |

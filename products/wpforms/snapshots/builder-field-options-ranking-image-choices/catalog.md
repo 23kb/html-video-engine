@@ -1,11 +1,11 @@
 # Catalog — `builder-field-options-ranking-image-choices`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/builder-field-options-ranking-image-choices/index.html`
+> Source: `products/wpforms/snapshots/builder-field-options-ranking-image-choices/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 323 selector entries across 6 sections.
 
-Provenance anchor form: `snapshots/builder-field-options-ranking-image-choices/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/builder-field-options-ranking-image-choices/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

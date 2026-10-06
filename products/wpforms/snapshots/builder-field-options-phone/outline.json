@@ -1,0 +1,5247 @@
+{
+  "slug": "builder-field-options-phone",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wpf-embed-open",
+      "event": "click",
+      "selector": "#wpforms-embed",
+      "count": 1
+    },
+    {
+      "label": "wpf-embed-card",
+      "event": "click",
+      "selector": ".wpforms-admin-popup-btn[data-action]",
+      "count": 3
+    },
+    {
+      "label": "wpf-embed-goback",
+      "event": "click",
+      "selector": "a.wpforms-admin-popup-toggle.initialstate-toggle",
+      "count": 1
+    },
+    {
+      "label": "wpf-preview-dropdown",
+      "event": "click",
+      "selector": "#wpforms-preview-dropdown-btn",
+      "count": 1
+    },
+    {
+      "label": "wpf-panel-setup",
+      "event": "click",
+      "selector": "button.wpforms-panel-setup-button[data-panel=\"setup\"]",
+      "count": 1
+    },
+    {
+      "label": "wpf-exit",
+      "event": "click",
+      "selector": "#wpforms-exit",
+      "count": 1
+    },
+    {
+      "label": "wpf-save",
+      "event": "click",
+      "selector": "#wpforms-save",
+      "count": 1
+    },
+    {
+      "label": "wpf-undo-redo",
+      "event": "click",
+      "selector": "button.wpforms-btn-undo",
+      "count": 2
+    },
+    {
+      "label": "wpf-editor-tabs",
+      "event": "click",
+      "selector": ".wp-switch-editor",
+      "count": 4
+    }
+  ],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#insert-media-button",
+        "tag": "button",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-tab",
+        "tag": "div",
+        "text": "Search fields: Sorry, we didn't find any fields that match …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-ai-chat-fab",
+        "tag": "button",
+        "text": "Smart Editing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-context-menu-container",
+        "tag": "div",
+        "text": "Duplicate Form Save as Template Bulk Embed View Analytics N…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-embed",
+        "tag": "button",
+        "text": "Embed",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-embed-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wpforms-exit",
+        "tag": "button",
+        "text": "Exit Ctrl+Q",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-exit",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wpforms-field-option-12-ai_modal_button",
+        "tag": "button",
+        "text": "Generate Formula",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-27-content-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "wpf-editor-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wpforms-field-option-27-content-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "wpf-editor-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wpforms-field-option-27-expand-editor",
+        "tag": "button",
+        "text": "Expand Editor",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-27-update-preview",
+        "tag": "button",
+        "text": "Update Preview",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-ai_modal_button",
+        "tag": "button",
+        "text": "Generate Formula",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-password_restrictions_clean_button",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-ai_modal_button",
+        "tag": "button",
+        "text": "Generate Formula",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-ai_modal_button",
+        "tag": "button",
+        "text": "Generate Formula",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-help",
+        "tag": "button",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panels-toggle",
+        "tag": "div",
+        "text": "Setup Fields Settings Marketing Payments Revisions",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-preview-btn",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-preview-dropdown-btn",
+        "tag": "button",
+        "text": "More Preview Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-preview-dropdown",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wpforms-save",
+        "tag": "button",
+        "text": "Save",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-save",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-panel=\"fields\"]",
+        "tag": "button",
+        "text": "Fields",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-panel=\"payments\"]",
+        "tag": "button",
+        "text": "Payments",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-panel=\"providers\"]",
+        "tag": "button",
+        "text": "Marketing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-panel=\"revisions\"]",
+        "tag": "button",
+        "text": "Revisions",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-panel=\"settings\"]",
+        "tag": "button",
+        "text": "Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-panel=\"setup\"]",
+        "tag": "button",
+        "text": "Setup",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-panel-setup",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-section=\"builder-form-2683-field-options-calculations-notice\"]",
+        "tag": "button",
+        "text": "Dismiss this notice.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "[data-section=\"conversational_forms\"]",
+        "tag": "button",
+        "text": "Conversational Form",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "[data-section=\"form_pages\"]",
+        "tag": "button",
+        "text": "Form Landing Page",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "[data-section=\"lead_forms\"]",
+        "tag": "button",
+        "text": "Lead Form",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__button",
+        "tag": "button",
+        "text": "Remove item",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-add-fields-heading",
+        "tag": "a",
+        "text": "Standard Fields",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-ai-chat-modal-btn",
+        "tag": "button",
+        "text": "Hide",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-btn-block",
+        "tag": "button",
+        "text": "Upload Image",
+        "count": 9,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-dropdown-list-search-close",
+        "tag": "i",
+        "text": "",
+        "count": 12,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-calculations-cheatsheet-link",
+        "tag": "a",
+        "text": "Cheatsheet",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-calculations-validate-formula",
+        "tag": "button",
+        "text": "Validate Formula",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-conditionals-enable-toggle",
+        "tag": "div",
+        "text": "Enable Conditional Logic",
+        "count": 23,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-dismiss-container",
+        "tag": "div",
+        "text": "NEW FEATURE AI Calculations Are Here! Easily create advance…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-field-repeater-display-blocks-buttons-add",
+        "tag": "button",
+        "text": "Add",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-field-repeater-display-blocks-buttons-remove",
+        "tag": "button",
+        "text": "Remove",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-field-repeater-display-rows-buttons-add",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-fullscreen-notice-button",
+        "tag": "a",
+        "text": "Back to All Forms",
+        "count": 3,
+        "hidden": true,
+        "nav": "admin-forms-overview"
+      },
+      {
+        "sel": ".wpforms-fullscreen-notice-button-secondary",
+        "tag": "button",
+        "text": "Continue",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-help",
+        "tag": "button",
+        "text": "Help",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-toggle",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-paypal-commerce-button",
+        "tag": "div",
+        "text": "",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-preview-dropdown-link",
+        "tag": "a",
+        "text": "Standard Form Preview",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-save-resume-button",
+        "tag": "a",
+        "text": "Save and Resume Later",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-search-fields-input-close",
+        "tag": "i",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#add-fields",
+        "tag": "li",
+        "text": "Add Fields",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#field-options",
+        "tag": "li",
+        "text": "Field Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-options",
+        "tag": "div",
+        "text": "Phone (ID #10) General Label Format Smart US International …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-content-section-tabs-list-item",
+        "tag": "li",
+        "text": "Questions",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-content-section-tabs-list-item-end",
+        "tag": "li",
+        "text": "Help",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#qt_wpforms-field-option-27-content_block",
+        "tag": "input",
+        "text": "b-quote",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-field-option-27-content_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-field-option-27-content_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-field-option-27-content_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-field-option-27-content_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-field-option-27-content_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-field-option-27-content_ins",
+        "tag": "input",
+        "text": "ins",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-field-option-27-content_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-field-option-27-content_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-field-option-27-content_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-field-option-27-content_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-field-option-27-content_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-content-field-fake-div",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-30-user_names_restrictions-select-multiple-options",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-30-user_roles_restrictions-select-multiple-options",
+        "tag": "input",
+        "text": "[\"administrator\"]",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-id",
+        "tag": "input",
+        "text": "47",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-css",
+        "tag": "input",
+        "text": "capitalize",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-first_default",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-first_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-format",
+        "tag": "select",
+        "text": "SimpleFirst LastFirst Middle Last",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-label",
+        "tag": "input",
+        "text": "Name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-last_default",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-last_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-middle_default",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-middle_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-simple_default",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-simple_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-sublabel_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1-unique_answer",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-10-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-10-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-10-default_value",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-10-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-option-10-format",
+        "tag": "select",
+        "text": "Smart US International",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-option-10-label",
+        "tag": "input",
+        "text": "Phone (Smart format)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-option-10-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-10-placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-10-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-10-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-10-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-10-unique_answer",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-12-calculation_code",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-12-calculation_is_enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-12-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-12-default_value",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-12-label",
+        "tag": "input",
+        "text": "Hidden Field",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-12-label_disable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-12-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-14-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-14-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-14-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-14-label",
+        "tag": "input",
+        "text": "Rich Text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-14-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-14-media_enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-14-media_library",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-14-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-14-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-14-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-14-style",
+        "tag": "select",
+        "text": "FullBasic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-address1_default",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-address1_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-address2_default",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-address2_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-address2_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-city_default",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-city_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-country_default",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-country_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-country_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-display_map",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-enable_address_autocomplete",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-label",
+        "tag": "input",
+        "text": "Address - US",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-map_position",
+        "tag": "select",
+        "text": "Above fieldBelow field",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-postal_default",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-postal_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-postal_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-scheme",
+        "tag": "select",
+        "text": "USInternational",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-state_default",
+        "tag": "select",
+        "text": "--- Select State ---AlabamaAlaskaArizonaArkansasCaliforniaC…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-state_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15-sublabel_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-allowlist",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-confirmation",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-confirmation_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-default_value",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-denylist",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-disable_suggestions",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-filter_type",
+        "tag": "select",
+        "text": "NoneAllowlistDenylist",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-label",
+        "tag": "input",
+        "text": "Email",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-sublabel_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2-unique_answer",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-27-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-27-content",
+        "tag": "textarea",
+        "text": "<h4>Add Text and Images to Your Form With Ease</h4> To get …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-27-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-27-label_disable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-27-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-28-code",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-28-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-28-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-28-label_disable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-28-name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-29-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-29-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-29-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-29-hide_divider_line",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-29-label",
+        "tag": "input",
+        "text": "Section Divider",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-29-label_disable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-calculation_code",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-calculation_is_enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-default_value",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-display_map",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-enable_address_autocomplete",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-input_mask",
+        "tag": "input",
+        "text": "99999",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-label",
+        "tag": "input",
+        "text": "Single Line Text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-limit_count",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-limit_enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-limit_mode",
+        "tag": "select",
+        "text": "CharactersWords",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-map_position",
+        "tag": "select",
+        "text": "Above fieldBelow field",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-quiz_answer_explanation",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-quiz_correct_answer",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-quiz_enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-survey",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3-unique_answer",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-camera_aspect_ratio",
+        "tag": "select",
+        "text": "OriginalCustomFreeform16:95:43:29:164:52:3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-camera_enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-camera_format",
+        "tag": "select",
+        "text": "PhotoVideo",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-camera_ratio_height",
+        "tag": "input",
+        "text": "3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-camera_ratio_width",
+        "tag": "input",
+        "text": "4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-camera_time_limit_minutes",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-camera_time_limit_seconds",
+        "tag": "input",
+        "text": "30",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-extensions",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-is_protected",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-is_restricted",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-label",
+        "tag": "input",
+        "text": "File Upload (Modern Style)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-max_file_number",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-max_size",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-media_library",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-protection_password",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-protection_password_confirm",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-style",
+        "tag": "select",
+        "text": "ModernClassic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-user_names_restrictions",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-user_restrictions",
+        "tag": "select",
+        "text": "NoneLogged-in Users",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30-user_roles_restrictions",
+        "tag": "select",
+        "text": "Administrator",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-33-allow_page_navigation",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-33-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-33-indicator",
+        "tag": "select",
+        "text": "Progress BarCirclesConnectorNone",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-33-indicator_color",
+        "tag": "input",
+        "text": "#066aab",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-33-nav_align",
+        "tag": "select",
+        "text": "LeftRightCenterSplit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-33-position",
+        "tag": "input",
+        "text": "top",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-33-progress_text",
+        "tag": "input",
+        "text": "Step {current_page} of {last_page}",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-33-scroll_disabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-33-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-35-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-35-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-35-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-35-ink_color",
+        "tag": "input",
+        "text": "#000000",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-35-input_method",
+        "tag": "select",
+        "text": "DrawType",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-35-label",
+        "tag": "input",
+        "text": "Signature",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-35-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-35-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-35-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-35-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-highest_label",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-icon",
+        "tag": "select",
+        "text": "StarHeartThumbSmiley Face",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-icon_color",
+        "tag": "input",
+        "text": "#066aab",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-icon_size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-label",
+        "tag": "input",
+        "text": "Rating",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-label_position",
+        "tag": "select",
+        "text": "AboveBelow",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-lowest_label",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-scale",
+        "tag": "select",
+        "text": "2345678910",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36-survey",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-calculation_code",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-calculation_is_enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-default_value",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-label",
+        "tag": "input",
+        "text": "Paragraph Text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-limit_count",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-limit_enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-limit_mode",
+        "tag": "select",
+        "text": "CharactersWords",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-quiz_answer_explanation",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-quiz_correct_answer",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-quiz_enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4-survey",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-columns-json",
+        "tag": "input",
+        "text": "[{\"width_custom\":\"\",\"width_preset\":\"50\",\"fields\":[]},{\"widt…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-display",
+        "tag": "select",
+        "text": "Rows - fields are ordered from left to rightColumns - field…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-label",
+        "tag": "input",
+        "text": "Layout",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-preset-100",
+        "tag": "input",
+        "text": "100",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-preset-25-25-25-25",
+        "tag": "input",
+        "text": "25-25-25-25",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-preset-25-25-50",
+        "tag": "input",
+        "text": "25-25-50",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-preset-25-50-25",
+        "tag": "input",
+        "text": "25-50-25",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-preset-33-33-33",
+        "tag": "input",
+        "text": "33-33-33",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-preset-33-67",
+        "tag": "input",
+        "text": "33-67",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-preset-50-25-25",
+        "tag": "input",
+        "text": "50-25-25",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-preset-50-50",
+        "tag": "input",
+        "text": "50-50",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40-preset-67-33",
+        "tag": "input",
+        "text": "67-33",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-date_disable_past_dates",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-date_disable_todays_date",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-date_format",
+        "tag": "select",
+        "text": "10/06/2026 (m/d/Y)06/10/2026 (d/m/Y)2026/10/06 (Y/m/d)10.06…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-date_limit_days",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-date_limit_days_fri",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-date_limit_days_mon",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-date_limit_days_sat",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-date_limit_days_sun",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-date_limit_days_thu",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-date_limit_days_tue",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-date_limit_days_wed",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-date_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-date_type",
+        "tag": "select",
+        "text": "Date PickerDate Dropdown",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-format",
+        "tag": "select",
+        "text": "Date and TimeDateTime",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-label",
+        "tag": "input",
+        "text": "Date / Time (Date and Time format)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-sublabel_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-time_format",
+        "tag": "select",
+        "text": "12 H24 H",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-time_interval",
+        "tag": "select",
+        "text": "15 minutes30 minutes1 hour",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-time_limit_hours",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-time_limit_hours_end_ampm",
+        "tag": "select",
+        "text": "AMPM",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-time_limit_hours_end_hour",
+        "tag": "select",
+        "text": "010203040506070809101112",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-time_limit_hours_end_min",
+        "tag": "select",
+        "text": "000510152025303540455055",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-time_limit_hours_start_ampm",
+        "tag": "select",
+        "text": "AMPM",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-time_limit_hours_start_hour",
+        "tag": "select",
+        "text": "010203040506070809101112",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-time_limit_hours_start_min",
+        "tag": "select",
+        "text": "000510152025303540455055",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41-time_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-44-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-44-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-44-default_value",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-44-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-44-label",
+        "tag": "input",
+        "text": "Website / URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-44-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-44-placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-44-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-44-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-44-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-44-unique_answer",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-confirmation",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-confirmation_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-default_value",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-label",
+        "tag": "input",
+        "text": "Password",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-password-strength",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-password-strength-level",
+        "tag": "select",
+        "text": "WeakMediumStrong",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-password-visibility",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-sublabel_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45-unique_answer",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-button_add_label",
+        "tag": "input",
+        "text": "Add",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-button_remove_label",
+        "tag": "input",
+        "text": "Remove",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-button_type",
+        "tag": "select",
+        "text": "Buttons with iconsButtonsIcons with textIconsPlain text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-columns-json",
+        "tag": "input",
+        "text": "[{\"width_custom\":\"\",\"width_preset\":\"100\",\"fields\":[]}]",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-display-blocks",
+        "tag": "input",
+        "text": "blocks",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-display-rows",
+        "tag": "input",
+        "text": "rows",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-label",
+        "tag": "input",
+        "text": "Repeater (Rows)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-preset-100",
+        "tag": "input",
+        "text": "100",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-preset-25-25-25-25",
+        "tag": "input",
+        "text": "25-25-25-25",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-preset-25-25-50",
+        "tag": "input",
+        "text": "25-25-50",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-preset-25-50-25",
+        "tag": "input",
+        "text": "25-50-25",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-preset-33-33-33",
+        "tag": "input",
+        "text": "33-33-33",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-preset-33-67",
+        "tag": "input",
+        "text": "33-67",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-preset-50-25-25",
+        "tag": "input",
+        "text": "50-25-25",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-preset-50-50",
+        "tag": "input",
+        "text": "50-50",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-preset-67-33",
+        "tag": "input",
+        "text": "67-33",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-rows_limit_max",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-rows_limit_min",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-dynamic_choices",
+        "tag": "select",
+        "text": "OffPost TypeTaxonomy",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-label",
+        "tag": "input",
+        "text": "Dropdown",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-multiple",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-quiz_enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-style",
+        "tag": "select",
+        "text": "ClassicModern",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-survey",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-choices_icons",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-choices_icons_color",
+        "tag": "input",
+        "text": "#066aab",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-choices_icons_size",
+        "tag": "select",
+        "text": "LargeMediumSmall",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-choices_icons_style",
+        "tag": "select",
+        "text": "DefaultModernClassicNone",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-choices_images",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-choices_images_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-choices_images_style",
+        "tag": "select",
+        "text": "ModernClassicNone",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-choices_other",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-css",
+        "tag": "input",
+        "text": "special-radio-buttons",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-dynamic_choices",
+        "tag": "select",
+        "text": "OffPost TypeTaxonomy",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-input_columns",
+        "tag": "select",
+        "text": "One ColumnTwo ColumnsThree ColumnsInline",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-label",
+        "tag": "input",
+        "text": "Multiple Choice",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-other_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-other_size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-quiz_enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-random",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-survey",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-choice_limit",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-choices_icons",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-choices_icons_color",
+        "tag": "input",
+        "text": "#066aab",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-choices_icons_size",
+        "tag": "select",
+        "text": "LargeMediumSmall",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-choices_icons_style",
+        "tag": "select",
+        "text": "DefaultModernClassicNone",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-choices_images",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-choices_images_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-choices_images_style",
+        "tag": "select",
+        "text": "ModernClassicNone",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-choices_other",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-disclaimer_format",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-dynamic_choices",
+        "tag": "select",
+        "text": "OffPost TypeTaxonomy",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-input_columns",
+        "tag": "select",
+        "text": "One ColumnTwo ColumnsThree ColumnsInline",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-label",
+        "tag": "input",
+        "text": "Checkboxes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-other_placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-other_size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-quiz_enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-random",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-survey",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-calculation_code",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-calculation_is_enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-default_value",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-label",
+        "tag": "input",
+        "text": "Numbers",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-max",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-min",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-placeholder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-required",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-9-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-9-css",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-9-default_value",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-9-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-9-label",
+        "tag": "input",
+        "text": "Number Slider",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-9-label_hide",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-9-max",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-9-min",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-9-read_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-9-required",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-9-size",
+        "tag": "select",
+        "text": "SmallMediumLarge",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-9-step",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-9-value_display",
+        "tag": "input",
+        "text": "Selected Value: {value}",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-number-slider-9",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-richtext-14",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-search-fields-input",
+        "tag": "input",
+        "text": "Search fields...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-dropdown-list-search-input",
+        "tag": "input",
+        "text": "Search",
+        "count": 12,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-field-option-hidden-id",
+        "tag": "input",
+        "text": "10",
+        "count": 25,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-field-option-hidden-type",
+        "tag": "input",
+        "text": "phone",
+        "count": 25,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-field-submit-button",
+        "tag": "input",
+        "text": "Submit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-hidden-strict",
+        "tag": "input",
+        "text": "",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-other-input",
+        "tag": "input",
+        "text": "",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "fields": [
+      {
+        "sel": ".wpforms-field[data-field-id]",
+        "tag": "div",
+        "text": "any canvas field",
+        "count": 25
+      },
+      {
+        "sel": "#wpforms-add-fields-address",
+        "tag": "button",
+        "text": "Address",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-authorize_net",
+        "tag": "button",
+        "text": "Authorize.Net",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-camera",
+        "tag": "button",
+        "text": "Camera",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-captcha",
+        "tag": "button",
+        "text": "Custom Captcha",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-captcha_recaptcha",
+        "tag": "button",
+        "text": "CAPTCHA",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-checkbox",
+        "tag": "button",
+        "text": "Checkboxes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-content",
+        "tag": "button",
+        "text": "Content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-date-time",
+        "tag": "button",
+        "text": "Date / Time",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-divider",
+        "tag": "button",
+        "text": "Section Divider",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-email",
+        "tag": "button",
+        "text": "Email",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-entry-preview",
+        "tag": "button",
+        "text": "Entry Preview",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-file-upload",
+        "tag": "button",
+        "text": "File Upload",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-hidden",
+        "tag": "button",
+        "text": "Hidden Field",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-html",
+        "tag": "button",
+        "text": "HTML",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-layout",
+        "tag": "button",
+        "text": "Layout",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-likert_scale",
+        "tag": "button",
+        "text": "Likert Scale",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-map",
+        "tag": "button",
+        "text": "Map",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-mercado_pago",
+        "tag": "button",
+        "text": "Mercado Pago",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-name",
+        "tag": "button",
+        "text": "Name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-net_promoter_score",
+        "tag": "button",
+        "text": "Net Promoter Score",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-number",
+        "tag": "button",
+        "text": "Numbers",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-number-slider",
+        "tag": "button",
+        "text": "Number Slider",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-pagebreak",
+        "tag": "button",
+        "text": "Page Break",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-password",
+        "tag": "button",
+        "text": "Password",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-payment-checkbox",
+        "tag": "button",
+        "text": "Checkbox Items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-payment-coupon",
+        "tag": "button",
+        "text": "Coupon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-payment-multiple",
+        "tag": "button",
+        "text": "Multiple Items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-payment-select",
+        "tag": "button",
+        "text": "Dropdown Items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-payment-single",
+        "tag": "button",
+        "text": "Single Item",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-payment-total",
+        "tag": "button",
+        "text": "Total",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-paypal-commerce",
+        "tag": "button",
+        "text": "PayPal Commerce",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-phone",
+        "tag": "button",
+        "text": "Phone",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-radio",
+        "tag": "button",
+        "text": "Multiple Choice",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-ranking",
+        "tag": "button",
+        "text": "Ranking",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-rating",
+        "tag": "button",
+        "text": "Rating",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-repeater",
+        "tag": "button",
+        "text": "Repeater",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-richtext",
+        "tag": "button",
+        "text": "Rich Text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-select",
+        "tag": "button",
+        "text": "Dropdown",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-signature",
+        "tag": "button",
+        "text": "Signature",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-square",
+        "tag": "button",
+        "text": "Square",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-stripe-credit-card",
+        "tag": "button",
+        "text": "Stripe Credit Card",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-text",
+        "tag": "button",
+        "text": "Single Line Text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-textarea",
+        "tag": "button",
+        "text": "Paragraph Text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-add-fields-url",
+        "tag": "button",
+        "text": "Website / URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-1",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-10",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Phone (Smart format)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-12",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Hidden Field",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-14",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Rich Text Visual Text",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-15",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Address - US Address Line 1 A…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-2",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Email",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-27",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Add Text and Images to Your F…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-28",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder HTML / Code Block Contents of…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-29",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Section Divider",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-3",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Single Line Text",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-30",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder File Upload (Modern Style) Dr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-33",
+        "tag": "div",
+        "text": "First Page / Progress Indicator Step 1 of 2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-35",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Signature",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-36",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Rating",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-4",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Paragraph Text",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-40",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Layout Add Fields Add Fields",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-41",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Date / Time (Date and Time fo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-44",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Website / URL",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-45",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Password",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-46",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Repeater (Rows) Add Fields",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-5",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Dropdown First Choice Second …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-6",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Multiple Choice First Choice …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-7",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Checkboxes First Choice Secon…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-8",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Numbers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-9",
+        "tag": "div",
+        "text": "Click to Edit Drag to Reorder Number Slider Selected Value:…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-option-5-ai_modal_button",
+        "tag": "button",
+        "text": "Generate Choices",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5-choices-list",
+        "tag": "ul",
+        "text": "Personality OnePersonality TwoPersonality ThreePersonality …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-ai_modal_button",
+        "tag": "button",
+        "text": "Generate Choices",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6-choices-list",
+        "tag": "ul",
+        "text": "Personality OnePersonality TwoPersonality ThreePersonality …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-ai_modal_button",
+        "tag": "button",
+        "text": "Generate Choices",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7-choices-list",
+        "tag": "ul",
+        "text": "Personality OnePersonality TwoPersonality ThreePersonality …",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "panelsModals": [
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-container",
+        "tag": "div",
+        "text": "Embed in a Page We can help embed your form with just a few…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-ai-chat-modal",
+        "tag": "div",
+        "text": "WPForms AI What would you like to change? Describe it in pl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-fields",
+        "tag": "div",
+        "text": "Add Fields Field Options Phone (ID #10) General Label Forma…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-ai-chat-modal-header",
+        "tag": "div",
+        "text": "WPForms AI",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-content",
+        "tag": "div",
+        "text": "Bakery Order — every field Click to Edit Drag to Reorder Na…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar",
+        "tag": "div",
+        "text": "Add Fields Field Options Phone (ID #10) General Label Forma…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-content",
+        "tag": "div",
+        "text": "Add Fields Field Options Phone (ID #10) General Label Forma…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#fa-caret-square-o-up",
+        "tag": "path",
+        "text": "",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_wpforms-field-option-27-content_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-1",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-10",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-11",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-12",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-13",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-14",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-15",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-16",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-2",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-3",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-4",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-5",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-6",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-7",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-8",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-9",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-wpforms-field-option-27-content-editor-container",
+        "tag": "div",
+        "text": "<h4>Add Text and Images to Your Form With Ease</h4> To get …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-wpforms-field-option-27-content-editor-tools",
+        "tag": "div",
+        "text": "Add Media Add Sugar Calendar Visual Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-wpforms-field-option-27-content-media-buttons",
+        "tag": "div",
+        "text": "Add Media Add Sugar Calendar",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-wpforms-field-option-27-content-wrap",
+        "tag": "div",
+        "text": "Add Media Add Sugar Calendar Visual Code <h4>Add Text and I…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder",
+        "tag": "div",
+        "text": "Now editing Bakery Order — every... Help Preview More Previ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-builder-form",
+        "tag": "form",
+        "text": "Now editing Bakery Order — every... Help Preview More Previ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-builder-ie-notice",
+        "tag": "div",
+        "text": "You are using an outdated browser! The Internet Explorer br…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder-mobile-notice",
+        "tag": "div",
+        "text": "Our form builder is optimized for desktop computers. We rec…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder-overlay",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-context-menu",
+        "tag": "div",
+        "text": "Duplicate Form Save as Template Bulk Embed View Analytics N…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-context-menu",
+        "tag": "div",
+        "text": "Edit Duplicate Delete Mark as Required Hide Label Field Siz…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-1",
+        "tag": "div",
+        "text": "Name (ID #1) General LabelFormatSimpleFirst LastFirst Middl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-10",
+        "tag": "div",
+        "text": "Phone (ID #10) General Label Format Smart US International …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-option-12",
+        "tag": "div",
+        "text": "Hidden Field (ID #12) General Label Advanced Default Value …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-14",
+        "tag": "div",
+        "text": "Rich Text (ID #14) General LabelDescription Allow Media Upl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-15",
+        "tag": "div",
+        "text": "Address (ID #15) General LabelSchemeUSInternationalDescript…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-2",
+        "tag": "div",
+        "text": "Email (ID #2) General LabelDescription Required Enable Emai…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-27",
+        "tag": "div",
+        "text": "Content (ID #27) General Add Media Add Sugar Calendar Visua…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-28",
+        "tag": "div",
+        "text": "HTML (ID #28) General LabelCode Advanced CSS ClassesShow La…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-29",
+        "tag": "div",
+        "text": "Section Divider (ID #29) General LabelDescription Advanced …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-3",
+        "tag": "div",
+        "text": "Single Line Text (ID #3) General LabelCorrect AnswerInclude…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-30",
+        "tag": "div",
+        "text": "File Upload (ID #30) General LabelDescriptionAllowed File E…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-33",
+        "tag": "div",
+        "text": "Page Break (ID #33) General Progress IndicatorProgress BarC…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-35",
+        "tag": "div",
+        "text": "Signature (ID #35) General LabelDescription Required Advanc…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-36",
+        "tag": "div",
+        "text": "Rating (ID #36) General LabelDescriptionScale2345678910 Req…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-4",
+        "tag": "div",
+        "text": "Paragraph Text (ID #4) General LabelCorrect AnswerInclude a…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-40",
+        "tag": "div",
+        "text": "Layout (ID #40) General LabelSelect a Layout.DisplayRows - …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-41",
+        "tag": "div",
+        "text": "Date / Time (ID #41) General LabelFormatDate and TimeDateTi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-44",
+        "tag": "div",
+        "text": "Website / URL (ID #44) General LabelDescription Required Ad…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-45",
+        "tag": "div",
+        "text": "Password (ID #45) General LabelDescription Required Enable …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-46",
+        "tag": "div",
+        "text": "Repeater (ID #46) General LabelDisplayLayoutButton TypeButt…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-5",
+        "tag": "div",
+        "text": "Dropdown (ID #5) General LabelChoicesBulk AddPersonality On…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-6",
+        "tag": "div",
+        "text": "Multiple Choice (ID #6) General LabelChoicesBulk AddPersona…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-7",
+        "tag": "div",
+        "text": "Checkboxes (ID #7) General LabelChoicesBulk AddPersonality …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-8",
+        "tag": "div",
+        "text": "Numbers (ID #8) General LabelDescription Required NEW FEATU…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-9",
+        "tag": "div",
+        "text": "Number Slider (ID #9) General LabelDescriptionValue Range M…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-1",
+        "tag": "div",
+        "text": "Advanced Field SizeSmallMediumLargeNamePlaceholder Smart Ta…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-10",
+        "tag": "div",
+        "text": "Advanced",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-12",
+        "tag": "div",
+        "text": "Advanced Default Value Smart Tags Other Site Administrator …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-14",
+        "tag": "div",
+        "text": "Advanced Field StyleFullBasicField SizeSmallMediumLargeCSS …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-15",
+        "tag": "div",
+        "text": "Advanced Field SizeSmallMediumLargeAddress Line 1Placeholde…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-2",
+        "tag": "div",
+        "text": "Advanced Field SizeSmallMediumLargePlaceholder TextConfirma…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-27",
+        "tag": "div",
+        "text": "Advanced Field SizeSmallMediumLargeCSS ClassesShow Layouts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-28",
+        "tag": "div",
+        "text": "Advanced CSS ClassesShow Layouts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-29",
+        "tag": "div",
+        "text": "Advanced CSS ClassesShow Layouts Hide Divider Line",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-3",
+        "tag": "div",
+        "text": "Advanced Enable Survey Reporting Field SizeSmallMediumLarge…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-30",
+        "tag": "div",
+        "text": "Advanced StyleModernClassicCSS ClassesShow Layouts Store Fi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-33",
+        "tag": "div",
+        "text": "Advanced Page Navigation AlignmentLeftRightCenterSplit Disa…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-35",
+        "tag": "div",
+        "text": "Advanced Input MethodDrawTypeInk ColorCSS ClassesShow Layou…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-36",
+        "tag": "div",
+        "text": "Advanced Enable Survey Reporting IconStarHeartThumbSmiley F…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-4",
+        "tag": "div",
+        "text": "Advanced Enable Survey Reporting Field SizeSmallMediumLarge…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-40",
+        "tag": "div",
+        "text": "Advanced Description Hide Label",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-41",
+        "tag": "div",
+        "text": "Advanced Field SizeSmallMediumLargeDateDate PickerDate Drop…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-44",
+        "tag": "div",
+        "text": "Advanced Field SizeSmallMediumLargePlaceholder TextDefault …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-45",
+        "tag": "div",
+        "text": "Advanced Field SizeSmallMediumLargePlaceholder TextConfirma…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-46",
+        "tag": "div",
+        "text": "Advanced Field SizeSmallMediumLargeDescription Hide Label",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-5",
+        "tag": "div",
+        "text": "Advanced Enable Survey Reporting Multiple Options Selection…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-6",
+        "tag": "div",
+        "text": "Advanced Enable Survey Reporting Randomize Choices Choice L…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-7",
+        "tag": "div",
+        "text": "Advanced Enable Survey Reporting Randomize Choices Choice L…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-8",
+        "tag": "div",
+        "text": "Advanced Field SizeSmallMediumLargePlaceholder TextRange Mi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-advanced-9",
+        "tag": "div",
+        "text": "Advanced Field SizeSmallMediumLargeValue DisplayCSS Classes…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-1",
+        "tag": "div",
+        "text": "General LabelFormatSimpleFirst LastFirst Middle LastDescrip…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-10",
+        "tag": "div",
+        "text": "General Label Format Smart US International Description Req…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-option-basic-12",
+        "tag": "div",
+        "text": "General Label",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-14",
+        "tag": "div",
+        "text": "General LabelDescription Allow Media Uploads Store files in…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-15",
+        "tag": "div",
+        "text": "General LabelSchemeUSInternationalDescription Required",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-2",
+        "tag": "div",
+        "text": "General LabelDescription Required Enable Email Confirmation",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-27",
+        "tag": "div",
+        "text": "General Add Media Add Sugar Calendar Visual Code <h4>Add Te…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-28",
+        "tag": "div",
+        "text": "General LabelCode",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-29",
+        "tag": "div",
+        "text": "General LabelDescription",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-3",
+        "tag": "div",
+        "text": "General LabelCorrect AnswerInclude all acceptable answers, …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-30",
+        "tag": "div",
+        "text": "General LabelDescriptionAllowed File ExtensionsSee More Det…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-33",
+        "tag": "div",
+        "text": "General Progress IndicatorProgress BarCirclesConnectorNoneP…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-35",
+        "tag": "div",
+        "text": "General LabelDescription Required",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-36",
+        "tag": "div",
+        "text": "General LabelDescriptionScale2345678910 Required",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-4",
+        "tag": "div",
+        "text": "General LabelCorrect AnswerInclude all acceptable answers, …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-40",
+        "tag": "div",
+        "text": "General LabelSelect a Layout.DisplayRows - fields are order…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-41",
+        "tag": "div",
+        "text": "General LabelFormatDate and TimeDateTimeDescription Required",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-44",
+        "tag": "div",
+        "text": "General LabelDescription Required",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-45",
+        "tag": "div",
+        "text": "General LabelDescription Required Enable Password Confirmat…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-46",
+        "tag": "div",
+        "text": "General LabelDisplayLayoutButton TypeButtons with iconsButt…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-5",
+        "tag": "div",
+        "text": "General LabelChoicesBulk AddPersonality OnePersonality TwoP…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-6",
+        "tag": "div",
+        "text": "General LabelChoicesBulk AddPersonality OnePersonality TwoP…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-7",
+        "tag": "div",
+        "text": "General LabelChoicesBulk AddPersonality OnePersonality TwoP…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-8",
+        "tag": "div",
+        "text": "General LabelDescription Required NEW FEATURE AI Calculatio…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-basic-9",
+        "tag": "div",
+        "text": "General LabelDescriptionValue Range Minimum Maximum Default…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-1",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-10",
+        "tag": "div",
+        "text": "Smart Logic",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-14",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-15",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-2",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-27",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-28",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-29",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-3",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-30",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-35",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-36",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-4",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-40",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-41",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-44",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-45",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-46",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-5",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-6",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-7",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-8",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-option-conditionals-9",
+        "tag": "div",
+        "text": "Smart Logic Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-full-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-icon-choices-custom-properties",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-number-slider-hint-9",
+        "tag": "div",
+        "text": "Selected Value: 0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-paypal-commerce-buttons-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-preview-dropdown-menu",
+        "tag": "ul",
+        "text": "Standard Form Preview Conversational Form Form Landing Page…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "AuthorContributorEditorSEO EditorSEO ManagerSubscriber",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-ai-chat-header",
+        "tag": "div",
+        "text": "WPForms AI What would you like to change? Describe it in pl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-ai-chat-message-input",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-alert-message",
+        "tag": "div",
+        "text": "Quiz Answer Required Enter valid answers in the field above.",
+        "count": 11,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-dropdown-list-search-container",
+        "tag": "div",
+        "text": "",
+        "count": 12,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-overlay-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-conditional-block-field",
+        "tag": "div",
+        "text": "Enable Conditional Logic",
+        "count": 23,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-context-menu-list-item-has-child",
+        "tag": "li",
+        "text": "Field Size Small Medium Large",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-context-menu-list-item-inactive",
+        "tag": "li",
+        "text": "View Entries",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-context-menu-list-item-selective",
+        "tag": "li",
+        "text": "Mark as Required",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-date-dropdown",
+        "tag": "div",
+        "text": "MMDDYYYYDate",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-error-message",
+        "tag": "div",
+        "text": "Passwords do not match",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-field-header",
+        "tag": "div",
+        "text": "Address Line 2 Hide",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-field-number-slider-option",
+        "tag": "div",
+        "text": "Value Range Minimum Maximum Default ValueIncrement",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-field-option-row-content",
+        "tag": "div",
+        "text": "Add Media Add Sugar Calendar Visual Code <h4>Add Text and I…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-field-option-row-label",
+        "tag": "div",
+        "text": "Label",
+        "count": 22,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-field-password-input",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-field-phone-country-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-field-phone-input-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-field-row",
+        "tag": "div",
+        "text": "Address Line 1",
+        "count": 8,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-file-upload-camera-aspect-ratio-label",
+        "tag": "label",
+        "text": "Aspect Ratio",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-file-upload-camera-enabled-row",
+        "tag": "div",
+        "text": "Enable Camera",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-file-upload-camera-format-label",
+        "tag": "label",
+        "text": "Format",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-file-upload-camera-time-limit-label",
+        "tag": "label",
+        "text": "Time Limit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-icon-select",
+        "tag": "div",
+        "text": "face-smile",
+        "count": 9,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-input-row",
+        "tag": "div",
+        "text": "Minimum Maximum",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-preview-dropdown-item",
+        "tag": "li",
+        "text": "Standard Form Preview",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-preview-dropdown-label",
+        "tag": "span",
+        "text": "Standard Form Preview",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-quiz-answer-required-content",
+        "tag": "span",
+        "text": "Quiz Answer Required",
+        "count": 15,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-rating-field",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-rating-field-highest-label",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-rating-field-lowest-label",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-smart-tags-widget-container",
+        "tag": "div",
+        "text": "Smart Tags Other Site Administrator Email Form ID Form Name…",
+        "count": 13,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-smart-tags-widget-input",
+        "tag": "div",
+        "text": "",
+        "count": 13,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-sub-label",
+        "tag": "label",
+        "text": "First",
+        "count": 23,
+        "hidden": true
+      }
+    ]
+  }
+}

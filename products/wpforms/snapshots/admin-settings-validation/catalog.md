@@ -1,11 +1,11 @@
 # Catalog — `admin-settings-validation`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-settings-validation/index.html`
+> Source: `products/wpforms/snapshots/admin-settings-validation/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 91 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-settings-validation/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-settings-validation/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -88,7 +88,7 @@ _73 entries_
 | <a id="id--wpforms-setting-validation-time24h"></a>`id--wpforms-setting-validation-time24h` | `#wpforms-setting-validation-time24h` | input | Limit Hours | 1 |
 | <a id="id--wpforms-setting-validation-url"></a>`id--wpforms-setting-validation-url` | `#wpforms-setting-validation-url` | input | Phone | 1 |
 | <a id="id--wpforms-setting-validation-word-limit"></a>`id--wpforms-setting-validation-word-limit` | `#wpforms-setting-validation-word-limit` | input | Payment Required | 1 |
-| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPT | 1 |
+| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPTCHA | 1 |
 
 ## Role-like classes
 

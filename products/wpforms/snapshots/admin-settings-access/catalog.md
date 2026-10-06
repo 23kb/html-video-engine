@@ -1,62 +1,21 @@
 # Catalog — `admin-settings-access`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-settings-access/index.html`
+> Source: `products/wpforms/snapshots/admin-settings-access/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 99 selector entries across 2 sections.
+> 58 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-settings-access/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-settings-access/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_78 entries_
+_37 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="id--choices--wpforms-setting-wpforms_create_forms-item-choice-2"></a>`id--choices--wpforms-setting-wpforms_create_forms-item-choice-2` | `#choices--wpforms-setting-wpforms_create_forms-item-choice-2` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_create_forms-item-choice-3"></a>`id--choices--wpforms-setting-wpforms_create_forms-item-choice-3` | `#choices--wpforms-setting-wpforms_create_forms-item-choice-3` | div | Editor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_create_forms-item-choice-4"></a>`id--choices--wpforms-setting-wpforms_create_forms-item-choice-4` | `#choices--wpforms-setting-wpforms_create_forms-item-choice-4` | div | Subscriber | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_entries_others_forms-item-choice-1"></a>`id--choices--wpforms-setting-wpforms_delete_entries_others_forms-item-choice-1` | `#choices--wpforms-setting-wpforms_delete_entries_others_forms-item-choice-1` | div | Author | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_entries_others_forms-item-choice-2"></a>`id--choices--wpforms-setting-wpforms_delete_entries_others_forms-item-choice-2` | `#choices--wpforms-setting-wpforms_delete_entries_others_forms-item-choice-2` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_entries_others_forms-item-choice-3"></a>`id--choices--wpforms-setting-wpforms_delete_entries_others_forms-item-choice-3` | `#choices--wpforms-setting-wpforms_delete_entries_others_forms-item-choice-3` | div | Editor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_entries_others_forms-item-choice-4"></a>`id--choices--wpforms-setting-wpforms_delete_entries_others_forms-item-choice-4` | `#choices--wpforms-setting-wpforms_delete_entries_others_forms-item-choice-4` | div | Subscriber | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_entries_own_forms-item-choice-1"></a>`id--choices--wpforms-setting-wpforms_delete_entries_own_forms-item-choice-1` | `#choices--wpforms-setting-wpforms_delete_entries_own_forms-item-choice-1` | div | Author | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_entries_own_forms-item-choice-2"></a>`id--choices--wpforms-setting-wpforms_delete_entries_own_forms-item-choice-2` | `#choices--wpforms-setting-wpforms_delete_entries_own_forms-item-choice-2` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_entries_own_forms-item-choice-3"></a>`id--choices--wpforms-setting-wpforms_delete_entries_own_forms-item-choice-3` | `#choices--wpforms-setting-wpforms_delete_entries_own_forms-item-choice-3` | div | Editor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_entries_own_forms-item-choice-4"></a>`id--choices--wpforms-setting-wpforms_delete_entries_own_forms-item-choice-4` | `#choices--wpforms-setting-wpforms_delete_entries_own_forms-item-choice-4` | div | Subscriber | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_others_forms-item-choice-1"></a>`id--choices--wpforms-setting-wpforms_delete_others_forms-item-choice-1` | `#choices--wpforms-setting-wpforms_delete_others_forms-item-choice-1` | div | Author | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_others_forms-item-choice-2"></a>`id--choices--wpforms-setting-wpforms_delete_others_forms-item-choice-2` | `#choices--wpforms-setting-wpforms_delete_others_forms-item-choice-2` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_others_forms-item-choice-3"></a>`id--choices--wpforms-setting-wpforms_delete_others_forms-item-choice-3` | `#choices--wpforms-setting-wpforms_delete_others_forms-item-choice-3` | div | Editor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_others_forms-item-choice-4"></a>`id--choices--wpforms-setting-wpforms_delete_others_forms-item-choice-4` | `#choices--wpforms-setting-wpforms_delete_others_forms-item-choice-4` | div | Subscriber | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_own_forms-item-choice-1"></a>`id--choices--wpforms-setting-wpforms_delete_own_forms-item-choice-1` | `#choices--wpforms-setting-wpforms_delete_own_forms-item-choice-1` | div | Author | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_own_forms-item-choice-2"></a>`id--choices--wpforms-setting-wpforms_delete_own_forms-item-choice-2` | `#choices--wpforms-setting-wpforms_delete_own_forms-item-choice-2` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_own_forms-item-choice-3"></a>`id--choices--wpforms-setting-wpforms_delete_own_forms-item-choice-3` | `#choices--wpforms-setting-wpforms_delete_own_forms-item-choice-3` | div | Editor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_delete_own_forms-item-choice-4"></a>`id--choices--wpforms-setting-wpforms_delete_own_forms-item-choice-4` | `#choices--wpforms-setting-wpforms_delete_own_forms-item-choice-4` | div | Subscriber | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_entries_others_forms-item-choice-1"></a>`id--choices--wpforms-setting-wpforms_edit_entries_others_forms-item-choice-1` | `#choices--wpforms-setting-wpforms_edit_entries_others_forms-item-choice-1` | div | Author | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_entries_others_forms-item-choice-2"></a>`id--choices--wpforms-setting-wpforms_edit_entries_others_forms-item-choice-2` | `#choices--wpforms-setting-wpforms_edit_entries_others_forms-item-choice-2` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_entries_others_forms-item-choice-3"></a>`id--choices--wpforms-setting-wpforms_edit_entries_others_forms-item-choice-3` | `#choices--wpforms-setting-wpforms_edit_entries_others_forms-item-choice-3` | div | Editor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_entries_others_forms-item-choice-4"></a>`id--choices--wpforms-setting-wpforms_edit_entries_others_forms-item-choice-4` | `#choices--wpforms-setting-wpforms_edit_entries_others_forms-item-choice-4` | div | Subscriber | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_entries_own_forms-item-choice-1"></a>`id--choices--wpforms-setting-wpforms_edit_entries_own_forms-item-choice-1` | `#choices--wpforms-setting-wpforms_edit_entries_own_forms-item-choice-1` | div | Author | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_entries_own_forms-item-choice-2"></a>`id--choices--wpforms-setting-wpforms_edit_entries_own_forms-item-choice-2` | `#choices--wpforms-setting-wpforms_edit_entries_own_forms-item-choice-2` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_entries_own_forms-item-choice-3"></a>`id--choices--wpforms-setting-wpforms_edit_entries_own_forms-item-choice-3` | `#choices--wpforms-setting-wpforms_edit_entries_own_forms-item-choice-3` | div | Editor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_entries_own_forms-item-choice-4"></a>`id--choices--wpforms-setting-wpforms_edit_entries_own_forms-item-choice-4` | `#choices--wpforms-setting-wpforms_edit_entries_own_forms-item-choice-4` | div | Subscriber | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_others_forms-item-choice-1"></a>`id--choices--wpforms-setting-wpforms_edit_others_forms-item-choice-1` | `#choices--wpforms-setting-wpforms_edit_others_forms-item-choice-1` | div | Author | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_others_forms-item-choice-2"></a>`id--choices--wpforms-setting-wpforms_edit_others_forms-item-choice-2` | `#choices--wpforms-setting-wpforms_edit_others_forms-item-choice-2` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_others_forms-item-choice-3"></a>`id--choices--wpforms-setting-wpforms_edit_others_forms-item-choice-3` | `#choices--wpforms-setting-wpforms_edit_others_forms-item-choice-3` | div | Editor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_others_forms-item-choice-4"></a>`id--choices--wpforms-setting-wpforms_edit_others_forms-item-choice-4` | `#choices--wpforms-setting-wpforms_edit_others_forms-item-choice-4` | div | Subscriber | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_own_forms-item-choice-2"></a>`id--choices--wpforms-setting-wpforms_edit_own_forms-item-choice-2` | `#choices--wpforms-setting-wpforms_edit_own_forms-item-choice-2` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_own_forms-item-choice-3"></a>`id--choices--wpforms-setting-wpforms_edit_own_forms-item-choice-3` | `#choices--wpforms-setting-wpforms_edit_own_forms-item-choice-3` | div | Editor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_edit_own_forms-item-choice-4"></a>`id--choices--wpforms-setting-wpforms_edit_own_forms-item-choice-4` | `#choices--wpforms-setting-wpforms_edit_own_forms-item-choice-4` | div | Subscriber | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_view_entries_others_forms-item-choice-1"></a>`id--choices--wpforms-setting-wpforms_view_entries_others_forms-item-choice-1` | `#choices--wpforms-setting-wpforms_view_entries_others_forms-item-choice-1` | div | Author | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_view_entries_others_forms-item-choice-2"></a>`id--choices--wpforms-setting-wpforms_view_entries_others_forms-item-choice-2` | `#choices--wpforms-setting-wpforms_view_entries_others_forms-item-choice-2` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_view_entries_own_forms-item-choice-1"></a>`id--choices--wpforms-setting-wpforms_view_entries_own_forms-item-choice-1` | `#choices--wpforms-setting-wpforms_view_entries_own_forms-item-choice-1` | div | Author | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_view_entries_own_forms-item-choice-4"></a>`id--choices--wpforms-setting-wpforms_view_entries_own_forms-item-choice-4` | `#choices--wpforms-setting-wpforms_view_entries_own_forms-item-choice-4` | div | Subscriber | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_view_others_forms-item-choice-1"></a>`id--choices--wpforms-setting-wpforms_view_others_forms-item-choice-1` | `#choices--wpforms-setting-wpforms_view_others_forms-item-choice-1` | div | Author | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_view_others_forms-item-choice-2"></a>`id--choices--wpforms-setting-wpforms_view_others_forms-item-choice-2` | `#choices--wpforms-setting-wpforms_view_others_forms-item-choice-2` | div | Contributor | 1 |
-| <a id="id--choices--wpforms-setting-wpforms_view_own_forms-item-choice-4"></a>`id--choices--wpforms-setting-wpforms_view_own_forms-item-choice-4` | `#choices--wpforms-setting-wpforms_view_own_forms-item-choice-4` | div | Subscriber | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate WPForms ★★★★★ on WordPress.org to help us sprea… | 1 |
@@ -93,7 +52,7 @@ _78 entries_
 | <a id="id--wpforms-setting-wpforms_view_entries_own_forms"></a>`id--wpforms-setting-wpforms_view_entries_own_forms` | `#wpforms-setting-wpforms_view_entries_own_forms` | select | Contributor Editor | 1 |
 | <a id="id--wpforms-setting-wpforms_view_others_forms"></a>`id--wpforms-setting-wpforms_view_others_forms` | `#wpforms-setting-wpforms_view_others_forms` | select | Editor Subscriber | 1 |
 | <a id="id--wpforms-setting-wpforms_view_own_forms"></a>`id--wpforms-setting-wpforms_view_own_forms` | `#wpforms-setting-wpforms_view_own_forms` | select | Author Contributor Editor | 1 |
-| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPT | 1 |
+| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPTCHA | 1 |
 
 ## Role-like classes
 

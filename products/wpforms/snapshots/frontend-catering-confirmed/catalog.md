@@ -1,11 +1,11 @@
 # Catalog — `frontend-catering-confirmed`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/frontend-catering-confirmed/index.html`
+> Source: `products/wpforms/snapshots/frontend-catering-confirmed/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 31 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/frontend-catering-confirmed/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/frontend-catering-confirmed/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

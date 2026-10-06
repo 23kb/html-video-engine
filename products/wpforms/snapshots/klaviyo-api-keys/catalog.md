@@ -1,11 +1,11 @@
 # Catalog — `klaviyo-api-keys`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/klaviyo-api-keys/index.html`
+> Source: `products/wpforms/snapshots/klaviyo-api-keys/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 42 selector entries across 1 sections.
 
-Provenance anchor form: `snapshots/klaviyo-api-keys/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/klaviyo-api-keys/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -27,7 +27,7 @@ _42 entries_
 | <a id="id--5105406c-c150-43c4-a893-f460b13d499e"></a>`id--5105406c-c150-43c4-a893-f460b13d499e` | `#5105406c-c150-43c4-a893-f460b13d499e` | div | Default opt-in settings | 1 |
 | <a id="id--5b6c3de9-5ef4-41b5-9be6-04474ec02652"></a>`id--5b6c3de9-5ef4-41b5-9be6-04474ec02652` | `#5b6c3de9-5ef4-41b5-9be6-04474ec02652` | div |  | 1 |
 | <a id="id--7cf80fa0-1576-43d4-bb02-5be2efb1a47c"></a>`id--7cf80fa0-1576-43d4-bb02-5be2efb1a47c` | `#7cf80fa0-1576-43d4-bb02-5be2efb1a47c` | input |  | 1 |
-| <a id="id--account-switcher-toggle"></a>`id--account-switcher-toggle` | `#account-switcher-toggle` | button | Su Sullie's Flowers | 1 |
+| <a id="id--account-switcher-toggle"></a>`id--account-switcher-toggle` | `#account-switcher-toggle` | button | Su Sullie's Bakery | 1 |
 | <a id="id--Analytics-accordion"></a>`id--Analytics-accordion` | `#Analytics-accordion` | button |  | 1 |
 | <a id="id--Analytics-section"></a>`id--Analytics-section` | `#Analytics-section` | ul | Dashboards | 1 |
 | <a id="id--app-shell-header-logo-link"></a>`id--app-shell-header-logo-link` | `#app-shell-header-logo-link` | a |  | 1 |
@@ -50,7 +50,7 @@ _42 entries_
 | <a id="id--fender-root"></a>`id--fender-root` | `#fender-root` | div | Navigated to Settings | 1 |
 | <a id="id--fender-route-announcer"></a>`id--fender-route-announcer` | `#fender-route-announcer` | div | Navigated to Settings | 1 |
 | <a id="id--fender-skip-link"></a>`id--fender-skip-link` | `#fender-skip-link` | a | Skip to content | 1 |
-| <a id="id--row-0"></a>`id--row-0` | `#row-0` | tr | Sullie's Flowers | 2 |
+| <a id="id--row-0"></a>`id--row-0` | `#row-0` | tr | Sullie's Bakery | 2 |
 | <a id="id--Service-accordion"></a>`id--Service-accordion` | `#Service-accordion` | button |  | 1 |
 | <a id="id--Service-section"></a>`id--Service-section` | `#Service-section` | ul | Overview | 1 |
 | <a id="id--Social-accordion"></a>`id--Social-accordion` | `#Social-accordion` | button |  | 1 |

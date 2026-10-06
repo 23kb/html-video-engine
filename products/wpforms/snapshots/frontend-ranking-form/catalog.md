@@ -1,11 +1,11 @@
 # Catalog — `frontend-ranking-form`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/frontend-ranking-form/index.html`
+> Source: `products/wpforms/snapshots/frontend-ranking-form/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 44 selector entries across 4 sections.
 
-Provenance anchor form: `snapshots/frontend-ranking-form/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/frontend-ranking-form/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

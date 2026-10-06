@@ -1,11 +1,11 @@
 # Catalog — `klaviyo-dashboard`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/klaviyo-dashboard/index.html`
+> Source: `products/wpforms/snapshots/klaviyo-dashboard/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 35 selector entries across 1 sections.
 
-Provenance anchor form: `snapshots/klaviyo-dashboard/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/klaviyo-dashboard/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -23,7 +23,7 @@ _35 entries_
 | <a id="id--685c5d89-8316-4e64-922a-7f3960944b41"></a>`id--685c5d89-8316-4e64-922a-7f3960944b41` | `#685c5d89-8316-4e64-922a-7f3960944b41` | div |  | 1 |
 | <a id="id--71e5db8e-4463-4655-934c-e7db208bb221"></a>`id--71e5db8e-4463-4655-934c-e7db208bb221` | `#71e5db8e-4463-4655-934c-e7db208bb221` | div |  | 1 |
 | <a id="id--75abde98-2dc7-4287-a7e2-dfa1fef88458"></a>`id--75abde98-2dc7-4287-a7e2-dfa1fef88458` | `#75abde98-2dc7-4287-a7e2-dfa1fef88458` | div |  | 1 |
-| <a id="id--account-switcher-toggle"></a>`id--account-switcher-toggle` | `#account-switcher-toggle` | button | Su Sullie's Flowers | 1 |
+| <a id="id--account-switcher-toggle"></a>`id--account-switcher-toggle` | `#account-switcher-toggle` | button | Su Sullie's Bakery | 1 |
 | <a id="id--Analytics-accordion"></a>`id--Analytics-accordion` | `#Analytics-accordion` | button |  | 1 |
 | <a id="id--Analytics-section"></a>`id--Analytics-section` | `#Analytics-section` | ul | Dashboards | 1 |
 | <a id="id--app-shell-header-logo-link"></a>`id--app-shell-header-logo-link` | `#app-shell-header-logo-link` | a |  | 1 |

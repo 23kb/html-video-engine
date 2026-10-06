@@ -1,11 +1,11 @@
 # Catalog — `klaviyo-settings`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/klaviyo-settings/index.html`
+> Source: `products/wpforms/snapshots/klaviyo-settings/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 55 selector entries across 1 sections.
 
-Provenance anchor form: `snapshots/klaviyo-settings/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/klaviyo-settings/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -26,7 +26,7 @@ _55 entries_
 | <a id="id--6068f9be-8cc5-4d8a-b0dd-91414f7e1b9f"></a>`id--6068f9be-8cc5-4d8a-b0dd-91414f7e1b9f` | `#6068f9be-8cc5-4d8a-b0dd-91414f7e1b9f` | div |  | 1 |
 | <a id="id--6efa8815-97a6-492f-b028-4139176f0e55"></a>`id--6efa8815-97a6-492f-b028-4139176f0e55` | `#6efa8815-97a6-492f-b028-4139176f0e55` | div | Create a password between 12-64 characters. | 1 |
 | <a id="id--a26f5fac-73b8-40dc-88fb-cdf25b370954"></a>`id--a26f5fac-73b8-40dc-88fb-cdf25b370954` | `#a26f5fac-73b8-40dc-88fb-cdf25b370954` | div | Email | 1 |
-| <a id="id--account-switcher-toggle"></a>`id--account-switcher-toggle` | `#account-switcher-toggle` | button | Su Sullie's Flowers | 1 |
+| <a id="id--account-switcher-toggle"></a>`id--account-switcher-toggle` | `#account-switcher-toggle` | button | Su Sullie's Bakery | 1 |
 | <a id="id--Analytics-accordion"></a>`id--Analytics-accordion` | `#Analytics-accordion` | button |  | 1 |
 | <a id="id--Analytics-section"></a>`id--Analytics-section` | `#Analytics-section` | ul | Dashboards | 1 |
 | <a id="id--app-shell-header-logo-link"></a>`id--app-shell-header-logo-link` | `#app-shell-header-logo-link` | a |  | 1 |

@@ -1,11 +1,11 @@
 # Catalog — `admin-payment-detail-mercado-pago`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-payment-detail-mercado-pago/index.html`
+> Source: `products/wpforms/snapshots/admin-payment-detail-mercado-pago/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 64 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-payment-detail-mercado-pago/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-payment-detail-mercado-pago/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

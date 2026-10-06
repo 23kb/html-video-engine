@@ -1,0 +1,840 @@
+{
+  "slug": "admin-payments-coupons-add-new",
+  "registryPresent": true,
+  "transitions": [],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    },
+    {
+      "target": "admin-payments-coupons",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"][href*=\"view=coupons\"]"
+    },
+    {
+      "target": "builder-fields",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"][href*=\"view=fields\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-btn",
+        "tag": "a",
+        "text": "Back to All Coupons",
+        "count": 3,
+        "hidden": false,
+        "nav": "admin-payments"
+      },
+      {
+        "sel": ".wpforms-btn-blue",
+        "tag": "button",
+        "text": "Generate Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-clear-datetime-field",
+        "tag": "button",
+        "text": "Clear Start Date",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-coupon-toggle-control",
+        "tag": "span",
+        "text": "Allow All Forms",
+        "count": 48,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-coupons-show-all-forms",
+        "tag": "a",
+        "text": "Show all 47 forms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-coupons-submit",
+        "tag": "button",
+        "text": "Save Coupon",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#wpforms-coupons-allowed-table",
+        "tag": "div",
+        "text": "Allowed Forms Specify which forms your coupon can be used o…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-coupons-allowed-table-description",
+        "tag": "p",
+        "text": "Specify which forms your coupon can be used on and view val…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#wpforms-coupon-allowed-10",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-100",
+        "tag": "input",
+        "text": "100",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-103",
+        "tag": "input",
+        "text": "103",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-106",
+        "tag": "input",
+        "text": "106",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-110",
+        "tag": "input",
+        "text": "110",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-144",
+        "tag": "input",
+        "text": "144",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-147",
+        "tag": "input",
+        "text": "147",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-15",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-150",
+        "tag": "input",
+        "text": "150",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-169",
+        "tag": "input",
+        "text": "169",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-1690",
+        "tag": "input",
+        "text": "1690",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-1718",
+        "tag": "input",
+        "text": "1718",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-172",
+        "tag": "input",
+        "text": "172",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-1725",
+        "tag": "input",
+        "text": "1725",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-174",
+        "tag": "input",
+        "text": "174",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-1746",
+        "tag": "input",
+        "text": "1746",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-1754",
+        "tag": "input",
+        "text": "1754",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-1759",
+        "tag": "input",
+        "text": "1759",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-1776",
+        "tag": "input",
+        "text": "1776",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-1779",
+        "tag": "input",
+        "text": "1779",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-18",
+        "tag": "input",
+        "text": "18",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-1838",
+        "tag": "input",
+        "text": "1838",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-185",
+        "tag": "input",
+        "text": "185",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-191",
+        "tag": "input",
+        "text": "191",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-25",
+        "tag": "input",
+        "text": "25",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-28",
+        "tag": "input",
+        "text": "28",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-32",
+        "tag": "input",
+        "text": "32",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-40",
+        "tag": "input",
+        "text": "40",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-406",
+        "tag": "input",
+        "text": "406",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-53",
+        "tag": "input",
+        "text": "53",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-55",
+        "tag": "input",
+        "text": "55",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-57",
+        "tag": "input",
+        "text": "57",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-59",
+        "tag": "input",
+        "text": "59",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-61",
+        "tag": "input",
+        "text": "61",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-63",
+        "tag": "input",
+        "text": "63",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-65",
+        "tag": "input",
+        "text": "65",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-67",
+        "tag": "input",
+        "text": "67",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-70",
+        "tag": "input",
+        "text": "70",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-72",
+        "tag": "input",
+        "text": "72",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-75",
+        "tag": "input",
+        "text": "75",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-78",
+        "tag": "input",
+        "text": "78",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-81",
+        "tag": "input",
+        "text": "81",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-86",
+        "tag": "input",
+        "text": "86",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-88",
+        "tag": "input",
+        "text": "88",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-91",
+        "tag": "input",
+        "text": "91",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-94",
+        "tag": "input",
+        "text": "94",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-allowed-97",
+        "tag": "input",
+        "text": "97",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-amount",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-coupon-code",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-coupon-name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-coupons-amount-type",
+        "tag": "select",
+        "text": "%",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupons-end_date",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupons-end_time",
+        "tag": "input",
+        "text": "End Coupon Time",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-coupons-is_global",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupons-page-type",
+        "tag": "input",
+        "text": "add",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupons-start_date",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupons-start_time",
+        "tag": "input",
+        "text": "Start Coupon Time",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-coupons-usage_limit",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#et-ajax-saving",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#loading",
+        "tag": "img",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_e2e-dashboard",
+        "tag": "li",
+        "text": "E2E Dashboard E2E Dashboard Recent Runs Nightly Tests",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_et_divi_options",
+        "tag": "li",
+        "text": "Divi Dashboard 1 Divi 5 Migrator Theme Options Theme Builde…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_vibe-ai",
+        "tag": "li",
+        "text": "Vibe AI Vibe AI Approval Log",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpcode",
+        "tag": "li",
+        "text": "Code Snippets Code Snippets + Add Snippet Header & Footer C…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms_dev_tools",
+        "tag": "li",
+        "text": "WPForms Dev WPForms Dev Analytics",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms All Forms Setup Checklist 67% complete Add New Form…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-coupon-datetime-block",
+        "tag": "div",
+        "text": "Start Date / Time Set the date and time this discount will …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-coupons",
+        "tag": "div",
+        "text": "Add New Coupon Create a coupon code that can be used to rec…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-payments",
+        "tag": "div",
+        "text": "Payments Back to All Coupons Help Add New Coupon Create a c…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "%$",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "Add New Coupon Create a coupon code that can be used to rec…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-coupon-amount-select",
+        "tag": "div",
+        "text": "%",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-coupon-datepicker-container",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-coupon-timepicker-container",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-coupons-notice",
+        "tag": "div",
+        "text": "Make sure you enable your coupon for at least one form.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-setting-field",
+        "tag": "div",
+        "text": "Add New Coupon Create a coupon code that can be used to rec…",
+        "count": 7,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setting-label",
+        "tag": "div",
+        "text": "Name *",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setting-row",
+        "tag": "div",
+        "text": "Add New Coupon Create a coupon code that can be used to rec…",
+        "count": 9,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setting-row-content",
+        "tag": "div",
+        "text": "Form Payments Coupon Uses Bakery Feedback Form 0 0 Bakery F…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

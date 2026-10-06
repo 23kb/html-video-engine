@@ -1,11 +1,11 @@
 # Catalog — `admin-dashboard`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-dashboard/index.html`
+> Source: `products/wpforms/snapshots/admin-dashboard/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 76 selector entries across 3 sections.
 
-Provenance anchor form: `snapshots/admin-dashboard/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-dashboard/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

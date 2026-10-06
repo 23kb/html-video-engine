@@ -1,7 +1,20 @@
 {
   "slug": "admin-entries-list-100",
   "registryPresent": true,
-  "transitions": [],
+  "transitions": [
+    {
+      "label": "wpf-parked-modal-open",
+      "event": "click",
+      "selector": "a.wpforms-link.wpforms-link-whats-new",
+      "count": 1
+    },
+    {
+      "label": "wpf-flyout",
+      "event": "click",
+      "selector": "a.wpforms-flyout-button.wpforms-flyout-head",
+      "count": 1
+    }
+  ],
   "nav": [
     {
       "target": "admin-forms-overview",
@@ -117,7 +130,9 @@
         "tag": "a",
         "text": "See Quick Links",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "wpf-flyout",
+        "wiredEvent": "click"
       },
       {
         "sel": ".wpforms-flyout-item-1",
@@ -145,7 +160,9 @@
         "tag": "a",
         "text": "What’s New",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "wpf-parked-modal-open",
+        "wiredEvent": "click"
       },
       {
         "sel": ".wpforms-survey-graph-button",
@@ -283,7 +300,7 @@
       {
         "sel": "#screenoptionnonce",
         "tag": "input",
-        "text": "b77205a375",
+        "text": "7c77feffbb",
         "count": 1,
         "hidden": true
       },
@@ -362,7 +379,7 @@
       {
         "sel": "[data-field-type=\"email\"]",
         "tag": "div",
-        "text": "ben.hall155@yahoo.com",
+        "text": "ben.hall155@example.com",
         "count": 30,
         "hidden": false
       },
@@ -382,6 +399,13 @@
       }
     ],
     "panelsModals": [
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
       {
         "sel": ".wpforms-survey-graph-menu-modal",
         "tag": "div",
@@ -420,6 +444,13 @@
         "hidden": true
       },
       {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
         "sel": "#cb",
         "tag": "td",
         "text": "Select All",
@@ -455,13 +486,6 @@
         "hidden": false
       },
       {
-        "sel": "#et-ajax-saving",
-        "tag": "div",
-        "text": "",
-        "count": 1,
-        "hidden": true
-      },
-      {
         "sel": "#footer-left",
         "tag": "p",
         "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
@@ -490,13 +514,6 @@
         "hidden": true
       },
       {
-        "sel": "#loading",
-        "tag": "img",
-        "text": "",
-        "count": 1,
-        "hidden": true
-      },
-      {
         "sel": "#screen-options-wrap",
         "tag": "div",
         "text": "Pagination Number of entries per page:",
@@ -513,49 +530,7 @@
       {
         "sel": "#the-list",
         "tag": "tbody",
-        "text": "Ben Hall ben.hall155@yahoo.com Warning: Undefined array key…",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#toplevel_page_e2e-dashboard",
-        "tag": "li",
-        "text": "E2E Dashboard E2E Dashboard Recent Runs Nightly Tests",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#toplevel_page_et_divi_options",
-        "tag": "li",
-        "text": "Divi Dashboard 1 Divi 5 Migrator Theme Options Theme Builde…",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#toplevel_page_vibe-ai",
-        "tag": "li",
-        "text": "Vibe AI Vibe AI Approval Log",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#toplevel_page_wp-mail-smtp",
-        "tag": "li",
-        "text": "WP Mail SMTP Settings Email Log Email Reports Tools Privacy…",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#toplevel_page_wpcode",
-        "tag": "li",
-        "text": "Code Snippets Code Snippets + Add Snippet Header & Footer C…",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#toplevel_page_wpforms_dev_tools",
-        "tag": "li",
-        "text": "WPForms Dev WPForms Dev Analytics",
+        "text": "Ben Hall ben.hall155@example.com Warning: Undefined array k…",
         "count": 1,
         "hidden": false
       },
@@ -653,7 +628,7 @@
       {
         "sel": "#wpforms-entries-list",
         "tag": "div",
-        "text": "Entries SELECT FORM Sullie's Bakery Customer Feedback Surve…",
+        "text": "Entries SELECT FORM Sullie’s Bakery Customer Feedback Surve…",
         "count": 1,
         "hidden": false
       },
@@ -693,9 +668,16 @@
         "hidden": true
       },
       {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
         "sel": ".wpforms-admin-content",
         "tag": "div",
-        "text": "SELECT FORM Sullie's Bakery Customer Feedback Survey Edit T…",
+        "text": "SELECT FORM Sullie’s Bakery Customer Feedback Survey Edit T…",
         "count": 1,
         "hidden": false
       },

@@ -1,31 +1,21 @@
 # Catalog — `admin-settings-email`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-settings-email/index.html`
+> Source: `products/wpforms/snapshots/admin-settings-email/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 89 selector entries across 2 sections.
+> 79 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-settings-email/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-settings-email/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_63 entries_
+_53 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="id--choices--wpforms-setting-email-header-image-size-dark-item-choice-1"></a>`id--choices--wpforms-setting-email-header-image-size-dark-item-choice-1` | `#choices--wpforms-setting-email-header-image-size-dark-item-choice-1` | div | Small | 1 |
-| <a id="id--choices--wpforms-setting-email-header-image-size-dark-item-choice-2"></a>`id--choices--wpforms-setting-email-header-image-size-dark-item-choice-2` | `#choices--wpforms-setting-email-header-image-size-dark-item-choice-2` | div | Medium | 1 |
-| <a id="id--choices--wpforms-setting-email-header-image-size-dark-item-choice-3"></a>`id--choices--wpforms-setting-email-header-image-size-dark-item-choice-3` | `#choices--wpforms-setting-email-header-image-size-dark-item-choice-3` | div | Large | 1 |
-| <a id="id--choices--wpforms-setting-email-header-image-size-item-choice-1"></a>`id--choices--wpforms-setting-email-header-image-size-item-choice-1` | `#choices--wpforms-setting-email-header-image-size-item-choice-1` | div | Small | 1 |
-| <a id="id--choices--wpforms-setting-email-header-image-size-item-choice-2"></a>`id--choices--wpforms-setting-email-header-image-size-item-choice-2` | `#choices--wpforms-setting-email-header-image-size-item-choice-2` | div | Medium | 1 |
-| <a id="id--choices--wpforms-setting-email-header-image-size-item-choice-3"></a>`id--choices--wpforms-setting-email-header-image-size-item-choice-3` | `#choices--wpforms-setting-email-header-image-size-item-choice-3` | div | Large | 1 |
-| <a id="id--choices--wpforms-setting-email-typography-dark-item-choice-1"></a>`id--choices--wpforms-setting-email-typography-dark-item-choice-1` | `#choices--wpforms-setting-email-typography-dark-item-choice-1` | div | Sans Serif | 1 |
-| <a id="id--choices--wpforms-setting-email-typography-dark-item-choice-2"></a>`id--choices--wpforms-setting-email-typography-dark-item-choice-2` | `#choices--wpforms-setting-email-typography-dark-item-choice-2` | div | Serif | 1 |
-| <a id="id--choices--wpforms-setting-email-typography-item-choice-1"></a>`id--choices--wpforms-setting-email-typography-item-choice-1` | `#choices--wpforms-setting-email-typography-item-choice-1` | div | Sans Serif | 1 |
-| <a id="id--choices--wpforms-setting-email-typography-item-choice-2"></a>`id--choices--wpforms-setting-email-typography-item-choice-2` | `#choices--wpforms-setting-email-typography-item-choice-2` | div | Serif | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate WPForms ★★★★★ on WordPress.org to help us sprea… | 1 |
@@ -78,7 +68,7 @@ _63 entries_
 | <a id="id--wpforms-setting-row-email-typography"></a>`id--wpforms-setting-row-email-typography` | `#wpforms-setting-row-email-typography` | div | Typography | 1 |
 | <a id="id--wpforms-setting-row-email-typography-dark"></a>`id--wpforms-setting-row-email-typography-dark` | `#wpforms-setting-row-email-typography-dark` | div | Typography | 1 |
 | <a id="id--wpforms-setting-row-sending-heading"></a>`id--wpforms-setting-row-sending-heading` | `#wpforms-setting-row-sending-heading` | div | Sending | 1 |
-| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email | 1 |
+| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPTCHA | 1 |
 
 ## Role-like classes
 

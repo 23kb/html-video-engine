@@ -1,11 +1,11 @@
 # Catalog — `klaviyo-private-key-confirmation`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/klaviyo-private-key-confirmation/index.html`
+> Source: `products/wpforms/snapshots/klaviyo-private-key-confirmation/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 35 selector entries across 1 sections.
 
-Provenance anchor form: `snapshots/klaviyo-private-key-confirmation/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/klaviyo-private-key-confirmation/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -22,7 +22,7 @@ _35 entries_
 | <a id="id--98582004-02d6-4e48-92de-b0dd48df430a"></a>`id--98582004-02d6-4e48-92de-b0dd48df430a` | `#98582004-02d6-4e48-92de-b0dd48df430a` | div |  | 1 |
 | <a id="id--9d390ec5-296d-4022-ba99-d3cc9f2a8c5b"></a>`id--9d390ec5-296d-4022-ba99-d3cc9f2a8c5b` | `#9d390ec5-296d-4022-ba99-d3cc9f2a8c5b` | div |  | 1 |
 | <a id="id--a6e97ce9-3dfb-462d-8131-6a171ffa3ba3"></a>`id--a6e97ce9-3dfb-462d-8131-6a171ffa3ba3` | `#a6e97ce9-3dfb-462d-8131-6a171ffa3ba3` | input |  | 1 |
-| <a id="id--account-switcher-toggle"></a>`id--account-switcher-toggle` | `#account-switcher-toggle` | button | Su Sullie's Flowers | 1 |
+| <a id="id--account-switcher-toggle"></a>`id--account-switcher-toggle` | `#account-switcher-toggle` | button | Su Sullie's Bakery | 1 |
 | <a id="id--Analytics-accordion"></a>`id--Analytics-accordion` | `#Analytics-accordion` | button |  | 1 |
 | <a id="id--Analytics-section"></a>`id--Analytics-section` | `#Analytics-section` | ul | Dashboards | 1 |
 | <a id="id--app-shell-header-logo-link"></a>`id--app-shell-header-logo-link` | `#app-shell-header-logo-link` | a |  | 1 |

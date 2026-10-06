@@ -47,6 +47,3 @@ _These admin links navigate when hand-browsing /snapshots/ but their handler bai
 
 - click `a[href*="page=wpforms-entries"][href*="view=list"]` → cross-snapshot nav → use `ifm.swap('admin-entries-overview')`
 - click `a[href*="page=wpforms-builder"][href*="view=fields"]` → cross-snapshot nav → use `ifm.swap('builder-fields')`
-
-<!-- capture-gates:start -->
-<!-- capture-gates:end -->

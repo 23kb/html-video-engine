@@ -67,10 +67,3 @@ _These admin links navigate when hand-browsing /snapshots/ but their handler bai
 
 - click `a[href*="page=wpforms-entries"][href*="view=list"]` → cross-snapshot nav → use `ifm.swap('admin-entries-overview')`
 - click `a[href*="page=wpforms-builder"][href*="view=fields"]` → cross-snapshot nav → use `ifm.swap('builder-fields')`
-
-<!-- capture-gates:start -->
-## Capture gates (auto, 2026-09-25)
-
-- ⚠ locale: SELECTED intl-tel flag(s) ≠ us: pk — the phone flag reads wrong to a US audience (ccs 21, bac D; swap the class in the loader doc before lifting)
-- ⚠ paint diff: mean abs diff 9.8/255 (>8) — the frozen snapshot paints differently from the live page (ccs 12; CSSOM-injected styles are the usual cause). CLEAR THIS BY OPENING BOTH PNGs (products/wpforms/snapshots/frontend-address-map/live-reference.png vs the frozen render) OR BY FIXING THE CAPTURE — never by reasoning about it. rf 9: this gate was right 4/4 on its first batch and every WARN got explained away
-<!-- capture-gates:end -->

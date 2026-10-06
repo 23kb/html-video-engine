@@ -1,0 +1,455 @@
+{
+  "slug": "admin-settings-captcha",
+  "registryPresent": true,
+  "transitions": [],
+  "nav": [
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=general\"]"
+    },
+    {
+      "target": "admin-settings-email",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=email\"]"
+    },
+    {
+      "target": "admin-settings-captcha",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=captcha\"]"
+    },
+    {
+      "target": "admin-settings-validation",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=validation\"]"
+    },
+    {
+      "target": "admin-settings-payments",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=payments\"]"
+    },
+    {
+      "target": "admin-settings-integrations",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=integrations\"]"
+    },
+    {
+      "target": "admin-settings-geolocation",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=geolocation\"]"
+    },
+    {
+      "target": "admin-settings-access",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=access\"]"
+    },
+    {
+      "target": "admin-settings-misc",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=misc\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#wpforms-setting-row-recaptcha-noconflict",
+        "tag": "div",
+        "text": "No-Conflict Mode Off Forcefully remove other CAPTCHA occurr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-btn",
+        "tag": "button",
+        "text": "Save Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-toggle-control",
+        "tag": "span",
+        "text": "Off",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#wpforms-setting-hcaptcha-fail-msg",
+        "tag": "input",
+        "text": "hCaptcha verification failed, please try again later.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-hcaptcha-secret-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-hcaptcha-site-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-recaptcha-fail-msg",
+        "tag": "input",
+        "text": "Google reCAPTCHA verification failed, please try again late…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-recaptcha-noconflict",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-recaptcha-secret-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-recaptcha-site-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-recaptcha-v3-threshold",
+        "tag": "input",
+        "text": "0.4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-turnstile-fail-msg",
+        "tag": "input",
+        "text": "Cloudflare Turnstile verification failed, please try again …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-turnstile-secret-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-turnstile-site-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-turnstile-theme",
+        "tag": "select",
+        "text": "AutoLightDark",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-recaptcha-hidden",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-captcha-heading",
+        "tag": "div",
+        "text": "CAPTCHA A CAPTCHA is an anti-spam technique which helps to …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-captcha-preview",
+        "tag": "div",
+        "text": "Preview This CAPTCHA is generated using your site and secre…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-captcha-provider",
+        "tag": "div",
+        "text": "hCaptcha reCAPTCHA Turnstile None Not sure which service is…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-hcaptcha-fail-msg",
+        "tag": "div",
+        "text": "Fail MessageDisplays to users who fail the verification pro…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-hcaptcha-heading",
+        "tag": "div",
+        "text": "hCaptcha is a free and privacy-oriented spam prevention ser…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-hcaptcha-secret-key",
+        "tag": "div",
+        "text": "Secret Key",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-hcaptcha-site-key",
+        "tag": "div",
+        "text": "Site Key",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-recaptcha-fail-msg",
+        "tag": "div",
+        "text": "Fail MessageDisplays to users who fail the verification pro…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-recaptcha-heading",
+        "tag": "div",
+        "text": "reCAPTCHA is a free anti-spam service from Google which hel…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-recaptcha-secret-key",
+        "tag": "div",
+        "text": "Secret Key",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-recaptcha-site-key",
+        "tag": "div",
+        "text": "Site Key",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-recaptcha-type",
+        "tag": "div",
+        "text": "TypeCheckbox reCAPTCHA v2Invisible reCAPTCHA v2reCAPTCHA v3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-recaptcha-v3-threshold",
+        "tag": "div",
+        "text": "Score ThresholdreCAPTCHA v3 returns a score (1.0 is very li…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-turnstile-fail-msg",
+        "tag": "div",
+        "text": "Fail MessageDisplays to users who fail the verification pro…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-turnstile-heading",
+        "tag": "div",
+        "text": "Cloudflare Turnstile is a free, CAPTCHA-like service for pr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-turnstile-secret-key",
+        "tag": "div",
+        "text": "Secret Key",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-turnstile-site-key",
+        "tag": "div",
+        "text": "Site Key",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-turnstile-theme",
+        "tag": "div",
+        "text": "TypeAutoLightDark",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-settings",
+        "tag": "div",
+        "text": "General Email CAPTCHA Validation Payments Integrations Geol…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "CAPTCHA A CAPTCHA is an anti-spam technique which helps to …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-captcha-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-setting-field",
+        "tag": "span",
+        "text": "CAPTCHA A CAPTCHA is an anti-spam technique which helps to …",
+        "count": 19,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setting-label",
+        "tag": "span",
+        "text": "Site Key",
+        "count": 14,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-specific-note-content",
+        "tag": "div",
+        "text": "hCaptcha is a free and privacy-oriented spam prevention ser…",
+        "count": 3,
+        "hidden": true
+      }
+    ]
+  }
+}

@@ -1,11 +1,11 @@
 # Catalog — `klaviyo-example-profile`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/klaviyo-example-profile/index.html`
+> Source: `products/wpforms/snapshots/klaviyo-example-profile/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 79 selector entries across 1 sections.
 
-Provenance anchor form: `snapshots/klaviyo-example-profile/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/klaviyo-example-profile/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -57,7 +57,7 @@ _79 entries_
 | <a id="id--912f1bad-f582-4796-94cd-41e877c7dfa6"></a>`id--912f1bad-f582-4796-94cd-41e877c7dfa6` | `#912f1bad-f582-4796-94cd-41e877c7dfa6` | input | ctrl+k | 1 |
 | <a id="id--9ef8b692-8a65-4a48-810f-b239aab92948"></a>`id--9ef8b692-8a65-4a48-810f-b239aab92948` | `#9ef8b692-8a65-4a48-810f-b239aab92948` | input |  | 1 |
 | <a id="id--a757c93a-80b1-478a-a21c-bb34b1bc1b23"></a>`id--a757c93a-80b1-478a-a21c-bb34b1bc1b23` | `#a757c93a-80b1-478a-a21c-bb34b1bc1b23` | div | Email Domain : klaviyo-demo.com | 1 |
-| <a id="id--account-switcher-toggle"></a>`id--account-switcher-toggle` | `#account-switcher-toggle` | button | Su Sullie's Flowers | 1 |
+| <a id="id--account-switcher-toggle"></a>`id--account-switcher-toggle` | `#account-switcher-toggle` | button | Su Sullie's Bakery | 1 |
 | <a id="id--Analytics-accordion"></a>`id--Analytics-accordion` | `#Analytics-accordion` | button |  | 1 |
 | <a id="id--Analytics-section"></a>`id--Analytics-section` | `#Analytics-section` | ul | Dashboards | 1 |
 | <a id="id--app-shell-header-logo-link"></a>`id--app-shell-header-logo-link` | `#app-shell-header-logo-link` | a |  | 1 |
@@ -80,7 +80,7 @@ _79 entries_
 | <a id="id--content-hash"></a>`id--content-hash` | `#content-hash` | meta |  | 1 |
 | <a id="id--Content-section"></a>`id--Content-section` | `#Content-section` | ul | Templates | 1 |
 | <a id="id--dbb390cf-b7fc-4fdd-a505-1eb50f4671be"></a>`id--dbb390cf-b7fc-4fdd-a505-1eb50f4671be` | `#dbb390cf-b7fc-4fdd-a505-1eb50f4671be` | div | AddedItemProductID : 1112 | 1 |
-| <a id="id--e627d5a6-d91a-4fa7-af40-1cd9cb304ea4"></a>`id--e627d5a6-d91a-4fa7-af40-1cd9cb304ea4` | `#e627d5a6-d91a-4fa7-af40-1cd9cb304ea4` | div | matt.kemp@klaviyo-demo.com | 1 |
+| <a id="id--e627d5a6-d91a-4fa7-af40-1cd9cb304ea4"></a>`id--e627d5a6-d91a-4fa7-af40-1cd9cb304ea4` | `#e627d5a6-d91a-4fa7-af40-1cd9cb304ea4` | div | matt.kemp@example.com | 1 |
 | <a id="id--e7c3cf62-9cc5-417e-814f-c8a30e33d12d"></a>`id--e7c3cf62-9cc5-417e-814f-c8a30e33d12d` | `#e7c3cf62-9cc5-417e-814f-c8a30e33d12d` | div | Client Name : Mobile Safari | 1 |
 | <a id="id--f65f2baf-bbd5-474b-bf1a-8efdc6138ce3"></a>`id--f65f2baf-bbd5-474b-bf1a-8efdc6138ce3` | `#f65f2baf-bbd5-474b-bf1a-8efdc6138ce3` | div | Categories : Fiction, Children | 1 |
 | <a id="id--f713f114-427c-48e1-a15e-31134916d27f"></a>`id--f713f114-427c-48e1-a15e-31134916d27f` | `#f713f114-427c-48e1-a15e-31134916d27f` | input |  | 1 |

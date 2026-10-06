@@ -1,11 +1,11 @@
 # Catalog — `admin-settings-integrations-sendgrid`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-settings-integrations-sendgrid/index.html`
+> Source: `products/wpforms/snapshots/admin-settings-integrations-sendgrid/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 112 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-settings-integrations-sendgrid/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-settings-integrations-sendgrid/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -20,28 +20,28 @@ _73 entries_
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate WPForms ★★★★★ on WordPress.org to help us sprea… | 1 |
 | <a id="id--provider-activecampaign"></a>`id--provider-activecampaign` | `#provider-activecampaign` | div |  | 1 |
-| <a id="id--provider-airtable"></a>`id--provider-airtable` | `#provider-airtable` | div | 061.umair@gmail.com Connected on: May 16, 2026 Disconnect | 1 |
+| <a id="id--provider-airtable"></a>`id--provider-airtable` | `#provider-airtable` | div | sullie@example.com Connected on: May 16, 2026 Disconnect | 1 |
 | <a id="id--provider-aweber_v2"></a>`id--provider-aweber_v2` | `#provider-aweber_v2` | div | Sullie's AWeber Connected on: May 16, 2026 Disconnect | 1 |
 | <a id="id--provider-campaign-monitor"></a>`id--provider-campaign-monitor` | `#provider-campaign-monitor` | div |  | 1 |
-| <a id="id--provider-constant-contact-v3"></a>`id--provider-constant-contact-v3` | `#provider-constant-contact-v3` | div | 061.umair@gmail.com Connected on: May 16, 2026 Disconnect | 1 |
-| <a id="id--provider-convertkit"></a>`id--provider-convertkit` | `#provider-convertkit` | div | 061.umair@gmail.com Connected on: May 16, 2026 Disconnect | 1 |
+| <a id="id--provider-constant-contact-v3"></a>`id--provider-constant-contact-v3` | `#provider-constant-contact-v3` | div | sullie@example.com Connected on: May 16, 2026 Disconnect | 1 |
+| <a id="id--provider-convertkit"></a>`id--provider-convertkit` | `#provider-convertkit` | div | sullie@example.com Connected on: May 16, 2026 Disconnect | 1 |
 | <a id="id--provider-drip"></a>`id--provider-drip` | `#provider-drip` | div | Sullie\'s account Connected on: May 16, 2026 Disconnect | 1 |
-| <a id="id--provider-dropbox"></a>`id--provider-dropbox` | `#provider-dropbox` | div | Umair ss Connected on: May 16, 2026 Disconnect | 1 |
-| <a id="id--provider-google-calendar"></a>`id--provider-google-calendar` | `#provider-google-calendar` | div | 061.umair@gmail.com Connected on: May 10, 2026 Disconnect | 1 |
-| <a id="id--provider-google-drive"></a>`id--provider-google-drive` | `#provider-google-drive` | div | 061.umair@gmail.com Connected on: April 27, 2026 Disconnect | 1 |
-| <a id="id--provider-google-sheets"></a>`id--provider-google-sheets` | `#provider-google-sheets` | div | 061.umair@gmail.com Connected on: May 16, 2026 Disconnect | 1 |
-| <a id="id--provider-hubspot"></a>`id--provider-hubspot` | `#provider-hubspot` | div | 061.umair@gmail.com / sullieeloso.com Connected on: May 16,… | 1 |
+| <a id="id--provider-dropbox"></a>`id--provider-dropbox` | `#provider-dropbox` | div | sullie ss Connected on: May 16, 2026 Disconnect | 1 |
+| <a id="id--provider-google-calendar"></a>`id--provider-google-calendar` | `#provider-google-calendar` | div | sullie@example.com Connected on: May 10, 2026 Disconnect | 1 |
+| <a id="id--provider-google-drive"></a>`id--provider-google-drive` | `#provider-google-drive` | div | sullie@example.com Connected on: April 27, 2026 Disconnect | 1 |
+| <a id="id--provider-google-sheets"></a>`id--provider-google-sheets` | `#provider-google-sheets` | div | sullie@example.com Connected on: May 16, 2026 Disconnect | 1 |
+| <a id="id--provider-hubspot"></a>`id--provider-hubspot` | `#provider-hubspot` | div | sullie@example.com / sullieeloso.com Connected on: May 16, … | 1 |
 | <a id="id--provider-klaviyo"></a>`id--provider-klaviyo` | `#provider-klaviyo` | div | Sullie Eloso Connected on: May 10, 2026 Disconnect | 1 |
 | <a id="id--provider-mailchimpv3"></a>`id--provider-mailchimpv3` | `#provider-mailchimpv3` | div | Sullie's Mailchimp Connected on: May 16, 2026 Disconnect | 1 |
 | <a id="id--provider-mailpoet"></a>`id--provider-mailpoet` | `#provider-mailpoet` | div |  | 1 |
-| <a id="id--provider-notion"></a>`id--provider-notion` | `#provider-notion` | div | 061.umair@gmail.com Connected on: May 16, 2026 Disconnect | 1 |
-| <a id="id--provider-pipedrive"></a>`id--provider-pipedrive` | `#provider-pipedrive` | div | 061.umair@gmail.com Connected on: May 16, 2026 Disconnect | 1 |
+| <a id="id--provider-notion"></a>`id--provider-notion` | `#provider-notion` | div | sullie@example.com Connected on: May 16, 2026 Disconnect | 1 |
+| <a id="id--provider-pipedrive"></a>`id--provider-pipedrive` | `#provider-pipedrive` | div | sullie@example.com Connected on: May 16, 2026 Disconnect | 1 |
 | <a id="id--provider-salesforce"></a>`id--provider-salesforce` | `#provider-salesforce` | div |  | 1 |
 | <a id="id--provider-sendgrid"></a>`id--provider-sendgrid` | `#provider-sendgrid` | div |  | 1 |
 | <a id="id--provider-sendinblue"></a>`id--provider-sendinblue` | `#provider-sendinblue` | div |  | 1 |
 | <a id="id--provider-slack"></a>`id--provider-slack` | `#provider-slack` | div | AARM holdings Connected on: May 16, 2026 Disconnect | 1 |
 | <a id="id--provider-twilio"></a>`id--provider-twilio` | `#provider-twilio` | div | Sullie's Twilio Connected on: May 16, 2026 Disconnect | 1 |
-| <a id="id--provider-zapier"></a>`id--provider-zapier` | `#provider-zapier` | div | Your WPForms Zapier API key: 2vnfok67h0ciqs6asgmz Your webs… | 1 |
+| <a id="id--provider-zapier"></a>`id--provider-zapier` | `#provider-zapier` | div | Your WPForms Zapier API key: demo-secret-61-not-real Your w… | 1 |
 | <a id="id--provider-zoho-crm"></a>`id--provider-zoho-crm` | `#provider-zoho-crm` | div |  | 1 |
 | <a id="id--toplevel_page_vibe-ai"></a>`id--toplevel_page_vibe-ai` | `#toplevel_page_vibe-ai` | li |  | 1 |
 | <a id="id--toplevel_page_wpforms-overview"></a>`id--toplevel_page_wpforms-overview` | `#toplevel_page_wpforms-overview` | li |  | 1 |

@@ -1,0 +1,1694 @@
+{
+  "slug": "builder-providers-aweber_v2",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wpf-parked-modal-open",
+      "event": "click",
+      "selector": "button.wpforms-builder-provider-title-add.js-wpforms-builder-provider-connection-add[data-provider=\"aweber_v2\"]",
+      "count": 1
+    },
+    {
+      "label": "wpf-pdf-preview-open",
+      "event": "click",
+      "selector": "a.wpforms-panel-sidebar-section.wpforms-panel-sidebar-section-pdf[data-section=\"pdf\"]",
+      "count": 1
+    },
+    {
+      "label": "wpf-embed-open",
+      "event": "click",
+      "selector": "#wpforms-embed",
+      "count": 1
+    },
+    {
+      "label": "wpf-embed-card",
+      "event": "click",
+      "selector": "button.wpforms-admin-form-embed-wizard-card.wpforms-admin-form-embed-wizard-card-action",
+      "count": 4
+    },
+    {
+      "label": "wpf-embed-goback",
+      "event": "click",
+      "selector": ".initialstate-toggle",
+      "count": 2
+    },
+    {
+      "label": "wpf-preview-dropdown",
+      "event": "click",
+      "selector": "#wpforms-preview-dropdown-btn",
+      "count": 1
+    },
+    {
+      "label": "wpf-panel-setup",
+      "event": "click",
+      "selector": "button.wpforms-panel-setup-button[data-panel=\"setup\"]",
+      "count": 1
+    },
+    {
+      "label": "wpf-exit",
+      "event": "click",
+      "selector": "#wpforms-exit",
+      "count": 1
+    },
+    {
+      "label": "wpf-save",
+      "event": "click",
+      "selector": "#wpforms-save",
+      "count": 1
+    },
+    {
+      "label": "wpf-undo-redo",
+      "event": "click",
+      "selector": "button.wpforms-btn-undo",
+      "count": 2
+    },
+    {
+      "label": "wpf-mce-smart-tags",
+      "event": "click",
+      "selector": ".mce-btn.mce-last[data-allow-repeated-fields][data-allowed-smarttags]",
+      "count": 4
+    },
+    {
+      "label": "wpf-editor-tabs",
+      "event": "click",
+      "selector": ".wp-switch-editor[data-wp-editor-id]",
+      "count": 32
+    }
+  ],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=general\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-qr-link",
+        "tag": "a",
+        "text": "generate a QR Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-shortcode-copy",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-ai-chat-fab",
+        "tag": "button",
+        "text": "Smart Editing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-context-menu-container",
+        "tag": "div",
+        "text": "Duplicate Form Save as Template Bulk Embed View Analytics N…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-embed",
+        "tag": "button",
+        "text": "Embed",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-embed-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wpforms-exit",
+        "tag": "button",
+        "text": "Exit Ctrl+Q",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-exit",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wpforms-help",
+        "tag": "button",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-make-1-conditional_logic-wrap",
+        "tag": "div",
+        "text": "Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-n8n-1-conditional_logic-wrap",
+        "tag": "div",
+        "text": "Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-make_enable-wrap",
+        "tag": "div",
+        "text": "Enable Make Integration",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-n8n_enable-wrap",
+        "tag": "div",
+        "text": "Enable n8n Integration",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-zapier-include_abandoned_entries-wrap",
+        "tag": "div",
+        "text": "Include Abandoned Entries",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panels-toggle",
+        "tag": "div",
+        "text": "Setup Fields Settings Marketing Payments Revisions",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-preview-btn",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-preview-dropdown-btn",
+        "tag": "button",
+        "text": "More Preview Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-preview-dropdown",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wpforms-save",
+        "tag": "button",
+        "text": "Save",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-save",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-panel=\"fields\"]",
+        "tag": "button",
+        "text": "Fields",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-panel=\"payments\"]",
+        "tag": "button",
+        "text": "Payments",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-panel=\"providers\"]",
+        "tag": "button",
+        "text": "Marketing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-panel=\"revisions\"]",
+        "tag": "button",
+        "text": "Revisions",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-panel=\"settings\"]",
+        "tag": "button",
+        "text": "Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-panel=\"setup\"]",
+        "tag": "button",
+        "text": "Setup",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-panel-setup",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-section=\"activecampaign\"]",
+        "tag": "a",
+        "text": "ActiveCampaign",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"aweber_v2\"]",
+        "tag": "a",
+        "text": "AWeber",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"builder-make-description-2680\"]",
+        "tag": "button",
+        "text": "Dismiss this notice",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "[data-section=\"builder-n8n-description-2680\"]",
+        "tag": "button",
+        "text": "Dismiss this notice",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "[data-section=\"campaign-monitor\"]",
+        "tag": "a",
+        "text": "Campaign Monitor",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"constant-contact-v3\"]",
+        "tag": "a",
+        "text": "Constant Contact",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"conversational_forms\"]",
+        "tag": "button",
+        "text": "Conversational Form",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "[data-section=\"convertkit\"]",
+        "tag": "a",
+        "text": "Kit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"default\"]",
+        "tag": "a",
+        "text": "Default",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "[data-section=\"drip\"]",
+        "tag": "a",
+        "text": "Drip",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"form_pages\"]",
+        "tag": "button",
+        "text": "Form Landing Page",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "[data-section=\"hubspot\"]",
+        "tag": "a",
+        "text": "HubSpot",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"klaviyo\"]",
+        "tag": "a",
+        "text": "Klaviyo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"lead_forms\"]",
+        "tag": "button",
+        "text": "Lead Form",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "[data-section=\"mailchimpv3\"]",
+        "tag": "a",
+        "text": "Mailchimp",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"mailpoet\"]",
+        "tag": "a",
+        "text": "MailPoet",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"make\"]",
+        "tag": "a",
+        "text": "Make",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"n8n\"]",
+        "tag": "a",
+        "text": "n8n",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"pipedrive\"]",
+        "tag": "a",
+        "text": "Pipedrive",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"salesforce\"]",
+        "tag": "a",
+        "text": "Salesforce",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"sendgrid\"]",
+        "tag": "a",
+        "text": "SendGrid",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"sendinblue\"]",
+        "tag": "a",
+        "text": "Brevo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"slack\"]",
+        "tag": "a",
+        "text": "Slack",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"twilio\"]",
+        "tag": "a",
+        "text": "Twilio",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"uncanny-automator\"]",
+        "tag": "a",
+        "text": "Uncanny Automator",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"zapier\"]",
+        "tag": "a",
+        "text": "Zapier",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"zoho-crm\"]",
+        "tag": "a",
+        "text": "Zoho CRM",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-admin-form-embed-wizard-card",
+        "tag": "button",
+        "text": "Existing Page Add to a page you've already created.",
+        "count": 6,
+        "hidden": true,
+        "wired": "wpf-embed-card",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-admin-form-embed-wizard-card-education",
+        "tag": "button",
+        "text": "Conversational Form Make forms feel more natural.",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-popup-btn",
+        "tag": "button",
+        "text": "Add to Page",
+        "count": 2,
+        "hidden": true,
+        "wired": "wpf-embed-card",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-admin-popup-close",
+        "tag": "i",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-popup-toggle",
+        "tag": "a",
+        "text": "« Go back",
+        "count": 1,
+        "hidden": true,
+        "wired": "wpf-embed-goback",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-ai-chat-modal-btn",
+        "tag": "button",
+        "text": "Hide",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-btn-md",
+        "tag": "button",
+        "text": "Generate QR Code",
+        "count": 17,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-constant-contact-v3-provider-sign-up",
+        "tag": "a",
+        "text": "Try Constant Contact for Free",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-dropdown-list-search-close",
+        "tag": "i",
+        "text": "",
+        "count": 33,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-n8n-check-connection",
+        "tag": "button",
+        "text": "Test Connection",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-provider-title-add",
+        "tag": "button",
+        "text": "Add New Connection",
+        "count": 44,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-settings-block-add",
+        "tag": "button",
+        "text": "Add New Notification",
+        "count": 7,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-settings-block-toggle",
+        "tag": "button",
+        "text": "Open / Close",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-conditionals-enable-toggle",
+        "tag": "div",
+        "text": "Enable Conditional Logic",
+        "count": 14,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-dismiss-container",
+        "tag": "div",
+        "text": "Instantly send form entries to thousands of other apps via …",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-field-map-custom-value-close",
+        "tag": "a",
+        "text": "",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-fullscreen-notice-button",
+        "tag": "a",
+        "text": "Back to All Forms",
+        "count": 3,
+        "hidden": true,
+        "nav": "admin-forms-overview"
+      },
+      {
+        "sel": ".wpforms-fullscreen-notice-button-secondary",
+        "tag": "button",
+        "text": "Continue",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-make-add",
+        "tag": "button",
+        "text": "Add Make Connection",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-n8n-add",
+        "tag": "button",
+        "text": "Add New Connection",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section",
+        "tag": "a",
+        "text": "General",
+        "count": 50,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-getresponse",
+        "tag": "a",
+        "text": "GetResponse",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-mailerlite",
+        "tag": "a",
+        "text": "MailerLite",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-preview-dropdown-link",
+        "tag": "a",
+        "text": "Standard Form Preview",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-provider-connections-add",
+        "tag": "button",
+        "text": "Add New Connection",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-toggle-control",
+        "tag": "span",
+        "text": "Required",
+        "count": 119,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-toggle-control-label",
+        "tag": "label",
+        "text": "Required",
+        "count": 117,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-zapier-doc-link",
+        "tag": "a",
+        "text": "Get started connecting WPForms with Zapier",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#aioseop-add-nofollow",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseop-add-sponsored",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseop-add-ugc",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-new-page-title",
+        "tag": "input",
+        "text": "Name Your Page",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-shortcode",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-content-field-fake-div",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-id",
+        "tag": "input",
+        "text": "8",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-make-1-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-make-1-format",
+        "tag": "input",
+        "text": "json",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-make-1-method",
+        "tag": "input",
+        "text": "post",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-make-1-secret",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-make-1-url",
+        "tag": "input",
+        "text": "Enter a hook URL…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-n8n-1-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-n8n-1-event",
+        "tag": "select",
+        "text": "Form SubmittedEntry Marked as SpamPayment Processed",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-n8n-1-secret",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-n8n-1-url",
+        "tag": "input",
+        "text": "Enter a hook URL…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-make_enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-n8n_enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-zapier-include_abandoned_entries",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-form-embed-wizard-choicesjs-select-pages",
+        "tag": "select",
+        "text": "Search for a page",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__input",
+        "tag": "select",
+        "text": "Administrator",
+        "count": 16,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-dropdown-list-search-input",
+        "tag": "input",
+        "text": "Search",
+        "count": 33,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-provider-connections-save-lock",
+        "tag": "input",
+        "text": "1",
+        "count": 22,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-field-map-custom-value",
+        "tag": "input",
+        "text": "Custom Value",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-field-map-select",
+        "tag": "select",
+        "text": "--- Select Field ---Name",
+        "count": 42,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-field-conditional_logic-checkbox",
+        "tag": "input",
+        "text": "1",
+        "count": 7,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-field-toggle",
+        "tag": "input",
+        "text": "1",
+        "count": 69,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-smart-tags-enabled",
+        "tag": "input",
+        "text": "",
+        "count": 30,
+        "hidden": true
+      }
+    ],
+    "fields": [
+      {
+        "sel": ".wpforms-field[data-field-id]",
+        "tag": "div",
+        "text": "any canvas field",
+        "count": 7
+      },
+      {
+        "sel": ".wpforms-undo-redo-container",
+        "tag": "ul",
+        "text": "Personality OnePersonality TwoPersonality ThreePersonality …",
+        "count": 9,
+        "hidden": true
+      }
+    ],
+    "panelsModals": [
+      {
+        "sel": "#activecampaign-provider",
+        "tag": "div",
+        "text": "ActiveCampaign Add New Connection Add New Account Get the m…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#aweber_v2-provider",
+        "tag": "div",
+        "text": "AWeber Add New Connection Get the most out of WPForms — use…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#campaign-monitor-provider",
+        "tag": "div",
+        "text": "Campaign Monitor Add New Connection Get the most out of WPF…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#constant-contact-v3-provider",
+        "tag": "div",
+        "text": "Constant Contact Add New Connection Add New Account Get the…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#convertkit-provider",
+        "tag": "div",
+        "text": "Kit Add New Connection Add New Account Get the most out of …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#drip-provider",
+        "tag": "div",
+        "text": "Drip Add New Connection Add New Account Get the most out of…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hubspot-provider",
+        "tag": "div",
+        "text": "HubSpot Add New Connection Add New Account Get the most out…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#klaviyo-provider",
+        "tag": "div",
+        "text": "Klaviyo Add New Connection Add New Account Get the most out…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mailchimpv3-provider",
+        "tag": "div",
+        "text": "Mailchimp Add New Connection Add New Account Get the most o…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mailpoet-provider",
+        "tag": "div",
+        "text": "MailPoetInstall Now MailPoet Plugin RequiredBefore you can …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#make-provider",
+        "tag": "div",
+        "text": "Make Add Make Connection Instantly send form entries to tho…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#n8n-provider",
+        "tag": "div",
+        "text": "n8n Add New Connection Instantly send form entries to thous…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pipedrive-provider",
+        "tag": "div",
+        "text": "Pipedrive Add New Connection Add New Account Get the most o…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#salesforce-provider",
+        "tag": "div",
+        "text": "Salesforce Add New Connection Add New Account Get the most …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sendgrid-provider",
+        "tag": "div",
+        "text": "SendGrid Add New Connection Add New Account Get the most ou…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sendinblue-provider",
+        "tag": "div",
+        "text": "Brevo Add New Connection Add New Account Get the most out o…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slack-provider",
+        "tag": "div",
+        "text": "Slack Add New Connection Add New Account Get the most out o…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#twilio-provider",
+        "tag": "div",
+        "text": "Twilio Add New Connection Add New Account Get the most out …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#uncanny-automator-provider",
+        "tag": "div",
+        "text": "Uncanny Automator Install Now Put Your WordPress Site on Au…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard",
+        "tag": "div",
+        "text": "How Would You Like to Publish Your Form? Read documentation…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-container",
+        "tag": "div",
+        "text": "How Would You Like to Publish Your Form? Read documentation…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-content-create-page",
+        "tag": "div",
+        "text": "Add to a New Page What would you like to call the new page?",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-content-initial",
+        "tag": "div",
+        "text": "How Would You Like to Publish Your Form? Read documentation…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-content-select-page",
+        "tag": "div",
+        "text": "Embed in an Existing Page Select the page you would like to…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-content-shortcode",
+        "tag": "div",
+        "text": "Copy the Form's Shortcode Copy the shortcode and use it in …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-section-go",
+        "tag": "div",
+        "text": "Search for a pageSearch for a pageSearch for a pageAbout Ro…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-section-goback",
+        "tag": "div",
+        "text": "« Go back",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-section-toggles",
+        "tag": "div",
+        "text": "You can also generate a QR Code that can be used to share y…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-shortcode-tooltip",
+        "tag": "div",
+        "text": "Copy shortcode to clipboard Shortcode copied to clipboard",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-shortcode-wrap",
+        "tag": "div",
+        "text": "Copy shortcode to clipboard Shortcode copied to clipboard",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-ai-chat-modal",
+        "tag": "div",
+        "text": "WPForms AI What would you like to change? Describe it in pl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-make-1-format-wrap",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-make-1-method-wrap",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-make-1-secret-wrap",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-make-1-url-wrap",
+        "tag": "div",
+        "text": "Webhook URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-n8n-1-event-wrap",
+        "tag": "div",
+        "text": "Trigger EventForm SubmittedEntry Marked as SpamPayment Proc…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-n8n-1-secret-wrap",
+        "tag": "div",
+        "text": "Secret Key",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-n8n-1-url-wrap",
+        "tag": "div",
+        "text": "Webhook URLTest Connection",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-providers",
+        "tag": "div",
+        "text": "AWeber ActiveCampaign Campaign Monitor Constant Contact Unc…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#zapier-provider",
+        "tag": "div",
+        "text": "Zapier Zapier automatically moves info between WPForms and …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#zoho-crm-provider",
+        "tag": "div",
+        "text": "Zoho CRM Add New Connection Add New Account Get the most ou…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "[data-panel=\"make\"]",
+        "tag": "div",
+        "text": "Make Add Make Connection Instantly send form entries to tho…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "[data-panel=\"n8n\"]",
+        "tag": "div",
+        "text": "n8n Add New Connection Instantly send form entries to thous…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-popup-content",
+        "tag": "div",
+        "text": "How Would You Like to Publish Your Form? Read documentation…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-ai-chat-modal-header",
+        "tag": "div",
+        "text": "WPForms AI",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-conditional-block-panel",
+        "tag": "div",
+        "text": "Enable Conditional Logic",
+        "count": 7,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel",
+        "tag": "div",
+        "text": "Add Fields Field Options Search fields: Sorry, we didn't fi…",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-content",
+        "tag": "div",
+        "text": "Custom Cake Design Request Questions Outcomes Results Setti…",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-content-section",
+        "tag": "div",
+        "text": "GeneralForm NameForm Description Smart Tags Available Field…",
+        "count": 49,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-field",
+        "tag": "div",
+        "text": "Theme",
+        "count": 287,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-field-select",
+        "tag": "div",
+        "text": "SizeSmallMediumLarge",
+        "count": 76,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-sidebar",
+        "tag": "div",
+        "text": "Add Fields Field Options Search fields: Sorry, we didn't fi…",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-content",
+        "tag": "div",
+        "text": "Add Fields Field Options Search fields: Sorry, we didn't fi…",
+        "count": 4,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-1",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-10",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-11",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-12",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-13",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-14",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-15",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-16",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-2",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-3",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-4",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-5",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-6",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-7",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-8",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-9",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Title …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder",
+        "tag": "div",
+        "text": "Now editing Custom Cake Design... Help Preview More Preview…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-builder-form",
+        "tag": "form",
+        "text": "Now editing Custom Cake Design... Help Preview More Preview…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-builder-ie-notice",
+        "tag": "div",
+        "text": "You are using an outdated browser! The Internet Explorer br…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder-mobile-notice",
+        "tag": "div",
+        "text": "Our form builder is optimized for desktop computers. We rec…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder-overlay",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-content-field-fake-div_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-context-menu",
+        "tag": "div",
+        "text": "Duplicate Form Save as Template Bulk Embed View Analytics N…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-context-menu",
+        "tag": "div",
+        "text": "Edit Duplicate Delete Mark as Required Hide Label Field Siz…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-full-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-icon-choices-custom-properties",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-preview-dropdown-menu",
+        "tag": "ul",
+        "text": "Standard Form Preview Conversational Form Form Landing Page…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "AuthorContributorEditorSEO EditorSEO ManagerSubscriber",
+        "count": 8,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-ai-chat-header",
+        "tag": "div",
+        "text": "WPForms AI What would you like to change? Describe it in pl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-ai-chat-message-input",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-dropdown-list-search-container",
+        "tag": "div",
+        "text": "",
+        "count": 33,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-overlay-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-provider-connections-error-message",
+        "tag": "span",
+        "text": "Something went wrong while performing an AJAX request.",
+        "count": 12,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-provider-settings-default-content",
+        "tag": "div",
+        "text": "Get the most out of WPForms — use it with an active Dropbox…",
+        "count": 26,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-settings-block-actions",
+        "tag": "div",
+        "text": "Active",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-settings-block-content",
+        "tag": "div",
+        "text": "Send To Email AddressSite Administrator Email Smart Tags Av…",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-settings-block-header",
+        "tag": "div",
+        "text": "Active Default Notification",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-context-menu-list-item",
+        "tag": "li",
+        "text": "Duplicate Form",
+        "count": 38,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-context-menu-list-item-has-child",
+        "tag": "li",
+        "text": "Field Size Small Medium Large",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-context-menu-list-item-inactive",
+        "tag": "li",
+        "text": "View Entries",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-context-menu-list-item-selective",
+        "tag": "li",
+        "text": "Mark as Required",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-preview-dropdown-item",
+        "tag": "li",
+        "text": "Standard Form Preview",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-preview-dropdown-label",
+        "tag": "span",
+        "text": "Standard Form Preview",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-shortcode-tooltip-content",
+        "tag": "div",
+        "text": "Copy shortcode to clipboard Shortcode copied to clipboard",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-smart-tags-widget-container",
+        "tag": "div",
+        "text": "Smart Tags Other Site Administrator Email Form ID Form Name…",
+        "count": 30,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-smart-tags-widget-input",
+        "tag": "div",
+        "text": "",
+        "count": 21,
+        "hidden": true
+      }
+    ]
+  }
+}

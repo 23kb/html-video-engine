@@ -1,0 +1,3015 @@
+{
+  "slug": "builder-settings-themes",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "sidebar-tab-toggle",
+      "event": "click",
+      "selector": ".wpforms-tab",
+      "count": 2
+    },
+    {
+      "label": "smart-tags-toggle",
+      "event": "click",
+      "selector": ".wpforms-show-smart-tags.tooltipstered[data-fields][data-type]",
+      "count": 7
+    },
+    {
+      "label": "smart-tags-insert",
+      "event": "click",
+      "selector": "div.wpforms-smart-tags-widget-container > div.wpforms-builder-dropdown-list:nth-of-type(2) > ul.list > li:nth-of-type(3)",
+      "count": 102
+    },
+    {
+      "label": "smart-tags-pill-delete",
+      "event": "click",
+      "selector": "div.wpforms-smart-tags-widget.wpforms-smart-tags-widget-input span.tag i.fa.fa-times-circle",
+      "count": 3
+    },
+    {
+      "label": "smart-tags-search",
+      "event": "input",
+      "selector": ".wpforms-builder-dropdown-list-search-input",
+      "count": 7
+    },
+    {
+      "label": "panel-fields-group-toggle",
+      "event": "click",
+      "selector": ".wpforms-panel-fields-group-title",
+      "count": 5
+    },
+    {
+      "label": "settings-tags-pill-delete",
+      "event": "click",
+      "selector": "span.tag i.fa.fa-times-circle",
+      "count": 1
+    },
+    {
+      "label": "settings-tags-dropdown-select",
+      "event": "click",
+      "selector": ".choices__item.choices__item--choice[data-value]",
+      "count": 2
+    },
+    {
+      "label": "settings-general-form-title",
+      "event": "input",
+      "selector": "#wpforms-panel-field-settings-form_title",
+      "count": 1
+    },
+    {
+      "label": "settings-block-toggle",
+      "event": "click",
+      "selector": ".wpforms-builder-settings-block-toggle",
+      "count": 2
+    },
+    {
+      "label": "settings-block-edit-start",
+      "event": "click",
+      "selector": ".wpforms-builder-settings-block-edit",
+      "count": 2
+    },
+    {
+      "label": "settings-block-name-input",
+      "event": "input",
+      "selector": "div.wpforms-builder-settings-block-name-edit input",
+      "count": 2
+    },
+    {
+      "label": "notifications-status-toggle",
+      "event": "click",
+      "selector": "span.wpforms-builder-settings-block-status.wpforms-badge",
+      "count": 1
+    },
+    {
+      "label": "settings-block-delete",
+      "event": "click",
+      "selector": ".wpforms-builder-settings-block-delete",
+      "count": 2
+    },
+    {
+      "label": "notifications-block-clone",
+      "event": "click",
+      "selector": "button.wpforms-builder-settings-block-clone",
+      "count": 1
+    },
+    {
+      "label": "block-conditional-logic-toggle",
+      "event": "change",
+      "selector": ".wpforms-panel-field-conditional_logic-checkbox[data-action-desc][data-actions]",
+      "count": 2
+    },
+    {
+      "label": "notifications-file-upload-toggle",
+      "event": "change",
+      "selector": "#wpforms-panel-field-notifications-1-file_upload_attachment_enable",
+      "count": 1
+    },
+    {
+      "label": "notifications-entry-csv-toggle",
+      "event": "change",
+      "selector": "#wpforms-panel-field-notifications-1-entry_csv_attachment_enable",
+      "count": 1
+    },
+    {
+      "label": "spam-time-limit-toggle",
+      "event": "change",
+      "selector": "#wpforms-panel-field-anti_spam-time_limit-enable",
+      "count": 1
+    },
+    {
+      "label": "spam-country-filter-toggle",
+      "event": "change",
+      "selector": "#wpforms-panel-field-anti_spam-country_filter-enable",
+      "count": 1
+    },
+    {
+      "label": "spam-keyword-filter-toggle",
+      "event": "change",
+      "selector": "#wpforms-panel-field-anti_spam-keyword_filter-enable",
+      "count": 1
+    },
+    {
+      "label": "confirmations-entry-preview-toggle",
+      "event": "change",
+      "selector": "#wpforms-panel-field-confirmations-1-message_entry_preview",
+      "count": 1
+    },
+    {
+      "label": "settings-choices-dropdown-toggle",
+      "event": "click",
+      "selector": "#wpforms-panel-field-confirmations-1-page-wrap div.choices",
+      "count": 2
+    },
+    {
+      "label": "settings-choices-dropdown-select",
+      "event": "click",
+      "selector": ".choices__item.choices__item--choice[data-choice][data-choice-selectable]",
+      "count": 253
+    },
+    {
+      "label": "spam-keyword-list-toggle",
+      "event": "click",
+      "selector": "a.wpforms-settings-keyword-filter-toggle-list",
+      "count": 1
+    },
+    {
+      "label": "themes-sidebar-tab",
+      "event": "click",
+      "selector": "#wpforms-builder-themes-sidebar-tabs a",
+      "count": 2
+    },
+    {
+      "label": "themes-group-toggle",
+      "event": "click",
+      "selector": "div.wpforms-builder-themes-sidebar-general.wpforms-builder-themes-sidebar-tab-content div.wpforms-add-fields-group a.wpforms-add-fields-heading",
+      "count": 7
+    },
+    {
+      "label": "themes-control-change",
+      "event": "change",
+      "selector": "#wpforms-panel-field-themes-wpformsTheme",
+      "count": 38
+    },
+    {
+      "label": "themes-control-input",
+      "event": "input",
+      "selector": "#wpforms-panel-field-themes-themeName",
+      "count": 23
+    },
+    {
+      "label": "themes-color-swatch",
+      "event": "click",
+      "selector": "span.minicolors-swatch.minicolors-sprite",
+      "count": 26
+    },
+    {
+      "label": "themes-radio-pick",
+      "event": "click",
+      "selector": "div.wpforms-builder-themes-radio-group button",
+      "count": 43
+    },
+    {
+      "label": "confirmations-type-change",
+      "event": "change",
+      "selector": "#wpforms-panel-field-confirmations-1-type",
+      "count": 1
+    },
+    {
+      "label": "panel-button-nav",
+      "event": "click",
+      "selector": "button.wpforms-panel-fields-button[data-panel=\"fields\"]",
+      "count": 5
+    },
+    {
+      "label": "settings-section-nav",
+      "event": "click",
+      "selector": ".wpforms-panel-sidebar-section[data-section]",
+      "count": 10
+    },
+    {
+      "label": "builder-providers-section-nav",
+      "event": "click",
+      "selector": ".wpforms-panel-sidebar-section.icon[data-section]",
+      "count": 3
+    },
+    {
+      "label": "builder-payments-section-nav",
+      "event": "click",
+      "selector": "a.wpforms-panel-sidebar-section.wpforms-panel-sidebar-section-stripe[data-section=\"stripe\"]",
+      "count": 3
+    },
+    {
+      "label": "builder-payments-toggle-body",
+      "event": "change",
+      "selector": "#wpforms-panel-field-stripe-enable_one_time",
+      "count": 4
+    },
+    {
+      "label": "builder-payments-plan-toggle",
+      "event": "click",
+      "selector": ".wpforms-panel-content-section-payment-plan-head-buttons-toggle.fa",
+      "count": 2
+    },
+    {
+      "label": "builder-payments-plan-delete",
+      "event": "click",
+      "selector": ".wpforms-panel-content-section-payment-plan-head-buttons-delete.fa",
+      "count": 2
+    },
+    {
+      "label": "builder-payments-plan-add",
+      "event": "click",
+      "selector": ".wpforms-panel-content-section-payment-button.wpforms-panel-content-section-payment-button-add-plan",
+      "count": 2
+    },
+    {
+      "label": "builder-payments-metadata-add",
+      "event": "click",
+      "selector": ".wpforms-panel-content-section-stripe-custom-metadata-add.button-secondary",
+      "count": 2
+    },
+    {
+      "label": "builder-payments-conditional-logic",
+      "event": "change",
+      "selector": "#wpforms-panel-field-payments-stripe-conditional_logic-checkbox",
+      "count": 2
+    },
+    {
+      "label": "builder-providers-connection-add",
+      "event": "click",
+      "selector": "button.wpforms-builder-provider-title-add.js-wpforms-builder-provider-connection-add[data-provider=\"google-drive\"]",
+      "count": 1
+    }
+  ],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=general\"]"
+    },
+    {
+      "target": "admin-settings-payments",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=payments\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#wpforms-airtable-sign-in-button",
+        "tag": "button",
+        "text": "Add New Account",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder-themer-remove-theme",
+        "tag": "button",
+        "text": "Delete Theme",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder-themes-back",
+        "tag": "button",
+        "text": "Back to Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-context-menu-container",
+        "tag": "div",
+        "text": "Duplicate Form Save as Template View Entries View Payments …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-embed",
+        "tag": "button",
+        "text": "Embed",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-exit",
+        "tag": "button",
+        "text": "Exit Ctrl+Q",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-help",
+        "tag": "button",
+        "text": "Help",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-country_filter-enable-wrap",
+        "tag": "div",
+        "text": "Enable country filter",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-keyword_filter-enable-wrap",
+        "tag": "div",
+        "text": "Enable keyword filter",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-time_limit-enable-wrap",
+        "tag": "div",
+        "text": "Enable minimum time to submit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-conditional_logic-wrap",
+        "tag": "div",
+        "text": "Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-message_entry_preview-wrap",
+        "tag": "div",
+        "text": "Show entry preview after confirmation message",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-message_order_summary-wrap",
+        "tag": "div",
+        "text": "Show order summary after confirmation message",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-message_scroll-wrap",
+        "tag": "div",
+        "text": "Automatically scroll to the confirmation message",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-message-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-message-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-redirect_new_tab-wrap",
+        "tag": "div",
+        "text": "Open confirmation in new tab",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-conditional_logic-wrap",
+        "tag": "div",
+        "text": "Enable Conditional Logic",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-entry_csv_attachment_enable-wrap",
+        "tag": "div",
+        "text": "Enable Entry CSV Attachment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-file_upload_attachment_enable-wrap",
+        "tag": "div",
+        "text": "Enable File Upload Attachments",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-paypal_commerce-wrap",
+        "tag": "div",
+        "text": "Enable for PayPal Commerce completed payments",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-square-wrap",
+        "tag": "div",
+        "text": "Enable for Square completed payments",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-stripe-wrap",
+        "tag": "div",
+        "text": "Enable for Stripe completed payments",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-ajax_submit-wrap",
+        "tag": "div",
+        "text": "Enable AJAX form submission",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-antispam_v3-wrap",
+        "tag": "div",
+        "text": "Enable modern anti-spam protection",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-disable_entries-wrap",
+        "tag": "div",
+        "text": "Disable storing entry information in WordPress",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-dynamic_population-wrap",
+        "tag": "div",
+        "text": "Enable Prefill by URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-notification_enable-wrap",
+        "tag": "div",
+        "text": "Enable Notifications",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-poll_enable-wrap",
+        "tag": "div",
+        "text": "Enable Poll Results Poll results for all Checkbox, Multiple…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-purge_entries_enable-wrap",
+        "tag": "div",
+        "text": "Purge Entries Automatically",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-store_spam_entries-wrap",
+        "tag": "div",
+        "text": "Store spam entries in the database",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-survey_enable-wrap",
+        "tag": "div",
+        "text": "Enable Survey Reporting Survey Reporting for all supported …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panels-toggle",
+        "tag": "div",
+        "text": "Setup Fields Settings Marketing Payments Revisions",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-preview-btn",
+        "tag": "a",
+        "text": "Preview",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-save",
+        "tag": "button",
+        "text": "Save",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-panel=\"fields\"]",
+        "tag": "button",
+        "text": "Fields",
+        "count": 1,
+        "hidden": false,
+        "wired": "panel-button-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-panel=\"payments\"]",
+        "tag": "button",
+        "text": "Payments",
+        "count": 1,
+        "hidden": false,
+        "wired": "panel-button-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-panel=\"providers\"]",
+        "tag": "button",
+        "text": "Marketing",
+        "count": 1,
+        "hidden": false,
+        "wired": "panel-button-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-panel=\"revisions\"]",
+        "tag": "button",
+        "text": "Revisions",
+        "count": 1,
+        "hidden": false,
+        "wired": "panel-button-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-panel=\"settings\"]",
+        "tag": "button",
+        "text": "Settings",
+        "count": 1,
+        "hidden": false,
+        "wired": "panel-button-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-panel=\"setup\"]",
+        "tag": "button",
+        "text": "Setup",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-section=\"airtable\"]",
+        "tag": "a",
+        "text": "Airtable",
+        "count": 1,
+        "hidden": false,
+        "wired": "settings-section-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-section=\"anti_spam\"]",
+        "tag": "a",
+        "text": "Spam Protection and Security",
+        "count": 1,
+        "hidden": false,
+        "wired": "settings-section-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-section=\"builder-notifications-description\"]",
+        "tag": "button",
+        "text": "Dismiss this message.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "[data-section=\"confirmation\"]",
+        "tag": "a",
+        "text": "Confirmations",
+        "count": 1,
+        "hidden": false,
+        "wired": "settings-section-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-section=\"dropbox\"]",
+        "tag": "a",
+        "text": "Dropbox",
+        "count": 1,
+        "hidden": false,
+        "wired": "settings-section-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-section=\"general\"]",
+        "tag": "a",
+        "text": "General",
+        "count": 1,
+        "hidden": false,
+        "wired": "settings-section-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-section=\"google-calendar\"]",
+        "tag": "a",
+        "text": "Google Calendar",
+        "count": 1,
+        "hidden": false,
+        "wired": "settings-section-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-section=\"google-drive\"]",
+        "tag": "a",
+        "text": "Google Drive",
+        "count": 1,
+        "hidden": false,
+        "wired": "settings-section-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-section=\"google-sheets\"]",
+        "tag": "a",
+        "text": "Google Sheets",
+        "count": 1,
+        "hidden": false,
+        "wired": "settings-section-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-section=\"notifications\"]",
+        "tag": "a",
+        "text": "Notifications",
+        "count": 1,
+        "hidden": false,
+        "wired": "settings-section-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-section=\"surveys_polls\"]",
+        "tag": "a",
+        "text": "Surveys and Polls",
+        "count": 1,
+        "hidden": false,
+        "wired": "settings-section-nav",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "[data-section=\"themes\"]",
+        "tag": "a",
+        "text": "Themes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-add-fields-heading",
+        "tag": "a",
+        "text": "Standard Fields",
+        "count": 10,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-popup-btn",
+        "tag": "button",
+        "text": "Select Existing Page",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-popup-close",
+        "tag": "i",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-popup-toggle",
+        "tag": "a",
+        "text": "embed your form manually",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-all-email-template-modal",
+        "tag": "a",
+        "text": "view templates",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-btn-blue",
+        "tag": "button",
+        "text": "Save Changes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-btn-blue-borders",
+        "tag": "button",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-accounts-dropbox-authorize-button",
+        "tag": "button",
+        "text": "Add New Account",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-dropdown-list-search-close",
+        "tag": "i",
+        "text": "",
+        "count": 7,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-provider-title-add",
+        "tag": "button",
+        "text": "Add New Connection",
+        "count": 8,
+        "hidden": true,
+        "wired": "builder-providers-connection-add",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-builder-settings-block-add",
+        "tag": "button",
+        "text": "Add New Notification",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-settings-block-toggle",
+        "tag": "button",
+        "text": "Open / Close",
+        "count": 2,
+        "hidden": true,
+        "wired": "settings-block-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-builder-themes-bg-image-choose",
+        "tag": "button",
+        "text": "Choose Image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-themes-bg-image-remove",
+        "tag": "button",
+        "text": "Remove Image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-themes-pro-section",
+        "tag": "div",
+        "text": "Padding Border None Solid Dashed Dotted Border Size Border …",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-confirmation-add",
+        "tag": "button",
+        "text": "Add New Confirmation",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-dismiss-container",
+        "tag": "div",
+        "text": "Notifications are emails sent when a form is submitted. By …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-fullscreen-notice-button",
+        "tag": "a",
+        "text": "Back to All Forms",
+        "count": 3,
+        "hidden": true,
+        "nav": "admin-forms-overview"
+      },
+      {
+        "sel": ".wpforms-fullscreen-notice-button-secondary",
+        "tag": "button",
+        "text": "Continue",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-google-sign-in-button",
+        "tag": "div",
+        "text": "Continue with Google Continue with Google",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-notification-status-button",
+        "tag": "span",
+        "text": "Active",
+        "count": 1,
+        "hidden": true,
+        "wired": "notifications-status-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-panel-content-also-available-item-add-captcha",
+        "tag": "a",
+        "text": "Add to Form",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-conversational-forms",
+        "tag": "a",
+        "text": "Conversational Forms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-entry-automation",
+        "tag": "a",
+        "text": "Entry Automation",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-form-abandonment",
+        "tag": "a",
+        "text": "Form Abandonment",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-form-locker",
+        "tag": "a",
+        "text": "Form Locker",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-form-pages",
+        "tag": "a",
+        "text": "Form Pages",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-lead-forms",
+        "tag": "a",
+        "text": "Lead Forms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-notion",
+        "tag": "a",
+        "text": "Notion",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-offline-forms",
+        "tag": "a",
+        "text": "Offline Forms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-pdf",
+        "tag": "a",
+        "text": "PDF",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-post-submissions",
+        "tag": "a",
+        "text": "Post Submissions",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-quiz",
+        "tag": "a",
+        "text": "Quiz",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-save-resume",
+        "tag": "a",
+        "text": "Save and Resume",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-user-registration",
+        "tag": "a",
+        "text": "User Registration",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-section-webhooks",
+        "tag": "a",
+        "text": "Webhooks",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-settings-keyword-filter-toggle-list",
+        "tag": "a",
+        "text": "Edit keyword list.",
+        "count": 1,
+        "hidden": true,
+        "wired": "spam-keyword-list-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-submit",
+        "tag": "button",
+        "text": "Submit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-submit-container",
+        "tag": "div",
+        "text": "Submit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-toggle-control",
+        "tag": "span",
+        "text": "Enable Prefill by URL",
+        "count": 32,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-toggle-control-label",
+        "tag": "label",
+        "text": "Enable Prefill by URL",
+        "count": 32,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#wpforms-builder-themes-sidebar-tabs",
+        "tag": "div",
+        "text": "General Advanced",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-builder-themes-sidebar-tab-content",
+        "tag": "div",
+        "text": "Themes Classic Default Cerulean Ocean Fern Lilac Taffy Tang…",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#builder-themes-preview-default-checkboxes-1",
+        "tag": "input",
+        "text": "First Choice",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-checkboxes-2",
+        "tag": "input",
+        "text": "Second Choice",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-checkboxes-3",
+        "tag": "input",
+        "text": "Third Choice",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-email",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-message",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-multiple-choice-1",
+        "tag": "input",
+        "text": "First Choice",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-multiple-choice-2",
+        "tag": "input",
+        "text": "Second Choice",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-multiple-choice-3",
+        "tag": "input",
+        "text": "Third Choice",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-name-first",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-name-last",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_wpforms-panel-field-confirmations-1-message_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-panel-field-confirmations-1-message_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-panel-field-confirmations-1-message_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-panel-field-confirmations-1-message_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-panel-field-confirmations-1-message_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-panel-field-confirmations-1-message_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-panel-field-confirmations-1-message_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-new-page-title",
+        "tag": "input",
+        "text": "Name Your Page",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-shortcode",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-content-field-fake-div",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-id",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-country_filter-action",
+        "tag": "select",
+        "text": "AllowDeny",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-country_filter-country_codes",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-country_filter-enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-country_filter-message",
+        "tag": "input",
+        "text": "Sorry, this form does not accept submissions from your coun…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-filtering_store_spam",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-keyword_filter-enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-keyword_filter-message",
+        "tag": "input",
+        "text": "Sorry, your message can't be submitted because it contains …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-time_limit-duration",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-time_limit-enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-message",
+        "tag": "textarea",
+        "text": "Thanks for contacting us! We will be in touch with you shor…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-message_entry_preview",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-message_entry_preview_style",
+        "tag": "select",
+        "text": "BasicCompactTableTable, Compact",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-message_order_summary",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-message_scroll",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-page",
+        "tag": "select",
+        "text": "Back to Previous Page (Referrer)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-page_url_parameters",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-redirect",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-redirect_new_tab",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-type",
+        "tag": "select",
+        "text": "MessageShow PageGo to URL (Redirect)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-conditional_logic",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-email",
+        "tag": "input",
+        "text": "{admin_email}",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-entry_csv_attachment_enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-entry_csv_attachment_entry_information",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-entry_csv_attachment_file_name",
+        "tag": "input",
+        "text": "entry-details",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-file_upload_attachment_enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-file_upload_attachment_fields",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-message",
+        "tag": "textarea",
+        "text": "{all_fields}",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-paypal_commerce",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-replyto",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-sender_address",
+        "tag": "input",
+        "text": "{admin_email}",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-sender_name",
+        "tag": "input",
+        "text": "Sullie's Bakery",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-square",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-stripe",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-subject",
+        "tag": "input",
+        "text": "New Entry: Blank Form",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-template",
+        "tag": "select",
+        "text": "Default TemplateClassicCompactModernElegantTechPlain Text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-ajax_submit",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-antispam_v3",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-disable_entries",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-dynamic_population",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-form_class",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-form_desc",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-form_tags",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-form_title",
+        "tag": "input",
+        "text": "Blank Form",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-notification_enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-poll_enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-purge_entries_days",
+        "tag": "input",
+        "text": "365",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-purge_entries_enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-store_spam_entries",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-submit_class",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-submit_text",
+        "tag": "input",
+        "text": "Submit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-submit_text_processing",
+        "tag": "input",
+        "text": "Sending...",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-survey_enable",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundColor",
+        "tag": "input",
+        "text": "rgba(0, 0, 0, 0)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundHeight",
+        "tag": "input",
+        "text": "100",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundImage",
+        "tag": "select",
+        "text": "None Media Library Stock Photo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundPosition",
+        "tag": "select",
+        "text": "Top LeftTop CenterTop RightCenter LeftCenter CenterCenter R…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundRepeat",
+        "tag": "select",
+        "text": "No RepeatTileRepeat XRepeat Y",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundSize",
+        "tag": "input",
+        "text": "cover",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundSizeMode",
+        "tag": "select",
+        "text": "DimensionsCover",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundUrl",
+        "tag": "input",
+        "text": "url()",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundWidth",
+        "tag": "input",
+        "text": "100",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-buttonBackgroundColor",
+        "tag": "input",
+        "text": "#066aab",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-buttonBorderColor",
+        "tag": "input",
+        "text": "#066aab",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-buttonBorderRadius",
+        "tag": "input",
+        "text": "3",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-buttonBorderSize",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-buttonBorderStyle",
+        "tag": "select",
+        "text": "None Solid Dashed Dotted",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-buttonSize",
+        "tag": "select",
+        "text": "Small Medium Large",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-buttonTextColor",
+        "tag": "input",
+        "text": "#ffffff",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-containerBorderColor",
+        "tag": "input",
+        "text": "#000000",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-containerBorderRadius",
+        "tag": "input",
+        "text": "3",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-containerBorderStyle",
+        "tag": "select",
+        "text": "None Solid Dashed Dotted",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-containerBorderWidth",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-containerPadding",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-containerShadowSize",
+        "tag": "select",
+        "text": "None Small Medium Large",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-copyPasteJsonValue",
+        "tag": "textarea",
+        "text": "{\"themeName\":\"\",\"isCustomTheme\":\"\",\"wpformsTheme\":\"default\"…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-customCss",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldBackgroundColor",
+        "tag": "input",
+        "text": "#ffffff",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldBorderColor",
+        "tag": "input",
+        "text": "rgba(0, 0, 0, 0.25)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldBorderRadius",
+        "tag": "input",
+        "text": "3",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldBorderSize",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldBorderStyle",
+        "tag": "select",
+        "text": "None Solid Dashed Dotted",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldMenuColor",
+        "tag": "input",
+        "text": "#ffffff",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldSize",
+        "tag": "select",
+        "text": "Small Medium Large",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldTextColor",
+        "tag": "input",
+        "text": "rgba(0, 0, 0, 0.7)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-isCustomTheme",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-labelColor",
+        "tag": "input",
+        "text": "rgba(0, 0, 0, 0.85)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-labelErrorColor",
+        "tag": "input",
+        "text": "#d63637",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-labelSize",
+        "tag": "select",
+        "text": "Small Medium Large",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-labelSublabelColor",
+        "tag": "input",
+        "text": "rgba(0, 0, 0, 0.55)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-pageBreakColor",
+        "tag": "input",
+        "text": "#066aab",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-themeName",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-wpformsTheme",
+        "tag": "input",
+        "text": "default",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-form-embed-wizard-choicesjs-select-pages",
+        "tag": "select",
+        "text": "Page - Frontend Contact Fixture",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__input--cloned",
+        "tag": "input",
+        "text": "null",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-dropdown-list-search-input",
+        "tag": "input",
+        "text": "Search",
+        "count": 7,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-provider-connections-save-lock",
+        "tag": "input",
+        "text": "0",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-field-country-filter-country-codes-json",
+        "tag": "input",
+        "text": "[]",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [
+      {
+        "sel": "#builder-themes-preview-default-checkboxes-container",
+        "tag": "div",
+        "text": "Checkboxes First Choice Second Choice Third Choice",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-email-container",
+        "tag": "div",
+        "text": "Email",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-message-container",
+        "tag": "div",
+        "text": "Message",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-multiple-choice-container",
+        "tag": "div",
+        "text": "Multiple Choice First Choice Second Choice Third Choice",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-name-container",
+        "tag": "div",
+        "text": "Name First Name Last Name",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "panelsModals": [
+      {
+        "sel": "#airtable-provider",
+        "tag": "div",
+        "text": "Airtable Add New Account Connect your Airtable account to s…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dropbox-provider",
+        "tag": "div",
+        "text": "Dropbox Add New Account Get the most out of WPForms — use i…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#google-calendar-provider",
+        "tag": "div",
+        "text": "Google Calendar Continue with Google Continue with Google G…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#google-drive-provider",
+        "tag": "div",
+        "text": "Google Drive Add New Connection Add New Account Easily send…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#google-sheets-provider",
+        "tag": "div",
+        "text": "Something went wrong while performing an AJAX request. Goog…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_wpforms-panel-field-confirmations-1-message_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-wpforms-panel-field-confirmations-1-message-wrap",
+        "tag": "div",
+        "text": "VisualCode Thanks for contacting us! We will be in touch wi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard",
+        "tag": "div",
+        "text": "Embed in a Page We can help embed your form with just a few…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-container",
+        "tag": "div",
+        "text": "Embed in a Page We can help embed your form with just a few…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-content-create-page",
+        "tag": "div",
+        "text": "What would you like to call the new page?",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-content-initial",
+        "tag": "div",
+        "text": "We can help embed your form with just a few clicks! Would y…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-content-select-page",
+        "tag": "div",
+        "text": "Select the page you would like to embed your form in.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-section-btns",
+        "tag": "div",
+        "text": "Select Existing Page Create New Page",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-section-go",
+        "tag": "div",
+        "text": "Page - Frontend Contact FixturePage - Frontend Contact Fixt…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-section-goback",
+        "tag": "div",
+        "text": "« Go back",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-section-toggles",
+        "tag": "div",
+        "text": "You can also embed your form manually or use a shortcode",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-shortcode-copy",
+        "tag": "span",
+        "text": "Copy embed code to clipboard",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-shortcode-wrap",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-form-embed-wizard-tutorial",
+        "tag": "iframe",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-country_filter-action-wrap",
+        "tag": "div",
+        "text": "AllowDeny",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-country_filter-country_codes-wrap",
+        "tag": "div",
+        "text": "AfghanistanÅland IslandsAlbaniaAlgeriaAmerican SamoaAndorra…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-country_filter-message-wrap",
+        "tag": "div",
+        "text": "Country Filter Message",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-filtering_store_spam-wrap",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-keyword_filter-message-wrap",
+        "tag": "div",
+        "text": "Keyword Filter Message",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-anti_spam-time_limit-duration-wrap",
+        "tag": "div",
+        "text": "Minimum time to submitseconds",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-message_entry_preview_style-wrap",
+        "tag": "div",
+        "text": "Preview StyleBasicCompactTableTable, Compact",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-message_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-message-wrap",
+        "tag": "div",
+        "text": "Confirmation MessageVisualCode Thanks for contacting us! We…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-page_url_parameters-wrap",
+        "tag": "div",
+        "text": "URL Parameters",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-page-wrap",
+        "tag": "div",
+        "text": "Confirmation PageBack to Previous Page (Referrer) Back to P…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-redirect-wrap",
+        "tag": "div",
+        "text": "Confirmation Redirect URL *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-confirmations-1-type-wrap",
+        "tag": "div",
+        "text": "Confirmation TypeMessageShow PageGo to URL (Redirect)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-email-wrap",
+        "tag": "div",
+        "text": "Send To Email AddressSite Administrator Email Smart Tags No…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-entry_csv_attachment_entry_information-wrap",
+        "tag": "div",
+        "text": "Entry Information",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-entry_csv_attachment_file_name-wrap",
+        "tag": "div",
+        "text": "File Name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-file_upload_attachment_fields-wrap",
+        "tag": "div",
+        "text": "File Upload FieldsHeads up! Some email providers have limit…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-message-wrap",
+        "tag": "div",
+        "text": "Email Messageall_fields Smart Tags No fields availableOther…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-replyto-wrap",
+        "tag": "div",
+        "text": "Reply-To Smart Tags No fields availableOther Site Administr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-sender_address-wrap",
+        "tag": "div",
+        "text": "From EmailSite Administrator Email Smart Tags No fields ava…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-sender_name-wrap",
+        "tag": "div",
+        "text": "From NameSullie's Bakery Smart Tags No fields available Sor…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-subject-wrap",
+        "tag": "div",
+        "text": "Email Subject LineNew Entry: Blank Form Smart Tags No field…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-notifications-1-template-wrap",
+        "tag": "div",
+        "text": "Email TemplateDefault TemplateClassicCompactModernElegantTe…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-form_class-wrap",
+        "tag": "div",
+        "text": "Form CSS Class",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-form_desc-wrap",
+        "tag": "div",
+        "text": "Form Description Smart Tags No fields availableOther Site A…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-form_tags-wrap",
+        "tag": "div",
+        "text": "Tagscontact-formhigh-priorityproduction",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-form_title-wrap",
+        "tag": "div",
+        "text": "Form Name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-purge_entries_days-wrap",
+        "tag": "div",
+        "text": "Number of days to retain entries before deletiondays",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-submit_class-wrap",
+        "tag": "div",
+        "text": "Submit Button CSS Class",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-submit_text_processing-wrap",
+        "tag": "div",
+        "text": "Submit Button Processing Text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-settings-submit_text-wrap",
+        "tag": "div",
+        "text": "Submit Button Text",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundColor-wrap",
+        "tag": "div",
+        "text": "Color",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundHeight-wrap",
+        "tag": "div",
+        "text": "Height",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundImage-wrap",
+        "tag": "div",
+        "text": "Image None Media Library Stock Photo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundPosition-wrap",
+        "tag": "div",
+        "text": "PositionTop LeftTop CenterTop RightCenter LeftCenter Center…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundRepeat-wrap",
+        "tag": "div",
+        "text": "RepeatNo RepeatTileRepeat XRepeat Y",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundSize-wrap",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundSizeMode-wrap",
+        "tag": "div",
+        "text": "SizeDimensionsCover",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundUrl-wrap",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-backgroundWidth-wrap",
+        "tag": "div",
+        "text": "Width",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-buttonBackgroundColor-wrap",
+        "tag": "div",
+        "text": "Background",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-buttonBorderColor-wrap",
+        "tag": "div",
+        "text": "Border",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-buttonBorderRadius-wrap",
+        "tag": "div",
+        "text": "Border Radius",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-buttonBorderSize-wrap",
+        "tag": "div",
+        "text": "Border Size",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-buttonBorderStyle-wrap",
+        "tag": "div",
+        "text": "Border None Solid Dashed Dotted",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-buttonSize-wrap",
+        "tag": "div",
+        "text": "Size Small Medium Large",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-buttonTextColor-wrap",
+        "tag": "div",
+        "text": "Text",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-containerBorderColor-wrap",
+        "tag": "div",
+        "text": "Border",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-containerBorderRadius-wrap",
+        "tag": "div",
+        "text": "Border Radius",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-containerBorderStyle-wrap",
+        "tag": "div",
+        "text": "Border None Solid Dashed Dotted",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-containerBorderWidth-wrap",
+        "tag": "div",
+        "text": "Border Size",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-containerPadding-wrap",
+        "tag": "div",
+        "text": "Padding",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-containerShadowSize-wrap",
+        "tag": "div",
+        "text": "Shadow None Small Medium Large",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-copyPasteJsonValue-wrap",
+        "tag": "div",
+        "text": "Copy / Paste Style Settings{\"themeName\":\"\",\"isCustomTheme\":…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-customCss-wrap",
+        "tag": "div",
+        "text": "Custom CSSFurther customize the look of this form without h…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldBackgroundColor-wrap",
+        "tag": "div",
+        "text": "Background",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldBorderColor-wrap",
+        "tag": "div",
+        "text": "Border",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldBorderRadius-wrap",
+        "tag": "div",
+        "text": "Border Radius",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldBorderSize-wrap",
+        "tag": "div",
+        "text": "Border Size",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldBorderStyle-wrap",
+        "tag": "div",
+        "text": "Border None Solid Dashed Dotted",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldMenuColor-wrap",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldSize-wrap",
+        "tag": "div",
+        "text": "Size Small Medium Large",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-fieldTextColor-wrap",
+        "tag": "div",
+        "text": "Text",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-isCustomTheme-wrap",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-labelColor-wrap",
+        "tag": "div",
+        "text": "Label",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-labelErrorColor-wrap",
+        "tag": "div",
+        "text": "Error",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-labelSize-wrap",
+        "tag": "div",
+        "text": "Size Small Medium Large",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-labelSublabelColor-wrap",
+        "tag": "div",
+        "text": "Sublabel",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-pageBreakColor-wrap",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-themeName-wrap",
+        "tag": "div",
+        "text": "Theme Name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-field-themes-wpformsTheme-wrap",
+        "tag": "div",
+        "text": "Theme",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-panel-settings",
+        "tag": "div",
+        "text": "General Spam Protection and Security Confirmations Notifica…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "[data-panel=\"confirmations\"]",
+        "tag": "div",
+        "text": "ConfirmationsAdd New Confirmation Default Confirmation Conf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "[data-panel=\"notifications\"]",
+        "tag": "div",
+        "text": "NotificationsAdd New NotificationNotifications are emails s…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-popup-content",
+        "tag": "div",
+        "text": "Embed in a Page We can help embed your form with just a few…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-conditional-block-panel",
+        "tag": "div",
+        "text": "Enable Conditional Logic",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel",
+        "tag": "div",
+        "text": "Add Fields Field Options Search fields: Sorry, we didn't fi…",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-content",
+        "tag": "div",
+        "text": "Blank Form You don't have any fields yet. You don't have an…",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-content-section",
+        "tag": "div",
+        "text": "GeneralForm NameForm Description Smart Tags No fields avail…",
+        "count": 19,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-field-country-filter-block-row",
+        "tag": "div",
+        "text": "AllowDeny entries from AfghanistanÅland IslandsAlbaniaAlger…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-field-keyword-filter-actions",
+        "tag": "div",
+        "text": "Save Changes Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-field-keyword-filter-keywords-container",
+        "tag": "div",
+        "text": "Keyword Filter List Each word or phrase should be on its ow…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-sidebar",
+        "tag": "div",
+        "text": "Add Fields Field Options Search fields: Sorry, we didn't fi…",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-panel-sidebar-content",
+        "tag": "div",
+        "text": "Add Fields Field Options Search fields: Sorry, we didn't fi…",
+        "count": 5,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#builder-themes-form-preview-wrapper",
+        "tag": "div",
+        "text": "Name First Name Last Name Email Message Multiple Choice Fir…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-checkboxes",
+        "tag": "ul",
+        "text": "First Choice Second Choice Third Choice",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#builder-themes-preview-default-multiple-choice",
+        "tag": "ul",
+        "text": "First Choice Second Choice Third Choice",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-1",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder",
+        "tag": "div",
+        "text": "Now editing Blank Form Help Preview Embed Save Setup Fields…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-builder-form",
+        "tag": "form",
+        "text": "Now editing Blank Form Help Preview Embed Save Setup Fields…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-builder-ie-notice",
+        "tag": "div",
+        "text": "You are using an outdated browser! The Internet Explorer br…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder-mobile-notice",
+        "tag": "div",
+        "text": "Our form builder is optimized for desktop computers. We rec…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder-overlay",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder-settings-notifications-title",
+        "tag": "span",
+        "text": "Notifications",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-builder-themes-preview",
+        "tag": "div",
+        "text": "Name First Name Last Name Email Message Multiple Choice Fir…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-builder-themes-sidebar",
+        "tag": "div",
+        "text": "Back to Settings General Advanced Themes Classic Default Ce…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-content-field-fake-div_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-context-menu",
+        "tag": "div",
+        "text": "Duplicate Form Save as Template View Entries View Payments …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-field-context-menu",
+        "tag": "div",
+        "text": "Edit Duplicate Delete Mark as Required Hide Label Field Siz…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-full-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-icon-choices-custom-properties",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-page-forms-fbst-notice",
+        "tag": "div",
+        "text": "Update Available Your version of Form Pages is out of date.…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "high-priorityproduction",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-dropdown-list-search-container",
+        "tag": "div",
+        "text": "",
+        "count": 7,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-overlay-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-provider-connections-error-message",
+        "tag": "span",
+        "text": "Something went wrong while performing an AJAX request.",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-provider-settings-default-content",
+        "tag": "div",
+        "text": "Get the most out of WPForms — use it with an active Dropbox…",
+        "count": 8,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-settings-block-actions",
+        "tag": "div",
+        "text": "Active",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-settings-block-content",
+        "tag": "div",
+        "text": "Send To Email AddressSite Administrator Email Smart Tags No…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-settings-block-header",
+        "tag": "div",
+        "text": "Active Default Notification",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-themes-cf-notice",
+        "tag": "div",
+        "text": "Form styles are disabled because Conversational Forms addon…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-themes-fields-row",
+        "tag": "div",
+        "text": "Size Small Medium Large Border None Solid Dashed Dotted",
+        "count": 15,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-builder-themes-lf-notice",
+        "tag": "div",
+        "text": "Form styles are disabled because Lead Form Mode is turned o…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-builder-themes-preview-notice",
+        "tag": "div",
+        "text": "Preview only The fields shown below are for demo purposes a…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-builder-themes-sidebar-content",
+        "tag": "div",
+        "text": "Themes Classic Default Cerulean Ocean Fern Lilac Taffy Tang…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-builder-themes-style-notice",
+        "tag": "div",
+        "text": "Want to customize your form styles without editing CSS? Go …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-container",
+        "tag": "div",
+        "text": "Name First Name Last Name Email Message Multiple Choice Fir…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-context-menu-list-item",
+        "tag": "li",
+        "text": "Duplicate Form",
+        "count": 16,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-context-menu-list-item-has-child",
+        "tag": "li",
+        "text": "Field Size Small Medium Large",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-context-menu-list-item-inactive",
+        "tag": "li",
+        "text": "View Entries",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-context-menu-list-item-selective",
+        "tag": "li",
+        "text": "Mark as Required",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-field-container",
+        "tag": "div",
+        "text": "Name First Name Last Name Email Message Multiple Choice Fir…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-field-label",
+        "tag": "legend",
+        "text": "Name",
+        "count": 5,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-field-row",
+        "tag": "div",
+        "text": "First Name Last Name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-selected",
+        "tag": "li",
+        "text": "First Choice",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-smart-tags-widget-container",
+        "tag": "div",
+        "text": "Smart Tags No fields availableOther Site Administrator Emai…",
+        "count": 7,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-smart-tags-widget-input",
+        "tag": "div",
+        "text": "Site Administrator Email",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-status-label",
+        "tag": "i",
+        "text": "Active",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

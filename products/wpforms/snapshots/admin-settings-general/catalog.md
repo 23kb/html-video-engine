@@ -1,24 +1,21 @@
 # Catalog — `admin-settings-general`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-settings-general/index.html`
+> Source: `products/wpforms/snapshots/admin-settings-general/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 64 selector entries across 2 sections.
+> 61 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-settings-general/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-settings-general/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_36 entries_
+_33 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="id--choices--wpforms-setting-disable-css-item-choice-1"></a>`id--choices--wpforms-setting-disable-css-item-choice-1` | `#choices--wpforms-setting-disable-css-item-choice-1` | div | Base and form theme styling | 1 |
-| <a id="id--choices--wpforms-setting-disable-css-item-choice-2"></a>`id--choices--wpforms-setting-disable-css-item-choice-2` | `#choices--wpforms-setting-disable-css-item-choice-2` | div | Base styling only | 1 |
-| <a id="id--choices--wpforms-setting-disable-css-item-choice-3"></a>`id--choices--wpforms-setting-disable-css-item-choice-3` | `#choices--wpforms-setting-disable-css-item-choice-3` | div | No styling | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Please rate WPForms ★★★★★ on WordPress.org to help us sprea… | 1 |
@@ -51,7 +48,7 @@ _36 entries_
 | <a id="id--wpforms-setting-row-global-assets"></a>`id--wpforms-setting-row-global-assets` | `#wpforms-setting-row-global-assets` | div | Load Assets Globally | 1 |
 | <a id="id--wpforms-setting-row-license-heading"></a>`id--wpforms-setting-row-license-heading` | `#wpforms-setting-row-license-heading` | div | License Your license key provides access to updates and add… | 1 |
 | <a id="id--wpforms-setting-row-license-key"></a>`id--wpforms-setting-row-license-key` | `#wpforms-setting-row-license-key` | div | License Key | 1 |
-| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email | 1 |
+| <a id="id--wpforms-settings"></a>`id--wpforms-settings` | `#wpforms-settings` | div | General Email CAPTCHA | 1 |
 
 ## Role-like classes
 

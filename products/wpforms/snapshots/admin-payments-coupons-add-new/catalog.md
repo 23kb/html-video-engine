@@ -1,23 +1,21 @@
 # Catalog — `admin-payments-coupons-add-new`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-payments-coupons-add-new/index.html`
+> Source: `products/wpforms/snapshots/admin-payments-coupons-add-new/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 121 selector entries across 2 sections.
+> 119 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-payments-coupons-add-new/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-payments-coupons-add-new/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_87 entries_
+_85 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="id--choices--wpforms-coupons-amount-type-item-choice-1"></a>`id--choices--wpforms-coupons-amount-type-item-choice-1` | `#choices--wpforms-coupons-amount-type-item-choice-1` | div | % | 1 |
-| <a id="id--choices--wpforms-coupons-amount-type-item-choice-2"></a>`id--choices--wpforms-coupons-amount-type-item-choice-2` | `#choices--wpforms-coupons-amount-type-item-choice-2` | div | $ | 1 |
 | <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
 | <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
 | <a id="id--et-ajax-saving"></a>`id--et-ajax-saving` | `#et-ajax-saving` | div |  | 1 |

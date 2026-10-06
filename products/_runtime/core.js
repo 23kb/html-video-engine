@@ -356,15 +356,40 @@
     }
     var fade = motionOff() ? 0 : opts && opts.fade != null ? opts.fade : 120;
     var target = (pack ? '../../../' + pack + '/snapshots/' : '../') + slug + '/index.html' + (pairs.length ? '?' + paramQuery(pairs) : '');
-    var host = document.getElementById('wpbody-content') || document.body;
-    if (!host || !(fade > 0)) {
-      window.location.href = target;
-      return;
-    }
-    host.style.transition = 'opacity ' + fade + 'ms ease-in';
-    host.style.opacity = '0';
-    faded = host;
-    setTimeout(function () { window.location.href = target; }, fade - 10);
+    // A downloaded snapshot may stand alone (WPForms gap-fill R6, 2026-10-05):
+    // a sibling that is not on disk stays put instead of opening a 404.
+    siblingThere(target, function (there) {
+      if (!there) {
+        restoreFade();
+        recordMiss(target, slug, 'sibling not in this download');
+        return;
+      }
+      var host = document.getElementById('wpbody-content') || document.body;
+      if (!host || !(fade > 0)) {
+        window.location.href = target;
+        return;
+      }
+      host.style.transition = 'opacity ' + fade + 'ms ease-in';
+      host.style.opacity = '0';
+      faded = host;
+      setTimeout(function () { window.location.href = target; }, fade - 10);
+    });
+  }
+
+  // HEAD-checks a sibling snapshot once per target. A status of 400 or more
+  // means it is not there; a fetch that throws (file://, no server) navigates
+  // as before, because the check cannot tell.
+  var siblingCache = {};
+  function siblingThere(url, cb) {
+    var key = String(url).split('?')[0];
+    if (Object.prototype.hasOwnProperty.call(siblingCache, key)) { cb(siblingCache[key]); return; }
+    var p = null;
+    try { p = typeof fetch === 'function' ? fetch(key, { method: 'HEAD', cache: 'no-store' }) : null; } catch (_) { p = null; }
+    if (!p) { cb(true); return; }
+    p.then(function (r) {
+      siblingCache[key] = r.status < 400;
+      cb(siblingCache[key]);
+    }, function () { cb(true); });
   }
 
   // The fade restore. Back / Forward brings a page out of the bfcache exactly

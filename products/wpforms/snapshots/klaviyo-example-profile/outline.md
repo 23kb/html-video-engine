@@ -6,7 +6,7 @@
 _Selectors validated against the live DOM — every one resolves._
 
 ### Actions (buttons / links)
-- `#account-switcher-toggle` — button — "SU Sullie's Flowers"
+- `#account-switcher-toggle` — button — "SU Sullie's Bakery"
 - `#Analytics-accordion` — button — "Analytics"
 - `#app-shell-header-logo-link` — a — "Dashboard"
 - `#app-shell-notification-toggle` — button — "0 unread notifications"
@@ -24,7 +24,7 @@ _Selectors validated against the live DOM — every one resolves._
 ### Other anchors
 - `#a757c93a-80b1-478a-a21c-bb34b1bc1b23` — div — "Email Domain: klaviyo-demo.com Campaign Name: Internal Klav…"
 - `#Analytics-section` — ul — "Dashboards Experiments Metrics Benchmarks Deliverability Cu…"
-- `#app-shell-main` — div — "All profiles Matt Kemp (Sample) matt.kemp@klaviyo-demo.com …"
+- `#app-shell-main` — div — "All profiles Matt Kemp (Sample) matt.kemp@example.com • Bos…"
 - `#AppShell-SiteBody` — div — "Get started Home Campaigns Flows Website Sign-up forms Land…"
 - `#ascent-date-picker-portal` — div
 - `#ascent-dialog-portal` — div

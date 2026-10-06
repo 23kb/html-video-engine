@@ -153,6 +153,12 @@
       "count": 1
     },
     {
+      "label": "section-tabs",
+      "event": "click",
+      "selector": ".wpforms-panel-content-section-tabs-list-item[data-tab]",
+      "count": 4
+    },
+    {
       "label": "panel-button-nav",
       "event": "click",
       "selector": "button.wpforms-panel-fields-button[data-panel=\"fields\"]",
@@ -186,7 +192,7 @@
       "label": "calculation-insert-field-pick",
       "event": "click",
       "selector": "div.wpforms-builder-dropdown-list.insert-field-dropdown ul li",
-      "count": 13
+      "count": 3
     }
   ],
   "nav": [
@@ -551,7 +557,9 @@
         "tag": "li",
         "text": "Questions",
         "count": 5,
-        "hidden": true
+        "hidden": true,
+        "wired": "section-tabs",
+        "wiredEvent": "click"
       },
       {
         "sel": ".wpforms-panel-content-section-tabs-list-item-end",

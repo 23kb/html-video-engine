@@ -1,0 +1,511 @@
+{
+  "slug": "admin-entry-edit",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wpf-parked-modal-open",
+      "event": "click",
+      "selector": "a.wpforms-link.wpforms-link-whats-new",
+      "count": 1
+    },
+    {
+      "label": "wpf-flyout",
+      "event": "click",
+      "selector": "a.wpforms-flyout-button.wpforms-flyout-head",
+      "count": 1
+    }
+  ],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-edit-entry-update",
+        "tag": "button",
+        "text": "Update",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-btn",
+        "tag": "a",
+        "text": "Back to Entry",
+        "count": 1,
+        "hidden": false,
+        "nav": "admin-entries-overview"
+      },
+      {
+        "sel": ".wpforms-empty-field-toggle",
+        "tag": "a",
+        "text": "Hide Empty Fields",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-flyout",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false,
+        "wired": "wpf-parked-modal-open",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#wpforms-1725-field_1",
+        "tag": "input",
+        "text": "Emma Murphy",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-1725-field_1-last",
+        "tag": "input",
+        "text": "Vance",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-1725-field_2",
+        "tag": "input",
+        "text": "emma.murphy80@example.com",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-1725-field_3",
+        "tag": "input",
+        "text": "(919) 555-0134",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-1725-field_4",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-1725-field_5",
+        "tag": "select",
+        "text": "Breakfast Pastry Spread Afternoon Tea Service Dessert Table…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-1725-field_6",
+        "tag": "input",
+        "text": "35",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-1725-field_7",
+        "tag": "textarea",
+        "text": "Mix of vegetarian and regular options, please.",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [
+      {
+        "sel": ".wpforms-field[data-field-id]",
+        "tag": "div",
+        "text": "any canvas field",
+        "count": 7
+      },
+      {
+        "sel": "#wpforms-1725-field_1-container",
+        "tag": "div",
+        "text": "First Last",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-1725-field_2-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-1725-field_3-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-1725-field_4-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-1725-field_5-container",
+        "tag": "div",
+        "text": "Breakfast Pastry Spread Afternoon Tea Service Dessert Table…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-1725-field_6-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-1725-field_7-container",
+        "tag": "div",
+        "text": "Mix of vegetarian and regular options, please.",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "panelsModals": [
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#delete-action",
+        "tag": "div",
+        "text": "Trash Entry",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#major-publishing-actions",
+        "tag": "div",
+        "text": "Update Trash Entry",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body",
+        "tag": "div",
+        "text": "Sullie’s Bakery Catering Order Hide Empty Fields Name First…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body-content",
+        "tag": "div",
+        "text": "Sullie’s Bakery Catering Order Hide Empty Fields Name First…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-1",
+        "tag": "div",
+        "text": "Entry Details Entry ID: 7829 Submitted: Sep 9, 2026 at 6:18…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#poststuff",
+        "tag": "div",
+        "text": "Sullie’s Bakery Catering Order Hide Empty Fields Name First…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#publishing-action",
+        "tag": "div",
+        "text": "Update",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms Dashboard All Forms Setup Checklist 67% complete Ad…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-1725",
+        "tag": "div",
+        "text": "Sullie’s Bakery Catering Order Hide Empty Fields Name First…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-edit-entry-form",
+        "tag": "form",
+        "text": "Sullie’s Bakery Catering Order Hide Empty Fields Name First…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-entries-single",
+        "tag": "div",
+        "text": "Edit Entry Back to Entry Sullie’s Bakery Catering Order Hid…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-entry-details",
+        "tag": "div",
+        "text": "Entry Details Entry ID: 7829 Submitted: Sep 9, 2026 at 6:18…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-entry-fields",
+        "tag": "div",
+        "text": "Sullie’s Bakery Catering Order Hide Empty Fields Name First…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "Sullie’s Bakery Catering Order Hide Empty Fields Name First…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-edit-entry-field",
+        "tag": "div",
+        "text": "Name First Last",
+        "count": 7,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-edit-entry-field-select",
+        "tag": "div",
+        "text": "Catering Package Breakfast Pastry Spread Afternoon Tea Serv…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-field-row",
+        "tag": "div",
+        "text": "First Last",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

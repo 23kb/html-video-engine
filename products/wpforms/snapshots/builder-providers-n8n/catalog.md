@@ -1,11 +1,11 @@
 # Catalog — `builder-providers-n8n`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/builder-providers-n8n/index.html`
+> Source: `products/wpforms/snapshots/builder-providers-n8n/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 228 selector entries across 4 sections.
 
-Provenance anchor form: `snapshots/builder-providers-n8n/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/builder-providers-n8n/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

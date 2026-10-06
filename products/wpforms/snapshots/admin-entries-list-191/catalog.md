@@ -1,11 +1,11 @@
 # Catalog — `admin-entries-list-191`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-entries-list-191/index.html`
+> Source: `products/wpforms/snapshots/admin-entries-list-191/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 88 selector entries across 3 sections.
 
-Provenance anchor form: `snapshots/admin-entries-list-191/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-entries-list-191/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -83,7 +83,7 @@ _3 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="data-field-type--email"></a>`data-field-type--email` | `[data-field-type="email"]` | div | ethan.mitchell224@hotmail.com | 30 |
+| <a id="data-field-type--email"></a>`data-field-type--email` | `[data-field-type="email"]` | div | ethan.mitchell224@example.com | 30 |
 | <a id="data-field-type--name"></a>`data-field-type--name` | `[data-field-type="name"]` | div | Ethan Mitchell | 30 |
 | <a id="data-field-type--select"></a>`data-field-type--select` | `[data-field-type="select"]` | div | Driver | 30 |
 

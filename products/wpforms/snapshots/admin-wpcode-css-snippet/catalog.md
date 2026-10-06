@@ -1,11 +1,11 @@
 # Catalog — `admin-wpcode-css-snippet`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-wpcode-css-snippet/index.html`
+> Source: `products/wpforms/snapshots/admin-wpcode-css-snippet/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 102 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-wpcode-css-snippet/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-wpcode-css-snippet/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

@@ -1,11 +1,11 @@
 # Catalog — `admin-tools-system`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-tools-system/index.html`
+> Source: `products/wpforms/snapshots/admin-tools-system/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 35 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-tools-system/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-tools-system/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -34,7 +34,7 @@ _19 entries_
 | <a id="id--wpforms-ssl-verify"></a>`id--wpforms-ssl-verify` | `#wpforms-ssl-verify` | button | Test Connection | 1 |
 | <a id="id--wpforms-system-information"></a>`id--wpforms-system-information` | `#wpforms-system-information` | textarea | ### Begin System Info ### -- WPForms Info Pro: Apr 25, 2026… | 1 |
 | <a id="id--wpforms-system-information-copy"></a>`id--wpforms-system-information-copy` | `#wpforms-system-information-copy` | button | Copy System Information | 1 |
-| <a id="id--wpforms-tools"></a>`id--wpforms-tools` | `#wpforms-tools` | div | Import Export Entr | 1 |
+| <a id="id--wpforms-tools"></a>`id--wpforms-tools` | `#wpforms-tools` | div | Import Export Entry Automation | 1 |
 
 ## Role-like classes
 

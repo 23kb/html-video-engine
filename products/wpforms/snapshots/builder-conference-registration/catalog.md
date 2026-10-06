@@ -1,23 +1,22 @@
 # Catalog — `builder-conference-registration`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/builder-conference-registration/index.html`
+> Source: `products/wpforms/snapshots/builder-conference-registration/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 764 selector entries across 6 sections.
+> 763 selector entries across 6 sections.
 
-Provenance anchor form: `snapshots/builder-conference-registration/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/builder-conference-registration/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_621 entries_
+_620 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="id--add-fields"></a>`id--add-fields` | `#add-fields` | li | Add Fields | 1 |
-| <a id="id--choices--qafs-item-choice-1"></a>`id--choices--qafs-item-choice-1` | `#choices--qafs-item-choice-1` | div |  | 1 |
 | <a id="id--et-ajax-saving"></a>`id--et-ajax-saving` | `#et-ajax-saving` | div |  | 1 |
 | <a id="id--field-options"></a>`id--field-options` | `#field-options` | li | Field Options | 1 |
 | <a id="id--link-modal-title"></a>`id--link-modal-title` | `#link-modal-title` | h1 | Insert/edit link | 1 |
@@ -521,7 +520,7 @@ _621 entries_
 | <a id="id--wpforms-field-option-row-2-default_value"></a>`id--wpforms-field-option-row-2-default_value` | `#wpforms-field-option-row-2-default_value` | div | Default Value | 1 |
 | <a id="id--wpforms-field-option-row-2-denylist"></a>`id--wpforms-field-option-row-2-denylist` | `#wpforms-field-option-row-2-denylist` | div |  | 1 |
 | <a id="id--wpforms-field-option-row-2-description"></a>`id--wpforms-field-option-row-2-description` | `#wpforms-field-option-row-2-description` | div | Description | 1 |
-| <a id="id--wpforms-field-option-row-2-disable_suggestions"></a>`id--wpforms-field-option-row-2-disable_suggestions` | `#wpforms-field-option-row-2-disable_suggestions` | div | Di | 1 |
+| <a id="id--wpforms-field-option-row-2-disable_suggestions"></a>`id--wpforms-field-option-row-2-disable_suggestions` | `#wpforms-field-option-row-2-disable_suggestions` | div |  | 1 |
 | <a id="id--wpforms-field-option-row-2-filter_type"></a>`id--wpforms-field-option-row-2-filter_type` | `#wpforms-field-option-row-2-filter_type` | div | Allowlist / Denylist None | 1 |
 | <a id="id--wpforms-field-option-row-2-label"></a>`id--wpforms-field-option-row-2-label` | `#wpforms-field-option-row-2-label` | div | Label | 1 |
 | <a id="id--wpforms-field-option-row-2-label_hide"></a>`id--wpforms-field-option-row-2-label_hide` | `#wpforms-field-option-row-2-label_hide` | div | Hide Label | 1 |
@@ -627,13 +626,13 @@ _621 entries_
 | <a id="id--wpforms-help"></a>`id--wpforms-help` | `#wpforms-help` | button | Help | 1 |
 | <a id="id--wpforms-icon-choices-custom-properties"></a>`id--wpforms-icon-choices-custom-properties` | `#wpforms-icon-choices-custom-properties` | link |  | 1 |
 | <a id="id--wpforms-panel-fields"></a>`id--wpforms-panel-fields` | `#wpforms-panel-fields` | div |  | 1 |
-| <a id="id--wpforms-panels-toggle"></a>`id--wpforms-panels-toggle` | `#wpforms-panels-toggle` | div | Setup Fields S | 1 |
+| <a id="id--wpforms-panels-toggle"></a>`id--wpforms-panels-toggle` | `#wpforms-panels-toggle` | div | Setup Fields | 1 |
 | <a id="id--wpforms-paypal-commerce-buttons-wrapper"></a>`id--wpforms-paypal-commerce-buttons-wrapper` | `#wpforms-paypal-commerce-buttons-wrapper` | div |  | 1 |
 | <a id="id--wpforms-preview-btn"></a>`id--wpforms-preview-btn` | `#wpforms-preview-btn` | a | Preview | 1 |
 | <a id="id--wpforms-preview-dropdown-btn"></a>`id--wpforms-preview-dropdown-btn` | `#wpforms-preview-dropdown-btn` | button | More Preview Options | 1 |
 | <a id="id--wpforms-preview-dropdown-menu"></a>`id--wpforms-preview-dropdown-menu` | `#wpforms-preview-dropdown-menu` | ul |  | 1 |
 | <a id="id--wpforms-save"></a>`id--wpforms-save` | `#wpforms-save` | button | Save | 1 |
-| <a id="id--wpforms-search-fields-input"></a>`id--wpforms-search-fields-input` | `#wpforms-search-fields-input` | input | Sorry, we | 1 |
+| <a id="id--wpforms-search-fields-input"></a>`id--wpforms-search-fields-input` | `#wpforms-search-fields-input` | input |  | 1 |
 | <a id="id--wpforms-setup-checklist-menu-styles"></a>`id--wpforms-setup-checklist-menu-styles` | `#wpforms-setup-checklist-menu-styles` | link |  | 1 |
 | <a id="id--wplink-enter-url"></a>`id--wplink-enter-url` | `#wplink-enter-url` | p | Enter the destination URL | 1 |
 | <a id="id--wplink-link-existing-content"></a>`id--wplink-link-existing-content` | `#wplink-link-existing-content` | p | Or link to existing content | 1 |
@@ -796,10 +795,10 @@ _83 entries_
 | <a id="class--wpforms-panel-sidebar"></a>`class--wpforms-panel-sidebar` | `.wpforms-panel-sidebar` | div | Add Fields Field Options | 1 |
 | <a id="class--wpforms-panel-sidebar-content"></a>`class--wpforms-panel-sidebar-content` | `.wpforms-panel-sidebar-content` | div |  | 1 |
 | <a id="class--wpforms-panel-sidebar-toggle"></a>`class--wpforms-panel-sidebar-toggle` | `.wpforms-panel-sidebar-toggle` | div |  | 1 |
-| <a id="class--wpforms-panels-toggle"></a>`class--wpforms-panels-toggle` | `.wpforms-panels-toggle` | div | Setup Fields S | 1 |
+| <a id="class--wpforms-panels-toggle"></a>`class--wpforms-panels-toggle` | `.wpforms-panels-toggle` | div | Setup Fields | 1 |
 | <a id="class--wpforms-paypal-commerce-button"></a>`class--wpforms-paypal-commerce-button` | `.wpforms-paypal-commerce-button` | div |  | 3 |
 | <a id="class--wpforms-preview-dropdown-addon-active"></a>`class--wpforms-preview-dropdown-addon-active` | `.wpforms-preview-dropdown-addon-active` | button | Conversational Form | 3 |
-| <a id="class--wpforms-preview-dropdown-item"></a>`class--wpforms-preview-dropdown-item` | `.wpforms-preview-dropdown-item` | li | Standa | 4 |
+| <a id="class--wpforms-preview-dropdown-item"></a>`class--wpforms-preview-dropdown-item` | `.wpforms-preview-dropdown-item` | li | St | 4 |
 | <a id="class--wpforms-preview-dropdown-label"></a>`class--wpforms-preview-dropdown-label` | `.wpforms-preview-dropdown-label` | span | Standard Form Preview | 4 |
 | <a id="class--wpforms-preview-dropdown-link"></a>`class--wpforms-preview-dropdown-link` | `.wpforms-preview-dropdown-link` | a | Standard Form Preview | 4 |
 | <a id="class--wpforms-quiz-answer-required-content"></a>`class--wpforms-quiz-answer-required-content` | `.wpforms-quiz-answer-required-content` | span | Quiz Answer Required | 5 |

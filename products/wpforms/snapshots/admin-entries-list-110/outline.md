@@ -32,7 +32,7 @@ _Selectors validated against the live DOM — every one resolves._
 - _… +7 more — see catalog.md_
 
 ### Fields (canvas)
-- `[data-field-type="email"]` — div — "isla.young775@outlook.com" _(×30)_
+- `[data-field-type="email"]` — div — "isla.young775@example.com" _(×30)_
 - `[data-field-type="name"]` — div — "Isla Young" _(×30)_
 - `[data-field-type="textarea"]` — div — "I would like to ask about catering for an office event of a…" _(×30)_
 
@@ -72,6 +72,3 @@ _These admin links navigate when hand-browsing /snapshots/ but their handler bai
 - click `a[href*="page=wpforms-tools"]` → cross-snapshot nav → use `ifm.swap('admin-tools-import')`
 - click `a[href*="page=wpforms-builder"][href*="view=fields"]` → cross-snapshot nav → use `ifm.swap('builder-fields')`
 - click `a[href*="page=wpforms-builder"]` → cross-snapshot nav → use `ifm.swap('builder-setup')`
-
-<!-- capture-gates:start -->
-<!-- capture-gates:end -->

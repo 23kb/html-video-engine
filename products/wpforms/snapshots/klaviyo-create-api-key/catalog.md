@@ -1,11 +1,11 @@
 # Catalog — `klaviyo-create-api-key`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/klaviyo-create-api-key/index.html`
+> Source: `products/wpforms/snapshots/klaviyo-create-api-key/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 144 selector entries across 1 sections.
 
-Provenance anchor form: `snapshots/klaviyo-create-api-key/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/klaviyo-create-api-key/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -107,7 +107,7 @@ _144 entries_
 | <a id="id--a84ebd46-ef61-4486-8091-e77460740ff7"></a>`id--a84ebd46-ef61-4486-8091-e77460740ff7` | `#a84ebd46-ef61-4486-8091-e77460740ff7` | input | No Access | 1 |
 | <a id="id--a8a4ee7f-88f5-4d25-b66c-df8e012d807e"></a>`id--a8a4ee7f-88f5-4d25-b66c-df8e012d807e` | `#a8a4ee7f-88f5-4d25-b66c-df8e012d807e` | input | Full Access | 1 |
 | <a id="id--a9d72bfd-7808-4f00-84ea-20b17875a924"></a>`id--a9d72bfd-7808-4f00-84ea-20b17875a924` | `#a9d72bfd-7808-4f00-84ea-20b17875a924` | input | Read Access | 1 |
-| <a id="id--account-switcher-toggle"></a>`id--account-switcher-toggle` | `#account-switcher-toggle` | button | Su Sullie's Flowers | 1 |
+| <a id="id--account-switcher-toggle"></a>`id--account-switcher-toggle` | `#account-switcher-toggle` | button | Su Sullie's Bakery | 1 |
 | <a id="id--Analytics-accordion"></a>`id--Analytics-accordion` | `#Analytics-accordion` | button |  | 1 |
 | <a id="id--Analytics-section"></a>`id--Analytics-section` | `#Analytics-section` | ul | Dashboards | 1 |
 | <a id="id--app-shell-header-logo-link"></a>`id--app-shell-header-logo-link` | `#app-shell-header-logo-link` | a |  | 1 |

@@ -1,24 +1,22 @@
 # Catalog — `builder-field-options-coupon`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/builder-field-options-coupon/index.html`
+> Source: `products/wpforms/snapshots/builder-field-options-coupon/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 682 selector entries across 6 sections.
+> 680 selector entries across 6 sections.
 
-Provenance anchor form: `snapshots/builder-field-options-coupon/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/builder-field-options-coupon/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_515 entries_
+_513 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="id--add-fields"></a>`id--add-fields` | `#add-fields` | li | Add Fields | 1 |
-| <a id="id--choices--wpforms-field-option-16-allowed_coupons-item-choice-1"></a>`id--choices--wpforms-field-option-16-allowed_coupons-item-choice-1` | `#choices--wpforms-field-option-16-allowed_coupons-item-choice-1` | div | Summer Sale | 1 |
-| <a id="id--choices--wpforms-field-option-16-allowed_coupons-item-choice-2"></a>`id--choices--wpforms-field-option-16-allowed_coupons-item-choice-2` | `#choices--wpforms-field-option-16-allowed_coupons-item-choice-2` | div | Oliver Norton | 1 |
 | <a id="id--et-ajax-saving"></a>`id--et-ajax-saving` | `#et-ajax-saving` | div |  | 1 |
 | <a id="id--field-options"></a>`id--field-options` | `#field-options` | li | Field Options | 1 |
 | <a id="id--loading"></a>`id--loading` | `#loading` | img |  | 1 |

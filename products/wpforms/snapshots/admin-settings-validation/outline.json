@@ -1,0 +1,686 @@
+{
+  "slug": "admin-settings-validation",
+  "registryPresent": true,
+  "transitions": [],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    },
+    {
+      "target": "admin-settings-email",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=email\"]"
+    },
+    {
+      "target": "admin-settings-captcha",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=captcha\"]"
+    },
+    {
+      "target": "admin-settings-validation",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=validation\"]"
+    },
+    {
+      "target": "admin-settings-payments",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=payments\"]"
+    },
+    {
+      "target": "admin-settings-integrations",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=integrations\"]"
+    },
+    {
+      "target": "admin-settings-geolocation",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=geolocation\"]"
+    },
+    {
+      "target": "admin-settings-access",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=access\"]"
+    },
+    {
+      "target": "admin-settings-misc",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=misc\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-btn",
+        "tag": "button",
+        "text": "Save Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#wpforms-setting-coupon-invalid",
+        "tag": "input",
+        "text": "This is not a valid coupon.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-airtable-required-field",
+        "tag": "input",
+        "text": "Required field is missing. Please check your form configura…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-character-limit",
+        "tag": "input",
+        "text": "Limit is {limit} characters. Characters remaining: {remaini…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-check-limit",
+        "tag": "input",
+        "text": "You have exceeded the number of allowed selections: {#}.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-confirm",
+        "tag": "input",
+        "text": "Field values do not match.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-creditcard",
+        "tag": "input",
+        "text": "Please enter a valid credit card number.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-email",
+        "tag": "input",
+        "text": "Please enter a valid email address.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-email-restricted",
+        "tag": "input",
+        "text": "This email address is not allowed.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-email-suggestion",
+        "tag": "input",
+        "text": "Did you mean {suggestion}?",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-fileextension",
+        "tag": "input",
+        "text": "File type is not allowed.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-filesize",
+        "tag": "input",
+        "text": "File exceeds max size allowed. File was not uploaded.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-google-calendar-end-before-start",
+        "tag": "input",
+        "text": "Start time must be earlier than End time. Please adjust you…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-inputmask-incomplete",
+        "tag": "input",
+        "text": "Please fill out the field in required format.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-max",
+        "tag": "input",
+        "text": "Please enter a value less than or equal to {value}.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-maxfilenumber",
+        "tag": "input",
+        "text": "File uploads exceed the maximum number allowed ({fileLimit}…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-min",
+        "tag": "input",
+        "text": "Please enter a value greater than or equal to {value}.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-minimum-price",
+        "tag": "input",
+        "text": "Amount entered is less than the required minimum.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-number",
+        "tag": "input",
+        "text": "Please enter a valid number.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-number-positive",
+        "tag": "input",
+        "text": "Please enter a valid positive number.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-passwordstrength",
+        "tag": "input",
+        "text": "A stronger password is required. Consider using upper and l…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-phone",
+        "tag": "input",
+        "text": "Please enter a valid phone number.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-post_max_size",
+        "tag": "input",
+        "text": "The total size of the selected files {totalSize} MB exceeds…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-required",
+        "tag": "input",
+        "text": "This field is required.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-requiredpayment",
+        "tag": "input",
+        "text": "Payment is required.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-time-limit",
+        "tag": "input",
+        "text": "Please enter time between {minTime} and {maxTime}.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-time12h",
+        "tag": "input",
+        "text": "Please enter time in 12-hour AM/PM format (eg 8:45 AM).",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-time24h",
+        "tag": "input",
+        "text": "Please enter time in 24-hour format (eg 22:45).",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-url",
+        "tag": "input",
+        "text": "Please enter a valid URL.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-validation-word-limit",
+        "tag": "input",
+        "text": "Limit is {limit} words. Words remaining: {remaining}.",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms All Forms Add New Form Entries Payments NEW! Form T…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-coupon-invalid",
+        "tag": "div",
+        "text": "Coupon Error",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-airtable-required-field",
+        "tag": "div",
+        "text": "Required Field Missing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-character-limit",
+        "tag": "div",
+        "text": "Character Limit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-check-limit",
+        "tag": "div",
+        "text": "Checkbox Selection Limit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-confirm",
+        "tag": "div",
+        "text": "Confirm Value",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-creditcard",
+        "tag": "div",
+        "text": "Credit Card",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-email",
+        "tag": "div",
+        "text": "Email",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-email-restricted",
+        "tag": "div",
+        "text": "Email Restricted",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-email-suggestion",
+        "tag": "div",
+        "text": "Email Suggestion",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-fileextension",
+        "tag": "div",
+        "text": "File Extension",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-filesize",
+        "tag": "div",
+        "text": "File Size",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-google-calendar-end-before-start",
+        "tag": "div",
+        "text": "Start Time Later than End Time",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-heading",
+        "tag": "div",
+        "text": "Validation Messages These messages are displayed to the use…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-inputmask-incomplete",
+        "tag": "div",
+        "text": "Input Mask Incomplete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-max",
+        "tag": "div",
+        "text": "Maximum Value",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-maxfilenumber",
+        "tag": "div",
+        "text": "File Uploads",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-min",
+        "tag": "div",
+        "text": "Minimum Value",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-minimum-price",
+        "tag": "div",
+        "text": "Minimum Price",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-number",
+        "tag": "div",
+        "text": "Number",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-number-positive",
+        "tag": "div",
+        "text": "Number Positive",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-passwordstrength",
+        "tag": "div",
+        "text": "Password Strength",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-phone",
+        "tag": "div",
+        "text": "Phone",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-post_max_size",
+        "tag": "div",
+        "text": "File Upload Total Size",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-required",
+        "tag": "div",
+        "text": "Required",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-requiredpayment",
+        "tag": "div",
+        "text": "Payment Required",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-time-limit",
+        "tag": "div",
+        "text": "Limit Hours",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-time12h",
+        "tag": "div",
+        "text": "Time (12 hour)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-time24h",
+        "tag": "div",
+        "text": "Time (24 hour)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-url",
+        "tag": "div",
+        "text": "Website URL",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-validation-word-limit",
+        "tag": "div",
+        "text": "Word Limit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-settings",
+        "tag": "div",
+        "text": "General Email CAPTCHA Validation Payments Integrations Geol…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "Validation Messages These messages are displayed to the use…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-setting-field",
+        "tag": "span",
+        "text": "Validation Messages These messages are displayed to the use…",
+        "count": 30,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setting-label",
+        "tag": "span",
+        "text": "Required",
+        "count": 29,
+        "hidden": false
+      }
+    ]
+  }
+}

@@ -1,7 +1,26 @@
 {
   "slug": "admin-tools-export",
   "registryPresent": true,
-  "transitions": [],
+  "transitions": [
+    {
+      "label": "wpf-parked-modal-open",
+      "event": "click",
+      "selector": "a.wpforms-link.wpforms-link-whats-new",
+      "count": 1
+    },
+    {
+      "label": "wpf-parked-state",
+      "event": "change",
+      "selector": "#wpforms-tools-entries-export-selectform",
+      "count": 1
+    },
+    {
+      "label": "wpf-flyout",
+      "event": "click",
+      "selector": "a.wpforms-flyout-button.wpforms-flyout-head",
+      "count": 1
+    }
+  ],
   "nav": [
     {
       "target": "admin-forms-overview",
@@ -54,6 +73,11 @@
       "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=entry-automation\"]"
     },
     {
+      "target": "admin-tools-ai-mcp",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=ai-mcp\"]"
+    },
+    {
       "target": "admin-tools-system",
       "page": "wpforms-tools",
       "hrefSel": "a[href*=\"page=wpforms-tools\"][href*=\"view=system\"]"
@@ -79,20 +103,6 @@
         "hidden": false
       },
       {
-        "sel": "#wpforms-export-form",
-        "tag": "button",
-        "text": "Export",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#wpforms-export-template",
-        "tag": "button",
-        "text": "Export Template",
-        "count": 1,
-        "hidden": false
-      },
-      {
         "sel": "#wpforms-tools-entries-export-cancel",
         "tag": "a",
         "text": "Cancel",
@@ -102,9 +112,9 @@
       {
         "sel": "#wpforms-tools-entries-export-submit",
         "tag": "button",
-        "text": "Download Export File",
+        "text": "Export Entries",
         "count": 1,
-        "hidden": true
+        "hidden": false
       },
       {
         "sel": ".wpforms-clear-datetime-field",
@@ -125,7 +135,9 @@
         "tag": "a",
         "text": "See Quick Links",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "wpf-flyout",
+        "wiredEvent": "click"
       },
       {
         "sel": ".wpforms-flyout-item-1",
@@ -153,14 +165,16 @@
         "tag": "a",
         "text": "What’s New",
         "count": 1,
-        "hidden": false
+        "hidden": false,
+        "wired": "wpf-parked-modal-open",
+        "wiredEvent": "click"
       }
     ],
     "tabsNav": [
       {
         "sel": "#wpforms-tools",
         "tag": "div",
-        "text": "Import Export Entry Automation System Info Scheduled Action…",
+        "text": "Import Export Entry Automation AI MCP System Info Scheduled…",
         "count": 1,
         "hidden": false,
         "nav": "admin-tools-import"
@@ -170,7 +184,7 @@
       {
         "sel": "#nonce",
         "tag": "input",
-        "text": "d9a6ec8156",
+        "text": "0827468073",
         "count": 1,
         "hidden": true
       },
@@ -203,34 +217,6 @@
         "hidden": true
       },
       {
-        "sel": "#wpforms-tools-export-nonce",
-        "tag": "input",
-        "text": "4cda2e4daf",
-        "count": 2,
-        "hidden": true
-      },
-      {
-        "sel": "#wpforms-tools-form-export",
-        "tag": "select",
-        "text": "",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": "#wpforms-tools-form-template",
-        "tag": "select",
-        "text": "Select a Template",
-        "count": 1,
-        "hidden": true
-      },
-      {
-        "sel": ".choices__input--cloned",
-        "tag": "input",
-        "text": "null",
-        "count": 2,
-        "hidden": true
-      },
-      {
         "sel": ".wpforms-search-box-comparison",
         "tag": "select",
         "text": "contains does not contain is is not is empty is not empty",
@@ -246,8 +232,23 @@
       }
     ],
     "fields": [],
-    "panelsModals": [],
+    "panelsModals": [
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
     "other": [
+      {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
       {
         "sel": "#collapse-menu",
         "tag": "li",
@@ -263,23 +264,9 @@
         "hidden": true
       },
       {
-        "sel": "#form-export",
-        "tag": "h4",
-        "text": "Export Forms",
-        "count": 1,
-        "hidden": false
-      },
-      {
-        "sel": "#template-export",
-        "tag": "h4",
-        "text": "Export a Form Template",
-        "count": 1,
-        "hidden": false
-      },
-      {
         "sel": "#toplevel_page_wpforms-overview",
         "tag": "li",
-        "text": "WPForms All Forms Add New Form Entries Payments NEW! Form T…",
+        "text": "WPForms Dashboard All Forms Setup Checklist 67% complete Ad…",
         "count": 1,
         "hidden": false
       },
@@ -319,6 +306,13 @@
         "hidden": true
       },
       {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
         "sel": "#wpforms-flyout",
         "tag": "div",
         "text": "See Quick Links",
@@ -347,9 +341,16 @@
         "hidden": false
       },
       {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
         "sel": "#wpforms-tools-entries-export",
         "tag": "form",
-        "text": "Select a Form",
+        "text": "Select a Form Export Entries",
         "count": 1,
         "hidden": false
       },
@@ -452,16 +453,30 @@
         "hidden": true
       },
       {
+        "sel": "#wpforms-tools-entries-export-submit-section",
+        "tag": "section",
+        "text": "Export Entries",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
         "sel": ".choices__list--dropdown",
         "tag": "div",
-        "text": "Select a FormAll-Fields FixtureBlank Capture FormBlank Form…",
-        "count": 4,
+        "text": "Select a FormBakery ChatBakery Favorites SurveyBakery Feedb…",
+        "count": 2,
         "hidden": true
       },
       {
         "sel": ".wpforms-admin-content",
         "tag": "div",
-        "text": "Export Entries Select a form to export entries, then select…",
+        "text": "Export Entries Export Forms Export Templates Export Entries…",
         "count": 1,
         "hidden": false
       },
@@ -476,7 +491,21 @@
         "sel": ".wpforms-setting-row",
         "tag": "div",
         "text": "Export Entries Select a form to export entries, then select…",
-        "count": 3,
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
         "hidden": false
       },
       {

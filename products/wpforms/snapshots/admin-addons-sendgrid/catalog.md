@@ -1,11 +1,11 @@
 # Catalog — `admin-addons-sendgrid`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/admin-addons-sendgrid/index.html`
+> Source: `products/wpforms/snapshots/admin-addons-sendgrid/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 88 selector entries across 2 sections.
 
-Provenance anchor form: `snapshots/admin-addons-sendgrid/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/admin-addons-sendgrid/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---

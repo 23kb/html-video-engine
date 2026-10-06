@@ -1,27 +1,41 @@
 # Catalog — `builder-field-options-net_promoter_score`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/builder-field-options-net_promoter_score/index.html`
+> Source: `products/wpforms/snapshots/builder-field-options-net_promoter_score/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
-> 200 selector entries across 5 sections.
+> 347 selector entries across 6 sections.
 
-Provenance anchor form: `snapshots/builder-field-options-net_promoter_score/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/builder-field-options-net_promoter_score/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
 
 ## IDs
 
-_104 entries_
+_206 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
 | <a id="id--add-fields"></a>`id--add-fields` | `#add-fields` | li | Add Fields | 1 |
+| <a id="id--aioseo-admin"></a>`id--aioseo-admin` | `#aioseo-admin` | div |  | 1 |
+| <a id="id--aioseo-modal-portal"></a>`id--aioseo-modal-portal` | `#aioseo-modal-portal` | div |  | 1 |
 | <a id="id--field-options"></a>`id--field-options` | `#field-options` | li | Field Options | 1 |
 | <a id="id--ui-id-1"></a>`id--ui-id-1` | `#ui-id-1` | ul |  | 1 |
+| <a id="id--ui-id-10"></a>`id--ui-id-10` | `#ui-id-10` | ul |  | 1 |
+| <a id="id--ui-id-11"></a>`id--ui-id-11` | `#ui-id-11` | ul |  | 1 |
+| <a id="id--ui-id-12"></a>`id--ui-id-12` | `#ui-id-12` | ul |  | 1 |
+| <a id="id--ui-id-13"></a>`id--ui-id-13` | `#ui-id-13` | ul |  | 1 |
+| <a id="id--ui-id-14"></a>`id--ui-id-14` | `#ui-id-14` | ul |  | 1 |
+| <a id="id--ui-id-15"></a>`id--ui-id-15` | `#ui-id-15` | ul |  | 1 |
+| <a id="id--ui-id-16"></a>`id--ui-id-16` | `#ui-id-16` | ul |  | 1 |
 | <a id="id--ui-id-2"></a>`id--ui-id-2` | `#ui-id-2` | ul |  | 1 |
 | <a id="id--ui-id-3"></a>`id--ui-id-3` | `#ui-id-3` | ul |  | 1 |
 | <a id="id--ui-id-4"></a>`id--ui-id-4` | `#ui-id-4` | ul |  | 1 |
+| <a id="id--ui-id-5"></a>`id--ui-id-5` | `#ui-id-5` | ul |  | 1 |
+| <a id="id--ui-id-6"></a>`id--ui-id-6` | `#ui-id-6` | ul |  | 1 |
+| <a id="id--ui-id-7"></a>`id--ui-id-7` | `#ui-id-7` | ul |  | 1 |
+| <a id="id--ui-id-8"></a>`id--ui-id-8` | `#ui-id-8` | ul |  | 1 |
+| <a id="id--ui-id-9"></a>`id--ui-id-9` | `#ui-id-9` | ul |  | 1 |
 | <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
 | <a id="id--wpforms-add-fields-address"></a>`id--wpforms-add-fields-address` | `#wpforms-add-fields-address` | button | Address | 1 |
 | <a id="id--wpforms-add-fields-authorize_net"></a>`id--wpforms-add-fields-authorize_net` | `#wpforms-add-fields-authorize_net` | button | Authorize.Net | 1 |
@@ -40,6 +54,7 @@ _104 entries_
 | <a id="id--wpforms-add-fields-layout"></a>`id--wpforms-add-fields-layout` | `#wpforms-add-fields-layout` | button | Layout | 1 |
 | <a id="id--wpforms-add-fields-likert_scale"></a>`id--wpforms-add-fields-likert_scale` | `#wpforms-add-fields-likert_scale` | button | Likert Scale | 1 |
 | <a id="id--wpforms-add-fields-map"></a>`id--wpforms-add-fields-map` | `#wpforms-add-fields-map` | button | Map | 1 |
+| <a id="id--wpforms-add-fields-mercado_pago"></a>`id--wpforms-add-fields-mercado_pago` | `#wpforms-add-fields-mercado_pago` | button | Mercado Pago | 1 |
 | <a id="id--wpforms-add-fields-name"></a>`id--wpforms-add-fields-name` | `#wpforms-add-fields-name` | button | Name | 1 |
 | <a id="id--wpforms-add-fields-net_promoter_score"></a>`id--wpforms-add-fields-net_promoter_score` | `#wpforms-add-fields-net_promoter_score` | button | Net Promoter Score | 1 |
 | <a id="id--wpforms-add-fields-number"></a>`id--wpforms-add-fields-number` | `#wpforms-add-fields-number` | button | Numbers | 1 |
@@ -55,6 +70,7 @@ _104 entries_
 | <a id="id--wpforms-add-fields-paypal-commerce"></a>`id--wpforms-add-fields-paypal-commerce` | `#wpforms-add-fields-paypal-commerce` | button | PayPal Commerce | 1 |
 | <a id="id--wpforms-add-fields-phone"></a>`id--wpforms-add-fields-phone` | `#wpforms-add-fields-phone` | button | Phone | 1 |
 | <a id="id--wpforms-add-fields-radio"></a>`id--wpforms-add-fields-radio` | `#wpforms-add-fields-radio` | button | Multiple Choice | 1 |
+| <a id="id--wpforms-add-fields-ranking"></a>`id--wpforms-add-fields-ranking` | `#wpforms-add-fields-ranking` | button | Ranking | 1 |
 | <a id="id--wpforms-add-fields-rating"></a>`id--wpforms-add-fields-rating` | `#wpforms-add-fields-rating` | button | Rating | 1 |
 | <a id="id--wpforms-add-fields-repeater"></a>`id--wpforms-add-fields-repeater` | `#wpforms-add-fields-repeater` | button | Repeater | 1 |
 | <a id="id--wpforms-add-fields-richtext"></a>`id--wpforms-add-fields-richtext` | `#wpforms-add-fields-richtext` | button | Rich Text | 1 |
@@ -68,7 +84,9 @@ _104 entries_
 | <a id="id--wpforms-add-fields-url"></a>`id--wpforms-add-fields-url` | `#wpforms-add-fields-url` | button | Website / URL | 1 |
 | <a id="id--wpforms-admin-bar-inline-css"></a>`id--wpforms-admin-bar-inline-css` | `#wpforms-admin-bar-inline-css` | link |  | 1 |
 | <a id="id--wpforms-admin-form-embed-wizard-container"></a>`id--wpforms-admin-form-embed-wizard-container` | `#wpforms-admin-form-embed-wizard-container` | div |  | 1 |
-| <a id="id--wpforms-builder"></a>`id--wpforms-builder` | `#wpforms-builder` | div | You are using an outdated browser! The Internet Explorer br… | 1 |
+| <a id="id--wpforms-ai-chat-fab"></a>`id--wpforms-ai-chat-fab` | `#wpforms-ai-chat-fab` | button |  | 1 |
+| <a id="id--wpforms-ai-chat-modal"></a>`id--wpforms-ai-chat-modal` | `#wpforms-ai-chat-modal` | div | WPForms AI | 1 |
+| <a id="id--wpforms-builder"></a>`id--wpforms-builder` | `#wpforms-builder` | div |  | 1 |
 | <a id="id--wpforms-builder-form"></a>`id--wpforms-builder-form` | `#wpforms-builder-form` | form |  | 1 |
 | <a id="id--wpforms-builder-ie-notice"></a>`id--wpforms-builder-ie-notice` | `#wpforms-builder-ie-notice` | div | You are using an outdated browser! The Internet Explorer br… | 1 |
 | <a id="id--wpforms-builder-inline-css"></a>`id--wpforms-builder-inline-css` | `#wpforms-builder-inline-css` | link |  | 1 |
@@ -79,10 +97,28 @@ _104 entries_
 | <a id="id--wpforms-context-menu-container"></a>`id--wpforms-context-menu-container` | `#wpforms-context-menu-container` | div |  | 1 |
 | <a id="id--wpforms-embed"></a>`id--wpforms-embed` | `#wpforms-embed` | button | Embed | 1 |
 | <a id="id--wpforms-exit"></a>`id--wpforms-exit` | `#wpforms-exit` | button |  | 1 |
+| <a id="id--wpforms-field-14"></a>`id--wpforms-field-14` | `#wpforms-field-14` | div |  | 1 |
 | <a id="id--wpforms-field-3"></a>`id--wpforms-field-3` | `#wpforms-field-3` | div |  | 1 |
 | <a id="id--wpforms-field-4"></a>`id--wpforms-field-4` | `#wpforms-field-4` | div |  | 1 |
 | <a id="id--wpforms-field-context-menu"></a>`id--wpforms-field-context-menu` | `#wpforms-field-context-menu` | div | Edit | 1 |
-| <a id="id--wpforms-field-id"></a>`id--wpforms-field-id` | `#wpforms-field-id` | input | Now editing Feedback Form | 1 |
+| <a id="id--wpforms-field-id"></a>`id--wpforms-field-id` | `#wpforms-field-id` | input | Now editing Training Course Feedback... | 1 |
+| <a id="id--wpforms-field-option-14"></a>`id--wpforms-field-option-14` | `#wpforms-field-option-14` | div | Dropdown (ID #14) | 1 |
+| <a id="id--wpforms-field-option-14-ai_modal_button"></a>`id--wpforms-field-option-14-ai_modal_button` | `#wpforms-field-option-14-ai_modal_button` | button | Generate Choices | 1 |
+| <a id="id--wpforms-field-option-14-choices-list"></a>`id--wpforms-field-option-14-choices-list` | `#wpforms-field-option-14-choices-list` | ul |  | 1 |
+| <a id="id--wpforms-field-option-14-conditional_logic"></a>`id--wpforms-field-option-14-conditional_logic` | `#wpforms-field-option-14-conditional_logic` | input | Enable Conditional Logic | 1 |
+| <a id="id--wpforms-field-option-14-css"></a>`id--wpforms-field-option-14-css` | `#wpforms-field-option-14-css` | input |  | 1 |
+| <a id="id--wpforms-field-option-14-description"></a>`id--wpforms-field-option-14-description` | `#wpforms-field-option-14-description` | textarea |  | 1 |
+| <a id="id--wpforms-field-option-14-dynamic_choices"></a>`id--wpforms-field-option-14-dynamic_choices` | `#wpforms-field-option-14-dynamic_choices` | select | Off Post Type Taxonomy | 1 |
+| <a id="id--wpforms-field-option-14-label"></a>`id--wpforms-field-option-14-label` | `#wpforms-field-option-14-label` | input | Choices Bulk A | 1 |
+| <a id="id--wpforms-field-option-14-label_hide"></a>`id--wpforms-field-option-14-label_hide` | `#wpforms-field-option-14-label_hide` | input | Hide Label | 1 |
+| <a id="id--wpforms-field-option-14-multiple"></a>`id--wpforms-field-option-14-multiple` | `#wpforms-field-option-14-multiple` | input | Multiple Options Selection | 1 |
+| <a id="id--wpforms-field-option-14-placeholder"></a>`id--wpforms-field-option-14-placeholder` | `#wpforms-field-option-14-placeholder` | input | Dynamic Choices | 1 |
+| <a id="id--wpforms-field-option-14-quiz_enabled"></a>`id--wpforms-field-option-14-quiz_enabled` | `#wpforms-field-option-14-quiz_enabled` | input | Include in Quiz Scoring | 1 |
+| <a id="id--wpforms-field-option-14-read_only"></a>`id--wpforms-field-option-14-read_only` | `#wpforms-field-option-14-read_only` | input | Read-Only | 1 |
+| <a id="id--wpforms-field-option-14-required"></a>`id--wpforms-field-option-14-required` | `#wpforms-field-option-14-required` | input | Required | 1 |
+| <a id="id--wpforms-field-option-14-size"></a>`id--wpforms-field-option-14-size` | `#wpforms-field-option-14-size` | select | Small Medium Large | 1 |
+| <a id="id--wpforms-field-option-14-style"></a>`id--wpforms-field-option-14-style` | `#wpforms-field-option-14-style` | select | Classic Modern | 1 |
+| <a id="id--wpforms-field-option-14-survey"></a>`id--wpforms-field-option-14-survey` | `#wpforms-field-option-14-survey` | input | Enable Survey Reporting | 1 |
 | <a id="id--wpforms-field-option-3"></a>`id--wpforms-field-option-3` | `#wpforms-field-option-3` | div | Net Promoter Score (ID #3) | 1 |
 | <a id="id--wpforms-field-option-3-conditional_logic"></a>`id--wpforms-field-option-3-conditional_logic` | `#wpforms-field-option-3-conditional_logic` | input | Enable Conditional Logic | 1 |
 | <a id="id--wpforms-field-option-3-css"></a>`id--wpforms-field-option-3-css` | `#wpforms-field-option-3-css` | input |  | 1 |
@@ -96,9 +132,52 @@ _104 entries_
 | <a id="id--wpforms-field-option-3-size"></a>`id--wpforms-field-option-3-size` | `#wpforms-field-option-3-size` | select | Small Medium Large | 1 |
 | <a id="id--wpforms-field-option-3-style"></a>`id--wpforms-field-option-3-style` | `#wpforms-field-option-3-style` | select | Modern Classic | 1 |
 | <a id="id--wpforms-field-option-3-survey"></a>`id--wpforms-field-option-3-survey` | `#wpforms-field-option-3-survey` | input | Enable Survey Reporting | 1 |
+| <a id="id--wpforms-field-option-4"></a>`id--wpforms-field-option-4` | `#wpforms-field-option-4` | div | Paragraph Text (ID #4) | 1 |
+| <a id="id--wpforms-field-option-4-ai_modal_button"></a>`id--wpforms-field-option-4-ai_modal_button` | `#wpforms-field-option-4-ai_modal_button` | button | Generate Formula | 1 |
+| <a id="id--wpforms-field-option-4-calculation_code"></a>`id--wpforms-field-option-4-calculation_code` | `#wpforms-field-option-4-calculation_code` | textarea |  | 1 |
+| <a id="id--wpforms-field-option-4-calculation_is_enabled"></a>`id--wpforms-field-option-4-calculation_is_enabled` | `#wpforms-field-option-4-calculation_is_enabled` | input | Enable Calculation | 1 |
+| <a id="id--wpforms-field-option-4-conditional_logic"></a>`id--wpforms-field-option-4-conditional_logic` | `#wpforms-field-option-4-conditional_logic` | input | Enable Conditional Logic | 1 |
+| <a id="id--wpforms-field-option-4-css"></a>`id--wpforms-field-option-4-css` | `#wpforms-field-option-4-css` | input |  | 1 |
+| <a id="id--wpforms-field-option-4-default_value"></a>`id--wpforms-field-option-4-default_value` | `#wpforms-field-option-4-default_value` | input | CSS Classes | 1 |
+| <a id="id--wpforms-field-option-4-description"></a>`id--wpforms-field-option-4-description` | `#wpforms-field-option-4-description` | textarea |  | 1 |
+| <a id="id--wpforms-field-option-4-label"></a>`id--wpforms-field-option-4-label` | `#wpforms-field-option-4-label` | input | Correct Answer | 1 |
+| <a id="id--wpforms-field-option-4-label_hide"></a>`id--wpforms-field-option-4-label_hide` | `#wpforms-field-option-4-label_hide` | input | Hide Label | 1 |
+| <a id="id--wpforms-field-option-4-limit_count"></a>`id--wpforms-field-option-4-limit_count` | `#wpforms-field-option-4-limit_count` | input | Characters Words Defaul | 1 |
+| <a id="id--wpforms-field-option-4-limit_enabled"></a>`id--wpforms-field-option-4-limit_enabled` | `#wpforms-field-option-4-limit_enabled` | input | Limit Length | 1 |
+| <a id="id--wpforms-field-option-4-limit_mode"></a>`id--wpforms-field-option-4-limit_mode` | `#wpforms-field-option-4-limit_mode` | select | Characters Words | 1 |
+| <a id="id--wpforms-field-option-4-placeholder"></a>`id--wpforms-field-option-4-placeholder` | `#wpforms-field-option-4-placeholder` | input |  | 1 |
+| <a id="id--wpforms-field-option-4-quiz_answer_explanation"></a>`id--wpforms-field-option-4-quiz_answer_explanation` | `#wpforms-field-option-4-quiz_answer_explanation` | textarea |  | 1 |
+| <a id="id--wpforms-field-option-4-quiz_correct_answer"></a>`id--wpforms-field-option-4-quiz_correct_answer` | `#wpforms-field-option-4-quiz_correct_answer` | input | Include all acceptable answers, separated by commas. Answer… | 1 |
+| <a id="id--wpforms-field-option-4-quiz_enabled"></a>`id--wpforms-field-option-4-quiz_enabled` | `#wpforms-field-option-4-quiz_enabled` | input | Include in Quiz Scoring | 1 |
+| <a id="id--wpforms-field-option-4-read_only"></a>`id--wpforms-field-option-4-read_only` | `#wpforms-field-option-4-read_only` | input | Read-Only | 1 |
+| <a id="id--wpforms-field-option-4-required"></a>`id--wpforms-field-option-4-required` | `#wpforms-field-option-4-required` | input | Required | 1 |
+| <a id="id--wpforms-field-option-4-size"></a>`id--wpforms-field-option-4-size` | `#wpforms-field-option-4-size` | select | Small Medium Large | 1 |
+| <a id="id--wpforms-field-option-4-survey"></a>`id--wpforms-field-option-4-survey` | `#wpforms-field-option-4-survey` | input | Enable Survey Reporting | 1 |
+| <a id="id--wpforms-field-option-advanced-14"></a>`id--wpforms-field-option-advanced-14` | `#wpforms-field-option-advanced-14` | div | Advanced | 1 |
 | <a id="id--wpforms-field-option-advanced-3"></a>`id--wpforms-field-option-advanced-3` | `#wpforms-field-option-advanced-3` | div | Advanced | 1 |
+| <a id="id--wpforms-field-option-advanced-4"></a>`id--wpforms-field-option-advanced-4` | `#wpforms-field-option-advanced-4` | div | Advanced | 1 |
+| <a id="id--wpforms-field-option-basic-14"></a>`id--wpforms-field-option-basic-14` | `#wpforms-field-option-basic-14` | div | General Label | 1 |
 | <a id="id--wpforms-field-option-basic-3"></a>`id--wpforms-field-option-basic-3` | `#wpforms-field-option-basic-3` | div | General Label | 1 |
+| <a id="id--wpforms-field-option-basic-4"></a>`id--wpforms-field-option-basic-4` | `#wpforms-field-option-basic-4` | div | General Label | 1 |
+| <a id="id--wpforms-field-option-conditionals-14"></a>`id--wpforms-field-option-conditionals-14` | `#wpforms-field-option-conditionals-14` | div | Smart Logic | 1 |
 | <a id="id--wpforms-field-option-conditionals-3"></a>`id--wpforms-field-option-conditionals-3` | `#wpforms-field-option-conditionals-3` | div | Smart Logic Cannot be enabled because the Layout field cont… | 1 |
+| <a id="id--wpforms-field-option-conditionals-4"></a>`id--wpforms-field-option-conditionals-4` | `#wpforms-field-option-conditionals-4` | div | Smart Logic | 1 |
+| <a id="id--wpforms-field-option-row-14-ai_modal_button"></a>`id--wpforms-field-option-row-14-ai_modal_button` | `#wpforms-field-option-row-14-ai_modal_button` | div | Generate Choices | 1 |
+| <a id="id--wpforms-field-option-row-14-choices"></a>`id--wpforms-field-option-row-14-choices` | `#wpforms-field-option-row-14-choices` | div | Choices Bulk Add | 1 |
+| <a id="id--wpforms-field-option-row-14-conditional_logic"></a>`id--wpforms-field-option-row-14-conditional_logic` | `#wpforms-field-option-row-14-conditional_logic` | div |  | 1 |
+| <a id="id--wpforms-field-option-row-14-css"></a>`id--wpforms-field-option-row-14-css` | `#wpforms-field-option-row-14-css` | div | CSS Classes Show Layouts | 1 |
+| <a id="id--wpforms-field-option-row-14-description"></a>`id--wpforms-field-option-row-14-description` | `#wpforms-field-option-row-14-description` | div | Description | 1 |
+| <a id="id--wpforms-field-option-row-14-dynamic_choices"></a>`id--wpforms-field-option-row-14-dynamic_choices` | `#wpforms-field-option-row-14-dynamic_choices` | div | Dynamic Choices Off Post Type Taxo | 1 |
+| <a id="id--wpforms-field-option-row-14-label"></a>`id--wpforms-field-option-row-14-label` | `#wpforms-field-option-row-14-label` | div | Label | 1 |
+| <a id="id--wpforms-field-option-row-14-label_hide"></a>`id--wpforms-field-option-row-14-label_hide` | `#wpforms-field-option-row-14-label_hide` | div | Hide Lab | 1 |
+| <a id="id--wpforms-field-option-row-14-multiple"></a>`id--wpforms-field-option-row-14-multiple` | `#wpforms-field-option-row-14-multiple` | div | Multiple Options | 1 |
+| <a id="id--wpforms-field-option-row-14-placeholder"></a>`id--wpforms-field-option-row-14-placeholder` | `#wpforms-field-option-row-14-placeholder` | div | Placeholder Text | 1 |
+| <a id="id--wpforms-field-option-row-14-quiz_enabled"></a>`id--wpforms-field-option-row-14-quiz_enabled` | `#wpforms-field-option-row-14-quiz_enabled` | div |  | 1 |
+| <a id="id--wpforms-field-option-row-14-read_only"></a>`id--wpforms-field-option-row-14-read_only` | `#wpforms-field-option-row-14-read_only` | div | Read-Only | 1 |
+| <a id="id--wpforms-field-option-row-14-required"></a>`id--wpforms-field-option-row-14-required` | `#wpforms-field-option-row-14-required` | div |  | 1 |
+| <a id="id--wpforms-field-option-row-14-size"></a>`id--wpforms-field-option-row-14-size` | `#wpforms-field-option-row-14-size` | div | Field Size Small Medium Large | 1 |
+| <a id="id--wpforms-field-option-row-14-style"></a>`id--wpforms-field-option-row-14-style` | `#wpforms-field-option-row-14-style` | div | Style Classic | 1 |
+| <a id="id--wpforms-field-option-row-14-survey"></a>`id--wpforms-field-option-row-14-survey` | `#wpforms-field-option-row-14-survey` | div | Enable Survey Reporting | 1 |
 | <a id="id--wpforms-field-option-row-3-conditional_logic"></a>`id--wpforms-field-option-row-3-conditional_logic` | `#wpforms-field-option-row-3-conditional_logic` | div |  | 1 |
 | <a id="id--wpforms-field-option-row-3-css"></a>`id--wpforms-field-option-row-3-css` | `#wpforms-field-option-row-3-css` | div | CSS Classes Show Layouts | 1 |
 | <a id="id--wpforms-field-option-row-3-description"></a>`id--wpforms-field-option-row-3-description` | `#wpforms-field-option-row-3-description` | div | Description | 1 |
@@ -107,32 +186,56 @@ _104 entries_
 | <a id="id--wpforms-field-option-row-3-label_hide"></a>`id--wpforms-field-option-row-3-label_hide` | `#wpforms-field-option-row-3-label_hide` | div | Hide Label | 1 |
 | <a id="id--wpforms-field-option-row-3-lowest_label"></a>`id--wpforms-field-option-row-3-lowest_label` | `#wpforms-field-option-row-3-lowest_label` | div | Lowest Score Label | 1 |
 | <a id="id--wpforms-field-option-row-3-read_only"></a>`id--wpforms-field-option-row-3-read_only` | `#wpforms-field-option-row-3-read_only` | div | Read-Only | 1 |
-| <a id="id--wpforms-field-option-row-3-required"></a>`id--wpforms-field-option-row-3-required` | `#wpforms-field-option-row-3-required` | div | Required | 1 |
+| <a id="id--wpforms-field-option-row-3-required"></a>`id--wpforms-field-option-row-3-required` | `#wpforms-field-option-row-3-required` | div | Re | 1 |
 | <a id="id--wpforms-field-option-row-3-size"></a>`id--wpforms-field-option-row-3-size` | `#wpforms-field-option-row-3-size` | div | Field Size Small Medium Large | 1 |
 | <a id="id--wpforms-field-option-row-3-style"></a>`id--wpforms-field-option-row-3-style` | `#wpforms-field-option-row-3-style` | div | Style Modern Classic | 1 |
-| <a id="id--wpforms-field-option-row-3-survey"></a>`id--wpforms-field-option-row-3-survey` | `#wpforms-field-option-row-3-survey` | div | Enable Survey Reporting | 1 |
-| <a id="id--wpforms-field-options"></a>`id--wpforms-field-options` | `#wpforms-field-options` | div | Net Promoter Sco | 1 |
+| <a id="id--wpforms-field-option-row-3-survey"></a>`id--wpforms-field-option-row-3-survey` | `#wpforms-field-option-row-3-survey` | div | Enable Surv | 1 |
+| <a id="id--wpforms-field-option-row-4-calculation_code"></a>`id--wpforms-field-option-row-4-calculation_code` | `#wpforms-field-option-row-4-calculation_code` | div | Formula | 1 |
+| <a id="id--wpforms-field-option-row-4-calculation_is_enabled"></a>`id--wpforms-field-option-row-4-calculation_is_enabled` | `#wpforms-field-option-row-4-calculation_is_enabled` | div |  | 1 |
+| <a id="id--wpforms-field-option-row-4-conditional_logic"></a>`id--wpforms-field-option-row-4-conditional_logic` | `#wpforms-field-option-row-4-conditional_logic` | div |  | 1 |
+| <a id="id--wpforms-field-option-row-4-css"></a>`id--wpforms-field-option-row-4-css` | `#wpforms-field-option-row-4-css` | div | CSS Classes Show Layouts | 1 |
+| <a id="id--wpforms-field-option-row-4-default_value"></a>`id--wpforms-field-option-row-4-default_value` | `#wpforms-field-option-row-4-default_value` | div | Default Value | 1 |
+| <a id="id--wpforms-field-option-row-4-description"></a>`id--wpforms-field-option-row-4-description` | `#wpforms-field-option-row-4-description` | div | Description | 1 |
+| <a id="id--wpforms-field-option-row-4-label"></a>`id--wpforms-field-option-row-4-label` | `#wpforms-field-option-row-4-label` | div | Label | 1 |
+| <a id="id--wpforms-field-option-row-4-label_hide"></a>`id--wpforms-field-option-row-4-label_hide` | `#wpforms-field-option-row-4-label_hide` | div | Hide Label | 1 |
+| <a id="id--wpforms-field-option-row-4-limit_controls"></a>`id--wpforms-field-option-row-4-limit_controls` | `#wpforms-field-option-row-4-limit_controls` | div | Characters Words | 1 |
+| <a id="id--wpforms-field-option-row-4-limit_enabled"></a>`id--wpforms-field-option-row-4-limit_enabled` | `#wpforms-field-option-row-4-limit_enabled` | div |  | 1 |
+| <a id="id--wpforms-field-option-row-4-placeholder"></a>`id--wpforms-field-option-row-4-placeholder` | `#wpforms-field-option-row-4-placeholder` | div | Placeholder Text | 1 |
+| <a id="id--wpforms-field-option-row-4-quiz_answer_explanation"></a>`id--wpforms-field-option-row-4-quiz_answer_explanation` | `#wpforms-field-option-row-4-quiz_answer_explanation` | div | Answer Explanation Explanations are shown to the user in th… | 1 |
+| <a id="id--wpforms-field-option-row-4-quiz_correct_answer"></a>`id--wpforms-field-option-row-4-quiz_correct_answer` | `#wpforms-field-option-row-4-quiz_correct_answer` | div | Correct Answer Include all acceptable answers, separated by… | 1 |
+| <a id="id--wpforms-field-option-row-4-quiz_enabled"></a>`id--wpforms-field-option-row-4-quiz_enabled` | `#wpforms-field-option-row-4-quiz_enabled` | div | Incl | 1 |
+| <a id="id--wpforms-field-option-row-4-read_only"></a>`id--wpforms-field-option-row-4-read_only` | `#wpforms-field-option-row-4-read_only` | div | Read-Only | 1 |
+| <a id="id--wpforms-field-option-row-4-required"></a>`id--wpforms-field-option-row-4-required` | `#wpforms-field-option-row-4-required` | div | Required | 1 |
+| <a id="id--wpforms-field-option-row-4-size"></a>`id--wpforms-field-option-row-4-size` | `#wpforms-field-option-row-4-size` | div | Field Size Small Medium Large | 1 |
+| <a id="id--wpforms-field-option-row-4-survey"></a>`id--wpforms-field-option-row-4-survey` | `#wpforms-field-option-row-4-survey` | div | Enable Survey Reporting | 1 |
+| <a id="id--wpforms-field-options"></a>`id--wpforms-field-options` | `#wpforms-field-options` | div |  | 1 |
 | <a id="id--wpforms-full-inline-css"></a>`id--wpforms-full-inline-css` | `#wpforms-full-inline-css` | link |  | 1 |
 | <a id="id--wpforms-help"></a>`id--wpforms-help` | `#wpforms-help` | button | Help | 1 |
 | <a id="id--wpforms-icon-choices-custom-properties"></a>`id--wpforms-icon-choices-custom-properties` | `#wpforms-icon-choices-custom-properties` | link |  | 1 |
 | <a id="id--wpforms-panel-fields"></a>`id--wpforms-panel-fields` | `#wpforms-panel-fields` | div |  | 1 |
-| <a id="id--wpforms-panels-toggle"></a>`id--wpforms-panels-toggle` | `#wpforms-panels-toggle` | div | Setup Fields | 1 |
+| <a id="id--wpforms-panels-toggle"></a>`id--wpforms-panels-toggle` | `#wpforms-panels-toggle` | div | Setup Fields S | 1 |
+| <a id="id--wpforms-paypal-commerce-buttons-wrapper"></a>`id--wpforms-paypal-commerce-buttons-wrapper` | `#wpforms-paypal-commerce-buttons-wrapper` | div |  | 1 |
 | <a id="id--wpforms-preview-btn"></a>`id--wpforms-preview-btn` | `#wpforms-preview-btn` | a | Preview | 1 |
+| <a id="id--wpforms-preview-dropdown-btn"></a>`id--wpforms-preview-dropdown-btn` | `#wpforms-preview-dropdown-btn` | button | More Preview Options | 1 |
+| <a id="id--wpforms-preview-dropdown-menu"></a>`id--wpforms-preview-dropdown-menu` | `#wpforms-preview-dropdown-menu` | ul |  | 1 |
 | <a id="id--wpforms-save"></a>`id--wpforms-save` | `#wpforms-save` | button | Save | 1 |
-| <a id="id--wpforms-search-fields-input"></a>`id--wpforms-search-fields-input` | `#wpforms-search-fields-input` | input | Sorry, we didn't find any fields that match your criteria. | 1 |
+| <a id="id--wpforms-search-fields-input"></a>`id--wpforms-search-fields-input` | `#wpforms-search-fields-input` | input |  | 1 |
+| <a id="id--wpforms-setup-checklist-menu-styles"></a>`id--wpforms-setup-checklist-menu-styles` | `#wpforms-setup-checklist-menu-styles` | link |  | 1 |
+| <a id="id--wpms-setup-checklist-menu-styles"></a>`id--wpms-setup-checklist-menu-styles` | `#wpms-setup-checklist-menu-styles` | link |  | 1 |
 
 ## data-field-id
 
-_2 entries_
+_3 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
+| <a id="data-field-id--14"></a>`data-field-id--14` | `[data-field-id="14"]` | div | Dropdown (ID #14) | 20 |
 | <a id="data-field-id--3"></a>`data-field-id--3` | `[data-field-id="3"]` | div | Net Promoter Score (ID #3) | 14 |
-| <a id="data-field-id--4"></a>`data-field-id--4` | `[data-field-id="4"]` | div |  | 1 |
+| <a id="data-field-id--4"></a>`data-field-id--4` | `[data-field-id="4"]` | div | Paragraph Text (ID #4) | 21 |
 
 ## data-field-type
 
-_42 entries_
+_44 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
@@ -153,6 +256,7 @@ _42 entries_
 | <a id="data-field-type--layout"></a>`data-field-type--layout` | `[data-field-type="layout"]` | button | Layout | 1 |
 | <a id="data-field-type--likert_scale"></a>`data-field-type--likert_scale` | `[data-field-type="likert_scale"]` | button | Likert Scale | 1 |
 | <a id="data-field-type--map"></a>`data-field-type--map` | `[data-field-type="map"]` | button | Map | 1 |
+| <a id="data-field-type--mercado_pago"></a>`data-field-type--mercado_pago` | `[data-field-type="mercado_pago"]` | button | Mercado Pago | 1 |
 | <a id="data-field-type--name"></a>`data-field-type--name` | `[data-field-type="name"]` | button | Name | 1 |
 | <a id="data-field-type--net_promoter_score"></a>`data-field-type--net_promoter_score` | `[data-field-type="net_promoter_score"]` | button | Net Promoter Score | 2 |
 | <a id="data-field-type--number"></a>`data-field-type--number` | `[data-field-type="number"]` | button | Numbers | 1 |
@@ -168,10 +272,11 @@ _42 entries_
 | <a id="data-field-type--paypal-commerce"></a>`data-field-type--paypal-commerce` | `[data-field-type="paypal-commerce"]` | button | PayPal Commerce | 1 |
 | <a id="data-field-type--phone"></a>`data-field-type--phone` | `[data-field-type="phone"]` | button | Phone | 1 |
 | <a id="data-field-type--radio"></a>`data-field-type--radio` | `[data-field-type="radio"]` | button | Multiple Choice | 1 |
+| <a id="data-field-type--ranking"></a>`data-field-type--ranking` | `[data-field-type="ranking"]` | button | Ranking | 1 |
 | <a id="data-field-type--rating"></a>`data-field-type--rating` | `[data-field-type="rating"]` | button | Rating | 1 |
 | <a id="data-field-type--repeater"></a>`data-field-type--repeater` | `[data-field-type="repeater"]` | button | Repeater | 1 |
 | <a id="data-field-type--richtext"></a>`data-field-type--richtext` | `[data-field-type="richtext"]` | button | Rich Text | 1 |
-| <a id="data-field-type--select"></a>`data-field-type--select` | `[data-field-type="select"]` | button | Dropdown | 1 |
+| <a id="data-field-type--select"></a>`data-field-type--select` | `[data-field-type="select"]` | button | Dropdown | 4 |
 | <a id="data-field-type--signature"></a>`data-field-type--signature` | `[data-field-type="signature"]` | button | Signature | 1 |
 | <a id="data-field-type--square"></a>`data-field-type--square` | `[data-field-type="square"]` | button | Square | 1 |
 | <a id="data-field-type--stripe-credit-card"></a>`data-field-type--stripe-credit-card` | `[data-field-type="stripe-credit-card"]` | button | Stripe Credit Card | 1 |
@@ -192,42 +297,80 @@ _6 entries_
 | <a id="data-panel--settings"></a>`data-panel--settings` | `[data-panel="settings"]` | button | Settings | 1 |
 | <a id="data-panel--setup"></a>`data-panel--setup` | `[data-panel="setup"]` | button | Setup | 1 |
 
-## Role-like classes
+## data-section
 
-_46 entries_
+_3 entries_
 
 | Anchor | Selector | Tag | Text | Count |
 | --- | --- | --- | --- | --- |
-| <a id="class--wpforms-add-fields-button"></a>`class--wpforms-add-fields-button` | `.wpforms-add-fields-button` | button | Single Line Text | 42 |
+| <a id="data-section--conversational_forms"></a>`data-section--conversational_forms` | `[data-section="conversational_forms"]` | button | Conversational Form | 1 |
+| <a id="data-section--form_pages"></a>`data-section--form_pages` | `[data-section="form_pages"]` | button | Form Landing Page | 1 |
+| <a id="data-section--lead_forms"></a>`data-section--lead_forms` | `[data-section="lead_forms"]` | button | Lead Form | 1 |
+
+## Role-like classes
+
+_85 entries_
+
+| Anchor | Selector | Tag | Text | Count |
+| --- | --- | --- | --- | --- |
+| <a id="class--choices__input"></a>`class--choices__input` | `.choices__input` | select | - Please select - | 1 |
+| <a id="class--choices__list--dropdown"></a>`class--choices__list--dropdown` | `.choices__list--dropdown` | div | - Please select | 1 |
+| <a id="class--wpforms-add-fields-button"></a>`class--wpforms-add-fields-button` | `.wpforms-add-fields-button` | button | Single Line Text | 44 |
 | <a id="class--wpforms-add-fields-heading"></a>`class--wpforms-add-fields-heading` | `.wpforms-add-fields-heading` | a | Standard Fields | 3 |
 | <a id="class--wpforms-admin-popup-container"></a>`class--wpforms-admin-popup-container` | `.wpforms-admin-popup-container` | div |  | 1 |
-| <a id="class--wpforms-btn"></a>`class--wpforms-btn` | `.wpforms-btn` | button | Help | 5 |
-| <a id="class--wpforms-btn-light-grey"></a>`class--wpforms-btn-light-grey` | `.wpforms-btn-light-grey` | button | Help | 4 |
+| <a id="class--wpforms-ai-calculations-button"></a>`class--wpforms-ai-calculations-button` | `.wpforms-ai-calculations-button` | button | Generate Formula | 1 |
+| <a id="class--wpforms-ai-chat-header"></a>`class--wpforms-ai-chat-header` | `.wpforms-ai-chat-header` | div | WPForms AI What would you like to change? Describe it in pl… | 1 |
+| <a id="class--wpforms-ai-chat-message-input"></a>`class--wpforms-ai-chat-message-input` | `.wpforms-ai-chat-message-input` | div |  | 1 |
+| <a id="class--wpforms-ai-chat-modal"></a>`class--wpforms-ai-chat-modal` | `.wpforms-ai-chat-modal` | div | WPForms AI | 1 |
+| <a id="class--wpforms-ai-chat-modal-btn"></a>`class--wpforms-ai-chat-modal-btn` | `.wpforms-ai-chat-modal-btn` | button |  | 1 |
+| <a id="class--wpforms-ai-chat-modal-header"></a>`class--wpforms-ai-chat-modal-header` | `.wpforms-ai-chat-modal-header` | div | WPForms AI | 1 |
+| <a id="class--wpforms-ai-choices-button"></a>`class--wpforms-ai-choices-button` | `.wpforms-ai-choices-button` | button | Generate Choices | 1 |
+| <a id="class--wpforms-ai-modal-button"></a>`class--wpforms-ai-modal-button` | `.wpforms-ai-modal-button` | button | Generate Choices | 2 |
+| <a id="class--wpforms-alert-message"></a>`class--wpforms-alert-message` | `.wpforms-alert-message` | div | Quiz Answer Required Select the option above that is the co… | 4 |
+| <a id="class--wpforms-btn"></a>`class--wpforms-btn` | `.wpforms-btn` | button | Help | 12 |
+| <a id="class--wpforms-btn-block"></a>`class--wpforms-btn-block` | `.wpforms-btn-block` | button | Upload Image | 3 |
+| <a id="class--wpforms-btn-blue"></a>`class--wpforms-btn-blue` | `.wpforms-btn-blue` | button | Upload Image | 3 |
+| <a id="class--wpforms-btn-light-grey"></a>`class--wpforms-btn-light-grey` | `.wpforms-btn-light-grey` | button | Help | 6 |
 | <a id="class--wpforms-btn-orange"></a>`class--wpforms-btn-orange` | `.wpforms-btn-orange` | button | Save | 1 |
-| <a id="class--wpforms-btn-toolbar"></a>`class--wpforms-btn-toolbar` | `.wpforms-btn-toolbar` | button | Help | 5 |
+| <a id="class--wpforms-btn-purple"></a>`class--wpforms-btn-purple` | `.wpforms-btn-purple` | button | Generate Choices | 2 |
+| <a id="class--wpforms-btn-sm"></a>`class--wpforms-btn-sm` | `.wpforms-btn-sm` | button | Upload Image | 3 |
+| <a id="class--wpforms-btn-toolbar"></a>`class--wpforms-btn-toolbar` | `.wpforms-btn-toolbar` | button | Help | 7 |
+| <a id="class--wpforms-builder-dropdown-list-search-close"></a>`class--wpforms-builder-dropdown-list-search-close` | `.wpforms-builder-dropdown-list-search-close` | i |  | 1 |
+| <a id="class--wpforms-builder-dropdown-list-search-container"></a>`class--wpforms-builder-dropdown-list-search-container` | `.wpforms-builder-dropdown-list-search-container` | div |  | 1 |
+| <a id="class--wpforms-builder-dropdown-list-search-input"></a>`class--wpforms-builder-dropdown-list-search-input` | `.wpforms-builder-dropdown-list-search-input` | input | Other Site Administrator Email | 1 |
 | <a id="class--wpforms-builder-overlay-content"></a>`class--wpforms-builder-overlay-content` | `.wpforms-builder-overlay-content` | div |  | 1 |
-| <a id="class--wpforms-conditional-block-field"></a>`class--wpforms-conditional-block-field` | `.wpforms-conditional-block-field` | div |  | 1 |
-| <a id="class--wpforms-conditionals-enable-toggle"></a>`class--wpforms-conditionals-enable-toggle` | `.wpforms-conditionals-enable-toggle` | div |  | 1 |
+| <a id="class--wpforms-calculations-cheatsheet-link"></a>`class--wpforms-calculations-cheatsheet-link` | `.wpforms-calculations-cheatsheet-link` | a | Cheatsheet | 1 |
+| <a id="class--wpforms-calculations-validate-formula"></a>`class--wpforms-calculations-validate-formula` | `.wpforms-calculations-validate-formula` | button | Validate Formula | 1 |
+| <a id="class--wpforms-conditional-block-field"></a>`class--wpforms-conditional-block-field` | `.wpforms-conditional-block-field` | div |  | 3 |
+| <a id="class--wpforms-conditionals-enable-toggle"></a>`class--wpforms-conditionals-enable-toggle` | `.wpforms-conditionals-enable-toggle` | div |  | 3 |
 | <a id="class--wpforms-context-menu-dropdown"></a>`class--wpforms-context-menu-dropdown` | `.wpforms-context-menu-dropdown` | div |  | 1 |
-| <a id="class--wpforms-context-menu-list-item"></a>`class--wpforms-context-menu-list-item` | `.wpforms-context-menu-list-item` | li | Duplicate Form | 20 |
+| <a id="class--wpforms-context-menu-list-item"></a>`class--wpforms-context-menu-list-item` | `.wpforms-context-menu-list-item` | li | Duplicate Form | 28 |
 | <a id="class--wpforms-context-menu-list-item-has-child"></a>`class--wpforms-context-menu-list-item-has-child` | `.wpforms-context-menu-list-item-has-child` | li | Field Size | 1 |
-| <a id="class--wpforms-context-menu-list-item-inactive"></a>`class--wpforms-context-menu-list-item-inactive` | `.wpforms-context-menu-list-item-inactive` | li | View Entries | 2 |
+| <a id="class--wpforms-context-menu-list-item-inactive"></a>`class--wpforms-context-menu-list-item-inactive` | `.wpforms-context-menu-list-item-inactive` | li | View Payments | 1 |
 | <a id="class--wpforms-context-menu-list-item-selective"></a>`class--wpforms-context-menu-list-item-selective` | `.wpforms-context-menu-list-item-selective` | li | Mark as Required | 5 |
-| <a id="class--wpforms-field"></a>`class--wpforms-field` | `.wpforms-field` | div |  | 2 |
-| <a id="class--wpforms-field-option"></a>`class--wpforms-field-option` | `.wpforms-field-option` | div | Net Promoter Score (ID #3) | 1 |
-| <a id="class--wpforms-field-option-group-toggle"></a>`class--wpforms-field-option-group-toggle` | `.wpforms-field-option-group-toggle` | a | General | 3 |
-| <a id="class--wpforms-field-option-hidden-id"></a>`class--wpforms-field-option-hidden-id` | `.wpforms-field-option-hidden-id` | input | Net Promoter Score (ID #3) General | 1 |
-| <a id="class--wpforms-field-option-hidden-type"></a>`class--wpforms-field-option-hidden-type` | `.wpforms-field-option-hidden-type` | input | Net Promoter Score (ID #3) General | 1 |
-| <a id="class--wpforms-field-option-row"></a>`class--wpforms-field-option-row` | `.wpforms-field-option-row` | div | Label | 12 |
-| <a id="class--wpforms-field-option-row-label"></a>`class--wpforms-field-option-row-label` | `.wpforms-field-option-row-label` | div | Label | 1 |
-| <a id="class--wpforms-field-options"></a>`class--wpforms-field-options` | `.wpforms-field-options` | div | Net Promoter Sco | 1 |
+| <a id="class--wpforms-field"></a>`class--wpforms-field` | `.wpforms-field` | div |  | 3 |
+| <a id="class--wpforms-field-option"></a>`class--wpforms-field-option` | `.wpforms-field-option` | div | Dropdown (ID #14) | 3 |
+| <a id="class--wpforms-field-option-group-toggle"></a>`class--wpforms-field-option-group-toggle` | `.wpforms-field-option-group-toggle` | a | General | 9 |
+| <a id="class--wpforms-field-option-hidden-id"></a>`class--wpforms-field-option-hidden-id` | `.wpforms-field-option-hidden-id` | input | Dropdown (ID #14) | 3 |
+| <a id="class--wpforms-field-option-hidden-type"></a>`class--wpforms-field-option-hidden-type` | `.wpforms-field-option-hidden-type` | input | Dropdown (ID #14) General | 3 |
+| <a id="class--wpforms-field-option-row"></a>`class--wpforms-field-option-row` | `.wpforms-field-option-row` | div | Label | 46 |
+| <a id="class--wpforms-field-option-row-label"></a>`class--wpforms-field-option-row-label` | `.wpforms-field-option-row-label` | div | Label | 3 |
+| <a id="class--wpforms-field-option-select"></a>`class--wpforms-field-option-select` | `.wpforms-field-option-select` | div | Dropdown (ID #14) | 1 |
+| <a id="class--wpforms-field-options"></a>`class--wpforms-field-options` | `.wpforms-field-options` | div |  | 1 |
+| <a id="class--wpforms-field-select"></a>`class--wpforms-field-select` | `.wpforms-field-select` | div |  | 1 |
 | <a id="class--wpforms-field-submit-button"></a>`class--wpforms-field-submit-button` | `.wpforms-field-submit-button` | input |  | 1 |
 | <a id="class--wpforms-fullscreen-notice"></a>`class--wpforms-fullscreen-notice` | `.wpforms-fullscreen-notice` | div | You are using an outdated browser! The Internet Explorer br… | 2 |
 | <a id="class--wpforms-fullscreen-notice-button"></a>`class--wpforms-fullscreen-notice-button` | `.wpforms-fullscreen-notice-button` | a | Back to All Forms | 3 |
 | <a id="class--wpforms-fullscreen-notice-button-primary"></a>`class--wpforms-fullscreen-notice-button-primary` | `.wpforms-fullscreen-notice-button-primary` | a | Back to All Forms | 2 |
 | <a id="class--wpforms-fullscreen-notice-button-secondary"></a>`class--wpforms-fullscreen-notice-button-secondary` | `.wpforms-fullscreen-notice-button-secondary` | button | Continue | 1 |
+| <a id="class--wpforms-help"></a>`class--wpforms-help` | `.wpforms-help` | button | Help | 1 |
+| <a id="class--wpforms-icon-select"></a>`class--wpforms-icon-select` | `.wpforms-icon-select` | div | face-smile | 3 |
+| <a id="class--wpforms-image-upload-add"></a>`class--wpforms-image-upload-add` | `.wpforms-image-upload-add` | button | Upload Image | 3 |
 | <a id="class--wpforms-panel"></a>`class--wpforms-panel` | `.wpforms-panel` | div |  | 1 |
-| <a id="class--wpforms-panel-content"></a>`class--wpforms-panel-content` | `.wpforms-panel-content` | div | Feedback Form | 1 |
+| <a id="class--wpforms-panel-content"></a>`class--wpforms-panel-content` | `.wpforms-panel-content` | div | Training Course Feedback Form | 1 |
+| <a id="class--wpforms-panel-content-section-tabs-list-item"></a>`class--wpforms-panel-content-section-tabs-list-item` | `.wpforms-panel-content-section-tabs-list-item` | li | Questions | 5 |
+| <a id="class--wpforms-panel-content-section-tabs-list-item-active"></a>`class--wpforms-panel-content-section-tabs-list-item-active` | `.wpforms-panel-content-section-tabs-list-item-active` | li | Questions | 1 |
+| <a id="class--wpforms-panel-content-section-tabs-list-item-end"></a>`class--wpforms-panel-content-section-tabs-list-item-end` | `.wpforms-panel-content-section-tabs-list-item-end` | li | Help | 1 |
 | <a id="class--wpforms-panel-fields-button"></a>`class--wpforms-panel-fields-button` | `.wpforms-panel-fields-button` | button | Fields | 1 |
 | <a id="class--wpforms-panel-payments-button"></a>`class--wpforms-panel-payments-button` | `.wpforms-panel-payments-button` | button | Payments | 1 |
 | <a id="class--wpforms-panel-providers-button"></a>`class--wpforms-panel-providers-button` | `.wpforms-panel-providers-button` | button | Marketing | 1 |
@@ -237,13 +380,24 @@ _46 entries_
 | <a id="class--wpforms-panel-sidebar"></a>`class--wpforms-panel-sidebar` | `.wpforms-panel-sidebar` | div | Add Fields Field Options | 1 |
 | <a id="class--wpforms-panel-sidebar-content"></a>`class--wpforms-panel-sidebar-content` | `.wpforms-panel-sidebar-content` | div |  | 1 |
 | <a id="class--wpforms-panel-sidebar-toggle"></a>`class--wpforms-panel-sidebar-toggle` | `.wpforms-panel-sidebar-toggle` | div |  | 1 |
-| <a id="class--wpforms-panels-toggle"></a>`class--wpforms-panels-toggle` | `.wpforms-panels-toggle` | div | Setup Fields | 1 |
-| <a id="class--wpforms-quiz-answer-required-content"></a>`class--wpforms-quiz-answer-required-content` | `.wpforms-quiz-answer-required-content` | span | Quiz Answer Required | 1 |
+| <a id="class--wpforms-panels-toggle"></a>`class--wpforms-panels-toggle` | `.wpforms-panels-toggle` | div | Setup Fields S | 1 |
+| <a id="class--wpforms-paypal-commerce-button"></a>`class--wpforms-paypal-commerce-button` | `.wpforms-paypal-commerce-button` | div |  | 3 |
+| <a id="class--wpforms-preview-dropdown-addon-active"></a>`class--wpforms-preview-dropdown-addon-active` | `.wpforms-preview-dropdown-addon-active` | button | Conversational Form | 3 |
+| <a id="class--wpforms-preview-dropdown-item"></a>`class--wpforms-preview-dropdown-item` | `.wpforms-preview-dropdown-item` | li | Standar | 4 |
+| <a id="class--wpforms-preview-dropdown-label"></a>`class--wpforms-preview-dropdown-label` | `.wpforms-preview-dropdown-label` | span | Standard Form Preview | 4 |
+| <a id="class--wpforms-preview-dropdown-link"></a>`class--wpforms-preview-dropdown-link` | `.wpforms-preview-dropdown-link` | a | Standard Form Preview | 4 |
+| <a id="class--wpforms-quiz-answer-required-content"></a>`class--wpforms-quiz-answer-required-content` | `.wpforms-quiz-answer-required-content` | span | Quiz Answer Required | 6 |
+| <a id="class--wpforms-save-resume-button"></a>`class--wpforms-save-resume-button` | `.wpforms-save-resume-button` | a | Save and Resume Later | 1 |
 | <a id="class--wpforms-search-fields-input-close"></a>`class--wpforms-search-fields-input-close` | `.wpforms-search-fields-input-close` | i |  | 1 |
+| <a id="class--wpforms-smart-tags-enabled"></a>`class--wpforms-smart-tags-enabled` | `.wpforms-smart-tags-enabled` | input | CSS Classes | 1 |
+| <a id="class--wpforms-smart-tags-widget-container"></a>`class--wpforms-smart-tags-widget-container` | `.wpforms-smart-tags-widget-container` | div |  | 1 |
+| <a id="class--wpforms-smart-tags-widget-input"></a>`class--wpforms-smart-tags-widget-input` | `.wpforms-smart-tags-widget-input` | div |  | 1 |
+| <a id="class--wpforms-smart-tags-widget-original"></a>`class--wpforms-smart-tags-widget-original` | `.wpforms-smart-tags-widget-original` | input | CSS Classes | 1 |
 | <a id="class--wpforms-tab"></a>`class--wpforms-tab` | `.wpforms-tab` | li | Add Fields | 2 |
 | <a id="class--wpforms-tab-content"></a>`class--wpforms-tab-content` | `.wpforms-tab-content` | div | Search fields: | 2 |
-| <a id="class--wpforms-toggle-control"></a>`class--wpforms-toggle-control` | `.wpforms-toggle-control` | span | Required | 5 |
-| <a id="class--wpforms-toggle-control-label"></a>`class--wpforms-toggle-control-label` | `.wpforms-toggle-control-label` | label | Required | 5 |
+| <a id="class--wpforms-toggle-control"></a>`class--wpforms-toggle-control` | `.wpforms-toggle-control` | span | Include in Quiz Scoring | 20 |
+| <a id="class--wpforms-toggle-control-label"></a>`class--wpforms-toggle-control-label` | `.wpforms-toggle-control-label` | label | Include in Quiz Scoring | 20 |
+| <a id="class--wpforms-undo-redo-container"></a>`class--wpforms-undo-redo-container` | `.wpforms-undo-redo-container` | ul |  | 1 |
 
 ---
 

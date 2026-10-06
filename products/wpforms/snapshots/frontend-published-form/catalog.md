@@ -1,11 +1,11 @@
 # Catalog — `frontend-published-form`
 
 > Auto-generated. Do not edit by hand.
-> Source: `snapshots/frontend-published-form/index.html`
+> Source: `products/wpforms/snapshots/frontend-published-form/index.html`
 > Generator: `tools/generate-snapshot-catalog.js`
 > 830 selector entries across 4 sections.
 
-Provenance anchor form: `snapshots/frontend-published-form/catalog.md#<anchor>`.
+Provenance anchor form: `products/wpforms/snapshots/frontend-published-form/catalog.md#<anchor>`.
 Anchors are derived from the selector value and are stable across reruns.
 
 ---
@@ -584,7 +584,7 @@ _732 entries_
 | <a id="id--mceu_9"></a>`id--mceu_9` | `#mceu_9` | div |  | 1 |
 | <a id="id--mceu_9-button"></a>`id--mceu_9-button` | `#mceu_9-button` | button |  | 1 |
 | <a id="id--modal-1"></a>`id--modal-1` | `#modal-1` | div |  | 1 |
-| <a id="id--modal-1-content"></a>`id--modal-1-content` | `#modal-1-content` | div | master form | 1 |
+| <a id="id--modal-1-content"></a>`id--modal-1-content` | `#modal-1-content` | div | master f | 1 |
 | <a id="id--most-recent-results"></a>`id--most-recent-results` | `#most-recent-results` | div | No search term specified. Showing recent items. Search or u… | 1 |
 | <a id="id--qt_wpforms-401-field_14_block"></a>`id--qt_wpforms-401-field_14_block` | `#qt_wpforms-401-field_14_block` | input |  | 1 |
 | <a id="id--qt_wpforms-401-field_14_close"></a>`id--qt_wpforms-401-field_14_close` | `#qt_wpforms-401-field_14_close` | input |  | 1 |
