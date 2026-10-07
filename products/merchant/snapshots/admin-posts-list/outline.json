@@ -1,0 +1,857 @@
+{
+  "slug": "admin-posts-list",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "wp-terms-quick-edit-live",
+      "event": "click",
+      "selector": ".button-link.editinline",
+      "count": 8
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 45
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_inline_edit",
+        "tag": "input",
+        "text": "6970b2573e",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#author-hide",
+        "tag": "input",
+        "text": "author",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk_edit",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Bulk edit Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Bulk edit Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-edit-in-category-1-2",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-category-114-2",
+        "tag": "input",
+        "text": "114",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-category-115-2",
+        "tag": "input",
+        "text": "115",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-category-116-2",
+        "tag": "input",
+        "text": "116",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cat",
+        "tag": "select",
+        "text": "All Categories Care Guides Design Tips Inside Fernhill Unca…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#categories-hide",
+        "tag": "input",
+        "text": "categories",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb-select-329",
+        "tag": "input",
+        "text": "329",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-343",
+        "tag": "input",
+        "text": "343",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-346",
+        "tag": "input",
+        "text": "346",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-354",
+        "tag": "input",
+        "text": "354",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-355",
+        "tag": "input",
+        "text": "355",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-358",
+        "tag": "input",
+        "text": "358",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-359",
+        "tag": "input",
+        "text": "359",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-362",
+        "tag": "input",
+        "text": "362",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comments-hide",
+        "tag": "input",
+        "text": "comments",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#date-hide",
+        "tag": "input",
+        "text": "date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit_post_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#excerpt-view-mode",
+        "tag": "input",
+        "text": "excerpt",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#filter-by-date",
+        "tag": "select",
+        "text": "All dates September 2026 August 2026 July 2026 June 2026 Ma…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-category-1-2",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-category-114-2",
+        "tag": "input",
+        "text": "114",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-category-115-2",
+        "tag": "input",
+        "text": "115",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-category-116-2",
+        "tag": "input",
+        "text": "116",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#list-view-mode",
+        "tag": "input",
+        "text": "list",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-query-submit",
+        "tag": "input",
+        "text": "Filter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "5e9396ebc7",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ss",
+        "tag": "input",
+        "text": "00",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tags-hide",
+        "tag": "input",
+        "text": "tags",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Author Categories Tags Comments Date Pagination Num…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#author",
+        "tag": "th",
+        "text": "Author",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit",
+        "tag": "tr",
+        "text": "Bulk Edit Categories Care Guides Design Tips Inside Fernhil…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-category-1-1",
+        "tag": "li",
+        "text": "Uncategorized",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-category-114-1",
+        "tag": "li",
+        "text": "Design Tips",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-category-115-1",
+        "tag": "li",
+        "text": "Inside Fernhill",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-category-116-1",
+        "tag": "li",
+        "text": "Care Guides",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-legend",
+        "tag": "legend",
+        "text": "Bulk Edit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-title-div",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-titles",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#categories",
+        "tag": "th",
+        "text": "Categories",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#category_329",
+        "tag": "div",
+        "text": "114",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#category_343",
+        "tag": "div",
+        "text": "114",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#category_346",
+        "tag": "div",
+        "text": "116",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#category_354",
+        "tag": "div",
+        "text": "115",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#category_355",
+        "tag": "div",
+        "text": "115",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#category_358",
+        "tag": "div",
+        "text": "116",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#category_359",
+        "tag": "div",
+        "text": "114",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#category_362",
+        "tag": "div",
+        "text": "114",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comments",
+        "tag": "th",
+        "text": "Comments Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date",
+        "tag": "th",
+        "text": "Date",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-category-1-1",
+        "tag": "li",
+        "text": "Uncategorized",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-category-114-1",
+        "tag": "li",
+        "text": "Design Tips",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-category-115-1",
+        "tag": "li",
+        "text": "Inside Fernhill",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-category-116-1",
+        "tag": "li",
+        "text": "Care Guides",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_329",
+        "tag": "div",
+        "text": "How to choose a sofa that fits your room and your life how-…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_343",
+        "tag": "div",
+        "text": "Five ways to make a small living room feel bigger five-ways…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_346",
+        "tag": "div",
+        "text": "Caring for solid oak: a simple seasonal routine caring-for-…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_354",
+        "tag": "div",
+        "text": "The case for buying fewer, better pieces the-case-for-buyin…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_355",
+        "tag": "div",
+        "text": "Inside our Portland workshop inside-our-portland-workshop 1…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_358",
+        "tag": "div",
+        "text": "Outdoor furniture that survives a Pacific Northwest winter …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_359",
+        "tag": "div",
+        "text": "Mixing wood tones without the clash mixing-wood-tones-witho…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_362",
+        "tag": "div",
+        "text": "Setting up a home office you actually want to sit in settin…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-edit",
+        "tag": "tr",
+        "text": "Quick Edit Title Slug Date Month 01-Jan 02-Feb 03-Mar 04-Ap…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-edit-post_tag-desc",
+        "tag": "p",
+        "text": "Separate tags with commas",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#inlineedit",
+        "tag": "tbody",
+        "text": "Quick Edit Title Slug Date Month 01-Jan 02-Feb 03-Mar 04-Ap…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_tag_329",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_tag_343",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_tag_346",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_tag_354",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_tag_355",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_tag_358",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_tag_359",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_tag_362",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-329",
+        "tag": "tr",
+        "text": "Select How to choose a sofa that fits your room and your li…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-343",
+        "tag": "tr",
+        "text": "Select Five ways to make a small living room feel bigger Fi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-346",
+        "tag": "tr",
+        "text": "Select Caring for solid oak: a simple seasonal routine Cari…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-354",
+        "tag": "tr",
+        "text": "Select The case for buying fewer, better pieces The case fo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-355",
+        "tag": "tr",
+        "text": "Select Inside our Portland workshop Inside our Portland wor…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-358",
+        "tag": "tr",
+        "text": "Select Outdoor furniture that survives a Pacific Northwest …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-359",
+        "tag": "tr",
+        "text": "Select Mixing wood tones without the clash Mixing wood tone…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-362",
+        "tag": "tr",
+        "text": "Select Setting up a home office you actually want to sit in…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts-filter",
+        "tag": "form",
+        "text": "Search Posts: Select bulk action Bulk actions Bulk edit Mov…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#quick-edit-legend",
+        "tag": "legend",
+        "text": "Quick Edit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Author Categories Tags Comments Date Pagination Num…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tags",
+        "tag": "th",
+        "text": "Tags",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Select How to choose a sofa that fits your room and your li…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#title",
+        "tag": "th",
+        "text": "Title Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

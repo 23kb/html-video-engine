@@ -1,0 +1,411 @@
+{
+  "slug": "frontend-pre-orders-cart",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "woocommerce-account-logout",
+      "event": "click",
+      "selector": "div.merchant-login-popup-dropdown > nav > div.merchant-login-popup-dropdown-list > a:nth-of-type(6)",
+      "count": 1
+    },
+    {
+      "label": "merchant-quick-view-close",
+      "event": "click",
+      "selector": "div.merchant-quick-view-overlay",
+      "count": 2
+    },
+    {
+      "label": "merchant-quantity-step",
+      "event": "click",
+      "selector": ".js-merchant-quantity-btn[data-snap-baked]",
+      "count": 2
+    },
+    {
+      "label": "botiga-quantity-step",
+      "event": "click",
+      "selector": ".show",
+      "count": 2
+    },
+    {
+      "label": "botiga-header-search-toggle",
+      "event": "click",
+      "selector": ".header-search",
+      "count": 2
+    },
+    {
+      "label": "woocommerce-shipping-calculator",
+      "event": "click",
+      "selector": "a.shipping-calculator-button",
+      "count": 1
+    },
+    {
+      "label": "merchant-cart-writes-live",
+      "event": "click",
+      "selector": ".button",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": ".merchant-login-popup-button",
+        "tag": "a",
+        "text": "Welcome Maya Ellison",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-quantity-minus",
+        "tag": "button",
+        "text": "−",
+        "count": 1,
+        "hidden": true,
+        "wired": "merchant-quantity-step",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-quantity-plus",
+        "tag": "button",
+        "text": "+",
+        "count": 1,
+        "hidden": true,
+        "wired": "merchant-quantity-step",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-quick-view-close-button",
+        "tag": "a",
+        "text": "Close quick view modal",
+        "count": 1,
+        "hidden": true,
+        "wired": "merchant-quick-view-close",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#primary-menu",
+        "tag": "ul",
+        "text": "Home Blog Shop About Contact",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#calc_shipping_city",
+        "tag": "input",
+        "text": "Portland",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_country",
+        "tag": "select",
+        "text": "Select a country / region… AfghanistanÅland IslandsAlbaniaA…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_postcode",
+        "tag": "input",
+        "text": "97210",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_state",
+        "tag": "select",
+        "text": "Select an option…AlabamaAlaskaArizonaArkansasCaliforniaColo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#coupon_code",
+        "tag": "input",
+        "text": "Coupon code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#quantity_6ac37955897dc",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_method_0_flat_rate8",
+        "tag": "input",
+        "text": "flat_rate:8",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-cart-nonce",
+        "tag": "input",
+        "text": "68a8c41b33",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-1",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-2",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-3",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-shipping-calculator-nonce",
+        "tag": "input",
+        "text": "3cd33dcc50",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#merchant-added-to-cart-popup-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-added-to-cart-popup-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-login-popup-dropdown",
+        "tag": "div",
+        "text": "Welcome Maya Ellison",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-quick-view-modal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#athemes-blocks-common-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_city_field",
+        "tag": "p",
+        "text": "Town / City *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_country_field",
+        "tag": "p",
+        "text": "Country / region Select a country / region… AfghanistanÅlan…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_postcode_field",
+        "tag": "p",
+        "text": "ZIP Code *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_state_field",
+        "tag": "p",
+        "text": "State * Select an option…AlabamaAlaskaArizonaArkansasCalifo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-background-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-free-shipping-progress-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#page",
+        "tag": "div",
+        "text": "Skip to content Home Blog Shop About Contact Fernhill Home …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-7",
+        "tag": "article",
+        "text": "Cart ← CONTINUE SHOPPING You are $378.90 away from free del…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#primary",
+        "tag": "main",
+        "text": "Cart ← CONTINUE SHOPPING You are $378.90 away from free del…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_method",
+        "tag": "ul",
+        "text": "Local delivery: $49.00",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping-calculator-form",
+        "tag": "section",
+        "text": "Country / region Select a country / region… AfghanistanÅlan…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#site-header-cart",
+        "tag": "div",
+        "text": "1",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation",
+        "tag": "nav",
+        "text": "Home Blog Shop About Contact",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation-mobile",
+        "tag": "nav",
+        "text": "Home Blog Shop About Contact",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#text-2",
+        "tag": "section",
+        "text": "ABOUT About Fernhill How it Works Reviews Contact Careers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-3",
+        "tag": "section",
+        "text": "HELP FAQs Privacy Policy Terms Returns",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-4",
+        "tag": "section",
+        "text": "Solid wood furniture, built by hand in Portland and made to…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_product_categories-1",
+        "tag": "section",
+        "text": "SHOP Bedroom Decor & Lighting Dining Home Office Living Roo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-inline-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-library-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-quick-view-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,405 @@
+{
+  "slug": "admin-product-cat-edit--size-chart",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.woocommerce-layout__activity-panel-tab[data-snap-park][data-testid]",
+      "count": 2
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 22
+    },
+    {
+      "label": "woocommerce-order-writes-live-2",
+      "event": "click",
+      "selector": "button.upload_image_button.button",
+      "count": 2
+    },
+    {
+      "label": "chrome-nearest-screen",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 51
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#activity-panel-tab-activity",
+        "tag": "button",
+        "text": "Activity unread activity",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#activity-panel-tab-setup",
+        "tag": "button",
+        "text": "Finish setup",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#description",
+        "tag": "textarea",
+        "text": "Beds, dressers and wardrobes in solid oak and ash, built to…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#display_type",
+        "tag": "select",
+        "text": "Default Products Subcategories Both",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant_size_chart_category",
+        "tag": "select",
+        "text": "Select a size chart Bedroom furniture dimensions Armchair d…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#name",
+        "tag": "input",
+        "text": "Bedroom",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#parent",
+        "tag": "select",
+        "text": "None Decor & Lighting Dining Home Office Living Room Outdoo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_cat_thumbnail_id",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "dd60e529ea",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slug",
+        "tag": "input",
+        "text": "bedroom",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#thumb-hide",
+        "tag": "input",
+        "text": "thumb",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#activity-panel-header_33",
+        "tag": "h2",
+        "text": "Store Activity",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-activity-panel",
+        "tag": "aside",
+        "text": "Activity unread activity Finish setup",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#delete-link",
+        "tag": "span",
+        "text": "Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description-description",
+        "tag": "p",
+        "text": "The description is not prominent by default; however, some …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edittag",
+        "tag": "form",
+        "text": "Name The name is how it appears on your site. Slug The “slu…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "If you like WooCommerce please leave us a ★★★★★ rating. A h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#jp-admin-notices",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#name-description",
+        "tag": "p",
+        "text": "The name is how it appears on your site.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#parent-description",
+        "tag": "p",
+        "text": "Assign a parent term to create a hierarchy. The term Jazz, …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_cat_thumbnail",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slug-description",
+        "tag": "p",
+        "text": "The “slug” is the URL-friendly version of the name. It is u…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tiptip_arrow",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_arrow_inner",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-root",
+        "tag": "div",
+        "text": "Edit category Store Activity Activity unread activity Finis…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

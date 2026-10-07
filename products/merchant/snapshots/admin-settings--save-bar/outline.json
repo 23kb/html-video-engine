@@ -1,0 +1,434 @@
+{
+  "slug": "admin-settings--save-bar",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "merchant-field-change-conditions",
+      "event": "change",
+      "selector": ".merchant-module-page-setting-field[data-condition][data-conditions]",
+      "count": 19
+    },
+    {
+      "label": "merchant-field-input-dirty",
+      "event": "input",
+      "selector": ".merchant-module-page-setting-field[data-condition][data-conditions]",
+      "count": 19
+    },
+    {
+      "label": "merchant-accordion-header",
+      "event": "click",
+      "selector": "#ui-id-1",
+      "count": 1
+    },
+    {
+      "label": "merchant-module-save",
+      "event": "click",
+      "selector": "button.merchant-module-save-button",
+      "count": 1
+    },
+    {
+      "label": "merchant-news-sidebar-toggle",
+      "event": "click",
+      "selector": "a.merchant-notifications",
+      "count": 1
+    },
+    {
+      "label": "merchant-news-sidebar-close",
+      "event": "click",
+      "selector": "a.merchant-notifications-sidebar-close",
+      "count": 1
+    },
+    {
+      "label": "merchant-news-tabs",
+      "event": "click",
+      "selector": ".merchant-tabs-nav-link[data-tab-to]",
+      "count": 2
+    },
+    {
+      "label": "merchant-module-live-only-buttons",
+      "event": "click",
+      "selector": "button.merchant-install-plugin.merchant-wpvibe-install-btn",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-install-plugin",
+        "tag": "button",
+        "text": "Install & Activate WPVibe",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-live-only-buttons",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-license-button",
+        "tag": "button",
+        "text": "Deactivate",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": ".merchant-module-discard-button",
+        "tag": "a",
+        "text": "Discard",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-save-button",
+        "tag": "button",
+        "text": "Save",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-save",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-save-button-label",
+        "tag": "span",
+        "text": "Save",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-save",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-notifications",
+        "tag": "a",
+        "text": "1",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-news-sidebar-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-close",
+        "tag": "a",
+        "text": "Close the sidebar",
+        "count": 1,
+        "hidden": true,
+        "wired": "merchant-news-sidebar-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-tabs-nav-link",
+        "tag": "a",
+        "text": "Merchant",
+        "count": 2,
+        "hidden": true,
+        "wired": "merchant-news-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-website",
+        "tag": "a",
+        "text": "Website",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#ui-id-1",
+        "tag": "div",
+        "text": "Instructions",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": ".merchant-tab-content",
+        "tag": "div",
+        "text": "September 17, 2026 Removed Patcher page, with a notice offe…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-tabs-nav-item",
+        "tag": "li",
+        "text": "Merchant",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#analytics_toggle",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_activate_white_label",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_pro_nonce",
+        "tag": "input",
+        "text": "8fe0f72e7f",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#usage_statistics_tracking",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-license-code-input",
+        "tag": "input",
+        "text": "demo0merchant0pro0license0key000",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#botiga-admin-modal-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clip0_claude",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clip0_cursor",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#license-activation",
+        "tag": "div",
+        "text": "Deactivate",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ui-id-2",
+        "tag": "ul",
+        "text": "To get your key, please login to your aThemes account. In l…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-license-key-input",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-ajax-header",
+        "tag": "div",
+        "text": "Your settings have been modified. Save? Discard Save",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-ajax-notice",
+        "tag": "div",
+        "text": "Your settings have been modified. Save?",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-content",
+        "tag": "div",
+        "text": "Your settings have been modified. Save? Discard Save Go Bac…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-header",
+        "tag": "div",
+        "text": "Go Back Global Settings License activation, operating mode …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-header-content",
+        "tag": "div",
+        "text": "Go Back Global Settings License activation, operating mode …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-setting-field",
+        "tag": "div",
+        "text": "Deactivate License Status:Active Instructions To get your k…",
+        "count": 19,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-notification-content",
+        "tag": "div",
+        "text": "Removed Patcher page, with a notice offering to remove the …",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant Merchant Mer…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-header",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-header-content",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-white-label-field",
+        "tag": "div",
+        "text": "Enable White Label Replace all Merchant branding and links …",
+        "count": 11,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-wpvibe-banner-actions",
+        "tag": "div",
+        "text": "Install & Activate WPVibe",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-wpvibe-banner-content",
+        "tag": "div",
+        "text": "WORDPRESS ABILITIES API + MERCHANT Use Merchant With Your F…",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

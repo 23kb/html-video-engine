@@ -1,0 +1,797 @@
+{
+  "slug": "admin-product-tags",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.woocommerce-layout__activity-panel-tab[data-snap-park][data-testid]",
+      "count": 2
+    },
+    {
+      "label": "wp-terms-quick-edit-live",
+      "event": "click",
+      "selector": ".button-link.editinline",
+      "count": 12
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 65
+    },
+    {
+      "label": "chrome-nearest-screen",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 51
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#activity-panel-tab-activity",
+        "tag": "button",
+        "text": "Activity unread activity",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#activity-panel-tab-setup",
+        "tag": "button",
+        "text": "Finish setup",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_inline_edit",
+        "tag": "input",
+        "text": "f86b2ea48c",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-135",
+        "tag": "input",
+        "text": "135",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-136",
+        "tag": "input",
+        "text": "136",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-137",
+        "tag": "input",
+        "text": "137",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-138",
+        "tag": "input",
+        "text": "138",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-139",
+        "tag": "input",
+        "text": "139",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-140",
+        "tag": "input",
+        "text": "140",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-141",
+        "tag": "input",
+        "text": "141",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-142",
+        "tag": "input",
+        "text": "142",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-143",
+        "tag": "input",
+        "text": "143",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-144",
+        "tag": "input",
+        "text": "144",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-145",
+        "tag": "input",
+        "text": "145",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-146",
+        "tag": "input",
+        "text": "146",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#description-hide",
+        "tag": "input",
+        "text": "description",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit_product_tag_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#posts-hide",
+        "tag": "input",
+        "text": "posts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "253638bfe6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slug-hide",
+        "tag": "input",
+        "text": "slug",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submit",
+        "tag": "input",
+        "text": "Add new tag",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-slug",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#activity-panel-header_36",
+        "tag": "h2",
+        "text": "Store Activity",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-activity-panel",
+        "tag": "aside",
+        "text": "Activity unread activity Finish setup",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#addtag",
+        "tag": "form",
+        "text": "Name The name is how it appears on your site. Slug The “slu…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Description Slug Count Pagination Number of items p…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-container",
+        "tag": "div",
+        "text": "Add new tag Name The name is how it appears on your site. S…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-left",
+        "tag": "div",
+        "text": "Add new tag Name The name is how it appears on your site. S…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-right",
+        "tag": "div",
+        "text": "Select bulk action Bulk actions Delete 12 items Tags list T…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description",
+        "tag": "th",
+        "text": "Description Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description-description",
+        "tag": "p",
+        "text": "The description is not prominent by default; however, some …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "If you like WooCommerce please leave us a ★★★★★ rating. A h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inline_135",
+        "tag": "div",
+        "text": "Solid oaksolid-oak0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_136",
+        "tag": "div",
+        "text": "Velvetvelvet0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_137",
+        "tag": "div",
+        "text": "Boucléboucle0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_138",
+        "tag": "div",
+        "text": "Outdooroutdoor0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_139",
+        "tag": "div",
+        "text": "Small spacessmall-spaces0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_140",
+        "tag": "div",
+        "text": "Made in Portlandmade-in-portland0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_141",
+        "tag": "div",
+        "text": "Bestsellerbestseller0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_142",
+        "tag": "div",
+        "text": "New arrivalnew-arrival0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_143",
+        "tag": "div",
+        "text": "Salesale0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_144",
+        "tag": "div",
+        "text": "Gift ideasgift-ideas0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_145",
+        "tag": "div",
+        "text": "Stackablestackable0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_146",
+        "tag": "div",
+        "text": "Reading nookreading-nook0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-edit",
+        "tag": "tr",
+        "text": "Quick Edit Name Slug Update tag Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inlineedit",
+        "tag": "tbody",
+        "text": "Quick Edit Name Slug Update tag Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#jp-admin-notices",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#name",
+        "tag": "th",
+        "text": "Name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#name-description",
+        "tag": "p",
+        "text": "The name is how it appears on your site.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts",
+        "tag": "th",
+        "text": "Count Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts-filter",
+        "tag": "form",
+        "text": "Select bulk action Bulk actions Delete 12 items Tags list T…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Description Slug Count Pagination Number of items p…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slug",
+        "tag": "th",
+        "text": "Slug Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#slug-description",
+        "tag": "p",
+        "text": "The “slug” is the URL-friendly version of the name. It is u…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tag-135",
+        "tag": "tr",
+        "text": "Select Solid oak Solid oak Edit | Quick Edit | Delete | Vie…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-136",
+        "tag": "tr",
+        "text": "Select Velvet Velvet Edit | Quick Edit | Delete | View — No…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-137",
+        "tag": "tr",
+        "text": "Select Bouclé Bouclé Edit | Quick Edit | Delete | View — No…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-138",
+        "tag": "tr",
+        "text": "Select Outdoor Outdoor Edit | Quick Edit | Delete | View — …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-139",
+        "tag": "tr",
+        "text": "Select Small spaces Small spaces Edit | Quick Edit | Delete…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-140",
+        "tag": "tr",
+        "text": "Select Made in Portland Made in Portland Edit | Quick Edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-141",
+        "tag": "tr",
+        "text": "Select Bestseller Bestseller Edit | Quick Edit | Delete | V…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-142",
+        "tag": "tr",
+        "text": "Select New arrival New arrival Edit | Quick Edit | Delete |…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-143",
+        "tag": "tr",
+        "text": "Select Sale Sale Edit | Quick Edit | Delete | View — No des…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-144",
+        "tag": "tr",
+        "text": "Select Gift ideas Gift ideas Edit | Quick Edit | Delete | V…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-145",
+        "tag": "tr",
+        "text": "Select Stackable Stackable Edit | Quick Edit | Delete | Vie…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-146",
+        "tag": "tr",
+        "text": "Select Reading nook Reading nook Edit | Quick Edit | Delete…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Select Bestseller Bestseller Edit | Quick Edit | Delete | V…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tiptip_arrow",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_arrow_inner",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-root",
+        "tag": "div",
+        "text": "Product tags Store Activity Activity unread activity Finish…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,573 @@
+{
+  "slug": "admin-size-chart-edit",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wp-postbox-toggle",
+      "event": "click",
+      "selector": "#botiga_metabox-title",
+      "count": 4
+    },
+    {
+      "label": "wp-postbox-move",
+      "event": "click",
+      "selector": ".wp-tooltip__toggle",
+      "count": 4
+    },
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.is-compact[data-snap-park]",
+      "count": 5
+    },
+    {
+      "label": "wp-comment-edit-extras",
+      "event": "click",
+      "selector": ".wp-tooltip__toggle",
+      "count": 4
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "div.editor-header__settings a.components-button.is-compact",
+      "count": 4
+    },
+    {
+      "label": "merchant-size-chart-table",
+      "event": "click",
+      "selector": "a.merchant-add-col",
+      "count": 54
+    },
+    {
+      "label": "botiga-metabox-tab",
+      "event": "click",
+      "selector": ".botiga-metabox-tab",
+      "count": 2
+    },
+    {
+      "label": "block-editor-chrome-live",
+      "event": "click",
+      "selector": "#\\:r3\\:",
+      "count": 4
+    },
+    {
+      "label": "chrome-nearest-screen",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 51
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-add",
+        "tag": "button",
+        "text": "Add Size Chart",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-add-col",
+        "tag": "a",
+        "text": "+",
+        "count": 14,
+        "hidden": true,
+        "wired": "merchant-size-chart-table",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-add-row",
+        "tag": "a",
+        "text": "+",
+        "count": 10,
+        "hidden": true,
+        "wired": "merchant-size-chart-table",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-del-col",
+        "tag": "a",
+        "text": "-",
+        "count": 14,
+        "hidden": true,
+        "wired": "merchant-size-chart-table",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-del-row",
+        "tag": "a",
+        "text": "-",
+        "count": 10,
+        "hidden": true,
+        "wired": "merchant-size-chart-table",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-remove",
+        "tag": "a",
+        "text": "Remove",
+        "count": 3,
+        "hidden": true,
+        "wired": "merchant-size-chart-table",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#botiga_metabox_nonce",
+        "tag": "input",
+        "text": "b72567b06f",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hiddenaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_metabox_nonce",
+        "tag": "input",
+        "text": "307ed06ed6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#meta-box-order-nonce",
+        "tag": "input",
+        "text": "a5a35e8dcd",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_post_status",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#originalaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_ID",
+        "tag": "input",
+        "text": "1634",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_type",
+        "tag": "input",
+        "text": "merchant_size_chart",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#referredby",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#samplepermalinknonce",
+        "tag": "input",
+        "text": "8b3c23dca9",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toggle-custom-fields-nonce",
+        "tag": "input",
+        "text": "9c0e9e9357",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#user-id",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#advanced-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga_metabox",
+        "tag": "div",
+        "text": "Botiga Options Move up Move down Show or hide panel General…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-title",
+        "tag": "h2",
+        "text": "Botiga Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-block-editor-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#editor",
+        "tag": "div",
+        "text": "Armchair dimensions · Size Chart Save Meta Boxes Use up and…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-css-custom-properties-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_metabox",
+        "tag": "div",
+        "text": "Merchant Options Move up Move down Show or hide panel Chart…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant_metabox-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_metabox-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_metabox-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_metabox-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_metabox-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_metabox-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_metabox-title",
+        "tag": "h2",
+        "text": "Merchant Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#metaboxes",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "Botiga Options Move up Move down Show or hide panel General…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-2",
+        "tag": "div",
+        "text": "Botiga Options Move up Move down Show or hide panel General…",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": "#poststuff",
+        "tag": "div",
+        "text": "Botiga Options Move up Move down Show or hide panel General…",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#side-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toggle-custom-fields-form",
+        "tag": "form",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant MerchantDashboardModulesCampaignsAnalyticsSettings…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics AnalyticsOverviewProductsRevenueOrdersVariationsC…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce WooCommerceHome Orders CustomersCouponsReportsS…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing MarketingOverviewCoupons",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-metabox-content",
+        "tag": "div",
+        "text": "Chart Name: + - + - + - + - + - + - + - + - Remove Chart Na…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-metabox-field",
+        "tag": "div",
+        "text": "Chart Name: + - + - + - + - + - + - + - + - Remove Chart Na…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-metabox-field-content",
+        "tag": "div",
+        "text": "Chart Name: + - + - + - + - + - + - + - + - Remove Chart Na…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-metabox-field-size-chart-content",
+        "tag": "div",
+        "text": "Chart Name: + - + - + - + - + - + - + - + - Remove Chart Na…",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

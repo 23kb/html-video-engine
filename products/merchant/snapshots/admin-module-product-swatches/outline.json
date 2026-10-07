@@ -1,0 +1,1704 @@
+{
+  "slug": "admin-module-product-swatches",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "merchant-field-change-conditions",
+      "event": "change",
+      "selector": ".merchant-module-page-setting-field[data-condition][data-conditions]",
+      "count": 76
+    },
+    {
+      "label": "merchant-field-input-dirty",
+      "event": "input",
+      "selector": ".merchant-module-page-setting-field[data-condition][data-conditions]",
+      "count": 76
+    },
+    {
+      "label": "merchant-colour-picker-open",
+      "event": "click",
+      "selector": ".merchant-color-picker[data-default-color]",
+      "count": 26
+    },
+    {
+      "label": "merchant-module-enabled-dropdown",
+      "event": "click",
+      "selector": "div.merchant-module-page-button.merchant-module-page-button-deactivate",
+      "count": 1
+    },
+    {
+      "label": "merchant-module-dropdown-close",
+      "event": "click",
+      "selector": ".dashicons.dashicons-no-alt",
+      "count": 6
+    },
+    {
+      "label": "merchant-module-disable",
+      "event": "click",
+      "selector": "div[data-module]",
+      "count": 2
+    },
+    {
+      "label": "merchant-module-save",
+      "event": "click",
+      "selector": "button.merchant-module-save-button",
+      "count": 1
+    },
+    {
+      "label": "merchant-ai-prompts-open",
+      "event": "click",
+      "selector": "button.merchant-module-page-link.merchant-module-page-link-ai",
+      "count": 1
+    },
+    {
+      "label": "merchant-news-sidebar-toggle",
+      "event": "click",
+      "selector": "a.merchant-notifications",
+      "count": 1
+    },
+    {
+      "label": "merchant-news-sidebar-close",
+      "event": "click",
+      "selector": "a.merchant-notifications-sidebar-close",
+      "count": 1
+    },
+    {
+      "label": "merchant-news-tabs",
+      "event": "click",
+      "selector": ".merchant-tabs-nav-link[data-tab-to]",
+      "count": 2
+    },
+    {
+      "label": "merchant-module-live-only-buttons",
+      "event": "click",
+      "selector": "button.merchant-module-page-button.merchant-module-question-answer-button",
+      "count": 3
+    },
+    {
+      "label": "merchant-swatch-pick",
+      "event": "click",
+      "selector": ".merchant-variation-item",
+      "count": 8
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#download-backup-button",
+        "tag": "button",
+        "text": "Download",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-live-only-buttons",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-ai-badge",
+        "tag": "button",
+        "text": "Try with AI",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-ai-prompts-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-ai-prompts-modal-close",
+        "tag": "button",
+        "text": "Close",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-dropzone__browse",
+        "tag": "button",
+        "text": "Browse",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-live-only-buttons",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-alert-close",
+        "tag": "a",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-module-discard-button",
+        "tag": "a",
+        "text": "Discard",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-dropdown-close",
+        "tag": "i",
+        "text": "",
+        "count": 6,
+        "hidden": false,
+        "wired": "merchant-module-dropdown-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-page-button",
+        "tag": "div",
+        "text": "Enable",
+        "count": 3,
+        "hidden": true,
+        "wired": "merchant-module-disable",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-page-link-tutorial",
+        "tag": "a",
+        "text": "Tutorial",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-question-answer-button",
+        "tag": "button",
+        "text": "Submit",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-live-only-buttons",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-save-button",
+        "tag": "button",
+        "text": "Save",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-save",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-save-button-label",
+        "tag": "span",
+        "text": "Save",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-save",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-notifications",
+        "tag": "a",
+        "text": "1",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-news-sidebar-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-close",
+        "tag": "a",
+        "text": "Close the sidebar",
+        "count": 1,
+        "hidden": true,
+        "wired": "merchant-news-sidebar-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-tabs-nav-link",
+        "tag": "a",
+        "text": "Merchant",
+        "count": 2,
+        "hidden": true,
+        "wired": "merchant-news-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-variation-item",
+        "tag": "a",
+        "text": "Blue",
+        "count": 9,
+        "hidden": false,
+        "wired": "merchant-swatch-pick",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-variation-type-button",
+        "tag": "div",
+        "text": "Button option 1 Button option 2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-website",
+        "tag": "a",
+        "text": "Website",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": ".merchant-tab-content",
+        "tag": "div",
+        "text": "September 17, 2026 Removed Patcher page, with a notice offe…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-tabs-nav-item",
+        "tag": "li",
+        "text": "Merchant",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#button_custom_style_shop_archive",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#color_custom_style_shop_archive",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#display_variation_name_on_product_title",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hide_attribute_label_archive",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hide_attribute_label_single",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#image_custom_style_shop_archive",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-backup-file",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_radius_shop_archive-bottom",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_radius_shop_archive-left",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_radius_shop_archive-right",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_radius_shop_archive-top",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_radius-bottom",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_radius-left",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_radius-right",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_radius-top",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_width_shop_archive-desktop-bottom",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_width_shop_archive-desktop-left",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_width_shop_archive-desktop-right",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_width_shop_archive-desktop-top",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_width_shop_archive-mobile-bottom",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width_shop_archive-mobile-left",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width_shop_archive-mobile-right",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width_shop_archive-mobile-top",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width_shop_archive-tablet-bottom",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width_shop_archive-tablet-left",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width_shop_archive-tablet-right",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width_shop_archive-tablet-top",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width-desktop-bottom",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_width-desktop-left",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_width-desktop-right",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_width-desktop-top",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_border_width-mobile-bottom",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width-mobile-left",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width-mobile-right",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width-mobile-top",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width-tablet-bottom",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width-tablet-left",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width-tablet-right",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_border_width-tablet-top",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding_shop_archive-desktop-bottom",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_padding_shop_archive-desktop-left",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_padding_shop_archive-desktop-right",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_padding_shop_archive-desktop-top",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_padding_shop_archive-mobile-bottom",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding_shop_archive-mobile-left",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding_shop_archive-mobile-right",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding_shop_archive-mobile-top",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding_shop_archive-tablet-bottom",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding_shop_archive-tablet-left",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding_shop_archive-tablet-right",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding_shop_archive-tablet-top",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding-desktop-bottom",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_padding-desktop-left",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_padding-desktop-right",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_padding-desktop-top",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-button_padding-mobile-bottom",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding-mobile-left",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding-mobile-right",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding-mobile-top",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding-tablet-bottom",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding-tablet-left",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding-tablet-right",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-button_padding-tablet-top",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_radius_shop_archive-bottom",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_radius_shop_archive-left",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_radius_shop_archive-right",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_radius_shop_archive-top",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_radius-bottom",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_radius-left",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_radius-right",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_radius-top",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_width_shop_archive-desktop-bottom",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_width_shop_archive-desktop-left",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_width_shop_archive-desktop-right",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_width_shop_archive-desktop-top",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_width_shop_archive-mobile-bottom",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width_shop_archive-mobile-left",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width_shop_archive-mobile-right",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width_shop_archive-mobile-top",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width_shop_archive-tablet-bottom",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width_shop_archive-tablet-left",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width_shop_archive-tablet-right",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width_shop_archive-tablet-top",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width-desktop-bottom",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_width-desktop-left",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_width-desktop-right",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_width-desktop-top",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-color_border_width-mobile-bottom",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width-mobile-left",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width-mobile-right",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width-mobile-top",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width-tablet-bottom",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width-tablet-left",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width-tablet-right",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-color_border_width-tablet-top",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_radius_shop_archive-bottom",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_radius_shop_archive-left",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_radius_shop_archive-right",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_radius_shop_archive-top",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_radius-bottom",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_radius-left",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_radius-right",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_radius-top",
+        "tag": "input",
+        "text": "50",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_width_shop_archive-desktop-bottom",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_width_shop_archive-desktop-left",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_width_shop_archive-desktop-right",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_width_shop_archive-desktop-top",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_width_shop_archive-mobile-bottom",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width_shop_archive-mobile-left",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width_shop_archive-mobile-right",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width_shop_archive-mobile-top",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width_shop_archive-tablet-bottom",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width_shop_archive-tablet-left",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width_shop_archive-tablet-right",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width_shop_archive-tablet-top",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width-desktop-bottom",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_width-desktop-left",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_width-desktop-right",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_width-desktop-top",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-image_border_width-mobile-bottom",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width-mobile-left",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width-mobile-right",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width-mobile-top",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width-tablet-bottom",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width-tablet-left",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width-tablet-right",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-image_border_width-tablet-top",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_border_radius_shop_archive-bottom",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_border_radius_shop_archive-left",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_border_radius_shop_archive-right",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_border_radius_shop_archive-top",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_border_radius-bottom",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_border_radius-left",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_border_radius-right",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_border_radius-top",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_padding_shop_archive-desktop-bottom",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_padding_shop_archive-desktop-left",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_padding_shop_archive-desktop-right",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_padding_shop_archive-desktop-top",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_padding_shop_archive-mobile-bottom",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding_shop_archive-mobile-left",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding_shop_archive-mobile-right",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding_shop_archive-mobile-top",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding_shop_archive-tablet-bottom",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding_shop_archive-tablet-left",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding_shop_archive-tablet-right",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding_shop_archive-tablet-top",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding-desktop-bottom",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_padding-desktop-left",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_padding-desktop-right",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_padding-desktop-top",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-select_padding-mobile-bottom",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding-mobile-left",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding-mobile-right",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding-mobile-top",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding-tablet-bottom",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding-tablet-left",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding-tablet-right",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-select_padding-tablet-top",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mouseover",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#on_shop_catalog",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pa_button",
+        "tag": "select",
+        "text": "Select Button option 1 Button option 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pa_color",
+        "tag": "select",
+        "text": "Select> Blue Red White",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pa_image",
+        "tag": "select",
+        "text": "Select Image option 1 Image option 2 Image option 3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pa_select",
+        "tag": "select",
+        "text": "Select Slim Wavy",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select_custom_style_shop_archive",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tooltip",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-color-input",
+        "tag": "input",
+        "text": "#212121",
+        "count": 26,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-range-input",
+        "tag": "input",
+        "text": "26",
+        "count": 14,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-range-number-input",
+        "tag": "input",
+        "text": "26",
+        "count": 14,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#botiga-admin-modal-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-ai-prompts-modal",
+        "tag": "div",
+        "text": "AI Prompt Examples Manage your AI connection",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-ai-prompts-modal-header",
+        "tag": "div",
+        "text": "AI",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-restore-dropzone",
+        "tag": "div",
+        "text": "Drag & drop a JSON backup file here, or Browse",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-module-alert-content",
+        "tag": "div",
+        "text": "This module is currently disabled. Please enable the module…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-module-alert-header",
+        "tag": "div",
+        "text": "Important info!",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-module-deactivate-dropdown",
+        "tag": "div",
+        "text": "Disable Variation Swatches",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-dropdown",
+        "tag": "div",
+        "text": "Did something go wrong? Submit a bug: the module doesn’t wo…",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-actions",
+        "tag": "div",
+        "text": "Enabled Disable Variation Swatches Did something go wrong? …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-ajax-header",
+        "tag": "div",
+        "text": "Your settings have been modified. Save? Discard Save",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-ajax-notice",
+        "tag": "div",
+        "text": "Your settings have been modified. Save?",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-content",
+        "tag": "div",
+        "text": "Your settings have been modified. Save? Discard Save Go Bac…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-header",
+        "tag": "div",
+        "text": "Go Back Variation Swatches Display variable product options…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-header-content",
+        "tag": "div",
+        "text": "Go Back Variation Swatches Display variable product options…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-settings-device-container",
+        "tag": "div",
+        "text": "px rem em vw vh % Top Right Bottom Left",
+        "count": 30,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-question-answer-dropdown",
+        "tag": "div",
+        "text": "Submit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-question-thank-you-dropdown",
+        "tag": "div",
+        "text": "Thank you Your feedback helps us improve Merchant.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-notification-content",
+        "tag": "div",
+        "text": "Removed Patcher page, with a notice offering to remove the …",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant Merchant Mer…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-header",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-header-content",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-variation-type-select",
+        "tag": "div",
+        "text": "Select Slim Wavy",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

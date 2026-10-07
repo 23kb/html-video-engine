@@ -1,0 +1,1570 @@
+{
+  "slug": "admin-order-edit--delivery-pickup-warning",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wp-postbox-toggle",
+      "event": "click",
+      "selector": "#woocommerce-order-actions-title",
+      "count": 18
+    },
+    {
+      "label": "wp-postbox-move",
+      "event": "click",
+      "selector": ".wp-tooltip__toggle",
+      "count": 18
+    },
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.woocommerce-layout__activity-panel-tab[data-snap-park][data-testid]",
+      "count": 2
+    },
+    {
+      "label": "wp-comment-edit-extras",
+      "event": "click",
+      "selector": ".wp-tooltip__toggle",
+      "count": 18
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 28
+    },
+    {
+      "label": "woocommerce-order-writes-live-2",
+      "event": "click",
+      "selector": "button.button.save_order",
+      "count": 2
+    },
+    {
+      "label": "wp-custom-field-enter-new",
+      "event": "click",
+      "selector": "#newmeta-button",
+      "count": 1
+    },
+    {
+      "label": "tel-mailto-live",
+      "event": "click",
+      "selector": "div.address p a",
+      "count": 2
+    },
+    {
+      "label": "chrome-nearest-screen",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 51
+    },
+    {
+      "label": "woocommerce-order-edit-address",
+      "event": "click",
+      "selector": ".edit_address",
+      "count": 2
+    },
+    {
+      "label": "woocommerce-order-refund-toggle",
+      "event": "click",
+      "selector": "button.button.refund-items",
+      "count": 2
+    },
+    {
+      "label": "woocommerce-order-writes-live",
+      "event": "click",
+      "selector": "button.add_note.button",
+      "count": 4
+    },
+    {
+      "label": "merchant-dp-order-edit",
+      "event": "click",
+      "selector": "button.button.merchant-dp-cancel",
+      "count": 1
+    },
+    {
+      "label": "select2-multiple-open",
+      "event": "click",
+      "selector": "span.select2-selection.select2-selection--multiple",
+      "count": 1
+    },
+    {
+      "label": "select2-open",
+      "event": "click",
+      "selector": ".select2-selection.select2-selection--single",
+      "count": 7
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#activity-panel-tab-activity",
+        "tag": "button",
+        "text": "Activity unread activity",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#activity-panel-tab-setup",
+        "tag": "button",
+        "text": "Finish setup",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#newmeta-button",
+        "tag": "button",
+        "text": "Enter new",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-custom-field-enter-new",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-dp-cancel",
+        "tag": "button",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-dp-order-edit",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-dp-save",
+        "tag": "button",
+        "text": "Save change",
+        "count": 1,
+        "hidden": false,
+        "wired": "woocommerce-order-writes-live",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#list-table",
+        "tag": "table",
+        "text": "Name Value",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#_ajax_nonce-add-meta",
+        "tag": "input",
+        "text": "89f0ef07bb",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_billing_address_1",
+        "tag": "input",
+        "text": "1820 SE Belmont St",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_billing_address_2",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_billing_city",
+        "tag": "input",
+        "text": "Portland",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_billing_company",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_billing_country",
+        "tag": "select",
+        "text": "Select a country / region…AfghanistanÅland IslandsAlbaniaAl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_billing_email",
+        "tag": "input",
+        "text": "owen.park@example.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_billing_first_name",
+        "tag": "input",
+        "text": "Owen",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_billing_last_name",
+        "tag": "input",
+        "text": "Park",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_billing_phone",
+        "tag": "input",
+        "text": "(503) 555-1137",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_billing_postcode",
+        "tag": "input",
+        "text": "97214",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_billing_state",
+        "tag": "select",
+        "text": "Select an option…AlabamaAlaskaArizonaArkansasCaliforniaColo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_payment_method",
+        "tag": "select",
+        "text": "N/A Direct bank transferCheck paymentsPay on deliveryOther",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_shipping_address_1",
+        "tag": "input",
+        "text": "1820 SE Belmont St",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_shipping_address_2",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_shipping_city",
+        "tag": "input",
+        "text": "Portland",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_shipping_company",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_shipping_country",
+        "tag": "select",
+        "text": "Select a country / region…AfghanistanÅland IslandsAlbaniaAl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_shipping_first_name",
+        "tag": "input",
+        "text": "Owen",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_shipping_last_name",
+        "tag": "input",
+        "text": "Park",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_shipping_phone",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_shipping_postcode",
+        "tag": "input",
+        "text": "97214",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_shipping_state",
+        "tag": "select",
+        "text": "Select an option…AlabamaAlaskaArizonaArkansasCaliforniaColo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_transaction_id",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#add_order_note",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customer_user",
+        "tag": "select",
+        "text": "Owen Park (#9 &ndash; owen.park@example.com)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dp1791319864722",
+        "tag": "input",
+        "text": "2026-10-02",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#excerpt",
+        "tag": "textarea",
+        "text": "Customer notes about the order",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#grant_access_id",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#hiddenaction",
+        "tag": "input",
+        "text": "edit_order",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-delivery-pickup-hide",
+        "tag": "input",
+        "text": "merchant-delivery-pickup",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#meta-box-order-nonce",
+        "tag": "input",
+        "text": "f1873251d8",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#metakeyinput",
+        "tag": "input",
+        "text": "New custom field name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#metakeyselect",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#metavalue",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#newmeta-submit",
+        "tag": "input",
+        "text": "Add Custom Field",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_custom-hide",
+        "tag": "input",
+        "text": "order_custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_note_type",
+        "tag": "select",
+        "text": "Private note Note to customer",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_status",
+        "tag": "select",
+        "text": "Pending payment Processing On hold Completed Cancelled Refu…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#origin-hide",
+        "tag": "input",
+        "text": "origin",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_order_status",
+        "tag": "input",
+        "text": "processing",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_post_status",
+        "tag": "input",
+        "text": "wc-processing",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_ID",
+        "tag": "input",
+        "text": "1652",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pre_order_shipping_date-hide",
+        "tag": "input",
+        "text": "pre_order_shipping_date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#referredby",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#refund_amount",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#refund_reason",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#refunded_amount",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#restock_refunded_items",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "beabc1009b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_meta_nonce",
+        "tag": "input",
+        "text": "44b255a094",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-customer-history-hide",
+        "tag": "input",
+        "text": "woocommerce-customer-history",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-actions-hide",
+        "tag": "input",
+        "text": "woocommerce-order-actions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-data-hide",
+        "tag": "input",
+        "text": "woocommerce-order-data",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-downloads-hide",
+        "tag": "input",
+        "text": "woocommerce-order-downloads",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-items-hide",
+        "tag": "input",
+        "text": "woocommerce-order-items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-notes-hide",
+        "tag": "input",
+        "text": "woocommerce-order-notes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-source-data-hide",
+        "tag": "input",
+        "text": "woocommerce-order-source-data",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-dp-date",
+        "tag": "select",
+        "text": "Wed 7 Oct Thu 8 Oct Fri 9 Oct Sat 10 Oct Mon 12 Oct Tue 13 …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-dp-fulfilment",
+        "tag": "select",
+        "text": "Delivery Collection",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-dp-schedule",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-dp-where",
+        "tag": "select",
+        "text": "Standard delivery Saturday delivery",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#activity-panel-header_33",
+        "tag": "h2",
+        "text": "Store Activity",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_data",
+        "tag": "div",
+        "text": "Order #1652 details Payment via Pay on delivery. Customer I…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-activity-panel",
+        "tag": "aside",
+        "text": "Activity unread activity Finish setup",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#actions",
+        "tag": "li",
+        "text": "Choose an action... Send order details to customer Resend n…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Screen elements Some screen elements can be shown or hidden…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#advanced-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cancelnew",
+        "tag": "span",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#delete-action",
+        "tag": "div",
+        "text": "Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#enternew",
+        "tag": "span",
+        "text": "Enter new",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "If you like WooCommerce please leave us a ★★★★★ rating. A h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#jp-admin-notices",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-delivery-pickup",
+        "tag": "div",
+        "text": "Delivery & Pickup Move up Move down Show or hide panel Plac…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant-delivery-pickup-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-delivery-pickup-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-delivery-pickup-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-delivery-pickup-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-delivery-pickup-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-delivery-pickup-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-delivery-pickup-title",
+        "tag": "h2",
+        "text": "Delivery & Pickup",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#metakey-search",
+        "tag": "span",
+        "text": "Add existing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#newmeta",
+        "tag": "table",
+        "text": "Name Value Add existing Enter new",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#newmetaleft",
+        "tag": "td",
+        "text": "Add existing Enter new",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "Order #1652 details Payment via Pay on delivery. Customer I…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order",
+        "tag": "form",
+        "text": "Order actions Move up Move down Show or hide panel Choose a…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_custom",
+        "tag": "div",
+        "text": "Custom Fields Move up Move down Show or hide panel Add New …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_custom-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_custom-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_custom-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_custom-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_custom-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_custom-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_custom-title",
+        "tag": "h2",
+        "text": "Custom Fields",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_fee_line_items",
+        "tag": "tbody",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_line_items",
+        "tag": "tbody",
+        "text": "White Stacking Chair SKU: FH-CHR-109-1 Variation ID: 266 Fa…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_refunds",
+        "tag": "tbody",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_shipping_line_items",
+        "tag": "tbody",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-attribution-install-banner-slotfill",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body",
+        "tag": "div",
+        "text": "Order actions Move up Move down Show or hide panel Choose a…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-lock-dialog",
+        "tag": "div",
+        "text": "Go back",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postbox-container-1",
+        "tag": "div",
+        "text": "Order actions Move up Move down Show or hide panel Choose a…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-2",
+        "tag": "div",
+        "text": "Order #1652 details Payment via Pay on delivery. Customer I…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postcustomstuff",
+        "tag": "div",
+        "text": "Add New Custom Field: Name Value Add existing Enter new",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#poststuff",
+        "tag": "div",
+        "text": "Order actions Move up Move down Show or hide panel Choose a…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Screen elements Some screen elements can be shown or hidden…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-_billing_country-container",
+        "tag": "span",
+        "text": "United States (US)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-_billing_state-container",
+        "tag": "span",
+        "text": "Oregon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-_shipping_country-container",
+        "tag": "span",
+        "text": "United States (US)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-_shipping_state-container",
+        "tag": "span",
+        "text": "Oregon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-customer_user-container",
+        "tag": "span",
+        "text": "× Owen Park (#9 – owen.park@example.com)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-metakeyselect-container",
+        "tag": "span",
+        "text": "Add existing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-order_status-container",
+        "tag": "span",
+        "text": "Processing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#side-sortables",
+        "tag": "div",
+        "text": "Order actions Move up Move down Show or hide panel Choose a…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_arrow",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_arrow_inner",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ui-datepicker-div",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-customer-history",
+        "tag": "div",
+        "text": "Customer history Move up Move down Show or hide panel Total…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-customer-history-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-customer-history-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-customer-history-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-customer-history-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-customer-history-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-customer-history-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-customer-history-title",
+        "tag": "h2",
+        "text": "Customer history",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-root",
+        "tag": "div",
+        "text": "Orders Store Activity Activity unread activity Finish setup",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-order-actions",
+        "tag": "div",
+        "text": "Order actions Move up Move down Show or hide panel Choose a…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-order-actions-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-actions-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-actions-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-actions-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-actions-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-actions-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-actions-title",
+        "tag": "h2",
+        "text": "Order actions",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-order-data",
+        "tag": "div",
+        "text": "Order #1652 details Payment via Pay on delivery. Customer I…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-order-data-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-data-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-data-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-data-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-data-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-data-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-data-title",
+        "tag": "h2",
+        "text": "Order data",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-downloads",
+        "tag": "div",
+        "text": "Downloadable product permissions Move up Move down Show or …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-order-downloads-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-downloads-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-downloads-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-downloads-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-downloads-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-downloads-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-downloads-title",
+        "tag": "h2",
+        "text": "Downloadable product permissions",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-order-items",
+        "tag": "div",
+        "text": "Item Price Qty Total White Stacking Chair SKU: FH-CHR-109-1…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-order-items-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-items-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-items-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-items-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-items-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-items-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-items-title",
+        "tag": "h2",
+        "text": "Items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-notes",
+        "tag": "div",
+        "text": "Order notes Move up Move down Show or hide panel Add note N…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-order-notes-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-notes-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-notes-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-notes-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-notes-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-notes-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-notes-title",
+        "tag": "h2",
+        "text": "Order notes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-order-source-data",
+        "tag": "div",
+        "text": "Order attribution Move up Move down Show or hide panel Orig…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-order-source-data-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-source-data-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-source-data-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-source-data-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-source-data-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-source-data-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-order-source-data-title",
+        "tag": "h2",
+        "text": "Order attribution",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-dp-admin-row",
+        "tag": "div",
+        "text": "TYPE Delivery Collection WHERE Standard delivery Saturday d…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-dp-field",
+        "tag": "p",
+        "text": "TYPE Delivery Collection",
+        "count": 3,
+        "hidden": false
+      }
+    ]
+  }
+}

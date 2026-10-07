@@ -1,0 +1,891 @@
+{
+  "slug": "admin-module-volume-discounts--product-picker-open",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "select2-multiple-open",
+      "event": "click",
+      "selector": ".select2-selection.select2-selection--multiple",
+      "count": 30
+    },
+    {
+      "label": "merchant-field-change-conditions",
+      "event": "change",
+      "selector": ".merchant-module-page-setting-field[data-condition][data-conditions]",
+      "count": 6
+    },
+    {
+      "label": "merchant-field-input-dirty",
+      "event": "input",
+      "selector": ".merchant-module-page-setting-field[data-condition][data-conditions]",
+      "count": 6
+    },
+    {
+      "label": "merchant-campaign-status-badge",
+      "event": "click",
+      "selector": ".layout-status.layout-status--active[data-status-field][data-status-options]",
+      "count": 4
+    },
+    {
+      "label": "merchant-accordion-header",
+      "event": "click",
+      "selector": ".ui-accordion-header.ui-accordion-icons",
+      "count": 19
+    },
+    {
+      "label": "merchant-colour-picker-open",
+      "event": "click",
+      "selector": ".merchant-color-picker[data-default-color]",
+      "count": 40
+    },
+    {
+      "label": "merchant-module-enabled-dropdown",
+      "event": "click",
+      "selector": "div.merchant-module-page-button.merchant-module-page-button-deactivate",
+      "count": 1
+    },
+    {
+      "label": "merchant-module-dropdown-close",
+      "event": "click",
+      "selector": ".dashicons.dashicons-no-alt",
+      "count": 6
+    },
+    {
+      "label": "merchant-module-disable",
+      "event": "click",
+      "selector": "div[data-module]",
+      "count": 2
+    },
+    {
+      "label": "merchant-module-save",
+      "event": "click",
+      "selector": "button.merchant-module-save-button",
+      "count": 1
+    },
+    {
+      "label": "merchant-ai-prompts-open",
+      "event": "click",
+      "selector": "button.merchant-module-page-link.merchant-module-page-link-ai",
+      "count": 1
+    },
+    {
+      "label": "merchant-news-sidebar-toggle",
+      "event": "click",
+      "selector": "a.merchant-notifications",
+      "count": 1
+    },
+    {
+      "label": "merchant-news-sidebar-close",
+      "event": "click",
+      "selector": "a.merchant-notifications-sidebar-close",
+      "count": 1
+    },
+    {
+      "label": "merchant-news-tabs",
+      "event": "click",
+      "selector": ".merchant-tabs-nav-link[data-tab-to]",
+      "count": 2
+    },
+    {
+      "label": "merchant-field-desc-more",
+      "event": "click",
+      "selector": ".merchant-module-page-setting-field-hidden-desc-trigger[data-hidden-text][data-show-text]",
+      "count": 32
+    },
+    {
+      "label": "merchant-selected-product-remove",
+      "event": "click",
+      "selector": "div.merchant-selected-products-preview ul li.product-item span.remove.hint--left",
+      "count": 4
+    },
+    {
+      "label": "merchant-campaign-row-actions",
+      "event": "click",
+      "selector": ".layout-actions__toggle",
+      "count": 4
+    },
+    {
+      "label": "merchant-campaign-row-duplicate-delete",
+      "event": "click",
+      "selector": "a.customize-control-flexible-content-duplicate",
+      "count": 9
+    },
+    {
+      "label": "merchant-module-live-only-buttons",
+      "event": "click",
+      "selector": "button.merchant-module-page-button.merchant-module-question-answer-button",
+      "count": 3
+    },
+    {
+      "label": "merchant-flexible-add",
+      "event": "click",
+      "selector": "a.customize-control-flexible-content-add",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#download-backup-button",
+        "tag": "button",
+        "text": "Download",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-live-only-buttons",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-ai-badge",
+        "tag": "button",
+        "text": "Try with AI",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-ai-prompts-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-ai-prompts-modal-close",
+        "tag": "button",
+        "text": "Close",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-blk-discounts-add-to-cart",
+        "tag": "button",
+        "text": "Add to cart",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-dropzone__browse",
+        "tag": "button",
+        "text": "Browse",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-live-only-buttons",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-alert-close",
+        "tag": "a",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-module-discard-button",
+        "tag": "a",
+        "text": "Discard",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-dropdown-close",
+        "tag": "i",
+        "text": "",
+        "count": 6,
+        "hidden": false,
+        "wired": "merchant-module-dropdown-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-page-button",
+        "tag": "div",
+        "text": "Enable",
+        "count": 3,
+        "hidden": true,
+        "wired": "merchant-module-disable",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-page-link-tutorial",
+        "tag": "a",
+        "text": "Tutorial",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-question-answer-button",
+        "tag": "button",
+        "text": "Submit",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-live-only-buttons",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-save-button",
+        "tag": "button",
+        "text": "Save",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-save",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-save-button-label",
+        "tag": "span",
+        "text": "Save",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-save",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-notifications",
+        "tag": "a",
+        "text": "1",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-news-sidebar-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-close",
+        "tag": "a",
+        "text": "Close the sidebar",
+        "count": 1,
+        "hidden": true,
+        "wired": "merchant-news-sidebar-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-tabs-nav-link",
+        "tag": "a",
+        "text": "Merchant",
+        "count": 2,
+        "hidden": true,
+        "wired": "merchant-news-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-volume-discounts-save-label",
+        "tag": "span",
+        "text": "Save 10%",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-website",
+        "tag": "a",
+        "text": "Website",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#ui-id-1",
+        "tag": "div",
+        "text": "1 Dining chairs: buy 2 Active",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": "#ui-id-11",
+        "tag": "div",
+        "text": "Checkout PageInactiveUse these settings to control how bulk…",
+        "count": 3,
+        "hidden": true,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": "#ui-id-13",
+        "tag": "div",
+        "text": "Thank You PageInactiveUse these settings to control how bul…",
+        "count": 3,
+        "hidden": true,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": "#ui-id-15",
+        "tag": "div",
+        "text": "Product Single PageActive Use these settings to control how…",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": "#ui-id-17",
+        "tag": "div",
+        "text": "Cart PageInactive Use these settings to control how bulk di…",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": "#ui-id-19",
+        "tag": "div",
+        "text": "Checkout PageInactive Use these settings to control how bul…",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": "#ui-id-21",
+        "tag": "div",
+        "text": "Thank You PageInactive Use these settings to control how bu…",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": "#ui-id-3",
+        "tag": "div",
+        "text": "2 Dining chairs: buy 4 Active",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": "#ui-id-5",
+        "tag": "div",
+        "text": "3 Dining chairs: buy 6 Active",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": "#ui-id-7",
+        "tag": "div",
+        "text": "Product Single PageActiveUse these settings to control how …",
+        "count": 3,
+        "hidden": true,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": "#ui-id-9",
+        "tag": "div",
+        "text": "Cart PageInactiveUse these settings to control how bulk dis…",
+        "count": 3,
+        "hidden": true,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": ".merchant-tab-content",
+        "tag": "div",
+        "text": "September 17, 2026 Removed Patcher page, with a notice offe…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-tabs-nav-item",
+        "tag": "li",
+        "text": "Merchant",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#exclude_brands_toggle",
+        "tag": "input",
+        "text": "1",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": "#exclude_categories_toggle",
+        "tag": "input",
+        "text": "1",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": "#exclude_coupon",
+        "tag": "input",
+        "text": "1",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": "#exclude_onsale_products_toggle",
+        "tag": "input",
+        "text": "1",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": "#exclude_products_toggle",
+        "tag": "input",
+        "text": "1",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": "#exclude_tags_toggle",
+        "tag": "input",
+        "text": "1",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": "#include_all_cart_products",
+        "tag": "input",
+        "text": "1",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": "#include_all_category_products",
+        "tag": "input",
+        "text": "1",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": "#include_subcategories",
+        "tag": "input",
+        "text": "1",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-backup-file",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#use_shortcode",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#user_exclusion_enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-color-input",
+        "tag": "input",
+        "text": "#212121",
+        "count": 40,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-range-input",
+        "tag": "input",
+        "text": "16",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-range-number-input",
+        "tag": "input",
+        "text": "16",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-search-field",
+        "tag": "input",
+        "text": "Search products",
+        "count": 8,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-selected-offer",
+        "tag": "input",
+        "text": "on",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-selected-products",
+        "tag": "input",
+        "text": "",
+        "count": 8,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#botiga-admin-modal-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-ai-prompts-modal",
+        "tag": "div",
+        "text": "AI Prompt Examples Manage your AI connection",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-ai-prompts-modal-header",
+        "tag": "div",
+        "text": "AI",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-restore-dropzone",
+        "tag": "div",
+        "text": "Drag & drop a JSON backup file here, or Browse",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ui-id-10",
+        "tag": "div",
+        "text": "Status Inactive Active Offer title You can use these codes …",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-12",
+        "tag": "div",
+        "text": "Status Inactive Active Placement Before Billing Details Aft…",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-14",
+        "tag": "div",
+        "text": "Status Inactive Active Offer title You can use these codes …",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-16",
+        "tag": "div",
+        "text": "Status Inactive Active Placement on product page Before add…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ui-id-18",
+        "tag": "div",
+        "text": "Status Inactive Active Offer title You can use these codes …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-2",
+        "tag": "div",
+        "text": "Status Active Inactive Offer name Offered product(s) All Pr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ui-id-20",
+        "tag": "div",
+        "text": "Status Inactive Active Placement Before Billing Details Aft…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-22",
+        "tag": "div",
+        "text": "Status Inactive Active Offer title You can use these codes …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-4",
+        "tag": "div",
+        "text": "Status Active Inactive Offer name Offered product(s) All Pr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-6",
+        "tag": "div",
+        "text": "Status Active Inactive Offer name Offered product(s) All Pr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-8",
+        "tag": "div",
+        "text": "Status Inactive Active Placement on product page Before add…",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-flexible-content",
+        "tag": "div",
+        "text": "1 Dining chairs: buy 2 Active Status Active Inactive Offer …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-group-field",
+        "tag": "div",
+        "text": "Product Single PageActiveUse these settings to control how …",
+        "count": 16,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-module-alert-content",
+        "tag": "div",
+        "text": "This module is currently disabled. Please enable the module…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-module-alert-header",
+        "tag": "div",
+        "text": "Important info!",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-module-deactivate-dropdown",
+        "tag": "div",
+        "text": "Disable Bulk Discounts",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-dropdown",
+        "tag": "div",
+        "text": "Did something go wrong? Submit a bug: the module doesn’t wo…",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-actions",
+        "tag": "div",
+        "text": "Enabled Disable Bulk Discounts Did something go wrong? Subm…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-ajax-header",
+        "tag": "div",
+        "text": "Your settings have been modified. Save? Discard Save",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-ajax-notice",
+        "tag": "div",
+        "text": "Your settings have been modified. Save?",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-content",
+        "tag": "div",
+        "text": "Your settings have been modified. Save? Discard Save Go Bac…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-header",
+        "tag": "div",
+        "text": "Go Back Bulk Discounts Offer discounts on larger quantity p…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-header-content",
+        "tag": "div",
+        "text": "Go Back Bulk Discounts Offer discounts on larger quantity p…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-setting-field-select",
+        "tag": "div",
+        "text": "Status Active Inactive",
+        "count": 44,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-module-question-answer-dropdown",
+        "tag": "div",
+        "text": "Submit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-question-thank-you-dropdown",
+        "tag": "div",
+        "text": "Thank you Your feedback helps us improve Merchant.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-notification-content",
+        "tag": "div",
+        "text": "Removed Patcher page, with a notice offering to remove the …",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant Merchant Mer…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-header",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-header-content",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-products-search-container",
+        "tag": "div",
+        "text": "Searching...",
+        "count": 8,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-volume-discounts-buy-label",
+        "tag": "div",
+        "text": "Buy 2, get 10% off each",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-volume-discounts-item-label",
+        "tag": "div",
+        "text": "Save 10%",
+        "count": 3,
+        "hidden": false
+      }
+    ]
+  }
+}

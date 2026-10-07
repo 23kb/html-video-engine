@@ -1,0 +1,564 @@
+{
+  "slug": "frontend-buy-x-get-y-cart--gift-applied",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "woocommerce-account-logout",
+      "event": "click",
+      "selector": "div.merchant-login-popup-dropdown > nav > div.merchant-login-popup-dropdown-list > a:nth-of-type(6)",
+      "count": 1
+    },
+    {
+      "label": "woocommerce-variation-select",
+      "event": "change",
+      "selector": "select[data-attribute_name][data-show_option_none]",
+      "count": 4
+    },
+    {
+      "label": "merchant-quick-view-open",
+      "event": "click",
+      "selector": "button.button.wp-element-button",
+      "count": 1
+    },
+    {
+      "label": "merchant-quick-view-close",
+      "event": "click",
+      "selector": "div.merchant-quick-view-overlay",
+      "count": 2
+    },
+    {
+      "label": "merchant-quantity-step",
+      "event": "click",
+      "selector": ".js-merchant-quantity-btn[data-snap-baked]",
+      "count": 4
+    },
+    {
+      "label": "botiga-quantity-step",
+      "event": "click",
+      "selector": ".show",
+      "count": 4
+    },
+    {
+      "label": "merchant-wishlist-heart",
+      "event": "click",
+      "selector": "a.merchant-wishlist-button.merchant-wishlist-button-tooltip",
+      "count": 1
+    },
+    {
+      "label": "botiga-header-search-toggle",
+      "event": "click",
+      "selector": ".header-search",
+      "count": 2
+    },
+    {
+      "label": "merchant-loop-swatch",
+      "event": "click",
+      "selector": ".merchant-variation-item",
+      "count": 8
+    },
+    {
+      "label": "woocommerce-shipping-calculator",
+      "event": "click",
+      "selector": "a.shipping-calculator-button",
+      "count": 1
+    },
+    {
+      "label": "merchant-cart-writes-live",
+      "event": "click",
+      "selector": ".button",
+      "count": 4
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": ".merchant-add-to-cart-button",
+        "tag": "a",
+        "text": "CHOOSE A FINISH",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-bogo-add-to-cart",
+        "tag": "button",
+        "text": "Add To Cart",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-clear-cart-button",
+        "tag": "button",
+        "text": "CLEAR CART",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-cart-writes-live",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-clear-cart-button__update-cart",
+        "tag": "button",
+        "text": "UPDATE CART",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-cart-writes-live",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-login-popup-button",
+        "tag": "a",
+        "text": "Welcome Maya Ellison",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-quantity-minus",
+        "tag": "button",
+        "text": "−",
+        "count": 2,
+        "hidden": true,
+        "wired": "merchant-quantity-step",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-quantity-plus",
+        "tag": "button",
+        "text": "+",
+        "count": 2,
+        "hidden": true,
+        "wired": "merchant-quantity-step",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-quick-view-button",
+        "tag": "button",
+        "text": "QUICK VIEW",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-quick-view-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-quick-view-close-button",
+        "tag": "a",
+        "text": "Close quick view modal",
+        "count": 1,
+        "hidden": true,
+        "wired": "merchant-quick-view-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-variation-item",
+        "tag": "a",
+        "text": "Black",
+        "count": 8,
+        "hidden": false,
+        "wired": "merchant-loop-swatch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-variation-type-button",
+        "tag": "div",
+        "text": "Gainsboro Weldon Blue",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-wishlist-button",
+        "tag": "a",
+        "text": "Add the product White Stacking Chair to wishlist",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-wishlist-heart",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#primary-menu",
+        "tag": "ul",
+        "text": "Home Blog Shop About Contact",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#calc_shipping_city",
+        "tag": "input",
+        "text": "Portland",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_country",
+        "tag": "select",
+        "text": "Select a country / region… AfghanistanÅland IslandsAlbaniaA…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_postcode",
+        "tag": "input",
+        "text": "97210",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_state",
+        "tag": "select",
+        "text": "Select an option…AlabamaAlaskaArizonaArkansasCaliforniaColo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#coupon_code",
+        "tag": "input",
+        "text": "Coupon code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#pa_body-finish",
+        "tag": "select",
+        "text": "Choose an optionGainsboroWeldon Blue",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#pa_fabric-color",
+        "tag": "select",
+        "text": "Choose an optionBlackDesert Sand",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#quantity_6ac365d8210b6",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#quantity_6ac365d84e7c6",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_method_0_flat_rate8",
+        "tag": "input",
+        "text": "flat_rate:8",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_method_0_free_shipping4",
+        "tag": "input",
+        "text": "free_shipping:4",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-cart-nonce",
+        "tag": "input",
+        "text": "13bcabae98",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-1",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-2",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-3",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-shipping-calculator-nonce",
+        "tag": "input",
+        "text": "5f13a82780",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-bogo-select-attribute",
+        "tag": "select",
+        "text": "Select Fabric ColorBlackDesert Sand",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#merchant-added-to-cart-popup-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-added-to-cart-popup-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-login-popup-dropdown",
+        "tag": "div",
+        "text": "Welcome Maya Ellison",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-quick-view-modal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-recently-viewed-products-section",
+        "tag": "section",
+        "text": "You recently viewed QUICK VIEW White Stacking Chair $89.00 …",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#athemes-blocks-common-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_city_field",
+        "tag": "p",
+        "text": "Town / City *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_country_field",
+        "tag": "p",
+        "text": "Country / region Select a country / region… AfghanistanÅlan…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_postcode_field",
+        "tag": "p",
+        "text": "ZIP Code *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_state_field",
+        "tag": "p",
+        "text": "State * Select an option…AlabamaAlaskaArizonaArkansasCalifo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-background-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-free-shipping-progress-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#page",
+        "tag": "div",
+        "text": "Skip to content Home Blog Shop About Contact Fernhill Home …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-7",
+        "tag": "article",
+        "text": "Cart ← CONTINUE SHOPPING You qualify for free delivery and …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#primary",
+        "tag": "main",
+        "text": "Cart ← CONTINUE SHOPPING You qualify for free delivery and …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_method",
+        "tag": "ul",
+        "text": "Free delivery and setup Local delivery: $49.00",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping-calculator-form",
+        "tag": "section",
+        "text": "Country / region Select a country / region… AfghanistanÅlan…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#site-header-cart",
+        "tag": "div",
+        "text": "3",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation",
+        "tag": "nav",
+        "text": "Home Blog Shop About Contact",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation-mobile",
+        "tag": "nav",
+        "text": "Home Blog Shop About Contact",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#text-2",
+        "tag": "section",
+        "text": "ABOUT About Fernhill How it Works Reviews Contact Careers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-3",
+        "tag": "section",
+        "text": "HELP FAQs Privacy Policy Terms Returns",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-4",
+        "tag": "section",
+        "text": "Solid wood furniture, built by hand in Portland and made to…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_265",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_product_categories-1",
+        "tag": "section",
+        "text": "SHOP Bedroom Decor & Lighting Dining Home Office Living Roo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-inline-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-library-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-bogo-product-buy-label",
+        "tag": "div",
+        "text": "Buy 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-bogo-product-get-label",
+        "tag": "div",
+        "text": "Get 1 with 20% off",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-quick-view-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

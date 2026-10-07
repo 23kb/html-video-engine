@@ -1,0 +1,814 @@
+{
+  "slug": "frontend-delivery-pickup-checkout--split",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "woocommerce-account-logout",
+      "event": "click",
+      "selector": "div.merchant-login-popup-dropdown > nav > div.merchant-login-popup-dropdown-list > a:nth-of-type(6)",
+      "count": 1
+    },
+    {
+      "label": "select2-open",
+      "event": "click",
+      "selector": ".select2-selection.select2-selection--single",
+      "count": 4
+    },
+    {
+      "label": "merchant-quick-view-close",
+      "event": "click",
+      "selector": "div.merchant-quick-view-overlay",
+      "count": 2
+    },
+    {
+      "label": "botiga-header-search-toggle",
+      "event": "click",
+      "selector": ".header-search",
+      "count": 2
+    },
+    {
+      "label": "merchant-cart-writes-live",
+      "event": "click",
+      "selector": "button.button",
+      "count": 1
+    },
+    {
+      "label": "merchant-add-to-cart-live",
+      "event": "click",
+      "selector": "button.button.add-to-cart-button",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#place_order",
+        "tag": "button",
+        "text": "PLACE ORDER",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-login-popup-button",
+        "tag": "a",
+        "text": "Welcome Maya Ellison",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-quick-view-close-button",
+        "tag": "a",
+        "text": "Close quick view modal",
+        "count": 1,
+        "hidden": true,
+        "wired": "merchant-quick-view-close",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#primary-menu",
+        "tag": "ul",
+        "text": "Home Blog Shop About Contact",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#billing_address_1",
+        "tag": "input",
+        "text": "2214 NW Thurman St",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_address_2",
+        "tag": "input",
+        "text": "Apartment, suite, unit, etc. (optional)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_city",
+        "tag": "input",
+        "text": "Portland",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_company",
+        "tag": "input",
+        "text": "Fernhill Home",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_country",
+        "tag": "select",
+        "text": "Select a country / region… Afghanistan Åland Islands Albani…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_email",
+        "tag": "input",
+        "text": "maya@fernhillhome.com",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_first_name",
+        "tag": "input",
+        "text": "Maya",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_last_name",
+        "tag": "input",
+        "text": "Ellison",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_phone",
+        "tag": "input",
+        "text": "(503) 555-0142",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_postcode",
+        "tag": "input",
+        "text": "97210",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_state",
+        "tag": "select",
+        "text": "Select an option… Alabama Alaska Arizona Arkansas Californi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#coupon_code",
+        "tag": "input",
+        "text": "Coupon code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_dp_lines_nonce",
+        "tag": "input",
+        "text": "45ce386dd5",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#order_comments",
+        "tag": "textarea",
+        "text": "Notes about your order, e.g. special notes for delivery.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#payment_method_bacs",
+        "tag": "input",
+        "text": "bacs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#payment_method_cheque",
+        "tag": "input",
+        "text": "cheque",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#payment_method_cod",
+        "tag": "input",
+        "text": "cod",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ship-to-different-address-checkbox",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_address_1",
+        "tag": "input",
+        "text": "2214 NW Thurman St",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_address_2",
+        "tag": "input",
+        "text": "Apartment, suite, unit, etc. (optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_city",
+        "tag": "input",
+        "text": "Portland",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_company",
+        "tag": "input",
+        "text": "Fernhill Home",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_country",
+        "tag": "select",
+        "text": "Select a country / region…AfghanistanÅland IslandsAlbaniaAl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_first_name",
+        "tag": "input",
+        "text": "Maya",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_last_name",
+        "tag": "input",
+        "text": "Ellison",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_method_0_flat_rate8",
+        "tag": "input",
+        "text": "flat_rate:8",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_method_0_free_shipping4",
+        "tag": "input",
+        "text": "free_shipping:4",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_postcode",
+        "tag": "input",
+        "text": "97210",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_state",
+        "tag": "select",
+        "text": "Select an option…AlabamaAlaskaArizonaArkansasCaliforniaColo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#terms",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-process-checkout-nonce",
+        "tag": "input",
+        "text": "ecb11a9521",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-1",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-2",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-3",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-dp-line-select",
+        "tag": "select",
+        "text": "DeliveryCollection",
+        "count": 4,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#merchant-added-to-cart-popup-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-added-to-cart-popup-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-dp-line-panel",
+        "tag": "div",
+        "text": "HowDeliveryCollectionServiceChoose a serviceStandard delive…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-login-popup-dropdown",
+        "tag": "div",
+        "text": "Welcome Maya Ellison",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-quick-view-modal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#address_suggestions_billing",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#address_suggestions_shipping",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#athemes-blocks-common-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_address_1_field",
+        "tag": "p",
+        "text": "Street address *",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_address_2_field",
+        "tag": "p",
+        "text": "Apartment, suite, unit, etc. (optional)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_city_field",
+        "tag": "p",
+        "text": "Town / City *",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_company_field",
+        "tag": "p",
+        "text": "Company name (optional)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_country_field",
+        "tag": "p",
+        "text": "Country / Region * Select a country / region… Afghanistan Å…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_email_field",
+        "tag": "p",
+        "text": "Email address *",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_first_name_field",
+        "tag": "p",
+        "text": "First name *",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_last_name_field",
+        "tag": "p",
+        "text": "Last name *",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_phone_field",
+        "tag": "p",
+        "text": "Phone *",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_postcode_field",
+        "tag": "p",
+        "text": "ZIP Code *",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#billing_state_field",
+        "tag": "p",
+        "text": "State * Select an option… Alabama Alaska Arizona Arkansas C…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#core-block-supports-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-background-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customer_details",
+        "tag": "div",
+        "text": "Billing details First name * Last name * Company name (opti…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-free-shipping-progress-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_comments_field",
+        "tag": "p",
+        "text": "Order notes (optional)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_review",
+        "tag": "div",
+        "text": "Product Subtotal Blue Channel Dining Chair × 1 Choose deliv…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_review_heading",
+        "tag": "h3",
+        "text": "Your order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#page",
+        "tag": "div",
+        "text": "Skip to content Home Blog Shop About Contact Fernhill Home …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#payment",
+        "tag": "div",
+        "text": "Direct bank transfer Make your payment directly into our ba…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-8",
+        "tag": "article",
+        "text": "Checkout Have a coupon? Click here to enter your code You q…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#primary",
+        "tag": "main",
+        "text": "Checkout Have a coupon? Click here to enter your code You q…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-billing_country-container",
+        "tag": "span",
+        "text": "United States (US)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-billing_state-container",
+        "tag": "span",
+        "text": "Oregon",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-shipping_country-container",
+        "tag": "span",
+        "text": "United States (US)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-shipping_state-container",
+        "tag": "span",
+        "text": "Oregon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ship-to-different-address",
+        "tag": "h3",
+        "text": "Ship to a different address?",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_address_1_field",
+        "tag": "p",
+        "text": "Street address *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_address_2_field",
+        "tag": "p",
+        "text": "Apartment, suite, unit, etc. (optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_city_field",
+        "tag": "p",
+        "text": "Town / City *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_company_field",
+        "tag": "p",
+        "text": "Company name (optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_country_field",
+        "tag": "p",
+        "text": "Country / Region *Select a country / region…AfghanistanÅlan…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_first_name_field",
+        "tag": "p",
+        "text": "First name *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_last_name_field",
+        "tag": "p",
+        "text": "Last name *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_method",
+        "tag": "ul",
+        "text": "Free delivery and setup Local delivery: $49.00",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_postcode_field",
+        "tag": "p",
+        "text": "ZIP Code *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_state_field",
+        "tag": "p",
+        "text": "State *Select an option…AlabamaAlaskaArizonaArkansasCalifor…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#site-header-cart",
+        "tag": "div",
+        "text": "2",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation",
+        "tag": "nav",
+        "text": "Home Blog Shop About Contact",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation-mobile",
+        "tag": "nav",
+        "text": "Home Blog Shop About Contact",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#text-2",
+        "tag": "section",
+        "text": "ABOUT About Fernhill How it Works Reviews Contact Careers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-3",
+        "tag": "section",
+        "text": "HELP FAQs Privacy Policy Terms Returns",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-4",
+        "tag": "section",
+        "text": "Solid wood furniture, built by hand in Portland and made to…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wc-custom-place-order-button-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_product_categories-1",
+        "tag": "section",
+        "text": "SHOP Bedroom Decor & Lighting Dining Home Office Living Roo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-checkout-form-coupon",
+        "tag": "form",
+        "text": "Coupon: Apply coupon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-inline-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-group-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-heading-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-library-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-paragraph-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-dp-line-field",
+        "tag": "label",
+        "text": "HowDeliveryCollection",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-dp-line-label",
+        "tag": "span",
+        "text": "How",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-order-offer-container",
+        "tag": "div",
+        "text": "Add 3 more to get 15% off Blue Channel Dining Chair with 15…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-quick-view-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,437 @@
+{
+  "slug": "admin-product-brands",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": "#show-settings-link",
+      "count": 1
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "#name a",
+      "count": 10
+    },
+    {
+      "label": "woocommerce-order-writes-live-2",
+      "event": "click",
+      "selector": "button.upload_image_button.button",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_inline_edit",
+        "tag": "input",
+        "text": "f6daddaabb",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Delete",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description-hide",
+        "tag": "input",
+        "text": "description",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#edit_product_brand_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#parent",
+        "tag": "select",
+        "text": "None",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts-hide",
+        "tag": "input",
+        "text": "posts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_thumbnail_id",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "ade458b1eb",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slug-hide",
+        "tag": "input",
+        "text": "slug",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submit",
+        "tag": "input",
+        "text": "Add New Brand",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-slug",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#thumb-hide",
+        "tag": "input",
+        "text": "thumb",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#addtag",
+        "tag": "form",
+        "text": "Name The name is how it appears on your site. Slug The “slu…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Image Description Slug Count Pagination Number of i…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-container",
+        "tag": "div",
+        "text": "Brands can be added and managed from this screen. You can o…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-left",
+        "tag": "div",
+        "text": "Brands can be added and managed from this screen. You can o…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-right",
+        "tag": "div",
+        "text": "Categories list Table ordered hierarchically. Ascending. Se…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description",
+        "tag": "th",
+        "text": "Description Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description-description",
+        "tag": "p",
+        "text": "The description is not prominent by default; however, some …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inline-edit",
+        "tag": "tr",
+        "text": "Quick Edit Name Slug Update Brand Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inlineedit",
+        "tag": "tbody",
+        "text": "Quick Edit Name Slug Update Brand Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#name",
+        "tag": "th",
+        "text": "Name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#name-description",
+        "tag": "p",
+        "text": "The name is how it appears on your site.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#parent-description",
+        "tag": "p",
+        "text": "Assign a parent term to create a hierarchy. The term Jazz, …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts",
+        "tag": "th",
+        "text": "Count Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts-filter",
+        "tag": "form",
+        "text": "Categories list Table ordered hierarchically. Ascending. Se…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_cat_thumbnail",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Image Description Slug Count Pagination Number of i…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slug",
+        "tag": "th",
+        "text": "Slug Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#slug-description",
+        "tag": "p",
+        "text": "The “slug” is the URL-friendly version of the name. It is u…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "No Brands Found",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#thumb",
+        "tag": "th",
+        "text": "Image",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

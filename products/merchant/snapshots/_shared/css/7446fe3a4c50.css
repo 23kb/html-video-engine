@@ -1,0 +1,48 @@
+
+                /* Basic styling for per-product discount fields */
+                .merchant-pro-product-bundle-data .mppb-product-discount-section {
+                    padding-top: 10px;
+                    margin-top: 10px;
+                    border-top: 1px dashed #e0e0e0;
+                    display: none; /* Initially hidden, controlled by JS based on scope */
+                }
+
+                .merchant-pro-product-bundle-data .mppb-product-discount-type label,
+                .merchant-pro-product-bundle-data .mppb-product-discount-value label {
+                    display: inline-block;
+                    width: 100px; /* Adjust as needed */
+                    margin-right: 10px;
+                }
+
+                .merchant-pro-product-bundle-data .mppb-product-discount-type .mppb-choice {
+                    margin-right: 15px;
+                }
+
+                .merchant-pro-product-bundle-data .mppb-product-discount-value input {
+                    width: 80px;
+                    vertical-align: middle;
+                }
+
+                .merchant-pro-product-bundle-data .mppb-product-discount-value .discount-unit {
+                    display: inline-block;
+                    margin-left: 5px;
+                }
+
+                /* Hide bundle discount fields initially if scope is per_product */
+                body.post-type-product .merchant-pro-product-bundle-data.mppb-scope-per-product .discount-type,
+                body.post-type-product .merchant-pro-product-bundle-data.mppb-scope-per-product .discount {
+                    display: none;
+                }
+
+                /* Hide per-product discount fields initially if scope is bundle */
+                body.post-type-product .merchant-pro-product-bundle-data.mppb-scope-bundle .mppb-product-discount-section {
+                    display: none;
+                }
+
+                /* Show per-product discount fields if scope is per_product */
+                body.post-type-product .merchant-pro-product-bundle-data.mppb-scope-per-product .mppb-product-discount-section {
+                    display: block; /* Or appropriate display value */
+                }
+
+
+            

@@ -1,0 +1,694 @@
+{
+  "slug": "admin-module-reasons-to-buy",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "select2-multiple-open",
+      "event": "click",
+      "selector": ".select2-selection.select2-selection--multiple",
+      "count": 12
+    },
+    {
+      "label": "select2-multiple-remove",
+      "event": "click",
+      "selector": "span.select2-selection__choice__remove",
+      "count": 1
+    },
+    {
+      "label": "merchant-field-change-conditions",
+      "event": "change",
+      "selector": ".merchant-module-page-setting-field[data-condition][data-conditions]",
+      "count": 4
+    },
+    {
+      "label": "merchant-field-input-dirty",
+      "event": "input",
+      "selector": ".merchant-module-page-setting-field[data-condition][data-conditions]",
+      "count": 4
+    },
+    {
+      "label": "merchant-campaign-status-badge",
+      "event": "click",
+      "selector": ".layout-status.layout-status--active[data-status-field][data-status-options]",
+      "count": 3
+    },
+    {
+      "label": "merchant-accordion-header",
+      "event": "click",
+      "selector": ".layout-header.ui-accordion-header",
+      "count": 2
+    },
+    {
+      "label": "merchant-colour-picker-open",
+      "event": "click",
+      "selector": ".merchant-color-picker[data-default-color]",
+      "count": 9
+    },
+    {
+      "label": "merchant-module-enabled-dropdown",
+      "event": "click",
+      "selector": "div.merchant-module-page-button.merchant-module-page-button-deactivate",
+      "count": 1
+    },
+    {
+      "label": "merchant-module-dropdown-close",
+      "event": "click",
+      "selector": ".dashicons.dashicons-no-alt",
+      "count": 6
+    },
+    {
+      "label": "merchant-module-disable",
+      "event": "click",
+      "selector": "div[data-module]",
+      "count": 2
+    },
+    {
+      "label": "merchant-module-save",
+      "event": "click",
+      "selector": "button.merchant-module-save-button",
+      "count": 1
+    },
+    {
+      "label": "merchant-ai-prompts-open",
+      "event": "click",
+      "selector": "button.merchant-module-page-link.merchant-module-page-link-ai",
+      "count": 1
+    },
+    {
+      "label": "merchant-news-sidebar-toggle",
+      "event": "click",
+      "selector": "a.merchant-notifications",
+      "count": 1
+    },
+    {
+      "label": "merchant-news-sidebar-close",
+      "event": "click",
+      "selector": "a.merchant-notifications-sidebar-close",
+      "count": 1
+    },
+    {
+      "label": "merchant-news-tabs",
+      "event": "click",
+      "selector": ".merchant-tabs-nav-link[data-tab-to]",
+      "count": 2
+    },
+    {
+      "label": "merchant-campaign-row-actions",
+      "event": "click",
+      "selector": ".layout-actions__toggle",
+      "count": 3
+    },
+    {
+      "label": "merchant-campaign-row-duplicate-delete",
+      "event": "click",
+      "selector": "a.customize-control-flexible-content-duplicate",
+      "count": 7
+    },
+    {
+      "label": "merchant-module-live-only-buttons",
+      "event": "click",
+      "selector": "button.merchant-module-page-button.merchant-module-question-answer-button",
+      "count": 3
+    },
+    {
+      "label": "merchant-flexible-add",
+      "event": "click",
+      "selector": "a.customize-control-flexible-content-add",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#download-backup-button",
+        "tag": "button",
+        "text": "Download",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-live-only-buttons",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-ai-badge",
+        "tag": "button",
+        "text": "Try with AI",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-ai-prompts-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-ai-prompts-modal-close",
+        "tag": "button",
+        "text": "Close",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-dropzone__browse",
+        "tag": "button",
+        "text": "Browse",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-live-only-buttons",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-icon-picker-toggle",
+        "tag": "button",
+        "text": "Select icon",
+        "count": 6,
+        "hidden": true,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": ".merchant-module-alert-close",
+        "tag": "a",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-module-discard-button",
+        "tag": "a",
+        "text": "Discard",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-dropdown-close",
+        "tag": "i",
+        "text": "",
+        "count": 6,
+        "hidden": false,
+        "wired": "merchant-module-dropdown-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-page-button",
+        "tag": "div",
+        "text": "Enable",
+        "count": 3,
+        "hidden": true,
+        "wired": "merchant-module-disable",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-page-link-tutorial",
+        "tag": "a",
+        "text": "Tutorial",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-question-answer-button",
+        "tag": "button",
+        "text": "Submit",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-live-only-buttons",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-save-button",
+        "tag": "button",
+        "text": "Save",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-save",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-module-save-button-label",
+        "tag": "span",
+        "text": "Save",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-module-save",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-notifications",
+        "tag": "a",
+        "text": "1",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-news-sidebar-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-close",
+        "tag": "a",
+        "text": "Close the sidebar",
+        "count": 1,
+        "hidden": true,
+        "wired": "merchant-news-sidebar-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-tabs-nav-link",
+        "tag": "a",
+        "text": "Merchant",
+        "count": 2,
+        "hidden": true,
+        "wired": "merchant-news-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-website",
+        "tag": "a",
+        "text": "Website",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#ui-id-1",
+        "tag": "div",
+        "text": "1 Why shop Fernhill Home Active",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": "#ui-id-3",
+        "tag": "div",
+        "text": "2 Made for the outdoors Active",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-field-change-conditions",
+        "wiredEvent": "change"
+      },
+      {
+        "sel": ".merchant-tab-content",
+        "tag": "div",
+        "text": "September 17, 2026 Removed Patcher page, with a notice offe…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-tabs-nav-item",
+        "tag": "li",
+        "text": "Merchant",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#display_icon",
+        "tag": "input",
+        "text": "1",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "#exclude_brands_toggle",
+        "tag": "input",
+        "text": "1",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "#exclude_categories_toggle",
+        "tag": "input",
+        "text": "1",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "#exclude_products_toggle",
+        "tag": "input",
+        "text": "1",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "#exclude_tags_toggle",
+        "tag": "input",
+        "text": "1",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "#include_subcategories",
+        "tag": "input",
+        "text": "1",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-backup-file",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#use_shortcode",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-color-input",
+        "tag": "input",
+        "text": "#212121",
+        "count": 9,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-range-input",
+        "tag": "input",
+        "text": "5",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-range-number-input",
+        "tag": "input",
+        "text": "5",
+        "count": 3,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-search-field",
+        "tag": "input",
+        "text": "Search products",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-selected-products",
+        "tag": "input",
+        "text": "",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-sortable-repeater-input",
+        "tag": "input",
+        "text": "[{\"text\":\"100% Polyester.\",\"icon\":\"\"}]",
+        "count": 3,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#botiga-admin-modal-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-ai-prompts-modal",
+        "tag": "div",
+        "text": "AI Prompt Examples Manage your AI connection",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-ai-prompts-modal-header",
+        "tag": "div",
+        "text": "AI",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-restore-dropzone",
+        "tag": "div",
+        "text": "Drag & drop a JSON backup file here, or Browse",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ui-id-2",
+        "tag": "div",
+        "text": "Status Active Inactive Title Products that will display the…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ui-id-4",
+        "tag": "div",
+        "text": "Status Active Inactive Title Products that will display the…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-flexible-content",
+        "tag": "div",
+        "text": "1 Why shop Fernhill Home Active Status Active Inactive Titl…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-icon-picker-dropdown",
+        "tag": "div",
+        "text": "",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-module-alert-content",
+        "tag": "div",
+        "text": "This module is currently disabled. Please enable the module…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-module-alert-header",
+        "tag": "div",
+        "text": "Important info!",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-module-deactivate-dropdown",
+        "tag": "div",
+        "text": "Disable Reasons To Buy List",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-dropdown",
+        "tag": "div",
+        "text": "Did something go wrong? Submit a bug: the module doesn’t wo…",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-actions",
+        "tag": "div",
+        "text": "Enabled Disable Reasons To Buy List Did something go wrong?…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-ajax-header",
+        "tag": "div",
+        "text": "Your settings have been modified. Save? Discard Save",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-ajax-notice",
+        "tag": "div",
+        "text": "Your settings have been modified. Save?",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-content",
+        "tag": "div",
+        "text": "Your settings have been modified. Save? Discard Save Go Bac…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-header",
+        "tag": "div",
+        "text": "Go Back Reasons To Buy List Provide customers with a summar…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-header-content",
+        "tag": "div",
+        "text": "Go Back Reasons To Buy List Provide customers with a summar…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-page-setting-field-select",
+        "tag": "div",
+        "text": "Status Active Inactive",
+        "count": 9,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-module-question-answer-dropdown",
+        "tag": "div",
+        "text": "Submit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-module-question-thank-you-dropdown",
+        "tag": "div",
+        "text": "Thank you Your feedback helps us improve Merchant.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-notification-content",
+        "tag": "div",
+        "text": "Removed Patcher page, with a notice offering to remove the …",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant Merchant Mer…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-header",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-header-content",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-products-search-container",
+        "tag": "div",
+        "text": "Searching...",
+        "count": 6,
+        "hidden": true
+      }
+    ]
+  }
+}

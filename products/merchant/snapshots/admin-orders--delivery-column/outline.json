@@ -1,0 +1,852 @@
+{
+  "slug": "admin-orders--delivery-column",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.woocommerce-layout__activity-panel-tab[data-snap-park][data-testid]",
+      "count": 2
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 100
+    },
+    {
+      "label": "chrome-nearest-screen",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 51
+    },
+    {
+      "label": "woocommerce-order-preview",
+      "event": "click",
+      "selector": ".order-preview[data-order-id]",
+      "count": 20
+    },
+    {
+      "label": "select2-open",
+      "event": "click",
+      "selector": "span.select2-selection.select2-selection--single",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#activity-panel-tab-activity",
+        "tag": "button",
+        "text": "Activity unread activity",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#activity-panel-tab-setup",
+        "tag": "button",
+        "text": "Finish setup",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#billing_address-hide",
+        "tag": "input",
+        "text": "billing_address",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Change status to processing Change status to o…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Change status to processing Change status to o…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1481",
+        "tag": "input",
+        "text": "1481",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1486",
+        "tag": "input",
+        "text": "1486",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1603",
+        "tag": "input",
+        "text": "1603",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1604",
+        "tag": "input",
+        "text": "1604",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1605",
+        "tag": "input",
+        "text": "1605",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1606",
+        "tag": "input",
+        "text": "1606",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1607",
+        "tag": "input",
+        "text": "1607",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1608",
+        "tag": "input",
+        "text": "1608",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1610",
+        "tag": "input",
+        "text": "1610",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1611",
+        "tag": "input",
+        "text": "1611",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1621",
+        "tag": "input",
+        "text": "1621",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1636",
+        "tag": "input",
+        "text": "1636",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1637",
+        "tag": "input",
+        "text": "1637",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1642",
+        "tag": "input",
+        "text": "1642",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1644",
+        "tag": "input",
+        "text": "1644",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1645",
+        "tag": "input",
+        "text": "1645",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1647",
+        "tag": "input",
+        "text": "1647",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1648",
+        "tag": "input",
+        "text": "1648",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1649",
+        "tag": "input",
+        "text": "1649",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1652",
+        "tag": "input",
+        "text": "1652",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit_shop_order_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#filter-by-created-via",
+        "tag": "select",
+        "text": "All sales channels Admin Checkout Point of Sale",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#filter-by-date",
+        "tag": "select",
+        "text": "All dates October 2026 September 2026 August 2026 July 2026…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant_delivery-hide",
+        "tag": "input",
+        "text": "merchant_delivery",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_date-hide",
+        "tag": "input",
+        "text": "order_date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_number-hide",
+        "tag": "input",
+        "text": "order_number",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_status-hide",
+        "tag": "input",
+        "text": "order_status",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_total-hide",
+        "tag": "input",
+        "text": "order_total",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order-query-submit",
+        "tag": "input",
+        "text": "Filter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-search-filter",
+        "tag": "select",
+        "text": "Order ID Customer Email Customers Products All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#orders-search-input-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#origin-hide",
+        "tag": "input",
+        "text": "origin",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pre_order_shipping_date-hide",
+        "tag": "input",
+        "text": "pre_order_shipping_date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "026c10d384",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_address-hide",
+        "tag": "input",
+        "text": "shipping_address",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wc_actions-hide",
+        "tag": "input",
+        "text": "wc_actions",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#activity-panel-header_32",
+        "tag": "h2",
+        "text": "Store Activity",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-activity-panel",
+        "tag": "aside",
+        "text": "Activity unread activity Finish setup",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Order Date Status Delivery / Pickup Billing Ship to…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_address",
+        "tag": "th",
+        "text": "Billing",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "If you like WooCommerce please leave us a ★★★★★ rating. A h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#jp-admin-notices",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant_delivery",
+        "tag": "th",
+        "text": "Delivery / Pickup Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_date",
+        "tag": "th",
+        "text": "Date Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_number",
+        "tag": "th",
+        "text": "Order Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_status",
+        "tag": "th",
+        "text": "Status",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_total",
+        "tag": "th",
+        "text": "Total Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1481",
+        "tag": "tr",
+        "text": "Preview #1481 Daniel Moreau Oct 2, 2026 Failed $342.00 Unkn…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1486",
+        "tag": "tr",
+        "text": "Preview #1486 Maya Ellison Oct 2, 2026 Cancelled $0.00 Unkn…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1603",
+        "tag": "tr",
+        "text": "Preview #1603 Maya Ellison Oct 1, 2026 Processing $259.00 U…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1604",
+        "tag": "tr",
+        "text": "Preview #1604 Maya Ellison Oct 1, 2026 Processing $348.00 U…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1605",
+        "tag": "tr",
+        "text": "Preview #1605 Maya Ellison Oct 1, 2026 Processing $377.00 U…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1606",
+        "tag": "tr",
+        "text": "Preview #1606 Maya Ellison Oct 1, 2026 Processing $249.00 U…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1607",
+        "tag": "tr",
+        "text": "Preview #1607 Maya Ellison Oct 1, 2026 Processing $636.00 U…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1608",
+        "tag": "tr",
+        "text": "Preview #1608 Maya Ellison Oct 1, 2026 Processing $518.00 U…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1610",
+        "tag": "tr",
+        "text": "Preview #1610 Hannah Reyes Oct 1, 2026 Processing $259.00 U…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1611",
+        "tag": "tr",
+        "text": "Preview #1611 Owen Park Oct 1, 2026 Processing $259.00 Unkn…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1621",
+        "tag": "tr",
+        "text": "Preview #1621 Maya Ellison Oct 1, 2026 Processing $1,468.80…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1636",
+        "tag": "tr",
+        "text": "Preview #1636 Maya Ellison Oct 1, 2026 Processing Delivery …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1637",
+        "tag": "tr",
+        "text": "Preview #1637 Maya Ellison Oct 1, 2026 Processing Pickup Tu…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1642",
+        "tag": "tr",
+        "text": "Preview #1642 Grace Okafor Oct 1, 2026 Processing Delivery …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1644",
+        "tag": "tr",
+        "text": "Preview #1644 Sofia Marchetti Oct 1, 2026 Processing Delive…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1645",
+        "tag": "tr",
+        "text": "Preview #1645 Hannah Reyes Oct 1, 2026 Processing Pickup We…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1647",
+        "tag": "tr",
+        "text": "Preview #1647 Noah Castillo Oct 1, 2026 Processing Pickup T…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1648",
+        "tag": "tr",
+        "text": "Preview #1648 Priya Natarajan Oct 1, 2026 Processing Delive…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1649",
+        "tag": "tr",
+        "text": "Preview #1649 Ava Thompson Oct 1, 2026 Processing Delivery …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1652",
+        "tag": "tr",
+        "text": "Preview #1652 Owen Park Oct 2, 2026 Processing No delivery …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#origin",
+        "tag": "th",
+        "text": "Origin",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#pre_order_shipping_date",
+        "tag": "th",
+        "text": "Shipping Date",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Order Date Status Delivery / Pickup Billing Ship to…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-_customer_user-vf-container",
+        "tag": "span",
+        "text": "Filter by registered customer",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_address",
+        "tag": "th",
+        "text": "Ship to",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 5",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Preview #1486 Maya Ellison Oct 2, 2026 Cancelled $0.00 Unkn…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tiptip_arrow",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_arrow_inner",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wc_actions",
+        "tag": "th",
+        "text": "Actions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wc-orders-filter",
+        "tag": "form",
+        "text": "Search orders: Order ID Customer Email Customers Products A…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-root",
+        "tag": "div",
+        "text": "Orders Store Activity Activity unread activity Finish setup",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,811 @@
+{
+  "slug": "admin-comment-edit-review-images",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wp-postbox-toggle",
+      "event": "click",
+      "selector": "#woocommerce-rating-title",
+      "count": 4
+    },
+    {
+      "label": "wp-postbox-move",
+      "event": "click",
+      "selector": ".wp-tooltip__toggle",
+      "count": 4
+    },
+    {
+      "label": "wp-publish-box-edit",
+      "event": "click",
+      "selector": "a.edit-timestamp.hide-if-no-js",
+      "count": 3
+    },
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": "button.button.button-compact",
+      "count": 1
+    },
+    {
+      "label": "wp-editor-toolbar-live",
+      "event": "click",
+      "selector": ".button.button-small",
+      "count": 12
+    },
+    {
+      "label": "merchant-review-image-remove",
+      "event": "click",
+      "selector": ".remove-image",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment_parent",
+        "tag": "select",
+        "text": "None (top-level comment)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#content",
+        "tag": "textarea",
+        "text": "We bought six for our dining nook. The channel tufting hold…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cur_aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_hh",
+        "tag": "input",
+        "text": "01",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_jj",
+        "tag": "input",
+        "text": "05",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_mm",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_mn",
+        "tag": "input",
+        "text": "42",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#email",
+        "tag": "input",
+        "text": "hannah.reyes@example.com",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#hh",
+        "tag": "input",
+        "text": "07",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_comment_parent",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_hh",
+        "tag": "input",
+        "text": "07",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_jj",
+        "tag": "input",
+        "text": "30",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_mm",
+        "tag": "input",
+        "text": "09",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_mn",
+        "tag": "input",
+        "text": "00",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#jj",
+        "tag": "input",
+        "text": "30",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mm",
+        "tag": "select",
+        "text": "01-Jan 02-Feb 03-Mar 04-Apr 05-May 06-Jun 07-Jul 08-Aug 09-…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mn",
+        "tag": "input",
+        "text": "00",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#name",
+        "tag": "input",
+        "text": "Hannah Reyes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#newcomment_author_url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_content_block",
+        "tag": "input",
+        "text": "b-quote",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_content_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_content_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_content_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_content_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_content_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_content_ins",
+        "tag": "input",
+        "text": "ins",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_content_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_content_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_content_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_content_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_content_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rating",
+        "tag": "select",
+        "text": "1 2 3 4 5",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#referredby",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#review_photos_ids",
+        "tag": "input",
+        "text": "254,264",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#reviews_images_nonce",
+        "tag": "input",
+        "text": "9ed568d62d",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#save",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ss",
+        "tag": "input",
+        "text": "00",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_meta_nonce",
+        "tag": "input",
+        "text": "dd798e42b7",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#comment-status",
+        "tag": "div",
+        "text": "Status: Approved Comment status Approved Pending Spam",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-body-content",
+        "tag": "div",
+        "text": "Permalink: http://fernhillhome.com/product/blue-chann…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-link-box",
+        "tag": "div",
+        "text": "Permalink: http://fernhillhome.com/product/blue-chann…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-parent-display",
+        "tag": "span",
+        "text": "In reply to: None",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-parent-div",
+        "tag": "fieldset",
+        "text": "Parent comment Parent comment None (top-level comment) OK C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment-status-display",
+        "tag": "span",
+        "text": "Approved",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-status-radio",
+        "tag": "fieldset",
+        "text": "Comment status Approved Pending Spam",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#delete-action",
+        "tag": "div",
+        "text": "Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#major-publishing-actions",
+        "tag": "div",
+        "text": "Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#minor-publishing",
+        "tag": "div",
+        "text": "Status: Approved Comment status Approved Pending Spam Submi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#misc-publishing-actions",
+        "tag": "div",
+        "text": "Status: Approved Comment status Approved Pending Spam Submi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#namediv",
+        "tag": "div",
+        "text": "Author Comment Author Name Email URL",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "Rating Move up Move down Show or hide panel 1 2 3 4 5 Revie…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post",
+        "tag": "form",
+        "text": "Edit Comment Permalink: http://fernhillhome.com/produ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body",
+        "tag": "div",
+        "text": "Permalink: http://fernhillhome.com/product/blue-chann…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-1",
+        "tag": "div",
+        "text": "Save Status: Approved Comment status Approved Pending Spam …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-2",
+        "tag": "div",
+        "text": "Rating Move up Move down Show or hide panel 1 2 3 4 5 Revie…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postdiv",
+        "tag": "div",
+        "text": "Comment",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#poststuff",
+        "tag": "div",
+        "text": "Permalink: http://fernhillhome.com/product/blue-chann…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#publishing-action",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_content_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#review-images",
+        "tag": "div",
+        "text": "Review Images Move up Move down Show or hide panel × × UPLO…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#review-images-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#review-images-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#review-images-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#review-images-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#review-images-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#review-images-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#review-images-list",
+        "tag": "ul",
+        "text": "× ×",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#review-images-title",
+        "tag": "h2",
+        "text": "Review Images",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#review-images-wrapper",
+        "tag": "div",
+        "text": "× × UPLOAD IMAGES",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sample-permalink",
+        "tag": "span",
+        "text": "http://fernhillhome.com/product/blue-channel-dining-c…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitcomment",
+        "tag": "div",
+        "text": "Status: Approved Comment status Approved Pending Spam Submi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submitdiv",
+        "tag": "div",
+        "text": "Save Status: Approved Comment status Approved Pending Spam …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#timestamp",
+        "tag": "span",
+        "text": "Submitted on: Sep 30, 2026 at 07:00",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#timestampdiv",
+        "tag": "fieldset",
+        "text": "Date and time Month 01-Jan 02-Feb 03-Mar 04-Apr 05-May 06-J…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-rating",
+        "tag": "div",
+        "text": "Rating Move up Move down Show or hide panel 1 2 3 4 5",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-rating-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-rating-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-rating-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-rating-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-rating-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-rating-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-rating-title",
+        "tag": "h2",
+        "text": "Rating",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-content-editor-container",
+        "tag": "div",
+        "text": "We bought six for our dining nook. The channel tufting hold…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-content-wrap",
+        "tag": "div",
+        "text": "We bought six for our dining nook. The channel tufting hold…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

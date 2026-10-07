@@ -1,0 +1,1868 @@
+{
+  "slug": "admin-products-list",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.woocommerce-layout__activity-panel-tab[data-snap-park][data-testid]",
+      "count": 2
+    },
+    {
+      "label": "wp-terms-quick-edit-live",
+      "event": "click",
+      "selector": ".button-link.editinline",
+      "count": 20
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 250
+    },
+    {
+      "label": "chrome-nearest-screen",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 51
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#activity-panel-tab-activity",
+        "tag": "button",
+        "text": "Activity unread activity",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#activity-panel-tab-setup",
+        "tag": "button",
+        "text": "Finish setup",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_inline_edit",
+        "tag": "input",
+        "text": "ffca834fb4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk_edit",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Bulk edit Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Bulk edit Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-117-2",
+        "tag": "input",
+        "text": "117",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-120-2",
+        "tag": "input",
+        "text": "120",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-124-2",
+        "tag": "input",
+        "text": "124",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-125-2",
+        "tag": "input",
+        "text": "125",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-126-2",
+        "tag": "input",
+        "text": "126",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-127-2",
+        "tag": "input",
+        "text": "127",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-128-2",
+        "tag": "input",
+        "text": "128",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-134-2",
+        "tag": "input",
+        "text": "134",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb-select-1619",
+        "tag": "input",
+        "text": "1619",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1620",
+        "tag": "input",
+        "text": "1620",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1655",
+        "tag": "input",
+        "text": "1655",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1657",
+        "tag": "input",
+        "text": "1657",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1659",
+        "tag": "input",
+        "text": "1659",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1661",
+        "tag": "input",
+        "text": "1661",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1663",
+        "tag": "input",
+        "text": "1663",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1665",
+        "tag": "input",
+        "text": "1665",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-240",
+        "tag": "input",
+        "text": "240",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-245",
+        "tag": "input",
+        "text": "245",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-250",
+        "tag": "input",
+        "text": "250",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-255",
+        "tag": "input",
+        "text": "255",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-260",
+        "tag": "input",
+        "text": "260",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-265",
+        "tag": "input",
+        "text": "265",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-270",
+        "tag": "input",
+        "text": "270",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-275",
+        "tag": "input",
+        "text": "275",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-280",
+        "tag": "input",
+        "text": "280",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-285",
+        "tag": "input",
+        "text": "285",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-290",
+        "tag": "input",
+        "text": "290",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-295",
+        "tag": "input",
+        "text": "295",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date-hide",
+        "tag": "input",
+        "text": "date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dropdown_product_type",
+        "tag": "select",
+        "text": "Filter by product type Simple product → Downloadable → Virt…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit_product_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#featured-hide",
+        "tag": "input",
+        "text": "featured",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global_unique_id-hide",
+        "tag": "input",
+        "text": "global_unique_id",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-117-2",
+        "tag": "input",
+        "text": "117",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-120-2",
+        "tag": "input",
+        "text": "120",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-124-2",
+        "tag": "input",
+        "text": "124",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-125-2",
+        "tag": "input",
+        "text": "125",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-126-2",
+        "tag": "input",
+        "text": "126",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-127-2",
+        "tag": "input",
+        "text": "127",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-128-2",
+        "tag": "input",
+        "text": "128",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-134-2",
+        "tag": "input",
+        "text": "134",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#is_in_stock-hide",
+        "tag": "input",
+        "text": "is_in_stock",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-query-submit",
+        "tag": "input",
+        "text": "Filter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#price-hide",
+        "tag": "input",
+        "text": "price",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand",
+        "tag": "select",
+        "text": "Filter by brand",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_cat",
+        "tag": "select",
+        "text": "Select a category Bedroom (6) Decor & Lighting (6) Dining (…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#product_cat-hide",
+        "tag": "input",
+        "text": "product_cat",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag-hide",
+        "tag": "input",
+        "text": "product_tag",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "253638bfe6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sku-hide",
+        "tag": "input",
+        "text": "sku",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ss",
+        "tag": "input",
+        "text": "44",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#taxonomy-product_brand-hide",
+        "tag": "input",
+        "text": "taxonomy-product_brand",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#thumb-hide",
+        "tag": "input",
+        "text": "thumb",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#activity-panel-header_33",
+        "tag": "h2",
+        "text": "Store Activity",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-activity-panel",
+        "tag": "aside",
+        "text": "Activity unread activity Finish setup",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Image SKU GTIN, UPC, EAN, or ISBN Stock Price Categ…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit",
+        "tag": "tr",
+        "text": "Bulk Edit Brands Product categories Decor & Lighting Uncate…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-117-1",
+        "tag": "li",
+        "text": "Bedroom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-120-1",
+        "tag": "li",
+        "text": "Dining",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-124-1",
+        "tag": "li",
+        "text": "Home Office",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-125-1",
+        "tag": "li",
+        "text": "Living Room",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-126-1",
+        "tag": "li",
+        "text": "Outdoor",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-127-1",
+        "tag": "li",
+        "text": "Packages",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-128-1",
+        "tag": "li",
+        "text": "Uncategorized",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-product_cat-134-1",
+        "tag": "li",
+        "text": "Decor & Lighting",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-legend",
+        "tag": "legend",
+        "text": "Bulk Edit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-title-div",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-titles",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date",
+        "tag": "th",
+        "text": "Date",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#featured",
+        "tag": "th",
+        "text": "Featured",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "If you like WooCommerce please leave us a ★★★★★ rating. A h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#global_unique_id",
+        "tag": "th",
+        "text": "GTIN, UPC, EAN, or ISBN Sort ascending.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-117-1",
+        "tag": "li",
+        "text": "Bedroom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-120-1",
+        "tag": "li",
+        "text": "Dining",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-124-1",
+        "tag": "li",
+        "text": "Home Office",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-125-1",
+        "tag": "li",
+        "text": "Living Room",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-126-1",
+        "tag": "li",
+        "text": "Outdoor",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-127-1",
+        "tag": "li",
+        "text": "Packages",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-128-1",
+        "tag": "li",
+        "text": "Uncategorized",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-134-1",
+        "tag": "li",
+        "text": "Decor & Lighting",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1619",
+        "tag": "div",
+        "text": "Reading Nook Set reading-nook-set 1 open closed publish 02 …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1620",
+        "tag": "div",
+        "text": "Bistro Dining Set bistro-dining-set 1 open closed publish 0…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1655",
+        "tag": "div",
+        "text": "Striped Cotton Cushion striped-cotton-cushion 1 open closed…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1657",
+        "tag": "div",
+        "text": "Woven Plant Basket woven-plant-basket 1 open closed publish…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1659",
+        "tag": "div",
+        "text": "Arched Wall Mirror arched-wall-mirror 1 open closed publish…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1661",
+        "tag": "div",
+        "text": "Smoked Glass Vase smoked-glass-vase 1 open closed publish 0…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1663",
+        "tag": "div",
+        "text": "Globe Pendant Light globe-pendant-light 1 open closed publi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1665",
+        "tag": "div",
+        "text": "Arc Floor Lamp arc-floor-lamp 1 open closed publish 02 10 2…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_240",
+        "tag": "div",
+        "text": "Oak Nightstand oak-nightstand 1 open closed publish 23 03 2…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_245",
+        "tag": "div",
+        "text": "Open-Shelf Bedside Table open-shelf-bedside-table 1 open cl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_250",
+        "tag": "div",
+        "text": "Essential Dining Chair essential-dining-chair 1 open closed…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_255",
+        "tag": "div",
+        "text": "Curved Lounge Chair curved-lounge-chair 1 open closed publi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_260",
+        "tag": "div",
+        "text": "Blue Channel Dining Chair blue-channel-dining-chair 1 open …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_265",
+        "tag": "div",
+        "text": "White Stacking Chair white-stacking-chair 1 open closed pub…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_270",
+        "tag": "div",
+        "text": "Blush Velvet Accent Chair blush-velvet-accent-chair 1 open …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_275",
+        "tag": "div",
+        "text": "Swivel Lounge Chair swivel-lounge-chair 1 open closed publi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_280",
+        "tag": "div",
+        "text": "Three-Drawer Oak Dresser three-drawer-oak-dresser 1 open cl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_285",
+        "tag": "div",
+        "text": "Blush Three-Drawer Chest blush-three-drawer-chest 1 open cl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_290",
+        "tag": "div",
+        "text": "Tall Open Shelf tall-open-shelf 1 open closed publish 23 03…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_295",
+        "tag": "div",
+        "text": "White Writing Desk white-writing-desk 1 open closed publish…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-edit",
+        "tag": "tr",
+        "text": "Quick Edit Title Slug Date Month 01-Jan 02-Feb 03-Mar 04-Ap…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-edit-product_tag-desc",
+        "tag": "p",
+        "text": "Separate tags with commas",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#inlineedit",
+        "tag": "tbody",
+        "text": "Quick Edit Title Slug Date Month 01-Jan 02-Feb 03-Mar 04-Ap…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#is_in_stock",
+        "tag": "th",
+        "text": "Stock",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#jp-admin-notices",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#name",
+        "tag": "th",
+        "text": "Name Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1619",
+        "tag": "tr",
+        "text": "Select Reading Nook Set Reading Nook Set ID: 1619 | Edit | …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1620",
+        "tag": "tr",
+        "text": "Select Bistro Dining Set Bistro Dining Set ID: 1620 | Edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1655",
+        "tag": "tr",
+        "text": "Select Striped Cotton Cushion Striped Cotton Cushion ID: 16…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1657",
+        "tag": "tr",
+        "text": "Select Woven Plant Basket Woven Plant Basket ID: 1657 | Edi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1659",
+        "tag": "tr",
+        "text": "Select Arched Wall Mirror Arched Wall Mirror ID: 1659 | Edi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1661",
+        "tag": "tr",
+        "text": "Select Smoked Glass Vase Smoked Glass Vase ID: 1661 | Edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1663",
+        "tag": "tr",
+        "text": "Select Globe Pendant Light Globe Pendant Light ID: 1663 | E…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1665",
+        "tag": "tr",
+        "text": "Select Arc Floor Lamp Arc Floor Lamp ID: 1665 | Edit | Quic…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-240",
+        "tag": "tr",
+        "text": "Select Oak Nightstand Oak Nightstand ID: 240 | Edit | Quick…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-245",
+        "tag": "tr",
+        "text": "Select Open-Shelf Bedside Table Open-Shelf Bedside Table ID…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-250",
+        "tag": "tr",
+        "text": "Select Essential Dining Chair Essential Dining Chair ID: 25…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-255",
+        "tag": "tr",
+        "text": "Select Curved Lounge Chair Curved Lounge Chair ID: 255 | Ed…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-260",
+        "tag": "tr",
+        "text": "Select Blue Channel Dining Chair Blue Channel Dining Chair …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-265",
+        "tag": "tr",
+        "text": "Select White Stacking Chair White Stacking Chair ID: 265 | …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-270",
+        "tag": "tr",
+        "text": "Select Blush Velvet Accent Chair Blush Velvet Accent Chair …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-275",
+        "tag": "tr",
+        "text": "Select Swivel Lounge Chair Swivel Lounge Chair ID: 275 | Ed…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-280",
+        "tag": "tr",
+        "text": "Select Three-Drawer Oak Dresser Three-Drawer Oak Dresser ID…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-285",
+        "tag": "tr",
+        "text": "Select Blush Three-Drawer Chest Blush Three-Drawer Chest ID…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-290",
+        "tag": "tr",
+        "text": "Select Tall Open Shelf Tall Open Shelf ID: 290 | Edit | Qui…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-295",
+        "tag": "tr",
+        "text": "Select White Writing Desk White Writing Desk ID: 295 | Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts-filter",
+        "tag": "form",
+        "text": "Search products: Select bulk action Bulk actions Bulk edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#price",
+        "tag": "th",
+        "text": "Price Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_brand_1619",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_1620",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_1655",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_1657",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_1659",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_1661",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_1663",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_1665",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_240",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_245",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_250",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_255",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_260",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_265",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_270",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_275",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_280",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_285",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_290",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand_295",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_1619",
+        "tag": "div",
+        "text": "125",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_1620",
+        "tag": "div",
+        "text": "120",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_1655",
+        "tag": "div",
+        "text": "134",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_1657",
+        "tag": "div",
+        "text": "134",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_1659",
+        "tag": "div",
+        "text": "134",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_1661",
+        "tag": "div",
+        "text": "134",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_1663",
+        "tag": "div",
+        "text": "134",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_1665",
+        "tag": "div",
+        "text": "134",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_240",
+        "tag": "div",
+        "text": "117",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_245",
+        "tag": "div",
+        "text": "117",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_250",
+        "tag": "div",
+        "text": "125,126,127",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_255",
+        "tag": "div",
+        "text": "125",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_260",
+        "tag": "div",
+        "text": "120",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_265",
+        "tag": "div",
+        "text": "120,126",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_270",
+        "tag": "div",
+        "text": "117,125,127",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_275",
+        "tag": "div",
+        "text": "125",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_280",
+        "tag": "div",
+        "text": "117,125,127",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_285",
+        "tag": "div",
+        "text": "117",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_290",
+        "tag": "div",
+        "text": "117,125",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_295",
+        "tag": "div",
+        "text": "124,127",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag",
+        "tag": "th",
+        "text": "Tags",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_tag_1619",
+        "tag": "div",
+        "text": "Gift ideas, Sale",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_1620",
+        "tag": "div",
+        "text": "Made in Portland, Sale",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_1655",
+        "tag": "div",
+        "text": "Gift ideas",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_1657",
+        "tag": "div",
+        "text": "Bestseller, Gift ideas",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_1659",
+        "tag": "div",
+        "text": "Gift ideas",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_1661",
+        "tag": "div",
+        "text": "Bestseller, Gift ideas",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_1663",
+        "tag": "div",
+        "text": "Gift ideas, New arrival",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_1665",
+        "tag": "div",
+        "text": "Bestseller, New arrival, Sale",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_240",
+        "tag": "div",
+        "text": "Made in Portland, Sale, Solid oak",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_245",
+        "tag": "div",
+        "text": "Bestseller, Sale, Small spaces",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_250",
+        "tag": "div",
+        "text": "Outdoor, Small spaces",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_255",
+        "tag": "div",
+        "text": "Gift ideas, Reading nook, Sale",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_260",
+        "tag": "div",
+        "text": "Made in Portland",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_265",
+        "tag": "div",
+        "text": "Bestseller, Outdoor, Stackable",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_270",
+        "tag": "div",
+        "text": "Sale, Small spaces, Velvet",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_275",
+        "tag": "div",
+        "text": "Gift ideas, Reading nook",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_280",
+        "tag": "div",
+        "text": "Made in Portland, Sale, Solid oak",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_285",
+        "tag": "div",
+        "text": "Bestseller, Sale",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_290",
+        "tag": "div",
+        "text": "Sale, Small spaces",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_tag_295",
+        "tag": "div",
+        "text": "Gift ideas",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quick-edit-legend",
+        "tag": "legend",
+        "text": "Quick Edit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Image SKU GTIN, UPC, EAN, or ISBN Stock Price Categ…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sku",
+        "tag": "th",
+        "text": "SKU Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#stock_status_no_change",
+        "tag": "option",
+        "text": "— No Change —",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#taxonomy-product_brand",
+        "tag": "th",
+        "text": "Brands",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Select Smoked Glass Vase Smoked Glass Vase ID: 1661 | Edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#thumb",
+        "tag": "th",
+        "text": "Image",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tiptip_arrow",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_arrow_inner",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_inline_1619",
+        "tag": "div",
+        "text": "10 1728 1468.8 visible instock 8 yes no merchant_pro_bundle…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_1620",
+        "tag": "div",
+        "text": "10 536 482.4 visible instock no no merchant_pro_bundle no t…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_1655",
+        "tag": "div",
+        "text": "10 FH-DECOR-STRIPEDC 45 visible instock 24 yes no simple no…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_1657",
+        "tag": "div",
+        "text": "10 FH-DECOR-WOVENPLA 58 visible instock 18 yes no simple no…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_1659",
+        "tag": "div",
+        "text": "10 FH-DECOR-ARCHEDWA 189 visible instock 9 yes no simple no…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_1661",
+        "tag": "div",
+        "text": "10 FH-DECOR-SMOKEDGL 42 visible instock 30 yes no simple no…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_1663",
+        "tag": "div",
+        "text": "10 FH-DECOR-GLOBEPEN 165 visible instock 12 yes no simple n…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_1665",
+        "tag": "div",
+        "text": "10 FH-DECOR-ARCFLOOR 249 199 visible instock 7 yes no simpl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_240",
+        "tag": "div",
+        "text": "0 FH-BED-104 26 18 16 24 visible instock 6 yes no variable …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_245",
+        "tag": "div",
+        "text": "0 FH-BED-105 30 22 16 18 visible instock 8 yes no variable …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_250",
+        "tag": "div",
+        "text": "0 FH-CHR-106 11 18 20 32 visible instock no no variable no …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_255",
+        "tag": "div",
+        "text": "0 FH-CHR-107 22 30 28 29 visible instock no no variable no …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_260",
+        "tag": "div",
+        "text": "0 FH-CHR-108 16 19 22 33 visible instock no no variable no …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_265",
+        "tag": "div",
+        "text": "0 FH-CHR-109 9 18 20 32 visible instock no no variable no t…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_270",
+        "tag": "div",
+        "text": "0 FH-CHR-110 18 22 22 31 visible instock 3 yes no variable …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_275",
+        "tag": "div",
+        "text": "0 FH-CHR-111 39 28 30 34 visible instock no no variable no …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_280",
+        "tag": "div",
+        "text": "0 FH-BED-112 96 44 18 32 visible outofstock no no variable …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_285",
+        "tag": "div",
+        "text": "0 FH-BED-113 41 16 16 30 visible outofstock no no variable …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_290",
+        "tag": "div",
+        "text": "0 FH-LIV-114 88 24 14 78 visible outofstock no no variable …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_inline_295",
+        "tag": "div",
+        "text": "0 FH-OFF-115 64 48 24 30 visible instock no no variable no …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-embedded-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-root",
+        "tag": "div",
+        "text": "Products Store Activity Activity unread activity Finish set…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-fields",
+        "tag": "div",
+        "text": "Product data SKU Price Sale Weight L/W/H Shipping class No …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-fields-bulk",
+        "tag": "div",
+        "text": "Product data Price — No change —Change to:Increase existing…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-layout__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

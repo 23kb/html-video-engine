@@ -1,0 +1,393 @@
+{
+  "slug": "admin-analytics",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "merchant-news-sidebar-toggle",
+      "event": "click",
+      "selector": "a.merchant-notifications",
+      "count": 1
+    },
+    {
+      "label": "merchant-news-sidebar-close",
+      "event": "click",
+      "selector": "a.merchant-notifications-sidebar-close",
+      "count": 1
+    },
+    {
+      "label": "merchant-news-tabs",
+      "event": "click",
+      "selector": ".merchant-tabs-nav-link[data-tab-to]",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-notifications",
+        "tag": "a",
+        "text": "1",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-news-sidebar-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-close",
+        "tag": "a",
+        "text": "Close the sidebar",
+        "count": 1,
+        "hidden": true,
+        "wired": "merchant-news-sidebar-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-tabs-nav-link",
+        "tag": "a",
+        "text": "Merchant",
+        "count": 2,
+        "hidden": true,
+        "wired": "merchant-news-tabs",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-website",
+        "tag": "a",
+        "text": "Website",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": ".merchant-tab-content",
+        "tag": "div",
+        "text": "September 17, 2026 Removed Patcher page, with a notice offe…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-tabs-nav-item",
+        "tag": "li",
+        "text": "Merchant",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "inputs": [],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#botiga-admin-modal-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-analytics-overview-section",
+        "tag": "div",
+        "text": "Merchant Analytics Dashboard comparing to Added revenue $39…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-analytics-section",
+        "tag": "div",
+        "text": "Daily added revenue by Merchant 250.00 200.00 150.00 100.00…",
+        "count": 4,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#air-datepicker-global-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#apexcharts-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#apexchartsohmpcfgm",
+        "tag": "div",
+        "text": "250.00 200.00 150.00 100.00 50.00 0.00 28 Sep 29 Sep 30 Sep…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartsw1xebdb8i",
+        "tag": "div",
+        "text": "2500.000000 2000.000000 1500.000000 1000.000000 500.000000 …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#apexchartsynioos3g",
+        "tag": "div",
+        "text": "60 50 40 30 20 10 0 28 Sep 29 Sep 30 Sep 1 Oct 2 Oct 3 Oct …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#forecastMaskohmpcfgm",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#forecastMaskw1xebdb8i",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#forecastMaskynioos3g",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectBarMaskohmpcfgm",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectBarMaskw1xebdb8i",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectBarMaskynioos3g",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMarkerMaskohmpcfgm",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMarkerMaskw1xebdb8i",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMarkerMaskynioos3g",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMaskohmpcfgm",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMaskw1xebdb8i",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMaskynioos3g",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nonForecastMaskohmpcfgm",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nonForecastMaskw1xebdb8i",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#nonForecastMaskynioos3g",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsLinearGradient1007",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsLinearGradient1008",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#SvgjsLinearGradient1009",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notification-content",
+        "tag": "div",
+        "text": "Removed Patcher page, with a notice offering to remove the …",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant Merchant Mer…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-header",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-notifications-sidebar-header-content",
+        "tag": "div",
+        "text": "New Update Check the latest news from Merchant",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

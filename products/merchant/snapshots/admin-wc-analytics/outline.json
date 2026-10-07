@@ -1,0 +1,300 @@
+{
+  "slug": "admin-wc-analytics",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.woocommerce-layout__activity-panel-tab[data-snap-park][data-testid]",
+      "count": 2
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "a.screen-reader-text",
+      "count": 14
+    },
+    {
+      "label": "chrome-nearest-screen",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 51
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#activity-panel-tab-activity",
+        "tag": "button",
+        "text": "Activity unread activity",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#activity-panel-tab-setup",
+        "tag": "button",
+        "text": "Finish setup",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-legend-2__item-button__primary",
+        "tag": "button",
+        "text": "Month to date (Oct 1 - 6, 2026) $4,776.80",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-legend-2__item-button__secondary",
+        "tag": "button",
+        "text": "Previous year (Oct 1 - 6, 2025) $0.00",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-legend-3__item-button__primary",
+        "tag": "button",
+        "text": "Month to date (Oct 1 - 6, 2026) 12",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-legend-3__item-button__secondary",
+        "tag": "button",
+        "text": "Previous year (Oct 1 - 6, 2025) 0",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#inspector-select-control-1",
+        "tag": "select",
+        "text": "By day By week",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#activity-panel-header_49",
+        "tag": "h2",
+        "text": "Store Activity",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-activity-panel",
+        "tag": "aside",
+        "text": "Activity unread activity Finish setup",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#caption-2",
+        "tag": "caption",
+        "text": "Top categories - Items sold",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#caption-3",
+        "tag": "caption",
+        "text": "Top products - Items sold",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#chart",
+        "tag": "g",
+        "text": "123456Oct 2026$0$2.1k$4.2k$6.3k",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "If you like WooCommerce please leave us a ★★★★★ rating. A h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#jp-admin-notices",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#root",
+        "tag": "div",
+        "text": "Overview Store Activity Activity unread activity Finish set…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__notice-catcher",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-layout__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__primary",
+        "tag": "div",
+        "text": "Filters Date range: Month to date (Oct 1 - 6, 2026) vs. Pre…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-legend-2__item__primary",
+        "tag": "li",
+        "text": "Month to date (Oct 1 - 6, 2026) $4,776.80",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-legend-2__item__secondary",
+        "tag": "li",
+        "text": "Previous year (Oct 1 - 6, 2025) $0.00",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-legend-3__item__primary",
+        "tag": "li",
+        "text": "Month to date (Oct 1 - 6, 2026) 12",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-legend-3__item__secondary",
+        "tag": "li",
+        "text": "Previous year (Oct 1 - 6, 2025) 0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-summary-helptext-33",
+        "tag": "p",
+        "text": "List of data points available for filtering. Use arrow keys…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

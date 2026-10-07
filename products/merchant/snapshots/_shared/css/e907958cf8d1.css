@@ -1,0 +1,1092 @@
+@charset "UTF-8";
+.merchant-analytics-section:not(.all-campaigns-table) {
+  background-color: #fff;
+  margin-bottom: 22px;
+  -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+          box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.merchant-analytics-loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: #3D65E9;
+  -webkit-animation: spin 1s ease-in-out infinite;
+          animation: spin 1s ease-in-out infinite;
+  vertical-align: middle;
+  -webkit-transition: 300ms;
+  transition: 300ms;
+  opacity: 0;
+  visibility: hidden;
+}
+.merchant-analytics-loading-spinner.show {
+  opacity: 1;
+  visibility: visible;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+.impressions-chart-section .chart .apexcharts-gridlines-vertical line:last-of-type,
+.impressions-chart-section .chart .apexcharts-gridlines-vertical line:first-of-type {
+  display: none;
+}
+
+.merchant-analytics-section .chart-head {
+  padding: 20px 20px 0;
+}
+.merchant-analytics-section .chart-head .head-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-line-pack: center;
+      align-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.merchant-analytics-section .chart-head .head-wrapper .title .title-text {
+  font-size: 20px;
+  font-weight: 500;
+  margin-right: 15px;
+  vertical-align: middle;
+}
+.merchant-analytics-section .chart-head .head-wrapper .title .percentage {
+  vertical-align: middle;
+  font-size: 14px;
+  color: #335EEA;
+  border: 1px solid #F0F0F1;
+  border-radius: 4px;
+  padding: 3px 5px;
+}
+.merchant-analytics-section .chart-head .head-wrapper .title .percentage:before {
+  content: "+";
+}
+.merchant-analytics-section .chart-head .head-wrapper .title .percentage:after {
+  content: "%";
+}
+.merchant-analytics-section .chart-head .head-wrapper .title .percentage.negative {
+  color: #E36131;
+}
+.merchant-analytics-section .chart-head .head-wrapper .title .percentage.negative:before {
+  content: "-";
+}
+
+.merchant-analytics-overview-section {
+  margin-bottom: 30px;
+}
+.merchant-analytics-overview-section .overview-head {
+  margin-bottom: 20px;
+}
+.merchant-analytics-overview-section .overview-head .head-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 15px; /* Increased gap for better spacing */
+  padding: 15px 0; /* Increased padding for better spacing */
+}
+.merchant-analytics-overview-section .overview-head .head-wrapper .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 15px; /* Increased gap between title and percentage */
+}
+.merchant-analytics-overview-section .overview-head .head-wrapper .title .title-text {
+  font-size: 24px; /* Increased font size */
+  font-weight: 500;
+  margin-right: 20px; /* Increased margin */
+  vertical-align: middle;
+}
+@media (max-width: 768px) {
+  .merchant-analytics-overview-section .overview-head .head-wrapper .title .title-text {
+    font-size: 20px; /* Slightly reduced font size on smaller screens */
+    display: block;
+    text-align: center;
+    margin-right: 0; /* Removed margin */
+  }
+}
+.merchant-analytics-overview-section .overview-head .head-wrapper .title .percentage {
+  vertical-align: middle;
+  font-size: 16px; /* Increased font size */
+  color: #335EEA;
+  border: 1px solid #F0F0F1;
+  border-radius: 4px;
+  padding: 5px 8px; /* Increased padding */
+}
+.merchant-analytics-overview-section .overview-head .head-wrapper .title .percentage:before {
+  content: "+";
+}
+.merchant-analytics-overview-section .overview-head .head-wrapper .title .percentage:after {
+  content: "%";
+}
+.merchant-analytics-overview-section .overview-head .head-wrapper .title .percentage.negative {
+  color: #E36131;
+}
+.merchant-analytics-overview-section .overview-head .head-wrapper .title .percentage.negative:before {
+  content: "-";
+}
+@media (max-width: 768px) {
+  .merchant-analytics-overview-section .overview-head .head-wrapper .title .percentage {
+    font-size: 14px; /* Slightly reduced font size on smaller screens */
+    padding: 4px 6px; /* Adjusted padding */
+  }
+}
+@media (max-width: 768px) {
+  .merchant-analytics-overview-section .overview-head .head-wrapper .title {
+    display: block;
+    width: 100%;
+  }
+}
+.merchant-analytics-overview-section .overview-head .head-wrapper .date-range {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 15px; /* Increased gap between elements */
+}
+@media (max-width: 768px) {
+  .merchant-analytics-overview-section .overview-head .head-wrapper .date-range {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; /* Stack inputs vertically on mobile */
+    width: 100%; /* Make date range full width on mobile */
+    gap: 10px; /* Increased gap between stacked elements */
+  }
+}
+@media (max-width: 768px) {
+  .merchant-analytics-overview-section .overview-head .head-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; /* Stack items vertically on smaller screens */
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start; /* Align items to the start */
+    gap: 20px; /* Increased gap for better spacing */
+  }
+}
+.merchant-analytics-overview-section .overview-cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+}
+.merchant-analytics-overview-section .overview-cards .overview-card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 25px 20px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 calc(20% - 20px);
+          flex: 1 1 calc(20% - 20px);
+  position: relative;
+}
+.merchant-analytics-overview-section .overview-cards .overview-card .info-icon {
+  display: inline-block;
+  margin-left: 5px;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 18px;
+  height: 18px;
+  background-image: url(../assets/a918d08ead18.svg);
+}
+.merchant-analytics-overview-section .overview-cards .overview-card .info-icon::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: 50%;
+  right: calc(100% + 5px);
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+  width: 200px;
+}
+.merchant-analytics-overview-section .overview-cards .overview-card .info-icon::after {
+  content: "";
+  position: absolute;
+  right: calc(100% - 5px);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent #333;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+}
+.merchant-analytics-overview-section .overview-cards .overview-card .info-icon:hover::before, .merchant-analytics-overview-section .overview-cards .overview-card .info-icon:hover::after {
+  opacity: 1;
+  visibility: visible;
+}
+.merchant-analytics-overview-section .overview-cards .overview-card .card-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 15px;
+  position: relative;
+}
+.merchant-analytics-overview-section .overview-cards .overview-card .card-value {
+  font-size: 36px;
+  color: #000;
+  line-height: 36px;
+  margin-bottom: 10px;
+}
+.merchant-analytics-overview-section .overview-cards .overview-card .card-change {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  font-size: 16px;
+  color: #00BD8A;
+}
+.merchant-analytics-overview-section .overview-cards .overview-card .card-change::before {
+  content: "";
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2211%22%20height%3D%2213%22%20viewBox%3D%220%200%2011%2013%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M0.515625%204.95483L5.29688%200.529297M5.29688%200.529297L10.1719%204.95483M5.29688%200.529297V12.2964%22%20stroke%3D%22%2300BD8A%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+  width: 11px;
+  height: 11px;
+  display: inline-block;
+  margin-right: 4px;
+  background-size: 9px;
+}
+.merchant-analytics-overview-section .overview-cards .overview-card .card-change.decrease {
+  color: #E36131;
+}
+.merchant-analytics-overview-section .overview-cards .overview-card .card-change.decrease::before {
+  background-image: url("data:image/svg+xml,%3Csvg%20width%3D%2211%22%20height%3D%2213%22%20viewBox%3D%220%200%2011%2013%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20d%3D%22M0.515625%208.3418L5.29688%2012.7673M5.29688%2012.7673L10.1719%208.3418M5.29688%2012.7673V0.999999%22%20stroke%3D%22%23E36131%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%2F%3E%3C%2Fsvg%3E");
+}
+
+.period-length {
+  display: none;
+}
+
+.revenue-chart-section .chart,
+.aov-chart-section .chart {
+  padding: 20px;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box-aov .box-title,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box-aov .box-title {
+  color: #7880CA;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box-aov .box-value,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box-aov .box-value {
+  font-weight: 500;
+  font-size: 16px;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box-aov .box-value .diff,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box-aov .box-value .diff {
+  font-size: 14px;
+  color: #3D65E9;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box-aov .box-value .diff:before,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box-aov .box-value .diff:before {
+  content: "(+";
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box-aov .box-value .diff:after,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box-aov .box-value .diff:after {
+  content: ")";
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box-aov .box-value .diff.decrease,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box-aov .box-value .diff.decrease {
+  color: #E36131;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box-aov .box-value .diff.decrease:before,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box-aov .box-value .diff.decrease:before {
+  content: "(-";
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  gap: 10px;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .separator,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .separator {
+  width: 1px;
+  background-color: #D8D8D8;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column.big,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column.big {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .head,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .head {
+  border-bottom: 1px solid #D8D8D8;
+  margin-bottom: 10px;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .head .box-title,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .head .box-title {
+  color: #3D65E9;
+  font-weight: 500;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .head .box-value,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .head .box-value {
+  font-size: 16px;
+  font-weight: 500;
+  color: #101517;
+  margin-bottom: 10px;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .orders-count,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .orders-count {
+  color: #565865;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .change-percentage,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .change-percentage {
+  color: #3D65E9;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .change-percentage strong:before,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .change-percentage strong:before {
+  content: "+";
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .change-percentage.decrease,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .change-percentage.decrease {
+  color: #E36131;
+}
+.revenue-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .change-percentage.decrease strong:before,
+.aov-chart-section .chart .apexcharts-tooltip .arrow-box .box-wrapper .box-column .change-percentage.decrease strong:before {
+  content: "-";
+}
+
+.revenue-chart-section .chart .apexcharts-tooltip {
+  padding: 20px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 23px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 23px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.aov-chart-section .chart .apexcharts-tooltip {
+  padding: 10px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 23px 5px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 0 23px 5px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+.merchant-analytics-section.campaigns-table .overview-head .head-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 15px; /* Increased gap for better spacing */
+  padding: 20px; /* Increased padding for better spacing */
+  border-bottom: 1px solid #E9E9E9;
+}
+.merchant-analytics-section.campaigns-table .overview-head .head-wrapper .title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 15px; /* Increased gap between title and percentage */
+}
+.merchant-analytics-section.campaigns-table .overview-head .head-wrapper .title .title-text {
+  font-size: 20px; /* Increased font size */
+  font-weight: 500;
+  margin-right: 20px; /* Increased margin */
+  vertical-align: middle;
+}
+@media (max-width: 768px) {
+  .merchant-analytics-section.campaigns-table .overview-head .head-wrapper .title .title-text {
+    font-size: 18px; /* Slightly reduced font size on smaller screens */
+    display: block;
+    text-align: center;
+    margin-right: 0; /* Removed margin */
+  }
+}
+.merchant-analytics-section.campaigns-table .overview-head .head-wrapper .title .percentage {
+  vertical-align: middle;
+  font-size: 16px; /* Increased font size */
+  color: #335EEA;
+  border: 1px solid #F0F0F1;
+  border-radius: 4px;
+  padding: 5px 8px; /* Increased padding */
+}
+.merchant-analytics-section.campaigns-table .overview-head .head-wrapper .title .percentage:before {
+  content: "+";
+}
+.merchant-analytics-section.campaigns-table .overview-head .head-wrapper .title .percentage:after {
+  content: "%";
+}
+.merchant-analytics-section.campaigns-table .overview-head .head-wrapper .title .percentage.negative {
+  color: #E36131;
+}
+.merchant-analytics-section.campaigns-table .overview-head .head-wrapper .title .percentage.negative:before {
+  content: "-";
+}
+@media (max-width: 768px) {
+  .merchant-analytics-section.campaigns-table .overview-head .head-wrapper .title .percentage {
+    font-size: 14px; /* Slightly reduced font size on smaller screens */
+    padding: 4px 6px; /* Adjusted padding */
+  }
+}
+@media (max-width: 768px) {
+  .merchant-analytics-section.campaigns-table .overview-head .head-wrapper .title {
+    display: block;
+    width: 100%;
+  }
+}
+.merchant-analytics-section.campaigns-table .overview-head .head-wrapper .date-range {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  gap: 15px; /* Increased gap between elements */
+}
+@media (max-width: 768px) {
+  .merchant-analytics-section.campaigns-table .overview-head .head-wrapper .date-range {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; /* Stack inputs vertically on mobile */
+    width: 100%; /* Make date range full width on mobile */
+    gap: 10px; /* Increased gap between stacked elements */
+  }
+}
+@media (max-width: 768px) {
+  .merchant-analytics-section.campaigns-table .overview-head .head-wrapper {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column; /* Stack items vertically on smaller screens */
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start; /* Align items to the start */
+    gap: 20px; /* Increased gap for better spacing */
+  }
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper {
+  overflow-x: auto; /* Enable horizontal scrolling on mobile */
+  border-radius: 8px; /* Adjust the radius as needed */
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow for better visual effect */
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 8px; /* Apply border radius to the table */
+  overflow: hidden; /* Ensures the border radius is applied correctly */
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table th, .merchant-analytics-section.campaigns-table .campaigns-table-wrapper table td {
+  padding: 14px 20px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+@media (max-width: 768px) {
+  .merchant-analytics-section.campaigns-table .campaigns-table-wrapper table th, .merchant-analytics-section.campaigns-table .campaigns-table-wrapper table td {
+    padding: 10px; /* Reduce padding on smaller screens */
+    font-size: 14px; /* Reduce font size for better readability */
+  }
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table {
+  /* Make the first column wider */
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table th:first-child,
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table td:first-child {
+  width: 30%; /* Adjust this value as needed */
+  min-width: 150px; /* Ensure it doesn't get too small on mobile */
+}
+@media (max-width: 768px) {
+  .merchant-analytics-section.campaigns-table .campaigns-table-wrapper table th:first-child,
+  .merchant-analytics-section.campaigns-table .campaigns-table-wrapper table td:first-child {
+    width: 40%; /* Increase width on mobile for better readability */
+    min-width: 120px; /* Adjust min-width for mobile */
+  }
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table th {
+  background-color: #fff; /* White background for table head */
+  font-weight: bold; /* Bold font weight for table head */
+  cursor: pointer;
+  position: relative;
+  user-select: none; /* Disable text selection */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table th.asc::after {
+  content: " ▲";
+  font-size: 12px;
+  color: #000;
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table th.desc::after {
+  content: " ▼";
+  font-size: 12px;
+  color: #000;
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table {
+  /* Alternating row colors */
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table tr:nth-child(odd) {
+  background-color: #F8F8FA; /* Light gray for even rows */
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table tr:nth-child(even) {
+  background-color: #fff; /* White for odd rows */
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table tr:hover {
+  background-color: #f5f5f5; /* Hover effect for rows */
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table {
+  /* Optional: Add border radius to the first and last rows */
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table tr:first-child th:first-child {
+  border-top-left-radius: 8px;
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table tr:first-child th:last-child {
+  border-top-right-radius: 8px;
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table tr:last-child td:first-child {
+  border-bottom-left-radius: 8px;
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table tr:last-child td:last-child {
+  border-bottom-right-radius: 8px;
+}
+.merchant-analytics-section.campaigns-table .campaigns-table-wrapper table td.ctr:after {
+  content: "%";
+}
+
+.merchant-page-campaigns {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav {
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #F0F0F1;
+  border-radius: 5px 5px 0 0;
+}
+@media (max-width: 1099px) {
+  .merchant-page-campaigns .merchant__campaigns-table-nav > .alignright {
+    float: left;
+    margin-top: 15px;
+  }
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav select,
+.merchant-page-campaigns .merchant__campaigns-table-nav input,
+.merchant-page-campaigns .merchant__campaigns-table-nav .button {
+  background: #fff;
+  border: 2px solid #F0F0F1;
+  color: #747474;
+  font-weight: 300;
+  padding-inline: 12px;
+  height: 36px;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav select:focus, .merchant-page-campaigns .merchant__campaigns-table-nav select:active,
+.merchant-page-campaigns .merchant__campaigns-table-nav input:focus,
+.merchant-page-campaigns .merchant__campaigns-table-nav input:active,
+.merchant-page-campaigns .merchant__campaigns-table-nav .button:focus,
+.merchant-page-campaigns .merchant__campaigns-table-nav .button:active {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A//www.w3.org/2000/svg%22 width%3D%2210%22 height%3D%226%22 viewBox%3D%220%200%2010%206%22 fill%3D%22none%22%3E%3Cpath d%3D%22M4.37891 5.26562C4.51562 5.40234 4.70703 5.40234 4.84375 5.26562L8.89062 1.24609C9.02734 1.13672 9.02734 0.917969 8.89062 0.78125L8.34375 0.261719C8.23438 0.125 8.01562 0.125 7.87891 0.261719L4.625 3.48828L1.34375 0.261719C1.20703 0.125 1.01562 0.125 0.878906 0.261719L0.332031 0.78125C0.195312 0.917969 0.195312 1.13672 0.332031 1.24609L4.37891 5.26562Z%22 fill%3D%22%23939393%22/%3E%3C/svg%3E");
+  background-size: 12px;
+  background-repeat: no-repeat;
+  background-position: right 10px top 55%;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .bulk-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .bulk-action select {
+  border-radius: 5px 0 0 5px;
+  padding-right: 30px;
+  margin-right: 0;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .bulk-action .button {
+  border-left: none;
+  border-radius: 0 5px 5px 0;
+  padding-inline: 15px;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .bulk-action .button:hover {
+  color: #fff;
+  background-color: #335EEA;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .bulk-action .spinner {
+  margin-top: 0;
+  margin-right: 0;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .search-campaign-box {
+  position: relative;
+  margin-left: 10px;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .search-campaign-box .button {
+  border: none;
+  position: absolute;
+  background: none;
+  padding: 0;
+  left: 14px;
+  top: 1px;
+  line-height: 1;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .search-campaign-box input {
+  width: 260px;
+  padding-left: 32px;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .search-campaign-box input::-webkit-input-placeholder {
+  color: #747474;
+  font-weight: 300;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .search-campaign-box input::-moz-placeholder {
+  color: #747474;
+  font-weight: 300;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .search-campaign-box input:-ms-input-placeholder {
+  color: #747474;
+  font-weight: 300;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .search-campaign-box input::-ms-input-placeholder {
+  color: #747474;
+  font-weight: 300;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .search-campaign-box input::placeholder {
+  color: #747474;
+  font-weight: 300;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .filter-campaign select {
+  width: 170px;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .date-range {
+  margin-left: 10px;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .merchant-analytics-loading-spinner {
+  display: none;
+}
+.merchant-page-campaigns .merchant__campaigns-table-nav .merchant-analytics-loading-spinner.show {
+  display: inline-block;
+}
+.merchant-page-campaigns .merchant__campaigns-pagination {
+  margin-left: 1px;
+}
+.merchant-page-campaigns .merchant__campaigns-pagination, .merchant-page-campaigns .merchant__campaigns-pagination-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+.merchant-page-campaigns .merchant__campaigns-pagination-section {
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 20px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-top: 20px;
+}
+.merchant-page-campaigns .merchant__campaigns-pagination .prev-page, .merchant-page-campaigns .merchant__campaigns-pagination:not(:has(.prev-page)) .pagination-button:first-child {
+  border-radius: 5px 0 0 5px;
+}
+.merchant-page-campaigns .merchant__campaigns-pagination .next-page, .merchant-page-campaigns .merchant__campaigns-pagination:not(:has(.next-page)) .pagination-button:last-child {
+  border-radius: 0 5px 5px 0;
+}
+.merchant-page-campaigns .merchant__campaigns-pagination .pagination-button {
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #f3f3f3;
+  width: 40px;
+  height: 40px;
+  line-height: 1;
+  margin: 0 -1px;
+}
+.merchant-page-campaigns .merchant__campaigns-pagination .pagination-button:hover, .merchant-page-campaigns .merchant__campaigns-pagination .pagination-button.pagination-active, .merchant-page-campaigns .merchant__campaigns-pagination .pagination-button.prev-page:hover svg, .merchant-page-campaigns .merchant__campaigns-pagination .pagination-button.next-page:hover svg {
+  color: #fff;
+  fill: #fff;
+  background-color: #335EEA;
+}
+.merchant-page-campaigns .merchant__campaigns-pagination .pagination-button.pagination-active {
+  pointer-events: none;
+  cursor: default;
+}
+.merchant-page-campaigns .merchant__campaigns-no-results {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 10px;
+  padding: 50px 25px;
+  background: #fff;
+  border-radius: 5px;
+}
+.merchant-page-campaigns .merchant__campaigns-no-results span {
+  color: #787C82;
+  font-size: 14px;
+}
+.merchant-page-campaigns .merchant__campaigns-no-results span:first-of-type {
+  color: #101517;
+  font-size: 20px;
+}
+.merchant-page-campaigns .merchant__campaigns-no-results img {
+  width: 300px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+.merchant-page-campaigns table.merchant__campaigns-table {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  border: none;
+}
+.merchant-page-campaigns table.merchant__campaigns-table th {
+  font-weight: bold;
+  border: none !important;
+  user-select: none; /* Disable text selection */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* IE/Edge */
+  cursor: pointer;
+  position: relative;
+}
+.merchant-page-campaigns table.merchant__campaigns-table tr:nth-child(even) {
+  background-color: #F8F8FA;
+}
+.merchant-page-campaigns table.merchant__campaigns-table tr:nth-child(odd) {
+  background-color: #fff;
+}
+.merchant-page-campaigns table.merchant__campaigns-table th:first-child,
+.merchant-page-campaigns table.merchant__campaigns-table td:first-child {
+  width: 27px !important;
+  min-width: 27px !important;
+  padding-inline: 15px 0;
+}
+.merchant-page-campaigns table.merchant__campaigns-table th.merchant__status .merchant-toggle-switch,
+.merchant-page-campaigns table.merchant__campaigns-table td.merchant__status .merchant-toggle-switch {
+  position: relative;
+  display: inline-block;
+}
+.merchant-page-campaigns table.merchant__campaigns-table th.merchant__status .spinner.is-active,
+.merchant-page-campaigns table.merchant__campaigns-table td.merchant__status .spinner.is-active {
+  position: absolute;
+  margin: 0;
+  left: calc(100% + 5px);
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.merchant-page-campaigns table.merchant__campaigns-table th.merchant__edit a,
+.merchant-page-campaigns table.merchant__campaigns-table td.merchant__edit a {
+  color: #565865;
+  border: 1px solid #D8D8D8;
+  border-radius: 5px;
+  padding: 8px 10px;
+}
+.merchant-page-campaigns table.merchant__campaigns-table th.merchant__edit a:hover,
+.merchant-page-campaigns table.merchant__campaigns-table td.merchant__edit a:hover {
+  opacity: 0.8;
+}
+.merchant-page-campaigns table.merchant__campaigns-table th.merchant__edit a svg,
+.merchant-page-campaigns table.merchant__campaigns-table td.merchant__edit a svg {
+  position: relative;
+  top: 1px;
+}
+.merchant-page-campaigns table.merchant__campaigns-table td, .merchant-page-campaigns table.merchant__campaigns-table th {
+  padding: 13px 10px;
+}
+.merchant-page-campaigns table.merchant__campaigns-table thead tr th {
+  background-color: #F8F8FA;
+}
+.merchant-page-campaigns table.merchant__campaigns-table thead tr th.asc::after {
+  content: " ▲";
+  font-size: 12px;
+  color: #000;
+}
+.merchant-page-campaigns table.merchant__campaigns-table thead tr th.desc::after {
+  content: " ▼";
+  font-size: 12px;
+  color: #000;
+}
+.merchant-page-campaigns table.merchant__campaigns-table td.merchant__ctr:after {
+  content: "%";
+}
+.merchant-page-campaigns table.merchant__campaigns-table input[type=checkbox] {
+  margin: 0;
+}
+.merchant-page-campaigns .no-results-message {
+  text-align: center;
+  padding: 20px;
+}
+
+.merchant-analytics-widget {
+  margin: 0 -12px -12px -12px;
+}
+.merchant-analytics-widget .foot {
+  background-color: #FAFAFA;
+  border-top: 1px solid #F0F0F1;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 15px;
+}
+.merchant-analytics-widget .foot input {
+  border-color: #8c8f94;
+  background-color: #fff;
+}
+.merchant-analytics-widget .foot .analytics-link {
+  font-size: 14px;
+  font-weight: 500;
+  color: #2271b1;
+}
+
+.merchant-analytics-section.all-campaigns-table .date-range .compare-text,
+.merchant-analytics-section.campaigns-table .date-range .compare-text,
+.merchant-analytics-overview-section .date-range .compare-text,
+.merchant-analytics-section .date-range .compare-text {
+  color: #3858E9;
+  font-size: 12px;
+}
+@media (min-width: 769px) {
+  .merchant-analytics-section.all-campaigns-table .date-range .compare-text,
+  .merchant-analytics-section.campaigns-table .date-range .compare-text,
+  .merchant-analytics-overview-section .date-range .compare-text,
+  .merchant-analytics-section .date-range .compare-text {
+    margin-right: -20px;
+  }
+}
+@media (max-width: 768px) {
+  .merchant-analytics-section.all-campaigns-table .date-range .compare-text,
+  .merchant-analytics-section.campaigns-table .date-range .compare-text,
+  .merchant-analytics-overview-section .date-range .compare-text,
+  .merchant-analytics-section .date-range .compare-text {
+    margin-top: 12px;
+  }
+}
+.merchant-analytics-section.all-campaigns-table .date-range input,
+.merchant-analytics-section.campaigns-table .date-range input,
+.merchant-analytics-overview-section .date-range input,
+.merchant-analytics-section .date-range input {
+  width: 210px;
+  max-width: 100%;
+  font-size: 13px;
+  text-align: center;
+  color: #757575;
+  background: #fff;
+  border: 2px solid #F0F0F1;
+  border-radius: 4px;
+  padding: 3px 15px 3px 30px;
+}
+.merchant-analytics-section.all-campaigns-table .date-range .single-date-range,
+.merchant-analytics-section.all-campaigns-table .date-range .first-date-range,
+.merchant-analytics-section.all-campaigns-table .date-range .second-date-range,
+.merchant-analytics-section.campaigns-table .date-range .single-date-range,
+.merchant-analytics-section.campaigns-table .date-range .first-date-range,
+.merchant-analytics-section.campaigns-table .date-range .second-date-range,
+.merchant-analytics-overview-section .date-range .single-date-range,
+.merchant-analytics-overview-section .date-range .first-date-range,
+.merchant-analytics-overview-section .date-range .second-date-range,
+.merchant-analytics-section .date-range .single-date-range,
+.merchant-analytics-section .date-range .first-date-range,
+.merchant-analytics-section .date-range .second-date-range {
+  display: inline-block;
+  position: relative;
+}
+.merchant-analytics-section.all-campaigns-table .date-range .single-date-range:before, .merchant-analytics-section.all-campaigns-table .date-range .single-date-range:after,
+.merchant-analytics-section.all-campaigns-table .date-range .first-date-range:before,
+.merchant-analytics-section.all-campaigns-table .date-range .first-date-range:after,
+.merchant-analytics-section.all-campaigns-table .date-range .second-date-range:before,
+.merchant-analytics-section.all-campaigns-table .date-range .second-date-range:after,
+.merchant-analytics-section.campaigns-table .date-range .single-date-range:before,
+.merchant-analytics-section.campaigns-table .date-range .single-date-range:after,
+.merchant-analytics-section.campaigns-table .date-range .first-date-range:before,
+.merchant-analytics-section.campaigns-table .date-range .first-date-range:after,
+.merchant-analytics-section.campaigns-table .date-range .second-date-range:before,
+.merchant-analytics-section.campaigns-table .date-range .second-date-range:after,
+.merchant-analytics-overview-section .date-range .single-date-range:before,
+.merchant-analytics-overview-section .date-range .single-date-range:after,
+.merchant-analytics-overview-section .date-range .first-date-range:before,
+.merchant-analytics-overview-section .date-range .first-date-range:after,
+.merchant-analytics-overview-section .date-range .second-date-range:before,
+.merchant-analytics-overview-section .date-range .second-date-range:after,
+.merchant-analytics-section .date-range .single-date-range:before,
+.merchant-analytics-section .date-range .single-date-range:after,
+.merchant-analytics-section .date-range .first-date-range:before,
+.merchant-analytics-section .date-range .first-date-range:after,
+.merchant-analytics-section .date-range .second-date-range:before,
+.merchant-analytics-section .date-range .second-date-range:after {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+.merchant-analytics-section.all-campaigns-table .date-range .single-date-range:before,
+.merchant-analytics-section.all-campaigns-table .date-range .first-date-range:before,
+.merchant-analytics-section.all-campaigns-table .date-range .second-date-range:before,
+.merchant-analytics-section.campaigns-table .date-range .single-date-range:before,
+.merchant-analytics-section.campaigns-table .date-range .first-date-range:before,
+.merchant-analytics-section.campaigns-table .date-range .second-date-range:before,
+.merchant-analytics-overview-section .date-range .single-date-range:before,
+.merchant-analytics-overview-section .date-range .first-date-range:before,
+.merchant-analytics-overview-section .date-range .second-date-range:before,
+.merchant-analytics-section .date-range .single-date-range:before,
+.merchant-analytics-section .date-range .first-date-range:before,
+.merchant-analytics-section .date-range .second-date-range:before {
+  color: #4A4A4A;
+  content: attr(data-title);
+  left: 15px;
+}
+.merchant-analytics-section.all-campaigns-table .date-range .single-date-range:after,
+.merchant-analytics-section.all-campaigns-table .date-range .first-date-range:after,
+.merchant-analytics-section.all-campaigns-table .date-range .second-date-range:after,
+.merchant-analytics-section.campaigns-table .date-range .single-date-range:after,
+.merchant-analytics-section.campaigns-table .date-range .first-date-range:after,
+.merchant-analytics-section.campaigns-table .date-range .second-date-range:after,
+.merchant-analytics-overview-section .date-range .single-date-range:after,
+.merchant-analytics-overview-section .date-range .first-date-range:after,
+.merchant-analytics-overview-section .date-range .second-date-range:after,
+.merchant-analytics-section .date-range .single-date-range:after,
+.merchant-analytics-section .date-range .first-date-range:after,
+.merchant-analytics-section .date-range .second-date-range:after {
+  content: "";
+  background-image: url(../assets/13508c7b48f0.svg);
+  background-size: 13px 14px;
+  width: 13px;
+  height: 14px;
+  right: 15px;
+}
+.merchant-analytics-section.all-campaigns-table .date-range .first-date-range:not(.first-date-range-top-campaigns, .first-date-range-all-campaigns) input,
+.merchant-analytics-section.campaigns-table .date-range .first-date-range:not(.first-date-range-top-campaigns, .first-date-range-all-campaigns) input,
+.merchant-analytics-overview-section .date-range .first-date-range:not(.first-date-range-top-campaigns, .first-date-range-all-campaigns) input,
+.merchant-analytics-section .date-range .first-date-range:not(.first-date-range-top-campaigns, .first-date-range-all-campaigns) input {
+  width: 225px;
+  background: none;
+  border: none;
+  color: #939393;
+  padding-inline: 0;
+}
+.merchant-analytics-section.all-campaigns-table .date-range .first-date-range:not(.first-date-range-top-campaigns, .first-date-range-all-campaigns) input:focus,
+.merchant-analytics-section.campaigns-table .date-range .first-date-range:not(.first-date-range-top-campaigns, .first-date-range-all-campaigns) input:focus,
+.merchant-analytics-overview-section .date-range .first-date-range:not(.first-date-range-top-campaigns, .first-date-range-all-campaigns) input:focus,
+.merchant-analytics-section .date-range .first-date-range:not(.first-date-range-top-campaigns, .first-date-range-all-campaigns) input:focus {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  outline: none;
+}
+.merchant-analytics-section.all-campaigns-table .date-range .first-date-range-analytics-overview:after,
+.merchant-analytics-section.campaigns-table .date-range .first-date-range-analytics-overview:after,
+.merchant-analytics-overview-section .date-range .first-date-range-analytics-overview:after,
+.merchant-analytics-section .date-range .first-date-range-analytics-overview:after {
+  right: 0;
+}
+.merchant-analytics-section.all-campaigns-table .date-range .first-date-range-analytics-overview input,
+.merchant-analytics-section.campaigns-table .date-range .first-date-range-analytics-overview input,
+.merchant-analytics-overview-section .date-range .first-date-range-analytics-overview input,
+.merchant-analytics-section .date-range .first-date-range-analytics-overview input {
+  width: 158px !important;
+}

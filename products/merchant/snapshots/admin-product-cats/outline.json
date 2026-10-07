@@ -1,0 +1,782 @@
+{
+  "slug": "admin-product-cats",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.woocommerce-layout__activity-panel-tab[data-snap-park][data-testid]",
+      "count": 2
+    },
+    {
+      "label": "wp-terms-quick-edit-live",
+      "event": "click",
+      "selector": ".button-link.editinline",
+      "count": 8
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 53
+    },
+    {
+      "label": "woocommerce-order-writes-live-2",
+      "event": "click",
+      "selector": "button.upload_image_button.button",
+      "count": 2
+    },
+    {
+      "label": "chrome-nearest-screen",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 51
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#activity-panel-tab-activity",
+        "tag": "button",
+        "text": "Activity unread activity",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#activity-panel-tab-setup",
+        "tag": "button",
+        "text": "Finish setup",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_inline_edit",
+        "tag": "input",
+        "text": "f86b2ea48c",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-117",
+        "tag": "input",
+        "text": "117",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-120",
+        "tag": "input",
+        "text": "120",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-124",
+        "tag": "input",
+        "text": "124",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-125",
+        "tag": "input",
+        "text": "125",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-126",
+        "tag": "input",
+        "text": "126",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-127",
+        "tag": "input",
+        "text": "127",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-128",
+        "tag": "input",
+        "text": "128",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-134",
+        "tag": "input",
+        "text": "134",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#description-hide",
+        "tag": "input",
+        "text": "description",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#display_type",
+        "tag": "select",
+        "text": "Default Products Subcategories Both",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit_product_cat_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_size_chart_category",
+        "tag": "select",
+        "text": "Select a size chart Bedroom furniture dimensions Armchair d…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#parent",
+        "tag": "select",
+        "text": "None Bedroom Decor & Lighting Dining Home Office Living Roo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts-hide",
+        "tag": "input",
+        "text": "posts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat_thumbnail_id",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "253638bfe6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slug-hide",
+        "tag": "input",
+        "text": "slug",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submit",
+        "tag": "input",
+        "text": "Add new category",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-slug",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#thumb-hide",
+        "tag": "input",
+        "text": "thumb",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#activity-panel-header_32",
+        "tag": "h2",
+        "text": "Store Activity",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-activity-panel",
+        "tag": "aside",
+        "text": "Activity unread activity Finish setup",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#addtag",
+        "tag": "form",
+        "text": "Name The name is how it appears on your site. Slug The “slu…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Image Description Slug Count Pagination Number of i…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-container",
+        "tag": "div",
+        "text": "Product categories for your store can be managed here. To c…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-left",
+        "tag": "div",
+        "text": "Product categories for your store can be managed here. To c…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-right",
+        "tag": "div",
+        "text": "Select bulk action Bulk actions Delete 8 items Categories l…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description",
+        "tag": "th",
+        "text": "Description Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description-description",
+        "tag": "p",
+        "text": "The description is not prominent by default; however, some …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "If you like WooCommerce please leave us a ★★★★★ rating. A h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#handle",
+        "tag": "th",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inline_117",
+        "tag": "div",
+        "text": "Bedroombedroom0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_120",
+        "tag": "div",
+        "text": "Diningdining0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_124",
+        "tag": "div",
+        "text": "Home Officehome-office0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_125",
+        "tag": "div",
+        "text": "Living Roomliving-room0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_126",
+        "tag": "div",
+        "text": "Outdooroutdoor0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_127",
+        "tag": "div",
+        "text": "Packagespackages0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_128",
+        "tag": "div",
+        "text": "Uncategorizeduncategorized0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_134",
+        "tag": "div",
+        "text": "Decor & Lightingdecor0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-edit",
+        "tag": "tr",
+        "text": "Quick Edit Name Slug Update category Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inlineedit",
+        "tag": "tbody",
+        "text": "Quick Edit Name Slug Update category Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#jp-admin-notices",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#name",
+        "tag": "th",
+        "text": "Name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#name-description",
+        "tag": "p",
+        "text": "The name is how it appears on your site.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#parent-description",
+        "tag": "p",
+        "text": "Assign a parent term to create a hierarchy. The term Jazz, …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts",
+        "tag": "th",
+        "text": "Count Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts-filter",
+        "tag": "form",
+        "text": "Select bulk action Bulk actions Delete 8 items Categories l…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_cat_thumbnail",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Image Description Slug Count Pagination Number of i…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slug",
+        "tag": "th",
+        "text": "Slug Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#slug-description",
+        "tag": "p",
+        "text": "The “slug” is the URL-friendly version of the name. It is u…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tag-117",
+        "tag": "tr",
+        "text": "Select Bedroom Bedroom Edit | Quick Edit | Delete | View | …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-120",
+        "tag": "tr",
+        "text": "Select Dining Dining Edit | Quick Edit | Delete | View | Ma…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-124",
+        "tag": "tr",
+        "text": "Select Home Office Home Office Edit | Quick Edit | Delete |…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-125",
+        "tag": "tr",
+        "text": "Select Living Room Living Room Edit | Quick Edit | Delete |…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-126",
+        "tag": "tr",
+        "text": "Select Outdoor Outdoor Edit | Quick Edit | Delete | View | …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-127",
+        "tag": "tr",
+        "text": "Select Packages Packages Edit | Quick Edit | Delete | View …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-128",
+        "tag": "tr",
+        "text": "Select Uncategorized Uncategorized Edit | Quick Edit | Dele…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tag-134",
+        "tag": "tr",
+        "text": "Select Decor & Lighting Decor & Lighting Edit | Quick Edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Select Decor & Lighting Decor & Lighting Edit | Quick Edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#thumb",
+        "tag": "th",
+        "text": "Image",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tiptip_arrow",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_arrow_inner",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-root",
+        "tag": "div",
+        "text": "Product categories Store Activity Activity unread activity …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,819 @@
+{
+  "slug": "frontend-sticky-add-to-cart-single--variable",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "merchant-quick-view-nav",
+      "event": "click",
+      "selector": "a.merchant-quick-view-nav-prev",
+      "count": 2
+    },
+    {
+      "label": "woocommerce-account-logout",
+      "event": "click",
+      "selector": "div.merchant-login-popup-dropdown > nav > div.merchant-login-popup-dropdown-list > a:nth-of-type(6)",
+      "count": 1
+    },
+    {
+      "label": "woocommerce-variation-select",
+      "event": "change",
+      "selector": "select[data-attribute_name][data-show_option_none]",
+      "count": 12
+    },
+    {
+      "label": "woocommerce-variation-reset",
+      "event": "click",
+      "selector": "a.reset_variations",
+      "count": 1
+    },
+    {
+      "label": "woocommerce-review-link-scroll",
+      "event": "click",
+      "selector": "a.woocommerce-review-link",
+      "count": 1
+    },
+    {
+      "label": "merchant-quick-view-open",
+      "event": "click",
+      "selector": ".button.merchant-quick-view-button[data-product-id]",
+      "count": 3
+    },
+    {
+      "label": "merchant-quick-view-close",
+      "event": "click",
+      "selector": "div.merchant-quick-view-overlay",
+      "count": 2
+    },
+    {
+      "label": "merchant-side-cart-toggle",
+      "event": "click",
+      "selector": ".js-merchant-side-cart-toggle-handler",
+      "count": 2
+    },
+    {
+      "label": "merchant-quantity-step",
+      "event": "click",
+      "selector": ".js-merchant-quantity-btn[data-snap-baked]",
+      "count": 6
+    },
+    {
+      "label": "botiga-quantity-step",
+      "event": "click",
+      "selector": ".show",
+      "count": 6
+    },
+    {
+      "label": "merchant-wishlist-heart",
+      "event": "click",
+      "selector": ".merchant-wishlist-button[data-nonce][data-product-id]",
+      "count": 4
+    },
+    {
+      "label": "botiga-header-search-toggle",
+      "event": "click",
+      "selector": ".header-search",
+      "count": 2
+    },
+    {
+      "label": "merchant-loop-swatch",
+      "event": "click",
+      "selector": "a.merchant-variation-item",
+      "count": 12
+    },
+    {
+      "label": "merchant-swatch-pick",
+      "event": "click",
+      "selector": ".merchant-variation-item",
+      "count": 12
+    },
+    {
+      "label": "merchant-add-to-cart-live",
+      "event": "click",
+      "selector": ".alt.button",
+      "count": 4
+    },
+    {
+      "label": "woocommerce-review-stars",
+      "event": "click",
+      "selector": "a.star-1",
+      "count": 5
+    },
+    {
+      "label": "merchant-reviews-write-modal",
+      "event": "click",
+      "selector": "a.merchant-adv-review-write-button.js-merchant-adv-review-write-button",
+      "count": 2
+    },
+    {
+      "label": "merchant-reviews-rating-filter",
+      "event": "click",
+      "selector": ".merchant-star-rating-bar-item[data-rating]",
+      "count": 5
+    },
+    {
+      "label": "botiga-collapse-toggle",
+      "event": "click",
+      "selector": ".botiga-accordion__toggle.botiga-collapse-toggle[data-botiga-collapse]",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#cancel-comment-reply-link",
+        "tag": "a",
+        "text": "Cancel reply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-add-to-cart-button",
+        "tag": "a",
+        "text": "CHOOSE A FABRIC",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-adv-review-write-button",
+        "tag": "a",
+        "text": "Write a Review",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-reviews-write-modal",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-adv-reviews-modal-close",
+        "tag": "a",
+        "text": "Close popup",
+        "count": 1,
+        "hidden": true,
+        "wired": "merchant-reviews-write-modal",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-buy-now-button",
+        "tag": "button",
+        "text": "BUY NOW",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-add-to-cart-live",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-login-popup-button",
+        "tag": "a",
+        "text": "Welcome Maya Ellison",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-next-product",
+        "tag": "a",
+        "text": "Reading Nook Set →",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-previous-product",
+        "tag": "a",
+        "text": "← Three-Drawer Oak Dresser",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-quantity-minus",
+        "tag": "button",
+        "text": "−",
+        "count": 3,
+        "hidden": true,
+        "wired": "merchant-quantity-step",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-quantity-plus",
+        "tag": "button",
+        "text": "+",
+        "count": 3,
+        "hidden": true,
+        "wired": "merchant-quantity-step",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-quick-view-button",
+        "tag": "button",
+        "text": "QUICK VIEW",
+        "count": 3,
+        "hidden": false,
+        "wired": "merchant-quick-view-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-quick-view-close-button",
+        "tag": "a",
+        "text": "Close quick view modal",
+        "count": 1,
+        "hidden": true,
+        "wired": "merchant-quick-view-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-side-cart-close-button",
+        "tag": "a",
+        "text": "Close the side mini cart",
+        "count": 1,
+        "hidden": false,
+        "wired": "merchant-side-cart-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-sticky-add-to-cart-wrapper-content",
+        "tag": "div",
+        "text": "Velvet Swivel Chair $589.00 – $679.00 Price range: $589.00 …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-sticky-addtocart-active",
+        "tag": "body",
+        "text": "Skip to content Home Blog Shop About Contact Fernhill Home …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-variation-item",
+        "tag": "a",
+        "text": "Black",
+        "count": 24,
+        "hidden": false,
+        "wired": "merchant-swatch-pick",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".merchant-variation-type-button",
+        "tag": "div",
+        "text": "Gainsboro Weldon Blue",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-volume-discounts-save-label",
+        "tag": "span",
+        "text": "Save $117.80",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-wishlist-button",
+        "tag": "a",
+        "text": "Add to wishlist",
+        "count": 4,
+        "hidden": false,
+        "wired": "merchant-wishlist-heart",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#primary-menu",
+        "tag": "ul",
+        "text": "Home Blog Shop About Contact",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#_wp_unfiltered_html_comment_disabled",
+        "tag": "input",
+        "text": "10512eae25",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment_parent",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment_post_ID",
+        "tag": "input",
+        "text": "219",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_analytics",
+        "tag": "input",
+        "text": "c49795e696",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-adv-review-images",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-adv-review-images-holder",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pa_body-finish",
+        "tag": "select",
+        "text": "Select Body FinishGainsboroWeldon Blue",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": "#pa_fabric-color",
+        "tag": "select",
+        "text": "Select Fabric ColorBlackDesert Sand",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": "#quantity_6ac384a265cf0",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#quantity_6ac384a26fd73",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#quantity_6ac384a2c6ca0",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rating",
+        "tag": "select",
+        "text": "Rate… Perfect Good Average Not that bad Very poor",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#reviews_images_nonce",
+        "tag": "input",
+        "text": "40e19d80a3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submit",
+        "tag": "input",
+        "text": "Submit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-1",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-2",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-3",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-reviews-orderby",
+        "tag": "select",
+        "text": "Newest Oldest Top rated Low rated Photo first",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#merchant-added-to-cart-popup-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-added-to-cart-popup-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-adv-reviews-modal",
+        "tag": "div",
+        "text": "You are reviewing Velvet Swivel Chair A rounded swivel chai…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-adv-reviews-modal-content",
+        "tag": "div",
+        "text": "You are reviewing Velvet Swivel Chair A rounded swivel chai…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-login-popup-dropdown",
+        "tag": "div",
+        "text": "Welcome Maya Ellison",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-quick-view-modal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#athemes-blocks-common-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-accordion-additional_information",
+        "tag": "div",
+        "text": "Weight 34 lbs Dimensions 28 × 28 × 30 in Fabric Color Black…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-accordion-description",
+        "tag": "div",
+        "text": "The Velvet Swivel Chair turns toward the conversation, the …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment-21",
+        "tag": "div",
+        "text": "Rated 5 out of 5 based on customer ratings. Ruth Abernathy …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-22",
+        "tag": "div",
+        "text": "Rated 5 out of 5 based on customer ratings. Owen Park — Ver…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-23",
+        "tag": "div",
+        "text": "Rated 4 out of 5 based on customer ratings. Sofia Marchetti…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-24",
+        "tag": "div",
+        "text": "Rated 5 out of 5 based on customer ratings. Ben Adeyemi — V…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-25",
+        "tag": "div",
+        "text": "Rated 4 out of 5 based on customer ratings. Sam Oduya — Ver…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-26",
+        "tag": "div",
+        "text": "Rated 5 out of 5 based on customer ratings. Grace Okafor — …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-27",
+        "tag": "div",
+        "text": "Rated 5 out of 5 based on customer ratings. Mateo Alvarez —…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#commentform",
+        "tag": "form",
+        "text": "Rating * 1 of 5 stars 2 of 5 stars 3 of 5 stars 4 of 5 star…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comments",
+        "tag": "div",
+        "text": "Rated 5 out of 5 based on customer ratings. Ruth Abernathy …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#custom-background-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-adv-reviews-drop-area",
+        "tag": "div",
+        "text": "Drag and drop images here or click to upload",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-free-shipping-progress-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant-recent-sales-notifications-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#page",
+        "tag": "div",
+        "text": "Skip to content Home Blog Shop About Contact Fernhill Home …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#photoswipe-fullscreen-dialog",
+        "tag": "div",
+        "text": "Full screen image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#primary",
+        "tag": "main",
+        "text": "← GO BACK Velvet Swivel Chair Rated 4.71 out of 5 based on …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product-219",
+        "tag": "div",
+        "text": "Velvet Swivel Chair Rated 4.71 out of 5 based on 7 customer…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#reply-title",
+        "tag": "span",
+        "text": "Cancel reply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#respond",
+        "tag": "div",
+        "text": "Cancel replyRating * 1 of 5 stars 2 of 5 stars 3 of 5 stars…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#review_form",
+        "tag": "div",
+        "text": "Cancel replyRating * 1 of 5 stars 2 of 5 stars 3 of 5 stars…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#review_form_wrapper",
+        "tag": "div",
+        "text": "Cancel replyRating * 1 of 5 stars 2 of 5 stars 3 of 5 stars…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#reviews",
+        "tag": "section",
+        "text": "What our customers are saying Real homes, real feedback. 4.…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#reviews-stars",
+        "tag": "h2",
+        "text": "What our customers are saying",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-header-cart",
+        "tag": "div",
+        "text": "0",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation",
+        "tag": "nav",
+        "text": "Home Blog Shop About Contact",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation-mobile",
+        "tag": "nav",
+        "text": "Home Blog Shop About Contact",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#text-2",
+        "tag": "section",
+        "text": "ABOUT About Fernhill How it Works Reviews Contact Careers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-3",
+        "tag": "section",
+        "text": "HELP FAQs Privacy Policy Terms Returns",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-4",
+        "tag": "section",
+        "text": "Solid wood furniture, built by hand in Portland and made to…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_231",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_236",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_250",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_product_categories-1",
+        "tag": "section",
+        "text": "SHOP Bedroom Decor & Lighting Dining Home Office Living Roo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-inline-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-library-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-adv-reviews-header",
+        "tag": "div",
+        "text": "4.7 Rated 4.7 out of 5 based on customer ratings. 7 Reviews…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-label",
+        "tag": "span",
+        "text": "SALE",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-quick-view-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".merchant-review-content",
+        "tag": "div",
+        "text": "Our guests always ask where we got it. I send them straight…",
+        "count": 7,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-volume-discounts-buy-label",
+        "tag": "div",
+        "text": "Buy 2, get $58.90 off each",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".merchant-volume-discounts-item-label",
+        "tag": "div",
+        "text": "Save $117.80",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

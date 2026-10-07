@@ -1,0 +1,1055 @@
+{
+  "slug": "admin-wp-dashboard--merchant-widget",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wp-postbox-toggle",
+      "event": "click",
+      "selector": "#wc_admin_dashboard_setup-title",
+      "count": 16
+    },
+    {
+      "label": "wp-postbox-move",
+      "event": "click",
+      "selector": ".wp-tooltip__toggle",
+      "count": 16
+    },
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-button",
+        "tag": "button",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#wpforms-dash-widget-forms-list-table",
+        "tag": "table",
+        "text": "Contact Form 3",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#community-events-location",
+        "tag": "input",
+        "text": "Cincinnati",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#community-events-submit",
+        "tag": "input",
+        "text": "Submit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#content",
+        "tag": "textarea",
+        "text": "What’s on your mind?",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_activity-hide",
+        "tag": "input",
+        "text": "dashboard_activity",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-hide",
+        "tag": "input",
+        "text": "dashboard_primary",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-hide",
+        "tag": "input",
+        "text": "dashboard_quick_press",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-hide",
+        "tag": "input",
+        "text": "dashboard_right_now",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-hide",
+        "tag": "input",
+        "text": "dashboard_site_health",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_modules_revenue-hide",
+        "tag": "input",
+        "text": "merchant_modules_revenue",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#meta-box-order-nonce",
+        "tag": "input",
+        "text": "50c9a9b7dd",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#quickpost-action",
+        "tag": "input",
+        "text": "post-quickdraft-save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#save-post",
+        "tag": "input",
+        "text": "Save Draft",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "1476d9ddc8",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wc_admin_dashboard_setup-hide",
+        "tag": "input",
+        "text": "wc_admin_dashboard_setup",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#welcomepanelnonce",
+        "tag": "input",
+        "text": "5e0da5d917",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp_welcome_panel-hide",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_lite-hide",
+        "tag": "input",
+        "text": "wpforms_reports_widget_lite",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-color-wp",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-color-wpforms",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-style-bar",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-settings-style-line",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-dash-widget-timespan",
+        "tag": "select",
+        "text": "Last 7 days Last 30 days",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#welcome-panel",
+        "tag": "div",
+        "text": "Dismiss Welcome to WordPress! Learn more about the 7.1.2 ve…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#activity-widget",
+        "tag": "div",
+        "text": "Recently Published Sep 26th, 3:00 am How to choose a sofa t…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Screen elements Some screen elements can be shown or hidden…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#air-datepicker-global-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#apexcharts-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#apexcharts1lthxbub",
+        "tag": "div",
+        "text": "250.00 200.00 150.00 100.00 50.00 0.00 28 Sep 29 Sep 30 Sep…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bar",
+        "tag": "circle",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#c",
+        "tag": "radialgradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#column3-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#column4-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#community-events",
+        "tag": "div",
+        "text": "Enter your closest city to find nearby events. Select locat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#community-events-location-message",
+        "tag": "span",
+        "text": "Enter your closest city to find nearby events.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#d",
+        "tag": "mask",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_activity",
+        "tag": "div",
+        "text": "Activity Move up Move down Show or hide panel Recently Publ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_activity-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_activity-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_activity-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_activity-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_activity-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_activity-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_activity-title",
+        "tag": "h2",
+        "text": "Activity",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_primary",
+        "tag": "div",
+        "text": "WordPress Events and News Move up Move down Show or hide pa…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_primary-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_primary-title",
+        "tag": "h2",
+        "text": "WordPress Events and News",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_quick_press",
+        "tag": "div",
+        "text": "Quick Draft Move up Move down Show or hide panel Title Cont…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_quick_press-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_quick_press-title",
+        "tag": "h2",
+        "text": "Quick Draft",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_right_now",
+        "tag": "div",
+        "text": "At a Glance Move up Move down Show or hide panel 8 Publishe…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_right_now-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_right_now-title",
+        "tag": "h2",
+        "text": "At a Glance",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_site_health",
+        "tag": "div",
+        "text": "Site Health Status Move up Move down Show or hide panel Goo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard_site_health-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dashboard_site_health-title",
+        "tag": "h2",
+        "text": "Site Health Status",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard-widgets",
+        "tag": "div",
+        "text": "WooCommerce Setup Move up Move down Show or hide panel Step…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#dashboard-widgets-wrap",
+        "tag": "div",
+        "text": "WooCommerce Setup Move up Move down Show or hide panel Step…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description-wrap",
+        "tag": "div",
+        "text": "Content",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#e",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#f",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#forecastMask1lthxbub",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#g",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectBarMask1lthxbub",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMarkerMask1lthxbub",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#gridRectMask1lthxbub",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#h",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#i",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_modules_revenue",
+        "tag": "div",
+        "text": "Daily added revenue by Merchant Move up Move down Show or h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant_modules_revenue-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_modules_revenue-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_modules_revenue-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_modules_revenue-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_modules_revenue-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_modules_revenue-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#merchant_modules_revenue-title",
+        "tag": "h2",
+        "text": "Daily added revenue by Merchant",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#nonForecastMask1lthxbub",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "WooCommerce Setup Move up Move down Show or hide panel Step…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-1",
+        "tag": "div",
+        "text": "WooCommerce Setup Move up Move down Show or hide panel Step…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-2",
+        "tag": "div",
+        "text": "Quick Draft Move up Move down Show or hide panel Title Cont…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-3",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-4",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#published-posts",
+        "tag": "div",
+        "text": "Recently Published Sep 26th, 3:00 am How to choose a sofa t…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#quick-press",
+        "tag": "form",
+        "text": "Title Content",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Screen elements Some screen elements can be shown or hidden…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#side-sortables",
+        "tag": "div",
+        "text": "Quick Draft Move up Move down Show or hide panel Title Cont…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#SvgjsLinearGradient1002",
+        "tag": "lineargradient",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#title-wrap",
+        "tag": "div",
+        "text": "Title",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wc_admin_dashboard_setup",
+        "tag": "div",
+        "text": "WooCommerce Setup Move up Move down Show or hide panel Step…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wc_admin_dashboard_setup-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wc_admin_dashboard_setup-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wc_admin_dashboard_setup-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wc_admin_dashboard_setup-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wc_admin_dashboard_setup-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wc_admin_dashboard_setup-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wc_admin_dashboard_setup-title",
+        "tag": "h2",
+        "text": "WooCommerce Setup",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-version",
+        "tag": "span",
+        "text": "WordPress 7.1.2 running Botiga theme.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-version-message",
+        "tag": "p",
+        "text": "WordPress 7.1.2 running Botiga theme.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_lite",
+        "tag": "div",
+        "text": "WPForms Move up Move down Show or hide panel View all Form …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms_reports_widget_lite-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_lite-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_lite-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_lite-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_lite-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_lite-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms_reports_widget_lite-title",
+        "tag": "h2",
+        "text": "WPForms",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-dash-widget-forms-list-block",
+        "tag": "div",
+        "text": "Contact Form 3",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

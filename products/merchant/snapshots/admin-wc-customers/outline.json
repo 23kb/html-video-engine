@@ -1,0 +1,299 @@
+{
+  "slug": "admin-wc-customers",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.woocommerce-layout__activity-panel-tab[data-snap-park][data-testid]",
+      "count": 2
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "th.woocommerce-table__item.is-left-aligned a",
+      "count": 17
+    },
+    {
+      "label": "tel-mailto-live",
+      "event": "click",
+      "selector": "td.woocommerce-table__item.is-left-aligned a",
+      "count": 16
+    },
+    {
+      "label": "chrome-nearest-screen",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 51
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#activity-panel-tab-activity",
+        "tag": "button",
+        "text": "Activity unread activity",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#activity-panel-tab-setup",
+        "tag": "button",
+        "text": "Finish setup",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#woocommerce-select-control-1__control-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#activity-panel-header_42",
+        "tag": "h2",
+        "text": "Store Activity",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-activity-panel",
+        "tag": "aside",
+        "text": "Activity unread activity Finish setup",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#caption-2",
+        "tag": "caption",
+        "text": "Customers(scroll to see more)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "If you like WooCommerce please leave us a ★★★★★ rating. A h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#header-2-0",
+        "tag": "span",
+        "text": "Sort by Name in descending order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#header-2-10",
+        "tag": "span",
+        "text": "Sort by Region in descending order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#header-2-11",
+        "tag": "span",
+        "text": "Sort by Postal code in descending order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#header-2-2",
+        "tag": "span",
+        "text": "Sort by Last active in ascending order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#header-2-3",
+        "tag": "span",
+        "text": "Sort by Date registered in descending order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#header-2-5",
+        "tag": "span",
+        "text": "Sort by Orders in descending order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#header-2-6",
+        "tag": "span",
+        "text": "Sort by Total spend in descending order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#header-2-8",
+        "tag": "span",
+        "text": "Sort by Country / Region in descending order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#header-2-9",
+        "tag": "span",
+        "text": "Sort by City in descending order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#jp-admin-notices",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#root",
+        "tag": "div",
+        "text": "Customers Store Activity Activity unread activity Finish se…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#search-inline-input-1",
+        "tag": "span",
+        "text": "Move backward for selected items",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__notice-catcher",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-layout__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__primary",
+        "tag": "div",
+        "text": "Filters Show: All Customers Data status: Last updated Oct 6…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

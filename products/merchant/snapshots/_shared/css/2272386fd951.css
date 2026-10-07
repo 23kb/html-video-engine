@@ -1,0 +1,56 @@
+
+
+            .bt-hook-wrapper {
+                display: block;
+                position: relative;
+                width: 100%;
+                background-color: rgba(0, 0, 0, 0.05);
+                border: 1px dashed rgba(0, 0, 0, 0.4);
+                padding: 10px;
+                margin: 15px 0;
+                border-radius: 5px;
+                text-align: left;
+            }
+
+            .bt-hook-wrapper .bt-hook-id {
+                display: block;
+                font-size: 12px;
+                color: rgba(0, 0, 0, 0.5);
+            }
+
+            .bt-hook-wrapper .bt-hook-edit {
+                position: absolute;
+                top: 9px;
+                right: 9px;
+                line-height: 1;
+                opacity: 0.5;
+                transition: ease opacity 250ms;
+            }
+
+            .bt-hook-wrapper .bt-hook-edit:hover {
+                opacity: 1;
+            }
+
+            .bt-hook-wrapper .bt-hook-edit svg {
+                width: 20px;
+                height: auto;
+                fill: #212121 !important;
+            }
+
+            .bt-hook-wrapper[data-hook-id="botiga_hook_woocommerce_after_main_content"] {
+                margin: 15px 15px;
+            }
+
+            .bt-hook-wrapper.has-content {
+                border-color: #212121;
+            }
+
+            .woocommerce-page-header + .bt-hook-wrapper {
+                margin-top: 60px;
+            }
+
+            .single-product .site-main>.product>section.products:last-child {
+                margin-bottom: 0;
+            } 
+        
+/*# sourceURL=botiga-style-inline-css */

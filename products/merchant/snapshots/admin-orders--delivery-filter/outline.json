@@ -1,0 +1,712 @@
+{
+  "slug": "admin-orders--delivery-filter",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.woocommerce-layout__activity-panel-tab[data-snap-park][data-testid]",
+      "count": 2
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 73
+    },
+    {
+      "label": "chrome-nearest-screen",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 51
+    },
+    {
+      "label": "woocommerce-order-preview",
+      "event": "click",
+      "selector": ".order-preview[data-order-id]",
+      "count": 10
+    },
+    {
+      "label": "select2-open",
+      "event": "click",
+      "selector": "span.select2-selection.select2-selection--single",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#activity-panel-tab-activity",
+        "tag": "button",
+        "text": "Activity unread activity",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#activity-panel-tab-setup",
+        "tag": "button",
+        "text": "Finish setup",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#billing_address-hide",
+        "tag": "input",
+        "text": "billing_address",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Change status to processing Change status to o…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Change status to processing Change status to o…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1636",
+        "tag": "input",
+        "text": "1636",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1638",
+        "tag": "input",
+        "text": "1638",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1639",
+        "tag": "input",
+        "text": "1639",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1640",
+        "tag": "input",
+        "text": "1640",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1641",
+        "tag": "input",
+        "text": "1641",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1642",
+        "tag": "input",
+        "text": "1642",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1643",
+        "tag": "input",
+        "text": "1643",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1644",
+        "tag": "input",
+        "text": "1644",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1645",
+        "tag": "input",
+        "text": "1645",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1646",
+        "tag": "input",
+        "text": "1646",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit_shop_order_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#filter-by-created-via",
+        "tag": "select",
+        "text": "All sales channels Admin Checkout Point of Sale",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#filter-by-date",
+        "tag": "select",
+        "text": "All dates October 2026 September 2026 August 2026 July 2026…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant_delivery-hide",
+        "tag": "input",
+        "text": "merchant_delivery",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_date-hide",
+        "tag": "input",
+        "text": "order_date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_number-hide",
+        "tag": "input",
+        "text": "order_number",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_status-hide",
+        "tag": "input",
+        "text": "order_status",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_total-hide",
+        "tag": "input",
+        "text": "order_total",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order-query-submit",
+        "tag": "input",
+        "text": "Filter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-search-filter",
+        "tag": "select",
+        "text": "Order ID Customer Email Customers Products All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#orders-search-input-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#origin-hide",
+        "tag": "input",
+        "text": "origin",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pre_order_shipping_date-hide",
+        "tag": "input",
+        "text": "pre_order_shipping_date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "beabc1009b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_address-hide",
+        "tag": "input",
+        "text": "shipping_address",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wc_actions-hide",
+        "tag": "input",
+        "text": "wc_actions",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#activity-panel-header_32",
+        "tag": "h2",
+        "text": "Store Activity",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-activity-panel",
+        "tag": "aside",
+        "text": "Activity unread activity Finish setup",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Order Date Status Delivery / Pickup Billing Ship to…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_address",
+        "tag": "th",
+        "text": "Billing",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "If you like WooCommerce please leave us a ★★★★★ rating. A h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#jp-admin-notices",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#merchant_delivery",
+        "tag": "th",
+        "text": "Delivery / Pickup",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_date",
+        "tag": "th",
+        "text": "Date Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_number",
+        "tag": "th",
+        "text": "Order Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_status",
+        "tag": "th",
+        "text": "Status",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_total",
+        "tag": "th",
+        "text": "Total Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1636",
+        "tag": "tr",
+        "text": "Preview #1636 Maya Ellison Oct 1, 2026 Processing Delivery …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1638",
+        "tag": "tr",
+        "text": "Preview #1638 Owen Park Oct 1, 2026 Processing Delivery Mon…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1639",
+        "tag": "tr",
+        "text": "Preview #1639 Lucas Bennett Sep 30, 2026 Processing Deliver…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1640",
+        "tag": "tr",
+        "text": "Preview #1640 Ethan Brooks Sep 30, 2026 Processing Delivery…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1641",
+        "tag": "tr",
+        "text": "Preview #1641 Chloe Nguyen Sep 29, 2026 Processing Delivery…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1642",
+        "tag": "tr",
+        "text": "Preview #1642 Grace Okafor Oct 1, 2026 Processing Delivery …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1643",
+        "tag": "tr",
+        "text": "Preview #1643 Emma Lindqvist Sep 30, 2026 Processing Delive…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1644",
+        "tag": "tr",
+        "text": "Preview #1644 Sofia Marchetti Oct 1, 2026 Processing Delive…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1645",
+        "tag": "tr",
+        "text": "Preview #1645 Hannah Reyes Oct 1, 2026 Processing Pickup We…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order-1646",
+        "tag": "tr",
+        "text": "Preview #1646 Daniel Moreau Sep 30, 2026 Processing Pickup …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#origin",
+        "tag": "th",
+        "text": "Origin",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#pre_order_shipping_date",
+        "tag": "th",
+        "text": "Shipping Date",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Order Date Status Delivery / Pickup Billing Ship to…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-_customer_user-1k-container",
+        "tag": "span",
+        "text": "Filter by registered customer",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_address",
+        "tag": "th",
+        "text": "Ship to",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 5",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Preview #1642 Grace Okafor Oct 1, 2026 Processing Delivery …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tiptip_arrow",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_arrow_inner",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_merchant",
+        "tag": "li",
+        "text": "Merchant Dashboard Modules Campaigns Analytics Settings Pat…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wc_actions",
+        "tag": "th",
+        "text": "Actions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wc-orders-filter",
+        "tag": "form",
+        "text": "Search orders: Order ID Customer Email Customers Products A…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-root",
+        "tag": "div",
+        "text": "Orders Store Activity Activity unread activity Finish setup",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}
