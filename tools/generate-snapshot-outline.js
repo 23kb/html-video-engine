@@ -141,7 +141,7 @@ function analyzeInFrame() {
       'wp-link-', 'menu-', 'tab-panel-', 'tab-link-',
     ];
     function isChromeId(id) {
-      return CHROME_ID_PREFIX.some(p => id.startsWith(p));
+      return typeof id === 'string' && CHROME_ID_PREFIX.some(p => id.startsWith(p));
     }
     function isHashedClass(c) {
       if (/^css-[0-9a-z]+$/i.test(c)) return true;     // emotion

@@ -1,6 +1,6 @@
 {
- "generatedAt": "2026-10-06T14:24:15.230Z",
- "count": 343,
+ "generatedAt": "2026-10-07T02:37:45.712Z",
+ "count": 352,
  "snapshots": [
   {
    "slug": "admin-addons",
@@ -427,6 +427,31 @@
    "sourcePath": "/wp-admin/admin.php?page=wpforms-payments&view=single&payment_id=2&mode=test"
   },
   {
+   "slug": "admin-payment-detail-paystack",
+   "category": "admin/page",
+   "shows": "TODO-describe: admin payment detail paystack",
+   "topics": [
+    "admin",
+    "payment",
+    "detail",
+    "paystack"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-payments&view=single&payment_id=230&mode=test&snap=1"
+  },
+  {
+   "slug": "admin-payment-detail-paystack-refunded",
+   "category": "admin/page",
+   "shows": "TODO-describe: admin payment detail paystack refunded",
+   "topics": [
+    "admin",
+    "payment",
+    "detail",
+    "paystack",
+    "refunded"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-payments&view=single&payment_id=232&mode=test&snap=1"
+  },
+  {
    "slug": "admin-payments",
    "category": "admin/page",
    "shows": "Payments list — transactions table",
@@ -470,6 +495,17 @@
     "list"
    ],
    "sourcePath": "/wp-admin/admin.php?page=wpforms-payments&mode=test"
+  },
+  {
+   "slug": "admin-payments-paystack",
+   "category": "admin/page",
+   "shows": "TODO-describe: admin payments paystack",
+   "topics": [
+    "admin",
+    "payments",
+    "paystack"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-payments&snap=1"
   },
   {
    "slug": "admin-privacy-compliance",
@@ -588,6 +624,18 @@
     "credentials"
    ],
    "sourcePath": "/"
+  },
+  {
+   "slug": "admin-settings-payments-paystack",
+   "category": "admin/page",
+   "shows": "TODO-describe: admin settings payments paystack",
+   "topics": [
+    "admin",
+    "settings",
+    "payments",
+    "paystack"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-settings&view=payments&snap=1"
   },
   {
    "slug": "admin-settings-validation",
@@ -1431,6 +1479,18 @@
    "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=1779&view=fields"
   },
   {
+   "slug": "builder-fields-yoga-ai-form",
+   "category": "builder/panel",
+   "shows": "TODO-describe: builder fields yoga ai form",
+   "topics": [
+    "builder",
+    "fields",
+    "yoga",
+    "form"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=setup"
+  },
+  {
    "slug": "builder-job-application-final",
    "category": "builder/panel",
    "shows": "Builder → Fields for form 1882 (Job Application) in its finished state — Name, Email, Phone, Resume Upload (File Upload) and a Submit Application button on the canvas, Add Fields panel open. The built form of the job-application story; frontend-job-application-preview is what applicants see.",
@@ -1471,6 +1531,29 @@
     "plan"
    ],
    "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&form_id=${FID}&view=payments"
+  },
+  {
+   "slug": "builder-payments-paystack",
+   "category": "builder/panel",
+   "shows": "TODO-describe: builder payments paystack",
+   "topics": [
+    "builder",
+    "payments",
+    "paystack"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=payments&form_id=2552&snap=1"
+  },
+  {
+   "slug": "builder-payments-paystack-conditional",
+   "category": "builder/panel",
+   "shows": "TODO-describe: builder payments paystack conditional",
+   "topics": [
+    "builder",
+    "payments",
+    "paystack",
+    "conditional"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=payments&form_id=2552&snap=1"
   },
   {
    "slug": "builder-photography-quote",
@@ -3330,6 +3413,17 @@
    "sourcePath": "/custom-order-inquiry/"
   },
   {
+   "slug": "frontend-paystack-form",
+   "category": "frontend",
+   "shows": "TODO-describe: frontend paystack form",
+   "topics": [
+    "frontend",
+    "paystack",
+    "form"
+   ],
+   "sourcePath": "/?wpforms_form_preview=2552"
+  },
+  {
    "slug": "frontend-pdf-access--denied",
    "category": "frontend/page",
    "shows": "PDF download page refusing access (403): what a visitor sees for a PDF restricted to logged-in users, or for a link that is not valid.",
@@ -4224,6 +4318,18 @@
     "external"
    ],
    "sourcePath": "SingleFile save (scrubbed; raw never enters the repo)"
+  },
+  {
+   "slug": "wpforms-ai-builder-yoga-generated",
+   "category": "uncategorized",
+   "shows": "TODO-describe: wpforms ai builder yoga generated",
+   "topics": [
+    "wpforms",
+    "builder",
+    "yoga",
+    "generated"
+   ],
+   "sourcePath": "/wp-admin/admin.php?page=wpforms-builder&view=setup"
   }
  ],
  "notes": "See docs/snapshot-interactivity.md for conventions. `status` field marks deferred/needs-recapture entries that are documented but not captured on disk."

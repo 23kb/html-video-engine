@@ -1,0 +1,507 @@
+{
+  "slug": "admin-payment-detail-paystack-refunded",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "admin-collapse-menu",
+      "event": "click",
+      "selector": "#collapse-button",
+      "count": 1
+    },
+    {
+      "label": "admin-screen-options",
+      "event": "click",
+      "selector": "#show-settings-link",
+      "count": 1
+    },
+    {
+      "label": "admin-flyout",
+      "event": "click",
+      "selector": "a.wpforms-flyout-button.wpforms-flyout-head",
+      "count": 1
+    },
+    {
+      "label": "admin-whats-new",
+      "event": "click",
+      "selector": "a.wpforms-link.wpforms-link-whats-new",
+      "count": 1
+    }
+  ],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false,
+        "wired": "admin-collapse-menu",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "admin-screen-options",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wpforms-admin-single-navigation-next-link",
+        "tag": "a",
+        "text": "Next payment",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-admin-single-navigation-prev-link",
+        "tag": "a",
+        "text": "Previous payment",
+        "count": 1,
+        "hidden": false,
+        "nav": "admin-payments"
+      },
+      {
+        "sel": ".wpforms-btn",
+        "tag": "a",
+        "text": "Back to All Payments",
+        "count": 1,
+        "hidden": false,
+        "nav": "admin-payments"
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "admin-flyout",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 6,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false,
+        "wired": "admin-whats-new",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#advanced",
+        "tag": "input",
+        "text": "true",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#log",
+        "tag": "input",
+        "text": "true",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "71843b9e44",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Additional informationAdvanced detailsLog",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-body",
+        "tag": "div",
+        "text": "Payment Details #232 Total Ksh 3,500.00 Type One-Time Metho…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body-content",
+        "tag": "div",
+        "text": "Payment Details #232 Total Ksh 3,500.00 Type One-Time Metho…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-1",
+        "tag": "div",
+        "text": "Details Submitted: Oct 5, 2026 at 11:03 am Gateway: Paystac…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#poststuff",
+        "tag": "div",
+        "text": "Payment Details #232 Total Ksh 3,500.00 Type One-Time Metho…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Additional informationAdvanced detailsLog",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_aioseo",
+        "tag": "li",
+        "text": "All in One SEO Notifications Dashboard General Settings Sea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_duplicator",
+        "tag": "li",
+        "text": "Duplicator Pro Backups Import Backups Staging Schedule Back…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_e2e-dashboard",
+        "tag": "li",
+        "text": "E2E Dashboard E2E Dashboard Recent Runs Nightly Tests",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wp-mail-smtp",
+        "tag": "li",
+        "text": "WP Mail SMTP Setup Checklist 67% complete Dashboard Setting…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpcode",
+        "tag": "li",
+        "text": "Code Snippets Code Snippets + Add Snippet Header & Footer C…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms_dev_tools",
+        "tag": "li",
+        "text": "WPForms Dev WPForms Dev Analytics",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms Dashboard All Forms Setup Checklist 67% complete Ad…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-payment-details",
+        "tag": "div",
+        "text": "Details Submitted: Oct 5, 2026 at 11:03 am Gateway: Paystac…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-payment-entry-fields",
+        "tag": "div",
+        "text": "Entry Summary #8058 Name Sullie Baker Email sullie@example.…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-payment-info",
+        "tag": "div",
+        "text": "Payment Details #232 Total Ksh 3,500.00 Type One-Time Metho…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-payments",
+        "tag": "div",
+        "text": "Payments Back to All Payments Payment 3 of 3 3 Payment Deta…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-single-payment-tooltip-content-method",
+        "tag": "span",
+        "text": "xxxx xxxx xxxx 4081Expires 12/2030Method: Card",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "Payment Details #232 Total Ksh 3,500.00 Type One-Time Metho…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-payment-action-status-label",
+        "tag": "span",
+        "text": "Status:",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-payment-actions",
+        "tag": "div",
+        "text": "Status: Refunded View in Paystack",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-payment-entry-field",
+        "tag": "div",
+        "text": "Name Sullie Baker",
+        "count": 5,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-payments-details-stat-card",
+        "tag": "li",
+        "text": "Total Ksh 3,500.00",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

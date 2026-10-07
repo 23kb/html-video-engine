@@ -1,0 +1,122 @@
+{
+  "_comment": "Paystack addon 1.0.0 (doc: wpforms.com/docs/paystack-addon/). Site prep: addon active, currency KES, Sullie payments mode=test, form 2552 Cake Order Form, payments 230/231 completed + 232 refunded. Restore currency MXN + addon off after.",
+  "variants": [
+    {
+      "slug": "admin-settings-payments-paystack",
+      "shows": "WPForms > Settings > Payments with Paystack connected in Test Mode: currency Kenyan Shilling, Paystack section with Test Mode ON, connection status, key fields (values blanked at capture), Enable Webhooks ON and the Webhooks Endpoint URL with copy button.",
+      "topics": [
+        "paystack",
+        "payments settings",
+        "connect paystack",
+        "webhooks",
+        "test mode"
+      ],
+      "category": "admin",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-settings&view=payments&snap=1",
+      "waitFor": "#wpforms-setting-row-paystack-heading, [id*='paystack']",
+      "steps": [
+        {
+          "eval": "document.querySelectorAll('input').forEach(function(i){ if(/paystack/i.test(i.name||i.id||'') && /key/i.test(i.name||i.id||'')){ i.value=''; i.removeAttribute('value'); } }); var el=document.querySelector('[id*=\"paystack-heading\"]'); if(el) el.scrollIntoView({block:'start'});",
+          "settle": 300
+        }
+      ]
+    },
+    {
+      "slug": "builder-payments-paystack",
+      "shows": "Form builder > Payments > Paystack for form 2552 (Cake Order Form): Enable Paystack payments ON, Payment Description, Customer Email and Customer Name field selectors, Enable Conditional Logic toggle OFF.",
+      "topics": [
+        "paystack",
+        "form builder",
+        "payments panel",
+        "enable paystack payments"
+      ],
+      "category": "builder",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=payments&form_id=2552&snap=1",
+      "waitFor": ".wpforms-panel-sidebar-section-paystack",
+      "steps": [
+        {
+          "click": ".wpforms-panel-sidebar-section-paystack",
+          "settle": 800
+        }
+      ]
+    },
+    {
+      "slug": "builder-payments-paystack-conditional",
+      "shows": "Form builder > Payments > Paystack for form 2552 with Enable Conditional Logic switched ON and the empty rule builder (Process / Don't process this payment if...).",
+      "topics": [
+        "paystack",
+        "form builder",
+        "conditional logic",
+        "payments panel"
+      ],
+      "category": "builder",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-builder&view=payments&form_id=2552&snap=1",
+      "waitFor": ".wpforms-panel-sidebar-section-paystack",
+      "steps": [
+        {
+          "click": ".wpforms-panel-sidebar-section-paystack",
+          "settle": 800
+        },
+        {
+          "eval": "var c=document.getElementById('wpforms-panel-field-payments-paystack-conditional_logic-checkbox'); if(c&&!c.checked){var l=document.querySelector('label[for=\"'+c.id+'\"]'); (l||c).click();}",
+          "settle": 1200
+        }
+      ]
+    },
+    {
+      "slug": "frontend-paystack-form",
+      "shows": "Frontend preview of form 2552 (Cake Order Form) that takes Paystack payments: Name, Email, Cake Size payment choices in KES, Message on the Cake, Total and Submit. Submitting opens the external Paystack popup (not captured).",
+      "topics": [
+        "paystack",
+        "frontend",
+        "payment form",
+        "cake order"
+      ],
+      "category": "frontend",
+      "targetPath": "/?wpforms_form_preview=2552",
+      "waitFor": "#wpforms-form-2552",
+      "steps": []
+    },
+    {
+      "slug": "admin-payments-paystack",
+      "shows": "WPForms > Payments in Test Data mode with three Paystack test payments for Cake Order Form (two Completed, one Refunded, KES).",
+      "topics": [
+        "paystack",
+        "payments list",
+        "test data",
+        "payments overview"
+      ],
+      "category": "admin",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-payments&snap=1",
+      "waitFor": ".wpforms-payments-overview, #wpforms-payments-list, table",
+      "steps": []
+    },
+    {
+      "slug": "admin-payment-detail-paystack",
+      "shows": "Single Paystack test payment (Completed, KES 2,500) for Cake Order Form: payment details, View in Paystack link, Refund button, entry summary.",
+      "topics": [
+        "paystack",
+        "payment details",
+        "refund",
+        "view in paystack"
+      ],
+      "category": "admin",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-payments&view=single&payment_id=230&mode=test&snap=1",
+      "waitFor": "#wpforms-payment-info, .wpforms-payment-single, #poststuff",
+      "steps": []
+    },
+    {
+      "slug": "admin-payment-detail-paystack-refunded",
+      "shows": "Single Paystack test payment in Refunded status (KES 3,500) for Cake Order Form, with its payment history.",
+      "topics": [
+        "paystack",
+        "payment details",
+        "refunded"
+      ],
+      "category": "admin",
+      "targetPath": "/wp-admin/admin.php?page=wpforms-payments&view=single&payment_id=232&mode=test&snap=1",
+      "waitFor": "#wpforms-payment-info, .wpforms-payment-single, #poststuff",
+      "steps": []
+    }
+  ]
+}

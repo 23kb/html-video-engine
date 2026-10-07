@@ -1,0 +1,1082 @@
+{
+  "slug": "admin-settings-payments-paystack",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "admin-collapse-menu",
+      "event": "click",
+      "selector": "#collapse-button",
+      "count": 1
+    },
+    {
+      "label": "admin-flyout",
+      "event": "click",
+      "selector": "a.wpforms-flyout-button.wpforms-flyout-head",
+      "count": 1
+    },
+    {
+      "label": "admin-choices-toggle",
+      "event": "click",
+      "selector": "div.choices",
+      "count": 1
+    },
+    {
+      "label": "admin-choices-pick",
+      "event": "click",
+      "selector": ".choices__item.choices__item--choice[data-choice][data-choice-selectable]",
+      "count": 44
+    },
+    {
+      "label": "admin-choices-search",
+      "event": "input",
+      "selector": "input.choices__input.choices__input--cloned",
+      "count": 1
+    },
+    {
+      "label": "admin-settings-toggle-status",
+      "event": "change",
+      "selector": "#wpforms-setting-stripe-test-mode",
+      "count": 10
+    },
+    {
+      "label": "admin-settings-stripe-mode",
+      "event": "change",
+      "selector": "#wpforms-setting-stripe-test-mode",
+      "count": 1
+    },
+    {
+      "label": "admin-settings-paypal-mode",
+      "event": "change",
+      "selector": "#wpforms-setting-paypal-commerce-sandbox-mode",
+      "count": 1
+    },
+    {
+      "label": "admin-settings-square-mode",
+      "event": "change",
+      "selector": "#wpforms-setting-square-sandbox-mode",
+      "count": 1
+    },
+    {
+      "label": "admin-settings-mercado-pago-mode",
+      "event": "change",
+      "selector": "#wpforms-setting-mercado_pago-test-mode",
+      "count": 1
+    },
+    {
+      "label": "admin-settings-masked-clear",
+      "event": "click",
+      "selector": ".wpforms-masked-input-clear",
+      "count": 2
+    },
+    {
+      "label": "admin-whats-new",
+      "event": "click",
+      "selector": "a.wpforms-link.wpforms-link-whats-new",
+      "count": 1
+    }
+  ],
+  "nav": [
+    {
+      "target": "admin-forms-overview",
+      "page": "wpforms-overview",
+      "hrefSel": "a[href*=\"page=wpforms-overview\"]"
+    },
+    {
+      "target": "builder-setup",
+      "page": "wpforms-builder",
+      "hrefSel": "a[href*=\"page=wpforms-builder\"]"
+    },
+    {
+      "target": "admin-entries-overview",
+      "page": "wpforms-entries",
+      "hrefSel": "a[href*=\"page=wpforms-entries\"]"
+    },
+    {
+      "target": "admin-payments",
+      "page": "wpforms-payments",
+      "hrefSel": "a[href*=\"page=wpforms-payments\"]"
+    },
+    {
+      "target": "admin-templates",
+      "page": "wpforms-templates",
+      "hrefSel": "a[href*=\"page=wpforms-templates\"]"
+    },
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    },
+    {
+      "target": "admin-tools-import",
+      "page": "wpforms-tools",
+      "hrefSel": "a[href*=\"page=wpforms-tools\"]"
+    },
+    {
+      "target": "admin-addons",
+      "page": "wpforms-addons",
+      "hrefSel": "a[href*=\"page=wpforms-addons\"]"
+    },
+    {
+      "target": "admin-settings-email",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=email\"]"
+    },
+    {
+      "target": "admin-settings-captcha",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=captcha\"]"
+    },
+    {
+      "target": "admin-settings-validation",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=validation\"]"
+    },
+    {
+      "target": "admin-settings-payments",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=payments\"]"
+    },
+    {
+      "target": "admin-settings-integrations",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=integrations\"]"
+    },
+    {
+      "target": "admin-settings-geolocation",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=geolocation\"]"
+    },
+    {
+      "target": "admin-settings-access",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=access\"]"
+    },
+    {
+      "target": "admin-settings-misc",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"][href*=\"view=misc\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false,
+        "wired": "admin-collapse-menu",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#wpforms-paypal-commerce-disconnect-sandbox",
+        "tag": "a",
+        "text": "Disconnect",
+        "count": 1,
+        "hidden": false,
+        "nav": "admin-settings-general"
+      },
+      {
+        "sel": "#wpforms-setting-row-authorize_net-test-mode",
+        "tag": "div",
+        "text": "Test Mode ON Prevent Authorize.Net from processing live tra…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-mercado_pago-test-mode",
+        "tag": "div",
+        "text": "Test Mode ON Prevent Mercado Pago from processing live tran…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-mercado_pago-webhooks-enabled",
+        "tag": "div",
+        "text": "Enable Webhooks ON Mercado Pago uses webhooks to notify WPF…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-paypal-commerce-sandbox-mode",
+        "tag": "div",
+        "text": "Test Mode ON Prevent PayPal Commerce from processing live t…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-paypal-commerce-webhooks-enabled",
+        "tag": "div",
+        "text": "Enable Webhooks ON PayPal uses webhooks to notify WPForms w…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-paystack-test-mode",
+        "tag": "div",
+        "text": "Test Mode ON Prevent Paystack from processing live transact…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-paystack-webhooks-enabled",
+        "tag": "div",
+        "text": "Enable Webhooks ON Paystack uses webhooks to notify WPForms…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-square-sandbox-mode",
+        "tag": "div",
+        "text": "Test Mode ON Prevent Square from processing live transactio…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-stripe-test-mode",
+        "tag": "div",
+        "text": "Test Mode ON Prevent Stripe from processing live transactio…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-stripe-webhooks-enabled",
+        "tag": "div",
+        "text": "Enable Webhooks ON Stripe uses webhooks to notify WPForms w…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-btn",
+        "tag": "a",
+        "text": "Switch Accounts",
+        "count": 7,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-btn-orange",
+        "tag": "button",
+        "text": "Save Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-button",
+        "tag": "a",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-head",
+        "tag": "a",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false,
+        "wired": "admin-flyout",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-flyout-item-1",
+        "tag": "a",
+        "text": "Join Our Community",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-flyout-item-2",
+        "tag": "a",
+        "text": "Support & Docs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-learn-more",
+        "tag": "a",
+        "text": "Learn More",
+        "count": 8,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-link",
+        "tag": "a",
+        "text": "Docs",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-splash-modal-open",
+        "tag": "a",
+        "text": "What’s New",
+        "count": 1,
+        "hidden": false,
+        "wired": "admin-whats-new",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".wpforms-stripe-connect-button",
+        "tag": "a",
+        "text": "Connect with Stripe",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-toggle-control",
+        "tag": "span",
+        "text": "ON",
+        "count": 10,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#wpforms-paystack-webhook-endpoint-url",
+        "tag": "input",
+        "text": "http://sulliesbakery.com/wp-json/wpforms/paystack/webhooks",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-authorize_net-live-api-login-id",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-authorize_net-live-transaction-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-authorize_net-test-api-login-id",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-authorize_net-test-mode",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-authorize_net-test-transaction-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-currency",
+        "tag": "select",
+        "text": "Kenyan Shilling (KES Ksh)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-mercado_pago-live-access-token",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-mercado_pago-live-public-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-mercado_pago-test-access-token",
+        "tag": "input",
+        "text": "••••••••••••••6426",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-mercado_pago-test-mode",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-mercado_pago-test-public-key",
+        "tag": "input",
+        "text": "TEST-9c9646de-0931-4635-89ae-d24aa2fb654e",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-mercado_pago-webhooks-enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-paypal-commerce-sandbox-mode",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-paypal-commerce-webhooks-enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-paystack-live-public-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-paystack-live-secret-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-paystack-test-mode",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-paystack-test-public-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-paystack-test-secret-key",
+        "tag": "input",
+        "text": "••••••••••••••bab9",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-paystack-webhooks-enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-square-sandbox-mode",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-stripe-live-publishable-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-stripe-live-secret-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-stripe-test-mode",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-stripe-test-publishable-key",
+        "tag": "input",
+        "text": "REDACTED_KEY",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-stripe-test-secret-key",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-stripe-webhooks-enabled",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__input--cloned",
+        "tag": "input",
+        "text": "null",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-masked-input-clear-flag",
+        "tag": "input",
+        "text": "0",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#aioseo-modal-portal",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#aioseo-admin",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Please rate WPForms ★★★★★ on WordPress.org to help us sprea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_aioseo",
+        "tag": "li",
+        "text": "All in One SEO Notifications Dashboard General Settings Sea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_duplicator",
+        "tag": "li",
+        "text": "Duplicator Pro Backups Import Backups Staging Schedule Back…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_e2e-dashboard",
+        "tag": "li",
+        "text": "E2E Dashboard E2E Dashboard Recent Runs Nightly Tests",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sugar-calendar",
+        "tag": "li",
+        "text": "Events Events Add New Calendars Tickets Venues Speakers RSV…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wp-mail-smtp",
+        "tag": "li",
+        "text": "WP Mail SMTP Setup Checklist 67% complete Dashboard Setting…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpcode",
+        "tag": "li",
+        "text": "Code Snippets Code Snippets + Add Snippet Header & Footer C…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms_dev_tools",
+        "tag": "li",
+        "text": "WPForms Dev WPForms Dev Analytics",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wpforms-overview",
+        "tag": "li",
+        "text": "WPForms Dashboard All Forms Setup Checklist 67% complete Ad…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-flyout",
+        "tag": "div",
+        "text": "See Quick Links",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-flyout-items",
+        "tag": "div",
+        "text": "Suggest a Feature Join Our Community Support & Docs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header",
+        "tag": "div",
+        "text": "Docs Videos Support What’s New",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-header-temp",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-notice-1",
+        "tag": "div",
+        "text": "Payments Cannot Be Processed The currency you have set (KES…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-notice-2",
+        "tag": "div",
+        "text": "Payments Cannot Be Processed The currency you have set (KES…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-notice-3",
+        "tag": "div",
+        "text": "Payments Cannot Be Processed The currency you have set (KES…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-authorize_net-connection-status-live",
+        "tag": "div",
+        "text": "Connection StatusNot connected to Authorize.Net in Producti…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-authorize_net-connection-status-test",
+        "tag": "div",
+        "text": "Connection Status Not connected to Authorize.Net in Sandbox…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-authorize_net-heading",
+        "tag": "div",
+        "text": "Authorize.Net Easily collect credit card payments with Auth…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-authorize_net-live-api-login-id",
+        "tag": "div",
+        "text": "API Login ID",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-authorize_net-live-transaction-key",
+        "tag": "div",
+        "text": "Transaction Key",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-authorize_net-test-api-login-id",
+        "tag": "div",
+        "text": "Test API Login ID",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-authorize_net-test-transaction-key",
+        "tag": "div",
+        "text": "Test Transaction Key",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-currency",
+        "tag": "div",
+        "text": "Currency Kenyan Shilling (KES Ksh)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-mercado_pago-connection-status-live",
+        "tag": "div",
+        "text": "Connection StatusNot connected to Mercado Pago.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-mercado_pago-connection-status-test",
+        "tag": "div",
+        "text": "Connection Status Connected to Mercado Pago as bountyhunt93…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-mercado_pago-heading",
+        "tag": "div",
+        "text": "Mercado Pago Easily collect card payments with Mercado Pago…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-mercado_pago-live-access-token",
+        "tag": "div",
+        "text": "Production Access TokenThe private key used to create payme…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-mercado_pago-live-public-key",
+        "tag": "div",
+        "text": "Production Public KeyThe public key used by the payment for…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-mercado_pago-test-access-token",
+        "tag": "div",
+        "text": "Test Access Token The private key used to create payments. …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-mercado_pago-test-public-key",
+        "tag": "div",
+        "text": "Test Public Key The public key used by the payment form. Fi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-payments-heading",
+        "tag": "div",
+        "text": "Payments",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-paypal-commerce-connection-merchant-email-live",
+        "tag": "div",
+        "text": "Primary EmailNot available",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-paypal-commerce-connection-merchant-email-sandbox",
+        "tag": "div",
+        "text": "Primary Email sb-smmip49918402@personal.example.com",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-paypal-commerce-connection-merchant-granted-scopes-live",
+        "tag": "div",
+        "text": "Scopes GrantedNot available",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-paypal-commerce-connection-merchant-granted-scopes-sandbox",
+        "tag": "div",
+        "text": "Scopes Granted Payments – Create / Capture Partner Fees Pay…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-paypal-commerce-connection-merchant-id-live",
+        "tag": "div",
+        "text": "Account IDNot available",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-paypal-commerce-connection-merchant-id-sandbox",
+        "tag": "div",
+        "text": "Account ID HQDHCA3KSGNTJ",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-paypal-commerce-connection-status-live",
+        "tag": "div",
+        "text": "Connection StatusConnect with PayPal CommerceSecurely conne…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-paypal-commerce-connection-status-sandbox",
+        "tag": "div",
+        "text": "Connection Status Connected to PayPal in Sandbox mode. Vaul…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-paypal-commerce-heading",
+        "tag": "div",
+        "text": "PayPal Commerce Easily collect PayPal Checkout and credit c…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-paystack-connection-status-live",
+        "tag": "div",
+        "text": "Connection StatusNot connected to Paystack.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-paystack-connection-status-test",
+        "tag": "div",
+        "text": "Connection Status Connected to Paystack in Test mode.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-paystack-heading",
+        "tag": "div",
+        "text": "Paystack Easily collect payments with Paystack across Afric…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-paystack-live-public-key",
+        "tag": "div",
+        "text": "Live Public KeyThe public key used by the payment popup. Fi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-paystack-live-secret-key",
+        "tag": "div",
+        "text": "Live Secret KeyThe secret key used to create payments. Find…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-paystack-test-public-key",
+        "tag": "div",
+        "text": "Test Public Key The public key used by the payment popup. F…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-paystack-test-secret-key",
+        "tag": "div",
+        "text": "Test Secret Key The secret key used to create payments. Fin…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-paystack-webhooks-endpoint-set",
+        "tag": "div",
+        "text": "Webhooks Endpoint Copy this URL into the Webhook URL field …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-square-connection-status-production",
+        "tag": "div",
+        "text": "Connection StatusConnect with SquareSecurely connect to Squ…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-square-connection-status-sandbox",
+        "tag": "div",
+        "text": "Connection Status Connect with Square Securely connect to S…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-square-heading",
+        "tag": "div",
+        "text": "Square Easily collect credit card payments with Square. For…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-stripe-connection-status",
+        "tag": "div",
+        "text": "Connection Status Connected to Stripe as WPForms LLC in Tes…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-stripe-heading",
+        "tag": "div",
+        "text": "Stripe Easily collect credit card payments with Stripe. For…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setting-row-stripe-live-publishable-key",
+        "tag": "div",
+        "text": "Live Publishable Key",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-stripe-live-secret-key",
+        "tag": "div",
+        "text": "Live Secret Key",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-stripe-test-publishable-key",
+        "tag": "div",
+        "text": "Test Publishable Key",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-setting-row-stripe-test-secret-key",
+        "tag": "div",
+        "text": "Test Secret Key",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-settings",
+        "tag": "div",
+        "text": "General Email CAPTCHA Validation Payments Integrations Geol…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wpforms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpms-setup-checklist-menu-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".choices__list--dropdown",
+        "tag": "div",
+        "text": "Argentine Peso (ARS $)Australian Dollar (AUD $)Brazilian Re…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-admin-content",
+        "tag": "div",
+        "text": "Payments Currency Kenyan Shilling (KES Ksh) Stripe Easily c…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-flyout-label",
+        "tag": "div",
+        "text": "Suggest a Feature",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".wpforms-setting-label",
+        "tag": "span",
+        "text": "Currency",
+        "count": 45,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-item",
+        "tag": "li",
+        "text": "Setup Checklist 67% complete",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".wpforms-setup-checklist-menu-label",
+        "tag": "span",
+        "text": "Setup Checklist",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}
