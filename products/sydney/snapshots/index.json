@@ -1,8 +1,18 @@
 {
  "product": "sydney",
- "generatedAt": "2026-10-05T05:14:00.711Z",
- "count": 237,
+ "generatedAt": "2026-10-06T19:52:45.327Z",
+ "count": 250,
  "snapshots": [
+  {
+   "slug": "admin-categories",
+   "category": "admin/page",
+   "shows": "Posts › Categories: the Journal categories with counts and the Add New Category form.",
+   "topics": [
+    "categories",
+    "post categories"
+   ],
+   "sourcePath": "/wp-admin/edit-tags.php?taxonomy=category"
+  },
   {
    "slug": "admin-category-edit--header-image",
    "category": "admin/page",
@@ -16,6 +26,65 @@
    "sourcePath": "/wp-admin/term.php?taxonomy=category&tag_ID=144"
   },
   {
+   "slug": "admin-comments",
+   "category": "admin/page",
+   "shows": "Comments: the comments on Journal posts with their status filters.",
+   "topics": [
+    "comments",
+    "moderate comments"
+   ],
+   "sourcePath": "/wp-admin/edit-comments.php",
+   "navAliases": [
+    "/wp-admin/edit-comments.php?comment_status=all"
+   ]
+  },
+  {
+   "slug": "admin-comments--approved",
+   "category": "admin/page",
+   "shows": "Comments › Approved: the approved comments.",
+   "topics": [
+    "approved comments"
+   ],
+   "sourcePath": "/wp-admin/edit-comments.php?comment_status=approved"
+  },
+  {
+   "slug": "admin-comments--mine",
+   "category": "admin/page",
+   "shows": "Comments › Mine: comments written by Ingrid Vale.",
+   "topics": [
+    "my comments"
+   ],
+   "sourcePath": "/wp-admin/edit-comments.php?comment_status=mine&user_id=1"
+  },
+  {
+   "slug": "admin-comments--pending",
+   "category": "admin/page",
+   "shows": "Comments › Pending: no comments awaiting moderation.",
+   "topics": [
+    "pending comments",
+    "moderation"
+   ],
+   "sourcePath": "/wp-admin/edit-comments.php?comment_status=moderated"
+  },
+  {
+   "slug": "admin-comments--spam",
+   "category": "admin/page",
+   "shows": "Comments › Spam: empty.",
+   "topics": [
+    "spam comments"
+   ],
+   "sourcePath": "/wp-admin/edit-comments.php?comment_status=spam"
+  },
+  {
+   "slug": "admin-comments--trash",
+   "category": "admin/page",
+   "shows": "Comments › Trash: empty.",
+   "topics": [
+    "trash comments"
+   ],
+   "sourcePath": "/wp-admin/edit-comments.php?comment_status=trash"
+  },
+  {
    "slug": "admin-customizer",
    "category": "admin/customizer",
    "shows": "The Sydney Customizer: the panel list (General, Header, Footer, Colors, Typography, Blog, Performance and more) with the Northline Studio home in the live preview.",
@@ -27,6 +96,17 @@
    ],
    "sourcePath": "/wp-admin/customize.php",
    "navPrimary": true
+  },
+  {
+   "slug": "admin-customizer-add-menu",
+   "category": "admin/customizer",
+   "shows": "Customizer › Menus › Create New Menu: the menu name field, the location checkboxes and Next.",
+   "topics": [
+    "create new menu",
+    "add a menu",
+    "Customizer menus"
+   ],
+   "sourcePath": "/wp-admin/customize.php?autofocus[section]=add_menu"
   },
   {
    "slug": "admin-customizer-background-image",
@@ -173,7 +253,8 @@
    "topics": [
     "Singles",
     "Floating Elements",
-    "Customizer"
+    "Customizer",
+    "custom post type"
    ],
    "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_cpt_e-floating-buttons"
   },
@@ -184,7 +265,8 @@
    "topics": [
     "Archives",
     "Floating Elements",
-    "Customizer"
+    "Customizer",
+    "custom post type"
    ],
    "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_cpt_e-floating-buttons_archives"
   },
@@ -196,7 +278,8 @@
     "Hide page title on single pages",
     "How to disable full-height pages",
     "Pages",
-    "Customizer"
+    "Customizer",
+    "custom post type"
    ],
    "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_cpt_page"
   },
@@ -239,44 +322,6 @@
    "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_extra_widget_area"
   },
   {
-   "slug": "admin-customizer-fb-above-footer-row",
-   "category": "admin/customizer",
-   "shows": "Customizer › Footer › Top Row: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Header & Footer Builder",
-    "Header Builder",
-    "Mobile Header",
-    "Footer Builder",
-    "Styling",
-    "Rows",
-    "Columns",
-    "Components",
-    "Top Row",
-    "Footer",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_above_footer_row"
-  },
-  {
-   "slug": "admin-customizer-fb-below-footer-row",
-   "category": "admin/customizer",
-   "shows": "Customizer › Footer › Bottom Row: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Header & Footer Builder",
-    "Header Builder",
-    "Mobile Header",
-    "Footer Builder",
-    "Styling",
-    "Rows",
-    "Columns",
-    "Components",
-    "Bottom Row",
-    "Footer",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_below_footer_row"
-  },
-  {
    "slug": "admin-customizer-fb-button",
    "category": "admin/customizer",
    "shows": "Customizer › Footer › Button 1: the section controls, with the Northline home in the preview.",
@@ -293,29 +338,10 @@
     "Footer",
     "Customizer"
    ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__button"
-  },
-  {
-   "slug": "admin-customizer-fb-component--button2",
-   "category": "admin/customizer",
-   "shows": "Customizer › Footer › Button 2: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Button 2",
-    "Footer",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__button2"
-  },
-  {
-   "slug": "admin-customizer-fb-component--html2",
-   "category": "admin/customizer",
-   "shows": "Customizer › Footer › HTML 2: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "HTML 2",
-    "Footer",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__html2"
+   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__button",
+   "navAliases": [
+    "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__button2"
+   ]
   },
   {
    "slug": "admin-customizer-fb-component--shortcode",
@@ -324,42 +350,10 @@
    "topics": [
     "Shortcode",
     "Footer",
-    "Customizer"
+    "Customizer",
+    "footer builder"
    ],
    "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__shortcode"
-  },
-  {
-   "slug": "admin-customizer-fb-component--widget2",
-   "category": "admin/customizer",
-   "shows": "Customizer › Footer › Widget Area 2: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Widget Area 2",
-    "Footer",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__widget2"
-  },
-  {
-   "slug": "admin-customizer-fb-component--widget3",
-   "category": "admin/customizer",
-   "shows": "Customizer › Footer › Widget Area 3: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Widget Area 3",
-    "Footer",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__widget3"
-  },
-  {
-   "slug": "admin-customizer-fb-component--widget4",
-   "category": "admin/customizer",
-   "shows": "Customizer › Footer › Widget Area 4: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Widget Area 4",
-    "Footer",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__widget4"
   },
   {
    "slug": "admin-customizer-fb-copyright",
@@ -418,7 +412,10 @@
     "Footer",
     "Customizer"
    ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__html"
+   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__html",
+   "navAliases": [
+    "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__html2"
+   ]
   },
   {
    "slug": "admin-customizer-fb-main-footer-row",
@@ -437,7 +434,11 @@
     "Footer",
     "Customizer"
    ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_main_footer_row"
+   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_main_footer_row",
+   "navAliases": [
+    "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_above_footer_row",
+    "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_below_footer_row"
+   ]
   },
   {
    "slug": "admin-customizer-fb-social",
@@ -482,7 +483,12 @@
     "Footer",
     "Customizer"
    ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__widget1"
+   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__widget1",
+   "navAliases": [
+    "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__widget2",
+    "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__widget3",
+    "/wp-admin/customize.php?autofocus[section]=sydney_section_fb_component__widget4"
+   ]
   },
   {
    "slug": "admin-customizer-fb-wrapper",
@@ -548,50 +554,6 @@
    "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_footer_general"
   },
   {
-   "slug": "admin-customizer-footer-row--above-footer-row-column1",
-   "category": "admin/customizer",
-   "shows": "Customizer › Footer › Column 1: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Column 1",
-    "Footer",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_footer_row__above_footer_row_column1"
-  },
-  {
-   "slug": "admin-customizer-footer-row--below-footer-row-column1",
-   "category": "admin/customizer",
-   "shows": "Customizer › Footer › Column 1: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Column 1",
-    "Footer",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_footer_row__below_footer_row_column1"
-  },
-  {
-   "slug": "admin-customizer-footer-row--below-footer-row-column2",
-   "category": "admin/customizer",
-   "shows": "Customizer › Footer › Column 2: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Column 2",
-    "Footer",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_footer_row__below_footer_row_column2"
-  },
-  {
-   "slug": "admin-customizer-footer-row--below-footer-row-column3",
-   "category": "admin/customizer",
-   "shows": "Customizer › Footer › Column 3: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Column 3",
-    "Footer",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_footer_row__below_footer_row_column3"
-  },
-  {
    "slug": "admin-customizer-footer-row--main-footer-row-column1",
    "category": "admin/customizer",
    "shows": "Customizer › Footer › Column 1: the section controls, with the Northline home in the preview.",
@@ -600,29 +562,15 @@
     "Footer",
     "Customizer"
    ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_footer_row__main_footer_row_column1"
-  },
-  {
-   "slug": "admin-customizer-footer-row--main-footer-row-column2",
-   "category": "admin/customizer",
-   "shows": "Customizer › Footer › Column 2: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Column 2",
-    "Footer",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_footer_row__main_footer_row_column2"
-  },
-  {
-   "slug": "admin-customizer-footer-row--main-footer-row-column3",
-   "category": "admin/customizer",
-   "shows": "Customizer › Footer › Column 3: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Column 3",
-    "Footer",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_footer_row__main_footer_row_column3"
+   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_footer_row__main_footer_row_column1",
+   "navAliases": [
+    "/wp-admin/customize.php?autofocus[section]=sydney_footer_row__above_footer_row_column1",
+    "/wp-admin/customize.php?autofocus[section]=sydney_footer_row__below_footer_row_column1",
+    "/wp-admin/customize.php?autofocus[section]=sydney_footer_row__below_footer_row_column2",
+    "/wp-admin/customize.php?autofocus[section]=sydney_footer_row__below_footer_row_column3",
+    "/wp-admin/customize.php?autofocus[section]=sydney_footer_row__main_footer_row_column2",
+    "/wp-admin/customize.php?autofocus[section]=sydney_footer_row__main_footer_row_column3"
+   ]
   },
   {
    "slug": "admin-customizer-free-panel-global-styles",
@@ -651,44 +599,6 @@
    "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_general"
   },
   {
-   "slug": "admin-customizer-hb-above-header-row",
-   "category": "admin/customizer",
-   "shows": "Customizer › Header › Top Row: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Header & Footer Builder",
-    "Header Builder",
-    "Mobile Header",
-    "Footer Builder",
-    "Styling",
-    "Rows",
-    "Columns",
-    "Components",
-    "Top Row",
-    "Header",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_above_header_row"
-  },
-  {
-   "slug": "admin-customizer-hb-below-header-row",
-   "category": "admin/customizer",
-   "shows": "Customizer › Header › Bottom Row: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Header & Footer Builder",
-    "Header Builder",
-    "Mobile Header",
-    "Footer Builder",
-    "Styling",
-    "Rows",
-    "Columns",
-    "Components",
-    "Bottom Row",
-    "Header",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_below_header_row"
-  },
-  {
    "slug": "admin-customizer-hb-button",
    "category": "admin/customizer",
    "shows": "Customizer › Header › Button: the section controls, with the Northline home in the preview.",
@@ -705,29 +615,10 @@
     "Header",
     "Customizer"
    ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_component__button"
-  },
-  {
-   "slug": "admin-customizer-hb-component--button2",
-   "category": "admin/customizer",
-   "shows": "Customizer › Header › Button 2: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Button 2",
-    "Header",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_component__button2"
-  },
-  {
-   "slug": "admin-customizer-hb-component--html2",
-   "category": "admin/customizer",
-   "shows": "Customizer › Header › HTML 2: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "HTML 2",
-    "Header",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_component__html2"
+   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_component__button",
+   "navAliases": [
+    "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_component__button2"
+   ]
   },
   {
    "slug": "admin-customizer-hb-component--shortcode",
@@ -736,31 +627,14 @@
    "topics": [
     "Shortcode",
     "Header",
-    "Customizer"
+    "Customizer",
+    "header builder"
    ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_component__shortcode"
-  },
-  {
-   "slug": "admin-customizer-hb-component--shortcode2",
-   "category": "admin/customizer",
-   "shows": "Customizer › Header › Shortcode: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Shortcode",
-    "Header",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_component__shortcode2"
-  },
-  {
-   "slug": "admin-customizer-hb-component--shortcode3",
-   "category": "admin/customizer",
-   "shows": "Customizer › Header › Shortcode: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Shortcode",
-    "Header",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_component__shortcode3"
+   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_component__shortcode",
+   "navAliases": [
+    "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_component__shortcode2",
+    "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_component__shortcode3"
+   ]
   },
   {
    "slug": "admin-customizer-hb-contact-info",
@@ -798,7 +672,10 @@
     "Header",
     "Customizer"
    ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_component__html"
+   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_component__html",
+   "navAliases": [
+    "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_component__html2"
+   ]
   },
   {
    "slug": "admin-customizer-hb-logo",
@@ -837,7 +714,11 @@
     "Header",
     "Customizer"
    ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_main_header_row"
+   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_main_header_row",
+   "navAliases": [
+    "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_above_header_row",
+    "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_below_header_row"
+   ]
   },
   {
    "slug": "admin-customizer-hb-menu",
@@ -891,7 +772,8 @@
     "Layout",
     "Mobile Offcanvas",
     "Header",
-    "Customizer"
+    "Customizer",
+    "header builder"
    ],
    "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_hb_mobile_offcanvas"
   },
@@ -1025,50 +907,6 @@
    "sourcePath": "/wp-admin/customize.php?autofocus[section]=header_image"
   },
   {
-   "slug": "admin-customizer-header-row--above-header-row-column1",
-   "category": "admin/customizer",
-   "shows": "Customizer › Header › Column 1: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Column 1",
-    "Header",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_header_row__above_header_row_column1"
-  },
-  {
-   "slug": "admin-customizer-header-row--below-header-row-column1",
-   "category": "admin/customizer",
-   "shows": "Customizer › Header › Column 1: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Column 1",
-    "Header",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_header_row__below_header_row_column1"
-  },
-  {
-   "slug": "admin-customizer-header-row--below-header-row-column2",
-   "category": "admin/customizer",
-   "shows": "Customizer › Header › Column 2: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Column 2",
-    "Header",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_header_row__below_header_row_column2"
-  },
-  {
-   "slug": "admin-customizer-header-row--below-header-row-column3",
-   "category": "admin/customizer",
-   "shows": "Customizer › Header › Column 3: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Column 3",
-    "Header",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_header_row__below_header_row_column3"
-  },
-  {
    "slug": "admin-customizer-header-row--main-header-row-column1",
    "category": "admin/customizer",
    "shows": "Customizer › Header › Column 1: the section controls, with the Northline home in the preview.",
@@ -1077,29 +915,15 @@
     "Header",
     "Customizer"
    ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_header_row__main_header_row_column1"
-  },
-  {
-   "slug": "admin-customizer-header-row--main-header-row-column2",
-   "category": "admin/customizer",
-   "shows": "Customizer › Header › Column 2: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Column 2",
-    "Header",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_header_row__main_header_row_column2"
-  },
-  {
-   "slug": "admin-customizer-header-row--main-header-row-column3",
-   "category": "admin/customizer",
-   "shows": "Customizer › Header › Column 3: the section controls, with the Northline home in the preview.",
-   "topics": [
-    "Column 3",
-    "Header",
-    "Customizer"
-   ],
-   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_header_row__main_header_row_column3"
+   "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_header_row__main_header_row_column1",
+   "navAliases": [
+    "/wp-admin/customize.php?autofocus[section]=sydney_header_row__above_header_row_column1",
+    "/wp-admin/customize.php?autofocus[section]=sydney_header_row__below_header_row_column1",
+    "/wp-admin/customize.php?autofocus[section]=sydney_header_row__below_header_row_column2",
+    "/wp-admin/customize.php?autofocus[section]=sydney_header_row__below_header_row_column3",
+    "/wp-admin/customize.php?autofocus[section]=sydney_header_row__main_header_row_column2",
+    "/wp-admin/customize.php?autofocus[section]=sydney_header_row__main_header_row_column3"
+   ]
   },
   {
    "slug": "admin-customizer-header-type",
@@ -1308,6 +1132,24 @@
    "sourcePath": "/wp-admin/customize.php?autofocus[section]=sydney_section_modal_popup&snap_preset=modal"
   },
   {
+   "slug": "admin-customizer-nav-menu",
+   "category": "admin/customizer",
+   "shows": "Customizer › Menus › Main: the menu items (Home, Services, Work, Journal, Studio…), Reorder, Add Items and the menu locations / auto-add options, with the home page in the preview.",
+   "topics": [
+    "Menus in the Customizer",
+    "edit menu",
+    "add menu items",
+    "reorder menu items",
+    "menu locations"
+   ],
+   "sourcePath": "/wp-admin/customize.php?autofocus[section]=nav_menu[140]",
+   "navAliases": [
+    "/wp-admin/customize.php?autofocus[section]=nav_menu[137]",
+    "/wp-admin/customize.php?autofocus[section]=nav_menu[138]",
+    "/wp-admin/customize.php?autofocus[section]=nav_menu[139]"
+   ]
+  },
+  {
    "slug": "admin-customizer-offcanvas-content",
    "category": "admin/customizer",
    "shows": "Customizer › General › Offcanvas content: the section controls with the module switched on, with the Northline home offcanvas content in the preview.",
@@ -1428,7 +1270,8 @@
    "shows": "Customizer › Floating Elements: the panel and its sections, with the Northline home in the preview.",
    "topics": [
     "Floating Elements",
-    "Customizer"
+    "Customizer",
+    "custom post type"
    ],
    "sourcePath": "/wp-admin/customize.php?autofocus[panel]=sydney_panel_cpt_e-floating-buttons"
   },
@@ -1882,6 +1725,17 @@
    "sourcePath": "/wp-admin/admin.php?page=sydney-dashboard&tab=starter-sites"
   },
   {
+   "slug": "admin-media-library",
+   "category": "admin/page",
+   "shows": "Media › Library in list view: the site's images (project art, team photos, logos) with author and dates.",
+   "topics": [
+    "media library",
+    "images",
+    "uploads"
+   ],
+   "sourcePath": "/wp-admin/upload.php?mode=list"
+  },
+  {
    "slug": "admin-nav-menus",
    "category": "admin/page",
    "shows": "Appearance › Menus editing the Main menu: menu items (Home, Services, Work, Journal, Studio with About and Contact), each with its Sydney Mega Menu button.",
@@ -1899,12 +1753,10 @@
     "Position",
     "Trigger",
     "and Display Conditions",
-    "Position",
     "Custom Trigger",
     "Display Conditions",
     "Menus",
-    "mega menu",
-    "Enable Mega Menu for a Menu Item"
+    "mega menu"
    ],
    "sourcePath": "/wp-admin/nav-menus.php?action=edit&menu=140"
   },
@@ -1918,9 +1770,7 @@
     "Enable Mega Menu for a Menu Item",
     "Build Your Mega Menu Content with Elementor",
     "View Your Mega Menu on the Frontend",
-    "mega menu",
-    "Enable Mega Menu for a Menu Item",
-    "Build Your Mega Menu Content with Elementor"
+    "mega menu"
    ],
    "sourcePath": "/wp-admin/nav-menus.php?action=edit&menu=140"
   },
@@ -1938,6 +1788,44 @@
    "sourcePath": "/wp-admin/post.php?post=413&action=edit"
   },
   {
+   "slug": "admin-page-new",
+   "category": "admin/editor",
+   "shows": "Block editor for a new, empty page (Pages › Add Page).",
+   "topics": [
+    "add new page",
+    "new page"
+   ],
+   "sourcePath": "/wp-admin/post-new.php?post_type=page"
+  },
+  {
+   "slug": "admin-pages-list",
+   "category": "admin/page",
+   "shows": "Pages › All Pages: Home, About, Services, Work, Journal, Contact and the other Northline pages.",
+   "topics": [
+    "all pages",
+    "pages list"
+   ],
+   "sourcePath": "/wp-admin/edit.php?post_type=page"
+  },
+  {
+   "slug": "admin-pages-list--draft",
+   "category": "admin/page",
+   "shows": "Pages › Drafts.",
+   "topics": [
+    "draft pages"
+   ],
+   "sourcePath": "/wp-admin/edit.php?post_status=draft&post_type=page"
+  },
+  {
+   "slug": "admin-pages-list--published",
+   "category": "admin/page",
+   "shows": "Pages › Published.",
+   "topics": [
+    "published pages"
+   ],
+   "sourcePath": "/wp-admin/edit.php?post_status=publish&post_type=page"
+  },
+  {
    "slug": "admin-patcher",
    "category": "admin/page",
    "shows": "aThemes Patcher page (Sydney › Patcher): what the Patcher does and the list of available fixes for the installed aThemes products.",
@@ -1947,6 +1835,74 @@
     "pro-athemes-patcher"
    ],
    "sourcePath": "/wp-admin/admin.php?page=athemes-patcher-preview-sp"
+  },
+  {
+   "slug": "admin-plugins",
+   "category": "admin/page",
+   "shows": "Plugins › Installed Plugins: Sydney Toolbox, aThemes Starter Sites, Elementor and the other active plugins.",
+   "topics": [
+    "plugins",
+    "installed plugins",
+    "Sydney Toolbox"
+   ],
+   "sourcePath": "/wp-admin/plugins.php",
+   "navAliases": [
+    "/wp-admin/plugins.php?plugin_status=all"
+   ]
+  },
+  {
+   "slug": "admin-plugins--active",
+   "category": "admin/page",
+   "shows": "Plugins › Active.",
+   "topics": [
+    "active plugins"
+   ],
+   "sourcePath": "/wp-admin/plugins.php?plugin_status=active"
+  },
+  {
+   "slug": "admin-plugins--auto-updates-disabled",
+   "category": "admin/page",
+   "shows": "Plugins › Auto-updates Disabled.",
+   "topics": [
+    "auto-updates"
+   ],
+   "sourcePath": "/wp-admin/plugins.php?plugin_status=auto-update-disabled"
+  },
+  {
+   "slug": "admin-plugins--inactive",
+   "category": "admin/page",
+   "shows": "Plugins › Inactive.",
+   "topics": [
+    "inactive plugins"
+   ],
+   "sourcePath": "/wp-admin/plugins.php?plugin_status=inactive"
+  },
+  {
+   "slug": "admin-plugins--must-use",
+   "category": "admin/page",
+   "shows": "Plugins › Must-Use.",
+   "topics": [
+    "must-use plugins"
+   ],
+   "sourcePath": "/wp-admin/plugins.php?plugin_status=mustuse"
+  },
+  {
+   "slug": "admin-plugins--recently-active",
+   "category": "admin/page",
+   "shows": "Plugins › Recently Active.",
+   "topics": [
+    "recently active plugins"
+   ],
+   "sourcePath": "/wp-admin/plugins.php?plugin_status=recently_activated"
+  },
+  {
+   "slug": "admin-plugins--wpforms",
+   "category": "admin/page",
+   "shows": "Plugins › WPForms view.",
+   "topics": [
+    "WPForms plugins"
+   ],
+   "sourcePath": "/wp-admin/plugins.php?plugin_status=wpforms"
   },
   {
    "slug": "admin-portfolio-cats",
@@ -1987,6 +1943,113 @@
    "sourcePath": "/wp-admin/edit.php?post_type=sydney-projects"
   },
   {
+   "slug": "admin-portfolio-list--published",
+   "category": "admin/page",
+   "shows": "Portfolio › Published projects.",
+   "topics": [
+    "published projects"
+   ],
+   "sourcePath": "/wp-admin/edit.php?post_status=publish&post_type=sydney-projects"
+  },
+  {
+   "slug": "admin-portfolio-new",
+   "category": "admin/editor",
+   "shows": "Block editor for a new portfolio project (Portfolio › Add New Project).",
+   "topics": [
+    "add new project",
+    "new portfolio item"
+   ],
+   "sourcePath": "/wp-admin/post-new.php?post_type=sydney-projects"
+  },
+  {
+   "slug": "admin-post-edit",
+   "category": "admin/editor",
+   "shows": "Block editor editing a Journal post, with the Post sidebar (status, categories, tags, featured image) and the Sydney post options.",
+   "topics": [
+    "edit post",
+    "block editor",
+    "post options",
+    "Sydney post options"
+   ],
+   "sourcePath": "/wp-admin/post.php?post=1&action=edit"
+  },
+  {
+   "slug": "admin-post-new",
+   "category": "admin/editor",
+   "shows": "Block editor for a new, empty post (Posts › Add New Post).",
+   "topics": [
+    "add new post",
+    "new post",
+    "block editor"
+   ],
+   "sourcePath": "/wp-admin/post-new.php"
+  },
+  {
+   "slug": "admin-posts-list",
+   "category": "admin/page",
+   "shows": "Posts › All Posts: the Northline Journal posts with author, categories, tags and dates.",
+   "topics": [
+    "all posts",
+    "posts list",
+    "blog posts",
+    "journal"
+   ],
+   "sourcePath": "/wp-admin/edit.php",
+   "navAliases": [
+    "/wp-admin/edit.php?post_type=post",
+    "/wp-admin/edit.php?post_type=post&all_posts=1"
+   ]
+  },
+  {
+   "slug": "admin-posts-list--mine",
+   "category": "admin/page",
+   "shows": "Posts › Mine: posts written by Ingrid Vale.",
+   "topics": [
+    "my posts"
+   ],
+   "sourcePath": "/wp-admin/edit.php?post_type=post&author=1"
+  },
+  {
+   "slug": "admin-posts-list--published",
+   "category": "admin/page",
+   "shows": "Posts › Published.",
+   "topics": [
+    "published posts"
+   ],
+   "sourcePath": "/wp-admin/edit.php?post_status=publish&post_type=post"
+  },
+  {
+   "slug": "admin-posts-list--sticky",
+   "category": "admin/page",
+   "shows": "Posts › Sticky.",
+   "topics": [
+    "sticky posts"
+   ],
+   "sourcePath": "/wp-admin/edit.php?post_type=post&show_sticky=1"
+  },
+  {
+   "slug": "admin-profile",
+   "category": "admin/page",
+   "shows": "Users › Profile for Ingrid Vale: personal options, name, contact info and password section.",
+   "topics": [
+    "profile",
+    "edit profile",
+    "your profile"
+   ],
+   "sourcePath": "/wp-admin/profile.php"
+  },
+  {
+   "slug": "admin-settings-general",
+   "category": "admin/page",
+   "shows": "Settings › General: site title Northline Studio, tagline, site address, timezone and date format.",
+   "topics": [
+    "general settings",
+    "site title",
+    "tagline"
+   ],
+   "sourcePath": "/wp-admin/options-general.php"
+  },
+  {
    "slug": "admin-templates-list",
    "category": "admin/page",
    "shows": "Template parts list (athemes_hf): the Brand Sprint landing header and footer parts made with the Template Builder.",
@@ -2009,6 +2072,78 @@
     "activate theme"
    ],
    "sourcePath": "/wp-admin/themes.php"
+  },
+  {
+   "slug": "admin-tools",
+   "category": "admin/page",
+   "shows": "Tools › Available Tools: the categories and tags converter and other core tools.",
+   "topics": [
+    "tools",
+    "available tools"
+   ],
+   "sourcePath": "/wp-admin/tools.php"
+  },
+  {
+   "slug": "admin-user-new",
+   "category": "admin/page",
+   "shows": "Users › Add New User: username, email, name, role and password fields.",
+   "topics": [
+    "add new user",
+    "add user"
+   ],
+   "sourcePath": "/wp-admin/user-new.php"
+  },
+  {
+   "slug": "admin-users",
+   "category": "admin/page",
+   "shows": "Users › All Users: the studio's accounts and roles.",
+   "topics": [
+    "users",
+    "all users"
+   ],
+   "sourcePath": "/wp-admin/users.php"
+  },
+  {
+   "slug": "admin-users--administrator",
+   "category": "admin/page",
+   "shows": "Users › Administrator.",
+   "topics": [
+    "administrators"
+   ],
+   "sourcePath": "/wp-admin/users.php?role=administrator"
+  },
+  {
+   "slug": "admin-users--author",
+   "category": "admin/page",
+   "shows": "Users › Author.",
+   "topics": [
+    "authors"
+   ],
+   "sourcePath": "/wp-admin/users.php?role=author"
+  },
+  {
+   "slug": "admin-widgets",
+   "category": "admin/editor",
+   "shows": "Appearance › Widgets (block widgets editor): the Sidebar and the four Footer widget areas.",
+   "topics": [
+    "widgets",
+    "sidebar widgets",
+    "footer widgets",
+    "widget areas"
+   ],
+   "sourcePath": "/wp-admin/credits.php",
+   "navLandsOn": "widgets.php"
+  },
+  {
+   "slug": "admin-wp-dashboard",
+   "category": "admin/page",
+   "shows": "WordPress Dashboard (Dashboard › Home): At a Glance, Activity and Quick Draft widgets for the Northline Studio site.",
+   "topics": [
+    "WordPress dashboard",
+    "admin home",
+    "at a glance"
+   ],
+   "sourcePath": "/wp-admin/"
   },
   {
    "slug": "frontend-404",
@@ -2681,7 +2816,6 @@
     "Position",
     "Trigger",
     "and Display Conditions",
-    "Position",
     "Custom Trigger",
     "Display Conditions",
     "offcanvas content",
@@ -2709,8 +2843,7 @@
     "Quick Links Module",
     "How to activate the Quick Links module",
     "Configure the Quick Links module",
-    "quick links",
-    "Quick Links module"
+    "quick links"
    ],
    "sourcePath": "/?snap_preset=quick_links"
   },

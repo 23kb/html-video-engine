@@ -1,0 +1,664 @@
+{
+  "slug": "admin-posts-list--mine",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "index-by-space",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 3
+    },
+    {
+      "label": "adminmenu-fallback",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 44
+    },
+    {
+      "label": "wp-menu-flyout",
+      "event": "mouseover",
+      "selector": ".menu-top.wp-has-submenu",
+      "count": 14
+    },
+    {
+      "label": "add-plugin-live-only",
+      "event": "click",
+      "selector": "li.wp-has-submenu:nth-of-type(14) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 1
+    },
+    {
+      "label": "screen-meta-toggle",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "quick-edit-open",
+      "event": "click",
+      "selector": ".button-link.editinline",
+      "count": 3
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "ul.elementor-submenu-flyout.elementor-level-3 li a",
+      "count": 34
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "screen-meta-toggle",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_inline_edit",
+        "tag": "input",
+        "text": "bceb30f93a",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#author-hide",
+        "tag": "input",
+        "text": "author",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk_edit",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Bulk edit Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Bulk edit Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-edit-in-category-1-2",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-category-144-2",
+        "tag": "input",
+        "text": "144",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-category-145-2",
+        "tag": "input",
+        "text": "145",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cat",
+        "tag": "select",
+        "text": "All Categories Case Studies Process Studio Notes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#categories-hide",
+        "tag": "input",
+        "text": "categories",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb-select-1527",
+        "tag": "input",
+        "text": "1527",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-329",
+        "tag": "input",
+        "text": "329",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-342",
+        "tag": "input",
+        "text": "342",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comments-hide",
+        "tag": "input",
+        "text": "comments",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#date-hide",
+        "tag": "input",
+        "text": "date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit_post_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#excerpt-view-mode",
+        "tag": "input",
+        "text": "excerpt",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#filter-by-date",
+        "tag": "select",
+        "text": "All dates September 2026 August 2026 July 2026",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-category-1-2",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-category-144-2",
+        "tag": "input",
+        "text": "144",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-category-145-2",
+        "tag": "input",
+        "text": "145",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#list-view-mode",
+        "tag": "input",
+        "text": "list",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-query-submit",
+        "tag": "input",
+        "text": "Filter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "28cd6de45b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ss",
+        "tag": "input",
+        "text": "00",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tags-hide",
+        "tag": "input",
+        "text": "tags",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Author Categories Tags Comments Date Pagination Num…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#author",
+        "tag": "th",
+        "text": "Author",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-edit",
+        "tag": "tr",
+        "text": "Bulk Edit Categories Case Studies Process Studio Notes Tags…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-category-1-1",
+        "tag": "li",
+        "text": "Studio Notes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-category-144-1",
+        "tag": "li",
+        "text": "Process",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-in-category-145-1",
+        "tag": "li",
+        "text": "Case Studies",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-legend",
+        "tag": "legend",
+        "text": "Bulk Edit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-title-div",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-titles",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#categories",
+        "tag": "th",
+        "text": "Categories",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#category_1527",
+        "tag": "div",
+        "text": "144",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#category_329",
+        "tag": "div",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#category_342",
+        "tag": "div",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comments",
+        "tag": "th",
+        "text": "Comments Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date",
+        "tag": "th",
+        "text": "Date",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-category-1-1",
+        "tag": "li",
+        "text": "Studio Notes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-category-144-1",
+        "tag": "li",
+        "text": "Process",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-category-145-1",
+        "tag": "li",
+        "text": "Case Studies",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_1527",
+        "tag": "div",
+        "text": "How we price our projects how-we-price-our-projects 1 open …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_329",
+        "tag": "div",
+        "text": "Twelve years of running a small studio twelve-years-of-runn…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_342",
+        "tag": "div",
+        "text": "Five questions before you redesign your website five-questi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-edit",
+        "tag": "tr",
+        "text": "Quick Edit Title Slug Date Month 01-Jan 02-Feb 03-Mar 04-Ap…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-edit-post_tag-desc",
+        "tag": "p",
+        "text": "Separate tags with commas",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#inlineedit",
+        "tag": "tbody",
+        "text": "Quick Edit Title Slug Date Month 01-Jan 02-Feb 03-Mar 04-Ap…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_tag_1527",
+        "tag": "div",
+        "text": "pricing, studio life",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_tag_329",
+        "tag": "div",
+        "text": "studio life",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_tag_342",
+        "tag": "div",
+        "text": "web design, wordpress",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-1527",
+        "tag": "tr",
+        "text": "Select How we price our projects How we price our projects …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-329",
+        "tag": "tr",
+        "text": "Select Twelve years of running a small studio Twelve years …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-342",
+        "tag": "tr",
+        "text": "Select Five questions before you redesign your website Five…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts-filter",
+        "tag": "form",
+        "text": "Search Posts: Select bulk action Bulk actions Bulk edit Mov…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#quick-edit-legend",
+        "tag": "legend",
+        "text": "Quick Edit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Author Categories Tags Comments Date Pagination Num…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tags",
+        "tag": "th",
+        "text": "Tags",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Select Twelve years of running a small studio Twelve years …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#title",
+        "tag": "th",
+        "text": "Title Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_elementor",
+        "tag": "li",
+        "text": "Elementor ElementorQuick startSubmissions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_elementor-home",
+        "tag": "li",
+        "text": "Elementor Home Editor Upgrade",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sydney-dashboard",
+        "tag": "li",
+        "text": "Sydney Theme Dashboard Customize Starter Sites Patcher",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

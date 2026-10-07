@@ -1,0 +1,462 @@
+{
+  "slug": "admin-plugins--wpforms",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "index-by-space",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 8
+    },
+    {
+      "label": "adminmenu-fallback",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 47
+    },
+    {
+      "label": "add-plugin-live-only",
+      "event": "click",
+      "selector": "li.wp-has-submenu:nth-of-type(14) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 3
+    },
+    {
+      "label": "screen-meta-toggle",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "ul.elementor-submenu-flyout.elementor-level-3 li a",
+      "count": 27
+    }
+  ],
+  "nav": [
+    {
+      "target": "admin-settings-general",
+      "page": "wpforms-settings",
+      "hrefSel": "a[href*=\"page=wpforms-settings\"]"
+    }
+  ],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#activate-wpforms",
+        "tag": "a",
+        "text": "Activate",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#activate-wpforms-google-drive",
+        "tag": "a",
+        "text": "Activate",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#deactivate-wpforms-lite",
+        "tag": "a",
+        "text": "Deactivate",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#delete-wpforms-google-drive",
+        "tag": "a",
+        "text": "Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#delete-wpforms-webmcp-unofficial-experiment",
+        "tag": "a",
+        "text": "Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "screen-meta-toggle",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#auto-updates-hide",
+        "tag": "input",
+        "text": "auto-updates",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Activate Deactivate Update Delete Enable Auto-…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Activate Deactivate Update Delete Enable Auto-…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#checkbox_067a15d05a991c3c22e9a404da6bcf0a",
+        "tag": "input",
+        "text": "wpforms-lite/wpforms.php",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#checkbox_6825163933e34c159946d2fed47166b6",
+        "tag": "input",
+        "text": "wpforms/wpforms.php",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#checkbox_939e469f5a2d925063d97179f0b2d6f1",
+        "tag": "input",
+        "text": "wpforms-webmcp/wpforms-webmcp.php",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#checkbox_e163768980b79266848798397d701072",
+        "tag": "input",
+        "text": "wpforms-google-drive/wpforms-google-drive.php",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#description-hide",
+        "tag": "input",
+        "text": "description",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-deactivate-feedback-couldnt_get_the_plugin_to_work",
+        "tag": "input",
+        "text": "couldnt_get_the_plugin_to_work",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-deactivate-feedback-elementor_pro",
+        "tag": "input",
+        "text": "elementor_pro",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-deactivate-feedback-found_a_better_plugin",
+        "tag": "input",
+        "text": "found_a_better_plugin",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-deactivate-feedback-no_longer_needed",
+        "tag": "input",
+        "text": "no_longer_needed",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-deactivate-feedback-other",
+        "tag": "input",
+        "text": "other",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-deactivate-feedback-temporary_deactivation",
+        "tag": "input",
+        "text": "temporary_deactivation",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#plugin-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#plugins_per_page",
+        "tag": "input",
+        "text": "999",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "93ecc9c439",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Description Automatic Updates Pagination Number of …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#auto-updates",
+        "tag": "th",
+        "text": "Automatic Updates",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-form",
+        "tag": "form",
+        "text": "Select bulk action Bulk actions Activate Deactivate Update …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#description",
+        "tag": "th",
+        "text": "Description",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-deactivate-feedback-dialog-form",
+        "tag": "form",
+        "text": "If you have a moment, please share why you are deactivating…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-deactivate-feedback-dialog-form-body",
+        "tag": "div",
+        "text": "I no longer need the plugin I found a better plugin I could…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-deactivate-feedback-dialog-form-caption",
+        "tag": "div",
+        "text": "If you have a moment, please share why you are deactivating…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-deactivate-feedback-dialog-header",
+        "tag": "div",
+        "text": "Quick Feedback",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-deactivate-feedback-dialog-header-title",
+        "tag": "span",
+        "text": "Quick Feedback",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-deactivate-feedback-dialog-wrapper",
+        "tag": "div",
+        "text": "Quick Feedback If you have a moment, please share why you a…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#live-search-desc",
+        "tag": "span",
+        "text": "The search results will be updated as you type.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#name",
+        "tag": "th",
+        "text": "Plugin",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Description Automatic Updates Pagination Number of …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Select WPForms WPForms Activate | Delete You cannot delete …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_elementor",
+        "tag": "li",
+        "text": "Elementor ElementorQuick startSubmissions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_elementor-home",
+        "tag": "li",
+        "text": "Elementor Home Editor Upgrade",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sydney-dashboard",
+        "tag": "li",
+        "text": "Sydney Theme Dashboard Customize Starter Sites Patcher",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

@@ -1,0 +1,646 @@
+{
+  "slug": "admin-comments--spam",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "index-by-space",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 3
+    },
+    {
+      "label": "adminmenu-fallback",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 47
+    },
+    {
+      "label": "add-plugin-live-only",
+      "event": "click",
+      "selector": "li.wp-has-submenu:nth-of-type(14) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 1
+    },
+    {
+      "label": "screen-meta-toggle",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "ul.elementor-submenu-flyout.elementor-level-3 li a",
+      "count": 29
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "screen-meta-toggle",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_ajax_fetch_list_nonce",
+        "tag": "input",
+        "text": "9e1b785712",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_ajax_nonce-replyto-comment",
+        "tag": "input",
+        "text": "09a7bd6fc4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_wp_unfiltered_html_comment",
+        "tag": "input",
+        "text": "66a3f5a458",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#action",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#author-email",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#author-hide",
+        "tag": "input",
+        "text": "author",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#author-name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#author-url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#checkbox",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment_ID",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment_post_ID",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#date-hide",
+        "tag": "input",
+        "text": "date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#edit_comments_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#excerpt-view-mode",
+        "tag": "input",
+        "text": "excerpt",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#list-view-mode",
+        "tag": "input",
+        "text": "list",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mode",
+        "tag": "input",
+        "text": "detail",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#position",
+        "tag": "input",
+        "text": "-1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_block",
+        "tag": "input",
+        "text": "b-quote",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_ins",
+        "tag": "input",
+        "text": "ins",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replycontent",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#response-hide",
+        "tag": "input",
+        "text": "response",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "755678b1f8",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#status",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#addbtn",
+        "tag": "span",
+        "text": "Add Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#addhead",
+        "tag": "span",
+        "text": "Add Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Author In response to Submitted on Pagination Numbe…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#author",
+        "tag": "th",
+        "text": "Author Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#com-reply",
+        "tag": "tbody",
+        "text": "Edit Comment Reply to Comment Add Comment Comment Name Emai…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment",
+        "tag": "th",
+        "text": "Comment",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comments-form",
+        "tag": "form",
+        "text": "Comments list Ordered by Comment Date, descending. Select A…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date",
+        "tag": "th",
+        "text": "Submitted on Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edithead",
+        "tag": "div",
+        "text": "Name Email URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#editlegend",
+        "tag": "span",
+        "text": "Edit Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replybtn",
+        "tag": "span",
+        "text": "Submit Reply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replycontainer",
+        "tag": "div",
+        "text": "Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replyhead",
+        "tag": "span",
+        "text": "Reply to Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replyrow",
+        "tag": "tr",
+        "text": "Edit Comment Reply to Comment Add Comment Comment Name Emai…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replysubmit",
+        "tag": "div",
+        "text": "Add Comment Update Comment Submit Reply Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#response",
+        "tag": "th",
+        "text": "In response to Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#savebtn",
+        "tag": "span",
+        "text": "Update Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Author In response to Submitted on Pagination Numbe…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#spam-undo-holder",
+        "tag": "div",
+        "text": "Comment by marked as spam. Undo",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#the-comment-list",
+        "tag": "tbody",
+        "text": "No comments found.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-extra-comment-list",
+        "tag": "tbody",
+        "text": "No comments found.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_elementor",
+        "tag": "li",
+        "text": "Elementor ElementorQuick startSubmissions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_elementor-home",
+        "tag": "li",
+        "text": "Elementor Home Editor Upgrade",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sydney-dashboard",
+        "tag": "li",
+        "text": "Sydney Theme Dashboard Customize Starter Sites Patcher",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#trash-undo-holder",
+        "tag": "div",
+        "text": "Comment by moved to the Trash. Undo",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-replycontent-editor-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-replycontent-wrap",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

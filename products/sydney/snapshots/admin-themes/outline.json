@@ -3,6 +3,18 @@
   "registryPresent": true,
   "transitions": [
     {
+      "label": "index-by-space",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 3
+    },
+    {
+      "label": "adminmenu-fallback",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 48
+    },
+    {
       "label": "screen-meta-toggle",
       "event": "click",
       "selector": "button.button.button-compact",
@@ -13,6 +25,12 @@
       "event": "click",
       "selector": "ul.elementor-submenu-flyout.elementor-level-3 li a",
       "count": 35
+    },
+    {
+      "label": "self-link",
+      "event": "click",
+      "selector": "a.wp-has-submenu.wp-has-current-submenu",
+      "count": 2
     }
   ],
   "nav": [],

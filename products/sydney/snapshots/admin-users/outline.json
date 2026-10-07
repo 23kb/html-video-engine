@@ -1,0 +1,368 @@
+{
+  "slug": "admin-users",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "screen-meta-toggle",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "external-link",
+      "event": "click",
+      "selector": "ul.elementor-submenu-flyout.elementor-level-3 li a",
+      "count": 33
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "screen-meta-toggle",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Delete Send password reset",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Delete Send password reset",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#changeit",
+        "tag": "input",
+        "text": "Change",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#changeit2",
+        "tag": "input",
+        "text": "Change",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#email-hide",
+        "tag": "input",
+        "text": "email",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#new_role",
+        "tag": "select",
+        "text": "Change role to… Shop manager Customer Subscriber Contributo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#new_role2",
+        "tag": "select",
+        "text": "Change role to… Shop manager Customer Subscriber Contributo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts-hide",
+        "tag": "input",
+        "text": "posts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#role-hide",
+        "tag": "input",
+        "text": "role",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "c3181cd071",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#user_1",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_22",
+        "tag": "input",
+        "text": "22",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_23",
+        "tag": "input",
+        "text": "23",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#users_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Email Role Posts Pagination Number of items per pag…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#email",
+        "tag": "th",
+        "text": "Email Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#name",
+        "tag": "th",
+        "text": "Name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts",
+        "tag": "th",
+        "text": "Posts",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#role",
+        "tag": "th",
+        "text": "Role",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Email Role Posts Pagination Number of items per pag…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Select priya priya Edit | Delete | View | Send password res…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_elementor",
+        "tag": "li",
+        "text": "Elementor ElementorQuick startSubmissions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_elementor-home",
+        "tag": "li",
+        "text": "Elementor Home Editor Upgrade",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sydney-dashboard",
+        "tag": "li",
+        "text": "Sydney Theme Dashboard Customize Starter Sites Patcher",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-1",
+        "tag": "tr",
+        "text": "Select ingrid vale ingrid vale Edit | View Ingrid Vale ingr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-22",
+        "tag": "tr",
+        "text": "Select theo theo Edit | Delete | View | Send password reset…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-23",
+        "tag": "tr",
+        "text": "Select priya priya Edit | Delete | View | Send password res…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#username",
+        "tag": "th",
+        "text": "Username",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

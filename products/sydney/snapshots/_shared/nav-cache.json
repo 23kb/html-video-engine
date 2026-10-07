@@ -1,6 +1,13 @@
 {
   "version": 1,
   "slugs": {
+    "admin-categories": {
+      "sourceKey": "edit-tags.php?taxonomy=category",
+      "aliasKeys": [
+        "edit-tags.php?taxonomy=category"
+      ],
+      "mtime": 1791272834555
+    },
     "admin-category-edit--header-image": {
       "sourceKey": "term.php?tag_ID=144&taxonomy=category",
       "aliasKeys": [
@@ -8,10 +15,63 @@
       ],
       "mtime": 1790994947583
     },
+    "admin-comments": {
+      "sourceKey": "edit-comments.php",
+      "aliasKeys": [
+        "edit-comments.php",
+        "edit-comments.php?comment_status=all"
+      ],
+      "mtime": 1791273130242
+    },
+    "admin-comments--approved": {
+      "sourceKey": "edit-comments.php?comment_status=approved",
+      "aliasKeys": [
+        "edit-comments.php",
+        "edit-comments.php?comment_status=approved"
+      ],
+      "mtime": 1791313806758
+    },
+    "admin-comments--mine": {
+      "sourceKey": "edit-comments.php?comment_status=mine&user_id=1",
+      "aliasKeys": [
+        "edit-comments.php",
+        "edit-comments.php?comment_status=mine&user_id=1"
+      ],
+      "mtime": 1791313806764
+    },
+    "admin-comments--pending": {
+      "sourceKey": "edit-comments.php?comment_status=moderated",
+      "aliasKeys": [
+        "edit-comments.php",
+        "edit-comments.php?comment_status=moderated"
+      ],
+      "mtime": 1791313806770
+    },
+    "admin-comments--spam": {
+      "sourceKey": "edit-comments.php?comment_status=spam",
+      "aliasKeys": [
+        "edit-comments.php",
+        "edit-comments.php?comment_status=spam"
+      ],
+      "mtime": 1791313806775
+    },
+    "admin-comments--trash": {
+      "sourceKey": "edit-comments.php?comment_status=trash",
+      "aliasKeys": [
+        "edit-comments.php",
+        "edit-comments.php?comment_status=trash"
+      ],
+      "mtime": 1791313806780
+    },
     "admin-customizer": {
       "sourceKey": "customize.php",
       "aliasKeys": [],
       "mtime": 1790980317800
+    },
+    "admin-customizer-add-menu": {
+      "sourceKey": "customize.php?autofocus[section]=add_menu",
+      "aliasKeys": [],
+      "mtime": 1791280552038
     },
     "admin-customizer-background-image": {
       "sourceKey": "customize.php?autofocus[section]=background_image",
@@ -83,50 +143,17 @@
       "aliasKeys": [],
       "mtime": 1790988546803
     },
-    "admin-customizer-fb-above-footer-row": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_section_fb_above_footer_row",
-      "aliasKeys": [],
-      "mtime": 1790990404311
-    },
-    "admin-customizer-fb-below-footer-row": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_section_fb_below_footer_row",
-      "aliasKeys": [],
-      "mtime": 1790991474292
-    },
     "admin-customizer-fb-button": {
       "sourceKey": "customize.php?autofocus[section]=sydney_section_fb_component__button",
-      "aliasKeys": [],
+      "aliasKeys": [
+        "customize.php?autofocus[section]=sydney_section_fb_component__button2"
+      ],
       "mtime": 1790991474309
-    },
-    "admin-customizer-fb-component--button2": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_section_fb_component__button2",
-      "aliasKeys": [],
-      "mtime": 1790992808436
-    },
-    "admin-customizer-fb-component--html2": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_section_fb_component__html2",
-      "aliasKeys": [],
-      "mtime": 1790992451935
     },
     "admin-customizer-fb-component--shortcode": {
       "sourceKey": "customize.php?autofocus[section]=sydney_section_fb_component__shortcode",
       "aliasKeys": [],
       "mtime": 1790992808463
-    },
-    "admin-customizer-fb-component--widget2": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_section_fb_component__widget2",
-      "aliasKeys": [],
-      "mtime": 1790991928900
-    },
-    "admin-customizer-fb-component--widget3": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_section_fb_component__widget3",
-      "aliasKeys": [],
-      "mtime": 1790991928919
-    },
-    "admin-customizer-fb-component--widget4": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_section_fb_component__widget4",
-      "aliasKeys": [],
-      "mtime": 1790991928945
     },
     "admin-customizer-fb-copyright": {
       "sourceKey": "customize.php?autofocus[section]=sydney_section_fb_component__copyright",
@@ -140,12 +167,17 @@
     },
     "admin-customizer-fb-html": {
       "sourceKey": "customize.php?autofocus[section]=sydney_section_fb_component__html",
-      "aliasKeys": [],
+      "aliasKeys": [
+        "customize.php?autofocus[section]=sydney_section_fb_component__html2"
+      ],
       "mtime": 1790991474485
     },
     "admin-customizer-fb-main-footer-row": {
       "sourceKey": "customize.php?autofocus[section]=sydney_section_fb_main_footer_row",
-      "aliasKeys": [],
+      "aliasKeys": [
+        "customize.php?autofocus[section]=sydney_section_fb_above_footer_row",
+        "customize.php?autofocus[section]=sydney_section_fb_below_footer_row"
+      ],
       "mtime": 1790991474504
     },
     "admin-customizer-fb-social": {
@@ -155,7 +187,11 @@
     },
     "admin-customizer-fb-widget1": {
       "sourceKey": "customize.php?autofocus[section]=sydney_section_fb_component__widget1",
-      "aliasKeys": [],
+      "aliasKeys": [
+        "customize.php?autofocus[section]=sydney_section_fb_component__widget2",
+        "customize.php?autofocus[section]=sydney_section_fb_component__widget3",
+        "customize.php?autofocus[section]=sydney_section_fb_component__widget4"
+      ],
       "mtime": 1790991474538
     },
     "admin-customizer-fb-wrapper": {
@@ -178,40 +214,17 @@
       "aliasKeys": [],
       "mtime": 1790990404391
     },
-    "admin-customizer-footer-row--above-footer-row-column1": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_footer_row__above_footer_row_column1",
-      "aliasKeys": [],
-      "mtime": 1790992056124
-    },
-    "admin-customizer-footer-row--below-footer-row-column1": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_footer_row__below_footer_row_column1",
-      "aliasKeys": [],
-      "mtime": 1790992452081
-    },
-    "admin-customizer-footer-row--below-footer-row-column2": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_footer_row__below_footer_row_column2",
-      "aliasKeys": [],
-      "mtime": 1790992452105
-    },
-    "admin-customizer-footer-row--below-footer-row-column3": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_footer_row__below_footer_row_column3",
-      "aliasKeys": [],
-      "mtime": 1790992452126
-    },
     "admin-customizer-footer-row--main-footer-row-column1": {
       "sourceKey": "customize.php?autofocus[section]=sydney_footer_row__main_footer_row_column1",
-      "aliasKeys": [],
+      "aliasKeys": [
+        "customize.php?autofocus[section]=sydney_footer_row__above_footer_row_column1",
+        "customize.php?autofocus[section]=sydney_footer_row__below_footer_row_column1",
+        "customize.php?autofocus[section]=sydney_footer_row__below_footer_row_column2",
+        "customize.php?autofocus[section]=sydney_footer_row__below_footer_row_column3",
+        "customize.php?autofocus[section]=sydney_footer_row__main_footer_row_column2",
+        "customize.php?autofocus[section]=sydney_footer_row__main_footer_row_column3"
+      ],
       "mtime": 1790992056142
-    },
-    "admin-customizer-footer-row--main-footer-row-column2": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_footer_row__main_footer_row_column2",
-      "aliasKeys": [],
-      "mtime": 1790991929055
-    },
-    "admin-customizer-footer-row--main-footer-row-column3": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_footer_row__main_footer_row_column3",
-      "aliasKeys": [],
-      "mtime": 1790992452163
     },
     "admin-customizer-free-panel-global-styles": {
       "sourceKey": "customize.php?autofocus[panel]=sydney_panel_global_styles",
@@ -223,45 +236,20 @@
       "aliasKeys": [],
       "mtime": 1790987917153
     },
-    "admin-customizer-hb-above-header-row": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_section_hb_above_header_row",
-      "aliasKeys": [],
-      "mtime": 1790988546863
-    },
-    "admin-customizer-hb-below-header-row": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_section_hb_below_header_row",
-      "aliasKeys": [],
-      "mtime": 1790989159671
-    },
     "admin-customizer-hb-button": {
       "sourceKey": "customize.php?autofocus[section]=sydney_section_hb_component__button",
-      "aliasKeys": [],
+      "aliasKeys": [
+        "customize.php?autofocus[section]=sydney_section_hb_component__button2"
+      ],
       "mtime": 1790989159692
-    },
-    "admin-customizer-hb-component--button2": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_section_hb_component__button2",
-      "aliasKeys": [],
-      "mtime": 1790989796651
-    },
-    "admin-customizer-hb-component--html2": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_section_hb_component__html2",
-      "aliasKeys": [],
-      "mtime": 1790989796672
     },
     "admin-customizer-hb-component--shortcode": {
       "sourceKey": "customize.php?autofocus[section]=sydney_section_hb_component__shortcode",
-      "aliasKeys": [],
+      "aliasKeys": [
+        "customize.php?autofocus[section]=sydney_section_hb_component__shortcode2",
+        "customize.php?autofocus[section]=sydney_section_hb_component__shortcode3"
+      ],
       "mtime": 1790989796699
-    },
-    "admin-customizer-hb-component--shortcode2": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_section_hb_component__shortcode2",
-      "aliasKeys": [],
-      "mtime": 1790989796719
-    },
-    "admin-customizer-hb-component--shortcode3": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_section_hb_component__shortcode3",
-      "aliasKeys": [],
-      "mtime": 1790989796740
     },
     "admin-customizer-hb-contact-info": {
       "sourceKey": "customize.php?autofocus[section]=sydney_section_hb_component__contact_info",
@@ -270,7 +258,9 @@
     },
     "admin-customizer-hb-html": {
       "sourceKey": "customize.php?autofocus[section]=sydney_section_hb_component__html",
-      "aliasKeys": [],
+      "aliasKeys": [
+        "customize.php?autofocus[section]=sydney_section_hb_component__html2"
+      ],
       "mtime": 1790989159731
     },
     "admin-customizer-hb-logo": {
@@ -280,7 +270,10 @@
     },
     "admin-customizer-hb-main-header-row": {
       "sourceKey": "customize.php?autofocus[section]=sydney_section_hb_main_header_row",
-      "aliasKeys": [],
+      "aliasKeys": [
+        "customize.php?autofocus[section]=sydney_section_hb_above_header_row",
+        "customize.php?autofocus[section]=sydney_section_hb_below_header_row"
+      ],
       "mtime": 1790988546891
     },
     "admin-customizer-hb-menu": {
@@ -333,40 +326,17 @@
       "aliasKeys": [],
       "mtime": 1790990404637
     },
-    "admin-customizer-header-row--above-header-row-column1": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_header_row__above_header_row_column1",
-      "aliasKeys": [],
-      "mtime": 1790989159904
-    },
-    "admin-customizer-header-row--below-header-row-column1": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_header_row__below_header_row_column1",
-      "aliasKeys": [],
-      "mtime": 1790989796890
-    },
-    "admin-customizer-header-row--below-header-row-column2": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_header_row__below_header_row_column2",
-      "aliasKeys": [],
-      "mtime": 1790989796910
-    },
-    "admin-customizer-header-row--below-header-row-column3": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_header_row__below_header_row_column3",
-      "aliasKeys": [],
-      "mtime": 1790989796928
-    },
     "admin-customizer-header-row--main-header-row-column1": {
       "sourceKey": "customize.php?autofocus[section]=sydney_header_row__main_header_row_column1",
-      "aliasKeys": [],
+      "aliasKeys": [
+        "customize.php?autofocus[section]=sydney_header_row__above_header_row_column1",
+        "customize.php?autofocus[section]=sydney_header_row__below_header_row_column1",
+        "customize.php?autofocus[section]=sydney_header_row__below_header_row_column2",
+        "customize.php?autofocus[section]=sydney_header_row__below_header_row_column3",
+        "customize.php?autofocus[section]=sydney_header_row__main_header_row_column2",
+        "customize.php?autofocus[section]=sydney_header_row__main_header_row_column3"
+      ],
       "mtime": 1790989159923
-    },
-    "admin-customizer-header-row--main-header-row-column2": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_header_row__main_header_row_column2",
-      "aliasKeys": [],
-      "mtime": 1790989796955
-    },
-    "admin-customizer-header-row--main-header-row-column3": {
-      "sourceKey": "customize.php?autofocus[section]=sydney_header_row__main_header_row_column3",
-      "aliasKeys": [],
-      "mtime": 1790989796974
     },
     "admin-customizer-header-type": {
       "sourceKey": "customize.php?autofocus[section]=sydney_header_type",
@@ -457,6 +427,15 @@
       "sourceKey": "customize.php?autofocus[section]=sydney_section_modal_popup&snap_preset=modal",
       "aliasKeys": [],
       "mtime": 1790988547019
+    },
+    "admin-customizer-nav-menu": {
+      "sourceKey": "customize.php?autofocus[section]=nav_menu[140]",
+      "aliasKeys": [
+        "customize.php?autofocus[section]=nav_menu[137]",
+        "customize.php?autofocus[section]=nav_menu[138]",
+        "customize.php?autofocus[section]=nav_menu[139]"
+      ],
+      "mtime": 1791280641816
     },
     "admin-customizer-offcanvas-content": {
       "sourceKey": "customize.php?autofocus[section]=sydney_section_offcanvas_content&snap_preset=offcanvas",
@@ -677,6 +656,14 @@
       ],
       "mtime": 1790996425205
     },
+    "admin-media-library": {
+      "sourceKey": "upload.php?mode=list",
+      "aliasKeys": [
+        "upload.php",
+        "upload.php?mode=list"
+      ],
+      "mtime": 1791273132158
+    },
     "admin-nav-menus": {
       "sourceKey": "nav-menus.php?action=edit&menu=140",
       "aliasKeys": [
@@ -696,7 +683,37 @@
       "aliasKeys": [
         "edit.php?post_type=page"
       ],
-      "mtime": 1790999741595
+      "mtime": 1791316134946
+    },
+    "admin-page-new": {
+      "sourceKey": "post-new.php?post_type=page",
+      "aliasKeys": [
+        "post-new.php?post_type=page"
+      ],
+      "mtime": 1791315997931
+    },
+    "admin-pages-list": {
+      "sourceKey": "edit.php?post_type=page",
+      "aliasKeys": [
+        "edit.php?post_type=page"
+      ],
+      "mtime": 1791272836568
+    },
+    "admin-pages-list--draft": {
+      "sourceKey": "edit.php?post_status=draft&post_type=page",
+      "aliasKeys": [
+        "edit.php?post_status=draft&post_type=page",
+        "edit.php?post_type=page"
+      ],
+      "mtime": 1791313808261
+    },
+    "admin-pages-list--published": {
+      "sourceKey": "edit.php?post_status=publish&post_type=page",
+      "aliasKeys": [
+        "edit.php?post_status=publish&post_type=page",
+        "edit.php?post_type=page"
+      ],
+      "mtime": 1791313808268
     },
     "admin-patcher": {
       "sourceKey": "admin.php?page=athemes-patcher-preview-sp",
@@ -704,6 +721,62 @@
         "admin.php?page=athemes-patcher-preview-sp"
       ],
       "mtime": 1790994949017
+    },
+    "admin-plugins": {
+      "sourceKey": "plugins.php",
+      "aliasKeys": [
+        "plugins.php",
+        "plugins.php?plugin_status=all"
+      ],
+      "mtime": 1791309023995
+    },
+    "admin-plugins--active": {
+      "sourceKey": "plugins.php?plugin_status=active",
+      "aliasKeys": [
+        "plugins.php",
+        "plugins.php?plugin_status=active"
+      ],
+      "mtime": 1791314032943
+    },
+    "admin-plugins--auto-updates-disabled": {
+      "sourceKey": "plugins.php?plugin_status=auto-update-disabled",
+      "aliasKeys": [
+        "plugins.php",
+        "plugins.php?plugin_status=auto-update-disabled"
+      ],
+      "mtime": 1791314032951
+    },
+    "admin-plugins--inactive": {
+      "sourceKey": "plugins.php?plugin_status=inactive",
+      "aliasKeys": [
+        "plugins.php",
+        "plugins.php?plugin_status=inactive"
+      ],
+      "mtime": 1791314032962
+    },
+    "admin-plugins--must-use": {
+      "sourceKey": "plugins.php?plugin_status=mustuse",
+      "aliasKeys": [
+        "plugins.php",
+        "plugins.php?plugin_status=mustuse"
+      ],
+      "mtime": 1791314032969
+    },
+    "admin-plugins--recently-active": {
+      "sourceKey": "plugins.php?plugin_status=recently_activated",
+      "aliasKeys": [
+        "plugins.php",
+        "plugins.php?plugin_status=recently_activated"
+      ],
+      "mtime": 1791314032974
+    },
+    "admin-plugins--wpforms": {
+      "sourceKey": "plugins.php?plugin_status=wpforms",
+      "aliasKeys": [
+        "plugins.php",
+        "plugins.php?plugin_status=wpforms"
+      ],
+      "mtime": 1791314032980
     },
     "admin-portfolio-cats": {
       "sourceKey": "edit-tags.php?post_type=sydney-projects&taxonomy=project_cats",
@@ -717,7 +790,7 @@
       "aliasKeys": [
         "edit.php?post_type=sydney-projects"
       ],
-      "mtime": 1790999741620
+      "mtime": 1791316135053
     },
     "admin-portfolio-list": {
       "sourceKey": "edit.php?post_type=sydney-projects",
@@ -725,6 +798,82 @@
         "edit.php?post_type=sydney-projects"
       ],
       "mtime": 1790994196087
+    },
+    "admin-portfolio-list--published": {
+      "sourceKey": "edit.php?post_status=publish&post_type=sydney-projects",
+      "aliasKeys": [
+        "edit.php?post_status=publish&post_type=sydney-projects",
+        "edit.php?post_type=sydney-projects"
+      ],
+      "mtime": 1791313808316
+    },
+    "admin-portfolio-new": {
+      "sourceKey": "post-new.php?post_type=sydney-projects",
+      "aliasKeys": [
+        "post-new.php?post_type=sydney-projects"
+      ],
+      "mtime": 1791315998046
+    },
+    "admin-post-edit": {
+      "sourceKey": "post.php?action=edit&post=1",
+      "aliasKeys": [
+        "edit.php"
+      ],
+      "mtime": 1791315998080
+    },
+    "admin-post-new": {
+      "sourceKey": "post-new.php",
+      "aliasKeys": [
+        "post-new.php"
+      ],
+      "mtime": 1791315998109
+    },
+    "admin-posts-list": {
+      "sourceKey": "edit.php",
+      "aliasKeys": [
+        "edit.php",
+        "edit.php?all_posts=1&post_type=post",
+        "edit.php?post_type=post"
+      ],
+      "mtime": 1791272836675
+    },
+    "admin-posts-list--mine": {
+      "sourceKey": "edit.php?author=1&post_type=post",
+      "aliasKeys": [
+        "edit.php",
+        "edit.php?author=1&post_type=post"
+      ],
+      "mtime": 1791316374267
+    },
+    "admin-posts-list--published": {
+      "sourceKey": "edit.php?post_status=publish&post_type=post",
+      "aliasKeys": [
+        "edit.php",
+        "edit.php?post_status=publish&post_type=post"
+      ],
+      "mtime": 1791316374280
+    },
+    "admin-posts-list--sticky": {
+      "sourceKey": "edit.php?post_type=post&show_sticky=1",
+      "aliasKeys": [
+        "edit.php",
+        "edit.php?post_type=post&show_sticky=1"
+      ],
+      "mtime": 1791316374291
+    },
+    "admin-profile": {
+      "sourceKey": "profile.php",
+      "aliasKeys": [
+        "profile.php"
+      ],
+      "mtime": 1791273132283
+    },
+    "admin-settings-general": {
+      "sourceKey": "options-general.php",
+      "aliasKeys": [
+        "options-general.php"
+      ],
+      "mtime": 1791273132292
     },
     "admin-templates-list": {
       "sourceKey": "edit.php?post_type=athemes_hf",
@@ -738,7 +887,58 @@
       "aliasKeys": [
         "themes.php"
       ],
-      "mtime": 1790994949146
+      "mtime": 1791274535552
+    },
+    "admin-tools": {
+      "sourceKey": "tools.php",
+      "aliasKeys": [
+        "tools.php"
+      ],
+      "mtime": 1791274004835
+    },
+    "admin-user-new": {
+      "sourceKey": "user-new.php",
+      "aliasKeys": [
+        "user-new.php"
+      ],
+      "mtime": 1791314033038
+    },
+    "admin-users": {
+      "sourceKey": "users.php",
+      "aliasKeys": [
+        "users.php"
+      ],
+      "mtime": 1791273132326
+    },
+    "admin-users--administrator": {
+      "sourceKey": "users.php?role=administrator",
+      "aliasKeys": [
+        "users.php",
+        "users.php?role=administrator"
+      ],
+      "mtime": 1791314033047
+    },
+    "admin-users--author": {
+      "sourceKey": "users.php?role=author",
+      "aliasKeys": [
+        "users.php",
+        "users.php?role=author"
+      ],
+      "mtime": 1791314033051
+    },
+    "admin-widgets": {
+      "sourceKey": "credits.php",
+      "aliasKeys": [
+        "widgets.php"
+      ],
+      "mtime": 1791315505101
+    },
+    "admin-wp-dashboard": {
+      "sourceKey": "wp-admin",
+      "aliasKeys": [
+        "index.php"
+      ],
+      "mtime": 1791273616053
     },
     "frontend-404": {
       "sourceKey": "no-such-page",

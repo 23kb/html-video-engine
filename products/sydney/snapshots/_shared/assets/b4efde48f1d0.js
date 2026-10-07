@@ -1,0 +1,1 @@
+jQuery(window).on("elementor:init",function(){"use strict";function e(e,t){if(t){var n=t.model,o=n.get("settings").get("syd_ele_custom_css"),l=".elementor-element.elementor-element-"+n.get("id");return o&&(e+=o.replace(/selector/g,l)),e}}elementor.hooks.addFilter("editor/style/styleText",e)});

@@ -1,0 +1,980 @@
+{
+  "slug": "admin-widgets",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "index-by-space",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 3
+    },
+    {
+      "label": "adminmenu-fallback",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 44
+    },
+    {
+      "label": "welcome-guide-close",
+      "event": "click",
+      "selector": "div.components-modal__screen-overlay",
+      "count": 1
+    },
+    {
+      "label": "welcome-guide-pages",
+      "event": "click",
+      "selector": "button.components-button.is-small",
+      "count": 5
+    },
+    {
+      "label": "blk-panel-body",
+      "event": "click",
+      "selector": ".components-button.components-panel__body-toggle",
+      "count": 6
+    },
+    {
+      "label": "blk-sidebar-toggle",
+      "event": "click",
+      "selector": "div.interface-pinned-items button.components-button.is-compact",
+      "count": 2
+    },
+    {
+      "label": "blk-chrome",
+      "event": "click",
+      "selector": "#\\:r3\\:",
+      "count": 3
+    },
+    {
+      "label": "blk-sidebar-tabs",
+      "event": "click",
+      "selector": "#tabs-0-edit-widgets\\/block-areas",
+      "count": 3
+    },
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.has-icon[data-snap-park]",
+      "count": 3
+    },
+    {
+      "label": "wp-menu-flyout",
+      "event": "mouseover",
+      "selector": ".menu-top.wp-has-submenu",
+      "count": 14
+    },
+    {
+      "label": "add-plugin-live-only",
+      "event": "click",
+      "selector": "li.wp-has-submenu:nth-of-type(14) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 1
+    },
+    {
+      "label": "screen-meta-toggle",
+      "event": "click",
+      "selector": "button.button.button-compact",
+      "count": 1
+    },
+    {
+      "label": "tinymce-buttons",
+      "event": "click",
+      "selector": "button.button.insert-media",
+      "count": 18
+    },
+    {
+      "label": "tinymce-switch",
+      "event": "click",
+      "selector": ".wp-switch-editor[data-wp-editor-id]",
+      "count": 2
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "ul.elementor-submenu-flyout.elementor-level-3 li a",
+      "count": 32
+    },
+    {
+      "label": "self-link",
+      "event": "click",
+      "selector": "a.current",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#block-20a01841-6df2-47dc-b39b-be1963809703",
+        "tag": "div",
+        "text": "Block: Search",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#el024765600007102262_text-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#el024765600007102262_text-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "tinymce-switch",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#el024765600007102262_text",
+        "tag": "textarea",
+        "text": "1120 NW Couch St, Suite 300<br>Portland, OR 97209<br><br><a…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el024765600007102262_title",
+        "tag": "input",
+        "text": "Visit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el024765600007102262_text_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el024765600007102262_text_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el024765600007102262_text_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el024765600007102262_text_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el024765600007102262_text_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el024765600007102262_text_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el024765600007102262_text_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-11-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-11-dropdown",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-11-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-4-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-4-dropdown",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-4-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-14-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-14-dropdown",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-14-hierarchical",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-14-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-5-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-5-dropdown",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-5-hierarchical",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-5-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-meta-12-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-meta-6-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-10-nav_menu",
+        "tag": "select",
+        "text": "— Select — Footer 1 Footer 2 Footer 3 Main",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-10-title",
+        "tag": "input",
+        "text": "Legal",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-8-nav_menu",
+        "tag": "select",
+        "text": "— Select — Footer 1 Footer 2 Footer 3 Main",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-8-title",
+        "tag": "input",
+        "text": "Services",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-9-nav_menu",
+        "tag": "select",
+        "text": "— Select — Footer 1 Footer 2 Footer 3 Main",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-9-title",
+        "tag": "input",
+        "text": "Studio",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-16-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-16-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-3-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-3-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-15-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-15-show_date",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-15-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-2-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-2-show_date",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-2-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-search-1-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-search-13-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-7-filter",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-7-text",
+        "tag": "textarea",
+        "text": "1120 NW Couch St, Suite 300<br>Portland, OR 97209<br><br><a…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-7-title",
+        "tag": "input",
+        "text": "Visit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-7-visual",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#block-02d5d37a-1648-40bf-a57c-f45b68f4173f",
+        "tag": "div",
+        "text": "Text Title: New Custom HTML Widget Did you know there is a …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-04400620-4930-48de-a6e0-6e5f4050a145",
+        "tag": "div",
+        "text": "Sidebar Recent Posts Why we start every project with a work…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-09793fc0-6a69-417e-bc56-6454d6b1d901",
+        "tag": "div",
+        "text": "Recent Posts Title: Number of posts to show: Display post d…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-0b5e79a0-1359-4041-b2c1-0c64d7826569",
+        "tag": "div",
+        "text": "Meta Title:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-139e29dc-644a-4a49-8ca2-e90c77678f49",
+        "tag": "div",
+        "text": "Footer 2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-207fefe8-e00c-4b76-8902-b21b785f9765",
+        "tag": "div",
+        "text": "Recent Comments Title: Number of comments to show:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-2ba8d956-28c9-4925-a632-44064d9f3c3a",
+        "tag": "h2",
+        "text": "Recent Comments",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-2e110046-2508-4ea8-89f4-4a7a65bd810e",
+        "tag": "div",
+        "text": "Archives Title: Display as dropdown Show post counts",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-3ac09a19-eb6a-43b9-9a51-dd3ee12f401e",
+        "tag": "div",
+        "text": "Search Title:",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-4c3604e4-55dc-43a7-aa00-d5b6d28b8f86",
+        "tag": "h2",
+        "text": "Recent Posts",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-56405252-3fed-43f0-8f61-77c37f23ac8c",
+        "tag": "div",
+        "text": "Navigation Menu No menus have been created yet. Create some…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-5a068b40-e2a2-4846-8e93-3049952654ff",
+        "tag": "div",
+        "text": "Archives Title: Display as dropdown Show post counts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-5fff3ac8-a278-4f3c-8a1a-1f9a0567acfb",
+        "tag": "div",
+        "text": "Recent Posts Why we start every project with a workshop Twe…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-6745de02-365a-425c-9a99-9b5b8341d3a4",
+        "tag": "ol",
+        "text": "Ingrid Vale on Why we start every project with a workshop B…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-6c0bf0ba-79aa-4faa-8a1f-85a96e12398d",
+        "tag": "div",
+        "text": "Search Title:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-6c59702b-b823-48a6-a474-ab17b368ed1a",
+        "tag": "div",
+        "text": "Recent Posts Title: Number of posts to show: Display post d…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-6c8b93f1-2141-481d-876c-2372153586de",
+        "tag": "div",
+        "text": "Footer 4",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-6e886054-3265-4270-9ce6-c83c8705d5ff",
+        "tag": "ul",
+        "text": "Why we start every project with a workshop Twelve years of …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-95fea07d-ea68-4df0-a0e4-66ceb3828ec9",
+        "tag": "ul",
+        "text": "September 2026 August 2026 July 2026",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-a2af98ad-3018-4b38-8d92-d08c168220d3",
+        "tag": "div",
+        "text": "Recent Comments Ingrid Vale on Why we start every project w…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-a6cd8e94-e0ac-425d-bfc6-7e836b38cbc9",
+        "tag": "h2",
+        "text": "Categories",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-ab14d17a-2901-4bcf-9d3c-a295d7015ffa",
+        "tag": "div",
+        "text": "Navigation Menu No menus have been created yet. Create some…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-b118706d-84f0-4081-bcda-1fded9a8cf32",
+        "tag": "div",
+        "text": "Archives September 2026 August 2026 July 2026",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-b31a748b-67ad-4747-824d-d0962f7d50a5",
+        "tag": "div",
+        "text": "Recent Comments Title: Number of comments to show:",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-bfac8494-5d2c-49b9-8843-e8e6f66bdcf5",
+        "tag": "div",
+        "text": "Footer 3",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-cdb2b434-2c3b-4c18-a43e-b5b02c362360",
+        "tag": "div",
+        "text": "Navigation Menu No menus have been created yet. Create some…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-ceaa2c83-5b71-4ff8-a799-a7e9806baaeb",
+        "tag": "div",
+        "text": "Categories Title: Display as dropdown Show post counts Show…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-d6ebabc9-7c8f-4f8b-9cdd-996efe57ef80",
+        "tag": "div",
+        "text": "Footer 1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-d826c6b6-2754-43da-8d28-0c301a57c6aa",
+        "tag": "h2",
+        "text": "Archives",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-ddbf75f0-5871-4ff0-8dc2-f2ad5137d26b",
+        "tag": "div",
+        "text": "Block: Categories List",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-eb315e03-a26c-4086-bd86-0742894928f9",
+        "tag": "div",
+        "text": "Meta Title:",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-f72a49d0-db98-404c-9ea0-8f37a263141f",
+        "tag": "div",
+        "text": "Categories Title: Display as dropdown Show post counts Show…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-f8dc9cfb-5e19-4302-9480-f67b2aae391f",
+        "tag": "div",
+        "text": "Inactive widgets",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-faa54d5e-57fd-4bb8-b7f6-d03d51a4841f",
+        "tag": "div",
+        "text": "Categories",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editor-keyboard-trap-help-1",
+        "tag": "p",
+        "text": "When using a keyboard to navigate:",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editor-keyboard-trap-help-2",
+        "tag": "li",
+        "text": "In the editing area, the Tab key enters a tab character.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editor-keyboard-trap-help-3",
+        "tag": "li",
+        "text": "To move away from this area, press the Esc key followed by …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editor-keyboard-trap-help-4",
+        "tag": "li",
+        "text": "Screen reader users: when in forms mode, you may need to pr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#el024765600007102262_text_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#global-styles-css-custom-properties-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el024765600007102262_text_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sydney-block-editor-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_elementor",
+        "tag": "li",
+        "text": "Elementor ElementorQuick startSubmissions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_elementor-home",
+        "tag": "li",
+        "text": "Elementor Elementor Home Editor Upgrade",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_sydney-dashboard",
+        "tag": "li",
+        "text": "Sydney Sydney Theme Dashboard Customize Starter Sites Patch…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ui-id-1",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widgets-editor",
+        "tag": "div",
+        "text": "Widgets Update Sidebar Recent Posts Why we start every proj…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-duotone-blue-orange",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-blue-red",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-dark-grayscale",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-grayscale",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-magenta-yellow",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-midnight",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-purple-green",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-purple-yellow",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-el024765600007102262_text-wrap",
+        "tag": "div",
+        "text": "Add mediaVisualCode 1120 NW Couch St, Suite 300<br>Portland…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

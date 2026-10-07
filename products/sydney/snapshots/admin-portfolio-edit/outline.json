@@ -3,13 +3,67 @@
   "registryPresent": true,
   "transitions": [
     {
-      "label": "block-editor-ui",
+      "label": "index-by-space",
       "event": "click",
-      "selector": "#\\:r1\\:",
-      "count": 28
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 3
     },
     {
-      "label": "external-link",
+      "label": "adminmenu-fallback",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 44
+    },
+    {
+      "label": "blk-panel-body",
+      "event": "click",
+      "selector": "button.components-button.components-panel__body-toggle",
+      "count": 1
+    },
+    {
+      "label": "blk-sidebar-toggle",
+      "event": "click",
+      "selector": "div.interface-pinned-items button.components-button.is-compact",
+      "count": 2
+    },
+    {
+      "label": "blk-meta-boxes",
+      "event": "click",
+      "selector": "div.edit-post-meta-boxes-main__presenter button",
+      "count": 2
+    },
+    {
+      "label": "blk-chrome",
+      "event": "click",
+      "selector": "#\\:r3\\:",
+      "count": 15
+    },
+    {
+      "label": "blk-sidebar-tabs",
+      "event": "click",
+      "selector": ".enfox0g3[data-tab-id]",
+      "count": 2
+    },
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.is-compact[data-snap-park]",
+      "count": 5
+    },
+    {
+      "label": "wp-menu-flyout",
+      "event": "mouseover",
+      "selector": ".menu-top.wp-has-submenu",
+      "count": 14
+    },
+    {
+      "label": "add-plugin-live-only",
+      "event": "click",
+      "selector": "li.wp-has-submenu:nth-of-type(14) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 1
+    },
+    {
+      "label": "external-tip",
       "event": "click",
       "selector": "ul.elementor-submenu-flyout.elementor-level-3 li a",
       "count": 15
@@ -38,7 +92,7 @@
       {
         "sel": "#meta-box-order-nonce",
         "tag": "input",
-        "text": "53810eaca7",
+        "text": "b9b39a41e6",
         "count": 1,
         "hidden": true
       },
@@ -80,21 +134,21 @@
       {
         "sel": "#samplepermalinknonce",
         "tag": "input",
-        "text": "4afb510460",
+        "text": "e4c94353c2",
         "count": 1,
         "hidden": true
       },
       {
         "sel": "#sydney_single_page_box_nonce",
         "tag": "input",
-        "text": "8bae733f63",
+        "text": "1214bef906",
         "count": 1,
         "hidden": true
       },
       {
         "sel": "#toggle-custom-fields-nonce",
         "tag": "input",
-        "text": "eaac32e9c4",
+        "text": "c8b88a4d61",
         "count": 1,
         "hidden": true
       },
