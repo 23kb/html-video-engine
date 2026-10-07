@@ -1,0 +1,411 @@
+{
+  "slug": "frontend-blog-single",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "header-search-toggle",
+      "event": "click",
+      "selector": ".header-search",
+      "count": 2
+    },
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "div.botiga-share-box-item a",
+      "count": 9
+    },
+    {
+      "label": "same-page-anchor",
+      "event": "click",
+      "selector": ".botiga-single-post-toc__list-link",
+      "count": 3
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#cancel-comment-reply-link",
+        "tag": "a",
+        "text": "Cancel reply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dropdown-link",
+        "tag": "a",
+        "text": "Home",
+        "count": 37,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-quick-view-popup-close-button",
+        "tag": "a",
+        "text": "Close quick view popup",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-side-mini-cart__close-button",
+        "tag": "a",
+        "text": "Close the side mini cart",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-single-post-toc__list-link",
+        "tag": "a",
+        "text": "Start with the room, not the sofa",
+        "count": 3,
+        "hidden": false,
+        "wired": "same-page-anchor",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-toc-sticky-expand",
+        "tag": "a",
+        "text": "IN THIS GUIDE",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#primary-menu",
+        "tag": "ul",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#_wp_unfiltered_html_comment_disabled",
+        "tag": "input",
+        "text": "f23a67597c",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment_parent",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment_post_ID",
+        "tag": "input",
+        "text": "329",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submit",
+        "tag": "input",
+        "text": "Post Comment",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-1",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-2",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-3",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".botiga-quick-view-popup-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#athemes-blocks-common-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-style-min-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#choose-fabric-for-your-real-life",
+        "tag": "h2",
+        "text": "Choose fabric for your real life",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#commentform",
+        "tag": "form",
+        "text": "Logged in as Maya Ellison. Edit your profile. Log out? Requ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comments",
+        "tag": "div",
+        "text": "Leave a Reply Logged in as Maya Ellison. Edit your profile.…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#custom-background-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#page",
+        "tag": "div",
+        "text": "Skip to content Home Blog Shop Room packages A full room, s…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-329",
+        "tag": "article",
+        "text": "September 26, 2026 Maya Ellison1 min read How to choose a s…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#primary",
+        "tag": "main",
+        "text": "September 26, 2026 Maya Ellison1 min read How to choose a s…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#reply-title",
+        "tag": "h3",
+        "text": "Leave a Reply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#respond",
+        "tag": "div",
+        "text": "Leave a Reply Logged in as Maya Ellison. Edit your profile.…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-header-cart",
+        "tag": "div",
+        "text": "0",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation",
+        "tag": "nav",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation-mobile",
+        "tag": "nav",
+        "text": "Home Blog Shop Room packagesA full room, styled by our Port…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#start-with-the-room-not-the-sofa",
+        "tag": "h2",
+        "text": "Start with the room, not the sofa",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-2",
+        "tag": "section",
+        "text": "ABOUT About Fernhill How it Works Reviews Contact Careers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-3",
+        "tag": "section",
+        "text": "HELP FAQs Privacy Policy Terms Returns",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-4",
+        "tag": "section",
+        "text": "Solid wood furniture, built by hand in Portland and made to…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#think-about-how-you-sit",
+        "tag": "h2",
+        "text": "Think about how you sit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_product_categories-1",
+        "tag": "section",
+        "text": "SHOP Bedroom Dining Home Office Living Room Outdoor Packages",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-inline-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-heading-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-library-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-paragraph-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".bhfb-component-search",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".bhfb-header",
+        "tag": "header",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".bhfb-row",
+        "tag": "div",
+        "text": "",
+        "count": 10,
+        "hidden": true
+      },
+      {
+        "sel": ".bhfb-sticky-header",
+        "tag": "div",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dropdown-li",
+        "tag": "li",
+        "text": "Home",
+        "count": 42,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mega-menu",
+        "tag": "li",
+        "text": "Shop Room packages A full room, styled by our Portland team…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mega-menu-column",
+        "tag": "li",
+        "text": "Room packages A full room, styled by our Portland team, for…",
+        "count": 8,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-single-post-toc__list-item",
+        "tag": "li",
+        "text": "Start with the room, not the sofa",
+        "count": 3,
+        "hidden": false
+      }
+    ]
+  }
+}

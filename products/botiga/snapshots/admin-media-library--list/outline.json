@@ -1,0 +1,710 @@
+{
+  "slug": "admin-media-library--list",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": ".aria-button-if-js.submitdelete",
+      "count": 20
+    },
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "wp-list-sort",
+      "event": "click",
+      "selector": "#title a",
+      "count": 8
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 106
+    },
+    {
+      "label": "admin-chrome-fallback",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 80
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#find-posts-close",
+        "tag": "button",
+        "text": "Close media attachment panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#view-switch-grid",
+        "tag": "a",
+        "text": "Grid view",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#view-switch-list",
+        "tag": "a",
+        "text": "List view",
+        "count": 1,
+        "hidden": false,
+        "wired": "admin-chrome-fallback",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_ajax_nonce",
+        "tag": "input",
+        "text": "58ab73eb9f",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#affected",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#attachment-filter",
+        "tag": "select",
+        "text": "All media items Images Video Unattached Mine",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#author-hide",
+        "tag": "input",
+        "text": "author",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Delete permanently",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Delete permanently",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1397",
+        "tag": "input",
+        "text": "1397",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1398",
+        "tag": "input",
+        "text": "1398",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1536",
+        "tag": "input",
+        "text": "1536",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1537",
+        "tag": "input",
+        "text": "1537",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1538",
+        "tag": "input",
+        "text": "1538",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1539",
+        "tag": "input",
+        "text": "1539",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1653",
+        "tag": "input",
+        "text": "1653",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1655",
+        "tag": "input",
+        "text": "1655",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-351",
+        "tag": "input",
+        "text": "351",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-352",
+        "tag": "input",
+        "text": "352",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-374",
+        "tag": "input",
+        "text": "374",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-426",
+        "tag": "input",
+        "text": "426",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-572",
+        "tag": "input",
+        "text": "572",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-612",
+        "tag": "input",
+        "text": "612",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-616",
+        "tag": "input",
+        "text": "616",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-619",
+        "tag": "input",
+        "text": "619",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-625",
+        "tag": "input",
+        "text": "625",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-626",
+        "tag": "input",
+        "text": "626",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-627",
+        "tag": "input",
+        "text": "627",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-628",
+        "tag": "input",
+        "text": "628",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date-hide",
+        "tag": "input",
+        "text": "date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#filter-by-date",
+        "tag": "select",
+        "text": "All dates October 2026 December 2022 July 2022 March 2022",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#find-posts-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#find-posts-search",
+        "tag": "input",
+        "text": "Search",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#find-posts-submit",
+        "tag": "input",
+        "text": "Select",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#media-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#parent-hide",
+        "tag": "input",
+        "text": "parent",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-query-submit",
+        "tag": "input",
+        "text": "Filter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "a25fa85311",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#upload_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Author Uploaded to Date Pagination Number of items …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#author",
+        "tag": "th",
+        "text": "Author Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date",
+        "tag": "th",
+        "text": "Date",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#find-posts",
+        "tag": "div",
+        "text": "Attach to existing content Close media attachment panel Sea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#find-posts-head",
+        "tag": "div",
+        "text": "Attach to existing content Close media attachment panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#find-posts-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#parent",
+        "tag": "th",
+        "text": "Uploaded to Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1397",
+        "tag": "tr",
+        "text": "Select Fernhill Home logo Fernhill Home logo — Logo File na…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1398",
+        "tag": "tr",
+        "text": "Select Fernhill Home logo (light) Fernhill Home logo (light…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1536",
+        "tag": "tr",
+        "text": "Select Cozy Lounge Armchair in charcoal boucle beside a flo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1537",
+        "tag": "tr",
+        "text": "Select Close-up of the deep seat and rounded boucle arms Cl…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1538",
+        "tag": "tr",
+        "text": "Select Velvet Swivel Chair back and cushion in mustard velv…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1539",
+        "tag": "tr",
+        "text": "Select The hidden swivel base under the mustard velvet skir…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1653",
+        "tag": "tr",
+        "text": "Select Swivel Lounge Chair, a slow look around Swivel Loung…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1655",
+        "tag": "tr",
+        "text": "Select Swivel Lounge Chair, a slow look around Swivel Loung…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-351",
+        "tag": "tr",
+        "text": "Select blog-post-3-featured-image blog-post-3-featured-imag…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-352",
+        "tag": "tr",
+        "text": "Select blog-post-8-featured-image blog-post-8-featured-imag…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-374",
+        "tag": "tr",
+        "text": "Select logo-light logo-light File name: logo-light.svg Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-426",
+        "tag": "tr",
+        "text": "Select contact-1 contact-1 File name: contact-1.jpg Edit | …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-572",
+        "tag": "tr",
+        "text": "Select woocommerce-placeholder woocommerce-placeholder File…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-612",
+        "tag": "tr",
+        "text": "Select furniture-hero-1 furniture-hero-1 File name: furnitu…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-616",
+        "tag": "tr",
+        "text": "Select furniture-explore-packages furniture-explore-package…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-619",
+        "tag": "tr",
+        "text": "Select become-member-bg become-member-bg File name: become-…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-625",
+        "tag": "tr",
+        "text": "Select logo-7 logo-7 File name: logo-7.png Edit | Delete Pe…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-626",
+        "tag": "tr",
+        "text": "Select logo-9 logo-9 File name: logo-9.png Edit | Delete Pe…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-627",
+        "tag": "tr",
+        "text": "Select logo-8 logo-8 File name: logo-8.png Edit | Delete Pe…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-628",
+        "tag": "tr",
+        "text": "Select logo-12 logo-12 File name: logo-12.png Edit | Delete…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts-filter",
+        "tag": "form",
+        "text": "Filter media items list List view Grid view Filter by type …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Author Uploaded to Date Pagination Number of items …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 3",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Select Swivel Lounge Chair, a slow look around Swivel Loung…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#title",
+        "tag": "th",
+        "text": "File Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

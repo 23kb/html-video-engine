@@ -1,0 +1,1278 @@
+{
+  "slug": "admin-widgets--shop-sidebar",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "button.button.insert-media",
+      "count": 54
+    },
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": "button.button.button-compact",
+      "count": 1
+    },
+    {
+      "label": "wp-switch-editor",
+      "event": "click",
+      "selector": ".wp-switch-editor[data-wp-editor-id]",
+      "count": 6
+    },
+    {
+      "label": "shop-filter-input",
+      "event": "change",
+      "selector": ".btsf-terms-checkbox-input",
+      "count": 6
+    },
+    {
+      "label": "shop-filter-term-link",
+      "event": "click",
+      "selector": ".btsf-terms-text-link[data-term-id][data-term-slug]",
+      "count": 5
+    },
+    {
+      "label": "blk-panel-body",
+      "event": "click",
+      "selector": ".components-button.components-panel__body-toggle",
+      "count": 7
+    },
+    {
+      "label": "blk-sidebar-toggle",
+      "event": "click",
+      "selector": "div.interface-pinned-items button.components-button.is-compact",
+      "count": 2
+    },
+    {
+      "label": "blk-chrome",
+      "event": "click",
+      "selector": "#\\:r3\\:",
+      "count": 3
+    },
+    {
+      "label": "blk-sidebar-tabs",
+      "event": "click",
+      "selector": "#tabs-0-edit-widgets\\/block-areas",
+      "count": 3
+    },
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.has-icon[data-snap-park]",
+      "count": 3
+    },
+    {
+      "label": "index-by-space",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 2
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "a.external-link",
+      "count": 19
+    },
+    {
+      "label": "admin-chrome-fallback",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 57
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#block-1e10fa71-b38a-4e96-9ad1-69d347d197dc",
+        "tag": "div",
+        "text": "Block: Search",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#el03726895619812226_text-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "wp-switch-editor",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#el03726895619812226_text-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "wp-switch-editor",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#el06638112054878794_text-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "wp-switch-editor",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#el06638112054878794_text-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "wp-switch-editor",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#el07007447498136459_text-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": true,
+        "wired": "wp-switch-editor",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#el07007447498136459_text-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": true,
+        "wired": "wp-switch-editor",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#el03726895619812226_text",
+        "tag": "textarea",
+        "text": "<ul> <li><a href=\"http://fernhillhome.com/faqs/\">FAQs</a>…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el03726895619812226_title",
+        "tag": "input",
+        "text": "HELP",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el06638112054878794_text",
+        "tag": "textarea",
+        "text": "<a href=\"http://fernhillhome.com/\"><img class=\"image size…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el06638112054878794_title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el07007447498136459_text",
+        "tag": "textarea",
+        "text": "<ul> <li><a href=\"http://fernhillhome.com/about/\">About F…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el07007447498136459_title",
+        "tag": "input",
+        "text": "ABOUT",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#preset-fhshop1-filter-1-Bedroom",
+        "tag": "input",
+        "text": "bedroom",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preset-fhshop1-filter-1-Dining",
+        "tag": "input",
+        "text": "dining",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preset-fhshop1-filter-1-Outdoor",
+        "tag": "input",
+        "text": "outdoor",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preset-fhshop1-filter-1-Packages",
+        "tag": "input",
+        "text": "packages",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_el03726895619812226_text_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el03726895619812226_text_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el03726895619812226_text_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el03726895619812226_text_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el03726895619812226_text_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el03726895619812226_text_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el03726895619812226_text_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el06638112054878794_text_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el06638112054878794_text_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el06638112054878794_text_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el06638112054878794_text_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el06638112054878794_text_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el06638112054878794_text_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el06638112054878794_text_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el07007447498136459_text_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el07007447498136459_text_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el07007447498136459_text_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el07007447498136459_text_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el07007447498136459_text_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el07007447498136459_text_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el07007447498136459_text_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-8-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-8-dropdown",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-8-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-10-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-10-dropdown",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-10-hierarchical",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-10-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-3-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-3-dropdown",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-3-hierarchical",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-3-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-meta-9-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-12-nav_menu",
+        "tag": "select",
+        "text": "— Select — Main",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-12-title",
+        "tag": "input",
+        "text": "NAVIGATE",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-13-nav_menu",
+        "tag": "select",
+        "text": "— Select — Main",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-13-title",
+        "tag": "input",
+        "text": "OTHERS",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-11-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-11-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-2-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-2-show_date",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-2-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-search-1-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-5-filter",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-5-text",
+        "tag": "textarea",
+        "text": "<ul> <li><a href=\"http://fernhillhome.com/about/\">About F…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-5-title",
+        "tag": "input",
+        "text": "ABOUT",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-5-visual",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-6-filter",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-6-text",
+        "tag": "textarea",
+        "text": "<ul> <li><a href=\"http://fernhillhome.com/faqs/\">FAQs</a>…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-6-title",
+        "tag": "input",
+        "text": "HELP",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-6-visual",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-7-filter",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-7-text",
+        "tag": "textarea",
+        "text": "<a href=\"http://fernhillhome.com/\"><img class=\"image size…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-7-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-7-visual",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-4-count",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-4-dropdown",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-4-hide_empty",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-4-hierarchical",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-4-max_depth",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-4-orderby",
+        "tag": "select",
+        "text": "Category order Name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-4-show_children_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-4-title",
+        "tag": "input",
+        "text": "SHOP",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#block-021d462f-be2a-4ef5-be88-407525a220db",
+        "tag": "div",
+        "text": "Categories Title: Display as dropdown Show post counts Show…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-06a3e81e-c7c4-425e-a18b-0c3ed884d643",
+        "tag": "div",
+        "text": "Footer 1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-09046dee-99f9-4da4-8823-50951333c166",
+        "tag": "div",
+        "text": "Recent Posts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-0e089df5-84ab-4a24-a4b3-d482984dcd2c",
+        "tag": "div",
+        "text": "Text Title: New Custom HTML Widget Did you know there is a …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-17943f1e-7cb0-43bd-88fc-cbf284be5c0f",
+        "tag": "div",
+        "text": "Sidebar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-3627bda1-374a-4291-94b8-6b62f7e2c8ed",
+        "tag": "div",
+        "text": "Recent Posts Title: Number of posts to show: Display post d…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-3dff9c24-3bf5-4b4e-bf54-f0267ca788c2",
+        "tag": "div",
+        "text": "Shop Sidebar Room 6 Bedroom 2 Dining 1 Home Office 9 Living…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-43c95fdc-dda6-4ad3-9d35-493082ce80d4",
+        "tag": "div",
+        "text": "Navigation Menu No menus have been created yet. Create some…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-4721bbce-c304-4658-9572-328e0648b500",
+        "tag": "div",
+        "text": "Recent CommentsNo comments to show.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-4cd0332a-b39e-4f27-af8e-0cd861e1391f",
+        "tag": "div",
+        "text": "Inactive widgets",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-52a2b7cc-4f2d-4e01-adaf-7fddecc1f3c1",
+        "tag": "div",
+        "text": "Search Title:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-5b7d0548-11ba-4ab2-bba4-225cb1576782",
+        "tag": "div",
+        "text": "No comments to show.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-5cc678e1-0b0d-43f6-92ef-3f27b82ca156",
+        "tag": "div",
+        "text": "Text Title: New Custom HTML Widget Did you know there is a …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-61c000e4-da1f-40a4-be9b-d13580a7c763",
+        "tag": "div",
+        "text": "Archives September 2026 August 2026 July 2026 June 2026 May…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-696c25ac-2a42-4ae8-bbf3-3e95c104f4c0",
+        "tag": "div",
+        "text": "CategoriesCare GuidesDesign TipsInside Fernhill",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-78e78fe6-d7b9-44f5-a101-360e7d47b7c8",
+        "tag": "div",
+        "text": "Recent Comments Title: Number of comments to show:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-78f31062-ed32-4e92-8d39-6608fb409ba9",
+        "tag": "div",
+        "text": "Footer 2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-7cd0f551-72e9-4c68-8fe8-9613b0d3e94f",
+        "tag": "h2",
+        "text": "Recent Comments",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-7d13e85d-bfaf-4e18-a54d-5ee5a72badf5",
+        "tag": "div",
+        "text": "Categories Title: Display as dropdown Show post counts Show…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-8274f85d-e499-4c97-855c-bc2668bddbd4",
+        "tag": "h2",
+        "text": "Categories",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-9633066a-9fef-4fe3-81bc-9e062e34853d",
+        "tag": "div",
+        "text": "Product Categories Title Order by Category order Name Show …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-97e68d9a-d987-4acd-b7dc-56a0bed3a162",
+        "tag": "ul",
+        "text": "September 2026 August 2026 July 2026 June 2026 May 2026 Apr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-987c2da2-5452-4382-8970-86b008c2fb0b",
+        "tag": "div",
+        "text": "Navigation Menu No menus have been created yet. Create some…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-9aabf21c-7d36-4eed-9792-c86556179d4f",
+        "tag": "ul",
+        "text": "Care GuidesDesign TipsInside Fernhill",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-9c310d30-6b70-4620-8b57-9b6277549b5a",
+        "tag": "div",
+        "text": "Footer 4",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-a14ab693-9067-4166-a975-d48ee069b880",
+        "tag": "div",
+        "text": "Meta Title:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-ab749897-4a84-4a01-8f5f-d32f22518903",
+        "tag": "div",
+        "text": "Text Title: New Custom HTML Widget Did you know there is a …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-c9a34484-d782-41f6-9623-62de69016b60",
+        "tag": "div",
+        "text": "Archives Title: Display as dropdown Show post counts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-d0536526-5530-408a-a535-f22224f1399c",
+        "tag": "h2",
+        "text": "Archives",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-d06a5015-b52d-4dbf-95a6-8d377f4ab807",
+        "tag": "div",
+        "text": "Footer 3",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#block-facc5fa3-24a0-4322-8786-a74cd369d7aa",
+        "tag": "h2",
+        "text": "Recent Posts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-block-editor-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editor-keyboard-trap-help-1",
+        "tag": "p",
+        "text": "When using a keyboard to navigate:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#editor-keyboard-trap-help-2",
+        "tag": "li",
+        "text": "In the editing area, the Tab key enters a tab character.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#editor-keyboard-trap-help-3",
+        "tag": "li",
+        "text": "To move away from this area, press the Esc key followed by …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#editor-keyboard-trap-help-4",
+        "tag": "li",
+        "text": "Screen reader users: when in forms mode, you may need to pr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el03726895619812226_text_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el06638112054878794_text_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el07007447498136459_text_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-css-custom-properties-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#preset-fhshop1-filter-1",
+        "tag": "div",
+        "text": "Room 6 Bedroom 2 Dining 1 Home Office 9 Living Room 3 Outdo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preset-fhshop1-filter-2",
+        "tag": "div",
+        "text": "Body finish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preset-fhshop1-filter-3",
+        "tag": "div",
+        "text": "Fabric color Black Desert Sand",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preset-fhshop1-filter-4",
+        "tag": "div",
+        "text": "Price $ 0 $ 1200",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preset-fhshop1-filter-5",
+        "tag": "div",
+        "text": "Availability",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_el03726895619812226_text_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el06638112054878794_text_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_el07007447498136459_text_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ui-id-1",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-2",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-3",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-4",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-5",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-6",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widgets-editor",
+        "tag": "div",
+        "text": "Widgets Update Shop Sidebar Room 6 Bedroom 2 Dining 1 Home …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-blue-orange",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-blue-red",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-dark-grayscale",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-grayscale",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-magenta-yellow",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-midnight",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-purple-green",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-duotone-purple-yellow",
+        "tag": "filter",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-el03726895619812226_text-wrap",
+        "tag": "div",
+        "text": "Add mediaVisualCode <ul> <li><a href=\"http://test-athemes.l…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-el06638112054878794_text-wrap",
+        "tag": "div",
+        "text": "Add mediaVisualCode <a href=\"http://fernhillhome.com/\"><i…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-el07007447498136459_text-wrap",
+        "tag": "div",
+        "text": "Add mediaVisualCode <ul> <li><a href=\"http://test-athemes.l…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

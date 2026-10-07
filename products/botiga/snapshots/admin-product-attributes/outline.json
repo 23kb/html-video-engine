@@ -1,0 +1,306 @@
+{
+  "slug": "admin-product-attributes",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": "button.button.button-compact",
+      "count": 1
+    },
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.woocommerce-layout__activity-panel-tab[data-snap-park][data-testid]",
+      "count": 2
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 21
+    },
+    {
+      "label": "admin-chrome-fallback",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 67
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#activity-panel-tab-activity",
+        "tag": "button",
+        "text": "Activity unread activity",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#activity-panel-tab-setup",
+        "tag": "button",
+        "text": "Finish setup",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submit",
+        "tag": "button",
+        "text": "Add attribute",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#attribute_label",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#attribute_name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#attribute_orderby",
+        "tag": "select",
+        "text": "Custom ordering Name Name (numeric) Term ID",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#attribute_public",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#attribute_type",
+        "tag": "select",
+        "text": "Select Color Image Button",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#activity-panel-header_36",
+        "tag": "h2",
+        "text": "Store Activity",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-activity-panel",
+        "tag": "aside",
+        "text": "Activity unread activity Finish setup",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#col-container",
+        "tag": "div",
+        "text": "Name Slug Type Order by Terms Body Finish Edit | Delete bod…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-left",
+        "tag": "div",
+        "text": "Add new attribute Attributes let you define extra product d…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#col-right",
+        "tag": "div",
+        "text": "Name Slug Type Order by Terms Body Finish Edit | Delete bod…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "If you like WooCommerce please leave us a ★★★★★ rating. A h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#jp-admin-notices",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tiptip_arrow",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_arrow_inner",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-root",
+        "tag": "div",
+        "text": "Attributes Store Activity Activity unread activity Finish s…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

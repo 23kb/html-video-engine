@@ -1,0 +1,557 @@
+{
+  "slug": "admin-users",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "a.submitdelete",
+      "count": 30
+    },
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Delete Send password reset",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Delete Send password reset",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#changeit",
+        "tag": "input",
+        "text": "Change",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#changeit2",
+        "tag": "input",
+        "text": "Change",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#email-hide",
+        "tag": "input",
+        "text": "email",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#new_role",
+        "tag": "select",
+        "text": "Change role to… Shop manager Customer Subscriber Contributo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#new_role2",
+        "tag": "select",
+        "text": "Change role to… Shop manager Customer Subscriber Contributo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts-hide",
+        "tag": "input",
+        "text": "posts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#role-hide",
+        "tag": "input",
+        "text": "role",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "9bdc79dada",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#user_1",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_22",
+        "tag": "input",
+        "text": "22",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_23",
+        "tag": "input",
+        "text": "23",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_24",
+        "tag": "input",
+        "text": "24",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_25",
+        "tag": "input",
+        "text": "25",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_26",
+        "tag": "input",
+        "text": "26",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_27",
+        "tag": "input",
+        "text": "27",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_28",
+        "tag": "input",
+        "text": "28",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_29",
+        "tag": "input",
+        "text": "29",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_30",
+        "tag": "input",
+        "text": "30",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_31",
+        "tag": "input",
+        "text": "31",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_32",
+        "tag": "input",
+        "text": "32",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_33",
+        "tag": "input",
+        "text": "33",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_34",
+        "tag": "input",
+        "text": "34",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_35",
+        "tag": "input",
+        "text": "35",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_jetpack-hide",
+        "tag": "input",
+        "text": "user_jetpack",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#user-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#users_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Email Role Posts WordPress.com account Pagination N…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#email",
+        "tag": "th",
+        "text": "Email Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#name",
+        "tag": "th",
+        "text": "Name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts",
+        "tag": "th",
+        "text": "Posts",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#role",
+        "tag": "th",
+        "text": "Role",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Email Role Posts WordPress.com account Pagination N…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Select ava-thompson ava-thompson Edit | Delete | View | Sen…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user_jetpack",
+        "tag": "th",
+        "text": "WordPress.com account",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-1",
+        "tag": "tr",
+        "text": "Select maya ellison maya ellison Edit | View Maya Ellison m…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-22",
+        "tag": "tr",
+        "text": "Select hannah-reyes hannah-reyes Edit | Delete | View | Sen…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-23",
+        "tag": "tr",
+        "text": "Select owen-park owen-park Edit | Delete | View | Send pass…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-24",
+        "tag": "tr",
+        "text": "Select priya-natarajan priya-natarajan Edit | Delete | View…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-25",
+        "tag": "tr",
+        "text": "Select lucas-bennett lucas-bennett Edit | Delete | View | S…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-26",
+        "tag": "tr",
+        "text": "Select grace-okafor grace-okafor Edit | Delete | View | Sen…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-27",
+        "tag": "tr",
+        "text": "Select daniel-moreau daniel-moreau Edit | Delete | View | S…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-28",
+        "tag": "tr",
+        "text": "Select emma-lindqvist emma-lindqvist Edit | Delete | View |…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-29",
+        "tag": "tr",
+        "text": "Select noah-castillo noah-castillo Edit | Delete | View | S…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-30",
+        "tag": "tr",
+        "text": "Select sofia-marchetti sofia-marchetti Edit | Delete | View…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-31",
+        "tag": "tr",
+        "text": "Select ethan-brooks ethan-brooks Edit | Delete | View | Sen…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-32",
+        "tag": "tr",
+        "text": "Select ava-thompson ava-thompson Edit | Delete | View | Sen…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-33",
+        "tag": "tr",
+        "text": "Select mateo-alvarez mateo-alvarez Edit | Delete | View | S…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-34",
+        "tag": "tr",
+        "text": "Select chloe-nguyen chloe-nguyen Edit | Delete | View | Sen…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-35",
+        "tag": "tr",
+        "text": "Select isla-murray isla-murray Edit | Delete | View | Send …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#username",
+        "tag": "th",
+        "text": "Username",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

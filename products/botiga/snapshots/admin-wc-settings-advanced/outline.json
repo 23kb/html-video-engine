@@ -1,0 +1,399 @@
+{
+  "slug": "admin-wc-settings-advanced",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "select2-open",
+      "event": "click",
+      "selector": ".select2-selection.select2-selection--single",
+      "count": 4
+    },
+    {
+      "label": "wp-list-filter",
+      "event": "click",
+      "selector": "ul.subsubsub li a.current",
+      "count": 7
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 25
+    },
+    {
+      "label": "admin-chrome-fallback",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 58
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#woocommerce_cart_page_id",
+        "tag": "select",
+        "text": "Cart (ID: 7)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_checkout_order_received_endpoint",
+        "tag": "input",
+        "text": "order-received",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_checkout_page_id",
+        "tag": "select",
+        "text": "Checkout (ID: 8)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_checkout_pay_endpoint",
+        "tag": "input",
+        "text": "order-pay",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_force_ssl_checkout",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_logout_endpoint",
+        "tag": "input",
+        "text": "customer-logout",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_myaccount_add_payment_method_endpoint",
+        "tag": "input",
+        "text": "add-payment-method",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_myaccount_delete_payment_method_endpoint",
+        "tag": "input",
+        "text": "delete-payment-method",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_myaccount_downloads_endpoint",
+        "tag": "input",
+        "text": "downloads",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_myaccount_edit_account_endpoint",
+        "tag": "input",
+        "text": "edit-account",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_myaccount_edit_address_endpoint",
+        "tag": "input",
+        "text": "edit-address",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_myaccount_lost_password_endpoint",
+        "tag": "input",
+        "text": "lost-password",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_myaccount_orders_endpoint",
+        "tag": "input",
+        "text": "orders",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_myaccount_page_id",
+        "tag": "select",
+        "text": "My account (ID: 9)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_myaccount_payment_methods_endpoint",
+        "tag": "input",
+        "text": "payment-methods",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_myaccount_set_default_payment_method_endpoint",
+        "tag": "input",
+        "text": "set-default-payment-method",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_myaccount_view_order_endpoint",
+        "tag": "input",
+        "text": "view-order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_terms_page_id",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_unforce_ssl_checkout",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#account_endpoint_options-description",
+        "tag": "div",
+        "text": "Endpoints are appended to your page URLs to handle specific…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#advanced_page_options-description",
+        "tag": "div",
+        "text": "These pages need to be set so that WooCommerce knows where …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#checkout_endpoint_options-description",
+        "tag": "div",
+        "text": "Endpoints are appended to your page URLs to handle specific…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "If you like WooCommerce please leave us a ★★★★★ rating. A h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#jp-admin-notices",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#mainform",
+        "tag": "form",
+        "text": "General Products Shipping Payments Accounts & Privacy Email…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-woocommerce_cart_page_id-container",
+        "tag": "span",
+        "text": "× Cart (ID: 7)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-woocommerce_checkout_page_id-container",
+        "tag": "span",
+        "text": "× Checkout (ID: 8)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-woocommerce_myaccount_page_id-container",
+        "tag": "span",
+        "text": "× My account (ID: 9)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-woocommerce_terms_page_id-container",
+        "tag": "span",
+        "text": "Search for a page…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tiptip_arrow",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_arrow_inner",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-root",
+        "tag": "div",
+        "text": "Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

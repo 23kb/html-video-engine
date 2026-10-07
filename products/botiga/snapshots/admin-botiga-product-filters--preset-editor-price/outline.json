@@ -1,0 +1,440 @@
+{
+  "slug": "admin-botiga-product-filters--preset-editor-price",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "dashboard-tab",
+      "event": "click",
+      "selector": ".botiga-dashboard-tabs-nav-link[data-tab-to]",
+      "count": 2
+    },
+    {
+      "label": "dashboard-notifications-toggle",
+      "event": "click",
+      "selector": "a.botiga-dashboard-theme-notifications",
+      "count": 1
+    },
+    {
+      "label": "dashboard-notifications-close",
+      "event": "click",
+      "selector": "a.botiga-dashboard-notifications-sidebar-close",
+      "count": 1
+    },
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "a.botiga-dashboard-top-bar-logo",
+      "count": 5
+    },
+    {
+      "label": "filters-panel-toggle",
+      "event": "click",
+      "selector": ".components-button.components-panel__body-toggle",
+      "count": 5
+    },
+    {
+      "label": "filters-back-to-presets",
+      "event": "click",
+      "selector": "a.botiga-dashboard-external-link.bt-text-decoration-none",
+      "count": 1
+    },
+    {
+      "label": "filters-editor-live",
+      "event": "click",
+      "selector": "button.components-button.botiga-dashboard-link",
+      "count": 6
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dashboard-external-link",
+        "tag": "a",
+        "text": "← Back to presets",
+        "count": 1,
+        "hidden": false,
+        "wired": "filters-back-to-presets",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-footer-link",
+        "tag": "a",
+        "text": "Botiga",
+        "count": 1,
+        "hidden": false,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-link",
+        "tag": "button",
+        "text": "Remove",
+        "count": 5,
+        "hidden": false,
+        "wired": "filters-editor-live",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-notifications-sidebar-close",
+        "tag": "a",
+        "text": "Close the sidebar",
+        "count": 1,
+        "hidden": true,
+        "wired": "dashboard-notifications-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-tabs-nav-link",
+        "tag": "a",
+        "text": "Botiga",
+        "count": 2,
+        "hidden": true,
+        "wired": "dashboard-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-theme-notifications",
+        "tag": "a",
+        "text": "1",
+        "count": 1,
+        "hidden": false,
+        "wired": "dashboard-notifications-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-theme-website",
+        "tag": "a",
+        "text": "Website",
+        "count": 1,
+        "hidden": false,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": ".botiga-dashboard-tab-content",
+        "tag": "div",
+        "text": "No notifications found",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-tabs-nav-item",
+        "tag": "li",
+        "text": "Botiga",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#inspector-input-control-0",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-input-control-1",
+        "tag": "input",
+        "text": "1200",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-input-control-2",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-text-control-0",
+        "tag": "input",
+        "text": "Shop filters",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-text-control-1",
+        "tag": "input",
+        "text": "Price",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-toggle-control-0",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-toggle-control-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#draggable-panel",
+        "tag": "div",
+        "text": "Filters of this preset Room Remove",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#draggable-panel-body-filter-1",
+        "tag": "div",
+        "text": "Room Remove",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#draggable-panel-body-filter-2",
+        "tag": "div",
+        "text": "Body finish Remove",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#draggable-panel-body-filter-3",
+        "tag": "div",
+        "text": "Fabric color Remove",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#draggable-panel-body-filter-4",
+        "tag": "div",
+        "text": "Price Remove",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#draggable-panel-body-filter-5",
+        "tag": "div",
+        "text": "Availability Remove",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-shop-filters-settings",
+        "tag": "div",
+        "text": "Filter Presets General Customization SEO Documentation ← Ba…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating your website with Botiga.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-input-control-0__help",
+        "tag": "p",
+        "text": "The minimum value for the price slider.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-input-control-1__help",
+        "tag": "p",
+        "text": "The maximum value for the price slider.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-input-control-2__help",
+        "tag": "p",
+        "text": "The step value for the price slider.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-text-control-0__help",
+        "tag": "p",
+        "text": "The name of the filter preset",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-text-control-1__help",
+        "tag": "p",
+        "text": "The name of the filter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-toggle-control-0__help",
+        "tag": "p",
+        "text": "Automatically adjust min and max values based on currently …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-toggle-control-1__help",
+        "tag": "p",
+        "text": "Displays the filter with accordion style.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#react-select-2-live-region",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-card-inner-header",
+        "tag": "div",
+        "text": "Edit filter preset Edit the filter preset settings.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dashboard-container",
+        "tag": "div",
+        "text": "Filter Presets General Customization SEO Documentation ← Ba…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dashboard-notification-content",
+        "tag": "div",
+        "text": "No notifications found",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-notifications-sidebar",
+        "tag": "div",
+        "text": "New Update Check the latest news from Botiga Botiga Botiga …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-notifications-sidebar-header",
+        "tag": "div",
+        "text": "New Update Check the latest news from Botiga",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-notifications-sidebar-header-content",
+        "tag": "div",
+        "text": "New Update Check the latest news from Botiga",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-row",
+        "tag": "div",
+        "text": "Filter Presets General Customization SEO Documentation ← Ba…",
+        "count": 2,
+        "hidden": false
+      }
+    ]
+  }
+}

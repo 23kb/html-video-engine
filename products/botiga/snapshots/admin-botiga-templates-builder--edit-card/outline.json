@@ -1,0 +1,292 @@
+{
+  "slug": "admin-botiga-templates-builder--edit-card",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "dashboard-tab",
+      "event": "click",
+      "selector": ".botiga-dashboard-tabs-nav-link[data-tab-to]",
+      "count": 2
+    },
+    {
+      "label": "dashboard-notifications-toggle",
+      "event": "click",
+      "selector": "a.botiga-dashboard-theme-notifications",
+      "count": 1
+    },
+    {
+      "label": "dashboard-notifications-close",
+      "event": "click",
+      "selector": "a.botiga-dashboard-notifications-sidebar-close",
+      "count": 1
+    },
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "a.botiga-dashboard-top-bar-logo",
+      "count": 5
+    },
+    {
+      "label": "tb-card-actions",
+      "event": "click",
+      "selector": "a.components-button.is-primary",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dashboard-footer-link",
+        "tag": "a",
+        "text": "Botiga",
+        "count": 1,
+        "hidden": false,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-notifications-sidebar-close",
+        "tag": "a",
+        "text": "Close the sidebar",
+        "count": 1,
+        "hidden": true,
+        "wired": "dashboard-notifications-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-tabs-nav-link",
+        "tag": "a",
+        "text": "Botiga",
+        "count": 2,
+        "hidden": true,
+        "wired": "dashboard-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-theme-notifications",
+        "tag": "a",
+        "text": "1",
+        "count": 1,
+        "hidden": false,
+        "wired": "dashboard-notifications-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-theme-website",
+        "tag": "a",
+        "text": "Website",
+        "count": 1,
+        "hidden": false,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".bt-display-conditions",
+        "tag": "button",
+        "text": "Display Conditions",
+        "count": 1,
+        "hidden": false,
+        "wired": "tb-card-actions",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".bt-template-card__save-button",
+        "tag": "button",
+        "text": "Save",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": ".botiga-dashboard-tab-content",
+        "tag": "div",
+        "text": "No notifications found",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-tabs-nav-item",
+        "tag": "li",
+        "text": "Botiga",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": ".bt-template-card__title-input",
+        "tag": "input",
+        "text": "Single product with trust strip",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-templates-builder-settings",
+        "tag": "div",
+        "text": "All templates Single Archive Page 404 Content Block Single …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating your website with Botiga.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-card-inner-header",
+        "tag": "div",
+        "text": "Single Product Customize the layout and design of individua…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dashboard-container",
+        "tag": "div",
+        "text": "All templates Single Archive Page 404 Content Block Single …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dashboard-notification-content",
+        "tag": "div",
+        "text": "No notifications found",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-notifications-sidebar",
+        "tag": "div",
+        "text": "New Update Check the latest news from Botiga Botiga Botiga …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-notifications-sidebar-header",
+        "tag": "div",
+        "text": "New Update Check the latest news from Botiga",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-notifications-sidebar-header-content",
+        "tag": "div",
+        "text": "New Update Check the latest news from Botiga",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-row",
+        "tag": "div",
+        "text": "All templates Single Archive Page 404 Content Block Single …",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".bt-navigation-link",
+        "tag": "li",
+        "text": "All templates",
+        "count": 12,
+        "hidden": false
+      },
+      {
+        "sel": ".bt-template-card__choose-builder-actions",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      }
+    ]
+  }
+}

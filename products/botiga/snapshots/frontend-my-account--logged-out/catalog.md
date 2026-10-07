@@ -1,0 +1,81 @@
+# Catalog — `frontend-my-account--logged-out`
+
+> Auto-generated. Do not edit by hand.
+> Source: `products/botiga/snapshots/frontend-my-account--logged-out/index.html`
+> Generator: `tools/generate-snapshot-catalog.js`
+> 48 selector entries across 2 sections.
+
+Provenance anchor form: `products/botiga/snapshots/frontend-my-account--logged-out/catalog.md#<anchor>`.
+Anchors are derived from the selector value and are stable across reruns.
+
+---
+
+## IDs
+
+_31 entries_
+
+| Anchor | Selector | Tag | Text | Count |
+| --- | --- | --- | --- | --- |
+| <a id="id--athemes-blocks-common-inline-css"></a>`id--athemes-blocks-common-inline-css` | `#athemes-blocks-common-inline-css` | link |  | 1 |
+| <a id="id--botiga-style-inline-css"></a>`id--botiga-style-inline-css` | `#botiga-style-inline-css` | link |  | 1 |
+| <a id="id--botiga-woocommerce-style-inline-css"></a>`id--botiga-woocommerce-style-inline-css` | `#botiga-woocommerce-style-inline-css` | link |  | 1 |
+| <a id="id--custom-background-css"></a>`id--custom-background-css` | `#custom-background-css` | link |  | 1 |
+| <a id="id--customer_login"></a>`id--customer_login` | `#customer_login` | div | Login Username or email address&nbsp; * Required | 1 |
+| <a id="id--global-styles-inline-css"></a>`id--global-styles-inline-css` | `#global-styles-inline-css` | link |  | 1 |
+| <a id="id--mini_cart_qty_nonce"></a>`id--mini_cart_qty_nonce` | `#mini_cart_qty_nonce` | input |  | 2 |
+| <a id="id--page"></a>`id--page` | `#page` | div | Skip to content | 1 |
+| <a id="id--password"></a>`id--password` | `#password` | input |  | 1 |
+| <a id="id--post-9"></a>`id--post-9` | `#post-9` | article | My account Login | 1 |
+| <a id="id--primary"></a>`id--primary` | `#primary` | main | My account | 1 |
+| <a id="id--primary-menu"></a>`id--primary-menu` | `#primary-menu` | ul | Home | 2 |
+| <a id="id--reg_email"></a>`id--reg_email` | `#reg_email` | input | A link to set a new password will be sent to your email add… | 1 |
+| <a id="id--rememberme"></a>`id--rememberme` | `#rememberme` | input | Remember me | 1 |
+| <a id="id--site-header-cart"></a>`id--site-header-cart` | `#site-header-cart` | div |  | 2 |
+| <a id="id--site-navigation"></a>`id--site-navigation` | `#site-navigation` | nav | Home | 1 |
+| <a id="id--site-navigation-mobile"></a>`id--site-navigation-mobile` | `#site-navigation-mobile` | nav | Home | 1 |
+| <a id="id--text-2"></a>`id--text-2` | `#text-2` | section | ABOUT About Fernhill How it Works Reviews Contact Caree | 1 |
+| <a id="id--text-3"></a>`id--text-3` | `#text-3` | section | HELP FAQs Privacy Policy Terms Returns | 1 |
+| <a id="id--text-4"></a>`id--text-4` | `#text-4` | section | Solid wood furniture, built by hand in Portland and made to… | 1 |
+| <a id="id--username"></a>`id--username` | `#username` | input | Password&nbsp; * Required | 1 |
+| <a id="id--woocommerce_product_categories-1"></a>`id--woocommerce_product_categories-1` | `#woocommerce_product_categories-1` | section | SHOP Bedroom Dining Home Office | 1 |
+| <a id="id--woocommerce-inline-inline-css"></a>`id--woocommerce-inline-inline-css` | `#woocommerce-inline-inline-css` | link |  | 1 |
+| <a id="id--woocommerce-login-nonce"></a>`id--woocommerce-login-nonce` | `#woocommerce-login-nonce` | input | Log in | 1 |
+| <a id="id--woocommerce-product-search-field-search-form-1"></a>`id--woocommerce-product-search-field-search-form-1` | `#woocommerce-product-search-field-search-form-1` | input |  | 1 |
+| <a id="id--woocommerce-product-search-field-search-form-2"></a>`id--woocommerce-product-search-field-search-form-2` | `#woocommerce-product-search-field-search-form-2` | input |  | 1 |
+| <a id="id--woocommerce-product-search-field-search-form-3"></a>`id--woocommerce-product-search-field-search-form-3` | `#woocommerce-product-search-field-search-form-3` | input |  | 1 |
+| <a id="id--woocommerce-register-nonce"></a>`id--woocommerce-register-nonce` | `#woocommerce-register-nonce` | input | Register | 1 |
+| <a id="id--wp-block-library-inline-css"></a>`id--wp-block-library-inline-css` | `#wp-block-library-inline-css` | link |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
+| <a id="id--wp-img-auto-sizes-contain-inline-css"></a>`id--wp-img-auto-sizes-contain-inline-css` | `#wp-img-auto-sizes-contain-inline-css` | link |  | 1 |
+
+## Role-like classes
+
+_17 entries_
+
+| Anchor | Selector | Tag | Text | Count |
+| --- | --- | --- | --- | --- |
+| <a id="class--bhfb-component-search"></a>`class--bhfb-component-search` | `.bhfb-component-search` | div |  | 2 |
+| <a id="class--bhfb-header"></a>`class--bhfb-header` | `.bhfb-header` | header |  | 2 |
+| <a id="class--bhfb-row"></a>`class--bhfb-row` | `.bhfb-row` | div |  | 10 |
+| <a id="class--bhfb-sticky-header"></a>`class--bhfb-sticky-header` | `.bhfb-sticky-header` | div |  | 2 |
+| <a id="class--botiga-dropdown"></a>`class--botiga-dropdown` | `.botiga-dropdown` | nav | Home | 2 |
+| <a id="class--botiga-dropdown-li"></a>`class--botiga-dropdown-li` | `.botiga-dropdown-li` | li | Home | 42 |
+| <a id="class--botiga-dropdown-link"></a>`class--botiga-dropdown-link` | `.botiga-dropdown-link` | a | Home | 37 |
+| <a id="class--botiga-mega-menu"></a>`class--botiga-mega-menu` | `.botiga-mega-menu` | li | Shop | 1 |
+| <a id="class--botiga-mega-menu-3-columns"></a>`class--botiga-mega-menu-3-columns` | `.botiga-mega-menu-3-columns` | li | Shop | 1 |
+| <a id="class--botiga-mega-menu-column"></a>`class--botiga-mega-menu-column` | `.botiga-mega-menu-column` | li | Room packages A full room, styled by our Portland team, for… | 8 |
+| <a id="class--botiga-mega-menu-columns-layout-4col-equal"></a>`class--botiga-mega-menu-columns-layout-4col-equal` | `.botiga-mega-menu-columns-layout-4col-equal` | li | Shop | 1 |
+| <a id="class--botiga-mega-menu-contained"></a>`class--botiga-mega-menu-contained` | `.botiga-mega-menu-contained` | li | Shop | 1 |
+| <a id="class--botiga-mega-menu-link"></a>`class--botiga-mega-menu-link` | `.botiga-mega-menu-link` | a | Home | 17 |
+| <a id="class--botiga-mega-menu-ws-normal"></a>`class--botiga-mega-menu-ws-normal` | `.botiga-mega-menu-ws-normal` | li | Room packages A full room, styled by our Portland team, for… | 4 |
+| <a id="class--botiga-quick-view-popup-close-button"></a>`class--botiga-quick-view-popup-close-button` | `.botiga-quick-view-popup-close-button` | a |  | 1 |
+| <a id="class--botiga-quick-view-popup-content"></a>`class--botiga-quick-view-popup-content` | `.botiga-quick-view-popup-content` | div |  | 1 |
+| <a id="class--botiga-side-mini-cart__close-button"></a>`class--botiga-side-mini-cart__close-button` | `.botiga-side-mini-cart__close-button` | a |  | 1 |
+
+---
+
+## Notes
+
+- This catalog lists *candidate* selectors extracted statically from the snapshot's `index.html`. Not every entry is a stable chapter target — authors still pick the selector that best matches intent.
+- Role-like classes are filtered to (a) names matching a known interaction suffix (`-button`, `-tab`, `-toggle`, `-add`, …) OR (b) classes whose first in-scope occurrence is on an interactive tag (`button`, `a`, `input`, `textarea`, `select`, `li`) carrying non-empty text. `Tag` and `Text` columns are sourced from that first occurrence. The full WPForms class vocabulary is larger; run `tools/inspect-snapshot.js` for visibility-aware detail.
+- Duplicate IDs in captured HTML (a known sanitization debt) surface here as `Count > 1` — prefer a more specific selector when this happens.

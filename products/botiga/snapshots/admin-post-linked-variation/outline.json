@@ -1,0 +1,955 @@
+{
+  "slug": "admin-post-linked-variation",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "#post-preview",
+      "count": 4
+    },
+    {
+      "label": "wp-postbox-toggle",
+      "event": "click",
+      "selector": "#submitdiv-title",
+      "count": 6
+    },
+    {
+      "label": "wp-postbox-move",
+      "event": "click",
+      "selector": ".wp-tooltip__toggle",
+      "count": 6
+    },
+    {
+      "label": "wp-publish-box-edit",
+      "event": "click",
+      "selector": "a.edit-post-status.hide-if-no-js",
+      "count": 9
+    },
+    {
+      "label": "wp-edit-slug",
+      "event": "click",
+      "selector": "button.edit-slug.button",
+      "count": 1
+    },
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": "#show-settings-link",
+      "count": 1
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-preview",
+        "tag": "a",
+        "text": "Preview Changes (opens in a new tab)",
+        "count": 1,
+        "hidden": false,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#active_post_lock",
+        "tag": "input",
+        "text": "1791002527:1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox_nonce",
+        "tag": "input",
+        "text": "8862f2e753",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-hide",
+        "tag": "input",
+        "text": "botiga_metabox",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_hh",
+        "tag": "input",
+        "text": "21",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_jj",
+        "tag": "input",
+        "text": "02",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_mm",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_mn",
+        "tag": "input",
+        "text": "42",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#editor-expand-toggle",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hh",
+        "tag": "input",
+        "text": "19",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_hh",
+        "tag": "input",
+        "text": "19",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_jj",
+        "tag": "input",
+        "text": "02",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_mm",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_mn",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_post_status",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden-post-password",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden-post-visibility",
+        "tag": "input",
+        "text": "public",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hiddenaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#jj",
+        "tag": "input",
+        "text": "02",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#meta-box-order-nonce",
+        "tag": "input",
+        "text": "47ee607c3f",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mm",
+        "tag": "select",
+        "text": "01-Jan 02-Feb 03-Mar 04-Apr 05-May 06-Jun 07-Jul 08-Aug 09-…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mn",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_post_status",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_post_title",
+        "tag": "input",
+        "text": "Bedside tables",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_publish",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#originalaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_author",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_ID",
+        "tag": "input",
+        "text": "1656",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_name",
+        "tag": "input",
+        "text": "bedside-tables",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_password",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_status",
+        "tag": "select",
+        "text": "Published Pending Review Draft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_type",
+        "tag": "input",
+        "text": "linked_variation",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#publish",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#referredby",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#samplepermalinknonce",
+        "tag": "input",
+        "text": "67848ce10b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#save",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "04b06cb21d",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-hide",
+        "tag": "input",
+        "text": "slugdiv",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ss",
+        "tag": "input",
+        "text": "23",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#title",
+        "tag": "input",
+        "text": "Bedside tables",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#user-id",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-password",
+        "tag": "input",
+        "text": "password",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-private",
+        "tag": "input",
+        "text": "private",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-public",
+        "tag": "input",
+        "text": "public",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-preview",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#visibility",
+        "tag": "div",
+        "text": "Visibility: Public Edit Edit visibility",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Screen elements Some screen elements can be shown or hidden…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#advanced-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga_metabox",
+        "tag": "div",
+        "text": "Botiga Linked Variation Options Move up Move down Show or h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-title",
+        "tag": "h2",
+        "text": "Botiga Linked Variation Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#delete-action",
+        "tag": "div",
+        "text": "Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit-slug-box",
+        "tag": "div",
+        "text": "Permalink: http://fernhillhome.com/linked_variation/bedsi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit-slug-buttons",
+        "tag": "span",
+        "text": "Edit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editable-post-name",
+        "tag": "span",
+        "text": "bedside-tables",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editable-post-name-full",
+        "tag": "span",
+        "text": "bedside-tables",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#major-publishing-actions",
+        "tag": "div",
+        "text": "Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#minor-publishing",
+        "tag": "div",
+        "text": "Preview Changes (opens in a new tab) Status: Published Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#minor-publishing-actions",
+        "tag": "div",
+        "text": "Preview Changes (opens in a new tab)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#misc-publishing-actions",
+        "tag": "div",
+        "text": "Status: Published Edit Edit status Visibility: Public Edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "Botiga Linked Variation Options Move up Move down Show or h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#password-span",
+        "tag": "span",
+        "text": "Password:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post",
+        "tag": "form",
+        "text": "Add title Permalink: http://fernhillhome.com/linked_varia…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body",
+        "tag": "div",
+        "text": "Add title Permalink: http://fernhillhome.com/linked_varia…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body-content",
+        "tag": "div",
+        "text": "Add title Permalink: http://fernhillhome.com/linked_varia…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-lock-dialog",
+        "tag": "div",
+        "text": "Saving revision… Your latest changes were saved as a revisi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-status-display",
+        "tag": "span",
+        "text": "Published",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-status-select",
+        "tag": "div",
+        "text": "Set status Published Pending Review Draft OK Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-visibility-display",
+        "tag": "span",
+        "text": "Public",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-visibility-select",
+        "tag": "div",
+        "text": "Public Password protected Password: Private OK Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postbox-container-1",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Preview Change…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-2",
+        "tag": "div",
+        "text": "Botiga Linked Variation Options Move up Move down Show or h…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#poststuff",
+        "tag": "div",
+        "text": "Add title Permalink: http://fernhillhome.com/linked_varia…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-action",
+        "tag": "div",
+        "text": "Preview Changes (opens in a new tab)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#publishing-action",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sample-permalink",
+        "tag": "span",
+        "text": "http://fernhillhome.com/linked_variation/bedside-tables/",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#save-action",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Screen elements Some screen elements can be shown or hidden…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#side-sortables",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Preview Change…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#slugdiv",
+        "tag": "div",
+        "text": "Slug Move up Move up Move down Move down Show or hide panel…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-title",
+        "tag": "h2",
+        "text": "Slug",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Preview Change…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submitdiv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-title",
+        "tag": "h2",
+        "text": "Publish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submitpost",
+        "tag": "div",
+        "text": "Preview Changes (opens in a new tab) Status: Published Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#timestamp",
+        "tag": "span",
+        "text": "Published on: Oct 2, 2026 at 19:20",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#timestampdiv",
+        "tag": "fieldset",
+        "text": "Date and time Month 01-Jan 02-Feb 03-Mar 04-Apr 05-May 06-J…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#title-prompt-text",
+        "tag": "label",
+        "text": "Add title",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#titlediv",
+        "tag": "div",
+        "text": "Add title Permalink: http://fernhillhome.com/linked_varia…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#titlewrap",
+        "tag": "div",
+        "text": "Add title",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-content",
+        "tag": "div",
+        "text": "Linked Products ×Oak Nightstand ×Open-Shelf Bedside Table L…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-metabox-field",
+        "tag": "div",
+        "text": "Linked Products ×Oak Nightstand ×Open-Shelf Bedside Table",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-metabox-field-content",
+        "tag": "div",
+        "text": "×Oak Nightstand ×Open-Shelf Bedside Table",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-sortable-item",
+        "tag": "li",
+        "text": "Wood",
+        "count": 3,
+        "hidden": false
+      }
+    ]
+  }
+}

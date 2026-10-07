@@ -1,0 +1,206 @@
+
+			.wpforms-insert-form-button svg path {
+				fill: #0071a1;
+			}
+
+			.wpforms-insert-form-button:hover svg path {
+				fill: #016087;
+			}
+
+			#wpforms-modal-wrap {
+				display: none;
+				background-color: #fff;
+				-webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+				box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3);
+				width: 500px;
+				height: 285px;
+				overflow: hidden;
+				margin-left: -250px;
+				margin-top: -125px;
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				z-index: 100205;
+				-webkit-transition: height 0.2s, margin-top 0.2s;
+				transition: height 0.2s, margin-top 0.2s;
+			}
+
+			#wpforms-modal-backdrop {
+				display: none;
+				position: fixed;
+				top: 0;
+				left: 0;
+				right: 0;
+				bottom: 0;
+				min-height: 360px;
+				background: #000;
+				opacity: 0.7;
+				filter: alpha(opacity=70);
+				z-index: 100200;
+			}
+
+			#wpforms-modal {
+				position: relative;
+				height: 100%;
+			}
+
+			#wpforms-modal-title {
+				background: #fcfcfc;
+				border-bottom: 1px solid #dfdfdf;
+				height: 36px;
+				font-size: 18px;
+				font-weight: 600;
+				line-height: 36px;
+				padding: 0 36px 0 16px;
+				top: 0;
+				right: 0;
+				left: 0;
+			}
+
+			#wpforms-modal-close {
+				color: #666;
+				padding: 0;
+				position: absolute;
+				top: 0;
+				right: 0;
+				width: 36px;
+				height: 36px;
+				text-align: center;
+				background: none;
+				border: none;
+				cursor: pointer;
+			}
+
+			#wpforms-modal-close:before {
+				font: normal 20px/36px 'dashicons';
+				vertical-align: top;
+				speak: none;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				width: 36px;
+				height: 36px;
+				content: '\f158';
+			}
+
+			#wpforms-modal-close:hover,
+			#wpforms-modal-close:focus {
+				color: #2ea2cc;
+			}
+
+			#wpforms-modal-close:focus {
+				outline: none;
+				-webkit-box-shadow: 0 0 0 1px #5b9dd9,
+				0 0 2px 1px rgba(30, 140, 190, .8);
+				box-shadow: 0 0 0 1px #5b9dd9,
+				0 0 2px 1px rgba(30, 140, 190, .8);
+			}
+
+			#wpforms-modal-inner {
+				padding: 0 16px 50px;
+			}
+
+			#wpforms-modal-search-toggle:after {
+				display: inline-block;
+				font: normal 20px/1 'dashicons';
+				vertical-align: top;
+				speak: none;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+				content: '\f140';
+			}
+
+			#wpforms-modal-notice {
+				background-color: #d9edf7;
+				border: 1px solid #bce8f1;
+				color: #31708f;
+				padding: 10px;
+			}
+
+			#wpforms-modal #wpforms-modal-options {
+				padding: 8px 0 12px;
+			}
+
+			#wpforms-modal #wpforms-modal-options .wpforms-modal-inline {
+				display: inline-block;
+				margin: 0;
+				padding: 0 20px 0 0;
+			}
+
+			#wpforms-modal-select-form {
+				margin-bottom: 1em;
+				max-width: 100%;
+			}
+
+			#wpforms-modal .submitbox {
+				padding: 8px 16px;
+				background: #fcfcfc;
+				border-top: 1px solid #dfdfdf;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				right: 0;
+			}
+
+			#wpforms-modal-cancel {
+				line-height: 25px;
+				float: left;
+			}
+
+			#wpforms-modal-update {
+				line-height: 23px;
+				float: right;
+			}
+
+			#wpforms-modal-submit {
+				float: right;
+				margin-bottom: 0;
+			}
+
+			@media screen and ( max-width: 782px ) {
+				#wpforms-modal-wrap {
+					height: 280px;
+					margin-top: -140px;
+				}
+
+				#wpforms-modal-inner {
+					padding: 0 16px 60px;
+				}
+
+				#wpforms-modal-cancel {
+					line-height: 32px;
+				}
+			}
+
+			@media screen and ( max-width: 520px ) {
+				#wpforms-modal-wrap {
+					width: auto;
+					margin-left: 0;
+					left: 10px;
+					right: 10px;
+					max-width: 500px;
+				}
+			}
+
+			@media screen and ( max-height: 520px ) {
+				#wpforms-modal-wrap {
+					-webkit-transition: none;
+					transition: none;
+				}
+			}
+
+			@media screen and ( max-height: 290px ) {
+				#wpforms-modal-wrap {
+					height: auto;
+					margin-top: 0;
+					top: 10px;
+					bottom: 10px;
+				}
+
+				#wpforms-modal-inner {
+					overflow: auto;
+					height: -webkit-calc(100% - 92px);
+					height: calc(100% - 92px);
+					padding-bottom: 2px;
+				}
+			}
+		

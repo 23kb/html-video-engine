@@ -1,0 +1,3186 @@
+{
+  "slug": "admin-customize-fb-footer-menu",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "customizer-tab",
+      "event": "click",
+      "selector": ".control-tab[data-connected]",
+      "count": 2
+    },
+    {
+      "label": "customizer-back",
+      "event": "click",
+      "selector": "button.customize-section-back",
+      "count": 11
+    },
+    {
+      "label": "customizer-device",
+      "event": "click",
+      "selector": "div.devices button.preview-desktop",
+      "count": 3
+    },
+    {
+      "label": "customizer-collapse",
+      "event": "click",
+      "selector": "button.collapse-sidebar.button",
+      "count": 1
+    },
+    {
+      "label": "customizer-color-open",
+      "event": "click",
+      "selector": ".botiga-color-picker[data-default-color]",
+      "count": 2
+    },
+    {
+      "label": "customize-section-link",
+      "event": "click",
+      "selector": ".accordion-trigger",
+      "count": 90
+    },
+    {
+      "label": "customizer-help-toggle",
+      "event": "click",
+      "selector": "button.customize-help-toggle.dashicons",
+      "count": 1
+    },
+    {
+      "label": "customizer-responsive-device",
+      "event": "click",
+      "selector": "[data-device]",
+      "count": 13
+    },
+    {
+      "label": "customizer-dimensions-link",
+      "event": "click",
+      "selector": ".botiga-dimensions-link-btn",
+      "count": 6
+    },
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "button.button.change-theme",
+      "count": 12
+    },
+    {
+      "label": "customizer-style-guide",
+      "event": "click",
+      "selector": "button.botiga-style-guide-toggle-button",
+      "count": 1
+    },
+    {
+      "label": "bhfb-component-chip",
+      "event": "click",
+      "selector": ".bhfb-button[data-bhfb-focus-section][data-bhfb-id]",
+      "count": 68
+    },
+    {
+      "label": "bhfb-bottom-display",
+      "event": "click",
+      "selector": ".botiga-bhfb-bottom-display",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#accordion-section-botiga_style_guide_toggle",
+        "tag": "li",
+        "text": "Open Style Guide",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-default-input-116",
+        "tag": "button",
+        "text": "Discard changes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-trash_changeset",
+        "tag": "li",
+        "text": "Discard changes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-save-button-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#publish-settings",
+        "tag": "button",
+        "text": "Publish Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-bhfb-bottom-display",
+        "tag": "a",
+        "text": "Show Hide",
+        "count": 2,
+        "hidden": true,
+        "wired": "bhfb-bottom-display",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-bhfb-device-link",
+        "tag": "a",
+        "text": "Desktop",
+        "count": 4,
+        "hidden": false,
+        "wired": "customizer-responsive-device",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dimensions-link-btn",
+        "tag": "button",
+        "text": "Link values together",
+        "count": 6,
+        "hidden": false,
+        "wired": "customizer-dimensions-link",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-style-guide-toggle-button",
+        "tag": "button",
+        "text": "Open Style Guide",
+        "count": 1,
+        "hidden": true,
+        "wired": "customizer-style-guide",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#customize-control-botiga_section_fb_component__footer_menu_tabs",
+        "tag": "li",
+        "text": "General Style",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_brand_nav-1",
+        "tag": "div",
+        "text": "Edit widget: WooCommerce Brand Layered Nav Add widget: WooC…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_layered_nav-1",
+        "tag": "div",
+        "text": "Edit widget: Filter Products by Attribute Add widget: Filte…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#create-item-input-page",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-item-input-post",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-item-input-product",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-menu-item-name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-menu-item-submit",
+        "tag": "input",
+        "text": "Add to Menu",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-menu-item-type",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-menu-item-url",
+        "tag": "input",
+        "text": "https://",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-selected-changeset-status-control-input-119-draft",
+        "tag": "input",
+        "text": "draft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-selected-changeset-status-control-input-119-future",
+        "tag": "input",
+        "text": "future",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-selected-changeset-status-control-input-119-publish",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el118-customize-preview-link-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el121-date-time-day",
+        "tag": "input",
+        "text": "02",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el121-date-time-hour",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el121-date-time-meridian",
+        "tag": "select",
+        "text": "AM PM",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el121-date-time-minute",
+        "tag": "input",
+        "text": "46",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el121-date-time-month",
+        "tag": "select",
+        "text": "1-Jan 2-Feb 3-Mar 4-Apr 5-May 6-Jun 7-Jul 8-Aug 9-Sep 10-Oc…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el121-date-time-year",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-items-__i__",
+        "tag": "select",
+        "text": "1234567891011121314151617181920",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-show-author-__i__",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-show-date-__i__",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-show-summary-__i__",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-title-__i__",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-url-__i__",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#save",
+        "tag": "input",
+        "text": "Published",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#widget-archives-__i__-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-__i__-dropdown",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-block-__i__-content",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-block-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-botiga_widget_product_swatch_active_filter-__i__-include_cat",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-botiga_widget_product_swatch_active_filter-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-botiga_widget_product_swatch_filter-__i__-allow_selecting",
+        "tag": "select",
+        "text": "Multiple Single",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-botiga_widget_product_swatch_filter-__i__-attribute",
+        "tag": "select",
+        "text": "Body Finish Fabric Color Wood",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-botiga_widget_product_swatch_filter-__i__-display_available_variations",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-botiga_widget_product_swatch_filter-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-botiga_widget_product_swatch_filter-__i__-title",
+        "tag": "input",
+        "text": "Filter by",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-calendar-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-calendar-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-dropdown",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-hierarchical",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-custom_html-__i__-content",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-custom_html-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-custom_html-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-attachment_id",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-flac",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-loop",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-m4a",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-mp3",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-ogg",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-preload",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-wav",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-columns",
+        "tag": "input",
+        "text": "3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-ids",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-link_type",
+        "tag": "input",
+        "text": "post",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-orderby_random",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-size",
+        "tag": "input",
+        "text": "thumbnail",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-alt",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-attachment_id",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-caption",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-height",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-image_classes",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-image_title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_classes",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_rel",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_target_blank",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_type",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-size",
+        "tag": "input",
+        "text": "medium",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-width",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-attachment_id",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-content",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-flv",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-loop",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-m4v",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-mp4",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-ogv",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-preload",
+        "tag": "input",
+        "text": "metadata",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-webm",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-meta-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-meta-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-__i__-nav_menu",
+        "tag": "select",
+        "text": "— Select — Main",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-pages-__i__-exclude",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-pages-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-pages-__i__-sortby",
+        "tag": "select",
+        "text": "Page title Page order Page ID",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-pages-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-__i__-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-__i__-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-__i__-show_date",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-rss-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-search-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-search-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tag_cloud-__i__-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tag_cloud-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tag_cloud-__i__-taxonomy",
+        "tag": "select",
+        "text": "Categories Tags Link Categories Brands Product categories P…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tag_cloud-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-filter",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-text",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-visual",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_description-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_description-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-columns",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-exclude",
+        "tag": "input",
+        "text": "None",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-fluid_columns",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-hide_empty",
+        "tag": "select",
+        "text": "Yes No",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-number",
+        "tag": "input",
+        "text": "All",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-orderby",
+        "tag": "select",
+        "text": "Name Count",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_brand_nav-__i__-display_type",
+        "tag": "select",
+        "text": "List Dropdown",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_brand_nav-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_brand_nav-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_layered_nav_filters-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_layered_nav_filters-__i__-title",
+        "tag": "input",
+        "text": "Active filters",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_layered_nav-__i__-attribute",
+        "tag": "select",
+        "text": "body-finish fabric-color wood",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_layered_nav-__i__-display_type",
+        "tag": "select",
+        "text": "List Dropdown",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_layered_nav-__i__-query_type",
+        "tag": "select",
+        "text": "AND OR",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_layered_nav-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_layered_nav-__i__-title",
+        "tag": "input",
+        "text": "Filter by",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_price_filter-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_price_filter-__i__-title",
+        "tag": "input",
+        "text": "Filter by price",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-count",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-dropdown",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-hide_empty",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-hierarchical",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-max_depth",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-orderby",
+        "tag": "select",
+        "text": "Category order Name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-show_children_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-title",
+        "tag": "input",
+        "text": "Product categories",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_search-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_search-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_tag_cloud-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_tag_cloud-__i__-title",
+        "tag": "input",
+        "text": "Product tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-hide_free",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-order",
+        "tag": "select",
+        "text": "ASC DESC",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-orderby",
+        "tag": "select",
+        "text": "Menu order Date Price Random Sales",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-show",
+        "tag": "select",
+        "text": "All products Featured products On-sale products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-show_hidden",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-title",
+        "tag": "input",
+        "text": "Products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_rating_filter-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_rating_filter-__i__-title",
+        "tag": "input",
+        "text": "Average rating",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_recent_reviews-__i__-number",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_recent_reviews-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_recent_reviews-__i__-title",
+        "tag": "input",
+        "text": "Recent reviews",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_recently_viewed_products-__i__-number",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_recently_viewed_products-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_recently_viewed_products-__i__-title",
+        "tag": "input",
+        "text": "Recently Viewed Products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_top_rated_products-__i__-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_top_rated_products-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_top_rated_products-__i__-title",
+        "tag": "input",
+        "text": "Top rated products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_widget_cart-__i__-hide_if_empty",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_widget_cart-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_widget_cart-__i__-title",
+        "tag": "input",
+        "text": "Cart",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-form_id",
+        "tag": "select",
+        "text": "Select your formContact Form",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-show_desc",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-show_title",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widgets-search",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-color-input",
+        "tag": "input",
+        "text": "#212121",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dimensions-input",
+        "tag": "input",
+        "text": "",
+        "count": 24,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dimensions-unit",
+        "tag": "select",
+        "text": "px % rem em vw vh",
+        "count": 6,
+        "hidden": false
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#accordion-panel-botiga_panel_footer",
+        "tag": "li",
+        "text": "Footer",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-botiga_panel_header",
+        "tag": "li",
+        "text": "Header",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-botiga_panel_hooks",
+        "tag": "li",
+        "text": "Hooks",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-botiga_panel_shop_archive",
+        "tag": "li",
+        "text": "Product Catalog",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-botiga_panel_single_product",
+        "tag": "li",
+        "text": "Single Product",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-botiga_panel_typography",
+        "tag": "li",
+        "text": "Typography",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-nav_menus",
+        "tag": "li",
+        "text": "Menus",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-widgets",
+        "tag": "li",
+        "text": "Widgets",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-woocommerce",
+        "tag": "li",
+        "text": "WooCommerce",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-background_image",
+        "tag": "li",
+        "text": "Background",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_blog",
+        "tag": "li",
+        "text": "Blog",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_breadcrumbs",
+        "tag": "li",
+        "text": "Advanced Breadcrumbs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_core",
+        "tag": "li",
+        "text": "Core",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_elements",
+        "tag": "li",
+        "text": "Elements",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_extension",
+        "tag": "li",
+        "text": "Extensions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__above_footer_row_column1",
+        "tag": "li",
+        "text": "Column 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__above_footer_row_column2",
+        "tag": "li",
+        "text": "Column 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__above_footer_row_column3",
+        "tag": "li",
+        "text": "Column 3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__above_footer_row_column4",
+        "tag": "li",
+        "text": "Column 4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__above_footer_row_column5",
+        "tag": "li",
+        "text": "Column 5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__above_footer_row_column6",
+        "tag": "li",
+        "text": "Column 6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__below_footer_row_column1",
+        "tag": "li",
+        "text": "Column 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__below_footer_row_column2",
+        "tag": "li",
+        "text": "Column 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__below_footer_row_column3",
+        "tag": "li",
+        "text": "Column 3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__below_footer_row_column4",
+        "tag": "li",
+        "text": "Column 4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__below_footer_row_column5",
+        "tag": "li",
+        "text": "Column 5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__below_footer_row_column6",
+        "tag": "li",
+        "text": "Column 6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__main_footer_row_column1",
+        "tag": "li",
+        "text": "Column 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__main_footer_row_column2",
+        "tag": "li",
+        "text": "Column 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__main_footer_row_column3",
+        "tag": "li",
+        "text": "Column 3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__main_footer_row_column4",
+        "tag": "li",
+        "text": "Column 4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__main_footer_row_column5",
+        "tag": "li",
+        "text": "Column 5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_footer_row__main_footer_row_column6",
+        "tag": "li",
+        "text": "Column 6",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_google_autocomplete_section",
+        "tag": "li",
+        "text": "Google Autocomplete",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_login_register_popup",
+        "tag": "li",
+        "text": "Login/Register Popup",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_navigation",
+        "tag": "li",
+        "text": "Navigation",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_quicklinks",
+        "tag": "li",
+        "text": "Quick Links",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_adtcnotif",
+        "tag": "li",
+        "text": "Add To Cart Notifications",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_blog_archives",
+        "tag": "li",
+        "text": "Blog Archives",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_blog_singles",
+        "tag": "li",
+        "text": "Single Posts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_buttons",
+        "tag": "li",
+        "text": "Buttons",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_buy_now",
+        "tag": "li",
+        "text": "Buy Now",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_catalog_general",
+        "tag": "li",
+        "text": "General",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_above_footer_row",
+        "tag": "li",
+        "text": "Top Row",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_below_footer_row",
+        "tag": "li",
+        "text": "Bottom Row",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_component__button",
+        "tag": "li",
+        "text": "Button 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_component__button2",
+        "tag": "li",
+        "text": "Button 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_component__copyright",
+        "tag": "li",
+        "text": "Copyright",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_component__footer_menu",
+        "tag": "li",
+        "text": "Footer Menu",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_component__html",
+        "tag": "li",
+        "text": "HTML",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_component__html2",
+        "tag": "li",
+        "text": "HTML 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_component__shortcode",
+        "tag": "li",
+        "text": "Shortcode",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_component__social",
+        "tag": "li",
+        "text": "Social Icons",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_component__widget1",
+        "tag": "li",
+        "text": "Widget Area 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_component__widget2",
+        "tag": "li",
+        "text": "Widget Area 2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_component__widget3",
+        "tag": "li",
+        "text": "Widget Area 3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_component__widget4",
+        "tag": "li",
+        "text": "Widget Area 4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_main_footer_row",
+        "tag": "li",
+        "text": "Main Row",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_fb_wrapper",
+        "tag": "li",
+        "text": "Footer Builder",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_free_shipping_progress_bar",
+        "tag": "li",
+        "text": "Free Shipping Progress Bar",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_layout",
+        "tag": "li",
+        "text": "Layout",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_modal_popup",
+        "tag": "li",
+        "text": "Modal Popup",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_product_swatches",
+        "tag": "li",
+        "text": "Variation Swatches",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_product_swatches_swatch_button",
+        "tag": "li",
+        "text": "'Button' Swatch Style",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_product_swatches_swatch_color",
+        "tag": "li",
+        "text": "'Color' Swatch Style",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_product_swatches_swatch_image",
+        "tag": "li",
+        "text": "'Image' Swatch Style",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_product_swatches_swatch_select",
+        "tag": "li",
+        "text": "'Select' Swatch Style",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_scrolltotop",
+        "tag": "li",
+        "text": "Scroll to Top",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_shop_cart",
+        "tag": "li",
+        "text": "Cart",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_shop_search",
+        "tag": "li",
+        "text": "Search",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_sidebar",
+        "tag": "li",
+        "text": "Custom Sidebar",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_wishlist",
+        "tag": "li",
+        "text": "Wishlist",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_site_styles",
+        "tag": "li",
+        "text": "Site Styles",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-colors",
+        "tag": "li",
+        "text": "Colors",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-custom_css",
+        "tag": "li",
+        "text": "Additional CSS",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-publish_settings",
+        "tag": "li",
+        "text": "Publish Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-shop_single_recently_viewed_products_section",
+        "tag": "li",
+        "text": "Recently Viewed Products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-shop_single_related_products_section",
+        "tag": "li",
+        "text": "Related Products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-shop_single_upsell_products_section",
+        "tag": "li",
+        "text": "Upsell Products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-side_mini_cart_floating_icon_section",
+        "tag": "li",
+        "text": "Floating Mini Cart Icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-static_front_page",
+        "tag": "li",
+        "text": "Homepage Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-themes",
+        "tag": "li",
+        "text": "Active theme Botiga Change",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-footer-1",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-footer-2",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-footer-3",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-footer-4",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-shop-sidebar-1",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-sidebar-1",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-woocommerce_checkout",
+        "tag": "li",
+        "text": "Checkout",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-woocommerce_product_images",
+        "tag": "li",
+        "text": "Product Images",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-woocommerce_store_notice",
+        "tag": "li",
+        "text": "Store Notice",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-page",
+        "tag": "div",
+        "text": "Pages No items Add Page Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-page-content",
+        "tag": "div",
+        "text": "Add Page Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-post",
+        "tag": "div",
+        "text": "Posts No items Add Post Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-post-content",
+        "tag": "div",
+        "text": "Add Post Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-product",
+        "tag": "div",
+        "text": "Products No items Add new product Add Please enter an item …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-product-content",
+        "tag": "div",
+        "text": "Add new product Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-search",
+        "tag": "div",
+        "text": "Search Menu Items The search results will be updated as you…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-category",
+        "tag": "div",
+        "text": "Categories No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-category-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-post_format",
+        "tag": "div",
+        "text": "Formats No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-post_format-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-post_tag",
+        "tag": "div",
+        "text": "Tags No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-post_tag-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-product_brand",
+        "tag": "div",
+        "text": "Brands No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-product_brand-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-product_cat",
+        "tag": "div",
+        "text": "Product categories No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-product_cat-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-product_tag",
+        "tag": "div",
+        "text": "Product tags No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-product_tag-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-woocommerce_nav-woocommerce_endpoint",
+        "tag": "div",
+        "text": "WooCommerce Endpoints No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-woocommerce_nav-woocommerce_endpoint-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-info",
+        "tag": "div",
+        "text": "You are customizing Fernhill Home An unexpected error occur…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#new-custom-menu-item",
+        "tag": "div",
+        "text": "Custom Links URL Please provide a valid link. Link Text The…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#new-custom-menu-item-content",
+        "tag": "div",
+        "text": "URL Please provide a valid link. Link Text The link text ca…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sub-accordion-panel-botiga_panel_footer",
+        "tag": "ul",
+        "text": "Back You are customizing Footer Footer Builder Top Row Main…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sub-accordion-section-botiga_section_fb_component__footer_menu",
+        "tag": "ul",
+        "text": "Back Footer Menu General Style Text Color NAVIGATION MENU C…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sub-accordion-section-publish_settings",
+        "tag": "ul",
+        "text": "Back Updating Publish Settings Action Publish Save Draft Sc…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#available-menu-items",
+        "tag": "div",
+        "text": "Back Customizing ▸ Menus Add Menu Items Search Menu Items T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-widgets",
+        "tag": "div",
+        "text": "Back Customizing ▸ Widgets Add a Widget Search Widgets Clea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-widgets-filter",
+        "tag": "div",
+        "text": "Search Widgets Clear Results The search results will be upd…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-widgets-list",
+        "tag": "div",
+        "text": "Edit widget: Active Product Filters Add widget: Active Prod…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-bhfb-elements",
+        "tag": "div",
+        "text": "Secondary MenuSocialButtonContact InfoHTMLLogin/RegisterBut…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-block-editor-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-style-guide-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-input-page-error",
+        "tag": "span",
+        "text": "Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-input-post-error",
+        "tag": "span",
+        "text": "Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-input-product-error",
+        "tag": "span",
+        "text": "Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-name-error",
+        "tag": "span",
+        "text": "The link text cannot be empty.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-url-error",
+        "tag": "span",
+        "text": "Please provide a valid link.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-changeset_preview_link",
+        "tag": "li",
+        "text": "Share Preview Link See how changes would look live on your …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-changeset_scheduled_date",
+        "tag": "li",
+        "text": "Schedule your customization changes to publish (\"go live\") …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-changeset_status",
+        "tag": "li",
+        "text": "Action Publish Save Draft Schedule",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-footer_menu",
+        "tag": "li",
+        "text": "Text Color",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-footer_menu_margin",
+        "tag": "li",
+        "text": "WRAPPER MARGIN px % rem em vw vh TOP RIGHT BOTTOM LEFT",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-footer_menu_padding",
+        "tag": "li",
+        "text": "WRAPPER PADDING px % rem em vw vh TOP RIGHT BOTTOM LEFT",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-footer_menu_visibility",
+        "tag": "li",
+        "text": "VISIBILITY Visible Hidden",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-footer_navigation_menu_link",
+        "tag": "li",
+        "text": "NAVIGATION MENU Configure menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-controls",
+        "tag": "form",
+        "text": "Close Back Footer Menu General Style Text Color NAVIGATION …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-footer-actions",
+        "tag": "div",
+        "text": "Hide Controls Desktop Tablet Mobile",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-header-actions",
+        "tag": "div",
+        "text": "Close",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-notifications-area",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-outer-theme-controls",
+        "tag": "div",
+        "text": "Back Back Back Back Back Back Back Updating Publish Setting…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-preview",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-sidebar-outer-content",
+        "tag": "div",
+        "text": "Back Back Back Back Back Back Back Updating Publish Setting…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-theme-controls",
+        "tag": "div",
+        "text": "Back Footer Menu General Style Text Color NAVIGATION MENU C…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#global-styles-css-custom-properties-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-1",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-1_woocommerce_layered_nav_filters-__i__",
+        "tag": "div",
+        "text": "Edit widget: Active Product Filters Add widget: Active Prod…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-10_custom_html-__i__",
+        "tag": "div",
+        "text": "Edit widget: Custom HTML Add widget: Custom HTML Edit Add C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-11_woocommerce_layered_nav-__i__",
+        "tag": "div",
+        "text": "Edit widget: Filter Products by Attribute Add widget: Filte…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-12_woocommerce_price_filter-__i__",
+        "tag": "div",
+        "text": "Edit widget: Filter Products by Price Add widget: Filter Pr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-13_woocommerce_rating_filter-__i__",
+        "tag": "div",
+        "text": "Edit widget: Filter Products by Rating Add widget: Filter P…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-14_media_gallery-__i__",
+        "tag": "div",
+        "text": "Edit widget: Gallery Add widget: Gallery Edit Add Gallery G…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-15_media_image-__i__",
+        "tag": "div",
+        "text": "Edit widget: Image Add widget: Image Edit Add Image Image D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-16_meta-__i__",
+        "tag": "div",
+        "text": "Edit widget: Meta Add widget: Meta Edit Add Meta Meta Title…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-17_nav_menu-__i__",
+        "tag": "div",
+        "text": "Edit widget: Navigation Menu Add widget: Navigation Menu Ed…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-18_pages-__i__",
+        "tag": "div",
+        "text": "Edit widget: Pages Add widget: Pages Edit Add Pages Pages T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-19_woocommerce_product_categories-__i__",
+        "tag": "div",
+        "text": "Edit widget: Product Categories Add widget: Product Categor…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-2_archives-__i__",
+        "tag": "div",
+        "text": "Edit widget: Archives Add widget: Archives Edit Add Archive…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-20_woocommerce_top_rated_products-__i__",
+        "tag": "div",
+        "text": "Edit widget: Products by Rating list Add widget: Products b…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-21_woocommerce_product_search-__i__",
+        "tag": "div",
+        "text": "Edit widget: Product Search Add widget: Product Search Edit…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-22_woocommerce_products-__i__",
+        "tag": "div",
+        "text": "Edit widget: Products list Add widget: Products list Edit A…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-23_woocommerce_product_tag_cloud-__i__",
+        "tag": "div",
+        "text": "Edit widget: Product Tag Cloud Add widget: Product Tag Clou…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-24_recent-comments-__i__",
+        "tag": "div",
+        "text": "Edit widget: Recent Comments Add widget: Recent Comments Ed…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-25_woocommerce_recently_viewed_products-__i__",
+        "tag": "div",
+        "text": "Edit widget: Recently Viewed Products list Add widget: Rece…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-26_recent-posts-__i__",
+        "tag": "div",
+        "text": "Edit widget: Recent Posts Add widget: Recent Posts Edit Add…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-27_woocommerce_recent_reviews-__i__",
+        "tag": "div",
+        "text": "Edit widget: Recent Product Reviews Add widget: Recent Prod…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-28_rss-__i__",
+        "tag": "div",
+        "text": "Edit widget: RSS Add widget: RSS Edit Add RSS RSS Enter the…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-29_search-__i__",
+        "tag": "div",
+        "text": "Edit widget: Search Add widget: Search Edit Add Search Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-3_media_audio-__i__",
+        "tag": "div",
+        "text": "Edit widget: Audio Add widget: Audio Edit Add Audio Audio D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-30_tag_cloud-__i__",
+        "tag": "div",
+        "text": "Edit widget: Tag Cloud Add widget: Tag Cloud Edit Add Tag C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-31_text-__i__",
+        "tag": "div",
+        "text": "Edit widget: Text Add widget: Text Edit Add Text Text Delet…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-32_media_video-__i__",
+        "tag": "div",
+        "text": "Edit widget: Video Add widget: Video Edit Add Video Video D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-33_wc_brands_brand_description-__i__",
+        "tag": "div",
+        "text": "Edit widget: WooCommerce Brand Description Add widget: WooC…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-34_woocommerce_brand_nav-__i__",
+        "tag": "div",
+        "text": "Edit widget: WooCommerce Brand Layered Nav Add widget: WooC…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-35_wc_brands_brand_thumbnails-__i__",
+        "tag": "div",
+        "text": "Edit widget: WooCommerce Brand Thumbnails Add widget: WooCo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-36_wpforms-widget-__i__",
+        "tag": "div",
+        "text": "Edit widget: WPForms Add widget: WPForms Edit Add WPForms W…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-4_block-__i__",
+        "tag": "div",
+        "text": "Edit widget: Block Add widget: Block Edit Add Block Block B…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-5_botiga_widget_product_swatch_active_filter-__i__",
+        "tag": "div",
+        "text": "Edit widget: Botiga - Active Product Filters Add widget: Bo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-6_botiga_widget_product_swatch_filter-__i__",
+        "tag": "div",
+        "text": "Edit widget: Botiga - Filter Products by Attribute Add widg…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-7_calendar-__i__",
+        "tag": "div",
+        "text": "Edit widget: Calendar Add widget: Calendar Edit Add Calenda…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-8_woocommerce_widget_cart-__i__",
+        "tag": "div",
+        "text": "Edit widget: Cart Add widget: Cart Edit Add Cart Cart Title…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-9_categories-__i__",
+        "tag": "div",
+        "text": "Edit widget: Categories Add widget: Categories Edit Add Cat…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-archives-1",
+        "tag": "div",
+        "text": "Edit widget: Archives Add widget: Archives Edit Add Archive…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-block-2",
+        "tag": "div",
+        "text": "Edit widget: Block Add widget: Block Edit Add Block Block B…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-botiga_widget_product_swatch_active_filter-1",
+        "tag": "div",
+        "text": "Edit widget: Botiga - Active Product Filters Add widget: Bo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-botiga_widget_product_swatch_filter-1",
+        "tag": "div",
+        "text": "Edit widget: Botiga - Filter Products by Attribute Add widg…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-calendar-1",
+        "tag": "div",
+        "text": "Edit widget: Calendar Add widget: Calendar Edit Add Calenda…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-categories-1",
+        "tag": "div",
+        "text": "Edit widget: Categories Add widget: Categories Edit Add Cat…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-custom_html-1",
+        "tag": "div",
+        "text": "Edit widget: Custom HTML Add widget: Custom HTML Edit Add C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-media_audio-1",
+        "tag": "div",
+        "text": "Edit widget: Audio Add widget: Audio Edit Add Audio Audio D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-media_gallery-1",
+        "tag": "div",
+        "text": "Edit widget: Gallery Add widget: Gallery Edit Add Gallery G…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-media_image-1",
+        "tag": "div",
+        "text": "Edit widget: Image Add widget: Image Edit Add Image Image D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-media_video-1",
+        "tag": "div",
+        "text": "Edit widget: Video Add widget: Video Edit Add Video Video D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-meta-1",
+        "tag": "div",
+        "text": "Edit widget: Meta Add widget: Meta Edit Add Meta Meta Title…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-nav_menu-1",
+        "tag": "div",
+        "text": "Edit widget: Navigation Menu Add widget: Navigation Menu Ed…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-pages-1",
+        "tag": "div",
+        "text": "Edit widget: Pages Add widget: Pages Edit Add Pages Pages T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-recent-comments-1",
+        "tag": "div",
+        "text": "Edit widget: Recent Comments Add widget: Recent Comments Ed…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-recent-posts-1",
+        "tag": "div",
+        "text": "Edit widget: Recent Posts Add widget: Recent Posts Edit Add…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-rss-1",
+        "tag": "div",
+        "text": "Edit widget: RSS Add widget: RSS Edit Add RSS RSS Enter the…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-search-1",
+        "tag": "div",
+        "text": "Edit widget: Search Add widget: Search Edit Add Search Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-tag_cloud-1",
+        "tag": "div",
+        "text": "Edit widget: Tag Cloud Add widget: Tag Cloud Edit Add Tag C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-text-1",
+        "tag": "div",
+        "text": "Edit widget: Text Add widget: Text Edit Add Text Text Delet…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-wc_brands_brand_description-1",
+        "tag": "div",
+        "text": "Edit widget: WooCommerce Brand Description Add widget: WooC…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-wc_brands_brand_thumbnails-1",
+        "tag": "div",
+        "text": "Edit widget: WooCommerce Brand Thumbnails Add widget: WooCo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_layered_nav_filters-1",
+        "tag": "div",
+        "text": "Edit widget: Active Product Filters Add widget: Active Prod…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_price_filter-1",
+        "tag": "div",
+        "text": "Edit widget: Filter Products by Price Add widget: Filter Pr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_product_categories-1",
+        "tag": "div",
+        "text": "Edit widget: Product Categories Add widget: Product Categor…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_product_search-1",
+        "tag": "div",
+        "text": "Edit widget: Product Search Add widget: Product Search Edit…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_product_tag_cloud-1",
+        "tag": "div",
+        "text": "Edit widget: Product Tag Cloud Add widget: Product Tag Clou…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_products-1",
+        "tag": "div",
+        "text": "Edit widget: Products list Add widget: Products list Edit A…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_rating_filter-1",
+        "tag": "div",
+        "text": "Edit widget: Filter Products by Rating Add widget: Filter P…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_recent_reviews-1",
+        "tag": "div",
+        "text": "Edit widget: Recent Product Reviews Add widget: Recent Prod…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_recently_viewed_products-1",
+        "tag": "div",
+        "text": "Edit widget: Recently Viewed Products list Add widget: Rece…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_top_rated_products-1",
+        "tag": "div",
+        "text": "Edit widget: Products by Rating list Add widget: Products b…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_widget_cart-1",
+        "tag": "div",
+        "text": "Edit widget: Cart Add widget: Cart Edit Add Cart Cart Title…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-wpforms-widget-1",
+        "tag": "div",
+        "text": "Edit widget: WPForms Add widget: WPForms Edit Add WPForms W…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widgets-left",
+        "tag": "div",
+        "text": "Back Customizing ▸ Widgets Add a Widget Search Widgets Clea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#widgets-right",
+        "tag": "div",
+        "text": "Back Footer Menu General Style Text Color NAVIGATION MENU C…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#widgets-search-desc",
+        "tag": "p",
+        "text": "The search results will be updated as you type.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".bhfb-active",
+        "tag": "body",
+        "text": "Close Back Footer Menu General Style Text Color NAVIGATION …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-bhfb-above-row",
+        "tag": "div",
+        "text": "TOP ROW",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-bhfb-below-row",
+        "tag": "div",
+        "text": "Copyright Social",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-bhfb-header",
+        "tag": "div",
+        "text": "Desktop Tablet/Mobile Widget Area 1 Widget Area 2 Widget Ar…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-bhfb-main-row",
+        "tag": "div",
+        "text": "Widget Area 1 Widget Area 2 Widget Area 3 Widget Area 4",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dimensions-header",
+        "tag": "div",
+        "text": "px % rem em vw vh",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dimensions-icon-link",
+        "tag": "i",
+        "text": "",
+        "count": 6,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dimensions-input-label",
+        "tag": "label",
+        "text": "TOP",
+        "count": 24,
+        "hidden": false
+      }
+    ]
+  }
+}

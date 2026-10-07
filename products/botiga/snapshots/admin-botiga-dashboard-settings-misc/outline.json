@@ -1,0 +1,775 @@
+{
+  "slug": "admin-botiga-dashboard-settings-misc",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "dashboard-tab",
+      "event": "click",
+      "selector": ".botiga-dashboard-tabs-nav-link[data-tab-to]",
+      "count": 14
+    },
+    {
+      "label": "dashboard-notifications-toggle",
+      "event": "click",
+      "selector": "a.botiga-dashboard-theme-notifications",
+      "count": 1
+    },
+    {
+      "label": "dashboard-notifications-close",
+      "event": "click",
+      "selector": "a.botiga-dashboard-notifications-sidebar-close",
+      "count": 1
+    },
+    {
+      "label": "customize-section-link",
+      "event": "click",
+      "selector": ".botiga-dashboard-customize-link.botiga-dashboard-link",
+      "count": 50
+    },
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "a.botiga-dashboard-top-bar-logo",
+      "count": 134
+    },
+    {
+      "label": "tb-card-actions",
+      "event": "click",
+      "selector": ".bt-template-card.bt-template-card--create-new[data-wp-c16t][data-wp-component]",
+      "count": 11
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dahsboard-modules-activate-all",
+        "tag": "a",
+        "text": "Activate All",
+        "count": 1,
+        "hidden": true,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dahsboard-modules-deactivate-all",
+        "tag": "a",
+        "text": "Deactivate All",
+        "count": 1,
+        "hidden": true,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-content-expand-content",
+        "tag": "div",
+        "text": "To get your key, please login to your aThemes account. Unde…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-content-expand-link",
+        "tag": "a",
+        "text": "Instructions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-external-link",
+        "tag": "a",
+        "text": "Go To Customizer",
+        "count": 2,
+        "hidden": true,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-footer-link",
+        "tag": "a",
+        "text": "Botiga",
+        "count": 1,
+        "hidden": false,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-link-danger",
+        "tag": "a",
+        "text": "Deactivate",
+        "count": 30,
+        "hidden": true,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-link-primary",
+        "tag": "a",
+        "text": "Relaunch Wizard",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-link-success",
+        "tag": "a",
+        "text": "Activate",
+        "count": 2,
+        "hidden": true,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-notifications-sidebar-close",
+        "tag": "a",
+        "text": "Close the sidebar",
+        "count": 1,
+        "hidden": true,
+        "wired": "dashboard-notifications-close",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-option-switcher",
+        "tag": "a",
+        "text": "Deactivate",
+        "count": 3,
+        "hidden": false,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-pro-tooltip",
+        "tag": "a",
+        "text": "Edit",
+        "count": 18,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-tabs-nav-link",
+        "tag": "a",
+        "text": "Botiga",
+        "count": 15,
+        "hidden": true,
+        "wired": "dashboard-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-theme-notifications",
+        "tag": "a",
+        "text": "1",
+        "count": 1,
+        "hidden": false,
+        "wired": "dashboard-notifications-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-theme-website",
+        "tag": "a",
+        "text": "Website",
+        "count": 1,
+        "hidden": false,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dashboard-white-label-toggle",
+        "tag": "div",
+        "text": "Enable White Label Replace all Botiga branding and links wi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-install-plugin",
+        "tag": "button",
+        "text": "Activate WPVibe",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-license-button",
+        "tag": "button",
+        "text": "Deactivate",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-wl-modal-close",
+        "tag": "button",
+        "text": "Close",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-wl-modal-cta",
+        "tag": "a",
+        "text": "Upgrade to Agency",
+        "count": 1,
+        "hidden": true,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".bt-font-weight-500",
+        "tag": "a",
+        "text": "Submit a Review",
+        "count": 4,
+        "hidden": true,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".bt-presets-list__add-button",
+        "tag": "a",
+        "text": "+ Add new preset",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": ".botiga-dashboard-tab-content",
+        "tag": "div",
+        "text": "No notifications found",
+        "count": 17,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-tabs-nav-item",
+        "tag": "li",
+        "text": "Botiga",
+        "count": 15,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#botiga_pro_nonce",
+        "tag": "input",
+        "text": "9e6c2b17c2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_wl_awl_agency_name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_wl_awl_agency_url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_wl_awl_theme_description",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_wl_awl_theme_name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_wl_awl_theme_screenshot",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-input-control-0",
+        "tag": "input",
+        "text": "15",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-radio-control-0-0",
+        "tag": "input",
+        "text": "before-filters",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-radio-control-0-1",
+        "tag": "input",
+        "text": "after-filters",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-radio-control-0-2",
+        "tag": "input",
+        "text": "above-products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-radio-control-1-0",
+        "tag": "input",
+        "text": "rounded",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-radio-control-1-1",
+        "tag": "input",
+        "text": "square",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-radio-control-2-0",
+        "tag": "input",
+        "text": "disabled",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-radio-control-2-1",
+        "tag": "input",
+        "text": "noindex,nofollow",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-radio-control-2-2",
+        "tag": "input",
+        "text": "noindex,follow",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-radio-control-2-3",
+        "tag": "input",
+        "text": "index,nofollow",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-radio-control-2-4",
+        "tag": "input",
+        "text": "index,follow",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-toggle-control-0",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-toggle-control-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-toggle-control-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-toggle-control-3",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-toggle-control-4",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-toggle-control-5",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#botiga-wl-modal",
+        "tag": "div",
+        "text": "This White Label is in Agency Plan We're sorry, this White …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-wl-modal-title",
+        "tag": "h3",
+        "text": "This White Label is in Agency Plan",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-card-section",
+        "tag": "div",
+        "text": "Site Wizard Relaunch the site wizard to set up a fresh temp…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-pro-dashboard-section",
+        "tag": "div",
+        "text": "Do more with Botiga Pro Activate All Deactivate All Product…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clip0_1_1797",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clip0_claude",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#clip0_cursor",
+        "tag": "clippath",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating your website with Botiga.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inspector-input-control-0__help",
+        "tag": "p",
+        "text": "Controls the size for the color swatches.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-radio-control-0__help",
+        "tag": "p",
+        "text": "The position of the active filters.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-radio-control-1__help",
+        "tag": "p",
+        "text": "Controls the style for the color swatches.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-radio-control-2__help",
+        "tag": "p",
+        "text": "Which tag to use in the filtered pages.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-toggle-control-0__help",
+        "tag": "p",
+        "text": "Hide terms that have no products.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-toggle-control-1__help",
+        "tag": "p",
+        "text": "Displays a \"clear\" button above each filter in the preset.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-toggle-control-2__help",
+        "tag": "p",
+        "text": "Displays the active filters. It shows the current filters s…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-toggle-control-3__help",
+        "tag": "p",
+        "text": "Scrolls to the top of the page when a filter is selected.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-toggle-control-4__help",
+        "tag": "p",
+        "text": "Enable to add 'robots' meta tag to the head of the page whe…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inspector-toggle-control-5__help",
+        "tag": "p",
+        "text": "Add rel=\"nofollow\" to the filter anchors.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dahsboard-modules-global-actions",
+        "tag": "div",
+        "text": "Activate All Deactivate All",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-box-link",
+        "tag": "div",
+        "text": "Relaunch Wizard",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-card-header",
+        "tag": "div",
+        "text": "Customize your site Go To Customizer",
+        "count": 8,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-card-inner-header",
+        "tag": "div",
+        "text": "Filter Presets The list of filter presets which you can use…",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-container",
+        "tag": "div",
+        "text": "Hello, Maya Ellison Welcome to Botiga PRO Starter Site is i…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dashboard-hero-actions",
+        "tag": "div",
+        "text": "Start Customizing",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dashboard-hero-content",
+        "tag": "div",
+        "text": "Hello, Maya Ellison Welcome to Botiga PRO Starter Site is i…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dashboard-module-card-header",
+        "tag": "div",
+        "text": "Site Wizard Relaunch the site wizard to set up a fresh temp…",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-module-card-header-actions",
+        "tag": "div",
+        "text": "Relaunch Wizard",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-notification-content",
+        "tag": "div",
+        "text": "No notifications found",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-notifications-sidebar",
+        "tag": "div",
+        "text": "New Update Check the latest news from Botiga Botiga Botiga …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-notifications-sidebar-header",
+        "tag": "div",
+        "text": "New Update Check the latest news from Botiga",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-notifications-sidebar-header-content",
+        "tag": "div",
+        "text": "New Update Check the latest news from Botiga",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-row",
+        "tag": "div",
+        "text": "Home Starter Sites Settings",
+        "count": 16,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dashboard-white-label",
+        "tag": "div",
+        "text": "White Label Enable White Label Replace all Botiga branding …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-white-label-header",
+        "tag": "div",
+        "text": "White Label",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-dashboard-white-label-option",
+        "tag": "div",
+        "text": "Your Agency Name",
+        "count": 5,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-license-key-input",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-wpvibe-banner-actions",
+        "tag": "div",
+        "text": "Activate WPVibe",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-wpvibe-banner-content",
+        "tag": "div",
+        "text": "WordPress Abilities API + Botiga Use Botiga With Your Favor…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".bt-navigation-link",
+        "tag": "li",
+        "text": "All templates",
+        "count": 12,
+        "hidden": true
+      },
+      {
+        "sel": ".bt-presets-list__item-actions",
+        "tag": "div",
+        "text": "Edit Remove",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

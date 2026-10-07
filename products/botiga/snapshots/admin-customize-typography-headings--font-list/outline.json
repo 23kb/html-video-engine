@@ -1,0 +1,7283 @@
+{
+  "slug": "admin-customize-typography-headings--font-list",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "customizer-back",
+      "event": "click",
+      "selector": "button.customize-section-back",
+      "count": 11
+    },
+    {
+      "label": "customizer-device",
+      "event": "click",
+      "selector": "div.devices button.preview-desktop",
+      "count": 3
+    },
+    {
+      "label": "customizer-collapse",
+      "event": "click",
+      "selector": "button.collapse-sidebar.button",
+      "count": 1
+    },
+    {
+      "label": "customize-section-link",
+      "event": "click",
+      "selector": ".accordion-trigger",
+      "count": 60
+    },
+    {
+      "label": "customizer-help-toggle",
+      "event": "click",
+      "selector": ".customize-help-toggle.dashicons",
+      "count": 2
+    },
+    {
+      "label": "customizer-responsive-device",
+      "event": "click",
+      "selector": "[data-device]",
+      "count": 22
+    },
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "button.button.change-theme",
+      "count": 12
+    },
+    {
+      "label": "customizer-style-guide",
+      "event": "click",
+      "selector": "button.botiga-style-guide-toggle-button",
+      "count": 1
+    },
+    {
+      "label": "select2-open",
+      "event": "click",
+      "selector": ".select2-selection.select2-selection--single",
+      "count": 3
+    },
+    {
+      "label": "bhfb-component-chip",
+      "event": "click",
+      "selector": ".bhfb-button[data-bhfb-focus-section][data-bhfb-id]",
+      "count": 44
+    },
+    {
+      "label": "bhfb-bottom-display",
+      "event": "click",
+      "selector": ".botiga-bhfb-bottom-display",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#accordion-section-botiga_style_guide_toggle",
+        "tag": "li",
+        "text": "Open Style Guide",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-default-input-116",
+        "tag": "button",
+        "text": "Discard changes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-trash_changeset",
+        "tag": "li",
+        "text": "Discard changes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-save-button-wrapper",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#publish-settings",
+        "tag": "button",
+        "text": "Publish Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".bhfb-button",
+        "tag": "a",
+        "text": "Secondary Menu",
+        "count": 44,
+        "hidden": true,
+        "wired": "bhfb-component-chip",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-bhfb-bottom-display",
+        "tag": "a",
+        "text": "Show Hide",
+        "count": 2,
+        "hidden": true,
+        "wired": "bhfb-bottom-display",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-bhfb-device-link",
+        "tag": "a",
+        "text": "Desktop",
+        "count": 4,
+        "hidden": false,
+        "wired": "customizer-responsive-device",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-style-guide-toggle-button",
+        "tag": "button",
+        "text": "Open Style Guide",
+        "count": 1,
+        "hidden": true,
+        "wired": "customizer-style-guide",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#widget-tpl-woocommerce_brand_nav-1",
+        "tag": "div",
+        "text": "Edit widget: WooCommerce Brand Layered Nav Add widget: WooC…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_layered_nav-1",
+        "tag": "div",
+        "text": "Edit widget: Filter Products by Attribute Add widget: Filte…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#_customize-input-headings_font_style",
+        "tag": "select",
+        "text": "Normal Italic Oblique",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga_headings_adobe_font",
+        "tag": "input",
+        "text": "system-default|n4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_headings_font",
+        "tag": "input",
+        "text": "{\"font\":\"Lora\",\"regularweight\":\"400\",\"category\":\"serif\"}",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-item-input-page",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-item-input-post",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-item-input-product",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-menu-item-name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-menu-item-submit",
+        "tag": "input",
+        "text": "Add to Menu",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-menu-item-type",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-menu-item-url",
+        "tag": "input",
+        "text": "https://",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-selected-changeset-status-control-input-119-draft",
+        "tag": "input",
+        "text": "draft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-selected-changeset-status-control-input-119-future",
+        "tag": "input",
+        "text": "future",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-selected-changeset-status-control-input-119-publish",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el118-customize-preview-link-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el121-date-time-day",
+        "tag": "input",
+        "text": "02",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el121-date-time-hour",
+        "tag": "input",
+        "text": "11",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el121-date-time-meridian",
+        "tag": "select",
+        "text": "AM PM",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el121-date-time-minute",
+        "tag": "input",
+        "text": "03",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el121-date-time-month",
+        "tag": "select",
+        "text": "1-Jan 2-Feb 3-Mar 4-Apr 5-May 6-Jun 7-Jul 8-Aug 9-Sep 10-Oc…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#el121-date-time-year",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-items-__i__",
+        "tag": "select",
+        "text": "1234567891011121314151617181920",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-show-author-__i__",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-show-date-__i__",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-show-summary-__i__",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-title-__i__",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#rss-url-__i__",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#save",
+        "tag": "input",
+        "text": "Published",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#widget-archives-__i__-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-__i__-dropdown",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-archives-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-block-__i__-content",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-block-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-botiga_widget_product_swatch_active_filter-__i__-include_cat",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-botiga_widget_product_swatch_active_filter-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-botiga_widget_product_swatch_filter-__i__-allow_selecting",
+        "tag": "select",
+        "text": "Multiple Single",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-botiga_widget_product_swatch_filter-__i__-attribute",
+        "tag": "select",
+        "text": "Body Finish Fabric Color Wood",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-botiga_widget_product_swatch_filter-__i__-display_available_variations",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-botiga_widget_product_swatch_filter-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-botiga_widget_product_swatch_filter-__i__-title",
+        "tag": "input",
+        "text": "Filter by",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-calendar-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-calendar-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-dropdown",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-hierarchical",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-categories-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-custom_html-__i__-content",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-custom_html-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-custom_html-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-attachment_id",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-flac",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-loop",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-m4a",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-mp3",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-ogg",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-preload",
+        "tag": "input",
+        "text": "none",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_audio-__i__-wav",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-columns",
+        "tag": "input",
+        "text": "3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-ids",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-link_type",
+        "tag": "input",
+        "text": "post",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-orderby_random",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-size",
+        "tag": "input",
+        "text": "thumbnail",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_gallery-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-alt",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-attachment_id",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-caption",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-height",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-image_classes",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-image_title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_classes",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_rel",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_target_blank",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_type",
+        "tag": "input",
+        "text": "custom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-link_url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-size",
+        "tag": "input",
+        "text": "medium",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_image-__i__-width",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-attachment_id",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-content",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-flv",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-loop",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-m4v",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-mp4",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-ogv",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-preload",
+        "tag": "input",
+        "text": "metadata",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-media_video-__i__-webm",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-meta-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-meta-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-__i__-nav_menu",
+        "tag": "select",
+        "text": "— Select — Main",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-nav_menu-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-pages-__i__-exclude",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-pages-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-pages-__i__-sortby",
+        "tag": "select",
+        "text": "Page title Page order Page ID",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-pages-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-__i__-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-comments-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-__i__-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-__i__-show_date",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-recent-posts-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-rss-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-search-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-search-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tag_cloud-__i__-count",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tag_cloud-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tag_cloud-__i__-taxonomy",
+        "tag": "select",
+        "text": "Categories Tags Link Categories Brands Product categories P…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tag_cloud-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-filter",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-text",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-text-__i__-visual",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_description-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_description-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-columns",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-exclude",
+        "tag": "input",
+        "text": "None",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-fluid_columns",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-hide_empty",
+        "tag": "select",
+        "text": "Yes No",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-number",
+        "tag": "input",
+        "text": "All",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-orderby",
+        "tag": "select",
+        "text": "Name Count",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wc_brands_brand_thumbnails-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_brand_nav-__i__-display_type",
+        "tag": "select",
+        "text": "List Dropdown",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_brand_nav-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_brand_nav-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_layered_nav_filters-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_layered_nav_filters-__i__-title",
+        "tag": "input",
+        "text": "Active filters",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_layered_nav-__i__-attribute",
+        "tag": "select",
+        "text": "body-finish fabric-color wood",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_layered_nav-__i__-display_type",
+        "tag": "select",
+        "text": "List Dropdown",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_layered_nav-__i__-query_type",
+        "tag": "select",
+        "text": "AND OR",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_layered_nav-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_layered_nav-__i__-title",
+        "tag": "input",
+        "text": "Filter by",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_price_filter-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_price_filter-__i__-title",
+        "tag": "input",
+        "text": "Filter by price",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-count",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-dropdown",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-hide_empty",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-hierarchical",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-max_depth",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-orderby",
+        "tag": "select",
+        "text": "Category order Name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-show_children_only",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_categories-__i__-title",
+        "tag": "input",
+        "text": "Product categories",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_search-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_search-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_tag_cloud-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_product_tag_cloud-__i__-title",
+        "tag": "input",
+        "text": "Product tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-hide_free",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-order",
+        "tag": "select",
+        "text": "ASC DESC",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-orderby",
+        "tag": "select",
+        "text": "Menu order Date Price Random Sales",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-show",
+        "tag": "select",
+        "text": "All products Featured products On-sale products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-show_hidden",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_products-__i__-title",
+        "tag": "input",
+        "text": "Products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_rating_filter-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_rating_filter-__i__-title",
+        "tag": "input",
+        "text": "Average rating",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_recent_reviews-__i__-number",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_recent_reviews-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_recent_reviews-__i__-title",
+        "tag": "input",
+        "text": "Recent reviews",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_recently_viewed_products-__i__-number",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_recently_viewed_products-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_recently_viewed_products-__i__-title",
+        "tag": "input",
+        "text": "Recently Viewed Products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_top_rated_products-__i__-number",
+        "tag": "input",
+        "text": "5",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_top_rated_products-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_top_rated_products-__i__-title",
+        "tag": "input",
+        "text": "Top rated products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_widget_cart-__i__-hide_if_empty",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_widget_cart-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-woocommerce_widget_cart-__i__-title",
+        "tag": "input",
+        "text": "Cart",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-form_id",
+        "tag": "select",
+        "text": "Select your formContact Form",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-savewidget",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-show_desc",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-show_title",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-wpforms-widget-__i__-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widgets-search",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-typography-custom-select",
+        "tag": "select",
+        "text": "System default ABeeZee Abel Abhaya Libre Aboreto Abril Fatf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-typography-custom-weight-select",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#accordion-panel-botiga_panel_footer",
+        "tag": "li",
+        "text": "Footer",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-botiga_panel_header",
+        "tag": "li",
+        "text": "Header",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-botiga_panel_hooks",
+        "tag": "li",
+        "text": "Hooks",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-botiga_panel_shop_archive",
+        "tag": "li",
+        "text": "Product Catalog",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-botiga_panel_single_product",
+        "tag": "li",
+        "text": "Single Product",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-botiga_panel_typography",
+        "tag": "li",
+        "text": "Typography",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-nav_menus",
+        "tag": "li",
+        "text": "Menus",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-widgets",
+        "tag": "li",
+        "text": "Widgets",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-panel-woocommerce",
+        "tag": "li",
+        "text": "WooCommerce",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-background_image",
+        "tag": "li",
+        "text": "Background",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_blog",
+        "tag": "li",
+        "text": "Blog",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_breadcrumbs",
+        "tag": "li",
+        "text": "Advanced Breadcrumbs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_core",
+        "tag": "li",
+        "text": "Core",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_elements",
+        "tag": "li",
+        "text": "Elements",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_extension",
+        "tag": "li",
+        "text": "Extensions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_global_text_styles",
+        "tag": "li",
+        "text": "Global Text Styles",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_google_autocomplete_section",
+        "tag": "li",
+        "text": "Google Autocomplete",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_login_register_popup",
+        "tag": "li",
+        "text": "Login/Register Popup",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_navigation",
+        "tag": "li",
+        "text": "Navigation",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_quicklinks",
+        "tag": "li",
+        "text": "Quick Links",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_adtcnotif",
+        "tag": "li",
+        "text": "Add To Cart Notifications",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_blog_archives",
+        "tag": "li",
+        "text": "Blog Archives",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_blog_singles",
+        "tag": "li",
+        "text": "Single Posts",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_buttons",
+        "tag": "li",
+        "text": "Buttons",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_buy_now",
+        "tag": "li",
+        "text": "Buy Now",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_catalog_general",
+        "tag": "li",
+        "text": "General",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_free_shipping_progress_bar",
+        "tag": "li",
+        "text": "Free Shipping Progress Bar",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_layout",
+        "tag": "li",
+        "text": "Layout",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_modal_popup",
+        "tag": "li",
+        "text": "Modal Popup",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_product_swatches",
+        "tag": "li",
+        "text": "Variation Swatches",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_product_swatches_swatch_button",
+        "tag": "li",
+        "text": "'Button' Swatch Style",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_product_swatches_swatch_color",
+        "tag": "li",
+        "text": "'Color' Swatch Style",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_product_swatches_swatch_image",
+        "tag": "li",
+        "text": "'Image' Swatch Style",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_product_swatches_swatch_select",
+        "tag": "li",
+        "text": "'Select' Swatch Style",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_scrolltotop",
+        "tag": "li",
+        "text": "Scroll to Top",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_shop_cart",
+        "tag": "li",
+        "text": "Cart",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_shop_search",
+        "tag": "li",
+        "text": "Search",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_sidebar",
+        "tag": "li",
+        "text": "Custom Sidebar",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_typography_body",
+        "tag": "li",
+        "text": "Paragraphs",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_typography_general",
+        "tag": "li",
+        "text": "Fonts Library",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_typography_header_menu",
+        "tag": "li",
+        "text": "Header Menu",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_typography_headings",
+        "tag": "li",
+        "text": "Headings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_section_wishlist",
+        "tag": "li",
+        "text": "Wishlist",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_site_styles",
+        "tag": "li",
+        "text": "Site Styles",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-botiga_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-colors",
+        "tag": "li",
+        "text": "Colors",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-custom_css",
+        "tag": "li",
+        "text": "Additional CSS",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-publish_settings",
+        "tag": "li",
+        "text": "Publish Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-shop_single_recently_viewed_products_section",
+        "tag": "li",
+        "text": "Recently Viewed Products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-shop_single_related_products_section",
+        "tag": "li",
+        "text": "Related Products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-shop_single_upsell_products_section",
+        "tag": "li",
+        "text": "Upsell Products",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-side_mini_cart_floating_icon_section",
+        "tag": "li",
+        "text": "Floating Mini Cart Icon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-static_front_page",
+        "tag": "li",
+        "text": "Homepage Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-themes",
+        "tag": "li",
+        "text": "Active theme Botiga Change",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-footer-1",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-footer-2",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-footer-3",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-footer-4",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-shop-sidebar-1",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-widgets-inspector-sidebar-widgets-sidebar-1",
+        "tag": "li",
+        "text": "Block Settings",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-woocommerce_checkout",
+        "tag": "li",
+        "text": "Checkout",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-woocommerce_product_images",
+        "tag": "li",
+        "text": "Product Images",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#accordion-section-woocommerce_store_notice",
+        "tag": "li",
+        "text": "Store Notice",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-page",
+        "tag": "div",
+        "text": "Pages No items Add Page Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-page-content",
+        "tag": "div",
+        "text": "Add Page Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-post",
+        "tag": "div",
+        "text": "Posts No items Add Post Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-post-content",
+        "tag": "div",
+        "text": "Add Post Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-product",
+        "tag": "div",
+        "text": "Products No items Add new product Add Please enter an item …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-post_type-product-content",
+        "tag": "div",
+        "text": "Add new product Add Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-search",
+        "tag": "div",
+        "text": "Search Menu Items The search results will be updated as you…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-category",
+        "tag": "div",
+        "text": "Categories No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-category-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-post_format",
+        "tag": "div",
+        "text": "Formats No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-post_format-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-post_tag",
+        "tag": "div",
+        "text": "Tags No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-post_tag-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-product_brand",
+        "tag": "div",
+        "text": "Brands No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-product_brand-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-product_cat",
+        "tag": "div",
+        "text": "Product categories No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-product_cat-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-product_tag",
+        "tag": "div",
+        "text": "Product tags No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-taxonomy-product_tag-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-woocommerce_nav-woocommerce_endpoint",
+        "tag": "div",
+        "text": "WooCommerce Endpoints No items",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-menu-items-woocommerce_nav-woocommerce_endpoint-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-info",
+        "tag": "div",
+        "text": "You are customizing Fernhill Home An unexpected error occur…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#new-custom-menu-item",
+        "tag": "div",
+        "text": "Custom Links URL Please provide a valid link. Link Text The…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#new-custom-menu-item-content",
+        "tag": "div",
+        "text": "URL Please provide a valid link. Link Text The link text ca…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sub-accordion-panel-botiga_panel_typography",
+        "tag": "ul",
+        "text": "Back You are customizing Typography Help Manage the typogra…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sub-accordion-section-botiga_section_typography_headings",
+        "tag": "ul",
+        "text": "Back Headings Aa FONT FAMILY System default ABeeZee Abel Ab…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#sub-accordion-section-publish_settings",
+        "tag": "ul",
+        "text": "Back Updating Publish Settings Action Publish Save Draft Sc…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#available-menu-items",
+        "tag": "div",
+        "text": "Back Customizing ▸ Menus Add Menu Items Search Menu Items T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-widgets",
+        "tag": "div",
+        "text": "Back Customizing ▸ Widgets Add a Widget Search Widgets Clea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-widgets-filter",
+        "tag": "div",
+        "text": "Search Widgets Clear Results The search results will be upd…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#available-widgets-list",
+        "tag": "div",
+        "text": "Edit widget: Active Product Filters Add widget: Active Prod…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-bhfb-elements",
+        "tag": "div",
+        "text": "Secondary MenuSocialButtonContact InfoHTMLLogin/RegisterBut…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-block-editor-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-style-guide-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-input-page-error",
+        "tag": "span",
+        "text": "Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-input-post-error",
+        "tag": "span",
+        "text": "Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#create-input-product-error",
+        "tag": "span",
+        "text": "Please enter an item title",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-name-error",
+        "tag": "span",
+        "text": "The link text cannot be empty.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-url-error",
+        "tag": "span",
+        "text": "Please provide a valid link.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-botiga_headings_adobe_font",
+        "tag": "li",
+        "text": "Font family Font weight n4",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-botiga_headings_custom_font_typography",
+        "tag": "li",
+        "text": "System default ABeeZee Abel Abhaya Libre Aboreto Abril Fatf…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-botiga_headings_font",
+        "tag": "li",
+        "text": "FONT FAMILY System default ABeeZee Abel Abhaya Libre Aboret…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-botiga_headings_typography_preview",
+        "tag": "li",
+        "text": "Aa",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-changeset_preview_link",
+        "tag": "li",
+        "text": "Share Preview Link See how changes would look live on your …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-changeset_scheduled_date",
+        "tag": "li",
+        "text": "Schedule your customization changes to publish (\"go live\") …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-changeset_status",
+        "tag": "li",
+        "text": "Action Publish Save Draft Schedule",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-control-h1_font_size",
+        "tag": "li",
+        "text": "HEADING 1 px",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-h2_font_size",
+        "tag": "li",
+        "text": "HEADING 2 px",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-h3_font_size",
+        "tag": "li",
+        "text": "HEADING 3 px",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-h4_font_size",
+        "tag": "li",
+        "text": "HEADING 4 px",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-h5_font_size",
+        "tag": "li",
+        "text": "HEADING 5 px",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-h6_font_size",
+        "tag": "li",
+        "text": "HEADING 6 px",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-headings_font_style",
+        "tag": "li",
+        "text": "FONT STYLE Normal Italic Oblique",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-headings_letter_spacing",
+        "tag": "li",
+        "text": "LETTER SPACING px",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-headings_line_height",
+        "tag": "li",
+        "text": "LINE HEIGHT em",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-headings_text",
+        "tag": "li",
+        "text": "DECORATION LETTER CASE",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-control-typography_divider_1",
+        "tag": "li",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-controls",
+        "tag": "form",
+        "text": "Close Back Headings Aa FONT FAMILY System default ABeeZee A…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-footer-actions",
+        "tag": "div",
+        "text": "Hide Controls Desktop Tablet Mobile",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-header-actions",
+        "tag": "div",
+        "text": "Close",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-notifications-area",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-outer-theme-controls",
+        "tag": "div",
+        "text": "Back Back Back Back Back Back Back Updating Publish Setting…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-preview",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#customize-sidebar-outer-content",
+        "tag": "div",
+        "text": "Back Back Back Back Back Back Back Updating Publish Setting…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customize-theme-controls",
+        "tag": "div",
+        "text": "Back Headings Aa FONT FAMILY System default ABeeZee Abel Ab…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#global-styles-css-custom-properties-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-afis-container",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-b5l0-container",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-w8aq-container",
+        "tag": "span",
+        "text": "Lora",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-03px-Nabla",
+        "tag": "li",
+        "text": "Nabla",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-04hl-Unlock",
+        "tag": "li",
+        "text": "Unlock",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-05qv-Petrona",
+        "tag": "li",
+        "text": "Petrona",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-06ib-Asap",
+        "tag": "li",
+        "text": "Asap",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-07gj-Fuggles",
+        "tag": "li",
+        "text": "Fuggles",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-0cu2-Fredoka",
+        "tag": "li",
+        "text": "Fredoka",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-0cxz-Smooch",
+        "tag": "li",
+        "text": "Smooch",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-0fpe-Siemreap",
+        "tag": "li",
+        "text": "Siemreap",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-0j0d-Dosis",
+        "tag": "li",
+        "text": "Dosis",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-0mpo-Lateef",
+        "tag": "li",
+        "text": "Lateef",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-0n7i-Jomhuria",
+        "tag": "li",
+        "text": "Jomhuria",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-0o78-Syne",
+        "tag": "li",
+        "text": "Syne",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-0pmm-Alata",
+        "tag": "li",
+        "text": "Alata",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-0qds-Miniver",
+        "tag": "li",
+        "text": "Miniver",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-0szt-Sintony",
+        "tag": "li",
+        "text": "Sintony",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-0x23-Kings",
+        "tag": "li",
+        "text": "Kings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-10ie-Homenaje",
+        "tag": "li",
+        "text": "Homenaje",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-10s5-Oranienbaum",
+        "tag": "li",
+        "text": "Oranienbaum",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-12wj-Allerta",
+        "tag": "li",
+        "text": "Allerta",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-17ss-Raleway",
+        "tag": "li",
+        "text": "Raleway",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1byv-Overpass",
+        "tag": "li",
+        "text": "Overpass",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1cmk-Hind",
+        "tag": "li",
+        "text": "Hind",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1d7i-Gabriela",
+        "tag": "li",
+        "text": "Gabriela",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1eox-Julee",
+        "tag": "li",
+        "text": "Julee",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1i8o-Amethysta",
+        "tag": "li",
+        "text": "Amethysta",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1jw5-Cuprum",
+        "tag": "li",
+        "text": "Cuprum",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1jx2-Copse",
+        "tag": "li",
+        "text": "Copse",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1luy-Estonia",
+        "tag": "li",
+        "text": "Estonia",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1rcw-Shanti",
+        "tag": "li",
+        "text": "Shanti",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1rdp-Voces",
+        "tag": "li",
+        "text": "Voces",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1tq6-Iceland",
+        "tag": "li",
+        "text": "Iceland",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1ut3-Margarine",
+        "tag": "li",
+        "text": "Margarine",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1vx0-Mingzat",
+        "tag": "li",
+        "text": "Mingzat",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1wra-Mulish",
+        "tag": "li",
+        "text": "Mulish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1yw5-Stalemate",
+        "tag": "li",
+        "text": "Stalemate",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-1zpi-Palanquin",
+        "tag": "li",
+        "text": "Palanquin",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-23tw-Quantico",
+        "tag": "li",
+        "text": "Quantico",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-277i-Lemonada",
+        "tag": "li",
+        "text": "Lemonada",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-289j-Metamorphous",
+        "tag": "li",
+        "text": "Metamorphous",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-28rz-Sarpanch",
+        "tag": "li",
+        "text": "Sarpanch",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-29qr-Tourney",
+        "tag": "li",
+        "text": "Tourney",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-29r4-Gotu",
+        "tag": "li",
+        "text": "Gotu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2el8-Eater",
+        "tag": "li",
+        "text": "Eater",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2foy-Amarante",
+        "tag": "li",
+        "text": "Amarante",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2g4p-Gaegu",
+        "tag": "li",
+        "text": "Gaegu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2gw5-Poppins",
+        "tag": "li",
+        "text": "Poppins",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2i0s-Sail",
+        "tag": "li",
+        "text": "Sail",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2iyv-Frijole",
+        "tag": "li",
+        "text": "Frijole",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2kym-Sarala",
+        "tag": "li",
+        "text": "Sarala",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2lci-Grandstander",
+        "tag": "li",
+        "text": "Grandstander",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2qyw-Sniglet",
+        "tag": "li",
+        "text": "Sniglet",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2qz5-Girassol",
+        "tag": "li",
+        "text": "Girassol",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2r6v-Manjari",
+        "tag": "li",
+        "text": "Manjari",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2rkv-Ysabeau",
+        "tag": "li",
+        "text": "Ysabeau",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2u5q-Almendra",
+        "tag": "li",
+        "text": "Almendra",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2vro-Lalezar",
+        "tag": "li",
+        "text": "Lalezar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2waf-Coiny",
+        "tag": "li",
+        "text": "Coiny",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2wqf-Fenix",
+        "tag": "li",
+        "text": "Fenix",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2zp3-Castoro",
+        "tag": "li",
+        "text": "Castoro",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-2ztp-Artifika",
+        "tag": "li",
+        "text": "Artifika",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-30xb-Bellota",
+        "tag": "li",
+        "text": "Bellota",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-31ub-Oxygen",
+        "tag": "li",
+        "text": "Oxygen",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3a8v-Oxanium",
+        "tag": "li",
+        "text": "Oxanium",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3bne-Cambay",
+        "tag": "li",
+        "text": "Cambay",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3boy-Wellfleet",
+        "tag": "li",
+        "text": "Wellfleet",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3ds8-Ramabhadra",
+        "tag": "li",
+        "text": "Ramabhadra",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3e5x-Galada",
+        "tag": "li",
+        "text": "Galada",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3erb-Sunflower",
+        "tag": "li",
+        "text": "Sunflower",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3fgh-Solway",
+        "tag": "li",
+        "text": "Solway",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3go3-Inspiration",
+        "tag": "li",
+        "text": "Inspiration",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3jzs-Khula",
+        "tag": "li",
+        "text": "Khula",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3k1g-Yrsa",
+        "tag": "li",
+        "text": "Yrsa",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3nj6-Roboto",
+        "tag": "li",
+        "text": "Roboto",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3osl-Englebert",
+        "tag": "li",
+        "text": "Englebert",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3pgc-Nosifer",
+        "tag": "li",
+        "text": "Nosifer",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3qzt-Dongle",
+        "tag": "li",
+        "text": "Dongle",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3szw-Archivo",
+        "tag": "li",
+        "text": "Archivo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3u85-Atma",
+        "tag": "li",
+        "text": "Atma",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3vyc-Numans",
+        "tag": "li",
+        "text": "Numans",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3yd1-Tapestry",
+        "tag": "li",
+        "text": "Tapestry",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-3zwd-Heebo",
+        "tag": "li",
+        "text": "Heebo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-421k-Sanchez",
+        "tag": "li",
+        "text": "Sanchez",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-44h0-Alef",
+        "tag": "li",
+        "text": "Alef",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-49na-Oi",
+        "tag": "li",
+        "text": "Oi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4b5w-Birthstone",
+        "tag": "li",
+        "text": "Birthstone",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4d6l-Rufina",
+        "tag": "li",
+        "text": "Rufina",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4fhq-Manuale",
+        "tag": "li",
+        "text": "Manuale",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4gyj-Spectral",
+        "tag": "li",
+        "text": "Spectral",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4i00-Martel",
+        "tag": "li",
+        "text": "Martel",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4ifa-Esteban",
+        "tag": "li",
+        "text": "Esteban",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4iu7-Ranga",
+        "tag": "li",
+        "text": "Ranga",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4jqb-Rye",
+        "tag": "li",
+        "text": "Rye",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4mhz-Tinos",
+        "tag": "li",
+        "text": "Tinos",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4mia-Corinthia",
+        "tag": "li",
+        "text": "Corinthia",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4n1y-Montaga",
+        "tag": "li",
+        "text": "Montaga",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4obo-Cousine",
+        "tag": "li",
+        "text": "Cousine",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4qso-Pridi",
+        "tag": "li",
+        "text": "Pridi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4wtn-Mohave",
+        "tag": "li",
+        "text": "Mohave",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-4yi9-Anton",
+        "tag": "li",
+        "text": "Anton",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-50jm-Diplomata",
+        "tag": "li",
+        "text": "Diplomata",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-52r2-Nokora",
+        "tag": "li",
+        "text": "Nokora",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-53ow-Barlow",
+        "tag": "li",
+        "text": "Barlow",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-55hm-Devonshire",
+        "tag": "li",
+        "text": "Devonshire",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-55ok-Sriracha",
+        "tag": "li",
+        "text": "Sriracha",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-565k-Voltaire",
+        "tag": "li",
+        "text": "Voltaire",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-5a91-Crushed",
+        "tag": "li",
+        "text": "Crushed",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-5c2k-Amita",
+        "tag": "li",
+        "text": "Amita",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-5cbk-Murecho",
+        "tag": "li",
+        "text": "Murecho",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-5cht-Almarai",
+        "tag": "li",
+        "text": "Almarai",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-5eo9-Sono",
+        "tag": "li",
+        "text": "Sono",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-5kq8-Skranji",
+        "tag": "li",
+        "text": "Skranji",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-5kr6-Rancho",
+        "tag": "li",
+        "text": "Rancho",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-5lij-Ewert",
+        "tag": "li",
+        "text": "Ewert",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-5mqi-Livvic",
+        "tag": "li",
+        "text": "Livvic",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-5of1-Rationale",
+        "tag": "li",
+        "text": "Rationale",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-5prv-Prompt",
+        "tag": "li",
+        "text": "Prompt",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-5qim-Besley",
+        "tag": "li",
+        "text": "Besley",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-5su7-Baumans",
+        "tag": "li",
+        "text": "Baumans",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-5xyq-Calligraffitti",
+        "tag": "li",
+        "text": "Calligraffitti",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-63wh-Peralta",
+        "tag": "li",
+        "text": "Peralta",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-656k-Meddon",
+        "tag": "li",
+        "text": "Meddon",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-68l6-Jua",
+        "tag": "li",
+        "text": "Jua",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-6abb-Mitr",
+        "tag": "li",
+        "text": "Mitr",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-6azq-Gidugu",
+        "tag": "li",
+        "text": "Gidugu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-6b1h-Piazzolla",
+        "tag": "li",
+        "text": "Piazzolla",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-6fju-Unkempt",
+        "tag": "li",
+        "text": "Unkempt",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-6ji9-Foldit",
+        "tag": "li",
+        "text": "Foldit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-6ly0-Glegoo",
+        "tag": "li",
+        "text": "Glegoo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-6no7-Pompiere",
+        "tag": "li",
+        "text": "Pompiere",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-6rcj-Tangerine",
+        "tag": "li",
+        "text": "Tangerine",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-6vg2-Cabin",
+        "tag": "li",
+        "text": "Cabin",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-6voq-Vidaloka",
+        "tag": "li",
+        "text": "Vidaloka",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-6vsb-Syncopate",
+        "tag": "li",
+        "text": "Syncopate",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-6zvm-Vibes",
+        "tag": "li",
+        "text": "Vibes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-70xh-Wallpoet",
+        "tag": "li",
+        "text": "Wallpoet",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-73vy-Strait",
+        "tag": "li",
+        "text": "Strait",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-7dmj-Parisienne",
+        "tag": "li",
+        "text": "Parisienne",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-7iq4-Armata",
+        "tag": "li",
+        "text": "Armata",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-7j5y-Krub",
+        "tag": "li",
+        "text": "Krub",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-7nje-Rowdies",
+        "tag": "li",
+        "text": "Rowdies",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-7ocb-Caudex",
+        "tag": "li",
+        "text": "Caudex",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-7pva-Kavoon",
+        "tag": "li",
+        "text": "Kavoon",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-7qjg-Trocchi",
+        "tag": "li",
+        "text": "Trocchi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-7tai-Cookie",
+        "tag": "li",
+        "text": "Cookie",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-7vnr-Mynerve",
+        "tag": "li",
+        "text": "Mynerve",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-7wpn-Marvel",
+        "tag": "li",
+        "text": "Marvel",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8174-Tomorrow",
+        "tag": "li",
+        "text": "Tomorrow",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8262-Playball",
+        "tag": "li",
+        "text": "Playball",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-82e3-Lexend",
+        "tag": "li",
+        "text": "Lexend",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-83iv-Average",
+        "tag": "li",
+        "text": "Average",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-86je-Sevillana",
+        "tag": "li",
+        "text": "Sevillana",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8bma-Engagement",
+        "tag": "li",
+        "text": "Engagement",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8crd-Rosario",
+        "tag": "li",
+        "text": "Rosario",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8dea-Katibeh",
+        "tag": "li",
+        "text": "Katibeh",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8ev6-Caveat",
+        "tag": "li",
+        "text": "Caveat",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8gt3-Flavors",
+        "tag": "li",
+        "text": "Flavors",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8izj-Buenard",
+        "tag": "li",
+        "text": "Buenard",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8kl3-Sarina",
+        "tag": "li",
+        "text": "Sarina",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8lc6-Amaranth",
+        "tag": "li",
+        "text": "Amaranth",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8mh4-Italianno",
+        "tag": "li",
+        "text": "Italianno",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8q08-Underdog",
+        "tag": "li",
+        "text": "Underdog",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8q5e-Trykker",
+        "tag": "li",
+        "text": "Trykker",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8uiq-Abel",
+        "tag": "li",
+        "text": "Abel",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8yxy-Varta",
+        "tag": "li",
+        "text": "Varta",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8zg4-Radley",
+        "tag": "li",
+        "text": "Radley",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-8zoh-Baskervville",
+        "tag": "li",
+        "text": "Baskervville",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-916y-Capriola",
+        "tag": "li",
+        "text": "Capriola",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-91x3-Comforter",
+        "tag": "li",
+        "text": "Comforter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-93ef-Ribeye",
+        "tag": "li",
+        "text": "Ribeye",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-94k3-Solitreo",
+        "tag": "li",
+        "text": "Solitreo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-97gd-Arsenal",
+        "tag": "li",
+        "text": "Arsenal",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-99mn-Cambo",
+        "tag": "li",
+        "text": "Cambo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-99qb-Andika",
+        "tag": "li",
+        "text": "Andika",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-9c8j-Spinnaker",
+        "tag": "li",
+        "text": "Spinnaker",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-9d03-Ranchers",
+        "tag": "li",
+        "text": "Ranchers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-9hwc-Monda",
+        "tag": "li",
+        "text": "Monda",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-9ix7-Shojumaru",
+        "tag": "li",
+        "text": "Shojumaru",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-9lyk-Hahmlet",
+        "tag": "li",
+        "text": "Hahmlet",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-9myt-Snippet",
+        "tag": "li",
+        "text": "Snippet",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-9pl5-Gafata",
+        "tag": "li",
+        "text": "Gafata",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-9qoh-Piedra",
+        "tag": "li",
+        "text": "Piedra",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-9qr4-Arya",
+        "tag": "li",
+        "text": "Arya",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-9qxw-Inika",
+        "tag": "li",
+        "text": "Inika",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-9s0m-Asset",
+        "tag": "li",
+        "text": "Asset",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-9y3f-Warnes",
+        "tag": "li",
+        "text": "Warnes",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-9yl2-Labrada",
+        "tag": "li",
+        "text": "Labrada",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-a5sa-Halant",
+        "tag": "li",
+        "text": "Halant",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-a6o5-Nobile",
+        "tag": "li",
+        "text": "Nobile",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-a9f7-Silkscreen",
+        "tag": "li",
+        "text": "Silkscreen",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-acwh-Fasthand",
+        "tag": "li",
+        "text": "Fasthand",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-aebz-Goldman",
+        "tag": "li",
+        "text": "Goldman",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-anpx-Texturina",
+        "tag": "li",
+        "text": "Texturina",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-axrd-Cormorant",
+        "tag": "li",
+        "text": "Cormorant",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-axxr-Bevan",
+        "tag": "li",
+        "text": "Bevan",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-azdd-Belgrano",
+        "tag": "li",
+        "text": "Belgrano",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-b5y7-NTR",
+        "tag": "li",
+        "text": "NTR",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-b75h-Ole",
+        "tag": "li",
+        "text": "Ole",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-b7ok-Alkatra",
+        "tag": "li",
+        "text": "Alkatra",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-bb4j-Faustina",
+        "tag": "li",
+        "text": "Faustina",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-bb8h-Carme",
+        "tag": "li",
+        "text": "Carme",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-bcdt-Chenla",
+        "tag": "li",
+        "text": "Chenla",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-be6r-Joan",
+        "tag": "li",
+        "text": "Joan",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-bebz-Lustria",
+        "tag": "li",
+        "text": "Lustria",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-bfnx-Tienne",
+        "tag": "li",
+        "text": "Tienne",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-bif5-Ledger",
+        "tag": "li",
+        "text": "Ledger",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-bm7v-Milonga",
+        "tag": "li",
+        "text": "Milonga",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-bxlk-Simonetta",
+        "tag": "li",
+        "text": "Simonetta",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-bygd-Suranna",
+        "tag": "li",
+        "text": "Suranna",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-c0p0-Amiko",
+        "tag": "li",
+        "text": "Amiko",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-c1vs-Antic",
+        "tag": "li",
+        "text": "Antic",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-c57e-Mada",
+        "tag": "li",
+        "text": "Mada",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-c7rc-Metrophobic",
+        "tag": "li",
+        "text": "Metrophobic",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-c8uy-Khand",
+        "tag": "li",
+        "text": "Khand",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-c9y2-Hanuman",
+        "tag": "li",
+        "text": "Hanuman",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-cdr5-Mina",
+        "tag": "li",
+        "text": "Mina",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ckru-Alatsi",
+        "tag": "li",
+        "text": "Alatsi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-cr65-Astloch",
+        "tag": "li",
+        "text": "Astloch",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-csaq-MuseoModerno",
+        "tag": "li",
+        "text": "MuseoModerno",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-cxn4-Rochester",
+        "tag": "li",
+        "text": "Rochester",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-d0ev-Rambla",
+        "tag": "li",
+        "text": "Rambla",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-d0uh-Balthazar",
+        "tag": "li",
+        "text": "Balthazar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-d2uu-Khmer",
+        "tag": "li",
+        "text": "Khmer",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-d3di-Lancelot",
+        "tag": "li",
+        "text": "Lancelot",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-d473-Actor",
+        "tag": "li",
+        "text": "Actor",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-d63p-Convergence",
+        "tag": "li",
+        "text": "Convergence",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-d7sx-Kranky",
+        "tag": "li",
+        "text": "Kranky",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-d7tu-Carlito",
+        "tag": "li",
+        "text": "Carlito",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-da2h-VT323",
+        "tag": "li",
+        "text": "VT323",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-dawx-BenchNine",
+        "tag": "li",
+        "text": "BenchNine",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-dbqh-Romanesco",
+        "tag": "li",
+        "text": "Romanesco",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-dc2c-Gurajada",
+        "tag": "li",
+        "text": "Gurajada",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-djbu-Lekton",
+        "tag": "li",
+        "text": "Lekton",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-dk52-Iceberg",
+        "tag": "li",
+        "text": "Iceberg",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-dnx8-Suravaram",
+        "tag": "li",
+        "text": "Suravaram",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-donp-Merriweather",
+        "tag": "li",
+        "text": "Merriweather",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-drj6-KoHo",
+        "tag": "li",
+        "text": "KoHo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-drvr-Audiowide",
+        "tag": "li",
+        "text": "Audiowide",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-e11y-Splash",
+        "tag": "li",
+        "text": "Splash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-e1zu-Caramel",
+        "tag": "li",
+        "text": "Caramel",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-e2tn-Asul",
+        "tag": "li",
+        "text": "Asul",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-e4ux-Rokkitt",
+        "tag": "li",
+        "text": "Rokkitt",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-e50g-Amiri",
+        "tag": "li",
+        "text": "Amiri",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-e679-Kameron",
+        "tag": "li",
+        "text": "Kameron",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-edft-Bungee",
+        "tag": "li",
+        "text": "Bungee",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-eisq-Vibur",
+        "tag": "li",
+        "text": "Vibur",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-elpt-Licorice",
+        "tag": "li",
+        "text": "Licorice",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-em0g-Righteous",
+        "tag": "li",
+        "text": "Righteous",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-en13-Charm",
+        "tag": "li",
+        "text": "Charm",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-eni7-Pacifico",
+        "tag": "li",
+        "text": "Pacifico",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-eo1c-Kurale",
+        "tag": "li",
+        "text": "Kurale",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ep46-Chathura",
+        "tag": "li",
+        "text": "Chathura",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-es4q-Paprika",
+        "tag": "li",
+        "text": "Paprika",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-et0g-Bentham",
+        "tag": "li",
+        "text": "Bentham",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-evc2-Quattrocento",
+        "tag": "li",
+        "text": "Quattrocento",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-f3h6-Marmelad",
+        "tag": "li",
+        "text": "Marmelad",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-f460-BioRhyme",
+        "tag": "li",
+        "text": "BioRhyme",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-f5jt-Ramaraja",
+        "tag": "li",
+        "text": "Ramaraja",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-fa16-Elsie",
+        "tag": "li",
+        "text": "Elsie",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-fc62-WindSong",
+        "tag": "li",
+        "text": "WindSong",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-fdta-Kreon",
+        "tag": "li",
+        "text": "Kreon",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ffue-Uchen",
+        "tag": "li",
+        "text": "Uchen",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-fg7b-Salsa",
+        "tag": "li",
+        "text": "Salsa",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-fge6-Fruktur",
+        "tag": "li",
+        "text": "Fruktur",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-fgnk-Praise",
+        "tag": "li",
+        "text": "Praise",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-fiy6-Molle",
+        "tag": "li",
+        "text": "Molle",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-fkwe-Oregano",
+        "tag": "li",
+        "text": "Oregano",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-fm1e-Sora",
+        "tag": "li",
+        "text": "Sora",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-fqvr-Dokdo",
+        "tag": "li",
+        "text": "Dokdo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-fuz0-Aclonica",
+        "tag": "li",
+        "text": "Aclonica",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-g1s3-Fahkwang",
+        "tag": "li",
+        "text": "Fahkwang",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-g6on-Spirax",
+        "tag": "li",
+        "text": "Spirax",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-g6w0-Satisfy",
+        "tag": "li",
+        "text": "Satisfy",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-g6xe-Pangolin",
+        "tag": "li",
+        "text": "Pangolin",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-g7nc-Lato",
+        "tag": "li",
+        "text": "Lato",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-g8vd-Vazirmatn",
+        "tag": "li",
+        "text": "Vazirmatn",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-g9vb-Podkova",
+        "tag": "li",
+        "text": "Podkova",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-gaii-Combo",
+        "tag": "li",
+        "text": "Combo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-gaj8-Farsan",
+        "tag": "li",
+        "text": "Farsan",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-gc65-Saira",
+        "tag": "li",
+        "text": "Saira",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-gf8k-Exo",
+        "tag": "li",
+        "text": "Exo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-gfjz-Overlock",
+        "tag": "li",
+        "text": "Overlock",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ghvw-UnifrakturMaguntia",
+        "tag": "li",
+        "text": "UnifrakturMaguntia",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-glno-Boogaloo",
+        "tag": "li",
+        "text": "Boogaloo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-gnp5-Dhurjati",
+        "tag": "li",
+        "text": "Dhurjati",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-gqi4-Changa",
+        "tag": "li",
+        "text": "Changa",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-gtpv-Blaka",
+        "tag": "li",
+        "text": "Blaka",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-gz38-Griffy",
+        "tag": "li",
+        "text": "Griffy",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-gzf3-Tauri",
+        "tag": "li",
+        "text": "Tauri",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-h3y8-Orbitron",
+        "tag": "li",
+        "text": "Orbitron",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-h4ec-MonteCarlo",
+        "tag": "li",
+        "text": "MonteCarlo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-h6gq-Puritan",
+        "tag": "li",
+        "text": "Puritan",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-h9fr-Adamina",
+        "tag": "li",
+        "text": "Adamina",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-h9rs-Sansita",
+        "tag": "li",
+        "text": "Sansita",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-hd2s-Moulpali",
+        "tag": "li",
+        "text": "Moulpali",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-hge8-Redressed",
+        "tag": "li",
+        "text": "Redressed",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-hgny-Yantramanav",
+        "tag": "li",
+        "text": "Yantramanav",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-hiph-Yesteryear",
+        "tag": "li",
+        "text": "Yesteryear",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-hlkc-Junge",
+        "tag": "li",
+        "text": "Junge",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-hoie-Outfit",
+        "tag": "li",
+        "text": "Outfit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-hq1k-Kodchasan",
+        "tag": "li",
+        "text": "Kodchasan",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-hsxo-Gorditas",
+        "tag": "li",
+        "text": "Gorditas",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-hugr-Inconsolata",
+        "tag": "li",
+        "text": "Inconsolata",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-hyeo-Chonburi",
+        "tag": "li",
+        "text": "Chonburi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-i2w3-Maitree",
+        "tag": "li",
+        "text": "Maitree",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-i4e5-Gudea",
+        "tag": "li",
+        "text": "Gudea",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-i5vp-Jaldi",
+        "tag": "li",
+        "text": "Jaldi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-i6kl-Blinker",
+        "tag": "li",
+        "text": "Blinker",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-i976-K2D",
+        "tag": "li",
+        "text": "K2D",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ig28-Orienta",
+        "tag": "li",
+        "text": "Orienta",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-iju6-Play",
+        "tag": "li",
+        "text": "Play",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-isu0-Montserrat",
+        "tag": "li",
+        "text": "Montserrat",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-j0cv-Ballet",
+        "tag": "li",
+        "text": "Ballet",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-j3p7-Condiment",
+        "tag": "li",
+        "text": "Condiment",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-j4cf-Trochut",
+        "tag": "li",
+        "text": "Trochut",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-j7bv-Genos",
+        "tag": "li",
+        "text": "Genos",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-j8kt-Finlandica",
+        "tag": "li",
+        "text": "Finlandica",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-j9qc-Aubrey",
+        "tag": "li",
+        "text": "Aubrey",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-javc-Rubik",
+        "tag": "li",
+        "text": "Rubik",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jbjm-Macondo",
+        "tag": "li",
+        "text": "Macondo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jbqd-Comme",
+        "tag": "li",
+        "text": "Comme",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jd6l-Metal",
+        "tag": "li",
+        "text": "Metal",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jgdl-Viga",
+        "tag": "li",
+        "text": "Viga",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jhjk-Unna",
+        "tag": "li",
+        "text": "Unna",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jhu1-Mako",
+        "tag": "li",
+        "text": "Mako",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jiu0-Timmana",
+        "tag": "li",
+        "text": "Timmana",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jj9z-Babylonica",
+        "tag": "li",
+        "text": "Babylonica",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jjp3-Marhey",
+        "tag": "li",
+        "text": "Marhey",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jk18-Acme",
+        "tag": "li",
+        "text": "Acme",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jkrt-Economica",
+        "tag": "li",
+        "text": "Economica",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jktb-Chicle",
+        "tag": "li",
+        "text": "Chicle",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jlk9-Updock",
+        "tag": "li",
+        "text": "Updock",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jn2y-Langar",
+        "tag": "li",
+        "text": "Langar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jnc8-Modak",
+        "tag": "li",
+        "text": "Modak",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jq8i-Freehand",
+        "tag": "li",
+        "text": "Freehand",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jqhj-Lora",
+        "tag": "li",
+        "text": "Lora",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jqvi-Gwendolyn",
+        "tag": "li",
+        "text": "Gwendolyn",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jwnp-Anaheim",
+        "tag": "li",
+        "text": "Anaheim",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jxki-Bayon",
+        "tag": "li",
+        "text": "Bayon",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jy7r-Gupter",
+        "tag": "li",
+        "text": "Gupter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jyl2-Codystar",
+        "tag": "li",
+        "text": "Codystar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-jyrw-Stick",
+        "tag": "li",
+        "text": "Stick",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-k6b4-Mansalva",
+        "tag": "li",
+        "text": "Mansalva",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-kak6-Rasa",
+        "tag": "li",
+        "text": "Rasa",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-kboq-Felipa",
+        "tag": "li",
+        "text": "Felipa",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-kbsc-Trispace",
+        "tag": "li",
+        "text": "Trispace",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ki1e-Sen",
+        "tag": "li",
+        "text": "Sen",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-kj7q-Yaldevi",
+        "tag": "li",
+        "text": "Yaldevi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-kjc0-Mogra",
+        "tag": "li",
+        "text": "Mogra",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-kjpp-Farro",
+        "tag": "li",
+        "text": "Farro",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-kmzc-Kenia",
+        "tag": "li",
+        "text": "Kenia",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-knkj-Ruthie",
+        "tag": "li",
+        "text": "Ruthie",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ktdo-Asar",
+        "tag": "li",
+        "text": "Asar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-kthz-Epilogue",
+        "tag": "li",
+        "text": "Epilogue",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ktmj-Karla",
+        "tag": "li",
+        "text": "Karla",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-kvzq-Commissioner",
+        "tag": "li",
+        "text": "Commissioner",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-kw7b-Cinzel",
+        "tag": "li",
+        "text": "Cinzel",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-l06g-Lobster",
+        "tag": "li",
+        "text": "Lobster",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-l2gu-Literata",
+        "tag": "li",
+        "text": "Literata",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-l5gr-Antonio",
+        "tag": "li",
+        "text": "Antonio",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-l7jq-Comfortaa",
+        "tag": "li",
+        "text": "Comfortaa",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-l9at-Harmattan",
+        "tag": "li",
+        "text": "Harmattan",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-lbsv-Kufam",
+        "tag": "li",
+        "text": "Kufam",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-lh47-Hubballi",
+        "tag": "li",
+        "text": "Hubballi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-lkn8-Slackey",
+        "tag": "li",
+        "text": "Slackey",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-lkvf-Monofett",
+        "tag": "li",
+        "text": "Monofett",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-lmgb-Galdeano",
+        "tag": "li",
+        "text": "Galdeano",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-lpqh-Neucha",
+        "tag": "li",
+        "text": "Neucha",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-lryg-Telex",
+        "tag": "li",
+        "text": "Telex",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-lsdb-Share",
+        "tag": "li",
+        "text": "Share",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-lsqo-Rosarivo",
+        "tag": "li",
+        "text": "Rosarivo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-lt0k-Alkalami",
+        "tag": "li",
+        "text": "Alkalami",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-lwzw-Shrikhand",
+        "tag": "li",
+        "text": "Shrikhand",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-lz3v-Magra",
+        "tag": "li",
+        "text": "Magra",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-m2ln-Redacted",
+        "tag": "li",
+        "text": "Redacted",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-m5yc-Federant",
+        "tag": "li",
+        "text": "Federant",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-m6fl-UnifrakturCook",
+        "tag": "li",
+        "text": "UnifrakturCook",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-m8nt-Aladin",
+        "tag": "li",
+        "text": "Aladin",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-m99m-Quando",
+        "tag": "li",
+        "text": "Quando",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-mbpf-Sacramento",
+        "tag": "li",
+        "text": "Sacramento",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-mc40-Coustard",
+        "tag": "li",
+        "text": "Coustard",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-mfe4-Prociono",
+        "tag": "li",
+        "text": "Prociono",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-mgcv-Gluten",
+        "tag": "li",
+        "text": "Gluten",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-mmk8-Mirza",
+        "tag": "li",
+        "text": "Mirza",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-mmlc-Catamaran",
+        "tag": "li",
+        "text": "Catamaran",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-mn23-Arima",
+        "tag": "li",
+        "text": "Arima",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-mqv4-Festive",
+        "tag": "li",
+        "text": "Festive",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-mv3j-DynaPuff",
+        "tag": "li",
+        "text": "DynaPuff",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-myti-Scada",
+        "tag": "li",
+        "text": "Scada",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-n3q9-Bellefair",
+        "tag": "li",
+        "text": "Bellefair",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-n5r8-Michroma",
+        "tag": "li",
+        "text": "Michroma",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-n6v8-Smokum",
+        "tag": "li",
+        "text": "Smokum",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-nat1-Alice",
+        "tag": "li",
+        "text": "Alice",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-nb8x-Italiana",
+        "tag": "li",
+        "text": "Italiana",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-nbbk-Waterfall",
+        "tag": "li",
+        "text": "Waterfall",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-nc3a-Candal",
+        "tag": "li",
+        "text": "Candal",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-neow-Habibi",
+        "tag": "li",
+        "text": "Habibi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-nj21-Quintessential",
+        "tag": "li",
+        "text": "Quintessential",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-nk34-Jost",
+        "tag": "li",
+        "text": "Jost",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-nlce-Kadwa",
+        "tag": "li",
+        "text": "Kadwa",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-nlut-Anuphan",
+        "tag": "li",
+        "text": "Anuphan",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-nlz5-Cherish",
+        "tag": "li",
+        "text": "Cherish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-nnwg-Taprom",
+        "tag": "li",
+        "text": "Taprom",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ntla-Gugi",
+        "tag": "li",
+        "text": "Gugi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-nufn-Corben",
+        "tag": "li",
+        "text": "Corben",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-nyg2-Lusitana",
+        "tag": "li",
+        "text": "Lusitana",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-nzde-Akshar",
+        "tag": "li",
+        "text": "Akshar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-o1c8-Rajdhani",
+        "tag": "li",
+        "text": "Rajdhani",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-o1no-Jura",
+        "tag": "li",
+        "text": "Jura",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-o29n-Imprima",
+        "tag": "li",
+        "text": "Imprima",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-o6t2-Graduate",
+        "tag": "li",
+        "text": "Graduate",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-o722-Explora",
+        "tag": "li",
+        "text": "Explora",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-o8nu-Limelight",
+        "tag": "li",
+        "text": "Limelight",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-o97m-Karantina",
+        "tag": "li",
+        "text": "Karantina",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-o9pj-Aleo",
+        "tag": "li",
+        "text": "Aleo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-oe36-Bilbo",
+        "tag": "li",
+        "text": "Bilbo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-of9e-Carattere",
+        "tag": "li",
+        "text": "Carattere",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ofcn-Battambang",
+        "tag": "li",
+        "text": "Battambang",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ojjc-Whisper",
+        "tag": "li",
+        "text": "Whisper",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-okw3-Gayathri",
+        "tag": "li",
+        "text": "Gayathri",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-omn2-Fondamento",
+        "tag": "li",
+        "text": "Fondamento",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-onq9-Coda",
+        "tag": "li",
+        "text": "Coda",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-oqts-Zeyada",
+        "tag": "li",
+        "text": "Zeyada",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-orri-Calistoga",
+        "tag": "li",
+        "text": "Calistoga",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-os4k-Bonbon",
+        "tag": "li",
+        "text": "Bonbon",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-oujy-Ruda",
+        "tag": "li",
+        "text": "Ruda",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-oylk-Domine",
+        "tag": "li",
+        "text": "Domine",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ozre-Lemon",
+        "tag": "li",
+        "text": "Lemon",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-p0ws-Kanit",
+        "tag": "li",
+        "text": "Kanit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-p1qt-Belleza",
+        "tag": "li",
+        "text": "Belleza",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-p3wa-Inder",
+        "tag": "li",
+        "text": "Inder",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-p6k1-Risque",
+        "tag": "li",
+        "text": "Risque",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-p9m8-Biryani",
+        "tag": "li",
+        "text": "Biryani",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-pc4v-Merienda",
+        "tag": "li",
+        "text": "Merienda",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-pdme-Molengo",
+        "tag": "li",
+        "text": "Molengo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-pe64-Electrolize",
+        "tag": "li",
+        "text": "Electrolize",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-pf61-Karma",
+        "tag": "li",
+        "text": "Karma",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-pg3w-Ovo",
+        "tag": "li",
+        "text": "Ovo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-pgvb-Plaster",
+        "tag": "li",
+        "text": "Plaster",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-picq-Gantari",
+        "tag": "li",
+        "text": "Gantari",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-pn4u-Arbutus",
+        "tag": "li",
+        "text": "Arbutus",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-pprk-Chango",
+        "tag": "li",
+        "text": "Chango",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-pqom-Jomolhari",
+        "tag": "li",
+        "text": "Jomolhari",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-prn0-Eczar",
+        "tag": "li",
+        "text": "Eczar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ps6a-Basic",
+        "tag": "li",
+        "text": "Basic",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-pt17-Sahitya",
+        "tag": "li",
+        "text": "Sahitya",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-pvdj-Buda",
+        "tag": "li",
+        "text": "Buda",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-pzef-Lacquer",
+        "tag": "li",
+        "text": "Lacquer",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-q0pt-Neuton",
+        "tag": "li",
+        "text": "Neuton",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-q1l2-Bokor",
+        "tag": "li",
+        "text": "Bokor",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-q3jh-Shalimar",
+        "tag": "li",
+        "text": "Shalimar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-q47r-Cantarell",
+        "tag": "li",
+        "text": "Cantarell",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-q4on-Alegreya",
+        "tag": "li",
+        "text": "Alegreya",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-qa3b-Glory",
+        "tag": "li",
+        "text": "Glory",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-qbey-Koulen",
+        "tag": "li",
+        "text": "Koulen",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-qekz-Srisakdi",
+        "tag": "li",
+        "text": "Srisakdi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-qeqz-Bitter",
+        "tag": "li",
+        "text": "Bitter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-qg9y-Schoolbell",
+        "tag": "li",
+        "text": "Schoolbell",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-qlr0-Niramit",
+        "tag": "li",
+        "text": "Niramit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-qlvi-Neonderthaw",
+        "tag": "li",
+        "text": "Neonderthaw",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-qmmk-Forum",
+        "tag": "li",
+        "text": "Forum",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-qnvl-Suwannaphum",
+        "tag": "li",
+        "text": "Suwannaphum",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-qu7g-Arvo",
+        "tag": "li",
+        "text": "Arvo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-quhm-Dorsa",
+        "tag": "li",
+        "text": "Dorsa",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-qxcc-Alike",
+        "tag": "li",
+        "text": "Alike",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-qy96-Manrope",
+        "tag": "li",
+        "text": "Manrope",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-qzw5-Imbue",
+        "tag": "li",
+        "text": "Imbue",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-r0e0-Sancreek",
+        "tag": "li",
+        "text": "Sancreek",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-r1vr-Prata",
+        "tag": "li",
+        "text": "Prata",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-r57u-Caladea",
+        "tag": "li",
+        "text": "Caladea",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-r7wj-DotGothic16",
+        "tag": "li",
+        "text": "DotGothic16",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-rajn-Flamenco",
+        "tag": "li",
+        "text": "Flamenco",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-rbh6-Teko",
+        "tag": "li",
+        "text": "Teko",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-rbht-Mukta",
+        "tag": "li",
+        "text": "Mukta",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-rbz8-Norican",
+        "tag": "li",
+        "text": "Norican",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-rhjt-Marcellus",
+        "tag": "li",
+        "text": "Marcellus",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ri3v-Akronim",
+        "tag": "li",
+        "text": "Akronim",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-rjpu-Fascinate",
+        "tag": "li",
+        "text": "Fascinate",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-rp67-Geo",
+        "tag": "li",
+        "text": "Geo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-rrej-Arapey",
+        "tag": "li",
+        "text": "Arapey",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-rrro-Preahvihear",
+        "tag": "li",
+        "text": "Preahvihear",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-rscm-Barriecito",
+        "tag": "li",
+        "text": "Barriecito",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ru7n-Georama",
+        "tag": "li",
+        "text": "Georama",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ruck-Recursive",
+        "tag": "li",
+        "text": "Recursive",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-rul7-Dangrek",
+        "tag": "li",
+        "text": "Dangrek",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-rwj0-McLaren",
+        "tag": "li",
+        "text": "McLaren",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-rxmb-Chivo",
+        "tag": "li",
+        "text": "Chivo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-s0d1-Cairo",
+        "tag": "li",
+        "text": "Cairo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-s39k-Kristi",
+        "tag": "li",
+        "text": "Kristi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-s3t1-Benne",
+        "tag": "li",
+        "text": "Benne",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-sbih-Ubuntu",
+        "tag": "li",
+        "text": "Ubuntu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-sddg-Judson",
+        "tag": "li",
+        "text": "Judson",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-sgl2-Padauk",
+        "tag": "li",
+        "text": "Padauk",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-shyj-Allan",
+        "tag": "li",
+        "text": "Allan",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-sir6-Chewy",
+        "tag": "li",
+        "text": "Chewy",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-sken-Yomogi",
+        "tag": "li",
+        "text": "Yomogi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-sm5f-Newsreader",
+        "tag": "li",
+        "text": "Newsreader",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-smbs-Arimo",
+        "tag": "li",
+        "text": "Arimo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-sptu-Damion",
+        "tag": "li",
+        "text": "Damion",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ssfi-Megrim",
+        "tag": "li",
+        "text": "Megrim",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-suwi-Geostar",
+        "tag": "li",
+        "text": "Geostar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-svbu-Questrial",
+        "tag": "li",
+        "text": "Questrial",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-sx6k-Montez",
+        "tag": "li",
+        "text": "Montez",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-t43p-Mate",
+        "tag": "li",
+        "text": "Mate",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-t4tl-Cagliostro",
+        "tag": "li",
+        "text": "Cagliostro",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-t9w6-ABeeZee",
+        "tag": "li",
+        "text": "ABeeZee",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-taa2-Sunshiney",
+        "tag": "li",
+        "text": "Sunshiney",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-tc5i-Inter",
+        "tag": "li",
+        "text": "Inter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-tdcn-Brawler",
+        "tag": "li",
+        "text": "Brawler",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-tfgr-Courgette",
+        "tag": "li",
+        "text": "Courgette",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-tk9f-Allura",
+        "tag": "li",
+        "text": "Allura",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-tmgl-Itim",
+        "tag": "li",
+        "text": "Itim",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-tpjh-Offside",
+        "tag": "li",
+        "text": "Offside",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-twt7-MedievalSharp",
+        "tag": "li",
+        "text": "MedievalSharp",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-tytk-Stylish",
+        "tag": "li",
+        "text": "Stylish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-tz9y-Truculenta",
+        "tag": "li",
+        "text": "Truculenta",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-tzpz-Alexandria",
+        "tag": "li",
+        "text": "Alexandria",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-u41d-Gelasio",
+        "tag": "li",
+        "text": "Gelasio",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-u64i-Federo",
+        "tag": "li",
+        "text": "Federo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-u8j6-Thasadith",
+        "tag": "li",
+        "text": "Thasadith",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-u9ti-Quicksand",
+        "tag": "li",
+        "text": "Quicksand",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ucpo-Figtree",
+        "tag": "li",
+        "text": "Figtree",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ugj1-Handlee",
+        "tag": "li",
+        "text": "Handlee",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-uh72-Barrio",
+        "tag": "li",
+        "text": "Barrio",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ujc5-Phudu",
+        "tag": "li",
+        "text": "Phudu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ulbb-Oldenburg",
+        "tag": "li",
+        "text": "Oldenburg",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-uoim-Gulzar",
+        "tag": "li",
+        "text": "Gulzar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-uso6-Urbanist",
+        "tag": "li",
+        "text": "Urbanist",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ux3o-Aldrich",
+        "tag": "li",
+        "text": "Aldrich",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-uxpz-Sumana",
+        "tag": "li",
+        "text": "Sumana",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-uxqj-Qahiri",
+        "tag": "li",
+        "text": "Qahiri",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-v4f4-Ultra",
+        "tag": "li",
+        "text": "Ultra",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-v59v-Assistant",
+        "tag": "li",
+        "text": "Assistant",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-v5ck-Grenze",
+        "tag": "li",
+        "text": "Grenze",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-v85j-B612",
+        "tag": "li",
+        "text": "B612",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-v95t-Gruppo",
+        "tag": "li",
+        "text": "Gruppo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-vf0o-Kalam",
+        "tag": "li",
+        "text": "Kalam",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-vis8-Yellowtail",
+        "tag": "li",
+        "text": "Yellowtail",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-vr17-Pavanam",
+        "tag": "li",
+        "text": "Pavanam",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-vt4n-Poly",
+        "tag": "li",
+        "text": "Poly",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-vurk-Trirong",
+        "tag": "li",
+        "text": "Trirong",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-vvpl-Pattaya",
+        "tag": "li",
+        "text": "Pattaya",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-vxm7-Revalia",
+        "tag": "li",
+        "text": "Revalia",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-vzuf-Taviraj",
+        "tag": "li",
+        "text": "Taviraj",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-w11y-Content",
+        "tag": "li",
+        "text": "Content",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-w46l-Vollkorn",
+        "tag": "li",
+        "text": "Vollkorn",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-w560-Aboreto",
+        "tag": "li",
+        "text": "Aboreto",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-w97g-Signika",
+        "tag": "li",
+        "text": "Signika",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-w9nc-Staatliches",
+        "tag": "li",
+        "text": "Staatliches",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-wb21-Athiti",
+        "tag": "li",
+        "text": "Athiti",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-wbhv-Unbounded",
+        "tag": "li",
+        "text": "Unbounded",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-we65-Laila",
+        "tag": "li",
+        "text": "Laila",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-wfdt-Moul",
+        "tag": "li",
+        "text": "Moul",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-wfy9-Creepster",
+        "tag": "li",
+        "text": "Creepster",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-whzc-Miltonian",
+        "tag": "li",
+        "text": "Miltonian",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-wkje-Kavivanar",
+        "tag": "li",
+        "text": "Kavivanar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-wnz5-Delius",
+        "tag": "li",
+        "text": "Delius",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-wpyg-Mali",
+        "tag": "li",
+        "text": "Mali",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-wv2o-Dekko",
+        "tag": "li",
+        "text": "Dekko",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-wvjm-Angkor",
+        "tag": "li",
+        "text": "Angkor",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-wwsc-Notable",
+        "tag": "li",
+        "text": "Notable",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-wxur-Allison",
+        "tag": "li",
+        "text": "Allison",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-wy4k-Bahianita",
+        "tag": "li",
+        "text": "Bahianita",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-x220-Fresca",
+        "tag": "li",
+        "text": "Fresca",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-x44g-Hanalei",
+        "tag": "li",
+        "text": "Hanalei",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-x64s-Stoke",
+        "tag": "li",
+        "text": "Stoke",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-x6hm-Tillana",
+        "tag": "li",
+        "text": "Tillana",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-x7ns-Gloock",
+        "tag": "li",
+        "text": "Gloock",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-xahs-Nunito",
+        "tag": "li",
+        "text": "Nunito",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-xcqu-Volkhov",
+        "tag": "li",
+        "text": "Volkhov",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-xfk1-Monoton",
+        "tag": "li",
+        "text": "Monoton",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-xhd8-Arizonia",
+        "tag": "li",
+        "text": "Arizonia",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-xi97-Kosugi",
+        "tag": "li",
+        "text": "Kosugi",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-xjk9-Mandali",
+        "tag": "li",
+        "text": "Mandali",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-xkb9-Mallanna",
+        "tag": "li",
+        "text": "Mallanna",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-xnt0-Sigmar",
+        "tag": "li",
+        "text": "Sigmar",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-xoio-Varela",
+        "tag": "li",
+        "text": "Varela",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-xqdl-Galindo",
+        "tag": "li",
+        "text": "Galindo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-xskn-Dynalight",
+        "tag": "li",
+        "text": "Dynalight",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-xv7n-Bangers",
+        "tag": "li",
+        "text": "Bangers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-xvie-Charmonman",
+        "tag": "li",
+        "text": "Charmonman",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-xy3c-Anybody",
+        "tag": "li",
+        "text": "Anybody",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-y54e-Sarabun",
+        "tag": "li",
+        "text": "Sarabun",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-yav3-Qwigley",
+        "tag": "li",
+        "text": "Qwigley",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-yax0-Rakkas",
+        "tag": "li",
+        "text": "Rakkas",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-yd9v-Bahiana",
+        "tag": "li",
+        "text": "Bahiana",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ydio-Fraunces",
+        "tag": "li",
+        "text": "Fraunces",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-yjjx-Butcherman",
+        "tag": "li",
+        "text": "Butcherman",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-yjwo-Petemoss",
+        "tag": "li",
+        "text": "Petemoss",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-yl7b-Chilanka",
+        "tag": "li",
+        "text": "Chilanka",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ypuw-Sura",
+        "tag": "li",
+        "text": "Sura",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-yq46-Peddana",
+        "tag": "li",
+        "text": "Peddana",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-yty0-Ephesis",
+        "tag": "li",
+        "text": "Ephesis",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-yw9y-Smythe",
+        "tag": "li",
+        "text": "Smythe",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-yzh6-Cutive",
+        "tag": "li",
+        "text": "Cutive",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-yzlq-Knewave",
+        "tag": "li",
+        "text": "Knewave",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-z32l-Ruluko",
+        "tag": "li",
+        "text": "Ruluko",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-z3zm-Enriqueta",
+        "tag": "li",
+        "text": "Enriqueta",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-zc28-Cardo",
+        "tag": "li",
+        "text": "Cardo",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-zcyi-Oswald",
+        "tag": "li",
+        "text": "Oswald",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-zhn9-Sofia",
+        "tag": "li",
+        "text": "Sofia",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-zl9j-Philosopher",
+        "tag": "li",
+        "text": "Philosopher",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-zm0u-Hurricane",
+        "tag": "li",
+        "text": "Hurricane",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-zth7-Tajawal",
+        "tag": "li",
+        "text": "Tajawal",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-result-ztrv-Niconne",
+        "tag": "li",
+        "text": "Niconne",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#select2-w8aq-results",
+        "tag": "ul",
+        "text": "System default ABeeZee Abel Abhaya Libre Aboreto Abril Fatf…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ui-id-1",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-1_woocommerce_layered_nav_filters-__i__",
+        "tag": "div",
+        "text": "Edit widget: Active Product Filters Add widget: Active Prod…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-10_custom_html-__i__",
+        "tag": "div",
+        "text": "Edit widget: Custom HTML Add widget: Custom HTML Edit Add C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-11_woocommerce_layered_nav-__i__",
+        "tag": "div",
+        "text": "Edit widget: Filter Products by Attribute Add widget: Filte…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-12_woocommerce_price_filter-__i__",
+        "tag": "div",
+        "text": "Edit widget: Filter Products by Price Add widget: Filter Pr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-13_woocommerce_rating_filter-__i__",
+        "tag": "div",
+        "text": "Edit widget: Filter Products by Rating Add widget: Filter P…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-14_media_gallery-__i__",
+        "tag": "div",
+        "text": "Edit widget: Gallery Add widget: Gallery Edit Add Gallery G…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-15_media_image-__i__",
+        "tag": "div",
+        "text": "Edit widget: Image Add widget: Image Edit Add Image Image D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-16_meta-__i__",
+        "tag": "div",
+        "text": "Edit widget: Meta Add widget: Meta Edit Add Meta Meta Title…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-17_nav_menu-__i__",
+        "tag": "div",
+        "text": "Edit widget: Navigation Menu Add widget: Navigation Menu Ed…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-18_pages-__i__",
+        "tag": "div",
+        "text": "Edit widget: Pages Add widget: Pages Edit Add Pages Pages T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-19_woocommerce_product_categories-__i__",
+        "tag": "div",
+        "text": "Edit widget: Product Categories Add widget: Product Categor…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-2_archives-__i__",
+        "tag": "div",
+        "text": "Edit widget: Archives Add widget: Archives Edit Add Archive…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-20_woocommerce_top_rated_products-__i__",
+        "tag": "div",
+        "text": "Edit widget: Products by Rating list Add widget: Products b…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-21_woocommerce_product_search-__i__",
+        "tag": "div",
+        "text": "Edit widget: Product Search Add widget: Product Search Edit…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-22_woocommerce_products-__i__",
+        "tag": "div",
+        "text": "Edit widget: Products list Add widget: Products list Edit A…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-23_woocommerce_product_tag_cloud-__i__",
+        "tag": "div",
+        "text": "Edit widget: Product Tag Cloud Add widget: Product Tag Clou…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-24_recent-comments-__i__",
+        "tag": "div",
+        "text": "Edit widget: Recent Comments Add widget: Recent Comments Ed…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-25_woocommerce_recently_viewed_products-__i__",
+        "tag": "div",
+        "text": "Edit widget: Recently Viewed Products list Add widget: Rece…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-26_recent-posts-__i__",
+        "tag": "div",
+        "text": "Edit widget: Recent Posts Add widget: Recent Posts Edit Add…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-27_woocommerce_recent_reviews-__i__",
+        "tag": "div",
+        "text": "Edit widget: Recent Product Reviews Add widget: Recent Prod…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-28_rss-__i__",
+        "tag": "div",
+        "text": "Edit widget: RSS Add widget: RSS Edit Add RSS RSS Enter the…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-29_search-__i__",
+        "tag": "div",
+        "text": "Edit widget: Search Add widget: Search Edit Add Search Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-3_media_audio-__i__",
+        "tag": "div",
+        "text": "Edit widget: Audio Add widget: Audio Edit Add Audio Audio D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-30_tag_cloud-__i__",
+        "tag": "div",
+        "text": "Edit widget: Tag Cloud Add widget: Tag Cloud Edit Add Tag C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-31_text-__i__",
+        "tag": "div",
+        "text": "Edit widget: Text Add widget: Text Edit Add Text Text Delet…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-32_media_video-__i__",
+        "tag": "div",
+        "text": "Edit widget: Video Add widget: Video Edit Add Video Video D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-33_wc_brands_brand_description-__i__",
+        "tag": "div",
+        "text": "Edit widget: WooCommerce Brand Description Add widget: WooC…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-34_woocommerce_brand_nav-__i__",
+        "tag": "div",
+        "text": "Edit widget: WooCommerce Brand Layered Nav Add widget: WooC…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-35_wc_brands_brand_thumbnails-__i__",
+        "tag": "div",
+        "text": "Edit widget: WooCommerce Brand Thumbnails Add widget: WooCo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-36_wpforms-widget-__i__",
+        "tag": "div",
+        "text": "Edit widget: WPForms Add widget: WPForms Edit Add WPForms W…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-4_block-__i__",
+        "tag": "div",
+        "text": "Edit widget: Block Add widget: Block Edit Add Block Block B…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-5_botiga_widget_product_swatch_active_filter-__i__",
+        "tag": "div",
+        "text": "Edit widget: Botiga - Active Product Filters Add widget: Bo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-6_botiga_widget_product_swatch_filter-__i__",
+        "tag": "div",
+        "text": "Edit widget: Botiga - Filter Products by Attribute Add widg…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-7_calendar-__i__",
+        "tag": "div",
+        "text": "Edit widget: Calendar Add widget: Calendar Edit Add Calenda…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-8_woocommerce_widget_cart-__i__",
+        "tag": "div",
+        "text": "Edit widget: Cart Add widget: Cart Edit Add Cart Cart Title…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-9_categories-__i__",
+        "tag": "div",
+        "text": "Edit widget: Categories Add widget: Categories Edit Add Cat…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-archives-1",
+        "tag": "div",
+        "text": "Edit widget: Archives Add widget: Archives Edit Add Archive…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-block-2",
+        "tag": "div",
+        "text": "Edit widget: Block Add widget: Block Edit Add Block Block B…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-botiga_widget_product_swatch_active_filter-1",
+        "tag": "div",
+        "text": "Edit widget: Botiga - Active Product Filters Add widget: Bo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-botiga_widget_product_swatch_filter-1",
+        "tag": "div",
+        "text": "Edit widget: Botiga - Filter Products by Attribute Add widg…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-calendar-1",
+        "tag": "div",
+        "text": "Edit widget: Calendar Add widget: Calendar Edit Add Calenda…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-categories-1",
+        "tag": "div",
+        "text": "Edit widget: Categories Add widget: Categories Edit Add Cat…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-custom_html-1",
+        "tag": "div",
+        "text": "Edit widget: Custom HTML Add widget: Custom HTML Edit Add C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-media_audio-1",
+        "tag": "div",
+        "text": "Edit widget: Audio Add widget: Audio Edit Add Audio Audio D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-media_gallery-1",
+        "tag": "div",
+        "text": "Edit widget: Gallery Add widget: Gallery Edit Add Gallery G…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-media_image-1",
+        "tag": "div",
+        "text": "Edit widget: Image Add widget: Image Edit Add Image Image D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-media_video-1",
+        "tag": "div",
+        "text": "Edit widget: Video Add widget: Video Edit Add Video Video D…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-meta-1",
+        "tag": "div",
+        "text": "Edit widget: Meta Add widget: Meta Edit Add Meta Meta Title…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-nav_menu-1",
+        "tag": "div",
+        "text": "Edit widget: Navigation Menu Add widget: Navigation Menu Ed…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-pages-1",
+        "tag": "div",
+        "text": "Edit widget: Pages Add widget: Pages Edit Add Pages Pages T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-recent-comments-1",
+        "tag": "div",
+        "text": "Edit widget: Recent Comments Add widget: Recent Comments Ed…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-recent-posts-1",
+        "tag": "div",
+        "text": "Edit widget: Recent Posts Add widget: Recent Posts Edit Add…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-rss-1",
+        "tag": "div",
+        "text": "Edit widget: RSS Add widget: RSS Edit Add RSS RSS Enter the…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-search-1",
+        "tag": "div",
+        "text": "Edit widget: Search Add widget: Search Edit Add Search Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-tag_cloud-1",
+        "tag": "div",
+        "text": "Edit widget: Tag Cloud Add widget: Tag Cloud Edit Add Tag C…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-text-1",
+        "tag": "div",
+        "text": "Edit widget: Text Add widget: Text Edit Add Text Text Delet…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-wc_brands_brand_description-1",
+        "tag": "div",
+        "text": "Edit widget: WooCommerce Brand Description Add widget: WooC…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-wc_brands_brand_thumbnails-1",
+        "tag": "div",
+        "text": "Edit widget: WooCommerce Brand Thumbnails Add widget: WooCo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_layered_nav_filters-1",
+        "tag": "div",
+        "text": "Edit widget: Active Product Filters Add widget: Active Prod…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_price_filter-1",
+        "tag": "div",
+        "text": "Edit widget: Filter Products by Price Add widget: Filter Pr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_product_categories-1",
+        "tag": "div",
+        "text": "Edit widget: Product Categories Add widget: Product Categor…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_product_search-1",
+        "tag": "div",
+        "text": "Edit widget: Product Search Add widget: Product Search Edit…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_product_tag_cloud-1",
+        "tag": "div",
+        "text": "Edit widget: Product Tag Cloud Add widget: Product Tag Clou…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_products-1",
+        "tag": "div",
+        "text": "Edit widget: Products list Add widget: Products list Edit A…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_rating_filter-1",
+        "tag": "div",
+        "text": "Edit widget: Filter Products by Rating Add widget: Filter P…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_recent_reviews-1",
+        "tag": "div",
+        "text": "Edit widget: Recent Product Reviews Add widget: Recent Prod…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_recently_viewed_products-1",
+        "tag": "div",
+        "text": "Edit widget: Recently Viewed Products list Add widget: Rece…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_top_rated_products-1",
+        "tag": "div",
+        "text": "Edit widget: Products by Rating list Add widget: Products b…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-woocommerce_widget_cart-1",
+        "tag": "div",
+        "text": "Edit widget: Cart Add widget: Cart Edit Add Cart Cart Title…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widget-tpl-wpforms-widget-1",
+        "tag": "div",
+        "text": "Edit widget: WPForms Add widget: WPForms Edit Add WPForms W…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#widgets-left",
+        "tag": "div",
+        "text": "Back Customizing ▸ Widgets Add a Widget Search Widgets Clea…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#widgets-right",
+        "tag": "div",
+        "text": "Back Headings Aa FONT FAMILY System default ABeeZee Abel Ab…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#widgets-search-desc",
+        "tag": "p",
+        "text": "The search results will be updated as you type.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-bhfb-above-row",
+        "tag": "div",
+        "text": "TOP ROW",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-bhfb-below-row",
+        "tag": "div",
+        "text": "BOTTOM ROW",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-bhfb-header",
+        "tag": "div",
+        "text": "Desktop Tablet/Mobile",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-bhfb-main-row",
+        "tag": "div",
+        "text": "MAIN ROW",
+        "count": 4,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-text-style-label",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      }
+    ]
+  }
+}

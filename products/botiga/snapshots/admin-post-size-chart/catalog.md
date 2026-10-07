@@ -1,0 +1,330 @@
+# Catalog — `admin-post-size-chart`
+
+> Auto-generated. Do not edit by hand.
+> Source: `products/botiga/snapshots/admin-post-size-chart/index.html`
+> Generator: `tools/generate-snapshot-catalog.js`
+> 297 selector entries across 2 sections.
+
+Provenance anchor form: `products/botiga/snapshots/admin-post-size-chart/catalog.md#<anchor>`.
+Anchors are derived from the selector value and are stable across reruns.
+
+---
+
+## IDs
+
+_287 entries_
+
+| Anchor | Selector | Tag | Text | Count |
+| --- | --- | --- | --- | --- |
+| <a id="id--r1"></a>`id--r1` | `#:r1:` | button |  | 1 |
+| <a id="id--r1j"></a>`id--r1j` | `#:r1j:` | button |  | 1 |
+| <a id="id--r1l"></a>`id--r1l` | `#:r1l:` | button |  | 1 |
+| <a id="id--r1n"></a>`id--r1n` | `#:r1n:` | button |  | 1 |
+| <a id="id--r1p"></a>`id--r1p` | `#:r1p:` | button |  | 1 |
+| <a id="id--r1r"></a>`id--r1r` | `#:r1r:` | button |  | 1 |
+| <a id="id--r1t"></a>`id--r1t` | `#:r1t:` | button |  | 1 |
+| <a id="id--r1v"></a>`id--r1v` | `#:r1v:` | button |  | 1 |
+| <a id="id--r21"></a>`id--r21` | `#:r21:` | button |  | 1 |
+| <a id="id--r23"></a>`id--r23` | `#:r23:` | button |  | 1 |
+| <a id="id--r25"></a>`id--r25` | `#:r25:` | button |  | 1 |
+| <a id="id--r27"></a>`id--r27` | `#:r27:` | button |  | 1 |
+| <a id="id--r29"></a>`id--r29` | `#:r29:` | button |  | 1 |
+| <a id="id--r2b"></a>`id--r2b` | `#:r2b:` | button |  | 1 |
+| <a id="id--r2d"></a>`id--r2d` | `#:r2d:` | button |  | 1 |
+| <a id="id--r2f"></a>`id--r2f` | `#:r2f:` | button |  | 1 |
+| <a id="id--r2h"></a>`id--r2h` | `#:r2h:` | button |  | 1 |
+| <a id="id--r2j"></a>`id--r2j` | `#:r2j:` | button |  | 1 |
+| <a id="id--r2l"></a>`id--r2l` | `#:r2l:` | button |  | 1 |
+| <a id="id--r2n"></a>`id--r2n` | `#:r2n:` | button |  | 1 |
+| <a id="id--r2p"></a>`id--r2p` | `#:r2p:` | button |  | 1 |
+| <a id="id--r2r"></a>`id--r2r` | `#:r2r:` | button |  | 1 |
+| <a id="id--r2t"></a>`id--r2t` | `#:r2t:` | button |  | 1 |
+| <a id="id--r2v"></a>`id--r2v` | `#:r2v:` | button |  | 1 |
+| <a id="id--r3"></a>`id--r3` | `#:r3:` | button |  | 1 |
+| <a id="id--r31"></a>`id--r31` | `#:r31:` | button |  | 1 |
+| <a id="id--r33"></a>`id--r33` | `#:r33:` | button |  | 1 |
+| <a id="id--r35"></a>`id--r35` | `#:r35:` | button |  | 1 |
+| <a id="id--r37"></a>`id--r37` | `#:r37:` | button |  | 1 |
+| <a id="id--r39"></a>`id--r39` | `#:r39:` | button |  | 1 |
+| <a id="id--r3b"></a>`id--r3b` | `#:r3b:` | button |  | 1 |
+| <a id="id--r3d"></a>`id--r3d` | `#:r3d:` | button |  | 1 |
+| <a id="id--r3f"></a>`id--r3f` | `#:r3f:` | button |  | 1 |
+| <a id="id--r3h"></a>`id--r3h` | `#:r3h:` | button |  | 1 |
+| <a id="id--r3j"></a>`id--r3j` | `#:r3j:` | button |  | 1 |
+| <a id="id--r3l"></a>`id--r3l` | `#:r3l:` | button |  | 1 |
+| <a id="id--r3n"></a>`id--r3n` | `#:r3n:` | button |  | 1 |
+| <a id="id--r3p"></a>`id--r3p` | `#:r3p:` | button |  | 1 |
+| <a id="id--r3r"></a>`id--r3r` | `#:r3r:` | button |  | 1 |
+| <a id="id--r3t"></a>`id--r3t` | `#:r3t:` | button |  | 1 |
+| <a id="id--r3v"></a>`id--r3v` | `#:r3v:` | button |  | 1 |
+| <a id="id--r41"></a>`id--r41` | `#:r41:` | button |  | 1 |
+| <a id="id--r43"></a>`id--r43` | `#:r43:` | button |  | 1 |
+| <a id="id--r45"></a>`id--r45` | `#:r45:` | button |  | 1 |
+| <a id="id--r47"></a>`id--r47` | `#:r47:` | button |  | 1 |
+| <a id="id--r49"></a>`id--r49` | `#:r49:` | button |  | 1 |
+| <a id="id--r4b"></a>`id--r4b` | `#:r4b:` | button |  | 1 |
+| <a id="id--r4d"></a>`id--r4d` | `#:r4d:` | button |  | 1 |
+| <a id="id--r4f"></a>`id--r4f` | `#:r4f:` | button |  | 1 |
+| <a id="id--r4h"></a>`id--r4h` | `#:r4h:` | button |  | 1 |
+| <a id="id--r4j"></a>`id--r4j` | `#:r4j:` | button |  | 1 |
+| <a id="id--r4l"></a>`id--r4l` | `#:r4l:` | button |  | 1 |
+| <a id="id--r4n"></a>`id--r4n` | `#:r4n:` | button |  | 1 |
+| <a id="id--r4p"></a>`id--r4p` | `#:r4p:` | button |  | 1 |
+| <a id="id--r4r"></a>`id--r4r` | `#:r4r:` | button |  | 1 |
+| <a id="id--r4t"></a>`id--r4t` | `#:r4t:` | button |  | 1 |
+| <a id="id--r4v"></a>`id--r4v` | `#:r4v:` | button |  | 1 |
+| <a id="id--r5"></a>`id--r5` | `#:r5:` | button |  | 1 |
+| <a id="id--r51"></a>`id--r51` | `#:r51:` | button |  | 1 |
+| <a id="id--r53"></a>`id--r53` | `#:r53:` | button |  | 1 |
+| <a id="id--r55"></a>`id--r55` | `#:r55:` | button |  | 1 |
+| <a id="id--r57"></a>`id--r57` | `#:r57:` | button |  | 1 |
+| <a id="id--r59"></a>`id--r59` | `#:r59:` | button |  | 1 |
+| <a id="id--r5b"></a>`id--r5b` | `#:r5b:` | button |  | 1 |
+| <a id="id--r5d"></a>`id--r5d` | `#:r5d:` | button |  | 1 |
+| <a id="id--r5f"></a>`id--r5f` | `#:r5f:` | button |  | 1 |
+| <a id="id--r5h"></a>`id--r5h` | `#:r5h:` | button |  | 1 |
+| <a id="id--r5j"></a>`id--r5j` | `#:r5j:` | button |  | 1 |
+| <a id="id--r5l"></a>`id--r5l` | `#:r5l:` | button |  | 1 |
+| <a id="id--r5n"></a>`id--r5n` | `#:r5n:` | button |  | 1 |
+| <a id="id--r5p"></a>`id--r5p` | `#:r5p:` | button |  | 1 |
+| <a id="id--r5r"></a>`id--r5r` | `#:r5r:` | button |  | 1 |
+| <a id="id--r5t"></a>`id--r5t` | `#:r5t:` | button |  | 1 |
+| <a id="id--r5v"></a>`id--r5v` | `#:r5v:` | button |  | 1 |
+| <a id="id--r61"></a>`id--r61` | `#:r61:` | button |  | 1 |
+| <a id="id--r63"></a>`id--r63` | `#:r63:` | button |  | 1 |
+| <a id="id--r65"></a>`id--r65` | `#:r65:` | button |  | 1 |
+| <a id="id--r67"></a>`id--r67` | `#:r67:` | button |  | 1 |
+| <a id="id--r69"></a>`id--r69` | `#:r69:` | button |  | 1 |
+| <a id="id--r6b"></a>`id--r6b` | `#:r6b:` | button |  | 1 |
+| <a id="id--r6d"></a>`id--r6d` | `#:r6d:` | button |  | 1 |
+| <a id="id--r6f"></a>`id--r6f` | `#:r6f:` | button |  | 1 |
+| <a id="id--r6h"></a>`id--r6h` | `#:r6h:` | button |  | 1 |
+| <a id="id--r6j"></a>`id--r6j` | `#:r6j:` | button |  | 1 |
+| <a id="id--r6l"></a>`id--r6l` | `#:r6l:` | button |  | 1 |
+| <a id="id--r6n"></a>`id--r6n` | `#:r6n:` | button |  | 1 |
+| <a id="id--r6p"></a>`id--r6p` | `#:r6p:` | button |  | 1 |
+| <a id="id--r6r"></a>`id--r6r` | `#:r6r:` | button |  | 1 |
+| <a id="id--r6t"></a>`id--r6t` | `#:r6t:` | button |  | 1 |
+| <a id="id--r6v"></a>`id--r6v` | `#:r6v:` | button |  | 1 |
+| <a id="id--r7"></a>`id--r7` | `#:r7:` | button |  | 1 |
+| <a id="id--r71"></a>`id--r71` | `#:r71:` | button |  | 1 |
+| <a id="id--r73"></a>`id--r73` | `#:r73:` | button |  | 1 |
+| <a id="id--r75"></a>`id--r75` | `#:r75:` | button |  | 1 |
+| <a id="id--r77"></a>`id--r77` | `#:r77:` | button |  | 1 |
+| <a id="id--r79"></a>`id--r79` | `#:r79:` | button |  | 1 |
+| <a id="id--r7b"></a>`id--r7b` | `#:r7b:` | button |  | 1 |
+| <a id="id--r7d"></a>`id--r7d` | `#:r7d:` | button |  | 1 |
+| <a id="id--r7f"></a>`id--r7f` | `#:r7f:` | button |  | 1 |
+| <a id="id--r7h"></a>`id--r7h` | `#:r7h:` | button |  | 1 |
+| <a id="id--r7j"></a>`id--r7j` | `#:r7j:` | button |  | 1 |
+| <a id="id--r7l"></a>`id--r7l` | `#:r7l:` | button |  | 1 |
+| <a id="id--r7n"></a>`id--r7n` | `#:r7n:` | button |  | 1 |
+| <a id="id--r7p"></a>`id--r7p` | `#:r7p:` | button |  | 1 |
+| <a id="id--r7r"></a>`id--r7r` | `#:r7r:` | button |  | 1 |
+| <a id="id--r7t"></a>`id--r7t` | `#:r7t:` | button |  | 1 |
+| <a id="id--r7v"></a>`id--r7v` | `#:r7v:` | button |  | 1 |
+| <a id="id--r81"></a>`id--r81` | `#:r81:` | button |  | 1 |
+| <a id="id--r83"></a>`id--r83` | `#:r83:` | button |  | 1 |
+| <a id="id--r85"></a>`id--r85` | `#:r85:` | button |  | 1 |
+| <a id="id--r87"></a>`id--r87` | `#:r87:` | button |  | 1 |
+| <a id="id--r89"></a>`id--r89` | `#:r89:` | button |  | 1 |
+| <a id="id--r8b"></a>`id--r8b` | `#:r8b:` | button |  | 1 |
+| <a id="id--r8d"></a>`id--r8d` | `#:r8d:` | button |  | 1 |
+| <a id="id--r8f"></a>`id--r8f` | `#:r8f:` | button |  | 1 |
+| <a id="id--r8h"></a>`id--r8h` | `#:r8h:` | button |  | 1 |
+| <a id="id--r8j"></a>`id--r8j` | `#:r8j:` | button |  | 1 |
+| <a id="id--r8l"></a>`id--r8l` | `#:r8l:` | button |  | 1 |
+| <a id="id--r8n"></a>`id--r8n` | `#:r8n:` | button |  | 1 |
+| <a id="id--r8p"></a>`id--r8p` | `#:r8p:` | button |  | 1 |
+| <a id="id--r8r"></a>`id--r8r` | `#:r8r:` | button |  | 1 |
+| <a id="id--r8t"></a>`id--r8t` | `#:r8t:` | button |  | 1 |
+| <a id="id--r8v"></a>`id--r8v` | `#:r8v:` | button |  | 1 |
+| <a id="id--r9"></a>`id--r9` | `#:r9:` | div | Use up and down arrow keys to resize the meta box pane. | 1 |
+| <a id="id--r91"></a>`id--r91` | `#:r91:` | button |  | 1 |
+| <a id="id--r93"></a>`id--r93` | `#:r93:` | button |  | 1 |
+| <a id="id--r95"></a>`id--r95` | `#:r95:` | button |  | 1 |
+| <a id="id--r97"></a>`id--r97` | `#:r97:` | button |  | 1 |
+| <a id="id--r99"></a>`id--r99` | `#:r99:` | button |  | 1 |
+| <a id="id--r9b"></a>`id--r9b` | `#:r9b:` | button |  | 1 |
+| <a id="id--r9d"></a>`id--r9d` | `#:r9d:` | button |  | 1 |
+| <a id="id--r9f"></a>`id--r9f` | `#:r9f:` | button |  | 1 |
+| <a id="id--r9h"></a>`id--r9h` | `#:r9h:` | button |  | 1 |
+| <a id="id--r9j"></a>`id--r9j` | `#:r9j:` | button |  | 1 |
+| <a id="id--r9l"></a>`id--r9l` | `#:r9l:` | button |  | 1 |
+| <a id="id--r9n"></a>`id--r9n` | `#:r9n:` | button |  | 1 |
+| <a id="id--r9p"></a>`id--r9p` | `#:r9p:` | button |  | 1 |
+| <a id="id--r9r"></a>`id--r9r` | `#:r9r:` | button |  | 1 |
+| <a id="id--r9t"></a>`id--r9t` | `#:r9t:` | button |  | 1 |
+| <a id="id--r9v"></a>`id--r9v` | `#:r9v:` | button |  | 1 |
+| <a id="id--ra1"></a>`id--ra1` | `#:ra1:` | button |  | 1 |
+| <a id="id--ra3"></a>`id--ra3` | `#:ra3:` | button |  | 1 |
+| <a id="id--ra5"></a>`id--ra5` | `#:ra5:` | button |  | 1 |
+| <a id="id--ra7"></a>`id--ra7` | `#:ra7:` | button |  | 1 |
+| <a id="id--ra9"></a>`id--ra9` | `#:ra9:` | button |  | 1 |
+| <a id="id--rab"></a>`id--rab` | `#:rab:` | button |  | 1 |
+| <a id="id--rad"></a>`id--rad` | `#:rad:` | button |  | 1 |
+| <a id="id--raf"></a>`id--raf` | `#:raf:` | button |  | 1 |
+| <a id="id--rah"></a>`id--rah` | `#:rah:` | button |  | 1 |
+| <a id="id--raj"></a>`id--raj` | `#:raj:` | button |  | 1 |
+| <a id="id--ral"></a>`id--ral` | `#:ral:` | button |  | 1 |
+| <a id="id--ran"></a>`id--ran` | `#:ran:` | button |  | 1 |
+| <a id="id--rap"></a>`id--rap` | `#:rap:` | button |  | 1 |
+| <a id="id--rar"></a>`id--rar` | `#:rar:` | button |  | 1 |
+| <a id="id--rat"></a>`id--rat` | `#:rat:` | button |  | 1 |
+| <a id="id--rav"></a>`id--rav` | `#:rav:` | button |  | 1 |
+| <a id="id--rb1"></a>`id--rb1` | `#:rb1:` | button |  | 1 |
+| <a id="id--rb3"></a>`id--rb3` | `#:rb3:` | button |  | 1 |
+| <a id="id--rb5"></a>`id--rb5` | `#:rb5:` | button |  | 1 |
+| <a id="id--rb7"></a>`id--rb7` | `#:rb7:` | button |  | 1 |
+| <a id="id--rb9"></a>`id--rb9` | `#:rb9:` | button |  | 1 |
+| <a id="id--rbb"></a>`id--rbb` | `#:rbb:` | button |  | 1 |
+| <a id="id--rbd"></a>`id--rbd` | `#:rbd:` | button |  | 1 |
+| <a id="id--rbf"></a>`id--rbf` | `#:rbf:` | button |  | 1 |
+| <a id="id--rbh"></a>`id--rbh` | `#:rbh:` | button |  | 1 |
+| <a id="id--rbj"></a>`id--rbj` | `#:rbj:` | button |  | 1 |
+| <a id="id--rbl"></a>`id--rbl` | `#:rbl:` | button |  | 1 |
+| <a id="id--rbn"></a>`id--rbn` | `#:rbn:` | button |  | 1 |
+| <a id="id--rbp"></a>`id--rbp` | `#:rbp:` | button |  | 1 |
+| <a id="id--rbr"></a>`id--rbr` | `#:rbr:` | button |  | 1 |
+| <a id="id--rbt"></a>`id--rbt` | `#:rbt:` | button |  | 1 |
+| <a id="id--rbv"></a>`id--rbv` | `#:rbv:` | button |  | 1 |
+| <a id="id--rc1"></a>`id--rc1` | `#:rc1:` | button |  | 1 |
+| <a id="id--rc3"></a>`id--rc3` | `#:rc3:` | button |  | 1 |
+| <a id="id--rc5"></a>`id--rc5` | `#:rc5:` | button |  | 1 |
+| <a id="id--rc7"></a>`id--rc7` | `#:rc7:` | button |  | 1 |
+| <a id="id--rc9"></a>`id--rc9` | `#:rc9:` | button |  | 1 |
+| <a id="id--rcb"></a>`id--rcb` | `#:rcb:` | button |  | 1 |
+| <a id="id--rcd"></a>`id--rcd` | `#:rcd:` | button |  | 1 |
+| <a id="id--rcf"></a>`id--rcf` | `#:rcf:` | button |  | 1 |
+| <a id="id--rch"></a>`id--rch` | `#:rch:` | button |  | 1 |
+| <a id="id--rcj"></a>`id--rcj` | `#:rcj:` | button |  | 1 |
+| <a id="id--rcl"></a>`id--rcl` | `#:rcl:` | button |  | 1 |
+| <a id="id--rcn"></a>`id--rcn` | `#:rcn:` | button |  | 1 |
+| <a id="id--rcp"></a>`id--rcp` | `#:rcp:` | button |  | 1 |
+| <a id="id--rcr"></a>`id--rcr` | `#:rcr:` | button |  | 1 |
+| <a id="id--rct"></a>`id--rct` | `#:rct:` | button |  | 1 |
+| <a id="id--rcv"></a>`id--rcv` | `#:rcv:` | button |  | 1 |
+| <a id="id--rd1"></a>`id--rd1` | `#:rd1:` | button |  | 1 |
+| <a id="id--rd3"></a>`id--rd3` | `#:rd3:` | button |  | 1 |
+| <a id="id--rd5"></a>`id--rd5` | `#:rd5:` | button |  | 1 |
+| <a id="id--rd7"></a>`id--rd7` | `#:rd7:` | button |  | 1 |
+| <a id="id--rd9"></a>`id--rd9` | `#:rd9:` | button |  | 1 |
+| <a id="id--rdb"></a>`id--rdb` | `#:rdb:` | button |  | 1 |
+| <a id="id--rdd"></a>`id--rdd` | `#:rdd:` | button |  | 1 |
+| <a id="id--rdf"></a>`id--rdf` | `#:rdf:` | button |  | 1 |
+| <a id="id--rdh"></a>`id--rdh` | `#:rdh:` | button |  | 1 |
+| <a id="id--rdj"></a>`id--rdj` | `#:rdj:` | button |  | 1 |
+| <a id="id--rdl"></a>`id--rdl` | `#:rdl:` | button |  | 1 |
+| <a id="id--rdn"></a>`id--rdn` | `#:rdn:` | button |  | 1 |
+| <a id="id--rdp"></a>`id--rdp` | `#:rdp:` | button |  | 1 |
+| <a id="id--rdr"></a>`id--rdr` | `#:rdr:` | button |  | 1 |
+| <a id="id--rdt"></a>`id--rdt` | `#:rdt:` | button |  | 1 |
+| <a id="id--rdv"></a>`id--rdv` | `#:rdv:` | button |  | 1 |
+| <a id="id--re1"></a>`id--re1` | `#:re1:` | button |  | 1 |
+| <a id="id--re3"></a>`id--re3` | `#:re3:` | button |  | 1 |
+| <a id="id--rm"></a>`id--rm` | `#:rm:` | button |  | 1 |
+| <a id="id--advanced-sortables"></a>`id--advanced-sortables` | `#advanced-sortables` | div |  | 1 |
+| <a id="id--base-ui--rb"></a>`id--base-ui--rb` | `#base-ui-:rb:` | button |  | 1 |
+| <a id="id--botiga_metabox"></a>`id--botiga_metabox` | `#botiga_metabox` | div | Botiga Size Chart Options | 1 |
+| <a id="id--botiga_metabox_nonce"></a>`id--botiga_metabox_nonce` | `#botiga_metabox_nonce` | input |  | 1 |
+| <a id="id--botiga_metabox-handle-order-higher-description"></a>`id--botiga_metabox-handle-order-higher-description` | `#botiga_metabox-handle-order-higher-description` | span | Move up | 1 |
+| <a id="id--botiga_metabox-handle-order-higher-description-text"></a>`id--botiga_metabox-handle-order-higher-description-text` | `#botiga_metabox-handle-order-higher-description-text` | span | Move up | 1 |
+| <a id="id--botiga_metabox-handle-order-lower-description"></a>`id--botiga_metabox-handle-order-lower-description` | `#botiga_metabox-handle-order-lower-description` | span | Move down | 1 |
+| <a id="id--botiga_metabox-handle-order-lower-description-text"></a>`id--botiga_metabox-handle-order-lower-description-text` | `#botiga_metabox-handle-order-lower-description-text` | span | Move down | 1 |
+| <a id="id--botiga_metabox-handlediv"></a>`id--botiga_metabox-handlediv` | `#botiga_metabox-handlediv` | span | Show or hide panel | 1 |
+| <a id="id--botiga_metabox-handlediv-text"></a>`id--botiga_metabox-handlediv-text` | `#botiga_metabox-handlediv-text` | span | Show or hide panel | 1 |
+| <a id="id--botiga_metabox-title"></a>`id--botiga_metabox-title` | `#botiga_metabox-title` | h2 | Botiga Size Chart Options | 1 |
+| <a id="id--botiga-block-editor-styles-inline-css"></a>`id--botiga-block-editor-styles-inline-css` | `#botiga-block-editor-styles-inline-css` | link |  | 1 |
+| <a id="id--botiga-notices-inline-css"></a>`id--botiga-notices-inline-css` | `#botiga-notices-inline-css` | link |  | 1 |
+| <a id="id--collapse-button"></a>`id--collapse-button` | `#collapse-button` | button | Collapse Menu | 1 |
+| <a id="id--collapse-menu"></a>`id--collapse-menu` | `#collapse-menu` | li | Collapse Menu | 1 |
+| <a id="id--components-menu-group-label-0"></a>`id--components-menu-group-label-0` | `#components-menu-group-label-0` | div | View | 1 |
+| <a id="id--components-menu-group-label-1"></a>`id--components-menu-group-label-1` | `#components-menu-group-label-1` | div | Editor | 1 |
+| <a id="id--components-menu-group-label-2"></a>`id--components-menu-group-label-2` | `#components-menu-group-label-2` | div | Tools | 1 |
+| <a id="id--components-search-control-0"></a>`id--components-search-control-0` | `#components-search-control-0` | input |  | 1 |
+| <a id="id--defs705"></a>`id--defs705` | `#defs705` | defs |  | 2 |
+| <a id="id--edit-post-document"></a>`id--edit-post-document` | `#edit-post:document` | div |  | 1 |
+| <a id="id--editor"></a>`id--editor` | `#editor` | div |  | 1 |
+| <a id="id--footer-left"></a>`id--footer-left` | `#footer-left` | p | Thank you for creating with WordPress . | 1 |
+| <a id="id--global-styles-css-custom-properties-inline-css"></a>`id--global-styles-css-custom-properties-inline-css` | `#global-styles-css-custom-properties-inline-css` | link |  | 1 |
+| <a id="id--hiddenaction"></a>`id--hiddenaction` | `#hiddenaction` | input |  | 1 |
+| <a id="id--icon-action-account_circle_24px_2"></a>`id--icon-action-account_circle_24px_2` | `#icon/action/account_circle_24px_2` | path |  | 2 |
+| <a id="id--link-modal-title"></a>`id--link-modal-title` | `#link-modal-title` | h1 | Insert/edit link | 1 |
+| <a id="id--list-view-0-block-20346afb-aad0-4026-88ed-f60bd62d87be"></a>`id--list-view-0-block-20346afb-aad0-4026-88ed-f60bd62d87be` | `#list-view-0-block-20346afb-aad0-4026-88ed-f60bd62d87be` | tr |  | 1 |
+| <a id="id--list-view-block-select-button__description-0"></a>`id--list-view-block-select-button__description-0` | `#list-view-block-select-button__description-0` | div | Block 1 of 1, Level 1. | 1 |
+| <a id="id--meta-box-order-nonce"></a>`id--meta-box-order-nonce` | `#meta-box-order-nonce` | input |  | 1 |
+| <a id="id--metaboxes"></a>`id--metaboxes` | `#metaboxes` | div |  | 1 |
+| <a id="id--most-recent-results"></a>`id--most-recent-results` | `#most-recent-results` | div | No search term specified. Showing recent items. Search or u… | 1 |
+| <a id="id--normal-sortables"></a>`id--normal-sortables` | `#normal-sortables` | div | Botiga Size Chart Options | 1 |
+| <a id="id--original_post_status"></a>`id--original_post_status` | `#original_post_status` | input |  | 1 |
+| <a id="id--originalaction"></a>`id--originalaction` | `#originalaction` | input |  | 1 |
+| <a id="id--path882"></a>`id--path882` | `#path882` | path |  | 2 |
+| <a id="id--post_ID"></a>`id--post_ID` | `#post_ID` | input |  | 1 |
+| <a id="id--post_type"></a>`id--post_type` | `#post_type` | input |  | 1 |
+| <a id="id--postbox-container-2"></a>`id--postbox-container-2` | `#postbox-container-2` | div | Botiga Size Chart Options | 3 |
+| <a id="id--poststuff"></a>`id--poststuff` | `#poststuff` | div | Botiga Size Chart Options | 3 |
+| <a id="id--query-notice-message"></a>`id--query-notice-message` | `#query-notice-message` | div | No search term specified. Showing recent items. Search or u… | 1 |
+| <a id="id--radix--rq"></a>`id--radix--rq` | `#radix-:rq:` | div | Suggestions | 1 |
+| <a id="id--radix--rr"></a>`id--radix--rr` | `#radix-:rr:` | label | Search commands and settings | 1 |
+| <a id="id--radix--rs"></a>`id--radix--rs` | `#radix-:rs:` | input | Suggestions | 1 |
+| <a id="id--radix--ru"></a>`id--radix--ru` | `#radix-:ru:` | div | Suggestions | 1 |
+| <a id="id--referredby"></a>`id--referredby` | `#referredby` | input |  | 1 |
+| <a id="id--samplepermalinknonce"></a>`id--samplepermalinknonce` | `#samplepermalinknonce` | input |  | 1 |
+| <a id="id--search-panel"></a>`id--search-panel` | `#search-panel` | div | Search | 1 |
+| <a id="id--search-results"></a>`id--search-results` | `#search-results` | div |  | 1 |
+| <a id="id--side-sortables"></a>`id--side-sortables` | `#side-sortables` | div |  | 1 |
+| <a id="id--svg713"></a>`id--svg713` | `#svg713` | svg |  | 2 |
+| <a id="id--tabs-0-edit-post-block"></a>`id--tabs-0-edit-post-block` | `#tabs-0-edit-post/block` | button | Block | 1 |
+| <a id="id--tabs-0-edit-post-block-view"></a>`id--tabs-0-edit-post-block-view` | `#tabs-0-edit-post/block-view` | div |  | 1 |
+| <a id="id--tabs-0-edit-post-document"></a>`id--tabs-0-edit-post-document` | `#tabs-0-edit-post/document` | button | Size Chart | 1 |
+| <a id="id--tabs-0-edit-post-document-view"></a>`id--tabs-0-edit-post-document-view` | `#tabs-0-edit-post/document-view` | div |  | 1 |
+| <a id="id--tabs-1-blocks"></a>`id--tabs-1-blocks` | `#tabs-1-blocks` | button | Blocks | 1 |
+| <a id="id--tabs-1-blocks-view"></a>`id--tabs-1-blocks-view` | `#tabs-1-blocks-view` | div |  | 1 |
+| <a id="id--tabs-1-media"></a>`id--tabs-1-media` | `#tabs-1-media` | button | Media | 1 |
+| <a id="id--tabs-1-media-view"></a>`id--tabs-1-media-view` | `#tabs-1-media-view` | div |  | 1 |
+| <a id="id--tabs-1-patterns"></a>`id--tabs-1-patterns` | `#tabs-1-patterns` | button | Patterns | 1 |
+| <a id="id--tabs-1-patterns-view"></a>`id--tabs-1-patterns-view` | `#tabs-1-patterns-view` | div |  | 1 |
+| <a id="id--tabs-2-list-view"></a>`id--tabs-2-list-view` | `#tabs-2-list-view` | button | List View | 1 |
+| <a id="id--tabs-2-list-view-view"></a>`id--tabs-2-list-view-view` | `#tabs-2-list-view-view` | div |  | 1 |
+| <a id="id--tabs-2-outline"></a>`id--tabs-2-outline` | `#tabs-2-outline` | button | Outline | 1 |
+| <a id="id--tabs-2-outline-view"></a>`id--tabs-2-outline-view` | `#tabs-2-outline-view` | div |  | 1 |
+| <a id="id--toggle-custom-fields-form"></a>`id--toggle-custom-fields-form` | `#toggle-custom-fields-form` | form |  | 1 |
+| <a id="id--toggle-custom-fields-nonce"></a>`id--toggle-custom-fields-nonce` | `#toggle-custom-fields-nonce` | input |  | 1 |
+| <a id="id--toplevel_page_wc-admin-path--analytics-overview"></a>`id--toplevel_page_wc-admin-path--analytics-overview` | `#toplevel_page_wc-admin-path--analytics-overview` | li | Analytics | 1 |
+| <a id="id--toplevel_page_woocommerce"></a>`id--toplevel_page_woocommerce` | `#toplevel_page_woocommerce` | li |  | 1 |
+| <a id="id--toplevel_page_woocommerce-marketing"></a>`id--toplevel_page_woocommerce-marketing` | `#toplevel_page_woocommerce-marketing` | li | Marketing | 1 |
+| <a id="id--user-id"></a>`id--user-id` | `#user-id` | input |  | 1 |
+| <a id="id--wp-auth-check"></a>`id--wp-auth-check` | `#wp-auth-check` | div | Close dialog | 1 |
+| <a id="id--wp-auth-check-bg"></a>`id--wp-auth-check-bg` | `#wp-auth-check-bg` | div |  | 1 |
+| <a id="id--wp-auth-check-form"></a>`id--wp-auth-check-form` | `#wp-auth-check-form` | div |  | 1 |
+| <a id="id--wp-auth-check-wrap"></a>`id--wp-auth-check-wrap` | `#wp-auth-check-wrap` | div |  | 1 |
+| <a id="id--wp-emoji-styles-inline-css"></a>`id--wp-emoji-styles-inline-css` | `#wp-emoji-styles-inline-css` | link |  | 1 |
+| <a id="id--wp-link"></a>`id--wp-link` | `#wp-link` | form | Insert/edit link Close Enter | 1 |
+| <a id="id--wp-view-transitions-admin-inline-css"></a>`id--wp-view-transitions-admin-inline-css` | `#wp-view-transitions-admin-inline-css` | link |  | 1 |
+| <a id="id--wplink-enter-url"></a>`id--wplink-enter-url` | `#wplink-enter-url` | p | Enter the destination URL | 1 |
+| <a id="id--wplink-link-existing-content"></a>`id--wplink-link-existing-content` | `#wplink-link-existing-content` | p | Or link to existing content | 1 |
+
+## Role-like classes
+
+_10 entries_
+
+| Anchor | Selector | Tag | Text | Count |
+| --- | --- | --- | --- | --- |
+| <a id="class--botiga-add"></a>`class--botiga-add` | `.botiga-add` | button | Add Size Chart | 1 |
+| <a id="class--botiga-add-col"></a>`class--botiga-add-col` | `.botiga-add-col` | a | + | 14 |
+| <a id="class--botiga-add-row"></a>`class--botiga-add-row` | `.botiga-add-row` | a | + | 16 |
+| <a id="class--botiga-del-col"></a>`class--botiga-del-col` | `.botiga-del-col` | a | - | 14 |
+| <a id="class--botiga-del-row"></a>`class--botiga-del-row` | `.botiga-del-row` | a | - | 16 |
+| <a id="class--botiga-metabox-content"></a>`class--botiga-metabox-content` | `.botiga-metabox-content` | div | Size Name: | 1 |
+| <a id="class--botiga-metabox-field"></a>`class--botiga-metabox-field` | `.botiga-metabox-field` | div | Size Name: | 1 |
+| <a id="class--botiga-metabox-field-content"></a>`class--botiga-metabox-field-content` | `.botiga-metabox-field-content` | div | Size Name: + | 1 |
+| <a id="class--botiga-metabox-field-size-chart-content"></a>`class--botiga-metabox-field-size-chart-content` | `.botiga-metabox-field-size-chart-content` | div | Size Name: + - | 1 |
+| <a id="class--botiga-remove"></a>`class--botiga-remove` | `.botiga-remove` | a | Remove | 3 |
+
+---
+
+## Notes
+
+- This catalog lists *candidate* selectors extracted statically from the snapshot's `index.html`. Not every entry is a stable chapter target — authors still pick the selector that best matches intent.
+- Role-like classes are filtered to (a) names matching a known interaction suffix (`-button`, `-tab`, `-toggle`, `-add`, …) OR (b) classes whose first in-scope occurrence is on an interactive tag (`button`, `a`, `input`, `textarea`, `select`, `li`) carrying non-empty text. `Tag` and `Text` columns are sourced from that first occurrence. The full WPForms class vocabulary is larger; run `tools/inspect-snapshot.js` for visibility-aware detail.
+- Duplicate IDs in captured HTML (a known sanitization debt) surface here as `Count > 1` — prefer a more specific selector when this happens.

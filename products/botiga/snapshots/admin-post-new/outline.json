@@ -1,0 +1,492 @@
+{
+  "slug": "admin-post-new",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "botiga-metabox-tab",
+      "event": "click",
+      "selector": ".botiga-metabox-tab",
+      "count": 3
+    },
+    {
+      "label": "wp-postbox-toggle",
+      "event": "click",
+      "selector": "#botiga_metabox-title",
+      "count": 2
+    },
+    {
+      "label": "wp-postbox-move",
+      "event": "click",
+      "selector": ".wp-tooltip__toggle",
+      "count": 2
+    },
+    {
+      "label": "blk-panel-body",
+      "event": "click",
+      "selector": ".components-button.components-panel__body-toggle",
+      "count": 2
+    },
+    {
+      "label": "blk-sidebar-toggle",
+      "event": "click",
+      "selector": "div.interface-pinned-items button.components-button.is-compact",
+      "count": 2
+    },
+    {
+      "label": "blk-meta-boxes",
+      "event": "click",
+      "selector": "div.edit-post-meta-boxes-main__presenter button",
+      "count": 5
+    },
+    {
+      "label": "blk-chrome",
+      "event": "click",
+      "selector": "#\\:r3\\:",
+      "count": 18
+    },
+    {
+      "label": "blk-sidebar-tabs",
+      "event": "click",
+      "selector": ".enfox0g3[data-tab-id]",
+      "count": 2
+    },
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.is-compact[data-snap-park]",
+      "count": 5
+    },
+    {
+      "label": "index-by-space",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 2
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "div.botiga-metabox-field-content small a",
+      "count": 3
+    },
+    {
+      "label": "admin-chrome-fallback",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 57
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-tab",
+        "tag": "a",
+        "text": "General",
+        "count": 3,
+        "hidden": false,
+        "wired": "botiga-metabox-tab",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#auto_draft",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox_nonce",
+        "tag": "input",
+        "text": "dd777abda3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hiddenaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#meta-box-order-nonce",
+        "tag": "input",
+        "text": "f22733ef4c",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_post_status",
+        "tag": "input",
+        "text": "auto-draft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#originalaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_ID",
+        "tag": "input",
+        "text": "1663",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_type",
+        "tag": "input",
+        "text": "post",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#referredby",
+        "tag": "input",
+        "text": "http://fernhillhome.com/wp-admin/admin.php?page=botiga-da…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#samplepermalinknonce",
+        "tag": "input",
+        "text": "fd520cd9f3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toggle-custom-fields-nonce",
+        "tag": "input",
+        "text": "e35767814f",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#user-id",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#advanced-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga_metabox",
+        "tag": "div",
+        "text": "Botiga Post Options Move up Move down Show or hide panel Ge…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-title",
+        "tag": "h2",
+        "text": "Botiga Post Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-block-editor-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#editor",
+        "tag": "div",
+        "text": "No title · Post Save draft Publish Meta Boxes Use up and do…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-css-custom-properties-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#metaboxes",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "Botiga Post Options Move up Move down Show or hide panel Ge…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-2",
+        "tag": "div",
+        "text": "Botiga Post Options Move up Move down Show or hide panel Ge…",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": "#poststuff",
+        "tag": "div",
+        "text": "Botiga Post Options Move up Move down Show or hide panel Ge…",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#side-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toggle-custom-fields-form",
+        "tag": "form",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics AnalyticsOverviewProductsRevenueOrdersVariationsC…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce WooCommerceHome Orders CustomersCouponsReportsS…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing MarketingOverviewCoupons",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-content",
+        "tag": "div",
+        "text": "Disable Transparent Header Page Builder Mode This mode acti…",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-metabox-field",
+        "tag": "div",
+        "text": "Disable Transparent Header",
+        "count": 11,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-metabox-field-content",
+        "tag": "div",
+        "text": "",
+        "count": 12,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-metabox-field-select",
+        "tag": "div",
+        "text": "Target HeadingsThe TOC is built automatically from all your…",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-sidebar-select",
+        "tag": "div",
+        "text": "SidebarDefaultShop SidebarSidebarFooter 1Footer 2Footer 3Fo…",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

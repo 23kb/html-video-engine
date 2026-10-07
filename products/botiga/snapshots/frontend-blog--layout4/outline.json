@@ -1,0 +1,368 @@
+{
+  "slug": "frontend-blog--layout4",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "header-search-toggle",
+      "event": "click",
+      "selector": ".header-search",
+      "count": 2
+    },
+    {
+      "label": "shop-load-more",
+      "event": "click",
+      "selector": "a.botiga-pagination-button.button",
+      "count": 1
+    },
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "div.textwidget > ul > li:nth-of-type(1) > a",
+      "count": 6
+    },
+    {
+      "label": "blog-pagination-link",
+      "event": "click",
+      "selector": "a.page-numbers",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": ".botiga-dropdown-link",
+        "tag": "a",
+        "text": "Home",
+        "count": 37,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-pagination-button",
+        "tag": "a",
+        "text": "LOAD MORE",
+        "count": 1,
+        "hidden": false,
+        "wired": "shop-load-more",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-quick-view-popup-close-button",
+        "tag": "a",
+        "text": "Close quick view popup",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-side-mini-cart__close-button",
+        "tag": "a",
+        "text": "Close the side mini cart",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#primary-menu",
+        "tag": "ul",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#woocommerce-product-search-field-search-form-1",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-2",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-3",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".botiga-quick-view-popup-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#athemes-blocks-common-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-shop-filters-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-style-min-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-background-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#page",
+        "tag": "div",
+        "text": "Skip to content Home Blog Shop Room packages A full room, s…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1657",
+        "tag": "article",
+        "text": "September 14, 2026Care Guides Boucle, velvet or linen: pick…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1658",
+        "tag": "article",
+        "text": "August 22, 2026Inside Fernhill What a hand-cut dovetail tel…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1659",
+        "tag": "article",
+        "text": "July 30, 2026Design Tips Planning a guest room that works t…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1660",
+        "tag": "article",
+        "text": "May 24, 2026Care Guides Bringing your patio chairs in for t…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-329",
+        "tag": "article",
+        "text": "September 26, 2026Design Tips How to choose a sofa that fit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-343",
+        "tag": "article",
+        "text": "September 3, 2026Design Tips Five ways to make a small livi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-346",
+        "tag": "article",
+        "text": "August 11, 2026Care Guides Caring for solid oak: a simple s…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-354",
+        "tag": "article",
+        "text": "July 19, 2026Inside Fernhill The case for buying fewer, bet…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-355",
+        "tag": "article",
+        "text": "June 26, 2026Inside Fernhill Inside our Portland workshop A…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-358",
+        "tag": "article",
+        "text": "June 3, 2026Care Guides Outdoor furniture that survives a P…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#primary",
+        "tag": "main",
+        "text": "September 26, 2026Design Tips How to choose a sofa that fit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-header-cart",
+        "tag": "div",
+        "text": "0",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation",
+        "tag": "nav",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation-mobile",
+        "tag": "nav",
+        "text": "Home Blog Shop Room packagesA full room, styled by our Port…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#text-2",
+        "tag": "section",
+        "text": "ABOUT About Fernhill How it Works Reviews Contact Careers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-3",
+        "tag": "section",
+        "text": "HELP FAQs Privacy Policy Terms Returns",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-4",
+        "tag": "section",
+        "text": "Solid wood furniture, built by hand in Portland and made to…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_product_categories-1",
+        "tag": "section",
+        "text": "SHOP Bedroom Dining Home Office Living Room Outdoor Packages",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-inline-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-library-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".bhfb-component-search",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".bhfb-header",
+        "tag": "header",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".bhfb-row",
+        "tag": "div",
+        "text": "",
+        "count": 10,
+        "hidden": true
+      },
+      {
+        "sel": ".bhfb-sticky-header",
+        "tag": "div",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dropdown-li",
+        "tag": "li",
+        "text": "Home",
+        "count": 42,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mega-menu",
+        "tag": "li",
+        "text": "Shop Room packages A full room, styled by our Portland team…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mega-menu-column",
+        "tag": "li",
+        "text": "Room packages A full room, styled by our Portland team, for…",
+        "count": 8,
+        "hidden": false
+      }
+    ]
+  }
+}

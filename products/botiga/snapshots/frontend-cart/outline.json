@@ -1,0 +1,439 @@
+{
+  "slug": "frontend-cart",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "header-search-toggle",
+      "event": "click",
+      "selector": ".header-search",
+      "count": 2
+    },
+    {
+      "label": "qty-button",
+      "event": "click",
+      "selector": ".show",
+      "count": 4
+    },
+    {
+      "label": "cart-shipping-calculator",
+      "event": "click",
+      "selector": "a.shipping-calculator-button",
+      "count": 1
+    },
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "div.textwidget > ul > li:nth-of-type(1) > a",
+      "count": 6
+    },
+    {
+      "label": "store-write-guard",
+      "event": "click",
+      "selector": "a.remove",
+      "count": 4
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": ".botiga-dropdown-link",
+        "tag": "a",
+        "text": "Home",
+        "count": 37,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-quantity-minus",
+        "tag": "a",
+        "text": "Decrease product quantity.",
+        "count": 2,
+        "hidden": false,
+        "wired": "qty-button",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-quantity-plus",
+        "tag": "a",
+        "text": "Increase product quantity.",
+        "count": 2,
+        "hidden": false,
+        "wired": "qty-button",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-quick-view-popup-close-button",
+        "tag": "a",
+        "text": "Close quick view popup",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#primary-menu",
+        "tag": "ul",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#calc_shipping_city",
+        "tag": "input",
+        "text": "Portland",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_country",
+        "tag": "select",
+        "text": "Select a country / region… AfghanistanÅland IslandsAlbaniaA…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_postcode",
+        "tag": "input",
+        "text": "97210",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_state",
+        "tag": "select",
+        "text": "Select an option…AlabamaAlaskaArizonaArkansasCaliforniaColo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#coupon_code",
+        "tag": "input",
+        "text": "Coupon code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#quantity_6ac333b014da4",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#quantity_6ac333b0158e9",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_method_0_flat_rate2",
+        "tag": "input",
+        "text": "flat_rate:2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_method_0_free_shipping1",
+        "tag": "input",
+        "text": "free_shipping:1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_method_0_local_pickup3",
+        "tag": "input",
+        "text": "local_pickup:3",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-cart-nonce",
+        "tag": "input",
+        "text": "27651c3255",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-1",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-2",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-3",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-shipping-calculator-nonce",
+        "tag": "input",
+        "text": "8298c685f1",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".botiga-quick-view-popup-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#athemes-blocks-common-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-woocommerce-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_city_field",
+        "tag": "p",
+        "text": "Town / City *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_country_field",
+        "tag": "p",
+        "text": "Country / region Select a country / region… AfghanistanÅlan…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_postcode_field",
+        "tag": "p",
+        "text": "ZIP Code *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#calc_shipping_state_field",
+        "tag": "p",
+        "text": "State * Select an option…AlabamaAlaskaArizonaArkansasCalifo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-background-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#page",
+        "tag": "div",
+        "text": "Skip to content Home Blog Shop Room packages A full room, s…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#photoswipe-fullscreen-dialog",
+        "tag": "div",
+        "text": "Full screen image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-7",
+        "tag": "article",
+        "text": "Cart ← CONTINUE SHOPPING REMOVE ITEM THUMBNAIL IMAGE PRODUC…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#primary",
+        "tag": "main",
+        "text": "Cart ← CONTINUE SHOPPING REMOVE ITEM THUMBNAIL IMAGE PRODUC…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_method",
+        "tag": "ul",
+        "text": "Free shipping Flat rate: $10.00 Local pickup",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping-calculator-form",
+        "tag": "section",
+        "text": "Country / region Select a country / region… AfghanistanÅlan…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#site-header-cart",
+        "tag": "div",
+        "text": "2",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation",
+        "tag": "nav",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation-mobile",
+        "tag": "nav",
+        "text": "Home Blog Shop Room packagesA full room, styled by our Port…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#text-2",
+        "tag": "section",
+        "text": "ABOUT About Fernhill How it Works Reviews Contact Careers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-3",
+        "tag": "section",
+        "text": "HELP FAQs Privacy Policy Terms Returns",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-4",
+        "tag": "section",
+        "text": "Solid wood furniture, built by hand in Portland and made to…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_product_categories-1",
+        "tag": "section",
+        "text": "SHOP Bedroom Dining Home Office Living Room Outdoor Packages",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-inline-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-library-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".bhfb-component-search",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".bhfb-header",
+        "tag": "header",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".bhfb-row",
+        "tag": "div",
+        "text": "",
+        "count": 10,
+        "hidden": true
+      },
+      {
+        "sel": ".bhfb-sticky-header",
+        "tag": "div",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dropdown-li",
+        "tag": "li",
+        "text": "Home",
+        "count": 42,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mega-menu",
+        "tag": "li",
+        "text": "Shop Room packages A full room, styled by our Portland team…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mega-menu-column",
+        "tag": "li",
+        "text": "Room packages A full room, styled by our Portland team, for…",
+        "count": 8,
+        "hidden": false
+      }
+    ]
+  }
+}

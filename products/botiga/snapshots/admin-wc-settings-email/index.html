@@ -1,0 +1,922 @@
+<!doctype html>
+<html data-snap-unbaked="29" class="" lang="en-US" data-snap-pickr-parked="0" data-snap-dc-parked="0" style="margin-top: 0px; padding-top: 0px;"><head><link rel="stylesheet" href="../_shared/css/29467a00741c.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>WooCommerce settings ‹ Fernhill Home — WordPress</title>
+
+<link rel="preload" href="../_shared/assets/8e448dc9d295.css" as="style">
+<link rel="preload" href="../_shared/assets/380d55e179b5.css" as="style">
+<link rel="preload" href="../_shared/assets/01fc5bfcfadc.js" as="script">
+<link rel="preload" href="../_shared/assets/6ef138e1e684.js" as="script">
+<link rel="stylesheet" href="../_shared/css/5a850586792b.css" data-origin="/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load%5Bchunk_0%5D=dashicons,admin-bar,common,forms,admin-menu,dashboard,list-tables,edit,revisions,media,themes,about,nav-menus,wp-pointer,widgets&amp;load%5Bchunk_1%5D=,site-icon,l10n,wp-base-styles,wp-tooltip,buttons,wp-auth-check,wp-theme,wp-components,wp-commands,wp-color-picker,media-views&amp;ver=7.1.2">
+<link rel="stylesheet" href="../_shared/css/b139ac8a44c3.css">
+<link rel="stylesheet" href="../_shared/css/a578fe7f46dd.css" data-origin="/wp-content/plugins/wpforms-lite/assets/lib/font-awesome/css/all.min.css?ver=7.0.1">
+<link rel="stylesheet" href="../_shared/css/46f6e065b71d.css" data-origin="/wp-content/plugins/wpforms-lite/assets/lib/font-awesome/css/v4-shims.min.css?ver=4.7.0">
+<link rel="stylesheet" href="../_shared/css/9622fe018ae2.css" data-origin="/wp-admin/css/colors/modern/colors.min.css?ver=7.1.2">
+<link rel="stylesheet" href="../_shared/css/5c70cddb98f6.css" id="wp-view-transitions-admin-inline-css">
+<link rel="stylesheet" href="../_shared/css/965d01f65e59.css" data-origin="/wp-content/plugins/woocommerce/assets/css/brands-admin.css?ver=10.7.0">
+<link rel="stylesheet" href="../_shared/css/3caadf13f2cb.css" data-origin="/wp-content/themes/botiga/assets/css/admin/botiga-notices.min.css?ver=2.4.7">
+<link rel="stylesheet" href="../_shared/css/aa634a338197.css" id="botiga-notices-inline-css">
+<link rel="stylesheet" href="../_shared/css/c8d11da17289.css" data-origin="/wp-content/plugins/botiga-pro/inc/modules/templates-builder/assets/css/botiga-tb-gutenberg-blocks.min.css?ver=1.5.7">
+<link rel="stylesheet" href="../_shared/css/91ba4a43eb55.css" data-origin="/wp-content/plugins/woocommerce/assets/css/menu.css?ver=10.7.0">
+<link rel="stylesheet" href="../_shared/css/77443612ba04.css" data-origin="/wp-content/plugins/woocommerce/assets/css/admin.css?ver=10.7.0">
+<link rel="stylesheet" href="../_shared/css/20c4a8ed3fbb.css" data-origin="/wp-content/plugins/woocommerce/assets/css/jquery-ui/jquery-ui.min.css?ver=10.7.0">
+<link rel="stylesheet" href="../_shared/css/c720a7f5e432.css" data-origin="/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17">
+<link rel="stylesheet" href="../_shared/css/ea958276b7de.css" data-origin="/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=7.1.2">
+<link rel="stylesheet" href="../_shared/css/72dccd689b5d.css" data-origin="/wp-includes/js/imgareaselect/imgareaselect.css?ver=0.9.8">
+<link rel="stylesheet" href="../_shared/css/eacb23c21a0f.css" data-origin="/wp-content/plugins/wpforms-lite/assets/css/admin-bar.min.css?ver=1.10.0.5">
+<link rel="stylesheet" href="../_shared/css/ba282c0dd22f.css" id="wp-emoji-styles-inline-css">
+<link rel="stylesheet" href="../_shared/css/8e448dc9d295.css" data-origin="/wp-content/plugins/woocommerce/assets/client/admin/components/style.css?ver=35437f767b677afe6efb">
+<link rel="stylesheet" href="../_shared/css/d0be30f14f76.css" data-origin="/wp-content/plugins/woocommerce/assets/client/admin/admin-layout/style.css?ver=34c76045af18baf00602">
+<link rel="stylesheet" href="../_shared/css/29827ad7d732.css" data-origin="/wp-content/plugins/woocommerce/assets/client/admin/customer-effort-score/style.css?ver=wc-10.7.0">
+<link rel="stylesheet" href="../_shared/css/5059bb4c45f2.css" data-origin="/wp-content/plugins/woocommerce/assets/client/admin/experimental/style.css?ver=c3a98a54b5da6e4913bb">
+<link rel="stylesheet" href="../_shared/css/380d55e179b5.css" data-origin="/wp-content/plugins/woocommerce/assets/client/admin/embed/style.css?ver=f1644aab991ad8c205a1">
+<link rel="stylesheet" href="../_shared/css/8eb7ae215316.css" data-origin="/wp-content/plugins/woocommerce/assets/client/admin/onboarding/style.css?ver=dd71e9463b63149b1ffb">
+<link rel="stylesheet" href="../_shared/css/f9dcab9f72c9.css" data-origin="/wp-content/plugins/woocommerce/assets/client/admin/settings-embed/style.css?ver=9450ce3586c17e87f19e">
+<style data-origin="/wp-content/plugins/wpforms-lite//assets/css/integrations/woocommerce/notifications.min.css?ver=1.10.0.5">.wpforms-woocommerce-notification{position:relative;border:1px solid #c3c4c7;margin-block:22px 24px;margin-inline:0 15px;background-color:#ffffff;display:flex;flex-direction:row;justify-content:space-between}.wpforms-woocommerce-notification-image{background:url(../_shared/assets/b5f1fbd60e7b.svg) no-repeat right -1px bottom;min-width:175px}.wpforms-woocommerce-notification-content{padding:15px 20px 20px}.wpforms-woocommerce-notification h2{margin:0;line-height:21px;font-size:17px;font-weight:500}.wpforms-woocommerce-notification p{font-size:15px;line-height:18px;margin:6px 0 9px 0;color:#50575e}.wpforms-woocommerce-notification #wpforms-woocommerce-close{cursor:pointer;color:#a7aaad;opacity:0.5;position:absolute;top:0;inset-inline-end:0;width:30px;height:30px;line-height:30px}.wpforms-woocommerce-notification #wpforms-woocommerce-close:hover{opacity:1}body.rtl .wpforms-woocommerce-notification-image{transform:scaleX(-1)}@media (max-width: 680px){.wpforms-woocommerce-notification-image{display:none}.wpforms-woocommerce-notification .button-primary{min-height:30px;padding:0 10px;font-size:13px;margin-bottom:0;line-height:2.15384615}}@media (max-width: 620px){.wpforms-woocommerce-notification{margin-inline-end:0}}
+</style>
+<link rel="stylesheet" href="../_shared/css/e943b1d6501f.css" data-origin="/wp-content/plugins/woocommerce/assets/css/activation.css?ver=10.7.0">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <link rel="stylesheet" href="../_shared/css/ac1d84bc0efd.css">
+        
+				<meta name="apple-itunes-app" content="app-id=1389130815">
+			<link rel="stylesheet" href="../_shared/css/1c1ae4b56153.css">
+	
+	
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"><link rel="stylesheet" href="../_shared/css/2e89200c8716.css"><link rel="stylesheet" href="../_shared/css/7fd350c669e5.css"><link rel="stylesheet" href="../_shared/css/c765558cabc1.css"><link rel="stylesheet" href="../_shared/css/f8c5b631a9fc.css"><link rel="stylesheet" href="../_shared/css/b9aef0c2c3d4.css"><link rel="stylesheet" href="../_shared/css/064ccc048836.css"><link rel="stylesheet" href="../_shared/css/9d042873285b.css"><link rel="stylesheet" href="../_shared/css/65f19012e821.css"><link rel="stylesheet" href="../_shared/css/542e5e048421.css"><link rel="stylesheet" href="../_shared/css/0f377f0a1c5d.css"><link rel="stylesheet" href="../_shared/css/d33d880870f0.css"><link rel="stylesheet" href="../_shared/css/c1ffdec3a6c7.css"><link rel="stylesheet" href="../_shared/css/f0615b626179.css"><link rel="stylesheet" href="../_shared/css/40e44ecd0eb8.css"><link rel="stylesheet" href="../_shared/css/4d636d379c49.css"><link rel="stylesheet" href="../_shared/css/99f9725500ef.css"><link rel="stylesheet" href="../_shared/css/1f51979cb68d.css"><link rel="stylesheet" href="../_shared/css/195a803ff4b5.css"><link rel="stylesheet" href="../_shared/css/22163b486ad7.css"><link rel="stylesheet" href="../_shared/css/61e6713a98f2.css"><link rel="stylesheet" href="../_shared/css/93893b6f6254.css"><link rel="stylesheet" href="../_shared/css/aaa0e5dff106.css"><link rel="stylesheet" href="../_shared/css/603348353aa4.css"><link rel="stylesheet" href="../_shared/css/367f8cedd175.css"><link rel="stylesheet" href="../_shared/css/a65d581e420f.css"><link rel="stylesheet" href="../_shared/css/4d4c0c6f20df.css"><link rel="stylesheet" href="../_shared/css/dc941bb72ab0.css"><link rel="stylesheet" href="../_shared/css/48cbb88d12b4.css"><link rel="stylesheet" href="../_shared/css/61041c01af68.css"><link rel="stylesheet" href="../_shared/css/9bb75dc1a0f5.css"><link rel="stylesheet" href="../_shared/css/43ac40d1e346.css" id="iris-css"><style data-emotion="css" data-s="">.css-1y883gm { color: var(--wp-components-color-foreground, var(--wpds-color-foreground-content-neutral, #1e1e1e)); line-height: 1.4; margin: 0px; text-wrap: pretty; font-size: calc(13px); font-weight: normal; }
+.css-2jxl4k { font-family: -apple-system, system-ui, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif; font-size: 13px; box-sizing: border-box; }
+.css-2jxl4k *, .css-2jxl4k ::before, .css-2jxl4k ::after { box-sizing: inherit; }
+.components-panel__row .css-1chyuqs { margin-bottom: inherit; }
+.css-nl7fsb { color: var(--wp-components-color-foreground, var(--wpds-color-foreground-content-neutral, #1e1e1e)); cursor: pointer; }
+.css-v7a2uz { box-sizing: border-box; position: relative; border-radius: 2px; padding-top: 0px; color: var(--wp-components-color-foreground, var(--wpds-color-foreground-content-neutral, #1e1e1e)); cursor: pointer; }
+.css-v7a2uz:focus-within:not(:has(:is(.em5sgkm8, .em5sgkm7):focus-within)) .em5sgkm6 { border-color: var(--wp-components-color-accent, var(--wp-admin-theme-color, #3858e9)); box-shadow: 0 0 0 0.5px var(--wp-components-color-accent, var(--wp-admin-theme-color, #3858e9)); outline: transparent solid 2px; outline-offset: -2px; }
+.css-l7ggfi { -webkit-box-align: center; align-items: center; box-sizing: border-box; border-radius: inherit; display: flex; flex: 1 1 0%; position: relative; background-color: var(--wp-components-color-background, var(--wpds-color-background-surface-neutral-strong, #fff)); width: 100%; }
+.css-1s4lx8l.css-1s4lx8l.css-1s4lx8l { appearance: none; background: transparent; box-sizing: border-box; border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; color: currentcolor; cursor: inherit; display: block; font-family: inherit; line-height: 1.3; margin: 0px; width: 100%; max-width: none; white-space: nowrap; text-overflow: ellipsis; font-size: 16px; height: 40px; min-height: 40px; padding: 0px 30px 0px 12px; overflow: hidden; box-shadow: none !important; }
+@media (min-width: 600px) {
+  .css-1s4lx8l.css-1s4lx8l.css-1s4lx8l { font-size: 13px; }
+}
+.css-jgf79h { -webkit-box-align: center; align-items: center; align-self: stretch; box-sizing: border-box; display: flex; }
+.css-12askwt { position: absolute; pointer-events: none; right: 0px; }
+.css-1iogo6k { padding-inline-end: 12px; position: absolute; pointer-events: none; right: 0px; }
+.css-1y1fx19 { margin-inline-end: calc(-4px); line-height: 0; }
+.css-1y1fx19 path { fill: currentcolor; }
+.css-x9it49.css-x9it49.css-x9it49 { box-sizing: border-box; border-color: var(--wp-components-color-gray-600, var(--wpds-color-stroke-interactive-neutral, #8d8d8d)); border-radius: inherit; border-style: solid; border-width: 1px; inset: 0px; margin: 0px; padding: 0px 0px 0px 2px; pointer-events: none; position: absolute; }</style><link rel="stylesheet" href="../_shared/css/f7e2ad7fe8d4.css" data-origin="/wp-content/plugins/woocommerce/assets/client/admin/chunks/1438.style.css?ver=1a0ef7160a89435a3a20"><link rel="stylesheet" href="../_shared/css/c8fb16790650.css"><link rel="stylesheet" href="../_shared/css/0fa9a8527ebc.css"></head>
+<body class="wp-admin wp-core-ui js theme-botiga woocommerce-feature-enabled-activity-panels woocommerce-feature-enabled-analytics woocommerce-feature-enabled-analytics-scheduled-import woocommerce-feature-enabled-product-block-editor woocommerce-feature-enabled-experimental-iapi-mini-cart woocommerce-feature-enabled-coupons woocommerce-feature-enabled-core-profiler woocommerce-feature-enabled-customize-store woocommerce-feature-enabled-customer-effort-score-tracks woocommerce-feature-enabled-import-products-task woocommerce-feature-enabled-experimental-fashion-sample-products woocommerce-feature-enabled-shipping-smart-defaults woocommerce-feature-enabled-shipping-setting-tour woocommerce-feature-enabled-homescreen woocommerce-feature-enabled-marketing woocommerce-feature-enabled-mobile-app-banner woocommerce-feature-enabled-onboarding woocommerce-feature-enabled-onboarding-tasks woocommerce-feature-enabled-pattern-toolkit-full-composability woocommerce-feature-enabled-product-custom-fields woocommerce-feature-enabled-remote-inbox-notifications woocommerce-feature-enabled-remote-free-extensions woocommerce-feature-enabled-payment-gateway-suggestions woocommerce-feature-enabled-printful woocommerce-feature-enabled-shipping-label-banner woocommerce-feature-enabled-subscriptions woocommerce-feature-enabled-store-alerts woocommerce-feature-enabled-transient-notices woocommerce-feature-enabled-woo-mobile-welcome woocommerce-feature-enabled-wc-pay-promotion woocommerce-feature-enabled-wc-pay-welcome-page woocommerce-feature-enabled-launch-your-store woocommerce-admin-page woocommerce-embed-page woocommerce_page_wc-settings-email wc-wp-version-gte-53 wc-wp-version-gte-55 wc-wp-version-gte-70 woocommerce_page_wc-settings auto-fold branch-7-1 version-7-1-2 admin-color-modern locale-en-us svg wp-theme-botiga customize-support sticky-menu" style="margin-top: 0px; padding-top: 0px;">
+
+
+
+
+<div id="wpwrap">
+
+<div id="adminmenumain" role="navigation" aria-label="Main menu">
+<a href="#wpbody-content" class="screen-reader-shortcut">Skip to main content</a>
+<a href="#wp-toolbar" class="screen-reader-shortcut">Skip to toolbar</a>
+<div id="adminmenuback"></div>
+<div id="adminmenuwrap">
+<ul id="adminmenu">
+
+
+	<li class="wp-first-item wp-has-submenu wp-not-current-submenu menu-top menu-top-first menu-icon-dashboard menu-top-first menu-top-last" id="menu-dashboard">
+	<a href="index.php" class="wp-first-item wp-has-submenu wp-not-current-submenu menu-top menu-top-first menu-icon-dashboard menu-top-first menu-top-last" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-dashboard" aria-hidden="true"><br></div><div class="wp-menu-name">Dashboard</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Dashboard</li><li class="wp-first-item"><a href="index.php" class="wp-first-item">Home</a></li><li><a href="update-core.php">Updates </a></li></ul></li>
+	<li class="wp-not-current-submenu wp-menu-separator" aria-hidden="true"><div class="separator"></div></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" id="menu-posts">
+	<a href="edit.php" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-post open-if-no-js menu-top-first" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-post" aria-hidden="true"><br></div><div class="wp-menu-name">Posts</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Posts</li><li class="wp-first-item"><a href="edit.php" class="wp-first-item">All Posts</a></li><li><a href="post-new.php">Add Post</a></li><li><a href="edit-tags.php?taxonomy=category">Categories</a></li><li><a href="edit-tags.php?taxonomy=post_tag">Tags</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" id="menu-media">
+	<a href="upload.php" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-media" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-media" aria-hidden="true"><br></div><div class="wp-menu-name">Media</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Media</li><li class="wp-first-item"><a href="upload.php" class="wp-first-item">Library</a></li><li><a href="media-new.php">Add Media File</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" id="menu-pages">
+	<a href="edit.php?post_type=page" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-page" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-page" aria-hidden="true"><br></div><div class="wp-menu-name">Pages</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Pages</li><li class="wp-first-item"><a href="edit.php?post_type=page" class="wp-first-item">All Pages</a></li><li><a href="post-new.php?post_type=page">Add Page</a></li></ul></li>
+	<li class="wp-not-current-submenu menu-top menu-icon-comments menu-top-last" id="menu-comments">
+	<a href="edit-comments.php" class="wp-not-current-submenu menu-top menu-icon-comments menu-top-last"><div class="wp-menu-image dashicons-before dashicons-admin-comments" aria-hidden="true"><br></div><div class="wp-menu-name">Comments </div></a></li>
+	<li class="wp-not-current-submenu wp-menu-separator woocommerce" aria-hidden="true"><div class="separator"></div></li>
+	<li class="wp-has-submenu wp-has-current-submenu wp-menu-open menu-top toplevel_page_woocommerce menu-top-first" id="toplevel_page_woocommerce"><a href="admin.php?page=wc-admin" class="wp-has-submenu wp-has-current-submenu wp-menu-open menu-top toplevel_page_woocommerce menu-top-first"><div class="wp-menu-image svg" style="background-image: url(&quot;data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmlld0JveD0iMCAwIDg1LjkgNDcuNiI+CjxwYXRoIGZpbGw9IiNmZmYiIGQ9Ik03Ny40LDAuMWMtNC4zLDAtNy4xLDEuNC05LjYsNi4xTDU2LjQsMjcuN1Y4LjZjMC01LjctMi43LTguNS03LjctOC41cy03LjEsMS43LTkuNiw2LjVMMjguMywyNy43VjguOAoJYzAtNi4xLTIuNS04LjctOC42LTguN0g3LjNDMi42LDAuMSwwLDIuMywwLDYuM3MyLjUsNi40LDcuMSw2LjRoNS4xdjI0LjFjMCw2LjgsNC42LDEwLjgsMTEuMiwxMC44UzMzLDQ1LDM2LjMsMzguOWw3LjItMTMuNXYxMS40CgljMCw2LjcsNC40LDEwLjgsMTEuMSwxMC44czkuMi0yLjMsMTMtOC43bDE2LjYtMjhjMy42LTYuMSwxLjEtMTAuOC02LjktMTAuOEM3Ny4zLDAuMSw3Ny4zLDAuMSw3Ny40LDAuMXoiLz4KPC9zdmc+Cg==&quot;) !important;" aria-hidden="true"><br></div><div class="wp-menu-name">WooCommerce</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">WooCommerce</li><li class="wp-first-item"><a href="admin.php?page=wc-admin" class="wp-first-item">Home </a></li><li><a href="admin.php?page=wc-orders">Orders </a></li><li><a href="admin.php?page=wc-admin&amp;path=/customers">Customers</a></li><li><a href="admin.php?page=coupons-moved">Coupons</a></li><li><a href="admin.php?page=wc-reports">Reports</a></li><li class="current"><a href="admin.php?page=wc-settings" class="current" aria-current="page">Settings</a></li><li><a href="admin.php?page=wc-status">Status</a></li><li class="hide-if-js"><a href="admin.php?page=wc-addons" class="hide-if-js"></a></li><li><a href="admin.php?page=wc-admin&amp;path=/extensions">Extensions </a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-product" id="menu-posts-product">
+	<a href="edit.php?post_type=product" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-product" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-archive" aria-hidden="true"><br></div><div class="wp-menu-name">Products</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Products</li><li class="wp-first-item"><a href="edit.php?post_type=product" class="wp-first-item">All Products</a></li><li><a href="post-new.php?post_type=product">Add new product</a></li><li><a href="edit-tags.php?taxonomy=product_brand&amp;post_type=product">Brands</a></li><li><a href="edit-tags.php?taxonomy=product_cat&amp;post_type=product">Categories</a></li><li><a href="edit-tags.php?taxonomy=product_tag&amp;post_type=product">Tags</a></li><li><a href="edit.php?post_type=product&amp;page=product_attributes">Attributes</a></li><li><a href="edit.php?post_type=size_chart">Size Chart</a></li><li><a href="edit.php?post_type=linked_variation">Linked Variations</a></li><li><a href="edit.php?post_type=product&amp;page=product-reviews">Reviews</a></li></ul></li>
+	
+	<li class="wp-has-submenu wp-not-current-submenu menu-top toplevel_page_wc-admin&amp;path=/analytics/overview" id="toplevel_page_wc-admin-path--analytics-overview"><a href="admin.php?page=wc-admin&amp;path=/analytics/overview" class="wp-has-submenu wp-not-current-submenu menu-top toplevel_page_wc-admin&amp;path=/analytics/overview" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-chart-bar" aria-hidden="true"><br></div><div class="wp-menu-name">Analytics</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Analytics</li><li class="wp-first-item"><a href="admin.php?page=wc-admin&amp;path=/analytics/overview" class="wp-first-item">Overview</a></li><li><a href="admin.php?page=wc-admin&amp;path=/analytics/products">Products</a></li><li><a href="admin.php?page=wc-admin&amp;path=/analytics/revenue">Revenue</a></li><li><a href="admin.php?page=wc-admin&amp;path=/analytics/orders">Orders</a></li><li><a href="admin.php?page=wc-admin&amp;path=/analytics/variations">Variations</a></li><li><a href="admin.php?page=wc-admin&amp;path=/analytics/categories">Categories</a></li><li><a href="admin.php?page=wc-admin&amp;path=/analytics/coupons">Coupons</a></li><li><a href="admin.php?page=wc-admin&amp;path=/analytics/taxes">Taxes</a></li><li><a href="admin.php?page=wc-admin&amp;path=/analytics/downloads">Downloads</a></li><li><a href="admin.php?page=wc-admin&amp;path=/analytics/stock">Stock</a></li><li><a href="admin.php?page=wc-admin&amp;path=/analytics/settings">Settings</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top toplevel_page_woocommerce-marketing" id="toplevel_page_woocommerce-marketing">
+	<a href="admin.php?page=wc-admin&amp;path=/marketing" class="wp-has-submenu wp-not-current-submenu menu-top toplevel_page_woocommerce-marketing" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-megaphone" aria-hidden="true"><br></div><div class="wp-menu-name">Marketing</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Marketing</li><li class="wp-first-item"><a href="admin.php?page=wc-admin&amp;path=/marketing" class="wp-first-item">Overview</a></li><li><a href="edit.php?post_type=shop_coupon">Coupons</a></li></ul></li>
+	
+	
+	
+	<li class="wp-not-current-submenu wp-menu-separator" aria-hidden="true"><div class="separator"></div></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" id="menu-appearance">
+	<a href="themes.php" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-appearance menu-top-first" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-appearance" aria-hidden="true"><br></div><div class="wp-menu-name">Appearance</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Appearance</li><li class="wp-first-item"><a href="themes.php" class="wp-first-item">Themes </a></li><li><a href="site-editor.php">Design</a></li><li class="hide-if-no-customize"><a href="customize.php?return=%2Fwp-admin%2Fadmin.php%3Fpage%3Dwc-settings%26tab%3Demail" class="hide-if-no-customize">Customize</a></li><li><a href="widgets.php">Widgets</a></li><li><a href="font-library.php">Fonts</a></li><li><a href="nav-menus.php">Menus</a></li><li class="hide-if-no-customize"><a href="customize.php?return=%2Fwp-admin%2Fadmin.php%3Fpage%3Dwc-settings%26tab%3Demail&amp;autofocus%5Bcontrol%5D=header_image" class="hide-if-no-customize">Header</a></li><li class="hide-if-no-customize"><a href="customize.php?return=%2Fwp-admin%2Fadmin.php%3Fpage%3Dwc-settings%26tab%3Demail&amp;autofocus%5Bcontrol%5D=background_image" class="hide-if-no-customize">Background</a></li><li><a href="themes.php?page=custom-header">Header</a></li><li><a href="themes.php?page=custom-background">Background</a></li><li><a href="theme-editor.php">Theme File Editor</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-plugins" id="menu-plugins">
+	<a href="plugins.php" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-plugins" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-plugins" aria-hidden="true"><br></div><div class="wp-menu-name">Plugins </div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Plugins </li><li class="wp-first-item"><a href="plugins.php" class="wp-first-item">Installed Plugins</a></li><li><a href="plugin-install.php">Add Plugin</a></li><li><a href="plugin-editor.php">Plugin File Editor</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" id="menu-users">
+	<a href="users.php" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-users" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-users" aria-hidden="true"><br></div><div class="wp-menu-name">Users</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Users</li><li class="wp-first-item"><a href="users.php" class="wp-first-item">All Users</a></li><li><a href="user-new.php">Add User</a></li><li><a href="profile.php">Profile</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" id="menu-tools">
+	<a href="tools.php" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-tools" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-tools" aria-hidden="true"><br></div><div class="wp-menu-name">Tools</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Tools</li><li class="wp-first-item"><a href="tools.php" class="wp-first-item">Available Tools</a></li><li><a href="import.php">Import</a></li><li><a href="export.php">Export</a></li><li><a href="site-health.php">Site Health </a></li><li><a href="export-personal-data.php">Export Personal Data</a></li><li><a href="erase-personal-data.php">Erase Personal Data</a></li><li><a href="tools.php?page=action-scheduler">Scheduled Actions</a></li></ul></li>
+	<li class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" id="menu-settings">
+	<a href="options-general.php" class="wp-has-submenu wp-not-current-submenu menu-top menu-icon-settings menu-top-last" data-ariahaspopup=""><div class="wp-menu-image dashicons-before dashicons-admin-settings" aria-hidden="true"><br></div><div class="wp-menu-name">Settings</div></a>
+	<ul class="wp-submenu wp-submenu-wrap"><li class="wp-submenu-head" aria-hidden="true">Settings</li><li class="wp-first-item"><a href="options-general.php" class="wp-first-item">General</a></li><li><a href="options-connectors.php">Connectors</a></li><li><a href="options-writing.php">Writing</a></li><li><a href="options-reading.php">Reading</a></li><li><a href="options-discussion.php">Discussion</a></li><li><a href="options-media.php">Media</a></li><li><a href="options-permalink.php">Permalinks</a></li><li><a href="options-privacy.php">Privacy</a></li></ul></li><li id="collapse-menu" class="hide-if-no-js"><button type="button" id="collapse-button" aria-label="Collapse Main menu" aria-expanded="true"><span class="collapse-button-icon" aria-hidden="true"></span><span class="collapse-button-label">Collapse Menu</span></button></li></ul>
+</div>
+</div>
+<div id="wpcontent">
+
+		
+
+				<div id="woocommerce-embedded-root" class=""><div class="woocommerce-layout"><div class="woocommerce-layout__header"><div class="woocommerce-layout__header-wrapper"><h1 data-wp-c16t="true" data-wp-component="Text" class="components-truncate css-1y883gm components-text woocommerce-layout__header-heading woocommerce-layout__header-left-align">Settings</h1></div></div><div class="woocommerce-layout__footer"><div class="components-snackbar-list woocommerce-transient-notices components-notices__snackbar"></div></div></div><div style="display: none;"></div></div>
+		
+<div id="wpbody" role="main" style="margin-top: 60px;">
+
+<div id="wpbody-content">
+		<div id="screen-meta" class="metabox-prefs">
+
+			<div id="contextual-help-wrap" class="hidden" tabindex="-1" aria-label="Contextual Help Tab">
+				<div id="contextual-help-back"></div>
+				<div id="contextual-help-columns">
+					<div class="contextual-help-tabs">
+						<ul>
+												</ul>
+					</div>
+
+										<div class="contextual-help-sidebar">
+						<p><strong>For more information:</strong></p><p><a href="https://woocommerce.com/?utm_source=helptab&amp;utm_medium=product&amp;utm_content=about&amp;utm_campaign=woocommerceplugin" target="_blank">About WooCommerce</a></p><p><a href="https://wordpress.org/plugins/woocommerce/" target="_blank">WordPress.org project</a></p><p><a href="https://github.com/woocommerce/woocommerce/" target="_blank">GitHub project</a></p><p><a href="https://woocommerce.com/product-category/themes/?utm_source=helptab&amp;utm_medium=product&amp;utm_content=wcthemes&amp;utm_campaign=woocommerceplugin" target="_blank">Official themes</a></p><p><a href="https://woocommerce.com/product-category/woocommerce-extensions/?utm_source=helptab&amp;utm_medium=product&amp;utm_content=wcextensions&amp;utm_campaign=woocommerceplugin" target="_blank">Official extensions</a></p>					</div>
+					
+					<div class="contextual-help-tabs-wrap">
+											</div>
+				</div>
+			</div>
+				</div>
+		<div class="woocommerce-layout__jitm" id="jp-admin-notices"></div><div class="woocommerce-layout__notice-list-hide" id="wp__notice-list"></div>
+<div><div class="woocommerce-layout"><div class="woocommerce-layout__primary" id="woocommerce-layout__primary"><div id="woocommerce-layout__notice-list" class="woocommerce-layout__notice-list"></div></div></div></div><div class="wrap woocommerce">
+		<form method="post" id="mainform" action="" enctype="multipart/form-data">
+					<nav class="nav-tab-wrapper woo-nav-tab-wrapper">
+				<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=general" class="nav-tab ">General</a><a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=products" class="nav-tab ">Products</a><a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=shipping" class="nav-tab ">Shipping</a><a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=checkout" class="nav-tab ">Payments</a><a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=account" class="nav-tab ">Accounts &amp; Privacy</a><a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email" class="nav-tab nav-tab-active">Emails</a><a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=integration" class="nav-tab ">Integration</a><a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=site-visibility" class="nav-tab ">Site visibility</a><a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=point-of-sale" class="nav-tab ">Point of Sale</a><a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=advanced" class="nav-tab ">Advanced</a>			</nav>
+					<h1 class="screen-reader-text">Emails</h1>
+			<h2>Email notifications</h2><div id="email_notification_settings-description"><p>Email notifications sent from WooCommerce are listed below. Click on an email to configure it.<br>To ensure your store’s notifications arrive in your and your customers’ inboxes, we recommend connecting your email address to your domain and setting up a dedicated SMTP server. If something doesn’t seem to be sending correctly, install the <a href="https://wordpress.org/plugins/wp-mail-logging/">WP Mail Logging Plugin</a> or check the <a href="https://woocommerce.com/document/email-faq">Email FAQ page</a>.</p>
+</div><div class="wpforms-woocommerce-notification">
+			<div class="wpforms-woocommerce-notification-content">
+				<h2>
+					Make Sure Important Emails Reach Your Customers				</h2>
+
+				<p>
+					Solve common email deliverability issues for good.				</p>
+
+				<a href="http://fernhillhome.com/wp-admin/admin.php?page=wpforms-smtp&amp;source=woocommerce" class="button button-primary">
+					Get WP Mail SMTP				</a>
+			</div>
+
+			<div class="wpforms-woocommerce-notification-image"></div>
+
+			<i class="dashicons dashicons-no-alt" id="wpforms-woocommerce-close" title="Close the notification"></i>
+		</div><table class="form-table">
+
+
+		
+
+				<tbody><tr valign="top">
+		<td class="wc_emails_wrapper" colspan="2">
+			<table class="wc_emails widefat" cellspacing="0">
+				<thead>
+					<tr>
+						<th class="wc-email-settings-table-status"></th><th class="wc-email-settings-table-name">Email</th><th class="wc-email-settings-table-email_type">Content type</th><th class="wc-email-settings-table-recipient">Recipient(s)</th><th class="wc-email-settings-table-actions"></th>						</tr>
+					</thead>
+					<tbody>
+						<tr><td class="wc-email-settings-table-status"><span class="status-enabled tips">Yes</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_new_order">New order</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Receive an email notification every time a new order is placed"></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">maya@fernhillhome.com</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_new_order">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-enabled tips">Yes</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_cancelled_order">Cancelled order</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Receive an email notification when an order that was processing or on hold gets cancelled"></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">maya@fernhillhome.com</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_cancelled_order">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-disabled tips">-</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_cancelled_order">Cancelled order</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Send an email to customers notifying them when their order has been cancelled"></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">Customer</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_cancelled_order">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-enabled tips">Yes</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_failed_order">Failed order</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Select who should be notified if an order that was previously processing or on-hold has failed."></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">maya@fernhillhome.com</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_failed_order">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-enabled tips">Yes</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_failed_order">Failed order</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Receive an email notification when an order that was processing or on hold fails"></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">Customer</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_failed_order">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-enabled tips">Yes</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_on_hold_order">Order on-hold</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Send an email to customers notifying them when their order has been placed on hold"></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">Customer</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_on_hold_order">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-enabled tips">Yes</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_processing_order">Processing order</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Send an email to customers notifying them that their order is being processed"></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">Customer</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_processing_order">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-enabled tips">Yes</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_completed_order">Completed order</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Send an email to customers notifying them that their order is complete and has been shipped"></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">Customer</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_completed_order">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-enabled tips">Yes</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_refunded_order">Refunded order</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Send an email to customers notifying them when an order has been partially or fully refunded"></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">Customer</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_refunded_order">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-manual tips">Manual</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_invoice">Order details</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Manually send an email to your customers containing their order information and payment links"></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">Customer</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_invoice">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-enabled tips">Yes</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_note">Customer note</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Send an email to customers notifying them when you’ve added a note to their order"></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">Customer</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_note">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-enabled tips">Yes</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_reset_password">Reset password</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Send an email to customers notifying them that their password has been reset"></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">Customer</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_reset_password">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-enabled tips">Yes</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_new_account">New account</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Send an email to customers notifying them that they have created an account"></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">Customer</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_new_account">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-enabled tips">Yes</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_admin_payment_gateway_enabled">Payment gateway enabled</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Payment gateway enabled emails are sent to chosen recipient(s) when a payment gateway is enabled."></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">maya@fernhillhome.com</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_admin_payment_gateway_enabled">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-manual tips">Manual</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_pos_completed_order">POS completed order</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Let customers know once their POS order is complete."></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">Customer</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_pos_completed_order">Manage</a>
+										</td></tr><tr><td class="wc-email-settings-table-status"><span class="status-manual tips">Manual</span></td><td class="wc-email-settings-table-name">
+										<a href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_pos_refunded_order">POS refunded order</a>
+										<span class="woocommerce-help-tip" tabindex="0" aria-label="Let customers know when a full or partial refund is on its way to them for their POS order."></span>
+										</td><td class="wc-email-settings-table-email_type">
+										text/html
+										</td><td class="wc-email-settings-table-recipient">Customer</td><td class="wc-email-settings-table-actions">
+										<a class="button alignright" href="http://fernhillhome.com/wp-admin/admin.php?page=wc-settings&amp;tab=email&amp;section=wc_email_customer_pos_refunded_order">Manage</a>
+										</td></tr>					</tbody>
+				</table>
+			</td>
+		</tr>
+		</tbody></table><h2>Email sender options</h2><div id="email_options-description"><p>Set the name and email address you’d like your outgoing emails to use.</p>
+</div><table class="form-table">
+
+						<tbody><tr class="">
+							<th scope="row" class="titledesc">
+								<label for="woocommerce_email_from_name">"From" name </label>
+							</th>
+							<td class="forminp forminp-text">
+								<input name="woocommerce_email_from_name" id="woocommerce_email_from_name" type="text" style="min-width: 400px;" value="Fernhill Home" class="" placeholder=""> 							</td>
+						</tr>
+												<tr class="">
+							<th scope="row" class="titledesc">
+								<label for="woocommerce_email_from_address">"From" address </label>
+							</th>
+							<td class="forminp forminp-email">
+								<input name="woocommerce_email_from_address" id="woocommerce_email_from_address" type="email" style="min-width: 400px;" value="hello@fernhillhome.com" class="" placeholder="" multiple="multiple"> 							</td>
+						</tr>
+						</tbody></table><h2>Email template</h2><div id="email_template_options-description"><p>Customize your WooCommerce email template and preview it below.</p>
+</div><table class="form-table">
+
+		<tbody><tr class="">
+			<th scope="row" class="titledesc">
+				<label for="woocommerce_email_header_image">Logo <span class="woocommerce-help-tip" tabindex="0" aria-label="Add your logo to each of your WooCommerce emails. If no logo is uploaded, your site title will be used instead."></span></label>
+			</th>
+			<td class="forminp forminp-email_image_url">
+				<input name="woocommerce_email_header_image" id="woocommerce_email_header_image" type="hidden" value="">
+				<div id="wc_settings_email_image_url_slotfill" data-id="woocommerce_email_header_image" data-image-url=""><div><button class="wc-settings-email-select-image" type="button"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiIGQ9Ik0xMS43MTk3IDQuNDY5NjZMNi40Njk2NyA5LjcxOTY2TDcuNTMwMzMgMTAuNzgwM0wxMS41IDYuODEwNjVMMTEuNSAxOC41SDUuNUw1LjUgMTVINFYxOC41VjIwSDUuNUgxMS41SDEzSDE4LjVIMjBWMTguNVYxNUgxOC41VjE4LjVIMTNMMTMgNi43MDAzN0wxNy40OTQzIDEwLjgwMzlMMTguNTA1NyA5LjY5NjEzTDEyLjc1NTcgNC40NDYxM0wxMi4yMjY0IDMuOTYyODlMMTEuNzE5NyA0LjQ2OTY2WiIgZmlsbD0iIzk0OTQ5NCIvPgo8L3N2Zz4K" width="24" height="24" alt="Image upload icon" class="wc-settings-email-select-image-icon"></button></div><div style="display: none;"></div></div>
+			</td>
+		</tr>
+								<tr class="">
+							<th scope="row" class="titledesc">
+								<label for="woocommerce_email_header_image_width">Logo width (px) </label>
+							</th>
+							<td class="forminp forminp-number">
+								<input name="woocommerce_email_header_image_width" id="woocommerce_email_header_image_width" type="number" style="" value="120" class="" placeholder=""> 							</td>
+						</tr>
+												<tr class="">
+							<th scope="row" class="titledesc">
+								<label for="woocommerce_email_header_alignment">Header alignment </label>
+							</th>
+							<td class="forminp forminp-select">
+								<select name="woocommerce_email_header_alignment" id="woocommerce_email_header_alignment" style="" class="wc-enhanced-select select2-hidden-accessible enhanced" tabindex="-1" aria-hidden="true">
+																			<option value="left" selected="selected">Left</option>
+																				<option value="center">Center</option>
+																				<option value="right">Right</option>
+																		</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 400px;"><span class="selection"><span class="select2-selection select2-selection--single" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-woocommerce_email_header_alignment-container" role="combobox"><span class="select2-selection__rendered" id="select2-woocommerce_email_header_alignment-container" role="textbox" aria-readonly="true" title="Left">Left</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span> 							</td>
+						</tr>
+								<tr class="">
+			<th scope="row" class="titledesc">
+				<label for="woocommerce_email_font_family">Font family</label>
+			</th>
+			<td class="forminp forminp-email_font_family">
+			
+				<select name="woocommerce_email_font_family" id="woocommerce_email_font_family" tabindex="-1" class="select2-hidden-accessible" aria-hidden="true">
+					<optgroup label="Standard fonts">
+													<option value="Arial" data-font-family="Arial, 'Helvetica Neue', Helvetica, sans-serif">Arial</option>
+														<option value="Comic Sans MS" data-font-family="'Comic Sans MS', 'Marker Felt-Thin', Arial, sans-serif">Comic Sans MS</option>
+														<option value="Courier New" data-font-family="'Courier New', Courier, 'Lucida Sans Typewriter', 'Lucida Typewriter', monospace">Courier New</option>
+														<option value="Georgia" data-font-family="Georgia, Times, 'Times New Roman', serif">Georgia</option>
+														<option value="Helvetica" data-font-family="'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif" selected="selected">Helvetica</option>
+														<option value="Lucida" data-font-family="'Lucida Sans Unicode', 'Lucida Grande', sans-serif">Lucida</option>
+														<option value="Tahoma" data-font-family="Tahoma, Verdana, Segoe, sans-serif">Tahoma</option>
+														<option value="Times New Roman" data-font-family="'Times New Roman', Times, Baskerville, Georgia, serif">Times New Roman</option>
+														<option value="Trebuchet MS" data-font-family="'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif">Trebuchet MS</option>
+														<option value="Verdana" data-font-family="Verdana, Geneva, sans-serif">Verdana</option>
+												</optgroup>
+									</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 400px;"><span class="selection"><span class="select2-selection select2-selection--single" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-woocommerce_email_font_family-container" role="combobox"><span class="select2-selection__rendered" id="select2-woocommerce_email_font_family-container" role="textbox" aria-readonly="true" title="Helvetica">Helvetica</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+			</td>
+		</tr>
+								<tr class="">
+							<th scope="row" class="titledesc">
+								<label for="woocommerce_email_footer_text">Footer text <span class="woocommerce-help-tip" tabindex="0" aria-label="This text will appear in the footer of all of your WooCommerce emails. Available placeholders: {site_title} {site_url} {store_address} {store_email}"></span></label>
+							</th>
+							<td class="forminp forminp-textarea">
+																<textarea name="woocommerce_email_footer_text" id="woocommerce_email_footer_text" style="width: 400px; height: 75px;" class="" placeholder="N/A">{site_title}&lt;br /&gt;{store_address}</textarea>
+															</td>
+						</tr>
+						</tbody></table>		<hr class="wc-settings-email-color-palette-separator">
+		<div class="wc-settings-email-color-palette-header">
+			<h2 class="wc-settings-email-color-palette-title">Color palette</h2>
+							<div class="wc-settings-email-color-palette-buttons" id="wc_settings_email_color_palette_slotfill" data-default-colors="{&quot;base&quot;:&quot;#8526ff&quot;,&quot;bg&quot;:&quot;#ffffff&quot;,&quot;body_bg&quot;:&quot;#ffffff&quot;,&quot;body_text&quot;:&quot;#1e1e1e&quot;,&quot;footer_text&quot;:&quot;#787c82&quot;}" data-has-theme-json=""><span class="wc-settings-email-color-palette-message">Synced with theme.</span><div class="components-base-control components-toggle-control wc-settings-email-color-palette-auto-sync css-2jxl4k ej5x27r4"><div class="components-base-control__field css-1chyuqs ej5x27r3"><div data-wp-c16t="true" data-wp-component="HStack" class="e518617e7c3a18e7__flex _3896336788892095__items-row cc39999a5fb580d4__expanded-row components-flex components-h-stack" style="--wp-components-flex-align: center; --wp-components-flex-direction: row; --wp-components-flex-wrap: nowrap; --wp-components-flex-gap: calc(4px * 2); --wp-components-flex-justify: flex-start;"><span class="components-form-toggle is-checked"><input class="components-form-toggle__input" id="inspector-toggle-control-0" type="checkbox" checked="checked" style=""><span class="components-form-toggle__track"></span><span class="components-form-toggle__thumb"></span></span><label data-wp-c16t="true" data-wp-component="FlexBlock" for="inspector-toggle-control-0" class="bc09d0edcc10c304__item c184ec8e81027f31__block components-flex-item components-flex-block components-toggle-control__label" style="--wp-components-flex-item-display: block;">Auto-sync with theme changes</label></div></div></div><div style="display: none;"></div></div>
+				<input type="hidden" name="woocommerce_email_auto_sync_with_theme" id="woocommerce_email_auto_sync_with_theme" value="yes">
+					</div>
+		<table class="form-table">
+								<tbody><tr class="">
+							<th scope="row" class="titledesc">
+								<label for="woocommerce_email_base_color">Accent <span class="woocommerce-help-tip" tabindex="0" aria-label="Customize the color of your buttons and links. Default #8526ff."></span></label>
+							</th>
+							<td class="forminp forminp-color">‎
+								<span class="colorpickpreview" style="background: #8526ff">&nbsp;</span>
+								<input name="woocommerce_email_base_color" id="woocommerce_email_base_color" type="text" dir="ltr" style="width: 6em;" value="#8526ff" class="colorpick" placeholder=""><div class="iris-picker iris-border" style="display: none; width: 200px; height: 159.5px;"><div class="iris-picker-inner"><div class="iris-square" style="width: 139.5px; height: 139.5px;"><a class="iris-square-value ui-draggable ui-draggable-handle" href="#" style="left: 139.5px; top: 59.985px;"><span class="iris-square-handle ui-slider-handle"></span></a><div class="iris-square-inner iris-square-horiz" style="background-image: -webkit-linear-gradient(left, rgb(128, 128, 128), rgb(111, 0, 255));"></div><div class="iris-square-inner iris-square-vert" style="background-image: -webkit-linear-gradient(top, rgb(255, 255, 255), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0));"></div></div><div class="iris-slider iris-strip" style="height: 139.5px; width: 21.6px; background-image: -webkit-linear-gradient(top, rgb(255, 36, 36), rgb(255, 145, 36), rgb(255, 255, 36), rgb(145, 255, 36), rgb(36, 255, 36), rgb(36, 255, 145), rgb(36, 255, 255), rgb(36, 145, 255), rgb(36, 36, 255), rgb(145, 36, 255), rgb(255, 36, 255), rgb(255, 36, 145), rgb(255, 36, 36));"><div class="iris-slider-offset ui-slider ui-corner-all ui-slider-vertical ui-widget ui-widget-content"><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="bottom: 26.1111%;"></span></div></div></div></div>‎ 									<div id="colorPickerDiv_woocommerce_email_base_color" class="colorpickdiv" style="z-index: 100;background:#eee;border:1px solid #ccc;position:absolute;display:none;"></div>
+							</td>
+						</tr>
+												<tr class="">
+							<th scope="row" class="titledesc">
+								<label for="woocommerce_email_background_color">Email background <span class="woocommerce-help-tip" tabindex="0" aria-label="Select a color for the background of your emails. Default #ffffff."></span></label>
+							</th>
+							<td class="forminp forminp-color">‎
+								<span class="colorpickpreview" style="background: #ffffff">&nbsp;</span>
+								<input name="woocommerce_email_background_color" id="woocommerce_email_background_color" type="text" dir="ltr" style="width: 6em;" value="#ffffff" class="colorpick" placeholder=""><div class="iris-picker iris-border" style="display: none; width: 200px; height: 159.5px;"><div class="iris-picker-inner"><div class="iris-square" style="width: 139.5px; height: 139.5px;"><a class="iris-square-value ui-draggable ui-draggable-handle" href="#" style="left: 0px; top: 0px;"><span class="iris-square-handle ui-slider-handle"></span></a><div class="iris-square-inner iris-square-horiz" style="background-image: -webkit-linear-gradient(left, rgb(128, 128, 128), rgb(255, 0, 0));"></div><div class="iris-square-inner iris-square-vert" style="background-image: -webkit-linear-gradient(top, rgb(255, 255, 255), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0));"></div></div><div class="iris-slider iris-strip" style="height: 139.5px; width: 21.6px; background-image: -webkit-linear-gradient(top, rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255));"><div class="iris-slider-offset ui-slider ui-corner-all ui-slider-vertical ui-widget ui-widget-content"><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="bottom: 100%;"></span></div></div></div></div>‎ 									<div id="colorPickerDiv_woocommerce_email_background_color" class="colorpickdiv" style="z-index: 100;background:#eee;border:1px solid #ccc;position:absolute;display:none;"></div>
+							</td>
+						</tr>
+												<tr class="">
+							<th scope="row" class="titledesc">
+								<label for="woocommerce_email_body_background_color">Content background <span class="woocommerce-help-tip" tabindex="0" aria-label="Choose a background color for the content area of your emails. Default #ffffff."></span></label>
+							</th>
+							<td class="forminp forminp-color">‎
+								<span class="colorpickpreview" style="background: #ffffff">&nbsp;</span>
+								<input name="woocommerce_email_body_background_color" id="woocommerce_email_body_background_color" type="text" dir="ltr" style="width: 6em;" value="#ffffff" class="colorpick" placeholder=""><div class="iris-picker iris-border" style="display: none; width: 200px; height: 159.5px;"><div class="iris-picker-inner"><div class="iris-square" style="width: 139.5px; height: 139.5px;"><a class="iris-square-value ui-draggable ui-draggable-handle" href="#" style="left: 0px; top: 0px;"><span class="iris-square-handle ui-slider-handle"></span></a><div class="iris-square-inner iris-square-horiz" style="background-image: -webkit-linear-gradient(left, rgb(128, 128, 128), rgb(255, 0, 0));"></div><div class="iris-square-inner iris-square-vert" style="background-image: -webkit-linear-gradient(top, rgb(255, 255, 255), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0));"></div></div><div class="iris-slider iris-strip" style="height: 139.5px; width: 21.6px; background-image: -webkit-linear-gradient(top, rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255), rgb(255, 255, 255));"><div class="iris-slider-offset ui-slider ui-corner-all ui-slider-vertical ui-widget ui-widget-content"><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="bottom: 100%;"></span></div></div></div></div>‎ 									<div id="colorPickerDiv_woocommerce_email_body_background_color" class="colorpickdiv" style="z-index: 100;background:#eee;border:1px solid #ccc;position:absolute;display:none;"></div>
+							</td>
+						</tr>
+												<tr class="">
+							<th scope="row" class="titledesc">
+								<label for="woocommerce_email_text_color">Heading &amp; text <span class="woocommerce-help-tip" tabindex="0" aria-label="Set the color of your headings and text. Default #1e1e1e."></span></label>
+							</th>
+							<td class="forminp forminp-color">‎
+								<span class="colorpickpreview" style="background: #1e1e1e">&nbsp;</span>
+								<input name="woocommerce_email_text_color" id="woocommerce_email_text_color" type="text" dir="ltr" style="width: 6em;" value="#1e1e1e" class="colorpick" placeholder=""><div class="iris-picker iris-border" style="display: none; width: 200px; height: 159.5px;"><div class="iris-picker-inner"><div class="iris-square" style="width: 139.5px; height: 139.5px;"><a class="iris-square-value ui-draggable ui-draggable-handle" href="#" style="left: 0px; top: 122.76px;"><span class="iris-square-handle ui-slider-handle"></span></a><div class="iris-square-inner iris-square-horiz" style="background-image: -webkit-linear-gradient(left, rgb(128, 128, 128), rgb(255, 0, 0));"></div><div class="iris-square-inner iris-square-vert" style="background-image: -webkit-linear-gradient(top, rgb(255, 255, 255), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0));"></div></div><div class="iris-slider iris-strip" style="height: 139.5px; width: 21.6px; background-image: -webkit-linear-gradient(top, rgb(31, 31, 31), rgb(31, 31, 31), rgb(31, 31, 31), rgb(31, 31, 31), rgb(31, 31, 31), rgb(31, 31, 31), rgb(31, 31, 31), rgb(31, 31, 31), rgb(31, 31, 31), rgb(31, 31, 31), rgb(31, 31, 31), rgb(31, 31, 31), rgb(31, 31, 31));"><div class="iris-slider-offset ui-slider ui-corner-all ui-slider-vertical ui-widget ui-widget-content"><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="bottom: 100%;"></span></div></div></div></div>‎ 									<div id="colorPickerDiv_woocommerce_email_text_color" class="colorpickdiv" style="z-index: 100;background:#eee;border:1px solid #ccc;position:absolute;display:none;"></div>
+							</td>
+						</tr>
+												<tr class="">
+							<th scope="row" class="titledesc">
+								<label for="woocommerce_email_footer_text_color">Secondary text <span class="woocommerce-help-tip" tabindex="0" aria-label="Choose a color for your secondary text, such as your footer content. Default #787c82."></span></label>
+							</th>
+							<td class="forminp forminp-color">‎
+								<span class="colorpickpreview" style="background: #787c82">&nbsp;</span>
+								<input name="woocommerce_email_footer_text_color" id="woocommerce_email_footer_text_color" type="text" dir="ltr" style="width: 6em;" value="#787c82" class="colorpick" placeholder=""><div class="iris-picker iris-border" style="display: none; width: 200px; height: 159.5px;"><div class="iris-picker-inner"><div class="iris-square" style="width: 139.5px; height: 139.5px;"><a class="iris-square-value ui-draggable ui-draggable-handle" href="#" style="left: 5.58px; top: 71.145px;"><span class="iris-square-handle ui-slider-handle"></span></a><div class="iris-square-inner iris-square-horiz" style="background-image: -webkit-linear-gradient(left, rgb(128, 128, 128), rgb(0, 102, 255));"></div><div class="iris-square-inner iris-square-vert" style="background-image: -webkit-linear-gradient(top, rgb(255, 255, 255), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0));"></div></div><div class="iris-slider iris-strip" style="height: 139.5px; width: 21.6px; background-image: -webkit-linear-gradient(top, rgb(130, 120, 120), rgb(130, 125, 120), rgb(130, 130, 120), rgb(125, 130, 120), rgb(120, 130, 120), rgb(120, 130, 125), rgb(120, 130, 130), rgb(120, 125, 130), rgb(120, 120, 130), rgb(125, 120, 130), rgb(130, 120, 130), rgb(130, 120, 125), rgb(130, 120, 120));"><div class="iris-slider-offset ui-slider ui-corner-all ui-slider-vertical ui-widget ui-widget-content"><span tabindex="0" class="ui-slider-handle ui-corner-all ui-state-default" style="bottom: 40%;"></span></div></div></div></div>‎ 									<div id="colorPickerDiv_woocommerce_email_footer_text_color" class="colorpickdiv" style="z-index: 100;background:#eee;border:1px solid #ccc;position:absolute;display:none;"></div>
+							</td>
+						</tr>
+						</tbody></table>				<div id="wc_settings_email_preview_slotfill" data-preview-url="http://fernhillhome.com/wp-admin/?preview_woocommerce_mail=true&amp;_wpnonce=badccc5865" data-email-types="[{&quot;label&quot;:&quot;New order&quot;,&quot;value&quot;:&quot;WC_Email_New_Order&quot;},{&quot;label&quot;:&quot;Cancelled order&quot;,&quot;value&quot;:&quot;WC_Email_Cancelled_Order&quot;},{&quot;label&quot;:&quot;Cancelled order&quot;,&quot;value&quot;:&quot;WC_Email_Customer_Cancelled_Order&quot;},{&quot;label&quot;:&quot;Failed order&quot;,&quot;value&quot;:&quot;WC_Email_Failed_Order&quot;},{&quot;label&quot;:&quot;Failed order&quot;,&quot;value&quot;:&quot;WC_Email_Customer_Failed_Order&quot;},{&quot;label&quot;:&quot;Order on-hold&quot;,&quot;value&quot;:&quot;WC_Email_Customer_On_Hold_Order&quot;},{&quot;label&quot;:&quot;Processing order&quot;,&quot;value&quot;:&quot;WC_Email_Customer_Processing_Order&quot;},{&quot;label&quot;:&quot;Completed order&quot;,&quot;value&quot;:&quot;WC_Email_Customer_Completed_Order&quot;},{&quot;label&quot;:&quot;Refunded order&quot;,&quot;value&quot;:&quot;WC_Email_Customer_Refunded_Order&quot;},{&quot;label&quot;:&quot;Order details&quot;,&quot;value&quot;:&quot;WC_Email_Customer_Invoice&quot;},{&quot;label&quot;:&quot;Customer note&quot;,&quot;value&quot;:&quot;WC_Email_Customer_Note&quot;},{&quot;label&quot;:&quot;Reset password&quot;,&quot;value&quot;:&quot;WC_Email_Customer_Reset_Password&quot;},{&quot;label&quot;:&quot;New account&quot;,&quot;value&quot;:&quot;WC_Email_Customer_New_Account&quot;},{&quot;label&quot;:&quot;Payment gateway enabled&quot;,&quot;value&quot;:&quot;WC_Email_Admin_Payment_Gateway_Enabled&quot;},{&quot;label&quot;:&quot;POS completed order&quot;,&quot;value&quot;:&quot;WC_Email_Customer_POS_Completed_Order&quot;},{&quot;label&quot;:&quot;POS refunded order&quot;,&quot;value&quot;:&quot;WC_Email_Customer_POS_Refunded_Order&quot;}]" data-email-setting-ids="[&quot;woocommerce_email_background_color&quot;,&quot;woocommerce_email_base_color&quot;,&quot;woocommerce_email_body_background_color&quot;,&quot;woocommerce_email_font_family&quot;,&quot;woocommerce_email_footer_text&quot;,&quot;woocommerce_email_footer_text_color&quot;,&quot;woocommerce_email_header_alignment&quot;,&quot;woocommerce_email_header_image&quot;,&quot;woocommerce_email_header_image_width&quot;,&quot;woocommerce_email_text_color&quot;]"><h2>Email preview</h2><div class="wc-settings-email-preview-container "><div class="wc-settings-email-preview-controls"><div class="wc-settings-email-preview-type wc-settings-prevent-change-event"><div class="components-base-control components-select-control css-2jxl4k ej5x27r4"><div class="components-base-control__field css-1chyuqs ej5x27r3"><div data-wp-c16t="true" data-wp-component="InputBase" class="e518617e7c3a18e7__flex f9694ed4faabfc82__items-column components-flex components-input-base e1mv6sxx3 css-v7a2uz em5sgkm5" style="--wp-components-flex-align: normal; --wp-components-flex-direction: column; --wp-components-flex-wrap: nowrap; --wp-components-flex-gap: calc(4px * 2); --wp-components-flex-justify: space-between;"><div class="components-input-control__container css-l7ggfi em5sgkm4"><select aria-label="Email preview type" class="components-select-control__input css-1s4lx8l e1mv6sxx2" id="inspector-select-control-0"><option value="WC_Email_New_Order">New order</option><option value="WC_Email_Cancelled_Order">Cancelled order</option><option value="WC_Email_Customer_Cancelled_Order">Cancelled order</option><option value="WC_Email_Failed_Order">Failed order</option><option value="WC_Email_Customer_Failed_Order">Failed order</option><option value="WC_Email_Customer_On_Hold_Order">Order on-hold</option><option value="WC_Email_Customer_Processing_Order" selected="selected">Processing order</option><option value="WC_Email_Customer_Completed_Order">Completed order</option><option value="WC_Email_Customer_Refunded_Order">Refunded order</option><option value="WC_Email_Customer_Invoice">Order details</option><option value="WC_Email_Customer_Note">Customer note</option><option value="WC_Email_Customer_Reset_Password">Reset password</option><option value="WC_Email_Customer_New_Account">New account</option><option value="WC_Email_Admin_Payment_Gateway_Enabled">Payment gateway enabled</option><option value="WC_Email_Customer_POS_Completed_Order">POS completed order</option><option value="WC_Email_Customer_POS_Refunded_Order">POS refunded order</option></select><span class="components-input-control__suffix css-jgf79h em5sgkm7"><div data-wp-c16t="true" data-wp-component="InputControlSuffixWrapper" class="components-input-control-suffix-wrapper e1mv6sxx0 css-1iogo6k em5sgkm0"><div class="css-1y1fx19 e1mv6sxx1"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="18" height="18" aria-hidden="true" focusable="false"><path d="M17.5 11.6L12 16l-5.5-4.4.9-1.2L12 14l4.5-3.6 1 1.2z"></path></svg></div></div></span><div aria-hidden="true" class="components-input-control__backdrop css-x9it49 em5sgkm6"></div></div></div></div></div></div><div class="wc-settings-email-preview-spinner"></div><div style="flex-grow: 1;"></div><div class="wc-settings-email-preview-device-type"><button class="active" title="Email preview on desktop" type="button"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KCTxwYXRoIGQ9Ik00Ljk3MjY2IDhDNC45NzI2NiA3LjMwOTY0IDUuNTMyMyA2Ljc1IDYuMjIyNjYgNi43NUgxNy43NzgyQzE4LjQ2ODYgNi43NSAxOS4wMjgyIDcuMzA5NjQgMTkuMDI4MiA4VjE2LjM2MTFINC45NzI2NlY4WiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjEuNSIvPgoJPHBhdGggZD0iTTIgMTcuNUMyIDE2LjY3MTYgMi42NzE1NyAxNiAzLjUgMTZIMjAuNUMyMS4zMjg0IDE2IDIyIDE2LjY3MTYgMjIgMTcuNUgyWiIgZmlsbD0iI2ZmZiIvPgo8L3N2Zz4K" alt="Desktop icon"></button><button class="" title="Mobile preview on desktop" type="button"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KCTxyZWN0IHg9IjcuNzUiIHk9IjQuNzUiIHdpZHRoPSI4LjUiIGhlaWdodD0iMTQuNSIgcng9IjEuMjUiIHN0cm9rZT0iIzFlMWUxZSIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KCTxyZWN0IHg9IjExIiB5PSIxNiIgd2lkdGg9IjIiIGhlaWdodD0iMS41IiBmaWxsPSIjMWUxZTFlIi8+Cjwvc3ZnPgo=" alt="Mobile icon"></button></div><div class="wc-settings-email-preview-send"><button type="button" class="components-button is-secondary">Send a test email</button></div></div><div class="wc-settings-email-preview wc-settings-email-preview-desktop"><div class="wc-settings-email-preview-header"><h3 class="wc-settings-email-preview-header-subject">Your Fernhill Home order has been received!</h3><div class="wc-settings-email-preview-header-data"><div class="wc-settings-email-preview-header-icon"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KCTxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBkPSJNNy4yNSAxNi40MzcxQzYuMTY0NDUgMTUuMjc1NSA1LjUgMTMuNzE1MyA1LjUgMTJDNS41IDguNDEwMTUgOC40MTAxNSA1LjUgMTIgNS41QzE1LjU4OTkgNS41IDE4LjUgOC40MTAxNSAxOC41IDEyQzE4LjUgMTMuNzE1MyAxNy44MzU2IDE1LjI3NTUgMTYuNzUgMTYuNDM3MVYxNkMxNi43NSAxNC40ODEyIDE1LjUxODggMTMuMjUgMTQgMTMuMjVIMTBDOC40ODEyMiAxMy4yNSA3LjI1IDE0LjQ4MTIgNy4yNSAxNlYxNi40MzcxWk04Ljc1IDE3LjYzMDRDOS43MDYwNiAxOC4xODM1IDEwLjgxNjEgMTguNSAxMiAxOC41QzEzLjE4MzkgMTguNSAxNC4yOTM5IDE4LjE4MzUgMTUuMjUgMTcuNjMwNFYxNkMxNS4yNSAxNS4zMDk2IDE0LjY5MDQgMTQuNzUgMTQgMTQuNzVIMTBDOS4zMDk2NCAxNC43NSA4Ljc1IDE1LjMwOTYgOC43NSAxNlYxNy42MzA0Wk00IDEyQzQgNy41ODE3MiA3LjU4MTcyIDQgMTIgNEMxNi40MTgzIDQgMjAgNy41ODE3MiAyMCAxMkMyMCAxNi40MTgzIDE2LjQxODMgMjAgMTIgMjBDNy41ODE3MiAyMCA0IDE2LjQxODMgNCAxMlpNMTQgMTBDMTQgMTEuMTA0NiAxMy4xMDQ2IDEyIDEyIDEyQzEwLjg5NTQgMTIgMTAgMTEuMTA0NiAxMCAxMEMxMCA4Ljg5NTQzIDEwLjg5NTQgOCAxMiA4QzEzLjEwNDYgOCAxNCA4Ljg5NTQzIDE0IDEwWiIgZmlsbD0iIzg1MjZGRiIvPgo8L3N2Zz4K" alt="Avatar icon"></div><div class="wc-settings-email-preview-header-sender">Fernhill Home <span>&lt;hello@fernhillhome.com&gt;</span></div></div></div><div><iframe class="" title="Email preview frame" srcdoc="&lt;!DOCTYPE html&gt;&lt;html lang=&quot;en-US&quot;&gt;&lt;head&gt;
+		&lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+		&lt;meta content=&quot;width=device-width, initial-scale=1.0&quot; name=&quot;viewport&quot;&gt;
+		&lt;title&gt;Fernhill Home&lt;/title&gt;
+	&lt;style&gt;@media screen and (max-width: 600px) {#template_header_image, #header_wrapper { padding: 16px 10px 0px !important; } #header_wrapper h1 { font-size: 24px !important; } #body_content_inner_cell { padding: 10px !important; } #body_content_inner, .email-order-item-meta { font-size: 12px !important; } #body_content .email-order-details .order-totals-total td { font-size: 14px !important; } .email-order-detail-heading { font-size: 16px !important; line-height: 130% !important; } .email-additional-content { padding-top: 16px !important; }}&lt;/style&gt;&lt;/head&gt;
+	&lt;body leftmargin=&quot;0&quot; marginwidth=&quot;0&quot; topmargin=&quot;0&quot; marginheight=&quot;0&quot; offset=&quot;0&quot; style=&quot;background-color: #fff; padding: 0; text-align: center;&quot; bgcolor=&quot;#fff&quot;&gt;
+		&lt;table width=&quot;100%&quot; id=&quot;outer_wrapper&quot; role=&quot;presentation&quot; style=&quot;background-color: #fff;&quot; bgcolor=&quot;#fff&quot;&gt;
+			&lt;tbody&gt;&lt;tr&gt;
+				&lt;td&gt;&lt;!-- Deliberately empty to support consistent sizing and layout across multiple email clients. --&gt;&lt;/td&gt;
+				&lt;td width=&quot;600&quot;&gt;
+					&lt;div id=&quot;wrapper&quot; dir=&quot;ltr&quot; style=&quot;margin: 0 auto; padding: 24px 0; width: 100%; max-width: 600px; -webkit-text-size-adjust: none;&quot; width=&quot;100%&quot;&gt;
+						&lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; height=&quot;100%&quot; width=&quot;100%&quot; id=&quot;inner_wrapper&quot; role=&quot;presentation&quot; style=&quot;background-color: #fff; border-radius: 8px;&quot; bgcolor=&quot;#fff&quot;&gt;
+							&lt;tbody&gt;&lt;tr&gt;
+								&lt;td align=&quot;center&quot; valign=&quot;top&quot;&gt;
+																			&lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; role=&quot;presentation&quot;&gt;
+											&lt;tbody&gt;&lt;tr&gt;
+												&lt;td id=&quot;template_header_image&quot; style=&quot;padding: 32px 32px 0;&quot;&gt;
+													&lt;p class=&quot;email-logo-text&quot; style=&quot;color: #8526ff; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; font-size: 18px; margin-bottom: 0; text-align: left;&quot; align=&quot;left&quot;&gt;&lt;a href=&quot;http://fernhillhome.com&quot; target=&quot;_blank&quot; style=&quot;font-weight: normal; color: inherit; text-decoration: none;&quot; rel=&quot;noopener&quot;&gt;Fernhill Home&lt;/a&gt;&lt;/p&gt;												&lt;/td&gt;
+											&lt;/tr&gt;
+										&lt;/tbody&gt;&lt;/table&gt;
+																		&lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; id=&quot;template_container&quot; role=&quot;presentation&quot; style=&quot;box-shadow: none; background-color: #fff; border: 0; border-radius: 3px;&quot; bgcolor=&quot;#fff&quot;&gt;
+										&lt;tbody&gt;&lt;tr&gt;
+											&lt;td align=&quot;center&quot; valign=&quot;top&quot;&gt;
+												&lt;!-- Header --&gt;
+												&lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; id=&quot;template_header&quot; role=&quot;presentation&quot; style=&quot;background-color: #fff; color: #1e1e1e; border-bottom: 0; font-weight: bold; line-height: 100%; vertical-align: middle; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; border-radius: 3px 3px 0 0;&quot; bgcolor=&quot;#fff&quot;&gt;
+													&lt;tbody&gt;&lt;tr&gt;
+														&lt;td id=&quot;header_wrapper&quot; style=&quot;padding: 20px 32px 0; display: block;&quot;&gt;
+															&lt;h1 style=&quot;font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 120%; margin: 0; color: #1e1e1e; background-color: inherit; text-align: left;&quot; bgcolor=&quot;inherit&quot;&gt;Thank you for your order&lt;/h1&gt;
+														&lt;/td&gt;
+													&lt;/tr&gt;
+												&lt;/tbody&gt;&lt;/table&gt;
+												&lt;!-- End Header --&gt;
+											&lt;/td&gt;
+										&lt;/tr&gt;
+										&lt;tr&gt;
+											&lt;td align=&quot;center&quot; valign=&quot;top&quot;&gt;
+												&lt;!-- Body --&gt;
+												&lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; id=&quot;template_body&quot; role=&quot;presentation&quot;&gt;
+													&lt;tbody&gt;&lt;tr&gt;
+														&lt;td valign=&quot;top&quot; id=&quot;body_content&quot; style=&quot;background-color: #fff;&quot; bgcolor=&quot;#fff&quot;&gt;
+															&lt;!-- Content --&gt;
+															&lt;table border=&quot;0&quot; cellpadding=&quot;20&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; role=&quot;presentation&quot;&gt;
+																&lt;tbody&gt;&lt;tr&gt;
+																	&lt;td valign=&quot;top&quot; id=&quot;body_content_inner_cell&quot; style=&quot;padding: 20px 32px 32px;&quot;&gt;
+																		&lt;div id=&quot;body_content_inner&quot; style=&quot;color: #4b4b4b; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; font-size: 16px; line-height: 150%; text-align: left;&quot; align=&quot;left&quot;&gt;
+
+&lt;div class=&quot;email-introduction&quot; style=&quot;padding-bottom: 24px;&quot;&gt;&lt;p style=&quot;margin: 0 0 16px;&quot;&gt;
+Hi John,&lt;/p&gt;
+	&lt;p style=&quot;margin: 0 0 16px;&quot;&gt;Just to let you know — we’ve received your order, and it is now being processed.&lt;/p&gt;
+	&lt;p style=&quot;margin: 0 0 16px;&quot;&gt;Here’s a reminder of what you’ve ordered:&lt;/p&gt;
+&lt;/div&gt;
+&lt;h2 class=&quot;woocommerce-order-downloads__title email-order-detail-heading&quot; style=&quot;color: #1e1e1e; display: block; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; font-size: 20px; font-weight: bold; line-height: 160%; margin: 0 0 18px; text-align: left;&quot;&gt;Downloads&lt;/h2&gt;
+
+&lt;table class=&quot;td font-family email-order-details&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; width: 100%; margin-bottom: 40px;&quot; width=&quot;100%&quot;&gt;
+	&lt;thead&gt;
+		&lt;tr&gt;
+							&lt;th class=&quot;td text-align-left&quot; scope=&quot;col&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: left; padding: 8px 12px; padding-left: 0;&quot; align=&quot;left&quot;&gt;
+					Product				&lt;/th&gt;
+							&lt;th class=&quot;td text-align-left&quot; scope=&quot;col&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: left; padding: 8px 12px;&quot; align=&quot;left&quot;&gt;
+					Expires				&lt;/th&gt;
+							&lt;th class=&quot;td text-align-right&quot; scope=&quot;col&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: right; padding: 8px 12px; padding-right: 0;&quot; align=&quot;right&quot;&gt;
+					Download				&lt;/th&gt;
+					&lt;/tr&gt;
+	&lt;/thead&gt;
+
+			&lt;tbody&gt;&lt;tr&gt;
+												&lt;th class=&quot;td text-align-left&quot; scope=&quot;row&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: left; padding: 8px 12px; padding-left: 0;&quot; align=&quot;left&quot;&gt;
+																	&lt;a href=&quot;&quot; style=&quot;color: #8526ff; font-weight: normal; text-decoration: underline;&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Dummy Downloadable Product&lt;/a&gt;
+																			&lt;/th&gt;
+																	&lt;td class=&quot;td text-align-left&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: left; padding: 8px 12px;&quot; align=&quot;left&quot;&gt;
+																		&lt;time datetime=&quot;1970-01-01&quot; title=&quot;&quot;&gt;October 6, 2026&lt;/time&gt;
+																				&lt;/td&gt;
+																	&lt;td class=&quot;td text-align-right&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: right; padding: 8px 12px; padding-right: 0;&quot; align=&quot;right&quot;&gt;
+																	&lt;a href=&quot;https://example.com/download&quot; class=&quot;woocommerce-MyAccount-downloads-file button alt&quot; style=&quot;color: #8526ff; font-weight: normal; text-decoration: underline;&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Sample Download File.pdf&lt;/a&gt;
+																			&lt;/td&gt;
+										&lt;/tr&gt;
+	&lt;/tbody&gt;&lt;/table&gt;
+
+&lt;h2 class=&quot;email-order-detail-heading&quot; style=&quot;color: #1e1e1e; display: block; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; font-size: 20px; font-weight: bold; line-height: 160%; margin: 0 0 18px; text-align: left;&quot;&gt;
+	Order summary&lt;br&gt;&lt;span style=&quot;color: #787c82; display: block; font-size: 14px; font-weight: normal;&quot;&gt;Order #12345 (&lt;time datetime=&quot;2026-10-06T09:09:40-07:00&quot;&gt;October 6, 2026&lt;/time&gt;)&lt;/span&gt;&lt;/h2&gt;
+
+&lt;div style=&quot;margin-bottom: 24px;&quot;&gt;
+	&lt;table class=&quot;td font-family email-order-details&quot; cellspacing=&quot;0&quot; cellpadding=&quot;6&quot; border=&quot;0&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; width: 100%;&quot; width=&quot;100%&quot;&gt;
+				&lt;thead&gt;
+			&lt;tr&gt;
+				&lt;th class=&quot;td&quot; scope=&quot;col&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; padding: 8px 12px; padding-left: 0; text-align: left;&quot; align=&quot;left&quot;&gt;Product&lt;/th&gt;
+				&lt;th class=&quot;td&quot; scope=&quot;col&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; padding: 8px 12px; text-align: right;&quot; align=&quot;right&quot;&gt;Quantity&lt;/th&gt;
+				&lt;th class=&quot;td&quot; scope=&quot;col&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; padding: 8px 12px; padding-right: 0; text-align: right;&quot; align=&quot;right&quot;&gt;Price&lt;/th&gt;
+			&lt;/tr&gt;
+		&lt;/thead&gt;
+				&lt;tbody&gt;
+				&lt;tr class=&quot;order_item&quot;&gt;
+		&lt;td class=&quot;td font-family text-align-left&quot; style=&quot;color: #4b4b4b; border: 0; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; text-align: left; padding: 8px 12px; padding-left: 0; vertical-align: middle; word-wrap: break-word;&quot; align=&quot;left&quot;&gt;
+							&lt;table class=&quot;order-item-data&quot; role=&quot;presentation&quot; style=&quot;color: #1e1e1e; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif;&quot;&gt;
+					&lt;tbody&gt;&lt;tr&gt;
+						&lt;td style=&quot;padding-left: 0; border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 24px; vertical-align: top; border: 0; padding: 0;&quot;&gt;&lt;img src=&quot;../_shared/assets/8dec0b5fec87.webp&quot; width=&quot;48&quot; height=&quot;48&quot; alt=&quot;&quot; style=&quot;border: none; display: inline-block; font-size: 14px; font-weight: bold; height: auto; outline: none; text-decoration: none; text-transform: capitalize; vertical-align: middle; margin-right: 24px; max-width: 100%;&quot; border=&quot;0&quot;&gt;&lt;/td&gt;						&lt;td style=&quot;vertical-align: top; padding-right: 0; border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 24px; border: 0; padding: 0;&quot;&gt;
+							&lt;h3 style=&quot;color: #1e1e1e; display: block; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; line-height: 160%; margin: 16px 0 8px; text-align: left; font-size: inherit; font-weight: inherit;&quot;&gt;Dummy Product&lt;/h3&gt;&lt;div class=&quot;email-order-item-meta&quot; style=&quot;color: #787c82; font-size: 14px; line-height: 140%;&quot;&gt;&lt;/div&gt;						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/tbody&gt;&lt;/table&gt;
+						&lt;/td&gt;
+		&lt;td class=&quot;td font-family text-align-right&quot; style=&quot;color: #4b4b4b; border: 0; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; text-align: right; padding: 8px 12px; vertical-align: middle;&quot; align=&quot;right&quot;&gt;
+			×2		&lt;/td&gt;
+		&lt;td class=&quot;td font-family text-align-right&quot; style=&quot;color: #4b4b4b; border: 0; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; text-align: right; padding: 8px 12px; padding-right: 0; vertical-align: middle;&quot; align=&quot;right&quot;&gt;
+			&lt;span class=&quot;woocommerce-Price-amount amount&quot;&gt;&lt;span class=&quot;woocommerce-Price-currencySymbol&quot;&gt;$&lt;/span&gt;50.00&lt;/span&gt;		&lt;/td&gt;
+	&lt;/tr&gt;
+	
+	&lt;tr class=&quot;order_item&quot;&gt;
+		&lt;td class=&quot;td font-family text-align-left&quot; style=&quot;color: #4b4b4b; border: 0; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; text-align: left; padding: 8px 12px; padding-left: 0; vertical-align: middle; word-wrap: break-word;&quot; align=&quot;left&quot;&gt;
+							&lt;table class=&quot;order-item-data&quot; role=&quot;presentation&quot; style=&quot;color: #1e1e1e; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif;&quot;&gt;
+					&lt;tbody&gt;&lt;tr&gt;
+						&lt;td style=&quot;padding-left: 0; border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 24px; vertical-align: top; border: 0; padding: 0;&quot;&gt;&lt;img src=&quot;../_shared/assets/8dec0b5fec87.webp&quot; width=&quot;48&quot; height=&quot;48&quot; alt=&quot;&quot; style=&quot;border: none; display: inline-block; font-size: 14px; font-weight: bold; height: auto; outline: none; text-decoration: none; text-transform: capitalize; vertical-align: middle; margin-right: 24px; max-width: 100%;&quot; border=&quot;0&quot;&gt;&lt;/td&gt;						&lt;td style=&quot;vertical-align: top; padding-right: 0; border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 24px; border: 0; padding: 0;&quot;&gt;
+							&lt;h3 style=&quot;color: #1e1e1e; display: block; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; line-height: 160%; margin: 16px 0 8px; text-align: left; font-size: inherit; font-weight: inherit;&quot;&gt;Dummy Product Variation&lt;/h3&gt;&lt;div class=&quot;email-order-item-meta&quot; style=&quot;color: #787c82; font-size: 14px; line-height: 140%;&quot;&gt;&lt;/div&gt;						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/tbody&gt;&lt;/table&gt;
+						&lt;/td&gt;
+		&lt;td class=&quot;td font-family text-align-right&quot; style=&quot;color: #4b4b4b; border: 0; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; text-align: right; padding: 8px 12px; vertical-align: middle;&quot; align=&quot;right&quot;&gt;
+			×1		&lt;/td&gt;
+		&lt;td class=&quot;td font-family text-align-right&quot; style=&quot;color: #4b4b4b; border: 0; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; text-align: right; padding: 8px 12px; padding-right: 0; vertical-align: middle;&quot; align=&quot;right&quot;&gt;
+			&lt;span class=&quot;woocommerce-Price-amount amount&quot;&gt;&lt;span class=&quot;woocommerce-Price-currencySymbol&quot;&gt;$&lt;/span&gt;20.00&lt;/span&gt;		&lt;/td&gt;
+	&lt;/tr&gt;
+	
+	&lt;tr class=&quot;order_item&quot;&gt;
+		&lt;td class=&quot;td font-family text-align-left&quot; style=&quot;color: #4b4b4b; border: 0; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; text-align: left; padding: 8px 12px; padding-left: 0; border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 24px; vertical-align: middle; word-wrap: break-word;&quot; align=&quot;left&quot;&gt;
+							&lt;table class=&quot;order-item-data&quot; role=&quot;presentation&quot; style=&quot;color: #1e1e1e; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif;&quot;&gt;
+					&lt;tbody&gt;&lt;tr&gt;
+						&lt;td style=&quot;padding-left: 0; border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 24px; vertical-align: top; border: 0; padding: 0;&quot;&gt;&lt;img src=&quot;../_shared/assets/8dec0b5fec87.webp&quot; width=&quot;48&quot; height=&quot;48&quot; alt=&quot;&quot; style=&quot;border: none; display: inline-block; font-size: 14px; font-weight: bold; height: auto; outline: none; text-decoration: none; text-transform: capitalize; vertical-align: middle; margin-right: 24px; max-width: 100%;&quot; border=&quot;0&quot;&gt;&lt;/td&gt;						&lt;td style=&quot;vertical-align: top; padding-right: 0; border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 24px; border: 0; padding: 0;&quot;&gt;
+							&lt;h3 style=&quot;color: #1e1e1e; display: block; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; line-height: 160%; margin: 16px 0 8px; text-align: left; font-size: inherit; font-weight: inherit;&quot;&gt;Dummy Downloadable Product&lt;/h3&gt;&lt;div class=&quot;email-order-item-meta&quot; style=&quot;color: #787c82; font-size: 14px; line-height: 140%;&quot;&gt;&lt;/div&gt;						&lt;/td&gt;
+					&lt;/tr&gt;
+				&lt;/tbody&gt;&lt;/table&gt;
+						&lt;/td&gt;
+		&lt;td class=&quot;td font-family text-align-right&quot; style=&quot;color: #4b4b4b; border: 0; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; text-align: right; padding: 8px 12px; border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 24px; vertical-align: middle;&quot; align=&quot;right&quot;&gt;
+			×1		&lt;/td&gt;
+		&lt;td class=&quot;td font-family text-align-right&quot; style=&quot;color: #4b4b4b; border: 0; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; text-align: right; padding: 8px 12px; padding-right: 0; border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 24px; vertical-align: middle;&quot; align=&quot;right&quot;&gt;
+			&lt;span class=&quot;woocommerce-Price-amount amount&quot;&gt;&lt;span class=&quot;woocommerce-Price-currencySymbol&quot;&gt;$&lt;/span&gt;15.00&lt;/span&gt;		&lt;/td&gt;
+	&lt;/tr&gt;
+	
+		&lt;/tbody&gt;
+	&lt;/table&gt;
+			&lt;hr style=&quot;border: 0; border-top: 1px solid #1E1E1E; border-top-color: rgba(30, 30, 30, 0.2); margin: 20px 0;&quot;&gt;
+		&lt;table class=&quot;td font-family email-order-details&quot; cellspacing=&quot;0&quot; cellpadding=&quot;6&quot; border=&quot;0&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; width: 100%;&quot; width=&quot;100%&quot;&gt;
+						&lt;tbody&gt;&lt;tr class=&quot;order-totals order-totals-subtotal&quot;&gt;
+					&lt;th class=&quot;td text-align-left&quot; scope=&quot;row&quot; colspan=&quot;2&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: left; padding: 8px 12px; font-weight: normal; padding-bottom: 5px; padding-top: 5px; padding-left: 0; border-top-width: 4px;&quot; align=&quot;left&quot;&gt;
+						Subtotal: 					&lt;/th&gt;
+					&lt;td class=&quot;td text-align-right&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: right; padding: 8px 12px; font-weight: normal; padding-bottom: 5px; padding-top: 5px; padding-right: 0; border-top-width: 4px;&quot; align=&quot;right&quot;&gt;&lt;span class=&quot;woocommerce-Price-amount amount&quot;&gt;&lt;span class=&quot;woocommerce-Price-currencySymbol&quot;&gt;$&lt;/span&gt;85.00&lt;/span&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+								&lt;tr class=&quot;order-totals order-totals-discount&quot;&gt;
+					&lt;th class=&quot;td text-align-left&quot; scope=&quot;row&quot; colspan=&quot;2&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: left; padding: 8px 12px; font-weight: normal; padding-bottom: 5px; padding-top: 5px; padding-left: 0;&quot; align=&quot;left&quot;&gt;
+						Discount: 					&lt;/th&gt;
+					&lt;td class=&quot;td text-align-right&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: right; padding: 8px 12px; font-weight: normal; padding-bottom: 5px; padding-top: 5px; padding-right: 0;&quot; align=&quot;right&quot;&gt;-&lt;span class=&quot;woocommerce-Price-amount amount&quot;&gt;&lt;span class=&quot;woocommerce-Price-currencySymbol&quot;&gt;$&lt;/span&gt;10.00&lt;/span&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+								&lt;tr class=&quot;order-totals order-totals-shipping&quot;&gt;
+					&lt;th class=&quot;td text-align-left&quot; scope=&quot;row&quot; colspan=&quot;2&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: left; padding: 8px 12px; font-weight: normal; padding-bottom: 5px; padding-top: 5px; padding-left: 0;&quot; align=&quot;left&quot;&gt;
+						Shipping: Flat rate					&lt;/th&gt;
+					&lt;td class=&quot;td text-align-right&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: right; padding: 8px 12px; font-weight: normal; padding-bottom: 5px; padding-top: 5px; padding-right: 0;&quot; align=&quot;right&quot;&gt;&lt;span class=&quot;woocommerce-Price-amount amount&quot;&gt;&lt;span class=&quot;woocommerce-Price-currencySymbol&quot;&gt;$&lt;/span&gt;5.00&lt;/span&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+								&lt;tr class=&quot;order-totals order-totals-total&quot;&gt;
+					&lt;th class=&quot;td text-align-left&quot; scope=&quot;row&quot; colspan=&quot;2&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: left; padding: 8px 12px; padding-bottom: 5px; padding-top: 5px; font-weight: bold; padding-left: 0;&quot; align=&quot;left&quot;&gt;
+						Total: 					&lt;/th&gt;
+					&lt;td class=&quot;td text-align-right&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: right; padding: 8px 12px; padding-bottom: 5px; padding-top: 5px; font-weight: bold; font-size: 20px; padding-right: 0;&quot; align=&quot;right&quot;&gt;&lt;span class=&quot;woocommerce-Price-amount amount&quot;&gt;&lt;span class=&quot;woocommerce-Price-currencySymbol&quot;&gt;$&lt;/span&gt;80.00&lt;/span&gt;&lt;/td&gt;
+				&lt;/tr&gt;
+								&lt;tr class=&quot;order-totals order-totals-payment_method order-totals-last&quot;&gt;
+					&lt;th class=&quot;td text-align-left&quot; scope=&quot;row&quot; colspan=&quot;2&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: left; padding: 8px 12px; font-weight: normal; padding-top: 5px; border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 24px; padding-left: 0;&quot; align=&quot;left&quot;&gt;
+						Payment method: 					&lt;/th&gt;
+					&lt;td class=&quot;td text-align-right&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: right; padding: 8px 12px; font-weight: normal; padding-top: 5px; border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 24px; padding-right: 0;&quot; align=&quot;right&quot;&gt;Direct bank transfer&lt;/td&gt;
+				&lt;/tr&gt;
+					&lt;/tbody&gt;&lt;/table&gt;
+						&lt;hr style=&quot;border: 0; border-top: 1px solid #1E1E1E; border-top-color: rgba(30, 30, 30, 0.2); margin: 20px 0;&quot;&gt;
+				&lt;table class=&quot;td font-family email-order-details&quot; cellspacing=&quot;0&quot; cellpadding=&quot;6&quot; border=&quot;0&quot; role=&quot;presentation&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; width: 100%;&quot; width=&quot;100%&quot;&gt;
+			&lt;tbody&gt;&lt;tr class=&quot;order-customer-note&quot;&gt;
+				&lt;td class=&quot;td text-align-left&quot; style=&quot;color: #4b4b4b; border: 0; vertical-align: middle; text-align: left; padding: 8px 12px; border-bottom: 1px solid rgba(0,0,0,.2); padding-bottom: 24px; padding-top: 24px; padding-left: 0; padding-right: 0;&quot; align=&quot;left&quot;&gt;
+					&lt;b&gt;Customer note&lt;/b&gt;&lt;br&gt;
+					This is a customer note. Customers can add a note to their order on checkout.&lt;br&gt;
+&lt;br&gt;
+It can be multiple lines. If there’s no note, this section is hidden.				&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/tbody&gt;&lt;/table&gt;
+	&lt;/div&gt;
+
+	&lt;hr style=&quot;border: 0; border-top: 1px solid #1E1E1E; border-top-color: rgba(30, 30, 30, 0.2); margin: 20px 0;&quot;&gt;
+&lt;table id=&quot;addresses&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; border=&quot;0&quot; role=&quot;presentation&quot; style=&quot;width: 100%; vertical-align: top; margin-bottom: 0; padding: 0;&quot; width=&quot;100%&quot;&gt;
+	&lt;tbody&gt;&lt;tr&gt;
+		&lt;td class=&quot;font-family text-align-left&quot; valign=&quot;top&quot; width=&quot;50%&quot; style=&quot;font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; text-align: left; border: 0; padding: 0;&quot; align=&quot;left&quot;&gt;
+							&lt;b class=&quot;address-title&quot; style=&quot;color: #1e1e1e; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif;&quot;&gt;Billing address&lt;/b&gt;
+			
+			&lt;address class=&quot;address&quot; style=&quot;color: #1e1e1e; font-style: normal; line-height: 120%; padding: 8px 0; word-break: break-all;&quot;&gt;
+				John Doe&lt;br&gt;Company&lt;br&gt;123 Fake Street&lt;br&gt;Faketown, CA 12345									&lt;br&gt;&lt;a href=&quot;tel:5555555555&quot; style=&quot;color: #8526ff; font-weight: normal; text-decoration: underline;&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;555-555-5555&lt;/a&gt;													&lt;br&gt;john@company.com											&lt;/address&gt;
+		&lt;/td&gt;
+					&lt;td class=&quot;font-family text-align-left&quot; valign=&quot;top&quot; width=&quot;50%&quot; style=&quot;font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; text-align: left; padding: 0; padding-left: 10px;&quot; align=&quot;left&quot;&gt;
+									&lt;b class=&quot;address-title&quot; style=&quot;color: #1e1e1e; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif;&quot;&gt;Shipping address&lt;/b&gt;
+				
+				&lt;address class=&quot;address&quot; style=&quot;color: #1e1e1e; font-style: normal; line-height: 120%; padding: 8px 0; word-break: break-all;&quot;&gt;
+					John Doe&lt;br&gt;Company&lt;br&gt;123 Fake Street&lt;br&gt;Faketown, CA 12345											&lt;br&gt;&lt;a href=&quot;tel:5555555555&quot; style=&quot;color: #8526ff; font-weight: normal; text-decoration: underline;&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;555-555-5555&lt;/a&gt;														&lt;/address&gt;
+			&lt;/td&gt;
+			&lt;/tr&gt;
+&lt;/tbody&gt;&lt;/table&gt;
+&lt;br&gt;&lt;table border=&quot;0&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; role=&quot;presentation&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;email-additional-content&quot; style=&quot;color: #1e1e1e; font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; padding: 32px 0 0;&quot;&gt;&lt;p style=&quot;text-align: center; margin: 0 0 16px;&quot; align=&quot;center&quot;&gt;Thanks again! If you need any help with your order, please contact us at hello@fernhillhome.com.&lt;/p&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;																		&lt;/div&gt;
+																	&lt;/td&gt;
+																&lt;/tr&gt;
+															&lt;/tbody&gt;&lt;/table&gt;
+															&lt;!-- End Content --&gt;
+														&lt;/td&gt;
+													&lt;/tr&gt;
+												&lt;/tbody&gt;&lt;/table&gt;
+												&lt;!-- End Body --&gt;
+											&lt;/td&gt;
+										&lt;/tr&gt;
+									&lt;/tbody&gt;&lt;/table&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+							&lt;tr&gt;
+								&lt;td align=&quot;center&quot; valign=&quot;top&quot;&gt;
+									&lt;!-- Footer --&gt;
+									&lt;table border=&quot;0&quot; cellpadding=&quot;10&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; id=&quot;template_footer&quot; role=&quot;presentation&quot;&gt;
+										&lt;tbody&gt;&lt;tr&gt;
+											&lt;td valign=&quot;top&quot; style=&quot;padding: 0; border-radius: 0;&quot;&gt;
+												&lt;table border=&quot;0&quot; cellpadding=&quot;10&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; role=&quot;presentation&quot;&gt;
+													&lt;tbody&gt;&lt;tr&gt;
+														&lt;td colspan=&quot;2&quot; valign=&quot;middle&quot; id=&quot;credit&quot; style=&quot;border-radius: 0; border: 0; border-top: 1px solid rgba(0,0,0,.2); font-family: &amp;quot;Helvetica Neue&amp;quot;,Helvetica,Roboto,Arial,sans-serif; font-size: 12px; line-height: 140%; text-align: center; padding: 32px; color: #787c82;&quot; align=&quot;center&quot;&gt;
+															&lt;p style=&quot;margin: 0;&quot;&gt;Fernhill Home&lt;br&gt;2214 NW Thurman St, Portland, OR 97210, United States (US)&lt;/p&gt;
+														&lt;/td&gt;
+													&lt;/tr&gt;
+												&lt;/tbody&gt;&lt;/table&gt;
+											&lt;/td&gt;
+										&lt;/tr&gt;
+									&lt;/tbody&gt;&lt;/table&gt;
+									&lt;!-- End Footer --&gt;
+								&lt;/td&gt;
+							&lt;/tr&gt;
+						&lt;/tbody&gt;&lt;/table&gt;
+					&lt;/div&gt;
+				&lt;/td&gt;
+				&lt;td&gt;&lt;!-- Deliberately empty to support consistent sizing and layout across multiple email clients. --&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+		&lt;/tbody&gt;&lt;/table&gt;
+	
+
+&lt;/body&gt;&lt;/html&gt;" data-snap-canvas="srcdoc"></iframe></div><div class="wc-settings-email-preview-ces-feedback"></div></div></div><div style="display: none;"></div></div>
+					<p class="submit">
+									<button name="save" disabled="" class="woocommerce-save-button components-button is-primary" type="submit" value="Save changes">Save changes</button>
+								<input type="hidden" id="_wpnonce" name="_wpnonce" value="19851334df"><input type="hidden" name="_wp_http_referer" value="/wp-admin/admin.php?page=wc-settings&amp;tab=email">			</p>
+										<p class="wc-settings-marketplace-link" data-settings-tab="email">
+				<a href="https://woocommerce.com/product-category/woocommerce-extensions/marketing-extensions/email-marketing-extensions/?utm_source=settings_email" target="_blank" rel="noopener noreferrer"><img src="../_shared/assets/03cbc9dfb714.svg" alt="">Explore solutions<span class="screen-reader-text">(opens in a new tab)</span></a> that help automate and improve customer email communication.			</p>
+				</form>
+	</div><div><div class="woocommerce-embedded-layout__primary" id="woocommerce-embedded-layout__primary"></div></div>
+
+<div class="clear"></div></div>
+<div class="clear"></div></div>
+<div class="clear"></div></div>
+
+<div id="wpfooter" role="contentinfo">
+		<p id="footer-left" class="alignleft">
+		<span id="footer-thankyou">If you like <strong>WooCommerce</strong> please leave us a <a href="https://wordpress.org/support/plugin/woocommerce/reviews?rate=5#new-post" target="_blank" class="wc-rating-link" aria-label="five star" data-rated="Thanks :)">★★★★★</a> rating. A huge thanks in advance!</span>	</p>
+	<p id="footer-upgrade" class="alignright">
+		Version 10.7.0	</p>
+	<div class="clear"></div>
+</div>
+        <link rel="stylesheet" href="../_shared/css/fe8367f46cb7.css">
+        			
+					
+
+		        <link rel="stylesheet" href="../_shared/css/b92a3dea6c37.css">
+        
+        
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+			
+		
+				
+			<div id="wp-auth-check-wrap" class="hidden">
+	<div id="wp-auth-check-bg"></div>
+	<div id="wp-auth-check">
+	<button type="button" class="wp-auth-check-close button-link"><span class="screen-reader-text">
+		Close dialog	</span></button>
+			<div id="wp-auth-check-form" class="loading" data-src="http://fernhillhome.com/wp-login.php?interim-login=1&amp;wp_lang=en_US"></div>
+			<div class="wp-auth-fallback">
+		<p><b class="wp-auth-fallback-expired" tabindex="0">Session expired</b></p>
+		<p><a href="http://fernhillhome.com/wp-login.php" target="_blank">Please log in again.</a>
+		The login page will open in a new tab. After logging in you can close it and return to this page.</p>
+	</div>
+	</div>
+	</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="clear"></div></div><div></div>
+
+
+
+<p id="a11y-speak-intro-text" class="a11y-speak-intro-text" style="position: absolute; margin: -1px; padding: 0px; height: 1px; width: 1px; overflow: hidden; clip-path: inset(50%); border: 0px; overflow-wrap: normal !important; word-break: normal !important;" hidden="">Notifications</p><div id="a11y-speak-assertive" class="a11y-speak-region" style="position:absolute;margin:-1px;padding:0;height:1px;width:1px;overflow:hidden;clip-path:inset(50%);border:0;word-wrap:normal !important;word-break:normal !important;" aria-live="assertive" aria-relevant="additions text" aria-atomic="true"></div><div id="a11y-speak-polite" class="a11y-speak-region" style="position:absolute;margin:-1px;padding:0;height:1px;width:1px;overflow:hidden;clip-path:inset(50%);border:0;word-wrap:normal !important;word-break:normal !important;" aria-live="polite" aria-relevant="additions text" aria-atomic="true"></div><div id="tiptip_holder" style="max-width: 200px;"><div id="tiptip_arrow"><div id="tiptip_arrow_inner"></div></div><div id="tiptip_content"></div></div><script src="../../../_runtime/core.js"></script><script src="../_shared/nav.js"></script><script src="../_shared/interactivity.js"></script></body></html>

@@ -1,0 +1,534 @@
+.botiga-style-guide-toggle {
+	padding: 18px;
+	border-bottom: 1px solid #dcdcde;
+	background-color: #fff;
+	cursor: pointer;
+	text-align: center;
+	transition: all 0.3s;
+}
+
+.botiga-style-guide-toggle:hover {
+	background-color: #f6f7f7;
+	color: #2271b1;
+}
+
+.botiga-style-guide-toggle:hover .botiga-style-guide-toggle-button {
+	color: #2271b1;
+}
+
+.botiga-style-guide-toggle-button {
+	width: 100%;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	color: #50575e;
+	cursor: pointer;
+	font: inherit;
+	font-weight: 600;
+}
+
+.botiga-style-guide-toggle .dashicons {
+	margin-right: 8px;
+	font-size: 18px;
+	vertical-align: middle;
+}
+
+body.in-sub-panel .botiga-style-guide-toggle,
+body.in-sub-section .botiga-style-guide-toggle,
+#customize-controls.in-sub-panel .botiga-style-guide-toggle,
+#customize-controls.in-sub-section .botiga-style-guide-toggle {
+	display: none;
+}
+
+.botiga-style-guide {
+	background-color: #f0f0f1;
+	color: #1c1c1c;
+	padding: 30px;
+	overflow: auto;
+	scroll-behavior: smooth;
+}
+
+.botiga-style-guide a:focus,
+.botiga-style-guide button:focus,
+.botiga-style-guide-toggle-button:focus {
+	outline: 2px solid #2271b1;
+	outline-offset: 2px;
+	box-shadow: none;
+}
+
+.botiga-style-guide-header {
+	position: relative;
+	padding-bottom: 40px;
+}
+
+.botiga-style-guide-header h1 {
+	margin: 0 0 8px;
+	font-size: 28px;
+	line-height: 1.2;
+}
+
+.botiga-style-guide-header p {
+	margin: 0;
+	color: #646970;
+	font-size: 16px;
+}
+
+.botiga-style-guide-close {
+	position: absolute;
+	top: 10px;
+	right: 0;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+	transition: opacity 0.3s;
+}
+
+.botiga-style-guide-close:hover {
+	opacity: 0.5;
+}
+
+.botiga-style-guide-close .dashicons {
+	width: 30px;
+	height: 30px;
+	font-size: 30px;
+	line-height: 30px;
+}
+
+.botiga-style-guide-body {
+	display: flex;
+	gap: 30px;
+}
+
+.botiga-style-guide-navigation {
+	position: sticky;
+	top: 0;
+	flex: 0 0 200px;
+	align-self: flex-start;
+	max-width: 200px;
+	padding: 20px;
+	border-radius: 10px;
+	background-color: #fff;
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.03);
+}
+
+.botiga-style-guide-navigation a {
+	display: block;
+	margin-bottom: 13px;
+	padding-bottom: 13px;
+	border-bottom: 1px solid #dcdcdc;
+	color: #1c1c1c;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+.botiga-style-guide-navigation a:last-of-type {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+.botiga-style-guide-navigation a:hover {
+	color: #2271b1;
+}
+
+.botiga-style-guide-content {
+	width: 100%;
+	margin-bottom: 60px;
+	font-size: 16px;
+	line-height: 1.68;
+}
+
+.botiga-style-guide-section {
+	margin: 0 0 30px;
+	padding: 40px;
+	border: 1px solid #dcdcdc;
+	border-radius: 10px;
+	background-color: #fff;
+	box-shadow: 0 0 30px rgba(0, 0, 0, 0.03);
+}
+
+.botiga-style-guide-section:last-of-type {
+	margin-bottom: 0;
+}
+
+.botiga-style-guide-section-header {
+	margin-bottom: 32px;
+}
+
+.botiga-style-guide-section-header h2,
+.botiga-style-guide-section-title {
+	margin: 0;
+	padding-bottom: 20px;
+	border-bottom: 1px solid #dcdcdc;
+	font-size: 18px;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.botiga-style-guide-section-content,
+.botiga-style-guide-color-groups,
+.botiga-style-guide-typography {
+	min-width: 0;
+}
+
+.botiga-style-guide-customizer-link {
+	position: relative;
+	display: table;
+	color: #1c1c1c;
+	text-decoration: none;
+}
+
+.botiga-style-guide-edit-overlay {
+	position: absolute;
+	z-index: 5;
+	top: 0;
+	right: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	border-radius: 10px;
+	background-color: rgba(255, 255, 255, 0.9);
+	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+	transition: all 0.3s;
+}
+
+.botiga-style-guide-edit-overlay .dashicons {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: #2271b1;
+	color: #fff;
+	font-size: 20px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.botiga-style-guide-customizer-link:hover .botiga-style-guide-edit-overlay,
+.botiga-style-guide-customizer-link:focus .botiga-style-guide-edit-overlay {
+	opacity: 1;
+	visibility: visible;
+}
+
+.botiga-style-guide-light-text {
+	color: #646970;
+	font-size: 14px;
+	line-height: 1.4;
+}
+
+.botiga-style-guide-card {
+	display: block;
+	padding: 28px;
+	border: 1px solid #dcdcdc;
+	border-radius: 10px;
+	background-color: #fff;
+}
+
+.botiga-style-guide-card h3,
+.botiga-style-guide-color-group h3,
+.botiga-style-guide-typography-column h3 {
+	margin: 0 0 22px;
+	color: #646970;
+	font-size: 16px;
+	font-weight: 700;
+	letter-spacing: 0.06em;
+	line-height: 1.3;
+	text-transform: uppercase;
+}
+
+.botiga-style-guide-site-identity-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	gap: 30px;
+}
+
+.botiga-style-guide-site-identity-card {
+	min-height: 170px;
+}
+
+.botiga-style-guide-identity {
+	display: flex;
+	align-items: center;
+	gap: 24px;
+	min-height: 86px;
+}
+
+.botiga-style-guide-identity-logo {
+	min-width: 120px;
+}
+
+.botiga-style-guide-logo {
+	width: auto;
+	max-width: 120px;
+	height: auto;
+	max-height: 80px;
+}
+
+.botiga-style-guide-site-title {
+	font-size: 22px;
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+.botiga-style-guide-site-description {
+	margin-top: 4px;
+	color: #646970;
+}
+
+.botiga-style-guide-browser-tab-preview {
+	position: relative;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+	min-height: 86px;
+	padding-top: 16px;
+}
+
+.botiga-style-guide-browser-tab-line {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	height: 1px;
+	background-color: #dcdcdc;
+}
+
+.botiga-style-guide-browser-tab {
+	position: relative;
+	z-index: 1;
+	display: inline-flex;
+	align-items: center;
+	gap: 14px;
+	min-width: 240px;
+	margin-bottom: -1px;
+	padding: 18px 24px;
+	border: 1px solid #dcdcdc;
+	border-bottom-color: #fff;
+	border-radius: 18px 18px 0 0;
+	background-color: #fff;
+}
+
+.botiga-style-guide-site-icon,
+.botiga-style-guide-site-icon-placeholder {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex: 0 0 auto;
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.botiga-style-guide-site-icon-placeholder {
+	border: 1px solid #2271b1;
+	background-color: #fff;
+	color: #2271b1;
+}
+
+.botiga-style-guide-site-icon-placeholder .dashicons {
+	width: 22px;
+	height: 22px;
+	font-size: 22px;
+	line-height: 22px;
+}
+
+.botiga-style-guide-site-icon-title {
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+.botiga-style-guide-color-group {
+	margin-bottom: 36px;
+}
+
+.botiga-style-guide-color-group:last-child {
+	margin-bottom: 0;
+}
+
+.botiga-style-guide-colors {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	gap: 18px;
+}
+
+.botiga-style-guide-color-group--brand .botiga-style-guide-colors {
+	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+
+.botiga-style-guide-color-group--brand .botiga-style-guide-color {
+	min-height: 130px;
+	padding: 16px;
+}
+
+.botiga-style-guide-color-group--brand .botiga-style-guide-color-swatch {
+	height: 56px;
+}
+
+.botiga-style-guide-color {
+	position: relative;
+	display: block;
+	min-height: 150px;
+	padding: 18px;
+	border: 1px solid #dcdcdc;
+	border-radius: 10px;
+	color: #1c1c1c;
+	text-align: left;
+	text-decoration: none;
+	transition: all 0.2s;
+}
+
+.botiga-style-guide-color-swatch {
+	display: block;
+	width: 100%;
+	height: 64px;
+	margin: 0 0 16px;
+	border: 1px solid #dcdcdc;
+	border-radius: 8px;
+}
+
+.botiga-style-guide-color-label {
+	display: block;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 1.25;
+}
+
+.botiga-style-guide-color-value {
+	display: block;
+	margin-top: 8px;
+	color: #8a8f94;
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 1.2;
+	text-transform: uppercase;
+}
+
+.botiga-style-guide-button-card {
+	position: relative;
+	display: inline-block;
+	padding: 24px;
+	border: 1px solid #dcdcdc;
+	border-radius: 10px;
+	color: #1c1c1c;
+	text-decoration: none;
+}
+
+.botiga-style-guide-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 120px;
+	border-style: solid;
+	line-height: 1;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.botiga-style-guide-typography {
+	display: grid;
+	grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+	gap: 56px;
+	width: 100%;
+}
+
+.botiga-style-guide-typography-column + .botiga-style-guide-typography-column {
+	padding-left: 56px;
+	border-left: 1px solid #dcdcdc;
+}
+
+.botiga-style-guide-subsection-title {
+	margin: 0 0 30px;
+	padding: 0 0 10px;
+	border-bottom: 1px solid #dcdcdc;
+	font-size: 20px;
+	line-height: 1.2;
+}
+
+.botiga-style-guide-typography-item {
+	position: relative;
+	display: block;
+	margin-bottom: 22px;
+	padding: 0 0 22px;
+	border-bottom: 1px solid #dcdcdc;
+	border-radius: 0;
+	color: #1c1c1c;
+	text-decoration: none;
+}
+
+.botiga-style-guide-typography-item:last-child {
+	margin-bottom: 0;
+	padding-bottom: 0;
+	border-bottom: none;
+}
+
+.botiga-style-guide-heading {
+	margin: 8px 0 0;
+	color: #244d59;
+	line-height: 1.1;
+}
+
+.botiga-style-guide-body-text {
+	margin: 16px 0 0;
+	line-height: 1.68;
+}
+
+.botiga-style-guide-body-text p {
+	margin: 0 0 18px;
+	font-size: inherit;
+	line-height: inherit;
+}
+
+.botiga-style-guide-body-text p:last-child {
+	margin-bottom: 0;
+}
+
+@media (max-width: 1200px) {
+	.botiga-style-guide-color-group--brand .botiga-style-guide-colors {
+		grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+	}
+}
+
+@media (max-width: 1068px) {
+	.botiga-style-guide-body,
+	.botiga-style-guide-site-identity-grid,
+	.botiga-style-guide-typography {
+		display: block;
+	}
+
+	.botiga-style-guide-navigation {
+		position: relative;
+		max-width: none;
+		margin-bottom: 30px;
+	}
+
+	.botiga-style-guide-section {
+		padding: 30px;
+	}
+
+	.botiga-style-guide-site-identity-card {
+		margin-bottom: 20px;
+	}
+
+	.botiga-style-guide-site-identity-card:last-child {
+		margin-bottom: 0;
+	}
+
+	.botiga-style-guide-browser-tab {
+		min-width: 0;
+		max-width: 100%;
+	}
+
+	.botiga-style-guide-typography-column + .botiga-style-guide-typography-column {
+		margin-top: 36px;
+		padding-left: 0;
+		border-left: 0;
+	}
+}

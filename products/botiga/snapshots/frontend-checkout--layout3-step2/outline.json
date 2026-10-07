@@ -1,0 +1,784 @@
+{
+  "slug": "frontend-checkout--layout3-step2",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "header-search-toggle",
+      "event": "click",
+      "selector": ".header-search",
+      "count": 2
+    },
+    {
+      "label": "checkout-payment-method",
+      "event": "change",
+      "selector": ".input-radio[data-order_button_text]",
+      "count": 3
+    },
+    {
+      "label": "checkout-ship-elsewhere",
+      "event": "change",
+      "selector": "#ship-to-different-address-checkbox",
+      "count": 1
+    },
+    {
+      "label": "checkout-coupon-toggle",
+      "event": "click",
+      "selector": "a.showcoupon",
+      "count": 1
+    },
+    {
+      "label": "checkout-step",
+      "event": "click",
+      "selector": "a.botiga-mstepc-tabs-nav-item-link",
+      "count": 5
+    },
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "a.woocommerce-privacy-policy-link",
+      "count": 7
+    },
+    {
+      "label": "store-write-guard",
+      "event": "click",
+      "selector": ".button",
+      "count": 2
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#place_order",
+        "tag": "button",
+        "text": "Place order",
+        "count": 1,
+        "hidden": true,
+        "wired": "store-write-guard",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dropdown-link",
+        "tag": "a",
+        "text": "Home",
+        "count": 37,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mstepc-back-to-cart",
+        "tag": "a",
+        "text": "←Back to Cart",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-mstepc-next",
+        "tag": "a",
+        "text": "Next Step →",
+        "count": 1,
+        "hidden": false,
+        "wired": "checkout-step",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-mstepc-place-order",
+        "tag": "a",
+        "text": "Place Order",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-mstepc-prev",
+        "tag": "a",
+        "text": "← Previous Step",
+        "count": 1,
+        "hidden": false,
+        "wired": "checkout-step",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-mstepc-skip-login",
+        "tag": "a",
+        "text": "Skip Login",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-mstepc-tabs-nav-item-link",
+        "tag": "a",
+        "text": "Billing & Shipping",
+        "count": 3,
+        "hidden": false,
+        "wired": "checkout-step",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-quick-view-popup-close-button",
+        "tag": "a",
+        "text": "Close quick view popup",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#primary-menu",
+        "tag": "ul",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mstepc-tabs-content",
+        "tag": "div",
+        "text": "Have a coupon? Click here to enter your code Your order Pro…",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#billing_address_1",
+        "tag": "input",
+        "text": "2214 NW Thurman St",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_address_2",
+        "tag": "input",
+        "text": "Apartment, suite, unit, etc. (optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_city",
+        "tag": "input",
+        "text": "Portland",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_company",
+        "tag": "input",
+        "text": "Fernhill Home",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_country",
+        "tag": "select",
+        "text": "Select a country / region…AfghanistanÅland IslandsAlbaniaAl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_email",
+        "tag": "input",
+        "text": "maya@fernhillhome.com",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_first_name",
+        "tag": "input",
+        "text": "Maya",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_last_name",
+        "tag": "input",
+        "text": "Ellison",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_phone",
+        "tag": "input",
+        "text": "(503) 555-0142",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_postcode",
+        "tag": "input",
+        "text": "97210",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_state",
+        "tag": "select",
+        "text": "Select an option…AlabamaAlaskaArizonaArkansasCaliforniaColo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#coupon_code",
+        "tag": "input",
+        "text": "Coupon code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_comments",
+        "tag": "textarea",
+        "text": "Notes about your order, e.g. special notes for delivery.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#payment_method_bacs",
+        "tag": "input",
+        "text": "bacs",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#payment_method_cheque",
+        "tag": "input",
+        "text": "cheque",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#payment_method_cod",
+        "tag": "input",
+        "text": "cod",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ship-to-different-address-checkbox",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_address_1",
+        "tag": "input",
+        "text": "2214 NW Thurman St",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_address_2",
+        "tag": "input",
+        "text": "Apartment, suite, unit, etc. (optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_city",
+        "tag": "input",
+        "text": "Portland",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_company",
+        "tag": "input",
+        "text": "Fernhill Home",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_country",
+        "tag": "select",
+        "text": "Select a country / region…AfghanistanÅland IslandsAlbaniaAl…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_first_name",
+        "tag": "input",
+        "text": "Maya",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_last_name",
+        "tag": "input",
+        "text": "Ellison",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_method_0_flat_rate2",
+        "tag": "input",
+        "text": "flat_rate:2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_method_0_free_shipping1",
+        "tag": "input",
+        "text": "free_shipping:1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_method_0_local_pickup3",
+        "tag": "input",
+        "text": "local_pickup:3",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_postcode",
+        "tag": "input",
+        "text": "97210",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_state",
+        "tag": "select",
+        "text": "Select an option…AlabamaAlaskaArizonaArkansasCaliforniaColo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-process-checkout-nonce",
+        "tag": "input",
+        "text": "723872b25f",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-1",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-2",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-3",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".botiga-quick-view-popup-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#athemes-blocks-common-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_address_1_field",
+        "tag": "p",
+        "text": "Street address *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_address_2_field",
+        "tag": "p",
+        "text": "Apartment, suite, unit, etc. (optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_city_field",
+        "tag": "p",
+        "text": "Town / City *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_company_field",
+        "tag": "p",
+        "text": "Company name (optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_country_field",
+        "tag": "p",
+        "text": "Country / Region *Select a country / region…AfghanistanÅlan…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_email_field",
+        "tag": "p",
+        "text": "Email address *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_first_name_field",
+        "tag": "p",
+        "text": "First name *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_last_name_field",
+        "tag": "p",
+        "text": "Last name *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_phone_field",
+        "tag": "p",
+        "text": "Phone *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_postcode_field",
+        "tag": "p",
+        "text": "ZIP Code *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#billing_state_field",
+        "tag": "p",
+        "text": "State *Select an option…AlabamaAlaskaArizonaArkansasCalifor…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-style-min-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-woocommerce-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-background-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#customer_details",
+        "tag": "div",
+        "text": "Billing details First name *Last name *Company name (option…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_comments_field",
+        "tag": "p",
+        "text": "Order notes (optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#order_review",
+        "tag": "div",
+        "text": "Product Subtotal Cozy Lounge Armchair × 1 Fabric Color: Bla…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#order_review_heading",
+        "tag": "h3",
+        "text": "Your order",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#page",
+        "tag": "div",
+        "text": "Skip to content Home Blog Shop Room packages A full room, s…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#payment",
+        "tag": "div",
+        "text": "Direct bank transfer Make your payment directly into our ba…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-8",
+        "tag": "article",
+        "text": "Checkout Billing & Shipping 2 Order & Payment 3 Order Revie…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#primary",
+        "tag": "main",
+        "text": "Checkout Billing & Shipping 2 Order & Payment 3 Order Revie…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ship-to-different-address",
+        "tag": "h3",
+        "text": "Ship to a different address?",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_address_1_field",
+        "tag": "p",
+        "text": "Street address *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_address_2_field",
+        "tag": "p",
+        "text": "Apartment, suite, unit, etc. (optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_city_field",
+        "tag": "p",
+        "text": "Town / City *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_company_field",
+        "tag": "p",
+        "text": "Company name (optional)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_country_field",
+        "tag": "p",
+        "text": "Country / Region *Select a country / region…AfghanistanÅlan…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_first_name_field",
+        "tag": "p",
+        "text": "First name *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_last_name_field",
+        "tag": "p",
+        "text": "Last name *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_method",
+        "tag": "ul",
+        "text": "Free shipping Flat rate: $10.00 Local pickup",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#shipping_postcode_field",
+        "tag": "p",
+        "text": "ZIP Code *",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_state_field",
+        "tag": "p",
+        "text": "State *Select an option…AlabamaAlaskaArizonaArkansasCalifor…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#site-header-cart",
+        "tag": "div",
+        "text": "2",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation",
+        "tag": "nav",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation-mobile",
+        "tag": "nav",
+        "text": "Home Blog Shop Room packagesA full room, styled by our Port…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#text-2",
+        "tag": "section",
+        "text": "ABOUT About Fernhill How it Works Reviews Contact Careers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-3",
+        "tag": "section",
+        "text": "HELP FAQs Privacy Policy Terms Returns",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-4",
+        "tag": "section",
+        "text": "Solid wood furniture, built by hand in Portland and made to…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wc-custom-place-order-button-styles",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_product_categories-1",
+        "tag": "section",
+        "text": "SHOP Bedroom Dining Home Office Living Room Outdoor Packages",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-checkout-form-coupon",
+        "tag": "form",
+        "text": "Coupon: Apply coupon",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-inline-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-library-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".bhfb-component-search",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".bhfb-header",
+        "tag": "header",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".bhfb-row",
+        "tag": "div",
+        "text": "",
+        "count": 10,
+        "hidden": true
+      },
+      {
+        "sel": ".bhfb-sticky-header",
+        "tag": "div",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dropdown-li",
+        "tag": "li",
+        "text": "Home",
+        "count": 42,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mega-menu",
+        "tag": "li",
+        "text": "Shop Room packages A full room, styled by our Portland team…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mega-menu-column",
+        "tag": "li",
+        "text": "Room packages A full room, styled by our Portland team, for…",
+        "count": 8,
+        "hidden": false
+      }
+    ]
+  }
+}

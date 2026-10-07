@@ -1,0 +1,745 @@
+{
+  "slug": "frontend-product-simple--lightbox",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "header-search-toggle",
+      "event": "click",
+      "selector": ".header-search",
+      "count": 2
+    },
+    {
+      "label": "quick-view-open",
+      "event": "click",
+      "selector": ".botiga-quick-view.botiga-quick-view-layout2[data-nonce][data-product-id]",
+      "count": 3
+    },
+    {
+      "label": "wishlist-toggle",
+      "event": "click",
+      "selector": ".botiga-wishlist-button[data-botiga-wishlist-tooltip][data-nonce]",
+      "count": 3
+    },
+    {
+      "label": "qty-button",
+      "event": "click",
+      "selector": ".show",
+      "count": 4
+    },
+    {
+      "label": "variation-swatch",
+      "event": "click",
+      "selector": ".botiga-variation-item",
+      "count": 8
+    },
+    {
+      "label": "variation-reset",
+      "event": "click",
+      "selector": ".reset_variations",
+      "count": 2
+    },
+    {
+      "label": "product-accordion",
+      "event": "click",
+      "selector": ".botiga-accordion__toggle.botiga-collapse-toggle[data-botiga-collapse]",
+      "count": 2
+    },
+    {
+      "label": "review-modal-open",
+      "event": "click",
+      "selector": "a.button.botiga-adv-review-write-button",
+      "count": 1
+    },
+    {
+      "label": "reviews-orderby",
+      "event": "change",
+      "selector": "#botiga-reviews-orderby",
+      "count": 1
+    },
+    {
+      "label": "gallery-lightbox",
+      "event": "click",
+      "selector": "div.woocommerce-product-gallery__image a",
+      "count": 3
+    },
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "div.textwidget > ul > li:nth-of-type(1) > a",
+      "count": 6
+    },
+    {
+      "label": "store-write-guard",
+      "event": "click",
+      "selector": "button.single_add_to_cart_button.button",
+      "count": 6
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#cancel-comment-reply-link",
+        "tag": "a",
+        "text": "Cancel reply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product-219",
+        "tag": "div",
+        "text": "Velvet Swivel Chair Rated 4.71 out of 5 based on 7 customer…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-accordion__toggle",
+        "tag": "a",
+        "text": "Description",
+        "count": 2,
+        "hidden": false,
+        "wired": "product-accordion",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-adv-review-write-button",
+        "tag": "a",
+        "text": "WRITE A REVIEW",
+        "count": 1,
+        "hidden": false,
+        "wired": "review-modal-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-adv-reviews-modal-close",
+        "tag": "a",
+        "text": "Close popup",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-buy-now-button",
+        "tag": "button",
+        "text": "BUY NOW",
+        "count": 1,
+        "hidden": false,
+        "wired": "store-write-guard",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-dropdown-link",
+        "tag": "a",
+        "text": "Home",
+        "count": 37,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mobile-sticky-addtocart-button",
+        "tag": "a",
+        "text": "Add to Cart",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-mobile-sticky-close-button",
+        "tag": "a",
+        "text": "Close",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-product-size-chart-button",
+        "tag": "div",
+        "text": "Size Chart",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-product-size-chart-modal-close",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-quantity-minus",
+        "tag": "a",
+        "text": "Decrease product quantity.",
+        "count": 2,
+        "hidden": false,
+        "wired": "qty-button",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-quantity-plus",
+        "tag": "a",
+        "text": "Increase product quantity.",
+        "count": 2,
+        "hidden": false,
+        "wired": "qty-button",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-quick-view",
+        "tag": "a",
+        "text": "Quick View",
+        "count": 3,
+        "hidden": true,
+        "wired": "quick-view-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-quick-view-popup-close-button",
+        "tag": "a",
+        "text": "Close quick view popup",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-side-mini-cart__close-button",
+        "tag": "a",
+        "text": "Close the side mini cart",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-single-sticky-add-to-cart-wrapper-content",
+        "tag": "div",
+        "text": "Velvet Swivel Chair $589.00 – $679.00 Price range: $589.00 …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-variation-item",
+        "tag": "a",
+        "text": "Black",
+        "count": 8,
+        "hidden": false,
+        "wired": "variation-swatch",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-variation-type-button",
+        "tag": "div",
+        "text": "Black Desert Sand",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-wc-loop-product__title",
+        "tag": "a",
+        "text": "Curved Lounge Chair",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-wishlist-button",
+        "tag": "a",
+        "text": "Add the product Curved Lounge Chair to wishlist",
+        "count": 3,
+        "hidden": false,
+        "wired": "wishlist-toggle",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#primary-menu",
+        "tag": "ul",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-product-size-chart-modal-tab",
+        "tag": "div",
+        "text": "Inches",
+        "count": 2,
+        "hidden": true
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#_wp_unfiltered_html_comment_disabled",
+        "tag": "input",
+        "text": "deac55b001",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-reviews-orderby",
+        "tag": "select",
+        "text": "Newest Oldest Top rated Low rated",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment_parent",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment_post_ID",
+        "tag": "input",
+        "text": "219",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pa_body-finish",
+        "tag": "select",
+        "text": "Choose an optionGainsboroWeldon Blue",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#pa_fabric-color",
+        "tag": "select",
+        "text": "Choose an optionBlackDesert Sand",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#quantity_6ac047733c8b4",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#quantity_6ac0477346be5",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#rating",
+        "tag": "select",
+        "text": "Rate… Perfect Good Average Not that bad Very poor",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submit",
+        "tag": "input",
+        "text": "Submit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-1",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-2",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-3",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".botiga-adv-reviews-modal",
+        "tag": "div",
+        "text": "You are reviewing Velvet Swivel Chair A rounded swivel chai…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-adv-reviews-modal-content",
+        "tag": "div",
+        "text": "You are reviewing Velvet Swivel Chair A rounded swivel chai…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-product-size-chart-modal",
+        "tag": "div",
+        "text": "Chair and sofa dimensionsInchesCentimetersPieceWidthDepthHe…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-product-size-chart-modal-content",
+        "tag": "div",
+        "text": "Measure your doorway and the spot where the piece will sit …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-quick-view-popup-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#athemes-blocks-common-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-accordion-additional_information",
+        "tag": "div",
+        "text": "Weight 34 lbs Dimensions 28 × 28 × 30 in Fabric Color Black…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-accordion-description",
+        "tag": "div",
+        "text": "The Velvet Swivel Chair turns toward the conversation, the …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment-21",
+        "tag": "div",
+        "text": "Rated 5 out of 5 based on customer ratings. Ruth Abernathy …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-22",
+        "tag": "div",
+        "text": "Rated 5 out of 5 based on customer ratings. Owen Park — ver…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-23",
+        "tag": "div",
+        "text": "Rated 4 out of 5 based on customer ratings. Sofia Marchetti…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-24",
+        "tag": "div",
+        "text": "Rated 5 out of 5 based on customer ratings. Ben Adeyemi — v…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-25",
+        "tag": "div",
+        "text": "Rated 4 out of 5 based on customer ratings. Sam Oduya — ver…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-26",
+        "tag": "div",
+        "text": "Rated 5 out of 5 based on customer ratings. Grace Okafor — …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-27",
+        "tag": "div",
+        "text": "Rated 5 out of 5 based on customer ratings. Mateo Alvarez —…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#commentform",
+        "tag": "form",
+        "text": "Rating * 1 of 5 stars 2 of 5 stars 3 of 5 stars 4 of 5 star…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comments",
+        "tag": "div",
+        "text": "Rated 5 out of 5 based on customer ratings. Ruth Abernathy …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#custom-background-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#page",
+        "tag": "div",
+        "text": "Skip to content Home Blog Shop Room packages A full room, s…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#photoswipe-fullscreen-dialog",
+        "tag": "div",
+        "text": "1 / 3",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#primary",
+        "tag": "main",
+        "text": "← GO BACK Velvet Swivel Chair Rated 4.71 out of 5 based on …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#reply-title",
+        "tag": "span",
+        "text": "Cancel reply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#respond",
+        "tag": "div",
+        "text": "Cancel replyRating * 1 of 5 stars 2 of 5 stars 3 of 5 stars…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#review_form",
+        "tag": "div",
+        "text": "Cancel replyRating * 1 of 5 stars 2 of 5 stars 3 of 5 stars…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#review_form_wrapper",
+        "tag": "div",
+        "text": "Cancel replyRating * 1 of 5 stars 2 of 5 stars 3 of 5 stars…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#reviews",
+        "tag": "section",
+        "text": "Why people love our products High-quality, ethically source…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#reviews-stars",
+        "tag": "h2",
+        "text": "Why people love our products",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-header-cart",
+        "tag": "div",
+        "text": "0",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation",
+        "tag": "nav",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation-mobile",
+        "tag": "nav",
+        "text": "Home Blog Shop Room packagesA full room, styled by our Port…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#text-2",
+        "tag": "section",
+        "text": "ABOUT About Fernhill How it Works Reviews Contact Careers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-3",
+        "tag": "section",
+        "text": "HELP FAQs Privacy Policy Terms Returns",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-4",
+        "tag": "section",
+        "text": "Solid wood furniture, built by hand in Portland and made to…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_231",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_250",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_255",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_product_categories-1",
+        "tag": "section",
+        "text": "SHOP Bedroom Dining Home Office Living Room Outdoor Packages",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-inline-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-library-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".bhfb-component-search",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".bhfb-header",
+        "tag": "header",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".bhfb-row",
+        "tag": "div",
+        "text": "",
+        "count": 10,
+        "hidden": true
+      },
+      {
+        "sel": ".bhfb-sticky-header",
+        "tag": "div",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-accordion__body-content",
+        "tag": "div",
+        "text": "The Velvet Swivel Chair turns toward the conversation, the …",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-adv-reviews-header",
+        "tag": "div",
+        "text": "4.71 Rated 4.71 out of 5 based on customer ratings. 7 Revie…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dropdown-li",
+        "tag": "li",
+        "text": "Home",
+        "count": 42,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mega-menu",
+        "tag": "li",
+        "text": "Shop Room packages A full room, styled by our Portland team…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mega-menu-column",
+        "tag": "li",
+        "text": "Room packages A full room, styled by our Portland team, for…",
+        "count": 8,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-review-content",
+        "tag": "div",
+        "text": "Our guests always ask where we got it. I send them straight…",
+        "count": 7,
+        "hidden": false
+      }
+    ]
+  }
+}

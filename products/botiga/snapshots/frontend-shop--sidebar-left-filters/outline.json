@@ -1,0 +1,501 @@
+{
+  "slug": "frontend-shop--sidebar-left-filters",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "header-search-toggle",
+      "event": "click",
+      "selector": ".header-search",
+      "count": 2
+    },
+    {
+      "label": "quick-view-open",
+      "event": "click",
+      "selector": ".botiga-quick-view.botiga-quick-view-layout2[data-nonce][data-product-id]",
+      "count": 9
+    },
+    {
+      "label": "shop-load-more",
+      "event": "click",
+      "selector": "a.botiga-pagination-button.button",
+      "count": 1
+    },
+    {
+      "label": "wishlist-toggle",
+      "event": "click",
+      "selector": ".botiga-wishlist-button[data-botiga-wishlist-tooltip][data-nonce]",
+      "count": 9
+    },
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "div.textwidget > ul > li:nth-of-type(1) > a",
+      "count": 6
+    },
+    {
+      "label": "shop-filter-input",
+      "event": "change",
+      "selector": "#preset-fhshop1-filter-1-Bedroom",
+      "count": 9
+    },
+    {
+      "label": "shop-filter-term-link",
+      "event": "click",
+      "selector": ".btsf-terms-text-link[data-term-id][data-term-slug]",
+      "count": 5
+    },
+    {
+      "label": "store-write-guard",
+      "event": "click",
+      "selector": ".add_to_cart_button.button[data-product_id][data-product_sku]",
+      "count": 7
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": ".botiga-dropdown-link",
+        "tag": "a",
+        "text": "Home",
+        "count": 37,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-pagination-button",
+        "tag": "a",
+        "text": "LOAD MORE",
+        "count": 1,
+        "hidden": false,
+        "wired": "shop-load-more",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-quick-view",
+        "tag": "a",
+        "text": "Quick View",
+        "count": 9,
+        "hidden": true,
+        "wired": "quick-view-open",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-quick-view-popup-close-button",
+        "tag": "a",
+        "text": "Close quick view popup",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-side-mini-cart__close-button",
+        "tag": "a",
+        "text": "Close the side mini cart",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-wc-loop-product__title",
+        "tag": "a",
+        "text": "Blue Channel Dining Chair",
+        "count": 9,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-wishlist-button",
+        "tag": "a",
+        "text": "Add the product Blue Channel Dining Chair to wishlist",
+        "count": 9,
+        "hidden": false,
+        "wired": "wishlist-toggle",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#primary-menu",
+        "tag": "ul",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#preset-fhshop1-filter-1-Bedroom",
+        "tag": "input",
+        "text": "bedroom",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preset-fhshop1-filter-1-Dining",
+        "tag": "input",
+        "text": "dining",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preset-fhshop1-filter-1-Outdoor",
+        "tag": "input",
+        "text": "outdoor",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preset-fhshop1-filter-1-Packages",
+        "tag": "input",
+        "text": "packages",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-1",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-2",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-search-field-search-form-3",
+        "tag": "input",
+        "text": "Search products…",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": ".botiga-quick-view-popup-content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "other": [
+      {
+        "sel": "#athemes-blocks-common-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#block-7",
+        "tag": "section",
+        "text": "Room 6 Bedroom 2 Dining 1 Home Office 9 Living Room 3 Outdo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-shop-filters-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-style-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-style-min-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#custom-background-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#global-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#page",
+        "tag": "div",
+        "text": "Skip to content Home Blog Shop Room packages A full room, s…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#photoswipe-fullscreen-dialog",
+        "tag": "div",
+        "text": "Full screen image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#preset-fhshop1-filter-1",
+        "tag": "div",
+        "text": "Room 6 Bedroom 2 Dining 1 Home Office 9 Living Room 3 Outdo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preset-fhshop1-filter-2",
+        "tag": "div",
+        "text": "Body finish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preset-fhshop1-filter-3",
+        "tag": "div",
+        "text": "Fabric color Black Desert Sand",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preset-fhshop1-filter-4",
+        "tag": "div",
+        "text": "Price $ 0 $ 1200",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preset-fhshop1-filter-5",
+        "tag": "div",
+        "text": "Availability 11 In stock",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#primary",
+        "tag": "main",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#secondary",
+        "tag": "aside",
+        "text": "Room 6 Bedroom 2 Dining 1 Home Office 9 Living Room 3 Outdo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-header-cart",
+        "tag": "div",
+        "text": "0",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation",
+        "tag": "nav",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#site-navigation-mobile",
+        "tag": "nav",
+        "text": "Home Blog Shop Room packagesA full room, styled by our Port…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#text-2",
+        "tag": "section",
+        "text": "ABOUT About Fernhill How it Works Reviews Contact Careers",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-3",
+        "tag": "section",
+        "text": "HELP FAQs Privacy Policy Terms Returns",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#text-4",
+        "tag": "section",
+        "text": "Solid wood furniture, built by hand in Portland and made to…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_231",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_236",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_240",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_245",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_250",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_255",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_260",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_270",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_loop_add_to_cart_link_describedby_285",
+        "tag": "span",
+        "text": "This product has multiple variants. The options may be chos…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce_product_categories-1",
+        "tag": "section",
+        "text": "SHOP Bedroom Dining Home Office Living Room Outdoor Packages",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-inline-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-library-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-block-paragraph-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-img-auto-sizes-contain-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wpforms-admin-bar-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".bhfb-component-search",
+        "tag": "div",
+        "text": "",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".bhfb-header",
+        "tag": "header",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".bhfb-row",
+        "tag": "div",
+        "text": "",
+        "count": 10,
+        "hidden": true
+      },
+      {
+        "sel": ".bhfb-sticky-header",
+        "tag": "div",
+        "text": "Home Blog Shop Room packages A full room, styled by our Por…",
+        "count": 2,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-dropdown-li",
+        "tag": "li",
+        "text": "Home",
+        "count": 42,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mega-menu",
+        "tag": "li",
+        "text": "Shop Room packages A full room, styled by our Portland team…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-mega-menu-column",
+        "tag": "li",
+        "text": "Room packages A full room, styled by our Portland team, for…",
+        "count": 8,
+        "hidden": false
+      }
+    ]
+  }
+}

@@ -1,0 +1,4042 @@
+{
+  "slug": "admin-post-product--variation-gallery-video-popup",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "product-tab",
+      "event": "click",
+      "selector": "li.general_options.general_tab a",
+      "count": 8
+    },
+    {
+      "label": "video-url-popup",
+      "event": "click",
+      "selector": "a.botiga-video-from-url-popup-close.dashicons",
+      "count": 2
+    },
+    {
+      "label": "live-only",
+      "event": "click",
+      "selector": "#insert-media-button",
+      "count": 91
+    },
+    {
+      "label": "botiga-metabox-tab",
+      "event": "click",
+      "selector": ".botiga-metabox-tab",
+      "count": 7
+    },
+    {
+      "label": "wp-postbox-toggle",
+      "event": "click",
+      "selector": "#submitdiv-title",
+      "count": 26
+    },
+    {
+      "label": "wp-postbox-move",
+      "event": "click",
+      "selector": ".wp-tooltip__toggle",
+      "count": 24
+    },
+    {
+      "label": "wp-publish-box-edit",
+      "event": "click",
+      "selector": "a.edit-post-status.hide-if-no-js",
+      "count": 12
+    },
+    {
+      "label": "wp-edit-slug",
+      "event": "click",
+      "selector": "button.edit-slug.button",
+      "count": 1
+    },
+    {
+      "label": "wp-category-tabs",
+      "event": "click",
+      "selector": "li.tabs a",
+      "count": 4
+    },
+    {
+      "label": "wp-category-add-toggle",
+      "event": "click",
+      "selector": ".hide-if-no-js.taxonomy-add-new",
+      "count": 2
+    },
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "wp-switch-editor",
+      "event": "click",
+      "selector": ".wp-switch-editor[data-wp-editor-id]",
+      "count": 4
+    },
+    {
+      "label": "wc-product-data-tab",
+      "event": "click",
+      "selector": "li.general_options.general_tab a",
+      "count": 8
+    },
+    {
+      "label": "select2-open",
+      "event": "click",
+      "selector": "span.select2-selection.select2-selection--single",
+      "count": 1
+    },
+    {
+      "label": "select2-multi-open",
+      "event": "click",
+      "selector": ".select2-selection.select2-selection--multiple",
+      "count": 5
+    },
+    {
+      "label": "select2-multi-search",
+      "event": "input",
+      "selector": "span.select2-selection.select2-selection--multiple ul.select2-selection__rendered li.select2-search.select2-search--inline input.select2-search__field",
+      "count": 2
+    },
+    {
+      "label": "select2-multi-remove",
+      "event": "click",
+      "selector": ".select2-selection__choice__remove",
+      "count": 5
+    },
+    {
+      "label": "wc-variation-toggle",
+      "event": "click",
+      "selector": "div.woocommerce_variation.wc-metabox h3",
+      "count": 3
+    },
+    {
+      "label": "parked-toggle",
+      "event": "click",
+      "selector": ".components-button.woocommerce-layout__activity-panel-tab[data-snap-park][data-testid]",
+      "count": 2
+    },
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "div.contextual-help-sidebar p a",
+      "count": 50
+    },
+    {
+      "label": "admin-chrome-fallback",
+      "event": "click",
+      "selector": "a.wp-first-item.wp-has-submenu",
+      "count": 63
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#activity-panel-tab-activity",
+        "tag": "button",
+        "text": "Activity unread activity",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#activity-panel-tab-setup",
+        "tag": "button",
+        "text": "Finish setup",
+        "count": 1,
+        "hidden": false,
+        "wired": "parked-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#content-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-switch-editor",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#content-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-switch-editor",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#excerpt-html",
+        "tag": "button",
+        "text": "Code",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-switch-editor",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#excerpt-tmce",
+        "tag": "button",
+        "text": "Visual",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-switch-editor",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#insert-media-button",
+        "tag": "button",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": false,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#link-product_tag",
+        "tag": "button",
+        "text": "Choose from the most used tags",
+        "count": 1,
+        "hidden": false,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#newmeta-button",
+        "tag": "button",
+        "text": "Enter new Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-preview",
+        "tag": "a",
+        "text": "Preview Changes (opens in a new tab)",
+        "count": 1,
+        "hidden": false,
+        "wired": "live-only",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#product_brand-add",
+        "tag": "p",
+        "text": "Add New Brand Parent Brand: — Parent Brand —",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand-add-toggle",
+        "tag": "a",
+        "text": "+ Add New Brand",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-category-add-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#product_cat-add",
+        "tag": "p",
+        "text": "Add new category Parent category: — Parent category — Bedro…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat-add-toggle",
+        "tag": "a",
+        "text": "+ Add new category",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-category-add-toggle",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#qt_content_dfw",
+        "tag": "button",
+        "text": "Distraction-free writing mode",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#remove-post-thumbnail",
+        "tag": "a",
+        "text": "Remove product image",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#set-post-thumbnail",
+        "tag": "a",
+        "text": "",
+        "count": 1,
+        "hidden": false,
+        "wired": "external-tip",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-add-item",
+        "tag": "a",
+        "text": "Add Media",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-add-video-item",
+        "tag": "a",
+        "text": "Add Video From URL",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-button-remove",
+        "tag": "a",
+        "text": "Remove Image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-media-button",
+        "tag": "div",
+        "text": "Upload/Add ImageRemove Image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-media-upload",
+        "tag": "a",
+        "text": "Upload/Add Image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-repeater-add",
+        "tag": "button",
+        "text": "Add Video Link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-uploads-add",
+        "tag": "button",
+        "text": "Upload Videos",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-uploads-thumbnail-upload",
+        "tag": "a",
+        "text": "+",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-uploads-upload",
+        "tag": "button",
+        "text": "Upload",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-tab",
+        "tag": "a",
+        "text": "General",
+        "count": 7,
+        "hidden": false,
+        "wired": "botiga-metabox-tab",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-video-from-url-popup-add",
+        "tag": "button",
+        "text": "Add Video",
+        "count": 1,
+        "hidden": false,
+        "wired": "video-url-popup",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": ".botiga-video-from-url-popup-close",
+        "tag": "a",
+        "text": "",
+        "count": 1,
+        "hidden": false,
+        "wired": "video-url-popup",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#list-table",
+        "tag": "table",
+        "text": "Name Value Key Value0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand-tabs",
+        "tag": "ul",
+        "text": "All Brands Most Used",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_cat-tabs",
+        "tag": "ul",
+        "text": "All categories Most Used",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#_ajax_fetch_list_nonce",
+        "tag": "input",
+        "text": "c7ee20fac7",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_ajax_nonce",
+        "tag": "input",
+        "text": "11e34e086f",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_ajax_nonce-add-meta",
+        "tag": "input",
+        "text": "a39007571f",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_ajax_nonce-add-product_brand",
+        "tag": "input",
+        "text": "160473b8e9",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_ajax_nonce-add-product_cat",
+        "tag": "input",
+        "text": "e35d5537ff",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_ajax_nonce-replyto-comment",
+        "tag": "input",
+        "text": "6853e64734",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_botiga_quantity_default",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_botiga_quantity_max",
+        "tag": "input",
+        "text": "auto",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_botiga_quantity_min",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_botiga_quantity_step",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_botiga_tb_thank_you_template_id232",
+        "tag": "select",
+        "text": "None Default Single product with trust strip Shop archive w…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#_botiga_tb_thank_you_template_id233",
+        "tag": "select",
+        "text": "NoneDefaultSingle product with trust stripShop archive with…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_botiga_tb_thank_you_template_id234",
+        "tag": "select",
+        "text": "NoneDefaultSingle product with trust stripShop archive with…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_botiga_tb_thank_you_template_priority232",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#_botiga_tb_thank_you_template_priority233",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_botiga_tb_thank_you_template_priority234",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_button_text",
+        "tag": "input",
+        "text": "Buy product",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_download_expiry",
+        "tag": "input",
+        "text": "Never",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_download_limit",
+        "tag": "input",
+        "text": "Unlimited",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_downloadable",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_featured",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_global_unique_id",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_low_stock_amount",
+        "tag": "input",
+        "text": "Store-wide threshold (3)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_manage_stock",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_product_url",
+        "tag": "input",
+        "text": "https://",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_purchase_note",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_regular_price",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_sale_price",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_sale_price_dates_from",
+        "tag": "input",
+        "text": "From… YYYY-MM-DD",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_sale_price_dates_to",
+        "tag": "input",
+        "text": "To… YYYY-MM-DD",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_sku",
+        "tag": "input",
+        "text": "FH-CHR-102",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_sold_individually",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_stock",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_thumbnail_id",
+        "tag": "input",
+        "text": "235",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_virtual",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_visibility_catalog",
+        "tag": "input",
+        "text": "catalog",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_visibility_hidden",
+        "tag": "input",
+        "text": "hidden",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_visibility_search",
+        "tag": "input",
+        "text": "search",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_visibility_visible",
+        "tag": "input",
+        "text": "visible",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_visible_in_pos",
+        "tag": "input",
+        "text": "yes",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_weight",
+        "tag": "input",
+        "text": "52",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#_wp_unfiltered_html_comment",
+        "tag": "input",
+        "text": "c40f64f3e0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#aa",
+        "tag": "input",
+        "text": "2022",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#action",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#active_post_lock",
+        "tag": "input",
+        "text": "1791297112:1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#add_comment_nonce",
+        "tag": "input",
+        "text": "e6b2edb68f",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#author-email",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#author-name",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#author-url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox_nonce",
+        "tag": "input",
+        "text": "c04789916d",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-hide",
+        "tag": "input",
+        "text": "botiga_metabox",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga-video-from-url-popup-aspect-ratio",
+        "tag": "select",
+        "text": "16:9 9:16 4:3 3:2 1:1 auto",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-video-from-url-popup-title",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-video-from-url-popup-url",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#checkbox",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment_ID",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment_post_ID",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment_status",
+        "tag": "input",
+        "text": "open",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#commentsdiv-hide",
+        "tag": "input",
+        "text": "commentsdiv",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#content",
+        "tag": "textarea",
+        "text": "The Cozy Lounge Armchair was designed for movie nights and …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#crosssell_ids",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_aa",
+        "tag": "input",
+        "text": "2026",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_hh",
+        "tag": "input",
+        "text": "07",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_jj",
+        "tag": "input",
+        "text": "06",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_mm",
+        "tag": "input",
+        "text": "10",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cur_mn",
+        "tag": "input",
+        "text": "31",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#current_featured",
+        "tag": "input",
+        "text": "no",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#current_visibility",
+        "tag": "input",
+        "text": "visible",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#current-page-selector-1",
+        "tag": "select",
+        "text": "1",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#dp1791297080954",
+        "tag": "input",
+        "text": "From… YYYY-MM-DD",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dp1791297080955",
+        "tag": "input",
+        "text": "To… YYYY-MM-DD",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dp1791297080956",
+        "tag": "input",
+        "text": "From… YYYY-MM-DD",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dp1791297080957",
+        "tag": "input",
+        "text": "To… YYYY-MM-DD",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dp1791297080958",
+        "tag": "input",
+        "text": "From… YYYY-MM-DD",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#dp1791297080959",
+        "tag": "input",
+        "text": "To… YYYY-MM-DD",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#editor-expand-toggle",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#excerpt",
+        "tag": "textarea",
+        "text": "Our most-loved armchair: low, deep and wrapped in a soft bo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#field_to_edit",
+        "tag": "select",
+        "text": "Bulk actions Delete all variations Toggle \"Enabled\" Toggle …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#grouped_products",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hh",
+        "tag": "input",
+        "text": "16",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_aa",
+        "tag": "input",
+        "text": "2022",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_hh",
+        "tag": "input",
+        "text": "16",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_jj",
+        "tag": "input",
+        "text": "23",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_mm",
+        "tag": "input",
+        "text": "03",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_mn",
+        "tag": "input",
+        "text": "01",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden_post_status",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden-post-password",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hidden-post-visibility",
+        "tag": "input",
+        "text": "public",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#hiddenaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-popular-product_cat-117",
+        "tag": "input",
+        "text": "117",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-popular-product_cat-120",
+        "tag": "input",
+        "text": "120",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-popular-product_cat-124",
+        "tag": "input",
+        "text": "124",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-popular-product_cat-125",
+        "tag": "input",
+        "text": "125",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-popular-product_cat-126",
+        "tag": "input",
+        "text": "126",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-popular-product_cat-127",
+        "tag": "input",
+        "text": "127",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-117-2",
+        "tag": "input",
+        "text": "117",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-product_cat-120-2",
+        "tag": "input",
+        "text": "120",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-product_cat-124-2",
+        "tag": "input",
+        "text": "124",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-product_cat-125-2",
+        "tag": "input",
+        "text": "125",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-product_cat-126-2",
+        "tag": "input",
+        "text": "126",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-product_cat-127-2",
+        "tag": "input",
+        "text": "127",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-product_cat-128-2",
+        "tag": "input",
+        "text": "128",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#jj",
+        "tag": "input",
+        "text": "23",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#menu_order",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#meta-2830-key",
+        "tag": "input",
+        "text": "total_sales",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#meta-2830-submit",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#meta-2830-value",
+        "tag": "textarea",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#meta-box-order-nonce",
+        "tag": "input",
+        "text": "3b4262adaa",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#metakeyinput",
+        "tag": "input",
+        "text": "New custom field name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#metakeyselect",
+        "tag": "select",
+        "text": "— Select — ao_post_optimize attribute_pa_body-finish attrib…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#metavalue",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mm",
+        "tag": "select",
+        "text": "01-Jan 02-Feb 03-Mar 04-Apr 05-May 06-Jun 07-Jul 08-Aug 09-…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mn",
+        "tag": "input",
+        "text": "01",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#mode",
+        "tag": "input",
+        "text": "single",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#new-tag-product_tag",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#newmeta-submit",
+        "tag": "input",
+        "text": "Add Custom Field",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#newproduct_brand",
+        "tag": "input",
+        "text": "New Brand Name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#newproduct_brand_parent",
+        "tag": "select",
+        "text": "— Parent Brand —",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#newproduct_cat",
+        "tag": "input",
+        "text": "New category name",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#newproduct_cat_parent",
+        "tag": "select",
+        "text": "— Parent category — Bedroom Dining Home Office Living Room …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_post_status",
+        "tag": "input",
+        "text": "publish",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_post_title",
+        "tag": "input",
+        "text": "Cozy Lounge Armchair",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#original_publish",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#originalaction",
+        "tag": "input",
+        "text": "editpost",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#position",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_author",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_ID",
+        "tag": "input",
+        "text": "231",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_name",
+        "tag": "input",
+        "text": "cozy-lounge-armchair",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_password",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_status",
+        "tag": "select",
+        "text": "Published Pending Review Draft",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post_type",
+        "tag": "input",
+        "text": "product",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postcustom-hide",
+        "tag": "input",
+        "text": "postcustom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postexcerpt-hide",
+        "tag": "input",
+        "text": "postexcerpt",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-hide",
+        "tag": "input",
+        "text": "postimagediv",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand-add-submit",
+        "tag": "input",
+        "text": "Add New Brand",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_branddiv-hide",
+        "tag": "input",
+        "text": "product_branddiv",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat-add-submit",
+        "tag": "input",
+        "text": "Add new category",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_catdiv-hide",
+        "tag": "input",
+        "text": "product_catdiv",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_height",
+        "tag": "input",
+        "text": "28",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_image_gallery",
+        "tag": "input",
+        "text": "85,1536,1537",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_length",
+        "tag": "input",
+        "text": "36",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": "#product_shipping_class",
+        "tag": "select",
+        "text": "No shipping class",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_width",
+        "tag": "input",
+        "text": "33",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product-type",
+        "tag": "select",
+        "text": "Simple product Grouped product External/Affiliate product V…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#publish",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_content_block",
+        "tag": "input",
+        "text": "b-quote",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_content_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_content_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_content_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_content_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_content_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_content_ins",
+        "tag": "input",
+        "text": "ins",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_content_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_content_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_content_more",
+        "tag": "input",
+        "text": "more",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_content_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_content_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_content_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_excerpt_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_excerpt_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_excerpt_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_block",
+        "tag": "input",
+        "text": "b-quote",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_close",
+        "tag": "input",
+        "text": "close tags",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_code",
+        "tag": "input",
+        "text": "code",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_del",
+        "tag": "input",
+        "text": "del",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_em",
+        "tag": "input",
+        "text": "i",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_img",
+        "tag": "input",
+        "text": "img",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_ins",
+        "tag": "input",
+        "text": "ins",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_li",
+        "tag": "input",
+        "text": "li",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_link",
+        "tag": "input",
+        "text": "link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_ol",
+        "tag": "input",
+        "text": "ol",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_strong",
+        "tag": "input",
+        "text": "b",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_ul",
+        "tag": "input",
+        "text": "ul",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#referredby",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replycontent",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#samplepermalinknonce",
+        "tag": "input",
+        "text": "71264366d0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#save",
+        "tag": "input",
+        "text": "Save",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "d6d331c96a",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-hide",
+        "tag": "input",
+        "text": "slugdiv",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ss",
+        "tag": "input",
+        "text": "44",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#status",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tagsdiv-product_tag-hide",
+        "tag": "input",
+        "text": "tagsdiv-product_tag",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tax-input-product_tag",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#title",
+        "tag": "input",
+        "text": "Cozy Lounge Armchair",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#upsell_ids",
+        "tag": "select",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#user-id",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_backorders0",
+        "tag": "select",
+        "text": "Do not allow Allow, but notify customer Allow",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#variable_backorders1",
+        "tag": "select",
+        "text": "Do not allowAllow, but notify customerAllow",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_backorders2",
+        "tag": "select",
+        "text": "Do not allowAllow, but notify customerAllow",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_description0",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#variable_description1",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_description2",
+        "tag": "textarea",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_download_expiry0",
+        "tag": "input",
+        "text": "Never",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_download_expiry1",
+        "tag": "input",
+        "text": "Never",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_download_expiry2",
+        "tag": "input",
+        "text": "Never",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_download_limit0",
+        "tag": "input",
+        "text": "Unlimited",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_download_limit1",
+        "tag": "input",
+        "text": "Unlimited",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_download_limit2",
+        "tag": "input",
+        "text": "Unlimited",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_global_unique_id0",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#variable_global_unique_id1",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_global_unique_id2",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_low_stock_amount0",
+        "tag": "input",
+        "text": "Store-wide threshold (3)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#variable_low_stock_amount1",
+        "tag": "input",
+        "text": "Store-wide threshold (3)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_low_stock_amount2",
+        "tag": "input",
+        "text": "Store-wide threshold (3)",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_regular_price_0",
+        "tag": "input",
+        "text": "989",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#variable_regular_price_1",
+        "tag": "input",
+        "text": "1069",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_regular_price_2",
+        "tag": "input",
+        "text": "1139",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_sale_price0",
+        "tag": "input",
+        "text": "890",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#variable_sale_price1",
+        "tag": "input",
+        "text": "962",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_sale_price2",
+        "tag": "input",
+        "text": "1025",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_sku0",
+        "tag": "input",
+        "text": "FH-CHR-102-1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#variable_sku1",
+        "tag": "input",
+        "text": "FH-CHR-102-2",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_sku2",
+        "tag": "input",
+        "text": "FH-CHR-102-3",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_stock_status0",
+        "tag": "select",
+        "text": "In stockOut of stockOn backorder",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_stock_status1",
+        "tag": "select",
+        "text": "In stockOut of stockOn backorder",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_stock_status2",
+        "tag": "select",
+        "text": "In stockOut of stockOn backorder",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_stock0",
+        "tag": "input",
+        "text": "2",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#variable_stock1",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_stock2",
+        "tag": "input",
+        "text": "0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_weight0",
+        "tag": "input",
+        "text": "52",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#variable_weight1",
+        "tag": "input",
+        "text": "52",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_weight2",
+        "tag": "input",
+        "text": "52",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-password",
+        "tag": "input",
+        "text": "password",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-private",
+        "tag": "input",
+        "text": "private",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#visibility-radio-public",
+        "tag": "input",
+        "text": "public",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce_meta_nonce",
+        "tag": "input",
+        "text": "037ee639dd",
+        "count": 2,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-data-hide",
+        "tag": "input",
+        "text": "woocommerce-product-data",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-images-hide",
+        "tag": "input",
+        "text": "woocommerce-product-images",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-preview",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-media-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [
+      {
+        "sel": "#activity-panel-header_40",
+        "tag": "h2",
+        "text": "Store Activity",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#advanced_product_data",
+        "tag": "div",
+        "text": "Purchase note Menu order Enable reviews Available for POS P…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#catalog-visibility",
+        "tag": "div",
+        "text": "Catalog visibility: Shop and search results Edit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#general_product_data",
+        "tag": "div",
+        "text": "Product URL Enter the external URL to the product. Button t…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inventory_product_data",
+        "tag": "div",
+        "text": "SKU GTIN, UPC, EAN, or ISBN Settings below apply to all var…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#link-modal-title",
+        "tag": "h1",
+        "text": "Insert/edit link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#linked_product_data",
+        "tag": "div",
+        "text": "Grouped products Upsells Cross-sells",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#marketplace_suggestions",
+        "tag": "div",
+        "text": "Recommended extensions Wholesale For WooCommerce - B2B Ecom…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_attributes",
+        "tag": "div",
+        "text": "Expand / Close Add new Add existing Remove Fabric Color Nam…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brand-all",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_brand-pop",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_cat-all",
+        "tag": "div",
+        "text": "Uncategorized Bedroom Dining Home Office Living Room Outdoo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_cat-pop",
+        "tag": "div",
+        "text": "Living Room Bedroom Packages Outdoor Dining Home Office",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-panel",
+        "tag": "div",
+        "text": "Search No search term specified. Showing recent items. Sear…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#shipping_product_data",
+        "tag": "div",
+        "text": "Weight (lbs) Dimensions (in) Shipping class No shipping cla…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_product_options",
+        "tag": "div",
+        "text": "Default Form Values: No default Fabric Color… Black Desert …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#visibility",
+        "tag": "div",
+        "text": "Visibility: Public Edit Edit visibility",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-activity-panel",
+        "tag": "aside",
+        "text": "Activity unread activity Finish setup",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-video-from-url-popup-content",
+        "tag": "div",
+        "text": "Video URL Video Title Aspect Ratio 16:9 9:16 4:3 3:2 1:1 au…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-video-from-url-popup-field",
+        "tag": "div",
+        "text": "Video URL",
+        "count": 3,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-video-from-url-popup-header",
+        "tag": "div",
+        "text": "Add Video From URL",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "other": [
+      {
+        "sel": "#_pos_visibility_note",
+        "tag": "output",
+        "text": "This product type is not currently supported.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#add-new-comment",
+        "tag": "p",
+        "text": "Add Comment",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#addbtn",
+        "tag": "span",
+        "text": "Add Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#addhead",
+        "tag": "span",
+        "text": "Add Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Screen elements Some screen elements can be shown or hidden…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#advanced-sortables",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox",
+        "tag": "div",
+        "text": "Botiga Product Options Move up Move down Show or hide panel…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#botiga_metabox-title",
+        "tag": "h2",
+        "text": "Botiga Product Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#botiga-notices-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cancelnew",
+        "tag": "span",
+        "text": "Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#catalog-visibility-display",
+        "tag": "strong",
+        "text": "Shop and search results",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#catalog-visibility-select",
+        "tag": "div",
+        "text": "This setting determines which shop pages products will be l…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#com-reply",
+        "tag": "tbody",
+        "text": "Edit Comment Reply to Comment Add Comment Comment Drop file…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#comment-28",
+        "tag": "tr",
+        "text": "Daniel Moreau daniel.moreau@example.com 201.37.105.165 The …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-29",
+        "tag": "tr",
+        "text": "Chloe Nguyen chloe.nguyen@example.com 201.37.105.165 Really…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-30",
+        "tag": "tr",
+        "text": "Ruth Abernathy ruth.abernathy@example.com 201.37.105.165 As…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-31",
+        "tag": "tr",
+        "text": "Owen Park owen.park@example.com 201.37.105.165 We have had …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#comment-32",
+        "tag": "tr",
+        "text": "Sofia Marchetti sofia.marchetti@example.com 201.37.105.165 …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#commentsdiv",
+        "tag": "div",
+        "text": "Reviews Move up Move down Show or hide panel Add Comment Da…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#commentsdiv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#commentsdiv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#commentsdiv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#commentsdiv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#commentsdiv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#commentsdiv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#commentsdiv-title",
+        "tag": "h2",
+        "text": "Reviews",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#content_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#content-resize-handle",
+        "tag": "td",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#delete-action",
+        "tag": "div",
+        "text": "Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#duplicate-action",
+        "tag": "div",
+        "text": "Copy to a new draft",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#ed_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#edit-slug-box",
+        "tag": "div",
+        "text": "Permalink: http://fernhillhome.com/product/cozy-lounge-ar…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#edit-slug-buttons",
+        "tag": "span",
+        "text": "Edit",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editable-post-name",
+        "tag": "span",
+        "text": "cozy-lounge-armchair",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editable-post-name-full",
+        "tag": "span",
+        "text": "cozy-lounge-armchair",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#edithead",
+        "tag": "div",
+        "text": "Name Email URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#editlegend",
+        "tag": "span",
+        "text": "Edit Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#enternew",
+        "tag": "span",
+        "text": "Enter new",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#excerpt_ifr",
+        "tag": "iframe",
+        "text": "Rich Text Area. Press Alt-Shift-H for help.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "If you like WooCommerce please leave us a ★★★★★ rating. A h…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#in-product_cat-117-1",
+        "tag": "li",
+        "text": "Bedroom",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-product_cat-120-1",
+        "tag": "li",
+        "text": "Dining",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-product_cat-124-1",
+        "tag": "li",
+        "text": "Home Office",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-product_cat-125-1",
+        "tag": "li",
+        "text": "Living Room",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-product_cat-126-1",
+        "tag": "li",
+        "text": "Outdoor",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-product_cat-127-1",
+        "tag": "li",
+        "text": "Packages",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#in-product_cat-128-1",
+        "tag": "li",
+        "text": "Uncategorized",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inline-28",
+        "tag": "div",
+        "text": "The quality is obvious the moment you touch it. Solid, heav…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-29",
+        "tag": "div",
+        "text": "Really good piece. Took a week longer to arrive than quoted…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-30",
+        "tag": "div",
+        "text": "Assembly took fifteen minutes with the included tools. Clea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-31",
+        "tag": "div",
+        "text": "We have had it for six months with two kids and a dog. Stil…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-32",
+        "tag": "div",
+        "text": "I measured three times and it fits the space like it was ma…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#iris-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#jp-admin-notices",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#last-edit",
+        "tag": "span",
+        "text": "Last edited on October 2, 2026 at 3:01 pm",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#major-publishing-actions",
+        "tag": "div",
+        "text": "Copy to a new draft Move to Trash",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#meta-2830",
+        "tag": "tr",
+        "text": "Key Value0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#minor-publishing",
+        "tag": "div",
+        "text": "Preview Changes (opens in a new tab) Status: Published Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#minor-publishing-actions",
+        "tag": "div",
+        "text": "Preview Changes (opens in a new tab)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#misc-publishing-actions",
+        "tag": "div",
+        "text": "Status: Published Edit Edit status Visibility: Public Edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#most-recent-results",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#new-tag-product_tag-desc",
+        "tag": "p",
+        "text": "Separate tags with commas",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#newmeta",
+        "tag": "table",
+        "text": "Name Value — Select — ao_post_optimize attribute_pa_body-fi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#newmetaleft",
+        "tag": "td",
+        "text": "— Select — ao_post_optimize attribute_pa_body-finish attrib…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#normal-sortables",
+        "tag": "div",
+        "text": "Product data — Simple product Grouped product External/Affi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#password-span",
+        "tag": "span",
+        "text": "Password:",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#popular-product_cat-117",
+        "tag": "li",
+        "text": "Bedroom",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#popular-product_cat-120",
+        "tag": "li",
+        "text": "Dining",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#popular-product_cat-124",
+        "tag": "li",
+        "text": "Home Office",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#popular-product_cat-125",
+        "tag": "li",
+        "text": "Living Room",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#popular-product_cat-126",
+        "tag": "li",
+        "text": "Outdoor",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#popular-product_cat-127",
+        "tag": "li",
+        "text": "Packages",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pos_visibility_supported",
+        "tag": "div",
+        "text": "Available for POS",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#pos_visibility_unsupported",
+        "tag": "div",
+        "text": "Point of SaleThis product type is not currently supported.",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post",
+        "tag": "form",
+        "text": "Product name Skip to Editor Permalink: http://test-athemes.…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body",
+        "tag": "div",
+        "text": "Product name Skip to Editor Permalink: http://test-athemes.…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-body-content",
+        "tag": "div",
+        "text": "Product name Skip to Editor Permalink: http://test-athemes.…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-lock-dialog",
+        "tag": "div",
+        "text": "Saving revision… Your latest changes were saved as a revisi…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-status-display",
+        "tag": "span",
+        "text": "Published",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-status-info",
+        "tag": "table",
+        "text": "Word count: 66 Last edited on October 2, 2026 at 3:01 pm",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-status-select",
+        "tag": "div",
+        "text": "Set status Published Pending Review Draft OK Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-visibility-display",
+        "tag": "span",
+        "text": "Public",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-visibility-select",
+        "tag": "div",
+        "text": "Public Password protected Password: Private OK Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postbox-container-1",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Preview Change…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postbox-container-2",
+        "tag": "div",
+        "text": "Product data — Simple product Grouped product External/Affi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postcustom",
+        "tag": "div",
+        "text": "Custom Fields Move up Move up Move down Move down Show or h…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postcustom-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postcustom-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postcustom-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postcustom-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postcustom-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postcustom-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postcustom-title",
+        "tag": "h2",
+        "text": "Custom Fields",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postcustomstuff",
+        "tag": "div",
+        "text": "Name Value Key Value0 Add Custom Field: Name Value — Select…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postdivrich",
+        "tag": "div",
+        "text": "Product description Add Media Visual Code Paragraph Word co…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postexcerpt",
+        "tag": "div",
+        "text": "Product short description Move up Move down Show or hide pa…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postexcerpt-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postexcerpt-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postexcerpt-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postexcerpt-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postexcerpt-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postexcerpt-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postexcerpt-title",
+        "tag": "h2",
+        "text": "Product short description",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postimagediv",
+        "tag": "div",
+        "text": "Product image Move up Move down Show or hide panel Click th…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#postimagediv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#postimagediv-title",
+        "tag": "h2",
+        "text": "Product image",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#poststuff",
+        "tag": "div",
+        "text": "Product name Skip to Editor Permalink: http://test-athemes.…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#preview-action",
+        "tag": "div",
+        "text": "Preview Changes (opens in a new tab)",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_brand-adder",
+        "tag": "div",
+        "text": "+ Add New Brand",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_brand-ajax-response",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_brandchecklist",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_brandchecklist-pop",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_branddiv",
+        "tag": "div",
+        "text": "Brands Move up Move down Show or hide panel All Brands Most…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_branddiv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_branddiv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_branddiv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_branddiv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_branddiv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_branddiv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_branddiv-title",
+        "tag": "h2",
+        "text": "Brands",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_cat-adder",
+        "tag": "div",
+        "text": "+ Add new category",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_cat-ajax-response",
+        "tag": "span",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_catchecklist",
+        "tag": "ul",
+        "text": "Uncategorized Bedroom Dining Home Office Living Room Outdoo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_catchecklist-pop",
+        "tag": "ul",
+        "text": "Living Room Bedroom Packages Outdoor Dining Home Office",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_catdiv",
+        "tag": "div",
+        "text": "Product categories Move up Move down Show or hide panel All…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_catdiv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_catdiv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_catdiv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_catdiv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_catdiv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_catdiv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#product_catdiv-title",
+        "tag": "h2",
+        "text": "Product categories",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_images_container",
+        "tag": "div",
+        "text": "Delete Delete Delete",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#product_tag",
+        "tag": "div",
+        "text": "Add new tag Separate tags with commas",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#publishing-action",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#qt_excerpt_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#qt_replycontent_toolbar",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#query-notice-message",
+        "tag": "div",
+        "text": "No search term specified. Showing recent items. Search or u…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replybtn",
+        "tag": "span",
+        "text": "Submit Reply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replycontainer",
+        "tag": "div",
+        "text": "Comment Drop files to upload",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replyhead",
+        "tag": "span",
+        "text": "Reply to Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replyrow",
+        "tag": "tr",
+        "text": "Edit Comment Reply to Comment Add Comment Comment Drop file…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#replysubmit",
+        "tag": "div",
+        "text": "Add Comment Update Comment Submit Reply Cancel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#sample-permalink",
+        "tag": "span",
+        "text": "http://fernhillhome.com/product/cozy-lounge-armchair/",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#save-action",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#savebtn",
+        "tag": "span",
+        "text": "Update Comment",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Screen elements Some screen elements can be shown or hidden…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#search-results",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#select2-zd6m-container",
+        "tag": "span",
+        "text": "Add existing",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#set-post-thumbnail-desc",
+        "tag": "p",
+        "text": "Click the image to edit or update",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-comments",
+        "tag": "p",
+        "text": "Show comments",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#side-sortables",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Preview Change…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#slugdiv",
+        "tag": "div",
+        "text": "Slug Move up Move up Move down Move down Show or hide panel…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#slugdiv-title",
+        "tag": "h2",
+        "text": "Slug",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#spam-undo-holder",
+        "tag": "div",
+        "text": "Comment by marked as spam. Undo",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv",
+        "tag": "div",
+        "text": "Publish Move up Move down Show or hide panel Preview Change…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submitdiv-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#submitdiv-title",
+        "tag": "h2",
+        "text": "Publish",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#submitpost",
+        "tag": "div",
+        "text": "Preview Changes (opens in a new tab) Status: Published Edit…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tagsdiv-product_tag",
+        "tag": "div",
+        "text": "Product tags Move up Move down Show or hide panel Add new t…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#tagsdiv-product_tag-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tagsdiv-product_tag-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tagsdiv-product_tag-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tagsdiv-product_tag-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tagsdiv-product_tag-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tagsdiv-product_tag-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tagsdiv-product_tag-title",
+        "tag": "h2",
+        "text": "Product tags",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#taxonomy-product_brand",
+        "tag": "div",
+        "text": "All Brands Most Used + Add New Brand",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#taxonomy-product_cat",
+        "tag": "div",
+        "text": "All categories Most Used Uncategorized Bedroom Dining Home …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-comment-list",
+        "tag": "tbody",
+        "text": "Daniel Moreau daniel.moreau@example.com 201.37.105.165 The …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Key Value0",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#timestamp",
+        "tag": "span",
+        "text": "Published on: Mar 23, 2022 at 16:01",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#timestampdiv",
+        "tag": "fieldset",
+        "text": "Date and time Month 01-Jan 02-Feb 03-Mar 04-Apr 05-May 06-J…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_arrow",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_arrow_inner",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_content",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#tiptip_holder",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#title-prompt-text",
+        "tag": "label",
+        "text": "Product name",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#titlediv",
+        "tag": "div",
+        "text": "Product name Skip to Editor Permalink: http://test-athemes.…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#titlewrap",
+        "tag": "div",
+        "text": "Product name Skip to Editor",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_wc-admin-path--analytics-overview",
+        "tag": "li",
+        "text": "Analytics Overview Products Revenue Orders Variations Categ…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce",
+        "tag": "li",
+        "text": "WooCommerce Home Orders Customers Coupons Reports Settings …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_woocommerce-marketing",
+        "tag": "li",
+        "text": "Marketing Overview Coupons",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#trash-undo-holder",
+        "tag": "div",
+        "text": "Comment by moved to the Trash. Undo",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-datepicker-div",
+        "tag": "div",
+        "text": "PreviousNextOctober 2026MTWTFSS 123456789101112131415161718…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-1",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-2",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ui-id-3",
+        "tag": "ul",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#variable_product_options_inner",
+        "tag": "div",
+        "text": "Default Form Values: No default Fabric Color… Black Desert …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#variable-product-tour-root",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-embedded-root",
+        "tag": "div",
+        "text": "Edit Product Store Activity Activity unread activity Finish…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-layout__primary",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-product-data",
+        "tag": "div",
+        "text": "Product data — Simple product Grouped product External/Affi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-product-data-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-data-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-data-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-data-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-data-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-data-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-data-title",
+        "tag": "h2",
+        "text": "Product data — Simple product Grouped product External/Affi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-product-images",
+        "tag": "div",
+        "text": "Product gallery Move up Move down Show or hide panel Add pr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#woocommerce-product-images-handle-order-higher-description",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-images-handle-order-higher-description-text",
+        "tag": "span",
+        "text": "Move up",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-images-handle-order-lower-description",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-images-handle-order-lower-description-text",
+        "tag": "span",
+        "text": "Move down",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-images-handlediv",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-images-handlediv-text",
+        "tag": "span",
+        "text": "Show or hide panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#woocommerce-product-images-title",
+        "tag": "h2",
+        "text": "Product gallery",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp__notice-list",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-content-editor-container",
+        "tag": "div",
+        "text": "Paragraph",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-content-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-content-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-content-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-excerpt-editor-container",
+        "tag": "div",
+        "text": "Paragraph",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-excerpt-editor-tools",
+        "tag": "div",
+        "text": "Add Media Visual Code",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-excerpt-media-buttons",
+        "tag": "div",
+        "text": "Add Media",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-excerpt-wrap",
+        "tag": "div",
+        "text": "Add Media Visual Code Paragraph",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-link",
+        "tag": "form",
+        "text": "Insert/edit link Close Enter the destination URL URL Link T…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-replycontent-editor-container",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-replycontent-wrap",
+        "tag": "div",
+        "text": "Drop files to upload",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-word-count",
+        "tag": "td",
+        "text": "Word count: 66",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wplink-enter-url",
+        "tag": "p",
+        "text": "Enter the destination URL",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wplink-link-existing-content",
+        "tag": "p",
+        "text": "Or link to existing content",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-content",
+        "tag": "div",
+        "text": "Disable Transparent Header",
+        "count": 7,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-metabox-field",
+        "tag": "div",
+        "text": "Disable Transparent Header",
+        "count": 23,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-metabox-field-content",
+        "tag": "div",
+        "text": "",
+        "count": 23,
+        "hidden": false
+      },
+      {
+        "sel": ".botiga-metabox-field-hook-select",
+        "tag": "div",
+        "text": "Thank You TemplateNoneDefaultSingle product with trust stri…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-media-content",
+        "tag": "div",
+        "text": "Upload/Add ImageRemove Image",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-repeater-content",
+        "tag": "div",
+        "text": "Add Video Link",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-select",
+        "tag": "div",
+        "text": "PositionBefore Image GalleryAfter Image Gallery",
+        "count": 4,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-sidebar-select",
+        "tag": "div",
+        "text": "SidebarDefaultShop SidebarSidebarFooter 1Footer 2Footer 3Fo…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-size-chart-select",
+        "tag": "div",
+        "text": "Size ChartSelect a size chartChair and sofa dimensions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-uploads-content",
+        "tag": "div",
+        "text": "+UploadUpload Videos",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": ".botiga-metabox-field-uploads-list-item",
+        "tag": "li",
+        "text": "+Upload",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}
