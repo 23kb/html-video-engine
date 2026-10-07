@@ -1,0 +1,753 @@
+{
+  "slug": "admin-media-library--list",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "external-tip",
+      "event": "click",
+      "selector": "ul.elementor-submenu-flyout.elementor-level-3 li a",
+      "count": 105
+    },
+    {
+      "label": "wp-menu-flyout",
+      "event": "mouseover",
+      "selector": ".menu-top.wp-has-submenu",
+      "count": 14
+    },
+    {
+      "label": "admin-chrome-fallback",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 39
+    },
+    {
+      "label": "native-select",
+      "event": "click",
+      "selector": "#attachment-filter",
+      "count": 4
+    },
+    {
+      "label": "self-link",
+      "event": "click",
+      "selector": "a.wp-first-item.current",
+      "count": 2
+    },
+    {
+      "label": "wp-pagination",
+      "event": "click",
+      "selector": "span.tablenav-pages-navspan.button",
+      "count": 8
+    },
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": ".button.button-compact",
+      "count": 2
+    },
+    {
+      "label": "wp-row-actions",
+      "event": "click",
+      "selector": "span.edit a",
+      "count": 100
+    },
+    {
+      "label": "wp-form-buttons",
+      "event": "click",
+      "selector": ".button",
+      "count": 3
+    },
+    {
+      "label": "wp-setting-label",
+      "event": "click",
+      "selector": "fieldset.metabox-prefs label",
+      "count": 33
+    },
+    {
+      "label": "admin-link-fallback",
+      "event": "click",
+      "selector": "a.page-title-action",
+      "count": 94
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#find-posts-close",
+        "tag": "button",
+        "text": "Close media attachment panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      },
+      {
+        "sel": "#view-switch-grid",
+        "tag": "a",
+        "text": "Grid view",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#view-switch-list",
+        "tag": "a",
+        "text": "List view",
+        "count": 1,
+        "hidden": false,
+        "wired": "self-link",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [],
+    "inputs": [
+      {
+        "sel": "#_ajax_nonce",
+        "tag": "input",
+        "text": "38afd08c03",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#affected",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#attachment-filter",
+        "tag": "select",
+        "text": "All media items Images Audio Video Documents Unattached Mine",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#author-hide",
+        "tag": "input",
+        "text": "author",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Delete permanently",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Delete permanently",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1607",
+        "tag": "input",
+        "text": "1607",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1608",
+        "tag": "input",
+        "text": "1608",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1609",
+        "tag": "input",
+        "text": "1609",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1610",
+        "tag": "input",
+        "text": "1610",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1611",
+        "tag": "input",
+        "text": "1611",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1612",
+        "tag": "input",
+        "text": "1612",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1613",
+        "tag": "input",
+        "text": "1613",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1614",
+        "tag": "input",
+        "text": "1614",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1615",
+        "tag": "input",
+        "text": "1615",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1616",
+        "tag": "input",
+        "text": "1616",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1617",
+        "tag": "input",
+        "text": "1617",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1618",
+        "tag": "input",
+        "text": "1618",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1619",
+        "tag": "input",
+        "text": "1619",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1620",
+        "tag": "input",
+        "text": "1620",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1621",
+        "tag": "input",
+        "text": "1621",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1622",
+        "tag": "input",
+        "text": "1622",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1623",
+        "tag": "input",
+        "text": "1623",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1624",
+        "tag": "input",
+        "text": "1624",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1625",
+        "tag": "input",
+        "text": "1625",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1905",
+        "tag": "input",
+        "text": "1905",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date-hide",
+        "tag": "input",
+        "text": "date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#filter-by-date",
+        "tag": "select",
+        "text": "All dates October 2026 January 2022",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#find-posts-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#find-posts-search",
+        "tag": "input",
+        "text": "Search",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#find-posts-submit",
+        "tag": "input",
+        "text": "Select",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#media-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#parent-hide",
+        "tag": "input",
+        "text": "parent",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-query-submit",
+        "tag": "input",
+        "text": "Filter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "bbd85eda94",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#upload_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Author Uploaded to Date Pagination Number of items …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#author",
+        "tag": "th",
+        "text": "Author Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date",
+        "tag": "th",
+        "text": "Date",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#e-image-ai-media-library",
+        "tag": "div",
+        "text": "Generate with Elementor AI",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#find-posts",
+        "tag": "div",
+        "text": "Attach to existing content Close media attachment panel Sea…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#find-posts-head",
+        "tag": "div",
+        "text": "Attach to existing content Close media attachment panel",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#find-posts-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Thank you for creating with WordPress.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#parent",
+        "tag": "th",
+        "text": "Uploaded to Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1607",
+        "tag": "tr",
+        "text": "Select Map: Northline Studio, 1120 NW Couch St, Portland Ma…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1608",
+        "tag": "tr",
+        "text": "Select Fernwood Coffee case study cover Fernwood Coffee cas…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1609",
+        "tag": "tr",
+        "text": "Select Fernwood Coffee brand board Fernwood Coffee brand bo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1610",
+        "tag": "tr",
+        "text": "Select Halcyon Bikes case study cover Halcyon Bikes case st…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1611",
+        "tag": "tr",
+        "text": "Select Halcyon Bikes brand board Halcyon Bikes brand board …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1612",
+        "tag": "tr",
+        "text": "Select Oro Skincare case study cover Oro Skincare case stud…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1613",
+        "tag": "tr",
+        "text": "Select Oro Skincare brand board Oro Skincare brand board Fi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1614",
+        "tag": "tr",
+        "text": "Select Tidewater Books case study cover Tidewater Books cas…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1615",
+        "tag": "tr",
+        "text": "Select Tidewater Books brand board Tidewater Books brand bo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1616",
+        "tag": "tr",
+        "text": "Select Kestrel Labs case study cover Kestrel Labs case stud…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1617",
+        "tag": "tr",
+        "text": "Select Kestrel Labs brand board Kestrel Labs brand board Fi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1618",
+        "tag": "tr",
+        "text": "Select Pinehollow Farm case study cover Pinehollow Farm cas…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1619",
+        "tag": "tr",
+        "text": "Select Pinehollow Farm brand board Pinehollow Farm brand bo…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1620",
+        "tag": "tr",
+        "text": "Select Arc & Ember case study cover Arc & Ember case study …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1621",
+        "tag": "tr",
+        "text": "Select Arc & Ember brand board Arc & Ember brand board File…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1622",
+        "tag": "tr",
+        "text": "Select Lumen Health case study cover Lumen Health case stud…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1623",
+        "tag": "tr",
+        "text": "Select Lumen Health brand board Lumen Health brand board Fi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1624",
+        "tag": "tr",
+        "text": "Select Saltmarsh Brewing case study cover Saltmarsh Brewing…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1625",
+        "tag": "tr",
+        "text": "Select Saltmarsh Brewing brand board Saltmarsh Brewing bran…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-1905",
+        "tag": "tr",
+        "text": "Select Logo Northline 600 Logo Northline 600 File name: log…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts-filter",
+        "tag": "form",
+        "text": "Filter media items list List view Grid view Filter by type …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Author Uploaded to Date Pagination Number of items …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 5",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Select Logo Northline 600 Logo Northline 600 File name: log…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#title",
+        "tag": "th",
+        "text": "File Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_at-blocks",
+        "tag": "li",
+        "text": "aThemes Blocks Blocks Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_athemes-addons",
+        "tag": "li",
+        "text": "aThemes Addons Widgets Extensions Settings Patcher",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_elementor",
+        "tag": "li",
+        "text": "Elementor ElementorQuick startSubmissions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_elementor-home",
+        "tag": "li",
+        "text": "Elementor Home Editor Upgrade",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

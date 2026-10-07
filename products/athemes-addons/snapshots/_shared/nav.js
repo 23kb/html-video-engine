@@ -16,15 +16,28 @@ window.__snapNav = {
     "admin.php?page=athemes-addons&section=settings": "admin-addons-settings--license-active",
     "admin.php?page=athemes-addons&section=theme-builder": "admin-addons-theme-builder--populated",
     "admin.php?page=athemes-addons&section=widgets": "admin-addons-widgets",
+    "admin.php?page=elementor": "admin-elementor-templates",
+    "admin.php?page=elementor-home": "admin-elementor-home",
     "case-studies": "frontend-tb-archive",
     "clients-reviews": "frontend-clients-reviews",
     "contact-northline": "frontend-contact-northline",
+    "edit-comments.php": "admin-comments",
+    "edit-comments.php?comment_status=all": "admin-comments",
+    "edit.php": "admin-posts-list",
+    "edit.php?all_posts=1&post_type=post": "admin-posts-list",
     "edit.php?post_type=aafe_templates": "admin-templates-list",
-    "edit.php?post_type=page": "admin-pages-list--duplicator",
+    "edit.php?post_type=elementor_library": "admin-elementor-templates",
+    "edit.php?post_type=elementor_library&tabs_group=library": "admin-elementor-templates",
+    "edit.php?post_type=page": "admin-pages-list",
     "how-we-work": "frontend-how-we-work",
+    "index.php": "admin-dashboard",
     "journal-blocks": "frontend-journal-blocks",
+    "options-general.php": "admin-settings-general",
     "our-team": "frontend-our-team",
     "people-and-proof": "frontend-people-and-proof",
+    "plugins.php": "admin-plugins",
+    "plugins.php?plugin_status=all": "admin-plugins",
+    "post-new.php": "admin-post-new",
     "post.php?action=edit&post=1849": "editor-block-heading",
     "post.php?action=edit&post=1850": "editor-block-team",
     "post.php?action=edit&post=1851": "editor-block-post-grid",
@@ -38,7 +51,14 @@ window.__snapNav = {
     "studio-journal": "frontend-studio-journal",
     "studio-resources": "frontend-studio-resources",
     "theme-builder-preview": "frontend-theme-builder-preview",
+    "themes.php": "admin-themes",
     "this-page-does-not-exist": "frontend-tb-404",
+    "update-core.php": "admin-updates",
+    "upload.php": "admin-media-library",
+    "upload.php?mode=grid": "admin-media-library",
+    "upload.php?mode=list": "admin-media-library--list",
+    "user-new.php": "admin-user-new",
+    "users.php": "admin-users",
     "what-a-good-brand-guide-actually-contains": "frontend-tb-single",
     "work-with-us": "frontend-work-with-us"
   },
@@ -50,12 +70,23 @@ window.__snapNav = {
     "admin.php?page=athemes-addons": [
       "section"
     ],
+    "edit-comments.php": [
+      "comment_status"
+    ],
     "edit.php": [
-      "post_type"
+      "all_posts",
+      "post_type",
+      "tabs_group"
+    ],
+    "plugins.php": [
+      "plugin_status"
     ],
     "post.php": [
       "action",
       "post"
+    ],
+    "upload.php": [
+      "mode"
     ]
   }
 };

@@ -79,6 +79,10 @@
         var alias = { 'frontend-the-portfolio': 'frontend-work', 'frontend-journal': 'frontend-blog' };
         var syd = [s, alias[s]].filter(Boolean).filter(function (x) { return hasIn('sydney', x); })[0];
         if (syd) { R.goto(syd, { pack: 'sydney' }); return; }
+        // A header parent item whose page is not captured: open its dropdown, as sydney's touch handler does on a
+        // first tap (sydney-pro-ii/js/functions.js:198-261), so its captured children are reachable.
+        var li = up(a, '#masthead li.menu-item-has-children, .shfb-desktop li.menu-item-has-children');
+        if (li) { var on = !li.classList.contains('focus'); li.classList.toggle('focus', on); li.classList.toggle('hovered', on); notCaptured('frontend page ' + path + ' — opened its menu instead'); return; }
         notCaptured('frontend page ' + path + ' (not in this pack or the sydney pack)');
       }
     },
@@ -88,9 +92,202 @@
       match: function (el) {
         var a = up(el, 'a[href]'); if (!a) return false;
         var h = a.getAttribute('href') || '';
-        return /^(mailto|tel):/.test(h) || (/^https?:\/\//.test(h) && h.indexOf(WORLD) === -1 && h.indexOf(location.host) === -1);
+        return /^(mailto|tel):/.test(h);   // off-site http(s) links: external-tip below
       },
       apply: function (el, evt) { stop(evt); live('external link ' + (up(el, 'a[href]').getAttribute('href') || '').slice(0, 80)); }
+    },
+    // ─ External links: inline tip, never a new tab ──────────────────────
+    // @since 2026-10-06 @source director ruling (all aThemes packs): an off-site link (another host, or target=_blank to
+    // another host) shows "Opens <host> in a new tab ↗" beside the link for ~2 s and opens nothing — a film or a viewer
+    // is never thrown onto the live web. The product logo goes to the pack's own dashboard (EXT_LOGO); on that screen it
+    // shows the tip too. Shared shape: copy verbatim, change only EXT_LOGO and EXT_SITE_HOSTS. @product athemes-addons
+    {
+      label: 'external-tip',
+      event: 'click',
+      match: function (el) {
+        var a = el.closest && el.closest('a[href]'); if (!a) return false;
+        var EXT_LOGO = { sel: 'a.athemes-addons-top-bar-logo', slug: 'admin-addons-widgets' };
+        if (a.matches(EXT_LOGO.sel)) return true;
+        var EXT_SITE_HOSTS = ['northlinestudio.com', 'localhost', '127.0.0.1', location.host];
+        var u; try { u = new URL(a.getAttribute('href'), document.baseURI); } catch (e) { return false; }
+        return /^https?:$/.test(u.protocol) && EXT_SITE_HOSTS.indexOf(u.host) === -1 && EXT_SITE_HOSTS.indexOf(u.hostname) === -1;
+      },
+      apply: function (el, evt) {
+        if (evt && evt.preventDefault) evt.preventDefault();
+        var a = el.closest('a[href]');
+        var EXT_LOGO = { sel: 'a.athemes-addons-top-bar-logo', slug: 'admin-addons-widgets' };
+        var R = window.SnapRuntime;
+        if (a.matches(EXT_LOGO.sel) && R && R.currentSlug && R.currentSlug() !== EXT_LOGO.slug) { R.goto(EXT_LOGO.slug); return; }
+        var host = ''; try { host = new URL(a.getAttribute('href'), document.baseURI).hostname.replace(/^www\./, ''); } catch (e) {}
+        var old = document.querySelector('.snap-ext-tip'); if (old) old.remove();
+        var r = a.getBoundingClientRect(), tip = document.createElement('span');
+        tip.className = 'snap-ext-tip'; tip.setAttribute('role', 'status');
+        tip.textContent = 'Opens ' + (host || 'another site') + ' in a new tab ↗';
+        tip.style.cssText = 'position:fixed;z-index:2147483647;left:' + Math.max(8, Math.min(r.left, innerWidth - 260)) + 'px;top:' + (r.bottom + 6 > innerHeight - 40 ? r.top - 34 : r.bottom + 6) + 'px;background:#1d2327;color:#fff;font:13px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding:6px 10px;border-radius:4px;box-shadow:0 2px 8px rgba(0,0,0,.25);pointer-events:none;white-space:nowrap';
+        document.body.appendChild(tip);
+        setTimeout(function () { if (tip.parentNode) tip.remove(); }, 2000);
+        console.info('[snap] external link (not opened): ' + a.getAttribute('href').replace(/\?.*$/, ''));
+      }
+    },
+    // ─ Frontend: desktop dropdowns (keyboard / tap opens with .focus) ── ported verbatim from the sydney pack
+    // @since 2026-10-03 @source sydney-pro-ii/js/functions.js:198-261 @verified 2026-10-07 @product athemes-addons (from sydney)
+    // Hover needs no runtime (CSS :hover). A click on the arrow toggles .focus as the theme's touch handler does.
+    {
+      label: 'dropdown-arrow',
+      event: 'click',
+      match: function (el) { return !!up(el, '.shfb-desktop .dropdown-symbol, #masthead .dropdown-symbol'); },
+      apply: function (el, evt) {
+        if (evt) evt.preventDefault();
+        var li = up(el, 'li'); if (!li) return;
+        var on = !li.classList.contains('focus');
+        $$('.shfb-desktop li.focus, #masthead li.focus').forEach(function (x) { if (x !== li && !x.contains(li)) x.classList.remove('focus', 'hovered'); });
+        li.classList.toggle('focus', on); li.classList.toggle('hovered', on);
+      }
+    },
+    // ─ WP list-table view filters (All / Mine / Published / Pending / Approved / Spam …): the rows are in the page,
+    // so the filter runs on them — status and author classes on each <tr>, as the server's query would select.
+    // @since 2026-10-06 @source wp/wp-admin/includes/class-wp-posts-list-table.php get_views() + single_row() (status-*, author-self/other) and class-wp-comments-list-table.php (approved/unapproved/spam, comment-author-*) @verified 2026-10-06 @product athemes-addons
+    {
+      label: 'wp-view-filter',
+      event: 'click',
+      match: function (el) { return !!up(el, 'ul.subsubsub a[href]') && !!$('#the-list, #the-comment-list'); },
+      apply: function (el, evt) {
+        stop(evt);
+        var a = up(el, 'a[href]'), h = (a.getAttribute('href') || '').replace(/&amp;/g, '&'), q = {};
+        (h.split('?')[1] || '').split('&').forEach(function (p) { var i = p.indexOf('='); if (i > 0) q[p.slice(0, i)] = decodeURIComponent(p.slice(i + 1)); });
+        var list = $('#the-list') || $('#the-comment-list'), comments = list.id === 'the-comment-list' || /edit-comments/.test(h);
+        var me = (($('#wp-admin-bar-my-account .display-name') || {}).textContent || 'ingrid-vale').trim().toLowerCase().replace(/\s+/g, '-');
+        var keep = function (tr) {
+          var c = tr.className || '';
+          if (comments) {
+            var st = q.comment_status || 'all';
+            if (st === 'moderated') st = 'unapproved';
+            if (st === 'mine') return c.indexOf('comment-author-' + me) !== -1;
+            if (st === 'all') return !/\bspam\b|\btrash\b/.test(c);
+            return new RegExp('\\b' + st + '\\b').test(c);
+          }
+          if (q.author) return /\bauthor-self\b/.test(c);
+          if (q.show_sticky) return /\bsticky\b/.test(c);
+          if (q.post_status) return c.indexOf('status-' + q.post_status) !== -1;
+          return !/\bstatus-trash\b/.test(c);
+        };
+        var shown = 0;
+        $$('tr', list).forEach(function (tr) { if (tr.classList.contains('no-items') || tr.classList.contains('snap-no-items')) return; var k = keep(tr); tr.style.display = k ? '' : 'none'; if (k) shown++; });
+        var none = $('tr.snap-no-items', list);
+        if (!shown) { if (!none) { none = document.createElement('tr'); none.className = 'no-items snap-no-items'; var td = document.createElement('td'); td.className = 'colspanchange'; td.colSpan = (($('thead tr', list.parentNode) || {}).children || []).length || 6; td.textContent = comments ? 'No comments found.' : 'No posts found.'; none.appendChild(td); list.appendChild(none); } none.style.display = ''; }
+        else if (none) none.style.display = 'none';
+        $$('ul.subsubsub a').forEach(function (x) { var on = x === a; x.classList.toggle('current', on); if (on) x.setAttribute('aria-current', 'page'); else x.removeAttribute('aria-current'); });
+        $$('.displaying-num').forEach(function (d) { d.textContent = shown + (shown === 1 ? ' item' : ' items'); });
+      }
+    },
+    // ─ Media Library grid: Add Media File shows the inline uploader (its close hides it); Bulk select switches the
+    // grid to select mode (Delete permanently appears, disabled until a file is picked; the button becomes Cancel).
+    // @since 2026-10-06 @source wp/wp-includes/js/media/views/frame/manage.js (bindRegionModeHandlers, uploader-inline toggle) + views/button/select-mode-toggle.js @verified 2026-10-06 @product athemes-addons
+    {
+      label: 'wp-media-grid',
+      event: 'click',
+      match: function (el) { return !!$('.uploader-inline') && !!up(el, 'a.page-title-action, .uploader-inline .close, button.select-mode-toggle-button'); },
+      apply: function (el, evt) {
+        stop(evt);
+        var up_ = $('.uploader-inline');
+        if (up(el, 'a.page-title-action')) { up_.classList.toggle('hidden'); return; }
+        if (up(el, '.uploader-inline .close')) { up_.classList.add('hidden'); return; }
+        var b = up(el, 'button.select-mode-toggle-button'), on = !b.classList.contains('snap-select-on');
+        b.classList.toggle('snap-select-on', on); b.textContent = on ? 'Cancel' : 'Bulk select';
+        var del = $('.delete-selected-button'); if (del) del.classList.toggle('hidden', !on);
+        var fr = up(b, '.media-frame') || $('.media-frame'); if (fr) { fr.classList.toggle('mode-select', on); fr.classList.toggle('mode-edit', !on); }
+      }
+    },
+    // ─ Dashboard / meta-box postboxes: Show or hide panel, Move up, Move down (postbox.js); live also saves the
+    // order and the closed state (ajax closed-postboxes / meta-box-order).
+    // @since 2026-10-06 @source wp/wp-admin/js/postbox.js (handle_click: toggleClass closed; handleOrder: moveUp/moveDown) @verified 2026-10-06 @product athemes-addons
+    {
+      label: 'wp-postbox',
+      event: 'click',
+      match: function (el) { return !!up(el, '.postbox .handlediv, .postbox .handle-order-higher, .postbox .handle-order-lower'); },
+      apply: function (el, evt) {
+        stop(evt);
+        var b = up(el, 'button'), box = up(b, '.postbox');
+        if (b.classList.contains('handlediv')) { var closed = box.classList.toggle('closed'); b.setAttribute('aria-expanded', closed ? 'false' : 'true'); return say('panel ' + (closed ? 'closed' : 'opened') + ' (live also saves it)'); }
+        var up_ = b.classList.contains('handle-order-higher'), sib = up_ ? box.previousElementSibling : box.nextElementSibling;
+        while (sib && !sib.classList.contains('postbox')) sib = up_ ? sib.previousElementSibling : sib.nextElementSibling;
+        if (!sib) { var col = up(box, '.meta-box-sortables'), cols = $$('.meta-box-sortables'), i = cols.indexOf(col), to = cols[i + (up_ ? -1 : 1)]; if (to) { if (up_) to.appendChild(box); else to.insertBefore(box, to.firstChild); } }
+        else if (up_) sib.parentNode.insertBefore(box, sib); else sib.parentNode.insertBefore(sib, box);
+        b.focus(); say('panel moved ' + (up_ ? 'up' : 'down') + ' (live also saves the order)');
+      }
+    },
+    // Admin menu flyouts: WP opens a non-current menu's submenu on hover by adding .opensub to the li
+    // (hoverIntent); without it the .wp-submenu sits at top:-1000em and no submenu link can be reached.
+    // @since 2026-10-06 @source wp/wp-admin/js/common.js ($adminmenu hoverIntent: over → addClass('opensub'), out → removeClass) @verified 2026-10-06 @product athemes-addons
+    {
+      label: 'wp-menu-flyout',
+      event: 'mouseover',
+      match: function (el) { return !!up(el, '#adminmenu li.wp-has-submenu') || (!up(el, '#adminmenu') && !!$('#adminmenu li.opensub')); },
+      apply: function (el) {
+        var li = up(el, '#adminmenu li.wp-has-submenu');
+        $$('#adminmenu li.opensub').forEach(function (x) { if (x !== li) x.classList.remove('opensub'); });
+        if (!li || li.classList.contains('wp-has-current-submenu')) return;
+        if (li.classList.contains('opensub')) return;
+        li.classList.add('opensub');
+        // common.js adjustSubmenu: keep the flyout inside the viewport.
+        var sub = $('.wp-submenu', li); if (!sub) return;
+        sub.style.marginTop = '';
+        var r = sub.getBoundingClientRect(), over = r.bottom - window.innerHeight + 10;
+        if (over > 0) sub.style.marginTop = '-' + Math.min(over, Math.max(0, r.top - 32)) + 'px';
+      }
+    },
+    // Admin chrome fallback (director 77 / Umair QC 2026-10-06: no admin link swallowed silently). A sidebar,
+    // admin-bar or breadcrumb link whose exact screen is not captured lands on the nearest captured one:
+    // the parent menu's screen, else the WP screen that owns that admin file, else the Dashboard. Site name /
+    // Visit Site → the Northline home (sydney pack); Customize → the sydney pack's Customizer. Each hop logs
+    // "[snap] not captured: … showing …", so the probe still sees the exact target is missing.
+    // @since 2026-10-06 @source wp/wp-admin/menu-header.php (top-level li.menu-top > a, submenu .wp-submenu a) @verified 2026-10-06 @product athemes-addons
+    {
+      label: 'admin-chrome-fallback',
+      event: 'click',
+      match: function (el) {
+        var a = up(el, 'a[href]'); if (!a || !up(a, '#adminmenuwrap, #wpadminbar, .breadcrumb, .breadcrumbs, [class*="breadcrumb"]')) return false;
+        var h = a.getAttribute('href') || '';
+        if (!h || h.charAt(0) === '#' || /^(mailto|tel|javascript):/.test(h)) return false;
+        if (/^https?:\/\//.test(h) && h.indexOf(location.host) === -1 && h.indexOf(WORLD) === -1) return false;
+        return !R.resolveHref(h);
+      },
+      apply: function (el, evt) {
+        stop(evt); var a = up(el, 'a[href]'); var h = a.getAttribute('href') || '';
+        var label = (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 40) || h;
+        var file = h.replace(/^https?:\/\/[^/]+/, '').replace(/^\/?wp-admin\//, '').split(/[?#]/)[0];
+        var isAdmin = /\/wp-admin\//.test(h) || /^[a-z0-9-]+\.php/.test(h);
+        var go = function (s, pack, why) {
+          notCaptured('"' + label + '" (' + h.slice(0, 80) + ') — showing ' + why);
+          if (pack) R.goto(s, { pack: pack }); else if (s !== slug) R.goto(s);
+        };
+        // Front of the site: site name, Visit Site, Howdy's site link.
+        if (!isAdmin || up(a, '#wp-admin-bar-site-name, #wp-admin-bar-view-site')) {
+          if (hasIn('sydney', 'frontend-home')) return go('frontend-home', 'sydney', 'the Northline home page');
+        }
+        if (file === 'customize.php' && hasIn('sydney', 'admin-customizer')) return go('admin-customizer', 'sydney', 'the Customizer (Sydney pack)');
+        // Parent menu's captured screen.
+        var top = up(a, 'li.menu-top'); var pa = top && $('a.menu-top, a.wp-has-submenu, a', top);
+        var ps = pa && pa !== a && R.resolveHref(pa.getAttribute('href') || '');
+        if (ps) return go(ps, null, 'its parent menu screen');
+        // The WP screen that owns this admin file.
+        var OWN = [
+          [/^(index|update-core|site-health)\.php$/, 'admin-dashboard'],
+          [/^(edit|post|post-new)\.php$/, /post_type=page/.test(h) ? 'admin-pages-list' : /post_type=elementor_library/.test(h) ? 'admin-elementor-templates' : /post_type=aafe_templates/.test(h) ? 'admin-templates-list' : 'admin-posts-list'],
+          [/^edit-tags\.php$/, /elementor_library/.test(h) ? 'admin-elementor-templates' : 'admin-posts-list'],
+          [/^(upload|media-new)\.php$/, 'admin-media-library'],
+          [/^edit-comments\.php$/, 'admin-comments'],
+          [/^(themes|widgets|nav-menus|theme-editor|site-editor|font-library)\.php$/, 'admin-themes'],
+          [/^(plugins|plugin-install|plugin-editor)\.php$/, 'admin-plugins'],
+          [/^(users|user-new|profile|user-edit)\.php$/, 'admin-users'],
+          [/^options-[a-z]+\.php$|^options\.php$/, 'admin-settings-general'],
+          [/^admin\.php$/, /page=(elementor|e-form)/.test(h) ? 'admin-elementor-home' : /page=at-blocks/.test(h) ? 'admin-blocks' : /page=athemes/.test(h) ? 'admin-addons-widgets' : 'admin-dashboard'],
+          [/^(tools|import|export|export-personal-data|erase-personal-data)\.php$/, 'admin-dashboard']
+        ];
+        for (var i = 0; i < OWN.length; i++) if (OWN[i][0].test(file) && has(OWN[i][1])) return go(OWN[i][1], null, OWN[i][1] === 'admin-dashboard' ? 'the Dashboard' : 'the nearest captured screen (' + OWN[i][1] + ')');
+        if (has('admin-dashboard')) return go('admin-dashboard', null, 'the Dashboard');
+        R.miss(h, 'admin link, no captured screen near it');
+      }
     },
 
     // ─ Frontend widgets ────────────────────────────────────────────────────────
@@ -534,6 +731,16 @@
       apply: function (el, evt) {
         stop(evt);
         var b = up(el, 'button, .elementor-control-dynamic-switcher, .elementor-control-media__content, .elementor-control-media-area'), lab = ((b.getAttribute('aria-label') || '') + ' ' + (b.textContent || '') + ' ' + (b.title || '')).trim();
+        // Panels and menus Elementor renders on demand: captured on the el-showcase page (p3-editor-chrome).
+        // A toggle pressed again from its own panel closes back to the widget panel, as Elementor does.
+        var chrome = function (s, what) { return slug === s ? hop('editor-elementor-panel', 'the widget panel') : hop(s, what); };
+        if (/(Page|Post) Settings/i.test(lab)) return chrome('editor-elementor-page-settings', 'the Page Settings panel');
+        if (/^History/i.test(lab)) return chrome('editor-elementor-history', 'the History panel');
+        if (/Site Settings/i.test(lab)) return chrome('editor-elementor-site-settings', 'Site Settings');
+        if (/Save Options/i.test(lab)) return chrome('editor-elementor-save-options', 'the Save Options menu');
+        if (/Elementor Logo/i.test(lab) || (up(b, '.MuiAppBar-root') && b === $('.MuiAppBar-root button.MuiToggleButton-root'))) return chrome('editor-elementor-main-menu', 'the Elementor menu');
+        if (/Finder/i.test(lab)) return chrome('editor-elementor-finder', 'the Finder');
+        if (up(b, '.MuiAppBar-root') && b.classList.contains('MuiButton-root') && !/Publish|Save|Update|Submit/i.test(lab)) return chrome('editor-elementor-document-menu', 'the document menu');
         if (/Add Element|Widgets|elements/i.test(lab) || b.id === 'elementor-panel-header-add-button') return hop('editor-elementor-panel', 'the widget panel');
         if (/Structure|Navigator/i.test(lab)) { var n = document.getElementById('elementor-navigator'); if (n) { n.style.display = n.style.display === 'none' ? '' : 'none'; b.classList.toggle('Mui-selected'); say('structure panel ' + (n.style.display === 'none' ? 'closed' : 'open')); } else notCaptured('the structure panel'); return; }
         if (/Preview/i.test(lab)) { var f = $('#elementor-preview-iframe'); var src = f && f.getAttribute('src'); if (src) { var m = src.match(/\.\.\/([^/]+)\//); if (m) return hop(m[1], 'the page preview'); } return notCaptured('page preview'); }
@@ -543,6 +750,57 @@
         if (/What.s New|Finder|Help/i.test(lab)) return live(lab.split(' ')[0] + ' (loads from elementor.com)');
         if (up(el, '.elementor-control-media__content, .elementor-control-media-area')) return live('the WordPress media library');
         notCaptured((lab || 'this menu') + ' in the Elementor top bar');
+      }
+    },
+
+    // Top-bar menus captured open (document menu, Save Options): a menu item does what Elementor does, and a
+    // click on the backdrop closes the menu (back to the editor with the widget panel).
+    // @since 2026-10-06 @source elementor/modules/editor-app-bar (MUI Menu: onClose on backdrop; items run $e commands) @verified 2026-10-06 @product athemes-addons
+    {
+      label: 'el-topbar-menu',
+      event: 'click',
+      match: function (el) { return isElementor && !!up(el, '.MuiPopover-root.MuiMenu-root'); },
+      apply: function (el, evt) {
+        stop(evt);
+        var it = up(el, '[role=menuitem]');
+        if (!it) return hop('editor-elementor-panel', 'the editor (menu closed)');
+        if (it.getAttribute('aria-disabled') === 'true') return;
+        var t = (it.textContent || '').replace(/\s+/g, ' ').trim();
+        if (/^View Page/i.test(t)) { var f = $('#elementor-preview-iframe'), m = f && (f.getAttribute('src') || '').match(/\.\.\/([^/]+)\//); return m ? hop(m[1], 'the page') : notCaptured('View Page'); }
+        if (/Save as Template|Save Draft|Add new page/i.test(t)) { live(t.toLowerCase()); return hop('editor-elementor-panel', 'the editor (menu closed)'); }
+        // Main menu (Elementor logo): local panels hop to their captures; the rest close the menu with a note.
+        if (/^Site Settings/i.test(t)) return hop('editor-elementor-site-settings', 'Site Settings');
+        if (/^Exit to WordPress/i.test(t)) { notCaptured('the WordPress editor for this page — showing the Pages list'); return hop('admin-pages-list', 'the Pages list'); }
+        if (/^(Theme Builder|User Preferences|Keyboard Shortcuts|Connect my account|Help Center)/i.test(t)) { if (/Help Center|Connect/i.test(t)) live(t); else notCaptured(t + ' (Elementor panel)'); return hop('editor-elementor-panel', 'the editor (menu closed)'); }
+        var page = t.replace(/\s+Page$/, '');
+        var s = 'frontend-' + page.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        notCaptured('the Elementor editor for "' + page + '" — showing the page');
+        if (has(s)) R.goto(s); else hop('editor-elementor-panel', 'the editor (menu closed)');
+      }
+    },
+
+    // Finder (captured open): a click outside the dialog, or its close button, closes it (Dialogs Manager hide on
+    // click outside). Typing to filter is not replayed.
+    // @since 2026-10-06 @source elementor/modules/finder/assets/js/modal-layout.js (closeButton, hide.onOutsideClick) @verified 2026-10-06 @product athemes-addons
+    {
+      label: 'el-finder-close',
+      event: 'click',
+      match: function (el) { return slug === 'editor-elementor-finder' && !!up(el, '#elementor-finder__modal') && (!up(el, '.dialog-widget-content') || !!up(el, '.dialog-close-button, .eicon-close')); },
+      apply: function (el, evt) { stop(evt); hop('editor-elementor-panel', 'the editor (Finder closed)'); }
+    },
+    // Elementor › Home "Seeing two Elementor tabs?" dialog: Not now closes it (live also stores the dismissal);
+    // Update Editor updates the plugin (live only).
+    // @since 2026-10-06 @source elementor/modules/home (MUI Dialog, onClose) @verified 2026-10-06 @product athemes-addons
+    {
+      label: 'el-home-dialog',
+      event: 'click',
+      match: function (el) { return !!up(el, '.MuiDialog-root button'); },
+      apply: function (el, evt) {
+        stop(evt);
+        var b = up(el, 'button'), t = (b.textContent || b.getAttribute('aria-label') || '').trim();
+        if (/Update/i.test(t)) return live('update the Elementor editor');
+        var t0 = (up(b, '.MuiDialog-root') || {}).textContent || ''; $$('.MuiDialog-root').forEach(function (d) { if (d.textContent === t0) d.style.display = 'none'; });
+        say('dialog closed (live also saves the dismissal)');
       }
     },
 
@@ -615,12 +873,44 @@
         stop(evt);
         var b = up(el, 'button'), lab = ((b.getAttribute('aria-label') || '') + ' ' + (b.textContent || '')).trim();
         if (/Inserter|Add block|Toggle block inserter/i.test(lab)) return hop('editor-blocks-inserter', 'the block inserter');
+        // Panels the editor renders on demand: captured on the block-heading page (p3-editor-chrome).
+        // Elementor's switch-mode button: toggles the page between the block editor and the "Edit with Elementor"
+        // placeholder (elementor/assets/dev/js/admin/admin.js switchMode: body.elementor-editor-active); live also saves the mode.
+        if (b.id === 'elementor-switch-mode-button' || up(b, '#elementor-switch-mode')) {
+          var on = document.body.classList.toggle('elementor-editor-active');
+          return live((on ? 'switch this page to Elementor' : 'switch back to the WordPress editor') + ' (saves the edit mode)');
+        }
+        var blkChrome = function (s, what) { return slug === s ? hop('editor-block-heading', 'the editor') : hop(s, what); };
+        if (/Document Overview|List View/i.test(lab)) return blkChrome('editor-block-list-view', 'the Document Overview (list view)');
+        if (b.classList.contains('editor-preview-dropdown__toggle') || /^View$/i.test(lab)) return blkChrome('editor-block-view-menu', 'the View menu');
+        if (b.classList.contains('editor-document-bar__command')) return blkChrome('editor-block-command-palette', 'the command palette');
+        if (/^Options$/i.test(lab) && up(b, '.editor-header, .edit-post-header')) return blkChrome('editor-block-options-menu', 'the Options menu');
         if (/Save|Publish|Update|Undo|Redo|Move|Drag|Reset/i.test(lab)) return live(lab.split(' ').slice(0, 2).join(' ').toLowerCase() + ' in the block editor');
         if (/Edit with Elementor/i.test(lab)) return live('switch this page to Elementor');
         notCaptured((lab || 'this control') + ' in the block editor');
       }
     },
 
+    // Block-editor panels captured open (View menu, command palette, list view): a click outside closes them back to
+    // the editor; View menu items act (device previews resize the canvas live, then the menu closes; Preview in new
+    // tab opens the page); list-view rows select their block (the captured editor shows the Heading block selected).
+    // @since 2026-10-06 @source wp/packages/editor/src/components/preview-dropdown, commands (CommandMenu onClose), list-view @verified 2026-10-06 @product athemes-addons
+    {
+      label: 'blk-captured-open',
+      event: 'click',
+      match: function (el) { return /^editor-block-(view-menu|command-palette|list-view|options-menu)$/.test(slug) && !up(el, '.editor-header, .edit-post-header'); },
+      apply: function (el, evt) {
+        stop(evt);
+        var it = up(el, '[role=menuitem], [role=menuitemradio], .components-menu-item__button'), t = it ? (it.textContent || '').trim() : '';
+        if (slug === 'editor-block-view-menu' && it) {
+          if (/Preview in new tab/i.test(t)) { return live('preview in a new tab'); }
+          if (/Desktop|Tablet|Mobile/i.test(t)) { notCaptured(t + ' preview of the canvas'); return hop('editor-block-heading', 'the editor'); }
+        }
+        if (slug === 'editor-block-command-palette' && up(el, '.commands-command-menu')) { if (it || up(el, '[role=option]')) { notCaptured('the command "' + ((up(el, '[role=option]') || it).textContent || '').trim().slice(0, 40) + '"'); return hop('editor-block-heading', 'the editor'); } return; }
+        if (slug === 'editor-block-list-view' && up(el, '.block-editor-list-view-tree, .editor-list-view-sidebar')) { if (up(el, '.editor-list-view-sidebar__close-button, button[aria-label="Close"]')) return hop('editor-block-heading', 'the editor'); var row = up(el, '.block-editor-list-view-leaf'); if (row) { $$('.block-editor-list-view-leaf.is-selected').forEach(function (r) { r.classList.remove('is-selected'); }); row.classList.add('is-selected'); } return; }
+        hop('editor-block-heading', 'the editor');
+      }
+    },
     // Native selects open the browser's own list in a snapshot too.
     {
       label: 'native-select',
@@ -937,6 +1227,116 @@
       apply: function () { s2Close(); }
     }
   ], { product: 'athemes-addons', file: 'interactivity.js (select2, from merchant)' });
+
+  // ── Admin links in page content (row actions, notices, help text): the same rule as the sidebar fallback, run
+  // after every other entry. Edit / Edit with Elementor open that post's captured editor; a link that writes
+  // (trash, delete, activate, a nonce) is live-only; any other admin link lands on the nearest captured screen.
+  // EDIT_FOR: post id → its captured editor snapshot (from each editor snapshot's meta.json finalUrl, 2026-10-06).
+  // @since 2026-10-06 @source wp/wp-admin/includes/class-wp-posts-list-table.php handle_row_actions (edit / trash links) @verified 2026-10-06 @product athemes-addons
+  var EDIT_FOR = {"1525":"editor-el-flip-box","1529":"editor-el-modal","1533":"editor-el-table","1553":"editor-el-lottie","1557":"editor-el-video-popup","1569":"editor-el-food-menu","1573":"editor-el-team-member","1577":"editor-el-social-proof","1581":"editor-el-template","1585":"editor-el-wpforms","1589":"editor-el-events-calendar","1593":"editor-el-page-list","1839":"editor-el-dynamic-tags","1849":"editor-block-icon","1850":"editor-block-team","1851":"editor-block-post-grid","1852":"editor-block-google-maps","1864":"editor-tb-site-logo","1867":"editor-tb-copyright","1870":"editor-tb-post-meta","1873":"editor-tb-archive-title"};
+  R.register([
+    {
+      label: 'admin-link-fallback',
+      event: 'click',
+      order: 'last',
+      match: function (el) {
+        var a = up(el, 'a[href]'); if (!a || up(a, '#adminmenuwrap, #wpadminbar')) return false;
+        var h = a.getAttribute('href') || '';
+        if (!/^[a-z0-9-]+\.php(\?|$)|\/wp-admin\/[a-z0-9-]+\.php/.test(h)) return false;
+        return !R.resolveHref(h);
+      },
+      apply: function (el, evt) {
+        if (evt && evt.__snapHandled) return;
+        stop(evt);
+        var a = up(el, 'a[href]'), h = a.getAttribute('href') || '', label = (a.textContent || a.getAttribute('aria-label') || '').replace(/\s+/g, ' ').trim().slice(0, 40);
+        var file = h.replace(/^https?:\/\/[^/]+/, '').replace(/^\/?wp-admin\//, '').split(/[?#]/)[0];
+        var q = {}; (h.split('?')[1] || '').split('#')[0].split('&').forEach(function (p) { var i = p.indexOf('='); if (i > 0) q[decodeURIComponent(p.slice(0, i))] = decodeURIComponent(p.slice(i + 1)); });
+        if (q._wpnonce || /^(trash|untrash|delete|delete-selected|spam|unspam|approve|unapprove|activate|deactivate|upgrade-plugin|install-plugin|update-selected|duplicate)$/.test(q.action || '') || /^(update|admin-ajax|admin-post)\.php$/.test(file)) return live('"' + label + '" (' + (q.action || file) + ')');
+        // Only the editor the action opens: action=elementor → an Elementor capture, action=edit → a block-editor one.
+        var ed = file === 'post.php' && q.post && EDIT_FOR[q.post];
+        if (ed && ((q.action === 'elementor') !== /^editor-block/.test(ed)) && has(ed)) { notCaptured('"' + label + '" for post ' + q.post + ' — showing its captured editor'); return R.goto(EDIT_FOR[q.post]); }
+        var OWN = [
+          [/^(index|update-core|site-health)\.php$/, 'admin-dashboard'],
+          // Add New (any post type the block editor opens) → the captured Add Post editor.
+          [/^post-new\.php$/, /^(elementor_library|aafe_templates)$/.test(q.post_type || '') ? (q.post_type === 'aafe_templates' ? 'admin-templates-list' : 'admin-elementor-templates') : 'admin-post-new'],
+          [/^(edit|post|post-new)\.php$/, q.post_type === 'page' ? 'admin-pages-list' : q.post_type === 'elementor_library' ? 'admin-elementor-templates' : q.post_type === 'aafe_templates' ? 'admin-templates-list' : 'admin-posts-list'],
+          [/^(edit-tags|term)\.php$/, 'admin-posts-list'],
+          [/^(upload|media-new)\.php$/, 'admin-media-library'],
+          [/^(edit-comments|comment)\.php$/, 'admin-comments'],
+          [/^(themes|widgets|nav-menus|theme-editor|site-editor|font-library|theme-install)\.php$/, 'admin-themes'],
+          [/^(plugins|plugin-install|plugin-editor)\.php$/, 'admin-plugins'],
+          [/^(users|user-new|profile|user-edit)\.php$/, 'admin-users'],
+          [/^options(-[a-z]+)?\.php$/, 'admin-settings-general'],
+          [/^admin\.php$/, /^(elementor|e-form|popup_templates)/.test(q.page || '') ? 'admin-elementor-home' : /^at-blocks/.test(q.page || '') ? 'admin-blocks' : /^athemes/.test(q.page || '') ? 'admin-addons-widgets' : 'admin-dashboard']
+        ];
+        for (var i = 0; i < OWN.length; i++) if (OWN[i][0].test(file) && has(OWN[i][1])) { notCaptured('"' + label + '" (' + h.replace(/^https?:\/\/[^/]+/, '').slice(0, 80) + ') — showing ' + OWN[i][1]); if (OWN[i][1] !== slug) R.goto(OWN[i][1]); return; }
+        R.miss(h, 'admin link, no captured screen near it');
+      }
+    }
+  ], { product: 'athemes-addons', file: 'interactivity.js (admin link fallback)' });
+
+  // ── DEVIATION (director 77, 2026-10-06): Elementor's top-bar Checklist opens a launchpad that loads from
+  // elementor.com; it cannot be captured (p3-editor-chrome tried, nothing renders). Shown disabled with a tooltip
+  // so a viewer does not expect it to react. Recorded in LESSONS-athemes-addons-capture-2026-10-05.md.
+  (function markLiveOnly() {
+    if (!isElementor) return;
+    var REMOTE = { 'Checklist': 'the launchpad checklist', 'Angie': 'Angie (Elementor AI)', "What's New": "What's New" };
+    $$('#elementor-editor-wrapper-v2 button[aria-label]').forEach(function (b) {
+      var what = REMOTE[b.getAttribute('aria-label')]; if (!what) return;
+      b.setAttribute('aria-disabled', 'true');
+      b.setAttribute('title', what + ' — loads from elementor.com (live only, not in this snapshot)');
+      b.style.opacity = '0.45';
+    });
+  })();
+
+  // ── Block editor canvas (srcdoc iframe): a click on a block selects it, as live. An aThemes block whose editor is
+  // captured opens that capture (the inspector shows its settings); any other block gets the selected outline.
+  // Links inside the canvas never navigate (the editor swallows them live too).
+  // @source wp/packages/block-editor/src/components/block-list/use-block-props/use-focus-first-element + selection @since 2026-10-06
+  (function canvasClicks() {
+    if (!isBlockEditor) return;
+    var f = $('iframe[name="editor-canvas"]'); if (!f) return;
+    var wire = function () {
+      var d; try { d = f.contentDocument; } catch (e) { return; }
+      if (!d || !d.body || d.__snapWired) return; d.__snapWired = true;
+      d.addEventListener('click', function (e) {
+        var blk = e.target.closest && e.target.closest('[data-block]'); if (e.target.closest && e.target.closest('a[href]')) e.preventDefault();
+        if (!blk) return;
+        var name = blk.getAttribute('data-type') || '', s = /^athemes-blocks\//.test(name) ? 'editor-block-' + name.split('/')[1] : '';
+        if (s && s !== slug && has(s)) { R.goto(s); return; }
+        [].forEach.call(d.querySelectorAll('.is-selected[data-block]'), function (x) { x.classList.remove('is-selected'); });
+        blk.classList.add('is-selected'); say('selected the ' + (name || 'block') + ' block');
+      }, true);
+    };
+    if (f.contentDocument && f.contentDocument.readyState === 'complete') wire();
+    f.addEventListener('load', wire);
+  })();
+
+  // ── WP admin, state the server's JS sets on load:
+  //  - postbox order buttons: the first box's Move up and the last box's Move down are aria-disabled
+  //    (wp/wp-admin/js/postbox.js updateOrderButtonsProperties).
+  //  - Add Plugin / Add Theme open the WordPress.org directory, which loads live only: shown disabled with a tooltip.
+  // @since 2026-10-06
+  (function wpAdminOnLoad() {
+    var boxes = $$('.meta-box-sortables .postbox').filter(function (b) { return b.offsetParent !== null; });
+    if (boxes.length) {
+      var hi = $('.handle-order-higher', boxes[0]), lo = $('.handle-order-lower', boxes[boxes.length - 1]);
+      if (hi) hi.setAttribute('aria-disabled', 'true'); if (lo) lo.setAttribute('aria-disabled', 'true');
+    }
+    $$('a.page-title-action[href*="plugin-install.php"], a.page-title-action[href*="theme-install.php"]').forEach(function (a) {
+      a.setAttribute('aria-disabled', 'true');
+      a.setAttribute('title', 'Opens the WordPress.org ' + (/plugin/.test(a.getAttribute('href')) ? 'plugin' : 'theme') + ' directory (live only, not in this snapshot)');
+    });
+  })();
+
+  // ── Block editor, fresh-open state: nothing to undo or redo, nothing unsaved, so WordPress shows Undo, Redo and
+  // Save disabled (core/editor hasEditorUndo/Redo false; PostPublishButton isSaveable false when the post is not dirty).
+  // The capture's own steps (selecting a block, switching inspector tabs) left them enabled.
+  // @source wp/packages/editor/src/components/post-publish-button, editor-history (undo/redo) @since 2026-10-06
+  (function blockEditorFresh() {
+    if (!isBlockEditor) return;
+    $$('.editor-history__undo, .editor-history__redo, .editor-post-publish-button, .editor-post-save-draft').forEach(function (b) { b.setAttribute('aria-disabled', 'true'); });
+  })();
 
   // ── aThemes Charts (pro/assets/js/modules/charts/scripts.js:4-60): capture bakes the <canvas> to an
   // image; put the plugin's own Chart.js config back on a live canvas from the widget's data-settings.

@@ -1,0 +1,684 @@
+{
+  "slug": "admin-elementor-templates",
+  "registryPresent": true,
+  "transitions": [
+    {
+      "label": "link-external",
+      "event": "click",
+      "selector": "a.MuiButtonBase-root.MuiListItemButton-root",
+      "count": 64
+    },
+    {
+      "label": "admin-chrome-fallback",
+      "event": "click",
+      "selector": "li.wp-first-item:nth-of-type(1) > ul.wp-submenu > li:nth-of-type(3) > a",
+      "count": 53
+    },
+    {
+      "label": "native-select",
+      "event": "click",
+      "selector": "#bulk-action-selector-top",
+      "count": 11
+    },
+    {
+      "label": "self-link",
+      "event": "click",
+      "selector": "a.current",
+      "count": 2
+    },
+    {
+      "label": "wp-pagination",
+      "event": "click",
+      "selector": ".button.disabled",
+      "count": 8
+    },
+    {
+      "label": "wp-screen-meta",
+      "event": "click",
+      "selector": "#show-settings-link",
+      "count": 1
+    },
+    {
+      "label": "wp-row-actions",
+      "event": "click",
+      "selector": "a.row-title",
+      "count": 40
+    },
+    {
+      "label": "wp-form-buttons",
+      "event": "click",
+      "selector": ".button",
+      "count": 5
+    },
+    {
+      "label": "wp-setting-label",
+      "event": "click",
+      "selector": "fieldset.metabox-prefs label",
+      "count": 35
+    }
+  ],
+  "nav": [],
+  "groups": {
+    "actions": [
+      {
+        "sel": "#collapse-button",
+        "tag": "button",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-link-wrap",
+        "tag": "div",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#show-settings-link",
+        "tag": "button",
+        "text": "Screen Options",
+        "count": 1,
+        "hidden": false,
+        "wired": "wp-screen-meta",
+        "wiredEvent": "click"
+      }
+    ],
+    "tabsNav": [
+      {
+        "sel": "#elementor-template-library-tabs-wrapper",
+        "tag": "div",
+        "text": "Saved Templates Page Section Container",
+        "count": 1,
+        "hidden": false
+      }
+    ],
+    "inputs": [
+      {
+        "sel": "#_inline_edit",
+        "tag": "input",
+        "text": "385330a555",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#author-hide",
+        "tag": "input",
+        "text": "author",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk_edit",
+        "tag": "input",
+        "text": "Update",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-action-selector-bottom",
+        "tag": "select",
+        "text": "Bulk actions Bulk edit Move to Trash Export",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-action-selector-top",
+        "tag": "select",
+        "text": "Bulk actions Bulk edit Move to Trash Export",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-1566",
+        "tag": "input",
+        "text": "1566",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-865",
+        "tag": "input",
+        "text": "865",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-868",
+        "tag": "input",
+        "text": "868",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-871",
+        "tag": "input",
+        "text": "871",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-874",
+        "tag": "input",
+        "text": "874",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-1",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#cb-select-all-2",
+        "tag": "input",
+        "text": "on",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#current-page-selector",
+        "tag": "input",
+        "text": "1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#date-hide",
+        "tag": "input",
+        "text": "date",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#doaction",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#doaction2",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#e-import-template-action",
+        "tag": "input",
+        "text": "Import Now",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#edit_elementor_library_per_page",
+        "tag": "input",
+        "text": "20",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor_library_category",
+        "tag": "select",
+        "text": "All Categories",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor_library_type-hide",
+        "tag": "input",
+        "text": "elementor_library_type",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#excerpt-view-mode",
+        "tag": "input",
+        "text": "excerpt",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#filter-by-date",
+        "tag": "select",
+        "text": "All dates October 2026 April 2022 January 2022",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#list-view-mode",
+        "tag": "input",
+        "text": "list",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-query-submit",
+        "tag": "input",
+        "text": "Filter",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-search-input",
+        "tag": "input",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#screen-options-apply",
+        "tag": "input",
+        "text": "Apply",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screenoptionnonce",
+        "tag": "input",
+        "text": "cc64b948a9",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ss",
+        "tag": "input",
+        "text": "49",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#taxonomy-elementor_library_category-hide",
+        "tag": "input",
+        "text": "taxonomy-elementor_library_category",
+        "count": 1,
+        "hidden": true
+      }
+    ],
+    "fields": [],
+    "panelsModals": [],
+    "other": [
+      {
+        "sel": "#adv-settings",
+        "tag": "form",
+        "text": "Columns Type Author Categories Date Pagination Number of it…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#ajax-response",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#author",
+        "tag": "th",
+        "text": "Author",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#bulk-edit",
+        "tag": "tr",
+        "text": "Bulk Edit Categories Author — No Change — Ingrid Vale (ingr…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-edit-legend",
+        "tag": "legend",
+        "text": "Bulk Edit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-title-div",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#bulk-titles",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#cb",
+        "tag": "td",
+        "text": "Select All",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#collapse-menu",
+        "tag": "li",
+        "text": "Collapse Menu",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#date",
+        "tag": "th",
+        "text": "Date",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editor-one-sidebar-navigation",
+        "tag": "div",
+        "text": "Editor Quick Start Settings Tools Role Manager Submissions …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#editor-one-top-bar",
+        "tag": "div",
+        "text": "website builder My account",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor_library_category_1566",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor_library_category_865",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor_library_category_868",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor_library_category_871",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor_library_category_874",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor_library_type",
+        "tag": "th",
+        "text": "Type",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#elementor-hidden-area",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-import-template-area",
+        "tag": "div",
+        "text": "Choose an Elementor template JSON file or a .zip archive of…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-import-template-form",
+        "tag": "form",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-import-template-form-inputs",
+        "tag": "fieldset",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-import-template-title",
+        "tag": "div",
+        "text": "Choose an Elementor template JSON file or a .zip archive of…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#elementor-import-template-trigger",
+        "tag": "a",
+        "text": "Import Templates",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#footer-left",
+        "tag": "p",
+        "text": "Enjoyed Elementor? Please leave us a ★★★★★ rating. We reall…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#inline_1566",
+        "tag": "div",
+        "text": "Studio CTA studio-cta 1 closed closed publish 02 10 2026 15…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_865",
+        "tag": "div",
+        "text": "Services 1 services-1 1 closed closed publish 05 04 2022 06…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_868",
+        "tag": "div",
+        "text": "Call to action 1 call-to-action-1 1 closed closed publish 0…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_871",
+        "tag": "div",
+        "text": "Agency 1 agency-1 1 closed closed publish 05 04 2022 07 21 …",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline_874",
+        "tag": "div",
+        "text": "Testimonials 1 testimonials-1 1 closed closed publish 06 04…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inline-edit",
+        "tag": "tr",
+        "text": "Quick Edit Title Slug Date Month 01-Jan 02-Feb 03-Mar 04-Ap…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#inlineedit",
+        "tag": "tbody",
+        "text": "Quick Edit Title Slug Date Month 01-Jan 02-Feb 03-Mar 04-Ap…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#post-1566",
+        "tag": "tr",
+        "text": "Select Studio CTA Studio CTA Edit | Quick Edit | Trash | Vi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-865",
+        "tag": "tr",
+        "text": "Select Services 1 Services 1 Edit | Quick Edit | Trash | Vi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-868",
+        "tag": "tr",
+        "text": "Select Call to action 1 Call to action 1 Edit | Quick Edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-871",
+        "tag": "tr",
+        "text": "Select Agency 1 Agency 1 Edit | Quick Edit | Trash | View |…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#post-874",
+        "tag": "tr",
+        "text": "Select Testimonials 1 Testimonials 1 Edit | Quick Edit | Tr…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#posts-filter",
+        "tag": "form",
+        "text": "Search Template: Select bulk action Bulk actions Bulk edit …",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#quick-edit-legend",
+        "tag": "legend",
+        "text": "Quick Edit",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#screen-options-wrap",
+        "tag": "div",
+        "text": "Columns Type Author Categories Date Pagination Number of it…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#table-paging",
+        "tag": "span",
+        "text": "1 of 1",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#taxonomy-elementor_library_category",
+        "tag": "th",
+        "text": "Categories",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#the-list",
+        "tag": "tbody",
+        "text": "Select Studio CTA Studio CTA Edit | Quick Edit | Trash | Vi…",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#title",
+        "tag": "th",
+        "text": "Title Sort ascending.",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_at-blocks",
+        "tag": "li",
+        "text": "aThemes Blocks Blocks Settings",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_athemes-addons",
+        "tag": "li",
+        "text": "aThemes Addons Widgets Extensions Settings Patcher",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#toplevel_page_elementor",
+        "tag": "li",
+        "text": "Elementor ElementorQuick startSubmissions",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#toplevel_page_elementor-home",
+        "tag": "li",
+        "text": "Elementor Home Editor Upgrade",
+        "count": 1,
+        "hidden": false
+      },
+      {
+        "sel": "#wp-auth-check",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-bg",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-form",
+        "tag": "div",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-auth-check-wrap",
+        "tag": "div",
+        "text": "Close dialog Session expired Please log in again. The login…",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-emoji-styles-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      },
+      {
+        "sel": "#wp-view-transitions-admin-inline-css",
+        "tag": "link",
+        "text": "",
+        "count": 1,
+        "hidden": true
+      }
+    ]
+  }
+}

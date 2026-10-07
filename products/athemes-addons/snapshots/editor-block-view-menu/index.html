@@ -1,0 +1,557 @@
+<!doctype html>
+<html data-snap-unbaked="41" class="" lang="en-US" data-wpds-root-provider="true" data-wpds-corner-radius="subtle" style="--wpds-color-background-surface-neutral: #fcfcfc; --wpds-color-background-interactive-brand-strong-disabled: #e6e6e6; --wpds-color-background-interactive-error-strong-disabled: #e6e6e6; --wpds-color-background-interactive-neutral-strong-disabled: #e6e6e6; --wpds-color-background-interactive-neutral-weak-active: #ededed; --wpds-color-background-surface-neutral-strong: #fff; --wpds-color-foreground-content-neutral: #1e1e1e; --wpds-color-foreground-interactive-neutral: #1e1e1e; --wpds-color-foreground-interactive-neutral-active: #1e1e1e; --wpds-color-foreground-interactive-neutral-weak-active: #1e1e1e; --wpds-color-foreground-content-neutral-weak: #707070; --wpds-color-foreground-interactive-neutral-weak: #707070; --wpds-color-foreground-interactive-brand-disabled: #8d8d8d; --wpds-color-foreground-interactive-brand-strong-disabled: #8d8d8d; --wpds-color-foreground-interactive-error-disabled: #8d8d8d; --wpds-color-foreground-interactive-error-strong-disabled: #8d8d8d; --wpds-color-foreground-interactive-neutral-disabled: #8d8d8d; --wpds-color-foreground-interactive-neutral-strong-disabled: #8d8d8d; --wpds-color-foreground-interactive-neutral-weak-disabled: #8d8d8d; --wpds-color-background-thumb-neutral-weak: #8d8d8d; --wpds-color-stroke-interactive-neutral: #8d8d8d; --wpds-color-stroke-surface-neutral-strong: #8d8d8d; --wpds-color-background-thumb-neutral-weak-active: #6e6e6e; --wpds-color-stroke-interactive-neutral-active: #6e6e6e; --wpds-color-stroke-interactive-neutral-strong: #6e6e6e; --wpds-color-background-thumb-brand-disabled: #dbdbdb; --wpds-color-background-thumb-neutral-weak-disabled: #dbdbdb; --wpds-color-background-track-neutral: #dbdbdb; --wpds-color-stroke-interactive-brand-disabled: #dbdbdb; --wpds-color-stroke-interactive-error-disabled: #dbdbdb; --wpds-color-stroke-interactive-neutral-disabled: #dbdbdb; --wpds-color-stroke-surface-neutral: #dbdbdb; --wpds-color-background-track-neutral-weak: #f0f0f0; --wpds-color-stroke-surface-neutral-weak: #f0f0f0; --wpds-color-background-interactive-neutral-strong-active: #1e1e1e; --wpds-color-background-interactive-neutral-strong: #2d2d2d; --wpds-color-foreground-interactive-neutral-strong: #f0f0f0; --wpds-color-foreground-interactive-neutral-strong-active: #f0f0f0; --wpds-color-background-surface-neutral-weak: #f4f4f4; --wpds-color-background-interactive-brand-strong: #3858e9; --wpds-color-foreground-interactive-brand-strong: #eff0f2; --wpds-color-foreground-interactive-brand-strong-active: #eff0f2; --wpds-color-background-interactive-brand-strong-active: #2e49d9; --wpds-color-background-interactive-brand-weak-active: #e6eaf4; --wpds-color-foreground-interactive-brand-active: #0b0070; --wpds-color-foreground-interactive-brand: #3858e9; --wpds-color-background-thumb-brand: #3858e9; --wpds-color-background-thumb-brand-active: #3858e9; --wpds-color-stroke-focus: #3858e9; --wpds-color-stroke-interactive-brand: #3858e9; --wpds-color-stroke-surface-brand-strong: #3858e9; --wpds-color-stroke-interactive-brand-active: #2337c8; --wpds-color-stroke-surface-brand: #b0bbd6; --wpds-color-background-surface-brand: #ecf0fa; --wpds-color-background-surface-info-weak: #f3f9ff; --wpds-color-background-surface-info: #deebfa; --wpds-color-foreground-content-info: #001b4f; --wpds-color-foreground-content-info-weak: #006bd7; --wpds-color-stroke-surface-info-strong: #006bd7; --wpds-color-stroke-surface-info: #a9c6e7; --wpds-color-background-surface-success-weak: #ebffed; --wpds-color-background-surface-success: #c6f7cd; --wpds-color-foreground-content-success: #002900; --wpds-color-foreground-content-success-weak: #008030; --wpds-color-stroke-surface-success-strong: #008030; --wpds-color-stroke-surface-success: #94d29e; --wpds-color-background-surface-caution-weak: #fff9ca; --wpds-color-background-surface-caution: #fee995; --wpds-color-foreground-content-caution: #281d00; --wpds-color-foreground-content-caution-weak: #826a00; --wpds-color-stroke-surface-caution-strong: #826a00; --wpds-color-stroke-surface-caution: #cfc28d; --wpds-color-background-surface-warning-weak: #fff7e1; --wpds-color-background-surface-warning: #fde6be; --wpds-color-foreground-content-warning: #2e1900; --wpds-color-foreground-content-warning-weak: #926300; --wpds-color-stroke-surface-warning-strong: #926300; --wpds-color-stroke-surface-warning: #e1bc7c; --wpds-color-background-interactive-error-strong: #cc1818; --wpds-color-foreground-interactive-error-strong: #f2efef; --wpds-color-foreground-interactive-error-strong-active: #f2efef; --wpds-color-background-interactive-error-strong-active: #b90000; --wpds-color-background-interactive-error-active: #fff6f5; --wpds-color-background-surface-error-weak: #fff6f5; --wpds-color-background-interactive-error-weak-active: #f6e6e3; --wpds-color-background-surface-error: #f6e6e3; --wpds-color-foreground-content-error: #470000; --wpds-color-foreground-interactive-error-active: #470000; --wpds-color-foreground-content-error-weak: #cc1818; --wpds-color-foreground-interactive-error: #cc1818; --wpds-color-stroke-interactive-error: #cc1818; --wpds-color-stroke-interactive-error-strong: #cc1818; --wpds-color-stroke-surface-error-strong: #cc1818; --wpds-color-stroke-interactive-error-active: #9d0000; --wpds-color-stroke-surface-error: #dab1aa; --wp-admin-theme-color: #3858e9; --wp-admin-theme-color--rgb: 56, 88, 233; --wp-admin-theme-color-darker-10: #2145e6; --wp-admin-theme-color-darker-10--rgb: 33, 69, 230; --wp-admin-theme-color-darker-20: #183ad6; --wp-admin-theme-color-darker-20--rgb: 24, 58, 214; --wp-components-color-accent: var(--wp-admin-theme-color); --wp-components-color-accent-darker-10: var(--wp-admin-theme-color-darker-10); --wp-components-color-accent-darker-20: var(--wp-admin-theme-color-darker-20); --wp-components-color-accent-inverted: var(--wpds-color-foreground-interactive-brand-strong, #fff); --wp-components-color-background: var(--wpds-color-background-surface-neutral-strong, #fff); --wp-components-color-foreground: var(--wpds-color-foreground-content-neutral, #1e1e1e); --wp-components-color-foreground-inverted: var(--wpds-color-background-surface-neutral, #fcfcfc); --wp-components-color-gray-100: var(--wpds-color-background-surface-neutral, #fcfcfc); --wp-components-color-gray-200: var(--wpds-color-stroke-surface-neutral, #dbdbdb); --wp-components-color-gray-300: var(--wpds-color-stroke-surface-neutral, #dbdbdb); --wp-components-color-gray-400: var(--wpds-color-stroke-interactive-neutral, #8d8d8d); --wp-components-color-gray-600: var(--wpds-color-stroke-interactive-neutral, #8d8d8d); --wp-components-color-gray-700: var(--wpds-color-foreground-content-neutral-weak, #707070); --wp-components-color-gray-800: var(--wpds-color-foreground-content-neutral, #1e1e1e); margin-top: 0px; padding-top: 0px;" data-snap-media-local="0" data-snap-map-poster="0"><head><link rel="stylesheet" href="../_shared/css/29467a00741c.css">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>Edit Page “Studio basics” ‹ Northline Studio — WordPress</title>
+
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="stylesheet" href="../_shared/css/f85d19b31559.css" data-origin="/wp-admin/load-styles.php?c=0&amp;dir=ltr&amp;load%5Bchunk_0%5D=dashicons,admin-bar,buttons,media-views,editor-buttons,wp-theme,wp-components,wp-preferences,wp-block-editor,wp-reusable-blocks,&amp;load%5Bchunk_1%5D=wp-patterns,wp-media-utils,wp-editor,wp-base-styles,common,forms,wp-reset-editor-styles,wp-block-library,wp-block-editor-content&amp;load%5Bchunk_2%5D=,wp-edit-blocks,wp-commands,wp-edit-post,wp-block-directory,wp-format-library,admin-menu,dashboard,list-tables,edit,revisions,me&amp;load%5Bchunk_3%5D=dia,themes,about,nav-menus,wp-pointer,widgets,site-icon,l10n,wp-tooltip,wp-auth-check&amp;ver=7.1.2">
+<link rel="stylesheet" href="../_shared/css/df4f037a657b.css">
+<link rel="stylesheet" href="../_shared/css/a578fe7f46dd.css" data-origin="/wp-content/plugins/wpforms-lite/assets/lib/font-awesome/css/all.min.css?ver=7.0.1">
+<link rel="stylesheet" href="../_shared/css/46f6e065b71d.css" data-origin="/wp-content/plugins/wpforms-lite/assets/lib/font-awesome/css/v4-shims.min.css?ver=4.7.0">
+<link rel="stylesheet" href="../_shared/css/c720a7f5e432.css" data-origin="/wp-includes/js/mediaelement/mediaelementplayer-legacy.min.css?ver=4.2.17">
+<link rel="stylesheet" href="../_shared/css/ea958276b7de.css" data-origin="/wp-includes/js/mediaelement/wp-mediaelement.min.css?ver=7.1.2">
+<link rel="stylesheet" href="../_shared/css/72dccd689b5d.css" data-origin="/wp-includes/js/imgareaselect/imgareaselect.css?ver=0.9.8">
+<link rel="stylesheet" href="../_shared/css/7087b79b2889.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/FlexContainer/style-index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/239eec1c1814.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/FlexContainer/index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/54a42bc3d846.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/Text/style-index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/11521645c59c.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/Heading/style-index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/220addbcaae3.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/Button/style-index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/6ea3024d967c.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/Button/index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/8029e2df23fe.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/Icon/style-index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/cfb8a682e090.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/Image/style-index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/71cbac8f73ec.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/Testimonials/style-index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/3dd939088eba.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/Testimonials/index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/e4f14043b16a.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/TeamMember/style-index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/911be27a161d.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/TeamMember/index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/e12c131baa04.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/Team/style-index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/3dd939088eba.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/Team/index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/9bcd72dcc706.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/PostGrid/style-index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/558a696dc91a.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/TaxonomyGrid/style-index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/210140e4f82f.css" data-origin="/wp-content/plugins/athemes-blocks/build/blocks/GoogleMaps/style-index.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/4fe9f5854fbe.css" data-origin="/wp-content/plugins/athemes-blocks/v1/dist/blocks.style.build.css?ver=1.0.13">
+<link rel="stylesheet" href="../_shared/css/0933651f9270.css" data-origin="/wp-content/plugins/athemes-blocks/v1/dist/blocks.editor.build.css?ver=1.0.13">
+<link rel="stylesheet" href="../_shared/css/0ba59118dde8.css" data-origin="/wp-content/plugins/wpforms-lite/assets/css/admin-integrations.min.css?ver=1.10.0.5">
+<link rel="stylesheet" href="../_shared/css/aa06df75744f.css" data-origin="/wp-content/plugins/wpforms-lite/assets/css/frontend/classic/wpforms-full.min.css?ver=1.10.0.5">
+<link rel="stylesheet" href="../_shared/css/a5def0667dcd.css" data-origin="/wp-content/plugins/wpforms-lite/assets/css/integrations/square/wpforms-square-card-placeholder.min.css?ver=1.10.0.5">
+<link rel="stylesheet" href="../_shared/css/d7d72d2544e1.css" data-origin="/wp-content/plugins/wpforms-lite/assets/css/integrations/paypal-commerce/integrations/integrations-paypal-commerce.min.css?ver=1.10.0.5">
+<link rel="stylesheet" href="../_shared/css/ef533066f178.css" id="global-styles-css-custom-properties-inline-css">
+<link rel="stylesheet" href="../_shared/css/001a3fd123b3.css" data-origin="/wp-content/plugins/athemes-blocks/assets/css/block-editor.css?ver=1.1.4">
+<link rel="stylesheet" href="../_shared/css/533c7d2e3f8a.css" data-origin="/wp-content/plugins/wpforms-lite/assets/lib/jquery.confirm/jquery-confirm.min.css?ver=1.0.0">
+<link rel="stylesheet" href="../_shared/css/6bae9aaace48.css" data-origin="/wp-content/plugins/wpforms-lite/assets/css/integrations/square/wpforms-square.min.css?ver=1.10.0.5">
+<link rel="stylesheet" href="../_shared/css/8a9d95334237.css" data-origin="/wp-content/themes/sydney-pro-ii/sydney-gutenberg-editor-styles.css?ver=20220208">
+<link rel="stylesheet" href="../_shared/css/ea43a1acfb61.css" id="sydney-block-editor-styles-inline-css">
+<link rel="stylesheet" href="../_shared/css/f8955d69b19a.css" data-origin="/css2?family=Open%20Sans:wght@400&amp;family=Open%20Sans:wght@400&amp;family=Open%20Sans:wght@400&amp;display=swap">
+<link rel="stylesheet" href="../_shared/css/4fe29a388ec7.css" data-origin="/wp-content/plugins/wpforms-lite/assets/css/choices.min.css?ver=10.2.0">
+<link rel="stylesheet" href="../_shared/css/9622fe018ae2.css" data-origin="/wp-admin/css/colors/modern/colors.min.css?ver=7.1.2">
+<link rel="stylesheet" href="../_shared/css/a284a65fd6d9.css" data-origin="/wp-content/plugins/athemes-blocks/assets/css/blocks-common.css?ver=1.1.4">
+<link rel="stylesheet" href="../_shared/css/62eb8c6a9cab.css" data-origin="/wp-content/plugins/wpforms-lite/assets/css/integrations/stripe/wpforms-stripe.min.css?ver=1.10.0.5">
+<link rel="stylesheet" href="../_shared/css/5c70cddb98f6.css" id="wp-view-transitions-admin-inline-css">
+<link rel="stylesheet" href="../_shared/css/f359f9f97350.css" data-origin="/wp-content/uploads/snap-fonts/roboto.css">
+<link rel="stylesheet" href="../_shared/css/78b7be432b3a.css" data-origin="/wp-content/plugins/elementor/vendor/elementor/wp-one-package/assets/build/common.css?ver=1.0.62">
+<link rel="stylesheet" href="../_shared/css/695eb5781f1f.css" data-origin="/wp-content/plugins/elementor/assets/css/modules/editor-one/admin-menu.min.css?ver=4.0.9">
+<link rel="stylesheet" href="../_shared/css/7fb6fff6e7da.css" data-origin="/wp-content/plugins/elementor/assets/lib/eicons/css/elementor-icons.min.css?ver=5.48.0">
+<link rel="stylesheet" href="../_shared/css/b88e5518f5b9.css" data-origin="/wp-content/plugins/elementor/assets/css/common.min.css?ver=4.0.9">
+<link rel="stylesheet" href="../_shared/css/3ce0d9d570fd.css" data-origin="/wp-content/plugins/elementor/assets/css/theme-light.min.css?ver=4.0.9">
+<link rel="stylesheet" href="../_shared/css/4b76679d6261.css" data-origin="/wp-content/plugins/elementor/assets/css/admin.min.css?ver=4.0.9">
+<link rel="stylesheet" href="../_shared/css/4ace89f62980.css" data-origin="/wp-includes/js/thickbox/thickbox.css?ver=7.1.2">
+<link rel="stylesheet" href="../_shared/css/eacb23c21a0f.css" data-origin="/wp-content/plugins/wpforms-lite/assets/css/admin-bar.min.css?ver=1.10.0.5">
+<link rel="stylesheet" href="../_shared/css/ba282c0dd22f.css" id="wp-emoji-styles-inline-css">
+<link rel="stylesheet" href="../_shared/css/2063fea48bc3.css" data-origin="/wp-content/plugins/wpforms-lite/assets/css/admin/edit-post-education.min.css?ver=1.10.0.5">
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="../_shared/css/7fd350c669e5.css">
+<link rel="stylesheet" href="../_shared/css/c765558cabc1.css"><link rel="stylesheet" href="../_shared/css/f8c5b631a9fc.css"><link rel="stylesheet" href="../_shared/css/b9aef0c2c3d4.css"><link rel="stylesheet" href="../_shared/css/064ccc048836.css"><link rel="stylesheet" href="../_shared/css/9d042873285b.css"><link rel="stylesheet" href="../_shared/css/65f19012e821.css"><link rel="stylesheet" href="../_shared/css/542e5e048421.css"><link rel="stylesheet" href="../_shared/css/0f377f0a1c5d.css"><link rel="stylesheet" href="../_shared/css/d33d880870f0.css"><link rel="stylesheet" href="../_shared/css/c1ffdec3a6c7.css"><link rel="stylesheet" href="../_shared/css/f0615b626179.css"><link rel="stylesheet" href="../_shared/css/40e44ecd0eb8.css">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="../_shared/css/4d636d379c49.css"><link rel="stylesheet" href="../_shared/css/99f9725500ef.css"><link rel="stylesheet" href="../_shared/css/1f51979cb68d.css"><link rel="stylesheet" href="../_shared/css/195a803ff4b5.css"><link rel="stylesheet" href="../_shared/css/22163b486ad7.css"><link rel="stylesheet" href="../_shared/css/61e6713a98f2.css"><link rel="stylesheet" href="../_shared/css/93893b6f6254.css"><link rel="stylesheet" href="../_shared/css/aaa0e5dff106.css"><link rel="stylesheet" href="../_shared/css/603348353aa4.css"><link rel="stylesheet" href="../_shared/css/367f8cedd175.css"><link rel="stylesheet" href="../_shared/css/a65d581e420f.css"><link rel="stylesheet" href="../_shared/css/4d4c0c6f20df.css"><link rel="stylesheet" href="../_shared/css/dc941bb72ab0.css"><link rel="stylesheet" href="../_shared/css/48cbb88d12b4.css"><link rel="stylesheet" href="../_shared/css/61041c01af68.css">
+
+
+
+
+
+
+
+
+
+
+
+
+        <link rel="stylesheet" href="../_shared/css/ac1d84bc0efd.css">
+        		<link rel="stylesheet" href="../_shared/css/04f147b8f1ea.css">
+				<link rel="stylesheet" href="../_shared/css/86153420b704.css">
+		
+	
+	
+	<meta name="viewport" content="width=device-width,initial-scale=1.0"><link rel="stylesheet" href="../_shared/css/2e89200c8716.css"><link rel="stylesheet" href="../_shared/css/9bb75dc1a0f5.css"><link rel="stylesheet" href="../_shared/css/8d9335635ee4.css"><link rel="stylesheet" href="../_shared/css/3e39b234b4a0.css"><link rel="stylesheet" href="../_shared/css/714a871b233c.css"><link rel="stylesheet" href="../_shared/css/273e9de41af0.css"><link rel="stylesheet" href="../_shared/css/362ec03e11d9.css"><link rel="stylesheet" href="../_shared/css/a02732113635.css"><link rel="stylesheet" href="../_shared/css/0fa9a8527ebc.css"></head>
+<body class="wp-admin wp-core-ui js elementor-editor-inactive post-php auto-fold post-type-page branch-7-1 version-7-1-2 admin-color-modern locale-en-us svg block-editor-page wp-embed-responsive wp-theme-sydney-pro-ii customize-support dialog-body dialog-buttons-body dialog-container dialog-buttons-container e--ua-blink e--ua-webkit sticky-menu" style="margin-top: 0px; padding-top: 0px;">
+
+
+
+
+<div id="wpwrap">
+
+
+<div id="wpcontent">
+
+		
+
+		
+<div id="wpbody" role="main">
+
+<div id="wpbody-content">
+		<div id="screen-meta" class="metabox-prefs">
+
+			<div id="contextual-help-wrap" class="hidden no-sidebar" tabindex="-1" aria-label="Contextual Help Tab">
+				<div id="contextual-help-back"></div>
+				<div id="contextual-help-columns">
+					<div class="contextual-help-tabs">
+						<ul>
+												</ul>
+					</div>
+
+					
+					<div class="contextual-help-tabs-wrap">
+											</div>
+				</div>
+			</div>
+				</div>
+				
+	
+<div class="block-editor">
+	<h1 class="screen-reader-text hide-if-no-js">Edit Page</h1>
+	<div id="editor" class="block-editor__container hide-if-no-js"><div data-wpds-root-provider="true" data-wpds-corner-radius="subtle" class="dba930ea7a9438fd__root" style="--wpds-color-background-surface-neutral: #fcfcfc; --wpds-color-background-interactive-brand-strong-disabled: #e6e6e6; --wpds-color-background-interactive-error-strong-disabled: #e6e6e6; --wpds-color-background-interactive-neutral-strong-disabled: #e6e6e6; --wpds-color-background-interactive-neutral-weak-active: #ededed; --wpds-color-background-surface-neutral-strong: #fff; --wpds-color-foreground-content-neutral: #1e1e1e; --wpds-color-foreground-interactive-neutral: #1e1e1e; --wpds-color-foreground-interactive-neutral-active: #1e1e1e; --wpds-color-foreground-interactive-neutral-weak-active: #1e1e1e; --wpds-color-foreground-content-neutral-weak: #707070; --wpds-color-foreground-interactive-neutral-weak: #707070; --wpds-color-foreground-interactive-brand-disabled: #8d8d8d; --wpds-color-foreground-interactive-brand-strong-disabled: #8d8d8d; --wpds-color-foreground-interactive-error-disabled: #8d8d8d; --wpds-color-foreground-interactive-error-strong-disabled: #8d8d8d; --wpds-color-foreground-interactive-neutral-disabled: #8d8d8d; --wpds-color-foreground-interactive-neutral-strong-disabled: #8d8d8d; --wpds-color-foreground-interactive-neutral-weak-disabled: #8d8d8d; --wpds-color-background-thumb-neutral-weak: #8d8d8d; --wpds-color-stroke-interactive-neutral: #8d8d8d; --wpds-color-stroke-surface-neutral-strong: #8d8d8d; --wpds-color-background-thumb-neutral-weak-active: #6e6e6e; --wpds-color-stroke-interactive-neutral-active: #6e6e6e; --wpds-color-stroke-interactive-neutral-strong: #6e6e6e; --wpds-color-background-thumb-brand-disabled: #dbdbdb; --wpds-color-background-thumb-neutral-weak-disabled: #dbdbdb; --wpds-color-background-track-neutral: #dbdbdb; --wpds-color-stroke-interactive-brand-disabled: #dbdbdb; --wpds-color-stroke-interactive-error-disabled: #dbdbdb; --wpds-color-stroke-interactive-neutral-disabled: #dbdbdb; --wpds-color-stroke-surface-neutral: #dbdbdb; --wpds-color-background-track-neutral-weak: #f0f0f0; --wpds-color-stroke-surface-neutral-weak: #f0f0f0; --wpds-color-background-interactive-neutral-strong-active: #1e1e1e; --wpds-color-background-interactive-neutral-strong: #2d2d2d; --wpds-color-foreground-interactive-neutral-strong: #f0f0f0; --wpds-color-foreground-interactive-neutral-strong-active: #f0f0f0; --wpds-color-background-surface-neutral-weak: #f4f4f4; --wpds-color-background-interactive-brand-strong: #3858e9; --wpds-color-foreground-interactive-brand-strong: #eff0f2; --wpds-color-foreground-interactive-brand-strong-active: #eff0f2; --wpds-color-background-interactive-brand-strong-active: #2e49d9; --wpds-color-background-interactive-brand-weak-active: #e6eaf4; --wpds-color-foreground-interactive-brand-active: #0b0070; --wpds-color-foreground-interactive-brand: #3858e9; --wpds-color-background-thumb-brand: #3858e9; --wpds-color-background-thumb-brand-active: #3858e9; --wpds-color-stroke-focus: #3858e9; --wpds-color-stroke-interactive-brand: #3858e9; --wpds-color-stroke-surface-brand-strong: #3858e9; --wpds-color-stroke-interactive-brand-active: #2337c8; --wpds-color-stroke-surface-brand: #b0bbd6; --wpds-color-background-surface-brand: #ecf0fa; --wpds-color-background-surface-info-weak: #f3f9ff; --wpds-color-background-surface-info: #deebfa; --wpds-color-foreground-content-info: #001b4f; --wpds-color-foreground-content-info-weak: #006bd7; --wpds-color-stroke-surface-info-strong: #006bd7; --wpds-color-stroke-surface-info: #a9c6e7; --wpds-color-background-surface-success-weak: #ebffed; --wpds-color-background-surface-success: #c6f7cd; --wpds-color-foreground-content-success: #002900; --wpds-color-foreground-content-success-weak: #008030; --wpds-color-stroke-surface-success-strong: #008030; --wpds-color-stroke-surface-success: #94d29e; --wpds-color-background-surface-caution-weak: #fff9ca; --wpds-color-background-surface-caution: #fee995; --wpds-color-foreground-content-caution: #281d00; --wpds-color-foreground-content-caution-weak: #826a00; --wpds-color-stroke-surface-caution-strong: #826a00; --wpds-color-stroke-surface-caution: #cfc28d; --wpds-color-background-surface-warning-weak: #fff7e1; --wpds-color-background-surface-warning: #fde6be; --wpds-color-foreground-content-warning: #2e1900; --wpds-color-foreground-content-warning-weak: #926300; --wpds-color-stroke-surface-warning-strong: #926300; --wpds-color-stroke-surface-warning: #e1bc7c; --wpds-color-background-interactive-error-strong: #cc1818; --wpds-color-foreground-interactive-error-strong: #f2efef; --wpds-color-foreground-interactive-error-strong-active: #f2efef; --wpds-color-background-interactive-error-strong-active: #b90000; --wpds-color-background-interactive-error-active: #fff6f5; --wpds-color-background-surface-error-weak: #fff6f5; --wpds-color-background-interactive-error-weak-active: #f6e6e3; --wpds-color-background-surface-error: #f6e6e3; --wpds-color-foreground-content-error: #470000; --wpds-color-foreground-interactive-error-active: #470000; --wpds-color-foreground-content-error-weak: #cc1818; --wpds-color-foreground-interactive-error: #cc1818; --wpds-color-stroke-interactive-error: #cc1818; --wpds-color-stroke-interactive-error-strong: #cc1818; --wpds-color-stroke-surface-error-strong: #cc1818; --wpds-color-stroke-interactive-error-active: #9d0000; --wpds-color-stroke-surface-error: #dab1aa; --wp-admin-theme-color: #3858e9; --wp-admin-theme-color--rgb: 56, 88, 233; --wp-admin-theme-color-darker-10: #2145e6; --wp-admin-theme-color-darker-10--rgb: 33, 69, 230; --wp-admin-theme-color-darker-20: #183ad6; --wp-admin-theme-color-darker-20--rgb: 24, 58, 214; --wp-components-color-accent: var(--wp-admin-theme-color); --wp-components-color-accent-darker-10: var(--wp-admin-theme-color-darker-10); --wp-components-color-accent-darker-20: var(--wp-admin-theme-color-darker-20); --wp-components-color-accent-inverted: var(--wpds-color-foreground-interactive-brand-strong, #fff); --wp-components-color-background: var(--wpds-color-background-surface-neutral-strong, #fff); --wp-components-color-foreground: var(--wpds-color-foreground-content-neutral, #1e1e1e); --wp-components-color-foreground-inverted: var(--wpds-color-background-surface-neutral, #fcfcfc); --wp-components-color-gray-100: var(--wpds-color-background-surface-neutral, #fcfcfc); --wp-components-color-gray-200: var(--wpds-color-stroke-surface-neutral, #dbdbdb); --wp-components-color-gray-300: var(--wpds-color-stroke-surface-neutral, #dbdbdb); --wp-components-color-gray-400: var(--wpds-color-stroke-interactive-neutral, #8d8d8d); --wp-components-color-gray-600: var(--wpds-color-stroke-interactive-neutral, #8d8d8d); --wp-components-color-gray-700: var(--wpds-color-foreground-content-neutral-weak, #707070); --wp-components-color-gray-800: var(--wpds-color-foreground-content-neutral, #1e1e1e);"><div data-wp-c16t="true" data-wp-component="HStack" class="e518617e7c3a18e7__flex _3896336788892095__items-row components-flex components-h-stack editor-error-boundary" style="--wp-components-flex-align: baseline; --wp-components-flex-direction: row; --wp-components-flex-wrap: wrap; --wp-components-flex-gap: calc(4px * 4); --wp-components-flex-justify: space-between;"><p data-wp-c16t="true" data-wp-component="Text" class="components-truncate css-1y883gm components-text">The editor has encountered an unexpected error.</p><div data-wp-c16t="true" data-wp-component="HStack" class="e518617e7c3a18e7__flex _3896336788892095__items-row components-flex components-h-stack" style="--wp-components-flex-align: center; --wp-components-flex-direction: row; --wp-components-flex-wrap: nowrap; --wp-components-flex-gap: calc(4px * 2); --wp-components-flex-justify: space-between;"><button type="button" class="components-button is-next-40px-default-size is-secondary">Copy contents</button><button type="button" class="components-button is-next-40px-default-size is-primary">Copy error</button></div></div></div></div>
+	<div id="metaboxes" class="hidden">
+			<form class="metabox-base-form">
+	<input type="hidden" id="_wpnonce" name="_wpnonce" value="dbef1648cd"><input type="hidden" name="_wp_http_referer" value="/wp-admin/post.php?post=1849&amp;action=edit">	<input type="hidden" id="user-id" name="user_ID" value="1">
+	<input type="hidden" id="hiddenaction" name="action" value="editpost">
+	<input type="hidden" id="originalaction" name="originalaction" value="editpost">
+	<input type="hidden" id="post_type" name="post_type" value="page">
+	<input type="hidden" id="original_post_status" name="original_post_status" value="publish">
+	<input type="hidden" id="referredby" name="referredby" value="">
+
+	<input type="hidden" name="_wp_original_http_referer" value=""><input type="hidden" id="post_ID" name="post_ID" value="1849"><input type="hidden" id="meta-box-order-nonce" name="meta-box-order-nonce" value="785dca4990"><input type="hidden" id="closedpostboxesnonce" name="closedpostboxesnonce" value="4921fe1afd"><input type="hidden" id="samplepermalinknonce" name="samplepermalinknonce" value="7c713f88a9">	</form>
+	<form id="toggle-custom-fields-form" method="post" action="http://northlinestudio.com/wp-admin/post.php">
+		<input type="hidden" id="toggle-custom-fields-nonce" name="toggle-custom-fields-nonce" value="3bddd4fbf1"><input type="hidden" name="_wp_http_referer" value="/wp-admin/post.php?post=1849&amp;action=edit">		<input type="hidden" name="action" value="toggle-custom-fields">
+	</form>
+			
+			
+			
+			<form class="metabox-location-normal" onsubmit="return false;">
+			<div id="poststuff" class="sidebar-open">
+				<div id="postbox-container-2" class="postbox-container">
+					<div id="normal-sortables" class="meta-box-sortables ui-sortable"></div>				</div>
+			</div>
+		</form><form class="metabox-location-advanced" onsubmit="return false;">
+			<div id="poststuff" class="sidebar-open">
+				<div id="postbox-container-2" class="postbox-container">
+					<div id="advanced-sortables" class="meta-box-sortables ui-sortable"><div id="sydney_cat_metabox" class="postbox" role="region" aria-label="Custom post type category">
+<div class="postbox-header"><h2 class="hndle ui-sortable-handle" id="sydney_cat_metabox-title">Custom post type category</h2>
+<div class="handle-actions hide-if-no-js"><span class="wp-tooltip wp-is-tooltip">
+				<button aria-label="Move up" type="button" class="handle-order-higher wp-tooltip__toggle hidden" aria-describedby="sydney_cat_metabox-title" aria-disabled="false">
+							<span class="screen-reader-text">Move up</span>
+							<span class="order-higher-indicator" aria-hidden="true"></span>
+						</button>
+				<span popover="hint" id="sydney_cat_metabox-handle-order-higher-description" class="wp-tooltip__bubble" role="tooltip"><span id="sydney_cat_metabox-handle-order-higher-description-text" class="wp-tooltip__text">Move up</span></span></span><span class="wp-tooltip wp-is-tooltip">
+				<button aria-label="Move down" type="button" class="handle-order-lower wp-tooltip__toggle hidden" aria-describedby="sydney_cat_metabox-title" aria-disabled="false">
+							<span class="screen-reader-text">Move down</span>
+							<span class="order-lower-indicator" aria-hidden="true"></span>
+						</button>
+				<span popover="hint" id="sydney_cat_metabox-handle-order-lower-description" class="wp-tooltip__bubble" role="tooltip"><span id="sydney_cat_metabox-handle-order-lower-description-text" class="wp-tooltip__text">Move down</span></span></span><span class="wp-tooltip wp-is-tooltip">
+				<button aria-label="Show or hide panel" type="button" class="handlediv wp-tooltip__toggle" aria-expanded="true" aria-describedby="sydney_cat_metabox-title">
+							<span class="screen-reader-text">Show or hide panel</span>
+							<span class="toggle-indicator" aria-hidden="true"></span>
+						</button>
+				<span popover="hint" id="sydney_cat_metabox-handlediv" class="wp-tooltip__bubble" role="tooltip"><span id="sydney_cat_metabox-handlediv-text" class="wp-tooltip__text">Show or hide panel</span></span></span></div></div><div class="inside">
+<input type="hidden" id="sydney_inner_custom_box_nonce" name="sydney_inner_custom_box_nonce" value="ceac18eb60"><input type="hidden" name="_wp_http_referer" value="/wp-admin/post.php?post=1849&amp;action=edit"><p><label for="sydney_cat_field">Enter the slug for the category you wish to display posts from. Leave empty to show from all categories.</label></p><input class="widefat" type="text" id="sydney_cat_field" name="sydney_cat_field" value="" size="25" style=""></div>
+</div>
+</div>				</div>
+			</div>
+		</form><form class="metabox-location-side" onsubmit="return false;">
+			<div id="poststuff" class="sidebar-open">
+				<div id="postbox-container-2" class="postbox-container">
+					<div id="side-sortables" class="meta-box-sortables ui-sortable"><div id="sydney_single_page_metabox" class="postbox" role="region" aria-label="Sydney page options">
+<div class="postbox-header"><h2 class="hndle ui-sortable-handle" id="sydney_single_page_metabox-title">Sydney page options</h2>
+<div class="handle-actions hide-if-no-js"><span class="wp-tooltip wp-is-tooltip">
+				<button aria-label="Move up" type="button" class="handle-order-higher wp-tooltip__toggle hidden" aria-describedby="sydney_single_page_metabox-title" aria-disabled="false">
+							<span class="screen-reader-text">Move up</span>
+							<span class="order-higher-indicator" aria-hidden="true"></span>
+						</button>
+				<span popover="hint" id="sydney_single_page_metabox-handle-order-higher-description" class="wp-tooltip__bubble" role="tooltip"><span id="sydney_single_page_metabox-handle-order-higher-description-text" class="wp-tooltip__text">Move up</span></span></span><span class="wp-tooltip wp-is-tooltip">
+				<button aria-label="Move down" type="button" class="handle-order-lower wp-tooltip__toggle hidden" aria-describedby="sydney_single_page_metabox-title" aria-disabled="false">
+							<span class="screen-reader-text">Move down</span>
+							<span class="order-lower-indicator" aria-hidden="true"></span>
+						</button>
+				<span popover="hint" id="sydney_single_page_metabox-handle-order-lower-description" class="wp-tooltip__bubble" role="tooltip"><span id="sydney_single_page_metabox-handle-order-lower-description-text" class="wp-tooltip__text">Move down</span></span></span><span class="wp-tooltip wp-is-tooltip">
+				<button aria-label="Show or hide panel" type="button" class="handlediv wp-tooltip__toggle" aria-expanded="true" aria-describedby="sydney_single_page_metabox-title">
+							<span class="screen-reader-text">Show or hide panel</span>
+							<span class="toggle-indicator" aria-hidden="true"></span>
+						</button>
+				<span popover="hint" id="sydney_single_page_metabox-handlediv" class="wp-tooltip__bubble" role="tooltip"><span id="sydney_single_page_metabox-handlediv-text" class="wp-tooltip__text">Show or hide panel</span></span></span></div></div><div class="inside">
+<input type="hidden" id="sydney_single_page_box_nonce" name="sydney_single_page_box_nonce" value="04148c44cf"><input type="hidden" name="_wp_http_referer" value="/wp-admin/post.php?post=1849&amp;action=edit">		<p>
+		<label><input type="checkbox" name="sydney_transparent_menu" value="1" style="">Transparent menu bar</label>
+	</p>	
+		<p>
+		<label><input type="checkbox" name="sydney_page_disable_sidebar" value="1" checked="checked" style="">Disable the sidebar</label>
+	</p>		
+	<p>
+		<label><input type="checkbox" name="sydney_page_disable_title" value="1" style="">Disable the title</label>
+	</p>
+		
+	<p>
+		<label><input type="checkbox" name="sydney_page_enable_featured" value="1" style="">Enable the featured image</label>
+	</p>
+		</div>
+</div>
+</div>				</div>
+			</div>
+		</form></div>
+
+		<div class="wrap hide-if-js block-editor-no-js">
+		<h1 class="wp-heading-inline">Edit Page</h1>
+			</div>
+</div>
+
+<div class="clear"></div></div>
+<div class="clear"></div></div>
+<div class="clear"></div></div>
+
+
+        <link rel="stylesheet" href="../_shared/css/fe8367f46cb7.css">
+        			
+					
+
+		        <link rel="stylesheet" href="../_shared/css/16be88ec5264.css">
+        
+        		
+
+		
+
+		
+		
+
+
+
+
+
+
+
+
+
+			<link rel="stylesheet" href="../_shared/css/4a4a90d5998b.css">
+            
+					
+		
+		 
+   
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		
+
+		<div id="wp-auth-check-wrap" class="hidden">
+	<div id="wp-auth-check-bg"></div>
+	<div id="wp-auth-check">
+	<button type="button" class="wp-auth-check-close button-link"><span class="screen-reader-text">
+		Close dialog	</span></button>
+			<div id="wp-auth-check-form" class="loading" data-src="http://northlinestudio.com/wp-login.php?interim-login=1&amp;wp_lang=en_US"></div>
+			<div class="wp-auth-fallback">
+		<p><b class="wp-auth-fallback-expired" tabindex="0">Session expired</b></p>
+		<p><a href="http://northlinestudio.com/wp-login.php" target="_blank">Please log in again.</a>
+		The login page will open in a new tab. After logging in you can close it and return to this page.</p>
+	</div>
+	</div>
+	</div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		
+
+
+		<div id="wp-link-backdrop" style="display: none"></div>
+		<div id="wp-link-wrap" class="wp-core-ui" style="display: none" role="dialog" aria-modal="true" aria-labelledby="link-modal-title">
+		<form id="wp-link" tabindex="-1">
+		<input type="hidden" id="_ajax_linking_nonce" name="_ajax_linking_nonce" value="5ff6951174">		<h1 id="link-modal-title">Insert/edit link</h1>
+		<button type="button" id="wp-link-close"><span class="screen-reader-text">
+			Close		</span></button>
+		<div id="link-selector">
+			<div id="link-options">
+				<p class="howto" id="wplink-enter-url">Enter the destination URL</p>
+				<div>
+					<label><span>URL</span>
+					<input id="wp-link-url" type="text" aria-describedby="wplink-enter-url" value="" style=""></label>
+				</div>
+				<div class="wp-link-text-field">
+					<label><span>Link Text</span>
+					<input id="wp-link-text" type="text" value="" style=""></label>
+				</div>
+				<div class="link-target">
+					<label><span></span>
+					<input type="checkbox" id="wp-link-target" style=""> Open link in a new tab</label>
+				</div>
+			</div>
+			<p class="howto" id="wplink-link-existing-content">Or link to existing content</p>
+			<div id="search-panel">
+				<div class="link-search-wrapper">
+					<label>
+						<span class="search-label">Search</span>
+						<input type="search" id="wp-link-search" class="link-search-field" autocomplete="off" aria-describedby="wplink-link-existing-content" value="" style="">
+						<span class="spinner"></span>
+					</label>
+				</div>
+				<div id="search-results" class="query-results" tabindex="0">
+					<ul></ul>
+					<div class="river-waiting">
+						<span class="spinner"></span>
+					</div>
+				</div>
+				<div id="most-recent-results" class="query-results" tabindex="0">
+					<div class="query-notice" id="query-notice-message">
+						<em class="query-notice-default">No search term specified. Showing recent items.</em>
+						<em class="query-notice-hint screen-reader-text">
+							Search or use up and down arrow keys to select an item.						</em>
+					</div>
+					<ul></ul>
+					<div class="river-waiting">
+						<span class="spinner"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="submitbox">
+			<div id="wp-link-cancel">
+				<button type="button" class="button">Cancel</button>
+			</div>
+			<div id="wp-link-update">
+				<input type="submit" value="Add Link" class="button button-primary" id="wp-link-submit" name="wp-link-submit" style="">
+			</div>
+		</div>
+		</form>
+		</div>
+		
+<div class="clear"></div></div><div></div>
+
+
+
+<p id="a11y-speak-intro-text" class="a11y-speak-intro-text" style="position: absolute; margin: -1px; padding: 0px; height: 1px; width: 1px; overflow: hidden; clip-path: inset(50%); border: 0px; overflow-wrap: normal !important; word-break: normal !important;" hidden="">Notifications</p><div id="a11y-speak-assertive" class="a11y-speak-region" style="position:absolute;margin:-1px;padding:0;height:1px;width:1px;overflow:hidden;clip-path:inset(50%);border:0;word-wrap:normal !important;word-break:normal !important;" aria-live="assertive" aria-relevant="additions text" aria-atomic="true"></div><div id="a11y-speak-polite" class="a11y-speak-region" style="position:absolute;margin:-1px;padding:0;height:1px;width:1px;overflow:hidden;clip-path:inset(50%);border:0;word-wrap:normal !important;word-break:normal !important;" aria-live="polite" aria-relevant="additions text" aria-atomic="true"></div><div data-wp-compat-overlay-slot="" class="_11fc52b637ff8a7e__slot" aria-hidden="false"></div><div class="components-popover__fallback-container"><div class="components-popover components-dropdown__content components-dropdown-menu__popover" data-wp-c16t="true" data-wp-component="Popover" tabindex="-1" style="position: absolute; top: 0px; left: 0px; opacity: 1; transform: matrix(1, 0, 0, 1, 1049, 93); transform-origin: 100% 0% 0px;"><div class="components-popover__content" style="max-height: 799px; overflow: auto;"><div role="menu" aria-orientation="vertical" aria-label="View options" class="components-dropdown-menu__menu"><div class="components-menu-group"><div role="group"><button type="button" aria-checked="true" role="menuitemradio" class="components-button components-menu-item__button components-menu-items-choice is-compact" data-focus-visible="true"><span class="components-menu-item__item"><span class="components-menu-item__info-wrapper"><span class="components-menu-item__item">Desktop</span><span class="components-menu-item__info">Preview desktop viewport.</span></span></span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" class="components-menu-items__item-icon has-icon-right" aria-hidden="true" focusable="false"><path d="M16.5 7.5 10 13.9l-2.5-2.4-1 1 3.5 3.6 7.5-7.6z"></path></svg></button><button type="button" aria-checked="false" role="menuitemradio" class="components-button components-menu-item__button components-menu-items-choice is-compact"><span class="components-menu-item__item"><span class="components-menu-item__info-wrapper"><span class="components-menu-item__item">Tablet</span><span class="components-menu-item__info">Preview tablet viewport.</span></span></span></button><button type="button" aria-checked="false" role="menuitemradio" class="components-button components-menu-item__button components-menu-items-choice is-compact"><span class="components-menu-item__item"><span class="components-menu-item__info-wrapper"><span class="components-menu-item__item">Mobile</span><span class="components-menu-item__info">Preview mobile viewport.</span></span></span></button></div></div><div class="components-menu-group"><div role="group"><button type="button" aria-checked="false" role="menuitemcheckbox" class="components-button components-menu-item__button is-compact"><span class="components-menu-item__item"><span class="components-menu-item__info-wrapper"><span class="components-menu-item__item">Responsive styles</span><span class="components-menu-item__info">Style changes apply only to the selected viewport.</span></span></span></button></div></div><div class="components-menu-group"><div role="group"><a href="http://northlinestudio.com/studio-basics/?preview=true" target="wp-preview-1849" role="menuitem" class="components-button components-menu-item__button is-compact"><span class="components-menu-item__item">Preview in new tab</span><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="24" height="24" class="components-menu-items__item-icon has-icon-right" aria-hidden="true" focusable="false"><path d="M19.5 4.5h-7V6h4.44l-5.97 5.97 1.06 1.06L18 7.06v4.44h1.5v-7Zm-13 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3H17v3a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h3V5.5h-3Z"></path></svg></a></div></div></div></div></div></div><script src="../../../_runtime/core.js"></script><script src="../_shared/nav.js"></script><script src="../_shared/interactivity.js"></script></body></html>
