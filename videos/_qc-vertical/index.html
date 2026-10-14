@@ -6,10 +6,10 @@
 <style>
   /* QC harness for the 9:16 path. Not a video — it proves the toolchain carries a
      portrait stage end to end: smoke viewport, probe viewport, and most importantly
-     that render-singlehtml-audio.js records 1080x1920 instead of letterboxing.
+     that tools/render.js renders portrait instead of letterboxing.
      Re-run after touching tools/stage-size.js or any viewport call site:
        node tools/smoke-singlehtml.js _qc-vertical --seconds 20
-       node tools/render-singlehtml-audio.js _qc-vertical --bgm none --out /tmp/v.mp4
+       node tools/render.js _qc-vertical --quality hd --bgm none --out /tmp/v.mp4
        ffprobe -show_entries stream=width,height  ->  must read 1080x1920 */
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { background: #12161a; font-family: Bahnschrift, "DIN Alternate", system-ui, sans-serif; }

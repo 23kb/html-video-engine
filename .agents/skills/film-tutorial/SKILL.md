@@ -5,7 +5,7 @@ description: "Use when starting or working on any WPForms tutorial video — int
 
 # WPForms Tutorial Video
 
-You are the video-building agent for WPForms tutorial videos. The repo turns an approved storyboard into a playable single-HTML film (vendored GSAP, Mac-framed iframe over real captured UI, BGM, narration, overlays, postIntro). MP4 **render** is in-repo (`tools/render-singlehtml-audio.js`) — never confuse it with **snapshot capture** (`capture/capture.js`), which runs FIRST. The deliverable is a playable HTML review URL.
+You are the video-building agent for WPForms tutorial videos. The repo turns an approved storyboard into a playable single-HTML film (vendored GSAP, Mac-framed iframe over real captured UI, BGM, narration, overlays, postIntro). MP4 **render** is in-repo (`tools/render.js`) — never confuse it with **snapshot capture** (`capture/capture.js`), which runs FIRST. The deliverable is a playable HTML review URL.
 
 ## Read the rulebook first
 
@@ -326,7 +326,7 @@ After every TTS run: strip head silence (`tools/sfx/onset.mjs` trims) BEFORE
 
 ### Per-scene review URLs (`?scene=`) — single-HTML
 
-A single-HTML video plays one async `play()` timeline, so a reviewer otherwise has to watch the whole thing to check one scene. Wire the `?scene=<id>` affordance so Umair can view a single scene in isolation. **Review-only — the MP4 render runs the full timeline** (`tools/render-html.js` never sets `?scene=`), so it never changes the deliverable.
+A single-HTML video plays one async `play()` timeline, so a reviewer otherwise has to watch the whole thing to check one scene. Wire the `?scene=<id>` affordance so Umair can view a single scene in isolation. **Review-only — the MP4 render runs the full timeline** (`tools/render.js` never sets `?scene=`), so it never changes the deliverable.
 
 Use the shared helper `videos/_shared/scene-review.js` — don't re-roll the param parsing:
 
@@ -377,7 +377,7 @@ Modern features worth reaching for. Each links to its dedicated skill or doc. **
 | `videos/_shared/effects/` | Named effects (`mountTextStackFromRight`, `mountCardsSpreadFan`, `mountEndCard`, …); see `videos/_shared/effects/README.md`. | `film-gsap-rules` |
 | `text-kit.js` 24 presets | Hero text reveals (mask-reveal-up, spring-scale-in, focus-blur-resolve, ...). 24 Pixel-Point presets. | `film-marketing` |
 | `videos/_shared/atmospheric.js` | Marketing-mode helpers: grain, gradient sweep, parallax pair, scale push, dark backdrop. Use sparingly on tutorial beats; right at home in postIntros + ad-style chapters. | `film-marketing` |
-| `tools/render-singlehtml-audio.js <slug>` | In-repo MP4 export with narration + ducked BGM. Resolution auto-derives from the film's `.stage`. | - |
+| `tools/render.js <slug>` | THE MP4 render (`npm run render`): frame-exact, 8 browsers in parallel, narration + ducked BGM. 720p draft by default; `--quality final` (4K) only on Umair's "final"; long-form `--bgm-volume 0.12`. Resolution from the film's `.stage`. | - |
 | serve any static server (`node tools/preview.js` or `npx serve`) | Review films live at `/videos/<slug>/index.html`. | — |
 | `tools/lint-determinism.js` | Pre-commit determinism check (no `Date.now`, no unseeded `Math.random`, no `fetch`). | `film-gsap-rules` |
 | `awaitTween(tween)` | LEGACY helper name (kit.js retired) — for wall-clock waits use a local `sleep = ms => new Promise(r => setTimeout(r, ms))`. | `film-gsap-rules` |
@@ -458,7 +458,7 @@ Stop and push back when:
 - `docs/beat-pacing.md` — Read when a beat feels long or rushed; covers the 6-second rule and split heuristics.
 - `docs/camera-lensing.md` — Read when picking `level:` for a beat. `1.0 / 1.18 / 2.2 / 2.4` reading guide.
 - `docs/color-palette.md` — Read when adding any color to editorial chrome. Brand orange placement rules.
-- Narration / BGM / SFX levels — `tools/render-singlehtml-audio.js` header (`--bgm-volume` bands + the post-render RMS check) and `tools/sfx/CONTEXT.md`.
+- Narration / BGM / SFX levels — `tools/render-singlehtml-audio.js` header (`--bgm-volume` bands + the post-render RMS check; `tools/render.js` uses the same constants via `tools/lib/narration-mix.js`) and `tools/sfx/CONTEXT.md`.
 - `docs/selector-hygiene.md` — Read when selectors break (selector source hierarchy; its `_selectors.js` modules are engine-era — selectors live inline in the film now).
 - `docs/title-card-voice.md` — HISTORICAL (manifest-era intro/outro title cards, superseded 2026-08-28: tutorials carry no bookends). Its CTA-tone rules still read for shorts / editorial end cards.
 

@@ -110,13 +110,13 @@ print('dark-left',l,'dark-right',w-1-x)"
 
 `tools/stage-size.js` resolves render/viewport resolution from the video's own
 `.stage` CSS box; `--resolution WxH` overrides; 1920×1080 is the fallback. Wired
-into `render-singlehtml-audio.js`, `smoke-singlehtml.js` and `probe-singlehtml.js`.
+into `render.js`, `smoke-singlehtml.js` and `probe-singlehtml.js`.
 
 Auto-detection rather than a flag alone is deliberate: **a flag you must remember is
 a flag a future session forgets**, and forgetting it recreates the letterbox artifact.
 
 ```bash
-node tools/render-singlehtml-audio.js <slug> --bgm <bed>
+node tools/render.js <slug> --bgm <bed>
 ```
 
 (`--bgm none` is superseded for shorts — charter #3, 2026-08-13: full ad
@@ -184,7 +184,7 @@ Shorts captions reveal **word by word**, not as a whole block (Umair ruling
    node tools/narration-qc.js <slug>
    node tools/smoke-singlehtml.js <slug> --seconds 90
    node tools/probe-short.js <slug>
-   node tools/render-singlehtml-audio.js <slug> --bgm <bed>
+   node tools/render.js <slug> --bgm <bed>
    node tools/dead-time.js <slug>
    node tools/dead-time.js <slug> --crop 1080:1200:0:300 --fail-over 2
    node tools/keyframes.js videos/<slug>/render/<slug>.mp4 --frames 16 --cols 4
@@ -209,8 +209,8 @@ Shorts captions reveal **word by word**, not as a whole block (Umair ruling
    and the same with `-select_streams a:0`.
 3. **Mix check** (nvc E): passing `--bgm` is not enough — measure the result.
    Run the astats procedure documented in `tools/render-singlehtml-audio.js`'s
-   header (bed-only window + speech window; targets there), or just render
-   with `--print-mix`. Shorts band: bed-only ≈ −23 to −28 dB in loud
+   header (bed-only window + speech window; targets there; `tools/render.js` mixes with the
+   same constants). Shorts band: bed-only ≈ −23 to −28 dB in loud
    sections at the 0.17 default (the −27 band, ruled 2026-08-22; the old
    0.32 / −18 band is explicit-override only).
 4. **Smoke routing** (cc 5): single-HTML shorts smoke via

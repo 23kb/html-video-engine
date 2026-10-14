@@ -237,11 +237,11 @@ node tools/storyboard-sheet.js <slug>-9x16                          # → Umair,
 
 Stills approval, then render. Match the parent's supersample — the landscape chatgpt master is
 3840×2160 and its first cut shipped at 1× — so an ad cut renders through
-`tools/render-frames.js --scale 2 --native` (2160×3840) when the parent did, else
-`render-singlehtml-audio.js` (resolution auto from `.stage`: no `--resolution` flag). Then:
+`tools/render.js`: a 720p draft for review, `--quality final` (2160×3840) once Umair says "final"
+(resolution auto from `.stage`: no `--resolution` flag). Then:
 
 ```bash
-ffprobe -v error -show_entries stream=width,height -of default=noprint_wrappers=1 <mp4>   # 1080/1920 (or 2160/3840)
+ffprobe -v error -show_entries stream=width,height -of default=noprint_wrappers=1 <mp4>   # 720/1280 draft (2160/3840 final)
 node tools/dead-time.js <slug>-9x16                                                          # full frame
 node tools/dead-time.js <slug>-9x16 --crop 1080:<band.h>:0:<band.y>                          # Branch B: the band
 node tools/keyframes.js videos/<slug>-9x16/render/<slug>-9x16.mp4 --frames 16 --cols 4

@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// FALLBACK ONLY — the default renderer is tools/render.js (npm run render; docs/render.md).
 // tools/render-frames.js — FRAME-STEPPED render for seek-safe single-HTML films.
 //
 // Why: render-singlehtml-audio.js records a Playwright screencast (VP8 at a fixed low
@@ -73,6 +74,7 @@ function serveRepo() {
 }
 
 async function main() {
+  console.warn('[fallback] the default renderer is tools/render.js (docs/render.md)');
   const args = parseArgs(process.argv);
   const dir = path.join(REPO, 'videos', args.slug);
   const html = path.join(dir, 'index.html');

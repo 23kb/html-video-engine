@@ -98,7 +98,7 @@ function resolveVideo(input) {
   }
   const dir = path.join(ROOT, 'videos', input);
   if (!fs.existsSync(dir)) return { err: `no video folder at videos/${input}` };
-  // renders land in videos/<slug>/render/ (render-singlehtml-audio.js, render-frames.js);
+  // renders land in videos/<slug>/render/ (tools/render.js; the fallback renderers too);
   // older films kept them at the folder root.
   for (const cand of [`${input}-audio.mp4`, `${input}.mp4`, `render/${input}-audio.mp4`, `render/${input}.mp4`]) {
     const f = path.join(dir, cand);

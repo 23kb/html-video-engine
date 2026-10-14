@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// FALLBACK ONLY — the default renderer is tools/render.js (npm run render; docs/render.md).
 // render-singlehtml-audio.js — MP4 export WITH AUDIO for single-HTML videos.
 //
 // tools/render-html.js renders a single-HTML video to silent MP4. This adds the
@@ -180,6 +181,7 @@ function buildFilter(clips, DUR, hasBgm, bgmIdx, bgmVolume) {
 }
 
 async function main() {
+  console.warn('[fallback] the default renderer is tools/render.js (docs/render.md)');
   const args = parseArgs(process.argv);
   if (!args.slug) {
     console.error('Usage: node tools/render-singlehtml-audio.js <slug> [--bgm <path>|none] [--bgm-volume N] [--out <path>] [--max-seconds N] [--resolution WxH] [--print-mix]');

@@ -224,7 +224,7 @@ const say = (key, text, opts = {}) => narrSay(SLUG, key, text, { captionEl: capt
 const beat = (key, text, motionFn) => narrBeat(SLUG, key, text, motionFn, { durTable: DUR, captionEl: caption });
 
 // ── BGM preview bed — HTML scrub ONLY. The RENDER lays its own bed:
-//   node tools/render-singlehtml-audio.js <slug> --bgm-volume 0.12
+//   node tools/render.js <slug> --bgm-volume 0.12
 // so the scrub should sound like the ship mix (lf 9: a silent scrub drew a
 // false QC note). Headless tools (smoke / probe / renderer) run with
 // navigator.webdriver set and never start it — hidden from capture by

@@ -3,7 +3,7 @@
 // end bookkeeping (tl.pause() / window.__done) guarded by a comparison against
 // a hand-summed TOTAL constant. When TOTAL drifts above the real
 // tl.duration(), the guard becomes unreachable — the video never "ends" and
-// tools/render-singlehtml-audio.js hangs waiting on __done. End bookkeeping
+// the renderer (tools/render.js) waits on __done until its cap. End bookkeeping
 // must ride tl.eventCallback('onComplete', ...) instead. (FIX-3; the bug
 // shipped in the form-analytics-ad clone as 37.0 vs a real 36.95.)
 //

@@ -52,7 +52,7 @@ Craft docs below carry a **HISTORICAL API NOTE (2026-08-28)**: their code exampl
 ## Render / preview / QC
 
 - `qc-dashboard.md` — **The QC surface.** Gate chips, render + dead-time bands, filmstrip, timestamped feedback notes. How to populate `qc-report.json` before a handoff and how the feedback block works.
-- `render.md` — MP4 pipeline: `render-singlehtml-audio.js` (ship path — narration + ducked BGM, stage-driven resolution, whole-second audio pad), `render-html.js` (silent), `stitch.js` (Kacie bookends). Rewritten 2026-08-28.
+- `render.md` — MP4 pipeline: `tools/render.js` (THE renderer — frame-exact under virtual time, 8 browsers in parallel, with sound; 720p draft, `--quality final` 4K), `stitch.js` (presenter bookends), fallback renderers. Rewritten 2026-10-14.
 - `preview.md` — Live-reload server notes.
 - `deterministic-logic.md` — Render-parity rules: no `Date.now()`, no unseeded `Math.random()`, no `fetch()`.
 - `deterministic-logic-findings.md` — **SUPERSEDED** (2026-05 linter pass over engine-era files that no longer exist). Re-run `node tools/lint-determinism.js --all` for the live picture.

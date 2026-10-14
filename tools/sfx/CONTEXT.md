@@ -51,13 +51,13 @@ _Avoid_: render, encode
 
 ## In-page audio never reaches the MP4 (ruled 2026-08-28, AP-18)
 
-`tools/render-singlehtml-audio.js` records VIDEO only and muxes narration from
-the `__sched` cue times. The browser's own audio — in-page `SFX_CUES` /
+`tools/render.js` captures VIDEO only and builds the sound offline: narration from
+the `__sched` cue times, or the Plan when the film has one. The browser's own audio — in-page `SFX_CUES` /
 `sfxCue()` previews, a `BGM_PREVIEW` bed — is the review experience, never the
 deliverable. The ship path for sound design is the Plan (`sfx/plan.json`) +
 `mux.mjs`: `sfxCue()` records `{ name, t }` on `window.__sfx` so the plan
-lifts real cue times; when the plan carries the bed, render with `--bgm none`
-into an intermediate and let the mux lay the music. Two corollaries:
+lifts real cue times; when a film has `sfx/plan.json`, `tools/render.js`
+mixes it with `mux.mjs` automatically. Two corollaries:
 
 - The muxer pads audio to `ceil(dur + 0.25)` s — a "frozen tail" flagged inside
   that pad is the pad; the real check is "no frozen tail under LIVE audio"
@@ -175,7 +175,7 @@ round this queued ("we need similar sfx" — Umair judges by ear) is **DONE**:
 | postIntro windows | −19.2 mean | flat (1.3–2.5) | bed-in-gaps 5.2–6.9 dB under the VO mix | — | — | flat | — |
 | Tutorial ref | flat | — | gaps −27.7 dBFS (matches our 0.17 band almost exactly) | — | 7.1/min | flat | — |
 
-**Measured deltas vs `render-singlehtml-audio.js` constants (condensed from analysis-sound.md §4):**
+**Measured deltas vs the narration-mix constants (`tools/lib/narration-mix.js`, same as `render-singlehtml-audio.js`) (condensed from analysis-sound.md §4):**
 
 1. **Program loudness** — ad bar is 4–9 LU hotter than our speech-led −16.1 dB speech / −27.6 dB bed mix.
 2. **Bed vs voice** — ad bar runs the bed 8–11 dB hotter relative to voice than our default (bed-only ≈ program level vs our 11.5 dB under speech).

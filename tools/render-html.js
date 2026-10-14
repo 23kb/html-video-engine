@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// FALLBACK ONLY — the default renderer is tools/render.js (npm run render; docs/render.md).
 // Render a single-HTML video (no chapter engine, no manifest) by opening
 // videos/<slug>/index.html in Playwright with native video recording, then
 // transcoding the captured webm to MP4 at the requested framerate.
@@ -74,6 +75,7 @@ function transcode(inputWebm, outputMp4, fps, trim) {
 }
 
 async function main() {
+  console.warn('[fallback] the default renderer is tools/render.js (docs/render.md)');
   const args = parseArgs(process.argv);
   const { width, height } = parseResolution(args.resolution);
   // --path renders any repo-relative HTML (one-off scene renders); slug mode

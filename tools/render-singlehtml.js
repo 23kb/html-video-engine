@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// FALLBACK ONLY — the default renderer is tools/render.js (npm run render; docs/render.md).
 // Deterministic SEEK-STEPPED renderer for single-HTML films — the default
 // render path for the current architecture (master paused GSAP timeline +
 // the __tl / __T0 / __done instrumentation contract).
@@ -121,6 +122,7 @@ function colourGate(mp4) {
 }
 
 async function main() {
+  console.warn('[fallback] the default renderer is tools/render.js (docs/render.md)');
   const args = parseArgs(process.argv);
   const W = 1920 * args.scale, H = 1080 * args.scale;
   const out = args.out

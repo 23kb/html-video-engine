@@ -208,10 +208,10 @@ real citations. Receipts: `yjc` 1–8, `cja` 1/4, `cgw` 11, `wcr`, `itf`.
    a round.
 7. **Hand off render + badged keyframe sheet + tile map in one message.** `tools/keyframes.js`
    burns `#N t.ts` per tile, so notes come back as "00:08" and resolve to exactly one camera call.
-   Never a render alone (`yjc` 4). Ad deliverables render through `tools/render-frames.js --scale
-   2 --native` (4K, frame-stepped, cue clock == timeline clock) — the screencast renderer cannot be
-   HD and trimmed ~0.17 s off every film's head (`cja` 8); check a 1:1 crop before blaming an
-   encode (`cja` 9).
+   Never a render alone (`yjc` 4). Ad deliverables render through `tools/render.js` (720p drafts for review;
+   `--quality final` = 4K once Umair says "final"; frame-exact, cue clock == film clock) — the old
+   screencast renderer could not be HD and trimmed ~0.17 s off every film's head (`cja` 8); check a
+   1:1 crop before blaming an encode (`cja` 9).
 8. **Per note: find the mechanical cause first, add the assertion, then fix.** "Not smooth" was a
    yo-yo + a pre-nudge on short moves + an overshooting land ease — three faults, each now a
    permanent probe check (`yjc` 2). "Clicks the wrong thing" → pointer tip inside the subject's
@@ -502,7 +502,7 @@ Before declaring an ad-style video done:
 - [ ] `## Camera plan` in the storyboard with `Cadence:` / `Max hold:` / `Ease voice:` declared for this film, approved BEFORE camera code; `composition-scan <slug>` static PASS before motion work, `--play` PASS before handoff (both judged against the declared cadence)
 - [ ] Reference-driven (a reference film was declared): `reference-frames/` extracted at 3–5 fps + 24 fps windows around every cut; `## Scene map` from ONE spine donor, scene-level citations; every beat cites its tile IN THE CODE; zooms measured off reference frames; stills approved beside the donor frames BEFORE motion
 - [ ] `videos/<slug>/qc-probe.mjs` written on v1 (clone `docs/examples/qc-probe-skeleton.mjs`) and passing; every QC note that came back has a matching assertion
-- [ ] Handoff = render + `tools/keyframes.js` badged sheet + tile map, in one message; ad render via `tools/render-frames.js --scale 2 --native`
+- [ ] Handoff = render + `tools/keyframes.js` badged sheet + tile map, in one message; ad render via `tools/render.js` (`--quality final` for the 4K master)
 - [ ] Integrated loudness measured against the ad bar (`loudnorm`), not an RMS floor; an in-page bed exists for the scrub URL; no typing ticks
 - [ ] Compression pass done: dots ≤0.5s, post-payoff dwell ≤0.8s, repeated task templates re-framed per repeat
 - [ ] Final beat has a real exit (blur out, velocity-matched translate, fade-to-black) — not a hard cut
@@ -517,7 +517,7 @@ Before declaring an ad-style video done:
 
 - `docs/postintro-patterns.md` — Read when the marketing video is a hybrid (postIntro + walkthrough) — postIntro rules apply.
 
-- `docs/render.md` -- Read when running MP4 renders (tools/render-singlehtml-audio.js).
+- `docs/render.md` -- Read when running MP4 renders (tools/render.js).
 
 - `docs/storyboard-format-morph-chain-2026-05-10.md` — Morph-chain storyboard section authoring contract.
 

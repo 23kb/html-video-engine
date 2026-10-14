@@ -148,10 +148,11 @@ Two more from the same rejection:
    retired the same day — Umair's 2026-08-14 "v2 is soulless" ruling
    supersedes the earlier v2 ear pick). Shorts preset: `--stability 0` +
    audio tags; QC with `--expressive`.
-5. Validate → smoke → `node tools/render-singlehtml-audio.js <slug> --bgm <bed>` (the 0.17
-   shorts band is the default; full ad sound per the 2026-08-13 charter — `--bgm none`
-   only when the SFX plan carries the bed) → **ffprobe must read 1080×1920** (no `--resolution` flag needed; resolution comes
-   from the `.stage` box via `tools/stage-size.js`).
+5. Validate → smoke → `node tools/render.js <slug> --bgm <bed>` (720p draft; the 4K master
+   `--quality final` only on Umair's "final"; the 0.17 shorts band is the default; full ad sound per
+   the 2026-08-13 charter — a film with `sfx/plan.json` is mixed from the plan automatically) →
+   **ffprobe must read portrait** (720×1280 draft, 2160×3840 final; no `--resolution` flag needed;
+   resolution comes from the `.stage` box via `tools/stage-size.js`).
 6. **`node tools/dead-time.js <slug>` on the render — standard for every short.**
    Run the band scan too (`--crop 1080:1200:0:300`) — it lands in its own
    `deadTimeCrop` chip on the dashboard, and it's the reading the ≤2s rule is
@@ -218,11 +219,12 @@ full contract: `video-qc` ("The QC dashboard is the QC surface") and
 
 ### 5. Render (Claude renders — NEVER OBS)
 ```bash
-node tools/render-singlehtml-audio.js <slug> --resolution 3840x2160 --bgm-volume 0.12
+node tools/render.js <slug> --bgm-volume 0.12                   # 720p draft for review
+node tools/render.js <slug> --quality final --bgm-volume 0.12   # 4K master, only on Umair's "final"
 ```
-- `tools/render-singlehtml-audio.js` IS the ship renderer: it records the real run, lays each narration clip at its `__sched` cue, side-chain-ducks the BGM under it and muxes everything into the MP4 itself — no separate mux step, no silent intermediate. `--bgm-volume 0.12` is the long-form band (the default 0.17 is the shorts band). Resolution defaults to the film's `.stage` box (`tools/stage-size.js`); `--resolution` overrides it. Flags: `docs/render.md`.
-- **4K (3840x2160) is the target.** Nothing has shipped above 1080p yet, so on the first 4K run: render a short variant (`--max-seconds 30`, or `--query skip=<scene>` for a deliverable cut — there is no per-chapter render flag), inspect layout/text at 2x, then the full render. If the player breaks at 4K: ship 2560x1440 and log the gap to the rock file's tool-work queue.
-- Preflight: `ffmpeg` + `ffprobe` on PATH. The muxer pads audio to a whole second (`ceil(dur + 0.25)`): a "frozen tail" flagged inside that pad is the pad, not a defect — the real check is "no frozen tail under LIVE audio" (`docs/render.md`).
+- `tools/render.js` IS the renderer (`npm run render`): it renders every frame exactly under virtual time across 8 browsers (a 3-min tutorial draft in ~90 s), lays each narration clip at its `__sched` cue, side-chain-ducks the BGM under it and muxes everything into the MP4 itself — no separate mux step, no silent intermediate. `--bgm-volume 0.12` is the long-form band (the default 0.17 is the shorts band). Resolution comes from the film's `.stage` box (`tools/stage-size.js`); `--resolution` overrides it. The old renderers are fallback only. Flags: `docs/render.md`.
+- **4K (3840x2160) is the final target, rendered only when Umair says "final".** To check layout and text at 2x first, render a short piece (`--quality final --seconds 30 --no-audio`, or `--query skip=<scene>` for a deliverable cut — there is no per-chapter render flag), then the full render.
+- Preflight: `ffmpeg` + `ffprobe` on PATH. The video runs `ceil(dur + 0.25)` s and the renderer keeps capturing live frames through that pad, so the end hold is real frames (`docs/render.md`).
 - QC the MP4: ffprobe resolution/fps/duration; audio present + synced at start/middle/end; spot-check 3 frames.
 
 ### 5b. Kacie bookends (standing delivery shape since 2026-07-23)

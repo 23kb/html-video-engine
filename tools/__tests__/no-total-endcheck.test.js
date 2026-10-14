@@ -4,7 +4,7 @@
 // Bug class: end bookkeeping (tl.pause() / window.__done) guarded by a
 // comparison against a hand-summed TOTAL constant. If TOTAL drifts above the
 // real tl.duration() the guard is unreachable → __done never fires →
-// render-singlehtml-audio.js hangs. The core editorial clone target carried
+// the renderer waits on it until its cap. The core editorial clone target carried
 // it; an ad cloned from it shipped the bug live (TOTAL 37.0 vs real 36.95).
 // End handling must use onComplete.
 //

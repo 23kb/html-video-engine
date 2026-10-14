@@ -14,7 +14,7 @@ const path = require('path');
 const REPO_ROOT = path.resolve(__dirname, '..');
 
 const MISSION =
-  'Guided single-HTML video builder (engine/manifest path retired 2026-08-22). Paths: (1) Tutorial — real WPForms UI in an iframe on the master timeline (clone docs/examples/single-html-tutorial-skeleton.html). (2) Pure editorial / ad — single self-contained HTML (clone docs/examples/single-html-ad-skeleton.html). (3) Mixed — editorial chrome composited over real product UI in ONE single-HTML film. (4) 9:16 short. MP4 RENDER in-repo via tools/render-singlehtml-audio.js (never the same word as snapshot capture, which is capture/capture.js and runs FIRST).';
+  'Guided single-HTML video builder (engine/manifest path retired 2026-08-22). Paths: (1) Tutorial — real WPForms UI in an iframe on the master timeline (clone docs/examples/single-html-tutorial-skeleton.html). (2) Pure editorial / ad — single self-contained HTML (clone docs/examples/single-html-ad-skeleton.html). (3) Mixed — editorial chrome composited over real product UI in ONE single-HTML film. (4) 9:16 short. MP4 RENDER in-repo via tools/render.js (never the same word as snapshot capture, which is capture/capture.js and runs FIRST).';
 
 const START_RULE =
   'STEP 0: read docs/rulebook.md — every row is a defect that shipped and cost a rebuild. STEP 1: pick a path (see PATHS below). STEP 2: load the matching primary skill. STEP 3: for repo-wide context (boot order, protected core, validation, push-back), read CLAUDE.md. Topic rules live in skills.';
@@ -148,8 +148,7 @@ const TOOLS = [
   { cmd: 'node tts/generate.js --video <slug>',                                                  use: 'Render narration mp3s.' },
   { cmd: 'node tools/validate-singlehtml.js <slug> [--report]',                                 use: 'Static validator for single-HTML films (imports, snapshots, narration parity, instrumentation, guard rules, payoff / at() / orphan-clip WARNs).' },
   { cmd: 'node tools/smoke-singlehtml.js <slug> [--seconds <n>] [--report]',                     use: 'Non-visual headless smoke; holds the headless lock.' },
-  { cmd: 'node tools/render-html.js <slug> --duration <seconds> [--out path]',                   use: 'Single-HTML → silent MP4 (editorial review clips).' },
-  { cmd: 'node tools/render-singlehtml-audio.js <slug> [--bgm <path>|none] [--out path]',         use: 'Single-HTML → MP4 WITH AUDIO. Records the real run, lays narration at __sched cue times, side-chain-ducks BGM. Needs __T0/__sched/__dur/__done instrumentation. Audio quality is the user\'s QC.' },
+  { cmd: 'node tools/render.js <slug> [--quality draft|hd|final] [--bgm-volume 0.12]',          use: 'THE renderer (npm run render): frame-exact, 8 browsers in parallel, with sound (narration at __sched cues + ducked bed, or sfx/plan.json). Draft 720p by default; 4K only on Umair\'s "final". Old renderers are fallback only (docs/render.md).' },
   { cmd: 'node tools/stitch.js videos/<slug>.video.json [--no-render] [--xfade <s>]',            use: 'Render + ffmpeg-concat HF intro + HTML body + HF outro per .video.json manifest. Locked tutorial delivery shape.' },
   { cmd: 'node tools/keyframes.js <video.mp4> [--frames 16 --cols 4]',                           use: 'Contact-sheet grid from an MP4 for visual QC handoff.' },
   { cmd: 'node tools/post-capture.js <slug> [--keep-fields 1,2,3]',                              use: 'MANDATORY after every new capture: field trim (opt-in) + builder markup trim + comment strip + CSS dedup + catalog regen.' },

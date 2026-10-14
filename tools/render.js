@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// tools/render.js — frame-exact, parallel renderer for single-HTML films (video only, for now).
+// tools/render.js — THE renderer: frame-exact, parallel, with sound, for every single-HTML film.
 //
 // How it works:
 //   · Chrome virtual time (CDP Emulation.setVirtualTimePolicy) owns the page clock, so every film
@@ -23,7 +23,8 @@
 // Quality presets (Umair 2026-10-13: drafts are 720p "to get a feel"; 4K only on "final"):
 //   draft  720p   (720 on the short side)  device scale 0.667, x264 veryfast crf 20
 //   hd     1080p  device scale 2 + lanczos downscale (today's HD look), x264 slow crf 16
-//   final  4K     device scale 2 native (3840x2160, portrait 2160x3840), x264 medium crf 16
+//   final  4K     device scale 2 native (3840x2160, portrait 2160x3840), NVENC cq 18 per block
+//                 (x264 in 8 parallel blocks starved the browsers: 0.65x vs 1.05x real time)
 //
 // Film contract: the same as render-singlehtml-audio.js (window.__T0 set when play starts,
 // window.__done / window.__dur at the end). Output length = ceil(__dur + 0.25) s (AP-18 pad).
@@ -32,7 +33,11 @@
 // Usage:
 //   node tools/render.js <slug> [--quality draft|hd|final] [--workers 8] [--fps 30]
 //     [--no-skip] [--verify-skip] [--seconds N] [--query str] [--out path] [--no-lock] [--force]
-//     [--no-audio] [--bgm <path>|none] [--bgm-volume 0.17]
+//     [--no-audio] [--bgm <path>|none] [--bgm-volume 0.17] [--resolution WxH]
+//
+// This is THE renderer (npm run render). Output: videos/<slug>/render/<slug>.mp4 (draft, hd) or
+// <slug>-4k.mp4 (final). The older renderers (render-singlehtml-audio.js, render-frames.js,
+// render-singlehtml.js, render-html.js) are kept only as a fallback; see docs/render.md.
 //
 // Sound (same sources as today's ship paths): a film with videos/<slug>/sfx/plan.json is mixed by
 // tools/sfx/mux.mjs (ads); otherwise narration clips from window.__sched + the ducked bed
@@ -62,7 +67,7 @@ const MIME = {
 function parseArgs(argv) {
   const a = argv.slice(2);
   const o = { slug: null, quality: 'draft', workers: 8, fps: 30, skip: true, verify: false,
-    seconds: null, query: null, out: null, lock: true, force: false, audio: true, bgm: undefined, bgmVolume: 0.17 };
+    seconds: null, query: null, out: null, resolution: null, lock: true, force: false, audio: true, bgm: undefined, bgmVolume: 0.17 };
   for (let i = 0; i < a.length; i++) {
     const x = a[i];
     if (x === '--quality') o.quality = a[++i];
@@ -71,6 +76,7 @@ function parseArgs(argv) {
     else if (x === '--no-skip') o.skip = false;
     else if (x === '--verify-skip') { o.verify = true; o.skip = false; }
     else if (x === '--seconds') o.seconds = Number(a[++i]);
+    else if (x === '--resolution') o.resolution = a[++i];
     else if (x === '--query') o.query = String(a[++i]).replace(/^\?/, '');
     else if (x === '--out') o.out = a[++i];
     else if (x === '--no-lock') o.lock = false;
@@ -84,7 +90,7 @@ function parseArgs(argv) {
   if (!o.slug || !['draft', 'hd', 'final'].includes(o.quality) || !(o.workers >= 1) || !(o.fps > 0)) {
     console.error('Usage: node tools/render.js <slug> [--quality draft|hd|final] [--workers 8] [--fps 30]');
     console.error('       [--no-skip] [--verify-skip] [--seconds N] [--query str] [--out path] [--no-lock] [--force]');
-    console.error('       [--no-audio] [--bgm <path>|none] [--bgm-volume 0.17]');
+    console.error('       [--no-audio] [--bgm <path>|none] [--bgm-volume 0.17] [--resolution WxH]');
     process.exit(3);
   }
   return o;
@@ -200,10 +206,10 @@ async function main() {
   if (!fs.existsSync(htmlPath)) { console.error(`not found: ${path.relative(REPO, htmlPath)}`); process.exit(3); }
   if (o.lock) require('./headless-lock').acquire('render', { force: o.force });
 
-  const stage = resolveResolution({ htmlPath });
+  const stage = resolveResolution({ resolutionArg: o.resolution, htmlPath });
   const P = preset(o.quality, stage.width, stage.height);
   const out = o.out ? path.resolve(REPO, o.out)
-    : path.join(REPO, 'videos', o.slug, 'render', `${o.slug}-${o.quality}.mp4`);
+    : path.join(REPO, 'videos', o.slug, 'render', o.quality === 'final' ? `${o.slug}-4k.mp4` : `${o.slug}.mp4`);
   fs.mkdirSync(path.dirname(out), { recursive: true });
   const fps = o.fps, frameMs = 1000 / fps;
   console.log(`[render] ${o.slug}: ${o.quality} ${P.outW}x${P.outH} @${fps} (stage ${stage.width}x${stage.height} ${stage.source}, scale ${+P.dsf.toFixed(3)}, ${o.workers} workers, reuse ${o.skip ? 'on' : o.verify ? 'verify' : 'off'})`);

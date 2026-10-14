@@ -212,8 +212,8 @@ the film.
 | `tools/composition-scan.js` | Composition and monotony metric |
 | `tools/machine-qc.js` | Advisory Gemini QC pass on an MP4 |
 | `tools/lib/qc-report.js` | Per-video gate ledger the dashboard reads |
-| `tools/render-singlehtml-audio.js` | MP4 render with narration and ducked BGM |
-| `tools/render-frames.js` | Frame-stepped lossless render |
+| `tools/render.js` | THE renderer (`npm run render`): frame-exact, parallel, with sound; 720p draft, `--quality final` 4K |
+| `tools/render-singlehtml-audio.js`, `tools/render-frames.js` | Fallback renderers (`docs/render.md`) |
 | `tools/keyframes.js` | Contact sheet from an MP4 |
 | `tools/sfx/` | Timeline-driven sound design, SFX palette, onset probe |
 | `tools/post-capture.js`, `tools/capture-gates.js` | Post-capture trims and quality gates for a pack |
@@ -252,12 +252,12 @@ Hand off both URLs:
 ## Rendering an MP4
 
 ```bash
-node tools/render-singlehtml-audio.js <slug>
-node tools/render-singlehtml-audio.js <slug> --resolution WxH
+node tools/render.js <slug>                    # 720p draft
+node tools/render.js <slug> --quality final    # 4K master
 ```
 
-The output size defaults to the film's `.stage` box, so a 9:16 short renders
-at 1080×1920 with no flag.
+The output size follows the film's `.stage` box, so a 9:16 short renders
+portrait with no flag. Details and the fallback renderers: `docs/render.md`.
 
 ---
 

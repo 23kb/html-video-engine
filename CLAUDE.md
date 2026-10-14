@@ -192,7 +192,7 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 **Vocabulary — two opposite operations. Never let the bare word "capture" stand alone (rf 7):**
 
 - **snapshot capture** — `capture/capture.js`, freezes a live page into a static fossil. **FIRST** step of a build.
-- **MP4 render** — `tools/render-singlehtml-audio.js`, turns a finished HTML film into video. **LAST** step.
+- **MP4 render** — `tools/render.js` (`npm run render`), turns a finished HTML film into video. **LAST** step.
 
 "Capture the video" is never an instruction to screen-record the real site. That path produces something video-shaped and bypasses every gate in every skill.
 
@@ -213,8 +213,7 @@ Static check: `node tools/lint-determinism.js [--all]`. See `docs/deterministic-
 - `node tools/capture-external.js <url> <slug>` — freeze a non-WP page (OAuth/consent screens) into a self-registered display-only snapshot
 - `node tools/validate-singlehtml.js <slug>` — static validator for single-HTML videos (tutorial new-work, editorial, shorts); includes DUR-drift check
 - `node tools/smoke-singlehtml.js <slug> [--seconds <n>]` — non-visual smoke for single-HTML videos
-- `node tools/render-html.js <slug> --duration <seconds> [--fps 30] [--out path]` — single-HTML editorial → MP4 (no engine)
-- `node tools/render-singlehtml-audio.js <slug> [--bgm <path>|none] [--resolution WxH]` — single-HTML → MP4 **with narration + ducked BGM**; this is the renderer the tutorials and shorts actually ship through. Resolution defaults to the video's own `.stage` box (`tools/stage-size.js`), so a 9:16 short renders 1080×1920 with no flag — see `docs/vertical-shorts.md`
+- `node tools/render.js <slug> [--quality draft|hd|final] [--bgm-volume 0.12]` — **THE renderer** (`npm run render`) for every film type: frame-exact under Chrome virtual time, 8 browsers in parallel, with sound (narration at `__sched` cues + ducked bed, or `sfx/plan.json` via `tools/sfx/mux.mjs`). **Draft 720p by default; `--quality final` (4K) only when Umair says "final"**; `--quality hd` = 1080p. Long-form tutorials pass `--bgm-volume 0.12`. Stage size comes from `.stage`, so a 9:16 short renders portrait with no flag. A 3-min tutorial draft renders in ~90 s. Output `videos/<slug>/render/<slug>.mp4` (final: `<slug>-4k.mp4`). The old renderers (`render-singlehtml-audio.js`, `render-frames.js`, `render-singlehtml.js`, `render-html.js`) are fallback only — `docs/render.md`
 - `node tools/stitch.js videos/<slug>.video.json [--no-render] [--xfade <s>] [--dry-run]` — render pieces + ffmpeg-concat **a recorded presenter intro + HTML body + recorded presenter outro** into one MP4 (the tutorial delivery shape since 2026-07-23; the presenter, recording spec and flow are the pack's — WPForms: `products/wpforms/PRODUCT.md`)
 - `node tools/keyframes.js <video.mp4> [--frames 16 --cols 4]` — contact-sheet grid from an MP4 for visual QC handoff; each tile carries a burned-in `#N t.ts` badge and the tile→timestamp map prints to stdout, so "frame 7" feedback resolves to an exact second
 - `node tools/dead-time.js <video.mp4 | slug> [--min-run 0.3] [--fail-over 1.0]` — full-track frame-diff scan of a render: reports runs of no-change frames with the pause-test taxonomy (comma ≤0.45s / borderline / PLANNING BUG >1s); the measured form of the D1 idle-motion rule, also catches frozen-video render defects; report-only. A PLANNING BUG is WITHHELD when full-res freezedetect or a quadrant re-measure disagrees — at 270px the meter cannot see small-area motion (rf-weight 28)
@@ -243,6 +242,7 @@ Before review handoff:
 4. Smoke - `node tools/smoke-singlehtml.js <slug> --seconds 30 --report`
 5. **For postIntro/cinematic/editorial beats:** ask `film-motion-audit` skill to score them. Tier A or higher is the merge bar; anything B or below needs a fix or an explicit override. Record it: `node tools/lib/qc-report.js <slug> --set motionAudit.tier=<tier>`
 6. **Populate the rest of the gate ledger** so the QC dashboard's chips are truthful — an empty chip means "not measured" and wastes Umair's review pass. Run one at a time (headless lock): `narration-qc.js <slug>`, `dead-time.js <slug>` (shorts: also `--crop 1080:1200:0:300`), `seam-gate.js <slug>`. Then `machine-qc.js <slug>` (advisory, no lock — see `film-machine-qc` skill; verify findings against source before acting, re-run after every re-render).
+7. **Render** — `node tools/render.js <slug>` (720p draft; long-form adds `--bgm-volume 0.12`). `--quality final` (4K, `<slug>-4k.mp4`) only when Umair says "final" for that render. Then re-run the step-6 gates on the new MP4.
 
 Visual QC belongs to the user unless explicitly requested. If you do run a browser check, keep it scoped and report what you verified.
 

@@ -14,7 +14,7 @@
 // }
 //
 // Per-piece output discovery (convention):
-//   kind=html → videos/<slug>/render/<slug>.mp4  (per tools/render-html.js)
+//   kind=html → videos/<slug>/render/<slug>.mp4  (per tools/render.js)
 //   kind=hf   → <piece.path>/renders/<meta.id>.mp4  (per hyperframes render)
 //   Both can be overridden with piece.output = "...path/to.mp4"
 //
@@ -151,14 +151,15 @@ function renderPiece(p) {
     cmd = process.platform === 'win32' ? 'npx.cmd' : 'npx';
     args = ['--yes', 'hyperframes@0.6.16', 'render'];
   } else {
-    // html — single-HTML video (no chapter engine, no manifest). Use
-    // tools/render-html.js which opens the URL directly and captures
-    // frames wall-clock. Manifest can override renderer + duration.
+    // html — single-HTML video. tools/render.js renders the body with narration + bed at
+    // 1080p long-form settings; piece.args replaces those flags, piece.renderer points at a
+    // fallback tool (docs/render.md), piece.duration is for the fallback render-html.js.
     cmd = process.execPath;
-    const renderer = p.renderer || 'tools/render-html.js';
+    const renderer = p.renderer || 'tools/render.js';
     args = [path.join(ROOT, renderer), pieceSlug(p)];
-    if (p.duration) args.push('--duration', String(p.duration));
-    spawnCwd = ROOT; // render-html.js needs to be run from repo root
+    if (renderer === 'tools/render.js') args.push(...(p.args || ['--quality', 'hd', '--bgm-volume', '0.12']));
+    else if (p.duration) args.push('--duration', String(p.duration));
+    spawnCwd = ROOT; // the renderers run from the repo root
   }
   const r = spawnSync(cmd, args, { cwd: spawnCwd, stdio: 'inherit' });
   if (r.status !== 0) {
